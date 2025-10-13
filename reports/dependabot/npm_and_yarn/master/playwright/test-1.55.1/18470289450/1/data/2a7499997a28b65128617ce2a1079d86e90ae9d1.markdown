@@ -1,0 +1,476 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                  - listitem [ref=e107]:
+                    - generic [ref=e108]:
+                      - link "Data Center Clusters" [ref=e109] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e111]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e113] [cursor=pointer]
+                  - listitem [ref=e114]:
+                    - generic [ref=e115]:
+                      - link "Edge" [ref=e116] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e118]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e120] [cursor=pointer]
+                  - listitem [ref=e121]:
+                    - generic [ref=e122]:
+                      - link "Palette Virtual Clusters" [expanded] [ref=e123] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e125]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e127] [cursor=pointer]
+                    - list [ref=e128]:
+                      - listitem [ref=e129]:
+                        - link "Deploy a Virtual Cluster to a Cluster Group" [ref=e130] [cursor=pointer]:
+                          - /url: /clusters/palette-virtual-clusters/deploy-virtual-cluster/
+                      - listitem [ref=e131]:
+                        - link "Configure OIDC for a Virtual Cluster" [ref=e132] [cursor=pointer]:
+                          - /url: /clusters/palette-virtual-clusters/configure-oidc-virtual-cluster/
+                      - listitem [ref=e133]:
+                        - link "Migrate Virtual Cluster Workloads" [ref=e134] [cursor=pointer]:
+                          - /url: /clusters/palette-virtual-clusters/migrate-virtual-clusters/
+                  - listitem [ref=e135]:
+                    - generic [ref=e136]:
+                      - link "Imported Clusters" [ref=e137] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e139]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e141] [cursor=pointer]
+                  - listitem [ref=e142]:
+                    - generic [ref=e143]:
+                      - link "Manage Clusters" [ref=e144] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e146]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e148] [cursor=pointer]
+                  - listitem [ref=e149]:
+                    - generic [ref=e150]:
+                      - link "Cluster Groups" [ref=e151] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e153]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e155] [cursor=pointer]
+                  - listitem [ref=e156]:
+                    - generic [ref=e157]:
+                      - link "Private Cloud Gateway" [ref=e158] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e160]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e165] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e167]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Palette Dev Engine" [ref=e172] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e174]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Virtual Machine Orchestrator" [ref=e179] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e181]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e183] [cursor=pointer]
+              - listitem [ref=e184]:
+                - generic [ref=e185]:
+                  - link "Workspaces" [ref=e186] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e188]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e190] [cursor=pointer]
+              - listitem [ref=e191]:
+                - generic [ref=e192]:
+                  - link "Packs List" [ref=e193] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e195]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e197] [cursor=pointer]
+              - listitem [ref=e198]:
+                - generic [ref=e199]:
+                  - link "User & Role Management" [ref=e200] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e202]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e204] [cursor=pointer]
+              - listitem [ref=e205]:
+                - generic [ref=e206]:
+                  - link "Registries and Packs" [ref=e207] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e209]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e211] [cursor=pointer]
+              - listitem [ref=e212]:
+                - generic [ref=e213]:
+                  - link "Security" [ref=e214] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e216]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e218] [cursor=pointer]
+              - listitem [ref=e219]:
+                - generic [ref=e220]:
+                  - link "Audit Logs" [ref=e221] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e223]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e225] [cursor=pointer]
+              - listitem [ref=e226]:
+                - generic [ref=e227]:
+                  - link "Self-Hosted Palette" [ref=e228] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e230]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e232] [cursor=pointer]
+              - listitem [ref=e233]:
+                - generic [ref=e234]:
+                  - link "Palette VerteX" [ref=e235] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e237]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e239] [cursor=pointer]
+              - listitem [ref=e240]:
+                - generic [ref=e241]:
+                  - link "Tenant Administration" [ref=e242] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e244]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e246] [cursor=pointer]
+              - listitem [ref=e247]:
+                - generic [ref=e248]:
+                  - link "Automation" [ref=e249] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e251]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e253] [cursor=pointer]
+              - listitem [ref=e254]:
+                - generic [ref=e255]:
+                  - link "Troubleshooting" [ref=e256] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e258]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e260] [cursor=pointer]
+              - listitem [ref=e261]:
+                - link "Glossary" [ref=e262] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e264]
+                  - text: Glossary
+              - listitem [ref=e266]:
+                - generic [ref=e267]:
+                  - link "Compliance & Legal" [ref=e268] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e270]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e272] [cursor=pointer]
+              - listitem [ref=e273]:
+                - button "Privacy Settings" [ref=e274] [cursor=pointer]:
+                  - img [ref=e275]
+                  - text: Privacy Settings
+      - main [ref=e277]:
+        - generic [ref=e279]:
+          - generic [ref=e281]:
+            - article [ref=e282]:
+              - navigation "Breadcrumbs" [ref=e283]:
+                - list [ref=e284]:
+                  - listitem [ref=e285]:
+                    - link "Home page" [ref=e286] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e287]
+                  - listitem [ref=e289]:
+                    - link "Clusters" [ref=e290] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e291]:
+                    - generic [ref=e292]: Palette Virtual Clusters
+              - generic [ref=e293]:
+                - heading "Create Palette Virtual Clusters" [level=1] [ref=e295]
+                - paragraph [ref=e296]:
+                  - text: Palette Virtual Clusters are nested Kubernetes clusters within a Host Cluster. Virtual clusters share the host cluster resources, such as CPU, memory, storage, container network interface (CNI), and container storage interface (CSI). By default, virtual clusters use
+                  - link "k3s" [ref=e297] [cursor=pointer]:
+                    - /url: https://github.com/k3s-io/k3s
+                  - text: ", a highly available, certified Kubernetes distribution designed for production workloads. Virtual clusters are supported in both connected and airgapped environments."
+                - paragraph [ref=e298]: Palette provisions and orchestrates virtual clusters to make the lightweight Kubernetes technology stack and tools ecosystem available to you. Deploy virtual clusters on both new and imported Host Clusters and attach application profiles.
+                - paragraph [ref=e299]: Palette also supports Day-2 operations such as upgrades, backup, and restore to keep virtual clusters secure, compliant, and up to date. Additionally, Palette provides visibility into the workloads deployed inside your virtual clusters and the associated costs.
+                - heading "Get StartedDirect link to Get Started" [level=2] [ref=e300]:
+                  - text: Get Started
+                  - link "Direct link to Get Started" [ref=e301] [cursor=pointer]:
+                    - /url: "#get-started"
+                    - text: "#"
+                - paragraph [ref=e302]:
+                  - text: To get started, refer to
+                  - link "Deploy a Virtual Cluster to a Cluster Group" [ref=e303] [cursor=pointer]:
+                    - /url: /clusters/palette-virtual-clusters/deploy-virtual-cluster/
+                  - text: .
+                - heading "Kubernetes DistributionsDirect link to Kubernetes Distributions" [level=2] [ref=e304]:
+                  - text: Kubernetes Distributions
+                  - link "Direct link to Kubernetes Distributions" [ref=e305] [cursor=pointer]:
+                    - /url: "#kubernetes-distributions"
+                    - text: "#"
+                - paragraph [ref=e306]: "The following Kubernetes distributions are supported for virtual clusters:"
+                - table [ref=e307]:
+                  - rowgroup [ref=e308]:
+                    - row "Name Description" [ref=e309]:
+                      - cell "Name" [ref=e310]:
+                        - strong [ref=e311]: Name
+                      - cell "Description" [ref=e312]:
+                        - strong [ref=e313]: Description
+                  - rowgroup [ref=e314]:
+                    - row "K3s K3s is a lightweight, certified Kubernetes distribution designed for production workloads." [ref=e315]:
+                      - cell "K3s" [ref=e316]:
+                        - strong [ref=e317]: K3s
+                      - cell "K3s is a lightweight, certified Kubernetes distribution designed for production workloads." [ref=e318]:
+                        - link "K3s" [ref=e319] [cursor=pointer]:
+                          - /url: https://k3s.io
+                        - text: is a lightweight, certified Kubernetes distribution designed for production workloads.
+                    - row "Kubernetes The Cloud Native Computing Foundation (CNCF) Kubernetes distribution." [ref=e320]:
+                      - cell "Kubernetes" [ref=e321]:
+                        - strong [ref=e322]: Kubernetes
+                      - cell "The Cloud Native Computing Foundation (CNCF) Kubernetes distribution." [ref=e323]:
+                        - text: The Cloud Native Computing Foundation (CNCF)
+                        - link "Kubernetes distribution" [ref=e324] [cursor=pointer]:
+                          - /url: https://www.cncf.io/projects/kubernetes
+                        - text: .
+                - paragraph [ref=e325]:
+                  - text: Refer to the
+                  - link "Create and Manager Cluster Groups" [ref=e326] [cursor=pointer]:
+                    - /url: /clusters/cluster-groups/create-cluster-group/#palette-virtual-cluster-configuration
+                  - text: to learn how to configure your cluster group to use a specific Kubernetes distribution.
+                - heading "Minimum Resource RequirementsDirect link to Minimum Resource Requirements" [level=3] [ref=e327]:
+                  - text: Minimum Resource Requirements
+                  - link "Direct link to Minimum Resource Requirements" [ref=e328] [cursor=pointer]:
+                    - /url: "#minimum-resource-requirements"
+                    - text: "#"
+                - paragraph [ref=e329]: The following table lists the minimum resource requirements for virtual clusters and the underlying Kubernetes distribution.
+                - table [ref=e330]:
+                  - rowgroup [ref=e331]:
+                    - row "Resource Type Default K3s Minimum Limit Kubernetes Minimum Limit" [ref=e332]:
+                      - cell "Resource Type" [ref=e333]:
+                        - strong [ref=e334]: Resource Type
+                      - cell "Default" [ref=e335]:
+                        - strong [ref=e336]: Default
+                      - cell "K3s Minimum Limit" [ref=e337]:
+                        - strong [ref=e338]: K3s Minimum Limit
+                      - cell "Kubernetes Minimum Limit" [ref=e339]:
+                        - strong [ref=e340]: Kubernetes Minimum Limit
+                  - rowgroup [ref=e341]:
+                    - row "CPU (per request) 4 4 4" [ref=e342]:
+                      - cell "CPU (per request)" [ref=e343]
+                      - cell "4" [ref=e344]
+                      - cell "4" [ref=e345]
+                      - cell "4" [ref=e346]
+                    - row "Memory (per request) 4 GiB 3 GiB 4 GiB" [ref=e347]:
+                      - cell "Memory (per request)" [ref=e348]
+                      - cell "4 GiB" [ref=e349]
+                      - cell "3 GiB" [ref=e350]
+                      - cell "4 GiB" [ref=e351]
+                    - row "Storage (per request) 2 GiB 0 GiB 2 GiB" [ref=e352]:
+                      - cell "Storage (per request)" [ref=e353]
+                      - cell "2 GiB" [ref=e354]
+                      - cell "0 GiB" [ref=e355]
+                      - cell "2 GiB" [ref=e356]
+                - heading "Network ConnectivityDirect link to Network Connectivity" [level=2] [ref=e357]:
+                  - text: Network Connectivity
+                  - link "Direct link to Network Connectivity" [ref=e358] [cursor=pointer]:
+                    - /url: "#network-connectivity"
+                    - text: "#"
+                - paragraph [ref=e359]: "Virtual clusters support two network endpoint types: Load Balancer and Ingress. The network endpoint type determines how virtual clusters are exposed to external traffic. You specify the network endpoint type in Cluster Group Settings."
+                - list [ref=e360]:
+                  - listitem [ref=e361]:
+                    - paragraph [ref=e362]:
+                      - strong [ref=e363]: Load Balancer
+                      - text: ": The Host Cluster must support dynamic provisioning of load balancers, either via a Cloud Controller Manager in the public cloud or a bare metal load balancer provider such as MetalLB."
+                  - listitem [ref=e364]:
+                    - paragraph [ref=e365]:
+                      - strong [ref=e366]: Ingress
+                      - text: ": The Nginx Ingress Controller must be deployed on the Host Cluster with SSL passthrough enabled. This allows TLS termination to occur at the virtual cluster's Kubernetes API server."
+                    - paragraph [ref=e367]: "A wildcard DNS record must be configured that maps to the load balancer associated with the NGINX Ingress Controller. For example:"
+                    - paragraph [ref=e368]:
+                      - code [ref=e369]: "*.myapp.mydomain.com"
+                - heading "Upgrade Virtual ClustersDirect link to Upgrade Virtual Clusters" [level=2] [ref=e370]:
+                  - text: Upgrade Virtual Clusters
+                  - link "Direct link to Upgrade Virtual Clusters" [ref=e371] [cursor=pointer]:
+                    - /url: "#upgrade-virtual-clusters"
+                    - text: "#"
+                - paragraph [ref=e372]:
+                  - text: The
+                  - link "vCluster version" [ref=e373] [cursor=pointer]:
+                    - /url: https://www.vcluster.com/releases/en/changelog
+                  - text: may be updated in a Palette release, which can introduce breaking changes that affect newly created virtual clusters.
+                - paragraph [ref=e374]: To avoid disruptions, Palette locks the vCluster version for each cluster group, ensuring virtual clusters can still be provisioned successfully within existing groups, even across Palette updates.
+                - paragraph [ref=e375]:
+                  - text: If you want to use the latest version of vCluster on your virtual clusters, you must create a new cluster group and migrate your workloads from your legacy clusters. Refer to
+                  - link "Migrate Virtual Cluster Workloads" [ref=e376] [cursor=pointer]:
+                    - /url: /clusters/palette-virtual-clusters/migrate-virtual-clusters/
+                  - text: for guidance.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e377]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e378] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e379]:
+                  - listitem [ref=e380]:
+                    - paragraph [ref=e381]:
+                      - link "Add Virtual Clusters to a Cluster Group" [ref=e382] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/deploy-virtual-cluster/
+                  - listitem [ref=e383]:
+                    - paragraph [ref=e384]:
+                      - link "Configure OIDC for Virtual Clusters" [ref=e385] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/configure-oidc-virtual-cluster/
+                  - listitem [ref=e386]:
+                    - paragraph [ref=e387]:
+                      - link "Migrate Virtual Cluster Workloads" [ref=e388] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/migrate-virtual-clusters/
+              - generic [ref=e389]:
+                - generic [ref=e391]:
+                  - text: "Tags:"
+                  - list [ref=e392]:
+                    - listitem [ref=e393]:
+                      - link "clusters" [ref=e394] [cursor=pointer]:
+                        - /url: /tags/clusters/
+                    - listitem [ref=e395]:
+                      - link "virtual clusters" [ref=e396] [cursor=pointer]:
+                        - /url: /tags/virtual-clusters/
+                - link "Edit this page" [ref=e399] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/palette-virtual-clusters/palette-virtual-clusters.md
+                  - img [ref=e400]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e404]:
+              - link "Previous « Use Tailscale to Ensure Remote Host Access" [ref=e405] [cursor=pointer]:
+                - /url: /clusters/edge/third-party-integrations/tailscale/
+                - generic [ref=e406]: Previous
+                - generic [ref=e407]: « Use Tailscale to Ensure Remote Host Access
+              - link "Next Deploy a Virtual Cluster to a Cluster Group »" [ref=e408] [cursor=pointer]:
+                - /url: /clusters/palette-virtual-clusters/deploy-virtual-cluster/
+                - generic [ref=e409]: Next
+                - generic [ref=e410]: Deploy a Virtual Cluster to a Cluster Group »
+          - list [ref=e413]:
+            - listitem [ref=e414]:
+              - link "Get Started" [ref=e415] [cursor=pointer]:
+                - /url: "#get-started"
+            - listitem [ref=e416]:
+              - link "Kubernetes Distributions" [ref=e417] [cursor=pointer]:
+                - /url: "#kubernetes-distributions"
+              - list [ref=e418]:
+                - listitem [ref=e419]:
+                  - link "Minimum Resource Requirements" [ref=e420] [cursor=pointer]:
+                    - /url: "#minimum-resource-requirements"
+            - listitem [ref=e421]:
+              - link "Network Connectivity" [ref=e422] [cursor=pointer]:
+                - /url: "#network-connectivity"
+            - listitem [ref=e423]:
+              - link "Upgrade Virtual Clusters" [ref=e424] [cursor=pointer]:
+                - /url: "#upgrade-virtual-clusters"
+            - listitem [ref=e425]:
+              - link "Resources" [ref=e426] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e427] [cursor=pointer]:
+    - generic [ref=e430]:
+      - img "Project Logo" [ref=e431]
+      - paragraph [ref=e432]: Ask AI
+```

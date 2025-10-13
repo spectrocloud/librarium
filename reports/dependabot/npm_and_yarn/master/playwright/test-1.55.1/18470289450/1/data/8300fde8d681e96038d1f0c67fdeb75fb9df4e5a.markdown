@@ -1,0 +1,522 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Security" [ref=e150] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e152]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Audit Logs" [ref=e157] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e159]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Self-Hosted Palette" [ref=e164] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e166]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e168] [cursor=pointer]
+              - listitem [ref=e169]:
+                - generic [ref=e170]:
+                  - link "Palette VerteX" [ref=e171] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e173]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e175] [cursor=pointer]
+              - listitem [ref=e176]:
+                - generic [ref=e177]:
+                  - link "Tenant Administration" [ref=e178] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e180]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e182] [cursor=pointer]
+              - listitem [ref=e183]:
+                - generic [ref=e184]:
+                  - link "Automation" [expanded] [ref=e185] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e187]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e189] [cursor=pointer]
+                - list [ref=e190]:
+                  - listitem [ref=e191]:
+                    - generic [ref=e192]:
+                      - link "Palette CLI" [ref=e193] [cursor=pointer]:
+                        - /url: /automation/palette-cli/
+                      - button "Toggle the collapsible sidebar category 'Palette CLI'" [ref=e194] [cursor=pointer]
+                  - listitem [ref=e195]:
+                    - generic [ref=e196]:
+                      - link "Palette Go SDK" [expanded] [ref=e197] [cursor=pointer]:
+                        - /url: /automation/palette-sdk/
+                      - button "Toggle the collapsible sidebar category 'Palette Go SDK'" [ref=e198] [cursor=pointer]
+                    - list [ref=e199]:
+                      - listitem [ref=e200]:
+                        - link "List Clusters with Palette Go SDK" [ref=e201] [cursor=pointer]:
+                          - /url: /automation/palette-sdk/list-clusters-sdk/
+                  - listitem [ref=e202]:
+                    - link "Terraform" [ref=e203] [cursor=pointer]:
+                      - /url: /automation/terraform/
+                  - listitem [ref=e204]:
+                    - generic [ref=e205]:
+                      - link "Crossplane" [ref=e206] [cursor=pointer]:
+                        - /url: /automation/crossplane/
+                      - button "Toggle the collapsible sidebar category 'Crossplane'" [ref=e207] [cursor=pointer]
+              - listitem [ref=e208]:
+                - generic [ref=e209]:
+                  - link "Troubleshooting" [ref=e210] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e212]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - link "Glossary" [ref=e216] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e218]
+                  - text: Glossary
+              - listitem [ref=e220]:
+                - generic [ref=e221]:
+                  - link "Compliance & Legal" [ref=e222] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e224]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e226] [cursor=pointer]
+              - listitem [ref=e227]:
+                - button "Privacy Settings" [ref=e228] [cursor=pointer]:
+                  - img [ref=e229]
+                  - text: Privacy Settings
+      - main [ref=e231]:
+        - generic [ref=e233]:
+          - generic [ref=e235]:
+            - article [ref=e236]:
+              - navigation "Breadcrumbs" [ref=e237]:
+                - list [ref=e238]:
+                  - listitem [ref=e239]:
+                    - link "Home page" [ref=e240] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e241]
+                  - listitem [ref=e243]:
+                    - link "Automation" [ref=e244] [cursor=pointer]:
+                      - /url: /automation/
+                  - listitem [ref=e245]:
+                    - link "Palette Go SDK" [ref=e246] [cursor=pointer]:
+                      - /url: /automation/palette-sdk/
+                  - listitem [ref=e247]:
+                    - generic [ref=e248]: List Clusters with Palette Go SDK
+              - generic [ref=e249]:
+                - heading "List Clusters with Palette Go SDK" [level=1] [ref=e251]
+                - paragraph [ref=e252]: The Palette Go Software Developer Toolkit (SDK) enables Go developers to interact with Palette services. This guide explains how to install and use the SDK to list the active host clusters in your Palette environment.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e253]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e254] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e255]:
+                  - listitem [ref=e256]:
+                    - paragraph [ref=e257]:
+                      - link "Go" [ref=e258] [cursor=pointer]:
+                        - /url: https://go.dev/doc/install
+                      - text: version 1.22.5 or later.
+                  - listitem [ref=e259]:
+                    - paragraph [ref=e260]:
+                      - text: A Palette account with
+                      - link "Tenant Admin" [ref=e261] [cursor=pointer]:
+                        - /url: /tenant-settings/
+                      - text: access.
+                  - listitem [ref=e262]:
+                    - paragraph [ref=e263]:
+                      - text: A Palette API key. Refer to the
+                      - link "Create API Key" [ref=e264] [cursor=pointer]:
+                        - /url: /user-management/authentication/api-key/create-api-key/
+                      - text: page for instructions on how to create an API key.
+                - heading "List Palette ClustersDirect link to List Palette Clusters" [level=2] [ref=e265]:
+                  - text: List Palette Clusters
+                  - link "Direct link to List Palette Clusters" [ref=e266] [cursor=pointer]:
+                    - /url: "#list-palette-clusters"
+                    - text: "#"
+                - list [ref=e267]:
+                  - listitem [ref=e268]:
+                    - paragraph [ref=e269]: Open a terminal window and create a folder for you Go repository.
+                    - generic [ref=e271]:
+                      - code [ref=e273]:
+                        - generic [ref=e274]: mkdir sdk-example
+                      - button "Copy code to clipboard" [ref=e276] [cursor=pointer]:
+                        - generic [ref=e277]:
+                          - img [ref=e278]
+                          - img [ref=e280]
+                  - listitem [ref=e282]:
+                    - paragraph [ref=e283]: Navigate to the created folder.
+                    - generic [ref=e285]:
+                      - code [ref=e287]:
+                        - generic [ref=e288]: cd sdk-example
+                      - button "Copy code to clipboard" [ref=e290] [cursor=pointer]:
+                        - generic [ref=e291]:
+                          - img [ref=e292]
+                          - img [ref=e294]
+                  - listitem [ref=e296]:
+                    - paragraph [ref=e297]:
+                      - text: Initialize your Go module and enable dependency tracking for your code by issuing the following command. This will create a
+                      - code [ref=e298]: go.mod
+                      - text: file in the current folder.
+                    - generic [ref=e300]:
+                      - code [ref=e302]:
+                        - generic [ref=e303]: go mod init example/list-clusters
+                      - button "Copy code to clipboard" [ref=e305] [cursor=pointer]:
+                        - generic [ref=e306]:
+                          - img [ref=e307]
+                          - img [ref=e309]
+                  - listitem [ref=e311]:
+                    - paragraph [ref=e312]:
+                      - text: Download the required Palette SDK modules. The command below retrieves the modules and records their dependencies in the
+                      - code [ref=e313]: go.mod
+                      - text: file.
+                    - generic [ref=e315]:
+                      - code [ref=e317]:
+                        - generic [ref=e318]: go get github.com/spectrocloud/palette-sdk-go/api/models
+                        - generic [ref=e319]: go get github.com/spectrocloud/palette-sdk-go/client
+                      - button "Copy code to clipboard" [ref=e321] [cursor=pointer]:
+                        - generic [ref=e322]:
+                          - img [ref=e323]
+                          - img [ref=e325]
+                  - listitem [ref=e327]:
+                    - paragraph [ref=e328]:
+                      - text: Create a source file named
+                      - code [ref=e329]: main.go
+                      - text: .
+                    - generic [ref=e331]:
+                      - code [ref=e333]:
+                        - generic [ref=e334]: touch main.go
+                      - button "Copy code to clipboard" [ref=e336] [cursor=pointer]:
+                        - generic [ref=e337]:
+                          - img [ref=e338]
+                          - img [ref=e340]
+                  - listitem [ref=e342]:
+                    - paragraph [ref=e343]:
+                      - text: Open the
+                      - code [ref=e344]: main.go
+                      - text: file in a text editor of your choice and paste the content below.
+                    - generic [ref=e346]:
+                      - code [ref=e348]:
+                        - generic [ref=e349]: package main
+                        - generic [ref=e350]: import (
+                        - generic [ref=e351]: "\"fmt\""
+                        - generic [ref=e352]: "\"os\""
+                        - generic [ref=e353]: "\"github.com/spectrocloud/palette-sdk-go/api/models\""
+                        - generic [ref=e354]: "\"github.com/spectrocloud/palette-sdk-go/client\""
+                        - generic [ref=e355]: )
+                        - generic [ref=e356]: "func main() {"
+                        - generic [ref=e357]: // Read environment variables
+                        - generic [ref=e358]: host := os.Getenv("PALETTE_HOST")
+                        - generic [ref=e359]: apiKey := os.Getenv("PALETTE_API_KEY")
+                        - generic [ref=e360]: projectUid := os.Getenv("PALETTE_PROJECT_UID")
+                        - generic [ref=e361]: scope := "tenant"
+                        - generic [ref=e362]: "if host == \"\" || apiKey == \"\" {"
+                        - generic [ref=e363]: fmt.Println("You must specify the PALETTE_HOST and PALETTE_API_KEY environment variables.")
+                        - generic [ref=e364]: os.Exit(1)
+                        - generic [ref=e365]: "}"
+                        - generic [ref=e366]: "if projectUid != \"\" {"
+                        - generic [ref=e367]: scope = "project"
+                        - generic [ref=e368]: "}"
+                        - generic [ref=e369]: // Initialize a Palette client
+                        - generic [ref=e370]: pc := client.New(
+                        - generic [ref=e371]: client.WithPaletteURI(host),
+                        - generic [ref=e372]: client.WithAPIKey(apiKey),
+                        - generic [ref=e373]: )
+                        - generic [ref=e374]: "if projectUid != \"\" {"
+                        - generic [ref=e375]: client.WithScopeProject(projectUid)(pc)
+                        - generic [ref=e376]: "} else {"
+                        - generic [ref=e377]: client.WithScopeTenant()(pc)
+                        - generic [ref=e378]: "}"
+                        - generic [ref=e379]: // Search for clusters
+                        - generic [ref=e380]: fmt.Printf("Searching for Palette clusters with %s scope...\n", scope)
+                        - generic [ref=e381]: "clusters, err := pc.SearchClusterSummaries(&models.V1SearchFilterSpec{}, []*models.V1SearchFilterSortSpec{})"
+                        - generic [ref=e382]: "if err != nil {"
+                        - generic [ref=e383]: panic(err)
+                        - generic [ref=e384]: "}"
+                        - generic [ref=e385]: // Display the results
+                        - generic [ref=e386]: "if len(clusters) == 0 {"
+                        - generic [ref=e387]: fmt.Println("\nNo clusters found.")
+                        - generic [ref=e388]: return
+                        - generic [ref=e389]: "}"
+                        - generic [ref=e390]: fmt.Printf("\nFound %d cluster(s):\n", len(clusters))
+                        - generic [ref=e391]: "for _, cluster := range clusters {"
+                        - generic [ref=e392]: "fmt.Printf(\"\\nName: %s\\n\", cluster.Metadata.Name)"
+                        - generic [ref=e393]: "fmt.Printf(\" Cloud Type: %s\\n\", cluster.SpecSummary.CloudConfig.CloudType)"
+                        - generic [ref=e394]: "fmt.Printf(\" Project: %s\\n\", cluster.SpecSummary.ProjectMeta.Name)"
+                        - generic [ref=e395]: "}"
+                        - generic [ref=e396]: "}"
+                      - generic [ref=e397]:
+                        - button "Toggle word wrap" [ref=e398] [cursor=pointer]:
+                          - img [ref=e399]
+                        - button "Copy code to clipboard" [ref=e401] [cursor=pointer]:
+                          - generic [ref=e402]:
+                            - img [ref=e403]
+                            - img [ref=e405]
+                    - paragraph [ref=e407]: "This application performs the following tasks:"
+                    - list [ref=e408]:
+                      - listitem [ref=e409]:
+                        - paragraph [ref=e410]: Imports the required packages.
+                      - listitem [ref=e411]:
+                        - paragraph [ref=e412]: Reads the environment variables provided by the user to configure the client and define the search scope. If the user provides a project UID, the application sets the scope to project-specific and lists the active clusters within that project. If no project UID is given, the scope is set to tenant-wide, listing active clusters across all projects.
+                      - listitem [ref=e413]:
+                        - paragraph [ref=e414]: Initializes a Palette client using the provided host URL and Palette API key.
+                      - listitem [ref=e415]:
+                        - paragraph [ref=e416]: Searches for Palette clusters within the specified scope (tenant-wide or project-specific).
+                      - listitem [ref=e417]:
+                        - paragraph [ref=e418]: Displays the active clusters with details such as name, cloud type, and associated project.
+                    - paragraph [ref=e419]: After pasting the content, save and exit the file.
+                  - listitem [ref=e420]:
+                    - paragraph [ref=e421]:
+                      - text: Export your Palette host URL and API key as environment variables. Replace
+                      - code [ref=e422]: <your-palette-host-url>
+                      - text: with your Palette URL, such as
+                      - code [ref=e423]: console.spectrocloud.com
+                      - text: ", and"
+                      - code [ref=e424]: <your-palette-api-key>
+                      - text: with your API key.
+                    - generic [ref=e426]:
+                      - code [ref=e428]:
+                        - generic [ref=e429]: export PALETTE_API_KEY=<your-palette-api-key>
+                        - generic [ref=e430]: export PALETTE_HOST=<your-palette-host-url>
+                      - button "Copy code to clipboard" [ref=e432] [cursor=pointer]:
+                        - generic [ref=e433]:
+                          - img [ref=e434]
+                          - img [ref=e436]
+                  - listitem [ref=e438]:
+                    - paragraph [ref=e439]: Issue the following command to execute the application.
+                    - generic [ref=e441]:
+                      - code [ref=e443]:
+                        - generic [ref=e444]: go run .
+                      - button "Copy code to clipboard" [ref=e446] [cursor=pointer]:
+                        - generic [ref=e447]:
+                          - img [ref=e448]
+                          - img [ref=e450]
+                    - generic [ref=e452]:
+                      - generic [ref=e453]:
+                        - img [ref=e455]
+                        - text: tip
+                      - generic [ref=e457]:
+                        - paragraph [ref=e458]:
+                          - text: Optionally, instead of exporting the variables in a separate command, you can use the
+                          - code [ref=e459]: go run
+                          - text: command with command-scoped environment variables.
+                        - generic [ref=e461]:
+                          - code [ref=e463]:
+                            - generic [ref=e464]: PALETTE_API_KEY=<your-palette-api-key> PALETTE_HOST=<your-palette-host-url> go run .
+                          - generic [ref=e465]:
+                            - button "Toggle word wrap" [ref=e466] [cursor=pointer]:
+                              - img [ref=e467]
+                            - button "Copy code to clipboard" [ref=e469] [cursor=pointer]:
+                              - generic [ref=e470]:
+                                - img [ref=e471]
+                                - img [ref=e473]
+                    - paragraph [ref=e475]: The application will print the active clusters in your Palette environment.
+                    - code [ref=e479]:
+                      - generic [ref=e480]: Searching for Palette clusters with tenant scope...
+                      - generic [ref=e481]: "Found 1 cluster(s):"
+                      - generic [ref=e482]: "Name: aws-cluster"
+                      - generic [ref=e483]: "Cloud Type: aws"
+                      - generic [ref=e484]: "Project: Default"
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e485]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e486] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e487]:
+                  - listitem [ref=e488]:
+                    - paragraph [ref=e489]:
+                      - text: Log in to
+                      - link "Palette" [ref=e490] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e491]:
+                    - paragraph [ref=e492]:
+                      - text: From the left
+                      - strong [ref=e493]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e494]: Clusters
+                      - text: .
+                  - listitem [ref=e495]:
+                    - paragraph [ref=e496]: Verify that the clusters printed by the Go client application are also visible in the Palette UI.
+              - generic [ref=e497]:
+                - generic [ref=e499]:
+                  - text: "Tags:"
+                  - list [ref=e500]:
+                    - listitem [ref=e501]:
+                      - link "palette-sdk" [ref=e502] [cursor=pointer]:
+                        - /url: /tags/palette-sdk/
+                    - listitem [ref=e503]:
+                      - link "go" [ref=e504] [cursor=pointer]:
+                        - /url: /tags/go/
+                - link "Edit this page" [ref=e507] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/automation/palette-sdk/list-clusters-sdk.md
+                  - img [ref=e508]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e512]:
+              - link "Previous « Palette Go SDK" [ref=e513] [cursor=pointer]:
+                - /url: /automation/palette-sdk/
+                - generic [ref=e514]: Previous
+                - generic [ref=e515]: « Palette Go SDK
+              - link "Next Terraform »" [ref=e516] [cursor=pointer]:
+                - /url: /automation/terraform/
+                - generic [ref=e517]: Next
+                - generic [ref=e518]: Terraform »
+          - list [ref=e521]:
+            - listitem [ref=e522]:
+              - link "Prerequisites" [ref=e523] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e524]:
+              - link "List Palette Clusters" [ref=e525] [cursor=pointer]:
+                - /url: "#list-palette-clusters"
+            - listitem [ref=e526]:
+              - link "Validate" [ref=e527] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e528] [cursor=pointer]:
+    - generic [ref=e531]:
+      - img "Project Logo" [ref=e532]
+      - paragraph [ref=e533]: Ask AI
+```

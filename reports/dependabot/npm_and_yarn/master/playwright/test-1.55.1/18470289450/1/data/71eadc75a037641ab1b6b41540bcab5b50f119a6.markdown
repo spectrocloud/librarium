@@ -1,0 +1,1788 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [expanded] [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                    - list [ref=e107]:
+                      - listitem [ref=e108]:
+                        - generic [ref=e109]:
+                          - link "AWS" [expanded] [ref=e110] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/aws/
+                          - button "Toggle the collapsible sidebar category 'AWS'" [ref=e111] [cursor=pointer]
+                        - list [ref=e112]:
+                          - listitem [ref=e113]:
+                            - link "Architecture" [ref=e114] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/architecture/
+                          - listitem [ref=e115]:
+                            - link "Register and Manage AWS Accounts" [ref=e116] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/add-aws-accounts/
+                          - listitem [ref=e117]:
+                            - link "Create and Manage AWS IaaS Cluster" [ref=e118] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/create-cluster/
+                          - listitem [ref=e119]:
+                            - link "Create and Manage AWS EKS Cluster" [ref=e120] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/eks/
+                          - listitem [ref=e121]:
+                            - generic [ref=e122]:
+                              - link "EKS Hybrid Nodes" [ref=e123] [cursor=pointer]:
+                                - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/
+                              - button "Toggle the collapsible sidebar category 'EKS Hybrid Nodes'" [ref=e124] [cursor=pointer]
+                          - listitem [ref=e125]:
+                            - link "Enable Secrets Encryption for EKS Cluster" [ref=e126] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/enable-secrets-encryption-kms-key/
+                          - listitem [ref=e127]:
+                            - link "Enable Disk Encryption for EKS Cluster" [ref=e128] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/enable-disk-encryption-eks-cluster/
+                          - listitem [ref=e129]:
+                            - link "Configure Karpenter for EKS Clusters" [ref=e130] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/configure-karpenter-eks-clusters/
+                          - listitem [ref=e131]:
+                            - link "Required IAM Policies" [ref=e132] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/required-iam-policies/
+                      - listitem [ref=e133]:
+                        - generic [ref=e134]:
+                          - link "Azure" [ref=e135] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/azure/
+                          - button "Toggle the collapsible sidebar category 'Azure'" [ref=e136] [cursor=pointer]
+                      - listitem [ref=e137]:
+                        - generic [ref=e138]:
+                          - link "GCP" [ref=e139] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/gcp/
+                          - button "Toggle the collapsible sidebar category 'GCP'" [ref=e140] [cursor=pointer]
+                  - listitem [ref=e141]:
+                    - generic [ref=e142]:
+                      - link "Data Center Clusters" [ref=e143] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e145]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e147] [cursor=pointer]
+                  - listitem [ref=e148]:
+                    - generic [ref=e149]:
+                      - link "Edge" [ref=e150] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e152]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e154] [cursor=pointer]
+                  - listitem [ref=e155]:
+                    - generic [ref=e156]:
+                      - link "Palette Virtual Clusters" [ref=e157] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e159]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e161] [cursor=pointer]
+                  - listitem [ref=e162]:
+                    - generic [ref=e163]:
+                      - link "Imported Clusters" [ref=e164] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e166]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e168] [cursor=pointer]
+                  - listitem [ref=e169]:
+                    - generic [ref=e170]:
+                      - link "Manage Clusters" [ref=e171] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e173]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e175] [cursor=pointer]
+                  - listitem [ref=e176]:
+                    - generic [ref=e177]:
+                      - link "Cluster Groups" [ref=e178] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e180]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e182] [cursor=pointer]
+                  - listitem [ref=e183]:
+                    - generic [ref=e184]:
+                      - link "Private Cloud Gateway" [ref=e185] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e187]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e189] [cursor=pointer]
+              - listitem [ref=e190]:
+                - generic [ref=e191]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e192] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e194]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e196] [cursor=pointer]
+              - listitem [ref=e197]:
+                - generic [ref=e198]:
+                  - link "Palette Dev Engine" [ref=e199] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e201]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e203] [cursor=pointer]
+              - listitem [ref=e204]:
+                - generic [ref=e205]:
+                  - link "Virtual Machine Orchestrator" [ref=e206] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e208]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e210] [cursor=pointer]
+              - listitem [ref=e211]:
+                - generic [ref=e212]:
+                  - link "Workspaces" [ref=e213] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e215]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e217] [cursor=pointer]
+              - listitem [ref=e218]:
+                - generic [ref=e219]:
+                  - link "Packs List" [ref=e220] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e222]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e224] [cursor=pointer]
+              - listitem [ref=e225]:
+                - generic [ref=e226]:
+                  - link "User & Role Management" [ref=e227] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e229]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e231] [cursor=pointer]
+              - listitem [ref=e232]:
+                - generic [ref=e233]:
+                  - link "Registries and Packs" [ref=e234] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e236]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e238] [cursor=pointer]
+              - listitem [ref=e239]:
+                - generic [ref=e240]:
+                  - link "Security" [ref=e241] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e243]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e245] [cursor=pointer]
+              - listitem [ref=e246]:
+                - generic [ref=e247]:
+                  - link "Audit Logs" [ref=e248] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e250]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e252] [cursor=pointer]
+              - listitem [ref=e253]:
+                - generic [ref=e254]:
+                  - link "Self-Hosted Palette" [ref=e255] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e257]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e259] [cursor=pointer]
+              - listitem [ref=e260]:
+                - generic [ref=e261]:
+                  - link "Palette VerteX" [ref=e262] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e264]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e266] [cursor=pointer]
+              - listitem [ref=e267]:
+                - generic [ref=e268]:
+                  - link "Tenant Administration" [ref=e269] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e271]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e273] [cursor=pointer]
+              - listitem [ref=e274]:
+                - generic [ref=e275]:
+                  - link "Automation" [ref=e276] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e278]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e280] [cursor=pointer]
+              - listitem [ref=e281]:
+                - generic [ref=e282]:
+                  - link "Troubleshooting" [ref=e283] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e285]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e287] [cursor=pointer]
+              - listitem [ref=e288]:
+                - link "Glossary" [ref=e289] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e291]
+                  - text: Glossary
+              - listitem [ref=e293]:
+                - generic [ref=e294]:
+                  - link "Compliance & Legal" [ref=e295] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e297]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e299] [cursor=pointer]
+              - listitem [ref=e300]:
+                - button "Privacy Settings" [ref=e301] [cursor=pointer]:
+                  - img [ref=e302]
+                  - text: Privacy Settings
+      - main [ref=e304]:
+        - generic [ref=e306]:
+          - generic [ref=e308]:
+            - article [ref=e309]:
+              - navigation "Breadcrumbs" [ref=e310]:
+                - list [ref=e311]:
+                  - listitem [ref=e312]:
+                    - link "Home page" [ref=e313] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e314]
+                  - listitem [ref=e316]:
+                    - link "Clusters" [ref=e317] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e318]:
+                    - link "Public Cloud Clusters" [ref=e319] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/
+                  - listitem [ref=e320]:
+                    - link "AWS" [ref=e321] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/
+                  - listitem [ref=e322]:
+                    - generic [ref=e323]: Configure Karpenter for EKS Clusters
+              - generic [ref=e324]:
+                - heading "Configure Karpenter for EKS Clusters" [level=1] [ref=e326]
+                - paragraph [ref=e327]:
+                  - text: The
+                  - link "Karpenter" [ref=e328] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=karpenter
+                  - text: pack can be installed on Amazon EKS clusters for enhanced node provisioning.
+                - paragraph [ref=e329]: Karpenter analyzes pending pods and launches the most efficient Amazon Elastic Compute Cloud (EC2) capacity across instance types, sizes, Availability Zones, and more. As demand falls, it gracefully drains and removes underutilized nodes to reduce waste, whilst respecting any scheduling rules in place (labels, taints, and affinities).
+                - heading "Install the Karpenter PackDirect link to Install the Karpenter Pack" [level=2] [ref=e330]:
+                  - text: Install the Karpenter Pack
+                  - link "Direct link to Install the Karpenter Pack" [ref=e331] [cursor=pointer]:
+                    - /url: "#install-the-karpenter-pack"
+                    - text: "#"
+                - paragraph [ref=e332]: The following section outlines the prerequisites and steps to install the Karpenter pack on an existing EKS cluster managed by Palette.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e333]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e334] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e335]:
+                  - listitem [ref=e336]:
+                    - paragraph [ref=e337]:
+                      - text: An existing EKS cluster managed by Palette. Refer to
+                      - link "Create and Manage EKS Cluster" [ref=e338] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/aws/eks/
+                      - text: for guidance on creating an EKS cluster with Palette.
+                  - listitem [ref=e339]:
+                    - paragraph [ref=e340]:
+                      - text: Your Palette account must have the Cluster Profile Editor and Cluster Editor permissions to install the Karpenter pack. Refer to our
+                      - link "Cluster Profile" [ref=e341] [cursor=pointer]:
+                        - /url: /user-management/palette-rbac/project-scope-roles-permissions/#cluster-profile
+                      - text: and
+                      - link "Cluster" [ref=e342] [cursor=pointer]:
+                        - /url: /user-management/palette-rbac/project-scope-roles-permissions/#cluster
+                      - text: role reference guides for more information about roles and permissions.
+                  - listitem [ref=e343]:
+                    - paragraph [ref=e344]:
+                      - text: An Identity and Access Management (IAM) policy must be created using the following JSON template. This policy grants Karpenter the necessary permissions to manage EC2 instances and interact with the EKS cluster. When following the
+                      - link "Enablement Steps" [ref=e345] [cursor=pointer]:
+                        - /url: "#enablement-steps"
+                      - text: section, you will reference this policy when configuring the Karpenter controller role in the cluster profile. For the sake of simplicity, the policy is named
+                      - code [ref=e346]: karpenterControllerPolicy
+                      - text: . If you choose a different name, ensure you reference that name in the
+                      - link "Enablement Steps" [ref=e347] [cursor=pointer]:
+                        - /url: "#enablement-steps"
+                      - text: section.
+                    - paragraph [ref=e348]: "Replace the following placeholders in the policy template:"
+                    - list [ref=e349]:
+                      - listitem [ref=e350]:
+                        - code [ref=e351]: <aws-partition>
+                        - text: "- The AWS partition. This is usually"
+                        - code [ref=e352]: aws
+                        - text: for commercial regions,
+                        - code [ref=e353]: aws-cn
+                        - text: for China regions, or
+                        - code [ref=e354]: aws-us-gov
+                        - text: for GovCloud.
+                      - listitem [ref=e355]:
+                        - code [ref=e356]: <aws-account-id>
+                        - text: "- Your AWS account ID."
+                      - listitem [ref=e357]:
+                        - code [ref=e358]: <eks-cluster-name>
+                        - text: "- The name of your EKS cluster."
+                      - listitem [ref=e359]:
+                        - code [ref=e360]: <aws-region>
+                        - text: "- The AWS region where your EKS cluster is located."
+                    - generic [ref=e361]:
+                      - generic [ref=e362]: Policy template
+                      - generic [ref=e363]:
+                        - code [ref=e365]:
+                          - generic [ref=e366]: "{"
+                          - generic [ref=e367]: "\"Version\": \"2012-10-17\","
+                          - generic [ref=e368]: "\"Statement\": ["
+                          - generic [ref=e369]: "{"
+                          - generic [ref=e370]: "\"Action\": ["
+                          - generic [ref=e371]: "\"ssm:GetParameter\","
+                          - generic [ref=e372]: "\"ec2:DescribeImages\","
+                          - generic [ref=e373]: "\"ec2:RunInstances\","
+                          - generic [ref=e374]: "\"ec2:DescribeSubnets\","
+                          - generic [ref=e375]: "\"ec2:DescribeSecurityGroups\","
+                          - generic [ref=e376]: "\"ec2:DescribeLaunchTemplates\","
+                          - generic [ref=e377]: "\"ec2:DescribeInstances\","
+                          - generic [ref=e378]: "\"ec2:DescribeInstanceTypes\","
+                          - generic [ref=e379]: "\"ec2:DescribeInstanceTypeOfferings\","
+                          - generic [ref=e380]: "\"ec2:DeleteLaunchTemplate\","
+                          - generic [ref=e381]: "\"ec2:CreateTags\","
+                          - generic [ref=e382]: "\"ec2:CreateLaunchTemplate\","
+                          - generic [ref=e383]: "\"ec2:CreateFleet\","
+                          - generic [ref=e384]: "\"ec2:DescribeSpotPriceHistory\","
+                          - generic [ref=e385]: "\"pricing:GetProducts\""
+                          - generic [ref=e386]: "],"
+                          - generic [ref=e387]: "\"Effect\": \"Allow\","
+                          - generic [ref=e388]: "\"Resource\": \"*\","
+                          - generic [ref=e389]: "\"Sid\": \"Karpenter\""
+                          - generic [ref=e390]: "},"
+                          - generic [ref=e391]: "{"
+                          - generic [ref=e392]: "\"Action\": \"ec2:TerminateInstances\","
+                          - generic [ref=e393]: "\"Condition\": {"
+                          - generic [ref=e394]: "\"StringLike\": {"
+                          - generic [ref=e395]: "\"ec2:ResourceTag/karpenter.sh/nodepool\": \"*\""
+                          - generic [ref=e396]: "}"
+                          - generic [ref=e397]: "},"
+                          - generic [ref=e398]: "\"Effect\": \"Allow\","
+                          - generic [ref=e399]: "\"Resource\": \"*\","
+                          - generic [ref=e400]: "\"Sid\": \"ConditionalEC2Termination\""
+                          - generic [ref=e401]: "},"
+                          - generic [ref=e402]: "{"
+                          - generic [ref=e403]: "\"Effect\": \"Allow\","
+                          - generic [ref=e404]: "\"Action\": \"iam:PassRole\","
+                          - generic [ref=e405]: "\"Resource\": \"arn:<aws-partition>:iam::<aws-account-id>:role/KarpenterNodeRole-<eks-cluster-name>\","
+                          - generic [ref=e406]: "\"Sid\": \"PassNodeIAMRole\""
+                          - generic [ref=e407]: "},"
+                          - generic [ref=e408]: "{"
+                          - generic [ref=e409]: "\"Effect\": \"Allow\","
+                          - generic [ref=e410]: "\"Action\": \"eks:DescribeCluster\","
+                          - generic [ref=e411]: "\"Resource\": \"arn:<aws-partition>:eks:<aws-region>:<aws-account-id>:cluster/<eks-cluster-name>\","
+                          - generic [ref=e412]: "\"Sid\": \"EKSClusterEndpointLookup\""
+                          - generic [ref=e413]: "},"
+                          - generic [ref=e414]: "{"
+                          - generic [ref=e415]: "\"Sid\": \"AllowScopedInstanceProfileCreationActions\","
+                          - generic [ref=e416]: "\"Effect\": \"Allow\","
+                          - generic [ref=e417]: "\"Resource\": \"*\","
+                          - generic [ref=e418]: "\"Action\": [\"iam:CreateInstanceProfile\"],"
+                          - generic [ref=e419]: "\"Condition\": {"
+                          - generic [ref=e420]: "\"StringEquals\": {"
+                          - generic [ref=e421]: "\"aws:RequestTag/kubernetes.io/cluster/<eks-cluster-name>\": \"owned\","
+                          - generic [ref=e422]: "\"aws:RequestTag/topology.kubernetes.io/region\": \"<aws-region>\""
+                          - generic [ref=e423]: "},"
+                          - generic [ref=e424]: "\"StringLike\": {"
+                          - generic [ref=e425]: "\"aws:RequestTag/karpenter.k8s.aws/ec2nodeclass\": \"*\""
+                          - generic [ref=e426]: "}"
+                          - generic [ref=e427]: "}"
+                          - generic [ref=e428]: "},"
+                          - generic [ref=e429]: "{"
+                          - generic [ref=e430]: "\"Sid\": \"AllowScopedInstanceProfileTagActions\","
+                          - generic [ref=e431]: "\"Effect\": \"Allow\","
+                          - generic [ref=e432]: "\"Resource\": \"*\","
+                          - generic [ref=e433]: "\"Action\": [\"iam:TagInstanceProfile\"],"
+                          - generic [ref=e434]: "\"Condition\": {"
+                          - generic [ref=e435]: "\"StringEquals\": {"
+                          - generic [ref=e436]: "\"aws:ResourceTag/kubernetes.io/cluster/<eks-cluster-name>\": \"owned\","
+                          - generic [ref=e437]: "\"aws:ResourceTag/topology.kubernetes.io/region\": \"<aws-region>\","
+                          - generic [ref=e438]: "\"aws:RequestTag/kubernetes.io/cluster/<eks-cluster-name>\": \"owned\","
+                          - generic [ref=e439]: "\"aws:RequestTag/topology.kubernetes.io/region\": \"<aws-region>\""
+                          - generic [ref=e440]: "},"
+                          - generic [ref=e441]: "\"StringLike\": {"
+                          - generic [ref=e442]: "\"aws:ResourceTag/karpenter.k8s.aws/ec2nodeclass\": \"*\","
+                          - generic [ref=e443]: "\"aws:RequestTag/karpenter.k8s.aws/ec2nodeclass\": \"*\""
+                          - generic [ref=e444]: "}"
+                          - generic [ref=e445]: "}"
+                          - generic [ref=e446]: "},"
+                          - generic [ref=e447]: "{"
+                          - generic [ref=e448]: "\"Sid\": \"AllowScopedInstanceProfileActions\","
+                          - generic [ref=e449]: "\"Effect\": \"Allow\","
+                          - generic [ref=e450]: "\"Resource\": \"*\","
+                          - generic [ref=e451]: "\"Action\": [\"iam:AddRoleToInstanceProfile\", \"iam:RemoveRoleFromInstanceProfile\", \"iam:DeleteInstanceProfile\"],"
+                          - generic [ref=e452]: "\"Condition\": {"
+                          - generic [ref=e453]: "\"StringEquals\": {"
+                          - generic [ref=e454]: "\"aws:ResourceTag/kubernetes.io/cluster/<eks-cluster-name>\": \"owned\","
+                          - generic [ref=e455]: "\"aws:ResourceTag/topology.kubernetes.io/region\": \"<aws-region>\""
+                          - generic [ref=e456]: "},"
+                          - generic [ref=e457]: "\"StringLike\": {"
+                          - generic [ref=e458]: "\"aws:ResourceTag/karpenter.k8s.aws/ec2nodeclass\": \"*\""
+                          - generic [ref=e459]: "}"
+                          - generic [ref=e460]: "}"
+                          - generic [ref=e461]: "},"
+                          - generic [ref=e462]: "{"
+                          - generic [ref=e463]: "\"Sid\": \"AllowInstanceProfileReadActions\","
+                          - generic [ref=e464]: "\"Effect\": \"Allow\","
+                          - generic [ref=e465]: "\"Resource\": \"*\","
+                          - generic [ref=e466]: "\"Action\": \"iam:GetInstanceProfile\""
+                          - generic [ref=e467]: "},"
+                          - generic [ref=e468]: "{"
+                          - generic [ref=e469]: "\"Sid\": \"AllowUnscopedInstanceProfileListAction\","
+                          - generic [ref=e470]: "\"Effect\": \"Allow\","
+                          - generic [ref=e471]: "\"Resource\": \"*\","
+                          - generic [ref=e472]: "\"Action\": \"iam:ListInstanceProfiles\""
+                          - generic [ref=e473]: "}"
+                          - generic [ref=e474]: "]"
+                          - generic [ref=e475]: "}"
+                        - generic [ref=e476]:
+                          - button "Toggle word wrap" [ref=e477] [cursor=pointer]:
+                            - img [ref=e478]
+                          - button "Copy code to clipboard" [ref=e480] [cursor=pointer]:
+                            - generic [ref=e481]:
+                              - img [ref=e482]
+                              - img [ref=e484]
+                    - group [ref=e486]:
+                      - generic "Click to display an example policy with placeholders replaced" [ref=e487] [cursor=pointer]
+                  - listitem [ref=e488]:
+                    - paragraph [ref=e489]:
+                      - text: The subnets and security groups associated with your EKS cluster must be tagged appropriately to allow Karpenter to discover and use them. The exception to this is the
+                      - link "default cluster security group" [ref=e490] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html#security-group-default-rules
+                      - text: as Amazon EKS automatically removes any user-defined tags when the cluster is updated.
+                    - paragraph [ref=e491]:
+                      - text: Ensure the following tag is applied to both the subnets and security groups associated with the EKS cluster. Replace
+                      - code [ref=e492]: <eks-cluster-name>
+                      - text: with the name of your EKS cluster.
+                    - generic [ref=e494]:
+                      - code [ref=e496]:
+                        - generic [ref=e497]: Key=karpenter.sh/discovery,Value=<eks-cluster-name>
+                      - button "Copy code to clipboard" [ref=e499] [cursor=pointer]:
+                        - generic [ref=e500]:
+                          - img [ref=e501]
+                          - img [ref=e503]
+                    - generic [ref=e505]:
+                      - generic [ref=e506]:
+                        - img [ref=e508]
+                        - text: tip
+                      - generic [ref=e510]:
+                        - paragraph [ref=e511]:
+                          - text: The Karpenter documentation provides an efficient method to tag the subnets and security groups using the AWS CLI. You can find this method in the
+                          - link "Karpenter documentation" [ref=e512] [cursor=pointer]:
+                            - /url: https://karpenter.sh/docs/getting-started/migrating-from-cas/#add-tags-to-subnets-and-security-groups
+                          - text: .
+                        - paragraph [ref=e513]: "If using this method, note the following:"
+                        - list [ref=e514]:
+                          - listitem [ref=e515]:
+                            - paragraph [ref=e516]: The command to tag the subnets uses the existing node groups in the cluster to identify the subnets. If your node groups are only assigned to use a subset of the cluster's subnets, you may need to manually tag any additional subnets not associated with the node groups.
+                          - listitem [ref=e517]:
+                            - paragraph [ref=e518]:
+                              - text: If you are using a Z shell (ZSH), the final command to tag the security groups needs to be modified slightly. Change
+                              - code [ref=e519]: "--resources \"${SECURITY_GROUPS}\""
+                              - text: to
+                              - code [ref=e520]: "--resources \"${=SECURITY_GROUPS}\""
+                              - text: to ensure proper execution in ZSH. This is only required if you have more than one security group to tag.
+                - heading "Enablement StepsDirect link to Enablement Steps" [level=3] [ref=e521]:
+                  - text: Enablement Steps
+                  - link "Direct link to Enablement Steps" [ref=e522] [cursor=pointer]:
+                    - /url: "#enablement-steps"
+                    - text: "#"
+                - list [ref=e523]:
+                  - listitem [ref=e524]:
+                    - paragraph [ref=e525]:
+                      - text: Log in to
+                      - link "Palette" [ref=e526] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e527]:
+                    - paragraph [ref=e528]:
+                      - text: From the left main menu, select
+                      - strong [ref=e529]: Profiles
+                      - text: .
+                  - listitem [ref=e530]:
+                    - paragraph [ref=e531]: Select the profile associated with your EKS cluster.
+                  - listitem [ref=e532]:
+                    - paragraph [ref=e533]:
+                      - text: Click on the version drop-down and select
+                      - strong [ref=e534]: Create new version
+                      - text: .
+                  - listitem [ref=e535]:
+                    - paragraph [ref=e536]:
+                      - text: Create a new version of the profile. For more information, refer to
+                      - link "Version a Cluster Profile" [ref=e537] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile/
+                      - text: .
+                  - listitem [ref=e538]:
+                    - paragraph [ref=e539]:
+                      - text: Click on the
+                      - strong [ref=e540]: Kubernetes
+                      - text: layer to edit the configuration.
+                  - listitem [ref=e541]:
+                    - paragraph [ref=e542]:
+                      - text: In
+                      - strong [ref=e543]: Pack Details
+                      - text: ", select the"
+                      - strong [ref=e544]: Values
+                      - text: option.
+                  - listitem [ref=e545]:
+                    - paragraph [ref=e546]:
+                      - text: In the YAML editor, add an entry to the
+                      - code [ref=e547]: managedControlPlane.irsaRoles
+                      - text: section for the Karpenter controller role. This entry references the IAM policy you created for the prerequisites. Replace
+                      - code [ref=e548]: <aws-partition>
+                      - text: and
+                      - code [ref=e549]: <aws-account-id>
+                      - text: with your AWS partition and account ID, respectively. If you named the policy something other than
+                      - code [ref=e550]: karpenterControllerPolicy
+                      - text: ", ensure you use that name in the ARN."
+                    - generic [ref=e551]:
+                      - generic [ref=e552]: Entry template
+                      - generic [ref=e553]:
+                        - code [ref=e555]:
+                          - generic [ref=e556]: "managedControlPlane:"
+                          - generic [ref=e557]: ...
+                          - generic [ref=e558]: "irsaRoles:"
+                          - generic [ref=e559]: ...
+                          - generic [ref=e560]: "- name: \"{{.spectro.system.cluster.name}}-karpenterControllerRole\""
+                          - generic [ref=e561]: "policies:"
+                          - generic [ref=e562]: "- arn:<aws-partition>:iam::<aws-account-id>:policy/karpenterControllerPolicy"
+                          - generic [ref=e563]: "serviceAccount:"
+                          - generic [ref=e564]: "name: karpenter"
+                          - generic [ref=e565]: "namespace: karpenter"
+                        - generic [ref=e566]:
+                          - button "Toggle word wrap" [ref=e567] [cursor=pointer]:
+                            - img [ref=e568]
+                          - button "Copy code to clipboard" [ref=e570] [cursor=pointer]:
+                            - generic [ref=e571]:
+                              - img [ref=e572]
+                              - img [ref=e574]
+                    - generic [ref=e576]:
+                      - generic [ref=e577]: Example entry
+                      - generic [ref=e578]:
+                        - code [ref=e580]:
+                          - generic [ref=e581]: "managedControlPlane:"
+                          - generic [ref=e582]: ...
+                          - generic [ref=e583]: "irsaRoles:"
+                          - generic [ref=e584]: ...
+                          - generic [ref=e585]: "- name: \"{{.spectro.system.cluster.name}}-karpenterControllerRole\""
+                          - generic [ref=e586]: "policies:"
+                          - generic [ref=e587]: "- arn:aws:iam::123456789012:policy/karpenterControllerPolicy"
+                          - generic [ref=e588]: "serviceAccount:"
+                          - generic [ref=e589]: "name: karpenter"
+                          - generic [ref=e590]: "namespace: karpenter"
+                        - button "Toggle word wrap" [ref=e592] [cursor=pointer]:
+                          - img [ref=e593]
+                    - paragraph [ref=e595]:
+                      - text: Palette automatically creates the IAM role named
+                      - code [ref=e596]: "{{.spectro.system.cluster.name}}-karpenterControllerRole"
+                      - text: (for example,
+                      - code [ref=e597]: my-eks-cluster-karpenterControllerRole
+                      - text: ) when the Karpenter pack is deployed to your cluster.
+                  - listitem [ref=e598]:
+                    - paragraph [ref=e599]:
+                      - text: In the YAML editor, add an entry to the
+                      - code [ref=e600]: managedControlPlane.iamAuthenticatorConfig.mapRoles
+                      - text: and
+                      - code [ref=e601]: managedMachinePool.roleName
+                      - text: sections for the IAM node role that will be used by Karpenter provisioned nodes. Replace
+                      - code [ref=e602]: <aws-partition>
+                      - text: ","
+                      - code [ref=e603]: <aws-account-id>
+                      - text: ", and"
+                      - code [ref=e604]: <eks-cluster-name>
+                      - text: with your AWS partition, account ID, and EKS cluster name, respectively.
+                    - generic [ref=e605]:
+                      - generic [ref=e606]: Entry template
+                      - generic [ref=e607]:
+                        - code [ref=e609]:
+                          - generic [ref=e610]: "managedControlPlane:"
+                          - generic [ref=e611]: ...
+                          - generic [ref=e612]: "iamAuthenticatorConfig:"
+                          - generic [ref=e613]: "mapRoles:"
+                          - generic [ref=e614]: ...
+                          - generic [ref=e615]: "- rolearn: arn:<aws-partition>:iam::<aws-account-id>:role/{{.spectro.system.cluster.name}}-nodeRole\""
+                          - generic [ref=e616]: "username: system:node:{{EC2PrivateDNSName}}"
+                          - generic [ref=e617]: "groups:"
+                          - generic [ref=e618]: "- system:bootstrappers"
+                          - generic [ref=e619]: "- system:nodes"
+                          - generic [ref=e620]: ...
+                          - generic [ref=e621]: "managedMachinePool:"
+                          - generic [ref=e622]: "roleName: \"{{.spectro.system.cluster.name}}-nodeRole\""
+                        - generic [ref=e623]:
+                          - button "Toggle word wrap" [ref=e624] [cursor=pointer]:
+                            - img [ref=e625]
+                          - button "Copy code to clipboard" [ref=e627] [cursor=pointer]:
+                            - generic [ref=e628]:
+                              - img [ref=e629]
+                              - img [ref=e631]
+                    - generic [ref=e633]:
+                      - generic [ref=e634]: Example entry
+                      - generic [ref=e635]:
+                        - code [ref=e637]:
+                          - generic [ref=e638]: "managedControlPlane:"
+                          - generic [ref=e639]: ...
+                          - generic [ref=e640]: "iamAuthenticatorConfig:"
+                          - generic [ref=e641]: "mapRoles:"
+                          - generic [ref=e642]: ...
+                          - generic [ref=e643]: "- rolearn: arn:aws:iam::123456789012:role/{{.spectro.system.cluster.name}}-nodeRole"
+                          - generic [ref=e644]: "username: system:node:{{EC2PrivateDNSName}}"
+                          - generic [ref=e645]: "groups:"
+                          - generic [ref=e646]: "- system:bootstrappers"
+                          - generic [ref=e647]: "- system:nodes"
+                          - generic [ref=e648]: ...
+                          - generic [ref=e649]: "managedMachinePool:"
+                          - generic [ref=e650]: "roleName: \"{{.spectro.system.cluster.name}}-nodeRole\""
+                        - button "Toggle word wrap" [ref=e652] [cursor=pointer]:
+                          - img [ref=e653]
+                    - paragraph [ref=e655]:
+                      - text: Palette automatically creates the IAM role named
+                      - code [ref=e656]: "{{.spectro.system.cluster.name}}-nodeRole"
+                      - text: (for example,
+                      - code [ref=e657]: my-eks-cluster-nodeRole
+                      - text: ) when the Karpenter pack is deployed to your cluster.
+                  - listitem [ref=e658]:
+                    - paragraph [ref=e659]:
+                      - text: Click
+                      - strong [ref=e660]: Confirm Updates
+                      - text: to save the changes to the Kubernetes layer.
+                  - listitem [ref=e661]:
+                    - paragraph [ref=e662]:
+                      - text: On the cluster profile page, click
+                      - strong [ref=e663]: Add New Pack
+                      - text: .
+                  - listitem [ref=e664]:
+                    - paragraph [ref=e665]:
+                      - text: Enter
+                      - code [ref=e666]: Karpenter
+                      - text: in the search box and select the Karpenter pack from the list.
+                  - listitem [ref=e667]:
+                    - paragraph [ref=e668]:
+                      - text: In
+                      - strong [ref=e669]: Pack Details
+                      - text: ", select the"
+                      - strong [ref=e670]: Values
+                      - text: option.
+                  - listitem [ref=e671]:
+                    - paragraph [ref=e672]:
+                      - text: In the YAML editor, add your AWS Account ID to the
+                      - code [ref=e673]: awsAccountNumber
+                      - text: field.
+                    - generic [ref=e674]:
+                      - generic [ref=e675]: Example entry
+                      - code [ref=e678]:
+                        - generic [ref=e679]: "awsAccountNumber: \"123456789012\""
+                  - listitem [ref=e680]:
+                    - paragraph [ref=e681]:
+                      - text: Click
+                      - strong [ref=e682]: Confirm & Create
+                      - text: .
+                  - listitem [ref=e683]:
+                    - paragraph [ref=e684]:
+                      - text: Click
+                      - strong [ref=e685]: Save Changes
+                      - text: to save the new profile version.
+                  - listitem [ref=e686]:
+                    - paragraph [ref=e687]:
+                      - text: From the left main menu, select
+                      - strong [ref=e688]: Clusters
+                      - text: and select your EKS cluster from the list.
+                  - listitem [ref=e689]:
+                    - paragraph [ref=e690]:
+                      - text: Select the
+                      - strong [ref=e691]: Profile
+                      - text: tab.
+                  - listitem [ref=e692]:
+                    - paragraph [ref=e693]:
+                      - text: Click the version drop-down for the
+                      - strong [ref=e694]: INFRASTRUCTURE LAYERS
+                      - text: and select the new profile version you created. The Karpenter pack then appears under the
+                      - strong [ref=e695]: ADDON LAYERS
+                      - text: section.
+                  - listitem [ref=e696]:
+                    - paragraph [ref=e697]:
+                      - text: Click
+                      - strong [ref=e698]: Review & Save
+                      - text: ", followed by"
+                      - strong [ref=e699]: Review changes in Editor
+                      - text: in the pop-up window.
+                  - listitem [ref=e700]:
+                    - paragraph [ref=e701]:
+                      - text: Review the changes and click
+                      - strong [ref=e702]: Update
+                      - text: to apply the new profile version to your cluster.
+                    - generic [ref=e703]:
+                      - generic [ref=e704]:
+                        - img [ref=e706]
+                        - text: caution
+                      - paragraph [ref=e709]:
+                        - text: A
+                        - link "Full cluster repave" [ref=e710] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-pool/#repave-behavior-and-configuration
+                          - strong [ref=e711]: Full cluster repave
+                        - text: is required to apply the changes, which can affect cluster availability. Ensure you plan accordingly.
+                  - listitem [ref=e712]:
+                    - paragraph [ref=e713]: Wait for the cluster repave to complete and the Karpenter pack to be deployed. This may take up to 10 minutes or more depending on the amount of worker nodes in your cluster.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e714]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e715] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e716]:
+                  - listitem [ref=e717]:
+                    - paragraph [ref=e718]:
+                      - text: Log in to
+                      - link "Palette" [ref=e719] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e720]:
+                    - paragraph [ref=e721]:
+                      - text: From the left main menu, select
+                      - strong [ref=e722]: Clusters
+                      - text: and select your EKS cluster from the list.
+                  - listitem [ref=e723]:
+                    - paragraph [ref=e724]:
+                      - text: On the
+                      - strong [ref=e725]: Overview
+                      - text: tab, check that the
+                      - strong [ref=e726]: Cluster Status
+                      - text: is
+                      - strong [ref=e727]: Running
+                      - text: without a loading icon and the
+                      - strong [ref=e728]: Health
+                      - text: shows
+                      - strong [ref=e729]: Healthy
+                      - text: .
+                  - listitem [ref=e730]:
+                    - paragraph [ref=e731]:
+                      - text: Verify that the Karpenter pack is listed under the
+                      - strong [ref=e732]: Cluster Profiles
+                      - text: section with a green circle indicating that it is successfully deployed.
+                - heading "Configure Karpenter NodePoolsDirect link to Configure Karpenter NodePools" [level=2] [ref=e733]:
+                  - text: Configure Karpenter NodePools
+                  - link "Direct link to Configure Karpenter NodePools" [ref=e734] [cursor=pointer]:
+                    - /url: "#configure-karpenter-nodepools"
+                    - text: "#"
+                - paragraph [ref=e735]:
+                  - text: The following steps show how to configure
+                  - link "Karpenter NodePools" [ref=e736] [cursor=pointer]:
+                    - /url: https://karpenter.sh/docs/concepts/nodepools/
+                  - text: for your Amazon EKS cluster. NodePools define provisioning constraints, while the associated
+                  - link "NodeClass" [ref=e737] [cursor=pointer]:
+                    - /url: https://karpenter.sh/docs/concepts/nodeclasses/
+                  - text: specifies cloud settings such as the Amazon Machine Image (AMI), subnets, and security groups.
+                - paragraph [ref=e738]: These steps show you how to create a default NodePool, but you can create multiple NodePools to meet your specific requirements.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e739]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e740] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e741]:
+                  - listitem [ref=e742]:
+                    - text: Your Palette account must have the Cluster Profile Editor and Cluster Editor permissions to configure Karpenter NodePools. Refer to our
+                    - link "Cluster Profile" [ref=e743] [cursor=pointer]:
+                      - /url: /user-management/palette-rbac/project-scope-roles-permissions/#cluster-profile
+                    - text: and
+                    - link "Cluster" [ref=e744] [cursor=pointer]:
+                      - /url: /user-management/palette-rbac/project-scope-roles-permissions/#cluster
+                    - text: role reference guides for more information about roles and permissions.
+                - heading "Enablement StepsDirect link to Enablement Steps" [level=3] [ref=e745]:
+                  - text: Enablement Steps
+                  - link "Direct link to Enablement Steps" [ref=e746] [cursor=pointer]:
+                    - /url: "#enablement-steps-1"
+                    - text: "#"
+                - list [ref=e747]:
+                  - listitem [ref=e748]:
+                    - paragraph [ref=e749]:
+                      - text: Log in to
+                      - link "Palette" [ref=e750] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e751]:
+                    - paragraph [ref=e752]:
+                      - text: From the left main menu, select
+                      - strong [ref=e753]: Profiles
+                      - text: .
+                  - listitem [ref=e754]:
+                    - paragraph [ref=e755]:
+                      - text: Click
+                      - strong [ref=e756]: Add Cluster Profile
+                      - text: .
+                  - listitem [ref=e757]:
+                    - paragraph [ref=e758]:
+                      - text: Fill in the basic information for the new profile and ensure the
+                      - strong [ref=e759]: Type
+                      - text: is set to
+                      - strong [ref=e760]: Add-on
+                      - text: .
+                    - paragraph [ref=e761]:
+                      - text: The profile name should reflect its purpose, for example,
+                      - code [ref=e762]: karpenter-node-pool-my-eks-cluster
+                      - text: .
+                  - listitem [ref=e763]:
+                    - paragraph [ref=e764]:
+                      - text: After you fill out the required information, click
+                      - strong [ref=e765]: Next
+                      - text: .
+                  - listitem [ref=e766]:
+                    - paragraph [ref=e767]:
+                      - text: Click
+                      - strong [ref=e768]: Add Manifest
+                      - text: .
+                  - listitem [ref=e769]:
+                    - paragraph [ref=e770]:
+                      - text: Provide a name for the manifest layer, such as
+                      - code [ref=e771]: karpenter-nodepool-layer
+                      - text: .
+                  - listitem [ref=e772]:
+                    - paragraph [ref=e773]:
+                      - text: Click the
+                      - strong [ref=e774]: New manifest
+                      - text: option and provide a name for the manifest, such as
+                      - code [ref=e775]: karpenter-nodepool-manifest
+                      - text: . Click the tick icon to save the name.
+                  - listitem [ref=e776]:
+                    - paragraph [ref=e777]:
+                      - text: In the YAML editor, add a Karpenter NodePool configuration. You can customize this configuration to meet your specific requirements. The
+                      - link "Karpenter documentation" [ref=e778] [cursor=pointer]:
+                        - /url: https://karpenter.sh/docs/concepts/
+                      - text: provides comprehensive information on the various configuration options. Refer to the
+                      - link "Karpenter NodePool examples" [ref=e779] [cursor=pointer]:
+                        - /url: https://github.com/aws/karpenter-provider-aws/tree/main/examples/v1
+                      - text: for configuration samples covering a variety of use cases.
+                    - paragraph [ref=e780]:
+                      - text: In the following example, we create a NodePool named
+                      - code [ref=e781]: default
+                      - text: that provisions on-demand instances of the
+                      - code [ref=e782]: c
+                      - text: ","
+                      - code [ref=e783]: m
+                      - text: ", and"
+                      - code [ref=e784]: r
+                      - link "instance series" [ref=e785] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/ec2/latest/instancetypes/instance-type-names.html
+                      - text: . The instance generation is set to greater than
+                      - code [ref=e786]: "2"
+                      - text: . The NodePool uses a NodeClass named
+                      - code [ref=e787]: al2023-20250920
+                      - text: that references the Amazon Linux 2023 AMI alias of
+                      - code [ref=e788]: al2023@v20250920
+                      - text: .
+                    - paragraph [ref=e789]: "There are three important aspects to note in this configuration:"
+                    - list [ref=e790]:
+                      - listitem [ref=e791]:
+                        - text: The
+                        - code [ref=e792]: spec.role
+                        - text: field in the NodeClass must match the node role created in the Kubernetes layer under
+                        - code [ref=e793]: managedMachinePool.roleName
+                        - text: . This ensures that the nodes provisioned by Karpenter have the correct IAM role associated with them.
+                      - listitem [ref=e794]:
+                        - text: The
+                        - code [ref=e795]: subnetSelectorTerms
+                        - text: and
+                        - code [ref=e796]: securityGroupSelectorTerms
+                        - text: in the NodeClass use tags to discover the subnets and security groups associated with the EKS cluster. Ensure these resources are tagged appropriately as outlined in the
+                        - link "Prerequisites" [ref=e797] [cursor=pointer]:
+                          - /url: "#prerequisites"
+                        - text: section for installing the Karpenter pack.
+                      - listitem [ref=e798]:
+                        - text: Some instance types will not be displayed in the
+                        - strong [ref=e799]: Nodes
+                        - text: tab for the cluster in Palette. Refer to
+                        - link "Karpenter Support - Known Limitations" [ref=e800] [cursor=pointer]:
+                          - /url: /clusters/public-cloud/aws/architecture/#known-limitations
+                        - text: for a list of unsupported instance types.
+                    - generic [ref=e801]:
+                      - generic [ref=e802]: Default NodePool example
+                      - generic [ref=e803]:
+                        - code [ref=e805]:
+                          - generic [ref=e806]: "apiVersion: karpenter.sh/v1"
+                          - generic [ref=e807]: "kind: NodePool"
+                          - generic [ref=e808]: "metadata:"
+                          - generic [ref=e809]: "name: default"
+                          - generic [ref=e810]: "spec:"
+                          - generic [ref=e811]: "template:"
+                          - generic [ref=e812]: "spec:"
+                          - generic [ref=e813]: "requirements:"
+                          - generic [ref=e814]: "- key: kubernetes.io/arch"
+                          - generic [ref=e815]: "operator: In"
+                          - generic [ref=e816]: "values: [\"amd64\"]"
+                          - generic [ref=e817]: "- key: kubernetes.io/os"
+                          - generic [ref=e818]: "operator: In"
+                          - generic [ref=e819]: "values: [\"linux\"]"
+                          - generic [ref=e820]: "- key: karpenter.sh/capacity-type"
+                          - generic [ref=e821]: "operator: In"
+                          - generic [ref=e822]: "values: [\"on-demand\"]"
+                          - generic [ref=e823]: "- key: karpenter.k8s.aws/instance-category"
+                          - generic [ref=e824]: "operator: In"
+                          - generic [ref=e825]: "values: [\"c\", \"m\", \"r\"]"
+                          - generic [ref=e826]: "- key: karpenter.k8s.aws/instance-generation"
+                          - generic [ref=e827]: "operator: Gt"
+                          - generic [ref=e828]: "values: [\"2\"]"
+                          - generic [ref=e829]: "nodeClassRef:"
+                          - generic [ref=e830]: "group: karpenter.k8s.aws"
+                          - generic [ref=e831]: "kind: EC2NodeClass"
+                          - generic [ref=e832]: "name: al2023-20250920"
+                          - generic [ref=e833]: "disruption:"
+                          - generic [ref=e834]: "consolidationPolicy: WhenEmptyOrUnderutilized"
+                          - generic [ref=e835]: "consolidateAfter: 1m"
+                          - generic [ref=e836]: "---"
+                          - generic [ref=e837]: "apiVersion: karpenter.k8s.aws/v1"
+                          - generic [ref=e838]: "kind: EC2NodeClass"
+                          - generic [ref=e839]: "metadata:"
+                          - generic [ref=e840]: "name: al2023-20250920"
+                          - generic [ref=e841]: "annotations:"
+                          - generic [ref=e842]: "kubernetes.io/description: \"General purpose EC2NodeClass for running Amazon Linux 2023@20250920 AMI nodes\""
+                          - generic [ref=e843]: "spec:"
+                          - generic [ref=e844]: "role: \"{{.spectro.system.cluster.name}}-nodeRole\" # Must match the node role created in the Kubernetes layer under managedMachinePool.roleName."
+                          - generic [ref=e845]: "amiSelectorTerms:"
+                          - generic [ref=e846]: "- alias: \"al2023@v20250920\""
+                          - generic [ref=e847]: "subnetSelectorTerms:"
+                          - generic [ref=e848]: "- tags:"
+                          - generic [ref=e849]: "karpenter.sh/discovery: \"{{.spectro.system.cluster.name}}\""
+                          - generic [ref=e850]: "securityGroupSelectorTerms:"
+                          - generic [ref=e851]: "- tags:"
+                          - generic [ref=e852]: "karpenter.sh/discovery: \"{{.spectro.system.cluster.name}}\""
+                        - generic [ref=e853]:
+                          - button "Toggle word wrap" [ref=e854] [cursor=pointer]:
+                            - img [ref=e855]
+                          - button "Copy code to clipboard" [ref=e857] [cursor=pointer]:
+                            - generic [ref=e858]:
+                              - img [ref=e859]
+                              - img [ref=e861]
+                  - listitem [ref=e863]:
+                    - paragraph [ref=e864]:
+                      - text: Click
+                      - strong [ref=e865]: Confirm & Create
+                      - text: .
+                  - listitem [ref=e866]:
+                    - paragraph [ref=e867]:
+                      - text: Click
+                      - strong [ref=e868]: Next
+                      - text: ", followed by"
+                      - strong [ref=e869]: Finish Configuration
+                      - text: to create the new profile.
+                  - listitem [ref=e870]:
+                    - paragraph [ref=e871]:
+                      - text: From the left main menu, select
+                      - strong [ref=e872]: Clusters
+                      - text: and select your EKS cluster from the list.
+                  - listitem [ref=e873]:
+                    - paragraph [ref=e874]:
+                      - text: Select the
+                      - strong [ref=e875]: Profile
+                      - text: tab.
+                  - listitem [ref=e876]:
+                    - paragraph [ref=e877]:
+                      - text: Click the plus icon next to
+                      - strong [ref=e878]: ADDON LAYERS
+                      - text: to add an add-on profile.
+                  - listitem [ref=e879]:
+                    - paragraph [ref=e880]:
+                      - text: Select the new add-on profile you created for the default Karpenter NodePool and click
+                      - strong [ref=e881]: Confirm
+                      - text: .
+                  - listitem [ref=e882]:
+                    - paragraph [ref=e883]:
+                      - text: Click
+                      - strong [ref=e884]: Save
+                      - text: to apply the NodePool configuration to your cluster.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e885]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e886] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - list [ref=e887]:
+                  - listitem [ref=e888]:
+                    - paragraph [ref=e889]:
+                      - text: Log in to
+                      - link "Palette" [ref=e890] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e891]:
+                    - paragraph [ref=e892]:
+                      - text: From the left main menu, select
+                      - strong [ref=e893]: Clusters
+                      - text: and select your EKS cluster from the list.
+                  - listitem [ref=e894]:
+                    - paragraph [ref=e895]:
+                      - text: In the
+                      - strong [ref=e896]: Overview
+                      - text: tab, verify that the Karpenter NodePool profile is listed under the
+                      - strong [ref=e897]: Cluster Profiles
+                      - text: section with a green circle indicating that it is successfully deployed.
+                - heading "Test Karpenter Node ProvisioningDirect link to Test Karpenter Node Provisioning" [level=2] [ref=e898]:
+                  - text: Test Karpenter Node Provisioning
+                  - link "Direct link to Test Karpenter Node Provisioning" [ref=e899] [cursor=pointer]:
+                    - /url: "#test-karpenter-node-provisioning"
+                    - text: "#"
+                - paragraph [ref=e900]: To test Karpenter's ability to provision nodes based on workload demands, deploy a sample application and manually scale the number of replicas for the deployment. This creates pending pods that trigger Karpenter to provision new nodes, then gracefully drain and remove idle nodes when they are no longer needed.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e901]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e902] [cursor=pointer]:
+                    - /url: "#prerequisites-2"
+                    - text: "#"
+                - list [ref=e903]:
+                  - listitem [ref=e904]:
+                    - paragraph [ref=e905]:
+                      - text: Your Palette account must have the Cluster Profile Editor and Cluster Editor permissions to configure Karpenter NodePools. Refer to our
+                      - link "Cluster Profile" [ref=e906] [cursor=pointer]:
+                        - /url: /user-management/palette-rbac/project-scope-roles-permissions/#cluster-profile
+                      - text: and
+                      - link "Cluster" [ref=e907] [cursor=pointer]:
+                        - /url: /user-management/palette-rbac/project-scope-roles-permissions/#cluster
+                      - text: role reference guides for more information about roles and permissions.
+                  - listitem [ref=e908]:
+                    - paragraph [ref=e909]:
+                      - text: AWS CLI must be installed and configured with the necessary permissions to
+                      - link "obtain the kubeconfig file" [ref=e910] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html
+                      - text: for your EKS cluster. Refer to
+                      - link "AWS CLI install and update instructions" [ref=e911] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions
+                      - text: for installation instructions and
+                      - link "Configuring settings for the AWS CLI" [ref=e912] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html
+                      - text: for configuration guidance.
+                  - listitem [ref=e913]:
+                    - paragraph [ref=e914]:
+                      - text: Kubectl must be installed. Refer to
+                      - link "Install or update kubectl" [ref=e915] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html#kubectl-install-update
+                      - text: for instructions.
+                - heading "Enablement StepsDirect link to Enablement Steps" [level=3] [ref=e916]:
+                  - text: Enablement Steps
+                  - link "Direct link to Enablement Steps" [ref=e917] [cursor=pointer]:
+                    - /url: "#enablement-steps-2"
+                    - text: "#"
+                - list [ref=e918]:
+                  - listitem [ref=e919]:
+                    - paragraph [ref=e920]:
+                      - text: Log in to
+                      - link "Palette" [ref=e921] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e922]:
+                    - paragraph [ref=e923]:
+                      - text: From the left main menu, select
+                      - strong [ref=e924]: Profiles
+                      - text: .
+                  - listitem [ref=e925]:
+                    - paragraph [ref=e926]:
+                      - text: Click
+                      - strong [ref=e927]: Add Cluster Profile
+                      - text: .
+                  - listitem [ref=e928]:
+                    - paragraph [ref=e929]:
+                      - text: Fill in the basic information for the new profile and ensure the
+                      - strong [ref=e930]: Type
+                      - text: is set to
+                      - strong [ref=e931]: Add-on
+                      - text: .
+                    - paragraph [ref=e932]:
+                      - text: The profile name should reflect its purpose, for example,
+                      - code [ref=e933]: karpenter-test-deployment-my-eks-cluster
+                      - text: .
+                  - listitem [ref=e934]:
+                    - paragraph [ref=e935]:
+                      - text: After you fill out the required information, click
+                      - strong [ref=e936]: Next
+                  - listitem [ref=e937]:
+                    - paragraph [ref=e938]:
+                      - text: Click
+                      - strong [ref=e939]: Add Manifest
+                      - text: .
+                  - listitem [ref=e940]:
+                    - paragraph [ref=e941]:
+                      - text: Provide a name for the manifest layer, such as
+                      - code [ref=e942]: karpenter-test-deployment-layer
+                      - text: .
+                  - listitem [ref=e943]:
+                    - paragraph [ref=e944]:
+                      - text: Select the
+                      - strong [ref=e945]: Enter layer values
+                      - text: option and copy the following values into the YAML editor.
+                    - generic [ref=e946]:
+                      - generic [ref=e947]: Layer values
+                      - generic [ref=e948]:
+                        - code [ref=e950]:
+                          - generic [ref=e951]: "pack:"
+                          - generic [ref=e952]: "spectrocloud.com/install-priority: \"0\""
+                          - generic [ref=e953]: "namespace: inflate"
+                        - button "Copy code to clipboard" [ref=e955] [cursor=pointer]:
+                          - generic [ref=e956]:
+                            - img [ref=e957]
+                            - img [ref=e959]
+                  - listitem [ref=e961]:
+                    - paragraph [ref=e962]:
+                      - text: Click the
+                      - strong [ref=e963]: New manifest
+                      - text: option and provide a name for the manifest, such as
+                      - code [ref=e964]: karpenter-test-deployment
+                      - text: . Click the tick icon to save the name.
+                  - listitem [ref=e965]:
+                    - paragraph [ref=e966]:
+                      - text: In the YAML editor, add a sample deployment configuration. This example creates a deployment named
+                      - code [ref=e967]: inflate
+                      - text: with 0 replicas of the
+                      - link "pause" [ref=e968] [cursor=pointer]:
+                        - /url: https://gallery.ecr.aws/eks-distro/kubernetes/pause
+                      - text: container.
+                    - generic [ref=e969]:
+                      - generic [ref=e970]: Sample deployment
+                      - generic [ref=e971]:
+                        - code [ref=e973]:
+                          - generic [ref=e974]: "apiVersion: apps/v1"
+                          - generic [ref=e975]: "kind: Deployment"
+                          - generic [ref=e976]: "metadata:"
+                          - generic [ref=e977]: "name: inflate"
+                          - generic [ref=e978]: "spec:"
+                          - generic [ref=e979]: "replicas: 0"
+                          - generic [ref=e980]: "selector:"
+                          - generic [ref=e981]: "matchLabels:"
+                          - generic [ref=e982]: "app: inflate"
+                          - generic [ref=e983]: "template:"
+                          - generic [ref=e984]: "metadata:"
+                          - generic [ref=e985]: "labels:"
+                          - generic [ref=e986]: "app: inflate"
+                          - generic [ref=e987]: "spec:"
+                          - generic [ref=e988]: "terminationGracePeriodSeconds: 0"
+                          - generic [ref=e989]: "securityContext:"
+                          - generic [ref=e990]: "runAsUser: 1000"
+                          - generic [ref=e991]: "runAsGroup: 3000"
+                          - generic [ref=e992]: "fsGroup: 2000"
+                          - generic [ref=e993]: "containers:"
+                          - generic [ref=e994]: "- name: inflate"
+                          - generic [ref=e995]: "image: public.ecr.aws/eks-distro/kubernetes/pause:3.7"
+                          - generic [ref=e996]: "resources:"
+                          - generic [ref=e997]: "requests:"
+                          - generic [ref=e998]: "cpu: 1"
+                          - generic [ref=e999]: "securityContext:"
+                          - generic [ref=e1000]: "allowPrivilegeEscalation: false"
+                        - button "Copy code to clipboard" [ref=e1002] [cursor=pointer]:
+                          - generic [ref=e1003]:
+                            - img [ref=e1004]
+                            - img [ref=e1006]
+                  - listitem [ref=e1008]:
+                    - paragraph [ref=e1009]:
+                      - text: Click
+                      - strong [ref=e1010]: Confirm & Create
+                      - text: .
+                  - listitem [ref=e1011]:
+                    - paragraph [ref=e1012]:
+                      - text: From the left main menu, select
+                      - strong [ref=e1013]: Clusters
+                      - text: and select your EKS cluster from the list.
+                  - listitem [ref=e1014]:
+                    - paragraph [ref=e1015]:
+                      - text: Select the
+                      - strong [ref=e1016]: Profile
+                      - text: tab.
+                  - listitem [ref=e1017]:
+                    - paragraph [ref=e1018]:
+                      - text: Click the plus icon next to
+                      - strong [ref=e1019]: ADDON LAYERS
+                      - text: to add an add-on profile.
+                  - listitem [ref=e1020]:
+                    - paragraph [ref=e1021]:
+                      - text: Select the new add-on profile you created for the test deployment. Click
+                      - strong [ref=e1022]: Confirm
+                      - text: once selected.
+                  - listitem [ref=e1023]:
+                    - paragraph [ref=e1024]:
+                      - text: Click
+                      - strong [ref=e1025]: Save
+                      - text: to apply the test deployment to your cluster.
+                    - paragraph [ref=e1026]:
+                      - text: Wait for the deployment to be applied. This may take a few minutes. Under the
+                      - strong [ref=e1027]: Cluster Profiles
+                      - text: section in the
+                      - strong [ref=e1028]: Overview
+                      - text: tab, the test deployment will have a green circle indicating that it is successfully deployed.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e1029]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e1030] [cursor=pointer]:
+                    - /url: "#validate-2"
+                    - text: "#"
+                - list [ref=e1031]:
+                  - listitem [ref=e1032]:
+                    - paragraph [ref=e1033]:
+                      - text: Open a terminal session and issue the following command to connect to your EKS cluster. Replace
+                      - code [ref=e1034]: <eks-cluster-name>
+                      - text: with the name of your EKS cluster and
+                      - code [ref=e1035]: <aws-region>
+                      - text: with the AWS region where your cluster is located.
+                    - generic [ref=e1037]:
+                      - code [ref=e1039]:
+                        - generic [ref=e1040]: aws eks update-kubeconfig --name <eks-cluster-name> --region <aws-region>
+                      - generic [ref=e1041]:
+                        - button "Toggle word wrap" [ref=e1042] [cursor=pointer]:
+                          - img [ref=e1043]
+                        - button "Copy code to clipboard" [ref=e1045] [cursor=pointer]:
+                          - generic [ref=e1046]:
+                            - img [ref=e1047]
+                            - img [ref=e1049]
+                  - listitem [ref=e1051]:
+                    - paragraph [ref=e1052]:
+                      - text: Issue the following command to scale the deployment to 10 replicas. The replica count of 10 was tested on an EKS cluster with two worker nodes of an instance type
+                      - link "t3.xlarge" [ref=e1053] [cursor=pointer]:
+                        - /url: https://aws.amazon.com/ec2/instance-types/t3/
+                        - code [ref=e1054]: t3.xlarge
+                      - text: in a single node group. You may need to increase or decrease the number of replicas depending on the current capacity of your cluster node groups.
+                    - generic [ref=e1056]:
+                      - code [ref=e1058]:
+                        - generic [ref=e1059]: kubectl scale deployment inflate --namespace inflate --replicas 10
+                      - generic [ref=e1060]:
+                        - button "Toggle word wrap" [ref=e1061] [cursor=pointer]:
+                          - img [ref=e1062]
+                        - button "Copy code to clipboard" [ref=e1064] [cursor=pointer]:
+                          - generic [ref=e1065]:
+                            - img [ref=e1066]
+                            - img [ref=e1068]
+                    - generic [ref=e1070]:
+                      - generic [ref=e1071]: Expected output
+                      - code [ref=e1074]:
+                        - generic [ref=e1075]: deployment.apps/inflate scaled
+                  - listitem [ref=e1076]:
+                    - paragraph [ref=e1077]: Monitor the Karpenter controller logs to observe the node provisioning activity. Issue the following command to display the logs.
+                    - generic [ref=e1079]:
+                      - code [ref=e1081]:
+                        - generic [ref=e1082]: kubectl logs --follow --namespace karpenter --selector app.kubernetes.io/name=karpenter --container controller
+                      - generic [ref=e1083]:
+                        - button "Toggle word wrap" [ref=e1084] [cursor=pointer]:
+                          - img [ref=e1085]
+                        - button "Copy code to clipboard" [ref=e1087] [cursor=pointer]:
+                          - generic [ref=e1088]:
+                            - img [ref=e1089]
+                            - img [ref=e1091]
+                    - paragraph [ref=e1093]: You can monitor log entries that indicate Karpenter is provisioning new nodes to accommodate the increased workload.
+                    - generic [ref=e1094]:
+                      - generic [ref=e1095]: Example Karpenter controller logs
+                      - generic [ref=e1096]:
+                        - code [ref=e1098]:
+                          - generic [ref=e1099]: "{\"level\":\"INFO\",\"time\":\"2025-10-08T16:57:03.613Z\",\"logger\":\"controller\",\"message\":\"found provisionable pod(s)\",\"commit\":\"4ff8cfe\",\"controller\":\"provisioner\",\"namespace\":\"\",\"name\":\"\",\"reconcileID\":\"a47f6276-1e00-4315-aba5-faaddae6e59f\",\"Pods\":\"inflate/inflate-5c5f75666d-gkvwm, inflate/inflate-5c5f75666d-vnglw, inflate/inflate-5c5f75666d-pxzxt, inflate/inflate-5c5f75666d-5gnpz, inflate/inflate-5c5f75666d-vtmcn\",\"duration\":\"97.580831ms\"}"
+                          - generic [ref=e1100]: "{\"level\":\"INFO\",\"time\":\"2025-10-08T16:57:03.613Z\",\"logger\":\"controller\",\"message\":\"computed new nodeclaim(s) to fit pod(s)\",\"commit\":\"4ff8cfe\",\"controller\":\"provisioner\",\"namespace\":\"\",\"name\":\"\",\"reconcileID\":\"a47f6276-1e00-4315-aba5-faaddae6e59f\",\"nodeclaims\":1,\"pods\":5}"
+                          - generic [ref=e1101]: "{\"level\":\"INFO\",\"time\":\"2025-10-08T16:57:03.632Z\",\"logger\":\"controller\",\"message\":\"created nodeclaim\",\"commit\":\"4ff8cfe\",\"controller\":\"provisioner\",\"namespace\":\"\",\"name\":\"\",\"reconcileID\":\"a47f6276-1e00-4315-aba5-faaddae6e59f\",\"NodePool\":{\"name\":\"default\"},\"NodeClaim\":{\"name\":\"default-c54z5\"},\"requests\":{\"cpu\":\"5180m\",\"memory\":\"120Mi\",\"pods\":\"8\"},\"instance-types\":\"c3.2xlarge, c4.2xlarge, c5.2xlarge, c5.4xlarge, c5a.2xlarge and 55 other(s)\"}"
+                          - generic [ref=e1102]: "{\"level\":\"INFO\",\"time\":\"2025-10-08T16:57:06.354Z\",\"logger\":\"controller\",\"message\":\"launched nodeclaim\",\"commit\":\"4ff8cfe\",\"controller\":\"nodeclaim.lifecycle\",\"controllerGroup\":\"karpenter.sh\",\"controllerKind\":\"NodeClaim\",\"NodeClaim\":{\"name\":\"default-c54z5\"},\"namespace\":\"\",\"name\":\"default-c54z5\",\"reconcileID\":\"09d9e180-2d05-42ea-a55e-ab7b4614d589\",\"provider-id\":\"aws:///us-east-1a/i-08d0c987a45fcdecd\",\"instance-type\":\"c6a.2xlarge\",\"zone\":\"us-east-1a\",\"capacity-type\":\"on-demand\",\"allocatable\":{\"cpu\":\"7910m\",\"ephemeral-storage\":\"17Gi\",\"memory\":\"14967996Ki\",\"pods\":\"58\",\"vpc.amazonaws.com/pod-eni\":\"38\"}}"
+                          - generic [ref=e1103]: "{\"level\":\"INFO\",\"time\":\"2025-10-08T16:57:30.894Z\",\"logger\":\"controller\",\"message\":\"registered nodeclaim\",\"commit\":\"4ff8cfe\",\"controller\":\"nodeclaim.lifecycle\",\"controllerGroup\":\"karpenter.sh\",\"controllerKind\":\"NodeClaim\",\"NodeClaim\":{\"name\":\"default-c54z5\"},\"namespace\":\"\",\"name\":\"default-c54z5\",\"reconcileID\":\"77c703e0-391a-4368-a391-7166e0459493\",\"provider-id\":\"aws:///us-east-1a/i-08d0c987a45fcdecd\",\"Node\":{\"name\":\"ip-10-11-12-13.ec2.internal\"}}"
+                          - generic [ref=e1104]: "{\"level\":\"INFO\",\"time\":\"2025-10-08T16:57:43.744Z\",\"logger\":\"controller\",\"message\":\"initialized nodeclaim\",\"commit\":\"4ff8cfe\",\"controller\":\"nodeclaim.lifecycle\",\"controllerGroup\":\"karpenter.sh\",\"controllerKind\":\"NodeClaim\",\"NodeClaim\":{\"name\":\"default-c54z5\"},\"namespace\":\"\",\"name\":\"default-c54z5\",\"reconcileID\":\"b0182dc3-a210-406e-8781-576ef5cb0e82\",\"provider-id\":\"aws:///us-east-1a/i-08d0c987a45fcdecd\",\"Node\":{\"name\":\"ip-10-11-12-13.ec2.internal\"},\"allocatable\":{\"cpu\":\"7910m\",\"ephemeral-storage\":\"18181869946\",\"hugepages-1Gi\":\"0\",\"hugepages-2Mi\":\"0\",\"memory\":\"14967996Ki\",\"pods\":\"58\"}}"
+                        - button "Toggle word wrap" [ref=e1106] [cursor=pointer]:
+                          - img [ref=e1107]
+                  - listitem [ref=e1109]:
+                    - paragraph [ref=e1110]:
+                      - text: Back in Palette, select the
+                      - strong [ref=e1111]: Nodes
+                      - text: tab for your EKS cluster. You can monitor new nodes being added to the cluster as Karpenter provisions them to accommodate the increased workload. You may need to refresh your browser to display the new nodes. The Karpenter-provisioned node pools will have the
+                      - strong [ref=e1112]: Managed by Karpenter
+                      - text: banner.
+                    - paragraph [ref=e1113]: Alternatively, you can issue the following command in your terminal to display the nodes in your cluster.
+                    - generic [ref=e1115]:
+                      - code [ref=e1117]:
+                        - generic [ref=e1118]: kubectl get nodes
+                      - button "Copy code to clipboard" [ref=e1120] [cursor=pointer]:
+                        - generic [ref=e1121]:
+                          - img [ref=e1122]
+                          - img [ref=e1124]
+                    - paragraph [ref=e1126]: The output should be similar to the following, showing the nodes in your cluster, including those provisioned by Karpenter.
+                    - generic [ref=e1128]:
+                      - code [ref=e1130]:
+                        - generic [ref=e1131]: NAME STATUS ROLES AGE VERSION
+                        - generic [ref=e1132]: ip-10-11-12-13.ec2.internal Ready <none> 5m v1.32.9-eks-113cf36
+                        - generic [ref=e1133]: ip-11-12-13-14.ec2.internal Ready <none> 13h v1.32.9-eks-113cf36
+                        - generic [ref=e1134]: ip-12-13-14-15.ec2.internal Ready <none> 13h v1.32.9-eks-113cf36
+                      - button "Toggle word wrap" [ref=e1136] [cursor=pointer]:
+                        - img [ref=e1137]
+                  - listitem [ref=e1139]:
+                    - paragraph [ref=e1140]: Issue the following command to scale down the deployment to 0 replicas. This triggers Karpenter to terminate the nodes that were provisioned for the deployment.
+                    - generic [ref=e1142]:
+                      - code [ref=e1144]:
+                        - generic [ref=e1145]: kubectl scale deployment inflate --namespace inflate --replicas 0
+                      - generic [ref=e1146]:
+                        - button "Toggle word wrap" [ref=e1147] [cursor=pointer]:
+                          - img [ref=e1148]
+                        - button "Copy code to clipboard" [ref=e1150] [cursor=pointer]:
+                          - generic [ref=e1151]:
+                            - img [ref=e1152]
+                            - img [ref=e1154]
+                    - generic [ref=e1156]:
+                      - generic [ref=e1157]: Expected output
+                      - code [ref=e1160]:
+                        - generic [ref=e1161]: deployment.apps/inflate scaled
+                  - listitem [ref=e1162]:
+                    - paragraph [ref=e1163]: Monitor the Karpenter controller logs to observe the node termination activity.
+                    - generic [ref=e1165]:
+                      - code [ref=e1167]:
+                        - generic [ref=e1168]: kubectl logs --follow --namespace karpenter --selector app.kubernetes.io/name=karpenter --container controller
+                      - generic [ref=e1169]:
+                        - button "Toggle word wrap" [ref=e1170] [cursor=pointer]:
+                          - img [ref=e1171]
+                        - button "Copy code to clipboard" [ref=e1173] [cursor=pointer]:
+                          - generic [ref=e1174]:
+                            - img [ref=e1175]
+                            - img [ref=e1177]
+                    - paragraph [ref=e1179]: You can monitor log entries that indicate Karpenter is terminating nodes that are no longer needed and creating new nodes if necessary.
+                    - generic [ref=e1180]:
+                      - generic [ref=e1181]: Example Karpenter controller logs
+                      - generic [ref=e1182]:
+                        - code [ref=e1184]:
+                          - generic [ref=e1185]: "{\"level\":\"INFO\",\"time\":\"2025-10-08T17:25:47.232Z\",\"logger\":\"controller\",\"message\":\"disrupting node(s)\",\"commit\":\"4ff8cfe\",\"controller\":\"disruption\",\"namespace\":\"\",\"name\":\"\",\"reconcileID\":\"0725c95c-43f8-40f7-b1db-c405b731ef06\",\"command-id\":\"856c6beb-eb53-4ac3-ab3d-5b6760b3378f\",\"reason\":\"underutilized\",\"decision\":\"replace\",\"disrupted-node-count\":1,\"replacement-node-count\":1,\"pod-count\":1,\"disrupted-nodes\":[{\"Node\":{\"name\":\"ip-10-11-12-13.ec2.internal\"},\"NodeClaim\":{\"name\":\"default-c54z5\"},\"capacity-type\":\"on-demand\",\"instance-type\":\"c6a.2xlarge\"}],\"replacement-nodes\":[{\"capacity-type\":\"on-demand\",\"instance-types\":\"c7a.medium, m7a.medium, m3.medium, r7a.medium, c6a.large and 55 other(s)\"}]}"
+                          - generic [ref=e1186]: "{\"level\":\"INFO\",\"time\":\"2025-10-08T17:25:47.285Z\",\"logger\":\"controller\",\"message\":\"created nodeclaim\",\"commit\":\"4ff8cfe\",\"controller\":\"disruption\",\"namespace\":\"\",\"name\":\"\",\"reconcileID\":\"0725c95c-43f8-40f7-b1db-c405b731ef06\",\"NodePool\":{\"name\":\"default\"},\"NodeClaim\":{\"name\":\"default-nc2x2\"},\"requests\":{\"cpu\":\"280m\",\"ephemeral-storage\":\"256Mi\",\"memory\":\"220Mi\",\"pods\":\"4\"},\"instance-types\":\"c3.large, c4.large, c5.large, c5.xlarge, c5a.large and 55 other(s)\"}"
+                          - generic [ref=e1187]: "{\"level\":\"INFO\",\"time\":\"2025-10-08T17:25:50.661Z\",\"logger\":\"controller\",\"message\":\"launched nodeclaim\",\"commit\":\"4ff8cfe\",\"controller\":\"nodeclaim.lifecycle\",\"controllerGroup\":\"karpenter.sh\",\"controllerKind\":\"NodeClaim\",\"NodeClaim\":{\"name\":\"default-nc2x2\"},\"namespace\":\"\",\"name\":\"default-nc2x2\",\"reconcileID\":\"cd1e21f8-8ddb-4f86-a173-e17fa9c1953d\",\"provider-id\":\"aws:///us-east-1a/i-0d1f6ea8255fa6496\",\"instance-type\":\"c7a.medium\",\"zone\":\"us-east-1a\",\"capacity-type\":\"on-demand\",\"allocatable\":{\"cpu\":\"940m\",\"ephemeral-storage\":\"17Gi\",\"memory\":\"1471060Ki\",\"pods\":\"8\",\"vpc.amazonaws.com/pod-eni\":\"4\"}}"
+                          - generic [ref=e1188]: "{\"level\":\"INFO\",\"time\":\"2025-10-08T17:26:11.794Z\",\"logger\":\"controller\",\"message\":\"registered nodeclaim\",\"commit\":\"4ff8cfe\",\"controller\":\"nodeclaim.lifecycle\",\"controllerGroup\":\"karpenter.sh\",\"controllerKind\":\"NodeClaim\",\"NodeClaim\":{\"name\":\"default-nc2x2\"},\"namespace\":\"\",\"name\":\"default-nc2x2\",\"reconcileID\":\"0f2e7c4f-d175-49ce-9816-b20dd9148d1f\",\"provider-id\":\"aws:///us-east-1a/i-0d1f6ea8255fa6496\",\"Node\":{\"name\":\"ip-13-14-15-16.ec2.internal\"}}"
+                          - generic [ref=e1189]: "{\"level\":\"INFO\",\"time\":\"2025-10-08T17:26:25.483Z\",\"logger\":\"controller\",\"message\":\"initialized nodeclaim\",\"commit\":\"4ff8cfe\",\"controller\":\"nodeclaim.lifecycle\",\"controllerGroup\":\"karpenter.sh\",\"controllerKind\":\"NodeClaim\",\"NodeClaim\":{\"name\":\"default-nc2x2\"},\"namespace\":\"\",\"name\":\"default-nc2x2\",\"reconcileID\":\"39205e7b-082c-4bbe-870c-ea1c637f6ca0\",\"provider-id\":\"aws:///us-east-1a/i-0d1f6ea8255fa6496\",\"Node\":{\"name\":\"ip-13-14-15-16.ec2.internal\"},\"allocatable\":{\"cpu\":\"940m\",\"ephemeral-storage\":\"18181869946\",\"hugepages-1Gi\":\"0\",\"hugepages-2Mi\":\"0\",\"memory\":\"1471060Ki\",\"pods\":\"8\"}}"
+                          - generic [ref=e1190]: "{\"level\":\"INFO\",\"time\":\"2025-10-08T17:26:26.374Z\",\"logger\":\"controller\",\"message\":\"tainted node\",\"commit\":\"4ff8cfe\",\"controller\":\"node.termination\",\"controllerGroup\":\"\",\"controllerKind\":\"Node\",\"Node\":{\"name\":\"ip-10-11-12-13.ec2.internal\"},\"namespace\":\"\",\"name\":\"ip-10-11-12-13.ec2.internal\",\"reconcileID\":\"7839593c-867f-4e54-9648-50805470c1ac\",\"NodeClaim\":{\"name\":\"default-c54z5\"},\"taint.Key\":\"karpenter.sh/disrupted\",\"taint.Value\":\"\",\"taint.Effect\":\"NoSchedule\"}"
+                          - generic [ref=e1191]: "{\"level\":\"INFO\",\"time\":\"2025-10-08T17:27:25.574Z\",\"logger\":\"controller\",\"message\":\"deleted node\",\"commit\":\"4ff8cfe\",\"controller\":\"node.termination\",\"controllerGroup\":\"\",\"controllerKind\":\"Node\",\"Node\":{\"name\":\"ip-10-11-12-13.ec2.internal\"},\"namespace\":\"\",\"name\":\"ip-10-11-12-13.ec2.internal\",\"reconcileID\":\"09ebd74f-0806-4265-a8d6-ba3806073430\",\"NodeClaim\":{\"name\":\"default-c54z5\"}}"
+                          - generic [ref=e1192]: "{\"level\":\"INFO\",\"time\":\"2025-10-08T17:27:25.838Z\",\"logger\":\"controller\",\"message\":\"deleted nodeclaim\",\"commit\":\"4ff8cfe\",\"controller\":\"nodeclaim.lifecycle\",\"controllerGroup\":\"karpenter.sh\",\"controllerKind\":\"NodeClaim\",\"NodeClaim\":{\"name\":\"default-c54z5\"},\"namespace\":\"\",\"name\":\"default-c54z5\",\"reconcileID\":\"c033c44e-c1bb-4be8-99de-23c28b2419cd\",\"provider-id\":\"aws:///us-east-1a/i-08d0c987a45fcdecd\",\"Node\":{\"name\":\"ip-10-11-12-13.ec2.internal\"}}"
+                        - button "Toggle word wrap" [ref=e1194] [cursor=pointer]:
+                          - img [ref=e1195]
+                  - listitem [ref=e1197]:
+                    - paragraph [ref=e1198]:
+                      - text: Back in Palette, select the
+                      - strong [ref=e1199]: Nodes
+                      - text: tab for your EKS cluster. You can monitor nodes being removed from the cluster or replaced with smaller instances as Karpenter scales down the node pool. You may need to refresh your browser to display the updated node list.
+                    - paragraph [ref=e1200]: Issue the following command to view the nodes in your cluster. Note that the nodes provisioned by Karpenter have been terminated and removed from the cluster.
+                    - generic [ref=e1202]:
+                      - code [ref=e1204]:
+                        - generic [ref=e1205]: kubectl get nodes
+                      - button "Copy code to clipboard" [ref=e1207] [cursor=pointer]:
+                        - generic [ref=e1208]:
+                          - img [ref=e1209]
+                          - img [ref=e1211]
+                    - paragraph [ref=e1213]: The output should be similar to the following, showing either the original nodes or new nodes if Karpenter replaced them with smaller instances.
+                    - generic [ref=e1215]:
+                      - code [ref=e1217]:
+                        - generic [ref=e1218]: NAME STATUS ROLES AGE VERSION
+                        - generic [ref=e1219]: ip-13-14-15-16.ec2.internal Ready <none> 7m41s v1.32.9-eks-113cf36
+                        - generic [ref=e1220]: ip-11-12-13-14.ec2.internal Ready <none> 14h v1.32.9-eks-113cf36
+                        - generic [ref=e1221]: ip-12-13-14-15.ec2.internal Ready <none> 14h v1.32.9-eks-113cf36
+                      - button "Toggle word wrap" [ref=e1223] [cursor=pointer]:
+                        - img [ref=e1224]
+                - heading "(Optional) Set Node Affinity for Karpenter and Critical WorkloadsDirect link to (Optional) Set Node Affinity for Karpenter and Critical Workloads" [level=2] [ref=e1226]:
+                  - text: (Optional) Set Node Affinity for Karpenter and Critical Workloads
+                  - link "Direct link to (Optional) Set Node Affinity for Karpenter and Critical Workloads" [ref=e1227] [cursor=pointer]:
+                    - /url: "#optional-set-node-affinity-for-karpenter-and-critical-workloads"
+                    - text: "#"
+                - paragraph [ref=e1228]:
+                  - text: Karpenter
+                  - link "recommends" [ref=e1229] [cursor=pointer]:
+                    - /url: https://karpenter.sh/docs/getting-started/migrating-from-cas/#set-node-affinity
+                  - text: configuring Karpenter to run on existing EKS node groups by using a
+                  - link "Node Affinity" [ref=e1230] [cursor=pointer]:
+                    - /url: https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/
+                  - text: rule. This ensures Karpenter is not provisioned on nodes it manages.
+                - paragraph [ref=e1231]:
+                  - text: Additionally, you may want to configure
+                  - link "critical workloads" [ref=e1232] [cursor=pointer]:
+                    - /url: https://karpenter.sh/docs/getting-started/migrating-from-cas/#set-nodeaffinity-for-critical-workloads-optional
+                  - text: (such as
+                  - code [ref=e1233]: coredns
+                  - text: and
+                  - code [ref=e1234]: metrics-server
+                  - text: ) to run on the existing node groups to ensure they are not disrupted by Karpenter's consolidation and scaling activities.
+                - generic [ref=e1235]:
+                  - generic [ref=e1236]:
+                    - img [ref=e1238]
+                    - text: caution
+                  - paragraph [ref=e1241]: If a cluster repave occurs and the existing node groups are removed, you must update the Node Affinity rules to reference the new node groups. If this is not done, Karpenter and critical workloads will not be scheduled.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e1242]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e1243] [cursor=pointer]:
+                    - /url: "#prerequisites-3"
+                    - text: "#"
+                - list [ref=e1244]:
+                  - listitem [ref=e1245]:
+                    - paragraph [ref=e1246]:
+                      - text: Your Palette account must have the Cluster Profile Editor and Cluster Editor permissions to configure Karpenter NodePools. Refer to our
+                      - link "Cluster Profile" [ref=e1247] [cursor=pointer]:
+                        - /url: /user-management/palette-rbac/project-scope-roles-permissions/#cluster-profile
+                      - text: and
+                      - link "Cluster" [ref=e1248] [cursor=pointer]:
+                        - /url: /user-management/palette-rbac/project-scope-roles-permissions/#cluster
+                      - text: role reference guides for more information about roles and permissions.
+                  - listitem [ref=e1249]:
+                    - paragraph [ref=e1250]:
+                      - text: AWS CLI must be installed and configured with the necessary permissions to
+                      - link "obtain the kubeconfig file" [ref=e1251] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html
+                      - text: for your EKS cluster. Refer to
+                      - link "AWS CLI install and update instructions" [ref=e1252] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions
+                      - text: for installation instructions and
+                      - link "Configuring settings for the AWS CLI" [ref=e1253] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html
+                      - text: for configuration guidance.
+                  - listitem [ref=e1254]:
+                    - paragraph [ref=e1255]:
+                      - text: Kubectl must be installed. Refer to
+                      - link "Install or update kubectl" [ref=e1256] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html#kubectl-install-update
+                      - text: for instructions.
+                - heading "Enablement StepsDirect link to Enablement Steps" [level=3] [ref=e1257]:
+                  - text: Enablement Steps
+                  - link "Direct link to Enablement Steps" [ref=e1258] [cursor=pointer]:
+                    - /url: "#enablement-steps-3"
+                    - text: "#"
+                - list [ref=e1259]:
+                  - listitem [ref=e1260]:
+                    - paragraph [ref=e1261]:
+                      - text: Issue the following command to connect to your EKS cluster. Replace
+                      - code [ref=e1262]: <eks-cluster-name>
+                      - text: with the name of your EKS cluster and
+                      - code [ref=e1263]: <aws-region>
+                      - text: with the AWS region where your cluster is located.
+                    - generic [ref=e1265]:
+                      - code [ref=e1267]:
+                        - generic [ref=e1268]: aws eks update-kubeconfig --name <eks-cluster-name> --region <aws-region>
+                      - generic [ref=e1269]:
+                        - button "Toggle word wrap" [ref=e1270] [cursor=pointer]:
+                          - img [ref=e1271]
+                        - button "Copy code to clipboard" [ref=e1273] [cursor=pointer]:
+                          - generic [ref=e1274]:
+                            - img [ref=e1275]
+                            - img [ref=e1277]
+                  - listitem [ref=e1279]:
+                    - paragraph [ref=e1280]:
+                      - text: Issue the following command to list node groups in your EKS cluster. Identify the node groups you want Karpenter and critical workloads to run on. Replace
+                      - code [ref=e1281]: <eks-cluster-name>
+                      - text: with the name of your EKS cluster.
+                    - generic [ref=e1283]:
+                      - code [ref=e1285]:
+                        - generic [ref=e1286]: NODEGROUP=$(aws eks list-nodegroups --cluster-name "<eks-cluster-name>" --query 'nodegroups' --output text | tee /dev/tty)
+                      - generic [ref=e1287]:
+                        - button "Toggle word wrap" [ref=e1288] [cursor=pointer]:
+                          - img [ref=e1289]
+                        - button "Copy code to clipboard" [ref=e1291] [cursor=pointer]:
+                          - generic [ref=e1292]:
+                            - img [ref=e1293]
+                            - img [ref=e1295]
+                    - generic [ref=e1297]:
+                      - generic [ref=e1298]: Example output
+                      - code [ref=e1301]:
+                        - generic [ref=e1302]: new-worker--abcd worker-pool-efgh
+                  - listitem [ref=e1303]:
+                    - paragraph [ref=e1304]:
+                      - text: Log in to
+                      - link "Palette" [ref=e1305] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e1306]:
+                    - paragraph [ref=e1307]:
+                      - text: From the left main menu, select
+                      - strong [ref=e1308]: Profiles
+                      - text: .
+                  - listitem [ref=e1309]:
+                    - paragraph [ref=e1310]: Select the profile associated with your EKS cluster.
+                  - listitem [ref=e1311]:
+                    - paragraph [ref=e1312]:
+                      - text: Create a new version of the profile. For more information, refer to
+                      - link "Version a Cluster Profile" [ref=e1313] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile/
+                      - text: .
+                  - listitem [ref=e1314]:
+                    - paragraph [ref=e1315]:
+                      - text: Click on the
+                      - strong [ref=e1316]: karpenter
+                      - text: layer to edit the configuration.
+                  - listitem [ref=e1317]:
+                    - paragraph [ref=e1318]:
+                      - text: In
+                      - strong [ref=e1319]: Pack Details
+                      - text: ", select the"
+                      - strong [ref=e1320]: Values
+                      - text: option.
+                  - listitem [ref=e1321]:
+                    - paragraph [ref=e1322]:
+                      - text: In the YAML editor, add a
+                      - code [ref=e1323]: nodeAffinity
+                      - text: rule to the
+                      - code [ref=e1324]: spec.template.spec
+                      - text: section of the Karpenter deployment. This rule ensures that Karpenter is scheduled only on nodes that belong to the specified node groups. Replace
+                      - code [ref=e1325]: <node-group-1>
+                      - text: and
+                      - code [ref=e1326]: <node-group-2>
+                      - text: with the names of your node groups.
+                    - generic [ref=e1327]:
+                      - generic [ref=e1328]: Template for adding Node Affinity to Karpenter
+                      - generic [ref=e1329]:
+                        - code [ref=e1331]:
+                          - generic [ref=e1332]: "charts:"
+                          - generic [ref=e1333]: ...
+                          - generic [ref=e1334]: "karpenter:"
+                          - generic [ref=e1335]: ...
+                          - generic [ref=e1336]: "affinity:"
+                          - generic [ref=e1337]: "nodeAffinity:"
+                          - generic [ref=e1338]: "requiredDuringSchedulingIgnoredDuringExecution:"
+                          - generic [ref=e1339]: "nodeSelectorTerms:"
+                          - generic [ref=e1340]: "- matchExpressions:"
+                          - generic [ref=e1341]: "- key: karpenter.sh/nodepool"
+                          - generic [ref=e1342]: "operator: DoesNotExist"
+                          - generic [ref=e1343]: "- key: eks.amazonaws.com/nodegroup"
+                          - generic [ref=e1344]: "operator: In"
+                          - generic [ref=e1345]: "values:"
+                          - generic [ref=e1346]: "- <node-group-1>"
+                          - generic [ref=e1347]: "- <node-group-2>"
+                        - button "Copy code to clipboard" [ref=e1349] [cursor=pointer]:
+                          - generic [ref=e1350]:
+                            - img [ref=e1351]
+                            - img [ref=e1353]
+                    - group [ref=e1355]:
+                      - generic "Click to display an example Node Affinity configuration for Karpenter" [ref=e1356] [cursor=pointer]
+                  - listitem [ref=e1357]:
+                    - paragraph [ref=e1358]:
+                      - text: Click
+                      - strong [ref=e1359]: Confirm Updates
+                      - text: ", followed by"
+                      - strong [ref=e1360]: Save Changes
+                      - text: in the cluster profile view.
+                  - listitem [ref=e1361]:
+                    - paragraph [ref=e1362]:
+                      - text: From the left main menu, select
+                      - strong [ref=e1363]: Clusters
+                      - text: and select your EKS cluster from the list.
+                  - listitem [ref=e1364]:
+                    - paragraph [ref=e1365]:
+                      - text: Select the
+                      - strong [ref=e1366]: Profile
+                      - text: tab.
+                  - listitem [ref=e1367]:
+                    - paragraph [ref=e1368]:
+                      - text: Click the version drop-down for the
+                      - strong [ref=e1369]: INFRASTRUCTURE LAYERS
+                      - text: or
+                      - strong [ref=e1370]: ADDON LAYERS
+                      - text: and select the new profile version you created.
+                  - listitem [ref=e1371]:
+                    - paragraph [ref=e1372]:
+                      - text: Click
+                      - strong [ref=e1373]: Review & Save
+                      - text: ", followed by"
+                      - strong [ref=e1374]: Review changes in Editor
+                      - text: in the pop-up window.
+                  - listitem [ref=e1375]:
+                    - paragraph [ref=e1376]:
+                      - text: Click
+                      - strong [ref=e1377]: Apply Changes
+                      - text: to update the cluster with the new profile version.
+                  - listitem [ref=e1378]:
+                    - paragraph [ref=e1379]: You can also configure critical workloads to run on the existing node groups by adding a Node Affinity rule to their deployments. The following example shows how to add a Node Affinity rule to the CoreDNS deployment.
+                    - generic [ref=e1380]:
+                      - generic [ref=e1381]:
+                        - img [ref=e1383]
+                        - text: caution
+                      - paragraph [ref=e1386]: Modifying critical workloads can affect cluster availability. Ensure you plan accordingly.
+                    - group [ref=e1387]:
+                      - generic "Click to display example steps to add Node Affinity configuration for CoreDNS" [ref=e1388] [cursor=pointer]
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e1389]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e1390] [cursor=pointer]:
+                    - /url: "#validate-3"
+                    - text: "#"
+                - list [ref=e1391]:
+                  - listitem [ref=e1392]:
+                    - paragraph [ref=e1393]:
+                      - text: Log in to
+                      - link "Palette" [ref=e1394] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e1395]:
+                    - paragraph [ref=e1396]:
+                      - text: From the left main menu, select
+                      - strong [ref=e1397]: Clusters
+                      - text: and select your EKS cluster from the list.
+                  - listitem [ref=e1398]:
+                    - paragraph [ref=e1399]:
+                      - text: In the
+                      - strong [ref=e1400]: Overview
+                      - text: tab, verify that the
+                      - strong [ref=e1401]: Cluster Status
+                      - text: is
+                      - strong [ref=e1402]: Running
+                      - text: without a loading icon and the
+                      - strong [ref=e1403]: Health
+                      - text: shows
+                      - strong [ref=e1404]: Healthy
+                      - text: .
+                  - listitem [ref=e1405]:
+                    - paragraph [ref=e1406]:
+                      - text: Verify that the Karpenter pack is listed under the
+                      - strong [ref=e1407]: Cluster Profiles
+                      - text: section with a green circle indicating that it is successfully updated.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e1408]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e1409] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e1410]:
+                  - listitem [ref=e1411]:
+                    - link "Karpenter Documentation" [ref=e1412] [cursor=pointer]:
+                      - /url: https://karpenter.sh/docs/
+                  - listitem [ref=e1413]:
+                    - link "Karpenter NodePool examples" [ref=e1414] [cursor=pointer]:
+                      - /url: https://github.com/aws/karpenter-provider-aws/tree/main/examples/v1
+                  - listitem [ref=e1415]:
+                    - link "Karpenter Best Practices for Amazon EKS" [ref=e1416] [cursor=pointer]:
+                      - /url: https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html
+              - generic [ref=e1417]:
+                - generic [ref=e1419]:
+                  - text: "Tags:"
+                  - list [ref=e1420]:
+                    - listitem [ref=e1421]:
+                      - link "public cloud" [ref=e1422] [cursor=pointer]:
+                        - /url: /tags/public-cloud/
+                    - listitem [ref=e1423]:
+                      - link "aws" [ref=e1424] [cursor=pointer]:
+                        - /url: /tags/aws/
+                    - listitem [ref=e1425]:
+                      - link "eks" [ref=e1426] [cursor=pointer]:
+                        - /url: /tags/eks/
+                    - listitem [ref=e1427]:
+                      - link "karpenter" [ref=e1428] [cursor=pointer]:
+                        - /url: /tags/karpenter/
+                - link "Edit this page" [ref=e1431] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/public-cloud/aws/configure-karpenter-eks-clusters.md
+                  - img [ref=e1432]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e1436]:
+              - link "Previous « Enable Disk Encryption for EKS Cluster" [ref=e1437] [cursor=pointer]:
+                - /url: /clusters/public-cloud/aws/enable-disk-encryption-eks-cluster/
+                - generic [ref=e1438]: Previous
+                - generic [ref=e1439]: « Enable Disk Encryption for EKS Cluster
+              - link "Next Required IAM Policies »" [ref=e1440] [cursor=pointer]:
+                - /url: /clusters/public-cloud/aws/required-iam-policies/
+                - generic [ref=e1441]: Next
+                - generic [ref=e1442]: Required IAM Policies »
+          - list [ref=e1445]:
+            - listitem [ref=e1446]:
+              - link "Install the Karpenter Pack" [ref=e1447] [cursor=pointer]:
+                - /url: "#install-the-karpenter-pack"
+              - list [ref=e1448]:
+                - listitem [ref=e1449]:
+                  - link "Prerequisites" [ref=e1450] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e1451]:
+                  - link "Enablement Steps" [ref=e1452] [cursor=pointer]:
+                    - /url: "#enablement-steps"
+                - listitem [ref=e1453]:
+                  - link "Validate" [ref=e1454] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e1455]:
+              - link "Configure Karpenter NodePools" [ref=e1456] [cursor=pointer]:
+                - /url: "#configure-karpenter-nodepools"
+              - list [ref=e1457]:
+                - listitem [ref=e1458]:
+                  - link "Prerequisites" [ref=e1459] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e1460]:
+                  - link "Enablement Steps" [ref=e1461] [cursor=pointer]:
+                    - /url: "#enablement-steps-1"
+                - listitem [ref=e1462]:
+                  - link "Validate" [ref=e1463] [cursor=pointer]:
+                    - /url: "#validate-1"
+            - listitem [ref=e1464]:
+              - link "Test Karpenter Node Provisioning" [ref=e1465] [cursor=pointer]:
+                - /url: "#test-karpenter-node-provisioning"
+              - list [ref=e1466]:
+                - listitem [ref=e1467]:
+                  - link "Prerequisites" [ref=e1468] [cursor=pointer]:
+                    - /url: "#prerequisites-2"
+                - listitem [ref=e1469]:
+                  - link "Enablement Steps" [ref=e1470] [cursor=pointer]:
+                    - /url: "#enablement-steps-2"
+                - listitem [ref=e1471]:
+                  - link "Validate" [ref=e1472] [cursor=pointer]:
+                    - /url: "#validate-2"
+            - listitem [ref=e1473]:
+              - link "(Optional) Set Node Affinity for Karpenter and Critical Workloads" [ref=e1474] [cursor=pointer]:
+                - /url: "#optional-set-node-affinity-for-karpenter-and-critical-workloads"
+              - list [ref=e1475]:
+                - listitem [ref=e1476]:
+                  - link "Prerequisites" [ref=e1477] [cursor=pointer]:
+                    - /url: "#prerequisites-3"
+                - listitem [ref=e1478]:
+                  - link "Enablement Steps" [ref=e1479] [cursor=pointer]:
+                    - /url: "#enablement-steps-3"
+                - listitem [ref=e1480]:
+                  - link "Validate" [ref=e1481] [cursor=pointer]:
+                    - /url: "#validate-3"
+            - listitem [ref=e1482]:
+              - link "Resources" [ref=e1483] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e1484] [cursor=pointer]:
+    - generic [ref=e1487]:
+      - img "Project Logo" [ref=e1488]
+      - paragraph [ref=e1489]: Ask AI
+```

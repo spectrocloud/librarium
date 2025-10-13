@@ -1,0 +1,554 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [expanded] [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                    - list [ref=e107]:
+                      - listitem [ref=e108]:
+                        - generic [ref=e109]:
+                          - link "AWS" [expanded] [ref=e110] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/aws/
+                          - button "Toggle the collapsible sidebar category 'AWS'" [ref=e111] [cursor=pointer]
+                        - list [ref=e112]:
+                          - listitem [ref=e113]:
+                            - link "Architecture" [ref=e114] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/architecture/
+                          - listitem [ref=e115]:
+                            - link "Register and Manage AWS Accounts" [ref=e116] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/add-aws-accounts/
+                          - listitem [ref=e117]:
+                            - link "Create and Manage AWS IaaS Cluster" [ref=e118] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/create-cluster/
+                          - listitem [ref=e119]:
+                            - link "Create and Manage AWS EKS Cluster" [ref=e120] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/eks/
+                          - listitem [ref=e121]:
+                            - generic [ref=e122]:
+                              - link "EKS Hybrid Nodes" [expanded] [ref=e123] [cursor=pointer]:
+                                - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/
+                              - button "Toggle the collapsible sidebar category 'EKS Hybrid Nodes'" [ref=e124] [cursor=pointer]
+                            - list [ref=e125]:
+                              - listitem [ref=e126]:
+                                - link "Architecture" [ref=e127] [cursor=pointer]:
+                                  - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/architecture/
+                              - listitem [ref=e128]:
+                                - generic [ref=e129]:
+                                  - link "Prepare Environment" [ref=e130] [cursor=pointer]:
+                                    - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/
+                                  - button "Toggle the collapsible sidebar category 'Prepare Environment'" [ref=e131] [cursor=pointer]
+                              - listitem [ref=e132]:
+                                - link "Import EKS Cluster and Enable Hybrid Mode" [ref=e133] [cursor=pointer]:
+                                  - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/import-eks-cluster-enable-hybrid-mode/
+                              - listitem [ref=e134]:
+                                - link "Create Hybrid Node Pools" [ref=e135] [cursor=pointer]:
+                                  - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/create-hybrid-node-pools/
+                          - listitem [ref=e136]:
+                            - link "Enable Secrets Encryption for EKS Cluster" [ref=e137] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/enable-secrets-encryption-kms-key/
+                          - listitem [ref=e138]:
+                            - link "Enable Disk Encryption for EKS Cluster" [ref=e139] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/enable-disk-encryption-eks-cluster/
+                          - listitem [ref=e140]:
+                            - link "Configure Karpenter for EKS Clusters" [ref=e141] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/configure-karpenter-eks-clusters/
+                          - listitem [ref=e142]:
+                            - link "Required IAM Policies" [ref=e143] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/required-iam-policies/
+                      - listitem [ref=e144]:
+                        - generic [ref=e145]:
+                          - link "Azure" [ref=e146] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/azure/
+                          - button "Toggle the collapsible sidebar category 'Azure'" [ref=e147] [cursor=pointer]
+                      - listitem [ref=e148]:
+                        - generic [ref=e149]:
+                          - link "GCP" [ref=e150] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/gcp/
+                          - button "Toggle the collapsible sidebar category 'GCP'" [ref=e151] [cursor=pointer]
+                  - listitem [ref=e152]:
+                    - generic [ref=e153]:
+                      - link "Data Center Clusters" [ref=e154] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e156]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e158] [cursor=pointer]
+                  - listitem [ref=e159]:
+                    - generic [ref=e160]:
+                      - link "Edge" [ref=e161] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e163]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e165] [cursor=pointer]
+                  - listitem [ref=e166]:
+                    - generic [ref=e167]:
+                      - link "Palette Virtual Clusters" [ref=e168] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e170]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e172] [cursor=pointer]
+                  - listitem [ref=e173]:
+                    - generic [ref=e174]:
+                      - link "Imported Clusters" [ref=e175] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e177]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e179] [cursor=pointer]
+                  - listitem [ref=e180]:
+                    - generic [ref=e181]:
+                      - link "Manage Clusters" [ref=e182] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e184]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e186] [cursor=pointer]
+                  - listitem [ref=e187]:
+                    - generic [ref=e188]:
+                      - link "Cluster Groups" [ref=e189] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e191]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e193] [cursor=pointer]
+                  - listitem [ref=e194]:
+                    - generic [ref=e195]:
+                      - link "Private Cloud Gateway" [ref=e196] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e198]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e200] [cursor=pointer]
+              - listitem [ref=e201]:
+                - generic [ref=e202]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e203] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e205]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e207] [cursor=pointer]
+              - listitem [ref=e208]:
+                - generic [ref=e209]:
+                  - link "Palette Dev Engine" [ref=e210] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e212]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - generic [ref=e216]:
+                  - link "Virtual Machine Orchestrator" [ref=e217] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e219]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e221] [cursor=pointer]
+              - listitem [ref=e222]:
+                - generic [ref=e223]:
+                  - link "Workspaces" [ref=e224] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e226]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e228] [cursor=pointer]
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "Packs List" [ref=e231] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e233]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - generic [ref=e237]:
+                  - link "User & Role Management" [ref=e238] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e240]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - generic [ref=e244]:
+                  - link "Registries and Packs" [ref=e245] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e247]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e249] [cursor=pointer]
+              - listitem [ref=e250]:
+                - generic [ref=e251]:
+                  - link "Security" [ref=e252] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e254]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e256] [cursor=pointer]
+              - listitem [ref=e257]:
+                - generic [ref=e258]:
+                  - link "Audit Logs" [ref=e259] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e261]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e263] [cursor=pointer]
+              - listitem [ref=e264]:
+                - generic [ref=e265]:
+                  - link "Self-Hosted Palette" [ref=e266] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e268]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e270] [cursor=pointer]
+              - listitem [ref=e271]:
+                - generic [ref=e272]:
+                  - link "Palette VerteX" [ref=e273] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e275]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e277] [cursor=pointer]
+              - listitem [ref=e278]:
+                - generic [ref=e279]:
+                  - link "Tenant Administration" [ref=e280] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e282]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e284] [cursor=pointer]
+              - listitem [ref=e285]:
+                - generic [ref=e286]:
+                  - link "Automation" [ref=e287] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e289]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e291] [cursor=pointer]
+              - listitem [ref=e292]:
+                - generic [ref=e293]:
+                  - link "Troubleshooting" [ref=e294] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e296]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e298] [cursor=pointer]
+              - listitem [ref=e299]:
+                - link "Glossary" [ref=e300] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e302]
+                  - text: Glossary
+              - listitem [ref=e304]:
+                - generic [ref=e305]:
+                  - link "Compliance & Legal" [ref=e306] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e308]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e310] [cursor=pointer]
+              - listitem [ref=e311]:
+                - button "Privacy Settings" [ref=e312] [cursor=pointer]:
+                  - img [ref=e313]
+                  - text: Privacy Settings
+      - main [ref=e315]:
+        - generic [ref=e317]:
+          - generic [ref=e319]:
+            - article [ref=e320]:
+              - navigation "Breadcrumbs" [ref=e321]:
+                - list [ref=e322]:
+                  - listitem [ref=e323]:
+                    - link "Home page" [ref=e324] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e325]
+                  - listitem [ref=e327]:
+                    - link "Clusters" [ref=e328] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e329]:
+                    - link "Public Cloud Clusters" [ref=e330] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/
+                  - listitem [ref=e331]:
+                    - link "AWS" [ref=e332] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/
+                  - listitem [ref=e333]:
+                    - link "EKS Hybrid Nodes" [ref=e334] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/
+                  - listitem [ref=e335]:
+                    - generic [ref=e336]: Architecture
+              - generic [ref=e337]:
+                - heading "Architecture" [level=1] [ref=e339]
+                - paragraph [ref=e340]:
+                  - text: Palette enables importing and managing Amazon Elastic Kubernetes Service (Amazon EKS) Hybrid Nodes. For an overview of all necessary prerequisites, refer to
+                  - link "Prerequisite setup for hybrid nodes" [ref=e341] [cursor=pointer]:
+                    - /url: https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-prereqs.html
+                  - text: .
+                - paragraph [ref=e342]: These are some of the architectural highlights when using Palette to manage your Amazon EKS Hybrid Nodes.
+                - list [ref=e343]:
+                  - listitem [ref=e344]:
+                    - paragraph [ref=e345]:
+                      - text: Add a
+                      - link "Cilium" [ref=e346] [cursor=pointer]:
+                        - /url: https://cilium.io/
+                      - text: Container Network Interface (CNI) layer to your Amazon EKS cluster to handle networking for hybrid nodes using affinity rules.
+                  - listitem [ref=e347]:
+                    - paragraph [ref=e348]: Create hybrid node pools comprising edge hosts that have been registered with Palette.
+                  - listitem [ref=e349]:
+                    - paragraph [ref=e350]: "Define cluster profiles to collectively manage your hybrid nodes. Each cluster profile for a hybrid node pool includes the following configurable layers:"
+                    - list [ref=e351]:
+                      - listitem [ref=e352]:
+                        - paragraph [ref=e353]:
+                          - text: If you are using
+                          - link "Appliance Mode" [ref=e354] [cursor=pointer]:
+                            - /url: /deployment-modes/appliance-mode/
+                          - text: ", configure the Operating System (OS) layer to reference the provider image built during the"
+                          - link "EdgeForge" [ref=e355] [cursor=pointer]:
+                            - /url: /clusters/edge/edgeforge-workflow/
+                          - text: workflow and optional customizations for your hybrid nodes.
+                      - listitem [ref=e356]:
+                        - paragraph [ref=e357]:
+                          - text: Configure the Kubernetes layer to specify the correct
+                          - link "Amazon EKS Distro" [ref=e358] [cursor=pointer]:
+                            - /url: https://distro.eks.amazonaws.com/
+                          - text: kubelet version to be installed on hybrid nodes.
+                - heading "Hybrid Network ConnectivityDirect link to Hybrid Network Connectivity" [level=2] [ref=e359]:
+                  - text: Hybrid Network Connectivity
+                  - link "Direct link to Hybrid Network Connectivity" [ref=e360] [cursor=pointer]:
+                    - /url: "#hybrid-network-connectivity"
+                    - text: "#"
+                - paragraph [ref=e361]: Network connectivity between your on-prem environments, edge locations, and Amazon EKS cluster must be established before Palette can manage your Amazon EKS Hybrid Nodes.
+                - paragraph [ref=e362]: In the following example, an Amazon EKS cluster is connected to an on-prem data center and edge location through an AWS Transit Gateway and AWS Site-to-Site Virtual Private Network (VPN).
+                - paragraph [ref=e363]:
+                  - img "Example Amazon EKS Hybrid Nodes network architecture" [ref=e364]
+                - paragraph [ref=e365]:
+                  - text: Refer to
+                  - link "Prepare Network" [ref=e366] [cursor=pointer]:
+                    - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/prepare-network/
+                  - text: for help configuring the network in your AWS region, on-prem/remote environment, and inter-site connectivity.
+                - heading "Operating System CompatibilityDirect link to Operating System Compatibility" [level=2] [ref=e367]:
+                  - text: Operating System Compatibility
+                  - link "Direct link to Operating System Compatibility" [ref=e368] [cursor=pointer]:
+                    - /url: "#operating-system-compatibility"
+                    - text: "#"
+                - paragraph [ref=e369]:
+                  - text: Palette supports the same operating systems as AWS. Refer to
+                  - link "Prepare operating system for hybrid nodes" [ref=e370] [cursor=pointer]:
+                    - /url: https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-os.html
+                  - text: for details.
+                - heading "Supported Edge HostsDirect link to Supported Edge Hosts" [level=2] [ref=e371]:
+                  - text: Supported Edge Hosts
+                  - link "Direct link to Supported Edge Hosts" [ref=e372] [cursor=pointer]:
+                    - /url: "#supported-edge-hosts"
+                    - text: "#"
+                - paragraph [ref=e373]: Palette allows you to use your edge hosts as your Amazon EKS Hybrid Nodes. Your edge hosts need to be registered with Palette before you can add them to your node pools.
+                - paragraph [ref=e374]: "If you want to use your edge hosts as Amazon EKS Hybrid Nodes, they must have been registered using one of the following methods:"
+                - list [ref=e375]:
+                  - listitem [ref=e376]:
+                    - link "Agent Mode" [ref=e377] [cursor=pointer]:
+                      - /url: /deployment-modes/agent-mode/
+                  - listitem [ref=e378]:
+                    - link "Appliance Mode" [ref=e379] [cursor=pointer]:
+                      - /url: /deployment-modes/appliance-mode/
+                    - text: using the
+                    - link "EdgeForge workflow" [ref=e380] [cursor=pointer]:
+                      - /url: /clusters/edge/edgeforge-workflow/
+                    - text: .
+                - paragraph [ref=e381]:
+                  - text: Follow the steps in
+                  - link "Prepare Edge Hosts" [ref=e382] [cursor=pointer]:
+                    - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/prepare-edge-hosts/
+                  - text: to prepare your edge hosts using either of these methods.
+                - heading "Authentication and Access ManagementDirect link to Authentication and Access Management" [level=2] [ref=e383]:
+                  - text: Authentication and Access Management
+                  - link "Direct link to Authentication and Access Management" [ref=e384] [cursor=pointer]:
+                    - /url: "#authentication-and-access-management"
+                    - text: "#"
+                - paragraph [ref=e385]: "Palette supports the following authentication methods for your hybrid nodes:"
+                - list [ref=e386]:
+                  - listitem [ref=e387]:
+                    - paragraph [ref=e388]:
+                      - link "AWS Systems Manager (SSM)" [ref=e389] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html
+                    - list [ref=e390]:
+                      - listitem [ref=e391]: It is recommended to use AWS SSM Hybrid Activations if you lack Public Key Infrastructure (PKI) and certificates for your on-prem environment. AWS SSM hybrid activations allow you to register and manage your hybrid nodes without requiring a CA-signed certificate.
+                  - listitem [ref=e392]:
+                    - paragraph [ref=e393]:
+                      - link "AWS Identity and Access Management (IAM) Roles Anywhere" [ref=e394] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/rolesanywhere/latest/userguide/introduction.html
+                    - list [ref=e395]:
+                      - listitem [ref=e396]:
+                        - text: IAM Roles Anywhere is not supported on some operating systems. Refer to the
+                        - link "Operating system considerations" [ref=e397] [cursor=pointer]:
+                          - /url: https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-os.html#_operating_system_considerations
+                        - text: for up-to-date guidance.
+                      - listitem [ref=e398]: This is the recommended approach if you have existing Public Key Infrastructure (PKI) and certificates for your on-prem environment.
+                - paragraph [ref=e399]:
+                  - text: Refer to
+                  - link "Prepare credentials for hybrid nodes" [ref=e400] [cursor=pointer]:
+                    - /url: https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-creds.html
+                  - text: for guidance on how to set up credentials for your hybrid nodes.
+                - heading "Amazon EKS Cluster RequirementsDirect link to Amazon EKS Cluster Requirements" [level=2] [ref=e401]:
+                  - text: Amazon EKS Cluster Requirements
+                  - link "Direct link to Amazon EKS Cluster Requirements" [ref=e402] [cursor=pointer]:
+                    - /url: "#amazon-eks-cluster-requirements"
+                    - text: "#"
+                - paragraph [ref=e403]:
+                  - text: Follow the steps in
+                  - link "Prepare EKS Cluster" [ref=e404] [cursor=pointer]:
+                    - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/prepare-eks-cluster/
+                  - text: to create an Amazon EKS cluster that can be imported into Palette.
+                - paragraph [ref=e405]: "The following is an overview of the cluster requirements:"
+                - list [ref=e406]:
+                  - listitem [ref=e407]:
+                    - paragraph [ref=e408]:
+                      - strong [ref=e409]: Hybrid Node Enablement
+                      - text: ": The cluster must be enabled for hybrid nodes, as outlined in"
+                      - link "Create an Amazon EKS cluster with hybrid nodes" [ref=e410] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-cluster-create.html
+                      - text: .
+                  - listitem [ref=e411]:
+                    - paragraph [ref=e412]:
+                      - strong [ref=e413]: Container Network Interface (CNI)
+                      - text: ": The"
+                      - strong [ref=e414]: AWS VPC CNI
+                      - text: must be used as the cluster’s CNI as it is needed for cloud worker nodes to function. Although the AWS Console may display a warning indicating that the AWS VPC CNI is not supported for hybrid nodes, this can be safely disregarded.
+                  - listitem [ref=e415]:
+                    - paragraph [ref=e416]:
+                      - strong [ref=e417]: Worker Node Requirements for the Palette Agent
+                      - text: ": At least one worker node is required to host the Palette agent, which is essential for Palette to manage the cluster. Due to the EKS architecture, the Palette agent cannot be installed on the EKS control plane."
+                    - list [ref=e418]:
+                      - listitem [ref=e419]:
+                        - paragraph [ref=e420]:
+                          - strong [ref=e421]: Minimum Instance Type
+                          - text: ": Worker nodes must use an instance type of at least"
+                          - strong [ref=e422]: t3.xlarge
+                          - text: to ensure adequate resources. AWS sets a default storage of 20 GB for Linux-based EKS worker nodes (the
+                          - link "diskSize" [ref=e423] [cursor=pointer]:
+                            - /url: https://docs.aws.amazon.com/eks/latest/APIReference/API_CreateNodegroup.html#API_CreateNodegroup_RequestSyntax
+                          - text: parameter), and we recommend this as the minimum size.
+                      - listitem [ref=e424]:
+                        - paragraph [ref=e425]:
+                          - strong [ref=e426]: Ongoing Node Availability
+                          - text: ": To maintain continuous management capabilities, at least one worker node should remain available at all times for the Palette agent to operate effectively."
+              - generic [ref=e427]:
+                - generic [ref=e429]:
+                  - text: "Tags:"
+                  - list [ref=e430]:
+                    - listitem [ref=e431]:
+                      - link "public cloud" [ref=e432] [cursor=pointer]:
+                        - /url: /tags/public-cloud/
+                    - listitem [ref=e433]:
+                      - link "aws" [ref=e434] [cursor=pointer]:
+                        - /url: /tags/aws/
+                    - listitem [ref=e435]:
+                      - link "architecture" [ref=e436] [cursor=pointer]:
+                        - /url: /tags/architecture/
+                    - listitem [ref=e437]:
+                      - link "eks hybrid nodes" [ref=e438] [cursor=pointer]:
+                        - /url: /tags/eks-hybrid-nodes/
+                - link "Edit this page" [ref=e441] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/public-cloud/aws/eks-hybrid-nodes/architecture.md
+                  - img [ref=e442]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e446]:
+              - link "Previous « EKS Hybrid Nodes" [ref=e447] [cursor=pointer]:
+                - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/
+                - generic [ref=e448]: Previous
+                - generic [ref=e449]: « EKS Hybrid Nodes
+              - link "Next Prepare Environment »" [ref=e450] [cursor=pointer]:
+                - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/
+                - generic [ref=e451]: Next
+                - generic [ref=e452]: Prepare Environment »
+          - list [ref=e455]:
+            - listitem [ref=e456]:
+              - link "Hybrid Network Connectivity" [ref=e457] [cursor=pointer]:
+                - /url: "#hybrid-network-connectivity"
+            - listitem [ref=e458]:
+              - link "Operating System Compatibility" [ref=e459] [cursor=pointer]:
+                - /url: "#operating-system-compatibility"
+            - listitem [ref=e460]:
+              - link "Supported Edge Hosts" [ref=e461] [cursor=pointer]:
+                - /url: "#supported-edge-hosts"
+            - listitem [ref=e462]:
+              - link "Authentication and Access Management" [ref=e463] [cursor=pointer]:
+                - /url: "#authentication-and-access-management"
+            - listitem [ref=e464]:
+              - link "Amazon EKS Cluster Requirements" [ref=e465] [cursor=pointer]:
+                - /url: "#amazon-eks-cluster-requirements"
+  - button "Project Logo Ask AI" [ref=e466] [cursor=pointer]:
+    - generic [ref=e469]:
+      - img "Project Logo" [ref=e470]
+      - paragraph [ref=e471]: Ask AI
+```

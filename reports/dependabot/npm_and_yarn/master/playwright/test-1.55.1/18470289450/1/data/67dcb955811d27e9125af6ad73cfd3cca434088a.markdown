@@ -1,0 +1,1725 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Security" [ref=e150] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e152]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Audit Logs" [ref=e157] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e159]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Self-Hosted Palette" [expanded] [ref=e164] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e166]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e168] [cursor=pointer]
+                - list [ref=e169]:
+                  - listitem [ref=e170]:
+                    - generic [ref=e171]:
+                      - link "Installation" [expanded] [ref=e172] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e173] [cursor=pointer]
+                    - list [ref=e174]:
+                      - listitem [ref=e175]:
+                        - generic [ref=e176]:
+                          - link "VMware" [ref=e177] [cursor=pointer]:
+                            - /url: /enterprise-version/install-palette/install-on-vmware/
+                          - button "Toggle the collapsible sidebar category 'VMware'" [ref=e178] [cursor=pointer]
+                      - listitem [ref=e179]:
+                        - link "Airgap Resources" [ref=e180] [cursor=pointer]:
+                          - /url: /enterprise-version/install-palette/airgap/
+                      - listitem [ref=e181]:
+                        - generic [ref=e182]:
+                          - link "Kubernetes" [expanded] [ref=e183] [cursor=pointer]:
+                            - /url: /enterprise-version/install-palette/install-on-kubernetes/
+                          - button "Toggle the collapsible sidebar category 'Kubernetes'" [ref=e184] [cursor=pointer]
+                        - list [ref=e185]:
+                          - listitem [ref=e186]:
+                            - link "Non-Airgap Installation" [ref=e187] [cursor=pointer]:
+                              - /url: /enterprise-version/install-palette/install-on-kubernetes/install/
+                          - listitem [ref=e188]:
+                            - generic [ref=e189]:
+                              - link "Airgap Installation" [ref=e190] [cursor=pointer]:
+                                - /url: /enterprise-version/install-palette/install-on-kubernetes/airgap-install/
+                              - button "Toggle the collapsible sidebar category 'Airgap Installation'" [ref=e191] [cursor=pointer]
+                          - listitem [ref=e192]:
+                            - link "Helm Configuration Reference" [ref=e193] [cursor=pointer]:
+                              - /url: /enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref/
+                          - listitem [ref=e194]:
+                            - link "Uninstallation" [ref=e195] [cursor=pointer]:
+                              - /url: /enterprise-version/install-palette/install-on-kubernetes/uninstall/
+                      - listitem [ref=e196]:
+                        - link "Palette Management Appliance" [ref=e197] [cursor=pointer]:
+                          - /url: /enterprise-version/install-palette/palette-management-appliance/
+                  - listitem [ref=e198]:
+                    - link "Activate Palette" [ref=e199] [cursor=pointer]:
+                      - /url: /enterprise-version/activate-installation/
+                  - listitem [ref=e200]:
+                    - generic [ref=e201]:
+                      - link "System Management" [ref=e202] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e203] [cursor=pointer]
+                  - listitem [ref=e204]:
+                    - generic [ref=e205]:
+                      - link "Upgrade" [ref=e206] [cursor=pointer]:
+                        - /url: /enterprise-version/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e207] [cursor=pointer]
+              - listitem [ref=e208]:
+                - generic [ref=e209]:
+                  - link "Palette VerteX" [ref=e210] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e212]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - generic [ref=e216]:
+                  - link "Tenant Administration" [ref=e217] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e219]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e221] [cursor=pointer]
+              - listitem [ref=e222]:
+                - generic [ref=e223]:
+                  - link "Automation" [ref=e224] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e226]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e228] [cursor=pointer]
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "Troubleshooting" [ref=e231] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e233]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - link "Glossary" [ref=e237] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e239]
+                  - text: Glossary
+              - listitem [ref=e241]:
+                - generic [ref=e242]:
+                  - link "Compliance & Legal" [ref=e243] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e245]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e247] [cursor=pointer]
+              - listitem [ref=e248]:
+                - button "Privacy Settings" [ref=e249] [cursor=pointer]:
+                  - img [ref=e250]
+                  - text: Privacy Settings
+      - main [ref=e252]:
+        - generic [ref=e254]:
+          - generic [ref=e256]:
+            - article [ref=e257]:
+              - navigation "Breadcrumbs" [ref=e258]:
+                - list [ref=e259]:
+                  - listitem [ref=e260]:
+                    - link "Home page" [ref=e261] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e262]
+                  - listitem [ref=e264]:
+                    - link "Self-Hosted Palette" [ref=e265] [cursor=pointer]:
+                      - /url: /enterprise-version/
+                  - listitem [ref=e266]:
+                    - link "Installation" [ref=e267] [cursor=pointer]:
+                      - /url: /enterprise-version/install-palette/
+                  - listitem [ref=e268]:
+                    - link "Kubernetes" [ref=e269] [cursor=pointer]:
+                      - /url: /enterprise-version/install-palette/install-on-kubernetes/
+                  - listitem [ref=e270]:
+                    - generic [ref=e271]: Helm Configuration Reference
+              - generic [ref=e272]:
+                - heading "Helm Chart Configuration Reference" [level=1] [ref=e274]
+                - paragraph [ref=e275]:
+                  - text: You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster in your production environment. The Helm chart allows you to customize values in the
+                  - strong [ref=e276]: values.yaml
+                  - text: file. This reference lists and describes parameters available in the
+                  - strong [ref=e277]: values.yaml
+                  - text: file from the Helm Chart for your installation. To learn how to install Palette using the Helm Chart, refer to the
+                  - link "Palette Helm install" [ref=e278] [cursor=pointer]:
+                    - /url: /enterprise-version/install-palette/install-on-kubernetes/install/
+                  - text: guide.
+                - heading "Required ParametersDirect link to Required Parameters" [level=3] [ref=e279]:
+                  - text: Required Parameters
+                  - link "Direct link to Required Parameters" [ref=e280] [cursor=pointer]:
+                    - /url: "#required-parameters"
+                    - text: "#"
+                - paragraph [ref=e281]: The following parameters are required for a successful installation of Palette.
+                - table [ref=e282]:
+                  - rowgroup [ref=e283]:
+                    - row "Parameters Description Type" [ref=e284]:
+                      - cell "Parameters" [ref=e285]:
+                        - strong [ref=e286]: Parameters
+                      - cell "Description" [ref=e287]:
+                        - strong [ref=e288]: Description
+                      - cell "Type" [ref=e289]:
+                        - strong [ref=e290]: Type
+                  - rowgroup [ref=e291]:
+                    - row "config.env.rootDomain Used to configure the domain for the Palette installation. We recommend you create a CNAME DNS record that supports multiple subdomains. You can achieve this using a wild card prefix, *.palette.abc.com. Review the Environment parameters to learn more. String" [ref=e292]:
+                      - cell "config.env.rootDomain" [ref=e293]:
+                        - code [ref=e294]: config.env.rootDomain
+                      - cell "Used to configure the domain for the Palette installation. We recommend you create a CNAME DNS record that supports multiple subdomains. You can achieve this using a wild card prefix, *.palette.abc.com. Review the Environment parameters to learn more." [ref=e295]:
+                        - text: Used to configure the domain for the Palette installation. We recommend you create a CNAME DNS record that supports multiple subdomains. You can achieve this using a wild card prefix,
+                        - code [ref=e296]: "*.palette.abc.com"
+                        - text: . Review the
+                        - link "Environment parameters" [ref=e297] [cursor=pointer]:
+                          - /url: "#environment"
+                        - text: to learn more.
+                      - cell "String" [ref=e298]
+                    - row "config.env.ociRegistry or config.env.ociEcrRegistry Specifies the FIPS image registry for Palette. You can use an a self-hosted OCI registry or a public OCI registry we maintain and support. For more information, refer to the Registry section. Object" [ref=e299]:
+                      - cell "config.env.ociRegistry or config.env.ociEcrRegistry" [ref=e300]:
+                        - code [ref=e301]: config.env.ociRegistry
+                        - text: or
+                        - code [ref=e302]: config.env.ociEcrRegistry
+                      - cell "Specifies the FIPS image registry for Palette. You can use an a self-hosted OCI registry or a public OCI registry we maintain and support. For more information, refer to the Registry section." [ref=e303]:
+                        - text: Specifies the FIPS image registry for Palette. You can use an a self-hosted OCI registry or a public OCI registry we maintain and support. For more information, refer to the
+                        - link "Registry" [ref=e304] [cursor=pointer]:
+                          - /url: "#registries"
+                        - text: section.
+                      - cell "Object" [ref=e305]
+                - generic [ref=e306]:
+                  - generic [ref=e307]:
+                    - img [ref=e309]
+                    - text: warning
+                  - paragraph [ref=e312]:
+                    - text: If you are installing an air-gapped version of Palette, you must provide the image swap configuration. For more information, refer to the
+                    - link "Image Swap Configuration" [ref=e313] [cursor=pointer]:
+                      - /url: "#image-swap-configuration"
+                    - text: section.
+                - heading "GlobalDirect link to Global" [level=2] [ref=e314]:
+                  - text: Global
+                  - link "Direct link to Global" [ref=e315] [cursor=pointer]:
+                    - /url: "#global"
+                    - text: "#"
+                - paragraph [ref=e316]: The global block allows you to provide configurations that apply globally to the installation process.
+                - heading "Image Pull SecretDirect link to Image Pull Secret" [level=3] [ref=e317]:
+                  - text: Image Pull Secret
+                  - link "Direct link to Image Pull Secret" [ref=e318] [cursor=pointer]:
+                    - /url: "#image-pull-secret"
+                    - text: "#"
+                - paragraph [ref=e319]:
+                  - text: The
+                  - code [ref=e320]: imagePullSecret
+                  - text: block allows you to provide image pull secrets that will be used to authenticate with private registries to obtain the images required for Palette installation. This is relevant if you have your own mirror registries you use for Palette installation.
+                - table [ref=e321]:
+                  - rowgroup [ref=e322]:
+                    - row "Parameters Description Type Default value" [ref=e323]:
+                      - cell "Parameters" [ref=e324]:
+                        - strong [ref=e325]: Parameters
+                      - cell "Description" [ref=e326]:
+                        - strong [ref=e327]: Description
+                      - cell "Type" [ref=e328]:
+                        - strong [ref=e329]: Type
+                      - cell "Default value" [ref=e330]:
+                        - strong [ref=e331]: Default value
+                  - rowgroup [ref=e332]:
+                    - row "create Specifies whether to create a secret containing credentials to your own private image registry. Boolean false" [ref=e333]:
+                      - cell "create" [ref=e334]:
+                        - code [ref=e335]: create
+                      - cell "Specifies whether to create a secret containing credentials to your own private image registry." [ref=e336]
+                      - cell "Boolean" [ref=e337]
+                      - cell "false" [ref=e338]:
+                        - code [ref=e339]: "false"
+                    - row "dockerConfigJson The config.json file value containing the registry URL and credentials for your image registry in base64 encoded format on a single line. For more information about the config.json file, refer to Kubernetes Documentation. String None" [ref=e340]:
+                      - cell "dockerConfigJson" [ref=e341]:
+                        - code [ref=e342]: dockerConfigJson
+                      - cell "The config.json file value containing the registry URL and credentials for your image registry in base64 encoded format on a single line. For more information about the config.json file, refer to Kubernetes Documentation." [ref=e343]:
+                        - text: The
+                        - strong [ref=e344]: config.json
+                        - text: file value containing the registry URL and credentials for your image registry in base64 encoded format on a single line. For more information about the
+                        - strong [ref=e345]: config.json
+                        - text: file, refer to
+                        - link "Kubernetes Documentation" [ref=e346] [cursor=pointer]:
+                          - /url: https://kubernetes.io/docs/concepts/containers/images/#config-json
+                        - text: .
+                      - cell "String" [ref=e347]
+                      - cell "None" [ref=e348]
+                - generic [ref=e349]:
+                  - generic [ref=e350]:
+                    - img [ref=e352]
+                    - text: info
+                  - generic [ref=e354]:
+                    - paragraph [ref=e355]:
+                      - text: To obtain the base-64 encoded version of the credential
+                      - code [ref=e356]: config.json
+                      - text: file, you can issue the following command. Replace
+                      - code [ref=e357]: <path/to/.docker/config.json>
+                      - text: with the path to your
+                      - code [ref=e358]: config.json
+                      - text: file. The
+                      - code [ref=e359]: tr -d '\n'
+                      - text: removes new line characters and produce the output on a single line.
+                    - generic [ref=e361]:
+                      - code [ref=e363]:
+                        - generic [ref=e364]: cat <path/to/.docker/config.json> | base64 | tr -d '\n'
+                      - button "Copy code to clipboard" [ref=e366] [cursor=pointer]:
+                        - generic [ref=e367]:
+                          - img [ref=e368]
+                          - img [ref=e370]
+                - generic [ref=e373]:
+                  - code [ref=e375]:
+                    - generic [ref=e376]: "global:"
+                    - generic [ref=e377]: "imagePullSecret:"
+                    - generic [ref=e378]: "create: true"
+                    - generic [ref=e379]: "dockerConfigJson: ewoJImF1dGhzHsKCQkiaG9va3......MiOiAidHJ1ZSIKCX0KfQ # Base64 encoded config.json"
+                  - generic [ref=e380]:
+                    - button "Toggle word wrap" [ref=e381] [cursor=pointer]:
+                      - img [ref=e382]
+                    - button "Copy code to clipboard" [ref=e384] [cursor=pointer]:
+                      - generic [ref=e385]:
+                        - img [ref=e386]
+                        - img [ref=e388]
+                - heading "MongoDBDirect link to MongoDB" [level=2] [ref=e390]:
+                  - text: MongoDB
+                  - link "Direct link to MongoDB" [ref=e391] [cursor=pointer]:
+                    - /url: "#mongodb"
+                    - text: "#"
+                - paragraph [ref=e392]: "Palette uses MongoDB Enterprise as its internal database and supports two modes of deployment:"
+                - list [ref=e393]:
+                  - listitem [ref=e394]:
+                    - paragraph [ref=e395]: MongoDB Enterprise deployed and active inside the cluster.
+                  - listitem [ref=e396]:
+                    - paragraph [ref=e397]:
+                      - text: MongoDB Enterprise is hosted on a Software-as-a-Service (SaaS) platform, such as MongoDB Atlas. If you choose to use MongoDB Atlas, ensure the MongoDB database has a user named
+                      - code [ref=e398]: hubble
+                      - text: with the permission
+                      - code [ref=e399]: readWriteAnyDatabase
+                      - text: . Refer to the
+                      - link "Add a Database User" [ref=e400] [cursor=pointer]:
+                        - /url: https://www.mongodb.com/docs/guides/atlas/db-user/
+                      - text: guide for guidance on how to create a database user in Atlas.
+                - paragraph [ref=e401]: The table below lists the parameters used to configure a MongoDB deployment.
+                - table [ref=e402]:
+                  - rowgroup [ref=e403]:
+                    - row "Parameters Description Type Default value" [ref=e404]:
+                      - cell "Parameters" [ref=e405]:
+                        - strong [ref=e406]: Parameters
+                      - cell "Description" [ref=e407]:
+                        - strong [ref=e408]: Description
+                      - cell "Type" [ref=e409]:
+                        - strong [ref=e410]: Type
+                      - cell "Default value" [ref=e411]:
+                        - strong [ref=e412]: Default value
+                  - rowgroup [ref=e413]:
+                    - row "internal Specifies the MongoDB deployment either in-cluster or using Mongo Atlas. Boolean true" [ref=e414]:
+                      - cell "internal" [ref=e415]:
+                        - code [ref=e416]: internal
+                      - cell "Specifies the MongoDB deployment either in-cluster or using Mongo Atlas." [ref=e417]
+                      - cell "Boolean" [ref=e418]
+                      - cell "true" [ref=e419]:
+                        - code [ref=e420]: "true"
+                    - row "databaseUrl The URL for MongoDB Enterprise. If using a remote MongoDB Enterprise instance, provide the remote URL. This parameter must be updated if mongo.internal is set to false. You also need to ensure the MongoDB database has a user named hubble with the permission readWriteAnyDatabase. Refer to the Add a Database User guide for guidance on how to create a database user in Atlas. String mongo-0.mongo,mongo-1.mongo,mongo-2.mongo" [ref=e421]:
+                      - cell "databaseUrl" [ref=e422]:
+                        - code [ref=e423]: databaseUrl
+                      - cell "The URL for MongoDB Enterprise. If using a remote MongoDB Enterprise instance, provide the remote URL. This parameter must be updated if mongo.internal is set to false. You also need to ensure the MongoDB database has a user named hubble with the permission readWriteAnyDatabase. Refer to the Add a Database User guide for guidance on how to create a database user in Atlas." [ref=e424]:
+                        - text: The URL for MongoDB Enterprise. If using a remote MongoDB Enterprise instance, provide the remote URL. This parameter must be updated if
+                        - code [ref=e425]: mongo.internal
+                        - text: is set to
+                        - code [ref=e426]: "false"
+                        - text: . You also need to ensure the MongoDB database has a user named
+                        - code [ref=e427]: hubble
+                        - text: with the permission
+                        - code [ref=e428]: readWriteAnyDatabase
+                        - text: . Refer to the
+                        - link "Add a Database User" [ref=e429] [cursor=pointer]:
+                          - /url: https://www.mongodb.com/docs/guides/atlas/db-user/
+                        - text: guide for guidance on how to create a database user in Atlas.
+                      - cell "String" [ref=e430]
+                      - cell "mongo-0.mongo,mongo-1.mongo,mongo-2.mongo" [ref=e431]:
+                        - code [ref=e432]: mongo-0.mongo,mongo-1.mongo,mongo-2.mongo
+                    - row "databasePassword The base64-encoded MongoDB Enterprise password. If you don't provide a value, a random password will be auto-generated. String \"\"" [ref=e433]:
+                      - cell "databasePassword" [ref=e434]:
+                        - code [ref=e435]: databasePassword
+                      - cell "The base64-encoded MongoDB Enterprise password. If you don't provide a value, a random password will be auto-generated." [ref=e436]
+                      - cell "String" [ref=e437]
+                      - cell "\"\"" [ref=e438]:
+                        - code [ref=e439]: "\"\""
+                    - row "replicas The number of MongoDB replicas to start. Integer 3" [ref=e440]:
+                      - cell "replicas" [ref=e441]:
+                        - code [ref=e442]: replicas
+                      - cell "The number of MongoDB replicas to start." [ref=e443]
+                      - cell "Integer" [ref=e444]
+                      - cell "3" [ref=e445]:
+                        - code [ref=e446]: "3"
+                    - row "memoryLimit Specifies the memory limit for each MongoDB Enterprise replica. String 4Gi" [ref=e447]:
+                      - cell "memoryLimit" [ref=e448]:
+                        - code [ref=e449]: memoryLimit
+                      - cell "Specifies the memory limit for each MongoDB Enterprise replica." [ref=e450]
+                      - cell "String" [ref=e451]
+                      - cell "4Gi" [ref=e452]:
+                        - code [ref=e453]: 4Gi
+                    - row "cpuLimit Specifies the CPU limit for each MongoDB Enterprise member. String 2000m" [ref=e454]:
+                      - cell "cpuLimit" [ref=e455]:
+                        - code [ref=e456]: cpuLimit
+                      - cell "Specifies the CPU limit for each MongoDB Enterprise member." [ref=e457]
+                      - cell "String" [ref=e458]
+                      - cell "2000m" [ref=e459]:
+                        - code [ref=e460]: 2000m
+                    - row "pvcSize The storage settings for the MongoDB Enterprise database. Use increments of 5Gi when specifying the storage size. The storage size applies to each replica instance. The total storage size for the cluster is replicas * pvcSize. string 20Gi" [ref=e461]:
+                      - cell "pvcSize" [ref=e462]:
+                        - code [ref=e463]: pvcSize
+                      - cell "The storage settings for the MongoDB Enterprise database. Use increments of 5Gi when specifying the storage size. The storage size applies to each replica instance. The total storage size for the cluster is replicas * pvcSize." [ref=e464]:
+                        - text: The storage settings for the MongoDB Enterprise database. Use increments of
+                        - code [ref=e465]: 5Gi
+                        - text: when specifying the storage size. The storage size applies to each replica instance. The total storage size for the cluster is
+                        - code [ref=e466]: replicas
+                        - text: "*"
+                        - code [ref=e467]: pvcSize
+                        - text: .
+                      - cell "string" [ref=e468]
+                      - cell "20Gi" [ref=e469]:
+                        - code [ref=e470]: 20Gi
+                    - row "storageClass The storage class for the MongoDB Enterprise database. String \"\"" [ref=e471]:
+                      - cell "storageClass" [ref=e472]:
+                        - code [ref=e473]: storageClass
+                      - cell "The storage class for the MongoDB Enterprise database." [ref=e474]
+                      - cell "String" [ref=e475]
+                      - cell "\"\"" [ref=e476]:
+                        - code [ref=e477]: "\"\""
+                - generic [ref=e479]:
+                  - code [ref=e481]:
+                    - generic [ref=e482]: "mongo:"
+                    - generic [ref=e483]: "internal: true"
+                    - generic [ref=e484]: "databaseUrl: \"mongo-0.mongo,mongo-1.mongo,mongo-2.mongo\""
+                    - generic [ref=e485]: "databasePassword: \"\""
+                    - generic [ref=e486]: "replicas: 3"
+                    - generic [ref=e487]: "cpuLimit: \"2000m\""
+                    - generic [ref=e488]: "memoryLimit: \"4Gi\""
+                    - generic [ref=e489]: "pvcSize: \"20Gi\""
+                    - generic [ref=e490]: "storageClass: \"\""
+                  - button "Copy code to clipboard" [ref=e492] [cursor=pointer]:
+                    - generic [ref=e493]:
+                      - img [ref=e494]
+                      - img [ref=e496]
+                - heading "ConfigDirect link to Config" [level=2] [ref=e498]:
+                  - text: Config
+                  - link "Direct link to Config" [ref=e499] [cursor=pointer]:
+                    - /url: "#config"
+                    - text: "#"
+                - paragraph [ref=e500]:
+                  - text: Review the following parameters to configure Palette for your environment. The
+                  - code [ref=e501]: config
+                  - text: "section contains the following subsections:"
+                - heading "Install ModeDirect link to Install Mode" [level=3] [ref=e502]:
+                  - text: Install Mode
+                  - link "Direct link to Install Mode" [ref=e503] [cursor=pointer]:
+                    - /url: "#install-mode"
+                    - text: "#"
+                - paragraph [ref=e504]: You can install Palette in connected or air-gapped mode. The table lists the parameters to configure the installation mode.
+                - table [ref=e505]:
+                  - rowgroup [ref=e506]:
+                    - row "Parameters Description Type Default value" [ref=e507]:
+                      - cell "Parameters" [ref=e508]:
+                        - strong [ref=e509]: Parameters
+                      - cell "Description" [ref=e510]:
+                        - strong [ref=e511]: Description
+                      - cell "Type" [ref=e512]:
+                        - strong [ref=e513]: Type
+                      - cell "Default value" [ref=e514]:
+                        - strong [ref=e515]: Default value
+                  - rowgroup [ref=e516]:
+                    - row "installMode Specifies the installation mode. Allowed values are connected or airgap. Set the value to airgap when installing in an air-gapped environment. String connected" [ref=e517]:
+                      - cell "installMode" [ref=e518]:
+                        - code [ref=e519]: installMode
+                      - cell "Specifies the installation mode. Allowed values are connected or airgap. Set the value to airgap when installing in an air-gapped environment." [ref=e520]:
+                        - text: Specifies the installation mode. Allowed values are
+                        - code [ref=e521]: connected
+                        - text: or
+                        - code [ref=e522]: airgap
+                        - text: . Set the value to
+                        - code [ref=e523]: airgap
+                        - text: when installing in an air-gapped environment.
+                      - cell "String" [ref=e524]
+                      - cell "connected" [ref=e525]:
+                        - code [ref=e526]: connected
+                - generic [ref=e528]:
+                  - code [ref=e530]:
+                    - generic [ref=e531]: "config:"
+                    - generic [ref=e532]: "managementMode: \"central\""
+                  - button "Copy code to clipboard" [ref=e534] [cursor=pointer]:
+                    - generic [ref=e535]:
+                      - img [ref=e536]
+                      - img [ref=e538]
+                - heading "SSODirect link to SSO" [level=3] [ref=e540]:
+                  - text: SSO
+                  - link "Direct link to SSO" [ref=e541] [cursor=pointer]:
+                    - /url: "#sso"
+                    - text: "#"
+                - paragraph [ref=e542]:
+                  - text: You can configure Palette to use Single Sign-On (SSO) for user authentication. Configure the SSO parameters to enable SSO for Palette. You can also configure different SSO providers for each tenant post-install, check out the
+                  - link "SAML & SSO Setup" [ref=e543] [cursor=pointer]:
+                    - /url: /user-management/saml-sso/
+                  - text: documentation for additional guidance.
+                - paragraph [ref=e544]: To configure SSO, you must provide the following parameters.
+                - table [ref=e545]:
+                  - rowgroup [ref=e546]:
+                    - row "Parameters Description Type Default value" [ref=e547]:
+                      - cell "Parameters" [ref=e548]:
+                        - strong [ref=e549]: Parameters
+                      - cell "Description" [ref=e550]:
+                        - strong [ref=e551]: Description
+                      - cell "Type" [ref=e552]:
+                        - strong [ref=e553]: Type
+                      - cell "Default value" [ref=e554]:
+                        - strong [ref=e555]: Default value
+                  - rowgroup [ref=e556]:
+                    - row "saml.enabled Specifies whether to enable SSO SAML configuration by setting it to true. Boolean false" [ref=e557]:
+                      - cell "saml.enabled" [ref=e558]:
+                        - code [ref=e559]: saml.enabled
+                      - cell "Specifies whether to enable SSO SAML configuration by setting it to true." [ref=e560]
+                      - cell "Boolean" [ref=e561]
+                      - cell "false" [ref=e562]:
+                        - code [ref=e563]: "false"
+                    - row "saml.acsUrlRoot The root URL of the Assertion Consumer Service (ACS). String myfirstpalette.spectrocloud.com" [ref=e564]:
+                      - cell "saml.acsUrlRoot" [ref=e565]:
+                        - code [ref=e566]: saml.acsUrlRoot
+                      - cell "The root URL of the Assertion Consumer Service (ACS)." [ref=e567]
+                      - cell "String" [ref=e568]
+                      - cell "myfirstpalette.spectrocloud.com" [ref=e569]:
+                        - code [ref=e570]: myfirstpalette.spectrocloud.com
+                    - 'row "saml.acsUrlScheme The URL scheme of the ACS: http or https. String https" [ref=e571]':
+                      - cell "saml.acsUrlScheme" [ref=e572]:
+                        - code [ref=e573]: saml.acsUrlScheme
+                      - 'cell "The URL scheme of the ACS: http or https." [ref=e574]':
+                        - text: "The URL scheme of the ACS:"
+                        - code [ref=e575]: http
+                        - text: or
+                        - code [ref=e576]: https
+                        - text: .
+                      - cell "String" [ref=e577]
+                      - cell "https" [ref=e578]:
+                        - code [ref=e579]: https
+                    - row "saml.audienceUrl The URL of the intended audience for the SAML response. String https://www.spectrocloud.com" [ref=e580]:
+                      - cell "saml.audienceUrl" [ref=e581]:
+                        - code [ref=e582]: saml.audienceUrl
+                      - cell "The URL of the intended audience for the SAML response." [ref=e583]
+                      - cell "String" [ref=e584]
+                      - cell "https://www.spectrocloud.com" [ref=e585]:
+                        - code [ref=e586]: https://www.spectrocloud.com
+                    - row "saml.entityID The Entity ID of the Service Provider. String https://www.spectrocloud.com" [ref=e587]:
+                      - cell "saml.entityID" [ref=e588]:
+                        - code [ref=e589]: saml.entityID
+                      - cell "The Entity ID of the Service Provider." [ref=e590]
+                      - cell "String" [ref=e591]
+                      - cell "https://www.spectrocloud.com" [ref=e592]:
+                        - code [ref=e593]: https://www.spectrocloud.com
+                    - row "saml.apiVersion Specify the SSO SAML API version to use. String v1" [ref=e594]:
+                      - cell "saml.apiVersion" [ref=e595]:
+                        - code [ref=e596]: saml.apiVersion
+                      - cell "Specify the SSO SAML API version to use." [ref=e597]
+                      - cell "String" [ref=e598]
+                      - cell "v1" [ref=e599]:
+                        - code [ref=e600]: v1
+                - generic [ref=e602]:
+                  - code [ref=e604]:
+                    - generic [ref=e605]: "config:"
+                    - generic [ref=e606]: "sso:"
+                    - generic [ref=e607]: "saml:"
+                    - generic [ref=e608]: "enabled: false"
+                    - generic [ref=e609]: "acsUrlRoot: \"myfirstpalette.spectrocloud.com\""
+                    - generic [ref=e610]: "acsUrlScheme: \"https\""
+                    - generic [ref=e611]: "audienceUrl: \"https://www.spectrocloud.com\""
+                    - generic [ref=e612]: "entityId: \"https://www.spectrocloud.com\""
+                    - generic [ref=e613]: "apiVersion: \"v1\""
+                  - button "Copy code to clipboard" [ref=e615] [cursor=pointer]:
+                    - generic [ref=e616]:
+                      - img [ref=e617]
+                      - img [ref=e619]
+                - heading "EmailDirect link to Email" [level=3] [ref=e621]:
+                  - text: Email
+                  - link "Direct link to Email" [ref=e622] [cursor=pointer]:
+                    - /url: "#email"
+                    - text: "#"
+                - paragraph [ref=e623]:
+                  - text: Palette uses email to send notifications to users. The email notification is used when inviting new users to the platform, password resets, and when
+                  - link "webhook alerts" [ref=e624] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/health-alerts/
+                  - text: are triggered. Use the following parameters to configure email settings for Palette.
+                - table [ref=e625]:
+                  - rowgroup [ref=e626]:
+                    - row "Parameters Description Type Default value" [ref=e627]:
+                      - cell "Parameters" [ref=e628]:
+                        - strong [ref=e629]: Parameters
+                      - cell "Description" [ref=e630]:
+                        - strong [ref=e631]: Description
+                      - cell "Type" [ref=e632]:
+                        - strong [ref=e633]: Type
+                      - cell "Default value" [ref=e634]:
+                        - strong [ref=e635]: Default value
+                  - rowgroup [ref=e636]:
+                    - row "enabled Specifies whether to enable email configuration. Boolean false" [ref=e637]:
+                      - cell "enabled" [ref=e638]:
+                        - code [ref=e639]: enabled
+                      - cell "Specifies whether to enable email configuration." [ref=e640]
+                      - cell "Boolean" [ref=e641]
+                      - cell "false" [ref=e642]:
+                        - code [ref=e643]: "false"
+                    - row "emailID The email address for sending mail. String noreply@spectrocloud.com" [ref=e644]:
+                      - cell "emailID" [ref=e645]:
+                        - code [ref=e646]: emailID
+                      - cell "The email address for sending mail." [ref=e647]
+                      - cell "String" [ref=e648]
+                      - cell "noreply@spectrocloud.com" [ref=e649]:
+                        - code [ref=e650]: noreply@spectrocloud.com
+                    - row "smtpServer Simple Mail Transfer Protocol (SMTP) server used for sending mail. String smtp.gmail.com" [ref=e651]:
+                      - cell "smtpServer" [ref=e652]:
+                        - code [ref=e653]: smtpServer
+                      - cell "Simple Mail Transfer Protocol (SMTP) server used for sending mail." [ref=e654]
+                      - cell "String" [ref=e655]
+                      - cell "smtp.gmail.com" [ref=e656]:
+                        - code [ref=e657]: smtp.gmail.com
+                    - row "smtpPort SMTP port used for sending mail. Integer 587" [ref=e658]:
+                      - cell "smtpPort" [ref=e659]:
+                        - code [ref=e660]: smtpPort
+                      - cell "SMTP port used for sending mail." [ref=e661]
+                      - cell "Integer" [ref=e662]
+                      - cell "587" [ref=e663]:
+                        - code [ref=e664]: "587"
+                    - row "insecureSkipVerifyTLS Specifies whether to skip Transport Layer Security (TLS) verification for the SMTP connection. Boolean true" [ref=e665]:
+                      - cell "insecureSkipVerifyTLS" [ref=e666]:
+                        - code [ref=e667]: insecureSkipVerifyTLS
+                      - cell "Specifies whether to skip Transport Layer Security (TLS) verification for the SMTP connection." [ref=e668]
+                      - cell "Boolean" [ref=e669]
+                      - cell "true" [ref=e670]:
+                        - code [ref=e671]: "true"
+                    - row "fromEmailID Email address of the From address. String noreply@spectrocloud.com" [ref=e672]:
+                      - cell "fromEmailID" [ref=e673]:
+                        - code [ref=e674]: fromEmailID
+                      - cell "Email address of the From address." [ref=e675]:
+                        - text: Email address of the
+                        - strong [ref=e676]:
+                          - emphasis [ref=e677]: From
+                        - text: address.
+                      - cell "String" [ref=e678]
+                      - cell "noreply@spectrocloud.com" [ref=e679]:
+                        - code [ref=e680]: noreply@spectrocloud.com
+                    - row "password The base64-encoded SMTP password when sending emails. String \"\"" [ref=e681]:
+                      - cell "password" [ref=e682]:
+                        - code [ref=e683]: password
+                      - cell "The base64-encoded SMTP password when sending emails." [ref=e684]
+                      - cell "String" [ref=e685]
+                      - cell "\"\"" [ref=e686]:
+                        - code [ref=e687]: "\"\""
+                - generic [ref=e689]:
+                  - code [ref=e691]:
+                    - generic [ref=e692]: "config:"
+                    - generic [ref=e693]: "email:"
+                    - generic [ref=e694]: "enabled: false"
+                    - generic [ref=e695]: "emailId: \"noreply@spectrocloud.com\""
+                    - generic [ref=e696]: "smtpServer: \"smtp.gmail.com\""
+                    - generic [ref=e697]: "smtpPort: 587"
+                    - generic [ref=e698]: "insecureSkipVerifyTls: true"
+                    - generic [ref=e699]: "fromEmailId: \"noreply@spectrocloud.com\""
+                    - generic [ref=e700]: "password: \"\""
+                  - button "Copy code to clipboard" [ref=e702] [cursor=pointer]:
+                    - generic [ref=e703]:
+                      - img [ref=e704]
+                      - img [ref=e706]
+                - heading "EnvironmentDirect link to Environment" [level=3] [ref=e708]:
+                  - text: Environment
+                  - link "Direct link to Environment" [ref=e709] [cursor=pointer]:
+                    - /url: "#environment"
+                    - text: "#"
+                - paragraph [ref=e710]: The following parameters are used to configure the environment.
+                - table [ref=e711]:
+                  - rowgroup [ref=e712]:
+                    - row "Parameters Description Type Default value" [ref=e713]:
+                      - cell "Parameters" [ref=e714]:
+                        - strong [ref=e715]: Parameters
+                      - cell "Description" [ref=e716]:
+                        - strong [ref=e717]: Description
+                      - cell "Type" [ref=e718]:
+                        - strong [ref=e719]: Type
+                      - cell "Default value" [ref=e720]:
+                        - strong [ref=e721]: Default value
+                  - rowgroup [ref=e722]:
+                    - row "env.rootDomain Specifies the URL name assigned to Palette. The value assigned should have a Domain Name System (DNS) CNAME record mapped to exposed IP address or the load balancer URL of the service ingress-nginx-controller. Optionally, if ingress.ingressStaticIP is provided with a value you can use same assigned static IP address as the value to this parameter. String \"\"" [ref=e723]:
+                      - cell "env.rootDomain" [ref=e724]:
+                        - code [ref=e725]: env.rootDomain
+                      - cell "Specifies the URL name assigned to Palette. The value assigned should have a Domain Name System (DNS) CNAME record mapped to exposed IP address or the load balancer URL of the service ingress-nginx-controller. Optionally, if ingress.ingressStaticIP is provided with a value you can use same assigned static IP address as the value to this parameter." [ref=e726]:
+                        - text: Specifies the URL name assigned to Palette. The value assigned should have a Domain Name System (DNS) CNAME record mapped to exposed IP address or the load balancer URL of the service
+                        - emphasis [ref=e727]: ingress-nginx-controller
+                        - text: . Optionally, if
+                        - code [ref=e728]: ingress.ingressStaticIP
+                        - text: is provided with a value you can use same assigned static IP address as the value to this parameter.
+                      - cell "String" [ref=e729]
+                      - cell "\"\"" [ref=e730]:
+                        - code [ref=e731]: "\"\""
+                    - row "env.installerMode Specifies the installer mode. Do not modify the value. String self-hosted" [ref=e732]:
+                      - cell "env.installerMode" [ref=e733]:
+                        - code [ref=e734]: env.installerMode
+                      - cell "Specifies the installer mode. Do not modify the value." [ref=e735]
+                      - cell "String" [ref=e736]
+                      - cell "self-hosted" [ref=e737]:
+                        - code [ref=e738]: self-hosted
+                    - row "env.installerCloud Specifies the cloud provider. Leave this parameter empty if you are installing a self-hosted Palette. String \"\"" [ref=e739]:
+                      - cell "env.installerCloud" [ref=e740]:
+                        - code [ref=e741]: env.installerCloud
+                      - cell "Specifies the cloud provider. Leave this parameter empty if you are installing a self-hosted Palette." [ref=e742]
+                      - cell "String" [ref=e743]
+                      - cell "\"\"" [ref=e744]:
+                        - code [ref=e745]: "\"\""
+                - generic [ref=e747]:
+                  - code [ref=e749]:
+                    - generic [ref=e750]: "config:"
+                    - generic [ref=e751]: "env:"
+                    - generic [ref=e752]: "rootDomain: \"\""
+                  - button "Copy code to clipboard" [ref=e754] [cursor=pointer]:
+                    - generic [ref=e755]:
+                      - img [ref=e756]
+                      - img [ref=e758]
+                - generic [ref=e760]:
+                  - generic [ref=e761]:
+                    - img [ref=e763]
+                    - text: warning
+                  - paragraph [ref=e766]:
+                    - text: If Palette has only one tenant and you use local accounts with Single Sign-On (SSO) disabled, you can access Palette using the IP address or any domain name that resolves to that IP. However, once you enable SSO, users must log in using the tenant-specific subdomain. For example, if you create a tenant named
+                    - code [ref=e767]: tenant1
+                    - text: and the domain name you assigned to Palette is
+                    - code [ref=e768]: palette.example.com
+                    - text: ", the tenant URL will be"
+                    - code [ref=e769]: tenant1.palette.example.com
+                    - text: . We recommend you create an additional wildcard DNS record to map all tenant URLs to the Palette load balancer. For example,
+                    - code [ref=e770]: "*.palette.example.com"
+                    - text: .
+                - heading "ClusterDirect link to Cluster" [level=3] [ref=e771]:
+                  - text: Cluster
+                  - link "Direct link to Cluster" [ref=e772] [cursor=pointer]:
+                    - /url: "#cluster"
+                    - text: "#"
+                - paragraph [ref=e773]: Use the following parameters to configure the Kubernetes cluster.
+                - table [ref=e774]:
+                  - rowgroup [ref=e775]:
+                    - row "Parameters Description Type Default value" [ref=e776]:
+                      - cell "Parameters" [ref=e777]:
+                        - strong [ref=e778]: Parameters
+                      - cell "Description" [ref=e779]:
+                        - strong [ref=e780]: Description
+                      - cell "Type" [ref=e781]:
+                        - strong [ref=e782]: Type
+                      - cell "Default value" [ref=e783]:
+                        - strong [ref=e784]: Default value
+                  - rowgroup [ref=e785]:
+                    - row "stableEndpointAccess Set to true if the Kubernetes cluster is deployed in a public endpoint. If the cluster is deployed in a private network through a stable private endpoint, set to false. Boolean false" [ref=e786]:
+                      - cell "stableEndpointAccess" [ref=e787]:
+                        - code [ref=e788]: stableEndpointAccess
+                      - cell "Set to true if the Kubernetes cluster is deployed in a public endpoint. If the cluster is deployed in a private network through a stable private endpoint, set to false." [ref=e789]:
+                        - text: Set to
+                        - code [ref=e790]: "true"
+                        - text: if the Kubernetes cluster is deployed in a public endpoint. If the cluster is deployed in a private network through a stable private endpoint, set to
+                        - code [ref=e791]: "false"
+                        - text: .
+                      - cell "Boolean" [ref=e792]
+                      - cell "false" [ref=e793]:
+                        - code [ref=e794]: "false"
+                - generic [ref=e796]:
+                  - code [ref=e798]:
+                    - generic [ref=e799]: "config:"
+                    - generic [ref=e800]: "cluster:"
+                    - generic [ref=e801]: "stableEndpointAccess: false"
+                  - button "Copy code to clipboard" [ref=e803] [cursor=pointer]:
+                    - generic [ref=e804]:
+                      - img [ref=e805]
+                      - img [ref=e807]
+                - heading "RegistriesDirect link to Registries" [level=2] [ref=e809]:
+                  - text: Registries
+                  - link "Direct link to Registries" [ref=e810] [cursor=pointer]:
+                    - /url: "#registries"
+                    - text: "#"
+                - paragraph [ref=e811]: Palette requires credentials to access the required Palette images. You can configure different types of registries for Palette to download the required images. You must configure at least one Open Container Initiative (OCI) registry for Palette.
+                - heading "OCI RegistryDirect link to OCI Registry" [level=3] [ref=e812]:
+                  - text: OCI Registry
+                  - link "Direct link to OCI Registry" [ref=e813] [cursor=pointer]:
+                    - /url: "#oci-registry"
+                    - text: "#"
+                - paragraph [ref=e814]:
+                  - text: Palette requires access to an OCI registry that contains all the required FIPS packs. You can host your own OCI registry and configure Palette to reference the registry. Alternatively, you can use the public OCI registry that we provide. Refer to the
+                  - link "ociPackEcrRegistry" [ref=e815] [cursor=pointer]:
+                    - /url: "#oci-ecr-registry"
+                    - code [ref=e816]: ociPackEcrRegistry
+                  - text: section to learn more about the publicly available OCI registry.
+                - table [ref=e817]:
+                  - rowgroup [ref=e818]:
+                    - row "Parameters Description Type Default value" [ref=e819]:
+                      - cell "Parameters" [ref=e820]:
+                        - strong [ref=e821]: Parameters
+                      - cell "Description" [ref=e822]:
+                        - strong [ref=e823]: Description
+                      - cell "Type" [ref=e824]:
+                        - strong [ref=e825]: Type
+                      - cell "Default value" [ref=e826]:
+                        - strong [ref=e827]: Default value
+                  - rowgroup [ref=e828]:
+                    - row "ociPackRegistry.endpoint The endpoint URL for the registry. String \"\"" [ref=e829]:
+                      - cell "ociPackRegistry.endpoint" [ref=e830]:
+                        - code [ref=e831]: ociPackRegistry.endpoint
+                      - cell "The endpoint URL for the registry." [ref=e832]
+                      - cell "String" [ref=e833]
+                      - cell "\"\"" [ref=e834]:
+                        - code [ref=e835]: "\"\""
+                    - row "ociPackRegistry.name The name of the registry. String \"\"" [ref=e836]:
+                      - cell "ociPackRegistry.name" [ref=e837]:
+                        - code [ref=e838]: ociPackRegistry.name
+                      - cell "The name of the registry." [ref=e839]
+                      - cell "String" [ref=e840]
+                      - cell "\"\"" [ref=e841]:
+                        - code [ref=e842]: "\"\""
+                    - row "ociPackRegistry.password The base64-encoded password for the registry. String \"\"" [ref=e843]:
+                      - cell "ociPackRegistry.password" [ref=e844]:
+                        - code [ref=e845]: ociPackRegistry.password
+                      - cell "The base64-encoded password for the registry." [ref=e846]
+                      - cell "String" [ref=e847]
+                      - cell "\"\"" [ref=e848]:
+                        - code [ref=e849]: "\"\""
+                    - row "ociPackRegistry.username The username for the registry. String \"\"" [ref=e850]:
+                      - cell "ociPackRegistry.username" [ref=e851]:
+                        - code [ref=e852]: ociPackRegistry.username
+                      - cell "The username for the registry." [ref=e853]
+                      - cell "String" [ref=e854]
+                      - cell "\"\"" [ref=e855]:
+                        - code [ref=e856]: "\"\""
+                    - row "ociPackRegistry.baseContentPath The base path for the registry. String \"\"" [ref=e857]:
+                      - cell "ociPackRegistry.baseContentPath" [ref=e858]:
+                        - code [ref=e859]: ociPackRegistry.baseContentPath
+                      - cell "The base path for the registry." [ref=e860]
+                      - cell "String" [ref=e861]
+                      - cell "\"\"" [ref=e862]:
+                        - code [ref=e863]: "\"\""
+                    - row "ociPackRegistry.insecureSkipVerify Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. Boolean false" [ref=e864]:
+                      - cell "ociPackRegistry.insecureSkipVerify" [ref=e865]:
+                        - code [ref=e866]: ociPackRegistry.insecureSkipVerify
+                      - cell "Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection." [ref=e867]
+                      - cell "Boolean" [ref=e868]
+                      - cell "false" [ref=e869]:
+                        - code [ref=e870]: "false"
+                    - row "ociPackRegistry.caCert The registry's base64-encoded certificate authority (CA) certificate. String \"\"" [ref=e871]:
+                      - cell "ociPackRegistry.caCert" [ref=e872]:
+                        - code [ref=e873]: ociPackRegistry.caCert
+                      - cell "The registry's base64-encoded certificate authority (CA) certificate." [ref=e874]
+                      - cell "String" [ref=e875]
+                      - cell "\"\"" [ref=e876]:
+                        - code [ref=e877]: "\"\""
+                - generic [ref=e879]:
+                  - code [ref=e881]:
+                    - generic [ref=e882]: "config:"
+                    - generic [ref=e883]: "ociPackRegistry:"
+                    - generic [ref=e884]: "endpoint: \"\""
+                    - generic [ref=e885]: "name: \"\""
+                    - generic [ref=e886]: "password: \"\""
+                    - generic [ref=e887]: "username: \"\""
+                    - generic [ref=e888]: "baseContentPath: \"\""
+                    - generic [ref=e889]: "insecureSkipVerify: false"
+                    - generic [ref=e890]: "caCert: \"\""
+                  - button "Copy code to clipboard" [ref=e892] [cursor=pointer]:
+                    - generic [ref=e893]:
+                      - img [ref=e894]
+                      - img [ref=e896]
+                - heading "OCI ECR RegistryDirect link to OCI ECR Registry" [level=3] [ref=e898]:
+                  - text: OCI ECR Registry
+                  - link "Direct link to OCI ECR Registry" [ref=e899] [cursor=pointer]:
+                    - /url: "#oci-ecr-registry"
+                    - text: "#"
+                - paragraph [ref=e900]:
+                  - text: We expose a public OCI ECR registry that you can configure Palette to reference. If you want to host your own OCI registry, refer to the
+                  - link "OCI Registry" [ref=e901] [cursor=pointer]:
+                    - /url: "#oci-registry"
+                  - text: section. The OCI Elastic Container Registry (ECR) is hosted in an AWS ECR registry. Our support team provides the credentials for the OCI ECR registry.
+                - table [ref=e902]:
+                  - rowgroup [ref=e903]:
+                    - row "Parameters Description Type Default value" [ref=e904]:
+                      - cell "Parameters" [ref=e905]:
+                        - strong [ref=e906]: Parameters
+                      - cell "Description" [ref=e907]:
+                        - strong [ref=e908]: Description
+                      - cell "Type" [ref=e909]:
+                        - strong [ref=e910]: Type
+                      - cell "Default value" [ref=e911]:
+                        - strong [ref=e912]: Default value
+                  - rowgroup [ref=e913]:
+                    - row "ociPackEcrRegistry.endpoint The endpoint URL for the registry. String \"\"" [ref=e914]:
+                      - cell "ociPackEcrRegistry.endpoint" [ref=e915]:
+                        - code [ref=e916]: ociPackEcrRegistry.endpoint
+                      - cell "The endpoint URL for the registry." [ref=e917]
+                      - cell "String" [ref=e918]
+                      - cell "\"\"" [ref=e919]:
+                        - code [ref=e920]: "\"\""
+                    - row "ociPackEcrRegistry.name The name of the registry. String \"\"" [ref=e921]:
+                      - cell "ociPackEcrRegistry.name" [ref=e922]:
+                        - code [ref=e923]: ociPackEcrRegistry.name
+                      - cell "The name of the registry." [ref=e924]
+                      - cell "String" [ref=e925]
+                      - cell "\"\"" [ref=e926]:
+                        - code [ref=e927]: "\"\""
+                    - row "ociPackEcrRegistry.accessKey The base64-encoded access key for the registry. String \"\"" [ref=e928]:
+                      - cell "ociPackEcrRegistry.accessKey" [ref=e929]:
+                        - code [ref=e930]: ociPackEcrRegistry.accessKey
+                      - cell "The base64-encoded access key for the registry." [ref=e931]
+                      - cell "String" [ref=e932]
+                      - cell "\"\"" [ref=e933]:
+                        - code [ref=e934]: "\"\""
+                    - row "ociPackEcrRegistry.secretKey The base64-encoded secret key for the registry. String \"\"" [ref=e935]:
+                      - cell "ociPackEcrRegistry.secretKey" [ref=e936]:
+                        - code [ref=e937]: ociPackEcrRegistry.secretKey
+                      - cell "The base64-encoded secret key for the registry." [ref=e938]
+                      - cell "String" [ref=e939]
+                      - cell "\"\"" [ref=e940]:
+                        - code [ref=e941]: "\"\""
+                    - row "ociPackEcrRegistry.baseContentPath The base path for the registry. String \"\"" [ref=e942]:
+                      - cell "ociPackEcrRegistry.baseContentPath" [ref=e943]:
+                        - code [ref=e944]: ociPackEcrRegistry.baseContentPath
+                      - cell "The base path for the registry." [ref=e945]
+                      - cell "String" [ref=e946]
+                      - cell "\"\"" [ref=e947]:
+                        - code [ref=e948]: "\"\""
+                    - row "ociPackEcrRegistry.isPrivate Specifies whether the registry is private. Boolean true" [ref=e949]:
+                      - cell "ociPackEcrRegistry.isPrivate" [ref=e950]:
+                        - code [ref=e951]: ociPackEcrRegistry.isPrivate
+                      - cell "Specifies whether the registry is private." [ref=e952]
+                      - cell "Boolean" [ref=e953]
+                      - cell "true" [ref=e954]:
+                        - code [ref=e955]: "true"
+                    - row "ociPackEcrRegistry.insecureSkipVerify Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. Boolean false" [ref=e956]:
+                      - cell "ociPackEcrRegistry.insecureSkipVerify" [ref=e957]:
+                        - code [ref=e958]: ociPackEcrRegistry.insecureSkipVerify
+                      - cell "Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection." [ref=e959]
+                      - cell "Boolean" [ref=e960]
+                      - cell "false" [ref=e961]:
+                        - code [ref=e962]: "false"
+                    - row "ociPackEcrRegistry.caCert The registry's base64-encoded certificate authority (CA) certificate. String \"\"" [ref=e963]:
+                      - cell "ociPackEcrRegistry.caCert" [ref=e964]:
+                        - code [ref=e965]: ociPackEcrRegistry.caCert
+                      - cell "The registry's base64-encoded certificate authority (CA) certificate." [ref=e966]
+                      - cell "String" [ref=e967]
+                      - cell "\"\"" [ref=e968]:
+                        - code [ref=e969]: "\"\""
+                - generic [ref=e971]:
+                  - code [ref=e973]:
+                    - generic [ref=e974]: "config:"
+                    - generic [ref=e975]: "ociPackEcrRegistry:"
+                    - generic [ref=e976]: "endpoint: \"\""
+                    - generic [ref=e977]: "name: \"\""
+                    - generic [ref=e978]: "accessKey: \"\""
+                    - generic [ref=e979]: "secretKey: \"\""
+                    - generic [ref=e980]: "baseContentPath: \"\""
+                    - generic [ref=e981]: "isPrivate: true"
+                    - generic [ref=e982]: "insecureSkipVerify: false"
+                    - generic [ref=e983]: "caCert: \"\""
+                  - button "Copy code to clipboard" [ref=e985] [cursor=pointer]:
+                    - generic [ref=e986]:
+                      - img [ref=e987]
+                      - img [ref=e989]
+                - heading "OCI Image RegistryDirect link to OCI Image Registry" [level=3] [ref=e991]:
+                  - text: OCI Image Registry
+                  - link "Direct link to OCI Image Registry" [ref=e992] [cursor=pointer]:
+                    - /url: "#oci-image-registry"
+                    - text: "#"
+                - paragraph [ref=e993]: You can specify an OCI registry for the images used by Palette.
+                - table [ref=e994]:
+                  - rowgroup [ref=e995]:
+                    - row "Parameters Description Type Default value" [ref=e996]:
+                      - cell "Parameters" [ref=e997]:
+                        - strong [ref=e998]: Parameters
+                      - cell "Description" [ref=e999]:
+                        - strong [ref=e1000]: Description
+                      - cell "Type" [ref=e1001]:
+                        - strong [ref=e1002]: Type
+                      - cell "Default value" [ref=e1003]:
+                        - strong [ref=e1004]: Default value
+                  - rowgroup [ref=e1005]:
+                    - row "ociImageRegistry.endpoint The endpoint URL for the registry. String \"\"" [ref=e1006]:
+                      - cell "ociImageRegistry.endpoint" [ref=e1007]:
+                        - code [ref=e1008]: ociImageRegistry.endpoint
+                      - cell "The endpoint URL for the registry." [ref=e1009]
+                      - cell "String" [ref=e1010]
+                      - cell "\"\"" [ref=e1011]:
+                        - code [ref=e1012]: "\"\""
+                    - row "ociImageRegistry.name The name of the registry. String \"\"" [ref=e1013]:
+                      - cell "ociImageRegistry.name" [ref=e1014]:
+                        - code [ref=e1015]: ociImageRegistry.name
+                      - cell "The name of the registry." [ref=e1016]
+                      - cell "String" [ref=e1017]
+                      - cell "\"\"" [ref=e1018]:
+                        - code [ref=e1019]: "\"\""
+                    - row "ociImageRegistry.password The password for the registry. String \"\"" [ref=e1020]:
+                      - cell "ociImageRegistry.password" [ref=e1021]:
+                        - code [ref=e1022]: ociImageRegistry.password
+                      - cell "The password for the registry." [ref=e1023]
+                      - cell "String" [ref=e1024]
+                      - cell "\"\"" [ref=e1025]:
+                        - code [ref=e1026]: "\"\""
+                    - row "ociImageRegistry.username The username for the registry. String \"\"" [ref=e1027]:
+                      - cell "ociImageRegistry.username" [ref=e1028]:
+                        - code [ref=e1029]: ociImageRegistry.username
+                      - cell "The username for the registry." [ref=e1030]
+                      - cell "String" [ref=e1031]
+                      - cell "\"\"" [ref=e1032]:
+                        - code [ref=e1033]: "\"\""
+                    - row "ociImageRegistry.baseContentPath The base path for the registry. String \"\"" [ref=e1034]:
+                      - cell "ociImageRegistry.baseContentPath" [ref=e1035]:
+                        - code [ref=e1036]: ociImageRegistry.baseContentPath
+                      - cell "The base path for the registry." [ref=e1037]
+                      - cell "String" [ref=e1038]
+                      - cell "\"\"" [ref=e1039]:
+                        - code [ref=e1040]: "\"\""
+                    - row "ociImageRegistry.insecureSkipVerify Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. Boolean false" [ref=e1041]:
+                      - cell "ociImageRegistry.insecureSkipVerify" [ref=e1042]:
+                        - code [ref=e1043]: ociImageRegistry.insecureSkipVerify
+                      - cell "Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection." [ref=e1044]
+                      - cell "Boolean" [ref=e1045]
+                      - cell "false" [ref=e1046]:
+                        - code [ref=e1047]: "false"
+                    - row "ociImageRegistry.caCert The registry's base64-encoded certificate authority (CA) certificate. String \"\"" [ref=e1048]:
+                      - cell "ociImageRegistry.caCert" [ref=e1049]:
+                        - code [ref=e1050]: ociImageRegistry.caCert
+                      - cell "The registry's base64-encoded certificate authority (CA) certificate." [ref=e1051]
+                      - cell "String" [ref=e1052]
+                      - cell "\"\"" [ref=e1053]:
+                        - code [ref=e1054]: "\"\""
+                    - row "ociImageRegistry.mirrorRegistries A comma-separated list of mirror registries. String \"\"" [ref=e1055]:
+                      - cell "ociImageRegistry.mirrorRegistries" [ref=e1056]:
+                        - code [ref=e1057]: ociImageRegistry.mirrorRegistries
+                      - cell "A comma-separated list of mirror registries." [ref=e1058]
+                      - cell "String" [ref=e1059]
+                      - cell "\"\"" [ref=e1060]:
+                        - code [ref=e1061]: "\"\""
+                - generic [ref=e1063]:
+                  - code [ref=e1065]:
+                    - generic [ref=e1066]: "config:"
+                    - generic [ref=e1067]: "ociImageRegistry:"
+                    - generic [ref=e1068]: "endpoint: \"\""
+                    - generic [ref=e1069]: "name: \"\""
+                    - generic [ref=e1070]: "password: \"\""
+                    - generic [ref=e1071]: "username: \"\""
+                    - generic [ref=e1072]: "baseContentPath: \"\""
+                    - generic [ref=e1073]: "insecureSkipVerify: false"
+                    - generic [ref=e1074]: "caCert: \"\""
+                    - generic [ref=e1075]: "mirrorRegistries: \"\""
+                  - button "Copy code to clipboard" [ref=e1077] [cursor=pointer]:
+                    - generic [ref=e1078]:
+                      - img [ref=e1079]
+                      - img [ref=e1081]
+                - heading "Image Swap ConfigurationDirect link to Image Swap Configuration" [level=3] [ref=e1083]:
+                  - text: Image Swap Configuration
+                  - link "Direct link to Image Swap Configuration" [ref=e1084] [cursor=pointer]:
+                    - /url: "#image-swap-configuration"
+                    - text: "#"
+                - paragraph [ref=e1085]: You can configure Palette to use image swap to download the required images. This is an advanced configuration option, and it is only required for air-gapped deployments. You must also install the Palette Image Swap Helm chart to use this option, otherwise, Palette will ignore the configuration.
+                - table [ref=e1086]:
+                  - rowgroup [ref=e1087]:
+                    - row "Parameters Description Type Default value" [ref=e1088]:
+                      - cell "Parameters" [ref=e1089]:
+                        - strong [ref=e1090]: Parameters
+                      - cell "Description" [ref=e1091]:
+                        - strong [ref=e1092]: Description
+                      - cell "Type" [ref=e1093]:
+                        - strong [ref=e1094]: Type
+                      - cell "Default value" [ref=e1095]:
+                        - strong [ref=e1096]: Default value
+                  - rowgroup [ref=e1097]:
+                    - row "imageSwapInitImage The image swap init image. String gcr.io/spectro-images-public/release/thewebroot/imageswap-init:v1.5.3-spectro-4.5.1" [ref=e1098]:
+                      - cell "imageSwapInitImage" [ref=e1099]:
+                        - code [ref=e1100]: imageSwapInitImage
+                      - cell "The image swap init image." [ref=e1101]
+                      - cell "String" [ref=e1102]
+                      - cell "gcr.io/spectro-images-public/release/thewebroot/imageswap-init:v1.5.3-spectro-4.5.1" [ref=e1103]:
+                        - code [ref=e1104]: gcr.io/spectro-images-public/release/thewebroot/imageswap-init:v1.5.3-spectro-4.5.1
+                    - row "imageSwapImage The image swap image. String gcr.io/spectro-images-public/release/thewebroot/imageswap:v1.5.3-spectro-4.5.1" [ref=e1105]:
+                      - cell "imageSwapImage" [ref=e1106]:
+                        - code [ref=e1107]: imageSwapImage
+                      - cell "The image swap image." [ref=e1108]
+                      - cell "String" [ref=e1109]
+                      - cell "gcr.io/spectro-images-public/release/thewebroot/imageswap:v1.5.3-spectro-4.5.1" [ref=e1110]:
+                        - code [ref=e1111]: gcr.io/spectro-images-public/release/thewebroot/imageswap:v1.5.3-spectro-4.5.1
+                    - row "imageSwapConfig The image swap configuration for specific environments. String \"\"" [ref=e1112]:
+                      - cell "imageSwapConfig" [ref=e1113]:
+                        - code [ref=e1114]: imageSwapConfig
+                      - cell "The image swap configuration for specific environments." [ref=e1115]
+                      - cell "String" [ref=e1116]
+                      - cell "\"\"" [ref=e1117]:
+                        - code [ref=e1118]: "\"\""
+                    - row "imageSwapConfig.isEKSCluster Specifies whether the cluster is an Amazon EKS cluster. Set to false if the Kubernetes cluster is not an EKS cluster. Boolean true" [ref=e1119]:
+                      - cell "imageSwapConfig.isEKSCluster" [ref=e1120]:
+                        - code [ref=e1121]: imageSwapConfig.isEKSCluster
+                      - cell "Specifies whether the cluster is an Amazon EKS cluster. Set to false if the Kubernetes cluster is not an EKS cluster." [ref=e1122]:
+                        - text: Specifies whether the cluster is an Amazon EKS cluster. Set to
+                        - code [ref=e1123]: "false"
+                        - text: if the Kubernetes cluster is not an EKS cluster.
+                      - cell "Boolean" [ref=e1124]
+                      - cell "true" [ref=e1125]:
+                        - code [ref=e1126]: "true"
+                - generic [ref=e1128]:
+                  - code [ref=e1130]:
+                    - generic [ref=e1131]: "config:"
+                    - generic [ref=e1132]: "imageSwapImages:"
+                    - generic [ref=e1133]: "imageSwapInitImage: \"gcr.io/spectro-images-public/release/thewebroot/imageswap-init:v1.5.3-spectro-4.5.1\""
+                    - generic [ref=e1134]: "imageSwapImage: \"gcr.io/spectro-images-public/release/thewebroot/imageswap:v1.5.3-spectro-4.5.1\""
+                    - generic [ref=e1135]: "imageSwapConfig:"
+                    - generic [ref=e1136]: "isEKSCluster: true"
+                  - generic [ref=e1137]:
+                    - button "Toggle word wrap" [ref=e1138] [cursor=pointer]:
+                      - img [ref=e1139]
+                    - button "Copy code to clipboard" [ref=e1141] [cursor=pointer]:
+                      - generic [ref=e1142]:
+                        - img [ref=e1143]
+                        - img [ref=e1145]
+                - heading "gRPCDirect link to gRPC" [level=2] [ref=e1147]:
+                  - text: gRPC
+                  - link "Direct link to gRPC" [ref=e1148] [cursor=pointer]:
+                    - /url: "#grpc"
+                    - text: "#"
+                - paragraph [ref=e1149]: gRPC is used for communication between Palette components. You can enable the deployment of an additional load balancer for gRPC. Host clusters deployed by Palette use the load balancer to communicate with the Palette control plane. This is an advanced configuration option, and it is not required for most deployments. Speak with your support representative before enabling this option.
+                - paragraph [ref=e1150]:
+                  - text: If you want to use an external gRPC endpoint, you must provide a domain name for the gRPC endpoint and a valid x509 certificate. Additionally, you must provide a custom domain name for the endpoint. A CNAME DNS record must point to the IP address of the gRPC load balancer. For example, if your Palette domain name is
+                  - code [ref=e1151]: palette.example.com
+                  - text: ", you could create a CNAME DNS record for"
+                  - code [ref=e1152]: grpc.palette.example.com
+                  - text: that points to the IP address of the load balancer dedicated to gRPC.
+                - table [ref=e1153]:
+                  - rowgroup [ref=e1154]:
+                    - row "Parameters Description Type Default value" [ref=e1155]:
+                      - cell "Parameters" [ref=e1156]:
+                        - strong [ref=e1157]: Parameters
+                      - cell "Description" [ref=e1158]:
+                        - strong [ref=e1159]: Description
+                      - cell "Type" [ref=e1160]:
+                        - strong [ref=e1161]: Type
+                      - cell "Default value" [ref=e1162]:
+                        - strong [ref=e1163]: Default value
+                  - rowgroup [ref=e1164]:
+                    - row "external Specifies whether to use an external gRPC endpoint. Boolean false" [ref=e1165]:
+                      - cell "external" [ref=e1166]:
+                        - code [ref=e1167]: external
+                      - cell "Specifies whether to use an external gRPC endpoint." [ref=e1168]
+                      - cell "Boolean" [ref=e1169]
+                      - cell "false" [ref=e1170]:
+                        - code [ref=e1171]: "false"
+                    - row "endpoint The gRPC endpoint. String \"\"" [ref=e1172]:
+                      - cell "endpoint" [ref=e1173]:
+                        - code [ref=e1174]: endpoint
+                      - cell "The gRPC endpoint." [ref=e1175]
+                      - cell "String" [ref=e1176]
+                      - cell "\"\"" [ref=e1177]:
+                        - code [ref=e1178]: "\"\""
+                    - 'row "annotations A map of key-value pairs that specifies load balancer annotations for gRPC. You can use annotations to change the behavior of the load balancer and the gRPC configuration. This field is considered an advanced setting. We recommend you consult with your assigned support team representative before making changes. Object {}" [ref=e1179]':
+                      - cell "annotations" [ref=e1180]:
+                        - code [ref=e1181]: annotations
+                      - cell "A map of key-value pairs that specifies load balancer annotations for gRPC. You can use annotations to change the behavior of the load balancer and the gRPC configuration. This field is considered an advanced setting. We recommend you consult with your assigned support team representative before making changes." [ref=e1182]
+                      - cell "Object" [ref=e1183]
+                      - 'cell "{}" [ref=e1184]':
+                        - code [ref=e1185]: "{}"
+                    - row "grpcStaticIP Specify a static IP address for the gRPC load balancer service. If the field is empty, a dynamic IP address will be assigned to the load balancer. String \"\"" [ref=e1186]:
+                      - cell "grpcStaticIP" [ref=e1187]:
+                        - code [ref=e1188]: grpcStaticIP
+                      - cell "Specify a static IP address for the gRPC load balancer service. If the field is empty, a dynamic IP address will be assigned to the load balancer." [ref=e1189]
+                      - cell "String" [ref=e1190]
+                      - cell "\"\"" [ref=e1191]:
+                        - code [ref=e1192]: "\"\""
+                    - row "caCertificateBase64 The base64-encoded Certificate Authority (CA) certificate for the gRPC endpoint. String \"\"" [ref=e1193]:
+                      - cell "caCertificateBase64" [ref=e1194]:
+                        - code [ref=e1195]: caCertificateBase64
+                      - cell "The base64-encoded Certificate Authority (CA) certificate for the gRPC endpoint." [ref=e1196]
+                      - cell "String" [ref=e1197]
+                      - cell "\"\"" [ref=e1198]:
+                        - code [ref=e1199]: "\"\""
+                    - row "serverCrtBase64 The base64-encoded server certificate for the gRPC endpoint. String \"\"" [ref=e1200]:
+                      - cell "serverCrtBase64" [ref=e1201]:
+                        - code [ref=e1202]: serverCrtBase64
+                      - cell "The base64-encoded server certificate for the gRPC endpoint." [ref=e1203]
+                      - cell "String" [ref=e1204]
+                      - cell "\"\"" [ref=e1205]:
+                        - code [ref=e1206]: "\"\""
+                    - row "serverKeyBase64 The base64-encoded server key for the gRPC endpoint. String \"\"" [ref=e1207]:
+                      - cell "serverKeyBase64" [ref=e1208]:
+                        - code [ref=e1209]: serverKeyBase64
+                      - cell "The base64-encoded server key for the gRPC endpoint." [ref=e1210]
+                      - cell "String" [ref=e1211]
+                      - cell "\"\"" [ref=e1212]:
+                        - code [ref=e1213]: "\"\""
+                    - row "insecureSkipVerify Specifies whether to skip Transport Layer Security (TLS) verification for the gRPC endpoint. Boolean false" [ref=e1214]:
+                      - cell "insecureSkipVerify" [ref=e1215]:
+                        - code [ref=e1216]: insecureSkipVerify
+                      - cell "Specifies whether to skip Transport Layer Security (TLS) verification for the gRPC endpoint." [ref=e1217]
+                      - cell "Boolean" [ref=e1218]
+                      - cell "false" [ref=e1219]:
+                        - code [ref=e1220]: "false"
+                - generic [ref=e1222]:
+                  - code [ref=e1224]:
+                    - generic [ref=e1225]: "grpc:"
+                    - generic [ref=e1226]: "external: false"
+                    - generic [ref=e1227]: "endpoint: \"\""
+                    - generic [ref=e1228]: "annotations: {}"
+                    - generic [ref=e1229]: "grpcStaticIP: \"\""
+                    - generic [ref=e1230]: "caCertificateBase64: \"\""
+                    - generic [ref=e1231]: "serverCrtBase64: \"\""
+                    - generic [ref=e1232]: "serverKeyBase64: \"\""
+                    - generic [ref=e1233]: "insecureSkipVerify: false"
+                  - button "Copy code to clipboard" [ref=e1235] [cursor=pointer]:
+                    - generic [ref=e1236]:
+                      - img [ref=e1237]
+                      - img [ref=e1239]
+                - heading "IngressDirect link to Ingress" [level=2] [ref=e1241]:
+                  - text: Ingress
+                  - link "Direct link to Ingress" [ref=e1242] [cursor=pointer]:
+                    - /url: "#ingress"
+                    - text: "#"
+                - paragraph [ref=e1243]: Palette deploys an Nginx Ingress Controller. This controller is used to route traffic to the Palette control plane. You can change the default behavior and omit the deployment of an Nginx Ingress Controller.
+                - table [ref=e1244]:
+                  - rowgroup [ref=e1245]:
+                    - row "Parameters Description Type Default value" [ref=e1246]:
+                      - cell "Parameters" [ref=e1247]:
+                        - strong [ref=e1248]: Parameters
+                      - cell "Description" [ref=e1249]:
+                        - strong [ref=e1250]: Description
+                      - cell "Type" [ref=e1251]:
+                        - strong [ref=e1252]: Type
+                      - cell "Default value" [ref=e1253]:
+                        - strong [ref=e1254]: Default value
+                  - rowgroup [ref=e1255]:
+                    - row "enabled Specifies whether to deploy an Nginx controller. Set to false if you do not want an Nginx controller deployed. Boolean true" [ref=e1256]:
+                      - cell "enabled" [ref=e1257]:
+                        - code [ref=e1258]: enabled
+                      - cell "Specifies whether to deploy an Nginx controller. Set to false if you do not want an Nginx controller deployed." [ref=e1259]:
+                        - text: Specifies whether to deploy an Nginx controller. Set to
+                        - code [ref=e1260]: "false"
+                        - text: if you do not want an Nginx controller deployed.
+                      - cell "Boolean" [ref=e1261]
+                      - cell "true" [ref=e1262]:
+                        - code [ref=e1263]: "true"
+                    - row "ingress.internal Specifies whether to deploy a load balancer or use the host network. Boolean false" [ref=e1264]:
+                      - cell "ingress.internal" [ref=e1265]:
+                        - code [ref=e1266]: ingress.internal
+                      - cell "Specifies whether to deploy a load balancer or use the host network." [ref=e1267]
+                      - cell "Boolean" [ref=e1268]
+                      - cell "false" [ref=e1269]:
+                        - code [ref=e1270]: "false"
+                    - row "ingress.certificate Specify the base64-encoded x509 SSL certificate for the Nginx Ingress Controller. If left blank, the Nginx Ingress Controller will generate a self-signed certificate. String \"\"" [ref=e1271]:
+                      - cell "ingress.certificate" [ref=e1272]:
+                        - code [ref=e1273]: ingress.certificate
+                      - cell "Specify the base64-encoded x509 SSL certificate for the Nginx Ingress Controller. If left blank, the Nginx Ingress Controller will generate a self-signed certificate." [ref=e1274]
+                      - cell "String" [ref=e1275]
+                      - cell "\"\"" [ref=e1276]:
+                        - code [ref=e1277]: "\"\""
+                    - row "ingress.key Specify the base64-encoded x509 SSL certificate key for the Nginx Ingress Controller. String \"\"" [ref=e1278]:
+                      - cell "ingress.key" [ref=e1279]:
+                        - code [ref=e1280]: ingress.key
+                      - cell "Specify the base64-encoded x509 SSL certificate key for the Nginx Ingress Controller." [ref=e1281]
+                      - cell "String" [ref=e1282]
+                      - cell "\"\"" [ref=e1283]:
+                        - code [ref=e1284]: "\"\""
+                    - 'row "ingress.annotations A map of key-value pairs that specifies load balancer annotations for ingress. You can use annotations to change the behavior of the load balancer and the Nginx configuration. This is an advanced setting. We recommend you consult with your assigned support team representative prior to modification. Object {}" [ref=e1285]':
+                      - cell "ingress.annotations" [ref=e1286]:
+                        - code [ref=e1287]: ingress.annotations
+                      - cell "A map of key-value pairs that specifies load balancer annotations for ingress. You can use annotations to change the behavior of the load balancer and the Nginx configuration. This is an advanced setting. We recommend you consult with your assigned support team representative prior to modification." [ref=e1288]
+                      - cell "Object" [ref=e1289]
+                      - 'cell "{}" [ref=e1290]':
+                        - code [ref=e1291]: "{}"
+                    - row "ingress.ingressStaticIP Specify a static IP address for the ingress load balancer service. If empty, a dynamic IP address will be assigned to the load balancer. String \"\"" [ref=e1292]:
+                      - cell "ingress.ingressStaticIP" [ref=e1293]:
+                        - code [ref=e1294]: ingress.ingressStaticIP
+                      - cell "Specify a static IP address for the ingress load balancer service. If empty, a dynamic IP address will be assigned to the load balancer." [ref=e1295]
+                      - cell "String" [ref=e1296]
+                      - cell "\"\"" [ref=e1297]:
+                        - code [ref=e1298]: "\"\""
+                    - row "ingress.terminateHTTPSAtLoadBalancer Specifies whether to terminate HTTPS at the load balancer. Boolean false" [ref=e1299]:
+                      - cell "ingress.terminateHTTPSAtLoadBalancer" [ref=e1300]:
+                        - code [ref=e1301]: ingress.terminateHTTPSAtLoadBalancer
+                      - cell "Specifies whether to terminate HTTPS at the load balancer." [ref=e1302]
+                      - cell "Boolean" [ref=e1303]
+                      - cell "false" [ref=e1304]:
+                        - code [ref=e1305]: "false"
+                - generic [ref=e1307]:
+                  - code [ref=e1309]:
+                    - generic [ref=e1310]: "ingress:"
+                    - generic [ref=e1311]: "enabled: true"
+                    - generic [ref=e1312]: "ingress:"
+                    - generic [ref=e1313]: "internal: false"
+                    - generic [ref=e1314]: "certificate: \"\""
+                    - generic [ref=e1315]: "key: \"\""
+                    - generic [ref=e1316]: "annotations: {}"
+                    - generic [ref=e1317]: "ingressStaticIP: \"\""
+                    - generic [ref=e1318]: "terminateHTTPSAtLoadBalancer: false"
+                  - button "Copy code to clipboard" [ref=e1320] [cursor=pointer]:
+                    - generic [ref=e1321]:
+                      - img [ref=e1322]
+                      - img [ref=e1324]
+                - heading "Spectro ProxyDirect link to Spectro Proxy" [level=2] [ref=e1326]:
+                  - text: Spectro Proxy
+                  - link "Direct link to Spectro Proxy" [ref=e1327] [cursor=pointer]:
+                    - /url: "#spectro-proxy"
+                    - text: "#"
+                - paragraph [ref=e1328]:
+                  - text: You can specify a reverse proxy server that clusters deployed through Palette can use to facilitate network connectivity to the cluster's Kubernetes API server. Host clusters deployed in private networks can use the
+                  - link "Spectro Proxy" [ref=e1329] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=spectro-proxy
+                  - text: pack to expose the cluster's Kubernetes API to downstream clients that are not in the same network. Check out the
+                  - link "Reverse Proxy" [ref=e1330] [cursor=pointer]:
+                    - /url: /enterprise-version/system-management/reverse-proxy/
+                  - text: documentation to learn more about setting up a reverse proxy server for Palette.
+                - table [ref=e1331]:
+                  - rowgroup [ref=e1332]:
+                    - row "Parameters Description Type Default value" [ref=e1333]:
+                      - cell "Parameters" [ref=e1334]:
+                        - strong [ref=e1335]: Parameters
+                      - cell "Description" [ref=e1336]:
+                        - strong [ref=e1337]: Description
+                      - cell "Type" [ref=e1338]:
+                        - strong [ref=e1339]: Type
+                      - cell "Default value" [ref=e1340]:
+                        - strong [ref=e1341]: Default value
+                  - rowgroup [ref=e1342]:
+                    - row "frps.enabled Specifies whether to enable the Spectro server-side proxy. Boolean false" [ref=e1343]:
+                      - cell "frps.enabled" [ref=e1344]:
+                        - code [ref=e1345]: frps.enabled
+                      - cell "Specifies whether to enable the Spectro server-side proxy." [ref=e1346]
+                      - cell "Boolean" [ref=e1347]
+                      - cell "false" [ref=e1348]:
+                        - code [ref=e1349]: "false"
+                    - row "frps.frpHostURL The Spectro server-side proxy URL. String \"\"" [ref=e1350]:
+                      - cell "frps.frpHostURL" [ref=e1351]:
+                        - code [ref=e1352]: frps.frpHostURL
+                      - cell "The Spectro server-side proxy URL." [ref=e1353]
+                      - cell "String" [ref=e1354]
+                      - cell "\"\"" [ref=e1355]:
+                        - code [ref=e1356]: "\"\""
+                    - row "frps.server.crt The base64-encoded server certificate for the Spectro server-side proxy. String \"\"" [ref=e1357]:
+                      - cell "frps.server.crt" [ref=e1358]:
+                        - code [ref=e1359]: frps.server.crt
+                      - cell "The base64-encoded server certificate for the Spectro server-side proxy." [ref=e1360]
+                      - cell "String" [ref=e1361]
+                      - cell "\"\"" [ref=e1362]:
+                        - code [ref=e1363]: "\"\""
+                    - row "frps.server.key The base64-encoded server key for the Spectro server-side proxy. String \"\"" [ref=e1364]:
+                      - cell "frps.server.key" [ref=e1365]:
+                        - code [ref=e1366]: frps.server.key
+                      - cell "The base64-encoded server key for the Spectro server-side proxy." [ref=e1367]
+                      - cell "String" [ref=e1368]
+                      - cell "\"\"" [ref=e1369]:
+                        - code [ref=e1370]: "\"\""
+                    - row "frps.ca.crt The base64-encoded certificate authority (CA) certificate for the Spectro server-side proxy. String \"\"" [ref=e1371]:
+                      - cell "frps.ca.crt" [ref=e1372]:
+                        - code [ref=e1373]: frps.ca.crt
+                      - cell "The base64-encoded certificate authority (CA) certificate for the Spectro server-side proxy." [ref=e1374]
+                      - cell "String" [ref=e1375]
+                      - cell "\"\"" [ref=e1376]:
+                        - code [ref=e1377]: "\"\""
+                - generic [ref=e1379]:
+                  - code [ref=e1381]:
+                    - generic [ref=e1382]: "frps:"
+                    - generic [ref=e1383]: "frps:"
+                    - generic [ref=e1384]: "enabled: false"
+                    - generic [ref=e1385]: "frpHostURL: \"\""
+                    - generic [ref=e1386]: "server:"
+                    - generic [ref=e1387]: "crt: \"\""
+                    - generic [ref=e1388]: "key: \"\""
+                    - generic [ref=e1389]: "ca:"
+                    - generic [ref=e1390]: "crt: \"\""
+                  - button "Copy code to clipboard" [ref=e1392] [cursor=pointer]:
+                    - generic [ref=e1393]:
+                      - img [ref=e1394]
+                      - img [ref=e1396]
+                - heading "UI SystemDirect link to UI System" [level=2] [ref=e1398]:
+                  - text: UI System
+                  - link "Direct link to UI System" [ref=e1399] [cursor=pointer]:
+                    - /url: "#ui-system"
+                    - text: "#"
+                - paragraph [ref=e1400]:
+                  - text: The table lists parameters to configure the Palette User Interface (UI) behavior. You can disable the UI or the Network Operations Center (NOC) UI. You can also specify the MapBox access token and style layer ID for the NOC UI. MapBox is a third-party service that provides mapping and location services. To learn more about MapBox and how to obtain an access token, refer to the
+                  - link "MapBox Access tokens" [ref=e1401] [cursor=pointer]:
+                    - /url: https://docs.mapbox.com/help/getting-started/access-tokens
+                  - text: guide.
+                - table [ref=e1402]:
+                  - rowgroup [ref=e1403]:
+                    - row "Parameters Description Type Default value" [ref=e1404]:
+                      - cell "Parameters" [ref=e1405]:
+                        - strong [ref=e1406]: Parameters
+                      - cell "Description" [ref=e1407]:
+                        - strong [ref=e1408]: Description
+                      - cell "Type" [ref=e1409]:
+                        - strong [ref=e1410]: Type
+                      - cell "Default value" [ref=e1411]:
+                        - strong [ref=e1412]: Default value
+                  - rowgroup [ref=e1413]:
+                    - row "enabled Specifies whether to enable the Palette UI. Boolean true" [ref=e1414]:
+                      - cell "enabled" [ref=e1415]:
+                        - code [ref=e1416]: enabled
+                      - cell "Specifies whether to enable the Palette UI." [ref=e1417]
+                      - cell "Boolean" [ref=e1418]
+                      - cell "true" [ref=e1419]:
+                        - code [ref=e1420]: "true"
+                    - row "ui.nocUI.enable Specifies whether to enable the Palette Network Operations Center (NOC) UI. Enabling this parameter requires the ui.nocUI.mapBoxAccessToken. Once enabled, all cluster locations will be reported to MapBox. This feature is not FIPS compliant. Boolean false" [ref=e1421]:
+                      - cell "ui.nocUI.enable" [ref=e1422]:
+                        - code [ref=e1423]: ui.nocUI.enable
+                      - cell "Specifies whether to enable the Palette Network Operations Center (NOC) UI. Enabling this parameter requires the ui.nocUI.mapBoxAccessToken. Once enabled, all cluster locations will be reported to MapBox. This feature is not FIPS compliant." [ref=e1424]:
+                        - text: Specifies whether to enable the Palette Network Operations Center (NOC) UI. Enabling this parameter requires the
+                        - code [ref=e1425]: ui.nocUI.mapBoxAccessToken
+                        - text: . Once enabled, all cluster locations will be reported to MapBox. This feature is not FIPS compliant.
+                      - cell "Boolean" [ref=e1426]
+                      - cell "false" [ref=e1427]:
+                        - code [ref=e1428]: "false"
+                    - row "ui.nocUI.mapBoxAccessToken The MapBox access token for the Palette NOC UI. String \"\"" [ref=e1429]:
+                      - cell "ui.nocUI.mapBoxAccessToken" [ref=e1430]:
+                        - code [ref=e1431]: ui.nocUI.mapBoxAccessToken
+                      - cell "The MapBox access token for the Palette NOC UI." [ref=e1432]
+                      - cell "String" [ref=e1433]
+                      - cell "\"\"" [ref=e1434]:
+                        - code [ref=e1435]: "\"\""
+                    - row "ui.nocUI.mapBoxStyledLayerID The MapBox style layer ID for the Palette NOC UI. String \"\"" [ref=e1436]:
+                      - cell "ui.nocUI.mapBoxStyledLayerID" [ref=e1437]:
+                        - code [ref=e1438]: ui.nocUI.mapBoxStyledLayerID
+                      - cell "The MapBox style layer ID for the Palette NOC UI." [ref=e1439]
+                      - cell "String" [ref=e1440]
+                      - cell "\"\"" [ref=e1441]:
+                        - code [ref=e1442]: "\"\""
+                - generic [ref=e1444]:
+                  - code [ref=e1446]:
+                    - generic [ref=e1447]: "ui-system:"
+                    - generic [ref=e1448]: "enabled: true"
+                    - generic [ref=e1449]: "ui:"
+                    - generic [ref=e1450]: "nocUI:"
+                    - generic [ref=e1451]: "enable: false"
+                    - generic [ref=e1452]: "mapBoxAccessToken: \"\""
+                    - generic [ref=e1453]: "mapBoxStyledLayerID: \"\""
+                  - button "Copy code to clipboard" [ref=e1455] [cursor=pointer]:
+                    - generic [ref=e1456]:
+                      - img [ref=e1457]
+                      - img [ref=e1459]
+                - heading "Reach SystemDirect link to Reach System" [level=2] [ref=e1461]:
+                  - text: Reach System
+                  - link "Direct link to Reach System" [ref=e1462] [cursor=pointer]:
+                    - /url: "#reach-system"
+                    - text: "#"
+                - paragraph [ref=e1463]:
+                  - text: You can configure Palette to use a proxy server to access the internet. Set the parameter
+                  - code [ref=e1464]: reach-system.enabled
+                  - text: to
+                  - code [ref=e1465]: "true"
+                  - text: to enable the proxy server. Proxy settings are configured in the
+                  - code [ref=e1466]: reach-system.proxySettings
+                  - text: section.
+                - table [ref=e1467]:
+                  - rowgroup [ref=e1468]:
+                    - row "Parameters Description Type Default value" [ref=e1469]:
+                      - cell "Parameters" [ref=e1470]:
+                        - strong [ref=e1471]: Parameters
+                      - cell "Description" [ref=e1472]:
+                        - strong [ref=e1473]: Description
+                      - cell "Type" [ref=e1474]:
+                        - strong [ref=e1475]: Type
+                      - cell "Default value" [ref=e1476]:
+                        - strong [ref=e1477]: Default value
+                  - rowgroup [ref=e1478]:
+                    - row "reachSystem.enabled Specifies whether to enable the usage of a proxy server for Palette. Boolean false" [ref=e1479]:
+                      - cell "reachSystem.enabled" [ref=e1480]:
+                        - code [ref=e1481]: reachSystem.enabled
+                      - cell "Specifies whether to enable the usage of a proxy server for Palette." [ref=e1482]
+                      - cell "Boolean" [ref=e1483]
+                      - cell "false" [ref=e1484]:
+                        - code [ref=e1485]: "false"
+                    - row "reachSystem.proxySettings.http_proxy The HTTP proxy server URL. String \"\"" [ref=e1486]:
+                      - cell "reachSystem.proxySettings.http_proxy" [ref=e1487]:
+                        - code [ref=e1488]: reachSystem.proxySettings.http_proxy
+                      - cell "The HTTP proxy server URL." [ref=e1489]
+                      - cell "String" [ref=e1490]
+                      - cell "\"\"" [ref=e1491]:
+                        - code [ref=e1492]: "\"\""
+                    - row "reachSystem.proxySettings.https_proxy The HTTPS proxy server URL. String \"\"" [ref=e1493]:
+                      - cell "reachSystem.proxySettings.https_proxy" [ref=e1494]:
+                        - code [ref=e1495]: reachSystem.proxySettings.https_proxy
+                      - cell "The HTTPS proxy server URL." [ref=e1496]
+                      - cell "String" [ref=e1497]
+                      - cell "\"\"" [ref=e1498]:
+                        - code [ref=e1499]: "\"\""
+                    - row "reachSystem.proxySettings.no_proxy A list of hostnames or IP addresses that should not be go through the proxy server. String \"\"" [ref=e1500]:
+                      - cell "reachSystem.proxySettings.no_proxy" [ref=e1501]:
+                        - code [ref=e1502]: reachSystem.proxySettings.no_proxy
+                      - cell "A list of hostnames or IP addresses that should not be go through the proxy server." [ref=e1503]
+                      - cell "String" [ref=e1504]
+                      - cell "\"\"" [ref=e1505]:
+                        - code [ref=e1506]: "\"\""
+                    - row "reachSystem.proxySettings.ca_crt_path The base64-encoded certificate authority (CA) of the proxy server. String \"\"" [ref=e1507]:
+                      - cell "reachSystem.proxySettings.ca_crt_path" [ref=e1508]:
+                        - code [ref=e1509]: reachSystem.proxySettings.ca_crt_path
+                      - cell "The base64-encoded certificate authority (CA) of the proxy server." [ref=e1510]
+                      - cell "String" [ref=e1511]
+                      - cell "\"\"" [ref=e1512]:
+                        - code [ref=e1513]: "\"\""
+                    - row "reachSystem.scheduleOnControlPlane Specifies whether to schedule the reach system on the control plane. Boolean true" [ref=e1514]:
+                      - cell "reachSystem.scheduleOnControlPlane" [ref=e1515]:
+                        - code [ref=e1516]: reachSystem.scheduleOnControlPlane
+                      - cell "Specifies whether to schedule the reach system on the control plane." [ref=e1517]
+                      - cell "Boolean" [ref=e1518]
+                      - cell "true" [ref=e1519]:
+                        - code [ref=e1520]: "true"
+                - generic [ref=e1522]:
+                  - code [ref=e1524]:
+                    - generic [ref=e1525]: "reach-system:"
+                    - generic [ref=e1526]: "enabled: false"
+                    - generic [ref=e1527]: "proxySettings:"
+                    - generic [ref=e1528]: "http_proxy: \"\""
+                    - generic [ref=e1529]: "https_proxy: \"\""
+                    - generic [ref=e1530]: "no_proxy:"
+                    - generic [ref=e1531]: "ca_crt_path: \"\""
+                    - generic [ref=e1532]: "scheduleOnControlPlane: true"
+                  - button "Copy code to clipboard" [ref=e1534] [cursor=pointer]:
+                    - generic [ref=e1535]:
+                      - img [ref=e1536]
+                      - img [ref=e1538]
+                - generic [ref=e1540]:
+                  - generic [ref=e1541]:
+                    - img [ref=e1543]
+                    - text: info
+                  - paragraph [ref=e1546]:
+                    - text: Due to node affinity configurations, you must set
+                    - code [ref=e1547]: "scheduleOnControlPlane: false"
+                    - text: for managed clusters deployed to
+                    - link "Azure AKS" [ref=e1548] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/azure/aks/
+                    - text: ","
+                    - link "AWS EKS" [ref=e1549] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/eks/
+                    - text: ", and"
+                    - link "GCP GKE" [ref=e1550] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/gcp/create-gcp-gke-cluster/
+                    - text: .
+              - generic [ref=e1551]:
+                - generic [ref=e1553]:
+                  - text: "Tags:"
+                  - list [ref=e1554]:
+                    - listitem [ref=e1555]:
+                      - link "self-hosted" [ref=e1556] [cursor=pointer]:
+                        - /url: /tags/self-hosted/
+                    - listitem [ref=e1557]:
+                      - link "enterprise" [ref=e1558] [cursor=pointer]:
+                        - /url: /tags/enterprise/
+                - link "Edit this page" [ref=e1561] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md
+                  - img [ref=e1562]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e1566]:
+              - link "Previous « Install Palette" [ref=e1567] [cursor=pointer]:
+                - /url: /enterprise-version/install-palette/install-on-kubernetes/airgap-install/install/
+                - generic [ref=e1568]: Previous
+                - generic [ref=e1569]: « Install Palette
+              - link "Next Uninstallation »" [ref=e1570] [cursor=pointer]:
+                - /url: /enterprise-version/install-palette/install-on-kubernetes/uninstall/
+                - generic [ref=e1571]: Next
+                - generic [ref=e1572]: Uninstallation »
+          - list [ref=e1575]:
+            - listitem [ref=e1576]:
+              - link "Required Parameters" [ref=e1577] [cursor=pointer]:
+                - /url: "#required-parameters"
+            - listitem [ref=e1578]:
+              - link "Global" [ref=e1579] [cursor=pointer]:
+                - /url: "#global"
+              - list [ref=e1580]:
+                - listitem [ref=e1581]:
+                  - link "Image Pull Secret" [ref=e1582] [cursor=pointer]:
+                    - /url: "#image-pull-secret"
+            - listitem [ref=e1583]:
+              - link "MongoDB" [ref=e1584] [cursor=pointer]:
+                - /url: "#mongodb"
+            - listitem [ref=e1585]:
+              - link "Config" [ref=e1586] [cursor=pointer]:
+                - /url: "#config"
+              - list [ref=e1587]:
+                - listitem [ref=e1588]:
+                  - link "Install Mode" [ref=e1589] [cursor=pointer]:
+                    - /url: "#install-mode"
+                - listitem [ref=e1590]:
+                  - link "SSO" [ref=e1591] [cursor=pointer]:
+                    - /url: "#sso"
+                - listitem [ref=e1592]:
+                  - link "Email" [ref=e1593] [cursor=pointer]:
+                    - /url: "#email"
+                - listitem [ref=e1594]:
+                  - link "Environment" [ref=e1595] [cursor=pointer]:
+                    - /url: "#environment"
+                - listitem [ref=e1596]:
+                  - link "Cluster" [ref=e1597] [cursor=pointer]:
+                    - /url: "#cluster"
+            - listitem [ref=e1598]:
+              - link "Registries" [ref=e1599] [cursor=pointer]:
+                - /url: "#registries"
+              - list [ref=e1600]:
+                - listitem [ref=e1601]:
+                  - link "OCI Registry" [ref=e1602] [cursor=pointer]:
+                    - /url: "#oci-registry"
+                - listitem [ref=e1603]:
+                  - link "OCI ECR Registry" [ref=e1604] [cursor=pointer]:
+                    - /url: "#oci-ecr-registry"
+                - listitem [ref=e1605]:
+                  - link "OCI Image Registry" [ref=e1606] [cursor=pointer]:
+                    - /url: "#oci-image-registry"
+                - listitem [ref=e1607]:
+                  - link "Image Swap Configuration" [ref=e1608] [cursor=pointer]:
+                    - /url: "#image-swap-configuration"
+            - listitem [ref=e1609]:
+              - link "gRPC" [ref=e1610] [cursor=pointer]:
+                - /url: "#grpc"
+            - listitem [ref=e1611]:
+              - link "Ingress" [ref=e1612] [cursor=pointer]:
+                - /url: "#ingress"
+            - listitem [ref=e1613]:
+              - link "Spectro Proxy" [ref=e1614] [cursor=pointer]:
+                - /url: "#spectro-proxy"
+            - listitem [ref=e1615]:
+              - link "UI System" [ref=e1616] [cursor=pointer]:
+                - /url: "#ui-system"
+            - listitem [ref=e1617]:
+              - link "Reach System" [ref=e1618] [cursor=pointer]:
+                - /url: "#reach-system"
+  - button "Project Logo Ask AI" [ref=e1619] [cursor=pointer]:
+    - generic [ref=e1622]:
+      - img "Project Logo" [ref=e1623]
+      - paragraph [ref=e1624]: Ask AI
+```

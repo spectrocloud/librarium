@@ -1,0 +1,757 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                  - listitem [ref=e107]:
+                    - generic [ref=e108]:
+                      - link "Data Center Clusters" [ref=e109] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e111]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e113] [cursor=pointer]
+                  - listitem [ref=e114]:
+                    - generic [ref=e115]:
+                      - link "Edge" [ref=e116] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e118]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e120] [cursor=pointer]
+                  - listitem [ref=e121]:
+                    - generic [ref=e122]:
+                      - link "Palette Virtual Clusters" [ref=e123] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e125]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e127] [cursor=pointer]
+                  - listitem [ref=e128]:
+                    - generic [ref=e129]:
+                      - link "Imported Clusters" [ref=e130] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e132]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e134] [cursor=pointer]
+                  - listitem [ref=e135]:
+                    - generic [ref=e136]:
+                      - link "Manage Clusters" [expanded] [ref=e137] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e139]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e141] [cursor=pointer]
+                    - list [ref=e142]:
+                      - listitem [ref=e143]:
+                        - generic [ref=e144]:
+                          - link "SSH" [ref=e145] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/ssh/
+                          - button "Toggle the collapsible sidebar category 'SSH'" [ref=e146] [cursor=pointer]
+                      - listitem [ref=e147]:
+                        - link "Update a Cluster" [ref=e148] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-updates/
+                      - listitem [ref=e149]:
+                        - generic [ref=e150]:
+                          - link "Cluster Monitoring" [ref=e151] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/monitoring/
+                          - button "Toggle the collapsible sidebar category 'Cluster Monitoring'" [ref=e152] [cursor=pointer]
+                      - listitem [ref=e153]:
+                        - link "Cluster Health Alerts" [ref=e154] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/health-alerts/
+                      - listitem [ref=e155]:
+                        - generic [ref=e156]:
+                          - link "Backup and Restore" [ref=e157] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/backup-restore/
+                          - button "Toggle the collapsible sidebar category 'Backup and Restore'" [ref=e158] [cursor=pointer]
+                      - listitem [ref=e159]:
+                        - link "Renew Cluster PKI Certificates" [ref=e160] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/certificate-management/
+                      - listitem [ref=e161]:
+                        - link "Compliance Scan" [ref=e162] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/compliance-scan/
+                      - listitem [ref=e163]:
+                        - link "OS Patching" [ref=e164] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/os-patching/
+                      - listitem [ref=e165]:
+                        - link "Cost Visibility" [ref=e166] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cloud-cost/
+                      - listitem [ref=e167]:
+                        - link "Workload Visibility" [ref=e168] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/workloads/
+                      - listitem [ref=e169]:
+                        - link "Node Labels" [ref=e170] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-labels/
+                      - listitem [ref=e171]:
+                        - link "Taints and Tolerations" [ref=e172] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/taints/
+                      - listitem [ref=e173]:
+                        - link "RBAC and Namespace Support" [ref=e174] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-rbac/
+                      - listitem [ref=e175]:
+                        - link "Namespace Management" [ref=e176] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/namespace-management/
+                      - listitem [ref=e177]:
+                        - link "Palette Macros" [ref=e178] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/macros/
+                      - listitem [ref=e179]:
+                        - link "Pack Monitoring" [ref=e180] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/pack-monitoring/
+                      - listitem [ref=e181]:
+                        - link "Kubeconfig" [ref=e182] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/kubeconfig/
+                      - listitem [ref=e183]:
+                        - link "Kubectl" [ref=e184] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/palette-webctl/
+                      - listitem [ref=e185]:
+                        - generic [ref=e186]:
+                          - link "Platform Settings" [ref=e187] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/platform-settings/
+                          - button "Toggle the collapsible sidebar category 'Platform Settings'" [ref=e188] [cursor=pointer]
+                      - listitem [ref=e189]:
+                        - link "Map and Filter Clusters" [ref=e190] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-map-filters/
+                      - listitem [ref=e191]:
+                        - link "Node Pools" [ref=e192] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-pool/
+                      - listitem [ref=e193]:
+                        - link "Configure Applications to Use Proxy Server" [ref=e194] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-proxy/
+                      - listitem [ref=e195]:
+                        - link "Spectro Kubernetes Dashboard" [ref=e196] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/spectro-kubernetes-dashboard/
+                      - listitem [ref=e197]:
+                        - link "Cluster Removal" [ref=e198] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/remove-clusters/
+                      - listitem [ref=e199]:
+                        - link "Image Swap" [ref=e200] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/image-swap/
+                      - listitem [ref=e201]:
+                        - link "Maintenance Mode" [ref=e202] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/maintenance-mode/
+                  - listitem [ref=e203]:
+                    - generic [ref=e204]:
+                      - link "Cluster Groups" [ref=e205] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e207]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e209] [cursor=pointer]
+                  - listitem [ref=e210]:
+                    - generic [ref=e211]:
+                      - link "Private Cloud Gateway" [ref=e212] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e214]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e216] [cursor=pointer]
+              - listitem [ref=e217]:
+                - generic [ref=e218]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e219] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e221]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e223] [cursor=pointer]
+              - listitem [ref=e224]:
+                - generic [ref=e225]:
+                  - link "Palette Dev Engine" [ref=e226] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e228]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e230] [cursor=pointer]
+              - listitem [ref=e231]:
+                - generic [ref=e232]:
+                  - link "Virtual Machine Orchestrator" [ref=e233] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e235]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e237] [cursor=pointer]
+              - listitem [ref=e238]:
+                - generic [ref=e239]:
+                  - link "Workspaces" [ref=e240] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e242]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e244] [cursor=pointer]
+              - listitem [ref=e245]:
+                - generic [ref=e246]:
+                  - link "Packs List" [ref=e247] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e249]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e251] [cursor=pointer]
+              - listitem [ref=e252]:
+                - generic [ref=e253]:
+                  - link "User & Role Management" [ref=e254] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e256]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e258] [cursor=pointer]
+              - listitem [ref=e259]:
+                - generic [ref=e260]:
+                  - link "Registries and Packs" [ref=e261] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e263]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e265] [cursor=pointer]
+              - listitem [ref=e266]:
+                - generic [ref=e267]:
+                  - link "Security" [ref=e268] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e270]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e272] [cursor=pointer]
+              - listitem [ref=e273]:
+                - generic [ref=e274]:
+                  - link "Audit Logs" [ref=e275] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e277]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e279] [cursor=pointer]
+              - listitem [ref=e280]:
+                - generic [ref=e281]:
+                  - link "Self-Hosted Palette" [ref=e282] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e284]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e286] [cursor=pointer]
+              - listitem [ref=e287]:
+                - generic [ref=e288]:
+                  - link "Palette VerteX" [ref=e289] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e291]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e293] [cursor=pointer]
+              - listitem [ref=e294]:
+                - generic [ref=e295]:
+                  - link "Tenant Administration" [ref=e296] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e298]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e300] [cursor=pointer]
+              - listitem [ref=e301]:
+                - generic [ref=e302]:
+                  - link "Automation" [ref=e303] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e305]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e307] [cursor=pointer]
+              - listitem [ref=e308]:
+                - generic [ref=e309]:
+                  - link "Troubleshooting" [ref=e310] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e312]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e314] [cursor=pointer]
+              - listitem [ref=e315]:
+                - link "Glossary" [ref=e316] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e318]
+                  - text: Glossary
+              - listitem [ref=e320]:
+                - generic [ref=e321]:
+                  - link "Compliance & Legal" [ref=e322] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e324]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e326] [cursor=pointer]
+              - listitem [ref=e327]:
+                - button "Privacy Settings" [ref=e328] [cursor=pointer]:
+                  - img [ref=e329]
+                  - text: Privacy Settings
+      - main [ref=e331]:
+        - generic [ref=e333]:
+          - generic [ref=e335]:
+            - article [ref=e336]:
+              - navigation "Breadcrumbs" [ref=e337]:
+                - list [ref=e338]:
+                  - listitem [ref=e339]:
+                    - link "Home page" [ref=e340] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e341]
+                  - listitem [ref=e343]:
+                    - link "Clusters" [ref=e344] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e345]:
+                    - link "Manage Clusters" [ref=e346] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/
+                  - listitem [ref=e347]:
+                    - generic [ref=e348]: Namespace Management
+              - generic [ref=e349]:
+                - heading "Namespace Management" [level=1] [ref=e351]
+                - paragraph [ref=e352]: "In Kubernetes, namespaces provide a way to isolate groups of resources within a single cluster. Some of the benefits of namespaces are:"
+                - list [ref=e353]:
+                  - listitem [ref=e354]:
+                    - paragraph [ref=e355]: They can be used to partition resources among multiple users via resource quota – where each namespace has its own set of resources – without having to set up multiple physical clusters.
+                  - listitem [ref=e356]:
+                    - paragraph [ref=e357]:
+                      - text: You can configure Role-Based Access Control (RBAC) based on namespaces. For information about configuring namespaces and RBAC, check out
+                      - link "RBAC and NS Support" [ref=e358] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/cluster-rbac/
+                      - text: .
+                  - listitem [ref=e359]:
+                    - paragraph [ref=e360]: Namespaces can be used for different purposes such as testing, development, and production.
+                  - listitem [ref=e361]:
+                    - paragraph [ref=e362]: You can use namespaces to help prevent resource naming conflicts. Resource names must be unique within a namespace but not across namespaces.
+                  - listitem [ref=e363]:
+                    - paragraph [ref=e364]:
+                      - text: In environments that have hybrid containerized and virtualized applications, a separate namespace can be used to isolate virtual machines (VMs). For information about a VM environment in Palette, check out
+                      - link "Virtual Machine Management" [ref=e365] [cursor=pointer]:
+                        - /url: /vm-management/
+                      - text: .
+                - heading "Create a NamespaceDirect link to Create a Namespace" [level=2] [ref=e366]:
+                  - text: Create a Namespace
+                  - link "Direct link to Create a Namespace" [ref=e367] [cursor=pointer]:
+                    - /url: "#create-a-namespace"
+                    - text: "#"
+                - paragraph [ref=e368]: The following steps will guide you on how to create a namespace.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e369]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e370] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e371]:
+                  - listitem [ref=e372]:
+                    - paragraph [ref=e373]: An active cluster.
+                  - listitem [ref=e374]:
+                    - paragraph [ref=e375]: Permission to create a namespace.
+                  - listitem [ref=e376]:
+                    - paragraph [ref=e377]: A unique namespace name.
+                - heading "LimitationsDirect link to Limitations" [level=3] [ref=e378]:
+                  - text: Limitations
+                  - link "Direct link to Limitations" [ref=e379] [cursor=pointer]:
+                    - /url: "#limitations"
+                    - text: "#"
+                - list [ref=e380]:
+                  - listitem [ref=e381]:
+                    - text: When using
+                    - strong [ref=e382]: GPU Allocation
+                    - text: ", NVIDIA is the only supported vendor."
+                - heading "Create a Namespace in a ClusterDirect link to Create a Namespace in a Cluster" [level=3] [ref=e383]:
+                  - text: Create a Namespace in a Cluster
+                  - link "Direct link to Create a Namespace in a Cluster" [ref=e384] [cursor=pointer]:
+                    - /url: "#create-a-namespace-in-a-cluster"
+                    - text: "#"
+                - list [ref=e385]:
+                  - listitem [ref=e386]:
+                    - paragraph [ref=e387]:
+                      - text: Log in to
+                      - link "Palette" [ref=e388] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant admin.
+                  - listitem [ref=e389]:
+                    - paragraph [ref=e390]:
+                      - text: Navigate to the left
+                      - strong [ref=e391]: Main Menu
+                      - text: and click on
+                      - strong [ref=e392]: Clusters
+                      - text: .
+                  - listitem [ref=e393]:
+                    - paragraph [ref=e394]: Select the cluster in which you want to create a namespace.
+                  - listitem [ref=e395]:
+                    - paragraph [ref=e396]:
+                      - text: Navigate to the
+                      - strong [ref=e397]: Workloads
+                      - text: ">"
+                      - strong [ref=e398]: Namespaces
+                      - text: tab, and click the
+                      - strong [ref=e399]: Manage Namespaces
+                      - text: button.
+                    - paragraph [ref=e400]:
+                      - text: The
+                      - strong [ref=e401]: Settings
+                      - text: pane displays with
+                      - strong [ref=e402]: RBAC
+                      - text: preselected and the
+                      - strong [ref=e403]: Namespaces
+                      - text: tab opened by default.
+                    - paragraph [ref=e404]:
+                      - img "Cluster Settings pane with the location where the namespace is listed" [ref=e405]
+                  - listitem [ref=e406]:
+                    - paragraph [ref=e407]:
+                      - text: Type a unique namespace name or a regular expression according to which Palette will assign names to namespaces in the
+                      - strong [ref=e408]: Namespace name or Regex
+                      - text: field and click
+                      - strong [ref=e409]: Confirm
+                      - text: at right.
+                    - paragraph [ref=e410]:
+                      - img "Cluster Settings pane showing how to add new namespace" [ref=e411]
+                  - listitem [ref=e412]:
+                    - paragraph [ref=e413]:
+                      - text: You can assign resource quotas now or at a later time. To learn how, check out
+                      - link "Assign Resource Quotas" [ref=e414] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/namespace-management/#assign-resource-quotas
+                      - text: .
+                    - paragraph [ref=e415]:
+                      - text: For details on how to configure RBAC for namespaces, check out the
+                      - link "RBAC and NS Support" [ref=e416] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/cluster-rbac/#palette-roles-and-kubernetes-roles
+                      - text: guide.
+                  - listitem [ref=e417]:
+                    - paragraph [ref=e418]:
+                      - text: Once you have made all needed changes, click
+                      - strong [ref=e419]: Save Changes
+                      - text: .
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e420]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e421] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e422]: Validate that the namespace was successfully created.
+                - list [ref=e423]:
+                  - listitem [ref=e424]:
+                    - paragraph [ref=e425]:
+                      - text: Log in to
+                      - link "Palette" [ref=e426] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant admin.
+                  - listitem [ref=e427]:
+                    - paragraph [ref=e428]:
+                      - text: Navigate to the left
+                      - strong [ref=e429]: Main Menu
+                      - text: and click on
+                      - strong [ref=e430]: Clusters
+                      - text: .
+                  - listitem [ref=e431]:
+                    - paragraph [ref=e432]: Select the cluster that contains the namespace you created and view its details.
+                  - listitem [ref=e433]:
+                    - paragraph [ref=e434]:
+                      - text: In the
+                      - strong [ref=e435]: Settings
+                      - text: pane, click
+                      - strong [ref=e436]: Cluster Settings
+                      - text: ", and then select"
+                      - strong [ref=e437]: RBAC
+                      - text: ">"
+                      - strong [ref=e438]: Namespaces
+                      - text: tab.
+                    - paragraph [ref=e439]:
+                      - text: The namespace you created will be listed under
+                      - strong [ref=e440]: Namespace Quota
+                      - text: .
+                - heading "Assign Resource QuotasDirect link to Assign Resource Quotas" [level=2] [ref=e441]:
+                  - text: Assign Resource Quotas
+                  - link "Direct link to Assign Resource Quotas" [ref=e442] [cursor=pointer]:
+                    - /url: "#assign-resource-quotas"
+                    - text: "#"
+                - paragraph [ref=e443]: You can assign resource quotas for resource sharing among multiple users who have access to a namespace.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e444]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e445] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e446]:
+                  - listitem [ref=e447]: A running cluster with at least one namespace.
+                - heading "Assign Resource Quotas to a NamespaceDirect link to Assign Resource Quotas to a Namespace" [level=3] [ref=e448]:
+                  - text: Assign Resource Quotas to a Namespace
+                  - link "Direct link to Assign Resource Quotas to a Namespace" [ref=e449] [cursor=pointer]:
+                    - /url: "#assign-resource-quotas-to-a-namespace"
+                    - text: "#"
+                - list [ref=e450]:
+                  - listitem [ref=e451]:
+                    - paragraph [ref=e452]:
+                      - text: Log in to
+                      - link "Palette" [ref=e453] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant admin.
+                  - listitem [ref=e454]:
+                    - paragraph [ref=e455]:
+                      - text: Navigate to the left
+                      - strong [ref=e456]: Main Menu
+                      - text: and click on
+                      - strong [ref=e457]: Clusters
+                      - text: .
+                  - listitem [ref=e458]:
+                    - paragraph [ref=e459]: Select the cluster with the namespace to which you will assign cluster quotas.
+                  - listitem [ref=e460]:
+                    - paragraph [ref=e461]:
+                      - text: Navigate to the
+                      - strong [ref=e462]: Workloads
+                      - text: ">"
+                      - strong [ref=e463]: Namespaces
+                      - text: tab, and click the
+                      - strong [ref=e464]: Manage Namespaces
+                      - text: button.
+                  - listitem [ref=e465]:
+                    - paragraph [ref=e466]:
+                      - text: The
+                      - strong [ref=e467]: Settings
+                      - text: pane displays with
+                      - strong [ref=e468]: RBAC
+                      - text: ">"
+                      - strong [ref=e469]: Namespaces
+                      - text: preselected.
+                  - listitem [ref=e470]:
+                    - paragraph [ref=e471]:
+                      - text: Click on the three-dot menu on the namespace and select
+                      - strong [ref=e472]: Edit
+                      - text: .
+                - list [ref=e473]:
+                  - listitem [ref=e474]:
+                    - paragraph [ref=e475]:
+                      - text: Specify the number of CPUs and GPUs, and the amount of memory (in GB) to allocate to the namespace. Click
+                      - strong [ref=e476]: Confirm
+                      - text: to your changes.
+                    - paragraph [ref=e477]:
+                      - text: When using
+                      - strong [ref=e478]: GPU Allocation
+                      - text: you must use a whole number and must select the vendor from the dropdown. You must also ensure that the appropriate GPU device plugin is installed and compatible with your nodes to enforce the quota as Palette does not verify GPU vendor selection.
+                    - generic [ref=e479]:
+                      - generic [ref=e480]:
+                        - img [ref=e482]
+                        - text: info
+                      - paragraph [ref=e485]: Currently, NVIDIA is the only supported vendor.
+                  - listitem [ref=e486]:
+                    - paragraph [ref=e487]:
+                      - text: Once you have made all needed changes, click
+                      - strong [ref=e488]: Save Changes
+                      - text: .
+                - heading "Delete a NamespaceDirect link to Delete a Namespace" [level=2] [ref=e489]:
+                  - text: Delete a Namespace
+                  - link "Direct link to Delete a Namespace" [ref=e490] [cursor=pointer]:
+                    - /url: "#delete-a-namespace"
+                    - text: "#"
+                - paragraph [ref=e491]: When you delete a namespace, all the resources that were created within the namespace will also be deleted, such as pods, services and endpoints, config maps, and more.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e492]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e493] [cursor=pointer]:
+                    - /url: "#prerequisites-2"
+                    - text: "#"
+                - list [ref=e494]:
+                  - listitem [ref=e495]: Ensure that no other resources depend on the namespace being deleted.
+                - heading "Delete a Namespace from a ClusterDirect link to Delete a Namespace from a Cluster" [level=3] [ref=e496]:
+                  - text: Delete a Namespace from a Cluster
+                  - link "Direct link to Delete a Namespace from a Cluster" [ref=e497] [cursor=pointer]:
+                    - /url: "#delete-a-namespace-from-a-cluster"
+                    - text: "#"
+                - list [ref=e498]:
+                  - listitem [ref=e499]:
+                    - paragraph [ref=e500]:
+                      - text: Navigate to the left
+                      - strong [ref=e501]: Main Menu
+                      - text: and click on
+                      - strong [ref=e502]: Clusters
+                      - text: .
+                  - listitem [ref=e503]:
+                    - paragraph [ref=e504]: Select the cluster in which you want to create a namespace.
+                  - listitem [ref=e505]:
+                    - paragraph [ref=e506]:
+                      - text: Navigate to the
+                      - strong [ref=e507]: Workloads
+                      - text: ">"
+                      - strong [ref=e508]: Namespaces
+                      - text: tab, and click the
+                      - strong [ref=e509]: Manage Namespaces
+                      - text: button. The
+                      - strong [ref=e510]: Settings
+                      - text: pane displays with
+                      - strong [ref=e511]: RBAC
+                      - text: preselected and the
+                      - strong [ref=e512]: Namespaces
+                      - text: tab opened by default.
+                  - listitem [ref=e513]:
+                    - paragraph [ref=e514]:
+                      - text: Click the three-dot menu on the namespace you want to delete and select
+                      - strong [ref=e515]: Remove
+                      - text: .
+                  - listitem [ref=e516]:
+                    - paragraph [ref=e517]:
+                      - text: Click
+                      - strong [ref=e518]: Save Changes
+                      - text: .
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e519]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e520] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - paragraph [ref=e521]: Validate that the namespace was successfully deleted.
+                - list [ref=e522]:
+                  - listitem [ref=e523]:
+                    - paragraph [ref=e524]:
+                      - text: Log in to
+                      - link "Palette" [ref=e525] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant admin.
+                  - listitem [ref=e526]:
+                    - paragraph [ref=e527]:
+                      - text: Navigate to the left
+                      - strong [ref=e528]: Main Menu
+                      - text: and click on
+                      - strong [ref=e529]: Clusters
+                      - text: .
+                  - listitem [ref=e530]:
+                    - paragraph [ref=e531]: Select the cluster that contains the namespace you want to delete and view its details.
+                  - listitem [ref=e532]:
+                    - paragraph [ref=e533]:
+                      - text: In the
+                      - strong [ref=e534]: Settings
+                      - text: pane, select
+                      - strong [ref=e535]: Cluster Settings
+                      - text: ", and then select"
+                      - strong [ref=e536]: RBAC
+                      - text: ">"
+                      - strong [ref=e537]: Namespaces
+                      - text: tab.
+                - paragraph [ref=e538]:
+                  - text: The namespace you created is no longer listed under
+                  - strong [ref=e539]: Namespace Quota
+                  - text: .
+              - generic [ref=e540]:
+                - generic [ref=e542]:
+                  - text: "Tags:"
+                  - list [ref=e543]:
+                    - listitem [ref=e544]:
+                      - link "clusters" [ref=e545] [cursor=pointer]:
+                        - /url: /tags/clusters/
+                    - listitem [ref=e546]:
+                      - link "cluster management" [ref=e547] [cursor=pointer]:
+                        - /url: /tags/cluster-management/
+                - link "Edit this page" [ref=e550] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/cluster-management/namespace-management.md
+                  - img [ref=e551]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e555]:
+              - link "Previous « RBAC and Namespace Support" [ref=e556] [cursor=pointer]:
+                - /url: /clusters/cluster-management/cluster-rbac/
+                - generic [ref=e557]: Previous
+                - generic [ref=e558]: « RBAC and Namespace Support
+              - link "Next Palette Macros »" [ref=e559] [cursor=pointer]:
+                - /url: /clusters/cluster-management/macros/
+                - generic [ref=e560]: Next
+                - generic [ref=e561]: Palette Macros »
+          - list [ref=e564]:
+            - listitem [ref=e565]:
+              - link "Create a Namespace" [ref=e566] [cursor=pointer]:
+                - /url: "#create-a-namespace"
+              - list [ref=e567]:
+                - listitem [ref=e568]:
+                  - link "Prerequisites" [ref=e569] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e570]:
+                  - link "Limitations" [ref=e571] [cursor=pointer]:
+                    - /url: "#limitations"
+                - listitem [ref=e572]:
+                  - link "Create a Namespace in a Cluster" [ref=e573] [cursor=pointer]:
+                    - /url: "#create-a-namespace-in-a-cluster"
+                - listitem [ref=e574]:
+                  - link "Validate" [ref=e575] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e576]:
+              - link "Assign Resource Quotas" [ref=e577] [cursor=pointer]:
+                - /url: "#assign-resource-quotas"
+              - list [ref=e578]:
+                - listitem [ref=e579]:
+                  - link "Prerequisites" [ref=e580] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e581]:
+                  - link "Assign Resource Quotas to a Namespace" [ref=e582] [cursor=pointer]:
+                    - /url: "#assign-resource-quotas-to-a-namespace"
+            - listitem [ref=e583]:
+              - link "Delete a Namespace" [ref=e584] [cursor=pointer]:
+                - /url: "#delete-a-namespace"
+              - list [ref=e585]:
+                - listitem [ref=e586]:
+                  - link "Prerequisites" [ref=e587] [cursor=pointer]:
+                    - /url: "#prerequisites-2"
+                - listitem [ref=e588]:
+                  - link "Delete a Namespace from a Cluster" [ref=e589] [cursor=pointer]:
+                    - /url: "#delete-a-namespace-from-a-cluster"
+                - listitem [ref=e590]:
+                  - link "Validate" [ref=e591] [cursor=pointer]:
+                    - /url: "#validate-1"
+  - button "Project Logo Ask AI" [ref=e592] [cursor=pointer]:
+    - generic [ref=e595]:
+      - img "Project Logo" [ref=e596]
+      - paragraph [ref=e597]: Ask AI
+```

@@ -1,0 +1,451 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Security" [ref=e150] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e152]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Audit Logs" [ref=e157] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e159]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Self-Hosted Palette" [expanded] [ref=e164] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e166]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e168] [cursor=pointer]
+                - list [ref=e169]:
+                  - listitem [ref=e170]:
+                    - generic [ref=e171]:
+                      - link "Installation" [ref=e172] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e173] [cursor=pointer]
+                  - listitem [ref=e174]:
+                    - link "Activate Palette" [ref=e175] [cursor=pointer]:
+                      - /url: /enterprise-version/activate-installation/
+                  - listitem [ref=e176]:
+                    - generic [ref=e177]:
+                      - link "System Management" [ref=e178] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e179] [cursor=pointer]
+                  - listitem [ref=e180]:
+                    - generic [ref=e181]:
+                      - link "Upgrade" [expanded] [ref=e182] [cursor=pointer]:
+                        - /url: /enterprise-version/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e183] [cursor=pointer]
+                    - list [ref=e184]:
+                      - listitem [ref=e185]:
+                        - link "Upgrade Notes" [ref=e186] [cursor=pointer]:
+                          - /url: /enterprise-version/upgrade/upgrade-notes/
+                      - listitem [ref=e187]:
+                        - link "VMware" [expanded] [ref=e189] [cursor=pointer]:
+                          - /url: "#"
+                        - list [ref=e190]:
+                          - listitem [ref=e191]:
+                            - link "Non-airgap" [ref=e192] [cursor=pointer]:
+                              - /url: /enterprise-version/upgrade/upgrade-vmware/non-airgap/
+                          - listitem [ref=e193]:
+                            - link "Airgap" [ref=e194] [cursor=pointer]:
+                              - /url: /enterprise-version/upgrade/upgrade-vmware/airgap/
+                      - listitem [ref=e195]:
+                        - link "Kubernetes" [ref=e197] [cursor=pointer]:
+                          - /url: "#"
+                      - listitem [ref=e198]:
+                        - link "Palette Management Appliance" [ref=e199] [cursor=pointer]:
+                          - /url: /enterprise-version/upgrade/palette-management-appliance/
+              - listitem [ref=e200]:
+                - generic [ref=e201]:
+                  - link "Palette VerteX" [ref=e202] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e204]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e206] [cursor=pointer]
+              - listitem [ref=e207]:
+                - generic [ref=e208]:
+                  - link "Tenant Administration" [ref=e209] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e211]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e213] [cursor=pointer]
+              - listitem [ref=e214]:
+                - generic [ref=e215]:
+                  - link "Automation" [ref=e216] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e218]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e220] [cursor=pointer]
+              - listitem [ref=e221]:
+                - generic [ref=e222]:
+                  - link "Troubleshooting" [ref=e223] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e225]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e227] [cursor=pointer]
+              - listitem [ref=e228]:
+                - link "Glossary" [ref=e229] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e231]
+                  - text: Glossary
+              - listitem [ref=e233]:
+                - generic [ref=e234]:
+                  - link "Compliance & Legal" [ref=e235] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e237]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e239] [cursor=pointer]
+              - listitem [ref=e240]:
+                - button "Privacy Settings" [ref=e241] [cursor=pointer]:
+                  - img [ref=e242]
+                  - text: Privacy Settings
+      - main [ref=e244]:
+        - generic [ref=e246]:
+          - generic [ref=e248]:
+            - article [ref=e249]:
+              - navigation "Breadcrumbs" [ref=e250]:
+                - list [ref=e251]:
+                  - listitem [ref=e252]:
+                    - link "Home page" [ref=e253] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e254]
+                  - listitem [ref=e256]:
+                    - link "Self-Hosted Palette" [ref=e257] [cursor=pointer]:
+                      - /url: /enterprise-version/
+                  - listitem [ref=e258]:
+                    - link "Upgrade" [ref=e259] [cursor=pointer]:
+                      - /url: /enterprise-version/upgrade/
+                  - listitem [ref=e260]:
+                    - generic [ref=e261]: VMware
+                  - listitem [ref=e262]:
+                    - generic [ref=e263]: Non-airgap
+              - generic [ref=e264]:
+                - heading "Upgrade Palette Installed on VMware vSphere" [level=1] [ref=e266]
+                - paragraph [ref=e267]:
+                  - text: This guide takes you through the process of upgrading a self-hosted Palette instance installed on VMware vSphere. Before upgrading Palette to a new major version, you must first update it to the latest patch version of the latest minor version available. Refer to the
+                  - link "Supported Upgrade Paths" [ref=e268] [cursor=pointer]:
+                    - /url: /enterprise-version/upgrade/#supported-upgrade-paths
+                  - text: section for details.
+                - generic [ref=e269]:
+                  - generic [ref=e270]:
+                    - img [ref=e272]
+                    - text: warning
+                  - paragraph [ref=e275]:
+                    - text: If you are upgrading from a Palette version that is older than 4.4.14, ensure that you have executed the utility script to make the CNS mapping unique for the associated PVC. For more information, refer to the
+                    - link "Troubleshooting guide" [ref=e276] [cursor=pointer]:
+                      - /url: /troubleshooting/enterprise-install/#scenario---non-unique-vsphere-cns-mapping
+                    - text: .
+                - paragraph [ref=e277]:
+                  - text: If your setup includes a PCG, you must also
+                  - link "allow the PCG to upgrade automatically" [ref=e278] [cursor=pointer]:
+                    - /url: /clusters/pcg/manage-pcg/pcg-upgrade/
+                  - text: before each major or minor Palette upgrade.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e279]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e280] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e281]:
+                  - listitem [ref=e282]: Access to the Palette system console.
+                  - listitem [ref=e283]: A diff or text comparison tool of your choice.
+                  - listitem [ref=e284]:
+                    - text: The Kubernetes cluster must be set up on a version of Kubernetes that is compatible to your upgraded version. Refer to the
+                    - link "Kubernetes Requirements" [ref=e285] [cursor=pointer]:
+                      - /url: /enterprise-version/install-palette/#kubernetes-requirements
+                    - text: section to find the version required for your Palette installation.
+                - heading "UpgradeDirect link to Upgrade" [level=2] [ref=e286]:
+                  - text: Upgrade
+                  - link "Direct link to Upgrade" [ref=e287] [cursor=pointer]:
+                    - /url: "#upgrade"
+                    - text: "#"
+                - list [ref=e288]:
+                  - listitem [ref=e289]:
+                    - paragraph [ref=e290]: Log in to the Palette system console.
+                  - listitem [ref=e291]:
+                    - paragraph [ref=e292]:
+                      - text: From the left
+                      - strong [ref=e293]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e294]: Enterprise Cluster
+                      - text: and then select the
+                      - strong [ref=e295]: Profile
+                      - text: tab.
+                  - listitem [ref=e296]:
+                    - paragraph [ref=e297]: Copy the configurations for your CSI, CNI, and Kubernetes layers to an external location for backup.
+                    - generic [ref=e298]:
+                      - generic [ref=e299]:
+                        - img [ref=e301]
+                        - text: tip
+                      - paragraph [ref=e304]: If your Enterprise Cluster profile has configuration changes or additions, make sure to back up all the customized values to preserve them after the upgrade.
+                    - paragraph [ref=e305]:
+                      - img "Self-hosted Palette system console with the highlighted Enterprise Cluster profile configuration values." [ref=e306]
+                  - listitem [ref=e307]:
+                    - paragraph [ref=e308]:
+                      - text: From the left
+                      - strong [ref=e309]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e310]: Update Management
+                      - text: and click
+                      - strong [ref=e311]: Update
+                      - text: .
+                    - paragraph [ref=e312]:
+                      - img "Self-hosted Palette system console with Update Management open and the Update button highlighted." [ref=e313]
+                  - listitem [ref=e314]:
+                    - paragraph [ref=e315]:
+                      - text: In the
+                      - strong [ref=e316]: Palette version update
+                      - text: preview modal, from the left menu, select the
+                      - strong [ref=e317]: Kubernetes
+                      - text: layer. The
+                      - strong [ref=e318]: Incoming changes
+                      - text: pane displays the changes that the upgrade introduces. The
+                      - strong [ref=e319]: Current configuration
+                      - text: pane displays your current layer configuration.
+                    - generic [ref=e320]:
+                      - generic [ref=e321]:
+                        - img [ref=e323]
+                        - text: info
+                      - paragraph [ref=e326]: To complete the Palette upgrade, we recommend using an external diff or text comparison tool. Proceed with the following steps once you have the comparison tool available next to the Palette system console.
+                  - listitem [ref=e327]:
+                    - paragraph [ref=e328]:
+                      - text: Copy the configurations from both
+                      - strong [ref=e329]: Incoming changes
+                      - text: and
+                      - strong [ref=e330]: Current configuration
+                      - text: panes to your comparison tool.
+                  - listitem [ref=e331]:
+                    - paragraph [ref=e332]:
+                      - text: From your current configuration, transfer only those differences that are custom to your self-hosted Palette instance (for example, the
+                      - code [ref=e333]: podCIDR
+                      - text: and
+                      - code [ref=e334]: serviceClusterIpRange
+                      - text: values). Do not override any other changes or upgrades.
+                    - paragraph [ref=e335]:
+                      - img "Self-hosted Palette system console with the upgrade preview pane." [ref=e336]
+                  - listitem [ref=e337]:
+                    - paragraph [ref=e338]:
+                      - text: After you finish merging the configurations, copy the resulting configuration, and then paste it to the
+                      - strong [ref=e339]: Current configuration
+                      - text: pane in the Palette system console.
+                    - paragraph [ref=e340]:
+                      - img "Self-hosted Palette system console with the upgrade preview pane." [ref=e341]
+                  - listitem [ref=e342]:
+                    - paragraph [ref=e343]: Repeat steps six through eight for each Enterprise Cluster profile layer.
+                  - listitem [ref=e344]:
+                    - paragraph [ref=e345]:
+                      - text: In the bottom-right corner of the
+                      - strong [ref=e346]: Palette version update
+                      - text: preview modal, select
+                      - strong [ref=e347]: Confirm
+                      - text: .
+                    - paragraph [ref=e348]: The system console locks for a couple of minutes while the upgrade is applied.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e349]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e350] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e351]:
+                  - listitem [ref=e352]:
+                    - paragraph [ref=e353]: Log in to the Palette system console.
+                  - listitem [ref=e354]:
+                    - paragraph [ref=e355]:
+                      - text: On the
+                      - strong [ref=e356]: Summary
+                      - text: page, Palette should display messages that state
+                      - strong [ref=e357]: You are using the latest version of Palette
+                      - text: and
+                      - strong [ref=e358]: On-prem system console is healthy
+                      - text: .
+              - generic [ref=e359]:
+                - generic [ref=e361]:
+                  - text: "Tags:"
+                  - list [ref=e362]:
+                    - listitem [ref=e363]:
+                      - link "palette" [ref=e364] [cursor=pointer]:
+                        - /url: /tags/palette/
+                    - listitem [ref=e365]:
+                      - link "self-hosted" [ref=e366] [cursor=pointer]:
+                        - /url: /tags/self-hosted/
+                    - listitem [ref=e367]:
+                      - link "vmware" [ref=e368] [cursor=pointer]:
+                        - /url: /tags/vmware/
+                    - listitem [ref=e369]:
+                      - link "non-airgap" [ref=e370] [cursor=pointer]:
+                        - /url: /tags/non-airgap/
+                    - listitem [ref=e371]:
+                      - link "upgrade" [ref=e372] [cursor=pointer]:
+                        - /url: /tags/upgrade/
+                - link "Edit this page" [ref=e375] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/enterprise-version/upgrade/upgrade-vmware/non-airgap.md
+                  - img [ref=e376]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e380]:
+              - link "Previous « Upgrade Notes" [ref=e381] [cursor=pointer]:
+                - /url: /enterprise-version/upgrade/upgrade-notes/
+                - generic [ref=e382]: Previous
+                - generic [ref=e383]: « Upgrade Notes
+              - link "Next Airgap »" [ref=e384] [cursor=pointer]:
+                - /url: /enterprise-version/upgrade/upgrade-vmware/airgap/
+                - generic [ref=e385]: Next
+                - generic [ref=e386]: Airgap »
+          - list [ref=e389]:
+            - listitem [ref=e390]:
+              - link "Prerequisites" [ref=e391] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e392]:
+              - link "Upgrade" [ref=e393] [cursor=pointer]:
+                - /url: "#upgrade"
+            - listitem [ref=e394]:
+              - link "Validate" [ref=e395] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e396] [cursor=pointer]:
+    - generic [ref=e399]:
+      - img "Project Logo" [ref=e400]
+      - paragraph [ref=e401]: Ask AI
+```

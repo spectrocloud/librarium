@@ -1,0 +1,707 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                  - listitem [ref=e107]:
+                    - generic [ref=e108]:
+                      - link "Data Center Clusters" [ref=e109] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e111]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e113] [cursor=pointer]
+                  - listitem [ref=e114]:
+                    - generic [ref=e115]:
+                      - link "Edge" [ref=e116] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e118]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e120] [cursor=pointer]
+                  - listitem [ref=e121]:
+                    - generic [ref=e122]:
+                      - link "Palette Virtual Clusters" [ref=e123] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e125]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e127] [cursor=pointer]
+                  - listitem [ref=e128]:
+                    - generic [ref=e129]:
+                      - link "Imported Clusters" [ref=e130] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e132]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e134] [cursor=pointer]
+                  - listitem [ref=e135]:
+                    - generic [ref=e136]:
+                      - link "Manage Clusters" [expanded] [ref=e137] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e139]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e141] [cursor=pointer]
+                    - list [ref=e142]:
+                      - listitem [ref=e143]:
+                        - generic [ref=e144]:
+                          - link "SSH" [ref=e145] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/ssh/
+                          - button "Toggle the collapsible sidebar category 'SSH'" [ref=e146] [cursor=pointer]
+                      - listitem [ref=e147]:
+                        - link "Update a Cluster" [ref=e148] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-updates/
+                      - listitem [ref=e149]:
+                        - generic [ref=e150]:
+                          - link "Cluster Monitoring" [ref=e151] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/monitoring/
+                          - button "Toggle the collapsible sidebar category 'Cluster Monitoring'" [ref=e152] [cursor=pointer]
+                      - listitem [ref=e153]:
+                        - link "Cluster Health Alerts" [ref=e154] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/health-alerts/
+                      - listitem [ref=e155]:
+                        - generic [ref=e156]:
+                          - link "Backup and Restore" [ref=e157] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/backup-restore/
+                          - button "Toggle the collapsible sidebar category 'Backup and Restore'" [ref=e158] [cursor=pointer]
+                      - listitem [ref=e159]:
+                        - link "Renew Cluster PKI Certificates" [ref=e160] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/certificate-management/
+                      - listitem [ref=e161]:
+                        - link "Compliance Scan" [ref=e162] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/compliance-scan/
+                      - listitem [ref=e163]:
+                        - link "OS Patching" [ref=e164] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/os-patching/
+                      - listitem [ref=e165]:
+                        - link "Cost Visibility" [ref=e166] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cloud-cost/
+                      - listitem [ref=e167]:
+                        - link "Workload Visibility" [ref=e168] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/workloads/
+                      - listitem [ref=e169]:
+                        - link "Node Labels" [ref=e170] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-labels/
+                      - listitem [ref=e171]:
+                        - link "Taints and Tolerations" [ref=e172] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/taints/
+                      - listitem [ref=e173]:
+                        - link "RBAC and Namespace Support" [ref=e174] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-rbac/
+                      - listitem [ref=e175]:
+                        - link "Namespace Management" [ref=e176] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/namespace-management/
+                      - listitem [ref=e177]:
+                        - link "Palette Macros" [ref=e178] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/macros/
+                      - listitem [ref=e179]:
+                        - link "Pack Monitoring" [ref=e180] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/pack-monitoring/
+                      - listitem [ref=e181]:
+                        - link "Kubeconfig" [ref=e182] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/kubeconfig/
+                      - listitem [ref=e183]:
+                        - link "Kubectl" [ref=e184] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/palette-webctl/
+                      - listitem [ref=e185]:
+                        - generic [ref=e186]:
+                          - link "Platform Settings" [ref=e187] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/platform-settings/
+                          - button "Toggle the collapsible sidebar category 'Platform Settings'" [ref=e188] [cursor=pointer]
+                      - listitem [ref=e189]:
+                        - link "Map and Filter Clusters" [ref=e190] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-map-filters/
+                      - listitem [ref=e191]:
+                        - link "Node Pools" [ref=e192] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-pool/
+                      - listitem [ref=e193]:
+                        - link "Configure Applications to Use Proxy Server" [ref=e194] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-proxy/
+                      - listitem [ref=e195]:
+                        - link "Spectro Kubernetes Dashboard" [ref=e196] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/spectro-kubernetes-dashboard/
+                      - listitem [ref=e197]:
+                        - link "Cluster Removal" [ref=e198] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/remove-clusters/
+                      - listitem [ref=e199]:
+                        - link "Image Swap" [ref=e200] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/image-swap/
+                      - listitem [ref=e201]:
+                        - link "Maintenance Mode" [ref=e202] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/maintenance-mode/
+                  - listitem [ref=e203]:
+                    - generic [ref=e204]:
+                      - link "Cluster Groups" [ref=e205] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e207]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e209] [cursor=pointer]
+                  - listitem [ref=e210]:
+                    - generic [ref=e211]:
+                      - link "Private Cloud Gateway" [ref=e212] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e214]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e216] [cursor=pointer]
+              - listitem [ref=e217]:
+                - generic [ref=e218]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e219] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e221]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e223] [cursor=pointer]
+              - listitem [ref=e224]:
+                - generic [ref=e225]:
+                  - link "Palette Dev Engine" [ref=e226] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e228]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e230] [cursor=pointer]
+              - listitem [ref=e231]:
+                - generic [ref=e232]:
+                  - link "Virtual Machine Orchestrator" [ref=e233] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e235]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e237] [cursor=pointer]
+              - listitem [ref=e238]:
+                - generic [ref=e239]:
+                  - link "Workspaces" [ref=e240] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e242]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e244] [cursor=pointer]
+              - listitem [ref=e245]:
+                - generic [ref=e246]:
+                  - link "Packs List" [ref=e247] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e249]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e251] [cursor=pointer]
+              - listitem [ref=e252]:
+                - generic [ref=e253]:
+                  - link "User & Role Management" [ref=e254] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e256]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e258] [cursor=pointer]
+              - listitem [ref=e259]:
+                - generic [ref=e260]:
+                  - link "Registries and Packs" [ref=e261] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e263]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e265] [cursor=pointer]
+              - listitem [ref=e266]:
+                - generic [ref=e267]:
+                  - link "Security" [ref=e268] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e270]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e272] [cursor=pointer]
+              - listitem [ref=e273]:
+                - generic [ref=e274]:
+                  - link "Audit Logs" [ref=e275] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e277]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e279] [cursor=pointer]
+              - listitem [ref=e280]:
+                - generic [ref=e281]:
+                  - link "Self-Hosted Palette" [ref=e282] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e284]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e286] [cursor=pointer]
+              - listitem [ref=e287]:
+                - generic [ref=e288]:
+                  - link "Palette VerteX" [ref=e289] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e291]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e293] [cursor=pointer]
+              - listitem [ref=e294]:
+                - generic [ref=e295]:
+                  - link "Tenant Administration" [ref=e296] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e298]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e300] [cursor=pointer]
+              - listitem [ref=e301]:
+                - generic [ref=e302]:
+                  - link "Automation" [ref=e303] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e305]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e307] [cursor=pointer]
+              - listitem [ref=e308]:
+                - generic [ref=e309]:
+                  - link "Troubleshooting" [ref=e310] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e312]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e314] [cursor=pointer]
+              - listitem [ref=e315]:
+                - link "Glossary" [ref=e316] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e318]
+                  - text: Glossary
+              - listitem [ref=e320]:
+                - generic [ref=e321]:
+                  - link "Compliance & Legal" [ref=e322] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e324]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e326] [cursor=pointer]
+              - listitem [ref=e327]:
+                - button "Privacy Settings" [ref=e328] [cursor=pointer]:
+                  - img [ref=e329]
+                  - text: Privacy Settings
+      - main [ref=e331]:
+        - generic [ref=e333]:
+          - generic [ref=e335]:
+            - article [ref=e336]:
+              - navigation "Breadcrumbs" [ref=e337]:
+                - list [ref=e338]:
+                  - listitem [ref=e339]:
+                    - link "Home page" [ref=e340] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e341]
+                  - listitem [ref=e343]:
+                    - link "Clusters" [ref=e344] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e345]:
+                    - link "Manage Clusters" [ref=e346] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/
+                  - listitem [ref=e347]:
+                    - generic [ref=e348]: Taints and Tolerations
+              - generic [ref=e349]:
+                - heading "Taints and Tolerations" [level=1] [ref=e351]
+                - paragraph [ref=e352]: Taints provide nodes with the ability to repel a set of pods, allowing you to mark nodes as unavailable for certain pods. A common use case of taints is to prevent pods from being scheduled on nodes undergoing maintenance. Tolerations are applied to pods and allow the pods to schedule onto nodes with matching taints. Once configured, nodes do not accept any pods that do not tolerate the taints.
+                - generic [ref=e353]:
+                  - generic [ref=e354]:
+                    - img [ref=e356]
+                    - text: tip
+                  - paragraph [ref=e359]:
+                    - text: You can think of taints as having the opposite effect to
+                    - link "Node Labels" [ref=e360] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/node-labels/
+                    - text: . Taints allow you to mark nodes as not accepting certain pods, while node labels allow you to specify that your pods should only be scheduled on certain nodes.
+                - paragraph [ref=e361]:
+                  - text: Palette allows you to apply taints during cluster provisioning. Once the cluster is in a healthy state, taints can be modified on the
+                  - strong [ref=e362]: Nodes
+                  - text: tab of the cluster details page.
+                - paragraph [ref=e363]: This guide covers the Palette UI flow.
+                - generic [ref=e364]:
+                  - generic [ref=e365]:
+                    - img [ref=e367]
+                    - text: info
+                  - paragraph [ref=e370]:
+                    - text: Taints can also be applied to node pools using the Spectro Cloud
+                    - link "Terraform provider" [ref=e371] [cursor=pointer]:
+                      - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs
+                    - text: .
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e372]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e373] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e374]:
+                  - listitem [ref=e375]:
+                    - text: A
+                    - link "Palette" [ref=e376] [cursor=pointer]:
+                      - /url: https://console.spectrocloud.com
+                    - text: account with the permissions to create cluster profiles and manage clusters. Refer to the
+                    - link "Roles and Permissions" [ref=e377] [cursor=pointer]:
+                      - /url: /user-management/palette-rbac/project-scope-roles-permissions/
+                    - text: guide for more information.
+                  - listitem [ref=e378]:
+                    - link "kubectl" [ref=e379] [cursor=pointer]:
+                      - /url: https://kubernetes.io/docs/reference/kubectl/
+                    - text: or
+                    - link "K9s" [ref=e380] [cursor=pointer]:
+                      - /url: https://k9scli.io/
+                    - text: installed locally.
+                - heading "EnablementDirect link to Enablement" [level=2] [ref=e381]:
+                  - text: Enablement
+                  - link "Direct link to Enablement" [ref=e382] [cursor=pointer]:
+                    - /url: "#enablement"
+                    - text: "#"
+                - list [ref=e383]:
+                  - listitem [ref=e384]:
+                    - paragraph [ref=e385]:
+                      - text: Log in to
+                      - link "Palette" [ref=e386] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e387]:
+                    - paragraph [ref=e388]:
+                      - text: Navigate to the left
+                      - strong [ref=e389]: Main Menu
+                      - text: and select
+                      - strong [ref=e390]: Profiles
+                      - text: .
+                  - listitem [ref=e391]:
+                    - paragraph [ref=e392]:
+                      - text: Create a cluster profile to deploy to your environment. Refer to the
+                      - link "Create a Full Profile" [ref=e393] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/create-full-profile/
+                      - text: guide for more information.
+                  - listitem [ref=e394]:
+                    - paragraph [ref=e395]:
+                      - text: Add a manifest to your cluster profile with a custom workload of your choice. Refer to the
+                      - link "Add a Manifest" [ref=e396] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon/
+                      - text: for additional guidance.
+                  - listitem [ref=e397]:
+                    - paragraph [ref=e398]:
+                      - text: Add pod tolerations to the pod specification of your manifest. Refer to the
+                      - link "Taints and Tolerations" [ref=e399] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
+                      - text: official documentation page for more details.
+                    - generic [ref=e400]:
+                      - generic [ref=e401]:
+                        - img [ref=e403]
+                        - text: tip
+                      - paragraph [ref=e406]:
+                        - text: By default, Palette will not remove pods with the toleration key
+                        - code [ref=e407]: node.kubernetes.io/unschedulable
+                        - text: set to
+                        - code [ref=e408]: NoSchedule
+                        - text: . For more information, refer to the
+                        - link "Pod Drainage Toleration" [ref=e409] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-pool/#pod-drainage-toleration
+                        - text: section
+                    - list [ref=e410]:
+                      - listitem [ref=e411]:
+                        - paragraph [ref=e412]:
+                          - text: Specify a custom
+                          - strong [ref=e413]: key
+                          - text: and custom
+                          - strong [ref=e414]: value
+                          - text: .
+                      - listitem [ref=e415]:
+                        - paragraph [ref=e416]:
+                          - text: Palette supports the
+                          - code [ref=e417]: Equal
+                          - strong [ref=e418]: operator
+                          - text: .
+                      - listitem [ref=e419]:
+                        - paragraph [ref=e420]:
+                          - text: The
+                          - strong [ref=e421]: effect
+                          - text: defines what will happen to the pods that do not tolerate a taint. Kubernetes provides three taint effects.
+                        - table [ref=e422]:
+                          - rowgroup [ref=e423]:
+                            - row "Effect Description" [ref=e424]:
+                              - cell "Effect" [ref=e425]:
+                                - strong [ref=e426]: Effect
+                              - cell "Description" [ref=e427]:
+                                - strong [ref=e428]: Description
+                          - rowgroup [ref=e429]:
+                            - row "NoSchedule Pods that cannot tolerate the node taint will not be scheduled to the node." [ref=e430]:
+                              - cell "NoSchedule" [ref=e431]:
+                                - code [ref=e432]: NoSchedule
+                              - cell "Pods that cannot tolerate the node taint will not be scheduled to the node." [ref=e433]
+                            - row "PreferNoSchedule The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed." [ref=e434]:
+                              - cell "PreferNoSchedule" [ref=e435]:
+                                - code [ref=e436]: PreferNoSchedule
+                              - cell "The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed." [ref=e437]
+                            - row "NoExecute New pods will not be scheduled on the node, and existing pods on the node, if any,will be evicted if they do not tolerate the taint." [ref=e438]:
+                              - cell "NoExecute" [ref=e439]:
+                                - code [ref=e440]: NoExecute
+                              - cell "New pods will not be scheduled on the node, and existing pods on the node, if any,will be evicted if they do not tolerate the taint." [ref=e441]
+                        - generic [ref=e443]:
+                          - code [ref=e445]:
+                            - generic [ref=e446]: "tolerations:"
+                            - generic [ref=e447]: "- key: \"key1\""
+                            - generic [ref=e448]: "operator: \"Equal\""
+                            - generic [ref=e449]: "value: \"value1\""
+                            - generic [ref=e450]: "effect: \"NoExecute\""
+                          - button "Copy code to clipboard" [ref=e452] [cursor=pointer]:
+                            - generic [ref=e453]:
+                              - img [ref=e454]
+                              - img [ref=e456]
+                        - generic [ref=e458]:
+                          - generic [ref=e459]:
+                            - img [ref=e461]
+                            - text: info
+                          - paragraph [ref=e464]:
+                            - text: When using packs or Helm charts, tolerations can only be specified if they are exposed for configuration in the
+                            - code [ref=e465]: values.yaml
+                            - text: file.
+                  - listitem [ref=e466]:
+                    - paragraph [ref=e467]: Save the changes made to your cluster profile.
+                  - listitem [ref=e468]:
+                    - paragraph [ref=e469]:
+                      - text: Navigate to the left
+                      - strong [ref=e470]: Main Menu
+                      - text: and select
+                      - strong [ref=e471]: Clusters
+                      - text: .
+                  - listitem [ref=e472]:
+                    - paragraph [ref=e473]:
+                      - text: Click on
+                      - strong [ref=e474]: Add New Cluster
+                      - text: .
+                  - listitem [ref=e475]:
+                    - paragraph [ref=e476]:
+                      - text: Fill in the
+                      - strong [ref=e477]: Basic Information
+                      - text: for your cluster and click
+                      - strong [ref=e478]: Next
+                      - text: .
+                  - listitem [ref=e479]:
+                    - paragraph [ref=e480]:
+                      - text: On the
+                      - strong [ref=e481]: Cluster Profile
+                      - text: tab, select the cluster profile you previously created. Click
+                      - strong [ref=e482]: Next
+                      - text: .
+                  - listitem [ref=e483]:
+                    - paragraph [ref=e484]:
+                      - text: Select a
+                      - strong [ref=e485]: Subscription
+                      - text: ","
+                      - strong [ref=e486]: Region
+                      - text: ", and"
+                      - strong [ref=e487]: SSH Key
+                      - text: on the
+                      - strong [ref=e488]: Cluster Config
+                      - text: tab. Click
+                      - strong [ref=e489]: Next
+                      - text: .
+                  - listitem [ref=e490]:
+                    - paragraph [ref=e491]:
+                      - text: On the
+                      - strong [ref=e492]: Nodes Config
+                      - text: tab, configure your control plane pool and worker pools by providing the instance type, availability zones and disk size.
+                  - listitem [ref=e493]:
+                    - paragraph [ref=e494]:
+                      - text: The control plane pool and worker pool provide the
+                      - strong [ref=e495]: Taints (Optional)
+                      - text: section. Click on
+                      - strong [ref=e496]: Add New Taint
+                      - text: and fill in the toleration values specified in your cluster profile. Click on
+                      - strong [ref=e497]: Next
+                      - text: .
+                    - paragraph [ref=e498]:
+                      - img "Screenshot of adding taints during cluster creation" [ref=e499]
+                    - generic [ref=e500]:
+                      - generic [ref=e501]:
+                        - img [ref=e503]
+                        - text: info
+                      - paragraph [ref=e506]:
+                        - text: Taints can also be updated on a deployed cluster by editing a worker node pool from the
+                        - strong [ref=e507]: Nodes
+                        - text: tab of the cluster details page.
+                  - listitem [ref=e508]:
+                    - paragraph [ref=e509]:
+                      - text: Accept the default settings on the
+                      - strong [ref=e510]: Cluster Settings
+                      - text: tab and click on
+                      - strong [ref=e511]: Validate
+                      - text: .
+                  - listitem [ref=e512]:
+                    - paragraph [ref=e513]:
+                      - text: Click on
+                      - strong [ref=e514]: Finish Configuration
+                      - text: and deploy your cluster.
+                    - generic [ref=e515]:
+                      - generic [ref=e516]:
+                        - img [ref=e518]
+                        - text: further guidance
+                      - paragraph [ref=e521]:
+                        - text: Refer to our
+                        - link "Getting Started" [ref=e522] [cursor=pointer]:
+                          - /url: /getting-started/
+                        - text: tutorials for detailed guidance on how to deploy a cluster with Palette using Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP) cloud providers.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e523]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e524] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e525]: You can follow these steps to validate that your taints and tolerations are applied successfully.
+                - list [ref=e526]:
+                  - listitem [ref=e527]:
+                    - paragraph [ref=e528]:
+                      - text: Log in to
+                      - link "Palette" [ref=e529] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e530]:
+                    - paragraph [ref=e531]:
+                      - text: Navigate to the left
+                      - strong [ref=e532]: Main Menu
+                      - text: and select
+                      - strong [ref=e533]: Clusters
+                      - text: .
+                  - listitem [ref=e534]:
+                    - paragraph [ref=e535]:
+                      - text: Select the cluster you deployed, and download the
+                      - link "kubeconfig" [ref=e536] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/kubeconfig/
+                      - text: file.
+                    - paragraph [ref=e537]:
+                      - img "Screenshot of kubeconfig file download" [ref=e538]
+                  - listitem [ref=e539]:
+                    - paragraph [ref=e540]:
+                      - text: Open a terminal window and set the environment variable
+                      - code [ref=e541]: KUBECONFIG
+                      - text: to point to the kubeconfig file you downloaded.
+                    - generic [ref=e543]:
+                      - code [ref=e545]:
+                        - generic [ref=e546]: export KUBECONFIG=~/Downloads/admin.azure-cluster.kubeconfig
+                      - button "Copy code to clipboard" [ref=e548] [cursor=pointer]:
+                        - generic [ref=e549]:
+                          - img [ref=e550]
+                          - img [ref=e552]
+                  - listitem [ref=e554]:
+                    - paragraph [ref=e555]: Confirm the cluster deployment process has scheduled your pods as expected. Remember that only pods with matching tolerations can be scheduled on nodes with configured taints.
+                    - generic [ref=e557]:
+                      - code [ref=e559]:
+                        - generic [ref=e560]: kubectl get pods --all-namespaces --output wide --watch
+                      - button "Copy code to clipboard" [ref=e562] [cursor=pointer]:
+                        - generic [ref=e563]:
+                          - img [ref=e564]
+                          - img [ref=e566]
+                    - generic [ref=e568]:
+                      - generic [ref=e569]:
+                        - img [ref=e571]
+                        - text: tip
+                      - paragraph [ref=e574]:
+                        - text: For a more user-friendly experience, consider using
+                        - link "K9s" [ref=e575] [cursor=pointer]:
+                          - /url: https://k9scli.io/
+                        - text: or a similar tool to explore your cluster workloads.
+              - generic [ref=e576]:
+                - generic [ref=e578]:
+                  - text: "Tags:"
+                  - list [ref=e579]:
+                    - listitem [ref=e580]:
+                      - link "clusters" [ref=e581] [cursor=pointer]:
+                        - /url: /tags/clusters/
+                    - listitem [ref=e582]:
+                      - link "cluster management" [ref=e583] [cursor=pointer]:
+                        - /url: /tags/cluster-management/
+                - link "Edit this page" [ref=e586] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/cluster-management/taints.md
+                  - img [ref=e587]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e591]:
+              - link "Previous « Node Labels" [ref=e592] [cursor=pointer]:
+                - /url: /clusters/cluster-management/node-labels/
+                - generic [ref=e593]: Previous
+                - generic [ref=e594]: « Node Labels
+              - link "Next RBAC and Namespace Support »" [ref=e595] [cursor=pointer]:
+                - /url: /clusters/cluster-management/cluster-rbac/
+                - generic [ref=e596]: Next
+                - generic [ref=e597]: RBAC and Namespace Support »
+          - list [ref=e600]:
+            - listitem [ref=e601]:
+              - link "Prerequisites" [ref=e602] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e603]:
+              - link "Enablement" [ref=e604] [cursor=pointer]:
+                - /url: "#enablement"
+            - listitem [ref=e605]:
+              - link "Validate" [ref=e606] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e607] [cursor=pointer]:
+    - generic [ref=e610]:
+      - img "Project Logo" [ref=e611]
+      - paragraph [ref=e612]: Ask AI
+```

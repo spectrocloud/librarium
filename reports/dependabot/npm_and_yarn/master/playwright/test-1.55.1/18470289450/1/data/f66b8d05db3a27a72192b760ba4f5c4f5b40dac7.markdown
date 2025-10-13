@@ -1,0 +1,850 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Security" [ref=e150] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e152]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Audit Logs" [ref=e157] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e159]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Self-Hosted Palette" [ref=e164] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e166]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e168] [cursor=pointer]
+              - listitem [ref=e169]:
+                - generic [ref=e170]:
+                  - link "Palette VerteX" [ref=e171] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e173]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e175] [cursor=pointer]
+              - listitem [ref=e176]:
+                - generic [ref=e177]:
+                  - link "Tenant Administration" [ref=e178] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e180]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e182] [cursor=pointer]
+              - listitem [ref=e183]:
+                - generic [ref=e184]:
+                  - link "Automation" [ref=e185] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e187]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e189] [cursor=pointer]
+              - listitem [ref=e190]:
+                - generic [ref=e191]:
+                  - link "Troubleshooting" [ref=e192] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e194]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e196] [cursor=pointer]
+              - listitem [ref=e197]:
+                - link "Glossary" [ref=e198] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e200]
+                  - text: Glossary
+              - listitem [ref=e202]:
+                - generic [ref=e203]:
+                  - link "Compliance & Legal" [ref=e204] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e206]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e208] [cursor=pointer]
+              - listitem [ref=e209]:
+                - button "Privacy Settings" [ref=e210] [cursor=pointer]:
+                  - img [ref=e211]
+                  - text: Privacy Settings
+      - main [ref=e213]:
+        - generic [ref=e215]:
+          - generic [ref=e217]:
+            - article [ref=e218]:
+              - navigation "Breadcrumbs" [ref=e219]:
+                - list [ref=e220]:
+                  - listitem [ref=e221]:
+                    - link "Home page" [ref=e222] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e223]
+                  - listitem [ref=e225]:
+                    - generic [ref=e226]: Glossary
+              - generic [ref=e227]:
+                - heading "Glossary" [level=1] [ref=e229]
+                - paragraph [ref=e230]: This page gives a quick reference to various object types and concepts within the Palette platform.
+                - heading "AgentDirect link to Agent" [level=2] [ref=e231]:
+                  - text: Agent
+                  - link "Direct link to Agent" [ref=e232] [cursor=pointer]:
+                    - /url: "#agent"
+                    - text: "#"
+                - paragraph [ref=e233]: The Palette Agent bridges the information transfer between Palette SaaS and Palette management plane. The agent collects information such as metrics, workloads, and heartbeats and constantly updates to the management plane. In addition to this, the agent is responsible for initiating and controlling Backup, OS-Patch, and Compliance Scan on the active cluster.
+                - heading "App ModeDirect link to App Mode" [level=2] [ref=e234]:
+                  - text: App Mode
+                  - link "Direct link to App Mode" [ref=e235] [cursor=pointer]:
+                    - /url: "#app-mode"
+                    - text: "#"
+                - paragraph [ref=e236]:
+                  - text: A mode optimized for a simpler and streamlined developer experience that allows you to focus on the building, maintenance, testing, deployment, and monitoring of your applications. App Mode removes the need to worry about the infrastructure management of a Kubernetes cluster and results in a PaaS-like experience, enabling you to focus on deploying
+                  - link "App Profiles" [ref=e237] [cursor=pointer]:
+                    - /url: "#app-profile"
+                  - text: ", Apps, and"
+                  - link "Palette Virtual Clusters" [ref=e238] [cursor=pointer]:
+                    - /url: "#palette-virtual-cluster"
+                  - text: .
+                - heading "App ProfileDirect link to App Profile" [level=2] [ref=e239]:
+                  - text: App Profile
+                  - link "Direct link to App Profile" [ref=e240] [cursor=pointer]:
+                    - /url: "#app-profile"
+                    - text: "#"
+                - paragraph [ref=e241]: App Profiles are templates created with preconfigured services required for Palette Virtual Clusters deployment. The App Profile allow creators to integrate various services or tiers, required to run an application, such as cache, databases, and more into a single deliverable. App Profiles provide a way to drive consistency across virtual clusters. You can create as many profiles as required, with multiple tiers serving different functionalities per use case.
+                - heading "AirgappedDirect link to Airgapped" [level=2] [ref=e242]:
+                  - text: Airgapped
+                  - link "Direct link to Airgapped" [ref=e243] [cursor=pointer]:
+                    - /url: "#airgapped"
+                    - text: "#"
+                - paragraph [ref=e244]: Self-hosted Palette installation supports airgap install, a security measure in which its management platform is installed in a VMware environments with no direct or indirect, internet connectivity to any other devices or networks of the outside world. This feature provides airtight security to the platform without the risk of compromise or disaster. In addition, it ensures the total isolation of a given system from other networks, especially those that are not secure.
+                - heading "Attach ManifestsDirect link to Attach Manifests" [level=2] [ref=e245]:
+                  - text: Attach Manifests
+                  - link "Direct link to Attach Manifests" [ref=e246] [cursor=pointer]:
+                    - /url: "#attach-manifests"
+                    - text: "#"
+                - paragraph [ref=e247]:
+                  - text: For integrations and add-ons orchestrated via Palette
+                  - link "Packs" [ref=e248] [cursor=pointer]:
+                    - /url: "#pack"
+                  - text: or
+                  - link "Charts" [ref=e249] [cursor=pointer]:
+                    - /url: "#helm-charts"
+                  - text: ", at times it is required to provide additional Kubernetes resources to complete the installation. Resources like additional secrets or Custom Resource Definitions may need to be installed for the integration or add-on to function correctly. Attach Manifests are additional raw manifests attached to a cluster profile layer built using a Palette Pack or a Chart. Multiple Attach Manifests can be added to a layer in a cluster profile."
+                - heading "Bring Your Own Operating System (BYOOS)Direct link to Bring Your Own Operating System (BYOOS)" [level=2] [ref=e250]:
+                  - text: Bring Your Own Operating System (BYOOS)
+                  - link "Direct link to Bring Your Own Operating System (BYOOS)" [ref=e251] [cursor=pointer]:
+                    - /url: "#bring-your-own-operating-system-byoos"
+                    - text: "#"
+                - paragraph [ref=e252]: A feature in Palette that allows you to bring your own operating system and use it with your Kubernetes clusters. With the BYOOS pack, you can reference your own OS images, configure the necessary drivers, and customize the OS to meet your specific requirements. BYO-OS gives you greater flexibility, control, and customization options when it comes to managing your Kubernetes clusters. It is especially useful for enterprises and organizations with strict requirements around security, compliance, or specific hardware configurations.
+                - heading "Chart RepositoriesDirect link to Chart Repositories" [level=2] [ref=e253]:
+                  - text: Chart Repositories
+                  - link "Direct link to Chart Repositories" [ref=e254] [cursor=pointer]:
+                    - /url: "#chart-repositories"
+                    - text: "#"
+                - paragraph [ref=e255]: Chart Repositories are web servers, either public or private, that host Helm Charts. By default, Palette includes several popular chart registries such as Bitnami. As an administrator, you can add additional public or private chart repositories to leverage charts from those sources. This feature provides greater flexibility in managing and deploying applications, allowing you to access and use Helm Charts from various sources in your Palette environment
+                - heading "Cloud AccountDirect link to Cloud Account" [level=2] [ref=e256]:
+                  - text: Cloud Account
+                  - link "Direct link to Cloud Account" [ref=e257] [cursor=pointer]:
+                    - /url: "#cloud-account"
+                    - text: "#"
+                - paragraph [ref=e258]: Cloud Accounts are where access credentials are stored for public and private clouds. It is used by the system to provide new cluster infrastructure and cluster resources. Cloud account information is treated as sensitive data and fully encrypted using the tenant's unique encryption key.
+                - heading "Cluster ModeDirect link to Cluster Mode" [level=2] [ref=e259]:
+                  - text: Cluster Mode
+                  - link "Direct link to Cluster Mode" [ref=e260] [cursor=pointer]:
+                    - /url: "#cluster-mode"
+                    - text: "#"
+                - paragraph [ref=e261]: Cluster Mode enables you to create, deploy, and manage Kubernetes clusters and applications. In Cluster Mode, you can deploy Kubernetes clusters to public cloud providers, on-prem data centers, and on the edge.
+                - heading "Cluster DefinitionDirect link to Cluster Definition" [level=2] [ref=e262]:
+                  - text: Cluster Definition
+                  - link "Direct link to Cluster Definition" [ref=e263] [cursor=pointer]:
+                    - /url: "#cluster-definition"
+                    - text: "#"
+                - paragraph [ref=e264]: A Cluster Definition contains one or more cluster profiles, including profile variables used in those profiles.
+                - heading "Cluster ProfileDirect link to Cluster Profile" [level=2] [ref=e265]:
+                  - text: Cluster Profile
+                  - link "Direct link to Cluster Profile" [ref=e266] [cursor=pointer]:
+                    - /url: "#cluster-profile"
+                    - text: "#"
+                - paragraph [ref=e267]: A Cluster Profile is a declarative model of a Kubernetes infrastructure stack. A Kubernetes infrastructure stack is broken into multiple layers, from core layers like base Operating System (OS), Kubernetes, storage, network, to additional add-on layers such as load balancer, ingress controller, logging, monitoring, security, etc. For each layer, Palette provides multiple out-of-the-box options and versions. The cluster profile is essentially a configuration of end-to-end Kubernetes stacks and settings that you create based on your needs, which you can reuse every time you need to deploy a cluster matching that configuration. For example, let us say for AI/ML you need a cluster with a base OS with an NVIDIA driver installed and Kubeflow installed in the cluster, but for a production cluster, you need a different stack with Logging (EFK), Monitoring (Prometheus), Security (Twistlock) pre-installed.
+                - paragraph [ref=e268]:
+                  - text: For more information, check out
+                  - link "Cluster Profiles" [ref=e269] [cursor=pointer]:
+                    - /url: /profiles/cluster-profiles/
+                  - text: .
+                - heading "Cluster Profile VariableDirect link to Cluster Profile Variable" [level=2] [ref=e270]:
+                  - text: Cluster Profile Variable
+                  - link "Direct link to Cluster Profile Variable" [ref=e271] [cursor=pointer]:
+                    - /url: "#cluster-profile-variable"
+                    - text: "#"
+                - paragraph [ref=e272]: Cluster Profile Variables enable you to create placeholders for parameters in profile layer configurations, which you can then populate for individual clusters during deployment. Meaning you can use a single cluster profile to deploy multiple clusters with unique requirements for security, networking, resource allocation, and so on.
+                - heading "Edge AppliancesDirect link to Edge Appliances" [level=2] [ref=e273]:
+                  - text: Edge Appliances
+                  - link "Direct link to Edge Appliances" [ref=e274] [cursor=pointer]:
+                    - /url: "#edge-appliances"
+                    - text: "#"
+                - paragraph [ref=e275]: "Palette supports several kinds of appliances for the Edge deployment. These appliances can be registered with the Palette Management Console and used for provisioning a Virtualized or a Native OS (Native Edge Deployment). The following is the list of all the Palette supported Edge appliance types:"
+                - table [ref=e276]:
+                  - rowgroup [ref=e277]:
+                    - row "Appliance Type Environment" [ref=e278]:
+                      - cell "Appliance Type" [ref=e279]:
+                        - strong [ref=e280]: Appliance Type
+                      - cell "Environment" [ref=e281]:
+                        - strong [ref=e282]: Environment
+                  - rowgroup [ref=e283]:
+                    - row "Native Edge Deployment Bare Metal Machines or Virtual Appliances" [ref=e284]:
+                      - cell "Native Edge Deployment" [ref=e285]
+                      - cell "Bare Metal Machines or Virtual Appliances" [ref=e286]
+                    - row "Bare Metal Machine Virtualized" [ref=e287]:
+                      - cell "Bare Metal Machine" [ref=e288]
+                      - cell "Virtualized" [ref=e289]
+                    - row "KVM-based virtual machines Virtualized" [ref=e290]:
+                      - cell "KVM-based virtual machines" [ref=e291]
+                      - cell "Virtualized" [ref=e292]
+                - paragraph [ref=e293]:
+                  - strong [ref=e294]: "Note:"
+                  - text: Palette Edge Manager & TUI would be embedded in P6OS.
+                - heading "Edge ClustersDirect link to Edge Clusters" [level=2] [ref=e295]:
+                  - text: Edge Clusters
+                  - link "Direct link to Edge Clusters" [ref=e296] [cursor=pointer]:
+                    - /url: "#edge-clusters"
+                    - text: "#"
+                - paragraph [ref=e297]: Edge Clusters are Kubernetes clusters set up on appliances installed in isolated locations such as hospitals, grocery stores, restaurants, etc., unlike a data center or cloud environment. These appliances can be bare metal machines or virtual machines and are managed by operators at these remote sites. Palette provides the provisioning of Workload Clusters on such edge appliances from its SaaS-based management console. Besides provisioning of the cluster, Palette also provides end-to-end management of these clusters through operations such as scaling, upgrades, reconfiguration, etc.
+                - heading "Local UIDirect link to Local UI" [level=2] [ref=e298]:
+                  - text: Local UI
+                  - link "Direct link to Local UI" [ref=e299] [cursor=pointer]:
+                    - /url: "#local-ui"
+                    - text: "#"
+                - paragraph [ref=e300]: Local UI is a browser-based tool that allows you to manage your Edge host and perform tasks such as creating local clusters, uploading content bundles, and configuring network settings.
+                - heading "Helm ChartsDirect link to Helm Charts" [level=2] [ref=e301]:
+                  - text: Helm Charts
+                  - link "Direct link to Helm Charts" [ref=e302] [cursor=pointer]:
+                    - /url: "#helm-charts"
+                    - text: "#"
+                - paragraph [ref=e303]: Helm Charts are Kubernetes YAML manifests that describe a related set of Kubernetes resources into a single package. Just like Palette's native Packs, Palette supports and orchestrates helm charts hosted in any public or private Helm chart registry on to Kubernetes clusters.
+                - heading "Host ClusterDirect link to Host Cluster" [level=2] [ref=e304]:
+                  - text: Host Cluster
+                  - link "Direct link to Host Cluster" [ref=e305] [cursor=pointer]:
+                    - /url: "#host-cluster"
+                    - text: "#"
+                - paragraph [ref=e306]: A Kubernetes cluster that is managed by Palette. A host cluster may contain several Palette Virtual Clusters.
+                - heading "Kilo-Core-Hours (kCh)Direct link to Kilo-Core-Hours (kCh)" [level=2] [ref=e307]:
+                  - text: Kilo-Core-Hours (kCh)
+                  - link "Direct link to Kilo-Core-Hours (kCh)" [ref=e308] [cursor=pointer]:
+                    - /url: "#kilo-core-hours-kch"
+                    - text: "#"
+                - paragraph [ref=e309]: kCh, short for kilo-core-hours, represents a unit of computational time. This value is a product of the cluster node count, the number of CPUs per node, and the duration of time these nodes are in use. To improve readability, we divide the product by 1000.
+                - paragraph [ref=e310]: For instance, if you deploy a single-node cluster with 16 CPU cores for 24 hours, you will use about 0.39 kCh. Alternatively, if you deploy a three-node cluster that has 16 CPUs per node for 24 hours, you will use about 1.2 kCh.
+                - paragraph [ref=e311]:
+                  - text: For more information, refer to the
+                  - link "Resource Usage Calculation" [ref=e312] [cursor=pointer]:
+                    - /url: /introduction/resource-usage-estimation/
+                  - text: page.
+                - heading "Management ClustersDirect link to Management Clusters" [level=2] [ref=e313]:
+                  - text: Management Clusters
+                  - link "Direct link to Management Clusters" [ref=e314] [cursor=pointer]:
+                    - /url: "#management-clusters"
+                    - text: "#"
+                - paragraph [ref=e315]: Management Cluster is where Palette core components are hosted and are often referred to in on-prem installations of Palette. As part of the Kubernetes workload cluster provisioning, the first control-plane node is launched by Palette in the management cluster or the cloud gateway. Once the first control-plane node goes to running state, all the resources are pivoted from the management cluster or the cloud gateway to the target workload cluster. After that, the target cluster self-manages the cluster and application lifecycle. All Day-2 operations which result in node changes, including OS/Kubernetes upgrades, scaling, and nodes certificate rotation, are triggered by changes to the Cluster API resources in the target workload cluster.
+                - heading "OIDCDirect link to OIDC" [level=2] [ref=e316]:
+                  - text: OIDC
+                  - link "Direct link to OIDC" [ref=e317] [cursor=pointer]:
+                    - /url: "#oidc"
+                    - text: "#"
+                - paragraph [ref=e318]:
+                  - text: OpenID Connect
+                  - link "(OIDC)" [ref=e319] [cursor=pointer]:
+                    - /url: /user-management/saml-sso/
+                  - text: is an open source, authentication protocol that allows users to verify their identity, based on the authentication performed by an authorization provider.
+                - heading "OrganizationDirect link to Organization" [level=2] [ref=e320]:
+                  - text: Organization
+                  - link "Direct link to Organization" [ref=e321] [cursor=pointer]:
+                    - /url: "#organization"
+                    - text: "#"
+                - paragraph [ref=e322]:
+                  - text: An organization is the equivalent of a Tenant. Review the
+                  - link "Tenant" [ref=e323] [cursor=pointer]:
+                    - /url: "#tenant"
+                  - text: definition to learn more.
+                - heading "PackDirect link to Pack" [level=2] [ref=e324]:
+                  - text: Pack
+                  - link "Direct link to Pack" [ref=e325] [cursor=pointer]:
+                    - /url: "#pack"
+                    - text: "#"
+                - paragraph [ref=e326]:
+                  - text: Palette provides multiple integrations/technologies in a
+                  - link "cluster profile" [ref=e327] [cursor=pointer]:
+                    - /url: "#cluster-profile"
+                  - text: for various system layers, such as OS, Kubernetes, storage, networking, monitoring, security, load balancers, etc. These integrations are provided in the form of Packs. A pack is a Palette content package that describes an integration in the Kubernetes infrastructure stack ecosystem and contains relevant artifacts required to deploy and manage that integration. Palette provides packs for core layers of the Kubernetes stack; Operating Systems, Kubernetes distributions, Networking and Storage as well as packs for add-on layers such as ELK Stack, Prometheus, Sysdig Falco, etc.
+                - heading "Pack ManifestsDirect link to Pack Manifests" [level=2] [ref=e328]:
+                  - text: Pack Manifests
+                  - link "Direct link to Pack Manifests" [ref=e329] [cursor=pointer]:
+                    - /url: "#pack-manifests"
+                    - text: "#"
+                - paragraph [ref=e330]:
+                  - text: Layers in a
+                  - link "cluster profile" [ref=e331] [cursor=pointer]:
+                    - /url: "#cluster-profile"
+                  - text: are typically built using a Palette
+                  - link "Pack" [ref=e332] [cursor=pointer]:
+                    - /url: "#pack"
+                  - text: or a
+                  - link "Charts" [ref=e333] [cursor=pointer]:
+                    - /url: "#helm-charts"
+                  - text: . There may be certain scenarios where additional Kubernetes resources need to be provisioned that are not part of any Palette pack or a chart. Pack manifests provide a pass-through mechanism to allow provisioning through raw manifests. Pack Manifest layers can be added to a cluster profile stack built using Spectro Packs and Charts.
+                - heading "Palette eXtended Kubernetes (PXK)Direct link to Palette eXtended Kubernetes (PXK)" [level=2] [ref=e334]:
+                  - text: Palette eXtended Kubernetes (PXK)
+                  - link "Direct link to Palette eXtended Kubernetes (PXK)" [ref=e335] [cursor=pointer]:
+                    - /url: "#palette-extended-kubernetes-pxk"
+                    - text: "#"
+                - paragraph [ref=e336]: Palette eXtended Kubernetes (PXK) is a recompiled version of the open source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes. This Kubernetes version can be deployed through Palette to all major infrastructure providers, public cloud providers, and private data center providers. This is the default distribution when deploying a Kubernetes cluster through Palette. You have the option to choose other Kubernetes distributions, such as MicroK8s, Konvoy, and more, should you want to consume a different Kubernetes distribution.
+                - paragraph [ref=e337]: PXK is different from the upstream open source Kubernetes version primarily because of the carefully reviewed and applied hardening of the operating system (OS) and Kubernetes. The hardening ranges from removing unused kernel modules to using an OS configuration that follows industry best practices. Our recompiled Kubernetes configuration addresses common Kubernetes deployment security pitfalls and implements industry best practices.
+                - paragraph [ref=e338]: A benefit of Palette when used with PXK is the ability to apply different flavors of container storage interface (CSI) plugins and container network interface (CNI) plugins. Other open source Kubernetes distributions, such as MicroK8s, RKE2, and K3s, come with a default CSI and CNI. Additional complexity and overhead are required from you to enable different interfaces. PXK supports the ability to select other interface plugins out of the box without any additional overhead or complexity needed from your side.
+                - paragraph [ref=e339]: There are no changes to the Kubernetes source code and we also follow the same versioning schema as the upstream open source Kubernetes distribution.
+                - heading "Palette eXtended Kubernetes Edge (PXK-E)Direct link to Palette eXtended Kubernetes Edge (PXK-E)" [level=2] [ref=e340]:
+                  - text: Palette eXtended Kubernetes Edge (PXK-E)
+                  - link "Direct link to Palette eXtended Kubernetes Edge (PXK-E)" [ref=e341] [cursor=pointer]:
+                    - /url: "#palette-extended-kubernetes-edge-pxk-e"
+                    - text: "#"
+                - paragraph [ref=e342]: Palette eXtended Kubernetes Edge (PXK-E) is a recompiled version of the open source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes. This Kubernetes distribution is customized and optimized for edge computing environments and can be deployed through Palette. PXK-E is the Kubernetes distribution Palette defaults to when deploying Edge clusters.
+                - paragraph [ref=e343]:
+                  - text: PXK-E differs from the upstream open source Kubernetes version by optimizing for operations in an edge computing environment. PXK-E also differentiates itself by using the open source project,
+                  - link "Kairos" [ref=e344] [cursor=pointer]:
+                    - /url: https://kairos.io/
+                  - text: as the base operating system (OS). PXK-E’s use of Kairos means the OS is immutable, which significantly improves the security posture and reduces potential attack surfaces.
+                - paragraph [ref=e345]: Another differentiator of PXK-E is the carefully reviewed and applied hardening of the OS and Kubernetes. The hardening ranges from removing unused OS kernel modules to using an OS configuration that follows industry best practices. Our recompiled Kubernetes configuration addresses common deployment security pitfalls and implements industry best practices.
+                - paragraph [ref=e346]: With PXK-E, you can manage automatic OS upgrades while retaining immutability and the flexibility to roll out changes safely. The A/B partition architecture of Kairos allows for new OS and dependency versions to be installed in a separate partition and mounted at runtime. You can fall back to use the previous partition if issues are identified in the new partition.
+                - paragraph [ref=e347]: PXK-E manages the underlying OS and the Kubernetes layer together, which reduces the challenge of upgrading and maintaining two separate components.
+                - paragraph [ref=e348]: PXK-E allows you to apply different flavors of container storage interfaces (CSI) and container network interfaces (CNI). Other open source Kubernetes distributions such as MicroK8s, RKE2, and K3s come with a default CSI and CNI. There is additional complexity and overhead when you want to consume different interface plugins with traditional Kubernetes distributions. Using PXK-E, you select the interface plugin you want to apply without additional overhead and complexity.
+                - paragraph [ref=e349]: There are no changes to the Kubernetes source code used in PXK-E, and it follows the same versioning schema as the upstream open source Kubernetes distribution.
+                - heading "Palette Terminal User Interface (TUI)Direct link to Palette Terminal User Interface (TUI)" [level=2] [ref=e350]:
+                  - text: Palette Terminal User Interface (TUI)
+                  - link "Direct link to Palette Terminal User Interface (TUI)" [ref=e351] [cursor=pointer]:
+                    - /url: "#palette-terminal-user-interface-tui"
+                    - text: "#"
+                - paragraph [ref=e352]:
+                  - text: Palette TUI is a terminal user interface that allows users to configure host and network settings for their Edge hosts. Palette TUI is not enabled by default, and must have the
+                  - code [ref=e353]: stylus.includeTui
+                  - text: parameter set to true for it to be enabled automatically.
+                - heading "Palette Upgrade ControllerDirect link to Palette Upgrade Controller" [level=2] [ref=e354]:
+                  - text: Palette Upgrade Controller
+                  - link "Direct link to Palette Upgrade Controller" [ref=e355] [cursor=pointer]:
+                    - /url: "#palette-upgrade-controller"
+                    - text: "#"
+                - paragraph [ref=e356]: A Kubernetes controller to be installed into the workload cluster to facilitate upgrades to new P6OS image.
+                - heading "Palette Virtual ClusterDirect link to Palette Virtual Cluster" [level=2] [ref=e357]:
+                  - text: Palette Virtual Cluster
+                  - link "Direct link to Palette Virtual Cluster" [ref=e358] [cursor=pointer]:
+                    - /url: "#palette-virtual-cluster"
+                    - text: "#"
+                - paragraph [ref=e359]:
+                  - text: Palette Virtual Clusters enable operations teams to partition a
+                  - link "host cluster" [ref=e360] [cursor=pointer]:
+                    - /url: "#host-cluster"
+                  - text: and deploy lightweight virtual clusters on top, similar to how virtualization creates logically isolated virtual servers on top of physical machines. This is great for giving developers quick access to a sandbox environment for testing their code. Virtual clusters provide as strong a level of separation without introducing complicated overhead, such as separating physical resources and managing namespaces with complex RBAC configurations. Palette Virtual Clusters is powered by
+                  - link "vCluster" [ref=e361] [cursor=pointer]:
+                    - /url: https://www.vcluster.com/
+                  - text: .
+                - heading "PermissionsDirect link to Permissions" [level=2] [ref=e362]:
+                  - text: Permissions
+                  - link "Direct link to Permissions" [ref=e363] [cursor=pointer]:
+                    - /url: "#permissions"
+                    - text: "#"
+                - paragraph [ref=e364]:
+                  - text: Permissions are associated with specific actions within the platform such as Create New user in a tenant, Add a Cluster Profile in a project, View Clusters within a cluster, etc. Permissions are granted to the
+                  - link "users" [ref=e365] [cursor=pointer]:
+                    - /url: "#user"
+                  - text: and
+                  - link "teams" [ref=e366] [cursor=pointer]:
+                    - /url: "#team"
+                  - text: through
+                  - link "roles" [ref=e367] [cursor=pointer]:
+                    - /url: "#role"
+                  - text: .
+                - heading "PresetsDirect link to Presets" [level=2] [ref=e368]:
+                  - text: Presets
+                  - link "Direct link to Presets" [ref=e369] [cursor=pointer]:
+                    - /url: "#presets"
+                    - text: "#"
+                - paragraph [ref=e370]:
+                  - text: Presets are a subset of properties configured for a layer that is pre-configured with defaults to easily enable or turn on a feature. Palette
+                  - link "packs" [ref=e371] [cursor=pointer]:
+                    - /url: "#pack"
+                  - text: and
+                  - link "charts" [ref=e372] [cursor=pointer]:
+                    - /url: "#helm-charts"
+                  - text: provide several settings that can be customized by the user. Although customizable typically in a YAML format, it can be cumbersome to look through a flat list of properties and identify the ones to change for specific functionality. Through presets, Palette groups a bunch of related properties that control a feature and provides them as named presets. During construction of a
+                  - link "cluster profile" [ref=e373] [cursor=pointer]:
+                    - /url: "#cluster-profile"
+                  - text: ", users may be simply enabled or disable a preset to quickly make the desired changes."
+                - heading "Private Cloud GatewayDirect link to Private Cloud Gateway" [level=2] [ref=e374]:
+                  - text: Private Cloud Gateway
+                  - link "Direct link to Private Cloud Gateway" [ref=e375] [cursor=pointer]:
+                    - /url: "#private-cloud-gateway"
+                    - text: "#"
+                - paragraph [ref=e376]: A Private Cloud Gateway is a Palette component that enables the communication between Palette's management console and a private cloud/data center. The gateway needs to be installed by the users in their private cloud environments using a private cloud gateway installer appliance.
+                - heading "Private Pack RegistryDirect link to Private Pack Registry" [level=2] [ref=e377]:
+                  - text: Private Pack Registry
+                  - link "Direct link to Private Pack Registry" [ref=e378] [cursor=pointer]:
+                    - /url: "#private-pack-registry"
+                    - text: "#"
+                - paragraph [ref=e379]:
+                  - text: Palette provides extensibility by providing a way for users to define
+                  - link "packs" [ref=e380] [cursor=pointer]:
+                    - /url: "#pack"
+                  - text: for integrations beyond the ones provided by default in Palette's public pack registry. These user-defined packs need to be hosted in a private registry, which users can bring up in their environment using Palette's pack registry software.
+                - heading "ProjectDirect link to Project" [level=2] [ref=e381]:
+                  - text: Project
+                  - link "Direct link to Project" [ref=e382] [cursor=pointer]:
+                    - /url: "#project"
+                    - text: "#"
+                - paragraph [ref=e383]:
+                  - text: Projects provide a way for grouping clusters together for logical separation. Role-based access controls within Palette are applied at the project level.
+                  - link "Users" [ref=e384] [cursor=pointer]:
+                    - /url: "#user"
+                  - text: and
+                  - link "teams" [ref=e385] [cursor=pointer]:
+                    - /url: "#team"
+                  - text: can be assigned one or more
+                  - link "roles" [ref=e386] [cursor=pointer]:
+                    - /url: "#role"
+                  - text: within a project for granular control over
+                  - link "permissions" [ref=e387] [cursor=pointer]:
+                    - /url: "#permissions"
+                  - text: within the project scope.
+                - heading "Public Pack RegistryDirect link to Public Pack Registry" [level=2] [ref=e388]:
+                  - text: Public Pack Registry
+                  - link "Direct link to Public Pack Registry" [ref=e389] [cursor=pointer]:
+                    - /url: "#public-pack-registry"
+                    - text: "#"
+                - paragraph [ref=e390]:
+                  - text: Palette maintains a public pack registry containing various
+                  - link "packs" [ref=e391] [cursor=pointer]:
+                    - /url: "#pack"
+                  - text: that can be used in any
+                  - link "cluster profile" [ref=e392] [cursor=pointer]:
+                    - /url: "#cluster-profile"
+                  - text: . The pack content in this registry is constantly updated with new integrations.
+                - heading "RepavementDirect link to Repavement" [level=2] [ref=e393]:
+                  - text: Repavement
+                  - link "Direct link to Repavement" [ref=e394] [cursor=pointer]:
+                    - /url: "#repavement"
+                    - text: "#"
+                - paragraph [ref=e395]:
+                  - text: Repavement is the process of replacing a Kubernetes node with a new one. This is typically done when a node is unhealthy or needs to be upgraded. The process involves migrating active workloads to another healthy node, and removing it from the
+                  - link "node pool" [ref=e396] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/node-pool/#repave-behavior-and-configuration
+                  - text: . This is referred to as draining the node. A new node is created and configured with the same settings as the old node and added back to the pool. The process is fully automated and does not require manual intervention.
+                - heading "RoleDirect link to Role" [level=2] [ref=e397]:
+                  - text: Role
+                  - link "Direct link to Role" [ref=e398] [cursor=pointer]:
+                    - /url: "#role"
+                    - text: "#"
+                - paragraph [ref=e399]:
+                  - text: A Role is a collection of
+                  - link "permissions" [ref=e400] [cursor=pointer]:
+                    - /url: "#permissions"
+                  - text: ". There are two kinds of roles in Palette:"
+                  - emphasis [ref=e401]: tenant roles
+                  - text: and
+                  - emphasis [ref=e402]: project roles
+                  - text: .
+                  - emphasis [ref=e403]: Tenant roles
+                  - text: are a collection of tenant-level permissions such as create a new user, add a new project, etc.
+                  - emphasis [ref=e404]: Project roles
+                  - text: consist of permissions for various actions within the scope of a project such as create a cluster profile, create a cluster, etc.
+                - heading "Site Configuration Text User Interface (TUI)Direct link to Site Configuration Text User Interface (TUI)" [level=2] [ref=e405]:
+                  - text: Site Configuration Text User Interface (TUI)
+                  - link "Direct link to Site Configuration Text User Interface (TUI)" [ref=e406] [cursor=pointer]:
+                    - /url: "#site-configuration-text-user-interface-tui"
+                    - text: "#"
+                - paragraph [ref=e407]: TUI is initially used as an interface to site operator to provide site-specific settings such as NW Settings (Static IP, DHCP, WAN, GW, Proxy), Palette endpoint, and Device ID override. It can accept inputs from the unattended.yaml file.
+                - heading "System AdministratorDirect link to System Administrator" [level=2] [ref=e408]:
+                  - text: System Administrator
+                  - link "Direct link to System Administrator" [ref=e409] [cursor=pointer]:
+                    - /url: "#system-administrator"
+                    - text: "#"
+                - paragraph [ref=e410]: The self-hosted Palette or Palette VerteX user with access to the system console and can perform various operations based on their assigned role. Palette supports multiple system administrator roles.
+                - heading "System ConsoleDirect link to System Console" [level=2] [ref=e411]:
+                  - text: System Console
+                  - link "Direct link to System Console" [ref=e412] [cursor=pointer]:
+                    - /url: "#system-console"
+                    - text: "#"
+                - paragraph [ref=e413]: The console is used to scale up the Enterprise cluster and manage it. The System console supports creating and activating a new tenant in a new instance. It Initiates the installation of a Palette Enterprise Cluster. The On-Prem System Console provides various administrative setup tasks. Most of these are optional and can be performed at any time. To quickly start using the platform's functionality, all that is needed is to create the first tenant and activate it.Initial login:admin/admin.
+                - heading "TeamDirect link to Team" [level=2] [ref=e414]:
+                  - text: Team
+                  - link "Direct link to Team" [ref=e415] [cursor=pointer]:
+                    - /url: "#team"
+                    - text: "#"
+                - paragraph [ref=e416]:
+                  - text: A Team is a group of
+                  - link "users" [ref=e417] [cursor=pointer]:
+                    - /url: "#user"
+                  - text: . Users can be part of one or more teams. Teams provide a convenient way to control platform access for a group of users.
+                  - link "Roles" [ref=e418] [cursor=pointer]:
+                    - /url: "#role"
+                  - text: assigned to a team grant associated tenant or
+                  - link "project" [ref=e419] [cursor=pointer]:
+                    - /url: "#project"
+                  - link "permissions" [ref=e420] [cursor=pointer]:
+                    - /url: "#permissions"
+                  - text: to all users that are part of the team.
+                - heading "TenantDirect link to Tenant" [level=2] [ref=e421]:
+                  - text: Tenant
+                  - link "Direct link to Tenant" [ref=e422] [cursor=pointer]:
+                    - /url: "#tenant"
+                    - text: "#"
+                - paragraph [ref=e423]:
+                  - text: Tenant represents a customer or an organization in Palette. Palette is a multi-tenant platform. All tenant resources are isolated from other tenants. Each tenant has a unique encryption key to encrypt any sensitive data such as cloud credentials and tenant user information.
+                  - link "Users" [ref=e424] [cursor=pointer]:
+                    - /url: "#user"
+                  - text: from a tenant do not have access to resources in another tenant.
+                - heading "UserDirect link to User" [level=2] [ref=e425]:
+                  - text: User
+                  - link "Direct link to User" [ref=e426] [cursor=pointer]:
+                    - /url: "#user"
+                    - text: "#"
+                - paragraph [ref=e427]:
+                  - text: Users are members of a
+                  - link "tenant" [ref=e428] [cursor=pointer]:
+                    - /url: "#tenant"
+                  - text: who are assigned
+                  - link "roles" [ref=e429] [cursor=pointer]:
+                    - /url: "#role"
+                  - text: that control their access within the platform. For example, users with the tenant admin role get permissions to perform all actions across all
+                  - link "projects" [ref=e430] [cursor=pointer]:
+                    - /url: "#project"
+                  - text: in the tenant whereas users assigned project roles, only get specific permission within the associated projects. The user's personal information (email, name) is treated as sensitive data and fully encrypted using the tenant's unique encryption key.
+                - heading "VMODirect link to VMO" [level=2] [ref=e431]:
+                  - text: VMO
+                  - link "Direct link to VMO" [ref=e432] [cursor=pointer]:
+                    - /url: "#vmo"
+                    - text: "#"
+                - paragraph [ref=e433]:
+                  - text: Palette
+                  - link "Virtual Machine Orchestrator" [ref=e434] [cursor=pointer]:
+                    - /url: /vm-management/
+                  - text: provides a unified platform for managing containerized and virtualized applications. Palette VM Orchestrator allows organizations to onboard, deploy, manage, and scale VMs within the same cluster as their containerized applications.
+                - heading "WorkloadDirect link to Workload" [level=2] [ref=e435]:
+                  - text: Workload
+                  - link "Direct link to Workload" [ref=e436] [cursor=pointer]:
+                    - /url: "#workload"
+                    - text: "#"
+                - paragraph [ref=e437]: An application running on the Kubernetes cluster is called a Workload. It can be a set of components that work together or a single independent component, run as a set of pods. In Kubernetes terms, a Pod is a set of running containers on your cluster.
+                - heading "Workload ClusterDirect link to Workload Cluster" [level=2] [ref=e438]:
+                  - text: Workload Cluster
+                  - link "Direct link to Workload Cluster" [ref=e439] [cursor=pointer]:
+                    - /url: "#workload-cluster"
+                    - text: "#"
+                - paragraph [ref=e440]:
+                  - text: Workload / Tenant / Application Clusters are a collection of control plane and worker nodes that cooperate to execute container application workloads. Kubernetes clusters provisioned by users are referred to as Workload Clusters. These clusters are created within
+                  - link "projects" [ref=e441] [cursor=pointer]:
+                    - /url: "#project"
+                  - text: and they are provisioned and managed in the user's cloud environment. Each cluster is provisioned from a
+                  - link "Cluster Profile" [ref=e442] [cursor=pointer]:
+                    - /url: "#cluster-profile"
+                  - text: with additional configuration overrides and cloud-specific settings.
+                - heading "WorkspaceDirect link to Workspace" [level=2] [ref=e443]:
+                  - text: Workspace
+                  - link "Direct link to Workspace" [ref=e444] [cursor=pointer]:
+                    - /url: "#workspace"
+                    - text: "#"
+                - paragraph [ref=e445]: The multi-cluster management and governance capabilities are supervised with Palette Workspaces. Workspaces enable the logical grouping of clusters and namespaces to provide application or team-specific governance and visibility into workloads, cost, and usage metrics. For example, the application or team workload may be deployed into namespaces across clusters for achieving High Availability (HA), Disaster Recovery (DR), organization-specific placement policies, etc. Grouping the namespaces and clusters into a workspace provide central management and governance in a multi-cluster distributed environment.
+              - generic [ref=e446]:
+                - generic [ref=e448]:
+                  - text: "Tags:"
+                  - list [ref=e449]:
+                    - listitem [ref=e450]:
+                      - link "glossary" [ref=e451] [cursor=pointer]:
+                        - /url: /tags/glossary/
+                - link "Edit this page" [ref=e454] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/glossary-all.md
+                  - img [ref=e455]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e459]:
+              - link "Previous « Generate HAR Files" [ref=e460] [cursor=pointer]:
+                - /url: /troubleshooting/generate-har-files/
+                - generic [ref=e461]: Previous
+                - generic [ref=e462]: « Generate HAR Files
+              - link "Next Compliance & Legal »" [ref=e463] [cursor=pointer]:
+                - /url: /legal-licenses/
+                - generic [ref=e464]: Next
+                - generic [ref=e465]: Compliance & Legal »
+          - list [ref=e468]:
+            - listitem [ref=e469]:
+              - link "Agent" [ref=e470] [cursor=pointer]:
+                - /url: "#agent"
+            - listitem [ref=e471]:
+              - link "App Mode" [ref=e472] [cursor=pointer]:
+                - /url: "#app-mode"
+            - listitem [ref=e473]:
+              - link "App Profile" [ref=e474] [cursor=pointer]:
+                - /url: "#app-profile"
+            - listitem [ref=e475]:
+              - link "Airgapped" [ref=e476] [cursor=pointer]:
+                - /url: "#airgapped"
+            - listitem [ref=e477]:
+              - link "Attach Manifests" [ref=e478] [cursor=pointer]:
+                - /url: "#attach-manifests"
+            - listitem [ref=e479]:
+              - link "Bring Your Own Operating System (BYOOS)" [ref=e480] [cursor=pointer]:
+                - /url: "#bring-your-own-operating-system-byoos"
+            - listitem [ref=e481]:
+              - link "Chart Repositories" [ref=e482] [cursor=pointer]:
+                - /url: "#chart-repositories"
+            - listitem [ref=e483]:
+              - link "Cloud Account" [ref=e484] [cursor=pointer]:
+                - /url: "#cloud-account"
+            - listitem [ref=e485]:
+              - link "Cluster Mode" [ref=e486] [cursor=pointer]:
+                - /url: "#cluster-mode"
+            - listitem [ref=e487]:
+              - link "Cluster Definition" [ref=e488] [cursor=pointer]:
+                - /url: "#cluster-definition"
+            - listitem [ref=e489]:
+              - link "Cluster Profile" [ref=e490] [cursor=pointer]:
+                - /url: "#cluster-profile"
+            - listitem [ref=e491]:
+              - link "Cluster Profile Variable" [ref=e492] [cursor=pointer]:
+                - /url: "#cluster-profile-variable"
+            - listitem [ref=e493]:
+              - link "Edge Appliances" [ref=e494] [cursor=pointer]:
+                - /url: "#edge-appliances"
+            - listitem [ref=e495]:
+              - link "Edge Clusters" [ref=e496] [cursor=pointer]:
+                - /url: "#edge-clusters"
+            - listitem [ref=e497]:
+              - link "Local UI" [ref=e498] [cursor=pointer]:
+                - /url: "#local-ui"
+            - listitem [ref=e499]:
+              - link "Helm Charts" [ref=e500] [cursor=pointer]:
+                - /url: "#helm-charts"
+            - listitem [ref=e501]:
+              - link "Host Cluster" [ref=e502] [cursor=pointer]:
+                - /url: "#host-cluster"
+            - listitem [ref=e503]:
+              - link "Kilo-Core-Hours (kCh)" [ref=e504] [cursor=pointer]:
+                - /url: "#kilo-core-hours-kch"
+            - listitem [ref=e505]:
+              - link "Management Clusters" [ref=e506] [cursor=pointer]:
+                - /url: "#management-clusters"
+            - listitem [ref=e507]:
+              - link "OIDC" [ref=e508] [cursor=pointer]:
+                - /url: "#oidc"
+            - listitem [ref=e509]:
+              - link "Organization" [ref=e510] [cursor=pointer]:
+                - /url: "#organization"
+            - listitem [ref=e511]:
+              - link "Pack" [ref=e512] [cursor=pointer]:
+                - /url: "#pack"
+            - listitem [ref=e513]:
+              - link "Pack Manifests" [ref=e514] [cursor=pointer]:
+                - /url: "#pack-manifests"
+            - listitem [ref=e515]:
+              - link "Palette eXtended Kubernetes (PXK)" [ref=e516] [cursor=pointer]:
+                - /url: "#palette-extended-kubernetes-pxk"
+            - listitem [ref=e517]:
+              - link "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e518] [cursor=pointer]:
+                - /url: "#palette-extended-kubernetes-edge-pxk-e"
+            - listitem [ref=e519]:
+              - link "Palette Terminal User Interface (TUI)" [ref=e520] [cursor=pointer]:
+                - /url: "#palette-terminal-user-interface-tui"
+            - listitem [ref=e521]:
+              - link "Palette Upgrade Controller" [ref=e522] [cursor=pointer]:
+                - /url: "#palette-upgrade-controller"
+            - listitem [ref=e523]:
+              - link "Palette Virtual Cluster" [ref=e524] [cursor=pointer]:
+                - /url: "#palette-virtual-cluster"
+            - listitem [ref=e525]:
+              - link "Permissions" [ref=e526] [cursor=pointer]:
+                - /url: "#permissions"
+            - listitem [ref=e527]:
+              - link "Presets" [ref=e528] [cursor=pointer]:
+                - /url: "#presets"
+            - listitem [ref=e529]:
+              - link "Private Cloud Gateway" [ref=e530] [cursor=pointer]:
+                - /url: "#private-cloud-gateway"
+            - listitem [ref=e531]:
+              - link "Private Pack Registry" [ref=e532] [cursor=pointer]:
+                - /url: "#private-pack-registry"
+            - listitem [ref=e533]:
+              - link "Project" [ref=e534] [cursor=pointer]:
+                - /url: "#project"
+            - listitem [ref=e535]:
+              - link "Public Pack Registry" [ref=e536] [cursor=pointer]:
+                - /url: "#public-pack-registry"
+            - listitem [ref=e537]:
+              - link "Repavement" [ref=e538] [cursor=pointer]:
+                - /url: "#repavement"
+            - listitem [ref=e539]:
+              - link "Role" [ref=e540] [cursor=pointer]:
+                - /url: "#role"
+            - listitem [ref=e541]:
+              - link "Site Configuration Text User Interface (TUI)" [ref=e542] [cursor=pointer]:
+                - /url: "#site-configuration-text-user-interface-tui"
+            - listitem [ref=e543]:
+              - link "System Administrator" [ref=e544] [cursor=pointer]:
+                - /url: "#system-administrator"
+            - listitem [ref=e545]:
+              - link "System Console" [ref=e546] [cursor=pointer]:
+                - /url: "#system-console"
+            - listitem [ref=e547]:
+              - link "Team" [ref=e548] [cursor=pointer]:
+                - /url: "#team"
+            - listitem [ref=e549]:
+              - link "Tenant" [ref=e550] [cursor=pointer]:
+                - /url: "#tenant"
+            - listitem [ref=e551]:
+              - link "User" [ref=e552] [cursor=pointer]:
+                - /url: "#user"
+            - listitem [ref=e553]:
+              - link "VMO" [ref=e554] [cursor=pointer]:
+                - /url: "#vmo"
+            - listitem [ref=e555]:
+              - link "Workload" [ref=e556] [cursor=pointer]:
+                - /url: "#workload"
+            - listitem [ref=e557]:
+              - link "Workload Cluster" [ref=e558] [cursor=pointer]:
+                - /url: "#workload-cluster"
+            - listitem [ref=e559]:
+              - link "Workspace" [ref=e560] [cursor=pointer]:
+                - /url: "#workspace"
+  - button "Project Logo Ask AI" [ref=e561] [cursor=pointer]:
+    - generic [ref=e564]:
+      - img "Project Logo" [ref=e565]
+      - paragraph [ref=e566]: Ask AI
+```

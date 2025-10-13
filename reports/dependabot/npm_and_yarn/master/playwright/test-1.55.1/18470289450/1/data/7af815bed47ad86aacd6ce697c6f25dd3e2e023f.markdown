@@ -1,0 +1,1261 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                  - listitem [ref=e107]:
+                    - generic [ref=e108]:
+                      - link "Data Center Clusters" [ref=e109] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e111]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e113] [cursor=pointer]
+                  - listitem [ref=e114]:
+                    - generic [ref=e115]:
+                      - link "Edge" [ref=e116] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e118]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e120] [cursor=pointer]
+                  - listitem [ref=e121]:
+                    - generic [ref=e122]:
+                      - link "Palette Virtual Clusters" [ref=e123] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e125]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e127] [cursor=pointer]
+                  - listitem [ref=e128]:
+                    - generic [ref=e129]:
+                      - link "Imported Clusters" [ref=e130] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e132]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e134] [cursor=pointer]
+                  - listitem [ref=e135]:
+                    - generic [ref=e136]:
+                      - link "Manage Clusters" [expanded] [ref=e137] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e139]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e141] [cursor=pointer]
+                    - list [ref=e142]:
+                      - listitem [ref=e143]:
+                        - generic [ref=e144]:
+                          - link "SSH" [ref=e145] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/ssh/
+                          - button "Toggle the collapsible sidebar category 'SSH'" [ref=e146] [cursor=pointer]
+                      - listitem [ref=e147]:
+                        - link "Update a Cluster" [ref=e148] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-updates/
+                      - listitem [ref=e149]:
+                        - generic [ref=e150]:
+                          - link "Cluster Monitoring" [expanded] [ref=e151] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/monitoring/
+                          - button "Toggle the collapsible sidebar category 'Cluster Monitoring'" [ref=e152] [cursor=pointer]
+                        - list [ref=e153]:
+                          - listitem [ref=e154]:
+                            - link "Deploy Monitoring Stack" [ref=e155] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/monitoring/deploy-monitor-stack/
+                          - listitem [ref=e156]:
+                            - link "Enable Monitoring on Host Cluster" [ref=e157] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/monitoring/deploy-agent/
+                          - listitem [ref=e158]:
+                            - link "Deploy OpenTelemetry Monitoring Stack" [ref=e159] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/monitoring/open-telemetry/
+                      - listitem [ref=e160]:
+                        - link "Cluster Health Alerts" [ref=e161] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/health-alerts/
+                      - listitem [ref=e162]:
+                        - generic [ref=e163]:
+                          - link "Backup and Restore" [ref=e164] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/backup-restore/
+                          - button "Toggle the collapsible sidebar category 'Backup and Restore'" [ref=e165] [cursor=pointer]
+                      - listitem [ref=e166]:
+                        - link "Renew Cluster PKI Certificates" [ref=e167] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/certificate-management/
+                      - listitem [ref=e168]:
+                        - link "Compliance Scan" [ref=e169] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/compliance-scan/
+                      - listitem [ref=e170]:
+                        - link "OS Patching" [ref=e171] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/os-patching/
+                      - listitem [ref=e172]:
+                        - link "Cost Visibility" [ref=e173] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cloud-cost/
+                      - listitem [ref=e174]:
+                        - link "Workload Visibility" [ref=e175] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/workloads/
+                      - listitem [ref=e176]:
+                        - link "Node Labels" [ref=e177] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-labels/
+                      - listitem [ref=e178]:
+                        - link "Taints and Tolerations" [ref=e179] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/taints/
+                      - listitem [ref=e180]:
+                        - link "RBAC and Namespace Support" [ref=e181] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-rbac/
+                      - listitem [ref=e182]:
+                        - link "Namespace Management" [ref=e183] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/namespace-management/
+                      - listitem [ref=e184]:
+                        - link "Palette Macros" [ref=e185] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/macros/
+                      - listitem [ref=e186]:
+                        - link "Pack Monitoring" [ref=e187] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/pack-monitoring/
+                      - listitem [ref=e188]:
+                        - link "Kubeconfig" [ref=e189] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/kubeconfig/
+                      - listitem [ref=e190]:
+                        - link "Kubectl" [ref=e191] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/palette-webctl/
+                      - listitem [ref=e192]:
+                        - generic [ref=e193]:
+                          - link "Platform Settings" [ref=e194] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/platform-settings/
+                          - button "Toggle the collapsible sidebar category 'Platform Settings'" [ref=e195] [cursor=pointer]
+                      - listitem [ref=e196]:
+                        - link "Map and Filter Clusters" [ref=e197] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-map-filters/
+                      - listitem [ref=e198]:
+                        - link "Node Pools" [ref=e199] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-pool/
+                      - listitem [ref=e200]:
+                        - link "Configure Applications to Use Proxy Server" [ref=e201] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-proxy/
+                      - listitem [ref=e202]:
+                        - link "Spectro Kubernetes Dashboard" [ref=e203] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/spectro-kubernetes-dashboard/
+                      - listitem [ref=e204]:
+                        - link "Cluster Removal" [ref=e205] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/remove-clusters/
+                      - listitem [ref=e206]:
+                        - link "Image Swap" [ref=e207] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/image-swap/
+                      - listitem [ref=e208]:
+                        - link "Maintenance Mode" [ref=e209] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/maintenance-mode/
+                  - listitem [ref=e210]:
+                    - generic [ref=e211]:
+                      - link "Cluster Groups" [ref=e212] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e214]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e216] [cursor=pointer]
+                  - listitem [ref=e217]:
+                    - generic [ref=e218]:
+                      - link "Private Cloud Gateway" [ref=e219] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e221]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e223] [cursor=pointer]
+              - listitem [ref=e224]:
+                - generic [ref=e225]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e226] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e228]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e230] [cursor=pointer]
+              - listitem [ref=e231]:
+                - generic [ref=e232]:
+                  - link "Palette Dev Engine" [ref=e233] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e235]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e237] [cursor=pointer]
+              - listitem [ref=e238]:
+                - generic [ref=e239]:
+                  - link "Virtual Machine Orchestrator" [ref=e240] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e242]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e244] [cursor=pointer]
+              - listitem [ref=e245]:
+                - generic [ref=e246]:
+                  - link "Workspaces" [ref=e247] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e249]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e251] [cursor=pointer]
+              - listitem [ref=e252]:
+                - generic [ref=e253]:
+                  - link "Packs List" [ref=e254] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e256]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e258] [cursor=pointer]
+              - listitem [ref=e259]:
+                - generic [ref=e260]:
+                  - link "User & Role Management" [ref=e261] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e263]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e265] [cursor=pointer]
+              - listitem [ref=e266]:
+                - generic [ref=e267]:
+                  - link "Registries and Packs" [ref=e268] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e270]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e272] [cursor=pointer]
+              - listitem [ref=e273]:
+                - generic [ref=e274]:
+                  - link "Security" [ref=e275] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e277]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e279] [cursor=pointer]
+              - listitem [ref=e280]:
+                - generic [ref=e281]:
+                  - link "Audit Logs" [ref=e282] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e284]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e286] [cursor=pointer]
+              - listitem [ref=e287]:
+                - generic [ref=e288]:
+                  - link "Self-Hosted Palette" [ref=e289] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e291]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e293] [cursor=pointer]
+              - listitem [ref=e294]:
+                - generic [ref=e295]:
+                  - link "Palette VerteX" [ref=e296] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e298]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e300] [cursor=pointer]
+              - listitem [ref=e301]:
+                - generic [ref=e302]:
+                  - link "Tenant Administration" [ref=e303] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e305]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e307] [cursor=pointer]
+              - listitem [ref=e308]:
+                - generic [ref=e309]:
+                  - link "Automation" [ref=e310] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e312]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e314] [cursor=pointer]
+              - listitem [ref=e315]:
+                - generic [ref=e316]:
+                  - link "Troubleshooting" [ref=e317] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e319]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e321] [cursor=pointer]
+              - listitem [ref=e322]:
+                - link "Glossary" [ref=e323] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e325]
+                  - text: Glossary
+              - listitem [ref=e327]:
+                - generic [ref=e328]:
+                  - link "Compliance & Legal" [ref=e329] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e331]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e333] [cursor=pointer]
+              - listitem [ref=e334]:
+                - button "Privacy Settings" [ref=e335] [cursor=pointer]:
+                  - img [ref=e336]
+                  - text: Privacy Settings
+      - main [ref=e338]:
+        - generic [ref=e340]:
+          - generic [ref=e342]:
+            - article [ref=e343]:
+              - navigation "Breadcrumbs" [ref=e344]:
+                - list [ref=e345]:
+                  - listitem [ref=e346]:
+                    - link "Home page" [ref=e347] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e348]
+                  - listitem [ref=e350]:
+                    - link "Clusters" [ref=e351] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e352]:
+                    - link "Manage Clusters" [ref=e353] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/
+                  - listitem [ref=e354]:
+                    - link "Cluster Monitoring" [ref=e355] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/monitoring/
+                  - listitem [ref=e356]:
+                    - generic [ref=e357]: Deploy Monitoring Stack
+              - generic [ref=e358]:
+                - heading "Deploy Monitoring Stack" [level=1] [ref=e360]
+                - paragraph [ref=e361]:
+                  - text: The monitoring stack you will deploy uses the open source tool,
+                  - link "Prometheus" [ref=e362] [cursor=pointer]:
+                    - /url: https://prometheus.io/docs/introduction/overview/
+                  - text: ", to support your environment's monitoring requirements. The monitoring stack is a centralized server or aggregation spot to which all other clusters will forward metrics. The monitoring stack is a dedicated Kubernetes cluster for monitoring and metrics aggregation in your Palette environment."
+                - paragraph [ref=e363]:
+                  - text: The monitoring stack uses a server-client architecture. The monitoring stack uses the
+                  - link "Prometheus Operator" [ref=e364] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=prometheus-operator
+                  - text: pack to deploy all the dependencies the Prometheus server requires. The server exposes an API endpoint for all other clients to forward metrics. The clients are Kubernetes clusters with the
+                  - link "Prometheus Agent" [ref=e365] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=prometheus-agent
+                  - text: pack installed and configured.
+                - paragraph [ref=e366]: Use the following steps to deploy a monitoring stack, and learn how to configure a host cluster to forward metrics to the monitoring stack.
+                - generic [ref=e367]:
+                  - generic [ref=e368]:
+                    - img [ref=e370]
+                    - text: warning
+                  - paragraph [ref=e373]: We recommend you avoid installing applications in your monitoring stack. The monitoring stack will require all the allocated resources to support Prometheus and incoming metrics from all other clusters.
+                - heading "Deploy a Monitoring StackDirect link to Deploy a Monitoring Stack" [level=2] [ref=e374]:
+                  - text: Deploy a Monitoring Stack
+                  - link "Direct link to Deploy a Monitoring Stack" [ref=e375] [cursor=pointer]:
+                    - /url: "#deploy-a-monitoring-stack"
+                    - text: "#"
+                - paragraph [ref=e376]: The steps below will deploy a new host cluster with the Prometheus Operator pack. You can add the Prometheus Operator pack to an existing cluster if you already have a host cluster deployed in your environment.
+                - paragraph [ref=e377]:
+                  - text: The Prometheus Operator pack will install an unsecured Prometheus server by default. Use the
+                  - strong [ref=e378]: With Authentication and Encryption
+                  - text: tab for guidance on how to enable authentication.
+                - paragraph [ref=e379]: You can choose to deploy the monitoring stack with or without authentication.
+                - list [ref=e380]:
+                  - listitem [ref=e381]:
+                    - link "Without Authentication" [ref=e382] [cursor=pointer]:
+                      - /url: "#without-authentication"
+                  - listitem [ref=e383]:
+                    - link "With Authentication and Encryption" [ref=e384] [cursor=pointer]:
+                      - /url: "#with-authentication-and-encryption"
+                - heading "Without AuthenticationDirect link to Without Authentication" [level=3] [ref=e385]:
+                  - text: Without Authentication
+                  - link "Direct link to Without Authentication" [ref=e386] [cursor=pointer]:
+                    - /url: "#without-authentication"
+                    - text: "#"
+                - heading "PrerequisitesDirect link to Prerequisites" [level=4] [ref=e387]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e388] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e389]:
+                  - listitem [ref=e390]:
+                    - paragraph [ref=e391]:
+                      - text: An infrastructure provider environment registered in Palette. Refer to the
+                      - link "Clusters" [ref=e392] [cursor=pointer]:
+                        - /url: /clusters/
+                      - text: documentation for guidance on how to register your infrastructure provider environment in Palette.
+                  - listitem [ref=e393]:
+                    - paragraph [ref=e394]: "The minimum required size for the Prometheus server is 4 CPU, 8 GB Memory, and 10 GB Storage. We recommend the monitoring stack have 1.5x to 2x the minimum required size:"
+                    - paragraph [ref=e395]: "Recommended size:"
+                    - list [ref=e396]:
+                      - listitem [ref=e397]: 8 CPU
+                      - listitem [ref=e398]: 16 GB Memory
+                      - listitem [ref=e399]: 20 GB Storage.
+                    - paragraph [ref=e400]: "As new clusters with the Prometheus agent are added to your environment, review the resource utilization and consider increasing resources if needed. As the Prometheus documentation recommends, each additional agent requires the following resources from the monitoring stack:"
+                    - paragraph [ref=e401]: "Each added agent:"
+                    - list [ref=e402]:
+                      - listitem [ref=e403]:
+                        - paragraph [ref=e404]: 0.1 CPU
+                      - listitem [ref=e405]:
+                        - paragraph [ref=e406]: 250 MiB Memory
+                      - listitem [ref=e407]:
+                        - paragraph [ref=e408]: 1 GB Storage.
+                    - paragraph [ref=e409]:
+                      - text: Refer to the
+                      - link "Prometheus Operational aspects" [ref=e410] [cursor=pointer]:
+                        - /url: https://prometheus.io/docs/prometheus/latest/storage/#operational-aspects
+                      - text: documentation for additional guidance.
+                - heading "Create Cluster Profile and DeployDirect link to Create Cluster Profile and Deploy" [level=4] [ref=e411]:
+                  - text: Create Cluster Profile and Deploy
+                  - link "Direct link to Create Cluster Profile and Deploy" [ref=e412] [cursor=pointer]:
+                    - /url: "#create-cluster-profile-and-deploy"
+                    - text: "#"
+                - list [ref=e413]:
+                  - listitem [ref=e414]:
+                    - paragraph [ref=e415]:
+                      - text: Log in to
+                      - link "Palette" [ref=e416] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e417]:
+                    - paragraph [ref=e418]:
+                      - text: Navigate to the left
+                      - strong [ref=e419]: Main Menu
+                      - text: and select
+                      - strong [ref=e420]: Profiles
+                      - text: .
+                  - listitem [ref=e421]:
+                    - paragraph [ref=e422]:
+                      - text: Click on
+                      - strong [ref=e423]: Add Cluster Profile
+                      - text: to create a new cluster profile.
+                  - listitem [ref=e424]:
+                    - paragraph [ref=e425]:
+                      - text: Provide the cluster profile a name and select the type
+                      - strong [ref=e426]: Full
+                      - text: . Click on
+                      - strong [ref=e427]: Next
+                      - text: .
+                  - listitem [ref=e428]:
+                    - paragraph [ref=e429]: Select the infrastructure provider and continue.
+                  - listitem [ref=e430]:
+                    - paragraph [ref=e431]:
+                      - text: Go ahead and select the desired operating system, Kubernetes distribution, container network interface (CNI), and container storage interface (CSI). Click on
+                      - strong [ref=e432]: Next Layer
+                      - text: after each selection. When you have completed selecting core infrastructure for the profile, click
+                      - strong [ref=e433]: Confirm
+                      - text: .
+                  - listitem [ref=e434]:
+                    - paragraph [ref=e435]:
+                      - text: In the next screen that displays, select
+                      - strong [ref=e436]: Add New Pack
+                      - text: .
+                  - listitem [ref=e437]:
+                    - paragraph [ref=e438]: Use the following information to find the Prometheus Operator pack.
+                    - list [ref=e439]:
+                      - listitem [ref=e440]: "Pack Type: Monitoring"
+                      - listitem [ref=e441]: "Registry: Public Repo"
+                      - listitem [ref=e442]: "Pack Name: Prometheus Grafana"
+                      - listitem [ref=e443]: "Pack Version: 44.25.X or newer."
+                  - listitem [ref=e444]:
+                    - paragraph [ref=e445]:
+                      - text: Review the YAML configuration on the right. Scroll down in the file until you find the parameter
+                      - code [ref=e446]: adminPassword
+                      - text: . Input the password value for the admin user. The default admin user name is
+                      - code [ref=e447]: admin
+                      - text: .
+                  - listitem [ref=e448]:
+                    - paragraph [ref=e449]:
+                      - text: Next, click on the
+                      - strong [ref=e450]: Presets
+                      - text: button to expand the options drawer.
+                - list [ref=e451]:
+                  - listitem [ref=e452]:
+                    - text: Scroll down the presets option menu and enable
+                    - strong [ref=e453]: Remote Monitoring
+                    - text: . Confirm your changes. You can enable several options to expand the functionality of the monitoring stack. Review the
+                    - link "Prometheus Operator" [ref=e454] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=prometheus-operator
+                    - text: pack documentation to learn more about the available options.
+                - list [ref=e455]:
+                  - listitem [ref=e456]:
+                    - paragraph [ref=e457]:
+                      - text: Confirm your changes by selecting
+                      - strong [ref=e458]: Confirm & Create
+                      - text: .
+                  - listitem [ref=e459]:
+                    - paragraph [ref=e460]:
+                      - text: Click on
+                      - strong [ref=e461]: Add New Pack
+                      - text: .
+                  - listitem [ref=e462]:
+                    - paragraph [ref=e463]: Use the following information to find the Spectro Cluster Metrics pack.
+                    - list [ref=e464]:
+                      - listitem [ref=e465]:
+                        - strong [ref=e466]: Pack Type
+                        - text: ": Monitoring"
+                      - listitem [ref=e467]:
+                        - strong [ref=e468]: Registry
+                        - text: ": Public Repo"
+                      - listitem [ref=e469]:
+                        - strong [ref=e470]: Pack Name
+                        - text: ": Spectro Cluster Metrics"
+                      - listitem [ref=e471]:
+                        - strong [ref=e472]: Pack Version
+                        - text: ": 3.3.X or newer"
+                  - listitem [ref=e473]:
+                    - paragraph [ref=e474]:
+                      - text: Use the default values. Confirm your changes by selecting
+                      - strong [ref=e475]: Confirm & Create
+                      - text: .
+                  - listitem [ref=e476]:
+                    - paragraph [ref=e477]:
+                      - text: Click on
+                      - strong [ref=e478]: Add New Pack
+                      - text: .
+                  - listitem [ref=e479]:
+                    - paragraph [ref=e480]: Use the following information to find the Spectro Grafana Dashboards pack.
+                    - list [ref=e481]:
+                      - listitem [ref=e482]:
+                        - strong [ref=e483]: Pack Type
+                        - text: ": Monitoring"
+                      - listitem [ref=e484]:
+                        - strong [ref=e485]: Registry
+                        - text: ": Public Repo"
+                      - listitem [ref=e486]:
+                        - strong [ref=e487]: Pack Name
+                        - text: ": Spectro Grafana Dashboards"
+                      - listitem [ref=e488]:
+                        - strong [ref=e489]: Pack Version
+                        - text: ": 4.0.X or newer"
+                  - listitem [ref=e490]:
+                    - paragraph [ref=e491]:
+                      - text: Use the default values. Confirm your changes by selecting
+                      - strong [ref=e492]: Confirm & Create
+                      - text: .
+                  - listitem [ref=e493]:
+                    - paragraph [ref=e494]:
+                      - text: Click on
+                      - strong [ref=e495]: Next
+                      - text: to review the cluster profile and save it.
+                  - listitem [ref=e496]:
+                    - paragraph [ref=e497]:
+                      - text: Navigate to the left
+                      - strong [ref=e498]: Main Menu
+                      - text: and select
+                      - strong [ref=e499]: Clusters
+                      - text: .
+                  - listitem [ref=e500]:
+                    - paragraph [ref=e501]:
+                      - text: Click on
+                      - strong [ref=e502]: Add New Cluster
+                      - text: . Select
+                      - strong [ref=e503]: Deploy New Cluster
+                      - text: .
+                  - listitem [ref=e504]:
+                    - paragraph [ref=e505]: Choose the infrastructure provider you selected for the cluster profile you created earlier.
+                  - listitem [ref=e506]:
+                    - paragraph [ref=e507]:
+                      - text: Assign a name to the host cluster and select the registered account you will deploy it to. Click on
+                      - strong [ref=e508]: Next
+                      - text: .
+                  - listitem [ref=e509]:
+                    - paragraph [ref=e510]: Choose the cluster profile you created earlier and complete the remainder of the cluster creation process.
+                - paragraph [ref=e511]: When you deploy the cluster, a host cluster with Prometheus will be installed and ready to receive information from Prometheus agents.
+                - heading "ValidateDirect link to Validate" [level=4] [ref=e512]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e513] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e514]: To validate the monitoring stack is successfully deployed and ready to receive Prometheus agent requests, use the following steps.
+                - list [ref=e515]:
+                  - listitem [ref=e516]:
+                    - paragraph [ref=e517]:
+                      - text: Log in to
+                      - link "Palette" [ref=e518] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e519]:
+                    - paragraph [ref=e520]:
+                      - text: Navigate to the left
+                      - strong [ref=e521]: Main Menu
+                      - text: and select
+                      - strong [ref=e522]: Clusters
+                      - text: .
+                  - listitem [ref=e523]:
+                    - paragraph [ref=e524]: Select the monitoring stack cluster to review the details page.
+                  - listitem [ref=e525]:
+                    - paragraph [ref=e526]:
+                      - text: Ensure the cluster is in
+                      - strong [ref=e527]: Running
+                      - text: state.
+                  - listitem [ref=e528]:
+                    - paragraph [ref=e529]:
+                      - text: Click on the exposed service URL for the service
+                      - strong [ref=e530]: prometheus-operator-kube-prometheus-stack-grafana
+                      - text: .
+                  - listitem [ref=e531]:
+                    - paragraph [ref=e532]:
+                      - text: Log in to the Grafana dashboard using the user
+                      - code [ref=e533]: admin
+                      - text: and the password you specified in the cluster profile.
+                - heading "With Authentication and EncryptionDirect link to With Authentication and Encryption" [level=3] [ref=e534]:
+                  - text: With Authentication and Encryption
+                  - link "Direct link to With Authentication and Encryption" [ref=e535] [cursor=pointer]:
+                    - /url: "#with-authentication-and-encryption"
+                    - text: "#"
+                - paragraph [ref=e536]: To enable Hypertext Transfer Protocol Secure (HTTPS), you must make several architectural decisions and decide on various options for setting up the environment. These options range from choosing what will generate the Secure Socket Layer (SSL) certificates to how incoming requests for Grafana or Prometheus are handled.
+                - paragraph [ref=e537]: The approach presented in this guide is one pattern you can use. However, we encourage you to discuss this pattern with your system administrator or platform engineering team before changing your infrastructure and Domain Name System (DNS) resources.
+                - paragraph [ref=e538]: The following diagram represents the infrastructure pattern you will use in this guide to enable HTTPS.
+                - paragraph [ref=e539]:
+                  - img "An architecture diagram that displays the network flow and infrastructure components" [ref=e540]
+                - paragraph [ref=e541]: "In this guide, the following domains are used to expose the monitoring stack:"
+                - table [ref=e542]:
+                  - rowgroup [ref=e543]:
+                    - row "Domain Description" [ref=e544]:
+                      - cell "Domain" [ref=e545]
+                      - cell "Description" [ref=e546]
+                  - rowgroup [ref=e547]:
+                    - row "metrics.example.com The endpoint that all host clusters will forward Prometheus metrics." [ref=e548]:
+                      - cell "metrics.example.com" [ref=e549]:
+                        - code [ref=e550]: metrics.example.com
+                      - cell "The endpoint that all host clusters will forward Prometheus metrics." [ref=e551]
+                    - row "monitoring.example.com The Grafana dashboard." [ref=e552]:
+                      - cell "monitoring.example.com" [ref=e553]:
+                        - code [ref=e554]: monitoring.example.com
+                      - cell "The Grafana dashboard." [ref=e555]
+                - heading "PrerequisitesDirect link to Prerequisites" [level=4] [ref=e556]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e557] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e558]:
+                  - listitem [ref=e559]:
+                    - paragraph [ref=e560]: Experience with DNS and setting up custom domains that use SSL certificates are required for this guide. In addition, the following actions are needed.
+                    - list [ref=e561]:
+                      - listitem [ref=e562]:
+                        - paragraph [ref=e563]: Ability to create and update DNS record names.
+                      - listitem [ref=e564]:
+                        - paragraph [ref=e565]: Two custom domain names. One domain is for the Grafana dashboard, and another is for host clusters to forward metrics to the monitoring stack.
+                      - listitem [ref=e566]:
+                        - paragraph [ref=e567]: Ability to create a public certificate for each domain.
+                  - listitem [ref=e568]:
+                    - paragraph [ref=e569]:
+                      - text: An infrastructure provider environment registered in Palette. Refer to the
+                      - link "Clusters" [ref=e570] [cursor=pointer]:
+                        - /url: /clusters/
+                      - text: documentation for guidance on how to register your infrastructure provider environment in Palette.
+                  - listitem [ref=e571]:
+                    - paragraph [ref=e572]:
+                      - link "htpasswd" [ref=e573] [cursor=pointer]:
+                        - /url: https://httpd.apache.org/docs/2.4/programs/htpasswd.html
+                      - text: or similar basic auth password file generator tool.
+                  - listitem [ref=e574]:
+                    - paragraph [ref=e575]: "The minimum required size for the Prometheus server is 4 CPU, 8 GB Memory, and 10 GB Storage. We recommend the monitoring stack have 1.5x to 2x the minimum required size:"
+                    - paragraph [ref=e576]: "Recommended size:"
+                    - list [ref=e577]:
+                      - listitem [ref=e578]: 8 CPU
+                      - listitem [ref=e579]: 16 GB Memory
+                      - listitem [ref=e580]: 20 GB Storage.
+                    - paragraph [ref=e581]: "As new clusters with the Prometheus agent are added to your environment, review the resource utilization and consider increasing resources if needed. As the Prometheus documentation recommends, each additional agent requires the following resources from the monitoring stack:"
+                    - paragraph [ref=e582]: "Each added agent:"
+                    - list [ref=e583]:
+                      - listitem [ref=e584]: 0.1 CPU
+                      - listitem [ref=e585]: 250 MiB Memory
+                      - listitem [ref=e586]: 1 GB Storage.
+                    - paragraph [ref=e587]:
+                      - text: Refer to the
+                      - link "Prometheus Operational aspects" [ref=e588] [cursor=pointer]:
+                        - /url: https://prometheus.io/docs/prometheus/latest/storage/#operational-aspects
+                      - text: documentation for additional guidance.
+                - heading "Create Cluster Profile and DeployDirect link to Create Cluster Profile and Deploy" [level=4] [ref=e589]:
+                  - text: Create Cluster Profile and Deploy
+                  - link "Direct link to Create Cluster Profile and Deploy" [ref=e590] [cursor=pointer]:
+                    - /url: "#create-cluster-profile-and-deploy-1"
+                    - text: "#"
+                - list [ref=e591]:
+                  - listitem [ref=e592]:
+                    - paragraph [ref=e593]:
+                      - text: Log in to
+                      - link "Palette" [ref=e594] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e595]:
+                    - paragraph [ref=e596]:
+                      - text: Navigate to the left
+                      - strong [ref=e597]: Main Menu
+                      - text: and select
+                      - strong [ref=e598]: Profiles
+                      - text: .
+                  - listitem [ref=e599]:
+                    - paragraph [ref=e600]:
+                      - text: Click on
+                      - strong [ref=e601]: Add Cluster Profile
+                      - text: to create a new cluster profile.
+                  - listitem [ref=e602]:
+                    - paragraph [ref=e603]:
+                      - text: Provide the cluster profile a name and select the type
+                      - strong [ref=e604]: Full
+                      - text: . Click on
+                      - strong [ref=e605]: Next
+                      - text: .
+                  - listitem [ref=e606]:
+                    - paragraph [ref=e607]: Select the infrastructure provider and continue.
+                  - listitem [ref=e608]:
+                    - paragraph [ref=e609]:
+                      - text: Go ahead and select the desired operating system, Kubernetes distribution, container network interface (CNI), and container storage interface (CSI). Click on
+                      - strong [ref=e610]: Next Layer
+                      - text: after each selection. When you have completed selecting core infrastructure for the profile, click
+                      - strong [ref=e611]: Confirm
+                      - text: .
+                  - listitem [ref=e612]:
+                    - paragraph [ref=e613]:
+                      - text: In the next screen that displays, select
+                      - strong [ref=e614]: Add New Pack
+                      - text: .
+                  - listitem [ref=e615]:
+                    - paragraph [ref=e616]: Use the following information to add the Nginx ingress controller pack.
+                    - list [ref=e617]:
+                      - listitem [ref=e618]: "Pack Type: Ingress"
+                      - listitem [ref=e619]: "Registry: Public Repo"
+                      - listitem [ref=e620]: "Pack Name: Nginx"
+                      - listitem [ref=e621]: "Pack Version: 1.5.X or newer."
+                  - listitem [ref=e622]:
+                    - paragraph [ref=e623]: "Review the YAML configuration on the right and add the following changes:"
+                - generic [ref=e625]:
+                  - code [ref=e627]:
+                    - generic [ref=e628]: "charts:"
+                    - generic [ref=e629]: "ingress-nginx:"
+                    - generic [ref=e630]: "controller:"
+                    - generic [ref=e631]: "extraArgs:"
+                    - generic [ref=e632]: "enable-ssl-passthrough: true"
+                  - button "Copy code to clipboard" [ref=e634] [cursor=pointer]:
+                    - generic [ref=e635]:
+                      - img [ref=e636]
+                      - img [ref=e638]
+                - list [ref=e640]:
+                  - listitem [ref=e641]:
+                    - paragraph [ref=e642]:
+                      - text: Click on
+                      - strong [ref=e643]: Confirm & Create
+                      - text: .
+                  - listitem [ref=e644]:
+                    - paragraph [ref=e645]:
+                      - text: Select
+                      - strong [ref=e646]: Add New Pack
+                      - text: .
+                  - listitem [ref=e647]:
+                    - paragraph [ref=e648]: Use the following information to find the Prometheus Operator pack.
+                    - list [ref=e649]:
+                      - listitem [ref=e650]: "Pack Type: Monitoring"
+                      - listitem [ref=e651]: "Registry: Public Repo"
+                      - listitem [ref=e652]: "Pack Name: Prometheus Grafana"
+                      - listitem [ref=e653]: "Pack Version: 44.3.X or newer."
+                  - listitem [ref=e654]:
+                    - paragraph [ref=e655]:
+                      - text: Next, click on the
+                      - strong [ref=e656]: Presets
+                      - text: button to expand the options drawer.
+                  - listitem [ref=e657]:
+                    - paragraph [ref=e658]:
+                      - text: Scroll down the presets option menu and enable
+                      - strong [ref=e659]: Remote Monitoring
+                      - text: .
+                  - listitem [ref=e660]:
+                    - paragraph [ref=e661]:
+                      - text: Review the YAML configuration on the right. Scroll down in the file until you find the parameter
+                      - code [ref=e662]: grafana.adminPassword
+                      - text: . Input the password value for the admin user. The default admin user name is
+                      - code [ref=e663]: admin
+                      - text: .
+                    - generic [ref=e665]:
+                      - code [ref=e667]:
+                        - generic [ref=e668]: "charts:"
+                        - generic [ref=e669]: "kube-prometheus-stack:"
+                        - generic [ref=e670]: "grafana:"
+                        - generic [ref=e671]: "adminPassword: \"YourPassword\""
+                      - button "Copy code to clipboard" [ref=e673] [cursor=pointer]:
+                        - generic [ref=e674]:
+                          - img [ref=e675]
+                          - img [ref=e677]
+                  - listitem [ref=e679]:
+                    - paragraph [ref=e680]:
+                      - text: Next, update the
+                      - code [ref=e681]: prometheus.service.type
+                      - text: parameter to
+                      - code [ref=e682]: ClusterIP
+                      - text: .
+                    - generic [ref=e684]:
+                      - code [ref=e686]:
+                        - generic [ref=e687]: "charts:"
+                        - generic [ref=e688]: "kube-prometheus-stack:"
+                        - generic [ref=e689]: "prometheus:"
+                        - generic [ref=e690]: "service:"
+                        - generic [ref=e691]: "type: ClusterIP"
+                      - button "Copy code to clipboard" [ref=e693] [cursor=pointer]:
+                        - generic [ref=e694]:
+                          - img [ref=e695]
+                          - img [ref=e697]
+                - list [ref=e699]:
+                  - listitem [ref=e700]:
+                    - text: Confirm your changes by selecting
+                    - strong [ref=e701]: Confirm & Create
+                    - text: . You can enable several options to expand the functionality of the monitoring stack. Review the
+                    - link "Prometheus Operator" [ref=e702] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=prometheus-operator
+                    - text: pack documentation to learn more about the available options.
+                - list [ref=e703]:
+                  - listitem [ref=e704]:
+                    - paragraph [ref=e705]:
+                      - text: Click on
+                      - strong [ref=e706]: Add New Pack
+                      - text: .
+                  - listitem [ref=e707]:
+                    - paragraph [ref=e708]: Use the following information to find the Spectro Cluster Metrics pack.
+                    - list [ref=e709]:
+                      - listitem [ref=e710]:
+                        - strong [ref=e711]: Pack Type
+                        - text: ": Monitoring"
+                      - listitem [ref=e712]:
+                        - strong [ref=e713]: Registry
+                        - text: ": Public Repo"
+                      - listitem [ref=e714]:
+                        - strong [ref=e715]: Pack Name
+                        - text: ": Spectro Cluster Metrics"
+                      - listitem [ref=e716]:
+                        - strong [ref=e717]: Pack Version
+                        - text: ": 3.3.X or newer"
+                  - listitem [ref=e718]:
+                    - paragraph [ref=e719]:
+                      - text: Use the default values. Confirm your changes by selecting
+                      - strong [ref=e720]: Confirm & Create
+                      - text: .
+                  - listitem [ref=e721]:
+                    - paragraph [ref=e722]:
+                      - text: Click on
+                      - strong [ref=e723]: Add New Pack
+                      - text: .
+                  - listitem [ref=e724]:
+                    - paragraph [ref=e725]: Use the following information to find the Spectro Grafana Dashboards pack.
+                    - list [ref=e726]:
+                      - listitem [ref=e727]:
+                        - strong [ref=e728]: Pack Type
+                        - text: ": Monitoring"
+                      - listitem [ref=e729]:
+                        - strong [ref=e730]: Registry
+                        - text: ": Public Repo"
+                      - listitem [ref=e731]:
+                        - strong [ref=e732]: Pack Name
+                        - text: ": Spectro Grafana Dashboards"
+                      - listitem [ref=e733]:
+                        - strong [ref=e734]: Pack Version
+                        - text: ": 1.0.X or newer"
+                  - listitem [ref=e735]:
+                    - paragraph [ref=e736]:
+                      - text: Use the default values. Confirm your changes by selecting
+                      - strong [ref=e737]: Confirm & Create
+                      - text: .
+                  - listitem [ref=e738]:
+                    - paragraph [ref=e739]:
+                      - text: Click on
+                      - strong [ref=e740]: Next
+                      - text: to review the cluster profile and save it.
+                  - listitem [ref=e741]:
+                    - paragraph [ref=e742]:
+                      - text: Navigate to the left
+                      - strong [ref=e743]: Main Menu
+                      - text: and select
+                      - strong [ref=e744]: Clusters
+                      - text: .
+                  - listitem [ref=e745]:
+                    - paragraph [ref=e746]:
+                      - text: Click on
+                      - strong [ref=e747]: Add New Cluster
+                      - text: . Select
+                      - strong [ref=e748]: Deploy New Cluster
+                      - text: .
+                  - listitem [ref=e749]:
+                    - paragraph [ref=e750]: Choose the infrastructure provider you selected for the cluster profile you created earlier.
+                  - listitem [ref=e751]:
+                    - paragraph [ref=e752]:
+                      - text: Assign a name to the host cluster and select the registered account you will deploy it to. Click on
+                      - strong [ref=e753]: Next
+                      - text: .
+                  - listitem [ref=e754]:
+                    - paragraph [ref=e755]: Choose the cluster profile you created earlier and complete the remainder of the cluster creation process.
+                  - listitem [ref=e756]:
+                    - paragraph [ref=e757]:
+                      - text: Once the host cluster is deployed, navigate to the left
+                      - strong [ref=e758]: Main Menu
+                      - text: and select
+                      - strong [ref=e759]: Clusters
+                      - text: . Click on your cluster to display the details page and ensure its status is
+                      - strong [ref=e760]: Running
+                      - text: .
+                  - listitem [ref=e761]:
+                    - paragraph [ref=e762]:
+                      - text: Download the Kubernetes configuration file. Click on the URL that has the name of your cluster followed by a period and the word
+                      - emphasis [ref=e763]: kubeconfig
+                      - text: . Refer to the
+                      - link "Access Cluster with CLI" [ref=e764] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/#access-cluster-with-cli
+                      - text: for additional guidance.
+                  - listitem [ref=e765]:
+                    - paragraph [ref=e766]:
+                      - text: Open a terminal window and set the environment variable
+                      - code [ref=e767]: KUBECONFIG
+                      - text: to point to kubeconfig file you downloaded.
+                    - generic [ref=e769]:
+                      - code [ref=e771]:
+                        - generic [ref=e772]: export KUBECONFIG=~/Downloads/dev-monitoring-stack.config
+                      - button "Copy code to clipboard" [ref=e774] [cursor=pointer]:
+                        - generic [ref=e775]:
+                          - img [ref=e776]
+                          - img [ref=e778]
+                  - listitem [ref=e780]:
+                    - paragraph [ref=e781]:
+                      - text: Create an htpasswd file for the user
+                      - code [ref=e782]: agent
+                      - text: and assign a password. You can choose a different username if you prefer.
+                    - generic [ref=e784]:
+                      - code [ref=e786]:
+                        - generic [ref=e787]: htpasswd -c auth agent
+                      - button "Copy code to clipboard" [ref=e789] [cursor=pointer]:
+                        - generic [ref=e790]:
+                          - img [ref=e791]
+                          - img [ref=e793]
+                    - paragraph [ref=e795]: "Output:"
+                    - generic [ref=e797]:
+                      - code [ref=e799]:
+                        - generic [ref=e800]: "New password: [agent_password_here]"
+                        - generic [ref=e801]: "New password:"
+                        - generic [ref=e802]: "Re-type new password:"
+                        - generic [ref=e803]: Adding password for user agent
+                      - button "Copy code to clipboard" [ref=e805] [cursor=pointer]:
+                        - generic [ref=e806]:
+                          - img [ref=e807]
+                          - img [ref=e809]
+                  - listitem [ref=e811]:
+                    - paragraph [ref=e812]: Convert the htpasswd file into a Kubernetes secret.
+                    - generic [ref=e814]:
+                      - code [ref=e816]:
+                        - generic [ref=e817]: kubectl create secret generic basic-auth --from-file=auth --namespace monitoring
+                      - generic [ref=e818]:
+                        - button "Toggle word wrap" [ref=e819] [cursor=pointer]:
+                          - img [ref=e820]
+                        - button "Copy code to clipboard" [ref=e822] [cursor=pointer]:
+                          - generic [ref=e823]:
+                            - img [ref=e824]
+                            - img [ref=e826]
+                    - paragraph [ref=e828]: "Output:"
+                    - generic [ref=e830]:
+                      - code [ref=e832]:
+                        - generic [ref=e833]: secret "basic-auth" created
+                      - button "Copy code to clipboard" [ref=e835] [cursor=pointer]:
+                        - generic [ref=e836]:
+                          - img [ref=e837]
+                          - img [ref=e839]
+                  - listitem [ref=e841]:
+                    - paragraph [ref=e842]:
+                      - text: Navigate back to Palette, and review the cluster profile you created for the monitoring stack. From the left
+                      - strong [ref=e843]: Main Menu
+                      - text: ">"
+                      - strong [ref=e844]: Profiles
+                      - text: "> select your cluster profile. Click on the Prometheus operator layer to edit the YAML."
+                  - listitem [ref=e845]:
+                    - paragraph [ref=e846]:
+                      - text: Locate the
+                      - code [ref=e847]: prometheus.ingress
+                      - text: section near the end of the file. Update the ingress configuration with the values provided below. Replace the
+                      - code [ref=e848]: hosts
+                      - text: parameter with your custom domain.
+                    - generic [ref=e850]:
+                      - code [ref=e852]:
+                        - generic [ref=e853]: "ingress:"
+                        - generic [ref=e854]: "enabled: true"
+                        - generic [ref=e855]: "ingressClassName: nginx"
+                        - generic [ref=e856]: "annotations:"
+                        - generic [ref=e857]: "nginx.ingress.kubernetes.io/auth-type: basic"
+                        - generic [ref=e858]: "nginx.ingress.kubernetes.io/auth-secret: basic-auth"
+                        - generic [ref=e859]: "nginx.ingress.kubernetes.io/auth-realm: \"Authentication Required\""
+                        - generic [ref=e860]: "hosts:"
+                        - generic [ref=e861]: "- metrics.example.com"
+                      - generic [ref=e862]:
+                        - button "Toggle word wrap" [ref=e863] [cursor=pointer]:
+                          - img [ref=e864]
+                        - button "Copy code to clipboard" [ref=e866] [cursor=pointer]:
+                          - generic [ref=e867]:
+                            - img [ref=e868]
+                            - img [ref=e870]
+                  - listitem [ref=e872]:
+                    - paragraph [ref=e873]: Confirm your updates on the next screen that displays.
+                  - listitem [ref=e874]:
+                    - paragraph [ref=e875]:
+                      - text: From the left
+                      - strong [ref=e876]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e877]: Clusters
+                      - text: and access the monitoring stack host cluster.
+                  - listitem [ref=e878]:
+                    - paragraph [ref=e879]:
+                      - text: Click on the
+                      - strong [ref=e880]: Updates Available
+                      - text: button to review the changes.
+                  - listitem [ref=e881]:
+                    - paragraph [ref=e882]:
+                      - text: Accept the changes and select
+                      - strong [ref=e883]: Confirm Updates
+                      - text: .
+                - generic [ref=e884]:
+                  - generic [ref=e885]:
+                    - img [ref=e887]
+                    - text: warning
+                  - paragraph [ref=e890]: The following steps can be complex, depending on your environment and your access. Discuss the remaining step with your network administrator team if you need additional guidance.
+                - list [ref=e891]:
+                  - listitem [ref=e892]: Create a Canonical Name (CNAME) record for each of the following services and add the load balancer hostname to the CNAME record value. Use the table below to identify which mapping to use between the domain and each load balancer hostname.
+                - table [ref=e893]:
+                  - rowgroup [ref=e894]:
+                    - row "Service Domain CNAME Value Example" [ref=e895]:
+                      - cell "Service" [ref=e896]
+                      - cell "Domain" [ref=e897]
+                      - cell "CNAME Value Example" [ref=e898]
+                  - rowgroup [ref=e899]:
+                    - row "nginx-ingress-controller metrics.example.com a57b622a0c0a148189ed00df614481c9-1803006767.us-east-1.elb.amazonaws.com" [ref=e900]:
+                      - cell "nginx-ingress-controller" [ref=e901]:
+                        - code [ref=e902]: nginx-ingress-controller
+                      - cell "metrics.example.com" [ref=e903]:
+                        - code [ref=e904]: metrics.example.com
+                      - cell "a57b622a0c0a148189ed00df614481c9-1803006767.us-east-1.elb.amazonaws.com" [ref=e905]:
+                        - code [ref=e906]: a57b622a0c0a148189ed00df614481c9-1803006767.us-east-1.elb.amazonaws.com
+                    - row "prometheus-operator-kube-prometheus-stack-grafana monitoring.example.com a702f8a14b9684a30b18b875d2cca997-1676466159.us-east-1.elb.amazonaws.com" [ref=e907]:
+                      - cell "prometheus-operator-kube-prometheus-stack-grafana" [ref=e908]:
+                        - code [ref=e909]: prometheus-operator-kube-prometheus-stack-grafana
+                      - cell "monitoring.example.com" [ref=e910]:
+                        - code [ref=e911]: monitoring.example.com
+                      - cell "a702f8a14b9684a30b18b875d2cca997-1676466159.us-east-1.elb.amazonaws.com" [ref=e912]:
+                        - code [ref=e913]: a702f8a14b9684a30b18b875d2cca997-1676466159.us-east-1.elb.amazonaws.com
+                - paragraph [ref=e914]:
+                  - img "A screenshot of the Palette user interface with two boxes highlighting the load balancers that you need to add to your CNAME." [ref=e915]
+                - generic [ref=e916]:
+                  - generic [ref=e917]:
+                    - img [ref=e919]
+                    - text: info
+                  - generic [ref=e921]:
+                    - paragraph [ref=e922]:
+                      - text: You can also use
+                      - code [ref=e923]: kubectl
+                      - text: to retrieve the load balancer hostname.
+                    - paragraph [ref=e924]: "Grafana:"
+                    - generic [ref=e926]:
+                      - code [ref=e928]:
+                        - generic [ref=e929]: "kubectl get service prometheus-operator-kube-prometheus-stack-grafana -n monitoring -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'"
+                      - generic [ref=e930]:
+                        - button "Toggle word wrap" [ref=e931] [cursor=pointer]:
+                          - img [ref=e932]
+                        - button "Copy code to clipboard" [ref=e934] [cursor=pointer]:
+                          - generic [ref=e935]:
+                            - img [ref=e936]
+                            - img [ref=e938]
+                    - paragraph [ref=e940]: "Prometheus:"
+                    - generic [ref=e942]:
+                      - code [ref=e944]:
+                        - generic [ref=e945]: "kubectl get service nginx-ingress-controller --namespace nginx -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'"
+                      - generic [ref=e946]:
+                        - button "Toggle word wrap" [ref=e947] [cursor=pointer]:
+                          - img [ref=e948]
+                        - button "Copy code to clipboard" [ref=e950] [cursor=pointer]:
+                          - generic [ref=e951]:
+                            - img [ref=e952]
+                            - img [ref=e954]
+                - list [ref=e956]:
+                  - listitem [ref=e957]:
+                    - paragraph [ref=e958]: Create a public certificate for each domain. If you are using a public cloud provider, use the native certificate manager service to generate a public certificate that you can attach to the load balancers with minimal overhead. On-prem, use the default certificate manager used by your organization.
+                  - listitem [ref=e959]:
+                    - paragraph [ref=e960]: Update the network rules for each of the load balancers to allow inbound port 443.
+                - list [ref=e961]:
+                  - listitem [ref=e962]: Next, update the load balancer listeners to forward requests from port 443 to the respective target port on the monitoring stack. The following table will map the service's load balancer listener with the respective configuration. Refer to the architecture diagram from the introduction to help you visualize the mapping.
+                - table [ref=e963]:
+                  - rowgroup [ref=e964]:
+                    - row "Inbound Load Balancer Port Domain Monitoring Stack Port Service" [ref=e965]:
+                      - cell "Inbound Load Balancer Port" [ref=e966]
+                      - cell "Domain" [ref=e967]
+                      - cell "Monitoring Stack Port" [ref=e968]
+                      - cell "Service" [ref=e969]
+                  - rowgroup [ref=e970]:
+                    - row "443 monitoring.example.com Use the same instance port the original entry for port 80 is using. prometheus-operator-kube-prometheus-stack-grafana" [ref=e971]:
+                      - cell "443" [ref=e972]
+                      - cell "monitoring.example.com" [ref=e973]:
+                        - code [ref=e974]: monitoring.example.com
+                      - cell "Use the same instance port the original entry for port 80 is using." [ref=e975]
+                      - cell "prometheus-operator-kube-prometheus-stack-grafana" [ref=e976]:
+                        - code [ref=e977]: prometheus-operator-kube-prometheus-stack-grafana
+                    - row "443 metrics.example.com Use the same instance port the original entry for port 80 is using. nginx-ingress-controller" [ref=e978]:
+                      - cell "443" [ref=e979]
+                      - cell "metrics.example.com" [ref=e980]:
+                        - code [ref=e981]: metrics.example.com
+                      - cell "Use the same instance port the original entry for port 80 is using." [ref=e982]
+                      - cell "nginx-ingress-controller" [ref=e983]:
+                        - code [ref=e984]: nginx-ingress-controller
+                - list [ref=e985]:
+                  - listitem [ref=e986]: Wait for the DNS changes to propagate. This can take up to five minutes.
+                - paragraph [ref=e987]: Your monitoring stack is now enabled with authentication and network encryption.
+                - heading "ValidateDirect link to Validate" [level=4] [ref=e988]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e989] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - paragraph [ref=e990]: To validate the monitoring stack is successfully deployed and ready to receive Prometheus agent requests, use the following steps.
+                - list [ref=e991]:
+                  - listitem [ref=e992]:
+                    - paragraph [ref=e993]:
+                      - text: Log in to
+                      - link "Palette" [ref=e994] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e995]:
+                    - paragraph [ref=e996]:
+                      - text: Navigate to the left
+                      - strong [ref=e997]: Main Menu
+                      - text: and select
+                      - strong [ref=e998]: Clusters
+                      - text: .
+                  - listitem [ref=e999]:
+                    - paragraph [ref=e1000]: Select the monitoring stack cluster to review the details page.
+                  - listitem [ref=e1001]:
+                    - paragraph [ref=e1002]:
+                      - text: Ensure the cluster is in
+                      - strong [ref=e1003]: Running
+                      - text: state.
+                  - listitem [ref=e1004]:
+                    - paragraph [ref=e1005]:
+                      - text: "Next, open up your web browser and visit the domain name you specified for the Grafana dashboard. Example:"
+                      - code [ref=e1006]: https://monitoring.example.com
+                      - text: .
+                - list [ref=e1007]:
+                  - listitem [ref=e1008]:
+                    - paragraph [ref=e1009]:
+                      - text: Log in to the Grafana dashboard using the user
+                      - code [ref=e1010]: admin
+                      - text: and the password you specified in the cluster profile.
+                  - listitem [ref=e1011]:
+                    - paragraph [ref=e1012]:
+                      - text: "After you have verified you can log in to the Grafana dashboard, open a new tab and visit the Prometheus endpoint. Example:"
+                      - code [ref=e1013]: https://metrics.example.com
+                  - listitem [ref=e1014]:
+                    - paragraph [ref=e1015]:
+                      - text: Log in with the user
+                      - code [ref=e1016]: agent
+                      - text: and use the password you specified in the htpasswd file.
+                - generic [ref=e1017]:
+                  - generic [ref=e1018]:
+                    - img [ref=e1020]
+                    - text: info
+                  - paragraph [ref=e1023]: A common error is not updating the network rules to allow inbound connections for port 443 to the load balancers. Ensure you have updated all the required network rules to allow inbound network requests for port 443.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e1024]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e1025] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e1026]:
+                  - text: Now that you have a monitoring stack deployed and available in your environment, start adding the Prometheus agent to new and existing clusters. Check out the
+                  - link "Enable Monitoring on Host Cluster" [ref=e1027] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/monitoring/deploy-agent/
+                  - text: to get started.
+              - generic [ref=e1028]:
+                - generic [ref=e1030]:
+                  - text: "Tags:"
+                  - list [ref=e1031]:
+                    - listitem [ref=e1032]:
+                      - link "clusters" [ref=e1033] [cursor=pointer]:
+                        - /url: /tags/clusters/
+                    - listitem [ref=e1034]:
+                      - link "cluster management" [ref=e1035] [cursor=pointer]:
+                        - /url: /tags/cluster-management/
+                    - listitem [ref=e1036]:
+                      - link "monitoring" [ref=e1037] [cursor=pointer]:
+                        - /url: /tags/monitoring/
+                - link "Edit this page" [ref=e1040] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/cluster-management/monitoring/deploy-monitor-stack.md
+                  - img [ref=e1041]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e1045]:
+              - link "Previous « Cluster Monitoring" [ref=e1046] [cursor=pointer]:
+                - /url: /clusters/cluster-management/monitoring/
+                - generic [ref=e1047]: Previous
+                - generic [ref=e1048]: « Cluster Monitoring
+              - link "Next Enable Monitoring on Host Cluster »" [ref=e1049] [cursor=pointer]:
+                - /url: /clusters/cluster-management/monitoring/deploy-agent/
+                - generic [ref=e1050]: Next
+                - generic [ref=e1051]: Enable Monitoring on Host Cluster »
+          - list [ref=e1054]:
+            - listitem [ref=e1055]:
+              - link "Deploy a Monitoring Stack" [ref=e1056] [cursor=pointer]:
+                - /url: "#deploy-a-monitoring-stack"
+              - list [ref=e1057]:
+                - listitem [ref=e1058]:
+                  - link "Without Authentication" [ref=e1059] [cursor=pointer]:
+                    - /url: "#without-authentication"
+                - listitem [ref=e1060]:
+                  - link "With Authentication and Encryption" [ref=e1061] [cursor=pointer]:
+                    - /url: "#with-authentication-and-encryption"
+            - listitem [ref=e1062]:
+              - link "Next Steps" [ref=e1063] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e1064] [cursor=pointer]:
+    - generic [ref=e1067]:
+      - img "Project Logo" [ref=e1068]
+      - paragraph [ref=e1069]: Ask AI
+```

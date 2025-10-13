@@ -1,0 +1,463 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - link "Palette Tutorials" [ref=e40] [cursor=pointer]:
+                  - /url: /tutorials/
+                  - img [ref=e42]
+                  - text: Palette Tutorials
+              - listitem [ref=e44]:
+                - generic [ref=e45]:
+                  - link "Getting Started" [expanded] [ref=e46] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/
+                    - img [ref=e48]
+                    - text: Getting Started
+                  - button "Toggle the collapsible sidebar category 'Getting Started'" [ref=e50] [cursor=pointer]
+                - list [ref=e51]:
+                  - listitem [ref=e52]:
+                    - generic [ref=e53]:
+                      - link "Palette" [expanded] [ref=e54] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette/
+                      - button "Toggle the collapsible sidebar category 'Palette'" [ref=e55] [cursor=pointer]
+                    - list [ref=e56]:
+                      - listitem [ref=e57]:
+                        - link "Introduction to Palette" [ref=e58] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette/introduction-palette/
+                      - listitem [ref=e59]:
+                        - generic [ref=e60]:
+                          - link "Deploy a Cluster to AWS" [ref=e61] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/aws/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to AWS'" [ref=e62] [cursor=pointer]
+                      - listitem [ref=e63]:
+                        - generic [ref=e64]:
+                          - link "Deploy a Cluster to Azure" [ref=e65] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/azure/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to Azure'" [ref=e66] [cursor=pointer]
+                      - listitem [ref=e67]:
+                        - generic [ref=e68]:
+                          - link "Deploy a Cluster to GCP" [expanded] [ref=e69] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/gcp/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to GCP'" [ref=e70] [cursor=pointer]
+                        - list [ref=e71]:
+                          - listitem [ref=e72]:
+                            - link "Set up Palette" [ref=e73] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/gcp/setup/
+                          - listitem [ref=e74]:
+                            - link "Create a Cluster Profile" [ref=e75] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/gcp/create-cluster-profile/
+                          - listitem [ref=e76]:
+                            - link "Deploy a Cluster" [ref=e77] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/gcp/deploy-k8s-cluster/
+                          - listitem [ref=e78]:
+                            - link "Deploy Cluster Profile Updates" [ref=e79] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/gcp/update-k8s-cluster/
+                          - listitem [ref=e80]:
+                            - link "Cluster Management with Terraform" [ref=e81] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/gcp/deploy-manage-k8s-cluster-tf/
+                          - listitem [ref=e82]:
+                            - link "Scale, Upgrade, and Secure Clusters" [ref=e83] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/gcp/scale-secure-cluster/
+                      - listitem [ref=e84]:
+                        - generic [ref=e85]:
+                          - link "Deploy a Cluster to VMware" [ref=e86] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/vmware/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to VMware'" [ref=e87] [cursor=pointer]
+                  - listitem [ref=e88]:
+                    - generic [ref=e89]:
+                      - link "Palette Edge" [ref=e90] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette-edge/
+                      - button "Toggle the collapsible sidebar category 'Palette Edge'" [ref=e91] [cursor=pointer]
+                  - listitem [ref=e92]:
+                    - generic [ref=e93]:
+                      - link "Additional Capabilities" [ref=e94] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/additional-capabilities/
+                      - button "Toggle the collapsible sidebar category 'Additional Capabilities'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Packs and Registries" [ref=e98] [cursor=pointer]:
+                    - /url: /tutorials/packs-registries/
+                    - img [ref=e100]
+                    - text: Packs and Registries
+                  - button "Toggle the collapsible sidebar category 'Packs and Registries'" [ref=e102] [cursor=pointer]
+              - listitem [ref=e103]:
+                - generic [ref=e104]:
+                  - link "Profiles" [ref=e105] [cursor=pointer]:
+                    - /url: /tutorials/profiles/
+                    - img [ref=e107]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e111] [cursor=pointer]
+              - listitem [ref=e112]:
+                - generic [ref=e113]:
+                  - link "Clusters" [ref=e114] [cursor=pointer]:
+                    - /url: /tutorials/clusters/
+                    - img [ref=e116]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e122] [cursor=pointer]
+              - listitem [ref=e123]:
+                - generic [ref=e124]:
+                  - link "Palette Dev Engine" [ref=e125] [cursor=pointer]:
+                    - /url: /tutorials/pde/
+                    - img [ref=e127]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e129] [cursor=pointer]
+              - listitem [ref=e130]:
+                - button "Privacy Settings" [ref=e131] [cursor=pointer]
+      - main [ref=e132]:
+        - generic [ref=e134]:
+          - generic [ref=e136]:
+            - article [ref=e137]:
+              - navigation "Breadcrumbs" [ref=e138]:
+                - list [ref=e139]:
+                  - listitem [ref=e140]:
+                    - link "Home page" [ref=e141] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e142]
+                  - listitem [ref=e144]:
+                    - link "Getting Started" [ref=e145] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/
+                  - listitem [ref=e146]:
+                    - link "Palette" [ref=e147] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette/
+                  - listitem [ref=e148]:
+                    - link "Deploy a Cluster to GCP" [ref=e149] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette/gcp/
+                  - listitem [ref=e150]:
+                    - generic [ref=e151]: Set up Palette
+              - generic [ref=e152]:
+                - heading "Set up Palette with GCP" [level=1] [ref=e154]
+                - paragraph [ref=e155]: In this guide, you will learn how to set up Palette for use with your Google Cloud Platform (GCP) cloud account. These steps are required in order to authenticate Palette and allow it to deploy host clusters. The concepts you learn about in the Getting Started section are centered around a fictional case study company, Spacetastic Ltd.
+                - heading "🧑‍🚀 Back at Spacetastic HQDirect link to 🧑‍🚀 Back at Spacetastic HQ" [level=2] [ref=e156]:
+                  - text: 🧑‍🚀 Back at Spacetastic HQ
+                  - link "Direct link to 🧑‍🚀 Back at Spacetastic HQ" [ref=e157] [cursor=pointer]:
+                    - /url: "#-back-at-spacetastic-hq"
+                    - text: "#"
+                - paragraph [ref=e158]: The Spacetastic team decide to look for an external solution that can help them scale and manage their Kubernetes services. Partnering with a team of Kubernetes experts allows them to focus on expanding their astronomy education platform, instead of spending countless hours migrating and rehosting their services. They identify the following list of benefits that their new platform should provide.
+                - list [ref=e159]:
+                  - listitem [ref=e160]: Simplified Kubernetes cluster deployment processes across cloud providers.
+                  - listitem [ref=e161]: Cluster maintenance and security patching across environments.
+                  - listitem [ref=e162]: Monitoring and observability of Kubernetes workloads.
+                - blockquote [ref=e163]:
+                  - paragraph [ref=e164]: "\"I have so many ideas for new features for our backlog.\" says Anya, Lead Astrophycist. \"Our community of space explorers want to keep learning, so we shouldn't slow down our implementation cycle. We need to keep expanding our astronomy education product.\""
+                  - paragraph [ref=e165]: Kai nods knowingly. As a Platform Engineer, they agree with Anya's concerns. "I've done some research on Kubernetes orchestration solutions. It seems that Palette has all the capabilities we need to help us grow."
+                  - paragraph [ref=e166]: "\"I agree with both of you, but I want to review the developer experience in detail before we agree to implement a new solution in production.\" says Wren, whose main concern as Founding Engineer is to ensure development velocity does not decrease. \"Let's reach out to Spectro Cloud to create an account. Then, we can make an informed decision after we complete their Getting Started tutorials.\""
+                - paragraph [ref=e167]:
+                  - img "The Spacetastic team are reading Palette Getting Started" [ref=e168]
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e169]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e170] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e171]:
+                  - listitem [ref=e172]:
+                    - paragraph [ref=e173]:
+                      - text: A Palette account with
+                      - link "tenant admin" [ref=e174] [cursor=pointer]:
+                        - /url: /tenant-settings/
+                      - text: access.
+                  - listitem [ref=e175]:
+                    - paragraph [ref=e176]:
+                      - text: Sign up to a service account from
+                      - link "GCP" [ref=e177] [cursor=pointer]:
+                        - /url: https://cloud.google.com/docs/get-started
+                      - text: . The GCP account must have the required
+                      - link "IAM permissions" [ref=e178] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/gcp/required-permissions/
+                      - text: .
+                - heading "EnablementDirect link to Enablement" [level=2] [ref=e179]:
+                  - text: Enablement
+                  - link "Direct link to Enablement" [ref=e180] [cursor=pointer]:
+                    - /url: "#enablement"
+                    - text: "#"
+                - paragraph [ref=e181]: Palette needs access to your GCP cloud account in order to create and manage GCP clusters and resources.
+                - heading "Add Cloud AccountDirect link to Add Cloud Account" [level=3] [ref=e182]:
+                  - text: Add Cloud Account
+                  - link "Direct link to Add Cloud Account" [ref=e183] [cursor=pointer]:
+                    - /url: "#add-cloud-account"
+                    - text: "#"
+                - list [ref=e184]:
+                  - listitem [ref=e185]:
+                    - paragraph [ref=e186]:
+                      - text: Log in to
+                      - link "Palette" [ref=e187] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as Tenant admin.
+                  - listitem [ref=e188]:
+                    - paragraph [ref=e189]:
+                      - text: Navigate to the left
+                      - strong [ref=e190]: Main Menu
+                      - text: and select
+                      - strong [ref=e191]: Tenant Settings
+                      - text: .
+                  - listitem [ref=e192]:
+                    - paragraph [ref=e193]:
+                      - text: Select
+                      - strong [ref=e194]: Cloud Accounts
+                      - text: and click on
+                      - strong [ref=e195]: Add GCP Account
+                      - text: .
+                  - listitem [ref=e196]:
+                    - paragraph [ref=e197]: "In the cloud account creation wizard, provide the following information:"
+                    - list [ref=e198]:
+                      - listitem [ref=e199]:
+                        - paragraph [ref=e200]:
+                          - strong [ref=e201]: "Account Name:"
+                          - text: Custom name for the cloud account.
+                      - listitem [ref=e202]:
+                        - paragraph [ref=e203]:
+                          - strong [ref=e204]: "JSON Credentials:"
+                          - text: The JSON credentials object.
+                    - generic [ref=e205]:
+                      - generic [ref=e206]:
+                        - img [ref=e208]
+                        - text: info
+                      - paragraph [ref=e211]:
+                        - text: You can use the
+                        - strong [ref=e212]: Upload
+                        - text: button to upload the JSON file you downloaded from the GCP console.
+                  - listitem [ref=e213]:
+                    - paragraph [ref=e214]:
+                      - text: Click the
+                      - strong [ref=e215]: Validate
+                      - text: button to validate the credentials.
+                  - listitem [ref=e216]:
+                    - paragraph [ref=e217]:
+                      - text: When the credentials are validated, click on
+                      - strong [ref=e218]: Confirm
+                      - text: to save your changes.
+                - heading "Create a Palette API KeyDirect link to Create a Palette API Key" [level=3] [ref=e219]:
+                  - text: Create a Palette API Key
+                  - link "Direct link to Create a Palette API Key" [ref=e220] [cursor=pointer]:
+                    - /url: "#create-a-palette-api-key"
+                    - text: "#"
+                - paragraph [ref=e221]:
+                  - text: Follow the steps below to create a Palette API key. This is required for the
+                  - link "Cluster Management with Terraform" [ref=e222] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/gcp/deploy-manage-k8s-cluster-tf/
+                  - text: tutorial.
+                - list [ref=e223]:
+                  - listitem [ref=e224]:
+                    - paragraph [ref=e225]:
+                      - text: Log in to
+                      - link "Palette" [ref=e226] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e227]:
+                    - paragraph [ref=e228]:
+                      - text: Click on the
+                      - strong [ref=e229]: drop-down Menu
+                      - text: at the top of the page and switch to the
+                      - strong [ref=e230]: Tenant Admin
+                      - text: scope.
+                  - listitem [ref=e231]:
+                    - paragraph [ref=e232]:
+                      - text: Navigate to the left
+                      - strong [ref=e233]: Main Menu
+                      - text: and select
+                      - strong [ref=e234]: Tenant Settings
+                      - text: .
+                  - listitem [ref=e235]:
+                    - paragraph [ref=e236]:
+                      - text: From the
+                      - strong [ref=e237]: Tenant Settings Menu
+                      - text: ", click on"
+                      - strong [ref=e238]: Security
+                      - text: and select
+                      - strong [ref=e239]: API Keys
+                      - text: .
+                  - listitem [ref=e240]:
+                    - paragraph [ref=e241]:
+                      - text: Click on
+                      - strong [ref=e242]: Add New API key
+                      - text: .
+                  - listitem [ref=e243]:
+                    - paragraph [ref=e244]: "Fill out the following input fields:"
+                - table [ref=e245]:
+                  - rowgroup [ref=e246]:
+                    - row "Input Field Description" [ref=e247]:
+                      - cell "Input Field" [ref=e248]:
+                        - strong [ref=e249]: Input Field
+                      - cell "Description" [ref=e250]:
+                        - strong [ref=e251]: Description
+                  - rowgroup [ref=e252]:
+                    - row "API Key Name Assign a name to the API key." [ref=e253]:
+                      - cell "API Key Name" [ref=e254]:
+                        - strong [ref=e255]: API Key Name
+                      - cell "Assign a name to the API key." [ref=e256]
+                    - row "Description Provide a description for the API key." [ref=e257]:
+                      - cell "Description" [ref=e258]:
+                        - strong [ref=e259]: Description
+                      - cell "Provide a description for the API key." [ref=e260]
+                    - row "User Name Select the user to assign the API key." [ref=e261]:
+                      - cell "User Name" [ref=e262]:
+                        - strong [ref=e263]: User Name
+                      - cell "Select the user to assign the API key." [ref=e264]
+                    - row "Expiration Date Select an expiration date from the available options. You can also specify a custom date by selecting Custom." [ref=e265]:
+                      - cell "Expiration Date" [ref=e266]:
+                        - strong [ref=e267]: Expiration Date
+                      - cell "Select an expiration date from the available options. You can also specify a custom date by selecting Custom." [ref=e268]:
+                        - text: Select an expiration date from the available options. You can also specify a custom date by selecting
+                        - strong [ref=e269]: Custom
+                        - text: .
+                - list [ref=e270]:
+                  - listitem [ref=e271]:
+                    - paragraph [ref=e272]:
+                      - text: Click the
+                      - strong [ref=e273]: Generate
+                      - text: button.
+                  - listitem [ref=e274]:
+                    - paragraph [ref=e275]: Copy the API key and save it in a secure location, such as a password manager. Share the API key with the user you created the API key for.
+                - generic [ref=e276]:
+                  - generic [ref=e277]:
+                    - img [ref=e279]
+                    - text: warning
+                  - paragraph [ref=e282]: Ensure you save the API key in a secure location. You will not be able to view the API key again.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e283]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e284] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e285]: You can verify your account is added.
+                - list [ref=e286]:
+                  - listitem [ref=e287]:
+                    - paragraph [ref=e288]:
+                      - text: Log in to
+                      - link "Palette" [ref=e289] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e290]:
+                    - paragraph [ref=e291]:
+                      - text: From the left
+                      - strong [ref=e292]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e293]: Tenant Settings
+                      - text: .
+                  - listitem [ref=e294]:
+                    - paragraph [ref=e295]:
+                      - text: Next, on the
+                      - strong [ref=e296]: Tenant Settings Menu
+                      - text: ", select"
+                      - strong [ref=e297]: Cloud Accounts
+                      - text: .
+                  - listitem [ref=e298]:
+                    - paragraph [ref=e299]:
+                      - text: The added cloud account is listed under
+                      - strong [ref=e300]: GCP
+                      - text: with all other available GCP cloud accounts.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e301]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e302] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e303]:
+                  - text: Now that you set up Palette for use with Google Cloud, you can start deploying Kubernetes clusters to your GCP account. To learn how to get started with deploying Kubernetes clusters to GCP, we recommend that you continue to the
+                  - link "Create a Cluster Profile" [ref=e304] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/gcp/create-cluster-profile/
+                  - text: tutorial to create a full cluster profile for your host cluster.
+                - heading "🧑‍🚀 Catch up with SpacetasticDirect link to 🧑‍🚀 Catch up with Spacetastic" [level=2] [ref=e305]:
+                  - text: 🧑‍🚀 Catch up with Spacetastic
+                  - link "Direct link to 🧑‍🚀 Catch up with Spacetastic" [ref=e306] [cursor=pointer]:
+                    - /url: "#-catch-up-with-spacetastic"
+                    - text: "#"
+                - paragraph [ref=e307]: After following the detailed Palette setup instructions, the Spacetastic team have added their cloud accounts on the Palette dashboard. They are ready to learn about Palette.
+                - blockquote [ref=e308]:
+                  - paragraph [ref=e309]: "\"The Spectro Cloud team has provided our Palette accounts,\" says Kai. \"I have followed their setup guide and have added our cloud accounts. I can already tell at a first glance that they offer many Kubernetes customization features.\""
+                  - paragraph [ref=e310]:
+                    - text: Wren joins Kai in looking at the Palette dashboard. "I'm interested to learn more, but I never believe in
+                    - emphasis [ref=e311]: magic
+                    - text: solutions. We should review their Getting Started material in detail to ensure that Palette is a good fit for us."
+                - paragraph [ref=e312]:
+                  - img "The Spacetastic team have set up Palette" [ref=e313]
+              - generic [ref=e314]:
+                - generic [ref=e316]:
+                  - text: "Tags:"
+                  - list [ref=e317]:
+                    - listitem [ref=e318]:
+                      - link "getting-started" [ref=e319] [cursor=pointer]:
+                        - /url: /tags/getting-started/
+                    - listitem [ref=e320]:
+                      - link "gcp" [ref=e321] [cursor=pointer]:
+                        - /url: /tags/gcp/
+                    - listitem [ref=e322]:
+                      - link "tutorial" [ref=e323] [cursor=pointer]:
+                        - /url: /tags/tutorial/
+                - link "Edit this page" [ref=e326] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/tutorials/getting-started/palette/gcp/setup.md
+                  - img [ref=e327]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e331]:
+              - link "Previous « Deploy a Cluster to GCP" [ref=e332] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette/gcp/
+                - generic [ref=e333]: Previous
+                - generic [ref=e334]: « Deploy a Cluster to GCP
+              - link "Next Create a Cluster Profile »" [ref=e335] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette/gcp/create-cluster-profile/
+                - generic [ref=e336]: Next
+                - generic [ref=e337]: Create a Cluster Profile »
+          - list [ref=e340]:
+            - listitem [ref=e341]:
+              - link "🧑‍🚀 Back at Spacetastic HQ" [ref=e342] [cursor=pointer]:
+                - /url: "#-back-at-spacetastic-hq"
+            - listitem [ref=e343]:
+              - link "Prerequisites" [ref=e344] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e345]:
+              - link "Enablement" [ref=e346] [cursor=pointer]:
+                - /url: "#enablement"
+              - list [ref=e347]:
+                - listitem [ref=e348]:
+                  - link "Add Cloud Account" [ref=e349] [cursor=pointer]:
+                    - /url: "#add-cloud-account"
+                - listitem [ref=e350]:
+                  - link "Create a Palette API Key" [ref=e351] [cursor=pointer]:
+                    - /url: "#create-a-palette-api-key"
+            - listitem [ref=e352]:
+              - link "Validate" [ref=e353] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e354]:
+              - link "Next Steps" [ref=e355] [cursor=pointer]:
+                - /url: "#next-steps"
+            - listitem [ref=e356]:
+              - link "🧑‍🚀 Catch up with Spacetastic" [ref=e357] [cursor=pointer]:
+                - /url: "#-catch-up-with-spacetastic"
+  - button "Project Logo Ask AI" [ref=e358] [cursor=pointer]:
+    - generic [ref=e361]:
+      - img "Project Logo" [ref=e362]
+      - paragraph [ref=e363]: Ask AI
+```

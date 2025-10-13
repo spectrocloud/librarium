@@ -1,0 +1,609 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                  - listitem [ref=e107]:
+                    - generic [ref=e108]:
+                      - link "Data Center Clusters" [ref=e109] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e111]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e113] [cursor=pointer]
+                  - listitem [ref=e114]:
+                    - generic [ref=e115]:
+                      - link "Edge" [expanded] [ref=e116] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e118]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e120] [cursor=pointer]
+                    - list [ref=e121]:
+                      - listitem [ref=e122]:
+                        - generic [ref=e123]:
+                          - link "Architecture" [ref=e124] [cursor=pointer]:
+                            - /url: /clusters/edge/architecture/
+                          - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e125] [cursor=pointer]
+                      - listitem [ref=e126]:
+                        - link "Hardware Requirements" [ref=e127] [cursor=pointer]:
+                          - /url: /clusters/edge/hardware-requirements/
+                      - listitem [ref=e128]:
+                        - link "Deployment Lifecycle" [ref=e129] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-native-lifecycle/
+                      - listitem [ref=e130]:
+                        - generic [ref=e131]:
+                          - link "Trusted Boot" [expanded] [ref=e132] [cursor=pointer]:
+                            - /url: /clusters/edge/trusted-boot/
+                          - button "Toggle the collapsible sidebar category 'Trusted Boot'" [ref=e133] [cursor=pointer]
+                        - list [ref=e134]:
+                          - listitem [ref=e135]:
+                            - generic [ref=e136]:
+                              - link "Trusted Boot Keys" [ref=e137] [cursor=pointer]:
+                                - /url: /clusters/edge/trusted-boot/keys/
+                              - button "Toggle the collapsible sidebar category 'Trusted Boot Keys'" [ref=e138] [cursor=pointer]
+                          - listitem [ref=e139]:
+                            - generic [ref=e140]:
+                              - link "EdgeForge" [expanded] [ref=e141] [cursor=pointer]:
+                                - /url: /clusters/edge/trusted-boot/edgeforge/
+                              - button "Toggle the collapsible sidebar category 'EdgeForge'" [ref=e142] [cursor=pointer]
+                            - list [ref=e143]:
+                              - listitem [ref=e144]:
+                                - link "Build Edge Installer ISO" [ref=e145] [cursor=pointer]:
+                                  - /url: /clusters/edge/trusted-boot/edgeforge/build-trusted-iso/
+                              - listitem [ref=e146]:
+                                - link "Build Provider Images with Trusted Boot" [ref=e147] [cursor=pointer]:
+                                  - /url: /clusters/edge/trusted-boot/edgeforge/build-trusted-provider-image/
+                              - listitem [ref=e148]:
+                                - link "Check EFI Size and Edge Host Boot Limit" [ref=e149] [cursor=pointer]:
+                                  - /url: /clusters/edge/trusted-boot/edgeforge/check-efi-limit/
+                              - listitem [ref=e150]:
+                                - link "Add Static Binaries to Persistent Partition" [ref=e151] [cursor=pointer]:
+                                  - /url: /clusters/edge/trusted-boot/edgeforge/add-extra-content/
+                          - listitem [ref=e152]:
+                            - generic [ref=e153]:
+                              - link "Deployment and Management" [ref=e154] [cursor=pointer]:
+                                - /url: /clusters/edge/trusted-boot/deployment-day2/
+                              - button "Toggle the collapsible sidebar category 'Deployment and Management'" [ref=e155] [cursor=pointer]
+                      - listitem [ref=e156]:
+                        - generic [ref=e157]:
+                          - link "Install Configuration" [ref=e158] [cursor=pointer]:
+                            - /url: /clusters/edge/edge-configuration/
+                          - button "Toggle the collapsible sidebar category 'Install Configuration'" [ref=e159] [cursor=pointer]
+                      - listitem [ref=e160]:
+                        - generic [ref=e161]:
+                          - link "EdgeForge Workflow" [ref=e162] [cursor=pointer]:
+                            - /url: /clusters/edge/edgeforge-workflow/
+                          - button "Toggle the collapsible sidebar category 'EdgeForge Workflow'" [ref=e163] [cursor=pointer]
+                      - listitem [ref=e164]:
+                        - generic [ref=e165]:
+                          - link "Local UI" [ref=e166] [cursor=pointer]:
+                            - /url: /clusters/edge/local-ui/
+                          - button "Toggle the collapsible sidebar category 'Local UI'" [ref=e167] [cursor=pointer]
+                      - listitem [ref=e168]:
+                        - generic [ref=e169]:
+                          - link "Deployment" [ref=e170] [cursor=pointer]:
+                            - /url: /clusters/edge/site-deployment/
+                          - button "Toggle the collapsible sidebar category 'Deployment'" [ref=e171] [cursor=pointer]
+                      - listitem [ref=e172]:
+                        - generic [ref=e173]:
+                          - link "Cluster Management" [ref=e174] [cursor=pointer]:
+                            - /url: /clusters/edge/cluster-management/
+                          - button "Toggle the collapsible sidebar category 'Cluster Management'" [ref=e175] [cursor=pointer]
+                      - listitem [ref=e176]:
+                        - generic [ref=e177]:
+                          - link "Networking" [ref=e178] [cursor=pointer]:
+                            - /url: /clusters/edge/networking/
+                          - button "Toggle the collapsible sidebar category 'Networking'" [ref=e179] [cursor=pointer]
+                      - listitem [ref=e180]:
+                        - generic [ref=e181]:
+                          - link "Third Party Integrations" [ref=e182] [cursor=pointer]:
+                            - /url: /clusters/edge/third-party-integrations/
+                          - button "Toggle the collapsible sidebar category 'Third Party Integrations'" [ref=e183] [cursor=pointer]
+                  - listitem [ref=e184]:
+                    - generic [ref=e185]:
+                      - link "Palette Virtual Clusters" [ref=e186] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e188]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e190] [cursor=pointer]
+                  - listitem [ref=e191]:
+                    - generic [ref=e192]:
+                      - link "Imported Clusters" [ref=e193] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e195]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e197] [cursor=pointer]
+                  - listitem [ref=e198]:
+                    - generic [ref=e199]:
+                      - link "Manage Clusters" [ref=e200] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e202]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e204] [cursor=pointer]
+                  - listitem [ref=e205]:
+                    - generic [ref=e206]:
+                      - link "Cluster Groups" [ref=e207] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e209]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e211] [cursor=pointer]
+                  - listitem [ref=e212]:
+                    - generic [ref=e213]:
+                      - link "Private Cloud Gateway" [ref=e214] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e216]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e218] [cursor=pointer]
+              - listitem [ref=e219]:
+                - generic [ref=e220]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e221] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e223]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e225] [cursor=pointer]
+              - listitem [ref=e226]:
+                - generic [ref=e227]:
+                  - link "Palette Dev Engine" [ref=e228] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e230]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e232] [cursor=pointer]
+              - listitem [ref=e233]:
+                - generic [ref=e234]:
+                  - link "Virtual Machine Orchestrator" [ref=e235] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e237]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e239] [cursor=pointer]
+              - listitem [ref=e240]:
+                - generic [ref=e241]:
+                  - link "Workspaces" [ref=e242] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e244]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e246] [cursor=pointer]
+              - listitem [ref=e247]:
+                - generic [ref=e248]:
+                  - link "Packs List" [ref=e249] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e251]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e253] [cursor=pointer]
+              - listitem [ref=e254]:
+                - generic [ref=e255]:
+                  - link "User & Role Management" [ref=e256] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e258]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e260] [cursor=pointer]
+              - listitem [ref=e261]:
+                - generic [ref=e262]:
+                  - link "Registries and Packs" [ref=e263] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e265]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e267] [cursor=pointer]
+              - listitem [ref=e268]:
+                - generic [ref=e269]:
+                  - link "Security" [ref=e270] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e272]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e274] [cursor=pointer]
+              - listitem [ref=e275]:
+                - generic [ref=e276]:
+                  - link "Audit Logs" [ref=e277] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e279]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e281] [cursor=pointer]
+              - listitem [ref=e282]:
+                - generic [ref=e283]:
+                  - link "Self-Hosted Palette" [ref=e284] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e286]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e288] [cursor=pointer]
+              - listitem [ref=e289]:
+                - generic [ref=e290]:
+                  - link "Palette VerteX" [ref=e291] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e293]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e295] [cursor=pointer]
+              - listitem [ref=e296]:
+                - generic [ref=e297]:
+                  - link "Tenant Administration" [ref=e298] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e300]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e302] [cursor=pointer]
+              - listitem [ref=e303]:
+                - generic [ref=e304]:
+                  - link "Automation" [ref=e305] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e307]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e309] [cursor=pointer]
+              - listitem [ref=e310]:
+                - generic [ref=e311]:
+                  - link "Troubleshooting" [ref=e312] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e314]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e316] [cursor=pointer]
+              - listitem [ref=e317]:
+                - link "Glossary" [ref=e318] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e320]
+                  - text: Glossary
+              - listitem [ref=e322]:
+                - generic [ref=e323]:
+                  - link "Compliance & Legal" [ref=e324] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e326]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e328] [cursor=pointer]
+              - listitem [ref=e329]:
+                - button "Privacy Settings" [ref=e330] [cursor=pointer]:
+                  - img [ref=e331]
+                  - text: Privacy Settings
+      - main [ref=e333]:
+        - generic [ref=e335]:
+          - generic [ref=e337]:
+            - article [ref=e338]:
+              - navigation "Breadcrumbs" [ref=e339]:
+                - list [ref=e340]:
+                  - listitem [ref=e341]:
+                    - link "Home page" [ref=e342] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e343]
+                  - listitem [ref=e345]:
+                    - link "Clusters" [ref=e346] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e347]:
+                    - link "Edge" [ref=e348] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                  - listitem [ref=e349]:
+                    - link "Trusted Boot" [ref=e350] [cursor=pointer]:
+                      - /url: /clusters/edge/trusted-boot/
+                  - listitem [ref=e351]:
+                    - link "EdgeForge" [ref=e352] [cursor=pointer]:
+                      - /url: /clusters/edge/trusted-boot/edgeforge/
+                  - listitem [ref=e353]:
+                    - generic [ref=e354]: Add Static Binaries to Persistent Partition
+              - generic [ref=e355]:
+                - heading "Add Static Binaries to Persistent Partition with Trusted Boot" [level=1] [ref=e357]
+                - paragraph [ref=e358]: During EdgeForge, you are able to customize the resulting installed Operating System (OS) of your Edge host. This allows you to add various utilities that can be useful in setting up your Edge host and getting it ready for cluster creation as well as using those utilities for host maintenance.
+                - paragraph [ref=e359]:
+                  - text: However, if you want to use Trusted Boot, the firmware can impose limitations on the maximum size of a bootable Extensible Firmware Interface (EFI) file. This means that you can no longer add such utilities to your OS as freely as before. If the EFI becomes too large in size, the Edge host might not be able to boot it. Refer to
+                  - link "Check EFI Boot Size Limit" [ref=e360] [cursor=pointer]:
+                    - /url: /clusters/edge/trusted-boot/edgeforge/check-efi-limit/
+                  - text: to learn how to determine if your Edge host is capable of booting the Edge artifacts.
+                - paragraph [ref=e361]: If you would like to add software that can be used after the ISO installation, you can instead use the approach described in this guide to add the compiled static binaries of the software packages to the persistent partition of the installation partition instead of to the OS image itself. You will be able to access the content both before cluster formation and after. Because the content is placed in the persistent partitions, it will be encrypted by default.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e362]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e363] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e364]:
+                  - listitem [ref=e365]:
+                    - paragraph [ref=e366]:
+                      - text: The approach described in this guide is based on EdgeForge. You should become familiar with
+                      - link "how to use EdgeForge to build ISO with Trusted Boot" [ref=e367] [cursor=pointer]:
+                        - /url: /clusters/edge/trusted-boot/edgeforge/build-trusted-iso/
+                      - text: before using this approach to add software packages to your Edge host.
+                  - listitem [ref=e368]:
+                    - paragraph [ref=e369]:
+                      - text: A physical or virtual Linux machine with
+                      - emphasis [ref=e370]: AMD64
+                      - text: (also known as x86_64) processor architecture to build the Edge artifacts. You can issue the following command in the terminal to check your processor architecture.
+                    - generic [ref=e372]:
+                      - code [ref=e374]:
+                        - generic [ref=e375]: uname -m
+                      - button "Copy code to clipboard" [ref=e377] [cursor=pointer]:
+                        - generic [ref=e378]:
+                          - img [ref=e379]
+                          - img [ref=e381]
+                  - listitem [ref=e383]:
+                    - paragraph [ref=e384]: "Minimum hardware configuration of the Linux machine:"
+                    - list [ref=e385]:
+                      - listitem [ref=e386]: 4 CPU
+                      - listitem [ref=e387]: 32 GB memory
+                      - listitem [ref=e388]: 100 GB storage
+                  - listitem [ref=e389]:
+                    - paragraph [ref=e390]: Static compiled binaries of the software package you are adding to the Edge host.
+                  - listitem [ref=e391]:
+                    - paragraph [ref=e392]:
+                      - link "Git" [ref=e393] [cursor=pointer]:
+                        - /url: https://www.git-scm.com/downloads
+                      - text: . You can ensure git installation by issuing the git --version command.
+                - heading "InstructionsDirect link to Instructions" [level=2] [ref=e394]:
+                  - text: Instructions
+                  - link "Direct link to Instructions" [ref=e395] [cursor=pointer]:
+                    - /url: "#instructions"
+                    - text: "#"
+                - list [ref=e396]:
+                  - listitem [ref=e397]:
+                    - paragraph [ref=e398]:
+                      - text: Check out the
+                      - link "CanvOS" [ref=e399] [cursor=pointer]:
+                        - /url: https://github.com/spectrocloud/CanvOS.git
+                      - text: GitHub repository containing the starter code.
+                    - generic [ref=e401]:
+                      - code [ref=e403]:
+                        - generic [ref=e404]: git clone https://github.com/spectrocloud/CanvOS.git
+                      - button "Copy code to clipboard" [ref=e406] [cursor=pointer]:
+                        - generic [ref=e407]:
+                          - img [ref=e408]
+                          - img [ref=e410]
+                  - listitem [ref=e412]:
+                    - paragraph [ref=e413]:
+                      - text: Change to the
+                      - strong [ref=e414]: CanvOS/
+                      - text: directory.
+                    - generic [ref=e416]:
+                      - code [ref=e418]:
+                        - generic [ref=e419]: cd CanvOS
+                      - button "Copy code to clipboard" [ref=e421] [cursor=pointer]:
+                        - generic [ref=e422]:
+                          - img [ref=e423]
+                          - img [ref=e425]
+                  - listitem [ref=e427]:
+                    - paragraph [ref=e428]:
+                      - text: View the available
+                      - link "git tag" [ref=e429] [cursor=pointer]:
+                        - /url: https://github.com/spectrocloud/CanvOS/tags
+                      - text: .
+                    - generic [ref=e431]:
+                      - code [ref=e433]:
+                        - generic [ref=e434]: git tag
+                      - button "Copy code to clipboard" [ref=e436] [cursor=pointer]:
+                        - generic [ref=e437]:
+                          - img [ref=e438]
+                          - img [ref=e440]
+                  - listitem [ref=e442]:
+                    - paragraph [ref=e443]:
+                      - text: Check out the latest available tag. This guide uses
+                      - strong [ref=e444]: v4.4.0
+                      - text: tag as an example.
+                    - generic [ref=e446]:
+                      - code [ref=e448]:
+                        - generic [ref=e449]: git checkout v4.4.0
+                      - button "Copy code to clipboard" [ref=e451] [cursor=pointer]:
+                        - generic [ref=e452]:
+                          - img [ref=e453]
+                          - img [ref=e455]
+                  - listitem [ref=e457]:
+                    - paragraph [ref=e458]:
+                      - text: Copy the static binaries of the software packages you'd like to add to the Edge host to
+                      - strong [ref=e459]: overlay/files-iso/
+                      - text: .
+                      - strong [ref=e460]: overlay/files-iso
+                      - text: will be mounted at
+                      - strong [ref=e461]: /run/initramfs/live/
+                      - text: during installation, enabling the installer to copy files from there into place during installation.
+                  - listitem [ref=e462]:
+                    - paragraph [ref=e463]:
+                      - text: In your
+                      - strong [ref=e464]: user-data
+                      - text: ", add the following section, and replace"
+                      - code [ref=e465]: YOUR_FILE
+                      - text: with the name of the static binary file. If you have multiple files, you should add multiple lines, one line for each file.
+                    - generic [ref=e467]:
+                      - code [ref=e469]:
+                        - generic [ref=e470]: "after-install:"
+                        - generic [ref=e471]: "- name: Persist iso files"
+                        - generic [ref=e472]: "if: '[ -e \"/run/cos/uki_install_mode\" ]'"
+                        - generic [ref=e473]: "commands:"
+                        - generic [ref=e474]: "- echo \"Copying files to persistent path\""
+                        - generic [ref=e475]: "- if mount | grep /usr/local >/dev/null; then umount /usr/local; fi"
+                        - generic [ref=e476]: "- for d in /dev/mapper/*; do if [ ! \"$d\" = \"/dev/mapper/control\" ]; then cryptsetup close $d; fi; done"
+                        - generic [ref=e477]: "- /usr/lib/systemd/systemd-cryptsetup attach persistent $(findfs PARTLABEL=persistent) - tpm2-device=auto"
+                        - generic [ref=e478]: "- mount /dev/mapper/persistent /usr/local"
+                        - generic [ref=e479]: "- mkdir -p /usr/local/bin"
+                        - generic [ref=e480]: "- cp -rfv /run/initramfs/live/YOUR_FILE /usr/local/bin/"
+                        - generic [ref=e481]: "- umount /dev/mapper/persistent"
+                        - generic [ref=e482]: "- if [ -e /dev/mapper/persistent ]; then cryptsetup close /dev/mapper/persistent; fi"
+                      - generic [ref=e483]:
+                        - button "Toggle word wrap" [ref=e484] [cursor=pointer]:
+                          - img [ref=e485]
+                        - button "Copy code to clipboard" [ref=e487] [cursor=pointer]:
+                          - generic [ref=e488]:
+                            - img [ref=e489]
+                            - img [ref=e491]
+                    - paragraph [ref=e493]:
+                      - text: For example, if you want to add
+                      - code [ref=e494]: wget
+                      - text: and
+                      - code [ref=e495]: ping
+                      - text: ", you would put both binaries under"
+                      - strong [ref=e496]: overlay/files-iso
+                      - text: and add the following to user data.
+                    - generic [ref=e498]:
+                      - code [ref=e500]:
+                        - generic [ref=e501]: "after-install:"
+                        - generic [ref=e502]: "- name: Persist iso files"
+                        - generic [ref=e503]: "if: '[ -e \"/run/cos/uki_install_mode\" ]'"
+                        - generic [ref=e504]: "commands:"
+                        - generic [ref=e505]: "- echo \"Copying files to persistent path\""
+                        - generic [ref=e506]: "- if mount | grep /usr/local >/dev/null; then umount /usr/local; fi"
+                        - generic [ref=e507]: "- for d in /dev/mapper/*; do if [ ! \"$d\" = \"/dev/mapper/control\" ]; then cryptsetup close $d; fi; done"
+                        - generic [ref=e508]: "- /usr/lib/systemd/systemd-cryptsetup attach persistent $(findfs PARTLABEL=persistent) - tpm2-device=auto"
+                        - generic [ref=e509]: "- mount /dev/mapper/persistent /usr/local"
+                        - generic [ref=e510]: "- mkdir -p /usr/local/bin"
+                        - generic [ref=e511]: "- cp -rfv /run/initramfs/live/wget /usr/local/bin/"
+                        - generic [ref=e512]: "- cp -rfv /run/initramfs/live/ping /usr/local/bin/"
+                        - generic [ref=e513]: "- umount /dev/mapper/persistent"
+                        - generic [ref=e514]: "- if [ -e /dev/mapper/persistent ]; then cryptsetup close /dev/mapper/persistent; fi"
+                      - generic [ref=e515]:
+                        - button "Toggle word wrap" [ref=e516] [cursor=pointer]:
+                          - img [ref=e517]
+                        - button "Copy code to clipboard" [ref=e519] [cursor=pointer]:
+                          - generic [ref=e520]:
+                            - img [ref=e521]
+                            - img [ref=e523]
+                  - listitem [ref=e525]:
+                    - paragraph [ref=e526]:
+                      - text: You have now configured the installer to copy the static binaries you provided to the
+                      - code [ref=e527]: /usr/local/bin
+                      - text: folder, which is included in the
+                      - code [ref=e528]: PATH
+                      - text: variable.
+                    - paragraph [ref=e529]:
+                      - text: You can perform further customization of the Installer ISO in your
+                      - strong [ref=e530]: user-data
+                      - text: file and customize the build script with the
+                      - strong [ref=e531]: .arg
+                      - text: file before starting the build. Follow
+                      - link "Build Installer ISO with Trusted Boot" [ref=e532] [cursor=pointer]:
+                        - /url: /clusters/edge/trusted-boot/edgeforge/build-trusted-iso/
+                      - text: to build the installer ISO.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e533]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e534] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e535]:
+                  - listitem [ref=e536]:
+                    - paragraph [ref=e537]:
+                      - text: Follow the
+                      - link "Installation Guide" [ref=e538] [cursor=pointer]:
+                        - /url: /clusters/edge/trusted-boot/deployment-day2/install/
+                      - text: to install Palette on your Edge host.
+                  - listitem [ref=e539]:
+                    - paragraph [ref=e540]:
+                      - text: Issue the command that evokes the static binary. For example,
+                      - code [ref=e541]: wget
+                      - text: and confirm that the software package has been installed successfully.
+              - generic [ref=e542]:
+                - generic [ref=e544]:
+                  - text: "Tags:"
+                  - list [ref=e545]:
+                    - listitem [ref=e546]:
+                      - link "edge" [ref=e547] [cursor=pointer]:
+                        - /url: /tags/edge/
+                - link "Edit this page" [ref=e550] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/edge/trusted-boot/edgeforge/add-extra-content.md
+                  - img [ref=e551]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e555]:
+              - link "Previous « Check EFI Size and Edge Host Boot Limit" [ref=e556] [cursor=pointer]:
+                - /url: /clusters/edge/trusted-boot/edgeforge/check-efi-limit/
+                - generic [ref=e557]: Previous
+                - generic [ref=e558]: « Check EFI Size and Edge Host Boot Limit
+              - link "Next Deployment and Management »" [ref=e559] [cursor=pointer]:
+                - /url: /clusters/edge/trusted-boot/deployment-day2/
+                - generic [ref=e560]: Next
+                - generic [ref=e561]: Deployment and Management »
+          - list [ref=e564]:
+            - listitem [ref=e565]:
+              - link "Prerequisites" [ref=e566] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e567]:
+              - link "Instructions" [ref=e568] [cursor=pointer]:
+                - /url: "#instructions"
+            - listitem [ref=e569]:
+              - link "Validate" [ref=e570] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e571] [cursor=pointer]:
+    - generic [ref=e574]:
+      - img "Project Logo" [ref=e575]
+      - paragraph [ref=e576]: Ask AI
+```

@@ -1,0 +1,249 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - link "Palette Tutorials" [ref=e40] [cursor=pointer]:
+                  - /url: /tutorials/
+                  - img [ref=e42]
+                  - text: Palette Tutorials
+              - listitem [ref=e44]:
+                - generic [ref=e45]:
+                  - link "Getting Started" [expanded] [ref=e46] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/
+                    - img [ref=e48]
+                    - text: Getting Started
+                  - button "Toggle the collapsible sidebar category 'Getting Started'" [ref=e50] [cursor=pointer]
+                - list [ref=e51]:
+                  - listitem [ref=e52]:
+                    - generic [ref=e53]:
+                      - link "Palette" [ref=e54] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette/
+                      - button "Toggle the collapsible sidebar category 'Palette'" [ref=e55] [cursor=pointer]
+                  - listitem [ref=e56]:
+                    - generic [ref=e57]:
+                      - link "Palette Edge" [expanded] [ref=e58] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette-edge/
+                      - button "Toggle the collapsible sidebar category 'Palette Edge'" [ref=e59] [cursor=pointer]
+                    - list [ref=e60]:
+                      - listitem [ref=e61]:
+                        - link "Introduction to Edge" [ref=e62] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/introduction-edge/
+                      - listitem [ref=e63]:
+                        - link "Prepare User Data" [ref=e64] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/prepare-user-data/
+                      - listitem [ref=e65]:
+                        - link "Build Edge Artifacts" [ref=e66] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/build-edge-artifacts/
+                      - listitem [ref=e67]:
+                        - link "Create Edge Cluster Profile" [ref=e68] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/edge-cluster-profile/
+                      - listitem [ref=e69]:
+                        - link "Prepare Edge Host" [ref=e70] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/prepare-edge-host/
+                      - listitem [ref=e71]:
+                        - link "Deploy Edge Cluster" [ref=e72] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/deploy-edge-cluster/
+                  - listitem [ref=e73]:
+                    - generic [ref=e74]:
+                      - link "Additional Capabilities" [ref=e75] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/additional-capabilities/
+                      - button "Toggle the collapsible sidebar category 'Additional Capabilities'" [ref=e76] [cursor=pointer]
+              - listitem [ref=e77]:
+                - generic [ref=e78]:
+                  - link "Packs and Registries" [ref=e79] [cursor=pointer]:
+                    - /url: /tutorials/packs-registries/
+                    - img [ref=e81]
+                    - text: Packs and Registries
+                  - button "Toggle the collapsible sidebar category 'Packs and Registries'" [ref=e83] [cursor=pointer]
+              - listitem [ref=e84]:
+                - generic [ref=e85]:
+                  - link "Profiles" [ref=e86] [cursor=pointer]:
+                    - /url: /tutorials/profiles/
+                    - img [ref=e88]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e92] [cursor=pointer]
+              - listitem [ref=e93]:
+                - generic [ref=e94]:
+                  - link "Clusters" [ref=e95] [cursor=pointer]:
+                    - /url: /tutorials/clusters/
+                    - img [ref=e97]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e103] [cursor=pointer]
+              - listitem [ref=e104]:
+                - generic [ref=e105]:
+                  - link "Palette Dev Engine" [ref=e106] [cursor=pointer]:
+                    - /url: /tutorials/pde/
+                    - img [ref=e108]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e110] [cursor=pointer]
+              - listitem [ref=e111]:
+                - button "Privacy Settings" [ref=e112] [cursor=pointer]
+      - main [ref=e113]:
+        - generic [ref=e115]:
+          - generic [ref=e117]:
+            - article [ref=e118]:
+              - navigation "Breadcrumbs" [ref=e119]:
+                - list [ref=e120]:
+                  - listitem [ref=e121]:
+                    - link "Home page" [ref=e122] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e123]
+                  - listitem [ref=e125]:
+                    - link "Getting Started" [ref=e126] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/
+                  - listitem [ref=e127]:
+                    - link "Palette Edge" [ref=e128] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette-edge/
+                  - listitem [ref=e129]:
+                    - generic [ref=e130]: Introduction to Edge
+              - generic [ref=e131]:
+                - heading "Introduction to Palette Edge" [level=1] [ref=e133]
+                - paragraph [ref=e134]:
+                  - text: Edge clusters are Kubernetes clusters configured on bare metal or virtual machines and deployed in remote locations. Each cluster is built using Palette's reusable Kubernetes stacks,
+                  - link "Cluster Profiles" [ref=e135] [cursor=pointer]:
+                    - /url: /profiles/
+                  - text: . You can choose a combination of an Operating System (OS) and a Kubernetes distribution for the core infrastructure layer of your stack and add any necessary add-ons to support your workloads.
+                - paragraph [ref=e136]:
+                  - link "Palette Edge" [ref=e137] [cursor=pointer]:
+                    - /url: /clusters/edge/
+                  - text: provides end-to-end cluster management, including scaling, upgrades, and reconfiguration, while supporting both single-node and multi-node clusters. Additionally, it ensures that clusters continue enforcing policies locally, maintaining uninterrupted operations even when connectivity is disrupted.
+                - paragraph [ref=e138]:
+                  - img "Palette tactical Edge examples" [ref=e139]
+                - heading "Use CasesDirect link to Use Cases" [level=2] [ref=e140]:
+                  - text: Use Cases
+                  - link "Direct link to Use Cases" [ref=e141] [cursor=pointer]:
+                    - /url: "#use-cases"
+                    - text: "#"
+                - paragraph [ref=e142]: Palette Edge allows you to manage Kubernetes clusters at scale across distributed and remote locations. You can model your entire infrastructure to support a variety of workloads, including AI/ML applications and both containerized and VM-based deployments. With its low-touch deployment capabilities, you can ship a pre-configured device to a remote site and have it deployed without requiring a field engineer on-site. Review the example use cases below to help you evaluate how you can leverage Palette Edge.
+                - list [ref=e143]:
+                  - listitem [ref=e144]:
+                    - paragraph [ref=e145]:
+                      - strong [ref=e146]: Retail
+                      - text: ": Ensure continuous operation of point of sale terminals and transactions across hundreds of restaurants, even in areas with unreliable internet connectivity."
+                  - listitem [ref=e147]:
+                    - paragraph [ref=e148]:
+                      - strong [ref=e149]: Manufacturing
+                      - text: ": Deploy and manage Edge clusters in airgapped environments to support real-time automation and AI-driven applications, such as drone-based warehouse scanning or robotic process optimization."
+                  - listitem [ref=e150]:
+                    - paragraph [ref=e151]:
+                      - strong [ref=e152]: Healthcare
+                      - text: ": Securely manage thousands of Edge devices operating life-critical workloads in hospitals and clinics."
+                  - listitem [ref=e153]:
+                    - paragraph [ref=e154]:
+                      - strong [ref=e155]: Mission-Critical Edge
+                      - text: ": Deploy AI-powered compute-intensive vision applications in remote environments to support real-time supply chain and logistics."
+                - heading "ArchitectureDirect link to Architecture" [level=2] [ref=e156]:
+                  - text: Architecture
+                  - link "Direct link to Architecture" [ref=e157] [cursor=pointer]:
+                    - /url: "#architecture"
+                    - text: "#"
+                - paragraph [ref=e158]:
+                  - text: Each Edge cluster consists of one or more nodes, with each node representing an individual Edge host. The Edge configuration begins with the
+                  - link "EdgeForge" [ref=e159] [cursor=pointer]:
+                    - /url: /clusters/edge/edgeforge-workflow/
+                  - text: "process, which builds two key artifacts:"
+                - list [ref=e160]:
+                  - listitem [ref=e161]:
+                    - strong [ref=e162]: Installer ISO
+                    - text: ": A bootable ISO image that includes the required dependencies, such as the Palette Agent, and bootstraps the Edge installation process on the host."
+                  - listitem [ref=e163]:
+                    - strong [ref=e164]: Provider Images
+                    - text: ":"
+                    - link "Kairos" [ref=e165] [cursor=pointer]:
+                      - /url: https://kairos.io/
+                    - text: "-based customizable images that combine the OS and Kubernetes layers required for the cluster. These images install a secure, immutable OS during the cluster deployment and are referenced during the cluster profile creation."
+                - paragraph [ref=e166]:
+                  - text: After completing the build, you use the Installer ISO to install the Palette agent onto the Edge host. In connected environments, the host then registers itself with Palette using the registration token provided during the installer build. After registration, you can use the host as a node during the Edge cluster deployment. In disconnected environments, you can use
+                  - link "Local UI" [ref=e167] [cursor=pointer]:
+                    - /url: /clusters/edge/local-ui/
+                  - text: to create and manage the cluster, which does not require a connection to Palette.
+                - paragraph [ref=e168]:
+                  - img "Palette Edge architecture diagram" [ref=e169]
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e170]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e171] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e172]:
+                  - text: On this page, you became familiar with Palette Edge, its core capabilities, and architecture. Continue to the
+                  - link "Prepare User Data" [ref=e173] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette-edge/prepare-user-data/
+                  - text: tutorial to learn how to create a user data file, which is required for your first Edge deployment.
+              - generic [ref=e174]:
+                - generic [ref=e176]:
+                  - text: "Tags:"
+                  - list [ref=e177]:
+                    - listitem [ref=e178]:
+                      - link "getting-started" [ref=e179] [cursor=pointer]:
+                        - /url: /tags/getting-started/
+                    - listitem [ref=e180]:
+                      - link "tutorial" [ref=e181] [cursor=pointer]:
+                        - /url: /tags/tutorial/
+                    - listitem [ref=e182]:
+                      - link "edge" [ref=e183] [cursor=pointer]:
+                        - /url: /tags/edge/
+                - link "Edit this page" [ref=e186] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/tutorials/getting-started/palette-edge/introduction-edge.md
+                  - img [ref=e187]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e191]:
+              - link "Previous « Palette Edge" [ref=e192] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette-edge/
+                - generic [ref=e193]: Previous
+                - generic [ref=e194]: « Palette Edge
+              - link "Next Prepare User Data »" [ref=e195] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette-edge/prepare-user-data/
+                - generic [ref=e196]: Next
+                - generic [ref=e197]: Prepare User Data »
+          - list [ref=e200]:
+            - listitem [ref=e201]:
+              - link "Use Cases" [ref=e202] [cursor=pointer]:
+                - /url: "#use-cases"
+            - listitem [ref=e203]:
+              - link "Architecture" [ref=e204] [cursor=pointer]:
+                - /url: "#architecture"
+            - listitem [ref=e205]:
+              - link "Next Steps" [ref=e206] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e207] [cursor=pointer]:
+    - generic [ref=e210]:
+      - img "Project Logo" [ref=e211]
+      - paragraph [ref=e212]: Ask AI
+```

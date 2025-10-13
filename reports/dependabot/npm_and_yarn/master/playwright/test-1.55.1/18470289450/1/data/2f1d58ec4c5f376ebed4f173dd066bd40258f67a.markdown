@@ -1,0 +1,922 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Security" [ref=e150] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e152]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Audit Logs" [ref=e157] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e159]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Self-Hosted Palette" [expanded] [ref=e164] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e166]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e168] [cursor=pointer]
+                - list [ref=e169]:
+                  - listitem [ref=e170]:
+                    - generic [ref=e171]:
+                      - link "Installation" [expanded] [ref=e172] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e173] [cursor=pointer]
+                    - list [ref=e174]:
+                      - listitem [ref=e175]:
+                        - generic [ref=e176]:
+                          - link "VMware" [expanded] [ref=e177] [cursor=pointer]:
+                            - /url: /enterprise-version/install-palette/install-on-vmware/
+                          - button "Toggle the collapsible sidebar category 'VMware'" [ref=e178] [cursor=pointer]
+                        - list [ref=e179]:
+                          - listitem [ref=e180]:
+                            - link "VMware System and Permission Requirements" [ref=e181] [cursor=pointer]:
+                              - /url: /enterprise-version/install-palette/install-on-vmware/vmware-system-requirements/
+                          - listitem [ref=e182]:
+                            - link "Non-Airgap Installation" [ref=e183] [cursor=pointer]:
+                              - /url: /enterprise-version/install-palette/install-on-vmware/install/
+                          - listitem [ref=e184]:
+                            - generic [ref=e185]:
+                              - link "Airgap Installation" [ref=e186] [cursor=pointer]:
+                                - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/
+                              - button "Toggle the collapsible sidebar category 'Airgap Installation'" [ref=e187] [cursor=pointer]
+                      - listitem [ref=e188]:
+                        - link "Airgap Resources" [ref=e189] [cursor=pointer]:
+                          - /url: /enterprise-version/install-palette/airgap/
+                      - listitem [ref=e190]:
+                        - generic [ref=e191]:
+                          - link "Kubernetes" [ref=e192] [cursor=pointer]:
+                            - /url: /enterprise-version/install-palette/install-on-kubernetes/
+                          - button "Toggle the collapsible sidebar category 'Kubernetes'" [ref=e193] [cursor=pointer]
+                      - listitem [ref=e194]:
+                        - link "Palette Management Appliance" [ref=e195] [cursor=pointer]:
+                          - /url: /enterprise-version/install-palette/palette-management-appliance/
+                  - listitem [ref=e196]:
+                    - link "Activate Palette" [ref=e197] [cursor=pointer]:
+                      - /url: /enterprise-version/activate-installation/
+                  - listitem [ref=e198]:
+                    - generic [ref=e199]:
+                      - link "System Management" [ref=e200] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e201] [cursor=pointer]
+                  - listitem [ref=e202]:
+                    - generic [ref=e203]:
+                      - link "Upgrade" [ref=e204] [cursor=pointer]:
+                        - /url: /enterprise-version/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e205] [cursor=pointer]
+              - listitem [ref=e206]:
+                - generic [ref=e207]:
+                  - link "Palette VerteX" [ref=e208] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e210]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e212] [cursor=pointer]
+              - listitem [ref=e213]:
+                - generic [ref=e214]:
+                  - link "Tenant Administration" [ref=e215] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e217]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e219] [cursor=pointer]
+              - listitem [ref=e220]:
+                - generic [ref=e221]:
+                  - link "Automation" [ref=e222] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e224]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e226] [cursor=pointer]
+              - listitem [ref=e227]:
+                - generic [ref=e228]:
+                  - link "Troubleshooting" [ref=e229] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e231]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e233] [cursor=pointer]
+              - listitem [ref=e234]:
+                - link "Glossary" [ref=e235] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e237]
+                  - text: Glossary
+              - listitem [ref=e239]:
+                - generic [ref=e240]:
+                  - link "Compliance & Legal" [ref=e241] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e243]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e245] [cursor=pointer]
+              - listitem [ref=e246]:
+                - button "Privacy Settings" [ref=e247] [cursor=pointer]:
+                  - img [ref=e248]
+                  - text: Privacy Settings
+      - main [ref=e250]:
+        - generic [ref=e252]:
+          - generic [ref=e254]:
+            - article [ref=e255]:
+              - navigation "Breadcrumbs" [ref=e256]:
+                - list [ref=e257]:
+                  - listitem [ref=e258]:
+                    - link "Home page" [ref=e259] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e260]
+                  - listitem [ref=e262]:
+                    - link "Self-Hosted Palette" [ref=e263] [cursor=pointer]:
+                      - /url: /enterprise-version/
+                  - listitem [ref=e264]:
+                    - link "Installation" [ref=e265] [cursor=pointer]:
+                      - /url: /enterprise-version/install-palette/
+                  - listitem [ref=e266]:
+                    - link "VMware" [ref=e267] [cursor=pointer]:
+                      - /url: /enterprise-version/install-palette/install-on-vmware/
+                  - listitem [ref=e268]:
+                    - generic [ref=e269]: VMware System and Permission Requirements
+              - generic [ref=e270]:
+                - heading "VMware System and Permission Requirements" [level=1] [ref=e272]
+                - paragraph [ref=e273]: Before installing Palette on VMware, review the following system requirements and permissions. The vSphere user account used to deploy Palette must have the required permissions to access the proper roles and objects in vSphere.
+                - paragraph [ref=e274]: "Start by reviewing the required action items below:"
+                - list [ref=e275]:
+                  - listitem [ref=e276]:
+                    - paragraph [ref=e277]:
+                      - text: Create the two custom vSphere roles. Check out the
+                      - link "Create Required Roles" [ref=e278] [cursor=pointer]:
+                        - /url: "#create-required-roles"
+                      - text: section to create the required roles in vSphere.
+                  - listitem [ref=e279]:
+                    - paragraph [ref=e280]:
+                      - text: Review the
+                      - link "vSphere Permissions" [ref=e281] [cursor=pointer]:
+                        - /url: "#vsphere-permissions"
+                      - text: section to ensure the created roles have the required vSphere privileges and permissions.
+                  - listitem [ref=e282]:
+                    - paragraph [ref=e283]:
+                      - text: Create node zones and regions for your Kubernetes clusters. Refer to the
+                      - link "Zone Tagging" [ref=e284] [cursor=pointer]:
+                        - /url: "#zone-tagging"
+                      - text: section to ensure that the required tags are created in vSphere to ensure proper resource allocation across fault domains.
+                - generic [ref=e285]:
+                  - generic [ref=e286]:
+                    - img [ref=e288]
+                    - text: info
+                  - paragraph [ref=e291]: The permissions listed in this page are also needed for deploying a Private Cloud Gateway (PCG) and workload cluster in vSphere through Palette.
+                - heading "Create Required RolesDirect link to Create Required Roles" [level=2] [ref=e292]:
+                  - text: Create Required Roles
+                  - link "Direct link to Create Required Roles" [ref=e293] [cursor=pointer]:
+                    - /url: "#create-required-roles"
+                    - text: "#"
+                - paragraph [ref=e294]:
+                  - text: Palette requires two custom roles to be created in vSphere before the installation. Refer to the
+                  - link "Create a Custom Role" [ref=e295] [cursor=pointer]:
+                    - /url: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-security/GUID-18071E9A-EED1-4968-8D51-E0B4F526FDA3.html?hWord=N4IghgNiBcIE4HsIFMDOIC+Q
+                  - text: "guide if you need help creating a custom role in vSphere. The required custom roles are:"
+                - list [ref=e296]:
+                  - listitem [ref=e297]:
+                    - paragraph [ref=e298]:
+                      - text: A root-level role with access to higher-level vSphere objects. This role is referred to as the
+                      - emphasis [ref=e299]: Spectro root role
+                      - text: . Check out the
+                      - link "Root-Level Role Privileges" [ref=e300] [cursor=pointer]:
+                        - /url: /clusters/data-center/vmware/permissions/#spectro-root-role-privileges
+                      - text: table for the list of privileges required for the root-level role.
+                  - listitem [ref=e301]:
+                    - paragraph [ref=e302]:
+                      - text: A role with the required privileges for deploying VMs. This role is referred to as the
+                      - emphasis [ref=e303]: Spectro role
+                      - text: . Review the
+                      - link "Spectro Role Privileges" [ref=e304] [cursor=pointer]:
+                        - /url: /clusters/data-center/vmware/permissions/#spectro-role-privileges
+                      - text: table for the list of privileges required for the Spectro role.
+                - paragraph [ref=e305]:
+                  - text: The user account you use to deploy Palette must have access to both roles. Each vSphere object required by Palette must have a
+                  - link "Permission" [ref=e306] [cursor=pointer]:
+                    - /url: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.security.doc/GUID-4B47F690-72E7-4861-A299-9195B9C52E71.html
+                  - text: entry for the respective Spectro role. The following tables list the privileges required for the each custom role.
+                - generic [ref=e307]:
+                  - generic [ref=e308]:
+                    - img [ref=e310]
+                    - text: info
+                  - paragraph [ref=e313]:
+                    - text: For an in-depth explanation of vSphere authorization and permissions, check out the
+                    - link "Understanding Authorization in vSphere" [ref=e314] [cursor=pointer]:
+                      - /url: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-security/GUID-74F53189-EF41-4AC1-A78E-D25621855800.html
+                    - text: resource.
+                - heading "vSphere PermissionsDirect link to vSphere Permissions" [level=2] [ref=e315]:
+                  - text: vSphere Permissions
+                  - link "Direct link to vSphere Permissions" [ref=e316] [cursor=pointer]:
+                    - /url: "#vsphere-permissions"
+                    - text: "#"
+                - paragraph [ref=e317]: The VMware vSphere user account that deploys host clusters or private cloud gateways requires all the vSphere privileges listed in the following sections for specific vSphere objects.
+                - heading "Spectro Root Role PrivilegesDirect link to Spectro Root Role Privileges" [level=3] [ref=e318]:
+                  - text: Spectro Root Role Privileges
+                  - link "Direct link to Spectro Root Role Privileges" [ref=e319] [cursor=pointer]:
+                    - /url: "#spectro-root-role-privileges"
+                    - text: "#"
+                - paragraph [ref=e320]:
+                  - text: A
+                  - emphasis [ref=e321]: Spectro root role
+                  - text: must be created that contains each privilege in the following table.
+                - paragraph [ref=e322]: Select the tab for the vSphere version you are using to view the required privileges.
+                - generic [ref=e323]:
+                  - generic [ref=e324]:
+                    - img [ref=e326]
+                    - text: info
+                  - paragraph [ref=e329]:
+                    - text: The
+                    - code [ref=e330]: System.*
+                    - text: privileges are added to all
+                    - link "custom vSphere roles" [ref=e331] [cursor=pointer]:
+                      - /url: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-18071E9A-EED1-4968-8D51-E0B4F526FDA3.html
+                    - text: by default.
+                - generic [ref=e332]:
+                  - tablist [ref=e333]:
+                    - tab "8.0.x" [selected] [ref=e334] [cursor=pointer]
+                    - tab "7.0.x" [ref=e335] [cursor=pointer]
+                    - tab "6.7U3" [ref=e336] [cursor=pointer]
+                  - tabpanel [ref=e338]:
+                    - table [ref=e339]:
+                      - rowgroup [ref=e340]:
+                        - row "Category Privileges" [ref=e341]:
+                          - cell "Category" [ref=e342]:
+                            - strong [ref=e343]: Category
+                          - cell "Privileges" [ref=e344]:
+                            - strong [ref=e345]: Privileges
+                      - rowgroup [ref=e346]:
+                        - row "CNS Searchable" [ref=e347]:
+                          - cell "CNS" [ref=e348]:
+                            - strong [ref=e349]: CNS
+                          - cell "Searchable" [ref=e350]
+                        - row "Datastore Browse datastore" [ref=e351]:
+                          - cell "Datastore" [ref=e352]:
+                            - strong [ref=e353]: Datastore
+                          - cell "Browse datastore" [ref=e354]
+                        - 'row "Host Configuration: Storage partition configuration" [ref=e355]':
+                          - cell "Host" [ref=e356]:
+                            - strong [ref=e357]: Host
+                          - 'cell "Configuration: Storage partition configuration" [ref=e358]'
+                        - row "Network Assign network" [ref=e359]:
+                          - cell "Network" [ref=e360]:
+                            - strong [ref=e361]: Network
+                          - cell "Assign network" [ref=e362]
+                        - row "Sessions Validate session" [ref=e363]:
+                          - cell "Sessions" [ref=e364]:
+                            - strong [ref=e365]: Sessions
+                          - cell "Validate session" [ref=e366]
+                        - row "Storage Views View" [ref=e367]:
+                          - cell "Storage Views" [ref=e368]:
+                            - strong [ref=e369]: Storage Views
+                          - cell "View" [ref=e370]
+                        - row "System Anonymous Read View" [ref=e371]:
+                          - cell "System" [ref=e372]:
+                            - strong [ref=e373]: System
+                          - cell "Anonymous Read View" [ref=e374]:
+                            - text: Anonymous
+                            - text: Read
+                            - text: View
+                        - row "VM Storage Policies View VM storage policies" [ref=e375]:
+                          - cell "VM Storage Policies" [ref=e376]:
+                            - strong [ref=e377]: VM Storage Policies
+                          - cell "View VM storage policies" [ref=e378]
+                        - row "vSphere Tagging Create vSphere Tag Edit vSphere Tag" [ref=e379]:
+                          - cell "vSphere Tagging" [ref=e380]:
+                            - strong [ref=e381]: vSphere Tagging
+                          - cell "Create vSphere Tag Edit vSphere Tag" [ref=e382]:
+                            - text: Create vSphere Tag
+                            - text: Edit vSphere Tag
+                - group [ref=e383]:
+                  - generic "Click here to view the latest vSphere version's raw API permission" [ref=e384] [cursor=pointer]
+                - heading "Spectro Root Role AssignmentsDirect link to Spectro Root Role Assignments" [level=3] [ref=e385]:
+                  - text: Spectro Root Role Assignments
+                  - link "Direct link to Spectro Root Role Assignments" [ref=e386] [cursor=pointer]:
+                    - /url: "#spectro-root-role-assignments"
+                    - text: "#"
+                - paragraph [ref=e387]:
+                  - text: The privileges associated with the
+                  - emphasis [ref=e388]: Spectro root role
+                  - text: must be granted via role assignments on specific vSphere objects for either the user or a group containing the user. Review the required role assignments to ensure that your user has all required privileges on all required objects.
+                - generic [ref=e389]:
+                  - generic [ref=e390]:
+                    - img [ref=e392]
+                    - text: info
+                  - paragraph [ref=e395]: Propagation refers to the inheritance of permissions from a parent vSphere object to a child object. If a permission is propagated to a child object, the child object inherits the permission from the parent object.
+                - table [ref=e396]:
+                  - rowgroup [ref=e397]:
+                    - row "vSphere Object Propagation Role Condition" [ref=e398]:
+                      - cell "vSphere Object" [ref=e399]:
+                        - strong [ref=e400]: vSphere Object
+                      - cell "Propagation" [ref=e401]:
+                        - strong [ref=e402]: Propagation
+                      - cell "Role" [ref=e403]:
+                        - strong [ref=e404]: Role
+                      - cell "Condition" [ref=e405]:
+                        - strong [ref=e406]: Condition
+                  - rowgroup [ref=e407]:
+                    - row "vCenter Root No Spectro root role" [ref=e408]:
+                      - cell "vCenter Root" [ref=e409]:
+                        - strong [ref=e410]: vCenter Root
+                      - cell "No" [ref=e411]
+                      - cell "Spectro root role" [ref=e412]:
+                        - emphasis [ref=e413]: Spectro root role
+                      - cell [ref=e414]
+                    - row "Target Datacenter No Spectro root role" [ref=e415]:
+                      - cell "Target Datacenter" [ref=e416]:
+                        - strong [ref=e417]: Target Datacenter
+                      - cell "No" [ref=e418]
+                      - cell "Spectro root role" [ref=e419]:
+                        - emphasis [ref=e420]: Spectro root role
+                      - cell [ref=e421]
+                    - row "Target Cluster No Spectro root role" [ref=e422]:
+                      - cell "Target Cluster" [ref=e423]:
+                        - strong [ref=e424]: Target Cluster
+                      - cell "No" [ref=e425]
+                      - cell "Spectro root role" [ref=e426]:
+                        - emphasis [ref=e427]: Spectro root role
+                      - cell [ref=e428]
+                    - row "Distributed Switch No Spectro root role If the Target Network is a Distributed Port Group" [ref=e429]:
+                      - cell "Distributed Switch" [ref=e430]:
+                        - strong [ref=e431]: Distributed Switch
+                      - cell "No" [ref=e432]
+                      - cell "Spectro root role" [ref=e433]:
+                        - emphasis [ref=e434]: Spectro root role
+                      - cell "If the Target Network is a Distributed Port Group" [ref=e435]
+                - heading "Spectro Role PrivilegesDirect link to Spectro Role Privileges" [level=3] [ref=e436]:
+                  - text: Spectro Role Privileges
+                  - link "Direct link to Spectro Role Privileges" [ref=e437] [cursor=pointer]:
+                    - /url: "#spectro-role-privileges"
+                    - text: "#"
+                - paragraph [ref=e438]:
+                  - text: A
+                  - emphasis [ref=e439]: Spectro role
+                  - text: must be created that contains each privilege in the following table.
+                - paragraph [ref=e440]: Select the tab for the vSphere version you are using to view the required privileges.
+                - generic [ref=e441]:
+                  - tablist [ref=e442]:
+                    - tab "8.0.x" [selected] [ref=e443] [cursor=pointer]
+                    - tab "7.0.x" [ref=e444] [cursor=pointer]
+                    - tab "6.7U3" [ref=e445] [cursor=pointer]
+                  - tabpanel [ref=e447]:
+                    - table [ref=e448]:
+                      - rowgroup [ref=e449]:
+                        - row "Category Privileges" [ref=e450]:
+                          - cell "Category" [ref=e451]:
+                            - strong [ref=e452]: Category
+                          - cell "Privileges" [ref=e453]:
+                            - strong [ref=e454]: Privileges
+                      - rowgroup [ref=e455]:
+                        - row "CNS Searchable" [ref=e456]:
+                          - cell "CNS" [ref=e457]:
+                            - strong [ref=e458]: CNS
+                          - cell "Searchable" [ref=e459]
+                        - row "Datastore Allocate space Browse datastore Low level file operations Remove file Update virtual machine files Update virtual machine metadata" [ref=e460]:
+                          - cell "Datastore" [ref=e461]:
+                            - strong [ref=e462]: Datastore
+                          - cell "Allocate space Browse datastore Low level file operations Remove file Update virtual machine files Update virtual machine metadata" [ref=e463]:
+                            - text: Allocate space
+                            - text: Browse datastore
+                            - text: Low level file operations
+                            - text: Remove file
+                            - text: Update virtual machine files
+                            - text: Update virtual machine metadata
+                        - row "Folder Create folder Delete folder Move folder Rename folder" [ref=e464]:
+                          - cell "Folder" [ref=e465]:
+                            - strong [ref=e466]: Folder
+                          - cell "Create folder Delete folder Move folder Rename folder" [ref=e467]:
+                            - text: Create folder
+                            - text: Delete folder
+                            - text: Move folder
+                            - text: Rename folder
+                        - 'row "Host Local Operations: Reconfigure virtual machine" [ref=e468]':
+                          - cell "Host" [ref=e469]:
+                            - strong [ref=e470]: Host
+                          - 'cell "Local Operations: Reconfigure virtual machine" [ref=e471]'
+                        - row "Network Assign network" [ref=e472]:
+                          - cell "Network" [ref=e473]:
+                            - strong [ref=e474]: Network
+                          - cell "Assign network" [ref=e475]
+                        - row "Resource Apply recommendation Assign virtual machine to resource pool Migrate powered off virtual machine Migrate powered on virtual machine Query vMotion" [ref=e476]:
+                          - cell "Resource" [ref=e477]:
+                            - strong [ref=e478]: Resource
+                          - cell "Apply recommendation Assign virtual machine to resource pool Migrate powered off virtual machine Migrate powered on virtual machine Query vMotion" [ref=e479]:
+                            - text: Apply recommendation
+                            - text: Assign virtual machine to resource pool
+                            - text: Migrate powered off virtual machine
+                            - text: Migrate powered on virtual machine
+                            - text: Query vMotion
+                        - row "Sessions Validate session" [ref=e480]:
+                          - cell "Sessions" [ref=e481]:
+                            - strong [ref=e482]: Sessions
+                          - cell "Validate session" [ref=e483]
+                        - row "Storage Views View" [ref=e484]:
+                          - cell "Storage Views" [ref=e485]:
+                            - strong [ref=e486]: Storage Views
+                          - cell "View" [ref=e487]
+                        - row "System Anonymous Read View" [ref=e488]:
+                          - cell "System" [ref=e489]:
+                            - strong [ref=e490]: System
+                          - cell "Anonymous Read View" [ref=e491]:
+                            - text: Anonymous
+                            - text: Read
+                            - text: View
+                        - row "Tasks Create task Update task" [ref=e492]:
+                          - cell "Tasks" [ref=e493]:
+                            - strong [ref=e494]: Tasks
+                          - cell "Create task Update task" [ref=e495]:
+                            - text: Create task
+                            - text: Update task
+                        - row "vApp Import View OVF environment vApp application configuration vApp instance configuration" [ref=e496]:
+                          - cell "vApp" [ref=e497]:
+                            - strong [ref=e498]: vApp
+                          - cell "Import View OVF environment vApp application configuration vApp instance configuration" [ref=e499]:
+                            - text: Import
+                            - text: View OVF environment
+                            - text: vApp application configuration
+                            - text: vApp instance configuration
+                        - row "VM Storage Policies View VM storage policies" [ref=e500]:
+                          - cell "VM Storage Policies" [ref=e501]:
+                            - strong [ref=e502]: VM Storage Policies
+                          - cell "View VM storage policies" [ref=e503]
+                        - 'row "vSAN Cluster: ShallowRekey" [ref=e504]':
+                          - cell "vSAN" [ref=e505]:
+                            - strong [ref=e506]: vSAN
+                          - 'cell "Cluster: ShallowRekey" [ref=e507]'
+                        - row "vSphere Tagging Assign or Unassign vSphere Tag Create vSphere Tag Delete vSphere Tag Edit vSphere Tag" [ref=e508]:
+                          - cell "vSphere Tagging" [ref=e509]:
+                            - strong [ref=e510]: vSphere Tagging
+                          - cell "Assign or Unassign vSphere Tag Create vSphere Tag Delete vSphere Tag Edit vSphere Tag" [ref=e511]:
+                            - text: Assign or Unassign vSphere Tag
+                            - text: Create vSphere Tag
+                            - text: Delete vSphere Tag
+                            - text: Edit vSphere Tag
+                    - paragraph [ref=e512]:
+                      - text: The following table lists
+                      - emphasis [ref=e513]: Spectro role
+                      - text: privileges for VMs by category. All privileges are for the vSphere object, Virtual Machines.
+                    - table [ref=e514]:
+                      - rowgroup [ref=e515]:
+                        - row "Category Privileges" [ref=e516]:
+                          - cell "Category" [ref=e517]:
+                            - strong [ref=e518]: Category
+                          - cell "Privileges" [ref=e519]:
+                            - strong [ref=e520]: Privileges
+                      - rowgroup [ref=e521]:
+                        - row "Change Configuration Acquire disk lease Add existing disk Add new disk Add or remove device Advanced configuration Change CPU count Change memory Change settings Change swapfile placement Change resource Configure host USB device Configure raw device Configure managedBy Display connection settings Extend virtual disk Modify device settings Query fault tolerance compatibility Query unowned files Reload from path Remove disk Rename Reset guest information Set annotation Toggle disk change tracking Toggle fork parent Upgrade virtual machine compatibility" [ref=e522]:
+                          - cell "Change Configuration" [ref=e523]
+                          - cell "Acquire disk lease Add existing disk Add new disk Add or remove device Advanced configuration Change CPU count Change memory Change settings Change swapfile placement Change resource Configure host USB device Configure raw device Configure managedBy Display connection settings Extend virtual disk Modify device settings Query fault tolerance compatibility Query unowned files Reload from path Remove disk Rename Reset guest information Set annotation Toggle disk change tracking Toggle fork parent Upgrade virtual machine compatibility" [ref=e524]:
+                            - text: Acquire disk lease
+                            - text: Add existing disk
+                            - text: Add new disk
+                            - text: Add or remove device
+                            - text: Advanced configuration
+                            - text: Change CPU count
+                            - text: Change memory
+                            - text: Change settings
+                            - text: Change swapfile placement
+                            - text: Change resource
+                            - text: Configure host USB device
+                            - text: Configure raw device
+                            - text: Configure managedBy
+                            - text: Display connection settings
+                            - text: Extend virtual disk
+                            - text: Modify device settings
+                            - text: Query fault tolerance compatibility
+                            - text: Query unowned files
+                            - text: Reload from path
+                            - text: Remove disk
+                            - text: Rename
+                            - text: Reset guest information
+                            - text: Set annotation
+                            - text: Toggle disk change tracking
+                            - text: Toggle fork parent
+                            - text: Upgrade virtual machine compatibility
+                        - row "Edit Inventory Create from existing Create new Move Register Remove Unregister" [ref=e525]:
+                          - cell "Edit Inventory" [ref=e526]
+                          - cell "Create from existing Create new Move Register Remove Unregister" [ref=e527]:
+                            - text: Create from existing
+                            - text: Create new
+                            - text: Move
+                            - text: Register
+                            - text: Remove
+                            - text: Unregister
+                        - row "Guest Operations Guest operation alias modification Guest operation alias query Guest operation modifications Guest operation program execution Guest operation queries" [ref=e528]:
+                          - cell "Guest Operations" [ref=e529]
+                          - cell "Guest operation alias modification Guest operation alias query Guest operation modifications Guest operation program execution Guest operation queries" [ref=e530]:
+                            - text: Guest operation alias modification
+                            - text: Guest operation alias query
+                            - text: Guest operation modifications
+                            - text: Guest operation program execution
+                            - text: Guest operation queries
+                        - row "Interaction Console interaction Power on Power off" [ref=e531]:
+                          - cell "Interaction" [ref=e532]
+                          - cell "Console interaction Power on Power off" [ref=e533]:
+                            - text: Console interaction
+                            - text: Power on
+                            - text: Power off
+                        - row "Provisioning Allow disk access Allow file access Allow read-only disk access Allow virtual machine download Allow virtual machine files upload Clone template Clone virtual machine Create template from virtual machine Customize guest Deploy template Mark as template Mark as virtual machine Modify customization specification Promote disks Read customization specifications" [ref=e534]:
+                          - cell "Provisioning" [ref=e535]
+                          - cell "Allow disk access Allow file access Allow read-only disk access Allow virtual machine download Allow virtual machine files upload Clone template Clone virtual machine Create template from virtual machine Customize guest Deploy template Mark as template Mark as virtual machine Modify customization specification Promote disks Read customization specifications" [ref=e536]:
+                            - text: Allow disk access
+                            - text: Allow file access
+                            - text: Allow read-only disk access
+                            - text: Allow virtual machine download
+                            - text: Allow virtual machine files upload
+                            - text: Clone template
+                            - text: Clone virtual machine
+                            - text: Create template from virtual machine
+                            - text: Customize guest
+                            - text: Deploy template
+                            - text: Mark as template
+                            - text: Mark as virtual machine
+                            - text: Modify customization specification
+                            - text: Promote disks
+                            - text: Read customization specifications
+                        - row "Service Configuration Allow notifications Allow polling of global event notifications Manage service configurations Modify service configuration Query service configurations Read service configuration" [ref=e537]:
+                          - cell "Service Configuration" [ref=e538]
+                          - cell "Allow notifications Allow polling of global event notifications Manage service configurations Modify service configuration Query service configurations Read service configuration" [ref=e539]:
+                            - text: Allow notifications
+                            - text: Allow polling of global event notifications
+                            - text: Manage service configurations
+                            - text: Modify service configuration
+                            - text: Query service configurations
+                            - text: Read service configuration
+                        - row "Snapshot Management Create snapshot Remove snapshot Rename snapshot Revert to snapshot" [ref=e540]:
+                          - cell "Snapshot Management" [ref=e541]
+                          - cell "Create snapshot Remove snapshot Rename snapshot Revert to snapshot" [ref=e542]:
+                            - text: Create snapshot
+                            - text: Remove snapshot
+                            - text: Rename snapshot
+                            - text: Revert to snapshot
+                        - row "vSphere Replication Configure replication Manage replication Monitor replication" [ref=e543]:
+                          - cell "vSphere Replication" [ref=e544]
+                          - cell "Configure replication Manage replication Monitor replication" [ref=e545]:
+                            - text: Configure replication
+                            - text: Manage replication
+                            - text: Monitor replication
+                - group [ref=e546]:
+                  - generic "Click here to view the latest vSphere version's raw API permission" [ref=e547] [cursor=pointer]
+                - generic [ref=e548]:
+                  - generic [ref=e549]:
+                    - img [ref=e551]
+                    - text: info
+                  - paragraph [ref=e554]:
+                    - text: The
+                    - code [ref=e555]: System.*
+                    - text: privileges are added to all
+                    - link "custom vSphere roles" [ref=e556] [cursor=pointer]:
+                      - /url: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-18071E9A-EED1-4968-8D51-E0B4F526FDA3.html
+                    - text: by default.
+                - heading "Spectro Role AssignmentsDirect link to Spectro Role Assignments" [level=3] [ref=e557]:
+                  - text: Spectro Role Assignments
+                  - link "Direct link to Spectro Role Assignments" [ref=e558] [cursor=pointer]:
+                    - /url: "#spectro-role-assignments"
+                    - text: "#"
+                - paragraph [ref=e559]:
+                  - text: The privileges associated with the
+                  - emphasis [ref=e560]: Spectro role
+                  - text: must be granted via role assignments on specific vSphere objects for either the user or a group containing the user. Review the required role assignments to ensure that your user has all required privileges on all required objects.
+                - table [ref=e561]:
+                  - rowgroup [ref=e562]:
+                    - row "vSphere Object Propagation Role Condition" [ref=e563]:
+                      - cell "vSphere Object" [ref=e564]:
+                        - strong [ref=e565]: vSphere Object
+                      - cell "Propagation" [ref=e566]:
+                        - strong [ref=e567]: Propagation
+                      - cell "Role" [ref=e568]:
+                        - strong [ref=e569]: Role
+                      - cell "Condition" [ref=e570]:
+                        - strong [ref=e571]: Condition
+                  - rowgroup [ref=e572]:
+                    - row "Target Network Yes Spectro role" [ref=e573]:
+                      - cell "Target Network" [ref=e574]:
+                        - strong [ref=e575]: Target Network
+                      - cell "Yes" [ref=e576]
+                      - cell "Spectro role" [ref=e577]:
+                        - emphasis [ref=e578]: Spectro role
+                      - cell [ref=e579]
+                    - row "Target Cluster No Spectro role Required if using a cluster's default Resources resource pool." [ref=e580]:
+                      - cell "Target Cluster" [ref=e581]:
+                        - strong [ref=e582]: Target Cluster
+                      - cell "No" [ref=e583]
+                      - cell "Spectro role" [ref=e584]:
+                        - emphasis [ref=e585]: Spectro role
+                      - cell "Required if using a cluster's default Resources resource pool." [ref=e586]:
+                        - text: Required if using a cluster's default
+                        - code [ref=e587]: Resources
+                        - text: resource pool.
+                    - row "Target Resource Pool Yes Spectro role Required if using a non-default resource pool." [ref=e588]:
+                      - cell "Target Resource Pool" [ref=e589]:
+                        - strong [ref=e590]: Target Resource Pool
+                      - cell "Yes" [ref=e591]
+                      - cell "Spectro role" [ref=e592]:
+                        - emphasis [ref=e593]: Spectro role
+                      - cell "Required if using a non-default resource pool." [ref=e594]
+                    - row "All ESXi hosts within the Target Cluster No Spectro role" [ref=e595]:
+                      - cell "All ESXi hosts within the Target Cluster" [ref=e596]:
+                        - strong [ref=e597]: All ESXi hosts within the Target Cluster
+                      - cell "No" [ref=e598]
+                      - cell "Spectro role" [ref=e599]:
+                        - emphasis [ref=e600]: Spectro role
+                      - cell [ref=e601]
+                    - row "Target Datastore Yes Spectro role" [ref=e602]:
+                      - cell "Target Datastore" [ref=e603]:
+                        - strong [ref=e604]: Target Datastore
+                      - cell "Yes" [ref=e605]
+                      - cell "Spectro role" [ref=e606]:
+                        - emphasis [ref=e607]: Spectro role
+                      - cell [ref=e608]
+                    - row "spectro-templates Folder Yes Spectro role Must be manually created in advance, assigned permissions, and populated with Spectro Cloud VM Templates." [ref=e609]:
+                      - cell "spectro-templates Folder" [ref=e610]:
+                        - strong [ref=e611]: spectro-templates Folder
+                      - cell "Yes" [ref=e612]
+                      - cell "Spectro role" [ref=e613]:
+                        - emphasis [ref=e614]: Spectro role
+                      - cell "Must be manually created in advance, assigned permissions, and populated with Spectro Cloud VM Templates." [ref=e615]
+                    - row "Target VM Folder Yes Spectro role For air-gapped installs, it must be manually created in advance and permissions assigned. For connected installs it is created automatically." [ref=e616]:
+                      - cell "Target VM Folder" [ref=e617]:
+                        - strong [ref=e618]: Target VM Folder
+                      - cell "Yes" [ref=e619]
+                      - cell "Spectro role" [ref=e620]:
+                        - emphasis [ref=e621]: Spectro role
+                      - cell "For air-gapped installs, it must be manually created in advance and permissions assigned. For connected installs it is created automatically." [ref=e622]
+                - heading "Zone TaggingDirect link to Zone Tagging" [level=2] [ref=e623]:
+                  - text: Zone Tagging
+                  - link "Direct link to Zone Tagging" [ref=e624] [cursor=pointer]:
+                    - /url: "#zone-tagging"
+                    - text: "#"
+                - paragraph [ref=e625]:
+                  - text: You can use tags to create node zones and regions for your Kubernetes clusters. The node zones and regions can be used to dynamically place Kubernetes workloads and achieve higher availability. Kubernetes nodes inherit the zone and region tags as
+                  - link "Labels" [ref=e626] [cursor=pointer]:
+                    - /url: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+                  - text: . Kubernetes workloads can use the node labels to ensure that the workloads are deployed to the correct zone and region.
+                - paragraph [ref=e627]: The following is an example of node labels that are discovered and inherited from vSphere tags. The tag values are applied to Kubernetes nodes in vSphere.
+                - generic [ref=e629]:
+                  - code [ref=e631]:
+                    - generic [ref=e632]: topology.kubernetes.io/region=usdc topology.kubernetes.io/zone=zone3 failure-domain.beta.kubernetes.io/region=usdc
+                    - generic [ref=e633]: failure-domain.beta.kubernetes.io/zone=zone3
+                  - button "Toggle word wrap" [ref=e635] [cursor=pointer]:
+                    - img [ref=e636]
+                - generic [ref=e638]:
+                  - generic [ref=e639]:
+                    - img [ref=e641]
+                    - text: info
+                  - paragraph [ref=e644]:
+                    - text: To learn more about node zones and regions, refer to the
+                    - link "Node Zones/Regions Topology" [ref=e645] [cursor=pointer]:
+                      - /url: https://cloud-provider-vsphere.sigs.k8s.io/cloud_provider_interface.html
+                    - text: section of the Cloud Provider Interface documentation.
+                - paragraph [ref=e646]:
+                  - text: Zone tagging is required to install Palette and is helpful for Kubernetes workloads deployed in vSphere clusters through Palette if they have persistent storage needs. Use vSphere tags on data centers and compute clusters to create distinct zones in your environment. You can use vSphere
+                  - link "Tag Categories and Tags" [ref=e647] [cursor=pointer]:
+                    - /url: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-16422FF7-235B-4A44-92E2-532F6AED0923.html
+                  - text: to create zones in your vSphere environment and assign them to vSphere objects.
+                - paragraph [ref=e648]: The zone tags you assign to your vSphere objects, such as a data center and clusters are applied to the Kubernetes nodes you deploy through Palette into your vSphere environment. Kubernetes clusters deployed to other infrastructure providers, such as public cloud may have other native mechanisms for auto discovery of zones.
+                - paragraph [ref=e649]:
+                  - text: For example, assume a vCenter environment contains three compute clusters, cluster-1, cluster-2, and cluster-3. To support this environment you create the tag categories
+                  - code [ref=e650]: k8s-region
+                  - text: and
+                  - code [ref=e651]: k8s-zone
+                  - text: . The
+                  - code [ref=e652]: k8s-region
+                  - text: is assigned to the data center, and the
+                  - code [ref=e653]: k8s-zone
+                  - text: tag is assigned to the compute clusters.
+                - paragraph [ref=e654]: The following table lists the tag values for the data center and compute clusters.
+                - table [ref=e655]:
+                  - rowgroup [ref=e656]:
+                    - row "vSphere Object Assigned Name Tag Category Tag Value" [ref=e657]:
+                      - cell "vSphere Object" [ref=e658]:
+                        - strong [ref=e659]: vSphere Object
+                      - cell "Assigned Name" [ref=e660]:
+                        - strong [ref=e661]: Assigned Name
+                      - cell "Tag Category" [ref=e662]:
+                        - strong [ref=e663]: Tag Category
+                      - cell "Tag Value" [ref=e664]:
+                        - strong [ref=e665]: Tag Value
+                  - rowgroup [ref=e666]:
+                    - row "Datacenter dc-1 k8s-region region1" [ref=e667]:
+                      - cell "Datacenter" [ref=e668]:
+                        - strong [ref=e669]: Datacenter
+                      - cell "dc-1" [ref=e670]
+                      - cell "k8s-region" [ref=e671]
+                      - cell "region1" [ref=e672]
+                    - row "Cluster cluster-1 k8s-zone az1" [ref=e673]:
+                      - cell "Cluster" [ref=e674]:
+                        - strong [ref=e675]: Cluster
+                      - cell "cluster-1" [ref=e676]
+                      - cell "k8s-zone" [ref=e677]
+                      - cell "az1" [ref=e678]
+                    - row "Cluster cluster-2 k8s-zone az2" [ref=e679]:
+                      - cell "Cluster" [ref=e680]:
+                        - strong [ref=e681]: Cluster
+                      - cell "cluster-2" [ref=e682]
+                      - cell "k8s-zone" [ref=e683]
+                      - cell "az2" [ref=e684]
+                    - row "Cluster cluster-3 k8s-zone az3" [ref=e685]:
+                      - cell "Cluster" [ref=e686]:
+                        - strong [ref=e687]: Cluster
+                      - cell "cluster-3" [ref=e688]
+                      - cell "k8s-zone" [ref=e689]
+                      - cell "az3" [ref=e690]
+                - paragraph [ref=e691]: Create a tag category and tag values for each data center and cluster in your environment. Use the tag categories to create zones. Use a name that is meaningful and that complies with the tag requirements listed in the following section.
+                - heading "Tag RequirementsDirect link to Tag Requirements" [level=3] [ref=e692]:
+                  - text: Tag Requirements
+                  - link "Direct link to Tag Requirements" [ref=e693] [cursor=pointer]:
+                    - /url: "#tag-requirements"
+                    - text: "#"
+                - paragraph [ref=e694]: "The following requirements apply to tags:"
+                - list [ref=e695]:
+                  - listitem [ref=e696]:
+                    - paragraph [ref=e697]: A valid tag must consist of alphanumeric characters.
+                  - listitem [ref=e698]:
+                    - paragraph [ref=e699]: The tag must start and end with an alphanumeric characters.
+                  - listitem [ref=e700]:
+                    - paragraph [ref=e701]:
+                      - text: The regex used for tag validation is
+                      - code [ref=e702]: (([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?
+              - generic [ref=e703]:
+                - generic [ref=e705]:
+                  - text: "Tags:"
+                  - list [ref=e706]:
+                    - listitem [ref=e707]:
+                      - link "palette" [ref=e708] [cursor=pointer]:
+                        - /url: /tags/palette/
+                    - listitem [ref=e709]:
+                      - link "self-hosted" [ref=e710] [cursor=pointer]:
+                        - /url: /tags/self-hosted/
+                    - listitem [ref=e711]:
+                      - link "vmware" [ref=e712] [cursor=pointer]:
+                        - /url: /tags/vmware/
+                - link "Edit this page" [ref=e715] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/enterprise-version/install-palette/install-on-vmware/vmware-system-requirements.md
+                  - img [ref=e716]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e720]:
+              - link "Previous « VMware" [ref=e721] [cursor=pointer]:
+                - /url: /enterprise-version/install-palette/install-on-vmware/
+                - generic [ref=e722]: Previous
+                - generic [ref=e723]: « VMware
+              - link "Next Non-Airgap Installation »" [ref=e724] [cursor=pointer]:
+                - /url: /enterprise-version/install-palette/install-on-vmware/install/
+                - generic [ref=e725]: Next
+                - generic [ref=e726]: Non-Airgap Installation »
+          - list [ref=e729]:
+            - listitem [ref=e730]:
+              - link "Create Required Roles" [ref=e731] [cursor=pointer]:
+                - /url: "#create-required-roles"
+            - listitem [ref=e732]:
+              - link "vSphere Permissions" [ref=e733] [cursor=pointer]:
+                - /url: "#vsphere-permissions"
+            - listitem [ref=e734]:
+              - link "Zone Tagging" [ref=e735] [cursor=pointer]:
+                - /url: "#zone-tagging"
+              - list [ref=e736]:
+                - listitem [ref=e737]:
+                  - link "Tag Requirements" [ref=e738] [cursor=pointer]:
+                    - /url: "#tag-requirements"
+  - button "Project Logo Ask AI" [ref=e739] [cursor=pointer]:
+    - generic [ref=e742]:
+      - img "Project Logo" [ref=e743]
+      - paragraph [ref=e744]: Ask AI
+```

@@ -1,0 +1,665 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Security" [ref=e150] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e152]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Audit Logs" [ref=e157] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e159]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Self-Hosted Palette" [ref=e164] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e166]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e168] [cursor=pointer]
+              - listitem [ref=e169]:
+                - generic [ref=e170]:
+                  - link "Palette VerteX" [ref=e171] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e173]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e175] [cursor=pointer]
+              - listitem [ref=e176]:
+                - generic [ref=e177]:
+                  - link "Tenant Administration" [ref=e178] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e180]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e182] [cursor=pointer]
+              - listitem [ref=e183]:
+                - generic [ref=e184]:
+                  - link "Automation" [ref=e185] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e187]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e189] [cursor=pointer]
+              - listitem [ref=e190]:
+                - generic [ref=e191]:
+                  - link "Troubleshooting" [expanded] [ref=e192] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e194]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e196] [cursor=pointer]
+                - list [ref=e197]:
+                  - listitem [ref=e198]:
+                    - link "Kubernetes Debugging" [ref=e199] [cursor=pointer]:
+                      - /url: /troubleshooting/kubernetes-tips/
+                  - listitem [ref=e200]:
+                    - link "Automation" [ref=e201] [cursor=pointer]:
+                      - /url: /troubleshooting/automation/
+                  - listitem [ref=e202]:
+                    - link "Cluster Deployment" [ref=e203] [cursor=pointer]:
+                      - /url: /troubleshooting/cluster-deployment/
+                  - listitem [ref=e204]:
+                    - link "Nodes & Clusters" [ref=e205] [cursor=pointer]:
+                      - /url: /troubleshooting/nodes/
+                  - listitem [ref=e206]:
+                    - link "Packs" [ref=e207] [cursor=pointer]:
+                      - /url: /troubleshooting/pack-issues/
+                  - listitem [ref=e208]:
+                    - link "Palette Dev Engine" [ref=e209] [cursor=pointer]:
+                      - /url: /troubleshooting/palette-dev-engine/
+                  - listitem [ref=e210]:
+                    - generic [ref=e211]:
+                      - link "Edge" [ref=e212] [cursor=pointer]:
+                        - /url: /troubleshooting/edge/
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e213] [cursor=pointer]
+                  - listitem [ref=e214]:
+                    - link "Private Cloud Gateway" [ref=e215] [cursor=pointer]:
+                      - /url: /troubleshooting/pcg/
+                  - listitem [ref=e216]:
+                    - link "Virtual Machine Orchestrator" [ref=e217] [cursor=pointer]:
+                      - /url: /troubleshooting/vmo-issues/
+                  - listitem [ref=e218]:
+                    - link "Enterprise Install" [ref=e219] [cursor=pointer]:
+                      - /url: /troubleshooting/enterprise-install/
+                  - listitem [ref=e220]:
+                    - link "Palette Upgrade" [ref=e221] [cursor=pointer]:
+                      - /url: /troubleshooting/palette-upgrade/
+                  - listitem [ref=e222]:
+                    - link "Generate HAR Files" [ref=e223] [cursor=pointer]:
+                      - /url: /troubleshooting/generate-har-files/
+              - listitem [ref=e224]:
+                - link "Glossary" [ref=e225] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e227]
+                  - text: Glossary
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "Compliance & Legal" [ref=e231] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e233]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - button "Privacy Settings" [ref=e237] [cursor=pointer]:
+                  - img [ref=e238]
+                  - text: Privacy Settings
+      - main [ref=e240]:
+        - generic [ref=e242]:
+          - generic [ref=e244]:
+            - article [ref=e245]:
+              - navigation "Breadcrumbs" [ref=e246]:
+                - list [ref=e247]:
+                  - listitem [ref=e248]:
+                    - link "Home page" [ref=e249] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e250]
+                  - listitem [ref=e252]:
+                    - link "Troubleshooting" [ref=e253] [cursor=pointer]:
+                      - /url: /troubleshooting/
+                  - listitem [ref=e254]:
+                    - generic [ref=e255]: Palette Upgrade
+              - generic [ref=e256]:
+                - heading "Palette Upgrade" [level=1] [ref=e258]
+                - paragraph [ref=e259]:
+                  - text: We recommend you review the
+                  - link "Release Notes" [ref=e260] [cursor=pointer]:
+                    - /url: /release-notes/
+                  - text: and the
+                  - link "Upgrade Notes" [ref=e261] [cursor=pointer]:
+                    - /url: /enterprise-version/upgrade/
+                  - text: before attempting to upgrade Palette. Use this information to address common issues that may occur during an upgrade.
+                - heading "Self-Hosted Palette or Palette VerteX Upgrade HangsDirect link to Self-Hosted Palette or Palette VerteX Upgrade Hangs" [level=2] [ref=e262]:
+                  - text: Self-Hosted Palette or Palette VerteX Upgrade Hangs
+                  - link "Direct link to Self-Hosted Palette or Palette VerteX Upgrade Hangs" [ref=e263] [cursor=pointer]:
+                    - /url: "#self-hosted-palette-or-palette-vertex-upgrade-hangs"
+                    - text: "#"
+                - paragraph [ref=e264]:
+                  - text: Upgrading
+                  - link "self-hosted Palette" [ref=e265] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                  - text: or
+                  - link "Palette VerteX" [ref=e266] [cursor=pointer]:
+                    - /url: /vertex/
+                  - text: from version 4.6.x to 4.7.x can cause the upgrade to hang if any member of a MongoDB ReplicaSet is not fully synced and in a healthy state prior to the upgrade.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e267]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e268] [cursor=pointer]:
+                    - /url: "#debug-steps"
+                    - text: "#"
+                - paragraph [ref=e269]: To verify the health status of each MongoDB ReplicaSet member, use the following procedure based on whether you are upgrading Palette or Palette VerteX.
+                - list [ref=e270]:
+                  - listitem [ref=e271]:
+                    - paragraph [ref=e272]:
+                      - text: Log in to the
+                      - link "Palette" [ref=e273] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/#access-the-system-console
+                      - text: or
+                      - link "Palette VerteX" [ref=e274] [cursor=pointer]:
+                        - /url: /vertex/system-management/#access-the-system-console
+                      - text: system console.
+                  - listitem [ref=e275]:
+                    - paragraph [ref=e276]:
+                      - text: From the left main menu, select
+                      - strong [ref=e277]: Enterprise Cluster
+                      - text: .
+                  - listitem [ref=e278]:
+                    - paragraph [ref=e279]:
+                      - text: On the
+                      - strong [ref=e280]: Overview
+                      - text: tab, download the
+                      - strong [ref=e281]: Kubernetes Config File
+                      - text: .
+                  - listitem [ref=e282]:
+                    - paragraph [ref=e283]:
+                      - text: Open a terminal window and set the environment variable
+                      - code [ref=e284]: KUBECONFIG
+                      - text: to point to kubeconfig file you downloaded.
+                    - generic [ref=e285]:
+                      - generic [ref=e286]: Example command
+                      - code [ref=e289]:
+                        - generic [ref=e290]: export KUBECONFIG=~/Downloads/spectro-mgmt-cluster.kubeconfig
+                - generic [ref=e291]:
+                  - tablist [ref=e292]:
+                    - tab "Palette" [selected] [ref=e293] [cursor=pointer]
+                    - tab "Palette VerteX" [ref=e294] [cursor=pointer]
+                  - tabpanel [ref=e296]:
+                    - list [ref=e297]:
+                      - listitem [ref=e298]:
+                        - paragraph [ref=e299]:
+                          - text: Issue the following command to query the ReplicaSet for its current primary host, extract the Pod name, and save its value as
+                          - code [ref=e300]: MONGO_PRIMARY
+                          - text: .
+                        - generic [ref=e301]:
+                          - generic [ref=e302]:
+                            - img [ref=e304]
+                            - text: info
+                          - paragraph [ref=e307]:
+                            - text: The values for
+                            - code [ref=e308]: MONGODB_INITDB_ROOT_USERNAME
+                            - text: and
+                            - code [ref=e309]: MONGODB_INITDB_ROOT_PASSWORD
+                            - text: do not need to be exported, as they are already defined within the MongoDB Pods.
+                        - generic [ref=e311]:
+                          - code [ref=e313]:
+                            - generic [ref=e314]: MONGO_PRIMARY=$(
+                            - generic [ref=e315]: kubectl exec \
+                            - generic [ref=e316]: "--namespace hubble-system \\"
+                            - generic [ref=e317]: mongo-1 \
+                            - generic [ref=e318]: "--container mongo \\"
+                            - generic [ref=e319]: "-- \\"
+                            - generic [ref=e320]: mongosh \
+                            - generic [ref=e321]: "--username \"$MONGODB_INITDB_ROOT_USERNAME\" \\"
+                            - generic [ref=e322]: "--password \"$MONGODB_INITDB_ROOT_PASSWORD\" \\"
+                            - generic [ref=e323]: admin \
+                            - generic [ref=e324]: "--quiet \\"
+                            - generic [ref=e325]: "--eval \"print(JSON.stringify(rs.hello()))\" \\"
+                            - generic [ref=e326]: "| jq --raw-output .primary \\"
+                            - generic [ref=e327]: "| awk -F. '{print $1}'"
+                            - generic [ref=e328]: )
+                          - button "Copy code to clipboard" [ref=e330] [cursor=pointer]:
+                            - generic [ref=e331]:
+                              - img [ref=e332]
+                              - img [ref=e334]
+                      - listitem [ref=e336]:
+                        - paragraph [ref=e337]: Issue the following command to connect to the primary Pod and print each ReplicaSet member’s host, state, and health status.
+                        - generic [ref=e339]:
+                          - code [ref=e341]:
+                            - generic [ref=e342]: kubectl exec \
+                            - generic [ref=e343]: "--namespace hubble-system \\"
+                            - generic [ref=e344]: "\"${MONGO_PRIMARY}\" \\"
+                            - generic [ref=e345]: "--container mongo \\"
+                            - generic [ref=e346]: "-- bash -c \\"
+                            - generic [ref=e347]: "'mongosh \\"
+                            - generic [ref=e348]: "--username \"$MONGO_INITDB_ROOT_USERNAME\" \\"
+                            - generic [ref=e349]: "--password \"$MONGO_INITDB_ROOT_PASSWORD\" \\"
+                            - generic [ref=e350]: "--host \"$HOSTNAME\" \\"
+                            - generic [ref=e351]: admin \
+                            - generic [ref=e352]: "--quiet \\"
+                            - generic [ref=e353]: "--eval \"rs.status().members.forEach(m => printjson({host:m.name,state:m.stateStr,health:m.health}))\"'"
+                          - generic [ref=e354]:
+                            - button "Toggle word wrap" [ref=e355] [cursor=pointer]:
+                              - img [ref=e356]
+                            - button "Copy code to clipboard" [ref=e358] [cursor=pointer]:
+                              - generic [ref=e359]:
+                                - img [ref=e360]
+                                - img [ref=e362]
+                        - paragraph [ref=e364]:
+                          - text: All healthy members should have a
+                          - code [ref=e365]: health
+                          - text: status of
+                          - code [ref=e366]: "1"
+                          - text: . If the ReplicaSet members are healthy, proceed with upgrading self-hosted Palette or VerteX.
+                        - generic [ref=e367]:
+                          - generic [ref=e368]: Example output
+                          - code [ref=e371]:
+                            - generic [ref=e372]: "{"
+                            - generic [ref=e373]: "host: 'mongo-1.mongo.hubble-system.svc.cluster.local:27017',"
+                            - generic [ref=e374]: "state: 'PRIMARY',"
+                            - generic [ref=e375]: "health: 1"
+                            - generic [ref=e376]: "}"
+                            - generic [ref=e377]: "{"
+                            - generic [ref=e378]: "host: 'mongo-0.mongo.hubble-system.svc.cluster.local:27017',"
+                            - generic [ref=e379]: "state: 'SECONDARY',"
+                            - generic [ref=e380]: "health: 1"
+                            - generic [ref=e381]: "}"
+                            - generic [ref=e382]: "{"
+                            - generic [ref=e383]: "host: 'mongo-2.mongo.hubble-system.svc.cluster.local:27017',"
+                            - generic [ref=e384]: "state: 'SECONDARY',"
+                            - generic [ref=e385]: "health: 1"
+                            - generic [ref=e386]: "}"
+                - heading "Ingress ErrorsDirect link to Ingress Errors" [level=2] [ref=e387]:
+                  - text: Ingress Errors
+                  - link "Direct link to Ingress Errors" [ref=e388] [cursor=pointer]:
+                    - /url: "#ingress-errors"
+                    - text: "#"
+                - paragraph [ref=e389]: If you receive the following error message when attempting to upgrade to Palette versions greater than Palette 3.4.X in a Kubernetes environment, use the debugging steps to address the issue.
+                - generic [ref=e391]:
+                  - code [ref=e393]:
+                    - generic [ref=e394]: "Error: UPGRADE FAILED: failed to create resource: admission webhook \"validate.nginx.ingress.kubernetes.io\" denied the request: host \"_\" and path \"/v1/oidc\" is already defined in ingress default/hubble-auth-oidc-ingress-resource"
+                  - button "Toggle word wrap" [ref=e396] [cursor=pointer]:
+                    - img [ref=e397]
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e399]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e400] [cursor=pointer]:
+                    - /url: "#debug-steps-1"
+                    - text: "#"
+                - list [ref=e401]:
+                  - listitem [ref=e402]:
+                    - paragraph [ref=e403]:
+                      - text: Connect to the cluster using the cluster's kubeconfig file. Refer to the
+                      - link "Access Cluster with CLI" [ref=e404] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/
+                      - text: for additional guidance.
+                  - listitem [ref=e405]:
+                    - paragraph [ref=e406]:
+                      - text: Identify all Ingress resources that belong to
+                      - emphasis [ref=e407]: Hubble
+                      - text: "- an internal Palette component."
+                    - generic [ref=e409]:
+                      - code [ref=e411]:
+                        - generic [ref=e412]: kubectl get ingress --namespace default
+                      - button "Copy code to clipboard" [ref=e414] [cursor=pointer]:
+                        - generic [ref=e415]:
+                          - img [ref=e416]
+                          - img [ref=e418]
+                  - listitem [ref=e420]:
+                    - paragraph [ref=e421]:
+                      - text: Remove each Ingress resource listed in the output that starts with the name Hubble. Use the following command to delete an Ingress resource. Replace
+                      - code [ref=e422]: REPLACE_ME
+                      - text: with the name of the Ingress resource you are removing.
+                    - generic [ref=e424]:
+                      - code [ref=e426]:
+                        - generic [ref=e427]: kubectl delete ingress --namespace default <REPLACE_ME>
+                      - button "Copy code to clipboard" [ref=e429] [cursor=pointer]:
+                        - generic [ref=e430]:
+                          - img [ref=e431]
+                          - img [ref=e433]
+                  - listitem [ref=e435]:
+                    - paragraph [ref=e436]: Restart the upgrade process.
+                - heading "Mongo DNS ConfigMap Value is IncorrectDirect link to Mongo DNS ConfigMap Value is Incorrect" [level=2] [ref=e437]:
+                  - text: Mongo DNS ConfigMap Value is Incorrect
+                  - link "Direct link to Mongo DNS ConfigMap Value is Incorrect" [ref=e438] [cursor=pointer]:
+                    - /url: "#mongo-dns-configmap-value-is-incorrect"
+                    - text: "#"
+                - paragraph [ref=e439]: In VMware vSphere VerteX installations, if you encounter an error during the upgrade process where the MongoDB DNS ConfigMap value is incorrect, use the following steps to resolve the issue.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e440]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e441] [cursor=pointer]:
+                    - /url: "#debug-steps-2"
+                    - text: "#"
+                - list [ref=e442]:
+                  - listitem [ref=e443]:
+                    - paragraph [ref=e444]:
+                      - text: Open up a terminal session in an environment that has network access to the Kubernetes cluster. Refer to the
+                      - link "Access Cluster with CLI" [ref=e445] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/
+                      - text: for additional guidance.
+                  - listitem [ref=e446]:
+                    - paragraph [ref=e447]:
+                      - text: Verify that the pods in the
+                      - code [ref=e448]: hubble-system
+                      - text: namespace are not starting correctly by issuing the following command.
+                    - generic [ref=e450]:
+                      - code [ref=e452]:
+                        - generic [ref=e453]: kubectl get pods --namespace=hubble-system
+                      - button "Copy code to clipboard" [ref=e455] [cursor=pointer]:
+                        - generic [ref=e456]:
+                          - img [ref=e457]
+                          - img [ref=e459]
+                  - listitem [ref=e461]:
+                    - paragraph [ref=e462]:
+                      - text: Verify that the ConfigMap for the
+                      - code [ref=e463]: configserver
+                      - text: in the
+                      - code [ref=e464]: hubble-system
+                      - text: namespace contains the incorrect host value
+                      - code [ref=e465]: mongo-1.mongohubble-system.svc.cluster
+                      - text: . Use the following command to describe the ConfigMap and search for the host value.
+                    - generic [ref=e467]:
+                      - code [ref=e469]:
+                        - generic [ref=e470]: kubectl describe configmap configserver --namespace hubble-system | grep host
+                      - generic [ref=e471]:
+                        - button "Toggle word wrap" [ref=e472] [cursor=pointer]:
+                          - img [ref=e473]
+                        - button "Copy code to clipboard" [ref=e475] [cursor=pointer]:
+                          - generic [ref=e476]:
+                            - img [ref=e477]
+                            - img [ref=e479]
+                    - generic [ref=e482]:
+                      - code [ref=e484]:
+                        - generic [ref=e485]: "host: mongo-0.mongo.hubble-system.svc.cluster.local,mongo-1.mongohubble-system.svc.cluster.local,mongo-2.mongo.hubble-system.svc.cluster.local"
+                        - generic [ref=e486]: "host: '0.0.0.0'"
+                        - generic [ref=e487]: "host: '0.0.0.0'"
+                        - generic [ref=e488]: "host: '0.0.0.0'"
+                        - generic [ref=e489]: "host: '0.0.0.0'"
+                        - generic [ref=e490]: "host: '0.0.0.0'"
+                        - generic [ref=e491]: "host: '0.0.0.0'"
+                        - generic [ref=e492]: "host: '0.0.0.0'"
+                        - generic [ref=e493]: "host: '0.0.0.0'"
+                        - generic [ref=e494]: "host: '0.0.0.0'"
+                        - generic [ref=e495]: "host: '0.0.0.0'"
+                        - generic [ref=e496]: "host: '0.0.0.0'"
+                        - generic [ref=e497]: "host: '0.0.0.0'"
+                      - button "Toggle word wrap" [ref=e499] [cursor=pointer]:
+                        - img [ref=e500]
+                  - listitem [ref=e502]:
+                    - paragraph [ref=e503]:
+                      - text: If the host value is incorrect, log in to the System Console. You can find guidance on how to access the System Console in the
+                      - link "Access the System Console" [ref=e504] [cursor=pointer]:
+                        - /url: /vertex/system-management/#access-the-system-console
+                      - text: documentation.
+                  - listitem [ref=e505]:
+                    - paragraph [ref=e506]:
+                      - text: Navigate to the
+                      - strong [ref=e507]: Main Menu
+                      - text: and select
+                      - strong [ref=e508]: Enterprise Cluster
+                      - text: . From the
+                      - strong [ref=e509]: System Profiles
+                      - text: page, select the
+                      - strong [ref=e510]: Spectro
+                      - text: pack.
+                    - paragraph [ref=e511]:
+                      - img "A view of the Spectro pack in the System Profiles page" [ref=e512]
+                  - listitem [ref=e513]:
+                    - paragraph [ref=e514]:
+                      - text: In the YAML editor, locate the parameter
+                      - code [ref=e515]: databaseUrl
+                      - text: and update the value
+                      - code [ref=e516]: mongo-1.mongohubble-system.svc.cluster.local
+                      - text: to
+                      - code [ref=e517]: mongo-1.mongo.hubble-system.svc.cluster.local
+                      - text: .
+                    - paragraph [ref=e518]:
+                      - text: Below is what the updated
+                      - code [ref=e519]: databaseUrl
+                      - text: value should look like.
+                    - generic [ref=e521]:
+                      - code [ref=e523]:
+                        - generic [ref=e524]: "databaseUrl: \"mongo-0.mongo.hubble-system.svc.cluster.local,mongo-1.mongo.hubble-system.svc.cluster.local,mongo-2.mongo.hubble-system.svc.cluster.local\""
+                      - generic [ref=e525]:
+                        - button "Toggle word wrap" [ref=e526] [cursor=pointer]:
+                          - img [ref=e527]
+                        - button "Copy code to clipboard" [ref=e529] [cursor=pointer]:
+                          - generic [ref=e530]:
+                            - img [ref=e531]
+                            - img [ref=e533]
+                  - listitem [ref=e535]:
+                    - paragraph [ref=e536]:
+                      - text: Click
+                      - strong [ref=e537]: Save
+                      - text: to apply the changes.
+                  - listitem [ref=e538]:
+                    - paragraph [ref=e539]: Verify the system pods are starting correctly by issuing the following command.
+                    - generic [ref=e541]:
+                      - code [ref=e543]:
+                        - generic [ref=e544]: kubectl get pods --namespace=hubble-system
+                      - button "Copy code to clipboard" [ref=e546] [cursor=pointer]:
+                        - generic [ref=e547]:
+                          - img [ref=e548]
+                          - img [ref=e550]
+                    - code [ref=e555]:
+                      - generic [ref=e556]: NAME READY STATUS RESTARTS AGE
+                      - generic [ref=e557]: auth-64b88d97dd-5z7ph 1/1 Running 0 31m
+                      - generic [ref=e558]: auth-64b88d97dd-bchr7 1/1 Running 0 31m
+                      - generic [ref=e559]: cloud-b8796c57d-5r7d9 1/1 Running 0 31m
+                      - generic [ref=e560]: cloud-b8796c57d-xpbx7 1/1 Running 0 31m
+                      - generic [ref=e561]: configserver-778bd7c4c9-mrtc6 1/1 Running 0 31m
+                      - generic [ref=e562]: event-5869c6bd75-2n7jl 1/1 Running 0 31m
+                      - generic [ref=e563]: event-5869c6bd75-xnvmj 1/1 Running 0 31m
+                      - generic [ref=e564]: foreq-679c7b7f6b-2ts2v 1/1 Running 0 31m
+                      - generic [ref=e565]: hashboard-9f865b6c8-c52bb 1/1 Running 0 31m
+                      - generic [ref=e566]: hashboard-9f865b6c8-rw6p4 1/1 Running 0 31m
+                      - generic [ref=e567]: hutil-54995bfd6b-sh4dt 1/1 Running 0 31m
+                      - generic [ref=e568]: hutil-54995bfd6b-tlqbj 1/1 Running 0 31m
+                      - generic [ref=e569]: memstore-7584fdd94f-479pj 1/1 Running 0 31m
+                      - generic [ref=e570]: mgmt-68c8dbfd58-8gxsx 1/1 Running 0 31m
+                      - generic [ref=e571]: mongo-0 2/2 Running 0 29m
+                      - generic [ref=e572]: mongo-1 2/2 Running 0 30m
+                      - generic [ref=e573]: mongo-2 2/2 Running 0 30m
+                      - generic [ref=e574]: msgbroker-7d7655559b-zxxfq 1/1 Running 0 31m
+                      - generic [ref=e575]: oci-proxy-6fdf95885f-qw58g 1/1 Running 0 31m
+                      - generic [ref=e576]: reloader-reloader-845cfd7fdf-2rq5t 1/1 Running 0 31m
+                      - generic [ref=e577]: spectrocluster-5c4cb4ff58-658w9 1/1 Running 0 31m
+                      - generic [ref=e578]: spectrocluster-5c4cb4ff58-fn8g5 1/1 Running 0 31m
+                      - generic [ref=e579]: spectrocluster-5c4cb4ff58-zvwfp 1/1 Running 0 31m
+                      - generic [ref=e580]: spectrocluster-jobs-5b54bf6bcf-mtgh8 1/1 Running 0 31m
+                      - generic [ref=e581]: system-6678d47874-464n6 1/1 Running 0 31m
+                      - generic [ref=e582]: system-6678d47874-rgn55 1/1 Running 0 31m
+                      - generic [ref=e583]: timeseries-6564699c7d-b6fnr 1/1 Running 0 31m
+                      - generic [ref=e584]: timeseries-6564699c7d-hvv94 1/1 Running 0 31m
+                      - generic [ref=e585]: timeseries-6564699c7d-jzmnl 1/1 Running 0 31m
+                      - generic [ref=e586]: user-866c7f779d-drf9w 1/1 Running 0 31m
+                      - generic [ref=e587]: user-866c7f779d-rm4hw 1/1 Running 0 31m
+              - generic [ref=e588]:
+                - generic [ref=e590]:
+                  - text: "Tags:"
+                  - list [ref=e591]:
+                    - listitem [ref=e592]:
+                      - link "troubleshooting" [ref=e593] [cursor=pointer]:
+                        - /url: /tags/troubleshooting/
+                    - listitem [ref=e594]:
+                      - link "palette-upgrade" [ref=e595] [cursor=pointer]:
+                        - /url: /tags/palette-upgrade/
+                - link "Edit this page" [ref=e598] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/troubleshooting/palette-upgrade.md
+                  - img [ref=e599]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e603]:
+              - link "Previous « Enterprise Install" [ref=e604] [cursor=pointer]:
+                - /url: /troubleshooting/enterprise-install/
+                - generic [ref=e605]: Previous
+                - generic [ref=e606]: « Enterprise Install
+              - link "Next Generate HAR Files »" [ref=e607] [cursor=pointer]:
+                - /url: /troubleshooting/generate-har-files/
+                - generic [ref=e608]: Next
+                - generic [ref=e609]: Generate HAR Files »
+          - list [ref=e612]:
+            - listitem [ref=e613]:
+              - link "Self-Hosted Palette or Palette VerteX Upgrade Hangs" [ref=e614] [cursor=pointer]:
+                - /url: "#self-hosted-palette-or-palette-vertex-upgrade-hangs"
+              - list [ref=e615]:
+                - listitem [ref=e616]:
+                  - link "Debug Steps" [ref=e617] [cursor=pointer]:
+                    - /url: "#debug-steps"
+            - listitem [ref=e618]:
+              - link "Ingress Errors" [ref=e619] [cursor=pointer]:
+                - /url: "#ingress-errors"
+              - list [ref=e620]:
+                - listitem [ref=e621]:
+                  - link "Debug Steps" [ref=e622] [cursor=pointer]:
+                    - /url: "#debug-steps-1"
+            - listitem [ref=e623]:
+              - link "Mongo DNS ConfigMap Value is Incorrect" [ref=e624] [cursor=pointer]:
+                - /url: "#mongo-dns-configmap-value-is-incorrect"
+              - list [ref=e625]:
+                - listitem [ref=e626]:
+                  - link "Debug Steps" [ref=e627] [cursor=pointer]:
+                    - /url: "#debug-steps-2"
+  - button "Project Logo Ask AI" [ref=e628] [cursor=pointer]:
+    - generic [ref=e631]:
+      - img "Project Logo" [ref=e632]
+      - paragraph [ref=e633]: Ask AI
+```

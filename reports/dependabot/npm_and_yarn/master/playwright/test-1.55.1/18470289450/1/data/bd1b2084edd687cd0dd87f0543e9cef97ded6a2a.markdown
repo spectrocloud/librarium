@@ -1,0 +1,597 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [expanded] [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+                - list [ref=e127]:
+                  - listitem [ref=e128]:
+                    - link "Create a Workspace" [ref=e129] [cursor=pointer]:
+                      - /url: /workspace/adding-a-new-workspace/
+                  - listitem [ref=e130]:
+                    - generic [ref=e131]:
+                      - link "Workspace Management" [expanded] [ref=e132] [cursor=pointer]:
+                        - /url: /workspace/workspace-mgmt/
+                      - button "Toggle the collapsible sidebar category 'Workspace Management'" [ref=e133] [cursor=pointer]
+                    - list [ref=e134]:
+                      - listitem [ref=e135]:
+                        - link "Configure RBAC in Workspaces" [ref=e136] [cursor=pointer]:
+                          - /url: /workspace/workspace-mgmt/configure-rbac/
+                      - listitem [ref=e137]:
+                        - link "Resource Management" [ref=e138] [cursor=pointer]:
+                          - /url: /workspace/workspace-mgmt/resource-mgmt/
+                      - listitem [ref=e139]:
+                        - link "Backup and Restore" [ref=e140] [cursor=pointer]:
+                          - /url: /workspace/workspace-mgmt/backup-restore/
+                      - listitem [ref=e141]:
+                        - link "Delete Workspace" [ref=e142] [cursor=pointer]:
+                          - /url: /workspace/workspace-mgmt/delete-workspace/
+                      - listitem [ref=e143]:
+                        - link "Restrict Container Images" [ref=e144] [cursor=pointer]:
+                          - /url: /workspace/workspace-mgmt/restrict-images/
+              - listitem [ref=e145]:
+                - generic [ref=e146]:
+                  - link "Packs List" [ref=e147] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e149]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e151] [cursor=pointer]
+              - listitem [ref=e152]:
+                - generic [ref=e153]:
+                  - link "User & Role Management" [ref=e154] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e156]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e158] [cursor=pointer]
+              - listitem [ref=e159]:
+                - generic [ref=e160]:
+                  - link "Registries and Packs" [ref=e161] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e163]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e165] [cursor=pointer]
+              - listitem [ref=e166]:
+                - generic [ref=e167]:
+                  - link "Security" [ref=e168] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e170]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e172] [cursor=pointer]
+              - listitem [ref=e173]:
+                - generic [ref=e174]:
+                  - link "Audit Logs" [ref=e175] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e177]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e179] [cursor=pointer]
+              - listitem [ref=e180]:
+                - generic [ref=e181]:
+                  - link "Self-Hosted Palette" [ref=e182] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e184]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e186] [cursor=pointer]
+              - listitem [ref=e187]:
+                - generic [ref=e188]:
+                  - link "Palette VerteX" [ref=e189] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e191]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e193] [cursor=pointer]
+              - listitem [ref=e194]:
+                - generic [ref=e195]:
+                  - link "Tenant Administration" [ref=e196] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e198]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e200] [cursor=pointer]
+              - listitem [ref=e201]:
+                - generic [ref=e202]:
+                  - link "Automation" [ref=e203] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e205]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e207] [cursor=pointer]
+              - listitem [ref=e208]:
+                - generic [ref=e209]:
+                  - link "Troubleshooting" [ref=e210] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e212]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - link "Glossary" [ref=e216] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e218]
+                  - text: Glossary
+              - listitem [ref=e220]:
+                - generic [ref=e221]:
+                  - link "Compliance & Legal" [ref=e222] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e224]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e226] [cursor=pointer]
+              - listitem [ref=e227]:
+                - button "Privacy Settings" [ref=e228] [cursor=pointer]:
+                  - img [ref=e229]
+                  - text: Privacy Settings
+      - main [ref=e231]:
+        - generic [ref=e233]:
+          - generic [ref=e235]:
+            - article [ref=e236]:
+              - navigation "Breadcrumbs" [ref=e237]:
+                - list [ref=e238]:
+                  - listitem [ref=e239]:
+                    - link "Home page" [ref=e240] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e241]
+                  - listitem [ref=e243]:
+                    - link "Workspaces" [ref=e244] [cursor=pointer]:
+                      - /url: /workspace/
+                  - listitem [ref=e245]:
+                    - link "Workspace Management" [ref=e246] [cursor=pointer]:
+                      - /url: /workspace/workspace-mgmt/
+                  - listitem [ref=e247]:
+                    - generic [ref=e248]: Backup and Restore
+              - generic [ref=e249]:
+                - heading "Backup and Restore" [level=1] [ref=e251]
+                - paragraph [ref=e252]:
+                  - text: Palette allows you to create backups at the workspace-level. A workspace backup may include any or all namespaces included in the workspace, across every cluster in the workspace. The backup feature for workspaces uses the same Velero-based approach as regular cluster backups and are subject to the same limitations. For more information, refer to
+                  - link "Cluster Backup and Restore" [ref=e253] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/backup-restore/
+                  - text: .
+                - paragraph [ref=e254]: The backup files will be stored in a backup location you configure. Each cluster will have its own backup files. When you delete a workspace, the backup files will not be deleted.
+                - heading "Create a Workspace BackupDirect link to Create a Workspace Backup" [level=2] [ref=e255]:
+                  - text: Create a Workspace Backup
+                  - link "Direct link to Create a Workspace Backup" [ref=e256] [cursor=pointer]:
+                    - /url: "#create-a-workspace-backup"
+                    - text: "#"
+                - paragraph [ref=e257]: Backing up a workspace creates a backup file for every cluster in your workspace. Each cluster backup file will contain all Kubernetes objects as well as volumes in the namespaces selected.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e258]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e259] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e260]:
+                  - listitem [ref=e261]:
+                    - paragraph [ref=e262]:
+                      - text: You have configured at least one backup location for cluster backups. Refer to
+                      - link "Add Backup Location using Static Credentials" [ref=e263] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/backup-restore/add-backup-location-static/
+                      - text: .
+                  - listitem [ref=e264]:
+                    - paragraph [ref=e265]:
+                      - text: You are logged in as a Palette user that has the permission to back up workspaces. For more information, refer to
+                      - link "Permissions" [ref=e266] [cursor=pointer]:
+                        - /url: /user-management/palette-rbac/permissions/
+                      - text: .
+                  - listitem [ref=e267]:
+                    - paragraph [ref=e268]: The clusters in the workspace you want to backup are healthy and available. Unhealthy clusters will not be backed up.
+                - list [ref=e269]:
+                  - listitem [ref=e270]:
+                    - paragraph [ref=e271]:
+                      - text: If you want to include volume snapshots in the backup, ensure that your CSI driver supports volume snapshots. For more information about volume support, review the CSI pack README for your CSI driver in use. Refer to the
+                      - link "Volume Snapshots" [ref=e272] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/backup-restore/#volume-snapshots
+                      - text: section for more information.
+                    - generic [ref=e273]:
+                      - generic [ref=e274]:
+                        - img [ref=e276]
+                        - text: warning
+                      - generic [ref=e278]:
+                        - paragraph [ref=e279]:
+                          - text: Ensure that
+                          - code [ref=e280]: manifests.volume-snapshot-class.deletionPolicy
+                          - text: is set to the
+                          - code [ref=e281]: Retain
+                          - text: value if you have configured
+                          - link "Volume Snapshot Controller" [ref=e282] [cursor=pointer]:
+                            - /url: /integrations/packs/?pack=volume-snapshot-controller
+                          - text: as a layer in your cluster profile. This setting allows volume snapshot content to be retained when volume snapshots are deleted, facilitating backup and restore functionality.
+                        - code [ref=e286]:
+                          - generic [ref=e287]: "volume-snapshot-class:"
+                          - generic [ref=e288]: "create: true"
+                          - generic [ref=e289]: "name: \"spectro-volume-snapshot-class\""
+                          - generic [ref=e290]: "driver: \"\""
+                          - generic [ref=e291]: "deletionPolicy: \"Retain\""
+                        - paragraph [ref=e292]:
+                          - text: Additionally, you must add the following snippet under the
+                          - code [ref=e293]: manifests.volume-snapshot-class
+                          - text: field if you are using
+                          - link "Portworx" [ref=e294] [cursor=pointer]:
+                            - /url: /integrations/packs/?pack=csi-portworx-generic
+                          - text: as your CSI layer on a cluster deployed to a MAAS environment. These labels ensure that the
+                          - link "Volume Snapshot Controller" [ref=e295] [cursor=pointer]:
+                            - /url: /integrations/packs/?pack=volume-snapshot-controller
+                          - text: pack installs correctly.
+                        - generic [ref=e297]:
+                          - code [ref=e299]:
+                            - generic [ref=e300]: "extraLabels:"
+                            - generic [ref=e301]: "pod-security.kubernetes.io/enforce: privileged"
+                            - generic [ref=e302]: "pod-security.kubernetes.io/audit: privileged"
+                            - generic [ref=e303]: "pod-security.kubernetes.io/warn: privileged"
+                          - button "Copy code to clipboard" [ref=e305] [cursor=pointer]:
+                            - generic [ref=e306]:
+                              - img [ref=e307]
+                              - img [ref=e309]
+                - heading "ProcedureDirect link to Procedure" [level=3] [ref=e311]:
+                  - text: Procedure
+                  - link "Direct link to Procedure" [ref=e312] [cursor=pointer]:
+                    - /url: "#procedure"
+                    - text: "#"
+                - list [ref=e313]:
+                  - listitem [ref=e314]:
+                    - paragraph [ref=e315]:
+                      - text: Log in to
+                      - link "Palette" [ref=e316] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e317]:
+                    - paragraph [ref=e318]:
+                      - text: In the
+                      - strong [ref=e319]: drop-down Menu
+                      - text: at the top of the page, choose the project that has your workspace.
+                  - listitem [ref=e320]:
+                    - paragraph [ref=e321]:
+                      - text: On the left
+                      - strong [ref=e322]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e323]: Workspaces
+                      - text: .
+                  - listitem [ref=e324]:
+                    - paragraph [ref=e325]: Click on the workspace you want to back up.
+                  - listitem [ref=e326]:
+                    - paragraph [ref=e327]:
+                      - text: Click
+                      - strong [ref=e328]: Settings
+                      - text: in the upper-right corner.
+                  - listitem [ref=e329]:
+                    - paragraph [ref=e330]:
+                      - text: Click
+                      - strong [ref=e331]: Schedule backups
+                      - text: .
+                  - listitem [ref=e332]:
+                    - paragraph [ref=e333]: Fill in the following basic information about your scheduled backups.
+                    - table [ref=e334]:
+                      - rowgroup [ref=e335]:
+                        - row "Parameter Description" [ref=e336]:
+                          - cell "Parameter" [ref=e337]
+                          - cell "Description" [ref=e338]
+                      - rowgroup [ref=e339]:
+                        - row "Backup prefix The prefix to your backup file names." [ref=e340]:
+                          - cell "Backup prefix" [ref=e341]
+                          - cell "The prefix to your backup file names." [ref=e342]
+                        - row "Select backup location Select a location to store your backup files." [ref=e343]:
+                          - cell "Select backup location" [ref=e344]
+                          - cell "Select a location to store your backup files." [ref=e345]
+                        - row "Backup schedule Configure a schedule for your backups." [ref=e346]:
+                          - cell "Backup schedule" [ref=e347]
+                          - cell "Configure a schedule for your backups." [ref=e348]
+                        - row "Select expiry The period for which your backup files are kept. Backup files past the expiry date are deleted automatically." [ref=e349]:
+                          - cell "Select expiry" [ref=e350]
+                          - cell "The period for which your backup files are kept. Backup files past the expiry date are deleted automatically." [ref=e351]
+                        - row "Include all disks Select this checkbox if you want to include all the disks in the backup." [ref=e352]:
+                          - cell "Include all disks" [ref=e353]
+                          - cell "Select this checkbox if you want to include all the disks in the backup." [ref=e354]
+                        - row "Include cluster-wide resources Cluster wide resources are resources that are scoped to the whole cluster, such as cluster roles. Auto option includes persistent volumes that are linked to claims within the selected namespaces, but exclude other cluster-wide resources." [ref=e355]:
+                          - cell "Include cluster-wide resources" [ref=e356]
+                          - cell "Cluster wide resources are resources that are scoped to the whole cluster, such as cluster roles. Auto option includes persistent volumes that are linked to claims within the selected namespaces, but exclude other cluster-wide resources." [ref=e357]:
+                            - text: Cluster wide resources are resources that are scoped to the whole cluster, such as cluster roles.
+                            - strong [ref=e358]: Auto
+                            - text: option includes persistent volumes that are linked to claims within the selected namespaces, but exclude other cluster-wide resources.
+                  - listitem [ref=e359]:
+                    - paragraph [ref=e360]: Enter the namespaces you want to back up.
+                  - listitem [ref=e361]:
+                    - paragraph [ref=e362]: Select the clusters you want to back up.
+                  - listitem [ref=e363]:
+                    - paragraph [ref=e364]:
+                      - text: Click
+                      - strong [ref=e365]: Save Changes
+                      - text: .
+                - paragraph [ref=e366]: The backup process will take some time ranging from 15 minutes to hours depending on the scope of the backup.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e367]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e368] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e369]:
+                  - listitem [ref=e370]:
+                    - paragraph [ref=e371]:
+                      - text: Log in to
+                      - link "Palette" [ref=e372] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e373]:
+                    - paragraph [ref=e374]:
+                      - text: In the
+                      - strong [ref=e375]: drop-down Menu
+                      - text: at the top of the page, choose the project that has your workspace.
+                  - listitem [ref=e376]:
+                    - paragraph [ref=e377]:
+                      - text: On the left
+                      - strong [ref=e378]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e379]: Workspaces
+                      - text: .
+                  - listitem [ref=e380]:
+                    - paragraph [ref=e381]: Click on the workspace you backed up.
+                  - listitem [ref=e382]:
+                    - paragraph [ref=e383]:
+                      - text: Click on the
+                      - strong [ref=e384]: Backups
+                      - text: tab.
+                  - listitem [ref=e385]:
+                    - paragraph [ref=e386]: Confirm that your backup is in progress or completed.
+                - heading "Restore a Workspace BackupDirect link to Restore a Workspace Backup" [level=2] [ref=e387]:
+                  - text: Restore a Workspace Backup
+                  - link "Direct link to Restore a Workspace Backup" [ref=e388] [cursor=pointer]:
+                    - /url: "#restore-a-workspace-backup"
+                    - text: "#"
+                - paragraph [ref=e389]: Restoring a workspace will restore the selected namespaces in every cluster that is currently in the workspace to the same state from which the backup was created. The clusters being restored must be healthy and reachable, because the restore process relies on access to the Kubernetes API. If you have deleted a cluster from the workspace, the deleted cluster will not be restored.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e390]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e391] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e392]:
+                  - listitem [ref=e393]:
+                    - paragraph [ref=e394]: You have created a backup file for the workspace.
+                  - listitem [ref=e395]:
+                    - paragraph [ref=e396]:
+                      - text: You are logged in as a Palette user that has the permission to restore workspaces. For more information, refer to
+                      - link "Permissions" [ref=e397] [cursor=pointer]:
+                        - /url: /user-management/palette-rbac/permissions/
+                      - text: .
+                  - listitem [ref=e398]:
+                    - paragraph [ref=e399]: The clusters you want to restore are healthy and available.
+                - heading "ProcedureDirect link to Procedure" [level=3] [ref=e400]:
+                  - text: Procedure
+                  - link "Direct link to Procedure" [ref=e401] [cursor=pointer]:
+                    - /url: "#procedure-1"
+                    - text: "#"
+                - list [ref=e402]:
+                  - listitem [ref=e403]:
+                    - paragraph [ref=e404]:
+                      - text: Log in to
+                      - link "Palette" [ref=e405] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e406]:
+                    - paragraph [ref=e407]:
+                      - text: In the
+                      - strong [ref=e408]: drop-down Menu
+                      - text: at the top of the page, choose the project that has your workspace.
+                  - listitem [ref=e409]:
+                    - paragraph [ref=e410]:
+                      - text: On the left
+                      - strong [ref=e411]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e412]: Workspaces
+                      - text: .
+                  - listitem [ref=e413]:
+                    - paragraph [ref=e414]: Click on the workspace you want to restore.
+                  - listitem [ref=e415]:
+                    - paragraph [ref=e416]:
+                      - text: Click on
+                      - strong [ref=e417]: Backups
+                      - text: to switch to the backup tab.
+                  - listitem [ref=e418]:
+                    - paragraph [ref=e419]: Click on a backup file you want to restore from.
+                  - listitem [ref=e420]:
+                    - paragraph [ref=e421]: You have the following options for restoring the backup.
+                    - table [ref=e422]:
+                      - rowgroup [ref=e423]:
+                        - row "Option Description" [ref=e424]:
+                          - cell "Option" [ref=e425]
+                          - cell "Description" [ref=e426]
+                      - rowgroup [ref=e427]:
+                        - row "Include Cluster Resources Check the box to restore all the cluster scoped resources." [ref=e428]:
+                          - cell "Include Cluster Resources" [ref=e429]
+                          - cell "Check the box to restore all the cluster scoped resources." [ref=e430]
+                        - row "Preserve Node Ports Check the box to preserve ports for the node port service in the cluster." [ref=e431]:
+                          - cell "Preserve Node Ports" [ref=e432]
+                          - cell "Check the box to preserve ports for the node port service in the cluster." [ref=e433]
+                        - row "Restore PVs Check the box to restore the persistent volumes." [ref=e434]:
+                          - cell "Restore PVs" [ref=e435]
+                          - cell "Check the box to restore the persistent volumes." [ref=e436]
+                  - listitem [ref=e437]:
+                    - paragraph [ref=e438]:
+                      - text: Click
+                      - strong [ref=e439]: Restore Backup
+                      - text: .
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e440]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e441] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - list [ref=e442]:
+                  - listitem [ref=e443]:
+                    - paragraph [ref=e444]:
+                      - text: Log in to
+                      - link "Palette" [ref=e445] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e446]:
+                    - paragraph [ref=e447]:
+                      - text: In the
+                      - strong [ref=e448]: drop-down Menu
+                      - text: at the top of the page, choose the project that has your workspace.
+                  - listitem [ref=e449]:
+                    - paragraph [ref=e450]:
+                      - text: On the left
+                      - strong [ref=e451]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e452]: Workspaces
+                      - text: .
+                  - listitem [ref=e453]:
+                    - paragraph [ref=e454]: Click on the workspace you restored.
+                  - listitem [ref=e455]:
+                    - paragraph [ref=e456]: Ensure that the result of the restore was successful.
+              - generic [ref=e457]:
+                - generic [ref=e459]:
+                  - text: "Tags:"
+                  - list [ref=e460]:
+                    - listitem [ref=e461]:
+                      - link "workspace" [ref=e462] [cursor=pointer]:
+                        - /url: /tags/workspace/
+                - link "Edit this page" [ref=e465] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/workspace/workspace-mgmt/backup-restore.md
+                  - img [ref=e466]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e470]:
+              - link "Previous « Resource Management" [ref=e471] [cursor=pointer]:
+                - /url: /workspace/workspace-mgmt/resource-mgmt/
+                - generic [ref=e472]: Previous
+                - generic [ref=e473]: « Resource Management
+              - link "Next Delete Workspace »" [ref=e474] [cursor=pointer]:
+                - /url: /workspace/workspace-mgmt/delete-workspace/
+                - generic [ref=e475]: Next
+                - generic [ref=e476]: Delete Workspace »
+          - list [ref=e479]:
+            - listitem [ref=e480]:
+              - link "Create a Workspace Backup" [ref=e481] [cursor=pointer]:
+                - /url: "#create-a-workspace-backup"
+              - list [ref=e482]:
+                - listitem [ref=e483]:
+                  - link "Prerequisites" [ref=e484] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e485]:
+                  - link "Procedure" [ref=e486] [cursor=pointer]:
+                    - /url: "#procedure"
+                - listitem [ref=e487]:
+                  - link "Validate" [ref=e488] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e489]:
+              - link "Restore a Workspace Backup" [ref=e490] [cursor=pointer]:
+                - /url: "#restore-a-workspace-backup"
+              - list [ref=e491]:
+                - listitem [ref=e492]:
+                  - link "Prerequisites" [ref=e493] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e494]:
+                  - link "Procedure" [ref=e495] [cursor=pointer]:
+                    - /url: "#procedure-1"
+                - listitem [ref=e496]:
+                  - link "Validate" [ref=e497] [cursor=pointer]:
+                    - /url: "#validate-1"
+  - button "Project Logo Ask AI" [ref=e498] [cursor=pointer]:
+    - generic [ref=e501]:
+      - img "Project Logo" [ref=e502]
+      - paragraph [ref=e503]: Ask AI
+```

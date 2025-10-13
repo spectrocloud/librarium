@@ -1,0 +1,1033 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                  - listitem [ref=e107]:
+                    - generic [ref=e108]:
+                      - link "Data Center Clusters" [ref=e109] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e111]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e113] [cursor=pointer]
+                  - listitem [ref=e114]:
+                    - generic [ref=e115]:
+                      - link "Edge" [ref=e116] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e118]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e120] [cursor=pointer]
+                  - listitem [ref=e121]:
+                    - generic [ref=e122]:
+                      - link "Palette Virtual Clusters" [ref=e123] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e125]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e127] [cursor=pointer]
+                  - listitem [ref=e128]:
+                    - generic [ref=e129]:
+                      - link "Imported Clusters" [ref=e130] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e132]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e134] [cursor=pointer]
+                  - listitem [ref=e135]:
+                    - generic [ref=e136]:
+                      - link "Manage Clusters" [expanded] [ref=e137] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e139]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e141] [cursor=pointer]
+                    - list [ref=e142]:
+                      - listitem [ref=e143]:
+                        - generic [ref=e144]:
+                          - link "SSH" [ref=e145] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/ssh/
+                          - button "Toggle the collapsible sidebar category 'SSH'" [ref=e146] [cursor=pointer]
+                      - listitem [ref=e147]:
+                        - link "Update a Cluster" [ref=e148] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-updates/
+                      - listitem [ref=e149]:
+                        - generic [ref=e150]:
+                          - link "Cluster Monitoring" [ref=e151] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/monitoring/
+                          - button "Toggle the collapsible sidebar category 'Cluster Monitoring'" [ref=e152] [cursor=pointer]
+                      - listitem [ref=e153]:
+                        - link "Cluster Health Alerts" [ref=e154] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/health-alerts/
+                      - listitem [ref=e155]:
+                        - generic [ref=e156]:
+                          - link "Backup and Restore" [ref=e157] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/backup-restore/
+                          - button "Toggle the collapsible sidebar category 'Backup and Restore'" [ref=e158] [cursor=pointer]
+                      - listitem [ref=e159]:
+                        - link "Renew Cluster PKI Certificates" [ref=e160] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/certificate-management/
+                      - listitem [ref=e161]:
+                        - link "Compliance Scan" [ref=e162] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/compliance-scan/
+                      - listitem [ref=e163]:
+                        - link "OS Patching" [ref=e164] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/os-patching/
+                      - listitem [ref=e165]:
+                        - link "Cost Visibility" [ref=e166] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cloud-cost/
+                      - listitem [ref=e167]:
+                        - link "Workload Visibility" [ref=e168] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/workloads/
+                      - listitem [ref=e169]:
+                        - link "Node Labels" [ref=e170] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-labels/
+                      - listitem [ref=e171]:
+                        - link "Taints and Tolerations" [ref=e172] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/taints/
+                      - listitem [ref=e173]:
+                        - link "RBAC and Namespace Support" [ref=e174] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-rbac/
+                      - listitem [ref=e175]:
+                        - link "Namespace Management" [ref=e176] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/namespace-management/
+                      - listitem [ref=e177]:
+                        - link "Palette Macros" [ref=e178] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/macros/
+                      - listitem [ref=e179]:
+                        - link "Pack Monitoring" [ref=e180] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/pack-monitoring/
+                      - listitem [ref=e181]:
+                        - link "Kubeconfig" [ref=e182] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/kubeconfig/
+                      - listitem [ref=e183]:
+                        - link "Kubectl" [ref=e184] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/palette-webctl/
+                      - listitem [ref=e185]:
+                        - generic [ref=e186]:
+                          - link "Platform Settings" [ref=e187] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/platform-settings/
+                          - button "Toggle the collapsible sidebar category 'Platform Settings'" [ref=e188] [cursor=pointer]
+                      - listitem [ref=e189]:
+                        - link "Map and Filter Clusters" [ref=e190] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-map-filters/
+                      - listitem [ref=e191]:
+                        - link "Node Pools" [ref=e192] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-pool/
+                      - listitem [ref=e193]:
+                        - link "Configure Applications to Use Proxy Server" [ref=e194] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-proxy/
+                      - listitem [ref=e195]:
+                        - link "Spectro Kubernetes Dashboard" [ref=e196] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/spectro-kubernetes-dashboard/
+                      - listitem [ref=e197]:
+                        - link "Cluster Removal" [ref=e198] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/remove-clusters/
+                      - listitem [ref=e199]:
+                        - link "Image Swap" [ref=e200] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/image-swap/
+                      - listitem [ref=e201]:
+                        - link "Maintenance Mode" [ref=e202] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/maintenance-mode/
+                  - listitem [ref=e203]:
+                    - generic [ref=e204]:
+                      - link "Cluster Groups" [ref=e205] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e207]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e209] [cursor=pointer]
+                  - listitem [ref=e210]:
+                    - generic [ref=e211]:
+                      - link "Private Cloud Gateway" [ref=e212] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e214]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e216] [cursor=pointer]
+              - listitem [ref=e217]:
+                - generic [ref=e218]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e219] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e221]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e223] [cursor=pointer]
+              - listitem [ref=e224]:
+                - generic [ref=e225]:
+                  - link "Palette Dev Engine" [ref=e226] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e228]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e230] [cursor=pointer]
+              - listitem [ref=e231]:
+                - generic [ref=e232]:
+                  - link "Virtual Machine Orchestrator" [ref=e233] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e235]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e237] [cursor=pointer]
+              - listitem [ref=e238]:
+                - generic [ref=e239]:
+                  - link "Workspaces" [ref=e240] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e242]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e244] [cursor=pointer]
+              - listitem [ref=e245]:
+                - generic [ref=e246]:
+                  - link "Packs List" [ref=e247] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e249]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e251] [cursor=pointer]
+              - listitem [ref=e252]:
+                - generic [ref=e253]:
+                  - link "User & Role Management" [ref=e254] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e256]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e258] [cursor=pointer]
+              - listitem [ref=e259]:
+                - generic [ref=e260]:
+                  - link "Registries and Packs" [ref=e261] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e263]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e265] [cursor=pointer]
+              - listitem [ref=e266]:
+                - generic [ref=e267]:
+                  - link "Security" [ref=e268] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e270]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e272] [cursor=pointer]
+              - listitem [ref=e273]:
+                - generic [ref=e274]:
+                  - link "Audit Logs" [ref=e275] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e277]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e279] [cursor=pointer]
+              - listitem [ref=e280]:
+                - generic [ref=e281]:
+                  - link "Self-Hosted Palette" [ref=e282] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e284]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e286] [cursor=pointer]
+              - listitem [ref=e287]:
+                - generic [ref=e288]:
+                  - link "Palette VerteX" [ref=e289] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e291]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e293] [cursor=pointer]
+              - listitem [ref=e294]:
+                - generic [ref=e295]:
+                  - link "Tenant Administration" [ref=e296] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e298]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e300] [cursor=pointer]
+              - listitem [ref=e301]:
+                - generic [ref=e302]:
+                  - link "Automation" [ref=e303] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e305]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e307] [cursor=pointer]
+              - listitem [ref=e308]:
+                - generic [ref=e309]:
+                  - link "Troubleshooting" [ref=e310] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e312]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e314] [cursor=pointer]
+              - listitem [ref=e315]:
+                - link "Glossary" [ref=e316] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e318]
+                  - text: Glossary
+              - listitem [ref=e320]:
+                - generic [ref=e321]:
+                  - link "Compliance & Legal" [ref=e322] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e324]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e326] [cursor=pointer]
+              - listitem [ref=e327]:
+                - button "Privacy Settings" [ref=e328] [cursor=pointer]:
+                  - img [ref=e329]
+                  - text: Privacy Settings
+      - main [ref=e331]:
+        - generic [ref=e333]:
+          - generic [ref=e335]:
+            - article [ref=e336]:
+              - navigation "Breadcrumbs" [ref=e337]:
+                - list [ref=e338]:
+                  - listitem [ref=e339]:
+                    - link "Home page" [ref=e340] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e341]
+                  - listitem [ref=e343]:
+                    - link "Clusters" [ref=e344] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e345]:
+                    - link "Manage Clusters" [ref=e346] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/
+                  - listitem [ref=e347]:
+                    - generic [ref=e348]: OS Patching
+              - generic [ref=e349]:
+                - heading "OS Patching" [level=1] [ref=e351]
+                - paragraph [ref=e352]: Palette deploys Kubernetes clusters using pre-built VM images. The operating system (OS) on these images is the latest patch version when building the image for the supported major-minor streams. For example, if Ubuntu 18.04 is selected for the OS layer during provisioning, the OS on the cluster nodes might be using 18.04.3 LTE, assuming that was the latest version available at the time the VM image was built. However, newer versions continue to be published in the upstream repositories as improvements, bug fixes, and security patches are released.
+                - paragraph [ref=e353]: OS Patching allows the operating system on the running cluster nodes to be updated to the latest patch version so that it is up-to-date with the latest fixes. Assume Ubuntu 18.04.4 LTE and 18.04.5 LTE are released over time to fix important security issues. The OS Patching operation will identify 18.04.5 as the latest version and upgrade it on the cluster nodes.
+                - paragraph [ref=e354]: "The following options are available for OS patching:"
+                - list [ref=e355]:
+                  - listitem [ref=e356]:
+                    - link "Patch OS on boot" [ref=e357] [cursor=pointer]:
+                      - /url: "#patch-os-on-boot"
+                  - listitem [ref=e358]:
+                    - link "Enable scheduled patching" [ref=e359] [cursor=pointer]:
+                      - /url: "#enable-scheduled-patching"
+                  - listitem [ref=e360]:
+                    - link "Patch OS on-demand" [ref=e361] [cursor=pointer]:
+                      - /url: "#perform-on-demand-patching"
+                - paragraph [ref=e362]: You can use a combination of these options to patch the operating system to the latest version. For example, you can patch OS on boot, set up scheduled patching every month, and also perform on-demand patches at any given point in time.
+                - paragraph [ref=e363]:
+                  - text: Palette offers the option to provide custom node drain configuration, which gives you fine-grained control of drain behaviour during updates. Refer to the
+                  - link "Configure OS Patching Drain Policy" [ref=e364] [cursor=pointer]:
+                    - /url: "#configure-os-patching-drain-policy"
+                  - text: for further information.
+                - heading "Patch OS on BootDirect link to Patch OS on Boot" [level=2] [ref=e365]:
+                  - text: Patch OS on Boot
+                  - link "Direct link to Patch OS on Boot" [ref=e366] [cursor=pointer]:
+                    - /url: "#patch-os-on-boot"
+                    - text: "#"
+                - paragraph [ref=e367]:
+                  - text: During the cluster creation, while configuring the cluster, you can select
+                  - strong [ref=e368]: Patch OS on boot
+                  - text: . In this case, the operating system on all cluster nodes will be updated to the latest when the cluster VMs are initially deployed.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e369]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e370] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e371]:
+                  - listitem [ref=e372]: A cluster profile in Palette.
+                - heading "InstructionsDirect link to Instructions" [level=3] [ref=e373]:
+                  - text: Instructions
+                  - link "Direct link to Instructions" [ref=e374] [cursor=pointer]:
+                    - /url: "#instructions"
+                    - text: "#"
+                - list [ref=e375]:
+                  - listitem [ref=e376]:
+                    - paragraph [ref=e377]:
+                      - text: Log in to
+                      - link "Palette" [ref=e378] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e379]:
+                    - paragraph [ref=e380]:
+                      - text: From the left
+                      - strong [ref=e381]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e382]: Cluster
+                      - text: . And then, click
+                      - strong [ref=e383]: Create Cluster
+                      - text: . Proceed in the cluster creation wizard until you reach the
+                      - strong [ref=e384]: Settings
+                      - text: step.
+                    - paragraph [ref=e385]:
+                      - text: For more information on cluster creation, refer to the
+                      - link "Clusters" [ref=e386] [cursor=pointer]:
+                        - /url: /clusters/
+                      - text: section and any page that is relevant to your choice of cloud provider.
+                  - listitem [ref=e387]:
+                    - paragraph [ref=e388]:
+                      - text: In the
+                      - strong [ref=e389]: Setting
+                      - text: step, click on the
+                      - strong [ref=e390]: Manage machines
+                      - text: tab, and select the checkbox for
+                      - strong [ref=e391]: Patch OS on boot
+                      - text: and
+                      - strong [ref=e392]: Reboot if required
+                      - text: .
+                    - paragraph [ref=e393]:
+                      - text: The
+                      - strong [ref=e394]: Reboot if required
+                      - text: option allows your nodes to reboot if an OS patch requires a reboot. If you do not select this option, your node will not be able to reboot even if a patch requires it and the respective patch may not succeed.
+                  - listitem [ref=e395]:
+                    - paragraph [ref=e396]: Finish cluster creation and deploy your cluster.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e397]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e398] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e399]:
+                  - listitem [ref=e400]:
+                    - paragraph [ref=e401]:
+                      - text: Log in to
+                      - link "Palette" [ref=e402] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e403]:
+                    - paragraph [ref=e404]: Click on the cluster you patched to view cluster details.
+                  - listitem [ref=e405]:
+                    - paragraph [ref=e406]:
+                      - text: Click on the
+                      - strong [ref=e407]: Nodes
+                      - text: tab of the cluster details page. You can find the current OS version and when the most recent patch was applied.
+                    - table [ref=e408]:
+                      - rowgroup [ref=e409]:
+                        - row "Field Description" [ref=e410]:
+                          - cell "Field" [ref=e411]:
+                            - strong [ref=e412]: Field
+                          - cell "Description" [ref=e413]:
+                            - strong [ref=e414]: Description
+                      - rowgroup [ref=e415]:
+                        - row "Last Applied Patch Time The date and time of the last OS patch." [ref=e416]:
+                          - cell "Last Applied Patch Time" [ref=e417]
+                          - cell "The date and time of the last OS patch." [ref=e418]
+                        - row "Patched Version The latest patched version." [ref=e419]:
+                          - cell "Patched Version" [ref=e420]
+                          - cell "The latest patched version." [ref=e421]
+                - heading "Enable Scheduled PatchingDirect link to Enable Scheduled Patching" [level=2] [ref=e422]:
+                  - text: Enable Scheduled Patching
+                  - link "Direct link to Enable Scheduled Patching" [ref=e423] [cursor=pointer]:
+                    - /url: "#enable-scheduled-patching"
+                    - text: "#"
+                - paragraph [ref=e424]: Palette also supports OS patching through a schedule. The patching schedule can be set initially when creating a cluster and at any given point later.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e425]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e426] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e427]:
+                  - listitem [ref=e428]: A cluster profile in Palette.
+                - heading "InstructionsDirect link to Instructions" [level=3] [ref=e429]:
+                  - text: Instructions
+                  - link "Direct link to Instructions" [ref=e430] [cursor=pointer]:
+                    - /url: "#instructions-1"
+                    - text: "#"
+                - generic [ref=e431]:
+                  - tablist [ref=e432]:
+                    - tab "Active cluster" [selected] [ref=e433] [cursor=pointer]
+                    - tab "New cluster" [ref=e434] [cursor=pointer]
+                  - tabpanel [ref=e436]:
+                    - list [ref=e437]:
+                      - listitem [ref=e438]:
+                        - paragraph [ref=e439]:
+                          - text: Log in to
+                          - link "Palette" [ref=e440] [cursor=pointer]:
+                            - /url: https://console.spectrocloud.com
+                          - text: .
+                      - listitem [ref=e441]:
+                        - paragraph [ref=e442]:
+                          - text: Navigate to the
+                          - strong [ref=e443]: Main Menu
+                          - text: and click on
+                          - strong [ref=e444]: Clusters
+                          - text: .
+                      - listitem [ref=e445]:
+                        - paragraph [ref=e446]: Click on the cluster for which you want to enable scheduled patching to view its details.
+                      - listitem [ref=e447]:
+                        - paragraph [ref=e448]:
+                          - text: In the upper-right corner, click on
+                          - strong [ref=e449]: Settings
+                          - text: and select
+                          - strong [ref=e450]: Cluster settings
+                          - text: . And then, click on the
+                          - strong [ref=e451]: Machine Management
+                          - text: tab.
+                      - listitem [ref=e452]:
+                        - paragraph [ref=e453]:
+                          - text: Select a patching schedule in the
+                          - strong [ref=e454]: OS Patching Schedule
+                          - text: field, and then select the
+                          - strong [ref=e455]: Reboot if required
+                          - text: checkbox.
+                        - paragraph [ref=e456]:
+                          - text: The
+                          - strong [ref=e457]: Reboot if required
+                          - text: option allows your nodes to reboot if an OS patch requires a reboot. If you do not select this option, your node will not be able to reboot even if a patch requires it and the respective patch may not succeed.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e458]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e459] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - list [ref=e460]:
+                  - listitem [ref=e461]:
+                    - paragraph [ref=e462]:
+                      - text: Log in to
+                      - link "Palette" [ref=e463] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e464]:
+                    - paragraph [ref=e465]: Click on the cluster you patched to view cluster details.
+                  - listitem [ref=e466]:
+                    - paragraph [ref=e467]:
+                      - text: Click on the
+                      - strong [ref=e468]: Nodes
+                      - text: tab of cluster details page. You can find the current OS version and when the most recent patch was applied.
+                    - table [ref=e469]:
+                      - rowgroup [ref=e470]:
+                        - row "Field Description" [ref=e471]:
+                          - cell "Field" [ref=e472]:
+                            - strong [ref=e473]: Field
+                          - cell "Description" [ref=e474]:
+                            - strong [ref=e475]: Description
+                      - rowgroup [ref=e476]:
+                        - row "Last Applied Patch Time The date and time of the last OS patch." [ref=e477]:
+                          - cell "Last Applied Patch Time" [ref=e478]
+                          - cell "The date and time of the last OS patch." [ref=e479]
+                        - row "Patched Version The latest patched version." [ref=e480]:
+                          - cell "Patched Version" [ref=e481]
+                          - cell "The latest patched version." [ref=e482]
+                - heading "Perform On-Demand PatchingDirect link to Perform On-Demand Patching" [level=2] [ref=e483]:
+                  - text: Perform On-Demand Patching
+                  - link "Direct link to Perform On-Demand Patching" [ref=e484] [cursor=pointer]:
+                    - /url: "#perform-on-demand-patching"
+                    - text: "#"
+                - paragraph [ref=e485]: You can request an on-demand OS patch after creating a cluster. This option allows you to you to perform immediate updates.
+                - heading "LimitationsDirect link to Limitations" [level=3] [ref=e486]:
+                  - text: Limitations
+                  - link "Direct link to Limitations" [ref=e487] [cursor=pointer]:
+                    - /url: "#limitations"
+                    - text: "#"
+                - list [ref=e488]:
+                  - listitem [ref=e489]: This operation is not available for existing Kubernetes clusters imported into Palette.
+                  - listitem [ref=e490]:
+                    - text: This operation is not available for managed Kubernetes Services such as EKS and AKS.
+                    - list [ref=e491]:
+                      - listitem [ref=e492]: For EKS clusters, you can trigger OS updates from Palette. This would request AWS to update cluster node groups to the latest patch version.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e493]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e494] [cursor=pointer]:
+                    - /url: "#prerequisites-2"
+                    - text: "#"
+                - list [ref=e495]:
+                  - listitem [ref=e496]: An active cluster in Palette.
+                - heading "EnablementDirect link to Enablement" [level=3] [ref=e497]:
+                  - text: Enablement
+                  - link "Direct link to Enablement" [ref=e498] [cursor=pointer]:
+                    - /url: "#enablement"
+                    - text: "#"
+                - list [ref=e499]:
+                  - listitem [ref=e500]:
+                    - paragraph [ref=e501]:
+                      - text: Log in to
+                      - link "Palette" [ref=e502] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e503]:
+                    - paragraph [ref=e504]:
+                      - text: From the left
+                      - strong [ref=e505]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e506]: Clusters
+                      - text: . Select the cluster you want to patch to view cluster details.
+                  - listitem [ref=e507]:
+                    - paragraph [ref=e508]:
+                      - text: In the upper-right corner, click on
+                      - strong [ref=e509]: Settings
+                      - text: and select
+                      - strong [ref=e510]: On-Demand Update
+                      - text: . This will trigger an OS update immediately if a newer version is available.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e511]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e512] [cursor=pointer]:
+                    - /url: "#validate-2"
+                    - text: "#"
+                - list [ref=e513]:
+                  - listitem [ref=e514]:
+                    - paragraph [ref=e515]:
+                      - text: Log in to
+                      - link "Palette" [ref=e516] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e517]:
+                    - paragraph [ref=e518]: Click on the cluster you patched to view cluster details.
+                  - listitem [ref=e519]:
+                    - paragraph [ref=e520]:
+                      - text: Click on the
+                      - strong [ref=e521]: Nodes
+                      - text: tab of the cluster details page. You can find the current OS version and when the most recent patch was applied.
+                    - table [ref=e522]:
+                      - rowgroup [ref=e523]:
+                        - row "Field Description" [ref=e524]:
+                          - cell "Field" [ref=e525]:
+                            - strong [ref=e526]: Field
+                          - cell "Description" [ref=e527]:
+                            - strong [ref=e528]: Description
+                      - rowgroup [ref=e529]:
+                        - row "Last Applied Patch Time The date and time of the last OS patch." [ref=e530]:
+                          - cell "Last Applied Patch Time" [ref=e531]
+                          - cell "The date and time of the last OS patch." [ref=e532]
+                        - row "Patched Version The latest patched version." [ref=e533]:
+                          - cell "Patched Version" [ref=e534]
+                          - cell "The latest patched version." [ref=e535]
+                - heading "Configure OS Patching Drain PolicyDirect link to Configure OS Patching Drain Policy" [level=2] [ref=e536]:
+                  - text: Configure OS Patching Drain Policy
+                  - link "Direct link to Configure OS Patching Drain Policy" [ref=e537] [cursor=pointer]:
+                    - /url: "#configure-os-patching-drain-policy"
+                    - text: "#"
+                - paragraph [ref=e538]:
+                  - text: The node drain operation refers to the process of evicting all of your pods from a node before you perform node maintenance. Typical node maintenance activities are hardware upgrades, kernel updates and OS patching. Palette provides the ability to configure the drain policy during on-boot, scheduled, and on-demand OS patching. Users can specify a node drain policy using a ConfigMap, which can be applied to deployed clusters using a cluster profile or through
+                  - code [ref=e539]: kubectl
+                  - text: .
+                - heading "LimitationsDirect link to Limitations" [level=3] [ref=e540]:
+                  - text: Limitations
+                  - link "Direct link to Limitations" [ref=e541] [cursor=pointer]:
+                    - /url: "#limitations-1"
+                    - text: "#"
+                - list [ref=e542]:
+                  - listitem [ref=e543]: This operation is not available for existing Kubernetes clusters that have been previously imported into Palette.
+                  - listitem [ref=e544]:
+                    - text: This operation is not available for managed Kubernetes Services such as EKS and AKS.
+                    - list [ref=e545]:
+                      - listitem [ref=e546]: For EKS clusters, you can trigger OS updates from Palette. This would request AWS to update cluster node groups to the latest patch version.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e547]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e548] [cursor=pointer]:
+                    - /url: "#prerequisites-3"
+                    - text: "#"
+                - list [ref=e549]:
+                  - listitem [ref=e550]: An active cluster in Palette.
+                - heading "EnablementDirect link to Enablement" [level=3] [ref=e551]:
+                  - text: Enablement
+                  - link "Direct link to Enablement" [ref=e552] [cursor=pointer]:
+                    - /url: "#enablement-1"
+                    - text: "#"
+                - list [ref=e553]:
+                  - listitem [ref=e554]:
+                    - paragraph [ref=e555]:
+                      - text: Log in to
+                      - link "Palette" [ref=e556] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e557]:
+                    - paragraph [ref=e558]:
+                      - text: From the left
+                      - strong [ref=e559]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e560]: Profiles
+                      - text: . Then, click
+                      - strong [ref=e561]: Add Cluster Profile
+                      - text: . The cluster profile creation wizard appears.
+                  - listitem [ref=e562]:
+                    - paragraph [ref=e563]:
+                      - text: Fill in a name in the
+                      - strong [ref=e564]: Name
+                      - text: field. Optionally, add a description in the
+                      - strong [ref=e565]: Description
+                      - text: field. Select the
+                      - strong [ref=e566]: Add-on
+                      - text: box for the
+                      - strong [ref=e567]: Type
+                      - text: . Click
+                      - strong [ref=e568]: Next
+                      - text: .
+                  - listitem [ref=e569]:
+                    - paragraph [ref=e570]:
+                      - text: Click
+                      - strong [ref=e571]: Add Manifest
+                      - text: . The manifest editor appears.
+                  - listitem [ref=e572]:
+                    - paragraph [ref=e573]:
+                      - text: Add a name in the
+                      - strong [ref=e574]: Layer Name
+                      - text: field. Then, click
+                      - strong [ref=e575]: New manifest
+                      - text: . Assign a name to the internal manifest and click on the blue button. An empty editor displays on the right side of the screen.
+                  - listitem [ref=e576]:
+                    - paragraph [ref=e577]: Paste the snippet below into the empty editor. This snippet includes example values within a ConfigMap to demonstrate how to control the drain policy of the cluster. The ConfigMap provides the following drain configuration parameters.
+                    - table [ref=e578]:
+                      - rowgroup [ref=e579]:
+                        - row "Parameter Description Value Type Default Value" [ref=e580]:
+                          - cell "Parameter" [ref=e581]:
+                            - strong [ref=e582]: Parameter
+                          - cell "Description" [ref=e583]:
+                            - strong [ref=e584]: Description
+                          - cell "Value Type" [ref=e585]:
+                            - strong [ref=e586]: Value Type
+                          - cell "Default Value" [ref=e587]:
+                            - strong [ref=e588]: Default Value
+                      - rowgroup [ref=e589]:
+                        - row "data.profiling Flag to indicate whether the profiling server should capture profiling data. If enabled, the port 8082 should be exposed to the profiling server. enable / disable disable" [ref=e590]:
+                          - cell "data.profiling" [ref=e591]:
+                            - code [ref=e592]: data.profiling
+                          - cell "Flag to indicate whether the profiling server should capture profiling data. If enabled, the port 8082 should be exposed to the profiling server." [ref=e593]:
+                            - text: Flag to indicate whether the profiling server should capture profiling data. If enabled, the port
+                            - code [ref=e594]: "8082"
+                            - text: should be exposed to the profiling server.
+                          - cell "enable / disable" [ref=e595]:
+                            - code [ref=e596]: enable
+                            - text: /
+                            - code [ref=e597]: disable
+                          - cell "disable" [ref=e598]:
+                            - code [ref=e599]: disable
+                        - row "data.feature.workloads Flag to indicate whether to push workload metadata to the Palette server. enable /disable enable" [ref=e600]:
+                          - cell "data.feature.workloads" [ref=e601]:
+                            - code [ref=e602]: data.feature.workloads
+                          - cell "Flag to indicate whether to push workload metadata to the Palette server." [ref=e603]
+                          - cell "enable /disable" [ref=e604]:
+                            - code [ref=e605]: enable
+                            - text: /
+                            - code [ref=e606]: disable
+                          - cell "enable" [ref=e607]:
+                            - code [ref=e608]: enable
+                        - row "data.drain.timeout The length of time, specified in nanoseconds, to wait for the drain operation to complete. There is no configured timeout if set to zero. duration unset" [ref=e609]:
+                          - cell "data.drain.timeout" [ref=e610]:
+                            - code [ref=e611]: data.drain.timeout
+                          - cell "The length of time, specified in nanoseconds, to wait for the drain operation to complete. There is no configured timeout if set to zero." [ref=e612]
+                          - cell "duration" [ref=e613]:
+                            - code [ref=e614]: duration
+                          - cell "unset" [ref=e615]:
+                            - code [ref=e616]: unset
+                        - row "data.drain.gracePeriod The period of time, specified in seconds, to wait for each pod to terminate gracefully. The value provided by the pods will be used if set to a negative value. int -1" [ref=e617]:
+                          - cell "data.drain.gracePeriod" [ref=e618]:
+                            - code [ref=e619]: data.drain.gracePeriod
+                          - cell "The period of time, specified in seconds, to wait for each pod to terminate gracefully. The value provided by the pods will be used if set to a negative value." [ref=e620]
+                          - cell "int" [ref=e621]:
+                            - code [ref=e622]: int
+                          - cell "-1" [ref=e623]:
+                            - code [ref=e624]: "-1"
+                        - row "data.drain.deleteLocalData Flag to indicate whether to continue if one or more affected pods do not have specified volumes, resulting in the deletion of their local data. boolean false" [ref=e625]:
+                          - cell "data.drain.deleteLocalData" [ref=e626]:
+                            - code [ref=e627]: data.drain.deleteLocalData
+                          - cell "Flag to indicate whether to continue if one or more affected pods do not have specified volumes, resulting in the deletion of their local data." [ref=e628]
+                          - cell "boolean" [ref=e629]:
+                            - code [ref=e630]: boolean
+                          - cell "false" [ref=e631]:
+                            - code [ref=e632]: "false"
+                        - row "data.drain.ignoreDaemonSets Flag to indicate whether to ignore DaemonSet managed pods. boolean false" [ref=e633]:
+                          - cell "data.drain.ignoreDaemonSets" [ref=e634]:
+                            - code [ref=e635]: data.drain.ignoreDaemonSets
+                          - cell "Flag to indicate whether to ignore DaemonSet managed pods." [ref=e636]
+                          - cell "boolean" [ref=e637]:
+                            - code [ref=e638]: boolean
+                          - cell "false" [ref=e639]:
+                            - code [ref=e640]: "false"
+                        - row "data.drain.force Flag to indicate whether to continue if one or more affected pods do not have a declared controller. boolean false" [ref=e641]:
+                          - cell "data.drain.force" [ref=e642]:
+                            - code [ref=e643]: data.drain.force
+                          - cell "Flag to indicate whether to continue if one or more affected pods do not have a declared controller." [ref=e644]
+                          - cell "boolean" [ref=e645]:
+                            - code [ref=e646]: boolean
+                          - cell "false" [ref=e647]:
+                            - code [ref=e648]: "false"
+                        - row "data.drain.disableEviction Flag to indicate whether to force drain to use delete operations. boolean false" [ref=e649]:
+                          - cell "data.drain.disableEviction" [ref=e650]:
+                            - code [ref=e651]: data.drain.disableEviction
+                          - cell "Flag to indicate whether to force drain to use delete operations." [ref=e652]
+                          - cell "boolean" [ref=e653]:
+                            - code [ref=e654]: boolean
+                          - cell "false" [ref=e655]:
+                            - code [ref=e656]: "false"
+                        - row "data.drain.skipWaitForDeleteTimeout The length of time, in seconds, to wait for pod deletion to complete. If the time elapses, the drain will continue. int 0" [ref=e657]:
+                          - cell "data.drain.skipWaitForDeleteTimeout" [ref=e658]:
+                            - code [ref=e659]: data.drain.skipWaitForDeleteTimeout
+                          - cell "The length of time, in seconds, to wait for pod deletion to complete. If the time elapses, the drain will continue." [ref=e660]
+                          - cell "int" [ref=e661]:
+                            - code [ref=e662]: int
+                          - cell "0" [ref=e663]:
+                            - code [ref=e664]: "0"
+                    - generic [ref=e666]:
+                      - code [ref=e668]:
+                        - generic [ref=e669]: "apiVersion: v1"
+                        - generic [ref=e670]: "kind: ConfigMap"
+                        - generic [ref=e671]: "metadata:"
+                        - generic [ref=e672]: "name: palette-agent-config"
+                        - generic [ref=e673]: "namespace: \"cluster-{{ .spectro.system.cluster.uid }}\""
+                        - generic [ref=e674]: "data:"
+                        - generic [ref=e675]: "profiling: disable"
+                        - generic [ref=e676]: "feature.workloads: enable"
+                        - generic [ref=e677]: "drain: |"
+                        - generic [ref=e678]: "{"
+                        - generic [ref=e679]: "\"timeout\": 600000000,"
+                        - generic [ref=e680]: "\"gracePeriod\": 600,"
+                        - generic [ref=e681]: "\"deleteLocalData\": true,"
+                        - generic [ref=e682]: "\"ignoreDaemonSets\": true,"
+                        - generic [ref=e683]: "\"force\": true,"
+                        - generic [ref=e684]: "\"disableEviction\": false,"
+                        - generic [ref=e685]: "\"skipWaitForDeleteTimeout\": 600"
+                        - generic [ref=e686]: "}"
+                      - button "Copy code to clipboard" [ref=e688] [cursor=pointer]:
+                        - generic [ref=e689]:
+                          - img [ref=e690]
+                          - img [ref=e692]
+                    - generic [ref=e694]:
+                      - generic [ref=e695]:
+                        - img [ref=e697]
+                        - text: info
+                      - paragraph [ref=e700]:
+                        - text: You can also specify the drain policy ConfigMap directly on the cluster by using
+                        - code [ref=e701]: kubectl
+                        - text: . Download the
+                        - link "Kubeconfig" [ref=e702] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/kubeconfig/
+                        - text: file to connect to the cluster and issue the
+                        - code [ref=e703]: kubectl create configmap palette-agent-config --namespace <cluster-id>
+                        - text: command. Then, execute the command
+                        - code [ref=e704]: kubectl edit configmap palette-agent-config --namespace <cluster-id>
+                        - text: command and paste the configuration provided.
+                  - listitem [ref=e705]:
+                    - paragraph [ref=e706]:
+                      - text: Click
+                      - strong [ref=e707]: Confirm & Create
+                      - text: to save the manifest. The manifest editor closes.
+                  - listitem [ref=e708]:
+                    - paragraph [ref=e709]:
+                      - text: Click
+                      - strong [ref=e710]: Next
+                      - text: . The summary of your Add-on cluster profile appears. Then, click
+                      - strong [ref=e711]: Finish Configuration
+                      - text: to complete the cluster profile creation flow. The list of cluster profiles displays.
+                  - listitem [ref=e712]:
+                    - paragraph [ref=e713]:
+                      - text: From the left
+                      - strong [ref=e714]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e715]: Clusters
+                      - text: . Select the cluster you want to patch to view cluster details.
+                  - listitem [ref=e716]:
+                    - paragraph [ref=e717]:
+                      - text: Select the
+                      - strong [ref=e718]: Profile
+                      - text: tab. Then, click
+                      - code [ref=e719]: +
+                      - text: next to
+                      - strong [ref=e720]: Addon Layers
+                      - text: ", then select the Add-on profile you created previously. Click"
+                      - strong [ref=e721]: Confirm
+                      - text: ", then click"
+                      - strong [ref=e722]: Save
+                      - text: . Wait for Palette to apply this manifest to your cluster.
+                  - listitem [ref=e723]:
+                    - paragraph [ref=e724]:
+                      - text: In the upper-right corner, click on
+                      - strong [ref=e725]: Settings
+                      - text: and select
+                      - strong [ref=e726]: On-Demand Update
+                      - text: . This will trigger an OS update immediately if a newer version is available.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e727]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e728] [cursor=pointer]:
+                    - /url: "#validate-3"
+                    - text: "#"
+                - list [ref=e729]:
+                  - listitem [ref=e730]:
+                    - paragraph [ref=e731]:
+                      - text: Log in to
+                      - link "Palette" [ref=e732] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e733]:
+                    - paragraph [ref=e734]: Click on the cluster you patched to view cluster details.
+                  - listitem [ref=e735]:
+                    - paragraph [ref=e736]:
+                      - text: Click on the
+                      - strong [ref=e737]: Nodes
+                      - text: tab of the cluster details page. You can find the current OS version and when the most recent patch was applied.
+                    - table [ref=e738]:
+                      - rowgroup [ref=e739]:
+                        - row "Field Description" [ref=e740]:
+                          - cell "Field" [ref=e741]:
+                            - strong [ref=e742]: Field
+                          - cell "Description" [ref=e743]:
+                            - strong [ref=e744]: Description
+                      - rowgroup [ref=e745]:
+                        - row "Last Applied Patch Time The date and time of the last OS patch." [ref=e746]:
+                          - cell "Last Applied Patch Time" [ref=e747]
+                          - cell "The date and time of the last OS patch." [ref=e748]
+                        - row "Patched Version The latest patched version." [ref=e749]:
+                          - cell "Patched Version" [ref=e750]
+                          - cell "The latest patched version." [ref=e751]
+                  - listitem [ref=e752]:
+                    - paragraph [ref=e753]:
+                      - text: Select the
+                      - strong [ref=e754]: Workloads
+                      - text: tab. The list of namespaces appears. Then, select the
+                      - strong [ref=e755]: Pods
+                      - text: tab. The list of deployed pods and their details appears. The
+                      - strong [ref=e756]: Age
+                      - text: column of the pods shows that they were migrated, not restarted, during cluster patching.
+              - generic [ref=e757]:
+                - generic [ref=e759]:
+                  - text: "Tags:"
+                  - list [ref=e760]:
+                    - listitem [ref=e761]:
+                      - link "clusters" [ref=e762] [cursor=pointer]:
+                        - /url: /tags/clusters/
+                    - listitem [ref=e763]:
+                      - link "cluster management" [ref=e764] [cursor=pointer]:
+                        - /url: /tags/cluster-management/
+                - link "Edit this page" [ref=e767] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/cluster-management/os-patching.md
+                  - img [ref=e768]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e772]:
+              - link "Previous « Compliance Scan" [ref=e773] [cursor=pointer]:
+                - /url: /clusters/cluster-management/compliance-scan/
+                - generic [ref=e774]: Previous
+                - generic [ref=e775]: « Compliance Scan
+              - link "Next Cost Visibility »" [ref=e776] [cursor=pointer]:
+                - /url: /clusters/cluster-management/cloud-cost/
+                - generic [ref=e777]: Next
+                - generic [ref=e778]: Cost Visibility »
+          - list [ref=e781]:
+            - listitem [ref=e782]:
+              - link "Patch OS on Boot" [ref=e783] [cursor=pointer]:
+                - /url: "#patch-os-on-boot"
+              - list [ref=e784]:
+                - listitem [ref=e785]:
+                  - link "Prerequisites" [ref=e786] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e787]:
+                  - link "Instructions" [ref=e788] [cursor=pointer]:
+                    - /url: "#instructions"
+                - listitem [ref=e789]:
+                  - link "Validate" [ref=e790] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e791]:
+              - link "Enable Scheduled Patching" [ref=e792] [cursor=pointer]:
+                - /url: "#enable-scheduled-patching"
+              - list [ref=e793]:
+                - listitem [ref=e794]:
+                  - link "Prerequisites" [ref=e795] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e796]:
+                  - link "Instructions" [ref=e797] [cursor=pointer]:
+                    - /url: "#instructions-1"
+                - listitem [ref=e798]:
+                  - link "Validate" [ref=e799] [cursor=pointer]:
+                    - /url: "#validate-1"
+            - listitem [ref=e800]:
+              - link "Perform On-Demand Patching" [ref=e801] [cursor=pointer]:
+                - /url: "#perform-on-demand-patching"
+              - list [ref=e802]:
+                - listitem [ref=e803]:
+                  - link "Limitations" [ref=e804] [cursor=pointer]:
+                    - /url: "#limitations"
+                - listitem [ref=e805]:
+                  - link "Prerequisites" [ref=e806] [cursor=pointer]:
+                    - /url: "#prerequisites-2"
+                - listitem [ref=e807]:
+                  - link "Enablement" [ref=e808] [cursor=pointer]:
+                    - /url: "#enablement"
+                - listitem [ref=e809]:
+                  - link "Validate" [ref=e810] [cursor=pointer]:
+                    - /url: "#validate-2"
+            - listitem [ref=e811]:
+              - link "Configure OS Patching Drain Policy" [ref=e812] [cursor=pointer]:
+                - /url: "#configure-os-patching-drain-policy"
+              - list [ref=e813]:
+                - listitem [ref=e814]:
+                  - link "Limitations" [ref=e815] [cursor=pointer]:
+                    - /url: "#limitations-1"
+                - listitem [ref=e816]:
+                  - link "Prerequisites" [ref=e817] [cursor=pointer]:
+                    - /url: "#prerequisites-3"
+                - listitem [ref=e818]:
+                  - link "Enablement" [ref=e819] [cursor=pointer]:
+                    - /url: "#enablement-1"
+                - listitem [ref=e820]:
+                  - link "Validate" [ref=e821] [cursor=pointer]:
+                    - /url: "#validate-3"
+  - button "Project Logo Ask AI" [ref=e822] [cursor=pointer]:
+    - generic [ref=e825]:
+      - img "Project Logo" [ref=e826]
+      - paragraph [ref=e827]: Ask AI
+```

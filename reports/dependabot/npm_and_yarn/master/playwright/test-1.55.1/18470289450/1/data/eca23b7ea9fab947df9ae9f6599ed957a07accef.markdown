@@ -1,0 +1,555 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [expanded] [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+                - list [ref=e120]:
+                  - listitem [ref=e121]:
+                    - link "Architecture" [ref=e122] [cursor=pointer]:
+                      - /url: /vm-management/architecture/
+                  - listitem [ref=e123]:
+                    - link "Environment Setup" [ref=e124] [cursor=pointer]:
+                      - /url: /vm-management/environment-setup/
+                  - listitem [ref=e125]:
+                    - link "Install VMO in Airgap Environments" [ref=e126] [cursor=pointer]:
+                      - /url: /vm-management/install-vmo-in-airgap/
+                  - listitem [ref=e127]:
+                    - link "Create a VMO Profile" [ref=e128] [cursor=pointer]:
+                      - /url: /vm-management/create-vmo-profile/
+                  - listitem [ref=e129]:
+                    - link "Configure Private CA Certificate" [ref=e130] [cursor=pointer]:
+                      - /url: /vm-management/configure-private-ca-certificate/
+                  - listitem [ref=e131]:
+                    - link "Configure Direct Access to VM Dashboard" [ref=e132] [cursor=pointer]:
+                      - /url: /vm-management/configure-console-base-address/
+                  - listitem [ref=e133]:
+                    - generic [ref=e134]:
+                      - link "RBAC" [ref=e135] [cursor=pointer]:
+                        - /url: /vm-management/rbac/
+                      - button "Toggle the collapsible sidebar category 'RBAC'" [ref=e136] [cursor=pointer]
+                  - listitem [ref=e137]:
+                    - generic [ref=e138]:
+                      - link "Create and Manage VMs" [expanded] [ref=e139] [cursor=pointer]:
+                        - /url: /vm-management/create-manage-vm/
+                      - button "Toggle the collapsible sidebar category 'Create and Manage VMs'" [ref=e140] [cursor=pointer]
+                    - list [ref=e141]:
+                      - listitem [ref=e142]:
+                        - link "Deploy VM From a Template" [ref=e143] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/deploy-vm-from-template/
+                      - listitem [ref=e144]:
+                        - link "Update VM Configuration" [ref=e145] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/update-vm-configuration/
+                      - listitem [ref=e146]:
+                        - link "Migrate a VM to a Different Node" [ref=e147] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/migrate-vm-to-different-node/
+                      - listitem [ref=e148]:
+                        - link "Take a VM Snapshot" [ref=e149] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/take-snapshot-of-vm/
+                      - listitem [ref=e150]:
+                        - link "Clone a VM" [ref=e151] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/clone-vm/
+                      - listitem [ref=e152]:
+                        - link "Manage CPU and Memory" [ref=e153] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/enable-cpu-hotplug/
+                      - listitem [ref=e154]:
+                        - link "Locate VM Disks" [ref=e155] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/locate-vm-disks/
+                      - listitem [ref=e156]:
+                        - generic [ref=e157]:
+                          - link "Advanced Topics" [ref=e158] [cursor=pointer]:
+                            - /url: /vm-management/create-manage-vm/advanced-topics/
+                          - button "Toggle the collapsible sidebar category 'Advanced Topics'" [ref=e159] [cursor=pointer]
+                  - listitem [ref=e160]:
+                    - generic [ref=e161]:
+                      - link "VM Migration Assistant" [ref=e162] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/
+                      - button "Toggle the collapsible sidebar category 'VM Migration Assistant'" [ref=e163] [cursor=pointer]
+              - listitem [ref=e164]:
+                - generic [ref=e165]:
+                  - link "Workspaces" [ref=e166] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e168]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e170] [cursor=pointer]
+              - listitem [ref=e171]:
+                - generic [ref=e172]:
+                  - link "Packs List" [ref=e173] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e175]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e177] [cursor=pointer]
+              - listitem [ref=e178]:
+                - generic [ref=e179]:
+                  - link "User & Role Management" [ref=e180] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e182]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e184] [cursor=pointer]
+              - listitem [ref=e185]:
+                - generic [ref=e186]:
+                  - link "Registries and Packs" [ref=e187] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e189]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e191] [cursor=pointer]
+              - listitem [ref=e192]:
+                - generic [ref=e193]:
+                  - link "Security" [ref=e194] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e196]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e198] [cursor=pointer]
+              - listitem [ref=e199]:
+                - generic [ref=e200]:
+                  - link "Audit Logs" [ref=e201] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e203]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e205] [cursor=pointer]
+              - listitem [ref=e206]:
+                - generic [ref=e207]:
+                  - link "Self-Hosted Palette" [ref=e208] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e210]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e212] [cursor=pointer]
+              - listitem [ref=e213]:
+                - generic [ref=e214]:
+                  - link "Palette VerteX" [ref=e215] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e217]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e219] [cursor=pointer]
+              - listitem [ref=e220]:
+                - generic [ref=e221]:
+                  - link "Tenant Administration" [ref=e222] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e224]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e226] [cursor=pointer]
+              - listitem [ref=e227]:
+                - generic [ref=e228]:
+                  - link "Automation" [ref=e229] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e231]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e233] [cursor=pointer]
+              - listitem [ref=e234]:
+                - generic [ref=e235]:
+                  - link "Troubleshooting" [ref=e236] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e238]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e240] [cursor=pointer]
+              - listitem [ref=e241]:
+                - link "Glossary" [ref=e242] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e244]
+                  - text: Glossary
+              - listitem [ref=e246]:
+                - generic [ref=e247]:
+                  - link "Compliance & Legal" [ref=e248] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e250]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e252] [cursor=pointer]
+              - listitem [ref=e253]:
+                - button "Privacy Settings" [ref=e254] [cursor=pointer]:
+                  - img [ref=e255]
+                  - text: Privacy Settings
+      - main [ref=e257]:
+        - generic [ref=e259]:
+          - generic [ref=e261]:
+            - article [ref=e262]:
+              - navigation "Breadcrumbs" [ref=e263]:
+                - list [ref=e264]:
+                  - listitem [ref=e265]:
+                    - link "Home page" [ref=e266] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e267]
+                  - listitem [ref=e269]:
+                    - link "Virtual Machine Orchestrator" [ref=e270] [cursor=pointer]:
+                      - /url: /vm-management/
+                  - listitem [ref=e271]:
+                    - link "Create and Manage VMs" [ref=e272] [cursor=pointer]:
+                      - /url: /vm-management/create-manage-vm/
+                  - listitem [ref=e273]:
+                    - generic [ref=e274]: Update VM Configuration
+              - generic [ref=e275]:
+                - heading "Update VM Configuration" [level=1] [ref=e277]
+                - paragraph [ref=e278]: You can add storage and additional network interfaces to your virtual machines (VMs).
+                - heading "Add Disk StorageDirect link to Add Disk Storage" [level=2] [ref=e279]:
+                  - text: Add Disk Storage
+                  - link "Direct link to Add Disk Storage" [ref=e280] [cursor=pointer]:
+                    - /url: "#add-disk-storage"
+                    - text: "#"
+                - paragraph [ref=e281]: KubeVirt allows hot plugging additional storage into an active VM. Both block and file system volume types are supported. Disks are "hot plugged" into your VMs, meaning that you do not need to power off the VM in order to add disks.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e282]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e283] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e284]:
+                  - listitem [ref=e285]: A deployed VM in an active cluster that has the Virtual Machine Orchestrator (VMO) pack.
+                - heading "Add a DiskDirect link to Add a Disk" [level=3] [ref=e286]:
+                  - text: Add a Disk
+                  - link "Direct link to Add a Disk" [ref=e287] [cursor=pointer]:
+                    - /url: "#add-a-disk"
+                    - text: "#"
+                - list [ref=e288]:
+                  - listitem [ref=e289]:
+                    - paragraph [ref=e290]:
+                      - text: Log in to
+                      - link "Palette" [ref=e291] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e292]:
+                    - paragraph [ref=e293]:
+                      - text: From the left
+                      - strong [ref=e294]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e295]: Clusters
+                      - text: and click on your cluster.
+                  - listitem [ref=e296]:
+                    - paragraph [ref=e297]:
+                      - text: Navigate to
+                      - strong [ref=e298]: Virtual Machines
+                      - text: ">"
+                      - strong [ref=e299]: Disks
+                      - text: tabs and click the
+                      - strong [ref=e300]: Add disk
+                      - text: button.
+                  - listitem [ref=e301]:
+                    - paragraph [ref=e302]: Review the parameters and update as needed. You can specify the disk size, disk type (Disk, CD-ROM, or LUN), and network interface.
+                    - paragraph [ref=e303]: The interface type determines out-of-the-box operating system (OS) support and disk performance. Choose from the following.
+                    - table [ref=e304]:
+                      - rowgroup [ref=e305]:
+                        - row "Interface type Description" [ref=e306]:
+                          - cell "Interface type" [ref=e307]
+                          - cell "Description" [ref=e308]
+                      - rowgroup [ref=e309]:
+                        - row "virtio Optimized for best performance, but the operating system may require additional Virtio drivers." [ref=e310]:
+                          - cell "virtio" [ref=e311]:
+                            - code [ref=e312]: virtio
+                          - cell "Optimized for best performance, but the operating system may require additional Virtio drivers." [ref=e313]
+                        - row "sata Most operating systems support Serial ATA (SATA). However it offers lower performance." [ref=e314]:
+                          - cell "sata" [ref=e315]:
+                            - code [ref=e316]: sata
+                          - cell "Most operating systems support Serial ATA (SATA). However it offers lower performance." [ref=e317]
+                        - row "scsi A paravirtualized Internet Small Computer System Interface (iSCSI) HDD driver that offers similar functionality to the virtio-block device but with some additional enhancements. In particular, this driver supports adding hundreds of devices and names devices using the standard SCSI device naming scheme." [ref=e318]:
+                          - cell "scsi" [ref=e319]:
+                            - code [ref=e320]: scsi
+                          - cell "A paravirtualized Internet Small Computer System Interface (iSCSI) HDD driver that offers similar functionality to the virtio-block device but with some additional enhancements. In particular, this driver supports adding hundreds of devices and names devices using the standard SCSI device naming scheme." [ref=e321]:
+                            - text: A paravirtualized Internet Small Computer System Interface (iSCSI) HDD driver that offers similar functionality to the
+                            - code [ref=e322]: virtio-block
+                            - text: device but with some additional enhancements. In particular, this driver supports adding hundreds of devices and names devices using the standard SCSI device naming scheme.
+                  - listitem [ref=e323]:
+                    - paragraph [ref=e324]: Next, specify the access mode for your disk.
+                    - table [ref=e325]:
+                      - rowgroup [ref=e326]:
+                        - row "Access mode Description" [ref=e327]:
+                          - cell "Access mode" [ref=e328]
+                          - cell "Description" [ref=e329]
+                      - rowgroup [ref=e330]:
+                        - row "Read-Write-Once (RWO) Ensures that only one client can write to the volume at any given time." [ref=e331]:
+                          - cell "Read-Write-Once (RWO)" [ref=e332]
+                          - cell "Ensures that only one client can write to the volume at any given time." [ref=e333]
+                        - row "Read-Write-Many (RWX) Allows multiple clients to read from and write to the volume simultaneously." [ref=e334]:
+                          - cell "Read-Write-Many (RWX)" [ref=e335]
+                          - cell "Allows multiple clients to read from and write to the volume simultaneously." [ref=e336]
+                        - row "Read-Only-Many (ROX) Permits multiple clients to read data only." [ref=e337]:
+                          - cell "Read-Only-Many (ROX)" [ref=e338]
+                          - cell "Permits multiple clients to read data only." [ref=e339]
+                  - listitem [ref=e340]:
+                    - paragraph [ref=e341]: Specify the volume mode for your disk.
+                    - table [ref=e342]:
+                      - rowgroup [ref=e343]:
+                        - row "Volume mode Description" [ref=e344]:
+                          - cell "Volume mode" [ref=e345]
+                          - cell "Description" [ref=e346]
+                      - rowgroup [ref=e347]:
+                        - row "Filesystem The volume is formatted with a filesystem. The OS manages the volume using a directory structure, where files are stored in folders." [ref=e348]:
+                          - cell "Filesystem" [ref=e349]
+                          - cell "The volume is formatted with a filesystem. The OS manages the volume using a directory structure, where files are stored in folders." [ref=e350]
+                        - row "Block The volume is presented as a raw block device. The OS manages the volume at the block level, without any filesystem structure." [ref=e351]:
+                          - cell "Block" [ref=e352]
+                          - cell "The volume is presented as a raw block device. The OS manages the volume at the block level, without any filesystem structure." [ref=e353]
+                  - listitem [ref=e354]:
+                    - paragraph [ref=e355]:
+                      - text: If you'd like to allocate storage to the VM right away, check
+                      - strong [ref=e356]: Enable preallocation
+                      - text: . Otherwise, the storage is allocated to your VM as data is written to the storage.
+                  - listitem [ref=e357]:
+                    - paragraph [ref=e358]:
+                      - text: Click
+                      - strong [ref=e359]: Add
+                      - text: when you are done.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e360]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e361] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e362]:
+                  - text: The
+                  - strong [ref=e363]: Disks
+                  - text: tab lists the newly added disk as
+                  - code [ref=e364]: PersistingHotplug
+                  - text: .
+                - heading "Add Network InterfacesDirect link to Add Network Interfaces" [level=2] [ref=e365]:
+                  - text: Add Network Interfaces
+                  - link "Direct link to Add Network Interfaces" [ref=e366] [cursor=pointer]:
+                    - /url: "#add-network-interfaces"
+                    - text: "#"
+                - paragraph [ref=e367]: You can add additional network interfaces to a VM. By default, VMs use the native networking already configured in the pod. Typically, this means using the Bridge option, and your VM has the same IP address as the pod. This approach makes interoperability possible. The VM can integrate with different cases like sidecar containers and pod masquerading.
+                - paragraph [ref=e368]: When using pod masquerading, you choose a CIDR for which VMs are not assigned a private IP, and instead use Network Address Translation (NAT) behind the pod IP.
+                - paragraph [ref=e369]:
+                  - text: Multus is a secondary network that uses Multus-CNI. Multus allows you to attach multiple network interfaces to pods in Kubernetes. If you use Multus as your network, ensure that Multus is installed across your cluster and that you have created a default
+                  - code [ref=e370]: NetworkAttachmentDefinition
+                  - text: CRD. For more information, refer to the
+                  - link "Multus CNI" [ref=e371] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=cni-multus
+                  - text: pack.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e372]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e373] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e374]:
+                  - listitem [ref=e375]:
+                    - paragraph [ref=e376]: A deployed VM in an active cluster that has the Virtual Machine Orchestrator (VMO) pack.
+                  - listitem [ref=e377]:
+                    - paragraph [ref=e378]:
+                      - text: The VM must be in the
+                      - strong [ref=e379]: Stopped
+                      - text: state.
+                - heading "Add an InterfaceDirect link to Add an Interface" [level=3] [ref=e380]:
+                  - text: Add an Interface
+                  - link "Direct link to Add an Interface" [ref=e381] [cursor=pointer]:
+                    - /url: "#add-an-interface"
+                    - text: "#"
+                - list [ref=e382]:
+                  - listitem [ref=e383]:
+                    - paragraph [ref=e384]:
+                      - text: Log in to
+                      - link "Palette" [ref=e385] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e386]:
+                    - paragraph [ref=e387]:
+                      - text: From the left
+                      - strong [ref=e388]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e389]: Clusters
+                      - text: and click on your cluster.
+                  - listitem [ref=e390]:
+                    - paragraph [ref=e391]:
+                      - text: Navigate to
+                      - strong [ref=e392]: Virtual Machines > Network Interfaces
+                      - text: and click the
+                      - strong [ref=e393]: Add network interface
+                      - text: button.
+                  - listitem [ref=e394]:
+                    - paragraph [ref=e395]:
+                      - text: "Review the parameters and update as needed. Interface types are:"
+                      - strong [ref=e396]: Masquerade
+                      - text: ","
+                      - strong [ref=e397]: Bridge
+                      - text: ", and"
+                      - strong [ref=e398]: SR-IOV
+                      - text: .
+                  - listitem [ref=e399]:
+                    - paragraph [ref=e400]:
+                      - text: Click
+                      - strong [ref=e401]: Add
+                      - text: when you are done.
+                - generic [ref=e402]:
+                  - generic [ref=e403]:
+                    - img [ref=e405]
+                    - text: info
+                  - paragraph [ref=e408]:
+                    - text: Multus allows hot plugging network interfaces only when interfaces use the
+                    - strong [ref=e409]: Virtio
+                    - text: model connected through bridge binding.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e410]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e411] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - paragraph [ref=e412]:
+                  - text: The
+                  - strong [ref=e413]: Network Interfaces
+                  - text: tab lists the newly added interface.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e414]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e415] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e416]:
+                  - listitem [ref=e417]:
+                    - link "Multus CNI" [ref=e418] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=cni-multus
+              - generic [ref=e419]:
+                - generic [ref=e421]:
+                  - text: "Tags:"
+                  - list [ref=e422]:
+                    - listitem [ref=e423]:
+                      - link "vmo" [ref=e424] [cursor=pointer]:
+                        - /url: /tags/vmo/
+                - link "Edit this page" [ref=e427] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vm-management/create-manage-vm/update-vm-configuration.md
+                  - img [ref=e428]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e432]:
+              - link "Previous « Deploy VM From a Template" [ref=e433] [cursor=pointer]:
+                - /url: /vm-management/create-manage-vm/deploy-vm-from-template/
+                - generic [ref=e434]: Previous
+                - generic [ref=e435]: « Deploy VM From a Template
+              - link "Next Migrate a VM to a Different Node »" [ref=e436] [cursor=pointer]:
+                - /url: /vm-management/create-manage-vm/migrate-vm-to-different-node/
+                - generic [ref=e437]: Next
+                - generic [ref=e438]: Migrate a VM to a Different Node »
+          - list [ref=e441]:
+            - listitem [ref=e442]:
+              - link "Add Disk Storage" [ref=e443] [cursor=pointer]:
+                - /url: "#add-disk-storage"
+              - list [ref=e444]:
+                - listitem [ref=e445]:
+                  - link "Prerequisites" [ref=e446] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e447]:
+                  - link "Add a Disk" [ref=e448] [cursor=pointer]:
+                    - /url: "#add-a-disk"
+                - listitem [ref=e449]:
+                  - link "Validate" [ref=e450] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e451]:
+              - link "Add Network Interfaces" [ref=e452] [cursor=pointer]:
+                - /url: "#add-network-interfaces"
+              - list [ref=e453]:
+                - listitem [ref=e454]:
+                  - link "Prerequisites" [ref=e455] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e456]:
+                  - link "Add an Interface" [ref=e457] [cursor=pointer]:
+                    - /url: "#add-an-interface"
+                - listitem [ref=e458]:
+                  - link "Validate" [ref=e459] [cursor=pointer]:
+                    - /url: "#validate-1"
+            - listitem [ref=e460]:
+              - link "Resources" [ref=e461] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e462] [cursor=pointer]:
+    - generic [ref=e465]:
+      - img "Project Logo" [ref=e466]
+      - paragraph [ref=e467]: Ask AI
+```

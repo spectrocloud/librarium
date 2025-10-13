@@ -1,0 +1,1218 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Security" [ref=e150] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e152]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Audit Logs" [ref=e157] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e159]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Self-Hosted Palette" [ref=e164] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e166]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e168] [cursor=pointer]
+              - listitem [ref=e169]:
+                - generic [ref=e170]:
+                  - link "Palette VerteX" [expanded] [ref=e171] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e173]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e175] [cursor=pointer]
+                - list [ref=e176]:
+                  - listitem [ref=e177]:
+                    - generic [ref=e178]:
+                      - link "FIPS" [ref=e179] [cursor=pointer]:
+                        - /url: /vertex/fips/
+                      - button "Toggle the collapsible sidebar category 'FIPS'" [ref=e180] [cursor=pointer]
+                  - listitem [ref=e181]:
+                    - generic [ref=e182]:
+                      - link "Installation" [expanded] [ref=e183] [cursor=pointer]:
+                        - /url: /vertex/install-palette-vertex/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e184] [cursor=pointer]
+                    - list [ref=e185]:
+                      - listitem [ref=e186]:
+                        - generic [ref=e187]:
+                          - link "VMware" [ref=e188] [cursor=pointer]:
+                            - /url: /vertex/install-palette-vertex/install-on-vmware/
+                          - button "Toggle the collapsible sidebar category 'VMware'" [ref=e189] [cursor=pointer]
+                      - listitem [ref=e190]:
+                        - link "Airgap Resources" [ref=e191] [cursor=pointer]:
+                          - /url: /vertex/install-palette-vertex/airgap/
+                      - listitem [ref=e192]:
+                        - generic [ref=e193]:
+                          - link "Kubernetes" [expanded] [ref=e194] [cursor=pointer]:
+                            - /url: /vertex/install-palette-vertex/install-on-kubernetes/
+                          - button "Toggle the collapsible sidebar category 'Kubernetes'" [ref=e195] [cursor=pointer]
+                        - list [ref=e196]:
+                          - listitem [ref=e197]:
+                            - link "Non-Airgap Installation" [ref=e198] [cursor=pointer]:
+                              - /url: /vertex/install-palette-vertex/install-on-kubernetes/install/
+                          - listitem [ref=e199]:
+                            - generic [ref=e200]:
+                              - link "Airgap Installation" [expanded] [ref=e201] [cursor=pointer]:
+                                - /url: /vertex/install-palette-vertex/install-on-kubernetes/airgap-install/
+                              - button "Toggle the collapsible sidebar category 'Airgap Installation'" [ref=e202] [cursor=pointer]
+                            - list [ref=e203]:
+                              - listitem [ref=e204]:
+                                - link "Checklist" [ref=e205] [cursor=pointer]:
+                                  - /url: /vertex/install-palette-vertex/install-on-kubernetes/airgap-install/checklist/
+                              - listitem [ref=e206]:
+                                - link "Environment Setup" [ref=e207] [cursor=pointer]:
+                                  - /url: /vertex/install-palette-vertex/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions/
+                              - listitem [ref=e208]:
+                                - link "Install VerteX" [ref=e209] [cursor=pointer]:
+                                  - /url: /vertex/install-palette-vertex/install-on-kubernetes/airgap-install/install/
+                          - listitem [ref=e210]:
+                            - link "Helm Configuration Reference" [ref=e211] [cursor=pointer]:
+                              - /url: /vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref/
+                          - listitem [ref=e212]:
+                            - link "Uninstallation" [ref=e213] [cursor=pointer]:
+                              - /url: /vertex/install-palette-vertex/install-on-kubernetes/uninstall/
+                      - listitem [ref=e214]:
+                        - link "VerteX Management Appliance" [ref=e215] [cursor=pointer]:
+                          - /url: /vertex/install-palette-vertex/vertex-management-appliance/
+                  - listitem [ref=e216]:
+                    - link "Activate VerteX" [ref=e217] [cursor=pointer]:
+                      - /url: /vertex/activate-installation/
+                  - listitem [ref=e218]:
+                    - link "Supported Platforms" [ref=e219] [cursor=pointer]:
+                      - /url: /vertex/supported-platforms/
+                  - listitem [ref=e220]:
+                    - generic [ref=e221]:
+                      - link "System Management" [ref=e222] [cursor=pointer]:
+                        - /url: /vertex/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e223] [cursor=pointer]
+                  - listitem [ref=e224]:
+                    - generic [ref=e225]:
+                      - link "Upgrade" [ref=e226] [cursor=pointer]:
+                        - /url: /vertex/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e227] [cursor=pointer]
+              - listitem [ref=e228]:
+                - generic [ref=e229]:
+                  - link "Tenant Administration" [ref=e230] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e232]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e234] [cursor=pointer]
+              - listitem [ref=e235]:
+                - generic [ref=e236]:
+                  - link "Automation" [ref=e237] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e239]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e241] [cursor=pointer]
+              - listitem [ref=e242]:
+                - generic [ref=e243]:
+                  - link "Troubleshooting" [ref=e244] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e246]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e248] [cursor=pointer]
+              - listitem [ref=e249]:
+                - link "Glossary" [ref=e250] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e252]
+                  - text: Glossary
+              - listitem [ref=e254]:
+                - generic [ref=e255]:
+                  - link "Compliance & Legal" [ref=e256] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e258]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e260] [cursor=pointer]
+              - listitem [ref=e261]:
+                - button "Privacy Settings" [ref=e262] [cursor=pointer]:
+                  - img [ref=e263]
+                  - text: Privacy Settings
+      - main [ref=e265]:
+        - generic [ref=e267]:
+          - generic [ref=e269]:
+            - article [ref=e270]:
+              - navigation "Breadcrumbs" [ref=e271]:
+                - list [ref=e272]:
+                  - listitem [ref=e273]:
+                    - link "Home page" [ref=e274] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e275]
+                  - listitem [ref=e277]:
+                    - link "Palette VerteX" [ref=e278] [cursor=pointer]:
+                      - /url: /vertex/
+                  - listitem [ref=e279]:
+                    - link "Installation" [ref=e280] [cursor=pointer]:
+                      - /url: /vertex/install-palette-vertex/
+                  - listitem [ref=e281]:
+                    - link "Kubernetes" [ref=e282] [cursor=pointer]:
+                      - /url: /vertex/install-palette-vertex/install-on-kubernetes/
+                  - listitem [ref=e283]:
+                    - link "Airgap Installation" [ref=e284] [cursor=pointer]:
+                      - /url: /vertex/install-palette-vertex/install-on-kubernetes/airgap-install/
+                  - listitem [ref=e285]:
+                    - generic [ref=e286]: Install VerteX
+              - generic [ref=e287]:
+                - heading "Install VerteX" [level=1] [ref=e289]
+                - paragraph [ref=e290]: You can use the Palette VerteX Helm Chart to install VerteX in a multi-node Kubernetes cluster in your airgap production environment.
+                - paragraph [ref=e291]:
+                  - text: This installation method is common in secure environments with restricted network access that prohibits using VerteX SaaS. Review our
+                  - link "architecture diagrams" [ref=e292] [cursor=pointer]:
+                    - /url: /architecture/networking-ports/
+                  - text: to ensure your Kubernetes cluster has the necessary network connectivity for VerteX to operate successfully.
+                - generic [ref=e293]:
+                  - generic [ref=e294]:
+                    - img [ref=e296]
+                    - text: warning
+                  - paragraph [ref=e299]:
+                    - text: Complete the
+                    - link "Environment Setup" [ref=e300] [cursor=pointer]:
+                      - /url: /vertex/install-palette-vertex/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions/
+                    - text: steps before proceeding with the installation.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e301]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e302] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e303]:
+                  - listitem [ref=e304]:
+                    - paragraph [ref=e305]:
+                      - link "kubectl" [ref=e306] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/tasks/tools/#kubectl
+                      - text: is installed and available.
+                  - listitem [ref=e307]:
+                    - paragraph [ref=e308]:
+                      - link "Helm" [ref=e309] [cursor=pointer]:
+                        - /url: https://helm.sh/docs/intro/install/
+                      - text: is installed and available.
+                  - listitem [ref=e310]:
+                    - paragraph [ref=e311]:
+                      - text: Access to the target Kubernetes cluster's kubeconfig file. You must be able to interact with the cluster using
+                      - code [ref=e312]: kubectl
+                      - text: commands and have sufficient permissions to install VerteX. We recommend using a role with
+                      - code [ref=e313]: cluster-admin
+                      - text: permissions to install VerteX.
+                  - listitem [ref=e314]:
+                    - paragraph [ref=e315]:
+                      - text: Ensure
+                      - code [ref=e316]: unzip
+                      - text: or a similar extraction utility is installed on your system.
+                  - listitem [ref=e317]:
+                    - paragraph [ref=e318]:
+                      - text: The Kubernetes cluster must be set up on a version of Kubernetes that is compatible to your upgraded version. Refer to the
+                      - link "Kubernetes Requirements" [ref=e319] [cursor=pointer]:
+                        - /url: /vertex/install-palette-vertex/#kubernetes-requirements
+                      - text: section to find the version required for your Palette installation.
+                  - listitem [ref=e320]:
+                    - paragraph [ref=e321]: Ensure the Kubernetes cluster does not have Cert Manager installed. VerteX requires a unique Cert Manager configuration to be installed as part of the installation process. If Cert Manager is already installed, you must uninstall it before installing VerteX.
+                  - listitem [ref=e322]:
+                    - paragraph [ref=e323]: Palette requires a Container Storage Interface (CSI) to create Persistent Volumes, which are used to store persistent data. You may install any CSI that is compatible with your Kubernetes cluster.
+                  - listitem [ref=e324]:
+                    - paragraph [ref=e325]:
+                      - text: If you are using a
+                      - emphasis [ref=e326]: self-hosted MongoDB
+                      - text: instance, such as MongoDB Atlas, ensure the MongoDB database has a user named
+                      - code [ref=e327]: hubble
+                      - text: with the permission
+                      - code [ref=e328]: readWriteAnyDatabase
+                      - text: . Refer to the
+                      - link "Add a Database User" [ref=e329] [cursor=pointer]:
+                        - /url: https://www.mongodb.com/docs/guides/atlas/db-user/
+                      - text: guide for guidance on how to create a database user in Atlas.
+                  - listitem [ref=e330]:
+                    - paragraph [ref=e331]:
+                      - text: We recommended the following resources for VerteX. Refer to the
+                      - link "VerteX size guidelines" [ref=e332] [cursor=pointer]:
+                        - /url: /vertex/install-palette-vertex/#size-guidelines
+                      - text: for additional sizing information.
+                    - list [ref=e333]:
+                      - listitem [ref=e334]:
+                        - paragraph [ref=e335]: 8 CPUs per node.
+                      - listitem [ref=e336]:
+                        - paragraph [ref=e337]: 16 GB Memory per node.
+                      - listitem [ref=e338]:
+                        - paragraph [ref=e339]: 110 GB Disk Space per node.
+                      - listitem [ref=e340]:
+                        - paragraph [ref=e341]: A minimum of three worker nodes or three untainted control plane nodes.
+                  - listitem [ref=e342]:
+                    - paragraph [ref=e343]: The following network ports must be accessible for VerteX to operate successfully.
+                    - list [ref=e344]:
+                      - listitem [ref=e345]:
+                        - paragraph [ref=e346]: "TCP/443: Inbound and outbound to and from the VerteX management cluster."
+                      - listitem [ref=e347]:
+                        - paragraph [ref=e348]: "TCP/6443: Outbound traffic from the VerteX management cluster to the deployed clusters' Kubernetes API server."
+                  - listitem [ref=e349]:
+                    - paragraph [ref=e350]: "Ensure you have an SSL certificate that matches the domain name you will assign to VerteX. You will need this to enable HTTPS encryption for VerteX. Reach out to your network administrator or security team to obtain the SSL certificate. You need the following files:"
+                    - list [ref=e351]:
+                      - listitem [ref=e352]:
+                        - paragraph [ref=e353]: x509 SSL certificate file in the base64 format.
+                      - listitem [ref=e354]:
+                        - paragraph [ref=e355]: x509 SSL certificate key file in the base64 format.
+                      - listitem [ref=e356]:
+                        - paragraph [ref=e357]: x509 SSL certificate authority file in the base64 format.
+                  - listitem [ref=e358]:
+                    - paragraph [ref=e359]: Ensure the OS and Kubernetes cluster you are installing VerteX onto is FIPS-compliant. Otherwise, VerteX and its operations will not be FIPS-compliant.
+                  - listitem [ref=e360]:
+                    - paragraph [ref=e361]:
+                      - text: A
+                      - link "StorageClass" [ref=e362] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/concepts/storage/storage-classes/
+                      - text: to manage persistent storage, with the annotation
+                      - code [ref=e363]: storageclass.kubernetes.io/is-default-class
+                      - text: set to
+                      - code [ref=e364]: "true"
+                      - text: . To override the default StorageClass for a workload, modify the
+                      - code [ref=e365]: storageClass
+                      - text: parameter. Check out the
+                      - link "Change the default StorageClass" [ref=e366] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/
+                      - text: page to learn more about modifying StorageClasses.
+                  - listitem [ref=e367]:
+                    - paragraph [ref=e368]:
+                      - text: An Nginx controller will be installed by default. If you already have an Nginx controller deployed in the cluster, you must set the
+                      - code [ref=e369]: ingress.enabled
+                      - text: parameter to
+                      - code [ref=e370]: "false"
+                      - text: in the
+                      - strong [ref=e371]: values.yaml
+                      - text: file.
+                  - listitem [ref=e372]:
+                    - paragraph [ref=e373]: A custom domain and the ability to update Domain Name System (DNS) records. You will need this to enable HTTPS encryption for VerteX.
+                  - listitem [ref=e374]:
+                    - paragraph [ref=e375]: If you are installing VerteX behind a network proxy server, ensure you have the Certificate Authority (CA) certificate file in the base64 format. You will need this to enable VerteX to communicate with the network proxy server.
+                  - listitem [ref=e376]:
+                    - paragraph [ref=e377]:
+                      - text: Access to the VerteX Helm Charts. Refer to the
+                      - link "Access VerteX" [ref=e378] [cursor=pointer]:
+                        - /url: /vertex/#access-palette-vertex
+                      - text: for instructions on how to request access to the Helm Chart.
+                - generic [ref=e379]:
+                  - generic [ref=e380]:
+                    - img [ref=e382]
+                    - text: warning
+                  - paragraph [ref=e385]: Do not use a VerteX-managed Kubernetes cluster when installing VerteX. VerteX-managed clusters contain the VerteX agent and VerteX-created Kubernetes resources that will interfere with the installation.
+                - heading "Install VerteXDirect link to Install VerteX" [level=2] [ref=e386]:
+                  - text: Install VerteX
+                  - link "Direct link to Install VerteX" [ref=e387] [cursor=pointer]:
+                    - /url: "#install-vertex"
+                    - text: "#"
+                - paragraph [ref=e388]: The following instructions are agnostic to the Kubernetes distribution you are using. Depending on the underlying infrastructure provider and your Kubernetes distribution, you may need to modify the instructions to match your environment. Reach out to our support team if you need assistance.
+                - list [ref=e389]:
+                  - listitem [ref=e390]:
+                    - paragraph [ref=e391]:
+                      - text: Open a terminal session and navigate to the directory where you downloaded the VerteX installation zip file provided by our support. Unzip the file to a directory named
+                      - strong [ref=e392]: vertex-install
+                      - text: .
+                    - generic [ref=e394]:
+                      - code [ref=e396]:
+                        - generic [ref=e397]: unzip release-*.zip -d vertex-install
+                      - button "Copy code to clipboard" [ref=e399] [cursor=pointer]:
+                        - generic [ref=e400]:
+                          - img [ref=e401]
+                          - img [ref=e403]
+                  - listitem [ref=e405]:
+                    - paragraph [ref=e406]:
+                      - text: Navigate to the release folder inside the
+                      - strong [ref=e407]: vertex-install
+                      - text: directory.
+                    - generic [ref=e409]:
+                      - code [ref=e411]:
+                        - generic [ref=e412]: cd vertex-install/charts/release-*
+                      - button "Copy code to clipboard" [ref=e414] [cursor=pointer]:
+                        - generic [ref=e415]:
+                          - img [ref=e416]
+                          - img [ref=e418]
+                  - listitem [ref=e420]:
+                    - paragraph [ref=e421]:
+                      - text: Open the file
+                      - strong [ref=e422]: extras/cert-manager/values.yaml
+                      - text: in a text editor and append the URL to your OCI registry, which also includes the namespace or project that is hosting the Spectro Cloud images. The URL should be in the format
+                      - code [ref=e423]: <registry-url>/<namespace>
+                      - text: . In the example configuration below, the value
+                      - code [ref=e424]: my-oci-registry.com/spectro-images
+                      - text: is prefixed to each URL. Save the file after you have appended the URL.
+                    - generic [ref=e426]:
+                      - code [ref=e428]:
+                        - generic [ref=e429]: "image:"
+                        - generic [ref=e430]: "cainjectorImage: \"my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-cainjector:v1.17.0-spectro-4.6.1\""
+                        - generic [ref=e431]: "controllerImage: \"my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-controller:v1.17.0-spectro-4.6.1\""
+                        - generic [ref=e432]: "webhookImage: \"my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-webhook:v1.17.0-spectro-4.6.1\""
+                        - generic [ref=e433]: "amceResolverImage: \"my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-acmesolver:v1.17.0-spectro-4.6.1\""
+                      - button "Toggle word wrap" [ref=e435] [cursor=pointer]:
+                        - img [ref=e436]
+                  - listitem [ref=e438]:
+                    - paragraph [ref=e439]: Install Cert Manager using the following command. Replace the actual file name of the Cert Manager Helm Chart with the one you downloaded, as the version number may be different.
+                    - generic [ref=e441]:
+                      - code [ref=e443]:
+                        - generic [ref=e444]: helm upgrade --values extras/cert-manager/values.yaml \
+                        - generic [ref=e445]: cert-manager extras/cert-manager/cert-manager-*.tgz --install
+                      - button "Copy code to clipboard" [ref=e447] [cursor=pointer]:
+                        - generic [ref=e448]:
+                          - img [ref=e449]
+                          - img [ref=e451]
+                    - code [ref=e456]:
+                      - generic [ref=e457]: Release "cert-manager" does not exist. Installing it now.
+                      - generic [ref=e458]: "NAME: cert-manager"
+                      - generic [ref=e459]: "LAST DEPLOYED: Mon Jan 29 16:32:33 2024"
+                      - generic [ref=e460]: "NAMESPACE: default"
+                      - generic [ref=e461]: "STATUS: deployed"
+                      - generic [ref=e462]: "REVISION: 1"
+                      - generic [ref=e463]: "TEST SUITE: None"
+                  - listitem [ref=e464]:
+                    - paragraph [ref=e465]:
+                      - text: Open the file
+                      - strong [ref=e466]: extras/image-swap/values.yaml
+                      - text: in a text editor and append the URL to your OCI registry that also includes the namespace or project that is hosting the Spectro Cloud images.
+                    - generic [ref=e468]:
+                      - code [ref=e470]:
+                        - generic [ref=e471]: "config:"
+                        - generic [ref=e472]: "imageSwapImages:"
+                        - generic [ref=e473]: "imageSwapInitImage: \"my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release/thewebroot/imageswap-init:v1.5.3-spectro-4.5.1\""
+                        - generic [ref=e474]: "imageSwapImage: \"my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release/thewebroot/imageswap:v1.5.3-spectro-4.5.1\""
+                      - button "Toggle word wrap" [ref=e476] [cursor=pointer]:
+                        - img [ref=e477]
+                  - listitem [ref=e479]:
+                    - paragraph [ref=e480]:
+                      - text: Update the
+                      - code [ref=e481]: ociImageRegistry
+                      - text: section with the proper configuration values to your OCI registry. The
+                      - code [ref=e482]: ociImageRegistry
+                      - text: section should look similar to the following example.
+                    - generic [ref=e483]:
+                      - generic [ref=e484]:
+                        - img [ref=e486]
+                        - text: info
+                      - generic [ref=e488]:
+                        - paragraph [ref=e489]:
+                          - text: Use the following
+                          - code [ref=e490]: mirrorRegistries
+                          - text: placeholder string to replace the respective values of your OCI registry.
+                        - generic [ref=e492]:
+                          - code [ref=e494]:
+                            - generic [ref=e495]: docker.io::OCI_URL/IMAGE_PROJECT/docker.io,gcr.io::OCI_URL/IMAGE_PROJECT/gcr.io,ghcr.io::OCI_URL/IMAGE_PROJECT/ghcr.io,k8s.gcr.io::OCI_URL/IMAGE_PROJECT/k8s.gcr.io,registry.k8s.io::OCI_URL/IMAGE_PROJECT/registry.k8s.io,quay.io::OCI_URL/IMAGE_PROJECT/quay.io"
+                          - generic [ref=e496]:
+                            - button "Toggle word wrap" [ref=e497] [cursor=pointer]:
+                              - img [ref=e498]
+                            - button "Copy code to clipboard" [ref=e500] [cursor=pointer]:
+                              - generic [ref=e501]:
+                                - img [ref=e502]
+                                - img [ref=e504]
+                    - generic [ref=e507]:
+                      - code [ref=e509]:
+                        - generic [ref=e510]: "ociImageRegistry:"
+                        - generic [ref=e511]: "endpoint: \"my-oci-registry.com\""
+                        - generic [ref=e512]: "name: \"Airgap Images OCI\""
+                        - generic [ref=e513]: "password: \"\""
+                        - generic [ref=e514]: "username: \"\""
+                        - generic [ref=e515]: "baseContentPath: \"spectro-images\""
+                        - generic [ref=e516]: "insecureSkipVerify: true"
+                        - generic [ref=e517]: "caCert: \"\""
+                        - generic [ref=e518]: "mirrorRegistries: \"docker.io::my-oci-registry.com/spectro-images/docker.io,gcr.io::my-oci-registry.com/spectro-images,ghcr.io::my-oci-registry.com/spectro-images/ghcr.io,k8s.gcr.io::my-oci-registry.com/spectro-images/k8s.gcr.io,registry.k8s.io::my-oci-registry.com/spectro-images/registry.k8s.io,quay.io::my-oci-registry.com/spectro-images/quay.io\""
+                      - button "Toggle word wrap" [ref=e520] [cursor=pointer]:
+                        - img [ref=e521]
+                  - listitem [ref=e523]:
+                    - paragraph [ref=e524]:
+                      - text: Go ahead and install the image-swap chart using the following command. Point to the
+                      - strong [ref=e525]: values.yaml
+                      - text: file you configured in steps five through six.
+                    - generic [ref=e527]:
+                      - code [ref=e529]:
+                        - generic [ref=e530]: helm upgrade --values extras/image-swap/values.yaml \
+                        - generic [ref=e531]: image-swap extras/image-swap/image-swap-*.tgz --install
+                      - button "Copy code to clipboard" [ref=e533] [cursor=pointer]:
+                        - generic [ref=e534]:
+                          - img [ref=e535]
+                          - img [ref=e537]
+                    - code [ref=e542]:
+                      - generic [ref=e543]: Release "image-swap" does not exist. Installing it now.
+                      - generic [ref=e544]: "NAME: image-swap"
+                      - generic [ref=e545]: "LAST DEPLOYED: Mon Jan 29 17:04:23 2024"
+                      - generic [ref=e546]: "NAMESPACE: default"
+                      - generic [ref=e547]: "STATUS: deployed"
+                      - generic [ref=e548]: "REVISION: 1"
+                      - generic [ref=e549]: "TEST SUITE: None"
+                    - generic [ref=e550]:
+                      - generic [ref=e551]:
+                        - img [ref=e553]
+                        - text: tip
+                      - paragraph [ref=e556]:
+                        - text: If you need to override the image-swap registry configuration post-deployment, refer to the
+                        - link "Override Registry Configuration" [ref=e557] [cursor=pointer]:
+                          - /url: /vertex/system-management/registry-override/
+                        - text: page for instructions.
+                  - listitem [ref=e558]:
+                    - paragraph [ref=e559]:
+                      - text: Open the
+                      - strong [ref=e560]: values.yaml
+                      - text: file in the
+                      - strong [ref=e561]: spectro-mgmt-plane
+                      - text: folder with a text editor of your choice. The
+                      - strong [ref=e562]: values.yaml
+                      - text: file contains the default values for the Palette installation parameters. However, you must populate the following parameters before installing Palette. You can learn more about the parameters on the
+                      - strong [ref=e563]: values.yaml
+                      - text: file on the
+                      - link "Helm Configuration Reference" [ref=e564] [cursor=pointer]:
+                        - /url: /vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref/
+                      - text: page.
+                    - paragraph [ref=e565]:
+                      - text: Ensure you provide the proper
+                      - code [ref=e566]: ociImageRegistry.mirrorRegistries
+                      - text: values if you are using a self-hosted OCI registry. You can find the placeholder string in the
+                      - code [ref=e567]: ociImageRegistry
+                      - text: section of the
+                      - strong [ref=e568]: values.yaml
+                      - text: file.
+                    - table [ref=e569]:
+                      - rowgroup [ref=e570]:
+                        - row "Parameter Description Type" [ref=e571]:
+                          - cell "Parameter" [ref=e572]:
+                            - strong [ref=e573]: Parameter
+                          - cell "Description" [ref=e574]:
+                            - strong [ref=e575]: Description
+                          - cell "Type" [ref=e576]:
+                            - strong [ref=e577]: Type
+                      - rowgroup [ref=e578]:
+                        - row "env.rootDomain The URL name or IP address you will use for the VerteX installation. string" [ref=e579]:
+                          - cell "env.rootDomain" [ref=e580]:
+                            - code [ref=e581]: env.rootDomain
+                          - cell "The URL name or IP address you will use for the VerteX installation." [ref=e582]
+                          - cell "string" [ref=e583]
+                        - row "config.installationMode The installation mode for VerteX. The values can be connected or airgap. Set this value to airgap. string" [ref=e584]:
+                          - cell "config.installationMode" [ref=e585]:
+                            - code [ref=e586]: config.installationMode
+                          - cell "The installation mode for VerteX. The values can be connected or airgap. Set this value to airgap." [ref=e587]:
+                            - text: The installation mode for VerteX. The values can be
+                            - code [ref=e588]: connected
+                            - text: or
+                            - code [ref=e589]: airgap
+                            - text: . Set this value to
+                            - code [ref=e590]: airgap
+                            - text: .
+                          - cell "string" [ref=e591]
+                        - row "ociPackEcrRegistry The OCI registry credentials for the VerteX FIPS packs repository. object" [ref=e592]:
+                          - cell "ociPackEcrRegistry" [ref=e593]:
+                            - code [ref=e594]: ociPackEcrRegistry
+                          - cell "The OCI registry credentials for the VerteX FIPS packs repository." [ref=e595]
+                          - cell "object" [ref=e596]
+                        - row "ociImageRegistry The OCI registry credentials for the VerteX images repository. object" [ref=e597]:
+                          - cell "ociImageRegistry" [ref=e598]:
+                            - code [ref=e599]: ociImageRegistry
+                          - cell "The OCI registry credentials for the VerteX images repository." [ref=e600]
+                          - cell "object" [ref=e601]
+                        - row "ociImageRegistry.mirrorRegistries Replace the placeholder string with the respective values of your OCI registry repository that is hosting the images. Do not use the same values you provided to the image-swap values.yaml. The placeholders require a /v2/ endpoint if your OCI registry supports the Docker Registry protocol v2, otherwise container pull images will fail." [ref=e602]:
+                          - cell "ociImageRegistry.mirrorRegistries" [ref=e603]:
+                            - code [ref=e604]: ociImageRegistry.mirrorRegistries
+                          - cell "Replace the placeholder string with the respective values of your OCI registry repository that is hosting the images. Do not use the same values you provided to the image-swap values.yaml. The placeholders require a /v2/ endpoint if your OCI registry supports the Docker Registry protocol v2, otherwise container pull images will fail." [ref=e605]:
+                            - text: Replace the placeholder string with the respective values of your OCI registry repository that is hosting the images. Do not use the same values you provided to the image-swap
+                            - strong [ref=e606]: values.yaml
+                            - text: . The placeholders require a
+                            - code [ref=e607]: /v2/
+                            - text: endpoint if your OCI registry supports the Docker Registry protocol v2, otherwise container pull images will fail.
+                          - cell [ref=e608]
+                        - 'row "imageSwapImages The image swap configuration for VerteX. If you are using an OCI registry, such as Harbor. Replace the prefix URLs with your OCI registry URL that includes the image namespace or project: <registry-url>/<namespace>. object" [ref=e609]':
+                          - cell "imageSwapImages" [ref=e610]:
+                            - code [ref=e611]: imageSwapImages
+                          - 'cell "The image swap configuration for VerteX. If you are using an OCI registry, such as Harbor. Replace the prefix URLs with your OCI registry URL that includes the image namespace or project: <registry-url>/<namespace>." [ref=e612]':
+                            - text: "The image swap configuration for VerteX. If you are using an OCI registry, such as Harbor. Replace the prefix URLs with your OCI registry URL that includes the image namespace or project:"
+                            - code [ref=e613]: <registry-url>/<namespace>
+                            - text: .
+                          - cell "object" [ref=e614]
+                        - row "imageSwapConfig.isEKSCluster If you are NOT installing VerteX on an EKS cluster, set this value to false. boolean" [ref=e615]:
+                          - cell "imageSwapConfig.isEKSCluster" [ref=e616]:
+                            - code [ref=e617]: imageSwapConfig.isEKSCluster
+                          - cell "If you are NOT installing VerteX on an EKS cluster, set this value to false." [ref=e618]:
+                            - text: If you are NOT installing VerteX on an EKS cluster, set this value to
+                            - code [ref=e619]: "false"
+                            - text: .
+                          - cell "boolean" [ref=e620]
+                        - row "ingress.enabled Whether to install the Nginx ingress controller. Set this to false if you already have an Nginx controller deployed in the cluster. boolean" [ref=e621]:
+                          - cell "ingress.enabled" [ref=e622]:
+                            - code [ref=e623]: ingress.enabled
+                          - cell "Whether to install the Nginx ingress controller. Set this to false if you already have an Nginx controller deployed in the cluster." [ref=e624]:
+                            - text: Whether to install the Nginx ingress controller. Set this to
+                            - code [ref=e625]: "false"
+                            - text: if you already have an Nginx controller deployed in the cluster.
+                          - cell "boolean" [ref=e626]
+                        - row "reach-system Set reach-system.enabled to true and configure the reach-system.proxySettings parameters for VerteX to use a network proxy in your environment. object" [ref=e627]:
+                          - cell "reach-system" [ref=e628]:
+                            - code [ref=e629]: reach-system
+                          - cell "Set reach-system.enabled to true and configure the reach-system.proxySettings parameters for VerteX to use a network proxy in your environment." [ref=e630]:
+                            - text: Set
+                            - code [ref=e631]: reach-system.enabled
+                            - text: to
+                            - code [ref=e632]: "true"
+                            - text: and configure the
+                            - code [ref=e633]: reach-system.proxySettings
+                            - text: parameters for VerteX to use a network proxy in your environment.
+                          - cell "object" [ref=e634]
+                    - generic [ref=e635]:
+                      - generic [ref=e636]:
+                        - img [ref=e638]
+                        - text: info
+                      - paragraph [ref=e641]:
+                        - text: If you are installing VerteX by pulling required images from a private mirror registry, you will need to provide the credentials to your registry in the
+                        - strong [ref=e642]: values.yaml
+                        - text: file. For more information, refer to
+                        - link "Helm Configuration Reference" [ref=e643] [cursor=pointer]:
+                          - /url: /vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref/#image-pull-secret
+                        - text: .
+                    - paragraph [ref=e644]:
+                      - text: Save the
+                      - strong [ref=e645]: values.yaml
+                      - text: file after you have populated the required parameters mentioned in the table.
+                    - generic [ref=e646]:
+                      - generic [ref=e647]:
+                        - img [ref=e649]
+                        - text: warning
+                      - paragraph [ref=e652]:
+                        - text: VerteX VerteX does not support insecure connections. Ensure you have the Certificate Authority (CA) available, in PEM format, when using a custom packs and image registry. Otherwise, VerteX will not be able to pull packs and images from the registry. Use the
+                        - code [ref=e653]: caCert
+                        - text: parameter to provide the base64-encoded CA certificate.
+                    - paragraph [ref=e654]:
+                      - text: Select one of the following tabs to review an example of the
+                      - strong [ref=e655]: values.yaml
+                      - text: file with the required parameters highlighted.
+                    - generic [ref=e656]:
+                      - tablist [ref=e657]:
+                        - tab "OCI Registry" [selected] [ref=e658] [cursor=pointer]
+                        - tab "AWS ECR Registry" [ref=e659] [cursor=pointer]
+                      - tabpanel [ref=e661]:
+                        - generic [ref=e663]:
+                          - code [ref=e665]:
+                            - generic [ref=e666]: "#########################"
+                            - generic [ref=e667]: "# Spectro Cloud Palette #"
+                            - generic [ref=e668]: "#########################"
+                            - generic [ref=e669]: "global:"
+                            - generic [ref=e670]: "imagePullSecret:"
+                            - generic [ref=e671]: "create: false"
+                            - generic [ref=e672]: "# Provide your own base64 encoded dockerconfigjson value below if using ImagePullSecret for Private registry Authentication"
+                            - generic [ref=e673]: "dockerConfigJson: \"\""
+                            - generic [ref=e674]: "# MongoDB Configuration"
+                            - generic [ref=e675]: "mongo:"
+                            - generic [ref=e676]: "# Whether to deploy MongoDB in-cluster (internal == true) or use Mongo Atlas"
+                            - generic [ref=e677]: "internal: true"
+                            - generic [ref=e678]: "# Mongodb URL. Only change if using Mongo Atlas."
+                            - generic [ref=e679]: "databaseUrl: \"mongo-0.mongo.hubble-system.svc.cluster.local,mongo-1.mongo.hubble-system.svc.cluster.local,mongo-2.mongo.hubble-system.svc.cluster.local\""
+                            - generic [ref=e680]: "# Mongo Atlas password, base64 encoded. Only enter if using Mongo Atlas."
+                            - generic [ref=e681]: "databasePassword: \"\""
+                            - generic [ref=e682]: "#No. of mongo replicas to run, default is 3"
+                            - generic [ref=e683]: "replicas: 3"
+                            - generic [ref=e684]: "# The following only apply if mongo.internal == true"
+                            - generic [ref=e685]: "cpuLimit: \"2000m\""
+                            - generic [ref=e686]: "memoryLimit: \"4Gi\""
+                            - generic [ref=e687]: "pvcSize: \"20Gi\""
+                            - generic [ref=e688]: "storageClass: \"\" # leave empty to use the default storage class"
+                            - generic [ref=e689]: "config:"
+                            - generic [ref=e690]: "installationMode: \"airgap\" #values can be connected or airgap."
+                            - generic [ref=e691]: "# SSO SAML Configuration (Optional for self-hosted type)"
+                            - generic [ref=e692]: "sso:"
+                            - generic [ref=e693]: "saml:"
+                            - generic [ref=e694]: "enabled: false"
+                            - generic [ref=e695]: "acsUrlRoot: \"myfirstpalette.spectrocloud.com\""
+                            - generic [ref=e696]: "acsUrlScheme: \"https\""
+                            - generic [ref=e697]: "audienceUrl: \"https://www.spectrocloud.com\""
+                            - generic [ref=e698]: "entityId: \"https://www.spectrocloud.com\""
+                            - generic [ref=e699]: "apiVersion: \"v1\""
+                            - generic [ref=e700]: "# Email Configurations. (Optional for self-hosted type)"
+                            - generic [ref=e701]: "email:"
+                            - generic [ref=e702]: "enabled: false"
+                            - generic [ref=e703]: "emailId: \"noreply@spectrocloud.com\""
+                            - generic [ref=e704]: "smtpServer: \"smtp.gmail.com\""
+                            - generic [ref=e705]: "smtpPort: 587"
+                            - generic [ref=e706]: "insecureSkipVerifyTls: false"
+                            - generic [ref=e707]: "fromEmailId: \"noreply@spectrocloud.com\""
+                            - generic [ref=e708]: "password: \"\" # base64 encoded SMTP password"
+                            - generic [ref=e709]: "env:"
+                            - generic [ref=e710]: "# rootDomain is a DNS record which will be mapped to the ingress-nginx-controller load balancer"
+                            - generic [ref=e711]: "# E.g., myfirstpalette.spectrocloud.com"
+                            - generic [ref=e712]: "# - Mandatory if ingress.internal == false"
+                            - generic [ref=e713]: "# - Optional if ingress.internal == true (leave empty)"
+                            - generic [ref=e714]: "#"
+                            - generic [ref=e715]: "# IMPORTANT: a DNS record must be created separately and it must be a wildcard to account for Organization prefixes"
+                            - generic [ref=e716]: "# E.g., *.myfirstpalette.spectrocloud.com"
+                            - generic [ref=e717]: "rootDomain: \"vertex.example.com\""
+                            - generic [ref=e718]: "# stableEndpointAccess is used when deploying EKS clusters in Private network type."
+                            - generic [ref=e719]: "# When your Saas installed instance have connectivity to the private VPC where you want to launch the cluster set the stableEndpointAccess to true"
+                            - generic [ref=e720]: "cluster:"
+                            - generic [ref=e721]: "stableEndpointAccess: false"
+                            - generic [ref=e722]: "# registry:"
+                            - generic [ref=e723]: "# endpoint: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e724]: "# name: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e725]: "# password: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e726]: "# username: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e727]: "# insecureSkipVerify: false"
+                            - generic [ref=e728]: "# caCert: \"\""
+                            - generic [ref=e729]: "ociPackRegistry:"
+                            - generic [ref=e730]: "endpoint: \"my-oci-registry.com\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e731]: "name: \"Airgap Packs OCI\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e732]: "password: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e733]: "username: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e734]: "baseContentPath: \"spectro-packs\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e735]: "insecureSkipVerify: false"
+                            - generic [ref=e736]: "caCert: \"\""
+                            - generic [ref=e737]: "# ociPackEcrRegistry:"
+                            - generic [ref=e738]: "# endpoint: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e739]: "# name: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e740]: "# accessKey: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e741]: "# secretKey: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e742]: "# baseContentPath: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e743]: "# isPrivate: true"
+                            - generic [ref=e744]: "# insecureSkipVerify: false"
+                            - generic [ref=e745]: "# caCert: \"\""
+                            - generic [ref=e746]: "ociImageRegistry:"
+                            - generic [ref=e747]: "endpoint: \"my-oci-registry.com\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e748]: "name: \"Airgap Images OCI\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e749]: "password: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e750]: "username: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e751]: "baseContentPath: \"spectro-images\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e752]: "insecureSkipVerify: true"
+                            - generic [ref=e753]: "caCert: \"\""
+                            - generic [ref=e754]: "mirrorRegistries: \"docker.io::my-oci-registry.com/v2/spectro-images/docker.io,gcr.io::my-oci-registry.com/v2/spectro-images/gcr.io,ghcr.io::my-oci-registry.com/v2/spectro-images/ghcr.io,k8s.gcr.io::my-oci-registry.com/v2/spectro-images/k8s.gcr.io,registry.k8s.io::my-oci-registry.com/v2/spectro-images/registry.k8s.io,quay.io::my-oci-registry.com/v2/spectro-images/quay.io\" # See instructions below."
+                            - generic [ref=e755]: "# Instruction for mirrorRegistries."
+                            - generic [ref=e756]: "# ----------------------------------"
+                            - generic [ref=e757]: "# Please provide the registry endpoint for the following registries, separated by double colons (::):"
+                            - generic [ref=e758]: "# docker.io"
+                            - generic [ref=e759]: "# gcr.io"
+                            - generic [ref=e760]: "# ghcr.io"
+                            - generic [ref=e761]: "# k8s.gcr.io"
+                            - generic [ref=e762]: "# registry.k8s.io"
+                            - generic [ref=e763]: "# quay.io"
+                            - generic [ref=e764]: "# For each registry, follow this example format:"
+                            - generic [ref=e765]: "# docker.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<DOCKER_IO_ENDPOINT>,gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GCR_IO_ENDPOINT>,ghcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GHCR_IO_ENDPOINT>,k8s.gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<K8S_IO_ENDPOINT>,registry.k8s.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<REGISTRY_K8S_IO_ENDPOINT>,quay.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<QUAY_IO_ENDPOINT>,us-docker.pkg.dev::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<US_DOCKER_ENDPOINT>"
+                            - generic [ref=e766]: "# Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry."
+                            - generic [ref=e767]: "imageSwapImages:"
+                            - generic [ref=e768]: "imageSwapInitImage: \"my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/thewebroot/imageswap:v1.5.3-spectro-4.5.1\""
+                            - generic [ref=e769]: "imageSwapImage: \"my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/thewebroot/imageswap:v1.5.3-spectro-4.5.1\""
+                            - generic [ref=e770]: "imageSwapConfig:"
+                            - generic [ref=e771]: "isEKSCluster: true #If the Cluster you are trying to install is EKS cluster set value to true else set to false"
+                            - generic [ref=e772]: "grpc:"
+                            - generic [ref=e773]: "external: false"
+                            - generic [ref=e774]: "endpoint: \"\" #Please provide DNS endpoint with the port eg: msg.spectrocloud.com:443"
+                            - generic [ref=e775]: "annotations: {}"
+                            - generic [ref=e776]: "# AWS example"
+                            - generic [ref=e777]: "# service.beta.kubernetes.io/aws-load-balancer-internal: \"true\""
+                            - generic [ref=e778]: "# service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp"
+                            - generic [ref=e779]: "# service.beta.kubernetes.io/aws-load-balancer-ssl-ports: \"https\""
+                            - generic [ref=e780]: "# Azure example"
+                            - generic [ref=e781]: "# service.beta.kubernetes.io/azure-load-balancer-internal: \"true\""
+                            - generic [ref=e782]: "# service.beta.kubernetes.io/azure-dns-label-name: myserviceuniquelabel"
+                            - generic [ref=e783]: "# Static IP for the GRPC load balancer service. If empty, a dynamic IP will be generated."
+                            - generic [ref=e784]: "grpcStaticIP: \"\""
+                            - generic [ref=e785]: "caCertificateBase64: \"\" #Please provide caCertificate for the grpc server Cert"
+                            - generic [ref=e786]: "serverCrtBase64: \"\""
+                            - generic [ref=e787]: "serverKeyBase64: \"\""
+                            - generic [ref=e788]: "insecureSkipVerify: false"
+                            - generic [ref=e789]: "ingress:"
+                            - generic [ref=e790]: "# When enabled nginx ingress controller would be installed"
+                            - generic [ref=e791]: "enabled: true"
+                            - generic [ref=e792]: "ingress:"
+                            - generic [ref=e793]: "# Whether to front NGINX Ingress Controller with a cloud"
+                            - generic [ref=e794]: "# load balancer (internal == false) or use host network"
+                            - generic [ref=e795]: "internal: false"
+                            - generic [ref=e796]: "# Default SSL certificate and key for NGINX Ingress Controller (Optional)"
+                            - generic [ref=e797]: "# A wildcard cert for config.env.rootDomain, e.g., *.myfirstpalette.spectrocloud.com"
+                            - generic [ref=e798]: "# If left blank, the NGINX ingress controller will generate a self-signed cert (when terminating TLS upstream of ingress-nginx-controller)"
+                            - generic [ref=e799]: "certificate: \"\""
+                            - generic [ref=e800]: "key: \"\""
+                            - generic [ref=e801]: "#If ACM is enabled please use grpc as a non internal and bring grpc on different LB. Provide certificate and dns for it."
+                            - generic [ref=e802]: "annotations: {}"
+                            - generic [ref=e803]: "# AWS example"
+                            - generic [ref=e804]: "# service.beta.kubernetes.io/aws-load-balancer-internal: \"true\""
+                            - generic [ref=e805]: "# service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp"
+                            - generic [ref=e806]: "# service.beta.kubernetes.io/aws-load-balancer-ssl-cert: <ACM_ARN>"
+                            - generic [ref=e807]: "# service.beta.kubernetes.io/aws-load-balancer-ssl-ports: \"https\""
+                            - generic [ref=e808]: "# Azure example"
+                            - generic [ref=e809]: "# service.beta.kubernetes.io/azure-load-balancer-internal: \"true\""
+                            - generic [ref=e810]: "# service.beta.kubernetes.io/azure-dns-label-name: myserviceuniquelabel"
+                            - generic [ref=e811]: "# Static IP for the Ingress load balancer service. If empty, a dynamic IP will be generated."
+                            - generic [ref=e812]: "ingressStaticIP: \"\""
+                            - generic [ref=e813]: "# For Service like AWS Load Balancer using https we would want to terminate the HTTPS at Load Balancer."
+                            - generic [ref=e814]: "terminateHTTPSAtLoadBalancer: false"
+                            - generic [ref=e815]: "frps:"
+                            - generic [ref=e816]: "frps:"
+                            - generic [ref=e817]: "enabled: false"
+                            - generic [ref=e818]: "frpHostURL: proxy.sample.spectrocloud.com"
+                            - generic [ref=e819]: "server:"
+                            - generic [ref=e820]: "crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURqekNDQW5lZ0F3SUJBZ0lVZTVMdXBBZGljd0Z1SFJpWWMyWEgzNTFEUzJJd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0tERW1NQ1FHQTFVRUF3d2RjSEp2ZUhrdWMyRnRjR3hsTG5Od1pXTjBjbTlqYkc5MVpDNWpiMjB3SGhjTgpNakl4TURFME1UTXlOREV5V2hjTk1qY3hNREV6TVRNeU5ERXlXakI3TVFzd0NRWURWUVFHRXdKVlV6RUxNQWtHCkExVUVDQk1DUTBFeEV6QVJCZ05WQkFjVENsTmhiblJoUTJ4aGNtRXhGVEFUQmdOVkJBb1RERk53WldOMGNtOUQKYkc5MVpERUxNQWtHQTFVRUN4TUNTVlF4SmpBa0JnTlZCQU1USFhCeWIzaDVMbk5oYlhCc1pTNXpjR1ZqZEhKdgpZMnh2ZFdRdVkyOXRNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ0tDQVFFQXd5bEt3MmlxClBXM2JrQU0wV3RhaEFLbEppcWFHd05LUDVRRTZ6ZW5NM2FURko3TjIwN0dWcUNGYzJHTDNodmNhTDFranZjeEkKK2lybHpkbm9hcVhUSmV3ZkJiTGs2SGVhZmdXUVp3NHNNeE5QRUVYYlNXYm54Mm03Y2FlbVJiUWZSQWhPWXRvWgpIWG1IMzQ1Q25mNjF0RnhMeEEzb0JRNm1yb0JMVXNOOUh2WWFzeGE5QUFmZUNNZm5sYWVBWE9CVmROalJTN1VzCkN5NmlSRXpEWFgvem1nOG5WWFUwemlrcXdoS3pqSlBJd2FQa2ViaXVSdUJYdEZ0VlQwQmFzS3VqbURzd0lsRFQKVmR4SHRRQUVyUmM4Q2Nhb20yUkpZbTd1aHNEYlo2WVFzS3JiMmhIbU5rNENVWUd5eUJPZnBwbzR2bFd1S2FEcgpsVFNYUXlPN0M0ejM1d0lEQVFBQm8xNHdYREJhQmdOVkhSRUVVekJSZ2dsc2IyTmhiR2h2YzNTSEJIOEFBQUdDCkhYQnliM2g1TG5OaGJYQnNaUzV6Y0dWamRISnZZMnh2ZFdRdVkyOXRnaDhxTG5CeWIzaDVMbk5oYlhCc1pTNXoKY0dWamRISnZZMnh2ZFdRdVkyOXRNQTBHQ1NxR1NJYjNEUUVCQ3dVQUE0SUJBUUEvRFJFVm54SWJRdi9uMDEvSQpJd1d0ekhKNGNHOUp6UlB6dmszNUcvRGJOVzZYZ0M3djBoWlFIVHg5bzMrckxoSUFiWTNmbjc1VEtlN3hMRWpiCkI3M3pGWURJSStkYzM5NkQzZU51M2NxRGIvY01kYmlFalhod2ttZk9NRm9qMnpOdHJIdzFsSjA0QlNFMWw1YWgKMDk0Vy9aaEQ2YTVLU3B0cDh1YUpKVmNrejRYMEdRWjVPYjZadGdxZVVxNytqWVZOZ0tLQzJCMW1SNjMyMDNsZwozVFZmZEkrdmI3b292dVdOOFRBVG9qdXNuS25WMmRMeTFBOWViWXYwMEM3WWZ6Q0NhODgrN2dzTGhJaUJjRHBPClJkWjU3QStKanJmSU5IYy9vNm5YWFhDZ2h2YkFwUVk1QnFnMWIzYUpUZERNWThUY0hoQVVaQzB5eU04bXcwMnQKWHRRQwotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="
+                            - generic [ref=e821]: "key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0NBUUVBd3lsS3cyaXFQVzNia0FNMFd0YWhBS2xKaXFhR3dOS1A1UUU2emVuTTNhVEZKN04yCjA3R1ZxQ0ZjMkdMM2h2Y2FMMWtqdmN4SStpcmx6ZG5vYXFYVEpld2ZCYkxrNkhlYWZnV1FadzRzTXhOUEVFWGIKU1dibngybTdjYWVtUmJRZlJBaE9ZdG9aSFhtSDM0NUNuZjYxdEZ4THhBM29CUTZtcm9CTFVzTjlIdllhc3hhOQpBQWZlQ01mbmxhZUFYT0JWZE5qUlM3VXNDeTZpUkV6RFhYL3ptZzhuVlhVMHppa3F3aEt6akpQSXdhUGtlYml1ClJ1Qlh0RnRWVDBCYXNLdWptRHN3SWxEVFZkeEh0UUFFclJjOENjYW9tMlJKWW03dWhzRGJaNllRc0tyYjJoSG0KTms0Q1VZR3l5Qk9mcHBvNHZsV3VLYURybFRTWFF5TzdDNHozNXdJREFRQUJBb0lCQUFPVVZFeTFOTG9mczdFMgpmZFZVcm10R3I1U2RiVWRJRlYrTDREbzZtWWxQSmxhT0VoWGI0ZlROZDloNEtEWVBmaWwwSnhXcUU0U1RHTmZuCnNUMlRnUVhuQ01LZi8xYk1Lc2M0N3VjVStYYU9XaHJnVFI5UmhkckFjN0duODRLL3hQc0ljL2VZTEhHLzh1QUUKeWUvLzVmRkM2QmpXY0hUM1NkTlZnd3duamJudG5XTXIzTFJBVnJBamZBckxveWUwS0F2YytYdXJLTEVCcmMyVQpjaHlDbitZemJKN0VlSG44UXdQNGdBNXVSK0NCMFJPeFErYXIzS3M5YUhkZTQ1OEVNNEtLMnpUOXA4RWZRc1lFCkFtNUpxWjliR0JEVHV1dEkyNm9GK0pLQ1IzZzhXNERRcHVYRUZoVjlya0pMSm13RDhQb0JaclF6UzZvdmJhdkkKRk42QVM4RUNnWUVBOEcxQzFxZVh4dTQ4aEYxak5MTCswRmxkeWdFem9SMmFoRGJCai8weUZkQVVjU2pYTzk0NAozN1dORTBUUG10WG1Vc3NZTlBTR21XaWI2OUhicEFoMTY3SWVwNE9LaVlZdkozYm1oUC9WNzFvK3M0SWJlSHh1CkVJbWVVckFOZWRoQURVQnZ4c1lXRWxlVlVJSFFRcjY1VHM2ZjIrWkpTKzg4TU05bUorL3BmcmNDZ1lFQXo4MXgKR3JiSE5oak56RjhZMjhiK0hMNW5rdDR0SUdkU3hnbW9PMFFJeGkrQVNZTzB0WW42VFk0ZHI5ZXErMzE3b21ZawpMbDNtNENORDhudG1vYzRvWnM4SUpDQ0IrZjNqcTY4OHdoQU9vVHZ4dDhjZVJqOFRhRHl1SHZwS043OVNsVVd2CjBJd2ZRNDNIemd3SWJiSWhjcTRJVGswanI0VHdWbThia283VElGRUNnWUJoNnUzVXhHN0JHeGZVaE1BNW4waSsKREJkeGhPbkZEV3gzdW1FOHhrN1dxV2NaNnhzMWk3eTRCNVhNS2pNdkNUeURyYWxQTCtOOXFTZ1BjK216TmFybwo4aU1mOENmRStMeE5vMVFoQ0p6Vm5YaDUzVnhZeHJ5QXlidU1TNTFCYVh3MHFYQ2NrT0krV0NNOHBaSHZEUVFsCmYydUZ3SlZMY3NTZDBHbjNpL01ab3dLQmdBY1BzUjg2Uk15MnpROTd6OGx3R3FSNVorV2F2U2ZUdXdGVnhLeTIKNUNGdjdja1J1NnRMbEFEY3FtK1dRWTRvTm5KUFREMXpIV3hTWm5XdjhjM2Z4b212MFZRQThzbSs4ZVNjb05EcgpZTVBqMkpQcEpVTTMwMzRBU2Q1dG5PWUdEMVZaTjk4N1U3aWs4Ynd6dG5tYnl2MHRvc1NlWkc4TGNtdE5mVDllCnNSZnhBb0dCQUpTV1lDellyTlRMNnRUSnh5M2FqWm5jZkxrMEV0eWNCd05FRXZHVzVSVE9LOUFYTE96RzN0eHUKajZqWlRpaUFRU09aaVd0clJHU0U0bEkyQ1MvcjNjd3VuSGlnZlovd1dKZldkZ0JpRnZqOTVFbUVQWUZaRDRobQpkT3l5UHhRRXFTRmprQ21BS2plOFBpTDdpU01GbGhBZTZQWFljQlExdCtzd01UeXBnY3RrCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg=="
+                            - generic [ref=e822]: "ca:"
+                            - generic [ref=e823]: "crt : LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURNVENDQWhtZ0F3SUJBZ0lVSHhWK0ljVGZHUElzdW8yY3dqQ0Q0Z2RSTFFRd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0tERW1NQ1FHQTFVRUF3d2RjSEp2ZUhrdWMyRnRjR3hsTG5Od1pXTjBjbTlqYkc5MVpDNWpiMjB3SGhjTgpNakl4TURFME1UTXlOREV5V2hjTk16WXdOakl5TVRNeU5ERXlXakFvTVNZd0pBWURWUVFEREIxd2NtOTRlUzV6CllXMXdiR1V1YzNCbFkzUnliMk5zYjNWa0xtTnZiVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0MKQVFvQ2dnRUJBSy90WXBHVi9HRURUWnZzL25QQ2lOK0U3K1dOQ21GeU1NQjdkazVOT3JzQWZIaVVvZ1JRVUo0WQptSjhwVmYrSzhTRFBsdGNYcW40WVVTbmxiUERsVlBkWU5zOTEwT3RaS1EwNW96aUtGV2pNbS85NHlLSjVyVzNsCndDNEN0ayttUm9Ib0ZQQS81dmFVbVZHdlVadjlGY0JuL0pKN2F4WnRIQk1PRiticXQ0Zmd0ci9YMWdOeWhPVzUKZTVScGpESkozRjJTVnc5NUpBQSt4a3V3UitFSmVseEtnQVpxdDc0ejB4U2ROODZ0QzNtK0wxRGs2WVVlQWEzZApvM3Rsa3ZkeDV6dUJvSmI2QmpZWEV4UE1PbThRcHFNVWRLK3lDZUdrem9XQStDOUtFdGtVaERCWktENStNWXRZCktVMUh1RXJCbmw2Z3BuWTRlbzJjVTRxdkNwZzZ4S3NDQXdFQUFhTlRNRkV3SFFZRFZSME9CQllFRklKMkRkTjgKc2ZtVjRCT1ZFL0FjZ0VEejArNmlNQjhHQTFVZEl3UVlNQmFBRklKMkRkTjhzZm1WNEJPVkUvQWNnRUR6MCs2aQpNQThHQTFVZEV3RUIvd1FGTUFNQkFmOHdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBQWhQVi9RMVl1YWVTOTZVCmhjVGQ4RWdJaHhpbHFiTWlTQm5WaVdrdlJzWk94UUIwNTFScWtwT3g0UTRsckdaOGVJWWc3T0trTTdzejhuTVQKL2pxS21sZDY0MzJCcURCMlNkNVp5ZFdReHAwU1laRTlnVWszYk9KRGtZVXQ4b1cvZDBWeG9uU05LQVN3QmZKaApWV1VZUUlpNm55K0ZZZmtuRFNvRnFlY2Z3SDBQQVUraXpnMkI3KzFkbko5YisyQ21IOUVCallOZ2hoNlFzVlFQCkh2SkdQQURtandPNkJOam5HK0Z3K0Z6cmFXUTNCTjAwb08zUjF6UmgxZERmTTQzR3oxRmZGRW5GSXI5aGFuUnQKWHJFZm8vZWU5bjBLWUFESEJnV1g4dlhuNHZrRmdWRjgwYW9MUUJSQTBxWXErcW1pVlp6YnREeE9ldFEyRWFyTQpyNmVWL0lZPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="
+                            - generic [ref=e824]: "service:"
+                            - generic [ref=e825]: "annotations: {}"
+                            - generic [ref=e826]: "ui-system:"
+                            - generic [ref=e827]: "enabled: true"
+                            - generic [ref=e828]: "ui:"
+                            - generic [ref=e829]: "nocUI:"
+                            - generic [ref=e830]: "enable: true"
+                            - generic [ref=e831]: "mapBoxAccessToken: \"\" # Leave Empty to use Default Access Token from Palette"
+                            - generic [ref=e832]: "mapBoxStyledLayerID: \"\" # Leave Empty to use Default Style Layer ID"
+                            - generic [ref=e833]: "reachSystem:"
+                            - generic [ref=e834]: "enabled: false"
+                            - generic [ref=e835]: "proxySettings:"
+                            - generic [ref=e836]: "http_proxy: \"\""
+                            - generic [ref=e837]: "https_proxy: \"\""
+                            - generic [ref=e838]: "no_proxy: \"\""
+                            - generic [ref=e839]: "ca_crt_path: \"\" # Set the 'ca_crt_path' parameter to the location of the certificate file on each node. This file should contain the Proxy CA Certificate, in case the Proxy being used requires a certificate."
+                            - generic [ref=e840]: "scheduleOnControlPlane: true"
+                          - generic [ref=e841]:
+                            - button "Toggle word wrap" [ref=e842] [cursor=pointer]:
+                              - img [ref=e843]
+                            - button "Copy code to clipboard" [ref=e845] [cursor=pointer]:
+                              - generic [ref=e846]:
+                                - img [ref=e847]
+                                - img [ref=e849]
+                    - generic [ref=e851]:
+                      - generic [ref=e852]:
+                        - img [ref=e854]
+                        - text: warning
+                      - paragraph [ref=e857]:
+                        - text: Ensure you have configured the
+                        - strong [ref=e858]: values.yaml
+                        - text: file with the required parameters before proceeding to the next steps. For the parameter
+                        - code [ref=e859]: ociImageRegistry.mirrorRegistries
+                        - text: ", ensure a"
+                        - code [ref=e860]: /v2/
+                        - text: endpoint is used if your OCI registry supports the Docker Registry protocol v2, otherwise container pull images will fail.
+                  - listitem [ref=e861]:
+                    - paragraph [ref=e862]: This step is only required if you are installing VerteX in an environment where a network proxy must be configured for VerteX to access the internet. If you are not using a network proxy, skip to the next step.
+                    - paragraph [ref=e863]:
+                      - text: Install the reach-system chart using the following command. Point to the
+                      - strong [ref=e864]: values.yaml
+                      - text: file you configured in the step eight.
+                    - generic [ref=e866]:
+                      - code [ref=e868]:
+                        - generic [ref=e869]: helm upgrade --values vertex/values.yaml \
+                        - generic [ref=e870]: reach-system extras/reach-system/reach-system-*.tgz --install
+                      - button "Copy code to clipboard" [ref=e872] [cursor=pointer]:
+                        - generic [ref=e873]:
+                          - img [ref=e874]
+                          - img [ref=e876]
+                    - code [ref=e881]:
+                      - generic [ref=e882]: Release "reach-system" does not exist. Installing it now.
+                      - generic [ref=e883]: "NAME: reach-system"
+                      - generic [ref=e884]: "LAST DEPLOYED: Mon Jan 29 17:04:23 2024"
+                      - generic [ref=e885]: "NAMESPACE: default"
+                      - generic [ref=e886]: "STATUS: deployed"
+                      - generic [ref=e887]: "REVISION: 1"
+                      - generic [ref=e888]: "TEST SUITE: None"
+                    - group [ref=e889]:
+                      - generic "How to update containerd to use proxy configurations" [ref=e890] [cursor=pointer]
+                  - listitem [ref=e891]:
+                    - paragraph [ref=e892]: Install the VerteX Helm Chart using the following command.
+                    - generic [ref=e894]:
+                      - code [ref=e896]:
+                        - generic [ref=e897]: helm upgrade --values vertex/values.yaml \
+                        - generic [ref=e898]: hubble vertex/spectro-mgmt-plane-*.tgz --install
+                      - button "Copy code to clipboard" [ref=e900] [cursor=pointer]:
+                        - generic [ref=e901]:
+                          - img [ref=e902]
+                          - img [ref=e904]
+                    - code [ref=e909]:
+                      - generic [ref=e910]: Release "hubble" does not exist. Installing it now.
+                      - generic [ref=e911]: "NAME: hubble"
+                      - generic [ref=e912]: "LAST DEPLOYED: Mon Jan 29 17:07:51 2024"
+                      - generic [ref=e913]: "NAMESPACE: default"
+                      - generic [ref=e914]: "STATUS: deployed"
+                      - generic [ref=e915]: "REVISION: 1"
+                      - generic [ref=e916]: "TEST SUITE: None"
+                  - listitem [ref=e917]:
+                    - paragraph [ref=e918]:
+                      - text: Track the installation process using the command below. VerteX is ready when the deployments in the namespaces
+                      - code [ref=e919]: cp-system
+                      - text: ","
+                      - code [ref=e920]: hubble-system
+                      - text: ","
+                      - code [ref=e921]: ingress-nginx
+                      - text: ","
+                      - code [ref=e922]: jet-system
+                      - text: ", and"
+                      - code [ref=e923]: ui-system
+                      - text: reach the
+                      - emphasis [ref=e924]: Ready
+                      - text: state. The installation takes between two to three minutes to complete.
+                    - generic [ref=e926]:
+                      - code [ref=e928]:
+                        - generic [ref=e929]: kubectl get pods --all-namespaces --watch
+                      - button "Copy code to clipboard" [ref=e931] [cursor=pointer]:
+                        - generic [ref=e932]:
+                          - img [ref=e933]
+                          - img [ref=e935]
+                    - generic [ref=e937]:
+                      - generic [ref=e938]:
+                        - img [ref=e940]
+                        - text: tip
+                      - paragraph [ref=e943]:
+                        - text: For a more user-friendly experience, use the open source tool
+                        - link "k9s" [ref=e944] [cursor=pointer]:
+                          - /url: https://k9scli.io/
+                        - text: to monitor the installation process.
+                  - listitem [ref=e945]:
+                    - paragraph [ref=e946]:
+                      - text: Create a DNS CNAME record that is mapped to the VerteX
+                      - code [ref=e947]: ingress-nginx-controller
+                      - text: load balancer. You can use the following command to retrieve the load balancer IP address. You may require the assistance of your network administrator to create the DNS record.
+                    - generic [ref=e949]:
+                      - code [ref=e951]:
+                        - generic [ref=e952]: kubectl get service ingress-nginx-controller --namespace ingress-nginx \
+                        - generic [ref=e953]: "--output jsonpath='{.status.loadBalancer.ingress[0].hostname}'"
+                      - generic [ref=e954]:
+                        - button "Toggle word wrap" [ref=e955] [cursor=pointer]:
+                          - img [ref=e956]
+                        - button "Copy code to clipboard" [ref=e958] [cursor=pointer]:
+                          - generic [ref=e959]:
+                            - img [ref=e960]
+                            - img [ref=e962]
+                    - generic [ref=e964]:
+                      - generic [ref=e965]:
+                        - img [ref=e967]
+                        - text: warning
+                      - paragraph [ref=e970]:
+                        - text: If Palette VerteX has only one tenant and you use local accounts with Single Sign-On (SSO) disabled, you can access Palette VerteX using the IP address or any domain name that resolves to that IP. However, once you enable SSO, users must log in using the tenant-specific subdomain. For example, if you create a tenant named
+                        - code [ref=e971]: tenant1
+                        - text: and the domain name you assigned to Palette VerteX is
+                        - code [ref=e972]: vertex.example.com
+                        - text: ", the tenant URL will be"
+                        - code [ref=e973]: tenant1.vertex.example.com
+                        - text: . We recommend you create an additional wildcard DNS record to map all tenant URLs to the Palette VerteX load balancer. For example,
+                        - code [ref=e974]: "*.vertex.example.com"
+                        - text: .
+                  - listitem [ref=e975]:
+                    - paragraph [ref=e976]:
+                      - text: Use the custom domain name or the IP address of the load balancer to visit the VerteX system console. To access the system console, open a web browser, paste the custom domain URL in the address bar, and append the value
+                      - code [ref=e977]: /system
+                      - text: .
+                    - paragraph [ref=e978]: The first time you visit the VerteX system console, a warning message about a not-trusted SSL certificate may appear. This is expected, as you have not yet uploaded your SSL certificate to VerteX. You can ignore this warning message and proceed.
+                    - paragraph [ref=e979]:
+                      - img "Screenshot of the VerteX system console showing Username and Password fields." [ref=e980]
+                  - listitem [ref=e981]:
+                    - paragraph [ref=e982]:
+                      - text: Log in to the system console using the following default credentials. Refer to the
+                      - link "password requirements" [ref=e983] [cursor=pointer]:
+                        - /url: /vertex/system-management/account-management/credentials/#password-requirements-and-security
+                      - text: documentation page to learn more about password requirements.
+                    - table [ref=e984]:
+                      - rowgroup [ref=e985]:
+                        - row "Parameter Value" [ref=e986]:
+                          - cell "Parameter" [ref=e987]:
+                            - strong [ref=e988]: Parameter
+                          - cell "Value" [ref=e989]:
+                            - strong [ref=e990]: Value
+                      - rowgroup [ref=e991]:
+                        - row "Username admin" [ref=e992]:
+                          - cell "Username" [ref=e993]
+                          - cell "admin" [ref=e994]:
+                            - code [ref=e995]: admin
+                        - row "Password admin" [ref=e996]:
+                          - cell "Password" [ref=e997]
+                          - cell "admin" [ref=e998]:
+                            - code [ref=e999]: admin
+                    - paragraph [ref=e1000]:
+                      - text: After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the VerteX system console. Use the username
+                      - code [ref=e1001]: admin
+                      - text: and your new password to log in to the system console. You can create additional system administrator accounts and assign roles to users in the system console. Refer to the
+                      - link "Account Management" [ref=e1002] [cursor=pointer]:
+                        - /url: /vertex/system-management/account-management/
+                      - text: documentation page for more information.
+                  - listitem [ref=e1003]:
+                    - paragraph [ref=e1004]:
+                      - text: After login, a summary page is displayed. VerteX is installed with a self-signed SSL certificate. To assign a different SSL certificate, you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to VerteX. You can upload the files using the VerteX system console. Refer to the
+                      - link "Configure HTTPS Encryption" [ref=e1005] [cursor=pointer]:
+                        - /url: /vertex/system-management/ssl-certificate-management/
+                      - text: page for instructions on how to upload the SSL certificate files to Palette.
+                    - generic [ref=e1006]:
+                      - generic [ref=e1007]:
+                        - img [ref=e1009]
+                        - text: warning
+                      - paragraph [ref=e1012]:
+                        - text: If you plan to deploy host clusters into different networks, you may require a reverse proxy. Check out the
+                        - link "Configure Reverse Proxy" [ref=e1013] [cursor=pointer]:
+                          - /url: /vertex/system-management/reverse-proxy/
+                        - text: guide for instructions on how to configure a reverse proxy for VerteX.
+                - paragraph [ref=e1014]:
+                  - text: You now have a self-hosted instance of VerteX installed in a Kubernetes cluster. Make sure you retain the
+                  - strong [ref=e1015]: values.yaml
+                  - text: file, as you may need it for future upgrades.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e1016]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e1017] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e1018]: Use the following steps to validate the VerteX installation.
+                - list [ref=e1019]:
+                  - listitem [ref=e1020]:
+                    - paragraph [ref=e1021]:
+                      - text: Open up a web browser and navigate to the VerteX system console. To access the system console, open a web browser, paste the
+                      - code [ref=e1022]: env.rootDomain
+                      - text: value you provided in the address bar, and append the value
+                      - code [ref=e1023]: /system
+                      - text: "in the following format:"
+                      - code [ref=e1024]: <env.rootDomain>/system
+                      - text: . You can also use the IP address of the load balancer.
+                  - listitem [ref=e1025]:
+                    - paragraph [ref=e1026]: Log in using the credentials you received from our support team. After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the VerteX system console.
+                  - listitem [ref=e1027]:
+                    - paragraph [ref=e1028]:
+                      - text: Open a terminal session and issue the following command to verify the VerteX installation. The command should return a list of deployments in the
+                      - code [ref=e1029]: cp-system
+                      - text: ","
+                      - code [ref=e1030]: hubble-system
+                      - text: ","
+                      - code [ref=e1031]: ingress-nginx
+                      - text: ","
+                      - code [ref=e1032]: jet-system
+                      - text: ", and"
+                      - code [ref=e1033]: ui-system
+                      - text: namespaces.
+                    - generic [ref=e1035]:
+                      - code [ref=e1037]:
+                        - generic [ref=e1038]: kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
+                        - generic [ref=e1039]: "| grep -E '^(cp-system|hubble-system|ingress-nginx|jet-system|ui-system)\\s'"
+                      - generic [ref=e1040]:
+                        - button "Toggle word wrap" [ref=e1041] [cursor=pointer]:
+                          - img [ref=e1042]
+                        - button "Copy code to clipboard" [ref=e1044] [cursor=pointer]:
+                          - generic [ref=e1045]:
+                            - img [ref=e1046]
+                            - img [ref=e1048]
+                    - paragraph [ref=e1050]: Your output should look similar to the following.
+                    - generic [ref=e1052]:
+                      - code [ref=e1054]:
+                        - generic [ref=e1055]: cp-system spectro-cp-ui-689984f88d-54wsw Running
+                        - generic [ref=e1056]: hubble-system auth-85b748cbf4-6drkn Running
+                        - generic [ref=e1057]: hubble-system auth-85b748cbf4-dwhw2 Running
+                        - generic [ref=e1058]: hubble-system cloud-fb74b8558-lqjq5 Running
+                        - generic [ref=e1059]: hubble-system cloud-fb74b8558-zkfp5 Running
+                        - generic [ref=e1060]: hubble-system configserver-685fcc5b6d-t8f8h Running
+                        - generic [ref=e1061]: hubble-system event-68568f54c7-jzx5t Running
+                        - generic [ref=e1062]: hubble-system event-68568f54c7-w9rnh Running
+                        - generic [ref=e1063]: hubble-system foreq-6b689f54fb-vxjts Running
+                        - generic [ref=e1064]: hubble-system hashboard-897bc9884-pxpvn Running
+                        - generic [ref=e1065]: hubble-system hashboard-897bc9884-rmn69 Running
+                        - generic [ref=e1066]: hubble-system hutil-6d7c478c96-td8q4 Running
+                        - generic [ref=e1067]: hubble-system hutil-6d7c478c96-zjhk4 Running
+                        - generic [ref=e1068]: hubble-system mgmt-85dbf6bf9c-jbggc Running
+                        - generic [ref=e1069]: hubble-system mongo-0 Running
+                        - generic [ref=e1070]: hubble-system mongo-1 Running
+                        - generic [ref=e1071]: hubble-system mongo-2 Running
+                        - generic [ref=e1072]: hubble-system msgbroker-6c9b9fbf8b-mcsn5 Running
+                        - generic [ref=e1073]: hubble-system oci-proxy-7789cf9bd8-qcjkl Running
+                        - generic [ref=e1074]: hubble-system packsync-28205220-bmzcg Succeeded
+                        - generic [ref=e1075]: hubble-system spectrocluster-6c57f5775d-dcm2q Running
+                        - generic [ref=e1076]: hubble-system spectrocluster-6c57f5775d-gmdt2 Running
+                        - generic [ref=e1077]: hubble-system spectrocluster-6c57f5775d-sxks5 Running
+                        - generic [ref=e1078]: hubble-system system-686d77b947-8949z Running
+                        - generic [ref=e1079]: hubble-system system-686d77b947-cgzx6 Running
+                        - generic [ref=e1080]: hubble-system timeseries-7865bc9c56-5q87l Running
+                        - generic [ref=e1081]: hubble-system timeseries-7865bc9c56-scncb Running
+                        - generic [ref=e1082]: hubble-system timeseries-7865bc9c56-sxmgb Running
+                        - generic [ref=e1083]: hubble-system user-5c9f6c6f4b-9dgqz Running
+                        - generic [ref=e1084]: hubble-system user-5c9f6c6f4b-hxkj6 Running
+                        - generic [ref=e1085]: ingress-nginx ingress-nginx-controller-2txsv Running
+                        - generic [ref=e1086]: ingress-nginx ingress-nginx-controller-55pk2 Running
+                        - generic [ref=e1087]: ingress-nginx ingress-nginx-controller-gmps9 Running
+                        - generic [ref=e1088]: jet-system jet-6599b9856d-t9mr4 Running
+                        - generic [ref=e1089]: ui-system spectro-ui-76ffdf67fb-rkgx8 Running
+                      - button "Toggle word wrap" [ref=e1091] [cursor=pointer]:
+                        - img [ref=e1092]
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e1094]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e1095] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e1096]:
+                  - text: Now that you have installed Palette VerteX, you can either
+                  - link "create a tenant" [ref=e1097] [cursor=pointer]:
+                    - /url: /vertex/system-management/tenant-management
+                  - text: to host your users and set up your clusters, or you can
+                  - link "activate your installation" [ref=e1098] [cursor=pointer]:
+                    - /url: /vertex/activate-installation
+                  - text: .
+                - paragraph [ref=e1099]: Beginning with version 4.6.32, once you install Palette VerteX, you have 30 days to activate it; versions older than 4.6.32 do not need to be activated. During the 30-day trial period, you can use Palette VerteX without any restrictions. After 30 days, you can continue to use Palette VerteX, but you cannot deploy additional clusters or perform any day-2 operations on existing clusters until Palette VerteX is activated. Each installation of Palette VerteX must be activated separately. We recommend activating Palette VerteX as soon as possible to avoid any disruptions.
+              - generic [ref=e1100]:
+                - generic [ref=e1102]:
+                  - text: "Tags:"
+                  - list [ref=e1103]:
+                    - listitem [ref=e1104]:
+                      - link "vertex" [ref=e1105] [cursor=pointer]:
+                        - /url: /tags/vertex/
+                    - listitem [ref=e1106]:
+                      - link "enterprise" [ref=e1107] [cursor=pointer]:
+                        - /url: /tags/enterprise/
+                - link "Edit this page" [ref=e1110] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/install.md
+                  - img [ref=e1111]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e1115]:
+              - link "Previous « Environment Setup" [ref=e1116] [cursor=pointer]:
+                - /url: /vertex/install-palette-vertex/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions/
+                - generic [ref=e1117]: Previous
+                - generic [ref=e1118]: « Environment Setup
+              - link "Next Helm Configuration Reference »" [ref=e1119] [cursor=pointer]:
+                - /url: /vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref/
+                - generic [ref=e1120]: Next
+                - generic [ref=e1121]: Helm Configuration Reference »
+          - list [ref=e1124]:
+            - listitem [ref=e1125]:
+              - link "Prerequisites" [ref=e1126] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e1127]:
+              - link "Install VerteX" [ref=e1128] [cursor=pointer]:
+                - /url: "#install-vertex"
+            - listitem [ref=e1129]:
+              - link "Validate" [ref=e1130] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e1131]:
+              - link "Next Steps" [ref=e1132] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e1133] [cursor=pointer]:
+    - generic [ref=e1136]:
+      - img "Project Logo" [ref=e1137]
+      - paragraph [ref=e1138]: Ask AI
+```

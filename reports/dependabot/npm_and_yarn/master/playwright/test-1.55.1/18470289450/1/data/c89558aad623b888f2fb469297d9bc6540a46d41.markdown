@@ -1,0 +1,506 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                  - listitem [ref=e107]:
+                    - generic [ref=e108]:
+                      - link "Data Center Clusters" [ref=e109] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e111]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e113] [cursor=pointer]
+                  - listitem [ref=e114]:
+                    - generic [ref=e115]:
+                      - link "Edge" [expanded] [ref=e116] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e118]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e120] [cursor=pointer]
+                    - list [ref=e121]:
+                      - listitem [ref=e122]:
+                        - generic [ref=e123]:
+                          - link "Architecture" [expanded] [ref=e124] [cursor=pointer]:
+                            - /url: /clusters/edge/architecture/
+                          - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e125] [cursor=pointer]
+                        - list [ref=e126]:
+                          - listitem [ref=e127]:
+                            - link "Two-Node Architecture" [ref=e128] [cursor=pointer]:
+                              - /url: /clusters/edge/architecture/two-node/
+                      - listitem [ref=e129]:
+                        - link "Hardware Requirements" [ref=e130] [cursor=pointer]:
+                          - /url: /clusters/edge/hardware-requirements/
+                      - listitem [ref=e131]:
+                        - link "Deployment Lifecycle" [ref=e132] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-native-lifecycle/
+                      - listitem [ref=e133]:
+                        - generic [ref=e134]:
+                          - link "Trusted Boot" [ref=e135] [cursor=pointer]:
+                            - /url: /clusters/edge/trusted-boot/
+                          - button "Toggle the collapsible sidebar category 'Trusted Boot'" [ref=e136] [cursor=pointer]
+                      - listitem [ref=e137]:
+                        - generic [ref=e138]:
+                          - link "Install Configuration" [ref=e139] [cursor=pointer]:
+                            - /url: /clusters/edge/edge-configuration/
+                          - button "Toggle the collapsible sidebar category 'Install Configuration'" [ref=e140] [cursor=pointer]
+                      - listitem [ref=e141]:
+                        - generic [ref=e142]:
+                          - link "EdgeForge Workflow" [ref=e143] [cursor=pointer]:
+                            - /url: /clusters/edge/edgeforge-workflow/
+                          - button "Toggle the collapsible sidebar category 'EdgeForge Workflow'" [ref=e144] [cursor=pointer]
+                      - listitem [ref=e145]:
+                        - generic [ref=e146]:
+                          - link "Local UI" [ref=e147] [cursor=pointer]:
+                            - /url: /clusters/edge/local-ui/
+                          - button "Toggle the collapsible sidebar category 'Local UI'" [ref=e148] [cursor=pointer]
+                      - listitem [ref=e149]:
+                        - generic [ref=e150]:
+                          - link "Deployment" [ref=e151] [cursor=pointer]:
+                            - /url: /clusters/edge/site-deployment/
+                          - button "Toggle the collapsible sidebar category 'Deployment'" [ref=e152] [cursor=pointer]
+                      - listitem [ref=e153]:
+                        - generic [ref=e154]:
+                          - link "Cluster Management" [ref=e155] [cursor=pointer]:
+                            - /url: /clusters/edge/cluster-management/
+                          - button "Toggle the collapsible sidebar category 'Cluster Management'" [ref=e156] [cursor=pointer]
+                      - listitem [ref=e157]:
+                        - generic [ref=e158]:
+                          - link "Networking" [ref=e159] [cursor=pointer]:
+                            - /url: /clusters/edge/networking/
+                          - button "Toggle the collapsible sidebar category 'Networking'" [ref=e160] [cursor=pointer]
+                      - listitem [ref=e161]:
+                        - generic [ref=e162]:
+                          - link "Third Party Integrations" [ref=e163] [cursor=pointer]:
+                            - /url: /clusters/edge/third-party-integrations/
+                          - button "Toggle the collapsible sidebar category 'Third Party Integrations'" [ref=e164] [cursor=pointer]
+                  - listitem [ref=e165]:
+                    - generic [ref=e166]:
+                      - link "Palette Virtual Clusters" [ref=e167] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e169]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e171] [cursor=pointer]
+                  - listitem [ref=e172]:
+                    - generic [ref=e173]:
+                      - link "Imported Clusters" [ref=e174] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e176]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e178] [cursor=pointer]
+                  - listitem [ref=e179]:
+                    - generic [ref=e180]:
+                      - link "Manage Clusters" [ref=e181] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e183]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e185] [cursor=pointer]
+                  - listitem [ref=e186]:
+                    - generic [ref=e187]:
+                      - link "Cluster Groups" [ref=e188] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e190]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e192] [cursor=pointer]
+                  - listitem [ref=e193]:
+                    - generic [ref=e194]:
+                      - link "Private Cloud Gateway" [ref=e195] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e197]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e199] [cursor=pointer]
+              - listitem [ref=e200]:
+                - generic [ref=e201]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e202] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e204]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e206] [cursor=pointer]
+              - listitem [ref=e207]:
+                - generic [ref=e208]:
+                  - link "Palette Dev Engine" [ref=e209] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e211]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e213] [cursor=pointer]
+              - listitem [ref=e214]:
+                - generic [ref=e215]:
+                  - link "Virtual Machine Orchestrator" [ref=e216] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e218]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e220] [cursor=pointer]
+              - listitem [ref=e221]:
+                - generic [ref=e222]:
+                  - link "Workspaces" [ref=e223] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e225]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e227] [cursor=pointer]
+              - listitem [ref=e228]:
+                - generic [ref=e229]:
+                  - link "Packs List" [ref=e230] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e232]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e234] [cursor=pointer]
+              - listitem [ref=e235]:
+                - generic [ref=e236]:
+                  - link "User & Role Management" [ref=e237] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e239]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e241] [cursor=pointer]
+              - listitem [ref=e242]:
+                - generic [ref=e243]:
+                  - link "Registries and Packs" [ref=e244] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e246]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e248] [cursor=pointer]
+              - listitem [ref=e249]:
+                - generic [ref=e250]:
+                  - link "Security" [ref=e251] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e253]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e255] [cursor=pointer]
+              - listitem [ref=e256]:
+                - generic [ref=e257]:
+                  - link "Audit Logs" [ref=e258] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e260]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e262] [cursor=pointer]
+              - listitem [ref=e263]:
+                - generic [ref=e264]:
+                  - link "Self-Hosted Palette" [ref=e265] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e267]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e269] [cursor=pointer]
+              - listitem [ref=e270]:
+                - generic [ref=e271]:
+                  - link "Palette VerteX" [ref=e272] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e274]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e276] [cursor=pointer]
+              - listitem [ref=e277]:
+                - generic [ref=e278]:
+                  - link "Tenant Administration" [ref=e279] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e281]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e283] [cursor=pointer]
+              - listitem [ref=e284]:
+                - generic [ref=e285]:
+                  - link "Automation" [ref=e286] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e288]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e290] [cursor=pointer]
+              - listitem [ref=e291]:
+                - generic [ref=e292]:
+                  - link "Troubleshooting" [ref=e293] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e295]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e297] [cursor=pointer]
+              - listitem [ref=e298]:
+                - link "Glossary" [ref=e299] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e301]
+                  - text: Glossary
+              - listitem [ref=e303]:
+                - generic [ref=e304]:
+                  - link "Compliance & Legal" [ref=e305] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e307]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e309] [cursor=pointer]
+              - listitem [ref=e310]:
+                - button "Privacy Settings" [ref=e311] [cursor=pointer]:
+                  - img [ref=e312]
+                  - text: Privacy Settings
+      - main [ref=e314]:
+        - generic [ref=e316]:
+          - generic [ref=e318]:
+            - article [ref=e319]:
+              - navigation "Breadcrumbs" [ref=e320]:
+                - list [ref=e321]:
+                  - listitem [ref=e322]:
+                    - link "Home page" [ref=e323] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e324]
+                  - listitem [ref=e326]:
+                    - link "Clusters" [ref=e327] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e328]:
+                    - link "Edge" [ref=e329] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                  - listitem [ref=e330]:
+                    - link "Architecture" [ref=e331] [cursor=pointer]:
+                      - /url: /clusters/edge/architecture/
+                  - listitem [ref=e332]:
+                    - generic [ref=e333]: Two-Node Architecture
+              - generic [ref=e334]:
+                - heading "Two-Node Architecture" [level=1] [ref=e336]
+                - paragraph [ref=e337]:
+                  - text: Palette Edge allows you to provision a highly available (HA) cluster capable of withstanding any single node failure with only two nodes instead of three. In two-node HA clusters, Palette overcomes a significant limitation of etcd by utilizing Postgres as the backend storage with
+                  - link "Kine" [ref=e338] [cursor=pointer]:
+                    - /url: https://github.com/k3s-io/kine
+                  - text: . Kine is only used in two-node clusters.
+                - generic [ref=e339]:
+                  - generic [ref=e340]:
+                    - img [ref=e342]
+                    - text: tech preview
+                  - generic [ref=e344]: This is a Tech Preview feature and is subject to change. Do not use this feature in production workloads.
+                - heading "Architecture OverviewDirect link to Architecture Overview" [level=2] [ref=e345]:
+                  - text: Architecture Overview
+                  - link "Direct link to Architecture Overview" [ref=e346] [cursor=pointer]:
+                    - /url: "#architecture-overview"
+                    - text: "#"
+                - paragraph [ref=e347]:
+                  - text: In a typical Kubernetes cluster, a cluster achieves high availability through the backend key-value store
+                  - link "etcd" [ref=e348] [cursor=pointer]:
+                    - /url: https://etcd.io/
+                  - text: . When a single node goes down, etcd is able to maintain data consistency since its two remaining nodes can still maintain quorum. However, this setup requires at least three nodes. A two-node etcd cluster will not be able to withstand the failure of a node because even the failure of one node will cause the cluster to lose quorum.
+                - paragraph [ref=e349]: In our two-node HA architecture, instead of etcd, we use a Postgres database as the backend storage and a etcd shim named Kine that allows the Kubernetes API to communicate with it as if it is an etcd server. One node is the leader and the other node is the follower. The leader will process write requests and replicate the changes to the follower node. Each node has a liveness probe that periodically probes the other node. When a node goes down, the other node's liveness probe will stop receiving responses and the surviving node will remain the leader or be promoted to become the leader.
+                - paragraph [ref=e350]:
+                  - img "Architectural diagram of a two-node architecture" [ref=e351]
+                - generic [ref=e352]:
+                  - generic [ref=e353]:
+                    - img [ref=e355]
+                    - text: warning
+                  - paragraph [ref=e358]:
+                    - text: To create two-node Edge clusters, ensure you set the
+                    - code [ref=e359]: TWO_NODE
+                    - text: argument to
+                    - code [ref=e360]: "true"
+                    - text: during EdgeForge when building provider images, and toggle on
+                    - strong [ref=e361]: Two-Node Mode
+                    - text: during Edge cluster creation. For more information, refer to
+                    - link "Build Provider Images" [ref=e362] [cursor=pointer]:
+                      - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/
+                    - text: and
+                    - link "Create Cluster Definition" [ref=e363] [cursor=pointer]:
+                      - /url: /clusters/edge/site-deployment/cluster-deployment/
+                    - text: . If you create a two-node cluster, you must use exactly two nodes in the control plane. You will also not be able to change it to a regular etcd-backed cluster or change the number of nodes.
+                - heading "LimitationsDirect link to Limitations" [level=2] [ref=e364]:
+                  - text: Limitations
+                  - link "Direct link to Limitations" [ref=e365] [cursor=pointer]:
+                    - /url: "#limitations"
+                    - text: "#"
+                - list [ref=e366]:
+                  - listitem [ref=e367]:
+                    - text: Two-node clusters can only be deployed in
+                    - link "central management mode" [ref=e368] [cursor=pointer]:
+                      - /url: /clusters/edge/edge-native-lifecycle/#central-clusters
+                    - text: . You cannot deploy hosts in local management mode.
+                  - listitem [ref=e369]:
+                    - text: Agent mode is not supported for two-node clusters because two-node high availability relies on Kairos, which is only used in appliance mode. For more information, refer to
+                    - link "Deployment Modes" [ref=e370] [cursor=pointer]:
+                      - /url: /deployment-modes/
+                    - text: .
+                  - listitem [ref=e371]: Two-node clusters can only have exactly two nodes in the control plane pool. You cannot adjust the number of the nodes in the control plane pool after cluster creation.
+                  - listitem [ref=e372]: Two-node clusters only support K3s. Other Kubernetes distributions are not supported.
+                - heading "Use CasesDirect link to Use Cases" [level=2] [ref=e373]:
+                  - text: Use Cases
+                  - link "Direct link to Use Cases" [ref=e374] [cursor=pointer]:
+                    - /url: "#use-cases"
+                    - text: "#"
+                - paragraph [ref=e375]: The two-node architecture prioritizes availability, but does make a slight sacrifice in data consistency in a split-brain scenario. This architecture is most suitable in situations where the priority for availability is high, the risk for network split is low, and a slight loss during a network split event is acceptable when compared with total availability loss. When these conditions are met, adopting the two-node architecture allows you to save 33% of costs on hardware alone, with further savings on cable management, operations, space, and transportation.
+                - paragraph [ref=e376]: "Example use cases include the following:"
+                - list [ref=e377]:
+                  - listitem [ref=e378]: Point-of-sale systems stationed in Edge locations such as retail stores, restaurants, and coffee shops.
+                  - listitem [ref=e379]: Industrial Internet of Things (IIoT) gateways at factories and industrial sites.
+                  - listitem [ref=e380]: Automated inventory systems in retail and distribution warehouses.
+                - heading "Leader Promotion After Node FailureDirect link to Leader Promotion After Node Failure" [level=2] [ref=e381]:
+                  - text: Leader Promotion After Node Failure
+                  - link "Direct link to Leader Promotion After Node Failure" [ref=e382] [cursor=pointer]:
+                    - /url: "#leader-promotion-after-node-failure"
+                    - text: "#"
+                - paragraph [ref=e383]: When the leader node of a two-node cluster fails, the liveness probe on the follower node will stop returning healthy results. Once there are enough unhealthy responses, the follower node will initiate the promotion process to promote itself as the leader. During this time, the different Kubernetes components become temporarily unavailable. The liveness probe would make adjustments to the instance of Kine on the node so that its requests are now directed to the new leader node's own instance of Postgres. The probe also performs a few SQL commands on the Postgres table to make sure that it is ready for when the cluster comes back online.
+                - paragraph [ref=e384]:
+                  - img "Architectural diagram of a two-node cluster when the leader node goes down" [ref=e385]
+                - paragraph [ref=e386]: Once all adjustments have been made, the Kubernetes cluster will come back online and start processing requests.
+                - heading "Restore High AvailabilityDirect link to Restore High Availability" [level=2] [ref=e387]:
+                  - text: Restore High Availability
+                  - link "Direct link to Restore High Availability" [ref=e388] [cursor=pointer]:
+                    - /url: "#restore-high-availability"
+                    - text: "#"
+                - paragraph [ref=e389]: When you re-introduce another node to your now one-node cluster to restore high availability, the cluster behavior is different depending on the timestamp of the most recent state changes in the two nodes. The node with the more recently timestamped state change will become the leader
+                - heading "Restore After FailureDirect link to Restore After Failure" [level=3] [ref=e390]:
+                  - text: Restore After Failure
+                  - link "Direct link to Restore After Failure" [ref=e391] [cursor=pointer]:
+                    - /url: "#restore-after-failure"
+                    - text: "#"
+                - paragraph [ref=e392]: If you introduce a node that had previously failed, the previously failed node will drop its database in its entirety and sync with the current leader as a follower, because the node does not have a more recently timestamped state change compared with the current leader node. If you introduce a new node that was never part of the cluster, it will also sync with the current leader and become a follower. No data loss is incurred in this scenario because the dropped dataset is entirely duplicated in the surviving node.
+                - heading "Restore After Network Split and Potential Data LossDirect link to Restore After Network Split and Potential Data Loss" [level=3] [ref=e393]:
+                  - text: Restore After Network Split and Potential Data Loss
+                  - link "Direct link to Restore After Network Split and Potential Data Loss" [ref=e394] [cursor=pointer]:
+                    - /url: "#restore-after-network-split-and-potential-data-loss"
+                    - text: "#"
+                - paragraph [ref=e395]: If a network split occurs, both nodes will assume the other node has experienced failure and start operating as the new leader. When you re-introduce both nodes to the same cluster, the nodes will compare the timestamp of their most recent state change. The node with the most recent state change is elected leader, and the losing node will drop its entire database to sync with the leader node as a follower. This may incur a small amount of data loss, as the data written to the losing node during the split is not retained.
+                - paragraph [ref=e396]:
+                  - img "Order of operations diagram of how the two-node architecture resolves split brain scenarios" [ref=e397]
+                - heading "Upgrade BehaviorDirect link to Upgrade Behavior" [level=2] [ref=e398]:
+                  - text: Upgrade Behavior
+                  - link "Direct link to Upgrade Behavior" [ref=e399] [cursor=pointer]:
+                    - /url: "#upgrade-behavior"
+                    - text: "#"
+                - paragraph [ref=e400]: Upgrading a two-node cluster involves a small amount of downtime for write operations. Upgrading a cluster does not change the role of either node. Both nodes retain their original roles.
+                - paragraph [ref=e401]: During an upgrade, the liveness probes on both nodes are paused to avoid the accidental promotion of the follower node. Then one of the nodes is selected at random to undergo the upgrade first. Once the upgrade is complete, the cluster upgrades the other node. Read requests will continue to be processed because one of the nodes is always available. Write requests will be temporarily unavailable as the leader node goes down during the upgrade. Once both nodes are upgraded, both nodes resume the liveness probes.
+                - paragraph [ref=e402]:
+                  - img "Order of operations diagram of how the two-node architecture handles upgrades" [ref=e403]
+              - generic [ref=e404]:
+                - generic [ref=e406]:
+                  - text: "Tags:"
+                  - list [ref=e407]:
+                    - listitem [ref=e408]:
+                      - link "edge" [ref=e409] [cursor=pointer]:
+                        - /url: /tags/edge/
+                    - listitem [ref=e410]:
+                      - link "architecture" [ref=e411] [cursor=pointer]:
+                        - /url: /tags/architecture/
+                - link "Edit this page" [ref=e414] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/edge/architecture/two-node.md
+                  - img [ref=e415]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e419]:
+              - link "Previous « Architecture" [ref=e420] [cursor=pointer]:
+                - /url: /clusters/edge/architecture/
+                - generic [ref=e421]: Previous
+                - generic [ref=e422]: « Architecture
+              - link "Next Hardware Requirements »" [ref=e423] [cursor=pointer]:
+                - /url: /clusters/edge/hardware-requirements/
+                - generic [ref=e424]: Next
+                - generic [ref=e425]: Hardware Requirements »
+          - list [ref=e428]:
+            - listitem [ref=e429]:
+              - link "Architecture Overview" [ref=e430] [cursor=pointer]:
+                - /url: "#architecture-overview"
+            - listitem [ref=e431]:
+              - link "Limitations" [ref=e432] [cursor=pointer]:
+                - /url: "#limitations"
+            - listitem [ref=e433]:
+              - link "Use Cases" [ref=e434] [cursor=pointer]:
+                - /url: "#use-cases"
+            - listitem [ref=e435]:
+              - link "Leader Promotion After Node Failure" [ref=e436] [cursor=pointer]:
+                - /url: "#leader-promotion-after-node-failure"
+            - listitem [ref=e437]:
+              - link "Restore High Availability" [ref=e438] [cursor=pointer]:
+                - /url: "#restore-high-availability"
+              - list [ref=e439]:
+                - listitem [ref=e440]:
+                  - link "Restore After Failure" [ref=e441] [cursor=pointer]:
+                    - /url: "#restore-after-failure"
+                - listitem [ref=e442]:
+                  - link "Restore After Network Split and Potential Data Loss" [ref=e443] [cursor=pointer]:
+                    - /url: "#restore-after-network-split-and-potential-data-loss"
+            - listitem [ref=e444]:
+              - link "Upgrade Behavior" [ref=e445] [cursor=pointer]:
+                - /url: "#upgrade-behavior"
+  - button "Project Logo Ask AI" [ref=e446] [cursor=pointer]:
+    - generic [ref=e449]:
+      - img "Project Logo" [ref=e450]
+      - paragraph [ref=e451]: Ask AI
+```

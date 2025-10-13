@@ -1,0 +1,856 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [expanded] [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+                - list [ref=e141]:
+                  - listitem [ref=e142]:
+                    - generic [ref=e143]:
+                      - link "User Authentication" [expanded] [ref=e144] [cursor=pointer]:
+                        - /url: /user-management/authentication/
+                      - button "Toggle the collapsible sidebar category 'User Authentication'" [ref=e145] [cursor=pointer]
+                    - list [ref=e146]:
+                      - listitem [ref=e147]:
+                        - link "Authorization Token" [ref=e148] [cursor=pointer]:
+                          - /url: /user-management/authentication/authorization-token/
+                      - listitem [ref=e149]:
+                        - generic [ref=e150]:
+                          - link "API Key" [expanded] [ref=e151] [cursor=pointer]:
+                            - /url: /user-management/authentication/api-key/
+                          - button "Toggle the collapsible sidebar category 'API Key'" [ref=e152] [cursor=pointer]
+                        - list [ref=e153]:
+                          - listitem [ref=e154]:
+                            - link "Create API Key" [ref=e155] [cursor=pointer]:
+                              - /url: /user-management/authentication/api-key/create-api-key/
+                          - listitem [ref=e156]:
+                            - link "Edit API Key" [ref=e157] [cursor=pointer]:
+                              - /url: /user-management/authentication/api-key/modify-api-key/
+                          - listitem [ref=e158]:
+                            - link "Revoke API Key" [ref=e159] [cursor=pointer]:
+                              - /url: /user-management/authentication/api-key/revoke-api-key/
+                          - listitem [ref=e160]:
+                            - link "Delete API Key" [ref=e161] [cursor=pointer]:
+                              - /url: /user-management/authentication/api-key/delete-api-key/
+                      - listitem [ref=e162]:
+                        - link "User Interface Authentication" [ref=e163] [cursor=pointer]:
+                          - /url: /user-management/authentication/ui-autentication/
+                      - listitem [ref=e164]:
+                        - link "Switch Tenant" [ref=e165] [cursor=pointer]:
+                          - /url: /user-management/authentication/switch-tenant/
+                  - listitem [ref=e166]:
+                    - generic [ref=e167]:
+                      - link "Users and Teams" [ref=e168] [cursor=pointer]:
+                        - /url: /user-management/users-and-teams/
+                      - button "Toggle the collapsible sidebar category 'Users and Teams'" [ref=e169] [cursor=pointer]
+                  - listitem [ref=e170]:
+                    - generic [ref=e171]:
+                      - link "Roles and Permissions" [ref=e172] [cursor=pointer]:
+                        - /url: /user-management/palette-rbac/
+                      - button "Toggle the collapsible sidebar category 'Roles and Permissions'" [ref=e173] [cursor=pointer]
+                  - listitem [ref=e174]:
+                    - generic [ref=e175]:
+                      - link "SAML and OIDC SSO" [ref=e176] [cursor=pointer]:
+                        - /url: /user-management/saml-sso/
+                      - button "Toggle the collapsible sidebar category 'SAML and OIDC SSO'" [ref=e177] [cursor=pointer]
+              - listitem [ref=e178]:
+                - generic [ref=e179]:
+                  - link "Registries and Packs" [ref=e180] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e182]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e184] [cursor=pointer]
+              - listitem [ref=e185]:
+                - generic [ref=e186]:
+                  - link "Security" [ref=e187] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e189]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e191] [cursor=pointer]
+              - listitem [ref=e192]:
+                - generic [ref=e193]:
+                  - link "Audit Logs" [ref=e194] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e196]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e198] [cursor=pointer]
+              - listitem [ref=e199]:
+                - generic [ref=e200]:
+                  - link "Self-Hosted Palette" [ref=e201] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e203]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e205] [cursor=pointer]
+              - listitem [ref=e206]:
+                - generic [ref=e207]:
+                  - link "Palette VerteX" [ref=e208] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e210]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e212] [cursor=pointer]
+              - listitem [ref=e213]:
+                - generic [ref=e214]:
+                  - link "Tenant Administration" [ref=e215] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e217]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e219] [cursor=pointer]
+              - listitem [ref=e220]:
+                - generic [ref=e221]:
+                  - link "Automation" [ref=e222] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e224]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e226] [cursor=pointer]
+              - listitem [ref=e227]:
+                - generic [ref=e228]:
+                  - link "Troubleshooting" [ref=e229] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e231]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e233] [cursor=pointer]
+              - listitem [ref=e234]:
+                - link "Glossary" [ref=e235] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e237]
+                  - text: Glossary
+              - listitem [ref=e239]:
+                - generic [ref=e240]:
+                  - link "Compliance & Legal" [ref=e241] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e243]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e245] [cursor=pointer]
+              - listitem [ref=e246]:
+                - button "Privacy Settings" [ref=e247] [cursor=pointer]:
+                  - img [ref=e248]
+                  - text: Privacy Settings
+      - main [ref=e250]:
+        - generic [ref=e252]:
+          - generic [ref=e254]:
+            - article [ref=e255]:
+              - navigation "Breadcrumbs" [ref=e256]:
+                - list [ref=e257]:
+                  - listitem [ref=e258]:
+                    - link "Home page" [ref=e259] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e260]
+                  - listitem [ref=e262]:
+                    - link "User & Role Management" [ref=e263] [cursor=pointer]:
+                      - /url: /user-management/
+                  - listitem [ref=e264]:
+                    - link "User Authentication" [ref=e265] [cursor=pointer]:
+                      - /url: /user-management/authentication/
+                  - listitem [ref=e266]:
+                    - link "API Key" [ref=e267] [cursor=pointer]:
+                      - /url: /user-management/authentication/api-key/
+                  - listitem [ref=e268]:
+                    - generic [ref=e269]: Delete API Key
+              - generic [ref=e270]:
+                - heading "Delete API Key" [level=1] [ref=e272]
+                - paragraph [ref=e273]: You can delete an API key from Palette. A tenant admin can also delete an API key created by another user within the tenant. Use the following steps to delete an API key.
+                - paragraph [ref=e274]: The following sections provide information on how to delete an API key in Palette through the UI, API, and SDK.
+                - heading "UIDirect link to UI" [level=2] [ref=e275]:
+                  - text: UI
+                  - link "Direct link to UI" [ref=e276] [cursor=pointer]:
+                    - /url: "#ui"
+                    - text: "#"
+                - paragraph [ref=e277]: Tenant administrators can delete an API key on behalf of any user within the tenant. Select the Tenant tab below to learn more about deleting an API key as a tenant admin.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e278]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e279] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - generic [ref=e280]:
+                  - tablist [ref=e281]:
+                    - tab "User" [selected] [ref=e282] [cursor=pointer]
+                    - tab "Tenant" [ref=e283] [cursor=pointer]
+                  - tabpanel [ref=e285]:
+                    - list [ref=e286]:
+                      - listitem [ref=e287]:
+                        - paragraph [ref=e288]: You must have a Palette account, and you must be logged in.
+                      - listitem [ref=e289]:
+                        - paragraph [ref=e290]:
+                          - text: You must have an API key created. Refer to the
+                          - link "Create API Key" [ref=e291] [cursor=pointer]:
+                            - /url: /user-management/authentication/api-key/create-api-key/
+                          - text: section for more information.
+                - heading "Delete API Key in Palette UIDirect link to Delete API Key in Palette UI" [level=3] [ref=e292]:
+                  - text: Delete API Key in Palette UI
+                  - link "Direct link to Delete API Key in Palette UI" [ref=e293] [cursor=pointer]:
+                    - /url: "#delete-api-key-in-palette-ui"
+                    - text: "#"
+                - generic [ref=e294]:
+                  - tablist [ref=e295]:
+                    - tab "User" [selected] [ref=e296] [cursor=pointer]
+                    - tab "Tenant" [ref=e297] [cursor=pointer]
+                  - tabpanel [ref=e299]:
+                    - list [ref=e300]:
+                      - listitem [ref=e301]:
+                        - paragraph [ref=e302]:
+                          - text: Log in to
+                          - link "Palette" [ref=e303] [cursor=pointer]:
+                            - /url: https://console.spectrocloud.com
+                          - text: .
+                      - listitem [ref=e304]:
+                        - paragraph [ref=e305]:
+                          - text: Navigate to the
+                          - strong [ref=e306]: User Menu
+                          - text: ", and select"
+                          - strong [ref=e307]: My API Keys
+                          - text: .
+                      - listitem [ref=e308]:
+                        - paragraph [ref=e309]:
+                          - text: Identify your API key in the table, and click on the
+                          - strong [ref=e310]: three-dot Menu
+                          - text: .
+                      - listitem [ref=e311]:
+                        - paragraph [ref=e312]:
+                          - text: Click on
+                          - strong [ref=e313]: Delete
+                          - text: .
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e314]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e315] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - generic [ref=e316]:
+                  - tablist [ref=e317]:
+                    - tab "User" [selected] [ref=e318] [cursor=pointer]
+                    - tab "Tenant" [ref=e319] [cursor=pointer]
+                  - tabpanel [ref=e321]:
+                    - list [ref=e322]:
+                      - listitem [ref=e323]:
+                        - paragraph [ref=e324]:
+                          - text: Log in to
+                          - link "Palette" [ref=e325] [cursor=pointer]:
+                            - /url: https://console.spectrocloud.com
+                          - text: .
+                      - listitem [ref=e326]:
+                        - paragraph [ref=e327]:
+                          - text: Navigate to the
+                          - strong [ref=e328]: User Menu
+                          - text: ", and select"
+                          - strong [ref=e329]: My API Keys
+                          - text: .
+                      - listitem [ref=e330]:
+                        - paragraph [ref=e331]: Verify your API key is not listed in the table.
+                - heading "APIDirect link to API" [level=2] [ref=e332]:
+                  - text: API
+                  - link "Direct link to API" [ref=e333] [cursor=pointer]:
+                    - /url: "#api"
+                    - text: "#"
+                - paragraph [ref=e334]:
+                  - text: You can use the Palette API with the
+                  - code [ref=e335]: https://api.spectrocloud.com/v1/apiKeys/:uid
+                  - link "endpoint" [ref=e336] [cursor=pointer]:
+                    - /url: https://docs.spectrocloud.com/api/v1/v-1-api-keys-uid-delete
+                  - text: and the API key's unique identifier to delete an API key programmatically.
+                - paragraph [ref=e337]: Use the following steps to learn how to delete an API key.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e338]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e339] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e340]:
+                  - listitem [ref=e341]:
+                    - paragraph [ref=e342]:
+                      - text: You must have a valid Palette API key. Refer to the
+                      - link "Create API Key" [ref=e343] [cursor=pointer]:
+                        - /url: /user-management/authentication/api-key/create-api-key/
+                      - text: section for more information.
+                  - listitem [ref=e344]:
+                    - paragraph [ref=e345]:
+                      - text: A terminal or command prompt to execute the
+                      - code [ref=e346]: curl
+                      - text: command. Alternatively, you can use a REST client like
+                      - link "Postman" [ref=e347] [cursor=pointer]:
+                        - /url: https://www.postman.com/
+                      - text: .
+                - heading "Delete API Key with APIDirect link to Delete API Key with API" [level=3] [ref=e348]:
+                  - text: Delete API Key with API
+                  - link "Direct link to Delete API Key with API" [ref=e349] [cursor=pointer]:
+                    - /url: "#delete-api-key-with-api"
+                    - text: "#"
+                - list [ref=e350]:
+                  - listitem [ref=e351]:
+                    - paragraph [ref=e352]: Open a terminal or command prompt.
+                  - listitem [ref=e353]:
+                    - paragraph [ref=e354]:
+                      - text: Issue the following command to retrieve your API key's unique identifier. Replace
+                      - code [ref=e355]: API_KEY_VALUE
+                      - text: with your API key.
+                    - generic [ref=e357]:
+                      - code [ref=e359]:
+                        - generic [ref=e360]: curl --location 'https://api.spectrocloud.com/v1/apiKeys' \
+                        - generic [ref=e361]: "--header 'Accept: application/json' \\"
+                        - generic [ref=e362]: "--header 'apiKey: API_KEY_VALUE'"
+                      - button "Copy code to clipboard" [ref=e364] [cursor=pointer]:
+                        - generic [ref=e365]:
+                          - img [ref=e366]
+                          - img [ref=e368]
+                    - generic [ref=e371]:
+                      - code [ref=e373]:
+                        - generic [ref=e374]: "{"
+                        - generic [ref=e375]: "\"items\": ["
+                        - generic [ref=e376]: "{"
+                        - generic [ref=e377]: "\"metadata\": {"
+                        - generic [ref=e378]: "\"annotations\": {"
+                        - generic [ref=e379]: "\"description\": \"\","
+                        - generic [ref=e380]: "\"ownerUid\": \"****************\","
+                        - generic [ref=e381]: "\"permissions\": \"apiKey.create,apiKey.delete,apiKey.get,apiKey.list,apiKey.update,tag.update\","
+                        - generic [ref=e382]: "\"scope\": \"tenant\","
+                        - generic [ref=e383]: "\"scopeVisibility\": \"20\","
+                        - generic [ref=e384]: "\"tenantUid\": \"*************************\""
+                        - generic [ref=e385]: "},"
+                        - generic [ref=e386]: "\"creationTimestamp\": \"2024-09-16T14:46:28.677Z\","
+                        - generic [ref=e387]: "\"deletionTimestamp\": \"0001-01-01T00:00:00.000Z\","
+                        - generic [ref=e388]: "\"lastModifiedTimestamp\": \"2024-09-16T14:46:29.079Z\","
+                        - generic [ref=e389]: "\"name\": \"remove-me-test\","
+                        - generic [ref=e390]: "\"uid\": \"66e844c44bab2337f20c7471\""
+                        - generic [ref=e391]: "},"
+                        - generic [ref=e392]: "\"spec\": {"
+                        - generic [ref=e393]: "\"expiry\": \"2024-09-23T14:46:28.164Z\","
+                        - generic [ref=e394]: "\"user\": {"
+                        - generic [ref=e395]: "\"firstName\": \"example\","
+                        - generic [ref=e396]: "\"lastName\": \"example\","
+                        - generic [ref=e397]: "\"uid\": \"*****************\""
+                        - generic [ref=e398]: "}"
+                        - generic [ref=e399]: "},"
+                        - generic [ref=e400]: "\"status\": {"
+                        - generic [ref=e401]: "\"isActive\": true"
+                        - generic [ref=e402]: "}"
+                        - generic [ref=e403]: "}"
+                        - generic [ref=e404]: "]"
+                        - generic [ref=e405]: "}"
+                      - button "Toggle word wrap" [ref=e407] [cursor=pointer]:
+                        - img [ref=e408]
+                  - listitem [ref=e410]:
+                    - paragraph [ref=e411]:
+                      - text: Once you have the API key's unique identifier, issue the following command to delete the API key. Replace
+                      - code [ref=e412]: uid
+                      - text: with the API key's unique identifier. Specify a valid API key in the
+                      - code [ref=e413]: ApiKey
+                      - text: header.
+                    - generic [ref=e415]:
+                      - code [ref=e417]:
+                        - generic [ref=e418]: curl -L -X DELETE 'https://api.spectrocloud.com/v1/apiKeys/:uid' \
+                        - generic [ref=e419]: "-H 'ApiKey: <API_KEY_VALUE>'"
+                      - generic [ref=e420]:
+                        - button "Toggle word wrap" [ref=e421] [cursor=pointer]:
+                          - img [ref=e422]
+                        - button "Copy code to clipboard" [ref=e424] [cursor=pointer]:
+                          - generic [ref=e425]:
+                            - img [ref=e426]
+                            - img [ref=e428]
+                  - listitem [ref=e430]:
+                    - paragraph [ref=e431]: No output is expected if the API key is successfully deleted.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e432]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e433] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - list [ref=e434]:
+                  - listitem [ref=e435]:
+                    - paragraph [ref=e436]:
+                      - text: Verify the API key is no longer available in Palette by issuing the following command. Replace
+                      - code [ref=e437]: API_KEY_VALUE
+                      - text: with your API key.
+                    - generic [ref=e439]:
+                      - code [ref=e441]:
+                        - generic [ref=e442]: curl --location 'https://api.spectrocloud.com/v1/apiKeys' \
+                        - generic [ref=e443]: "--header 'Accept: application/json' \\"
+                        - generic [ref=e444]: "--header 'apiKey: API_KEY_VALUE'"
+                      - button "Copy code to clipboard" [ref=e446] [cursor=pointer]:
+                        - generic [ref=e447]:
+                          - img [ref=e448]
+                          - img [ref=e450]
+                  - listitem [ref=e452]:
+                    - paragraph [ref=e453]: The API key should not be listed in the response. If the API key is still available, verify the API key's unique identifier and reissue the delete command. You can also validate the deletion by checking the Palette UI.
+                - heading "SDKDirect link to SDK" [level=2] [ref=e454]:
+                  - text: SDK
+                  - link "Direct link to SDK" [ref=e455] [cursor=pointer]:
+                    - /url: "#sdk"
+                    - text: "#"
+                - paragraph [ref=e456]:
+                  - text: You can use the
+                  - link "Palette SDK" [ref=e457] [cursor=pointer]:
+                    - /url: /automation/palette-sdk/
+                  - text: to delete an API key programmatically.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e458]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e459] [cursor=pointer]:
+                    - /url: "#prerequisites-2"
+                    - text: "#"
+                - list [ref=e460]:
+                  - listitem [ref=e461]:
+                    - paragraph [ref=e462]:
+                      - text: You must have a valid Palette API key. Refer to the
+                      - link "Create API Key" [ref=e463] [cursor=pointer]:
+                        - /url: /user-management/authentication/api-key/create-api-key/
+                      - text: section for more information.
+                  - listitem [ref=e464]:
+                    - paragraph [ref=e465]:
+                      - link "Go version" [ref=e466] [cursor=pointer]:
+                        - /url: https://go.dev/doc/install
+                      - text: 1.22 or later.
+                  - listitem [ref=e467]:
+                    - paragraph [ref=e468]: A text editor or an IDE to write and execute the Go code.
+                  - listitem [ref=e469]:
+                    - paragraph [ref=e470]:
+                      - text: A valid Palette API key to delete. In this example, the fictional API key named
+                      - code [ref=e471]: delete-test-key
+                      - text: is used.
+                  - listitem [ref=e472]:
+                    - paragraph [ref=e473]: An internet connection to download the Palette SDK and its dependencies.
+                - heading "Delete API Key With Go SDKDirect link to Delete API Key With Go SDK" [level=3] [ref=e474]:
+                  - text: Delete API Key With Go SDK
+                  - link "Direct link to Delete API Key With Go SDK" [ref=e475] [cursor=pointer]:
+                    - /url: "#delete-api-key-with-go-sdk"
+                    - text: "#"
+                - list [ref=e476]:
+                  - listitem [ref=e477]:
+                    - paragraph [ref=e478]: Create a new directory for your Go project and navigate to the directory.
+                    - generic [ref=e480]:
+                      - code [ref=e482]:
+                        - generic [ref=e483]: mkdir delete-api-key && cd delete-api-key
+                      - button "Copy code to clipboard" [ref=e485] [cursor=pointer]:
+                        - generic [ref=e486]:
+                          - img [ref=e487]
+                          - img [ref=e489]
+                  - listitem [ref=e491]:
+                    - paragraph [ref=e492]:
+                      - text: Create a new Go file, for example,
+                      - strong [ref=e493]: main.go
+                      - text: .
+                    - generic [ref=e495]:
+                      - code [ref=e497]:
+                        - generic [ref=e498]: touch main.go
+                      - button "Copy code to clipboard" [ref=e500] [cursor=pointer]:
+                        - generic [ref=e501]:
+                          - img [ref=e502]
+                          - img [ref=e504]
+                  - listitem [ref=e506]:
+                    - paragraph [ref=e507]: Initialize the Go module. Use the following command to initialize the Go module.
+                    - generic [ref=e509]:
+                      - code [ref=e511]:
+                        - generic [ref=e512]: go mod init example/delete-api-key
+                      - button "Copy code to clipboard" [ref=e514] [cursor=pointer]:
+                        - generic [ref=e515]:
+                          - img [ref=e516]
+                          - img [ref=e518]
+                  - listitem [ref=e520]:
+                    - paragraph [ref=e521]:
+                      - text: Open the
+                      - strong [ref=e522]: main.go
+                      - text: file in your text editor or IDE.
+                  - listitem [ref=e523]:
+                    - paragraph [ref=e524]:
+                      - text: Copy and paste the following code snippet into the
+                      - strong [ref=e525]: main.go
+                      - text: file. Replace the variable
+                      - code [ref=e526]: keyName
+                      - text: with the key name you want to delete.
+                    - generic [ref=e528]:
+                      - code [ref=e530]:
+                        - generic [ref=e531]: package main
+                        - generic [ref=e532]: import (
+                        - generic [ref=e533]: "\"fmt\""
+                        - generic [ref=e534]: "\"log\""
+                        - generic [ref=e535]: "\"log/slog\""
+                        - generic [ref=e536]: "\"os\""
+                        - generic [ref=e537]: "\"github.com/spectrocloud/palette-sdk-go/client\""
+                        - generic [ref=e538]: )
+                        - generic [ref=e539]: "func main() {"
+                        - generic [ref=e540]: host := os.Getenv("PALETTE_HOST") // "api.spectrocloud.com"
+                        - generic [ref=e541]: apiKey := os.Getenv("PALETTE_API_KEY") // "your api key"
+                        - generic [ref=e542]: "if host == \"\" || apiKey == \"\" {"
+                        - generic [ref=e543]: log.Fatal("Please set PALETTE_HOST and PALETTE_API_KEY environment variables")
+                        - generic [ref=e544]: "}"
+                        - generic [ref=e545]: keyName := "delete-test-key" // "name of the key to delete. Replace as needed"
+                        - generic [ref=e546]: pc := client.New(
+                        - generic [ref=e547]: client.WithPaletteURI(host),
+                        - generic [ref=e548]: client.WithAPIKey(apiKey),
+                        - generic [ref=e549]: )
+                        - generic [ref=e550]: keys, err := pc.GetAPIKeys()
+                        - generic [ref=e551]: "if err != nil {"
+                        - generic [ref=e552]: "log.Fatal(\"Error getting API keys: \", err)"
+                        - generic [ref=e553]: "}"
+                        - generic [ref=e554]: "for _, key := range keys.Items {"
+                        - generic [ref=e555]: "if key.Metadata.Name == keyName {"
+                        - generic [ref=e556]: "slog.Info(fmt.Sprintf(\"API key found. Deleting API key: %s\", key.Metadata.Name))"
+                        - generic [ref=e557]: err := pc.DeleteAPIKey(key.Metadata.UID)
+                        - generic [ref=e558]: "if err != nil {"
+                        - generic [ref=e559]: "log.Fatal(\"Error deleting API key: \", err)"
+                        - generic [ref=e560]: "}"
+                        - generic [ref=e561]: slog.Info("API key deleted successfully")
+                        - generic [ref=e562]: "}"
+                        - generic [ref=e563]: "}"
+                        - generic [ref=e564]: "}"
+                      - generic [ref=e565]:
+                        - button "Toggle word wrap" [ref=e566] [cursor=pointer]:
+                          - img [ref=e567]
+                        - button "Copy code to clipboard" [ref=e569] [cursor=pointer]:
+                          - generic [ref=e570]:
+                            - img [ref=e571]
+                            - img [ref=e573]
+                  - listitem [ref=e575]:
+                    - paragraph [ref=e576]:
+                      - text: Set the environment variables for the Palette host and API key. Replace
+                      - code [ref=e577]: api.spectrocloud.com
+                      - text: with your Palette host URL if you are using a self-hosted Palette or VerteX instance.
+                    - generic [ref=e579]:
+                      - code [ref=e581]:
+                        - generic [ref=e582]: export PALETTE_HOST="api.spectrocloud.com"
+                        - generic [ref=e583]: export PALETTE_API_KEY="your api key"
+                      - button "Copy code to clipboard" [ref=e585] [cursor=pointer]:
+                        - generic [ref=e586]:
+                          - img [ref=e587]
+                          - img [ref=e589]
+                  - listitem [ref=e591]:
+                    - paragraph [ref=e592]: Start the Go program.
+                    - generic [ref=e594]:
+                      - code [ref=e596]:
+                        - generic [ref=e597]: go get ./... && go run .
+                      - button "Copy code to clipboard" [ref=e599] [cursor=pointer]:
+                        - generic [ref=e600]:
+                          - img [ref=e601]
+                          - img [ref=e603]
+                    - generic [ref=e606]:
+                      - code [ref=e608]:
+                        - generic [ref=e609]: "2024/09/16 08:27:12 INFO API key found. Deleting API key: delete-test-key"
+                        - generic [ref=e610]: 2024/09/16 08:27:12 INFO API key deleted successfully
+                      - generic [ref=e611]:
+                        - button "Toggle word wrap" [ref=e612] [cursor=pointer]:
+                          - img [ref=e613]
+                        - button "Copy code to clipboard" [ref=e615] [cursor=pointer]:
+                          - generic [ref=e616]:
+                            - img [ref=e617]
+                            - img [ref=e619]
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e621]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e622] [cursor=pointer]:
+                    - /url: "#validate-2"
+                    - text: "#"
+                - paragraph [ref=e623]:
+                  - text: You can validate the deletion by checking the Palette UI or by querying the API with the
+                  - code [ref=e624]: GetAPIKeys()
+                  - text: method to list the API keys again and verifying the API key is no longer available.
+                - list [ref=e625]:
+                  - listitem [ref=e626]:
+                    - paragraph [ref=e627]: Create a function to list the API keys and verify the API key is no longer available. Use the following code snippet to validate the deletion.
+                    - generic [ref=e629]:
+                      - code [ref=e631]:
+                        - generic [ref=e632]: // validateKeyIsRemoved checks if the key is removed
+                        - generic [ref=e633]: // returns true if the key is removed, false otherwise
+                        - generic [ref=e634]: "func validateKeyIsRemoved(keyName string, pc *client.V1Client) (bool, error) {"
+                        - generic [ref=e635]: keys, err := pc.GetAPIKeys()
+                        - generic [ref=e636]: "if err != nil {"
+                        - generic [ref=e637]: "log.Fatal(\"Error getting API keys: \", err)"
+                        - generic [ref=e638]: "}"
+                        - generic [ref=e639]: "for _, key := range keys.Items {"
+                        - generic [ref=e640]: "if key.Metadata.Name == keyName {"
+                        - generic [ref=e641]: return false, nil
+                        - generic [ref=e642]: "}"
+                        - generic [ref=e643]: "}"
+                        - generic [ref=e644]: return true, nil
+                        - generic [ref=e645]: "}"
+                      - generic [ref=e646]:
+                        - button "Toggle word wrap" [ref=e647] [cursor=pointer]:
+                          - img [ref=e648]
+                        - button "Copy code to clipboard" [ref=e650] [cursor=pointer]:
+                          - generic [ref=e651]:
+                            - img [ref=e652]
+                            - img [ref=e654]
+                  - listitem [ref=e656]:
+                    - paragraph [ref=e657]:
+                      - text: Replace the entire content of the
+                      - strong [ref=e658]: main.go
+                      - text: file with the following code snippet to include the validation check.
+                    - generic [ref=e660]:
+                      - code [ref=e662]:
+                        - generic [ref=e663]: package main
+                        - generic [ref=e664]: import (
+                        - generic [ref=e665]: "\"fmt\""
+                        - generic [ref=e666]: "\"log\""
+                        - generic [ref=e667]: "\"log/slog\""
+                        - generic [ref=e668]: "\"os\""
+                        - generic [ref=e669]: "\"github.com/spectrocloud/palette-sdk-go/client\""
+                        - generic [ref=e670]: )
+                        - generic [ref=e671]: "func main() {"
+                        - generic [ref=e672]: host := os.Getenv("PALETTE_HOST") // "api.spectrocloud.com"
+                        - generic [ref=e673]: apiKey := os.Getenv("PALETTE_API_KEY") // "your api key"
+                        - generic [ref=e674]: "if host == \"\" || apiKey == \"\" {"
+                        - generic [ref=e675]: log.Fatal("Please set PALETTE_HOST and PALETTE_API_KEY environment variables")
+                        - generic [ref=e676]: "}"
+                        - generic [ref=e677]: keyName := "delete-test-key" // "name of the key to delete"
+                        - generic [ref=e678]: pc := client.New(
+                        - generic [ref=e679]: client.WithPaletteURI(host),
+                        - generic [ref=e680]: client.WithAPIKey(apiKey),
+                        - generic [ref=e681]: )
+                        - generic [ref=e682]: keys, err := pc.GetAPIKeys()
+                        - generic [ref=e683]: "if err != nil {"
+                        - generic [ref=e684]: "log.Fatal(\"Error getting API keys: \", err)"
+                        - generic [ref=e685]: "}"
+                        - generic [ref=e686]: "for _, key := range keys.Items {"
+                        - generic [ref=e687]: "if key.Metadata.Name == keyName {"
+                        - generic [ref=e688]: "slog.Info(fmt.Sprintf(\"API key found. Deleting API key: %s\", key.Metadata.Name))"
+                        - generic [ref=e689]: err := pc.DeleteAPIKey(key.Metadata.UID)
+                        - generic [ref=e690]: "if err != nil {"
+                        - generic [ref=e691]: "log.Fatal(\"Error deleting API key: \", err)"
+                        - generic [ref=e692]: "}"
+                        - generic [ref=e693]: slog.Info("API key deleted successfully")
+                        - generic [ref=e694]: "}"
+                        - generic [ref=e695]: "}"
+                        - generic [ref=e696]: ok, err := validateKeyIsRemoved(keyName, pc)
+                        - generic [ref=e697]: "if err != nil {"
+                        - generic [ref=e698]: "log.Fatal(\"Error validating key is removed: \", err)"
+                        - generic [ref=e699]: "}"
+                        - generic [ref=e700]: "if !ok {"
+                        - generic [ref=e701]: log.Fatal("API key is not removed")
+                        - generic [ref=e702]: "}"
+                        - generic [ref=e703]: slog.Info("Validation ensured the key is removed successfully")
+                        - generic [ref=e704]: "}"
+                        - generic [ref=e705]: // validateKeyIsRemoved checks if the key is removed
+                        - generic [ref=e706]: // returns true if the key is removed, false otherwise
+                        - generic [ref=e707]: "func validateKeyIsRemoved(keyName string, pc *client.V1Client) (bool, error) {"
+                        - generic [ref=e708]: keys, err := pc.GetAPIKeys()
+                        - generic [ref=e709]: "if err != nil {"
+                        - generic [ref=e710]: "log.Fatal(\"Error getting API keys: \", err)"
+                        - generic [ref=e711]: "}"
+                        - generic [ref=e712]: "for _, key := range keys.Items {"
+                        - generic [ref=e713]: "if key.Metadata.Name == keyName {"
+                        - generic [ref=e714]: return false, nil
+                        - generic [ref=e715]: "}"
+                        - generic [ref=e716]: "}"
+                        - generic [ref=e717]: return true, nil
+                        - generic [ref=e718]: "}"
+                      - generic [ref=e719]:
+                        - button "Toggle word wrap" [ref=e720] [cursor=pointer]:
+                          - img [ref=e721]
+                        - button "Copy code to clipboard" [ref=e723] [cursor=pointer]:
+                          - generic [ref=e724]:
+                            - img [ref=e725]
+                            - img [ref=e727]
+                  - listitem [ref=e729]:
+                    - paragraph [ref=e730]: Start the Go program.
+                    - generic [ref=e732]:
+                      - code [ref=e734]:
+                        - generic [ref=e735]: go get ./... && go run .
+                      - button "Copy code to clipboard" [ref=e737] [cursor=pointer]:
+                        - generic [ref=e738]:
+                          - img [ref=e739]
+                          - img [ref=e741]
+                    - generic [ref=e744]:
+                      - code [ref=e746]:
+                        - generic [ref=e747]: 2024/09/16 08:35:07 INFO Validation ensured the API key is removed successfully
+                      - generic [ref=e748]:
+                        - button "Toggle word wrap" [ref=e749] [cursor=pointer]:
+                          - img [ref=e750]
+                        - button "Copy code to clipboard" [ref=e752] [cursor=pointer]:
+                          - generic [ref=e753]:
+                            - img [ref=e754]
+                            - img [ref=e756]
+                  - listitem [ref=e758]:
+                    - paragraph [ref=e759]: The output confirms the API key is successfully deleted.
+              - generic [ref=e760]:
+                - generic [ref=e762]:
+                  - text: "Tags:"
+                  - list [ref=e763]:
+                    - listitem [ref=e764]:
+                      - link "user-management" [ref=e765] [cursor=pointer]:
+                        - /url: /tags/user-management/
+                    - listitem [ref=e766]:
+                      - link "authentication" [ref=e767] [cursor=pointer]:
+                        - /url: /tags/authentication/
+                    - listitem [ref=e768]:
+                      - link "api-key" [ref=e769] [cursor=pointer]:
+                        - /url: /tags/api-key/
+                - link "Edit this page" [ref=e772] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/user-management/authentication/api-key/delete-api-key.md
+                  - img [ref=e773]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e777]:
+              - link "Previous « Revoke API Key" [ref=e778] [cursor=pointer]:
+                - /url: /user-management/authentication/api-key/revoke-api-key/
+                - generic [ref=e779]: Previous
+                - generic [ref=e780]: « Revoke API Key
+              - link "Next User Interface Authentication »" [ref=e781] [cursor=pointer]:
+                - /url: /user-management/authentication/ui-autentication/
+                - generic [ref=e782]: Next
+                - generic [ref=e783]: User Interface Authentication »
+          - list [ref=e786]:
+            - listitem [ref=e787]:
+              - link "UI" [ref=e788] [cursor=pointer]:
+                - /url: "#ui"
+              - list [ref=e789]:
+                - listitem [ref=e790]:
+                  - link "Prerequisites" [ref=e791] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e792]:
+                  - link "Delete API Key in Palette UI" [ref=e793] [cursor=pointer]:
+                    - /url: "#delete-api-key-in-palette-ui"
+                - listitem [ref=e794]:
+                  - link "Validate" [ref=e795] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e796]:
+              - link "API" [ref=e797] [cursor=pointer]:
+                - /url: "#api"
+              - list [ref=e798]:
+                - listitem [ref=e799]:
+                  - link "Prerequisites" [ref=e800] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e801]:
+                  - link "Delete API Key with API" [ref=e802] [cursor=pointer]:
+                    - /url: "#delete-api-key-with-api"
+                - listitem [ref=e803]:
+                  - link "Validate" [ref=e804] [cursor=pointer]:
+                    - /url: "#validate-1"
+            - listitem [ref=e805]:
+              - link "SDK" [ref=e806] [cursor=pointer]:
+                - /url: "#sdk"
+              - list [ref=e807]:
+                - listitem [ref=e808]:
+                  - link "Prerequisites" [ref=e809] [cursor=pointer]:
+                    - /url: "#prerequisites-2"
+                - listitem [ref=e810]:
+                  - link "Delete API Key With Go SDK" [ref=e811] [cursor=pointer]:
+                    - /url: "#delete-api-key-with-go-sdk"
+                - listitem [ref=e812]:
+                  - link "Validate" [ref=e813] [cursor=pointer]:
+                    - /url: "#validate-2"
+  - button "Project Logo Ask AI" [ref=e814] [cursor=pointer]:
+    - generic [ref=e817]:
+      - img "Project Logo" [ref=e818]
+      - paragraph [ref=e819]: Ask AI
+```

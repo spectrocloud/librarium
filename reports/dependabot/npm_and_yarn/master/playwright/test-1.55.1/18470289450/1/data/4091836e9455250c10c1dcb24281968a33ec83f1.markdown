@@ -1,0 +1,663 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [expanded] [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+                - list [ref=e120]:
+                  - listitem [ref=e121]:
+                    - link "Architecture" [ref=e122] [cursor=pointer]:
+                      - /url: /vm-management/architecture/
+                  - listitem [ref=e123]:
+                    - link "Environment Setup" [ref=e124] [cursor=pointer]:
+                      - /url: /vm-management/environment-setup/
+                  - listitem [ref=e125]:
+                    - link "Install VMO in Airgap Environments" [ref=e126] [cursor=pointer]:
+                      - /url: /vm-management/install-vmo-in-airgap/
+                  - listitem [ref=e127]:
+                    - link "Create a VMO Profile" [ref=e128] [cursor=pointer]:
+                      - /url: /vm-management/create-vmo-profile/
+                  - listitem [ref=e129]:
+                    - link "Configure Private CA Certificate" [ref=e130] [cursor=pointer]:
+                      - /url: /vm-management/configure-private-ca-certificate/
+                  - listitem [ref=e131]:
+                    - link "Configure Direct Access to VM Dashboard" [ref=e132] [cursor=pointer]:
+                      - /url: /vm-management/configure-console-base-address/
+                  - listitem [ref=e133]:
+                    - generic [ref=e134]:
+                      - link "RBAC" [ref=e135] [cursor=pointer]:
+                        - /url: /vm-management/rbac/
+                      - button "Toggle the collapsible sidebar category 'RBAC'" [ref=e136] [cursor=pointer]
+                  - listitem [ref=e137]:
+                    - generic [ref=e138]:
+                      - link "Create and Manage VMs" [ref=e139] [cursor=pointer]:
+                        - /url: /vm-management/create-manage-vm/
+                      - button "Toggle the collapsible sidebar category 'Create and Manage VMs'" [ref=e140] [cursor=pointer]
+                  - listitem [ref=e141]:
+                    - generic [ref=e142]:
+                      - link "VM Migration Assistant" [ref=e143] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/
+                      - button "Toggle the collapsible sidebar category 'VM Migration Assistant'" [ref=e144] [cursor=pointer]
+              - listitem [ref=e145]:
+                - generic [ref=e146]:
+                  - link "Workspaces" [ref=e147] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e149]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e151] [cursor=pointer]
+              - listitem [ref=e152]:
+                - generic [ref=e153]:
+                  - link "Packs List" [ref=e154] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e156]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e158] [cursor=pointer]
+              - listitem [ref=e159]:
+                - generic [ref=e160]:
+                  - link "User & Role Management" [ref=e161] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e163]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e165] [cursor=pointer]
+              - listitem [ref=e166]:
+                - generic [ref=e167]:
+                  - link "Registries and Packs" [ref=e168] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e170]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e172] [cursor=pointer]
+              - listitem [ref=e173]:
+                - generic [ref=e174]:
+                  - link "Security" [ref=e175] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e177]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e179] [cursor=pointer]
+              - listitem [ref=e180]:
+                - generic [ref=e181]:
+                  - link "Audit Logs" [ref=e182] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e184]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e186] [cursor=pointer]
+              - listitem [ref=e187]:
+                - generic [ref=e188]:
+                  - link "Self-Hosted Palette" [ref=e189] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e191]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e193] [cursor=pointer]
+              - listitem [ref=e194]:
+                - generic [ref=e195]:
+                  - link "Palette VerteX" [ref=e196] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e198]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e200] [cursor=pointer]
+              - listitem [ref=e201]:
+                - generic [ref=e202]:
+                  - link "Tenant Administration" [ref=e203] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e205]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e207] [cursor=pointer]
+              - listitem [ref=e208]:
+                - generic [ref=e209]:
+                  - link "Automation" [ref=e210] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e212]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - generic [ref=e216]:
+                  - link "Troubleshooting" [ref=e217] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e219]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e221] [cursor=pointer]
+              - listitem [ref=e222]:
+                - link "Glossary" [ref=e223] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e225]
+                  - text: Glossary
+              - listitem [ref=e227]:
+                - generic [ref=e228]:
+                  - link "Compliance & Legal" [ref=e229] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e231]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e233] [cursor=pointer]
+              - listitem [ref=e234]:
+                - button "Privacy Settings" [ref=e235] [cursor=pointer]:
+                  - img [ref=e236]
+                  - text: Privacy Settings
+      - main [ref=e238]:
+        - generic [ref=e240]:
+          - generic [ref=e242]:
+            - article [ref=e243]:
+              - navigation "Breadcrumbs" [ref=e244]:
+                - list [ref=e245]:
+                  - listitem [ref=e246]:
+                    - link "Home page" [ref=e247] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e248]
+                  - listitem [ref=e250]:
+                    - link "Virtual Machine Orchestrator" [ref=e251] [cursor=pointer]:
+                      - /url: /vm-management/
+                  - listitem [ref=e252]:
+                    - generic [ref=e253]: Configure Private CA Certificate
+              - generic [ref=e254]:
+                - heading "Configure Private CA Certificate to enable trust with Self-Hosted Palette or Palette VerteX" [level=1] [ref=e256]
+                - paragraph [ref=e257]: This guide provides step-by-step instructions on how to configure a private CA certificate for the Virtual Machine Orchestrator (VMO) that enables trust with your self-hosted Palette or Palette VerteX TLS certificate. This is necessary to ensure that VMO can securely communicate with your self-hosted Palette or Palette VerteX instance.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e258]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e259] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e260]:
+                  - listitem [ref=e261]:
+                    - paragraph [ref=e262]:
+                      - text: A self-hosted Palette installation. Refer to the
+                      - link "Self-Hosted Palette" [ref=e263] [cursor=pointer]:
+                        - /url: /enterprise-version/
+                      - text: or
+                      - link "Palette VerteX" [ref=e264] [cursor=pointer]:
+                        - /url: /vertex/
+                      - text: guides for installation instructions.
+                  - listitem [ref=e265]:
+                    - paragraph [ref=e266]:
+                      - text: A workload cluster with VMO installed and configured. Refer to the
+                      - link "VMO" [ref=e267] [cursor=pointer]:
+                        - /url: /vm-management/
+                      - text: guide for details.
+                - list [ref=e268]:
+                  - listitem [ref=e269]:
+                    - text: The VMO cluster must use
+                    - link "Palette eXtended Kubernetes" [ref=e270] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=kubernetes
+                    - text: for the Kubernetes layer and the OpenID Connect (OIDC) identity provider must be set to
+                    - strong [ref=e271]: Palette
+                    - text: .
+                - list [ref=e272]:
+                  - listitem [ref=e273]:
+                    - paragraph [ref=e274]: Command line access to your VMO cluster.
+                  - listitem [ref=e275]:
+                    - paragraph [ref=e276]:
+                      - text: Kubectl installed and access to the
+                      - strong [ref=e277]: kubeconfig
+                      - text: file for the VMO cluster. The file needs to be accessible from the machine where you perform the
+                      - link "Enablement Steps" [ref=e278] [cursor=pointer]:
+                        - /url: "#enablement-steps"
+                      - text: . Refer to the
+                      - link "Kubectl" [ref=e279] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/#access-cluster-with-cli
+                      - text: guide to learn how to set up
+                      - code [ref=e280]: kubectl
+                      - text: and get the
+                      - strong [ref=e281]: kubeconfig
+                      - text: file for your VMO cluster.
+                - heading "Enablement StepsDirect link to Enablement Steps" [level=2] [ref=e282]:
+                  - text: Enablement Steps
+                  - link "Direct link to Enablement Steps" [ref=e283] [cursor=pointer]:
+                    - /url: "#enablement-steps"
+                    - text: "#"
+                - list [ref=e284]:
+                  - listitem [ref=e285]:
+                    - paragraph [ref=e286]:
+                      - text: Export the environment variable
+                      - code [ref=e287]: PALETTE_DNS_NAME
+                      - text: with the value being the DNS name of your self-hosted Palette or Palette VerteX instance. Do not include the
+                      - code [ref=e288]: https://
+                      - text: prefix in the DNS name.
+                    - generic [ref=e290]:
+                      - code [ref=e292]:
+                        - generic [ref=e293]: export PALETTE_DNS_NAME=<palette-dns-name>
+                      - button "Copy code to clipboard" [ref=e295] [cursor=pointer]:
+                        - generic [ref=e296]:
+                          - img [ref=e297]
+                          - img [ref=e299]
+                    - generic [ref=e301]:
+                      - generic [ref=e302]: Example
+                      - code [ref=e305]:
+                        - generic [ref=e306]: export PALETTE_DNS_NAME=tenant.company.com
+                  - listitem [ref=e307]:
+                    - paragraph [ref=e308]: Use the following command to extract the TLS certificate chain from your self-hosted Palette or Palette VerteX instance.
+                    - generic [ref=e310]:
+                      - code [ref=e312]:
+                        - generic [ref=e313]: openssl s_client -connect $PALETTE_DNS_NAME:443 -showcerts </dev/null \
+                        - generic [ref=e314]: "| awk '/BEGIN CERTIFICATE/,/END CERTIFICATE/' > palette-ca.crt"
+                      - generic [ref=e315]:
+                        - button "Toggle word wrap" [ref=e316] [cursor=pointer]:
+                          - img [ref=e317]
+                        - button "Copy code to clipboard" [ref=e319] [cursor=pointer]:
+                          - generic [ref=e320]:
+                            - img [ref=e321]
+                            - img [ref=e323]
+                    - generic [ref=e325]:
+                      - generic [ref=e326]: Example Output
+                      - code [ref=e329]:
+                        - generic [ref=e330]: Connecting to 10.11.12.13
+                        - generic [ref=e331]: depth=2 C=US, O=Amazon, CN=Amazon Root CA 1
+                        - generic [ref=e332]: verify return:1
+                        - generic [ref=e333]: depth=1 C=US, O=Amazon, CN=Amazon RSA 2048 M02
+                        - generic [ref=e334]: verify return:1
+                        - generic [ref=e335]: depth=0 CN=tenant.company.com
+                        - generic [ref=e336]: verify return:1
+                        - generic [ref=e337]: DONE
+                  - listitem [ref=e338]:
+                    - paragraph [ref=e339]:
+                      - text: Use the following command to split the certificate chain into individual certificates. This command will create files named
+                      - code [ref=e340]: cert-<number>.pem
+                      - text: containing the individual certificates from the chain.
+                    - generic [ref=e342]:
+                      - code [ref=e344]:
+                        - generic [ref=e345]: "awk 'BEGIN {c=0;} /BEGIN CERTIFICATE/ {out=sprintf(\"cert-%02d.pem\", c++);} {print > out}' palette-ca.crt"
+                      - generic [ref=e346]:
+                        - button "Toggle word wrap" [ref=e347] [cursor=pointer]:
+                          - img [ref=e348]
+                        - button "Copy code to clipboard" [ref=e350] [cursor=pointer]:
+                          - generic [ref=e351]:
+                            - img [ref=e352]
+                            - img [ref=e354]
+                  - listitem [ref=e356]:
+                    - paragraph [ref=e357]: After creating the individual certificate files, use the following command to inspect their contents.
+                    - generic [ref=e359]:
+                      - code [ref=e361]:
+                        - generic [ref=e362]: for f in cert-*.pem; \
+                        - generic [ref=e363]: do echo "$f:" && openssl x509 -in "$f" -noout -issuer -subject && echo; \
+                        - generic [ref=e364]: done
+                      - generic [ref=e365]:
+                        - button "Toggle word wrap" [ref=e366] [cursor=pointer]:
+                          - img [ref=e367]
+                        - button "Copy code to clipboard" [ref=e369] [cursor=pointer]:
+                          - generic [ref=e370]:
+                            - img [ref=e371]
+                            - img [ref=e373]
+                    - generic [ref=e375]:
+                      - generic [ref=e376]: Example Output
+                      - generic [ref=e377]:
+                        - code [ref=e379]:
+                          - generic [ref=e380]: "cert-00.pem:"
+                          - generic [ref=e381]: issuer=C=US, O=Amazon, CN=Amazon RSA 2048 M02
+                          - generic [ref=e382]: subject=CN=tenant.company.com
+                          - generic [ref=e383]: "cert-01.pem:"
+                          - generic [ref=e384]: issuer=C=US, O=Amazon, CN=Amazon Root CA 1
+                          - generic [ref=e385]: subject=C=US, O=Amazon, CN=Amazon RSA 2048 M02
+                          - generic [ref=e386]: "cert-02.pem:"
+                          - generic [ref=e387]: issuer=C=US, ST=Arizona, L=Scottsdale, O=Starfield Technologies, Inc., CN=Starfield Services Root Certificate Authority - G2
+                          - generic [ref=e388]: subject=C=US, O=Amazon, CN=Amazon Root CA 1
+                        - button "Toggle word wrap" [ref=e390] [cursor=pointer]:
+                          - img [ref=e391]
+                  - listitem [ref=e393]:
+                    - paragraph [ref=e394]:
+                      - text: Identify the intermediate or root CA certificate that you need from the output in step 3. In this example, the
+                      - code [ref=e395]: cert-02.pem
+                      - text: file contains the root CA certificate.
+                  - listitem [ref=e396]:
+                    - paragraph [ref=e397]:
+                      - text: Save the identified root CA certificate to a file named
+                      - code [ref=e398]: root-ca.pem
+                      - text: .
+                    - generic [ref=e400]:
+                      - code [ref=e402]:
+                        - generic [ref=e403]: cp cert-02.pem root-ca.pem
+                      - button "Copy code to clipboard" [ref=e405] [cursor=pointer]:
+                        - generic [ref=e406]:
+                          - img [ref=e407]
+                          - img [ref=e409]
+                  - listitem [ref=e411]:
+                    - paragraph [ref=e412]:
+                      - text: Set the environment variable
+                      - code [ref=e413]: KUBECONFIG
+                      - text: to point to the kubeconfig file for your self-hosted Palette or Palette VerteX cluster.
+                    - generic [ref=e415]:
+                      - code [ref=e417]:
+                        - generic [ref=e418]: export KUBECONFIG=/path/to/your/kubeconfig
+                      - button "Copy code to clipboard" [ref=e420] [cursor=pointer]:
+                        - generic [ref=e421]:
+                          - img [ref=e422]
+                          - img [ref=e424]
+                  - listitem [ref=e426]:
+                    - paragraph [ref=e427]:
+                      - text: Use the following command to create a ConfigMap in the
+                      - code [ref=e428]: vm-dashboard
+                      - text: namespace with the root CA certificate.
+                    - generic [ref=e430]:
+                      - code [ref=e432]:
+                        - generic [ref=e433]: kubectl create configmap custom-ca \
+                        - generic [ref=e434]: "--from-file=cert=root-ca.pem \\"
+                        - generic [ref=e435]: "--namespace vm-dashboard"
+                      - button "Copy code to clipboard" [ref=e437] [cursor=pointer]:
+                        - generic [ref=e438]:
+                          - img [ref=e439]
+                          - img [ref=e441]
+                    - generic [ref=e443]:
+                      - generic [ref=e444]: Example Output
+                      - code [ref=e447]:
+                        - generic [ref=e448]: configmap/custom-ca created
+                  - listitem [ref=e449]:
+                    - paragraph [ref=e450]: Log in to your self-hosted Palette or Palette VerteX tenant console.
+                  - listitem [ref=e451]:
+                    - paragraph [ref=e452]:
+                      - text: In the left main menu, click
+                      - strong [ref=e453]: Profiles
+                      - text: and find the profile for your VMO cluster.
+                  - listitem [ref=e454]:
+                    - paragraph [ref=e455]: Click on the profile name to open the profile details.
+                  - listitem [ref=e456]:
+                    - paragraph [ref=e457]:
+                      - text: Create a new version of the profile. For more information, refer to
+                      - link "Version a Cluster Profile" [ref=e458] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile/
+                      - text: .
+                  - listitem [ref=e459]:
+                    - paragraph [ref=e460]:
+                      - text: Select the
+                      - strong [ref=e461]: virtual-machine-orchestrator
+                      - text: layer to view the
+                      - strong [ref=e462]: Edit pack
+                      - text: page.
+                  - listitem [ref=e463]:
+                    - paragraph [ref=e464]:
+                      - text: Click
+                      - strong [ref=e465]: Values
+                      - text: under
+                      - strong [ref=e466]: Pack Details
+                      - text: and find the
+                      - code [ref=e467]: charts.virtual-machine-orchestrator.privateCaCertificate
+                      - text: key.
+                  - listitem [ref=e468]:
+                    - paragraph [ref=e469]:
+                      - text: Change the
+                      - code [ref=e470]: enabled
+                      - text: value to
+                      - code [ref=e471]: "true"
+                      - text: .
+                    - generic [ref=e472]:
+                      - generic [ref=e473]: Example
+                      - code [ref=e476]:
+                        - generic [ref=e477]: "privateCaCertificate:"
+                        - generic [ref=e478]: "enabled: true"
+                        - generic [ref=e479]: "configmapName: custom-ca"
+                        - generic [ref=e480]: "certificateKey: cert"
+                        - generic [ref=e481]: "mountPath: /etc/ssl/certs/"
+                  - listitem [ref=e482]:
+                    - paragraph [ref=e483]:
+                      - text: Click
+                      - strong [ref=e484]: Confirm Updates
+                      - text: ", and then click"
+                      - strong [ref=e485]: Save Changes
+                      - text: in the cluster profile page.
+                  - listitem [ref=e486]:
+                    - paragraph [ref=e487]:
+                      - text: In the left main menu, click
+                      - strong [ref=e488]: Clusters
+                      - text: and click on the cluster where you want to apply the changes.
+                  - listitem [ref=e489]:
+                    - paragraph [ref=e490]:
+                      - text: Select the
+                      - strong [ref=e491]: Profile
+                      - text: tab and click the version drop-down menu for the
+                      - strong [ref=e492]: ADDON LAYERS
+                      - text: . Select the version of the profile you modified in step 12.
+                  - listitem [ref=e493]:
+                    - paragraph [ref=e494]:
+                      - text: Click
+                      - strong [ref=e495]: Review & Save
+                      - text: ", and then click"
+                      - strong [ref=e496]: Review changes in Editor
+                      - text: when the pop-up window appears.
+                  - listitem [ref=e497]:
+                    - paragraph [ref=e498]:
+                      - text: Review the changes and click
+                      - strong [ref=e499]: Apply Changes
+                      - text: when satisfied.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e500]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e501] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e502]:
+                  - listitem [ref=e503]:
+                    - paragraph [ref=e504]: Use the following command to confirm that the VMO pod has successfully reconciled.
+                    - generic [ref=e506]:
+                      - code [ref=e508]:
+                        - generic [ref=e509]: kubectl get pods --namespace vm-dashboard
+                      - button "Copy code to clipboard" [ref=e511] [cursor=pointer]:
+                        - generic [ref=e512]:
+                          - img [ref=e513]
+                          - img [ref=e515]
+                    - paragraph [ref=e517]:
+                      - text: The output should show the
+                      - code [ref=e518]: virtual-machine-orchestrator-<uid>
+                      - text: pod in a
+                      - code [ref=e519]: Running
+                      - text: state with
+                      - code [ref=e520]: 2/2
+                      - text: containers ready.
+                    - generic [ref=e521]:
+                      - generic [ref=e522]: Example Output
+                      - generic [ref=e523]:
+                        - code [ref=e525]:
+                          - generic [ref=e526]: NAME READY STATUS RESTARTS AGE
+                          - generic [ref=e527]: virtual-machine-orchestrator-cb46b4849-fv8q8 2/2 Running 0 3m30s
+                        - button "Toggle word wrap" [ref=e529] [cursor=pointer]:
+                          - img [ref=e530]
+                    - generic [ref=e532]:
+                      - generic [ref=e533]:
+                        - img [ref=e535]
+                        - text: tip
+                      - generic [ref=e537]:
+                        - paragraph [ref=e538]:
+                          - text: If there are only
+                          - code [ref=e539]: 0/2
+                          - text: or
+                          - code [ref=e540]: 1/2
+                          - text: containers ready, you can check the logs of the pod for any TLS errors using the following command.
+                        - generic [ref=e542]:
+                          - code [ref=e544]:
+                            - generic [ref=e545]: kubectl logs --namespace vm-dashboard <pod-name> -c virtual-machine-orchestrator
+                          - generic [ref=e546]:
+                            - button "Toggle word wrap" [ref=e547] [cursor=pointer]:
+                              - img [ref=e548]
+                            - button "Copy code to clipboard" [ref=e550] [cursor=pointer]:
+                              - generic [ref=e551]:
+                                - img [ref=e552]
+                                - img [ref=e554]
+                  - listitem [ref=e556]:
+                    - paragraph [ref=e557]: Check that the CA certificate is present by using the following command.
+                    - generic [ref=e559]:
+                      - code [ref=e561]:
+                        - generic [ref=e562]: kubectl exec --namespace vm-dashboard <pod-name> -- ls /etc/ssl/certs/
+                      - generic [ref=e563]:
+                        - button "Toggle word wrap" [ref=e564] [cursor=pointer]:
+                          - img [ref=e565]
+                        - button "Copy code to clipboard" [ref=e567] [cursor=pointer]:
+                          - generic [ref=e568]:
+                            - img [ref=e569]
+                            - img [ref=e571]
+                    - paragraph [ref=e573]: The output should include the Common Name (CN) of the certificate you specified in the ConfigMap.
+                    - generic [ref=e574]:
+                      - generic [ref=e575]: Example Output
+                      - code [ref=e578]:
+                        - generic [ref=e579]: ...
+                        - generic [ref=e580]: Starfield_Root_Certificate_Authority_-_G2.pem
+                        - generic [ref=e581]: ...
+                  - listitem [ref=e582]:
+                    - paragraph [ref=e583]: Check that the VMO pod now trusts the self-hosted Palette or Palette VerteX TLS certificate by issuing the following command.
+                    - generic [ref=e585]:
+                      - code [ref=e587]:
+                        - generic [ref=e588]: kubectl exec --namespace vm-dashboard <pod-name> -- curl --verbose https://$PALETTE_DNS_NAME
+                      - generic [ref=e589]:
+                        - button "Toggle word wrap" [ref=e590] [cursor=pointer]:
+                          - img [ref=e591]
+                        - button "Copy code to clipboard" [ref=e593] [cursor=pointer]:
+                          - generic [ref=e594]:
+                            - img [ref=e595]
+                            - img [ref=e597]
+                    - paragraph [ref=e599]:
+                      - text: The output should have the
+                      - code [ref=e600]: SSL certificate verify ok.
+                      - text: and
+                      - code [ref=e601]: HTTP/1.1 200 OK
+                      - text: messages, indicating that the VMO pod trusts the self-hosted Palette or Palette VerteX TLS certificate.
+                    - generic [ref=e602]:
+                      - generic [ref=e603]: Example Output
+                      - generic [ref=e604]:
+                        - code [ref=e606]:
+                          - generic [ref=e607]: ...
+                          - generic [ref=e608]: "* Server certificate:"
+                          - generic [ref=e609]: "* subject: CN=tenant.company.com"
+                          - generic [ref=e610]: "* start date: Jun 16 00:00:00 2025 GMT"
+                          - generic [ref=e611]: "* expire date: Jul 15 23:59:59 2026 GMT"
+                          - generic [ref=e612]: "* subjectAltName: host \"tenant.company.com\" matched cert's \"*.company.com\""
+                          - generic [ref=e613]: "* issuer: C=US; O=Amazon; CN=Amazon RSA 2048 M02"
+                          - generic [ref=e614]: "* SSL certificate verify ok."
+                          - generic [ref=e615]: ...
+                          - generic [ref=e616]: < HTTP/1.1 200 OK
+                        - button "Toggle word wrap" [ref=e618] [cursor=pointer]:
+                          - img [ref=e619]
+              - generic [ref=e621]:
+                - generic [ref=e623]:
+                  - text: "Tags:"
+                  - list [ref=e624]:
+                    - listitem [ref=e625]:
+                      - link "vmo" [ref=e626] [cursor=pointer]:
+                        - /url: /tags/vmo/
+                - link "Edit this page" [ref=e629] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vm-management/configure-private-ca-certificate.md
+                  - img [ref=e630]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e634]:
+              - link "Previous « Create a VMO Profile" [ref=e635] [cursor=pointer]:
+                - /url: /vm-management/create-vmo-profile/
+                - generic [ref=e636]: Previous
+                - generic [ref=e637]: « Create a VMO Profile
+              - link "Next Configure Direct Access to VM Dashboard »" [ref=e638] [cursor=pointer]:
+                - /url: /vm-management/configure-console-base-address/
+                - generic [ref=e639]: Next
+                - generic [ref=e640]: Configure Direct Access to VM Dashboard »
+          - list [ref=e643]:
+            - listitem [ref=e644]:
+              - link "Prerequisites" [ref=e645] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e646]:
+              - link "Enablement Steps" [ref=e647] [cursor=pointer]:
+                - /url: "#enablement-steps"
+            - listitem [ref=e648]:
+              - link "Validate" [ref=e649] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e650] [cursor=pointer]:
+    - generic [ref=e653]:
+      - img "Project Logo" [ref=e654]
+      - paragraph [ref=e655]: Ask AI
+```

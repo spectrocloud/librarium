@@ -1,0 +1,1753 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - link "Palette Tutorials" [ref=e40] [cursor=pointer]:
+                  - /url: /tutorials/
+                  - img [ref=e42]
+                  - text: Palette Tutorials
+              - listitem [ref=e44]:
+                - generic [ref=e45]:
+                  - link "Getting Started" [ref=e46] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/
+                    - img [ref=e48]
+                    - text: Getting Started
+                  - button "Toggle the collapsible sidebar category 'Getting Started'" [ref=e50] [cursor=pointer]
+              - listitem [ref=e51]:
+                - generic [ref=e52]:
+                  - link "Packs and Registries" [ref=e53] [cursor=pointer]:
+                    - /url: /tutorials/packs-registries/
+                    - img [ref=e55]
+                    - text: Packs and Registries
+                  - button "Toggle the collapsible sidebar category 'Packs and Registries'" [ref=e57] [cursor=pointer]
+              - listitem [ref=e58]:
+                - generic [ref=e59]:
+                  - link "Profiles" [ref=e60] [cursor=pointer]:
+                    - /url: /tutorials/profiles/
+                    - img [ref=e62]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e66] [cursor=pointer]
+              - listitem [ref=e67]:
+                - generic [ref=e68]:
+                  - link "Clusters" [ref=e69] [cursor=pointer]:
+                    - /url: /tutorials/clusters/
+                    - img [ref=e71]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e77] [cursor=pointer]
+              - listitem [ref=e78]:
+                - generic [ref=e79]:
+                  - link "Palette Dev Engine" [expanded] [ref=e80] [cursor=pointer]:
+                    - /url: /tutorials/pde/
+                    - img [ref=e82]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e84] [cursor=pointer]
+                - list [ref=e85]:
+                  - listitem [ref=e86]:
+                    - link "Deploy an Application using Palette Dev Engine" [ref=e87] [cursor=pointer]:
+                      - /url: /tutorials/pde/deploy-app/
+              - listitem [ref=e88]:
+                - button "Privacy Settings" [ref=e89] [cursor=pointer]
+      - main [ref=e90]:
+        - generic [ref=e92]:
+          - generic [ref=e94]:
+            - article [ref=e95]:
+              - navigation "Breadcrumbs" [ref=e96]:
+                - list [ref=e97]:
+                  - listitem [ref=e98]:
+                    - link "Home page" [ref=e99] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e100]
+                  - listitem [ref=e102]:
+                    - link "Palette Dev Engine" [ref=e103] [cursor=pointer]:
+                      - /url: /tutorials/pde/
+                  - listitem [ref=e104]:
+                    - generic [ref=e105]: Deploy an Application using Palette Dev Engine
+              - generic [ref=e106]:
+                - heading "Deploy an Application using Palette Dev Engine" [level=1] [ref=e108]
+                - paragraph [ref=e109]:
+                  - text: Palette’s mission is to reduce the challenges you, as a user, face when interacting with Kubernetes. Whether you are a system administrator or an application developer, Kubernetes can introduce overhead that slows down the development process. One of Palette’s core components,
+                  - emphasis [ref=e110]: Dev Engine
+                  - text: ", focuses on reducing the application development time by enabling builders to deploy applications to Kubernetes with minimal friction."
+                - paragraph [ref=e111]:
+                  - text: This tutorial will teach you how to deploy single and multiple applications to Kubernetes through Palette’s Dev Engine experience. You will learn about
+                  - emphasis [ref=e112]: App Mode
+                  - text: ","
+                  - emphasis [ref=e113]: App Profiles
+                  - text: ", and"
+                  - emphasis [ref=e114]: Palette Virtual Clusters
+                  - text: and understand how they enable you to deploy applications to Kubernetes quickly with minimal overhead.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e115]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e116] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - paragraph [ref=e117]: To complete this tutorial, you will need the following items.
+                - list [ref=e118]:
+                  - listitem [ref=e119]:
+                    - paragraph [ref=e120]: A Spectro Cloud account
+                  - listitem [ref=e121]:
+                    - paragraph [ref=e122]: Basic knowledge about containers.
+                  - listitem [ref=e123]:
+                    - paragraph [ref=e124]: "A Cluster Group available in Palette with at least the following resources:"
+                    - list [ref=e125]:
+                      - listitem [ref=e126]:
+                        - paragraph [ref=e127]: 12 CPU
+                      - listitem [ref=e128]:
+                        - paragraph [ref=e129]: 12 GiB of Memory,
+                      - listitem [ref=e130]:
+                        - paragraph [ref=e131]: 20 GiB of Storage.
+                        - paragraph [ref=e132]:
+                          - text: If you don’t have a cluster group, check out the
+                          - link "Create Cluster Group" [ref=e133] [cursor=pointer]:
+                            - /url: /clusters/cluster-groups/
+                          - text: documentation to learn how to create one.
+                - paragraph [ref=e134]: If you select the Terraform workflow, you will need the following software installed.
+                - list [ref=e135]:
+                  - listitem [ref=e136]:
+                    - paragraph [ref=e137]:
+                      - link "Terraform" [ref=e138] [cursor=pointer]:
+                        - /url: https://developer.hashicorp.com/terraform/install
+                      - text: 1.9.0 or later.
+                  - listitem [ref=e139]:
+                    - paragraph [ref=e140]:
+                      - link "Docker Desktop" [ref=e141] [cursor=pointer]:
+                        - /url: https://www.docker.com/products/docker-desktop/
+                      - text: or
+                      - link "Podman" [ref=e142] [cursor=pointer]:
+                        - /url: https://podman.io/docs/installation
+                      - text: .
+                - paragraph [ref=e143]: There are no expenses associated with this tutorial as everything falls under the Palette Free Tier.
+                - heading "ArchitectureDirect link to Architecture" [level=2] [ref=e144]:
+                  - text: Architecture
+                  - link "Direct link to Architecture" [ref=e145] [cursor=pointer]:
+                    - /url: "#architecture"
+                    - text: "#"
+                - paragraph [ref=e146]: The tutorial includes two scenarios, and for each scenario, you will deploy a separate Kubernetes environment. The following diagram illustrates the different layers that will power the tutorial environment.
+                - paragraph [ref=e147]:
+                  - img "Architecture diagram depicting two virtual clusters" [ref=e148]
+                - paragraph [ref=e149]:
+                  - text: "The top layer is Palette, which is the product platform. Palette can be used in two modes: app mode or cluster mode. Each mode is intended for different use cases and personas, but for this tutorial, you will use app mode. For an in-depth explanation of each mode’s differences, check out the"
+                  - link "App Mode and Cluster Mode" [ref=e150] [cursor=pointer]:
+                    - /url: /introduction/palette-modes/
+                  - text: documentation.
+                - heading "Deploy The EnvironmentDirect link to Deploy The Environment" [level=2] [ref=e151]:
+                  - text: Deploy The Environment
+                  - link "Direct link to Deploy The Environment" [ref=e152] [cursor=pointer]:
+                    - /url: "#deploy-the-environment"
+                    - text: "#"
+                - paragraph [ref=e153]: The following steps will guide you through deploying the two scenarios. You will start with the single application scenario to build up your knowledge before deploying the multiple applications scenario.
+                - paragraph [ref=e154]: From Palette, you will deploy two Palette Virtual Clusters. Palette Virtual Clusters will be referred to as virtual clusters for the rest of the tutorial. Each virtual cluster will be deployed onto your cluster group. Each scenario’s virtual cluster will reside on the workload clusters belonging to the cluster group.
+                - generic [ref=e155]:
+                  - generic [ref=e156]:
+                    - img [ref=e158]
+                    - text: info
+                  - paragraph [ref=e161]: Virtual clusters are standalone Kubernetes environments that sit on top of what you would consider a traditional Kubernetes cluster or host cluster. Palette Virtual Clusters are Kubernetes clusters that run as nested clusters within an existing host cluster and share the host cluster resources, such as CPU, memory, and storage. Palette Virtual Clusters use k3s, a highly available, certified Kubernetes distribution designed for production workloads. Palette Virtual Clusters are also powered by vCluster.
+                - paragraph [ref=e162]: You can complete this tutorial by using the Palette console, simulating a manual workflow. Or you may leverage infrastructure as code and complete the tutorial using Terraform.
+                - list [ref=e163]:
+                  - listitem [ref=e164]:
+                    - paragraph [ref=e165]:
+                      - link "UI Workflow" [ref=e166] [cursor=pointer]:
+                        - /url: "#ui-workflow"
+                  - listitem [ref=e167]:
+                    - paragraph [ref=e168]:
+                      - link "Terraform Workflow" [ref=e169] [cursor=pointer]:
+                        - /url: "#terraform-workflow"
+                - heading "UI WorkflowDirect link to UI Workflow" [level=2] [ref=e170]:
+                  - text: UI Workflow
+                  - link "Direct link to UI Workflow" [ref=e171] [cursor=pointer]:
+                    - /url: "#ui-workflow"
+                    - text: "#"
+                - paragraph [ref=e172]:
+                  - text: Start by logging in to Palette. From the landing page, click on the user
+                  - strong [ref=e173]: drop-down Menu
+                  - text: and click on
+                  - strong [ref=e174]: App Mode
+                  - text: .
+                - paragraph [ref=e175]:
+                  - img "Image with an arrow pointing to the user drop-down Menu" [ref=e176]
+                - paragraph [ref=e177]:
+                  - text: From the app mode landing page, navigate to the left
+                  - strong [ref=e178]: Main Menu
+                  - text: and click on
+                  - strong [ref=e179]: Virtual Clusters
+                  - text: . Next, click on the button
+                  - strong [ref=e180]: New Virtual Cluster
+                  - text: .
+                - paragraph [ref=e181]:
+                  - img "View of the virtual cluster list" [ref=e182]
+                - paragraph [ref=e183]:
+                  - text: In the following screen, you will be prompted for the cluster group, virtual cluster name, and the cluster size in terms of CPU, memory, and storage. Select your cluster group, name the cluster
+                  - code [ref=e184]: cluster-1
+                  - text: ", and allocate 4 CPU, 4 GiB memory, and 2 GiB of storage. Click on"
+                  - strong [ref=e185]: Deploy Virtual Cluster
+                  - text: after you have filled out all the required information.
+                - paragraph [ref=e186]:
+                  - text: It will take a few minutes for the virtual cluster to deploy. In the meantime, navigate to the left
+                  - strong [ref=e187]: Main Menu
+                  - text: and click on
+                  - strong [ref=e188]: App Profiles
+                  - text: .
+                - paragraph [ref=e189]:
+                  - img "The App Profile page with arrows guiding" [ref=e190]
+                - paragraph [ref=e191]: App Profiles are templates that contain all the configurations and settings required to deploy applications to virtual clusters. App Profiles provide a way to drive consistency across virtual clusters as you can re-use app profiles and deploy them to different virtual clusters. You can think of app profiles as declarative templates that inform the Kubernetes cluster of the desired application or set of applications.
+                - paragraph [ref=e192]:
+                  - text: Click on the
+                  - strong [ref=e193]: New App Profile
+                  - text: button to start creating your first app profile. Give the app profile the name
+                  - code [ref=e194]: hello-universe-ui
+                  - text: and add the tag
+                  - code [ref=e195]: scenario-1
+                  - text: . Click on
+                  - strong [ref=e196]: Next
+                  - text: . The following screen is the service type selection page. You have the option to deploy applications through containers, Helm, or Manifests. You can also consume services such as databases and more. Click on
+                  - strong [ref=e197]: Container Deployment
+                  - text: .
+                - paragraph [ref=e198]:
+                  - text: Name the container
+                  - code [ref=e199]: ui
+                  - text: ", select a public registry, and provide the image URL"
+                  - code [ref=e200]: ghcr.io/spectrocloud/hello-universe:1.0.12
+                  - text: . Change the network access to
+                  - strong [ref=e201]: Public
+                  - text: and add the port
+                  - code [ref=e202]: "8080"
+                  - text: .
+                - paragraph [ref=e203]:
+                  - img "App Profile container creation page with details" [ref=e204]
+                - paragraph [ref=e205]:
+                  - text: Click on
+                  - strong [ref=e206]: Review
+                  - text: once you have filled out the provided information. On the next page, click on the
+                  - strong [ref=e207]: Deploy New App
+                  - text: button.
+                - paragraph [ref=e208]:
+                  - text: It’s time to deploy your application to a virtual cluster. Name the application
+                  - code [ref=e209]: single-scenario
+                  - text: . For the
+                  - strong [ref=e210]: App profile
+                  - text: input field, click on the button to the right of the input field to get a list of all your available app profiles. Select the
+                  - strong [ref=e211]: hello-universe-ui profile
+                  - text: and click on
+                  - strong [ref=e212]: Confirm
+                  - text: .
+                - paragraph [ref=e213]:
+                  - text: Next, click the radio button
+                  - strong [ref=e214]: Deploy in An Existing Palette Virtual Cluster
+                  - text: . Select
+                  - strong [ref=e215]: cluster-1
+                  - text: and click on
+                  - strong [ref=e216]: Create App
+                  - text: to deploy the app profile onto the virtual cluster.
+                - generic [ref=e217]:
+                  - generic [ref=e218]:
+                    - img [ref=e220]
+                    - text: warning
+                  - paragraph [ref=e223]:
+                    - text: If no clusters are displayed, then
+                    - strong [ref=e224]: cluster-1
+                    - text: is not yet available. Wait a few more moments and return to the above steps. You can refresh the page, but you must fill out all the required input fields.
+                - paragraph [ref=e225]:
+                  - text: The app profile deployment takes a few moments to finish. You can review the application's deployment progress by navigating to the left
+                  - strong [ref=e226]: Main Menu
+                  - text: and selecting
+                  - strong [ref=e227]: Virtual Clusters
+                  - text: . Click on
+                  - strong [ref=e228]: cluster-1
+                  - text: to view its details page. You can review cluster information, log events, access a remote shell session in the cluster, and more from the cluster details page.
+                - paragraph [ref=e229]:
+                  - img "Cluster details view displaying exposed services" [ref=e230]
+                - paragraph [ref=e231]:
+                  - text: When the application is deployed and ready for use, the
+                  - strong [ref=e232]: Services
+                  - text: row on the details page will automatically be updated by Palette with the app's public-facing URL. Click on the
+                  - strong [ref=e233]: :8080
+                  - text: link to view the application.
+                - generic [ref=e234]:
+                  - generic [ref=e235]:
+                    - img [ref=e237]
+                    - text: warning
+                  - paragraph [ref=e240]: It takes between one to three minutes for DNS to properly resolve the public load balancer URL. We recommend waiting a few moments before clicking on the service URL to prevent the browser from caching an unresolved DNS request.
+                - paragraph [ref=e241]:
+                  - img "Hello Universe landing page displaying global clicks" [ref=e242]
+                - paragraph [ref=e243]:
+                  - text: Welcome to
+                  - link "Hello Universe" [ref=e244] [cursor=pointer]:
+                    - /url: https://github.com/spectrocloud/hello-universe
+                  - text: ", a demo application to help you learn more about Palette and its features. Feel free to click on the logo to increase the global counter and for a fun image change."
+                - paragraph [ref=e245]: You have deployed your first application to Palette. Your first application is a single container application with no upstream dependencies. In a production environment, you often deploy applications that consume other services and require connectivity with other resources. The next scenario expands on the single application scenario by adding an API server and Postgres database to simulate a common application architecture encountered in a production environment.
+                - heading "Deploy Multiple ApplicationsDirect link to Deploy Multiple Applications" [level=3] [ref=e246]:
+                  - text: Deploy Multiple Applications
+                  - link "Direct link to Deploy Multiple Applications" [ref=e247] [cursor=pointer]:
+                    - /url: "#deploy-multiple-applications"
+                    - text: "#"
+                - paragraph [ref=e248]:
+                  - text: Create another virtual cluster for the multi-application scenario. From the app mode landing page, navigate to the left
+                  - strong [ref=e249]: Main Menu
+                  - text: and click on
+                  - strong [ref=e250]: Virtual Clusters
+                  - text: . Next, click on the
+                  - strong [ref=e251]: New Virtual Cluster
+                  - text: button.
+                - paragraph [ref=e252]:
+                  - text: Add the following details. Select your cluster group, name the cluster
+                  - strong [ref=e253]: cluster-2
+                  - text: ", add the tag"
+                  - strong [ref=e254]: scenario-2
+                  - text: ", and allocate 8 CPU, 12 GiB memory, and 12 GiB of storage. Click on"
+                  - strong [ref=e255]: Deploy Virtual Cluster
+                  - text: after you have filled out all the required information.
+                - paragraph [ref=e256]:
+                  - text: It will take a few minutes for the new virtual cluster to deploy. In the meantime, go ahead and navigate to the left
+                  - strong [ref=e257]: Main Menu
+                  - text: and click on
+                  - strong [ref=e258]: App Profiles
+                  - text: .
+                - heading "PostgresDirect link to Postgres" [level=3] [ref=e259]:
+                  - text: Postgres
+                  - link "Direct link to Postgres" [ref=e260] [cursor=pointer]:
+                    - /url: "#postgres"
+                    - text: "#"
+                - paragraph [ref=e261]:
+                  - text: Click on the
+                  - strong [ref=e262]: New App Profile
+                  - text: button to create your second app profile. Give the app profile the name
+                  - code [ref=e263]: hello-universe-complete
+                  - text: and add the tag
+                  - code [ref=e264]: scenario-2
+                  - text: . Click on
+                  - strong [ref=e265]: Next
+                  - text: . This application profile will contain three different applications, and you will create a service configuration for each. The three layers or tiers will together make up the entire application deployment. The order in which you create each layer plays an important role, as it dictates the deployment order. For this scenario, you will deploy the database, the API, and the UI. To create the first layer, select the database service Postgres.
+                - paragraph [ref=e266]: In the next screen, assign the following values to the Postgres database.
+                - list [ref=e267]:
+                  - listitem [ref=e268]:
+                    - paragraph [ref=e269]:
+                      - text: "Name:"
+                      - code [ref=e270]: postgres-db
+                  - listitem [ref=e271]:
+                    - paragraph [ref=e272]:
+                      - text: "Username:"
+                      - code [ref=e273]: pguser
+                  - listitem [ref=e274]:
+                    - paragraph [ref=e275]:
+                      - text: "Database Name:"
+                      - code [ref=e276]: counter
+                  - listitem [ref=e277]:
+                    - paragraph [ref=e278]:
+                      - text: "Database Volume Size:"
+                      - code [ref=e279]: "2"
+                  - listitem [ref=e280]:
+                    - paragraph [ref=e281]:
+                      - text: "Version:"
+                      - code [ref=e282]: "14"
+                - paragraph [ref=e283]:
+                  - img "Postgres service creation page" [ref=e284]
+                - paragraph [ref=e285]:
+                  - text: Take note of the
+                  - strong [ref=e286]: Output Variables
+                  - text: section. The Postgres service exposes several output variables to help other applications connect with the database. In the next section, you will use these output variables and other output variables that Palette exposes for each service. You can learn more about output variables by reviewing the app profile
+                  - link "output variables" [ref=e287] [cursor=pointer]:
+                    - /url: /profiles/app-profiles/app-profile-output-vars/
+                  - text: documentation.
+                - paragraph [ref=e288]:
+                  - text: Next, navigate to the top left side of the wizard screen and click on the
+                  - strong [ref=e289]: Actions
+                  - text: button
+                  - strong [ref=e290]: +
+                  - text: . Go ahead and select
+                  - strong [ref=e291]: Container Deployment
+                  - text: .
+                - heading "APIDirect link to API" [level=3] [ref=e292]:
+                  - text: API
+                  - link "Direct link to API" [ref=e293] [cursor=pointer]:
+                    - /url: "#api"
+                    - text: "#"
+                - paragraph [ref=e294]: The API is available as a container image. To deploy the API successfully, you need to provide the API server with information about the database such as hostname, database user, database name, and password. The required information can be retrieved using Palette's global output variables and the output variables the database service exposes.
+                - paragraph [ref=e295]: "Provide the container service with the following information:"
+                - list [ref=e296]:
+                  - listitem [ref=e297]:
+                    - paragraph [ref=e298]:
+                      - text: "Container Name:"
+                      - code [ref=e299]: api
+                  - listitem [ref=e300]:
+                    - paragraph [ref=e301]: "Registry: Public"
+                  - listitem [ref=e302]:
+                    - paragraph [ref=e303]:
+                      - text: "Image:"
+                      - code [ref=e304]: ghcr.io/spectrocloud/hello-universe-api:1.0.8
+                  - listitem [ref=e305]:
+                    - paragraph [ref=e306]: "Network Access: Public"
+                  - listitem [ref=e307]:
+                    - paragraph [ref=e308]:
+                      - text: "Ports:"
+                      - code [ref=e309]: "3000"
+                - paragraph [ref=e310]: "Assign the following environment variables to the API service:"
+                - table [ref=e311]:
+                  - rowgroup [ref=e312]:
+                    - row "Parameter Value" [ref=e313]:
+                      - cell "Parameter" [ref=e314]
+                      - cell "Value" [ref=e315]
+                  - rowgroup [ref=e316]:
+                    - row "DB_NAME counter" [ref=e317]:
+                      - cell "DB_NAME" [ref=e318]:
+                        - code [ref=e319]: DB_NAME
+                      - cell "counter" [ref=e320]:
+                        - code [ref=e321]: counter
+                    - 'row "DB_HOST {{.spectro.app.$appDeploymentName.postgres-db.POSTGRESMSTR_SVC}}" [ref=e322]':
+                      - cell "DB_HOST" [ref=e323]:
+                        - code [ref=e324]: DB_HOST
+                      - 'cell "{{.spectro.app.$appDeploymentName.postgres-db.POSTGRESMSTR_SVC}}" [ref=e325]':
+                        - code [ref=e326]: "{{.spectro.app.$appDeploymentName.postgres-db.POSTGRESMSTR_SVC}}"
+                    - 'row "DB_PASSWORD {{.spectro.app.$appDeploymentName.postgres-db.PASSWORD}}" [ref=e327]':
+                      - cell "DB_PASSWORD" [ref=e328]:
+                        - code [ref=e329]: DB_PASSWORD
+                      - 'cell "{{.spectro.app.$appDeploymentName.postgres-db.PASSWORD}}" [ref=e330]':
+                        - code [ref=e331]: "{{.spectro.app.$appDeploymentName.postgres-db.PASSWORD}}"
+                    - row "DB_INIT true" [ref=e332]:
+                      - cell "DB_INIT" [ref=e333]:
+                        - code [ref=e334]: DB_INIT
+                      - cell "true" [ref=e335]:
+                        - code [ref=e336]: "true"
+                    - 'row "DB_USER {{.spectro.app.$appDeploymentName.postgres-db.USERNAME}}" [ref=e337]':
+                      - cell "DB_USER" [ref=e338]:
+                        - code [ref=e339]: DB_USER
+                      - 'cell "{{.spectro.app.$appDeploymentName.postgres-db.USERNAME}}" [ref=e340]':
+                        - code [ref=e341]: "{{.spectro.app.$appDeploymentName.postgres-db.USERNAME}}"
+                    - row "DB_ENCRYPTION require" [ref=e342]:
+                      - cell "DB_ENCRYPTION" [ref=e343]:
+                        - code [ref=e344]: DB_ENCRYPTION
+                      - cell "require" [ref=e345]:
+                        - code [ref=e346]: require
+                    - row "AUTHORIZATION true" [ref=e347]:
+                      - cell "AUTHORIZATION" [ref=e348]:
+                        - code [ref=e349]: AUTHORIZATION
+                      - cell "true" [ref=e350]:
+                        - code [ref=e351]: "true"
+                - paragraph [ref=e352]:
+                  - text: You can learn more about each environment variable's purpose by reviewing the API server's
+                  - link "documentation" [ref=e353] [cursor=pointer]:
+                    - /url: https://github.com/spectrocloud/hello-universe-api#environment-variables
+                  - text: . One variable that you should understand in greater detail is the
+                  - code [ref=e354]: DB_HOST.
+                  - text: The value of this environment variable is constructed using the output variables the Postgres service exposed. The
+                  - code [ref=e355]: "{{.spectro.app.$appDeploymentName.postgres-db.POSTGRESMSTR_SVC}}"
+                  - text: variable contains the Kubernetes DNS value of the Postgres service container.
+                - generic [ref=e356]:
+                  - generic [ref=e357]:
+                    - img [ref=e359]
+                    - text: info
+                  - paragraph [ref=e362]:
+                    - text: To learn more about connecting different service layers, refer to the
+                    - link "Service Connectivity" [ref=e363] [cursor=pointer]:
+                      - /url: /devx/services/connectivity/
+                    - text: resource.
+                - paragraph [ref=e364]:
+                  - text: A virtual cluster is a Kubernetes environment, and because it’s a Kubernetes environment, you can use the
+                  - link "Kubernetes DNS" [ref=e365] [cursor=pointer]:
+                    - /url: https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/
+                  - text: record created for each service and pod. You will have another opportunity to practice this concept when you deploy the UI.
+                - paragraph [ref=e366]:
+                  - text: When you have filled out all the required information, navigate to the top left side of the wizard screen and click on the
+                  - strong [ref=e367]: Actions
+                  - text: button
+                  - strong [ref=e368]: +
+                  - text: . Select the
+                  - strong [ref=e369]: Container Deployment
+                  - text: to add the final service layer, the UI.
+                - heading "UIDirect link to UI" [level=3] [ref=e370]:
+                  - text: UI
+                  - link "Direct link to UI" [ref=e371] [cursor=pointer]:
+                    - /url: "#ui"
+                    - text: "#"
+                - paragraph [ref=e372]: This time the UI will point to the API server that you manage. The API server has authentication enabled, so to ensure all API requests are accepted you will provide the UI with the anonymous token.
+                - paragraph [ref=e373]:
+                  - img "A diagram of the reverse proxy architecture" [ref=e374]
+                - paragraph [ref=e375]: Provide the UI container with the following information.
+                - list [ref=e376]:
+                  - listitem [ref=e377]:
+                    - paragraph [ref=e378]:
+                      - text: "Container Name:"
+                      - code [ref=e379]: ui
+                  - listitem [ref=e380]:
+                    - paragraph [ref=e381]: "Registry: Public"
+                  - listitem [ref=e382]:
+                    - paragraph [ref=e383]:
+                      - text: "Image:"
+                      - code [ref=e384]: ghcr.io/spectrocloud/hello-universe:1.0.12
+                  - listitem [ref=e385]:
+                    - paragraph [ref=e386]: "Network Access: Public"
+                  - listitem [ref=e387]:
+                    - paragraph [ref=e388]:
+                      - text: "Ports:"
+                      - code [ref=e389]: "8080"
+                - paragraph [ref=e390]: "Assign the following environment variables to the UI service:"
+                - table [ref=e391]:
+                  - rowgroup [ref=e392]:
+                    - row "Parameter Value" [ref=e393]:
+                      - cell "Parameter" [ref=e394]
+                      - cell "Value" [ref=e395]
+                  - rowgroup [ref=e396]:
+                    - 'row "API_URI http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_EXTERNALHOSTNAME}}:3000" [ref=e397]':
+                      - cell "API_URI" [ref=e398]:
+                        - code [ref=e399]: API_URI
+                      - 'cell "http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_EXTERNALHOSTNAME}}:3000" [ref=e400]':
+                        - code [ref=e401]: "http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_EXTERNALHOSTNAME}}:3000"
+                    - row "TOKEN 931A3B02-8DCC-543F-A1B2-69423D1A0B94" [ref=e402]:
+                      - cell "TOKEN" [ref=e403]:
+                        - code [ref=e404]: TOKEN
+                      - cell "931A3B02-8DCC-543F-A1B2-69423D1A0B94" [ref=e405]:
+                        - code [ref=e406]: 931A3B02-8DCC-543F-A1B2-69423D1A0B94
+                - paragraph [ref=e407]:
+                  - text: If you want to explore the UI service's environment variables in greater detail, you can review the UI
+                  - link "documentation" [ref=e408] [cursor=pointer]:
+                    - /url: https://github.com/spectrocloud/hello-universe
+                  - text: . The
+                  - code [ref=e409]: API_URI
+                  - text: contains the address of the application load balancer that will be deployed for the API service.
+                - paragraph [ref=e410]:
+                  - text: The output variable
+                  - code [ref=e411]: "{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_EXTERNALHOSTNAME}}"
+                  - text: is used to retrieve the load balancer URL value.
+                - paragraph [ref=e412]:
+                  - text: Click on the
+                  - strong [ref=e413]: Review
+                  - text: button at the bottom of the screen to finalize the app profile. Click on
+                  - strong [ref=e414]: Deploy New App
+                  - text: in the following screen to deploy the new app profile to cluster-2.
+                - paragraph [ref=e415]:
+                  - text: Name the app
+                  - code [ref=e416]: multiple-app-scenario
+                  - text: ", select the app profile"
+                  - strong [ref=e417]: hello-universe-complete
+                  - text: ", pick version"
+                  - strong [ref=e418]: 1.0.0
+                  - text: and toggle the radio button
+                  - strong [ref=e419]: Deploy In An Existing Palette Virtual Cluster
+                  - text: . Select
+                  - strong [ref=e420]: cluster-2
+                  - text: and click on
+                  - strong [ref=e421]: Create App
+                  - text: .
+                - generic [ref=e422]:
+                  - generic [ref=e423]:
+                    - img [ref=e425]
+                    - text: warning
+                  - paragraph [ref=e428]: If cluster-2 is not displayed. Wait a few more moments and return to the above steps. You can refresh the page but you must fill out all the required input fields.
+                - paragraph [ref=e429]:
+                  - img "App deployment cluster-2" [ref=e430]
+                - paragraph [ref=e431]:
+                  - text: The app profile deployment takes a few moments to finish. You can review the application's deployment progress by navigating to the left
+                  - strong [ref=e432]: Main Menu
+                  - text: and selecting
+                  - strong [ref=e433]: Virtual Clusters
+                  - text: . Click on
+                  - strong [ref=e434]: cluster-2
+                  - text: to view its details page.
+                - paragraph [ref=e435]: Once the app is successfully deployed, the cluster details page will expose the public-facing URLs of the services.
+                - paragraph [ref=e436]:
+                  - img "Cluster 2&#39;s details page" [ref=e437]
+                - paragraph [ref=e438]:
+                  - text: Click on the UI’s service URL for port
+                  - strong [ref=e439]: "8080"
+                  - text: to access the Hello Universe application in a three-tier configuration.
+                - paragraph [ref=e440]:
+                  - img "View of the self-hosted version of Hello Universe" [ref=e441]
+                - paragraph [ref=e442]: The global counter is no longer available. Instead, you have a counter that starts at zero. Each time you click on the center image, the counter is incremented and stored in the Postgres database along with metadata. Also, remember that the reverse proxy injects the Bearer token value in each request sent to the API.
+                - heading "CleanupDirect link to Cleanup" [level=3] [ref=e443]:
+                  - text: Cleanup
+                  - link "Direct link to Cleanup" [ref=e444] [cursor=pointer]:
+                    - /url: "#cleanup"
+                    - text: "#"
+                - paragraph [ref=e445]:
+                  - text: To remove all resources created in this tutorial, begin by navigating to the left
+                  - strong [ref=e446]: Main Menu
+                  - text: and select
+                  - strong [ref=e447]: Apps
+                  - text: . For each application, click on the
+                  - strong [ref=e448]: three-dots Menu
+                  - text: to expand the options menu and click on the
+                  - strong [ref=e449]: Delete
+                  - text: button. Repeat this process for each application.
+                - paragraph [ref=e450]:
+                  - img "Apps view with an arrow pointing towards the delete button" [ref=e451]
+                - paragraph [ref=e452]:
+                  - text: Next, in the left
+                  - strong [ref=e453]: Main Menu
+                  - text: ", click on the"
+                  - strong [ref=e454]: Cluster
+                  - text: link to access the clusters page.
+                - paragraph [ref=e455]:
+                  - text: Click on
+                  - strong [ref=e456]: cluster-1
+                  - text: to access its details page. Click on
+                  - strong [ref=e457]: Settings
+                  - text: from the details page to expand the settings menu. Click on
+                  - strong [ref=e458]: Delete
+                  - text: to delete the cluster. You will be asked to enter the cluster name to confirm the delete action. Type the cluster name to proceed with the delete step. Repeat this process for cluster-2.
+                - paragraph [ref=e459]:
+                  - img "Delete a cluster view with arrow" [ref=e460]
+                - generic [ref=e461]:
+                  - generic [ref=e462]:
+                    - img [ref=e464]
+                    - text: info
+                  - paragraph [ref=e467]:
+                    - text: If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for
+                    - strong [ref=e468]: Force Delete
+                    - text: . To trigger a force delete, navigate to the respective cluster’s details page and click on
+                    - strong [ref=e469]: Settings
+                    - text: . Click on the
+                    - strong [ref=e470]: Force Delete Cluster
+                    - text: to delete the cluster. Palette will automatically remove clusters stuck in the cluster deletion phase for over 24 hours.
+                - heading "Terraform WorkflowDirect link to Terraform Workflow" [level=2] [ref=e471]:
+                  - text: Terraform Workflow
+                  - link "Direct link to Terraform Workflow" [ref=e472] [cursor=pointer]:
+                    - /url: "#terraform-workflow"
+                    - text: "#"
+                - paragraph [ref=e473]:
+                  - text: The
+                  - link "Spectro Cloud Terraform" [ref=e474] [cursor=pointer]:
+                    - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs
+                  - text: "provider enables you to create and manage Palette resources in a codified manner by leveraging Infrastructure as Code (IaC). There are many reasons why you would want to utilize IaC. A few reasons worth highlighting are: the ability to automate infrastructure, improve collaboration related to infrastructure changes, self-document infrastructure through codification, and track all infrastructure in a single source of truth. If you need to become more familiar with Terraform, check out the"
+                  - link "Why Terraform" [ref=e475] [cursor=pointer]:
+                    - /url: https://developer.hashicorp.com/terraform/intro
+                  - text: explanation from HashiCorp.
+                - generic [ref=e476]:
+                  - generic [ref=e477]:
+                    - img [ref=e479]
+                    - text: info
+                  - paragraph [ref=e482]: As you go through the Terraform workflow, be aware that high-level concepts from Palette will not be discussed in-depth to optimize the reader experience and focus more on the Terraform concepts that apply to Palette. To better understand the mentioned Palette concepts, review the UI workflow where the concepts are explained in greater detail.
+                - generic [ref=e483]:
+                  - tablist [ref=e484]:
+                    - tab "Docker" [selected] [ref=e485] [cursor=pointer]
+                    - tab "Podman" [ref=e486] [cursor=pointer]
+                    - tab "Git" [ref=e487] [cursor=pointer]
+                  - tabpanel [ref=e489]:
+                    - paragraph [ref=e490]: Ensure Docker Desktop on your local machine is available. Use the following command and ensure you receive an output displaying the version number.
+                    - generic [ref=e492]:
+                      - code [ref=e494]:
+                        - generic [ref=e495]: docker version
+                      - button "Copy code to clipboard" [ref=e497] [cursor=pointer]:
+                        - generic [ref=e498]:
+                          - img [ref=e499]
+                          - img [ref=e501]
+                    - paragraph [ref=e503]: Download the tutorial image to your local machine.
+                    - generic [ref=e505]:
+                      - code [ref=e507]:
+                        - generic [ref=e508]: docker pull ghcr.io/spectrocloud/tutorials:1.3.0
+                      - button "Copy code to clipboard" [ref=e510] [cursor=pointer]:
+                        - generic [ref=e511]:
+                          - img [ref=e512]
+                          - img [ref=e514]
+                    - paragraph [ref=e516]: Next, start the container, and open a bash session into it.
+                    - generic [ref=e518]:
+                      - code [ref=e520]:
+                        - generic [ref=e521]: docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.3.0 bash
+                      - generic [ref=e522]:
+                        - button "Toggle word wrap" [ref=e523] [cursor=pointer]:
+                          - img [ref=e524]
+                        - button "Copy code to clipboard" [ref=e526] [cursor=pointer]:
+                          - generic [ref=e527]:
+                            - img [ref=e528]
+                            - img [ref=e530]
+                    - paragraph [ref=e532]: Navigate to the tutorial code.
+                    - generic [ref=e534]:
+                      - code [ref=e536]:
+                        - generic [ref=e537]: cd terraform/hello-universe-tf/
+                      - button "Copy code to clipboard" [ref=e539] [cursor=pointer]:
+                        - generic [ref=e540]:
+                          - img [ref=e541]
+                          - img [ref=e543]
+                - paragraph [ref=e545]: Before you can get started with the Terraform code, you need a Spectro Cloud API key.
+                - heading "API KeyDirect link to API Key" [level=3] [ref=e546]:
+                  - text: API Key
+                  - link "Direct link to API Key" [ref=e547] [cursor=pointer]:
+                    - /url: "#api-key"
+                    - text: "#"
+                - paragraph [ref=e548]:
+                  - text: To create an API key, log in to Palette, and click on the user
+                  - strong [ref=e549]: User Menu
+                  - text: and select
+                  - strong [ref=e550]: My API Keys
+                  - text: .
+                - paragraph [ref=e551]:
+                  - img "Image that points to the user drop-down Menu and points to the API key link" [ref=e552]
+                - paragraph [ref=e553]:
+                  - text: Next, click on
+                  - strong [ref=e554]: Add New API Key
+                  - text: . Fill out the required input field,
+                  - strong [ref=e555]: API Key Name
+                  - text: ", and the"
+                  - strong [ref=e556]: Expiration Date
+                  - text: . Click on
+                  - strong [ref=e557]: Confirm
+                  - text: to create the API key. Copy the key value to your clipboard, as you will use it shortly.
+                - heading "Initialize TerraformDirect link to Initialize Terraform" [level=3] [ref=e558]:
+                  - text: Initialize Terraform
+                  - link "Direct link to Initialize Terraform" [ref=e559] [cursor=pointer]:
+                    - /url: "#initialize-terraform"
+                    - text: "#"
+                - paragraph [ref=e560]: The tutorial folder contains several Terraform files that you should review and explore. Each file is named after the respective type of Palette resource it supports. Use the following list to gain a high-level overview of the files.
+                - list [ref=e561]:
+                  - listitem [ref=e562]:
+                    - strong [ref=e563]: provider.tf
+                    - text: "- the provider configuration and version of the provider."
+                  - listitem [ref=e564]:
+                    - strong [ref=e565]: inputs.tf
+                    - text: "- contains all the Terraform variables and the default values used in the tutorial."
+                  - listitem [ref=e566]:
+                    - strong [ref=e567]: outputs.tf
+                    - text: "- contains the output variables that are used to expose information."
+                  - listitem [ref=e568]:
+                    - strong [ref=e569]: data.tf
+                    - text: "- all the data resources that are used to dynamically retrieve data from Palette."
+                  - listitem [ref=e570]:
+                    - strong [ref=e571]: virtual-clusters.tf
+                    - text: "- the code for the virtual clusters that will be deployed in Palette."
+                  - listitem [ref=e572]:
+                    - strong [ref=e573]: application-profiles.tf
+                    - text: "- contains the configurations that make up all the app profiles."
+                  - listitem [ref=e574]:
+                    - strong [ref=e575]: application.tf
+                    - text: "- the configuration that creates a Spectro Cloud app and deploys the app into a virtual cluster."
+                - paragraph [ref=e576]:
+                  - text: The
+                  - link "Spectro Cloud Terraform" [ref=e577] [cursor=pointer]:
+                    - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs
+                  - text: provider requires credentials to interact with the Palette API. Export the API key as an environment variable so that the Spectro Cloud provider can authenticate with the Palette API.
+                - generic [ref=e579]:
+                  - code [ref=e581]:
+                    - generic [ref=e582]: export SPECTROCLOUD_APIKEY=YourAPIKeyHere
+                  - button "Copy code to clipboard" [ref=e584] [cursor=pointer]:
+                    - generic [ref=e585]:
+                      - img [ref=e586]
+                      - img [ref=e588]
+                - paragraph [ref=e590]: To simplify future steps, export the name of the cluster group you want to deploy the virtual clusters to as an environment variable.
+                - generic [ref=e592]:
+                  - code [ref=e594]:
+                    - generic [ref=e595]: export CLUSTER_GROUP_NAME=YourClusterGroupName
+                  - button "Copy code to clipboard" [ref=e597] [cursor=pointer]:
+                    - generic [ref=e598]:
+                      - img [ref=e599]
+                      - img [ref=e601]
+                - paragraph [ref=e603]: Next, initialize the Terraform provider by issuing the following command.
+                - generic [ref=e605]:
+                  - code [ref=e607]:
+                    - generic [ref=e608]: terraform init
+                  - button "Copy code to clipboard" [ref=e610] [cursor=pointer]:
+                    - generic [ref=e611]:
+                      - img [ref=e612]
+                      - img [ref=e614]
+                - generic [ref=e617]:
+                  - code [ref=e619]:
+                    - generic [ref=e620]: Initializing the backend...
+                    - generic [ref=e621]: Initializing provider plugins...
+                    - generic [ref=e622]: Terraform has been successfully initialized!
+                    - generic [ref=e623]: You may now begin working with Terraform. Try running "terraform plan" to see
+                    - generic [ref=e624]: any changes that are required for your infrastructure. All Terraform commands
+                    - generic [ref=e625]: should now work.
+                    - generic [ref=e626]: If you ever set or change modules or backend configuration for Terraform,
+                    - generic [ref=e627]: rerun this command to reinitialize your working directory. If you forget, other
+                    - generic [ref=e628]: commands will detect it and remind you to do so if necessary.
+                  - generic [ref=e629]:
+                    - button "Toggle word wrap" [ref=e630] [cursor=pointer]:
+                      - img [ref=e631]
+                    - button "Copy code to clipboard" [ref=e633] [cursor=pointer]:
+                      - generic [ref=e634]:
+                        - img [ref=e635]
+                        - img [ref=e637]
+                - paragraph [ref=e639]:
+                  - text: The
+                  - code [ref=e640]: init
+                  - text: command downloads all the required plugins and providers specified in
+                  - strong [ref=e641]: provider.tf
+                  - text: file. In the provider configuration, the scope or context of Palette is set. The provider is configured for the
+                  - code [ref=e642]: Default
+                  - text: project, but you can change this value to point to any other projects you may have in Palette.
+                - generic [ref=e644]:
+                  - code [ref=e646]:
+                    - generic [ref=e647]: "terraform {"
+                    - generic [ref=e648]: "required_providers {"
+                    - generic [ref=e649]: "spectrocloud = {"
+                    - generic [ref=e650]: version = ">= 0.21.6"
+                    - generic [ref=e651]: source = "spectrocloud/spectrocloud"
+                    - generic [ref=e652]: "}"
+                    - generic [ref=e653]: "}"
+                    - generic [ref=e654]: "}"
+                    - generic [ref=e655]: "provider \"spectrocloud\" {"
+                    - generic [ref=e656]: project_name = "Default"
+                    - generic [ref=e657]: "}"
+                  - button "Copy code to clipboard" [ref=e659] [cursor=pointer]:
+                    - generic [ref=e660]:
+                      - img [ref=e661]
+                      - img [ref=e663]
+                - paragraph [ref=e665]:
+                  - text: To deploy the first scenario, a single application container, you must first create a configuration for the virtual cluster. Look at the virtual cluster resources in
+                  - strong [ref=e666]: virtual-clusters.tf
+                  - text: ", and check out the \"cluster-1\" resource. The resource specifies the cluster name, the cluster group id, the resource limits, and the tags that will apply to the cluster."
+                - generic [ref=e668]:
+                  - code [ref=e670]:
+                    - generic [ref=e671]: "resource \"spectrocloud_virtual_cluster\" \"cluster-1\" {"
+                    - generic [ref=e672]: name = var.scenario-one-cluster-name
+                    - generic [ref=e673]: cluster_group_uid = data.spectrocloud_cluster_group.cluster-group.id
+                    - generic [ref=e674]: "resources {"
+                    - generic [ref=e675]: max_cpu = 4
+                    - generic [ref=e676]: max_mem_in_mb = 4096
+                    - generic [ref=e677]: min_cpu = 0
+                    - generic [ref=e678]: min_mem_in_mb = 0
+                    - generic [ref=e679]: max_storage_in_gb = "2"
+                    - generic [ref=e680]: min_storage_in_gb = "0"
+                    - generic [ref=e681]: "}"
+                    - generic [ref=e682]: tags = concat(var.tags, ["scenario-1"])
+                    - generic [ref=e683]: "timeouts {"
+                    - generic [ref=e684]: create = "15m"
+                    - generic [ref=e685]: delete = "15m"
+                    - generic [ref=e686]: "}"
+                    - generic [ref=e687]: "}"
+                  - generic [ref=e688]:
+                    - button "Toggle word wrap" [ref=e689] [cursor=pointer]:
+                      - img [ref=e690]
+                    - button "Copy code to clipboard" [ref=e692] [cursor=pointer]:
+                      - generic [ref=e693]:
+                        - img [ref=e694]
+                        - img [ref=e696]
+                - paragraph [ref=e698]:
+                  - text: The cluster group id is retrieved from the data resource
+                  - code [ref=e699]: spectrocloud_cluster_group.beehive
+                  - text: . The data resource will query the Palette API and retrieve information about the specified cluster group, which is the
+                  - emphasis [ref=e700]: beehive
+                  - text: cluster group made available for all Palette users. This resource will create a new virtual cluster that is hosted in the
+                  - emphasis [ref=e701]: beehive
+                  - text: cluster group.
+                - generic [ref=e703]:
+                  - code [ref=e705]:
+                    - generic [ref=e706]: "data \"spectrocloud_cluster_group\" \"cluster-group\" {"
+                    - generic [ref=e707]: name = var.cluster-group-name
+                    - generic [ref=e708]: context = "project"
+                    - generic [ref=e709]: "}"
+                  - button "Copy code to clipboard" [ref=e711] [cursor=pointer]:
+                    - generic [ref=e712]:
+                      - img [ref=e713]
+                      - img [ref=e715]
+                - paragraph [ref=e717]:
+                  - text: Next, take a look at the
+                  - strong [ref=e718]: application-profiles.tf
+                  - text: file. The resource
+                  - code [ref=e719]: spectrocloud_application_profile.hello-universe-ui
+                  - text: "is the resource responsible for creating the app profile for the first scenario. There are several points of interest in this resource that you should be familiar with. Focus on these five key points:"
+                - list [ref=e720]:
+                  - listitem [ref=e721]:
+                    - paragraph [ref=e722]: The pack object represents a single tier or layer in the app profile. Inside the pack object, you define all the attributes that make up the specific layer of the app profile.
+                  - listitem [ref=e723]:
+                    - paragraph [ref=e724]:
+                      - text: The type of app layer. This application is hosted on a container image. Therefore a container pack is specified. Instead of hard coding the value, the data resource
+                      - code [ref=e725]: data.spectrocloud_pack_simple.container_pack
+                      - text: is specified.
+                  - listitem [ref=e726]:
+                    - paragraph [ref=e727]:
+                      - text: A pack requires a registry id. To create the app profile, Terraform needs to know what registry is hosting the pack. For containers, you can use the
+                      - code [ref=e728]: Public Repo
+                      - text: hosting most of the Palette packs. This time the data resource
+                      - code [ref=e729]: data.spectrocloud_registry.public_registry
+                      - text: is specified to avoid hardcoded values.
+                  - listitem [ref=e730]:
+                    - paragraph [ref=e731]:
+                      - text: The attribute
+                      - code [ref=e732]: source_app_tier
+                      - text: is used to specify the unique id of the pack. All packs are assigned a unique id, including different versions of a pack. To ensure the correct pack is selected, the data resource
+                      - code [ref=e733]: data.spectrocloud_pack_simple.container_pack
+                      - text: is used.
+                  - listitem [ref=e734]:
+                    - paragraph [ref=e735]:
+                      - text: The
+                      - code [ref=e736]: values
+                      - text: attribute is used to specify the properties of the specific service. In this case, the properties of the container such as the image name, ports, and service type, are specified. These properties can be provided as an extended string using the
+                      - link "Terraform Heredoc strings" [ref=e737] [cursor=pointer]:
+                        - /url: https://developer.hashicorp.com/terraform/language/expressions/strings#heredoc-strings
+                      - text: ", or you can specify these values as a JSON object."
+                - generic [ref=e738]:
+                  - generic:
+                    - generic [ref=e740] [cursor=pointer]: "1"
+                    - generic [ref=e742] [cursor=pointer]: "2"
+                    - generic [ref=e744] [cursor=pointer]: "3"
+                    - generic [ref=e746] [cursor=pointer]: "4"
+                    - generic [ref=e748] [cursor=pointer]: "5"
+                  - generic [ref=e750]:
+                    - code [ref=e752]:
+                      - generic [ref=e753]: "resource \"spectrocloud_application_profile\" \"hello-universe-ui\" {"
+                      - generic [ref=e754]: name = "hello-universe-ui"
+                      - generic [ref=e755]: description = "Hello Universe as a single UI instance"
+                      - generic [ref=e756]: version = "1.0.0"
+                      - generic [ref=e757]: "pack {"
+                      - generic [ref=e758]: name = "ui"
+                      - generic [ref=e759]: type = data.spectrocloud_pack_simple.container_pack.type
+                      - generic [ref=e760]: registry_uid = data.spectrocloud_registry.public_registry.id
+                      - generic [ref=e761]: source_app_tier = data.spectrocloud_pack_simple.container_pack.id
+                      - generic [ref=e762]: values = <<-EOT
+                      - generic [ref=e763]: "pack:"
+                      - generic [ref=e764]: "namespace: \"{{.spectro.system.appdeployment.tiername}}-ns\""
+                      - generic [ref=e765]: "releaseNameOverride: \"{{.spectro.system.appdeployment.tiername}}\""
+                      - generic [ref=e766]: "postReadinessHooks:"
+                      - generic [ref=e767]: "outputParameters:"
+                      - generic [ref=e768]: "- name: CONTAINER_NAMESPACE"
+                      - generic [ref=e769]: "type: lookupSecret"
+                      - generic [ref=e770]: "spec:"
+                      - generic [ref=e771]: "namespace: \"{{.spectro.system.appdeployment.tiername}}-ns\""
+                      - generic [ref=e772]: "secretName: \"{{.spectro.system.appdeployment.tiername}}-custom-secret\""
+                      - generic [ref=e773]: "ownerReference:"
+                      - generic [ref=e774]: "apiVersion: v1"
+                      - generic [ref=e775]: "kind: Service"
+                      - generic [ref=e776]: "name: \"{{.spectro.system.appdeployment.tiername}}-svc\""
+                      - generic [ref=e777]: "keyToCheck: metadata.namespace"
+                      - generic [ref=e778]: "- name: CONTAINER_SVC"
+                      - generic [ref=e779]: "type: lookupSecret"
+                      - generic [ref=e780]: "spec:"
+                      - generic [ref=e781]: "namespace: \"{{.spectro.system.appdeployment.tiername}}-ns\""
+                      - generic [ref=e782]: "secretName: \"{{.spectro.system.appdeployment.tiername}}-custom-secret\""
+                      - generic [ref=e783]: "ownerReference:"
+                      - generic [ref=e784]: "apiVersion: v1"
+                      - generic [ref=e785]: "kind: Service"
+                      - generic [ref=e786]: "name: \"{{.spectro.system.appdeployment.tiername}}-svc\""
+                      - generic [ref=e787]: "keyToCheck: metadata.annotations[\"spectrocloud.com/service-fqdn\"]"
+                      - generic [ref=e788]: "- name: CONTAINER_SVC_EXTERNALHOSTNAME"
+                      - generic [ref=e789]: "type: lookupSecret"
+                      - generic [ref=e790]: "spec:"
+                      - generic [ref=e791]: "namespace: \"{{.spectro.system.appdeployment.tiername}}-ns\""
+                      - generic [ref=e792]: "secretName: \"{{.spectro.system.appdeployment.tiername}}-custom-secret\""
+                      - generic [ref=e793]: "ownerReference:"
+                      - generic [ref=e794]: "apiVersion: v1"
+                      - generic [ref=e795]: "kind: Service"
+                      - generic [ref=e796]: "name: \"{{.spectro.system.appdeployment.tiername}}-svc\""
+                      - generic [ref=e797]: "keyToCheck: status.load balancer.ingress[0].hostname"
+                      - generic [ref=e798]: "conditional: true"
+                      - generic [ref=e799]: "- name: CONTAINER_SVC_EXTERNALIP"
+                      - generic [ref=e800]: "type: lookupSecret"
+                      - generic [ref=e801]: "spec:"
+                      - generic [ref=e802]: "namespace: \"{{.spectro.system.appdeployment.tiername}}-ns\""
+                      - generic [ref=e803]: "secretName: \"{{.spectro.system.appdeployment.tiername}}-custom-secret\""
+                      - generic [ref=e804]: "ownerReference:"
+                      - generic [ref=e805]: "apiVersion: v1"
+                      - generic [ref=e806]: "kind: Service"
+                      - generic [ref=e807]: "name: \"{{.spectro.system.appdeployment.tiername}}-svc\""
+                      - generic [ref=e808]: "keyToCheck: status.load balancer.ingress[0].ip"
+                      - generic [ref=e809]: "conditional: true"
+                      - generic [ref=e810]: "- name: CONTAINER_SVC_PORT"
+                      - generic [ref=e811]: "type: lookupSecret"
+                      - generic [ref=e812]: "spec:"
+                      - generic [ref=e813]: "namespace: \"{{.spectro.system.appdeployment.tiername}}-ns\""
+                      - generic [ref=e814]: "secretName: \"{{.spectro.system.appdeployment.tiername}}-custom-secret\""
+                      - generic [ref=e815]: "ownerReference:"
+                      - generic [ref=e816]: "apiVersion: v1"
+                      - generic [ref=e817]: "kind: Service"
+                      - generic [ref=e818]: "name: \"{{.spectro.system.appdeployment.tiername}}-svc\""
+                      - generic [ref=e819]: "keyToCheck: spec.ports[0].port"
+                      - generic [ref=e820]: "containerService:"
+                      - generic [ref=e821]: "serviceName: \"{{.spectro.system.appdeployment.tiername}}-svc\""
+                      - generic [ref=e822]: "registryUrl: \"\""
+                      - generic [ref=e823]: "image: ${var.single-container-image}"
+                      - generic [ref=e824]: "access: public"
+                      - generic [ref=e825]: "ports:"
+                      - generic [ref=e826]: "- \"8080\""
+                      - generic [ref=e827]: "serviceType: load balancer"
+                      - generic [ref=e828]: EOT
+                      - generic [ref=e829]: "}"
+                      - generic [ref=e830]: tags = concat(var.tags, ["scenario-1"])
+                      - generic [ref=e831]: "}"
+                    - generic [ref=e832]:
+                      - button "Toggle word wrap" [ref=e833] [cursor=pointer]:
+                        - img [ref=e834]
+                      - button "Copy code to clipboard" [ref=e836] [cursor=pointer]:
+                        - generic [ref=e837]:
+                          - img [ref=e838]
+                          - img [ref=e840]
+                - paragraph [ref=e842]:
+                  - text: A tip for gathering the required values to provide the
+                  - code [ref=e843]: values
+                  - text: attribute is to visit the Palette console and create the app profile through the UI. During the app profile creation process, click on the API button to display the API payload. Review the payload's
+                  - code [ref=e844]: values
+                  - text: attribute to find all of the properties of the service. You can copy the entire string and pass it to the resource
+                  - code [ref=e845]: spectrocloud_application_profile
+                  - text: as an input for the
+                  - code [ref=e846]: values
+                  - text: attribute.
+                - paragraph [ref=e847]:
+                  - img "UI ability to display the API object" [ref=e848]
+                - paragraph [ref=e849]:
+                  - text: The last Terraform resource to review before deploying the application is located in the
+                  - strong [ref=e850]: application.tf
+                  - text: file. The resource
+                  - code [ref=e851]: spectrocloud_application.hello-universe-ui
+                  - text: is what creates the
+                  - emphasis [ref=e852]: app
+                  - text: . In Palette, an app combines a virtual cluster and an app profile. When you deploy an app profile into a virtual cluster, you create an app. This resource points to the app profile
+                  - code [ref=e853]: spectrocloud_application_profile.hello-universe-ui
+                  - text: and the cluster resource
+                  - code [ref=e854]: spectrocloud_virtual_cluster.cluster-1
+                  - text: . The two resources are required to create an app.
+                - generic [ref=e855]:
+                  - generic:
+                    - generic [ref=e857] [cursor=pointer]: "1"
+                    - generic [ref=e859] [cursor=pointer]: "2"
+                  - generic [ref=e861]:
+                    - code [ref=e863]:
+                      - generic [ref=e864]: "resource \"spectrocloud_application\" \"scenario-1\" {"
+                      - generic [ref=e865]: name = "single-scenario"
+                      - generic [ref=e866]: application_profile_uid = spectrocloud_application_profile.hello-universe-ui.id
+                      - generic [ref=e867]: "config {"
+                      - generic [ref=e868]: cluster_name = spectrocloud_virtual_cluster.cluster-1.name
+                      - generic [ref=e869]: cluster_uid = spectrocloud_virtual_cluster.cluster-1.id
+                      - generic [ref=e870]: cluster_context = "project"
+                      - generic [ref=e871]: "}"
+                      - generic [ref=e872]: tags = concat(var.tags, ["scenario-1"])
+                      - generic [ref=e873]: "}"
+                    - generic [ref=e874]:
+                      - button "Toggle word wrap" [ref=e875] [cursor=pointer]:
+                        - img [ref=e876]
+                      - button "Copy code to clipboard" [ref=e878] [cursor=pointer]:
+                        - generic [ref=e879]:
+                          - img [ref=e880]
+                          - img [ref=e882]
+                  - paragraph [ref=e884]:
+                    - text: Before deploying the application, use a terraform variable file to populate the cluster group name for the variable
+                    - code [ref=e885]: cluster-group-name
+                    - text: . Issue the following command to create the file.
+                  - generic [ref=e887]:
+                    - code [ref=e889]:
+                      - generic [ref=e890]: "echo \"cluster-group-name = \\\"${CLUSTER_GROUP_NAME}\\\"\" > terraform.tfvars"
+                    - generic [ref=e891]:
+                      - button "Toggle word wrap" [ref=e892] [cursor=pointer]:
+                        - img [ref=e893]
+                      - button "Copy code to clipboard" [ref=e895] [cursor=pointer]:
+                        - generic [ref=e896]:
+                          - img [ref=e897]
+                          - img [ref=e899]
+                - paragraph [ref=e901]: Preview the resources Terraform will create by issuing the following command.
+                - generic [ref=e903]:
+                  - code [ref=e905]:
+                    - generic [ref=e906]: terraform plan
+                  - button "Copy code to clipboard" [ref=e908] [cursor=pointer]:
+                    - generic [ref=e909]:
+                      - img [ref=e910]
+                      - img [ref=e912]
+                - generic [ref=e915]:
+                  - code [ref=e917]:
+                    - generic [ref=e918]: // Output condensed for readability
+                    - generic [ref=e919]: "Plan: 3 to add, 0 to change, 0 to destroy."
+                  - button "Copy code to clipboard" [ref=e921] [cursor=pointer]:
+                    - generic [ref=e922]:
+                      - img [ref=e923]
+                      - img [ref=e925]
+                - paragraph [ref=e927]: The output displays the resources Terraform will create in an actual implementation. If you review the output, you will find the three resources previously discussed in great detail.
+                - paragraph [ref=e928]:
+                  - text: Go ahead and deploy the application by using the
+                  - code [ref=e929]: terraform apply
+                  - text: command.
+                - generic [ref=e931]:
+                  - code [ref=e933]:
+                    - generic [ref=e934]: terraform apply -auto-approve
+                  - button "Copy code to clipboard" [ref=e936] [cursor=pointer]:
+                    - generic [ref=e937]:
+                      - img [ref=e938]
+                      - img [ref=e940]
+                - generic [ref=e943]:
+                  - code [ref=e945]:
+                    - generic [ref=e946]: // Output condensed for readability
+                    - generic [ref=e947]: "Apply complete! Resources: 3 added, 0 changed, 0 destroyed."
+                  - button "Copy code to clipboard" [ref=e949] [cursor=pointer]:
+                    - generic [ref=e950]:
+                      - img [ref=e951]
+                      - img [ref=e953]
+                - paragraph [ref=e955]:
+                  - text: Log in to
+                  - link "Palette" [ref=e956] [cursor=pointer]:
+                    - /url: https://console.spectrocloud.com
+                  - text: ", navigate to the left"
+                  - strong [ref=e957]: Main Menu
+                  - text: ", and select"
+                  - strong [ref=e958]: Apps
+                  - text: . Click on the
+                  - strong [ref=e959]: scenario-1
+                  - text: row, which takes you to the application’s overview page. Once you are on the scenario-1 overview page, click on the exposed URL for the service. A hyperlink for port 8080 is available.
+                - paragraph [ref=e960]:
+                  - img "scenario-1 overview page with an arrow pointing to the URL" [ref=e961]
+                - generic [ref=e962]:
+                  - generic [ref=e963]:
+                    - img [ref=e965]
+                    - text: warning
+                  - paragraph [ref=e968]: It takes between one to three minutes for DNS to properly resolve the public load balancer URL. We recommend waiting a few moments before clicking on the service URL to prevent the browser from caching an unresolved DNS request.
+                - paragraph [ref=e969]: Welcome to Hello Universe, a demo application to help you learn more about Palette and its features. Feel free to click on the logo to increase the global counter and for a fun image change.
+                - paragraph [ref=e970]:
+                  - img "Hello Universe landing page displaying global clicks" [ref=e971]
+                - paragraph [ref=e972]: You have deployed your first app profile to Palette. Your first application is a single container application with no upstream dependencies. In a production environment, you often deploy applications that consume other services and require connectivity with other resources. The following scenario expands on the single application scenario by adding an API server and Postgres database to simulate a common application architecture encountered in a production environment.
+                - heading "Deploy Multiple ApplicationsDirect link to Deploy Multiple Applications" [level=3] [ref=e973]:
+                  - text: Deploy Multiple Applications
+                  - link "Direct link to Deploy Multiple Applications" [ref=e974] [cursor=pointer]:
+                    - /url: "#deploy-multiple-applications-1"
+                    - text: "#"
+                - paragraph [ref=e975]: The second scenario contains two additional microservices, an API, and a Postgres database. This time, instead of using a the global API for storing clicks, you will instead deploy your own API server and Postgres database. The following diagram illustrates the network connectivity path and behavior discussed.
+                - paragraph [ref=e976]:
+                  - img "A diagram of the three-tier architecture where the load balancer forwards all requests to the UI container OR the API container" [ref=e977]
+                - paragraph [ref=e978]: To deploy the second scenario, you will again deploy the same three resource types previously discussed but another instance of them.
+                - list [ref=e979]:
+                  - listitem [ref=e980]:
+                    - paragraph [ref=e981]:
+                      - code [ref=e982]: spectrocloud_virtual_cluster
+                      - text: "-"
+                      - code [ref=e983]: cluster-2
+                      - text: "- this resource will create the second virtual cluster."
+                  - listitem [ref=e984]:
+                    - paragraph [ref=e985]:
+                      - code [ref=e986]: spectrocloud_application_profile
+                      - text: "-"
+                      - code [ref=e987]: hello-universe-complete
+                      - text: "- the application profile that will contain the three different services, database, API, and UI."
+                  - listitem [ref=e988]:
+                    - paragraph [ref=e989]:
+                      - code [ref=e990]: spectrocloud_application
+                      - text: "-"
+                      - code [ref=e991]: scenario-2
+                      - text: "- the application that will be deployed into cluster-2 that uses the"
+                      - code [ref=e992]: spectrocloud_application_profile.hello-universe-complete
+                      - text: app profile.
+                - paragraph [ref=e993]: You can review all the resources for the second scenario in the respective Terraform files. You can find the second scenario code after the comment block in all of the files that have resources specific to the second scenario.
+                - generic [ref=e995]:
+                  - code [ref=e997]:
+                    - generic [ref=e998]: "##########################################"
+                    - generic [ref=e999]: "# Scenario 2: Multiple Applications"
+                    - generic [ref=e1000]: "##########################################"
+                  - button "Copy code to clipboard" [ref=e1002] [cursor=pointer]:
+                    - generic [ref=e1003]:
+                      - img [ref=e1004]
+                      - img [ref=e1006]
+                - paragraph [ref=e1008]:
+                  - text: From a Terraform perspective, there are no significant differences in the authoring experience. The main difference in the second scenario lies in the application profile resource
+                  - code [ref=e1009]: spectrocloud_application_profile.hello-universe-complete
+                  - text: . The other difference is that the virtual cluster you will deploy in the second scenario, cluster-2, is much larger than cluster-1.
+                - paragraph [ref=e1010]:
+                  - text: You can add multiple services to an app profile, but you must add a
+                  - code [ref=e1011]: "pack {}"
+                  - text: block for each service in the
+                  - code [ref=e1012]: spectrocloud_application_profile
+                  - text: resource. Take a close look at the
+                  - code [ref=e1013]: spectrocloud_application_profile.hello-universe-complete
+                  - text: resource below.
+                - generic [ref=e1015]:
+                  - code [ref=e1017]:
+                    - generic [ref=e1018]: "resource \"spectrocloud_application_profile\" \"hello-universe-complete\" {"
+                    - generic [ref=e1019]: "count = var.enable-second-scenario == true ? 1 : 0"
+                    - generic [ref=e1020]: name = "hello-universe-complete"
+                    - generic [ref=e1021]: description = "Hello Universe as a three-tier application"
+                    - generic [ref=e1022]: version = "1.0.0"
+                    - generic [ref=e1023]: "pack {"
+                    - generic [ref=e1024]: name = "postgres-db"
+                    - generic [ref=e1025]: type = data.spectrocloud_pack_simple.postgres_service.type
+                    - generic [ref=e1026]: source_app_tier = data.spectrocloud_pack_simple.postgres_service.id
+                    - generic [ref=e1027]: "properties = {"
+                    - generic [ref=e1028]: "\"dbUserName\" = var.database-user"
+                    - generic [ref=e1029]: "\"databaseName\" = var.database-name"
+                    - generic [ref=e1030]: "\"databaseVolumeSize\" = \"8\""
+                    - generic [ref=e1031]: "\"version\" = var.database-version"
+                    - generic [ref=e1032]: "}"
+                    - generic [ref=e1033]: "}"
+                    - generic [ref=e1034]: "pack {"
+                    - generic [ref=e1035]: name = "api"
+                    - generic [ref=e1036]: type = data.spectrocloud_pack_simple.container_pack.type
+                    - generic [ref=e1037]: registry_uid = data.spectrocloud_registry.public_registry.id
+                    - generic [ref=e1038]: source_app_tier = data.spectrocloud_pack_simple.container_pack.id
+                    - generic [ref=e1039]: values = <<-EOT
+                    - generic [ref=e1040]: "pack:"
+                    - generic [ref=e1041]: "namespace: \"{{.spectro.system.appdeployment.tiername}}-ns\""
+                    - generic [ref=e1042]: "releaseNameOverride: \"{{.spectro.system.appdeployment.tiername}}\""
+                    - generic [ref=e1043]: "postReadinessHooks:"
+                    - generic [ref=e1044]: "outputParameters:"
+                    - generic [ref=e1045]: "- name: CONTAINER_NAMESPACE"
+                    - generic [ref=e1046]: "type: lookupSecret"
+                    - generic [ref=e1047]: "spec:"
+                    - generic [ref=e1048]: "namespace: \"{{.spectro.system.appdeployment.tiername}}-ns\""
+                    - generic [ref=e1049]: "secretName: \"{{.spectro.system.appdeployment.tiername}}-custom-secret\""
+                    - generic [ref=e1050]: "ownerReference:"
+                    - generic [ref=e1051]: "apiVersion: v1"
+                    - generic [ref=e1052]: "kind: Service"
+                    - generic [ref=e1053]: "name: \"{{.spectro.system.appdeployment.tiername}}-svc\""
+                    - generic [ref=e1054]: "keyToCheck: metadata.namespace"
+                    - generic [ref=e1055]: "- name: CONTAINER_SVC"
+                    - generic [ref=e1056]: "type: lookupSecret"
+                    - generic [ref=e1057]: "spec:"
+                    - generic [ref=e1058]: "namespace: \"{{.spectro.system.appdeployment.tiername}}-ns\""
+                    - generic [ref=e1059]: "secretName: \"{{.spectro.system.appdeployment.tiername}}-custom-secret\""
+                    - generic [ref=e1060]: "ownerReference:"
+                    - generic [ref=e1061]: "apiVersion: v1"
+                    - generic [ref=e1062]: "kind: Service"
+                    - generic [ref=e1063]: "name: \"{{.spectro.system.appdeployment.tiername}}-svc\""
+                    - generic [ref=e1064]: "keyToCheck: metadata.annotations[\"spectrocloud.com/service-fqdn\"]"
+                    - generic [ref=e1065]: "- name: CONTAINER_SVC_EXTERNALHOSTNAME"
+                    - generic [ref=e1066]: "type: lookupSecret"
+                    - generic [ref=e1067]: "spec:"
+                    - generic [ref=e1068]: "namespace: \"{{.spectro.system.appdeployment.tiername}}-ns\""
+                    - generic [ref=e1069]: "secretName: \"{{.spectro.system.appdeployment.tiername}}-custom-secret\""
+                    - generic [ref=e1070]: "ownerReference:"
+                    - generic [ref=e1071]: "apiVersion: v1"
+                    - generic [ref=e1072]: "kind: Service"
+                    - generic [ref=e1073]: "name: \"{{.spectro.system.appdeployment.tiername}}-svc\""
+                    - generic [ref=e1074]: "keyToCheck: status.load balancer.ingress[0].hostname"
+                    - generic [ref=e1075]: "conditional: true"
+                    - generic [ref=e1076]: "- name: CONTAINER_SVC_EXTERNALIP"
+                    - generic [ref=e1077]: "type: lookupSecret"
+                    - generic [ref=e1078]: "spec:"
+                    - generic [ref=e1079]: "namespace: \"{{.spectro.system.appdeployment.tiername}}-ns\""
+                    - generic [ref=e1080]: "secretName: \"{{.spectro.system.appdeployment.tiername}}-custom-secret\""
+                    - generic [ref=e1081]: "ownerReference:"
+                    - generic [ref=e1082]: "apiVersion: v1"
+                    - generic [ref=e1083]: "kind: Service"
+                    - generic [ref=e1084]: "name: \"{{.spectro.system.appdeployment.tiername}}-svc\""
+                    - generic [ref=e1085]: "keyToCheck: status.load balancer.ingress[0].ip"
+                    - generic [ref=e1086]: "conditional: true"
+                    - generic [ref=e1087]: "- name: CONTAINER_SVC_PORT"
+                    - generic [ref=e1088]: "type: lookupSecret"
+                    - generic [ref=e1089]: "spec:"
+                    - generic [ref=e1090]: "namespace: \"{{.spectro.system.appdeployment.tiername}}-ns\""
+                    - generic [ref=e1091]: "secretName: \"{{.spectro.system.appdeployment.tiername}}-custom-secret\""
+                    - generic [ref=e1092]: "ownerReference:"
+                    - generic [ref=e1093]: "apiVersion: v1"
+                    - generic [ref=e1094]: "kind: Service"
+                    - generic [ref=e1095]: "name: \"{{.spectro.system.appdeployment.tiername}}-svc\""
+                    - generic [ref=e1096]: "keyToCheck: spec.ports[0].port"
+                    - generic [ref=e1097]: "containerService:"
+                    - generic [ref=e1098]: "serviceName: \"{{.spectro.system.appdeployment.tiername}}-svc\""
+                    - generic [ref=e1099]: "registryUrl: \"\""
+                    - generic [ref=e1100]: "image: ${var.multiple_container_images[\"api\"]}"
+                    - generic [ref=e1101]: "access: public"
+                    - generic [ref=e1102]: "ports:"
+                    - generic [ref=e1103]: "- \"3000\""
+                    - generic [ref=e1104]: "serviceType: load balancer"
+                    - generic [ref=e1105]: "env:"
+                    - generic [ref=e1106]: "- name: DB_HOST"
+                    - generic [ref=e1107]: "value: \"{{.spectro.app.$appDeploymentName.postgres-db.POSTGRESMSTR_SVC}}\""
+                    - generic [ref=e1108]: "- name: DB_USER"
+                    - generic [ref=e1109]: "value: \"{{.spectro.app.$appDeploymentName.postgres-db.USERNAME}}\""
+                    - generic [ref=e1110]: "- name: DB_PASSWORD"
+                    - generic [ref=e1111]: "value: \"{{.spectro.app.$appDeploymentName.postgres-db.PASSWORD}}\""
+                    - generic [ref=e1112]: "- name: DB_NAME"
+                    - generic [ref=e1113]: "value: counter"
+                    - generic [ref=e1114]: "- name: DB_INIT"
+                    - generic [ref=e1115]: "value: \"true\""
+                    - generic [ref=e1116]: "- name: DB_ENCRYPTION"
+                    - generic [ref=e1117]: "value: \"${var.database-ssl-mode}\""
+                    - generic [ref=e1118]: "- name: AUTHORIZATION"
+                    - generic [ref=e1119]: "value: \"true\""
+                    - generic [ref=e1120]: EOT
+                    - generic [ref=e1121]: "}"
+                    - generic [ref=e1122]: "pack {"
+                    - generic [ref=e1123]: name = "ui"
+                    - generic [ref=e1124]: type = data.spectrocloud_pack_simple.container_pack.type
+                    - generic [ref=e1125]: registry_uid = data.spectrocloud_registry.public_registry.id
+                    - generic [ref=e1126]: source_app_tier = data.spectrocloud_pack_simple.container_pack.id
+                    - generic [ref=e1127]: values = <<-EOT
+                    - generic [ref=e1128]: "pack:"
+                    - generic [ref=e1129]: "namespace: \"{{.spectro.system.appdeployment.tiername}}-ns\""
+                    - generic [ref=e1130]: "releaseNameOverride: \"{{.spectro.system.appdeployment.tiername}}\""
+                    - generic [ref=e1131]: "postReadinessHooks:"
+                    - generic [ref=e1132]: "outputParameters:"
+                    - generic [ref=e1133]: "- name: CONTAINER_NAMESPACE"
+                    - generic [ref=e1134]: "type: lookupSecret"
+                    - generic [ref=e1135]: "spec:"
+                    - generic [ref=e1136]: "namespace: \"{{.spectro.system.appdeployment.tiername}}-ns\""
+                    - generic [ref=e1137]: "secretName: \"{{.spectro.system.appdeployment.tiername}}-custom-secret\""
+                    - generic [ref=e1138]: "ownerReference:"
+                    - generic [ref=e1139]: "apiVersion: v1"
+                    - generic [ref=e1140]: "kind: Service"
+                    - generic [ref=e1141]: "name: \"{{.spectro.system.appdeployment.tiername}}-svc\""
+                    - generic [ref=e1142]: "keyToCheck: metadata.namespace"
+                    - generic [ref=e1143]: "- name: CONTAINER_SVC"
+                    - generic [ref=e1144]: "type: lookupSecret"
+                    - generic [ref=e1145]: "spec:"
+                    - generic [ref=e1146]: "namespace: \"{{.spectro.system.appdeployment.tiername}}-ns\""
+                    - generic [ref=e1147]: "secretName: \"{{.spectro.system.appdeployment.tiername}}-custom-secret\""
+                    - generic [ref=e1148]: "ownerReference:"
+                    - generic [ref=e1149]: "apiVersion: v1"
+                    - generic [ref=e1150]: "kind: Service"
+                    - generic [ref=e1151]: "name: \"{{.spectro.system.appdeployment.tiername}}-svc\""
+                    - generic [ref=e1152]: "keyToCheck: metadata.annotations[\"spectrocloud.com/service-fqdn\"]"
+                    - generic [ref=e1153]: "- name: CONTAINER_SVC_EXTERNALHOSTNAME"
+                    - generic [ref=e1154]: "type: lookupSecret"
+                    - generic [ref=e1155]: "spec:"
+                    - generic [ref=e1156]: "namespace: \"{{.spectro.system.appdeployment.tiername}}-ns\""
+                    - generic [ref=e1157]: "secretName: \"{{.spectro.system.appdeployment.tiername}}-custom-secret\""
+                    - generic [ref=e1158]: "ownerReference:"
+                    - generic [ref=e1159]: "apiVersion: v1"
+                    - generic [ref=e1160]: "kind: Service"
+                    - generic [ref=e1161]: "name: \"{{.spectro.system.appdeployment.tiername}}-svc\""
+                    - generic [ref=e1162]: "keyToCheck: status.load balancer.ingress[0].hostname"
+                    - generic [ref=e1163]: "conditional: true"
+                    - generic [ref=e1164]: "- name: CONTAINER_SVC_EXTERNALIP"
+                    - generic [ref=e1165]: "type: lookupSecret"
+                    - generic [ref=e1166]: "spec:"
+                    - generic [ref=e1167]: "namespace: \"{{.spectro.system.appdeployment.tiername}}-ns\""
+                    - generic [ref=e1168]: "secretName: \"{{.spectro.system.appdeployment.tiername}}-custom-secret\""
+                    - generic [ref=e1169]: "ownerReference:"
+                    - generic [ref=e1170]: "apiVersion: v1"
+                    - generic [ref=e1171]: "kind: Service"
+                    - generic [ref=e1172]: "name: \"{{.spectro.system.appdeployment.tiername}}-svc\""
+                    - generic [ref=e1173]: "keyToCheck: status.load balancer.ingress[0].ip"
+                    - generic [ref=e1174]: "conditional: true"
+                    - generic [ref=e1175]: "- name: CONTAINER_SVC_PORT"
+                    - generic [ref=e1176]: "type: lookupSecret"
+                    - generic [ref=e1177]: "spec:"
+                    - generic [ref=e1178]: "namespace: \"{{.spectro.system.appdeployment.tiername}}-ns\""
+                    - generic [ref=e1179]: "secretName: \"{{.spectro.system.appdeployment.tiername}}-custom-secret\""
+                    - generic [ref=e1180]: "ownerReference:"
+                    - generic [ref=e1181]: "apiVersion: v1"
+                    - generic [ref=e1182]: "kind: Service"
+                    - generic [ref=e1183]: "name: \"{{.spectro.system.appdeployment.tiername}}-svc\""
+                    - generic [ref=e1184]: "keyToCheck: spec.ports[0].port"
+                    - generic [ref=e1185]: "containerService:"
+                    - generic [ref=e1186]: "serviceName: \"{{.spectro.system.appdeployment.tiername}}-svc\""
+                    - generic [ref=e1187]: "registryUrl: \"\""
+                    - generic [ref=e1188]: "image: ${var.multiple_container_images[\"ui\"]}"
+                    - generic [ref=e1189]: "access: public"
+                    - generic [ref=e1190]: "ports:"
+                    - generic [ref=e1191]: "- \"8080\""
+                    - generic [ref=e1192]: "env:"
+                    - generic [ref=e1193]: "- name: \"API_URI\""
+                    - generic [ref=e1194]: "value: \"http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_EXTERNALHOSTNAME}}:3000\""
+                    - generic [ref=e1195]: "- name: \"TOKEN\""
+                    - generic [ref=e1196]: "value: \"${var.token}\""
+                    - generic [ref=e1197]: "serviceType: load balancer"
+                    - generic [ref=e1198]: EOT
+                    - generic [ref=e1199]: "}"
+                    - generic [ref=e1200]: tags = concat(var.tags, ["scenario-2"])
+                    - generic [ref=e1201]: "}"
+                  - generic [ref=e1202]:
+                    - button "Toggle word wrap" [ref=e1203] [cursor=pointer]:
+                      - img [ref=e1204]
+                    - button "Copy code to clipboard" [ref=e1206] [cursor=pointer]:
+                      - generic [ref=e1207]:
+                        - img [ref=e1208]
+                        - img [ref=e1210]
+                - paragraph [ref=e1212]:
+                  - text: Each service has its own
+                  - code [ref=e1213]: "pack {}"
+                  - text: and a set of unique properties and values.
+                - paragraph [ref=e1214]:
+                  - text: The database service block uses a different data resource,
+                  - code [ref=e1215]: data.spectrocloud_pack_simple.postgres_service
+                  - text: ", to find the Postgres service. If you review the data resource, you will find a different type,"
+                  - code [ref=e1216]: operator-instance
+                  - text: . The Postgres service uses a Postgres
+                  - link "operator" [ref=e1217] [cursor=pointer]:
+                    - /url: https://kubernetes.io/docs/concepts/extend-kubernetes/operator/
+                  - text: to manage the database inside the virtual cluster.
+                - generic [ref=e1219]:
+                  - code [ref=e1221]:
+                    - generic [ref=e1222]: "data \"spectrocloud_pack_simple\" \"postgres_service\" {"
+                    - generic [ref=e1223]: name = "postgresql-operator"
+                    - generic [ref=e1224]: type = "operator-instance"
+                    - generic [ref=e1225]: version = "1.8.2"
+                    - generic [ref=e1226]: registry_uid = data.spectrocloud_registry.public_registry.id
+                    - generic [ref=e1227]: "}"
+                  - button "Copy code to clipboard" [ref=e1229] [cursor=pointer]:
+                    - generic [ref=e1230]:
+                      - img [ref=e1231]
+                      - img [ref=e1233]
+                - paragraph [ref=e1235]:
+                  - text: Inside the
+                  - code [ref=e1236]: "pack {}"
+                  - text: block, the database services uses the
+                  - code [ref=e1237]: properties
+                  - text: attribute instead of the
+                  - code [ref=e1238]: values
+                  - text: attribute. The
+                  - code [ref=e1239]: properties
+                  - text: values provided are the same properties you must fill out when creating the database service through the UI workflow.
+                - generic [ref=e1241]:
+                  - code [ref=e1243]:
+                    - generic [ref=e1244]: "pack {"
+                    - generic [ref=e1245]: name = "postgres-db"
+                    - generic [ref=e1246]: type = data.spectrocloud_pack_simple.postgres_service.type
+                    - generic [ref=e1247]: source_app_tier = data.spectrocloud_pack_simple.postgres_service.id
+                    - generic [ref=e1248]: "properties = {"
+                    - generic [ref=e1249]: "\"dbUserName\" = var.database-user"
+                    - generic [ref=e1250]: "\"databaseName\" = var.database-name"
+                    - generic [ref=e1251]: "\"databaseVolumeSize\" = \"8\""
+                    - generic [ref=e1252]: "\"version\" = var.database-version"
+                    - generic [ref=e1253]: "}"
+                    - generic [ref=e1254]: "}"
+                  - generic [ref=e1255]:
+                    - button "Toggle word wrap" [ref=e1256] [cursor=pointer]:
+                      - img [ref=e1257]
+                    - button "Copy code to clipboard" [ref=e1259] [cursor=pointer]:
+                      - generic [ref=e1260]:
+                        - img [ref=e1261]
+                        - img [ref=e1263]
+                - paragraph [ref=e1265]:
+                  - text: If you go further down the app profile stack, you will find the
+                  - code [ref=e1266]: "pack {}"
+                  - text: object for the API. A good part of the content provided to the
+                  - code [ref=e1267]: values
+                  - text: attribute will be removed in the following code snippet to improve readability. Take a closer look at the
+                  - code [ref=e1268]: env
+                  - text: block inside the
+                  - code [ref=e1269]: containerService
+                  - text: section. The API server requires a set of environment variables to start properly, such as the database hostname, user, password, and more. The Postgres service lower in the app profile stack exposes output variables you can use to provide information to other services higher up in the app profile stack.
+                - paragraph [ref=e1270]:
+                  - text: The
+                  - code [ref=e1271]: env
+                  - text: section uses the output variables exposed by the Postgres service. Other environment variables specified will be populated during Terraform runtime because they reference Terraform variables. Palette will populate the environment variables referencing a Palette output variable at runtime inside the virtual cluster.
+                - generic [ref=e1273]:
+                  - code [ref=e1275]:
+                    - generic [ref=e1276]: "pack {"
+                    - generic [ref=e1277]: name = "api"
+                    - generic [ref=e1278]: type = data.spectrocloud_pack_simple.container_pack.type
+                    - generic [ref=e1279]: registry_uid = data.spectrocloud_registry.public_registry.id
+                    - generic [ref=e1280]: source_app_tier = data.spectrocloud_pack_simple.container_pack.id
+                    - generic [ref=e1281]: values = <<-EOT
+                    - generic [ref=e1282]: "pack:"
+                    - generic [ref=e1283]: "namespace: \"{{.spectro.system.appdeployment.tiername}}-ns\""
+                    - generic [ref=e1284]: "releaseNameOverride: \"{{.spectro.system.appdeployment.tiername}}\""
+                    - generic [ref=e1285]: "postReadinessHooks:"
+                    - generic [ref=e1286]: "outputParameters:"
+                    - generic [ref=e1287]: "#...."
+                    - generic [ref=e1288]: "#..."
+                    - generic [ref=e1289]: "containerService:"
+                    - generic [ref=e1290]: "serviceName: \"{{.spectro.system.appdeployment.tiername}}-svc\""
+                    - generic [ref=e1291]: "registryUrl: \"\""
+                    - generic [ref=e1292]: "image: ${var.multiple_container_images[\"api\"]}"
+                    - generic [ref=e1293]: "access: public"
+                    - generic [ref=e1294]: "ports:"
+                    - generic [ref=e1295]: "- \"3000\""
+                    - generic [ref=e1296]: "serviceType: load balancer"
+                    - generic [ref=e1297]: "env:"
+                    - generic [ref=e1298]: "- name: DB_HOST"
+                    - generic [ref=e1299]: "value: \"{{.spectro.app.$appDeploymentName.postgres-db.POSTGRESMSTR_SVC}}\""
+                    - generic [ref=e1300]: "- name: DB_USER"
+                    - generic [ref=e1301]: "value: \"{{.spectro.app.$appDeploymentName.postgres-db.USERNAME}}\""
+                    - generic [ref=e1302]: "- name: DB_PASSWORD"
+                    - generic [ref=e1303]: "value: \"{{.spectro.app.$appDeploymentName.postgres-db.PASSWORD}}\""
+                    - generic [ref=e1304]: "- name: DB_NAME"
+                    - generic [ref=e1305]: "value: counter"
+                    - generic [ref=e1306]: "- name: DB_INIT"
+                    - generic [ref=e1307]: "value: \"true\""
+                    - generic [ref=e1308]: "- name: DB_ENCRYPTION"
+                    - generic [ref=e1309]: "value: \"${var.database-ssl-mode}\""
+                    - generic [ref=e1310]: "- name: AUTHORIZATION"
+                    - generic [ref=e1311]: "value: \"true\""
+                    - generic [ref=e1312]: EOT
+                    - generic [ref=e1313]: "}"
+                  - generic [ref=e1314]:
+                    - button "Toggle word wrap" [ref=e1315] [cursor=pointer]:
+                      - img [ref=e1316]
+                    - button "Copy code to clipboard" [ref=e1318] [cursor=pointer]:
+                      - generic [ref=e1319]:
+                        - img [ref=e1320]
+                        - img [ref=e1322]
+                - paragraph [ref=e1324]:
+                  - text: The last
+                  - code [ref=e1325]: "pack {}"
+                  - text: block in the app profile resource
+                  - code [ref=e1326]: spectrocloud_application_profile.hello-universe-complete
+                  - text: is for the UI. Like the API service, environment variables are used to initialize the UI and the reverse proxy. The UI service requires the URL of the API service and the URL of the public-facing load balancer. Palette output variables are used to populate these two environment variables. A Terraform variable will populate the authentication token required for all API requests.
+                - generic [ref=e1328]:
+                  - code [ref=e1330]:
+                    - generic [ref=e1331]: "pack {"
+                    - generic [ref=e1332]: name = "ui"
+                    - generic [ref=e1333]: type = data.spectrocloud_pack_simple.container_pack.type
+                    - generic [ref=e1334]: registry_uid = data.spectrocloud_registry.public_registry.id
+                    - generic [ref=e1335]: source_app_tier = data.spectrocloud_pack_simple.container_pack.id
+                    - generic [ref=e1336]: values = <<-EOT
+                    - generic [ref=e1337]: "# ...."
+                    - generic [ref=e1338]: "# ...."
+                    - generic [ref=e1339]: "containerService:"
+                    - generic [ref=e1340]: "serviceName: \"{{.spectro.system.appdeployment.tiername}}-svc\""
+                    - generic [ref=e1341]: "registryUrl: \"\""
+                    - generic [ref=e1342]: "image: ${var.multiple_container_images[\"ui\"]}"
+                    - generic [ref=e1343]: "access: public"
+                    - generic [ref=e1344]: "ports:"
+                    - generic [ref=e1345]: "- \"8080\""
+                    - generic [ref=e1346]: "env:"
+                    - generic [ref=e1347]: "- name: \"API_URI\""
+                    - generic [ref=e1348]: "value: \"http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_EXTERNALHOSTNAME}}:3000\""
+                    - generic [ref=e1349]: "- name: \"TOKEN\""
+                    - generic [ref=e1350]: "value: \"${var.token}\""
+                    - generic [ref=e1351]: "serviceType: load balancer"
+                    - generic [ref=e1352]: EOT
+                    - generic [ref=e1353]: "}"
+                  - generic [ref=e1354]:
+                    - button "Toggle word wrap" [ref=e1355] [cursor=pointer]:
+                      - img [ref=e1356]
+                    - button "Copy code to clipboard" [ref=e1358] [cursor=pointer]:
+                      - generic [ref=e1359]:
+                        - img [ref=e1360]
+                        - img [ref=e1362]
+                - generic [ref=e1364]:
+                  - generic [ref=e1365]:
+                    - img [ref=e1367]
+                    - text: info
+                  - paragraph [ref=e1370]:
+                    - text: All container services expose their service address, Kubernetes hostname, and the exposed service ports as output variables. You will use output variables frequently when creating app profiles. You can learn more about connecting services by referring to the
+                    - link "Service Connectivity" [ref=e1371] [cursor=pointer]:
+                      - /url: /devx/services/connectivity/
+                    - text: documentation.
+                - paragraph [ref=e1372]:
+                  - text: Open the
+                  - strong [ref=e1373]: inputs.tf
+                  - text: file and set the
+                  - code [ref=e1374]: variable enable-second-scenario"
+                  - text: default value to
+                  - code [ref=e1375]: "true"
+                  - text: .
+                - generic [ref=e1377]:
+                  - code [ref=e1379]:
+                    - generic [ref=e1380]: "variable \"enable-second-scenario\" {"
+                    - generic [ref=e1381]: type = bool
+                    - generic [ref=e1382]: description = "Whether to enable the second scenario"
+                    - generic [ref=e1383]: default = true
+                    - generic [ref=e1384]: "}"
+                  - button "Copy code to clipboard" [ref=e1386] [cursor=pointer]:
+                    - generic [ref=e1387]:
+                      - img [ref=e1388]
+                      - img [ref=e1390]
+                - paragraph [ref=e1392]:
+                  - text: Next, issue the command
+                  - code [ref=e1393]: terraform apply
+                  - text: to deploy the second scenario. Notice how the
+                  - code [ref=e1394]: "-var"
+                  - text: flag is included with the token value in the command.
+                - generic [ref=e1396]:
+                  - code [ref=e1398]:
+                    - generic [ref=e1399]: terraform apply -var="token=931A3B02-8DCC-543F-A1B2-69423D1A0B94" -auto-approve
+                  - generic [ref=e1400]:
+                    - button "Toggle word wrap" [ref=e1401] [cursor=pointer]:
+                      - img [ref=e1402]
+                    - button "Copy code to clipboard" [ref=e1404] [cursor=pointer]:
+                      - generic [ref=e1405]:
+                        - img [ref=e1406]
+                        - img [ref=e1408]
+                - generic [ref=e1411]:
+                  - code [ref=e1413]:
+                    - generic [ref=e1414]: // Output condensed for readability
+                    - generic [ref=e1415]: "Apply complete! Resources: 3 added, 0 changed, 0 destroyed."
+                  - button "Copy code to clipboard" [ref=e1417] [cursor=pointer]:
+                    - generic [ref=e1418]:
+                      - img [ref=e1419]
+                      - img [ref=e1421]
+                - paragraph [ref=e1423]:
+                  - text: Log in to
+                  - link "Palette" [ref=e1424] [cursor=pointer]:
+                    - /url: https://console.spectrocloud.com
+                  - text: and navigate to the left
+                  - strong [ref=e1425]: Main Menu
+                  - text: ", click on"
+                  - strong [ref=e1426]: Apps
+                  - text: . Select the
+                  - strong [ref=e1427]: scenario-2
+                  - text: row. When you are on the scenario-2 overview page, click on the exposed URL for the service. A hyperlink for port 8080 and port 3000 is available.
+                - paragraph [ref=e1428]:
+                  - img "A view of the scenario-2 overview page" [ref=e1429]
+                - paragraph [ref=e1430]:
+                  - text: Click on the UI’s service URL for port
+                  - strong [ref=e1431]: "8080"
+                  - text: to access the Hello Universe application in a three-tier configuration.
+                - generic [ref=e1432]:
+                  - generic [ref=e1433]:
+                    - img [ref=e1435]
+                    - text: warning
+                  - paragraph [ref=e1438]: It takes between one to three minutes for DNS to properly resolve the public load balancer URL. We recommend waiting a few moments before clicking on the service URL to prevent the browser from caching an unresolved DNS request.
+                - paragraph [ref=e1439]:
+                  - img "View of the self-hosted hello universe app" [ref=e1440]
+                - paragraph [ref=e1441]: The global counter is no longer available. Instead, you have a counter that starts at zero. Each time you click on the center image, the counter is incremented and stored in the Postgres database along with metadata.
+                - heading "CleanupDirect link to Cleanup" [level=3] [ref=e1442]:
+                  - text: Cleanup
+                  - link "Direct link to Cleanup" [ref=e1443] [cursor=pointer]:
+                    - /url: "#cleanup-1"
+                    - text: "#"
+                - paragraph [ref=e1444]:
+                  - text: To remove all resources created in this tutorial, issue the
+                  - code [ref=e1445]: terraform destroy
+                  - text: command.
+                - generic [ref=e1447]:
+                  - code [ref=e1449]:
+                    - generic [ref=e1450]: terraform destroy -var="token=931A3B02-8DCC-543F-A1B2-69423D1A0B94" -auto-approve
+                  - generic [ref=e1451]:
+                    - button "Toggle word wrap" [ref=e1452] [cursor=pointer]:
+                      - img [ref=e1453]
+                    - button "Copy code to clipboard" [ref=e1455] [cursor=pointer]:
+                      - generic [ref=e1456]:
+                        - img [ref=e1457]
+                        - img [ref=e1459]
+                - generic [ref=e1462]:
+                  - code [ref=e1464]:
+                    - generic [ref=e1465]: "Destroy complete! Resources: 6 destroyed."
+                  - button "Copy code to clipboard" [ref=e1467] [cursor=pointer]:
+                    - generic [ref=e1468]:
+                      - img [ref=e1469]
+                      - img [ref=e1471]
+                - paragraph [ref=e1473]:
+                  - text: If you are using the tutorial container and want to exit the container, type
+                  - code [ref=e1474]: exit
+                  - text: in your terminal session and press the
+                  - strong [ref=e1475]: Enter
+                  - text: key. Next, issue the following command to stop the container.
+                - generic [ref=e1476]:
+                  - tablist [ref=e1477]:
+                    - tab "Docker" [selected] [ref=e1478] [cursor=pointer]
+                    - tab "Podman" [ref=e1479] [cursor=pointer]
+                  - tabpanel [ref=e1481]:
+                    - generic [ref=e1483]:
+                      - code [ref=e1485]:
+                        - generic [ref=e1486]: docker stop tutorialContainer && \
+                        - generic [ref=e1487]: docker rmi --force ghcr.io/spectrocloud/tutorials:1.3.0
+                      - button "Copy code to clipboard" [ref=e1489] [cursor=pointer]:
+                        - generic [ref=e1490]:
+                          - img [ref=e1491]
+                          - img [ref=e1493]
+                - generic [ref=e1495]:
+                  - generic [ref=e1496]:
+                    - img [ref=e1498]
+                    - text: info
+                  - paragraph [ref=e1501]:
+                    - text: If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for
+                    - strong [ref=e1502]: Force Delete
+                    - text: . To trigger a force delete, navigate to the respective cluster’s details page and click on
+                    - strong [ref=e1503]: Settings
+                    - text: . Click on the
+                    - strong [ref=e1504]: Force Delete Cluster
+                    - text: to delete the cluster. Palette will automatically remove clusters stuck in the cluster deletion phase for over 24 hours.
+                - heading "Wrap-UpDirect link to Wrap-Up" [level=2] [ref=e1505]:
+                  - text: Wrap-Up
+                  - link "Direct link to Wrap-Up" [ref=e1506] [cursor=pointer]:
+                    - /url: "#wrap-up"
+                    - text: "#"
+                - paragraph [ref=e1507]: In this tutorial, you learned about Palette’s Dev Engine and App Mode. You deployed two virtual clusters, each containing a different architecture and configuration of the Hello Universe application. Palette’s Dev Engine enables developers to quickly deploy applications into a Kubernetes environment without requiring Kubernetes knowledge. In a matter of minutes, you deployed a new Kubernetes cluster and all its applications without having to write Kubernetes configuration files.
+                - paragraph [ref=e1508]: To learn more about Palette Dev Engine and its capabilities, check out the references resource below.
+                - list [ref=e1509]:
+                  - listitem [ref=e1510]:
+                    - link "Palette Modes" [ref=e1511] [cursor=pointer]:
+                      - /url: /introduction/palette-modes/
+                  - listitem [ref=e1512]:
+                    - link "Spectro Cloud Terraform Provider" [ref=e1513] [cursor=pointer]:
+                      - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs
+                  - listitem [ref=e1514]:
+                    - link "App Profiles" [ref=e1515] [cursor=pointer]:
+                      - /url: /profiles/app-profiles/
+                  - listitem [ref=e1516]:
+                    - link "App Services" [ref=e1517] [cursor=pointer]:
+                      - /url: /devx/services/
+                  - listitem [ref=e1518]:
+                    - link "Palette Virtual Clusters" [ref=e1519] [cursor=pointer]:
+                      - /url: /devx/palette-virtual-clusters/
+                  - listitem [ref=e1520]:
+                    - link "Hello Universe GitHub respository" [ref=e1521] [cursor=pointer]:
+                      - /url: https://github.com/spectrocloud/hello-universe
+              - generic [ref=e1522]:
+                - generic [ref=e1524]:
+                  - text: "Tags:"
+                  - list [ref=e1525]:
+                    - listitem [ref=e1526]:
+                      - link "devx" [ref=e1527] [cursor=pointer]:
+                        - /url: /tags/devx/
+                    - listitem [ref=e1528]:
+                      - link "app mode" [ref=e1529] [cursor=pointer]:
+                        - /url: /tags/app-mode/
+                    - listitem [ref=e1530]:
+                      - link "pde" [ref=e1531] [cursor=pointer]:
+                        - /url: /tags/pde/
+                    - listitem [ref=e1532]:
+                      - link "tutorial" [ref=e1533] [cursor=pointer]:
+                        - /url: /tags/tutorial/
+                - link "Edit this page" [ref=e1536] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/tutorials/pde/deploy-app.md
+                  - img [ref=e1537]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e1541]:
+              - link "Previous « Palette Dev Engine" [ref=e1542] [cursor=pointer]:
+                - /url: /tutorials/pde/
+                - generic [ref=e1543]: Previous
+                - generic [ref=e1544]: « Palette Dev Engine
+          - list [ref=e1547]:
+            - listitem [ref=e1548]:
+              - link "Prerequisites" [ref=e1549] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e1550]:
+              - link "Architecture" [ref=e1551] [cursor=pointer]:
+                - /url: "#architecture"
+            - listitem [ref=e1552]:
+              - link "Deploy The Environment" [ref=e1553] [cursor=pointer]:
+                - /url: "#deploy-the-environment"
+            - listitem [ref=e1554]:
+              - link "UI Workflow" [ref=e1555] [cursor=pointer]:
+                - /url: "#ui-workflow"
+              - list [ref=e1556]:
+                - listitem [ref=e1557]:
+                  - link "Deploy Multiple Applications" [ref=e1558] [cursor=pointer]:
+                    - /url: "#deploy-multiple-applications"
+                - listitem [ref=e1559]:
+                  - link "Postgres" [ref=e1560] [cursor=pointer]:
+                    - /url: "#postgres"
+                - listitem [ref=e1561]:
+                  - link "API" [ref=e1562] [cursor=pointer]:
+                    - /url: "#api"
+                - listitem [ref=e1563]:
+                  - link "UI" [ref=e1564] [cursor=pointer]:
+                    - /url: "#ui"
+                - listitem [ref=e1565]:
+                  - link "Cleanup" [ref=e1566] [cursor=pointer]:
+                    - /url: "#cleanup"
+            - listitem [ref=e1567]:
+              - link "Terraform Workflow" [ref=e1568] [cursor=pointer]:
+                - /url: "#terraform-workflow"
+              - list [ref=e1569]:
+                - listitem [ref=e1570]:
+                  - link "API Key" [ref=e1571] [cursor=pointer]:
+                    - /url: "#api-key"
+                - listitem [ref=e1572]:
+                  - link "Initialize Terraform" [ref=e1573] [cursor=pointer]:
+                    - /url: "#initialize-terraform"
+                - listitem [ref=e1574]:
+                  - link "Deploy Multiple Applications" [ref=e1575] [cursor=pointer]:
+                    - /url: "#deploy-multiple-applications-1"
+                - listitem [ref=e1576]:
+                  - link "Cleanup" [ref=e1577] [cursor=pointer]:
+                    - /url: "#cleanup-1"
+            - listitem [ref=e1578]:
+              - link "Wrap-Up" [ref=e1579] [cursor=pointer]:
+                - /url: "#wrap-up"
+  - button "Project Logo Ask AI" [ref=e1580] [cursor=pointer]:
+    - generic [ref=e1583]:
+      - img "Project Logo" [ref=e1584]
+      - paragraph [ref=e1585]: Ask AI
+```

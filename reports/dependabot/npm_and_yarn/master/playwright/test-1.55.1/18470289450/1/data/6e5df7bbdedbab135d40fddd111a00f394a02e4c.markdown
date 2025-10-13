@@ -1,0 +1,545 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [expanded] [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+                - list [ref=e148]:
+                  - listitem [ref=e149]:
+                    - link "Add a Custom Registry" [ref=e150] [cursor=pointer]:
+                      - /url: /registries-and-packs/adding-a-custom-registry/
+                  - listitem [ref=e151]:
+                    - link "Spectro Cloud CLI Tool" [ref=e152] [cursor=pointer]:
+                      - /url: /registries-and-packs/spectro-cli-reference/
+                  - listitem [ref=e153]:
+                    - link "Add a Custom Pack" [ref=e154] [cursor=pointer]:
+                      - /url: /registries-and-packs/add-custom-packs/
+                  - listitem [ref=e155]:
+                    - link "Add an Add-on Pack" [ref=e156] [cursor=pointer]:
+                      - /url: /registries-and-packs/adding-add-on-packs/
+                  - listitem [ref=e157]:
+                    - link "Pack Constraints" [ref=e158] [cursor=pointer]:
+                      - /url: /registries-and-packs/pack-constraints/
+                  - listitem [ref=e159]:
+                    - generic [ref=e160]:
+                      - link "Registries" [expanded] [ref=e161] [cursor=pointer]:
+                        - /url: /registries-and-packs/registries/
+                      - button "Toggle the collapsible sidebar category 'Registries'" [ref=e162] [cursor=pointer]
+                    - list [ref=e163]:
+                      - listitem [ref=e164]:
+                        - link "Helm Registries" [ref=e165] [cursor=pointer]:
+                          - /url: /registries-and-packs/registries/helm-charts/
+                      - listitem [ref=e166]:
+                        - generic [ref=e167]:
+                          - link "OCI Registries" [expanded] [ref=e168] [cursor=pointer]:
+                            - /url: /registries-and-packs/registries/oci-registry/
+                          - button "Toggle the collapsible sidebar category 'OCI Registries'" [ref=e169] [cursor=pointer]
+                        - list [ref=e170]:
+                          - listitem [ref=e171]:
+                            - link "Add OCI Helm Registry" [ref=e172] [cursor=pointer]:
+                              - /url: /registries-and-packs/registries/oci-registry/add-oci-helm/
+                          - listitem [ref=e173]:
+                            - link "Add OCI Packs Registry" [ref=e174] [cursor=pointer]:
+                              - /url: /registries-and-packs/registries/oci-registry/add-oci-packs/
+                          - listitem [ref=e175]:
+                            - link "Add OCI Zarf Registry" [ref=e176] [cursor=pointer]:
+                              - /url: /registries-and-packs/registries/oci-registry/add-oci-zarf/
+                          - listitem [ref=e177]:
+                            - generic [ref=e178]:
+                              - link "Add a Pack to an OCI Registry" [ref=e179] [cursor=pointer]:
+                                - /url: /registries-and-packs/registries/oci-registry/add-pack-oci/
+                              - button "Toggle the collapsible sidebar category 'Add a Pack to an OCI Registry'" [ref=e180] [cursor=pointer]
+                      - listitem [ref=e181]:
+                        - link "Legacy Pack Registries" [ref=e182] [cursor=pointer]:
+                          - /url: /registries-and-packs/registries/pack-registries/
+                  - listitem [ref=e183]:
+                    - link "Advanced CLI Configuration" [ref=e184] [cursor=pointer]:
+                      - /url: /registries-and-packs/advanced-configuration/
+              - listitem [ref=e185]:
+                - generic [ref=e186]:
+                  - link "Security" [ref=e187] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e189]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e191] [cursor=pointer]
+              - listitem [ref=e192]:
+                - generic [ref=e193]:
+                  - link "Audit Logs" [ref=e194] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e196]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e198] [cursor=pointer]
+              - listitem [ref=e199]:
+                - generic [ref=e200]:
+                  - link "Self-Hosted Palette" [ref=e201] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e203]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e205] [cursor=pointer]
+              - listitem [ref=e206]:
+                - generic [ref=e207]:
+                  - link "Palette VerteX" [ref=e208] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e210]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e212] [cursor=pointer]
+              - listitem [ref=e213]:
+                - generic [ref=e214]:
+                  - link "Tenant Administration" [ref=e215] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e217]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e219] [cursor=pointer]
+              - listitem [ref=e220]:
+                - generic [ref=e221]:
+                  - link "Automation" [ref=e222] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e224]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e226] [cursor=pointer]
+              - listitem [ref=e227]:
+                - generic [ref=e228]:
+                  - link "Troubleshooting" [ref=e229] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e231]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e233] [cursor=pointer]
+              - listitem [ref=e234]:
+                - link "Glossary" [ref=e235] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e237]
+                  - text: Glossary
+              - listitem [ref=e239]:
+                - generic [ref=e240]:
+                  - link "Compliance & Legal" [ref=e241] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e243]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e245] [cursor=pointer]
+              - listitem [ref=e246]:
+                - button "Privacy Settings" [ref=e247] [cursor=pointer]:
+                  - img [ref=e248]
+                  - text: Privacy Settings
+      - main [ref=e250]:
+        - generic [ref=e252]:
+          - generic [ref=e254]:
+            - article [ref=e255]:
+              - navigation "Breadcrumbs" [ref=e256]:
+                - list [ref=e257]:
+                  - listitem [ref=e258]:
+                    - link "Home page" [ref=e259] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e260]
+                  - listitem [ref=e262]:
+                    - link "Registries and Packs" [ref=e263] [cursor=pointer]:
+                      - /url: /registries-and-packs/
+                  - listitem [ref=e264]:
+                    - link "Registries" [ref=e265] [cursor=pointer]:
+                      - /url: /registries-and-packs/registries/
+                  - listitem [ref=e266]:
+                    - link "OCI Registries" [ref=e267] [cursor=pointer]:
+                      - /url: /registries-and-packs/registries/oci-registry/
+                  - listitem [ref=e268]:
+                    - generic [ref=e269]: Add OCI Packs Registry
+              - generic [ref=e270]:
+                - heading "Add OCI Packs Registry" [level=1] [ref=e272]
+                - paragraph [ref=e273]:
+                  - text: You can add an OCI Pack registry to Palette and use the packs in your cluster profiles. OCI Pack registries are different from the legacy Pack registries. To interact with an OCI Pack registry, you use a tool, such as
+                  - link "Oras" [ref=e274] [cursor=pointer]:
+                    - /url: https://oras.land/docs/
+                  - text: CLI, to push and pull packs to and from the registry.
+                - generic [ref=e275]:
+                  - generic [ref=e276]:
+                    - img [ref=e278]
+                    - text: tip
+                  - paragraph [ref=e281]:
+                    - text: For guidance on how to add a custom pack to an OCI pack registry, check out the
+                    - link "Deploy a Custom Pack" [ref=e282] [cursor=pointer]:
+                      - /url: /tutorials/packs-registries/deploy-pack/
+                    - text: tutorial.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e283]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e284] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e285]:
+                  - listitem [ref=e286]:
+                    - paragraph [ref=e287]: Tenant admin access to Palette.
+                  - listitem [ref=e288]:
+                    - paragraph [ref=e289]: Credentials to access the OCI registry. If you are using an Amazon Elastic Container Registry (ECR), you must have the AWS credentials to an IAM user or add a trust relationship to an IAM role so that Palette can access the registry.
+                  - listitem [ref=e290]:
+                    - paragraph [ref=e291]: If the OCI registry is using a self-signed certificate, or a certificate that is not signed by a trusted certificate authority (CA), you will need the certificate to add the registry to Palette.
+                  - listitem [ref=e292]:
+                    - paragraph [ref=e293]:
+                      - text: If you are using an Amazon ECR and your
+                      - link "Palette" [ref=e294] [cursor=pointer]:
+                        - /url: /enterprise-version/
+                      - text: or
+                      - link "Palette VerteX" [ref=e295] [cursor=pointer]:
+                        - /url: /vertex/
+                      - text: instance is installed in an airgapped environment or an environment with limited internet access, you must whitelist the S3 endpoint that corresponds to the region of your Amazon ECR. This is because image layers are stored in S3, not the registry. The S3 endpoint uses the following format. Replace
+                      - code [ref=e296]: <region>
+                      - text: with the region your ECR is hosted in.
+                    - generic [ref=e298]:
+                      - code [ref=e300]:
+                        - generic [ref=e301]: prod-<region>-starport-layer-bucket.s3.<region>.amazonaws.com
+                      - button "Copy code to clipboard" [ref=e303] [cursor=pointer]:
+                        - generic [ref=e304]:
+                          - img [ref=e305]
+                          - img [ref=e307]
+                    - generic [ref=e309]:
+                      - generic [ref=e310]: Example S3 endpoint
+                      - code [ref=e313]:
+                        - generic [ref=e314]: prod-us-east-1-starport-layer-bucket.s3.us-east-1.amazonaws.com
+                  - listitem [ref=e315]:
+                    - paragraph [ref=e316]:
+                      - text: If you are using an Amazon ECR, ensure you have the following Identity Access Management (IAM) permissions attached to the IAM user or IAM role that Palette will use to access the registry. You can reduce the
+                      - code [ref=e317]: Resource
+                      - text: scope from
+                      - code [ref=e318]: "*"
+                      - text: to the specific Amazon Resource Name (ARN) of the ECR you are using.
+                    - generic [ref=e320]:
+                      - code [ref=e322]:
+                        - generic [ref=e323]: "{"
+                        - generic [ref=e324]: "\"Version\": \"2012-10-17\","
+                        - generic [ref=e325]: "\"Statement\": ["
+                        - generic [ref=e326]: "{"
+                        - generic [ref=e327]: "\"Sid\": \"VisualEditor0\","
+                        - generic [ref=e328]: "\"Effect\": \"Allow\","
+                        - generic [ref=e329]: "\"Action\": ["
+                        - generic [ref=e330]: "\"ecr-public:DescribeRegistries\","
+                        - generic [ref=e331]: "\"ecr:DescribeImageReplicationStatus\","
+                        - generic [ref=e332]: "\"ecr:ListTagsForResource\","
+                        - generic [ref=e333]: "\"ecr:ListImages\","
+                        - generic [ref=e334]: "\"ecr:DescribeRepositories\","
+                        - generic [ref=e335]: "\"ecr:BatchCheckLayerAvailability\","
+                        - generic [ref=e336]: "\"ecr:GetLifecyclePolicy\","
+                        - generic [ref=e337]: "\"ecr-public:DescribeImageTags\","
+                        - generic [ref=e338]: "\"ecr-public:DescribeImages\","
+                        - generic [ref=e339]: "\"ecr:GetRegistryPolicy\","
+                        - generic [ref=e340]: "\"ecr-public:GetAuthorizationToken\","
+                        - generic [ref=e341]: "\"ecr:DescribeImageScanFindings\","
+                        - generic [ref=e342]: "\"ecr:GetLifecyclePolicyPreview\","
+                        - generic [ref=e343]: "\"ecr:GetDownloadUrlForLayer\","
+                        - generic [ref=e344]: "\"ecr-public:GetRepositoryCatalogData\","
+                        - generic [ref=e345]: "\"ecr:DescribeRegistry\","
+                        - generic [ref=e346]: "\"ecr:GetAuthorizationToken\","
+                        - generic [ref=e347]: "\"ecr-public:GetRepositoryPolicy\","
+                        - generic [ref=e348]: "\"ecr-public:DescribeRepositories\","
+                        - generic [ref=e349]: "\"ecr:BatchGetImage\","
+                        - generic [ref=e350]: "\"ecr:DescribeImages\","
+                        - generic [ref=e351]: "\"ecr-public:GetRegistryCatalogData\","
+                        - generic [ref=e352]: "\"ecr-public:ListTagsForResource\","
+                        - generic [ref=e353]: "\"ecr-public:BatchCheckLayerAvailability\","
+                        - generic [ref=e354]: "\"ecr:GetRepositoryPolicy\""
+                        - generic [ref=e355]: "],"
+                        - generic [ref=e356]: "\"Resource\": \"*\""
+                        - generic [ref=e357]: "}"
+                        - generic [ref=e358]: "]"
+                        - generic [ref=e359]: "}"
+                      - button "Copy code to clipboard" [ref=e361] [cursor=pointer]:
+                        - generic [ref=e362]:
+                          - img [ref=e363]
+                          - img [ref=e365]
+                - heading "Add OCI Packs RegistryDirect link to Add OCI Packs Registry" [level=2] [ref=e367]:
+                  - text: Add OCI Packs Registry
+                  - link "Direct link to Add OCI Packs Registry" [ref=e368] [cursor=pointer]:
+                    - /url: "#add-oci-packs-registry"
+                    - text: "#"
+                - paragraph [ref=e369]: Use the following steps to add an OCI Packs registry to Palette. Select the tab that corresponds to the type of OCI registry you are adding.
+                - generic [ref=e370]:
+                  - tablist [ref=e371]:
+                    - tab "Basic" [selected] [ref=e372] [cursor=pointer]
+                    - tab "Amazon ECR" [ref=e373] [cursor=pointer]
+                  - generic [ref=e374]:
+                    - tabpanel [ref=e375]:
+                      - list [ref=e376]:
+                        - listitem [ref=e377]:
+                          - paragraph [ref=e378]:
+                            - text: Log in to the
+                            - link "Palette" [ref=e379] [cursor=pointer]:
+                              - /url: https://console.spectrocloud.com
+                            - text: as a Tenant administrator.
+                        - listitem [ref=e380]:
+                          - paragraph [ref=e381]:
+                            - text: From the left
+                            - strong [ref=e382]: Main Menu
+                            - text: select
+                            - strong [ref=e383]: Tenant Settings
+                            - text: .
+                        - listitem [ref=e384]:
+                          - paragraph [ref=e385]:
+                            - text: From the
+                            - strong [ref=e386]: Tenant Settings Menu
+                            - text: ", Select"
+                            - strong [ref=e387]: Registries
+                            - text: .
+                        - listitem [ref=e388]:
+                          - paragraph [ref=e389]:
+                            - text: Click on the
+                            - strong [ref=e390]: OCI Registries
+                            - text: tab.
+                        - listitem [ref=e391]:
+                          - paragraph [ref=e392]:
+                            - text: Click
+                            - strong [ref=e393]: Add New OCI Registry
+                            - text: .
+                        - listitem [ref=e394]:
+                          - paragraph [ref=e395]:
+                            - text: Fill out the
+                            - strong [ref=e396]: Name
+                            - text: field and select
+                            - strong [ref=e397]: Pack
+                            - text: as the provider type.
+                        - listitem [ref=e398]:
+                          - paragraph [ref=e399]:
+                            - text: Select the
+                            - strong [ref=e400]: OCI Authentication Type
+                            - text: as
+                            - strong [ref=e401]: Basic
+                            - text: .
+                        - listitem [ref=e402]:
+                          - paragraph [ref=e403]:
+                            - text: Provide the registry URL in the
+                            - strong [ref=e404]: Endpoint
+                            - text: field.
+                        - listitem [ref=e405]:
+                          - paragraph [ref=e406]:
+                            - text: Specify the
+                            - strong [ref=e407]: Base Content Path
+                            - text: . This is the path to the OCI registry where the OCI Packs are stored. For example, if the OCI registry URL is
+                            - code [ref=e408]: https://registry.example.com
+                            - text: and the OCI Packs are stored in the
+                            - code [ref=e409]: internal
+                            - text: repository, the base content path is
+                            - code [ref=e410]: internal
+                            - text: . You can specify multiple base paths by pressing the Enter key after each path. Providing multiple base paths is useful when Helm Charts are stored in different directories or projects, such as multiple projects in a Harbor registry.
+                        - listitem [ref=e411]:
+                          - paragraph [ref=e412]:
+                            - text: Fill out the
+                            - strong [ref=e413]: Username
+                            - text: and
+                            - strong [ref=e414]: Password
+                            - text: fields with the credentials to access the registry.
+                        - listitem [ref=e415]:
+                          - paragraph [ref=e416]:
+                            - text: If your OCI registry server is using a self-signed certificate or if the server certificate is not signed by a trusted CA, check the
+                            - strong [ref=e417]: Insecure Skip TLS Verify
+                            - text: box to skip verifying the x509 certificate, and click
+                            - strong [ref=e418]: Upload file
+                            - text: to upload the certificate.
+                        - listitem [ref=e419]:
+                          - paragraph [ref=e420]:
+                            - text: Click
+                            - strong [ref=e421]: Confirm
+                            - text: to complete adding the registry.
+                    - text: "# #"
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e422]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e423] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e424]: Use the following steps to validate that the OCI registry is added to Palette correctly.
+                - list [ref=e425]:
+                  - listitem [ref=e426]:
+                    - paragraph [ref=e427]:
+                      - text: Log in to the
+                      - link "Palette" [ref=e428] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e429]:
+                    - paragraph [ref=e430]:
+                      - text: From the left
+                      - strong [ref=e431]: Main Menu
+                      - text: ", click on"
+                      - strong [ref=e432]: Profiles
+                      - text: .
+                  - listitem [ref=e433]:
+                    - paragraph [ref=e434]:
+                      - text: Click
+                      - strong [ref=e435]: Add Cluster Profile
+                      - text: .
+                  - listitem [ref=e436]:
+                    - paragraph [ref=e437]:
+                      - text: Provide a name and select the type
+                      - strong [ref=e438]: Add-on
+                      - text: .
+                  - listitem [ref=e439]:
+                    - paragraph [ref=e440]:
+                      - text: In the following screen, click
+                      - strong [ref=e441]: Add New Pack
+                      - text: .
+                  - listitem [ref=e442]:
+                    - paragraph [ref=e443]:
+                      - text: Verify the OCI Pack registry you added is displayed in the filter
+                      - strong [ref=e444]: Registry drop-down Menu
+                      - text: .
+                - paragraph [ref=e445]:
+                  - text: All the Packs in the OCI registry are displayed below, sorted by category. You can filter the Packs by
+                  - strong [ref=e446]: Type
+                  - text: or search for a specific Pack by name.
+              - link "Edit this page" [ref=e450] [cursor=pointer]:
+                - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/registries-and-packs/registries/oci-registry/add-oci-packs.md
+                - img [ref=e451]
+                - text: Edit this page
+            - navigation "Docs pages" [ref=e455]:
+              - link "Previous « Add OCI Helm Registry" [ref=e456] [cursor=pointer]:
+                - /url: /registries-and-packs/registries/oci-registry/add-oci-helm/
+                - generic [ref=e457]: Previous
+                - generic [ref=e458]: « Add OCI Helm Registry
+              - link "Next Add OCI Zarf Registry »" [ref=e459] [cursor=pointer]:
+                - /url: /registries-and-packs/registries/oci-registry/add-oci-zarf/
+                - generic [ref=e460]: Next
+                - generic [ref=e461]: Add OCI Zarf Registry »
+          - list [ref=e464]:
+            - listitem [ref=e465]:
+              - link "Prerequisites" [ref=e466] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e467]:
+              - link "Add OCI Packs Registry" [ref=e468] [cursor=pointer]:
+                - /url: "#add-oci-packs-registry"
+            - listitem [ref=e469]:
+              - link "Validate" [ref=e470] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e471] [cursor=pointer]:
+    - generic [ref=e474]:
+      - img "Project Logo" [ref=e475]
+      - paragraph [ref=e476]: Ask AI
+```

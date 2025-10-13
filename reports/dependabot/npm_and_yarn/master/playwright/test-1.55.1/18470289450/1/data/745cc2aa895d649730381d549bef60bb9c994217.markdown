@@ -1,0 +1,1070 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Security" [ref=e150] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e152]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Audit Logs" [ref=e157] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e159]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Self-Hosted Palette" [ref=e164] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e166]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e168] [cursor=pointer]
+              - listitem [ref=e169]:
+                - generic [ref=e170]:
+                  - link "Palette VerteX" [ref=e171] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e173]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e175] [cursor=pointer]
+              - listitem [ref=e176]:
+                - generic [ref=e177]:
+                  - link "Tenant Administration" [ref=e178] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e180]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e182] [cursor=pointer]
+              - listitem [ref=e183]:
+                - generic [ref=e184]:
+                  - link "Automation" [expanded] [ref=e185] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e187]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e189] [cursor=pointer]
+                - list [ref=e190]:
+                  - listitem [ref=e191]:
+                    - generic [ref=e192]:
+                      - link "Palette CLI" [expanded] [ref=e193] [cursor=pointer]:
+                        - /url: /automation/palette-cli/
+                      - button "Toggle the collapsible sidebar category 'Palette CLI'" [ref=e194] [cursor=pointer]
+                    - list [ref=e195]:
+                      - listitem [ref=e196]:
+                        - link "Install" [ref=e197] [cursor=pointer]:
+                          - /url: /automation/palette-cli/install-palette-cli/
+                      - listitem [ref=e198]:
+                        - generic [ref=e199]:
+                          - link "Commands" [expanded] [ref=e200] [cursor=pointer]:
+                            - /url: /automation/palette-cli/commands/
+                          - button "Toggle the collapsible sidebar category 'Commands'" [ref=e201] [cursor=pointer]
+                        - list [ref=e202]:
+                          - listitem [ref=e203]:
+                            - link "Content" [ref=e204] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/content/
+                          - listitem [ref=e205]:
+                            - link "Docs" [ref=e206] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/docs/
+                          - listitem [ref=e207]:
+                            - link "EC" [ref=e208] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/ec/
+                          - listitem [ref=e209]:
+                            - link "FIPS Validate" [ref=e210] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/fips-validate/
+                          - listitem [ref=e211]:
+                            - link "Import" [ref=e212] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/import/
+                          - listitem [ref=e213]:
+                            - link "Login" [ref=e214] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/login/
+                          - listitem [ref=e215]:
+                            - link "PCG" [ref=e216] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/pcg/
+                          - listitem [ref=e217]:
+                            - link "PDE" [ref=e218] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/pde/
+                          - listitem [ref=e219]:
+                            - link "Project" [ref=e220] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/project/
+                          - listitem [ref=e221]:
+                            - link "Validate-Auth" [ref=e222] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/validate-auth/
+                          - listitem [ref=e223]:
+                            - link "VMO" [ref=e224] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/vmo/
+                  - listitem [ref=e225]:
+                    - generic [ref=e226]:
+                      - link "Palette Go SDK" [ref=e227] [cursor=pointer]:
+                        - /url: /automation/palette-sdk/
+                      - button "Toggle the collapsible sidebar category 'Palette Go SDK'" [ref=e228] [cursor=pointer]
+                  - listitem [ref=e229]:
+                    - link "Terraform" [ref=e230] [cursor=pointer]:
+                      - /url: /automation/terraform/
+                  - listitem [ref=e231]:
+                    - generic [ref=e232]:
+                      - link "Crossplane" [ref=e233] [cursor=pointer]:
+                        - /url: /automation/crossplane/
+                      - button "Toggle the collapsible sidebar category 'Crossplane'" [ref=e234] [cursor=pointer]
+              - listitem [ref=e235]:
+                - generic [ref=e236]:
+                  - link "Troubleshooting" [ref=e237] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e239]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e241] [cursor=pointer]
+              - listitem [ref=e242]:
+                - link "Glossary" [ref=e243] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e245]
+                  - text: Glossary
+              - listitem [ref=e247]:
+                - generic [ref=e248]:
+                  - link "Compliance & Legal" [ref=e249] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e251]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e253] [cursor=pointer]
+              - listitem [ref=e254]:
+                - button "Privacy Settings" [ref=e255] [cursor=pointer]:
+                  - img [ref=e256]
+                  - text: Privacy Settings
+      - main [ref=e258]:
+        - generic [ref=e260]:
+          - generic [ref=e262]:
+            - article [ref=e263]:
+              - navigation "Breadcrumbs" [ref=e264]:
+                - list [ref=e265]:
+                  - listitem [ref=e266]:
+                    - link "Home page" [ref=e267] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e268]
+                  - listitem [ref=e270]:
+                    - link "Automation" [ref=e271] [cursor=pointer]:
+                      - /url: /automation/
+                  - listitem [ref=e272]:
+                    - link "Palette CLI" [ref=e273] [cursor=pointer]:
+                      - /url: /automation/palette-cli/
+                  - listitem [ref=e274]:
+                    - link "Commands" [ref=e275] [cursor=pointer]:
+                      - /url: /automation/palette-cli/commands/
+                  - listitem [ref=e276]:
+                    - generic [ref=e277]: FIPS Validate
+              - generic [ref=e278]:
+                - heading "FIPS Validate" [level=1] [ref=e280]
+                - paragraph [ref=e281]:
+                  - text: The
+                  - code [ref=e282]: fips-validate
+                  - text: command checks the
+                  - link "Federal Information Processing Standards" [ref=e283] [cursor=pointer]:
+                    - /url: https://www.nist.gov/standardsgov/compliance-faqs-federal-information-processing-standards-fips
+                  - text: (FIPS) compliance of your Kubernetes clusters. You can use the command to ensure that your clusters are FIPS-compliant by scanning the images and exposed service endpoints in your clusters.
+                - generic [ref=e284]:
+                  - generic [ref=e285]:
+                    - img [ref=e287]
+                    - text: info
+                  - paragraph [ref=e290]:
+                    - text: If you have the environment variable
+                    - code [ref=e291]: KUBECONFIG
+                    - text: set, the
+                    - code [ref=e292]: fips-validate
+                    - text: will automatically use the kubeconfig file and skip prompting you for the kubeconfig file path.
+                - heading "SubcommandsDirect link to Subcommands" [level=2] [ref=e293]:
+                  - text: Subcommands
+                  - link "Direct link to Subcommands" [ref=e294] [cursor=pointer]:
+                    - /url: "#subcommands"
+                    - text: "#"
+                - paragraph [ref=e295]:
+                  - text: The
+                  - code [ref=e296]: fips-validate
+                  - text: "command exposes the following subcommands:"
+                - list [ref=e297]:
+                  - listitem [ref=e298]:
+                    - paragraph [ref=e299]:
+                      - link "images" [ref=e300] [cursor=pointer]:
+                        - /url: "#images"
+                        - code [ref=e301]: images
+                      - text: ": Validate the FIPS compliance of the images in your clusters."
+                  - listitem [ref=e302]:
+                    - paragraph [ref=e303]:
+                      - link "services" [ref=e304] [cursor=pointer]:
+                        - /url: "#services"
+                        - code [ref=e305]: services
+                      - text: ": Validate the FIPS compliance of the service endpoints in your clusters."
+                  - listitem [ref=e306]:
+                    - paragraph [ref=e307]:
+                      - link "clean" [ref=e308] [cursor=pointer]:
+                        - /url: "#clean"
+                        - code [ref=e309]: clean
+                      - text: ": Remove the FIPS validation resources from your clusters."
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e310]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e311] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - paragraph [ref=e312]:
+                  - text: The
+                  - code [ref=e313]: fips-validate
+                  - text: "command requires the following prerequisites:"
+                - list [ref=e314]:
+                  - listitem [ref=e315]:
+                    - paragraph [ref=e316]:
+                      - text: Ensure you have access to the kubeconfig file for the cluster that you want to validate. The file needs to be accessible from the machine where you issue the
+                      - code [ref=e317]: fips-validate
+                      - text: command. Refer to the
+                      - link "Set up Kubectl" [ref=e318] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/#access-cluster-with-cli
+                      - text: guide to learn how to get the kubeconfig file for your cluster.
+                  - listitem [ref=e319]:
+                    - paragraph [ref=e320]:
+                      - text: Sufficient permissions to create a new namespace and deploy resources in the namespace. We recommend using an elevated ClusterRole such as
+                      - link "cluster-admin" [ref=e321] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+                        - emphasis [ref=e322]: cluster-admin
+                      - text: to ensure that the command can create the necessary resources.
+                  - listitem [ref=e323]:
+                    - paragraph [ref=e324]:
+                      - text: The Kubernetes cluster must be accessible from the machine where you issue the
+                      - code [ref=e325]: fips-validate
+                      - text: command. Ensure that the kubeconfig file is correctly configured to access the cluster.
+                  - listitem [ref=e326]:
+                    - paragraph [ref=e327]:
+                      - text: The Kubernetes cluster must have internet access to download the images when using the
+                      - code [ref=e328]: images
+                      - text: subcommand.
+                - heading "LimitationsDirect link to Limitations" [level=2] [ref=e329]:
+                  - text: Limitations
+                  - link "Direct link to Limitations" [ref=e330] [cursor=pointer]:
+                    - /url: "#limitations"
+                    - text: "#"
+                - list [ref=e331]:
+                  - listitem [ref=e332]:
+                    - paragraph [ref=e333]:
+                      - text: The only supported runtime is Go. Images with binaries compiled in other languages are marked as
+                      - code [ref=e334]: unknown
+                      - text: in the report.
+                  - listitem [ref=e335]:
+                    - paragraph [ref=e336]:
+                      - text: Only services exposing port
+                      - code [ref=e337]: "443"
+                      - text: are verified.
+                  - listitem [ref=e338]:
+                    - paragraph [ref=e339]: Non-HTTP based service endpoints are not supported.
+                - heading "ImagesDirect link to Images" [level=2] [ref=e340]:
+                  - text: Images
+                  - link "Direct link to Images" [ref=e341] [cursor=pointer]:
+                    - /url: "#images"
+                    - text: "#"
+                - paragraph [ref=e342]:
+                  - text: The
+                  - code [ref=e343]: images
+                  - text: subcommand validates the FIPS compliance of the images in your clusters. The command scans all the images of active containers. The image is downloaded from the source and unpacked through
+                  - link "Luet" [ref=e344] [cursor=pointer]:
+                    - /url: https://luet.io/docs/
+                  - text: and all files that are Executable and Linkable Format binaries are scanned. The scan checks if the binaries are compiled with FIPS compliant cryptographic libraries.
+                - paragraph [ref=e345]:
+                  - text: To enable the scan, the command deploys resources into a Kubernetes namespace named
+                  - code [ref=e346]: vertex-ns
+                  - text: ", unless otherwise specified, in the target cluster. Upon completion of the scan, the command prints the results of the scan to the terminal and cleans up the resources from the cluster."
+                - paragraph [ref=e347]:
+                  - text: The
+                  - code [ref=e348]: images
+                  - text: "subcommand accepts the following flags:"
+                - table [ref=e349]:
+                  - rowgroup [ref=e350]:
+                    - row "Short Flag Long Flag Description Type" [ref=e351]:
+                      - cell "Short Flag" [ref=e352]:
+                        - strong [ref=e353]: Short Flag
+                      - cell "Long Flag" [ref=e354]:
+                        - strong [ref=e355]: Long Flag
+                      - cell "Description" [ref=e356]:
+                        - strong [ref=e357]: Description
+                      - cell "Type" [ref=e358]:
+                        - strong [ref=e359]: Type
+                  - rowgroup [ref=e360]:
+                    - row "-n --namespace The namespace in which to deploy the resources for the FIPS scan. The default namespace is vertex-ns string" [ref=e361]:
+                      - cell "-n" [ref=e362]:
+                        - code [ref=e363]: "-n"
+                      - cell "--namespace" [ref=e364]:
+                        - code [ref=e365]: "--namespace"
+                      - cell "The namespace in which to deploy the resources for the FIPS scan. The default namespace is vertex-ns" [ref=e366]:
+                        - text: The namespace in which to deploy the resources for the FIPS scan. The default namespace is
+                        - code [ref=e367]: vertex-ns
+                      - cell "string" [ref=e368]
+                    - row "-f --out The output file path to save the scan results. The default output is the terminal. string" [ref=e369]:
+                      - cell "-f" [ref=e370]:
+                        - code [ref=e371]: "-f"
+                      - cell "--out" [ref=e372]:
+                        - code [ref=e373]: "--out"
+                      - cell "The output file path to save the scan results. The default output is the terminal." [ref=e374]
+                      - cell "string" [ref=e375]
+                    - row "-h --help Display the help message for the images subcommand. boolean" [ref=e376]:
+                      - cell "-h" [ref=e377]:
+                        - code [ref=e378]: "-h"
+                      - cell "--help" [ref=e379]:
+                        - code [ref=e380]: "--help"
+                      - cell "Display the help message for the images subcommand." [ref=e381]:
+                        - text: Display the help message for the
+                        - code [ref=e382]: images
+                        - text: subcommand.
+                      - cell "boolean" [ref=e383]
+                - heading "LimitationsDirect link to Limitations" [level=3] [ref=e384]:
+                  - text: Limitations
+                  - link "Direct link to Limitations" [ref=e385] [cursor=pointer]:
+                    - /url: "#limitations-1"
+                    - text: "#"
+                - list [ref=e386]:
+                  - listitem [ref=e387]: Images hosted in private registries are not supported.
+                  - listitem [ref=e388]:
+                    - text: Only Go binaries are supported. Images with binaries compiled in other languages are marked as
+                    - code [ref=e389]: unknown
+                    - text: in the report.
+                - heading "ExamplesDirect link to Examples" [level=3] [ref=e390]:
+                  - text: Examples
+                  - link "Direct link to Examples" [ref=e391] [cursor=pointer]:
+                    - /url: "#examples"
+                    - text: "#"
+                - paragraph [ref=e392]: Validate the FIPS compliance of the images in your cluster.
+                - generic [ref=e394]:
+                  - code [ref=e396]:
+                    - generic [ref=e397]: palette fips-validate images
+                  - button "Copy code to clipboard" [ref=e399] [cursor=pointer]:
+                    - generic [ref=e400]:
+                      - img [ref=e401]
+                      - img [ref=e403]
+                - paragraph [ref=e405]: Validate the FIPS compliance of the images in your cluster and save the results to a file.
+                - generic [ref=e407]:
+                  - code [ref=e409]:
+                    - generic [ref=e410]: palette fips-validate images --out /path/to/fips-scan-results.txt
+                  - button "Copy code to clipboard" [ref=e412] [cursor=pointer]:
+                    - generic [ref=e413]:
+                      - img [ref=e414]
+                      - img [ref=e416]
+                - paragraph [ref=e418]: Validate the FIPS compliance of the images in your cluster and deploy the resources in a custom namespace.
+                - generic [ref=e420]:
+                  - code [ref=e422]:
+                    - generic [ref=e423]: palette fips-validate images --namespace my-scan-ns
+                  - button "Copy code to clipboard" [ref=e425] [cursor=pointer]:
+                    - generic [ref=e426]:
+                      - img [ref=e427]
+                      - img [ref=e429]
+                - heading "Review ResultsDirect link to Review Results" [level=3] [ref=e431]:
+                  - text: Review Results
+                  - link "Direct link to Review Results" [ref=e432] [cursor=pointer]:
+                    - /url: "#review-results"
+                    - text: "#"
+                - paragraph [ref=e433]: "The report contains a list of images and the FIPS compliance status of the binaries in the images. Each row in the report contains the following columns:"
+                - table [ref=e434]:
+                  - rowgroup [ref=e435]:
+                    - row "Column Description" [ref=e436]:
+                      - cell "Column" [ref=e437]:
+                        - strong [ref=e438]: Column
+                      - cell "Description" [ref=e439]:
+                        - strong [ref=e440]: Description
+                  - rowgroup [ref=e441]:
+                    - row "NO. The number of the image in the order of the scan." [ref=e442]:
+                      - cell "NO." [ref=e443]:
+                        - code [ref=e444]: NO.
+                      - cell "The number of the image in the order of the scan." [ref=e445]
+                    - row "BINARY The name of the executable binary." [ref=e446]:
+                      - cell "BINARY" [ref=e447]:
+                        - code [ref=e448]: BINARY
+                      - cell "The name of the executable binary." [ref=e449]
+                    - row "ARCH The architecture of the binary." [ref=e450]:
+                      - cell "ARCH" [ref=e451]:
+                        - code [ref=e452]: ARCH
+                      - cell "The architecture of the binary." [ref=e453]
+                    - row "PATH The path of the binary in the image." [ref=e454]:
+                      - cell "PATH" [ref=e455]:
+                        - code [ref=e456]: PATH
+                      - cell "The path of the binary in the image." [ref=e457]
+                    - row "VERSION The version of the programming language used to create the binary. Go is the only supported language from a version detection capability." [ref=e458]:
+                      - cell "VERSION" [ref=e459]:
+                        - code [ref=e460]: VERSION
+                      - cell "The version of the programming language used to create the binary. Go is the only supported language from a version detection capability." [ref=e461]
+                    - row "EXE How the binary was compiled, either statically or dynamically." [ref=e462]:
+                      - cell "EXE" [ref=e463]:
+                        - code [ref=e464]: EXE
+                      - cell "How the binary was compiled, either statically or dynamically." [ref=e465]
+                    - row "CRYPTO The cryptographic library used to compile the binary." [ref=e466]:
+                      - cell "CRYPTO" [ref=e467]:
+                        - code [ref=e468]: CRYPTO
+                      - cell "The cryptographic library used to compile the binary." [ref=e469]
+                - paragraph [ref=e470]: The following is an example of the FIPS compliance report. The validated image is FIPS compliant as the binary is compiled with the BoringSSL cryptographic library.
+                - generic [ref=e472]:
+                  - code [ref=e474]:
+                    - generic [ref=e475]: "---------------------------------------------------------------"
+                    - generic [ref=e476]: "image: gcr.io/spectro-images-public/release-fips/cluster-api-aws/cluster-api-aws-controller:v1.5.2-spectro-4.3.0"
+                    - generic [ref=e477]: ┌─────┬─────────┬────────┬──────────┬──────────┬────────┬────────┐
+                    - generic [ref=e478]: │ NO. │ BINARY │ ARCH │ PATH │ VERSION │ EXE │ CRYPTO │
+                    - generic [ref=e479]: ├─────┼─────────┼────────┼──────────┼──────────┼────────┼────────┤
+                    - generic [ref=e480]: │ 1 │ manager │ x86-64 │ /manager │ go1.21.6 │ static │ boring │
+                    - generic [ref=e481]: └─────┴─────────┴────────┴──────────┴──────────┴────────┴────────┘
+                  - generic [ref=e482]:
+                    - button "Toggle word wrap" [ref=e483] [cursor=pointer]:
+                      - img [ref=e484]
+                    - button "Copy code to clipboard" [ref=e486] [cursor=pointer]:
+                      - generic [ref=e487]:
+                        - img [ref=e488]
+                        - img [ref=e490]
+                - paragraph [ref=e492]:
+                  - text: If the scan is not able to determine the FIPS compliance status of a binary, the status is marked as
+                  - code [ref=e493]: unknown
+                  - text: in the summary section. The individual row will contain a note stating the reason for the unknown status.
+                - generic [ref=e495]:
+                  - code [ref=e497]:
+                    - generic [ref=e498]: "image: ghcr.io/spectrocloud/hello-universe:1.1.1"
+                    - generic [ref=e499]: "note: binaries are not using boring crypto and/or not statically linked"
+                    - generic [ref=e500]: ┌─────┬──────────────────┬────────┬─────────────────────────────────┬─────────┬────────┬─────────┐
+                    - generic [ref=e501]: │ NO. │ BINARY │ ARCH │ PATH │ VERSION │ EXE │ CRYPTO │
+                    - generic [ref=e502]: ├─────┼──────────────────┼────────┼─────────────────────────────────┼─────────┼────────┼─────────┤
+                    - generic [ref=e503]: │ 1 │ legacy.so │ x86-64 │ /usr/lib/ossl-modules/legacy.so │ unknown │ static │ openssl │
+                    - generic [ref=e504]: │ 2 │ padlock.so │ x86-64 │ /usr/lib/engines-3/padlock.so │ unknown │ static │ openssl │
+                    - generic [ref=e505]: │ 3 │ libcurl.so.4.8.0 │ x86-64 │ /usr/lib/libcurl.so.4.8.0 │ unknown │ static │ openssl │
+                    - generic [ref=e506]: │ 4 │ node │ x86-64 │ /usr/local/bin/node │ unknown │ static │ openssl │
+                    - generic [ref=e507]: │ 5 │ libcrypto.so.3 │ x86-64 │ /lib/libcrypto.so.3 │ unknown │ static │ openssl │
+                    - generic [ref=e508]: └─────┴──────────────────┴────────┴─────────────────────────────────┴─────────┴────────┴─────────┘
+                  - generic [ref=e509]:
+                    - button "Toggle word wrap" [ref=e510] [cursor=pointer]:
+                      - img [ref=e511]
+                    - button "Copy code to clipboard" [ref=e513] [cursor=pointer]:
+                      - generic [ref=e514]:
+                        - img [ref=e515]
+                        - img [ref=e517]
+                - paragraph [ref=e519]: The end of the report contains a summary of the scan results. The summary includes all the images scanned and the status of each image.
+                - generic [ref=e521]:
+                  - code [ref=e523]:
+                    - generic [ref=e524]: ┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬─────────┐
+                    - generic [ref=e525]: │ IMAGE │ STATUS │
+                    - generic [ref=e526]: "|---------------------------------------------------------------------------------------------------------------------------|"
+                    - generic [ref=e527]: │ gcr.io/spectro-dev-public/vishu/spectro-drive:latest │ unknown │
+                    - generic [ref=e528]: │ gcr.io/spectro-images-public/release/kube-rbac-proxy:spectro-v0.14.0-20230508 │ failed │
+                    - generic [ref=e529]: │ gcr.io/spectro-images-public/release-fips/system-upgrade-controller:v0.11.4_spectro │ passed │
+                    - generic [ref=e530]: │ us-east1-docker.pkg.dev/spectro-palette-images/public/daily-fips/upgrade:20240305.0000 │ passed │
+                    - generic [ref=e531]: │ gcr.io/spectro-images-fips/kube-scheduler:v1.28.5 │ passed │
+                    - generic [ref=e532]: └─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴─────────┘
+                  - generic [ref=e533]:
+                    - button "Toggle word wrap" [ref=e534] [cursor=pointer]:
+                      - img [ref=e535]
+                    - button "Copy code to clipboard" [ref=e537] [cursor=pointer]:
+                      - generic [ref=e538]:
+                        - img [ref=e539]
+                        - img [ref=e541]
+                - heading "ServicesDirect link to Services" [level=2] [ref=e543]:
+                  - text: Services
+                  - link "Direct link to Services" [ref=e544] [cursor=pointer]:
+                    - /url: "#services"
+                    - text: "#"
+                - paragraph [ref=e545]:
+                  - text: The
+                  - code [ref=e546]: services
+                  - text: subcommand validates the FIPS compliance of the service endpoints in your clusters. The command scans the service endpoints and conducts a handshake with each endpoint through
+                  - link "testssl" [ref=e547] [cursor=pointer]:
+                    - /url: https://testssl.sh/
+                  - text: . The handshake is used to verify if the service endpoint is using FIPS compliant TLS versions and cryptographic ciphers. The service endpoint's certificate is also verified if it's within a valid timeframe by verifying its start and expiration dates.
+                - paragraph [ref=e548]:
+                  - text: The following flags are available for the
+                  - code [ref=e549]: services
+                  - text: "subcommand:"
+                - table [ref=e550]:
+                  - rowgroup [ref=e551]:
+                    - row "Short Flag Long Flag Description Type" [ref=e552]:
+                      - cell "Short Flag" [ref=e553]:
+                        - strong [ref=e554]: Short Flag
+                      - cell "Long Flag" [ref=e555]:
+                        - strong [ref=e556]: Long Flag
+                      - cell "Description" [ref=e557]:
+                        - strong [ref=e558]: Description
+                      - cell "Type" [ref=e559]:
+                        - strong [ref=e560]: Type
+                  - rowgroup [ref=e561]:
+                    - row "-n --namespace The namespace in which to deploy the resources for the FIPS scan. The default namespace is vertex-ns string" [ref=e562]:
+                      - cell "-n" [ref=e563]:
+                        - code [ref=e564]: "-n"
+                      - cell "--namespace" [ref=e565]:
+                        - code [ref=e566]: "--namespace"
+                      - cell "The namespace in which to deploy the resources for the FIPS scan. The default namespace is vertex-ns" [ref=e567]:
+                        - text: The namespace in which to deploy the resources for the FIPS scan. The default namespace is
+                        - code [ref=e568]: vertex-ns
+                      - cell "string" [ref=e569]
+                    - row "-f --out The output file path to save the scan results. The default output is the terminal. string" [ref=e570]:
+                      - cell "-f" [ref=e571]:
+                        - code [ref=e572]: "-f"
+                      - cell "--out" [ref=e573]:
+                        - code [ref=e574]: "--out"
+                      - cell "The output file path to save the scan results. The default output is the terminal." [ref=e575]
+                      - cell "string" [ref=e576]
+                    - row "-h --help Display the help message for the images subcommand. boolean" [ref=e577]:
+                      - cell "-h" [ref=e578]:
+                        - code [ref=e579]: "-h"
+                      - cell "--help" [ref=e580]:
+                        - code [ref=e581]: "--help"
+                      - cell "Display the help message for the images subcommand." [ref=e582]:
+                        - text: Display the help message for the
+                        - code [ref=e583]: images
+                        - text: subcommand.
+                      - cell "boolean" [ref=e584]
+                - heading "ChecksDirect link to Checks" [level=3] [ref=e585]:
+                  - text: Checks
+                  - link "Direct link to Checks" [ref=e586] [cursor=pointer]:
+                    - /url: "#checks"
+                    - text: "#"
+                - paragraph [ref=e587]:
+                  - text: The following is a list of checks is performed by the
+                  - code [ref=e588]: services
+                  - text: "subcommand:"
+                - table [ref=e589]:
+                  - rowgroup [ref=e590]:
+                    - row "Check Description" [ref=e591]:
+                      - cell "Check" [ref=e592]
+                      - cell "Description" [ref=e593]
+                  - rowgroup [ref=e594]:
+                    - row "cipher-tls1*2* Verifies TLS 1.2 cipher suites." [ref=e595]:
+                      - cell "cipher-tls1*2*" [ref=e596]:
+                        - code [ref=e597]: cipher-tls1*2*
+                      - cell "Verifies TLS 1.2 cipher suites." [ref=e598]
+                    - row "cipher-tls1*3* Verifies TLS 1.3 cipher suites." [ref=e599]:
+                      - cell "cipher-tls1*3*" [ref=e600]:
+                        - code [ref=e601]: cipher-tls1*3*
+                      - cell "Verifies TLS 1.3 cipher suites." [ref=e602]
+                    - row "SSLv2, SSLv3, TLS1, TLS1_1 Checks for the presence of deprecated SSL/TLS versions." [ref=e603]:
+                      - cell "SSLv2, SSLv3, TLS1, TLS1_1" [ref=e604]:
+                        - code [ref=e605]: SSLv2, SSLv3, TLS1, TLS1_1
+                      - cell "Checks for the presence of deprecated SSL/TLS versions." [ref=e606]
+                    - row "cipherlist_NULL Checks for the presence of NULL encryption cipher suites." [ref=e607]:
+                      - cell "cipherlist_NULL" [ref=e608]:
+                        - code [ref=e609]: cipherlist_NULL
+                      - cell "Checks for the presence of NULL encryption cipher suites." [ref=e610]
+                    - row "cipherlist_aNULL Checks for the presence of aNULL encryption cipher suites." [ref=e611]:
+                      - cell "cipherlist_aNULL" [ref=e612]:
+                        - code [ref=e613]: cipherlist_aNULL
+                      - cell "Checks for the presence of aNULL encryption cipher suites." [ref=e614]
+                    - row "cipherlist_EXPORT Checks for the presence of EXPORT encryption cipher suites." [ref=e615]:
+                      - cell "cipherlist_EXPORT" [ref=e616]:
+                        - code [ref=e617]: cipherlist_EXPORT
+                      - cell "Checks for the presence of EXPORT encryption cipher suites." [ref=e618]
+                    - row "cipherlist_3DES_IDEA Checks for the presence of 3DES and IDEA encryption cipher suites." [ref=e619]:
+                      - cell "cipherlist_3DES_IDEA" [ref=e620]:
+                        - code [ref=e621]: cipherlist_3DES_IDEA
+                      - cell "Checks for the presence of 3DES and IDEA encryption cipher suites." [ref=e622]
+                    - row "cipherlist_OBSOLETED Checks for the presence of obsoleted encryption cipher suites." [ref=e623]:
+                      - cell "cipherlist_OBSOLETED" [ref=e624]:
+                        - code [ref=e625]: cipherlist_OBSOLETED
+                      - cell "Checks for the presence of obsoleted encryption cipher suites." [ref=e626]
+                    - row "cipherlist_LOW Checks for the presence of LOW encryption cipher suites." [ref=e627]:
+                      - cell "cipherlist_LOW" [ref=e628]:
+                        - code [ref=e629]: cipherlist_LOW
+                      - cell "Checks for the presence of LOW encryption cipher suites." [ref=e630]
+                    - row "cert_notBefore Validates the start date of the certificate." [ref=e631]:
+                      - cell "cert_notBefore" [ref=e632]:
+                        - code [ref=e633]: cert_notBefore
+                      - cell "Validates the start date of the certificate." [ref=e634]
+                    - row "cert_notAfter Validates the expiration date of the certificate." [ref=e635]:
+                      - cell "cert_notAfter" [ref=e636]:
+                        - code [ref=e637]: cert_notAfter
+                      - cell "Validates the expiration date of the certificate." [ref=e638]
+                    - row "FS_TLS12_sig_algs Verifies the supported signature algorithms for TLS 1.2." [ref=e639]:
+                      - cell "FS_TLS12_sig_algs" [ref=e640]:
+                        - code [ref=e641]: FS_TLS12_sig_algs
+                      - cell "Verifies the supported signature algorithms for TLS 1.2." [ref=e642]
+                    - row "HSTS Validates the presence of HTTP Strict Transport Security (HSTS) headers." [ref=e643]:
+                      - cell "HSTS" [ref=e644]:
+                        - code [ref=e645]: HSTS
+                      - cell "Validates the presence of HTTP Strict Transport Security (HSTS) headers." [ref=e646]
+                    - row "DNS_CAArecord Confirms the presence of DNS Certification Authority Authorization (CAA) records." [ref=e647]:
+                      - cell "DNS_CAArecord" [ref=e648]:
+                        - code [ref=e649]: DNS_CAArecord
+                      - cell "Confirms the presence of DNS Certification Authority Authorization (CAA) records." [ref=e650]
+                    - row "security_headers Checks for the presence of recommended security headers. Refer to testssl.sh documentation for more context. Search for the --header description." [ref=e651]:
+                      - cell "security_headers" [ref=e652]:
+                        - code [ref=e653]: security_headers
+                      - cell "Checks for the presence of recommended security headers. Refer to testssl.sh documentation for more context. Search for the --header description." [ref=e654]:
+                        - text: Checks for the presence of recommended security headers. Refer to
+                        - link "testssl.sh" [ref=e655] [cursor=pointer]:
+                          - /url: https://testssl.sh/doc/testssl.1.html
+                        - text: documentation for more context. Search for the
+                        - code [ref=e656]: "--header"
+                        - text: description.
+                    - row "overall_grade Assesses the overall security grade of the configuration." [ref=e657]:
+                      - cell "overall_grade" [ref=e658]:
+                        - code [ref=e659]: overall_grade
+                      - cell "Assesses the overall security grade of the configuration." [ref=e660]
+                    - row "cert\\_ Ensures certificate-related configurations meet requirements, excluding specific cases." [ref=e661]:
+                      - cell "cert\\_" [ref=e662]:
+                        - code [ref=e663]: cert\_
+                      - cell "Ensures certificate-related configurations meet requirements, excluding specific cases." [ref=e664]
+                - heading "ExamplesDirect link to Examples" [level=3] [ref=e665]:
+                  - text: Examples
+                  - link "Direct link to Examples" [ref=e666] [cursor=pointer]:
+                    - /url: "#examples-1"
+                    - text: "#"
+                - paragraph [ref=e667]: Validate the FIPS compliance of the service endpoints in your cluster.
+                - generic [ref=e669]:
+                  - code [ref=e671]:
+                    - generic [ref=e672]: palette fips-validate services
+                  - button "Copy code to clipboard" [ref=e674] [cursor=pointer]:
+                    - generic [ref=e675]:
+                      - img [ref=e676]
+                      - img [ref=e678]
+                - paragraph [ref=e680]: Validate the FIPS compliance of the service endpoints in your cluster and save the results to a file.
+                - generic [ref=e682]:
+                  - code [ref=e684]:
+                    - generic [ref=e685]: palette fips-validate services --out /path/to/fips-scan-results.txt
+                  - generic [ref=e686]:
+                    - button "Toggle word wrap" [ref=e687] [cursor=pointer]:
+                      - img [ref=e688]
+                    - button "Copy code to clipboard" [ref=e690] [cursor=pointer]:
+                      - generic [ref=e691]:
+                        - img [ref=e692]
+                        - img [ref=e694]
+                - paragraph [ref=e696]: Validate the FIPS compliance of the service endpoints in your cluster and deploy the resources in a custom namespace.
+                - generic [ref=e698]:
+                  - code [ref=e700]:
+                    - generic [ref=e701]: palette fips-validate services --namespace my-scan-ns
+                  - button "Copy code to clipboard" [ref=e703] [cursor=pointer]:
+                    - generic [ref=e704]:
+                      - img [ref=e705]
+                      - img [ref=e707]
+                - heading "Review ResultsDirect link to Review Results" [level=3] [ref=e709]:
+                  - text: Review Results
+                  - link "Direct link to Review Results" [ref=e710] [cursor=pointer]:
+                    - /url: "#review-results-1"
+                    - text: "#"
+                - paragraph [ref=e711]: "The report contains a list of service endpoints and the FIPS compliance status of the service endpoints. Each row in the report contains the following columns:"
+                - table [ref=e712]:
+                  - rowgroup [ref=e713]:
+                    - row "Column Description" [ref=e714]:
+                      - cell "Column" [ref=e715]:
+                        - strong [ref=e716]: Column
+                      - cell "Description" [ref=e717]:
+                        - strong [ref=e718]: Description
+                  - rowgroup [ref=e719]:
+                    - row "NO. The number of the service endpoint in the order of the scan." [ref=e720]:
+                      - cell "NO." [ref=e721]:
+                        - code [ref=e722]: NO.
+                      - cell "The number of the service endpoint in the order of the scan." [ref=e723]
+                    - row "ID The finding identifier." [ref=e724]:
+                      - cell "ID" [ref=e725]:
+                        - code [ref=e726]: ID
+                      - cell "The finding identifier." [ref=e727]
+                    - row "FINDING The description of the finding. Depending on the finding, you may receive a technical finding. Refer to the Findings section in case you receive a technical finding." [ref=e728]:
+                      - cell "FINDING" [ref=e729]:
+                        - code [ref=e730]: FINDING
+                      - cell "The description of the finding. Depending on the finding, you may receive a technical finding. Refer to the Findings section in case you receive a technical finding." [ref=e731]:
+                        - text: The description of the finding. Depending on the finding, you may receive a technical finding. Refer to the
+                        - link "Findings" [ref=e732] [cursor=pointer]:
+                          - /url: "#findings"
+                        - text: section in case you receive a technical finding.
+                    - row "SEVERITY The severity of the finding." [ref=e733]:
+                      - cell "SEVERITY" [ref=e734]:
+                        - code [ref=e735]: SEVERITY
+                      - cell "The severity of the finding." [ref=e736]
+                    - row "STATUS The status of the finding. Allowed values are PASSED or FAILED." [ref=e737]:
+                      - cell "STATUS" [ref=e738]:
+                        - code [ref=e739]: STATUS
+                      - cell "The status of the finding. Allowed values are PASSED or FAILED." [ref=e740]:
+                        - text: The status of the finding. Allowed values are
+                        - code [ref=e741]: PASSED
+                        - text: or
+                        - code [ref=e742]: FAILED
+                        - text: .
+                - generic [ref=e744]:
+                  - code [ref=e746]:
+                    - generic [ref=e747]: "endpoint: oldrelease-vc1.cluster-65ea4b3b9fe382461d51fbb3"
+                    - generic [ref=e748]: ┌─────┬────────────────────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬──────────┬────────┐
+                    - generic [ref=e749]: │ NO. │ ID │ FINDING │ SEVERITY │ STATUS │
+                    - generic [ref=e750]: ├─────┼────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────┼────────┤
+                    - generic [ref=e751]: │ 1 │ cipherlist_OBSOLETED │ offered │ CRITICAL │ FAILED │
+                    - generic [ref=e752]: │ 2 │ cipher-tls1_2_xcca9 │ TLSv1.2 xcca9 ECDHE-ECDSA-CHACHA20-POLY1305 ECDH 521 ChaCha20 256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 │ HIGH │ FAILED │
+                    - generic [ref=e753]: │ 3 │ cipher-tls1_3_x1303 │ TLSv1.3 x1303 TLS_CHACHA20_POLY1305_SHA256 ECDH 253 ChaCha20 256 TLS_CHACHA20_POLY1305_SHA256 │ HIGH │ FAILED │
+                    - generic [ref=e754]: "│ 4 │ Cache-Control_multiple │ Multiple Cache-Control headers. Using first header: no-cache, private │ MEDIUM │ FAILED │"
+                    - generic [ref=e755]: │ 5 │ LUCKY13 │ potentially vulnerable, uses TLS CBC ciphers │ LOW │ FAILED │
+                    - generic [ref=e756]: └─────┴────────────────────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴──────────┴────────┘
+                  - generic [ref=e757]:
+                    - button "Toggle word wrap" [ref=e758] [cursor=pointer]:
+                      - img [ref=e759]
+                    - button "Copy code to clipboard" [ref=e761] [cursor=pointer]:
+                      - generic [ref=e762]:
+                        - img [ref=e763]
+                        - img [ref=e765]
+                - heading "FindingsDirect link to Findings" [level=4] [ref=e767]:
+                  - text: Findings
+                  - link "Direct link to Findings" [ref=e768] [cursor=pointer]:
+                    - /url: "#findings"
+                    - text: "#"
+                - paragraph [ref=e769]:
+                  - text: A finding is a result of a failed check. The
+                  - code [ref=e770]: FINDING
+                  - text: "column may contain technical details of the finding. The technical finding contains the following information:"
+                - list [ref=e771]:
+                  - listitem [ref=e772]:
+                    - paragraph [ref=e773]: The TLS version
+                  - listitem [ref=e774]:
+                    - paragraph [ref=e775]: The cipher suite HEX code.
+                  - listitem [ref=e776]:
+                    - paragraph [ref=e777]: The name of the cipher suite.
+                  - listitem [ref=e778]:
+                    - paragraph [ref=e779]: The key exchange algorithm.
+                  - listitem [ref=e780]:
+                    - paragraph [ref=e781]: The encryption algorithm.
+                  - listitem [ref=e782]:
+                    - paragraph [ref=e783]: The encryption key length.
+                  - listitem [ref=e784]:
+                    - paragraph [ref=e785]: The authentication algorithm.
+                - paragraph [ref=e786]: To help you better understand technical findings values, use the following example.
+                - generic [ref=e788]:
+                  - code [ref=e790]:
+                    - generic [ref=e791]: TLSv1.3 x1303 TLS_CHACHA20_POLY1305_SHA256 ECDH 253 ChaCha20 256 TLS_CHACHA20_POLY1305_SHA256
+                  - generic [ref=e792]:
+                    - button "Toggle word wrap" [ref=e793] [cursor=pointer]:
+                      - img [ref=e794]
+                    - button "Copy code to clipboard" [ref=e796] [cursor=pointer]:
+                      - generic [ref=e797]:
+                        - img [ref=e798]
+                        - img [ref=e800]
+                - paragraph [ref=e802]: The table below explains the example finding value and what each value represents. The values are separated by a space.
+                - table [ref=e803]:
+                  - rowgroup [ref=e804]:
+                    - row "Value Explanation" [ref=e805]:
+                      - cell "Value" [ref=e806]:
+                        - strong [ref=e807]: Value
+                      - cell "Explanation" [ref=e808]:
+                        - strong [ref=e809]: Explanation
+                  - rowgroup [ref=e810]:
+                    - row "TLSv1.3 The TLS version." [ref=e811]:
+                      - cell "TLSv1.3" [ref=e812]:
+                        - code [ref=e813]: TLSv1.3
+                      - cell "The TLS version." [ref=e814]
+                    - row "x1303 The cipher suite HEX code." [ref=e815]:
+                      - cell "x1303" [ref=e816]:
+                        - code [ref=e817]: x1303
+                      - cell "The cipher suite HEX code." [ref=e818]
+                    - row "TLS_CHACHA20_POLY1305_SHA256 The name of the cipher suite." [ref=e819]:
+                      - cell "TLS_CHACHA20_POLY1305_SHA256" [ref=e820]:
+                        - code [ref=e821]: TLS_CHACHA20_POLY1305_SHA256
+                      - cell "The name of the cipher suite." [ref=e822]
+                    - row "ECDH 253 The key exchange algorithm." [ref=e823]:
+                      - cell "ECDH 253" [ref=e824]:
+                        - code [ref=e825]: ECDH 253
+                      - cell "The key exchange algorithm." [ref=e826]
+                    - row "ChaCha20 The encryption algorithm." [ref=e827]:
+                      - cell "ChaCha20" [ref=e828]:
+                        - code [ref=e829]: ChaCha20
+                      - cell "The encryption algorithm." [ref=e830]
+                    - row "256 The encryption key length." [ref=e831]:
+                      - cell "256" [ref=e832]:
+                        - code [ref=e833]: "256"
+                      - cell "The encryption key length." [ref=e834]
+                    - row "TLS_CHACHA20_POLY1305_SHA256 The authentication algorithm." [ref=e835]:
+                      - cell "TLS_CHACHA20_POLY1305_SHA256" [ref=e836]:
+                        - code [ref=e837]: TLS_CHACHA20_POLY1305_SHA256
+                      - cell "The authentication algorithm." [ref=e838]
+                - paragraph [ref=e839]:
+                  - text: The service endpoint is using the
+                  - code [ref=e840]: TLSv1.3
+                  - text: version with
+                  - code [ref=e841]: TLS_CHACHA20_POLY1305_SHA256
+                  - text: cipher suit. The TLS version and the cipher suite is not considered FIPS compliant and the status is marked as
+                  - code [ref=e842]: FAILED
+                  - text: .
+                - paragraph [ref=e843]: A successful check will not have a finding identifier. The following is an example of a successful check.
+                - generic [ref=e845]:
+                  - code [ref=e847]:
+                    - generic [ref=e848]: "---------------------------------------------------------------"
+                    - generic [ref=e849]: "endpoint: palette-webhook-service.palette-system"
+                    - generic [ref=e850]: "note: all validations passed"
+                    - generic [ref=e851]: "---------------------------------------------------------------"
+                  - button "Copy code to clipboard" [ref=e853] [cursor=pointer]:
+                    - generic [ref=e854]:
+                      - img [ref=e855]
+                      - img [ref=e857]
+                - paragraph [ref=e859]: The end of the report contains a summary of the scan results. The summary includes all the service endpoints scanned and the status of each endpoint. Below is an example of the summary section.
+                - generic [ref=e861]:
+                  - code [ref=e863]:
+                    - generic [ref=e864]: ┌────────────────────────────────────────────────────────────────┬────────┐
+                    - generic [ref=e865]: │ ENDPOINT │ STATUS │
+                    - generic [ref=e866]: ├────────────────────────────────────────────────────────────────┼────────┤
+                    - generic [ref=e867]: │ capa-webhook-service.capi-webhook-system │ passed │
+                    - generic [ref=e868]: │ capi-kubeadm-bootstrap-webhook-service.capi-webhook-system │ passed │
+                    - generic [ref=e869]: │ capi-kubeadm-control-plane-webhook-service.capi-webhook-system │ passed │
+                    - generic [ref=e870]: │ capi-webhook-service.capi-webhook-system │ passed │
+                    - generic [ref=e871]: │ capvc-webhook-service.capi-webhook-system │ failed │
+                    - generic [ref=e872]: │ cert-manager-webhook.cert-manager │ passed │
+                    - generic [ref=e873]: │ metrics-server.cluster-65e4cb59cbfc84ea5877af4c │ passed │
+                    - generic [ref=e874]: │ oldrelease-vc1.cluster-65ea4b3b9fe382461d51fbb3 │ failed │
+                    - generic [ref=e875]: │ oldrelease-vc1-headless.cluster-65ea4b3b9fe382461d51fbb3 │ failed │
+                    - generic [ref=e876]: │ oldrelease-vc1-lb.cluster-65ea4b3b9fe382461d51fbb3 │ failed │
+                    - generic [ref=e877]: │ kubernetes.default │ passed │
+                    - generic [ref=e878]: │ palette-webhook-service.palette-system │ passed │
+                    - generic [ref=e879]: │ 10-0-3-97.kubernetes.default:2380 │ failed │
+                    - generic [ref=e880]: │ 10-0-3-97.kubernetes.default:10250 │ passed │
+                    - generic [ref=e881]: └────────────────────────────────────────────────────────────────┴────────┘
+                  - generic [ref=e882]:
+                    - button "Toggle word wrap" [ref=e883] [cursor=pointer]:
+                      - img [ref=e884]
+                    - button "Copy code to clipboard" [ref=e886] [cursor=pointer]:
+                      - generic [ref=e887]:
+                        - img [ref=e888]
+                        - img [ref=e890]
+                - heading "CleanDirect link to Clean" [level=2] [ref=e892]:
+                  - text: Clean
+                  - link "Direct link to Clean" [ref=e893] [cursor=pointer]:
+                    - /url: "#clean"
+                    - text: "#"
+                - paragraph [ref=e894]:
+                  - text: The
+                  - code [ref=e895]: clean
+                  - text: subcommand removes the FIPS validation resources from your clusters. The command is intended to be used in scenarios where the
+                  - code [ref=e896]: images
+                  - text: or
+                  - code [ref=e897]: services
+                  - text: subcommands may fail to clean up the resources from the cluster. As a workaround, you can manually trigger the
+                  - code [ref=e898]: clean
+                  - text: subcommand to remove the resources from the cluster.
+                - paragraph [ref=e899]:
+                  - text: The
+                  - code [ref=e900]: clean
+                  - text: "subcommand accepts the following flags:"
+                - table [ref=e901]:
+                  - rowgroup [ref=e902]:
+                    - row "Short Flag Long Flag Description Type" [ref=e903]:
+                      - cell "Short Flag" [ref=e904]:
+                        - strong [ref=e905]: Short Flag
+                      - cell "Long Flag" [ref=e906]:
+                        - strong [ref=e907]: Long Flag
+                      - cell "Description" [ref=e908]:
+                        - strong [ref=e909]: Description
+                      - cell "Type" [ref=e910]:
+                        - strong [ref=e911]: Type
+                  - rowgroup [ref=e912]:
+                    - row "-h --help Display the help message for the clean subcommand. boolean" [ref=e913]:
+                      - cell "-h" [ref=e914]:
+                        - code [ref=e915]: "-h"
+                      - cell "--help" [ref=e916]:
+                        - code [ref=e917]: "--help"
+                      - cell "Display the help message for the clean subcommand." [ref=e918]:
+                        - text: Display the help message for the
+                        - code [ref=e919]: clean
+                        - text: subcommand.
+                      - cell "boolean" [ref=e920]
+                - heading "ExamplesDirect link to Examples" [level=3] [ref=e921]:
+                  - text: Examples
+                  - link "Direct link to Examples" [ref=e922] [cursor=pointer]:
+                    - /url: "#examples-2"
+                    - text: "#"
+                - paragraph [ref=e923]: Remove the FIPS validation resources from your cluster.
+                - generic [ref=e925]:
+                  - code [ref=e927]:
+                    - generic [ref=e928]: export KUBECONFIG=/path/to/kubeconfig
+                    - generic [ref=e929]: palette fips-validate clean
+                  - button "Copy code to clipboard" [ref=e931] [cursor=pointer]:
+                    - generic [ref=e932]:
+                      - img [ref=e933]
+                      - img [ref=e935]
+              - generic [ref=e937]:
+                - generic [ref=e939]:
+                  - text: "Tags:"
+                  - list [ref=e940]:
+                    - listitem [ref=e941]:
+                      - link "palette-cli" [ref=e942] [cursor=pointer]:
+                        - /url: /tags/palette-cli/
+                - link "Edit this page" [ref=e945] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/automation/palette-cli/commands/fips-validate.md
+                  - img [ref=e946]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e950]:
+              - link "Previous « EC" [ref=e951] [cursor=pointer]:
+                - /url: /automation/palette-cli/commands/ec/
+                - generic [ref=e952]: Previous
+                - generic [ref=e953]: « EC
+              - link "Next Import »" [ref=e954] [cursor=pointer]:
+                - /url: /automation/palette-cli/commands/import/
+                - generic [ref=e955]: Next
+                - generic [ref=e956]: Import »
+          - list [ref=e959]:
+            - listitem [ref=e960]:
+              - link "Subcommands" [ref=e961] [cursor=pointer]:
+                - /url: "#subcommands"
+            - listitem [ref=e962]:
+              - link "Prerequisites" [ref=e963] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e964]:
+              - link "Limitations" [ref=e965] [cursor=pointer]:
+                - /url: "#limitations"
+            - listitem [ref=e966]:
+              - link "Images" [ref=e967] [cursor=pointer]:
+                - /url: "#images"
+              - list [ref=e968]:
+                - listitem [ref=e969]:
+                  - link "Limitations" [ref=e970] [cursor=pointer]:
+                    - /url: "#limitations-1"
+                - listitem [ref=e971]:
+                  - link "Examples" [ref=e972] [cursor=pointer]:
+                    - /url: "#examples"
+                - listitem [ref=e973]:
+                  - link "Review Results" [ref=e974] [cursor=pointer]:
+                    - /url: "#review-results"
+            - listitem [ref=e975]:
+              - link "Services" [ref=e976] [cursor=pointer]:
+                - /url: "#services"
+              - list [ref=e977]:
+                - listitem [ref=e978]:
+                  - link "Checks" [ref=e979] [cursor=pointer]:
+                    - /url: "#checks"
+                - listitem [ref=e980]:
+                  - link "Examples" [ref=e981] [cursor=pointer]:
+                    - /url: "#examples-1"
+                - listitem [ref=e982]:
+                  - link "Review Results" [ref=e983] [cursor=pointer]:
+                    - /url: "#review-results-1"
+            - listitem [ref=e984]:
+              - link "Clean" [ref=e985] [cursor=pointer]:
+                - /url: "#clean"
+              - list [ref=e986]:
+                - listitem [ref=e987]:
+                  - link "Examples" [ref=e988] [cursor=pointer]:
+                    - /url: "#examples-2"
+  - button "Project Logo Ask AI" [ref=e989] [cursor=pointer]:
+    - generic [ref=e992]:
+      - img "Project Logo" [ref=e993]
+      - paragraph [ref=e994]: Ask AI
+```

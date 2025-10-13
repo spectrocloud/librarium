@@ -1,0 +1,398 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Security" [ref=e150] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e152]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Audit Logs" [ref=e157] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e159]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Self-Hosted Palette" [expanded] [ref=e164] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e166]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e168] [cursor=pointer]
+                - list [ref=e169]:
+                  - listitem [ref=e170]:
+                    - generic [ref=e171]:
+                      - link "Installation" [expanded] [ref=e172] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e173] [cursor=pointer]
+                    - list [ref=e174]:
+                      - listitem [ref=e175]:
+                        - generic [ref=e176]:
+                          - link "VMware" [ref=e177] [cursor=pointer]:
+                            - /url: /enterprise-version/install-palette/install-on-vmware/
+                          - button "Toggle the collapsible sidebar category 'VMware'" [ref=e178] [cursor=pointer]
+                      - listitem [ref=e179]:
+                        - link "Airgap Resources" [ref=e180] [cursor=pointer]:
+                          - /url: /enterprise-version/install-palette/airgap/
+                      - listitem [ref=e181]:
+                        - generic [ref=e182]:
+                          - link "Kubernetes" [ref=e183] [cursor=pointer]:
+                            - /url: /enterprise-version/install-palette/install-on-kubernetes/
+                          - button "Toggle the collapsible sidebar category 'Kubernetes'" [ref=e184] [cursor=pointer]
+                      - listitem [ref=e185]:
+                        - link "Palette Management Appliance" [ref=e186] [cursor=pointer]:
+                          - /url: /enterprise-version/install-palette/palette-management-appliance/
+                  - listitem [ref=e187]:
+                    - link "Activate Palette" [ref=e188] [cursor=pointer]:
+                      - /url: /enterprise-version/activate-installation/
+                  - listitem [ref=e189]:
+                    - generic [ref=e190]:
+                      - link "System Management" [ref=e191] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e192] [cursor=pointer]
+                  - listitem [ref=e193]:
+                    - generic [ref=e194]:
+                      - link "Upgrade" [ref=e195] [cursor=pointer]:
+                        - /url: /enterprise-version/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e196] [cursor=pointer]
+              - listitem [ref=e197]:
+                - generic [ref=e198]:
+                  - link "Palette VerteX" [ref=e199] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e201]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e203] [cursor=pointer]
+              - listitem [ref=e204]:
+                - generic [ref=e205]:
+                  - link "Tenant Administration" [ref=e206] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e208]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e210] [cursor=pointer]
+              - listitem [ref=e211]:
+                - generic [ref=e212]:
+                  - link "Automation" [ref=e213] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e215]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e217] [cursor=pointer]
+              - listitem [ref=e218]:
+                - generic [ref=e219]:
+                  - link "Troubleshooting" [ref=e220] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e222]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e224] [cursor=pointer]
+              - listitem [ref=e225]:
+                - link "Glossary" [ref=e226] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e228]
+                  - text: Glossary
+              - listitem [ref=e230]:
+                - generic [ref=e231]:
+                  - link "Compliance & Legal" [ref=e232] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e234]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e236] [cursor=pointer]
+              - listitem [ref=e237]:
+                - button "Privacy Settings" [ref=e238] [cursor=pointer]:
+                  - img [ref=e239]
+                  - text: Privacy Settings
+      - main [ref=e241]:
+        - generic [ref=e243]:
+          - generic [ref=e245]:
+            - article [ref=e246]:
+              - navigation "Breadcrumbs" [ref=e247]:
+                - list [ref=e248]:
+                  - listitem [ref=e249]:
+                    - link "Home page" [ref=e250] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e251]
+                  - listitem [ref=e253]:
+                    - link "Self-Hosted Palette" [ref=e254] [cursor=pointer]:
+                      - /url: /enterprise-version/
+                  - listitem [ref=e255]:
+                    - link "Installation" [ref=e256] [cursor=pointer]:
+                      - /url: /enterprise-version/install-palette/
+                  - listitem [ref=e257]:
+                    - generic [ref=e258]: Airgap Resources
+              - generic [ref=e259]:
+                - heading "Airgap Resources" [level=1] [ref=e261]
+                - paragraph [ref=e262]: You can install Palette in an airgapped environment. An airgap environment lacks direct access to the internet and is intended for environments with strict security requirements.
+                - paragraph [ref=e263]: The installation process for an airgap environment is different due to the lack of internet access. Before the primary Palette installation steps, you must download the following artifacts.
+                - list [ref=e264]:
+                  - listitem [ref=e265]:
+                    - paragraph [ref=e266]: Palette platform manifests and required platform packages.
+                  - listitem [ref=e267]:
+                    - paragraph [ref=e268]: Container images for core platform components and third-party dependencies.
+                  - listitem [ref=e269]:
+                    - paragraph [ref=e270]: Palette packs.
+                - paragraph [ref=e271]: The other significant change is that Palette's default public OCI registry is not used. Instead, a private OCI registry is utilized for storing images and packs.
+                - heading "OverviewDirect link to Overview" [level=2] [ref=e272]:
+                  - text: Overview
+                  - link "Direct link to Overview" [ref=e273] [cursor=pointer]:
+                    - /url: "#overview"
+                    - text: "#"
+                - paragraph [ref=e274]: Before you can install Palette in an airgap environment, you must complete all the required pre-install steps. The following diagram outlines the major pre-install steps for an airgap installation.
+                - paragraph [ref=e275]:
+                  - img "An architecture diagram outlining the five different install phases" [ref=e276]
+                - list [ref=e277]:
+                  - listitem [ref=e278]:
+                    - paragraph [ref=e279]: Download the airgap setup binary from the URL provided by the support team. The airgap setup binary is a self-extracting archive that contains the Palette platform manifests, images, and required packs. The airgap setup binary is a one-time use binary for uploading Palette images and packs to your OCI registry. You will not use the airgap setup binary again after the initial installation. This step must be completed in an environment with internet access.
+                  - listitem [ref=e280]:
+                    - paragraph [ref=e281]: Move the airgap setup binary to the airgap environment. The airgap setup binary is used to extract the manifest content and upload the required images and packs to your private OCI registry. Start the airgap setup binary in a Linux Virtual Machine (VM).
+                  - listitem [ref=e282]:
+                    - paragraph [ref=e283]:
+                      - text: The airgap script will push the required images, packs, and manifest to the built-in
+                      - link "Harbor" [ref=e284] [cursor=pointer]:
+                        - /url: https://goharbor.io/
+                      - text: OCI registry.
+                  - listitem [ref=e285]:
+                    - paragraph [ref=e286]: Install Palette using the Palette CLI or the Kubernetes Helm chart.
+                  - listitem [ref=e287]:
+                    - paragraph [ref=e288]: Configure your Palette environment.
+                - heading "Get StartedDirect link to Get Started" [level=2] [ref=e289]:
+                  - text: Get Started
+                  - link "Direct link to Get Started" [ref=e290] [cursor=pointer]:
+                    - /url: "#get-started"
+                    - text: "#"
+                - paragraph [ref=e291]: To get started with an airgap Palette installation, check out the respective platform guide.
+                - list [ref=e292]:
+                  - listitem [ref=e293]:
+                    - paragraph [ref=e294]:
+                      - link "Kubernetes Airgap Instructions" [ref=e295] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions/
+                  - listitem [ref=e296]:
+                    - paragraph [ref=e297]:
+                      - link "VMware vSphere Airgap Instructions" [ref=e298] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/
+                - paragraph [ref=e299]: Each platform guide provides detailed instructions on how to complete the pre-install steps.
+                - heading "Supported PlatformsDirect link to Supported Platforms" [level=2] [ref=e300]:
+                  - text: Supported Platforms
+                  - link "Direct link to Supported Platforms" [ref=e301] [cursor=pointer]:
+                    - /url: "#supported-platforms"
+                    - text: "#"
+                - paragraph [ref=e302]: The following table outlines the platforms supported for airgap VerteX installation and the supported OCI registries.
+                - table [ref=e303]:
+                  - rowgroup [ref=e304]:
+                    - row "Platform OCI Registry Supported" [ref=e305]:
+                      - cell "Platform" [ref=e306]:
+                        - strong [ref=e307]: Platform
+                      - cell "OCI Registry" [ref=e308]:
+                        - strong [ref=e309]: OCI Registry
+                      - cell "Supported" [ref=e310]:
+                        - strong [ref=e311]: Supported
+                  - rowgroup [ref=e312]:
+                    - row "Kubernetes Harbor ✅" [ref=e313]:
+                      - cell "Kubernetes" [ref=e314]
+                      - cell "Harbor" [ref=e315]
+                      - cell "✅" [ref=e316]
+                    - row "Kubernetes AWS ECR ✅" [ref=e317]:
+                      - cell "Kubernetes" [ref=e318]
+                      - cell "AWS ECR" [ref=e319]
+                      - cell "✅" [ref=e320]
+                    - row "VMware vSphere Harbor ✅" [ref=e321]:
+                      - cell "VMware vSphere" [ref=e322]
+                      - cell "Harbor" [ref=e323]
+                      - cell "✅" [ref=e324]
+                    - row "VMware vSphere AWS ECR ✅" [ref=e325]:
+                      - cell "VMware vSphere" [ref=e326]
+                      - cell "AWS ECR" [ref=e327]
+                      - cell "✅" [ref=e328]
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e329]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e330] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e331]:
+                  - listitem [ref=e332]:
+                    - link "Additional Packs" [ref=e333] [cursor=pointer]:
+                      - /url: /downloads/self-hosted-palette/additional-packs/
+              - generic [ref=e334]:
+                - generic [ref=e336]:
+                  - text: "Tags:"
+                  - list [ref=e337]:
+                    - listitem [ref=e338]:
+                      - link "palette" [ref=e339] [cursor=pointer]:
+                        - /url: /tags/palette/
+                    - listitem [ref=e340]:
+                      - link "self-hosted" [ref=e341] [cursor=pointer]:
+                        - /url: /tags/self-hosted/
+                    - listitem [ref=e342]:
+                      - link "airgap" [ref=e343] [cursor=pointer]:
+                        - /url: /tags/airgap/
+                - link "Edit this page" [ref=e346] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/enterprise-version/install-palette/airgap.md
+                  - img [ref=e347]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e351]:
+              - link "Previous « Install Palette" [ref=e352] [cursor=pointer]:
+                - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/install/
+                - generic [ref=e353]: Previous
+                - generic [ref=e354]: « Install Palette
+              - link "Next Kubernetes »" [ref=e355] [cursor=pointer]:
+                - /url: /enterprise-version/install-palette/install-on-kubernetes/
+                - generic [ref=e356]: Next
+                - generic [ref=e357]: Kubernetes »
+          - list [ref=e360]:
+            - listitem [ref=e361]:
+              - link "Overview" [ref=e362] [cursor=pointer]:
+                - /url: "#overview"
+            - listitem [ref=e363]:
+              - link "Get Started" [ref=e364] [cursor=pointer]:
+                - /url: "#get-started"
+            - listitem [ref=e365]:
+              - link "Supported Platforms" [ref=e366] [cursor=pointer]:
+                - /url: "#supported-platforms"
+            - listitem [ref=e367]:
+              - link "Resources" [ref=e368] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e369] [cursor=pointer]:
+    - generic [ref=e372]:
+      - img "Project Logo" [ref=e373]
+      - paragraph [ref=e374]: Ask AI
+```

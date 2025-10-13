@@ -1,0 +1,528 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [expanded] [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+                - list [ref=e148]:
+                  - listitem [ref=e149]:
+                    - link "Add a Custom Registry" [ref=e150] [cursor=pointer]:
+                      - /url: /registries-and-packs/adding-a-custom-registry/
+                  - listitem [ref=e151]:
+                    - link "Spectro Cloud CLI Tool" [ref=e152] [cursor=pointer]:
+                      - /url: /registries-and-packs/spectro-cli-reference/
+                  - listitem [ref=e153]:
+                    - link "Add a Custom Pack" [ref=e154] [cursor=pointer]:
+                      - /url: /registries-and-packs/add-custom-packs/
+                  - listitem [ref=e155]:
+                    - link "Add an Add-on Pack" [ref=e156] [cursor=pointer]:
+                      - /url: /registries-and-packs/adding-add-on-packs/
+                  - listitem [ref=e157]:
+                    - link "Pack Constraints" [ref=e158] [cursor=pointer]:
+                      - /url: /registries-and-packs/pack-constraints/
+                  - listitem [ref=e159]:
+                    - generic [ref=e160]:
+                      - link "Registries" [expanded] [ref=e161] [cursor=pointer]:
+                        - /url: /registries-and-packs/registries/
+                      - button "Toggle the collapsible sidebar category 'Registries'" [ref=e162] [cursor=pointer]
+                    - list [ref=e163]:
+                      - listitem [ref=e164]:
+                        - link "Helm Registries" [ref=e165] [cursor=pointer]:
+                          - /url: /registries-and-packs/registries/helm-charts/
+                      - listitem [ref=e166]:
+                        - generic [ref=e167]:
+                          - link "OCI Registries" [ref=e168] [cursor=pointer]:
+                            - /url: /registries-and-packs/registries/oci-registry/
+                          - button "Toggle the collapsible sidebar category 'OCI Registries'" [ref=e169] [cursor=pointer]
+                      - listitem [ref=e170]:
+                        - link "Legacy Pack Registries" [ref=e171] [cursor=pointer]:
+                          - /url: /registries-and-packs/registries/pack-registries/
+                  - listitem [ref=e172]:
+                    - link "Advanced CLI Configuration" [ref=e173] [cursor=pointer]:
+                      - /url: /registries-and-packs/advanced-configuration/
+              - listitem [ref=e174]:
+                - generic [ref=e175]:
+                  - link "Security" [ref=e176] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e178]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e180] [cursor=pointer]
+              - listitem [ref=e181]:
+                - generic [ref=e182]:
+                  - link "Audit Logs" [ref=e183] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e185]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e187] [cursor=pointer]
+              - listitem [ref=e188]:
+                - generic [ref=e189]:
+                  - link "Self-Hosted Palette" [ref=e190] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e192]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e194] [cursor=pointer]
+              - listitem [ref=e195]:
+                - generic [ref=e196]:
+                  - link "Palette VerteX" [ref=e197] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e199]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e201] [cursor=pointer]
+              - listitem [ref=e202]:
+                - generic [ref=e203]:
+                  - link "Tenant Administration" [ref=e204] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e206]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e208] [cursor=pointer]
+              - listitem [ref=e209]:
+                - generic [ref=e210]:
+                  - link "Automation" [ref=e211] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e213]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e215] [cursor=pointer]
+              - listitem [ref=e216]:
+                - generic [ref=e217]:
+                  - link "Troubleshooting" [ref=e218] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e220]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e222] [cursor=pointer]
+              - listitem [ref=e223]:
+                - link "Glossary" [ref=e224] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e226]
+                  - text: Glossary
+              - listitem [ref=e228]:
+                - generic [ref=e229]:
+                  - link "Compliance & Legal" [ref=e230] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e232]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e234] [cursor=pointer]
+              - listitem [ref=e235]:
+                - button "Privacy Settings" [ref=e236] [cursor=pointer]:
+                  - img [ref=e237]
+                  - text: Privacy Settings
+      - main [ref=e239]:
+        - generic [ref=e241]:
+          - generic [ref=e243]:
+            - article [ref=e244]:
+              - navigation "Breadcrumbs" [ref=e245]:
+                - list [ref=e246]:
+                  - listitem [ref=e247]:
+                    - link "Home page" [ref=e248] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e249]
+                  - listitem [ref=e251]:
+                    - link "Registries and Packs" [ref=e252] [cursor=pointer]:
+                      - /url: /registries-and-packs/
+                  - listitem [ref=e253]:
+                    - link "Registries" [ref=e254] [cursor=pointer]:
+                      - /url: /registries-and-packs/registries/
+                  - listitem [ref=e255]:
+                    - generic [ref=e256]: Helm Registries
+              - generic [ref=e257]:
+                - heading "Helm Registries" [level=1] [ref=e259]
+                - paragraph [ref=e260]: A Helm Chart is a collection of pre-configured Kubernetes resources that define, install, and upgrade applications on a Kubernetes cluster. Additionally, Helm Chart repositories serve as centralized locations to store and share these packaged charts for streamlined deployment and management.
+                - paragraph [ref=e261]: You can utilize Helm Charts in your cluster profiles and specify your own Helm Chart repository or other third-party Helm repositories in Palette.
+                - generic [ref=e262]:
+                  - generic [ref=e263]:
+                    - img [ref=e265]
+                    - text: info
+                  - paragraph [ref=e268]:
+                    - text: You can add a private OCI based Helm Chart registry to Palette. For more information, refer to the
+                    - link "Add OCI Registry" [ref=e269] [cursor=pointer]:
+                      - /url: /registries-and-packs/registries/oci-registry/add-oci-helm/
+                    - text: guide.
+                - heading "Synchronization BehaviorDirect link to Synchronization Behavior" [level=2] [ref=e270]:
+                  - text: Synchronization Behavior
+                  - link "Direct link to Synchronization Behavior" [ref=e271] [cursor=pointer]:
+                    - /url: "#synchronization-behavior"
+                    - text: "#"
+                - paragraph [ref=e272]: When you add a Helm Chart registry to Palette, you can choose whether to synchronize the Helm Chart registry metadata with Palette. The synchronization behavior depends on whether the Helm Chart registry is hosted on a server accessible from Palette's management plane. The metadata is downloaded from the Helm Chart registry and stored internally in Palette. If synchronization is enabled, Palette will automatically synchronize the Helm Chart registry metadata every 24 hours.
+                - paragraph [ref=e273]: If the Helm Chart registry is hosted on a server that will not be accessible from Palette, we recommend you do not enable synchronization. Palette will download the Helm Charts registry metadata upon registration and store it internally. This will allow you to reference the Helm Charts in your cluster profiles, including if the Helm Chart registry is inaccessible.
+                - paragraph [ref=e274]:
+                  - text: When synchronization is disabled, you must manually synchronize the Helm Chart registry with Palette when you want to update the Helm Charts in Palette. Additionally, you will not be able to search for Helm Charts during the cluster profile creation process, nor will you be able to view the details of the Helm Charts, such as the
+                  - strong [ref=e275]: values.yaml
+                  - text: file, version, and description. You must manually specify the Helm Chart name and version to use a specific Helm Chart from your registry as a pack layer.
+                - generic [ref=e276]:
+                  - generic [ref=e277]:
+                    - img [ref=e279]
+                    - text: info
+                  - paragraph [ref=e282]:
+                    - text: To manually synchronize the Helm Chart registry with Palette, identify the row of the Helm Chart registry in the Helm Chart registry table and click the
+                    - strong [ref=e283]: three-dot Menu
+                    - text: button. Select
+                    - strong [ref=e284]: Synchronize
+                    - text: from the expanded menu.
+                - paragraph [ref=e285]:
+                  - text: If the Helm Chart registry is hosted on a server that is accessible from Palette, we recommend you enable synchronization. Palette will continuously synchronize the Helm Chart registry and ensure it has the latest Helm Chart registry metadata. When synchronization is enabled, you can search for Helm Charts when creating a pack layer of the type Helm Chart in your cluster profiles. Additionally, you can view the metadata details of the Helm Charts, such as the
+                  - strong [ref=e286]: values.yaml
+                  - text: file, versions available, and the description.
+                - paragraph [ref=e287]: The table below summarizes the synchronization behavior.
+                - table [ref=e288]:
+                  - rowgroup [ref=e289]:
+                    - row "Synchronization Behavior Search Available Metadata Displayed" [ref=e290]:
+                      - cell "Synchronization" [ref=e291]:
+                        - strong [ref=e292]: Synchronization
+                      - cell "Behavior" [ref=e293]:
+                        - strong [ref=e294]: Behavior
+                      - cell "Search Available" [ref=e295]:
+                        - strong [ref=e296]: Search Available
+                      - cell "Metadata Displayed" [ref=e297]:
+                        - strong [ref=e298]: Metadata Displayed
+                  - rowgroup [ref=e299]:
+                    - row "Enabled Palette will continuously synchronize the list of available Helm Charts from the registry. Helm Charts from the registry are searchable during the cluster profile creation. Helm Chart details, including the values.yaml and available versions are displayed. ✅ ✅" [ref=e300]:
+                      - cell "Enabled" [ref=e301]
+                      - cell "Palette will continuously synchronize the list of available Helm Charts from the registry. Helm Charts from the registry are searchable during the cluster profile creation. Helm Chart details, including the values.yaml and available versions are displayed." [ref=e302]:
+                        - text: Palette will continuously synchronize the list of available Helm Charts from the registry. Helm Charts from the registry are searchable during the cluster profile creation. Helm Chart details, including the
+                        - strong [ref=e303]: values.yaml
+                        - text: and available versions are displayed.
+                      - cell "✅" [ref=e304]
+                      - cell "✅" [ref=e305]
+                    - row "Disabled Palette will not synchronize the list of available Helm Charts from the registry post registration. During the initial registration of the Helm Chart registry, Palette will download the Helm Chart metadata from the registry and store it internally. Helm Charts from the registry will not be searchable during the cluster profile creation. You must specify the Helm Chart name and version to use a Helm Chart as a pack layer. ❌ ❌" [ref=e306]:
+                      - cell "Disabled" [ref=e307]
+                      - cell "Palette will not synchronize the list of available Helm Charts from the registry post registration. During the initial registration of the Helm Chart registry, Palette will download the Helm Chart metadata from the registry and store it internally. Helm Charts from the registry will not be searchable during the cluster profile creation. You must specify the Helm Chart name and version to use a Helm Chart as a pack layer." [ref=e308]
+                      - cell "❌" [ref=e309]
+                      - cell "❌" [ref=e310]
+                - heading "When to Disable Synchronization?Direct link to When to Disable Synchronization?" [level=3] [ref=e311]:
+                  - text: When to Disable Synchronization?
+                  - link "Direct link to When to Disable Synchronization?" [ref=e312] [cursor=pointer]:
+                    - /url: "#when-to-disable-synchronization"
+                    - text: "#"
+                - paragraph [ref=e313]: You should disable synchronization if the Helm Chart registry is hosted on a server that may not always be accessible from Palette's management plane. For example, if the Helm Chart registry is hosted on a server that is only accessible from a private network that only deployed clusters have access to, you should disable synchronization. Although Palette may not be able to synchronize the Helm Chart registry, your clusters should be able to download the Helm Charts from the Helm Chart registry.
+                - generic [ref=e314]:
+                  - generic [ref=e315]:
+                    - img [ref=e317]
+                    - text: warning
+                  - paragraph [ref=e320]: The clusters you deploy will always require network access to the Helm Chart registry to download the Helm Charts.
+                - heading "Add a Helm Chart RegistryDirect link to Add a Helm Chart Registry" [level=2] [ref=e321]:
+                  - text: Add a Helm Chart Registry
+                  - link "Direct link to Add a Helm Chart Registry" [ref=e322] [cursor=pointer]:
+                    - /url: "#add-a-helm-chart-registry"
+                    - text: "#"
+                - paragraph [ref=e323]: Use the following steps to add a Helm Chart repository to Palette.
+                - heading "PrerequisiteDirect link to Prerequisite" [level=2] [ref=e324]:
+                  - text: Prerequisite
+                  - link "Direct link to Prerequisite" [ref=e325] [cursor=pointer]:
+                    - /url: "#prerequisite"
+                    - text: "#"
+                - list [ref=e326]:
+                  - listitem [ref=e327]:
+                    - paragraph [ref=e328]: The Helm Chart repository must use Helm version 3.7.0 or higher.
+                  - listitem [ref=e329]:
+                    - paragraph [ref=e330]: Tenant administrator permissions are required to add a Helm Chart repository to Palette.
+                  - listitem [ref=e331]:
+                    - paragraph [ref=e332]: Credentials are required to access a protected Helm Chart repository.
+                - heading "Add a RegistryDirect link to Add a Registry" [level=2] [ref=e333]:
+                  - text: Add a Registry
+                  - link "Direct link to Add a Registry" [ref=e334] [cursor=pointer]:
+                    - /url: "#add-a-registry"
+                    - text: "#"
+                - list [ref=e335]:
+                  - listitem [ref=e336]:
+                    - paragraph [ref=e337]:
+                      - text: Log in to
+                      - link "Palette" [ref=e338] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a Tenant administrator.
+                  - listitem [ref=e339]:
+                    - paragraph [ref=e340]:
+                      - text: From the left
+                      - strong [ref=e341]: Main Menu
+                      - text: ", click on"
+                      - strong [ref=e342]: Tenant Settings
+                      - text: .
+                  - listitem [ref=e343]:
+                    - paragraph [ref=e344]:
+                      - text: From the
+                      - strong [ref=e345]: Tenant Settings Menu
+                      - text: ", Select"
+                      - strong [ref=e346]: Registries
+                      - text: .
+                  - listitem [ref=e347]:
+                    - paragraph [ref=e348]:
+                      - text: Click on the
+                      - strong [ref=e349]: Helm Registries
+                      - text: tab.
+                  - listitem [ref=e350]:
+                    - paragraph [ref=e351]:
+                      - text: Click
+                      - strong [ref=e352]: Add New Helm Registry
+                      - text: .
+                  - listitem [ref=e353]:
+                    - paragraph [ref=e354]: Fill out the following input fields.
+                    - table [ref=e355]:
+                      - rowgroup [ref=e356]:
+                        - row "Field Description" [ref=e357]:
+                          - cell "Field" [ref=e358]:
+                            - strong [ref=e359]: Field
+                          - cell "Description" [ref=e360]:
+                            - strong [ref=e361]: Description
+                      - rowgroup [ref=e362]:
+                        - row "Name The name of your Helm Chart registry." [ref=e363]:
+                          - cell "Name" [ref=e364]
+                          - cell "The name of your Helm Chart registry." [ref=e365]
+                        - row "Endpoint The URL of your Helm Chart registry." [ref=e366]:
+                          - cell "Endpoint" [ref=e367]
+                          - cell "The URL of your Helm Chart registry." [ref=e368]
+                        - row "Synchronization Choose whether to synchronize your Helm Chart registry with Palette. Enabling synchronization allows Palette to display Helm Charts during the cluster profile creation process when choosing a pack layer of Helm Chart. Disable synchronization if the Helm Chart registry is unreachable. Refer to the Synchronization Behavior section for more information." [ref=e369]:
+                          - cell "Synchronization" [ref=e370]
+                          - cell "Choose whether to synchronize your Helm Chart registry with Palette. Enabling synchronization allows Palette to display Helm Charts during the cluster profile creation process when choosing a pack layer of Helm Chart. Disable synchronization if the Helm Chart registry is unreachable. Refer to the Synchronization Behavior section for more information." [ref=e371]:
+                            - text: Choose whether to synchronize your Helm Chart registry with Palette. Enabling synchronization allows Palette to display Helm Charts during the cluster profile creation process when choosing a pack layer of Helm Chart. Disable synchronization if the Helm Chart registry is unreachable. Refer to the
+                            - link "Synchronization Behavior" [ref=e372] [cursor=pointer]:
+                              - /url: "#synchronization-behavior"
+                            - text: section for more information.
+                        - row "No Authentication Toggle this option to the enabled state if your Helm Chart registry does not require authentication. Otherwise, credentials are required." [ref=e373]:
+                          - cell "No Authentication" [ref=e374]
+                          - cell "Toggle this option to the enabled state if your Helm Chart registry does not require authentication. Otherwise, credentials are required." [ref=e375]
+                        - row "Username The username for your Helm Chart registry." [ref=e376]:
+                          - cell "Username" [ref=e377]
+                          - cell "The username for your Helm Chart registry." [ref=e378]
+                        - row "Password The password for your Helm Chart registry." [ref=e379]:
+                          - cell "Password" [ref=e380]
+                          - cell "The password for your Helm Chart registry." [ref=e381]
+                        - row "Certificate You can upload the X509 server certificate of your Helm Chart registry to Palette. This is required if your Helm Chart registry uses a self-signed certificate." [ref=e382]:
+                          - cell "Certificate" [ref=e383]
+                          - cell "You can upload the X509 server certificate of your Helm Chart registry to Palette. This is required if your Helm Chart registry uses a self-signed certificate." [ref=e384]
+                        - row "Insecure Skip TLS Verify Skip server TLS certificate validation. Check this box if your Helm Chart registry uses a self-signed certificate or if the server certificate is not signed by a trusted CA." [ref=e385]:
+                          - cell "Insecure Skip TLS Verify" [ref=e386]
+                          - cell "Skip server TLS certificate validation. Check this box if your Helm Chart registry uses a self-signed certificate or if the server certificate is not signed by a trusted CA." [ref=e387]
+                  - listitem [ref=e388]:
+                    - paragraph [ref=e389]:
+                      - text: Click
+                      - strong [ref=e390]: Confirm
+                      - text: . If the credentials are valid and the Palette is able to connect to the Helm Chart registry, the registry is added to Palette. Otherwise, an error message is displayed.
+                    - generic [ref=e391]:
+                      - generic [ref=e392]:
+                        - img [ref=e394]
+                        - text: tip
+                      - paragraph [ref=e397]: If you are encountering issues with adding a Helm Chart registry, review the endpoint URL and ensure that it is accessible from the Palette. Verify the credentials and try again. Lastly, if the Helm Chart registry is hosted on a server using a self-signed certificate, upload the certificate to Palette and skip TLS verification.
+                - paragraph [ref=e398]: You now have a Helm Chart registry added to Palette. You can use the Helm Charts from this registry in your cluster profiles when creating a pack layer of the type Helm Chart.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e399]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e400] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e401]: To validate that the Helm Chart registry is added to Palette correctly, ensure you are able to complete the steps above. Additionally, you can use the following steps to validate that the Helm Chart registry is added to Palette correctly.
+                - list [ref=e402]:
+                  - listitem [ref=e403]:
+                    - paragraph [ref=e404]:
+                      - text: Log in to
+                      - link "Palette" [ref=e405] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e406]:
+                    - paragraph [ref=e407]:
+                      - text: From the left
+                      - strong [ref=e408]: Main Menu
+                      - text: ", click on"
+                      - strong [ref=e409]: Profiles
+                      - text: .
+                  - listitem [ref=e410]:
+                    - paragraph [ref=e411]:
+                      - text: Click
+                      - strong [ref=e412]: Add Cluster Profile
+                      - text: .
+                  - listitem [ref=e413]:
+                    - paragraph [ref=e414]:
+                      - text: Provide a name and select the type
+                      - strong [ref=e415]: Add-on
+                      - text: .
+                  - listitem [ref=e416]:
+                    - paragraph [ref=e417]:
+                      - text: In the following screen, click
+                      - strong [ref=e418]: Add Helm Chart
+                      - text: and select either
+                      - strong [ref=e419]: public
+                      - text: or
+                      - strong [ref=e420]: private
+                      - text: . Select
+                      - strong [ref=e421]: public
+                      - text: if you added Helm Chart registry that does not require authentication. Select
+                      - strong [ref=e422]: private
+                      - text: if you added a Helm Chart registry that requires authentication.
+                  - listitem [ref=e423]:
+                    - paragraph [ref=e424]:
+                      - text: If you selected
+                      - strong [ref=e425]: public
+                      - text: ", you can search for Helm Charts in the Helm Chart registry. If you selected"
+                      - strong [ref=e426]: private
+                      - text: ", you must specify the Helm Chart name and version to use a Helm Chart as a pack layer."
+              - link "Edit this page" [ref=e430] [cursor=pointer]:
+                - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/registries-and-packs/registries/helm-charts.md
+                - img [ref=e431]
+                - text: Edit this page
+            - navigation "Docs pages" [ref=e435]:
+              - link "Previous « Registries" [ref=e436] [cursor=pointer]:
+                - /url: /registries-and-packs/registries/
+                - generic [ref=e437]: Previous
+                - generic [ref=e438]: « Registries
+              - link "Next OCI Registries »" [ref=e439] [cursor=pointer]:
+                - /url: /registries-and-packs/registries/oci-registry/
+                - generic [ref=e440]: Next
+                - generic [ref=e441]: OCI Registries »
+          - list [ref=e444]:
+            - listitem [ref=e445]:
+              - link "Synchronization Behavior" [ref=e446] [cursor=pointer]:
+                - /url: "#synchronization-behavior"
+              - list [ref=e447]:
+                - listitem [ref=e448]:
+                  - link "When to Disable Synchronization?" [ref=e449] [cursor=pointer]:
+                    - /url: "#when-to-disable-synchronization"
+            - listitem [ref=e450]:
+              - link "Add a Helm Chart Registry" [ref=e451] [cursor=pointer]:
+                - /url: "#add-a-helm-chart-registry"
+            - listitem [ref=e452]:
+              - link "Prerequisite" [ref=e453] [cursor=pointer]:
+                - /url: "#prerequisite"
+            - listitem [ref=e454]:
+              - link "Add a Registry" [ref=e455] [cursor=pointer]:
+                - /url: "#add-a-registry"
+            - listitem [ref=e456]:
+              - link "Validate" [ref=e457] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e458] [cursor=pointer]:
+    - generic [ref=e461]:
+      - img "Project Logo" [ref=e462]
+      - paragraph [ref=e463]: Ask AI
+```

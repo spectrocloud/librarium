@@ -1,0 +1,859 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                  - listitem [ref=e107]:
+                    - generic [ref=e108]:
+                      - link "Data Center Clusters" [ref=e109] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e111]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e113] [cursor=pointer]
+                  - listitem [ref=e114]:
+                    - generic [ref=e115]:
+                      - link "Edge" [expanded] [ref=e116] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e118]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e120] [cursor=pointer]
+                    - list [ref=e121]:
+                      - listitem [ref=e122]:
+                        - generic [ref=e123]:
+                          - link "Architecture" [ref=e124] [cursor=pointer]:
+                            - /url: /clusters/edge/architecture/
+                          - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e125] [cursor=pointer]
+                      - listitem [ref=e126]:
+                        - link "Hardware Requirements" [ref=e127] [cursor=pointer]:
+                          - /url: /clusters/edge/hardware-requirements/
+                      - listitem [ref=e128]:
+                        - link "Deployment Lifecycle" [ref=e129] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-native-lifecycle/
+                      - listitem [ref=e130]:
+                        - generic [ref=e131]:
+                          - link "Trusted Boot" [ref=e132] [cursor=pointer]:
+                            - /url: /clusters/edge/trusted-boot/
+                          - button "Toggle the collapsible sidebar category 'Trusted Boot'" [ref=e133] [cursor=pointer]
+                      - listitem [ref=e134]:
+                        - generic [ref=e135]:
+                          - link "Install Configuration" [ref=e136] [cursor=pointer]:
+                            - /url: /clusters/edge/edge-configuration/
+                          - button "Toggle the collapsible sidebar category 'Install Configuration'" [ref=e137] [cursor=pointer]
+                      - listitem [ref=e138]:
+                        - generic [ref=e139]:
+                          - link "EdgeForge Workflow" [ref=e140] [cursor=pointer]:
+                            - /url: /clusters/edge/edgeforge-workflow/
+                          - button "Toggle the collapsible sidebar category 'EdgeForge Workflow'" [ref=e141] [cursor=pointer]
+                      - listitem [ref=e142]:
+                        - generic [ref=e143]:
+                          - link "Local UI" [expanded] [ref=e144] [cursor=pointer]:
+                            - /url: /clusters/edge/local-ui/
+                          - button "Toggle the collapsible sidebar category 'Local UI'" [ref=e145] [cursor=pointer]
+                        - list [ref=e146]:
+                          - listitem [ref=e147]:
+                            - generic [ref=e148]:
+                              - link "Cluster Operations" [expanded] [ref=e149] [cursor=pointer]:
+                                - /url: /clusters/edge/local-ui/cluster-management/
+                              - button "Toggle the collapsible sidebar category 'Cluster Operations'" [ref=e150] [cursor=pointer]
+                            - list [ref=e151]:
+                              - listitem [ref=e152]:
+                                - link "Upload Content Bundle" [ref=e153] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/cluster-management/upload-content-bundle/
+                              - listitem [ref=e154]:
+                                - link "Export Cluster Definition" [ref=e155] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/cluster-management/export-cluster-definition/
+                              - listitem [ref=e156]:
+                                - link "Create Local Cluster" [ref=e157] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/cluster-management/create-cluster/
+                              - listitem [ref=e158]:
+                                - link "Link Hosts" [ref=e159] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/cluster-management/link-hosts/
+                              - listitem [ref=e160]:
+                                - link "Scale a Cluster" [ref=e161] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/cluster-management/scale-cluster/
+                              - listitem [ref=e162]:
+                                - link "Update Local Cluster" [ref=e163] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/cluster-management/update-cluster/
+                              - listitem [ref=e164]:
+                                - link "Pair Local Cluster with Palette" [ref=e165] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/cluster-management/local-to-central/
+                              - listitem [ref=e166]:
+                                - link "Share Local UI Authentication" [ref=e167] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/cluster-management/share-auth/
+                              - listitem [ref=e168]:
+                                - link "Delete a Cluster" [ref=e169] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/cluster-management/delete-cluster/
+                          - listitem [ref=e170]:
+                            - generic [ref=e171]:
+                              - link "Host Management" [ref=e172] [cursor=pointer]:
+                                - /url: /clusters/edge/local-ui/host-management/
+                              - button "Toggle the collapsible sidebar category 'Host Management'" [ref=e173] [cursor=pointer]
+                      - listitem [ref=e174]:
+                        - generic [ref=e175]:
+                          - link "Deployment" [ref=e176] [cursor=pointer]:
+                            - /url: /clusters/edge/site-deployment/
+                          - button "Toggle the collapsible sidebar category 'Deployment'" [ref=e177] [cursor=pointer]
+                      - listitem [ref=e178]:
+                        - generic [ref=e179]:
+                          - link "Cluster Management" [ref=e180] [cursor=pointer]:
+                            - /url: /clusters/edge/cluster-management/
+                          - button "Toggle the collapsible sidebar category 'Cluster Management'" [ref=e181] [cursor=pointer]
+                      - listitem [ref=e182]:
+                        - generic [ref=e183]:
+                          - link "Networking" [ref=e184] [cursor=pointer]:
+                            - /url: /clusters/edge/networking/
+                          - button "Toggle the collapsible sidebar category 'Networking'" [ref=e185] [cursor=pointer]
+                      - listitem [ref=e186]:
+                        - generic [ref=e187]:
+                          - link "Third Party Integrations" [ref=e188] [cursor=pointer]:
+                            - /url: /clusters/edge/third-party-integrations/
+                          - button "Toggle the collapsible sidebar category 'Third Party Integrations'" [ref=e189] [cursor=pointer]
+                  - listitem [ref=e190]:
+                    - generic [ref=e191]:
+                      - link "Palette Virtual Clusters" [ref=e192] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e194]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e196] [cursor=pointer]
+                  - listitem [ref=e197]:
+                    - generic [ref=e198]:
+                      - link "Imported Clusters" [ref=e199] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e201]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e203] [cursor=pointer]
+                  - listitem [ref=e204]:
+                    - generic [ref=e205]:
+                      - link "Manage Clusters" [ref=e206] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e208]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e210] [cursor=pointer]
+                  - listitem [ref=e211]:
+                    - generic [ref=e212]:
+                      - link "Cluster Groups" [ref=e213] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e215]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e217] [cursor=pointer]
+                  - listitem [ref=e218]:
+                    - generic [ref=e219]:
+                      - link "Private Cloud Gateway" [ref=e220] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e222]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e224] [cursor=pointer]
+              - listitem [ref=e225]:
+                - generic [ref=e226]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e227] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e229]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e231] [cursor=pointer]
+              - listitem [ref=e232]:
+                - generic [ref=e233]:
+                  - link "Palette Dev Engine" [ref=e234] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e236]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e238] [cursor=pointer]
+              - listitem [ref=e239]:
+                - generic [ref=e240]:
+                  - link "Virtual Machine Orchestrator" [ref=e241] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e243]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e245] [cursor=pointer]
+              - listitem [ref=e246]:
+                - generic [ref=e247]:
+                  - link "Workspaces" [ref=e248] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e250]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e252] [cursor=pointer]
+              - listitem [ref=e253]:
+                - generic [ref=e254]:
+                  - link "Packs List" [ref=e255] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e257]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e259] [cursor=pointer]
+              - listitem [ref=e260]:
+                - generic [ref=e261]:
+                  - link "User & Role Management" [ref=e262] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e264]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e266] [cursor=pointer]
+              - listitem [ref=e267]:
+                - generic [ref=e268]:
+                  - link "Registries and Packs" [ref=e269] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e271]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e273] [cursor=pointer]
+              - listitem [ref=e274]:
+                - generic [ref=e275]:
+                  - link "Security" [ref=e276] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e278]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e280] [cursor=pointer]
+              - listitem [ref=e281]:
+                - generic [ref=e282]:
+                  - link "Audit Logs" [ref=e283] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e285]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e287] [cursor=pointer]
+              - listitem [ref=e288]:
+                - generic [ref=e289]:
+                  - link "Self-Hosted Palette" [ref=e290] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e292]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e294] [cursor=pointer]
+              - listitem [ref=e295]:
+                - generic [ref=e296]:
+                  - link "Palette VerteX" [ref=e297] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e299]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e301] [cursor=pointer]
+              - listitem [ref=e302]:
+                - generic [ref=e303]:
+                  - link "Tenant Administration" [ref=e304] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e306]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e308] [cursor=pointer]
+              - listitem [ref=e309]:
+                - generic [ref=e310]:
+                  - link "Automation" [ref=e311] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e313]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e315] [cursor=pointer]
+              - listitem [ref=e316]:
+                - generic [ref=e317]:
+                  - link "Troubleshooting" [ref=e318] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e320]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e322] [cursor=pointer]
+              - listitem [ref=e323]:
+                - link "Glossary" [ref=e324] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e326]
+                  - text: Glossary
+              - listitem [ref=e328]:
+                - generic [ref=e329]:
+                  - link "Compliance & Legal" [ref=e330] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e332]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e334] [cursor=pointer]
+              - listitem [ref=e335]:
+                - button "Privacy Settings" [ref=e336] [cursor=pointer]:
+                  - img [ref=e337]
+                  - text: Privacy Settings
+      - main [ref=e339]:
+        - generic [ref=e341]:
+          - generic [ref=e343]:
+            - article [ref=e344]:
+              - navigation "Breadcrumbs" [ref=e345]:
+                - list [ref=e346]:
+                  - listitem [ref=e347]:
+                    - link "Home page" [ref=e348] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e349]
+                  - listitem [ref=e351]:
+                    - link "Clusters" [ref=e352] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e353]:
+                    - link "Edge" [ref=e354] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                  - listitem [ref=e355]:
+                    - link "Local UI" [ref=e356] [cursor=pointer]:
+                      - /url: /clusters/edge/local-ui/
+                  - listitem [ref=e357]:
+                    - link "Cluster Operations" [ref=e358] [cursor=pointer]:
+                      - /url: /clusters/edge/local-ui/cluster-management/
+                  - listitem [ref=e359]:
+                    - generic [ref=e360]: Pair Local Cluster with Palette
+              - generic [ref=e361]:
+                - heading "Pair Local Cluster with Palette" [level=1] [ref=e363]
+                - paragraph [ref=e364]: Clusters provisioned on hosts that are installed in the local management mode are managed locally by Local UI. You have the option to transfer the management of a local cluster from Local UI to a Palette instance to be managed centrally by pairing the local cluster with a Palette instance.
+                - paragraph [ref=e365]:
+                  - img "Diagram of the order of operations for transferring a cluster to central management." [ref=e366]
+                - heading "Pair Local Cluster with PaletteDirect link to Pair Local Cluster with Palette" [level=2] [ref=e367]:
+                  - text: Pair Local Cluster with Palette
+                  - link "Direct link to Pair Local Cluster with Palette" [ref=e368] [cursor=pointer]:
+                    - /url: "#pair-local-cluster-with-palette"
+                    - text: "#"
+                - paragraph [ref=e369]: Moving a local cluster to central management is a two-step process. You first send a pairing request from your local cluster to Palette using Local UI. Next, you accept the pairing request and select matching profiles in Palettes to match the cluster stack.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e370]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e371] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e372]:
+                  - listitem [ref=e373]:
+                    - paragraph [ref=e374]:
+                      - text: An active locally managed cluster. The cluster must be in the
+                      - strong [ref=e375]: Running
+                      - text: state and all nodes must be healthy.
+                  - listitem [ref=e376]:
+                    - paragraph [ref=e377]:
+                      - text: An Edge host registration token. For more information on how to create registration tokens, refer to
+                      - link "Edge Host Registration" [ref=e378] [cursor=pointer]:
+                        - /url: /clusters/edge/site-deployment/site-installation/create-registration-token/
+                      - text: .
+                  - listitem [ref=e379]:
+                    - paragraph [ref=e380]: All Edge hosts in your cluster must be able to connect to the Palette instance you intend to use to manage the cluster.
+                  - listitem [ref=e381]:
+                    - paragraph [ref=e382]:
+                      - text: Your Palette environment has cluster profiles whose latest version exactly matches all layers of the local cluster. Refer to
+                      - link "Accept Pairing Request from Palette" [ref=e383] [cursor=pointer]:
+                        - /url: "#accept-pairing-request-from-palette"
+                      - text: for details and examples.
+                  - listitem [ref=e384]:
+                    - paragraph [ref=e385]:
+                      - text: You have the required permissions to manage cluster pairing requests. For more information, refer to
+                      - link "Roles and Permissions" [ref=e386] [cursor=pointer]:
+                        - /url: /user-management/palette-rbac/permissions/
+                      - text: .
+                - heading "ProcedureDirect link to Procedure" [level=3] [ref=e387]:
+                  - text: Procedure
+                  - link "Direct link to Procedure" [ref=e388] [cursor=pointer]:
+                    - /url: "#procedure"
+                    - text: "#"
+                - heading "Send Pairing Request from Local ClusterDirect link to Send Pairing Request from Local Cluster" [level=4] [ref=e389]:
+                  - text: Send Pairing Request from Local Cluster
+                  - link "Direct link to Send Pairing Request from Local Cluster" [ref=e390] [cursor=pointer]:
+                    - /url: "#send-pairing-request-from-local-cluster"
+                    - text: "#"
+                - list [ref=e391]:
+                  - listitem [ref=e392]:
+                    - paragraph [ref=e393]:
+                      - text: Log in to Local UI. For guidance on how to log into Local UI, check out the
+                      - link "Access Local UI" [ref=e394] [cursor=pointer]:
+                        - /url: /clusters/edge/local-ui/host-management/access-console/
+                      - text: guide.
+                  - listitem [ref=e395]:
+                    - paragraph [ref=e396]:
+                      - text: On the left
+                      - strong [ref=e397]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e398]: Settings
+                      - text: .
+                  - listitem [ref=e399]:
+                    - paragraph [ref=e400]:
+                      - text: On the
+                      - strong [ref=e401]: Settings
+                      - text: tab, click on the radio button labeled
+                      - strong [ref=e402]: Centrally Managed
+                      - text: . You will be prompted to enter information required for pairing your cluster with Palette.
+                  - listitem [ref=e403]:
+                    - paragraph [ref=e404]:
+                      - text: Enter the URL for the Palette API endpoint. If you are using Palette SaaS, the endpoint is
+                      - code [ref=e405]: api.spectrocloud.com
+                      - text: . For self-hosted Palette or VerteX instances, check in with your system administrator for the proper Palette URL endpoint.
+                  - listitem [ref=e406]:
+                    - paragraph [ref=e407]:
+                      - text: Enter your registration token in the
+                      - strong [ref=e408]: Registration token
+                      - text: field.
+                  - listitem [ref=e409]:
+                    - paragraph [ref=e410]:
+                      - text: Click
+                      - strong [ref=e411]: Pair
+                      - text: to send the pairing request. A pairing ID will be displayed on the Local UI screen once a pairing request has been sent. You may use the ID to identify this pairing request in a later step.
+                - heading "Accept Pairing Request from PaletteDirect link to Accept Pairing Request from Palette" [level=4] [ref=e412]:
+                  - text: Accept Pairing Request from Palette
+                  - link "Direct link to Accept Pairing Request from Palette" [ref=e413] [cursor=pointer]:
+                    - /url: "#accept-pairing-request-from-palette"
+                    - text: "#"
+                - list [ref=e414]:
+                  - listitem [ref=e415]:
+                    - paragraph [ref=e416]:
+                      - text: Log in to
+                      - link "Palette" [ref=e417] [cursor=pointer]:
+                        - /url: https://console.palette.com
+                      - text: .
+                  - listitem [ref=e418]:
+                    - paragraph [ref=e419]:
+                      - text: From the left
+                      - strong [ref=e420]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e421]: Clusters
+                      - text: .
+                  - listitem [ref=e422]:
+                    - paragraph [ref=e423]:
+                      - text: At the top of the page, a box will be displayed prompting you to review pairing requests that Palette has received. Click
+                      - strong [ref=e424]: Pair
+                      - text: to start reviewing the requests.
+                  - listitem [ref=e425]:
+                    - paragraph [ref=e426]:
+                      - text: Identify the pairing request corresponding to your cluster by its pairing ID. Click
+                      - strong [ref=e427]: Pair
+                      - text: .
+                  - listitem [ref=e428]:
+                    - paragraph [ref=e429]:
+                      - text: Palette will warn you that once paired, the cluster can only be managed centrally and that local cluster operations will no longer be permitted. Check the box that says
+                      - strong [ref=e430]: I understand
+                      - text: and click
+                      - strong [ref=e431]: Confirm
+                      - text: . This will take you to the
+                      - strong [ref=e432]: Pair Cluster
+                      - text: wizard.
+                  - listitem [ref=e433]:
+                    - paragraph [ref=e434]:
+                      - text: You may change the cluster name as well as the description and tags for your cluster. The fields will be pre-populated with their existing values. Once you are satisfied with your changes, click
+                      - strong [ref=e435]: Next step
+                      - text: .
+                  - listitem [ref=e436]:
+                    - paragraph [ref=e437]: Match the profile used by your local cluster by selecting profiles in your Palette environment. To make a successful match, ensure that every pack in the profile used by your cluster is matched with the same pack in the exact same version. You can only choose the latest version of a profile in Palette and must make sure that the latest version of the profiles you use can match the cluster.
+                    - paragraph [ref=e438]:
+                      - text: In the following example, the second and third columns are valid matches because every layer in the original cluster has a matching layer in the matched profile.
+                      - strong [ref=e439]: Combination B
+                      - text: is valid even though it only has one full profile instead of an infra and an add-on profile, because all the layers are exactly the same.
+                    - paragraph [ref=e440]:
+                      - text: The fourth column shows an example of an invalid match because the
+                      - strong [ref=e441]: Add-on
+                      - text: profile has a pack that is in the wrong version. The fifth column is also invalid because it has an additional pack that is not found in the local cluster's cluster profile.
+                    - table [ref=e442]:
+                      - rowgroup [ref=e443]:
+                        - row "Local cluster profile Combination A Combination B Combination C Combination D" [ref=e444]:
+                          - cell "Local cluster profile" [ref=e445]
+                          - cell "Combination A" [ref=e446]
+                          - cell "Combination B" [ref=e447]
+                          - cell "Combination C" [ref=e448]
+                          - cell "Combination D" [ref=e449]
+                      - rowgroup [ref=e450]:
+                        - row "Infra profile Infra profile Full profile Infra profile Infra profile" [ref=e451]:
+                          - cell "Infra profile" [ref=e452]:
+                            - strong [ref=e453]: Infra profile
+                          - cell "Infra profile" [ref=e454]:
+                            - strong [ref=e455]: Infra profile
+                          - cell "Full profile" [ref=e456]:
+                            - strong [ref=e457]: Full profile
+                          - cell "Infra profile" [ref=e458]:
+                            - strong [ref=e459]: Infra profile
+                          - cell "Infra profile" [ref=e460]:
+                            - strong [ref=e461]: Infra profile
+                        - row "Amazon EBS CSI 1.20.0 Amazon EBS CSI 1.20.0 Amazon EBS CSI 1.20.0 Amazon EBS CSI 1.20.0 Amazon EBS CSI 1.20.0" [ref=e462]:
+                          - cell "Amazon EBS CSI 1.20.0" [ref=e463]
+                          - cell "Amazon EBS CSI 1.20.0" [ref=e464]
+                          - cell "Amazon EBS CSI 1.20.0" [ref=e465]
+                          - cell "Amazon EBS CSI 1.20.0" [ref=e466]
+                          - cell "Amazon EBS CSI 1.20.0" [ref=e467]
+                        - row "Calico 3.25.1 Calico 3.25.1 Calico 3.25.1 Calico 3.25.1 Calico 3.25.1" [ref=e468]:
+                          - cell "Calico 3.25.1" [ref=e469]
+                          - cell "Calico 3.25.1" [ref=e470]
+                          - cell "Calico 3.25.1" [ref=e471]
+                          - cell "Calico 3.25.1" [ref=e472]
+                          - cell "Calico 3.25.1" [ref=e473]
+                        - row "PXK-E 1.31.0 PXK-E 1.31.0 PXK-E 1.31.0 PXK-E 1.31.0 PXK-E 1.31.0" [ref=e474]:
+                          - cell "PXK-E 1.31.0" [ref=e475]
+                          - cell "PXK-E 1.31.0" [ref=e476]
+                          - cell "PXK-E 1.31.0" [ref=e477]
+                          - cell "PXK-E 1.31.0" [ref=e478]
+                          - cell "PXK-E 1.31.0" [ref=e479]
+                        - row "Ubuntu 22.04 Ubuntu 22.04 Ubuntu 22.04 Ubuntu 22.04 Ubuntu 22.04" [ref=e480]:
+                          - cell "Ubuntu 22.04" [ref=e481]
+                          - cell "Ubuntu 22.04" [ref=e482]
+                          - cell "Ubuntu 22.04" [ref=e483]
+                          - cell "Ubuntu 22.04" [ref=e484]
+                          - cell "Ubuntu 22.04" [ref=e485]
+                        - row "Add-on profile Add-on profile Add-on profile Add-on profile" [ref=e486]:
+                          - cell "Add-on profile" [ref=e487]:
+                            - strong [ref=e488]: Add-on profile
+                          - cell "Add-on profile" [ref=e489]:
+                            - strong [ref=e490]: Add-on profile
+                          - cell [ref=e491]
+                          - cell "Add-on profile" [ref=e492]:
+                            - strong [ref=e493]: Add-on profile
+                          - cell "Add-on profile" [ref=e494]:
+                            - strong [ref=e495]: Add-on profile
+                        - row "Prometheus-Grafana 44.3.1 Prometheus-Grafana 44.3.1 Prometheus-Grafana 44.3.1 Prometheus-Grafana 40.3.1 Prometheus-Grafana 44.3.1" [ref=e496]:
+                          - cell "Prometheus-Grafana 44.3.1" [ref=e497]
+                          - cell "Prometheus-Grafana 44.3.1" [ref=e498]
+                          - cell "Prometheus-Grafana 44.3.1" [ref=e499]
+                          - cell "Prometheus-Grafana 40.3.1" [ref=e500]
+                          - cell "Prometheus-Grafana 44.3.1" [ref=e501]
+                        - row "Hello-Universe 2.0.0" [ref=e502]:
+                          - cell [ref=e503]
+                          - cell [ref=e504]
+                          - cell [ref=e505]
+                          - cell [ref=e506]
+                          - cell "Hello-Universe 2.0.0" [ref=e507]
+                        - row "Valid match ✅ Valid match ✅ Invalid match ❌ Invalid match ❌" [ref=e508]:
+                          - cell [ref=e509]
+                          - cell "Valid match ✅" [ref=e510]
+                          - cell "Valid match ✅" [ref=e511]
+                          - cell "Invalid match ❌" [ref=e512]
+                          - cell "Invalid match ❌" [ref=e513]
+                    - paragraph [ref=e514]:
+                      - text: Once your have selected a valid match, click
+                      - strong [ref=e515]: Confirm
+                      - text: . Then click
+                      - strong [ref=e516]: Next step
+                      - text: .
+                  - listitem [ref=e517]:
+                    - paragraph [ref=e518]:
+                      - text: Review the profile configurations. Once you are done, click
+                      - strong [ref=e519]: Validate
+                      - text: .
+                  - listitem [ref=e520]:
+                    - paragraph [ref=e521]:
+                      - text: Click
+                      - strong [ref=e522]: Pair cluster
+                      - text: to start pairing your cluster.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e523]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e524] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e525]:
+                  - listitem [ref=e526]:
+                    - paragraph [ref=e527]:
+                      - text: Log in to
+                      - link "Palette" [ref=e528] [cursor=pointer]:
+                        - /url: https://console.palette.com
+                      - text: .
+                  - listitem [ref=e529]:
+                    - paragraph [ref=e530]:
+                      - text: From the left
+                      - strong [ref=e531]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e532]: Clusters
+                      - text: .
+                  - listitem [ref=e533]:
+                    - paragraph [ref=e534]: Confirm that the cluster is now registered with Palette and can be managed centrally.
+                - heading "Withdraw Pairing Request From Local ClusterDirect link to Withdraw Pairing Request From Local Cluster" [level=2] [ref=e535]:
+                  - text: Withdraw Pairing Request From Local Cluster
+                  - link "Direct link to Withdraw Pairing Request From Local Cluster" [ref=e536] [cursor=pointer]:
+                    - /url: "#withdraw-pairing-request-from-local-cluster"
+                    - text: "#"
+                - paragraph [ref=e537]: If you send a pairing request in error from your local cluster, you can withdraw the pairing request before it is accepted by your Palette instance.
+                - heading "PrerequisiteDirect link to Prerequisite" [level=3] [ref=e538]:
+                  - text: Prerequisite
+                  - link "Direct link to Prerequisite" [ref=e539] [cursor=pointer]:
+                    - /url: "#prerequisite"
+                    - text: "#"
+                - list [ref=e540]:
+                  - listitem [ref=e541]:
+                    - paragraph [ref=e542]:
+                      - text: Access to
+                      - link "Local UI" [ref=e543] [cursor=pointer]:
+                        - /url: /clusters/edge/local-ui/host-management/access-console/
+                      - text: .
+                  - listitem [ref=e544]:
+                    - paragraph [ref=e545]:
+                      - text: A pending pairing request. Refer to
+                      - link "Send Pairing Request From Local Cluster" [ref=e546] [cursor=pointer]:
+                        - /url: "#send-pairing-request-from-local-cluster"
+                      - text: .
+                - heading "ProcedureDirect link to Procedure" [level=3] [ref=e547]:
+                  - text: Procedure
+                  - link "Direct link to Procedure" [ref=e548] [cursor=pointer]:
+                    - /url: "#procedure-1"
+                    - text: "#"
+                - list [ref=e549]:
+                  - listitem [ref=e550]:
+                    - paragraph [ref=e551]:
+                      - text: Log in to
+                      - link "Local UI" [ref=e552] [cursor=pointer]:
+                        - /url: /clusters/edge/local-ui/host-management/access-console/
+                      - text: .
+                  - listitem [ref=e553]:
+                    - paragraph [ref=e554]:
+                      - text: On the left
+                      - strong [ref=e555]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e556]: Settings
+                      - text: .
+                  - listitem [ref=e557]:
+                    - paragraph [ref=e558]:
+                      - text: Copy the
+                      - strong [ref=e559]: Pairing ID
+                      - text: and save it in a safe location. This ID may be useful when you need to delete the pairing request in Palette manually.
+                  - listitem [ref=e560]:
+                    - paragraph [ref=e561]:
+                      - text: Click
+                      - strong [ref=e562]: Cancel Pairing Request
+                      - text: .
+                  - listitem [ref=e563]:
+                    - paragraph [ref=e564]: Your host will inform Palette that the pairing request has been cancelled. This will remove the pending pairing request from your Palette instance as well.
+                    - paragraph [ref=e565]:
+                      - text: However, if your host cannot connect to your Palette instance, this request will not be able to reach Palette. If your host cannot connect to Palette, refer to
+                      - link "Reject Pairing Request form Palette" [ref=e566] [cursor=pointer]:
+                        - /url: "#reject-pairing-request-in-palette"
+                      - text: to reject the pending pairing request manually.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e567]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e568] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - list [ref=e569]:
+                  - listitem [ref=e570]:
+                    - paragraph [ref=e571]:
+                      - text: Log in to
+                      - link "Local UI" [ref=e572] [cursor=pointer]:
+                        - /url: /clusters/edge/local-ui/host-management/access-console/
+                      - text: .
+                  - listitem [ref=e573]:
+                    - paragraph [ref=e574]:
+                      - text: On the left
+                      - strong [ref=e575]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e576]: Settings
+                      - text: .
+                  - listitem [ref=e577]:
+                    - paragraph [ref=e578]: Confirm that your cluster is locally managed and does not have a pending pairing request anymore.
+                - heading "Reject Pairing Request in PaletteDirect link to Reject Pairing Request in Palette" [level=2] [ref=e579]:
+                  - text: Reject Pairing Request in Palette
+                  - link "Direct link to Reject Pairing Request in Palette" [ref=e580] [cursor=pointer]:
+                    - /url: "#reject-pairing-request-in-palette"
+                    - text: "#"
+                - paragraph [ref=e581]: If you receive a pairing request that you do not recognize, or if you have a pending pairing request that you know has been canceled, you can reject the pairing request. You can use tags and the unique pairing ID to identify each pairing request.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e582]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e583] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e584]:
+                  - listitem [ref=e585]:
+                    - paragraph [ref=e586]:
+                      - text: A pending pairing request. Refer to
+                      - link "Pair Local Cluster with Palette" [ref=e587] [cursor=pointer]:
+                        - /url: "#pair-local-cluster-with-palette"
+                      - text: to learn how to make one.
+                  - listitem [ref=e588]:
+                    - paragraph [ref=e589]:
+                      - text: You have the required permissions to manage cluster pairing requests. For more information, refer to
+                      - link "Roles and Permissions" [ref=e590] [cursor=pointer]:
+                        - /url: /user-management/palette-rbac/permissions/
+                      - text: .
+                  - listitem [ref=e591]:
+                    - paragraph [ref=e592]: The pairing ID of the pairing request.
+                - heading "ProcedureDirect link to Procedure" [level=3] [ref=e593]:
+                  - text: Procedure
+                  - link "Direct link to Procedure" [ref=e594] [cursor=pointer]:
+                    - /url: "#procedure-2"
+                    - text: "#"
+                - list [ref=e595]:
+                  - listitem [ref=e596]:
+                    - paragraph [ref=e597]:
+                      - text: Log in to
+                      - link "Palette" [ref=e598] [cursor=pointer]:
+                        - /url: https://console.palette.com
+                      - text: .
+                  - listitem [ref=e599]:
+                    - paragraph [ref=e600]:
+                      - text: From the left
+                      - strong [ref=e601]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e602]: Clusters
+                      - text: .
+                  - listitem [ref=e603]:
+                    - paragraph [ref=e604]:
+                      - text: At the top of the page, a box will be displayed prompting you to review pairing requests that Palette has received. Click
+                      - strong [ref=e605]: Pair
+                      - text: to start reviewing the requests.
+                  - listitem [ref=e606]:
+                    - paragraph [ref=e607]:
+                      - text: Identify the pairing request corresponding to your cluster by its pairing ID or tags. Click
+                      - strong [ref=e608]: Reject
+                      - text: .
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e609]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e610] [cursor=pointer]:
+                    - /url: "#validate-2"
+                    - text: "#"
+                - list [ref=e611]:
+                  - listitem [ref=e612]:
+                    - paragraph [ref=e613]:
+                      - text: Log in to
+                      - link "Palette" [ref=e614] [cursor=pointer]:
+                        - /url: https://console.palette.com
+                      - text: .
+                  - listitem [ref=e615]:
+                    - paragraph [ref=e616]:
+                      - text: From the left
+                      - strong [ref=e617]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e618]: Clusters
+                      - text: .
+                  - listitem [ref=e619]:
+                    - paragraph [ref=e620]:
+                      - text: If you rejected the only pairing request, confirm that the pairing prompt box is no longer present in the
+                      - strong [ref=e621]: Clusters
+                      - text: page.
+                    - paragraph [ref=e622]:
+                      - text: If you still have pending pairing requests remaining, at the top of the page, a box will be displayed prompting you to review pairing requests that Palette has received. Click
+                      - strong [ref=e623]: Pair
+                      - text: to start reviewing the requests. Confirm that the request you rejected is no longer present.
+              - generic [ref=e624]:
+                - generic [ref=e626]:
+                  - text: "Tags:"
+                  - list [ref=e627]:
+                    - listitem [ref=e628]:
+                      - link "edge" [ref=e629] [cursor=pointer]:
+                        - /url: /tags/edge/
+                - link "Edit this page" [ref=e632] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/edge/local-ui/cluster-management/local-to-central.md
+                  - img [ref=e633]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e637]:
+              - link "Previous « Update Local Cluster" [ref=e638] [cursor=pointer]:
+                - /url: /clusters/edge/local-ui/cluster-management/update-cluster/
+                - generic [ref=e639]: Previous
+                - generic [ref=e640]: « Update Local Cluster
+              - link "Next Share Local UI Authentication »" [ref=e641] [cursor=pointer]:
+                - /url: /clusters/edge/local-ui/cluster-management/share-auth/
+                - generic [ref=e642]: Next
+                - generic [ref=e643]: Share Local UI Authentication »
+          - list [ref=e646]:
+            - listitem [ref=e647]:
+              - link "Pair Local Cluster with Palette" [ref=e648] [cursor=pointer]:
+                - /url: "#pair-local-cluster-with-palette"
+              - list [ref=e649]:
+                - listitem [ref=e650]:
+                  - link "Prerequisites" [ref=e651] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e652]:
+                  - link "Procedure" [ref=e653] [cursor=pointer]:
+                    - /url: "#procedure"
+                - listitem [ref=e654]:
+                  - link "Validate" [ref=e655] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e656]:
+              - link "Withdraw Pairing Request From Local Cluster" [ref=e657] [cursor=pointer]:
+                - /url: "#withdraw-pairing-request-from-local-cluster"
+              - list [ref=e658]:
+                - listitem [ref=e659]:
+                  - link "Prerequisite" [ref=e660] [cursor=pointer]:
+                    - /url: "#prerequisite"
+                - listitem [ref=e661]:
+                  - link "Procedure" [ref=e662] [cursor=pointer]:
+                    - /url: "#procedure-1"
+                - listitem [ref=e663]:
+                  - link "Validate" [ref=e664] [cursor=pointer]:
+                    - /url: "#validate-1"
+            - listitem [ref=e665]:
+              - link "Reject Pairing Request in Palette" [ref=e666] [cursor=pointer]:
+                - /url: "#reject-pairing-request-in-palette"
+              - list [ref=e667]:
+                - listitem [ref=e668]:
+                  - link "Prerequisites" [ref=e669] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e670]:
+                  - link "Procedure" [ref=e671] [cursor=pointer]:
+                    - /url: "#procedure-2"
+                - listitem [ref=e672]:
+                  - link "Validate" [ref=e673] [cursor=pointer]:
+                    - /url: "#validate-2"
+  - button "Project Logo Ask AI" [ref=e674] [cursor=pointer]:
+    - generic [ref=e677]:
+      - img "Project Logo" [ref=e678]
+      - paragraph [ref=e679]: Ask AI
+```

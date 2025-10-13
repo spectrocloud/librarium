@@ -1,0 +1,617 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Security" [ref=e150] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e152]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Audit Logs" [ref=e157] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e159]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Self-Hosted Palette" [expanded] [ref=e164] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e166]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e168] [cursor=pointer]
+                - list [ref=e169]:
+                  - listitem [ref=e170]:
+                    - generic [ref=e171]:
+                      - link "Installation" [ref=e172] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e173] [cursor=pointer]
+                  - listitem [ref=e174]:
+                    - link "Activate Palette" [ref=e175] [cursor=pointer]:
+                      - /url: /enterprise-version/activate-installation/
+                  - listitem [ref=e176]:
+                    - generic [ref=e177]:
+                      - link "System Management" [expanded] [ref=e178] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e179] [cursor=pointer]
+                    - list [ref=e180]:
+                      - listitem [ref=e181]:
+                        - generic [ref=e182]:
+                          - link "Account Management" [ref=e183] [cursor=pointer]:
+                            - /url: /enterprise-version/system-management/account-management/
+                          - button "Toggle the collapsible sidebar category 'Account Management'" [ref=e184] [cursor=pointer]
+                      - listitem [ref=e185]:
+                        - link "Add System-Level Registry" [ref=e186] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/add-registry/
+                      - listitem [ref=e187]:
+                        - link "Enable Adding AWS Accounts Using STS" [ref=e188] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/configure-aws-sts-account/
+                      - listitem [ref=e189]:
+                        - link "Backup and Restore" [ref=e190] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/backup-restore/
+                      - listitem [ref=e191]:
+                        - link "Configure SMTP" [ref=e192] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/smtp/
+                      - listitem [ref=e193]:
+                        - link "Configure Reverse Proxy" [ref=e194] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/reverse-proxy/
+                      - listitem [ref=e195]:
+                        - link "Customize Interface" [ref=e196] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/customize-interface/
+                      - listitem [ref=e197]:
+                        - link "Feature Flags" [ref=e198] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/feature-flags/
+                      - listitem [ref=e199]:
+                        - link "System Address Management" [ref=e200] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/ssl-certificate-management/
+                      - listitem [ref=e201]:
+                        - link "Tenant Management" [ref=e202] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/tenant-management/
+                      - listitem [ref=e203]:
+                        - link "Banners" [ref=e204] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/login-banner/
+                      - listitem [ref=e205]:
+                        - link "Override Registry Configuration" [ref=e206] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/registry-override/
+                      - listitem [ref=e207]:
+                        - link "Migrate SCAR to OCI Registry" [ref=e208] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/scar-migration/
+                      - listitem [ref=e209]:
+                        - link "Modify Cloud Provider Configuration" [ref=e210] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/change-cloud-config/
+                  - listitem [ref=e211]:
+                    - generic [ref=e212]:
+                      - link "Upgrade" [ref=e213] [cursor=pointer]:
+                        - /url: /enterprise-version/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - generic [ref=e216]:
+                  - link "Palette VerteX" [ref=e217] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e219]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e221] [cursor=pointer]
+              - listitem [ref=e222]:
+                - generic [ref=e223]:
+                  - link "Tenant Administration" [ref=e224] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e226]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e228] [cursor=pointer]
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "Automation" [ref=e231] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e233]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - generic [ref=e237]:
+                  - link "Troubleshooting" [ref=e238] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e240]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - link "Glossary" [ref=e244] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e246]
+                  - text: Glossary
+              - listitem [ref=e248]:
+                - generic [ref=e249]:
+                  - link "Compliance & Legal" [ref=e250] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e252]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e254] [cursor=pointer]
+              - listitem [ref=e255]:
+                - button "Privacy Settings" [ref=e256] [cursor=pointer]:
+                  - img [ref=e257]
+                  - text: Privacy Settings
+      - main [ref=e259]:
+        - generic [ref=e261]:
+          - generic [ref=e263]:
+            - article [ref=e264]:
+              - navigation "Breadcrumbs" [ref=e265]:
+                - list [ref=e266]:
+                  - listitem [ref=e267]:
+                    - link "Home page" [ref=e268] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e269]
+                  - listitem [ref=e271]:
+                    - link "Self-Hosted Palette" [ref=e272] [cursor=pointer]:
+                      - /url: /enterprise-version/
+                  - listitem [ref=e273]:
+                    - link "System Management" [ref=e274] [cursor=pointer]:
+                      - /url: /enterprise-version/system-management/
+                  - listitem [ref=e275]:
+                    - generic [ref=e276]: Backup and Restore
+              - generic [ref=e277]:
+                - heading "Backup and Restore" [level=1] [ref=e279]
+                - paragraph [ref=e280]: "You can enable backup and restore for your self-hosted Palette cluster to ensure that your Palette configuration data is backed up and can be restored in case of a disaster or a cluster failure. Palette supports two backup modes:"
+                - list [ref=e281]:
+                  - listitem [ref=e282]:
+                    - paragraph [ref=e283]:
+                      - text: File Transfer Protocol (FTP) - Send the backup data of your enterprise cluster to a dedicated FTP server. Refer to the
+                      - link "FTP" [ref=e284] [cursor=pointer]:
+                        - /url: "#ftp"
+                      - text: section for more information.
+                  - listitem [ref=e285]:
+                    - paragraph [ref=e286]:
+                      - text: Amazon Simple Storage Service (S3) - Send the backup data of your enterprise cluster to object storage using AWS S3. Refer to the
+                      - link "S3" [ref=e287] [cursor=pointer]:
+                        - /url: "#s3"
+                      - text: section for more information.
+                - generic [ref=e288]:
+                  - generic [ref=e289]:
+                    - img [ref=e291]
+                    - text: warning
+                  - paragraph [ref=e294]: Backup and Restore is not supported for self-hosted Palette installed through a Helm Chart.
+                - heading "FTPDirect link to FTP" [level=2] [ref=e295]:
+                  - text: FTP
+                  - link "Direct link to FTP" [ref=e296] [cursor=pointer]:
+                    - /url: "#ftp"
+                    - text: "#"
+                - paragraph [ref=e297]: Use the following instructions to configure FTP backup for your enterprise cluster.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e298]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e299] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e300]:
+                  - listitem [ref=e301]:
+                    - paragraph [ref=e302]: A dedicated FTP server with sufficient storage space to store the backup data.
+                  - listitem [ref=e303]:
+                    - paragraph [ref=e304]: Credentials to access the FTP server.
+                - heading "InstructionsDirect link to Instructions" [level=3] [ref=e305]:
+                  - text: Instructions
+                  - link "Direct link to Instructions" [ref=e306] [cursor=pointer]:
+                    - /url: "#instructions"
+                    - text: "#"
+                - list [ref=e307]:
+                  - listitem [ref=e308]:
+                    - paragraph [ref=e309]:
+                      - text: Log in to
+                      - link "Palette" [ref=e310] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as an administrator. Refer to the
+                      - link "Access the System Console" [ref=e311] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/#access-the-system-console
+                      - text: section for more information.
+                  - listitem [ref=e312]:
+                    - paragraph [ref=e313]:
+                      - text: From the left
+                      - strong [ref=e314]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e315]: Administration
+                      - text: .
+                  - listitem [ref=e316]:
+                    - paragraph [ref=e317]:
+                      - text: Click on the
+                      - strong [ref=e318]: Backup/Restore
+                      - text: tab.
+                  - listitem [ref=e319]:
+                    - paragraph [ref=e320]:
+                      - text: Select the
+                      - strong [ref=e321]: FTP
+                      - text: "tab and fill out the following fields:"
+                    - table [ref=e322]:
+                      - rowgroup [ref=e323]:
+                        - row "Field Description" [ref=e324]:
+                          - cell "Field" [ref=e325]:
+                            - strong [ref=e326]: Field
+                          - cell "Description" [ref=e327]:
+                            - strong [ref=e328]: Description
+                      - rowgroup [ref=e329]:
+                        - row "Server The FTP server URL." [ref=e330]:
+                          - cell "Server" [ref=e331]:
+                            - strong [ref=e332]: Server
+                          - cell "The FTP server URL." [ref=e333]
+                        - row "Directory The directory name for the backup storage." [ref=e334]:
+                          - cell "Directory" [ref=e335]:
+                            - strong [ref=e336]: Directory
+                          - cell "The directory name for the backup storage." [ref=e337]
+                        - row "Username The username to log in to the FTP server." [ref=e338]:
+                          - cell "Username" [ref=e339]:
+                            - strong [ref=e340]: Username
+                          - cell "The username to log in to the FTP server." [ref=e341]
+                        - row "Password The password to log in to the FTP server." [ref=e342]:
+                          - cell "Password" [ref=e343]:
+                            - strong [ref=e344]: Password
+                          - cell "The password to log in to the FTP server." [ref=e345]
+                        - row "Interval The number of days between backups." [ref=e346]:
+                          - cell "Interval" [ref=e347]:
+                            - strong [ref=e348]: Interval
+                          - cell "The number of days between backups." [ref=e349]
+                        - row "Retention Period The number of days to retain the backup." [ref=e350]:
+                          - cell "Retention Period" [ref=e351]:
+                            - strong [ref=e352]: Retention Period
+                          - cell "The number of days to retain the backup." [ref=e353]
+                        - row "Hours of the day The time of the day to take the backup. The time of day is in UTC format." [ref=e354]:
+                          - cell "Hours of the day" [ref=e355]:
+                            - strong [ref=e356]: Hours of the day
+                          - cell "The time of the day to take the backup. The time of day is in UTC format." [ref=e357]
+                  - listitem [ref=e358]:
+                    - paragraph [ref=e359]:
+                      - text: Click on
+                      - strong [ref=e360]: Validate
+                      - text: to validate the FTP server configuration. If the validation is successful, the
+                      - strong [ref=e361]: Save
+                      - text: button is enabled. Otherwise, an error message is displayed. In case of an error, correct verify the FTP server configuration and click on
+                      - strong [ref=e362]: Validate
+                      - text: again.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e363]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e364] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e365]: Validation is part of the backup configuration wizard. You can verify that a backup initiates at the scheduled time and is successfully uploaded to the FTP server.
+                - heading "S3Direct link to S3" [level=2] [ref=e366]:
+                  - text: S3
+                  - link "Direct link to S3" [ref=e367] [cursor=pointer]:
+                    - /url: "#s3"
+                    - text: "#"
+                - paragraph [ref=e368]: Use the following instructions to configure S3 backup for your enterprise cluster.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e369]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e370] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e371]:
+                  - listitem [ref=e372]:
+                    - paragraph [ref=e373]: An Amazon Web Services (AWS) account.
+                  - listitem [ref=e374]:
+                    - paragraph [ref=e375]: An AWS S3 bucket.
+                  - listitem [ref=e376]:
+                    - paragraph [ref=e377]:
+                      - text: An AWS IAM user with the following IAM permissions attached. Ensure you replace the bucket name in the
+                      - code [ref=e378]: Resource
+                      - text: field with the name of your S3 bucket.
+                    - generic [ref=e380]:
+                      - code [ref=e382]:
+                        - generic [ref=e383]: "{"
+                        - generic [ref=e384]: "\"Version\": \"2012-10-17\","
+                        - generic [ref=e385]: "\"Statement\": ["
+                        - generic [ref=e386]: "{"
+                        - generic [ref=e387]: "\"Sid\": \"s3Permissions\","
+                        - generic [ref=e388]: "\"Effect\": \"Allow\","
+                        - generic [ref=e389]: "\"Action\": ["
+                        - generic [ref=e390]: "\"s3:GetObject\","
+                        - generic [ref=e391]: "\"s3:ListBucket\","
+                        - generic [ref=e392]: "\"s3:DeleteObject\","
+                        - generic [ref=e393]: "\"s3:PutObject\","
+                        - generic [ref=e394]: "\"s3:AbortMultipartUpload\","
+                        - generic [ref=e395]: "\"s3:ListMultipartUploadParts\""
+                        - generic [ref=e396]: "],"
+                        - generic [ref=e397]: "\"Resource\": [\"arn:aws:s3:::REPLACE_ME_WITH_YOUR_BUCKET_NAME\", \"arn:aws:s3:::REPLACE_ME_WITH_YOUR_BUCKET_NAME/*\"]"
+                        - generic [ref=e398]: "},"
+                        - generic [ref=e399]: "{"
+                        - generic [ref=e400]: "\"Sid\": \"ec2Permissions\","
+                        - generic [ref=e401]: "\"Effect\": \"Allow\","
+                        - generic [ref=e402]: "\"Action\": ["
+                        - generic [ref=e403]: "\"ec2:DescribeVolumes\","
+                        - generic [ref=e404]: "\"ec2:DescribeSnapshots\","
+                        - generic [ref=e405]: "\"ec2:CreateTags\","
+                        - generic [ref=e406]: "\"ec2:CreateVolume\","
+                        - generic [ref=e407]: "\"ec2:CreateSnapshot\","
+                        - generic [ref=e408]: "\"ec2:DeleteSnapshot\""
+                        - generic [ref=e409]: "],"
+                        - generic [ref=e410]: "\"Resource\": [\"*\"]"
+                        - generic [ref=e411]: "}"
+                        - generic [ref=e412]: "]"
+                        - generic [ref=e413]: "}"
+                      - generic [ref=e414]:
+                        - button "Toggle word wrap" [ref=e415] [cursor=pointer]:
+                          - img [ref=e416]
+                        - button "Copy code to clipboard" [ref=e418] [cursor=pointer]:
+                          - generic [ref=e419]:
+                            - img [ref=e420]
+                            - img [ref=e422]
+                  - listitem [ref=e424]:
+                    - paragraph [ref=e425]: Credentials to the IAM user. You need the AWS access key ID and the AWS secret access key.
+                - heading "InstructionsDirect link to Instructions" [level=3] [ref=e426]:
+                  - text: Instructions
+                  - link "Direct link to Instructions" [ref=e427] [cursor=pointer]:
+                    - /url: "#instructions-1"
+                    - text: "#"
+                - list [ref=e428]:
+                  - listitem [ref=e429]:
+                    - paragraph [ref=e430]:
+                      - text: Log into the Palette system console as an administrator. Refer to the
+                      - link "Access the System Console" [ref=e431] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/#access-the-system-console
+                      - text: section for more information.
+                  - listitem [ref=e432]:
+                    - paragraph [ref=e433]:
+                      - text: From the left
+                      - strong [ref=e434]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e435]: Administration
+                      - text: .
+                  - listitem [ref=e436]:
+                    - paragraph [ref=e437]:
+                      - text: Click on the
+                      - strong [ref=e438]: Backup/Restore
+                      - text: tab.
+                  - listitem [ref=e439]:
+                    - paragraph [ref=e440]:
+                      - text: Select the
+                      - strong [ref=e441]: FTP
+                      - text: "tab and fill out the following fields:"
+                    - table [ref=e442]:
+                      - rowgroup [ref=e443]:
+                        - row "Field Description" [ref=e444]:
+                          - cell "Field" [ref=e445]:
+                            - strong [ref=e446]: Field
+                          - cell "Description" [ref=e447]:
+                            - strong [ref=e448]: Description
+                      - rowgroup [ref=e449]:
+                        - row "Server The FTP server URL." [ref=e450]:
+                          - cell "Server" [ref=e451]:
+                            - strong [ref=e452]: Server
+                          - cell "The FTP server URL." [ref=e453]
+                        - row "Directory The directory name for the backup storage." [ref=e454]:
+                          - cell "Directory" [ref=e455]:
+                            - strong [ref=e456]: Directory
+                          - cell "The directory name for the backup storage." [ref=e457]
+                        - row "Username The username to log in to the FTP server." [ref=e458]:
+                          - cell "Username" [ref=e459]:
+                            - strong [ref=e460]: Username
+                          - cell "The username to log in to the FTP server." [ref=e461]
+                        - row "Password The password to log in to the FTP server." [ref=e462]:
+                          - cell "Password" [ref=e463]:
+                            - strong [ref=e464]: Password
+                          - cell "The password to log in to the FTP server." [ref=e465]
+                        - row "Interval The number of days between backups." [ref=e466]:
+                          - cell "Interval" [ref=e467]:
+                            - strong [ref=e468]: Interval
+                          - cell "The number of days between backups." [ref=e469]
+                        - row "Retention Period The number of days to retain the backup." [ref=e470]:
+                          - cell "Retention Period" [ref=e471]:
+                            - strong [ref=e472]: Retention Period
+                          - cell "The number of days to retain the backup." [ref=e473]
+                        - row "Hours of the day The time of the day to take the backup. The time of day is in UTC format." [ref=e474]:
+                          - cell "Hours of the day" [ref=e475]:
+                            - strong [ref=e476]: Hours of the day
+                          - cell "The time of the day to take the backup. The time of day is in UTC format." [ref=e477]
+                  - listitem [ref=e478]:
+                    - paragraph [ref=e479]:
+                      - text: Click on
+                      - strong [ref=e480]: Validate
+                      - text: to validate the S3 configuration. If the validation is successful, the
+                      - strong [ref=e481]: Save
+                      - text: button is enabled. Otherwise, an error message is displayed. In case of an error, correct verify the S3 configuration and click on
+                      - strong [ref=e482]: Validate
+                      - text: again.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e483]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e484] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - paragraph [ref=e485]: Validation is part of the backup configuration wizard. You can validate a backup initiates at the scheduled time and successfully uploads to the S3 bucket.
+              - generic [ref=e486]:
+                - generic [ref=e488]:
+                  - text: "Tags:"
+                  - list [ref=e489]:
+                    - listitem [ref=e490]:
+                      - link "palette" [ref=e491] [cursor=pointer]:
+                        - /url: /tags/palette/
+                    - listitem [ref=e492]:
+                      - link "management" [ref=e493] [cursor=pointer]:
+                        - /url: /tags/management/
+                    - listitem [ref=e494]:
+                      - link "self-hosted" [ref=e495] [cursor=pointer]:
+                        - /url: /tags/self-hosted/
+                    - listitem [ref=e496]:
+                      - link "backup" [ref=e497] [cursor=pointer]:
+                        - /url: /tags/backup/
+                    - listitem [ref=e498]:
+                      - link "restore" [ref=e499] [cursor=pointer]:
+                        - /url: /tags/restore/
+                - link "Edit this page" [ref=e502] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/enterprise-version/system-management/backup-restore.md
+                  - img [ref=e503]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e507]:
+              - link "Previous « Enable Adding AWS Accounts Using STS" [ref=e508] [cursor=pointer]:
+                - /url: /enterprise-version/system-management/configure-aws-sts-account/
+                - generic [ref=e509]: Previous
+                - generic [ref=e510]: « Enable Adding AWS Accounts Using STS
+              - link "Next Configure SMTP »" [ref=e511] [cursor=pointer]:
+                - /url: /enterprise-version/system-management/smtp/
+                - generic [ref=e512]: Next
+                - generic [ref=e513]: Configure SMTP »
+          - list [ref=e516]:
+            - listitem [ref=e517]:
+              - link "FTP" [ref=e518] [cursor=pointer]:
+                - /url: "#ftp"
+              - list [ref=e519]:
+                - listitem [ref=e520]:
+                  - link "Prerequisites" [ref=e521] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e522]:
+                  - link "Instructions" [ref=e523] [cursor=pointer]:
+                    - /url: "#instructions"
+                - listitem [ref=e524]:
+                  - link "Validate" [ref=e525] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e526]:
+              - link "S3" [ref=e527] [cursor=pointer]:
+                - /url: "#s3"
+              - list [ref=e528]:
+                - listitem [ref=e529]:
+                  - link "Prerequisites" [ref=e530] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e531]:
+                  - link "Instructions" [ref=e532] [cursor=pointer]:
+                    - /url: "#instructions-1"
+                - listitem [ref=e533]:
+                  - link "Validate" [ref=e534] [cursor=pointer]:
+                    - /url: "#validate-1"
+  - button "Project Logo Ask AI" [ref=e535] [cursor=pointer]:
+    - generic [ref=e538]:
+      - img "Project Logo" [ref=e539]
+      - paragraph [ref=e540]: Ask AI
+```

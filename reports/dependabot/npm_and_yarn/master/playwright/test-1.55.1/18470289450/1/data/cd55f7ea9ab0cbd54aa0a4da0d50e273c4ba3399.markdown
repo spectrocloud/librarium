@@ -1,0 +1,516 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - link "Palette Tutorials" [ref=e40] [cursor=pointer]:
+                  - /url: /tutorials/
+                  - img [ref=e42]
+                  - text: Palette Tutorials
+              - listitem [ref=e44]:
+                - generic [ref=e45]:
+                  - link "Getting Started" [expanded] [ref=e46] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/
+                    - img [ref=e48]
+                    - text: Getting Started
+                  - button "Toggle the collapsible sidebar category 'Getting Started'" [ref=e50] [cursor=pointer]
+                - list [ref=e51]:
+                  - listitem [ref=e52]:
+                    - generic [ref=e53]:
+                      - link "Palette" [expanded] [ref=e54] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette/
+                      - button "Toggle the collapsible sidebar category 'Palette'" [ref=e55] [cursor=pointer]
+                    - list [ref=e56]:
+                      - listitem [ref=e57]:
+                        - link "Introduction to Palette" [ref=e58] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette/introduction-palette/
+                      - listitem [ref=e59]:
+                        - generic [ref=e60]:
+                          - link "Deploy a Cluster to AWS" [ref=e61] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/aws/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to AWS'" [ref=e62] [cursor=pointer]
+                      - listitem [ref=e63]:
+                        - generic [ref=e64]:
+                          - link "Deploy a Cluster to Azure" [ref=e65] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/azure/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to Azure'" [ref=e66] [cursor=pointer]
+                      - listitem [ref=e67]:
+                        - generic [ref=e68]:
+                          - link "Deploy a Cluster to GCP" [expanded] [ref=e69] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/gcp/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to GCP'" [ref=e70] [cursor=pointer]
+                        - list [ref=e71]:
+                          - listitem [ref=e72]:
+                            - link "Set up Palette" [ref=e73] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/gcp/setup/
+                          - listitem [ref=e74]:
+                            - link "Create a Cluster Profile" [ref=e75] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/gcp/create-cluster-profile/
+                          - listitem [ref=e76]:
+                            - link "Deploy a Cluster" [ref=e77] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/gcp/deploy-k8s-cluster/
+                          - listitem [ref=e78]:
+                            - link "Deploy Cluster Profile Updates" [ref=e79] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/gcp/update-k8s-cluster/
+                          - listitem [ref=e80]:
+                            - link "Cluster Management with Terraform" [ref=e81] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/gcp/deploy-manage-k8s-cluster-tf/
+                          - listitem [ref=e82]:
+                            - link "Scale, Upgrade, and Secure Clusters" [ref=e83] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/gcp/scale-secure-cluster/
+                      - listitem [ref=e84]:
+                        - generic [ref=e85]:
+                          - link "Deploy a Cluster to VMware" [ref=e86] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/vmware/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to VMware'" [ref=e87] [cursor=pointer]
+                  - listitem [ref=e88]:
+                    - generic [ref=e89]:
+                      - link "Palette Edge" [ref=e90] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette-edge/
+                      - button "Toggle the collapsible sidebar category 'Palette Edge'" [ref=e91] [cursor=pointer]
+                  - listitem [ref=e92]:
+                    - generic [ref=e93]:
+                      - link "Additional Capabilities" [ref=e94] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/additional-capabilities/
+                      - button "Toggle the collapsible sidebar category 'Additional Capabilities'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Packs and Registries" [ref=e98] [cursor=pointer]:
+                    - /url: /tutorials/packs-registries/
+                    - img [ref=e100]
+                    - text: Packs and Registries
+                  - button "Toggle the collapsible sidebar category 'Packs and Registries'" [ref=e102] [cursor=pointer]
+              - listitem [ref=e103]:
+                - generic [ref=e104]:
+                  - link "Profiles" [ref=e105] [cursor=pointer]:
+                    - /url: /tutorials/profiles/
+                    - img [ref=e107]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e111] [cursor=pointer]
+              - listitem [ref=e112]:
+                - generic [ref=e113]:
+                  - link "Clusters" [ref=e114] [cursor=pointer]:
+                    - /url: /tutorials/clusters/
+                    - img [ref=e116]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e122] [cursor=pointer]
+              - listitem [ref=e123]:
+                - generic [ref=e124]:
+                  - link "Palette Dev Engine" [ref=e125] [cursor=pointer]:
+                    - /url: /tutorials/pde/
+                    - img [ref=e127]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e129] [cursor=pointer]
+              - listitem [ref=e130]:
+                - button "Privacy Settings" [ref=e131] [cursor=pointer]
+      - main [ref=e132]:
+        - generic [ref=e134]:
+          - generic [ref=e136]:
+            - article [ref=e137]:
+              - navigation "Breadcrumbs" [ref=e138]:
+                - list [ref=e139]:
+                  - listitem [ref=e140]:
+                    - link "Home page" [ref=e141] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e142]
+                  - listitem [ref=e144]:
+                    - link "Getting Started" [ref=e145] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/
+                  - listitem [ref=e146]:
+                    - link "Palette" [ref=e147] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette/
+                  - listitem [ref=e148]:
+                    - link "Deploy a Cluster to GCP" [ref=e149] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette/gcp/
+                  - listitem [ref=e150]:
+                    - generic [ref=e151]: Deploy a Cluster
+              - generic [ref=e152]:
+                - heading "Deploy a Cluster" [level=1] [ref=e154]
+                - paragraph [ref=e155]:
+                  - text: This tutorial will teach you how to deploy a host cluster with Palette using Google Cloud Platform (GCP). You will learn about
+                  - emphasis [ref=e156]: Cluster Mode
+                  - text: and
+                  - emphasis [ref=e157]: Cluster Profiles
+                  - text: and how these components enable you to deploy customized applications to Kubernetes with minimal effort.
+                - paragraph [ref=e158]:
+                  - text: "As you navigate the tutorial, refer to this diagram to help you understand how Palette uses a cluster profile as a blueprint for the host cluster you deploy. Palette clusters have the same node pools you may be familiar with:"
+                  - emphasis [ref=e159]: control plane nodes
+                  - text: and
+                  - emphasis [ref=e160]: worker nodes
+                  - text: where you will deploy applications. The result is a host cluster that Palette manages. The concepts you learn about in the Getting Started section are centered around a fictional case study company, Spacetastic Ltd.
+                - paragraph [ref=e161]:
+                  - img "A view of Palette managing the Kubernetes lifecycle" [ref=e162]
+                - heading "🧑‍🚀 Back at Spacetastic HQDirect link to 🧑‍🚀 Back at Spacetastic HQ" [level=2] [ref=e163]:
+                  - text: 🧑‍🚀 Back at Spacetastic HQ
+                  - link "Direct link to 🧑‍🚀 Back at Spacetastic HQ" [ref=e164] [cursor=pointer]:
+                    - /url: "#-back-at-spacetastic-hq"
+                    - text: "#"
+                - paragraph [ref=e165]: After successfully creating their first cluster profile and mapping out their entire technology stack, Wren, Founding Engineer, and Kai, Platform Engineer, continue their Palette onboarding process. They are evaluating Palette as a potential platform orchestration tool for all the production workloads at Spacetastic, which provides an astronomy education platform deployed on Kubernetes.
+                - blockquote [ref=e166]:
+                  - paragraph [ref=e167]: "\"The Getting Started section is a great way to learn about Palette. The hands-on approach is just what we need to get our first cluster deployed,\" says Kai, scrolling through the Spectro Cloud Docs. \"Wren, do you have time to continue our onboarding and get our first cluster deployed?\""
+                  - paragraph [ref=e168]: Wren sits down next to Kai and sips on a cup of coffee. "Now, we'll get a hands-on feel of the Palette developer experience. You know me, I'm a champion for developer tooling and always supportive of investing in our platform. Let's follow this tutorial and deploy a cluster using the Palette UI."
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e169]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e170] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - paragraph [ref=e171]: To complete this tutorial, you will need the following.
+                - list [ref=e172]:
+                  - listitem [ref=e173]:
+                    - paragraph [ref=e174]:
+                      - text: Follow the steps described in the
+                      - link "Set up Palette with GCP" [ref=e175] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette/gcp/setup/
+                      - text: guide to authenticate Palette for use with your GCP cloud account.
+                  - listitem [ref=e176]:
+                    - paragraph [ref=e177]:
+                      - text: A Palette cluster profile. Follow the
+                      - link "Create a Cluster Profile" [ref=e178] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette/gcp/create-cluster-profile/
+                      - text: tutorial to create the required GCP cluster profile.
+                - heading "Deploy a ClusterDirect link to Deploy a Cluster" [level=2] [ref=e179]:
+                  - text: Deploy a Cluster
+                  - link "Direct link to Deploy a Cluster" [ref=e180] [cursor=pointer]:
+                    - /url: "#deploy-a-cluster"
+                    - text: "#"
+                - paragraph [ref=e181]: The following steps will guide you through deploying the cluster infrastructure.
+                - paragraph [ref=e182]:
+                  - text: Navigate to the left
+                  - strong [ref=e183]: Main Menu
+                  - text: and select
+                  - strong [ref=e184]: Clusters
+                  - text: . Click on
+                  - strong [ref=e185]: Create Cluster
+                  - text: . If there are existing clusters, choose
+                  - strong [ref=e186]: Add New Cluster
+                  - text: .
+                - paragraph [ref=e187]:
+                  - img "Palette clusters overview page" [ref=e188]
+                - paragraph [ref=e189]:
+                  - text: Palette will prompt you to select the type of cluster. Select
+                  - strong [ref=e190]: GCP IaaS
+                  - text: and click the
+                  - strong [ref=e191]: Start GCP IaaS Configuration
+                  - text: button. Use the following steps to create a host cluster in Google Cloud.
+                - paragraph [ref=e192]:
+                  - text: In the
+                  - strong [ref=e193]: Basic information
+                  - text: section, insert the general information about the cluster, such as the
+                  - strong [ref=e194]: Cluster name
+                  - text: ","
+                  - strong [ref=e195]: Description
+                  - text: ","
+                  - strong [ref=e196]: Tags
+                  - text: ", and"
+                  - strong [ref=e197]: Cloud account
+                  - text: . Click on
+                  - strong [ref=e198]: Next
+                  - text: .
+                - paragraph [ref=e199]:
+                  - img "Palette clusters basic information" [ref=e200]
+                - paragraph [ref=e201]:
+                  - text: Click on
+                  - strong [ref=e202]: Add Cluster Profile
+                  - text: . A list is displayed of available profiles you can choose to deploy to GCP. Select the cluster profile you created in the
+                  - link "Create a Cluster Profile" [ref=e203] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/gcp/create-cluster-profile/
+                  - text: tutorial, named
+                  - strong [ref=e204]: gcp-profile
+                  - text: ", and click on"
+                  - strong [ref=e205]: Confirm
+                  - text: .
+                - paragraph [ref=e206]:
+                  - text: The
+                  - strong [ref=e207]: Cluster Profile
+                  - text: section displays all the layers in the cluster profile.
+                - paragraph [ref=e208]:
+                  - img "Palette clusters profile" [ref=e209]
+                - paragraph [ref=e210]:
+                  - text: Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format. Each pack contains a set of default values. You can change the manifest values if needed. Click on
+                  - strong [ref=e211]: Next
+                  - text: to proceed.
+                - paragraph [ref=e212]:
+                  - text: The
+                  - strong [ref=e213]: Cluster Config
+                  - text: section allows you to select the
+                  - strong [ref=e214]: Project
+                  - text: and
+                  - strong [ref=e215]: Region
+                  - text: to apply to the host cluster.
+                - paragraph [ref=e216]:
+                  - text: After selecting a
+                  - strong [ref=e217]: Project
+                  - text: and a
+                  - strong [ref=e218]: Region
+                  - text: ", click on"
+                  - strong [ref=e219]: Next
+                  - text: .
+                - paragraph [ref=e220]:
+                  - text: The
+                  - strong [ref=e221]: Nodes Config
+                  - text: section allows you to configure the nodes that make up the control plane and worker nodes of the host cluster.
+                - paragraph [ref=e222]: Before you proceed to the next section, review the following parameters.
+                - paragraph [ref=e223]:
+                  - text: Refer to the
+                  - link "Node Pool" [ref=e224] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/node-pool/
+                  - text: guide for a list and description of parameters.
+                - paragraph [ref=e225]: Before you proceed to next section, review the following parameters.
+                - list [ref=e226]:
+                  - listitem [ref=e227]:
+                    - paragraph [ref=e228]:
+                      - strong [ref=e229]: Number of nodes in the pool
+                      - text: "- This option sets the number of control plane or worker nodes in the control plane or worker pool. For this tutorial, set the count to one for the control plane pool and two for the worker pool."
+                  - listitem [ref=e230]:
+                    - paragraph [ref=e231]:
+                      - strong [ref=e232]: Allow worker capability
+                      - text: "- This option allows the control plane node to also accept workloads. This is useful when spot instances are used as worker nodes. You can check this box if you want to."
+                  - listitem [ref=e233]:
+                    - paragraph [ref=e234]:
+                      - strong [ref=e235]: Instance Type
+                      - text: "- Select the compute type for the node pool. Each instance type displays the amount of CPU, RAM, and hourly cost of the instance. Select"
+                      - strong [ref=e236]: n1-standard-4
+                      - text: .
+                  - listitem [ref=e237]:
+                    - paragraph [ref=e238]:
+                      - strong [ref=e239]: Disk size
+                      - text: "- Set the disk size to"
+                      - strong [ref=e240]: "60"
+                      - text: .
+                  - listitem [ref=e241]:
+                    - paragraph [ref=e242]:
+                      - strong [ref=e243]: Availability zones
+                      - text: "- Used to specify the availability zones in which the node pool can place nodes. Select an availability zone."
+                - paragraph [ref=e244]:
+                  - img "Palette clusters nodes configuration" [ref=e245]
+                - paragraph [ref=e246]:
+                  - text: Select
+                  - strong [ref=e247]: Next
+                  - text: to proceed with the cluster deployment.
+                - paragraph [ref=e248]:
+                  - text: In the
+                  - strong [ref=e249]: Cluster Settings
+                  - text: section, you can configure advanced options such as when to patch the OS, enable security scans, manage backups, add Role-Based Access Control (RBAC) bindings, and more.
+                - paragraph [ref=e250]:
+                  - text: For this tutorial, you can use the default settings. Click on
+                  - strong [ref=e251]: Validate
+                  - text: to continue.
+                - paragraph [ref=e252]:
+                  - text: The
+                  - strong [ref=e253]: Review
+                  - text: section allows you to review the cluster configuration before deploying the cluster. Review all the settings and click on
+                  - strong [ref=e254]: Finish Configuration
+                  - text: to deploy the cluster.
+                - paragraph [ref=e255]:
+                  - img "Newly created GCP cluster" [ref=e256]
+                - paragraph [ref=e257]:
+                  - text: Navigate to the left
+                  - strong [ref=e258]: Main Menu
+                  - text: and select
+                  - strong [ref=e259]: Clusters
+                  - text: .
+                - paragraph [ref=e260]:
+                  - img "Update the cluster" [ref=e261]
+                - paragraph [ref=e262]:
+                  - text: The cluster deployment process can take 15 to 30 minutes. Deployment time varies depending on the cloud provider, cluster profile, cluster size, and node pool configurations provided. You can learn more about the deployment progress by reviewing the event log. Choose your cluster and select the
+                  - strong [ref=e263]: Events
+                  - text: tab to view the log.
+                - paragraph [ref=e264]:
+                  - img "Update the cluster" [ref=e265]
+                - heading "Verify the ApplicationDirect link to Verify the Application" [level=2] [ref=e266]:
+                  - text: Verify the Application
+                  - link "Direct link to Verify the Application" [ref=e267] [cursor=pointer]:
+                    - /url: "#verify-the-application"
+                    - text: "#"
+                - paragraph [ref=e268]:
+                  - text: Navigate to the left
+                  - strong [ref=e269]: Main Menu
+                  - text: and select
+                  - strong [ref=e270]: Clusters
+                  - text: .
+                - paragraph [ref=e271]:
+                  - text: Select your cluster to view its
+                  - strong [ref=e272]: Overview
+                  - text: tab. When the application is deployed and ready for network traffic, indicated in the
+                  - strong [ref=e273]: Services
+                  - text: field, Palette exposes the service URL. Click on the URL for port
+                  - strong [ref=e274]: :8080
+                  - text: to access the Hello Universe application.
+                - paragraph [ref=e275]:
+                  - img "Cluster details page with service URL highlighted" [ref=e276]
+                - generic [ref=e277]:
+                  - generic [ref=e278]:
+                    - img [ref=e280]
+                    - text: warning
+                  - paragraph [ref=e283]: It can take up to three minutes for DNS to properly resolve the public load balancer URL. We recommend waiting a few moments before clicking on the service URL to prevent the browser from caching an unresolved DNS request.
+                - paragraph [ref=e284]:
+                  - img "Image that shows the cluster overview of the Hello Universe Frontend Cluster" [ref=e285]
+                - paragraph [ref=e286]: Welcome to the Spacetastic astronomy education platform. Feel free to explore the pages and learn more about space. The statistics page offers information on visitor counts on your deployed cluster.
+                - paragraph [ref=e287]: You have deployed your first application to a cluster managed by Palette. Your first application is a three-tier application with a frontend, API server, and Postgres database.
+                - heading "CleanupDirect link to Cleanup" [level=2] [ref=e288]:
+                  - text: Cleanup
+                  - link "Direct link to Cleanup" [ref=e289] [cursor=pointer]:
+                    - /url: "#cleanup"
+                    - text: "#"
+                - paragraph [ref=e290]: Use the following steps to remove all the resources you created for the tutorial.
+                - generic [ref=e291]:
+                  - generic [ref=e292]:
+                    - img [ref=e294]
+                    - text: tip
+                  - paragraph [ref=e297]:
+                    - text: If you plan to explore the
+                    - link "Deploy Cluster Profile Updates" [ref=e298] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette/gcp/update-k8s-cluster/
+                    - text: tutorial, do not delete your cluster, as it is a prerequisite for the tutorial.
+                - paragraph [ref=e299]:
+                  - text: To remove the cluster, navigate to the left
+                  - strong [ref=e300]: Main Menu
+                  - text: and click on
+                  - strong [ref=e301]: Clusters
+                  - text: . Select the cluster you want to delete to access its details page.
+                - paragraph [ref=e302]:
+                  - text: Click on
+                  - strong [ref=e303]: Settings
+                  - text: to expand the menu, and select
+                  - strong [ref=e304]: Delete Cluster
+                  - text: .
+                - paragraph [ref=e305]:
+                  - img "Delete cluster" [ref=e306]
+                - paragraph [ref=e307]: You will be prompted to type in the cluster name to confirm the delete action. Type in the cluster name to proceed with the delete step. The deletion process takes several minutes to complete.
+                - generic [ref=e308]:
+                  - generic [ref=e309]:
+                    - img [ref=e311]
+                    - text: info
+                  - paragraph [ref=e314]:
+                    - text: If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for a force delete. To trigger a force delete, navigate to the cluster’s details page, click on
+                    - strong [ref=e315]: Settings
+                    - text: ", then select"
+                    - strong [ref=e316]: Force Delete Cluster
+                    - text: . Palette automatically removes clusters stuck in the cluster deletion phase for over 24 hours.
+                - paragraph [ref=e317]:
+                  - text: Once the cluster is deleted, navigate to the left
+                  - strong [ref=e318]: Main Menu
+                  - text: and click on
+                  - strong [ref=e319]: Profiles
+                  - text: . Find the cluster profile you created and click on the
+                  - strong [ref=e320]: three-dot Menu
+                  - text: to display the
+                  - strong [ref=e321]: Delete
+                  - text: button. Select
+                  - strong [ref=e322]: Delete
+                  - text: and confirm the selection to remove the cluster profile.
+                - heading "Wrap-UpDirect link to Wrap-Up" [level=2] [ref=e323]:
+                  - text: Wrap-Up
+                  - link "Direct link to Wrap-Up" [ref=e324] [cursor=pointer]:
+                    - /url: "#wrap-up"
+                    - text: "#"
+                - paragraph [ref=e325]:
+                  - text: In this tutorial, you used the cluster profile you created in the previous
+                  - link "Create a Cluster Profile" [ref=e326] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/gcp/create-cluster-profile/
+                  - text: tutorial to deploy a host cluster onto your preferred cloud service provider. After the cluster deployed, you verified the Hello Universe application was successfully deployed.
+                - paragraph [ref=e327]:
+                  - text: We recommend that you continue to the
+                  - link "Deploy Cluster Profile Updates" [ref=e328] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/gcp/update-k8s-cluster/
+                  - text: tutorial to learn how to update your host cluster.
+                - heading "🧑‍🚀 Catch up with SpacetasticDirect link to 🧑‍🚀 Catch up with Spacetastic" [level=2] [ref=e329]:
+                  - text: 🧑‍🚀 Catch up with Spacetastic
+                  - link "Direct link to 🧑‍🚀 Catch up with Spacetastic" [ref=e330] [cursor=pointer]:
+                    - /url: "#-catch-up-with-spacetastic"
+                    - text: "#"
+                - paragraph [ref=e331]: Wren and Kai have deployed their first cluster profile by following the steps described in this tutorial. They were impressed by how streamlined the process was and how the cluster profiles provided them with a deployment blueprint.
+                - blockquote [ref=e332]:
+                  - paragraph [ref=e333]: "\"Deploying our first cluster with Palette was intuitive,\" says Wren. \"It's ideal to find an external partner that can take care of our Kubernetes infrastructure and free us up to deliver more educational features. I definitely think that Palette has the capabilities to take care of all the Kubernetes heavy lifting for us.\""
+                  - paragraph [ref=e334]: "\"I agree with you, and I'm glad to hear you're not as skeptical anymore,\" says Kai, nodding and laughing. \"From a platform engineering perspective, I can say that cluster profiles will provide us with reliable deployments across environments and even clouds, so I'm much more confident about our testing and deployment strategy.\""
+                  - paragraph [ref=e335]: Meera, Head of Cybersecurity, walks in holding a file. "I've done our security due diligence, and I'm happy to report that Spectro Cloud adheres to the highest security standards. I'm happy to approve Palette for use in our organization."
+                  - paragraph [ref=e336]: "\"It seems like we've found a great platform that can support us. Let's explore the rest of the Getting Started section to understand what else Palette has to offer,\" says Kai, turning back to their monitor."
+              - generic [ref=e337]:
+                - generic [ref=e339]:
+                  - text: "Tags:"
+                  - list [ref=e340]:
+                    - listitem [ref=e341]:
+                      - link "getting-started" [ref=e342] [cursor=pointer]:
+                        - /url: /tags/getting-started/
+                    - listitem [ref=e343]:
+                      - link "gcp" [ref=e344] [cursor=pointer]:
+                        - /url: /tags/gcp/
+                    - listitem [ref=e345]:
+                      - link "tutorial" [ref=e346] [cursor=pointer]:
+                        - /url: /tags/tutorial/
+                - link "Edit this page" [ref=e349] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/tutorials/getting-started/palette/gcp/deploy-k8s-cluster.md
+                  - img [ref=e350]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e354]:
+              - link "Previous « Create a Cluster Profile" [ref=e355] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette/gcp/create-cluster-profile/
+                - generic [ref=e356]: Previous
+                - generic [ref=e357]: « Create a Cluster Profile
+              - link "Next Deploy Cluster Profile Updates »" [ref=e358] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette/gcp/update-k8s-cluster/
+                - generic [ref=e359]: Next
+                - generic [ref=e360]: Deploy Cluster Profile Updates »
+          - list [ref=e363]:
+            - listitem [ref=e364]:
+              - link "🧑‍🚀 Back at Spacetastic HQ" [ref=e365] [cursor=pointer]:
+                - /url: "#-back-at-spacetastic-hq"
+            - listitem [ref=e366]:
+              - link "Prerequisites" [ref=e367] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e368]:
+              - link "Deploy a Cluster" [ref=e369] [cursor=pointer]:
+                - /url: "#deploy-a-cluster"
+            - listitem [ref=e370]:
+              - link "Verify the Application" [ref=e371] [cursor=pointer]:
+                - /url: "#verify-the-application"
+            - listitem [ref=e372]:
+              - link "Cleanup" [ref=e373] [cursor=pointer]:
+                - /url: "#cleanup"
+            - listitem [ref=e374]:
+              - link "Wrap-Up" [ref=e375] [cursor=pointer]:
+                - /url: "#wrap-up"
+            - listitem [ref=e376]:
+              - link "🧑‍🚀 Catch up with Spacetastic" [ref=e377] [cursor=pointer]:
+                - /url: "#-catch-up-with-spacetastic"
+  - button "Project Logo Ask AI" [ref=e378] [cursor=pointer]:
+    - generic [ref=e381]:
+      - img "Project Logo" [ref=e382]
+      - paragraph [ref=e383]: Ask AI
+```

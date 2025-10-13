@@ -1,0 +1,1029 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                  - listitem [ref=e107]:
+                    - generic [ref=e108]:
+                      - link "Data Center Clusters" [ref=e109] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e111]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e113] [cursor=pointer]
+                  - listitem [ref=e114]:
+                    - generic [ref=e115]:
+                      - link "Edge" [ref=e116] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e118]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e120] [cursor=pointer]
+                  - listitem [ref=e121]:
+                    - generic [ref=e122]:
+                      - link "Palette Virtual Clusters" [ref=e123] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e125]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e127] [cursor=pointer]
+                  - listitem [ref=e128]:
+                    - generic [ref=e129]:
+                      - link "Imported Clusters" [ref=e130] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e132]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e134] [cursor=pointer]
+                  - listitem [ref=e135]:
+                    - generic [ref=e136]:
+                      - link "Manage Clusters" [expanded] [ref=e137] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e139]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e141] [cursor=pointer]
+                    - list [ref=e142]:
+                      - listitem [ref=e143]:
+                        - generic [ref=e144]:
+                          - link "SSH" [ref=e145] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/ssh/
+                          - button "Toggle the collapsible sidebar category 'SSH'" [ref=e146] [cursor=pointer]
+                      - listitem [ref=e147]:
+                        - link "Update a Cluster" [ref=e148] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-updates/
+                      - listitem [ref=e149]:
+                        - generic [ref=e150]:
+                          - link "Cluster Monitoring" [ref=e151] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/monitoring/
+                          - button "Toggle the collapsible sidebar category 'Cluster Monitoring'" [ref=e152] [cursor=pointer]
+                      - listitem [ref=e153]:
+                        - link "Cluster Health Alerts" [ref=e154] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/health-alerts/
+                      - listitem [ref=e155]:
+                        - generic [ref=e156]:
+                          - link "Backup and Restore" [ref=e157] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/backup-restore/
+                          - button "Toggle the collapsible sidebar category 'Backup and Restore'" [ref=e158] [cursor=pointer]
+                      - listitem [ref=e159]:
+                        - link "Renew Cluster PKI Certificates" [ref=e160] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/certificate-management/
+                      - listitem [ref=e161]:
+                        - link "Compliance Scan" [ref=e162] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/compliance-scan/
+                      - listitem [ref=e163]:
+                        - link "OS Patching" [ref=e164] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/os-patching/
+                      - listitem [ref=e165]:
+                        - link "Cost Visibility" [ref=e166] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cloud-cost/
+                      - listitem [ref=e167]:
+                        - link "Workload Visibility" [ref=e168] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/workloads/
+                      - listitem [ref=e169]:
+                        - link "Node Labels" [ref=e170] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-labels/
+                      - listitem [ref=e171]:
+                        - link "Taints and Tolerations" [ref=e172] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/taints/
+                      - listitem [ref=e173]:
+                        - link "RBAC and Namespace Support" [ref=e174] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-rbac/
+                      - listitem [ref=e175]:
+                        - link "Namespace Management" [ref=e176] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/namespace-management/
+                      - listitem [ref=e177]:
+                        - link "Palette Macros" [ref=e178] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/macros/
+                      - listitem [ref=e179]:
+                        - link "Pack Monitoring" [ref=e180] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/pack-monitoring/
+                      - listitem [ref=e181]:
+                        - link "Kubeconfig" [ref=e182] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/kubeconfig/
+                      - listitem [ref=e183]:
+                        - link "Kubectl" [ref=e184] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/palette-webctl/
+                      - listitem [ref=e185]:
+                        - generic [ref=e186]:
+                          - link "Platform Settings" [ref=e187] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/platform-settings/
+                          - button "Toggle the collapsible sidebar category 'Platform Settings'" [ref=e188] [cursor=pointer]
+                      - listitem [ref=e189]:
+                        - link "Map and Filter Clusters" [ref=e190] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-map-filters/
+                      - listitem [ref=e191]:
+                        - link "Node Pools" [ref=e192] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-pool/
+                      - listitem [ref=e193]:
+                        - link "Configure Applications to Use Proxy Server" [ref=e194] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-proxy/
+                      - listitem [ref=e195]:
+                        - link "Spectro Kubernetes Dashboard" [ref=e196] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/spectro-kubernetes-dashboard/
+                      - listitem [ref=e197]:
+                        - link "Cluster Removal" [ref=e198] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/remove-clusters/
+                      - listitem [ref=e199]:
+                        - link "Image Swap" [ref=e200] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/image-swap/
+                      - listitem [ref=e201]:
+                        - link "Maintenance Mode" [ref=e202] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/maintenance-mode/
+                  - listitem [ref=e203]:
+                    - generic [ref=e204]:
+                      - link "Cluster Groups" [ref=e205] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e207]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e209] [cursor=pointer]
+                  - listitem [ref=e210]:
+                    - generic [ref=e211]:
+                      - link "Private Cloud Gateway" [ref=e212] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e214]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e216] [cursor=pointer]
+              - listitem [ref=e217]:
+                - generic [ref=e218]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e219] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e221]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e223] [cursor=pointer]
+              - listitem [ref=e224]:
+                - generic [ref=e225]:
+                  - link "Palette Dev Engine" [ref=e226] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e228]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e230] [cursor=pointer]
+              - listitem [ref=e231]:
+                - generic [ref=e232]:
+                  - link "Virtual Machine Orchestrator" [ref=e233] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e235]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e237] [cursor=pointer]
+              - listitem [ref=e238]:
+                - generic [ref=e239]:
+                  - link "Workspaces" [ref=e240] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e242]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e244] [cursor=pointer]
+              - listitem [ref=e245]:
+                - generic [ref=e246]:
+                  - link "Packs List" [ref=e247] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e249]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e251] [cursor=pointer]
+              - listitem [ref=e252]:
+                - generic [ref=e253]:
+                  - link "User & Role Management" [ref=e254] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e256]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e258] [cursor=pointer]
+              - listitem [ref=e259]:
+                - generic [ref=e260]:
+                  - link "Registries and Packs" [ref=e261] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e263]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e265] [cursor=pointer]
+              - listitem [ref=e266]:
+                - generic [ref=e267]:
+                  - link "Security" [ref=e268] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e270]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e272] [cursor=pointer]
+              - listitem [ref=e273]:
+                - generic [ref=e274]:
+                  - link "Audit Logs" [ref=e275] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e277]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e279] [cursor=pointer]
+              - listitem [ref=e280]:
+                - generic [ref=e281]:
+                  - link "Self-Hosted Palette" [ref=e282] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e284]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e286] [cursor=pointer]
+              - listitem [ref=e287]:
+                - generic [ref=e288]:
+                  - link "Palette VerteX" [ref=e289] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e291]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e293] [cursor=pointer]
+              - listitem [ref=e294]:
+                - generic [ref=e295]:
+                  - link "Tenant Administration" [ref=e296] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e298]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e300] [cursor=pointer]
+              - listitem [ref=e301]:
+                - generic [ref=e302]:
+                  - link "Automation" [ref=e303] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e305]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e307] [cursor=pointer]
+              - listitem [ref=e308]:
+                - generic [ref=e309]:
+                  - link "Troubleshooting" [ref=e310] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e312]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e314] [cursor=pointer]
+              - listitem [ref=e315]:
+                - link "Glossary" [ref=e316] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e318]
+                  - text: Glossary
+              - listitem [ref=e320]:
+                - generic [ref=e321]:
+                  - link "Compliance & Legal" [ref=e322] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e324]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e326] [cursor=pointer]
+              - listitem [ref=e327]:
+                - button "Privacy Settings" [ref=e328] [cursor=pointer]:
+                  - img [ref=e329]
+                  - text: Privacy Settings
+      - main [ref=e331]:
+        - generic [ref=e333]:
+          - generic [ref=e335]:
+            - article [ref=e336]:
+              - navigation "Breadcrumbs" [ref=e337]:
+                - list [ref=e338]:
+                  - listitem [ref=e339]:
+                    - link "Home page" [ref=e340] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e341]
+                  - listitem [ref=e343]:
+                    - link "Clusters" [ref=e344] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e345]:
+                    - link "Manage Clusters" [ref=e346] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/
+                  - listitem [ref=e347]:
+                    - generic [ref=e348]: Node Pools
+              - generic [ref=e349]:
+                - heading "Node Pools" [level=1] [ref=e351]
+                - paragraph [ref=e352]: A node pool is a group of nodes within a cluster that all have the same configuration. You can use node pools for different workloads. For example, you can create a node pool for your production workloads and another for your development workloads. You can update node pools for active clusters or create a new one for the cluster.
+                - generic [ref=e353]:
+                  - generic [ref=e354]:
+                    - img [ref=e356]
+                    - text: warning
+                  - paragraph [ref=e359]:
+                    - text: Exercise caution when modifying node pools. We recommend creating a
+                    - link "backup" [ref=e360] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/backup-restore/
+                    - text: before you make a change in the event a configuration change causes an issue.
+                - heading "Repave Behavior and ConfigurationDirect link to Repave Behavior and Configuration" [level=2] [ref=e361]:
+                  - text: Repave Behavior and Configuration
+                  - link "Direct link to Repave Behavior and Configuration" [ref=e362] [cursor=pointer]:
+                    - /url: "#repave-behavior-and-configuration"
+                    - text: "#"
+                - paragraph [ref=e363]:
+                  - text: In Kubernetes, the term "repave" refers to the process of replacing a node with a new node.
+                  - link "Repaving" [ref=e364] [cursor=pointer]:
+                    - /url: /glossary-all/#repavement
+                  - text: is a common practice in Kubernetes to ensure that nodes are deployed with the latest version of the operating system and Kubernetes. Repaving is also used to replace nodes that are unhealthy or have failed. You can configure the repave time interval for a node pool.
+                - paragraph [ref=e365]: "Different types of repaving operations may occur, depending on what causes them:"
+                - generic [ref=e366]:
+                  - generic [ref=e367]:
+                    - img [ref=e369]
+                    - text: info
+                  - paragraph [ref=e372]:
+                    - text: This section only applies to non-Edge clusters. To learn about the upgrade behavior of Edge clusters, refer to the
+                    - link "Edge Cluster Upgrade Behavior" [ref=e373] [cursor=pointer]:
+                      - /url: /clusters/edge/cluster-management/upgrade-behavior/
+                    - text: page.
+                - list [ref=e374]:
+                  - listitem [ref=e375]:
+                    - paragraph [ref=e376]:
+                      - strong [ref=e377]: Control plane repave
+                      - text: ": This takes place when certain changes are made to the Kubernetes configuration, such as changing the"
+                      - code [ref=e378]: apiServer
+                      - text: specification. This type of repave also occurs when there are changes in the hardware specifications of the control plane nodes, such as during a node scale-up operation or when changing from one instance type to another. Control plane nodes are repaved sequentially.
+                  - listitem [ref=e379]:
+                    - paragraph [ref=e380]:
+                      - strong [ref=e381]: Worker node pool repave
+                      - text: ": This happens when changes to a node pool's specifications cause the the existing nodes to become incompatible with the pool's specified criteria. For instance, changing the hardware specifications of a worker pool. Nodes within the affected pool are sequentially replaced with new nodes that meet the updated specifications."
+                  - listitem [ref=e382]:
+                    - paragraph [ref=e383]:
+                      - strong [ref=e384]: Full cluster repave
+                      - text: ": This occurs if changes are made to the Operating System (OS) layer or if modifications to the Kubernetes layer impact all nodes, such as when upgrading to a different Kubernetes version. All nodes across all pools are sequentially repaved starting with the control plane."
+                - paragraph [ref=e385]:
+                  - text: You can customize the repave time interval for all node pools except the control plane node pool. The default repave time interval is zero seconds, meaning the old worker node is considered for deletion as soon as a new worker node is initialized. Because the new worker node can take some time to become fully operational, you can extend the repave time interval to preserve the old worker node until the new one is ready. If you need to modify the repave time interval post-cluster creation, follow the
+                  - link "Change a Node Pool" [ref=e386] [cursor=pointer]:
+                    - /url: "#change-a-node-pool"
+                  - text: guide.
+                - generic [ref=e387]:
+                  - generic [ref=e388]:
+                    - img [ref=e390]
+                    - text: info
+                  - paragraph [ref=e393]:
+                    - text: To ensure that repave operations do not interfere with your existing workloads, Palette requires explicit cluster-level approval to initiate them. Refer to the
+                    - link "Approve Cluster Repave" [ref=e394] [cursor=pointer]:
+                      - /url: "#approve-cluster-repave"
+                    - text: guide to learn how to approve cluster repaves.
+                - heading "Pod Drainage TolerationDirect link to Pod Drainage Toleration" [level=3] [ref=e395]:
+                  - text: Pod Drainage Toleration
+                  - link "Direct link to Pod Drainage Toleration" [ref=e396] [cursor=pointer]:
+                    - /url: "#pod-drainage-toleration"
+                    - text: "#"
+                - paragraph [ref=e397]:
+                  - text: Palette will not remove pods with the toleration key
+                  - code [ref=e398]: node.kubernetes.io/unschedulable
+                  - text: and the effect
+                  - code [ref=e399]: NoSchedule
+                  - text: during node draining operations. You can add this toleration to your pods to prevent them from being removed during a repave operation.
+                - generic [ref=e401]:
+                  - code [ref=e403]:
+                    - generic [ref=e404]: "tolerations:"
+                    - generic [ref=e405]: "- key: node.kubernetes.io/unschedulable"
+                    - generic [ref=e406]: "effect: NoSchedule"
+                    - generic [ref=e407]: "operator: Exists"
+                  - button "Copy code to clipboard" [ref=e409] [cursor=pointer]:
+                    - generic [ref=e410]:
+                      - img [ref=e411]
+                      - img [ref=e413]
+                - paragraph [ref=e415]:
+                  - text: Adding the
+                  - code [ref=e416]: node.kubernetes.io/unschedulable
+                  - text: toleration to your pods can be useful in scenarios where you have pods that behave as
+                  - emphasis [ref=e417]: DeamonSets
+                  - text: and should not be removed during a repave operation. You can use this toleration to ensure that these pods are not removed during a repave operation.
+                - paragraph [ref=e418]:
+                  - text: You can also specify other tolerations during the cluster creation process. For more information on adding tolerations, refer to the
+                  - link "Taints and Tolerations" [ref=e419] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/taints/
+                  - text: guide.
+                - heading "Node Pool Configuration SettingsDirect link to Node Pool Configuration Settings" [level=2] [ref=e420]:
+                  - text: Node Pool Configuration Settings
+                  - link "Direct link to Node Pool Configuration Settings" [ref=e421] [cursor=pointer]:
+                    - /url: "#node-pool-configuration-settings"
+                    - text: "#"
+                - paragraph [ref=e422]: The following tables contain the configuration settings for node pools. Depending on the type of node pool, some of the settings may not be available.
+                - heading "Control Plane Node PoolDirect link to Control Plane Node Pool" [level=3] [ref=e423]:
+                  - text: Control Plane Node Pool
+                  - link "Direct link to Control Plane Node Pool" [ref=e424] [cursor=pointer]:
+                    - /url: "#control-plane-node-pool"
+                    - text: "#"
+                - table [ref=e425]:
+                  - rowgroup [ref=e426]:
+                    - row "Property Description" [ref=e427]:
+                      - cell "Property" [ref=e428]:
+                        - strong [ref=e429]: Property
+                      - cell "Description" [ref=e430]:
+                        - strong [ref=e431]: Description
+                  - rowgroup [ref=e432]:
+                    - row "Node pool name A descriptive name for the node pool." [ref=e433]:
+                      - cell "Node pool name" [ref=e434]:
+                        - strong [ref=e435]: Node pool name
+                      - cell "A descriptive name for the node pool." [ref=e436]
+                    - row "Number of nodes in the pool Number of nodes to be provisioned for the node pool. This number can be 1, 3, or 5." [ref=e437]:
+                      - cell "Number of nodes in the pool" [ref=e438]:
+                        - strong [ref=e439]: Number of nodes in the pool
+                      - cell "Number of nodes to be provisioned for the node pool. This number can be 1, 3, or 5." [ref=e440]
+                    - row "Allow worker capability Select this option to allow workloads to be provisioned on control plane nodes." [ref=e441]:
+                      - cell "Allow worker capability" [ref=e442]:
+                        - strong [ref=e443]: Allow worker capability
+                      - cell "Select this option to allow workloads to be provisioned on control plane nodes." [ref=e444]
+                    - row "Additional Labels Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the Node Labels." [ref=e445]:
+                      - cell "Additional Labels" [ref=e446]:
+                        - strong [ref=e447]: Additional Labels
+                      - cell "Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the Node Labels." [ref=e448]:
+                        - text: Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the
+                        - link "Node Labels" [ref=e449] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-labels/
+                        - text: .
+                    - row "Taints Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the Taints and Tolerations guide." [ref=e450]:
+                      - cell "Taints" [ref=e451]:
+                        - strong [ref=e452]: Taints
+                      - cell "Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the Taints and Tolerations guide." [ref=e453]:
+                        - text: Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the
+                        - link "Taints and Tolerations" [ref=e454] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/taints/
+                        - text: guide.
+                    - row "Availability Zones The Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so." [ref=e455]:
+                      - cell "Availability Zones" [ref=e456]:
+                        - strong [ref=e457]: Availability Zones
+                      - cell "The Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so." [ref=e458]
+                    - row "Disk Size Give the required storage size." [ref=e459]:
+                      - cell "Disk Size" [ref=e460]:
+                        - strong [ref=e461]: Disk Size
+                      - cell "Give the required storage size." [ref=e462]
+                - heading "Worker Node PoolDirect link to Worker Node Pool" [level=3] [ref=e463]:
+                  - text: Worker Node Pool
+                  - link "Direct link to Worker Node Pool" [ref=e464] [cursor=pointer]:
+                    - /url: "#worker-node-pool"
+                    - text: "#"
+                - table [ref=e465]:
+                  - rowgroup [ref=e466]:
+                    - row "Property Description" [ref=e467]:
+                      - cell "Property" [ref=e468]:
+                        - strong [ref=e469]: Property
+                      - cell "Description" [ref=e470]:
+                        - strong [ref=e471]: Description
+                  - rowgroup [ref=e472]:
+                    - row "Node pool name A descriptive name for the worker pool." [ref=e473]:
+                      - cell "Node pool name" [ref=e474]:
+                        - strong [ref=e475]: Node pool name
+                      - cell "A descriptive name for the worker pool." [ref=e476]
+                    - row "Enable Autoscaler Scale the worker pool horizontally based on its per-node workload counts. The Minimum size specifies the lower bound of nodes in the pool, and the Maximum size specifies the upper bound. Setting both parameters to the same value results in a static node count. Public cloud (AWS, Azure, and GCP) IaaS clusters and private data center (VMware, OpenStack, and MAAS) clusters use the Cluster API autoscaler tool; Azure AKS uses the Azure autoscaler tool, which is based on the Cluster API autoscaler." [ref=e477]:
+                      - cell "Enable Autoscaler" [ref=e478]:
+                        - strong [ref=e479]: Enable Autoscaler
+                      - cell "Scale the worker pool horizontally based on its per-node workload counts. The Minimum size specifies the lower bound of nodes in the pool, and the Maximum size specifies the upper bound. Setting both parameters to the same value results in a static node count. Public cloud (AWS, Azure, and GCP) IaaS clusters and private data center (VMware, OpenStack, and MAAS) clusters use the Cluster API autoscaler tool; Azure AKS uses the Azure autoscaler tool, which is based on the Cluster API autoscaler." [ref=e480]:
+                        - text: Scale the worker pool horizontally based on its per-node workload counts. The
+                        - strong [ref=e481]: Minimum size
+                        - text: specifies the lower bound of nodes in the pool, and the
+                        - strong [ref=e482]: Maximum size
+                        - text: specifies the upper bound. Setting both parameters to the same value results in a static node count. Public cloud (AWS, Azure, and GCP) IaaS clusters and private data center (VMware, OpenStack, and MAAS) clusters use the Cluster API
+                        - link "autoscaler" [ref=e483] [cursor=pointer]:
+                          - /url: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md
+                        - text: tool; Azure AKS uses the
+                        - link "Azure autoscaler" [ref=e484] [cursor=pointer]:
+                          - /url: https://learn.microsoft.com/en-us/azure/aks/cluster-autoscaler?tabs=azure-cli
+                        - text: tool, which is based on the Cluster API autoscaler.
+                    - row "Number of nodes in the pool Number of nodes to be provisioned for the node pool. This field is hidden if Enable Autoscaler is toggled on." [ref=e485]:
+                      - cell "Number of nodes in the pool" [ref=e486]:
+                        - strong [ref=e487]: Number of nodes in the pool
+                      - cell "Number of nodes to be provisioned for the node pool. This field is hidden if Enable Autoscaler is toggled on." [ref=e488]:
+                        - text: Number of nodes to be provisioned for the node pool. This field is hidden if
+                        - strong [ref=e489]: Enable Autoscaler
+                        - text: is toggled on.
+                    - row "Node repave interval The time interval in seconds between repaves. The default value is 0 seconds." [ref=e490]:
+                      - cell "Node repave interval" [ref=e491]:
+                        - strong [ref=e492]: Node repave interval
+                      - cell "The time interval in seconds between repaves. The default value is 0 seconds." [ref=e493]
+                    - row "Additional Labels Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the Node Labels guide." [ref=e494]:
+                      - cell "Additional Labels" [ref=e495]:
+                        - strong [ref=e496]: Additional Labels
+                      - cell "Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the Node Labels guide." [ref=e497]:
+                        - text: Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the
+                        - link "Node Labels" [ref=e498] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-labels/
+                        - text: guide.
+                    - row "Taints Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the Taints and Tolerations guide." [ref=e499]:
+                      - cell "Taints" [ref=e500]:
+                        - strong [ref=e501]: Taints
+                      - cell "Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the Taints and Tolerations guide." [ref=e502]:
+                        - text: Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the
+                        - link "Taints and Tolerations" [ref=e503] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/taints/
+                        - text: guide.
+                    - row "Rolling update Apply the update policy. Expand first launches new nodes and then terminates old notes. Contract first terminates old nodes and then launches new ones." [ref=e504]:
+                      - cell "Rolling update" [ref=e505]:
+                        - strong [ref=e506]: Rolling update
+                      - cell "Apply the update policy. Expand first launches new nodes and then terminates old notes. Contract first terminates old nodes and then launches new ones." [ref=e507]:
+                        - text: Apply the update policy.
+                        - strong [ref=e508]: Expand first
+                        - text: launches new nodes and then terminates old notes.
+                        - strong [ref=e509]: Contract first
+                        - text: terminates old nodes and then launches new ones.
+                    - row "Instance Option AWS options for compute capacity. On Demand gives you full control over the instance lifecycle without long-term commitment. Spot allows the use of spare EC2 capacity at a discount but which can be reclaimed if needed." [ref=e510]:
+                      - cell "Instance Option" [ref=e511]:
+                        - strong [ref=e512]: Instance Option
+                      - cell "AWS options for compute capacity. On Demand gives you full control over the instance lifecycle without long-term commitment. Spot allows the use of spare EC2 capacity at a discount but which can be reclaimed if needed." [ref=e513]:
+                        - text: AWS options for compute capacity.
+                        - strong [ref=e514]: On Demand
+                        - text: gives you full control over the instance lifecycle without long-term commitment.
+                        - strong [ref=e515]: Spot
+                        - text: allows the use of spare EC2 capacity at a discount but which can be reclaimed if needed.
+                    - row "Instance Type The compute size." [ref=e516]:
+                      - cell "Instance Type" [ref=e517]:
+                        - strong [ref=e518]: Instance Type
+                      - cell "The compute size." [ref=e519]
+                    - row "Availability Zones The Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. If you select public subnets, ensure those subnets have automatic public IP addresses assigned. Otherwise, node deployment errors will occur. Automatic public IP address assignment is typically handled by the infrastructure provider Palette is deploying a cluster to. Discuss this with your network team for additional guidance." [ref=e520]:
+                      - cell "Availability Zones" [ref=e521]:
+                        - strong [ref=e522]: Availability Zones
+                      - cell "The Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. If you select public subnets, ensure those subnets have automatic public IP addresses assigned. Otherwise, node deployment errors will occur. Automatic public IP address assignment is typically handled by the infrastructure provider Palette is deploying a cluster to. Discuss this with your network team for additional guidance." [ref=e523]
+                    - row "Disk Size Give the required storage size." [ref=e524]:
+                      - cell "Disk Size" [ref=e525]:
+                        - strong [ref=e526]: Disk Size
+                      - cell "Give the required storage size." [ref=e527]
+                - generic [ref=e528]:
+                  - generic [ref=e529]:
+                    - img [ref=e531]
+                    - text: warning
+                  - paragraph [ref=e534]: Some features may not be available for all infrastructure providers. Review each infrastructure provider's node pool configuration settings to learn more.
+                - heading "Create a New Node PoolDirect link to Create a New Node Pool" [level=2] [ref=e535]:
+                  - text: Create a New Node Pool
+                  - link "Direct link to Create a New Node Pool" [ref=e536] [cursor=pointer]:
+                    - /url: "#create-a-new-node-pool"
+                    - text: "#"
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e537]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e538] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e539]:
+                  - listitem [ref=e540]:
+                    - paragraph [ref=e541]: An active cluster in Palette.
+                  - listitem [ref=e542]:
+                    - paragraph [ref=e543]:
+                      - text: The
+                      - code [ref=e544]: cluster.update
+                      - text: permission that is required to edit clusters.
+                - heading "Create Node PoolDirect link to Create Node Pool" [level=3] [ref=e545]:
+                  - text: Create Node Pool
+                  - link "Direct link to Create Node Pool" [ref=e546] [cursor=pointer]:
+                    - /url: "#create-node-pool"
+                    - text: "#"
+                - paragraph [ref=e547]: You can create a new node pool for an active cluster. To create a new node pool follow the steps below.
+                - list [ref=e548]:
+                  - listitem [ref=e549]:
+                    - paragraph [ref=e550]:
+                      - text: Log in to
+                      - link "Palette" [ref=e551] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e552]:
+                    - paragraph [ref=e553]:
+                      - text: Navigate to the left
+                      - strong [ref=e554]: Main Menu
+                      - text: and click on
+                      - strong [ref=e555]: Clusters
+                      - text: .
+                  - listitem [ref=e556]:
+                    - paragraph [ref=e557]: Click on the row of the cluster you want to edit the node pool.
+                  - listitem [ref=e558]:
+                    - paragraph [ref=e559]:
+                      - text: Click on the
+                      - strong [ref=e560]: Nodes
+                      - text: tab.
+                  - listitem [ref=e561]:
+                    - paragraph [ref=e562]:
+                      - text: Click on
+                      - strong [ref=e563]: New Node Pool
+                      - text: .
+                  - listitem [ref=e564]:
+                    - paragraph [ref=e565]:
+                      - text: Fill out the input fields in the
+                      - strong [ref=e566]: Add node pool
+                      - text: page. Refer to the
+                      - link "Node Pool Configuration Settings" [ref=e567] [cursor=pointer]:
+                        - /url: "#node-pool-configuration-settings"
+                      - text: tables for more information on each field.
+                  - listitem [ref=e568]:
+                    - paragraph [ref=e569]:
+                      - text: Click on
+                      - strong [ref=e570]: Confirm
+                      - text: to create the new node pool.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e571]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e572] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e573]: After you create a new node pool, you can validate the node pool by following the steps below.
+                - list [ref=e574]:
+                  - listitem [ref=e575]:
+                    - paragraph [ref=e576]:
+                      - text: Log in to
+                      - link "Palette" [ref=e577] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e578]:
+                    - paragraph [ref=e579]:
+                      - text: Navigate to the left
+                      - strong [ref=e580]: Main Menu
+                      - text: and click on
+                      - strong [ref=e581]: Clusters
+                      - text: .
+                  - listitem [ref=e582]:
+                    - paragraph [ref=e583]: Click on the row of the cluster you added the new node pool.
+                  - listitem [ref=e584]:
+                    - paragraph [ref=e585]:
+                      - text: Click on the
+                      - strong [ref=e586]: Nodes
+                      - text: tab.
+                  - listitem [ref=e587]:
+                    - paragraph [ref=e588]:
+                      - text: Ensure the new node pool is listed in the
+                      - strong [ref=e589]: Node Pools
+                      - text: section and that all compute instances are in the healthy status.
+                - heading "Change a Node PoolDirect link to Change a Node Pool" [level=2] [ref=e590]:
+                  - text: Change a Node Pool
+                  - link "Direct link to Change a Node Pool" [ref=e591] [cursor=pointer]:
+                    - /url: "#change-a-node-pool"
+                    - text: "#"
+                - paragraph [ref=e592]: You can modify node pools for existing clusters. This includes changing the node pool's taints, adjusting the node repavement interval, modifying the number of compute instances in the node pool, activating or disabling autoscaler, and more. To make changes to an active cluster's node pool, follow the steps below.
+                - generic [ref=e593]:
+                  - generic [ref=e594]:
+                    - img [ref=e596]
+                    - text: warning
+                  - paragraph [ref=e599]: If autoscaler is enabled, you cannot adjust the number of nodes in the pool manually.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e600]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e601] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e602]:
+                  - listitem [ref=e603]:
+                    - paragraph [ref=e604]: An active cluster in Palette.
+                  - listitem [ref=e605]:
+                    - paragraph [ref=e606]:
+                      - text: The
+                      - code [ref=e607]: cluster.update
+                      - text: permission that is required to edit clusters.
+                - heading "Edit Node PoolDirect link to Edit Node Pool" [level=3] [ref=e608]:
+                  - text: Edit Node Pool
+                  - link "Direct link to Edit Node Pool" [ref=e609] [cursor=pointer]:
+                    - /url: "#edit-node-pool"
+                    - text: "#"
+                - list [ref=e610]:
+                  - listitem [ref=e611]:
+                    - paragraph [ref=e612]:
+                      - text: Log in to
+                      - link "Palette" [ref=e613] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e614]:
+                    - paragraph [ref=e615]:
+                      - text: Navigate to the left
+                      - strong [ref=e616]: Main Menu
+                      - text: and click on
+                      - strong [ref=e617]: Clusters
+                      - text: .
+                  - listitem [ref=e618]:
+                    - paragraph [ref=e619]: Select a cluster to edit the node pool.
+                  - listitem [ref=e620]:
+                    - paragraph [ref=e621]:
+                      - text: Click on the
+                      - strong [ref=e622]: Nodes
+                      - text: tab.
+                  - listitem [ref=e623]:
+                    - paragraph [ref=e624]:
+                      - text: The nodes details page is where you can review the existing node pools and their configuration. You can also add a new node pool from this page. Click on the
+                      - strong [ref=e625]: Edit
+                      - text: button to make changes to the node pool.
+                  - listitem [ref=e626]:
+                    - paragraph [ref=e627]:
+                      - text: Make changes as needed. Refer to the
+                      - link "Node Pool Configuration Settings" [ref=e628] [cursor=pointer]:
+                        - /url: "#node-pool-configuration-settings"
+                      - text: tables for more information on each field.
+                  - listitem [ref=e629]:
+                    - paragraph [ref=e630]:
+                      - text: Click on
+                      - strong [ref=e631]: Confirm
+                      - text: to update the node pool.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e632]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e633] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - paragraph [ref=e634]: After you have modified a new node pool, you can validate the node pool by following the steps below.
+                - list [ref=e635]:
+                  - listitem [ref=e636]:
+                    - paragraph [ref=e637]:
+                      - text: Log in to
+                      - link "Palette" [ref=e638] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e639]:
+                    - paragraph [ref=e640]:
+                      - text: Navigate to the left
+                      - strong [ref=e641]: Main Menu
+                      - text: and click on
+                      - strong [ref=e642]: Clusters
+                      - text: .
+                  - listitem [ref=e643]:
+                    - paragraph [ref=e644]: Select the cluster with the new node pool.
+                  - listitem [ref=e645]:
+                    - paragraph [ref=e646]:
+                      - text: Click on the
+                      - strong [ref=e647]: Nodes
+                      - text: tab.
+                  - listitem [ref=e648]:
+                    - paragraph [ref=e649]:
+                      - text: Ensure the new node pool is listed in the
+                      - strong [ref=e650]: Node Pools
+                      - text: section and that all compute instances are in the healthy status.
+                - heading "Delete a Node PoolDirect link to Delete a Node Pool" [level=2] [ref=e651]:
+                  - text: Delete a Node Pool
+                  - link "Direct link to Delete a Node Pool" [ref=e652] [cursor=pointer]:
+                    - /url: "#delete-a-node-pool"
+                    - text: "#"
+                - paragraph [ref=e653]: You can delete a worker node pool from an active cluster using the following steps.
+                - generic [ref=e654]:
+                  - generic [ref=e655]:
+                    - img [ref=e657]
+                    - text: warning
+                  - paragraph [ref=e660]: The deletion of a node pool drains and removes its worker nodes. Before proceeding, ensure that your remaining node pools have enough resources to take on the workloads from the pool being deleted, to prevent any disruption.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e661]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e662] [cursor=pointer]:
+                    - /url: "#prerequisites-2"
+                    - text: "#"
+                - list [ref=e663]:
+                  - listitem [ref=e664]:
+                    - paragraph [ref=e665]: An active cluster in Palette with at least one worker node pool.
+                  - listitem [ref=e666]:
+                    - paragraph [ref=e667]:
+                      - text: The
+                      - code [ref=e668]: cluster.update
+                      - text: permission, which is required to edit clusters.
+                - heading "Delete Node PoolDirect link to Delete Node Pool" [level=3] [ref=e669]:
+                  - text: Delete Node Pool
+                  - link "Direct link to Delete Node Pool" [ref=e670] [cursor=pointer]:
+                    - /url: "#delete-node-pool"
+                    - text: "#"
+                - list [ref=e671]:
+                  - listitem [ref=e672]:
+                    - paragraph [ref=e673]:
+                      - text: Log in to
+                      - link "Palette" [ref=e674] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e675]:
+                    - paragraph [ref=e676]:
+                      - text: From the left
+                      - strong [ref=e677]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e678]: Clusters
+                      - text: .
+                  - listitem [ref=e679]:
+                    - paragraph [ref=e680]: Select the cluster with the node pool you want to delete.
+                  - listitem [ref=e681]:
+                    - paragraph [ref=e682]:
+                      - text: Click the
+                      - strong [ref=e683]: Nodes
+                      - text: tab.
+                  - listitem [ref=e684]:
+                    - paragraph [ref=e685]:
+                      - text: Locate the node pool you want to delete and click the
+                      - strong [ref=e686]: Delete
+                      - text: button.
+                  - listitem [ref=e687]:
+                    - paragraph [ref=e688]:
+                      - text: Click
+                      - strong [ref=e689]: Delete
+                      - text: again to confirm the deletion. This action will drain and delete all nodes in the node pool.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e690]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e691] [cursor=pointer]:
+                    - /url: "#validate-2"
+                    - text: "#"
+                - paragraph [ref=e692]: Use the following steps to confirm that the node pool was deleted successfully.
+                - list [ref=e693]:
+                  - listitem [ref=e694]:
+                    - paragraph [ref=e695]:
+                      - text: Log in to
+                      - link "Palette" [ref=e696] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e697]:
+                    - paragraph [ref=e698]:
+                      - text: From the left
+                      - strong [ref=e699]: Main Menu
+                      - text: ", click on"
+                      - strong [ref=e700]: Clusters
+                      - text: .
+                  - listitem [ref=e701]:
+                    - paragraph [ref=e702]: Select the cluster that had the deleted node pool.
+                  - listitem [ref=e703]:
+                    - paragraph [ref=e704]:
+                      - text: Click the
+                      - strong [ref=e705]: Nodes
+                      - text: tab.
+                  - listitem [ref=e706]:
+                    - paragraph [ref=e707]:
+                      - text: Verify that the deleted node pool is no longer listed in the
+                      - strong [ref=e708]: Node Pools
+                      - text: section and that all the remaining compute instances are in a healthy state.
+                - heading "Approve Cluster RepaveDirect link to Approve Cluster Repave" [level=2] [ref=e709]:
+                  - text: Approve Cluster Repave
+                  - link "Direct link to Approve Cluster Repave" [ref=e710] [cursor=pointer]:
+                    - /url: "#approve-cluster-repave"
+                    - text: "#"
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e711]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e712] [cursor=pointer]:
+                    - /url: "#prerequisites-3"
+                    - text: "#"
+                - list [ref=e713]:
+                  - listitem [ref=e714]:
+                    - paragraph [ref=e715]: An active cluster in Palette.
+                  - listitem [ref=e716]:
+                    - paragraph [ref=e717]:
+                      - text: The
+                      - code [ref=e718]: cluster.update
+                      - text: permission that is required to edit clusters.
+                  - listitem [ref=e719]:
+                    - paragraph [ref=e720]: Pending cluster repave operations.
+                - heading "Approve Cluster RepaveDirect link to Approve Cluster Repave" [level=3] [ref=e721]:
+                  - text: Approve Cluster Repave
+                  - link "Direct link to Approve Cluster Repave" [ref=e722] [cursor=pointer]:
+                    - /url: "#approve-cluster-repave-1"
+                    - text: "#"
+                - list [ref=e723]:
+                  - listitem [ref=e724]:
+                    - paragraph [ref=e725]:
+                      - text: Log in to
+                      - link "Palette" [ref=e726] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e727]:
+                    - paragraph [ref=e728]:
+                      - text: Navigate to the left
+                      - strong [ref=e729]: Main Menu
+                      - text: and click on
+                      - strong [ref=e730]: Clusters
+                      - text: .
+                  - listitem [ref=e731]:
+                    - paragraph [ref=e732]: Select a cluster with pending repave operations.
+                  - listitem [ref=e733]:
+                    - paragraph [ref=e734]:
+                      - text: Click
+                      - strong [ref=e735]: Updates
+                      - text: .
+                    - paragraph [ref=e736]:
+                      - img "Cluster overview page with the highlighted Updates button" [ref=e737]
+                  - listitem [ref=e738]:
+                    - paragraph [ref=e739]: Review and, optionally, override changes that the repave introduces.
+                    - paragraph [ref=e740]:
+                      - img "Preview of repave updates in the Palette editor" [ref=e741]
+                  - listitem [ref=e742]:
+                    - paragraph [ref=e743]:
+                      - text: Click
+                      - strong [ref=e744]: Confirm updates
+                      - text: .
+                - heading "ValidationDirect link to Validation" [level=3] [ref=e745]:
+                  - text: Validation
+                  - link "Direct link to Validation" [ref=e746] [cursor=pointer]:
+                    - /url: "#validation"
+                    - text: "#"
+                - list [ref=e747]:
+                  - listitem [ref=e748]:
+                    - paragraph [ref=e749]:
+                      - text: Log in to
+                      - link "Palette" [ref=e750] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e751]:
+                    - paragraph [ref=e752]:
+                      - text: Navigate to the left
+                      - strong [ref=e753]: Main Menu
+                      - text: and click on
+                      - strong [ref=e754]: Clusters
+                      - text: .
+                  - listitem [ref=e755]:
+                    - paragraph [ref=e756]:
+                      - text: Click on the
+                      - strong [ref=e757]: Nodes
+                      - text: tab.
+                  - listitem [ref=e758]:
+                    - paragraph [ref=e759]: Verify that all compute instances are in the healthy status and reflect the applied repave changes.
+                    - paragraph [ref=e760]:
+                      - img "Cluster nodes page with all nodes in the healthy status" [ref=e761]
+              - generic [ref=e762]:
+                - generic [ref=e764]:
+                  - text: "Tags:"
+                  - list [ref=e765]:
+                    - listitem [ref=e766]:
+                      - link "clusters" [ref=e767] [cursor=pointer]:
+                        - /url: /tags/clusters/
+                    - listitem [ref=e768]:
+                      - link "cluster management" [ref=e769] [cursor=pointer]:
+                        - /url: /tags/cluster-management/
+                - link "Edit this page" [ref=e772] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/cluster-management/node-pool.md
+                  - img [ref=e773]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e777]:
+              - link "Previous « Map and Filter Clusters" [ref=e778] [cursor=pointer]:
+                - /url: /clusters/cluster-management/cluster-map-filters/
+                - generic [ref=e779]: Previous
+                - generic [ref=e780]: « Map and Filter Clusters
+              - link "Next Configure Applications to Use Proxy Server »" [ref=e781] [cursor=pointer]:
+                - /url: /clusters/cluster-management/cluster-proxy/
+                - generic [ref=e782]: Next
+                - generic [ref=e783]: Configure Applications to Use Proxy Server »
+          - list [ref=e786]:
+            - listitem [ref=e787]:
+              - link "Repave Behavior and Configuration" [ref=e788] [cursor=pointer]:
+                - /url: "#repave-behavior-and-configuration"
+            - listitem [ref=e789]:
+              - link "Node Pool Configuration Settings" [ref=e790] [cursor=pointer]:
+                - /url: "#node-pool-configuration-settings"
+            - listitem [ref=e791]:
+              - link "Create a New Node Pool" [ref=e792] [cursor=pointer]:
+                - /url: "#create-a-new-node-pool"
+            - listitem [ref=e793]:
+              - link "Change a Node Pool" [ref=e794] [cursor=pointer]:
+                - /url: "#change-a-node-pool"
+            - listitem [ref=e795]:
+              - link "Delete a Node Pool" [ref=e796] [cursor=pointer]:
+                - /url: "#delete-a-node-pool"
+            - listitem [ref=e797]:
+              - link "Approve Cluster Repave" [ref=e798] [cursor=pointer]:
+                - /url: "#approve-cluster-repave"
+  - button "Project Logo Ask AI" [ref=e799] [cursor=pointer]:
+    - generic [ref=e802]:
+      - img "Project Logo" [ref=e803]
+      - paragraph [ref=e804]: Ask AI
+```

@@ -1,0 +1,668 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                  - listitem [ref=e107]:
+                    - generic [ref=e108]:
+                      - link "Data Center Clusters" [ref=e109] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e111]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e113] [cursor=pointer]
+                  - listitem [ref=e114]:
+                    - generic [ref=e115]:
+                      - link "Edge" [ref=e116] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e118]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e120] [cursor=pointer]
+                  - listitem [ref=e121]:
+                    - generic [ref=e122]:
+                      - link "Palette Virtual Clusters" [ref=e123] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e125]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e127] [cursor=pointer]
+                  - listitem [ref=e128]:
+                    - generic [ref=e129]:
+                      - link "Imported Clusters" [ref=e130] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e132]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e134] [cursor=pointer]
+                  - listitem [ref=e135]:
+                    - generic [ref=e136]:
+                      - link "Manage Clusters" [ref=e137] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e139]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e141] [cursor=pointer]
+                  - listitem [ref=e142]:
+                    - generic [ref=e143]:
+                      - link "Cluster Groups" [ref=e144] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e146]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e148] [cursor=pointer]
+                  - listitem [ref=e149]:
+                    - generic [ref=e150]:
+                      - link "Private Cloud Gateway" [expanded] [ref=e151] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e153]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e155] [cursor=pointer]
+                    - list [ref=e156]:
+                      - listitem [ref=e157]:
+                        - link "Architecture" [ref=e158] [cursor=pointer]:
+                          - /url: /clusters/pcg/architecture/
+                      - listitem [ref=e159]:
+                        - generic [ref=e160]:
+                          - link "Deploy a PCG with Palette CLI" [ref=e161] [cursor=pointer]:
+                            - /url: /clusters/pcg/deploy-pcg/
+                          - button "Toggle the collapsible sidebar category 'Deploy a PCG with Palette CLI'" [ref=e162] [cursor=pointer]
+                      - listitem [ref=e163]:
+                        - link "Deploy a PCG to an Existing Kubernetes Cluster" [ref=e164] [cursor=pointer]:
+                          - /url: /clusters/pcg/deploy-pcg-k8s/
+                      - listitem [ref=e165]:
+                        - generic [ref=e166]:
+                          - link "Manage PCG" [expanded] [ref=e167] [cursor=pointer]:
+                            - /url: /clusters/pcg/manage-pcg/
+                          - button "Toggle the collapsible sidebar category 'Manage PCG'" [ref=e168] [cursor=pointer]
+                        - list [ref=e169]:
+                          - listitem [ref=e170]:
+                            - link "Create and Manage IPAM Node Pools" [ref=e171] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/create-manage-node-pool/
+                          - listitem [ref=e172]:
+                            - link "Enable and Manage Proxy Configurations" [ref=e173] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/configure-proxy/
+                          - listitem [ref=e174]:
+                            - link "Add DNS Mapping" [ref=e175] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/add-dns-mapping/
+                          - listitem [ref=e176]:
+                            - link "Increase PCG Node Count" [ref=e177] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/scale-pcg-nodes/
+                          - listitem [ref=e178]:
+                            - link "Delete a PCG" [ref=e179] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/remove-pcg/
+                          - listitem [ref=e180]:
+                            - link "Upgrade a PCG" [ref=e181] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/pcg-upgrade/
+                          - listitem [ref=e182]:
+                            - link "Migrate a PCG" [ref=e183] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/migrate_pcg/
+                          - listitem [ref=e184]:
+                            - link "Override Registry Configuration" [ref=e185] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/registry-override/
+              - listitem [ref=e186]:
+                - generic [ref=e187]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e188] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e190]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e192] [cursor=pointer]
+              - listitem [ref=e193]:
+                - generic [ref=e194]:
+                  - link "Palette Dev Engine" [ref=e195] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e197]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e199] [cursor=pointer]
+              - listitem [ref=e200]:
+                - generic [ref=e201]:
+                  - link "Virtual Machine Orchestrator" [ref=e202] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e204]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e206] [cursor=pointer]
+              - listitem [ref=e207]:
+                - generic [ref=e208]:
+                  - link "Workspaces" [ref=e209] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e211]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e213] [cursor=pointer]
+              - listitem [ref=e214]:
+                - generic [ref=e215]:
+                  - link "Packs List" [ref=e216] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e218]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e220] [cursor=pointer]
+              - listitem [ref=e221]:
+                - generic [ref=e222]:
+                  - link "User & Role Management" [ref=e223] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e225]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e227] [cursor=pointer]
+              - listitem [ref=e228]:
+                - generic [ref=e229]:
+                  - link "Registries and Packs" [ref=e230] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e232]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e234] [cursor=pointer]
+              - listitem [ref=e235]:
+                - generic [ref=e236]:
+                  - link "Security" [ref=e237] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e239]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e241] [cursor=pointer]
+              - listitem [ref=e242]:
+                - generic [ref=e243]:
+                  - link "Audit Logs" [ref=e244] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e246]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e248] [cursor=pointer]
+              - listitem [ref=e249]:
+                - generic [ref=e250]:
+                  - link "Self-Hosted Palette" [ref=e251] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e253]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e255] [cursor=pointer]
+              - listitem [ref=e256]:
+                - generic [ref=e257]:
+                  - link "Palette VerteX" [ref=e258] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e260]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e262] [cursor=pointer]
+              - listitem [ref=e263]:
+                - generic [ref=e264]:
+                  - link "Tenant Administration" [ref=e265] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e267]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e269] [cursor=pointer]
+              - listitem [ref=e270]:
+                - generic [ref=e271]:
+                  - link "Automation" [ref=e272] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e274]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e276] [cursor=pointer]
+              - listitem [ref=e277]:
+                - generic [ref=e278]:
+                  - link "Troubleshooting" [ref=e279] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e281]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e283] [cursor=pointer]
+              - listitem [ref=e284]:
+                - link "Glossary" [ref=e285] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e287]
+                  - text: Glossary
+              - listitem [ref=e289]:
+                - generic [ref=e290]:
+                  - link "Compliance & Legal" [ref=e291] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e293]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e295] [cursor=pointer]
+              - listitem [ref=e296]:
+                - button "Privacy Settings" [ref=e297] [cursor=pointer]:
+                  - img [ref=e298]
+                  - text: Privacy Settings
+      - main [ref=e300]:
+        - generic [ref=e302]:
+          - generic [ref=e304]:
+            - article [ref=e305]:
+              - navigation "Breadcrumbs" [ref=e306]:
+                - list [ref=e307]:
+                  - listitem [ref=e308]:
+                    - link "Home page" [ref=e309] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e310]
+                  - listitem [ref=e312]:
+                    - link "Clusters" [ref=e313] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e314]:
+                    - link "Private Cloud Gateway" [ref=e315] [cursor=pointer]:
+                      - /url: /clusters/pcg/
+                  - listitem [ref=e316]:
+                    - link "Manage PCG" [ref=e317] [cursor=pointer]:
+                      - /url: /clusters/pcg/manage-pcg/
+                  - listitem [ref=e318]:
+                    - generic [ref=e319]: Enable and Manage Proxy Configurations
+              - generic [ref=e320]:
+                - heading "Enable and Manage Proxy Configurations" [level=1] [ref=e322]
+                - paragraph [ref=e323]: You can add and manage proxy configurations for a Private Cloud Gateway (PCG) deployed into an existing Kubernetes cluster. By default, a PCG deployed to an existing Kubernetes cluster does not have a proxy configuration. If your infrastructure environment requires a proxy configuration, use the instructions in this guide to add and manage proxy configurations for a PCG deployed in a Kubernetes cluster and to ensure workload clusters deployed through Palette inherit the proxy configuration from the PCG cluster.
+                - generic [ref=e324]:
+                  - generic [ref=e325]:
+                    - img [ref=e327]
+                    - text: info
+                  - paragraph [ref=e330]: Workload clusters deployed through Palette will inherit proxy configuration from the PCG cluster. The PCG is not used as a network proxy for deployed workload clusters and does not provide internet connectivity for the workload clusters. Individual workload clusters must have their own proxy configurations to access the internet.
+                - paragraph [ref=e331]: Use the following steps to add and manage proxy configurations for a PCG.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e332]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e333] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e334]:
+                  - listitem [ref=e335]:
+                    - paragraph [ref=e336]:
+                      - text: A PCG is deployed into an active and healthy Kubernetes cluster. Refer to
+                      - link "Deploy a PCG to an Existing Kubernetes Cluster" [ref=e337] [cursor=pointer]:
+                        - /url: /clusters/pcg/deploy-pcg-k8s/
+                      - text: for additional guidance.
+                    - generic [ref=e338]:
+                      - generic [ref=e339]:
+                        - img [ref=e341]
+                        - text: warning
+                      - paragraph [ref=e344]:
+                        - text: If you deployed a
+                        - link "PCG through the Palette CLI" [ref=e345] [cursor=pointer]:
+                          - /url: /clusters/pcg/#supported-environments
+                        - text: ", refer to the respective platform installation guide for instructions on how to configure proxy settings during the installation process through the CLI."
+                  - listitem [ref=e346]:
+                    - paragraph [ref=e347]: The kubeconfig file for the Kubernetes cluster where the PCG is deployed. The kubeconfig file is used to authenticate with the Kubernetes cluster and deploy the Reach service.
+                  - listitem [ref=e348]:
+                    - paragraph [ref=e349]: Admin access to the Kubernetes cluster where the PCG is deployed. The Reach Helm Chart will create a namespace, service accounts, and roles in the cluster.
+                  - listitem [ref=e350]:
+                    - paragraph [ref=e351]:
+                      - text: The extract utilities
+                      - code [ref=e352]: zip
+                      - text: and
+                      - code [ref=e353]: tar
+                      - text: are installed in the system you are using to deploy the Helm chart.
+                  - listitem [ref=e354]:
+                    - paragraph [ref=e355]: Palette tenant administrator access.
+                  - listitem [ref=e356]:
+                    - paragraph [ref=e357]: Proxy configuration details, such as the proxy URL, port, and authentication credentials.
+                  - listitem [ref=e358]:
+                    - paragraph [ref=e359]: The deployed PCG must have network connectivity to the proxy server.
+                  - listitem [ref=e360]:
+                    - paragraph [ref=e361]: "The Kubernetes cluster where the PCG is deployed must have the proxy configuration. This includes any Certificate Authority (CA) certificates that are required to authenticate with the proxy server. This step varies depending on the platform where the Kubernetes cluster is deployed. Some platforms, such as managed Kubernetes services, may require additional steps. Below is a list of helpful links to set up proxy configurations for some common Kubernetes platforms:"
+                    - list [ref=e362]:
+                      - listitem [ref=e363]:
+                        - paragraph [ref=e364]:
+                          - link "Amazon EKS" [ref=e365] [cursor=pointer]:
+                            - /url: https://repost.aws/knowledge-center/eks-http-proxy-containerd-automation
+                      - listitem [ref=e366]:
+                        - paragraph [ref=e367]:
+                          - link "Azure AKS" [ref=e368] [cursor=pointer]:
+                            - /url: https://learn.microsoft.com/en-us/azure/aks/http-proxy
+                      - listitem [ref=e369]:
+                        - paragraph [ref=e370]:
+                          - link "vSphere" [ref=e371] [cursor=pointer]:
+                            - /url: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-configuration/GUID-7576FBBE-8B67-4D3F-B859-C9688E9442D7.html
+                        - generic [ref=e372]:
+                          - generic [ref=e373]:
+                            - img [ref=e375]
+                            - text: warning
+                          - paragraph [ref=e378]: This feature has only been tested on AWS, Azure, and VMware vSphere. If you are using a different cloud provider, contact our support team for additional guidance.
+                  - listitem [ref=e379]:
+                    - paragraph [ref=e380]: Download the Reach Helm Chart provided by our support team. The Reach Helm Chart is used to deploy the Reach service into the Kubernetes cluster where the PCG is deployed. The Reach service is used to manage proxy configurations for the PCG. Contact our support team to obtain the Reach Helm Chart.
+                  - listitem [ref=e381]:
+                    - paragraph [ref=e382]:
+                      - code [ref=e383]: cert-manager
+                      - text: is not already deployed in the Kubernetes cluster where the PCG is deployed. The reason for this is that you will deploy
+                      - code [ref=e384]: cert-manager
+                      - text: as part of the enablement steps.
+                    - generic [ref=e385]:
+                      - generic [ref=e386]:
+                        - img [ref=e388]
+                        - text: info
+                      - paragraph [ref=e391]:
+                        - text: If
+                        - code [ref=e392]: cert-manager
+                        - text: is already deployed, you can continue to use the service but make sure you edit the deployment to use the
+                        - code [ref=e393]: "- --feature-gates=AdditionalCertificateOutputFormats=true"
+                        - text: flag. Otherwise, the Reach service cannot manage the proxy configurations.
+                - heading "Enable ProxyDirect link to Enable Proxy" [level=2] [ref=e394]:
+                  - text: Enable Proxy
+                  - link "Direct link to Enable Proxy" [ref=e395] [cursor=pointer]:
+                    - /url: "#enable-proxy"
+                    - text: "#"
+                - list [ref=e396]:
+                  - listitem [ref=e397]:
+                    - paragraph [ref=e398]: Open a terminal session and navigate to the folder where you downloaded the Reach Helm Chart zip file.
+                  - listitem [ref=e399]:
+                    - paragraph [ref=e400]: Unzip the zip file you received from the support team.
+                    - generic [ref=e402]:
+                      - code [ref=e404]:
+                        - generic [ref=e405]: unzip release-*.zip -d palette
+                      - button "Copy code to clipboard" [ref=e407] [cursor=pointer]:
+                        - generic [ref=e408]:
+                          - img [ref=e409]
+                          - img [ref=e411]
+                  - listitem [ref=e413]:
+                    - paragraph [ref=e414]: Navigate to the release folder.
+                    - generic [ref=e416]:
+                      - code [ref=e418]:
+                        - generic [ref=e419]: cd palette/charts/release-*/
+                      - button "Copy code to clipboard" [ref=e421] [cursor=pointer]:
+                        - generic [ref=e422]:
+                          - img [ref=e423]
+                          - img [ref=e425]
+                  - listitem [ref=e427]:
+                    - paragraph [ref=e428]:
+                      - text: Deploy
+                      - code [ref=e429]: cert-manager
+                      - text: to the Kubernetes cluster where the PCG is deployed. Use the following command to deploy the
+                      - code [ref=e430]: cert-manager
+                      - text: Helm Chart.
+                    - generic [ref=e432]:
+                      - code [ref=e434]:
+                        - generic [ref=e435]: helm upgrade --values extras/cert-manager/values.yaml \
+                        - generic [ref=e436]: cert-manager extras/cert-manager/cert-manager-*.tgz --install
+                      - button "Copy code to clipboard" [ref=e438] [cursor=pointer]:
+                        - generic [ref=e439]:
+                          - img [ref=e440]
+                          - img [ref=e442]
+                  - listitem [ref=e444]:
+                    - paragraph [ref=e445]: Next, navigate to the reach-system folder and extract the Reach Helm Chart.
+                    - generic [ref=e447]:
+                      - code [ref=e449]:
+                        - generic [ref=e450]: cd extras/reach-system/ && tar -xvzf reach-system-*.tgz
+                      - button "Copy code to clipboard" [ref=e452] [cursor=pointer]:
+                        - generic [ref=e453]:
+                          - img [ref=e454]
+                          - img [ref=e456]
+                  - listitem [ref=e458]:
+                    - paragraph [ref=e459]:
+                      - text: Open the
+                      - strong [ref=e460]: reach-system/values.yaml
+                      - text: "file in a text editor. Fill out the following YAML fields with the proxy configuration details:"
+                    - table [ref=e461]:
+                      - rowgroup [ref=e462]:
+                        - row "Field Name Description" [ref=e463]:
+                          - cell "Field Name" [ref=e464]
+                          - cell "Description" [ref=e465]
+                      - rowgroup [ref=e466]:
+                        - row "reachSystem.enabled Set this field to true to enable the Reach service." [ref=e467]:
+                          - cell "reachSystem.enabled" [ref=e468]:
+                            - code [ref=e469]: reachSystem.enabled
+                          - cell "Set this field to true to enable the Reach service." [ref=e470]:
+                            - text: Set this field to
+                            - code [ref=e471]: "true"
+                            - text: to enable the Reach service.
+                        - row "reachSystem.proxySettings.http_proxy The HTTP proxy URL, including the port number." [ref=e472]:
+                          - cell "reachSystem.proxySettings.http_proxy" [ref=e473]:
+                            - code [ref=e474]: reachSystem.proxySettings.http_proxy
+                          - cell "The HTTP proxy URL, including the port number." [ref=e475]
+                        - row "reachSystem.proxySettings.https_proxy The HTTPS proxy URL, including the port number." [ref=e476]:
+                          - cell "reachSystem.proxySettings.https_proxy" [ref=e477]:
+                            - code [ref=e478]: reachSystem.proxySettings.https_proxy
+                          - cell "The HTTPS proxy URL, including the port number." [ref=e479]
+                        - row "reachSystem.proxySettings.no_proxy A comma-separated list of URLs that should bypass the proxy." [ref=e480]:
+                          - cell "reachSystem.proxySettings.no_proxy" [ref=e481]:
+                            - code [ref=e482]: reachSystem.proxySettings.no_proxy
+                          - cell "A comma-separated list of URLs that should bypass the proxy." [ref=e483]
+                        - row "reachSystem.proxySettings.ca_crt_path The path to the CA certificate file used to authenticate the proxy server. Make sure the CA certificate is in the PEM format. If you do not have a CA certificate, leave this field empty." [ref=e484]:
+                          - cell "reachSystem.proxySettings.ca_crt_path" [ref=e485]:
+                            - code [ref=e486]: reachSystem.proxySettings.ca_crt_path
+                          - cell "The path to the CA certificate file used to authenticate the proxy server. Make sure the CA certificate is in the PEM format. If you do not have a CA certificate, leave this field empty." [ref=e487]
+                        - 'row "reachSystem.scheduleOnControlPlane Specifies whether to schedule the reach system on the control plane. Due to node affinity configurations, you must set scheduleOnControlPlane: false for managed clusters deployed to Azure AKS, AWS EKS, and GCP GKE." [ref=e488]':
+                          - cell "reachSystem.scheduleOnControlPlane" [ref=e489]:
+                            - code [ref=e490]: reachSystem.scheduleOnControlPlane
+                          - 'cell "Specifies whether to schedule the reach system on the control plane. Due to node affinity configurations, you must set scheduleOnControlPlane: false for managed clusters deployed to Azure AKS, AWS EKS, and GCP GKE." [ref=e491]':
+                            - text: Specifies whether to schedule the reach system on the control plane. Due to node affinity configurations, you must set
+                            - code [ref=e492]: "scheduleOnControlPlane: false"
+                            - text: for managed clusters deployed to
+                            - link "Azure AKS" [ref=e493] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/azure/aks/
+                            - text: ","
+                            - link "AWS EKS" [ref=e494] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/eks/
+                            - text: ", and"
+                            - link "GCP GKE" [ref=e495] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/gcp/create-gcp-gke-cluster/
+                            - text: .
+                    - generic [ref=e496]:
+                      - generic [ref=e497]:
+                        - img [ref=e499]
+                        - text: info
+                      - generic [ref=e501]:
+                        - paragraph [ref=e502]:
+                          - text: A note on the
+                          - code [ref=e503]: no_proxy
+                          - text: "field: The"
+                          - code [ref=e504]: no_proxy
+                          - text: field is a comma-separated list of URLs that should bypass the proxy. Depending on your environment, you may need to add additional URLs to this list. The list provided in the code snippet below is a generic list that should work for most environments. The IP address
+                          - code [ref=e505]: 169.254.169.254,
+                          - text: is required to be added to the
+                          - code [ref=e506]: no_proxy
+                          - text: list. Otherwise, pods will not be able to start up successfully.
+                        - generic [ref=e508]:
+                          - code [ref=e510]:
+                            - generic [ref=e511]: aks.io,.amazonaws.com,.azure.com,.capz.io,.cluster.local,.gcr.io,.hubble-system,.kube-system,.kvdb,.microsoftonline.com,.privatelink.eastus.azmk8s.io,.spectrocloud.com,.spectrocloud.dev,.svc,.windows.net,10.0.0.0/8,10.10.128.10,10.10.192.1/18,10.96.0.0/12,127.0.0.1,169.254.169.254,.privatelink.eastus.azmk8s.io,.azure.com,.aks.io,.capz.io,.spectrocloud.com,gcr.io,windows.net,.windows.net,.microsoftonline.com,.amazonaws.com,.gcr.io,192.168.0.0/16,gcr.io,kubernetes,localhost,portworx-service,prometheus-operator-prometheus,windows.net
+                          - generic [ref=e512]:
+                            - button "Toggle word wrap" [ref=e513] [cursor=pointer]:
+                              - img [ref=e514]
+                            - button "Copy code to clipboard" [ref=e516] [cursor=pointer]:
+                              - generic [ref=e517]:
+                                - img [ref=e518]
+                                - img [ref=e520]
+                    - paragraph [ref=e522]:
+                      - text: The following is an example of a filled-out
+                      - strong [ref=e523]: values.yaml
+                      - text: file.
+                    - generic [ref=e525]:
+                      - code [ref=e527]:
+                        - generic [ref=e528]: "reachSystem:"
+                        - generic [ref=e529]: "enabled: true"
+                        - generic [ref=e530]: "proxySettings:"
+                        - generic [ref=e531]: "http_proxy: \"http://172.16.0.4:1080\""
+                        - generic [ref=e532]: "https_proxy: \"https://172.16.0.4:1080\""
+                        - generic [ref=e533]: "no_proxy: \".aks.io,.amazonaws.com,.azure.com,.capz.io,.cluster.local,.gcr.io,.hubble-system,.kube-system,.kvdb,.microsoftonline.com,.privatelink.eastus.azmk8s.io,.spectrocloud.com,.spectrocloud.dev,.svc,.windows.net,10.0.0.0/8,10.10.128.10,10.10.192.1/18,10.96.0.0/12,127.0.0.1,169.254.169.254,.privatelink.eastus.azmk8s.io,.azure.com,.aks.io,.capz.io,.spectrocloud.com,gcr.io,windows.net,.windows.net,.microsoftonline.com,.amazonaws.com,.gcr.io,192.168.0.0/16,gcr.io,kubernetes,localhost,portworx-service,prometheus-operator-prometheus,windows.net\""
+                        - generic [ref=e534]: "ca_crt_path: \"proxy-ca-cert.pem\""
+                      - button "Toggle word wrap" [ref=e536] [cursor=pointer]:
+                        - img [ref=e537]
+                  - listitem [ref=e539]:
+                    - paragraph [ref=e540]:
+                      - text: Save the
+                      - strong [ref=e541]: values.yaml
+                      - text: file.
+                  - listitem [ref=e542]:
+                    - paragraph [ref=e543]: Deploy the Reach service into the Kubernetes cluster where the PCG is deployed using the Reach Helm Chart. Use the following command to deploy the Reach service.
+                    - generic [ref=e545]:
+                      - code [ref=e547]:
+                        - generic [ref=e548]: helm upgrade --values reach-system/values.yaml reach-system reach-system-*.tgz --install
+                      - generic [ref=e549]:
+                        - button "Toggle word wrap" [ref=e550] [cursor=pointer]:
+                          - img [ref=e551]
+                        - button "Copy code to clipboard" [ref=e553] [cursor=pointer]:
+                          - generic [ref=e554]:
+                            - img [ref=e555]
+                            - img [ref=e557]
+                    - generic [ref=e560]:
+                      - code [ref=e562]:
+                        - generic [ref=e563]: "WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /Users/ubuntu/.kube/config"
+                        - generic [ref=e564]: "WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /Users/ubuntu/.kube/config"
+                        - generic [ref=e565]: Release "reach-system" does not exist. Installing it now.
+                        - generic [ref=e566]: "NAME: reach-system"
+                        - generic [ref=e567]: "LAST DEPLOYED: Mon Jul 15 15:17:58 2024"
+                        - generic [ref=e568]: "NAMESPACE: default"
+                        - generic [ref=e569]: "STATUS: deployed"
+                        - generic [ref=e570]: "REVISION: 1"
+                        - generic [ref=e571]: "TEST SUITE: None"
+                      - button "Toggle word wrap" [ref=e573] [cursor=pointer]:
+                        - img [ref=e574]
+                - paragraph [ref=e576]: Once the Reach service is deployed, the PCG will use the proxy configuration in the Reach Helm Chart. If the cloud account is configured to use the PCG, the proxy configuration will be inherited by the workload clusters deployed through Palette.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e577]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e578] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e579]: Use the following steps to validate that the Reach service is deployed and that the proxy configuration is enabled for the PCG.
+                - list [ref=e580]:
+                  - listitem [ref=e581]:
+                    - paragraph [ref=e582]: Open a terminal session.
+                  - listitem [ref=e583]:
+                    - paragraph [ref=e584]: Issue the following command against the Kubernetes cluster where the PCG is deployed. Verify that the pods are active and healthy.
+                    - generic [ref=e586]:
+                      - code [ref=e588]:
+                        - generic [ref=e589]: kubectl get pods --namespace reach-system
+                      - button "Copy code to clipboard" [ref=e591] [cursor=pointer]:
+                        - generic [ref=e592]:
+                          - img [ref=e593]
+                          - img [ref=e595]
+                    - paragraph [ref=e597]:
+                      - text: The output should display the Reach service pods in the
+                      - strong [ref=e598]: Running
+                      - text: status.
+                    - generic [ref=e600]:
+                      - code [ref=e602]:
+                        - generic [ref=e603]: NAME READY STATUS RESTARTS AGE
+                        - generic [ref=e604]: reach-controller-manager-995c74db5-frb5j 2/2 Running 0 2m
+                      - button "Toggle word wrap" [ref=e606] [cursor=pointer]:
+                        - img [ref=e607]
+                  - listitem [ref=e609]:
+                    - paragraph [ref=e610]: After configuring your cloud account to use the PCG, you can verify that the deployed workload clusters inherit the proxy configuration from the PCG. To verify the proxy configuration is inherited by the workload clusters, deploy a workload cluster through Palette. SSH into a node in the workload cluster and issue the following command to verify the proxy configuration is inherited.
+                    - generic [ref=e612]:
+                      - code [ref=e614]:
+                        - generic [ref=e615]: cat /etc/systemd/system/containerd.service.d/http-proxy.conf
+                      - button "Copy code to clipboard" [ref=e617] [cursor=pointer]:
+                        - generic [ref=e618]:
+                          - img [ref=e619]
+                          - img [ref=e621]
+                    - paragraph [ref=e623]: The output will display the proxy configuration details. Below is an example of the output.
+                    - generic [ref=e625]:
+                      - code [ref=e627]:
+                        - generic [ref=e628]: "[Service]"
+                        - generic [ref=e629]: Environment="HTTP_PROXY=http://172.16.0.4:1080"
+                        - generic [ref=e630]: Environment="HTTPS_PROXY=https://172.16.0.4:1080"
+                        - generic [ref=e631]: Environment="NO_PROXY=.aks.io,.amazonaws.com,.azure.com,.capz.io,.cluster.local,.gcr.io,.hubble-system,.kube-system,.kvdb,.microsoftonline.com,.privatelink.eastus.azmk8s.io,.spectrocloud.com,.spectrocloud.dev,.svc,.windows.net,10.0.0.0/8,10.10.128.10,10.10.192.1/18,10.96.0.0/12,127.0.0.1,169.254.169.254,.privatelink.eastus.azmk8s.io,.azure.com,.aks.io,.capz.io,.spectrocloud.com,gcr.io,windows.net,.windows.net,.microsoftonline.com,.amazonaws.com,.gcr.io,192.168.0.0/16,gcr.io,kubernetes,localhost,portworx-service,prometheus-operator-prometheus,windows.net"
+                      - button "Toggle word wrap" [ref=e633] [cursor=pointer]:
+                        - img [ref=e634]
+              - generic [ref=e636]:
+                - generic [ref=e638]:
+                  - text: "Tags:"
+                  - list [ref=e639]:
+                    - listitem [ref=e640]:
+                      - link "pcg" [ref=e641] [cursor=pointer]:
+                        - /url: /tags/pcg/
+                    - listitem [ref=e642]:
+                      - link "proxy" [ref=e643] [cursor=pointer]:
+                        - /url: /tags/proxy/
+                - link "Edit this page" [ref=e646] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/pcg/manage-pcg/configure-proxy.md
+                  - img [ref=e647]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e651]:
+              - link "Previous « Create and Manage IPAM Node Pools" [ref=e652] [cursor=pointer]:
+                - /url: /clusters/pcg/manage-pcg/create-manage-node-pool/
+                - generic [ref=e653]: Previous
+                - generic [ref=e654]: « Create and Manage IPAM Node Pools
+              - link "Next Add DNS Mapping »" [ref=e655] [cursor=pointer]:
+                - /url: /clusters/pcg/manage-pcg/add-dns-mapping/
+                - generic [ref=e656]: Next
+                - generic [ref=e657]: Add DNS Mapping »
+          - list [ref=e660]:
+            - listitem [ref=e661]:
+              - link "Prerequisites" [ref=e662] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e663]:
+              - link "Enable Proxy" [ref=e664] [cursor=pointer]:
+                - /url: "#enable-proxy"
+            - listitem [ref=e665]:
+              - link "Validate" [ref=e666] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e667] [cursor=pointer]:
+    - generic [ref=e670]:
+      - img "Project Logo" [ref=e671]
+      - paragraph [ref=e672]: Ask AI
+```

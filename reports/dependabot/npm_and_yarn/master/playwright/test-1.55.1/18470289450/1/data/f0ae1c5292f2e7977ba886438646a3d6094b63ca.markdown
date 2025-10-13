@@ -1,0 +1,297 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - link "Palette Tutorials" [ref=e40] [cursor=pointer]:
+                  - /url: /tutorials/
+                  - img [ref=e42]
+                  - text: Palette Tutorials
+              - listitem [ref=e44]:
+                - generic [ref=e45]:
+                  - link "Getting Started" [expanded] [ref=e46] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/
+                    - img [ref=e48]
+                    - text: Getting Started
+                  - button "Toggle the collapsible sidebar category 'Getting Started'" [ref=e50] [cursor=pointer]
+                - list [ref=e51]:
+                  - listitem [ref=e52]:
+                    - generic [ref=e53]:
+                      - link "Palette" [expanded] [ref=e54] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette/
+                      - button "Toggle the collapsible sidebar category 'Palette'" [ref=e55] [cursor=pointer]
+                    - list [ref=e56]:
+                      - listitem [ref=e57]:
+                        - link "Introduction to Palette" [ref=e58] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette/introduction-palette/
+                      - listitem [ref=e59]:
+                        - generic [ref=e60]:
+                          - link "Deploy a Cluster to AWS" [expanded] [ref=e61] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/aws/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to AWS'" [ref=e62] [cursor=pointer]
+                        - list [ref=e63]:
+                          - listitem [ref=e64]:
+                            - link "Set up Palette" [ref=e65] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/aws/setup/
+                          - listitem [ref=e66]:
+                            - link "Create a Cluster Profile" [ref=e67] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/aws/create-cluster-profile/
+                          - listitem [ref=e68]:
+                            - link "Deploy a Cluster" [ref=e69] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/aws/deploy-k8s-cluster/
+                          - listitem [ref=e70]:
+                            - link "Deploy Cluster Profile Updates" [ref=e71] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/aws/update-k8s-cluster/
+                          - listitem [ref=e72]:
+                            - link "Cluster Management with Terraform" [ref=e73] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/aws/deploy-manage-k8s-cluster-tf/
+                          - listitem [ref=e74]:
+                            - link "Scale, Upgrade, and Secure Clusters" [ref=e75] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/aws/scale-secure-cluster/
+                      - listitem [ref=e76]:
+                        - generic [ref=e77]:
+                          - link "Deploy a Cluster to Azure" [ref=e78] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/azure/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to Azure'" [ref=e79] [cursor=pointer]
+                      - listitem [ref=e80]:
+                        - generic [ref=e81]:
+                          - link "Deploy a Cluster to GCP" [ref=e82] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/gcp/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to GCP'" [ref=e83] [cursor=pointer]
+                      - listitem [ref=e84]:
+                        - generic [ref=e85]:
+                          - link "Deploy a Cluster to VMware" [ref=e86] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/vmware/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to VMware'" [ref=e87] [cursor=pointer]
+                  - listitem [ref=e88]:
+                    - generic [ref=e89]:
+                      - link "Palette Edge" [ref=e90] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette-edge/
+                      - button "Toggle the collapsible sidebar category 'Palette Edge'" [ref=e91] [cursor=pointer]
+                  - listitem [ref=e92]:
+                    - generic [ref=e93]:
+                      - link "Additional Capabilities" [ref=e94] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/additional-capabilities/
+                      - button "Toggle the collapsible sidebar category 'Additional Capabilities'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Packs and Registries" [ref=e98] [cursor=pointer]:
+                    - /url: /tutorials/packs-registries/
+                    - img [ref=e100]
+                    - text: Packs and Registries
+                  - button "Toggle the collapsible sidebar category 'Packs and Registries'" [ref=e102] [cursor=pointer]
+              - listitem [ref=e103]:
+                - generic [ref=e104]:
+                  - link "Profiles" [ref=e105] [cursor=pointer]:
+                    - /url: /tutorials/profiles/
+                    - img [ref=e107]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e111] [cursor=pointer]
+              - listitem [ref=e112]:
+                - generic [ref=e113]:
+                  - link "Clusters" [ref=e114] [cursor=pointer]:
+                    - /url: /tutorials/clusters/
+                    - img [ref=e116]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e122] [cursor=pointer]
+              - listitem [ref=e123]:
+                - generic [ref=e124]:
+                  - link "Palette Dev Engine" [ref=e125] [cursor=pointer]:
+                    - /url: /tutorials/pde/
+                    - img [ref=e127]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e129] [cursor=pointer]
+              - listitem [ref=e130]:
+                - button "Privacy Settings" [ref=e131] [cursor=pointer]
+      - main [ref=e132]:
+        - generic [ref=e134]:
+          - generic [ref=e136]:
+            - article [ref=e137]:
+              - navigation "Breadcrumbs" [ref=e138]:
+                - list [ref=e139]:
+                  - listitem [ref=e140]:
+                    - link "Home page" [ref=e141] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e142]
+                  - listitem [ref=e144]:
+                    - link "Getting Started" [ref=e145] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/
+                  - listitem [ref=e146]:
+                    - link "Palette" [ref=e147] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette/
+                  - listitem [ref=e148]:
+                    - generic [ref=e149]: Deploy a Cluster to AWS
+              - generic [ref=e150]:
+                - heading "Deploy a Cluster to Amazon Web Services (AWS)" [level=1] [ref=e152]
+                - paragraph [ref=e153]:
+                  - text: Palette supports integration with
+                  - link "Amazon Web Services" [ref=e154] [cursor=pointer]:
+                    - /url: https://aws.amazon.com
+                  - text: . You can deploy and manage
+                  - link "Host Clusters" [ref=e155] [cursor=pointer]:
+                    - /url: /glossary-all/#host-cluster
+                  - text: in AWS. The concepts you learn about in the Getting Started section are centered around a fictional case study company. This approach gives you a solution focused approach, while introducing you to Palette workflows and capabilities.
+                - heading "🧑‍🚀 Welcome to Spacetastic!Direct link to 🧑‍🚀 Welcome to Spacetastic!" [level=2] [ref=e156]:
+                  - text: 🧑‍🚀 Welcome to Spacetastic!
+                  - link "Direct link to 🧑‍🚀 Welcome to Spacetastic!" [ref=e157] [cursor=pointer]:
+                    - /url: "#-welcome-to-spacetastic"
+                    - text: "#"
+                - paragraph [ref=e158]: Spacetastic Ltd., our fictional example company, is on a mission to teach its users about space. They have assembled a team of bright minds who are passionate about astronomy and the universe. They are a startup that is gaining popularity as they expand their dashboards and grow their subscribers. Their small team has been in charge of developing new features alongside scaling and maintaining their infrastructure, but they are dedicated to providing the best astronomy education platform on Planet Earth.
+                - blockquote [ref=e159]:
+                  - paragraph [ref=e160]: "\"I'm the resident space expert around here!\" says Anya, Lead Astrophycist, with a beaming smile. \"My mission is to make astrophysics, the science of space, accessible to everyone.\""
+                  - paragraph [ref=e161]: "\"I'm here to support you and your mission. I build all the dashboards, pages, and features that bring your vast space knowledge to our users in a beautiful visual format!\" says Wren, Founding Engineer."
+                  - paragraph [ref=e162]: Kai smiles and nods. "I work closely with both Wren and Anya. As Platform Engineer, I ensure that our platform is reliable and scalable for everyone around the world and beyond!"
+                  - paragraph [ref=e163]: Meera, Head of Cybersecurity, is the final member of the Spacetastic team. "Let's not forget about the security of our platform. I make sure that our systems are designed and implemented with security in mind, the true SecDevOps way."
+                - paragraph [ref=e164]:
+                  - img "Meet the Spacetastic team" [ref=e165]
+                - paragraph [ref=e166]: The team has deployed their services to a single cloud provider. They rely on Kubernetes for the reliability and scalability of their systems. The team must ensure the systems are secure, patched regularly, scalable, and meet a reliability SLA of at least 99% uptime. The following diagram presents an overview of their systems.
+                - paragraph [ref=e167]:
+                  - img "Spacetastic system diagram" [ref=e168]
+                - paragraph [ref=e169]: While the system architecture they have chosen was a great place to start, the team soon faced common challenges that many growing organizations encounter with Kubernetes.
+                - blockquote [ref=e170]:
+                  - paragraph [ref=e171]: Wren hurriedly walks into the office, looking at their phone with a worried expression. "Users are reporting on social media that our systems are down! This must be related to the new feature we have just released."
+                  - paragraph [ref=e172]: Meera looks up from their monitor. "I've also received an alert about a new zero-day vulnerability. We need to patch our services without further downtime, as soon as you are able to stabilize our platform."
+                  - paragraph [ref=e173]: "\"Team, we need to rethink our platform engineering tools. We need a solution that can help us scale and deploy with confidence, ultimately supporting the growth of our company,\" says Kai with a determined look."
+                - paragraph [ref=e174]:
+                  - img "Kubernetes challenges" [ref=e175]
+                - heading "Get StartedDirect link to Get Started" [level=2] [ref=e176]:
+                  - text: Get Started
+                  - link "Direct link to Get Started" [ref=e177] [cursor=pointer]:
+                    - /url: "#get-started"
+                    - text: "#"
+                - paragraph [ref=e178]: In this section, you learn how to create a cluster profile. Then, you deploy a cluster to AWS by using Palette. Once your cluster is deployed, you can update it using cluster profile updates.
+                - generic [ref=e179]:
+                  - link "1 Set up Palette with AWS Set up the prerequisites of using Palette with AWS. Learn more" [ref=e180] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/aws/setup
+                    - generic [ref=e181]:
+                      - generic [ref=e182]:
+                        - generic [ref=e183]: "1"
+                        - generic [ref=e184]: Set up Palette with AWS
+                      - paragraph [ref=e186]: Set up the prerequisites of using Palette with AWS.
+                      - button "Learn more" [ref=e188]:
+                        - text: Learn more
+                        - img [ref=e189]
+                  - link "2 Create a Cluster Profile Create a full cluster profile in Palette. Learn more" [ref=e191] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/aws/create-cluster-profile
+                    - generic [ref=e192]:
+                      - generic [ref=e193]:
+                        - generic [ref=e194]: "2"
+                        - generic [ref=e195]: Create a Cluster Profile
+                      - paragraph [ref=e197]: Create a full cluster profile in Palette.
+                      - button "Learn more" [ref=e199]:
+                        - text: Learn more
+                        - img [ref=e200]
+                  - link "3 Deploy a Cluster Deploy a Palette host cluster to AWS. Learn more" [ref=e202] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/aws/deploy-k8s-cluster
+                    - generic [ref=e203]:
+                      - generic [ref=e204]:
+                        - generic [ref=e205]: "3"
+                        - generic [ref=e206]: Deploy a Cluster
+                      - paragraph [ref=e208]: Deploy a Palette host cluster to AWS.
+                      - button "Learn more" [ref=e210]:
+                        - text: Learn more
+                        - img [ref=e211]
+                  - link "4 Deploy Cluster Profile Updates Update your deployed clusters using Palette Cluster Profiles. Learn more" [ref=e213] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/aws/update-k8s-cluster
+                    - generic [ref=e214]:
+                      - generic [ref=e215]:
+                        - generic [ref=e216]: "4"
+                        - generic [ref=e217]: Deploy Cluster Profile Updates
+                      - paragraph [ref=e219]: Update your deployed clusters using Palette Cluster Profiles.
+                      - button "Learn more" [ref=e221]:
+                        - text: Learn more
+                        - img [ref=e222]
+                  - link "5 Cluster Management with Terraform Deploy and update a Palette host cluster with Terraform. Learn more" [ref=e224] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/aws/deploy-manage-k8s-cluster-tf
+                    - generic [ref=e225]:
+                      - generic [ref=e226]:
+                        - generic [ref=e227]: "5"
+                        - generic [ref=e228]: Cluster Management with Terraform
+                      - paragraph [ref=e230]: Deploy and update a Palette host cluster with Terraform.
+                      - button "Learn more" [ref=e232]:
+                        - text: Learn more
+                        - img [ref=e233]
+                  - link "6 Scale, Upgrade, and Secure Clusters Learn how to scale, upgrade, and secure Palette host clusters deployed to AWS. Learn more" [ref=e235] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/aws/scale-secure-cluster
+                    - generic [ref=e236]:
+                      - generic [ref=e237]:
+                        - generic [ref=e238]: "6"
+                        - generic [ref=e239]: Scale, Upgrade, and Secure Clusters
+                      - paragraph [ref=e241]: Learn how to scale, upgrade, and secure Palette host clusters deployed to AWS.
+                      - button "Learn more" [ref=e243]:
+                        - text: Learn more
+                        - img [ref=e244]
+              - generic [ref=e246]:
+                - generic [ref=e248]:
+                  - text: "Tags:"
+                  - list [ref=e249]:
+                    - listitem [ref=e250]:
+                      - link "getting-started" [ref=e251] [cursor=pointer]:
+                        - /url: /tags/getting-started/
+                    - listitem [ref=e252]:
+                      - link "aws" [ref=e253] [cursor=pointer]:
+                        - /url: /tags/aws/
+                    - listitem [ref=e254]:
+                      - link "tutorial" [ref=e255] [cursor=pointer]:
+                        - /url: /tags/tutorial/
+                - link "Edit this page" [ref=e258] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/tutorials/getting-started/palette/aws/aws.md
+                  - img [ref=e259]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e263]:
+              - link "Previous « Introduction to Palette" [ref=e264] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette/introduction-palette/
+                - generic [ref=e265]: Previous
+                - generic [ref=e266]: « Introduction to Palette
+              - link "Next Set up Palette »" [ref=e267] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette/aws/setup/
+                - generic [ref=e268]: Next
+                - generic [ref=e269]: Set up Palette »
+          - list [ref=e272]:
+            - listitem [ref=e273]:
+              - link "🧑‍🚀 Welcome to Spacetastic!" [ref=e274] [cursor=pointer]:
+                - /url: "#-welcome-to-spacetastic"
+            - listitem [ref=e275]:
+              - link "Get Started" [ref=e276] [cursor=pointer]:
+                - /url: "#get-started"
+  - button "Project Logo Ask AI" [ref=e277] [cursor=pointer]:
+    - generic [ref=e280]:
+      - img "Project Logo" [ref=e281]
+      - paragraph [ref=e282]: Ask AI
+```
