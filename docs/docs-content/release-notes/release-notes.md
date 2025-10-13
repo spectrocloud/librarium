@@ -52,9 +52,9 @@ tags: ["release-notes"]
 
 #### Bug Fixes
 
-- Fixed an issue that prevented the the
+- Fixed an issue that prevented the
   [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) from
-  successfully upgrading several resources in the `konveyor-forklift`.
+  successfully upgrading several resources in the `konveyor-forklift` namespace.
 
 #### Deprecations and Removals
 
