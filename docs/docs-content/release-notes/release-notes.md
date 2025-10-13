@@ -50,6 +50,10 @@ tags: ["release-notes"]
 - <TpBadge /> The packs list of the [Artifact Studio](../downloads/artifact-studio.md) now displays a single tile for
   all the pack versions, offering a streamlined user experience.
 
+#### Bug Fixes
+
+- Fixed an issue that prevented the the [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) from successfully upgrading several resources in the `konveyor-forklift`.
+
 #### Deprecations and Removals
 
 ### Edge
