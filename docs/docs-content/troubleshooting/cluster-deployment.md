@@ -10,6 +10,98 @@ tags: ["troubleshooting", "cluster-deployment"]
 
 The following steps will help you troubleshoot errors in the event issues arise while deploying a cluster.
 
+## Scenario - Unable to Upgrade EKS Worker Nodes from AL2 to AL2023
+
+AWS does not provide a direct upgrade path from Amazon Linux 2 (AL2) to Amazon Linux 2023 (AL2023) for EKS worker nodes.
+This is due to significant changes between AL2 and AL2023, including differences in worker node initialization and
+bootstrapping prior to joining an EKS cluster. Refer to the
+[AWS documentation](https://docs.aws.amazon.com/eks/latest/userguide/al2023.html) for more details.
+
+You can use the following debug steps for existing clusters that were deployed using AL2 worker nodes and need to be
+upgraded to AL2023 worker nodes.
+
+:::info
+
+From January 2026, Palette will only allow creating node pools with the AL2023 AMI type. If AL2 is needed, consider
+using custom AMIs. Ensure you have accounted for this change in any of your automation, such as Terraform, API, etc.
+
+:::
+
+### Debug Steps
+
+1. Check the
+   [Compatibility Requirements](https://docs.aws.amazon.com/eks/latest/userguide/al2023.html#al2023-compatibility-requirements)
+   for AL2023 to ensure your applications run correctly on AL2023.
+
+   If your applications are not ready to run on AL2023, continue with the following steps but use a custom AL2 AMI
+   instead of AL2023.
+
+2. Log in to [Palette](https://console.spectrocloud.com/).
+
+3. Ensure you are in the correct project scope.
+
+4. From the left main menu, click **Clusters** and select your EKS cluster.
+
+5. Click the **Nodes** tab.
+
+6. Click **New Node Pool**.
+
+7. Fill out the input fields in the **Add node pool** page as per your requirements.
+
+   Ensure that you select an **Amazon Linux 2023** AMI type, or, if you are using a custom AL2 AMI, select **Custom
+   AMI** and provide the AMI ID.
+
+8. Click **Confirm** to create the new node pool.
+
+9. Wait for the new nodes to be ready and show a healthy status.
+
+10. Repeat steps 6-9 to create additional AL2023 node pools as needed. Ensure that the total number of nodes in the
+    AL2023 node pools meets your requirements to replace the AL2 node pools.
+
+11. On the **Nodes** tab, click the **Edit** option for your existing AL2 node pool.
+
+12. Click the **Add New Taint** option and add a
+    [taint](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) to the AL2 node pool. Use the
+    `NoExecute` effect to evict workloads from the AL2 nodes.
+
+    Example:
+
+    - **Key** = `node.kubernetes.io/exclude-from-al2023`
+    - **Value** = `true`
+    - **Effect** = `NoExecute`
+
+13. Click **Confirm** to update the AL2 node pool.
+
+14. Wait for the workloads to be evicted from the AL2 nodes and rescheduled on the AL2023 nodes.
+
+    You can issue the following `kubectl` command to check for evicting events.
+
+    ```bash title="Example command"
+    kubectl get events --sort-by=.lastTimestamp | grep -i evict
+    ```
+
+    ```shell hideClipboard title="Example output"
+    Evicting Pod default/my-app-6f7d4d5fdb-z9hbm
+    ```
+
+    You can also check for running pods on the AL2 nodes by issuing the following command. Replace
+    `<al2-node-identifier>` with part of the name of one of your AL2 nodes.
+
+    ```bash title="Example command"
+    kubectl get pods --all-namespaces --output=wide | grep <al2-node-identifier>
+    ```
+
+    ```shell hideClipboard title="Example output"
+    NAMESPACE        NAME                                  READY   STATUS    RESTARTS   AGE   IP           NODE                           NOMINATED NODE   READINESS GATES
+    kube-system      aws-node-4xk8h                        1/1     Running   0          12h   10.0.1.25    ip-10-11-12-13.ec2.internal    <none>           <none>
+    kube-system      kube-proxy-npd7t                      1/1     Running   0          12h   10.0.1.26    ip-10-11-12-13.ec2.internal    <none>           <none>
+    default          nginx-deployment-6f7d4d5fdb-z9hbm     1/1     Running   0          6h    10.0.1.27    ip-10-11-12-13.ec2.internal    <none>           <none>
+    default          redis-6d7bc56f9b-c2x5q                1/1     Running   0          6h    10.0.1.28    ip-10-11-12-13.ec2.internal    <none>           <none>
+    ```
+
+15. Once all workloads have been successfully migrated to the AL2023 nodes, you can
+    [delete](../clusters/cluster-management/node-pool.md#delete-a-node-pool) the AL2 node pools.
+
 ## Scenario - PV/PVC Stuck in Pending Status for EKS Cluster Using AL2023 AMI
 
 After deploying an Amazon EKS cluster using an
