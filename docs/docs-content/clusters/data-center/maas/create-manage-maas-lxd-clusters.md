@@ -7,8 +7,9 @@ tags: ["data center", "maas", "lxd"]
 ---
 
 Palette supports creating and managing Kubernetes clusters deployed to a MAAS account with LXD Virtual Machines (VMs)
-enabled. This section guides you through how to create a Kubernetes cluster in MAAS that uses LXD VMs and is managed by
-Palette.
+enabled. This feature allows you to spawn multiple control plane nodes as LXD VMs and consolidate them on MAAS-managed
+servers, while your worker nodes run on bare metal. This improves resource utilization by reducing the number of bare
+metal machines needed to run control planes and keeps virtualization overhead low.
 
 :::preview
 
