@@ -13,5 +13,5 @@ The following components have been updated for Palette version {{RELEASE_COMPONE
 
 #### Pack Notes
 
-| Pack Name | Layer | FIPS | New Version |
-| --------- | ----- | ---- | ----------- |
+| Pack Name              | Layer      | Non-FIPS           | FIPS               | New Version |
+| ---------------------- | ---------- | ------------------ | ------------------ | ----------- |
