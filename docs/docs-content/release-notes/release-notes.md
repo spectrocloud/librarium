@@ -56,6 +56,13 @@ tags: ["release-notes"]
   [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) from
   successfully upgrading several resources in the `konveyor-forklift` namespace.
 
+- Fixed an issue that caused a public NAT gateway to be incorrectly provisioned for
+  [Azure IaaS clusters](../clusters/public-cloud/azure/create-azure-cluster.md) configured to use private networks.
+
+- Fixed an issue that prevented the [Azure Service Operator (ASO)](https://azure.github.io/azure-service-operator/) from
+  attaching the worker pool subnet to the NAT Gateway for
+  [Azure IaaS clusters](../clusters/public-cloud/azure/create-azure-cluster.md) using static placement.
+
 #### Deprecations and Removals
 
 ### Edge
