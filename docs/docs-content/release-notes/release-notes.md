@@ -35,15 +35,20 @@ tags: ["release-notes"]
 - When viewing project platform settings in Palette, the
   [Cluster Auto Remediation](../clusters/cluster-management/platform-settings/cluster-auto-remediation.md) settings are
   now correctly labeled as an override to the tenant-level settings.
+
 - Palette supports encryption at host of your Azure Kubernetes cluster using
   [End-to-End encryption with platform-managed keys](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data).
   This ensures that encryption starts on the VM host itself, including temporary disks, operating system (OS), and data
   disk caches. Refer to the Azure Encryption At Host for Azure IaaS guide for further information.
+
 - Velero has been upgraded to version 1.16, which is used internally by Palette for backing up and restoring clusters.
   Existing clusters with backups configured will be automatically updated to Velero version 1.16, ensuring continuous
   access to backup and restore functionality. Refer to the
   [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page to learn more about backup
   and restore tools in Palette.
+
+- <TpBadge /> The packs list of the [Artifact Studio](../downloads/artifact-studio.md) now displays a single tile for
+  all the pack versions, offering a streamlined user experience.
 
 #### Deprecations and Removals
 
@@ -92,45 +97,78 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Features
 
+- Terraform version 0.25.X of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  now available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- Crossplane version 0.25.X of the
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
+  now available.
+
 #### Improvements
 
-### Docs and Education
+- The [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs)
+  now allows the specification of registry name in the cluster profile pack specification. This attribute can be used
+  instead of `registry_uid` for better readability.
 
 ### Packs
 
 #### Pack Notes
 
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard"> pack version 7.13.0 is now FIPS compliant.
+
+<!-- prettier-ignore-end -->
+
 #### OS
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name     | New Version |
+| ------------- | ----------- |
+| Ubuntu (MAAS) | 24.04       |
 
 #### Kubernetes
 
 | Pack Name | New Version |
 | --------- | ----------- |
+| RKE2      | 1.33.5      |
+| RKE2      | 1.32.9      |
+| RKE2      | 1.31.13     |
 
 #### CNI
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name          | New Version |
+| ------------------ | ----------- |
+| AWS VPC CNI (Helm) | 1.20.3      |
+| Cilium             | 1.18.1      |
+| Flannel            | 0.27.4      |
 
 #### CSI
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name               | New Version |
+| ----------------------- | ----------- |
+| GCE Persistent Disk CSI | 1.17.15     |
 
 #### Add-on Packs
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name                    | New Version |
+| ---------------------------- | ----------- |
+| Calico Network Policy        | 3.30.3      |
+| Harbor                       | 2.13.2      |
+| Kong                         | 2.52.0      |
+| Multus CNI Plugin            | 4.2.2       |
+| Prometheus Agent             | 27.39.0     |
+| Prometheus - Grafana         | 77.13.0     |
+| Spectro Kubernetes Dashboard | 7.13.0      |
 
 #### FIPS Packs
 
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Deprecations and Removals
+| Pack Name                    | New Version |
+| ---------------------------- | ----------- |
+| Calico                       | 3.30.3      |
+| Cilium                       | 1.17.6      |
+| Rook-Ceph                    | 1.17.7      |
+| Spectro Kubernetes Dashboard | 7.13.0      |
 
 ## October 7, 2025 - Release 4.7.23
 
