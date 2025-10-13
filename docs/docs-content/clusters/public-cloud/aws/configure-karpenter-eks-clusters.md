@@ -493,7 +493,7 @@ requirements.
    specific requirements. The [Karpenter documentation](https://karpenter.sh/docs/concepts/) provides comprehensive
    information on the various configuration options. Refer to the
    [Karpenter NodePool examples](https://github.com/aws/karpenter-provider-aws/tree/main/examples/v1) for configuration
-   samples covering a variety of use cases
+   samples covering a variety of use cases.
 
    In the following example, we create a NodePool named `default` that provisions on-demand instances of the `c`, `m`,
    and `r` [instance series](https://docs.aws.amazon.com/ec2/latest/instancetypes/instance-type-names.html). The
@@ -511,6 +511,8 @@ requirements.
    - Some instance types will not be displayed in the **Nodes** tab for the cluster in Palette. Refer to
      [Karpenter Support - Known Limitations](./architecture.md#known-limitations) for a list of unsupported instance
      types.
+
+   <br />
 
    ```yaml title="Default NodePool example"
    apiVersion: karpenter.sh/v1
