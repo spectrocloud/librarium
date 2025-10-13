@@ -67,6 +67,12 @@ tags: ["release-notes"]
 
 ### Edge
 
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.7.c Palette release is 4.7.c-canvos.
+
+:::
+
 #### Features
 
 <!-- prettier-ignore-start -->
