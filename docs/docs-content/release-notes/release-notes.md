@@ -26,25 +26,15 @@ tags: ["release-notes"]
 
 #### Features
 
-- <TpBadge /> Cluster templates are reusable blueprints that define and enforce the desired state and lifecycle of
-  clusters deployed with Palette or [Palette VerteX](../vertex/vertex.md). Unlike [cluster
-  profiles](../profiles/cluster-profiles/cluster-profiles.md), which define the cluster's software stack (including OS,
-  Kubernetes distribution, network, storage, and add‑ons), cluster templates are a higher level abstraction that define
-  the governance stack. They reference existing cluster profiles and operational policies, such as maintenance policies,
-  and leverage [cluster profile
-  variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
-  and [macros](../clusters/cluster-management/macros.md), allowing you to deploy, manage, and scale a synchronized fleet
-  of clusters with minimal effort, while configuring environment-specific values where needed. Refer to the Cluster
-  Templates section for further information.
+- [Cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/create-cluster-profile-variables.md)
+  now support the dropdown input type. This improvement allows users to enforce the configuration of cluster profile
+  variables using predefined values only, reducing input errors and enhancing cluster profile validation.
 
 #### Improvements
 
 - When viewing project platform settings in Palette, the
   [Cluster Auto Remediation](../clusters/cluster-management/platform-settings/cluster-auto-remediation.md) settings are
   now correctly labeled as an override to the tenant-level settings.
-- [Cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/create-cluster-profile-variables.md)
-  now support the dropdown input type. This improvement allows users to enforce the configuration of cluster profile
-  variables using predefined values only, reducing input errors and enhancing cluster profile validation.
 - Palette supports encryption at host of your Azure Kubernetes cluster using
   [End-to-End encryption with platform-managed keys](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data).
   This ensures that encryption starts on the VM host itself, including temporary disks, operating system (OS), and data
