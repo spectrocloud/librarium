@@ -70,7 +70,18 @@ tags: ["release-notes"]
 
 <!-- prettier-ignore-end -->
 
+- Local UI now supports configurable rate limiting and account lockout to protect against repeated failed login
+  attempts. By default, Local UI applies an increasing delay after three consecutive failed login attempts and
+  temporarily blocks access after five failures for 15 minutes. These settings can be customized in the `user-data` file
+  for Edge hosts built with Palette agent version 4.7.c-canvos or later. For more information, refer to the
+  `stylus.localUI.login` parameters description in the
+  [Edge Installer Configuration Reference](../clusters/edge/edge-configuration/installer-reference.md#palette-agent-parameters).
+
 #### Improvements
+
+- Remote shell access to an Edge host can now be enabled in Palette only if the parameter
+  `stylus.site.remoteShell.disable` is omitted or set to `false` in the host’s `user-data` file before the host
+  registers with Palette. This change applies to Edge hosts built with Palette agent version 4.7.c-canvos or later.
 
 #### Bug Fixes
 
