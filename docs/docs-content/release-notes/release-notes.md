@@ -117,7 +117,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 <!-- prettier-ignore-start -->
 
-- The <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard"> pack version 7.13.0 is now FIPS compliant.
+- The <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack version 7.13.0 is now FIPS compliant.
 
 <!-- prettier-ignore-end -->
 
