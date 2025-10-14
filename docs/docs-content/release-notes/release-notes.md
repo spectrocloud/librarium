@@ -37,6 +37,11 @@ tags: ["release-notes"]
 
 #### Deprecations and Removals
 
+- [OpenStack](../clusters/data-center/openstack.md) support in Palette is now deprecated and will be removed in a future
+  release. After removal, you will longer be able to create OpenStack cluster profiles, cloud accounts, or Private Cloud
+  Gateways. You will also no longer be able to to create and manage OpenStack clusters. We recommend migrating your
+  workloads to another supported [Data Center environment](../clusters/data-center/data-center.md).
+
 ### Edge
 
 #### Features
