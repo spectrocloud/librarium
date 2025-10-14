@@ -1,0 +1,405 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Security" [ref=e150] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e152]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Audit Logs" [expanded] [ref=e157] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e159]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e161] [cursor=pointer]
+                - list [ref=e162]:
+                  - listitem [ref=e163]:
+                    - link "Monitor Clusters with Datadog" [ref=e164] [cursor=pointer]:
+                      - /url: /audit-logs/monitor-with-datadog/
+              - listitem [ref=e165]:
+                - generic [ref=e166]:
+                  - link "Self-Hosted Palette" [ref=e167] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e169]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e171] [cursor=pointer]
+              - listitem [ref=e172]:
+                - generic [ref=e173]:
+                  - link "Palette VerteX" [ref=e174] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e176]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e178] [cursor=pointer]
+              - listitem [ref=e179]:
+                - generic [ref=e180]:
+                  - link "Tenant Administration" [ref=e181] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e183]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e185] [cursor=pointer]
+              - listitem [ref=e186]:
+                - generic [ref=e187]:
+                  - link "Automation" [ref=e188] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e190]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e192] [cursor=pointer]
+              - listitem [ref=e193]:
+                - generic [ref=e194]:
+                  - link "Troubleshooting" [ref=e195] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e197]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e199] [cursor=pointer]
+              - listitem [ref=e200]:
+                - link "Glossary" [ref=e201] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e203]
+                  - text: Glossary
+              - listitem [ref=e205]:
+                - generic [ref=e206]:
+                  - link "Compliance & Legal" [ref=e207] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e209]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e211] [cursor=pointer]
+              - listitem [ref=e212]:
+                - button "Privacy Settings" [ref=e213] [cursor=pointer]:
+                  - img [ref=e214]
+                  - text: Privacy Settings
+      - main [ref=e216]:
+        - generic [ref=e218]:
+          - generic [ref=e220]:
+            - article [ref=e221]:
+              - navigation "Breadcrumbs" [ref=e222]:
+                - list [ref=e223]:
+                  - listitem [ref=e224]:
+                    - link "Home page" [ref=e225] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e226]
+                  - listitem [ref=e228]:
+                    - generic [ref=e229]: Audit Logs
+              - generic [ref=e230]:
+                - heading "Audit Logs" [level=1] [ref=e232]
+                - paragraph [ref=e233]: The Spectro Cloud management platform application captures audit logs to track the user interaction with the application resources along with the timeline. For certain resources, the system-level modifications are also captured in the audit logs.
+                - paragraph [ref=e234]:
+                  - text: The audit log contains information about the resource and the user who performed the action. The user or the system action on the resource is classified as
+                  - emphasis [ref=e235]: Create
+                  - text: ","
+                  - emphasis [ref=e236]: Update
+                  - text: ", and"
+                  - emphasis [ref=e237]: Delete
+                  - text: . Every resource is categorized as a type that helps the user to scope down the audit logs.
+                - paragraph [ref=e238]: Audit logs are retained for the last one year.
+                - heading "Accessing Audit LogsDirect link to Accessing Audit Logs" [level=2] [ref=e239]:
+                  - text: Accessing Audit Logs
+                  - link "Direct link to Accessing Audit Logs" [ref=e240] [cursor=pointer]:
+                    - /url: "#accessing-audit-logs"
+                    - text: "#"
+                - paragraph [ref=e241]: Audits can be accessed for the tenant scope and the project scope. The tenant scope audits show all the activity logs across all projects and tenant actions. The project scope audits show the activity logs for the specific project.
+                - list [ref=e242]:
+                  - listitem [ref=e243]:
+                    - text: The tenant scope audit logs can be accessed in the Spectro Cloud console under the
+                    - strong [ref=e244]: Admin > Audit Logs
+                    - text: . The user should have the
+                    - emphasis [ref=e245]: Tenant Admin
+                    - text: role or at least the
+                    - code [ref=e246]: audit.get
+                    - text: and
+                    - code [ref=e247]: audit.list
+                    - text: permissions at the tenant scope to access the audit logs.
+                  - listitem [ref=e248]:
+                    - text: The project scope audit logs can be accessed under the
+                    - strong [ref=e249]: Project
+                    - emphasis [ref=e250]: selection
+                    - text: ">"
+                    - strong [ref=e251]: Audit Logs
+                    - text: . The user should have at least the
+                    - emphasis [ref=e252]: Project Viewer
+                    - text: role with
+                    - code [ref=e253]: audit.get
+                    - text: and
+                    - code [ref=e254]: audit.list
+                    - text: permissions for the selected project to access the audit logs.
+                  - listitem [ref=e255]: Tenant admins (or users with appropriate permissions) can download the audit logs as a *.csv file.
+                - heading "Filtering Audit LogsDirect link to Filtering Audit Logs" [level=2] [ref=e256]:
+                  - text: Filtering Audit Logs
+                  - link "Direct link to Filtering Audit Logs" [ref=e257] [cursor=pointer]:
+                    - /url: "#filtering-audit-logs"
+                    - text: "#"
+                - paragraph [ref=e258]: "The audit logs can be filtered based on user and resource attributes. The following attributes can be used to filter the audit logs:"
+                - list [ref=e259]:
+                  - listitem [ref=e260]: Type - The action type on the resource.
+                  - listitem [ref=e261]: Resource Type - The resource type. (The resources are grouped based on the type).
+                  - listitem [ref=e262]: Start Date and End Date - Period range for the audit logs.
+                - heading "Adding Update NoteDirect link to Adding Update Note" [level=2] [ref=e263]:
+                  - text: Adding Update Note
+                  - link "Direct link to Adding Update Note" [ref=e264] [cursor=pointer]:
+                    - /url: "#adding-update-note"
+                    - text: "#"
+                - paragraph [ref=e265]: For certain resources like the Cluster Profile, users can associate a custom update note in addition to the generic audit event log. On a successful save of the Cluster Profile, the user will be prompted to provide an update note about the changes made on the profile. This message will be shown when the user selects an audit log from the list.
+                - heading "Pushing the Audit Log to the AWS Cloud TrailDirect link to Pushing the Audit Log to the AWS Cloud Trail" [level=2] [ref=e266]:
+                  - text: Pushing the Audit Log to the AWS Cloud Trail
+                  - link "Direct link to Pushing the Audit Log to the AWS Cloud Trail" [ref=e267] [cursor=pointer]:
+                    - /url: "#pushing-the-audit-log-to-the-aws-cloud-trail"
+                    - text: "#"
+                - paragraph [ref=e268]: Spectro Cloud users can now push the compliance, management, operational, and risk audit logs to the AWS CloudTrail. This enables continuous monitoring, security analysis, resource tracking, and troubleshooting of the workload cluster using the event history.
+                - generic [ref=e269]:
+                  - generic [ref=e270]:
+                    - img [ref=e272]
+                    - text: warning
+                  - generic [ref=e274]:
+                    - paragraph [ref=e275]: An AWS account with cloud trail created is the prerequisite.
+                    - paragraph [ref=e276]: The permissions listed need to be enabled for CloudWatch.
+                - heading "Permission ListDirect link to Permission List" [level=3] [ref=e277]:
+                  - text: Permission List
+                  - link "Direct link to Permission List" [ref=e278] [cursor=pointer]:
+                    - /url: "#permission-list"
+                    - text: "#"
+                - paragraph [ref=e279]: "Ensure that the IAM user or the ROOT user role created should have the following IAM policy included for Amazon CloudWatch:"
+                - generic [ref=e281]:
+                  - code [ref=e283]:
+                    - generic [ref=e284]: "{"
+                    - generic [ref=e285]: "\"Version\": \"2012-10-17\","
+                    - generic [ref=e286]: "\"Statement\": ["
+                    - generic [ref=e287]: "{"
+                    - generic [ref=e288]: "\"Effect\": \"Allow\","
+                    - generic [ref=e289]: "\"Action\": ["
+                    - generic [ref=e290]: "\"logs:DescribeLogGroups\","
+                    - generic [ref=e291]: "\"logs:CreateLogGroup\","
+                    - generic [ref=e292]: "\"logs:CreateLogStream\","
+                    - generic [ref=e293]: "\"logs:PutLogEvents\","
+                    - generic [ref=e294]: "\"logs:DeleteLogStream\","
+                    - generic [ref=e295]: "\"logs:DescribeLogStreams\""
+                    - generic [ref=e296]: "],"
+                    - generic [ref=e297]: "\"Resource\": [\"<CLOUDWATCH-LOG-GROUP-ARN>\"]"
+                    - generic [ref=e298]: "}"
+                    - generic [ref=e299]: "]"
+                    - generic [ref=e300]: "}"
+                  - button "Copy code to clipboard" [ref=e302] [cursor=pointer]:
+                    - generic [ref=e303]:
+                      - img [ref=e304]
+                      - img [ref=e306]
+                - heading "Instructions to Push Cluster Audit Logs to AWS TrailsDirect link to Instructions to Push Cluster Audit Logs to AWS Trails" [level=3] [ref=e308]:
+                  - text: Instructions to Push Cluster Audit Logs to AWS Trails
+                  - link "Direct link to Instructions to Push Cluster Audit Logs to AWS Trails" [ref=e309] [cursor=pointer]:
+                    - /url: "#instructions-to-push-cluster-audit-logs-to-aws-trails"
+                    - text: "#"
+                - list [ref=e310]:
+                  - listitem [ref=e311]:
+                    - paragraph [ref=e312]: Go to Admin Settings and select Audit Trails.
+                  - listitem [ref=e313]:
+                    - paragraph [ref=e314]: "Select the wizard ‘Add new Audit Trail’ and fill in the following details:"
+                    - list [ref=e315]:
+                      - listitem [ref=e316]: "Audit Name: Custom name to identify the logs"
+                      - listitem [ref=e317]: "Type: Choice of monitoring service (currently set to AWS Cloud Watch)"
+                      - listitem [ref=e318]: "Group: The log group name obtained from cloud watch logs of AWS cloud trail creation"
+                      - listitem [ref=e319]: "Region: The region of the AWS account"
+                      - listitem [ref=e320]: "Method of verification: _ Credentials: Use the AWS Access Key and Secret Access Key to validate the AWS account for pushing the Audit log trails from Spectro Cloud console. _ STS: Use Amazon’s unique resource identifier- ARN, to validate the AWS account for pushing the Audit log trails from Spectro Cloud console."
+                  - listitem [ref=e321]:
+                    - paragraph [ref=e322]: Stream Optional.
+                  - listitem [ref=e323]:
+                    - paragraph [ref=e324]: Confirm the information to complete the audit trail creation wizard.
+                  - listitem [ref=e325]:
+                    - paragraph [ref=e326]:
+                      - text: The audit trail could be edited and deleted using the
+                      - strong [ref=e327]: three-dot Menu
+                      - text: .
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e328]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e329] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e330]:
+                  - listitem [ref=e331]:
+                    - paragraph [ref=e332]:
+                      - link "Kubernetes API parameters" [ref=e333] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+                  - listitem [ref=e334]:
+                    - paragraph [ref=e335]:
+                      - link "Kubernetes Auditing Documentation" [ref=e336] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/
+              - link "Edit this page" [ref=e340] [cursor=pointer]:
+                - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/audit-logs/audit-logs.md
+                - img [ref=e341]
+                - text: Edit this page
+            - navigation "Docs pages" [ref=e345]:
+              - link "Previous « Artifact Signatures" [ref=e346] [cursor=pointer]:
+                - /url: /security/artifact-signatures/
+                - generic [ref=e347]: Previous
+                - generic [ref=e348]: « Artifact Signatures
+              - link "Next Monitor Clusters with Datadog »" [ref=e349] [cursor=pointer]:
+                - /url: /audit-logs/monitor-with-datadog/
+                - generic [ref=e350]: Next
+                - generic [ref=e351]: Monitor Clusters with Datadog »
+          - list [ref=e354]:
+            - listitem [ref=e355]:
+              - link "Accessing Audit Logs" [ref=e356] [cursor=pointer]:
+                - /url: "#accessing-audit-logs"
+            - listitem [ref=e357]:
+              - link "Filtering Audit Logs" [ref=e358] [cursor=pointer]:
+                - /url: "#filtering-audit-logs"
+            - listitem [ref=e359]:
+              - link "Adding Update Note" [ref=e360] [cursor=pointer]:
+                - /url: "#adding-update-note"
+            - listitem [ref=e361]:
+              - link "Pushing the Audit Log to the AWS Cloud Trail" [ref=e362] [cursor=pointer]:
+                - /url: "#pushing-the-audit-log-to-the-aws-cloud-trail"
+              - list [ref=e363]:
+                - listitem [ref=e364]:
+                  - link "Permission List" [ref=e365] [cursor=pointer]:
+                    - /url: "#permission-list"
+                - listitem [ref=e366]:
+                  - link "Instructions to Push Cluster Audit Logs to AWS Trails" [ref=e367] [cursor=pointer]:
+                    - /url: "#instructions-to-push-cluster-audit-logs-to-aws-trails"
+            - listitem [ref=e368]:
+              - link "Resources" [ref=e369] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e370] [cursor=pointer]:
+    - generic [ref=e373]:
+      - img "Project Logo" [ref=e374]
+      - paragraph [ref=e375]: Ask AI
+```

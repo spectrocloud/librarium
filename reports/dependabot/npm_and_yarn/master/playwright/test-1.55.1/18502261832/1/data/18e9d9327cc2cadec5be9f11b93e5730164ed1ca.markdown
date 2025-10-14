@@ -1,0 +1,525 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [expanded] [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+                - list [ref=e113]:
+                  - listitem [ref=e114]:
+                    - link "Use Cases" [ref=e115] [cursor=pointer]:
+                      - /url: /devx/enterprise-user/
+                  - listitem [ref=e116]:
+                    - generic [ref=e117]:
+                      - link "Apps" [ref=e118] [cursor=pointer]:
+                        - /url: /devx/apps/
+                      - button "Toggle the collapsible sidebar category 'Apps'" [ref=e119] [cursor=pointer]
+                  - listitem [ref=e120]:
+                    - generic [ref=e121]:
+                      - link "Palette Virtual Clusters" [ref=e122] [cursor=pointer]:
+                        - /url: /devx/palette-virtual-clusters/
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e123] [cursor=pointer]
+                  - listitem [ref=e124]:
+                    - generic [ref=e125]:
+                      - link "Manage Dev Engine" [expanded] [ref=e126] [cursor=pointer]:
+                        - /url: /devx/manage-dev-engine/
+                      - button "Toggle the collapsible sidebar category 'Manage Dev Engine'" [ref=e127] [cursor=pointer]
+                    - list [ref=e128]:
+                      - listitem [ref=e129]:
+                        - link "Resource Quotas" [ref=e130] [cursor=pointer]:
+                          - /url: /devx/manage-dev-engine/resource-quota/
+                      - listitem [ref=e131]:
+                        - link "Dev Engine Registries" [ref=e132] [cursor=pointer]:
+                          - /url: /devx/manage-dev-engine/registries/
+                      - listitem [ref=e133]:
+                        - link "Manage Single Sign-On (SSO)" [ref=e134] [cursor=pointer]:
+                          - /url: /devx/manage-dev-engine/sso/
+                  - listitem [ref=e135]:
+                    - generic [ref=e136]:
+                      - link "Services" [ref=e137] [cursor=pointer]:
+                        - /url: /devx/services/
+                      - button "Toggle the collapsible sidebar category 'Services'" [ref=e138] [cursor=pointer]
+              - listitem [ref=e139]:
+                - generic [ref=e140]:
+                  - link "Virtual Machine Orchestrator" [ref=e141] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e143]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e145] [cursor=pointer]
+              - listitem [ref=e146]:
+                - generic [ref=e147]:
+                  - link "Workspaces" [ref=e148] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e150]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e152] [cursor=pointer]
+              - listitem [ref=e153]:
+                - generic [ref=e154]:
+                  - link "Packs List" [ref=e155] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e157]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e159] [cursor=pointer]
+              - listitem [ref=e160]:
+                - generic [ref=e161]:
+                  - link "User & Role Management" [ref=e162] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e164]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e166] [cursor=pointer]
+              - listitem [ref=e167]:
+                - generic [ref=e168]:
+                  - link "Registries and Packs" [ref=e169] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e171]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e173] [cursor=pointer]
+              - listitem [ref=e174]:
+                - generic [ref=e175]:
+                  - link "Security" [ref=e176] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e178]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e180] [cursor=pointer]
+              - listitem [ref=e181]:
+                - generic [ref=e182]:
+                  - link "Audit Logs" [ref=e183] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e185]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e187] [cursor=pointer]
+              - listitem [ref=e188]:
+                - generic [ref=e189]:
+                  - link "Self-Hosted Palette" [ref=e190] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e192]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e194] [cursor=pointer]
+              - listitem [ref=e195]:
+                - generic [ref=e196]:
+                  - link "Palette VerteX" [ref=e197] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e199]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e201] [cursor=pointer]
+              - listitem [ref=e202]:
+                - generic [ref=e203]:
+                  - link "Tenant Administration" [ref=e204] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e206]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e208] [cursor=pointer]
+              - listitem [ref=e209]:
+                - generic [ref=e210]:
+                  - link "Automation" [ref=e211] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e213]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e215] [cursor=pointer]
+              - listitem [ref=e216]:
+                - generic [ref=e217]:
+                  - link "Troubleshooting" [ref=e218] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e220]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e222] [cursor=pointer]
+              - listitem [ref=e223]:
+                - link "Glossary" [ref=e224] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e226]
+                  - text: Glossary
+              - listitem [ref=e228]:
+                - generic [ref=e229]:
+                  - link "Compliance & Legal" [ref=e230] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e232]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e234] [cursor=pointer]
+              - listitem [ref=e235]:
+                - button "Privacy Settings" [ref=e236] [cursor=pointer]:
+                  - img [ref=e237]
+                  - text: Privacy Settings
+      - main [ref=e239]:
+        - generic [ref=e241]:
+          - generic [ref=e243]:
+            - article [ref=e244]:
+              - navigation "Breadcrumbs" [ref=e245]:
+                - list [ref=e246]:
+                  - listitem [ref=e247]:
+                    - link "Home page" [ref=e248] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e249]
+                  - listitem [ref=e251]:
+                    - link "Palette Dev Engine" [ref=e252] [cursor=pointer]:
+                      - /url: /devx/
+                  - listitem [ref=e253]:
+                    - link "Manage Dev Engine" [ref=e254] [cursor=pointer]:
+                      - /url: /devx/manage-dev-engine/
+                  - listitem [ref=e255]:
+                    - generic [ref=e256]: Resource Quotas
+              - generic [ref=e257]:
+                - heading "Resource Quotas" [level=1] [ref=e259]
+                - paragraph [ref=e260]: This section covers the available deployment environments for Palette Virtual Clusters and the resource quotas that apply to users and virtual clusters.
+                - heading "Available EnvironmentsDirect link to Available Environments" [level=2] [ref=e261]:
+                  - text: Available Environments
+                  - link "Direct link to Available Environments" [ref=e262] [cursor=pointer]:
+                    - /url: "#available-environments"
+                    - text: "#"
+                - paragraph [ref=e263]:
+                  - text: Palette administrators can remove system-level cluster groups for all downstream users by setting the tenant developer setting
+                  - strong [ref=e264]: Hide system-level cluster groups from tenant users
+                  - text: to
+                  - strong [ref=e265]: "true"
+                  - text: . When this setting value is
+                  - strong [ref=e266]: "true"
+                  - text: ", the beehive cluster is not displayed in the cluster group drop-down menu when deploying Palette virtual clusters."
+                - paragraph [ref=e267]:
+                  - img "The deployment path for a user" [ref=e268]
+                - paragraph [ref=e269]:
+                  - text: You can change tenant developer settings by switching to the tenant scope and navigating from the left
+                  - strong [ref=e270]: Main Menu
+                  - text: to
+                  - strong [ref=e271]: Tenant Settings > Developers Settings
+                  - text: . Toggle the
+                  - strong [ref=e272]: Hide system-level cluster groups from tenant users
+                  - text: button.
+                - heading "Virtual Cluster Resource QuotaDirect link to Virtual Cluster Resource Quota" [level=2] [ref=e273]:
+                  - text: Virtual Cluster Resource Quota
+                  - link "Direct link to Virtual Cluster Resource Quota" [ref=e274] [cursor=pointer]:
+                    - /url: "#virtual-cluster-resource-quota"
+                    - text: "#"
+                - paragraph [ref=e275]: Virtual clusters inherit resource quotas from the parent cluster group. The cluster group's virtual cluster settings determine the maximum resources per virtual cluster, and can be used to limit the number of resources a virtual cluster can claim from the group. By default, each virtual cluster requires at least 4 CPU, 4 GiB of memory, and 2 GiB of storage. Keep the required minimum values in mind when deploying virtual clusters or when defining the cluster group's virtual cluster settings.
+                - table [ref=e276]:
+                  - rowgroup [ref=e277]:
+                    - row "Virtual Cluster Minimum Limit" [ref=e278]:
+                      - cell "Virtual Cluster" [ref=e279]:
+                        - strong [ref=e280]: Virtual Cluster
+                      - cell "Minimum Limit" [ref=e281]:
+                        - strong [ref=e282]: Minimum Limit
+                  - rowgroup [ref=e283]:
+                    - row "CPU (per request) 4" [ref=e284]:
+                      - cell "CPU (per request)" [ref=e285]
+                      - cell "4" [ref=e286]
+                    - row "Memory (per request) 4 GiB" [ref=e287]:
+                      - cell "Memory (per request)" [ref=e288]
+                      - cell "4 GiB" [ref=e289]
+                    - row "Storage (per request) 2 GiB" [ref=e290]:
+                      - cell "Storage (per request)" [ref=e291]
+                      - cell "2 GiB" [ref=e292]
+                - generic [ref=e293]:
+                  - generic [ref=e294]:
+                    - img [ref=e296]
+                    - text: warning
+                  - generic [ref=e298]:
+                    - paragraph [ref=e299]: "A virtual cluster requires a minimum of 4 CPU, 4 GiB of memory, and 2 Gib of storage to launch successfully. The default settings in the cluster group virtual cluster configuration YAML file has the following values:"
+                    - generic [ref=e301]:
+                      - code [ref=e303]:
+                        - generic [ref=e304]: vcluster
+                        - generic [ref=e305]: "resources:"
+                        - generic [ref=e306]: "limits:"
+                        - generic [ref=e307]: "cpu: 1000m"
+                        - generic [ref=e308]: "memory: 1Gi"
+                        - generic [ref=e309]: "ephemeral-storage: 1Gi"
+                        - generic [ref=e310]: "requests:"
+                        - generic [ref=e311]: "cpu: 200m"
+                        - generic [ref=e312]: "memory: 256Mi"
+                        - generic [ref=e313]: "ephemeral-storage: 128Mi"
+                      - button "Copy code to clipboard" [ref=e315] [cursor=pointer]:
+                        - generic [ref=e316]:
+                          - img [ref=e317]
+                          - img [ref=e319]
+                    - paragraph [ref=e321]: Increasing the limit and request values could result in a virtual cluster requiring more resources than the default values of CPU, 4 GiB Memory, and 2 Gib of storage.
+                - paragraph [ref=e322]: If a user attempts to create a virtual cluster that needs more resources than the cluster group allows, the request will be denied because it exceeds the cluster group's defined limits.
+                - paragraph [ref=e323]:
+                  - text: Refer to the
+                  - link "Create and Manage Cluster Groups" [ref=e324] [cursor=pointer]:
+                    - /url: /clusters/cluster-groups/create-cluster-group/
+                  - text: to learn more about adjusting cluster group's virtual cluster settings.
+                - heading "User Resource QuotasDirect link to User Resource Quotas" [level=2] [ref=e325]:
+                  - text: User Resource Quotas
+                  - link "Direct link to User Resource Quotas" [ref=e326] [cursor=pointer]:
+                    - /url: "#user-resource-quotas"
+                    - text: "#"
+                - paragraph [ref=e327]: All Palette users are subject to resource quotas. The two entities that impact a user's resource quotas when interacting with virtual clusters are the tenant developer user quotas and the cluster group virtual cluster settings.
+                - heading "Tenant Developer User QuotasDirect link to Tenant Developer User Quotas" [level=2] [ref=e328]:
+                  - text: Tenant Developer User Quotas
+                  - link "Direct link to Tenant Developer User Quotas" [ref=e329] [cursor=pointer]:
+                    - /url: "#tenant-developer-user-quotas"
+                    - text: "#"
+                - paragraph [ref=e330]: The global user quotas that a Palette administrator has defined in the tenant developer settings are always evaluated first. The tenant user quotas define the maximum set of resources a user can claim.
+                - list [ref=e331]:
+                  - listitem [ref=e332]:
+                    - paragraph [ref=e333]: Virtual clusters
+                  - listitem [ref=e334]:
+                    - paragraph [ref=e335]: CPU
+                  - listitem [ref=e336]:
+                    - paragraph [ref=e337]: Memory
+                  - listitem [ref=e338]:
+                    - paragraph [ref=e339]: Storage
+                - paragraph [ref=e340]: For example, assume the following tenant developer user quotas for four virtual clusters are defined as 20 CPU, 32 GiB of memory, and 60 GiB of storage. With these settings, all users could deploy four virtual clusters, each virtual cluster with a maximum size allowed by the cluster group limits.
+                - paragraph [ref=e341]: Users can also deploy a single virtual cluster that consumes 20 CPU, 32 GiB of memory, and 60 GiB of storage. In the latter example, the user cannot deploy additional clusters because CPU, memory, and storage resources are exhausted.
+                - generic [ref=e342]:
+                  - generic [ref=e343]:
+                    - img [ref=e345]
+                    - text: info
+                  - paragraph [ref=e348]:
+                    - text: To change tenant user quotas, switch the scope to
+                    - strong [ref=e349]: Tenant Admin
+                    - text: and navigate from the left
+                    - strong [ref=e350]: Main Menu
+                    - text: to
+                    - strong [ref=e351]: Tenant Settings
+                    - text: ">"
+                    - strong [ref=e352]: Developer Settings
+                    - text: . In the
+                    - strong [ref=e353]: User Quota
+                    - text: section, you can adjust the maximum number of resources for users.
+                - heading "Quota EvaluationDirect link to Quota Evaluation" [level=2] [ref=e354]:
+                  - text: Quota Evaluation
+                  - link "Direct link to Quota Evaluation" [ref=e355] [cursor=pointer]:
+                    - /url: "#quota-evaluation"
+                    - text: "#"
+                - paragraph [ref=e356]: Palette evaluates each virtual cluster creation request to verify the requesting user has enough resource quotas remaining based on the defined tenant user quota and if the virtual cluster request falls within the allowed limits of the parent cluster group.
+                - paragraph [ref=e357]: The following diagram displays the evaluation process Palette uses to determine the status of a virtual cluster creation request.
+                - paragraph [ref=e358]:
+                  - img "Order of flow when it comes to evaluating cluster requests" [ref=e359]
+                - paragraph [ref=e360]: To better understand this concept, use the following examples.
+                - list [ref=e361]:
+                  - listitem [ref=e362]:
+                    - paragraph [ref=e363]: "Tenant Developer User Quotas:"
+                    - list [ref=e364]:
+                      - listitem [ref=e365]: "Number of virtual clusters: 4"
+                      - listitem [ref=e366]: "CPU: 20"
+                      - listitem [ref=e367]: "Memory: 32 GiB"
+                      - listitem [ref=e368]: "Storage: 60 GiB"
+                  - listitem [ref=e369]:
+                    - paragraph [ref=e370]: "Hide system-level cluster groups from tenant users: false"
+                  - listitem [ref=e371]:
+                    - paragraph [ref=e372]:
+                      - text: Cluster Group
+                      - emphasis [ref=e373]: dev-special
+                      - text: Virtual Cluster Settings
+                    - list [ref=e374]:
+                      - listitem [ref=e375]: "CPU (per requests): 8"
+                      - listitem [ref=e376]: "Memory (per requests): 12 GiB"
+                      - listitem [ref=e377]: "Storage (per requests): 12 GiB"
+                  - listitem [ref=e378]:
+                    - paragraph [ref=e379]: User A's Current Resource Utilization
+                    - list [ref=e380]:
+                      - listitem [ref=e381]: 1 virtual Cluster in dev-special
+                      - listitem [ref=e382]: 8 CPU
+                      - listitem [ref=e383]: 12 GiB Memory
+                      - listitem [ref=e384]: 20 GiB of Storage
+                  - listitem [ref=e385]:
+                    - paragraph [ref=e386]: User B's Current Resource Utilization
+                    - list [ref=e387]:
+                      - listitem [ref=e388]: 4 Virtual Cluster in dev-special
+                      - listitem [ref=e389]: 16 CPU
+                      - listitem [ref=e390]: 32 GiB Memory
+                      - listitem [ref=e391]: 60 GiB of Storage
+                - heading "Scenario 1Direct link to Scenario 1" [level=3] [ref=e392]:
+                  - text: Scenario 1
+                  - link "Direct link to Scenario 1" [ref=e393] [cursor=pointer]:
+                    - /url: "#scenario-1"
+                    - text: "#"
+                - paragraph [ref=e394]: "User A is creating a request to deploy a virtual cluster to the dev-special cluster group. The virtual cluster is requesting the following resources:"
+                - list [ref=e395]:
+                  - listitem [ref=e396]: 8 CPU
+                  - listitem [ref=e397]: 12 GiB Memory
+                  - listitem [ref=e398]: 20 GiB Memory
+                - paragraph [ref=e399]:
+                  - strong [ref=e400]: Request
+                  - text: ": ✅"
+                - paragraph [ref=e401]:
+                  - strong [ref=e402]: Explanation
+                  - text: ": Based on tenant user quota, user A has these remaining resources for two virtual clusters: 12 CPU, 20 GiB Memory, and 40 GiB of storage. Based on cluster group quota, user A is within the resource limits of the dev-special cluster group."
+                - heading "Scenario 2Direct link to Scenario 2" [level=3] [ref=e403]:
+                  - text: Scenario 2
+                  - link "Direct link to Scenario 2" [ref=e404] [cursor=pointer]:
+                    - /url: "#scenario-2"
+                    - text: "#"
+                - paragraph [ref=e405]: "User B is creating a request to deploy a virtual cluster to the dev-special cluster group. The virtual cluster is requesting the following resources:"
+                - list [ref=e406]:
+                  - listitem [ref=e407]: 4 CPU
+                  - listitem [ref=e408]: 8 GiB Memory
+                  - listitem [ref=e409]: 4 GiB Storage
+                - paragraph [ref=e410]:
+                  - strong [ref=e411]: Request
+                  - text: ": ❌"
+                - paragraph [ref=e412]:
+                  - strong [ref=e413]: Explanation
+                  - text: ": User B has exceeded the tenant user quota for four clusters. Based on cluster group quota, the virtual cluster request falls within the approved limits."
+                - heading "Scenario 3Direct link to Scenario 3" [level=3] [ref=e414]:
+                  - text: Scenario 3
+                  - link "Direct link to Scenario 3" [ref=e415] [cursor=pointer]:
+                    - /url: "#scenario-3"
+                    - text: "#"
+                - paragraph [ref=e416]: "User B is creating a request to deploy a virtual cluster to a system-level cluster group. The virtual cluster is requesting the following resources:"
+                - list [ref=e417]:
+                  - listitem [ref=e418]: 4 CPU
+                  - listitem [ref=e419]: 8 GiB Memory
+                  - listitem [ref=e420]: 4 GiB Storage
+                - paragraph [ref=e421]:
+                  - strong [ref=e422]: Request
+                  - text: ": ✅"
+                - paragraph [ref=e423]:
+                  - strong [ref=e424]: Explanation
+                  - text: ": The request is accepted because it targets a system-level cluster group and not a cluster group managed by the tenant. Based on the cluster group quota, the number of requested resources falls within the within the approved limits of the system-level quota."
+              - generic [ref=e425]:
+                - generic [ref=e427]:
+                  - text: "Tags:"
+                  - list [ref=e428]:
+                    - listitem [ref=e429]:
+                      - link "devx" [ref=e430] [cursor=pointer]:
+                        - /url: /tags/devx/
+                    - listitem [ref=e431]:
+                      - link "app mode" [ref=e432] [cursor=pointer]:
+                        - /url: /tags/app-mode/
+                    - listitem [ref=e433]:
+                      - link "pde" [ref=e434] [cursor=pointer]:
+                        - /url: /tags/pde/
+                - link "Edit this page" [ref=e437] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/devx/manage-dev-engine/resource-quota.md
+                  - img [ref=e438]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e442]:
+              - link "Previous « Manage Dev Engine" [ref=e443] [cursor=pointer]:
+                - /url: /devx/manage-dev-engine/
+                - generic [ref=e444]: Previous
+                - generic [ref=e445]: « Manage Dev Engine
+              - link "Next Dev Engine Registries »" [ref=e446] [cursor=pointer]:
+                - /url: /devx/manage-dev-engine/registries/
+                - generic [ref=e447]: Next
+                - generic [ref=e448]: Dev Engine Registries »
+          - list [ref=e451]:
+            - listitem [ref=e452]:
+              - link "Available Environments" [ref=e453] [cursor=pointer]:
+                - /url: "#available-environments"
+            - listitem [ref=e454]:
+              - link "Virtual Cluster Resource Quota" [ref=e455] [cursor=pointer]:
+                - /url: "#virtual-cluster-resource-quota"
+            - listitem [ref=e456]:
+              - link "User Resource Quotas" [ref=e457] [cursor=pointer]:
+                - /url: "#user-resource-quotas"
+            - listitem [ref=e458]:
+              - link "Tenant Developer User Quotas" [ref=e459] [cursor=pointer]:
+                - /url: "#tenant-developer-user-quotas"
+            - listitem [ref=e460]:
+              - link "Quota Evaluation" [ref=e461] [cursor=pointer]:
+                - /url: "#quota-evaluation"
+              - list [ref=e462]:
+                - listitem [ref=e463]:
+                  - link "Scenario 1" [ref=e464] [cursor=pointer]:
+                    - /url: "#scenario-1"
+                - listitem [ref=e465]:
+                  - link "Scenario 2" [ref=e466] [cursor=pointer]:
+                    - /url: "#scenario-2"
+                - listitem [ref=e467]:
+                  - link "Scenario 3" [ref=e468] [cursor=pointer]:
+                    - /url: "#scenario-3"
+  - button "Project Logo Ask AI" [ref=e469] [cursor=pointer]:
+    - generic [ref=e472]:
+      - img "Project Logo" [ref=e473]
+      - paragraph [ref=e474]: Ask AI
+```

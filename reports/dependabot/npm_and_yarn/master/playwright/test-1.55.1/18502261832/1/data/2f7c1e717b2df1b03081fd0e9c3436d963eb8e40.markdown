@@ -1,0 +1,591 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                  - listitem [ref=e107]:
+                    - generic [ref=e108]:
+                      - link "Data Center Clusters" [ref=e109] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e111]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e113] [cursor=pointer]
+                  - listitem [ref=e114]:
+                    - generic [ref=e115]:
+                      - link "Edge" [ref=e116] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e118]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e120] [cursor=pointer]
+                  - listitem [ref=e121]:
+                    - generic [ref=e122]:
+                      - link "Palette Virtual Clusters" [ref=e123] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e125]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e127] [cursor=pointer]
+                  - listitem [ref=e128]:
+                    - generic [ref=e129]:
+                      - link "Imported Clusters" [ref=e130] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e132]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e134] [cursor=pointer]
+                  - listitem [ref=e135]:
+                    - generic [ref=e136]:
+                      - link "Manage Clusters" [ref=e137] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e139]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e141] [cursor=pointer]
+                  - listitem [ref=e142]:
+                    - generic [ref=e143]:
+                      - link "Cluster Groups" [ref=e144] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e146]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e148] [cursor=pointer]
+                  - listitem [ref=e149]:
+                    - generic [ref=e150]:
+                      - link "Private Cloud Gateway" [expanded] [ref=e151] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e153]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e155] [cursor=pointer]
+                    - list [ref=e156]:
+                      - listitem [ref=e157]:
+                        - link "Architecture" [ref=e158] [cursor=pointer]:
+                          - /url: /clusters/pcg/architecture/
+                      - listitem [ref=e159]:
+                        - generic [ref=e160]:
+                          - link "Deploy a PCG with Palette CLI" [ref=e161] [cursor=pointer]:
+                            - /url: /clusters/pcg/deploy-pcg/
+                          - button "Toggle the collapsible sidebar category 'Deploy a PCG with Palette CLI'" [ref=e162] [cursor=pointer]
+                      - listitem [ref=e163]:
+                        - link "Deploy a PCG to an Existing Kubernetes Cluster" [ref=e164] [cursor=pointer]:
+                          - /url: /clusters/pcg/deploy-pcg-k8s/
+                      - listitem [ref=e165]:
+                        - generic [ref=e166]:
+                          - link "Manage PCG" [expanded] [ref=e167] [cursor=pointer]:
+                            - /url: /clusters/pcg/manage-pcg/
+                          - button "Toggle the collapsible sidebar category 'Manage PCG'" [ref=e168] [cursor=pointer]
+                        - list [ref=e169]:
+                          - listitem [ref=e170]:
+                            - link "Create and Manage IPAM Node Pools" [ref=e171] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/create-manage-node-pool/
+                          - listitem [ref=e172]:
+                            - link "Enable and Manage Proxy Configurations" [ref=e173] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/configure-proxy/
+                          - listitem [ref=e174]:
+                            - link "Add DNS Mapping" [ref=e175] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/add-dns-mapping/
+                          - listitem [ref=e176]:
+                            - link "Increase PCG Node Count" [ref=e177] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/scale-pcg-nodes/
+                          - listitem [ref=e178]:
+                            - link "Delete a PCG" [ref=e179] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/remove-pcg/
+                          - listitem [ref=e180]:
+                            - link "Upgrade a PCG" [ref=e181] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/pcg-upgrade/
+                          - listitem [ref=e182]:
+                            - link "Migrate a PCG" [ref=e183] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/migrate_pcg/
+                          - listitem [ref=e184]:
+                            - link "Override Registry Configuration" [ref=e185] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/registry-override/
+              - listitem [ref=e186]:
+                - generic [ref=e187]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e188] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e190]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e192] [cursor=pointer]
+              - listitem [ref=e193]:
+                - generic [ref=e194]:
+                  - link "Palette Dev Engine" [ref=e195] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e197]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e199] [cursor=pointer]
+              - listitem [ref=e200]:
+                - generic [ref=e201]:
+                  - link "Virtual Machine Orchestrator" [ref=e202] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e204]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e206] [cursor=pointer]
+              - listitem [ref=e207]:
+                - generic [ref=e208]:
+                  - link "Workspaces" [ref=e209] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e211]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e213] [cursor=pointer]
+              - listitem [ref=e214]:
+                - generic [ref=e215]:
+                  - link "Packs List" [ref=e216] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e218]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e220] [cursor=pointer]
+              - listitem [ref=e221]:
+                - generic [ref=e222]:
+                  - link "User & Role Management" [ref=e223] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e225]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e227] [cursor=pointer]
+              - listitem [ref=e228]:
+                - generic [ref=e229]:
+                  - link "Registries and Packs" [ref=e230] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e232]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e234] [cursor=pointer]
+              - listitem [ref=e235]:
+                - generic [ref=e236]:
+                  - link "Security" [ref=e237] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e239]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e241] [cursor=pointer]
+              - listitem [ref=e242]:
+                - generic [ref=e243]:
+                  - link "Audit Logs" [ref=e244] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e246]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e248] [cursor=pointer]
+              - listitem [ref=e249]:
+                - generic [ref=e250]:
+                  - link "Self-Hosted Palette" [ref=e251] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e253]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e255] [cursor=pointer]
+              - listitem [ref=e256]:
+                - generic [ref=e257]:
+                  - link "Palette VerteX" [ref=e258] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e260]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e262] [cursor=pointer]
+              - listitem [ref=e263]:
+                - generic [ref=e264]:
+                  - link "Tenant Administration" [ref=e265] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e267]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e269] [cursor=pointer]
+              - listitem [ref=e270]:
+                - generic [ref=e271]:
+                  - link "Automation" [ref=e272] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e274]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e276] [cursor=pointer]
+              - listitem [ref=e277]:
+                - generic [ref=e278]:
+                  - link "Troubleshooting" [ref=e279] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e281]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e283] [cursor=pointer]
+              - listitem [ref=e284]:
+                - link "Glossary" [ref=e285] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e287]
+                  - text: Glossary
+              - listitem [ref=e289]:
+                - generic [ref=e290]:
+                  - link "Compliance & Legal" [ref=e291] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e293]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e295] [cursor=pointer]
+              - listitem [ref=e296]:
+                - button "Privacy Settings" [ref=e297] [cursor=pointer]:
+                  - img [ref=e298]
+                  - text: Privacy Settings
+      - main [ref=e300]:
+        - generic [ref=e302]:
+          - generic [ref=e304]:
+            - article [ref=e305]:
+              - navigation "Breadcrumbs" [ref=e306]:
+                - list [ref=e307]:
+                  - listitem [ref=e308]:
+                    - link "Home page" [ref=e309] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e310]
+                  - listitem [ref=e312]:
+                    - link "Clusters" [ref=e313] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e314]:
+                    - link "Private Cloud Gateway" [ref=e315] [cursor=pointer]:
+                      - /url: /clusters/pcg/
+                  - listitem [ref=e316]:
+                    - link "Manage PCG" [ref=e317] [cursor=pointer]:
+                      - /url: /clusters/pcg/manage-pcg/
+                  - listitem [ref=e318]:
+                    - generic [ref=e319]: Create and Manage IPAM Node Pools
+              - generic [ref=e320]:
+                - heading "Create and Manage IPAM Node Pools" [level=1] [ref=e322]
+                - paragraph [ref=e323]: You can create and manage additional node pools for a Private Cloud Gateway (PCG) deployed in VMware vSphere. By default, a PCG is created with a single node pool definition based on the values provided during the installation process. The default node pool created during the installation is reserved for the PCG cluster and cannot be used by other clusters. A secondary IP Address Management (IPAM) node pool is also required if you selected static placement during the PCG installation process.
+                - generic [ref=e324]:
+                  - generic [ref=e325]:
+                    - img [ref=e327]
+                    - text: info
+                  - paragraph [ref=e330]: Other private cloud providers, such as MAAS and OpenStack, do not have the ability for you to create additional node pools. You can manage where compute nodes are deployed using the native placement capabilities provided by the private cloud provider, such as tags, availability zones, or regions. Unlike VMware vSphere, these other private cloud providers natively support IPAM and DHCP.
+                - paragraph [ref=e331]: You can create additional node pools to meet the requirements of your workloads, such as defining different node pools for different workloads, better managing the IP address utilization, or providing additional capacity. You can assign additional IPAM node pools when deploying a VMware vSphere or a MAAS LXD cluster with a static IP network. This guide provides instructions on how to create an IPAM node pool for a PCG deployed in a VMware vSphere environment or for a MAAS LXD deployment.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e332]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e333] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e334]:
+                  - listitem [ref=e335]:
+                    - paragraph [ref=e336]:
+                      - text: A PCG is installed, active, and in a healthy state. Refer to
+                      - link "Deploy a PCG" [ref=e337] [cursor=pointer]:
+                        - /url: /clusters/pcg/deploy-pcg/
+                      - text: for instructions on how to install a PCG.
+                  - listitem [ref=e338]:
+                    - paragraph [ref=e339]: Tenant administrator access.
+                  - listitem [ref=e340]:
+                    - paragraph [ref=e341]: An IP address range or subnet available for the node pool.
+                - heading "Create a PCG Node PoolDirect link to Create a PCG Node Pool" [level=2] [ref=e342]:
+                  - text: Create a PCG Node Pool
+                  - link "Direct link to Create a PCG Node Pool" [ref=e343] [cursor=pointer]:
+                    - /url: "#create-a-pcg-node-pool"
+                    - text: "#"
+                - list [ref=e344]:
+                  - listitem [ref=e345]:
+                    - paragraph [ref=e346]:
+                      - text: Log in to
+                      - link "Palette" [ref=e347] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant administrator.
+                  - listitem [ref=e348]:
+                    - paragraph [ref=e349]:
+                      - text: From the left main menu, select
+                      - strong [ref=e350]: Tenant Settings
+                      - text: .
+                  - listitem [ref=e351]:
+                    - paragraph [ref=e352]:
+                      - text: In the
+                      - strong [ref=e353]: Infrastructure
+                      - text: section, select
+                      - strong [ref=e354]: Private Cloud Gateways
+                      - text: .
+                  - listitem [ref=e355]:
+                    - paragraph [ref=e356]: Select the PCG for which you want to create a node pool.
+                  - listitem [ref=e357]:
+                    - paragraph [ref=e358]:
+                      - text: From the PCG details page, select the
+                      - strong [ref=e359]: IP Address Management (IPAM)
+                      - text: tab.
+                  - listitem [ref=e360]:
+                    - paragraph [ref=e361]:
+                      - text: Select
+                      - strong [ref=e362]: Add New Pool
+                      - text: .
+                  - listitem [ref=e363]:
+                    - paragraph [ref=e364]:
+                      - text: The
+                      - strong [ref=e365]: Create IP Pool
+                      - text: dialogue appears. Complete the necessary fields.
+                    - table [ref=e366]:
+                      - rowgroup [ref=e367]:
+                        - row "Field Description" [ref=e368]:
+                          - cell "Field" [ref=e369]
+                          - cell "Description" [ref=e370]
+                      - rowgroup [ref=e371]:
+                        - row "Name A unique name for the node pool." [ref=e372]:
+                          - cell "Name" [ref=e373]:
+                            - strong [ref=e374]: Name
+                          - cell "A unique name for the node pool." [ref=e375]
+                        - row "Network Type Choose between Range or Subnet. Each option has different input requirements. Refer to the Range or Subnet section to learn more." [ref=e376]:
+                          - cell "Network Type" [ref=e377]:
+                            - strong [ref=e378]: Network Type
+                          - cell "Choose between Range or Subnet. Each option has different input requirements. Refer to the Range or Subnet section to learn more." [ref=e379]:
+                            - text: Choose between
+                            - strong [ref=e380]: Range
+                            - text: or
+                            - strong [ref=e381]: Subnet
+                            - text: . Each option has different input requirements. Refer to the
+                            - link "Range" [ref=e382] [cursor=pointer]:
+                              - /url: "#range"
+                            - text: or
+                            - link "Subnet" [ref=e383] [cursor=pointer]:
+                              - /url: "#subnet"
+                            - text: section to learn more.
+                        - row "Gateway The gateway IP address for the node pool." [ref=e384]:
+                          - cell "Gateway" [ref=e385]:
+                            - strong [ref=e386]: Gateway
+                          - cell "The gateway IP address for the node pool." [ref=e387]
+                        - row "Nameserver addresses The IP addresses of the nameservers for the node pool." [ref=e388]:
+                          - cell "Nameserver addresses" [ref=e389]:
+                            - strong [ref=e390]: Nameserver addresses
+                          - cell "The IP addresses of the nameservers for the node pool." [ref=e391]
+                        - row "Nameserver search suffix The search suffix for the domain supported by the nameservers. This field is optional." [ref=e392]:
+                          - cell "Nameserver search suffix" [ref=e393]:
+                            - strong [ref=e394]: Nameserver search suffix
+                          - cell "The search suffix for the domain supported by the nameservers. This field is optional." [ref=e395]
+                        - row "Restrict to a single cluster If enabled, the node pool will be restricted to a single cluster. Additional clusters will require creating more node pools." [ref=e396]:
+                          - cell "Restrict to a single cluster" [ref=e397]:
+                            - strong [ref=e398]: Restrict to a single cluster
+                          - cell "If enabled, the node pool will be restricted to a single cluster. Additional clusters will require creating more node pools." [ref=e399]
+                    - generic [ref=e400]:
+                      - generic [ref=e401]:
+                        - img [ref=e403]
+                        - text: info
+                      - generic [ref=e405]:
+                        - paragraph [ref=e406]: "The number of IP addresses assigned to each node pool must be at least three more than the total number of control plane and worker nodes that will be assigned to the node pool. At the start of cluster deployment, three IPs are immediately reserved: one for the Cluster API (CAPI) bootstrap VM, one for the Kubernetes API load balancer, and one for pool-level repaves."
+                        - paragraph [ref=e407]: If you do not have a sufficient number of IP addresses available, the cluster cannot be deployed. As an example, if you plan to use the node pool for a cluster with one control plane and three worker nodes, you must have at least seven IP addresses available.
+                    - heading "RangeDirect link to Range" [level=4] [ref=e408]:
+                      - text: Range
+                      - link "Direct link to Range" [ref=e409] [cursor=pointer]:
+                        - /url: "#range"
+                        - text: "#"
+                    - paragraph [ref=e410]:
+                      - text: If you select
+                      - strong [ref=e411]: Range
+                      - text: as the
+                      - strong [ref=e412]: Network Type
+                      - text: ", you must provide the following information:"
+                    - table [ref=e413]:
+                      - rowgroup [ref=e414]:
+                        - row "Field Description" [ref=e415]:
+                          - cell "Field" [ref=e416]
+                          - cell "Description" [ref=e417]
+                      - rowgroup [ref=e418]:
+                        - row "IP Start range The starting IP address for the node pool." [ref=e419]:
+                          - cell "IP Start range" [ref=e420]:
+                            - strong [ref=e421]: IP Start range
+                          - cell "The starting IP address for the node pool." [ref=e422]
+                        - row "IP End range The ending IP address for the node pool." [ref=e423]:
+                          - cell "IP End range" [ref=e424]:
+                            - strong [ref=e425]: IP End range
+                          - cell "The ending IP address for the node pool." [ref=e426]
+                        - row "Network Prefix The network prefix for the node pool. For example, /18." [ref=e427]:
+                          - cell "Network Prefix" [ref=e428]:
+                            - strong [ref=e429]: Network Prefix
+                          - cell "The network prefix for the node pool. For example, /18." [ref=e430]:
+                            - text: The network prefix for the node pool. For example,
+                            - code [ref=e431]: /18
+                            - text: .
+                    - heading "SubnetDirect link to Subnet" [level=4] [ref=e432]:
+                      - text: Subnet
+                      - link "Direct link to Subnet" [ref=e433] [cursor=pointer]:
+                        - /url: "#subnet"
+                        - text: "#"
+                    - paragraph [ref=e434]:
+                      - text: If you select
+                      - strong [ref=e435]: Subnet
+                      - text: as the
+                      - strong [ref=e436]: Network Type
+                      - text: ", you must provide the following information:"
+                    - table [ref=e437]:
+                      - rowgroup [ref=e438]:
+                        - row "Field Description" [ref=e439]:
+                          - cell "Field" [ref=e440]
+                          - cell "Description" [ref=e441]
+                      - rowgroup [ref=e442]:
+                        - row "Subnet The subnet for the node pool in CIDR format. For example, 10.10.100.0/24." [ref=e443]:
+                          - cell "Subnet" [ref=e444]:
+                            - strong [ref=e445]: Subnet
+                          - cell "The subnet for the node pool in CIDR format. For example, 10.10.100.0/24." [ref=e446]:
+                            - text: The subnet for the node pool in CIDR format. For example,
+                            - code [ref=e447]: 10.10.100.0/24
+                            - text: .
+                        - row "Network Prefix The network prefix for the node pool. For example, /18." [ref=e448]:
+                          - cell "Network Prefix" [ref=e449]:
+                            - strong [ref=e450]: Network Prefix
+                          - cell "The network prefix for the node pool. For example, /18." [ref=e451]:
+                            - text: The network prefix for the node pool. For example,
+                            - code [ref=e452]: /18
+                            - text: .
+                  - listitem [ref=e453]:
+                    - paragraph [ref=e454]:
+                      - text: Select
+                      - strong [ref=e455]: Confirm
+                      - text: to create the node pool.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e456]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e457] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e458]: Use the following steps to validate that the node pool was created.
+                - list [ref=e459]:
+                  - listitem [ref=e460]:
+                    - paragraph [ref=e461]:
+                      - text: Log in to
+                      - link "Palette" [ref=e462] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant administrator.
+                  - listitem [ref=e463]:
+                    - paragraph [ref=e464]:
+                      - text: From the left main menu, select
+                      - strong [ref=e465]: Tenant Settings
+                      - text: .
+                  - listitem [ref=e466]:
+                    - paragraph [ref=e467]:
+                      - text: In the
+                      - strong [ref=e468]: Infrastructure
+                      - text: section, select
+                      - strong [ref=e469]: Private Cloud Gateways
+                      - text: .
+                  - listitem [ref=e470]:
+                    - paragraph [ref=e471]: Select the PCG for which you want to create a node pool.
+                  - listitem [ref=e472]:
+                    - paragraph [ref=e473]:
+                      - text: From the PCG details page, select the
+                      - strong [ref=e474]: IP Address Management (IPAM)
+                      - text: tab.
+                  - listitem [ref=e475]:
+                    - paragraph [ref=e476]:
+                      - text: The new node pool should be listed in the
+                      - strong [ref=e477]: Node Pools
+                      - text: section.
+                - paragraph [ref=e478]:
+                  - text: To use the new node pool, you will need to create a
+                  - link "VMware vSphere cluster" [ref=e479] [cursor=pointer]:
+                    - /url: /clusters/data-center/vmware/create-manage-vmware-clusters/
+                  - text: or
+                  - link "MAAS LXD workload cluster" [ref=e480] [cursor=pointer]:
+                    - /url: /clusters/data-center/maas/create-manage-maas-lxd-clusters/
+                  - text: with a static IP network.
+                - paragraph [ref=e481]: For VMware vSphere clusters, assign the node pool when configuring the cluster control plane and worker nodes. For MAAS LXD workload clusters, assign the node pool only when configuring the worker nodes.
+              - generic [ref=e482]:
+                - generic [ref=e484]:
+                  - text: "Tags:"
+                  - list [ref=e485]:
+                    - listitem [ref=e486]:
+                      - link "pcg" [ref=e487] [cursor=pointer]:
+                        - /url: /tags/pcg/
+                - link "Edit this page" [ref=e490] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/pcg/manage-pcg/create-manage-node-pool.md
+                  - img [ref=e491]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e495]:
+              - link "Previous « Manage PCG" [ref=e496] [cursor=pointer]:
+                - /url: /clusters/pcg/manage-pcg/
+                - generic [ref=e497]: Previous
+                - generic [ref=e498]: « Manage PCG
+              - link "Next Enable and Manage Proxy Configurations »" [ref=e499] [cursor=pointer]:
+                - /url: /clusters/pcg/manage-pcg/configure-proxy/
+                - generic [ref=e500]: Next
+                - generic [ref=e501]: Enable and Manage Proxy Configurations »
+          - list [ref=e504]:
+            - listitem [ref=e505]:
+              - link "Prerequisites" [ref=e506] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e507]:
+              - link "Create a PCG Node Pool" [ref=e508] [cursor=pointer]:
+                - /url: "#create-a-pcg-node-pool"
+            - listitem [ref=e509]:
+              - link "Validate" [ref=e510] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e511] [cursor=pointer]:
+    - generic [ref=e514]:
+      - img "Project Logo" [ref=e515]
+      - paragraph [ref=e516]: Ask AI
+```

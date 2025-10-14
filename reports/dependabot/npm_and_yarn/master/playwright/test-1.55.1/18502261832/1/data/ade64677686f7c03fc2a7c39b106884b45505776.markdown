@@ -1,0 +1,731 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - link "Downloads" [ref=e40] [cursor=pointer]:
+                  - /url: /downloads/
+                  - img [ref=e42]
+                  - text: Downloads
+              - listitem [ref=e44]:
+                - link "Artifact Studio" [ref=e45] [cursor=pointer]:
+                  - /url: /downloads/artifact-studio/
+                  - img [ref=e47]
+                  - text: Artifact Studio
+              - listitem [ref=e49]:
+                - link "CLI Tools" [ref=e50] [cursor=pointer]:
+                  - /url: /downloads/cli-tools/
+                  - img [ref=e52]
+                  - text: CLI Tools
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "Self-Hosted Palette" [ref=e56] [cursor=pointer]:
+                    - /url: /downloads/self-hosted-palette/
+                    - img [ref=e58]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - generic [ref=e62]:
+                  - link "Palette VerteX" [ref=e63] [cursor=pointer]:
+                    - /url: /downloads/palette-vertex/
+                    - img [ref=e65]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e67] [cursor=pointer]
+              - listitem [ref=e68]:
+                - link "Agent Mode" [ref=e69] [cursor=pointer]:
+                  - /url: /downloads/agent-mode/
+                  - img [ref=e71]
+                  - text: Agent Mode
+              - listitem [ref=e73]:
+                - link "CAPI Image Builder" [ref=e74] [cursor=pointer]:
+                  - /url: /downloads/capi-image-builder/
+                  - img [ref=e76]
+                  - text: CAPI Image Builder
+              - listitem [ref=e78]:
+                - link "Offline Documentation" [ref=e79] [cursor=pointer]:
+                  - /url: /downloads/offline-docs/
+                  - img [ref=e81]
+                  - text: Offline Documentation
+              - listitem [ref=e83]:
+                - button "Privacy Settings" [ref=e84] [cursor=pointer]
+      - main [ref=e85]:
+        - generic [ref=e87]:
+          - generic [ref=e89]:
+            - article [ref=e90]:
+              - navigation "Breadcrumbs" [ref=e91]:
+                - list [ref=e92]:
+                  - listitem [ref=e93]:
+                    - link "Home page" [ref=e94] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e95]
+                  - listitem [ref=e97]:
+                    - generic [ref=e98]: Artifact Studio
+              - generic [ref=e99]:
+                - heading "Artifact Studio" [level=1] [ref=e101]
+                - paragraph [ref=e102]:
+                  - text: The Spectro Cloud
+                  - link "Artifact Studio" [ref=e103] [cursor=pointer]:
+                    - /url: https://artifact-studio.spectrocloud.com/
+                  - text: is a unified platform that helps airgapped, regulatory-focused, and security-conscious organizations populate their registries with bundles, packs, and installers to be used with self-hosted
+                  - link "Palette" [ref=e104] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                  - text: or
+                  - link "Palette VerteX" [ref=e105] [cursor=pointer]:
+                    - /url: /vertex/
+                  - text: . It provides a single location for packs and images, streamlining access and management.
+                - heading "Use CasesDirect link to Use Cases" [level=2] [ref=e106]:
+                  - text: Use Cases
+                  - link "Direct link to Use Cases" [ref=e107] [cursor=pointer]:
+                    - /url: "#use-cases"
+                    - text: "#"
+                - paragraph [ref=e108]:
+                  - text: Use the Palette or VerteX Management Appliance or Helm chart to instantiate or upgrade your self-hosted environment. Additionally, if you are using an airgapped environment, you can browse all available packs and download only the components you wish to use. The integrity and authenticity of all bundles and ISOs downloaded from Artifact Studio can be validated via signatures. These artifact bundles replace the self-extracting binaries we create for airgapped environments with a more familiar Zstandard compressed format (
+                  - code [ref=e109]: zst
+                  - text: ) that can be moved and manipulated with the Palette CLI.
+                - paragraph [ref=e110]: "There are four main artifact areas:"
+                - list [ref=e111]:
+                  - listitem [ref=e112]: Install Palette Enterprise (content bundle, ISO, or Helm chart).
+                  - listitem [ref=e113]: Install Palette VerteX (content bundle, ISO, or Helm chart).
+                  - listitem [ref=e114]: Create a pack bundle to download.
+                  - listitem [ref=e115]: Browse the pack catalog to download individual packs.
+                - generic [ref=e116]:
+                  - generic [ref=e117]:
+                    - img [ref=e119]
+                    - text: tech preview
+                  - generic [ref=e121]: This is a Tech Preview feature and is subject to change. Do not use this feature in production workloads.
+                - heading "Access Artifact StudioDirect link to Access Artifact Studio" [level=2] [ref=e122]:
+                  - text: Access Artifact Studio
+                  - link "Direct link to Access Artifact Studio" [ref=e123] [cursor=pointer]:
+                    - /url: "#access-artifact-studio"
+                    - text: "#"
+                - paragraph [ref=e124]:
+                  - text: Access to Artifact Studio is available to all Spectro Cloud customers. To gain access, contact your Spectro Cloud representative or
+                  - link "open a support ticket" [ref=e125] [cursor=pointer]:
+                    - /url: https://support.spectrocloud.com/
+                  - text: .
+                - heading "Download Palette EnterpriseDirect link to Download Palette Enterprise" [level=2] [ref=e126]:
+                  - text: Download Palette Enterprise
+                  - link "Direct link to Download Palette Enterprise" [ref=e127] [cursor=pointer]:
+                    - /url: "#download-palette-enterprise"
+                    - text: "#"
+                - list [ref=e128]:
+                  - listitem [ref=e129]:
+                    - paragraph [ref=e130]:
+                      - text: Navigate to
+                      - link "Artifact Studio" [ref=e131] [cursor=pointer]:
+                        - /url: https://artifact-studio.spectrocloud.com/
+                      - text: and log in.
+                    - generic [ref=e132]:
+                      - generic [ref=e133]:
+                        - img [ref=e135]
+                        - text: tip
+                      - paragraph [ref=e138]:
+                        - text: If you do not have access to Artifact Studio, contact your Spectro Cloud representative or
+                        - link "open a support ticket" [ref=e139] [cursor=pointer]:
+                          - /url: https://support.spectrocloud.com/
+                        - text: .
+                  - listitem [ref=e140]:
+                    - paragraph [ref=e141]:
+                      - text: In the
+                      - strong [ref=e142]: Install Palette Enterprise
+                      - text: section, use the drop-down to select the version needed, and select
+                      - strong [ref=e143]: Show Artifacts
+                      - text: .
+                  - listitem [ref=e144]:
+                    - paragraph [ref=e145]:
+                      - strong [ref=e146]: Download
+                      - text: the appropriate
+                      - strong [ref=e147]: Content bundle
+                      - text: ","
+                      - strong [ref=e148]: Palette management appliance ISO
+                      - text: ", or"
+                      - strong [ref=e149]: Helm installation
+                      - text: that is applicable to your environment and use case.
+                    - table [ref=e150]:
+                      - rowgroup [ref=e151]:
+                        - row "Download Option Use Case" [ref=e152]:
+                          - cell "Download Option" [ref=e153]:
+                            - strong [ref=e154]: Download Option
+                          - cell "Use Case" [ref=e155]:
+                            - strong [ref=e156]: Use Case
+                      - rowgroup [ref=e157]:
+                        - row "Content bundle Used for traditional application install. A signature file (sig.bin) is included with the ZST bundle." [ref=e158]:
+                          - cell "Content bundle" [ref=e159]:
+                            - strong [ref=e160]: Content bundle
+                          - cell "Used for traditional application install. A signature file (sig.bin) is included with the ZST bundle." [ref=e161]:
+                            - text: Used for traditional application install. A signature file (
+                            - code [ref=e162]: sig.bin
+                            - text: ) is included with the ZST bundle.
+                        - row "ISO Used to install from an ISO on a virtual machine, edge device, or bare-metal system. A signature file (sig.bin) is included with the ISO file." [ref=e163]:
+                          - cell "ISO" [ref=e164]:
+                            - strong [ref=e165]: ISO
+                          - cell "Used to install from an ISO on a virtual machine, edge device, or bare-metal system. A signature file (sig.bin) is included with the ISO file." [ref=e166]:
+                            - text: Used to install from an ISO on a virtual machine, edge device, or bare-metal system. A signature file (
+                            - code [ref=e167]: sig.bin
+                            - text: ) is included with the ISO file.
+                        - row "Helm installation Used to install with Helm charts." [ref=e168]:
+                          - cell "Helm installation" [ref=e169]:
+                            - strong [ref=e170]: Helm installation
+                          - cell "Used to install with Helm charts." [ref=e171]
+                - paragraph [ref=e172]:
+                  - text: Once you have the file, you can deploy Palette as a self-hosted application. For ISO downloads, review the
+                  - link "Palette Management Appliance Installation guide" [ref=e173] [cursor=pointer]:
+                    - /url: /enterprise-version/install-palette/palette-management-appliance/
+                  - text: for more information on deploying Palette locally.
+                - heading "Download Palette VerteXDirect link to Download Palette VerteX" [level=2] [ref=e174]:
+                  - text: Download Palette VerteX
+                  - link "Direct link to Download Palette VerteX" [ref=e175] [cursor=pointer]:
+                    - /url: "#download-palette-vertex"
+                    - text: "#"
+                - list [ref=e176]:
+                  - listitem [ref=e177]:
+                    - paragraph [ref=e178]:
+                      - text: Navigate to
+                      - link "Artifact Studio" [ref=e179] [cursor=pointer]:
+                        - /url: https://artifact-studio.spectrocloud.com/
+                      - text: and log in.
+                    - generic [ref=e180]:
+                      - generic [ref=e181]:
+                        - img [ref=e183]
+                        - text: tip
+                      - paragraph [ref=e186]:
+                        - text: If you do not have access to Artifact Studio, contact your Spectro Cloud representative or
+                        - link "open a support ticket" [ref=e187] [cursor=pointer]:
+                          - /url: https://support.spectrocloud.com/
+                        - text: .
+                  - listitem [ref=e188]:
+                    - paragraph [ref=e189]:
+                      - text: In the
+                      - strong [ref=e190]: Install Palette VerteX
+                      - text: section, use the drop-down to select the version needed, and select
+                      - strong [ref=e191]: Show Artifacts
+                      - text: .
+                  - listitem [ref=e192]:
+                    - paragraph [ref=e193]:
+                      - strong [ref=e194]: Download
+                      - text: the appropriate
+                      - strong [ref=e195]: Content bundle
+                      - text: ","
+                      - strong [ref=e196]: Palette management appliance ISO
+                      - text: ", or"
+                      - strong [ref=e197]: Helm installation
+                      - text: that is applicable to your environment and use case.
+                    - table [ref=e198]:
+                      - rowgroup [ref=e199]:
+                        - row "Download Option Use Case" [ref=e200]:
+                          - cell "Download Option" [ref=e201]:
+                            - strong [ref=e202]: Download Option
+                          - cell "Use Case" [ref=e203]:
+                            - strong [ref=e204]: Use Case
+                      - rowgroup [ref=e205]:
+                        - row "Content bundle Used for traditional application install. A signature file (sig.bin) is included with the ZST bundle." [ref=e206]:
+                          - cell "Content bundle" [ref=e207]:
+                            - strong [ref=e208]: Content bundle
+                          - cell "Used for traditional application install. A signature file (sig.bin) is included with the ZST bundle." [ref=e209]:
+                            - text: Used for traditional application install. A signature file (
+                            - code [ref=e210]: sig.bin
+                            - text: ) is included with the ZST bundle.
+                        - row "ISO Used for installation from ISO device in a virtual machine, edge device, or bare-metal. A signature file (sig.bin) is included with the ISO file." [ref=e211]:
+                          - cell "ISO" [ref=e212]:
+                            - strong [ref=e213]: ISO
+                          - cell "Used for installation from ISO device in a virtual machine, edge device, or bare-metal. A signature file (sig.bin) is included with the ISO file." [ref=e214]:
+                            - text: Used for installation from ISO device in a virtual machine, edge device, or bare-metal. A signature file (
+                            - code [ref=e215]: sig.bin
+                            - text: ) is included with the ISO file.
+                        - row "Helm installation Used to install with Helm charts." [ref=e216]:
+                          - cell "Helm installation" [ref=e217]:
+                            - strong [ref=e218]: Helm installation
+                          - cell "Used to install with Helm charts." [ref=e219]
+                - paragraph [ref=e220]:
+                  - text: Once you have the file, you can deploy Palette VerteX as a self-hosted application. For ISO downloads, review the
+                  - link "VerteX Management Appliance Installation guide" [ref=e221] [cursor=pointer]:
+                    - /url: /vertex/install-palette-vertex/vertex-management-appliance/
+                  - text: for more information on deploying Palette VerteX locally.
+                - heading "Download a Pack BundleDirect link to Download a Pack Bundle" [level=2] [ref=e222]:
+                  - text: Download a Pack Bundle
+                  - link "Direct link to Download a Pack Bundle" [ref=e223] [cursor=pointer]:
+                    - /url: "#download-a-pack-bundle"
+                    - text: "#"
+                - generic [ref=e224]:
+                  - generic [ref=e225]:
+                    - img [ref=e227]
+                    - text: warning
+                  - paragraph [ref=e230]: Agent mode binaries cannot be downloaded at this time.
+                - list [ref=e231]:
+                  - listitem [ref=e232]:
+                    - paragraph [ref=e233]:
+                      - text: Navigate to
+                      - link "Artifact Studio" [ref=e234] [cursor=pointer]:
+                        - /url: https://artifact-studio.spectrocloud.com/
+                      - text: and log in.
+                  - listitem [ref=e235]:
+                    - paragraph [ref=e236]:
+                      - text: In the
+                      - strong [ref=e237]: Create pack bundle
+                      - text: section, select
+                      - strong [ref=e238]: Build bundle
+                      - text: .
+                    - generic [ref=e239]:
+                      - generic [ref=e240]:
+                        - img [ref=e242]
+                        - text: tip
+                      - paragraph [ref=e245]:
+                        - text: Ensure that pop-ups are enabled in your browser for
+                        - link "Artifact Studio" [ref=e246] [cursor=pointer]:
+                          - /url: https://artifact-studio.spectrocloud.com/
+                        - text: to allow for multiple artifact downloads.
+                    - paragraph [ref=e247]:
+                      - img "Image of Create pack bundle" [ref=e248]
+                  - listitem [ref=e249]:
+                    - paragraph [ref=e250]:
+                      - text: On the
+                      - strong [ref=e251]: Select Product
+                      - text: page, select either
+                      - strong [ref=e252]: Palette Enterprise Appliance
+                      - text: or
+                      - strong [ref=e253]: Palette Vertex Appliance
+                      - text: .
+                  - listitem [ref=e254]:
+                    - paragraph [ref=e255]:
+                      - text: On the
+                      - strong [ref=e256]: Current Version
+                      - text: page, select the version of Palette or Palette VerteX you want to install.
+                  - listitem [ref=e257]:
+                    - paragraph [ref=e258]:
+                      - text: On the
+                      - strong [ref=e259]: Use case
+                      - text: page, select the use case for the bundle. The use case you select determines the options presented to you.
+                    - table [ref=e260]:
+                      - rowgroup [ref=e261]:
+                        - row "Use Case Definition" [ref=e262]:
+                          - cell "Use Case" [ref=e263]:
+                            - strong [ref=e264]: Use Case
+                          - cell "Definition" [ref=e265]:
+                            - strong [ref=e266]: Definition
+                      - rowgroup [ref=e267]:
+                        - row "Controller mode Download specific component packs for provisioning CAPI-based clusters on public clouds or data centers." [ref=e268]:
+                          - cell "Controller mode" [ref=e269]:
+                            - strong [ref=e270]: Controller mode
+                          - cell "Download specific component packs for provisioning CAPI-based clusters on public clouds or data centers." [ref=e271]
+                        - row "Agent mode or Appliance mode Get required packages for deploying Kubernetes at remote edge locations." [ref=e272]:
+                          - cell "Agent mode or Appliance mode" [ref=e273]:
+                            - strong [ref=e274]: Agent mode or Appliance mode
+                          - cell "Get required packages for deploying Kubernetes at remote edge locations." [ref=e275]
+                        - row "Add-on only Download supplementary tools and features to enhance your clusters." [ref=e276]:
+                          - cell "Add-on only" [ref=e277]:
+                            - strong [ref=e278]: Add-on only
+                          - cell "Download supplementary tools and features to enhance your clusters." [ref=e279]
+                - generic [ref=e280]:
+                  - tablist [ref=e281]:
+                    - tab "Controller Mode" [selected] [ref=e282] [cursor=pointer]
+                    - tab "Agent Mode or Appliance Mode" [ref=e283] [cursor=pointer]
+                    - tab "Add-On" [ref=e284] [cursor=pointer]
+                  - tabpanel [ref=e286]:
+                    - list [ref=e287]:
+                      - listitem [ref=e288]:
+                        - paragraph [ref=e289]:
+                          - text: Select the appropriate cloud type to deploy your cluster on. Public clouds include
+                          - strong [ref=e290]: AWS
+                          - text: ","
+                          - strong [ref=e291]: GCP
+                          - text: ", and"
+                          - strong [ref=e292]: Azure
+                          - text: . Data centers include
+                          - strong [ref=e293]: MAAS
+                          - text: ","
+                          - strong [ref=e294]: OpenStack
+                          - text: ", and"
+                          - strong [ref=e295]: vSphere
+                          - text: .
+                      - listitem [ref=e296]:
+                        - paragraph [ref=e297]:
+                          - text: On the
+                          - strong [ref=e298]: Configure bundle
+                          - text: page, select the
+                          - strong [ref=e299]: OS
+                          - text: layer to begin building your bundle. Only the packs compatible with your previous selections are displayed. Choose an operating system and select
+                          - strong [ref=e300]: Next Layer
+                          - text: .
+                      - listitem [ref=e301]:
+                        - paragraph [ref=e302]:
+                          - text: Choose your Kubernetes distribution and version and select
+                          - strong [ref=e303]: Next Layer
+                          - text: .
+                      - listitem [ref=e304]:
+                        - paragraph [ref=e305]:
+                          - text: Choose your networking pack and select
+                          - strong [ref=e306]: Next Layer
+                          - text: .
+                      - listitem [ref=e307]:
+                        - paragraph [ref=e308]:
+                          - text: Choose your storage pack and select
+                          - strong [ref=e309]: Next Layer
+                          - text: .
+                      - listitem [ref=e310]:
+                        - paragraph [ref=e311]:
+                          - text: Add additional packs to your bundle as needed. When finished, select
+                          - strong [ref=e312]: Add to Bundle
+                          - text: .
+                      - listitem [ref=e313]:
+                        - paragraph [ref=e314]:
+                          - text: Review your bundle. If any changes are needed, select the applicable layer, and add or remove packs as necessary. When finished, proceed to the
+                          - strong [ref=e315]: Next Step
+                          - text: .
+                      - listitem [ref=e316]:
+                        - paragraph [ref=e317]:
+                          - text: Confirm that the bundle specifications and content are correct. If you need to make any changes, return to the applicable page using the left menu. To add additional packs, select
+                          - strong [ref=e318]: Explore additional add-ons
+                          - text: .
+                        - paragraph [ref=e319]:
+                          - text: When finished, select the
+                          - strong [ref=e320]: I'm not a robot
+                          - text: reCAPTCHA checkbox, and select
+                          - strong [ref=e321]: Download Bundle
+                          - text: . Alternatively, you can
+                          - strong [ref=e322]: Copy all URLs
+                          - text: so that you can download the applicable files later in an alternate manner of your choosing, such as via
+                          - code [ref=e323]: curl
+                          - text: .
+                      - listitem [ref=e324]:
+                        - paragraph [ref=e325]:
+                          - text: The download begins. Each pack is downloaded as a ZST file with an accompanying signature file (
+                          - code [ref=e326]: .sig.bin
+                          - text: ).
+                - paragraph [ref=e327]:
+                  - text: To create additional bundles, select
+                  - strong [ref=e328]: Artifact Studio Home
+                  - text: in the top-left corner, and repeat the above process. For information on how to verify the authenticity and integrity of your bundles, refer to the
+                  - link "Verify Signatures" [ref=e329] [cursor=pointer]:
+                    - /url: "#verify-signatures"
+                  - text: section.
+                - heading "Download a Specific PackDirect link to Download a Specific Pack" [level=2] [ref=e330]:
+                  - text: Download a Specific Pack
+                  - link "Direct link to Download a Specific Pack" [ref=e331] [cursor=pointer]:
+                    - /url: "#download-a-specific-pack"
+                    - text: "#"
+                - list [ref=e332]:
+                  - listitem [ref=e333]:
+                    - paragraph [ref=e334]:
+                      - text: Navigate to
+                      - link "Artifact Studio" [ref=e335] [cursor=pointer]:
+                        - /url: https://artifact-studio.spectrocloud.com/
+                      - text: and log in.
+                  - listitem [ref=e336]:
+                    - paragraph [ref=e337]:
+                      - text: In the
+                      - strong [ref=e338]: Create pack bundle
+                      - text: section, select
+                      - strong [ref=e339]: Browse Packs
+                      - text: .
+                    - paragraph [ref=e340]:
+                      - img "Image showing where to download individual packs" [ref=e341]
+                  - listitem [ref=e342]:
+                    - paragraph [ref=e343]:
+                      - text: On the left menu, choose any applicable pack filters, such as
+                      - strong [ref=e344]: Product
+                      - text: ", product"
+                      - strong [ref=e345]: Version
+                      - text: ","
+                      - strong [ref=e346]: Cloud type
+                      - text: ", and"
+                      - strong [ref=e347]: Layer type
+                      - text: ". Beside the search bar are additional filters: infrastructure type ("
+                      - strong [ref=e348]: AMD64
+                      - text: or
+                      - strong [ref=e349]: ARM64
+                      - text: ), and FIPS compliance (FIPS or non-FIPS).
+                  - listitem [ref=e350]:
+                    - paragraph [ref=e351]:
+                      - text: After you have applied any necessary filters, navigate through the list of packs. Use the
+                      - strong [ref=e352]: Search
+                      - text: bar to filter your results further.
+                    - paragraph [ref=e353]:
+                      - img "Image showing filter and search together" [ref=e354]
+                  - listitem [ref=e355]:
+                    - paragraph [ref=e356]:
+                      - text: When finished, select the
+                      - strong [ref=e357]: I'm not a robot
+                      - text: reCAPTCHA checkbox, and select
+                      - strong [ref=e358]: Download Bundle
+                      - text: . Alternatively, you can
+                      - strong [ref=e359]: Copy all URLs
+                      - text: so that you can download the applicable files later in an alternate manner of your choosing, such as via
+                      - code [ref=e360]: curl
+                      - text: .
+                  - listitem [ref=e361]:
+                    - paragraph [ref=e362]:
+                      - text: The download begins. Each pack is downloaded as an individual ZST file (
+                      - code [ref=e363]: <pack-name>.zst
+                      - text: ) with an accompanying signature file (
+                      - code [ref=e364]: <pack-name>.sig.bin
+                      - text: ).
+                    - paragraph [ref=e365]:
+                      - img "Image showing download of multiple packs" [ref=e366]
+                    - generic [ref=e367]:
+                      - generic [ref=e368]:
+                        - img [ref=e370]
+                        - text: tip
+                      - paragraph [ref=e373]:
+                        - text: Ensure that pop-ups are enabled in your browser for
+                        - link "Artifact Studio" [ref=e374] [cursor=pointer]:
+                          - /url: https://artifact-studio.spectrocloud.com/
+                        - text: to allow for multiple artifact downloads.
+                - paragraph [ref=e375]:
+                  - text: To download additional packs, select
+                  - strong [ref=e376]: Artifact Studio Home
+                  - text: in the top-left corner, and repeat the above process. For information on how to verify the authenticity and integrity of your bundles, refer to the
+                  - link "Verify Signatures" [ref=e377] [cursor=pointer]:
+                    - /url: "#verify-signatures"
+                  - text: section.
+                - heading "Verify SignaturesDirect link to Verify Signatures" [level=2] [ref=e378]:
+                  - text: Verify Signatures
+                  - link "Direct link to Verify Signatures" [ref=e379] [cursor=pointer]:
+                    - /url: "#verify-signatures"
+                    - text: "#"
+                - paragraph [ref=e380]:
+                  - text: All ZST bundles and ISO files downloaded from Artifact Studio are signed. An additional
+                  - code [ref=e381]: .sig.bin
+                  - text: file accompanies each artifact, which must be decrypted using Spectro Cloud's public key,
+                  - code [ref=e382]: spectro_public_key.pem
+                  - text: . Images embedded within ZST bundles that originate from a Spectro Cloud registry are also signed and can be verified using validation flows.
+                - paragraph [ref=e383]:
+                  - text: For additional information on how Spectro Cloud signs artifacts, refer to our
+                  - link "Artifact Signatures guide" [ref=e384] [cursor=pointer]:
+                    - /url: /security/artifact-signatures/
+                  - text: .
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e385]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e386] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e387]:
+                  - listitem [ref=e388]:
+                    - paragraph [ref=e389]:
+                      - text: ZST bundles or ISO files installed from
+                      - link "Artifact Studio" [ref=e390] [cursor=pointer]:
+                        - /url: https://artifact-studio.spectrocloud.com/
+                      - text: with their accompanying signature files.
+                  - listitem [ref=e391]:
+                    - paragraph [ref=e392]:
+                      - link "OpenSSL" [ref=e393] [cursor=pointer]:
+                        - /url: https://www.openssl.org/
+                      - text: installed on the machine where the downloaded artifacts are located.
+                - heading "EnablementDirect link to Enablement" [level=3] [ref=e394]:
+                  - text: Enablement
+                  - link "Direct link to Enablement" [ref=e395] [cursor=pointer]:
+                    - /url: "#enablement"
+                    - text: "#"
+                - paragraph [ref=e396]: To verify the integrity and authenticity of your artifacts, you can do a checksum verification of the files downloaded.
+                - list [ref=e397]:
+                  - listitem [ref=e398]:
+                    - paragraph [ref=e399]:
+                      - text: Navigate to
+                      - link "Artifact Studio" [ref=e400] [cursor=pointer]:
+                        - /url: https://artifact-studio.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e401]:
+                    - paragraph [ref=e402]:
+                      - text: At the top right of the page, select
+                      - strong [ref=e403]: Bundle Verification Instructions
+                      - text: .
+                  - listitem [ref=e404]:
+                    - paragraph [ref=e405]:
+                      - text: Download the public key file
+                      - code [ref=e406]: spectro_public_key.pem
+                      - text: .
+                  - listitem [ref=e407]:
+                    - paragraph [ref=e408]: Use the appropriate command to verify the individual pack integrity, depending on the type of file downloaded.
+                    - generic [ref=e409]:
+                      - tablist [ref=e410]:
+                        - tab "Content Bundle (TAR ZST)" [selected] [ref=e411] [cursor=pointer]
+                        - tab "Management Appliance (ISO)" [ref=e412] [cursor=pointer]
+                        - tab "Pack Bundle (ZST)" [ref=e413] [cursor=pointer]
+                      - tabpanel [ref=e415]:
+                        - paragraph [ref=e416]:
+                          - text: Replace
+                          - code [ref=e417]: <bundle-name>
+                          - text: with the name of the bundle.
+                        - generic [ref=e419]:
+                          - code [ref=e421]:
+                            - generic [ref=e422]: openssl dgst -sha256 -verify spectro_public_key.pem -signature <bundle-name>.tar.sig.bin <bundle-name>.tar.zst
+                          - generic [ref=e423]:
+                            - button "Toggle word wrap" [ref=e424] [cursor=pointer]:
+                              - img [ref=e425]
+                            - button "Copy code to clipboard" [ref=e427] [cursor=pointer]:
+                              - generic [ref=e428]:
+                                - img [ref=e429]
+                                - img [ref=e431]
+                  - listitem [ref=e433]:
+                    - paragraph [ref=e434]:
+                      - text: A successful verification displays
+                      - code [ref=e435]: Verification OK
+                      - text: .
+                  - listitem [ref=e436]:
+                    - paragraph [ref=e437]:
+                      - text: Alternatively, if verifying the signature for a content or pack bundle, use the following sample script to check all files downloaded in the current folder. Substitute
+                      - code [ref=e438]: REPLACE ME
+                      - text: with the path to
+                      - code [ref=e439]: spectro_public_key.pem
+                      - text: .
+                    - generic [ref=e440]:
+                      - generic [ref=e441]: Sample script
+                      - generic [ref=e442]:
+                        - code [ref=e444]:
+                          - generic [ref=e445]: "# This script verifies the signatures of data files against a public key."
+                          - generic [ref=e446]: "# It expects files named like `datafile.zst` and corresponding signatures `datafile.sig.bin`."
+                          - generic [ref=e447]: "# Ensure you have OpenSSL installed to run this script and that the public key is in PEM format."
+                          - generic [ref=e448]: "# Ensure the script has execute permissions: `chmod +x verify-signatures.sh`"
+                          - generic [ref=e449]: "# Usage: ./verify-signatures.sh"
+                          - generic [ref=e450]: "#!/bin/bash"
+                          - generic [ref=e451]: "PUBKEY=\"REPLACE ME\" # Enter path to public key file"
+                          - generic [ref=e452]: for sigfile in *.sig.bin; do
+                          - generic [ref=e453]: "# Strip `.sig.bin` to get base filename and corresponding data file"
+                          - generic [ref=e454]: "base=\"${sigfile%.sig.bin}\""
+                          - generic [ref=e455]: "datafile=\"${base}.zst\""
+                          - generic [ref=e456]: "if [[ ! -f \"$datafile\" ]]; then # Check if data file exists"
+                          - generic [ref=e457]: "echo \"$datafile: ❌ Data file not found\" # Skip to next iteration"
+                          - generic [ref=e458]: continue
+                          - generic [ref=e459]: fi
+                          - generic [ref=e460]: "# Run signature verification"
+                          - generic [ref=e461]: "if openssl dgst -sha256 -verify \"$PUBKEY\" -signature \"$sigfile\" \"$datafile\" > /dev/null 2>&1; then # Verify signature"
+                          - generic [ref=e462]: "echo \"$datafile: ✅ Signature valid\" # Print success message"
+                          - generic [ref=e463]: else
+                          - generic [ref=e464]: "echo \"$datafile: ❌ Signature invalid\" # Print failure message"
+                          - generic [ref=e465]: fi
+                          - generic [ref=e466]: done
+                        - generic [ref=e467]:
+                          - button "Toggle word wrap" [ref=e468] [cursor=pointer]:
+                            - img [ref=e469]
+                          - button "Copy code to clipboard" [ref=e471] [cursor=pointer]:
+                            - generic [ref=e472]:
+                              - img [ref=e473]
+                              - img [ref=e475]
+                    - paragraph [ref=e477]: Next, grant the script execute permissions, and run the script.
+                    - generic [ref=e479]:
+                      - code [ref=e481]:
+                        - generic [ref=e482]: chmod +x verify-signatures.sh
+                        - generic [ref=e483]: ./verify-signatures.sh
+                      - button "Copy code to clipboard" [ref=e485] [cursor=pointer]:
+                        - generic [ref=e486]:
+                          - img [ref=e487]
+                          - img [ref=e489]
+                    - paragraph [ref=e491]: The output should be similar to the following.
+                    - generic [ref=e492]:
+                      - generic [ref=e493]: Example output
+                      - code [ref=e496]:
+                        - generic [ref=e497]: "cni-calico-3.29.2.zst: ✅ Signature valid"
+                        - generic [ref=e498]: "csi-aws-ebs-1.41.0.zst: ✅ Signature valid"
+                        - generic [ref=e499]: "kubernetes-1.32.3.zst: ✅ Signature valid"
+                        - generic [ref=e500]: "spectro-k8s-dashboard-7.11.1.zst: ✅ Signature valid"
+                        - generic [ref=e501]: "ubuntu-aws-22.04.zst: ✅ Signature valid"
+                - heading "Upload Packs to Management AppliancesDirect link to Upload Packs to Management Appliances" [level=2] [ref=e502]:
+                  - text: Upload Packs to Management Appliances
+                  - link "Direct link to Upload Packs to Management Appliances" [ref=e503] [cursor=pointer]:
+                    - /url: "#upload-packs-to-management-appliances"
+                    - text: "#"
+                - paragraph [ref=e504]: "For information on uploading packs to your self-hosted Palette or Palette VerteX instance, refer to the appropriate guide:"
+                - list [ref=e505]:
+                  - listitem [ref=e506]:
+                    - paragraph [ref=e507]:
+                      - link "Upload Packs to Palette" [ref=e508] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/palette-management-appliance/#upload-packs-to-palette
+                  - listitem [ref=e509]:
+                    - paragraph [ref=e510]:
+                      - link "Upload Packs to Palette VerteX" [ref=e511] [cursor=pointer]:
+                        - /url: /vertex/install-palette-vertex/vertex-management-appliance/#upload-packs-to-palette-vertex
+              - generic [ref=e512]:
+                - generic [ref=e514]:
+                  - text: "Tags:"
+                  - list [ref=e515]:
+                    - listitem [ref=e516]:
+                      - link "downloads" [ref=e517] [cursor=pointer]:
+                        - /url: /tags/downloads/
+                    - listitem [ref=e518]:
+                      - link "artifact-studio" [ref=e519] [cursor=pointer]:
+                        - /url: /tags/artifact-studio/
+                - link "Edit this page" [ref=e522] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/downloads/artifact-studio.md
+                  - img [ref=e523]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e527]:
+              - link "Previous « Downloads" [ref=e528] [cursor=pointer]:
+                - /url: /downloads/
+                - generic [ref=e529]: Previous
+                - generic [ref=e530]: « Downloads
+              - link "Next CLI Tools »" [ref=e531] [cursor=pointer]:
+                - /url: /downloads/cli-tools/
+                - generic [ref=e532]: Next
+                - generic [ref=e533]: CLI Tools »
+          - list [ref=e536]:
+            - listitem [ref=e537]:
+              - link "Use Cases" [ref=e538] [cursor=pointer]:
+                - /url: "#use-cases"
+            - listitem [ref=e539]:
+              - link "Access Artifact Studio" [ref=e540] [cursor=pointer]:
+                - /url: "#access-artifact-studio"
+            - listitem [ref=e541]:
+              - link "Download Palette Enterprise" [ref=e542] [cursor=pointer]:
+                - /url: "#download-palette-enterprise"
+            - listitem [ref=e543]:
+              - link "Download Palette VerteX" [ref=e544] [cursor=pointer]:
+                - /url: "#download-palette-vertex"
+            - listitem [ref=e545]:
+              - link "Download a Pack Bundle" [ref=e546] [cursor=pointer]:
+                - /url: "#download-a-pack-bundle"
+            - listitem [ref=e547]:
+              - link "Download a Specific Pack" [ref=e548] [cursor=pointer]:
+                - /url: "#download-a-specific-pack"
+            - listitem [ref=e549]:
+              - link "Verify Signatures" [ref=e550] [cursor=pointer]:
+                - /url: "#verify-signatures"
+              - list [ref=e551]:
+                - listitem [ref=e552]:
+                  - link "Prerequisites" [ref=e553] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e554]:
+                  - link "Enablement" [ref=e555] [cursor=pointer]:
+                    - /url: "#enablement"
+            - listitem [ref=e556]:
+              - link "Upload Packs to Management Appliances" [ref=e557] [cursor=pointer]:
+                - /url: "#upload-packs-to-management-appliances"
+  - button "Project Logo Ask AI" [ref=e558] [cursor=pointer]:
+    - generic [ref=e561]:
+      - img "Project Logo" [ref=e562]
+      - paragraph [ref=e563]: Ask AI
+```

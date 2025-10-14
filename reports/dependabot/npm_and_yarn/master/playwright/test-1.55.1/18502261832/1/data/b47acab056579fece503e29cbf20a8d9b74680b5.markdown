@@ -1,0 +1,738 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Security" [ref=e150] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e152]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Audit Logs" [ref=e157] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e159]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Self-Hosted Palette" [expanded] [ref=e164] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e166]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e168] [cursor=pointer]
+                - list [ref=e169]:
+                  - listitem [ref=e170]:
+                    - generic [ref=e171]:
+                      - link "Installation" [ref=e172] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e173] [cursor=pointer]
+                  - listitem [ref=e174]:
+                    - link "Activate Palette" [ref=e175] [cursor=pointer]:
+                      - /url: /enterprise-version/activate-installation/
+                  - listitem [ref=e176]:
+                    - generic [ref=e177]:
+                      - link "System Management" [expanded] [ref=e178] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e179] [cursor=pointer]
+                    - list [ref=e180]:
+                      - listitem [ref=e181]:
+                        - generic [ref=e182]:
+                          - link "Account Management" [ref=e183] [cursor=pointer]:
+                            - /url: /enterprise-version/system-management/account-management/
+                          - button "Toggle the collapsible sidebar category 'Account Management'" [ref=e184] [cursor=pointer]
+                      - listitem [ref=e185]:
+                        - link "Add System-Level Registry" [ref=e186] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/add-registry/
+                      - listitem [ref=e187]:
+                        - link "Enable Adding AWS Accounts Using STS" [ref=e188] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/configure-aws-sts-account/
+                      - listitem [ref=e189]:
+                        - link "Backup and Restore" [ref=e190] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/backup-restore/
+                      - listitem [ref=e191]:
+                        - link "Configure SMTP" [ref=e192] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/smtp/
+                      - listitem [ref=e193]:
+                        - link "Configure Reverse Proxy" [ref=e194] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/reverse-proxy/
+                      - listitem [ref=e195]:
+                        - link "Customize Interface" [ref=e196] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/customize-interface/
+                      - listitem [ref=e197]:
+                        - link "Feature Flags" [ref=e198] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/feature-flags/
+                      - listitem [ref=e199]:
+                        - link "System Address Management" [ref=e200] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/ssl-certificate-management/
+                      - listitem [ref=e201]:
+                        - link "Tenant Management" [ref=e202] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/tenant-management/
+                      - listitem [ref=e203]:
+                        - link "Banners" [ref=e204] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/login-banner/
+                      - listitem [ref=e205]:
+                        - link "Override Registry Configuration" [ref=e206] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/registry-override/
+                      - listitem [ref=e207]:
+                        - link "Migrate SCAR to OCI Registry" [ref=e208] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/scar-migration/
+                      - listitem [ref=e209]:
+                        - link "Modify Cloud Provider Configuration" [ref=e210] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/change-cloud-config/
+                  - listitem [ref=e211]:
+                    - generic [ref=e212]:
+                      - link "Upgrade" [ref=e213] [cursor=pointer]:
+                        - /url: /enterprise-version/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - generic [ref=e216]:
+                  - link "Palette VerteX" [ref=e217] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e219]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e221] [cursor=pointer]
+              - listitem [ref=e222]:
+                - generic [ref=e223]:
+                  - link "Tenant Administration" [ref=e224] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e226]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e228] [cursor=pointer]
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "Automation" [ref=e231] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e233]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - generic [ref=e237]:
+                  - link "Troubleshooting" [ref=e238] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e240]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - link "Glossary" [ref=e244] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e246]
+                  - text: Glossary
+              - listitem [ref=e248]:
+                - generic [ref=e249]:
+                  - link "Compliance & Legal" [ref=e250] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e252]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e254] [cursor=pointer]
+              - listitem [ref=e255]:
+                - button "Privacy Settings" [ref=e256] [cursor=pointer]:
+                  - img [ref=e257]
+                  - text: Privacy Settings
+      - main [ref=e259]:
+        - generic [ref=e261]:
+          - generic [ref=e263]:
+            - article [ref=e264]:
+              - navigation "Breadcrumbs" [ref=e265]:
+                - list [ref=e266]:
+                  - listitem [ref=e267]:
+                    - link "Home page" [ref=e268] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e269]
+                  - listitem [ref=e271]:
+                    - link "Self-Hosted Palette" [ref=e272] [cursor=pointer]:
+                      - /url: /enterprise-version/
+                  - listitem [ref=e273]:
+                    - link "System Management" [ref=e274] [cursor=pointer]:
+                      - /url: /enterprise-version/system-management/
+                  - listitem [ref=e275]:
+                    - generic [ref=e276]: Override Registry Configuration
+              - generic [ref=e277]:
+                - heading "Override Registry Configuration" [level=1] [ref=e279]
+                - paragraph [ref=e280]: You can override the image registry configuration for Palette to reference a different image registry. This feature is useful when you want to use a custom image registry to store and manage the images Palette uses.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e281]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e282] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - paragraph [ref=e283]: "Before overriding the image registry configuration for Palette, ensure you have the following:"
+                - list [ref=e284]:
+                  - listitem [ref=e285]:
+                    - paragraph [ref=e286]:
+                      - text: A deployed and healthy
+                      - link "Palette cluster" [ref=e287] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/
+                      - text: .
+                  - listitem [ref=e288]:
+                    - paragraph [ref=e289]: Access to the kubeconfig file for the Palette cluster. You need the kubeconfig file to access the Palette cluster and apply the image registry configuration.
+                    - generic [ref=e290]:
+                      - generic [ref=e291]:
+                        - img [ref=e293]
+                        - text: tip
+                      - paragraph [ref=e296]:
+                        - text: If you deployed Palette through the Palette CLI, then you can download the kubeconfig file from the Palette cluster details page in the system console. Navigate to the
+                        - strong [ref=e297]: Enterprise Cluster Migration
+                        - text: page. Click on the
+                        - strong [ref=e298]: Admin Kubeconfig
+                        - text: link to download the kubeconfig file. If you need help with configuring kubectl to access the Palette cluster, refer to the
+                        - link "Access Cluster with CLI" [ref=e299] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/palette-webctl/
+                        - text: guide. If you deployed Palette onto an existing Kubernetes cluster, reach out to your cluster administrator for the kubeconfig file.
+                  - listitem [ref=e300]:
+                    - paragraph [ref=e301]: Access to a terminal session that has network access to the Palette cluster.
+                  - listitem [ref=e302]:
+                    - paragraph [ref=e303]:
+                      - text: The kubectl command-line tool installed on your local machine. Refer to the
+                      - link "kubectl installation" [ref=e304] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/tasks/tools/install-kubectl/
+                      - text: guide to learn how to install kubectl.
+                  - listitem [ref=e305]:
+                    - paragraph [ref=e306]:
+                      - text: If you are in an airgap environment, ensure
+                      - link "Helm" [ref=e307] [cursor=pointer]:
+                        - /url: https://helm.sh/docs/intro/install/
+                      - text: is installed on your local machine.
+                  - listitem [ref=e308]:
+                    - paragraph [ref=e309]:
+                      - text: If you are in an airgap environment, you must have the image-swap Helm chart available there. You can get access to the image-swap Helm chart by contacting the support team at
+                      - link "support@spectrocloud.com" [ref=e310] [cursor=pointer]:
+                        - /url: mailto:support@spectrocloud.com
+                - heading "Override Image Registry ConfigurationDirect link to Override Image Registry Configuration" [level=2] [ref=e311]:
+                  - text: Override Image Registry Configuration
+                  - link "Direct link to Override Image Registry Configuration" [ref=e312] [cursor=pointer]:
+                    - /url: "#override-image-registry-configuration"
+                    - text: "#"
+                - paragraph [ref=e313]: Select the appropriate tab below based on the environment in which your VertX cluster is deployed.
+                - generic [ref=e314]:
+                  - tablist [ref=e315]:
+                    - tab "Airgap" [selected] [ref=e316] [cursor=pointer]
+                    - tab "Non-Airgap" [ref=e317] [cursor=pointer]
+                  - tabpanel [ref=e319]:
+                    - list [ref=e320]:
+                      - listitem [ref=e321]:
+                        - paragraph [ref=e322]: Open a terminal session.
+                      - listitem [ref=e323]:
+                        - paragraph [ref=e324]:
+                          - text: Configure kubectl to use the kubeconfig file for the Palette cluster. Refer to the
+                          - link "Access Cluster with CLI" [ref=e325] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/palette-webctl/
+                          - text: for guidance on configuring kubectl.
+                      - listitem [ref=e326]:
+                        - paragraph [ref=e327]:
+                          - text: Navigate to the folder where you have the image-swap Helm chart available. You may have to extract the Helm chart if it is in a compressed format to access the
+                          - strong [ref=e328]: values.yaml
+                          - text: file.
+                      - listitem [ref=e329]:
+                        - paragraph [ref=e330]:
+                          - text: Open the file
+                          - strong [ref=e331]: values.yaml
+                          - text: in a text editor and append the URL to your OCI registry that also includes the namespace or project that is hosting the Spectro Cloud images. The URL should be in the format
+                          - code [ref=e332]: <registry-url>/<namespace>
+                          - text: . In the example configuration below, the value
+                          - code [ref=e333]: my-oci-registry.com/spectro-images
+                          - text: is prefixed to each URL. Save the file after you have appended the URL.
+                        - generic [ref=e335]:
+                          - code [ref=e337]:
+                            - generic [ref=e338]: "image:"
+                            - generic [ref=e339]: "cainjectorImage: \"my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-cainjector:v1.17.0-spectro-4.6.1\""
+                            - generic [ref=e340]: "controllerImage: \"my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-controller:v1.17.0-spectro-4.6.1\""
+                            - generic [ref=e341]: "webhookImage: \"my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-webhook:v1.17.0-spectro-4.6.1\""
+                            - generic [ref=e342]: "amceResolverImage: \"my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-acmesolver:v1.17.0-spectro-4.6.1\""
+                          - button "Toggle word wrap" [ref=e344] [cursor=pointer]:
+                            - img [ref=e345]
+                      - listitem [ref=e347]:
+                        - paragraph [ref=e348]:
+                          - text: Next, update the
+                          - code [ref=e349]: ociImageRegistry
+                          - text: section with your OCI registry values. Refer to the table below for a description of each parameter.
+                        - generic [ref=e351]:
+                          - code [ref=e353]:
+                            - generic [ref=e354]: "ociImageRegistry:"
+                            - generic [ref=e355]: "endpoint: \"REPLACE_WITH_CUSTOM_REGISTRY_DOMAIN\""
+                            - generic [ref=e356]: "name: \"REPLACE_WITH_CUSTOM_REGISTRY_NAME\""
+                            - generic [ref=e357]: "password: \"REPLACE_WITH_CUSTOM_REGISTRY_PASSWORD\""
+                            - generic [ref=e358]: "username: \"REPLACE_WITH_CUSTOM_REGISTRY_USERNAME\""
+                            - generic [ref=e359]: "baseContentPath: \"REPLACE_WITH_CUSTOM_REGISTRY_BASE_PATH\""
+                            - generic [ref=e360]: "insecureSkipVerify: false"
+                            - generic [ref=e361]: "caCert: \"REPLACE_WITH_CUSTOM_REGISTRY_CA_CERT\""
+                            - generic [ref=e362]: "mirrorRegistries: \"REPLACE_WITH_CUSTOM_REGISTRY_MIRROR_REGISTRIES\""
+                          - generic [ref=e363]:
+                            - button "Toggle word wrap" [ref=e364] [cursor=pointer]:
+                              - img [ref=e365]
+                            - button "Copy code to clipboard" [ref=e367] [cursor=pointer]:
+                              - generic [ref=e368]:
+                                - img [ref=e369]
+                                - img [ref=e371]
+                        - table [ref=e373]:
+                          - rowgroup [ref=e374]:
+                            - row "Parameter Description Required" [ref=e375]:
+                              - cell "Parameter" [ref=e376]
+                              - cell "Description" [ref=e377]
+                              - cell "Required" [ref=e378]
+                          - rowgroup [ref=e379]:
+                            - row "endpoint The URL of the custom image registry. Yes" [ref=e380]:
+                              - cell "endpoint" [ref=e381]:
+                                - code [ref=e382]: endpoint
+                              - cell "The URL of the custom image registry." [ref=e383]
+                              - cell "Yes" [ref=e384]
+                            - row "name The name of the custom image registry. Yes" [ref=e385]:
+                              - cell "name" [ref=e386]:
+                                - code [ref=e387]: name
+                              - cell "The name of the custom image registry." [ref=e388]
+                              - cell "Yes" [ref=e389]
+                            - row "password The password to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty. No" [ref=e390]:
+                              - cell "password" [ref=e391]:
+                                - code [ref=e392]: password
+                              - cell "The password to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty." [ref=e393]
+                              - cell "No" [ref=e394]
+                            - row "username The username to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty. No" [ref=e395]:
+                              - cell "username" [ref=e396]:
+                                - code [ref=e397]: username
+                              - cell "The username to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty." [ref=e398]
+                              - cell "No" [ref=e399]
+                            - row "baseContentPath The base path of the custom image registry. Yes" [ref=e400]:
+                              - cell "baseContentPath" [ref=e401]:
+                                - code [ref=e402]: baseContentPath
+                              - cell "The base path of the custom image registry." [ref=e403]
+                              - cell "Yes" [ref=e404]
+                            - row "insecureSkipVerify Set to true if the custom image registry uses an insecure connection or a self-signed certificate. Set to false if the custom image registry uses a secure connection. Yes" [ref=e405]:
+                              - cell "insecureSkipVerify" [ref=e406]:
+                                - code [ref=e407]: insecureSkipVerify
+                              - cell "Set to true if the custom image registry uses an insecure connection or a self-signed certificate. Set to false if the custom image registry uses a secure connection." [ref=e408]:
+                                - text: Set to
+                                - code [ref=e409]: "true"
+                                - text: if the custom image registry uses an insecure connection or a self-signed certificate. Set to
+                                - code [ref=e410]: "false"
+                                - text: if the custom image registry uses a secure connection.
+                              - cell "Yes" [ref=e411]
+                            - row "caCert The Certificate Authority of the custom image registry in the PEM format. Required if the custom image registry uses a self-signed certificate. No" [ref=e412]:
+                              - cell "caCert" [ref=e413]:
+                                - code [ref=e414]: caCert
+                              - cell "The Certificate Authority of the custom image registry in the PEM format. Required if the custom image registry uses a self-signed certificate." [ref=e415]
+                              - cell "No" [ref=e416]
+                            - 'row "mirrorRegistries image swap format for pulling images. For example: docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-docker.pkg.dev::harbor.example.org/airgap-images Yes" [ref=e417]':
+                              - cell "mirrorRegistries" [ref=e418]:
+                                - code [ref=e419]: mirrorRegistries
+                              - 'cell "image swap format for pulling images. For example: docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-docker.pkg.dev::harbor.example.org/airgap-images" [ref=e420]':
+                                - link "image swap format" [ref=e421] [cursor=pointer]:
+                                  - /url: https://github.com/phenixblue/imageswap-webhook/blob/master/docs/configuration.md
+                                - text: "for pulling images. For example:"
+                                - code [ref=e422]: docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-docker.pkg.dev::harbor.example.org/airgap-images
+                              - cell "Yes" [ref=e423]
+                        - group [ref=e424]:
+                          - generic "Click here for a complete example configuration." [ref=e425] [cursor=pointer]
+                      - listitem [ref=e426]:
+                        - paragraph [ref=e427]:
+                          - text: Once you have configured the
+                          - code [ref=e428]: ociImageRegistry
+                          - text: section, issue the following command from the folder where you have the image-swap Helm chart available to deploy the image-swap Helm chart. You may have to modify the command below based on the location of
+                          - strong [ref=e429]: values.yaml
+                          - text: file and the compressed Helm chart file.
+                        - generic [ref=e431]:
+                          - code [ref=e433]:
+                            - generic [ref=e434]: helm upgrade --values values.yaml image-swap image-swap-*.tgz --install
+                          - generic [ref=e435]:
+                            - button "Toggle word wrap" [ref=e436] [cursor=pointer]:
+                              - img [ref=e437]
+                            - button "Copy code to clipboard" [ref=e439] [cursor=pointer]:
+                              - generic [ref=e440]:
+                                - img [ref=e441]
+                                - img [ref=e443]
+                        - code [ref=e448]:
+                          - generic [ref=e449]: Release "image-swap" does not exist. Installing it now.
+                          - generic [ref=e450]: "NAME: image-swap"
+                          - generic [ref=e451]: "LAST DEPLOYED: Mon March 20 17:04:23 2024"
+                          - generic [ref=e452]: "NAMESPACE: default"
+                          - generic [ref=e453]: "STATUS: deployed"
+                          - generic [ref=e454]: "REVISION: 1"
+                          - generic [ref=e455]: "TEST SUITE: None"
+                      - listitem [ref=e456]:
+                        - paragraph [ref=e457]:
+                          - text: Create an empty YAML file with the name
+                          - strong [ref=e458]: registry-secret.yaml
+                          - text: . Use the following command to create the file.
+                        - generic [ref=e460]:
+                          - code [ref=e462]:
+                            - generic [ref=e463]: touch registry-secret.yaml
+                          - button "Copy code to clipboard" [ref=e465] [cursor=pointer]:
+                            - generic [ref=e466]:
+                              - img [ref=e467]
+                              - img [ref=e469]
+                      - listitem [ref=e471]:
+                        - paragraph [ref=e472]:
+                          - text: Open the
+                          - strong [ref=e473]: registry-secret.yaml
+                          - text: file and copy the placeholder configuration below.
+                        - generic [ref=e475]:
+                          - code [ref=e477]:
+                            - generic [ref=e478]: "---"
+                            - generic [ref=e479]: "apiVersion: v1"
+                            - generic [ref=e480]: "stringData:"
+                            - generic [ref=e481]: "DOMAIN: \"REPLACE_WITH_CUSTOM_REGISTRY_DOMAIN\""
+                            - generic [ref=e482]: "BASE_PATH: \"REPLACE_WITH_CUSTOM_REGISTRY_BASE_PATH\""
+                            - generic [ref=e483]: "USERNAME: \"REPLACE_WITH_CUSTOM_REGISTRY_USERNAME\""
+                            - generic [ref=e484]: "PASSWORD: \"REPLACE_WITH_CUSTOM_REGISTRY_PASSWORD\""
+                            - generic [ref=e485]: "INSECURE: \"false\""
+                            - generic [ref=e486]: "CA_CERT: \"REPLACE_WITH_CUSTOM_REGISTRY_CA_CERT\""
+                            - generic [ref=e487]: "MIRROR_REGISTRIES: REPLACE_WITH_CUSTOM_REGISTRY_MIRROR_REGISTRIES"
+                            - generic [ref=e488]: "kind: Secret"
+                            - generic [ref=e489]: "metadata:"
+                            - generic [ref=e490]: "name: registry-info"
+                            - generic [ref=e491]: "namespace: jet-system"
+                            - generic [ref=e492]: "type: Opaque"
+                            - generic [ref=e493]: "---"
+                          - generic [ref=e494]:
+                            - button "Toggle word wrap" [ref=e495] [cursor=pointer]:
+                              - img [ref=e496]
+                            - button "Copy code to clipboard" [ref=e498] [cursor=pointer]:
+                              - generic [ref=e499]:
+                                - img [ref=e500]
+                                - img [ref=e502]
+                        - generic [ref=e504]:
+                          - generic [ref=e505]:
+                            - img [ref=e507]
+                            - text: warning
+                          - paragraph [ref=e510]:
+                            - text: Do not change the
+                            - code [ref=e511]: kind
+                            - text: ","
+                            - code [ref=e512]: metadata
+                            - text: and
+                            - code [ref=e513]: type
+                            - text: fields in the YAML file. The values provided in the placeholder configuration are required to override the image registry configuration for the Palette cluster.
+                      - listitem [ref=e514]:
+                        - paragraph [ref=e515]:
+                          - text: Replace the placeholder values with the actual values for your custom image registry. Use the same values that you used in the
+                          - code [ref=e516]: ociImageRegistry
+                          - text: section of the
+                          - strong [ref=e517]: values.yaml
+                          - text: file for the image-swap Helm chart. Refer to the table below for a description of each parameter.
+                        - table [ref=e518]:
+                          - rowgroup [ref=e519]:
+                            - row "Parameter Description Required" [ref=e520]:
+                              - cell "Parameter" [ref=e521]
+                              - cell "Description" [ref=e522]
+                              - cell "Required" [ref=e523]
+                          - rowgroup [ref=e524]:
+                            - row "DOMAIN The domain of the custom image registry. Yes" [ref=e525]:
+                              - cell "DOMAIN" [ref=e526]:
+                                - code [ref=e527]: DOMAIN
+                              - cell "The domain of the custom image registry." [ref=e528]
+                              - cell "Yes" [ref=e529]
+                            - row "BASE_PATH The base path to the custom image registry. Yes" [ref=e530]:
+                              - cell "BASE_PATH" [ref=e531]:
+                                - code [ref=e532]: BASE_PATH
+                              - cell "The base path to the custom image registry." [ref=e533]
+                              - cell "Yes" [ref=e534]
+                            - row "USERNAME The username to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty. No" [ref=e535]:
+                              - cell "USERNAME" [ref=e536]:
+                                - code [ref=e537]: USERNAME
+                              - cell "The username to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty." [ref=e538]
+                              - cell "No" [ref=e539]
+                            - row "PASSWORD The password to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty. No" [ref=e540]:
+                              - cell "PASSWORD" [ref=e541]:
+                                - code [ref=e542]: PASSWORD
+                              - cell "The password to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty." [ref=e543]
+                              - cell "No" [ref=e544]
+                            - row "INSECURE Set to true if the custom image registry uses an insecure connection or a self-signed certificate. Set to false if the custom image registry uses a secure connection. Yes" [ref=e545]:
+                              - cell "INSECURE" [ref=e546]:
+                                - code [ref=e547]: INSECURE
+                              - cell "Set to true if the custom image registry uses an insecure connection or a self-signed certificate. Set to false if the custom image registry uses a secure connection." [ref=e548]:
+                                - text: Set to
+                                - code [ref=e549]: "true"
+                                - text: if the custom image registry uses an insecure connection or a self-signed certificate. Set to
+                                - code [ref=e550]: "false"
+                                - text: if the custom image registry uses a secure connection.
+                              - cell "Yes" [ref=e551]
+                            - row "CA_CERT The Certificate Authority of the custom image registry in the PEM format. Required if the custom image registry uses a self-signed certificate. No" [ref=e552]:
+                              - cell "CA_CERT" [ref=e553]:
+                                - code [ref=e554]: CA_CERT
+                              - cell "The Certificate Authority of the custom image registry in the PEM format. Required if the custom image registry uses a self-signed certificate." [ref=e555]
+                              - cell "No" [ref=e556]
+                            - 'row "MIRROR_REGISTRIES A comma-separated list of mirror registries in the image swap format to use for pulling images. For example: docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-docker.pkg.dev::harbor.example.org/airgap-images Yes" [ref=e557]':
+                              - cell "MIRROR_REGISTRIES" [ref=e558]:
+                                - code [ref=e559]: MIRROR_REGISTRIES
+                              - 'cell "A comma-separated list of mirror registries in the image swap format to use for pulling images. For example: docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-docker.pkg.dev::harbor.example.org/airgap-images" [ref=e560]':
+                                - text: A comma-separated list of mirror registries in the
+                                - link "image swap format" [ref=e561] [cursor=pointer]:
+                                  - /url: https://github.com/phenixblue/imageswap-webhook/blob/master/docs/configuration.md
+                                - text: "to use for pulling images. For example:"
+                                - code [ref=e562]: docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-docker.pkg.dev::harbor.example.org/airgap-images
+                              - cell "Yes" [ref=e563]
+                        - group [ref=e564]:
+                          - generic "Click here for a complete example configuration." [ref=e565] [cursor=pointer]
+                      - listitem [ref=e566]:
+                        - paragraph [ref=e567]: Once you have created the YAML file and configured the parameter values, issue the following command to create the Kubernetes secret containing the image registry configuration.
+                        - generic [ref=e569]:
+                          - code [ref=e571]:
+                            - generic [ref=e572]: kubectl create --filename registry-secret.yaml
+                          - button "Copy code to clipboard" [ref=e574] [cursor=pointer]:
+                            - generic [ref=e575]:
+                              - img [ref=e576]
+                              - img [ref=e578]
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e580]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e581] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e582]:
+                  - listitem [ref=e583]:
+                    - paragraph [ref=e584]: Open a terminal session with a network access to the VeteX cluster.
+                  - listitem [ref=e585]:
+                    - paragraph [ref=e586]:
+                      - text: Configure kubectl to use the kubeconfig file for the Palette cluster. Refer to the
+                      - link "Access Cluster with CLI" [ref=e587] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/
+                      - text: for guidance on configuring kubectl.
+                  - listitem [ref=e588]:
+                    - paragraph [ref=e589]: Issue the following command to verify that the secret containing the image registry configuration is created.
+                    - generic [ref=e591]:
+                      - code [ref=e593]:
+                        - generic [ref=e594]: kubectl get secret registry-info --namespace=jet-system \
+                        - generic [ref=e595]: "--output jsonpath='{.data.MIRROR_REGISTRIES}' | base64 --decode"
+                      - button "Copy code to clipboard" [ref=e597] [cursor=pointer]:
+                        - generic [ref=e598]:
+                          - img [ref=e599]
+                          - img [ref=e601]
+                    - paragraph [ref=e603]:
+                      - text: The command returns the mirror registries that you configured in the
+                      - code [ref=e604]: MIRROR_REGISTRIES
+                      - text: parameter.
+                    - generic [ref=e606]:
+                      - code [ref=e608]:
+                        - generic [ref=e609]: docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-docker.pkg.dev::harbor.example.org/airgap-images
+                      - button "Toggle word wrap" [ref=e611] [cursor=pointer]:
+                        - img [ref=e612]
+                  - listitem [ref=e614]:
+                    - paragraph [ref=e615]: Deploy a cluster through Palette. Palette will propagate the image registry configuration to the workload cluster, and the cluster will use the custom image registry to pull images if specified in the mirror registry configuration.
+                  - listitem [ref=e616]:
+                    - paragraph [ref=e617]: SSH into one of the workload cluster nodes. You can verify the image registry configuration on the workload cluster by checking the containerd configuration file. Use the following command to check the containerd configuration file.
+                    - generic [ref=e619]:
+                      - code [ref=e621]:
+                        - generic [ref=e622]: cat /etc/containerd/config.toml
+                      - button "Copy code to clipboard" [ref=e624] [cursor=pointer]:
+                        - generic [ref=e625]:
+                          - img [ref=e626]
+                          - img [ref=e628]
+                    - paragraph [ref=e630]:
+                      - text: Each mirror registry specified in the
+                      - code [ref=e631]: MIRROR_REGISTRIES
+                      - text: parameter is added to the
+                      - code [ref=e632]: plugins."io.containerd.grpc.v1.cri".registry.mirrors.
+                      - text: section. Based on the example configuration we provided in step four, the configuration file should contain the following details.
+                    - generic [ref=e634]:
+                      - code [ref=e636]:
+                        - generic [ref=e637]: "## template: jinja"
+                        - generic [ref=e638]: "# Use config version 2 to enable new configuration fields."
+                        - generic [ref=e639]: "# Config file is parsed as version 1 by default."
+                        - generic [ref=e640]: version = 2
+                        - generic [ref=e641]: imports = ["/etc/containerd/conf.d/*.toml"]
+                        - generic [ref=e642]: "[plugins]"
+                        - generic [ref=e643]: "[plugins.\"io.containerd.grpc.v1.cri\"]"
+                        - generic [ref=e644]: "[plugins.\"io.containerd.grpc.v1.cri\".containerd.runtimes.runc]"
+                        - generic [ref=e645]: runtime_type = "io.containerd.runc.v2"
+                        - generic [ref=e646]: "[plugins.\"io.containerd.grpc.v1.cri\".containerd.runtimes.runc.options]"
+                        - generic [ref=e647]: SystemdCgroup = true
+                        - generic [ref=e648]: "# contains spectro changes"
+                        - generic [ref=e649]: "[plugins.\"io.containerd.grpc.v1.cri\".registry]"
+                        - generic [ref=e650]: "[plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors]"
+                        - generic [ref=e651]: "[plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors.\"docker.io\"]"
+                        - generic [ref=e652]: endpoint = ["harbor.example.org/airgap-images/docker.io"]
+                        - generic [ref=e653]: "[plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors.\"gcr.io\"]"
+                        - generic [ref=e654]: endpoint = ["harbor.example.org/airgap-images/gcr.io"]
+                        - generic [ref=e655]: "[plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors.\"ghcr.io\"]"
+                        - generic [ref=e656]: endpoint = ["harbor.example.org/airgap-images/ghcr.io"]
+                        - generic [ref=e657]: "[plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors.\"k8s.gcr.io\"]"
+                        - generic [ref=e658]: endpoint = ["harbor.example.org/airgap-images/gcr.io"]
+                        - generic [ref=e659]: "[plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors.\"registry.k8s.io\"]"
+                        - generic [ref=e660]: endpoint = ["harbor.example.org/airgap-images/k8s.io"]
+                        - generic [ref=e661]: "[plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors.\"quay.io\"]"
+                        - generic [ref=e662]: endpoint = ["harbor.example.org/airgap-images/quay.io"]
+                        - generic [ref=e663]: "[plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors.\"us-docker.pkg.dev\"]"
+                        - generic [ref=e664]: endpoint = ["harbor.example.org/airgap-images"]
+                      - generic [ref=e665]:
+                        - button "Toggle word wrap" [ref=e666] [cursor=pointer]:
+                          - img [ref=e667]
+                        - button "Copy code to clipboard" [ref=e669] [cursor=pointer]:
+                          - generic [ref=e670]:
+                            - img [ref=e671]
+                            - img [ref=e673]
+              - generic [ref=e675]:
+                - generic [ref=e677]:
+                  - text: "Tags:"
+                  - list [ref=e678]:
+                    - listitem [ref=e679]:
+                      - link "palette" [ref=e680] [cursor=pointer]:
+                        - /url: /tags/palette/
+                    - listitem [ref=e681]:
+                      - link "self-hosted" [ref=e682] [cursor=pointer]:
+                        - /url: /tags/self-hosted/
+                - link "Edit this page" [ref=e685] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/enterprise-version/system-management/registry-override.md
+                  - img [ref=e686]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e690]:
+              - link "Previous « Banners" [ref=e691] [cursor=pointer]:
+                - /url: /enterprise-version/system-management/login-banner/
+                - generic [ref=e692]: Previous
+                - generic [ref=e693]: « Banners
+              - link "Next Migrate SCAR to OCI Registry »" [ref=e694] [cursor=pointer]:
+                - /url: /enterprise-version/system-management/scar-migration/
+                - generic [ref=e695]: Next
+                - generic [ref=e696]: Migrate SCAR to OCI Registry »
+          - list [ref=e699]:
+            - listitem [ref=e700]:
+              - link "Prerequisites" [ref=e701] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e702]:
+              - link "Override Image Registry Configuration" [ref=e703] [cursor=pointer]:
+                - /url: "#override-image-registry-configuration"
+            - listitem [ref=e704]:
+              - link "Validate" [ref=e705] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e706] [cursor=pointer]:
+    - generic [ref=e709]:
+      - img "Project Logo" [ref=e710]
+      - paragraph [ref=e711]: Ask AI
+```

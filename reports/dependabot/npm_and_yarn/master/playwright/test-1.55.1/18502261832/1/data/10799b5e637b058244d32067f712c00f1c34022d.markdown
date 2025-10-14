@@ -1,0 +1,843 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Security" [ref=e150] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e152]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Audit Logs" [ref=e157] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e159]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Self-Hosted Palette" [ref=e164] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e166]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e168] [cursor=pointer]
+              - listitem [ref=e169]:
+                - generic [ref=e170]:
+                  - link "Palette VerteX" [ref=e171] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e173]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e175] [cursor=pointer]
+              - listitem [ref=e176]:
+                - generic [ref=e177]:
+                  - link "Tenant Administration" [ref=e178] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e180]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e182] [cursor=pointer]
+              - listitem [ref=e183]:
+                - generic [ref=e184]:
+                  - link "Automation" [expanded] [ref=e185] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e187]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e189] [cursor=pointer]
+                - list [ref=e190]:
+                  - listitem [ref=e191]:
+                    - generic [ref=e192]:
+                      - link "Palette CLI" [expanded] [ref=e193] [cursor=pointer]:
+                        - /url: /automation/palette-cli/
+                      - button "Toggle the collapsible sidebar category 'Palette CLI'" [ref=e194] [cursor=pointer]
+                    - list [ref=e195]:
+                      - listitem [ref=e196]:
+                        - link "Install" [ref=e197] [cursor=pointer]:
+                          - /url: /automation/palette-cli/install-palette-cli/
+                      - listitem [ref=e198]:
+                        - generic [ref=e199]:
+                          - link "Commands" [expanded] [ref=e200] [cursor=pointer]:
+                            - /url: /automation/palette-cli/commands/
+                          - button "Toggle the collapsible sidebar category 'Commands'" [ref=e201] [cursor=pointer]
+                        - list [ref=e202]:
+                          - listitem [ref=e203]:
+                            - link "Content" [ref=e204] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/content/
+                          - listitem [ref=e205]:
+                            - link "Docs" [ref=e206] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/docs/
+                          - listitem [ref=e207]:
+                            - link "EC" [ref=e208] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/ec/
+                          - listitem [ref=e209]:
+                            - link "FIPS Validate" [ref=e210] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/fips-validate/
+                          - listitem [ref=e211]:
+                            - link "Import" [ref=e212] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/import/
+                          - listitem [ref=e213]:
+                            - link "Login" [ref=e214] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/login/
+                          - listitem [ref=e215]:
+                            - link "PCG" [ref=e216] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/pcg/
+                          - listitem [ref=e217]:
+                            - link "PDE" [ref=e218] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/pde/
+                          - listitem [ref=e219]:
+                            - link "Project" [ref=e220] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/project/
+                          - listitem [ref=e221]:
+                            - link "Validate-Auth" [ref=e222] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/validate-auth/
+                          - listitem [ref=e223]:
+                            - link "VMO" [ref=e224] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/vmo/
+                  - listitem [ref=e225]:
+                    - generic [ref=e226]:
+                      - link "Palette Go SDK" [ref=e227] [cursor=pointer]:
+                        - /url: /automation/palette-sdk/
+                      - button "Toggle the collapsible sidebar category 'Palette Go SDK'" [ref=e228] [cursor=pointer]
+                  - listitem [ref=e229]:
+                    - link "Terraform" [ref=e230] [cursor=pointer]:
+                      - /url: /automation/terraform/
+                  - listitem [ref=e231]:
+                    - generic [ref=e232]:
+                      - link "Crossplane" [ref=e233] [cursor=pointer]:
+                        - /url: /automation/crossplane/
+                      - button "Toggle the collapsible sidebar category 'Crossplane'" [ref=e234] [cursor=pointer]
+              - listitem [ref=e235]:
+                - generic [ref=e236]:
+                  - link "Troubleshooting" [ref=e237] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e239]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e241] [cursor=pointer]
+              - listitem [ref=e242]:
+                - link "Glossary" [ref=e243] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e245]
+                  - text: Glossary
+              - listitem [ref=e247]:
+                - generic [ref=e248]:
+                  - link "Compliance & Legal" [ref=e249] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e251]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e253] [cursor=pointer]
+              - listitem [ref=e254]:
+                - button "Privacy Settings" [ref=e255] [cursor=pointer]:
+                  - img [ref=e256]
+                  - text: Privacy Settings
+      - main [ref=e258]:
+        - generic [ref=e260]:
+          - generic [ref=e262]:
+            - article [ref=e263]:
+              - navigation "Breadcrumbs" [ref=e264]:
+                - list [ref=e265]:
+                  - listitem [ref=e266]:
+                    - link "Home page" [ref=e267] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e268]
+                  - listitem [ref=e270]:
+                    - link "Automation" [ref=e271] [cursor=pointer]:
+                      - /url: /automation/
+                  - listitem [ref=e272]:
+                    - link "Palette CLI" [ref=e273] [cursor=pointer]:
+                      - /url: /automation/palette-cli/
+                  - listitem [ref=e274]:
+                    - link "Commands" [ref=e275] [cursor=pointer]:
+                      - /url: /automation/palette-cli/commands/
+                  - listitem [ref=e276]:
+                    - generic [ref=e277]: EC
+              - generic [ref=e278]:
+                - heading "EC" [level=1] [ref=e280]
+                - paragraph [ref=e281]:
+                  - text: The
+                  - code [ref=e282]: ec
+                  - text: command installs a self-hosted Palette Enterprise Cluster (EC) in your target environment. The installation is conducted through an interactive wizard that guides you through the various install configurations available. A local kind cluster is created to facilitate creating the Enterprise cluster in the target environment. You do not need to install kind or any other dependencies. The CLI includes all the required dependencies to set up the kind cluster. You can use the
+                  - code [ref=e283]: ec
+                  - text: command to install a
+                  - link "self-hosted Palette" [ref=e284] [cursor=pointer]:
+                    - /url: /enterprise-version/install-palette/
+                  - text: instance or a self-hosted
+                  - link "VerteX" [ref=e285] [cursor=pointer]:
+                    - /url: /vertex/install-palette-vertex/
+                  - text: instance.
+                - heading "SubcommandsDirect link to Subcommands" [level=2] [ref=e286]:
+                  - text: Subcommands
+                  - link "Direct link to Subcommands" [ref=e287] [cursor=pointer]:
+                    - /url: "#subcommands"
+                    - text: "#"
+                - paragraph [ref=e288]:
+                  - text: The
+                  - code [ref=e289]: ec
+                  - text: command exposes the following subcommand.
+                - list [ref=e290]:
+                  - listitem [ref=e291]:
+                    - code [ref=e292]: install
+                    - text: "- Install a Palette Enterprise Cluster through an interactive wizard. A container runtime is required to install an EC cluster."
+                - heading "LimitationsDirect link to Limitations" [level=2] [ref=e293]:
+                  - text: Limitations
+                  - link "Direct link to Limitations" [ref=e294] [cursor=pointer]:
+                    - /url: "#limitations"
+                    - text: "#"
+                - list [ref=e295]:
+                  - listitem [ref=e296]:
+                    - paragraph [ref=e297]:
+                      - text: Credentials such as Palette API keys, passwords, and Ubuntu Pro tokens set using Palette CLI version 4.7.1 or earlier are not compatible with Palette CLI version 4.7.2 or later. As a result, users cannot use configuration files created using version 4.7.1 or earlier to perform Palette CLI operations after upgrading to version 4.7.2 or later. Refer to our
+                      - link "Troubleshooting" [ref=e298] [cursor=pointer]:
+                        - /url: /troubleshooting/automation#scenario---update-cli-configuration-files-credentials
+                      - text: guide for more information.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e299]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e300] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e301]:
+                  - listitem [ref=e302]:
+                    - paragraph [ref=e303]:
+                      - text: Docker is required to install a PCG cluster. Refer to the
+                      - link "Docker" [ref=e304] [cursor=pointer]:
+                        - /url: https://docs.docker.com/get-docker/
+                      - text: documentation to learn how to install Docker on your system.
+                  - listitem [ref=e305]:
+                    - paragraph [ref=e306]:
+                      - text: You must provide an encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. You can provide the passphrase through the
+                      - code [ref=e307]: PALETTE_ENCRYPTION_PASSWORD
+                      - text: environment variable or the
+                      - code [ref=e308]: "-k"
+                      - text: or
+                      - code [ref=e309]: "--encryption-passphrase"
+                      - text: flag. Refer to the
+                      - link "Encryption" [ref=e310] [cursor=pointer]:
+                        - /url: /automation/palette-cli/#encryption
+                      - text: section for more information on encryption.
+                - heading "InstallDirect link to Install" [level=2] [ref=e311]:
+                  - text: Install
+                  - link "Direct link to Install" [ref=e312] [cursor=pointer]:
+                    - /url: "#install"
+                    - text: "#"
+                - paragraph [ref=e313]:
+                  - text: The
+                  - code [ref=e314]: install
+                  - text: subcommand installs a Palette Enterprise Cluster in your target environment. You can install Palette or Palette VerteX using the
+                  - code [ref=e315]: install
+                  - text: subcommand. The
+                  - code [ref=e316]: install
+                  - text: subcommand can be used in interactive mode, which prompts you for required values. Alternatively, you can use flags to generate a configuration file.
+                - table [ref=e317]:
+                  - rowgroup [ref=e318]:
+                    - row "Short Flag Long Flag Description Type" [ref=e319]:
+                      - cell "Short Flag" [ref=e320]
+                      - cell "Long Flag" [ref=e321]
+                      - cell "Description" [ref=e322]
+                      - cell "Type" [ref=e323]
+                  - rowgroup [ref=e324]:
+                    - row "-f --config-file Install using a configuration file (optional). Use -config-only to generate a configuration file. string" [ref=e325]:
+                      - cell "-f" [ref=e326]:
+                        - code [ref=e327]: "-f"
+                      - cell "--config-file" [ref=e328]:
+                        - code [ref=e329]: "--config-file"
+                      - cell "Install using a configuration file (optional). Use -config-only to generate a configuration file." [ref=e330]:
+                        - text: Install using a configuration file (optional). Use
+                        - code [ref=e331]: "-config-only"
+                        - text: to generate a configuration file.
+                      - cell "string" [ref=e332]
+                    - row "-d --skip-teardown Skip the teardown of the kind cluster in case of errors. boolean" [ref=e333]:
+                      - cell "-d" [ref=e334]:
+                        - code [ref=e335]: "-d"
+                      - cell "--skip-teardown" [ref=e336]:
+                        - code [ref=e337]: "--skip-teardown"
+                      - cell "Skip the teardown of the kind cluster in case of errors." [ref=e338]
+                      - cell "boolean" [ref=e339]
+                    - row "-k --encryption-passphrase Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption. string" [ref=e340]:
+                      - cell "-k" [ref=e341]:
+                        - code [ref=e342]: "-k"
+                      - cell "--encryption-passphrase" [ref=e343]:
+                        - code [ref=e344]: "--encryption-passphrase"
+                      - cell "Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption." [ref=e345]:
+                        - text: Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable
+                        - code [ref=e346]: PALETTE_ENCRYPTION_PASSWORD
+                        - text: . Refer to the
+                        - link "Encryption" [ref=e347] [cursor=pointer]:
+                          - /url: /automation/palette-cli/#encryption
+                        - text: section for more information on encryption.
+                      - cell "string" [ref=e348]
+                    - row "-o --config-only Generate configuration file only. This command will not proceed with installation. boolean" [ref=e349]:
+                      - cell "-o" [ref=e350]:
+                        - code [ref=e351]: "-o"
+                      - cell "--config-only" [ref=e352]:
+                        - code [ref=e353]: "--config-only"
+                      - cell "Generate configuration file only. This command will not proceed with installation." [ref=e354]
+                      - cell "boolean" [ref=e355]
+                    - row "-v --custom-values-file Enterprise cluster custom values.yaml configuration file (optional). Use this to customize the cluster profile of the enterprise cluster. Refer to the custom value file section for more information. string" [ref=e356]:
+                      - cell "-v" [ref=e357]:
+                        - code [ref=e358]: "-v"
+                      - cell "--custom-values-file" [ref=e359]:
+                        - code [ref=e360]: "--custom-values-file"
+                      - cell "Enterprise cluster custom values.yaml configuration file (optional). Use this to customize the cluster profile of the enterprise cluster. Refer to the custom value file section for more information." [ref=e361]:
+                        - text: Enterprise cluster custom values.yaml configuration file (optional). Use this to customize the cluster profile of the enterprise cluster. Refer to the
+                        - link "custom value file" [ref=e362] [cursor=pointer]:
+                          - /url: "#custom-value-file"
+                        - text: section for more information.
+                      - cell "string" [ref=e363]
+                    - row "- --ubuntu-pro-token The Canonical subscription token for Ubuntu Pro. An Ubuntu Pro subscription is required, and Ubuntu Pro must be enabled. string" [ref=e364]:
+                      - cell "-" [ref=e365]
+                      - cell "--ubuntu-pro-token" [ref=e366]:
+                        - code [ref=e367]: "--ubuntu-pro-token"
+                      - cell "The Canonical subscription token for Ubuntu Pro. An Ubuntu Pro subscription is required, and Ubuntu Pro must be enabled." [ref=e368]:
+                        - text: The Canonical subscription token for
+                        - link "Ubuntu Pro" [ref=e369] [cursor=pointer]:
+                          - /url: https://ubuntu.com/pro
+                        - text: . An Ubuntu Pro subscription is required, and Ubuntu Pro must be enabled.
+                      - cell "string" [ref=e370]
+                    - row "-p --update-passwords Update passwords only. Do not proceed with installation. The --config-file flag must also be provided. string" [ref=e371]:
+                      - cell "-p" [ref=e372]:
+                        - code [ref=e373]: "-p"
+                      - cell "--update-passwords" [ref=e374]:
+                        - code [ref=e375]: "--update-passwords"
+                      - cell "Update passwords only. Do not proceed with installation. The --config-file flag must also be provided." [ref=e376]:
+                        - text: Update passwords only. Do not proceed with installation. The
+                        - code [ref=e377]: "--config-file"
+                        - text: flag must also be provided.
+                      - cell "string" [ref=e378]
+                    - row "-t --update-tokens Update authentication tokens only. Do not proceed with installation. The --config-file flag must be provided. boolean" [ref=e379]:
+                      - cell "-t" [ref=e380]:
+                        - code [ref=e381]: "-t"
+                      - cell "--update-tokens" [ref=e382]:
+                        - code [ref=e383]: "--update-tokens"
+                      - cell "Update authentication tokens only. Do not proceed with installation. The --config-file flag must be provided." [ref=e384]:
+                        - text: Update authentication tokens only. Do not proceed with installation. The
+                        - code [ref=e385]: "--config-file"
+                        - text: flag must be provided.
+                      - cell "boolean" [ref=e386]
+                    - row "- --validate Scan the environment and conduct validation before the enterprise cluster is installed. boolean" [ref=e387]:
+                      - cell "-" [ref=e388]
+                      - cell "--validate" [ref=e389]:
+                        - code [ref=e390]: "--validate"
+                      - cell "Scan the environment and conduct validation before the enterprise cluster is installed." [ref=e391]
+                      - cell "boolean" [ref=e392]
+                - heading "ExamplesDirect link to Examples" [level=3] [ref=e393]:
+                  - text: Examples
+                  - link "Direct link to Examples" [ref=e394] [cursor=pointer]:
+                    - /url: "#examples"
+                    - text: "#"
+                - paragraph [ref=e395]: Install an Enterprise Cluster in interactive mode.
+                - generic [ref=e397]:
+                  - code [ref=e399]:
+                    - generic [ref=e400]: palette ec install
+                  - button "Copy code to clipboard" [ref=e402] [cursor=pointer]:
+                    - generic [ref=e403]:
+                      - img [ref=e404]
+                      - img [ref=e406]
+                - paragraph [ref=e408]: Create a configuration file for the Enterprise Cluster installation.
+                - generic [ref=e410]:
+                  - code [ref=e412]:
+                    - generic [ref=e413]: palette ec install --config-only
+                  - button "Copy code to clipboard" [ref=e415] [cursor=pointer]:
+                    - generic [ref=e416]:
+                      - img [ref=e417]
+                      - img [ref=e419]
+                - paragraph [ref=e421]:
+                  - text: Install an Enterprise Cluster using a configuration file. The configuration file is generated using the
+                  - code [ref=e422]: "--config-only"
+                  - text: flag.
+                - generic [ref=e424]:
+                  - code [ref=e426]:
+                    - generic [ref=e427]: palette ec install --config-file ~/.palette/ec/ec-20230807143205/ec.yaml
+                  - generic [ref=e428]:
+                    - button "Toggle word wrap" [ref=e429] [cursor=pointer]:
+                      - img [ref=e430]
+                    - button "Copy code to clipboard" [ref=e432] [cursor=pointer]:
+                      - generic [ref=e433]:
+                        - img [ref=e434]
+                        - img [ref=e436]
+                - paragraph [ref=e438]:
+                  - text: Update the passwords of an Enterprise Cluster using a configuration file. The configuration file is generated using the
+                  - code [ref=e439]: "--config-only"
+                  - text: flag.
+                - generic [ref=e441]:
+                  - code [ref=e443]:
+                    - generic [ref=e444]: palette ec install --config-file ~/.palette/ec/ec-20230807143205/ec.yaml --update-passwords
+                  - generic [ref=e445]:
+                    - button "Toggle word wrap" [ref=e446] [cursor=pointer]:
+                      - img [ref=e447]
+                    - button "Copy code to clipboard" [ref=e449] [cursor=pointer]:
+                      - generic [ref=e450]:
+                        - img [ref=e451]
+                        - img [ref=e453]
+                - paragraph [ref=e455]:
+                  - text: Install an Enterprise Cluster and validate the environment before installation. Check out the
+                  - link "Validate Environment" [ref=e456] [cursor=pointer]:
+                    - /url: "#validate-environment"
+                  - text: section for more information.
+                - generic [ref=e458]:
+                  - code [ref=e460]:
+                    - generic [ref=e461]: palette ec install --validate
+                  - button "Copy code to clipboard" [ref=e463] [cursor=pointer]:
+                    - generic [ref=e464]:
+                      - img [ref=e465]
+                      - img [ref=e467]
+                - heading "Custom Value FileDirect link to Custom Value File" [level=2] [ref=e469]:
+                  - text: Custom Value File
+                  - link "Direct link to Custom Value File" [ref=e470] [cursor=pointer]:
+                    - /url: "#custom-value-file"
+                    - text: "#"
+                - paragraph [ref=e471]:
+                  - text: You can customize the
+                  - link "Cluster Profile" [ref=e472] [cursor=pointer]:
+                    - /url: /glossary-all/#cluster-profile
+                  - text: that makes up the Enterprise Cluster by providing a custom
+                  - strong [ref=e473]: values.yaml
+                  - text: file that contains values for the various Cluster Profile layers that make up the Enterprise Cluster. The custom
+                  - strong [ref=e474]: values.yaml
+                  - text: file is used to customize the Enterprise Cluster to your specific needs. This is an advanced feature and should only be used by advanced users or when explicitly instructed by our support team.
+                - paragraph [ref=e475]:
+                  - text: The
+                  - strong [ref=e476]: values.yaml
+                  - text: "file is made up of the following components:"
+                - list [ref=e477]:
+                  - listitem [ref=e478]:
+                    - paragraph [ref=e479]:
+                      - code [ref=e480]: os
+                      - text: The operating system layer of the Enterprise Cluster. This layer contains the values for the operating system that will be used to install the Enterprise Cluster.
+                  - listitem [ref=e481]:
+                    - paragraph [ref=e482]:
+                      - code [ref=e483]: k8s
+                      - text: The Kubernetes layer of the Enterprise Cluster. This layer contains the configuration values for the Kubernetes cluster that is created as part of the Enterprise Cluster installation.
+                  - listitem [ref=e484]:
+                    - paragraph [ref=e485]:
+                      - code [ref=e486]: csi
+                      - text: The Container Storage Interface (CSI) layer of the Enterprise Cluster. This layer contains the configuration values for the CSI driver that is used to provide persistent storage to the Enterprise Cluster.
+                  - listitem [ref=e487]:
+                    - paragraph [ref=e488]:
+                      - code [ref=e489]: cni
+                      - text: The Container Network Interface (CNI) layer of the Enterprise Cluster. This layer contains the configuration values for the CNI driver that is used to provide networking to the Enterprise Cluster.
+                  - listitem [ref=e490]:
+                    - paragraph [ref=e491]:
+                      - code [ref=e492]: mgmt
+                      - text: The management layer of the Enterprise Cluster. This layer contains the configuration values for the internal management components of the Enterprise Cluster.
+                    - paragraph [ref=e493]:
+                      - text: You can provide one or more layers in the
+                      - strong [ref=e494]: values.yaml
+                      - text: file. When you provide a layer configuration, the new configuration will be used instead of the default configuration. For example, if you provide a custom
+                      - strong [ref=e495]: values.yaml
+                      - text: file that contains the
+                      - code [ref=e496]: os
+                      - text: layer, it will replace the default operating system configuration. The Enterprise Cluster profile as follows The
+                      - strong [ref=e497]: values.yaml
+                      - text: "must use the following format:"
+                    - code [ref=e501]:
+                      - generic [ref=e502]: "os: |-"
+                      - generic [ref=e503]: "# ... values.yaml for OS layer go here."
+                      - generic [ref=e504]: "k8s: |-"
+                      - generic [ref=e505]: "# ... values.yaml for K8s layer go here."
+                      - generic [ref=e506]: "csi: |-"
+                      - generic [ref=e507]: "# ... values.yaml for CSI layer go here."
+                      - generic [ref=e508]: "cni: |-"
+                      - generic [ref=e509]: "# ... values.yaml for CNI layer go here."
+                      - generic [ref=e510]: "mgmt: |-"
+                      - generic [ref=e511]: "# ... values.yaml for spectro-mgmt layer go here."
+                - paragraph [ref=e512]:
+                  - text: The following example shows a custom
+                  - strong [ref=e513]: values.yaml
+                  - text: file that contains the
+                  - code [ref=e514]: os
+                  - text: layer. The
+                  - code [ref=e515]: os
+                  - text: layer contains the configuration for the operating system that will be used to install the Enterprise Cluster.
+                - generic [ref=e517]:
+                  - code [ref=e519]:
+                    - generic [ref=e520]: "os: |-"
+                    - generic [ref=e521]: "kubeadmconfig:"
+                    - generic [ref=e522]: "preKubeadmCommands:"
+                    - generic [ref=e523]: "- echo \"Executing pre kube admin config commands\""
+                    - generic [ref=e524]: "- update-ca-certificates"
+                    - generic [ref=e525]: "- \"systemctl restart containerd; sleep 3\""
+                    - generic [ref=e526]: "- 'while [ ! -S /var/run/containerd/containerd.sock ]; do echo \"Waiting for containerd...\"; sleep 1; done'"
+                    - generic [ref=e527]: "postKubeadmCommands:"
+                    - generic [ref=e528]: "- echo \"Executing post kube admin config commands\""
+                    - generic [ref=e529]: "files:"
+                    - generic [ref=e530]: "- targetPath: /usr/local/share/ca-certificates/mycom.crt"
+                    - generic [ref=e531]: "targetOwner: \"root:root\""
+                    - generic [ref=e532]: "targetPermissions: \"0644\""
+                    - generic [ref=e533]: "content: |"
+                    - generic [ref=e534]: "-----BEGIN CERTIFICATE-----"
+                    - generic [ref=e535]: MIICyzCCAbOgAwIBAgIBADANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwprdWJl
+                    - generic [ref=e536]: cm5ldGVzMB4XDTIwMDkyMjIzNDMyM1oXDTMwMDkyMDIzNDgyM1owFTETMBEGA1UE
+                    - generic [ref=e537]: AxMKa3ViZXJuZXRlczCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMdA
+                    - generic [ref=e538]: nZYs1el/6f9PgV/aO9mzy7MvqaZoFnqO7Qi4LZfYzixLYmMUzi+h8/RLPFIoYLiz
+                    - generic [ref=e539]: qiDn+P8c9I1uxB6UqGrBt7dkXfjrUZPs0JXEOX9U/6GFXL5C+n3AUlAxNCS5jobN
+                    - generic [ref=e540]: fbLt7DH3WoT6tLcQefTta2K+9S7zJKcIgLmBlPNDijwcQsbenSwDSlSLkGz8v6N2
+                    - generic [ref=e541]: 7SEYNCV542lbYwn42kbcEq2pzzAaCqa5uEPsR9y+uzUiJpv5tDHUdjbFT8tme3vL
+                    - generic [ref=e542]: 9EdCPODkqtMJtCvz0hqd5SxkfeC2L+ypaiHIxbwbWe7GtliROvz9bClIeGY7gFBK
+                    - generic [ref=e543]: jZqpLdbBVjo0NZBTJFUCAwEAAaMmMCQwDgYDVR0PAQH/BAQDAgKkMBIGA1UdEwEB
+                    - generic [ref=e544]: /wQIMAYBAf8CAQAwDQYJKoZIhvcNAQELBQADggEBADIKoE0P+aVJGV9LWGLiOhki
+                    - generic [ref=e545]: HFv/vPPAQ2MPk02rLjWzCaNrXD7aPPgT/1uDMYMHD36u8rYyf4qPtB8S5REWBM/Y
+                    - generic [ref=e546]: g8uhnpa/tGsaqO8LOFj6zsInKrsXSbE6YMY6+A8qvv5lPWpJfrcCVEo2zOj7WGoJ
+                    - generic [ref=e547]: ixi4B3fFNI+wih8/+p4xW+n3fvgqVYHJ3zo8aRLXbXwztp00lXurXUyR8EZxyR+6
+                    - generic [ref=e548]: b+IDLmHPEGsY9KOZ9VLLPcPhx5FR9njFyXvDKmjUMJJgUpRkmsuU1mCFC+OHhj56
+                    - generic [ref=e549]: IkLaSJf6z/p2a3YjTxvHNCqFMLbJ2FvJwYCRzsoT2wm2oulnUAMWPI10vdVM+Nc=
+                    - generic [ref=e550]: "-----END CERTIFICATE-----"
+                  - button "Toggle word wrap" [ref=e552] [cursor=pointer]:
+                    - img [ref=e553]
+                - heading "Validate EnvironmentDirect link to Validate Environment" [level=2] [ref=e555]:
+                  - text: Validate Environment
+                  - link "Direct link to Validate Environment" [ref=e556] [cursor=pointer]:
+                    - /url: "#validate-environment"
+                    - text: "#"
+                - paragraph [ref=e557]:
+                  - text: You can use the
+                  - code [ref=e558]: "--validate"
+                  - text: flag to scan the environment and conduct validation before the Enterprise Cluster is installed. The validation uses the open source project
+                  - link "Validator" [ref=e559] [cursor=pointer]:
+                    - /url: https://github.com/validator-labs/validator
+                  - text: "to check for the following prerequisites:"
+                - list [ref=e560]:
+                  - listitem [ref=e561]: The required vSphere permissions and privileges are available for the provided user.
+                  - listitem [ref=e562]: At least five IP addresses are available in the provided IP range.
+                  - listitem [ref=e563]: Ensure vSphere tags for Kubernetes regions and zones are available.
+                  - listitem [ref=e564]: The provided vSphere data center is accessible and has the required compute resources available.
+                - paragraph [ref=e565]:
+                  - text: When you use the
+                  - code [ref=e566]: "--validate"
+                  - text: flag, the standard installation wizard will proceed unless the
+                  - code [ref=e567]: "--config-file"
+                  - text: flag is provided. Once all user inputs are provided, the validation will begin. A kind cluster will be created that contains the necessary components to conduct the validation checks. The Validator plugins will trigger the validation checks. The validation results will be displayed in the terminal. Below is an example of the validation results.
+                - generic [ref=e569]:
+                  - code [ref=e571]:
+                    - generic [ref=e572]: Plugins will now execute validation checks.
+                    - generic [ref=e573]: "You can list validation results via the following command:"
+                    - generic [ref=e574]: kubectl -n validator get validationresults --kubeconfig /home/ubuntu/.palette/ec/ec-20240627215351/kind-cluster.kubeconfig
+                    - generic [ref=e575]: "And you can view all validation result details via the following command:"
+                    - generic [ref=e576]: kubectl -n validator describe validationresults --kubeconfig /home/ubuntu/.palette/ec/ec-20240627215351/kind-cluster.kubeconfig
+                    - generic [ref=e577]: Watching validation results, waiting for all to succeed
+                    - generic [ref=e578]: "Using kubeconfig from validator configuration file: /home/ubuntu/.palette/ec/ec-20240627215351/kind-cluster.kubeconfig"
+                    - generic [ref=e579]: "Validation result for validator-plugin-vsphere-rules updated:"
+                    - generic [ref=e580]: =================
+                    - generic [ref=e581]: Validation Result
+                    - generic [ref=e582]: =================
+                    - generic [ref=e583]: "Plugin: vSphere"
+                    - generic [ref=e584]: "Name: validator-plugin-vsphere-rules"
+                    - generic [ref=e585]: "Namespace: validator"
+                    - generic [ref=e586]: "State: Succeeded"
+                    - generic [ref=e587]: "------------"
+                    - generic [ref=e588]: Rule Results
+                    - generic [ref=e589]: "------------"
+                    - generic [ref=e590]: "Validation Rule: validation-folder-/Datacenter/vm/spectro-templates"
+                    - generic [ref=e591]: "Validation Type: vsphere-entity-privileges"
+                    - generic [ref=e592]: "Status: True"
+                    - generic [ref=e593]: "Last Validated: 2024-06-27T21:57:04Z"
+                    - generic [ref=e594]: "Message: All required vsphere-entity-privileges permissions were found for account: demo@vsphere.local"
+                    - generic [ref=e595]: "Validation Rule: validation-demo@vsphere.local"
+                    - generic [ref=e596]: "Validation Type: vsphere-role-privileges"
+                    - generic [ref=e597]: "Status: True"
+                    - generic [ref=e598]: "Last Validated: 2024-06-27T21:57:04Z"
+                    - generic [ref=e599]: "Message: All required vsphere-role-privileges permissions were found"
+                    - generic [ref=e600]: "Validation Rule: validation-tag-cluster-k8s-zone"
+                    - generic [ref=e601]: "Validation Type: vsphere-tags"
+                    - generic [ref=e602]: "Status: True"
+                    - generic [ref=e603]: "Last Validated: 2024-06-27T21:57:04Z"
+                    - generic [ref=e604]: "Message: Required entity tags were found"
+                    - generic [ref=e605]: "Validation Rule: validation-tag-datacenter-k8s-region"
+                    - generic [ref=e606]: "Validation Type: vsphere-tags"
+                    - generic [ref=e607]: "Status: True"
+                    - generic [ref=e608]: "Last Validated: 2024-06-27T21:57:04Z"
+                    - generic [ref=e609]: "Message: Required entity tags were found"
+                    - generic [ref=e610]: "Validation Rule: validation-cluster-Cluster2"
+                    - generic [ref=e611]: "Validation Type: vsphere-compute-resources"
+                    - generic [ref=e612]: "Status: True"
+                    - generic [ref=e613]: "Last Validated: 2024-06-27T21:57:04Z"
+                    - generic [ref=e614]: "Message: All required compute resources were satisfied"
+                    - generic [ref=e615]: Watching for updates to validation results for [validator-plugin-network-rules]...
+                    - generic [ref=e616]: "Validation result for validator-plugin-network-rules updated:"
+                    - generic [ref=e617]: =================
+                    - generic [ref=e618]: Validation Result
+                    - generic [ref=e619]: =================
+                    - generic [ref=e620]: "Plugin: Network"
+                    - generic [ref=e621]: "Name: validator-plugin-network-rules"
+                    - generic [ref=e622]: "Namespace: validator"
+                    - generic [ref=e623]: "State: Succeeded"
+                    - generic [ref=e624]: "------------"
+                    - generic [ref=e625]: Rule Results
+                    - generic [ref=e626]: "------------"
+                    - generic [ref=e627]: "Validation Rule: IP range rule 1, start IP 10.10.189.10 with length 5"
+                    - generic [ref=e628]: "Validation Type: network-ip-range"
+                    - generic [ref=e629]: "Status: True"
+                    - generic [ref=e630]: "Last Validated: 2024-06-27T21:57:04Z"
+                    - generic [ref=e631]: "Message: All network-ip-range checks passed"
+                    - generic [ref=e632]: "-------"
+                    - generic [ref=e633]: Details
+                    - generic [ref=e634]: "-------"
+                    - generic [ref=e635]: "- Ensuring that 10.10.189.10 and 5 subsequent IPs are all unallocated"
+                    - generic [ref=e636]: "- ping [-c 3 -W 3 10.10.189.10] failed; err: exit status 1, stderr:"
+                    - generic [ref=e637]: "- ping [-c 3 -W 3 10.10.189.11] failed; err: exit status 1, stderr:"
+                    - generic [ref=e638]: "- ping [-c 3 -W 3 10.10.189.12] failed; err: exit status 1, stderr:"
+                    - generic [ref=e639]: "- ping [-c 3 -W 3 10.10.189.13] failed; err: exit status 1, stderr:"
+                    - generic [ref=e640]: "- ping [-c 3 -W 3 10.10.189.14] failed; err: exit status 1, stderr:"
+                    - generic [ref=e641]: "Validation Rule: VSphere TCP Connection"
+                    - generic [ref=e642]: "Validation Type: network-tcp-conn"
+                    - generic [ref=e643]: "Status: True"
+                    - generic [ref=e644]: "Last Validated: 2024-06-27T21:57:19Z"
+                    - generic [ref=e645]: "Message:"
+                    - generic [ref=e646]: "-------"
+                    - generic [ref=e647]: Details
+                    - generic [ref=e648]: "-------"
+                    - generic [ref=e649]: "- Ensuring that TCP connection(s) can be established to vcenter.spectrocloud.dev on port(s) [443]"
+                    - generic [ref=e650]: "- nc [-w 3 vcenter.spectrocloud.dev 443] succeeded"
+                    - generic [ref=e651]: All validations have completed.
+                  - generic [ref=e652]:
+                    - button "Toggle word wrap" [ref=e653] [cursor=pointer]:
+                      - img [ref=e654]
+                    - button "Copy code to clipboard" [ref=e656] [cursor=pointer]:
+                      - generic [ref=e657]:
+                        - img [ref=e658]
+                        - img [ref=e660]
+                - paragraph [ref=e662]: After the validation checks are complete, the kind cluster is removed. If any of the validation checks fail, the installation will not proceed. The example below displays a failed network validation check.
+                - generic [ref=e664]:
+                  - code [ref=e666]:
+                    - generic [ref=e667]: "Validation result for validator-plugin-network-rules updated:"
+                    - generic [ref=e668]: =================
+                    - generic [ref=e669]: Validation Result
+                    - generic [ref=e670]: =================
+                    - generic [ref=e671]: "Plugin: Network"
+                    - generic [ref=e672]: "Name: validator-plugin-network-rules"
+                    - generic [ref=e673]: "Namespace: validator"
+                    - generic [ref=e674]: "State: Failed"
+                    - generic [ref=e675]: "------------"
+                    - generic [ref=e676]: Rule Results
+                    - generic [ref=e677]: "------------"
+                    - generic [ref=e678]: "Validation Rule: IP range rule 1, start IP 10.10.189.1 with length 4"
+                    - generic [ref=e679]: "Validation Type: network-ip-range"
+                    - generic [ref=e680]: "Status: False"
+                    - generic [ref=e681]: "Last Validated: 2024-06-27T22:36:03Z"
+                    - generic [ref=e682]: "Message: IP range check failed: one or more IPs in the provided range was allocated"
+                    - generic [ref=e683]: "-------"
+                    - generic [ref=e684]: Details
+                    - generic [ref=e685]: "-------"
+                    - generic [ref=e686]: "- Ensuring that 10.10.189.1 and 4 subsequent IPs are all unallocated"
+                    - generic [ref=e687]: "- ping [-c 3 -W 3 10.10.189.1] succeeded"
+                    - generic [ref=e688]: "- ping [-c 3 -W 3 10.10.189.2] failed; err: exit status 1, stderr:"
+                    - generic [ref=e689]: "- ping [-c 3 -W 3 10.10.189.3] failed; err: exit status 1, stderr:"
+                    - generic [ref=e690]: "- ping [-c 3 -W 3 10.10.189.4] failed; err: exit status 1, stderr:"
+                    - generic [ref=e691]: "--------"
+                    - generic [ref=e692]: Failures
+                    - generic [ref=e693]: "--------"
+                    - generic [ref=e694]: "- stdout: PING 10.10.189.1 (10.10.189.1) 56(84) bytes of data."
+                    - generic [ref=e695]: "64 bytes from 10.10.189.1: icmp_seq=1 ttl=63 time=0.338 ms"
+                    - generic [ref=e696]: "64 bytes from 10.10.189.1: icmp_seq=2 ttl=63 time=0.065 ms"
+                    - generic [ref=e697]: "64 bytes from 10.10.189.1: icmp_seq=3 ttl=63 time=0.145 ms"
+                    - generic [ref=e698]: "--- 10.10.189.1 ping statistics ---"
+                    - generic [ref=e699]: 3 packets transmitted, 3 received, 0%!p(MISSING)acket loss, time 2052ms
+                    - generic [ref=e700]: rtt min/avg/max/mdev = 0.065/0.182/0.338/0.114 ms
+                    - generic [ref=e701]: "Validation Rule: VSphere TCP Connection"
+                    - generic [ref=e702]: "Validation Type: network-tcp-conn"
+                    - generic [ref=e703]: "Status: True"
+                    - generic [ref=e704]: "Last Validated: 2024-06-27T22:36:14Z"
+                    - generic [ref=e705]: "Message:"
+                    - generic [ref=e706]: "-------"
+                    - generic [ref=e707]: Details
+                    - generic [ref=e708]: "-------"
+                    - generic [ref=e709]: "- Ensuring that TCP connection(s) can be established to vcenter.spectrocloud.dev on port(s) [443]"
+                    - generic [ref=e710]: "- nc [-w 3 vcenter.spectrocloud.dev 443] succeeded"
+                    - generic [ref=e711]: All validations have completed.
+                    - generic [ref=e712]: helm delete validator --namespace validator --kubeconfig /tmp/1406656575
+                    - generic [ref=e713]: Uninstalled validator and validator plugin(s) successfully
+                    - generic [ref=e714]: Deleting cluster "validator-kind-cluster" ...
+                    - generic [ref=e715]: "Deleted local Kind cluster: validator-kind-cluster"
+                    - generic [ref=e716]: "Error: failed to install Enterprise Cluster: environment validation failed"
+                  - generic [ref=e717]:
+                    - button "Toggle word wrap" [ref=e718] [cursor=pointer]:
+                      - img [ref=e719]
+                    - button "Copy code to clipboard" [ref=e721] [cursor=pointer]:
+                      - generic [ref=e722]:
+                        - img [ref=e723]
+                        - img [ref=e725]
+              - generic [ref=e727]:
+                - generic [ref=e729]:
+                  - text: "Tags:"
+                  - list [ref=e730]:
+                    - listitem [ref=e731]:
+                      - link "palette-cli" [ref=e732] [cursor=pointer]:
+                        - /url: /tags/palette-cli/
+                - link "Edit this page" [ref=e735] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/automation/palette-cli/commands/ec.md
+                  - img [ref=e736]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e740]:
+              - link "Previous « Docs" [ref=e741] [cursor=pointer]:
+                - /url: /automation/palette-cli/commands/docs/
+                - generic [ref=e742]: Previous
+                - generic [ref=e743]: « Docs
+              - link "Next FIPS Validate »" [ref=e744] [cursor=pointer]:
+                - /url: /automation/palette-cli/commands/fips-validate/
+                - generic [ref=e745]: Next
+                - generic [ref=e746]: FIPS Validate »
+          - list [ref=e749]:
+            - listitem [ref=e750]:
+              - link "Subcommands" [ref=e751] [cursor=pointer]:
+                - /url: "#subcommands"
+            - listitem [ref=e752]:
+              - link "Limitations" [ref=e753] [cursor=pointer]:
+                - /url: "#limitations"
+            - listitem [ref=e754]:
+              - link "Prerequisites" [ref=e755] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e756]:
+              - link "Install" [ref=e757] [cursor=pointer]:
+                - /url: "#install"
+              - list [ref=e758]:
+                - listitem [ref=e759]:
+                  - link "Examples" [ref=e760] [cursor=pointer]:
+                    - /url: "#examples"
+            - listitem [ref=e761]:
+              - link "Custom Value File" [ref=e762] [cursor=pointer]:
+                - /url: "#custom-value-file"
+            - listitem [ref=e763]:
+              - link "Validate Environment" [ref=e764] [cursor=pointer]:
+                - /url: "#validate-environment"
+  - button "Project Logo Ask AI" [ref=e765] [cursor=pointer]:
+    - generic [ref=e768]:
+      - img "Project Logo" [ref=e769]
+      - paragraph [ref=e770]: Ask AI
+```

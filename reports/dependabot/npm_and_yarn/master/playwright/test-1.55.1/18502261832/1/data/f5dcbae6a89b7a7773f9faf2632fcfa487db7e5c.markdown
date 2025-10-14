@@ -1,0 +1,643 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [expanded] [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+                - list [ref=e113]:
+                  - listitem [ref=e114]:
+                    - link "Use Cases" [ref=e115] [cursor=pointer]:
+                      - /url: /devx/enterprise-user/
+                  - listitem [ref=e116]:
+                    - generic [ref=e117]:
+                      - link "Apps" [ref=e118] [cursor=pointer]:
+                        - /url: /devx/apps/
+                      - button "Toggle the collapsible sidebar category 'Apps'" [ref=e119] [cursor=pointer]
+                  - listitem [ref=e120]:
+                    - generic [ref=e121]:
+                      - link "Palette Virtual Clusters" [ref=e122] [cursor=pointer]:
+                        - /url: /devx/palette-virtual-clusters/
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e123] [cursor=pointer]
+                  - listitem [ref=e124]:
+                    - generic [ref=e125]:
+                      - link "Manage Dev Engine" [ref=e126] [cursor=pointer]:
+                        - /url: /devx/manage-dev-engine/
+                      - button "Toggle the collapsible sidebar category 'Manage Dev Engine'" [ref=e127] [cursor=pointer]
+                  - listitem [ref=e128]:
+                    - generic [ref=e129]:
+                      - link "Services" [expanded] [ref=e130] [cursor=pointer]:
+                        - /url: /devx/services/
+                      - button "Toggle the collapsible sidebar category 'Services'" [ref=e131] [cursor=pointer]
+                    - list [ref=e132]:
+                      - listitem [ref=e133]:
+                        - link "Service Connectivity" [ref=e134] [cursor=pointer]:
+                          - /url: /devx/services/connectivity/
+                      - listitem [ref=e135]:
+                        - link "Databases" [ref=e136] [cursor=pointer]:
+                          - /url: /devx/services/db-services/
+                      - listitem [ref=e137]:
+                        - generic [ref=e138]:
+                          - link "Available Services" [expanded] [ref=e139] [cursor=pointer]:
+                            - /url: /devx/services/service-listings/
+                          - button "Toggle the collapsible sidebar category 'Available Services'" [ref=e140] [cursor=pointer]
+                        - list [ref=e141]:
+                          - listitem [ref=e142]:
+                            - link "MongoDB" [ref=e143] [cursor=pointer]:
+                              - /url: /devx/services/service-listings/mongo-db/
+                          - listitem [ref=e144]:
+                            - link "MySQL" [ref=e145] [cursor=pointer]:
+                              - /url: /devx/services/service-listings/mysql/
+                          - listitem [ref=e146]:
+                            - link "Postgres" [ref=e147] [cursor=pointer]:
+                              - /url: /devx/services/service-listings/postgresql-db/
+                          - listitem [ref=e148]:
+                            - link "Redis" [ref=e149] [cursor=pointer]:
+                              - /url: /devx/services/service-listings/redis-db/
+                          - listitem [ref=e150]:
+                            - link "Vault" [ref=e151] [cursor=pointer]:
+                              - /url: /devx/services/service-listings/vault/
+                          - listitem [ref=e152]:
+                            - link "CockroachDB" [ref=e153] [cursor=pointer]:
+                              - /url: /devx/services/service-listings/cockroach-db/
+              - listitem [ref=e154]:
+                - generic [ref=e155]:
+                  - link "Virtual Machine Orchestrator" [ref=e156] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e158]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e160] [cursor=pointer]
+              - listitem [ref=e161]:
+                - generic [ref=e162]:
+                  - link "Workspaces" [ref=e163] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e165]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e167] [cursor=pointer]
+              - listitem [ref=e168]:
+                - generic [ref=e169]:
+                  - link "Packs List" [ref=e170] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e172]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e174] [cursor=pointer]
+              - listitem [ref=e175]:
+                - generic [ref=e176]:
+                  - link "User & Role Management" [ref=e177] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e179]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e181] [cursor=pointer]
+              - listitem [ref=e182]:
+                - generic [ref=e183]:
+                  - link "Registries and Packs" [ref=e184] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e186]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e188] [cursor=pointer]
+              - listitem [ref=e189]:
+                - generic [ref=e190]:
+                  - link "Security" [ref=e191] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e193]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e195] [cursor=pointer]
+              - listitem [ref=e196]:
+                - generic [ref=e197]:
+                  - link "Audit Logs" [ref=e198] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e200]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e202] [cursor=pointer]
+              - listitem [ref=e203]:
+                - generic [ref=e204]:
+                  - link "Self-Hosted Palette" [ref=e205] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e207]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e209] [cursor=pointer]
+              - listitem [ref=e210]:
+                - generic [ref=e211]:
+                  - link "Palette VerteX" [ref=e212] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e214]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e216] [cursor=pointer]
+              - listitem [ref=e217]:
+                - generic [ref=e218]:
+                  - link "Tenant Administration" [ref=e219] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e221]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e223] [cursor=pointer]
+              - listitem [ref=e224]:
+                - generic [ref=e225]:
+                  - link "Automation" [ref=e226] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e228]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e230] [cursor=pointer]
+              - listitem [ref=e231]:
+                - generic [ref=e232]:
+                  - link "Troubleshooting" [ref=e233] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e235]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e237] [cursor=pointer]
+              - listitem [ref=e238]:
+                - link "Glossary" [ref=e239] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e241]
+                  - text: Glossary
+              - listitem [ref=e243]:
+                - generic [ref=e244]:
+                  - link "Compliance & Legal" [ref=e245] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e247]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e249] [cursor=pointer]
+              - listitem [ref=e250]:
+                - button "Privacy Settings" [ref=e251] [cursor=pointer]:
+                  - img [ref=e252]
+                  - text: Privacy Settings
+      - main [ref=e254]:
+        - generic [ref=e256]:
+          - generic [ref=e258]:
+            - article [ref=e259]:
+              - navigation "Breadcrumbs" [ref=e260]:
+                - list [ref=e261]:
+                  - listitem [ref=e262]:
+                    - link "Home page" [ref=e263] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e264]
+                  - listitem [ref=e266]:
+                    - link "Palette Dev Engine" [ref=e267] [cursor=pointer]:
+                      - /url: /devx/
+                  - listitem [ref=e268]:
+                    - link "Services" [ref=e269] [cursor=pointer]:
+                      - /url: /devx/services/
+                  - listitem [ref=e270]:
+                    - link "Available Services" [ref=e271] [cursor=pointer]:
+                      - /url: /devx/services/service-listings/
+                  - listitem [ref=e272]:
+                    - generic [ref=e273]: Postgres
+              - generic [ref=e274]:
+                - heading "Postgres" [level=1] [ref=e276]
+                - paragraph [ref=e277]:
+                  - text: Palette supports
+                  - link "Postgres" [ref=e278] [cursor=pointer]:
+                    - /url: https://www.postgresql.org/
+                  - text: as a database service. Postgres is a powerful open source object-relational database system with over 35 years of active deployment with a strong reputation for reliability, feature robustness, and performance. Postgres uses and extends the SQL language combined with many features that safely store and scale the most complicated data workloads.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e279]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e280] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - paragraph [ref=e281]: "The following are the requirements for using Postgres in Palette:"
+                - list [ref=e282]:
+                  - listitem [ref=e283]:
+                    - paragraph [ref=e284]:
+                      - text: Do not use the Postgres user names
+                      - code [ref=e285]: postgres
+                      - text: and
+                      - code [ref=e286]: admin
+                      - text: . These user names are reserved for internal system operations and will cause internal conflicts.
+                  - listitem [ref=e287]:
+                    - paragraph [ref=e288]:
+                      - text: The user name format does not support the special character hyphen(-). For example,
+                      - code [ref=e289]: name-1
+                      - text: is not supported.
+                  - listitem [ref=e290]:
+                    - paragraph [ref=e291]:
+                      - text: Clients must set
+                      - code [ref=e292]: sslMode=require
+                      - text: or a stricter setting, as the server instance requires encryption for all connections. Review the
+                      - link "Postgres SSL documentation" [ref=e293] [cursor=pointer]:
+                        - /url: https://www.postgresql.org/docs/current/libpq-ssl.html
+                      - text: to learn more about the SSL modes.
+                - heading "Add Postgres to an App ProfileDirect link to Add Postgres to an App Profile" [level=2] [ref=e294]:
+                  - text: Add Postgres to an App Profile
+                  - link "Direct link to Add Postgres to an App Profile" [ref=e295] [cursor=pointer]:
+                    - /url: "#add-postgres-to-an-app-profile"
+                    - text: "#"
+                - paragraph [ref=e296]: You can use the following steps to learn how to add Postgres to your app profile.
+                - list [ref=e297]:
+                  - listitem [ref=e298]:
+                    - paragraph [ref=e299]:
+                      - text: Log in to
+                      - link "Palette" [ref=e300] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e301]:
+                    - paragraph [ref=e302]:
+                      - text: On the right side of the window, click the
+                      - strong [ref=e303]: User Menu
+                      - text: to expand it and select
+                      - strong [ref=e304]: Switch to App Mode
+                      - text: .
+                  - listitem [ref=e305]:
+                    - paragraph [ref=e306]:
+                      - text: Navigate to the left
+                      - strong [ref=e307]: Main Menu
+                      - text: and click on
+                      - strong [ref=e308]: App Profiles
+                      - text: to create a new
+                      - link "app profile" [ref=e309] [cursor=pointer]:
+                        - /url: /profiles/app-profiles/create-app-profiles/
+                      - text: . Provide the following basic information and click
+                      - strong [ref=e310]: Next
+                      - text: .
+                - table [ref=e311]:
+                  - rowgroup [ref=e312]:
+                    - row "Parameter Description" [ref=e313]:
+                      - cell "Parameter" [ref=e314]:
+                        - strong [ref=e315]: Parameter
+                      - cell "Description" [ref=e316]:
+                        - strong [ref=e317]: Description
+                  - rowgroup [ref=e318]:
+                    - row "Application Profile Name A custom name for the App Profile." [ref=e319]:
+                      - cell "Application Profile Name" [ref=e320]
+                      - cell "A custom name for the App Profile." [ref=e321]
+                    - row "Version (optional) The default value is 1.0.0. You can create multiple versions of an App Profile using the format major.minor.patch." [ref=e322]:
+                      - cell "Version (optional)" [ref=e323]
+                      - cell "The default value is 1.0.0. You can create multiple versions of an App Profile using the format major.minor.patch." [ref=e324]:
+                        - text: The default value is 1.0.0. You can create multiple versions of an App Profile using the format
+                        - strong [ref=e325]:
+                          - code [ref=e326]: major.minor.patch
+                        - text: .
+                    - row "Description (optional) Description of the app profile." [ref=e327]:
+                      - cell "Description (optional)" [ref=e328]
+                      - cell "Description of the app profile." [ref=e329]
+                    - row "Tag (optional) Assign tags to the app profile." [ref=e330]:
+                      - cell "Tag (optional)" [ref=e331]
+                      - cell "Assign tags to the app profile." [ref=e332]
+                - list [ref=e333]:
+                  - listitem [ref=e334]:
+                    - paragraph [ref=e335]:
+                      - text: Select
+                      - strong [ref=e336]: Postgres
+                      - text: from the database services and start the configuration.
+                  - listitem [ref=e337]:
+                    - paragraph [ref=e338]: "Provide the following information to the wizard:"
+                - list [ref=e339]:
+                  - listitem [ref=e340]:
+                    - paragraph [ref=e341]:
+                      - strong [ref=e342]: "Name:"
+                      - text: The database service name. You can use the auto-generated name or create a custom name.
+                  - listitem [ref=e343]:
+                    - paragraph [ref=e344]:
+                      - strong [ref=e345]: "Username:"
+                      - text: The user name for database access control.
+                  - listitem [ref=e346]:
+                    - paragraph [ref=e347]:
+                      - strong [ref=e348]: "Password:"
+                      - text: Security password for the DB service.
+                - generic [ref=e349]:
+                  - generic [ref=e350]:
+                    - img [ref=e352]
+                    - text: info
+                  - paragraph [ref=e355]:
+                    - text: You can use the default system-generated password. If the default password is used, it can be retrieved from the Postgres secret that is created for the password. Review the
+                    - link "Database Password" [ref=e356] [cursor=pointer]:
+                      - /url: /devx/services/service-listings/postgresql-db/#database-password
+                    - text: section for guidance.
+                - list [ref=e357]:
+                  - listitem [ref=e358]:
+                    - paragraph [ref=e359]:
+                      - strong [ref=e360]: "Database Volume Size (GiB):"
+                      - text: Select the volume size for the database. Ensure you stay within the storage amount available in the cluster group and virtual clusters.
+                  - listitem [ref=e361]:
+                    - paragraph [ref=e362]:
+                      - text: "**Version: **Select the version from the"
+                      - strong [ref=e363]: Version
+                      - strong [ref=e364]: drop-down Menu
+                      - text: .
+                - list [ref=e365]:
+                  - listitem [ref=e366]: Save your changes.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e367]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e368] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e369]:
+                  - listitem [ref=e370]:
+                    - paragraph [ref=e371]:
+                      - text: Log in to
+                      - link "Palette" [ref=e372] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: and switch to
+                      - strong [ref=e373]: App Mode
+                      - text: .
+                  - listitem [ref=e374]:
+                    - paragraph [ref=e375]:
+                      - text: Navigate to the left
+                      - strong [ref=e376]: Main Menu
+                      - text: and select
+                      - strong [ref=e377]: Apps
+                      - text: .
+                  - listitem [ref=e378]:
+                    - paragraph [ref=e379]: Select the application that contains Postgres.
+                  - listitem [ref=e380]:
+                    - paragraph [ref=e381]: Validate your application is displaying the green status. The color code in the app profile box shows the status of the service deployment.
+                - table [ref=e382]:
+                  - rowgroup [ref=e383]:
+                    - row "Color Code Description" [ref=e384]:
+                      - cell "Color Code" [ref=e385]:
+                        - strong [ref=e386]: Color Code
+                      - cell "Description" [ref=e387]:
+                        - strong [ref=e388]: Description
+                  - rowgroup [ref=e389]:
+                    - row "Green Successfully Deployed" [ref=e390]:
+                      - cell "Green" [ref=e391]
+                      - cell "Successfully Deployed" [ref=e392]
+                    - row "Blue Under Deployment" [ref=e393]:
+                      - cell "Blue" [ref=e394]
+                      - cell "Under Deployment" [ref=e395]
+                    - row "Red Error State" [ref=e396]:
+                      - cell "Red" [ref=e397]
+                      - cell "Error State" [ref=e398]
+                - heading "Output VariablesDirect link to Output Variables" [level=2] [ref=e399]:
+                  - text: Output Variables
+                  - link "Direct link to Output Variables" [ref=e400] [cursor=pointer]:
+                    - /url: "#output-variables"
+                    - text: "#"
+                - paragraph [ref=e401]: "The exposed output variables of this service layer may be used in other service layers. These output variables are typically used for connectivity purposes:"
+                - table [ref=e402]:
+                  - rowgroup [ref=e403]:
+                    - row "Parameter Output Variable Description" [ref=e404]:
+                      - cell "Parameter" [ref=e405]
+                      - cell "Output Variable" [ref=e406]
+                      - cell "Description" [ref=e407]
+                  - rowgroup [ref=e408]:
+                    - 'row "Database Username {{.spectro.app.$appDeploymentName.database-<service-name>.USERNAME}} The database user name." [ref=e409]':
+                      - cell "Database Username" [ref=e410]
+                      - 'cell "{{.spectro.app.$appDeploymentName.database-<service-name>.USERNAME}}" [ref=e411]':
+                        - code [ref=e412]: "{{.spectro.app.$appDeploymentName.database-<service-name>.USERNAME}}"
+                      - cell "The database user name." [ref=e413]
+                    - 'row "Database User Password {{.spectro.app.$appDeploymentName.database-<service-name>.PASSWORD}} The password of the database user name." [ref=e414]':
+                      - cell "Database User Password" [ref=e415]
+                      - 'cell "{{.spectro.app.$appDeploymentName.database-<service-name>.PASSWORD}}" [ref=e416]':
+                        - code [ref=e417]: "{{.spectro.app.$appDeploymentName.database-<service-name>.PASSWORD}}"
+                      - cell "The password of the database user name." [ref=e418]
+                    - 'row "Service Hostname {{.spectro.app.$appDeploymentName.database-<service-name>.POSTGRESMSTR_SVC}} The Kubernetes service hostname for the database." [ref=e419]':
+                      - cell "Service Hostname" [ref=e420]
+                      - 'cell "{{.spectro.app.$appDeploymentName.database-<service-name>.POSTGRESMSTR_SVC}}" [ref=e421]':
+                        - code [ref=e422]: "{{.spectro.app.$appDeploymentName.database-<service-name>.POSTGRESMSTR_SVC}}"
+                      - cell "The Kubernetes service hostname for the database." [ref=e423]
+                    - 'row "Service Port {{.spectro.app.$appDeploymentName.database-<service-name>.POSTGRESMSTR_SVC_PORT}} The exposed ports for the database service." [ref=e424]':
+                      - cell "Service Port" [ref=e425]
+                      - 'cell "{{.spectro.app.$appDeploymentName.database-<service-name>.POSTGRESMSTR_SVC_PORT}}" [ref=e426]':
+                        - code [ref=e427]: "{{.spectro.app.$appDeploymentName.database-<service-name>.POSTGRESMSTR_SVC_PORT}}"
+                      - cell "The exposed ports for the database service." [ref=e428]
+                - heading "Database PasswordDirect link to Database Password" [level=2] [ref=e429]:
+                  - text: Database Password
+                  - link "Direct link to Database Password" [ref=e430] [cursor=pointer]:
+                    - /url: "#database-password"
+                    - text: "#"
+                - paragraph [ref=e431]: You can get the database password by reading the content of the Kubernetes secret created for the database user. To retrieve the password for the Postgres database user, use the following command format.
+                - generic [ref=e433]:
+                  - code [ref=e435]:
+                    - generic [ref=e436]: kubectl get secret <app-name>-<service-name>-postgres-<user-name>-credentials \
+                    - generic [ref=e437]: "--namespace <app-name>-<service-name>-ns --output jsonpath='{.data.password}' | base64 --decode"
+                  - generic [ref=e438]:
+                    - button "Toggle word wrap" [ref=e439] [cursor=pointer]:
+                      - img [ref=e440]
+                    - button "Copy code to clipboard" [ref=e442] [cursor=pointer]:
+                      - generic [ref=e443]:
+                        - img [ref=e444]
+                        - img [ref=e446]
+                - paragraph [ref=e448]: Replace the values with the respective names.
+                - list [ref=e449]:
+                  - listitem [ref=e450]: "app-name: represents the name of the app provided during the app creation process."
+                  - listitem [ref=e451]: "service-name: The name of the service layer in the app profile."
+                  - listitem [ref=e452]: "user-name: The name of the database user."
+                - heading "ExampleDirect link to Example" [level=4] [ref=e453]:
+                  - text: Example
+                  - link "Direct link to Example" [ref=e454] [cursor=pointer]:
+                    - /url: "#example"
+                    - text: "#"
+                - list [ref=e455]:
+                  - listitem [ref=e456]:
+                    - paragraph [ref=e457]:
+                      - text: "App Name:"
+                      - code [ref=e458]: app-tarfful
+                  - listitem [ref=e459]:
+                    - paragraph [ref=e460]:
+                      - text: "Service Name:"
+                      - code [ref=e461]: postgresql-3
+                  - listitem [ref=e462]:
+                    - paragraph [ref=e463]:
+                      - text: "Database User:"
+                      - code [ref=e464]: pguser
+                - generic [ref=e466]:
+                  - code [ref=e468]:
+                    - generic [ref=e469]: kubectl get secret app-tarfful-postgresql-3-postgres-pguser-credentials \
+                    - generic [ref=e470]: "--namespace app-tarfful-postgresql-3-ns --output jsonpath='{.data.password}' | base64 --decode"
+                  - generic [ref=e471]:
+                    - button "Toggle word wrap" [ref=e472] [cursor=pointer]:
+                      - img [ref=e473]
+                    - button "Copy code to clipboard" [ref=e475] [cursor=pointer]:
+                      - generic [ref=e476]:
+                        - img [ref=e477]
+                        - img [ref=e479]
+                - heading "OutputDirect link to Output" [level=4] [ref=e481]:
+                  - text: Output
+                  - link "Direct link to Output" [ref=e482] [cursor=pointer]:
+                    - /url: "#output"
+                    - text: "#"
+                - generic [ref=e484]:
+                  - code [ref=e486]:
+                    - generic [ref=e487]: zFniawyxEVdFtSF9uPfDsjFlOnAeDcrpndi3ReaUbqSGTMSnZ1gawSWkJCLabZR9
+                  - button "Copy code to clipboard" [ref=e489] [cursor=pointer]:
+                    - generic [ref=e490]:
+                      - img [ref=e491]
+                      - img [ref=e493]
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e495]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e496] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e497]:
+                  - text: Add Postgres to your application profile and explore all the capabilities Postgres has to offer. The official Postgres documentation has several
+                  - link "tutorials" [ref=e498] [cursor=pointer]:
+                    - /url: https://www.postgresql.org/docs/online-resources/
+                  - text: to help you learn more about Postgres and how to leverage Postgres with your applications.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e499]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e500] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e501]:
+                  - listitem [ref=e502]:
+                    - paragraph [ref=e503]:
+                      - link "Postgres Documentation" [ref=e504] [cursor=pointer]:
+                        - /url: https://www.postgresql.org/docs/
+                  - listitem [ref=e505]:
+                    - paragraph [ref=e506]:
+                      - link "Community Postgres Tutorials" [ref=e507] [cursor=pointer]:
+                        - /url: https://www.postgresqltutorial.com/
+                  - listitem [ref=e508]:
+                    - paragraph [ref=e509]:
+                      - link "Postgres Tutorials" [ref=e510] [cursor=pointer]:
+                        - /url: https://www.postgresql.org/docs/online-resources/
+                  - listitem [ref=e511]:
+                    - paragraph [ref=e512]:
+                      - link "Postgres SSL documentation" [ref=e513] [cursor=pointer]:
+                        - /url: https://www.postgresql.org/docs/current/libpq-ssl.html
+              - generic [ref=e514]:
+                - generic [ref=e516]:
+                  - text: "Tags:"
+                  - list [ref=e517]:
+                    - listitem [ref=e518]:
+                      - link "devx" [ref=e519] [cursor=pointer]:
+                        - /url: /tags/devx/
+                    - listitem [ref=e520]:
+                      - link "app mode" [ref=e521] [cursor=pointer]:
+                        - /url: /tags/app-mode/
+                    - listitem [ref=e522]:
+                      - link "pde" [ref=e523] [cursor=pointer]:
+                        - /url: /tags/pde/
+                    - listitem [ref=e524]:
+                      - link "databases" [ref=e525] [cursor=pointer]:
+                        - /url: /tags/databases/
+                - link "Edit this page" [ref=e528] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/devx/services/service-listings/postgresql-db.md
+                  - img [ref=e529]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e533]:
+              - link "Previous « MySQL" [ref=e534] [cursor=pointer]:
+                - /url: /devx/services/service-listings/mysql/
+                - generic [ref=e535]: Previous
+                - generic [ref=e536]: « MySQL
+              - link "Next Redis »" [ref=e537] [cursor=pointer]:
+                - /url: /devx/services/service-listings/redis-db/
+                - generic [ref=e538]: Next
+                - generic [ref=e539]: Redis »
+          - list [ref=e542]:
+            - listitem [ref=e543]:
+              - link "Prerequisites" [ref=e544] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e545]:
+              - link "Add Postgres to an App Profile" [ref=e546] [cursor=pointer]:
+                - /url: "#add-postgres-to-an-app-profile"
+            - listitem [ref=e547]:
+              - link "Validate" [ref=e548] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e549]:
+              - link "Output Variables" [ref=e550] [cursor=pointer]:
+                - /url: "#output-variables"
+            - listitem [ref=e551]:
+              - link "Database Password" [ref=e552] [cursor=pointer]:
+                - /url: "#database-password"
+            - listitem [ref=e553]:
+              - link "Next Steps" [ref=e554] [cursor=pointer]:
+                - /url: "#next-steps"
+            - listitem [ref=e555]:
+              - link "Resources" [ref=e556] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e557] [cursor=pointer]:
+    - generic [ref=e560]:
+      - img "Project Logo" [ref=e561]
+      - paragraph [ref=e562]: Ask AI
+```

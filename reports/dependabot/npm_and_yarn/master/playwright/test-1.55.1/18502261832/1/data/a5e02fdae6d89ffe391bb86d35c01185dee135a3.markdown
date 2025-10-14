@@ -1,0 +1,1797 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [expanded] [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                    - list [ref=e107]:
+                      - listitem [ref=e108]:
+                        - generic [ref=e109]:
+                          - link "AWS" [expanded] [ref=e110] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/aws/
+                          - button "Toggle the collapsible sidebar category 'AWS'" [ref=e111] [cursor=pointer]
+                        - list [ref=e112]:
+                          - listitem [ref=e113]:
+                            - link "Architecture" [ref=e114] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/architecture/
+                          - listitem [ref=e115]:
+                            - link "Register and Manage AWS Accounts" [ref=e116] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/add-aws-accounts/
+                          - listitem [ref=e117]:
+                            - link "Create and Manage AWS IaaS Cluster" [ref=e118] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/create-cluster/
+                          - listitem [ref=e119]:
+                            - link "Create and Manage AWS EKS Cluster" [ref=e120] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/eks/
+                          - listitem [ref=e121]:
+                            - generic [ref=e122]:
+                              - link "EKS Hybrid Nodes" [expanded] [ref=e123] [cursor=pointer]:
+                                - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/
+                              - button "Toggle the collapsible sidebar category 'EKS Hybrid Nodes'" [ref=e124] [cursor=pointer]
+                            - list [ref=e125]:
+                              - listitem [ref=e126]:
+                                - link "Architecture" [ref=e127] [cursor=pointer]:
+                                  - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/architecture/
+                              - listitem [ref=e128]:
+                                - generic [ref=e129]:
+                                  - link "Prepare Environment" [expanded] [ref=e130] [cursor=pointer]:
+                                    - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/
+                                  - button "Toggle the collapsible sidebar category 'Prepare Environment'" [ref=e131] [cursor=pointer]
+                                - list [ref=e132]:
+                                  - listitem [ref=e133]:
+                                    - link "Prepare Network" [ref=e134] [cursor=pointer]:
+                                      - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/prepare-network/
+                                  - listitem [ref=e135]:
+                                    - link "Prepare Edge Hosts" [ref=e136] [cursor=pointer]:
+                                      - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/prepare-edge-hosts/
+                                  - listitem [ref=e137]:
+                                    - link "Prepare EKS Cluster" [ref=e138] [cursor=pointer]:
+                                      - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/prepare-eks-cluster/
+                              - listitem [ref=e139]:
+                                - link "Import EKS Cluster and Enable Hybrid Mode" [ref=e140] [cursor=pointer]:
+                                  - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/import-eks-cluster-enable-hybrid-mode/
+                              - listitem [ref=e141]:
+                                - link "Create Hybrid Node Pools" [ref=e142] [cursor=pointer]:
+                                  - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/create-hybrid-node-pools/
+                          - listitem [ref=e143]:
+                            - link "Enable Secrets Encryption for EKS Cluster" [ref=e144] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/enable-secrets-encryption-kms-key/
+                          - listitem [ref=e145]:
+                            - link "Enable Disk Encryption for EKS Cluster" [ref=e146] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/enable-disk-encryption-eks-cluster/
+                          - listitem [ref=e147]:
+                            - link "Configure Karpenter for EKS Clusters" [ref=e148] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/configure-karpenter-eks-clusters/
+                          - listitem [ref=e149]:
+                            - link "Required IAM Policies" [ref=e150] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/required-iam-policies/
+                      - listitem [ref=e151]:
+                        - generic [ref=e152]:
+                          - link "Azure" [ref=e153] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/azure/
+                          - button "Toggle the collapsible sidebar category 'Azure'" [ref=e154] [cursor=pointer]
+                      - listitem [ref=e155]:
+                        - generic [ref=e156]:
+                          - link "GCP" [ref=e157] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/gcp/
+                          - button "Toggle the collapsible sidebar category 'GCP'" [ref=e158] [cursor=pointer]
+                  - listitem [ref=e159]:
+                    - generic [ref=e160]:
+                      - link "Data Center Clusters" [ref=e161] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e163]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e165] [cursor=pointer]
+                  - listitem [ref=e166]:
+                    - generic [ref=e167]:
+                      - link "Edge" [ref=e168] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e170]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e172] [cursor=pointer]
+                  - listitem [ref=e173]:
+                    - generic [ref=e174]:
+                      - link "Palette Virtual Clusters" [ref=e175] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e177]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e179] [cursor=pointer]
+                  - listitem [ref=e180]:
+                    - generic [ref=e181]:
+                      - link "Imported Clusters" [ref=e182] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e184]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e186] [cursor=pointer]
+                  - listitem [ref=e187]:
+                    - generic [ref=e188]:
+                      - link "Manage Clusters" [ref=e189] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e191]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e193] [cursor=pointer]
+                  - listitem [ref=e194]:
+                    - generic [ref=e195]:
+                      - link "Cluster Groups" [ref=e196] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e198]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e200] [cursor=pointer]
+                  - listitem [ref=e201]:
+                    - generic [ref=e202]:
+                      - link "Private Cloud Gateway" [ref=e203] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e205]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e207] [cursor=pointer]
+              - listitem [ref=e208]:
+                - generic [ref=e209]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e210] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e212]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - generic [ref=e216]:
+                  - link "Palette Dev Engine" [ref=e217] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e219]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e221] [cursor=pointer]
+              - listitem [ref=e222]:
+                - generic [ref=e223]:
+                  - link "Virtual Machine Orchestrator" [ref=e224] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e226]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e228] [cursor=pointer]
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "Workspaces" [ref=e231] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e233]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - generic [ref=e237]:
+                  - link "Packs List" [ref=e238] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e240]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - generic [ref=e244]:
+                  - link "User & Role Management" [ref=e245] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e247]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e249] [cursor=pointer]
+              - listitem [ref=e250]:
+                - generic [ref=e251]:
+                  - link "Registries and Packs" [ref=e252] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e254]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e256] [cursor=pointer]
+              - listitem [ref=e257]:
+                - generic [ref=e258]:
+                  - link "Security" [ref=e259] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e261]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e263] [cursor=pointer]
+              - listitem [ref=e264]:
+                - generic [ref=e265]:
+                  - link "Audit Logs" [ref=e266] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e268]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e270] [cursor=pointer]
+              - listitem [ref=e271]:
+                - generic [ref=e272]:
+                  - link "Self-Hosted Palette" [ref=e273] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e275]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e277] [cursor=pointer]
+              - listitem [ref=e278]:
+                - generic [ref=e279]:
+                  - link "Palette VerteX" [ref=e280] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e282]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e284] [cursor=pointer]
+              - listitem [ref=e285]:
+                - generic [ref=e286]:
+                  - link "Tenant Administration" [ref=e287] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e289]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e291] [cursor=pointer]
+              - listitem [ref=e292]:
+                - generic [ref=e293]:
+                  - link "Automation" [ref=e294] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e296]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e298] [cursor=pointer]
+              - listitem [ref=e299]:
+                - generic [ref=e300]:
+                  - link "Troubleshooting" [ref=e301] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e303]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e305] [cursor=pointer]
+              - listitem [ref=e306]:
+                - link "Glossary" [ref=e307] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e309]
+                  - text: Glossary
+              - listitem [ref=e311]:
+                - generic [ref=e312]:
+                  - link "Compliance & Legal" [ref=e313] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e315]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e317] [cursor=pointer]
+              - listitem [ref=e318]:
+                - button "Privacy Settings" [ref=e319] [cursor=pointer]:
+                  - img [ref=e320]
+                  - text: Privacy Settings
+      - main [ref=e322]:
+        - generic [ref=e324]:
+          - generic [ref=e326]:
+            - article [ref=e327]:
+              - navigation "Breadcrumbs" [ref=e328]:
+                - list [ref=e329]:
+                  - listitem [ref=e330]:
+                    - link "Home page" [ref=e331] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e332]
+                  - listitem [ref=e334]:
+                    - link "Clusters" [ref=e335] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e336]:
+                    - link "Public Cloud Clusters" [ref=e337] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/
+                  - listitem [ref=e338]:
+                    - link "AWS" [ref=e339] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/
+                  - listitem [ref=e340]:
+                    - link "EKS Hybrid Nodes" [ref=e341] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/
+                  - listitem [ref=e342]:
+                    - link "Prepare Environment" [ref=e343] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/
+                  - listitem [ref=e344]:
+                    - generic [ref=e345]: Prepare Edge Hosts
+              - generic [ref=e346]:
+                - heading "Prepare Edge Hosts" [level=1] [ref=e348]
+                - paragraph [ref=e349]: "This guide explains how to prepare edge hosts for use as Amazon EKS Hybrid Nodes within the Spectro Cloud ecosystem. There are two available methods to register these hosts:"
+                - list [ref=e350]:
+                  - listitem [ref=e351]:
+                    - link "Agent Mode" [ref=e352] [cursor=pointer]:
+                      - /url: /deployment-modes/agent-mode/
+                  - listitem [ref=e353]:
+                    - link "Appliance Mode" [ref=e354] [cursor=pointer]:
+                      - /url: /deployment-modes/appliance-mode/
+                    - text: using the
+                    - link "EdgeForge Workflow" [ref=e355] [cursor=pointer]:
+                      - /url: /clusters/edge/edgeforge-workflow/
+                    - text: .
+                - paragraph [ref=e356]: Agent Mode installs a lightweight agent on existing systems, and Appliance Mode deploys a fully managed operating system (OS) and stack. Choose the approach that aligns best with your operational and security requirements.
+                - generic [ref=e357]:
+                  - generic [ref=e358]:
+                    - img [ref=e360]
+                    - text: info
+                  - paragraph [ref=e363]:
+                    - text: Check out
+                    - link "Deployment Modes" [ref=e364] [cursor=pointer]:
+                      - /url: /deployment-modes/
+                    - text: for further explanation and comparison of both modes.
+                - heading "Agent ModeDirect link to Agent Mode" [level=2] [ref=e365]:
+                  - text: Agent Mode
+                  - link "Direct link to Agent Mode" [ref=e366] [cursor=pointer]:
+                    - /url: "#agent-mode"
+                    - text: "#"
+                - paragraph [ref=e367]: In Agent Mode, you install the Palette agent on your existing host OS. This agent communicates with Palette in central management mode to manage configurations, updates, and workloads.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e368]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e369] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - heading "InfrastructureDirect link to Infrastructure" [level=4] [ref=e370]:
+                  - text: Infrastructure
+                  - link "Direct link to Infrastructure" [ref=e371] [cursor=pointer]:
+                    - /url: "#infrastructure"
+                    - text: "#"
+                - list [ref=e372]:
+                  - listitem [ref=e373]:
+                    - paragraph [ref=e374]: You have physical or virtual machines ready to be used as edge hosts.
+                  - listitem [ref=e375]:
+                    - paragraph [ref=e376]:
+                      - text: The physical or virtual machine resources for each edge host meet the
+                      - link "Minimum Device Requirements" [ref=e377] [cursor=pointer]:
+                        - /url: /deployment-modes/agent-mode/architecture/#minimum-device-requirements
+                      - text: .
+                  - listitem [ref=e378]:
+                    - paragraph [ref=e379]: The edge host has at least one static IP address assigned.
+                - heading "Network ConnectivityDirect link to Network Connectivity" [level=4] [ref=e380]:
+                  - text: Network Connectivity
+                  - link "Direct link to Network Connectivity" [ref=e381] [cursor=pointer]:
+                    - /url: "#network-connectivity"
+                    - text: "#"
+                - list [ref=e382]:
+                  - listitem [ref=e383]:
+                    - paragraph [ref=e384]: You can connect to the edge host through SSH using your private key.
+                    - paragraph [ref=e385]:
+                      - text: For example, issue the following command and replace
+                      - code [ref=e386]: <privateKey>
+                      - text: ","
+                      - code [ref=e387]: <sshUsername>
+                      - text: ", and"
+                      - code [ref=e388]: <hostIpAddress>
+                      - text: with your SSH private key, SSH username on the host, and the host IP address respectively.
+                    - generic [ref=e390]:
+                      - code [ref=e392]:
+                        - generic [ref=e393]: ssh -i <pathToPrivateKey> <sshUsername>@<hostIpAddress> exit
+                      - button "Copy code to clipboard" [ref=e395] [cursor=pointer]:
+                        - generic [ref=e396]:
+                          - img [ref=e397]
+                          - img [ref=e399]
+                  - listitem [ref=e401]:
+                    - paragraph [ref=e402]: The Edge host has outbound access to the internet.
+                  - listitem [ref=e403]:
+                    - paragraph [ref=e404]:
+                      - text: The edge host has inbound and outbound connectivity to Palette SaaS
+                      - link "services" [ref=e405] [cursor=pointer]:
+                        - /url: /architecture/palette-public-ips/
+                      - text: and
+                      - link "ports" [ref=e406] [cursor=pointer]:
+                        - /url: /architecture/networking-ports/#network-ports
+                      - text: .
+                    - paragraph [ref=e407]:
+                      - text: For example, if you have
+                      - link "netcat" [ref=e408] [cursor=pointer]:
+                        - /url: https://linux.die.net/man/1/nc
+                      - text: installed, issue the following command on the edge host to check whether the
+                      - code [ref=e409]: api.spectrocloud.com
+                      - text: domain is accessible on port
+                      - code [ref=e410]: "443"
+                      - text: .
+                    - generic [ref=e412]:
+                      - code [ref=e414]:
+                        - generic [ref=e415]: nc -z -v api.spectrocloud.com 443
+                      - button "Copy code to clipboard" [ref=e417] [cursor=pointer]:
+                        - generic [ref=e418]:
+                          - img [ref=e419]
+                          - img [ref=e421]
+                    - paragraph [ref=e423]: Example output, if successful.
+                    - generic [ref=e425]:
+                      - code [ref=e427]:
+                        - generic [ref=e428]: Connection to api.spectrocloud.com port 443 [tcp/https] succeeded!
+                      - generic [ref=e429]:
+                        - button "Toggle word wrap" [ref=e430] [cursor=pointer]:
+                          - img [ref=e431]
+                        - button "Copy code to clipboard" [ref=e433] [cursor=pointer]:
+                          - generic [ref=e434]:
+                            - img [ref=e435]
+                            - img [ref=e437]
+                  - listitem [ref=e439]:
+                    - paragraph [ref=e440]:
+                      - text: The edge host has outbound connectivity to the required
+                      - link "AWS EKS domains and ports" [ref=e441] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem
+                      - text: . Refer to the
+                      - strong [ref=e442]: Access required during hybrid node installation and upgrade
+                      - text: and
+                      - strong [ref=e443]: Access required for ongoing cluster operations
+                      - text: sections for listed guidance.
+                    - paragraph [ref=e444]:
+                      - text: For example, if you have
+                      - link "netcat" [ref=e445] [cursor=pointer]:
+                        - /url: https://linux.die.net/man/1/nc
+                      - text: installed, issue the following command to check whether the
+                      - code [ref=e446]: eks.us-east-1.amazonaws.com
+                      - text: domain is accessible on port
+                      - code [ref=e447]: "443"
+                      - text: .
+                    - generic [ref=e449]:
+                      - code [ref=e451]:
+                        - generic [ref=e452]: nc -z -v eks.us-east-1.amazonaws.com 443
+                      - button "Copy code to clipboard" [ref=e454] [cursor=pointer]:
+                        - generic [ref=e455]:
+                          - img [ref=e456]
+                          - img [ref=e458]
+                    - paragraph [ref=e460]: Example output, if successful.
+                    - generic [ref=e462]:
+                      - code [ref=e464]:
+                        - generic [ref=e465]: Connection to eks.us-east-1.amazonaws.com port 443 [tcp/https] succeeded!
+                      - generic [ref=e466]:
+                        - button "Toggle word wrap" [ref=e467] [cursor=pointer]:
+                          - img [ref=e468]
+                        - button "Copy code to clipboard" [ref=e470] [cursor=pointer]:
+                          - generic [ref=e471]:
+                            - img [ref=e472]
+                            - img [ref=e474]
+                    - generic [ref=e476]:
+                      - generic [ref=e477]:
+                        - img [ref=e479]
+                        - text: info
+                      - paragraph [ref=e482]:
+                        - text: A table showing the required domains and ports for an example region can be found in the
+                        - link "Configure Remote Network" [ref=e483] [cursor=pointer]:
+                          - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/prepare-network/#configure-remote-network
+                        - text: section during step 2.
+                  - listitem [ref=e484]:
+                    - paragraph [ref=e485]:
+                      - text: The edge host has the necessary ports available exclusively for
+                      - link "Cilium operations" [ref=e486] [cursor=pointer]:
+                        - /url: https://docs.cilium.io/en/stable/operations/system_requirements/#firewall-rules
+                      - text: .
+                    - paragraph [ref=e487]:
+                      - text: For example, issue the following command to check whether port
+                      - code [ref=e488]: "4240"
+                      - text: is being used on the edge host.
+                    - generic [ref=e490]:
+                      - code [ref=e492]:
+                        - generic [ref=e493]: sudo lsof -i :4240
+                      - button "Copy code to clipboard" [ref=e495] [cursor=pointer]:
+                        - generic [ref=e496]:
+                          - img [ref=e497]
+                          - img [ref=e499]
+                    - paragraph [ref=e501]: If the command returns no output, this typically indicates that the port is free.
+                - heading "Package Manager IndexDirect link to Package Manager Index" [level=4] [ref=e502]:
+                  - text: Package Manager Index
+                  - link "Direct link to Package Manager Index" [ref=e503] [cursor=pointer]:
+                    - /url: "#package-manager-index"
+                    - text: "#"
+                - list [ref=e504]:
+                  - listitem [ref=e505]:
+                    - paragraph [ref=e506]:
+                      - text: Your edge host package manager must have an up-to-date package index. This is to ensure that dependency packages for
+                      - link "nodeadm" [ref=e507] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-nodeadm.html
+                        - code [ref=e508]: nodeadm
+                      - text: can be successfully downloaded and installed when
+                      - link "creating hybrid node pools" [ref=e509] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/create-hybrid-node-pools/#create-hybrid-node-pool
+                      - text: .
+                    - paragraph [ref=e510]: For example, on Ubuntu, you would issue the following command.
+                    - generic [ref=e512]:
+                      - code [ref=e514]:
+                        - generic [ref=e515]: sudo apt-get update
+                      - button "Copy code to clipboard" [ref=e517] [cursor=pointer]:
+                        - generic [ref=e518]:
+                          - img [ref=e519]
+                          - img [ref=e521]
+                    - paragraph [ref=e523]: Adjust it to your operating system and package manager on your edge host.
+                - heading "OS and DependenciesDirect link to OS and Dependencies" [level=4] [ref=e524]:
+                  - text: OS and Dependencies
+                  - link "Direct link to OS and Dependencies" [ref=e525] [cursor=pointer]:
+                    - /url: "#os-and-dependencies"
+                    - text: "#"
+                - list [ref=e526]:
+                  - listitem [ref=e527]:
+                    - paragraph [ref=e528]:
+                      - text: You must have a supported OS installed on your edge hosts. Palette supports the same operating systems as AWS. Refer to
+                      - link "Prepare operating system for hybrid nodes" [ref=e529] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-os.html
+                      - text: for details.
+                    - list [ref=e530]:
+                      - listitem [ref=e531]: The FIPS-compliant version of Agent Mode is only available for Red Hat Enterprise Linux (RHEL).
+                  - listitem [ref=e532]:
+                    - paragraph [ref=e533]: "Ensure the following software is installed and available:"
+                    - list [ref=e534]:
+                      - listitem [ref=e535]:
+                        - link "bash" [ref=e536] [cursor=pointer]:
+                          - /url: https://www.gnu.org/software/bash/
+                      - listitem [ref=e537]:
+                        - link "jq" [ref=e538] [cursor=pointer]:
+                          - /url: https://jqlang.github.io/jq/download/
+                      - listitem [ref=e539]:
+                        - link "Zstandard" [ref=e540] [cursor=pointer]:
+                          - /url: https://facebook.github.io/zstd/
+                      - listitem [ref=e541]:
+                        - link "rsync" [ref=e542] [cursor=pointer]:
+                          - /url: https://github.com/RsyncProject/rsync
+                      - listitem [ref=e543]:
+                        - link "systemd" [ref=e544] [cursor=pointer]:
+                          - /url: https://systemd.io/
+                      - listitem [ref=e545]:
+                        - link "systemd-timesyncd" [ref=e546] [cursor=pointer]:
+                          - /url: https://www.freedesktop.org/software/systemd/man/latest/systemd-timesyncd.service.html
+                        - text: . This is required if you want Palette to manage Network Time Protocol (NTP). If you don't want Palette to manage NTP, you can skip this requirement.
+                      - listitem [ref=e547]:
+                        - link "systemd-resolved" [ref=e548] [cursor=pointer]:
+                          - /url: https://www.freedesktop.org/software/systemd/man/latest/systemd-resolved.service.html
+                        - text: . This is required if you want Palette to manage Domain Name System (DNS). If you don't want Palette to manage DNS, you can skip this requirement.
+                      - listitem [ref=e549]:
+                        - link "systemd-networkd" [ref=e550] [cursor=pointer]:
+                          - /url: https://www.freedesktop.org/software/systemd/man/latest/systemd-networkd.html
+                        - text: . This requirement is specific for clusters that use static IP addresses. You also need this if you want Palette to manage the Edge host network.
+                      - listitem [ref=e551]:
+                        - link "iptables" [ref=e552] [cursor=pointer]:
+                          - /url: https://linux.die.net/man/8/iptables
+                      - listitem [ref=e553]:
+                        - link "rsyslog" [ref=e554] [cursor=pointer]:
+                          - /url: https://github.com/rsyslog/rsyslog
+                        - text: . This is required for audit logs.
+                    - paragraph [ref=e555]: "If you are using Ubuntu or any OS that uses apt or apt-get for package management, you can issue the following command to install all dependencies for installation with the following command:"
+                    - generic [ref=e557]:
+                      - code [ref=e559]:
+                        - generic [ref=e560]: sudo apt-get update && sudo apt-get install -y bash jq zstd rsync systemd-timesyncd conntrack iptables rsyslog --no-install-recommends
+                      - generic [ref=e561]:
+                        - button "Toggle word wrap" [ref=e562] [cursor=pointer]:
+                          - img [ref=e563]
+                        - button "Copy code to clipboard" [ref=e565] [cursor=pointer]:
+                          - generic [ref=e566]:
+                            - img [ref=e567]
+                            - img [ref=e569]
+                    - generic [ref=e571]:
+                      - generic [ref=e572]:
+                        - img [ref=e574]
+                        - text: warning
+                      - paragraph [ref=e577]:
+                        - text: Avoid installing
+                        - link "Docker" [ref=e578] [cursor=pointer]:
+                          - /url: https://www.docker.com/
+                        - text: on the host where you want to install the agent. Docker is a heavyweight tool that could interfere with the Palette agent.
+                  - listitem [ref=e579]:
+                    - paragraph [ref=e580]:
+                      - text: Ensure that the host has
+                      - code [ref=e581]: Bash
+                      - text: configured as the default shell.
+                - heading "Palette Registration TokenDirect link to Palette Registration Token" [level=4] [ref=e582]:
+                  - text: Palette Registration Token
+                  - link "Direct link to Palette Registration Token" [ref=e583] [cursor=pointer]:
+                    - /url: "#palette-registration-token"
+                    - text: "#"
+                - list [ref=e584]:
+                  - listitem [ref=e585]:
+                    - text: You will need a Palette tenant registration token. Refer to the
+                    - link "Create a Registration Token" [ref=e586] [cursor=pointer]:
+                      - /url: /clusters/edge/site-deployment/site-installation/create-registration-token/
+                    - text: guide for instructions on how to create a token.
+                - heading "Register Edge Host in Agent ModeDirect link to Register Edge Host in Agent Mode" [level=3] [ref=e587]:
+                  - text: Register Edge Host in Agent Mode
+                  - link "Direct link to Register Edge Host in Agent Mode" [ref=e588] [cursor=pointer]:
+                    - /url: "#register-edge-host-in-agent-mode"
+                    - text: "#"
+                - list [ref=e589]:
+                  - listitem [ref=e590]:
+                    - paragraph [ref=e591]:
+                      - text: In your terminal, use the following command to SSH into the host. Replace
+                      - code [ref=e592]: </path/to/private/key>
+                      - text: with the path to your private SSH key,
+                      - code [ref=e593]: <ssh-user>
+                      - text: with the SSH username, and
+                      - code [ref=e594]: <host-ip-or-domain>
+                      - text: with the host's IP address or hostname.
+                    - generic [ref=e596]:
+                      - code [ref=e598]:
+                        - generic [ref=e599]: ssh -i <pathToPrivateKey> <sshUsername>@<hostIpAddress> exit
+                      - button "Copy code to clipboard" [ref=e601] [cursor=pointer]:
+                        - generic [ref=e602]:
+                          - img [ref=e603]
+                          - img [ref=e605]
+                  - listitem [ref=e607]:
+                    - paragraph [ref=e608]:
+                      - text: Export your Palette registration token. Replace
+                      - code [ref=e609]: <your-palette-registration-token>
+                      - text: with your token.
+                    - generic [ref=e611]:
+                      - code [ref=e613]:
+                        - generic [ref=e614]: export TOKEN=<your-palette-registration-token>
+                      - button "Copy code to clipboard" [ref=e616] [cursor=pointer]:
+                        - generic [ref=e617]:
+                          - img [ref=e618]
+                          - img [ref=e620]
+                  - listitem [ref=e622]:
+                    - paragraph [ref=e623]:
+                      - emphasis [ref=e624]: (Optional)
+                      - text: If you are installing the agent on a host that accesses the internet through a network proxy, export the proxy configurations in your current terminal session.
+                    - paragraph [ref=e625]:
+                      - text: We recommend exporting the variables both in uppercase and lowercase to ensure compatibility. Replace
+                      - code [ref=e626]: <http-proxy-address>
+                      - text: and
+                      - code [ref=e627]: <https-proxy-address>
+                      - text: with the address and port to your HTTP and HTTPS proxy servers, respectively.
+                    - generic [ref=e629]:
+                      - code [ref=e631]:
+                        - generic [ref=e632]: export http_proxy=<http-proxy-address>
+                        - generic [ref=e633]: export https_proxy=<https-proxy-address>
+                        - generic [ref=e634]: export HTTP_PROXY=<http-proxy-address>
+                        - generic [ref=e635]: export HTTPS_PROXY=<https-proxy-address>
+                      - button "Copy code to clipboard" [ref=e637] [cursor=pointer]:
+                        - generic [ref=e638]:
+                          - img [ref=e639]
+                          - img [ref=e641]
+                  - listitem [ref=e643]:
+                    - paragraph [ref=e644]:
+                      - text: Issue the command below to create the
+                      - strong [ref=e645]: user-data
+                      - text: file and configure your host declaratively.
+                    - paragraph [ref=e646]:
+                      - text: The following configuration includes a Palette registration token and the default Palette endpoint, specifies a Palette project, and sets up the
+                      - code [ref=e647]: kairos
+                      - text: "user. Note the following:"
+                    - list [ref=e648]:
+                      - listitem [ref=e649]:
+                        - text: If your host needs a proxy to access the internet, you need to provide the proxy configurations in the user data as well. For more information, refer to
+                        - link "Site Network Parameters" [ref=e650] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-configuration/installer-reference/#site-network-parameters
+                        - text: .
+                      - listitem [ref=e651]:
+                        - text: The host will not shut down and will instead reboot after the agent is installed, with
+                        - link "kube-vip" [ref=e652] [cursor=pointer]:
+                          - /url: /clusters/edge/networking/kubevip/
+                        - text: enabled, as this is required for bare metal and VMware vSphere deployments. If your environment does not require kube-vip, set
+                        - code [ref=e653]: stylus.vip.skip
+                        - text: to
+                        - code [ref=e654]: "true"
+                        - text: . Refer to
+                        - link "Edge Installer Configuration Reference" [ref=e655] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-configuration/installer-reference/
+                        - text: to learn more about user data configuration.
+                      - listitem [ref=e656]:
+                        - text: The
+                        - code [ref=e657]: projectName
+                        - text: parameter is not required if the associated Palette
+                        - link "registration token" [ref=e658] [cursor=pointer]:
+                          - /url: /clusters/edge/site-deployment/site-installation/create-registration-token/
+                        - text: has been configured with a default project.
+                    - generic [ref=e660]:
+                      - code [ref=e662]:
+                        - generic [ref=e663]: cat << EOF > user-data
+                        - generic [ref=e664]: "#cloud-config"
+                        - generic [ref=e665]: "install:"
+                        - generic [ref=e666]: "reboot: true"
+                        - generic [ref=e667]: "poweroff: false"
+                        - generic [ref=e668]: "stylus:"
+                        - generic [ref=e669]: "vip:"
+                        - generic [ref=e670]: "skip: false"
+                        - generic [ref=e671]: "site:"
+                        - generic [ref=e672]: "edgeHostToken: $TOKEN"
+                        - generic [ref=e673]: "paletteEndpoint: api.spectrocloud.com"
+                        - generic [ref=e674]: "projectName: Default"
+                        - generic [ref=e675]: "stages:"
+                        - generic [ref=e676]: "initramfs:"
+                        - generic [ref=e677]: "- users:"
+                        - generic [ref=e678]: "kairos:"
+                        - generic [ref=e679]: "groups:"
+                        - generic [ref=e680]: "- sudo"
+                        - generic [ref=e681]: "passwd: kairos"
+                        - generic [ref=e682]: EOF
+                      - button "Copy code to clipboard" [ref=e684] [cursor=pointer]:
+                        - generic [ref=e685]:
+                          - img [ref=e686]
+                          - img [ref=e688]
+                    - paragraph [ref=e690]: Confirm that the file was created correctly.
+                    - generic [ref=e692]:
+                      - code [ref=e694]:
+                        - generic [ref=e695]: cat user-data
+                      - button "Copy code to clipboard" [ref=e697] [cursor=pointer]:
+                        - generic [ref=e698]:
+                          - img [ref=e699]
+                          - img [ref=e701]
+                    - paragraph [ref=e703]:
+                      - text: The output should contain the value of your Palette registration token assigned to the
+                      - code [ref=e704]: edgeHostToken
+                      - text: parameter, as displayed in the example output below.
+                    - code [ref=e708]:
+                      - generic [ref=e709]: "#cloud-config"
+                      - generic [ref=e710]: "install:"
+                      - generic [ref=e711]: "reboot: true"
+                      - generic [ref=e712]: "poweroff: false"
+                      - generic [ref=e713]: "stylus:"
+                      - generic [ref=e714]: "vip:"
+                      - generic [ref=e715]: "skip: false"
+                      - generic [ref=e716]: "site:"
+                      - generic [ref=e717]: "edgeHostToken: ****************"
+                      - generic [ref=e718]: "paletteEndpoint: api.spectrocloud.com"
+                      - generic [ref=e719]: "projectName: Default"
+                      - generic [ref=e720]: "stages:"
+                      - generic [ref=e721]: "initramfs:"
+                      - generic [ref=e722]: "- users:"
+                      - generic [ref=e723]: "kairos:"
+                      - generic [ref=e724]: "groups:"
+                      - generic [ref=e725]: "- sudo"
+                      - generic [ref=e726]: "passwd: kairos"
+                    - generic [ref=e727]:
+                      - generic [ref=e728]:
+                        - img [ref=e730]
+                        - text: warning
+                      - generic [ref=e732]:
+                        - paragraph [ref=e733]:
+                          - text: If your host is a virtual machine using a VMXNET3 adapter and you are planning to use
+                          - link "Flannel" [ref=e734] [cursor=pointer]:
+                            - /url: /integrations/cni-flannel
+                          - text: for your CNI, include the following
+                          - code [ref=e735]: initramfs
+                          - text: stage in your
+                          - code [ref=e736]: user-data
+                          - text: file, replacing
+                          - code [ref=e737]: <interface-name>
+                          - text: with the name of the network interface on your Edge host. This is due to a
+                          - link "known issue with VMware's VMXNET3 adapter" [ref=e738] [cursor=pointer]:
+                            - /url: https://github.com/cilium/cilium/issues/13096#issuecomment-723901955
+                          - text: ", which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V."
+                        - generic [ref=e740]:
+                          - code [ref=e742]:
+                            - generic [ref=e743]: "stages:"
+                            - generic [ref=e744]: "initramfs:"
+                            - generic [ref=e745]: "- name: \"Disable UDP segmentation\""
+                            - generic [ref=e746]: "commands:"
+                            - generic [ref=e747]: "- ethtool --offload <interface-name> tx-udp_tnl-segmentation off"
+                            - generic [ref=e748]: "- ethtool --offload <interface-name> tx-udp_tnl-csum-segmentation off"
+                          - generic [ref=e749]:
+                            - button "Toggle word wrap" [ref=e750] [cursor=pointer]:
+                              - img [ref=e751]
+                            - button "Copy code to clipboard" [ref=e753] [cursor=pointer]:
+                              - generic [ref=e754]:
+                                - img [ref=e755]
+                                - img [ref=e757]
+                  - listitem [ref=e759]:
+                    - paragraph [ref=e760]: Export the path to your user data file.
+                    - generic [ref=e762]:
+                      - code [ref=e764]:
+                        - generic [ref=e765]: export USERDATA=./user-data
+                      - button "Copy code to clipboard" [ref=e767] [cursor=pointer]:
+                        - generic [ref=e768]:
+                          - img [ref=e769]
+                          - img [ref=e771]
+                  - listitem [ref=e773]:
+                    - paragraph [ref=e774]: Download the latest version of the Palette agent installation script. There is a FIPS-compliant script, if needed.
+                    - generic [ref=e775]:
+                      - tablist [ref=e776]:
+                        - tab "Non-FIPS" [selected] [ref=e777] [cursor=pointer]
+                        - tab "FIPS" [ref=e778] [cursor=pointer]
+                      - tabpanel [ref=e780]:
+                        - generic [ref=e782]:
+                          - code [ref=e784]:
+                            - generic [ref=e785]: curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/latest/download/palette-agent-install.sh
+                          - generic [ref=e786]:
+                            - button "Toggle word wrap" [ref=e787] [cursor=pointer]:
+                              - img [ref=e788]
+                            - button "Copy code to clipboard" [ref=e790] [cursor=pointer]:
+                              - generic [ref=e791]:
+                                - img [ref=e792]
+                                - img [ref=e794]
+                    - group [ref=e796]:
+                      - generic "Dedicated or On-Premises Palette Instance" [ref=e797] [cursor=pointer]
+                  - listitem [ref=e798]:
+                    - paragraph [ref=e799]: Grant execution permissions to the installation script.
+                    - generic [ref=e800]:
+                      - tablist [ref=e801]:
+                        - tab "Non-FIPS" [selected] [ref=e802] [cursor=pointer]
+                        - tab "FIPS" [ref=e803] [cursor=pointer]
+                      - tabpanel [ref=e805]:
+                        - generic [ref=e807]:
+                          - code [ref=e809]:
+                            - generic [ref=e810]: chmod +x ./palette-agent-install.sh
+                          - button "Copy code to clipboard" [ref=e812] [cursor=pointer]:
+                            - generic [ref=e813]:
+                              - img [ref=e814]
+                              - img [ref=e816]
+                  - listitem [ref=e818]:
+                    - paragraph [ref=e819]: Issue the following command to install the agent on your host.
+                    - generic [ref=e820]:
+                      - tablist [ref=e821]:
+                        - tab "Non-FIPS" [selected] [ref=e822] [cursor=pointer]
+                        - tab "FIPS" [ref=e823] [cursor=pointer]
+                      - tabpanel [ref=e825]:
+                        - generic [ref=e827]:
+                          - code [ref=e829]:
+                            - generic [ref=e830]: sudo --preserve-env ./palette-agent-install.sh
+                          - button "Copy code to clipboard" [ref=e832] [cursor=pointer]:
+                            - generic [ref=e833]:
+                              - img [ref=e834]
+                              - img [ref=e836]
+                    - paragraph [ref=e838]: The termination of the SSH connection, as shown in the example below, confirms that the script has completed its tasks.
+                    - code [ref=e842]:
+                      - generic [ref=e843]: Connection to 192.168.1.100 closed by remote host.
+                      - generic [ref=e844]: Connection to 192.168.1.100 closed.
+                - paragraph [ref=e845]:
+                  - text: Upon agent installation, the host will reboot to the registration screen and use the provided
+                  - code [ref=e846]: EdgeHostToken
+                  - text: for automatic registration with Palette. The host will be registered in the same project where the registration token was created.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e847]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e848] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e849]:
+                  - listitem [ref=e850]:
+                    - paragraph [ref=e851]:
+                      - text: Log in to
+                      - link "Palette" [ref=e852] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e853]:
+                    - paragraph [ref=e854]:
+                      - text: Select
+                      - strong [ref=e855]: Clusters
+                      - text: from the left
+                      - strong [ref=e856]: Main Menu
+                      - text: .
+                  - listitem [ref=e857]:
+                    - paragraph [ref=e858]:
+                      - text: Select the
+                      - strong [ref=e859]: Edge Hosts
+                      - text: tab and verify your host is displayed and marked as
+                      - strong [ref=e860]: Healthy
+                      - text: in the table.
+                - heading "Appliance ModeDirect link to Appliance Mode" [level=2] [ref=e861]:
+                  - text: Appliance Mode
+                  - link "Direct link to Appliance Mode" [ref=e862] [cursor=pointer]:
+                    - /url: "#appliance-mode"
+                    - text: "#"
+                - paragraph [ref=e863]: In Appliance Mode, you follow the EdgeForge workflow to provision your edge hosts. The EdgeForge workflow requires a provider image and an installer ISO to be built.
+                - paragraph [ref=e864]:
+                  - text: The provider image is a
+                  - link "Kairos-based image" [ref=e865] [cursor=pointer]:
+                    - /url: https://kairos.io/
+                  - text: that provides an immutable OS and Kubernetes runtime components for a specified Kubernetes version. The installer ISO partitions the disk, installs required dependencies including the Palette agent, registers the host with Palette, and sets up user and security configurations.
+                - paragraph [ref=e866]: Once these artifacts are built, you can use them to provision your edge hosts on existing hardware.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e867]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e868] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - paragraph [ref=e869]: "Appliance mode requires the following components:"
+                - list [ref=e870]:
+                  - listitem [ref=e871]:
+                    - text: A Linux machine to build the required
+                    - link "Edge artifacts" [ref=e872] [cursor=pointer]:
+                      - /url: /clusters/edge/edgeforge-workflow/#edge-artifacts
+                    - text: .
+                  - listitem [ref=e873]: Physical or virtual machines ready to be used as edge hosts.
+                - generic [ref=e874]:
+                  - tablist [ref=e875]:
+                    - tab "Prerequisites for Build Machine" [selected] [ref=e876] [cursor=pointer]
+                    - tab "Prerequisites for Edge Hosts" [ref=e877] [cursor=pointer]
+                  - tabpanel [ref=e879]:
+                    - list [ref=e880]:
+                      - listitem [ref=e881]:
+                        - paragraph [ref=e882]:
+                          - text: A physical or virtual Linux machine with
+                          - emphasis [ref=e883]: AMD64
+                          - text: (also known as
+                          - emphasis [ref=e884]: x86_64
+                          - text: ) processor architecture to build the Edge artifacts. You can issue the following command in the terminal to check your processor architecture.
+                        - generic [ref=e886]:
+                          - code [ref=e888]:
+                            - generic [ref=e889]: uname --machine
+                          - button "Copy code to clipboard" [ref=e891] [cursor=pointer]:
+                            - generic [ref=e892]:
+                              - img [ref=e893]
+                              - img [ref=e895]
+                      - listitem [ref=e897]:
+                        - paragraph [ref=e898]: "Minimum hardware configuration of the Linux machine:"
+                        - list [ref=e899]:
+                          - listitem [ref=e900]: 4 CPU
+                          - listitem [ref=e901]: 8 GB memory
+                          - listitem [ref=e902]: 50 GB storage
+                      - listitem [ref=e903]:
+                        - paragraph [ref=e904]:
+                          - link "Git" [ref=e905] [cursor=pointer]:
+                            - /url: https://git-scm.com/downloads
+                          - text: . You can ensure git installation by issuing the
+                          - code [ref=e906]: git --version
+                          - text: command.
+                      - listitem [ref=e907]:
+                        - paragraph [ref=e908]:
+                          - emphasis [ref=e909]: (Optional)
+                          - link "Earthly" [ref=e910] [cursor=pointer]:
+                            - /url: https://earthly.dev/
+                          - text: is installed and available. If you do not install Earthly, you can still build the artifacts, but it will require root privileges, and some of the resulting artifacts will be owned by the root user.
+                      - listitem [ref=e911]:
+                        - paragraph [ref=e912]:
+                          - text: An image management tool such as
+                          - link "Docker" [ref=e913] [cursor=pointer]:
+                            - /url: https://docs.docker.com/engine/install/
+                          - text: or
+                          - link "crane" [ref=e914] [cursor=pointer]:
+                            - /url: https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md
+                          - text: is installed and available.
+                        - list [ref=e915]:
+                          - listitem [ref=e916]: If you do not install Earthly, you must install Docker.
+                      - listitem [ref=e917]:
+                        - paragraph [ref=e918]:
+                          - text: Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to generate a new registration token. For detailed instructions, refer to the
+                          - link "Create Registration Token" [ref=e919] [cursor=pointer]:
+                            - /url: /clusters/edge/site-deployment/site-installation/create-registration-token/
+                          - text: guide.
+                      - listitem [ref=e920]:
+                        - paragraph [ref=e921]:
+                          - text: An account with an image registry that will store the provider image, for example,
+                          - link "Docker Hub" [ref=e922] [cursor=pointer]:
+                            - /url: https://hub.docker.com/
+                          - text: .
+                        - paragraph [ref=e923]:
+                          - text: In the
+                          - link "Register Edge Host in Appliance Mode" [ref=e924] [cursor=pointer]:
+                            - /url: "#register-edge-host-in-appliance-mode"
+                          - text: steps, the example uses the
+                          - link "ttl.sh" [ref=e925] [cursor=pointer]:
+                            - /url: https://ttl.sh/
+                          - text: image registry. This image registry is free to use and does not require a sign-up. Images pushed to
+                          - emphasis [ref=e926]: ttl.sh
+                          - text: are ephemeral and will expire after the 24 hours.
+                - heading "Register Edge Host in Appliance ModeDirect link to Register Edge Host in Appliance Mode" [level=3] [ref=e927]:
+                  - text: Register Edge Host in Appliance Mode
+                  - link "Direct link to Register Edge Host in Appliance Mode" [ref=e928] [cursor=pointer]:
+                    - /url: "#register-edge-host-in-appliance-mode"
+                    - text: "#"
+                - paragraph [ref=e929]: Use the following instructions on your build host to customize the arguments and Dockerfile, and then create all the required Edge artifacts.
+                - list [ref=e930]:
+                  - listitem [ref=e931]:
+                    - paragraph [ref=e932]:
+                      - text: Check out the
+                      - link "CanvOS" [ref=e933] [cursor=pointer]:
+                        - /url: https://github.com/spectrocloud/CanvOS.git
+                      - text: GitHub repository containing the starter code.
+                    - generic [ref=e935]:
+                      - code [ref=e937]:
+                        - generic [ref=e938]: git clone https://github.com/spectrocloud/CanvOS.git
+                      - button "Copy code to clipboard" [ref=e940] [cursor=pointer]:
+                        - generic [ref=e941]:
+                          - img [ref=e942]
+                          - img [ref=e944]
+                  - listitem [ref=e946]:
+                    - paragraph [ref=e947]:
+                      - text: Change to the
+                      - strong [ref=e948]: CanvOS/
+                      - text: directory.
+                    - generic [ref=e950]:
+                      - code [ref=e952]:
+                        - generic [ref=e953]: cd CanvOS
+                      - button "Copy code to clipboard" [ref=e955] [cursor=pointer]:
+                        - generic [ref=e956]:
+                          - img [ref=e957]
+                          - img [ref=e959]
+                  - listitem [ref=e961]:
+                    - paragraph [ref=e962]:
+                      - text: View the available
+                      - link "git tag" [ref=e963] [cursor=pointer]:
+                        - /url: https://github.com/spectrocloud/CanvOS/tags
+                      - text: .
+                    - generic [ref=e965]:
+                      - code [ref=e967]:
+                        - generic [ref=e968]: git tag
+                      - button "Copy code to clipboard" [ref=e970] [cursor=pointer]:
+                        - generic [ref=e971]:
+                          - img [ref=e972]
+                          - img [ref=e974]
+                  - listitem [ref=e976]:
+                    - paragraph [ref=e977]:
+                      - text: Check out the newest available tag. This guide uses
+                      - strong [ref=e978]: v4.5.15
+                      - text: tag as an example.
+                    - generic [ref=e980]:
+                      - code [ref=e982]:
+                        - generic [ref=e983]: git checkout v4.5.15
+                      - button "Copy code to clipboard" [ref=e985] [cursor=pointer]:
+                        - generic [ref=e986]:
+                          - img [ref=e987]
+                          - img [ref=e989]
+                  - listitem [ref=e991]:
+                    - paragraph [ref=e992]: In the repository, review the files relevant for this guide.
+                    - list [ref=e993]:
+                      - listitem [ref=e994]:
+                        - strong [ref=e995]: .arg.template
+                        - text: "- A sample"
+                        - strong [ref=e996]: .arg
+                        - text: file that defines arguments to use during the build process.
+                      - listitem [ref=e997]:
+                        - strong [ref=e998]: k8s_version.json
+                        - text: "- Lists all supported Kubernetes versions for each Kubernetes distribution."
+                      - listitem [ref=e999]:
+                        - strong [ref=e1000]: Dockerfile
+                        - text: "- Embeds the arguments and other configurations in the image."
+                      - listitem [ref=e1001]:
+                        - strong [ref=e1002]: user-data.template
+                        - text: "- A sample user-data file."
+                  - listitem [ref=e1003]:
+                    - paragraph [ref=e1004]:
+                      - text: Issue the following command to create the
+                      - strong [ref=e1005]: .arg
+                      - text: file with the customizable arguments. Adjust the parameters to your requirements. Refer to the
+                      - link "Edge Artifact Build Configurations" [ref=e1006] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/palette-canvos/arg/
+                      - text: table for descriptions of all the parameters you can use.
+                    - generic [ref=e1007]:
+                      - generic [ref=e1008]:
+                        - img [ref=e1010]
+                        - text: important
+                      - list [ref=e1013]:
+                        - listitem [ref=e1014]:
+                          - text: You must specify a supported OS for your edge hosts. Palette supports the same operating systems as AWS. Refer to
+                          - link "Prepare operating system for hybrid nodes" [ref=e1015] [cursor=pointer]:
+                            - /url: https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-os.html
+                          - text: for details.
+                        - listitem [ref=e1016]:
+                          - text: If specifying a Docker Hub registry, your
+                          - code [ref=e1017]: IMAGE_REGISTRY
+                          - text: value should be entered as
+                          - code [ref=e1018]: docker.io/<docker-id>
+                          - text: . Replace
+                          - code [ref=e1019]: <docker-id>
+                          - text: with your Docker ID. This ensures the final artifact name conforms to the Docker Hub image name syntax -
+                          - code [ref=e1020]: "[HOST]/[DOCKER-ID]/[REPOSITORY]:[TAG]"
+                          - text: .
+                        - listitem [ref=e1021]:
+                          - text: The
+                          - code [ref=e1022]: K8S_DISTRIBUTION
+                          - text: argument
+                          - emphasis [ref=e1023]: must
+                          - text: be set to
+                          - code [ref=e1024]: nodeadm
+                          - text: to ensure compatibility with EKS Hybrid Nodes.
+                        - listitem [ref=e1025]:
+                          - text: For
+                          - code [ref=e1026]: K8S_VERSION
+                          - text: ", review the"
+                          - code [ref=e1027]: k8s_version.json
+                          - text: file for supported versions for
+                          - code [ref=e1028]: nodeadm
+                          - text: .
+                        - listitem [ref=e1029]:
+                          - text: The
+                          - code [ref=e1030]: OS_VERSION
+                          - text: argument can be omitted when not specifying
+                          - code [ref=e1031]: OS_DISTRIBUTION
+                          - text: as
+                          - code [ref=e1032]: ubuntu
+                          - text: .
+                    - generic [ref=e1034]:
+                      - code [ref=e1036]:
+                        - generic [ref=e1037]: cat << EOF > .arg
+                        - generic [ref=e1038]: CUSTOM_TAG=<custom-tag>
+                        - generic [ref=e1039]: IMAGE_REGISTRY=<image-registry>
+                        - generic [ref=e1040]: OS_DISTRIBUTION=<os-distribution>
+                        - generic [ref=e1041]: IMAGE_REPO=<image-repository-name>
+                        - generic [ref=e1042]: OS_VERSION=<os-version>
+                        - generic [ref=e1043]: K8S_DISTRIBUTION=nodeadm
+                        - generic [ref=e1044]: K8S_VERSION=<kubernetes-version>
+                        - generic [ref=e1045]: ISO_NAME=<installer-iso-file-name>
+                        - generic [ref=e1046]: ARCH=<image-architecture>
+                        - generic [ref=e1047]: UPDATE_KERNEL=false
+                        - generic [ref=e1048]: EOF
+                      - button "Copy code to clipboard" [ref=e1050] [cursor=pointer]:
+                        - generic [ref=e1051]:
+                          - img [ref=e1052]
+                          - img [ref=e1054]
+                    - paragraph [ref=e1056]: View the newly created file to ensure the customized arguments are set correctly.
+                    - generic [ref=e1058]:
+                      - code [ref=e1060]:
+                        - generic [ref=e1061]: cat .arg
+                      - button "Copy code to clipboard" [ref=e1063] [cursor=pointer]:
+                        - generic [ref=e1064]:
+                          - img [ref=e1065]
+                          - img [ref=e1067]
+                    - paragraph [ref=e1069]: Example output.
+                    - code [ref=e1073]:
+                      - generic [ref=e1074]: CUSTOM_TAG=eks-hybrid
+                      - generic [ref=e1075]: IMAGE_REGISTRY=ttl.sh
+                      - generic [ref=e1076]: OS_DISTRIBUTION=ubuntu
+                      - generic [ref=e1077]: IMAGE_REPO=ubuntu
+                      - generic [ref=e1078]: OS_VERSION=22
+                      - generic [ref=e1079]: K8S_DISTRIBUTION=nodeadm
+                      - generic [ref=e1080]: K8S_VERSION=1.30.0
+                      - generic [ref=e1081]: ISO_NAME=palette-edge-installer
+                      - generic [ref=e1082]: ARCH=amd64
+                      - generic [ref=e1083]: UPDATE_KERNEL=false
+                    - paragraph [ref=e1084]:
+                      - text: Based on the arguments defined in the
+                      - strong [ref=e1085]: .arg
+                      - text: file, the final provider image name will have the following naming pattern,
+                      - code [ref=e1086]: $IMAGE_REGISTRY/$IMAGE_REPO:$K8S_DISTRIBUTION-$K8S_VERSION-$PE-VERSION-$CUSTOM_TAG
+                      - text: .
+                      - code [ref=e1087]: $PE_VERSION
+                      - text: refers to the Palette Edge agent version, which is automatically determined. Using the example output, the image name would be
+                      - code [ref=e1088]: ttl.sh/ubuntu:nodeadm-1.30.0-v4.5.15-eks-hybrid
+                      - text: .
+                  - listitem [ref=e1089]:
+                    - paragraph [ref=e1090]:
+                      - emphasis [ref=e1091]: (Optional)
+                      - text: This step is only required if your builds occur in a proxied network environment, and your proxy servers require client certificates, or if your base image is in a registry that requires client certificates.
+                    - paragraph [ref=e1092]:
+                      - text: You can provide the base-64 encoded certificates in PEM format in the
+                      - strong [ref=e1093]: certs
+                      - text: folder at the root directory of the
+                      - strong [ref=e1094]: CanvOS
+                      - text: repository. You can provide as many certificates as you need in the folder.
+                    - paragraph [ref=e1095]:
+                      - text: If you are using a CanvOS tag that is earlier than
+                      - code [ref=e1096]: 4.5.15
+                      - text: ", you need to add the"
+                      - code [ref=e1097]: PROXY_CERT_PATH
+                      - text: build argument to provide a path to the certificate. This should be added to the
+                      - strong [ref=e1098]: .arg
+                      - text: file that was created in the previous step. This approach only allows you to specify one certificate. For more information, refer to
+                      - link "Edge Artifact Build Configurations" [ref=e1099] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/palette-canvos/arg/
+                      - text: .
+                    - generic [ref=e1100]:
+                      - generic [ref=e1101]:
+                        - img [ref=e1103]
+                        - text: warning
+                      - paragraph [ref=e1106]:
+                        - text: These proxy settings are only configured for the build process itself, when your builder machine needs to pull certain images to build the Edge artifacts. These certificates will not be present on the host after it has been deployed. To configure the proxy network settings for a host, refer to
+                        - link "Configure HTTP Proxy" [ref=e1107] [cursor=pointer]:
+                          - /url: /clusters/edge/local-ui/host-management/configure-proxy/
+                        - text: or
+                        - link "Configure Proxy Settings in User Data" [ref=e1108] [cursor=pointer]:
+                          - /url: /clusters/edge/edgeforge-workflow/prepare-user-data/#configure-proxy-settings-optional
+                        - text: .
+                  - listitem [ref=e1109]:
+                    - paragraph [ref=e1110]:
+                      - text: You can install tools and dependencies and configure the image to meet your needs by using the
+                      - strong [ref=e1111]:
+                        - link "Dockerfile" [ref=e1112] [cursor=pointer]:
+                          - /url: https://docs.docker.com/reference/dockerfile/
+                      - text: . Add your customizations below the
+                      - code [ref=e1113]: Add any other image customizations here
+                      - text: comment in the Dockerfile. Do not edit or add any lines before this tagged comment.
+                    - group [ref=e1114]:
+                      - generic "Example" [ref=e1115] [cursor=pointer]
+                  - listitem [ref=e1116]:
+                    - paragraph [ref=e1117]:
+                      - text: Issue the following command to save your Palette tenant registration token to a local variable. Replace
+                      - code [ref=e1118]: <registration-token>
+                      - text: with your actual registration token.
+                    - generic [ref=e1120]:
+                      - code [ref=e1122]:
+                        - generic [ref=e1123]: export token=<registration-token>
+                      - button "Copy code to clipboard" [ref=e1125] [cursor=pointer]:
+                        - generic [ref=e1126]:
+                          - img [ref=e1127]
+                          - img [ref=e1129]
+                  - listitem [ref=e1131]:
+                    - paragraph [ref=e1132]:
+                      - text: Use the following command to create the
+                      - strong [ref=e1133]: user-data
+                      - text: file. The command creates the minimal recommended configuration and you should adjust this file to your requirements. Refer to
+                      - link "Prepare User Data" [ref=e1134] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/prepare-user-data/
+                      - text: for common configuration options, validation steps, and full user data samples. The
+                      - link "Edge Installer Configuration Reference" [ref=e1135] [cursor=pointer]:
+                        - /url: /clusters/edge/edge-configuration/installer-reference/
+                      - text: article also provides guidance on all available options.
+                    - paragraph [ref=e1136]:
+                      - text: You can edit user data in
+                      - link "Local UI" [ref=e1137] [cursor=pointer]:
+                        - /url: /clusters/edge/local-ui/host-management/edit-user-data/
+                      - text: after installation. However, we still recommend you provide user data during this workflow for production workloads. This is because not all user data fields can be updated in Local UI.
+                    - generic [ref=e1138]:
+                      - generic [ref=e1139]:
+                        - img [ref=e1141]
+                        - text: important
+                      - list [ref=e1144]:
+                        - listitem [ref=e1145]:
+                          - text: The edge host must be deployed in
+                          - code [ref=e1146]: central
+                          - text: mode, which is the default when
+                          - code [ref=e1147]: stylus.managementMode
+                          - text: is omitted.
+                        - listitem [ref=e1148]:
+                          - text: Replace
+                          - code [ref=e1149]: <registration-token>
+                          - text: with your Palette tenant registration token.
+                        - listitem [ref=e1150]:
+                          - text: Replace
+                          - code [ref=e1151]: <palette-project-uid>
+                          - text: with the Palette project ID the Edge host should pair with. This field is only required if your Palette tenant registration token was not assigned to a project, or you want to assign the edge host to a different project.
+                        - listitem [ref=e1152]:
+                          - text: The
+                          - code [ref=e1153]: install
+                          - text: block shown in the command is
+                          - emphasis [ref=e1154]: required
+                          - text: to ensure compatibility with EKS Hybrid Nodes. This should not be adjusted or removed in your final
+                          - strong [ref=e1155]: user-data
+                          - text: file.
+                        - listitem [ref=e1156]:
+                          - text: The
+                          - code [ref=e1157]: stages.initramfs
+                          - text: block is optional and can be adjusted or removed depending on your requirements. If using this example, replace
+                          - code [ref=e1158]: <ssh-public-key>
+                          - text: with your SSH public key.
+                        - listitem [ref=e1159]:
+                          - text: If you need to pull images from a private image registry, supply the credentials for the registry in a
+                          - link "stylus.registryCredentials" [ref=e1160] [cursor=pointer]:
+                            - /url: /clusters/edge/edge-configuration/installer-reference/#single-external-registry
+                            - code [ref=e1161]: stylus.registryCredentials
+                          - text: block.
+                    - generic [ref=e1163]:
+                      - code [ref=e1165]:
+                        - generic [ref=e1166]: cat << EOF > user-data
+                        - generic [ref=e1167]: "#cloud-config"
+                        - generic [ref=e1168]: "stylus:"
+                        - generic [ref=e1169]: "site:"
+                        - generic [ref=e1170]: "paletteEndpoint: api.spectrocloud.com"
+                        - generic [ref=e1171]: "edgeHostToken: <registration-token>"
+                        - generic [ref=e1172]: "projectUid: <palette-project-uid>"
+                        - generic [ref=e1173]: "install:"
+                        - generic [ref=e1174]: "extra-dirs-rootfs:"
+                        - generic [ref=e1175]: "- /eks-hybrid"
+                        - generic [ref=e1176]: "bind_mounts:"
+                        - generic [ref=e1177]: "- /eks-hybrid"
+                        - generic [ref=e1178]: "- /etc/aws"
+                        - generic [ref=e1179]: "- /etc/containerd"
+                        - generic [ref=e1180]: "- /etc/eks"
+                        - generic [ref=e1181]: "- /etc/iam"
+                        - generic [ref=e1182]: "- /etc/modules-load.d"
+                        - generic [ref=e1183]: "- /var/lib/amazon"
+                        - generic [ref=e1184]: "stages:"
+                        - generic [ref=e1185]: "initramfs:"
+                        - generic [ref=e1186]: "- users:"
+                        - generic [ref=e1187]: "kairos:"
+                        - generic [ref=e1188]: "groups:"
+                        - generic [ref=e1189]: "- sudo"
+                        - generic [ref=e1190]: "ssh_authorized_keys:"
+                        - generic [ref=e1191]: "- <ssh-public-key>"
+                        - generic [ref=e1192]: EOF
+                      - button "Copy code to clipboard" [ref=e1194] [cursor=pointer]:
+                        - generic [ref=e1195]:
+                          - img [ref=e1196]
+                          - img [ref=e1198]
+                    - paragraph [ref=e1200]:
+                      - text: You can follow the steps in
+                      - link "Validate User Data" [ref=e1201] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/validate-user-data/#validate-user-data
+                      - text: to validate your
+                      - strong [ref=e1202]: user-data
+                      - text: file after creation.
+                    - generic [ref=e1203]:
+                      - generic [ref=e1204]:
+                        - img [ref=e1206]
+                        - text: warning
+                      - generic [ref=e1208]:
+                        - paragraph [ref=e1209]:
+                          - text: If your host is a virtual machine using a VMXNET3 adapter and you are planning to use
+                          - link "Flannel" [ref=e1210] [cursor=pointer]:
+                            - /url: /integrations/cni-flannel
+                          - text: for your CNI, include the following
+                          - code [ref=e1211]: initramfs
+                          - text: stage in your
+                          - code [ref=e1212]: user-data
+                          - text: file, replacing
+                          - code [ref=e1213]: <interface-name>
+                          - text: with the name of the network interface on your Edge host. This is due to a
+                          - link "known issue with VMware's VMXNET3 adapter" [ref=e1214] [cursor=pointer]:
+                            - /url: https://github.com/cilium/cilium/issues/13096#issuecomment-723901955
+                          - text: ", which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V."
+                        - generic [ref=e1216]:
+                          - code [ref=e1218]:
+                            - generic [ref=e1219]: "stages:"
+                            - generic [ref=e1220]: "initramfs:"
+                            - generic [ref=e1221]: "- name: \"Disable UDP segmentation\""
+                            - generic [ref=e1222]: "commands:"
+                            - generic [ref=e1223]: "- ethtool --offload <interface-name> tx-udp_tnl-segmentation off"
+                            - generic [ref=e1224]: "- ethtool --offload <interface-name> tx-udp_tnl-csum-segmentation off"
+                          - generic [ref=e1225]:
+                            - button "Toggle word wrap" [ref=e1226] [cursor=pointer]:
+                              - img [ref=e1227]
+                            - button "Copy code to clipboard" [ref=e1229] [cursor=pointer]:
+                              - generic [ref=e1230]:
+                                - img [ref=e1231]
+                                - img [ref=e1233]
+                  - listitem [ref=e1235]:
+                    - paragraph [ref=e1236]:
+                      - text: CanvOS utility uses
+                      - link "Earthly" [ref=e1237] [cursor=pointer]:
+                        - /url: https://earthly.dev/
+                      - text: to build the target artifacts. Issue the following command to start the build process.
+                    - generic [ref=e1238]:
+                      - tablist [ref=e1239]:
+                        - tab "Earthly Installed" [selected] [ref=e1240] [cursor=pointer]
+                        - tab "Earthly Not Installed" [ref=e1241] [cursor=pointer]
+                      - tabpanel [ref=e1243]:
+                        - generic [ref=e1245]:
+                          - code [ref=e1247]:
+                            - generic [ref=e1248]: earthly +build-all-images
+                          - button "Copy code to clipboard" [ref=e1250] [cursor=pointer]:
+                            - generic [ref=e1251]:
+                              - img [ref=e1252]
+                              - img [ref=e1254]
+                    - code [ref=e1259]:
+                      - generic [ref=e1260]: "# Output condensed for readability"
+                      - generic [ref=e1261]: ========================== 🌍 Earthly Build ✅ SUCCESS ==========================
+                    - generic [ref=e1262]:
+                      - generic [ref=e1263]:
+                        - img [ref=e1265]
+                        - text: info
+                      - paragraph [ref=e1268]:
+                        - text: If you plan to build the Edge Installer ISO using a content bundle, use the
+                        - code [ref=e1269]: +build-provider-images
+                        - text: option instead of the
+                        - code [ref=e1270]: +build-all-images
+                        - text: option in the command above. The command
+                        - code [ref=e1271]: sudo ./earthly.sh +build-provider-images
+                        - text: will build the provider images but not the Edge installer ISO. After the provider images are built, follow the steps in the
+                        - link "Build Content Bundle" [ref=e1272] [cursor=pointer]:
+                          - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle/
+                        - text: guide to build the Edge installer ISO using a content bundle.
+                    - paragraph [ref=e1273]:
+                      - text: This command may take up to 15-20 minutes to finish depending on the resources of the host machine. Upon completion, the command will output the manifest. Note that the
+                      - code [ref=e1274]: system.*
+                      - text: parameter values in the manifest are the same as what you defined earlier in the
+                      - strong [ref=e1275]: .arg
+                      - text: file.
+                    - paragraph [ref=e1276]:
+                      - text: Copy and save the output attributes in a notepad or clipboard as you will use this output when
+                      - link "creating the cluster profile for your hybrid node pools" [ref=e1277] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/create-hybrid-node-pools/#create-cluster-profile-for-hybrid-node-pools
+                      - text: .
+                    - paragraph [ref=e1278]: Example manifest output.
+                    - generic [ref=e1280]:
+                      - code [ref=e1282]:
+                        - generic [ref=e1283]: "pack:"
+                        - generic [ref=e1284]: "content:"
+                        - generic [ref=e1285]: "images:"
+                        - generic [ref=e1286]: "- image: \"{{.spectro.pack.edge-native-byoi.options.system.uri}}\""
+                        - generic [ref=e1287]: "# Below config is default value, please uncomment if you want to modify default values"
+                        - generic [ref=e1288]: "#drain:"
+                        - generic [ref=e1289]: "#cordon: true"
+                        - generic [ref=e1290]: "#timeout: 60 # The length of time to wait before giving up, zero means infinite"
+                        - generic [ref=e1291]: "#gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used"
+                        - generic [ref=e1292]: "#ignoreDaemonSets: true"
+                        - generic [ref=e1293]: "#deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)"
+                        - generic [ref=e1294]: "#force: true # Continue even if there are pods that do not declare a controller"
+                        - generic [ref=e1295]: "#disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution"
+                        - generic [ref=e1296]: "#skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip."
+                        - generic [ref=e1297]: "options:"
+                        - generic [ref=e1298]: "system.uri: \"{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}\""
+                        - generic [ref=e1299]: "system.registry: ttl.sh"
+                        - generic [ref=e1300]: "system.repo: ubuntu"
+                        - generic [ref=e1301]: "system.k8sDistribution: nodeadm"
+                        - generic [ref=e1302]: "system.osName: ubuntu"
+                        - generic [ref=e1303]: "system.peVersion: v4.5.15"
+                        - generic [ref=e1304]: "system.customTag: eks-hybrid"
+                        - generic [ref=e1305]: "system.osVersion: 22"
+                      - button "Toggle word wrap" [ref=e1307] [cursor=pointer]:
+                        - img [ref=e1308]
+                  - listitem [ref=e1310]:
+                    - paragraph [ref=e1311]:
+                      - text: Once the build is complete, confirm that the Edge Installer ISO and its checksum were created correctly. The filenames will match the
+                      - code [ref=e1312]: ISO_NAME
+                      - text: argument defined in your
+                      - code [ref=e1313]: .arg
+                      - text: file.
+                    - generic [ref=e1315]:
+                      - code [ref=e1317]:
+                        - generic [ref=e1318]: ls build
+                      - button "Copy code to clipboard" [ref=e1320] [cursor=pointer]:
+                        - generic [ref=e1321]:
+                          - img [ref=e1322]
+                          - img [ref=e1324]
+                    - paragraph [ref=e1326]: Example output.
+                    - generic [ref=e1328]:
+                      - code [ref=e1330]:
+                        - generic [ref=e1331]: palette-edge-installer.iso
+                        - generic [ref=e1332]: palette-edge-installer.iso.sha256
+                      - button "Copy code to clipboard" [ref=e1334] [cursor=pointer]:
+                        - generic [ref=e1335]:
+                          - img [ref=e1336]
+                          - img [ref=e1338]
+                  - listitem [ref=e1340]:
+                    - paragraph [ref=e1341]:
+                      - text: List the Docker images to review the provider images created. You can identify the provider images by using
+                      - code [ref=e1342]: CUSTOM_TAG
+                      - text: argument defined in your
+                      - strong [ref=e1343]: .arg
+                      - text: file.
+                    - generic [ref=e1345]:
+                      - code [ref=e1347]:
+                        - generic [ref=e1348]: docker images --filter=reference='*/*:*eks-hybrid'
+                      - button "Copy code to clipboard" [ref=e1350] [cursor=pointer]:
+                        - generic [ref=e1351]:
+                          - img [ref=e1352]
+                          - img [ref=e1354]
+                    - paragraph [ref=e1356]: Example output.
+                    - generic [ref=e1358]:
+                      - code [ref=e1360]:
+                        - generic [ref=e1361]: REPOSITORY TAG IMAGE ID CREATED SIZE
+                        - generic [ref=e1362]: ttl.sh/ubuntu nodeadm-1.30.0-v4.5.15-eks-hybrid 1234a567b890 24 minutes ago 3.67GB
+                      - button "Toggle word wrap" [ref=e1364] [cursor=pointer]:
+                        - img [ref=e1365]
+                  - listitem [ref=e1367]:
+                    - paragraph [ref=e1368]:
+                      - text: Use the following commands to push the provider images to the image registry you specified. Replace
+                      - code [ref=e1369]: <repository>
+                      - text: and
+                      - code [ref=e1370]: <tag>
+                      - text: using the output from the previous step.
+                    - generic [ref=e1371]:
+                      - generic [ref=e1372]:
+                        - img [ref=e1374]
+                        - text: tip
+                      - paragraph [ref=e1377]:
+                        - text: If using Docker Hub, you may need to log in first using
+                        - code [ref=e1378]: docker login
+                        - text: . Provide your Docker ID and password when prompted.
+                    - generic [ref=e1380]:
+                      - code [ref=e1382]:
+                        - generic [ref=e1383]: docker push <repository>:<tag>
+                      - button "Copy code to clipboard" [ref=e1385] [cursor=pointer]:
+                        - generic [ref=e1386]:
+                          - img [ref=e1387]
+                          - img [ref=e1389]
+                    - paragraph [ref=e1391]: Example.
+                    - code [ref=e1395]:
+                      - generic [ref=e1396]: docker push ttl.sh/ubuntu:nodeadm-1.30.0-v4.5.15-eks-hybrid
+                    - paragraph [ref=e1397]: The following example output confirms that the image was pushed to the registry with the correct tag.
+                    - generic [ref=e1399]:
+                      - code [ref=e1401]:
+                        - generic [ref=e1402]: "# Lines omitted for readability"
+                        - generic [ref=e1403]: "nodeadm-1.30.0-v4.5.15-eks-hybrid: digest: sha256:xyz123... size: 19917"
+                      - button "Toggle word wrap" [ref=e1405] [cursor=pointer]:
+                        - img [ref=e1406]
+                  - listitem [ref=e1408]:
+                    - paragraph [ref=e1409]:
+                      - text: Provision your edge hosts using the installer ISO created in the
+                      - code [ref=e1410]: build
+                      - text: "directory. You can use the following sections to help you:"
+                    - list [ref=e1411]:
+                      - listitem [ref=e1412]:
+                        - link "Provision Virtual Machines" [ref=e1413] [cursor=pointer]:
+                          - /url: /tutorials/clusters/edge/deploy-cluster/#provision-virtual-machines
+                      - listitem [ref=e1414]:
+                        - link "Installation on Bare Metal" [ref=e1415] [cursor=pointer]:
+                          - /url: /clusters/edge/site-deployment/stage/
+                - paragraph [ref=e1416]:
+                  - text: Ensure your edge hosts are fully provisioned, configured, and active before performing
+                  - link "validation" [ref=e1417] [cursor=pointer]:
+                    - /url: "#validate-1"
+                  - text: .
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e1418]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e1419] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - paragraph [ref=e1420]: Use the following sections to help check that your edge host is ready to be used as an Amazon EKS Hybrid Node.
+                - heading "Palette Edge Host RegistrationDirect link to Palette Edge Host Registration" [level=4] [ref=e1421]:
+                  - text: Palette Edge Host Registration
+                  - link "Direct link to Palette Edge Host Registration" [ref=e1422] [cursor=pointer]:
+                    - /url: "#palette-edge-host-registration"
+                    - text: "#"
+                - list [ref=e1423]:
+                  - listitem [ref=e1424]:
+                    - paragraph [ref=e1425]:
+                      - text: Log in to
+                      - link "Palette" [ref=e1426] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e1427]:
+                    - paragraph [ref=e1428]:
+                      - text: Select
+                      - strong [ref=e1429]: Clusters
+                      - text: from the left
+                      - strong [ref=e1430]: Main Menu
+                      - text: .
+                  - listitem [ref=e1431]:
+                    - paragraph [ref=e1432]:
+                      - text: Select the
+                      - strong [ref=e1433]: Edge Hosts
+                      - text: tab and verify your host is displayed and marked as
+                      - strong [ref=e1434]: Healthy
+                      - text: in the table.
+                - heading "Network ConnectivityDirect link to Network Connectivity" [level=4] [ref=e1435]:
+                  - text: Network Connectivity
+                  - link "Direct link to Network Connectivity" [ref=e1436] [cursor=pointer]:
+                    - /url: "#network-connectivity-1"
+                    - text: "#"
+                - list [ref=e1437]:
+                  - listitem [ref=e1438]:
+                    - paragraph [ref=e1439]: Verify that you can connect to the edge host through SSH using your private key.
+                    - paragraph [ref=e1440]:
+                      - text: For example, issue the following command and replace
+                      - code [ref=e1441]: <privateKey>
+                      - text: ","
+                      - code [ref=e1442]: <sshUsername>
+                      - text: ", and"
+                      - code [ref=e1443]: <hostIpAddress>
+                      - text: with your SSH private key, SSH username on the host, and the host IP address respectively.
+                    - generic [ref=e1445]:
+                      - code [ref=e1447]:
+                        - generic [ref=e1448]: ssh -i <pathToPrivateKey> <sshUsername>@<hostIpAddress> exit
+                      - button "Copy code to clipboard" [ref=e1450] [cursor=pointer]:
+                        - generic [ref=e1451]:
+                          - img [ref=e1452]
+                          - img [ref=e1454]
+                  - listitem [ref=e1456]:
+                    - paragraph [ref=e1457]: Verify that the edge host has outbound access to the internet.
+                  - listitem [ref=e1458]:
+                    - paragraph [ref=e1459]:
+                      - text: Verify that the edge host has outbound connectivity to Spectro Cloud
+                      - link "services" [ref=e1460] [cursor=pointer]:
+                        - /url: /architecture/palette-public-ips/
+                      - text: and
+                      - link "ports" [ref=e1461] [cursor=pointer]:
+                        - /url: /architecture/networking-ports/#network-ports
+                      - text: .
+                    - paragraph [ref=e1462]:
+                      - text: For example, if you have
+                      - link "netcat" [ref=e1463] [cursor=pointer]:
+                        - /url: https://linux.die.net/man/1/nc
+                      - text: installed, issue the following command on the edge host to check whether the
+                      - code [ref=e1464]: api.spectrocloud.com
+                      - text: domain is accessible on port
+                      - code [ref=e1465]: "443"
+                      - text: .
+                    - generic [ref=e1467]:
+                      - code [ref=e1469]:
+                        - generic [ref=e1470]: nc -z -v api.spectrocloud.com 443
+                      - button "Copy code to clipboard" [ref=e1472] [cursor=pointer]:
+                        - generic [ref=e1473]:
+                          - img [ref=e1474]
+                          - img [ref=e1476]
+                    - paragraph [ref=e1478]: Example output, if successful.
+                    - generic [ref=e1480]:
+                      - code [ref=e1482]:
+                        - generic [ref=e1483]: Connection to api.spectrocloud.com port 443 [tcp/https] succeeded!
+                      - generic [ref=e1484]:
+                        - button "Toggle word wrap" [ref=e1485] [cursor=pointer]:
+                          - img [ref=e1486]
+                        - button "Copy code to clipboard" [ref=e1488] [cursor=pointer]:
+                          - generic [ref=e1489]:
+                            - img [ref=e1490]
+                            - img [ref=e1492]
+                  - listitem [ref=e1494]:
+                    - paragraph [ref=e1495]:
+                      - text: Verify that the edge host has outbound connectivity to the required
+                      - link "AWS EKS domains and ports" [ref=e1496] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem
+                      - text: . Refer to the
+                      - strong [ref=e1497]: Access required during hybrid node installation and upgrade
+                      - text: and
+                      - strong [ref=e1498]: Access required for ongoing cluster operations
+                      - text: sections for listed guidance.
+                    - paragraph [ref=e1499]:
+                      - text: For example, if you have
+                      - link "netcat" [ref=e1500] [cursor=pointer]:
+                        - /url: https://linux.die.net/man/1/nc
+                      - text: installed, issue the following command on the edge host to check whether the
+                      - code [ref=e1501]: eks.us-east-1.amazonaws.com
+                      - text: domain is accessible on port
+                      - code [ref=e1502]: "443"
+                      - text: .
+                    - generic [ref=e1504]:
+                      - code [ref=e1506]:
+                        - generic [ref=e1507]: nc -z -v eks.us-east-1.amazonaws.com 443
+                      - button "Copy code to clipboard" [ref=e1509] [cursor=pointer]:
+                        - generic [ref=e1510]:
+                          - img [ref=e1511]
+                          - img [ref=e1513]
+                    - paragraph [ref=e1515]: Example output, if successful.
+                    - generic [ref=e1517]:
+                      - code [ref=e1519]:
+                        - generic [ref=e1520]: Connection to eks.us-east-1.amazonaws.com port 443 [tcp/https] succeeded!
+                      - generic [ref=e1521]:
+                        - button "Toggle word wrap" [ref=e1522] [cursor=pointer]:
+                          - img [ref=e1523]
+                        - button "Copy code to clipboard" [ref=e1525] [cursor=pointer]:
+                          - generic [ref=e1526]:
+                            - img [ref=e1527]
+                            - img [ref=e1529]
+                    - generic [ref=e1531]:
+                      - generic [ref=e1532]:
+                        - img [ref=e1534]
+                        - text: info
+                      - paragraph [ref=e1537]:
+                        - text: A table showing the required domains and ports for an example region can be found in the
+                        - link "Configure Remote Network" [ref=e1538] [cursor=pointer]:
+                          - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/prepare-network/#configure-remote-network
+                        - text: section during step 2.
+                  - listitem [ref=e1539]:
+                    - paragraph [ref=e1540]:
+                      - text: Verify that the edge host has the necessary ports available exclusively for
+                      - link "Cilium operations" [ref=e1541] [cursor=pointer]:
+                        - /url: https://docs.cilium.io/en/stable/operations/system_requirements/#firewall-rules
+                      - text: .
+                    - paragraph [ref=e1542]:
+                      - text: For example, issue the following command on the edge host to check whether port
+                      - code [ref=e1543]: "4240"
+                      - text: is being used on the edge host.
+                    - generic [ref=e1545]:
+                      - code [ref=e1547]:
+                        - generic [ref=e1548]: sudo lsof -i :4240
+                      - button "Copy code to clipboard" [ref=e1550] [cursor=pointer]:
+                        - generic [ref=e1551]:
+                          - img [ref=e1552]
+                          - img [ref=e1554]
+                    - paragraph [ref=e1556]: If the command returns no output, this typically indicates that the port is free.
+                - heading "Package Manager IndexDirect link to Package Manager Index" [level=4] [ref=e1557]:
+                  - text: Package Manager Index
+                  - link "Direct link to Package Manager Index" [ref=e1558] [cursor=pointer]:
+                    - /url: "#package-manager-index-1"
+                    - text: "#"
+                - list [ref=e1559]:
+                  - listitem [ref=e1560]:
+                    - paragraph [ref=e1561]:
+                      - text: Verify that your edge host package manager has an up-to-date package index. This is to ensure that dependency packages for
+                      - link "nodeadm" [ref=e1562] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-nodeadm.html
+                        - code [ref=e1563]: nodeadm
+                      - text: can be successfully downloaded and installed when
+                      - link "creating hybrid node pools" [ref=e1564] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/create-hybrid-node-pools/#create-hybrid-node-pool
+                      - text: .
+                    - paragraph [ref=e1565]: For example, on Ubuntu, you would issue the following command.
+                    - generic [ref=e1567]:
+                      - code [ref=e1569]:
+                        - generic [ref=e1570]: sudo apt-get update
+                      - button "Copy code to clipboard" [ref=e1572] [cursor=pointer]:
+                        - generic [ref=e1573]:
+                          - img [ref=e1574]
+                          - img [ref=e1576]
+                    - paragraph [ref=e1578]: Adjust to your operating system and package manager on your edge host.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e1579]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e1580] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e1581]:
+                  - text: Complete the remaining sections as highlighted in
+                  - link "Prepare Environment" [ref=e1582] [cursor=pointer]:
+                    - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/
+                  - text: .
+              - generic [ref=e1583]:
+                - generic [ref=e1585]:
+                  - text: "Tags:"
+                  - list [ref=e1586]:
+                    - listitem [ref=e1587]:
+                      - link "public cloud" [ref=e1588] [cursor=pointer]:
+                        - /url: /tags/public-cloud/
+                    - listitem [ref=e1589]:
+                      - link "aws" [ref=e1590] [cursor=pointer]:
+                        - /url: /tags/aws/
+                    - listitem [ref=e1591]:
+                      - link "eks hybrid nodes" [ref=e1592] [cursor=pointer]:
+                        - /url: /tags/eks-hybrid-nodes/
+                - link "Edit this page" [ref=e1595] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/prepare-edge-hosts.md
+                  - img [ref=e1596]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e1600]:
+              - link "Previous « Prepare Network" [ref=e1601] [cursor=pointer]:
+                - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/prepare-network/
+                - generic [ref=e1602]: Previous
+                - generic [ref=e1603]: « Prepare Network
+              - link "Next Prepare EKS Cluster »" [ref=e1604] [cursor=pointer]:
+                - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/prepare-eks-cluster/
+                - generic [ref=e1605]: Next
+                - generic [ref=e1606]: Prepare EKS Cluster »
+          - list [ref=e1609]:
+            - listitem [ref=e1610]:
+              - link "Agent Mode" [ref=e1611] [cursor=pointer]:
+                - /url: "#agent-mode"
+              - list [ref=e1612]:
+                - listitem [ref=e1613]:
+                  - link "Prerequisites" [ref=e1614] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e1615]:
+                  - link "Register Edge Host in Agent Mode" [ref=e1616] [cursor=pointer]:
+                    - /url: "#register-edge-host-in-agent-mode"
+                - listitem [ref=e1617]:
+                  - link "Validate" [ref=e1618] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e1619]:
+              - link "Appliance Mode" [ref=e1620] [cursor=pointer]:
+                - /url: "#appliance-mode"
+              - list [ref=e1621]:
+                - listitem [ref=e1622]:
+                  - link "Prerequisites" [ref=e1623] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e1624]:
+                  - link "Register Edge Host in Appliance Mode" [ref=e1625] [cursor=pointer]:
+                    - /url: "#register-edge-host-in-appliance-mode"
+                - listitem [ref=e1626]:
+                  - link "Validate" [ref=e1627] [cursor=pointer]:
+                    - /url: "#validate-1"
+            - listitem [ref=e1628]:
+              - link "Next Steps" [ref=e1629] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e1630] [cursor=pointer]:
+    - generic [ref=e1633]:
+      - img "Project Logo" [ref=e1634]
+      - paragraph [ref=e1635]: Ask AI
+```

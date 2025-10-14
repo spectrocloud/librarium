@@ -1,0 +1,1253 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                  - listitem [ref=e107]:
+                    - generic [ref=e108]:
+                      - link "Data Center Clusters" [ref=e109] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e111]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e113] [cursor=pointer]
+                  - listitem [ref=e114]:
+                    - generic [ref=e115]:
+                      - link "Edge" [expanded] [ref=e116] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e118]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e120] [cursor=pointer]
+                    - list [ref=e121]:
+                      - listitem [ref=e122]:
+                        - generic [ref=e123]:
+                          - link "Architecture" [ref=e124] [cursor=pointer]:
+                            - /url: /clusters/edge/architecture/
+                          - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e125] [cursor=pointer]
+                      - listitem [ref=e126]:
+                        - link "Hardware Requirements" [ref=e127] [cursor=pointer]:
+                          - /url: /clusters/edge/hardware-requirements/
+                      - listitem [ref=e128]:
+                        - link "Deployment Lifecycle" [ref=e129] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-native-lifecycle/
+                      - listitem [ref=e130]:
+                        - generic [ref=e131]:
+                          - link "Trusted Boot" [ref=e132] [cursor=pointer]:
+                            - /url: /clusters/edge/trusted-boot/
+                          - button "Toggle the collapsible sidebar category 'Trusted Boot'" [ref=e133] [cursor=pointer]
+                      - listitem [ref=e134]:
+                        - generic [ref=e135]:
+                          - link "Install Configuration" [ref=e136] [cursor=pointer]:
+                            - /url: /clusters/edge/edge-configuration/
+                          - button "Toggle the collapsible sidebar category 'Install Configuration'" [ref=e137] [cursor=pointer]
+                      - listitem [ref=e138]:
+                        - generic [ref=e139]:
+                          - link "EdgeForge Workflow" [expanded] [ref=e140] [cursor=pointer]:
+                            - /url: /clusters/edge/edgeforge-workflow/
+                          - button "Toggle the collapsible sidebar category 'EdgeForge Workflow'" [ref=e141] [cursor=pointer]
+                        - list [ref=e142]:
+                          - listitem [ref=e143]:
+                            - link "Prepare User Data and Argument Files" [ref=e144] [cursor=pointer]:
+                              - /url: /clusters/edge/edgeforge-workflow/prepare-user-data/
+                          - listitem [ref=e145]:
+                            - link "Validate User Data" [ref=e146] [cursor=pointer]:
+                              - /url: /clusters/edge/edgeforge-workflow/validate-user-data/
+                          - listitem [ref=e147]:
+                            - generic [ref=e148]:
+                              - link "Build Edge Artifacts" [ref=e149] [cursor=pointer]:
+                                - /url: /clusters/edge/edgeforge-workflow/palette-canvos/
+                              - button "Toggle the collapsible sidebar category 'Build Edge Artifacts'" [ref=e150] [cursor=pointer]
+                      - listitem [ref=e151]:
+                        - generic [ref=e152]:
+                          - link "Local UI" [ref=e153] [cursor=pointer]:
+                            - /url: /clusters/edge/local-ui/
+                          - button "Toggle the collapsible sidebar category 'Local UI'" [ref=e154] [cursor=pointer]
+                      - listitem [ref=e155]:
+                        - generic [ref=e156]:
+                          - link "Deployment" [ref=e157] [cursor=pointer]:
+                            - /url: /clusters/edge/site-deployment/
+                          - button "Toggle the collapsible sidebar category 'Deployment'" [ref=e158] [cursor=pointer]
+                      - listitem [ref=e159]:
+                        - generic [ref=e160]:
+                          - link "Cluster Management" [ref=e161] [cursor=pointer]:
+                            - /url: /clusters/edge/cluster-management/
+                          - button "Toggle the collapsible sidebar category 'Cluster Management'" [ref=e162] [cursor=pointer]
+                      - listitem [ref=e163]:
+                        - generic [ref=e164]:
+                          - link "Networking" [ref=e165] [cursor=pointer]:
+                            - /url: /clusters/edge/networking/
+                          - button "Toggle the collapsible sidebar category 'Networking'" [ref=e166] [cursor=pointer]
+                      - listitem [ref=e167]:
+                        - generic [ref=e168]:
+                          - link "Third Party Integrations" [ref=e169] [cursor=pointer]:
+                            - /url: /clusters/edge/third-party-integrations/
+                          - button "Toggle the collapsible sidebar category 'Third Party Integrations'" [ref=e170] [cursor=pointer]
+                  - listitem [ref=e171]:
+                    - generic [ref=e172]:
+                      - link "Palette Virtual Clusters" [ref=e173] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e175]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e177] [cursor=pointer]
+                  - listitem [ref=e178]:
+                    - generic [ref=e179]:
+                      - link "Imported Clusters" [ref=e180] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e182]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e184] [cursor=pointer]
+                  - listitem [ref=e185]:
+                    - generic [ref=e186]:
+                      - link "Manage Clusters" [ref=e187] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e189]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e191] [cursor=pointer]
+                  - listitem [ref=e192]:
+                    - generic [ref=e193]:
+                      - link "Cluster Groups" [ref=e194] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e196]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e198] [cursor=pointer]
+                  - listitem [ref=e199]:
+                    - generic [ref=e200]:
+                      - link "Private Cloud Gateway" [ref=e201] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e203]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e205] [cursor=pointer]
+              - listitem [ref=e206]:
+                - generic [ref=e207]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e208] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e210]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e212] [cursor=pointer]
+              - listitem [ref=e213]:
+                - generic [ref=e214]:
+                  - link "Palette Dev Engine" [ref=e215] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e217]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e219] [cursor=pointer]
+              - listitem [ref=e220]:
+                - generic [ref=e221]:
+                  - link "Virtual Machine Orchestrator" [ref=e222] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e224]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e226] [cursor=pointer]
+              - listitem [ref=e227]:
+                - generic [ref=e228]:
+                  - link "Workspaces" [ref=e229] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e231]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e233] [cursor=pointer]
+              - listitem [ref=e234]:
+                - generic [ref=e235]:
+                  - link "Packs List" [ref=e236] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e238]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e240] [cursor=pointer]
+              - listitem [ref=e241]:
+                - generic [ref=e242]:
+                  - link "User & Role Management" [ref=e243] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e245]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e247] [cursor=pointer]
+              - listitem [ref=e248]:
+                - generic [ref=e249]:
+                  - link "Registries and Packs" [ref=e250] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e252]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e254] [cursor=pointer]
+              - listitem [ref=e255]:
+                - generic [ref=e256]:
+                  - link "Security" [ref=e257] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e259]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e261] [cursor=pointer]
+              - listitem [ref=e262]:
+                - generic [ref=e263]:
+                  - link "Audit Logs" [ref=e264] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e266]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e268] [cursor=pointer]
+              - listitem [ref=e269]:
+                - generic [ref=e270]:
+                  - link "Self-Hosted Palette" [ref=e271] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e273]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e275] [cursor=pointer]
+              - listitem [ref=e276]:
+                - generic [ref=e277]:
+                  - link "Palette VerteX" [ref=e278] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e280]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e282] [cursor=pointer]
+              - listitem [ref=e283]:
+                - generic [ref=e284]:
+                  - link "Tenant Administration" [ref=e285] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e287]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e289] [cursor=pointer]
+              - listitem [ref=e290]:
+                - generic [ref=e291]:
+                  - link "Automation" [ref=e292] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e294]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e296] [cursor=pointer]
+              - listitem [ref=e297]:
+                - generic [ref=e298]:
+                  - link "Troubleshooting" [ref=e299] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e301]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e303] [cursor=pointer]
+              - listitem [ref=e304]:
+                - link "Glossary" [ref=e305] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e307]
+                  - text: Glossary
+              - listitem [ref=e309]:
+                - generic [ref=e310]:
+                  - link "Compliance & Legal" [ref=e311] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e313]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e315] [cursor=pointer]
+              - listitem [ref=e316]:
+                - button "Privacy Settings" [ref=e317] [cursor=pointer]:
+                  - img [ref=e318]
+                  - text: Privacy Settings
+      - main [ref=e320]:
+        - generic [ref=e322]:
+          - generic [ref=e324]:
+            - article [ref=e325]:
+              - navigation "Breadcrumbs" [ref=e326]:
+                - list [ref=e327]:
+                  - listitem [ref=e328]:
+                    - link "Home page" [ref=e329] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e330]
+                  - listitem [ref=e332]:
+                    - link "Clusters" [ref=e333] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e334]:
+                    - link "Edge" [ref=e335] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                  - listitem [ref=e336]:
+                    - link "EdgeForge Workflow" [ref=e337] [cursor=pointer]:
+                      - /url: /clusters/edge/edgeforge-workflow/
+                  - listitem [ref=e338]:
+                    - generic [ref=e339]: Prepare User Data and Argument Files
+              - generic [ref=e340]:
+                - heading "Prepare User Data and Argument Files" [level=1] [ref=e342]
+                - paragraph [ref=e343]:
+                  - text: The EdgeForge process requires two configuration files. The
+                  - code [ref=e344]: .arg
+                  - text: file and the
+                  - code [ref=e345]: user-data
+                  - text: file. Each is responsible for a different aspect of the EdgeForge process. The
+                  - code [ref=e346]: .arg
+                  - text: file configures the build process itself as well as its output, while the
+                  - code [ref=e347]: user-data
+                  - text: file configures the Edge installer ISO. The following table briefly summarizes the differences between the two files.
+                - table [ref=e348]:
+                  - rowgroup [ref=e349]:
+                    - row "Aspect .arg File user-data File" [ref=e350]:
+                      - cell "Aspect" [ref=e351]:
+                        - strong [ref=e352]: Aspect
+                      - cell ".arg File" [ref=e353]:
+                        - strong [ref=e354]:
+                          - code [ref=e355]: .arg
+                          - text: File
+                      - cell "user-data File" [ref=e356]:
+                        - strong [ref=e357]:
+                          - code [ref=e358]: user-data
+                          - text: File
+                  - rowgroup [ref=e359]:
+                    - row "Purpose Configures the build process of the Edge Installer ISO and provider images. Configures the installation and the immediate post-installation environment of the Edge host." [ref=e360]:
+                      - cell "Purpose" [ref=e361]:
+                        - strong [ref=e362]: Purpose
+                      - cell "Configures the build process of the Edge Installer ISO and provider images." [ref=e363]
+                      - cell "Configures the installation and the immediate post-installation environment of the Edge host." [ref=e364]
+                    - row "When It's Applied During Edge artifact generation (before deployment). During actual Edge host installation (after ISO boot)." [ref=e365]:
+                      - cell "When It's Applied" [ref=e366]:
+                        - strong [ref=e367]: When It's Applied
+                      - cell "During Edge artifact generation (before deployment)." [ref=e368]
+                      - cell "During actual Edge host installation (after ISO boot)." [ref=e369]
+                    - row "Format Key-value pairs. YAML in cloud-init format" [ref=e370]:
+                      - cell "Format" [ref=e371]:
+                        - strong [ref=e372]: Format
+                      - cell "Key-value pairs." [ref=e373]
+                      - cell "YAML in cloud-init format" [ref=e374]:
+                        - text: YAML in
+                        - link "cloud-init" [ref=e375] [cursor=pointer]:
+                          - /url: https://cloudinit.readthedocs.io/
+                        - text: format
+                    - row "Main Contents Image architecture, OS/K8s versions, image registry information, secure boot settings, etc. Site information, proxy settings, network interfaces, cloud-init stages, tags, registration tokens." [ref=e376]:
+                      - cell "Main Contents" [ref=e377]:
+                        - strong [ref=e378]: Main Contents
+                      - cell "Image architecture, OS/K8s versions, image registry information, secure boot settings, etc." [ref=e379]
+                      - cell "Site information, proxy settings, network interfaces, cloud-init stages, tags, registration tokens." [ref=e380]
+                    - row "Focus Artifact generation and packaging. System initialization and registration." [ref=e381]:
+                      - cell "Focus" [ref=e382]:
+                        - strong [ref=e383]: Focus
+                      - cell "Artifact generation and packaging." [ref=e384]
+                      - cell "System initialization and registration." [ref=e385]
+                    - row "Controls What gets built and how. For example, FIPS, SELinux, installer ISO name. How the Edge host behaves post-install. For example, network config, certs, power off behavior." [ref=e386]:
+                      - cell "Controls" [ref=e387]:
+                        - strong [ref=e388]: Controls
+                      - cell "What gets built and how. For example, FIPS, SELinux, installer ISO name." [ref=e389]
+                      - cell "How the Edge host behaves post-install. For example, network config, certs, power off behavior." [ref=e390]
+                - paragraph [ref=e391]:
+                  - text: Since the
+                  - code [ref=e392]: .arg
+                  - text: file controls the build process, you must ensure you provide the correct settings during build. If you provide the wrong arguments or miss any arguments, you will need to restart the build process to make changes. With
+                  - code [ref=e393]: user-data
+                  - text: ", you have an additional opportunity to provide site-specific configuration during site deployment. This can replace, supplement, or override the installer configuration you provide to the installer ISO. For more information, refer to"
+                  - link "Apply Site User Data" [ref=e394] [cursor=pointer]:
+                    - /url: /clusters/edge/site-deployment/site-installation/site-user-data/
+                  - text: .
+                - paragraph [ref=e395]:
+                  - text: After installation, you can also use Local UI to make edits to the user data file before you create a cluster. Refer to
+                  - link "Edit User Data" [ref=e396] [cursor=pointer]:
+                    - /url: /clusters/edge/local-ui/host-management/edit-user-data/
+                  - text: for more information.
+                - paragraph [ref=e397]:
+                  - text: This article guides you through several important parameters in the
+                  - code [ref=e398]: .arg
+                  - text: file and configuration blocks in the
+                  - code [ref=e399]: user-data
+                  - text: file. However, you can use many additional parameters to further customize your installation. Review the
+                  - link "Edge Artifact Build Configurations" [ref=e400] [cursor=pointer]:
+                    - /url: /clusters/edge/edgeforge-workflow/palette-canvos/arg/
+                  - text: and
+                  - link "Installer Reference" [ref=e401] [cursor=pointer]:
+                    - /url: /clusters/edge/edge-configuration/installer-reference/
+                  - text: resource to learn more about all the supported configuration parameters you can use in the configuration user data.
+                - generic [ref=e402]:
+                  - generic [ref=e403]:
+                    - img [ref=e405]
+                    - text: tech preview
+                  - paragraph [ref=e408]:
+                    - text: The
+                    - link "Appliance Studio" [ref=e409] [cursor=pointer]:
+                      - /url: /deployment-modes/appliance-mode/appliance-studio/
+                    - text: is a Tech Preview feature and is subject to change. For production workloads, create the
+                    - code [ref=e410]: .arg
+                    - text: and
+                    - code [ref=e411]: user-data
+                    - text: files manually.
+                - heading "LimitationsDirect link to Limitations" [level=2] [ref=e412]:
+                  - text: Limitations
+                  - link "Direct link to Limitations" [ref=e413] [cursor=pointer]:
+                    - /url: "#limitations"
+                    - text: "#"
+                - list [ref=e414]:
+                  - listitem [ref=e415]:
+                    - paragraph [ref=e416]:
+                      - text: Appliance Studio validates the schema of your
+                      - code [ref=e417]: .arg
+                      - text: file and
+                      - code [ref=e418]: user-data
+                      - text: ", but it does not validate the value in each individual fields. Ensure that you input a valid value for each field to avoid creating invalid"
+                      - code [ref=e419]: .arg
+                      - text: and
+                      - code [ref=e420]: user-data
+                      - text: files.
+                  - listitem [ref=e421]:
+                    - paragraph [ref=e422]:
+                      - text: The
+                      - code [ref=e423]: install.extra-dirs-rootfs
+                      - text: parameter is not available in Appliance Studio. If you need to use this parameter, you need to either create the file manually, or add the parameter manually after downloading the
+                      - code [ref=e424]: user-data
+                      - text: file from Appliance Studio.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e425]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e426] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - generic [ref=e427]:
+                  - tablist [ref=e428]:
+                    - tab "Manual File Creation" [selected] [ref=e429] [cursor=pointer]
+                    - tab "Appliance Studio" [ref=e430] [cursor=pointer]
+                  - tabpanel [ref=e432]:
+                    - list [ref=e433]:
+                      - listitem [ref=e434]:
+                        - link "Git" [ref=e435] [cursor=pointer]:
+                          - /url: https://git-scm.com/downloads
+                        - text: . You can ensure git installation by issuing the
+                        - code [ref=e436]: git --version
+                        - text: command.
+                - heading "ProcedureDirect link to Procedure" [level=2] [ref=e437]:
+                  - text: Procedure
+                  - link "Direct link to Procedure" [ref=e438] [cursor=pointer]:
+                    - /url: "#procedure"
+                    - text: "#"
+                - generic [ref=e439]:
+                  - tablist [ref=e440]:
+                    - tab "Manual File Creation" [selected] [ref=e441] [cursor=pointer]
+                    - tab "Appliance Studio" [ref=e442] [cursor=pointer]
+                  - generic [ref=e443]:
+                    - tabpanel [ref=e444]:
+                      - list [ref=e445]:
+                        - listitem [ref=e446]:
+                          - paragraph [ref=e447]:
+                            - text: Clone the
+                            - strong [ref=e448]: CanvOS
+                            - text: repository.
+                          - generic [ref=e450]:
+                            - code [ref=e452]:
+                              - generic [ref=e453]: git clone https://github.com/spectrocloud/CanvOS.git
+                            - button "Copy code to clipboard" [ref=e455] [cursor=pointer]:
+                              - generic [ref=e456]:
+                                - img [ref=e457]
+                                - img [ref=e459]
+                          - paragraph [ref=e461]:
+                            - text: From the
+                            - strong [ref=e462]: CanvOS
+                            - text: directory, copy the
+                            - strong [ref=e463]: user-data.template
+                            - text: file and name the copy
+                            - strong [ref=e464]: user-data
+                            - text: . This is a template that you can use as a starting point to build your own user data file.
+                        - listitem [ref=e465]:
+                          - paragraph [ref=e466]: View the available git tag.
+                          - generic [ref=e468]:
+                            - code [ref=e470]:
+                              - generic [ref=e471]: git tag
+                            - button "Copy code to clipboard" [ref=e473] [cursor=pointer]:
+                              - generic [ref=e474]:
+                                - img [ref=e475]
+                                - img [ref=e477]
+                        - listitem [ref=e479]:
+                          - paragraph [ref=e480]: Check out the latest available tag. This guide uses the tag v4.6.21 as an example.
+                          - generic [ref=e482]:
+                            - code [ref=e484]:
+                              - generic [ref=e485]: git checkout v4.6.21
+                            - button "Copy code to clipboard" [ref=e487] [cursor=pointer]:
+                              - generic [ref=e488]:
+                                - img [ref=e489]
+                                - img [ref=e491]
+                      - heading "Prepare .arg FileDirect link to Prepare .arg File" [level=3] [ref=e493]:
+                        - text: Prepare .arg File
+                        - link "Direct link to Prepare .arg File" [ref=e494] [cursor=pointer]:
+                          - /url: "#prepare-arg-file"
+                          - text: "#"
+                      - list [ref=e495]:
+                        - listitem [ref=e496]:
+                          - paragraph [ref=e497]: Specify the system architecture and OS distribution and version. These configurations will apply to both the OS of your Edge host before and after cluster formation.
+                        - listitem [ref=e498]:
+                          - paragraph [ref=e499]: Specify the Kubernetes distribution and version. The Kubernetes distribution is used together with the OS distribution and version to create an immutable provider image that has your specified OS and Kubernetes.
+                          - paragraph [ref=e500]:
+                            - text: If you want to build multiple versions of a provider image with different Kubernetes versions, use the
+                            - code [ref=e501]: k8s_version.json
+                            - text: file in the repository. You must leave the
+                            - code [ref=e502]: K8s_VERSION
+                            - text: empty if you want to use the JSON file because it is only used when
+                            - code [ref=e503]: K8s_VERSION
+                            - text: is not detected as an argument.
+                        - listitem [ref=e504]:
+                          - paragraph [ref=e505]: Specify the image registry, image repository name, and image tag that will be used to tag your provider images. The custom tag, together with the Palette agent version (the same number as the Git tag you are using), the version and distribution of Kubernetes and the OS used by the image forms the tag of the image.
+                          - paragraph [ref=e506]:
+                            - text: For example, if your
+                            - code [ref=e507]: .arg
+                            - text: file contains the following arguments, the full image reference would be
+                            - code [ref=e508]: ttl.sh/ubuntu:k3s-1.32.1-v4.6.21-demo
+                            - text: .
+                          - generic [ref=e510]:
+                            - code [ref=e512]:
+                              - generic [ref=e513]: IMAGE_REGISTRY=ttl.sh
+                              - generic [ref=e514]: IMAGE_REPO=ubuntu
+                              - generic [ref=e515]: CUSTOM_TAG=demo
+                              - generic [ref=e516]: K8S_DISTRIBUTION=k3s
+                              - generic [ref=e517]: K8s_VERSION=1.31.7
+                              - generic [ref=e518]: OS_DISTRIBUTION=ubuntu
+                              - generic [ref=e519]: OS_VERSION=22
+                            - button "Copy code to clipboard" [ref=e521] [cursor=pointer]:
+                              - generic [ref=e522]:
+                                - img [ref=e523]
+                                - img [ref=e525]
+                        - listitem [ref=e527]:
+                          - paragraph [ref=e528]: (Optional) If your build machine isn't in a restricted network environment, or your build process does not require access to a proxy server, skip this step.
+                          - paragraph [ref=e529]:
+                            - text: You can use
+                            - code [ref=e530]: HTTP_PROXY
+                            - text: and
+                            - code [ref=e531]: HTTPS_PROXY
+                            - text: to specify the URLs of the proxy servers to be used for your build.
+                        - listitem [ref=e532]:
+                          - paragraph [ref=e533]:
+                            - text: Refer to
+                            - link "Edge Artifact Build Configurations" [ref=e534] [cursor=pointer]:
+                              - /url: /clusters/edge/edgeforge-workflow/palette-canvos/arg/
+                            - text: for a comprehensive list of arguments you can use to customize the build.
+                      - heading "Prepare User DataDirect link to Prepare User Data" [level=3] [ref=e535]:
+                        - text: Prepare User Data
+                        - link "Direct link to Prepare User Data" [ref=e536] [cursor=pointer]:
+                          - /url: "#prepare-user-data"
+                          - text: "#"
+                      - list [ref=e537]:
+                        - listitem [ref=e538]:
+                          - paragraph [ref=e539]:
+                            - text: Decide whether you want to deploy an Edge host that is managed locally or centrally by Palette. The default configuration is a centrally management Edge host. If you want to deploy an Edge host that is not connected to a Palette instance, you need to change the management mode to
+                            - code [ref=e540]: local
+                            - text: . Add the
+                            - code [ref=e541]: managementMode
+                            - text: parameter to under the
+                            - code [ref=e542]: stylus
+                            - text: parameter.
+                          - generic [ref=e544]:
+                            - code [ref=e546]:
+                              - generic [ref=e547]: "#cloud-config"
+                              - generic [ref=e548]: "stylus:"
+                              - generic [ref=e549]: "managementMode: local"
+                            - button "Copy code to clipboard" [ref=e551] [cursor=pointer]:
+                              - generic [ref=e552]:
+                                - img [ref=e553]
+                                - img [ref=e555]
+                          - paragraph [ref=e557]:
+                            - text: Edge hosts installed in local management mode require you to provide assets needed to provision clusters. For more information about the deployment lifecycle of locally managed Edge hosts, refer to
+                            - link "Edge Deployment Lifecycle" [ref=e558] [cursor=pointer]:
+                              - /url: /clusters/edge/edge-native-lifecycle/
+                            - text: .
+                        - listitem [ref=e559]:
+                          - paragraph [ref=e560]: If you want to deploy a locally managed Edge host, skip this step.
+                          - paragraph [ref=e561]:
+                            - text: If you want to deploy the Edge host in central management mode, you need to provide the Palette endpoint, in addition to either a registration token or QR code registration configuration. For more information about Edge host registration, refer to
+                            - link "Edge Host Registration" [ref=e562] [cursor=pointer]:
+                              - /url: /clusters/edge/site-deployment/site-installation/edge-host-registration/
+                            - text: . For example, the following configuration provides the default Palette endpoint, a registration token, an a project name.
+                          - generic [ref=e564]:
+                            - code [ref=e566]:
+                              - generic [ref=e567]: "#cloud-config"
+                              - generic [ref=e568]: "stylus:"
+                              - generic [ref=e569]: "site:"
+                              - generic [ref=e570]: "# The Palette API endpoint to use. The default value is api.spectrocloud.com."
+                              - generic [ref=e571]: "paletteEndpoint: api.spectrocloud.com"
+                              - generic [ref=e572]: "# The edgeHostToken is an auto-registration token to register the Edge host with Palette upon bootup."
+                              - generic [ref=e573]: "# This token can be generated by navigating to the Tenant Settings -> Registration Token."
+                              - generic [ref=e574]: "# Specify a name and select the project id with which the Edge host should register itself."
+                              - generic [ref=e575]: "edgeHostToken: aUAxxxxxxxxx0ChYCrO"
+                              - generic [ref=e576]: "# The Palette project ID the Edge host should pair with. This is an optional field if an edgeHostToken is used and the token was assigned to a project."
+                              - generic [ref=e577]: "projectUid: 12345677788"
+                            - generic [ref=e578]:
+                              - button "Toggle word wrap" [ref=e579] [cursor=pointer]:
+                                - img [ref=e580]
+                              - button "Copy code to clipboard" [ref=e582] [cursor=pointer]:
+                                - generic [ref=e583]:
+                                  - img [ref=e584]
+                                  - img [ref=e586]
+                      - heading "Configure Cloud Init Stages (Optional)Direct link to Configure Cloud Init Stages (Optional)" [level=4] [ref=e588]:
+                        - text: Configure Cloud Init Stages (Optional)
+                        - link "Direct link to Configure Cloud Init Stages (Optional)" [ref=e589] [cursor=pointer]:
+                          - /url: "#configure-cloud-init-stages-optional"
+                          - text: "#"
+                      - list [ref=e590]:
+                        - listitem [ref=e591]:
+                          - paragraph [ref=e592]:
+                            - text: Cloud-init stages allow you to configure your Edge host declaratively. For more information about cloud-init stages, refer to
+                            - link "Cloud-init Stages" [ref=e593] [cursor=pointer]:
+                              - /url: /clusters/edge/edge-configuration/cloud-init/
+                            - text: .
+                          - paragraph [ref=e594]:
+                            - text: To configure clout-init stages for your Edge host, use the
+                            - code [ref=e595]: stages
+                            - text: block. For example, the following configuration installs Amazon Systems Manager agent on your Edge host during the
+                            - code [ref=e596]: after-install-chroot
+                            - text: stage.
+                          - generic [ref=e598]:
+                            - code [ref=e600]:
+                              - generic [ref=e601]: "#cloud-config"
+                              - generic [ref=e602]: "stages:"
+                              - generic [ref=e603]: "after-install-chroot:"
+                              - generic [ref=e604]: "- name: \"Install SSM\""
+                              - generic [ref=e605]: "commands:"
+                              - generic [ref=e606]: "- snap install amazon-ssm-agent --classic"
+                            - button "Copy code to clipboard" [ref=e608] [cursor=pointer]:
+                              - generic [ref=e609]:
+                                - img [ref=e610]
+                                - img [ref=e612]
+                          - generic [ref=e614]:
+                            - generic [ref=e615]:
+                              - img [ref=e617]
+                              - text: tip
+                            - paragraph [ref=e620]:
+                              - text: You can also use the Operating System (OS) pack to apply additional customization using cloud-init stages. Both the Edge Installer configuration file and the OS pack support the usage of cloud-init stages. Refer to the
+                              - link "Cloud-Init Stages" [ref=e621] [cursor=pointer]:
+                                - /url: /clusters/edge/edge-configuration/cloud-init/
+                              - text: to learn more.
+                      - heading "Configure UsersDirect link to Configure Users" [level=4] [ref=e622]:
+                        - text: Configure Users
+                        - link "Direct link to Configure Users" [ref=e623] [cursor=pointer]:
+                          - /url: "#configure-users"
+                          - text: "#"
+                      - list [ref=e624]:
+                        - listitem [ref=e625]:
+                          - paragraph [ref=e626]:
+                            - text: If you would like to have SSH access to your Edge host, you must configure Operating System (OS) users on your Edge host. You can do this using the
+                            - code [ref=e627]: stages.initramfs.users
+                            - text: block. Replace
+                            - code [ref=e628]: USERNAME
+                            - text: with the name of your user and replace the value of the password with your password. You can also add the user to user groups, or add SSH keys to the list of authorized keys for that user.
+                          - generic [ref=e630]:
+                            - code [ref=e632]:
+                              - generic [ref=e633]: "#cloud-config"
+                              - generic [ref=e634]: "stages:"
+                              - generic [ref=e635]: "initramfs:"
+                              - generic [ref=e636]: "- users:"
+                              - generic [ref=e637]: "USERNAME:"
+                              - generic [ref=e638]: "passwd: ******"
+                              - generic [ref=e639]: "groups:"
+                              - generic [ref=e640]: "- sudo"
+                              - generic [ref=e641]: "ssh_authorized_keys:"
+                              - generic [ref=e642]: "- ssh-rsa AAAAB3N…"
+                              - generic [ref=e643]: "name: Create user and assign SSH key"
+                            - button "Copy code to clipboard" [ref=e645] [cursor=pointer]:
+                              - generic [ref=e646]:
+                                - img [ref=e647]
+                                - img [ref=e649]
+                      - heading "Configure Proxy Settings (Optional)Direct link to Configure Proxy Settings (Optional)" [level=4] [ref=e651]:
+                        - text: Configure Proxy Settings (Optional)
+                        - link "Direct link to Configure Proxy Settings (Optional)" [ref=e652] [cursor=pointer]:
+                          - /url: "#configure-proxy-settings-optional"
+                          - text: "#"
+                      - list [ref=e653]:
+                        - listitem [ref=e654]:
+                          - paragraph [ref=e655]: Optionally, you can configure HTTP/HTTPS proxy settings for your Edge host. This instructs the Edge host OS as well as the Palette agent to use the proxy server for outbound communications. Use the parameters from the table below to configure proxy settings for your Edge host.
+                          - paragraph [ref=e656]:
+                            - text: These settings are different from the proxy settings you provide to the
+                            - code [ref=e657]: .arg
+                            - text: file. The settings in the
+                            - code [ref=e658]: .arg
+                            - text: file apply to the builder machine during the build process, while the settings in
+                            - code [ref=e659]: user-data
+                            - text: apply to the Edge host after installation.
+                          - table [ref=e660]:
+                            - rowgroup [ref=e661]:
+                              - row "Parameter Description" [ref=e662]:
+                                - cell "Parameter" [ref=e663]
+                                - cell "Description" [ref=e664]
+                            - rowgroup [ref=e665]:
+                              - row "siteNetwork.httpProxy The URL of the HTTP proxy endpoint." [ref=e666]:
+                                - cell "siteNetwork.httpProxy" [ref=e667]:
+                                  - code [ref=e668]: siteNetwork.httpProxy
+                                - cell "The URL of the HTTP proxy endpoint." [ref=e669]
+                              - row "siteNetwork.httpsProxy The URL of the HTTPS proxy endpoint." [ref=e670]:
+                                - cell "siteNetwork.httpsProxy" [ref=e671]:
+                                  - code [ref=e672]: siteNetwork.httpsProxy
+                                - cell "The URL of the HTTPS proxy endpoint." [ref=e673]
+                              - row "siteNetwork.noProxy The list of IP addresses or CIDR ranges to exclude routing through the network proxy." [ref=e674]:
+                                - cell "siteNetwork.noProxy" [ref=e675]:
+                                  - code [ref=e676]: siteNetwork.noProxy
+                                - cell "The list of IP addresses or CIDR ranges to exclude routing through the network proxy." [ref=e677]
+                          - generic [ref=e678]:
+                            - generic [ref=e679]:
+                              - img [ref=e681]
+                              - text: warning
+                            - paragraph [ref=e684]:
+                              - text: The proxy settings in user data configure Palette services to use the proxy network. However, these settings do not automatically apply to application workloads. To configure applications to use the proxy configurations, refer to
+                              - link "Configure Applications to Use Proxy Server" [ref=e685] [cursor=pointer]:
+                                - /url: /clusters/cluster-management/cluster-proxy/
+                              - text: .
+                      - heading "Configure Post-Installation Behavior (Optional)Direct link to Configure Post-Installation Behavior (Optional)" [level=4] [ref=e686]:
+                        - text: Configure Post-Installation Behavior (Optional)
+                        - link "Direct link to Configure Post-Installation Behavior (Optional)" [ref=e687] [cursor=pointer]:
+                          - /url: "#configure-post-installation-behavior-optional"
+                          - text: "#"
+                      - list [ref=e688]:
+                        - listitem [ref=e689]:
+                          - paragraph [ref=e690]:
+                            - text: You can use some parameters of the
+                            - code [ref=e691]: install
+                            - text: block to configure what you'd like the Edge host to do after installation is complete. The default behavior for the Edge host is to stay on the "Installation Complete" screen, but you can configure it to power off or restart automatically. For example, the following configuration instructs the Edge host to power off automatically post-installation.
+                          - generic [ref=e693]:
+                            - code [ref=e695]:
+                              - generic [ref=e696]: "#cloud-config"
+                              - generic [ref=e697]: "install:"
+                              - generic [ref=e698]: "poweroff: true"
+                            - button "Copy code to clipboard" [ref=e700] [cursor=pointer]:
+                              - generic [ref=e701]:
+                                - img [ref=e702]
+                                - img [ref=e704]
+                          - generic [ref=e706]:
+                            - generic [ref=e707]:
+                              - img [ref=e709]
+                              - text: warning
+                            - paragraph [ref=e712]: If your want your Edge host to restart automatically, ensure that you remove the installation disk after the installation is complete and before the restart happens. Otherwise, the Edge host might start the installation process again.
+                    - text: "# # #"
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e713]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e714] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e715]:
+                  - text: You can use the
+                  - code [ref=e716]: +validate-user-data
+                  - text: build target of EdgeForge to validate that your user data follows the expected schema. You need to perform this action on an AMD64 (also known as x86_64) machine.
+                - paragraph [ref=e717]:
+                  - text: From the
+                  - strong [ref=e718]: CanvOS
+                  - text: directory, issue the following command to validate your user data.
+                - generic [ref=e720]:
+                  - code [ref=e722]:
+                    - generic [ref=e723]: sudo ./earthly.sh +validate-user-data
+                  - button "Copy code to clipboard" [ref=e725] [cursor=pointer]:
+                    - generic [ref=e726]:
+                      - img [ref=e727]
+                      - img [ref=e729]
+                - code [ref=e734]:
+                  - generic [ref=e735]: +validate-user-data | time=*2024-07-25T20:19:172* level=info msg="Validation successful"
+                - heading "Full .arg SamplesDirect link to Full .arg Samples" [level=2] [ref=e736]:
+                  - text: Full .arg Samples
+                  - link "Direct link to Full .arg Samples" [ref=e737] [cursor=pointer]:
+                    - /url: "#full-arg-samples"
+                    - text: "#"
+                - paragraph [ref=e738]:
+                  - text: The following are full examples of
+                  - code [ref=e739]: .arg
+                  - text: files for various use cases. Use these examples as a starting point to help you create
+                  - code [ref=e740]: .arg
+                  - text: files that fit your needs.
+                - heading "Trusted BootDirect link to Trusted Boot" [level=3] [ref=e741]:
+                  - text: Trusted Boot
+                  - link "Direct link to Trusted Boot" [ref=e742] [cursor=pointer]:
+                    - /url: "#trusted-boot"
+                    - text: "#"
+                - paragraph [ref=e743]:
+                  - link "Trusted Boot" [ref=e744] [cursor=pointer]:
+                    - /url: /clusters/edge/trusted-boot/
+                  - text: is a security feature that ensures the authenticity of the boot processes that are allowed to operate on your Edge device. To enable the feature, you must provide related arguments during the EdgeForge build process.
+                - generic [ref=e746]:
+                  - code [ref=e748]:
+                    - generic [ref=e749]: IMAGE_REGISTRY=ttl.sh
+                    - generic [ref=e750]: OS_DISTRIBUTION=Ubuntu
+                    - generic [ref=e751]: OS_VERSION=22
+                    - generic [ref=e752]: IMAGE_REPO=ubuntu-secure
+                    - generic [ref=e753]: CUSTOM_TAG=trusted-boot
+                    - generic [ref=e754]: K8S_DISTRIBUTION=rke2
+                    - generic [ref=e755]: ARCH=amd64
+                    - generic [ref=e756]: UPDATE_KERNEL=false
+                    - generic [ref=e757]: IS_UKI=true
+                  - button "Copy code to clipboard" [ref=e759] [cursor=pointer]:
+                    - generic [ref=e760]:
+                      - img [ref=e761]
+                      - img [ref=e763]
+                - paragraph [ref=e765]:
+                  - text: The
+                  - code [ref=e766]: .arg
+                  - text: file specifies
+                  - code [ref=e767]: IS_UKI
+                  - text: to be true which tells the EdgeForge to build a Unified Kernel Image (UKI) required for Trusted Boot. In addition, it also specifies the OS version and distribution, as well as the Kubernetes version.
+                - heading "Two-Node ModeDirect link to Two-Node Mode" [level=3] [ref=e768]:
+                  - text: Two-Node Mode
+                  - link "Direct link to Two-Node Mode" [ref=e769] [cursor=pointer]:
+                    - /url: "#two-node-mode"
+                    - text: "#"
+                - paragraph [ref=e770]:
+                  - text: Palette Edge allows you to provision highly available clusters with
+                  - link "two control plane nodes" [ref=e771] [cursor=pointer]:
+                    - /url: /clusters/edge/architecture/two-node/
+                  - text: . Since the implementation replaces etcd with Postgres, this alters the Kubernetes layer and requires a different provider image to be built than for regular etcd-backed clusters. Therefore, you must specify
+                  - code [ref=e772]: TWO_NODE=true
+                  - text: during the EdgeForge process in your
+                  - code [ref=e773]: .arg
+                  - text: file.
+                - generic [ref=e775]:
+                  - code [ref=e777]:
+                    - generic [ref=e778]: IMAGE_REGISTRY=ttl.sh
+                    - generic [ref=e779]: OS_DISTRIBUTION=Ubuntu
+                    - generic [ref=e780]: OS_VERSION=22
+                    - generic [ref=e781]: IMAGE_REPO=ubuntu
+                    - generic [ref=e782]: CUSTOM_TAG=two-node
+                    - generic [ref=e783]: K8S_DISTRIBUTION=k3s
+                    - generic [ref=e784]: ARCH=amd64
+                    - generic [ref=e785]: HTTPS_PROXY=10.10.155.162
+                    - generic [ref=e786]: HTTP_PROXY=
+                    - generic [ref=e787]: PROXY_CERT_PATH=/etc/certs/proxy-cert
+                    - generic [ref=e788]: UPDATE_KERNEL=false
+                  - button "Copy code to clipboard" [ref=e790] [cursor=pointer]:
+                    - generic [ref=e791]:
+                      - img [ref=e792]
+                      - img [ref=e794]
+                - paragraph [ref=e796]:
+                  - text: In addition, this
+                  - code [ref=e797]: .arg
+                  - text: file specifies an HTTPS proxy server, which means that the build process will communicate with the proxy server to gain access to the internet. This does not affect the finished artifacts that are built.
+                - heading "Full User Data SamplesDirect link to Full User Data Samples" [level=2] [ref=e798]:
+                  - text: Full User Data Samples
+                  - link "Direct link to Full User Data Samples" [ref=e799] [cursor=pointer]:
+                    - /url: "#full-user-data-samples"
+                    - text: "#"
+                - paragraph [ref=e800]: The following are full examples of user data files for various use cases. Use these examples as a starting point to help you create user data configurations that fit your needs.
+                - heading "Centrally Managed Sites - Multiple User Data ConfigurationDirect link to Centrally Managed Sites - Multiple User Data Configuration" [level=3] [ref=e801]:
+                  - text: Centrally Managed Sites - Multiple User Data Configuration
+                  - link "Direct link to Centrally Managed Sites - Multiple User Data Configuration" [ref=e802] [cursor=pointer]:
+                    - /url: "#centrally-managed-sites---multiple-user-data-configuration"
+                    - text: "#"
+                - paragraph [ref=e803]: In this example, two configuration user data files are used. The first one is used in the staging phase and is included with the Edge Installer image. Note how the first user data contains the registration information and creates a user group. A bootable USB stick applies the second user data at the physical site. The secondary user data includes network configurations specific to the edge location.
+                - paragraph [ref=e804]:
+                  - strong [ref=e805]: Staging
+                  - text: "- included with the Edge Installer."
+                - generic [ref=e807]:
+                  - code [ref=e809]:
+                    - generic [ref=e810]: "#cloud-config"
+                    - generic [ref=e811]: "stylus:"
+                    - generic [ref=e812]: "site:"
+                    - generic [ref=e813]: "paletteEndpoint: api.spectrocloud.com"
+                    - generic [ref=e814]: "edgeHostToken: <yourRegistrationToken>"
+                    - generic [ref=e815]: "tags:"
+                    - generic [ref=e816]: "city: chicago"
+                    - generic [ref=e817]: "building: building-1"
+                    - generic [ref=e818]: "install:"
+                    - generic [ref=e819]: "poweroff: true"
+                    - generic [ref=e820]: "stages:"
+                    - generic [ref=e821]: "initramfs:"
+                    - generic [ref=e822]: "- users:"
+                    - generic [ref=e823]: "kairos:"
+                    - generic [ref=e824]: "groups:"
+                    - generic [ref=e825]: "- sudo"
+                    - generic [ref=e826]: "passwd: kairos"
+                    - generic [ref=e827]: "name: Create user and assign to sudo group"
+                  - button "Copy code to clipboard" [ref=e829] [cursor=pointer]:
+                    - generic [ref=e830]:
+                      - img [ref=e831]
+                      - img [ref=e833]
+                - paragraph [ref=e835]:
+                  - strong [ref=e836]: Site
+                  - text: "- supplied at the edge location through a bootable USB drive. If specified, the"
+                  - code [ref=e837]: projectName
+                  - text: value overrides project information specified in the
+                  - code [ref=e838]: edgeHostToken
+                  - text: parameter. You can add optional tags to identify the city, building, and zip-code. If the edge site requires a proxy for an outbound connection, provide it in the network section of the site user data.
+                - generic [ref=e840]:
+                  - code [ref=e842]:
+                    - generic [ref=e843]: "#cloud-config"
+                    - generic [ref=e844]: "stylus:"
+                    - generic [ref=e845]: "site:"
+                    - generic [ref=e846]: "projectName: edge-sites"
+                    - generic [ref=e847]: "tags:"
+                    - generic [ref=e848]: "zip-code: 95135"
+                  - button "Copy code to clipboard" [ref=e850] [cursor=pointer]:
+                    - generic [ref=e851]:
+                      - img [ref=e852]
+                      - img [ref=e854]
+                - heading "Centrally Managed Sites - Single User DataDirect link to Centrally Managed Sites - Single User Data" [level=3] [ref=e856]:
+                  - text: Centrally Managed Sites - Single User Data
+                  - link "Direct link to Centrally Managed Sites - Single User Data" [ref=e857] [cursor=pointer]:
+                    - /url: "#centrally-managed-sites---single-user-data"
+                    - text: "#"
+                - paragraph [ref=e858]:
+                  - text: This example configuration is for a
+                  - emphasis [ref=e859]: centrally managed site
+                  - text: . In this scenario, only a single Edge Installer configuration user data is used for the entire deployment process.
+                - generic [ref=e861]:
+                  - code [ref=e863]:
+                    - generic [ref=e864]: "#cloud-config"
+                    - generic [ref=e865]: "stylus:"
+                    - generic [ref=e866]: "site:"
+                    - generic [ref=e867]: "paletteEndpoint: api.spectrocloud.com"
+                    - generic [ref=e868]: "edgeHostToken: <yourRegistrationToken>"
+                    - generic [ref=e869]: "projectName: edge-sites"
+                    - generic [ref=e870]: "tags:"
+                    - generic [ref=e871]: "city: chicago"
+                    - generic [ref=e872]: "building: building-1"
+                    - generic [ref=e873]: "zip-code: 95135"
+                    - generic [ref=e874]: "install:"
+                    - generic [ref=e875]: "poweroff: true"
+                    - generic [ref=e876]: "stages:"
+                    - generic [ref=e877]: "initramfs:"
+                    - generic [ref=e878]: "- users:"
+                    - generic [ref=e879]: "kairos:"
+                    - generic [ref=e880]: "groups:"
+                    - generic [ref=e881]: "- sudo"
+                    - generic [ref=e882]: "passwd: kairos"
+                    - generic [ref=e883]: "name: Create user and assign to sudo group"
+                  - button "Copy code to clipboard" [ref=e885] [cursor=pointer]:
+                    - generic [ref=e886]:
+                      - img [ref=e887]
+                      - img [ref=e889]
+                - heading "Apply Proxy & Certificate SettingsDirect link to Apply Proxy & Certificate Settings" [level=3] [ref=e891]:
+                  - text: Apply Proxy & Certificate Settings
+                  - link "Direct link to Apply Proxy & Certificate Settings" [ref=e892] [cursor=pointer]:
+                    - /url: "#apply-proxy--certificate-settings"
+                    - text: "#"
+                - paragraph [ref=e893]: This example showcases how you can include network settings in a user data configuration.
+                - generic [ref=e895]:
+                  - code [ref=e897]:
+                    - generic [ref=e898]: "#cloud-config"
+                    - generic [ref=e899]: "stylus:"
+                    - generic [ref=e900]: "site:"
+                    - generic [ref=e901]: "paletteEndpoint: api.spectrocloud.com"
+                    - generic [ref=e902]: "edgeHostToken: <yourRegistrationToken>"
+                    - generic [ref=e903]: "projectName: edge-sites"
+                    - generic [ref=e904]: "tags:"
+                    - generic [ref=e905]: "city: chicago"
+                    - generic [ref=e906]: "building: building-1"
+                    - generic [ref=e907]: "zip-code: 95135"
+                    - generic [ref=e908]: "network:"
+                    - generic [ref=e909]: "httpProxy: http://proxy.example.com"
+                    - generic [ref=e910]: "httpsProxy: https://proxy.example.com"
+                    - generic [ref=e911]: "noProxy: 10.10.128.10,10.0.0.0/8"
+                    - generic [ref=e912]: "nameserver: 1.1.1.1"
+                    - generic [ref=e913]: "# configure interface specific info. If omitted all interfaces will default to dhcp"
+                    - generic [ref=e914]: "interfaces:"
+                    - generic [ref=e915]: "enp0s3:"
+                    - generic [ref=e916]: "# type of network dhcp or static"
+                    - generic [ref=e917]: "type: static"
+                    - generic [ref=e918]: "# Ip address including the mask bits"
+                    - generic [ref=e919]: "ipAddress: 10.0.10.25/24"
+                    - generic [ref=e920]: "# Gateway for the static ip."
+                    - generic [ref=e921]: "gateway: 10.0.10.1"
+                    - generic [ref=e922]: "# interface specific nameserver"
+                    - generic [ref=e923]: "nameserver: 10.10.128.8"
+                    - generic [ref=e924]: "enp0s4:"
+                    - generic [ref=e925]: "type: dhcp"
+                    - generic [ref=e926]: "caCerts:"
+                    - generic [ref=e927]: "- |"
+                    - generic [ref=e928]: "------BEGIN CERTIFICATE------"
+                    - generic [ref=e929]: "*****************************"
+                    - generic [ref=e930]: "*****************************"
+                    - generic [ref=e931]: "------END CERTIFICATE------"
+                    - generic [ref=e932]: "- |"
+                    - generic [ref=e933]: "------BEGIN CERTIFICATE------"
+                    - generic [ref=e934]: "*****************************"
+                    - generic [ref=e935]: "*****************************"
+                    - generic [ref=e936]: "------END CERTIFICATE------"
+                    - generic [ref=e937]: "install:"
+                    - generic [ref=e938]: "poweroff: true"
+                    - generic [ref=e939]: "stages:"
+                    - generic [ref=e940]: "initramfs:"
+                    - generic [ref=e941]: "- users:"
+                    - generic [ref=e942]: "kairos:"
+                    - generic [ref=e943]: "groups:"
+                    - generic [ref=e944]: "- sudo"
+                    - generic [ref=e945]: "passwd: kairos"
+                    - generic [ref=e946]: "name: Create user and assign to sudo group"
+                  - generic [ref=e947]:
+                    - button "Toggle word wrap" [ref=e948] [cursor=pointer]:
+                      - img [ref=e949]
+                    - button "Copy code to clipboard" [ref=e951] [cursor=pointer]:
+                      - generic [ref=e952]:
+                        - img [ref=e953]
+                        - img [ref=e955]
+                - heading "Load Content From External RegistryDirect link to Load Content From External Registry" [level=3] [ref=e957]:
+                  - text: Load Content From External Registry
+                  - link "Direct link to Load Content From External Registry" [ref=e958] [cursor=pointer]:
+                    - /url: "#load-content-from-external-registry"
+                    - text: "#"
+                - paragraph [ref=e959]: In this example, content is downloaded from an external registry.
+                - generic [ref=e961]:
+                  - code [ref=e963]:
+                    - generic [ref=e964]: "#cloud-config"
+                    - generic [ref=e965]: "stylus:"
+                    - generic [ref=e966]: "registryCredentials:"
+                    - generic [ref=e967]: "domain: 10.10.254.254:8000/spectro-images"
+                    - generic [ref=e968]: "username: ubuntu"
+                    - generic [ref=e969]: "password: <yourPassword>"
+                    - generic [ref=e970]: "insecure: true"
+                    - generic [ref=e971]: "site:"
+                    - generic [ref=e972]: "debug: true"
+                    - generic [ref=e973]: "insecureSkipVerify: false"
+                    - generic [ref=e974]: "paletteEndpoint: api.console.spectrocloud.com"
+                    - generic [ref=e975]: "name: edge-appliance-1"
+                    - generic [ref=e976]: "caCerts:"
+                    - generic [ref=e977]: "- |"
+                    - generic [ref=e978]: "-----BEGIN CERTIFICATE-----"
+                    - generic [ref=e979]: "-----END CERTIFICATE-----"
+                    - generic [ref=e980]: "install:"
+                    - generic [ref=e981]: "poweroff: false"
+                    - generic [ref=e982]: "stages:"
+                    - generic [ref=e983]: "initramfs:"
+                    - generic [ref=e984]: "- users:"
+                    - generic [ref=e985]: "kairos:"
+                    - generic [ref=e986]: "groups:"
+                    - generic [ref=e987]: "- sudo"
+                    - generic [ref=e988]: "passwd: kairos"
+                    - generic [ref=e989]: "name: Create user and assign to sudo group"
+                  - button "Copy code to clipboard" [ref=e991] [cursor=pointer]:
+                    - generic [ref=e992]:
+                      - img [ref=e993]
+                      - img [ref=e995]
+                - heading "Create Bind MountsDirect link to Create Bind Mounts" [level=3] [ref=e997]:
+                  - text: Create Bind Mounts
+                  - link "Direct link to Create Bind Mounts" [ref=e998] [cursor=pointer]:
+                    - /url: "#create-bind-mounts"
+                    - text: "#"
+                - paragraph [ref=e999]:
+                  - text: Palette Edge allows you to create bind mounts from your Edge host to your cluster through the installer configuration file named
+                  - strong [ref=e1000]: user-data
+                  - text: ", which allows your cluster to use directories or files from your Edge host directly within your Kubernetes cluster. This setup is useful for scenarios where your applications are active in the cluster and need direct access to files or directories on the Edge host."
+                - paragraph [ref=e1001]:
+                  - text: Several packs require you set up bind mounts in order to function. For example, the
+                  - link "Portworx pack" [ref=e1002] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=csi-portworx-generic
+                  - text: requires several folders to be mounted on Edge deployments. You can use the
+                  - code [ref=e1003]: install.bind_mounts
+                  - text: parameter to specify folders to be mounted. For example, the following user data mounts three folders required by Portworx from the Edge host to the cluster.
+                - generic [ref=e1005]:
+                  - code [ref=e1007]:
+                    - generic [ref=e1008]: "#cloud-config"
+                    - generic [ref=e1009]: "stylus:"
+                    - generic [ref=e1010]: "site:"
+                    - generic [ref=e1011]: "debug: true"
+                    - generic [ref=e1012]: "insecureSkipVerify: false"
+                    - generic [ref=e1013]: "paletteEndpoint: api.console.spectrocloud.com"
+                    - generic [ref=e1014]: "name: edge-appliance-1"
+                    - generic [ref=e1015]: "caCerts:"
+                    - generic [ref=e1016]: "- |"
+                    - generic [ref=e1017]: "-----BEGIN CERTIFICATE-----"
+                    - generic [ref=e1018]: "-----END CERTIFICATE-----"
+                    - generic [ref=e1019]: "install:"
+                    - generic [ref=e1020]: "bind_mounts:"
+                    - generic [ref=e1021]: "- /etc/pwx"
+                    - generic [ref=e1022]: "- /var/lib/osd"
+                    - generic [ref=e1023]: "- /var/cores"
+                  - button "Copy code to clipboard" [ref=e1025] [cursor=pointer]:
+                    - generic [ref=e1026]:
+                      - img [ref=e1027]
+                      - img [ref=e1029]
+                - heading "Multiple User Data Use CaseDirect link to Multiple User Data Use Case" [level=2] [ref=e1031]:
+                  - text: Multiple User Data Use Case
+                  - link "Direct link to Multiple User Data Use Case" [ref=e1032] [cursor=pointer]:
+                    - /url: "#multiple-user-data-use-case"
+                    - text: "#"
+                - paragraph [ref=e1033]: If you don't need to apply any unique configurations on the device once it arrives at the physical site, then your site deployment flow would look like the following.
+                - paragraph [ref=e1034]:
+                  - img "The flow of an install process not requiring additional customization" [ref=e1035]
+                - paragraph [ref=e1036]: Should you need to apply different configurations once the device arrives at the physical site, you can use a secondary user data to support this use case.
+                - paragraph [ref=e1037]: Use the additional user data to override configurations from the previous user data that was flashed into the device or to inject new configuration settings. Using secondary user data at the physical site is a common pattern for organizations that need to change settings after powering on the Edge host at the physical location.
+                - paragraph [ref=e1038]: To use additional user data, create a bootable device, such as a USB stick, that contains the user data in the form of an ISO image. The Edge Installer will consume the additional user data during the installation process.
+                - paragraph [ref=e1039]:
+                  - img "The flow of an install process with an additional customization occurring at the physical site. The additional customization is using a USB stick to upload the new user data." [ref=e1040]
+                - paragraph [ref=e1041]: When creating your Edge Installer, you can embed the user data into the installer image to eliminate providing it via a USB drive.
+                - paragraph [ref=e1042]:
+                  - text: In the staging phase, you may identify user data parameter values that apply uniformly to all your edge sites. But you may also have some edge locations that require different configurations such as site network proxy, site certs, users and groups, etc. Site-specific configurations are typically not included in the Edge installer image. For the latter scenario, you can use a secondary user data configuration. Refer to the
+                  - link "Apply Site User Data" [ref=e1043] [cursor=pointer]:
+                    - /url: /clusters/edge/site-deployment/site-installation/site-user-data/
+                  - text: guide to learn more about applying secondary site-specific user data.
+                - generic [ref=e1044]:
+                  - generic [ref=e1045]:
+                    - img [ref=e1047]
+                    - text: info
+                  - paragraph [ref=e1050]: For your initial testing, your user data may include global settings and site-specific properties in a single user data. As you gain more experience, you should evaluate whether secondary site-specific user data is a better design for your use case.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e1051]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e1052] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e1053]:
+                  - text: After you have finalized your Installer configuration, you can build the configuration into the Edge Installer ISO, or turn the
+                  - strong [ref=e1054]: user-data
+                  - text: file into an ISO file to use before site deployment.
+                - list [ref=e1055]:
+                  - listitem [ref=e1056]:
+                    - paragraph [ref=e1057]:
+                      - text: Check out the
+                      - link "Build Edge Installer ISO" [ref=e1058] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/palette-canvos/
+                      - text: guide to learn how to build the Edge Installer ISO image.
+                  - listitem [ref=e1059]:
+                    - paragraph [ref=e1060]:
+                      - text: Check out the
+                      - link "Apply Site User Data" [ref=e1061] [cursor=pointer]:
+                        - /url: /clusters/edge/site-deployment/site-installation/site-user-data/
+                      - text: guide to learn how to provide site user data.
+              - generic [ref=e1062]:
+                - generic [ref=e1064]:
+                  - text: "Tags:"
+                  - list [ref=e1065]:
+                    - listitem [ref=e1066]:
+                      - link "edge" [ref=e1067] [cursor=pointer]:
+                        - /url: /tags/edge/
+                - link "Edit this page" [ref=e1070] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/edge/edgeforge-workflow/prepare-user-data.md
+                  - img [ref=e1071]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e1075]:
+              - link "Previous « EdgeForge Workflow" [ref=e1076] [cursor=pointer]:
+                - /url: /clusters/edge/edgeforge-workflow/
+                - generic [ref=e1077]: Previous
+                - generic [ref=e1078]: « EdgeForge Workflow
+              - link "Next Validate User Data »" [ref=e1079] [cursor=pointer]:
+                - /url: /clusters/edge/edgeforge-workflow/validate-user-data/
+                - generic [ref=e1080]: Next
+                - generic [ref=e1081]: Validate User Data »
+          - list [ref=e1084]:
+            - listitem [ref=e1085]:
+              - link "Limitations" [ref=e1086] [cursor=pointer]:
+                - /url: "#limitations"
+            - listitem [ref=e1087]:
+              - link "Prerequisites" [ref=e1088] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e1089]:
+              - link "Procedure" [ref=e1090] [cursor=pointer]:
+                - /url: "#procedure"
+              - list [ref=e1091]:
+                - listitem [ref=e1092]:
+                  - link "Prepare .arg File" [ref=e1093] [cursor=pointer]:
+                    - /url: "#prepare-arg-file"
+                - listitem [ref=e1094]:
+                  - link "Prepare User Data" [ref=e1095] [cursor=pointer]:
+                    - /url: "#prepare-user-data"
+                - listitem [ref=e1096]:
+                  - link "Create .arg File" [ref=e1097] [cursor=pointer]:
+                    - /url: "#create-arg-file"
+                - listitem [ref=e1098]:
+                  - link "Create user-data File" [ref=e1099] [cursor=pointer]:
+                    - /url: "#create-user-data-file"
+                - listitem [ref=e1100]:
+                  - link "(Optional) Create Presets for .arg and user-data Files" [ref=e1101] [cursor=pointer]:
+                    - /url: "#optional-create-presets-for-arg-and-user-data-files"
+            - listitem [ref=e1102]:
+              - link "Validate" [ref=e1103] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e1104]:
+              - link "Full .arg Samples" [ref=e1105] [cursor=pointer]:
+                - /url: "#full-arg-samples"
+              - list [ref=e1106]:
+                - listitem [ref=e1107]:
+                  - link "Trusted Boot" [ref=e1108] [cursor=pointer]:
+                    - /url: "#trusted-boot"
+                - listitem [ref=e1109]:
+                  - link "Two-Node Mode" [ref=e1110] [cursor=pointer]:
+                    - /url: "#two-node-mode"
+            - listitem [ref=e1111]:
+              - link "Full User Data Samples" [ref=e1112] [cursor=pointer]:
+                - /url: "#full-user-data-samples"
+              - list [ref=e1113]:
+                - listitem [ref=e1114]:
+                  - link "Centrally Managed Sites - Multiple User Data Configuration" [ref=e1115] [cursor=pointer]:
+                    - /url: "#centrally-managed-sites---multiple-user-data-configuration"
+                - listitem [ref=e1116]:
+                  - link "Centrally Managed Sites - Single User Data" [ref=e1117] [cursor=pointer]:
+                    - /url: "#centrally-managed-sites---single-user-data"
+                - listitem [ref=e1118]:
+                  - link "Apply Proxy & Certificate Settings" [ref=e1119] [cursor=pointer]:
+                    - /url: "#apply-proxy--certificate-settings"
+                - listitem [ref=e1120]:
+                  - link "Load Content From External Registry" [ref=e1121] [cursor=pointer]:
+                    - /url: "#load-content-from-external-registry"
+                - listitem [ref=e1122]:
+                  - link "Create Bind Mounts" [ref=e1123] [cursor=pointer]:
+                    - /url: "#create-bind-mounts"
+            - listitem [ref=e1124]:
+              - link "Multiple User Data Use Case" [ref=e1125] [cursor=pointer]:
+                - /url: "#multiple-user-data-use-case"
+            - listitem [ref=e1126]:
+              - link "Next Steps" [ref=e1127] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e1128] [cursor=pointer]:
+    - generic [ref=e1131]:
+      - img "Project Logo" [ref=e1132]
+      - paragraph [ref=e1133]: Ask AI
+```

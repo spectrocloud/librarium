@@ -1,0 +1,463 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                  - listitem [ref=e107]:
+                    - generic [ref=e108]:
+                      - link "Data Center Clusters" [ref=e109] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e111]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e113] [cursor=pointer]
+                  - listitem [ref=e114]:
+                    - generic [ref=e115]:
+                      - link "Edge" [ref=e116] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e118]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e120] [cursor=pointer]
+                  - listitem [ref=e121]:
+                    - generic [ref=e122]:
+                      - link "Palette Virtual Clusters" [ref=e123] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e125]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e127] [cursor=pointer]
+                  - listitem [ref=e128]:
+                    - generic [ref=e129]:
+                      - link "Imported Clusters" [ref=e130] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e132]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e134] [cursor=pointer]
+                  - listitem [ref=e135]:
+                    - generic [ref=e136]:
+                      - link "Manage Clusters" [ref=e137] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e139]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e141] [cursor=pointer]
+                  - listitem [ref=e142]:
+                    - generic [ref=e143]:
+                      - link "Cluster Groups" [ref=e144] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e146]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e148] [cursor=pointer]
+                  - listitem [ref=e149]:
+                    - generic [ref=e150]:
+                      - link "Private Cloud Gateway" [expanded] [ref=e151] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e153]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e155] [cursor=pointer]
+                    - list [ref=e156]:
+                      - listitem [ref=e157]:
+                        - link "Architecture" [ref=e158] [cursor=pointer]:
+                          - /url: /clusters/pcg/architecture/
+                      - listitem [ref=e159]:
+                        - generic [ref=e160]:
+                          - link "Deploy a PCG with Palette CLI" [ref=e161] [cursor=pointer]:
+                            - /url: /clusters/pcg/deploy-pcg/
+                          - button "Toggle the collapsible sidebar category 'Deploy a PCG with Palette CLI'" [ref=e162] [cursor=pointer]
+                      - listitem [ref=e163]:
+                        - link "Deploy a PCG to an Existing Kubernetes Cluster" [ref=e164] [cursor=pointer]:
+                          - /url: /clusters/pcg/deploy-pcg-k8s/
+                      - listitem [ref=e165]:
+                        - generic [ref=e166]:
+                          - link "Manage PCG" [expanded] [ref=e167] [cursor=pointer]:
+                            - /url: /clusters/pcg/manage-pcg/
+                          - button "Toggle the collapsible sidebar category 'Manage PCG'" [ref=e168] [cursor=pointer]
+                        - list [ref=e169]:
+                          - listitem [ref=e170]:
+                            - link "Create and Manage IPAM Node Pools" [ref=e171] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/create-manage-node-pool/
+                          - listitem [ref=e172]:
+                            - link "Enable and Manage Proxy Configurations" [ref=e173] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/configure-proxy/
+                          - listitem [ref=e174]:
+                            - link "Add DNS Mapping" [ref=e175] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/add-dns-mapping/
+                          - listitem [ref=e176]:
+                            - link "Increase PCG Node Count" [ref=e177] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/scale-pcg-nodes/
+                          - listitem [ref=e178]:
+                            - link "Delete a PCG" [ref=e179] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/remove-pcg/
+                          - listitem [ref=e180]:
+                            - link "Upgrade a PCG" [ref=e181] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/pcg-upgrade/
+                          - listitem [ref=e182]:
+                            - link "Migrate a PCG" [ref=e183] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/migrate_pcg/
+                          - listitem [ref=e184]:
+                            - link "Override Registry Configuration" [ref=e185] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/registry-override/
+              - listitem [ref=e186]:
+                - generic [ref=e187]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e188] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e190]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e192] [cursor=pointer]
+              - listitem [ref=e193]:
+                - generic [ref=e194]:
+                  - link "Palette Dev Engine" [ref=e195] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e197]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e199] [cursor=pointer]
+              - listitem [ref=e200]:
+                - generic [ref=e201]:
+                  - link "Virtual Machine Orchestrator" [ref=e202] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e204]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e206] [cursor=pointer]
+              - listitem [ref=e207]:
+                - generic [ref=e208]:
+                  - link "Workspaces" [ref=e209] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e211]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e213] [cursor=pointer]
+              - listitem [ref=e214]:
+                - generic [ref=e215]:
+                  - link "Packs List" [ref=e216] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e218]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e220] [cursor=pointer]
+              - listitem [ref=e221]:
+                - generic [ref=e222]:
+                  - link "User & Role Management" [ref=e223] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e225]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e227] [cursor=pointer]
+              - listitem [ref=e228]:
+                - generic [ref=e229]:
+                  - link "Registries and Packs" [ref=e230] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e232]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e234] [cursor=pointer]
+              - listitem [ref=e235]:
+                - generic [ref=e236]:
+                  - link "Security" [ref=e237] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e239]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e241] [cursor=pointer]
+              - listitem [ref=e242]:
+                - generic [ref=e243]:
+                  - link "Audit Logs" [ref=e244] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e246]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e248] [cursor=pointer]
+              - listitem [ref=e249]:
+                - generic [ref=e250]:
+                  - link "Self-Hosted Palette" [ref=e251] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e253]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e255] [cursor=pointer]
+              - listitem [ref=e256]:
+                - generic [ref=e257]:
+                  - link "Palette VerteX" [ref=e258] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e260]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e262] [cursor=pointer]
+              - listitem [ref=e263]:
+                - generic [ref=e264]:
+                  - link "Tenant Administration" [ref=e265] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e267]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e269] [cursor=pointer]
+              - listitem [ref=e270]:
+                - generic [ref=e271]:
+                  - link "Automation" [ref=e272] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e274]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e276] [cursor=pointer]
+              - listitem [ref=e277]:
+                - generic [ref=e278]:
+                  - link "Troubleshooting" [ref=e279] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e281]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e283] [cursor=pointer]
+              - listitem [ref=e284]:
+                - link "Glossary" [ref=e285] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e287]
+                  - text: Glossary
+              - listitem [ref=e289]:
+                - generic [ref=e290]:
+                  - link "Compliance & Legal" [ref=e291] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e293]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e295] [cursor=pointer]
+              - listitem [ref=e296]:
+                - button "Privacy Settings" [ref=e297] [cursor=pointer]:
+                  - img [ref=e298]
+                  - text: Privacy Settings
+      - main [ref=e300]:
+        - generic [ref=e302]:
+          - generic [ref=e304]:
+            - article [ref=e305]:
+              - navigation "Breadcrumbs" [ref=e306]:
+                - list [ref=e307]:
+                  - listitem [ref=e308]:
+                    - link "Home page" [ref=e309] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e310]
+                  - listitem [ref=e312]:
+                    - link "Clusters" [ref=e313] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e314]:
+                    - link "Private Cloud Gateway" [ref=e315] [cursor=pointer]:
+                      - /url: /clusters/pcg/
+                  - listitem [ref=e316]:
+                    - link "Manage PCG" [ref=e317] [cursor=pointer]:
+                      - /url: /clusters/pcg/manage-pcg/
+                  - listitem [ref=e318]:
+                    - generic [ref=e319]: Upgrade a PCG
+              - generic [ref=e320]:
+                - heading "Upgrade a PCG" [level=1] [ref=e322]
+                - paragraph [ref=e323]: "A PCG upgrade event can be broken down into two categories: Palette agent updates and cluster profile updates. Depending on the upgrade event, different steps are required to complete the upgrade. The cluster profile for a PCG is locked down and cannot be changed by a user. However, when a PCG cluster profile update is available, you must manually approve the update to apply changes."
+                - generic [ref=e324]:
+                  - generic [ref=e325]:
+                    - img [ref=e327]
+                    - text: info
+                  - paragraph [ref=e330]:
+                    - text: Upgrading a PCG has no impact on deployed host clusters. The PCG upgrade process only affects the PCG cluster itself. Refer to the
+                    - link "Cluster Lifecycle Support" [ref=e331] [cursor=pointer]:
+                      - /url: /clusters/pcg/architecture/#cluster-lifecycle-support
+                    - text: to learn more about how a PCG supports the lifecycle of a host cluster.
+                - paragraph [ref=e332]: Palette agent updates are tied to the Palette platform version. Self-hosted Palette instances must upgrade to the next minor or major version to receive the latest Palette agent and cluster profile updates that are compatible with the new version of Palette. For example, if you are on Palette 4.1.12, you must upgrade to next minor version, Palette 4.2.0 or greater to receive the latest Palette agent updates that are compatible with Palette 4.2.x. We recommend you check for cluster profile updates after upgrading your self-hosted Palette instance to a new version.
+                - paragraph [ref=e333]: The table below outlines a high-level overview of the upgrade process for a PCG and each of its components.
+                - table [ref=e334]:
+                  - rowgroup [ref=e335]:
+                    - row "Component User Action Required? Expected PCG Downtime? Supported PCG Type? Description" [ref=e336]:
+                      - cell "Component" [ref=e337]
+                      - cell "User Action Required?" [ref=e338]
+                      - cell "Expected PCG Downtime?" [ref=e339]
+                      - cell "Supported PCG Type?" [ref=e340]
+                      - cell "Description" [ref=e341]
+                  - rowgroup [ref=e342]:
+                    - row "Palette Agent No No All Automatically updated unless platform updates or cluster updates are paused. Refer to the Pause Platform Upgrades to learn more about pausing updates." [ref=e343]:
+                      - cell "Palette Agent" [ref=e344]
+                      - cell "No" [ref=e345]
+                      - cell "No" [ref=e346]
+                      - cell "All" [ref=e347]
+                      - cell "Automatically updated unless platform updates or cluster updates are paused. Refer to the Pause Platform Upgrades to learn more about pausing updates." [ref=e348]:
+                        - text: Automatically updated unless platform updates or cluster updates are paused. Refer to the
+                        - link "Pause Platform Upgrades" [ref=e349] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/platform-settings/pause-platform-upgrades/
+                        - text: to learn more about pausing updates.
+                    - row "Cluster Profile Yes Potentially Only PCG clusters installed through Palette CLI Manually approve the cluster profile update to apply the latest cluster profile changes. Not all Palette version updates introduce cluster profile changes. PCG clusters installed on an existing Kubernetes cluster is not eligible for cluster profile updates. Refer to the Cluster Profile Updates to learn more." [ref=e350]:
+                      - cell "Cluster Profile" [ref=e351]
+                      - cell "Yes" [ref=e352]
+                      - cell "Potentially" [ref=e353]
+                      - cell "Only PCG clusters installed through Palette CLI" [ref=e354]
+                      - cell "Manually approve the cluster profile update to apply the latest cluster profile changes. Not all Palette version updates introduce cluster profile changes. PCG clusters installed on an existing Kubernetes cluster is not eligible for cluster profile updates. Refer to the Cluster Profile Updates to learn more." [ref=e355]:
+                        - text: Manually approve the cluster profile update to apply the latest cluster profile changes. Not all Palette version updates introduce cluster profile changes. PCG clusters installed on an existing Kubernetes cluster is not eligible for cluster profile updates. Refer to the
+                        - link "Cluster Profile Updates" [ref=e356] [cursor=pointer]:
+                          - /url: "#cluster-profile-updates"
+                        - text: to learn more.
+                - paragraph [ref=e357]: Review the following sections to learn more about the upgrade process for a PCG.
+                - heading "Palette Agent UpdatesDirect link to Palette Agent Updates" [level=2] [ref=e358]:
+                  - text: Palette Agent Updates
+                  - link "Direct link to Palette Agent Updates" [ref=e359] [cursor=pointer]:
+                    - /url: "#palette-agent-updates"
+                    - text: "#"
+                - paragraph [ref=e360]: Palette agent updates are automatically applied to the PCG cluster when a new version of the Palette agent is released. There are no manual user actions required for agent updates. The Palette agent is updated in the background and does not require downtime for the PCG cluster.
+                - paragraph [ref=e361]:
+                  - text: The Palette agent polls Palette for updates every 15 minutes and applies the update if a new version is available, unless platform updates or cluster updates are paused. If you do not want the Palette agent to be automatically updated, you can turn off the automatic agent update feature by disabling platform updates. Refer to
+                  - link "Pause Platform Upgrades" [ref=e362] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/platform-settings/pause-platform-upgrades/
+                  - text: for guidance on how to pause platform upgrades.
+                - generic [ref=e363]:
+                  - generic [ref=e364]:
+                    - img [ref=e366]
+                    - text: tip
+                  - paragraph [ref=e369]:
+                    - text: To check the current version of the Palette agent, navigate to the PCG cluster details page for the PCG cluster you want to check. The Palette agent version is displayed in the
+                    - strong [ref=e370]: Agent Version
+                    - text: field.
+                - heading "Cluster Profile UpdatesDirect link to Cluster Profile Updates" [level=2] [ref=e371]:
+                  - text: Cluster Profile Updates
+                  - link "Direct link to Cluster Profile Updates" [ref=e372] [cursor=pointer]:
+                    - /url: "#cluster-profile-updates"
+                    - text: "#"
+                - paragraph [ref=e373]: The cluster profile for a PCG is locked down and cannot be changed by a user. In the scenario when a cluster profile is update available, for example, when upgrading the underlying Kubernetes version of the PCG cluster, the PCG cluster detail's page will display a notification that a new version of the cluster profile is available.
+                - generic [ref=e374]:
+                  - generic [ref=e375]:
+                    - img [ref=e377]
+                    - text: warning
+                  - paragraph [ref=e380]:
+                    - text: A PCG installed onto an
+                    - link "existing Kubernetes cluster" [ref=e381] [cursor=pointer]:
+                      - /url: /clusters/pcg/deploy-pcg-k8s/
+                    - text: does not support cluster profile updates. Administrators of the Kubernetes cluster maintain the underlying Kubernetes version, Container Network Interface, and Container Storage Interface. Discuss Kubernetes updates with the administrator of the Kubernetes cluster. A Palette agent update is the only update event a PCG installed onto an existing Kubernetes cluster is eligible for and managed through Palette
+                - paragraph [ref=e382]:
+                  - img "A PCG details page displaying an eligible update" [ref=e383]
+                - paragraph [ref=e384]:
+                  - text: To upgrade the PCG cluster, click the
+                  - strong [ref=e385]: Updates
+                  - text: button to start the upgrade process. A cluster profile editor will appear, displaying the changes that will be made to the cluster profile. Review the changes and click
+                  - strong [ref=e386]: Confirm updates
+                  - text: to start the upgrade process. Depending on the changes, the upgrade process may take some time to complete, and the PCG cluster may be unavailable during the upgrade process. Refer to the
+                  - link "Update a Cluster Profile" [ref=e387] [cursor=pointer]:
+                    - /url: /profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile/#update-the-pack-version
+                  - text: to learn more about the cluster profile update process.
+                - paragraph [ref=e388]: Once a PCG cluster profile update is complete, an event log message stating "all control planes are updated" is displayed in the event log.
+                - heading "Upgrade PathDirect link to Upgrade Path" [level=2] [ref=e389]:
+                  - text: Upgrade Path
+                  - link "Direct link to Upgrade Path" [ref=e390] [cursor=pointer]:
+                    - /url: "#upgrade-path"
+                    - text: "#"
+                - paragraph [ref=e391]: Before upgrading a self-hosted Palette instance to a new minor or major version, allow the Palette agent in the PCG to automatically upgrade to the latest version and manually approve any pending cluster profile updates. This will help you avoid compatibility issues between the PCG and the upgraded Palette.
+                - paragraph [ref=e392]: The general guideline is to upgrade self-hosted Palette instances to the latest patch release of the current minor version, then upgrade to the next minor version. For a major version upgrade, ensure the latest minor version is applied before upgrading to the next major version.
+                - paragraph [ref=e393]: In between each version upgrade, ensure the Palette agent in the PCG and its cluster profile updates are applied. We recommend you allow approximately 30 min for the Palette agent to automatically update, followed by applying cluster profile updates, if applicable.
+                - paragraph [ref=e394]: For instance, if you are upgrading from Palette v3.4.x to v4.2.x, ensure both Palette agent and cluster profiles updates are applied for the latest patch release of v3.4.x. Then, upgrade to Palette v4.0.x.
+                - paragraph [ref=e395]: Repeat this process for each subsequent upgrade to Palette v4.1.0 and beyond.
+              - generic [ref=e396]:
+                - generic [ref=e398]:
+                  - text: "Tags:"
+                  - list [ref=e399]:
+                    - listitem [ref=e400]:
+                      - link "pcg" [ref=e401] [cursor=pointer]:
+                        - /url: /tags/pcg/
+                - link "Edit this page" [ref=e404] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/pcg/manage-pcg/pcg-upgrade.md
+                  - img [ref=e405]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e409]:
+              - link "Previous « Delete a PCG" [ref=e410] [cursor=pointer]:
+                - /url: /clusters/pcg/manage-pcg/remove-pcg/
+                - generic [ref=e411]: Previous
+                - generic [ref=e412]: « Delete a PCG
+              - link "Next Migrate a PCG »" [ref=e413] [cursor=pointer]:
+                - /url: /clusters/pcg/manage-pcg/migrate_pcg/
+                - generic [ref=e414]: Next
+                - generic [ref=e415]: Migrate a PCG »
+          - list [ref=e418]:
+            - listitem [ref=e419]:
+              - link "Palette Agent Updates" [ref=e420] [cursor=pointer]:
+                - /url: "#palette-agent-updates"
+            - listitem [ref=e421]:
+              - link "Cluster Profile Updates" [ref=e422] [cursor=pointer]:
+                - /url: "#cluster-profile-updates"
+            - listitem [ref=e423]:
+              - link "Upgrade Path" [ref=e424] [cursor=pointer]:
+                - /url: "#upgrade-path"
+  - button "Project Logo Ask AI" [ref=e425] [cursor=pointer]:
+    - generic [ref=e428]:
+      - img "Project Logo" [ref=e429]
+      - paragraph [ref=e430]: Ask AI
+```

@@ -1,0 +1,481 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Security" [ref=e150] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e152]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Audit Logs" [ref=e157] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e159]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Self-Hosted Palette" [ref=e164] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e166]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e168] [cursor=pointer]
+              - listitem [ref=e169]:
+                - generic [ref=e170]:
+                  - link "Palette VerteX" [expanded] [ref=e171] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e173]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e175] [cursor=pointer]
+                - list [ref=e176]:
+                  - listitem [ref=e177]:
+                    - generic [ref=e178]:
+                      - link "FIPS" [ref=e179] [cursor=pointer]:
+                        - /url: /vertex/fips/
+                      - button "Toggle the collapsible sidebar category 'FIPS'" [ref=e180] [cursor=pointer]
+                  - listitem [ref=e181]:
+                    - generic [ref=e182]:
+                      - link "Installation" [ref=e183] [cursor=pointer]:
+                        - /url: /vertex/install-palette-vertex/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e184] [cursor=pointer]
+                  - listitem [ref=e185]:
+                    - link "Activate VerteX" [ref=e186] [cursor=pointer]:
+                      - /url: /vertex/activate-installation/
+                  - listitem [ref=e187]:
+                    - link "Supported Platforms" [ref=e188] [cursor=pointer]:
+                      - /url: /vertex/supported-platforms/
+                  - listitem [ref=e189]:
+                    - generic [ref=e190]:
+                      - link "System Management" [expanded] [ref=e191] [cursor=pointer]:
+                        - /url: /vertex/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e192] [cursor=pointer]
+                    - list [ref=e193]:
+                      - listitem [ref=e194]:
+                        - generic [ref=e195]:
+                          - link "Account Management" [ref=e196] [cursor=pointer]:
+                            - /url: /vertex/system-management/account-management/
+                          - button "Toggle the collapsible sidebar category 'Account Management'" [ref=e197] [cursor=pointer]
+                      - listitem [ref=e198]:
+                        - link "Add System-Level Registry" [ref=e199] [cursor=pointer]:
+                          - /url: /vertex/system-management/add-registry/
+                      - listitem [ref=e200]:
+                        - link "Enable Adding AWS Accounts Using STS" [ref=e201] [cursor=pointer]:
+                          - /url: /vertex/system-management/configure-aws-sts-account/
+                      - listitem [ref=e202]:
+                        - link "Configure SMTP" [ref=e203] [cursor=pointer]:
+                          - /url: /vertex/system-management/smtp/
+                      - listitem [ref=e204]:
+                        - link "Configure Reverse Proxy" [ref=e205] [cursor=pointer]:
+                          - /url: /vertex/system-management/reverse-proxy/
+                      - listitem [ref=e206]:
+                        - generic [ref=e207]:
+                          - link "Enable non-FIPS Settings" [ref=e208] [cursor=pointer]:
+                            - /url: /vertex/system-management/enable-non-fips-settings/
+                          - button "Toggle the collapsible sidebar category 'Enable non-FIPS Settings'" [ref=e209] [cursor=pointer]
+                      - listitem [ref=e210]:
+                        - link "Customize Interface" [ref=e211] [cursor=pointer]:
+                          - /url: /vertex/system-management/customize-interface/
+                      - listitem [ref=e212]:
+                        - link "Feature Flags" [ref=e213] [cursor=pointer]:
+                          - /url: /vertex/system-management/feature-flags/
+                      - listitem [ref=e214]:
+                        - link "System Address Management" [ref=e215] [cursor=pointer]:
+                          - /url: /vertex/system-management/ssl-certificate-management/
+                      - listitem [ref=e216]:
+                        - link "Tenant Management" [ref=e217] [cursor=pointer]:
+                          - /url: /vertex/system-management/tenant-management/
+                      - listitem [ref=e218]:
+                        - link "Banners" [ref=e219] [cursor=pointer]:
+                          - /url: /vertex/system-management/login-banner/
+                      - listitem [ref=e220]:
+                        - link "Override Registry Configuration" [ref=e221] [cursor=pointer]:
+                          - /url: /vertex/system-management/registry-override/
+                      - listitem [ref=e222]:
+                        - link "Migrate SCAR to OCI Registry" [ref=e223] [cursor=pointer]:
+                          - /url: /vertex/system-management/scar-migration/
+                      - listitem [ref=e224]:
+                        - link "Modify Cloud Provider Configuration" [ref=e225] [cursor=pointer]:
+                          - /url: /vertex/system-management/change-cloud-config/
+                  - listitem [ref=e226]:
+                    - generic [ref=e227]:
+                      - link "Upgrade" [ref=e228] [cursor=pointer]:
+                        - /url: /vertex/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e229] [cursor=pointer]
+              - listitem [ref=e230]:
+                - generic [ref=e231]:
+                  - link "Tenant Administration" [ref=e232] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e234]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e236] [cursor=pointer]
+              - listitem [ref=e237]:
+                - generic [ref=e238]:
+                  - link "Automation" [ref=e239] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e241]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e243] [cursor=pointer]
+              - listitem [ref=e244]:
+                - generic [ref=e245]:
+                  - link "Troubleshooting" [ref=e246] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e248]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e250] [cursor=pointer]
+              - listitem [ref=e251]:
+                - link "Glossary" [ref=e252] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e254]
+                  - text: Glossary
+              - listitem [ref=e256]:
+                - generic [ref=e257]:
+                  - link "Compliance & Legal" [ref=e258] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e260]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e262] [cursor=pointer]
+              - listitem [ref=e263]:
+                - button "Privacy Settings" [ref=e264] [cursor=pointer]:
+                  - img [ref=e265]
+                  - text: Privacy Settings
+      - main [ref=e267]:
+        - generic [ref=e269]:
+          - generic [ref=e271]:
+            - article [ref=e272]:
+              - navigation "Breadcrumbs" [ref=e273]:
+                - list [ref=e274]:
+                  - listitem [ref=e275]:
+                    - link "Home page" [ref=e276] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e277]
+                  - listitem [ref=e279]:
+                    - link "Palette VerteX" [ref=e280] [cursor=pointer]:
+                      - /url: /vertex/
+                  - listitem [ref=e281]:
+                    - link "System Management" [ref=e282] [cursor=pointer]:
+                      - /url: /vertex/system-management/
+                  - listitem [ref=e283]:
+                    - generic [ref=e284]: Add System-Level Registry
+              - generic [ref=e285]:
+                - heading "Add System-Level Registry" [level=1] [ref=e287]
+                - paragraph [ref=e288]: You can add a registry at the system level or the tenant level. Registries added at the system level are available to all the tenants. Registries added at the tenant level are available only to that tenant.
+                - generic [ref=e289]:
+                  - generic [ref=e290]:
+                    - img [ref=e292]
+                    - text: info
+                  - paragraph [ref=e295]:
+                    - text: This section describes how to add a system scope registry. For guidance on adding a registry at the tenant scope, check out
+                    - link "Add a Tenant-Level Registry" [ref=e296] [cursor=pointer]:
+                      - /url: /tenant-settings/add-registry/
+                    - text: .
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e297]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e298] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e299]:
+                  - listitem [ref=e300]: Access to the Palette VerteX system console.
+                - heading "Add an OCI Pack RegistryDirect link to Add an OCI Pack Registry" [level=2] [ref=e301]:
+                  - text: Add an OCI Pack Registry
+                  - link "Direct link to Add an OCI Pack Registry" [ref=e302] [cursor=pointer]:
+                    - /url: "#add-an-oci-pack-registry"
+                    - text: "#"
+                - paragraph [ref=e303]: Use the following steps to add a system-level OCI pack registry.
+                - list [ref=e304]:
+                  - listitem [ref=e305]:
+                    - paragraph [ref=e306]:
+                      - text: Log in to the Palette VerteX system console. Refer to
+                      - link "Access the System Console" [ref=e307] [cursor=pointer]:
+                        - /url: /vertex/system-management/#access-the-system-console
+                      - text: guide.
+                  - listitem [ref=e308]:
+                    - paragraph [ref=e309]:
+                      - text: From the left
+                      - strong [ref=e310]: Main Menu
+                      - text: select
+                      - strong [ref=e311]: Administration
+                      - text: .
+                  - listitem [ref=e312]:
+                    - paragraph [ref=e313]:
+                      - text: Select the
+                      - strong [ref=e314]: Pack Registries
+                      - text: tab, and click on the
+                      - strong [ref=e315]: Add New Pack Registry
+                      - text: button.
+                  - listitem [ref=e316]:
+                    - paragraph [ref=e317]:
+                      - text: Provide a custom name for the registry, and select
+                      - strong [ref=e318]: OCI
+                      - text: as the registry type.
+                - paragraph [ref=e319]: Accessing the registry is different depending on the OCI authentication type you choose. Select the tab below that applies to your authentication method.
+                - generic [ref=e320]:
+                  - tablist [ref=e321]:
+                    - tab "Basic" [selected] [ref=e322] [cursor=pointer]
+                    - tab "ECR" [ref=e323] [cursor=pointer]
+                  - tabpanel [ref=e325]:
+                    - list [ref=e326]:
+                      - listitem [ref=e327]:
+                        - paragraph [ref=e328]:
+                          - text: Provide the registry URL in the
+                          - strong [ref=e329]: Endpoint
+                          - text: field.
+                      - listitem [ref=e330]:
+                        - paragraph [ref=e331]:
+                          - text: In the
+                          - strong [ref=e332]: Base Content Path
+                          - text: field, provide the base path or namespace of the repository you want to target in the registry.
+                      - listitem [ref=e333]:
+                        - paragraph [ref=e334]:
+                          - text: If you have credentials, provide them in the
+                          - strong [ref=e335]: Username
+                          - text: and
+                          - strong [ref=e336]: Password
+                          - text: fields. Otherwise, leave these fields blank.
+                      - listitem [ref=e337]:
+                        - paragraph [ref=e338]:
+                          - text: Click the
+                          - strong [ref=e339]: Validate
+                          - text: button. If the credentials you provided are correct, a
+                          - emphasis [ref=e340]: Credentials validated
+                          - text: success message with a green check is displayed.
+                      - listitem [ref=e341]:
+                        - paragraph [ref=e342]:
+                          - text: If an error message displays that pack registry details could not be validated, you can upload a self-signed Certificate Authority (CA) certificate. To do this, check the
+                          - strong [ref=e343]: Insecure Skip TLS Verify
+                          - text: box skip verifying the x509 certificate, and click
+                          - strong [ref=e344]: Upload file
+                          - text: to upload the certificate.
+                      - listitem [ref=e345]:
+                        - paragraph [ref=e346]:
+                          - text: When you have completed inputting values and credentials are validated, click
+                          - strong [ref=e347]: Confirm
+                          - text: to complete adding the registry.
+                - paragraph [ref=e348]: You have successfully added a system-level pack registry. Registries added at the system level can only be removed at that level.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e349]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e350] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e351]:
+                  - text: You can verify the registry has been added if VerteX displayed a
+                  - emphasis [ref=e352]: Credentials validated
+                  - text: success message with a green check when you added the registry. Use these steps to further verify the registry is added.
+                - list [ref=e353]:
+                  - listitem [ref=e354]:
+                    - paragraph [ref=e355]:
+                      - text: Log in to the Palette VerteX system console. Refer to
+                      - link "Access the System Console" [ref=e356] [cursor=pointer]:
+                        - /url: /vertex/system-management/#access-the-system-console
+                      - text: guide.
+                  - listitem [ref=e357]:
+                    - paragraph [ref=e358]:
+                      - text: From the left
+                      - strong [ref=e359]: Main Menu
+                      - text: select
+                      - strong [ref=e360]: Administration
+                      - text: .
+                  - listitem [ref=e361]:
+                    - paragraph [ref=e362]:
+                      - text: Select the
+                      - strong [ref=e363]: Pack Registries
+                      - text: tab and verify the registry you added is listed and available.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e364]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e365] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e366]:
+                  - listitem [ref=e367]:
+                    - paragraph [ref=e368]:
+                      - link "Add a Tenant-Level Registry" [ref=e369] [cursor=pointer]:
+                        - /url: /tenant-settings/add-registry/
+                  - listitem [ref=e370]:
+                    - paragraph [ref=e371]:
+                      - link "Use non-FIPS Packs" [ref=e372] [cursor=pointer]:
+                        - /url: /vertex/system-management/enable-non-fips-settings/use-non-fips-addon-packs/
+              - generic [ref=e373]:
+                - generic [ref=e375]:
+                  - text: "Tags:"
+                  - list [ref=e376]:
+                    - listitem [ref=e377]:
+                      - link "vertex" [ref=e378] [cursor=pointer]:
+                        - /url: /tags/vertex/
+                    - listitem [ref=e379]:
+                      - link "management" [ref=e380] [cursor=pointer]:
+                        - /url: /tags/management/
+                    - listitem [ref=e381]:
+                      - link "registry" [ref=e382] [cursor=pointer]:
+                        - /url: /tags/registry/
+                - link "Edit this page" [ref=e385] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vertex/system-management/add-registry.md
+                  - img [ref=e386]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e390]:
+              - link "Previous « Manage Password Blocklist" [ref=e391] [cursor=pointer]:
+                - /url: /vertex/system-management/account-management/password-blocklist/
+                - generic [ref=e392]: Previous
+                - generic [ref=e393]: « Manage Password Blocklist
+              - link "Next Enable Adding AWS Accounts Using STS »" [ref=e394] [cursor=pointer]:
+                - /url: /vertex/system-management/configure-aws-sts-account/
+                - generic [ref=e395]: Next
+                - generic [ref=e396]: Enable Adding AWS Accounts Using STS »
+          - list [ref=e399]:
+            - listitem [ref=e400]:
+              - link "Prerequisites" [ref=e401] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e402]:
+              - link "Add an OCI Pack Registry" [ref=e403] [cursor=pointer]:
+                - /url: "#add-an-oci-pack-registry"
+            - listitem [ref=e404]:
+              - link "Validate" [ref=e405] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e406]:
+              - link "Resources" [ref=e407] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e408] [cursor=pointer]:
+    - generic [ref=e411]:
+      - img "Project Logo" [ref=e412]
+      - paragraph [ref=e413]: Ask AI
+```

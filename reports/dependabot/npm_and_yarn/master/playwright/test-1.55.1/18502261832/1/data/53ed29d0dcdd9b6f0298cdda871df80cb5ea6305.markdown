@@ -1,0 +1,614 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Security" [ref=e150] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e152]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Audit Logs" [ref=e157] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e159]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Self-Hosted Palette" [expanded] [ref=e164] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e166]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e168] [cursor=pointer]
+                - list [ref=e169]:
+                  - listitem [ref=e170]:
+                    - generic [ref=e171]:
+                      - link "Installation" [ref=e172] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e173] [cursor=pointer]
+                  - listitem [ref=e174]:
+                    - link "Activate Palette" [ref=e175] [cursor=pointer]:
+                      - /url: /enterprise-version/activate-installation/
+                  - listitem [ref=e176]:
+                    - generic [ref=e177]:
+                      - link "System Management" [expanded] [ref=e178] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e179] [cursor=pointer]
+                    - list [ref=e180]:
+                      - listitem [ref=e181]:
+                        - generic [ref=e182]:
+                          - link "Account Management" [ref=e183] [cursor=pointer]:
+                            - /url: /enterprise-version/system-management/account-management/
+                          - button "Toggle the collapsible sidebar category 'Account Management'" [ref=e184] [cursor=pointer]
+                      - listitem [ref=e185]:
+                        - link "Add System-Level Registry" [ref=e186] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/add-registry/
+                      - listitem [ref=e187]:
+                        - link "Enable Adding AWS Accounts Using STS" [ref=e188] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/configure-aws-sts-account/
+                      - listitem [ref=e189]:
+                        - link "Backup and Restore" [ref=e190] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/backup-restore/
+                      - listitem [ref=e191]:
+                        - link "Configure SMTP" [ref=e192] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/smtp/
+                      - listitem [ref=e193]:
+                        - link "Configure Reverse Proxy" [ref=e194] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/reverse-proxy/
+                      - listitem [ref=e195]:
+                        - link "Customize Interface" [ref=e196] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/customize-interface/
+                      - listitem [ref=e197]:
+                        - link "Feature Flags" [ref=e198] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/feature-flags/
+                      - listitem [ref=e199]:
+                        - link "System Address Management" [ref=e200] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/ssl-certificate-management/
+                      - listitem [ref=e201]:
+                        - link "Tenant Management" [ref=e202] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/tenant-management/
+                      - listitem [ref=e203]:
+                        - link "Banners" [ref=e204] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/login-banner/
+                      - listitem [ref=e205]:
+                        - link "Override Registry Configuration" [ref=e206] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/registry-override/
+                      - listitem [ref=e207]:
+                        - link "Migrate SCAR to OCI Registry" [ref=e208] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/scar-migration/
+                      - listitem [ref=e209]:
+                        - link "Modify Cloud Provider Configuration" [ref=e210] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/change-cloud-config/
+                  - listitem [ref=e211]:
+                    - generic [ref=e212]:
+                      - link "Upgrade" [ref=e213] [cursor=pointer]:
+                        - /url: /enterprise-version/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - generic [ref=e216]:
+                  - link "Palette VerteX" [ref=e217] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e219]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e221] [cursor=pointer]
+              - listitem [ref=e222]:
+                - generic [ref=e223]:
+                  - link "Tenant Administration" [ref=e224] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e226]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e228] [cursor=pointer]
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "Automation" [ref=e231] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e233]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - generic [ref=e237]:
+                  - link "Troubleshooting" [ref=e238] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e240]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - link "Glossary" [ref=e244] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e246]
+                  - text: Glossary
+              - listitem [ref=e248]:
+                - generic [ref=e249]:
+                  - link "Compliance & Legal" [ref=e250] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e252]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e254] [cursor=pointer]
+              - listitem [ref=e255]:
+                - button "Privacy Settings" [ref=e256] [cursor=pointer]:
+                  - img [ref=e257]
+                  - text: Privacy Settings
+      - main [ref=e259]:
+        - generic [ref=e261]:
+          - generic [ref=e263]:
+            - article [ref=e264]:
+              - navigation "Breadcrumbs" [ref=e265]:
+                - list [ref=e266]:
+                  - listitem [ref=e267]:
+                    - link "Home page" [ref=e268] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e269]
+                  - listitem [ref=e271]:
+                    - link "Self-Hosted Palette" [ref=e272] [cursor=pointer]:
+                      - /url: /enterprise-version/
+                  - listitem [ref=e273]:
+                    - link "System Management" [ref=e274] [cursor=pointer]:
+                      - /url: /enterprise-version/system-management/
+                  - listitem [ref=e275]:
+                    - generic [ref=e276]: System Address Management
+              - generic [ref=e277]:
+                - heading "System Address Management" [level=1] [ref=e279]
+                - paragraph [ref=e280]:
+                  - text: Palette uses Secure Sockets Layer (SSL) certificates to secure internal and external communication with Hypertext Transfer Protocol Secure (HTTPS). External Palette endpoints, such as the
+                  - link "system console" [ref=e281] [cursor=pointer]:
+                    - /url: /enterprise-version/system-management/#system-console
+                  - text: ","
+                  - link "Palette dashboard" [ref=e282] [cursor=pointer]:
+                    - /url: /introduction/dashboard/
+                  - text: ", Palette API, and gRPC endpoints, are enabled by default with HTTPS using an auto-generated self-signed certificate."
+                - heading "Update System Address and CertificatesDirect link to Update System Address and Certificates" [level=2] [ref=e283]:
+                  - text: Update System Address and Certificates
+                  - link "Direct link to Update System Address and Certificates" [ref=e284] [cursor=pointer]:
+                    - /url: "#update-system-address-and-certificates"
+                    - text: "#"
+                - paragraph [ref=e285]: The Palette system console allows you to replace the self-signed certificate with a custom SSL certificate to secure these endpoints. Additionally, you can update the system address, which is the Fully Qualified Domain Name (FQDN) that you use to access your Palette installation. The system address and certificates may be updated simultaneously.
+                - paragraph [ref=e286]: Palette validates the combination of system address, certificate, key, and Certificate Authority (CA). Ensure that the certificate is not expired, as well as that it is valid for the CA and the system address. Additionally, the system address must be accessible from the system console.
+                - generic [ref=e287]:
+                  - generic [ref=e288]:
+                    - img [ref=e290]
+                    - text: warning
+                  - paragraph [ref=e293]:
+                    - text: You can swap out the external endpoint certificate at any time without affecting the system functionality. However, updating the system address may require manual reconciliation on deployed clusters. Review the
+                    - link "prerequisites" [ref=e294] [cursor=pointer]:
+                      - /url: "#prerequisites"
+                    - text: before you proceed to ensure you have all met all requirements.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e295]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e296] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e297]:
+                  - listitem [ref=e298]:
+                    - paragraph [ref=e299]: Access to the Palette system console.
+                  - listitem [ref=e300]:
+                    - paragraph [ref=e301]: You need to have an x509 certificate and a key file in PEM format. The certificate file must contain the full certificate chain. Reach out to your network administrator or security team if you do not have these files.
+                  - listitem [ref=e302]:
+                    - paragraph [ref=e303]:
+                      - text: A utility or tool to convert the certificate and key files to base64-encoded strings. You can use the
+                      - code [ref=e304]: base64
+                      - text: command in Unix-based systems. Alternatively, you can use an online tool to convert the files to base64-encoded strings.
+                  - listitem [ref=e305]:
+                    - paragraph [ref=e306]:
+                      - text: If you installed Palette on
+                      - link "Kubernetes" [ref=e307] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/install-on-kubernetes/
+                      - text: and specified a custom domain name, ensure that you created a certificate for that domain. If you did not specify a custom domain name, or if you installed Palette on
+                      - link "VMware" [ref=e308] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/install-on-vmware/
+                      - text: ", you must create a certificate for the Palette system console’s IP address. You can also specify a load balancer IP address if you are using a load balancer to access Palette."
+                  - listitem [ref=e309]:
+                    - paragraph [ref=e310]: The new SSL certificate must also include the previous DNS name or IP address in the Subject Alternative Name (SAN) field. This ensures that existing connections are not interrupted.
+                  - listitem [ref=e311]:
+                    - paragraph [ref=e312]:
+                      - text: If you are changing the DNS endpoint, ensure both the new and old DNS endpoints are accessible for some time, ideally sufficient time to ensure all existing Palette clusters have been updated to use the new endpoint and that no existing connections are interrupted. Refer to the
+                      - link "Reconcile System Address on Deployed Clusters" [ref=e313] [cursor=pointer]:
+                        - /url: "#reconcile-system-address-on-deployed-clusters"
+                      - text: section for more information on updating deployed clusters.
+                - heading "EnablementDirect link to Enablement" [level=3] [ref=e314]:
+                  - text: Enablement
+                  - link "Direct link to Enablement" [ref=e315] [cursor=pointer]:
+                    - /url: "#enablement"
+                    - text: "#"
+                - paragraph [ref=e316]: You can update your Palette system address and SSL certificates by using the following steps.
+                - list [ref=e317]:
+                  - listitem [ref=e318]:
+                    - paragraph [ref=e319]: Log in to the Palette system console.
+                  - listitem [ref=e320]:
+                    - paragraph [ref=e321]:
+                      - text: Navigate to the left
+                      - strong [ref=e322]: Main Menu
+                      - text: and select
+                      - strong [ref=e323]: Administration
+                      - text: .
+                  - listitem [ref=e324]:
+                    - paragraph [ref=e325]:
+                      - text: Select the
+                      - strong [ref=e326]: System Address
+                      - text: tab.
+                  - listitem [ref=e327]:
+                    - paragraph [ref=e328]:
+                      - text: Update your Palette domain in the
+                      - strong [ref=e329]: System Address (UI and API)
+                      - text: field.
+                  - listitem [ref=e330]:
+                    - paragraph [ref=e331]:
+                      - text: Convert the certificate, private key, and Certificate Authority (CA) chain to base64-encoded strings. In the following command, an example file,
+                      - strong [ref=e332]: certificate.crt
+                      - text: is output and converted to base64-encoded string using the
+                      - code [ref=e333]: base64
+                      - text: command.
+                    - generic [ref=e335]:
+                      - code [ref=e337]:
+                        - generic [ref=e338]: cat certificate.crt | base64
+                      - button "Copy code to clipboard" [ref=e340] [cursor=pointer]:
+                        - generic [ref=e341]:
+                          - img [ref=e342]
+                          - img [ref=e344]
+                    - generic [ref=e347]:
+                      - code [ref=e349]:
+                        - generic [ref=e350]: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURwRENDQW95Z0F3SUJBZ0lSQU1VYUZ3cytaUyszYnhzRmREZ0s0aWd3RFFZSktvWklodmNOQVFFTEJRQXcKWXpFTE1Ba0dBMVVFQmhNQ1NVNHhFakFRQmdOVkJBZ1RDVXRoY201aGRHRnJZVEVXTUJRR0ExVUVDaE1OVTNCbApZM1J5YnlCRGJHOTFaREVQTUEwR0ExVUVDeE1HU0hWaVlteGxNUmN3RlFZRFZRUURFdzVEUVNCRFpYSjBhV1pwClkyRjBaVEFlRncweU5ERXdNRGd5TWpBd05EaGFGdzB5TlRFd01EZ3lNakF3TkRoYU1IY3hDekFKQmdOVkJBWVQKQWtsT01SSXdFQVlEVlFRSUV3bExZWEp1WVhSaGEyRXhGakFVQmdOVkJBb1REVk53WldOMGNtOGdRMnh2ZFdReApEekFOQmdOVkJBc1RCa2gxWW1Kc1pURXJNQ2tHQTFVRUF4TWljR0ZzWlhSMFpTNWtiMk56TFhSbGMzUXVjM0JsClkzUnliMk5zYjNWa0xtTnZiVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFNZHMKUjk3enFKWjBpc1VYTWpkZVBzY3BRZTM2d0gxOVhKM0QyV2Q4dnk2MVZOcThNbnNGM1FZWmRLT2dpcGZVNnV5WQp3b3NqcnErRzE3Wm5lS2tzMG5iQ3BiU0M0MURyalJxYUp2YnJOMUdDTjJnYTNXaEVURzBEdi9PWjIwYlF0S2ZqCkJXcWNOY0p5Mm90N0hQZXRiVmEvSFNhZnE1OXJKMEQvaXJtVGJJcm1Fb0ZEMmpEWUx2eVpycEt5WVdmY3JWYjIKL09USmJGNXIwQndYVXNRTit4b0FhdnlsNXl2a1B2MWhwUHlxWkRUQmk3c290VEZJZDl3eHczeGdkU3JWZHQwdgpJWnc5WTN4NWxlaGZMQm5CSWo1RlBXdUJGNmxiZDhoazBaLzdtbTVybjRxalArMmphTzBzYlhRUnl4WjlJZys1CmliOHZRVEZUVFVmYmUvQTZ5T1VDQXdFQUFhTS9NRDB3REFZRFZSMFRBUUgvQkFJd0FEQXRCZ05WSFJFRUpqQWsKZ2lKd1lXeGxkSFJsTG1SdlkzTXRkR1Z6ZEM1emNHVmpkSEp2WTJ4dmRXUXVZMjl0TUEwR0NTcUdTSWIzRFFFQgpDd1VBQTRJQkFRQktxbGVuZVB0WjJ1cG9LbCsvRWNNUmF0cjNOTWRlWHFGM0R6bWZLMDJ5VlE4akZremdkdVI2CmJXclBBaXBBejRXSytOTTcwSnZTRzVpaVhtajd1ajU5S2ZPUDA4RWZjYy94Q1ErMGtYdTJXV2J5M0p5c0UxMjQKT2o3OEJlOXFkZ3Q1cXFCcU03OEFMYkVKU21Ha21zak9DcFFzMlV5d3E2L0RmZngxVVk4VS9FS3l1M2JUS1pmQgpMcDBoMzZjeU83MFVKZjJycWxVMVVLUnZsNmh3UkpFRXRjOW5iNzh4TVFic0RQRThaOUZBMXh3QW1qU1lSaGx5CjVUUjFQTnREVTd0MHROVWg1ZzlzSjVVTmhpbDkyZzZNZ3dLYjVRMXVxT0JjbFZMcHdzbVRrdERjTWlZM1dKTksKWTZsYjBBZVE0cVBZNkFiUmQrOXJnc2NvcGRPc2dqUkEKLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+                      - button "Toggle word wrap" [ref=e352] [cursor=pointer]:
+                        - img [ref=e353]
+                    - paragraph [ref=e355]: Repeat this step for the private key and Certificate Authority (CA) file.
+                  - listitem [ref=e356]:
+                    - paragraph [ref=e357]:
+                      - text: Copy and paste the base64-encoded certificate string into the
+                      - strong [ref=e358]: Certificate
+                      - text: field.
+                  - listitem [ref=e359]:
+                    - paragraph [ref=e360]:
+                      - text: Copy and paste the base64-encoded certificate key string into the
+                      - strong [ref=e361]: Key
+                      - text: field.
+                  - listitem [ref=e362]:
+                    - paragraph [ref=e363]:
+                      - text: Copy and paste the base64-encoded certificate authority chain string into the
+                      - strong [ref=e364]: Certificate Authority
+                      - text: field.
+                    - paragraph [ref=e365]:
+                      - img "A view of the certificate upload screen" [ref=e366]
+                  - listitem [ref=e367]:
+                    - paragraph [ref=e368]:
+                      - text: Click
+                      - strong [ref=e369]: Update
+                      - text: to save your changes.
+                  - listitem [ref=e370]:
+                    - paragraph [ref=e371]:
+                      - text: If you have any clusters deployed, you may need to reconcile the updated system address for each cluster. Refer to
+                      - link "Reconcile System Address on Deployed Clusters" [ref=e372] [cursor=pointer]:
+                        - /url: "#reconcile-system-address-on-deployed-clusters"
+                      - text: for more information.
+                - paragraph [ref=e373]: You will receive an error message if the provided values are not valid. Once the certificate is uploaded successfully, Palette will refresh its listening ports and start using the newly configured values.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e374]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e375] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e376]: You can validate that your certificate is uploaded correctly by using the following steps.
+                - list [ref=e377]:
+                  - listitem [ref=e378]:
+                    - paragraph [ref=e379]: Log out of the Palette system console. If you are already logged in, log out and close your browser session. Browsers cache connections and may not use the newly enabled HTTPS connection. Closing your existing browser session avoids issues related to your browser caching an HTTP connection.
+                  - listitem [ref=e380]:
+                    - paragraph [ref=e381]:
+                      - text: Log back into the Palette system console. Ensure the connection is secure by checking the URL. The URL should start with
+                      - code [ref=e382]: https://
+                      - text: .
+                - paragraph [ref=e383]: Palette is now using your uploaded certificate to create a secure HTTPS connection with external clients. Users can now securely access the system console, Palette dashboard, the gRPC endpoint, and the Palette API endpoint.
+                - heading "Reconcile System Address on Deployed ClustersDirect link to Reconcile System Address on Deployed Clusters" [level=2] [ref=e384]:
+                  - text: Reconcile System Address on Deployed Clusters
+                  - link "Direct link to Reconcile System Address on Deployed Clusters" [ref=e385] [cursor=pointer]:
+                    - /url: "#reconcile-system-address-on-deployed-clusters"
+                    - text: "#"
+                - paragraph [ref=e386]: Once you have updated your system address, the clusters that were deployed before the update will not be able to automatically reconnect to Palette if the old system address is no longer available. You will need to manually update the API endpoint on each cluster if this is the case. This enables the Palette agent to reconnect to the API at the newly configured system address.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e387]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e388] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e389]:
+                  - listitem [ref=e390]:
+                    - paragraph [ref=e391]: Palette access with a configured cloud account.
+                  - listitem [ref=e392]:
+                    - paragraph [ref=e393]:
+                      - text: A cluster deployed prior to the system address update. Refer to the
+                      - link "Clusters" [ref=e394] [cursor=pointer]:
+                        - /url: /clusters/
+                      - text: section for further guidance.
+                  - listitem [ref=e395]:
+                    - paragraph [ref=e396]:
+                      - code [ref=e397]: kubectl
+                      - text: installed. Use the Kubernetes
+                      - link "Install Tools" [ref=e398] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/tasks/tools/
+                      - text: page for further guidance.
+                - heading "EnablementDirect link to Enablement" [level=3] [ref=e399]:
+                  - text: Enablement
+                  - link "Direct link to Enablement" [ref=e400] [cursor=pointer]:
+                    - /url: "#enablement-1"
+                    - text: "#"
+                - list [ref=e401]:
+                  - listitem [ref=e402]:
+                    - paragraph [ref=e403]: Log into Palette using the configured system address.
+                  - listitem [ref=e404]:
+                    - paragraph [ref=e405]:
+                      - text: Navigate to the left
+                      - strong [ref=e406]: Main Menu
+                      - text: and select
+                      - strong [ref=e407]: Clusters
+                      - text: . Palette displays your deployed clusters. The clusters that have the
+                      - strong [ref=e408]: Unknown
+                      - text: status need to be manually updated.
+                  - listitem [ref=e409]:
+                    - paragraph [ref=e410]:
+                      - text: Select your cluster from the
+                      - strong [ref=e411]: Clusters
+                      - text: list. The cluster
+                      - strong [ref=e412]: Overview
+                      - text: tab displays.
+                  - listitem [ref=e413]:
+                    - paragraph [ref=e414]:
+                      - text: Download the kubeconfig file. This file allows you to connect to your deployed cluster. Check out the
+                      - link "Kubeconfig" [ref=e415] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/kubeconfig/
+                      - text: page to learn more.
+                  - listitem [ref=e416]:
+                    - paragraph [ref=e417]:
+                      - text: Open a terminal window and set the environment variable
+                      - code [ref=e418]: KUBECONFIG
+                      - text: to point to the file you downloaded.
+                    - generic [ref=e420]:
+                      - code [ref=e422]:
+                        - generic [ref=e423]: export KUBECONFIG=<path-to-downloaded-kubeconfig-file>
+                      - button "Copy code to clipboard" [ref=e425] [cursor=pointer]:
+                        - generic [ref=e426]:
+                          - img [ref=e427]
+                          - img [ref=e429]
+                  - listitem [ref=e431]:
+                    - paragraph [ref=e432]:
+                      - text: Execute the following command in your terminal to view the cluster namespaces. Make a note of the cluster namespace that Palette has created. Its name follows the pattern
+                      - strong [ref=e433]: cluster-id
+                      - text: .
+                    - generic [ref=e435]:
+                      - code [ref=e437]:
+                        - generic [ref=e438]: kubectl get namespaces
+                      - button "Copy code to clipboard" [ref=e440] [cursor=pointer]:
+                        - generic [ref=e441]:
+                          - img [ref=e442]
+                          - img [ref=e444]
+                  - listitem [ref=e446]:
+                    - paragraph [ref=e447]:
+                      - text: Palette uses ConfigMaps to save its configuration and environment variables. Update the
+                      - code [ref=e448]: apiEndpoint
+                      - text: value in the
+                      - code [ref=e449]: hubble-info
+                      - text: ConfigMap to use the newly configured system address.
+                    - generic [ref=e451]:
+                      - code [ref=e453]:
+                        - generic [ref=e454]: kubectl edit configmap hubble-info --namespace <cluster-id>
+                      - button "Copy code to clipboard" [ref=e456] [cursor=pointer]:
+                        - generic [ref=e457]:
+                          - img [ref=e458]
+                          - img [ref=e460]
+                  - listitem [ref=e462]:
+                    - paragraph [ref=e463]: Save your changes and exit the editor.
+                - paragraph [ref=e464]:
+                  - text: Repeat these steps for each cluster that has the
+                  - strong [ref=e465]: Unknown
+                  - text: status.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e466]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e467] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - list [ref=e468]:
+                  - listitem [ref=e469]:
+                    - paragraph [ref=e470]: Log into Palette using the configured system address.
+                  - listitem [ref=e471]:
+                    - paragraph [ref=e472]:
+                      - text: Navigate to the left
+                      - strong [ref=e473]: Main Menu
+                      - text: and select
+                      - strong [ref=e474]: Clusters
+                      - text: .
+                  - listitem [ref=e475]:
+                    - paragraph [ref=e476]:
+                      - text: Palette successfully displays the status of your clusters. None of your clusters has the
+                      - strong [ref=e477]: Unknown
+                      - text: status.
+              - generic [ref=e478]:
+                - generic [ref=e480]:
+                  - text: "Tags:"
+                  - list [ref=e481]:
+                    - listitem [ref=e482]:
+                      - link "palette" [ref=e483] [cursor=pointer]:
+                        - /url: /tags/palette/
+                    - listitem [ref=e484]:
+                      - link "management" [ref=e485] [cursor=pointer]:
+                        - /url: /tags/management/
+                - link "Edit this page" [ref=e488] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/enterprise-version/system-management/ssl-certificate-management.md
+                  - img [ref=e489]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e493]:
+              - link "Previous « Feature Flags" [ref=e494] [cursor=pointer]:
+                - /url: /enterprise-version/system-management/feature-flags/
+                - generic [ref=e495]: Previous
+                - generic [ref=e496]: « Feature Flags
+              - link "Next Tenant Management »" [ref=e497] [cursor=pointer]:
+                - /url: /enterprise-version/system-management/tenant-management/
+                - generic [ref=e498]: Next
+                - generic [ref=e499]: Tenant Management »
+          - list [ref=e502]:
+            - listitem [ref=e503]:
+              - link "Update System Address and Certificates" [ref=e504] [cursor=pointer]:
+                - /url: "#update-system-address-and-certificates"
+              - list [ref=e505]:
+                - listitem [ref=e506]:
+                  - link "Prerequisites" [ref=e507] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e508]:
+                  - link "Enablement" [ref=e509] [cursor=pointer]:
+                    - /url: "#enablement"
+                - listitem [ref=e510]:
+                  - link "Validate" [ref=e511] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e512]:
+              - link "Reconcile System Address on Deployed Clusters" [ref=e513] [cursor=pointer]:
+                - /url: "#reconcile-system-address-on-deployed-clusters"
+              - list [ref=e514]:
+                - listitem [ref=e515]:
+                  - link "Prerequisites" [ref=e516] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e517]:
+                  - link "Enablement" [ref=e518] [cursor=pointer]:
+                    - /url: "#enablement-1"
+                - listitem [ref=e519]:
+                  - link "Validate" [ref=e520] [cursor=pointer]:
+                    - /url: "#validate-1"
+  - button "Project Logo Ask AI" [ref=e521] [cursor=pointer]:
+    - generic [ref=e524]:
+      - img "Project Logo" [ref=e525]
+      - paragraph [ref=e526]: Ask AI
+```

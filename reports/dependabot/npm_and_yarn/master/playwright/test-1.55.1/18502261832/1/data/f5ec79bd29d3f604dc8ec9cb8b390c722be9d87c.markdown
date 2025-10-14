@@ -1,0 +1,644 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                  - listitem [ref=e107]:
+                    - generic [ref=e108]:
+                      - link "Data Center Clusters" [ref=e109] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e111]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e113] [cursor=pointer]
+                  - listitem [ref=e114]:
+                    - generic [ref=e115]:
+                      - link "Edge" [expanded] [ref=e116] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e118]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e120] [cursor=pointer]
+                    - list [ref=e121]:
+                      - listitem [ref=e122]:
+                        - generic [ref=e123]:
+                          - link "Architecture" [ref=e124] [cursor=pointer]:
+                            - /url: /clusters/edge/architecture/
+                          - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e125] [cursor=pointer]
+                      - listitem [ref=e126]:
+                        - link "Hardware Requirements" [ref=e127] [cursor=pointer]:
+                          - /url: /clusters/edge/hardware-requirements/
+                      - listitem [ref=e128]:
+                        - link "Deployment Lifecycle" [ref=e129] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-native-lifecycle/
+                      - listitem [ref=e130]:
+                        - generic [ref=e131]:
+                          - link "Trusted Boot" [ref=e132] [cursor=pointer]:
+                            - /url: /clusters/edge/trusted-boot/
+                          - button "Toggle the collapsible sidebar category 'Trusted Boot'" [ref=e133] [cursor=pointer]
+                      - listitem [ref=e134]:
+                        - generic [ref=e135]:
+                          - link "Install Configuration" [ref=e136] [cursor=pointer]:
+                            - /url: /clusters/edge/edge-configuration/
+                          - button "Toggle the collapsible sidebar category 'Install Configuration'" [ref=e137] [cursor=pointer]
+                      - listitem [ref=e138]:
+                        - generic [ref=e139]:
+                          - link "EdgeForge Workflow" [ref=e140] [cursor=pointer]:
+                            - /url: /clusters/edge/edgeforge-workflow/
+                          - button "Toggle the collapsible sidebar category 'EdgeForge Workflow'" [ref=e141] [cursor=pointer]
+                      - listitem [ref=e142]:
+                        - generic [ref=e143]:
+                          - link "Local UI" [ref=e144] [cursor=pointer]:
+                            - /url: /clusters/edge/local-ui/
+                          - button "Toggle the collapsible sidebar category 'Local UI'" [ref=e145] [cursor=pointer]
+                      - listitem [ref=e146]:
+                        - generic [ref=e147]:
+                          - link "Deployment" [ref=e148] [cursor=pointer]:
+                            - /url: /clusters/edge/site-deployment/
+                          - button "Toggle the collapsible sidebar category 'Deployment'" [ref=e149] [cursor=pointer]
+                      - listitem [ref=e150]:
+                        - generic [ref=e151]:
+                          - link "Cluster Management" [expanded] [ref=e152] [cursor=pointer]:
+                            - /url: /clusters/edge/cluster-management/
+                          - button "Toggle the collapsible sidebar category 'Cluster Management'" [ref=e153] [cursor=pointer]
+                        - list [ref=e154]:
+                          - listitem [ref=e155]:
+                            - link "Connect to Edge Host Using Remote Shell" [ref=e156] [cursor=pointer]:
+                              - /url: /clusters/edge/cluster-management/remote-shell/
+                          - listitem [ref=e157]:
+                            - link "Edge Cluster Upgrade Behavior" [ref=e158] [cursor=pointer]:
+                              - /url: /clusters/edge/cluster-management/upgrade-behavior/
+                          - listitem [ref=e159]:
+                            - link "Renew Certificates for Local Clusters" [ref=e160] [cursor=pointer]:
+                              - /url: /clusters/edge/cluster-management/certificate-renewal/
+                          - listitem [ref=e161]:
+                            - link "Configure Palette Agent Version" [ref=e162] [cursor=pointer]:
+                              - /url: /clusters/edge/cluster-management/agent-upgrade-airgap/
+                          - listitem [ref=e163]:
+                            - link "Reset Host via Terminal" [ref=e164] [cursor=pointer]:
+                              - /url: /clusters/edge/cluster-management/reset-host/
+                          - listitem [ref=e165]:
+                            - link "Replace a Failed Node" [ref=e166] [cursor=pointer]:
+                              - /url: /clusters/edge/cluster-management/replace-failed-node/
+                          - listitem [ref=e167]:
+                            - link "Skip Node Draining" [ref=e168] [cursor=pointer]:
+                              - /url: /clusters/edge/cluster-management/skip-draining/
+                      - listitem [ref=e169]:
+                        - generic [ref=e170]:
+                          - link "Networking" [ref=e171] [cursor=pointer]:
+                            - /url: /clusters/edge/networking/
+                          - button "Toggle the collapsible sidebar category 'Networking'" [ref=e172] [cursor=pointer]
+                      - listitem [ref=e173]:
+                        - generic [ref=e174]:
+                          - link "Third Party Integrations" [ref=e175] [cursor=pointer]:
+                            - /url: /clusters/edge/third-party-integrations/
+                          - button "Toggle the collapsible sidebar category 'Third Party Integrations'" [ref=e176] [cursor=pointer]
+                  - listitem [ref=e177]:
+                    - generic [ref=e178]:
+                      - link "Palette Virtual Clusters" [ref=e179] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e181]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e183] [cursor=pointer]
+                  - listitem [ref=e184]:
+                    - generic [ref=e185]:
+                      - link "Imported Clusters" [ref=e186] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e188]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e190] [cursor=pointer]
+                  - listitem [ref=e191]:
+                    - generic [ref=e192]:
+                      - link "Manage Clusters" [ref=e193] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e195]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e197] [cursor=pointer]
+                  - listitem [ref=e198]:
+                    - generic [ref=e199]:
+                      - link "Cluster Groups" [ref=e200] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e202]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e204] [cursor=pointer]
+                  - listitem [ref=e205]:
+                    - generic [ref=e206]:
+                      - link "Private Cloud Gateway" [ref=e207] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e209]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e211] [cursor=pointer]
+              - listitem [ref=e212]:
+                - generic [ref=e213]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e214] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e216]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e218] [cursor=pointer]
+              - listitem [ref=e219]:
+                - generic [ref=e220]:
+                  - link "Palette Dev Engine" [ref=e221] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e223]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e225] [cursor=pointer]
+              - listitem [ref=e226]:
+                - generic [ref=e227]:
+                  - link "Virtual Machine Orchestrator" [ref=e228] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e230]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e232] [cursor=pointer]
+              - listitem [ref=e233]:
+                - generic [ref=e234]:
+                  - link "Workspaces" [ref=e235] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e237]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e239] [cursor=pointer]
+              - listitem [ref=e240]:
+                - generic [ref=e241]:
+                  - link "Packs List" [ref=e242] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e244]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e246] [cursor=pointer]
+              - listitem [ref=e247]:
+                - generic [ref=e248]:
+                  - link "User & Role Management" [ref=e249] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e251]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e253] [cursor=pointer]
+              - listitem [ref=e254]:
+                - generic [ref=e255]:
+                  - link "Registries and Packs" [ref=e256] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e258]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e260] [cursor=pointer]
+              - listitem [ref=e261]:
+                - generic [ref=e262]:
+                  - link "Security" [ref=e263] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e265]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e267] [cursor=pointer]
+              - listitem [ref=e268]:
+                - generic [ref=e269]:
+                  - link "Audit Logs" [ref=e270] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e272]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e274] [cursor=pointer]
+              - listitem [ref=e275]:
+                - generic [ref=e276]:
+                  - link "Self-Hosted Palette" [ref=e277] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e279]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e281] [cursor=pointer]
+              - listitem [ref=e282]:
+                - generic [ref=e283]:
+                  - link "Palette VerteX" [ref=e284] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e286]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e288] [cursor=pointer]
+              - listitem [ref=e289]:
+                - generic [ref=e290]:
+                  - link "Tenant Administration" [ref=e291] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e293]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e295] [cursor=pointer]
+              - listitem [ref=e296]:
+                - generic [ref=e297]:
+                  - link "Automation" [ref=e298] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e300]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e302] [cursor=pointer]
+              - listitem [ref=e303]:
+                - generic [ref=e304]:
+                  - link "Troubleshooting" [ref=e305] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e307]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e309] [cursor=pointer]
+              - listitem [ref=e310]:
+                - link "Glossary" [ref=e311] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e313]
+                  - text: Glossary
+              - listitem [ref=e315]:
+                - generic [ref=e316]:
+                  - link "Compliance & Legal" [ref=e317] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e319]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e321] [cursor=pointer]
+              - listitem [ref=e322]:
+                - button "Privacy Settings" [ref=e323] [cursor=pointer]:
+                  - img [ref=e324]
+                  - text: Privacy Settings
+      - main [ref=e326]:
+        - generic [ref=e328]:
+          - generic [ref=e330]:
+            - article [ref=e331]:
+              - navigation "Breadcrumbs" [ref=e332]:
+                - list [ref=e333]:
+                  - listitem [ref=e334]:
+                    - link "Home page" [ref=e335] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e336]
+                  - listitem [ref=e338]:
+                    - link "Clusters" [ref=e339] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e340]:
+                    - link "Edge" [ref=e341] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                  - listitem [ref=e342]:
+                    - link "Cluster Management" [ref=e343] [cursor=pointer]:
+                      - /url: /clusters/edge/cluster-management/
+                  - listitem [ref=e344]:
+                    - generic [ref=e345]: Edge Cluster Upgrade Behavior
+              - generic [ref=e346]:
+                - heading "Edge Cluster Upgrade Behavior" [level=1] [ref=e348]
+                - paragraph [ref=e349]:
+                  - text: When you update an active Edge cluster's profile, Palette will upgrade the active cluster to the latest version of the profile. Depending on the nature of the change, implementing an upgrade might involve repaving a cluster, rebooting a cluster, restarting services, or doing nothing. For more information about cluster repaves, refer to
+                  - link "Repave Behavior and Configurations" [ref=e350] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/node-pool/#repave-behavior-and-configuration
+                  - text: . For more information about how to update a cluster profile, refer to
+                  - link "Update a Cluster" [ref=e351] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/cluster-updates/
+                  - text: .
+                - generic [ref=e352]:
+                  - generic [ref=e353]:
+                    - img [ref=e355]
+                    - text: warning
+                  - list [ref=e358]:
+                    - listitem [ref=e359]: If a cluster's Kubernetes service is down, updates to the cluster's profile will not get applied to the cluster. You must fix the issue impacting the Kubernetes service first. Once the Kubernetes service is back to being operational, the Palette agent will apply the updates from the cluster profile to the cluster.
+                - heading "Known IssuesDirect link to Known Issues" [level=2] [ref=e360]:
+                  - text: Known Issues
+                  - link "Direct link to Known Issues" [ref=e361] [cursor=pointer]:
+                    - /url: "#known-issues"
+                    - text: "#"
+                - list [ref=e362]:
+                  - listitem [ref=e363]:
+                    - text: For RKE2 clusters, updates to the
+                    - code [ref=e364]: stages.*
+                    - text: section in the Operating System (OS) and the Kubernetes pack of the cluster profile will trigger a repave instead of a reboot. The only exception is changes to the
+                    - code [ref=e365]: stages.reconcile.*
+                    - text: section, which will behave as expected and trigger a configuration reload.
+                - heading "A/B Partitioning in UpgradesDirect link to A/B Partitioning in Upgrades" [level=2] [ref=e366]:
+                  - text: A/B Partitioning in Upgrades
+                  - link "Direct link to A/B Partitioning in Upgrades" [ref=e367] [cursor=pointer]:
+                    - /url: "#ab-partitioning-in-upgrades"
+                    - text: "#"
+                - paragraph [ref=e368]: "Edge clusters created with Kairos-based provider images use A/B system partitions to handle upgrades. In an A/B partitions system, the Edge host retains two bootable partitions: an active partition and a passive partition. In a normal startup sequence, the bootloader will load the active image. In the event that the active image is not bootable, the bootloader will load the passive image."
+                - paragraph [ref=e369]: During upgrades, the image that the cluster is upgrading to becomes a transitional image. When the upgrade is successful, the transitional image becomes the new active image, while the old active image becomes the new passive image. The old passive image is then discarded.
+                - paragraph [ref=e370]:
+                  - img "Diagram of the A/B Partition upgrade process" [ref=e371]
+                - heading "Upgrade BehaviorsDirect link to Upgrade Behaviors" [level=2] [ref=e372]:
+                  - text: Upgrade Behaviors
+                  - link "Direct link to Upgrade Behaviors" [ref=e373] [cursor=pointer]:
+                    - /url: "#upgrade-behaviors"
+                    - text: "#"
+                - paragraph [ref=e374]: A cluster could respond to an upgrade in several ways. The table below lists the potential upgrade behaviors you could encounter.
+                - table [ref=e375]:
+                  - rowgroup [ref=e376]:
+                    - row "Upgrade Behavior Description" [ref=e377]:
+                      - cell "Upgrade Behavior" [ref=e378]
+                      - cell "Description" [ref=e379]
+                  - rowgroup [ref=e380]:
+                    - row "Repave Repaves all nodes in the cluster, starting with the control plane." [ref=e381]:
+                      - cell "Repave" [ref=e382]
+                      - cell "Repaves all nodes in the cluster, starting with the control plane." [ref=e383]
+                    - row "Reboot Reboots all nodes in the cluster, starting with the control plane." [ref=e384]:
+                      - cell "Reboot" [ref=e385]
+                      - cell "Reboots all nodes in the cluster, starting with the control plane." [ref=e386]
+                    - row "Service restart Restarts specific services in all nodes in the cluster, starting with the control plane." [ref=e387]:
+                      - cell "Service restart" [ref=e388]
+                      - cell "Restarts specific services in all nodes in the cluster, starting with the control plane." [ref=e389]
+                    - row "Configuration reload Updates the configurations without needing to restart services or the node. This is only triggered when you update stage.reconcile.* in the Operating System (OS) layer." [ref=e390]:
+                      - cell "Configuration reload" [ref=e391]
+                      - cell "Updates the configurations without needing to restart services or the node. This is only triggered when you update stage.reconcile.* in the Operating System (OS) layer." [ref=e392]:
+                        - text: Updates the configurations without needing to restart services or the node. This is only triggered when you update
+                        - code [ref=e393]: stage.reconcile.*
+                        - text: in the Operating System (OS) layer.
+                    - row "No operations (No-op) Acknowledges the update request but does nothing." [ref=e394]:
+                      - cell "No operations (No-op)" [ref=e395]
+                      - cell "Acknowledges the update request but does nothing." [ref=e396]
+                - heading "Upgrade Behavior by Change LocationDirect link to Upgrade Behavior by Change Location" [level=2] [ref=e397]:
+                  - text: Upgrade Behavior by Change Location
+                  - link "Direct link to Upgrade Behavior by Change Location" [ref=e398] [cursor=pointer]:
+                    - /url: "#upgrade-behavior-by-change-location"
+                    - text: "#"
+                - paragraph [ref=e399]: Updates in the OS or Kubernetes layers can trigger different upgrade behaviors depending on the exact values changed.
+                - heading "OS LayerDirect link to OS Layer" [level=3] [ref=e400]:
+                  - text: OS Layer
+                  - link "Direct link to OS Layer" [ref=e401] [cursor=pointer]:
+                    - /url: "#os-layer"
+                    - text: "#"
+                - table [ref=e402]:
+                  - rowgroup [ref=e403]:
+                    - row "Repave Reboot Service Restart No-op" [ref=e404]:
+                      - cell "Repave" [ref=e405]
+                      - cell "Reboot" [ref=e406]
+                      - cell "Service Restart" [ref=e407]
+                      - cell "No-op" [ref=e408]
+                  - rowgroup [ref=e409]:
+                    - row "- options.system.uri - stages.rootfs.* - stages.initramfs.* - stages.boot.* - stages.fs.* - stages.network.* - stages.after-install.* - stages.after-install-chroot.* - stages.after-upgrade.* - stages.after-upgrade-chroot.* - stages.after-reset.* - stages.after-reset-chroot.* - stages.before-install.* - stages.before-upgrade.* - stages.before-reset.* None. - pack.* - providerCredentials.* - options.system.registry - options.system.repo - options.system.k8sDistribution - options.system.osName - options.system.peVersion - options.system.customTag - options.system.osVersion" [ref=e410]:
+                      - cell "- options.system.uri" [ref=e411]:
+                        - text: "-"
+                        - code [ref=e412]: options.system.uri
+                      - cell "- stages.rootfs.* - stages.initramfs.* - stages.boot.* - stages.fs.* - stages.network.* - stages.after-install.* - stages.after-install-chroot.* - stages.after-upgrade.* - stages.after-upgrade-chroot.* - stages.after-reset.* - stages.after-reset-chroot.* - stages.before-install.* - stages.before-upgrade.* - stages.before-reset.*" [ref=e413]:
+                        - text: "-"
+                        - code [ref=e414]: stages.rootfs.*
+                        - text: "-"
+                        - code [ref=e415]: stages.initramfs.*
+                        - text: "-"
+                        - code [ref=e416]: stages.boot.*
+                        - text: "-"
+                        - code [ref=e417]: stages.fs.*
+                        - text: "-"
+                        - code [ref=e418]: stages.network.*
+                        - text: "-"
+                        - code [ref=e419]: stages.after-install.*
+                        - text: "-"
+                        - code [ref=e420]: stages.after-install-chroot.*
+                        - text: "-"
+                        - code [ref=e421]: stages.after-upgrade.*
+                        - text: "-"
+                        - code [ref=e422]: stages.after-upgrade-chroot.*
+                        - text: "-"
+                        - code [ref=e423]: stages.after-reset.*
+                        - text: "-"
+                        - code [ref=e424]: stages.after-reset-chroot.*
+                        - text: "-"
+                        - code [ref=e425]: stages.before-install.*
+                        - text: "-"
+                        - code [ref=e426]: stages.before-upgrade.*
+                        - text: "-"
+                        - code [ref=e427]: stages.before-reset.*
+                      - cell "None." [ref=e428]
+                      - cell "- pack.* - providerCredentials.* - options.system.registry - options.system.repo - options.system.k8sDistribution - options.system.osName - options.system.peVersion - options.system.customTag - options.system.osVersion" [ref=e429]:
+                        - text: "-"
+                        - code [ref=e430]: pack.*
+                        - text: "-"
+                        - code [ref=e431]: providerCredentials.*
+                        - text: "-"
+                        - code [ref=e432]: options.system.registry
+                        - text: "-"
+                        - code [ref=e433]: options.system.repo
+                        - text: "-"
+                        - code [ref=e434]: options.system.k8sDistribution
+                        - text: "-"
+                        - code [ref=e435]: options.system.osName
+                        - text: "-"
+                        - code [ref=e436]: options.system.peVersion
+                        - text: "-"
+                        - code [ref=e437]: options.system.customTag
+                        - text: "-"
+                        - code [ref=e438]: options.system.osVersion
+                - generic [ref=e439]:
+                  - generic [ref=e440]:
+                    - img [ref=e442]
+                    - text: warning
+                  - paragraph [ref=e445]:
+                    - text: Changes to any other parameters that are used by the
+                    - code [ref=e446]: options.system.uri
+                    - text: parameter will also trigger a cluster repave. For example, if your
+                    - code [ref=e447]: options.system.uri
+                    - text: parameter is
+                    - code [ref=e448]: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}"
+                    - text: ", changes to"
+                    - code [ref=e449]: .spectro.pack.edge-native-byoi.options.system.registry
+                    - text: will trigger a cluster repave because it changes the
+                    - code [ref=e450]: options.system.uri
+                    - text: parameter.
+                - heading "Kubernetes LayerDirect link to Kubernetes Layer" [level=3] [ref=e451]:
+                  - text: Kubernetes Layer
+                  - link "Direct link to Kubernetes Layer" [ref=e452] [cursor=pointer]:
+                    - /url: "#kubernetes-layer"
+                    - text: "#"
+                - generic [ref=e453]:
+                  - tablist [ref=e454]:
+                    - tab "PXK-E" [selected] [ref=e455] [cursor=pointer]
+                    - tab "K3s" [ref=e456] [cursor=pointer]
+                    - tab "RKE2" [ref=e457] [cursor=pointer]
+                  - tabpanel [ref=e459]:
+                    - table [ref=e460]:
+                      - rowgroup [ref=e461]:
+                        - row "Repave Reboot Service Restart No-op" [ref=e462]:
+                          - cell "Repave" [ref=e463]
+                          - cell "Reboot" [ref=e464]
+                          - cell "Service Restart" [ref=e465]
+                          - cell "No-op" [ref=e466]
+                      - rowgroup [ref=e467]:
+                        - row "None. - stages.rootfs.* - stages.initramfs.* - stages.boot.* - stages.fs.* - stages.network.* - stages.after-install.* - stages.after-install-chroot.* - stages.after-upgrade.* - stages.after-upgrade-chroot.* - stages.after-reset.* - stages.after-reset-chroot.* - stages.before-install.* - stages.before-upgrade.* - stages.before-reset.* - cluster.* - clientConfig.* - pack.*" [ref=e468]:
+                          - cell "None." [ref=e469]
+                          - cell "- stages.rootfs.* - stages.initramfs.* - stages.boot.* - stages.fs.* - stages.network.* - stages.after-install.* - stages.after-install-chroot.* - stages.after-upgrade.* - stages.after-upgrade-chroot.* - stages.after-reset.* - stages.after-reset-chroot.* - stages.before-install.* - stages.before-upgrade.* - stages.before-reset.*" [ref=e470]:
+                            - text: "-"
+                            - code [ref=e471]: stages.rootfs.*
+                            - text: "-"
+                            - code [ref=e472]: stages.initramfs.*
+                            - text: "-"
+                            - code [ref=e473]: stages.boot.*
+                            - text: "-"
+                            - code [ref=e474]: stages.fs.*
+                            - text: "-"
+                            - code [ref=e475]: stages.network.*
+                            - text: "-"
+                            - code [ref=e476]: stages.after-install.*
+                            - text: "-"
+                            - code [ref=e477]: stages.after-install-chroot.*
+                            - text: "-"
+                            - code [ref=e478]: stages.after-upgrade.*
+                            - text: "-"
+                            - code [ref=e479]: stages.after-upgrade-chroot.*
+                            - text: "-"
+                            - code [ref=e480]: stages.after-reset.*
+                            - text: "-"
+                            - code [ref=e481]: stages.after-reset-chroot.*
+                            - text: "-"
+                            - code [ref=e482]: stages.before-install.*
+                            - text: "-"
+                            - code [ref=e483]: stages.before-upgrade.*
+                            - text: "-"
+                            - code [ref=e484]: stages.before-reset.*
+                          - cell "- cluster.*" [ref=e485]:
+                            - text: "-"
+                            - code [ref=e486]: cluster.*
+                          - cell "- clientConfig.* - pack.*" [ref=e487]:
+                            - text: "-"
+                            - code [ref=e488]: clientConfig.*
+                            - text: "-"
+                            - code [ref=e489]: pack.*
+                - heading "Network LayerDirect link to Network Layer" [level=3] [ref=e490]:
+                  - text: Network Layer
+                  - link "Direct link to Network Layer" [ref=e491] [cursor=pointer]:
+                    - /url: "#network-layer"
+                    - text: "#"
+                - paragraph [ref=e492]: Changes made to the Container Network Interface (CNI) pack typically do not result in cluster repave or reboot, and can be applied by restarting the related networking services.
+                - generic [ref=e493]:
+                  - generic [ref=e494]:
+                    - img [ref=e496]
+                    - text: warning
+                  - paragraph [ref=e499]: Do not change to a different CNI pack after provisioning a cluster. You can make changes to the existing CNI pack, but if you want to use a different CNI pack altogether, we recommend you create another cluster.
+                - heading "Storage LayerDirect link to Storage Layer" [level=3] [ref=e500]:
+                  - text: Storage Layer
+                  - link "Direct link to Storage Layer" [ref=e501] [cursor=pointer]:
+                    - /url: "#storage-layer"
+                    - text: "#"
+                - paragraph [ref=e502]: Changes made to the storage layer typically do not result in cluster repave or reboot and can be applied by restarting the related storage services.
+              - generic [ref=e503]:
+                - generic [ref=e505]:
+                  - text: "Tags:"
+                  - list [ref=e506]:
+                    - listitem [ref=e507]:
+                      - link "edge" [ref=e508] [cursor=pointer]:
+                        - /url: /tags/edge/
+                    - listitem [ref=e509]:
+                      - link "architecture" [ref=e510] [cursor=pointer]:
+                        - /url: /tags/architecture/
+                - link "Edit this page" [ref=e513] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/edge/cluster-management/upgrade-behavior.md
+                  - img [ref=e514]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e518]:
+              - link "Previous « Connect to Edge Host Using Remote Shell" [ref=e519] [cursor=pointer]:
+                - /url: /clusters/edge/cluster-management/remote-shell/
+                - generic [ref=e520]: Previous
+                - generic [ref=e521]: « Connect to Edge Host Using Remote Shell
+              - link "Next Renew Certificates for Local Clusters »" [ref=e522] [cursor=pointer]:
+                - /url: /clusters/edge/cluster-management/certificate-renewal/
+                - generic [ref=e523]: Next
+                - generic [ref=e524]: Renew Certificates for Local Clusters »
+          - list [ref=e527]:
+            - listitem [ref=e528]:
+              - link "Known Issues" [ref=e529] [cursor=pointer]:
+                - /url: "#known-issues"
+            - listitem [ref=e530]:
+              - link "A/B Partitioning in Upgrades" [ref=e531] [cursor=pointer]:
+                - /url: "#ab-partitioning-in-upgrades"
+            - listitem [ref=e532]:
+              - link "Upgrade Behaviors" [ref=e533] [cursor=pointer]:
+                - /url: "#upgrade-behaviors"
+            - listitem [ref=e534]:
+              - link "Upgrade Behavior by Change Location" [ref=e535] [cursor=pointer]:
+                - /url: "#upgrade-behavior-by-change-location"
+              - list [ref=e536]:
+                - listitem [ref=e537]:
+                  - link "OS Layer" [ref=e538] [cursor=pointer]:
+                    - /url: "#os-layer"
+                - listitem [ref=e539]:
+                  - link "Kubernetes Layer" [ref=e540] [cursor=pointer]:
+                    - /url: "#kubernetes-layer"
+                - listitem [ref=e541]:
+                  - link "Network Layer" [ref=e542] [cursor=pointer]:
+                    - /url: "#network-layer"
+                - listitem [ref=e543]:
+                  - link "Storage Layer" [ref=e544] [cursor=pointer]:
+                    - /url: "#storage-layer"
+  - button "Project Logo Ask AI" [ref=e545] [cursor=pointer]:
+    - generic [ref=e548]:
+      - img "Project Logo" [ref=e549]
+      - paragraph [ref=e550]: Ask AI
+```

@@ -1,0 +1,396 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Security" [ref=e150] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e152]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Audit Logs" [ref=e157] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e159]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Self-Hosted Palette" [ref=e164] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e166]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e168] [cursor=pointer]
+              - listitem [ref=e169]:
+                - generic [ref=e170]:
+                  - link "Palette VerteX" [ref=e171] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e173]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e175] [cursor=pointer]
+              - listitem [ref=e176]:
+                - generic [ref=e177]:
+                  - link "Tenant Administration" [ref=e178] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e180]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e182] [cursor=pointer]
+              - listitem [ref=e183]:
+                - generic [ref=e184]:
+                  - link "Automation" [ref=e185] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e187]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e189] [cursor=pointer]
+              - listitem [ref=e190]:
+                - generic [ref=e191]:
+                  - link "Troubleshooting" [expanded] [ref=e192] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e194]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e196] [cursor=pointer]
+                - list [ref=e197]:
+                  - listitem [ref=e198]:
+                    - link "Kubernetes Debugging" [ref=e199] [cursor=pointer]:
+                      - /url: /troubleshooting/kubernetes-tips/
+                  - listitem [ref=e200]:
+                    - link "Automation" [ref=e201] [cursor=pointer]:
+                      - /url: /troubleshooting/automation/
+                  - listitem [ref=e202]:
+                    - link "Cluster Deployment" [ref=e203] [cursor=pointer]:
+                      - /url: /troubleshooting/cluster-deployment/
+                  - listitem [ref=e204]:
+                    - link "Nodes & Clusters" [ref=e205] [cursor=pointer]:
+                      - /url: /troubleshooting/nodes/
+                  - listitem [ref=e206]:
+                    - link "Packs" [ref=e207] [cursor=pointer]:
+                      - /url: /troubleshooting/pack-issues/
+                  - listitem [ref=e208]:
+                    - link "Palette Dev Engine" [ref=e209] [cursor=pointer]:
+                      - /url: /troubleshooting/palette-dev-engine/
+                  - listitem [ref=e210]:
+                    - generic [ref=e211]:
+                      - link "Edge" [ref=e212] [cursor=pointer]:
+                        - /url: /troubleshooting/edge/
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e213] [cursor=pointer]
+                  - listitem [ref=e214]:
+                    - link "Private Cloud Gateway" [ref=e215] [cursor=pointer]:
+                      - /url: /troubleshooting/pcg/
+                  - listitem [ref=e216]:
+                    - link "Virtual Machine Orchestrator" [ref=e217] [cursor=pointer]:
+                      - /url: /troubleshooting/vmo-issues/
+                  - listitem [ref=e218]:
+                    - link "Enterprise Install" [ref=e219] [cursor=pointer]:
+                      - /url: /troubleshooting/enterprise-install/
+                  - listitem [ref=e220]:
+                    - link "Palette Upgrade" [ref=e221] [cursor=pointer]:
+                      - /url: /troubleshooting/palette-upgrade/
+                  - listitem [ref=e222]:
+                    - link "Generate HAR Files" [ref=e223] [cursor=pointer]:
+                      - /url: /troubleshooting/generate-har-files/
+              - listitem [ref=e224]:
+                - link "Glossary" [ref=e225] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e227]
+                  - text: Glossary
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "Compliance & Legal" [ref=e231] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e233]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - button "Privacy Settings" [ref=e237] [cursor=pointer]:
+                  - img [ref=e238]
+                  - text: Privacy Settings
+      - main [ref=e240]:
+        - generic [ref=e242]:
+          - generic [ref=e244]:
+            - article [ref=e245]:
+              - navigation "Breadcrumbs" [ref=e246]:
+                - list [ref=e247]:
+                  - listitem [ref=e248]:
+                    - link "Home page" [ref=e249] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e250]
+                  - listitem [ref=e252]:
+                    - generic [ref=e253]: Troubleshooting
+              - generic [ref=e254]:
+                - heading "Common issues and their solutions" [level=1] [ref=e256]
+                - paragraph [ref=e257]:
+                  - text: Use the following troubleshooting resources to help you address issues that may arise. You can also reach out to our support team by opening up a ticket through our
+                  - link "support page" [ref=e258] [cursor=pointer]:
+                    - /url: http://support.spectrocloud.io/
+                  - text: .
+                - list [ref=e259]:
+                  - listitem [ref=e260]:
+                    - paragraph [ref=e261]:
+                      - link "Automation" [ref=e262] [cursor=pointer]:
+                        - /url: /troubleshooting/automation/
+                  - listitem [ref=e263]:
+                    - paragraph [ref=e264]:
+                      - link "Cluster Deployment" [ref=e265] [cursor=pointer]:
+                        - /url: /troubleshooting/cluster-deployment/
+                  - listitem [ref=e266]:
+                    - paragraph [ref=e267]:
+                      - link "Edge" [ref=e268] [cursor=pointer]:
+                        - /url: /troubleshooting/edge/
+                  - listitem [ref=e269]:
+                    - paragraph [ref=e270]:
+                      - link "Enterprise Install" [ref=e271] [cursor=pointer]:
+                        - /url: /troubleshooting/enterprise-install/
+                  - listitem [ref=e272]:
+                    - paragraph [ref=e273]:
+                      - link "Nodes & Clusters" [ref=e274] [cursor=pointer]:
+                        - /url: /troubleshooting/nodes/
+                  - listitem [ref=e275]:
+                    - paragraph [ref=e276]:
+                      - link "Kubernetes Debugging" [ref=e277] [cursor=pointer]:
+                        - /url: /troubleshooting/kubernetes-tips/
+                  - listitem [ref=e278]:
+                    - paragraph [ref=e279]:
+                      - link "Packs" [ref=e280] [cursor=pointer]:
+                        - /url: /troubleshooting/pack-issues/
+                  - listitem [ref=e281]:
+                    - paragraph [ref=e282]:
+                      - link "Palette Dev Engine" [ref=e283] [cursor=pointer]:
+                        - /url: /troubleshooting/palette-dev-engine/
+                  - listitem [ref=e284]:
+                    - paragraph [ref=e285]:
+                      - link "Palette Upgrade" [ref=e286] [cursor=pointer]:
+                        - /url: /troubleshooting/palette-upgrade/
+                  - listitem [ref=e287]:
+                    - paragraph [ref=e288]:
+                      - link "Private Cloud Gateway" [ref=e289] [cursor=pointer]:
+                        - /url: /troubleshooting/pcg/
+                  - listitem [ref=e290]:
+                    - paragraph [ref=e291]:
+                      - link "Virtual Machine Orchestrator" [ref=e292] [cursor=pointer]:
+                        - /url: /troubleshooting/vmo-issues/
+                - heading "Generate HAR FilesDirect link to Generate HAR Files" [level=2] [ref=e293]:
+                  - text: Generate HAR Files
+                  - link "Direct link to Generate HAR Files" [ref=e294] [cursor=pointer]:
+                    - /url: "#generate-har-files"
+                    - text: "#"
+                - paragraph [ref=e295]: When you report issues with Palette to Spectro Cloud Support, we may ask you to generate an HTTP Archive (HAR) file to help us identify and resolve those issues.
+                - list [ref=e296]:
+                  - listitem [ref=e297]:
+                    - link "Generate HAR files" [ref=e298] [cursor=pointer]:
+                      - /url: /troubleshooting/generate-har-files/
+                - heading "Download Cluster LogsDirect link to Download Cluster Logs" [level=2] [ref=e299]:
+                  - text: Download Cluster Logs
+                  - link "Direct link to Download Cluster Logs" [ref=e300] [cursor=pointer]:
+                    - /url: "#download-cluster-logs"
+                    - text: "#"
+                - paragraph [ref=e301]: At times it might be required to work with the Spectro Cloud support team to troubleshoot an issue. Spectro Cloud provides the ability to aggregate logs from the clusters it manages. Problems that occur during the orchestration life cycle may require access to the various containers, nodes, and system logs. Spectro Cloud automates this log collection process and provides a download option from the Spectro Cloud UI console, reducing the burden on the operator to log in to various cluster nodes individually and fetch these logs.
+                - paragraph [ref=e302]:
+                  - text: "Follow the link for more details:"
+                  - link "Download Cluster Logs" [ref=e303] [cursor=pointer]:
+                    - /url: /clusters/#download-cluster-logs
+                - heading "Event StreamDirect link to Event Stream" [level=2] [ref=e304]:
+                  - text: Event Stream
+                  - link "Direct link to Event Stream" [ref=e305] [cursor=pointer]:
+                    - /url: "#event-stream"
+                    - text: "#"
+                - paragraph [ref=e306]: Spectro Cloud maintains an event stream with low-level details of the various orchestration tasks being performed. This event stream is a good source for identifying issues in the event an operation does not complete for a long time.
+                - generic [ref=e307]:
+                  - generic [ref=e308]:
+                    - img [ref=e310]
+                    - text: warning
+                  - paragraph [ref=e313]: Due to Spectro Cloud’s reconciliation logic, intermittent errors show up in the event stream. As an example, after launching a node, errors might show up in the event stream regarding being unable to reach the node. However, the errors clear up once the node comes up. Error messages that persist over a long time or errors indicating issues with underlying infrastructure are an indication of a real problem.
+                - heading "Lifecycle BehaviorsDirect link to Lifecycle Behaviors" [level=2] [ref=e314]:
+                  - text: Lifecycle Behaviors
+                  - link "Direct link to Lifecycle Behaviors" [ref=e315] [cursor=pointer]:
+                    - /url: "#lifecycle-behaviors"
+                    - text: "#"
+                - paragraph [ref=e316]: Typically when a cluster life cycle action such as provisioning, upgrade, or deletion runs into a failure, it does not result in an outright error on the cluster. The Spectro Cloud orchestration engine follows the reconciliation pattern wherein the system repeatedly tries to perform various orchestration tasks to bring the cluster to its desired state until it succeeds. Initial cluster provisioning or subsequent updates can run into a variety of issues related to cloud infrastructure availability, lack of resources, networking issues, etc.
+                - heading "Cluster conditionsDirect link to Cluster conditions" [level=2] [ref=e317]:
+                  - text: Cluster conditions
+                  - link "Direct link to Cluster conditions" [ref=e318] [cursor=pointer]:
+                    - /url: "#cluster-conditions"
+                    - text: "#"
+                - paragraph [ref=e319]: "Spectro Cloud maintains specific milestones in a life cycle and presents them as “conditions”. Examples include: Creating Infrastructure, Adding Control Plane Node, Customizing Image, etc. The active condition indicates what task Spectro Cloud’s orchestration system is trying to perform. If a task results in failures, the condition is marked as failed, with relevant error messages. Reconciliation however continues behind the scenes and continuous attempts are made to perform the task. Failed conditions are a great source of troubleshooting provisioning issues."
+                - paragraph [ref=e320]: For example, failure to create a virtual machine in AWS due to the vCPU limit being exceeded would cause this error is shown to the end-users. They could choose to bring down some workloads in the AWS cloud to free up space. The next time a VM creation task is attempted, it would succeed and the condition would be marked as a success.
+              - generic [ref=e321]:
+                - generic [ref=e323]:
+                  - text: "Tags:"
+                  - list [ref=e324]:
+                    - listitem [ref=e325]:
+                      - link "troubleshooting" [ref=e326] [cursor=pointer]:
+                        - /url: /tags/troubleshooting/
+                - link "Edit this page" [ref=e329] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/troubleshooting/troubleshooting.md
+                  - img [ref=e330]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e334]:
+              - link "Previous « Deploy a GCP IaaS Cluster with Crossplane" [ref=e335] [cursor=pointer]:
+                - /url: /automation/crossplane/deploy-cluster-gcp-crossplane/
+                - generic [ref=e336]: Previous
+                - generic [ref=e337]: « Deploy a GCP IaaS Cluster with Crossplane
+              - link "Next Kubernetes Debugging »" [ref=e338] [cursor=pointer]:
+                - /url: /troubleshooting/kubernetes-tips/
+                - generic [ref=e339]: Next
+                - generic [ref=e340]: Kubernetes Debugging »
+          - list [ref=e343]:
+            - listitem [ref=e344]:
+              - link "Generate HAR Files" [ref=e345] [cursor=pointer]:
+                - /url: "#generate-har-files"
+            - listitem [ref=e346]:
+              - link "Download Cluster Logs" [ref=e347] [cursor=pointer]:
+                - /url: "#download-cluster-logs"
+            - listitem [ref=e348]:
+              - link "Event Stream" [ref=e349] [cursor=pointer]:
+                - /url: "#event-stream"
+            - listitem [ref=e350]:
+              - link "Lifecycle Behaviors" [ref=e351] [cursor=pointer]:
+                - /url: "#lifecycle-behaviors"
+            - listitem [ref=e352]:
+              - link "Cluster conditions" [ref=e353] [cursor=pointer]:
+                - /url: "#cluster-conditions"
+  - button "Project Logo Ask AI" [ref=e354] [cursor=pointer]:
+    - generic [ref=e357]:
+      - img "Project Logo" [ref=e358]
+      - paragraph [ref=e359]: Ask AI
+```

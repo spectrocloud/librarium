@@ -1,0 +1,1114 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [expanded] [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                    - list [ref=e107]:
+                      - listitem [ref=e108]:
+                        - generic [ref=e109]:
+                          - link "AWS" [expanded] [ref=e110] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/aws/
+                          - button "Toggle the collapsible sidebar category 'AWS'" [ref=e111] [cursor=pointer]
+                        - list [ref=e112]:
+                          - listitem [ref=e113]:
+                            - link "Architecture" [ref=e114] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/architecture/
+                          - listitem [ref=e115]:
+                            - link "Register and Manage AWS Accounts" [ref=e116] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/add-aws-accounts/
+                          - listitem [ref=e117]:
+                            - link "Create and Manage AWS IaaS Cluster" [ref=e118] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/create-cluster/
+                          - listitem [ref=e119]:
+                            - link "Create and Manage AWS EKS Cluster" [ref=e120] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/eks/
+                          - listitem [ref=e121]:
+                            - generic [ref=e122]:
+                              - link "EKS Hybrid Nodes" [ref=e123] [cursor=pointer]:
+                                - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/
+                              - button "Toggle the collapsible sidebar category 'EKS Hybrid Nodes'" [ref=e124] [cursor=pointer]
+                          - listitem [ref=e125]:
+                            - link "Enable Secrets Encryption for EKS Cluster" [ref=e126] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/enable-secrets-encryption-kms-key/
+                          - listitem [ref=e127]:
+                            - link "Enable Disk Encryption for EKS Cluster" [ref=e128] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/enable-disk-encryption-eks-cluster/
+                          - listitem [ref=e129]:
+                            - link "Configure Karpenter for EKS Clusters" [ref=e130] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/configure-karpenter-eks-clusters/
+                          - listitem [ref=e131]:
+                            - link "Required IAM Policies" [ref=e132] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/required-iam-policies/
+                      - listitem [ref=e133]:
+                        - generic [ref=e134]:
+                          - link "Azure" [ref=e135] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/azure/
+                          - button "Toggle the collapsible sidebar category 'Azure'" [ref=e136] [cursor=pointer]
+                      - listitem [ref=e137]:
+                        - generic [ref=e138]:
+                          - link "GCP" [ref=e139] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/gcp/
+                          - button "Toggle the collapsible sidebar category 'GCP'" [ref=e140] [cursor=pointer]
+                  - listitem [ref=e141]:
+                    - generic [ref=e142]:
+                      - link "Data Center Clusters" [ref=e143] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e145]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e147] [cursor=pointer]
+                  - listitem [ref=e148]:
+                    - generic [ref=e149]:
+                      - link "Edge" [ref=e150] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e152]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e154] [cursor=pointer]
+                  - listitem [ref=e155]:
+                    - generic [ref=e156]:
+                      - link "Palette Virtual Clusters" [ref=e157] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e159]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e161] [cursor=pointer]
+                  - listitem [ref=e162]:
+                    - generic [ref=e163]:
+                      - link "Imported Clusters" [ref=e164] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e166]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e168] [cursor=pointer]
+                  - listitem [ref=e169]:
+                    - generic [ref=e170]:
+                      - link "Manage Clusters" [ref=e171] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e173]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e175] [cursor=pointer]
+                  - listitem [ref=e176]:
+                    - generic [ref=e177]:
+                      - link "Cluster Groups" [ref=e178] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e180]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e182] [cursor=pointer]
+                  - listitem [ref=e183]:
+                    - generic [ref=e184]:
+                      - link "Private Cloud Gateway" [ref=e185] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e187]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e189] [cursor=pointer]
+              - listitem [ref=e190]:
+                - generic [ref=e191]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e192] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e194]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e196] [cursor=pointer]
+              - listitem [ref=e197]:
+                - generic [ref=e198]:
+                  - link "Palette Dev Engine" [ref=e199] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e201]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e203] [cursor=pointer]
+              - listitem [ref=e204]:
+                - generic [ref=e205]:
+                  - link "Virtual Machine Orchestrator" [ref=e206] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e208]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e210] [cursor=pointer]
+              - listitem [ref=e211]:
+                - generic [ref=e212]:
+                  - link "Workspaces" [ref=e213] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e215]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e217] [cursor=pointer]
+              - listitem [ref=e218]:
+                - generic [ref=e219]:
+                  - link "Packs List" [ref=e220] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e222]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e224] [cursor=pointer]
+              - listitem [ref=e225]:
+                - generic [ref=e226]:
+                  - link "User & Role Management" [ref=e227] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e229]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e231] [cursor=pointer]
+              - listitem [ref=e232]:
+                - generic [ref=e233]:
+                  - link "Registries and Packs" [ref=e234] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e236]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e238] [cursor=pointer]
+              - listitem [ref=e239]:
+                - generic [ref=e240]:
+                  - link "Security" [ref=e241] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e243]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e245] [cursor=pointer]
+              - listitem [ref=e246]:
+                - generic [ref=e247]:
+                  - link "Audit Logs" [ref=e248] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e250]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e252] [cursor=pointer]
+              - listitem [ref=e253]:
+                - generic [ref=e254]:
+                  - link "Self-Hosted Palette" [ref=e255] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e257]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e259] [cursor=pointer]
+              - listitem [ref=e260]:
+                - generic [ref=e261]:
+                  - link "Palette VerteX" [ref=e262] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e264]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e266] [cursor=pointer]
+              - listitem [ref=e267]:
+                - generic [ref=e268]:
+                  - link "Tenant Administration" [ref=e269] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e271]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e273] [cursor=pointer]
+              - listitem [ref=e274]:
+                - generic [ref=e275]:
+                  - link "Automation" [ref=e276] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e278]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e280] [cursor=pointer]
+              - listitem [ref=e281]:
+                - generic [ref=e282]:
+                  - link "Troubleshooting" [ref=e283] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e285]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e287] [cursor=pointer]
+              - listitem [ref=e288]:
+                - link "Glossary" [ref=e289] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e291]
+                  - text: Glossary
+              - listitem [ref=e293]:
+                - generic [ref=e294]:
+                  - link "Compliance & Legal" [ref=e295] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e297]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e299] [cursor=pointer]
+              - listitem [ref=e300]:
+                - button "Privacy Settings" [ref=e301] [cursor=pointer]:
+                  - img [ref=e302]
+                  - text: Privacy Settings
+      - main [ref=e304]:
+        - generic [ref=e306]:
+          - generic [ref=e308]:
+            - article [ref=e309]:
+              - navigation "Breadcrumbs" [ref=e310]:
+                - list [ref=e311]:
+                  - listitem [ref=e312]:
+                    - link "Home page" [ref=e313] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e314]
+                  - listitem [ref=e316]:
+                    - link "Clusters" [ref=e317] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e318]:
+                    - link "Public Cloud Clusters" [ref=e319] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/
+                  - listitem [ref=e320]:
+                    - link "AWS" [ref=e321] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/
+                  - listitem [ref=e322]:
+                    - generic [ref=e323]: Create and Manage AWS EKS Cluster
+              - generic [ref=e324]:
+                - heading "Create and Manage AWS EKS Cluster" [level=1] [ref=e326]
+                - paragraph [ref=e327]: Palette supports creating and managing Amazon Web Services (AWS) Elastic Kubernetes Service (EKS) clusters deployed to an AWS account. This section guides you on how to create an EKS cluster in AWS that Palette manages.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e328]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e329] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e330]:
+                  - listitem [ref=e331]:
+                    - paragraph [ref=e332]: Access to an AWS cloud account.
+                  - listitem [ref=e333]:
+                    - paragraph [ref=e334]:
+                      - text: Palette integration with AWS account. Review
+                      - link "Add AWS Account" [ref=e335] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/aws/add-aws-accounts/
+                      - text: for guidance.
+                - list [ref=e336]:
+                  - listitem [ref=e337]:
+                    - paragraph [ref=e338]:
+                      - text: An infrastructure cluster profile for AWS EKS. When you create the profile, ensure you choose
+                      - strong [ref=e339]: EKS
+                      - text: as the
+                      - strong [ref=e340]: Managed Kubernetes
+                      - text: cloud type. Review
+                      - link "Create an Infrastructure Profile" [ref=e341] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile/
+                      - text: for guidance.
+                    - generic [ref=e342]:
+                      - generic [ref=e343]:
+                        - img [ref=e345]
+                        - text: info
+                      - paragraph [ref=e348]:
+                        - text: For guidance on all available configuration options for the EKS Kubernetes pack, review the
+                        - link "Additional Details" [ref=e349] [cursor=pointer]:
+                          - /url: /integrations/packs/?pack=kubernetes-eks&tab=custom
+                        - text: for the pack.
+                - list [ref=e350]:
+                  - listitem [ref=e351]:
+                    - paragraph [ref=e352]:
+                      - text: If you choose to
+                      - link "assign an Amazon Linux 2023 AMI" [ref=e353] [cursor=pointer]:
+                        - /url: "#cloud-configuration-settings"
+                      - text: (AL2023) to your worker nodes and you are using PersistentVolumes (PVs) or PersistentVolumeClaims (PVCs), you must make additional edits to your AWS EKS cluster profile to configure IAM Roles for Service Accounts (IRSA) for the Amazon Elastic Block Store (EBS) Container Storage Interface (CSI).
+                    - group [ref=e354]:
+                      - generic "Configure IRSA for Amazon EBS CSI" [ref=e355] [cursor=pointer]
+                - list [ref=e356]:
+                  - listitem [ref=e357]:
+                    - text: If you want to use
+                    - link "Cilium" [ref=e358] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=cni-cilium-oss
+                    - text: as the network pack for your EKS cluster, you will need to perform additional configuration changes to your cluster profile and a manual edit during deployment. Refer to
+                    - link "Scenario - AWS EKS Cluster Deployment Fails when Cilium is Used as CNI" [ref=e359] [cursor=pointer]:
+                      - /url: /troubleshooting/pack-issues/#scenario---aws-eks-cluster-deployment-fails-when-cilium-is-used-as-cni
+                    - text: for full guidance.
+                - list [ref=e360]:
+                  - listitem [ref=e361]:
+                    - paragraph [ref=e362]:
+                      - text: An EC2 key pair for the target region that provides a secure connection to your EC2 instances. A key pair is required for dynamic placement and is optional for static placement. To learn how to create a key pair, refer to the
+                      - link "Amazon EC2 key pairs" [ref=e363] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html
+                      - text: resource.
+                    - generic [ref=e364]:
+                      - generic [ref=e365]:
+                        - img [ref=e367]
+                        - text: info
+                      - paragraph [ref=e370]: Dynamic placement means Palette automatically creates and manages a new VPC and subnets for your EKS cluster. Static placement means Palette uses your existing VPC, requiring you to specify the necessary network resources.
+                  - listitem [ref=e371]:
+                    - paragraph [ref=e372]: Your Amazon EKS cluster must be deployed with at least one worker node to host the Palette agent, which is necessary for Palette to manage the cluster. Because of EKS architecture constraints, the agent cannot be installed on the control plane.
+                    - list [ref=e373]:
+                      - listitem [ref=e374]:
+                        - text: The minimum instance type required is
+                        - strong [ref=e375]: t3.xlarge
+                        - text: with at least 20 GB of storage.
+                      - listitem [ref=e376]: Be sure at least one worker node is always available so Palette can continue managing the cluster.
+                  - listitem [ref=e377]:
+                    - paragraph [ref=e378]:
+                      - text: To access your EKS cluster using kubectl, you will need the
+                      - link "aws-iam-authenticator" [ref=e379] [cursor=pointer]:
+                        - /url: https://github.com/kubernetes-sigs/aws-iam-authenticator
+                      - text: plugin installed. If you are using a custom OIDC provider, you will need the
+                      - link "kubelogin" [ref=e380] [cursor=pointer]:
+                        - /url: https://github.com/int128/kubelogin
+                      - text: plugin installed. Refer to the
+                      - link "Access EKS Cluster" [ref=e381] [cursor=pointer]:
+                        - /url: "#access-eks-cluster"
+                      - text: section for more information.
+                  - listitem [ref=e382]:
+                    - paragraph [ref=e383]:
+                      - text: To use secrets encryption, which is available only during EKS cluster creation, you must have created an AWS Key Management Service (KMS) key. If you do not have one, review
+                      - link "Enable Secrets Encryption for EKS Cluster" [ref=e384] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/aws/enable-secrets-encryption-kms-key/
+                      - text: for guidance.
+                  - listitem [ref=e385]:
+                    - paragraph [ref=e386]:
+                      - text: To use disk encryption, you must have created an AWS KMS key and set the appropriate configuration in the Kubernetes layer of your cluster profile. Review
+                      - link "Enable Disk Encryption for EKS Cluster" [ref=e387] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/aws/enable-disk-encryption-eks-cluster/
+                      - text: for guidance.
+                  - listitem [ref=e388]:
+                    - paragraph [ref=e389]:
+                      - text: If you are deploying your cluster in an
+                      - link "Amazon Secret" [ref=e390] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/aws/add-aws-accounts/#aws-secret-cloud-account-us
+                      - text: region, you must configure
+                      - link "Image Swap" [ref=e391] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/image-swap/
+                      - text: in the Kubernetes layer of your
+                      - link "cluster profile" [ref=e392] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/
+                      - text: to redirect public image requests to your internal or Elastic Container Registry.
+                    - generic [ref=e393]:
+                      - generic [ref=e394]:
+                        - img [ref=e396]
+                        - text: warning
+                      - paragraph [ref=e399]:
+                        - text: For static network deployments, you must have port 6443 open between Palette and the workload cluster. Refer to the
+                        - link "Network Ports" [ref=e400] [cursor=pointer]:
+                          - /url: /architecture/networking-ports/
+                        - text: documentation for detailed network architecture diagrams and to learn more about the ports used for communication.
+                  - listitem [ref=e401]:
+                    - paragraph [ref=e402]: If you do not provide your own Virtual Private Cloud (VPC), Palette creates one for you with compute, network, and storage resources in AWS when it provisions Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region to create the following resources. Note that Palette does not create these resources if you specify an existing VPC.
+                    - list [ref=e403]:
+                      - listitem [ref=e404]: Virtual CPU (vCPU)
+                      - listitem [ref=e405]: Virtual Private Cloud (VPC)
+                      - listitem [ref=e406]: Elastic IP
+                      - listitem [ref=e407]: Internet Gateway
+                      - listitem [ref=e408]: Elastic Load Balancers
+                      - listitem [ref=e409]: Network Address Translation (NAT) Gateway
+                    - generic [ref=e410]:
+                      - generic [ref=e411]:
+                        - img [ref=e413]
+                        - text: info
+                      - generic [ref=e415]:
+                        - paragraph [ref=e416]:
+                          - text: To enable automated subnet discovery to create external load balancers, you need to add tags to the Virtual Private Cloud (VPC) public subnets. For more information about tagging VPC networks, refer to the AWS
+                          - link "EKS VPC Subnet Discovery" [ref=e417] [cursor=pointer]:
+                            - /url: https://repost.aws/knowledge-center/eks-vpc-subnet-discovery
+                          - text: reference guide. Use the AWS Tag Editor and specify the region and resource type. Then, add the following tags. Replace the value
+                          - code [ref=e418]: yourClusterName
+                          - text: with your cluster's name. To learn more about the Tag Editor, refer to the
+                          - link "AWS Tag Editor" [ref=e419] [cursor=pointer]:
+                            - /url: https://docs.aws.amazon.com/tag-editor/latest/userguide/tag-editor.html
+                          - text: reference guide.
+                        - list [ref=e420]:
+                          - listitem [ref=e421]:
+                            - code [ref=e422]: kubernetes.io/role/elb = 1
+                          - listitem [ref=e423]:
+                            - code [ref=e424]: sigs.k8s.io/cluster-api-provider-aws/role = public
+                          - listitem [ref=e425]:
+                            - code [ref=e426]: kubernetes.io/cluster/[yourClusterName] = shared
+                          - listitem [ref=e427]:
+                            - code [ref=e428]: sigs.k8s.io/cluster-api-provider-aws/cluster/[yourClusterName] = owned
+                - heading "Deploy an AWS EKS ClusterDirect link to Deploy an AWS EKS Cluster" [level=2] [ref=e429]:
+                  - text: Deploy an AWS EKS Cluster
+                  - link "Direct link to Deploy an AWS EKS Cluster" [ref=e430] [cursor=pointer]:
+                    - /url: "#deploy-an-aws-eks-cluster"
+                    - text: "#"
+                - list [ref=e431]:
+                  - listitem [ref=e432]:
+                    - paragraph [ref=e433]:
+                      - text: Log in to
+                      - link "Palette" [ref=e434] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e435]:
+                    - paragraph [ref=e436]: Ensure you are in the correct project scope.
+                  - listitem [ref=e437]:
+                    - paragraph [ref=e438]:
+                      - text: From the left main menu, select
+                      - strong [ref=e439]: Clusters
+                      - text: and click
+                      - strong [ref=e440]: Add New Cluster
+                      - text: .
+                  - listitem [ref=e441]:
+                    - paragraph [ref=e442]:
+                      - text: In
+                      - strong [ref=e443]: Public Clouds
+                      - text: ", under"
+                      - strong [ref=e444]: Managed Kubernetes
+                      - text: ", select"
+                      - strong [ref=e445]: AWS EKS
+                      - text: .
+                  - listitem [ref=e446]:
+                    - paragraph [ref=e447]:
+                      - text: In the bottom-right corner, click
+                      - strong [ref=e448]: Start AWS EKS Configuration
+                      - text: .
+                  - listitem [ref=e449]:
+                    - paragraph [ref=e450]:
+                      - text: Fill out the following basic information and click
+                      - strong [ref=e451]: Next
+                      - text: .
+                    - table [ref=e452]:
+                      - rowgroup [ref=e453]:
+                        - row "Field Description" [ref=e454]:
+                          - cell "Field" [ref=e455]:
+                            - strong [ref=e456]: Field
+                          - cell "Description" [ref=e457]:
+                            - strong [ref=e458]: Description
+                      - rowgroup [ref=e459]:
+                        - row "Cluster Name A custom name for the cluster." [ref=e460]:
+                          - cell "Cluster Name" [ref=e461]:
+                            - strong [ref=e462]: Cluster Name
+                          - cell "A custom name for the cluster." [ref=e463]
+                        - row "Description Use the description to provide context about the cluster." [ref=e464]:
+                          - cell "Description" [ref=e465]:
+                            - strong [ref=e466]: Description
+                          - cell "Use the description to provide context about the cluster." [ref=e467]
+                        - 'row "Tags Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: region:us-east-1a or zone:vpc-private-us-east-1a." [ref=e468]':
+                          - cell "Tags" [ref=e469]:
+                            - strong [ref=e470]: Tags
+                          - 'cell "Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: region:us-east-1a or zone:vpc-private-us-east-1a." [ref=e471]':
+                            - text: "Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example:"
+                            - code [ref=e472]: region:us-east-1a
+                            - text: or
+                            - code [ref=e473]: zone:vpc-private-us-east-1a
+                            - text: .
+                        - row "Cloud Account If you already added your AWS account in Palette, select it from the drop-down Menu. Otherwise, click Add New Account and add your AWS account information." [ref=e474]:
+                          - cell "Cloud Account" [ref=e475]:
+                            - strong [ref=e476]: Cloud Account
+                          - cell "If you already added your AWS account in Palette, select it from the drop-down Menu. Otherwise, click Add New Account and add your AWS account information." [ref=e477]:
+                            - text: If you already added your AWS account in Palette, select it from the
+                            - strong [ref=e478]: drop-down Menu
+                            - text: . Otherwise, click
+                            - strong [ref=e479]: Add New Account
+                            - text: and add your AWS account information.
+                    - paragraph [ref=e480]:
+                      - text: To learn how to add an AWS account, review the
+                      - link "Add an AWS Account to Palette" [ref=e481] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/aws/add-aws-accounts/
+                      - text: guide.
+                  - listitem [ref=e482]:
+                    - paragraph [ref=e483]:
+                      - text: Click
+                      - strong [ref=e484]: Add Cluster Profile
+                      - text: ", select a cluster profile and click"
+                      - strong [ref=e485]: Next
+                      - text: . Palette displays the cluster profile layers.
+                  - listitem [ref=e486]:
+                    - paragraph [ref=e487]:
+                      - text: Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer. You can configure custom OpenID Connect (OIDC) for EKS clusters at the Kubernetes layer. Check out
+                      - link "Access EKS Cluster" [ref=e488] [cursor=pointer]:
+                        - /url: "#access-eks-cluster"
+                      - text: if you need more guidance.
+                  - listitem [ref=e489]:
+                    - paragraph [ref=e490]:
+                      - text: Click
+                      - strong [ref=e491]: Next
+                      - text: to continue.
+                  - listitem [ref=e492]:
+                    - paragraph [ref=e493]:
+                      - text: Provide the following cluster configuration information and click
+                      - strong [ref=e494]: Next
+                      - text: to continue.
+                    - table [ref=e495]:
+                      - rowgroup [ref=e496]:
+                        - row "Parameter Description" [ref=e497]:
+                          - cell "Parameter" [ref=e498]:
+                            - strong [ref=e499]: Parameter
+                          - cell "Description" [ref=e500]:
+                            - strong [ref=e501]: Description
+                      - rowgroup [ref=e502]:
+                        - row "Static Placement By default, Palette uses dynamic placement. This creates a new Virtual Private Cloud (VPC) for the cluster that contains two subnets in different Availability Zones (AZs), which is required for EKS cluster deployment. Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted. If you want to place resources into pre-existing VPCs, enable the Static Placement option, and provide the VPCID in the VPCID field that displays with this option enabled. If you are deploying your cluster in an AWS Secret region, static placement is required. You will need to specify two subnets in different Availability Zones (AZs)." [ref=e503]:
+                          - cell "Static Placement" [ref=e504]:
+                            - strong [ref=e505]: Static Placement
+                          - cell "By default, Palette uses dynamic placement. This creates a new Virtual Private Cloud (VPC) for the cluster that contains two subnets in different Availability Zones (AZs), which is required for EKS cluster deployment. Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted. If you want to place resources into pre-existing VPCs, enable the Static Placement option, and provide the VPCID in the VPCID field that displays with this option enabled. If you are deploying your cluster in an AWS Secret region, static placement is required. You will need to specify two subnets in different Availability Zones (AZs)." [ref=e506]:
+                            - text: By default, Palette uses dynamic placement. This creates a new Virtual Private Cloud (VPC) for the cluster that contains two subnets in different Availability Zones (AZs), which is required for EKS cluster deployment. Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.
+                            - text: If you want to place resources into pre-existing VPCs, enable the
+                            - strong [ref=e507]: Static Placement
+                            - text: option, and provide the VPCID in the
+                            - strong [ref=e508]: VPCID
+                            - text: field that displays with this option enabled. If you are deploying your cluster in an
+                            - link "AWS Secret" [ref=e509] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/add-aws-accounts/#aws-secret-cloud-account-us
+                            - text: region, static placement is required. You will need to specify two subnets in different Availability Zones (AZs).
+                        - row "Region Use the drop-down Menu to choose the AWS region where you would like to provision the cluster." [ref=e510]:
+                          - cell "Region" [ref=e511]:
+                            - strong [ref=e512]: Region
+                          - cell "Use the drop-down Menu to choose the AWS region where you would like to provision the cluster." [ref=e513]:
+                            - text: Use the
+                            - strong [ref=e514]: drop-down Menu
+                            - text: to choose the AWS region where you would like to provision the cluster.
+                        - row "SSH Key Pair Name Choose the SSH key pair for the region you selected. This is required for dynamic placement and optional for static placement. SSH key pairs must be pre-configured in your AWS environment. This is called an EC2 Key Pair in AWS. The key you select is inserted into the provisioned VMs." [ref=e515]:
+                          - cell "SSH Key Pair Name" [ref=e516]:
+                            - strong [ref=e517]: SSH Key Pair Name
+                          - cell "Choose the SSH key pair for the region you selected. This is required for dynamic placement and optional for static placement. SSH key pairs must be pre-configured in your AWS environment. This is called an EC2 Key Pair in AWS. The key you select is inserted into the provisioned VMs." [ref=e518]
+                        - row "Cluster Endpoint Access This setting provides access to the Kubernetes API endpoint. Select Private, Public or Private & Public. If you are deploying your cluster in an AWS Secret region, use Private & Public. For more information, refer to the Amazon EKS cluster endpoint access control reference guide." [ref=e519]:
+                          - cell "Cluster Endpoint Access" [ref=e520]:
+                            - strong [ref=e521]: Cluster Endpoint Access
+                          - cell "This setting provides access to the Kubernetes API endpoint. Select Private, Public or Private & Public. If you are deploying your cluster in an AWS Secret region, use Private & Public. For more information, refer to the Amazon EKS cluster endpoint access control reference guide." [ref=e522]:
+                            - text: This setting provides access to the Kubernetes API endpoint. Select
+                            - strong [ref=e523]: Private
+                            - text: ","
+                            - strong [ref=e524]: Public
+                            - text: or
+                            - strong [ref=e525]: Private & Public
+                            - text: . If you are deploying your cluster in an
+                            - link "AWS Secret" [ref=e526] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/add-aws-accounts/#aws-secret-cloud-account-us
+                            - text: region, use
+                            - strong [ref=e527]: Private & Public
+                            - text: . For more information, refer to the
+                            - link "Amazon EKS cluster endpoint access control" [ref=e528] [cursor=pointer]:
+                              - /url: https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html
+                            - text: reference guide.
+                        - row "Public Access CIDRs This setting controls which IP address CIDR ranges can access the cluster. To fully allow unrestricted network access, enter 0.0.0.0/0 in the field. For more information, refer to the Amazon EKS cluster endpoint access control reference guide." [ref=e529]:
+                          - cell "Public Access CIDRs" [ref=e530]:
+                            - strong [ref=e531]: Public Access CIDRs
+                          - cell "This setting controls which IP address CIDR ranges can access the cluster. To fully allow unrestricted network access, enter 0.0.0.0/0 in the field. For more information, refer to the Amazon EKS cluster endpoint access control reference guide." [ref=e532]:
+                            - text: This setting controls which IP address CIDR ranges can access the cluster. To fully allow unrestricted network access, enter
+                            - code [ref=e533]: 0.0.0.0/0
+                            - text: in the field. For more information, refer to the
+                            - link "Amazon EKS cluster endpoint access control" [ref=e534] [cursor=pointer]:
+                              - /url: https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html
+                            - text: reference guide.
+                        - row "Private Access CIDRs This setting controls which private IP address CIDR ranges can access the cluster. Private CIDRs provide a way to specify private, self-hosted, and air-gapped networks or Private Cloud Gateway (PCG) that may be located in other VPCs connected to the VPC hosting the cluster endpoint. To restrict network access, replace the pre-populated 0.0.0.0/0 with the IP address CIDR range that should be allowed access to the cluster endpoint. Only the IP addresses that are within the specified VPC CIDR range - and any other connected VPCs - will be able to reach the private endpoint. For example, while using 0.0.0.0/0 would allow traffic throughout the VPC and all peered VPCs, specifying the VPC CIDR 10.0.0.0/16 would limit traffic to an individual VPC. For more information, refer to the Amazon EKS cluster endpoint access control reference guide." [ref=e535]:
+                          - cell "Private Access CIDRs" [ref=e536]:
+                            - strong [ref=e537]: Private Access CIDRs
+                          - cell "This setting controls which private IP address CIDR ranges can access the cluster. Private CIDRs provide a way to specify private, self-hosted, and air-gapped networks or Private Cloud Gateway (PCG) that may be located in other VPCs connected to the VPC hosting the cluster endpoint. To restrict network access, replace the pre-populated 0.0.0.0/0 with the IP address CIDR range that should be allowed access to the cluster endpoint. Only the IP addresses that are within the specified VPC CIDR range - and any other connected VPCs - will be able to reach the private endpoint. For example, while using 0.0.0.0/0 would allow traffic throughout the VPC and all peered VPCs, specifying the VPC CIDR 10.0.0.0/16 would limit traffic to an individual VPC. For more information, refer to the Amazon EKS cluster endpoint access control reference guide." [ref=e538]:
+                            - text: This setting controls which private IP address CIDR ranges can access the cluster. Private CIDRs provide a way to specify private, self-hosted, and air-gapped networks or Private Cloud Gateway (PCG) that may be located in other VPCs connected to the VPC hosting the cluster endpoint.
+                            - text: To restrict network access, replace the pre-populated 0.0.0.0/0 with the IP address CIDR range that should be allowed access to the cluster endpoint. Only the IP addresses that are within the specified VPC CIDR range - and any other connected VPCs - will be able to reach the private endpoint. For example, while using
+                            - code [ref=e539]: 0.0.0.0/0
+                            - text: would allow traffic throughout the VPC and all peered VPCs, specifying the VPC CIDR
+                            - code [ref=e540]: 10.0.0.0/16
+                            - text: would limit traffic to an individual VPC. For more information, refer to the
+                            - link "Amazon EKS cluster endpoint access control" [ref=e541] [cursor=pointer]:
+                              - /url: https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html
+                            - text: reference guide.
+                        - row "Enable Encryption Use this option for secrets encryption. You must have an existing AWS Key Management Service (KMS) key you can use. Toggle the Enable encryption option and use the drop-down Menu in the ARN field to select the KMS key ARN. If you do not have a KMS key and want to create one to use this option, review Enable Secrets Encryption for EKS Cluster. Once your KMS key is created, return to this Cluster Config step to enable secrets encryption and specify the KMS key ARN." [ref=e542]:
+                          - cell "Enable Encryption" [ref=e543]:
+                            - strong [ref=e544]: Enable Encryption
+                          - cell "Use this option for secrets encryption. You must have an existing AWS Key Management Service (KMS) key you can use. Toggle the Enable encryption option and use the drop-down Menu in the ARN field to select the KMS key ARN. If you do not have a KMS key and want to create one to use this option, review Enable Secrets Encryption for EKS Cluster. Once your KMS key is created, return to this Cluster Config step to enable secrets encryption and specify the KMS key ARN." [ref=e545]:
+                            - text: Use this option for secrets encryption. You must have an existing AWS Key Management Service (KMS) key you can use. Toggle the
+                            - strong [ref=e546]: Enable encryption
+                            - text: option and use the
+                            - strong [ref=e547]: drop-down Menu
+                            - text: in the
+                            - strong [ref=e548]: ARN
+                            - text: field to select the KMS key ARN.
+                            - text: If you do not have a KMS key and want to create one to use this option, review
+                            - link "Enable Secrets Encryption for EKS Cluster" [ref=e549] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/enable-secrets-encryption-kms-key/
+                            - text: . Once your KMS key is created, return to this Cluster Config step to enable secrets encryption and specify the KMS key ARN.
+                    - generic [ref=e550]:
+                      - generic [ref=e551]:
+                        - img [ref=e553]
+                        - text: warning
+                      - paragraph [ref=e556]:
+                        - text: If you set the cluster endpoint to
+                        - strong [ref=e557]: Public
+                        - text: ", ensure you specify"
+                        - code [ref=e558]: 0.0.0.0/0
+                        - text: in the
+                        - strong [ref=e559]: Public Access CIDR
+                        - text: field to open it to all possible IP addresses. Otherwise, Palette will not open it up entirely. We recommend specifying the
+                        - strong [ref=e560]: Private & Public
+                        - text: option to cover all the possibilities.
+                  - listitem [ref=e561]:
+                    - paragraph [ref=e562]: Provide the following node pool and cloud configuration information. If you will be using Fargate profiles, you can add them here.
+                    - generic [ref=e563]:
+                      - generic [ref=e564]:
+                        - img [ref=e566]
+                        - text: info
+                      - paragraph [ref=e569]:
+                        - text: To automatically scale the number of worker nodes for EKS clusters, you must add the
+                        - link "AWS Cluster Autoscaler" [ref=e570] [cursor=pointer]:
+                          - /url: /integrations/packs/?pack=aws-cluster-autoscaler
+                        - text: pack to your cluster profile.
+                    - heading "Node Configuration SettingsDirect link to Node Configuration Settings" [level=4] [ref=e571]:
+                      - text: Node Configuration Settings
+                      - link "Direct link to Node Configuration Settings" [ref=e572] [cursor=pointer]:
+                        - /url: "#node-configuration-settings"
+                        - text: "#"
+                    - table [ref=e573]:
+                      - rowgroup [ref=e574]:
+                        - row "Parameter Description" [ref=e575]:
+                          - cell "Parameter" [ref=e576]:
+                            - strong [ref=e577]: Parameter
+                          - cell "Description" [ref=e578]:
+                            - strong [ref=e579]: Description
+                      - rowgroup [ref=e580]:
+                        - row "Node pool name A descriptive name for the node pool." [ref=e581]:
+                          - cell "Node pool name" [ref=e582]:
+                            - strong [ref=e583]: Node pool name
+                          - cell "A descriptive name for the node pool." [ref=e584]
+                        - row "Number of nodes in the pool Specify the number of nodes in the worker pool." [ref=e585]:
+                          - cell "Number of nodes in the pool" [ref=e586]:
+                            - strong [ref=e587]: Number of nodes in the pool
+                          - cell "Specify the number of nodes in the worker pool." [ref=e588]
+                        - 'row "Additional Labels You can add optional labels to nodes in key-value format. For general information about applying labels, review the Node Labels guide. Example: \"environment\": \"production\"" [ref=e589]':
+                          - cell "Additional Labels" [ref=e590]:
+                            - strong [ref=e591]: Additional Labels
+                          - 'cell "You can add optional labels to nodes in key-value format. For general information about applying labels, review the Node Labels guide. Example: \"environment\": \"production\"" [ref=e592]':
+                            - text: You can add optional labels to nodes in key-value format. For general information about applying labels, review the
+                            - link "Node Labels" [ref=e593] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/node-labels/
+                            - text: "guide. Example:"
+                            - code [ref=e594]: "\"environment\": \"production\""
+                        - 'row "Taints You can apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Review the Node Pool management page and Taints and Tolerations guide to learn more. Toggle the Taint button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the drop-down menu to choose one of the following Effect options: - NoSchedule - Pods are not scheduled onto nodes with this taint. - PreferNoSchedule - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited. - NoExecute - Existing pods on nodes with this taint are evicted." [ref=e595]':
+                          - cell "Taints" [ref=e596]:
+                            - strong [ref=e597]: Taints
+                          - 'cell "You can apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Review the Node Pool management page and Taints and Tolerations guide to learn more. Toggle the Taint button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the drop-down menu to choose one of the following Effect options: - NoSchedule - Pods are not scheduled onto nodes with this taint. - PreferNoSchedule - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited. - NoExecute - Existing pods on nodes with this taint are evicted." [ref=e598]':
+                            - text: You can apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Review the
+                            - link "Node Pool" [ref=e599] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/node-pool/
+                            - text: management page and
+                            - link "Taints and Tolerations" [ref=e600] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/taints/
+                            - text: guide to learn more. Toggle the
+                            - strong [ref=e601]: Taint
+                            - text: button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the drop-down menu to choose one of the following
+                            - strong [ref=e602]: Effect
+                            - text: "options:"
+                            - text: "-"
+                            - strong [ref=e603]: NoSchedule
+                            - text: "- Pods are not scheduled onto nodes with this taint."
+                            - text: "-"
+                            - strong [ref=e604]: PreferNoSchedule
+                            - text: "- Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited."
+                            - text: "-"
+                            - strong [ref=e605]: NoExecute
+                            - text: "- Existing pods on nodes with this taint are evicted."
+                    - heading "Cloud Configuration SettingsDirect link to Cloud Configuration Settings" [level=4] [ref=e606]:
+                      - text: Cloud Configuration Settings
+                      - link "Direct link to Cloud Configuration Settings" [ref=e607] [cursor=pointer]:
+                        - /url: "#cloud-configuration-settings"
+                        - text: "#"
+                    - table [ref=e608]:
+                      - rowgroup [ref=e609]:
+                        - row "Parameter Description" [ref=e610]:
+                          - cell "Parameter" [ref=e611]:
+                            - strong [ref=e612]: Parameter
+                          - cell "Description" [ref=e613]:
+                            - strong [ref=e614]: Description
+                      - rowgroup [ref=e615]:
+                        - 'row "Instance Option Choose a pricing method: - On-Demand - Provides stable and uninterrupted compute capacity at a higher cost. - Spot - Allows you to bid for unused EC2 capacity at a lower cost. We recommend you base your choice on your application''s requirements." [ref=e616]':
+                          - cell "Instance Option" [ref=e617]:
+                            - strong [ref=e618]: Instance Option
+                          - 'cell "Choose a pricing method: - On-Demand - Provides stable and uninterrupted compute capacity at a higher cost. - Spot - Allows you to bid for unused EC2 capacity at a lower cost. We recommend you base your choice on your application''s requirements." [ref=e619]':
+                            - text: "Choose a pricing method:"
+                            - text: "-"
+                            - strong [ref=e620]: On-Demand
+                            - text: "- Provides stable and uninterrupted compute capacity at a higher cost."
+                            - text: "-"
+                            - strong [ref=e621]: Spot
+                            - text: "- Allows you to bid for unused EC2 capacity at a lower cost."
+                            - text: We recommend you base your choice on your application's requirements.
+                        - row "Instance Type Select the instance type to use for all nodes in the node pool." [ref=e622]:
+                          - cell "Instance Type" [ref=e623]:
+                            - strong [ref=e624]: Instance Type
+                          - cell "Select the instance type to use for all nodes in the node pool." [ref=e625]
+                        - 'row "Amazon Machine Image (AMI) Type Specify a base AMI to use for your worker nodes: - AL2_x86_64 (used by default if none selected) - AL2_x86_64_GPU - AL2023_x86_64_STANDARD - AL2023_x86_64_NEURON - AL2023_x86_64_NVIDIA The AMI type cannot be modified post-deployment. Refer to the Node Customization section of the Kubernetes EKS pack for configurable options available for these AMIs. If using an Amazon Linux 2023 (AL2023) AMI and using an AWS CSI pack such as Amazon EBS CSI, Amazon EFS CSI, or Amazon Cloud Native, you must configure IAM Roles for Service Accounts (IRSA). IRSA is also required if using the AWS Application Loadbalancer. Refer to the Scenario - PV/PVC Stuck in Pending Status for EKS Cluster Using AL2023 AMI troubleshooting guide for further information." [ref=e626]':
+                          - cell "Amazon Machine Image (AMI) Type" [ref=e627]:
+                            - strong [ref=e628]: Amazon Machine Image (AMI) Type
+                          - 'cell "Specify a base AMI to use for your worker nodes: - AL2_x86_64 (used by default if none selected) - AL2_x86_64_GPU - AL2023_x86_64_STANDARD - AL2023_x86_64_NEURON - AL2023_x86_64_NVIDIA The AMI type cannot be modified post-deployment. Refer to the Node Customization section of the Kubernetes EKS pack for configurable options available for these AMIs. If using an Amazon Linux 2023 (AL2023) AMI and using an AWS CSI pack such as Amazon EBS CSI, Amazon EFS CSI, or Amazon Cloud Native, you must configure IAM Roles for Service Accounts (IRSA). IRSA is also required if using the AWS Application Loadbalancer. Refer to the Scenario - PV/PVC Stuck in Pending Status for EKS Cluster Using AL2023 AMI troubleshooting guide for further information." [ref=e629]':
+                            - text: "Specify a base AMI to use for your worker nodes:"
+                            - text: "-"
+                            - strong [ref=e630]: AL2_x86_64
+                            - text: (used by default if none selected)
+                            - text: "-"
+                            - strong [ref=e631]: AL2_x86_64_GPU
+                            - text: "-"
+                            - strong [ref=e632]: AL2023_x86_64_STANDARD
+                            - text: "-"
+                            - strong [ref=e633]: AL2023_x86_64_NEURON
+                            - text: "-"
+                            - strong [ref=e634]: AL2023_x86_64_NVIDIA
+                            - text: The AMI type cannot be modified post-deployment. Refer to the
+                            - link "Node Customization" [ref=e635] [cursor=pointer]:
+                              - /url: /integrations/packs/?pack=kubernetes-eks&tab=custom#node-customization
+                            - text: section of the Kubernetes EKS pack for configurable options available for these AMIs.
+                            - text: If using an Amazon Linux 2023 (AL2023) AMI and using an AWS CSI pack such as Amazon EBS CSI, Amazon EFS CSI, or Amazon Cloud Native, you must configure IAM Roles for Service Accounts (IRSA). IRSA is also required if using the AWS Application Loadbalancer. Refer to the
+                            - link "Scenario - PV/PVC Stuck in Pending Status for EKS Cluster Using AL2023 AMI" [ref=e636] [cursor=pointer]:
+                              - /url: /troubleshooting/cluster-deployment/#scenario---pvpvc-stuck-in-pending-status-for-eks-cluster-using-al2023-ami
+                            - text: troubleshooting guide for further information.
+                        - 'row "Enable Nodepool Customization (Optional) Activate additional node pool customization options: - Amazon Machine Image (AMI) ID (Optional) - Use a pre-configured VM image by providing the ID value of the AMI. The AMI ID can be updated post-deployment, but the base AMI type must always match the type specified in the Amazon Machine Image (AMI) Type field, and the AMI must be compatible with the Kubernetes version specified in the cluster profile. CAUTION: If you do not specify an AMI ID, Palette will use the Amazon EKS AMI for the node pool. As such, any future updates to the underlying Amazon EKS AMI in Palette will trigger cluster repaves. To avoid unexpected repaves, explicitly set the AMI ID. Refer to the AWS documentation for the latest AMI IDs. - Disk Type (Optional) - Specify the disk type to use." [ref=e637]':
+                          - cell "Enable Nodepool Customization (Optional)" [ref=e638]:
+                            - strong [ref=e639]: Enable Nodepool Customization (Optional)
+                          - 'cell "Activate additional node pool customization options: - Amazon Machine Image (AMI) ID (Optional) - Use a pre-configured VM image by providing the ID value of the AMI. The AMI ID can be updated post-deployment, but the base AMI type must always match the type specified in the Amazon Machine Image (AMI) Type field, and the AMI must be compatible with the Kubernetes version specified in the cluster profile. CAUTION: If you do not specify an AMI ID, Palette will use the Amazon EKS AMI for the node pool. As such, any future updates to the underlying Amazon EKS AMI in Palette will trigger cluster repaves. To avoid unexpected repaves, explicitly set the AMI ID. Refer to the AWS documentation for the latest AMI IDs. - Disk Type (Optional) - Specify the disk type to use." [ref=e640]':
+                            - text: "Activate additional node pool customization options:"
+                            - text: "-"
+                            - strong [ref=e641]: Amazon Machine Image (AMI) ID (Optional)
+                            - text: "- Use a pre-configured VM image by providing the ID value of the AMI. The AMI ID can be updated post-deployment, but the base AMI type must always match the type specified in the"
+                            - strong [ref=e642]: Amazon Machine Image (AMI) Type
+                            - text: field, and the AMI must be compatible with the Kubernetes version specified in the
+                            - link "cluster profile" [ref=e643] [cursor=pointer]:
+                              - /url: /profiles/cluster-profiles/
+                            - text: .
+                            - strong [ref=e644]: "CAUTION:"
+                            - text: If you do not specify an AMI ID, Palette will use the Amazon EKS AMI for the node pool. As such, any future updates to the underlying Amazon EKS AMI in Palette will trigger
+                            - link "cluster repaves" [ref=e645] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/node-pool/#repave-behavior-and-configuration
+                            - text: . To avoid unexpected repaves, explicitly set the AMI ID. Refer to the
+                            - link "AWS documentation" [ref=e646] [cursor=pointer]:
+                              - /url: https://docs.aws.amazon.com/eks/latest/userguide/retrieve-ami-id.html
+                            - text: for the latest AMI IDs.
+                            - text: "-"
+                            - strong [ref=e647]: Disk Type (Optional)
+                            - text: "- Specify the disk type to use."
+                        - row "Root Disk size (GB) Choose a disk size based on your requirements. The default size is 60." [ref=e648]:
+                          - cell "Root Disk size (GB)" [ref=e649]:
+                            - strong [ref=e650]: Root Disk size (GB)
+                          - cell "Choose a disk size based on your requirements. The default size is 60." [ref=e651]:
+                            - text: Choose a disk size based on your requirements. The default size is
+                            - code [ref=e652]: "60"
+                            - text: .
+                    - heading "Fargate ProfilesDirect link to Fargate Profiles" [level=4] [ref=e653]:
+                      - text: Fargate Profiles
+                      - link "Direct link to Fargate Profiles" [ref=e654] [cursor=pointer]:
+                        - /url: "#fargate-profiles"
+                        - text: "#"
+                    - paragraph [ref=e655]:
+                      - text: You can create one or more Fargate profiles for the EKS cluster to use. Click
+                      - strong [ref=e656]: + Add Fargate Profile
+                      - text: . For more information about Fargate profiles, refer to the
+                      - link "AWS Fargate" [ref=e657] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/AmazonECS/latest/userguide/what-is-fargate.html
+                      - text: reference guide.
+                    - table [ref=e658]:
+                      - rowgroup [ref=e659]:
+                        - row "Parameter Description" [ref=e660]:
+                          - cell "Parameter" [ref=e661]:
+                            - strong [ref=e662]: Parameter
+                          - cell "Description" [ref=e663]:
+                            - strong [ref=e664]: Description
+                      - rowgroup [ref=e665]:
+                        - row "Name A custom name for the Fargate profile." [ref=e666]:
+                          - cell "Name" [ref=e667]:
+                            - strong [ref=e668]: Name
+                          - cell "A custom name for the Fargate profile." [ref=e669]
+                        - row "Subnets Pods running on Fargate Profiles are not assigned public IP addresses, so only private subnets (with no direct route to an Internet Gateway) are accepted for this parameter. For dynamic provisioning, this input is not required and subnets are automatically selected." [ref=e670]:
+                          - cell "Subnets" [ref=e671]:
+                            - strong [ref=e672]: Subnets
+                          - cell "Pods running on Fargate Profiles are not assigned public IP addresses, so only private subnets (with no direct route to an Internet Gateway) are accepted for this parameter. For dynamic provisioning, this input is not required and subnets are automatically selected." [ref=e673]
+                        - row "Selectors Define a pod selector by providing a target namespace and optional labels. Pods with a matching namespace and app labels are scheduled to run on dynamically provisioned compute nodes. You can have up to five selectors in a Fargate profile, and a pod only needs to match one selector to run using the Fargate profile." [ref=e674]:
+                          - cell "Selectors" [ref=e675]:
+                            - strong [ref=e676]: Selectors
+                          - cell "Define a pod selector by providing a target namespace and optional labels. Pods with a matching namespace and app labels are scheduled to run on dynamically provisioned compute nodes. You can have up to five selectors in a Fargate profile, and a pod only needs to match one selector to run using the Fargate profile." [ref=e677]:
+                            - text: Define a pod selector by providing a target namespace and optional labels. Pods with a matching namespace and app labels are scheduled to run on dynamically provisioned compute nodes.
+                            - text: You can have up to five selectors in a Fargate profile, and a pod only needs to match one selector to run using the Fargate profile.
+                    - generic [ref=e678]:
+                      - generic [ref=e679]:
+                        - img [ref=e681]
+                        - text: info
+                      - paragraph [ref=e684]: You can add new worker pools if you need to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the m3.large instance types for general-purpose workloads, and another worker pool with instance type g2.2xlarge can be configured to run GPU workloads.
+                  - listitem [ref=e685]:
+                    - paragraph [ref=e686]:
+                      - text: Click
+                      - strong [ref=e687]: Next
+                      - text: to continue.
+                  - listitem [ref=e688]:
+                    - paragraph [ref=e689]:
+                      - text: Specify your preferred
+                      - strong [ref=e690]: OS Patching Schedule
+                      - text: for EKS-managed machines.
+                  - listitem [ref=e691]:
+                    - paragraph [ref=e692]: Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for Kubernetes configuration security, penetration testing, and conformance testing.
+                  - listitem [ref=e693]:
+                    - paragraph [ref=e694]:
+                      - text: Schedule any backups you want Palette to perform. Review
+                      - link "Backup and Restore" [ref=e695] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/backup-restore/
+                      - text: for more information.
+                - list [ref=e696]:
+                  - listitem [ref=e697]:
+                    - text: RBAC configuration is required when you configure custom OIDC. You must map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
+                    - link "Create Role Bindings" [ref=e698] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/cluster-rbac/#create-role-bindings
+                    - text: . Refer to the
+                    - link "Palette eXtended Kubernetes (PXK)" [ref=e699] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=kubernetes&tab=custom
+                    - text: pack additional details for an example.
+                - list [ref=e700]:
+                  - listitem [ref=e701]:
+                    - paragraph [ref=e702]:
+                      - text: Click
+                      - strong [ref=e703]: Validate
+                      - text: and review the cluster configuration and settings summary.
+                  - listitem [ref=e704]:
+                    - paragraph [ref=e705]:
+                      - text: Click
+                      - strong [ref=e706]: Finish Configuration
+                      - text: to deploy the cluster.
+                - paragraph [ref=e707]: The displayed cluster details page contains the status and details of the deployment. Use this page to track the deployment progress.
+                - generic [ref=e708]:
+                  - generic [ref=e709]:
+                    - img [ref=e711]
+                    - text: info
+                  - paragraph [ref=e714]: Provisioning an AWS EKS clusters can take several minutes.
+                - paragraph [ref=e715]:
+                  - text: For information on how to access your cluster using the kubectl CLI, review
+                  - link "Access EKS Cluster" [ref=e716] [cursor=pointer]:
+                    - /url: "#access-eks-cluster"
+                  - text: .
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e717]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e718] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e719]:
+                  - text: You can validate your cluster is up and in
+                  - strong [ref=e720]: Running
+                  - text: state.
+                - list [ref=e721]:
+                  - listitem [ref=e722]:
+                    - paragraph [ref=e723]:
+                      - text: Log in to
+                      - link "Palette" [ref=e724] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e725]:
+                    - paragraph [ref=e726]:
+                      - text: Navigate to the left main menu and select
+                      - strong [ref=e727]: Clusters
+                      - text: . The
+                      - strong [ref=e728]: Clusters
+                      - text: page displays a list of all available clusters that Palette manages.
+                  - listitem [ref=e729]:
+                    - paragraph [ref=e730]: Click on the cluster you created to view its details page.
+                  - listitem [ref=e731]:
+                    - paragraph [ref=e732]:
+                      - text: Ensure the
+                      - strong [ref=e733]: Cluster Status
+                      - text: field displays
+                      - strong [ref=e734]: Running
+                      - text: .
+                - heading "Access EKS ClusterDirect link to Access EKS Cluster" [level=2] [ref=e735]:
+                  - text: Access EKS Cluster
+                  - link "Direct link to Access EKS Cluster" [ref=e736] [cursor=pointer]:
+                    - /url: "#access-eks-cluster"
+                    - text: "#"
+                - paragraph [ref=e737]: You can access your Kubernetes cluster by using the kubectl CLI, which requires authentication. Depending on how you will authenticate to your EKS cluster, you need to install the appropriate plugin. The table below lists the plugin required for two EKS deployment scenarios.
+                - table [ref=e738]:
+                  - rowgroup [ref=e739]:
+                    - row "Scenario Plugin" [ref=e740]:
+                      - cell "Scenario" [ref=e741]:
+                        - strong [ref=e742]: Scenario
+                      - cell "Plugin" [ref=e743]:
+                        - strong [ref=e744]: Plugin
+                  - rowgroup [ref=e745]:
+                    - row "Deploy EKS cluster with custom OIDC kubelogin" [ref=e746]:
+                      - cell "Deploy EKS cluster with custom OIDC" [ref=e747]
+                      - cell "kubelogin" [ref=e748]:
+                        - link "kubelogin" [ref=e749] [cursor=pointer]:
+                          - /url: https://github.com/int128/kubelogin
+                    - row "Deploy EKS cluster access with default AWS authentication aws-iam-authenticator" [ref=e750]:
+                      - cell "Deploy EKS cluster access with default AWS authentication" [ref=e751]
+                      - cell "aws-iam-authenticator" [ref=e752]:
+                        - link "aws-iam-authenticator" [ref=e753] [cursor=pointer]:
+                          - /url: https://github.com/kubernetes-sigs/aws-iam-authenticator
+                - paragraph [ref=e754]: Select the appropriate tab for your deployment.
+                - generic [ref=e755]:
+                  - tablist [ref=e756]:
+                    - tab "AWS IAM" [selected] [ref=e757] [cursor=pointer]
+                    - tab "Custom OIDC" [ref=e758] [cursor=pointer]
+                  - tabpanel [ref=e760]:
+                    - paragraph [ref=e761]: "To access an EKS cluster with default AWS authentication, you need to do the following:"
+                    - list [ref=e762]:
+                      - listitem [ref=e763]:
+                        - paragraph [ref=e764]:
+                          - text: Download the aws-iam-authenticator plugin, install it, and make it available in your system's
+                          - code [ref=e765]: $PATH
+                          - text: . Refer to the
+                          - link "AWS IAM Authenticator" [ref=e766] [cursor=pointer]:
+                            - /url: https://github.com/kubernetes-sigs/aws-iam-authenticator
+                          - text: GitHub repository for more information.
+                      - listitem [ref=e767]:
+                        - paragraph [ref=e768]:
+                          - text: Configure your AWS credentials. The aws-iam-authenticator plugin requires AWS credentials to access the cluster. Refer to the
+                          - link "Configuration and Credential File Settings" [ref=e769] [cursor=pointer]:
+                            - /url: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
+                          - text: reference guide.
+                      - listitem [ref=e770]:
+                        - paragraph [ref=e771]:
+                          - text: Download the kubeconfig file from the cluster details page. Refer to the
+                          - link "Kubectl" [ref=e772] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/palette-webctl/
+                          - text: guide for more information.
+                - paragraph [ref=e773]: Once you have the required plugin installed and kubeconfig file downloaded, you can use kubectl to access your cluster.
+                - generic [ref=e774]:
+                  - generic [ref=e775]:
+                    - img [ref=e777]
+                    - text: tip
+                  - paragraph [ref=e780]:
+                    - text: For guidance in setting up kubectl, review the
+                    - link "Kubectl" [ref=e781] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/palette-webctl/
+                    - text: guide.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e782]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e783] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e784]:
+                  - listitem [ref=e785]:
+                    - paragraph [ref=e786]:
+                      - link "Add AWS Account" [ref=e787] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/aws/add-aws-accounts/
+                  - listitem [ref=e788]:
+                    - paragraph [ref=e789]:
+                      - link "Create an Infrastructure Profile" [ref=e790] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile/
+                  - listitem [ref=e791]:
+                    - paragraph [ref=e792]:
+                      - link "Enable Secrets Encryption for EKS Cluster" [ref=e793] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/aws/enable-secrets-encryption-kms-key/
+                  - listitem [ref=e794]:
+                    - paragraph [ref=e795]:
+                      - link "Enable Disk Encryption for EKS Cluster" [ref=e796] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/aws/enable-disk-encryption-eks-cluster/
+                  - listitem [ref=e797]:
+                    - paragraph [ref=e798]:
+                      - link "Configure Karpenter for EKS Clusters" [ref=e799] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/aws/configure-karpenter-eks-clusters/
+                - list [ref=e800]:
+                  - listitem [ref=e801]:
+                    - link "Palette eXtended Kubernetes (PXK)" [ref=e802] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=kubernetes
+                    - text: pack
+                - list [ref=e803]:
+                  - listitem [ref=e804]:
+                    - link "Create Role Bindings" [ref=e805] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/cluster-rbac/#create-role-bindings
+                    - text: .
+              - generic [ref=e806]:
+                - generic [ref=e808]:
+                  - text: "Tags:"
+                  - list [ref=e809]:
+                    - listitem [ref=e810]:
+                      - link "public cloud" [ref=e811] [cursor=pointer]:
+                        - /url: /tags/public-cloud/
+                    - listitem [ref=e812]:
+                      - link "aws" [ref=e813] [cursor=pointer]:
+                        - /url: /tags/aws/
+                    - listitem [ref=e814]:
+                      - link "eks" [ref=e815] [cursor=pointer]:
+                        - /url: /tags/eks/
+                - link "Edit this page" [ref=e818] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/public-cloud/aws/eks.md
+                  - img [ref=e819]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e823]:
+              - link "Previous « Create and Manage AWS IaaS Cluster" [ref=e824] [cursor=pointer]:
+                - /url: /clusters/public-cloud/aws/create-cluster/
+                - generic [ref=e825]: Previous
+                - generic [ref=e826]: « Create and Manage AWS IaaS Cluster
+              - link "Next EKS Hybrid Nodes »" [ref=e827] [cursor=pointer]:
+                - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/
+                - generic [ref=e828]: Next
+                - generic [ref=e829]: EKS Hybrid Nodes »
+          - list [ref=e832]:
+            - listitem [ref=e833]:
+              - link "Prerequisites" [ref=e834] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e835]:
+              - link "Deploy an AWS EKS Cluster" [ref=e836] [cursor=pointer]:
+                - /url: "#deploy-an-aws-eks-cluster"
+              - list [ref=e837]:
+                - listitem [ref=e838]:
+                  - link "Node Configuration Settings" [ref=e839] [cursor=pointer]:
+                    - /url: "#node-configuration-settings"
+                - listitem [ref=e840]:
+                  - link "Cloud Configuration Settings" [ref=e841] [cursor=pointer]:
+                    - /url: "#cloud-configuration-settings"
+                - listitem [ref=e842]:
+                  - link "Fargate Profiles" [ref=e843] [cursor=pointer]:
+                    - /url: "#fargate-profiles"
+            - listitem [ref=e844]:
+              - link "Validate" [ref=e845] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e846]:
+              - link "Access EKS Cluster" [ref=e847] [cursor=pointer]:
+                - /url: "#access-eks-cluster"
+            - listitem [ref=e848]:
+              - link "Resources" [ref=e849] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e850] [cursor=pointer]:
+    - generic [ref=e853]:
+      - img "Project Logo" [ref=e854]
+      - paragraph [ref=e855]: Ask AI
+```

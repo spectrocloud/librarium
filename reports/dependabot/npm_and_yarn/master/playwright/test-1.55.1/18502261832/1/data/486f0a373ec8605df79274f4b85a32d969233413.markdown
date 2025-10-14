@@ -1,0 +1,1328 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - link "Palette Tutorials" [ref=e40] [cursor=pointer]:
+                  - /url: /tutorials/
+                  - img [ref=e42]
+                  - text: Palette Tutorials
+              - listitem [ref=e44]:
+                - generic [ref=e45]:
+                  - link "Getting Started" [ref=e46] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/
+                    - img [ref=e48]
+                    - text: Getting Started
+                  - button "Toggle the collapsible sidebar category 'Getting Started'" [ref=e50] [cursor=pointer]
+              - listitem [ref=e51]:
+                - generic [ref=e52]:
+                  - link "Packs and Registries" [ref=e53] [cursor=pointer]:
+                    - /url: /tutorials/packs-registries/
+                    - img [ref=e55]
+                    - text: Packs and Registries
+                  - button "Toggle the collapsible sidebar category 'Packs and Registries'" [ref=e57] [cursor=pointer]
+              - listitem [ref=e58]:
+                - generic [ref=e59]:
+                  - link "Profiles" [ref=e60] [cursor=pointer]:
+                    - /url: /tutorials/profiles/
+                    - img [ref=e62]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e66] [cursor=pointer]
+              - listitem [ref=e67]:
+                - generic [ref=e68]:
+                  - link "Clusters" [expanded] [ref=e69] [cursor=pointer]:
+                    - /url: /tutorials/clusters/
+                    - img [ref=e71]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e77] [cursor=pointer]
+                - list [ref=e78]:
+                  - listitem [ref=e79]:
+                    - link "Edge" [expanded] [ref=e81] [cursor=pointer]:
+                      - /url: "#"
+                    - list [ref=e82]:
+                      - listitem [ref=e83]:
+                        - link "Deploy an Edge Cluster on VMware" [ref=e84] [cursor=pointer]:
+                          - /url: /tutorials/clusters/edge/deploy-cluster/
+                      - listitem [ref=e85]:
+                        - link "Deploy an Edge Cluster on VirtualBox" [ref=e86] [cursor=pointer]:
+                          - /url: /tutorials/clusters/edge/deploy-cluster-virtualbox/
+                  - listitem [ref=e87]:
+                    - link "Private Cloud Gateway" [ref=e89] [cursor=pointer]:
+                      - /url: "#"
+              - listitem [ref=e90]:
+                - generic [ref=e91]:
+                  - link "Palette Dev Engine" [ref=e92] [cursor=pointer]:
+                    - /url: /tutorials/pde/
+                    - img [ref=e94]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e96] [cursor=pointer]
+              - listitem [ref=e97]:
+                - button "Privacy Settings" [ref=e98] [cursor=pointer]
+      - main [ref=e99]:
+        - generic [ref=e101]:
+          - generic [ref=e103]:
+            - article [ref=e104]:
+              - navigation "Breadcrumbs" [ref=e105]:
+                - list [ref=e106]:
+                  - listitem [ref=e107]:
+                    - link "Home page" [ref=e108] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e109]
+                  - listitem [ref=e111]:
+                    - link "Clusters" [ref=e112] [cursor=pointer]:
+                      - /url: /tutorials/clusters/
+                  - listitem [ref=e113]:
+                    - generic [ref=e114]: Edge
+                  - listitem [ref=e115]:
+                    - generic [ref=e116]: Deploy an Edge Cluster on VirtualBox
+              - generic [ref=e117]:
+                - heading "Deploy an Edge Cluster on VirtualBox" [level=1] [ref=e119]
+                - paragraph [ref=e120]: Palette Edge allows users to deploy Kubernetes workloads in remote locations with limited connectivity and compute infrastructure. This means you can use Palette to manage the lifecycle of your Kubernetes clusters at the edge in places such as hospitals, rural areas, restaurants, and more.
+                - paragraph [ref=e121]:
+                  - text: Edge clusters are Kubernetes clusters set up on Edge hosts, which can be bare metal or virtual machines. These hosts can be managed locally on-site through the
+                  - link "Local UI" [ref=e122] [cursor=pointer]:
+                    - /url: /clusters/edge/local-ui/
+                  - text: or centrally through the Palette management plane.
+                - paragraph [ref=e123]:
+                  - text: Before forming a cluster, the Edge hosts must be prepared and registered with Palette. This involves the
+                  - link "EdgeForge workflow" [ref=e124] [cursor=pointer]:
+                    - /url: /clusters/edge/edgeforge-workflow/
+                  - text: ", which is responsible for building the required Edge artifacts, such as the"
+                  - link "Installer ISO" [ref=e125] [cursor=pointer]:
+                    - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso/
+                  - text: and
+                  - link "Provider Images" [ref=e126] [cursor=pointer]:
+                    - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/
+                  - text: . Once these artifacts are built, you can use the Installer ISO to bootstrap the Edge installation on your Edge host and the Provider Images to create a cluster profile.
+                - paragraph [ref=e127]: This tutorial will help you understand how the different Edge components work together. You will build and test the Edge artifacts and deploy an Edge cluster without the need for a complex lab environment or separate physical devices. Specifically, you will learn to deploy an Edge cluster along with a demo application using a VirtualBox VM as the Edge host.
+                - paragraph [ref=e128]: The diagram below illustrates how the components that will be deployed in this tutorial interact with each other.
+                - paragraph [ref=e129]:
+                  - img "A diagram showing the Edge VirtualBox tutorial workflow." [ref=e130]
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e131]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e132] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - paragraph [ref=e133]: To complete this tutorial, you will need the following prerequisites in place.
+                - list [ref=e134]:
+                  - listitem [ref=e135]:
+                    - text: A host with
+                    - emphasis [ref=e136]: AMD64
+                    - text: (also known as
+                    - emphasis [ref=e137]: x86_64
+                    - text: ) processor architecture and access to the Internet. The host must meet the
+                    - link "minimum requirements" [ref=e138] [cursor=pointer]:
+                      - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso/#prerequisites
+                    - text: "to build the artifacts and allow the creation of a VM with the following specifications:"
+                    - list [ref=e139]:
+                      - listitem [ref=e140]: 2 CPU
+                      - listitem [ref=e141]: 8 GB memory
+                      - listitem [ref=e142]: 100 GB storage
+                  - listitem [ref=e143]: A DHCP-enabled network.
+                  - listitem [ref=e144]: Three available IP addresses on the same network as the host machine. One address is for the Edge host, one is for the cluster's Virtual IP (VIP) address, and one is for the MetalLB load balancer.
+                  - listitem [ref=e145]:
+                    - text: A
+                    - link "Palette account" [ref=e146] [cursor=pointer]:
+                      - /url: https://www.spectrocloud.com/get-started
+                    - text: with
+                    - link "tenant admin" [ref=e147] [cursor=pointer]:
+                      - /url: /tenant-settings/
+                    - text: access.
+                  - listitem [ref=e148]:
+                    - text: A Palette tenant registration token. Refer to the
+                    - link "Create a Registration Token" [ref=e149] [cursor=pointer]:
+                      - /url: /clusters/edge/site-deployment/site-installation/create-registration-token/
+                    - text: guide for instructions on how to create a token.
+                  - listitem [ref=e150]:
+                    - text: "The following software installed:"
+                    - list [ref=e151]:
+                      - listitem [ref=e152]: A text editor such as Vi or Nano. This tutorial uses Vi as an example.
+                      - listitem [ref=e153]:
+                        - link "Docker Engine" [ref=e154] [cursor=pointer]:
+                          - /url: https://docs.docker.com/engine/install/
+                        - text: with
+                        - code [ref=e155]: sudo
+                        - text: privileges. Alternatively, you can install
+                        - link "Earthly" [ref=e156] [cursor=pointer]:
+                          - /url: https://earthly.dev/
+                        - text: ", in which case you will not need"
+                        - code [ref=e157]: sudo
+                        - text: privileges. And you can use lighter image management tools like
+                        - link "crane" [ref=e158] [cursor=pointer]:
+                          - /url: https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md
+                        - text: instead of Docker.
+                      - listitem [ref=e159]:
+                        - link "Git" [ref=e160] [cursor=pointer]:
+                          - /url: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+                      - listitem [ref=e161]:
+                        - link "VirtualBox" [ref=e162] [cursor=pointer]:
+                          - /url: https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html
+                        - text: version 7.0
+                - heading "EdgeForge WorkflowDirect link to EdgeForge Workflow" [level=2] [ref=e163]:
+                  - text: EdgeForge Workflow
+                  - link "Direct link to EdgeForge Workflow" [ref=e164] [cursor=pointer]:
+                    - /url: "#edgeforge-workflow"
+                    - text: "#"
+                - paragraph [ref=e165]:
+                  - text: The first step to deploying an Edge cluster is to prepare your Edge host with all the required components. This process is called
+                  - link "EdgeForge" [ref=e166] [cursor=pointer]:
+                    - /url: /clusters/edge/edgeforge-workflow/
+                  - text: and uses the
+                  - link "CanvOS" [ref=e167] [cursor=pointer]:
+                    - /url: https://github.com/spectrocloud/CanvOS/blob/main/README.md
+                  - text: utility. In this section, you will build the Installer ISO and provider images Edge artifacts.
+                - list [ref=e168]:
+                  - listitem [ref=e169]: "Installer ISO: ISO file that contains the Palette Edge host agent and metadata. It bootstraps the Edge installation in your Edge host."
+                  - listitem [ref=e170]:
+                    - text: "Provider Images:"
+                    - link "Kairos-based" [ref=e171] [cursor=pointer]:
+                      - /url: https://kairos.io
+                    - text: images containing the OS and the desired Kubernetes versions. The provider images are used in the OS layer when creating an Edge cluster profile.
+                - generic [ref=e172]:
+                  - generic [ref=e173]:
+                    - img [ref=e175]
+                    - text: tip
+                  - paragraph [ref=e178]:
+                    - text: If you want your Edge host to have preloaded content and be able to create clusters using this content, you can create a
+                    - link "content bundle" [ref=e179] [cursor=pointer]:
+                      - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle/
+                    - text: and build it into your Installer ISO.
+                - heading "Setup Your Local EnvironmentDirect link to Setup Your Local Environment" [level=3] [ref=e180]:
+                  - text: Setup Your Local Environment
+                  - link "Direct link to Setup Your Local Environment" [ref=e181] [cursor=pointer]:
+                    - /url: "#setup-your-local-environment"
+                    - text: "#"
+                - paragraph [ref=e182]:
+                  - text: Open up a terminal window in your host machine and clone the
+                  - strong [ref=e183]: CanvOS
+                  - text: repository. This repository contains the code and scripts required to build Edge artifacts.
+                - generic [ref=e185]:
+                  - code [ref=e187]:
+                    - generic [ref=e188]: git clone https://github.com/spectrocloud/CanvOS.git
+                  - button "Copy code to clipboard" [ref=e190] [cursor=pointer]:
+                    - generic [ref=e191]:
+                      - img [ref=e192]
+                      - img [ref=e194]
+                - paragraph [ref=e196]:
+                  - text: Next, navigate to the
+                  - strong [ref=e197]: CanvOS
+                  - text: directory.
+                - generic [ref=e199]:
+                  - code [ref=e201]:
+                    - generic [ref=e202]: cd CanvOS
+                  - button "Copy code to clipboard" [ref=e204] [cursor=pointer]:
+                    - generic [ref=e205]:
+                      - img [ref=e206]
+                      - img [ref=e208]
+                - paragraph [ref=e210]: Check the available git tags.
+                - generic [ref=e212]:
+                  - code [ref=e214]:
+                    - generic [ref=e215]: git tag
+                  - button "Copy code to clipboard" [ref=e217] [cursor=pointer]:
+                    - generic [ref=e218]:
+                      - img [ref=e219]
+                      - img [ref=e221]
+                - paragraph [ref=e223]:
+                  - text: Check out the newest available tag. This tutorial uses the tag
+                  - strong [ref=e224]: v4.4.12
+                  - text: as an example.
+                - generic [ref=e226]:
+                  - code [ref=e228]:
+                    - generic [ref=e229]: git checkout v4.4.12
+                  - button "Copy code to clipboard" [ref=e231] [cursor=pointer]:
+                    - generic [ref=e232]:
+                      - img [ref=e233]
+                      - img [ref=e235]
+                - heading "Define ArgumentsDirect link to Define Arguments" [level=3] [ref=e237]:
+                  - text: Define Arguments
+                  - link "Direct link to Define Arguments" [ref=e238] [cursor=pointer]:
+                    - /url: "#define-arguments"
+                    - text: "#"
+                - paragraph [ref=e239]:
+                  - text: EdgeForge leverages
+                  - link "Earthly" [ref=e240] [cursor=pointer]:
+                    - /url: https://earthly.dev/
+                  - text: to build the Installer ISO and provider images artifacts. The
+                  - strong [ref=e241]: .arg
+                  - text: file is used to pass the values of a few arguments, such as the image tag and registry name, to Earthly for the build process.
+                - paragraph [ref=e242]:
+                  - text: Execute the command below to create a custom tag for the provider images. The tag must be an alphanumeric lowercase string. This tutorial uses
+                  - code [ref=e243]: vbox-tutorial
+                  - text: as an example.
+                - generic [ref=e245]:
+                  - code [ref=e247]:
+                    - generic [ref=e248]: export CUSTOM_TAG=vbox-tutorial
+                  - button "Copy code to clipboard" [ref=e250] [cursor=pointer]:
+                    - generic [ref=e251]:
+                      - img [ref=e252]
+                      - img [ref=e254]
+                - paragraph [ref=e256]:
+                  - text: Next, issue the following command to create the
+                  - strong [ref=e257]: .arg
+                  - text: file with the custom tag. The other arguments will use the predefined values. For example,
+                  - link "K3s" [ref=e258] [cursor=pointer]:
+                    - /url: https://k3s.io/
+                  - text: will be defined as the Kubernetes distribution, Ubuntu as the OS distribution, and
+                  - link "ttl.sh" [ref=e259] [cursor=pointer]:
+                    - /url: https://ttl.sh/
+                  - text: as the image registry.
+                - generic [ref=e261]:
+                  - code [ref=e263]:
+                    - generic [ref=e264]: cat << EOF > .arg
+                    - generic [ref=e265]: CUSTOM_TAG=$CUSTOM_TAG
+                    - generic [ref=e266]: IMAGE_REGISTRY=ttl.sh
+                    - generic [ref=e267]: OS_DISTRIBUTION=ubuntu
+                    - generic [ref=e268]: IMAGE_REPO=ubuntu
+                    - generic [ref=e269]: OS_VERSION=22
+                    - generic [ref=e270]: K8S_DISTRIBUTION=k3s
+                    - generic [ref=e271]: ISO_NAME=palette-installer
+                    - generic [ref=e272]: ARCH=amd64
+                    - generic [ref=e273]: UPDATE_KERNEL=false
+                    - generic [ref=e274]: EOF
+                  - button "Copy code to clipboard" [ref=e276] [cursor=pointer]:
+                    - generic [ref=e277]:
+                      - img [ref=e278]
+                      - img [ref=e280]
+                - paragraph [ref=e282]:
+                  - text: Verify that the file was created correctly using the
+                  - code [ref=e283]: cat
+                  - text: command.
+                - generic [ref=e285]:
+                  - code [ref=e287]:
+                    - generic [ref=e288]: cat .arg
+                  - button "Copy code to clipboard" [ref=e290] [cursor=pointer]:
+                    - generic [ref=e291]:
+                      - img [ref=e292]
+                      - img [ref=e294]
+                - generic [ref=e296]:
+                  - generic [ref=e297]:
+                    - img [ref=e299]
+                    - text: info
+                  - paragraph [ref=e302]:
+                    - text: Different versions of CanvOS may require different arguments. Refer to the
+                    - link "CanvOS" [ref=e303] [cursor=pointer]:
+                      - /url: https://github.com/spectrocloud/CanvOS#readme
+                    - text: repository to learn more about the required arguments for each version tag.
+                - heading "Create User DataDirect link to Create User Data" [level=3] [ref=e304]:
+                  - text: Create User Data
+                  - link "Direct link to Create User Data" [ref=e305] [cursor=pointer]:
+                    - /url: "#create-user-data"
+                    - text: "#"
+                - paragraph [ref=e306]:
+                  - text: Once the
+                  - strong [ref=e307]: .arg
+                  - text: file is ready, the next step is to create a
+                  - link "user-data" [ref=e308] [cursor=pointer]:
+                    - /url: /clusters/edge/edgeforge-workflow/prepare-user-data/
+                    - strong [ref=e309]: user-data
+                  - text: file, which allows you to provide customized configuration to the Edge Installer ISO. In this tutorial, the file will be used to embed the Palette registration token, Palette endpoint, and Edge host login information into the Edge Installer ISO. The login credentials allow you to SSH into your Edge host.
+                - paragraph [ref=e310]: Export your Palette registration token.
+                - generic [ref=e312]:
+                  - code [ref=e314]:
+                    - generic [ref=e315]: export TOKEN=<your-palette-registration-token>
+                  - button "Copy code to clipboard" [ref=e317] [cursor=pointer]:
+                    - generic [ref=e318]:
+                      - img [ref=e319]
+                      - img [ref=e321]
+                - paragraph [ref=e323]:
+                  - text: Then, issue the command below to create the
+                  - strong [ref=e324]: user-data
+                  - text: file using the token.
+                - generic [ref=e326]:
+                  - code [ref=e328]:
+                    - generic [ref=e329]: cat << EOF > user-data
+                    - generic [ref=e330]: "#cloud-config"
+                    - generic [ref=e331]: "stylus:"
+                    - generic [ref=e332]: "site:"
+                    - generic [ref=e333]: "edgeHostToken: $TOKEN"
+                    - generic [ref=e334]: "paletteEndpoint: api.spectrocloud.com"
+                    - generic [ref=e335]: "users:"
+                    - generic [ref=e336]: "- name: kairos"
+                    - generic [ref=e337]: "passwd: kairos"
+                    - generic [ref=e338]: EOF
+                  - button "Copy code to clipboard" [ref=e340] [cursor=pointer]:
+                    - generic [ref=e341]:
+                      - img [ref=e342]
+                      - img [ref=e344]
+                - paragraph [ref=e346]: Confirm that the file was created correctly.
+                - generic [ref=e348]:
+                  - code [ref=e350]:
+                    - generic [ref=e351]: cat user-data
+                  - button "Copy code to clipboard" [ref=e353] [cursor=pointer]:
+                    - generic [ref=e354]:
+                      - img [ref=e355]
+                      - img [ref=e357]
+                - paragraph [ref=e359]:
+                  - text: The output should contain the value of your Palette registration token assigned to the
+                  - code [ref=e360]: edgeHostToken
+                  - text: parameter, as displayed in the example output below.
+                - code [ref=e364]:
+                  - generic [ref=e365]: "#cloud-config"
+                  - generic [ref=e366]: "stylus:"
+                  - generic [ref=e367]: "site:"
+                  - generic [ref=e368]: "paletteEndpoint: api.spectrocloud.com"
+                  - generic [ref=e369]: "edgeHostToken: ****************"
+                  - generic [ref=e370]: "users:"
+                  - generic [ref=e371]: "- name: kairos"
+                  - generic [ref=e372]: "passwd: kairos"
+                - heading "Build Edge ArtifactsDirect link to Build Edge Artifacts" [level=3] [ref=e373]:
+                  - text: Build Edge Artifacts
+                  - link "Direct link to Build Edge Artifacts" [ref=e374] [cursor=pointer]:
+                    - /url: "#build-edge-artifacts"
+                    - text: "#"
+                - paragraph [ref=e375]:
+                  - text: By default, Earthly builds multiple images with different K3s Kubernetes versions. You can exclude the image versions you do not need from the build process by deleting the lines under the
+                  - code [ref=e376]: k3s
+                  - text: section in the
+                  - strong [ref=e377]: k8s_version.json
+                  - text: file. This will speed up the build process and reduce the amount of space that is required from your host machine.
+                - paragraph [ref=e378]:
+                  - text: Open the
+                  - strong [ref=e379]: k8s_version.json
+                  - text: file with an editor of your choice.
+                - generic [ref=e381]:
+                  - code [ref=e383]:
+                    - generic [ref=e384]: vi k8s_version.json
+                  - button "Copy code to clipboard" [ref=e386] [cursor=pointer]:
+                    - generic [ref=e387]:
+                      - img [ref=e388]
+                      - img [ref=e390]
+                - paragraph [ref=e392]:
+                  - text: Next, delete the K3s versions you do not need. This tutorial uses K3s version
+                  - code [ref=e393]: 1.29.6
+                  - text: . Below is an example of the file with all other versions deleted.
+                - code [ref=e397]:
+                  - generic [ref=e398]: "{"
+                  - generic [ref=e399]: "\"k3s\": ["
+                  - generic [ref=e400]: "\"1.29.6\""
+                  - generic [ref=e401]: "],"
+                  - generic [ref=e402]: ...
+                  - generic [ref=e403]: "}"
+                - paragraph [ref=e404]: Once you are done making the alterations, save and exit the file.
+                - paragraph [ref=e405]: Next, execute the command below to build the Edge Installer ISO and provider images artifacts.
+                - generic [ref=e407]:
+                  - code [ref=e409]:
+                    - generic [ref=e410]: sudo ./earthly.sh +build-all-images
+                  - button "Copy code to clipboard" [ref=e412] [cursor=pointer]:
+                    - generic [ref=e413]:
+                      - img [ref=e414]
+                      - img [ref=e416]
+                - paragraph [ref=e418]: The build may take 15 to 20 minutes to complete, depending on the hardware resources available on the host machine. Once finished, you get a success message similar to the one displayed below.
+                - generic [ref=e420]:
+                  - code [ref=e422]:
+                    - generic [ref=e423]: "# Lines omitted for readability"
+                    - generic [ref=e424]: ========================== 🌍 Earthly Build ✅ SUCCESS ==========================
+                  - button "Toggle word wrap" [ref=e426] [cursor=pointer]:
+                    - img [ref=e427]
+                - paragraph [ref=e429]: The output also includes a manifest with predefined parameters that are required to create the cluster profile. Copy and save the manifest, as you will need it later.
+                - generic [ref=e431]:
+                  - code [ref=e433]:
+                    - generic [ref=e434]: "pack:"
+                    - generic [ref=e435]: "content:"
+                    - generic [ref=e436]: "images:"
+                    - generic [ref=e437]: "- image: \"{{.spectro.pack.edge-native-byoi.options.system.uri}}\""
+                    - generic [ref=e438]: "# Below config is default value, please uncomment if you want to modify default values"
+                    - generic [ref=e439]: "#drain:"
+                    - generic [ref=e440]: "#cordon: true"
+                    - generic [ref=e441]: "#timeout: 60 # The length of time to wait before giving up, zero means infinite"
+                    - generic [ref=e442]: "#gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used"
+                    - generic [ref=e443]: "#ignoreDaemonSets: true"
+                    - generic [ref=e444]: "#deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)"
+                    - generic [ref=e445]: "#force: true # Continue even if there are pods that do not declare a controller"
+                    - generic [ref=e446]: "#disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution"
+                    - generic [ref=e447]: "#skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip."
+                    - generic [ref=e448]: "options:"
+                    - generic [ref=e449]: "system.uri: \"{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}\""
+                    - generic [ref=e450]: "system.registry: ttl.sh"
+                    - generic [ref=e451]: "system.repo: ubuntu"
+                    - generic [ref=e452]: "system.k8sDistribution: k3s"
+                    - generic [ref=e453]: "system.osName: ubuntu"
+                    - generic [ref=e454]: "system.peVersion: v4.4.12"
+                    - generic [ref=e455]: "system.customTag: vbox-tutorial"
+                    - generic [ref=e456]: "system.osVersion: 22"
+                  - generic [ref=e457]:
+                    - button "Toggle word wrap" [ref=e458] [cursor=pointer]:
+                      - img [ref=e459]
+                    - button "Copy code to clipboard" [ref=e461] [cursor=pointer]:
+                      - generic [ref=e462]:
+                        - img [ref=e463]
+                        - img [ref=e465]
+                - paragraph [ref=e467]: Once the build is complete, confirm that the Edge Installer ISO and its checksum were created correctly.
+                - generic [ref=e469]:
+                  - code [ref=e471]:
+                    - generic [ref=e472]: ls build
+                  - button "Copy code to clipboard" [ref=e474] [cursor=pointer]:
+                    - generic [ref=e475]:
+                      - img [ref=e476]
+                      - img [ref=e478]
+                - code [ref=e483]:
+                  - generic [ref=e484]: palette-installer.iso
+                  - generic [ref=e485]: palette-installer.iso.sha256
+                - paragraph [ref=e486]: List the container images to confirm that the provider images were built successfully.
+                - generic [ref=e488]:
+                  - code [ref=e490]:
+                    - generic [ref=e491]: docker images --filter=reference="*/*:*$CUSTOM_TAG"
+                  - button "Copy code to clipboard" [ref=e493] [cursor=pointer]:
+                    - generic [ref=e494]:
+                      - img [ref=e495]
+                      - img [ref=e497]
+                - generic [ref=e500]:
+                  - code [ref=e502]:
+                    - generic [ref=e503]: REPOSITORY TAG IMAGE ID CREATED SIZE
+                    - generic [ref=e504]: ttl.sh/ubuntu k3s-1.29.6-v4.4.12-vbox-tutorial 75811e3dfb42 13 minutes ago 3.63GB
+                  - button "Toggle word wrap" [ref=e506] [cursor=pointer]:
+                    - img [ref=e507]
+                - heading "Push Provider ImagesDirect link to Push Provider Images" [level=3] [ref=e509]:
+                  - text: Push Provider Images
+                  - link "Direct link to Push Provider Images" [ref=e510] [cursor=pointer]:
+                    - /url: "#push-provider-images"
+                    - text: "#"
+                - paragraph [ref=e511]:
+                  - text: Push the provider images to the
+                  - link "ttl.sh" [ref=e512] [cursor=pointer]:
+                    - /url: https://ttl.sh/
+                  - text: registry so that you can reference it when creating the cluster profile.
+                - generic [ref=e514]:
+                  - code [ref=e516]:
+                    - generic [ref=e517]: docker push ttl.sh/ubuntu:k3s-1.29.6-v4.4.12-$CUSTOM_TAG
+                  - button "Copy code to clipboard" [ref=e519] [cursor=pointer]:
+                    - generic [ref=e520]:
+                      - img [ref=e521]
+                      - img [ref=e523]
+                - paragraph [ref=e525]: The output confirms that the image was pushed to the registry with the correct tag.
+                - generic [ref=e527]:
+                  - code [ref=e529]:
+                    - generic [ref=e530]: "# Lines omitted for readability"
+                    - generic [ref=e531]: "k3s-1.29.6-v4.4.12-vbox-tutorial: digest: sha256:42f8805830c7fd3816bb27e8d710d1747fea31a70cb7718d74e42fe1c0ed53ac size: 17815"
+                  - button "Toggle word wrap" [ref=e533] [cursor=pointer]:
+                    - img [ref=e534]
+                - generic [ref=e536]:
+                  - generic [ref=e537]:
+                    - img [ref=e539]
+                    - text: warning
+                  - paragraph [ref=e542]:
+                    - link "ttl.sh" [ref=e543] [cursor=pointer]:
+                      - /url: https://ttl.sh/
+                    - text: is free and does not require you to sign in to use it. However, this is a short-lived image registry, which means that the pushed images will expire after 24 hours. Refer to the
+                    - link "Build Edge Artifacts" [ref=e544] [cursor=pointer]:
+                      - /url: /clusters/edge/edgeforge-workflow/palette-canvos/
+                    - text: guide to learn how to push images to a different registry.
+                - heading "Create Cluster ProfileDirect link to Create Cluster Profile" [level=2] [ref=e545]:
+                  - text: Create Cluster Profile
+                  - link "Direct link to Create Cluster Profile" [ref=e546] [cursor=pointer]:
+                    - /url: "#create-cluster-profile"
+                    - text: "#"
+                - paragraph [ref=e547]: Once the provider images are available in the registry, create the cluster profile.
+                - paragraph [ref=e548]:
+                  - text: Log in to
+                  - link "Palette" [ref=e549] [cursor=pointer]:
+                    - /url: https://console.spectrocloud.com/
+                  - text: . Then, select
+                  - strong [ref=e550]: Profiles
+                  - text: from the left
+                  - strong [ref=e551]: Main Menu
+                  - text: . Click
+                  - strong [ref=e552]: Add Cluster Profile
+                  - text: to create a cluster profile.
+                - paragraph [ref=e553]: Follow the wizard to create a new profile.
+                - paragraph [ref=e554]:
+                  - text: In the
+                  - strong [ref=e555]: Basic Information
+                  - text: section, assign the name
+                  - strong [ref=e556]: edge-vbox-profile
+                  - text: and a brief profile description, select the type as
+                  - strong [ref=e557]: Full
+                  - text: ", and assign the tag"
+                  - strong [ref=e558]: env:edge
+                  - text: . You can leave the version empty if you want to. Just be aware that the version defaults to
+                  - strong [ref=e559]: 1.0.0
+                  - text: . Click on
+                  - strong [ref=e560]: Next
+                  - text: .
+                - paragraph [ref=e561]:
+                  - text: The
+                  - strong [ref=e562]: Cloud Type
+                  - text: section allows you to choose the infrastructure provider for the cluster. Select
+                  - strong [ref=e563]: Edge Native
+                  - text: and click
+                  - strong [ref=e564]: Next
+                  - text: .
+                - paragraph [ref=e565]:
+                  - text: The
+                  - strong [ref=e566]: Profile Layers
+                  - text: section specifies the packs that compose the profile.
+                - paragraph [ref=e567]:
+                  - text: Add the
+                  - strong [ref=e568]: BYOS Edge OS
+                  - text: pack to the OS layer.
+                - table [ref=e569]:
+                  - rowgroup [ref=e570]:
+                    - row "Pack Name Version Registry Layer" [ref=e571]:
+                      - cell "Pack Name" [ref=e572]:
+                        - strong [ref=e573]: Pack Name
+                      - cell "Version" [ref=e574]:
+                        - strong [ref=e575]: Version
+                      - cell "Registry" [ref=e576]:
+                        - strong [ref=e577]: Registry
+                      - cell "Layer" [ref=e578]:
+                        - strong [ref=e579]: Layer
+                  - rowgroup [ref=e580]:
+                    - row "BYOS Edge OS 1.0.0 Public Repo Operating System" [ref=e581]:
+                      - cell "BYOS Edge OS" [ref=e582]
+                      - cell "1.0.0" [ref=e583]
+                      - cell "Public Repo" [ref=e584]
+                      - cell "Operating System" [ref=e585]
+                - paragraph [ref=e586]:
+                  - text: Replace the layer manifest with the custom manifest you built in the
+                  - link "Build Edge Artifacts" [ref=e587] [cursor=pointer]:
+                    - /url: "#build-edge-artifacts"
+                  - text: section. This will make the cluster profile pull the provider images from the
+                  - emphasis [ref=e588]: ttl.sh
+                  - text: registry. The image below displays the OS layer with the custom manifest.
+                - paragraph [ref=e589]:
+                  - img "A screenshot of the cluster profile creation step with the OS layer." [ref=e590]
+                - paragraph [ref=e591]:
+                  - text: Click
+                  - strong [ref=e592]: Next Layer
+                  - text: to proceed to the next layer. Add the following Kubernetes layer to your cluster profile. The Kubernetes version must match the version used in the provider images.
+                - table [ref=e593]:
+                  - rowgroup [ref=e594]:
+                    - row "Pack Name Version Registry Layer" [ref=e595]:
+                      - cell "Pack Name" [ref=e596]:
+                        - strong [ref=e597]: Pack Name
+                      - cell "Version" [ref=e598]:
+                        - strong [ref=e599]: Version
+                      - cell "Registry" [ref=e600]:
+                        - strong [ref=e601]: Registry
+                      - cell "Layer" [ref=e602]:
+                        - strong [ref=e603]: Layer
+                  - rowgroup [ref=e604]:
+                    - row "Palette Optimized K3S 1.29.6 Public Repo Kubernetes" [ref=e605]:
+                      - cell "Palette Optimized K3S" [ref=e606]
+                      - cell "1.29.6" [ref=e607]
+                      - cell "Public Repo" [ref=e608]
+                      - cell "Kubernetes" [ref=e609]
+                - paragraph [ref=e610]:
+                  - text: Click
+                  - strong [ref=e611]: Values
+                  - text: under
+                  - strong [ref=e612]: Pack Details
+                  - text: ", and replace the predefined"
+                  - strong [ref=e613]: cluster-cidr
+                  - text: and
+                  - strong [ref=e614]: service-cidr
+                  - text: IP CIDRs if they overlap with your network. For example, you can set the
+                  - strong [ref=e615]: cluster-cidr
+                  - text: parameter to
+                  - code [ref=e616]: "\"100.64.0.0/18\""
+                  - text: and
+                  - strong [ref=e617]: service-cidr
+                  - text: to
+                  - code [ref=e618]: "\"100.64.64.0/18\""
+                  - text: . This prevents any routing conflicts in the internal pod networking.
+                - paragraph [ref=e619]:
+                  - img "A screenshot of the cluster profile creation step with the Kubernetes layer." [ref=e620]
+                - paragraph [ref=e621]:
+                  - text: Click
+                  - strong [ref=e622]: Next Layer
+                  - text: to add the network layer. This tutorial uses Cilium as an example.
+                - table [ref=e623]:
+                  - rowgroup [ref=e624]:
+                    - row "Pack Name Version Registry Layer" [ref=e625]:
+                      - cell "Pack Name" [ref=e626]:
+                        - strong [ref=e627]: Pack Name
+                      - cell "Version" [ref=e628]:
+                        - strong [ref=e629]: Version
+                      - cell "Registry" [ref=e630]:
+                        - strong [ref=e631]: Registry
+                      - cell "Layer" [ref=e632]:
+                        - strong [ref=e633]: Layer
+                  - rowgroup [ref=e634]:
+                    - row "Cilium 1.15.3 Public Repo Network" [ref=e635]:
+                      - cell "Cilium" [ref=e636]
+                      - cell "1.15.3" [ref=e637]
+                      - cell "Public Repo" [ref=e638]
+                      - cell "Network" [ref=e639]
+                - paragraph [ref=e640]:
+                  - text: Click
+                  - strong [ref=e641]: Confirm
+                  - text: after you have completed filling out all the core layers.
+                - paragraph [ref=e642]:
+                  - text: Next, to add the add-on layers, click
+                  - strong [ref=e643]: Add New Pack
+                  - text: and search for
+                  - strong [ref=e644]: MetalLB
+                  - text: . Add the following pack to your cluster profile.
+                - table [ref=e645]:
+                  - rowgroup [ref=e646]:
+                    - row "Pack Name Version Registry Layer" [ref=e647]:
+                      - cell "Pack Name" [ref=e648]:
+                        - strong [ref=e649]: Pack Name
+                      - cell "Version" [ref=e650]:
+                        - strong [ref=e651]: Version
+                      - cell "Registry" [ref=e652]:
+                        - strong [ref=e653]: Registry
+                      - cell "Layer" [ref=e654]:
+                        - strong [ref=e655]: Layer
+                  - rowgroup [ref=e656]:
+                    - row "MetalLB (Helm) 0.14.8 Public Repo Load Balancer" [ref=e657]:
+                      - cell "MetalLB (Helm)" [ref=e658]
+                      - cell "0.14.8" [ref=e659]
+                      - cell "Public Repo" [ref=e660]
+                      - cell "Load Balancer" [ref=e661]
+                - paragraph [ref=e662]:
+                  - text: The MetalLB pack provides a load-balancer implementation for your Edge Kubernetes cluster. The load balancer is required to help the
+                  - emphasis [ref=e663]: LoadBalancer
+                  - text: service specified in the Hello Universe pack obtain an IP address, so that you can access the demo application from your browser.
+                - paragraph [ref=e664]:
+                  - text: Click
+                  - strong [ref=e665]: Values
+                  - text: under
+                  - strong [ref=e666]: Pack Details
+                  - text: and replace the predefined
+                  - code [ref=e667]: 192.168.10.0/24
+                  - text: IP CIDR listed below the
+                  - strong [ref=e668]: addresses
+                  - text: line with a valid IP address or IP range from your network. Next, click
+                  - strong [ref=e669]: Confirm & Create
+                  - text: to add the MetalLB pack.
+                - paragraph [ref=e670]:
+                  - img "A screenshot of the cluster profile creation step with the MetalLB layer." [ref=e671]
+                - paragraph [ref=e672]:
+                  - text: Finally, click
+                  - strong [ref=e673]: Add New Pack
+                  - text: again and search for the Hello Universe pack.
+                - table [ref=e674]:
+                  - rowgroup [ref=e675]:
+                    - row "Pack Name Version Registry Layer" [ref=e676]:
+                      - cell "Pack Name" [ref=e677]:
+                        - strong [ref=e678]: Pack Name
+                      - cell "Version" [ref=e679]:
+                        - strong [ref=e680]: Version
+                      - cell "Registry" [ref=e681]:
+                        - strong [ref=e682]: Registry
+                      - cell "Layer" [ref=e683]:
+                        - strong [ref=e684]: Layer
+                  - rowgroup [ref=e685]:
+                    - row "Hello Universe 1.1.2 Palette Community Registry Application" [ref=e686]:
+                      - cell "Hello Universe" [ref=e687]
+                      - cell "1.1.2" [ref=e688]
+                      - cell "Palette Community Registry" [ref=e689]
+                      - cell "Application" [ref=e690]
+                - paragraph [ref=e691]:
+                  - text: Once you select the pack, Palette will display its README file, providing additional guidance on usage and configuration options. This pack deploys the
+                  - link "hello-universe" [ref=e692] [cursor=pointer]:
+                    - /url: https://github.com/spectrocloud/hello-universe
+                  - text: application.
+                - paragraph [ref=e693]:
+                  - text: Click on
+                  - strong [ref=e694]: Values
+                  - text: under the
+                  - strong [ref=e695]: Pack Details
+                  - text: section. Next, click on
+                  - strong [ref=e696]: Presets
+                  - text: on the right-hand side.
+                - paragraph [ref=e697]: "This pack has two configured presets:"
+                - list [ref=e698]:
+                  - listitem [ref=e699]:
+                    - strong [ref=e700]: Disable Hello Universe API
+                    - text: configures the hello-universe application as a standalone front-end application. This is the default preset selection.
+                  - listitem [ref=e701]:
+                    - strong [ref=e702]: Enable Hello Universe API
+                    - text: configures the hello-universe application as a three-tier application with a frontend, API server, and Postgres database.
+                - paragraph [ref=e703]:
+                  - text: Select the
+                  - strong [ref=e704]: Enable Hello Universe API
+                  - text: preset. The pack manifest changes according to this preset.
+                - paragraph [ref=e705]:
+                  - text: The pack requires two values to be replaced for the authorization token and for the database password when using this preset. Replace these values with your own base64 encoded values. The
+                  - link "hello-universe" [ref=e706] [cursor=pointer]:
+                    - /url: https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#single-load-balancer
+                  - text: repository provides a token that you can use.
+                - generic [ref=e707]:
+                  - generic [ref=e708]:
+                    - img [ref=e710]
+                    - text: tip
+                  - generic [ref=e712]:
+                    - paragraph [ref=e713]:
+                      - text: You can use the
+                      - code [ref=e714]: base64
+                      - text: command to create a base64 encoded value.
+                    - generic [ref=e716]:
+                      - code [ref=e718]:
+                        - generic [ref=e719]: echo "mypassword" | base64
+                      - button "Copy code to clipboard" [ref=e721] [cursor=pointer]:
+                        - generic [ref=e722]:
+                          - img [ref=e723]
+                          - img [ref=e725]
+                    - paragraph [ref=e727]: The output contains your base64 encoded value.
+                    - code [ref=e731]:
+                      - generic [ref=e732]: bXlwYXNzd29yZAo=
+                - paragraph [ref=e733]:
+                  - img "A screenshot of the cluster profile creation step with the Hello Universe layer." [ref=e734]
+                - paragraph [ref=e735]:
+                  - text: Click
+                  - strong [ref=e736]: Confirm & Create
+                  - text: to save the alterations and add the pack to your cluster profile.
+                - paragraph [ref=e737]:
+                  - text: Click
+                  - strong [ref=e738]: Next
+                  - text: . If there are no compatibility issues, Palette displays the cluster profile for review. Verify the layers you added are correct, and click on
+                  - strong [ref=e739]: Finish Configuration
+                  - text: to create the cluster profile.
+                - heading "Deploy VirtualBox VMDirect link to Deploy VirtualBox VM" [level=2] [ref=e740]:
+                  - text: Deploy VirtualBox VM
+                  - link "Direct link to Deploy VirtualBox VM" [ref=e741] [cursor=pointer]:
+                    - /url: "#deploy-virtualbox-vm"
+                    - text: "#"
+                - paragraph [ref=e742]: Once the Edge artifacts and cluster profile have been created, proceed to the VM deployment. The VirtualBox VM will use the Installer ISO to bootstrap the Edge installation and serve as the Edge host for your cluster.
+                - paragraph [ref=e743]:
+                  - text: Launch the VirtualBox application and click
+                  - strong [ref=e744]: New
+                  - text: to create a new VM.
+                - paragraph [ref=e745]:
+                  - text: Give the machine a name, for example,
+                  - code [ref=e746]: edge-vm
+                  - text: .
+                - paragraph [ref=e747]:
+                  - text: In the
+                  - strong [ref=e748]: ISO Image
+                  - text: field, select the Edge Installer ISO file you built in the
+                  - link "Build Edge Artifacts" [ref=e749] [cursor=pointer]:
+                    - /url: "#build-edge-artifacts"
+                  - text: section. The ISO file is stored in the
+                  - code [ref=e750]: CanvOS/build
+                  - text: folder.
+                - paragraph [ref=e751]:
+                  - text: Set the machine
+                  - strong [ref=e752]: Type
+                  - text: as
+                  - code [ref=e753]: Linux
+                  - text: and the
+                  - strong [ref=e754]: Version
+                  - text: as
+                  - code [ref=e755]: Ubuntu (64-bit)
+                  - text: ", and click"
+                  - strong [ref=e756]: Next
+                  - text: .
+                - paragraph [ref=e757]:
+                  - img "A screenshot of the VirtualBox VM configuration." [ref=e758]
+                - paragraph [ref=e759]:
+                  - text: Adjust the
+                  - strong [ref=e760]: Base Memory
+                  - text: to
+                  - code [ref=e761]: 8000 MB
+                  - text: and
+                  - strong [ref=e762]: Processors
+                  - text: to
+                  - code [ref=e763]: 2 CPU
+                  - text: . Click
+                  - strong [ref=e764]: Next
+                  - text: to proceed.
+                - paragraph [ref=e765]:
+                  - text: Set the
+                  - strong [ref=e766]: Disk Size
+                  - text: to 100 GB and ensure the option
+                  - strong [ref=e767]: Pre-Allocate Full Size
+                  - text: is
+                  - strong [ref=e768]: not
+                  - text: checked. Click
+                  - strong [ref=e769]: Next
+                  - text: .
+                - generic [ref=e770]:
+                  - generic [ref=e771]:
+                    - img [ref=e773]
+                    - text: info
+                  - paragraph [ref=e776]: These are the minimum hardware requirements for an Edge host. In production environments, the required configuration may vary.
+                - paragraph [ref=e777]:
+                  - text: Confirm the VM settings and click
+                  - strong [ref=e778]: Finish
+                  - text: to create the VM.
+                - paragraph [ref=e779]:
+                  - text: Select the VM to adjust its network settings. Click
+                  - strong [ref=e780]: Settings
+                  - text: and select
+                  - strong [ref=e781]: Network
+                  - text: .
+                - paragraph [ref=e782]:
+                  - text: Change the
+                  - strong [ref=e783]: "Attached to:"
+                  - text: option from
+                  - code [ref=e784]: NAT
+                  - text: to
+                  - code [ref=e785]: Bridged Adapter
+                  - text: so that the VM can receive an IP address from the same network as the host machine's network. Click
+                  - strong [ref=e786]: OK
+                  - text: .
+                - paragraph [ref=e787]:
+                  - img "A screenshot of the VirtualBox VM network configuration." [ref=e788]
+                - heading "Prepare Edge HostDirect link to Prepare Edge Host" [level=2] [ref=e789]:
+                  - text: Prepare Edge Host
+                  - link "Direct link to Prepare Edge Host" [ref=e790] [cursor=pointer]:
+                    - /url: "#prepare-edge-host"
+                    - text: "#"
+                - heading "Install Palette EdgeDirect link to Install Palette Edge" [level=3] [ref=e791]:
+                  - text: Install Palette Edge
+                  - link "Direct link to Install Palette Edge" [ref=e792] [cursor=pointer]:
+                    - /url: "#install-palette-edge"
+                    - text: "#"
+                - paragraph [ref=e793]:
+                  - text: In VirtualBox, select the created VM and click
+                  - strong [ref=e794]: Start
+                  - text: to turn it on. The Edge Installer will bootstrap the Palette Edge installation onto the VM.
+                - paragraph [ref=e795]: Wait for the Edge Installer to complete copying content to the VM, which may take a few minutes. The VM will reboot upon completion. Ensure that you stop the VM before the reboot proceeds.
+                - paragraph [ref=e796]:
+                  - text: When the image below appears for the second time, right-click the VM, select
+                  - strong [ref=e797]: Stop
+                  - text: ", and then click"
+                  - strong [ref=e798]: Power Off
+                  - text: to turn it off.
+                - paragraph [ref=e799]:
+                  - img "A screenshot of the VirtualBox VM after installation." [ref=e800]
+                - paragraph [ref=e801]:
+                  - text: Next, click
+                  - strong [ref=e802]: Settings
+                  - text: and select
+                  - strong [ref=e803]: Storage
+                  - text: .
+                - paragraph [ref=e804]:
+                  - text: Select the Edge Installer ISO and click
+                  - strong [ref=e805]: Remove Attachment
+                  - text: to remove it from your VM. Confirm the deletion with
+                  - strong [ref=e806]: Remove
+                  - text: and click
+                  - strong [ref=e807]: OK
+                  - text: to close the settings window.
+                - paragraph [ref=e808]:
+                  - img "A screenshot of the VirtualBox VM storage configuration." [ref=e809]
+                - heading "Register Edge HostDirect link to Register Edge Host" [level=3] [ref=e810]:
+                  - text: Register Edge Host
+                  - link "Direct link to Register Edge Host" [ref=e811] [cursor=pointer]:
+                    - /url: "#register-edge-host"
+                    - text: "#"
+                - paragraph [ref=e812]:
+                  - text: Select the VirtualBox VM you created and click
+                  - strong [ref=e813]: Start
+                  - text: to turn it on. The VM will boot and get an IP address from the bridged network of the host machine. This address should be on the same subnet as the host machine.
+                - paragraph [ref=e814]: After a few minutes, the VM screen displays an IP address and registers automatically in Palette as an Edge host using the provided Palette registration token.
+                - paragraph [ref=e815]:
+                  - img "A screenshot of the Edge host." [ref=e816]
+                - heading "Validate the Edge Host RegistrationDirect link to Validate the Edge Host Registration" [level=3] [ref=e817]:
+                  - text: Validate the Edge Host Registration
+                  - link "Direct link to Validate the Edge Host Registration" [ref=e818] [cursor=pointer]:
+                    - /url: "#validate-the-edge-host-registration"
+                    - text: "#"
+                - paragraph [ref=e819]:
+                  - text: Navigate back to
+                  - link "Palette" [ref=e820] [cursor=pointer]:
+                    - /url: https://console.spectrocloud.com/
+                  - text: . Then, select
+                  - strong [ref=e821]: Clusters
+                  - text: from the left
+                  - strong [ref=e822]: Main Menu
+                  - text: . Click on the
+                  - strong [ref=e823]: Edge Hosts
+                  - text: tab to view the registered hosts.
+                - paragraph [ref=e824]:
+                  - text: Confirm your Edge host is listed as
+                  - strong [ref=e825]: Healthy
+                  - text: and with a
+                  - strong [ref=e826]: Ready
+                  - text: status. The
+                  - strong [ref=e827]: Machine ID
+                  - text: should match the ID displayed on your VM screen.
+                - paragraph [ref=e828]:
+                  - img "A screenshot of the Edge host in Palette." [ref=e829]
+                - heading "Deploy Edge ClusterDirect link to Deploy Edge Cluster" [level=2] [ref=e830]:
+                  - text: Deploy Edge Cluster
+                  - link "Direct link to Deploy Edge Cluster" [ref=e831] [cursor=pointer]:
+                    - /url: "#deploy-edge-cluster"
+                    - text: "#"
+                - paragraph [ref=e832]:
+                  - text: From the left
+                  - strong [ref=e833]: Main Menu
+                  - text: ", select"
+                  - strong [ref=e834]: Clusters
+                  - text: ", then click"
+                  - strong [ref=e835]: Create Cluster
+                  - text: . If you already have clusters deployed, click
+                  - strong [ref=e836]: Add New Cluster
+                  - text: instead. Ensure you are in the
+                  - strong [ref=e837]: Default
+                  - text: project.
+                - paragraph [ref=e838]:
+                  - text: Palette will prompt you to select the type of cluster. Select
+                  - strong [ref=e839]: Edge Native
+                  - text: and click the
+                  - strong [ref=e840]: Start Edge Native Configuration
+                  - text: button.
+                - paragraph [ref=e841]:
+                  - text: In the
+                  - strong [ref=e842]: Basic Information
+                  - text: section, assign the name
+                  - strong [ref=e843]: edge-vbox-cluster
+                  - text: ", a brief cluster description, and assign the tag"
+                  - strong [ref=e844]: env:edge
+                  - text: . Click
+                  - strong [ref=e845]: Next
+                  - text: .
+                - paragraph [ref=e846]:
+                  - text: In the
+                  - strong [ref=e847]: Cluster Profile
+                  - text: section, click
+                  - strong [ref=e848]: Add Cluster Profile
+                  - text: . Select the cluster profile you created earlier in this tutorial and click
+                  - strong [ref=e849]: Confirm
+                  - text: .
+                - paragraph [ref=e850]:
+                  - text: Review the cluster profile layers, then click
+                  - strong [ref=e851]: Next
+                  - text: to proceed.
+                - paragraph [ref=e852]:
+                  - text: In the
+                  - strong [ref=e853]: Cluster Config
+                  - text: section, provide a Virtual IP (VIP) address for the Edge cluster. This address must be an unused address on the same network as your Edge host.
+                - generic [ref=e854]:
+                  - generic [ref=e855]:
+                    - img [ref=e857]
+                    - text: tip
+                  - generic [ref=e859]:
+                    - paragraph [ref=e860]:
+                      - text: You can use the
+                      - link "nmap" [ref=e861] [cursor=pointer]:
+                        - /url: https://nmap.org/book/man.html
+                      - text: tool to scan your network and check which IP addresses are in use. Issue the following command in your terminal, replacing the example CIDR
+                      - code [ref=e862]: 192.168.0.0/24
+                      - text: with your network's CIDR.
+                    - generic [ref=e864]:
+                      - code [ref=e866]:
+                        - generic [ref=e867]: nmap -sn 192.168.0.0/24
+                      - button "Copy code to clipboard" [ref=e869] [cursor=pointer]:
+                        - generic [ref=e870]:
+                          - img [ref=e871]
+                          - img [ref=e873]
+                    - paragraph [ref=e875]: The output displays the IP addresses that are currently in use on your network.
+                - paragraph [ref=e876]: Optionally, you can also select an SSH key to access the cluster's nodes and a Network Time Protocol (NTP) server list.
+                - paragraph [ref=e877]:
+                  - text: Click
+                  - strong [ref=e878]: Next
+                  - text: to continue.
+                - paragraph [ref=e879]:
+                  - text: In the
+                  - strong [ref=e880]: Nodes Config
+                  - text: section, specify what Edge hosts make up the Edge cluster. This tutorial deploys a single-node Edge cluster with no worker pools.
+                - paragraph [ref=e881]: Provide the following details for the control plane pool.
+                - table [ref=e882]:
+                  - rowgroup [ref=e883]:
+                    - row "Field Value" [ref=e884]:
+                      - cell "Field" [ref=e885]
+                      - cell "Value" [ref=e886]
+                  - rowgroup [ref=e887]:
+                    - row "Node pool name control-plane-pool" [ref=e888]:
+                      - cell "Node pool name" [ref=e889]
+                      - cell "control-plane-pool" [ref=e890]
+                    - row "Allow worker capability Yes" [ref=e891]:
+                      - cell "Allow worker capability" [ref=e892]
+                      - cell "Yes" [ref=e893]
+                    - row "Additional Labels (Optional) None" [ref=e894]:
+                      - cell "Additional Labels (Optional)" [ref=e895]
+                      - cell "None" [ref=e896]
+                    - row "Taints None" [ref=e897]:
+                      - cell "Taints" [ref=e898]
+                      - cell "None" [ref=e899]
+                    - row "Pool Configuration > Edge Hosts Choose the registered Edge hosts you created in the Register Edge Host section of this tutorial. Palette automatically displays the NIC Name for the selected host." [ref=e900]:
+                      - cell "Pool Configuration > Edge Hosts" [ref=e901]
+                      - cell "Choose the registered Edge hosts you created in the Register Edge Host section of this tutorial. Palette automatically displays the NIC Name for the selected host." [ref=e902]:
+                        - text: Choose the registered Edge hosts you created in the
+                        - link "Register Edge Host" [ref=e903] [cursor=pointer]:
+                          - /url: "#register-edge-host"
+                        - text: section of this tutorial. Palette automatically displays the NIC Name for the selected host.
+                - paragraph [ref=e904]:
+                  - text: Next, click
+                  - strong [ref=e905]: Remove
+                  - text: to delete the worker pool and click
+                  - strong [ref=e906]: Next
+                  - text: to proceed with the cluster deployment.
+                - paragraph [ref=e907]:
+                  - img "A screenshot of the nodes config during cluster deployment." [ref=e908]
+                - paragraph [ref=e909]:
+                  - text: The
+                  - strong [ref=e910]: Cluster Settings
+                  - text: section provides advanced options for OS patching, scheduled scans, scheduled backups, and cluster role binding. For this tutorial, you can use the default settings. Click on
+                  - strong [ref=e911]: Validate
+                  - text: to continue.
+                - paragraph [ref=e912]:
+                  - text: Finally, the
+                  - strong [ref=e913]: Review
+                  - text: section allows you to review the cluster configuration. If everything looks correct, click
+                  - strong [ref=e914]: Finish Configuration
+                  - text: to deploy the cluster.
+                - paragraph [ref=e915]:
+                  - text: The cluster deployment can take 15 to 30 minutes, depending on its configuration. You can click on the
+                  - strong [ref=e916]: Events
+                  - text: tab to visualize the event log and learn more about the deployment progress.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e917]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e918] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e919]:
+                  - text: In Palette, select
+                  - strong [ref=e920]: Clusters
+                  - text: from the left
+                  - strong [ref=e921]: Main Menu
+                  - text: .
+                - paragraph [ref=e922]:
+                  - text: Next, click on your cluster to view its
+                  - strong [ref=e923]: Overview
+                  - text: tab.
+                - paragraph [ref=e924]:
+                  - text: Confirm that your cluster has a
+                  - strong [ref=e925]: Running
+                  - text: status and is listed as
+                  - strong [ref=e926]: Healthy
+                  - text: .
+                - paragraph [ref=e927]:
+                  - text: When the Hello Universe application is deployed and ready for network traffic, Palette exposes the service URL in the
+                  - strong [ref=e928]: Services
+                  - text: field. Click on the URL for port
+                  - strong [ref=e929]: :8080
+                  - text: to access the application landing page.
+                - paragraph [ref=e930]:
+                  - img "A screenshot of the cluster&#39;s Overview tab" [ref=e931]
+                - paragraph [ref=e932]: Welcome to Hello Universe, an application that helps you learn more about Palette and its features. Feel free to click on the logo to increase the global counter and for a fun image change.
+                - paragraph [ref=e933]:
+                  - img "A screenshot of the Hello Universe application." [ref=e934]
+                - heading "Clean UpDirect link to Clean Up" [level=2] [ref=e935]:
+                  - text: Clean Up
+                  - link "Direct link to Clean Up" [ref=e936] [cursor=pointer]:
+                    - /url: "#clean-up"
+                    - text: "#"
+                - paragraph [ref=e937]: You have successfully provisioned an Edge cluster with a three-tier demo application. Use the following steps to remove the resources created for this tutorial.
+                - heading "Cluster and Cluster ProfileDirect link to Cluster and Cluster Profile" [level=3] [ref=e938]:
+                  - text: Cluster and Cluster Profile
+                  - link "Direct link to Cluster and Cluster Profile" [ref=e939] [cursor=pointer]:
+                    - /url: "#cluster-and-cluster-profile"
+                    - text: "#"
+                - paragraph [ref=e940]:
+                  - text: To remove the Edge cluster, log in to Palette and click
+                  - strong [ref=e941]: Clusters
+                  - text: from the left
+                  - strong [ref=e942]: Main Menu
+                  - text: . Click on the cluster named
+                  - strong [ref=e943]: edge-vbox-cluster
+                  - text: to access its details page.
+                - paragraph [ref=e944]:
+                  - text: Next, click
+                  - strong [ref=e945]: Settings
+                  - text: and select
+                  - strong [ref=e946]: Delete Cluster
+                  - text: .
+                - paragraph [ref=e947]: Type in the cluster name to proceed with the deletion. This process may take several minutes to complete.
+                - generic [ref=e948]:
+                  - generic [ref=e949]:
+                    - img [ref=e951]
+                    - text: info
+                  - paragraph [ref=e954]:
+                    - text: If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for a force delete. To trigger a force delete, navigate to the cluster’s details page, click on
+                    - strong [ref=e955]: Settings
+                    - text: ", then select"
+                    - strong [ref=e956]: Force Delete Cluster
+                    - text: . Palette automatically removes clusters stuck in the cluster deletion phase for over 24 hours.
+                - paragraph [ref=e957]: After deleting your Edge cluster, proceed with the cluster profile deletion.
+                - paragraph [ref=e958]:
+                  - text: Click
+                  - strong [ref=e959]: Profiles
+                  - text: from the left
+                  - strong [ref=e960]: Main Menu
+                  - text: . Select the
+                  - strong [ref=e961]: edge-vbox-profile
+                  - text: cluster profile, and then click on the
+                  - strong [ref=e962]: three-dot Menu
+                  - text: to display the
+                  - strong [ref=e963]: Delete
+                  - text: button. Click
+                  - strong [ref=e964]: Delete
+                  - text: and confirm the selection to remove the cluster profile.
+                - heading "Edge HostDirect link to Edge Host" [level=3] [ref=e965]:
+                  - text: Edge Host
+                  - link "Direct link to Edge Host" [ref=e966] [cursor=pointer]:
+                    - /url: "#edge-host"
+                    - text: "#"
+                - paragraph [ref=e967]:
+                  - text: Once the Edge cluster and cluster profile are deleted, click
+                  - strong [ref=e968]: Clusters
+                  - text: from the left
+                  - strong [ref=e969]: Main Menu
+                  - text: .
+                - paragraph [ref=e970]:
+                  - text: Locate the Edge host deployed in the
+                  - link "Register Edge Host" [ref=e971] [cursor=pointer]:
+                    - /url: "#register-edge-host"
+                  - text: section of this tutorial. Click on the
+                  - strong [ref=e972]: three-dot Menu
+                  - text: and select
+                  - strong [ref=e973]: Delete
+                  - text: to delete the Edge host. Confirm the deletion by clicking
+                  - strong [ref=e974]: OK
+                  - text: . This will remove the Edge host from Palette but not delete the underlying infrastructure.
+                - paragraph [ref=e975]:
+                  - img "A screenshot of the Edge Hosts page." [ref=e976]
+                - paragraph [ref=e977]:
+                  - text: To delete the VM, open the
+                  - strong [ref=e978]: VirtualBox
+                  - text: application on your host machine.
+                - paragraph [ref=e979]:
+                  - text: Right-click the
+                  - code [ref=e980]: edge-vm
+                  - text: VM and select
+                  - strong [ref=e981]: Stop
+                  - text: . Then, click
+                  - strong [ref=e982]: Power Off
+                  - text: to turn the machine off.
+                - paragraph [ref=e983]:
+                  - text: Next, right-click the VM again and select
+                  - strong [ref=e984]: Remove
+                  - text: . Click
+                  - strong [ref=e985]: Delete all files
+                  - text: to delete the VM and its hard disk.
+                - heading "Edge ArtifactsDirect link to Edge Artifacts" [level=3] [ref=e986]:
+                  - text: Edge Artifacts
+                  - link "Direct link to Edge Artifacts" [ref=e987] [cursor=pointer]:
+                    - /url: "#edge-artifacts"
+                    - text: "#"
+                - paragraph [ref=e988]:
+                  - text: Delete the Edge Installer ISO image and its checksum by issuing the following commands from the
+                  - strong [ref=e989]: CanvOS/
+                  - text: directory.
+                - generic [ref=e991]:
+                  - code [ref=e993]:
+                    - generic [ref=e994]: rm build/palette-installer.iso
+                    - generic [ref=e995]: rm build/palette-installer.iso.sha256
+                  - button "Copy code to clipboard" [ref=e997] [cursor=pointer]:
+                    - generic [ref=e998]:
+                      - img [ref=e999]
+                      - img [ref=e1001]
+                - paragraph [ref=e1003]: Next, delete the provider images.
+                - generic [ref=e1005]:
+                  - code [ref=e1007]:
+                    - generic [ref=e1008]: docker rmi ttl.sh/ubuntu:k3s-1.29.6-v4.4.12-vbox-tutorial
+                    - generic [ref=e1009]: docker rmi ttl.sh/ubuntu:k3s-1.29.6-v4.4.12-vbox-tutorial_linux_amd64
+                  - generic [ref=e1010]:
+                    - button "Toggle word wrap" [ref=e1011] [cursor=pointer]:
+                      - img [ref=e1012]
+                    - button "Copy code to clipboard" [ref=e1014] [cursor=pointer]:
+                      - generic [ref=e1015]:
+                        - img [ref=e1016]
+                        - img [ref=e1018]
+                - heading "Wrap-upDirect link to Wrap-up" [level=2] [ref=e1020]:
+                  - text: Wrap-up
+                  - link "Direct link to Wrap-up" [ref=e1021] [cursor=pointer]:
+                    - /url: "#wrap-up"
+                    - text: "#"
+                - paragraph [ref=e1022]: In this tutorial, you successfully deployed a single-node Edge cluster along with a demo application using a VirtualBox VM as the Edge host. You learned how to build and test Edge artifacts, prepare an Edge host, and use it to deploy an Edge cluster.
+                - paragraph [ref=e1023]: Palette Edge enables you to customize your Edge hosts with the desired OS, Kubernetes distribution, dependencies, and user data configurations.
+                - paragraph [ref=e1024]: This tutorial has provided you with hands-on experience with Palette Edge using a single VM, eliminating the need for a complex lab environment or separate physical devices. You can also use this setup to test and validate Edge configurations before deploying them in production.
+                - paragraph [ref=e1025]: We encourage you to check the reference resources below to learn more about Palette Edge.
+                - list [ref=e1026]:
+                  - listitem [ref=e1027]:
+                    - link "Palette Edge" [ref=e1028] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                  - listitem [ref=e1029]:
+                    - link "Edge Architecture" [ref=e1030] [cursor=pointer]:
+                      - /url: /clusters/edge/architecture/
+                  - listitem [ref=e1031]:
+                    - link "EdgeForge Workflow" [ref=e1032] [cursor=pointer]:
+                      - /url: /clusters/edge/edgeforge-workflow/
+              - generic [ref=e1033]:
+                - generic [ref=e1035]:
+                  - text: "Tags:"
+                  - list [ref=e1036]:
+                    - listitem [ref=e1037]:
+                      - link "edge" [ref=e1038] [cursor=pointer]:
+                        - /url: /tags/edge/
+                    - listitem [ref=e1039]:
+                      - link "tutorial" [ref=e1040] [cursor=pointer]:
+                        - /url: /tags/tutorial/
+                - link "Edit this page" [ref=e1043] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/tutorials/clusters/edge/deploy-cluster-virtualbox.md
+                  - img [ref=e1044]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e1048]:
+              - link "Previous « Deploy an Edge Cluster on VMware" [ref=e1049] [cursor=pointer]:
+                - /url: /tutorials/clusters/edge/deploy-cluster/
+                - generic [ref=e1050]: Previous
+                - generic [ref=e1051]: « Deploy an Edge Cluster on VMware
+              - link "Next Deploy App Workloads with a PCG »" [ref=e1052] [cursor=pointer]:
+                - /url: /tutorials/clusters/pcg/deploy-app-pcg/
+                - generic [ref=e1053]: Next
+                - generic [ref=e1054]: Deploy App Workloads with a PCG »
+          - list [ref=e1057]:
+            - listitem [ref=e1058]:
+              - link "Prerequisites" [ref=e1059] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e1060]:
+              - link "EdgeForge Workflow" [ref=e1061] [cursor=pointer]:
+                - /url: "#edgeforge-workflow"
+            - listitem [ref=e1062]:
+              - link "Create Cluster Profile" [ref=e1063] [cursor=pointer]:
+                - /url: "#create-cluster-profile"
+            - listitem [ref=e1064]:
+              - link "Deploy VirtualBox VM" [ref=e1065] [cursor=pointer]:
+                - /url: "#deploy-virtualbox-vm"
+            - listitem [ref=e1066]:
+              - link "Prepare Edge Host" [ref=e1067] [cursor=pointer]:
+                - /url: "#prepare-edge-host"
+            - listitem [ref=e1068]:
+              - link "Deploy Edge Cluster" [ref=e1069] [cursor=pointer]:
+                - /url: "#deploy-edge-cluster"
+            - listitem [ref=e1070]:
+              - link "Validate" [ref=e1071] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e1072]:
+              - link "Clean Up" [ref=e1073] [cursor=pointer]:
+                - /url: "#clean-up"
+            - listitem [ref=e1074]:
+              - link "Wrap-up" [ref=e1075] [cursor=pointer]:
+                - /url: "#wrap-up"
+  - button "Project Logo Ask AI" [ref=e1076] [cursor=pointer]:
+    - generic [ref=e1079]:
+      - img "Project Logo" [ref=e1080]
+      - paragraph [ref=e1081]: Ask AI
+```

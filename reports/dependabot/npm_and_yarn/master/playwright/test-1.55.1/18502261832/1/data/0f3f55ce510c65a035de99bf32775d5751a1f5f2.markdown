@@ -1,0 +1,920 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Security" [ref=e150] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e152]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Audit Logs" [ref=e157] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e159]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Self-Hosted Palette" [expanded] [ref=e164] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e166]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e168] [cursor=pointer]
+                - list [ref=e169]:
+                  - listitem [ref=e170]:
+                    - generic [ref=e171]:
+                      - link "Installation" [expanded] [ref=e172] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e173] [cursor=pointer]
+                    - list [ref=e174]:
+                      - listitem [ref=e175]:
+                        - generic [ref=e176]:
+                          - link "VMware" [expanded] [ref=e177] [cursor=pointer]:
+                            - /url: /enterprise-version/install-palette/install-on-vmware/
+                          - button "Toggle the collapsible sidebar category 'VMware'" [ref=e178] [cursor=pointer]
+                        - list [ref=e179]:
+                          - listitem [ref=e180]:
+                            - link "VMware System and Permission Requirements" [ref=e181] [cursor=pointer]:
+                              - /url: /enterprise-version/install-palette/install-on-vmware/vmware-system-requirements/
+                          - listitem [ref=e182]:
+                            - link "Non-Airgap Installation" [ref=e183] [cursor=pointer]:
+                              - /url: /enterprise-version/install-palette/install-on-vmware/install/
+                          - listitem [ref=e184]:
+                            - generic [ref=e185]:
+                              - link "Airgap Installation" [expanded] [ref=e186] [cursor=pointer]:
+                                - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/
+                              - button "Toggle the collapsible sidebar category 'Airgap Installation'" [ref=e187] [cursor=pointer]
+                            - list [ref=e188]:
+                              - listitem [ref=e189]:
+                                - link "Checklist" [ref=e190] [cursor=pointer]:
+                                  - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/checklist/
+                              - listitem [ref=e191]:
+                                - generic [ref=e192]:
+                                  - link "Environment Setup" [expanded] [ref=e193] [cursor=pointer]:
+                                    - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/
+                                  - button "Toggle the collapsible sidebar category 'Environment Setup'" [ref=e194] [cursor=pointer]
+                                - list [ref=e195]:
+                                  - listitem [ref=e196]:
+                                    - link "Environment Setup with OVA" [ref=e197] [cursor=pointer]:
+                                      - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/
+                                  - listitem [ref=e198]:
+                                    - link "Environment Setup with RHEL" [ref=e199] [cursor=pointer]:
+                                      - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/env-setup-vm/
+                              - listitem [ref=e200]:
+                                - link "Install Palette" [ref=e201] [cursor=pointer]:
+                                  - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/install/
+                      - listitem [ref=e202]:
+                        - link "Airgap Resources" [ref=e203] [cursor=pointer]:
+                          - /url: /enterprise-version/install-palette/airgap/
+                      - listitem [ref=e204]:
+                        - generic [ref=e205]:
+                          - link "Kubernetes" [ref=e206] [cursor=pointer]:
+                            - /url: /enterprise-version/install-palette/install-on-kubernetes/
+                          - button "Toggle the collapsible sidebar category 'Kubernetes'" [ref=e207] [cursor=pointer]
+                      - listitem [ref=e208]:
+                        - link "Palette Management Appliance" [ref=e209] [cursor=pointer]:
+                          - /url: /enterprise-version/install-palette/palette-management-appliance/
+                  - listitem [ref=e210]:
+                    - link "Activate Palette" [ref=e211] [cursor=pointer]:
+                      - /url: /enterprise-version/activate-installation/
+                  - listitem [ref=e212]:
+                    - generic [ref=e213]:
+                      - link "System Management" [ref=e214] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e215] [cursor=pointer]
+                  - listitem [ref=e216]:
+                    - generic [ref=e217]:
+                      - link "Upgrade" [ref=e218] [cursor=pointer]:
+                        - /url: /enterprise-version/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e219] [cursor=pointer]
+              - listitem [ref=e220]:
+                - generic [ref=e221]:
+                  - link "Palette VerteX" [ref=e222] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e224]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e226] [cursor=pointer]
+              - listitem [ref=e227]:
+                - generic [ref=e228]:
+                  - link "Tenant Administration" [ref=e229] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e231]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e233] [cursor=pointer]
+              - listitem [ref=e234]:
+                - generic [ref=e235]:
+                  - link "Automation" [ref=e236] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e238]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e240] [cursor=pointer]
+              - listitem [ref=e241]:
+                - generic [ref=e242]:
+                  - link "Troubleshooting" [ref=e243] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e245]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e247] [cursor=pointer]
+              - listitem [ref=e248]:
+                - link "Glossary" [ref=e249] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e251]
+                  - text: Glossary
+              - listitem [ref=e253]:
+                - generic [ref=e254]:
+                  - link "Compliance & Legal" [ref=e255] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e257]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e259] [cursor=pointer]
+              - listitem [ref=e260]:
+                - button "Privacy Settings" [ref=e261] [cursor=pointer]:
+                  - img [ref=e262]
+                  - text: Privacy Settings
+      - main [ref=e264]:
+        - generic [ref=e266]:
+          - generic [ref=e268]:
+            - article [ref=e269]:
+              - navigation "Breadcrumbs" [ref=e270]:
+                - list [ref=e271]:
+                  - listitem [ref=e272]:
+                    - link "Home page" [ref=e273] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e274]
+                  - listitem [ref=e276]:
+                    - link "Self-Hosted Palette" [ref=e277] [cursor=pointer]:
+                      - /url: /enterprise-version/
+                  - listitem [ref=e278]:
+                    - link "Installation" [ref=e279] [cursor=pointer]:
+                      - /url: /enterprise-version/install-palette/
+                  - listitem [ref=e280]:
+                    - link "VMware" [ref=e281] [cursor=pointer]:
+                      - /url: /enterprise-version/install-palette/install-on-vmware/
+                  - listitem [ref=e282]:
+                    - link "Airgap Installation" [ref=e283] [cursor=pointer]:
+                      - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/
+                  - listitem [ref=e284]:
+                    - link "Environment Setup" [ref=e285] [cursor=pointer]:
+                      - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/
+                  - listitem [ref=e286]:
+                    - generic [ref=e287]: Environment Setup with OVA
+              - generic [ref=e288]:
+                - heading "Environment Setup with OVA" [level=1] [ref=e290]
+                - paragraph [ref=e291]: This guide helps you prepare your airgap environment for Palette installation using an OVA to deploy and initialize an airgap support VM.
+                - generic [ref=e292]:
+                  - generic [ref=e293]:
+                    - img [ref=e295]
+                    - text: info
+                  - paragraph [ref=e298]:
+                    - text: This guide is for preparing your airgap environment only. For instructions on installing Palette on VMware, check the
+                    - link "Install" [ref=e299] [cursor=pointer]:
+                      - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/install/
+                    - text: guide. A checklist of the steps you will complete to prepare your airgap environment for Palette is available on the
+                    - link "Checklist" [ref=e300] [cursor=pointer]:
+                      - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/checklist/
+                    - text: page.
+                - paragraph [ref=e301]: The following diagram offers a general overview of the steps you will complete to prepare your airgap environment for Palette.
+                - paragraph [ref=e302]:
+                  - img "Overview diagram of the pre-install steps eager-load" [ref=e303]
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e304]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e305] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e306]:
+                  - listitem [ref=e307]:
+                    - paragraph [ref=e308]: "Download the following artifacts:"
+                    - list [ref=e309]:
+                      - listitem [ref=e310]: The installation OVA that deploys and initializes the airgap support VM. The installation OVA can be either generic or release-specific.
+                      - listitem [ref=e311]: If you are using a generic OVA, ensure you download the airgap Palette release binary for the version of Palette you plan to install. This binary contains the core packs and images required for the installation.
+                      - listitem [ref=e312]: An OVA with the operating system and Kubernetes distribution required for the Palette nodes.
+                    - paragraph [ref=e313]: For sensitive environments, you can download the OVAs to a system with internet access and then transfer them to your airgap environment.
+                  - listitem [ref=e314]:
+                    - paragraph [ref=e315]: "The airgap support VM requires the following resources:"
+                    - list [ref=e316]:
+                      - listitem [ref=e317]:
+                        - paragraph [ref=e318]: 6 CPU
+                      - listitem [ref=e319]:
+                        - paragraph [ref=e320]: 8 GB of Memory
+                      - listitem [ref=e321]:
+                        - paragraph [ref=e322]: 120 GB of disk space available for the airgap support VM.
+                  - listitem [ref=e323]:
+                    - paragraph [ref=e324]: The airgap support VM requires connectivity to your VMware vSphere environment.
+                  - listitem [ref=e325]:
+                    - paragraph [ref=e326]: Configure the Dynamic Host Configuration Protocol (DHCP) to access the airgap support VM via SSH. You can disable DHCP or modify the IP address after deploying the airgap support VM.
+                  - listitem [ref=e327]:
+                    - paragraph [ref=e328]:
+                      - text: Review the required vSphere
+                      - link "permissions" [ref=e329] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/install-on-vmware/vmware-system-requirements/
+                      - text: and ensure you've created the proper custom roles and zone tags. Zone tagging enables dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. Refer to
+                      - link "Zone Tagging" [ref=e330] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/install-on-vmware/vmware-system-requirements/#zone-tagging
+                      - text: for information.
+                - generic [ref=e331]:
+                  - generic [ref=e332]:
+                    - img [ref=e334]
+                    - text: info
+                  - paragraph [ref=e337]:
+                    - text: Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not require a separate, user-installed PCG. However, you can deploy additional PCG instances to support provisioning into remote data centers without a direct incoming connection to Palette. To learn how to install a PCG on VMware, check out the
+                    - link "VMware" [ref=e338] [cursor=pointer]:
+                      - /url: /clusters/pcg/deploy-pcg/vmware/
+                    - text: guide.
+                - heading "Prepare for Airgap InstallationDirect link to Prepare for Airgap Installation" [level=2] [ref=e339]:
+                  - text: Prepare for Airgap Installation
+                  - link "Direct link to Prepare for Airgap Installation" [ref=e340] [cursor=pointer]:
+                    - /url: "#prepare-for-airgap-installation"
+                    - text: "#"
+                - paragraph [ref=e341]: Complete the following steps to prepare your airgap environment for Palette installation.
+                - generic [ref=e342]:
+                  - generic [ref=e343]:
+                    - img [ref=e345]
+                    - text: info
+                  - paragraph [ref=e348]:
+                    - text: The default container runtime for OVAs is
+                    - link "Podman" [ref=e349] [cursor=pointer]:
+                      - /url: https://podman.io/
+                    - text: ", not Docker."
+                - list [ref=e350]:
+                  - listitem [ref=e351]:
+                    - paragraph [ref=e352]: Log in to your vCenter environment.
+                  - listitem [ref=e353]:
+                    - paragraph [ref=e354]:
+                      - text: Deploy the airgap installation OVA by using the
+                      - strong [ref=e355]: Deploy OVF Template
+                      - text: wizard again in vSphere. Insert the Palette install OVA URL in the
+                      - strong [ref=e356]: URL
+                      - text: field. The URL is provided to you by your Palette support representative. Click on
+                      - strong [ref=e357]: Next
+                      - text: to continue.
+                    - paragraph [ref=e358]:
+                      - img "View of the OVF deploy wizard" [ref=e359]
+                  - listitem [ref=e360]:
+                    - paragraph [ref=e361]:
+                      - text: Assign a name to the virtual machine and select a target location. Click on
+                      - strong [ref=e362]: Next
+                      - text: to continue.
+                  - listitem [ref=e363]:
+                    - paragraph [ref=e364]:
+                      - text: Select a compute resource and click on
+                      - strong [ref=e365]: Next
+                      - text: to continue.
+                  - listitem [ref=e366]:
+                    - paragraph [ref=e367]:
+                      - text: Review the details and click on
+                      - strong [ref=e368]: Ignore All
+                      - text: to dismiss any warning messages. The OVA contains a self-signed certificate, which causes vSphere to issue a warning. Click on
+                      - strong [ref=e369]: Next
+                      - text: to continue.
+                  - listitem [ref=e370]:
+                    - paragraph [ref=e371]:
+                      - text: Select the storage location and click on
+                      - strong [ref=e372]: Next
+                      - text: to continue.
+                  - listitem [ref=e373]:
+                    - paragraph [ref=e374]:
+                      - text: Select the network and click on
+                      - strong [ref=e375]: Next
+                      - text: to continue.
+                  - listitem [ref=e376]:
+                    - paragraph [ref=e377]:
+                      - text: The last step is to customize the template. Review the table below to learn more about each field. Click on
+                      - strong [ref=e378]: Next
+                      - text: after you have completed the customization to continue.
+                    - table [ref=e379]:
+                      - rowgroup [ref=e380]:
+                        - row "Parameter Description Required" [ref=e381]:
+                          - cell "Parameter" [ref=e382]
+                          - cell "Description" [ref=e383]
+                          - cell "Required" [ref=e384]
+                      - rowgroup [ref=e385]:
+                        - row "Encoded user-data Enter the base64 encoded user-data for additional boot-up customization. You can leave this field empty. No" [ref=e386]:
+                          - cell "Encoded user-data" [ref=e387]:
+                            - strong [ref=e388]: Encoded user-data
+                          - cell "Enter the base64 encoded user-data for additional boot-up customization. You can leave this field empty." [ref=e389]
+                          - cell "No" [ref=e390]
+                        - row "SSH Public Keys Provide the SSH public keys for the user account you will use to access the airgap support VM. You need to provide at least one SSH public key to access the instance. Yes" [ref=e391]:
+                          - cell "SSH Public Keys" [ref=e392]:
+                            - strong [ref=e393]: SSH Public Keys
+                          - cell "Provide the SSH public keys for the user account you will use to access the airgap support VM. You need to provide at least one SSH public key to access the instance." [ref=e394]
+                          - cell "Yes" [ref=e395]
+                        - row "Default User's password Enter the password for the user account you will use to access the airgap support VM. You will be asked to change this password the first time you log in through SSH. Yes" [ref=e396]:
+                          - cell "Default User's password" [ref=e397]:
+                            - strong [ref=e398]: Default User's password
+                          - cell "Enter the password for the user account you will use to access the airgap support VM. You will be asked to change this password the first time you log in through SSH." [ref=e399]
+                          - cell "Yes" [ref=e400]
+                        - row "A Unique Instance ID for this instance Enter a unique instance ID for the airgap support VM. The default value is id-ovf. Yes" [ref=e401]:
+                          - cell "A Unique Instance ID for this instance" [ref=e402]:
+                            - strong [ref=e403]: A Unique Instance ID for this instance
+                          - cell "Enter a unique instance ID for the airgap support VM. The default value is id-ovf." [ref=e404]:
+                            - text: Enter a unique instance ID for the airgap support VM. The default value is
+                            - code [ref=e405]: id-ovf
+                            - text: .
+                          - cell "Yes" [ref=e406]
+                        - row "Hostname Enter a fully qualified hostname for the airgap support VM. For example, palette.example.com. The default value is ubuntuguest. Yes" [ref=e407]:
+                          - cell "Hostname" [ref=e408]:
+                            - strong [ref=e409]: Hostname
+                          - cell "Enter a fully qualified hostname for the airgap support VM. For example, palette.example.com. The default value is ubuntuguest." [ref=e410]:
+                            - text: Enter a fully qualified hostname for the airgap support VM. For example,
+                            - code [ref=e411]: palette.example.com
+                            - text: . The default value is
+                            - code [ref=e412]: ubuntuguest
+                            - text: .
+                          - cell "Yes" [ref=e413]
+                        - row "URL to seed instance data from You can specify a URL to seed instance data from. You can leave this value empty. No" [ref=e414]:
+                          - cell "URL to seed instance data from" [ref=e415]:
+                            - strong [ref=e416]: URL to seed instance data from
+                          - cell "You can specify a URL to seed instance data from. You can leave this value empty." [ref=e417]
+                          - cell "No" [ref=e418]
+                  - listitem [ref=e419]:
+                    - paragraph [ref=e420]:
+                      - text: Review the details and click on
+                      - strong [ref=e421]: Finish
+                      - text: to deploy the airgap support VM.
+                  - listitem [ref=e422]:
+                    - paragraph [ref=e423]: It takes a while for the airgap support VM to deploy, approximately 45 min or more depending on your internet connection. The download of the OVA takes up majority of the time. The image is over 30 GB and contains all the dependencies required to deploy a Palette. Once the deployment is complete, the airgap support VM is displayed in the vSphere inventory. The VM will be powered off. Power on the VM to continue.
+                  - listitem [ref=e424]:
+                    - paragraph [ref=e425]:
+                      - text: SSH into the airgap support VM. Use the following command to SSH into the VM. Replace the IP address below with the IP address or hostname of the airgap support VM. The default user account is
+                      - code [ref=e426]: ubuntu
+                      - text: . Replace the path to the private SSH key and the IP address with the IP address or domain name of the airgap support VM.
+                    - generic [ref=e428]:
+                      - code [ref=e430]:
+                        - generic [ref=e431]: ssh -i /path/to/private/key ubuntu@palette.example.com
+                      - button "Copy code to clipboard" [ref=e433] [cursor=pointer]:
+                        - generic [ref=e434]:
+                          - img [ref=e435]
+                          - img [ref=e437]
+                  - listitem [ref=e439]:
+                    - paragraph [ref=e440]:
+                      - text: Change the password for the
+                      - code [ref=e441]: ubuntu
+                      - text: "user account. You will be prompted to change the password the first time you log in through SSH. The new password must meet the following requirements:"
+                    - list [ref=e442]:
+                      - listitem [ref=e443]: At least 14 characters long
+                      - listitem [ref=e444]: Palindromes are not allowed
+                      - listitem [ref=e445]: At least 1 uppercase letter
+                      - listitem [ref=e446]: At least 1 lowercase letter
+                      - listitem [ref=e447]: At least 1 number
+                      - listitem [ref=e448]: At least 1 special character
+                  - listitem [ref=e449]:
+                    - paragraph [ref=e450]: Once you change the password, the SSH session will be terminated. SSH back into the airgap support VM with the new password.
+                    - generic [ref=e451]:
+                      - generic [ref=e452]:
+                        - img [ref=e454]
+                        - text: info
+                      - generic [ref=e456]:
+                        - paragraph [ref=e457]: You may receive a warning stating the new password is already used. You can ignore this message and SSH back into the airgap support VM with the new password.
+                        - generic [ref=e459]:
+                          - code [ref=e461]:
+                            - generic [ref=e462]: Password has been already used. Choose another.
+                            - generic [ref=e463]: "passwd: Have exhausted maximum number of retries for service"
+                            - generic [ref=e464]: "passwd: password unchanged"
+                            - generic [ref=e465]: Connection to palette.example.com closed.
+                          - button "Toggle word wrap" [ref=e467] [cursor=pointer]:
+                            - img [ref=e468]
+                  - listitem [ref=e470]:
+                    - paragraph [ref=e471]: If you want to assign a static IP address to the airgap support VM, you can do so now. Click on the box below to expand the instructions. Otherwise, proceed to the next step.
+                    - group [ref=e472]:
+                      - generic "Assign a static IP address" [ref=e473] [cursor=pointer]
+                  - listitem [ref=e474]:
+                    - paragraph [ref=e475]:
+                      - text: Switch to the
+                      - code [ref=e476]: root
+                      - text: user account. You will need to use the
+                      - code [ref=e477]: root
+                      - text: user account to complete the remaining steps.
+                    - generic [ref=e479]:
+                      - code [ref=e481]:
+                        - generic [ref=e482]: sudo --login
+                      - button "Copy code to clipboard" [ref=e484] [cursor=pointer]:
+                        - generic [ref=e485]:
+                          - img [ref=e486]
+                          - img [ref=e488]
+                  - listitem [ref=e490]:
+                    - paragraph [ref=e491]: If you have custom SSL certificates you want to apply to the image and pack registry, and the Spectro Cloud Repository, copy the custom SSL certificates, in base64 PEM format, to the airgap support VM.
+                    - paragraph [ref=e492]: If you do not provide a custom SSL certificate, the airgap setup process will generate a self-signed certificate for you.
+                    - generic [ref=e493]:
+                      - generic [ref=e494]:
+                        - img [ref=e496]
+                        - text: warning
+                      - generic [ref=e498]:
+                        - paragraph [ref=e499]: "Three items you need to keep in mind when providing custom SSL certificates:"
+                        - list [ref=e500]:
+                          - listitem [ref=e501]:
+                            - paragraph [ref=e502]:
+                              - text: The custom SSL certificates must be in base64 PEM format. If you have custom SSL certificates in a different format, convert them to base64 PEM format before copying them to the support VM. The airgap setup process also expects the certificate files to be named
+                              - strong [ref=e503]: server.crt
+                              - text: and
+                              - strong [ref=e504]: server.key
+                              - text: .
+                          - listitem [ref=e505]:
+                            - paragraph [ref=e506]: The custom certificate's Fully Qualified Domain Name (FQDN) must match the hostname or IP address you provide for the airgap support VM. Otherwise, the airgap setup process will fail due to a certificate mismatch.
+                          - listitem [ref=e507]:
+                            - paragraph [ref=e508]: "The custom SSL certificates files must have the following permissions bits set:"
+                            - list [ref=e509]:
+                              - listitem [ref=e510]:
+                                - strong [ref=e511]: server.crt
+                                - text: ": 644"
+                              - listitem [ref=e512]:
+                                - strong [ref=e513]: server.key
+                                - text: ": 600"
+                    - paragraph [ref=e514]:
+                      - text: The custom certificates must be placed in the
+                      - strong [ref=e515]: /opt/spectro/ssl
+                      - text: "folder. Include the following files:"
+                    - list [ref=e516]:
+                      - listitem [ref=e517]:
+                        - strong [ref=e518]: server.crt
+                      - listitem [ref=e519]:
+                        - strong [ref=e520]: server.key
+                  - listitem [ref=e521]:
+                    - paragraph [ref=e522]: Start the airgap initialization process by issuing the following command. The script requires the hostname or IP address of the airgap support VM. Choose the preferred method for your environment. Be aware that the script will generate a self-signed certificate for the value you provide.
+                    - generic [ref=e523]:
+                      - tablist [ref=e524]:
+                        - tab "Domain Name" [selected] [ref=e525] [cursor=pointer]
+                        - tab "IP Address" [ref=e526] [cursor=pointer]
+                      - tabpanel [ref=e528]:
+                        - generic [ref=e530]:
+                          - code [ref=e532]:
+                            - generic [ref=e533]: /bin/airgap-setup.sh palette.example.com
+                          - button "Copy code to clipboard" [ref=e535] [cursor=pointer]:
+                            - generic [ref=e536]:
+                              - img [ref=e537]
+                              - img [ref=e539]
+                        - paragraph [ref=e541]: The output of the script will look similar to the example below.
+                        - code [ref=e545]:
+                          - generic [ref=e546]: Setting up SSL Certs
+                          - generic [ref=e547]: Setting up Harbor
+                          - generic [ref=e548]: "Details:"
+                          - generic [ref=e549]: "-------"
+                          - generic [ref=e550]: Spectro Cloud Repository
+                          - generic [ref=e551]: "Location: https://palette.example.com:8443"
+                          - generic [ref=e552]: "UserName: ********"
+                          - generic [ref=e553]: "Password: ********"
+                          - generic [ref=e554]: "CA certificate filepath: /opt/spectro/ssl/server.crt"
+                          - generic [ref=e555]: Pack OCI Registry
+                          - generic [ref=e556]: "Endpoint: https://palette.example.com"
+                          - generic [ref=e557]: "Base Content Path: spectro-packs"
+                          - generic [ref=e558]: "CA certificate Filepath: /opt/spectro/ssl/server.crt"
+                          - generic [ref=e559]: "Username: ********"
+                          - generic [ref=e560]: "Password: ********"
+                          - generic [ref=e561]: Image OCI Registry
+                          - generic [ref=e562]: "Endpoint: https://palette.example.com"
+                          - generic [ref=e563]: "Base Content Path: spectro-images"
+                          - generic [ref=e564]: "CA certificate Filepath: /opt/spectro/ssl/server.crt"
+                          - generic [ref=e565]: "Username: ********"
+                          - generic [ref=e566]: "Password: ********"
+                    - paragraph [ref=e567]: The output of the script contains credentials and values you will need when completing the installation with the Palette CLI. If you need to review this information in the future, invoke the script again.
+                  - listitem [ref=e568]:
+                    - paragraph [ref=e569]:
+                      - text: If you have used a release-specific installation OVA, skip this step. Otherwise, if you have used a generic installation OVA, use the following command to start the airgap Palette release binary. The release binary uploads the release-specific packs and images to the registry configured in step
+                      - strong [ref=e570]: "17"
+                      - text: of this guide. This process may take some time to complete.
+                    - generic [ref=e572]:
+                      - code [ref=e574]:
+                        - generic [ref=e575]: chmod +x airgap-<version>.bin && ./airgap-<version>.bin
+                      - button "Copy code to clipboard" [ref=e577] [cursor=pointer]:
+                        - generic [ref=e578]:
+                          - img [ref=e579]
+                          - img [ref=e581]
+                    - paragraph [ref=e583]: Consider the following example for reference.
+                    - generic [ref=e585]:
+                      - code [ref=e587]:
+                        - generic [ref=e588]: chmod +x airgap-v4.4.14.bin && ./airgap-v4.4.14.bin
+                      - button "Copy code to clipboard" [ref=e590] [cursor=pointer]:
+                        - generic [ref=e591]:
+                          - img [ref=e592]
+                          - img [ref=e594]
+                    - generic [ref=e597]:
+                      - code [ref=e599]:
+                        - generic [ref=e600]: Verifying archive integrity... 100% MD5 checksums are OK. All good.
+                        - generic [ref=e601]: Uncompressing Airgap Setup - Version 4.4.14 100%
+                        - generic [ref=e602]: Setting up CLI
+                        - generic [ref=e603]: Setting up Manifests
+                        - generic [ref=e604]: Setting up Packs
+                        - generic [ref=e605]: ...
+                        - generic [ref=e606]: Setup Completed
+                      - button "Toggle word wrap" [ref=e608] [cursor=pointer]:
+                        - img [ref=e609]
+                    - paragraph [ref=e611]:
+                      - text: Once the airgap binary completes its tasks, you will receive a
+                      - strong [ref=e612]: Setup Completed
+                      - text: success message.
+                  - listitem [ref=e613]:
+                    - paragraph [ref=e614]:
+                      - text: Review the
+                      - link "Additional Packs" [ref=e615] [cursor=pointer]:
+                        - /url: /downloads/self-hosted-palette/additional-packs/
+                      - text: page and identify any additional packs you want to add to your OCI registry. You can also add additional packs after the installation is complete.
+                  - listitem [ref=e616]:
+                    - paragraph [ref=e617]:
+                      - text: Navigate back to the vSphere console and create a vSphere VM and Template folder named
+                      - code [ref=e618]: spectro-templates
+                      - text: . Ensure you can access this folder with the user account you plan to use when deploying the VerteX installation. You can choose a different name for the folder if you prefer, but ensure you use the same name when the Palette CLI prompts you for the folder name.
+                  - listitem [ref=e619]:
+                    - paragraph [ref=e620]:
+                      - text: Right-click on your cluster or resource group and select
+                      - strong [ref=e621]: Deploy OVF Template
+                      - text: .
+                  - listitem [ref=e622]:
+                    - paragraph [ref=e623]:
+                      - text: In the
+                      - strong [ref=e624]: Deploy OVF Template
+                      - text: wizard, enter the following URL to import the Operating System (OS) and Kubernetes distribution OVA required for the installation. Refer to the
+                      - link "Kubernetes Requirements" [ref=e625] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/#kubernetes-requirements
+                      - text: section to learn if the version of Palette you are installing requires a new OS and Kubernetes OVA.
+                    - paragraph [ref=e626]: Consider the following example for reference.
+                    - generic [ref=e627]:
+                      - tablist [ref=e628]:
+                        - tab "Non-FIPS" [selected] [ref=e629] [cursor=pointer]
+                        - tab "FIPS" [ref=e630] [cursor=pointer]
+                      - tabpanel [ref=e632]:
+                        - generic [ref=e634]:
+                          - code [ref=e636]:
+                            - generic [ref=e637]: https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-1294-0.ova
+                          - generic [ref=e638]:
+                            - button "Toggle word wrap" [ref=e639] [cursor=pointer]:
+                              - img [ref=e640]
+                            - button "Copy code to clipboard" [ref=e642] [cursor=pointer]:
+                              - generic [ref=e643]:
+                                - img [ref=e644]
+                                - img [ref=e646]
+                    - paragraph [ref=e648]:
+                      - text: Place the OVA in the
+                      - strong [ref=e649]: spectro-templates
+                      - text: folder or in the folder you created in step
+                      - strong [ref=e650]: "21"
+                      - text: . Append the
+                      - code [ref=e651]: r_
+                      - text: prefix, and remove the
+                      - code [ref=e652]: .ova
+                      - text: suffix when assigning its name and target location. For example, the final output should look like
+                      - code [ref=e653]: r_u-2204-0-k-1294-0
+                      - text: . This naming convention is required for the installation process to identify the OVA. Refer to the
+                      - link "Additional OVAs" [ref=e654] [cursor=pointer]:
+                        - /url: /downloads/self-hosted-palette/additional-ovas/
+                      - text: page for a list of additional OS OVAs.
+                    - paragraph [ref=e655]:
+                      - text: You can terminate the deployment after the OVA is available in the
+                      - code [ref=e656]: spectro-templates
+                      - text: folder. Refer to the
+                      - link "Deploy an OVF or OVA Template" [ref=e657] [cursor=pointer]:
+                        - /url: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html
+                      - text: guide for more information about deploying an OVA in vCenter.
+                - generic [ref=e658]:
+                  - generic [ref=e659]:
+                    - img [ref=e661]
+                    - text: warning
+                  - paragraph [ref=e664]:
+                    - text: If you encounter an error message during the OVA deployment stating unable to retrieve manifest or certificate, refer to this
+                    - link "known issue" [ref=e665] [cursor=pointer]:
+                      - /url: https://kb.vmware.com/s/article/79986
+                    - text: from VMware's knowledge base for guidance on how to resolve the issue.
+                - paragraph [ref=e666]:
+                  - text: You have now completed the preparation steps for an airgap installation. Check out the
+                  - link "Validate" [ref=e667] [cursor=pointer]:
+                    - /url: "#validate"
+                  - text: section to ensure the airgap setup process is completed successfully. After you validate the airgap setup process completion, review the
+                  - link "Next Steps" [ref=e668] [cursor=pointer]:
+                    - /url: "#next-steps"
+                  - text: .
+                - generic [ref=e669]:
+                  - generic [ref=e670]:
+                    - img [ref=e672]
+                    - text: warning
+                  - generic [ref=e674]:
+                    - paragraph [ref=e675]:
+                      - text: Do not power off the airgap support VM. The airgap support VM is required for Palette to function properly and must remain available at all time. If for some reason the airgap support VM is powered off, power the VM back on and restart the required services by navigating to the
+                      - strong [ref=e676]: /opt/spectro/harbor
+                      - text: directory and issuing the following command.
+                    - generic [ref=e678]:
+                      - code [ref=e680]:
+                        - generic [ref=e681]: sudo docker compose up --detach
+                      - button "Copy code to clipboard" [ref=e683] [cursor=pointer]:
+                        - generic [ref=e684]:
+                          - img [ref=e685]
+                          - img [ref=e687]
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e689]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e690] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e691]: Use the following steps to validate that you've successfully completed the airgap setup process.
+                - list [ref=e692]:
+                  - listitem [ref=e693]:
+                    - paragraph [ref=e694]: SSH into to the airgap support VM.
+                  - listitem [ref=e695]:
+                    - paragraph [ref=e696]:
+                      - text: Switch to the
+                      - code [ref=e697]: root
+                      - text: user account.
+                    - generic [ref=e699]:
+                      - code [ref=e701]:
+                        - generic [ref=e702]: sudo --login
+                      - button "Copy code to clipboard" [ref=e704] [cursor=pointer]:
+                        - generic [ref=e705]:
+                          - img [ref=e706]
+                          - img [ref=e708]
+                  - listitem [ref=e710]:
+                    - paragraph [ref=e711]: Issue the following command to validate that you've successfully completed the airgap setup process. Replace the hostname or IP address with the hostname or IP address of the airgap support VM.
+                    - generic [ref=e713]:
+                      - code [ref=e715]:
+                        - generic [ref=e716]: bin/airgap-setup.sh palette.example.com
+                      - button "Copy code to clipboard" [ref=e718] [cursor=pointer]:
+                        - generic [ref=e719]:
+                          - img [ref=e720]
+                          - img [ref=e722]
+                  - listitem [ref=e724]:
+                    - paragraph [ref=e725]: Verify you have the values and credentials in the output.
+                    - code [ref=e729]:
+                      - generic [ref=e730]: Setting up SSL Certs
+                      - generic [ref=e731]: Setting up Harbor
+                      - generic [ref=e732]: "Details:"
+                      - generic [ref=e733]: "-------"
+                      - generic [ref=e734]: Spectro Cloud Repository
+                      - generic [ref=e735]: "Location: https://palette.example.com:8443"
+                      - generic [ref=e736]: "UserName: ********"
+                      - generic [ref=e737]: "Password: ********"
+                      - generic [ref=e738]: "CA certificate filepath: /opt/spectro/ssl/server.crt"
+                      - generic [ref=e739]: Pack OCI Registry
+                      - generic [ref=e740]: "Endpoint: https://palette.example.com"
+                      - generic [ref=e741]: "Base Content Path: spectro-packs"
+                      - generic [ref=e742]: "CA certificate Filepath: /opt/spectro/ssl/server.crt"
+                      - generic [ref=e743]: "Username: ********"
+                      - generic [ref=e744]: "Password: ********"
+                      - generic [ref=e745]: Image OCI Registry
+                      - generic [ref=e746]: "Endpoint: https://palette.example.com"
+                      - generic [ref=e747]: "Base Content Path: spectro-images"
+                      - generic [ref=e748]: "CA certificate Filepath: /opt/spectro/ssl/server.crt"
+                      - generic [ref=e749]: "Username: ********"
+                      - generic [ref=e750]: "Password: ********"
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e751]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e752] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e753]: You are now ready to deploy the airgap Palette installation with the Palette CLI. As a root user, when you are ready to proceed with the install, issue the Palette CLI command below to start the installation. The Palette CLI is already installed in the airgap support VM and ready to use.
+                - generic [ref=e755]:
+                  - code [ref=e757]:
+                    - generic [ref=e758]: palette ec install
+                  - button "Copy code to clipboard" [ref=e760] [cursor=pointer]:
+                    - generic [ref=e761]:
+                      - img [ref=e762]
+                      - img [ref=e764]
+                - paragraph [ref=e766]:
+                  - text: Complete all the Palette CLI steps outlined in the
+                  - link "Install Palette" [ref=e767] [cursor=pointer]:
+                    - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/install/
+                  - text: guide from the airgap support VM.
+                - generic [ref=e768]:
+                  - generic [ref=e769]:
+                    - img [ref=e771]
+                    - text: info
+                  - generic [ref=e773]:
+                    - paragraph [ref=e774]: The table below maps the airgap script output values to their respective Palette CLI prompts and example values. The example values are for reference only.
+                    - table [ref=e775]:
+                      - rowgroup [ref=e776]:
+                        - row "Output Value Palette CLI Prompt Example Value" [ref=e777]:
+                          - cell "Output Value" [ref=e778]
+                          - cell "Palette CLI Prompt" [ref=e779]
+                          - cell "Example Value" [ref=e780]
+                      - rowgroup [ref=e781]:
+                        - row "OCI Registry Registry Type OCI" [ref=e782]:
+                          - cell "OCI Registry" [ref=e783]:
+                            - strong [ref=e784]: OCI Registry
+                          - cell "Registry Type" [ref=e785]:
+                            - strong [ref=e786]: Registry Type
+                          - cell "OCI" [ref=e787]:
+                            - code [ref=e788]: OCI
+                        - row "Pack OCI Registry Registry Endpoint https://palette.example.com or 10.10.1.1" [ref=e789]:
+                          - cell "Pack OCI Registry" [ref=e790]:
+                            - strong [ref=e791]: Pack OCI Registry
+                          - cell "Registry Endpoint" [ref=e792]:
+                            - strong [ref=e793]: Registry Endpoint
+                          - cell "https://palette.example.com or 10.10.1.1" [ref=e794]:
+                            - code [ref=e795]: https://palette.example.com
+                            - text: or
+                            - code [ref=e796]: 10.10.1.1
+                        - row "CA certificate Filepath Registry CA certificate filepath /opt/spectro/ssl/server.crt" [ref=e797]:
+                          - cell "CA certificate Filepath" [ref=e798]:
+                            - strong [ref=e799]: CA certificate Filepath
+                          - cell "Registry CA certificate filepath" [ref=e800]:
+                            - strong [ref=e801]: Registry CA certificate filepath
+                          - cell "/opt/spectro/ssl/server.crt" [ref=e802]:
+                            - code [ref=e803]: /opt/spectro/ssl/server.crt
+                        - row "Image OCI Registry Registry Endpoint https://palette.example.com or 10.10.1.1" [ref=e804]:
+                          - cell "Image OCI Registry" [ref=e805]:
+                            - strong [ref=e806]: Image OCI Registry
+                          - cell "Registry Endpoint" [ref=e807]:
+                            - strong [ref=e808]: Registry Endpoint
+                          - cell "https://palette.example.com or 10.10.1.1" [ref=e809]:
+                            - code [ref=e810]: https://palette.example.com
+                            - text: or
+                            - code [ref=e811]: 10.10.1.1
+                        - row "CA certificate Filepath Registry CA certificate filepath /opt/spectro/ssl/server.crt" [ref=e812]:
+                          - cell "CA certificate Filepath" [ref=e813]:
+                            - strong [ref=e814]: CA certificate Filepath
+                          - cell "Registry CA certificate filepath" [ref=e815]:
+                            - strong [ref=e816]: Registry CA certificate filepath
+                          - cell "/opt/spectro/ssl/server.crt" [ref=e817]:
+                            - code [ref=e818]: /opt/spectro/ssl/server.crt
+                    - paragraph [ref=e819]:
+                      - text: When prompted for
+                      - strong [ref=e820]: Allow Insecure Connection (Bypass x509 Verification)?
+                      - text: ", enter"
+                      - code [ref=e821]: "n"
+                      - text: to continue and specify the server certificate filepath from the script output.
+              - generic [ref=e822]:
+                - generic [ref=e824]:
+                  - text: "Tags:"
+                  - list [ref=e825]:
+                    - listitem [ref=e826]:
+                      - link "self-hosted" [ref=e827] [cursor=pointer]:
+                        - /url: /tags/self-hosted/
+                    - listitem [ref=e828]:
+                      - link "enterprise" [ref=e829] [cursor=pointer]:
+                        - /url: /tags/enterprise/
+                    - listitem [ref=e830]:
+                      - link "airgap" [ref=e831] [cursor=pointer]:
+                        - /url: /tags/airgap/
+                    - listitem [ref=e832]:
+                      - link "vmware" [ref=e833] [cursor=pointer]:
+                        - /url: /tags/vmware/
+                    - listitem [ref=e834]:
+                      - link "vsphere" [ref=e835] [cursor=pointer]:
+                        - /url: /tags/vsphere/
+                - link "Edit this page" [ref=e838] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions.md
+                  - img [ref=e839]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e843]:
+              - link "Previous « Environment Setup" [ref=e844] [cursor=pointer]:
+                - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/
+                - generic [ref=e845]: Previous
+                - generic [ref=e846]: « Environment Setup
+              - link "Next Environment Setup with RHEL »" [ref=e847] [cursor=pointer]:
+                - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/env-setup-vm/
+                - generic [ref=e848]: Next
+                - generic [ref=e849]: Environment Setup with RHEL »
+          - list [ref=e852]:
+            - listitem [ref=e853]:
+              - link "Prerequisites" [ref=e854] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e855]:
+              - link "Prepare for Airgap Installation" [ref=e856] [cursor=pointer]:
+                - /url: "#prepare-for-airgap-installation"
+            - listitem [ref=e857]:
+              - link "Validate" [ref=e858] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e859]:
+              - link "Next Steps" [ref=e860] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e861] [cursor=pointer]:
+    - generic [ref=e864]:
+      - img "Project Logo" [ref=e865]
+      - paragraph [ref=e866]: Ask AI
+```

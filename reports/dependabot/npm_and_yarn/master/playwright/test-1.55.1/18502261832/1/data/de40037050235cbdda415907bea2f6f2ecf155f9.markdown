@@ -1,0 +1,774 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [expanded] [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                    - list [ref=e107]:
+                      - listitem [ref=e108]:
+                        - generic [ref=e109]:
+                          - link "AWS" [expanded] [ref=e110] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/aws/
+                          - button "Toggle the collapsible sidebar category 'AWS'" [ref=e111] [cursor=pointer]
+                        - list [ref=e112]:
+                          - listitem [ref=e113]:
+                            - link "Architecture" [ref=e114] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/architecture/
+                          - listitem [ref=e115]:
+                            - link "Register and Manage AWS Accounts" [ref=e116] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/add-aws-accounts/
+                          - listitem [ref=e117]:
+                            - link "Create and Manage AWS IaaS Cluster" [ref=e118] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/create-cluster/
+                          - listitem [ref=e119]:
+                            - link "Create and Manage AWS EKS Cluster" [ref=e120] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/eks/
+                          - listitem [ref=e121]:
+                            - generic [ref=e122]:
+                              - link "EKS Hybrid Nodes" [ref=e123] [cursor=pointer]:
+                                - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/
+                              - button "Toggle the collapsible sidebar category 'EKS Hybrid Nodes'" [ref=e124] [cursor=pointer]
+                          - listitem [ref=e125]:
+                            - link "Enable Secrets Encryption for EKS Cluster" [ref=e126] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/enable-secrets-encryption-kms-key/
+                          - listitem [ref=e127]:
+                            - link "Enable Disk Encryption for EKS Cluster" [ref=e128] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/enable-disk-encryption-eks-cluster/
+                          - listitem [ref=e129]:
+                            - link "Configure Karpenter for EKS Clusters" [ref=e130] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/configure-karpenter-eks-clusters/
+                          - listitem [ref=e131]:
+                            - link "Required IAM Policies" [ref=e132] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/required-iam-policies/
+                      - listitem [ref=e133]:
+                        - generic [ref=e134]:
+                          - link "Azure" [ref=e135] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/azure/
+                          - button "Toggle the collapsible sidebar category 'Azure'" [ref=e136] [cursor=pointer]
+                      - listitem [ref=e137]:
+                        - generic [ref=e138]:
+                          - link "GCP" [ref=e139] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/gcp/
+                          - button "Toggle the collapsible sidebar category 'GCP'" [ref=e140] [cursor=pointer]
+                  - listitem [ref=e141]:
+                    - generic [ref=e142]:
+                      - link "Data Center Clusters" [ref=e143] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e145]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e147] [cursor=pointer]
+                  - listitem [ref=e148]:
+                    - generic [ref=e149]:
+                      - link "Edge" [ref=e150] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e152]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e154] [cursor=pointer]
+                  - listitem [ref=e155]:
+                    - generic [ref=e156]:
+                      - link "Palette Virtual Clusters" [ref=e157] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e159]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e161] [cursor=pointer]
+                  - listitem [ref=e162]:
+                    - generic [ref=e163]:
+                      - link "Imported Clusters" [ref=e164] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e166]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e168] [cursor=pointer]
+                  - listitem [ref=e169]:
+                    - generic [ref=e170]:
+                      - link "Manage Clusters" [ref=e171] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e173]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e175] [cursor=pointer]
+                  - listitem [ref=e176]:
+                    - generic [ref=e177]:
+                      - link "Cluster Groups" [ref=e178] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e180]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e182] [cursor=pointer]
+                  - listitem [ref=e183]:
+                    - generic [ref=e184]:
+                      - link "Private Cloud Gateway" [ref=e185] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e187]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e189] [cursor=pointer]
+              - listitem [ref=e190]:
+                - generic [ref=e191]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e192] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e194]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e196] [cursor=pointer]
+              - listitem [ref=e197]:
+                - generic [ref=e198]:
+                  - link "Palette Dev Engine" [ref=e199] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e201]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e203] [cursor=pointer]
+              - listitem [ref=e204]:
+                - generic [ref=e205]:
+                  - link "Virtual Machine Orchestrator" [ref=e206] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e208]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e210] [cursor=pointer]
+              - listitem [ref=e211]:
+                - generic [ref=e212]:
+                  - link "Workspaces" [ref=e213] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e215]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e217] [cursor=pointer]
+              - listitem [ref=e218]:
+                - generic [ref=e219]:
+                  - link "Packs List" [ref=e220] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e222]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e224] [cursor=pointer]
+              - listitem [ref=e225]:
+                - generic [ref=e226]:
+                  - link "User & Role Management" [ref=e227] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e229]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e231] [cursor=pointer]
+              - listitem [ref=e232]:
+                - generic [ref=e233]:
+                  - link "Registries and Packs" [ref=e234] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e236]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e238] [cursor=pointer]
+              - listitem [ref=e239]:
+                - generic [ref=e240]:
+                  - link "Security" [ref=e241] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e243]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e245] [cursor=pointer]
+              - listitem [ref=e246]:
+                - generic [ref=e247]:
+                  - link "Audit Logs" [ref=e248] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e250]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e252] [cursor=pointer]
+              - listitem [ref=e253]:
+                - generic [ref=e254]:
+                  - link "Self-Hosted Palette" [ref=e255] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e257]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e259] [cursor=pointer]
+              - listitem [ref=e260]:
+                - generic [ref=e261]:
+                  - link "Palette VerteX" [ref=e262] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e264]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e266] [cursor=pointer]
+              - listitem [ref=e267]:
+                - generic [ref=e268]:
+                  - link "Tenant Administration" [ref=e269] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e271]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e273] [cursor=pointer]
+              - listitem [ref=e274]:
+                - generic [ref=e275]:
+                  - link "Automation" [ref=e276] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e278]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e280] [cursor=pointer]
+              - listitem [ref=e281]:
+                - generic [ref=e282]:
+                  - link "Troubleshooting" [ref=e283] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e285]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e287] [cursor=pointer]
+              - listitem [ref=e288]:
+                - link "Glossary" [ref=e289] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e291]
+                  - text: Glossary
+              - listitem [ref=e293]:
+                - generic [ref=e294]:
+                  - link "Compliance & Legal" [ref=e295] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e297]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e299] [cursor=pointer]
+              - listitem [ref=e300]:
+                - button "Privacy Settings" [ref=e301] [cursor=pointer]:
+                  - img [ref=e302]
+                  - text: Privacy Settings
+      - main [ref=e304]:
+        - generic [ref=e306]:
+          - generic [ref=e308]:
+            - article [ref=e309]:
+              - navigation "Breadcrumbs" [ref=e310]:
+                - list [ref=e311]:
+                  - listitem [ref=e312]:
+                    - link "Home page" [ref=e313] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e314]
+                  - listitem [ref=e316]:
+                    - link "Clusters" [ref=e317] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e318]:
+                    - link "Public Cloud Clusters" [ref=e319] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/
+                  - listitem [ref=e320]:
+                    - link "AWS" [ref=e321] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/
+                  - listitem [ref=e322]:
+                    - generic [ref=e323]: Create and Manage AWS IaaS Cluster
+              - generic [ref=e324]:
+                - heading "Create and Manage AWS Cluster" [level=1] [ref=e326]
+                - paragraph [ref=e327]: Palette supports creating and managing Kubernetes clusters deployed to an AWS account. This section guides you on how to create a Kubernetes cluster in AWS that is managed by Palette.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e328]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e329] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - paragraph [ref=e330]: "The following prerequisites must be met before deploying a cluster to AWS:"
+                - list [ref=e331]:
+                  - listitem [ref=e332]:
+                    - paragraph [ref=e333]: Access to an AWS cloud account
+                    - list [ref=e334]:
+                      - listitem [ref=e335]:
+                        - text: AWS clusters deployed by Palette use the
+                        - link "AWS Instance Metadata Service (IMDS)" [ref=e336] [cursor=pointer]:
+                          - /url: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html
+                        - text: configuration specified in the EC2 account defaults. Refer to the
+                        - link "Configure the Instance Metadata Service options" [ref=e337] [cursor=pointer]:
+                          - /url: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html
+                        - text: guide for further information.
+                      - listitem [ref=e338]:
+                        - text: The AWS account used for IMDS configuration needs to be assigned the
+                        - code [ref=e339]: ec2:GetInstanceMetadataDefaults
+                        - text: permission. Clusters will be launched with
+                        - code [ref=e340]: IMDSv2 (token optional)
+                        - text: enforcement if this permission is not assigned. Refer to the
+                        - link "AWS reference" [ref=e341] [cursor=pointer]:
+                          - /url: https://docs.aws.amazon.com/cli/latest/reference/ec2/get-instance-metadata-defaults.html
+                        - text: guide for further information.
+                  - listitem [ref=e342]:
+                    - paragraph [ref=e343]:
+                      - text: You have added an AWS account in Palette. Review
+                      - link "Add AWS Account" [ref=e344] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/aws/add-aws-accounts/
+                      - text: for guidance.
+                  - listitem [ref=e345]:
+                    - paragraph [ref=e346]:
+                      - text: An infrastructure cluster profile. Review
+                      - link "Create an Infrastructure Profile" [ref=e347] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile/
+                      - text: for guidance.
+                  - listitem [ref=e348]:
+                    - paragraph [ref=e349]:
+                      - text: An
+                      - link "EC2 Key Pair" [ref=e350] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html
+                      - text: in the target region.
+                  - listitem [ref=e351]:
+                    - paragraph [ref=e352]: "Palette creates compute, network, and storage resources in AWS during the provisioning of Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region for the creation of the following resources:"
+                    - list [ref=e353]:
+                      - listitem [ref=e354]: vCPU
+                      - listitem [ref=e355]: VPC
+                      - listitem [ref=e356]: Elastic IP
+                      - listitem [ref=e357]: Internet Gateway
+                      - listitem [ref=e358]: Elastic Load Balancers
+                      - listitem [ref=e359]: NAT Gateway
+                    - generic [ref=e360]:
+                      - generic [ref=e361]:
+                        - img [ref=e363]
+                        - text: info
+                      - generic [ref=e365]:
+                        - paragraph [ref=e366]:
+                          - text: The following tags should be added to the virtual private network (VPC) public subnets to enable automatic subnet discovery for integration with AWS load balancer service. Replace the value
+                          - code [ref=e367]: yourClusterName
+                          - text: with your cluster's name.
+                        - list [ref=e368]:
+                          - listitem [ref=e369]:
+                            - code [ref=e370]: kubernetes.io/role/elb = 1
+                          - listitem [ref=e371]:
+                            - code [ref=e372]: sigs.k8s.io/cluster-api-provider-aws/role = public
+                          - listitem [ref=e373]:
+                            - code [ref=e374]: kubernetes.io/cluster/[yourClusterName] = shared
+                          - listitem [ref=e375]:
+                            - code [ref=e376]: sigs.k8s.io/cluster-api-provider-aws/cluster/[yourClusterName] = owned
+                  - listitem [ref=e377]:
+                    - paragraph [ref=e378]:
+                      - text: Ensure you don't have an existing security group that starts with the cluster name followed by the text
+                      - code [ref=e379]: "-node"
+                      - text: in the selected VPC. Palette will automatically create a security group using the cluster name as a prefix followed by the text
+                      - code [ref=e380]: "-node"
+                      - text: . The format is
+                      - code [ref=e381]: "[name of cluster]-node"
+                      - text: . If you have an existing security group with the same name, you will need to either rename the existing security group before creating the cluster, or use a different cluster name. Otherwise, the cluster creation will fail due to duplicate resource name in the VPC.
+                    - generic [ref=e382]:
+                      - generic [ref=e383]:
+                        - img [ref=e385]
+                        - text: warning
+                      - paragraph [ref=e388]:
+                        - text: For static network deployments, you must have port 6443 open between Palette and the workload cluster. Refer to the
+                        - link "Network Ports" [ref=e389] [cursor=pointer]:
+                          - /url: /architecture/networking-ports/
+                        - text: documentation for detailed network architecture diagrams and to learn more about the ports used for communication.
+                - heading "Deploy an AWS ClusterDirect link to Deploy an AWS Cluster" [level=2] [ref=e390]:
+                  - text: Deploy an AWS Cluster
+                  - link "Direct link to Deploy an AWS Cluster" [ref=e391] [cursor=pointer]:
+                    - /url: "#deploy-an-aws-cluster"
+                    - text: "#"
+                - paragraph [ref=e392]: "Use the following steps to provision a new AWS cluster:"
+                - list [ref=e393]:
+                  - listitem [ref=e394]:
+                    - paragraph [ref=e395]:
+                      - text: Log in to
+                      - link "Palette" [ref=e396] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e397]:
+                    - paragraph [ref=e398]: Ensure you are in the correct project scope.
+                  - listitem [ref=e399]:
+                    - paragraph [ref=e400]:
+                      - text: From the left
+                      - strong [ref=e401]: Main Menu
+                      - text: select
+                      - strong [ref=e402]: Clusters
+                      - text: ", and click"
+                      - strong [ref=e403]: Add New Cluster
+                      - text: .
+                  - listitem [ref=e404]:
+                    - paragraph [ref=e405]:
+                      - text: In
+                      - strong [ref=e406]: Public Clouds
+                      - text: ", under"
+                      - strong [ref=e407]: Infrastructure Provider
+                      - text: ", select"
+                      - strong [ref=e408]: AWS IaaS
+                      - text: .
+                  - listitem [ref=e409]:
+                    - paragraph [ref=e410]:
+                      - text: In the bottom-right corner, click
+                      - strong [ref=e411]: Start AWS IaaS Configuration
+                      - text: .
+                  - listitem [ref=e412]:
+                    - paragraph [ref=e413]:
+                      - text: Fill out the following basic information and click
+                      - strong [ref=e414]: Next
+                      - text: .
+                    - table [ref=e415]:
+                      - rowgroup [ref=e416]:
+                        - row "Field Description" [ref=e417]:
+                          - cell "Field" [ref=e418]:
+                            - strong [ref=e419]: Field
+                          - cell "Description" [ref=e420]:
+                            - strong [ref=e421]: Description
+                      - rowgroup [ref=e422]:
+                        - row "Cluster Name A custom name for the cluster." [ref=e423]:
+                          - cell "Cluster Name" [ref=e424]:
+                            - strong [ref=e425]: Cluster Name
+                          - cell "A custom name for the cluster." [ref=e426]
+                        - row "Description Use the description to provide context about the cluster." [ref=e427]:
+                          - cell "Description" [ref=e428]:
+                            - strong [ref=e429]: Description
+                          - cell "Use the description to provide context about the cluster." [ref=e430]
+                        - 'row "Tags Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: region:us-east-1a or zone:vpc-private-us-east-1a." [ref=e431]':
+                          - cell "Tags" [ref=e432]:
+                            - strong [ref=e433]: Tags
+                          - 'cell "Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: region:us-east-1a or zone:vpc-private-us-east-1a." [ref=e434]':
+                            - text: "Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example:"
+                            - code [ref=e435]: region:us-east-1a
+                            - text: or
+                            - code [ref=e436]: zone:vpc-private-us-east-1a
+                            - text: .
+                        - row "Cloud Account If you already added your AWS account in Palette, select it from the drop-down Menu. Otherwise, click Add New Account and add your AWS account information." [ref=e437]:
+                          - cell "Cloud Account" [ref=e438]:
+                            - strong [ref=e439]: Cloud Account
+                          - cell "If you already added your AWS account in Palette, select it from the drop-down Menu. Otherwise, click Add New Account and add your AWS account information." [ref=e440]:
+                            - text: If you already added your AWS account in Palette, select it from the
+                            - strong [ref=e441]: drop-down Menu
+                            - text: . Otherwise, click
+                            - strong [ref=e442]: Add New Account
+                            - text: and add your AWS account information.
+                    - paragraph [ref=e443]:
+                      - text: To learn how to add an AWS account, review the
+                      - link "Add an AWS Account to Palette" [ref=e444] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/aws/add-aws-accounts/
+                      - text: guide.
+                  - listitem [ref=e445]:
+                    - paragraph [ref=e446]:
+                      - text: Click
+                      - strong [ref=e447]: Add Cluster Profile
+                      - text: ", select a cluster profile and click"
+                      - strong [ref=e448]: Next
+                      - text: . Palette displays the cluster profile layers.
+                  - listitem [ref=e449]:
+                    - paragraph [ref=e450]: Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer. All pack parameters contain default values from the cluster profile.
+                  - listitem [ref=e451]:
+                    - paragraph [ref=e452]: Provide the AWS cloud account and placement information.
+                    - table [ref=e453]:
+                      - rowgroup [ref=e454]:
+                        - row "Parameter Description" [ref=e455]:
+                          - cell "Parameter" [ref=e456]:
+                            - strong [ref=e457]: Parameter
+                          - cell "Description" [ref=e458]:
+                            - strong [ref=e459]: Description
+                      - rowgroup [ref=e460]:
+                        - row "Cloud Account Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings." [ref=e461]:
+                          - cell "Cloud Account" [ref=e462]:
+                            - strong [ref=e463]: Cloud Account
+                          - cell "Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings." [ref=e464]
+                        - row "Region Choose the preferred AWS region where you would like to provision clusters." [ref=e465]:
+                          - cell "Region" [ref=e466]:
+                            - strong [ref=e467]: Region
+                          - cell "Choose the preferred AWS region where you would like to provision clusters." [ref=e468]
+                        - row "SSH Key Pair Name Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the provisioned VMs." [ref=e469]:
+                          - cell "SSH Key Pair Name" [ref=e470]:
+                            - strong [ref=e471]: SSH Key Pair Name
+                          - cell "Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the provisioned VMs." [ref=e472]
+                        - row "Static Placement Check the Static Placement box if you want to deploy resources into pre-existing VPCs and subnets. Review the Static Placement table below to learn more about the required input fields." [ref=e473]:
+                          - cell "Static Placement" [ref=e474]:
+                            - strong [ref=e475]: Static Placement
+                          - cell "Check the Static Placement box if you want to deploy resources into pre-existing VPCs and subnets. Review the Static Placement table below to learn more about the required input fields." [ref=e476]:
+                            - text: Check the
+                            - strong [ref=e477]: Static Placement
+                            - text: box if you want to deploy resources into pre-existing VPCs and subnets. Review the
+                            - link "Static Placement" [ref=e478] [cursor=pointer]:
+                              - /url: "#static-placement"
+                            - text: table below to learn more about the required input fields.
+                        - row "Private API Server LB Enable to deploy the cluster load balancer in a private subnet. This feature requires Palette to have direct network connectivity with the private subnet or a Private Cluster Gateway deployed in the environment." [ref=e479]:
+                          - cell "Private API Server LB" [ref=e480]:
+                            - strong [ref=e481]: Private API Server LB
+                          - cell "Enable to deploy the cluster load balancer in a private subnet. This feature requires Palette to have direct network connectivity with the private subnet or a Private Cluster Gateway deployed in the environment." [ref=e482]:
+                            - text: Enable to deploy the cluster load balancer in a private subnet. This feature requires Palette to have direct network connectivity with the private subnet or a
+                            - link "Private Cluster Gateway" [ref=e483] [cursor=pointer]:
+                              - /url: /clusters/pcg/
+                            - text: deployed in the environment.
+                    - heading "Static PlacementDirect link to Static Placement" [level=4] [ref=e484]:
+                      - text: Static Placement
+                      - link "Direct link to Static Placement" [ref=e485] [cursor=pointer]:
+                        - /url: "#static-placement"
+                        - text: "#"
+                    - table [ref=e486]:
+                      - rowgroup [ref=e487]:
+                        - row "Parameter Description" [ref=e488]:
+                          - cell "Parameter" [ref=e489]
+                          - cell "Description" [ref=e490]
+                      - rowgroup [ref=e491]:
+                        - row "VPCID Select the Virtual Private Cloud (VPC) ID network from the drop-down Menu." [ref=e492]:
+                          - cell "VPCID" [ref=e493]:
+                            - strong [ref=e494]: VPCID
+                          - cell "Select the Virtual Private Cloud (VPC) ID network from the drop-down Menu." [ref=e495]:
+                            - text: Select the Virtual Private Cloud (VPC) ID network from the
+                            - strong [ref=e496]: drop-down Menu
+                            - text: .
+                        - row "Control plane subnet Select the control plane network from the drop-down Menu." [ref=e497]:
+                          - cell "Control plane subnet" [ref=e498]:
+                            - strong [ref=e499]: Control plane subnet
+                          - cell "Select the control plane network from the drop-down Menu." [ref=e500]:
+                            - text: Select the control plane network from the
+                            - strong [ref=e501]: drop-down Menu
+                            - text: .
+                        - row "Worker Network Select the worker network from the drop-down Menu." [ref=e502]:
+                          - cell "Worker Network" [ref=e503]:
+                            - strong [ref=e504]: Worker Network
+                          - cell "Select the worker network from the drop-down Menu." [ref=e505]:
+                            - text: Select the worker network from the
+                            - strong [ref=e506]: drop-down Menu
+                            - text: .
+                  - listitem [ref=e507]:
+                    - paragraph [ref=e508]:
+                      - text: Configure the control plane and worker node pool. Specify availability zones, instance types,
+                      - link "instance cost type" [ref=e509] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/aws/architecture/#spot-instances
+                      - text: ", disk size, the number of nodes, and"
+                      - link "autoscaler support" [ref=e510] [cursor=pointer]:
+                        - /url: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md
+                      - text: ", as necessary. Refer to the"
+                      - link "Node Pool" [ref=e511] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/node-pool/
+                      - text: documentation to learn more about the node pool configuration.
+                    - paragraph [ref=e512]: The minimum number of CPUs and amount of memory depend on your cluster profile, but in general you need at least 4 CPUs and 4 GB of memory both in the control plane pool and across all worker pools.
+                    - generic [ref=e513]:
+                      - generic [ref=e514]:
+                        - img [ref=e516]
+                        - text: info
+                      - paragraph [ref=e519]: You can add new worker pools if you need to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the m3.large instance types for general-purpose workloads, and another worker pool with instance type g2.2xlarge can be configured to run GPU workloads.
+                  - listitem [ref=e520]:
+                    - paragraph [ref=e521]:
+                      - text: An optional taint label can be applied to a node pool during the cluster creation. For an existing cluster, the taint label can be edited, review the
+                      - link "Node Pool" [ref=e522] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/node-pool/
+                      - text: management page to learn more. Toggle the
+                      - strong [ref=e523]: Taint
+                      - text: button to create a label.
+                  - listitem [ref=e524]:
+                    - paragraph [ref=e525]: "Enable or disable node pool taints. If tainting is enabled, then you need to provide values for the following parameters:"
+                    - table [ref=e526]:
+                      - rowgroup [ref=e527]:
+                        - row "Parameter Description" [ref=e528]:
+                          - cell "Parameter" [ref=e529]:
+                            - strong [ref=e530]: Parameter
+                          - cell "Description" [ref=e531]:
+                            - strong [ref=e532]: Description
+                      - rowgroup [ref=e533]:
+                        - row "Key Custom key for the taint." [ref=e534]:
+                          - cell "Key" [ref=e535]:
+                            - strong [ref=e536]: Key
+                          - cell "Custom key for the taint." [ref=e537]
+                        - row "Value Custom value for the taint key." [ref=e538]:
+                          - cell "Value" [ref=e539]:
+                            - strong [ref=e540]: Value
+                          - cell "Custom value for the taint key." [ref=e541]
+                        - row "Effect Make the choice of effect from the drop-down menu. Review the effect table bellow for more details." [ref=e542]:
+                          - cell "Effect" [ref=e543]:
+                            - strong [ref=e544]: Effect
+                          - cell "Make the choice of effect from the drop-down menu. Review the effect table bellow for more details." [ref=e545]
+                    - heading "Effect TableDirect link to Effect Table" [level=4] [ref=e546]:
+                      - text: Effect Table
+                      - link "Direct link to Effect Table" [ref=e547] [cursor=pointer]:
+                        - /url: "#effect-table"
+                        - text: "#"
+                    - table [ref=e548]:
+                      - rowgroup [ref=e549]:
+                        - row "Parameter Description" [ref=e550]:
+                          - cell "Parameter" [ref=e551]:
+                            - strong [ref=e552]: Parameter
+                          - cell "Description" [ref=e553]:
+                            - strong [ref=e554]: Description
+                      - rowgroup [ref=e555]:
+                        - row "NoSchedule A pod that cannot tolerate the node taint and should not be scheduled to the node." [ref=e556]:
+                          - cell "NoSchedule" [ref=e557]:
+                            - strong [ref=e558]: NoSchedule
+                          - cell "A pod that cannot tolerate the node taint and should not be scheduled to the node." [ref=e559]
+                        - row "PreferNoSchedule The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed." [ref=e560]:
+                          - cell "PreferNoSchedule" [ref=e561]:
+                            - strong [ref=e562]: PreferNoSchedule
+                          - cell "The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed." [ref=e563]
+                        - row "NoExecute New pods will not be scheduled on the node, and existing pods on the node if any on the node will be evicted they do not tolerate the taint." [ref=e564]:
+                          - cell "NoExecute" [ref=e565]:
+                            - strong [ref=e566]: NoExecute
+                          - cell "New pods will not be scheduled on the node, and existing pods on the node if any on the node will be evicted they do not tolerate the taint." [ref=e567]
+                  - listitem [ref=e568]:
+                    - paragraph [ref=e569]:
+                      - text: If you checked the
+                      - strong [ref=e570]: Static Placement
+                      - text: box in the
+                      - strong [ref=e571]: Cluster config
+                      - text: page, you can specify additional AWS
+                      - link "security groups" [ref=e572] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/vpc/latest/userguide/security-groups.html
+                      - text: to apply to the worker group nodes. Use the
+                      - strong [ref=e573]: Additional Security Groups (Optional) drop-down Menu
+                      - text: to select additional security groups.
+                  - listitem [ref=e574]:
+                    - paragraph [ref=e575]:
+                      - text: Click
+                      - strong [ref=e576]: Next
+                      - text: .
+                  - listitem [ref=e577]:
+                    - paragraph [ref=e578]: Configure the patching schedule, security scans, backup settings, and set up Role Based Access Control (RBAC). Review the cluster settings and make changes if needed.
+                  - listitem [ref=e579]:
+                    - paragraph [ref=e580]:
+                      - text: Click
+                      - strong [ref=e581]: Validate
+                      - text: to continue.
+                  - listitem [ref=e582]:
+                    - paragraph [ref=e583]:
+                      - text: Review the summary and click
+                      - strong [ref=e584]: Finish Configuration
+                      - text: to deploy the cluster. Provisioning IaaS clusters can take 15 - 30 minutes depending on the cluster profile and the node pool configuration.
+                - paragraph [ref=e585]: The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the deployment progress.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e586]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e587] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e588]: You can validate that your cluster is up and available by reviewing the cluster details page.
+                - list [ref=e589]:
+                  - listitem [ref=e590]:
+                    - paragraph [ref=e591]:
+                      - text: Log in to
+                      - link "Palette" [ref=e592] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e593]:
+                    - paragraph [ref=e594]:
+                      - text: Navigate to the left
+                      - strong [ref=e595]: Main Menu
+                      - text: and click
+                      - strong [ref=e596]: Clusters
+                      - text: .
+                  - listitem [ref=e597]:
+                    - paragraph [ref=e598]:
+                      - text: The
+                      - strong [ref=e599]: Clusters
+                      - text: page contains a list of the available clusters Palette manages. Click on the cluster you want to review.
+                  - listitem [ref=e600]:
+                    - paragraph [ref=e601]:
+                      - text: From the cluster details page, verify the
+                      - strong [ref=e602]: Cluster Status
+                      - text: field displays
+                      - strong [ref=e603]: Running
+                      - text: .
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e604]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e605] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e606]:
+                  - text: Now that you have a Kubernetes cluster deployed, you can start developing and deploying applications to your clusters. We recommend you review the day two responsibilities and become familiar with the cluster management tasks. Check out the
+                  - link "Manage Clusters" [ref=e607] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/
+                  - text: documentation to learn more about day two responsibilities.
+              - generic [ref=e608]:
+                - generic [ref=e610]:
+                  - text: "Tags:"
+                  - list [ref=e611]:
+                    - listitem [ref=e612]:
+                      - link "public cloud" [ref=e613] [cursor=pointer]:
+                        - /url: /tags/public-cloud/
+                    - listitem [ref=e614]:
+                      - link "aws" [ref=e615] [cursor=pointer]:
+                        - /url: /tags/aws/
+                - link "Edit this page" [ref=e618] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/public-cloud/aws/create-cluster.md
+                  - img [ref=e619]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e623]:
+              - link "Previous « Register and Manage AWS Accounts" [ref=e624] [cursor=pointer]:
+                - /url: /clusters/public-cloud/aws/add-aws-accounts/
+                - generic [ref=e625]: Previous
+                - generic [ref=e626]: « Register and Manage AWS Accounts
+              - link "Next Create and Manage AWS EKS Cluster »" [ref=e627] [cursor=pointer]:
+                - /url: /clusters/public-cloud/aws/eks/
+                - generic [ref=e628]: Next
+                - generic [ref=e629]: Create and Manage AWS EKS Cluster »
+          - list [ref=e632]:
+            - listitem [ref=e633]:
+              - link "Prerequisites" [ref=e634] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e635]:
+              - link "Deploy an AWS Cluster" [ref=e636] [cursor=pointer]:
+                - /url: "#deploy-an-aws-cluster"
+            - listitem [ref=e637]:
+              - link "Validate" [ref=e638] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e639]:
+              - link "Next Steps" [ref=e640] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e641] [cursor=pointer]:
+    - generic [ref=e644]:
+      - img "Project Logo" [ref=e645]
+      - paragraph [ref=e646]: Ask AI
+```

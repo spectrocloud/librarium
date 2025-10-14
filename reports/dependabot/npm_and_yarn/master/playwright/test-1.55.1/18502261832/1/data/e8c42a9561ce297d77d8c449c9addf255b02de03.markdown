@@ -1,0 +1,1441 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - link "Palette Tutorials" [ref=e40] [cursor=pointer]:
+                  - /url: /tutorials/
+                  - img [ref=e42]
+                  - text: Palette Tutorials
+              - listitem [ref=e44]:
+                - generic [ref=e45]:
+                  - link "Getting Started" [ref=e46] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/
+                    - img [ref=e48]
+                    - text: Getting Started
+                  - button "Toggle the collapsible sidebar category 'Getting Started'" [ref=e50] [cursor=pointer]
+              - listitem [ref=e51]:
+                - generic [ref=e52]:
+                  - link "Packs and Registries" [expanded] [ref=e53] [cursor=pointer]:
+                    - /url: /tutorials/packs-registries/
+                    - img [ref=e55]
+                    - text: Packs and Registries
+                  - button "Toggle the collapsible sidebar category 'Packs and Registries'" [ref=e57] [cursor=pointer]
+                - list [ref=e58]:
+                  - listitem [ref=e59]:
+                    - link "Deploy a Custom Pack" [ref=e60] [cursor=pointer]:
+                      - /url: /tutorials/packs-registries/deploy-pack/
+              - listitem [ref=e61]:
+                - generic [ref=e62]:
+                  - link "Profiles" [ref=e63] [cursor=pointer]:
+                    - /url: /tutorials/profiles/
+                    - img [ref=e65]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e69] [cursor=pointer]
+              - listitem [ref=e70]:
+                - generic [ref=e71]:
+                  - link "Clusters" [ref=e72] [cursor=pointer]:
+                    - /url: /tutorials/clusters/
+                    - img [ref=e74]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Palette Dev Engine" [ref=e83] [cursor=pointer]:
+                    - /url: /tutorials/pde/
+                    - img [ref=e85]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - button "Privacy Settings" [ref=e89] [cursor=pointer]
+      - main [ref=e90]:
+        - generic [ref=e92]:
+          - generic [ref=e94]:
+            - article [ref=e95]:
+              - navigation "Breadcrumbs" [ref=e96]:
+                - list [ref=e97]:
+                  - listitem [ref=e98]:
+                    - link "Home page" [ref=e99] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e100]
+                  - listitem [ref=e102]:
+                    - link "Packs and Registries" [ref=e103] [cursor=pointer]:
+                      - /url: /tutorials/packs-registries/
+                  - listitem [ref=e104]:
+                    - generic [ref=e105]: Deploy a Custom Pack
+              - generic [ref=e106]:
+                - heading "Deploy a Custom Pack" [level=1] [ref=e108]
+                - paragraph [ref=e109]: "Custom add-on packs allow you to deploy Kubernetes applications in clusters and reuse them in multiple deployments. This ensures uniformity across your clusters. The primary use cases for creating custom packs are:"
+                - list [ref=e110]:
+                  - listitem [ref=e111]:
+                    - paragraph [ref=e112]: Aggregated configuration and application dependencies simplify deployment and consumption.
+                  - listitem [ref=e113]:
+                    - paragraph [ref=e114]: Open source contributors can add new Kubernetes applications to a custom add-on pack for the community.
+                  - listitem [ref=e115]:
+                    - paragraph [ref=e116]: Enterprises can add proprietary Kubernetes applications to a custom add-on pack.
+                - paragraph [ref=e117]:
+                  - text: In this tutorial, you will create a custom add-on pack to package a sample Kubernetes application,
+                  - link "Hello Universe" [ref=e118] [cursor=pointer]:
+                    - /url: https://github.com/spectrocloud/hello-universe#hello-universe
+                  - text: ", and deploy the application to a cluster. You will learn to create the pack in two ways - using manifest files and Helm charts."
+                - paragraph [ref=e119]: After defining the custom pack, you will set up a new registry server or leverage an existing Open Container Initiative (OCI) registry. Then, you will publish the pack to the registry and configure the registry server in Palette. Lastly, you will create a cluster profile that contains your custom pack and apply the profile to a cluster using either Palette or Terraform.
+                - paragraph [ref=e120]: The following diagram illustrates the sequential steps required to successfully complete this tutorial.
+                - paragraph [ref=e121]:
+                  - img "Architecture Diagram of the Deploy a Custom Pack Tutorial" [ref=e122]
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e123]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e124] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - paragraph [ref=e125]: "To complete this tutorial, ensure you have the following prerequisites in place:"
+                - list [ref=e126]:
+                  - listitem [ref=e127]: A Palette account.
+                  - listitem [ref=e128]: Tenant admin access to Palette for the purpose of adding a new registry server.
+                  - listitem [ref=e129]:
+                    - text: An Amazon Web Services (AWS) account added to your Palette project settings. Refer to the
+                    - link "Add an AWS Account to Palette" [ref=e130] [cursor=pointer]:
+                      - /url: https://docs.spectrocloud.com/clusters/public-cloud/aws/add-aws-accounts
+                    - text: guide for instructions.
+                  - listitem [ref=e131]: An SSH key available in the region where you plan to deploy the cluster.
+                  - listitem [ref=e132]:
+                    - link "Docker" [ref=e133] [cursor=pointer]:
+                      - /url: https://docs.docker.com/get-docker/
+                    - text: or
+                    - link "Podman" [ref=e134] [cursor=pointer]:
+                      - /url: https://podman.io/docs/installation
+                    - text: installed on your local machine to start the tutorial container.
+                  - listitem [ref=e135]:
+                    - text: Basic knowledge of containers and Kubernetes manifest file attributes. Refer to the
+                    - link "Docker Get Started" [ref=e136] [cursor=pointer]:
+                      - /url: https://docs.docker.com/get-started/
+                    - text: guide and the
+                    - link "Learn Kubernetes Basics" [ref=e137] [cursor=pointer]:
+                      - /url: https://kubernetes.io/docs/tutorials/kubernetes-basics/
+                    - text: tutorial to start learning.
+                - paragraph [ref=e138]: If you choose to use an OCI registry, you will need the following item.
+                - list [ref=e139]:
+                  - listitem [ref=e140]:
+                    - text: An active OCI registry such as
+                    - link "Amazon Elastic Container Registry (ECR)" [ref=e141] [cursor=pointer]:
+                      - /url: https://aws.amazon.com/ecr/
+                    - text: or
+                    - link "Harbor" [ref=e142] [cursor=pointer]:
+                      - /url: https://goharbor.io/
+                    - text: .
+                - paragraph [ref=e143]: If you opt for an ECR OCI registry, you will require the following.
+                - list [ref=e144]:
+                  - listitem [ref=e145]:
+                    - paragraph [ref=e146]: An AWS Identity and Access Management (IAM) user with the following permissions.
+                    - list [ref=e147]:
+                      - listitem [ref=e148]:
+                        - code [ref=e149]: ecr:CreateRepository
+                      - listitem [ref=e150]:
+                        - code [ref=e151]: ecr:InitiateLayerUpload
+                      - listitem [ref=e152]:
+                        - code [ref=e153]: ecr:CompleteLayerUpload
+                      - listitem [ref=e154]:
+                        - code [ref=e155]: ecr:InitiateLayerUpload
+                      - listitem [ref=e156]:
+                        - code [ref=e157]: ecr:PutImage
+                      - listitem [ref=e158]:
+                        - code [ref=e159]: ecr:UploadLayerPart
+                      - listitem [ref=e160]:
+                        - code [ref=e161]: ecr:BatchCheckLayerAvailability
+                      - listitem [ref=e162]:
+                        - code [ref=e163]: ecr:ListImages
+                      - listitem [ref=e164]:
+                        - code [ref=e165]: ecr:DescribeImages
+                      - listitem [ref=e166]:
+                        - code [ref=e167]: ecr:BatchDeleteImage
+                      - listitem [ref=e168]:
+                        - code [ref=e169]: ecr:DeleteRepository
+                - generic [ref=e170]:
+                  - generic [ref=e171]:
+                    - img [ref=e173]
+                    - text: warning
+                  - paragraph [ref=e176]: AWS expenses are associated with this tutorial. An estimated hourly cost is provided by Palette during the cluster creation step. After completing the tutorial, make sure to delete the infrastructure to avoid additional charges.
+                - heading "Set Up the Tutorial EnvironmentDirect link to Set Up the Tutorial Environment" [level=2] [ref=e177]:
+                  - text: Set Up the Tutorial Environment
+                  - link "Direct link to Set Up the Tutorial Environment" [ref=e178] [cursor=pointer]:
+                    - /url: "#set-up-the-tutorial-environment"
+                    - text: "#"
+                - paragraph [ref=e179]:
+                  - text: In this tutorial, you will work in a container pre-configured with the necessary tools. Alternatively, you can choose to follow along with the tutorial in any
+                  - code [ref=e180]: linux/amd64
+                  - text: or
+                  - code [ref=e181]: x86_64
+                  - text: environment by installing the
+                  - link "required tools" [ref=e182] [cursor=pointer]:
+                    - /url: https://github.com/spectrocloud/tutorials/blob/main/docs/docker.md#docker
+                  - text: and cloning the
+                  - link "GitHub repository" [ref=e183] [cursor=pointer]:
+                    - /url: https://github.com/spectrocloud/tutorials/
+                  - text: that contains the tutorial files. To initialize the tutorial container, follow the steps described below.
+                - generic [ref=e184]:
+                  - tablist [ref=e185]:
+                    - tab "Docker" [selected] [ref=e186] [cursor=pointer]
+                    - tab "Podman" [ref=e187] [cursor=pointer]
+                  - tabpanel [ref=e189]:
+                    - paragraph [ref=e190]: Start Docker Desktop on your local machine and ensure that the Docker daemon is available by issuing a command to list the currently active containers.
+                    - generic [ref=e192]:
+                      - code [ref=e194]:
+                        - generic [ref=e195]: docker ps
+                      - button "Copy code to clipboard" [ref=e197] [cursor=pointer]:
+                        - generic [ref=e198]:
+                          - img [ref=e199]
+                          - img [ref=e201]
+                    - paragraph [ref=e203]:
+                      - text: Use the following command to download the
+                      - code [ref=e204]: ghcr.io/spectrocloud/tutorials:1.3.0
+                      - text: image to your local machine. This Docker image includes the necessary tools.
+                    - generic [ref=e206]:
+                      - code [ref=e208]:
+                        - generic [ref=e209]: docker pull ghcr.io/spectrocloud/tutorials:1.3.0
+                      - button "Copy code to clipboard" [ref=e211] [cursor=pointer]:
+                        - generic [ref=e212]:
+                          - img [ref=e213]
+                          - img [ref=e215]
+                    - paragraph [ref=e217]: Next, start the container and open a bash session into it.
+                    - generic [ref=e219]:
+                      - code [ref=e221]:
+                        - generic [ref=e222]: docker run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.3.0 bash
+                      - generic [ref=e223]:
+                        - button "Toggle word wrap" [ref=e224] [cursor=pointer]:
+                          - img [ref=e225]
+                        - button "Copy code to clipboard" [ref=e227] [cursor=pointer]:
+                          - generic [ref=e228]:
+                            - img [ref=e229]
+                            - img [ref=e231]
+                - paragraph [ref=e233]: If the port 7000 on your local machine is unavailable, you can use any other port of your choice.
+                - generic [ref=e234]:
+                  - generic [ref=e235]:
+                    - img [ref=e237]
+                    - text: warning
+                  - paragraph [ref=e240]: Do not exit the container until the tutorial is complete. Otherwise, you may lose your progress.
+                - heading "Build a PackDirect link to Build a Pack" [level=2] [ref=e241]:
+                  - text: Build a Pack
+                  - link "Direct link to Build a Pack" [ref=e242] [cursor=pointer]:
+                    - /url: "#build-a-pack"
+                    - text: "#"
+                - paragraph [ref=e243]:
+                  - text: Building a custom pack involves defining specific files. As outlined in the
+                  - link "Adding Add-on Packs" [ref=e244] [cursor=pointer]:
+                    - /url: /registries-and-packs/adding-add-on-packs/
+                  - text: "guide, there are two ways to define a custom pack: using manifest files or Helm charts. The file structure differs for manifest-based packs and Helm chart-based packs. Below is the reference file structure for each."
+                - generic [ref=e245]:
+                  - tablist [ref=e246]:
+                    - tab "Manifests-based pack" [selected] [ref=e247] [cursor=pointer]
+                    - tab "Helm charts-based pack" [ref=e248] [cursor=pointer]
+                  - tabpanel [ref=e250]:
+                    - code [ref=e254]:
+                      - generic [ref=e255]: .
+                      - generic [ref=e256]: "├── pack.json # Mandatory."
+                      - generic [ref=e257]: "├── values.yaml # Mandatory."
+                      - generic [ref=e258]: "├── manifests # Mandatory."
+                      - generic [ref=e259]: ├── manifest-1.yaml
+                      - generic [ref=e260]: ├── manifest-2.yaml
+                      - generic [ref=e261]: │ └── manifest-3.yaml
+                      - generic [ref=e262]: "├── logo.png # Mandatory."
+                      - generic [ref=e263]: "└── README.md # Optional."
+                - paragraph [ref=e264]:
+                  - text: For your convenience, we provide you with the manifest-based pack files for the Hello Universe application. These files are located in the
+                  - strong [ref=e265]: packs/hello-universe-pack
+                  - text: folder.
+                - paragraph [ref=e266]:
+                  - text: Navigate to the
+                  - strong [ref=e267]: packs/hello-universe-pack
+                  - text: directory and list its files.
+                - generic [ref=e269]:
+                  - code [ref=e271]:
+                    - generic [ref=e272]: cd /packs/hello-universe-pack && ls -ll
+                  - button "Copy code to clipboard" [ref=e274] [cursor=pointer]:
+                    - generic [ref=e275]:
+                      - img [ref=e276]
+                      - img [ref=e278]
+                - paragraph [ref=e280]: Ensure you have the following files in the current directory.
+                - code [ref=e284]:
+                  - generic [ref=e285]: .
+                  - generic [ref=e286]: "├── pack.json # Mandatory."
+                  - generic [ref=e287]: "├── values.yaml # Mandatory."
+                  - generic [ref=e288]: "├── manifests # Mandatory."
+                  - generic [ref=e289]: │ └── hello-universe.yaml
+                  - generic [ref=e290]: "├── logo.png # Mandatory."
+                  - generic [ref=e291]: "└── README.md # Optional."
+                - heading "Pack File StructureDirect link to Pack File Structure" [level=3] [ref=e292]:
+                  - text: Pack File Structure
+                  - link "Direct link to Pack File Structure" [ref=e293] [cursor=pointer]:
+                    - /url: "#pack-file-structure"
+                    - text: "#"
+                - paragraph [ref=e294]:
+                  - text: Review each of the following five files in the
+                  - strong [ref=e295]: hello-universe-pack
+                  - text: folder.
+                - list [ref=e296]:
+                  - listitem [ref=e297]:
+                    - paragraph [ref=e298]:
+                      - strong [ref=e299]: pack.json
+                      - text: "- This file contains the pack metadata such as"
+                      - code [ref=e300]: addonType
+                      - text: ","
+                      - code [ref=e301]: cloudTypes
+                      - text: ", and the"
+                      - code [ref=e302]: kubeManifests
+                      - text: "array. The array consists of a list of manifest files:"
+                      - code [ref=e303]: layer
+                      - text: ","
+                      - code [ref=e304]: name
+                      - text: ", and"
+                      - code [ref=e305]: version
+                      - text: . Refer to the
+                      - link "JSON Schema" [ref=e306] [cursor=pointer]:
+                        - /url: /registries-and-packs/add-custom-packs/#json-schema
+                      - text: for a list of attributes and respective data types. The schema validation happens when you push a pack to the registry.
+                    - generic [ref=e308]:
+                      - code [ref=e310]:
+                        - generic [ref=e311]: "{"
+                        - generic [ref=e312]: "\"addonType\": \"app services\","
+                        - generic [ref=e313]: "\"annotations\": {"
+                        - generic [ref=e314]: "\"source\": \"community\","
+                        - generic [ref=e315]: "\"contributor\": \"spectrocloud\","
+                        - generic [ref=e316]: "}"
+                        - generic [ref=e317]: "\"cloudTypes\": [\"all\"],"
+                        - generic [ref=e318]: "\"displayName\": \"Hello Universe\","
+                        - generic [ref=e319]: "\"kubeManifests\": [\"manifests/hello-universe.yaml\"],"
+                        - generic [ref=e320]: "\"layer\": \"addon\","
+                        - generic [ref=e321]: "\"name\": \"hellouniverse\","
+                        - generic [ref=e322]: "\"version\": \"1.2.0\""
+                        - generic [ref=e323]: "}"
+                      - button "Copy code to clipboard" [ref=e325] [cursor=pointer]:
+                        - generic [ref=e326]:
+                          - img [ref=e327]
+                          - img [ref=e329]
+                  - listitem [ref=e331]:
+                    - paragraph [ref=e332]:
+                      - strong [ref=e333]: values.yaml
+                      - text: "- This file contains configurable parameters you can define while adding the current pack to a cluster profile. In the"
+                      - strong [ref=e334]: values.yaml
+                      - text: file for this tutorial, the
+                      - code [ref=e335]: pack/namespace
+                      - text: attribute specifies the namespace on the target cluster to deploy the pack. If the
+                      - strong [ref=e336]: values.yaml
+                      - text: specifies a namespace value, then Palette first checks to confirm if the namespace has been created. If so, Palette uses the existing namespace. If the namespace has not yet been created, Palette creates a new one using the value specified in the YAML file.
+                    - paragraph [ref=e337]:
+                      - text: Keep in mind that if the
+                      - strong [ref=e338]: values.yaml
+                      - text: does not specify a namespace value, Palette will deploy the application to the default namespace.
+                    - paragraph [ref=e339]:
+                      - text: The
+                      - code [ref=e340]: manifests
+                      - text: section exposes the configurable parameters for each manifest file listed in the
+                      - strong [ref=e341]: manifests
+                      - text: directory. For example, in the sample code snippet below, the
+                      - code [ref=e342]: hello-universe
+                      - text: attribute exposes the
+                      - code [ref=e343]: registry
+                      - text: ","
+                      - code [ref=e344]: repository
+                      - text: ", and"
+                      - code [ref=e345]: tag
+                      - text: parameters.
+                    - generic [ref=e347]:
+                      - code [ref=e349]:
+                        - generic [ref=e350]: "pack:"
+                        - generic [ref=e351]: "namespace: \"hello-universe\""
+                        - generic [ref=e352]: "manifests:"
+                        - generic [ref=e353]: "hello-universe:"
+                        - generic [ref=e354]: "registry: ghcr.io"
+                        - generic [ref=e355]: "repository: spectrocloud/hello-universe"
+                        - generic [ref=e356]: "tag: 1.2.0"
+                      - button "Copy code to clipboard" [ref=e358] [cursor=pointer]:
+                        - generic [ref=e359]:
+                          - img [ref=e360]
+                          - img [ref=e362]
+                    - paragraph [ref=e364]:
+                      - text: Optionally, you can define
+                      - emphasis [ref=e365]: presets
+                      - text: ", which are pack configuration values predefined in a file called"
+                      - strong [ref=e366]: presets.yaml
+                      - text: within the pack. Once defined, the
+                      - strong [ref=e367]: Presets
+                      - text: field becomes visible in both the
+                      - strong [ref=e368]: Clusters
+                      - text: and
+                      - strong [ref=e369]: Profile
+                      - text: sections of the Palette UI. Users can select any preset from the available pack presets, and upon selection, the predefined values of the chosen preset are applied to the pack. Refer to
+                      - link "Pack Presets" [ref=e370] [cursor=pointer]:
+                        - /url: /registries-and-packs/pack-constraints/#preset-attributes
+                      - text: for details and examples of how to define presets.
+                    - paragraph [ref=e371]:
+                      - text: The example below shows the parameters you can configure in the
+                      - strong [ref=e372]: values.yaml
+                      - text: file for the
+                      - code [ref=e373]: hello-universe
+                      - text: manifest during the creation of the cluster profile.
+                - paragraph [ref=e374]:
+                  - img "Screenshot of the configurable parameters in the values.yaml file." [ref=e375]
+                - list [ref=e376]:
+                  - listitem [ref=e377]:
+                    - paragraph [ref=e378]:
+                      - strong [ref=e379]: manifests
+                      - text: "- This directory contains the manifest files for your Kubernetes application. This tutorial has only one manifest,"
+                      - strong [ref=e380]: hello-universe.yaml
+                      - text: . Note that the
+                      - strong [ref=e381]: values.yaml
+                      - text: file has a corresponding
+                      - code [ref=e382]: manifests/hello-universe
+                      - text: element with the same name as the YAML file.
+                  - listitem [ref=e383]:
+                    - paragraph [ref=e384]:
+                      - strong [ref=e385]: logo.png
+                      - text: "- This file contains a logo that displays when you create a cluster profile."
+                  - listitem [ref=e386]:
+                    - paragraph [ref=e387]:
+                      - strong [ref=e388]: README.md
+                      - text: "- This file may contain the pack description, purpose, authors, and other relevant information. The README in the current example introduces the application used in the pack."
+                - paragraph [ref=e389]: After completing the review of all files in the pack directory, the next step is to set up a registry server, publish the pack to the registry, and configure the registry in Palette.
+                - heading "Set Up the Registry ServerDirect link to Set Up the Registry Server" [level=2] [ref=e390]:
+                  - text: Set Up the Registry Server
+                  - link "Direct link to Set Up the Registry Server" [ref=e391] [cursor=pointer]:
+                    - /url: "#set-up-the-registry-server"
+                    - text: "#"
+                - paragraph [ref=e392]: You can set up a registry server using either the Spectro registry or an OCI-compliant registry. Palette supports all OCI-compliant registries.
+                - generic [ref=e393]:
+                  - generic [ref=e394]:
+                    - img [ref=e396]
+                    - text: info
+                  - paragraph [ref=e399]:
+                    - text: We recommend using an OCI registry to store and maintain your packs. Refer to the
+                    - link "OCI registry" [ref=e400] [cursor=pointer]:
+                      - /url: /registries-and-packs/registries/oci-registry/
+                    - text: section for more information.
+                - paragraph [ref=e401]:
+                  - text: The tutorial environment already includes the Spectro registry service and other necessary tools. For OCI registries, as per the
+                  - link "Prerequisites" [ref=e402] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                  - text: "section, ensure you have an active OCI registry. Two types of OCI authentication are available:"
+                  - strong [ref=e403]: Amazon (ECR)
+                  - text: and
+                  - strong [ref=e404]: Basic
+                  - text: . To learn more about Amazon ECR, consult the
+                  - link "What is ECR" [ref=e405] [cursor=pointer]:
+                    - /url: https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html
+                  - text: user guide.
+                - paragraph [ref=e406]:
+                  - text: For Basic OCI Authentication, this tutorial uses a
+                  - link "Harbor registry" [ref=e407] [cursor=pointer]:
+                    - /url: https://goharbor.io/
+                  - text: as an example. However, you have the flexibility to opt for the OCI registry of your choice. Learn how to set up a Harbor registry server using the
+                  - link "Harbor Installation and Configuration" [ref=e408] [cursor=pointer]:
+                    - /url: https://goharbor.io/docs/2.9.0/install-config/
+                  - text: guide.
+                - paragraph [ref=e409]: The following sections will guide you through starting the registry server, authenticating, pushing your custom add-on pack, and, finally, configuring the registry server in Palette. Select the tab below corresponding to the registry type you want to use.
+                - heading "Start the Registry ServerDirect link to Start the Registry Server" [level=3] [ref=e410]:
+                  - text: Start the Registry Server
+                  - link "Direct link to Start the Registry Server" [ref=e411] [cursor=pointer]:
+                    - /url: "#start-the-registry-server"
+                    - text: "#"
+                - generic [ref=e412]:
+                  - tablist [ref=e413]:
+                    - tab "Basic" [selected] [ref=e414] [cursor=pointer]
+                    - tab "ECR" [ref=e415] [cursor=pointer]
+                    - tab "Spectro Registry" [ref=e416] [cursor=pointer]
+                  - tabpanel [ref=e418]:
+                    - paragraph [ref=e419]:
+                      - text: Once you have an active Harbor registry server, access its domain on your web browser and log in using your Harbor credentials. If you have kept the default credentials, the username and password are
+                      - strong [ref=e420]: admin
+                      - text: and
+                      - strong [ref=e421]: Harbor12345
+                      - text: ", respectively."
+                    - paragraph [ref=e422]:
+                      - img "Screenshot of Harbor login" [ref=e423]
+                    - paragraph [ref=e424]:
+                      - text: In the
+                      - strong [ref=e425]: Projects
+                      - text: section, click on
+                      - strong [ref=e426]: New Project
+                      - text: . A project in Harbor contains all repositories of an application. This tutorial uses
+                      - strong [ref=e427]: spectro-oci-registry
+                      - text: as the project name. Keep the default settings for the remaining configuration options and proceed by clicking
+                      - strong [ref=e428]: OK
+                      - text: .
+                    - paragraph [ref=e429]:
+                      - img "Screenshot of Harbor project" [ref=e430]
+                - heading "Log in to the Registry ServerDirect link to Log in to the Registry Server" [level=3] [ref=e431]:
+                  - text: Log in to the Registry Server
+                  - link "Direct link to Log in to the Registry Server" [ref=e432] [cursor=pointer]:
+                    - /url: "#log-in-to-the-registry-server"
+                    - text: "#"
+                - generic [ref=e433]:
+                  - tablist [ref=e434]:
+                    - tab "Basic" [selected] [ref=e435] [cursor=pointer]
+                    - tab "ECR" [ref=e436] [cursor=pointer]
+                    - tab "Spectro Registry" [ref=e437] [cursor=pointer]
+                  - tabpanel [ref=e439]:
+                    - paragraph [ref=e440]:
+                      - text: After creating the projects, proceed with the Harbor authentication. In the tutorial container bash session, export the
+                      - code [ref=e441]: HARBOR_ADDRESS
+                      - text: variable, which will store your Harbor address. Do not include the "https://" prefix.
+                    - generic [ref=e443]:
+                      - code [ref=e445]:
+                        - generic [ref=e446]: export HARBOR_ADDRESS=<Your_Harbor_Address>
+                      - button "Copy code to clipboard" [ref=e448] [cursor=pointer]:
+                        - generic [ref=e449]:
+                          - img [ref=e450]
+                          - img [ref=e452]
+                    - paragraph [ref=e454]:
+                      - text: Now, issue the command
+                      - code [ref=e455]: oras login
+                      - text: .
+                      - link "ORAS" [ref=e456] [cursor=pointer]:
+                        - /url: https://oras.land/docs/
+                      - text: is a CLI tool to push and pull OCI artifacts to and from OCI registries.
+                    - generic [ref=e457]:
+                      - generic [ref=e458]:
+                        - img [ref=e460]
+                        - text: warning
+                      - paragraph [ref=e463]:
+                        - text: If you are not using the tutorial container, ensure you have ORAS version
+                        - code [ref=e464]: 1.0.0
+                        - text: installed. This version is explicitly required for pushing packs to OCI registries.
+                    - generic [ref=e466]:
+                      - code [ref=e468]:
+                        - generic [ref=e469]: oras login $HARBOR_ADDRESS
+                      - button "Copy code to clipboard" [ref=e471] [cursor=pointer]:
+                        - generic [ref=e472]:
+                          - img [ref=e473]
+                          - img [ref=e475]
+                    - paragraph [ref=e477]: You will be prompted for your Harbor username and password. If the login is successful, you will receive the following confirmation message.
+                    - code [ref=e481]:
+                      - generic [ref=e482]: "Username: admin"
+                      - generic [ref=e483]: "Password:"
+                      - generic [ref=e484]: Login Succeeded
+                - heading "Push the Pack to the Registry ServerDirect link to Push the Pack to the Registry Server" [level=3] [ref=e485]:
+                  - text: Push the Pack to the Registry Server
+                  - link "Direct link to Push the Pack to the Registry Server" [ref=e486] [cursor=pointer]:
+                    - /url: "#push-the-pack-to-the-registry-server"
+                    - text: "#"
+                - generic [ref=e487]:
+                  - tablist [ref=e488]:
+                    - tab "Basic" [selected] [ref=e489] [cursor=pointer]
+                    - tab "ECR" [ref=e490] [cursor=pointer]
+                    - tab "Spectro Registry" [ref=e491] [cursor=pointer]
+                  - tabpanel [ref=e493]:
+                    - paragraph [ref=e494]: Once you are authenticated to your Harbor registry, export the following variables, which you will use to create the Harbor repository and push the pack.
+                    - list [ref=e495]:
+                      - listitem [ref=e496]:
+                        - code [ref=e497]: HARBOR_PROJECT
+                        - text: "- the name of your Harbor project. This tutorial uses"
+                        - strong [ref=e498]: spectro-oci-registry
+                        - text: .
+                      - listitem [ref=e499]:
+                        - code [ref=e500]: NAME
+                        - text: "- the pack's name, which must match the name in the"
+                        - strong [ref=e501]: pack.json
+                        - text: file.
+                      - listitem [ref=e502]:
+                        - code [ref=e503]: VERSION
+                        - text: "- the pack's version, which must match the version in the"
+                        - strong [ref=e504]: pack.json
+                        - text: file.
+                    - generic [ref=e505]:
+                      - generic [ref=e506]:
+                        - img [ref=e508]
+                        - text: warning
+                      - paragraph [ref=e511]:
+                        - text: Ensure that the variables
+                        - code [ref=e512]: NAME
+                        - text: and
+                        - code [ref=e513]: VERSION
+                        - text: match the pack name and version in the
+                        - strong [ref=e514]: pack.json
+                        - text: file. This is a requirement for the pack to be correctly pushed to the registry.
+                    - generic [ref=e516]:
+                      - code [ref=e518]:
+                        - generic [ref=e519]: export HARBOR_PROJECT=spectro-oci-registry
+                        - generic [ref=e520]: export NAME=hellouniverse
+                        - generic [ref=e521]: export VERSION=1.0.0
+                      - button "Copy code to clipboard" [ref=e523] [cursor=pointer]:
+                        - generic [ref=e524]:
+                          - img [ref=e525]
+                          - img [ref=e527]
+                    - paragraph [ref=e529]:
+                      - text: Next, navigate to the
+                      - strong [ref=e530]: packs
+                      - text: directory, which contains the pack folder,
+                      - strong [ref=e531]: hello-universe-pack
+                      - text: .
+                    - generic [ref=e533]:
+                      - code [ref=e535]:
+                        - generic [ref=e536]: cd /packs
+                      - button "Copy code to clipboard" [ref=e538] [cursor=pointer]:
+                        - generic [ref=e539]:
+                          - img [ref=e540]
+                          - img [ref=e542]
+                    - paragraph [ref=e544]: Before pushing the pack to the registry, compress the contents of the pack folder into an archive file. Issue the command below to create the archive file.
+                    - generic [ref=e546]:
+                      - code [ref=e548]:
+                        - generic [ref=e549]: tar -czvf $NAME-$VERSION.tar.gz hello-universe-pack
+                      - button "Copy code to clipboard" [ref=e551] [cursor=pointer]:
+                        - generic [ref=e552]:
+                          - img [ref=e553]
+                          - img [ref=e555]
+                    - paragraph [ref=e557]: Harbor creates a repository when the user pushes an artifact to a project. Create a base path repository to store your pack repositories.
+                    - generic [ref=e559]:
+                      - code [ref=e561]:
+                        - generic [ref=e562]: oras push $HARBOR_ADDRESS/$HARBOR_PROJECT/spectro-packs/archive
+                      - button "Copy code to clipboard" [ref=e564] [cursor=pointer]:
+                        - generic [ref=e565]:
+                          - img [ref=e566]
+                          - img [ref=e568]
+                    - paragraph [ref=e570]: Now, proceed to create the pack repository and push the Hello Universe pack to the Harbor registry.
+                    - generic [ref=e572]:
+                      - code [ref=e574]:
+                        - generic [ref=e575]: oras push $HARBOR_ADDRESS/$HARBOR_PROJECT/spectro-packs/archive/$NAME:$VERSION $NAME-$VERSION.tar.gz
+                      - generic [ref=e576]:
+                        - button "Toggle word wrap" [ref=e577] [cursor=pointer]:
+                          - img [ref=e578]
+                        - button "Copy code to clipboard" [ref=e580] [cursor=pointer]:
+                          - generic [ref=e581]:
+                            - img [ref=e582]
+                            - img [ref=e584]
+                    - paragraph [ref=e586]:
+                      - text: To confirm the presence of the pack in the repository, open your web browser, access your Harbor address, click on
+                      - strong [ref=e587]: Projects
+                      - text: ", select the"
+                      - strong [ref=e588]: spectro-oci-registry
+                      - text: project, and then click on the
+                      - strong [ref=e589]: spectro-oci-registry/spectro-packs/archive/hellouniverse
+                      - text: repository. You should verify the pushed artifact, as shown in the image below.
+                    - paragraph [ref=e590]:
+                      - img "Screenshot of the Hello Universe Harbor Repository" [ref=e591]
+                - heading "Configure the Registry Server in PaletteDirect link to Configure the Registry Server in Palette" [level=3] [ref=e592]:
+                  - text: Configure the Registry Server in Palette
+                  - link "Direct link to Configure the Registry Server in Palette" [ref=e593] [cursor=pointer]:
+                    - /url: "#configure-the-registry-server-in-palette"
+                    - text: "#"
+                - generic [ref=e594]:
+                  - tablist [ref=e595]:
+                    - tab "Basic" [selected] [ref=e596] [cursor=pointer]
+                    - tab "ECR" [ref=e597] [cursor=pointer]
+                    - tab "Spectro Registry" [ref=e598] [cursor=pointer]
+                  - tabpanel [ref=e600]:
+                    - paragraph [ref=e601]: After pushing the pack to the Harbor registry, follow the next steps to log in to Palette and add the Harbor registry to it.
+                    - paragraph [ref=e602]:
+                      - text: Log in to
+                      - link "Palette" [ref=e603] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: and switch to the
+                      - strong [ref=e604]: Tenant Admin
+                      - text: view.
+                    - paragraph [ref=e605]:
+                      - img "Screenshot of Palette tenant settings." [ref=e606]
+                    - paragraph [ref=e607]:
+                      - text: Navigate to the
+                      - strong [ref=e608]: Tenant Settings
+                      - text: ">"
+                      - strong [ref=e609]: Registries
+                      - text: ">"
+                      - strong [ref=e610]: OCI Registries
+                      - text: section and click on
+                      - strong [ref=e611]: Add New OCI Registry
+                      - text: . Palette will open a pop-up window prompting you for the required fields to configure an OCI registry.
+                    - paragraph [ref=e612]:
+                      - img "A screenshot highlighting the fields to configure an OCI registry." [ref=e613]
+                    - paragraph [ref=e614]:
+                      - text: Provide the registry name. For consistency, we suggest using the registry name
+                      - strong [ref=e615]: harbor-registry
+                      - text: . Choose
+                      - strong [ref=e616]: Pack
+                      - text: as the provider and select
+                      - strong [ref=e617]: Basic
+                      - text: as the OCI authentication type. Complete the
+                      - strong [ref=e618]: Endpoint
+                      - text: field with your Harbor registry address. Ensure to include "https://" as the prefix.
+                    - paragraph [ref=e619]:
+                      - text: Next, set the base content path as
+                      - strong [ref=e620]: spectro-oci-registry
+                      - text: ", which corresponds to your Harbor project name. Then, enter your Harbor credentials in the"
+                      - strong [ref=e621]: Username
+                      - text: and
+                      - strong [ref=e622]: Password
+                      - text: fields.
+                    - paragraph [ref=e623]:
+                      - text: Last, click on
+                      - strong [ref=e624]: Validate
+                      - text: to ensure the provided URL and credentials are correct. After validation, click on
+                      - strong [ref=e625]: Confirm
+                      - text: to complete the Harbor registry configuration.
+                    - paragraph [ref=e626]:
+                      - img "Screenshot of OCI registry fields in Palette tenant settings." [ref=e627]
+                    - paragraph [ref=e628]:
+                      - text: Palette automatically syncs the registry. However, you can sync it manually by clicking the
+                      - strong [ref=e629]: three-dot Menu
+                      - text: next to the registry name and selecting
+                      - strong [ref=e630]: Sync
+                      - text: .
+                    - paragraph [ref=e631]:
+                      - img "Screenshot of OCI registry sync in Palette" [ref=e632]
+                - heading "Create a Cluster Profile and Deploy a ClusterDirect link to Create a Cluster Profile and Deploy a Cluster" [level=2] [ref=e633]:
+                  - text: Create a Cluster Profile and Deploy a Cluster
+                  - link "Direct link to Create a Cluster Profile and Deploy a Cluster" [ref=e634] [cursor=pointer]:
+                    - /url: "#create-a-cluster-profile-and-deploy-a-cluster"
+                    - text: "#"
+                - paragraph [ref=e635]: "Once you have configured the registry, create a cluster profile and apply the profile to a cluster in Palette. This tutorial provides two workflows from which you can choose: Palette User Interface (UI) or Terraform."
+                - generic [ref=e636]:
+                  - tablist [ref=e637]:
+                    - tab "UI Workflow" [selected] [ref=e638] [cursor=pointer]
+                    - tab "Terraform Workflow" [ref=e639] [cursor=pointer]
+                  - generic [ref=e640]:
+                    - tabpanel [ref=e641]:
+                      - heading "Create a Cluster ProfileDirect link to Create a Cluster Profile" [level=3] [ref=e642]:
+                        - text: Create a Cluster Profile
+                        - link "Direct link to Create a Cluster Profile" [ref=e643] [cursor=pointer]:
+                          - /url: "#create-a-cluster-profile"
+                          - text: "#"
+                      - paragraph [ref=e644]:
+                        - text: Switch to the
+                        - strong [ref=e645]: Default
+                        - text: project scope for creating a cluster profile.
+                      - paragraph [ref=e646]:
+                        - img "Screenshot of the Palette Default scope." [ref=e647]
+                      - paragraph [ref=e648]:
+                        - text: Next, select the
+                        - strong [ref=e649]: Profiles
+                        - text: section in the left
+                        - strong [ref=e650]: Menu
+                        - text: to create a cluster profile that combines the core infrastructure and add-on layers. Click on the
+                        - strong [ref=e651]: Add Cluster Profile
+                        - text: button.
+                      - heading "Basic InformationDirect link to Basic Information" [level=4] [ref=e652]:
+                        - text: Basic Information
+                        - link "Direct link to Basic Information" [ref=e653] [cursor=pointer]:
+                          - /url: "#basic-information"
+                          - text: "#"
+                      - paragraph [ref=e654]: Complete the wizard using the values provided below.
+                      - table [ref=e655]:
+                        - rowgroup [ref=e656]:
+                          - row "Field Value" [ref=e657]:
+                            - cell "Field" [ref=e658]:
+                              - strong [ref=e659]: Field
+                            - cell "Value" [ref=e660]:
+                              - strong [ref=e661]: Value
+                        - rowgroup [ref=e662]:
+                          - row "Name pack-tutorial-profile" [ref=e663]:
+                            - cell "Name" [ref=e664]
+                            - cell "pack-tutorial-profile" [ref=e665]
+                          - row "Version 1.0.0" [ref=e666]:
+                            - cell "Version" [ref=e667]
+                            - cell "1.0.0" [ref=e668]:
+                              - code [ref=e669]: 1.0.0
+                          - row "Description Cluster profile as part of the Deploy a Custom Pack tutorial." [ref=e670]:
+                            - cell "Description" [ref=e671]
+                            - cell "Cluster profile as part of the Deploy a Custom Pack tutorial." [ref=e672]
+                          - row "Type Full" [ref=e673]:
+                            - cell "Type" [ref=e674]
+                            - cell "Full" [ref=e675]
+                          - row "Tags spectro-cloud-education, app:hello-universe, terraform_managed:false" [ref=e676]:
+                            - cell "Tags" [ref=e677]
+                            - cell "spectro-cloud-education, app:hello-universe, terraform_managed:false" [ref=e678]:
+                              - code [ref=e679]: spectro-cloud-education, app:hello-universe, terraform_managed:false
+                      - paragraph [ref=e680]:
+                        - text: Click on
+                        - strong [ref=e681]: Next
+                        - text: to continue.
+                      - heading "Cloud TypeDirect link to Cloud Type" [level=4] [ref=e682]:
+                        - text: Cloud Type
+                        - link "Direct link to Cloud Type" [ref=e683] [cursor=pointer]:
+                          - /url: "#cloud-type"
+                          - text: "#"
+                      - paragraph [ref=e684]:
+                        - text: In the
+                        - strong [ref=e685]: Cloud Type
+                        - text: section, select AWS as the infrastructure provider, and click on
+                        - strong [ref=e686]: Next
+                        - text: at the bottom to proceed to the next section.
+                      - generic [ref=e687]:
+                        - generic [ref=e688]:
+                          - img [ref=e690]
+                          - text: info
+                        - paragraph [ref=e693]:
+                          - text: If you choose a different cloud provider, note that the options for core infrastructure layers, as outlined in the
+                          - strong [ref=e694]: Profile Layers
+                          - text: section below, will differ from those presented in this tutorial.
+                      - heading "Profile LayersDirect link to Profile Layers" [level=4] [ref=e695]:
+                        - text: Profile Layers
+                        - link "Direct link to Profile Layers" [ref=e696] [cursor=pointer]:
+                          - /url: "#profile-layers"
+                          - text: "#"
+                      - paragraph [ref=e697]:
+                        - text: In the
+                        - strong [ref=e698]: Profile Layers
+                        - text: section, add the following core infrastructure layers.
+                      - table [ref=e699]:
+                        - rowgroup [ref=e700]:
+                          - row "Pack Type Registry Pack Name Pack Version" [ref=e701]:
+                            - cell "Pack Type" [ref=e702]:
+                              - strong [ref=e703]: Pack Type
+                            - cell "Registry" [ref=e704]:
+                              - strong [ref=e705]: Registry
+                            - cell "Pack Name" [ref=e706]:
+                              - strong [ref=e707]: Pack Name
+                            - cell "Pack Version" [ref=e708]:
+                              - strong [ref=e709]: Pack Version
+                        - rowgroup [ref=e710]:
+                          - row "OS Public Repo Ubuntu 22.04" [ref=e711]:
+                            - cell "OS" [ref=e712]
+                            - cell "Public Repo" [ref=e713]
+                            - cell "Ubuntu" [ref=e714]
+                            - cell "22.04" [ref=e715]:
+                              - code [ref=e716]: "22.04"
+                          - row "Kubernetes Public Repo Palette eXtended Kubernetes 1.32.3" [ref=e717]:
+                            - cell "Kubernetes" [ref=e718]
+                            - cell "Public Repo" [ref=e719]
+                            - cell "Palette eXtended Kubernetes" [ref=e720]
+                            - cell "1.32.3" [ref=e721]:
+                              - code [ref=e722]: 1.32.3
+                          - row "Network Public Repo Calico 3.29.3" [ref=e723]:
+                            - cell "Network" [ref=e724]
+                            - cell "Public Repo" [ref=e725]
+                            - cell "Calico" [ref=e726]
+                            - cell "3.29.3" [ref=e727]:
+                              - code [ref=e728]: 3.29.3
+                          - row "Storage Public Repo Amazon EBS CSI 1.41.0" [ref=e729]:
+                            - cell "Storage" [ref=e730]
+                            - cell "Public Repo" [ref=e731]
+                            - cell "Amazon EBS CSI" [ref=e732]
+                            - cell "1.41.0" [ref=e733]:
+                              - code [ref=e734]: 1.41.0
+                      - paragraph [ref=e735]:
+                        - text: As you add each layer, click on the
+                        - strong [ref=e736]: Next layer
+                        - text: button. After adding the
+                        - strong [ref=e737]: Storage
+                        - text: layer, click on the
+                        - strong [ref=e738]: Confirm
+                        - text: button to complete the core infrastructure stack. Palette displays the newly created infrastructure profile as a layered diagram. You can select any layer to make further edits or change the version if desired.
+                      - paragraph [ref=e739]:
+                        - text: Next, proceed to include the add-on layers. Click on the
+                        - strong [ref=e740]: Add New Pack
+                        - text: button.
+                      - paragraph [ref=e741]:
+                        - text: Add the Spectro Proxy pack to enable a reverse proxy to connect to the cluster's API. Adding this pack is
+                        - emphasis [ref=e742]: optional
+                        - text: ", but it will help connect your local machine to the cluster's API for debugging. Refer to the"
+                        - link "Spectro Proxy" [ref=e743] [cursor=pointer]:
+                          - /url: /integrations/packs/?pack=spectro-proxy
+                        - text: guide for more details.
+                      - table [ref=e744]:
+                        - rowgroup [ref=e745]:
+                          - row "Pack Type Registry Pack Name Pack Version" [ref=e746]:
+                            - cell "Pack Type" [ref=e747]:
+                              - strong [ref=e748]: Pack Type
+                            - cell "Registry" [ref=e749]:
+                              - strong [ref=e750]: Registry
+                            - cell "Pack Name" [ref=e751]:
+                              - strong [ref=e752]: Pack Name
+                            - cell "Pack Version" [ref=e753]:
+                              - strong [ref=e754]: Pack Version
+                        - rowgroup [ref=e755]:
+                          - row "Authentication Public Repo Spectro Proxy 1.4.x" [ref=e756]:
+                            - cell "Authentication" [ref=e757]
+                            - cell "Public Repo" [ref=e758]
+                            - cell "Spectro Proxy" [ref=e759]
+                            - cell "1.4.x" [ref=e760]:
+                              - code [ref=e761]: 1.4.x
+                      - paragraph [ref=e762]:
+                        - text: Click on the
+                        - strong [ref=e763]: Confirm & Create
+                        - text: button to finish adding the Spectro Proxy pack.
+                      - paragraph [ref=e764]:
+                        - text: Now, click on the Kubernetes layer and add the following certificate Subject Alternative Name (SAN) value under the
+                        - code [ref=e765]: apiServer
+                        - text: parameter section to configure the Spectro Proxy pack.
+                      - generic [ref=e767]:
+                        - code [ref=e769]:
+                          - generic [ref=e770]: "certSANs:"
+                          - generic [ref=e771]: "- \"cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}\""
+                        - generic [ref=e772]:
+                          - button "Toggle word wrap" [ref=e773] [cursor=pointer]:
+                            - img [ref=e774]
+                          - button "Copy code to clipboard" [ref=e776] [cursor=pointer]:
+                            - generic [ref=e777]:
+                              - img [ref=e778]
+                              - img [ref=e780]
+                      - paragraph [ref=e782]:
+                        - img "Screenshot of the certificate Subject Alternative Name." [ref=e783]
+                      - paragraph [ref=e784]:
+                        - text: Finally, add the Hello Universe pack. Click on
+                        - strong [ref=e785]: Add New Pack
+                        - text: and select the registry you created earlier in this tutorial. The table below specifies the registry name corresponding to the registry type. For example, if you created an ECR registry, select
+                        - strong [ref=e786]: ecr-registry
+                        - text: .
+                      - table [ref=e787]:
+                        - rowgroup [ref=e788]:
+                          - row "Pack Type Registry Type Registry Name Pack Name Pack Version" [ref=e789]:
+                            - cell "Pack Type" [ref=e790]:
+                              - strong [ref=e791]: Pack Type
+                            - cell "Registry Type" [ref=e792]:
+                              - strong [ref=e793]: Registry Type
+                            - cell "Registry Name" [ref=e794]:
+                              - strong [ref=e795]: Registry Name
+                            - cell "Pack Name" [ref=e796]:
+                              - strong [ref=e797]: Pack Name
+                            - cell "Pack Version" [ref=e798]:
+                              - strong [ref=e799]: Pack Version
+                        - rowgroup [ref=e800]:
+                          - row "App Services Spectro Registry spectro-pack-registry Hello Universe 1.2.0" [ref=e801]:
+                            - cell "App Services" [ref=e802]
+                            - cell "Spectro Registry" [ref=e803]
+                            - cell "spectro-pack-registry" [ref=e804]:
+                              - code [ref=e805]: spectro-pack-registry
+                            - cell "Hello Universe" [ref=e806]
+                            - cell "1.2.0" [ref=e807]:
+                              - code [ref=e808]: 1.2.0
+                          - row "App Services ECR ecr-registry Hello Universe 1.2.0" [ref=e809]:
+                            - cell "App Services" [ref=e810]
+                            - cell "ECR" [ref=e811]
+                            - cell "ecr-registry" [ref=e812]:
+                              - code [ref=e813]: ecr-registry
+                            - cell "Hello Universe" [ref=e814]
+                            - cell "1.2.0" [ref=e815]:
+                              - code [ref=e816]: 1.2.0
+                          - row "App Services Basic harbor-registry Hello Universe 1.2.0" [ref=e817]:
+                            - cell "App Services" [ref=e818]
+                            - cell "Basic" [ref=e819]
+                            - cell "harbor-registry" [ref=e820]:
+                              - code [ref=e821]: harbor-registry
+                            - cell "Hello Universe" [ref=e822]
+                            - cell "1.2.0" [ref=e823]:
+                              - code [ref=e824]: 1.2.0
+                      - paragraph [ref=e825]:
+                        - text: Click on the
+                        - strong [ref=e826]: Confirm & Create
+                        - text: button to finish adding the Hello Universe pack.
+                      - paragraph [ref=e827]:
+                        - text: If there are no errors or compatibility issues, Palette displays the cluster profile. Verify the layers you added, and click
+                        - strong [ref=e828]: Next
+                        - text: .
+                      - paragraph [ref=e829]:
+                        - img "Screenshot of the Profile Layers success." [ref=e830]
+                      - heading "ReviewDirect link to Review" [level=4] [ref=e831]:
+                        - text: Review
+                        - link "Direct link to Review" [ref=e832] [cursor=pointer]:
+                          - /url: "#review"
+                          - text: "#"
+                      - paragraph [ref=e833]:
+                        - text: Review the cluster layers and click on
+                        - strong [ref=e834]: Finish Configuration
+                        - text: to complete the creation of the cluster profile.
+                      - heading "Create a ClusterDirect link to Create a Cluster" [level=3] [ref=e835]:
+                        - text: Create a Cluster
+                        - link "Direct link to Create a Cluster" [ref=e836] [cursor=pointer]:
+                          - /url: "#create-a-cluster"
+                          - text: "#"
+                      - paragraph [ref=e837]:
+                        - text: Navigate to the
+                        - strong [ref=e838]: Profiles
+                        - text: page and select the recently created cluster profile. Click on the
+                        - strong [ref=e839]: Deploy
+                        - text: button to start the deployment of a new cluster.
+                      - heading "Basic InformationDirect link to Basic Information" [level=4] [ref=e840]:
+                        - text: Basic Information
+                        - link "Direct link to Basic Information" [ref=e841] [cursor=pointer]:
+                          - /url: "#basic-information-1"
+                          - text: "#"
+                      - paragraph [ref=e842]:
+                        - text: For the first section,
+                        - strong [ref=e843]: Basic information
+                        - text: ", use the following values."
+                      - table [ref=e844]:
+                        - rowgroup [ref=e845]:
+                          - row "Field Value" [ref=e846]:
+                            - cell "Field" [ref=e847]:
+                              - strong [ref=e848]: Field
+                            - cell "Value" [ref=e849]:
+                              - strong [ref=e850]: Value
+                        - rowgroup [ref=e851]:
+                          - row "Cluster name pack-tutorial-cluster" [ref=e852]:
+                            - cell "Cluster name" [ref=e853]
+                            - cell "pack-tutorial-cluster" [ref=e854]
+                          - row "Description Cluster as part of the Deploy a Custom Pack tutorial." [ref=e855]:
+                            - cell "Description" [ref=e856]
+                            - cell "Cluster as part of the Deploy a Custom Pack tutorial." [ref=e857]
+                          - row "Tags spectro-cloud-education, app:hello-universe, terraform_managed:false" [ref=e858]:
+                            - cell "Tags" [ref=e859]
+                            - cell "spectro-cloud-education, app:hello-universe, terraform_managed:false" [ref=e860]:
+                              - code [ref=e861]: spectro-cloud-education, app:hello-universe, terraform_managed:false
+                          - row "Cloud Account Select the cloud you have registered in Palette for AWS" [ref=e862]:
+                            - cell "Cloud Account" [ref=e863]
+                            - cell "Select the cloud you have registered in Palette for AWS" [ref=e864]
+                      - paragraph [ref=e865]:
+                        - text: Click
+                        - strong [ref=e866]: Next
+                        - text: to proceed.
+                      - heading "ParametersDirect link to Parameters" [level=4] [ref=e867]:
+                        - text: Parameters
+                        - link "Direct link to Parameters" [ref=e868] [cursor=pointer]:
+                          - /url: "#parameters"
+                          - text: "#"
+                      - paragraph [ref=e869]:
+                        - text: The
+                        - strong [ref=e870]: Parameters
+                        - text: section allows you to change the profile configurations. For example, by clicking on the
+                        - strong [ref=e871]: Hello Universe 1.0.x
+                        - text: layer, you can configure the
+                        - code [ref=e872]: registry
+                        - text: ","
+                        - code [ref=e873]: repository
+                        - text: ", and"
+                        - code [ref=e874]: tag
+                        - text: parameters defined in the
+                        - strong [ref=e875]: values.yaml
+                        - text: file.
+                      - paragraph [ref=e876]:
+                        - img "Screenshot of the Cluster layers." [ref=e877]
+                      - paragraph [ref=e878]:
+                        - text: Keep the default values and click
+                        - strong [ref=e879]: Next
+                        - text: .
+                      - heading "Cluster configDirect link to Cluster config" [level=4] [ref=e880]:
+                        - text: Cluster config
+                        - link "Direct link to Cluster config" [ref=e881] [cursor=pointer]:
+                          - /url: "#cluster-config"
+                          - text: "#"
+                      - paragraph [ref=e882]:
+                        - text: In the
+                        - strong [ref=e883]: Cluster config
+                        - text: section, make sure to uncheck the
+                        - strong [ref=e884]: Static Placement
+                        - text: field. If it is checked, the
+                        - strong [ref=e885]: Static Placement
+                        - text: will deploy the cluster within an existing Virtual Private Cloud (VPC), and you will need to provide the
+                        - link "Amazon Resource Names" [ref=e886] [cursor=pointer]:
+                          - /url: https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html
+                        - text: (ARNs) for the existing subnets, roles, and other resources. This tutorial will use dynamic placement, allowing Palette to create a new VPC along with all necessary resources for the cluster.
+                      - paragraph [ref=e887]:
+                        - text: In the
+                        - strong [ref=e888]: Region
+                        - text: field, choose the region of your preference. This tutorial will deploy the cluster in the
+                        - strong [ref=e889]: us-east-1
+                        - text: region. For the
+                        - strong [ref=e890]: SSH Key Pair Name
+                        - text: field, select the SSH key pair name available in the chosen region. Ensure that you have already created an SSH key in the AWS region where you plan to deploy the cluster.
+                      - paragraph [ref=e891]:
+                        - text: Click
+                        - strong [ref=e892]: Next
+                        - text: to continue.
+                      - heading "Nodes configDirect link to Nodes config" [level=4] [ref=e893]:
+                        - text: Nodes config
+                        - link "Direct link to Nodes config" [ref=e894] [cursor=pointer]:
+                          - /url: "#nodes-config"
+                          - text: "#"
+                      - paragraph [ref=e895]:
+                        - text: In the
+                        - strong [ref=e896]: Nodes config
+                        - text: "section, provide the details for the control plane and worker pools. For this tutorial, you can use the following minimal configuration:"
+                      - table [ref=e897]:
+                        - rowgroup [ref=e898]:
+                          - row "Field Value for the control-plane-pool Value for the worker-pool" [ref=e899]:
+                            - cell "Field" [ref=e900]:
+                              - strong [ref=e901]: Field
+                            - cell "Value for the control-plane-pool" [ref=e902]:
+                              - strong [ref=e903]: Value for the control-plane-pool
+                            - cell "Value for the worker-pool" [ref=e904]:
+                              - strong [ref=e905]: Value for the worker-pool
+                        - rowgroup [ref=e906]:
+                          - row "Node pool name control-plane-pool worker-pool" [ref=e907]:
+                            - cell "Node pool name" [ref=e908]
+                            - cell "control-plane-pool" [ref=e909]
+                            - cell "worker-pool" [ref=e910]
+                          - row "Number of nodes in the pool 1 1" [ref=e911]:
+                            - cell "Number of nodes in the pool" [ref=e912]
+                            - cell "1" [ref=e913]:
+                              - code [ref=e914]: "1"
+                            - cell "1" [ref=e915]:
+                              - code [ref=e916]: "1"
+                          - row "Allow worker capability Checked Not applicable" [ref=e917]:
+                            - cell "Allow worker capability" [ref=e918]
+                            - cell "Checked" [ref=e919]
+                            - cell "Not applicable" [ref=e920]
+                          - row "Enable Autoscaler Not applicable No" [ref=e921]:
+                            - cell "Enable Autoscaler" [ref=e922]
+                            - cell "Not applicable" [ref=e923]
+                            - cell "No" [ref=e924]
+                          - row "Rolling update Not applicable Expand First. Launch a new node first, then shut down the old one." [ref=e925]:
+                            - cell "Rolling update" [ref=e926]
+                            - cell "Not applicable" [ref=e927]
+                            - cell "Expand First. Launch a new node first, then shut down the old one." [ref=e928]
+                      - paragraph [ref=e929]:
+                        - text: Keep the
+                        - strong [ref=e930]: Cloud Configuration
+                        - text: the same for both control plane and worker pools.
+                      - table [ref=e931]:
+                        - rowgroup [ref=e932]:
+                          - row "Field Value" [ref=e933]:
+                            - cell "Field" [ref=e934]:
+                              - strong [ref=e935]: Field
+                            - cell "Value" [ref=e936]:
+                              - strong [ref=e937]: Value
+                        - rowgroup [ref=e938]:
+                          - row "Instance Type General purpose m4.xlarge A minimum allocation of four CPU cores is required for the control plane node." [ref=e939]:
+                            - cell "Instance Type" [ref=e940]
+                            - cell "General purpose m4.xlarge A minimum allocation of four CPU cores is required for the control plane node." [ref=e941]:
+                              - text: General purpose
+                              - code [ref=e942]: m4.xlarge
+                              - text: A minimum allocation of four CPU cores is required for the control plane node.
+                          - row "Availability zones Choose any one availability zone. This tutorial uses the us-east-1a availability zone." [ref=e943]:
+                            - cell "Availability zones" [ref=e944]
+                            - cell "Choose any one availability zone. This tutorial uses the us-east-1a availability zone." [ref=e945]:
+                              - text: Choose any
+                              - emphasis [ref=e946]: one
+                              - text: availability zone. This tutorial uses the
+                              - code [ref=e947]: us-east-1a
+                              - text: availability zone.
+                          - row "Disk size 60 GiB" [ref=e948]:
+                            - cell "Disk size" [ref=e949]
+                            - cell "60 GiB" [ref=e950]
+                      - paragraph [ref=e951]:
+                        - text: Click
+                        - strong [ref=e952]: Next
+                        - text: to continue.
+                      - heading "SettingsDirect link to Settings" [level=4] [ref=e953]:
+                        - text: Settings
+                        - link "Direct link to Settings" [ref=e954] [cursor=pointer]:
+                          - /url: "#settings"
+                          - text: "#"
+                      - paragraph [ref=e955]:
+                        - text: The
+                        - strong [ref=e956]: Settings
+                        - text: section displays options for OS patching, scheduled scans, scheduled backups, and cluster role binding. Use the default values, and click on the
+                        - strong [ref=e957]: Validate
+                        - text: button.
+                      - heading "ReviewDirect link to Review" [level=4] [ref=e958]:
+                        - text: Review
+                        - link "Direct link to Review" [ref=e959] [cursor=pointer]:
+                          - /url: "#review-1"
+                          - text: "#"
+                      - paragraph [ref=e960]:
+                        - text: Review all configurations in this section. The
+                        - strong [ref=e961]: Review
+                        - text: page displays the cluster name, tags, cloud account name, node pools, layers, and an estimated hourly cost. If everything is correct, click on the
+                        - strong [ref=e962]: Finish Configuration
+                        - text: button to complete the cluster deployment, which may take up to
+                        - emphasis [ref=e963]: 20 minutes
+                        - text: .
+                      - paragraph [ref=e964]:
+                        - text: While the deployment is in progress, Palette displays the cluster status as
+                        - strong [ref=e965]: Provisioning
+                        - text: . While you wait for the cluster to finish deploying, you can explore the various tabs on the cluster page, such as
+                        - strong [ref=e966]: Overview
+                        - text: ","
+                        - strong [ref=e967]: Workloads
+                        - text: ", and"
+                        - strong [ref=e968]: Events
+                        - text: .
+                    - text: "# # # # #"
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e969]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e970] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e971]:
+                  - text: In Palette, navigate to the left
+                  - strong [ref=e972]: Main Menu
+                  - text: and select
+                  - strong [ref=e973]: Clusters
+                  - text: . Next, select your cluster to display the cluster's
+                  - strong [ref=e974]: Overview
+                  - text: page and monitor the provisioning progress.
+                - paragraph [ref=e975]:
+                  - img "Screenshot of the cluster health." [ref=e976]
+                - paragraph [ref=e977]:
+                  - text: Once the cluster status displays
+                  - strong [ref=e978]: Running
+                  - text: and
+                  - strong [ref=e979]: Healthy
+                  - text: ", you can access the application through the exposed service URL along with the displayed port number. For the Hello Universe application, port 8080 is exposed. Click on the"
+                  - strong [ref=e980]: Services
+                  - text: URL to access the application.
+                - generic [ref=e981]:
+                  - generic [ref=e982]:
+                    - img [ref=e984]
+                    - text: warning
+                  - paragraph [ref=e987]: We recommend waiting for one to three minutes before clicking on the service URL. This allows DNS to properly resolve the public load balancer URL, preventing the browser from caching an unresolved DNS request.
+                - paragraph [ref=e988]:
+                  - img "Screenshot of the successful accessing the application using the load balancer URL." [ref=e989]
+                - paragraph [ref=e990]:
+                  - text: You can also look at real-time metrics, such as CPU and memory consumption, in the cluster's
+                  - strong [ref=e991]: Overview
+                  - text: tab in Palette.
+                - paragraph [ref=e992]:
+                  - img "Screenshot of the cluster metrics." [ref=e993]
+                - paragraph [ref=e994]:
+                  - text: By using your custom pack, you have successfully deployed the
+                  - strong [ref=e995]: Hello Universe
+                  - text: application to the cluster.
+                - heading "CleanupDirect link to Cleanup" [level=2] [ref=e996]:
+                  - text: Cleanup
+                  - link "Direct link to Cleanup" [ref=e997] [cursor=pointer]:
+                    - /url: "#cleanup"
+                    - text: "#"
+                - paragraph [ref=e998]: The following steps will guide you in cleaning up your environment. Follow the Palette-specific steps if you used Palette to deploy the cluster. Alternatively, use Terraform commands to delete the cluster if you used Terraform for deployment.
+                - generic [ref=e999]:
+                  - tablist [ref=e1000]:
+                    - tab "Palette UI" [selected] [ref=e1001] [cursor=pointer]
+                    - tab "Terraform" [ref=e1002] [cursor=pointer]
+                  - generic [ref=e1003]:
+                    - tabpanel [ref=e1004]:
+                      - heading "Delete the Cluster and Cluster ProfileDirect link to Delete the Cluster and Cluster Profile" [level=4] [ref=e1005]:
+                        - text: Delete the Cluster and Cluster Profile
+                        - link "Direct link to Delete the Cluster and Cluster Profile" [ref=e1006] [cursor=pointer]:
+                          - /url: "#delete-the-cluster-and-cluster-profile"
+                          - text: "#"
+                      - paragraph [ref=e1007]:
+                        - text: Navigate to the
+                        - strong [ref=e1008]: Cluster
+                        - text: section in Palette's left
+                        - strong [ref=e1009]: Main Menu
+                        - text: and access the details page for the
+                        - strong [ref=e1010]: pack-tutorial-cluster
+                        - text: . To delete the cluster, click on the
+                        - strong [ref=e1011]: Settings
+                        - text: button to expand the
+                        - strong [ref=e1012]: drop-down Menu
+                        - text: ", and select the"
+                        - strong [ref=e1013]: Delete Cluster
+                        - text: option. Palette will prompt you to enter the cluster name and confirm the deletion.
+                      - paragraph [ref=e1014]:
+                        - img "Screenshot of deleting the cluster in Palette." [ref=e1015]
+                      - paragraph [ref=e1016]:
+                        - text: The cluster status will display
+                        - strong [ref=e1017]: Deleting
+                        - text: ", and the deletion may take up to 10 minutes."
+                      - generic [ref=e1018]:
+                        - generic [ref=e1019]:
+                          - img [ref=e1021]
+                          - text: info
+                        - paragraph [ref=e1024]:
+                          - text: If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for force deletion. Navigate to the cluster's details page and click on
+                          - strong [ref=e1025]: Settings
+                          - text: . Select
+                          - strong [ref=e1026]: Force Delete Cluster
+                          - text: . Palette automatically removes clusters that are stuck in the deletion phase for over 24 hours.
+                      - paragraph [ref=e1027]:
+                        - text: After deleting the cluster, proceed to delete the cluster profile. In the left
+                        - strong [ref=e1028]: Main Menu
+                        - text: ", click on"
+                        - strong [ref=e1029]: Profiles
+                        - text: and select the profile you want to delete. Next, click on the
+                        - strong [ref=e1030]: Delete
+                        - text: option in the
+                        - strong [ref=e1031]: three-dot Menu
+                        - text: .
+                      - paragraph [ref=e1032]:
+                        - img "Screenshot of deleting the profile in Palette." [ref=e1033]
+                      - paragraph [ref=e1034]: Wait for the resources to complete cleanup and ensure they are successfully deleted.
+                    - text: "#"
+                - heading "Delete the Registry ServerDirect link to Delete the Registry Server" [level=4] [ref=e1035]:
+                  - text: Delete the Registry Server
+                  - link "Direct link to Delete the Registry Server" [ref=e1036] [cursor=pointer]:
+                    - /url: "#delete-the-registry-server"
+                    - text: "#"
+                - paragraph [ref=e1037]:
+                  - text: After deleting the cluster and cluster profile, navigate to the
+                  - strong [ref=e1038]: Tenant Settings
+                  - text: ">"
+                  - strong [ref=e1039]: Registries
+                  - text: ">"
+                  - strong [ref=e1040]: Pack Registries
+                  - text: section in Palette to remove the registry configuration.
+                - paragraph [ref=e1041]:
+                  - img "Screenshot of registry server delete in Palette" [ref=e1042]
+                - paragraph [ref=e1043]: Now, delete the registry server. If you used the Spectro registry, stop the registry server by closing the tutorial container bash session that serves the Ngrok reverse proxy server. If you used the ECR registry, you must first remove the pack from the repository before deleting it.
+                - paragraph [ref=e1044]: Execute the following command to delete the pack from your ECR repository.
+                - generic [ref=e1046]:
+                  - code [ref=e1048]:
+                    - generic [ref=e1049]: aws ecr batch-delete-image --repository-name $REGISTRY_NAME/spectro-packs/archive/$NAME --image-ids imageDigest=$(aws ecr describe-images --repository-name $REGISTRY_NAME/spectro-packs/archive/$NAME --region $AWS_DEFAULT_REGION --query 'imageDetails[0].imageDigest' --output text)
+                  - generic [ref=e1050]:
+                    - button "Toggle word wrap" [ref=e1051] [cursor=pointer]:
+                      - img [ref=e1052]
+                    - button "Copy code to clipboard" [ref=e1054] [cursor=pointer]:
+                      - generic [ref=e1055]:
+                        - img [ref=e1056]
+                        - img [ref=e1058]
+                - paragraph [ref=e1060]:
+                  - text: The snippet below displays the output of the
+                  - code [ref=e1061]: aws ecr batch-delete-image
+                  - text: command, confirming the deletion of the Hello Universe pack.
+                - code [ref=e1065]:
+                  - generic [ref=e1066]: "{"
+                  - generic [ref=e1067]: "\"imageIds\": ["
+                  - generic [ref=e1068]: "{"
+                  - generic [ref=e1069]: "\"imageDigest\": \"sha256:<YourImageSha>\","
+                  - generic [ref=e1070]: "\"imageTag\": \"1.0.0\""
+                  - generic [ref=e1071]: "}"
+                  - generic [ref=e1072]: "],"
+                  - generic [ref=e1073]: "\"failures\": []"
+                  - generic [ref=e1074]: "}"
+                - paragraph [ref=e1075]: Next, proceed to delete the repositories.
+                - generic [ref=e1077]:
+                  - code [ref=e1079]:
+                    - generic [ref=e1080]: aws ecr delete-repository --repository-name $REGISTRY_NAME/spectro-packs/archive
+                    - generic [ref=e1081]: aws ecr delete-repository --repository-name $REGISTRY_NAME/spectro-packs/archive/$NAME
+                  - generic [ref=e1082]:
+                    - button "Toggle word wrap" [ref=e1083] [cursor=pointer]:
+                      - img [ref=e1084]
+                    - button "Copy code to clipboard" [ref=e1086] [cursor=pointer]:
+                      - generic [ref=e1087]:
+                        - img [ref=e1088]
+                        - img [ref=e1090]
+                - paragraph [ref=e1092]: The output should provide information regarding the deleted repositories.
+                - generic [ref=e1094]:
+                  - code [ref=e1096]:
+                    - generic [ref=e1097]: "{"
+                    - generic [ref=e1098]: "\"repository\": {"
+                    - generic [ref=e1099]: "\"repositoryArn\": \"arn:aws:ecr:us-east-1:<YourAccountId>:repository/spectro-oci-registry/spectro-packs/archive\","
+                    - generic [ref=e1100]: "\"registryId\": \"<YourRegistryId>\","
+                    - generic [ref=e1101]: "\"repositoryName\": \"spectro-oci-registry/spectro-packs/archive\","
+                    - generic [ref=e1102]: "\"repositoryUri\": \"<YourAccountId>.dkr.ecr.us-east-1.amazonaws.com/spectro-oci-registry/spectro-packs/archive\","
+                    - generic [ref=e1103]: "\"createdAt\": \"2023-11-28T16:23:20+00:00\","
+                    - generic [ref=e1104]: "\"imageTagMutability\": \"MUTABLE\""
+                    - generic [ref=e1105]: "}"
+                    - generic [ref=e1106]: "\"repository\": {"
+                    - generic [ref=e1107]: "\"repositoryArn\": \"arn:aws:ecr:us-east-1:<YourAccountId>:repository/spectro-oci-registry/spectro-packs/archive/hellouniverse\","
+                    - generic [ref=e1108]: "\"registryId\": \"<YourRegistryId>\","
+                    - generic [ref=e1109]: "\"repositoryName\": \"spectro-oci-registry/spectro-packs/archive/hellouniverse\","
+                    - generic [ref=e1110]: "\"repositoryUri\": \"<YourAccountId>.dkr.ecr.us-east-1.amazonaws.com/spectro-oci-registry/spectro-packs/archive/hellouniverse\","
+                    - generic [ref=e1111]: "\"createdAt\": \"2023-11-28T16:23:29+00:00\","
+                    - generic [ref=e1112]: "\"imageTagMutability\": \"MUTABLE\""
+                    - generic [ref=e1113]: "}"
+                    - generic [ref=e1114]: "}"
+                  - button "Toggle word wrap" [ref=e1116] [cursor=pointer]:
+                    - img [ref=e1117]
+                - paragraph [ref=e1119]: Last, if you used a Basic registry, such as Harbor, make sure to delete your Harbor registry server.
+                - paragraph [ref=e1120]: At this point, you can close all the bash sessions. To remove the container and the image from your local machine, issue the following commands.
+                - generic [ref=e1121]:
+                  - tablist [ref=e1122]:
+                    - tab "Docker" [selected] [ref=e1123] [cursor=pointer]
+                    - tab "Podman" [ref=e1124] [cursor=pointer]
+                  - tabpanel [ref=e1126]:
+                    - generic [ref=e1128]:
+                      - code [ref=e1130]:
+                        - generic [ref=e1131]: docker stop tutorialContainer && \
+                        - generic [ref=e1132]: docker rmi --force ghcr.io/spectrocloud/tutorials:1.3.0
+                      - button "Copy code to clipboard" [ref=e1134] [cursor=pointer]:
+                        - generic [ref=e1135]:
+                          - img [ref=e1136]
+                          - img [ref=e1138]
+                - heading "Wrap-UpDirect link to Wrap-Up" [level=2] [ref=e1140]:
+                  - text: Wrap-Up
+                  - link "Direct link to Wrap-Up" [ref=e1141] [cursor=pointer]:
+                    - /url: "#wrap-up"
+                    - text: "#"
+                - paragraph [ref=e1142]: In this tutorial, you learned how to create a custom pack using manifest files. You packaged up an application in a custom pack that you pushed to a registry server and added to Palette.
+                - paragraph [ref=e1143]: Next, you created a cluster profile that included all the core infrastructure layers, such as the OS, Kubernetes distribution, and more. Additionally, you added your custom pack to the cluster profile, enabling your application to be deployed to a Kubernetes cluster.
+                - paragraph [ref=e1144]: Packs are the building blocks of cluster profiles, allowing you to customize your Kubernetes clusters. Palette enables you to use different packs to create multiple cluster profiles, each for specific purposes. As a result, you can ensure all Kubernetes deployments contain all the required dependencies and applications without developing complicated deployment scripts. All you need to do is maintain the cluster profiles.
+                - paragraph [ref=e1145]: To learn more about packs in Palette, we encourage you to check out the reference resources below.
+                - list [ref=e1146]:
+                  - listitem [ref=e1147]:
+                    - link "Custom OS Pack" [ref=e1148] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=generic-byoi
+                  - listitem [ref=e1149]:
+                    - paragraph [ref=e1150]:
+                      - link "Add-on Packs" [ref=e1151] [cursor=pointer]:
+                        - /url: /registries-and-packs/adding-add-on-packs/
+                  - listitem [ref=e1152]:
+                    - paragraph [ref=e1153]:
+                      - link "Pack Constraints" [ref=e1154] [cursor=pointer]:
+                        - /url: /registries-and-packs/pack-constraints/
+                  - listitem [ref=e1155]:
+                    - paragraph [ref=e1156]:
+                      - link "OCI Registry" [ref=e1157] [cursor=pointer]:
+                        - /url: /registries-and-packs/registries/oci-registry/
+              - generic [ref=e1158]:
+                - generic [ref=e1160]:
+                  - text: "Tags:"
+                  - list [ref=e1161]:
+                    - listitem [ref=e1162]:
+                      - link "packs" [ref=e1163] [cursor=pointer]:
+                        - /url: /tags/packs/
+                    - listitem [ref=e1164]:
+                      - link "tutorial" [ref=e1165] [cursor=pointer]:
+                        - /url: /tags/tutorial/
+                - link "Edit this page" [ref=e1168] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/tutorials/packs-registries/deploy-pack.md
+                  - img [ref=e1169]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e1173]:
+              - link "Previous « Packs and Registries" [ref=e1174] [cursor=pointer]:
+                - /url: /tutorials/packs-registries/
+                - generic [ref=e1175]: Previous
+                - generic [ref=e1176]: « Packs and Registries
+              - link "Next Profiles »" [ref=e1177] [cursor=pointer]:
+                - /url: /tutorials/profiles/
+                - generic [ref=e1178]: Next
+                - generic [ref=e1179]: Profiles »
+          - list [ref=e1182]:
+            - listitem [ref=e1183]:
+              - link "Prerequisites" [ref=e1184] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e1185]:
+              - link "Set Up the Tutorial Environment" [ref=e1186] [cursor=pointer]:
+                - /url: "#set-up-the-tutorial-environment"
+            - listitem [ref=e1187]:
+              - link "Build a Pack" [ref=e1188] [cursor=pointer]:
+                - /url: "#build-a-pack"
+            - listitem [ref=e1189]:
+              - link "Set Up the Registry Server" [ref=e1190] [cursor=pointer]:
+                - /url: "#set-up-the-registry-server"
+            - listitem [ref=e1191]:
+              - link "Create a Cluster Profile and Deploy a Cluster" [ref=e1192] [cursor=pointer]:
+                - /url: "#create-a-cluster-profile-and-deploy-a-cluster"
+            - listitem [ref=e1193]:
+              - link "Validate" [ref=e1194] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e1195]:
+              - link "Cleanup" [ref=e1196] [cursor=pointer]:
+                - /url: "#cleanup"
+            - listitem [ref=e1197]:
+              - link "Wrap-Up" [ref=e1198] [cursor=pointer]:
+                - /url: "#wrap-up"
+  - button "Project Logo Ask AI" [ref=e1199] [cursor=pointer]:
+    - generic [ref=e1202]:
+      - img "Project Logo" [ref=e1203]
+      - paragraph [ref=e1204]: Ask AI
+```

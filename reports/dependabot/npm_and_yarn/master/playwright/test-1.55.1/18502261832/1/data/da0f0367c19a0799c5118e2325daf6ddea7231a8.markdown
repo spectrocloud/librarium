@@ -1,0 +1,850 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Security" [ref=e150] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e152]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Audit Logs" [ref=e157] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e159]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Self-Hosted Palette" [ref=e164] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e166]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e168] [cursor=pointer]
+              - listitem [ref=e169]:
+                - generic [ref=e170]:
+                  - link "Palette VerteX" [ref=e171] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e173]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e175] [cursor=pointer]
+              - listitem [ref=e176]:
+                - generic [ref=e177]:
+                  - link "Tenant Administration" [ref=e178] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e180]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e182] [cursor=pointer]
+              - listitem [ref=e183]:
+                - generic [ref=e184]:
+                  - link "Automation" [ref=e185] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e187]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e189] [cursor=pointer]
+              - listitem [ref=e190]:
+                - generic [ref=e191]:
+                  - link "Troubleshooting" [expanded] [ref=e192] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e194]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e196] [cursor=pointer]
+                - list [ref=e197]:
+                  - listitem [ref=e198]:
+                    - link "Kubernetes Debugging" [ref=e199] [cursor=pointer]:
+                      - /url: /troubleshooting/kubernetes-tips/
+                  - listitem [ref=e200]:
+                    - link "Automation" [ref=e201] [cursor=pointer]:
+                      - /url: /troubleshooting/automation/
+                  - listitem [ref=e202]:
+                    - link "Cluster Deployment" [ref=e203] [cursor=pointer]:
+                      - /url: /troubleshooting/cluster-deployment/
+                  - listitem [ref=e204]:
+                    - link "Nodes & Clusters" [ref=e205] [cursor=pointer]:
+                      - /url: /troubleshooting/nodes/
+                  - listitem [ref=e206]:
+                    - link "Packs" [ref=e207] [cursor=pointer]:
+                      - /url: /troubleshooting/pack-issues/
+                  - listitem [ref=e208]:
+                    - link "Palette Dev Engine" [ref=e209] [cursor=pointer]:
+                      - /url: /troubleshooting/palette-dev-engine/
+                  - listitem [ref=e210]:
+                    - generic [ref=e211]:
+                      - link "Edge" [ref=e212] [cursor=pointer]:
+                        - /url: /troubleshooting/edge/
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e213] [cursor=pointer]
+                  - listitem [ref=e214]:
+                    - link "Private Cloud Gateway" [ref=e215] [cursor=pointer]:
+                      - /url: /troubleshooting/pcg/
+                  - listitem [ref=e216]:
+                    - link "Virtual Machine Orchestrator" [ref=e217] [cursor=pointer]:
+                      - /url: /troubleshooting/vmo-issues/
+                  - listitem [ref=e218]:
+                    - link "Enterprise Install" [ref=e219] [cursor=pointer]:
+                      - /url: /troubleshooting/enterprise-install/
+                  - listitem [ref=e220]:
+                    - link "Palette Upgrade" [ref=e221] [cursor=pointer]:
+                      - /url: /troubleshooting/palette-upgrade/
+                  - listitem [ref=e222]:
+                    - link "Generate HAR Files" [ref=e223] [cursor=pointer]:
+                      - /url: /troubleshooting/generate-har-files/
+              - listitem [ref=e224]:
+                - link "Glossary" [ref=e225] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e227]
+                  - text: Glossary
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "Compliance & Legal" [ref=e231] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e233]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - button "Privacy Settings" [ref=e237] [cursor=pointer]:
+                  - img [ref=e238]
+                  - text: Privacy Settings
+      - main [ref=e240]:
+        - generic [ref=e242]:
+          - generic [ref=e244]:
+            - article [ref=e245]:
+              - navigation "Breadcrumbs" [ref=e246]:
+                - list [ref=e247]:
+                  - listitem [ref=e248]:
+                    - link "Home page" [ref=e249] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e250]
+                  - listitem [ref=e252]:
+                    - link "Troubleshooting" [ref=e253] [cursor=pointer]:
+                      - /url: /troubleshooting/
+                  - listitem [ref=e254]:
+                    - generic [ref=e255]: Nodes & Clusters
+              - generic [ref=e256]:
+                - heading "Nodes and Clusters" [level=1] [ref=e258]
+                - paragraph [ref=e259]: This page covers common debugging scenarios for nodes and clusters after they have been deployed.
+                - heading "NodesDirect link to Nodes" [level=2] [ref=e260]:
+                  - text: Nodes
+                  - link "Direct link to Nodes" [ref=e261] [cursor=pointer]:
+                    - /url: "#nodes"
+                    - text: "#"
+                - heading "Scenario - Repaved NodesDirect link to Scenario - Repaved Nodes" [level=3] [ref=e262]:
+                  - text: Scenario - Repaved Nodes
+                  - link "Direct link to Scenario - Repaved Nodes" [ref=e263] [cursor=pointer]:
+                    - /url: "#scenario---repaved-nodes"
+                    - text: "#"
+                - paragraph [ref=e264]:
+                  - text: Palette performs a rolling upgrade on nodes when it detects a change in the
+                  - code [ref=e265]: kubeadm
+                  - text: config. Below are some actions that cause the
+                  - code [ref=e266]: kubeadm
+                  - text: "configuration to change and result in nodes being upgraded:"
+                - list [ref=e267]:
+                  - listitem [ref=e268]: OS layer changes
+                  - listitem [ref=e269]: Kubernetes layer changes
+                  - listitem [ref=e270]: Kubernetes version upgrade
+                  - listitem [ref=e271]: Kubernetes control plane upsize
+                  - listitem [ref=e272]: Machine pool updates for disk size
+                  - listitem [ref=e273]: Changes in availability zones
+                  - listitem [ref=e274]: Changes in instance types
+                - paragraph [ref=e275]:
+                  - text: Logs are provided in Palette for traceability. However, these logs may be lost when the pods are relaunched. To ensure that the cause and context is persisted across repaving, refer to the
+                  - code [ref=e276]: "status.upgrades: []"
+                  - text: field in the in the
+                  - code [ref=e277]: SpectroCluster
+                  - text: object in the
+                  - code [ref=e278]: /v1/dashboard/spectroclusters/:uid/overview
+                  - text: API.
+                - paragraph [ref=e279]:
+                  - text: The following example shows the
+                  - code [ref=e280]: status.upgrades
+                  - text: field for a cluster that had Kubernetes configuration changes that resulted in a node repave. The API payload is incomplete for brevity.
+                - generic [ref=e282]:
+                  - code [ref=e284]:
+                    - generic [ref=e285]: "\"upgrades\": ["
+                    - generic [ref=e286]: "{"
+                    - generic [ref=e287]: "\"reason\": ["
+                    - generic [ref=e288]: "\"{v1beta1.KubeadmConfigSpec}.ClusterConfiguration.APIServer.ControlPlaneComponent.ExtraArgs[\\\"oidc-client-id\\\"] changed from <invalid reflect.Value> to xxxxxxxxxxx\","
+                    - generic [ref=e289]: "\"{v1beta1.KubeadmConfigSpec}.ClusterConfiguration.APIServer.ControlPlaneComponent.ExtraArgs[\\\"oidc-groups-claim\\\"] changed from <invalid reflect.Value> to groups\","
+                    - generic [ref=e290]: "\"{v1beta1.KubeadmConfigSpec}.ClusterConfiguration.APIServer.ControlPlaneComponent.ExtraArgs[\\\"oidc-issuer-url\\\"] changed from <invalid reflect.Value> to https://console.spectrocloud.com/v1/oidc/tenant/XXXXXXXXXXXX\","
+                    - generic [ref=e291]: "\"{v1beta1.KubeadmConfigSpec}.ClusterConfiguration.APIServer.ControlPlaneComponent.ExtraArgs[\\\"oidc-username-claim\\\"] changed from <invalid reflect.Value> to email\""
+                    - generic [ref=e292]: "],"
+                    - generic [ref=e293]: "\"timestamp\": \"2023-09-18T19:49:33.000Z\""
+                    - generic [ref=e294]: "}"
+                    - generic [ref=e295]: "]"
+                  - button "Toggle word wrap" [ref=e297] [cursor=pointer]:
+                    - img [ref=e298]
+                - paragraph [ref=e300]:
+                  - text: For detailed information, review the cluster upgrades
+                  - link "page" [ref=e301] [cursor=pointer]:
+                    - /url: /clusters/
+                  - text: .
+                - heading [level=3]
+                - heading "ClustersDirect link to Clusters" [level=2] [ref=e302]:
+                  - text: Clusters
+                  - link "Direct link to Clusters" [ref=e303] [cursor=pointer]:
+                    - /url: "#clusters"
+                    - text: "#"
+                - heading "Scenario - Incorrect LoadBalancer kubernetes Created by Azure Cloud Controller ManagerDirect link to scenario---incorrect-loadbalancer-kubernetes-created-by-azure-cloud-controller-manager" [level=3] [ref=e304]:
+                  - text: Scenario - Incorrect LoadBalancer
+                  - code [ref=e305]: kubernetes
+                  - text: Created by Azure Cloud Controller Manager
+                  - link "Direct link to scenario---incorrect-loadbalancer-kubernetes-created-by-azure-cloud-controller-manager" [ref=e306] [cursor=pointer]:
+                    - /url: "#scenario---incorrect-loadbalancer-kubernetes-created-by-azure-cloud-controller-manager"
+                    - text: "#"
+                - paragraph [ref=e307]:
+                  - text: The
+                  - code [ref=e308]: cloud-controller-manager
+                  - text: introduced in Azure Kubernetes v.1.29.x can make your existing external service IP inaccessible. This issue occurs because
+                  - code [ref=e309]: cloud-controller-manager
+                  - text: creates a default load balancer named
+                  - code [ref=e310]: kubernetes
+                  - text: and an associated public IP, which conflicts with the existing network configuration.
+                - paragraph [ref=e311]:
+                  - text: While this issue has been resolved for Palette-managed Azure clusters, you need to manually delete the incorrectly created
+                  - code [ref=e312]: kubernetes
+                  - text: load balancer and the associated public IP address from the Azure resource group to which your cluster was deployed.
+                - heading "Debug StepsDirect link to Debug Steps" [level=4] [ref=e313]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e314] [cursor=pointer]:
+                    - /url: "#debug-steps"
+                    - text: "#"
+                - list [ref=e315]:
+                  - listitem [ref=e316]:
+                    - paragraph [ref=e317]: Open a terminal session and use the following command to authenticate your Azure CLI session.
+                    - generic [ref=e319]:
+                      - code [ref=e321]:
+                        - generic [ref=e322]: az login
+                      - button "Copy code to clipboard" [ref=e324] [cursor=pointer]:
+                        - generic [ref=e325]:
+                          - img [ref=e326]
+                          - img [ref=e328]
+                  - listitem [ref=e330]:
+                    - paragraph [ref=e331]:
+                      - text: Use the following command to list load balancers in the resource group to which your cluster was deployed and locate the
+                      - code [ref=e332]: kubernetes
+                      - text: load balancer.
+                    - generic [ref=e334]:
+                      - code [ref=e336]:
+                        - generic [ref=e337]: az network lb list --resource-group <resource-group> --output table
+                      - generic [ref=e338]:
+                        - button "Toggle word wrap" [ref=e339] [cursor=pointer]:
+                          - img [ref=e340]
+                        - button "Copy code to clipboard" [ref=e342] [cursor=pointer]:
+                          - generic [ref=e343]:
+                            - img [ref=e344]
+                            - img [ref=e346]
+                    - generic [ref=e349]:
+                      - code [ref=e351]:
+                        - generic [ref=e352]: Location Name ProvisioningState ResourceGroup ResourceGuid
+                        - generic [ref=e353]: "---------- ----------------------------- ------------------- ----------------- ------------------------------------"
+                        - generic [ref=e354]: eastus docs-azure-k8s-1-29 Succeeded palette-tutorials b375387f-0549-4186-9d47-f2607064b51b
+                        - generic [ref=e355]: eastus docs-azure-k8s-1-29-public-lb Succeeded palette-tutorials 0b7a9738-1caf-46bd-b334-0f34dd736fad
+                        - generic [ref=e356]: eastus kubernetes Succeeded palette-tutorials e78e47d8-bda5-4f0b-a694-b41443b2b2f5
+                      - generic [ref=e357]:
+                        - button "Toggle word wrap" [ref=e358] [cursor=pointer]:
+                          - img [ref=e359]
+                        - button "Copy code to clipboard" [ref=e361] [cursor=pointer]:
+                          - generic [ref=e362]:
+                            - img [ref=e363]
+                            - img [ref=e365]
+                  - listitem [ref=e367]:
+                    - paragraph [ref=e368]:
+                      - text: Use the following command to delete the
+                      - code [ref=e369]: kubernetes
+                      - text: load balancer.
+                    - generic [ref=e371]:
+                      - code [ref=e373]:
+                        - generic [ref=e374]: az network lb delete --name kubernetes --resource-group <resource-group>
+                      - generic [ref=e375]:
+                        - button "Toggle word wrap" [ref=e376] [cursor=pointer]:
+                          - img [ref=e377]
+                        - button "Copy code to clipboard" [ref=e379] [cursor=pointer]:
+                          - generic [ref=e380]:
+                            - img [ref=e381]
+                            - img [ref=e383]
+                  - listitem [ref=e385]:
+                    - paragraph [ref=e386]:
+                      - text: Use the following command to list public IP addresses in the resource group to which your cluster was deployed and locate the
+                      - code [ref=e387]: kubernetes-<hash>
+                      - text: load balancer.
+                    - generic [ref=e389]:
+                      - code [ref=e391]:
+                        - generic [ref=e392]: az network public-ip list --resource-group <resource-group> --output table
+                      - generic [ref=e393]:
+                        - button "Toggle word wrap" [ref=e394] [cursor=pointer]:
+                          - img [ref=e395]
+                        - button "Copy code to clipboard" [ref=e397] [cursor=pointer]:
+                          - generic [ref=e398]:
+                            - img [ref=e399]
+                            - img [ref=e401]
+                    - generic [ref=e404]:
+                      - code [ref=e406]:
+                        - generic [ref=e407]: Name ResourceGroup Location Zones Address IdleTimeoutInMinutes ProvisioningState
+                        - generic [ref=e408]: "------------------------------------------- ----------------- ---------- ------- ------------- ---------------------- -------------------"
+                        - generic [ref=e409]: pip-docs-azure-k8s-1-29-apiserver palette-tutorials eastus 123 48.217.216.43 4 Succeeded
+                        - generic [ref=e410]: pip-docs-azure-k8s-1-29-node-outbound palette-tutorials eastus 312 48.217.222.29 4 Succeeded
+                        - generic [ref=e411]: kubernetes-a98181bf0e90b4425b80d11c21ba766f palette-tutorials eastus 231 4.255.120.41 4 Succeeded
+                      - generic [ref=e412]:
+                        - button "Toggle word wrap" [ref=e413] [cursor=pointer]:
+                          - img [ref=e414]
+                        - button "Copy code to clipboard" [ref=e416] [cursor=pointer]:
+                          - generic [ref=e417]:
+                            - img [ref=e418]
+                            - img [ref=e420]
+                  - listitem [ref=e422]:
+                    - paragraph [ref=e423]:
+                      - text: Use the following command to delete the
+                      - code [ref=e424]: kubernetes-<hash>
+                      - text: public IP.
+                    - generic [ref=e426]:
+                      - code [ref=e428]:
+                        - generic [ref=e429]: az network public-ip delete --name kubernetes-<hash> --resource-group <resource-group>
+                      - generic [ref=e430]:
+                        - button "Toggle word wrap" [ref=e431] [cursor=pointer]:
+                          - img [ref=e432]
+                        - button "Copy code to clipboard" [ref=e434] [cursor=pointer]:
+                          - generic [ref=e435]:
+                            - img [ref=e436]
+                            - img [ref=e438]
+                - heading "Scenario - vSphere Cluster and Stale ARP TableDirect link to Scenario - vSphere Cluster and Stale ARP Table" [level=3] [ref=e440]:
+                  - text: Scenario - vSphere Cluster and Stale ARP Table
+                  - link "Direct link to Scenario - vSphere Cluster and Stale ARP Table" [ref=e441] [cursor=pointer]:
+                    - /url: "#scenario---vsphere-cluster-and-stale-arp-table"
+                    - text: "#"
+                - paragraph [ref=e442]: Sometimes vSphere clusters encounter issues where nodes with an assigned Virtual IP Address (VIP) cannot contact the node with a VIP. The problem is caused by Address Resolution Protocol (ARP) entries becoming stale on non-VIP nodes.
+                - paragraph [ref=e443]: To minimize this situation, vSphere clusters deployed through Palette now have a daemon set that cleans the ARP entry cache every five minutes. The cleaning process forces the nodes to periodically re-request an ARP entry of the VIP node. This is done automatically without any user action.
+                - paragraph [ref=e444]: You can verify the cleaning process by issuing the following command on non-VIP nodes and observing that the ARP cache is never older than 300 seconds.
+                - generic [ref=e446]:
+                  - code [ref=e448]:
+                    - generic [ref=e449]: watch ip -statistics neighbour
+                  - button "Copy code to clipboard" [ref=e451] [cursor=pointer]:
+                    - generic [ref=e452]:
+                      - img [ref=e453]
+                      - img [ref=e455]
+                - heading "EKS Cluster Worker Pool FailuresDirect link to EKS Cluster Worker Pool Failures" [level=3] [ref=e457]:
+                  - text: EKS Cluster Worker Pool Failures
+                  - link "Direct link to EKS Cluster Worker Pool Failures" [ref=e458] [cursor=pointer]:
+                    - /url: "#eks-cluster-worker-pool-failures"
+                    - text: "#"
+                - paragraph [ref=e459]:
+                  - text: If your EKS cluster worker pool ends up in
+                  - code [ref=e460]: Failed
+                  - text: ","
+                  - code [ref=e461]: Create Failed
+                  - text: or
+                  - code [ref=e462]: Error nodes failed to join
+                  - text: state, refer to the Amazon EKS
+                  - link "Runbook" [ref=e463] [cursor=pointer]:
+                    - /url: https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-awssupport-troubleshooteksworkernode.html
+                  - text: for troubleshooting guidance.
+                - heading "Palette Agents Workload Payload Size IssueDirect link to Palette Agents Workload Payload Size Issue" [level=3] [ref=e464]:
+                  - text: Palette Agents Workload Payload Size Issue
+                  - link "Direct link to Palette Agents Workload Payload Size Issue" [ref=e465] [cursor=pointer]:
+                    - /url: "#palette-agents-workload-payload-size-issue"
+                    - text: "#"
+                - paragraph [ref=e466]:
+                  - text: A cluster comprised of many nodes can create a situation where the workload report data the agent sends to Palette exceeds the 1 MB threshold and fails to deliver the messages. If the agent encounters too many workload report deliveries, the agent container may transition into a
+                  - emphasis [ref=e467]: CrashLoopBackOff
+                  - text: state.
+                - paragraph [ref=e468]: If you encounter this scenario, you can configure the cluster to stop sending workload reports to Palette. To disable the workload report feature, create a ConfigMap with the following configuration. Use a cluster profile manifest layer to create the ConfigMap.
+                - generic [ref=e470]:
+                  - code [ref=e472]:
+                    - generic [ref=e473]: "apiVersion: v1"
+                    - generic [ref=e474]: "kind: ConfigMap"
+                    - generic [ref=e475]: "metadata:"
+                    - generic [ref=e476]: "name: palette-agent-config"
+                    - generic [ref=e477]: "namespace: \"cluster-{{ .spectro.system.cluster.uid }}\""
+                    - generic [ref=e478]: "data:"
+                    - generic [ref=e479]: "feature.workloads: disable"
+                  - button "Copy code to clipboard" [ref=e481] [cursor=pointer]:
+                    - generic [ref=e482]:
+                      - img [ref=e483]
+                      - img [ref=e485]
+                - heading "OS Patch FailsDirect link to OS Patch Fails" [level=3] [ref=e487]:
+                  - text: OS Patch Fails
+                  - link "Direct link to OS Patch Fails" [ref=e488] [cursor=pointer]:
+                    - /url: "#os-patch-fails"
+                    - text: "#"
+                - paragraph [ref=e489]:
+                  - text: When conducting
+                  - link "OS Patching" [ref=e490] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/os-patching/
+                  - text: ", sometimes the patching process can time out and fail. This issue is due to some OS patches requiring GRUB packages. GRUB updates often require user prompts, and if a user prompt is required during the OS patching process, the patching process will fail."
+                - heading "Debug StepsDirect link to Debug Steps" [level=4] [ref=e491]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e492] [cursor=pointer]:
+                    - /url: "#debug-steps-1"
+                    - text: "#"
+                - paragraph [ref=e493]: "To resolve this issue, use the following steps:"
+                - list [ref=e494]:
+                  - listitem [ref=e495]:
+                    - paragraph [ref=e496]:
+                      - text: Log in to
+                      - link "Palette" [ref=e497] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e498]:
+                    - paragraph [ref=e499]:
+                      - text: From left
+                      - strong [ref=e500]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e501]: Clusters
+                      - text: .
+                  - listitem [ref=e502]:
+                    - paragraph [ref=e503]: Select the cluster that is experiencing the issue and click on its row to access the cluster details page.
+                  - listitem [ref=e504]:
+                    - paragraph [ref=e505]:
+                      - text: From the cluster details page, select the
+                      - strong [ref=e506]: Nodes
+                      - text: tab.
+                  - listitem [ref=e507]:
+                    - paragraph [ref=e508]: Click on a cluster node to access its details page. Review the network information, such as the subnet and the network the node is in.
+                  - listitem [ref=e509]:
+                    - paragraph [ref=e510]: Log in to the infrastructure provider console and acquire the node IP address.
+                  - listitem [ref=e511]:
+                    - paragraph [ref=e512]: SSH into one of the cluster nodes and issue the following command.
+                    - generic [ref=e514]:
+                      - code [ref=e516]:
+                        - generic [ref=e517]: rm /var/cache/debconf/config.dat && \
+                        - generic [ref=e518]: dpkg --configure -a
+                      - button "Copy code to clipboard" [ref=e520] [cursor=pointer]:
+                        - generic [ref=e521]:
+                          - img [ref=e522]
+                          - img [ref=e524]
+                  - listitem [ref=e526]:
+                    - paragraph [ref=e527]:
+                      - text: A prompt may appear asking you to select the boot device. Select the appropriate boot device and press
+                      - strong [ref=e528]: Enter
+                      - text: .
+                    - generic [ref=e529]:
+                      - generic [ref=e530]:
+                        - img [ref=e532]
+                        - text: tip
+                      - generic [ref=e534]:
+                        - paragraph [ref=e535]:
+                          - text: If you are unsure of the boot device, use a disk utility such as
+                          - code [ref=e536]: lsblk
+                          - text: or
+                          - code [ref=e537]: fdisk
+                          - text: to identify the boot device. Below is an example of using
+                          - code [ref=e538]: lsblk
+                          - text: to identify the boot device. The output is abbreviated for brevity.
+                        - generic [ref=e540]:
+                          - code [ref=e542]:
+                            - generic [ref=e543]: lsblk --output NAME,TYPE,MOUNTPOINT
+                          - button "Copy code to clipboard" [ref=e545] [cursor=pointer]:
+                            - generic [ref=e546]:
+                              - img [ref=e547]
+                              - img [ref=e549]
+                        - code [ref=e554]:
+                          - generic [ref=e555]: NAME TYPE MOUNTPOINT
+                          - generic [ref=e556]: fd0 disk
+                          - generic [ref=e557]: loop0 loop /snap/core20/1974
+                          - generic [ref=e558]: ...
+                          - generic [ref=e559]: loop10 loop /snap/snapd/20092
+                          - generic [ref=e560]: loop11 loop /snap/snapd/20290
+                          - generic [ref=e561]: sda disk
+                          - generic [ref=e562]: ├─sda1 part /
+                          - generic [ref=e563]: ├─sda14 part
+                          - generic [ref=e564]: └─sda15 part /boot/efi
+                          - generic [ref=e565]: sr0 rom
+                        - paragraph [ref=e566]:
+                          - text: The highlighted line displays the boot device. In this example, the boot device is
+                          - code [ref=e567]: sda15
+                          - text: ", mounted at"
+                          - code [ref=e568]: /boot/efi
+                          - text: . The boot device may be different for your node.
+                  - listitem [ref=e569]:
+                    - paragraph [ref=e570]: Repeat the previous step for all nodes in the cluster.
+                - heading "OS Patch Fails on AWS with Microk8s 1.27Direct link to OS Patch Fails on AWS with Microk8s 1.27" [level=3] [ref=e571]:
+                  - text: OS Patch Fails on AWS with Microk8s 1.27
+                  - link "Direct link to OS Patch Fails on AWS with Microk8s 1.27" [ref=e572] [cursor=pointer]:
+                    - /url: "#os-patch-fails-on-aws-with-microk8s-127"
+                    - text: "#"
+                - paragraph [ref=e573]: If OS patching fails on an AWS cluster with Microk8s 1.27, use the following debug steps to resolve the issue.
+                - heading "Debug StepsDirect link to Debug Steps" [level=4] [ref=e574]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e575] [cursor=pointer]:
+                    - /url: "#debug-steps-2"
+                    - text: "#"
+                - list [ref=e576]:
+                  - listitem [ref=e577]:
+                    - paragraph [ref=e578]:
+                      - text: Log in to
+                      - link "Palette" [ref=e579] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e580]:
+                    - paragraph [ref=e581]:
+                      - text: Navigate to the left
+                      - strong [ref=e582]: Main Menu
+                      - text: and select
+                      - strong [ref=e583]: Clusters
+                      - text: .
+                  - listitem [ref=e584]:
+                    - paragraph [ref=e585]: Select the cluster that is experiencing the issue and click on its row to access the cluster details page.
+                  - listitem [ref=e586]:
+                    - paragraph [ref=e587]:
+                      - text: From the cluster details page, select the
+                      - strong [ref=e588]: Nodes
+                      - text: tab.
+                  - listitem [ref=e589]:
+                    - paragraph [ref=e590]: Click on a cluster node to access its details page. Review the network information, such as the subnet and the network the node is in.
+                  - listitem [ref=e591]:
+                    - paragraph [ref=e592]: Log in to the infrastructure provider console and acquire the node IP address.
+                  - listitem [ref=e593]:
+                    - paragraph [ref=e594]: SSH into one of the cluster nodes
+                  - listitem [ref=e595]:
+                    - paragraph [ref=e596]:
+                      - text: Find out the partition name to which
+                      - code [ref=e597]: boot/efi
+                      - text: is mounted with the following command.
+                    - generic [ref=e599]:
+                      - code [ref=e601]:
+                        - generic [ref=e602]: mount | grep /boot/efi
+                      - button "Copy code to clipboard" [ref=e604] [cursor=pointer]:
+                        - generic [ref=e605]:
+                          - img [ref=e606]
+                          - img [ref=e608]
+                    - paragraph [ref=e610]: The command produces output similar to the following.
+                    - generic [ref=e612]:
+                      - code [ref=e614]:
+                        - generic [ref=e615]: /dev/xvda15 on /boot/efi type vfat (rw,relatime,fmask=0077,dmask=0077,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro)
+                      - generic [ref=e616]:
+                        - button "Toggle word wrap" [ref=e617] [cursor=pointer]:
+                          - img [ref=e618]
+                        - button "Copy code to clipboard" [ref=e620] [cursor=pointer]:
+                          - generic [ref=e621]:
+                            - img [ref=e622]
+                            - img [ref=e624]
+                    - paragraph [ref=e626]:
+                      - text: The name of the partition is the partition at the start of the line before
+                      - code [ref=e627]: on /boot/efi
+                      - text: ":"
+                      - code [ref=e628]: /dev/xvda15
+                  - listitem [ref=e629]:
+                    - paragraph [ref=e630]:
+                      - text: Issue the following command. Replace
+                      - code [ref=e631]: partition-name
+                      - text: with the name of the partition.
+                    - generic [ref=e633]:
+                      - code [ref=e635]:
+                        - generic [ref=e636]: grub-install --efi-directory=/boot/efi <partition-name> --force
+                      - button "Copy code to clipboard" [ref=e638] [cursor=pointer]:
+                        - generic [ref=e639]:
+                          - img [ref=e640]
+                          - img [ref=e642]
+                  - listitem [ref=e644]:
+                    - paragraph [ref=e645]: Issue the following commands.
+                    - generic [ref=e647]:
+                      - code [ref=e649]:
+                        - generic [ref=e650]: grub-mkconfig -o /boot/grub/grub.cfg
+                        - generic [ref=e651]: update-grub
+                        - generic [ref=e652]: apt-get update
+                        - generic [ref=e653]: apt-get upgrade
+                      - button "Copy code to clipboard" [ref=e655] [cursor=pointer]:
+                        - generic [ref=e656]:
+                          - img [ref=e657]
+                          - img [ref=e659]
+                - heading "Scenario - Remove Deprecated Cloud ProvidersDirect link to Scenario - Remove Deprecated Cloud Providers" [level=3] [ref=e661]:
+                  - text: Scenario - Remove Deprecated Cloud Providers
+                  - link "Direct link to Scenario - Remove Deprecated Cloud Providers" [ref=e662] [cursor=pointer]:
+                    - /url: "#scenario---remove-deprecated-cloud-providers"
+                    - text: "#"
+                - paragraph [ref=e663]: If you want to remove unsupported Custom Resource Definitions (CRDs) for deprecated cloud providers in your Kubernetes workload cluster, you can follow the steps below.
+                - heading "Debug StepsDirect link to Debug Steps" [level=4] [ref=e664]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e665] [cursor=pointer]:
+                    - /url: "#debug-steps-3"
+                    - text: "#"
+                - list [ref=e666]:
+                  - listitem [ref=e667]:
+                    - paragraph [ref=e668]:
+                      - text: Open a terminal session that has
+                      - link "kubectl" [ref=e669] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/tasks/tools/install-kubectl/
+                      - text: installed.
+                  - listitem [ref=e670]:
+                    - paragraph [ref=e671]:
+                      - text: Set up your terminal session to use the kubeconfig file for your Kubernetes workload cluster. You can find the kubeconfig for your cluster in the Palette UI by visiting the cluster's details page. Check out the
+                      - link "Access Cluster with CLI" [ref=e672] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/#access-cluster-with-cli
+                      - text: guide for guidance on how to set up your terminal session to use the kubeconfig file.
+                  - listitem [ref=e673]:
+                    - paragraph [ref=e674]: Issue the following command to list the CRDs in your target cluster.
+                    - generic [ref=e676]:
+                      - code [ref=e678]:
+                        - generic [ref=e679]: kubectl get crd
+                      - button "Copy code to clipboard" [ref=e681] [cursor=pointer]:
+                        - generic [ref=e682]:
+                          - img [ref=e683]
+                          - img [ref=e685]
+                  - listitem [ref=e687]:
+                    - paragraph [ref=e688]: Identify the CRDs for the deprecated cloud providers you want to remove. For example, to remove the Tencent Cloud CRD, issue the following command.
+                    - generic [ref=e690]:
+                      - code [ref=e692]:
+                        - generic [ref=e693]: kubectl delete crd tencentcloudconfigs.cluster.spectrocloud.com
+                      - button "Copy code to clipboard" [ref=e695] [cursor=pointer]:
+                        - generic [ref=e696]:
+                          - img [ref=e697]
+                          - img [ref=e699]
+                - paragraph [ref=e701]: Once the CRD is removed, it will not be recreated by Palette.
+                - heading "Scenario - Remove Deprecated NATS NamespaceDirect link to Scenario - Remove Deprecated NATS Namespace" [level=3] [ref=e702]:
+                  - text: Scenario - Remove Deprecated NATS Namespace
+                  - link "Direct link to Scenario - Remove Deprecated NATS Namespace" [ref=e703] [cursor=pointer]:
+                    - /url: "#scenario---remove-deprecated-nats-namespace"
+                    - text: "#"
+                - paragraph [ref=e704]:
+                  - text: Palette's internal message communication between components transitioned from using Neural Autonomous Transport System (NATS) to gRPC with version 4.0. As a result, clusters with Palette agents older than version 4.0 may have leftover NATS resources. Manually delete the
+                  - code [ref=e705]: nats-system
+                  - text: namespace to remove any remaining NATS-related resources.
+                - heading "Debug StepsDirect link to Debug Steps" [level=4] [ref=e706]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e707] [cursor=pointer]:
+                    - /url: "#debug-steps-4"
+                    - text: "#"
+                - list [ref=e708]:
+                  - listitem [ref=e709]:
+                    - paragraph [ref=e710]:
+                      - text: Open a terminal session that has
+                      - link "kubectl" [ref=e711] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/tasks/tools/install-kubectl/
+                      - text: installed.
+                  - listitem [ref=e712]:
+                    - paragraph [ref=e713]:
+                      - text: Set up your terminal session to use the kubeconfig file for your Kubernetes workload cluster. You can find the kubeconfig for your cluster in the Palette UI by visiting the cluster's details page. Check out the
+                      - link "Access Cluster with CLI" [ref=e714] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/#access-cluster-with-cli
+                      - text: guide for guidance on how to set up your terminal session to use the kubeconfig file.
+                  - listitem [ref=e715]:
+                    - paragraph [ref=e716]: Issue the following command to list the namespaces in your cluster.
+                    - generic [ref=e718]:
+                      - code [ref=e720]:
+                        - generic [ref=e721]: kubectl get namespaces
+                      - button "Copy code to clipboard" [ref=e723] [cursor=pointer]:
+                        - generic [ref=e724]:
+                          - img [ref=e725]
+                          - img [ref=e727]
+                  - listitem [ref=e729]:
+                    - paragraph [ref=e730]:
+                      - text: Remove the
+                      - code [ref=e731]: nats-system
+                      - text: namespace.
+                    - generic [ref=e733]:
+                      - code [ref=e735]:
+                        - generic [ref=e736]: kubectl delete namespaces nats-system
+                      - button "Copy code to clipboard" [ref=e738] [cursor=pointer]:
+                        - generic [ref=e739]:
+                          - img [ref=e740]
+                          - img [ref=e742]
+              - generic [ref=e744]:
+                - generic [ref=e746]:
+                  - text: "Tags:"
+                  - list [ref=e747]:
+                    - listitem [ref=e748]:
+                      - link "troubleshooting" [ref=e749] [cursor=pointer]:
+                        - /url: /tags/troubleshooting/
+                    - listitem [ref=e750]:
+                      - link "nodes" [ref=e751] [cursor=pointer]:
+                        - /url: /tags/nodes/
+                    - listitem [ref=e752]:
+                      - link "clusters" [ref=e753] [cursor=pointer]:
+                        - /url: /tags/clusters/
+                - link "Edit this page" [ref=e756] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/troubleshooting/nodes.md
+                  - img [ref=e757]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e761]:
+              - link "Previous « Cluster Deployment" [ref=e762] [cursor=pointer]:
+                - /url: /troubleshooting/cluster-deployment/
+                - generic [ref=e763]: Previous
+                - generic [ref=e764]: « Cluster Deployment
+              - link "Next Packs »" [ref=e765] [cursor=pointer]:
+                - /url: /troubleshooting/pack-issues/
+                - generic [ref=e766]: Next
+                - generic [ref=e767]: Packs »
+          - list [ref=e770]:
+            - listitem [ref=e771]:
+              - link "Nodes" [ref=e772] [cursor=pointer]:
+                - /url: "#nodes"
+              - list [ref=e773]:
+                - listitem [ref=e774]:
+                  - link "Scenario - Repaved Nodes" [ref=e775] [cursor=pointer]:
+                    - /url: "#scenario---repaved-nodes"
+            - listitem [ref=e776]:
+              - link "Clusters" [ref=e777] [cursor=pointer]:
+                - /url: "#clusters"
+              - list [ref=e778]:
+                - listitem [ref=e779]:
+                  - link "Scenario - Incorrect LoadBalancer kubernetes Created by Azure Cloud Controller Manager" [ref=e780] [cursor=pointer]:
+                    - /url: "#scenario---incorrect-loadbalancer-kubernetes-created-by-azure-cloud-controller-manager"
+                    - text: Scenario - Incorrect LoadBalancer
+                    - code [ref=e781]: kubernetes
+                    - text: Created by Azure Cloud Controller Manager
+                - listitem [ref=e782]:
+                  - link "Scenario - vSphere Cluster and Stale ARP Table" [ref=e783] [cursor=pointer]:
+                    - /url: "#scenario---vsphere-cluster-and-stale-arp-table"
+                - listitem [ref=e784]:
+                  - link "EKS Cluster Worker Pool Failures" [ref=e785] [cursor=pointer]:
+                    - /url: "#eks-cluster-worker-pool-failures"
+                - listitem [ref=e786]:
+                  - link "Palette Agents Workload Payload Size Issue" [ref=e787] [cursor=pointer]:
+                    - /url: "#palette-agents-workload-payload-size-issue"
+                - listitem [ref=e788]:
+                  - link "OS Patch Fails" [ref=e789] [cursor=pointer]:
+                    - /url: "#os-patch-fails"
+                - listitem [ref=e790]:
+                  - link "OS Patch Fails on AWS with Microk8s 1.27" [ref=e791] [cursor=pointer]:
+                    - /url: "#os-patch-fails-on-aws-with-microk8s-127"
+                - listitem [ref=e792]:
+                  - link "Scenario - Remove Deprecated Cloud Providers" [ref=e793] [cursor=pointer]:
+                    - /url: "#scenario---remove-deprecated-cloud-providers"
+                - listitem [ref=e794]:
+                  - link "Scenario - Remove Deprecated NATS Namespace" [ref=e795] [cursor=pointer]:
+                    - /url: "#scenario---remove-deprecated-nats-namespace"
+  - button "Project Logo Ask AI" [ref=e796] [cursor=pointer]:
+    - generic [ref=e799]:
+      - img "Project Logo" [ref=e800]
+      - paragraph [ref=e801]: Ask AI
+```

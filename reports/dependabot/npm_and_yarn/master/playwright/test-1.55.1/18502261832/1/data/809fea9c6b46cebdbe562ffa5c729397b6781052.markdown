@@ -1,0 +1,496 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - link "Palette Tutorials" [ref=e40] [cursor=pointer]:
+                  - /url: /tutorials/
+                  - img [ref=e42]
+                  - text: Palette Tutorials
+              - listitem [ref=e44]:
+                - generic [ref=e45]:
+                  - link "Getting Started" [expanded] [ref=e46] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/
+                    - img [ref=e48]
+                    - text: Getting Started
+                  - button "Toggle the collapsible sidebar category 'Getting Started'" [ref=e50] [cursor=pointer]
+                - list [ref=e51]:
+                  - listitem [ref=e52]:
+                    - generic [ref=e53]:
+                      - link "Palette" [expanded] [ref=e54] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette/
+                      - button "Toggle the collapsible sidebar category 'Palette'" [ref=e55] [cursor=pointer]
+                    - list [ref=e56]:
+                      - listitem [ref=e57]:
+                        - link "Introduction to Palette" [ref=e58] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette/introduction-palette/
+                      - listitem [ref=e59]:
+                        - generic [ref=e60]:
+                          - link "Deploy a Cluster to AWS" [ref=e61] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/aws/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to AWS'" [ref=e62] [cursor=pointer]
+                      - listitem [ref=e63]:
+                        - generic [ref=e64]:
+                          - link "Deploy a Cluster to Azure" [ref=e65] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/azure/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to Azure'" [ref=e66] [cursor=pointer]
+                      - listitem [ref=e67]:
+                        - generic [ref=e68]:
+                          - link "Deploy a Cluster to GCP" [ref=e69] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/gcp/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to GCP'" [ref=e70] [cursor=pointer]
+                      - listitem [ref=e71]:
+                        - generic [ref=e72]:
+                          - link "Deploy a Cluster to VMware" [expanded] [ref=e73] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/vmware/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to VMware'" [ref=e74] [cursor=pointer]
+                        - list [ref=e75]:
+                          - listitem [ref=e76]:
+                            - link "Set up Palette" [ref=e77] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/vmware/setup/
+                          - listitem [ref=e78]:
+                            - link "Deploy a PCG" [ref=e79] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/vmware/deploy-pcg/
+                          - listitem [ref=e80]:
+                            - link "Create a Cluster Profile" [ref=e81] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/vmware/create-cluster-profile/
+                          - listitem [ref=e82]:
+                            - link "Deploy a Cluster" [ref=e83] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/vmware/deploy-k8s-cluster/
+                          - listitem [ref=e84]:
+                            - link "Deploy Cluster Profile Updates" [ref=e85] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/vmware/update-k8s-cluster/
+                          - listitem [ref=e86]:
+                            - link "Cluster Management with Terraform" [ref=e87] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/vmware/deploy-manage-k8s-cluster-tf/
+                          - listitem [ref=e88]:
+                            - link "Scale, Upgrade, and Secure Clusters" [ref=e89] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/vmware/scale-secure-cluster/
+                  - listitem [ref=e90]:
+                    - generic [ref=e91]:
+                      - link "Palette Edge" [ref=e92] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette-edge/
+                      - button "Toggle the collapsible sidebar category 'Palette Edge'" [ref=e93] [cursor=pointer]
+                  - listitem [ref=e94]:
+                    - generic [ref=e95]:
+                      - link "Additional Capabilities" [ref=e96] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/additional-capabilities/
+                      - button "Toggle the collapsible sidebar category 'Additional Capabilities'" [ref=e97] [cursor=pointer]
+              - listitem [ref=e98]:
+                - generic [ref=e99]:
+                  - link "Packs and Registries" [ref=e100] [cursor=pointer]:
+                    - /url: /tutorials/packs-registries/
+                    - img [ref=e102]
+                    - text: Packs and Registries
+                  - button "Toggle the collapsible sidebar category 'Packs and Registries'" [ref=e104] [cursor=pointer]
+              - listitem [ref=e105]:
+                - generic [ref=e106]:
+                  - link "Profiles" [ref=e107] [cursor=pointer]:
+                    - /url: /tutorials/profiles/
+                    - img [ref=e109]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Clusters" [ref=e116] [cursor=pointer]:
+                    - /url: /tutorials/clusters/
+                    - img [ref=e118]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e124] [cursor=pointer]
+              - listitem [ref=e125]:
+                - generic [ref=e126]:
+                  - link "Palette Dev Engine" [ref=e127] [cursor=pointer]:
+                    - /url: /tutorials/pde/
+                    - img [ref=e129]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e131] [cursor=pointer]
+              - listitem [ref=e132]:
+                - button "Privacy Settings" [ref=e133] [cursor=pointer]
+      - main [ref=e134]:
+        - generic [ref=e136]:
+          - generic [ref=e138]:
+            - article [ref=e139]:
+              - navigation "Breadcrumbs" [ref=e140]:
+                - list [ref=e141]:
+                  - listitem [ref=e142]:
+                    - link "Home page" [ref=e143] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e144]
+                  - listitem [ref=e146]:
+                    - link "Getting Started" [ref=e147] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/
+                  - listitem [ref=e148]:
+                    - link "Palette" [ref=e149] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette/
+                  - listitem [ref=e150]:
+                    - link "Deploy a Cluster to VMware" [ref=e151] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette/vmware/
+                  - listitem [ref=e152]:
+                    - generic [ref=e153]: Create a Cluster Profile
+              - generic [ref=e154]:
+                - heading "Create a Cluster Profile" [level=1] [ref=e156]
+                - paragraph [ref=e157]:
+                  - text: Palette offers profile-based management for Kubernetes, enabling consistency, repeatability, and operational efficiency across multiple clusters. A cluster profile allows you to customize the cluster infrastructure stack, allowing you to choose the desired Operating System (OS), Kubernetes, Container Network Interfaces (CNIs), and Container Storage Interfaces (CSIs). You can further customize the stack with add-on application layers. For more information about cluster profile types, refer to
+                  - link "Cluster Profiles" [ref=e158] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/introduction-palette/#cluster-profiles
+                  - text: .
+                - paragraph [ref=e159]:
+                  - text: In this tutorial, you create a full profile directly from the Palette dashboard. Then, you add a layer to your cluster profile by using a
+                  - link "community pack" [ref=e160] [cursor=pointer]:
+                    - /url: /integrations/community_packs/
+                  - text: to deploy a web application. The concepts you learn about in the Getting Started section are centered around a fictional case study company, Spacetastic Ltd.
+                - heading "🧑‍🚀 Back at Spacetastic HQDirect link to 🧑‍🚀 Back at Spacetastic HQ" [level=2] [ref=e161]:
+                  - text: 🧑‍🚀 Back at Spacetastic HQ
+                  - link "Direct link to 🧑‍🚀 Back at Spacetastic HQ" [ref=e162] [cursor=pointer]:
+                    - /url: "#-back-at-spacetastic-hq"
+                    - text: "#"
+                - paragraph [ref=e163]: The team are busy exploring and evaluating Palette. In order to prepare for a migration to any external platform, they begin to map out all the dependencies of their systems and infrastructure.
+                - blockquote [ref=e164]:
+                  - paragraph [ref=e165]: Wren begins creating the list. "Our tech stack has grown, as we have added features and capabilities. I remember making a lot of design decisions myself, as I was Spacetastic's Founding Engineer. It's really interesting to look back on how much we've built and grown since those days!"
+                  - paragraph [ref=e166]: Kai smiles and nods. "It's definitely been an out-of-this-world ride!" they say. "I have a similar feeling when I think about the infrastructure that I built in the early days as Platform Engineer. I will add our infrastructure layers to your list. This process has the added bonus of giving us a chance to review which dependencies need to be updated, so Meera, our security expert, will be happy too."
+                - paragraph [ref=e167]:
+                  - img "The Spacetastic team stands next do a board with sticky notes of their system dependencies" [ref=e168]
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e169]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e170] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e171]:
+                  - listitem [ref=e172]:
+                    - text: Follow the steps described in the
+                    - link "Set up Palette with VMware" [ref=e173] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette/vmware/setup/
+                    - text: guide to authenticate Palette for use with your VMware user account.
+                  - listitem [ref=e174]:
+                    - text: Refer to the
+                    - link "Deploy a PCG with Palette CLI" [ref=e175] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette/vmware/deploy-pcg/
+                    - text: guide to create the required infrastructure that enables communication with your cluster.
+                  - listitem [ref=e176]:
+                    - text: Ensure that the
+                    - link "Palette Community Registry" [ref=e177] [cursor=pointer]:
+                      - /url: /registries-and-packs/registries/#default-registries
+                    - text: is available in your Palette environment. Refer to the
+                    - link "Add OCI Packs Registry" [ref=e178] [cursor=pointer]:
+                      - /url: /registries-and-packs/registries/oci-registry/add-oci-packs/
+                    - text: guide for additional guidance.
+                - heading "Create a Full Cluster ProfileDirect link to Create a Full Cluster Profile" [level=2] [ref=e179]:
+                  - text: Create a Full Cluster Profile
+                  - link "Direct link to Create a Full Cluster Profile" [ref=e180] [cursor=pointer]:
+                    - /url: "#create-a-full-cluster-profile"
+                    - text: "#"
+                - paragraph [ref=e181]:
+                  - text: Log in to
+                  - link "Palette" [ref=e182] [cursor=pointer]:
+                    - /url: https://console.spectrocloud.com
+                  - text: and navigate to the left
+                  - strong [ref=e183]: Main Menu
+                  - text: . Select
+                  - strong [ref=e184]: Profiles
+                  - text: to view the cluster profile page. You can view the list of available cluster profiles. To create a cluster profile, click on
+                  - strong [ref=e185]: Add Cluster Profile
+                  - text: .
+                - paragraph [ref=e186]: Follow the wizard to create a new profile.
+                - paragraph [ref=e187]:
+                  - text: In the
+                  - strong [ref=e188]: Basic Information
+                  - text: section, assign the name
+                  - strong [ref=e189]: vmware-profile
+                  - text: ", provide a profile description, select the type as"
+                  - strong [ref=e190]: Full
+                  - text: ", and assign the tag"
+                  - strong [ref=e191]: env:vmware
+                  - text: . You can leave the version empty if you want to. Just be aware that the version defaults to
+                  - strong [ref=e192]: 1.0.0
+                  - text: . Click on
+                  - strong [ref=e193]: Next
+                  - text: .
+                - paragraph [ref=e194]:
+                  - text: Cloud Type allows you to choose the infrastructure provider with which this cluster profile is associated. Select
+                  - strong [ref=e195]: VMware
+                  - text: and click on
+                  - strong [ref=e196]: Next
+                  - text: .
+                - paragraph [ref=e197]:
+                  - text: The
+                  - strong [ref=e198]: Profile Layers
+                  - text: step is where you specify the packs that compose the profile. There are four required infrastructure packs and several optional add-on packs you can choose from. Every pack requires you to select the
+                  - strong [ref=e199]: Pack Type
+                  - text: ","
+                  - strong [ref=e200]: Registry
+                  - text: ", and"
+                  - strong [ref=e201]: Pack Name
+                  - text: .
+                - paragraph [ref=e202]:
+                  - text: For this tutorial, use the following packs. If there are differences between the latest version of a pack and the version you select, a YAML editor will open. Click
+                  - strong [ref=e203]: Confirm Changes
+                  - text: to proceed.
+                - table [ref=e204]:
+                  - rowgroup [ref=e205]:
+                    - row "Pack Name Version Registry Layer" [ref=e206]:
+                      - cell "Pack Name" [ref=e207]
+                      - cell "Version" [ref=e208]
+                      - cell "Registry" [ref=e209]
+                      - cell "Layer" [ref=e210]
+                  - rowgroup [ref=e211]:
+                    - row "Ubuntu 22.4.x Public Repo Operating System" [ref=e212]:
+                      - cell "Ubuntu" [ref=e213]
+                      - cell "22.4.x" [ref=e214]
+                      - cell "Public Repo" [ref=e215]
+                      - cell "Operating System" [ref=e216]
+                    - row "Palette eXtended Kubernetes 1.28.x Public Repo Kubernetes" [ref=e217]:
+                      - cell "Palette eXtended Kubernetes" [ref=e218]
+                      - cell "1.28.x" [ref=e219]
+                      - cell "Public Repo" [ref=e220]
+                      - cell "Kubernetes" [ref=e221]
+                    - row "Calico 3.27.x Public Repo Network" [ref=e222]:
+                      - cell "Calico" [ref=e223]
+                      - cell "3.27.x" [ref=e224]
+                      - cell "Public Repo" [ref=e225]
+                      - cell "Network" [ref=e226]
+                    - row "vSphere CSI 3.1.x Public Repo Storage" [ref=e227]:
+                      - cell "vSphere CSI" [ref=e228]
+                      - cell "3.1.x" [ref=e229]
+                      - cell "Public Repo" [ref=e230]
+                      - cell "Storage" [ref=e231]
+                - paragraph [ref=e232]:
+                  - text: As you select each layer, click on
+                  - strong [ref=e233]: Next Layer
+                  - text: to proceed to the next one.
+                - paragraph [ref=e234]:
+                  - text: Click on
+                  - strong [ref=e235]: Confirm
+                  - text: and then
+                  - strong [ref=e236]: Next
+                  - text: after you have completed selecting all the core layers.
+                - paragraph [ref=e237]:
+                  - img "VMware core layers" [ref=e238]
+                - paragraph [ref=e239]:
+                  - text: The review section gives an overview of the cluster profile configuration you selected. Click on
+                  - strong [ref=e240]: Finish Configuration
+                  - text: to create the cluster profile.
+                - heading "Add PacksDirect link to Add Packs" [level=2] [ref=e241]:
+                  - text: Add Packs
+                  - link "Direct link to Add Packs" [ref=e242] [cursor=pointer]:
+                    - /url: "#add-packs"
+                    - text: "#"
+                - paragraph [ref=e243]:
+                  - text: Navigate to the left
+                  - strong [ref=e244]: Main Menu
+                  - text: and select
+                  - strong [ref=e245]: Profiles
+                  - text: . Select the cluster profile you created earlier.
+                - paragraph [ref=e246]:
+                  - text: Click on
+                  - strong [ref=e247]: Add New Pack
+                  - text: at the top of the page.
+                - paragraph [ref=e248]:
+                  - text: Add the
+                  - strong [ref=e249]: MetalLB (Helm)
+                  - text: pack to your profile. The
+                  - link "MetalLB (Helm)" [ref=e250] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=lb-metallb-helm
+                  - text: pack provides a load-balancer implementation for your Kubernetes cluster, as VMware does not offer a load balancer solution natively. The load balancer is required to help the
+                  - emphasis [ref=e251]: LoadBalancer
+                  - text: service specified in the Hello Universe application manifest obtain an IP address, so that you can access the application from your browser.
+                - table [ref=e252]:
+                  - rowgroup [ref=e253]:
+                    - row "Pack Name Version Layer" [ref=e254]:
+                      - cell "Pack Name" [ref=e255]
+                      - cell "Version" [ref=e256]
+                      - cell "Layer" [ref=e257]
+                  - rowgroup [ref=e258]:
+                    - row "lb-metallb-helm 0.14.x Load Balancer" [ref=e259]:
+                      - cell "lb-metallb-helm" [ref=e260]
+                      - cell "0.14.x" [ref=e261]
+                      - cell "Load Balancer" [ref=e262]
+                - paragraph [ref=e263]:
+                  - text: Now, under
+                  - strong [ref=e264]: Pack Details
+                  - text: ", click on"
+                  - strong [ref=e265]: Values
+                  - text: and replace the predefined
+                  - code [ref=e266]: 192.168.10.0/24
+                  - text: IP CIDR listed below the
+                  - strong [ref=e267]: addresses
+                  - text: line with a valid IP address or IP range from your VMware environment to be assigned to your load balancer. Next, click
+                  - strong [ref=e268]: Confirm & Create
+                  - text: to add the MetalLB pack.
+                - paragraph [ref=e269]:
+                  - img "MetalLb Helm-based pack." [ref=e270]
+                - paragraph [ref=e271]:
+                  - text: Click on
+                  - strong [ref=e272]: Confirm & Create
+                  - text: to save the pack.
+                - paragraph [ref=e273]:
+                  - text: Click on
+                  - strong [ref=e274]: Add New Pack
+                  - text: at the top of the page.
+                - paragraph [ref=e275]:
+                  - text: Select the
+                  - strong [ref=e276]: Palette Community Registry
+                  - text: from the
+                  - strong [ref=e277]: Registry
+                  - text: dropdown. Then, click on the latest
+                  - strong [ref=e278]: Hello Universe
+                  - text: pack with version
+                  - strong [ref=e279]: v1.2.0
+                  - text: .
+                - paragraph [ref=e280]:
+                  - img "Screenshot of hello universe pack" [ref=e281]
+                - paragraph [ref=e282]:
+                  - text: Once you have selected the pack, Palette will display its README, which provides you with additional guidance for usage and configuration options. The pack you added will deploy the
+                  - link "hello-universe" [ref=e283] [cursor=pointer]:
+                    - /url: https://github.com/spectrocloud/hello-universe
+                    - emphasis [ref=e284]: hello-universe
+                  - text: application.
+                - paragraph [ref=e285]:
+                  - img "Screenshot of pack readme" [ref=e286]
+                - paragraph [ref=e287]:
+                  - text: Click on
+                  - strong [ref=e288]: Values
+                  - text: to edit the pack manifest. Click on
+                  - strong [ref=e289]: Presets
+                  - text: on the right-hand side.
+                - paragraph [ref=e290]: "This pack has two configured presets:"
+                - list [ref=e291]:
+                  - listitem [ref=e292]:
+                    - strong [ref=e293]: Disable Hello Universe API
+                    - text: configures the
+                    - link "hello-universe" [ref=e294] [cursor=pointer]:
+                      - /url: https://github.com/spectrocloud/hello-universe
+                      - emphasis [ref=e295]: hello-universe
+                    - text: application as a standalone frontend application. This is the default preset selection.
+                  - listitem [ref=e296]:
+                    - strong [ref=e297]: Enable Hello Universe API
+                    - text: configures the
+                    - link "hello-universe" [ref=e298] [cursor=pointer]:
+                      - /url: https://github.com/spectrocloud/hello-universe
+                      - emphasis [ref=e299]: hello-universe
+                    - text: application as a three-tier application with a frontend, API server, and Postgres database.
+                - paragraph [ref=e300]:
+                  - text: Select the
+                  - strong [ref=e301]: Enable Hello Universe API
+                  - text: preset. The pack manifest changes according to this preset.
+                - paragraph [ref=e302]:
+                  - img "Screenshot of pack presets" [ref=e303]
+                - paragraph [ref=e304]:
+                  - text: The pack requires two values to be replaced for the authorization token and for the database password when using this preset. Replace these values with your own base64 encoded values. The
+                  - link "hello-universe" [ref=e305] [cursor=pointer]:
+                    - /url: https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#single-load-balancer
+                    - emphasis [ref=e306]: hello-universe
+                  - text: repository provides a token that you can use.
+                - paragraph [ref=e307]:
+                  - text: Click on
+                  - strong [ref=e308]: Confirm & Create
+                  - text: to save the manifest. Then, click on
+                  - strong [ref=e309]: Save Changes
+                  - text: to save this new layer to the cluster profile.
+                - heading "Wrap-UpDirect link to Wrap-Up" [level=2] [ref=e310]:
+                  - text: Wrap-Up
+                  - link "Direct link to Wrap-Up" [ref=e311] [cursor=pointer]:
+                    - /url: "#wrap-up"
+                    - text: "#"
+                - paragraph [ref=e312]: In this tutorial, you created a cluster profile, which is a template that contains the core layers required to deploy a host cluster using VMware vSphere. Then, you added a load balancer and a community pack to your profile to deploy a custom workload.
+                - paragraph [ref=e313]:
+                  - text: We recommend that you continue to the
+                  - link "Deploy a Cluster" [ref=e314] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/vmware/deploy-k8s-cluster/
+                  - text: tutorial to deploy this cluster profile to a host cluster onto VMware.
+                - heading "🧑‍🚀 Catch up with SpacetasticDirect link to 🧑‍🚀 Catch up with Spacetastic" [level=2] [ref=e315]:
+                  - text: 🧑‍🚀 Catch up with Spacetastic
+                  - link "Direct link to 🧑‍🚀 Catch up with Spacetastic" [ref=e316] [cursor=pointer]:
+                    - /url: "#-catch-up-with-spacetastic"
+                    - text: "#"
+                - paragraph [ref=e317]: Wren and Kai have created their first Palette cluster profile by following the steps described in this guide. They are in good spirits, as the process has gone smoothly.
+                - blockquote [ref=e318]:
+                  - paragraph [ref=e319]: "\"The visual representation of cluster profiles in Palette is much clearer than our whiteboard,\" says Kai, glancing back at the list they have created. \"I can keep track of which versions we are using in production just by reviewing the profile. What are your thoughts, Wren? Have you remained a Palette skeptic?\""
+                  - paragraph [ref=e320]: Wren laughs. "Yes, I admit cluster profiles are very convenient. I'm not convinced yet, but I am already starting to understand how Palette could make us more productive. Let's keep exploring and get something deployed with it!"
+                - paragraph [ref=e321]:
+                  - img "The Spacetastic team has created a cluster profile" [ref=e322]
+              - generic [ref=e323]:
+                - generic [ref=e325]:
+                  - text: "Tags:"
+                  - list [ref=e326]:
+                    - listitem [ref=e327]:
+                      - link "getting-started" [ref=e328] [cursor=pointer]:
+                        - /url: /tags/getting-started/
+                    - listitem [ref=e329]:
+                      - link "vmware" [ref=e330] [cursor=pointer]:
+                        - /url: /tags/vmware/
+                    - listitem [ref=e331]:
+                      - link "tutorial" [ref=e332] [cursor=pointer]:
+                        - /url: /tags/tutorial/
+                - link "Edit this page" [ref=e335] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/tutorials/getting-started/palette/vmware/create-cluster-profile.md
+                  - img [ref=e336]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e340]:
+              - link "Previous « Deploy a PCG" [ref=e341] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette/vmware/deploy-pcg/
+                - generic [ref=e342]: Previous
+                - generic [ref=e343]: « Deploy a PCG
+              - link "Next Deploy a Cluster »" [ref=e344] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette/vmware/deploy-k8s-cluster/
+                - generic [ref=e345]: Next
+                - generic [ref=e346]: Deploy a Cluster »
+          - list [ref=e349]:
+            - listitem [ref=e350]:
+              - link "🧑‍🚀 Back at Spacetastic HQ" [ref=e351] [cursor=pointer]:
+                - /url: "#-back-at-spacetastic-hq"
+            - listitem [ref=e352]:
+              - link "Prerequisites" [ref=e353] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e354]:
+              - link "Create a Full Cluster Profile" [ref=e355] [cursor=pointer]:
+                - /url: "#create-a-full-cluster-profile"
+            - listitem [ref=e356]:
+              - link "Add Packs" [ref=e357] [cursor=pointer]:
+                - /url: "#add-packs"
+            - listitem [ref=e358]:
+              - link "Wrap-Up" [ref=e359] [cursor=pointer]:
+                - /url: "#wrap-up"
+            - listitem [ref=e360]:
+              - link "🧑‍🚀 Catch up with Spacetastic" [ref=e361] [cursor=pointer]:
+                - /url: "#-catch-up-with-spacetastic"
+  - button "Project Logo Ask AI" [ref=e362] [cursor=pointer]:
+    - generic [ref=e365]:
+      - img "Project Logo" [ref=e366]
+      - paragraph [ref=e367]: Ask AI
+```

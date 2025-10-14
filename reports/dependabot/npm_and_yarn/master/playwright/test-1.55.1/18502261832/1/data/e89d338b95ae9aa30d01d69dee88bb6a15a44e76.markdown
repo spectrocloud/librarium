@@ -1,0 +1,342 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Security" [ref=e150] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e152]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Audit Logs" [ref=e157] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e159]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Self-Hosted Palette" [ref=e164] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e166]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e168] [cursor=pointer]
+              - listitem [ref=e169]:
+                - generic [ref=e170]:
+                  - link "Palette VerteX" [ref=e171] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e173]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e175] [cursor=pointer]
+              - listitem [ref=e176]:
+                - generic [ref=e177]:
+                  - link "Tenant Administration" [ref=e178] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e180]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e182] [cursor=pointer]
+              - listitem [ref=e183]:
+                - generic [ref=e184]:
+                  - link "Automation" [expanded] [ref=e185] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e187]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e189] [cursor=pointer]
+                - list [ref=e190]:
+                  - listitem [ref=e191]:
+                    - generic [ref=e192]:
+                      - link "Palette CLI" [expanded] [ref=e193] [cursor=pointer]:
+                        - /url: /automation/palette-cli/
+                      - button "Toggle the collapsible sidebar category 'Palette CLI'" [ref=e194] [cursor=pointer]
+                    - list [ref=e195]:
+                      - listitem [ref=e196]:
+                        - link "Install" [ref=e197] [cursor=pointer]:
+                          - /url: /automation/palette-cli/install-palette-cli/
+                      - listitem [ref=e198]:
+                        - generic [ref=e199]:
+                          - link "Commands" [ref=e200] [cursor=pointer]:
+                            - /url: /automation/palette-cli/commands/
+                          - button "Toggle the collapsible sidebar category 'Commands'" [ref=e201] [cursor=pointer]
+                  - listitem [ref=e202]:
+                    - generic [ref=e203]:
+                      - link "Palette Go SDK" [ref=e204] [cursor=pointer]:
+                        - /url: /automation/palette-sdk/
+                      - button "Toggle the collapsible sidebar category 'Palette Go SDK'" [ref=e205] [cursor=pointer]
+                  - listitem [ref=e206]:
+                    - link "Terraform" [ref=e207] [cursor=pointer]:
+                      - /url: /automation/terraform/
+                  - listitem [ref=e208]:
+                    - generic [ref=e209]:
+                      - link "Crossplane" [ref=e210] [cursor=pointer]:
+                        - /url: /automation/crossplane/
+                      - button "Toggle the collapsible sidebar category 'Crossplane'" [ref=e211] [cursor=pointer]
+              - listitem [ref=e212]:
+                - generic [ref=e213]:
+                  - link "Troubleshooting" [ref=e214] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e216]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e218] [cursor=pointer]
+              - listitem [ref=e219]:
+                - link "Glossary" [ref=e220] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e222]
+                  - text: Glossary
+              - listitem [ref=e224]:
+                - generic [ref=e225]:
+                  - link "Compliance & Legal" [ref=e226] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e228]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e230] [cursor=pointer]
+              - listitem [ref=e231]:
+                - button "Privacy Settings" [ref=e232] [cursor=pointer]:
+                  - img [ref=e233]
+                  - text: Privacy Settings
+      - main [ref=e235]:
+        - generic [ref=e237]:
+          - generic [ref=e239]:
+            - article [ref=e240]:
+              - navigation "Breadcrumbs" [ref=e241]:
+                - list [ref=e242]:
+                  - listitem [ref=e243]:
+                    - link "Home page" [ref=e244] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e245]
+                  - listitem [ref=e247]:
+                    - link "Automation" [ref=e248] [cursor=pointer]:
+                      - /url: /automation/
+                  - listitem [ref=e249]:
+                    - generic [ref=e250]: Palette CLI
+              - generic [ref=e251]:
+                - heading "Palette CLI" [level=1] [ref=e253]
+                - paragraph [ref=e254]: The Palette CLI contains various functionalities that you can use to interact with Palette and manage resources. The Palette CLI is well suited for Continuous Integration/Continuous Deployment (CI/CD) pipelines and recommended for automation tasks, where Terraform or direct API queries are not ideal.
+                - paragraph [ref=e255]:
+                  - text: To get started with the Palette CLI, check out the
+                  - link "Install" [ref=e256] [cursor=pointer]:
+                    - /url: /automation/palette-cli/install-palette-cli/
+                  - text: guide.
+                - heading "EncryptionDirect link to Encryption" [level=2] [ref=e257]:
+                  - text: Encryption
+                  - link "Direct link to Encryption" [ref=e258] [cursor=pointer]:
+                    - /url: "#encryption"
+                    - text: "#"
+                - paragraph [ref=e259]: The Palette CLI uses Advanced Encryption Standard (AES) encryption to secure sensitive data. Several CLI commands require an encryption passphrase to be provided as either an environment variable or a CLI flag. Otherwise, you will be prompted to provide the passphrase when required. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character.
+                - paragraph [ref=e260]: Sensitive data, such as the Palette API key, passwords, and other credentials, are encrypted using the provided passphrase and stored in the CLI configuration files. The CLI decrypts the data using the same passphrase when required.
+                - generic [ref=e261]:
+                  - generic [ref=e262]:
+                    - img [ref=e264]
+                    - text: warning
+                  - paragraph [ref=e267]:
+                    - text: We recommend that you store the encryption passphrase in a secure location. If you lose the passphrase, you will have to set a new encryption passphrase and update the main Palette configuration file
+                    - strong [ref=e268]: ~/.palette/palette.yaml
+                    - text: and other configuration files with the new passphrase. Refer to the
+                    - link "Update CLI Configuration Files Credentials" [ref=e269] [cursor=pointer]:
+                      - /url: /troubleshooting/automation/#scenario---update-cli-configuration-files-credentials
+                    - text: guide for steps on updating the CLI configuration files with a new passphrase.
+                - paragraph [ref=e270]:
+                  - text: We recommend you set the
+                  - code [ref=e271]: PALETTE_ENCRYPTION_PASSWORD
+                  - text: environment variable to avoid providing the passphrase every time you issue a command that requires it. You can set the environment variable using the following command. Replace
+                  - code [ref=e272]: "*************"
+                  - text: with your passphrase.
+                - generic [ref=e274]:
+                  - code [ref=e276]:
+                    - generic [ref=e277]: export PALETTE_ENCRYPTION_PASSWORD=*************
+                  - button "Copy code to clipboard" [ref=e279] [cursor=pointer]:
+                    - generic [ref=e280]:
+                      - img [ref=e281]
+                      - img [ref=e283]
+                - paragraph [ref=e285]:
+                  - text: Alternatively, you can provide the passphrase through the
+                  - code [ref=e286]: "-k"
+                  - text: or
+                  - code [ref=e287]: "--encryption-passphrase"
+                  - text: flag when issuing a command that requires the passphrase.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e288]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e289] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e290]:
+                  - listitem [ref=e291]:
+                    - paragraph [ref=e292]:
+                      - link "Install" [ref=e293] [cursor=pointer]:
+                        - /url: /automation/palette-cli/install-palette-cli/
+                  - listitem [ref=e294]:
+                    - paragraph [ref=e295]:
+                      - link "Commands" [ref=e296] [cursor=pointer]:
+                        - /url: /automation/palette-cli/commands/
+              - generic [ref=e297]:
+                - generic [ref=e299]:
+                  - text: "Tags:"
+                  - list [ref=e300]:
+                    - listitem [ref=e301]:
+                      - link "palette-cli" [ref=e302] [cursor=pointer]:
+                        - /url: /tags/palette-cli/
+                - link "Edit this page" [ref=e305] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/automation/palette-cli/palette-cli.md
+                  - img [ref=e306]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e310]:
+              - link "Previous « Automation" [ref=e311] [cursor=pointer]:
+                - /url: /automation/
+                - generic [ref=e312]: Previous
+                - generic [ref=e313]: « Automation
+              - link "Next Install »" [ref=e314] [cursor=pointer]:
+                - /url: /automation/palette-cli/install-palette-cli/
+                - generic [ref=e315]: Next
+                - generic [ref=e316]: Install »
+          - list [ref=e319]:
+            - listitem [ref=e320]:
+              - link "Encryption" [ref=e321] [cursor=pointer]:
+                - /url: "#encryption"
+            - listitem [ref=e322]:
+              - link "Resources" [ref=e323] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e324] [cursor=pointer]:
+    - generic [ref=e327]:
+      - img "Project Logo" [ref=e328]
+      - paragraph [ref=e329]: Ask AI
+```

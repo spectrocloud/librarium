@@ -1,0 +1,434 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [expanded] [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+                - list [ref=e72]:
+                  - listitem [ref=e73]:
+                    - link "Overview" [ref=e74] [cursor=pointer]:
+                      - /url: /architecture/architecture-overview/
+                  - listitem [ref=e75]:
+                    - link "Order of Operations" [ref=e76] [cursor=pointer]:
+                      - /url: /architecture/orchestration-spectrocloud/
+                  - listitem [ref=e77]:
+                    - link "Network Ports" [ref=e78] [cursor=pointer]:
+                      - /url: /architecture/networking-ports/
+                  - listitem [ref=e79]:
+                    - link "gRPC and Proxies" [ref=e80] [cursor=pointer]:
+                      - /url: /architecture/grps-proxy/
+                  - listitem [ref=e81]:
+                    - link "IP Addresses" [ref=e82] [cursor=pointer]:
+                      - /url: /architecture/palette-public-ips/
+                  - listitem [ref=e83]:
+                    - link "Namespaces and Pods" [ref=e84] [cursor=pointer]:
+                      - /url: /architecture/palette-namespaces-pods/
+                  - listitem [ref=e85]:
+                    - link "Palette eXtended Kubernetes" [ref=e86] [cursor=pointer]:
+                      - /url: /architecture/pxk/
+              - listitem [ref=e87]:
+                - generic [ref=e88]:
+                  - link "Profiles" [ref=e89] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e91]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Deployment Modes" [ref=e98] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e100]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e102] [cursor=pointer]
+              - listitem [ref=e103]:
+                - generic [ref=e104]:
+                  - link "Clusters" [ref=e105] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e107]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e116] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e118]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Palette Dev Engine" [ref=e123] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e125]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Virtual Machine Orchestrator" [ref=e130] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e132]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Workspaces" [ref=e137] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e139]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "Packs List" [ref=e144] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e146]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "User & Role Management" [ref=e151] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e153]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Registries and Packs" [ref=e158] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e160]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Security" [ref=e165] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e167]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Audit Logs" [ref=e172] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e174]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Self-Hosted Palette" [ref=e179] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e181]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e183] [cursor=pointer]
+              - listitem [ref=e184]:
+                - generic [ref=e185]:
+                  - link "Palette VerteX" [ref=e186] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e188]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e190] [cursor=pointer]
+              - listitem [ref=e191]:
+                - generic [ref=e192]:
+                  - link "Tenant Administration" [ref=e193] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e195]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e197] [cursor=pointer]
+              - listitem [ref=e198]:
+                - generic [ref=e199]:
+                  - link "Automation" [ref=e200] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e202]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e204] [cursor=pointer]
+              - listitem [ref=e205]:
+                - generic [ref=e206]:
+                  - link "Troubleshooting" [ref=e207] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e209]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e211] [cursor=pointer]
+              - listitem [ref=e212]:
+                - link "Glossary" [ref=e213] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e215]
+                  - text: Glossary
+              - listitem [ref=e217]:
+                - generic [ref=e218]:
+                  - link "Compliance & Legal" [ref=e219] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e221]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e223] [cursor=pointer]
+              - listitem [ref=e224]:
+                - button "Privacy Settings" [ref=e225] [cursor=pointer]:
+                  - img [ref=e226]
+                  - text: Privacy Settings
+      - main [ref=e228]:
+        - generic [ref=e230]:
+          - generic [ref=e232]:
+            - article [ref=e233]:
+              - navigation "Breadcrumbs" [ref=e234]:
+                - list [ref=e235]:
+                  - listitem [ref=e236]:
+                    - link "Home page" [ref=e237] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e238]
+                  - listitem [ref=e240]:
+                    - link "Architecture" [ref=e241] [cursor=pointer]:
+                      - /url: /architecture/
+                  - listitem [ref=e242]:
+                    - generic [ref=e243]: gRPC and Proxies
+              - generic [ref=e244]:
+                - heading "gRPC and Proxies" [level=1] [ref=e246]
+                - paragraph [ref=e247]:
+                  - text: Palette uses
+                  - link "gRPC" [ref=e248] [cursor=pointer]:
+                    - /url: https://grpc.io
+                  - text: to communicate between the management platform and the workload cluster. gRPC is a high-performance, open source universal Remote Procedure Call (RPC) framework. It is used to build distributed applications and services. gRPC is based on HTTP/2 protocol and uses protocol buffers (
+                  - link "protobuf" [ref=e249] [cursor=pointer]:
+                    - /url: https://protobuf.dev/
+                  - text: ) as the underlying data serialization framework.
+                - generic [ref=e250]:
+                  - generic [ref=e251]:
+                    - img [ref=e253]
+                    - text: tip
+                  - paragraph [ref=e256]:
+                    - text: Refer to the
+                    - link "Network Ports" [ref=e257] [cursor=pointer]:
+                      - /url: /architecture/networking-ports/
+                    - text: documentation for a detailed network architecture diagram with gRPC and to learn more about the ports used for communication.
+                - heading "gRPC and WebSocketDirect link to gRPC and WebSocket" [level=2] [ref=e258]:
+                  - text: gRPC and WebSocket
+                  - link "Direct link to gRPC and WebSocket" [ref=e259] [cursor=pointer]:
+                    - /url: "#grpc-and-websocket"
+                    - text: "#"
+                - paragraph [ref=e260]: The Palette agent will automatically attempt to connect to the management plane using gRPC through HTTPS using the HTTP/2 protocol. In some environments, the network configuration may not allow gRPC traffic to pass through. A common scenario is when the network is behind a proxy server that does not support HTTP/2. In this scenario, the Palette agent will first attempt to connect to the management plane using HTTP/2. After several failed attempts, the agent will fall back to using WebSocket over HTTPS with HTTP/1.1.
+                - paragraph [ref=e261]: The fallback to WebSocket with transcoding occurs automatically and does not require any additional configuration.
+                - heading "gRPC TranscodeDirect link to gRPC Transcode" [level=3] [ref=e262]:
+                  - text: gRPC Transcode
+                  - link "Direct link to gRPC Transcode" [ref=e263] [cursor=pointer]:
+                    - /url: "#grpc-transcode"
+                    - text: "#"
+                - paragraph [ref=e264]: Behind the scenes, when the Palette agent fails to connect with the management plane after a maximum of ten connection attempts, the agent initiates the failover to a WebSocket connection and transcodes the gRPC messages with the HTTP/1.1 protocol.
+                - paragraph [ref=e265]: The Palette agent directs gRPC messages to a freshly started in-memory proxy service, which takes the original gRPC request, transcodes it to HTTP/1.1 protocol, and sends it over the WebSocket connection to the management plane. The management plane's WebSocket handler will then accept the WebSocket message and transcode it back to the HTTP/2 protocol before forwarding it to the gRPC handler. The server will then respond with a gRPC message, which will be transcoded to HTTP/1.1 and sent back to the agent over the WebSocket. The agent's in-memory proxy will read the message and transcode it back to HTTP/2 and pass it to the agent.
+                - paragraph [ref=e266]:
+                  - img "An architecture diagram of the gRPC over WebSocket flow from a network perspective. Agent to agent proxy, to WebSocket handler, who then forwards the message to the server gRPC handler." [ref=e267]
+                - paragraph [ref=e268]: "Below is a high-level overview of the order of operations when the Palette agent falls back to using WebSocket:"
+                - list [ref=e269]:
+                  - listitem [ref=e270]: The agent initiates a new gRPC request to the management plane servers that is picked up by the in-memory proxy service.
+                  - listitem [ref=e271]: The agent's in-memory proxy creates a WebSocket connection with the management plane servers.
+                  - listitem [ref=e272]: The management plane server accepts the WebSocket connection
+                  - listitem [ref=e273]: The agent in-memory proxy transcodes the gRPC request on-demand and sends it via the WebSocket connection.
+                  - listitem [ref=e274]: The server's WebSocker handler reads the request off the WebSocket connection and forwards it to the server's gRPC handler.
+                  - listitem [ref=e275]: The gRPC handler processes the request and responds via the same connection. The WebSocket handler sends the response from the gRPC handler back to the agent.
+                  - listitem [ref=e276]: The agent's in-memory proxy reads the response off the WebSocket connection and transcodes it back to HTTP/2 and passes it to the agent.
+                - paragraph [ref=e277]: A more straightforward way to think about the WebSocket transcoding architecture is that network traffic between the Palette agent and the management plane uses the WebSocket connection and the HTTP/1.1 protocol. The agent and server are still communicating using gRPC, but the messages are transcoded to the HTTP/1.1 protocol between the two entities. Using WebSocket and HTTP/1.1 removes issues due to application firewalls or network proxies not supporting the HTTP/2 protocol. Once the gRPC message is internal to the agent or the server, the HTTP/2 protocol is used for communication.
+                - heading "gRPC and ProxiesDirect link to gRPC and Proxies" [level=2] [ref=e278]:
+                  - text: gRPC and Proxies
+                  - link "Direct link to gRPC and Proxies" [ref=e279] [cursor=pointer]:
+                    - /url: "#grpc-and-proxies"
+                    - text: "#"
+                - generic [ref=e280]:
+                  - generic [ref=e281]:
+                    - img [ref=e283]
+                    - text: info
+                  - paragraph [ref=e286]:
+                    - text: The following sections provide information about using gRPC with network proxies. These issues are addressed by using WebSocket and the HTTP/1.1 protocol as a fallback mechanism. However, if you want to better understand the reasons for falling back to a WebSocket connection, the following sections provide more information about challenges with gRPC and network proxies. If you want to learn more about gRPC and transcoding, check out the Red Hat article
+                    - link "gRPC Anywhere" [ref=e287] [cursor=pointer]:
+                      - /url: https://www.redhat.com/en/blog/grpc-anywhere
+                    - text: .
+                - paragraph [ref=e288]: When gRPC is used with network proxies, the proxy servers may or may not support gRPC or require additional configuration to allow gRPC traffic to pass through. The following table summarizes the different scenarios and whether or not the proxy server supports gRPC. Keep in mind that should the gRPC connection fail, the agent will automatically fall back to using WebSocket.
+                - table [ref=e289]:
+                  - rowgroup [ref=e290]:
+                    - row "Scenario Description Proxy Supported" [ref=e291]:
+                      - cell "Scenario" [ref=e292]:
+                        - strong [ref=e293]: Scenario
+                      - cell "Description" [ref=e294]:
+                        - strong [ref=e295]: Description
+                      - cell "Proxy Supported" [ref=e296]:
+                        - strong [ref=e297]: Proxy Supported
+                  - rowgroup [ref=e298]:
+                    - row "gRCP with HTTP/HTTPS - No SSL bump gRPC traffic is sent over HTTP/HTTPS, and the proxy does not perform a Secure Socket Layer (SSL) bump. This is universally supported. ✅" [ref=e299]:
+                      - cell "gRCP with HTTP/HTTPS - No SSL bump" [ref=e300]
+                      - cell "gRPC traffic is sent over HTTP/HTTPS, and the proxy does not perform a Secure Socket Layer (SSL) bump. This is universally supported." [ref=e301]
+                      - cell "✅" [ref=e302]
+                    - row "gRPC with HTTP/HTTPS - SSL bump gRPC traffic is sent over HTTP/HTTPS, and the proxy performs an SSL bump. Support varies by vendor. ⚠️" [ref=e303]:
+                      - cell "gRPC with HTTP/HTTPS - SSL bump" [ref=e304]
+                      - cell "gRPC traffic is sent over HTTP/HTTPS, and the proxy performs an SSL bump. Support varies by vendor." [ref=e305]
+                      - cell "⚠️" [ref=e306]
+                    - row "gRPC with Squid Open Source Proxy gRPC traffic is sent over HTTP/HTTPS, and the proxy performs an SSL bump. Supported in some scenarios but requires additional configuration. ❌ or ⚠️" [ref=e307]:
+                      - cell "gRPC with Squid Open Source Proxy" [ref=e308]:
+                        - text: gRPC with
+                        - link "Squid" [ref=e309] [cursor=pointer]:
+                          - /url: https://wiki.squid-cache.org
+                        - text: Open Source Proxy
+                      - cell "gRPC traffic is sent over HTTP/HTTPS, and the proxy performs an SSL bump. Supported in some scenarios but requires additional configuration." [ref=e310]
+                      - cell "❌ or ⚠️" [ref=e311]
+                - paragraph [ref=e312]: The following sections provide more information about gRPC and proxies.
+                - heading "Proxy Without SSL BumpDirect link to Proxy Without SSL Bump" [level=3] [ref=e313]:
+                  - text: Proxy Without SSL Bump
+                  - link "Direct link to Proxy Without SSL Bump" [ref=e314] [cursor=pointer]:
+                    - /url: "#proxy-without-ssl-bump"
+                    - text: "#"
+                - paragraph [ref=e315]:
+                  - text: Because gRPC is based on HTTP/2, any proxy server that supports the
+                  - link "HTTP CONNECT" [ref=e316] [cursor=pointer]:
+                    - /url: https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT
+                  - text: method can be used to forward gRPC traffic. No configuration is required for this scenario. The exception is when the proxy server performs an SSL bump, discussed in the
+                  - link "Proxy With SSL Bump" [ref=e317] [cursor=pointer]:
+                    - /url: "#proxy-with-ssl-bump"
+                  - text: section.
+                - generic [ref=e318]:
+                  - generic [ref=e319]:
+                    - img [ref=e321]
+                    - text: info
+                  - paragraph [ref=e324]: SSL bump is a technique used to decrypt and inspect HTTPS traffic. When SSL bump is enabled, the proxy server terminates the Transport Layer Security (TLS) connection and establishes a new TLS connection to the destination server. In this scenario, the proxy server must support gRPC and may require additional configuration.
+                - heading "Proxy With SSL BumpDirect link to Proxy With SSL Bump" [level=3] [ref=e325]:
+                  - text: Proxy With SSL Bump
+                  - link "Direct link to Proxy With SSL Bump" [ref=e326] [cursor=pointer]:
+                    - /url: "#proxy-with-ssl-bump"
+                    - text: "#"
+                - paragraph [ref=e327]: Several vendors provide proxy servers that support gRPC. Some of the vendors may require additional configurations or the use of a specific version of the proxy server. We encourage you to review your proxy server documentation for more information.
+                - paragraph [ref=e328]: When you review the vendor documentation, search for information about gRPC and HTTP/2. We provide the following links to some vendors' documentation that addresses HTTP/2 and gRPC support.
+                - list [ref=e329]:
+                  - listitem [ref=e330]:
+                    - paragraph [ref=e331]:
+                      - link "F5" [ref=e332] [cursor=pointer]:
+                        - /url: https://my.f5.com/manage/s/article/K47440400
+                  - listitem [ref=e333]:
+                    - paragraph [ref=e334]:
+                      - link "Palo Alto" [ref=e335] [cursor=pointer]:
+                        - /url: https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000CmdQCAS
+                  - listitem [ref=e336]:
+                    - paragraph [ref=e337]:
+                      - link "Fortinet" [ref=e338] [cursor=pointer]:
+                        - /url: https://docs.fortinet.com/document/fortigate/7.4.0/administration-guide/710924/https-2-support-in-proxy-mode-ssl-inspection
+                  - listitem [ref=e339]:
+                    - paragraph [ref=e340]:
+                      - link "Check Point" [ref=e341] [cursor=pointer]:
+                        - /url: https://support.checkpoint.com/results/sk/sk116022
+                - heading "Squid Proxy With SSL BumpDirect link to Squid Proxy With SSL Bump" [level=3] [ref=e342]:
+                  - text: Squid Proxy With SSL Bump
+                  - link "Direct link to Squid Proxy With SSL Bump" [ref=e343] [cursor=pointer]:
+                    - /url: "#squid-proxy-with-ssl-bump"
+                    - text: "#"
+                - paragraph [ref=e344]:
+                  - text: A common open source proxy server is
+                  - link "Squid" [ref=e345] [cursor=pointer]:
+                    - /url: https://wiki.squid-cache.org
+                  - text: . Squid is a caching proxy for the Web supporting HTTP, HTTPS, FTP, and more. Squid supports gRPC but requires additional configuration. gRPC with SSL bump does not work with all versions of Squid, such as versions 5 and 6. Review the
+                  - link "SSL Bump issue" [ref=e346] [cursor=pointer]:
+                    - /url: https://bugs.squid-cache.org/show_bug.cgi?id=5245
+                  - text: to learn more about the issue and track the progress of the fix.
+                - paragraph [ref=e347]:
+                  - text: If you are using a Squid version not affected by the issue, you can configure Squid with SSL bump to support gRPC. Use the
+                  - link "Configuring SSL Bumping in the Squid service" [ref=e348] [cursor=pointer]:
+                    - /url: https://support.kaspersky.com/KWTS/6.1/en-US/166244.htm
+                  - text: guide to learn how to configure Squid with SSL bump. Additionally, you may have to configure exclusion rules when using SSL bumping with gRPC. Refer to the
+                  - link "Adding exclusions for SSL Bumping" [ref=e349] [cursor=pointer]:
+                    - /url: https://support.kaspersky.com/KWTS/6.1/en-US/193664.htm
+                  - text: to learn more.
+              - link "Edit this page" [ref=e353] [cursor=pointer]:
+                - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/architecture/grps-proxy.md
+                - img [ref=e354]
+                - text: Edit this page
+            - navigation "Docs pages" [ref=e358]:
+              - link "Previous « Network Ports" [ref=e359] [cursor=pointer]:
+                - /url: /architecture/networking-ports/
+                - generic [ref=e360]: Previous
+                - generic [ref=e361]: « Network Ports
+              - link "Next IP Addresses »" [ref=e362] [cursor=pointer]:
+                - /url: /architecture/palette-public-ips/
+                - generic [ref=e363]: Next
+                - generic [ref=e364]: IP Addresses »
+          - list [ref=e367]:
+            - listitem [ref=e368]:
+              - link "gRPC and WebSocket" [ref=e369] [cursor=pointer]:
+                - /url: "#grpc-and-websocket"
+              - list [ref=e370]:
+                - listitem [ref=e371]:
+                  - link "gRPC Transcode" [ref=e372] [cursor=pointer]:
+                    - /url: "#grpc-transcode"
+            - listitem [ref=e373]:
+              - link "gRPC and Proxies" [ref=e374] [cursor=pointer]:
+                - /url: "#grpc-and-proxies"
+              - list [ref=e375]:
+                - listitem [ref=e376]:
+                  - link "Proxy Without SSL Bump" [ref=e377] [cursor=pointer]:
+                    - /url: "#proxy-without-ssl-bump"
+                - listitem [ref=e378]:
+                  - link "Proxy With SSL Bump" [ref=e379] [cursor=pointer]:
+                    - /url: "#proxy-with-ssl-bump"
+                - listitem [ref=e380]:
+                  - link "Squid Proxy With SSL Bump" [ref=e381] [cursor=pointer]:
+                    - /url: "#squid-proxy-with-ssl-bump"
+  - button "Project Logo Ask AI" [ref=e382] [cursor=pointer]:
+    - generic [ref=e385]:
+      - img "Project Logo" [ref=e386]
+      - paragraph [ref=e387]: Ask AI
+```

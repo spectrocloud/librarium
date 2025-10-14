@@ -1,0 +1,522 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [expanded] [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+                - list [ref=e141]:
+                  - listitem [ref=e142]:
+                    - generic [ref=e143]:
+                      - link "User Authentication" [ref=e144] [cursor=pointer]:
+                        - /url: /user-management/authentication/
+                      - button "Toggle the collapsible sidebar category 'User Authentication'" [ref=e145] [cursor=pointer]
+                  - listitem [ref=e146]:
+                    - generic [ref=e147]:
+                      - link "Users and Teams" [expanded] [ref=e148] [cursor=pointer]:
+                        - /url: /user-management/users-and-teams/
+                      - button "Toggle the collapsible sidebar category 'Users and Teams'" [ref=e149] [cursor=pointer]
+                    - list [ref=e150]:
+                      - listitem [ref=e151]:
+                        - link "Create and Manage a User" [ref=e152] [cursor=pointer]:
+                          - /url: /user-management/users-and-teams/create-user/
+                      - listitem [ref=e153]:
+                        - link "Create and Manage a Team" [ref=e154] [cursor=pointer]:
+                          - /url: /user-management/users-and-teams/create-a-team/
+                  - listitem [ref=e155]:
+                    - generic [ref=e156]:
+                      - link "Roles and Permissions" [ref=e157] [cursor=pointer]:
+                        - /url: /user-management/palette-rbac/
+                      - button "Toggle the collapsible sidebar category 'Roles and Permissions'" [ref=e158] [cursor=pointer]
+                  - listitem [ref=e159]:
+                    - generic [ref=e160]:
+                      - link "SAML and OIDC SSO" [ref=e161] [cursor=pointer]:
+                        - /url: /user-management/saml-sso/
+                      - button "Toggle the collapsible sidebar category 'SAML and OIDC SSO'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Registries and Packs" [ref=e165] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e167]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Security" [ref=e172] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e174]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Audit Logs" [ref=e179] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e181]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e183] [cursor=pointer]
+              - listitem [ref=e184]:
+                - generic [ref=e185]:
+                  - link "Self-Hosted Palette" [ref=e186] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e188]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e190] [cursor=pointer]
+              - listitem [ref=e191]:
+                - generic [ref=e192]:
+                  - link "Palette VerteX" [ref=e193] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e195]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e197] [cursor=pointer]
+              - listitem [ref=e198]:
+                - generic [ref=e199]:
+                  - link "Tenant Administration" [ref=e200] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e202]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e204] [cursor=pointer]
+              - listitem [ref=e205]:
+                - generic [ref=e206]:
+                  - link "Automation" [ref=e207] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e209]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e211] [cursor=pointer]
+              - listitem [ref=e212]:
+                - generic [ref=e213]:
+                  - link "Troubleshooting" [ref=e214] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e216]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e218] [cursor=pointer]
+              - listitem [ref=e219]:
+                - link "Glossary" [ref=e220] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e222]
+                  - text: Glossary
+              - listitem [ref=e224]:
+                - generic [ref=e225]:
+                  - link "Compliance & Legal" [ref=e226] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e228]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e230] [cursor=pointer]
+              - listitem [ref=e231]:
+                - button "Privacy Settings" [ref=e232] [cursor=pointer]:
+                  - img [ref=e233]
+                  - text: Privacy Settings
+      - main [ref=e235]:
+        - generic [ref=e237]:
+          - generic [ref=e239]:
+            - article [ref=e240]:
+              - navigation "Breadcrumbs" [ref=e241]:
+                - list [ref=e242]:
+                  - listitem [ref=e243]:
+                    - link "Home page" [ref=e244] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e245]
+                  - listitem [ref=e247]:
+                    - link "User & Role Management" [ref=e248] [cursor=pointer]:
+                      - /url: /user-management/
+                  - listitem [ref=e249]:
+                    - link "Users and Teams" [ref=e250] [cursor=pointer]:
+                      - /url: /user-management/users-and-teams/
+                  - listitem [ref=e251]:
+                    - generic [ref=e252]: Create and Manage a Team
+              - generic [ref=e253]:
+                - heading "Create and Manage a Team" [level=1] [ref=e255]
+                - paragraph [ref=e256]:
+                  - text: Teams are a collection of users that share a common set of permissions through
+                  - link "roles" [ref=e257] [cursor=pointer]:
+                    - /url: /user-management/palette-rbac/
+                  - text: that grants them access to resources. By grouping users together, you can manage their access to projects and resources.
+                - heading "Team CreationDirect link to Team Creation" [level=2] [ref=e258]:
+                  - text: Team Creation
+                  - link "Direct link to Team Creation" [ref=e259] [cursor=pointer]:
+                    - /url: "#team-creation"
+                    - text: "#"
+                - paragraph [ref=e260]: Use the following steps to create a team.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e261]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e262] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e263]:
+                  - listitem [ref=e264]:
+                    - paragraph [ref=e265]:
+                      - text: Tenant Admin access with the permissions
+                      - code [ref=e266]: team.create
+                      - text: and
+                      - code [ref=e267]: user.list
+                      - text: .
+                  - listitem [ref=e268]:
+                    - paragraph [ref=e269]:
+                      - text: At least one user in the tenant. Check out the
+                      - link "Create a User" [ref=e270] [cursor=pointer]:
+                        - /url: /user-management/users-and-teams/create-user/
+                      - text: guide to learn how to create a user.
+                - heading "Create a TeamDirect link to Create a Team" [level=3] [ref=e271]:
+                  - text: Create a Team
+                  - link "Direct link to Create a Team" [ref=e272] [cursor=pointer]:
+                    - /url: "#create-a-team"
+                    - text: "#"
+                - list [ref=e273]:
+                  - listitem [ref=e274]:
+                    - paragraph [ref=e275]:
+                      - text: Log in to
+                      - link "Palette" [ref=e276] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a Tenant admin.
+                  - listitem [ref=e277]:
+                    - paragraph [ref=e278]:
+                      - text: Navigate to the left
+                      - strong [ref=e279]: Main Menu
+                      - text: and select
+                      - strong [ref=e280]: Tenant Settings
+                      - text: .
+                  - listitem [ref=e281]:
+                    - paragraph [ref=e282]:
+                      - text: Select
+                      - strong [ref=e283]: Users & Teams
+                      - text: .
+                  - listitem [ref=e284]:
+                    - paragraph [ref=e285]:
+                      - text: Click on the
+                      - strong [ref=e286]: Teams
+                      - text: tab.
+                  - listitem [ref=e287]:
+                    - paragraph [ref=e288]:
+                      - text: Click
+                      - strong [ref=e289]: Create Team
+                      - text: .
+                  - listitem [ref=e290]:
+                    - paragraph [ref=e291]: Enter the team name and the description (optional), then select the users to add to the team.
+                  - listitem [ref=e292]:
+                    - paragraph [ref=e293]:
+                      - text: Click
+                      - strong [ref=e294]: Confirm
+                      - text: to create the team.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e295]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e296] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e297]:
+                  - listitem [ref=e298]:
+                    - paragraph [ref=e299]:
+                      - text: Log in to
+                      - link "Palette" [ref=e300] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a Tenant admin.
+                  - listitem [ref=e301]:
+                    - paragraph [ref=e302]:
+                      - text: Navigate to the left
+                      - strong [ref=e303]: Main Menu
+                      - text: and select
+                      - strong [ref=e304]: Tenant Settings
+                      - text: .
+                  - listitem [ref=e305]:
+                    - paragraph [ref=e306]:
+                      - text: Select
+                      - strong [ref=e307]: Users & Teams
+                      - text: .
+                  - listitem [ref=e308]:
+                    - paragraph [ref=e309]:
+                      - text: Click on the
+                      - strong [ref=e310]: Teams
+                      - text: tab.
+                  - listitem [ref=e311]:
+                    - paragraph [ref=e312]: Verify that the team you created is listed.
+                  - listitem [ref=e313]:
+                    - paragraph [ref=e314]:
+                      - text: Switch to the
+                      - strong [ref=e315]: Users
+                      - text: tab and select a user that you added to the team.
+                  - listitem [ref=e316]:
+                    - paragraph [ref=e317]: Verify that the user is associated with the team you created.
+                - heading "Team DeletionDirect link to Team Deletion" [level=2] [ref=e318]:
+                  - text: Team Deletion
+                  - link "Direct link to Team Deletion" [ref=e319] [cursor=pointer]:
+                    - /url: "#team-deletion"
+                    - text: "#"
+                - paragraph [ref=e320]: Use the following steps to delete a team from Palette.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e321]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e322] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e323]:
+                  - listitem [ref=e324]:
+                    - paragraph [ref=e325]:
+                      - text: Tenant Admin access with the permissions
+                      - code [ref=e326]: team.delete
+                      - text: .
+                  - listitem [ref=e327]:
+                    - paragraph [ref=e328]:
+                      - text: At least one team in the tenant. Check out the
+                      - link "Create a Team" [ref=e329] [cursor=pointer]:
+                        - /url: "#create-a-team"
+                      - text: guide to learn how to create a team.
+                - heading "Delete a TeamDirect link to Delete a Team" [level=3] [ref=e330]:
+                  - text: Delete a Team
+                  - link "Direct link to Delete a Team" [ref=e331] [cursor=pointer]:
+                    - /url: "#delete-a-team"
+                    - text: "#"
+                - list [ref=e332]:
+                  - listitem [ref=e333]:
+                    - paragraph [ref=e334]:
+                      - text: Log in to
+                      - link "Palette" [ref=e335] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a Tenant admin.
+                  - listitem [ref=e336]:
+                    - paragraph [ref=e337]:
+                      - text: Navigate to the left
+                      - strong [ref=e338]: Main Menu
+                      - text: and select
+                      - strong [ref=e339]: Tenant Settings
+                      - text: .
+                  - listitem [ref=e340]:
+                    - paragraph [ref=e341]:
+                      - text: Select
+                      - strong [ref=e342]: Users & Teams
+                      - text: .
+                  - listitem [ref=e343]:
+                    - paragraph [ref=e344]:
+                      - text: Click on the
+                      - strong [ref=e345]: Teams
+                      - text: tab.
+                  - listitem [ref=e346]:
+                    - paragraph [ref=e347]: Click on the row of the team you want to delete.
+                  - listitem [ref=e348]:
+                    - paragraph [ref=e349]:
+                      - text: Click on the
+                      - strong [ref=e350]: Delete Team
+                      - text: button.
+                  - listitem [ref=e351]:
+                    - paragraph [ref=e352]:
+                      - text: Click
+                      - strong [ref=e353]: OK
+                      - text: to delete the team.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e354]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e355] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - list [ref=e356]:
+                  - listitem [ref=e357]:
+                    - paragraph [ref=e358]:
+                      - text: Log in to
+                      - link "Palette" [ref=e359] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a Tenant admin.
+                  - listitem [ref=e360]:
+                    - paragraph [ref=e361]:
+                      - text: Navigate to the left
+                      - strong [ref=e362]: Main Menu
+                      - text: and select
+                      - strong [ref=e363]: Tenant Settings
+                      - text: .
+                  - listitem [ref=e364]:
+                    - paragraph [ref=e365]:
+                      - text: Select
+                      - strong [ref=e366]: Users & Teams
+                      - text: .
+                  - listitem [ref=e367]:
+                    - paragraph [ref=e368]:
+                      - text: Click on the
+                      - strong [ref=e369]: Teams
+                      - text: tab.
+                  - listitem [ref=e370]:
+                    - paragraph [ref=e371]: Verify that the team you deleted is no longer listed.
+                  - listitem [ref=e372]:
+                    - paragraph [ref=e373]:
+                      - text: Switch to the
+                      - strong [ref=e374]: Users
+                      - text: tab and select a user that was associated with the team you deleted.
+                  - listitem [ref=e375]:
+                    - paragraph [ref=e376]: Verify that the user is no longer associated with the team you deleted.
+              - generic [ref=e377]:
+                - generic [ref=e379]:
+                  - text: "Tags:"
+                  - list [ref=e380]:
+                    - listitem [ref=e381]:
+                      - link "user-management" [ref=e382] [cursor=pointer]:
+                        - /url: /tags/user-management/
+                    - listitem [ref=e383]:
+                      - link "team" [ref=e384] [cursor=pointer]:
+                        - /url: /tags/team/
+                - link "Edit this page" [ref=e387] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/user-management/users-and-teams/create-a-team.md
+                  - img [ref=e388]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e392]:
+              - link "Previous « Create and Manage a User" [ref=e393] [cursor=pointer]:
+                - /url: /user-management/users-and-teams/create-user/
+                - generic [ref=e394]: Previous
+                - generic [ref=e395]: « Create and Manage a User
+              - link "Next Roles and Permissions »" [ref=e396] [cursor=pointer]:
+                - /url: /user-management/palette-rbac/
+                - generic [ref=e397]: Next
+                - generic [ref=e398]: Roles and Permissions »
+          - list [ref=e401]:
+            - listitem [ref=e402]:
+              - link "Team Creation" [ref=e403] [cursor=pointer]:
+                - /url: "#team-creation"
+              - list [ref=e404]:
+                - listitem [ref=e405]:
+                  - link "Prerequisites" [ref=e406] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e407]:
+                  - link "Create a Team" [ref=e408] [cursor=pointer]:
+                    - /url: "#create-a-team"
+                - listitem [ref=e409]:
+                  - link "Validate" [ref=e410] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e411]:
+              - link "Team Deletion" [ref=e412] [cursor=pointer]:
+                - /url: "#team-deletion"
+              - list [ref=e413]:
+                - listitem [ref=e414]:
+                  - link "Prerequisites" [ref=e415] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e416]:
+                  - link "Delete a Team" [ref=e417] [cursor=pointer]:
+                    - /url: "#delete-a-team"
+                - listitem [ref=e418]:
+                  - link "Validate" [ref=e419] [cursor=pointer]:
+                    - /url: "#validate-1"
+  - button "Project Logo Ask AI" [ref=e420] [cursor=pointer]:
+    - generic [ref=e423]:
+      - img "Project Logo" [ref=e424]
+      - paragraph [ref=e425]: Ask AI
+```

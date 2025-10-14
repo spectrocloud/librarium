@@ -1,0 +1,705 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                  - listitem [ref=e107]:
+                    - generic [ref=e108]:
+                      - link "Data Center Clusters" [ref=e109] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e111]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e113] [cursor=pointer]
+                  - listitem [ref=e114]:
+                    - generic [ref=e115]:
+                      - link "Edge" [expanded] [ref=e116] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e118]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e120] [cursor=pointer]
+                    - list [ref=e121]:
+                      - listitem [ref=e122]:
+                        - generic [ref=e123]:
+                          - link "Architecture" [ref=e124] [cursor=pointer]:
+                            - /url: /clusters/edge/architecture/
+                          - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e125] [cursor=pointer]
+                      - listitem [ref=e126]:
+                        - link "Hardware Requirements" [ref=e127] [cursor=pointer]:
+                          - /url: /clusters/edge/hardware-requirements/
+                      - listitem [ref=e128]:
+                        - link "Deployment Lifecycle" [ref=e129] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-native-lifecycle/
+                      - listitem [ref=e130]:
+                        - generic [ref=e131]:
+                          - link "Trusted Boot" [ref=e132] [cursor=pointer]:
+                            - /url: /clusters/edge/trusted-boot/
+                          - button "Toggle the collapsible sidebar category 'Trusted Boot'" [ref=e133] [cursor=pointer]
+                      - listitem [ref=e134]:
+                        - generic [ref=e135]:
+                          - link "Install Configuration" [ref=e136] [cursor=pointer]:
+                            - /url: /clusters/edge/edge-configuration/
+                          - button "Toggle the collapsible sidebar category 'Install Configuration'" [ref=e137] [cursor=pointer]
+                      - listitem [ref=e138]:
+                        - generic [ref=e139]:
+                          - link "EdgeForge Workflow" [ref=e140] [cursor=pointer]:
+                            - /url: /clusters/edge/edgeforge-workflow/
+                          - button "Toggle the collapsible sidebar category 'EdgeForge Workflow'" [ref=e141] [cursor=pointer]
+                      - listitem [ref=e142]:
+                        - generic [ref=e143]:
+                          - link "Local UI" [expanded] [ref=e144] [cursor=pointer]:
+                            - /url: /clusters/edge/local-ui/
+                          - button "Toggle the collapsible sidebar category 'Local UI'" [ref=e145] [cursor=pointer]
+                        - list [ref=e146]:
+                          - listitem [ref=e147]:
+                            - generic [ref=e148]:
+                              - link "Cluster Operations" [ref=e149] [cursor=pointer]:
+                                - /url: /clusters/edge/local-ui/cluster-management/
+                              - button "Toggle the collapsible sidebar category 'Cluster Operations'" [ref=e150] [cursor=pointer]
+                          - listitem [ref=e151]:
+                            - generic [ref=e152]:
+                              - link "Host Management" [expanded] [ref=e153] [cursor=pointer]:
+                                - /url: /clusters/edge/local-ui/host-management/
+                              - button "Toggle the collapsible sidebar category 'Host Management'" [ref=e154] [cursor=pointer]
+                            - list [ref=e155]:
+                              - listitem [ref=e156]:
+                                - link "Edit User Data" [ref=e157] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/edit-user-data/
+                              - listitem [ref=e158]:
+                                - link "Access Local UI" [ref=e159] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/access-console/
+                              - listitem [ref=e160]:
+                                - link "Reboot, Shutdown, and Reset Edge Host" [ref=e161] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/reset-reboot/
+                              - listitem [ref=e162]:
+                                - link "Configure HTTP-Proxy in Local UI" [ref=e163] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/configure-proxy/
+                              - listitem [ref=e164]:
+                                - link "Network Diagnostic Tools" [ref=e165] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/diagnostic-tools/
+                              - listitem [ref=e166]:
+                                - link "Add Custom Links to Sidebar" [ref=e167] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/custom-link/
+                              - listitem [ref=e168]:
+                                - link "Customize Local UI Theme" [ref=e169] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/theming/
+                              - listitem [ref=e170]:
+                                - link "Configure and Access Audit Logs" [ref=e171] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/audit-logs/
+                              - listitem [ref=e172]:
+                                - link "Download Files from Local UI" [ref=e173] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/download-files/
+                      - listitem [ref=e174]:
+                        - generic [ref=e175]:
+                          - link "Deployment" [ref=e176] [cursor=pointer]:
+                            - /url: /clusters/edge/site-deployment/
+                          - button "Toggle the collapsible sidebar category 'Deployment'" [ref=e177] [cursor=pointer]
+                      - listitem [ref=e178]:
+                        - generic [ref=e179]:
+                          - link "Cluster Management" [ref=e180] [cursor=pointer]:
+                            - /url: /clusters/edge/cluster-management/
+                          - button "Toggle the collapsible sidebar category 'Cluster Management'" [ref=e181] [cursor=pointer]
+                      - listitem [ref=e182]:
+                        - generic [ref=e183]:
+                          - link "Networking" [ref=e184] [cursor=pointer]:
+                            - /url: /clusters/edge/networking/
+                          - button "Toggle the collapsible sidebar category 'Networking'" [ref=e185] [cursor=pointer]
+                      - listitem [ref=e186]:
+                        - generic [ref=e187]:
+                          - link "Third Party Integrations" [ref=e188] [cursor=pointer]:
+                            - /url: /clusters/edge/third-party-integrations/
+                          - button "Toggle the collapsible sidebar category 'Third Party Integrations'" [ref=e189] [cursor=pointer]
+                  - listitem [ref=e190]:
+                    - generic [ref=e191]:
+                      - link "Palette Virtual Clusters" [ref=e192] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e194]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e196] [cursor=pointer]
+                  - listitem [ref=e197]:
+                    - generic [ref=e198]:
+                      - link "Imported Clusters" [ref=e199] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e201]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e203] [cursor=pointer]
+                  - listitem [ref=e204]:
+                    - generic [ref=e205]:
+                      - link "Manage Clusters" [ref=e206] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e208]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e210] [cursor=pointer]
+                  - listitem [ref=e211]:
+                    - generic [ref=e212]:
+                      - link "Cluster Groups" [ref=e213] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e215]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e217] [cursor=pointer]
+                  - listitem [ref=e218]:
+                    - generic [ref=e219]:
+                      - link "Private Cloud Gateway" [ref=e220] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e222]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e224] [cursor=pointer]
+              - listitem [ref=e225]:
+                - generic [ref=e226]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e227] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e229]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e231] [cursor=pointer]
+              - listitem [ref=e232]:
+                - generic [ref=e233]:
+                  - link "Palette Dev Engine" [ref=e234] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e236]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e238] [cursor=pointer]
+              - listitem [ref=e239]:
+                - generic [ref=e240]:
+                  - link "Virtual Machine Orchestrator" [ref=e241] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e243]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e245] [cursor=pointer]
+              - listitem [ref=e246]:
+                - generic [ref=e247]:
+                  - link "Workspaces" [ref=e248] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e250]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e252] [cursor=pointer]
+              - listitem [ref=e253]:
+                - generic [ref=e254]:
+                  - link "Packs List" [ref=e255] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e257]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e259] [cursor=pointer]
+              - listitem [ref=e260]:
+                - generic [ref=e261]:
+                  - link "User & Role Management" [ref=e262] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e264]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e266] [cursor=pointer]
+              - listitem [ref=e267]:
+                - generic [ref=e268]:
+                  - link "Registries and Packs" [ref=e269] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e271]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e273] [cursor=pointer]
+              - listitem [ref=e274]:
+                - generic [ref=e275]:
+                  - link "Security" [ref=e276] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e278]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e280] [cursor=pointer]
+              - listitem [ref=e281]:
+                - generic [ref=e282]:
+                  - link "Audit Logs" [ref=e283] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e285]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e287] [cursor=pointer]
+              - listitem [ref=e288]:
+                - generic [ref=e289]:
+                  - link "Self-Hosted Palette" [ref=e290] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e292]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e294] [cursor=pointer]
+              - listitem [ref=e295]:
+                - generic [ref=e296]:
+                  - link "Palette VerteX" [ref=e297] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e299]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e301] [cursor=pointer]
+              - listitem [ref=e302]:
+                - generic [ref=e303]:
+                  - link "Tenant Administration" [ref=e304] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e306]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e308] [cursor=pointer]
+              - listitem [ref=e309]:
+                - generic [ref=e310]:
+                  - link "Automation" [ref=e311] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e313]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e315] [cursor=pointer]
+              - listitem [ref=e316]:
+                - generic [ref=e317]:
+                  - link "Troubleshooting" [ref=e318] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e320]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e322] [cursor=pointer]
+              - listitem [ref=e323]:
+                - link "Glossary" [ref=e324] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e326]
+                  - text: Glossary
+              - listitem [ref=e328]:
+                - generic [ref=e329]:
+                  - link "Compliance & Legal" [ref=e330] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e332]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e334] [cursor=pointer]
+              - listitem [ref=e335]:
+                - button "Privacy Settings" [ref=e336] [cursor=pointer]:
+                  - img [ref=e337]
+                  - text: Privacy Settings
+      - main [ref=e339]:
+        - generic [ref=e341]:
+          - generic [ref=e343]:
+            - article [ref=e344]:
+              - navigation "Breadcrumbs" [ref=e345]:
+                - list [ref=e346]:
+                  - listitem [ref=e347]:
+                    - link "Home page" [ref=e348] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e349]
+                  - listitem [ref=e351]:
+                    - link "Clusters" [ref=e352] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e353]:
+                    - link "Edge" [ref=e354] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                  - listitem [ref=e355]:
+                    - link "Local UI" [ref=e356] [cursor=pointer]:
+                      - /url: /clusters/edge/local-ui/
+                  - listitem [ref=e357]:
+                    - link "Host Management" [ref=e358] [cursor=pointer]:
+                      - /url: /clusters/edge/local-ui/host-management/
+                  - listitem [ref=e359]:
+                    - generic [ref=e360]: Configure and Access Audit Logs
+              - generic [ref=e361]:
+                - heading "Configure and Access Audit Logs" [level=1] [ref=e363]
+                - paragraph [ref=e364]:
+                  - text: On any operational Edge host, many services write events, logs, and any other applicable audit logs to the
+                  - code [ref=e365]: /var/log/stylus-audit.log
+                  - text: file. If you have application workloads on your cluster, you can also configure them to write audit logs to the same file. This allows you to keep all audit logs in a single location for easy management and retrieval. Audit logs written to the
+                  - code [ref=e366]: /var/log/stylus-audit.log
+                  - text: file can be downloaded from Local UI.
+                - heading "Configure Audit Logs to be Written to FileDirect link to Configure Audit Logs to be Written to File" [level=2] [ref=e367]:
+                  - text: Configure Audit Logs to be Written to File
+                  - link "Direct link to Configure Audit Logs to be Written to File" [ref=e368] [cursor=pointer]:
+                    - /url: "#configure-audit-logs-to-be-written-to-file"
+                    - text: "#"
+                - paragraph [ref=e369]:
+                  - text: You can configure your own application to write log entries to the
+                  - code [ref=e370]: /var/log/stylus-audit.log
+                  - text: file by setting up the applications to write to
+                  - code [ref=e371]: syslog
+                  - text: and configure your
+                  - code [ref=e372]: syslog
+                  - text: daemon to direct the logs to the file. The exact steps to do this vary by application, but the log entries must conform to the expected schema. In addition, you can also direct Palette agent's logs to another file if you want to collect the logs in a different file.
+                - paragraph [ref=e373]: By default, you can view one year's worth of audit logs in Local UI. Log files past the one year mark will be rotated out and archived. You can still download your log files from any period, but they will not be viewable in Local UI.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e374]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e375] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e376]:
+                  - listitem [ref=e377]:
+                    - paragraph [ref=e378]:
+                      - text: You must have configured your application to write logs to
+                      - code [ref=e379]: syslog
+                      - text: with a given facility and severity level. We recommend setting the facility as
+                      - code [ref=e380]: local7
+                      - text: and severity as
+                      - code [ref=e381]: notice
+                      - text: . We also recommend that you add a tag to your application logs to distinguish it from other logs.
+                  - listitem [ref=e382]:
+                    - paragraph [ref=e383]:
+                      - text: The audit entries logged to
+                      - code [ref=e384]: syslog
+                      - text: "must be in the RFC 5424 Syslog protocol, with the message in JSON format. The JSON object must contain the following keys:"
+                      - code [ref=e385]: edgeHostId
+                      - text: ","
+                      - code [ref=e386]: contentMsg
+                      - text: ","
+                      - code [ref=e387]: action
+                      - text: ","
+                      - code [ref=e388]: actor
+                      - text: ","
+                      - code [ref=e389]: actorType
+                      - text: ","
+                      - code [ref=e390]: resourceId
+                      - text: ","
+                      - code [ref=e391]: resourceName
+                      - text: ","
+                      - code [ref=e392]: resourceKind
+                      - text: . For more information about the Syslog protocol, refer to
+                      - link "RFC 5424 - The Syslog Protocol" [ref=e393] [cursor=pointer]:
+                        - /url: https://datatracker.ietf.org/doc/html/rfc5424
+                      - text: .
+                  - listitem [ref=e394]:
+                    - paragraph [ref=e395]:
+                      - text: This how-to is based on the EdgeForge process. We recommend that you familiarize yourself with
+                      - link "EdgeForge" [ref=e396] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/
+                      - text: and the process to build Edge artifacts.
+                  - listitem [ref=e397]:
+                    - paragraph [ref=e398]:
+                      - text: A physical or virtual Linux machine with
+                      - emphasis [ref=e399]: AMD64
+                      - text: (also known as
+                      - emphasis [ref=e400]: x86_64
+                      - text: ) processor architecture to build the Edge artifacts. You can issue the following command in the terminal to check your processor architecture.
+                    - generic [ref=e402]:
+                      - code [ref=e404]:
+                        - generic [ref=e405]: uname -m
+                      - button "Copy code to clipboard" [ref=e407] [cursor=pointer]:
+                        - generic [ref=e408]:
+                          - img [ref=e409]
+                          - img [ref=e411]
+                  - listitem [ref=e413]:
+                    - paragraph [ref=e414]: "Minimum hardware configuration of the Linux machine:"
+                    - list [ref=e415]:
+                      - listitem [ref=e416]: 4 CPU
+                      - listitem [ref=e417]: 8 GB memory
+                      - listitem [ref=e418]: 150 GB storage
+                  - listitem [ref=e419]:
+                    - paragraph [ref=e420]:
+                      - link "Git" [ref=e421] [cursor=pointer]:
+                        - /url: https://git-scm.com/downloads
+                      - text: . You can ensure git installation by issuing the
+                      - code [ref=e422]: git --version
+                      - text: command.
+                - heading "ProcedureDirect link to Procedure" [level=3] [ref=e423]:
+                  - text: Procedure
+                  - link "Direct link to Procedure" [ref=e424] [cursor=pointer]:
+                    - /url: "#procedure"
+                    - text: "#"
+                - list [ref=e425]:
+                  - listitem [ref=e426]:
+                    - paragraph [ref=e427]: Clone the CanvOS repository and change into the directory.
+                    - generic [ref=e429]:
+                      - code [ref=e431]:
+                        - generic [ref=e432]: git clone https://github.com/spectrocloud/CanvOS.git
+                      - button "Copy code to clipboard" [ref=e434] [cursor=pointer]:
+                        - generic [ref=e435]:
+                          - img [ref=e436]
+                          - img [ref=e438]
+                  - listitem [ref=e440]:
+                    - paragraph [ref=e441]:
+                      - text: Create a file at the path
+                      - code [ref=e442]: overlay/files/etc/rsyslog.d/48-audit.conf
+                      - text: . You can change the file name, but it must be a
+                      - code [ref=e443]: conf
+                      - text: file and sorted alphanumerically before
+                      - code [ref=e444]: 49-stylus-audit.conf
+                      - text: . For example,
+                      - code [ref=e445]: 30-my-log.conf
+                      - text: .
+                - generic [ref=e446]:
+                  - tablist [ref=e447]:
+                    - tab "Send Application Logs to Palette Log File" [selected] [ref=e448] [cursor=pointer]
+                    - tab "Send Palette Logs to Another File" [ref=e449] [cursor=pointer]
+                  - tabpanel [ref=e451]:
+                    - list [ref=e452]:
+                      - listitem [ref=e453]:
+                        - paragraph [ref=e454]:
+                          - text: Populate the file with the following configuration. Replace
+                          - code [ref=e455]: your-tag
+                          - text: with the tag you configured for the logs of your own application. If you changed the facility or the severity level from the suggested values, replace them with your actual values.
+                        - generic [ref=e457]:
+                          - code [ref=e459]:
+                            - generic [ref=e460]: $PrivDropToUser root
+                            - generic [ref=e461]: $PrivDropToGroup root
+                            - generic [ref=e462]: $Umask 0000
+                            - generic [ref=e463]: $template ForwardFormat,"<%pri%>1 %timestamp:::date-rfc3339% %HOSTNAME% %syslogtag% %procid% - - %msg%\n"
+                            - generic [ref=e464]: "if ($syslogfacility-text == 'local7' and $syslogseverity-text == 'notice' and $syslogtag contains '<your-tag>') then {"
+                            - generic [ref=e465]: action(
+                            - generic [ref=e466]: type="omfile"
+                            - generic [ref=e467]: file="/var/log/stylus-audit.log"
+                            - generic [ref=e468]: FileCreateMode="0600"
+                            - generic [ref=e469]: fileowner="root"
+                            - generic [ref=e470]: template="ForwardFormat"
+                            - generic [ref=e471]: )
+                            - generic [ref=e472]: "}"
+                          - generic [ref=e473]:
+                            - button "Toggle word wrap" [ref=e474] [cursor=pointer]:
+                              - img [ref=e475]
+                            - button "Copy code to clipboard" [ref=e477] [cursor=pointer]:
+                              - generic [ref=e478]:
+                                - img [ref=e479]
+                                - img [ref=e481]
+                        - paragraph [ref=e483]:
+                          - text: "Ensure your logs follow the RFC 5424 Syslog protocol, with the message in JSON format. The JSON object must contain the following keys:"
+                          - code [ref=e484]: edgeHostId
+                          - text: ","
+                          - code [ref=e485]: contentMsg
+                          - text: ","
+                          - code [ref=e486]: action
+                          - text: ","
+                          - code [ref=e487]: actor
+                          - text: ","
+                          - code [ref=e488]: actorType
+                          - text: ","
+                          - code [ref=e489]: resourceId
+                          - text: ","
+                          - code [ref=e490]: resourceName
+                          - text: ","
+                          - code [ref=e491]: resourceKind
+                          - text: . If your log entries do not follow the RFE 5424 Syslog protocol, or do not contain the necessary keys, they will still be logged, but will not show up in Local UI.
+                - list [ref=e492]:
+                  - listitem [ref=e493]:
+                    - text: Follow the
+                    - link "Build Edge Installer ISO" [ref=e494] [cursor=pointer]:
+                      - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso/
+                    - text: guide to build an Edge installer ISO and install an Edge host. Then follow the relevant guides in
+                    - link "Deployment" [ref=e495] [cursor=pointer]:
+                      - /url: /clusters/edge/site-deployment/
+                    - text: to deploy a cluster with your application workloads.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e496]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e497] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e498]:
+                  - listitem [ref=e499]:
+                    - paragraph [ref=e500]:
+                      - text: Log in to Local UI. For more information, refer to
+                      - link "Access Local UI Console" [ref=e501] [cursor=pointer]:
+                        - /url: /clusters/edge/local-ui/host-management/access-console/
+                      - text: .
+                  - listitem [ref=e502]:
+                    - paragraph [ref=e503]:
+                      - text: In the left
+                      - strong [ref=e504]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e505]: Audit Log
+                      - text: . Confirm that the logs from your applications are being collected.
+                - heading "View and Download Log File from Local UIDirect link to View and Download Log File from Local UI" [level=2] [ref=e506]:
+                  - text: View and Download Log File from Local UI
+                  - link "Direct link to View and Download Log File from Local UI" [ref=e507] [cursor=pointer]:
+                    - /url: "#view-and-download-log-file-from-local-ui"
+                    - text: "#"
+                - paragraph [ref=e508]:
+                  - text: Log files are stored in the
+                  - code [ref=e509]: /var/log/
+                  - text: folder. The active log file
+                  - code [ref=e510]: stylus-audit.log
+                  - text: stores up to one year's worth of logs. After a year, or when the file size reaches 100 MB, the log file is rotated out and archived. If the log messages are configured to be picked up by Local UI, they will show up in Local UI.
+                - paragraph [ref=e511]:
+                  - text: You can also download log files less than three years old in the
+                  - code [ref=e512]: /var/log/
+                  - text: file from Local UI. This includes the log entries that were not configured to be displayed in Local UI.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e513]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e514] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e515]:
+                  - listitem [ref=e516]:
+                    - paragraph [ref=e517]: An Edge host installed with Edge Installer 4.3 or later.
+                  - listitem [ref=e518]:
+                    - paragraph [ref=e519]: Network access to the Edge host's port where Local UI is exposed. The default port is 5080.
+                  - listitem [ref=e520]:
+                    - paragraph [ref=e521]: Credentials to log in to Local UI. Any Operating System (OS) user can be used to log into Local UI.
+                - heading "ProcedureDirect link to Procedure" [level=3] [ref=e522]:
+                  - text: Procedure
+                  - link "Direct link to Procedure" [ref=e523] [cursor=pointer]:
+                    - /url: "#procedure-1"
+                    - text: "#"
+                - list [ref=e524]:
+                  - listitem [ref=e525]:
+                    - paragraph [ref=e526]:
+                      - text: Log in to Local UI. For more information, refer to
+                      - link "Access Local UI Console" [ref=e527] [cursor=pointer]:
+                        - /url: /clusters/edge/local-ui/host-management/access-console/
+                      - text: .
+                  - listitem [ref=e528]:
+                    - paragraph [ref=e529]:
+                      - text: In the left
+                      - strong [ref=e530]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e531]: Diagnostics
+                      - text: . Then click the
+                      - strong [ref=e532]: Logs
+                      - text: tab. You can view all audit log entries on this page. Local UI displays log entries dated up to one year ago.
+                    - generic [ref=e533]:
+                      - generic [ref=e534]:
+                        - img [ref=e536]
+                        - text: info
+                      - paragraph [ref=e539]:
+                        - text: To configure the preferred
+                        - strong [ref=e540]: Date & Time
+                        - text: field format, navigate to the
+                        - strong [ref=e541]: User Menu
+                        - text: in the upper-right corner and select
+                        - strong [ref=e542]: Time/Date Settings
+                        - text: . Local UI supports displaying values in Coordinated Universal Time (UTC), the browser’s local time zone, or both simultaneously.
+                  - listitem [ref=e543]:
+                    - paragraph [ref=e544]:
+                      - text: To download the log files, click the
+                      - strong [ref=e545]: Download
+                      - text: button in the upper-right corner. This will download all files in the
+                      - code [ref=e546]: /var/log
+                      - text: folder, including the archived log files as well as any additional log files you configured to be stored in the directory.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e547]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e548] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - list [ref=e549]:
+                  - listitem [ref=e550]: Open the downloaded file. Confirm that the logs are included in the file.
+              - generic [ref=e551]:
+                - generic [ref=e553]:
+                  - text: "Tags:"
+                  - list [ref=e554]:
+                    - listitem [ref=e555]:
+                      - link "edge" [ref=e556] [cursor=pointer]:
+                        - /url: /tags/edge/
+                - link "Edit this page" [ref=e559] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/edge/local-ui/host-management/audit-logs.md
+                  - img [ref=e560]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e564]:
+              - link "Previous « Customize Local UI Theme" [ref=e565] [cursor=pointer]:
+                - /url: /clusters/edge/local-ui/host-management/theming/
+                - generic [ref=e566]: Previous
+                - generic [ref=e567]: « Customize Local UI Theme
+              - link "Next Download Files from Local UI »" [ref=e568] [cursor=pointer]:
+                - /url: /clusters/edge/local-ui/host-management/download-files/
+                - generic [ref=e569]: Next
+                - generic [ref=e570]: Download Files from Local UI »
+          - list [ref=e573]:
+            - listitem [ref=e574]:
+              - link "Configure Audit Logs to be Written to File" [ref=e575] [cursor=pointer]:
+                - /url: "#configure-audit-logs-to-be-written-to-file"
+              - list [ref=e576]:
+                - listitem [ref=e577]:
+                  - link "Prerequisites" [ref=e578] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e579]:
+                  - link "Procedure" [ref=e580] [cursor=pointer]:
+                    - /url: "#procedure"
+                - listitem [ref=e581]:
+                  - link "Validate" [ref=e582] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e583]:
+              - link "View and Download Log File from Local UI" [ref=e584] [cursor=pointer]:
+                - /url: "#view-and-download-log-file-from-local-ui"
+              - list [ref=e585]:
+                - listitem [ref=e586]:
+                  - link "Prerequisites" [ref=e587] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e588]:
+                  - link "Procedure" [ref=e589] [cursor=pointer]:
+                    - /url: "#procedure-1"
+                - listitem [ref=e590]:
+                  - link "Validate" [ref=e591] [cursor=pointer]:
+                    - /url: "#validate-1"
+  - button "Project Logo Ask AI" [ref=e592] [cursor=pointer]:
+    - generic [ref=e595]:
+      - img "Project Logo" [ref=e596]
+      - paragraph [ref=e597]: Ask AI
+```

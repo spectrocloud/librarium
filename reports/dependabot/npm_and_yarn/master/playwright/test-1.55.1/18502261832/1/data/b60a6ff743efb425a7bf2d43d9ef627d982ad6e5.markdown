@@ -1,0 +1,476 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                  - listitem [ref=e107]:
+                    - generic [ref=e108]:
+                      - link "Data Center Clusters" [expanded] [ref=e109] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e111]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e113] [cursor=pointer]
+                    - list [ref=e114]:
+                      - listitem [ref=e115]:
+                        - generic [ref=e116]:
+                          - link "MAAS" [ref=e117] [cursor=pointer]:
+                            - /url: /clusters/data-center/maas/
+                          - button "Toggle the collapsible sidebar category 'MAAS'" [ref=e118] [cursor=pointer]
+                      - listitem [ref=e119]:
+                        - generic [ref=e120]:
+                          - link "Nutanix" [ref=e121] [cursor=pointer]:
+                            - /url: /clusters/data-center/nutanix/
+                          - button "Toggle the collapsible sidebar category 'Nutanix'" [ref=e122] [cursor=pointer]
+                      - listitem [ref=e123]:
+                        - link "OpenStack" [ref=e124] [cursor=pointer]:
+                          - /url: /clusters/data-center/openstack/
+                      - listitem [ref=e125]:
+                        - generic [ref=e126]:
+                          - link "VMware" [expanded] [ref=e127] [cursor=pointer]:
+                            - /url: /clusters/data-center/vmware/
+                          - button "Toggle the collapsible sidebar category 'VMware'" [ref=e128] [cursor=pointer]
+                        - list [ref=e129]:
+                          - listitem [ref=e130]:
+                            - link "Architecture" [ref=e131] [cursor=pointer]:
+                              - /url: /clusters/data-center/vmware/architecture/
+                          - listitem [ref=e132]:
+                            - link "Create and Manage VMware Clusters" [ref=e133] [cursor=pointer]:
+                              - /url: /clusters/data-center/vmware/create-manage-vmware-clusters/
+                          - listitem [ref=e134]:
+                            - link "Required Permissions" [ref=e135] [cursor=pointer]:
+                              - /url: /clusters/data-center/vmware/permissions/
+                  - listitem [ref=e136]:
+                    - generic [ref=e137]:
+                      - link "Edge" [ref=e138] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e140]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e142] [cursor=pointer]
+                  - listitem [ref=e143]:
+                    - generic [ref=e144]:
+                      - link "Palette Virtual Clusters" [ref=e145] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e147]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e149] [cursor=pointer]
+                  - listitem [ref=e150]:
+                    - generic [ref=e151]:
+                      - link "Imported Clusters" [ref=e152] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e154]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e156] [cursor=pointer]
+                  - listitem [ref=e157]:
+                    - generic [ref=e158]:
+                      - link "Manage Clusters" [ref=e159] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e161]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e163] [cursor=pointer]
+                  - listitem [ref=e164]:
+                    - generic [ref=e165]:
+                      - link "Cluster Groups" [ref=e166] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e168]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e170] [cursor=pointer]
+                  - listitem [ref=e171]:
+                    - generic [ref=e172]:
+                      - link "Private Cloud Gateway" [ref=e173] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e175]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e177] [cursor=pointer]
+              - listitem [ref=e178]:
+                - generic [ref=e179]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e180] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e182]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e184] [cursor=pointer]
+              - listitem [ref=e185]:
+                - generic [ref=e186]:
+                  - link "Palette Dev Engine" [ref=e187] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e189]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e191] [cursor=pointer]
+              - listitem [ref=e192]:
+                - generic [ref=e193]:
+                  - link "Virtual Machine Orchestrator" [ref=e194] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e196]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e198] [cursor=pointer]
+              - listitem [ref=e199]:
+                - generic [ref=e200]:
+                  - link "Workspaces" [ref=e201] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e203]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e205] [cursor=pointer]
+              - listitem [ref=e206]:
+                - generic [ref=e207]:
+                  - link "Packs List" [ref=e208] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e210]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e212] [cursor=pointer]
+              - listitem [ref=e213]:
+                - generic [ref=e214]:
+                  - link "User & Role Management" [ref=e215] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e217]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e219] [cursor=pointer]
+              - listitem [ref=e220]:
+                - generic [ref=e221]:
+                  - link "Registries and Packs" [ref=e222] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e224]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e226] [cursor=pointer]
+              - listitem [ref=e227]:
+                - generic [ref=e228]:
+                  - link "Security" [ref=e229] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e231]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e233] [cursor=pointer]
+              - listitem [ref=e234]:
+                - generic [ref=e235]:
+                  - link "Audit Logs" [ref=e236] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e238]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e240] [cursor=pointer]
+              - listitem [ref=e241]:
+                - generic [ref=e242]:
+                  - link "Self-Hosted Palette" [ref=e243] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e245]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e247] [cursor=pointer]
+              - listitem [ref=e248]:
+                - generic [ref=e249]:
+                  - link "Palette VerteX" [ref=e250] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e252]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e254] [cursor=pointer]
+              - listitem [ref=e255]:
+                - generic [ref=e256]:
+                  - link "Tenant Administration" [ref=e257] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e259]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e261] [cursor=pointer]
+              - listitem [ref=e262]:
+                - generic [ref=e263]:
+                  - link "Automation" [ref=e264] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e266]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e268] [cursor=pointer]
+              - listitem [ref=e269]:
+                - generic [ref=e270]:
+                  - link "Troubleshooting" [ref=e271] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e273]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e275] [cursor=pointer]
+              - listitem [ref=e276]:
+                - link "Glossary" [ref=e277] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e279]
+                  - text: Glossary
+              - listitem [ref=e281]:
+                - generic [ref=e282]:
+                  - link "Compliance & Legal" [ref=e283] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e285]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e287] [cursor=pointer]
+              - listitem [ref=e288]:
+                - button "Privacy Settings" [ref=e289] [cursor=pointer]:
+                  - img [ref=e290]
+                  - text: Privacy Settings
+      - main [ref=e292]:
+        - generic [ref=e294]:
+          - generic [ref=e296]:
+            - article [ref=e297]:
+              - navigation "Breadcrumbs" [ref=e298]:
+                - list [ref=e299]:
+                  - listitem [ref=e300]:
+                    - link "Home page" [ref=e301] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e302]
+                  - listitem [ref=e304]:
+                    - link "Clusters" [ref=e305] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e306]:
+                    - link "Data Center Clusters" [ref=e307] [cursor=pointer]:
+                      - /url: /clusters/data-center/
+                  - listitem [ref=e308]:
+                    - link "VMware" [ref=e309] [cursor=pointer]:
+                      - /url: /clusters/data-center/vmware/
+                  - listitem [ref=e310]:
+                    - generic [ref=e311]: Architecture
+              - generic [ref=e312]:
+                - heading "Architecture" [level=1] [ref=e314]
+                - heading "OverviewDirect link to Overview" [level=2] [ref=e315]:
+                  - text: Overview
+                  - link "Direct link to Overview" [ref=e316] [cursor=pointer]:
+                    - /url: "#overview"
+                    - text: "#"
+                - paragraph [ref=e317]: "Palette supports using VMware vSphere as a data center provider. You can deploy Kubernetes clusters to your vSphere environment using Palette. Below are some key features of the Palette VMware architecture:"
+                - list [ref=e318]:
+                  - listitem [ref=e319]:
+                    - paragraph [ref=e320]: Kubernetes nodes can be distributed across multiple-compute clusters, which serve as distinct fault domains.
+                  - listitem [ref=e321]:
+                    - paragraph [ref=e322]: Support for static IP addresses, as well as DHCP. If you are using Dynamic Host Configuration Protocol (DHCP), Dynamic DNS is required.
+                  - listitem [ref=e323]:
+                    - paragraph [ref=e324]: Support for IP address pool management for assigning blocks of IPs dedicated to clusters or projects.
+                  - listitem [ref=e325]:
+                    - paragraph [ref=e326]: A Private Cloud Gateway (PCG) must be setup within the VMware vSphere environment to communicate with the Palette management platform and the VMware vCenter that installed in the private data center.
+                    - paragraph [ref=e327]: The PCG facilitates communication between Palette and your infrastructure environment. The PCG is necessary in environments where Palette does not have direct network access. Many infrastructure environments are placed in a private network that blocks connections originating externally. The PCG connects to Palette, and acts as an endpoint, allowing you to target the environment when deploying clusters in Palette.
+                    - paragraph [ref=e328]:
+                      - img "vmware_arch_oct_2020.webp" [ref=e329]
+                - paragraph [ref=e330]:
+                  - text: You can learn more in the
+                  - link "PCG Architecture" [ref=e331] [cursor=pointer]:
+                    - /url: /clusters/pcg/architecture/
+                  - text: section.
+                - heading "Zone TaggingDirect link to Zone Tagging" [level=2] [ref=e332]:
+                  - text: Zone Tagging
+                  - link "Direct link to Zone Tagging" [ref=e333] [cursor=pointer]:
+                    - /url: "#zone-tagging"
+                    - text: "#"
+                - paragraph [ref=e334]:
+                  - text: You can use tags to create node zones and regions for your Kubernetes clusters. The node zones and regions can be used to dynamically place Kubernetes workloads and achieve higher availability. Kubernetes nodes inherit the zone and region tags as
+                  - link "Labels" [ref=e335] [cursor=pointer]:
+                    - /url: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+                  - text: . Kubernetes workloads can use the node labels to ensure that the workloads are deployed to the correct zone and region.
+                - paragraph [ref=e336]: The following is an example of node labels that are discovered and inherited from vSphere tags. The tag values are applied to Kubernetes nodes in vSphere.
+                - code [ref=e340]:
+                  - generic [ref=e341]: topology.kubernetes.io/region=usdc
+                  - generic [ref=e342]: topology.kubernetes.io/zone=zone3
+                  - generic [ref=e343]: failure-domain.beta.kubernetes.io/region=usdc
+                  - generic [ref=e344]: failure-domain.beta.kubernetes.io/zone=zone3
+                - generic [ref=e345]:
+                  - generic [ref=e346]:
+                    - img [ref=e348]
+                    - text: info
+                  - paragraph [ref=e351]:
+                    - text: To learn more about node zones and regions, refer to the
+                    - link "Node Zones/Regions Topology" [ref=e352] [cursor=pointer]:
+                      - /url: https://cloud-provider-vsphere.sigs.k8s.io/cloud_provider_interface.html
+                    - text: section of the Cloud Provider Interface documentation.
+                - paragraph [ref=e353]:
+                  - text: Zone tagging is required to install Palette and is helpful for Kubernetes workloads deployed in vSphere clusters through Palette if they have persistent storage needs. Use vSphere tags on data centers and compute clusters to create distinct zones in your environment. You can use vSphere
+                  - link "Tag Categories and Tags" [ref=e354] [cursor=pointer]:
+                    - /url: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-16422FF7-235B-4A44-92E2-532F6AED0923.html
+                  - text: to create zones in your vSphere environment and assign them to vSphere objects.
+                - paragraph [ref=e355]: The zone tags you assign to your vSphere objects, such as a data center and clusters are applied to the Kubernetes nodes you deploy through Palette into your vSphere environment. Kubernetes clusters deployed to other infrastructure providers, such as public cloud may have other native mechanisms for auto discovery of zones.
+                - paragraph [ref=e356]:
+                  - text: For example, assume a vCenter environment contains three compute clusters, cluster-1, cluster-2, and cluster-3. To support this environment you create the tag categories
+                  - code [ref=e357]: k8s-region
+                  - text: and
+                  - code [ref=e358]: k8s-zone
+                  - text: . The
+                  - code [ref=e359]: k8s-region
+                  - text: is assigned to the data center, and the
+                  - code [ref=e360]: k8s-zone
+                  - text: tag is assigned to the compute clusters.
+                - paragraph [ref=e361]: The following table lists the tag values for the data center and compute clusters.
+                - table [ref=e362]:
+                  - rowgroup [ref=e363]:
+                    - row "vSphere Object Assigned Name Tag Category Tag Value" [ref=e364]:
+                      - cell "vSphere Object" [ref=e365]:
+                        - strong [ref=e366]: vSphere Object
+                      - cell "Assigned Name" [ref=e367]:
+                        - strong [ref=e368]: Assigned Name
+                      - cell "Tag Category" [ref=e369]:
+                        - strong [ref=e370]: Tag Category
+                      - cell "Tag Value" [ref=e371]:
+                        - strong [ref=e372]: Tag Value
+                  - rowgroup [ref=e373]:
+                    - row "Datacenter dc-1 k8s-region region1" [ref=e374]:
+                      - cell "Datacenter" [ref=e375]:
+                        - strong [ref=e376]: Datacenter
+                      - cell "dc-1" [ref=e377]
+                      - cell "k8s-region" [ref=e378]
+                      - cell "region1" [ref=e379]
+                    - row "Cluster cluster-1 k8s-zone az1" [ref=e380]:
+                      - cell "Cluster" [ref=e381]:
+                        - strong [ref=e382]: Cluster
+                      - cell "cluster-1" [ref=e383]
+                      - cell "k8s-zone" [ref=e384]
+                      - cell "az1" [ref=e385]
+                    - row "Cluster cluster-2 k8s-zone az2" [ref=e386]:
+                      - cell "Cluster" [ref=e387]:
+                        - strong [ref=e388]: Cluster
+                      - cell "cluster-2" [ref=e389]
+                      - cell "k8s-zone" [ref=e390]
+                      - cell "az2" [ref=e391]
+                    - row "Cluster cluster-3 k8s-zone az3" [ref=e392]:
+                      - cell "Cluster" [ref=e393]:
+                        - strong [ref=e394]: Cluster
+                      - cell "cluster-3" [ref=e395]
+                      - cell "k8s-zone" [ref=e396]
+                      - cell "az3" [ref=e397]
+                - paragraph [ref=e398]: Create a tag category and tag values for each data center and cluster in your environment. Use the tag categories to create zones. Use a name that is meaningful and that complies with the tag requirements listed in the following section.
+                - heading "Tag RequirementsDirect link to Tag Requirements" [level=3] [ref=e399]:
+                  - text: Tag Requirements
+                  - link "Direct link to Tag Requirements" [ref=e400] [cursor=pointer]:
+                    - /url: "#tag-requirements"
+                    - text: "#"
+                - paragraph [ref=e401]: "The following requirements apply to tags:"
+                - list [ref=e402]:
+                  - listitem [ref=e403]:
+                    - paragraph [ref=e404]: A valid tag must consist of alphanumeric characters.
+                  - listitem [ref=e405]:
+                    - paragraph [ref=e406]: The tag must start and end with an alphanumeric character.
+                  - listitem [ref=e407]:
+                    - paragraph [ref=e408]:
+                      - text: The regex used for tag validation is
+                      - code [ref=e409]: (([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?
+              - generic [ref=e410]:
+                - generic [ref=e412]:
+                  - text: "Tags:"
+                  - list [ref=e413]:
+                    - listitem [ref=e414]:
+                      - link "data center" [ref=e415] [cursor=pointer]:
+                        - /url: /tags/data-center/
+                    - listitem [ref=e416]:
+                      - link "vmware" [ref=e417] [cursor=pointer]:
+                        - /url: /tags/vmware/
+                    - listitem [ref=e418]:
+                      - link "architecture" [ref=e419] [cursor=pointer]:
+                        - /url: /tags/architecture/
+                - link "Edit this page" [ref=e422] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/data-center/vmware/architecture.md
+                  - img [ref=e423]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e427]:
+              - link "Previous « VMware" [ref=e428] [cursor=pointer]:
+                - /url: /clusters/data-center/vmware/
+                - generic [ref=e429]: Previous
+                - generic [ref=e430]: « VMware
+              - link "Next Create and Manage VMware Clusters »" [ref=e431] [cursor=pointer]:
+                - /url: /clusters/data-center/vmware/create-manage-vmware-clusters/
+                - generic [ref=e432]: Next
+                - generic [ref=e433]: Create and Manage VMware Clusters »
+          - list [ref=e436]:
+            - listitem [ref=e437]:
+              - link "Overview" [ref=e438] [cursor=pointer]:
+                - /url: "#overview"
+            - listitem [ref=e439]:
+              - link "Zone Tagging" [ref=e440] [cursor=pointer]:
+                - /url: "#zone-tagging"
+              - list [ref=e441]:
+                - listitem [ref=e442]:
+                  - link "Tag Requirements" [ref=e443] [cursor=pointer]:
+                    - /url: "#tag-requirements"
+  - button "Project Logo Ask AI" [ref=e444] [cursor=pointer]:
+    - generic [ref=e447]:
+      - img "Project Logo" [ref=e448]
+      - paragraph [ref=e449]: Ask AI
+```

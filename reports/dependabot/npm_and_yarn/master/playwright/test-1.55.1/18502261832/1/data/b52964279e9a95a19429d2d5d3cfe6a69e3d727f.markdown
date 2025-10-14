@@ -1,0 +1,1546 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [expanded] [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                    - list [ref=e107]:
+                      - listitem [ref=e108]:
+                        - generic [ref=e109]:
+                          - link "AWS" [expanded] [ref=e110] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/aws/
+                          - button "Toggle the collapsible sidebar category 'AWS'" [ref=e111] [cursor=pointer]
+                        - list [ref=e112]:
+                          - listitem [ref=e113]:
+                            - link "Architecture" [ref=e114] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/architecture/
+                          - listitem [ref=e115]:
+                            - link "Register and Manage AWS Accounts" [ref=e116] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/add-aws-accounts/
+                          - listitem [ref=e117]:
+                            - link "Create and Manage AWS IaaS Cluster" [ref=e118] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/create-cluster/
+                          - listitem [ref=e119]:
+                            - link "Create and Manage AWS EKS Cluster" [ref=e120] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/eks/
+                          - listitem [ref=e121]:
+                            - generic [ref=e122]:
+                              - link "EKS Hybrid Nodes" [expanded] [ref=e123] [cursor=pointer]:
+                                - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/
+                              - button "Toggle the collapsible sidebar category 'EKS Hybrid Nodes'" [ref=e124] [cursor=pointer]
+                            - list [ref=e125]:
+                              - listitem [ref=e126]:
+                                - link "Architecture" [ref=e127] [cursor=pointer]:
+                                  - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/architecture/
+                              - listitem [ref=e128]:
+                                - generic [ref=e129]:
+                                  - link "Prepare Environment" [expanded] [ref=e130] [cursor=pointer]:
+                                    - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/
+                                  - button "Toggle the collapsible sidebar category 'Prepare Environment'" [ref=e131] [cursor=pointer]
+                                - list [ref=e132]:
+                                  - listitem [ref=e133]:
+                                    - link "Prepare Network" [ref=e134] [cursor=pointer]:
+                                      - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/prepare-network/
+                                  - listitem [ref=e135]:
+                                    - link "Prepare Edge Hosts" [ref=e136] [cursor=pointer]:
+                                      - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/prepare-edge-hosts/
+                                  - listitem [ref=e137]:
+                                    - link "Prepare EKS Cluster" [ref=e138] [cursor=pointer]:
+                                      - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/prepare-eks-cluster/
+                              - listitem [ref=e139]:
+                                - link "Import EKS Cluster and Enable Hybrid Mode" [ref=e140] [cursor=pointer]:
+                                  - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/import-eks-cluster-enable-hybrid-mode/
+                              - listitem [ref=e141]:
+                                - link "Create Hybrid Node Pools" [ref=e142] [cursor=pointer]:
+                                  - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/create-hybrid-node-pools/
+                          - listitem [ref=e143]:
+                            - link "Enable Secrets Encryption for EKS Cluster" [ref=e144] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/enable-secrets-encryption-kms-key/
+                          - listitem [ref=e145]:
+                            - link "Enable Disk Encryption for EKS Cluster" [ref=e146] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/enable-disk-encryption-eks-cluster/
+                          - listitem [ref=e147]:
+                            - link "Configure Karpenter for EKS Clusters" [ref=e148] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/configure-karpenter-eks-clusters/
+                          - listitem [ref=e149]:
+                            - link "Required IAM Policies" [ref=e150] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/required-iam-policies/
+                      - listitem [ref=e151]:
+                        - generic [ref=e152]:
+                          - link "Azure" [ref=e153] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/azure/
+                          - button "Toggle the collapsible sidebar category 'Azure'" [ref=e154] [cursor=pointer]
+                      - listitem [ref=e155]:
+                        - generic [ref=e156]:
+                          - link "GCP" [ref=e157] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/gcp/
+                          - button "Toggle the collapsible sidebar category 'GCP'" [ref=e158] [cursor=pointer]
+                  - listitem [ref=e159]:
+                    - generic [ref=e160]:
+                      - link "Data Center Clusters" [ref=e161] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e163]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e165] [cursor=pointer]
+                  - listitem [ref=e166]:
+                    - generic [ref=e167]:
+                      - link "Edge" [ref=e168] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e170]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e172] [cursor=pointer]
+                  - listitem [ref=e173]:
+                    - generic [ref=e174]:
+                      - link "Palette Virtual Clusters" [ref=e175] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e177]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e179] [cursor=pointer]
+                  - listitem [ref=e180]:
+                    - generic [ref=e181]:
+                      - link "Imported Clusters" [ref=e182] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e184]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e186] [cursor=pointer]
+                  - listitem [ref=e187]:
+                    - generic [ref=e188]:
+                      - link "Manage Clusters" [ref=e189] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e191]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e193] [cursor=pointer]
+                  - listitem [ref=e194]:
+                    - generic [ref=e195]:
+                      - link "Cluster Groups" [ref=e196] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e198]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e200] [cursor=pointer]
+                  - listitem [ref=e201]:
+                    - generic [ref=e202]:
+                      - link "Private Cloud Gateway" [ref=e203] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e205]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e207] [cursor=pointer]
+              - listitem [ref=e208]:
+                - generic [ref=e209]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e210] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e212]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - generic [ref=e216]:
+                  - link "Palette Dev Engine" [ref=e217] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e219]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e221] [cursor=pointer]
+              - listitem [ref=e222]:
+                - generic [ref=e223]:
+                  - link "Virtual Machine Orchestrator" [ref=e224] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e226]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e228] [cursor=pointer]
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "Workspaces" [ref=e231] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e233]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - generic [ref=e237]:
+                  - link "Packs List" [ref=e238] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e240]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - generic [ref=e244]:
+                  - link "User & Role Management" [ref=e245] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e247]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e249] [cursor=pointer]
+              - listitem [ref=e250]:
+                - generic [ref=e251]:
+                  - link "Registries and Packs" [ref=e252] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e254]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e256] [cursor=pointer]
+              - listitem [ref=e257]:
+                - generic [ref=e258]:
+                  - link "Security" [ref=e259] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e261]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e263] [cursor=pointer]
+              - listitem [ref=e264]:
+                - generic [ref=e265]:
+                  - link "Audit Logs" [ref=e266] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e268]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e270] [cursor=pointer]
+              - listitem [ref=e271]:
+                - generic [ref=e272]:
+                  - link "Self-Hosted Palette" [ref=e273] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e275]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e277] [cursor=pointer]
+              - listitem [ref=e278]:
+                - generic [ref=e279]:
+                  - link "Palette VerteX" [ref=e280] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e282]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e284] [cursor=pointer]
+              - listitem [ref=e285]:
+                - generic [ref=e286]:
+                  - link "Tenant Administration" [ref=e287] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e289]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e291] [cursor=pointer]
+              - listitem [ref=e292]:
+                - generic [ref=e293]:
+                  - link "Automation" [ref=e294] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e296]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e298] [cursor=pointer]
+              - listitem [ref=e299]:
+                - generic [ref=e300]:
+                  - link "Troubleshooting" [ref=e301] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e303]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e305] [cursor=pointer]
+              - listitem [ref=e306]:
+                - link "Glossary" [ref=e307] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e309]
+                  - text: Glossary
+              - listitem [ref=e311]:
+                - generic [ref=e312]:
+                  - link "Compliance & Legal" [ref=e313] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e315]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e317] [cursor=pointer]
+              - listitem [ref=e318]:
+                - button "Privacy Settings" [ref=e319] [cursor=pointer]:
+                  - img [ref=e320]
+                  - text: Privacy Settings
+      - main [ref=e322]:
+        - generic [ref=e324]:
+          - generic [ref=e326]:
+            - article [ref=e327]:
+              - navigation "Breadcrumbs" [ref=e328]:
+                - list [ref=e329]:
+                  - listitem [ref=e330]:
+                    - link "Home page" [ref=e331] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e332]
+                  - listitem [ref=e334]:
+                    - link "Clusters" [ref=e335] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e336]:
+                    - link "Public Cloud Clusters" [ref=e337] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/
+                  - listitem [ref=e338]:
+                    - link "AWS" [ref=e339] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/
+                  - listitem [ref=e340]:
+                    - link "EKS Hybrid Nodes" [ref=e341] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/
+                  - listitem [ref=e342]:
+                    - link "Prepare Environment" [ref=e343] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/
+                  - listitem [ref=e344]:
+                    - generic [ref=e345]: Prepare Network
+              - generic [ref=e346]:
+                - heading "Prepare Network" [level=1] [ref=e348]
+                - generic [ref=e349]:
+                  - generic [ref=e350]:
+                    - img [ref=e352]
+                    - text: warning
+                  - paragraph [ref=e355]: The information in this guide is provided as general guidance and example configuration only. It may not meet the specific requirements of your environment or cover every possible scenario. Ensure that you tailor these examples and validation steps to the needs of your networking infrastructure.
+                - paragraph [ref=e356]: Preparing your network for Amazon EKS Hybrid Nodes involves configuring both the AWS and remote network environments. You will also need a secure inter-site connection to enable communication between the edge hosts and your Amazon EKS cluster.
+                - paragraph [ref=e357]: "The three main areas you need to configure are:"
+                - list [ref=e358]:
+                  - listitem [ref=e359]: AWS Network
+                  - listitem [ref=e360]: Remote Network Environment
+                  - listitem [ref=e361]: Inter-Site Connectivity
+                - paragraph [ref=e362]: This guide provides common steps and example configurations for each of these areas. The following diagram provides a high-level example of a networking setup for Amazon EKS Hybrid Nodes.
+                - paragraph [ref=e363]:
+                  - img "Example Amazon EKS Hybrid Nodes network architecture" [ref=e364]
+                - heading "AWS NetworkDirect link to AWS Network" [level=2] [ref=e365]:
+                  - text: AWS Network
+                  - link "Direct link to AWS Network" [ref=e366] [cursor=pointer]:
+                    - /url: "#aws-network"
+                    - text: "#"
+                - paragraph [ref=e367]: "This section provides the steps and example configuration for your AWS network as described in the following AWS documentation:"
+                - list [ref=e368]:
+                  - listitem [ref=e369]:
+                    - link "AWS Virtual Private Cloud (VPC) and subnet setup" [ref=e370] [cursor=pointer]:
+                      - /url: https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-vpc
+                  - listitem [ref=e371]:
+                    - link "Cluster security group configuration" [ref=e372] [cursor=pointer]:
+                      - /url: https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-cluster-sg
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e373]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e374] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e375]:
+                  - listitem [ref=e376]:
+                    - paragraph [ref=e377]: "An AWS account with permissions to view, create, and modify the following resources:"
+                    - list [ref=e378]:
+                      - listitem [ref=e379]: VPC
+                      - listitem [ref=e380]: Classless Inter-Domain Routing (CIDR) blocks
+                      - listitem [ref=e381]: Subnets
+                      - listitem [ref=e382]: Route tables
+                      - listitem [ref=e383]: Internet gateways
+                      - listitem [ref=e384]:
+                        - text: Network Address Translation (NAT) gateways
+                        - list [ref=e385]:
+                          - listitem [ref=e386]: Elastic IPs
+                      - listitem [ref=e387]: Security groups
+                    - paragraph [ref=e388]:
+                      - text: Refer to
+                      - link "Amazon VPC policy examples" [ref=e389] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html
+                      - text: for guidance on Identity and Access Management (IAM) permissions.
+                - heading "Configure AWS NetworkDirect link to Configure AWS Network" [level=3] [ref=e390]:
+                  - text: Configure AWS Network
+                  - link "Direct link to Configure AWS Network" [ref=e391] [cursor=pointer]:
+                    - /url: "#configure-aws-network"
+                    - text: "#"
+                - list [ref=e392]:
+                  - listitem [ref=e393]:
+                    - paragraph [ref=e394]:
+                      - link "Create a VPC" [ref=e395] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/vpc/latest/userguide/create-vpc.html
+                      - text: where the Amazon EKS cluster will be located, for example,
+                      - code [ref=e396]: us-east-1
+                      - text: . The following table is an example configuration for the VPC.
+                    - table [ref=e397]:
+                      - rowgroup [ref=e398]:
+                        - row "Setting Example Value" [ref=e399]:
+                          - cell "Setting" [ref=e400]
+                          - cell "Example Value" [ref=e401]
+                      - rowgroup [ref=e402]:
+                        - row "Name tag eks-hybrid-vpc" [ref=e403]:
+                          - cell "Name tag" [ref=e404]:
+                            - strong [ref=e405]: Name tag
+                          - cell "eks-hybrid-vpc" [ref=e406]:
+                            - code [ref=e407]: eks-hybrid-vpc
+                        - row "IPv4 CIDR block IPv4 CIDR manual input" [ref=e408]:
+                          - cell "IPv4 CIDR block" [ref=e409]:
+                            - strong [ref=e410]: IPv4 CIDR block
+                          - cell "IPv4 CIDR manual input" [ref=e411]
+                        - row "IPv4 CIDR 10.100.0.0/16" [ref=e412]:
+                          - cell "IPv4 CIDR" [ref=e413]:
+                            - strong [ref=e414]: IPv4 CIDR
+                          - cell "10.100.0.0/16" [ref=e415]:
+                            - code [ref=e416]: 10.100.0.0/16
+                        - row "IPv6 CIDR block No IPv6 CIDR block" [ref=e417]:
+                          - cell "IPv6 CIDR block" [ref=e418]:
+                            - strong [ref=e419]: IPv6 CIDR block
+                          - cell "No IPv6 CIDR block" [ref=e420]
+                        - row "Tenancy Default" [ref=e421]:
+                          - cell "Tenancy" [ref=e422]:
+                            - strong [ref=e423]: Tenancy
+                          - cell "Default" [ref=e424]
+                  - listitem [ref=e425]:
+                    - paragraph [ref=e426]:
+                      - link "Edit your VPC settings" [ref=e427] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns-updating.html
+                      - text: and enable the following options in
+                      - strong [ref=e428]: DNS settings
+                      - text: ":"
+                    - list [ref=e429]:
+                      - listitem [ref=e430]:
+                        - strong [ref=e431]: Enable DNS resolution
+                      - listitem [ref=e432]:
+                        - strong [ref=e433]: Enable DNS hostnames
+                  - listitem [ref=e434]:
+                    - paragraph [ref=e435]:
+                      - link "Create two subnets" [ref=e436] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/vpc/latest/userguide/create-subnets.html
+                      - text: for the VPC that you created. The following table is an example configuration for the subnets.
+                    - table [ref=e437]:
+                      - rowgroup [ref=e438]:
+                        - row "Setting Example Value for Subnet 1 Example Value for Subnet 2" [ref=e439]:
+                          - cell "Setting" [ref=e440]
+                          - cell "Example Value for Subnet 1" [ref=e441]
+                          - cell "Example Value for Subnet 2" [ref=e442]
+                      - rowgroup [ref=e443]:
+                        - row "VPC ID vpc-0518d3603257bf85d (eks-hybrid-vpc) vpc-0518d3603257bf85d (eks-hybrid-vpc)" [ref=e444]:
+                          - cell "VPC ID" [ref=e445]:
+                            - strong [ref=e446]: VPC ID
+                          - cell "vpc-0518d3603257bf85d (eks-hybrid-vpc)" [ref=e447]:
+                            - code [ref=e448]: vpc-0518d3603257bf85d (eks-hybrid-vpc)
+                          - cell "vpc-0518d3603257bf85d (eks-hybrid-vpc)" [ref=e449]:
+                            - code [ref=e450]: vpc-0518d3603257bf85d (eks-hybrid-vpc)
+                        - row "Subnet name eks-hybrid-subnet-1 eks-hybrid-subnet-2" [ref=e451]:
+                          - cell "Subnet name" [ref=e452]:
+                            - strong [ref=e453]: Subnet name
+                          - cell "eks-hybrid-subnet-1" [ref=e454]:
+                            - code [ref=e455]: eks-hybrid-subnet-1
+                          - cell "eks-hybrid-subnet-2" [ref=e456]:
+                            - code [ref=e457]: eks-hybrid-subnet-2
+                        - row "Availability Zone us-east-1a us-east-1b" [ref=e458]:
+                          - cell "Availability Zone" [ref=e459]:
+                            - strong [ref=e460]: Availability Zone
+                          - cell "us-east-1a" [ref=e461]:
+                            - code [ref=e462]: us-east-1a
+                          - cell "us-east-1b" [ref=e463]:
+                            - code [ref=e464]: us-east-1b
+                        - row "IPv4 VPC CIDR block 10.100.0.0/16 10.100.0.0/16" [ref=e465]:
+                          - cell "IPv4 VPC CIDR block" [ref=e466]:
+                            - strong [ref=e467]: IPv4 VPC CIDR block
+                          - cell "10.100.0.0/16" [ref=e468]:
+                            - code [ref=e469]: 10.100.0.0/16
+                          - cell "10.100.0.0/16" [ref=e470]:
+                            - code [ref=e471]: 10.100.0.0/16
+                        - row "IPv4 subnet CIDR block 10.100.0.0/24 10.100.1.0/24" [ref=e472]:
+                          - cell "IPv4 subnet CIDR block" [ref=e473]:
+                            - strong [ref=e474]: IPv4 subnet CIDR block
+                          - cell "10.100.0.0/24" [ref=e475]:
+                            - code [ref=e476]: 10.100.0.0/24
+                          - cell "10.100.1.0/24" [ref=e477]:
+                            - code [ref=e478]: 10.100.1.0/24
+                  - listitem [ref=e479]:
+                    - paragraph [ref=e480]:
+                      - text: If you plan to deploy AWS worker nodes to a public subnet,
+                      - link "edit the subnet settings" [ref=e481] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/vpc/latest/userguide/subnet-public-ip.html
+                      - text: and enable the
+                      - strong [ref=e482]: Enable auto-assign public IPv4 address
+                      - text: option.
+                  - listitem [ref=e483]:
+                    - paragraph [ref=e484]:
+                      - text: If you want any of your subnets to be public,
+                      - link "create and attach an internet gateway" [ref=e485] [cursor=pointer]:
+                        - /url: http://docs.aws.amazon.com/vpc/latest/userguide/working-with-igw.html
+                      - text: to the VPC that you created.
+                  - listitem [ref=e486]:
+                    - paragraph [ref=e487]:
+                      - text: For any subnets that you want to keep private,
+                      - link "create a NAT gateway" [ref=e488] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-working-with.html#nat-gateway-creating
+                      - text: for those subnets. The following table is an example configuration for the NAT gateway.
+                    - table [ref=e489]:
+                      - rowgroup [ref=e490]:
+                        - row "Setting Example Value for Subnet 1" [ref=e491]:
+                          - cell "Setting" [ref=e492]
+                          - cell "Example Value for Subnet 1" [ref=e493]
+                      - rowgroup [ref=e494]:
+                        - row "Name eks-hybrid-private-subnet-gateway" [ref=e495]:
+                          - cell "Name" [ref=e496]:
+                            - strong [ref=e497]: Name
+                          - cell "eks-hybrid-private-subnet-gateway" [ref=e498]:
+                            - code [ref=e499]: eks-hybrid-private-subnet-gateway
+                        - row "Subnet subnet-0cdebdb570d3ca783 (eks-hybrid-subnet-1)" [ref=e500]:
+                          - cell "Subnet" [ref=e501]:
+                            - strong [ref=e502]: Subnet
+                          - cell "subnet-0cdebdb570d3ca783 (eks-hybrid-subnet-1)" [ref=e503]:
+                            - code [ref=e504]: subnet-0cdebdb570d3ca783 (eks-hybrid-subnet-1)
+                        - row "Connectivity type Public" [ref=e505]:
+                          - cell "Connectivity type" [ref=e506]:
+                            - strong [ref=e507]: Connectivity type
+                          - cell "Public" [ref=e508]
+                        - row "Elastic IP allocation ID eipalloc-05e4fdafb32b05447" [ref=e509]:
+                          - cell "Elastic IP allocation ID" [ref=e510]:
+                            - strong [ref=e511]: Elastic IP allocation ID
+                          - cell "eipalloc-05e4fdafb32b05447" [ref=e512]:
+                            - code [ref=e513]: eipalloc-05e4fdafb32b05447
+                    - paragraph [ref=e514]:
+                      - text: The NAT gateway requires an Elastic IP address when setting
+                      - strong [ref=e515]: Connectivity type
+                      - text: to
+                      - strong [ref=e516]: Public
+                      - text: . Ensure you have already allocated one in the same region as your VPC and subnet. Refer to
+                      - link "Allocate an Elastic IP address" [ref=e517] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/working-with-eips.html#using-instance-addressing-eips-allocating
+                      - text: for guidance.
+                  - listitem [ref=e518]:
+                    - paragraph [ref=e519]: Edit the main route table depending on whether your subnets will be private or public. The main route table is created automatically for the subnets within the VPC.
+                    - paragraph [ref=e520]:
+                      - text: If you want one private subnet and one public subnet, follow the steps to edit the main route table for your private subnet first. Then,
+                      - link "create a custom route table" [ref=e521] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/vpc/latest/userguide/WorkWithRouteTables.html#CustomRouteTable
+                      - text: for your VPC and configure it for your public subnet.
+                    - generic [ref=e522]:
+                      - tablist [ref=e523]:
+                        - tab "Private" [selected] [ref=e524] [cursor=pointer]
+                        - tab "Public" [ref=e525] [cursor=pointer]
+                      - tabpanel [ref=e527]:
+                        - list [ref=e528]:
+                          - listitem [ref=e529]:
+                            - link "Associate the subnet or subnets with your route table" [ref=e530] [cursor=pointer]:
+                              - /url: https://docs.aws.amazon.com/vpc/latest/userguide/WorkWithRouteTables.html#AssociateSubnet
+                            - text: explicitly.
+                          - listitem [ref=e531]:
+                            - link "Add a route" [ref=e532] [cursor=pointer]:
+                              - /url: https://docs.aws.amazon.com/vpc/latest/userguide/WorkWithRouteTables.html#AddRemoveRoutes
+                            - text: to your NAT gateway.
+                          - listitem [ref=e533]:
+                            - text: Ensure that a
+                            - code [ref=e534]: local
+                            - text: route exists for your VPC CIDR.
+                          - listitem [ref=e535]:
+                            - text: (Optional) Provide a
+                            - strong [ref=e536]: Name
+                            - text: tag for your route table, for example,
+                            - code [ref=e537]: eks-hybrid-private-subnet-rt
+                            - text: .
+                        - group [ref=e538]:
+                          - generic "Example route table" [ref=e539] [cursor=pointer]
+                  - listitem [ref=e540]:
+                    - paragraph [ref=e541]:
+                      - link "Create a security group" [ref=e542] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/vpc/latest/userguide/creating-security-groups.html
+                      - text: for your VPC that contains the
+                      - link "necessary rules" [ref=e543] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-cluster-sg
+                      - text: to allow communication with your remote environment. This security group is added as an additional security group when creating your EKS cluster as described in the
+                      - link "Prepare EKS Cluster" [ref=e544] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/prepare-eks-cluster/#create-the-eks-cluster
+                      - text: steps.
+                    - paragraph [ref=e545]: The following tables are an example configuration for the security group.
+                    - generic [ref=e546]:
+                      - tablist [ref=e547]:
+                        - tab "Basic Details" [selected] [ref=e548] [cursor=pointer]
+                        - tab "Inbound Rules" [ref=e549] [cursor=pointer]
+                        - tab "Outbound Rules" [ref=e550] [cursor=pointer]
+                      - tabpanel [ref=e552]:
+                        - table [ref=e553]:
+                          - rowgroup [ref=e554]:
+                            - row "Setting Example Value" [ref=e555]:
+                              - cell "Setting" [ref=e556]
+                              - cell "Example Value" [ref=e557]
+                          - rowgroup [ref=e558]:
+                            - row "Security group name eks-hybrid-remote-rules-sg" [ref=e559]:
+                              - cell "Security group name" [ref=e560]:
+                                - strong [ref=e561]: Security group name
+                              - cell "eks-hybrid-remote-rules-sg" [ref=e562]:
+                                - code [ref=e563]: eks-hybrid-remote-rules-sg
+                            - row "Description (optional) \"EKS Hybrid remote environment communication\"" [ref=e564]:
+                              - cell "Description (optional)" [ref=e565]:
+                                - strong [ref=e566]: Description (optional)
+                              - cell "\"EKS Hybrid remote environment communication\"" [ref=e567]
+                            - row "VPC vpc-0518d3603257bf85d (eks-hybrid-vpc)" [ref=e568]:
+                              - cell "VPC" [ref=e569]:
+                                - strong [ref=e570]: VPC
+                              - cell "vpc-0518d3603257bf85d (eks-hybrid-vpc)" [ref=e571]:
+                                - code [ref=e572]: vpc-0518d3603257bf85d (eks-hybrid-vpc)
+                            - row "Tags (optional) Name = eks-hybrid-remote-rules-sg" [ref=e573]:
+                              - cell "Tags (optional)" [ref=e574]:
+                                - strong [ref=e575]: Tags (optional)
+                              - cell "Name = eks-hybrid-remote-rules-sg" [ref=e576]:
+                                - code [ref=e577]: Name
+                                - text: =
+                                - code [ref=e578]: eks-hybrid-remote-rules-sg
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e579]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e580] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e581]:
+                  - listitem [ref=e582]:
+                    - paragraph [ref=e583]:
+                      - text: Log in to
+                      - link "AWS" [ref=e584] [cursor=pointer]:
+                        - /url: https://console.aws.amazon.com/
+                      - text: .
+                  - listitem [ref=e585]:
+                    - paragraph [ref=e586]:
+                      - text: Check that your created network resources have a
+                      - strong [ref=e587]: State
+                      - text: of
+                      - strong [ref=e588]: Available
+                      - text: or
+                      - strong [ref=e589]: Attached
+                      - text: "in the chosen region. A list of the expected resources is as follows:"
+                    - list [ref=e590]:
+                      - listitem [ref=e591]: AWS VPC for your Amazon EKS cluster.
+                      - listitem [ref=e592]: Two subnets within the AWS VPC.
+                      - listitem [ref=e593]: Internet gateways for your public subnets.
+                      - listitem [ref=e594]: NAT gateways for your private subnets.
+                  - listitem [ref=e595]:
+                    - paragraph [ref=e596]: "Check that you have created the following additional resources:"
+                    - list [ref=e597]:
+                      - listitem [ref=e598]: Route tables for your subnets.
+                      - listitem [ref=e599]: Default security group for your VPC and custom security group for your remote environment.
+                      - listitem [ref=e600]: Elastic IPs for your NAT gateways, if any.
+                - heading "Remote Network EnvironmentDirect link to Remote Network Environment" [level=2] [ref=e601]:
+                  - text: Remote Network Environment
+                  - link "Direct link to Remote Network Environment" [ref=e602] [cursor=pointer]:
+                    - /url: "#remote-network-environment"
+                    - text: "#"
+                - paragraph [ref=e603]:
+                  - text: This section provides high-level steps and example configuration for your remote network environment as described in the AWS documentation under
+                  - link "On-premises networking configuration" [ref=e604] [cursor=pointer]:
+                    - /url: https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem
+                  - text: .
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e605]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e606] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e607]:
+                  - listitem [ref=e608]:
+                    - paragraph [ref=e609]: "Access to your on-prem/remote core network devices with sufficient privileges to create and modify network configurations. This includes the following:"
+                    - list [ref=e610]:
+                      - listitem [ref=e611]:
+                        - paragraph [ref=e612]: Permissions to define or adjust IP address allocations in the on-prem/remote environment to avoid CIDR overlap with AWS VPCs.
+                      - listitem [ref=e613]:
+                        - paragraph [ref=e614]: Permissions to configure or update firewall rules and NAT settings.
+                - heading "Configure Remote NetworkDirect link to Configure Remote Network" [level=3] [ref=e615]:
+                  - text: Configure Remote Network
+                  - link "Direct link to Configure Remote Network" [ref=e616] [cursor=pointer]:
+                    - /url: "#configure-remote-network"
+                    - text: "#"
+                - list [ref=e617]:
+                  - listitem [ref=e618]:
+                    - paragraph [ref=e619]:
+                      - text: Configure your Virtual Local Area Network (VLAN) or subnet definitions to a suitable IP range for your hybrid nodes. Refer to
+                      - link "On-premises node and pod CIDRs" [ref=e620] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem
+                      - text: for AWS requirements on CIDR blocks in remote networks.
+                    - list [ref=e621]:
+                      - listitem [ref=e622]:
+                        - text: Example hybrid node CIDR block =
+                        - code [ref=e623]: 10.200.0.0/16
+                        - list [ref=e624]:
+                          - listitem [ref=e625]:
+                            - text: Example hybrid node subnets =
+                            - code [ref=e626]: 10.200.0.0/24
+                            - text: ","
+                            - code [ref=e627]: 10.200.1.0/24
+                      - listitem [ref=e628]:
+                        - text: Example pod CIDR block =
+                        - code [ref=e629]: 192.168.0.0/16
+                  - listitem [ref=e630]:
+                    - paragraph [ref=e631]:
+                      - text: Configure your NAT settings to allow outbound internet access from your hybrid nodes or, at a minimum, access to the necessary AWS services for
+                      - link "hybrid node installation and upgrade" [ref=e632] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem
+                      - text: .
+                    - paragraph [ref=e633]:
+                      - text: The following tables are an example list of enabled service URLs in the
+                      - code [ref=e634]: us-east-1
+                      - text: region. All endpoints are accessed with the
+                      - code [ref=e635]: HTTPS
+                      - text: protocol on port
+                      - code [ref=e636]: "443"
+                      - text: . The services vary depending on the
+                      - link "credential model" [ref=e637] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-creds.html
+                      - text: used for the hybrid nodes.
+                    - generic [ref=e638]:
+                      - tablist [ref=e639]:
+                        - tab "AWS Service Manager (SSM)" [selected] [ref=e640] [cursor=pointer]
+                        - tab "AWS IAM Roles Anywhere" [ref=e641] [cursor=pointer]
+                      - tabpanel [ref=e643]:
+                        - table [ref=e644]:
+                          - rowgroup [ref=e645]:
+                            - row "Service Endpoint URL" [ref=e646]:
+                              - cell "Service" [ref=e647]
+                              - cell "Endpoint URL" [ref=e648]
+                          - rowgroup [ref=e649]:
+                            - row "Amazon EKS https://hybrid-assets.eks.amazonaws.com" [ref=e650]:
+                              - cell "Amazon EKS" [ref=e651]
+                              - cell "https://hybrid-assets.eks.amazonaws.com" [ref=e652]:
+                                - code [ref=e653]: https://hybrid-assets.eks.amazonaws.com
+                            - row "Amazon EKS https://eks.us-east-1.amazonaws.com" [ref=e654]:
+                              - cell "Amazon EKS" [ref=e655]
+                              - cell "https://eks.us-east-1.amazonaws.com" [ref=e656]:
+                                - code [ref=e657]: https://eks.us-east-1.amazonaws.com
+                            - row "Amazon ECR https://api.ecr.us-east-1.amazonaws.com" [ref=e658]:
+                              - cell "Amazon ECR" [ref=e659]
+                              - cell "https://api.ecr.us-east-1.amazonaws.com" [ref=e660]:
+                                - code [ref=e661]: https://api.ecr.us-east-1.amazonaws.com
+                            - row "Amazon EKS ECR https://602401143452.dkr.ecr.us-east-1.amazonaws.com" [ref=e662]:
+                              - cell "Amazon EKS ECR" [ref=e663]
+                              - cell "https://602401143452.dkr.ecr.us-east-1.amazonaws.com" [ref=e664]:
+                                - code [ref=e665]: https://602401143452.dkr.ecr.us-east-1.amazonaws.com
+                            - row "AWS Systems Manager (SSM) https://amazon-ssm-us-east-1.s3.us-east-1.amazonaws.com" [ref=e666]:
+                              - cell "AWS Systems Manager (SSM)" [ref=e667]
+                              - cell "https://amazon-ssm-us-east-1.s3.us-east-1.amazonaws.com" [ref=e668]:
+                                - code [ref=e669]: https://amazon-ssm-us-east-1.s3.us-east-1.amazonaws.com
+                            - row "AWS Systems Manager (SSM) https://ssm.us-east-1.amazonaws.com" [ref=e670]:
+                              - cell "AWS Systems Manager (SSM)" [ref=e671]
+                              - cell "https://ssm.us-east-1.amazonaws.com" [ref=e672]:
+                                - code [ref=e673]: https://ssm.us-east-1.amazonaws.com
+                            - row "(Optional) AWS Systems Manager (SSM) https://ec2messages.us-east-1.amazonaws.com" [ref=e674]:
+                              - cell "(Optional) AWS Systems Manager (SSM)" [ref=e675]
+                              - cell "https://ec2messages.us-east-1.amazonaws.com" [ref=e676]:
+                                - code [ref=e677]: https://ec2messages.us-east-1.amazonaws.com
+                            - row "(Optional) Amazon CloudWatch Logs https://logs.us-east-1.amazonaws.com" [ref=e678]:
+                              - cell "(Optional) Amazon CloudWatch Logs" [ref=e679]
+                              - cell "https://logs.us-east-1.amazonaws.com" [ref=e680]:
+                                - code [ref=e681]: https://logs.us-east-1.amazonaws.com
+                            - row "(Optional) Amazon S3 https://s3.us-east-1.amazonaws.com" [ref=e682]:
+                              - cell "(Optional) Amazon S3" [ref=e683]
+                              - cell "https://s3.us-east-1.amazonaws.com" [ref=e684]:
+                                - code [ref=e685]: https://s3.us-east-1.amazonaws.com
+                  - listitem [ref=e686]:
+                    - paragraph [ref=e687]:
+                      - text: Configure your firewall rules to allow node and pod communication with necessary AWS services as described in
+                      - link "Access required for ongoing cluster operations" [ref=e688] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem
+                      - text: .
+                    - paragraph [ref=e689]: The following tables are example on-prem/remote firewall rules for AWS services.
+                    - generic [ref=e690]:
+                      - tablist [ref=e691]:
+                        - tab "Inbound Rules" [selected] [ref=e692] [cursor=pointer]
+                        - tab "Outbound Rules" [ref=e693] [cursor=pointer]
+                      - tabpanel [ref=e695]:
+                        - table [ref=e696]:
+                          - rowgroup [ref=e697]:
+                            - row "Protocols Port Range Source Destination Description" [ref=e698]:
+                              - cell "Protocols" [ref=e699]
+                              - cell "Port Range" [ref=e700]
+                              - cell "Source" [ref=e701]
+                              - cell "Destination" [ref=e702]
+                              - cell "Description" [ref=e703]
+                          - rowgroup [ref=e704]:
+                            - row "TCP 10250 10.100.0.0/16 10.200.0.0/16 Amazon EKS cluster to hybrid nodes." [ref=e705]:
+                              - cell "TCP" [ref=e706]
+                              - cell "10250" [ref=e707]
+                              - cell "10.100.0.0/16" [ref=e708]:
+                                - code [ref=e709]: 10.100.0.0/16
+                              - cell "10.200.0.0/16" [ref=e710]:
+                                - code [ref=e711]: 10.200.0.0/16
+                              - cell "Amazon EKS cluster to hybrid nodes." [ref=e712]
+                            - row "TCP 443 10.100.0.0/16 192.168.0.0/16 Amazon EKS cluster to hybrid pods." [ref=e713]:
+                              - cell "TCP" [ref=e714]
+                              - cell "443" [ref=e715]
+                              - cell "10.100.0.0/16" [ref=e716]:
+                                - code [ref=e717]: 10.100.0.0/16
+                              - cell "192.168.0.0/16" [ref=e718]:
+                                - code [ref=e719]: 192.168.0.0/16
+                              - cell "Amazon EKS cluster to hybrid pods." [ref=e720]
+                            - row "TCP, UDP 53 192.168.0.0/16 192.168.0.0/16 Hybrid pods to CoreDNS." [ref=e721]:
+                              - cell "TCP, UDP" [ref=e722]
+                              - cell "53" [ref=e723]
+                              - cell "192.168.0.0/16" [ref=e724]:
+                                - code [ref=e725]: 192.168.0.0/16
+                              - cell "192.168.0.0/16" [ref=e726]:
+                                - code [ref=e727]: 192.168.0.0/16
+                              - cell "Hybrid pods to CoreDNS." [ref=e728]:
+                                - text: Hybrid pods to
+                                - link "CoreDNS" [ref=e729] [cursor=pointer]:
+                                  - /url: https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html
+                                - text: .
+                            - row "TCP, UDP 443 192.168.0.0/16 192.168.0.0/16 Hybrid pod to hybrid pod application port." [ref=e730]:
+                              - cell "TCP, UDP" [ref=e731]
+                              - cell "443" [ref=e732]
+                              - cell "192.168.0.0/16" [ref=e733]:
+                                - code [ref=e734]: 192.168.0.0/16
+                              - cell "192.168.0.0/16" [ref=e735]:
+                                - code [ref=e736]: 192.168.0.0/16
+                              - cell "Hybrid pod to hybrid pod application port." [ref=e737]
+                            - row "SSH 22 10.100.0.0/16 10.200.0.0/16 (Optional) Amazon EKS VPC CIDR to hybrid nodes for SSH access." [ref=e738]:
+                              - cell "SSH" [ref=e739]
+                              - cell "22" [ref=e740]
+                              - cell "10.100.0.0/16" [ref=e741]:
+                                - code [ref=e742]: 10.100.0.0/16
+                              - cell "10.200.0.0/16" [ref=e743]:
+                                - code [ref=e744]: 10.200.0.0/16
+                              - cell "(Optional) Amazon EKS VPC CIDR to hybrid nodes for SSH access." [ref=e745]
+                            - row "ICMP - IPv4 All 10.100.0.0/16 10.200.0.0/16 (Optional) Amazon EKS VPC CIDR to hybrid nodes for ICMP access." [ref=e746]:
+                              - cell "ICMP - IPv4" [ref=e747]
+                              - cell "All" [ref=e748]
+                              - cell "10.100.0.0/16" [ref=e749]:
+                                - code [ref=e750]: 10.100.0.0/16
+                              - cell "10.200.0.0/16" [ref=e751]:
+                                - code [ref=e752]: 10.200.0.0/16
+                              - cell "(Optional) Amazon EKS VPC CIDR to hybrid nodes for ICMP access." [ref=e753]
+                  - listitem [ref=e754]:
+                    - paragraph [ref=e755]:
+                      - text: Configure firewall rules for Cilium operation. Cilium is used as the Container Network Interface (CNI) for hybrid nodes and requires
+                      - link "firewall rules" [ref=e756] [cursor=pointer]:
+                        - /url: https://docs.cilium.io/en/stable/operations/system_requirements/#firewall-rules
+                      - text: to allow health checks, Virtual Extensible Local Area Network (VXLAN) overlay, and etcd access.
+                    - paragraph [ref=e757]: The following tables are example on-prem/remote firewall rules for Cilium and assumes that hybrid nodes will act as worker nodes without VXLAN overlay networking.
+                    - generic [ref=e758]:
+                      - tablist [ref=e759]:
+                        - tab "Ingress Rules" [selected] [ref=e760] [cursor=pointer]
+                        - tab "Egress Rules" [ref=e761] [cursor=pointer]
+                      - tabpanel [ref=e763]:
+                        - table [ref=e764]:
+                          - rowgroup [ref=e765]:
+                            - row "Protocol Port Range Source Destination Description" [ref=e766]:
+                              - cell "Protocol" [ref=e767]
+                              - cell "Port Range" [ref=e768]
+                              - cell "Source" [ref=e769]
+                              - cell "Destination" [ref=e770]
+                              - cell "Description" [ref=e771]
+                          - rowgroup [ref=e772]:
+                            - row "TCP 4240 10.100.0.0/16 10.200.0.0/16 AWS to hybrid node for cilium-health monitoring." [ref=e773]:
+                              - cell "TCP" [ref=e774]
+                              - cell "4240" [ref=e775]
+                              - cell "10.100.0.0/16" [ref=e776]:
+                                - code [ref=e777]: 10.100.0.0/16
+                              - cell "10.200.0.0/16" [ref=e778]:
+                                - code [ref=e779]: 10.200.0.0/16
+                              - cell "AWS to hybrid node for cilium-health monitoring." [ref=e780]:
+                                - text: AWS to hybrid node for
+                                - code [ref=e781]: cilium-health
+                                - text: monitoring.
+                            - row "TCP 4240 10.200.0.0/16 10.200.0.0/16 Hybrid node to hybrid node for cilium-health monitoring." [ref=e782]:
+                              - cell "TCP" [ref=e783]
+                              - cell "4240" [ref=e784]
+                              - cell "10.200.0.0/16" [ref=e785]:
+                                - code [ref=e786]: 10.200.0.0/16
+                              - cell "10.200.0.0/16" [ref=e787]:
+                                - code [ref=e788]: 10.200.0.0/16
+                              - cell "Hybrid node to hybrid node for cilium-health monitoring." [ref=e789]:
+                                - text: Hybrid node to hybrid node for
+                                - code [ref=e790]: cilium-health
+                                - text: monitoring.
+                            - row "ICMP Type 0/8, Code 0 10.100.0.0/16 10.200.0.0/16 AWS to hybrid node pings for cilium-health." [ref=e791]:
+                              - cell "ICMP" [ref=e792]
+                              - cell "Type 0/8, Code 0" [ref=e793]
+                              - cell "10.100.0.0/16" [ref=e794]:
+                                - code [ref=e795]: 10.100.0.0/16
+                              - cell "10.200.0.0/16" [ref=e796]:
+                                - code [ref=e797]: 10.200.0.0/16
+                              - cell "AWS to hybrid node pings for cilium-health." [ref=e798]:
+                                - text: AWS to hybrid node pings for
+                                - code [ref=e799]: cilium-health
+                                - text: .
+                            - row "ICMP Type 0/8, Code 0 10.200.0.0/16 10.200.0.0/16 Hybrid node to hybrid node pings for cilium-health." [ref=e800]:
+                              - cell "ICMP" [ref=e801]
+                              - cell "Type 0/8, Code 0" [ref=e802]
+                              - cell "10.200.0.0/16" [ref=e803]:
+                                - code [ref=e804]: 10.200.0.0/16
+                              - cell "10.200.0.0/16" [ref=e805]:
+                                - code [ref=e806]: 10.200.0.0/16
+                              - cell "Hybrid node to hybrid node pings for cilium-health." [ref=e807]:
+                                - text: Hybrid node to hybrid node pings for
+                                - code [ref=e808]: cilium-health
+                                - text: .
+                  - listitem [ref=e809]:
+                    - paragraph [ref=e810]:
+                      - text: Configure firewall rules for Palette SaaS operation, which requires inbound and outbound connectivity to Palette SaaS
+                      - link "services" [ref=e811] [cursor=pointer]:
+                        - /url: /architecture/palette-public-ips/
+                      - text: and
+                      - link "ports" [ref=e812] [cursor=pointer]:
+                        - /url: /architecture/networking-ports/#network-ports
+                      - text: .
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e813]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e814] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - list [ref=e815]:
+                  - listitem [ref=e816]:
+                    - paragraph [ref=e817]: Log in to your on-prem/remote network device or network management tool.
+                  - listitem [ref=e818]:
+                    - paragraph [ref=e819]: Check that the following network resources have been configured for hybrid nodes.
+                    - list [ref=e820]:
+                      - listitem [ref=e821]: VLAN or subnets defined for appropriate IP ranges for hybrid nodes.
+                      - listitem [ref=e822]: NAT settings for outbound access to AWS services.
+                      - listitem [ref=e823]: Firewall rules for AWS services and Cilium operations.
+                  - listitem [ref=e824]:
+                    - paragraph [ref=e825]: (Optional) If you have an available host deployed within the VLAN or subnet, SSH into the host, and verify the host can connect to the required AWS and Spectro Cloud services.
+                    - paragraph [ref=e826]:
+                      - text: For example, if you have
+                      - link "netcat" [ref=e827] [cursor=pointer]:
+                        - /url: https://linux.die.net/man/1/nc
+                      - text: installed, issue the following command on the Edge host to check whether the
+                      - code [ref=e828]: eks.us-east-1.amazonaws.com
+                      - text: domain is accessible on port
+                      - code [ref=e829]: "443"
+                      - text: .
+                    - generic [ref=e831]:
+                      - code [ref=e833]:
+                        - generic [ref=e834]: nc -z -v eks.us-east-1.amazonaws.com 443
+                      - button "Copy code to clipboard" [ref=e836] [cursor=pointer]:
+                        - generic [ref=e837]:
+                          - img [ref=e838]
+                          - img [ref=e840]
+                    - paragraph [ref=e842]: Example output, if successful.
+                    - generic [ref=e844]:
+                      - code [ref=e846]:
+                        - generic [ref=e847]: Connection to eks.us-east-1.amazonaws.com port 443 [tcp/https] succeeded!
+                      - generic [ref=e848]:
+                        - button "Toggle word wrap" [ref=e849] [cursor=pointer]:
+                          - img [ref=e850]
+                        - button "Copy code to clipboard" [ref=e852] [cursor=pointer]:
+                          - generic [ref=e853]:
+                            - img [ref=e854]
+                            - img [ref=e856]
+                - heading "Inter-Site ConnectivityDirect link to Inter-Site Connectivity" [level=2] [ref=e858]:
+                  - text: Inter-Site Connectivity
+                  - link "Direct link to Inter-Site Connectivity" [ref=e859] [cursor=pointer]:
+                    - /url: "#inter-site-connectivity"
+                    - text: "#"
+                - paragraph [ref=e860]: This section outlines high-level steps and example configurations for establishing inter-site connectivity between AWS and your on-prem/remote environment.
+                - paragraph [ref=e861]: "Inter-site connectivity can be configured using a variety of methods, such as:"
+                - list [ref=e862]:
+                  - listitem [ref=e863]:
+                    - link "AWS Site-to-Site VPN" [ref=e864] [cursor=pointer]:
+                      - /url: https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html
+                  - listitem [ref=e865]:
+                    - link "AWS Direct Connect" [ref=e866] [cursor=pointer]:
+                      - /url: https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-direct-connect.html
+                  - listitem [ref=e867]:
+                    - link "Software VPN" [ref=e868] [cursor=pointer]:
+                      - /url: https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/software-vpn.html
+                - paragraph [ref=e869]:
+                  - text: Refer to
+                  - link "Network-to-Amazon VPC connectivity options" [ref=e870] [cursor=pointer]:
+                    - /url: https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/network-to-amazon-vpc-connectivity-options.html
+                  - text: for guidance on all available options.
+                - generic [ref=e871]:
+                  - generic [ref=e872]:
+                    - img [ref=e874]
+                    - text: important
+                  - paragraph [ref=e877]: This section's primary focus is AWS Site-to-Site VPN, although some steps can be adapted for AWS Direct Connect.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e878]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e879] [cursor=pointer]:
+                    - /url: "#prerequisites-2"
+                    - text: "#"
+                - list [ref=e880]:
+                  - listitem [ref=e881]:
+                    - paragraph [ref=e882]: "An AWS account with permissions to view, create, and modify the following resources:"
+                    - list [ref=e883]:
+                      - listitem [ref=e884]: Route tables
+                      - listitem [ref=e885]: Transit gateways or Virtual private gateways, or both
+                      - listitem [ref=e886]: Security groups
+                      - listitem [ref=e887]: Customer gateway
+                      - listitem [ref=e888]: Site-to-Site VPN or Direct Connect
+                    - paragraph [ref=e889]:
+                      - text: Refer to
+                      - link "Amazon VPC policy examples" [ref=e890] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html
+                      - text: for guidance on Identity and Access Management (IAM) permissions.
+                  - listitem [ref=e891]:
+                    - paragraph [ref=e892]: "Access to your on-prem/remote core network devices with sufficient privileges to create and modify network configurations. This includes the following:"
+                    - list [ref=e893]:
+                      - listitem [ref=e894]:
+                        - paragraph [ref=e895]: If using a VPN, permissions to configure or update IPsec tunnels/security policies.
+                      - listitem [ref=e896]:
+                        - paragraph [ref=e897]: If using an IPsec VPN or similar encrypted connection, permissions to generate, install, and rotate certificates or keys on the local network equipment.
+                      - listitem [ref=e898]:
+                        - paragraph [ref=e899]: If using a VPN, permissions to update firewall rules for VPN ports.
+                      - listitem [ref=e900]:
+                        - paragraph [ref=e901]: Permissions to adjust or introduce Border Gateway Protocol (BGP) or manage static routes that control traffic to and from AWS.
+                  - listitem [ref=e902]:
+                    - paragraph [ref=e903]:
+                      - text: The network connectivity between AWS and on-prem/remote environment meets the recommended
+                      - link "minimum network requirements" [ref=e904] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem
+                      - text: .
+                - heading "Configure Inter-Site ConnectivityDirect link to Configure Inter-Site Connectivity" [level=3] [ref=e905]:
+                  - text: Configure Inter-Site Connectivity
+                  - link "Direct link to Configure Inter-Site Connectivity" [ref=e906] [cursor=pointer]:
+                    - /url: "#configure-inter-site-connectivity"
+                    - text: "#"
+                - list [ref=e907]:
+                  - listitem [ref=e908]:
+                    - paragraph [ref=e909]:
+                      - text: In AWS,
+                      - link "create a customer gateway" [ref=e910] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/vpn/latest/s2svpn/SetUpVPNConnections.html#vpn-create-cgw
+                      - text: .
+                    - paragraph [ref=e911]:
+                      - text: The following table is an example configuration for the customer gateway. Refer to
+                      - link "Customer gateway options for your AWS Site-to-Site VPN connection" [ref=e912] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/vpn/latest/s2svpn/cgw-options.html
+                      - text: for further guidance on all available options.
+                    - table [ref=e913]:
+                      - rowgroup [ref=e914]:
+                        - row "Setting Example Value Description" [ref=e915]:
+                          - cell "Setting" [ref=e916]
+                          - cell "Example Value" [ref=e917]
+                          - cell "Description" [ref=e918]
+                      - rowgroup [ref=e919]:
+                        - row "Name tag (optional) eks-hybrid-remote-gateway-1 The optional AWS Name tag value for the customer gateway." [ref=e920]:
+                          - cell "Name tag (optional)" [ref=e921]:
+                            - strong [ref=e922]: Name tag (optional)
+                          - cell "eks-hybrid-remote-gateway-1" [ref=e923]:
+                            - code [ref=e924]: eks-hybrid-remote-gateway-1
+                          - cell "The optional AWS Name tag value for the customer gateway." [ref=e925]:
+                            - text: The optional AWS
+                            - strong [ref=e926]: Name
+                            - text: tag value for the customer gateway.
+                        - row "BGP ASN 65000 The BGP Autonomous System Number (ASN) used to identify your on-prem/remote gateway in BGP route exchanges. It must be distinct from the ASN configured on the AWS target gateway." [ref=e927]:
+                          - cell "BGP ASN" [ref=e928]:
+                            - strong [ref=e929]: BGP ASN
+                          - cell "65000" [ref=e930]:
+                            - code [ref=e931]: "65000"
+                          - cell "The BGP Autonomous System Number (ASN) used to identify your on-prem/remote gateway in BGP route exchanges. It must be distinct from the ASN configured on the AWS target gateway." [ref=e932]
+                        - row "IP address 3.232.157.211 The public IP address of the on-prem/remote gateway used to establish the VPN connection." [ref=e933]:
+                          - cell "IP address" [ref=e934]:
+                            - strong [ref=e935]: IP address
+                          - cell "3.232.157.211" [ref=e936]:
+                            - code [ref=e937]: 3.232.157.211
+                          - cell "The public IP address of the on-prem/remote gateway used to establish the VPN connection." [ref=e938]
+                        - row "Device (optional) eks-hybrid-remote-gateway-1 An optional identifier for the device, used for reference within the AWS console." [ref=e939]:
+                          - cell "Device (optional)" [ref=e940]:
+                            - strong [ref=e941]: Device (optional)
+                          - cell "eks-hybrid-remote-gateway-1" [ref=e942]:
+                            - code [ref=e943]: eks-hybrid-remote-gateway-1
+                          - cell "An optional identifier for the device, used for reference within the AWS console." [ref=e944]
+                  - listitem [ref=e945]:
+                    - paragraph [ref=e946]:
+                      - text: In AWS,
+                      - link "create a target gateway" [ref=e947] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/vpn/latest/s2svpn/SetUpVPNConnections.html#vpn-create-target-gateway
+                      - text: and attach it to your VPC. Virtual private gateways are attached to a single VPC, whereas transit gateways can facilitate multiple VPCs.
+                    - generic [ref=e948]:
+                      - generic [ref=e949]:
+                        - img [ref=e951]
+                        - text: important
+                      - paragraph [ref=e954]:
+                        - text: If you are planning to use AWS Direct Connect, ensure that you create the gateway in the
+                        - link "AWS Direct Connect console" [ref=e955] [cursor=pointer]:
+                          - /url: https://console.aws.amazon.com/directconnect/v2/home
+                        - text: . If using AWS Site-to-Site VPN, create the gateway in the
+                        - link "AWS VPC console" [ref=e956] [cursor=pointer]:
+                          - /url: https://console.aws.amazon.com/vpc/
+                        - text: .
+                    - paragraph [ref=e957]: The following tables are example configurations for the target gateway.
+                    - generic [ref=e958]:
+                      - tablist [ref=e959]:
+                        - tab "Virtual Private Gateway" [selected] [ref=e960] [cursor=pointer]
+                        - tab "Transit Gateway & Attachment" [ref=e961] [cursor=pointer]
+                      - tabpanel [ref=e963]:
+                        - table [ref=e964]:
+                          - rowgroup [ref=e965]:
+                            - row "Setting Example Value Description" [ref=e966]:
+                              - cell "Setting" [ref=e967]
+                              - cell "Example Value" [ref=e968]
+                              - cell "Description" [ref=e969]
+                          - rowgroup [ref=e970]:
+                            - row "Name tag (optional) eks-hybrid-vgw The optional AWS Name tag value for the virtual private gateway." [ref=e971]:
+                              - cell "Name tag (optional)" [ref=e972]:
+                                - strong [ref=e973]: Name tag (optional)
+                              - cell "eks-hybrid-vgw" [ref=e974]:
+                                - code [ref=e975]: eks-hybrid-vgw
+                              - cell "The optional AWS Name tag value for the virtual private gateway." [ref=e976]:
+                                - text: The optional AWS
+                                - strong [ref=e977]: Name
+                                - text: tag value for the virtual private gateway.
+                            - row "Autonomous System Number (ASN) Amazon default ASN A unique numeric identifier that the AWS gateway uses in BGP route exchanges. This ASN must be distinct from the customer gateway ASN." [ref=e978]:
+                              - cell "Autonomous System Number (ASN)" [ref=e979]:
+                                - strong [ref=e980]: Autonomous System Number (ASN)
+                              - cell "Amazon default ASN" [ref=e981]
+                              - cell "A unique numeric identifier that the AWS gateway uses in BGP route exchanges. This ASN must be distinct from the customer gateway ASN." [ref=e982]
+                            - row "Attach to VPC vpc-0518d3603257bf85d (eks-hybrid-vpc) The AWS VPC that the virtual private gateway is attached to. In the AWS Console, this step is performed after creating the virtual private gateway." [ref=e983]:
+                              - cell "Attach to VPC" [ref=e984]:
+                                - strong [ref=e985]: Attach to VPC
+                              - cell "vpc-0518d3603257bf85d (eks-hybrid-vpc)" [ref=e986]:
+                                - code [ref=e987]: vpc-0518d3603257bf85d (eks-hybrid-vpc)
+                              - cell "The AWS VPC that the virtual private gateway is attached to. In the AWS Console, this step is performed after creating the virtual private gateway." [ref=e988]
+                  - listitem [ref=e989]:
+                    - paragraph [ref=e990]:
+                      - link "Configure routing" [ref=e991] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/vpn/latest/s2svpn/SetUpVPNConnections.html#vpn-configure-route-tables
+                      - text: in AWS to enable traffic from your on-prem/remote network.
+                    - generic [ref=e992]:
+                      - generic [ref=e993]:
+                        - img [ref=e995]
+                        - text: info
+                      - paragraph [ref=e998]:
+                        - text: If using AWS Direct Connect, you would need to map traffic from your on-prem/remote network to your AWS VPC private subnet CIDRs.
+                        - text: For example, both remote node and pod CIDRs
+                        - code [ref=e999]: 10.200.0.0/16
+                        - text: and
+                        - code [ref=e1000]: 192.168.0.0/16
+                        - text: → Private subnet CIDRs
+                        - code [ref=e1001]: 10.100.0.0/24
+                        - text: and
+                        - code [ref=e1002]: 10.100.1.0/24
+                        - text: .
+                    - list [ref=e1003]:
+                      - listitem [ref=e1004]:
+                        - paragraph [ref=e1005]: If using a virtual private gateway, enable route propagation on your subnet route tables.
+                        - list [ref=e1006]:
+                          - listitem [ref=e1007]:
+                            - paragraph [ref=e1008]: If using static routing, once your IPsec tunnels have been established later on in step 7, the remote node and remote pod CIDR routes should automatically propagate to your subnet route tables.
+                            - group [ref=e1009]:
+                              - generic "Example" [ref=e1010] [cursor=pointer]
+                            - paragraph [ref=e1011]: If they are not automatically propagated, you will need to define them manually.
+                      - listitem [ref=e1012]:
+                        - paragraph [ref=e1013]: If using a transit gateway, add two routes to your subnet route tables and your transit gateway route table.
+                        - list [ref=e1014]:
+                          - listitem [ref=e1015]:
+                            - paragraph [ref=e1016]:
+                              - text: For the subnet route tables,
+                              - link "add routes" [ref=e1017] [cursor=pointer]:
+                                - /url: https://docs.aws.amazon.com/vpc/latest/userguide/WorkWithRouteTables.html#AddRemoveRoutes
+                              - text: that target the transit gateway for traffic destined for the remote node CIDRs and remote pod CIDRs.
+                            - group [ref=e1018]:
+                              - generic "Example" [ref=e1019] [cursor=pointer]
+                          - listitem [ref=e1020]:
+                            - paragraph [ref=e1021]:
+                              - text: For the transit gateway route table,
+                              - link "create active static routes" [ref=e1022] [cursor=pointer]:
+                                - /url: https://docs.aws.amazon.com/vpc/latest/tgw/tgw-create-static-route.html
+                              - text: for the remote node CIDRs and remote pod CIDRs. These should be attached to the VPN.
+                            - group [ref=e1023]:
+                              - generic "Example" [ref=e1024] [cursor=pointer]
+                  - listitem [ref=e1025]:
+                    - paragraph [ref=e1026]:
+                      - link "Create a VPN connection" [ref=e1027] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/vpn/latest/s2svpn/SetUpVPNConnections.html#vpn-create-vpn-connection
+                      - text: in AWS.
+                    - paragraph [ref=e1028]: The following tables are example configurations for an AWS Site-to-Site VPN depending on the target gateway type.
+                    - generic [ref=e1029]:
+                      - tablist [ref=e1030]:
+                        - tab "Virtual Private Gateway" [selected] [ref=e1031] [cursor=pointer]
+                        - tab "Transit Gateway" [ref=e1032] [cursor=pointer]
+                      - tabpanel [ref=e1034]:
+                        - table [ref=e1035]:
+                          - rowgroup [ref=e1036]:
+                            - row "Setting Example Value Description" [ref=e1037]:
+                              - cell "Setting" [ref=e1038]
+                              - cell "Example Value" [ref=e1039]
+                              - cell "Description" [ref=e1040]
+                          - rowgroup [ref=e1041]:
+                            - row "Name tag (optional) eks-hybrid-sts-vpn The optional AWS Name tag value for the Site-to-Site VPN." [ref=e1042]:
+                              - cell "Name tag (optional)" [ref=e1043]:
+                                - strong [ref=e1044]: Name tag (optional)
+                              - cell "eks-hybrid-sts-vpn" [ref=e1045]:
+                                - code [ref=e1046]: eks-hybrid-sts-vpn
+                              - cell "The optional AWS Name tag value for the Site-to-Site VPN." [ref=e1047]:
+                                - text: The optional AWS
+                                - strong [ref=e1048]: Name
+                                - text: tag value for the Site-to-Site VPN.
+                            - row "Target gateway type Virtual private gateway The target gateway type. This should match what you created in step 2." [ref=e1049]:
+                              - cell "Target gateway type" [ref=e1050]:
+                                - strong [ref=e1051]: Target gateway type
+                              - cell "Virtual private gateway" [ref=e1052]
+                              - cell "The target gateway type. This should match what you created in step 2." [ref=e1053]
+                            - row "Virtual private gateway vgw-08b7d849217105d6f (eks-hybrid-vgw) The virtual private gateway for the Amazon EKS VPC." [ref=e1054]:
+                              - cell "Virtual private gateway" [ref=e1055]:
+                                - strong [ref=e1056]: Virtual private gateway
+                              - cell "vgw-08b7d849217105d6f (eks-hybrid-vgw)" [ref=e1057]:
+                                - code [ref=e1058]: vgw-08b7d849217105d6f (eks-hybrid-vgw)
+                              - cell "The virtual private gateway for the Amazon EKS VPC." [ref=e1059]
+                            - row "Customer gateway Existing Choose Existing to be able to select the customer gateway created in step 1." [ref=e1060]:
+                              - cell "Customer gateway" [ref=e1061]:
+                                - strong [ref=e1062]: Customer gateway
+                              - cell "Existing" [ref=e1063]
+                              - cell "Choose Existing to be able to select the customer gateway created in step 1." [ref=e1064]:
+                                - text: Choose
+                                - strong [ref=e1065]: Existing
+                                - text: to be able to select the customer gateway created in step 1.
+                            - row "Customer gateway ID cgw-0b4ec7c65c5189d1e (eks-hybrid-remote-gateway-1) The customer gateway for your on-prem/remote gateway connection." [ref=e1066]:
+                              - cell "Customer gateway ID" [ref=e1067]:
+                                - strong [ref=e1068]: Customer gateway ID
+                              - cell "cgw-0b4ec7c65c5189d1e (eks-hybrid-remote-gateway-1)" [ref=e1069]:
+                                - code [ref=e1070]: cgw-0b4ec7c65c5189d1e (eks-hybrid-remote-gateway-1)
+                              - cell "The customer gateway for your on-prem/remote gateway connection." [ref=e1071]
+                            - row "Routing options Static Whether to use dynamic or static routing." [ref=e1072]:
+                              - cell "Routing options" [ref=e1073]:
+                                - strong [ref=e1074]: Routing options
+                              - cell "Static" [ref=e1075]
+                              - cell "Whether to use dynamic or static routing." [ref=e1076]
+                            - row "Static IP prefixes 10.200.0.0/16, 192.168.0.0/16 If using static routing, the remote node CIDR and remote pod CIDR must be added here." [ref=e1077]:
+                              - cell "Static IP prefixes" [ref=e1078]:
+                                - strong [ref=e1079]: Static IP prefixes
+                              - cell "10.200.0.0/16, 192.168.0.0/16" [ref=e1080]:
+                                - code [ref=e1081]: 10.200.0.0/16
+                                - text: ","
+                                - code [ref=e1082]: 192.168.0.0/16
+                              - cell "If using static routing, the remote node CIDR and remote pod CIDR must be added here." [ref=e1083]
+                  - listitem [ref=e1084]:
+                    - paragraph [ref=e1085]:
+                      - link "Download the configuration file" [ref=e1086] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/vpn/latest/s2svpn/SetUpVPNConnections.html#vpn-download-config
+                      - text: to help you configure your on-prem/remote gateway device.
+                    - group [ref=e1087]:
+                      - generic "Example download configuration" [ref=e1088] [cursor=pointer]
+                  - listitem [ref=e1089]:
+                    - paragraph [ref=e1090]: "On your on-prem/remote VPN gateway, configure IPsec Phase 1 tunnels with Phase 2 security associations to establish a connection to your AWS VPN. The Phase 2 security associations need to include the following routes:"
+                    - list [ref=e1091]:
+                      - listitem [ref=e1092]:
+                        - paragraph [ref=e1093]: Hybrid node network CIDR to AWS VPC CIDR.
+                        - list [ref=e1094]:
+                          - listitem [ref=e1095]:
+                            - text: This can be split into multiple routes for each hybrid node subnet. If doing so, ensure that the AWS VPN has paired traffic selectors configured. If using an AWS Site-to-Site VPN, this would be configured through the
+                            - strong [ref=e1096]: Local IPv4 Network CIDR
+                            - text: and
+                            - strong [ref=e1097]: Remote IPv4 Network CIDR
+                            - text: settings.
+                      - listitem [ref=e1098]:
+                        - paragraph [ref=e1099]: Hybrid pod network CIDR to AWS VPC CIDR.
+                    - paragraph [ref=e1100]:
+                      - text: The following screenshot shows an example IPsec tunnel configuration on a
+                      - link "pfSense" [ref=e1101] [cursor=pointer]:
+                        - /url: https://docs.netgate.com/pfsense/en/latest/preface/index.html
+                      - text: device.
+                    - paragraph [ref=e1102]:
+                      - img "Example IPsec tunnel configuration in pfSense" [ref=e1103]
+                  - listitem [ref=e1104]:
+                    - paragraph [ref=e1105]: Ensure that your IPsec tunnels have a connection established on your on-prem/remote VPN gateway for both phase 1 and phase 2 connections. The following screenshot shows an example of a connected and disconnected tunnel on a pfSense device.
+                    - paragraph [ref=e1106]:
+                      - img "Example IPsec tunnel status in pfSense" [ref=e1107]
+                  - listitem [ref=e1108]:
+                    - paragraph [ref=e1109]: Configure your on-prem/remote firewall rules to allow VPN traffic. You will need to configure rules for each IPsec tunnel.
+                    - paragraph [ref=e1110]:
+                      - text: The following tables describe example firewall rules where
+                      - code [ref=e1111]: 52.44.108.101
+                      - text: and
+                      - code [ref=e1112]: 3.225.148.144
+                      - text: are example
+                      - strong [ref=e1113]: Outside IP Address
+                      - text: entries for AWS Site-to-Site VPN Tunnels.
+                    - generic [ref=e1114]:
+                      - tablist [ref=e1115]:
+                        - tab "Inbound Rules" [selected] [ref=e1116] [cursor=pointer]
+                        - tab "Outbound Rules" [ref=e1117] [cursor=pointer]
+                      - tabpanel [ref=e1119]:
+                        - table [ref=e1120]:
+                          - rowgroup [ref=e1121]:
+                            - row "Protocol Port Source Description" [ref=e1122]:
+                              - cell "Protocol" [ref=e1123]
+                              - cell "Port" [ref=e1124]
+                              - cell "Source" [ref=e1125]
+                              - cell "Description" [ref=e1126]
+                          - rowgroup [ref=e1127]:
+                            - row "UDP 1194 52.44.108.101, 3.225.148.144 OpenVPN traffic." [ref=e1128]:
+                              - cell "UDP" [ref=e1129]
+                              - cell "1194" [ref=e1130]
+                              - cell "52.44.108.101, 3.225.148.144" [ref=e1131]:
+                                - code [ref=e1132]: 52.44.108.101
+                                - text: ","
+                                - code [ref=e1133]: 3.225.148.144
+                              - cell "OpenVPN traffic." [ref=e1134]
+                            - row "UDP 500 52.44.108.101, 3.225.148.144 IKE Phase 1 for IPsec VPN." [ref=e1135]:
+                              - cell "UDP" [ref=e1136]
+                              - cell "500" [ref=e1137]
+                              - cell "52.44.108.101, 3.225.148.144" [ref=e1138]:
+                                - code [ref=e1139]: 52.44.108.101
+                                - text: ","
+                                - code [ref=e1140]: 3.225.148.144
+                              - cell "IKE Phase 1 for IPsec VPN." [ref=e1141]
+                            - row "UDP 4500 52.44.108.101, 3.225.148.144 NAT-Traversal (NAT-T) for IPsec VPN." [ref=e1142]:
+                              - cell "UDP" [ref=e1143]
+                              - cell "4500" [ref=e1144]
+                              - cell "52.44.108.101, 3.225.148.144" [ref=e1145]:
+                                - code [ref=e1146]: 52.44.108.101
+                                - text: ","
+                                - code [ref=e1147]: 3.225.148.144
+                              - cell "NAT-Traversal (NAT-T) for IPsec VPN." [ref=e1148]
+                            - row "ESP (IP 50) N/A 52.44.108.101, 3.225.148.144 Encapsulating Security Payload (ESP) for IPsec data encryption." [ref=e1149]:
+                              - cell "ESP (IP 50)" [ref=e1150]
+                              - cell "N/A" [ref=e1151]
+                              - cell "52.44.108.101, 3.225.148.144" [ref=e1152]:
+                                - code [ref=e1153]: 52.44.108.101
+                                - text: ","
+                                - code [ref=e1154]: 3.225.148.144
+                              - cell "Encapsulating Security Payload (ESP) for IPsec data encryption." [ref=e1155]
+                  - listitem [ref=e1156]:
+                    - paragraph [ref=e1157]: Ensure that the appropriate NAT exemptions or policies, such as IPsec passthrough, are configured so that IPsec traffic is not inadvertently translated.
+                  - listitem [ref=e1158]:
+                    - paragraph [ref=e1159]: Configure your on-prem/remote router to ensure network traffic to and from AWS reaches the correct hybrid nodes.
+                    - paragraph [ref=e1160]: In both BGP and static routing scenarios, a route must exist to send all Amazon EKS VPC-bound traffic through a centralized VPN gateway.
+                    - generic [ref=e1161]:
+                      - tablist [ref=e1162]:
+                        - tab "Border Gateway Protocol (BGP)" [selected] [ref=e1163] [cursor=pointer]
+                        - tab "Static Routing" [ref=e1164] [cursor=pointer]
+                      - tabpanel [ref=e1166]:
+                        - list [ref=e1167]:
+                          - listitem [ref=e1168]:
+                            - paragraph [ref=e1169]: Use BGP to share your remote node and pod CIDRs with AWS.
+                            - list [ref=e1170]:
+                              - listitem [ref=e1171]: If using AWS Direct Connect, this may be all that is required as AWS can route directly to individual on-prem/remote nodes.
+                          - listitem [ref=e1172]:
+                            - paragraph [ref=e1173]: Automate local route advertisement so your on-prem/remote routers dynamically learn each node’s CIDR, removing the need for manual route management.
+                            - list [ref=e1174]:
+                              - listitem [ref=e1175]:
+                                - text: Refer to the
+                                - link "Cilium BGP documentation" [ref=e1176] [cursor=pointer]:
+                                  - /url: https://docs.cilium.io/en/stable/network/bgp-control-plane/bgp-control-plane-v2/
+                                - text: for comprehensive setup details and best practices.
+                          - listitem [ref=e1177]:
+                            - paragraph [ref=e1178]: In VPN setups where AWS routes all traffic to a single on-prem VPN server, rely on BGP to direct traffic to the correct on-prem/remote nodes or set up static routes as needed.
+                            - list [ref=e1179]:
+                              - listitem [ref=e1180]:
+                                - text: Static routes are configured during the
+                                - link "Configure Hybrid Node Networking for VPN Solutions" [ref=e1181] [cursor=pointer]:
+                                  - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/create-hybrid-node-pools/#configure-hybrid-node-networking-for-vpn-solutions
+                                - text: steps.
+                          - listitem [ref=e1182]:
+                            - paragraph [ref=e1183]:
+                              - text: Optionally, you can define a unique VPN server IP for each hybrid node as a fallback during the
+                              - link "Create Hybrid Node Pool" [ref=e1184] [cursor=pointer]:
+                                - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/create-hybrid-node-pools/#create-hybrid-node-pool
+                              - text: steps.
+                            - list [ref=e1185]:
+                              - listitem [ref=e1186]: If your on-prem/remote gateway or default gateway does not automatically route traffic bound for the AWS VPC CIDR to the VPN server, even when BGP is used, this feature ensures each node can still reach out to AWS. This is not necessary if the network already has the proper route to the AWS VPC CIDR.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e1187]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e1188] [cursor=pointer]:
+                    - /url: "#validate-2"
+                    - text: "#"
+                - generic [ref=e1189]:
+                  - tablist [ref=e1190]:
+                    - tab "AWS Site-to-Site VPN" [selected] [ref=e1191] [cursor=pointer]
+                    - tab "AWS Direct Connect" [ref=e1192] [cursor=pointer]
+                  - tabpanel [ref=e1194]:
+                    - list [ref=e1195]:
+                      - listitem [ref=e1196]:
+                        - paragraph [ref=e1197]:
+                          - text: Log in to the
+                          - link "Amazon VPC console" [ref=e1198] [cursor=pointer]:
+                            - /url: https://console.aws.amazon.com/vpcconsole/home
+                          - text: .
+                      - listitem [ref=e1199]:
+                        - paragraph [ref=e1200]:
+                          - text: Check that your AWS Site-to-Site VPN connection has two tunnels with a
+                          - strong [ref=e1201]: Status
+                          - text: of
+                          - strong [ref=e1202]: Up
+                          - text: .
+                      - listitem [ref=e1203]:
+                        - paragraph [ref=e1204]: If you have an available host deployed within the on-prem/remote VLAN or subnet, SSH into the host, and attempt to reach your AWS VPC gateway.
+                        - paragraph [ref=e1205]:
+                          - text: Replace
+                          - code [ref=e1206]: <awsVpcGateway>
+                          - text: with the IP address of your AWS VPC gateway, for example,
+                          - code [ref=e1207]: 10.100.0.1
+                          - text: .
+                        - generic [ref=e1209]:
+                          - code [ref=e1211]:
+                            - generic [ref=e1212]: ping <awsVpcGateway>
+                          - button "Copy code to clipboard" [ref=e1214] [cursor=pointer]:
+                            - generic [ref=e1215]:
+                              - img [ref=e1216]
+                              - img [ref=e1218]
+                        - paragraph [ref=e1220]: Check that the ping statistics from the output show a healthy connection.
+                        - paragraph [ref=e1221]: Example healthy output.
+                        - code [ref=e1225]:
+                          - generic [ref=e1226]: PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.
+                          - generic [ref=e1227]: "64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=27.5 ms"
+                          - generic [ref=e1228]: "64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=28.2 ms"
+                          - generic [ref=e1229]: "64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=29.1 ms"
+                          - generic [ref=e1230]: "64 bytes from 10.100.0.1: icmp_seq=4 ttl=64 time=27.9 ms"
+                          - generic [ref=e1231]: "--- 10.100.0.1 ping statistics ---"
+                          - generic [ref=e1232]: 4 packets transmitted, 4 received, 0% packet loss, time 3999ms
+                          - generic [ref=e1233]: rtt min/avg/max/mdev = 27.5/28.2/29.1/0.6 ms
+                      - listitem [ref=e1234]:
+                        - paragraph [ref=e1235]: If you have an EC2 instance available that has been deployed in your AWS VPC, SSH into the instance, and attempt to reach an available host deployed within the on-prem/remote VLAN or subnet.
+                        - paragraph [ref=e1236]:
+                          - text: Replace
+                          - code [ref=e1237]: <hostIpAddress>
+                          - text: with the IP address of your on-prem/remote host, for example,
+                          - code [ref=e1238]: 10.200.1.23
+                          - text: .
+                        - generic [ref=e1240]:
+                          - code [ref=e1242]:
+                            - generic [ref=e1243]: ping <hostIpAddress>
+                          - button "Copy code to clipboard" [ref=e1245] [cursor=pointer]:
+                            - generic [ref=e1246]:
+                              - img [ref=e1247]
+                              - img [ref=e1249]
+                        - paragraph [ref=e1251]: Check that the ping statistics from the output show a healthy connection.
+                        - paragraph [ref=e1252]: Example healthy output.
+                        - code [ref=e1256]:
+                          - generic [ref=e1257]: PING 10.200.1.23 (10.200.1.23) 56(84) bytes of data.
+                          - generic [ref=e1258]: "64 bytes from 10.200.1.23: icmp_seq=1 ttl=64 time=27.5 ms"
+                          - generic [ref=e1259]: "64 bytes from 10.200.1.23: icmp_seq=2 ttl=64 time=28.2 ms"
+                          - generic [ref=e1260]: "64 bytes from 10.200.1.23: icmp_seq=3 ttl=64 time=29.1 ms"
+                          - generic [ref=e1261]: "64 bytes from 10.200.1.23: icmp_seq=4 ttl=64 time=27.9 ms"
+                          - generic [ref=e1262]: "--- 10.200.1.23 ping statistics ---"
+                          - generic [ref=e1263]: 4 packets transmitted, 4 received, 0% packet loss, time 3999ms
+                          - generic [ref=e1264]: rtt min/avg/max/mdev = 27.5/28.2/29.1/0.6 ms
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e1265]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e1266] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e1267]:
+                  - text: Complete the remaining sections as highlighted in
+                  - link "Prepare Environment" [ref=e1268] [cursor=pointer]:
+                    - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/
+                  - text: .
+              - generic [ref=e1269]:
+                - generic [ref=e1271]:
+                  - text: "Tags:"
+                  - list [ref=e1272]:
+                    - listitem [ref=e1273]:
+                      - link "public cloud" [ref=e1274] [cursor=pointer]:
+                        - /url: /tags/public-cloud/
+                    - listitem [ref=e1275]:
+                      - link "aws" [ref=e1276] [cursor=pointer]:
+                        - /url: /tags/aws/
+                    - listitem [ref=e1277]:
+                      - link "eks hybrid nodes" [ref=e1278] [cursor=pointer]:
+                        - /url: /tags/eks-hybrid-nodes/
+                - link "Edit this page" [ref=e1281] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/prepare-network.md
+                  - img [ref=e1282]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e1286]:
+              - link "Previous « Prepare Environment" [ref=e1287] [cursor=pointer]:
+                - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/
+                - generic [ref=e1288]: Previous
+                - generic [ref=e1289]: « Prepare Environment
+              - link "Next Prepare Edge Hosts »" [ref=e1290] [cursor=pointer]:
+                - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/prepare-environment/prepare-edge-hosts/
+                - generic [ref=e1291]: Next
+                - generic [ref=e1292]: Prepare Edge Hosts »
+          - list [ref=e1295]:
+            - listitem [ref=e1296]:
+              - link "AWS Network" [ref=e1297] [cursor=pointer]:
+                - /url: "#aws-network"
+              - list [ref=e1298]:
+                - listitem [ref=e1299]:
+                  - link "Prerequisites" [ref=e1300] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e1301]:
+                  - link "Configure AWS Network" [ref=e1302] [cursor=pointer]:
+                    - /url: "#configure-aws-network"
+                - listitem [ref=e1303]:
+                  - link "Validate" [ref=e1304] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e1305]:
+              - link "Remote Network Environment" [ref=e1306] [cursor=pointer]:
+                - /url: "#remote-network-environment"
+              - list [ref=e1307]:
+                - listitem [ref=e1308]:
+                  - link "Prerequisites" [ref=e1309] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e1310]:
+                  - link "Configure Remote Network" [ref=e1311] [cursor=pointer]:
+                    - /url: "#configure-remote-network"
+                - listitem [ref=e1312]:
+                  - link "Validate" [ref=e1313] [cursor=pointer]:
+                    - /url: "#validate-1"
+            - listitem [ref=e1314]:
+              - link "Inter-Site Connectivity" [ref=e1315] [cursor=pointer]:
+                - /url: "#inter-site-connectivity"
+              - list [ref=e1316]:
+                - listitem [ref=e1317]:
+                  - link "Prerequisites" [ref=e1318] [cursor=pointer]:
+                    - /url: "#prerequisites-2"
+                - listitem [ref=e1319]:
+                  - link "Configure Inter-Site Connectivity" [ref=e1320] [cursor=pointer]:
+                    - /url: "#configure-inter-site-connectivity"
+                - listitem [ref=e1321]:
+                  - link "Validate" [ref=e1322] [cursor=pointer]:
+                    - /url: "#validate-2"
+            - listitem [ref=e1323]:
+              - link "Next Steps" [ref=e1324] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e1325] [cursor=pointer]:
+    - generic [ref=e1328]:
+      - img "Project Logo" [ref=e1329]
+      - paragraph [ref=e1330]: Ask AI
+```

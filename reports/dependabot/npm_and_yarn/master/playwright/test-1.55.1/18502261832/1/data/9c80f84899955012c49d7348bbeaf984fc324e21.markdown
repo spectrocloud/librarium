@@ -1,0 +1,813 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - link "Palette Tutorials" [ref=e40] [cursor=pointer]:
+                  - /url: /tutorials/
+                  - img [ref=e42]
+                  - text: Palette Tutorials
+              - listitem [ref=e44]:
+                - generic [ref=e45]:
+                  - link "Getting Started" [expanded] [ref=e46] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/
+                    - img [ref=e48]
+                    - text: Getting Started
+                  - button "Toggle the collapsible sidebar category 'Getting Started'" [ref=e50] [cursor=pointer]
+                - list [ref=e51]:
+                  - listitem [ref=e52]:
+                    - generic [ref=e53]:
+                      - link "Palette" [expanded] [ref=e54] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette/
+                      - button "Toggle the collapsible sidebar category 'Palette'" [ref=e55] [cursor=pointer]
+                    - list [ref=e56]:
+                      - listitem [ref=e57]:
+                        - link "Introduction to Palette" [ref=e58] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette/introduction-palette/
+                      - listitem [ref=e59]:
+                        - generic [ref=e60]:
+                          - link "Deploy a Cluster to AWS" [ref=e61] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/aws/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to AWS'" [ref=e62] [cursor=pointer]
+                      - listitem [ref=e63]:
+                        - generic [ref=e64]:
+                          - link "Deploy a Cluster to Azure" [ref=e65] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/azure/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to Azure'" [ref=e66] [cursor=pointer]
+                      - listitem [ref=e67]:
+                        - generic [ref=e68]:
+                          - link "Deploy a Cluster to GCP" [ref=e69] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/gcp/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to GCP'" [ref=e70] [cursor=pointer]
+                      - listitem [ref=e71]:
+                        - generic [ref=e72]:
+                          - link "Deploy a Cluster to VMware" [expanded] [ref=e73] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/vmware/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to VMware'" [ref=e74] [cursor=pointer]
+                        - list [ref=e75]:
+                          - listitem [ref=e76]:
+                            - link "Set up Palette" [ref=e77] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/vmware/setup/
+                          - listitem [ref=e78]:
+                            - link "Deploy a PCG" [ref=e79] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/vmware/deploy-pcg/
+                          - listitem [ref=e80]:
+                            - link "Create a Cluster Profile" [ref=e81] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/vmware/create-cluster-profile/
+                          - listitem [ref=e82]:
+                            - link "Deploy a Cluster" [ref=e83] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/vmware/deploy-k8s-cluster/
+                          - listitem [ref=e84]:
+                            - link "Deploy Cluster Profile Updates" [ref=e85] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/vmware/update-k8s-cluster/
+                          - listitem [ref=e86]:
+                            - link "Cluster Management with Terraform" [ref=e87] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/vmware/deploy-manage-k8s-cluster-tf/
+                          - listitem [ref=e88]:
+                            - link "Scale, Upgrade, and Secure Clusters" [ref=e89] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/vmware/scale-secure-cluster/
+                  - listitem [ref=e90]:
+                    - generic [ref=e91]:
+                      - link "Palette Edge" [ref=e92] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette-edge/
+                      - button "Toggle the collapsible sidebar category 'Palette Edge'" [ref=e93] [cursor=pointer]
+                  - listitem [ref=e94]:
+                    - generic [ref=e95]:
+                      - link "Additional Capabilities" [ref=e96] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/additional-capabilities/
+                      - button "Toggle the collapsible sidebar category 'Additional Capabilities'" [ref=e97] [cursor=pointer]
+              - listitem [ref=e98]:
+                - generic [ref=e99]:
+                  - link "Packs and Registries" [ref=e100] [cursor=pointer]:
+                    - /url: /tutorials/packs-registries/
+                    - img [ref=e102]
+                    - text: Packs and Registries
+                  - button "Toggle the collapsible sidebar category 'Packs and Registries'" [ref=e104] [cursor=pointer]
+              - listitem [ref=e105]:
+                - generic [ref=e106]:
+                  - link "Profiles" [ref=e107] [cursor=pointer]:
+                    - /url: /tutorials/profiles/
+                    - img [ref=e109]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Clusters" [ref=e116] [cursor=pointer]:
+                    - /url: /tutorials/clusters/
+                    - img [ref=e118]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e124] [cursor=pointer]
+              - listitem [ref=e125]:
+                - generic [ref=e126]:
+                  - link "Palette Dev Engine" [ref=e127] [cursor=pointer]:
+                    - /url: /tutorials/pde/
+                    - img [ref=e129]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e131] [cursor=pointer]
+              - listitem [ref=e132]:
+                - button "Privacy Settings" [ref=e133] [cursor=pointer]
+      - main [ref=e134]:
+        - generic [ref=e136]:
+          - generic [ref=e138]:
+            - article [ref=e139]:
+              - navigation "Breadcrumbs" [ref=e140]:
+                - list [ref=e141]:
+                  - listitem [ref=e142]:
+                    - link "Home page" [ref=e143] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e144]
+                  - listitem [ref=e146]:
+                    - link "Getting Started" [ref=e147] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/
+                  - listitem [ref=e148]:
+                    - link "Palette" [ref=e149] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette/
+                  - listitem [ref=e150]:
+                    - link "Deploy a Cluster to VMware" [ref=e151] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette/vmware/
+                  - listitem [ref=e152]:
+                    - generic [ref=e153]: Deploy Cluster Profile Updates
+              - generic [ref=e154]:
+                - heading "Deploy Cluster Profile Updates" [level=1] [ref=e156]
+                - paragraph [ref=e157]:
+                  - text: Palette provides cluster profiles, which allow you to specify layers for your workloads using packs, Helm charts, Zarf packages, or cluster manifests. Packs serve as blueprints to the provisioning and deployment process, as they contain the versions of the container images that Palette will install for you. Cluster profiles provide consistency across environments during the cluster creation process, as well as when maintaining your clusters. Check out
+                  - link "Cluster Profiles" [ref=e158] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/introduction-palette/#cluster-profiles
+                  - text: to learn more. Once provisioned, there are three main ways to update your Palette deployments.
+                - table [ref=e159]:
+                  - rowgroup [ref=e160]:
+                    - row "Method Description Cluster application process" [ref=e161]:
+                      - cell "Method" [ref=e162]
+                      - cell "Description" [ref=e163]
+                      - cell "Cluster application process" [ref=e164]
+                  - rowgroup [ref=e165]:
+                    - row "Cluster profile versions Create a new version of the cluster profile with your updates. Select the new version of the cluster profile. Apply this new profile version to the clusters you want to update." [ref=e166]:
+                      - cell "Cluster profile versions" [ref=e167]
+                      - cell "Create a new version of the cluster profile with your updates." [ref=e168]
+                      - cell "Select the new version of the cluster profile. Apply this new profile version to the clusters you want to update." [ref=e169]
+                    - row "Cluster profile updates Change the cluster profile in place. Palette detects the difference between the provisioned resources and this profile. A pending update is available to clusters using this profile. Apply pending updates to the clusters you want to update." [ref=e170]:
+                      - cell "Cluster profile updates" [ref=e171]
+                      - cell "Change the cluster profile in place." [ref=e172]
+                      - cell "Palette detects the difference between the provisioned resources and this profile. A pending update is available to clusters using this profile. Apply pending updates to the clusters you want to update." [ref=e173]
+                    - row "Cluster overrides Change the configuration of a single deployed cluster outside its cluster profile. Save and apply the changes you've made to your cluster." [ref=e174]:
+                      - cell "Cluster overrides" [ref=e175]
+                      - cell "Change the configuration of a single deployed cluster outside its cluster profile." [ref=e176]
+                      - cell "Save and apply the changes you've made to your cluster." [ref=e177]
+                - paragraph [ref=e178]: This tutorial will teach you how to update a cluster deployed with Palette to VMware vSphere. You will explore each cluster update method and learn how to apply these changes using Palette. The concepts you learn about in the Getting Started section are centered around a fictional case study company, Spacetastic Ltd.
+                - heading "🧑‍🚀 Back at Spacetastic HQDirect link to 🧑‍🚀 Back at Spacetastic HQ" [level=2] [ref=e179]:
+                  - text: 🧑‍🚀 Back at Spacetastic HQ
+                  - link "Direct link to 🧑‍🚀 Back at Spacetastic HQ" [ref=e180] [cursor=pointer]:
+                    - /url: "#-back-at-spacetastic-hq"
+                    - text: "#"
+                - paragraph [ref=e181]: The recent outages of their platform have highlighted the need to mature their systems and establish the future vision of the Spacetastic platform and infrastructure. The team have identified the following areas of improvement.
+                - list [ref=e182]:
+                  - listitem [ref=e183]: Automated deployments across cloud providers.
+                  - listitem [ref=e184]: Scalable infrastructure that can support 10x the amount of current subscribers.
+                  - listitem [ref=e185]: Safe updates and releases without any downtime.
+                - blockquote [ref=e186]:
+                  - paragraph [ref=e187]: Wren, Founding Engineer, and Kai, Platform Engineer, have been learning and experimenting with Palette.
+                  - paragraph [ref=e188]: "\"The streamlined deployment process is just one part of the improvements we've got planned for our platform,\" says Kai. \"I'm interested to learn how Palette's cluster profiles behave when applying updates and other changes to our clusters.\""
+                  - paragraph [ref=e189]: Wren nods, knowingly. "Yes, that's critical to avoid future outages like the incidents we’ve had when rolling out new features. After all, not every service is greenfield development, so we want services that have streamlined management processes too."
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e190]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e191] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - paragraph [ref=e192]:
+                  - text: To complete this tutorial, follow the steps described in the
+                  - link "Set up Palette with VMware" [ref=e193] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/vmware/setup/
+                  - text: guide to authenticate Palette for use with your VMware user account.
+                - paragraph [ref=e194]:
+                  - text: Additionally, you should install Kubectl locally. Use the Kubernetes
+                  - link "Install Tools" [ref=e195] [cursor=pointer]:
+                    - /url: https://kubernetes.io/docs/tasks/tools/
+                  - text: page for further guidance.
+                - paragraph [ref=e196]:
+                  - text: Follow the instructions of the
+                  - link "Deploy a Cluster" [ref=e197] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/vmware/deploy-k8s-cluster/
+                  - text: tutorial to deploy a cluster with the
+                  - link "hello-universe" [ref=e198] [cursor=pointer]:
+                    - /url: https://github.com/spectrocloud/hello-universe
+                    - emphasis [ref=e199]: hello-universe
+                  - text: application. Your cluster should be successfully provisioned and in a healthy state.
+                - paragraph [ref=e200]:
+                  - text: The cluster profile name is
+                  - code [ref=e201]: vmware-profile
+                  - text: and the cluster name is
+                  - code [ref=e202]: vmware-cluster
+                  - text: .
+                - paragraph [ref=e203]:
+                  - img "Cluster details page" [ref=e204]
+                - heading "Tag and Filter ClustersDirect link to Tag and Filter Clusters" [level=2] [ref=e205]:
+                  - text: Tag and Filter Clusters
+                  - link "Direct link to Tag and Filter Clusters" [ref=e206] [cursor=pointer]:
+                    - /url: "#tag-and-filter-clusters"
+                    - text: "#"
+                - paragraph [ref=e207]: Palette provides the ability to add tags to your cluster profiles and clusters. This helps you organize and categorize your clusters based on your custom criteria. You can add tags during the creation process or by editing the resource after it has been created.
+                - paragraph [ref=e208]: Adding tags to your clusters helps you find and identify your clusters, without having to rely on cluster naming. This is especially important when operating with many clusters or multiple cloud deployments.
+                - paragraph [ref=e209]:
+                  - text: Navigate to the left
+                  - strong [ref=e210]: Main Menu
+                  - text: and select
+                  - strong [ref=e211]: Clusters
+                  - text: to view your deployed clusters. Find the
+                  - code [ref=e212]: vmware-cluster
+                  - text: you deployed with the
+                  - emphasis [ref=e213]: hello-universe
+                  - text: application. Click on it to view its
+                  - strong [ref=e214]: Overview
+                  - text: tab.
+                - paragraph [ref=e215]:
+                  - text: Click on the
+                  - strong [ref=e216]: Settings
+                  - text: drop-down Menu in the upper right corner and select
+                  - strong [ref=e217]: Cluster Settings
+                  - text: .
+                - paragraph [ref=e218]:
+                  - text: Fill
+                  - strong [ref=e219]: service:hello-universe-frontend
+                  - text: in the
+                  - strong [ref=e220]: Tags (Optional)
+                  - text: input box. Click on
+                  - strong [ref=e221]: Save Changes
+                  - text: . Close the panel.
+                - paragraph [ref=e222]:
+                  - img "Image that shows how to add a cluster tag" [ref=e223]
+                - paragraph [ref=e224]:
+                  - text: Navigate to the left
+                  - strong [ref=e225]: Main Menu
+                  - text: and select
+                  - strong [ref=e226]: Clusters
+                  - text: to view your deployed clusters. Click the
+                  - strong [ref=e227]: filter
+                  - text: icon to expand the
+                  - strong [ref=e228]: All Filters
+                  - text: pane, and below
+                  - strong [ref=e229]: Tags
+                  - text: ", enter"
+                  - strong [ref=e230]: service:hello-universe-frontend
+                  - text: .
+                - paragraph [ref=e231]:
+                  - img "Image that shows how to add a frontend service filter" [ref=e232]
+                - paragraph [ref=e233]:
+                  - text: Only the
+                  - code [ref=e234]: vmware-cluster
+                  - text: with this tag is displayed.
+                - heading "Version Cluster ProfilesDirect link to Version Cluster Profiles" [level=2] [ref=e235]:
+                  - text: Version Cluster Profiles
+                  - link "Direct link to Version Cluster Profiles" [ref=e236] [cursor=pointer]:
+                    - /url: "#version-cluster-profiles"
+                    - text: "#"
+                - paragraph [ref=e237]: Palette supports the creation of multiple cluster profile versions using the same profile name. This provides you with better change visibility and control over the layers in your host clusters. Profile versions are commonly used for adding or removing layers and pack configuration updates.
+                - paragraph [ref=e238]:
+                  - text: The version number of a given profile must be unique and use the semantic versioning format
+                  - code [ref=e239]: major.minor.patch
+                  - text: . If you do not specify a version for your cluster profile, it defaults to
+                  - strong [ref=e240]: 1.0.0
+                  - text: .
+                - paragraph [ref=e241]:
+                  - text: Navigate to the left
+                  - strong [ref=e242]: Main Menu
+                  - text: and select
+                  - strong [ref=e243]: Profiles
+                  - text: to view the cluster profile page. Find the cluster profile corresponding to your
+                  - emphasis [ref=e244]: hello-universe-frontend
+                  - text: cluster. It should be named
+                  - code [ref=e245]: vmware-profile
+                  - text: . Select it to view its details.
+                - paragraph [ref=e246]:
+                  - img "Image that shows the frontend cluster profile with cluster linked to it" [ref=e247]
+                - paragraph [ref=e248]:
+                  - text: The current version is displayed in the
+                  - strong [ref=e249]: drop-down Menu
+                  - text: next to the profile name. This profile has the default value of
+                  - strong [ref=e250]: 1.0.0
+                  - text: ", as you did not specify another value when you created it. The cluster profile also shows the host clusters that are currently deployed with this cluster profile version."
+                - paragraph [ref=e251]:
+                  - text: Click on the version
+                  - strong [ref=e252]: drop-down Menu
+                  - text: . Select the
+                  - strong [ref=e253]: Create new version
+                  - text: option.
+                - paragraph [ref=e254]:
+                  - text: A dialog box appears. Fill in the
+                  - strong [ref=e255]: Version
+                  - text: input with
+                  - strong [ref=e256]: 1.1.0
+                  - text: . Click on
+                  - strong [ref=e257]: Confirm
+                  - text: .
+                - paragraph [ref=e258]:
+                  - text: Palette creates a new cluster profile version and opens it. The version dropdown displays the newly created
+                  - strong [ref=e259]: 1.1.0
+                  - text: profile. This profile version is not deployed to any host clusters.
+                - paragraph [ref=e260]:
+                  - img "Image that shows cluster profile version 1.1.0" [ref=e261]
+                - paragraph [ref=e262]:
+                  - text: The version
+                  - strong [ref=e263]: 1.1.0
+                  - text: has the same layers as the version
+                  - strong [ref=e264]: 1.0.0
+                  - text: it was created from.
+                - paragraph [ref=e265]:
+                  - text: Click on
+                  - strong [ref=e266]: Add New Pack
+                  - text: . Select the
+                  - strong [ref=e267]: Public Repo
+                  - text: registry and scroll down to the
+                  - strong [ref=e268]: Monitoring
+                  - text: section. Find the
+                  - strong [ref=e269]: Kubecost
+                  - text: pack and select it. Alternatively, you can use the search function with the pack name
+                  - strong [ref=e270]: Kubecost
+                  - text: .
+                - paragraph [ref=e271]:
+                  - img "Image that shows how to select the Kubecost pack" [ref=e272]
+                - paragraph [ref=e273]: Once selected, the pack manifest is displayed in the manifest editor.
+                - paragraph [ref=e274]:
+                  - text: Click on
+                  - strong [ref=e275]: Confirm & Create
+                  - text: . The manifest editor closes.
+                - paragraph [ref=e276]:
+                  - text: Click on
+                  - strong [ref=e277]: Save Changes
+                  - text: to finish the configuration of this cluster profile version.
+                - paragraph [ref=e278]:
+                  - text: Navigate to the left
+                  - strong [ref=e279]: Main Menu
+                  - text: and select
+                  - strong [ref=e280]: Clusters
+                  - text: . Select the
+                  - code [ref=e281]: vmware-cluster
+                  - text: to view its
+                  - strong [ref=e282]: Overview
+                  - text: tab.
+                - paragraph [ref=e283]:
+                  - text: Select the
+                  - strong [ref=e284]: Profile
+                  - text: tab of this cluster. You can select a new version of your cluster profile by using the version dropdown.
+                - paragraph [ref=e285]:
+                  - text: Select the
+                  - strong [ref=e286]: 1.1.0
+                  - text: version.
+                - paragraph [ref=e287]:
+                  - img "Image that shows how to select a new profile version for the cluster" [ref=e288]
+                - paragraph [ref=e289]:
+                  - text: Click on
+                  - strong [ref=e290]: Save
+                  - text: to confirm your profile version selection.
+                - generic [ref=e291]:
+                  - generic [ref=e292]:
+                    - img [ref=e294]
+                    - text: warning
+                  - paragraph [ref=e297]:
+                    - text: Palette has backup and restore capabilities available for your mission critical workloads. Ensure that you have adequate backups before you make any cluster profile version changes in your production environments. You can learn more in the
+                    - link "Backup and Restore" [ref=e298] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/backup-restore/
+                    - text: section.
+                - paragraph [ref=e299]: Palette now makes the required changes to your cluster according to the specifications of the configured cluster profile version. Once your changes are applied, Palette marks your layers with the green status indicator. The Kubecost pack will be successfully deployed.
+                - paragraph [ref=e300]:
+                  - img "Image that shows completed cluster profile updates" [ref=e301]
+                - paragraph [ref=e302]:
+                  - text: Download the
+                  - link "kubeconfig" [ref=e303] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/kubeconfig/
+                  - text: file for your cluster from the Palette UI. This file enables you and other users to issue kubectl commands against the host cluster.
+                - paragraph [ref=e304]:
+                  - img "Image that the kubeconfig file" [ref=e305]
+                - paragraph [ref=e306]:
+                  - text: Open a terminal window and set the environment variable
+                  - code [ref=e307]: KUBECONFIG
+                  - text: to point to the kubeconfig file you downloaded.
+                - paragraph [ref=e308]:
+                  - text: Issue the following command, replacing
+                  - code [ref=e309]: ~/Downloads/admin.vmware-cluster.kubeconfig
+                  - text: with the path to your kubeconfig file.
+                - generic [ref=e311]:
+                  - code [ref=e313]:
+                    - generic [ref=e314]: export KUBECONFIG=~/Downloads/admin.vmware-cluster.kubeconfig
+                  - button "Copy code to clipboard" [ref=e316] [cursor=pointer]:
+                    - generic [ref=e317]:
+                      - img [ref=e318]
+                      - img [ref=e320]
+                - paragraph [ref=e322]:
+                  - text: Forward the Kubecost UI to your local network. The Kubecost dashboard is not exposed externally by default, so the command below will allow you to access it locally on port
+                  - strong [ref=e323]: "9090"
+                  - text: . If port 9090 is already taken, you can choose a different one.
+                - generic [ref=e325]:
+                  - code [ref=e327]:
+                    - generic [ref=e328]: kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090
+                  - generic [ref=e329]:
+                    - button "Toggle word wrap" [ref=e330] [cursor=pointer]:
+                      - img [ref=e331]
+                    - button "Copy code to clipboard" [ref=e333] [cursor=pointer]:
+                      - generic [ref=e334]:
+                        - img [ref=e335]
+                        - img [ref=e337]
+                - paragraph [ref=e339]:
+                  - text: Open your browser window and navigate to
+                  - code [ref=e340]: http://localhost:9090
+                  - text: . The Kubecost UI provides you with a variety of cost visualization tools. Read more about
+                  - link "Navigating the Kubecost UI" [ref=e341] [cursor=pointer]:
+                    - /url: https://docs.kubecost.com/using-kubecost/navigating-the-kubecost-ui
+                  - text: to make the most of the cost analyzer.
+                - paragraph [ref=e342]:
+                  - img "Image that shows the Kubecost UI" [ref=e343]
+                - paragraph [ref=e344]:
+                  - text: Once you are done exploring locally, you can stop the
+                  - code [ref=e345]: kubectl port-forward
+                  - text: command by closing the terminal window it is executing from.
+                - heading "Roll Back Cluster ProfilesDirect link to Roll Back Cluster Profiles" [level=2] [ref=e346]:
+                  - text: Roll Back Cluster Profiles
+                  - link "Direct link to Roll Back Cluster Profiles" [ref=e347] [cursor=pointer]:
+                    - /url: "#roll-back-cluster-profiles"
+                    - text: "#"
+                - paragraph [ref=e348]: One of the key advantages of using cluster profile versions is that they make it possible to maintain a copy of previously known working states. The ability to roll back to a previously working cluster profile in one action shortens the time to recovery in the event of an incident.
+                - paragraph [ref=e349]: The process to roll back to a previous version is identical to the process for applying a new version.
+                - paragraph [ref=e350]:
+                  - text: Navigate to the left
+                  - strong [ref=e351]: Main Menu
+                  - text: and select
+                  - strong [ref=e352]: Clusters
+                  - text: . Select the
+                  - code [ref=e353]: vmware-cluster
+                  - text: to view its
+                  - strong [ref=e354]: Overview
+                  - text: tab.
+                - paragraph [ref=e355]:
+                  - text: Select the
+                  - strong [ref=e356]: Profile
+                  - text: tab. This cluster is currently deployed using cluster profile version
+                  - strong [ref=e357]: 1.1.0
+                  - text: . Select the option
+                  - strong [ref=e358]: 1.0.0
+                  - text: in the version dropdown. This process is the reverse of what you did in the previous section,
+                  - link "Version Cluster Profiles" [ref=e359] [cursor=pointer]:
+                    - /url: "#version-cluster-profiles"
+                  - text: .
+                - paragraph [ref=e360]:
+                  - text: Click on
+                  - strong [ref=e361]: Review & Save
+                  - text: to confirm your changes. The
+                  - strong [ref=e362]: Changes Summary
+                  - text: dialog appears again.
+                - paragraph [ref=e363]:
+                  - text: Click on
+                  - strong [ref=e364]: Review changes in Editor
+                  - text: . The editor shows that the incoming version no longer contains the three-tier application configuration.
+                - paragraph [ref=e365]:
+                  - text: Click on
+                  - strong [ref=e366]: Apply Changes
+                  - text: . Select the
+                  - strong [ref=e367]: Overview
+                  - text: tab.
+                - paragraph [ref=e368]:
+                  - text: Palette now makes the changes required for the cluster to return to the state specified in version
+                  - strong [ref=e369]: 1.0.0
+                  - text: of your cluster profile. Once your changes are applied, Palette marks your layers with the green status indicator.
+                - paragraph [ref=e370]:
+                  - img "Cluster details page" [ref=e371]
+                - heading "Pending UpdatesDirect link to Pending Updates" [level=2] [ref=e372]:
+                  - text: Pending Updates
+                  - link "Direct link to Pending Updates" [ref=e373] [cursor=pointer]:
+                    - /url: "#pending-updates"
+                    - text: "#"
+                - paragraph [ref=e374]: Cluster profiles can also be updated in place, without the need to create a new cluster profile version. Palette monitors the state of your clusters and notifies you when updates are available for your host clusters. You may then choose to apply your changes at a convenient time.
+                - paragraph [ref=e375]: The previous state of the cluster profile will not be saved once it is overwritten.
+                - paragraph [ref=e376]:
+                  - text: Navigate to the left
+                  - strong [ref=e377]: Main Menu
+                  - text: and select
+                  - strong [ref=e378]: Clusters
+                  - text: . Select the
+                  - code [ref=e379]: vmware-cluster
+                  - text: to view its
+                  - strong [ref=e380]: Overview
+                  - text: tab.
+                - paragraph [ref=e381]:
+                  - text: Select the
+                  - strong [ref=e382]: Profile
+                  - text: tab. Then, select the
+                  - strong [ref=e383]: hello-universe
+                  - text: pack. Change the
+                  - code [ref=e384]: replicas
+                  - text: field on line
+                  - code [ref=e385]: "15"
+                  - text: to
+                  - code [ref=e386]: "2"
+                  - text: and
+                  - strong [ref=e387]: Save
+                  - text: your changes. The editor is closed.
+                - paragraph [ref=e388]: This cluster now contains an override over its cluster profile. Palette uses the configuration you have just provided for the single cluster over its cluster profile and begins making the appropriate changes.
+                - paragraph [ref=e389]:
+                  - text: Once these changes are complete, select the
+                  - strong [ref=e390]: Workloads
+                  - text: tab. Then, select the
+                  - strong [ref=e391]: hello-universe
+                  - text: namespace.
+                - paragraph [ref=e392]:
+                  - text: Two
+                  - code [ref=e393]: ui
+                  - text: pods are available, instead of the one specified by your cluster profile. Your override has been successfully applied. If your changes are not displayed, use the
+                  - strong [ref=e394]: refresh
+                  - text: icon.
+                - paragraph [ref=e395]:
+                  - text: Navigate to the left
+                  - strong [ref=e396]: Main Menu
+                  - text: and select
+                  - strong [ref=e397]: Profiles
+                  - text: to view the cluster profile page. Find the cluster profile corresponding to your
+                  - emphasis [ref=e398]: hello-universe-frontend
+                  - text: cluster, named
+                  - code [ref=e399]: vmware-profile
+                  - text: .
+                - paragraph [ref=e400]:
+                  - text: Click on it to view its details. Select
+                  - strong [ref=e401]: 1.0.0
+                  - text: in the version dropdown.
+                - paragraph [ref=e402]:
+                  - text: Select the
+                  - strong [ref=e403]: hello-universe
+                  - text: pack. Change the
+                  - code [ref=e404]: replicas
+                  - text: field on line
+                  - code [ref=e405]: "15"
+                  - text: to
+                  - code [ref=e406]: "3"
+                  - text: . Click on
+                  - strong [ref=e407]: Confirm Updates
+                  - text: . The editor is closed.
+                - paragraph [ref=e408]:
+                  - text: Click on
+                  - strong [ref=e409]: Save Changes
+                  - text: to confirm the changes you have made to your profile.
+                - paragraph [ref=e410]:
+                  - text: Navigate to the left
+                  - strong [ref=e411]: Main Menu
+                  - text: and select
+                  - strong [ref=e412]: Clusters
+                  - text: . Filter for the clusters with the
+                  - strong [ref=e413]: service
+                  - text: tag. Both of your clusters match this filter. Palette indicates that the cluster associated with the cluster profile you updated has updates available.
+                - paragraph [ref=e414]:
+                  - img "Image that shows the pending updates" [ref=e415]
+                - paragraph [ref=e416]:
+                  - text: Select this cluster to open its
+                  - strong [ref=e417]: Overview
+                  - text: tab. Click on
+                  - strong [ref=e418]: Updates
+                  - text: to begin the cluster update.
+                - paragraph [ref=e419]:
+                  - img "Image that shows the Updates button" [ref=e420]
+                - paragraph [ref=e421]:
+                  - text: A dialog appears, showing a summary of packs changed. Select
+                  - strong [ref=e422]: Review changes in Editor
+                  - text: to review your changes. Ensure the only change is the
+                  - code [ref=e423]: replicas
+                  - text: field value. The pending update removes your cluster override and sets the
+                  - code [ref=e424]: replicas
+                  - text: field to
+                  - code [ref=e425]: "3"
+                  - text: . At this point, you can choose to apply the pending changes or make additional changes by modifying the
+                  - strong [ref=e426]: Pending Configuration
+                  - text: pane on the right side of the editor.
+                - paragraph [ref=e427]:
+                  - img "Image that shows the available updates dialog" [ref=e428]
+                - paragraph [ref=e429]:
+                  - text: Click on
+                  - strong [ref=e430]: Confirm updates
+                  - text: once you have finished reviewing your changes.
+                - paragraph [ref=e431]:
+                  - text: Palette updates your cluster according to cluster profile specifications. Once these changes are complete, select the
+                  - strong [ref=e432]: Workloads
+                  - text: tab. Then, select the
+                  - strong [ref=e433]: hello-universe
+                  - text: namespace.
+                - paragraph [ref=e434]:
+                  - text: Three
+                  - code [ref=e435]: ui
+                  - text: pods are available. The cluster profile update is now reflected by your cluster. If your changes are not displayed, use the
+                  - strong [ref=e436]: refresh
+                  - text: icon.
+                - heading "Cluster ObservabilityDirect link to Cluster Observability" [level=2] [ref=e437]:
+                  - text: Cluster Observability
+                  - link "Direct link to Cluster Observability" [ref=e438] [cursor=pointer]:
+                    - /url: "#cluster-observability"
+                    - text: "#"
+                - paragraph [ref=e439]:
+                  - text: As we have seen throughout this tutorial, Palette exposes a set of workload metrics out of the box to help cluster administrators better understand the resource utilization of the cluster. The
+                  - link "workload metrics" [ref=e440] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/workloads/
+                  - text: in Palette are a snapshot in time and do not provide alerting capabilities.
+                - paragraph [ref=e441]:
+                  - text: We recommend using a dedicated monitoring system in order to gain a better picture of resource utilization in your environments. Several
+                  - link "packs" [ref=e442] [cursor=pointer]:
+                    - /url: /integrations/
+                  - text: are available in the monitoring category that you can use to add additional monitoring capabilities to your cluster.
+                - paragraph [ref=e443]:
+                  - text: Refer to the
+                  - link "Deploy Monitoring Stack" [ref=e444] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/monitoring/deploy-monitor-stack/
+                  - text: guide to learn how to deploy a monitoring stack using the open source tool
+                  - link "Prometheus" [ref=e445] [cursor=pointer]:
+                    - /url: https://prometheus.io/docs/introduction/overview/
+                  - text: and how to configure a host cluster to forward metrics to the monitoring stack.
+                - heading "CleanupDirect link to Cleanup" [level=2] [ref=e446]:
+                  - text: Cleanup
+                  - link "Direct link to Cleanup" [ref=e447] [cursor=pointer]:
+                    - /url: "#cleanup"
+                    - text: "#"
+                - paragraph [ref=e448]: Use the following steps to remove all the resources you created for the tutorial.
+                - paragraph [ref=e449]:
+                  - text: To remove the cluster, navigate to the left
+                  - strong [ref=e450]: Main Menu
+                  - text: and click on
+                  - strong [ref=e451]: Clusters
+                  - text: . Select the cluster you want to delete to access its details page.
+                - paragraph [ref=e452]:
+                  - text: Click on
+                  - strong [ref=e453]: Settings
+                  - text: to expand the menu, and select
+                  - strong [ref=e454]: Delete Cluster
+                  - text: .
+                - paragraph [ref=e455]:
+                  - img "Delete cluster" [ref=e456]
+                - paragraph [ref=e457]: You will be prompted to type in the cluster name to confirm the delete action. Type in the cluster name to proceed with the delete step. The deletion process takes several minutes to complete.
+                - generic [ref=e458]:
+                  - generic [ref=e459]:
+                    - img [ref=e461]
+                    - text: info
+                  - paragraph [ref=e464]:
+                    - text: If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for a force delete. To trigger a force delete, navigate to the cluster’s details page, click on
+                    - strong [ref=e465]: Settings
+                    - text: ", then select"
+                    - strong [ref=e466]: Force Delete Cluster
+                    - text: . Palette automatically removes clusters stuck in the cluster deletion phase for over 24 hours.
+                - paragraph [ref=e467]:
+                  - text: Once the cluster is deleted, navigate to the left
+                  - strong [ref=e468]: Main Menu
+                  - text: and click on
+                  - strong [ref=e469]: Profiles
+                  - text: . Find the cluster profile you created and click on the
+                  - strong [ref=e470]: three-dot Menu
+                  - text: to display the
+                  - strong [ref=e471]: Delete
+                  - text: button. Select
+                  - strong [ref=e472]: Delete
+                  - text: and confirm the selection to remove the cluster profile.
+                - paragraph [ref=e473]:
+                  - text: After deleting your VMware cluster and cluster profile, proceed with the PCG deletion. Log in to Palette as a tenant admin, navigate to the left
+                  - strong [ref=e474]: Main Menu
+                  - text: and select
+                  - strong [ref=e475]: Tenant Settings
+                  - text: . Next, from the
+                  - strong [ref=e476]: Tenant Settings Menu
+                  - text: ", click on"
+                  - strong [ref=e477]: Private Cloud Gateways
+                  - text: . Identify the PCG you want to delete, click on the
+                  - strong [ref=e478]: Three-Dot Menu
+                  - text: at the end of the PCG row, and select
+                  - strong [ref=e479]: Delete
+                  - text: . Click
+                  - strong [ref=e480]: OK
+                  - text: to confirm the PCG deletion.
+                - paragraph [ref=e481]:
+                  - img "Delete PCG image" [ref=e482]
+                - paragraph [ref=e483]: Palette will delete the PCG and the Palette services deployed on the PCG node. However, the underlying infrastructure resources, such as the virtual machine, must be removed manually from VMware vSphere.
+                - paragraph [ref=e484]:
+                  - text: Log in to your VMware vSphere server and select the VM representing the PCG node named
+                  - code [ref=e485]: gateway-tutorial-cp
+                  - text: . Click on the
+                  - strong [ref=e486]: Three-Dot Actions
+                  - text: button, select
+                  - strong [ref=e487]: Power
+                  - text: ", and"
+                  - strong [ref=e488]: Power Off
+                  - text: to power off the machine. Once the machine is powered off, click on the
+                  - strong [ref=e489]: Three-Dot Actions
+                  - text: button again and select
+                  - strong [ref=e490]: Delete from Disk
+                  - text: to remove the machine from your VMware vSphere environment.
+                - paragraph [ref=e491]:
+                  - img "Delete VMware VM" [ref=e492]
+                - heading "Wrap-UpDirect link to Wrap-Up" [level=2] [ref=e493]:
+                  - text: Wrap-Up
+                  - link "Direct link to Wrap-Up" [ref=e494] [cursor=pointer]:
+                    - /url: "#wrap-up"
+                    - text: "#"
+                - paragraph [ref=e495]: "In this tutorial, you created deployed cluster profile updates. After the cluster was deployed to VMware, you updated the cluster profile through three different methods: creating a new cluster profile version, updating a cluster profile in place, and using cluster profile overrides. After you made your changes, the Hello Universe application functioned as a three-tier application with a REST API backend server."
+                - paragraph [ref=e496]: Cluster profiles provide consistency during the cluster creation process, as well as when maintaining your clusters. They can be versioned to keep a record of previously working cluster states, giving you visibility when updating or rolling back workloads across your environments.
+                - paragraph [ref=e497]:
+                  - text: We recommend that you continue to the
+                  - link "Cluster Management with Terraform" [ref=e498] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/vmware/deploy-manage-k8s-cluster-tf/
+                  - text: page to learn about how you can use Palette with Terraform.
+                - heading "🧑‍🚀 Catch up with SpacetasticDirect link to 🧑‍🚀 Catch up with Spacetastic" [level=2] [ref=e499]:
+                  - text: 🧑‍🚀 Catch up with Spacetastic
+                  - link "Direct link to 🧑‍🚀 Catch up with Spacetastic" [ref=e500] [cursor=pointer]:
+                    - /url: "#-catch-up-with-spacetastic"
+                    - text: "#"
+                - paragraph [ref=e501]: Wren and Kai have followed this tutorial and now have a great understanding of what cluster profile updates mean to deployed clusters. They are impressed with Palette's cluster management capabilities.
+                - blockquote [ref=e502]:
+                  - paragraph [ref=e503]: "\"Neat! Palette's cluster profiles allow us to review all updates we apply to our clusters,\" says Kai. \"I can finally take my vacation days, once we can safely maintain our clusters.\""
+                  - paragraph [ref=e504]: "\"Don't I know the feeling?\" laughs Wren. \"I think we could all use more vacations, quiet weekends, and less excitement when it comes to the Spacetastic platform.\""
+              - generic [ref=e505]:
+                - generic [ref=e507]:
+                  - text: "Tags:"
+                  - list [ref=e508]:
+                    - listitem [ref=e509]:
+                      - link "getting-started" [ref=e510] [cursor=pointer]:
+                        - /url: /tags/getting-started/
+                    - listitem [ref=e511]:
+                      - link "vmware" [ref=e512] [cursor=pointer]:
+                        - /url: /tags/vmware/
+                    - listitem [ref=e513]:
+                      - link "tutorial" [ref=e514] [cursor=pointer]:
+                        - /url: /tags/tutorial/
+                - link "Edit this page" [ref=e517] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/tutorials/getting-started/palette/vmware/update-k8s-cluster.md
+                  - img [ref=e518]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e522]:
+              - link "Previous « Deploy a Cluster" [ref=e523] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette/vmware/deploy-k8s-cluster/
+                - generic [ref=e524]: Previous
+                - generic [ref=e525]: « Deploy a Cluster
+              - link "Next Cluster Management with Terraform »" [ref=e526] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette/vmware/deploy-manage-k8s-cluster-tf/
+                - generic [ref=e527]: Next
+                - generic [ref=e528]: Cluster Management with Terraform »
+          - list [ref=e531]:
+            - listitem [ref=e532]:
+              - link "🧑‍🚀 Back at Spacetastic HQ" [ref=e533] [cursor=pointer]:
+                - /url: "#-back-at-spacetastic-hq"
+            - listitem [ref=e534]:
+              - link "Prerequisites" [ref=e535] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e536]:
+              - link "Tag and Filter Clusters" [ref=e537] [cursor=pointer]:
+                - /url: "#tag-and-filter-clusters"
+            - listitem [ref=e538]:
+              - link "Version Cluster Profiles" [ref=e539] [cursor=pointer]:
+                - /url: "#version-cluster-profiles"
+            - listitem [ref=e540]:
+              - link "Roll Back Cluster Profiles" [ref=e541] [cursor=pointer]:
+                - /url: "#roll-back-cluster-profiles"
+            - listitem [ref=e542]:
+              - link "Pending Updates" [ref=e543] [cursor=pointer]:
+                - /url: "#pending-updates"
+            - listitem [ref=e544]:
+              - link "Cluster Observability" [ref=e545] [cursor=pointer]:
+                - /url: "#cluster-observability"
+            - listitem [ref=e546]:
+              - link "Cleanup" [ref=e547] [cursor=pointer]:
+                - /url: "#cleanup"
+            - listitem [ref=e548]:
+              - link "Wrap-Up" [ref=e549] [cursor=pointer]:
+                - /url: "#wrap-up"
+            - listitem [ref=e550]:
+              - link "🧑‍🚀 Catch up with Spacetastic" [ref=e551] [cursor=pointer]:
+                - /url: "#-catch-up-with-spacetastic"
+  - button "Project Logo Ask AI" [ref=e552] [cursor=pointer]:
+    - generic [ref=e555]:
+      - img "Project Logo" [ref=e556]
+      - paragraph [ref=e557]: Ask AI
+```

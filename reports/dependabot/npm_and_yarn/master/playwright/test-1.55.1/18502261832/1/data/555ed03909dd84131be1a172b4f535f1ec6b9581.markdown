@@ -1,0 +1,473 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                  - listitem [ref=e107]:
+                    - generic [ref=e108]:
+                      - link "Data Center Clusters" [ref=e109] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e111]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e113] [cursor=pointer]
+                  - listitem [ref=e114]:
+                    - generic [ref=e115]:
+                      - link "Edge" [expanded] [ref=e116] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e118]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e120] [cursor=pointer]
+                    - list [ref=e121]:
+                      - listitem [ref=e122]:
+                        - generic [ref=e123]:
+                          - link "Architecture" [ref=e124] [cursor=pointer]:
+                            - /url: /clusters/edge/architecture/
+                          - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e125] [cursor=pointer]
+                      - listitem [ref=e126]:
+                        - link "Hardware Requirements" [ref=e127] [cursor=pointer]:
+                          - /url: /clusters/edge/hardware-requirements/
+                      - listitem [ref=e128]:
+                        - link "Deployment Lifecycle" [ref=e129] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-native-lifecycle/
+                      - listitem [ref=e130]:
+                        - generic [ref=e131]:
+                          - link "Trusted Boot" [ref=e132] [cursor=pointer]:
+                            - /url: /clusters/edge/trusted-boot/
+                          - button "Toggle the collapsible sidebar category 'Trusted Boot'" [ref=e133] [cursor=pointer]
+                      - listitem [ref=e134]:
+                        - generic [ref=e135]:
+                          - link "Install Configuration" [expanded] [ref=e136] [cursor=pointer]:
+                            - /url: /clusters/edge/edge-configuration/
+                          - button "Toggle the collapsible sidebar category 'Install Configuration'" [ref=e137] [cursor=pointer]
+                        - list [ref=e138]:
+                          - listitem [ref=e139]:
+                            - link "Cloud Init Stages" [ref=e140] [cursor=pointer]:
+                              - /url: /clusters/edge/edge-configuration/cloud-init/
+                          - listitem [ref=e141]:
+                            - link "Sensitive User Data Handling" [ref=e142] [cursor=pointer]:
+                              - /url: /clusters/edge/edge-configuration/skip-copying-stages/
+                          - listitem [ref=e143]:
+                            - link "Installer Configuration Reference" [ref=e144] [cursor=pointer]:
+                              - /url: /clusters/edge/edge-configuration/installer-reference/
+                      - listitem [ref=e145]:
+                        - generic [ref=e146]:
+                          - link "EdgeForge Workflow" [ref=e147] [cursor=pointer]:
+                            - /url: /clusters/edge/edgeforge-workflow/
+                          - button "Toggle the collapsible sidebar category 'EdgeForge Workflow'" [ref=e148] [cursor=pointer]
+                      - listitem [ref=e149]:
+                        - generic [ref=e150]:
+                          - link "Local UI" [ref=e151] [cursor=pointer]:
+                            - /url: /clusters/edge/local-ui/
+                          - button "Toggle the collapsible sidebar category 'Local UI'" [ref=e152] [cursor=pointer]
+                      - listitem [ref=e153]:
+                        - generic [ref=e154]:
+                          - link "Deployment" [ref=e155] [cursor=pointer]:
+                            - /url: /clusters/edge/site-deployment/
+                          - button "Toggle the collapsible sidebar category 'Deployment'" [ref=e156] [cursor=pointer]
+                      - listitem [ref=e157]:
+                        - generic [ref=e158]:
+                          - link "Cluster Management" [ref=e159] [cursor=pointer]:
+                            - /url: /clusters/edge/cluster-management/
+                          - button "Toggle the collapsible sidebar category 'Cluster Management'" [ref=e160] [cursor=pointer]
+                      - listitem [ref=e161]:
+                        - generic [ref=e162]:
+                          - link "Networking" [ref=e163] [cursor=pointer]:
+                            - /url: /clusters/edge/networking/
+                          - button "Toggle the collapsible sidebar category 'Networking'" [ref=e164] [cursor=pointer]
+                      - listitem [ref=e165]:
+                        - generic [ref=e166]:
+                          - link "Third Party Integrations" [ref=e167] [cursor=pointer]:
+                            - /url: /clusters/edge/third-party-integrations/
+                          - button "Toggle the collapsible sidebar category 'Third Party Integrations'" [ref=e168] [cursor=pointer]
+                  - listitem [ref=e169]:
+                    - generic [ref=e170]:
+                      - link "Palette Virtual Clusters" [ref=e171] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e173]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e175] [cursor=pointer]
+                  - listitem [ref=e176]:
+                    - generic [ref=e177]:
+                      - link "Imported Clusters" [ref=e178] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e180]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e182] [cursor=pointer]
+                  - listitem [ref=e183]:
+                    - generic [ref=e184]:
+                      - link "Manage Clusters" [ref=e185] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e187]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e189] [cursor=pointer]
+                  - listitem [ref=e190]:
+                    - generic [ref=e191]:
+                      - link "Cluster Groups" [ref=e192] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e194]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e196] [cursor=pointer]
+                  - listitem [ref=e197]:
+                    - generic [ref=e198]:
+                      - link "Private Cloud Gateway" [ref=e199] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e201]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e203] [cursor=pointer]
+              - listitem [ref=e204]:
+                - generic [ref=e205]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e206] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e208]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e210] [cursor=pointer]
+              - listitem [ref=e211]:
+                - generic [ref=e212]:
+                  - link "Palette Dev Engine" [ref=e213] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e215]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e217] [cursor=pointer]
+              - listitem [ref=e218]:
+                - generic [ref=e219]:
+                  - link "Virtual Machine Orchestrator" [ref=e220] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e222]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e224] [cursor=pointer]
+              - listitem [ref=e225]:
+                - generic [ref=e226]:
+                  - link "Workspaces" [ref=e227] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e229]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e231] [cursor=pointer]
+              - listitem [ref=e232]:
+                - generic [ref=e233]:
+                  - link "Packs List" [ref=e234] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e236]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e238] [cursor=pointer]
+              - listitem [ref=e239]:
+                - generic [ref=e240]:
+                  - link "User & Role Management" [ref=e241] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e243]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e245] [cursor=pointer]
+              - listitem [ref=e246]:
+                - generic [ref=e247]:
+                  - link "Registries and Packs" [ref=e248] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e250]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e252] [cursor=pointer]
+              - listitem [ref=e253]:
+                - generic [ref=e254]:
+                  - link "Security" [ref=e255] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e257]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e259] [cursor=pointer]
+              - listitem [ref=e260]:
+                - generic [ref=e261]:
+                  - link "Audit Logs" [ref=e262] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e264]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e266] [cursor=pointer]
+              - listitem [ref=e267]:
+                - generic [ref=e268]:
+                  - link "Self-Hosted Palette" [ref=e269] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e271]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e273] [cursor=pointer]
+              - listitem [ref=e274]:
+                - generic [ref=e275]:
+                  - link "Palette VerteX" [ref=e276] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e278]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e280] [cursor=pointer]
+              - listitem [ref=e281]:
+                - generic [ref=e282]:
+                  - link "Tenant Administration" [ref=e283] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e285]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e287] [cursor=pointer]
+              - listitem [ref=e288]:
+                - generic [ref=e289]:
+                  - link "Automation" [ref=e290] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e292]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e294] [cursor=pointer]
+              - listitem [ref=e295]:
+                - generic [ref=e296]:
+                  - link "Troubleshooting" [ref=e297] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e299]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e301] [cursor=pointer]
+              - listitem [ref=e302]:
+                - link "Glossary" [ref=e303] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e305]
+                  - text: Glossary
+              - listitem [ref=e307]:
+                - generic [ref=e308]:
+                  - link "Compliance & Legal" [ref=e309] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e311]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e313] [cursor=pointer]
+              - listitem [ref=e314]:
+                - button "Privacy Settings" [ref=e315] [cursor=pointer]:
+                  - img [ref=e316]
+                  - text: Privacy Settings
+      - main [ref=e318]:
+        - generic [ref=e320]:
+          - generic [ref=e322]:
+            - article [ref=e323]:
+              - navigation "Breadcrumbs" [ref=e324]:
+                - list [ref=e325]:
+                  - listitem [ref=e326]:
+                    - link "Home page" [ref=e327] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e328]
+                  - listitem [ref=e330]:
+                    - link "Clusters" [ref=e331] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e332]:
+                    - link "Edge" [ref=e333] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                  - listitem [ref=e334]:
+                    - link "Install Configuration" [ref=e335] [cursor=pointer]:
+                      - /url: /clusters/edge/edge-configuration/
+                  - listitem [ref=e336]:
+                    - generic [ref=e337]: Sensitive User Data Handling
+              - generic [ref=e338]:
+                - heading "Sensitive User Data Handling" [level=1] [ref=e340]
+                - paragraph [ref=e341]: Suppose you must add sensitive information, such as credentials, in your user data configuration file. In the Edge deployment lifecycle, you have two opportunities to apply user data to Edge hosts. The first is during the EdgeForge phase, where you create the Edge Installer ISO which contains the user data; the Edge installer will apply the user data to the Edge host during installation. The second opportunity is during the on-site deployment phase, where you can provide supplementary user-data configurations if needed. The diagram below highlights the two mentioned phases in the Edge lifecycle.
+                - paragraph [ref=e342]:
+                  - img "A diagram highlighting the two stages in the edge deployment lifecycle where you can apply user data." [ref=e343]
+                - list [ref=e344]:
+                  - listitem [ref=e345]:
+                    - paragraph [ref=e346]:
+                      - strong [ref=e347]: EdgeForge Phase
+                      - text: "- In the EdgeForge phase, you build the Edge Installer ISO using organization-level configurations. The configurations include the installer itself, the user data, and, optionally, a content bundle. You boot the Edge hosts using the Edge Installer and apply the configurations. All the configurations, including the user data, are copied to the Edge host during installation."
+                    - paragraph [ref=e348]:
+                      - text: Once the Edge hosts are prepared with installation, you ship your devices to the site for on-site deployment. Refer to the
+                      - link "Installation" [ref=e349] [cursor=pointer]:
+                        - /url: /clusters/edge/site-deployment/stage/
+                      - text: guide for more information.
+                  - listitem [ref=e350]:
+                    - paragraph [ref=e351]:
+                      - strong [ref=e352]: On-site Deployment Phase
+                      - text: "- In the on-site deployment phase, you use supplementary user data to apply site-specific configurations to the Edge hosts. The user data is copied to the Edge host during the installation unless you follow the specific naming convention for your user data stages as described below."
+                - paragraph [ref=e353]:
+                  - text: Refer to the
+                  - link "Multiple User Data Use Case" [ref=e354] [cursor=pointer]:
+                    - /url: /clusters/edge/edgeforge-workflow/prepare-user-data/#multiple-user-data-use-case
+                  - text: guide to understand the use cases for applying supplementary user data. If you need to apply a supplementary user data, refer to the
+                  - link "Deploy Edge Hosts On-site" [ref=e355] [cursor=pointer]:
+                    - /url: /clusters/edge/site-deployment/site-installation/
+                  - text: guide to learn the on-site deployment process in detail.
+                - paragraph [ref=e356]:
+                  - text: In both steps mentioned above, the Edge Installer copies the user data configuration file provided to the
+                  - strong [ref=e357]: /run/stylus/userdata
+                  - text: file or the
+                  - strong [ref=e358]: /oem/userdata
+                  - text: file on the Edge hosts. If you want to prevent some user data stages from getting copied to the Edge host's storage, you can use a specific naming convention to disable the default copy behavior. However, be aware that different persistence behaviors apply depending on which stage of the Edge deployment lifecycle you provide sensitive data in the user data configuration file. Refer to the
+                  - link "Sensitive Information in the Site Installation" [ref=e359] [cursor=pointer]:
+                    - /url: "#sensitive-information-in-the-site-installation"
+                  - text: section below to learn more.
+                - heading "Sensitive Information During InstallationDirect link to Sensitive Information During Installation" [level=2] [ref=e360]:
+                  - text: Sensitive Information During Installation
+                  - link "Direct link to Sensitive Information During Installation" [ref=e361] [cursor=pointer]:
+                    - /url: "#sensitive-information-during-installation"
+                    - text: "#"
+                - paragraph [ref=e362]:
+                  - text: In the installation step, the Edge Installer copies and persists
+                  - emphasis [ref=e363]: all
+                  - text: your user data stages into the configuration files on the Edge hosts. Copying sensitive information to the Edge hosts may pose security risks. Therefore, we recommend you avoid inserting sensitive information in the user data configuration file provided in the installation phase. Use a supplementary user data configuration file and apply it at the on-site deployment phase.
+                - generic [ref=e364]:
+                  - generic [ref=e365]:
+                    - img [ref=e367]
+                    - text: tip
+                  - paragraph [ref=e370]:
+                    - text: Alternatively, you can use take advantage of our Trusted Boot feature. Trusted Boot ensures that your user data remains encrypted and cannot be decrypted if the boot process is tempered with. For more information about Trusted Boot, refer to
+                    - link "Trusted Boot" [ref=e371] [cursor=pointer]:
+                      - /url: /clusters/edge/trusted-boot/
+                    - text: .
+                - heading "Sensitive Information in the Site InstallationDirect link to Sensitive Information in the Site Installation" [level=2] [ref=e372]:
+                  - text: Sensitive Information in the Site Installation
+                  - link "Direct link to Sensitive Information in the Site Installation" [ref=e373] [cursor=pointer]:
+                    - /url: "#sensitive-information-in-the-site-installation"
+                    - text: "#"
+                - paragraph [ref=e374]:
+                  - text: If you want to use sensitive information, such as credentials for patching the OS on your Edge hosts, in any user data stage during the on-site deployment phase, you must use the
+                  - code [ref=e375]: skip-copy-[string]
+                  - text: naming convention for your user data stages. Replace the
+                  - code [ref=e376]: "[string]"
+                  - text: placeholder with any meaningful string per your requirements. The Edge Installer will skip copying the stages whose name matches the regular expression
+                  - code [ref=e377]: skip-copy-*
+                  - text: to the Edge host. The stages will execute as long as the drive containing the user data configuration file is mounted to the Edge hosts. In most cases, the drive will be a bootable USB flash drive.
+                - paragraph [ref=e378]:
+                  - text: For example, the
+                  - code [ref=e379]: skip-copy-subscribe
+                  - text: stage below follows the
+                  - code [ref=e380]: skip-copy-[string]
+                  - text: naming convention. Therefore, the Edge Installer will skip copying the stage to the
+                  - strong [ref=e381]: /run/stylus/userdata
+                  - text: file or the
+                  - strong [ref=e382]: /oem/userdata
+                  - text: file on the Edge host.
+                - generic [ref=e384]:
+                  - code [ref=e386]:
+                    - generic [ref=e387]: "stages:"
+                    - generic [ref=e388]: "network.after:"
+                    - generic [ref=e389]: "- name: skip-copy-subscribe"
+                    - generic [ref=e390]: "if: [-f \"/usr/sbin/subscription-manager\"]"
+                    - generic [ref=e391]: "commands:"
+                    - generic [ref=e392]: "- subscription-manager register --username \"myname\" --password 'mypassword'"
+                  - generic [ref=e393]:
+                    - button "Toggle word wrap" [ref=e394] [cursor=pointer]:
+                      - img [ref=e395]
+                    - button "Copy code to clipboard" [ref=e397] [cursor=pointer]:
+                      - generic [ref=e398]:
+                        - img [ref=e399]
+                        - img [ref=e401]
+                - paragraph [ref=e403]: The stage will execute as long as you have mounted the drive containing the user data configuration file. You must unmount the drive from the edge host after the device registers with Palette and before you deploy a Kubernetes cluster on the device.
+              - generic [ref=e404]:
+                - generic [ref=e406]:
+                  - text: "Tags:"
+                  - list [ref=e407]:
+                    - listitem [ref=e408]:
+                      - link "edge" [ref=e409] [cursor=pointer]:
+                        - /url: /tags/edge/
+                - link "Edit this page" [ref=e412] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/edge/edge-configuration/skip-copying-stages.md
+                  - img [ref=e413]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e417]:
+              - link "Previous « Cloud Init Stages" [ref=e418] [cursor=pointer]:
+                - /url: /clusters/edge/edge-configuration/cloud-init/
+                - generic [ref=e419]: Previous
+                - generic [ref=e420]: « Cloud Init Stages
+              - link "Next Installer Configuration Reference »" [ref=e421] [cursor=pointer]:
+                - /url: /clusters/edge/edge-configuration/installer-reference/
+                - generic [ref=e422]: Next
+                - generic [ref=e423]: Installer Configuration Reference »
+          - list [ref=e426]:
+            - listitem [ref=e427]:
+              - link "Sensitive Information During Installation" [ref=e428] [cursor=pointer]:
+                - /url: "#sensitive-information-during-installation"
+            - listitem [ref=e429]:
+              - link "Sensitive Information in the Site Installation" [ref=e430] [cursor=pointer]:
+                - /url: "#sensitive-information-in-the-site-installation"
+  - button "Project Logo Ask AI" [ref=e431] [cursor=pointer]:
+    - generic [ref=e434]:
+      - img "Project Logo" [ref=e435]
+      - paragraph [ref=e436]: Ask AI
+```

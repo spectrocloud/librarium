@@ -1,0 +1,440 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [expanded] [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+                - list [ref=e113]:
+                  - listitem [ref=e114]:
+                    - link "Use Cases" [ref=e115] [cursor=pointer]:
+                      - /url: /devx/enterprise-user/
+                  - listitem [ref=e116]:
+                    - generic [ref=e117]:
+                      - link "Apps" [ref=e118] [cursor=pointer]:
+                        - /url: /devx/apps/
+                      - button "Toggle the collapsible sidebar category 'Apps'" [ref=e119] [cursor=pointer]
+                  - listitem [ref=e120]:
+                    - generic [ref=e121]:
+                      - link "Palette Virtual Clusters" [expanded] [ref=e122] [cursor=pointer]:
+                        - /url: /devx/palette-virtual-clusters/
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e123] [cursor=pointer]
+                    - list [ref=e124]:
+                      - listitem [ref=e125]:
+                        - link "Pause and Resume Virtual Clusters" [ref=e126] [cursor=pointer]:
+                          - /url: /devx/palette-virtual-clusters/pause-restore-virtual-clusters/
+                      - listitem [ref=e127]:
+                        - link "Resize Virtual Clusters" [ref=e128] [cursor=pointer]:
+                          - /url: /devx/palette-virtual-clusters/resize-virtual-clusters/
+                  - listitem [ref=e129]:
+                    - generic [ref=e130]:
+                      - link "Manage Dev Engine" [ref=e131] [cursor=pointer]:
+                        - /url: /devx/manage-dev-engine/
+                      - button "Toggle the collapsible sidebar category 'Manage Dev Engine'" [ref=e132] [cursor=pointer]
+                  - listitem [ref=e133]:
+                    - generic [ref=e134]:
+                      - link "Services" [ref=e135] [cursor=pointer]:
+                        - /url: /devx/services/
+                      - button "Toggle the collapsible sidebar category 'Services'" [ref=e136] [cursor=pointer]
+              - listitem [ref=e137]:
+                - generic [ref=e138]:
+                  - link "Virtual Machine Orchestrator" [ref=e139] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e141]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e143] [cursor=pointer]
+              - listitem [ref=e144]:
+                - generic [ref=e145]:
+                  - link "Workspaces" [ref=e146] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e148]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e150] [cursor=pointer]
+              - listitem [ref=e151]:
+                - generic [ref=e152]:
+                  - link "Packs List" [ref=e153] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e155]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e157] [cursor=pointer]
+              - listitem [ref=e158]:
+                - generic [ref=e159]:
+                  - link "User & Role Management" [ref=e160] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e162]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e164] [cursor=pointer]
+              - listitem [ref=e165]:
+                - generic [ref=e166]:
+                  - link "Registries and Packs" [ref=e167] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e169]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e171] [cursor=pointer]
+              - listitem [ref=e172]:
+                - generic [ref=e173]:
+                  - link "Security" [ref=e174] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e176]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e178] [cursor=pointer]
+              - listitem [ref=e179]:
+                - generic [ref=e180]:
+                  - link "Audit Logs" [ref=e181] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e183]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e185] [cursor=pointer]
+              - listitem [ref=e186]:
+                - generic [ref=e187]:
+                  - link "Self-Hosted Palette" [ref=e188] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e190]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e192] [cursor=pointer]
+              - listitem [ref=e193]:
+                - generic [ref=e194]:
+                  - link "Palette VerteX" [ref=e195] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e197]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e199] [cursor=pointer]
+              - listitem [ref=e200]:
+                - generic [ref=e201]:
+                  - link "Tenant Administration" [ref=e202] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e204]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e206] [cursor=pointer]
+              - listitem [ref=e207]:
+                - generic [ref=e208]:
+                  - link "Automation" [ref=e209] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e211]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e213] [cursor=pointer]
+              - listitem [ref=e214]:
+                - generic [ref=e215]:
+                  - link "Troubleshooting" [ref=e216] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e218]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e220] [cursor=pointer]
+              - listitem [ref=e221]:
+                - link "Glossary" [ref=e222] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e224]
+                  - text: Glossary
+              - listitem [ref=e226]:
+                - generic [ref=e227]:
+                  - link "Compliance & Legal" [ref=e228] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e230]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e232] [cursor=pointer]
+              - listitem [ref=e233]:
+                - button "Privacy Settings" [ref=e234] [cursor=pointer]:
+                  - img [ref=e235]
+                  - text: Privacy Settings
+      - main [ref=e237]:
+        - generic [ref=e239]:
+          - generic [ref=e241]:
+            - article [ref=e242]:
+              - navigation "Breadcrumbs" [ref=e243]:
+                - list [ref=e244]:
+                  - listitem [ref=e245]:
+                    - link "Home page" [ref=e246] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e247]
+                  - listitem [ref=e249]:
+                    - link "Palette Dev Engine" [ref=e250] [cursor=pointer]:
+                      - /url: /devx/
+                  - listitem [ref=e251]:
+                    - generic [ref=e252]: Palette Virtual Clusters
+              - generic [ref=e253]:
+                - heading "Palette Virtual Clusters" [level=1] [ref=e255]
+                - paragraph [ref=e256]:
+                  - text: Palette Virtual Clusters are Kubernetes clusters that run as nested clusters within an existing cluster (also known as a Host Cluster) or Host Cluster groups and share the host cluster resources, such as CPU, memory, and storage. By default, virtual clusters use k3s as virtual Kubernetes cluster, which is a highly available, certified Kubernetes distribution designed for production workloads. Palette Virtual Clusters are powered by
+                  - link "vCluster" [ref=e257] [cursor=pointer]:
+                    - /url: https://www.vcluster.com/
+                  - text: .
+                - paragraph [ref=e258]: The Palette platform provisions and orchestrates all Palette Virtual CLusters, making it simple to use the lightweight, Kubernetes technology stack and tools ecosystem. Deploy virtual clusters on Host Cluster Group by following the wizard and attaching Add-on profiles.
+                - heading "Create a Virtual ClusterDirect link to Create a Virtual Cluster" [level=3] [ref=e259]:
+                  - text: Create a Virtual Cluster
+                  - link "Direct link to Create a Virtual Cluster" [ref=e260] [cursor=pointer]:
+                    - /url: "#create-a-virtual-cluster"
+                    - text: "#"
+                - paragraph [ref=e261]: To create your new Palette Virtual Cluster complete the following actions.
+                - list [ref=e262]:
+                  - listitem [ref=e263]:
+                    - paragraph [ref=e264]:
+                      - text: Log in to
+                      - link "Palette" [ref=e265] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                  - listitem [ref=e266]:
+                    - paragraph [ref=e267]:
+                      - text: Navigate to the top-right
+                      - strong [ref=e268]: User Dropdown Menu
+                      - text: and select
+                      - strong [ref=e269]: App Mode
+                      - text: .
+                  - listitem [ref=e270]:
+                    - paragraph [ref=e271]:
+                      - text: Select the
+                      - code [ref=e272]: Palette Virtual Clusters
+                      - text: from the
+                      - strong [ref=e273]: left Main Menu
+                      - text: ", click"
+                      - code [ref=e274]: + Palette Virtual Clusters,
+                      - text: and provide the following information to the app creation wizard.
+                    - list [ref=e275]:
+                      - listitem [ref=e276]: "Select the Cluster Group: From the available host cluster group, select the cluster group to host the new virtual cluster."
+                      - listitem [ref=e277]: "Palette virtual cluster name: Provide a custom virtual cluster name or go with the default name."
+                      - listitem [ref=e278]: Provide the resource limit in terms of CPU, memory, and storage.
+                - table [ref=e279]:
+                  - rowgroup [ref=e280]:
+                    - row "Palette Virtual Cluster Resource Default Minimum Limit" [ref=e281]:
+                      - cell "Palette Virtual Cluster Resource" [ref=e282]
+                      - cell "Default" [ref=e283]
+                      - cell "Minimum Limit" [ref=e284]
+                  - rowgroup [ref=e285]:
+                    - row "CPU (per request) 4 3" [ref=e286]:
+                      - cell "CPU (per request)" [ref=e287]
+                      - cell "4" [ref=e288]
+                      - cell "3" [ref=e289]
+                    - row "Memory (per request) 4 GiB 3 GiB" [ref=e290]:
+                      - cell "Memory (per request)" [ref=e291]
+                      - cell "4 GiB" [ref=e292]
+                      - cell "3 GiB" [ref=e293]
+                    - row "Storage (per request) 2 GiB 0 GiB" [ref=e294]:
+                      - cell "Storage (per request)" [ref=e295]
+                      - cell "2 GiB" [ref=e296]
+                      - cell "0 GiB" [ref=e297]
+                - list [ref=e298]:
+                  - listitem [ref=e299]: Review the information and deploy the Palette virtual cluster. The Palette virtual cluster will be provisioned within the next few minutes.
+                - heading "Resource Tracking for Palette Virtual ClustersDirect link to Resource Tracking for Palette Virtual Clusters" [level=3] [ref=e300]:
+                  - text: Resource Tracking for Palette Virtual Clusters
+                  - link "Direct link to Resource Tracking for Palette Virtual Clusters" [ref=e301] [cursor=pointer]:
+                    - /url: "#resource-tracking-for-palette-virtual-clusters"
+                    - text: "#"
+                - paragraph [ref=e302]: "Palette users can track the available resources within a Cluster Group while launching a virtual cluster. The UI color codes give a rough estimation of available CPU, memory, and storage within the selected Cluster Group. The interpretations are as follows:"
+                - list [ref=e303]:
+                  - listitem [ref=e304]:
+                    - paragraph [ref=e305]:
+                      - strong [ref=e306]: Grey
+                      - text: ": Resources are already in use."
+                  - listitem [ref=e307]:
+                    - paragraph [ref=e308]:
+                      - strong [ref=e309]: Green
+                      - text: ": The resources are allocated to the virtual cluster that is deploying."
+                  - listitem [ref=e310]:
+                    - paragraph [ref=e311]:
+                      - strong [ref=e312]: White
+                      - text: ": The resources available within the cluster group can be utilized after deploying the new virtual cluster."
+                - heading "Example ScenarioDirect link to Example Scenario" [level=3] [ref=e313]:
+                  - text: Example Scenario
+                  - link "Direct link to Example Scenario" [ref=e314] [cursor=pointer]:
+                    - /url: "#example-scenario"
+                    - text: "#"
+                - paragraph [ref=e315]: The example screenshot below illustrates the following scenario. The Cluster Group selected in the example has a virtual cluster already running on it. The info box displays the recommended minimum CPU and memory allocated to the new virtual cluster. The color-coded bar summarizes the used, allocated, and available CPU, storage, and memory within the Cluster Group. Users can use this information to plan resource utilization per available resources.
+                - paragraph [ref=e316]:
+                  - img "color-tracking.webp" [ref=e317]
+                - heading "Palette Virtual Cluster Pause and ResumeDirect link to Palette Virtual Cluster Pause and Resume" [level=2] [ref=e318]:
+                  - text: Palette Virtual Cluster Pause and Resume
+                  - link "Direct link to Palette Virtual Cluster Pause and Resume" [ref=e319] [cursor=pointer]:
+                    - /url: "#palette-virtual-cluster-pause-and-resume"
+                    - text: "#"
+                - paragraph [ref=e320]: Palette allows the pause and resume of Palette Virtual Clusters when not in use. This feature enables the users to optimize resource utilization by pausing the virtual clusters not in use. This adds significant flexibility in managing operating costs and resource management for the Palette Virtual Clusters.
+                - heading "System and Resource ImpactDirect link to System and Resource Impact" [level=3] [ref=e321]:
+                  - text: System and Resource Impact
+                  - link "Direct link to System and Resource Impact" [ref=e322] [cursor=pointer]:
+                    - /url: "#system-and-resource-impact"
+                    - text: "#"
+                - list [ref=e323]:
+                  - listitem [ref=e324]:
+                    - paragraph [ref=e325]: The quota allocation is independent of a virtual cluster's pause or resume status.
+                  - listitem [ref=e326]:
+                    - paragraph [ref=e327]: The CPU and memory are freed and returned to the cluster group when you pause a virtual cluster.
+                  - listitem [ref=e328]:
+                    - paragraph [ref=e329]: Resources such as storage, and load balancers remain allocated to a virtual cluster regardless of the state.
+                  - listitem [ref=e330]:
+                    - paragraph [ref=e331]: The Apps deployed on a virtual cluster go to a pause state when the cluster is paused.
+                  - listitem [ref=e332]:
+                    - paragraph [ref=e333]: New Apps cannot be deployed on a virtual cluster in the paused state.
+                  - listitem [ref=e334]:
+                    - paragraph [ref=e335]: Virtual clusters in a paused state will continue to appear as an entry in the Palette Dev Engine Console.
+                - paragraph [ref=e336]:
+                  - link "Click here to know How to Pause and Release your Palette Virtual Cluster" [ref=e337] [cursor=pointer]:
+                    - /url: /devx/palette-virtual-clusters/pause-restore-virtual-clusters/
+                  - text: .
+                - heading "Upgrade Virtual ClustersDirect link to Upgrade Virtual Clusters" [level=2] [ref=e338]:
+                  - text: Upgrade Virtual Clusters
+                  - link "Direct link to Upgrade Virtual Clusters" [ref=e339] [cursor=pointer]:
+                    - /url: "#upgrade-virtual-clusters"
+                    - text: "#"
+                - paragraph [ref=e340]:
+                  - text: The
+                  - link "vCluster version" [ref=e341] [cursor=pointer]:
+                    - /url: https://www.vcluster.com/releases/en/changelog
+                  - text: may be updated in a Palette release, which can introduce breaking changes that affect newly created virtual clusters.
+                - paragraph [ref=e342]: To avoid disruptions, Palette locks the vCluster version for each cluster group, ensuring virtual clusters can still be provisioned successfully within existing groups, even across Palette updates.
+                - paragraph [ref=e343]:
+                  - text: If you want to use the latest version of vCluster on your virtual clusters, you must create a new cluster group and migrate your workloads from your legacy clusters. This process must be performed in
+                  - link "cluster mode" [ref=e344] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                  - text: . Refer to
+                  - link "Migrate Virtual Cluster Workloads" [ref=e345] [cursor=pointer]:
+                    - /url: /clusters/palette-virtual-clusters/migrate-virtual-clusters/
+                  - text: for guidance.
+              - generic [ref=e346]:
+                - generic [ref=e348]:
+                  - text: "Tags:"
+                  - list [ref=e349]:
+                    - listitem [ref=e350]:
+                      - link "devx" [ref=e351] [cursor=pointer]:
+                        - /url: /tags/devx/
+                    - listitem [ref=e352]:
+                      - link "app mode" [ref=e353] [cursor=pointer]:
+                        - /url: /tags/app-mode/
+                    - listitem [ref=e354]:
+                      - link "pde" [ref=e355] [cursor=pointer]:
+                        - /url: /tags/pde/
+                - link "Edit this page" [ref=e358] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/devx/palette-virtual-clusters/palette-virtual-clusters.md
+                  - img [ref=e359]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e363]:
+              - link "Previous « App Logs" [ref=e364] [cursor=pointer]:
+                - /url: /devx/apps/logs/
+                - generic [ref=e365]: Previous
+                - generic [ref=e366]: « App Logs
+              - link "Next Pause and Resume Virtual Clusters »" [ref=e367] [cursor=pointer]:
+                - /url: /devx/palette-virtual-clusters/pause-restore-virtual-clusters/
+                - generic [ref=e368]: Next
+                - generic [ref=e369]: Pause and Resume Virtual Clusters »
+          - list [ref=e372]:
+            - listitem [ref=e373]:
+              - link "Create a Virtual Cluster" [ref=e374] [cursor=pointer]:
+                - /url: "#create-a-virtual-cluster"
+            - listitem [ref=e375]:
+              - link "Resource Tracking for Palette Virtual Clusters" [ref=e376] [cursor=pointer]:
+                - /url: "#resource-tracking-for-palette-virtual-clusters"
+            - listitem [ref=e377]:
+              - link "Example Scenario" [ref=e378] [cursor=pointer]:
+                - /url: "#example-scenario"
+            - listitem [ref=e379]:
+              - link "Palette Virtual Cluster Pause and Resume" [ref=e380] [cursor=pointer]:
+                - /url: "#palette-virtual-cluster-pause-and-resume"
+              - list [ref=e381]:
+                - listitem [ref=e382]:
+                  - link "System and Resource Impact" [ref=e383] [cursor=pointer]:
+                    - /url: "#system-and-resource-impact"
+            - listitem [ref=e384]:
+              - link "Upgrade Virtual Clusters" [ref=e385] [cursor=pointer]:
+                - /url: "#upgrade-virtual-clusters"
+  - button "Project Logo Ask AI" [ref=e386] [cursor=pointer]:
+    - generic [ref=e389]:
+      - img "Project Logo" [ref=e390]
+      - paragraph [ref=e391]: Ask AI
+```

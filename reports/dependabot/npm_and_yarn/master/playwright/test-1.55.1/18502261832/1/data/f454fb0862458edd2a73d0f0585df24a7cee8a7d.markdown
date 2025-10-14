@@ -1,0 +1,571 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Security" [ref=e150] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e152]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Audit Logs" [ref=e157] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e159]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Self-Hosted Palette" [ref=e164] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e166]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e168] [cursor=pointer]
+              - listitem [ref=e169]:
+                - generic [ref=e170]:
+                  - link "Palette VerteX" [expanded] [ref=e171] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e173]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e175] [cursor=pointer]
+                - list [ref=e176]:
+                  - listitem [ref=e177]:
+                    - generic [ref=e178]:
+                      - link "FIPS" [ref=e179] [cursor=pointer]:
+                        - /url: /vertex/fips/
+                      - button "Toggle the collapsible sidebar category 'FIPS'" [ref=e180] [cursor=pointer]
+                  - listitem [ref=e181]:
+                    - generic [ref=e182]:
+                      - link "Installation" [ref=e183] [cursor=pointer]:
+                        - /url: /vertex/install-palette-vertex/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e184] [cursor=pointer]
+                  - listitem [ref=e185]:
+                    - link "Activate VerteX" [ref=e186] [cursor=pointer]:
+                      - /url: /vertex/activate-installation/
+                  - listitem [ref=e187]:
+                    - link "Supported Platforms" [ref=e188] [cursor=pointer]:
+                      - /url: /vertex/supported-platforms/
+                  - listitem [ref=e189]:
+                    - generic [ref=e190]:
+                      - link "System Management" [ref=e191] [cursor=pointer]:
+                        - /url: /vertex/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e192] [cursor=pointer]
+                  - listitem [ref=e193]:
+                    - generic [ref=e194]:
+                      - link "Upgrade" [expanded] [ref=e195] [cursor=pointer]:
+                        - /url: /vertex/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e196] [cursor=pointer]
+                    - list [ref=e197]:
+                      - listitem [ref=e198]:
+                        - link "Upgrade Notes" [ref=e199] [cursor=pointer]:
+                          - /url: /vertex/upgrade/upgrade-notes/
+                      - listitem [ref=e200]:
+                        - link "VMware" [ref=e202] [cursor=pointer]:
+                          - /url: "#"
+                      - listitem [ref=e203]:
+                        - link "VerteX Management Appliance" [ref=e204] [cursor=pointer]:
+                          - /url: /vertex/upgrade/vertex-management-appliance/
+                      - listitem [ref=e205]:
+                        - link "Kubernetes" [ref=e207] [cursor=pointer]:
+                          - /url: "#"
+              - listitem [ref=e208]:
+                - generic [ref=e209]:
+                  - link "Tenant Administration" [ref=e210] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e212]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - generic [ref=e216]:
+                  - link "Automation" [ref=e217] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e219]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e221] [cursor=pointer]
+              - listitem [ref=e222]:
+                - generic [ref=e223]:
+                  - link "Troubleshooting" [ref=e224] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e226]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e228] [cursor=pointer]
+              - listitem [ref=e229]:
+                - link "Glossary" [ref=e230] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e232]
+                  - text: Glossary
+              - listitem [ref=e234]:
+                - generic [ref=e235]:
+                  - link "Compliance & Legal" [ref=e236] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e238]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e240] [cursor=pointer]
+              - listitem [ref=e241]:
+                - button "Privacy Settings" [ref=e242] [cursor=pointer]:
+                  - img [ref=e243]
+                  - text: Privacy Settings
+      - main [ref=e245]:
+        - generic [ref=e247]:
+          - generic [ref=e249]:
+            - article [ref=e250]:
+              - navigation "Breadcrumbs" [ref=e251]:
+                - list [ref=e252]:
+                  - listitem [ref=e253]:
+                    - link "Home page" [ref=e254] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e255]
+                  - listitem [ref=e257]:
+                    - link "Palette VerteX" [ref=e258] [cursor=pointer]:
+                      - /url: /vertex/
+                  - listitem [ref=e259]:
+                    - link "Upgrade" [ref=e260] [cursor=pointer]:
+                      - /url: /vertex/upgrade/
+                  - listitem [ref=e261]:
+                    - generic [ref=e262]: VerteX Management Appliance
+              - generic [ref=e263]:
+                - heading "Upgrade VerteX Management Appliance" [level=1] [ref=e265]
+                - generic [ref=e266]:
+                  - generic [ref=e267]:
+                    - img [ref=e269]
+                    - text: tech preview
+                  - paragraph [ref=e272]: This is a Tech Preview feature and is subject to change. Upgrades from a Tech Preview deployment may not be available. Do not use this feature in production workloads.
+                - paragraph [ref=e273]:
+                  - text: Follow the instructions to upgrade the
+                  - link "VerteX Management Appliance" [ref=e274] [cursor=pointer]:
+                    - /url: /vertex/install-palette-vertex/vertex-management-appliance/
+                  - text: using a content bundle. The content bundle is used to upgrade the Palette VerteX instance to a chosen target version.
+                - generic [ref=e275]:
+                  - generic [ref=e276]:
+                    - img [ref=e278]
+                    - text: info
+                  - paragraph [ref=e281]: The upgrade process will incur downtime for the Palette VerteX management cluster, but your workload clusters will remain operational.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e282]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e283] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e284]:
+                  - listitem [ref=e285]:
+                    - paragraph [ref=e286]: A healthy Palette VerteX management cluster where you can access the Local UI of the leader node.
+                    - list [ref=e287]:
+                      - listitem [ref=e288]: Verify that your local machine can access the Local UI, as airgapped environments may have strict network policies preventing direct access.
+                  - listitem [ref=e289]:
+                    - paragraph [ref=e290]:
+                      - text: If using an external registry, the Palette CLI must be installed on your local machine to upload the content to the external registry. Refer to the
+                      - link "Palette CLI" [ref=e291] [cursor=pointer]:
+                        - /url: /automation/palette-cli
+                      - text: guide for installation instructions.
+                    - list [ref=e292]:
+                      - listitem [ref=e293]: Ensure your local machine has network access to the external registry server and you have the necessary permissions to push images to the registry.
+                  - listitem [ref=e294]:
+                    - paragraph [ref=e295]:
+                      - text: Access to the
+                      - link "Artifact Studio" [ref=e296] [cursor=pointer]:
+                        - /url: https://artifact-studio.spectrocloud.com/
+                      - text: to download the content bundle for Palette VerteX.
+                    - generic [ref=e297]:
+                      - generic [ref=e298]:
+                        - img [ref=e300]
+                        - text: tip
+                      - paragraph [ref=e303]:
+                        - text: If you do not have access to Artifact Studio, contact your Spectro Cloud representative or
+                        - link "open a support ticket" [ref=e304] [cursor=pointer]:
+                          - /url: https://support.spectrocloud.com/
+                        - text: .
+                    - list [ref=e305]:
+                      - listitem [ref=e306]:
+                        - text: Check that your upgrade path is supported by referring to the
+                        - link "Supported Upgrade Paths" [ref=e307] [cursor=pointer]:
+                          - /url: /vertex/upgrade#supported-upgrade-paths
+                        - text: .
+                - list [ref=e308]:
+                  - listitem [ref=e309]:
+                    - paragraph [ref=e310]: If you are upgrading from version 4.7.3, you must perform the following additional steps to prepare your Palette VerteX instance for the upgrade.
+                    - group [ref=e311]:
+                      - generic "Additional steps for upgrading from 4.7.3" [ref=e312] [cursor=pointer]
+                    - generic [ref=e313]:
+                      - generic [ref=e314]:
+                        - img [ref=e316]
+                        - text: caution
+                      - generic [ref=e318]:
+                        - paragraph [ref=e319]:
+                          - text: If these steps are not performed, you may encounter content sync failures for these image tags on the
+                          - strong [ref=e320]: Content
+                          - text: page in Local UI. These errors will occur after uploading the content bundle to Local UI. The following image is an example of a content sync failure in Local UI.
+                        - paragraph [ref=e321]:
+                          - img "Example content sync failure" [ref=e322]
+                        - paragraph [ref=e323]:
+                          - text: In addition, on the
+                          - strong [ref=e324]: Diagnostics
+                          - text: page within the
+                          - strong [ref=e325]: Logs
+                          - text: "tab, errors may be displayed relating to these image tags that are similar to the following:"
+                        - generic [ref=e327]:
+                          - code [ref=e329]:
+                            - generic [ref=e330]: "Aug 27 12:44:06 edge-1d3f3842cb0fdcef14b65cb510b5974f stylus-operator.sh[18752]: time=\"2025-08-27T12:44:06Z\" level=error msg=\"failed to push artifact to registrywriting index: PUT https://10.11.12.13:30003/v2/spectro-content/us-docker.pkg.dev/palette-images-fips/k8s/pause/manifests/3.9: MANIFEST_INVALID: manifest invalid; map[description:During upload, manifests undergo several checks ensuring validity. If those checks fail, this error MAY be returned, unless a more specific error is included. The detail will contain information the failed validation. reason:changing manifest media-type from \\\"application/vnd.docker.distribution.manifest.v2+json\\\" to \\\"application/vnd.docker.distribution.manifest.list.v2+json\\\" is disallowed reference:3.9]\" version=v4.7.2 cluster"
+                          - generic [ref=e331]:
+                            - button "Toggle word wrap" [ref=e332] [cursor=pointer]:
+                              - img [ref=e333]
+                            - button "Copy code to clipboard" [ref=e335] [cursor=pointer]:
+                              - generic [ref=e336]:
+                                - img [ref=e337]
+                                - img [ref=e339]
+                        - paragraph [ref=e341]: If any other image tags fail to sync with a similar error after the content bundle is uploaded, you must manually delete those tags from the internal Zot registry and any external registry you are using.
+                - heading "Upgrade Palette VerteXDirect link to Upgrade Palette VerteX" [level=2] [ref=e342]:
+                  - text: Upgrade Palette VerteX
+                  - link "Direct link to Upgrade Palette VerteX" [ref=e343] [cursor=pointer]:
+                    - /url: "#upgrade-palette-vertex"
+                    - text: "#"
+                - generic [ref=e344]:
+                  - tablist [ref=e345]:
+                    - tab "Internal Zot Registry" [selected] [ref=e346] [cursor=pointer]
+                    - tab "External Registry" [ref=e347] [cursor=pointer]
+                  - tabpanel [ref=e349]:
+                    - list [ref=e350]:
+                      - listitem [ref=e351]:
+                        - paragraph [ref=e352]:
+                          - text: Navigate to the
+                          - link "Artifact Studio" [ref=e353] [cursor=pointer]:
+                            - /url: https://artifact-studio.spectrocloud.com/
+                          - text: through a web browser and log in. Under
+                          - strong [ref=e354]: Install Palette VerteX
+                          - text: ", click on the drop-down menu and select the version you want to upgrade your VerteX Management Appliance to."
+                      - listitem [ref=e355]:
+                        - paragraph [ref=e356]:
+                          - text: Click
+                          - strong [ref=e357]: Show Artifacts
+                          - text: to display the
+                          - strong [ref=e358]: Palette VerteX Artifacts
+                          - text: pop-up window. Click the
+                          - strong [ref=e359]: Download
+                          - text: button for the
+                          - strong [ref=e360]: Content bundle (including Ubuntu)
+                          - text: .
+                      - listitem [ref=e361]:
+                        - paragraph [ref=e362]:
+                          - text: Wait until the content bundle is downloaded to your local machine. The bundle is downloaded in
+                          - code [ref=e363]: .tar.zst
+                          - text: format alongside a signature file in
+                          - code [ref=e364]: sig.bin
+                          - text: format.
+                        - generic [ref=e365]:
+                          - generic [ref=e366]:
+                            - img [ref=e368]
+                            - text: tip
+                          - paragraph [ref=e371]:
+                            - text: Refer to the
+                            - link "Artifact Studio guide" [ref=e372] [cursor=pointer]:
+                              - /url: /downloads/artifact-studio
+                            - text: for detailed guidance on how to verify the integrity of downloaded files using the provided signature file.
+                      - listitem [ref=e373]:
+                        - paragraph [ref=e374]:
+                          - text: Log in to the Local UI of the leader host of the Palette VerteX management cluster. By default, Local UI is accessible at
+                          - code [ref=e375]: https://<node-ip>:5080
+                          - text: . Replace
+                          - code [ref=e376]: <node-ip>
+                          - text: with the IP address of the leader host.
+                      - listitem [ref=e377]:
+                        - paragraph [ref=e378]:
+                          - text: From the left main menu, click
+                          - strong [ref=e379]: Content
+                          - text: .
+                      - listitem [ref=e380]:
+                        - paragraph [ref=e381]:
+                          - text: Click
+                          - strong [ref=e382]: Actions
+                          - text: in the top right and select
+                          - strong [ref=e383]: Upload Content
+                          - text: from the drop-down menu.
+                      - listitem [ref=e384]:
+                        - paragraph [ref=e385]:
+                          - text: Click the
+                          - strong [ref=e386]: Upload
+                          - text: icon to open the file selection dialog and select the content bundle file from your local machine. Alternatively, you can drag and drop the file into the upload area.
+                        - paragraph [ref=e387]:
+                          - text: The upload process starts automatically once the file is selected. You can monitor the upload progress in the
+                          - strong [ref=e388]: Upload Content
+                          - text: dialog.
+                        - paragraph [ref=e389]:
+                          - text: Wait for the
+                          - strong [ref=e390]: File(s) uploaded successfully
+                          - text: confirmation message or the green check mark to appear next to the upload progress bar.
+                      - listitem [ref=e391]:
+                        - paragraph [ref=e392]:
+                          - text: On the
+                          - strong [ref=e393]: Content
+                          - text: page, wait for the content to finish syncing. This is indicated by the
+                          - strong [ref=e394]: "Syncing content: (N) items are pending"
+                          - text: banner that appears to the left of disk usage. The banner will disappear once the sync is complete. This can take several minutes depending on the size of the content bundle and your internal network speed.
+                      - listitem [ref=e395]:
+                        - paragraph [ref=e396]:
+                          - text: From the left main menu, click
+                          - strong [ref=e397]: Cluster
+                          - text: and select the
+                          - strong [ref=e398]: Configuration
+                          - text: tab.
+                      - listitem [ref=e399]:
+                        - paragraph [ref=e400]:
+                          - text: Click the
+                          - strong [ref=e401]: Update
+                          - text: drop-down menu and select
+                          - strong [ref=e402]: Review Changes
+                          - text: .
+                        - generic [ref=e403]:
+                          - generic [ref=e404]:
+                            - img [ref=e406]
+                            - text: warning
+                          - generic [ref=e408]:
+                            - paragraph [ref=e409]: Ensure that the configured Zot password matches the password that you used when installing Palette Management Appliance. You cannot access the Zot registry post-upgrade if the passwords do not match.
+                            - paragraph [ref=e410]: If you have forgotten your Zot password, you can connect to your Kubernetes cluster and retrieve it from the Zot secret.
+                      - listitem [ref=e411]:
+                        - paragraph [ref=e412]: Review the changes for each profile carefully and ensure you are satisfied with the proposed updates. There may be changes to the profiles between versions that include the addition or removal of properties.
+                        - generic [ref=e413]:
+                          - generic [ref=e414]:
+                            - img [ref=e416]
+                            - text: warning
+                          - paragraph [ref=e419]:
+                            - text: Some upgrade paths require you to re-enter the configuration values you provided during the initial Palette VerteX installation. This includes the
+                            - strong [ref=e420]: OCI Pack Registry Password
+                            - text: and any other non-default settings.
+                        - paragraph [ref=e421]:
+                          - text: Click
+                          - strong [ref=e422]: Confirm Changes
+                          - text: once satisfied.
+                      - listitem [ref=e423]:
+                        - paragraph [ref=e424]:
+                          - text: Click
+                          - strong [ref=e425]: Update
+                          - text: to start the upgrade process.
+                    - paragraph [ref=e426]:
+                      - text: During the upgrade process, the Palette VerteX system and tenant consoles will be unavailable, and a warning message will be displayed when attempting to log in. You can monitor the upgrade progress in the
+                      - strong [ref=e427]: Overview
+                      - text: tab on the
+                      - strong [ref=e428]: Cluster
+                      - text: page.
+                - generic [ref=e429]:
+                  - generic [ref=e430]:
+                    - img [ref=e432]
+                    - text: info
+                  - paragraph [ref=e435]:
+                    - text: If the upgrade process stalls, this may be due to the
+                    - code [ref=e436]: linstor-satellite.*
+                    - text: pods not using the correct image for the
+                    - code [ref=e437]: drbd-module-loader
+                    - text: container. Refer to
+                    - link "Scenario - VerteX Management Appliance Fails to Upgrade due to Stuck Linstor Satellite Pods" [ref=e438] [cursor=pointer]:
+                      - /url: /troubleshooting/enterprise-install/#scenario---vertex-management-appliance-fails-to-upgrade-due-to-stuck-linstor-satellite-pods
+                    - text: for more information.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e439]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e440] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e441]:
+                  - listitem [ref=e442]:
+                    - paragraph [ref=e443]:
+                      - text: Log in to the Local UI of the leader host of the Palette VerteX management cluster. By default, Local UI is accessible at
+                      - code [ref=e444]: https://<node-ip>:5080
+                      - text: . Replace
+                      - code [ref=e445]: <node-ip>
+                      - text: with the IP address of the leader host.
+                  - listitem [ref=e446]:
+                    - paragraph [ref=e447]:
+                      - text: From the left main menu, click
+                      - strong [ref=e448]: Cluster
+                      - text: .
+                  - listitem [ref=e449]:
+                    - paragraph [ref=e450]:
+                      - text: Check that the
+                      - code [ref=e451]: palette-mgmt-plane
+                      - text: pack displays the upgraded version number and is in a
+                      - strong [ref=e452]: Running
+                      - text: status.
+                  - listitem [ref=e453]:
+                    - paragraph [ref=e454]: Verify that you can log in to the Palette VerteX system console and no warning message is displayed.
+                  - listitem [ref=e455]:
+                    - paragraph [ref=e456]: If you have configured a tenant, log in to the tenant console and verify that Palette displays the correct version number.
+                    - paragraph [ref=e457]:
+                      - img "Palette version in tenant console" [ref=e458]
+              - generic [ref=e459]:
+                - generic [ref=e461]:
+                  - text: "Tags:"
+                  - list [ref=e462]:
+                    - listitem [ref=e463]:
+                      - link "verteX management appliance" [ref=e464] [cursor=pointer]:
+                        - /url: /tags/verte-x-management-appliance/
+                    - listitem [ref=e465]:
+                      - link "self-hosted" [ref=e466] [cursor=pointer]:
+                        - /url: /tags/self-hosted/
+                    - listitem [ref=e467]:
+                      - link "vertex" [ref=e468] [cursor=pointer]:
+                        - /url: /tags/vertex/
+                - link "Edit this page" [ref=e471] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vertex/upgrade/vertex-management-appliance.md
+                  - img [ref=e472]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e476]:
+              - link "Previous « Airgap" [ref=e477] [cursor=pointer]:
+                - /url: /vertex/upgrade/upgrade-vmware/airgap/
+                - generic [ref=e478]: Previous
+                - generic [ref=e479]: « Airgap
+              - link "Next Non-airgap »" [ref=e480] [cursor=pointer]:
+                - /url: /vertex/upgrade/upgrade-k8s/non-airgap/
+                - generic [ref=e481]: Next
+                - generic [ref=e482]: Non-airgap »
+          - list [ref=e485]:
+            - listitem [ref=e486]:
+              - link "Prerequisites" [ref=e487] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e488]:
+              - link "Upgrade Palette VerteX" [ref=e489] [cursor=pointer]:
+                - /url: "#upgrade-palette-vertex"
+            - listitem [ref=e490]:
+              - link "Validate" [ref=e491] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e492] [cursor=pointer]:
+    - generic [ref=e495]:
+      - img "Project Logo" [ref=e496]
+      - paragraph [ref=e497]: Ask AI
+```

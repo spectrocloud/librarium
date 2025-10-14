@@ -1,0 +1,905 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Security" [ref=e150] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e152]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Audit Logs" [ref=e157] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e159]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Self-Hosted Palette" [ref=e164] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e166]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e168] [cursor=pointer]
+              - listitem [ref=e169]:
+                - generic [ref=e170]:
+                  - link "Palette VerteX" [ref=e171] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e173]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e175] [cursor=pointer]
+              - listitem [ref=e176]:
+                - generic [ref=e177]:
+                  - link "Tenant Administration" [ref=e178] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e180]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e182] [cursor=pointer]
+              - listitem [ref=e183]:
+                - generic [ref=e184]:
+                  - link "Automation" [ref=e185] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e187]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e189] [cursor=pointer]
+              - listitem [ref=e190]:
+                - generic [ref=e191]:
+                  - link "Troubleshooting" [expanded] [ref=e192] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e194]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e196] [cursor=pointer]
+                - list [ref=e197]:
+                  - listitem [ref=e198]:
+                    - link "Kubernetes Debugging" [ref=e199] [cursor=pointer]:
+                      - /url: /troubleshooting/kubernetes-tips/
+                  - listitem [ref=e200]:
+                    - link "Automation" [ref=e201] [cursor=pointer]:
+                      - /url: /troubleshooting/automation/
+                  - listitem [ref=e202]:
+                    - link "Cluster Deployment" [ref=e203] [cursor=pointer]:
+                      - /url: /troubleshooting/cluster-deployment/
+                  - listitem [ref=e204]:
+                    - link "Nodes & Clusters" [ref=e205] [cursor=pointer]:
+                      - /url: /troubleshooting/nodes/
+                  - listitem [ref=e206]:
+                    - link "Packs" [ref=e207] [cursor=pointer]:
+                      - /url: /troubleshooting/pack-issues/
+                  - listitem [ref=e208]:
+                    - link "Palette Dev Engine" [ref=e209] [cursor=pointer]:
+                      - /url: /troubleshooting/palette-dev-engine/
+                  - listitem [ref=e210]:
+                    - generic [ref=e211]:
+                      - link "Edge" [ref=e212] [cursor=pointer]:
+                        - /url: /troubleshooting/edge/
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e213] [cursor=pointer]
+                  - listitem [ref=e214]:
+                    - link "Private Cloud Gateway" [ref=e215] [cursor=pointer]:
+                      - /url: /troubleshooting/pcg/
+                  - listitem [ref=e216]:
+                    - link "Virtual Machine Orchestrator" [ref=e217] [cursor=pointer]:
+                      - /url: /troubleshooting/vmo-issues/
+                  - listitem [ref=e218]:
+                    - link "Enterprise Install" [ref=e219] [cursor=pointer]:
+                      - /url: /troubleshooting/enterprise-install/
+                  - listitem [ref=e220]:
+                    - link "Palette Upgrade" [ref=e221] [cursor=pointer]:
+                      - /url: /troubleshooting/palette-upgrade/
+                  - listitem [ref=e222]:
+                    - link "Generate HAR Files" [ref=e223] [cursor=pointer]:
+                      - /url: /troubleshooting/generate-har-files/
+              - listitem [ref=e224]:
+                - link "Glossary" [ref=e225] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e227]
+                  - text: Glossary
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "Compliance & Legal" [ref=e231] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e233]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - button "Privacy Settings" [ref=e237] [cursor=pointer]:
+                  - img [ref=e238]
+                  - text: Privacy Settings
+      - main [ref=e240]:
+        - generic [ref=e242]:
+          - generic [ref=e244]:
+            - article [ref=e245]:
+              - navigation "Breadcrumbs" [ref=e246]:
+                - list [ref=e247]:
+                  - listitem [ref=e248]:
+                    - link "Home page" [ref=e249] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e250]
+                  - listitem [ref=e252]:
+                    - link "Troubleshooting" [ref=e253] [cursor=pointer]:
+                      - /url: /troubleshooting/
+                  - listitem [ref=e254]:
+                    - generic [ref=e255]: Cluster Deployment
+              - generic [ref=e256]:
+                - heading "Troubleshooting steps for errors during a cluster deployment" [level=1] [ref=e258]
+                - paragraph [ref=e259]: The following steps will help you troubleshoot errors in the event issues arise while deploying a cluster.
+                - heading "Scenario - PV/PVC Stuck in Pending Status for EKS Cluster Using AL2023 AMIDirect link to Scenario - PV/PVC Stuck in Pending Status for EKS Cluster Using AL2023 AMI" [level=2] [ref=e260]:
+                  - text: Scenario - PV/PVC Stuck in Pending Status for EKS Cluster Using AL2023 AMI
+                  - link "Direct link to Scenario - PV/PVC Stuck in Pending Status for EKS Cluster Using AL2023 AMI" [ref=e261] [cursor=pointer]:
+                    - /url: "#scenario---pvpvc-stuck-in-pending-status-for-eks-cluster-using-al2023-ami"
+                    - text: "#"
+                - paragraph [ref=e262]:
+                  - text: After deploying an Amazon EKS cluster using an
+                  - link "Amazon Linux 2023 (AL2023) Amazon Machine Image (AMI)" [ref=e263] [cursor=pointer]:
+                    - /url: /clusters/public-cloud/aws/eks/#cloud-configuration-settings
+                  - text: ", PersistentVolumes (PVs) or PersistentVolumeClaims (PVCs) are stuck in a pending status."
+                - generic [ref=e264]:
+                  - generic [ref=e265]: Example
+                  - generic [ref=e266]:
+                    - code [ref=e268]:
+                      - generic [ref=e269]: NAMESPACE NAME STATUS VOLUME CAPACITY ACCESS MODES STORAGECLASS VOLUMEATTRIBUTESCLASS AGE VOLUMEMODE
+                      - generic [ref=e270]: wordpress data-wordpress-wordpress-mariadb-0 Pending spectro-storage-class <unset> 16m Filesystem
+                      - generic [ref=e271]: wordpress wordpress-wordpress Pending spectro-storage-class <unset> 16m Filesystem
+                    - generic [ref=e272]:
+                      - button "Toggle word wrap" [ref=e273] [cursor=pointer]:
+                        - img [ref=e274]
+                      - button "Copy code to clipboard" [ref=e276] [cursor=pointer]:
+                        - generic [ref=e277]:
+                          - img [ref=e278]
+                          - img [ref=e280]
+                - paragraph [ref=e282]: This issue can arise when an add-on pack or Helm chart that requires a PV or PVC is deployed to an existing cluster or while creating a new cluster.
+                - paragraph [ref=e283]: The PV or PVC provisioning fails because IAM Roles for Service Accounts (IRSA) have not been configured for the AWS CSI packs such as Amazon EBS CSI, Amazon EFS CSI, and Amazon Cloud Native. It is also required if using the AWS Application Loadbalancer.
+                - paragraph [ref=e284]:
+                  - text: For instances launched on AL2023,
+                  - link "IMDSv2" [ref=e285] [cursor=pointer]:
+                    - /url: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-metadata-transition-to-version-2.html
+                  - text: is enforced by default, and IRSA is the recommended approach for providing IAM permissions to
+                  - link "Amazon EBS CSI" [ref=e286] [cursor=pointer]:
+                    - /url: https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html
+                  - text: and
+                  - link "Amazon EFS CSI" [ref=e287] [cursor=pointer]:
+                    - /url: https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html
+                  - text: .
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e288]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e289] [cursor=pointer]:
+                    - /url: "#debug-steps"
+                    - text: "#"
+                - list [ref=e290]:
+                  - listitem [ref=e291]:
+                    - paragraph [ref=e292]:
+                      - text: Log in to
+                      - link "Palette" [ref=e293] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e294]:
+                    - paragraph [ref=e295]: Ensure you are in the correct project scope.
+                  - listitem [ref=e296]:
+                    - paragraph [ref=e297]:
+                      - text: From the left main menu, navigate to the
+                      - strong [ref=e298]: Profiles
+                      - text: page. Find and click on your cluster profile.
+                  - listitem [ref=e299]:
+                    - paragraph [ref=e300]:
+                      - link "Create a new version of the cluster profile" [ref=e301] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile/
+                      - text: .
+                  - listitem [ref=e302]:
+                    - paragraph [ref=e303]:
+                      - text: Select the
+                      - strong [ref=e304]: Kubernetes
+                      - text: layer of your cluster profile.
+                  - listitem [ref=e305]:
+                    - paragraph [ref=e306]:
+                      - text: Use the YAML editor to configure IRSA roles for the
+                      - code [ref=e307]: managedControlPlane
+                      - text: and
+                      - code [ref=e308]: managedMachinePool
+                      - text: resources.
+                    - generic [ref=e309]:
+                      - tablist [ref=e310]:
+                        - tab "AWS EBS CSI" [selected] [ref=e311] [cursor=pointer]
+                        - tab "AWS EFS CSI" [ref=e312] [cursor=pointer]
+                      - tabpanel [ref=e314]:
+                        - generic [ref=e315]:
+                          - generic [ref=e316]: Example configuration
+                          - generic [ref=e317]:
+                            - code [ref=e319]:
+                              - generic [ref=e320]: "managedControlPlane:"
+                              - generic [ref=e321]: "---"
+                              - generic [ref=e322]: "irsaRoles:"
+                              - generic [ref=e323]: "- name: \"{{.spectro.system.cluster.name}}-irsa-cni\""
+                              - generic [ref=e324]: "policies:"
+                              - generic [ref=e325]: "- arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+                              - generic [ref=e326]: "serviceAccount:"
+                              - generic [ref=e327]: "name: aws-node"
+                              - generic [ref=e328]: "namespace: kube-system"
+                              - generic [ref=e329]: "- name: \"{{.spectro.system.cluster.name}}-irsa-csi\""
+                              - generic [ref=e330]: "policies:"
+                              - generic [ref=e331]: "- arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+                              - generic [ref=e332]: "---"
+                              - generic [ref=e333]: "managedMachinePool:"
+                              - generic [ref=e334]: "roleAdditionalPolicies:"
+                              - generic [ref=e335]: "- \"arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy\""
+                            - button "Toggle word wrap" [ref=e337] [cursor=pointer]:
+                              - img [ref=e338]
+                  - listitem [ref=e340]:
+                    - paragraph [ref=e341]:
+                      - text: Click
+                      - strong [ref=e342]: Confirm Updates
+                      - text: after editing.
+                  - listitem [ref=e343]:
+                    - paragraph [ref=e344]:
+                      - text: Select the
+                      - strong [ref=e345]: Storage
+                      - text: layer of your cluster profile.
+                  - listitem [ref=e346]:
+                    - paragraph [ref=e347]:
+                      - text: Use the YAML editor to add an IAM role ARN annotation to the AWS CSI Driver so that the IRSA role is correctly referenced. Replace
+                      - code [ref=e348]: <aws-account-id>
+                      - text: with your AWS account ID.
+                    - generic [ref=e349]:
+                      - tablist [ref=e350]:
+                        - tab "AWS EBS CSI" [selected] [ref=e351] [cursor=pointer]
+                        - tab "AWS EFS CSI" [ref=e352] [cursor=pointer]
+                      - tabpanel [ref=e354]:
+                        - generic [ref=e355]:
+                          - generic [ref=e356]: Example configuration
+                          - generic [ref=e357]:
+                            - code [ref=e359]:
+                              - generic [ref=e360]: "charts:"
+                              - generic [ref=e361]: ...
+                              - generic [ref=e362]: "aws-ebs-csi-driver:"
+                              - generic [ref=e363]: ...
+                              - generic [ref=e364]: "controller:"
+                              - generic [ref=e365]: ...
+                              - generic [ref=e366]: "serviceAccount:"
+                              - generic [ref=e367]: "# A service account will be created for you if set to true. Set to false if you want to use your own."
+                              - generic [ref=e368]: "create: true"
+                              - generic [ref=e369]: "name: ebs-csi-controller-sa"
+                              - generic [ref=e370]: "annotations: {"
+                              - generic [ref=e371]: "\"eks.amazonaws.com/role-arn\":\"arn:aws:iam::<aws-account-id>:role/{{.spectro.system.cluster.name}}-irsa-csi\""
+                              - generic [ref=e372]: "}"
+                              - generic [ref=e373]: "## Enable if EKS IAM for SA is used"
+                              - generic [ref=e374]: "# eks.amazonaws.com/role-arn: arn:<partition>:iam::<account>:role/ebs-csi-role"
+                              - generic [ref=e375]: "automountServiceAccountToken: true"
+                            - button "Toggle word wrap" [ref=e377] [cursor=pointer]:
+                              - img [ref=e378]
+                  - listitem [ref=e380]:
+                    - paragraph [ref=e381]: Update the custom labels for the AWS CSI Driver to retrigger the deployment.
+                    - generic [ref=e382]:
+                      - tablist [ref=e383]:
+                        - tab "AWS EBS CSI" [selected] [ref=e384] [cursor=pointer]
+                        - tab "AWS EFS CSI" [ref=e385] [cursor=pointer]
+                      - tabpanel [ref=e387]:
+                        - generic [ref=e388]:
+                          - generic [ref=e389]: Example
+                          - code [ref=e392]:
+                            - generic [ref=e393]: "charts:"
+                            - generic [ref=e394]: ...
+                            - generic [ref=e395]: "aws-ebs-csi-driver:"
+                            - generic [ref=e396]: ...
+                            - generic [ref=e397]: "customLabels: {"
+                            - generic [ref=e398]: "restart: \"true\""
+                            - generic [ref=e399]: "}"
+                  - listitem [ref=e400]:
+                    - paragraph [ref=e401]:
+                      - text: Click
+                      - strong [ref=e402]: Confirm Updates
+                      - text: after editing.
+                  - listitem [ref=e403]:
+                    - paragraph [ref=e404]:
+                      - text: Click
+                      - strong [ref=e405]: Save Changes
+                      - text: on the cluster profile page.
+                  - listitem [ref=e406]:
+                    - paragraph [ref=e407]:
+                      - text: Update your cluster to use the new cluster profile version that you created with these changes. Refer to
+                      - link "Update a Cluster" [ref=e408] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/cluster-updates/#enablement
+                      - text: for guidance.
+                  - listitem [ref=e409]:
+                    - paragraph [ref=e410]: Wait for the nodes to be repaved and the AWS CSI Driver to be redeployed.
+                  - listitem [ref=e411]:
+                    - paragraph [ref=e412]:
+                      - text: Check that the PV or PVC status is
+                      - code [ref=e413]: Bound
+                      - text: by issuing one of the following
+                      - code [ref=e414]: kubectl
+                      - text: commands.
+                    - generic [ref=e415]:
+                      - generic [ref=e416]: Example command for PVs
+                      - generic [ref=e417]:
+                        - code [ref=e419]:
+                          - generic [ref=e420]: kubectl get pv --output wide
+                        - button "Copy code to clipboard" [ref=e422] [cursor=pointer]:
+                          - generic [ref=e423]:
+                            - img [ref=e424]
+                            - img [ref=e426]
+                    - generic [ref=e428]:
+                      - generic [ref=e429]: Example output for PVs
+                      - generic [ref=e430]:
+                        - code [ref=e432]:
+                          - generic [ref=e433]: NAME CAPACITY ACCESS MODES RECLAIM POLICY STATUS CLAIM STORAGECLASS VOLUMEATTRIBUTESCLASS AGE VOLUMEMODE
+                          - generic [ref=e434]: pv-xyz... 10Gi RWO Delete Bound wordpress/data-wordpress-wordpress-mariadb-0 spectro-storage-class <unset> 16m Filesystem
+                          - generic [ref=e435]: pv-abc... 8Gi RWO Delete Bound wordpress/wordpress-wordpress spectro-storage-class <unset> 16m Filesystem
+                        - generic [ref=e436]:
+                          - button "Toggle word wrap" [ref=e437] [cursor=pointer]:
+                            - img [ref=e438]
+                          - button "Copy code to clipboard" [ref=e440] [cursor=pointer]:
+                            - generic [ref=e441]:
+                              - img [ref=e442]
+                              - img [ref=e444]
+                    - generic [ref=e446]:
+                      - generic [ref=e447]: Example command for PVCs
+                      - generic [ref=e448]:
+                        - code [ref=e450]:
+                          - generic [ref=e451]: kubectl get pvc --all-namespaces --output wide
+                        - button "Copy code to clipboard" [ref=e453] [cursor=pointer]:
+                          - generic [ref=e454]:
+                            - img [ref=e455]
+                            - img [ref=e457]
+                    - generic [ref=e459]:
+                      - generic [ref=e460]: Example output for PVCs
+                      - generic [ref=e461]:
+                        - code [ref=e463]:
+                          - generic [ref=e464]: NAMESPACE NAME STATUS VOLUME CAPACITY ACCESS MODES STORAGECLASS VOLUMEATTRIBUTESCLASS AGE VOLUMEMODE
+                          - generic [ref=e465]: wordpress data-wordpress-wordpress-mariadb-0 Bound pvc-xyz... 10Gi RWO spectro-storage-class <unset> 16m Filesystem
+                          - generic [ref=e466]: wordpress wordpress-wordpress Bound pvc-abc... 8Gi RWO spectro-storage-class <unset> 16m Filesystem
+                        - generic [ref=e467]:
+                          - button "Toggle word wrap" [ref=e468] [cursor=pointer]:
+                            - img [ref=e469]
+                          - button "Copy code to clipboard" [ref=e471] [cursor=pointer]:
+                            - generic [ref=e472]:
+                              - img [ref=e473]
+                              - img [ref=e475]
+                - heading "Scenario - Instances Continuously Delete Every 30 MinutesDirect link to Scenario - Instances Continuously Delete Every 30 Minutes" [level=2] [ref=e477]:
+                  - text: Scenario - Instances Continuously Delete Every 30 Minutes
+                  - link "Direct link to Scenario - Instances Continuously Delete Every 30 Minutes" [ref=e478] [cursor=pointer]:
+                    - /url: "#scenario---instances-continuously-delete-every-30-minutes"
+                    - text: "#"
+                - paragraph [ref=e479]:
+                  - text: An instance is launched and terminated every 30 minutes prior to completion of its deployment, and the
+                  - strong [ref=e480]: Events Tab
+                  - text: "lists errors with the following message:"
+                - code [ref=e484]:
+                  - generic [ref=e485]: Failed to update kubeadmControlPlane Connection timeout connecting to Kubernetes Endpoint
+                - paragraph [ref=e486]: "This behavior can occur when Kubernetes services for the launched instance fail to start properly. Common reasons for why a service may fail are:"
+                - list [ref=e487]:
+                  - listitem [ref=e488]: The specified image could not be pulled from the image repository.
+                  - listitem [ref=e489]: The cloud init process failed.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e490]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e491] [cursor=pointer]:
+                    - /url: "#debug-steps-1"
+                    - text: "#"
+                - list [ref=e492]:
+                  - listitem [ref=e493]:
+                    - paragraph [ref=e494]:
+                      - text: Initiate an SSH session with the Kubernetes instance using the SSH key provided during provisioning, and log in as user
+                      - code [ref=e495]: spectro
+                      - text: . If you are initiating an SSH session into an installer instance, log in as user
+                      - code [ref=e496]: ubuntu
+                      - text: .
+                    - generic [ref=e498]:
+                      - code [ref=e500]:
+                        - generic [ref=e501]: ssh --identity_file <_pathToYourSSHkey_> spectro@X.X.X.X
+                      - button "Copy code to clipboard" [ref=e503] [cursor=pointer]:
+                        - generic [ref=e504]:
+                          - img [ref=e505]
+                          - img [ref=e507]
+                  - listitem [ref=e509]:
+                    - paragraph [ref=e510]: Elevate the user access.
+                    - generic [ref=e512]:
+                      - code [ref=e514]:
+                        - generic [ref=e515]: sudo -i
+                      - button "Copy code to clipboard" [ref=e517] [cursor=pointer]:
+                        - generic [ref=e518]:
+                          - img [ref=e519]
+                          - img [ref=e521]
+                  - listitem [ref=e523]:
+                    - paragraph [ref=e524]: Verify the Kubelet service is operational.
+                    - generic [ref=e526]:
+                      - code [ref=e528]:
+                        - generic [ref=e529]: systemctl status kubelet.service
+                      - button "Copy code to clipboard" [ref=e531] [cursor=pointer]:
+                        - generic [ref=e532]:
+                          - img [ref=e533]
+                          - img [ref=e535]
+                  - listitem [ref=e537]:
+                    - paragraph [ref=e538]: If the Kubelet service does not work as expected, do the following. If the service operates correctly, you can skip this step.
+                    - list [ref=e539]:
+                      - listitem [ref=e540]:
+                        - paragraph [ref=e541]:
+                          - text: Navigate to the
+                          - strong [ref=e542]: /var/log/
+                          - text: folder.
+                        - generic [ref=e544]:
+                          - code [ref=e546]:
+                            - generic [ref=e547]: cd /var/log/
+                          - button "Copy code to clipboard" [ref=e549] [cursor=pointer]:
+                            - generic [ref=e550]:
+                              - img [ref=e551]
+                              - img [ref=e553]
+                      - listitem [ref=e555]:
+                        - paragraph [ref=e556]:
+                          - text: Scan the
+                          - strong [ref=e557]: cloud-init-output
+                          - text: file for any errors. Take note of any errors and address them.
+                        - generic [ref=e559]:
+                          - code [ref=e561]:
+                            - generic [ref=e562]: cat cloud-init-output.log
+                          - button "Copy code to clipboard" [ref=e564] [cursor=pointer]:
+                            - generic [ref=e565]:
+                              - img [ref=e566]
+                              - img [ref=e568]
+                  - listitem [ref=e570]:
+                    - paragraph [ref=e571]: If the kubelet service works as expected, do the following.
+                    - list [ref=e572]:
+                      - listitem [ref=e573]:
+                        - paragraph [ref=e574]: Export the kubeconfig file.
+                        - generic [ref=e576]:
+                          - code [ref=e578]:
+                            - generic [ref=e579]: export KUBECONFIG=/etc/kubernetes/admin.conf
+                          - button "Copy code to clipboard" [ref=e581] [cursor=pointer]:
+                            - generic [ref=e582]:
+                              - img [ref=e583]
+                              - img [ref=e585]
+                      - listitem [ref=e587]:
+                        - paragraph [ref=e588]: Connect with the cluster's Kubernetes API.
+                        - generic [ref=e590]:
+                          - code [ref=e592]:
+                            - generic [ref=e593]: kubectl get pods --all-namespaces
+                          - button "Copy code to clipboard" [ref=e595] [cursor=pointer]:
+                            - generic [ref=e596]:
+                              - img [ref=e597]
+                              - img [ref=e599]
+                      - listitem [ref=e601]:
+                        - paragraph [ref=e602]:
+                          - text: When the connection is established, verify the pods are in a
+                          - emphasis [ref=e603]: Running
+                          - text: state. Take note of any pods that are not in
+                          - emphasis [ref=e604]: Running
+                          - text: state.
+                        - generic [ref=e606]:
+                          - code [ref=e608]:
+                            - generic [ref=e609]: kubectl get pods -o wide
+                          - button "Copy code to clipboard" [ref=e611] [cursor=pointer]:
+                            - generic [ref=e612]:
+                              - img [ref=e613]
+                              - img [ref=e615]
+                      - listitem [ref=e617]:
+                        - paragraph [ref=e618]: If all the pods are operating correctly, verify their connection with the Palette API.
+                        - list [ref=e619]:
+                          - listitem [ref=e620]:
+                            - paragraph [ref=e621]: "For clusters using Gateway, verify the connection between the Installer and Gateway instance:"
+                            - generic [ref=e623]:
+                              - code [ref=e625]:
+                                - generic [ref=e626]: curl -k https://<KUBE_API_SERVER_IP>:6443
+                              - button "Copy code to clipboard" [ref=e628] [cursor=pointer]:
+                                - generic [ref=e629]:
+                                  - img [ref=e630]
+                                  - img [ref=e632]
+                          - listitem [ref=e634]:
+                            - paragraph [ref=e635]: "For Public Clouds that do not use Gateway, verify the connection between the public Internet and the Kubernetes endpoint:"
+                            - generic [ref=e637]:
+                              - code [ref=e639]:
+                                - generic [ref=e640]: curl -k https://<KUBE_API_SERVER_IP>:6443
+                              - button "Copy code to clipboard" [ref=e642] [cursor=pointer]:
+                                - generic [ref=e643]:
+                                  - img [ref=e644]
+                                  - img [ref=e646]
+                            - generic [ref=e648]:
+                              - generic [ref=e649]:
+                                - img [ref=e651]
+                                - text: info
+                              - paragraph [ref=e654]:
+                                - text: "You can obtain the URL for the Kubernetes API using this command:"
+                                - code [ref=e655]: kubectl cluster-info
+                                - text: .
+                  - listitem [ref=e656]:
+                    - paragraph [ref=e657]:
+                      - text: Check
+                      - code [ref=e658]: stdout
+                      - text: for errors. You can also open a support ticket. Visit our
+                      - link "support page" [ref=e659] [cursor=pointer]:
+                        - /url: http://support.spectrocloud.io/
+                      - text: .
+                - heading "Scenario - Deployment Violates Pod SecurityDirect link to Scenario - Deployment Violates Pod Security" [level=2] [ref=e660]:
+                  - text: Scenario - Deployment Violates Pod Security
+                  - link "Direct link to Scenario - Deployment Violates Pod Security" [ref=e661] [cursor=pointer]:
+                    - /url: "#scenario---deployment-violates-pod-security"
+                    - text: "#"
+                - paragraph [ref=e662]: Cluster deployment fails with the following message.
+                - generic [ref=e664]:
+                  - code [ref=e666]:
+                    - generic [ref=e667]: "Error creating: pods <name of pod> is forbidden: violates PodSecurity \"baseline:v<k8s version>\": non-default capabilities …"
+                  - generic [ref=e668]:
+                    - button "Toggle word wrap" [ref=e669] [cursor=pointer]:
+                      - img [ref=e670]
+                    - button "Copy code to clipboard" [ref=e672] [cursor=pointer]:
+                      - generic [ref=e673]:
+                        - img [ref=e674]
+                        - img [ref=e676]
+                - paragraph [ref=e678]: This can happen when the cluster profile uses Kubernetes 1.25 or later and also includes packs that create pods that require elevated privileges.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e679]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e680] [cursor=pointer]:
+                    - /url: "#debug-steps-2"
+                    - text: "#"
+                - paragraph [ref=e681]: To address this issue, you can change the Pod Security Standards of the namespace where the pod is being created.
+                - list [ref=e682]:
+                  - listitem [ref=e683]:
+                    - paragraph [ref=e684]:
+                      - text: Log in to
+                      - link "Palette" [ref=e685] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e686]:
+                    - paragraph [ref=e687]:
+                      - text: Navigate to the left
+                      - strong [ref=e688]: Main Menu
+                      - text: and click on
+                      - strong [ref=e689]: Profiles
+                      - text: .
+                  - listitem [ref=e690]:
+                    - paragraph [ref=e691]: Select the profile you are using to deploy the cluster. Palette displays the profile stack and details.
+                  - listitem [ref=e692]:
+                    - paragraph [ref=e693]: Click on the pack layer in the profile stack that contains the pack configuration.
+                  - listitem [ref=e694]:
+                    - paragraph [ref=e695]:
+                      - text: In the pack's YAML file, add a subfield in the
+                      - code [ref=e696]: pack
+                      - text: section called
+                      - code [ref=e697]: namespaceLabels
+                      - text: if it does not already exist.
+                  - listitem [ref=e698]:
+                    - paragraph [ref=e699]:
+                      - text: In the
+                      - code [ref=e700]: namespaceLabels
+                      - text: section, add a line with the name of your namespace as the key and add
+                      - code [ref=e701]: pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v<k8s_version>
+                      - text: as its value. Replace
+                      - code [ref=e702]: <k8s_version>
+                      - text: with the version of Kubernetes on your cluster and only include the major and minor version following the lowercase letter
+                      - code [ref=e703]: v
+                      - text: . For example,
+                      - code [ref=e704]: v1.25
+                      - text: and
+                      - code [ref=e705]: v1.28
+                      - text: .
+                  - listitem [ref=e706]:
+                    - paragraph [ref=e707]: If a key matching your namespace already exists, add the labels to the value corresponding to that key.
+                - generic [ref=e708]:
+                  - generic [ref=e709]:
+                    - img [ref=e711]
+                    - text: warning
+                  - generic [ref=e713]:
+                    - paragraph [ref=e714]:
+                      - text: We recommend only applying the labels to namespaces where pods fail to be created. If your pack creates multiple namespaces, and you are unsure which ones contain pods that need the elevated privileges, you can access the cluster with the kubectl CLI and use the
+                      - code [ref=e715]: kubectl get pods
+                      - text: command. This command lists pods and their namespaces so you can identify the pods that are failing at creation.
+                    - paragraph [ref=e716]:
+                      - text: For guidance in using the CLI, review
+                      - link "Access Cluster with CLI" [ref=e717] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/#access-cluster-with-cli
+                      - text: . To learn more about kubectl pod commands, refer to the
+                      - link "Kubernetes" [ref=e718] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+                      - text: documentation.
+                - heading "ExamplesDirect link to Examples" [level=3] [ref=e719]:
+                  - text: Examples
+                  - link "Direct link to Examples" [ref=e720] [cursor=pointer]:
+                    - /url: "#examples"
+                    - text: "#"
+                - paragraph [ref=e721]:
+                  - text: The following example shows a pack that creates a namespace called
+                  - code [ref=e722]: "\"monitoring\""
+                  - text: . In this example, the
+                  - code [ref=e723]: monitoring
+                  - text: namespace does not have any pre-existing labels. You need to add the
+                  - code [ref=e724]: namespaceLabels
+                  - text: line as well as the corresponding key-value pair under it to apply the labels to the
+                  - code [ref=e725]: monitoring
+                  - text: namespace.
+                - generic [ref=e727]:
+                  - code [ref=e729]:
+                    - generic [ref=e730]: "pack:"
+                    - generic [ref=e731]: "namespace: \"monitoring\""
+                    - generic [ref=e732]: "namespaceLabels:"
+                    - generic [ref=e733]: "\"monitoring\": \"pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v1.28\""
+                  - generic [ref=e734]:
+                    - button "Toggle word wrap" [ref=e735] [cursor=pointer]:
+                      - img [ref=e736]
+                    - button "Copy code to clipboard" [ref=e738] [cursor=pointer]:
+                      - generic [ref=e739]:
+                        - img [ref=e740]
+                        - img [ref=e742]
+                - paragraph [ref=e744]:
+                  - text: This second example is similar to the first one. However, in this example, the
+                  - code [ref=e745]: monitoring
+                  - text: key already exists under
+                  - code [ref=e746]: namespaceLabels
+                  - text: ", with its original value being"
+                  - code [ref=e747]: "\"org=spectro,team=dev\""
+                  - text: ". Therefore, you add the labels to the existing value:"
+                - generic [ref=e749]:
+                  - code [ref=e751]:
+                    - generic [ref=e752]: "pack:"
+                    - generic [ref=e753]: "namespace: \"monitoring\""
+                    - generic [ref=e754]: "namespaceLabels:"
+                    - generic [ref=e755]: "\"monitoring\": \"org=spectro,team=dev,pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v1.28\""
+                  - generic [ref=e756]:
+                    - button "Toggle word wrap" [ref=e757] [cursor=pointer]:
+                      - img [ref=e758]
+                    - button "Copy code to clipboard" [ref=e760] [cursor=pointer]:
+                      - generic [ref=e761]:
+                        - img [ref=e762]
+                        - img [ref=e764]
+                - heading "Scenario - Nutanix CAPI Deployment UpdatesDirect link to Scenario - Nutanix CAPI Deployment Updates" [level=2] [ref=e766]:
+                  - text: Scenario - Nutanix CAPI Deployment Updates
+                  - link "Direct link to Scenario - Nutanix CAPI Deployment Updates" [ref=e767] [cursor=pointer]:
+                    - /url: "#scenario---nutanix-capi-deployment-updates"
+                    - text: "#"
+                - paragraph [ref=e768]: In the event that the internal Nutanix cluster Cluster API (CAPI) configurations are updated, there is a possibility that the cluster's Kubernetes deployments may encounter issues, resulting in an unhealthy cluster. This can occur when the CAPI changes may be incompatible with the newer version of Palette. The following steps will help you troubleshoot and resolve this issue.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e769]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e770] [cursor=pointer]:
+                    - /url: "#debug-steps-3"
+                    - text: "#"
+                - list [ref=e771]:
+                  - listitem [ref=e772]:
+                    - paragraph [ref=e773]:
+                      - text: Open a terminal session and ensure you have the
+                      - code [ref=e774]: kubectl
+                      - text: CLI installed. If you do not have the CLI installed, you can download it from the
+                      - link "Kubernetes" [ref=e775] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/tasks/tools/install-kubectl/
+                      - text: website.
+                  - listitem [ref=e776]:
+                    - paragraph [ref=e777]:
+                      - text: Set up your terminal session to use the kubeconfig file for your Nutanix cluster. You can find the kubeconfig for your cluster in the Palette UI by visiting the Nutanix cluster's details page. Check out the
+                      - link "Access Cluster with CLI" [ref=e778] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/#access-cluster-with-cli
+                      - text: guide for guidance on how to set up your terminal session to use the kubeconfig file.
+                  - listitem [ref=e779]:
+                    - paragraph [ref=e780]: To restore the cluster to a healthy state, you need to delete the following deployments so that Palette can re-create them with the updated machine template. Issue the following commands to delete the following three deployments.
+                    - generic [ref=e782]:
+                      - code [ref=e784]:
+                        - generic [ref=e785]: kubectl delete deployment capi-controller-manager --namespace capi-system
+                      - generic [ref=e786]:
+                        - button "Toggle word wrap" [ref=e787] [cursor=pointer]:
+                          - img [ref=e788]
+                        - button "Copy code to clipboard" [ref=e790] [cursor=pointer]:
+                          - generic [ref=e791]:
+                            - img [ref=e792]
+                            - img [ref=e794]
+                    - generic [ref=e797]:
+                      - code [ref=e799]:
+                        - generic [ref=e800]: kubectl delete deployment capi-kubeadm-bootstrap-controller-manager --namespace capi-kubeadm-bootstrap-system
+                      - generic [ref=e801]:
+                        - button "Toggle word wrap" [ref=e802] [cursor=pointer]:
+                          - img [ref=e803]
+                        - button "Copy code to clipboard" [ref=e805] [cursor=pointer]:
+                          - generic [ref=e806]:
+                            - img [ref=e807]
+                            - img [ref=e809]
+                    - generic [ref=e812]:
+                      - code [ref=e814]:
+                        - generic [ref=e815]: kubectl delete deployment capi-kubeadm-control-plane-controller-manager --namespace capi-kubeadm-control-plane-system
+                      - generic [ref=e816]:
+                        - button "Toggle word wrap" [ref=e817] [cursor=pointer]:
+                          - img [ref=e818]
+                        - button "Copy code to clipboard" [ref=e820] [cursor=pointer]:
+                          - generic [ref=e821]:
+                            - img [ref=e822]
+                            - img [ref=e824]
+                  - listitem [ref=e826]:
+                    - paragraph [ref=e827]: Palette will automatically re-create the deleted deployments with the updated machine template. You can monitor the progress of the re-creation by checking the status of the deployments using the following command.
+                    - generic [ref=e829]:
+                      - code [ref=e831]:
+                        - generic [ref=e832]: kubectl get deployments --all-namespaces
+                      - button "Copy code to clipboard" [ref=e834] [cursor=pointer]:
+                        - generic [ref=e835]:
+                          - img [ref=e836]
+                          - img [ref=e838]
+              - generic [ref=e840]:
+                - generic [ref=e842]:
+                  - text: "Tags:"
+                  - list [ref=e843]:
+                    - listitem [ref=e844]:
+                      - link "troubleshooting" [ref=e845] [cursor=pointer]:
+                        - /url: /tags/troubleshooting/
+                    - listitem [ref=e846]:
+                      - link "cluster-deployment" [ref=e847] [cursor=pointer]:
+                        - /url: /tags/cluster-deployment/
+                - link "Edit this page" [ref=e850] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/troubleshooting/cluster-deployment.md
+                  - img [ref=e851]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e855]:
+              - link "Previous « Automation" [ref=e856] [cursor=pointer]:
+                - /url: /troubleshooting/automation/
+                - generic [ref=e857]: Previous
+                - generic [ref=e858]: « Automation
+              - link "Next Nodes & Clusters »" [ref=e859] [cursor=pointer]:
+                - /url: /troubleshooting/nodes/
+                - generic [ref=e860]: Next
+                - generic [ref=e861]: Nodes & Clusters »
+          - list [ref=e864]:
+            - listitem [ref=e865]:
+              - link "Scenario - PV/PVC Stuck in Pending Status for EKS Cluster Using AL2023 AMI" [ref=e866] [cursor=pointer]:
+                - /url: "#scenario---pvpvc-stuck-in-pending-status-for-eks-cluster-using-al2023-ami"
+              - list [ref=e867]:
+                - listitem [ref=e868]:
+                  - link "Debug Steps" [ref=e869] [cursor=pointer]:
+                    - /url: "#debug-steps"
+            - listitem [ref=e870]:
+              - link "Scenario - Instances Continuously Delete Every 30 Minutes" [ref=e871] [cursor=pointer]:
+                - /url: "#scenario---instances-continuously-delete-every-30-minutes"
+              - list [ref=e872]:
+                - listitem [ref=e873]:
+                  - link "Debug Steps" [ref=e874] [cursor=pointer]:
+                    - /url: "#debug-steps-1"
+            - listitem [ref=e875]:
+              - link "Scenario - Deployment Violates Pod Security" [ref=e876] [cursor=pointer]:
+                - /url: "#scenario---deployment-violates-pod-security"
+              - list [ref=e877]:
+                - listitem [ref=e878]:
+                  - link "Debug Steps" [ref=e879] [cursor=pointer]:
+                    - /url: "#debug-steps-2"
+                - listitem [ref=e880]:
+                  - link "Examples" [ref=e881] [cursor=pointer]:
+                    - /url: "#examples"
+            - listitem [ref=e882]:
+              - link "Scenario - Nutanix CAPI Deployment Updates" [ref=e883] [cursor=pointer]:
+                - /url: "#scenario---nutanix-capi-deployment-updates"
+              - list [ref=e884]:
+                - listitem [ref=e885]:
+                  - link "Debug Steps" [ref=e886] [cursor=pointer]:
+                    - /url: "#debug-steps-3"
+  - button "Project Logo Ask AI" [ref=e887] [cursor=pointer]:
+    - generic [ref=e890]:
+      - img "Project Logo" [ref=e891]
+      - paragraph [ref=e892]: Ask AI
+```

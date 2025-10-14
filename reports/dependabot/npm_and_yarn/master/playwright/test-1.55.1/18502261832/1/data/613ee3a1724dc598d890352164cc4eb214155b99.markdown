@@ -1,0 +1,778 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                  - listitem [ref=e107]:
+                    - generic [ref=e108]:
+                      - link "Data Center Clusters" [ref=e109] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e111]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e113] [cursor=pointer]
+                  - listitem [ref=e114]:
+                    - generic [ref=e115]:
+                      - link "Edge" [expanded] [ref=e116] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e118]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e120] [cursor=pointer]
+                    - list [ref=e121]:
+                      - listitem [ref=e122]:
+                        - generic [ref=e123]:
+                          - link "Architecture" [ref=e124] [cursor=pointer]:
+                            - /url: /clusters/edge/architecture/
+                          - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e125] [cursor=pointer]
+                      - listitem [ref=e126]:
+                        - link "Hardware Requirements" [ref=e127] [cursor=pointer]:
+                          - /url: /clusters/edge/hardware-requirements/
+                      - listitem [ref=e128]:
+                        - link "Deployment Lifecycle" [ref=e129] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-native-lifecycle/
+                      - listitem [ref=e130]:
+                        - generic [ref=e131]:
+                          - link "Trusted Boot" [ref=e132] [cursor=pointer]:
+                            - /url: /clusters/edge/trusted-boot/
+                          - button "Toggle the collapsible sidebar category 'Trusted Boot'" [ref=e133] [cursor=pointer]
+                      - listitem [ref=e134]:
+                        - generic [ref=e135]:
+                          - link "Install Configuration" [ref=e136] [cursor=pointer]:
+                            - /url: /clusters/edge/edge-configuration/
+                          - button "Toggle the collapsible sidebar category 'Install Configuration'" [ref=e137] [cursor=pointer]
+                      - listitem [ref=e138]:
+                        - generic [ref=e139]:
+                          - link "EdgeForge Workflow" [ref=e140] [cursor=pointer]:
+                            - /url: /clusters/edge/edgeforge-workflow/
+                          - button "Toggle the collapsible sidebar category 'EdgeForge Workflow'" [ref=e141] [cursor=pointer]
+                      - listitem [ref=e142]:
+                        - generic [ref=e143]:
+                          - link "Local UI" [ref=e144] [cursor=pointer]:
+                            - /url: /clusters/edge/local-ui/
+                          - button "Toggle the collapsible sidebar category 'Local UI'" [ref=e145] [cursor=pointer]
+                      - listitem [ref=e146]:
+                        - generic [ref=e147]:
+                          - link "Deployment" [expanded] [ref=e148] [cursor=pointer]:
+                            - /url: /clusters/edge/site-deployment/
+                          - button "Toggle the collapsible sidebar category 'Deployment'" [ref=e149] [cursor=pointer]
+                        - list [ref=e150]:
+                          - listitem [ref=e151]:
+                            - link "Model Edge Native Cluster Profile" [ref=e152] [cursor=pointer]:
+                              - /url: /clusters/edge/site-deployment/model-profile/
+                          - listitem [ref=e153]:
+                            - link "Installation" [ref=e154] [cursor=pointer]:
+                              - /url: /clusters/edge/site-deployment/stage/
+                          - listitem [ref=e155]:
+                            - generic [ref=e156]:
+                              - link "Deploy Edge Hosts On-Site" [ref=e157] [cursor=pointer]:
+                                - /url: /clusters/edge/site-deployment/site-installation/
+                              - button "Toggle the collapsible sidebar category 'Deploy Edge Hosts On-Site'" [ref=e158] [cursor=pointer]
+                          - listitem [ref=e159]:
+                            - generic [ref=e160]:
+                              - link "Deploy Edge Hosts as Virtual Machines" [ref=e161] [cursor=pointer]:
+                                - /url: /clusters/edge/site-deployment/virtual-deployment/
+                              - button "Toggle the collapsible sidebar category 'Deploy Edge Hosts as Virtual Machines'" [ref=e162] [cursor=pointer]
+                          - listitem [ref=e163]:
+                            - link "Edge Host Grid View" [ref=e164] [cursor=pointer]:
+                              - /url: /clusters/edge/site-deployment/edge-host-view/
+                          - listitem [ref=e165]:
+                            - link "Create Cluster Definition" [ref=e166] [cursor=pointer]:
+                              - /url: /clusters/edge/site-deployment/cluster-deployment/
+                          - listitem [ref=e167]:
+                            - generic [ref=e168]:
+                              - link "Deployment with Custom Image Registries" [expanded] [ref=e169] [cursor=pointer]:
+                                - /url: /clusters/edge/site-deployment/deploy-custom-registries/
+                              - button "Toggle the collapsible sidebar category 'Deployment with Custom Image Registries'" [ref=e170] [cursor=pointer]
+                            - list [ref=e171]:
+                              - listitem [ref=e172]:
+                                - link "Deploy Cluster with a Primary Registry" [ref=e173] [cursor=pointer]:
+                                  - /url: /clusters/edge/site-deployment/deploy-custom-registries/deploy-primary-registry/
+                              - listitem [ref=e174]:
+                                - link "Deploy Cluster with a Private External Registry" [ref=e175] [cursor=pointer]:
+                                  - /url: /clusters/edge/site-deployment/deploy-custom-registries/deploy-external-registry/
+                              - listitem [ref=e176]:
+                                - link "Deploy Cluster with a Private Provider Registry" [ref=e177] [cursor=pointer]:
+                                  - /url: /clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry/
+                              - listitem [ref=e178]:
+                                - link "Enable Local Harbor Image Registry" [ref=e179] [cursor=pointer]:
+                                  - /url: /clusters/edge/site-deployment/deploy-custom-registries/local-registry/
+                              - listitem [ref=e180]:
+                                - link "Upload Cluster Images to Registry with the CLI" [ref=e181] [cursor=pointer]:
+                                  - /url: /clusters/edge/site-deployment/deploy-custom-registries/upload-images-to-registry/
+                              - listitem [ref=e182]:
+                                - link "Migrate from Harbor Edge-Native Config Pack" [ref=e183] [cursor=pointer]:
+                                  - /url: /clusters/edge/site-deployment/deploy-custom-registries/migrate-edge-native-config/
+                              - listitem [ref=e184]:
+                                - link "Disable Webhook to Customize Image Pull Behavior" [ref=e185] [cursor=pointer]:
+                                  - /url: /clusters/edge/site-deployment/deploy-custom-registries/webhook-disable/
+                      - listitem [ref=e186]:
+                        - generic [ref=e187]:
+                          - link "Cluster Management" [ref=e188] [cursor=pointer]:
+                            - /url: /clusters/edge/cluster-management/
+                          - button "Toggle the collapsible sidebar category 'Cluster Management'" [ref=e189] [cursor=pointer]
+                      - listitem [ref=e190]:
+                        - generic [ref=e191]:
+                          - link "Networking" [ref=e192] [cursor=pointer]:
+                            - /url: /clusters/edge/networking/
+                          - button "Toggle the collapsible sidebar category 'Networking'" [ref=e193] [cursor=pointer]
+                      - listitem [ref=e194]:
+                        - generic [ref=e195]:
+                          - link "Third Party Integrations" [ref=e196] [cursor=pointer]:
+                            - /url: /clusters/edge/third-party-integrations/
+                          - button "Toggle the collapsible sidebar category 'Third Party Integrations'" [ref=e197] [cursor=pointer]
+                  - listitem [ref=e198]:
+                    - generic [ref=e199]:
+                      - link "Palette Virtual Clusters" [ref=e200] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e202]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e204] [cursor=pointer]
+                  - listitem [ref=e205]:
+                    - generic [ref=e206]:
+                      - link "Imported Clusters" [ref=e207] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e209]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e211] [cursor=pointer]
+                  - listitem [ref=e212]:
+                    - generic [ref=e213]:
+                      - link "Manage Clusters" [ref=e214] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e216]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e218] [cursor=pointer]
+                  - listitem [ref=e219]:
+                    - generic [ref=e220]:
+                      - link "Cluster Groups" [ref=e221] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e223]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e225] [cursor=pointer]
+                  - listitem [ref=e226]:
+                    - generic [ref=e227]:
+                      - link "Private Cloud Gateway" [ref=e228] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e230]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e232] [cursor=pointer]
+              - listitem [ref=e233]:
+                - generic [ref=e234]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e235] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e237]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e239] [cursor=pointer]
+              - listitem [ref=e240]:
+                - generic [ref=e241]:
+                  - link "Palette Dev Engine" [ref=e242] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e244]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e246] [cursor=pointer]
+              - listitem [ref=e247]:
+                - generic [ref=e248]:
+                  - link "Virtual Machine Orchestrator" [ref=e249] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e251]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e253] [cursor=pointer]
+              - listitem [ref=e254]:
+                - generic [ref=e255]:
+                  - link "Workspaces" [ref=e256] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e258]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e260] [cursor=pointer]
+              - listitem [ref=e261]:
+                - generic [ref=e262]:
+                  - link "Packs List" [ref=e263] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e265]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e267] [cursor=pointer]
+              - listitem [ref=e268]:
+                - generic [ref=e269]:
+                  - link "User & Role Management" [ref=e270] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e272]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e274] [cursor=pointer]
+              - listitem [ref=e275]:
+                - generic [ref=e276]:
+                  - link "Registries and Packs" [ref=e277] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e279]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e281] [cursor=pointer]
+              - listitem [ref=e282]:
+                - generic [ref=e283]:
+                  - link "Security" [ref=e284] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e286]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e288] [cursor=pointer]
+              - listitem [ref=e289]:
+                - generic [ref=e290]:
+                  - link "Audit Logs" [ref=e291] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e293]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e295] [cursor=pointer]
+              - listitem [ref=e296]:
+                - generic [ref=e297]:
+                  - link "Self-Hosted Palette" [ref=e298] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e300]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e302] [cursor=pointer]
+              - listitem [ref=e303]:
+                - generic [ref=e304]:
+                  - link "Palette VerteX" [ref=e305] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e307]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e309] [cursor=pointer]
+              - listitem [ref=e310]:
+                - generic [ref=e311]:
+                  - link "Tenant Administration" [ref=e312] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e314]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e316] [cursor=pointer]
+              - listitem [ref=e317]:
+                - generic [ref=e318]:
+                  - link "Automation" [ref=e319] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e321]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e323] [cursor=pointer]
+              - listitem [ref=e324]:
+                - generic [ref=e325]:
+                  - link "Troubleshooting" [ref=e326] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e328]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e330] [cursor=pointer]
+              - listitem [ref=e331]:
+                - link "Glossary" [ref=e332] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e334]
+                  - text: Glossary
+              - listitem [ref=e336]:
+                - generic [ref=e337]:
+                  - link "Compliance & Legal" [ref=e338] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e340]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e342] [cursor=pointer]
+              - listitem [ref=e343]:
+                - button "Privacy Settings" [ref=e344] [cursor=pointer]:
+                  - img [ref=e345]
+                  - text: Privacy Settings
+      - main [ref=e347]:
+        - generic [ref=e349]:
+          - generic [ref=e351]:
+            - article [ref=e352]:
+              - navigation "Breadcrumbs" [ref=e353]:
+                - list [ref=e354]:
+                  - listitem [ref=e355]:
+                    - link "Home page" [ref=e356] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e357]
+                  - listitem [ref=e359]:
+                    - link "Clusters" [ref=e360] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e361]:
+                    - link "Edge" [ref=e362] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                  - listitem [ref=e363]:
+                    - link "Deployment" [ref=e364] [cursor=pointer]:
+                      - /url: /clusters/edge/site-deployment/
+                  - listitem [ref=e365]:
+                    - link "Deployment with Custom Image Registries" [ref=e366] [cursor=pointer]:
+                      - /url: /clusters/edge/site-deployment/deploy-custom-registries/
+                  - listitem [ref=e367]:
+                    - generic [ref=e368]: Enable Local Harbor Image Registry
+              - generic [ref=e369]:
+                - heading "Enable Local Harbor Image Registry" [level=1] [ref=e371]
+                - generic [ref=e372]:
+                  - generic [ref=e373]:
+                    - img [ref=e375]
+                    - text: warning
+                  - generic [ref=e377]:
+                    - paragraph [ref=e378]:
+                      - text: The implementation of the in-cluster local registry in this guide, together with the
+                      - strong [ref=e379]: Harbor Edge-Native Config
+                      - text: pack, are deprecated and will be removed in a future release.
+                    - paragraph [ref=e380]:
+                      - text: If you still want to use the
+                      - link "Harbor Edge Native Config" [ref=e381] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=harbor-edge-native-config
+                      - text: pack, it should not be applied to existing clusters, only new clusters.
+                    - paragraph [ref=e382]:
+                      - text: Palette Edge now implements a primary registry mechanism where you can use any OCI-compliant registry to achieve the same goal as the local Harbor registry. For more information, refer to
+                      - link "Deploy with In-Cluster Primary Registry" [ref=e383] [cursor=pointer]:
+                        - /url: /clusters/edge/site-deployment/deploy-custom-registries/deploy-primary-registry/
+                      - text: .
+                    - paragraph [ref=e384]:
+                      - text: If you have clusters using the
+                      - strong [ref=e385]: Harbor Edge-Native Config
+                      - text: pack, refer to
+                      - link "Migrate from Harbor Edge-Native Config" [ref=e386] [cursor=pointer]:
+                        - /url: /clusters/edge/site-deployment/deploy-custom-registries/migrate-edge-native-config/
+                      - text: to learn how to migrate off of the deprecated solution with no impact to your production workload.
+                - paragraph [ref=e387]: Palette Edge allows you to provision a local Harbor image registry as part of your Edge deployment. When your Edge cluster is created for the first time, all images from add-on packs downloaded from external registries are stored locally in the Harbor registry. Subsequent image pulls from the cluster are made to the local Harbor registry. This allows your Edge cluster to reboot containers or add new nodes without being connected to the external network.
+                - paragraph [ref=e388]:
+                  - text: If you specified the management mode of the Edge Installer to be
+                  - code [ref=e389]: local
+                  - text: ", any images that were included in the Edge Installer ISO will also be loaded into the Harbor registry. For more information about building content bundles, refer to"
+                  - link "Build Content Bundle" [ref=e390] [cursor=pointer]:
+                    - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle/
+                  - text: and
+                  - link "Build Edge Artifacts with Content Bundles" [ref=e391] [cursor=pointer]:
+                    - /url: /clusters/edge/edgeforge-workflow/palette-canvos/
+                  - text: .
+                - paragraph [ref=e392]:
+                  - text: If you enable the local Harbor registry on a cluster, the Palette agent will pull all images requested by the cluster from the Harbor registry. If your cluster uses any image that is not included in your cluster profile, you will need to instruct the Palette agent to not pull that image from the Harbor registry by disabling this behavior for certain namespaces. You can do this by giving a namespace the label
+                  - code [ref=e393]: stylus.io/imageswap=disable
+                  - text: . For more information, refer to
+                  - link "Harbor Edge-Native Config pack" [ref=e394] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=harbor-edge-native-config#enable-image-download-from-outside-of-harbor
+                  - text: documentation.
+                - paragraph [ref=e395]:
+                  - img "Local Harbor Registry Architecture" [ref=e396]
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e397]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e398] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e399]:
+                  - listitem [ref=e400]:
+                    - paragraph [ref=e401]: At least one Edge host registered with your Palette account with an AMD64 or x86_64 processor architecture.
+                  - listitem [ref=e402]:
+                    - paragraph [ref=e403]: Each of your Edge hosts must have at least 4 CPUs and 8 GB of RAM.
+                    - list [ref=e404]:
+                      - listitem [ref=e405]: For single-node clusters, where there is only one Edge host handling both control plane and worker capabilities, your Edge host must have at least 6 CPUs and 12 GB of RAM.
+                  - listitem [ref=e406]:
+                    - paragraph [ref=e407]: At least 300 GB of persistent storage. The actual amount of storage required depends on the size of your images.
+                  - listitem [ref=e408]:
+                    - paragraph [ref=e409]:
+                      - text: An Edge cluster profile. For information about how to create a cluster profile for Edge, refer to
+                      - link "Model Edge Cluster Profile" [ref=e410] [cursor=pointer]:
+                        - /url: /clusters/edge/site-deployment/model-profile/
+                      - text: .
+                - heading "EnablementDirect link to Enablement" [level=2] [ref=e411]:
+                  - text: Enablement
+                  - link "Direct link to Enablement" [ref=e412] [cursor=pointer]:
+                    - /url: "#enablement"
+                    - text: "#"
+                - heading "Enable Local Harbor RegistryDirect link to Enable Local Harbor Registry" [level=3] [ref=e413]:
+                  - text: Enable Local Harbor Registry
+                  - link "Direct link to Enable Local Harbor Registry" [ref=e414] [cursor=pointer]:
+                    - /url: "#enable-local-harbor-registry"
+                    - text: "#"
+                - list [ref=e415]:
+                  - listitem [ref=e416]:
+                    - paragraph [ref=e417]:
+                      - text: Log in to
+                      - link "Palette" [ref=e418] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e419]:
+                    - paragraph [ref=e420]:
+                      - text: Navigate to the left
+                      - strong [ref=e421]: Main Menu
+                      - text: and select
+                      - strong [ref=e422]: Profiles
+                      - text: .
+                  - listitem [ref=e423]:
+                    - paragraph [ref=e424]: Select the profile you plan to use for deployment and create a new version of the profile.
+                  - listitem [ref=e425]:
+                    - paragraph [ref=e426]:
+                      - text: If the profile does not already have a storage layer, click
+                      - strong [ref=e427]: Add New Pack
+                      - text: to add a storage pack. You can choose any storage pack for your storage layer.
+                  - listitem [ref=e428]:
+                    - paragraph [ref=e429]:
+                      - text: Select the Kubernetes layer of the profile. Under
+                      - code [ref=e430]: cluster.config.kube-apiserver-arg
+                      - text: ", remove"
+                      - code [ref=e431]: AlwaysPullImages
+                      - text: from the list item
+                      - code [ref=e432]: enable-admission-plugins
+                      - text: ":"
+                    - generic [ref=e434]:
+                      - code [ref=e436]:
+                        - generic [ref=e437]: "kube-apiserver-arg:"
+                        - generic [ref=e438]: "- anonymous-auth=true"
+                        - generic [ref=e439]: "- profiling=false"
+                        - generic [ref=e440]: "- disable-admission-plugins=AlwaysAdmit"
+                        - generic [ref=e441]: "- default-not-ready-toleration-seconds=60"
+                        - generic [ref=e442]: "- default-unreachable-toleration-seconds=60"
+                        - generic [ref=e443]: "- enable-admission-plugins=NamespaceLifecycle,ServiceAccount,NodeRestriction"
+                      - generic [ref=e444]:
+                        - button "Toggle word wrap" [ref=e445] [cursor=pointer]:
+                          - img [ref=e446]
+                        - button "Copy code to clipboard" [ref=e448] [cursor=pointer]:
+                          - generic [ref=e449]:
+                            - img [ref=e450]
+                            - img [ref=e452]
+                - list [ref=e454]:
+                  - listitem [ref=e455]:
+                    - text: Click
+                    - strong [ref=e456]: Add New Pack
+                    - text: and search for the
+                    - strong [ref=e457]: Harbor Edge Native Config
+                    - text: pack. Add the pack to your cluster profile. For more information about the pack and its parameters, refer to
+                    - link "Harbor Edge Native Config pack documentation" [ref=e458] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=harbor-edge-native-config
+                    - text: .
+                - list [ref=e459]:
+                  - listitem [ref=e460]:
+                    - text: In the
+                    - code [ref=e461]: harbor-config.storage
+                    - text: parameter, make sure you allocate enough storage in the
+                    - code [ref=e462]: registry
+                    - text: field to store all your images.
+                - heading "Provide Credentials to Private Registries (Optional)Direct link to Provide Credentials to Private Registries (Optional)" [level=3] [ref=e463]:
+                  - text: Provide Credentials to Private Registries (Optional)
+                  - link "Direct link to Provide Credentials to Private Registries (Optional)" [ref=e464] [cursor=pointer]:
+                    - /url: "#provide-credentials-to-private-registries-optional"
+                    - text: "#"
+                - paragraph [ref=e465]: If your cluster profile does not reference a private registry for images or helm charts or you have configured the Palette agent to download all images from an external private registry, you can skip this step.
+                - generic [ref=e466]:
+                  - generic [ref=e467]:
+                    - img [ref=e469]
+                    - text: info
+                  - paragraph [ref=e472]:
+                    - text: Configuring external registries through user data will instruct the Palette agent to download all images from the external registry and prepend the registry URL to every image referenced in the cluster profile. Therefore, if you have configured an external registry through user data, you no longer need to provide credentials to the private registries referenced in the profile because those private registries will not be used. You are instead responsible for ensuring that all images are present in the external registry. For more information, refer to
+                    - link "Deploy with External Private Registry" [ref=e473] [cursor=pointer]:
+                      - /url: /clusters/edge/site-deployment/deploy-custom-registries/deploy-external-registry/
+                    - text: .
+                - paragraph [ref=e474]:
+                  - text: If your have not configured an external registry for your Edge host through the Edge installer configuration user data, and your cluster profile references private registries, you must provide credentials to those private registries through
+                  - link "Kubernetes secrets" [ref=e475] [cursor=pointer]:
+                    - /url: https://kubernetes.io/docs/concepts/configuration/secret/
+                  - text: using a manifest in your cluster profile.
+                - list [ref=e476]:
+                  - listitem [ref=e477]:
+                    - paragraph [ref=e478]:
+                      - text: Add a new manifest to your cluster profile. For more information, refer to
+                      - link "Add a Manifest" [ref=e479] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon/
+                      - text: .
+                  - listitem [ref=e480]:
+                    - paragraph [ref=e481]:
+                      - text: In your manifest, provide the following YAML configuration. Replace the placeholders with the correct values according to the table below. You need to do this for every private registry referenced and may use dividers
+                      - code [ref=e482]: "---"
+                      - text: to separate the secrets .
+                    - generic [ref=e484]:
+                      - code [ref=e486]:
+                        - generic [ref=e487]: "apiVersion: v1"
+                        - generic [ref=e488]: "data:"
+                        - generic [ref=e489]: "password: <base64-encdoded-password>"
+                        - generic [ref=e490]: "url: <base64-encoded-url>"
+                        - generic [ref=e491]: "username: <base64-encoded-username>"
+                        - generic [ref=e492]: "kind: Secret"
+                        - generic [ref=e493]: "metadata:"
+                        - generic [ref=e494]: "labels:"
+                        - generic [ref=e495]: "spectrocloud.com/registry: \"true\""
+                        - generic [ref=e496]: "spectrocloud.com/copyToTarget: \"true\""
+                        - generic [ref=e497]: "name: <registry-name>"
+                        - generic [ref=e498]: "type: Opaque"
+                      - button "Copy code to clipboard" [ref=e500] [cursor=pointer]:
+                        - generic [ref=e501]:
+                          - img [ref=e502]
+                          - img [ref=e504]
+                    - table [ref=e506]:
+                      - rowgroup [ref=e507]:
+                        - row "Parameter Description" [ref=e508]:
+                          - cell "Parameter" [ref=e509]
+                          - cell "Description" [ref=e510]
+                      - rowgroup [ref=e511]:
+                        - row "data.url The URL of the registry in base-64 encoded format. For image registries, this includes only the hostname. For example, aHR0cHM6Ly9kb2NrZXIuaW8= for docker.io. For helm registries, include both scheme and hostname. For example, https://blr-artifactory.apps.beehive.net in based-64 encoded format." [ref=e512]:
+                          - cell "data.url" [ref=e513]:
+                            - code [ref=e514]: data.url
+                          - cell "The URL of the registry in base-64 encoded format. For image registries, this includes only the hostname. For example, aHR0cHM6Ly9kb2NrZXIuaW8= for docker.io. For helm registries, include both scheme and hostname. For example, https://blr-artifactory.apps.beehive.net in based-64 encoded format." [ref=e515]:
+                            - text: The URL of the registry in base-64 encoded format. For image registries, this includes only the hostname. For example,
+                            - code [ref=e516]: aHR0cHM6Ly9kb2NrZXIuaW8=
+                            - text: for
+                            - code [ref=e517]: docker.io
+                            - text: . For helm registries, include both scheme and hostname. For example,
+                            - code [ref=e518]: https://blr-artifactory.apps.beehive.net
+                            - text: in based-64 encoded format.
+                        - row "data.username The username used to log in to the registry in base-64 encoded format." [ref=e519]:
+                          - cell "data.username" [ref=e520]:
+                            - code [ref=e521]: data.username
+                          - cell "The username used to log in to the registry in base-64 encoded format." [ref=e522]
+                        - row "data.password The password of the user in base-64 encoded format." [ref=e523]:
+                          - cell "data.password" [ref=e524]:
+                            - code [ref=e525]: data.password
+                          - cell "The password of the user in base-64 encoded format." [ref=e526]
+                        - row "metadata.name Optional. A human-readable name you may give the registry." [ref=e527]:
+                          - cell "metadata.name" [ref=e528]:
+                            - code [ref=e529]: metadata.name
+                          - cell "Optional. A human-readable name you may give the registry." [ref=e530]
+                    - paragraph [ref=e531]: The following is an example of a manifest providing the credentials providing credentials to multiple registries, including both image registries and helm registries.
+                    - generic [ref=e533]:
+                      - code [ref=e535]:
+                        - generic [ref=e536]: "apiVersion: v1"
+                        - generic [ref=e537]: "data:"
+                        - generic [ref=e538]: "password: <base64-encdoded-password>"
+                        - generic [ref=e539]: "url: ZWRnZS51cy13ZXN0Mi5hcnRpZmFjdG9yeS5jb20="
+                        - generic [ref=e540]: "username: dXNlcjE="
+                        - generic [ref=e541]: "kind: Secret"
+                        - generic [ref=e542]: "metadata:"
+                        - generic [ref=e543]: "labels:"
+                        - generic [ref=e544]: "spectrocloud.com/registry: \"true\""
+                        - generic [ref=e545]: "name: image-registry1"
+                        - generic [ref=e546]: "type: Opaque"
+                        - generic [ref=e547]: "---"
+                        - generic [ref=e548]: "apiVersion: v1"
+                        - generic [ref=e549]: "data:"
+                        - generic [ref=e550]: "password: <base64-encdoded-password>"
+                        - generic [ref=e551]: "url: aHR0cHM6Ly9lZGdlLnVzLXdlc3QyLmFydGlmYWN0b3J5LmNvbQ=="
+                        - generic [ref=e552]: "username: dXNlcjE="
+                        - generic [ref=e553]: "kind: Secret"
+                        - generic [ref=e554]: "metadata:"
+                        - generic [ref=e555]: "labels:"
+                        - generic [ref=e556]: "spectrocloud.com/registry: \"true\""
+                        - generic [ref=e557]: "name: helm-registry1"
+                        - generic [ref=e558]: "type: Opaque"
+                      - button "Copy code to clipboard" [ref=e560] [cursor=pointer]:
+                        - generic [ref=e561]:
+                          - img [ref=e562]
+                          - img [ref=e564]
+                  - listitem [ref=e566]:
+                    - paragraph [ref=e567]:
+                      - text: Use the cluster profile to create your Edge cluster. For more information, refer to
+                      - link "Create Cluster Definition" [ref=e568] [cursor=pointer]:
+                        - /url: /clusters/edge/site-deployment/cluster-deployment/
+                      - text: .
+                - heading "Save Profile and Deploy ClusterDirect link to Save Profile and Deploy Cluster" [level=3] [ref=e569]:
+                  - text: Save Profile and Deploy Cluster
+                  - link "Direct link to Save Profile and Deploy Cluster" [ref=e570] [cursor=pointer]:
+                    - /url: "#save-profile-and-deploy-cluster"
+                    - text: "#"
+                - list [ref=e571]:
+                  - listitem [ref=e572]:
+                    - paragraph [ref=e573]:
+                      - text: Click
+                      - strong [ref=e574]: Save Changes
+                      - text: .
+                  - listitem [ref=e575]:
+                    - paragraph [ref=e576]: Deploy a new Edge cluster with your updated profile. The initial download of the images will require a connection to the external network as the images are sourced from the original repository. Subsequent image pulls are sourced from the local Harbor registry.
+                - generic [ref=e577]:
+                  - generic [ref=e578]:
+                    - img [ref=e580]
+                    - text: warning
+                  - paragraph [ref=e583]:
+                    - text: The
+                    - link "Harbor Edge Native Config" [ref=e584] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=harbor-edge-native-config
+                    - text: pack should only be applied to new clusters, not active clusters.
+                - heading "ValidationDirect link to Validation" [level=2] [ref=e585]:
+                  - text: Validation
+                  - link "Direct link to Validation" [ref=e586] [cursor=pointer]:
+                    - /url: "#validation"
+                    - text: "#"
+                - list [ref=e587]:
+                  - listitem [ref=e588]:
+                    - paragraph [ref=e589]:
+                      - text: Log in to
+                      - link "Palette" [ref=e590] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e591]:
+                    - paragraph [ref=e592]:
+                      - text: From the left
+                      - strong [ref=e593]: Main Menu
+                      - text: ", navigate to"
+                      - strong [ref=e594]: Clusters
+                      - text: . Choose your Edge cluster.
+                  - listitem [ref=e595]:
+                    - paragraph [ref=e596]:
+                      - text: Navigate to the
+                      - strong [ref=e597]: Nodes
+                      - text: tab, in the
+                      - strong [ref=e598]: Private Ips
+                      - text: column, you can find the IP addresses of your Edge hosts.
+                  - listitem [ref=e599]:
+                    - paragraph [ref=e600]:
+                      - text: Ensure you have network access to your Edge hosts. Open a new tab in your browser and navigate to
+                      - code [ref=e601]: https://NODE_IP:30003
+                      - text: and replace
+                      - code [ref=e602]: NODE_IP
+                      - text: with any IP address in your cluster. NodePort-type services are exposed on the same port on all nodes in your cluster. If you changed the HTTPS port in the configurations, replace the port with the HTTPS port you used.
+                  - listitem [ref=e603]:
+                    - paragraph [ref=e604]:
+                      - text: If you didn't provide a certificate or used a self-signed certificate, your browser might warn you about an unsafe connection. Dismiss the warning, and you will be directed to Harbor's web UI. If you are using Google Chrome, you can click anywhere in your browser tab and type
+                      - code [ref=e605]: thisisunsafe
+                      - text: using your keyboard to dismiss the warning.
+                - list [ref=e606]:
+                  - listitem [ref=e607]:
+                    - text: Type in your credentials to log in to Harbor. The username is always
+                    - code [ref=e608]: admin
+                    - text: . The password is what you configured during cluster creation. If you don't know your password, refer to
+                    - link "Retrieve Harbor Credentials" [ref=e609] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=harbor-edge-native-config#retrieve-harbor-credentials
+                    - text: to retrieve your password.
+                - list [ref=e610]:
+                  - listitem [ref=e611]:
+                    - text: In the
+                    - strong [ref=e612]: Projects
+                    - text: view, select the
+                    - strong [ref=e613]: spectro-images
+                    - text: project.
+                - generic [ref=e614]:
+                  - generic [ref=e615]:
+                    - img [ref=e617]
+                    - text: info
+                  - paragraph [ref=e620]:
+                    - text: Refer to
+                    - link "Harbor Edge Native Config pack documentation" [ref=e621] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=harbor-edge-native-config
+                    - text: to learn how to create additional projects in your Harbor registry through your cluster profile.
+                - list [ref=e622]:
+                  - listitem [ref=e623]: Confirm that all images required by the cluster are stored in the project.
+              - generic [ref=e624]:
+                - generic [ref=e626]:
+                  - text: "Tags:"
+                  - list [ref=e627]:
+                    - listitem [ref=e628]:
+                      - link "edge" [ref=e629] [cursor=pointer]:
+                        - /url: /tags/edge/
+                - link "Edit this page" [ref=e632] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/edge/site-deployment/deploy-custom-registries/local-registry.md
+                  - img [ref=e633]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e637]:
+              - link "Previous « Deploy Cluster with a Private Provider Registry" [ref=e638] [cursor=pointer]:
+                - /url: /clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry/
+                - generic [ref=e639]: Previous
+                - generic [ref=e640]: « Deploy Cluster with a Private Provider Registry
+              - link "Next Upload Cluster Images to Registry with the CLI »" [ref=e641] [cursor=pointer]:
+                - /url: /clusters/edge/site-deployment/deploy-custom-registries/upload-images-to-registry/
+                - generic [ref=e642]: Next
+                - generic [ref=e643]: Upload Cluster Images to Registry with the CLI »
+          - list [ref=e646]:
+            - listitem [ref=e647]:
+              - link "Prerequisites" [ref=e648] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e649]:
+              - link "Enablement" [ref=e650] [cursor=pointer]:
+                - /url: "#enablement"
+              - list [ref=e651]:
+                - listitem [ref=e652]:
+                  - link "Enable Local Harbor Registry" [ref=e653] [cursor=pointer]:
+                    - /url: "#enable-local-harbor-registry"
+                - listitem [ref=e654]:
+                  - link "Provide Credentials to Private Registries (Optional)" [ref=e655] [cursor=pointer]:
+                    - /url: "#provide-credentials-to-private-registries-optional"
+                - listitem [ref=e656]:
+                  - link "Save Profile and Deploy Cluster" [ref=e657] [cursor=pointer]:
+                    - /url: "#save-profile-and-deploy-cluster"
+            - listitem [ref=e658]:
+              - link "Validation" [ref=e659] [cursor=pointer]:
+                - /url: "#validation"
+  - button "Project Logo Ask AI" [ref=e660] [cursor=pointer]:
+    - generic [ref=e663]:
+      - img "Project Logo" [ref=e664]
+      - paragraph [ref=e665]: Ask AI
+```

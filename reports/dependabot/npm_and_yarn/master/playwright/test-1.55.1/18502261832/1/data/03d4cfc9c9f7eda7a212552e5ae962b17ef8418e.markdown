@@ -1,0 +1,494 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                  - listitem [ref=e107]:
+                    - generic [ref=e108]:
+                      - link "Data Center Clusters" [expanded] [ref=e109] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e111]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e113] [cursor=pointer]
+                    - list [ref=e114]:
+                      - listitem [ref=e115]:
+                        - generic [ref=e116]:
+                          - link "MAAS" [expanded] [ref=e117] [cursor=pointer]:
+                            - /url: /clusters/data-center/maas/
+                          - button "Toggle the collapsible sidebar category 'MAAS'" [ref=e118] [cursor=pointer]
+                        - list [ref=e119]:
+                          - listitem [ref=e120]:
+                            - link "Architecture" [ref=e121] [cursor=pointer]:
+                              - /url: /clusters/data-center/maas/architecture/
+                          - listitem [ref=e122]:
+                            - link "Register and Manage MAAS Cloud Accounts" [ref=e123] [cursor=pointer]:
+                              - /url: /clusters/data-center/maas/register-manage-maas-cloud-accounts/
+                          - listitem [ref=e124]:
+                            - link "Create and Manage MAAS Clusters" [ref=e125] [cursor=pointer]:
+                              - /url: /clusters/data-center/maas/create-manage-maas-clusters/
+                          - listitem [ref=e126]:
+                            - link "Create and Manage MAAS Clusters Using LXD VMs" [ref=e127] [cursor=pointer]:
+                              - /url: /clusters/data-center/maas/create-manage-maas-lxd-clusters/
+                      - listitem [ref=e128]:
+                        - generic [ref=e129]:
+                          - link "Nutanix" [ref=e130] [cursor=pointer]:
+                            - /url: /clusters/data-center/nutanix/
+                          - button "Toggle the collapsible sidebar category 'Nutanix'" [ref=e131] [cursor=pointer]
+                      - listitem [ref=e132]:
+                        - link "OpenStack" [ref=e133] [cursor=pointer]:
+                          - /url: /clusters/data-center/openstack/
+                      - listitem [ref=e134]:
+                        - generic [ref=e135]:
+                          - link "VMware" [ref=e136] [cursor=pointer]:
+                            - /url: /clusters/data-center/vmware/
+                          - button "Toggle the collapsible sidebar category 'VMware'" [ref=e137] [cursor=pointer]
+                  - listitem [ref=e138]:
+                    - generic [ref=e139]:
+                      - link "Edge" [ref=e140] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e142]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e144] [cursor=pointer]
+                  - listitem [ref=e145]:
+                    - generic [ref=e146]:
+                      - link "Palette Virtual Clusters" [ref=e147] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e149]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e151] [cursor=pointer]
+                  - listitem [ref=e152]:
+                    - generic [ref=e153]:
+                      - link "Imported Clusters" [ref=e154] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e156]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e158] [cursor=pointer]
+                  - listitem [ref=e159]:
+                    - generic [ref=e160]:
+                      - link "Manage Clusters" [ref=e161] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e163]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e165] [cursor=pointer]
+                  - listitem [ref=e166]:
+                    - generic [ref=e167]:
+                      - link "Cluster Groups" [ref=e168] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e170]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e172] [cursor=pointer]
+                  - listitem [ref=e173]:
+                    - generic [ref=e174]:
+                      - link "Private Cloud Gateway" [ref=e175] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e177]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e179] [cursor=pointer]
+              - listitem [ref=e180]:
+                - generic [ref=e181]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e182] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e184]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e186] [cursor=pointer]
+              - listitem [ref=e187]:
+                - generic [ref=e188]:
+                  - link "Palette Dev Engine" [ref=e189] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e191]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e193] [cursor=pointer]
+              - listitem [ref=e194]:
+                - generic [ref=e195]:
+                  - link "Virtual Machine Orchestrator" [ref=e196] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e198]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e200] [cursor=pointer]
+              - listitem [ref=e201]:
+                - generic [ref=e202]:
+                  - link "Workspaces" [ref=e203] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e205]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e207] [cursor=pointer]
+              - listitem [ref=e208]:
+                - generic [ref=e209]:
+                  - link "Packs List" [ref=e210] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e212]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - generic [ref=e216]:
+                  - link "User & Role Management" [ref=e217] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e219]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e221] [cursor=pointer]
+              - listitem [ref=e222]:
+                - generic [ref=e223]:
+                  - link "Registries and Packs" [ref=e224] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e226]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e228] [cursor=pointer]
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "Security" [ref=e231] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e233]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - generic [ref=e237]:
+                  - link "Audit Logs" [ref=e238] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e240]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - generic [ref=e244]:
+                  - link "Self-Hosted Palette" [ref=e245] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e247]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e249] [cursor=pointer]
+              - listitem [ref=e250]:
+                - generic [ref=e251]:
+                  - link "Palette VerteX" [ref=e252] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e254]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e256] [cursor=pointer]
+              - listitem [ref=e257]:
+                - generic [ref=e258]:
+                  - link "Tenant Administration" [ref=e259] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e261]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e263] [cursor=pointer]
+              - listitem [ref=e264]:
+                - generic [ref=e265]:
+                  - link "Automation" [ref=e266] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e268]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e270] [cursor=pointer]
+              - listitem [ref=e271]:
+                - generic [ref=e272]:
+                  - link "Troubleshooting" [ref=e273] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e275]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e277] [cursor=pointer]
+              - listitem [ref=e278]:
+                - link "Glossary" [ref=e279] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e281]
+                  - text: Glossary
+              - listitem [ref=e283]:
+                - generic [ref=e284]:
+                  - link "Compliance & Legal" [ref=e285] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e287]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e289] [cursor=pointer]
+              - listitem [ref=e290]:
+                - button "Privacy Settings" [ref=e291] [cursor=pointer]:
+                  - img [ref=e292]
+                  - text: Privacy Settings
+      - main [ref=e294]:
+        - generic [ref=e296]:
+          - generic [ref=e298]:
+            - article [ref=e299]:
+              - navigation "Breadcrumbs" [ref=e300]:
+                - list [ref=e301]:
+                  - listitem [ref=e302]:
+                    - link "Home page" [ref=e303] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e304]
+                  - listitem [ref=e306]:
+                    - link "Clusters" [ref=e307] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e308]:
+                    - link "Data Center Clusters" [ref=e309] [cursor=pointer]:
+                      - /url: /clusters/data-center/
+                  - listitem [ref=e310]:
+                    - link "MAAS" [ref=e311] [cursor=pointer]:
+                      - /url: /clusters/data-center/maas/
+                  - listitem [ref=e312]:
+                    - generic [ref=e313]: Register and Manage MAAS Cloud Accounts
+              - generic [ref=e314]:
+                - heading "Register and Manage MAAS Cloud Accounts" [level=1] [ref=e316]
+                - paragraph [ref=e317]: When you install the Private Cloud Gateway (PCG), a cloud account is auto-created in every project in Palette. You can use this cloud account to create clusters at either the tenant or the project level. If desired, you can create additional cloud accounts that reference specific PCGs.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e318]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e319] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e320]:
+                  - listitem [ref=e321]:
+                    - paragraph [ref=e322]:
+                      - text: An installed PCG if you do not have a direct connection to the MAAS environment. Review
+                      - link "Deploy to MAAS" [ref=e323] [cursor=pointer]:
+                        - /url: /clusters/pcg/deploy-pcg/maas/
+                      - text: for guidance.
+                    - paragraph [ref=e324]:
+                      - text: If are self-hosting Palette and have a direct connection to the MAAS environment, you can select
+                      - strong [ref=e325]: Use System Private Gateway
+                      - text: . To learn more about when you would use Palette's PCG or the System Private Gateway, refer to the
+                      - link "PCG Architecture" [ref=e326] [cursor=pointer]:
+                        - /url: /clusters/pcg/architecture/#pcg-deployment-options
+                      - text: page.
+                  - listitem [ref=e327]:
+                    - paragraph [ref=e328]:
+                      - text: An active
+                      - link "MAAS API key" [ref=e329] [cursor=pointer]:
+                        - /url: https://maas.io/docs/api
+                      - text: which can be generated in the MAAS web console under
+                      - strong [ref=e330]: My Preferences
+                      - text: ", and selecting"
+                      - strong [ref=e331]: API keys
+                      - text: .
+                - paragraph [ref=e332]:
+                  - text: For details, refer to the MAAS document on
+                  - link "how to add an API key" [ref=e333] [cursor=pointer]:
+                    - /url: https://canonical.com/maas/docs/how-to-enhance-maas-security#p-9102-manage-api-keys
+                  - text: .
+                - heading "Register a MAAS Cloud AccountDirect link to Register a MAAS Cloud Account" [level=2] [ref=e334]:
+                  - text: Register a MAAS Cloud Account
+                  - link "Direct link to Register a MAAS Cloud Account" [ref=e335] [cursor=pointer]:
+                    - /url: "#register-a-maas-cloud-account"
+                    - text: "#"
+                - paragraph [ref=e336]: Follow these steps to create additional MAAS cloud accounts.
+                - list [ref=e337]:
+                  - listitem [ref=e338]:
+                    - paragraph [ref=e339]:
+                      - text: Log in to
+                      - link "Palette" [ref=e340] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant admin.
+                  - listitem [ref=e341]:
+                    - paragraph [ref=e342]:
+                      - text: Navigate to the
+                      - strong [ref=e343]: Main Menu
+                      - text: and select
+                      - strong [ref=e344]: Tenant Settings > Cloud Accounts
+                      - text: .
+                  - listitem [ref=e345]:
+                    - paragraph [ref=e346]:
+                      - text: Locate
+                      - strong [ref=e347]: MAAS
+                      - text: on the
+                      - strong [ref=e348]: Cloud Accounts
+                      - text: page and click
+                      - strong [ref=e349]: Add MAAS Account
+                      - text: .
+                  - listitem [ref=e350]:
+                    - paragraph [ref=e351]: In the next window that displays, enter values for properties listed in the following table.
+                    - paragraph [ref=e352]:
+                      - text: In a self-hosted environment where Palette has direct network access to MAAS, you can register a MAAS cloud account without installing the PCG. Note the
+                      - strong [ref=e353]: Use System Private Gateway
+                      - text: setting listed in the table. refer to the System Private Gateway section in the
+                      - link "Architecture" [ref=e354] [cursor=pointer]:
+                        - /url: /clusters/data-center/maas/architecture/
+                      - text: page to learn more about System Private Gateway.
+                - paragraph [ref=e355]:
+                  - text: Refer to the Deploy with PCG and system PCG in the
+                  - link "Architecture" [ref=e356] [cursor=pointer]:
+                    - /url: /clusters/data-center/maas/architecture/
+                  - text: page to learn more about system PCG.
+                - generic [ref=e357]:
+                  - generic [ref=e358]:
+                    - img [ref=e360]
+                    - text: info
+                  - paragraph [ref=e363]: For the self-hosted Palette instance, MAAS is reachable on port 5240.
+                - table [ref=e364]:
+                  - rowgroup [ref=e365]:
+                    - row "Property Description" [ref=e366]:
+                      - cell "Property" [ref=e367]
+                      - cell "Description" [ref=e368]
+                  - rowgroup [ref=e369]:
+                    - row "Account Name Custom name for the cloud name." [ref=e370]:
+                      - cell "Account Name" [ref=e371]
+                      - cell "Custom name for the cloud name." [ref=e372]
+                    - row "Use System Private Gateway This setting is for self-hosted environments that do not require a PCG. Toggle this option to bypass installing the PCG." [ref=e373]:
+                      - cell "Use System Private Gateway" [ref=e374]
+                      - cell "This setting is for self-hosted environments that do not require a PCG. Toggle this option to bypass installing the PCG." [ref=e375]
+                    - row "Select Private Cloud Gateway Select your MAAS cloud gateway from the drop-down Menu." [ref=e376]:
+                      - cell "Select Private Cloud Gateway" [ref=e377]
+                      - cell "Select your MAAS cloud gateway from the drop-down Menu." [ref=e378]:
+                        - text: Select your MAAS cloud gateway from the
+                        - strong [ref=e379]: drop-down Menu
+                        - text: .
+                    - row "API Endpoint API endpoint of the gateway." [ref=e380]:
+                      - cell "API Endpoint" [ref=e381]
+                      - cell "API endpoint of the gateway." [ref=e382]
+                    - row "API Key The MAAS API key." [ref=e383]:
+                      - cell "API Key" [ref=e384]
+                      - cell "The MAAS API key." [ref=e385]
+                - list [ref=e386]:
+                  - listitem [ref=e387]:
+                    - text: Click
+                    - strong [ref=e388]: Confirm
+                    - text: to register your MAAS cloud account.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e389]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e390] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e391]:
+                  - text: You can validate your MAAS cloud account is registered by reviewing the
+                  - strong [ref=e392]: Cloud Accounts
+                  - text: page. Ensure your account is listed under
+                  - strong [ref=e393]: MAAS
+                  - text: .
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e394]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e395] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e396]:
+                  - text: Deploy a Kubernetes cluster to one of your MAAS accounts. Check out
+                  - link "Create and Manage MAAS Cluster" [ref=e397] [cursor=pointer]:
+                    - /url: /clusters/data-center/maas/create-manage-maas-clusters/
+                  - text: for guidance.
+              - generic [ref=e398]:
+                - generic [ref=e400]:
+                  - text: "Tags:"
+                  - list [ref=e401]:
+                    - listitem [ref=e402]:
+                      - link "data center" [ref=e403] [cursor=pointer]:
+                        - /url: /tags/data-center/
+                    - listitem [ref=e404]:
+                      - link "maas" [ref=e405] [cursor=pointer]:
+                        - /url: /tags/maas/
+                - link "Edit this page" [ref=e408] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/data-center/maas/register-manage-maas-cloud-accounts.md
+                  - img [ref=e409]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e413]:
+              - link "Previous « Architecture" [ref=e414] [cursor=pointer]:
+                - /url: /clusters/data-center/maas/architecture/
+                - generic [ref=e415]: Previous
+                - generic [ref=e416]: « Architecture
+              - link "Next Create and Manage MAAS Clusters »" [ref=e417] [cursor=pointer]:
+                - /url: /clusters/data-center/maas/create-manage-maas-clusters/
+                - generic [ref=e418]: Next
+                - generic [ref=e419]: Create and Manage MAAS Clusters »
+          - list [ref=e422]:
+            - listitem [ref=e423]:
+              - link "Prerequisites" [ref=e424] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e425]:
+              - link "Register a MAAS Cloud Account" [ref=e426] [cursor=pointer]:
+                - /url: "#register-a-maas-cloud-account"
+            - listitem [ref=e427]:
+              - link "Validate" [ref=e428] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e429]:
+              - link "Next Steps" [ref=e430] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e431] [cursor=pointer]:
+    - generic [ref=e434]:
+      - img "Project Logo" [ref=e435]
+      - paragraph [ref=e436]: Ask AI
+```

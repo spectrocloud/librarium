@@ -1,0 +1,868 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [expanded] [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+                - list [ref=e148]:
+                  - listitem [ref=e149]:
+                    - link "Add a Custom Registry" [ref=e150] [cursor=pointer]:
+                      - /url: /registries-and-packs/adding-a-custom-registry/
+                  - listitem [ref=e151]:
+                    - link "Spectro Cloud CLI Tool" [ref=e152] [cursor=pointer]:
+                      - /url: /registries-and-packs/spectro-cli-reference/
+                  - listitem [ref=e153]:
+                    - link "Add a Custom Pack" [ref=e154] [cursor=pointer]:
+                      - /url: /registries-and-packs/add-custom-packs/
+                  - listitem [ref=e155]:
+                    - link "Add an Add-on Pack" [ref=e156] [cursor=pointer]:
+                      - /url: /registries-and-packs/adding-add-on-packs/
+                  - listitem [ref=e157]:
+                    - link "Pack Constraints" [ref=e158] [cursor=pointer]:
+                      - /url: /registries-and-packs/pack-constraints/
+                  - listitem [ref=e159]:
+                    - generic [ref=e160]:
+                      - link "Registries" [ref=e161] [cursor=pointer]:
+                        - /url: /registries-and-packs/registries/
+                      - button "Toggle the collapsible sidebar category 'Registries'" [ref=e162] [cursor=pointer]
+                  - listitem [ref=e163]:
+                    - link "Advanced CLI Configuration" [ref=e164] [cursor=pointer]:
+                      - /url: /registries-and-packs/advanced-configuration/
+              - listitem [ref=e165]:
+                - generic [ref=e166]:
+                  - link "Security" [ref=e167] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e169]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e171] [cursor=pointer]
+              - listitem [ref=e172]:
+                - generic [ref=e173]:
+                  - link "Audit Logs" [ref=e174] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e176]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e178] [cursor=pointer]
+              - listitem [ref=e179]:
+                - generic [ref=e180]:
+                  - link "Self-Hosted Palette" [ref=e181] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e183]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e185] [cursor=pointer]
+              - listitem [ref=e186]:
+                - generic [ref=e187]:
+                  - link "Palette VerteX" [ref=e188] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e190]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e192] [cursor=pointer]
+              - listitem [ref=e193]:
+                - generic [ref=e194]:
+                  - link "Tenant Administration" [ref=e195] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e197]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e199] [cursor=pointer]
+              - listitem [ref=e200]:
+                - generic [ref=e201]:
+                  - link "Automation" [ref=e202] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e204]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e206] [cursor=pointer]
+              - listitem [ref=e207]:
+                - generic [ref=e208]:
+                  - link "Troubleshooting" [ref=e209] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e211]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e213] [cursor=pointer]
+              - listitem [ref=e214]:
+                - link "Glossary" [ref=e215] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e217]
+                  - text: Glossary
+              - listitem [ref=e219]:
+                - generic [ref=e220]:
+                  - link "Compliance & Legal" [ref=e221] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e223]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e225] [cursor=pointer]
+              - listitem [ref=e226]:
+                - button "Privacy Settings" [ref=e227] [cursor=pointer]:
+                  - img [ref=e228]
+                  - text: Privacy Settings
+      - main [ref=e230]:
+        - generic [ref=e232]:
+          - generic [ref=e234]:
+            - article [ref=e235]:
+              - navigation "Breadcrumbs" [ref=e236]:
+                - list [ref=e237]:
+                  - listitem [ref=e238]:
+                    - link "Home page" [ref=e239] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e240]
+                  - listitem [ref=e242]:
+                    - link "Registries and Packs" [ref=e243] [cursor=pointer]:
+                      - /url: /registries-and-packs/
+                  - listitem [ref=e244]:
+                    - generic [ref=e245]: Add a Custom Pack
+              - generic [ref=e246]:
+                - heading "Add a Custom Pack" [level=1] [ref=e248]
+                - paragraph [ref=e249]: You can add a custom pack to Palette to add new integrations or applications to your cluster profiles.
+                - generic [ref=e250]:
+                  - generic [ref=e251]:
+                    - img [ref=e253]
+                    - text: further guidance
+                  - paragraph [ref=e256]:
+                    - text: Check out the tutorial
+                    - link "Deploy a Custom Pack" [ref=e257] [cursor=pointer]:
+                      - /url: /tutorials/packs-registries/deploy-pack/
+                    - text: to learn how to deploy a custom pack to a custom registry.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e258]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e259] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - paragraph [ref=e260]: The following items are required to create a custom pack.
+                - list [ref=e261]:
+                  - listitem [ref=e262]:
+                    - link "ORAS CLI" [ref=e263] [cursor=pointer]:
+                      - /url: https://oras.land/docs/installation
+                    - text: v1.0.0 or the
+                    - link "Spectro Cloud CLI" [ref=e264] [cursor=pointer]:
+                      - /url: /registries-and-packs/spectro-cli-reference/
+                    - text: if you are using the legacy Spectro Registry. We recommend using Oras CLI with an Open Container Initiative (OCI) compliant registry.
+                  - listitem [ref=e265]:
+                    - text: "A custom Pack registry registered in Palette. Check out the following guides for additional help on how to set up a custom pack registry:"
+                    - list [ref=e266]:
+                      - listitem [ref=e267]:
+                        - link "OCI Pack Registry" [ref=e268] [cursor=pointer]:
+                          - /url: /registries-and-packs/registries/oci-registry/add-pack-oci/add-pack-oci-basic/
+                      - listitem [ref=e269]:
+                        - link "AWS ECR Pack Registry" [ref=e270] [cursor=pointer]:
+                          - /url: /registries-and-packs/registries/oci-registry/add-pack-oci/add-pack-oci-ecr/
+                      - listitem [ref=e271]:
+                        - link "Legacy Spectro Pack Registry" [ref=e272] [cursor=pointer]:
+                          - /url: /registries-and-packs/adding-a-custom-registry/
+                - heading "JSON SchemaDirect link to JSON Schema" [level=2] [ref=e273]:
+                  - text: JSON Schema
+                  - link "Direct link to JSON Schema" [ref=e274] [cursor=pointer]:
+                    - /url: "#json-schema"
+                    - text: "#"
+                - paragraph [ref=e275]:
+                  - text: Each pack contains a metadata file named
+                  - code [ref=e276]: pack.json
+                  - text: . The table below explains in greater detail the JSON schema attributes.
+                - table [ref=e277]:
+                  - rowgroup [ref=e278]:
+                    - row "Property Name Data type Required Description" [ref=e279]:
+                      - cell "Property Name" [ref=e280]
+                      - cell "Data type" [ref=e281]
+                      - cell "Required" [ref=e282]
+                      - cell "Description" [ref=e283]
+                  - rowgroup [ref=e284]:
+                    - row "name String True Name of the pack" [ref=e285]:
+                      - cell "name" [ref=e286]:
+                        - code [ref=e287]: name
+                      - cell "String" [ref=e288]
+                      - cell "True" [ref=e289]
+                      - cell "Name of the pack" [ref=e290]
+                    - row "displayName String True Name of the pack as it is to be displayed on the Palette UI." [ref=e291]:
+                      - cell "displayName" [ref=e292]:
+                        - code [ref=e293]: displayName
+                      - cell "String" [ref=e294]
+                      - cell "True" [ref=e295]
+                      - cell "Name of the pack as it is to be displayed on the Palette UI." [ref=e296]
+                    - row "layer String True Relevant layer that this pack should be part of; such as os, k8s, cni, csi, addon." [ref=e297]:
+                      - cell "layer" [ref=e298]:
+                        - code [ref=e299]: layer
+                      - cell "String" [ref=e300]
+                      - cell "True" [ref=e301]
+                      - cell "Relevant layer that this pack should be part of; such as os, k8s, cni, csi, addon." [ref=e302]:
+                        - text: Relevant layer that this pack should be part of; such as
+                        - code [ref=e303]: os
+                        - text: ","
+                        - code [ref=e304]: k8s
+                        - text: ","
+                        - code [ref=e305]: cni
+                        - text: ","
+                        - code [ref=e306]: csi
+                        - text: ","
+                        - code [ref=e307]: addon
+                        - text: .
+                    - 'row "addonType String False The addon type must be set for packs that have the layer set to addon. The value must be one of the following: logging, monitoring, load balancer, authentication, ingress, security, ai, app services, network, storage, registry, servicemesh, or system app. Setting a relevant correct addon type ensures packs are organized correctly in the Palette UI." [ref=e308]':
+                      - cell "addonType" [ref=e309]:
+                        - code [ref=e310]: addonType
+                      - cell "String" [ref=e311]
+                      - cell "False" [ref=e312]
+                      - 'cell "The addon type must be set for packs that have the layer set to addon. The value must be one of the following: logging, monitoring, load balancer, authentication, ingress, security, ai, app services, network, storage, registry, servicemesh, or system app. Setting a relevant correct addon type ensures packs are organized correctly in the Palette UI." [ref=e313]':
+                        - text: "The addon type must be set for packs that have the layer set to addon. The value must be one of the following:"
+                        - code [ref=e314]: logging
+                        - text: ","
+                        - code [ref=e315]: monitoring
+                        - text: ","
+                        - code [ref=e316]: load balancer
+                        - text: ","
+                        - code [ref=e317]: authentication
+                        - text: ","
+                        - code [ref=e318]: ingress
+                        - text: ","
+                        - code [ref=e319]: security
+                        - text: ","
+                        - code [ref=e320]: ai
+                        - text: ","
+                        - code [ref=e321]: app services
+                        - text: ","
+                        - code [ref=e322]: network
+                        - text: ","
+                        - code [ref=e323]: storage
+                        - text: ","
+                        - code [ref=e324]: registry
+                        - text: ","
+                        - code [ref=e325]: servicemesh
+                        - text: ", or"
+                        - code [ref=e326]: system app
+                        - text: . Setting a relevant correct addon type ensures packs are organized correctly in the Palette UI.
+                    - row "version String True A Semantic version for the pack. It is recommended that the pack version be the same as the underlying integration it is being created for. For example, the version for the pack that will install Prometheus 2.3.4, should set to 2.3.4." [ref=e327]:
+                      - cell "version" [ref=e328]:
+                        - code [ref=e329]: version
+                      - cell "String" [ref=e330]
+                      - cell "True" [ref=e331]
+                      - cell "A Semantic version for the pack. It is recommended that the pack version be the same as the underlying integration it is being created for. For example, the version for the pack that will install Prometheus 2.3.4, should set to 2.3.4." [ref=e332]
+                    - 'row "cloudTypes Array True You can provide one or more types for a pack. Supported values are as follows: all, aws, azure, gcp, vsphere, openstack, baremetal, maas, aks, eks, edge, edge-native, and coxedge." [ref=e333]':
+                      - cell "cloudTypes" [ref=e334]:
+                        - code [ref=e335]: cloudTypes
+                      - cell "Array" [ref=e336]
+                      - cell "True" [ref=e337]
+                      - 'cell "You can provide one or more types for a pack. Supported values are as follows: all, aws, azure, gcp, vsphere, openstack, baremetal, maas, aks, eks, edge, edge-native, and coxedge." [ref=e338]':
+                        - text: "You can provide one or more types for a pack. Supported values are as follows:"
+                        - code [ref=e339]: all
+                        - text: ","
+                        - code [ref=e340]: aws
+                        - text: ","
+                        - code [ref=e341]: azure
+                        - text: ","
+                        - code [ref=e342]: gcp
+                        - text: ","
+                        - code [ref=e343]: vsphere
+                        - text: ","
+                        - code [ref=e344]: openstack
+                        - text: ","
+                        - code [ref=e345]: baremetal
+                        - text: ","
+                        - code [ref=e346]: maas
+                        - text: ","
+                        - code [ref=e347]: aks
+                        - text: ","
+                        - code [ref=e348]: eks
+                        - text: ","
+                        - code [ref=e349]: edge
+                        - text: ","
+                        - code [ref=e350]: edge-native
+                        - text: ", and"
+                        - code [ref=e351]: coxedge
+                        - text: .
+                    - row "group String False Optional categorization of packs. For example, LTS can be set for Ubuntu OS packs." [ref=e352]:
+                      - cell "group" [ref=e353]:
+                        - code [ref=e354]: group
+                      - cell "String" [ref=e355]
+                      - cell "False" [ref=e356]
+                      - cell "Optional categorization of packs. For example, LTS can be set for Ubuntu OS packs." [ref=e357]
+                    - row "annotations Array False Optional key-value pairs required during pack installation. Typically, custom packs do not need to set annotations. Some packs like the ones for OS require annotations that need to be set with an image id." [ref=e358]:
+                      - cell "annotations" [ref=e359]:
+                        - code [ref=e360]: annotations
+                      - cell "Array" [ref=e361]
+                      - cell "False" [ref=e362]
+                      - cell "Optional key-value pairs required during pack installation. Typically, custom packs do not need to set annotations. Some packs like the ones for OS require annotations that need to be set with an image id." [ref=e363]
+                    - row "eol String False End of life date for integration." [ref=e364]:
+                      - cell "eol" [ref=e365]:
+                        - code [ref=e366]: eol
+                      - cell "String" [ref=e367]
+                      - cell "False" [ref=e368]
+                      - cell "End of life date for integration." [ref=e369]
+                    - row "KubeManifests Array False Relative path to Kubernetes manifest YAML files." [ref=e370]:
+                      - cell "KubeManifests" [ref=e371]:
+                        - code [ref=e372]: KubeManifests
+                      - cell "Array" [ref=e373]
+                      - cell "False" [ref=e374]
+                      - cell "Relative path to Kubernetes manifest YAML files." [ref=e375]
+                    - row "charts Array False Relative path to the helm chart archives." [ref=e376]:
+                      - cell "charts" [ref=e377]:
+                        - code [ref=e378]: charts
+                      - cell "Array" [ref=e379]
+                      - cell "False" [ref=e380]
+                      - cell "Relative path to the helm chart archives." [ref=e381]
+                - paragraph [ref=e382]: The following is the JSON schema for packs. Review the schema to ensure your JSON configuration is defined correctly.
+                - generic [ref=e384]:
+                  - code [ref=e386]:
+                    - generic [ref=e387]: "{"
+                    - generic [ref=e388]: "\"type\": \"object\","
+                    - generic [ref=e389]: "\"required\": [\"name\", \"displayName\", \"version\", \"layer\"],"
+                    - generic [ref=e390]: "\"properties\": {"
+                    - generic [ref=e391]: "\"name\": {"
+                    - generic [ref=e392]: "\"$ref\": \"#/definitions/nonEmptyString\""
+                    - generic [ref=e393]: "},"
+                    - generic [ref=e394]: "\"displayName\": {"
+                    - generic [ref=e395]: "\"$ref\": \"#/definitions/nonEmptyString\""
+                    - generic [ref=e396]: "},"
+                    - generic [ref=e397]: "\"version\": {"
+                    - generic [ref=e398]: "\"$ref\": \"#/definitions/nonEmptyString\""
+                    - generic [ref=e399]: "},"
+                    - generic [ref=e400]: "\"layer\": {"
+                    - generic [ref=e401]: "\"$ref\": \"#/definitions/layer\""
+                    - generic [ref=e402]: "},"
+                    - generic [ref=e403]: "\"group\": {"
+                    - generic [ref=e404]: "\"type\": \"string\""
+                    - generic [ref=e405]: "},"
+                    - generic [ref=e406]: "\"cloudTypes\": {"
+                    - generic [ref=e407]: "\"type\": \"array\","
+                    - generic [ref=e408]: "\"items\": {"
+                    - generic [ref=e409]: "\"type\": \"string\","
+                    - generic [ref=e410]: "\"enum\": ["
+                    - generic [ref=e411]: "\"all\","
+                    - generic [ref=e412]: "\"aws\","
+                    - generic [ref=e413]: "\"azure\","
+                    - generic [ref=e414]: "\"gcp\","
+                    - generic [ref=e415]: "\"vsphere\","
+                    - generic [ref=e416]: "\"openstack\","
+                    - generic [ref=e417]: "\"baremetal\","
+                    - generic [ref=e418]: "\"maas\","
+                    - generic [ref=e419]: "\"aks\","
+                    - generic [ref=e420]: "\"eks\","
+                    - generic [ref=e421]: "\"edge\","
+                    - generic [ref=e422]: "\"edge-native\","
+                    - generic [ref=e423]: "\"coxedge\""
+                    - generic [ref=e424]: "]"
+                    - generic [ref=e425]: "}"
+                    - generic [ref=e426]: "},"
+                    - generic [ref=e427]: "\"cloudType\": {"
+                    - generic [ref=e428]: "\"type\": \"string\","
+                    - generic [ref=e429]: "\"enum\": ["
+                    - generic [ref=e430]: "\"all\","
+                    - generic [ref=e431]: "\"aws\","
+                    - generic [ref=e432]: "\"azure\","
+                    - generic [ref=e433]: "\"gcp\","
+                    - generic [ref=e434]: "\"vsphere\","
+                    - generic [ref=e435]: "\"openstack\","
+                    - generic [ref=e436]: "\"baremetal\","
+                    - generic [ref=e437]: "\"maas\","
+                    - generic [ref=e438]: "\"aks\","
+                    - generic [ref=e439]: "\"eks\","
+                    - generic [ref=e440]: "\"edge\","
+                    - generic [ref=e441]: "\"edge-native\","
+                    - generic [ref=e442]: "\"coxedge\""
+                    - generic [ref=e443]: "]"
+                    - generic [ref=e444]: "},"
+                    - generic [ref=e445]: "\"eol\": {"
+                    - generic [ref=e446]: "\"type\": \"string\""
+                    - generic [ref=e447]: "},"
+                    - generic [ref=e448]: "\"addonType\": {"
+                    - generic [ref=e449]: "\"type\": \"string\""
+                    - generic [ref=e450]: "},"
+                    - generic [ref=e451]: "\"addonSubType\": {"
+                    - generic [ref=e452]: "\"type\": \"string\""
+                    - generic [ref=e453]: "},"
+                    - generic [ref=e454]: "\"charts\": {"
+                    - generic [ref=e455]: "\"type\": \"array\","
+                    - generic [ref=e456]: "\"items\": {"
+                    - generic [ref=e457]: "\"type\": \"string\""
+                    - generic [ref=e458]: "}"
+                    - generic [ref=e459]: "},"
+                    - generic [ref=e460]: "\"kubeManifests\": {"
+                    - generic [ref=e461]: "\"type\": \"array\","
+                    - generic [ref=e462]: "\"items\": {"
+                    - generic [ref=e463]: "\"type\": \"string\""
+                    - generic [ref=e464]: "}"
+                    - generic [ref=e465]: "},"
+                    - generic [ref=e466]: "\"annotations\": {"
+                    - generic [ref=e467]: "\"type\": \"object\","
+                    - generic [ref=e468]: "\"additionalProperties\": {"
+                    - generic [ref=e469]: "\"type\": \"string\""
+                    - generic [ref=e470]: "}"
+                    - generic [ref=e471]: "},"
+                    - generic [ref=e472]: "\"constraints\": {"
+                    - generic [ref=e473]: "\"$ref\": \"#/definitions/constraints\""
+                    - generic [ref=e474]: "}"
+                    - generic [ref=e475]: "},"
+                    - generic [ref=e476]: "\"definitions\": {"
+                    - generic [ref=e477]: "\"nonEmptyString\": {"
+                    - generic [ref=e478]: "\"type\": \"string\","
+                    - generic [ref=e479]: "\"minLength\": 1"
+                    - generic [ref=e480]: "},"
+                    - generic [ref=e481]: "\"layer\": {"
+                    - generic [ref=e482]: "\"type\": \"string\","
+                    - generic [ref=e483]: "\"enum\": [\"kernel\", \"os\", \"k8s\", \"cni\", \"csi\", \"addon\"]"
+                    - generic [ref=e484]: "},"
+                    - generic [ref=e485]: "\"constraints\": {"
+                    - generic [ref=e486]: "\"type\": \"object\","
+                    - generic [ref=e487]: "\"properties\": {"
+                    - generic [ref=e488]: "\"dependencies\": {"
+                    - generic [ref=e489]: "\"type\": \"array\","
+                    - generic [ref=e490]: "\"items\": {"
+                    - generic [ref=e491]: "\"$ref\": \"#/definitions/dependency\""
+                    - generic [ref=e492]: "}"
+                    - generic [ref=e493]: "},"
+                    - generic [ref=e494]: "\"resources\": {"
+                    - generic [ref=e495]: "\"type\": \"array\","
+                    - generic [ref=e496]: "\"items\": {"
+                    - generic [ref=e497]: "\"$ref\": \"#/definitions/resource\""
+                    - generic [ref=e498]: "}"
+                    - generic [ref=e499]: "}"
+                    - generic [ref=e500]: "}"
+                    - generic [ref=e501]: "},"
+                    - generic [ref=e502]: "\"dependency\": {"
+                    - generic [ref=e503]: "\"type\": \"object\","
+                    - generic [ref=e504]: "\"required\": [\"packName\", \"layer\", \"type\"],"
+                    - generic [ref=e505]: "\"properties\": {"
+                    - generic [ref=e506]: "\"packName\": {"
+                    - generic [ref=e507]: "\"$ref\": \"#/definitions/nonEmptyString\""
+                    - generic [ref=e508]: "},"
+                    - generic [ref=e509]: "\"layer\": {"
+                    - generic [ref=e510]: "\"$ref\": \"#/definitions/layer\""
+                    - generic [ref=e511]: "},"
+                    - generic [ref=e512]: "\"minVersion\": {"
+                    - generic [ref=e513]: "\"type\": \"string\""
+                    - generic [ref=e514]: "},"
+                    - generic [ref=e515]: "\"maxVersion\": {"
+                    - generic [ref=e516]: "\"type\": \"string\""
+                    - generic [ref=e517]: "},"
+                    - generic [ref=e518]: "\"type\": {"
+                    - generic [ref=e519]: "\"type\": \"string\","
+                    - generic [ref=e520]: "\"enum\": [\"required\", \"optional\", \"notSupported\", \"upgrade\"]"
+                    - generic [ref=e521]: "}"
+                    - generic [ref=e522]: "}"
+                    - generic [ref=e523]: "},"
+                    - generic [ref=e524]: "\"resource\": {"
+                    - generic [ref=e525]: "\"type\": \"object\","
+                    - generic [ref=e526]: "\"required\": [\"type\"],"
+                    - generic [ref=e527]: "\"properties\": {"
+                    - generic [ref=e528]: "\"type\": {"
+                    - generic [ref=e529]: "\"type\": \"string\","
+                    - generic [ref=e530]: "\"enum\": [\"cpu\", \"memory\", \"diskSize\"]"
+                    - generic [ref=e531]: "},"
+                    - generic [ref=e532]: "\"minLimit\": {"
+                    - generic [ref=e533]: "\"type\": \"number\""
+                    - generic [ref=e534]: "},"
+                    - generic [ref=e535]: "\"components\": {"
+                    - generic [ref=e536]: "\"type\": \"array\","
+                    - generic [ref=e537]: "\"items\": {"
+                    - generic [ref=e538]: "\"$ref\": \"#/definitions/component\""
+                    - generic [ref=e539]: "}"
+                    - generic [ref=e540]: "}"
+                    - generic [ref=e541]: "}"
+                    - generic [ref=e542]: "},"
+                    - generic [ref=e543]: "\"component\": {"
+                    - generic [ref=e544]: "\"type\": \"object\","
+                    - generic [ref=e545]: "\"required\": [\"scheduleType\"],"
+                    - generic [ref=e546]: "\"properties\": {"
+                    - generic [ref=e547]: "\"scheduleType\": {"
+                    - generic [ref=e548]: "\"type\": \"string\","
+                    - generic [ref=e549]: "\"enum\": [\"all\", \"control-plane\", \"worker\"]"
+                    - generic [ref=e550]: "},"
+                    - generic [ref=e551]: "\"resourceRequestParamRef\": {"
+                    - generic [ref=e552]: "\"type\": \"string\""
+                    - generic [ref=e553]: "},"
+                    - generic [ref=e554]: "\"replicaCountParamRef\": {"
+                    - generic [ref=e555]: "\"type\": \"string\""
+                    - generic [ref=e556]: "}"
+                    - generic [ref=e557]: "}"
+                    - generic [ref=e558]: "}"
+                    - generic [ref=e559]: "}"
+                    - generic [ref=e560]: "}"
+                  - generic [ref=e561]:
+                    - button "Toggle word wrap" [ref=e562] [cursor=pointer]:
+                      - img [ref=e563]
+                    - button "Copy code to clipboard" [ref=e565] [cursor=pointer]:
+                      - generic [ref=e566]:
+                        - img [ref=e567]
+                        - img [ref=e569]
+                - heading "Create a Custom PackDirect link to Create a Custom Pack" [level=2] [ref=e571]:
+                  - text: Create a Custom Pack
+                  - link "Direct link to Create a Custom Pack" [ref=e572] [cursor=pointer]:
+                    - /url: "#create-a-custom-pack"
+                    - text: "#"
+                - paragraph [ref=e573]: Follow the steps below to create a custom pack.
+                - list [ref=e574]:
+                  - listitem [ref=e575]:
+                    - paragraph [ref=e576]: Create a directory with a suitable name for all the pack contents.
+                    - paragraph [ref=e577]:
+                      - text: "Example:"
+                      - code [ref=e578]: prometheus_1_0
+                  - listitem [ref=e579]:
+                    - paragraph [ref=e580]:
+                      - text: Create a metadata file named
+                      - code [ref=e581]: pack.json
+                      - text: to describe the pack.
+                    - paragraph [ref=e582]: "Example:"
+                    - generic [ref=e584]:
+                      - code [ref=e586]:
+                        - generic [ref=e587]: "{"
+                        - generic [ref=e588]: "\"annotations\": {"
+                        - generic [ref=e589]: "\"name\": \"value\""
+                        - generic [ref=e590]: "},"
+                        - generic [ref=e591]: "\"displayName\": \"<PACK_DISPLAY_NAME>\","
+                        - generic [ref=e592]: "\"eol\": \"2028-04-30\","
+                        - generic [ref=e593]: "\"group\": \"<PACK_GROUP>\","
+                        - generic [ref=e594]: "\"kubeManifests\": [\"manifests/deployment.yaml\"],"
+                        - generic [ref=e595]: "\"layer\": \"<LAYER>\","
+                        - generic [ref=e596]: "\"name\": \"<PACK_NAME>\","
+                        - generic [ref=e597]: "\"version\": \"<PACK_VERSION>\""
+                        - generic [ref=e598]: "}"
+                      - button "Copy code to clipboard" [ref=e600] [cursor=pointer]:
+                        - generic [ref=e601]:
+                          - img [ref=e602]
+                          - img [ref=e604]
+                  - listitem [ref=e606]:
+                    - paragraph [ref=e607]:
+                      - text: Create a file named
+                      - code [ref=e608]: values.yaml
+                      - text: . This file consists of configurable parameters that need to be exposed to the end-users during the creation of a cluster profile.
+                    - generic [ref=e609]:
+                      - generic [ref=e610]:
+                        - img [ref=e612]
+                        - text: info
+                      - paragraph [ref=e615]:
+                        - text: A
+                        - code [ref=e616]: values.yaml
+                        - text: file is mandatory for every pack. For an OS pack, there are typically no configurable parameters, but an empty file still needs to be added to the OS pack.
+                    - paragraph [ref=e617]:
+                      - text: Parameters for all charts and manifests defined in the pack are defined in the
+                      - code [ref=e618]: values.yaml
+                      - text: file.
+                      - emphasis [ref=e619]: Helm
+                      - text: charts natively support values override. Any values defined are merged with those defined within a chart.
+                      - emphasis [ref=e620]: Manifests
+                      - text: need to be explicitly configured to use parameters if desired.
+                    - generic [ref=e622]:
+                      - code [ref=e624]:
+                        - generic [ref=e625]: "pack:"
+                        - generic [ref=e626]: "namespace : <default namespace for charts and manifests>"
+                        - generic [ref=e627]: "charts:"
+                        - generic [ref=e628]: "chart1:"
+                        - generic [ref=e629]: <configurable chart1 parameters>
+                        - generic [ref=e630]: "chart2:"
+                        - generic [ref=e631]: <configurable chart2 parameters>
+                        - generic [ref=e632]: "manifests:"
+                        - generic [ref=e633]: "manifest1:"
+                        - generic [ref=e634]: <manifest1 parameters>
+                        - generic [ref=e635]: "manifest2:"
+                        - generic [ref=e636]: <manifest2 parameters>
+                      - button "Copy code to clipboard" [ref=e638] [cursor=pointer]:
+                        - generic [ref=e639]:
+                          - img [ref=e640]
+                          - img [ref=e642]
+                  - listitem [ref=e644]:
+                    - paragraph [ref=e645]:
+                      - text: (Optional) If you are designing a pack that can be used in Edge cluster profiles in the
+                      - code [ref=e646]: local
+                      - text: management mode, ensure you include all images that are referenced in the pack in the
+                      - code [ref=e647]: pack.content.images
+                      - text: section of the
+                      - code [ref=e648]: values.yaml
+                      - text: file. For more information about local deployments with primary registries, refer to
+                      - link "Deploy with a Primary Registry" [ref=e649] [cursor=pointer]:
+                        - /url: /clusters/edge/site-deployment/deploy-custom-registries/deploy-primary-registry/
+                      - text: .
+                    - generic [ref=e651]:
+                      - code [ref=e653]:
+                        - generic [ref=e654]: "pack:"
+                        - generic [ref=e655]: "content:"
+                        - generic [ref=e656]: "images:"
+                        - generic [ref=e657]: "- docker.io/example-image:latest"
+                        - generic [ref=e658]: "- gcr.io/example-image-two:latest"
+                      - button "Copy code to clipboard" [ref=e660] [cursor=pointer]:
+                        - generic [ref=e661]:
+                          - img [ref=e662]
+                          - img [ref=e664]
+                    - paragraph [ref=e666]:
+                      - text: If you do not specify the images in the
+                      - code [ref=e667]: pack.content.images
+                      - text: field and your cluster is a local cluster with an in-cluster primary registry, the images will not be loaded and deployment of the application will fail.
+                  - listitem [ref=e668]:
+                    - paragraph [ref=e669]:
+                      - text: A pack must have the logo file named
+                      - code [ref=e670]: logo.png
+                      - text: and must be copied into the pack directory.
+                  - listitem [ref=e671]:
+                    - paragraph [ref=e672]: Log in to the pack registry using the following command.
+                    - generic [ref=e674]:
+                      - code [ref=e676]:
+                        - generic [ref=e677]: spectro registry login [REGISTRY_SERVER]
+                      - button "Copy code to clipboard" [ref=e679] [cursor=pointer]:
+                        - generic [ref=e680]:
+                          - img [ref=e681]
+                          - img [ref=e683]
+                  - listitem [ref=e685]:
+                    - paragraph [ref=e686]: Push the newly defined pack to the pack registry using the following command.
+                    - generic [ref=e688]:
+                      - code [ref=e690]:
+                        - generic [ref=e691]: spectro pack push [PACK_DIR_LOCATION] --registry-server [REGISTRY_SERVER]
+                      - generic [ref=e692]:
+                        - button "Toggle word wrap" [ref=e693] [cursor=pointer]:
+                          - img [ref=e694]
+                        - button "Copy code to clipboard" [ref=e696] [cursor=pointer]:
+                          - generic [ref=e697]:
+                            - img [ref=e698]
+                            - img [ref=e700]
+                  - listitem [ref=e702]:
+                    - paragraph [ref=e703]: To overwrite contents of a previously deployed pack, use the force option as follows.
+                    - generic [ref=e705]:
+                      - code [ref=e707]:
+                        - generic [ref=e708]: spectro pack push [PACK_DIR_LOCATION] -f --registry-server [REGISTRY_SERVER]
+                      - generic [ref=e709]:
+                        - button "Toggle word wrap" [ref=e710] [cursor=pointer]:
+                          - img [ref=e711]
+                        - button "Copy code to clipboard" [ref=e713] [cursor=pointer]:
+                          - generic [ref=e714]:
+                            - img [ref=e715]
+                            - img [ref=e717]
+                - heading "Adding an OS PackDirect link to Adding an OS Pack" [level=2] [ref=e719]:
+                  - text: Adding an OS Pack
+                  - link "Direct link to Adding an OS Pack" [ref=e720] [cursor=pointer]:
+                    - /url: "#adding-an-os-pack"
+                    - text: "#"
+                - paragraph [ref=e721]: "The OS is one of the Core Layers in a cluster profile. An OS pack can be built to use a custom OS image for cluster nodes. This might be desirable if an organization wants to use an approved hardened OS image for their infrastructure. There are typically the following two scenarios for the OS image:"
+                - list [ref=e722]:
+                  - listitem [ref=e723]:
+                    - paragraph [ref=e724]:
+                      - strong [ref=e725]: Pre-Installed Kubernetes
+                      - text: "- The OS image has the desired version of Kubernetes components like kubelet, kubectl, etc installed."
+                  - listitem [ref=e726]:
+                    - paragraph [ref=e727]:
+                      - strong [ref=e728]: Vanilla OS Image
+                      - text: "- Kubernetes components are not installed."
+                - paragraph [ref=e729]: Additionally, for both scenarios, additional components or packages may need to be installed at runtime to prepare the final OS image. The following are a few examples of building custom OS packs to cover some of these scenarios.
+                - paragraph [ref=e730]:
+                  - text: A few sample pack manifests for building a custom OS pack are shown in the following examples. These are examples for images that do not have Kubernetes components pre-installed. Palette installs these components at the time of provisioning. The version of Kubernetes that gets installed depends on the Kubernetes pack configuration in the cluster profile. If Kubernetes is pre-installed in the image, set the flag
+                  - code [ref=e731]: skipK8sInstall
+                  - text: to true.
+                - heading "ExamplesDirect link to Examples" [level=2] [ref=e732]:
+                  - text: Examples
+                  - link "Direct link to Examples" [ref=e733] [cursor=pointer]:
+                    - /url: "#examples"
+                    - text: "#"
+                - generic [ref=e734]:
+                  - tablist [ref=e735]:
+                    - tab "AWS Custom OS Pack" [selected] [ref=e736] [cursor=pointer]
+                    - tab "Azure Custom OS Pack" [ref=e737] [cursor=pointer]
+                    - tab "VMware Custom OS Pack" [ref=e738] [cursor=pointer]
+                  - generic [ref=e739]:
+                    - tabpanel [ref=e740]:
+                      - heading "AWS Custom-OS PackDirect link to AWS Custom-OS Pack" [level=3] [ref=e741]:
+                        - text: AWS Custom-OS Pack
+                        - link "Direct link to AWS Custom-OS Pack" [ref=e742] [cursor=pointer]:
+                          - /url: "#aws-custom-os-pack"
+                          - text: "#"
+                      - generic [ref=e744]:
+                        - code [ref=e746]:
+                          - generic [ref=e747]: "{"
+                          - generic [ref=e748]: "\"annotations\":"
+                          - generic [ref=e749]: "{"
+                          - generic [ref=e750]: "\"cloudRegion\": \"us-east-1\","
+                          - generic [ref=e751]: "\"imageId\": \"ami-071f6fc516c53fca1\","
+                          - generic [ref=e752]: "\"imageOwner\": \"421085264799\","
+                          - generic [ref=e753]: "\"osName\": \"centos\","
+                          - generic [ref=e754]: "\"os_spectro_version\": \"0\","
+                          - generic [ref=e755]: "\"sshUsername\": \"centos\","
+                          - generic [ref=e756]: "\"skipK8sInstall\": \"false\","
+                          - generic [ref=e757]: "},"
+                          - generic [ref=e758]: "\"cloudTypes\": [\"aws\"],"
+                          - generic [ref=e759]: "\"displayName\": \"CentOS\","
+                          - generic [ref=e760]: "\"eol\": \"2024-06-30\","
+                          - generic [ref=e761]: "\"group\": \"\","
+                          - generic [ref=e762]: "\"kubeManifests\": [],"
+                          - generic [ref=e763]: "\"layer\": \"os\","
+                          - generic [ref=e764]: "\"name\": \"golden-centos-aws\","
+                          - generic [ref=e765]: "\"version\": \"7.7.1908\","
+                          - generic [ref=e766]: "}"
+                        - button "Copy code to clipboard" [ref=e768] [cursor=pointer]:
+                          - generic [ref=e769]:
+                            - img [ref=e770]
+                            - img [ref=e772]
+                    - text: "# # #"
+              - link "Edit this page" [ref=e777] [cursor=pointer]:
+                - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/registries-and-packs/add-custom-packs.md
+                - img [ref=e778]
+                - text: Edit this page
+            - navigation "Docs pages" [ref=e782]:
+              - link "Previous « Spectro Cloud CLI Tool" [ref=e783] [cursor=pointer]:
+                - /url: /registries-and-packs/spectro-cli-reference/
+                - generic [ref=e784]: Previous
+                - generic [ref=e785]: « Spectro Cloud CLI Tool
+              - link "Next Add an Add-on Pack »" [ref=e786] [cursor=pointer]:
+                - /url: /registries-and-packs/adding-add-on-packs/
+                - generic [ref=e787]: Next
+                - generic [ref=e788]: Add an Add-on Pack »
+          - list [ref=e791]:
+            - listitem [ref=e792]:
+              - link "Prerequisites" [ref=e793] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e794]:
+              - link "JSON Schema" [ref=e795] [cursor=pointer]:
+                - /url: "#json-schema"
+            - listitem [ref=e796]:
+              - link "Create a Custom Pack" [ref=e797] [cursor=pointer]:
+                - /url: "#create-a-custom-pack"
+            - listitem [ref=e798]:
+              - link "Adding an OS Pack" [ref=e799] [cursor=pointer]:
+                - /url: "#adding-an-os-pack"
+            - listitem [ref=e800]:
+              - link "Examples" [ref=e801] [cursor=pointer]:
+                - /url: "#examples"
+              - list [ref=e802]:
+                - listitem [ref=e803]:
+                  - link "AWS Custom-OS Pack" [ref=e804] [cursor=pointer]:
+                    - /url: "#aws-custom-os-pack"
+                - listitem [ref=e805]:
+                  - link "Azure Custom OS Pack" [ref=e806] [cursor=pointer]:
+                    - /url: "#azure-custom-os-pack"
+                - listitem [ref=e807]:
+                  - link "VMware Custom OS Pack - Local Image" [ref=e808] [cursor=pointer]:
+                    - /url: "#vmware-custom-os-pack---local-image"
+                - listitem [ref=e809]:
+                  - link "VMware Custom OS Pack - Remote Image" [ref=e810] [cursor=pointer]:
+                    - /url: "#vmware-custom-os-pack---remote-image"
+  - button "Project Logo Ask AI" [ref=e811] [cursor=pointer]:
+    - generic [ref=e814]:
+      - img "Project Logo" [ref=e815]
+      - paragraph [ref=e816]: Ask AI
+```

@@ -1,0 +1,1174 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Registries and Packs" [ref=e143] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e145]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Security" [ref=e150] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e152]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Audit Logs" [ref=e157] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e159]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Self-Hosted Palette" [expanded] [ref=e164] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e166]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e168] [cursor=pointer]
+                - list [ref=e169]:
+                  - listitem [ref=e170]:
+                    - generic [ref=e171]:
+                      - link "Installation" [expanded] [ref=e172] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e173] [cursor=pointer]
+                    - list [ref=e174]:
+                      - listitem [ref=e175]:
+                        - generic [ref=e176]:
+                          - link "VMware" [expanded] [ref=e177] [cursor=pointer]:
+                            - /url: /enterprise-version/install-palette/install-on-vmware/
+                          - button "Toggle the collapsible sidebar category 'VMware'" [ref=e178] [cursor=pointer]
+                        - list [ref=e179]:
+                          - listitem [ref=e180]:
+                            - link "VMware System and Permission Requirements" [ref=e181] [cursor=pointer]:
+                              - /url: /enterprise-version/install-palette/install-on-vmware/vmware-system-requirements/
+                          - listitem [ref=e182]:
+                            - link "Non-Airgap Installation" [ref=e183] [cursor=pointer]:
+                              - /url: /enterprise-version/install-palette/install-on-vmware/install/
+                          - listitem [ref=e184]:
+                            - generic [ref=e185]:
+                              - link "Airgap Installation" [expanded] [ref=e186] [cursor=pointer]:
+                                - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/
+                              - button "Toggle the collapsible sidebar category 'Airgap Installation'" [ref=e187] [cursor=pointer]
+                            - list [ref=e188]:
+                              - listitem [ref=e189]:
+                                - link "Checklist" [ref=e190] [cursor=pointer]:
+                                  - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/checklist/
+                              - listitem [ref=e191]:
+                                - generic [ref=e192]:
+                                  - link "Environment Setup" [ref=e193] [cursor=pointer]:
+                                    - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/
+                                  - button "Toggle the collapsible sidebar category 'Environment Setup'" [ref=e194] [cursor=pointer]
+                              - listitem [ref=e195]:
+                                - link "Install Palette" [ref=e196] [cursor=pointer]:
+                                  - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/install/
+                      - listitem [ref=e197]:
+                        - link "Airgap Resources" [ref=e198] [cursor=pointer]:
+                          - /url: /enterprise-version/install-palette/airgap/
+                      - listitem [ref=e199]:
+                        - generic [ref=e200]:
+                          - link "Kubernetes" [ref=e201] [cursor=pointer]:
+                            - /url: /enterprise-version/install-palette/install-on-kubernetes/
+                          - button "Toggle the collapsible sidebar category 'Kubernetes'" [ref=e202] [cursor=pointer]
+                      - listitem [ref=e203]:
+                        - link "Palette Management Appliance" [ref=e204] [cursor=pointer]:
+                          - /url: /enterprise-version/install-palette/palette-management-appliance/
+                  - listitem [ref=e205]:
+                    - link "Activate Palette" [ref=e206] [cursor=pointer]:
+                      - /url: /enterprise-version/activate-installation/
+                  - listitem [ref=e207]:
+                    - generic [ref=e208]:
+                      - link "System Management" [ref=e209] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e210] [cursor=pointer]
+                  - listitem [ref=e211]:
+                    - generic [ref=e212]:
+                      - link "Upgrade" [ref=e213] [cursor=pointer]:
+                        - /url: /enterprise-version/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - generic [ref=e216]:
+                  - link "Palette VerteX" [ref=e217] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e219]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e221] [cursor=pointer]
+              - listitem [ref=e222]:
+                - generic [ref=e223]:
+                  - link "Tenant Administration" [ref=e224] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e226]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e228] [cursor=pointer]
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "Automation" [ref=e231] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e233]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - generic [ref=e237]:
+                  - link "Troubleshooting" [ref=e238] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e240]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - link "Glossary" [ref=e244] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e246]
+                  - text: Glossary
+              - listitem [ref=e248]:
+                - generic [ref=e249]:
+                  - link "Compliance & Legal" [ref=e250] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e252]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e254] [cursor=pointer]
+              - listitem [ref=e255]:
+                - button "Privacy Settings" [ref=e256] [cursor=pointer]:
+                  - img [ref=e257]
+                  - text: Privacy Settings
+      - main [ref=e259]:
+        - generic [ref=e261]:
+          - generic [ref=e263]:
+            - article [ref=e264]:
+              - navigation "Breadcrumbs" [ref=e265]:
+                - list [ref=e266]:
+                  - listitem [ref=e267]:
+                    - link "Home page" [ref=e268] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e269]
+                  - listitem [ref=e271]:
+                    - link "Self-Hosted Palette" [ref=e272] [cursor=pointer]:
+                      - /url: /enterprise-version/
+                  - listitem [ref=e273]:
+                    - link "Installation" [ref=e274] [cursor=pointer]:
+                      - /url: /enterprise-version/install-palette/
+                  - listitem [ref=e275]:
+                    - link "VMware" [ref=e276] [cursor=pointer]:
+                      - /url: /enterprise-version/install-palette/install-on-vmware/
+                  - listitem [ref=e277]:
+                    - link "Airgap Installation" [ref=e278] [cursor=pointer]:
+                      - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/
+                  - listitem [ref=e279]:
+                    - generic [ref=e280]: Install Palette
+              - generic [ref=e281]:
+                - heading "Install Palette" [level=1] [ref=e283]
+                - paragraph [ref=e284]:
+                  - text: Palette can be installed on VMware vSphere in an airgap environment. When you install Palette, a three-node cluster is created. You use the interactive Palette CLI to install Palette on VMware vSphere. Refer to
+                  - link "Access Palette" [ref=e285] [cursor=pointer]:
+                    - /url: /enterprise-version/#access-palette
+                  - text: for instructions on requesting the required credentials and assets.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e286]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e287] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e288]:
+                  - listitem [ref=e289]:
+                    - paragraph [ref=e290]:
+                      - text: You have completed the
+                      - link "Environment Setup" [ref=e291] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/
+                      - text: steps and deployed the airgap support VM.
+                  - listitem [ref=e292]:
+                    - paragraph [ref=e293]:
+                      - text: You will need to provide the Palette CLI an encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Refer to the
+                      - link "Palette CLI Encryption" [ref=e294] [cursor=pointer]:
+                        - /url: /automation/palette-cli/#encryption
+                      - text: section for more information.
+                  - listitem [ref=e295]:
+                    - paragraph [ref=e296]:
+                      - text: Review the required VMware vSphere
+                      - link "permissions" [ref=e297] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/install-on-vmware/vmware-system-requirements/
+                      - text: . Ensure you have created the proper custom roles and zone tags.
+                  - listitem [ref=e298]:
+                    - paragraph [ref=e299]:
+                      - text: We recommended the following resources for Palette. Refer to the
+                      - link "Palette size guidelines" [ref=e300] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/#size-guidelines
+                      - text: for additional sizing information.
+                    - list [ref=e301]:
+                      - listitem [ref=e302]:
+                        - paragraph [ref=e303]: 8 CPUs per VM.
+                      - listitem [ref=e304]:
+                        - paragraph [ref=e305]: 16 GB Memory per VM.
+                      - listitem [ref=e306]:
+                        - paragraph [ref=e307]: 100 GB Disk Space per VM.
+                  - listitem [ref=e308]:
+                    - paragraph [ref=e309]: The following network ports must be accessible for Palette to operate successfully.
+                    - list [ref=e310]:
+                      - listitem [ref=e311]:
+                        - paragraph [ref=e312]: "TCP/443: Inbound to and outbound from the Palette management cluster."
+                      - listitem [ref=e313]:
+                        - paragraph [ref=e314]: "TCP/6443: Outbound traffic from the Palette management cluster to the deployed cluster's Kubernetes API server."
+                  - listitem [ref=e315]:
+                    - paragraph [ref=e316]: The network IP address range you specify during the installation must not overlap with any existing IP addresses in your environment. The IP address range must also have connectivity to the VMware vSphere environment.
+                  - listitem [ref=e317]:
+                    - paragraph [ref=e318]: "Ensure you have an SSL certificate that matches the domain name you will assign to Palette. You will need this to enable HTTPS encryption for Palette. Reach out to your network administrator or security team to obtain the SSL certificate. You need the following files:"
+                    - list [ref=e319]:
+                      - listitem [ref=e320]:
+                        - paragraph [ref=e321]: x509 SSL certificate file in base64 format.
+                      - listitem [ref=e322]:
+                        - paragraph [ref=e323]: x509 SSL certificate key file in base64 format.
+                      - listitem [ref=e324]:
+                        - paragraph [ref=e325]: x509 SSL certificate authority file in base64 format. This file is optional.
+                  - listitem [ref=e326]:
+                    - paragraph [ref=e327]:
+                      - text: Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. Refer to
+                      - link "Zone Tagging" [ref=e328] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/install-on-vmware/vmware-system-requirements/
+                      - text: for information.
+                  - listitem [ref=e329]:
+                    - paragraph [ref=e330]: Assigned IP addresses for application workload services, such as Load Balancer services.
+                  - listitem [ref=e331]:
+                    - paragraph [ref=e332]:
+                      - text: A
+                      - link "StorageClass" [ref=e333] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/concepts/storage/storage-classes/
+                      - text: to manage persistent storage, with the annotation
+                      - code [ref=e334]: storageclass.kubernetes.io/is-default-class
+                      - text: set to
+                      - code [ref=e335]: "true"
+                      - text: . To override the default StorageClass for a workload, modify the
+                      - code [ref=e336]: storageClass
+                      - text: parameter. Check out the
+                      - link "Change the default StorageClass" [ref=e337] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/
+                      - text: page to learn more about modifying StorageClasses.
+                - generic [ref=e338]:
+                  - generic [ref=e339]:
+                    - img [ref=e341]
+                    - text: info
+                  - paragraph [ref=e344]:
+                    - text: Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into remote data centers that do not have a direct incoming connection from the Palette console. To learn how to install a PCG on VMware, check out the
+                    - link "VMware" [ref=e345] [cursor=pointer]:
+                      - /url: /clusters/pcg/deploy-pcg/vmware/
+                    - text: guide.
+                - heading "DeploymentDirect link to Deployment" [level=2] [ref=e346]:
+                  - text: Deployment
+                  - link "Direct link to Deployment" [ref=e347] [cursor=pointer]:
+                    - /url: "#deployment"
+                    - text: "#"
+                - paragraph [ref=e348]:
+                  - text: The video below demonstrates the installation wizard and the prompts you will encounter. Take a moment to watch the video before you begin the installation process. Make sure to use values that are appropriate for your environment. Use the
+                  - strong [ref=e349]: three-dots Menu
+                  - text: in the lower right corner of the video to expand the video to full screen and to change the playback speed.
+                - generic "palette-cli-install" [ref=e350]
+                - paragraph [ref=e351]: Use the following steps to install Palette.
+                - list [ref=e352]:
+                  - listitem [ref=e353]:
+                    - paragraph [ref=e354]:
+                      - text: In your terminal, use the following command template to SSH into the Palette airgap support VM. Enter the path to your private SSH key, your username, and the IP or domain of the airgap support VM. The default username is
+                      - code [ref=e355]: ubuntu
+                      - text: .
+                    - generic [ref=e357]:
+                      - code [ref=e359]:
+                        - generic [ref=e360]: ssh -i </path/to/private/key> ubuntu@<vm-ip-or-domain>
+                      - button "Copy code to clipboard" [ref=e362] [cursor=pointer]:
+                        - generic [ref=e363]:
+                          - img [ref=e364]
+                          - img [ref=e366]
+                    - paragraph [ref=e368]: Consider the following command example for reference.
+                    - generic [ref=e370]:
+                      - code [ref=e372]:
+                        - generic [ref=e373]: ssh -i /docs/ssh-private-key.pem ubuntu@palette.example.com
+                      - button "Copy code to clipboard" [ref=e375] [cursor=pointer]:
+                        - generic [ref=e376]:
+                          - img [ref=e377]
+                          - img [ref=e379]
+                    - generic [ref=e381]:
+                      - generic [ref=e382]:
+                        - img [ref=e384]
+                        - text: tip
+                      - paragraph [ref=e387]: Alternatively, you can use any Linux x86-64 system that has the Docker daemon and Palette CLI installed, as well as connectivity to the VMware vSphere environment where Palette will be deployed.
+                  - listitem [ref=e388]:
+                    - paragraph [ref=e389]:
+                      - text: Set your Palette CLI encryption passphrase value in an environment variable. Use the following command to set the passphrase. Replace
+                      - code [ref=e390]: "*************"
+                      - text: with your passphrase.
+                    - generic [ref=e392]:
+                      - code [ref=e394]:
+                        - generic [ref=e395]: export PALETTE_ENCRYPTION_PASSWORD=*************
+                      - button "Copy code to clipboard" [ref=e397] [cursor=pointer]:
+                        - generic [ref=e398]:
+                          - img [ref=e399]
+                          - img [ref=e401]
+                  - listitem [ref=e403]:
+                    - paragraph [ref=e404]:
+                      - text: Invoke the Palette CLI by using the
+                      - code [ref=e405]: ec
+                      - text: command to install the enterprise cluster. The interactive CLI prompts you for configuration details and then initiates the installation. For more information about the
+                      - code [ref=e406]: ec
+                      - text: subcommand, refer to
+                      - link "Palette Commands" [ref=e407] [cursor=pointer]:
+                        - /url: /automation/palette-cli/commands/
+                      - text: .
+                    - generic [ref=e409]:
+                      - code [ref=e411]:
+                        - generic [ref=e412]: palette ec install
+                      - button "Copy code to clipboard" [ref=e414] [cursor=pointer]:
+                        - generic [ref=e415]:
+                          - img [ref=e416]
+                          - img [ref=e418]
+                    - generic [ref=e420]:
+                      - generic [ref=e421]:
+                        - img [ref=e423]
+                        - text: warning
+                      - paragraph [ref=e426]:
+                        - text: If you deployed the airgap support VM using a generic OVA, the Palette CLI may not be in the
+                        - code [ref=e427]: usr/bin
+                        - text: path. Ensure that you complete step
+                        - strong [ref=e428]: "22"
+                        - text: of the
+                        - link "Environment Setup" [ref=e429] [cursor=pointer]:
+                          - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/
+                        - text: guide, which installs the Palette airgap binary and moves the Palette CLI to the correct path.
+                  - listitem [ref=e430]:
+                    - paragraph [ref=e431]:
+                      - text: At the
+                      - strong [ref=e432]: Enterprise Cluster Type
+                      - text: prompt, choose
+                      - strong [ref=e433]: Palette
+                      - text: .
+                  - listitem [ref=e434]:
+                    - paragraph [ref=e435]:
+                      - text: Type
+                      - code [ref=e436]: "y"
+                      - text: if you want to use Ubuntu Pro. Otherwise, type
+                      - code [ref=e437]: "n"
+                      - text: . If you choose to use Ubuntu Pro, you will be prompted to enter your Ubuntu Pro token.
+                  - listitem [ref=e438]:
+                    - paragraph [ref=e439]:
+                      - text: Choose
+                      - code [ref=e440]: VMware vSphere
+                      - text: as the cloud type. This is the default.
+                  - listitem [ref=e441]:
+                    - paragraph [ref=e442]: Type an enterprise cluster name, or use the default value. Your VM instances will use this name as a prefix.
+                  - listitem [ref=e443]:
+                    - paragraph [ref=e444]: When prompted, enter the information listed in each of the following tables.
+                    - heading "Environment ConfigurationDirect link to Environment Configuration" [level=4] [ref=e445]:
+                      - text: Environment Configuration
+                      - link "Direct link to Environment Configuration" [ref=e446] [cursor=pointer]:
+                        - /url: "#environment-configuration"
+                        - text: "#"
+                    - table [ref=e447]:
+                      - rowgroup [ref=e448]:
+                        - row "Parameter Description" [ref=e449]:
+                          - cell "Parameter" [ref=e450]:
+                            - strong [ref=e451]: Parameter
+                          - cell "Description" [ref=e452]:
+                            - strong [ref=e453]: Description
+                      - rowgroup [ref=e454]:
+                        - 'row "HTTPS Proxy Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all EC nodes and all of its target cluster nodes. Example: https://USERNAME:PASSWORD@PROXYIP:PROXYPORT." [ref=e455]':
+                          - cell "HTTPS Proxy" [ref=e456]:
+                            - strong [ref=e457]: HTTPS Proxy
+                          - 'cell "Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all EC nodes and all of its target cluster nodes. Example: https://USERNAME:PASSWORD@PROXYIP:PROXYPORT." [ref=e458]':
+                            - text: "Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all EC nodes and all of its target cluster nodes. Example:"
+                            - code [ref=e459]: https://USERNAME:PASSWORD@PROXYIP:PROXYPORT
+                            - text: .
+                        - 'row "HTTP Proxy Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all EC nodes and all of its target cluster nodes. Example: http://USERNAME:PASSWORD@PROXYIP:PROXYPORT." [ref=e460]':
+                          - cell "HTTP Proxy" [ref=e461]:
+                            - strong [ref=e462]: HTTP Proxy
+                          - 'cell "Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all EC nodes and all of its target cluster nodes. Example: http://USERNAME:PASSWORD@PROXYIP:PROXYPORT." [ref=e463]':
+                            - text: "Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all EC nodes and all of its target cluster nodes. Example:"
+                            - code [ref=e464]: http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
+                            - text: .
+                        - 'row "No Proxy You will be prompted to provide a list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: my.company.com,10.10.0.0/16" [ref=e465]':
+                          - cell "No Proxy" [ref=e466]:
+                            - strong [ref=e467]: No Proxy
+                          - 'cell "You will be prompted to provide a list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: my.company.com,10.10.0.0/16" [ref=e468]':
+                            - text: "You will be prompted to provide a list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment:"
+                            - code [ref=e469]: my.company.com,10.10.0.0/16
+                        - 'row "Proxy CA Certificate Filepath The default is blank. You can provide the filepath of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: /usr/local/share/ca-certificates/ca.crt." [ref=e470]':
+                          - cell "Proxy CA Certificate Filepath" [ref=e471]:
+                            - strong [ref=e472]: Proxy CA Certificate Filepath
+                          - 'cell "The default is blank. You can provide the filepath of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: /usr/local/share/ca-certificates/ca.crt." [ref=e473]':
+                            - text: "The default is blank. You can provide the filepath of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example:"
+                            - code [ref=e474]: /usr/local/share/ca-certificates/ca.crt
+                            - text: .
+                        - row "Pod CIDR Enter the CIDR pool IP that will be used to assign IP addresses to pods in the EC cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment." [ref=e475]:
+                          - cell "Pod CIDR" [ref=e476]:
+                            - strong [ref=e477]: Pod CIDR
+                          - cell "Enter the CIDR pool IP that will be used to assign IP addresses to pods in the EC cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment." [ref=e478]
+                        - row "Service IP Range Enter the IP address range that will be used to assign IP addresses to services in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment." [ref=e479]:
+                          - cell "Service IP Range" [ref=e480]:
+                            - strong [ref=e481]: Service IP Range
+                          - cell "Enter the IP address range that will be used to assign IP addresses to services in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment." [ref=e482]
+                  - listitem [ref=e483]:
+                    - paragraph [ref=e484]:
+                      - text: Fill out the registry configuration details. If you are using the Palette CLI from inside an airgap support VM, the CLI will automatically detect the airgap environment and prompt you to
+                      - strong [ref=e485]: Use local, air-gapped Pack Registry?
+                      - text: Type
+                      - code [ref=e486]: "y"
+                      - text: to use the local resources and skip filling in the OCI registry URL and credentials. Otherwise, you will need to provide the OCI registry configuration values for your pack and image registry.
+                    - generic [ref=e487]:
+                      - generic [ref=e488]:
+                        - img [ref=e490]
+                        - text: warning
+                      - paragraph [ref=e493]:
+                        - text: For self-hosted OCI registries, ensure you have the server Certificate Authority (CA) certificate file available on the host where you are using the Palette CLI. You will be prompted to provide the file path to the OCI CA certificate. Failure to provide the OCI CA certificate will result in self-linking errors. Refer to the
+                        - link "Self-linking Error" [ref=e494] [cursor=pointer]:
+                          - /url: /troubleshooting/enterprise-install/#scenario---self-linking-error
+                        - text: troubleshooting guide for more information.
+                    - paragraph [ref=e495]: The table below provides information in the event you are using another OCI registry for packs, images, and the Spectro manifest.
+                    - heading "Pack & Image Registry ConfigurationDirect link to Pack & Image Registry Configuration" [level=4] [ref=e496]:
+                      - text: Pack & Image Registry Configuration
+                      - link "Direct link to Pack & Image Registry Configuration" [ref=e497] [cursor=pointer]:
+                        - /url: "#pack--image-registry-configuration"
+                        - text: "#"
+                    - table [ref=e498]:
+                      - rowgroup [ref=e499]:
+                        - row "Parameter Description" [ref=e500]:
+                          - cell "Parameter" [ref=e501]:
+                            - strong [ref=e502]: Parameter
+                          - cell "Description" [ref=e503]:
+                            - strong [ref=e504]: Description
+                      - rowgroup [ref=e505]:
+                        - row "Registry Type Specify the type of registry. Allowed values are OCI or OCI ECR. Airgap users, select OCI." [ref=e506]:
+                          - cell "Registry Type" [ref=e507]:
+                            - strong [ref=e508]: Registry Type
+                          - cell "Specify the type of registry. Allowed values are OCI or OCI ECR. Airgap users, select OCI." [ref=e509]:
+                            - text: Specify the type of registry. Allowed values are
+                            - code [ref=e510]: OCI
+                            - text: or
+                            - code [ref=e511]: OCI ECR
+                            - text: . Airgap users, select
+                            - code [ref=e512]: OCI
+                            - text: .
+                        - row "Registry Name Enter the name of the registry." [ref=e513]:
+                          - cell "Registry Name" [ref=e514]:
+                            - strong [ref=e515]: Registry Name
+                          - cell "Enter the name of the registry." [ref=e516]
+                        - row "Registry Endpoint Enter the registry endpoint. Airgap users, provide the Spectro Cloud Repository URL or hostname shared by the airgap setup script." [ref=e517]:
+                          - cell "Registry Endpoint" [ref=e518]:
+                            - strong [ref=e519]: Registry Endpoint
+                          - cell "Enter the registry endpoint. Airgap users, provide the Spectro Cloud Repository URL or hostname shared by the airgap setup script." [ref=e520]:
+                            - text: Enter the registry endpoint. Airgap users, provide the
+                            - strong [ref=e521]: Spectro Cloud Repository
+                            - text: URL or hostname shared by the airgap setup script.
+                        - row "Registry Base Path Enter the registry base path." [ref=e522]:
+                          - cell "Registry Base Path" [ref=e523]:
+                            - strong [ref=e524]: Registry Base Path
+                          - cell "Enter the registry base path." [ref=e525]
+                        - row "Allow Insecure Connection Bypasses x509 verification. Type n to specify a certificate authority in the follow-up prompt. Airgap user, ensure you select n." [ref=e526]:
+                          - cell "Allow Insecure Connection" [ref=e527]:
+                            - strong [ref=e528]: Allow Insecure Connection
+                          - cell "Bypasses x509 verification. Type n to specify a certificate authority in the follow-up prompt. Airgap user, ensure you select n." [ref=e529]:
+                            - text: Bypasses x509 verification. Type
+                            - code [ref=e530]: "n"
+                            - text: to specify a certificate authority in the follow-up prompt. Airgap user, ensure you select
+                            - code [ref=e531]: "n"
+                            - text: .
+                        - row "Registry CA certificate filepath Specify the file path to the certificate authority. Use absolute paths. Airgap users, provide the filepath displayed by the airgap setup script." [ref=e532]:
+                          - cell "Registry CA certificate filepath" [ref=e533]:
+                            - strong [ref=e534]: Registry CA certificate filepath
+                          - cell "Specify the file path to the certificate authority. Use absolute paths. Airgap users, provide the filepath displayed by the airgap setup script." [ref=e535]
+                        - row "Registry Username or Registry Access Key Enter the registry username or the access key if using OCI ECR." [ref=e536]:
+                          - cell "Registry Username or Registry Access Key" [ref=e537]:
+                            - strong [ref=e538]: Registry Username
+                            - text: or
+                            - strong [ref=e539]: Registry Access Key
+                          - cell "Enter the registry username or the access key if using OCI ECR." [ref=e540]:
+                            - text: Enter the registry username or the access key if using
+                            - code [ref=e541]: OCI ECR
+                            - text: .
+                        - row "Registry Password or Registry Secret Key Enter the registry password or the secret key if using OCI ECR." [ref=e542]:
+                          - cell "Registry Password or Registry Secret Key" [ref=e543]:
+                            - strong [ref=e544]: Registry Password
+                            - text: or
+                            - strong [ref=e545]: Registry Secret Key
+                          - cell "Enter the registry password or the secret key if using OCI ECR." [ref=e546]:
+                            - text: Enter the registry password or the secret key if using
+                            - code [ref=e547]: OCI ECR
+                            - text: .
+                        - row "Registry Region Enter the registry region. This option is only available if you are using OCI ECR." [ref=e548]:
+                          - cell "Registry Region" [ref=e549]:
+                            - strong [ref=e550]: Registry Region
+                          - cell "Enter the registry region. This option is only available if you are using OCI ECR." [ref=e551]:
+                            - text: Enter the registry region. This option is only available if you are using
+                            - code [ref=e552]: OCI ECR
+                            - text: .
+                        - row "ECR Registry Private Type y if the registry is private. Otherwise, type n." [ref=e553]:
+                          - cell "ECR Registry Private" [ref=e554]:
+                            - strong [ref=e555]: ECR Registry Private
+                          - cell "Type y if the registry is private. Otherwise, type n." [ref=e556]:
+                            - text: Type
+                            - code [ref=e557]: "y"
+                            - text: if the registry is private. Otherwise, type
+                            - code [ref=e558]: "n"
+                            - text: .
+                        - row "Use Public Registry for Images Airgap users, select n so that you can specify the values for the OCI registry that contains all the required images." [ref=e559]:
+                          - cell "Use Public Registry for Images" [ref=e560]:
+                            - strong [ref=e561]: Use Public Registry for Images
+                          - cell "Airgap users, select n so that you can specify the values for the OCI registry that contains all the required images." [ref=e562]:
+                            - text: Airgap users, select
+                            - code [ref=e563]: "n"
+                            - text: so that you can specify the values for the OCI registry that contains all the required images.
+                    - paragraph [ref=e564]:
+                      - text: When prompted to
+                      - strong [ref=e565]: Pull images from public registry
+                      - text: ", type"
+                      - code [ref=e566]: "n"
+                      - text: and specify the OCI registry configuration values for your image registry. If you are on an airgap support VM, the CLI will automatically detect the airgap environment and prompt you to
+                      - strong [ref=e567]: Use local, air-gapped Image Registry?
+                      - text: Type
+                      - code [ref=e568]: "y"
+                      - text: to use the local resources and skip filling in the OCI registry URL and credentials. Refer to the table above for more information.
+                  - listitem [ref=e569]:
+                    - paragraph [ref=e570]:
+                      - text: When prompted to
+                      - strong [ref=e571]: Pull images from public registry
+                      - text: ", type"
+                      - code [ref=e572]: "n"
+                      - text: .
+                  - listitem [ref=e573]:
+                    - paragraph [ref=e574]:
+                      - text: For the
+                      - strong [ref=e575]: Use the same OCI Registry for packs & images?
+                      - text: prompt, type
+                      - code [ref=e576]: "n"
+                      - text: .
+                  - listitem [ref=e577]:
+                    - paragraph [ref=e578]:
+                      - text: For the
+                      - strong [ref=e579]: Use local, air-gapped Image Registry?
+                      - text: prompt, type
+                      - code [ref=e580]: "y"
+                    - generic [ref=e581]:
+                      - generic [ref=e582]:
+                        - img [ref=e584]
+                        - text: info
+                      - paragraph [ref=e587]:
+                        - text: You will be provided with an opportunity to update the mirror registries values. To exit
+                        - code [ref=e588]: vi
+                        - text: press the
+                        - code [ref=e589]: Escape
+                        - text: key and type
+                        - code [ref=e590]: :wq
+                        - text: to save and exit.
+                  - listitem [ref=e591]:
+                    - paragraph [ref=e592]: The next set of prompts asks for the VMware vSphere account information. Enter the information listed in the table below.
+                    - heading "VMware vSphere Account InformationDirect link to VMware vSphere Account Information" [level=4] [ref=e593]:
+                      - text: VMware vSphere Account Information
+                      - link "Direct link to VMware vSphere Account Information" [ref=e594] [cursor=pointer]:
+                        - /url: "#vmware-vsphere-account-information"
+                        - text: "#"
+                    - table [ref=e595]:
+                      - rowgroup [ref=e596]:
+                        - row "Parameter Description" [ref=e597]:
+                          - cell "Parameter" [ref=e598]:
+                            - strong [ref=e599]: Parameter
+                          - cell "Description" [ref=e600]:
+                            - strong [ref=e601]: Description
+                      - rowgroup [ref=e602]:
+                        - 'row "vSphere Endpoint VMware vSphere endpoint. Must be a fully qualified domain name (FQDN) or IP address without a scheme - that is, without an IP protocol, such as https://. Example: vcenter.mycompany.com." [ref=e603]':
+                          - cell "vSphere Endpoint" [ref=e604]:
+                            - strong [ref=e605]: vSphere Endpoint
+                          - 'cell "VMware vSphere endpoint. Must be a fully qualified domain name (FQDN) or IP address without a scheme - that is, without an IP protocol, such as https://. Example: vcenter.mycompany.com." [ref=e606]':
+                            - text: VMware vSphere endpoint. Must be a fully qualified domain name (FQDN) or IP address without a scheme - that is, without an IP protocol, such as
+                            - code [ref=e607]: https://
+                            - text: ". Example:"
+                            - code [ref=e608]: vcenter.mycompany.com
+                            - text: .
+                        - row "vSphere Username VMware vSphere account username." [ref=e609]:
+                          - cell "vSphere Username" [ref=e610]:
+                            - strong [ref=e611]: vSphere Username
+                          - cell "VMware vSphere account username." [ref=e612]
+                        - row "vSphere Password VMware vSphere account password." [ref=e613]:
+                          - cell "vSphere Password" [ref=e614]:
+                            - strong [ref=e615]: vSphere Password
+                          - cell "VMware vSphere account password." [ref=e616]
+                        - row "Allow Insecure Connection Bypasses x509 verification. Type Y if using a VMware vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, type n." [ref=e617]:
+                          - cell "Allow Insecure Connection" [ref=e618]:
+                            - strong [ref=e619]: Allow Insecure Connection
+                          - cell "Bypasses x509 verification. Type Y if using a VMware vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, type n." [ref=e620]:
+                            - text: Bypasses x509 verification. Type
+                            - code [ref=e621]: "Y"
+                            - text: if using a VMware vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, type
+                            - code [ref=e622]: "n"
+                            - text: .
+                    - heading "VMware vSphere Cluster ConfigurationDirect link to VMware vSphere Cluster Configuration" [level=4] [ref=e623]:
+                      - text: VMware vSphere Cluster Configuration
+                      - link "Direct link to VMware vSphere Cluster Configuration" [ref=e624] [cursor=pointer]:
+                        - /url: "#vmware-vsphere-cluster-configuration"
+                        - text: "#"
+                    - paragraph [ref=e625]: This information determines where Palette will be deployed in your VMware vSphere environment. The Palette CLI will use the provided VMware credentials to retrieve information from your VMware vSphere environment and present options for you to select from.
+                    - table [ref=e626]:
+                      - rowgroup [ref=e627]:
+                        - row "Parameter Description" [ref=e628]:
+                          - cell "Parameter" [ref=e629]:
+                            - strong [ref=e630]: Parameter
+                          - cell "Description" [ref=e631]:
+                            - strong [ref=e632]: Description
+                      - rowgroup [ref=e633]:
+                        - row "Datacenter The installer retrieves the data center automatically." [ref=e634]:
+                          - cell "Datacenter" [ref=e635]:
+                            - strong [ref=e636]: Datacenter
+                          - cell "The installer retrieves the data center automatically." [ref=e637]
+                        - row "Folder Select the folder that contains the VM instance." [ref=e638]:
+                          - cell "Folder" [ref=e639]:
+                            - strong [ref=e640]: Folder
+                          - cell "Select the folder that contains the VM instance." [ref=e641]
+                        - row "Image Template Folder Select the folder that contains the CAPI image templates." [ref=e642]:
+                          - cell "Image Template Folder" [ref=e643]:
+                            - strong [ref=e644]: Image Template Folder
+                          - cell "Select the folder that contains the CAPI image templates." [ref=e645]
+                        - row "Cluster Select the cluster where you want to deploy Palette." [ref=e646]:
+                          - cell "Cluster" [ref=e647]:
+                            - strong [ref=e648]: Cluster
+                          - cell "Select the cluster where you want to deploy Palette." [ref=e649]
+                        - row "Network Select the network where you want to deploy Palette." [ref=e650]:
+                          - cell "Network" [ref=e651]:
+                            - strong [ref=e652]: Network
+                          - cell "Select the network where you want to deploy Palette." [ref=e653]
+                        - row "Resource Pool Select the resource pool where you want to deploy Palette." [ref=e654]:
+                          - cell "Resource Pool" [ref=e655]:
+                            - strong [ref=e656]: Resource Pool
+                          - cell "Select the resource pool where you want to deploy Palette." [ref=e657]
+                        - row "Datastore Select the datastore where you want to deploy Palette." [ref=e658]:
+                          - cell "Datastore" [ref=e659]:
+                            - strong [ref=e660]: Datastore
+                          - cell "Select the datastore where you want to deploy Palette." [ref=e661]
+                        - 'row "Fault Domains Configure one or more fault domains by selecting values for these properties: Cluster, Network (with network connectivity), Resource Pool, and Storage Type (Datastore or VM Storage Policy). Note that when configuring the Network, if you are using a distributed switch, choose the network that contains the switch." [ref=e662]':
+                          - cell "Fault Domains" [ref=e663]:
+                            - strong [ref=e664]: Fault Domains
+                          - 'cell "Configure one or more fault domains by selecting values for these properties: Cluster, Network (with network connectivity), Resource Pool, and Storage Type (Datastore or VM Storage Policy). Note that when configuring the Network, if you are using a distributed switch, choose the network that contains the switch." [ref=e665]'
+                        - row "NTP Servers You can provide a list of Network Time Protocol (NTP) servers." [ref=e666]:
+                          - cell "NTP Servers" [ref=e667]:
+                            - strong [ref=e668]: NTP Servers
+                          - cell "You can provide a list of Network Time Protocol (NTP) servers." [ref=e669]
+                        - row "SSH Public Keys Provide any public SSH keys to access your Palette VMs. This option opens up your system's default text editor. Vi is the default text editor for most Linux distributions. To review basic vi commands, check out the vi Commands reference." [ref=e670]:
+                          - cell "SSH Public Keys" [ref=e671]:
+                            - strong [ref=e672]: SSH Public Keys
+                          - cell "Provide any public SSH keys to access your Palette VMs. This option opens up your system's default text editor. Vi is the default text editor for most Linux distributions. To review basic vi commands, check out the vi Commands reference." [ref=e673]:
+                            - text: Provide any public SSH keys to access your Palette VMs. This option opens up your system's default text editor. Vi is the default text editor for most Linux distributions. To review basic vi commands, check out the
+                            - link "vi Commands" [ref=e674] [cursor=pointer]:
+                              - /url: https://www.cs.colostate.edu/helpdocs/vi.html
+                            - text: reference.
+                  - listitem [ref=e675]:
+                    - paragraph [ref=e676]: Specify the IP pool configuration. The placement type can be Static or Dynamic Host Configuration Protocol (DHCP). Choosing static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DHCP assigns IP addresses using DNS.
+                    - heading "Static Placement ConfigurationDirect link to Static Placement Configuration" [level=4] [ref=e677]:
+                      - text: Static Placement Configuration
+                      - link "Direct link to Static Placement Configuration" [ref=e678] [cursor=pointer]:
+                        - /url: "#static-placement-configuration"
+                        - text: "#"
+                    - table [ref=e679]:
+                      - rowgroup [ref=e680]:
+                        - row "Parameter Description" [ref=e681]:
+                          - cell "Parameter" [ref=e682]:
+                            - strong [ref=e683]: Parameter
+                          - cell "Description" [ref=e684]:
+                            - strong [ref=e685]: Description
+                      - rowgroup [ref=e686]:
+                        - row "IP Start range Enter the first address in the EC IP pool range." [ref=e687]:
+                          - cell "IP Start range" [ref=e688]:
+                            - strong [ref=e689]: IP Start range
+                          - cell "Enter the first address in the EC IP pool range." [ref=e690]
+                        - row "IP End range Enter the last address in the EC IP pool range." [ref=e691]:
+                          - cell "IP End range" [ref=e692]:
+                            - strong [ref=e693]: IP End range
+                          - cell "Enter the last address in the EC IP pool range." [ref=e694]
+                        - 'row "Network Prefix Enter the network prefix for the IP pool range. Valid values are in [0, 32]. Example: 18." [ref=e695]':
+                          - cell "Network Prefix" [ref=e696]:
+                            - strong [ref=e697]: Network Prefix
+                          - 'cell "Enter the network prefix for the IP pool range. Valid values are in [0, 32]. Example: 18." [ref=e698]':
+                            - text: "Enter the network prefix for the IP pool range. Valid values are in [0, 32]. Example:"
+                            - code [ref=e699]: "18"
+                            - text: .
+                        - row "Gateway IP Address Enter the IP address of the static IP gateway." [ref=e700]:
+                          - cell "Gateway IP Address" [ref=e701]:
+                            - strong [ref=e702]: Gateway IP Address
+                          - cell "Enter the IP address of the static IP gateway." [ref=e703]
+                        - row "Name servers Comma-separated list of DNS name server IP addresses." [ref=e704]:
+                          - cell "Name servers" [ref=e705]:
+                            - strong [ref=e706]: Name servers
+                          - cell "Comma-separated list of DNS name server IP addresses." [ref=e707]
+                        - row "Name server search suffixes An optional comma-separated list of DNS search domains." [ref=e708]:
+                          - cell "Name server search suffixes" [ref=e709]:
+                            - strong [ref=e710]: Name server search suffixes
+                          - cell "An optional comma-separated list of DNS search domains." [ref=e711]
+                  - listitem [ref=e712]:
+                    - paragraph [ref=e713]: The last set of prompts are for the vSphere machine and database configuration. Use the following table for guidance.
+                    - heading "vSphere Machine ConfigurationDirect link to vSphere Machine Configuration" [level=4] [ref=e714]:
+                      - text: vSphere Machine Configuration
+                      - link "Direct link to vSphere Machine Configuration" [ref=e715] [cursor=pointer]:
+                        - /url: "#vsphere-machine-configuration"
+                        - text: "#"
+                    - table [ref=e716]:
+                      - rowgroup [ref=e717]:
+                        - row "Parameter Description" [ref=e718]:
+                          - cell "Parameter" [ref=e719]:
+                            - strong [ref=e720]: Parameter
+                          - cell "Description" [ref=e721]:
+                            - strong [ref=e722]: Description
+                      - rowgroup [ref=e723]:
+                        - row "Small Deploy VM nodes with 8 CPU, 16 GB memory, 60 GB storage. The database specs are 20 GB database with 2 CPU limit and 4 GB memory limit." [ref=e724]:
+                          - cell "Small" [ref=e725]:
+                            - strong [ref=e726]: Small
+                          - cell "Deploy VM nodes with 8 CPU, 16 GB memory, 60 GB storage. The database specs are 20 GB database with 2 CPU limit and 4 GB memory limit." [ref=e727]
+                        - row "Medium Deploy VM nodes with 16 CPU, 32 GB memory, 100 GB storage. The database specs are 60 GB database with a 4 CPU limit and 8 GB memory limit." [ref=e728]:
+                          - cell "Medium" [ref=e729]:
+                            - strong [ref=e730]: Medium
+                          - cell "Deploy VM nodes with 16 CPU, 32 GB memory, 100 GB storage. The database specs are 60 GB database with a 4 CPU limit and 8 GB memory limit." [ref=e731]
+                        - row "Large Deploy VM nodes with 32 CPU, 64 GB memory, 120 GB storage. The database specs are 80 GB database with 8 CPU limit and 16 GB memory limit." [ref=e732]:
+                          - cell "Large" [ref=e733]:
+                            - strong [ref=e734]: Large
+                          - cell "Deploy VM nodes with 32 CPU, 64 GB memory, 120 GB storage. The database specs are 80 GB database with 8 CPU limit and 16 GB memory limit." [ref=e735]
+                        - row "Custom Deploy VM nodes with custom CPU, memory, storage, database size, CPU limit, and memory limit. If you specify custom, you will be prompted for the CPU, memory, and storage." [ref=e736]:
+                          - cell "Custom" [ref=e737]:
+                            - strong [ref=e738]: Custom
+                          - cell "Deploy VM nodes with custom CPU, memory, storage, database size, CPU limit, and memory limit. If you specify custom, you will be prompted for the CPU, memory, and storage." [ref=e739]
+                  - listitem [ref=e740]:
+                    - paragraph [ref=e741]:
+                      - text: The last prompt is for node affinity. Enter
+                      - code [ref=e742]: "y"
+                      - text: to schedule all Palette pods on control plane nodes.
+                    - heading "Additional vSphere Machine ConfigurationDirect link to Additional vSphere Machine Configuration" [level=4] [ref=e743]:
+                      - text: Additional vSphere Machine Configuration
+                      - link "Direct link to Additional vSphere Machine Configuration" [ref=e744] [cursor=pointer]:
+                        - /url: "#additional-vsphere-machine-configuration"
+                        - text: "#"
+                    - table [ref=e745]:
+                      - rowgroup [ref=e746]:
+                        - row "Parameter Description" [ref=e747]:
+                          - cell "Parameter" [ref=e748]:
+                            - strong [ref=e749]: Parameter
+                          - cell "Description" [ref=e750]:
+                            - strong [ref=e751]: Description
+                      - rowgroup [ref=e752]:
+                        - row "Node Affinity Select the node affinity. Enter y to schedule all Palette pods on control plane nodes." [ref=e753]:
+                          - cell "Node Affinity" [ref=e754]:
+                            - strong [ref=e755]: Node Affinity
+                          - cell "Select the node affinity. Enter y to schedule all Palette pods on control plane nodes." [ref=e756]:
+                            - text: Select the node affinity. Enter
+                            - code [ref=e757]: "y"
+                            - text: to schedule all Palette pods on control plane nodes.
+                    - paragraph [ref=e758]:
+                      - text: The installation process stands up a
+                      - link "kind" [ref=e759] [cursor=pointer]:
+                        - /url: https://kind.sigs.k8s.io/
+                      - text: cluster locally that will orchestrate the remainder of the installation. The installation takes some time to complete.
+                    - paragraph [ref=e760]:
+                      - text: The Palette CLI creates a file named
+                      - code [ref=e761]: ec.yaml
+                      - text: that contains the information you provided the wizard, and its location is displayed in the terminal. Credentials and tokens are encrypted in the YAML file.
+                    - code [ref=e765]:
+                      - generic [ref=e766]: ==== Enterprise Cluster config saved ====
+                      - generic [ref=e767]: "Location: :/home/spectro/.palette/ec/ec-20230706150945/ec.yaml"
+                    - generic [ref=e768]:
+                      - generic [ref=e769]:
+                        - img [ref=e771]
+                        - text: tip
+                      - generic [ref=e773]:
+                        - paragraph [ref=e774]:
+                          - text: If an error occurs during the installation, remove the
+                          - code [ref=e775]: kind
+                          - text: cluster that was created and restart the process. To remove the
+                          - code [ref=e776]: kind
+                          - text: cluster, install
+                          - link "kind" [ref=e777] [cursor=pointer]:
+                            - /url: https://kind.sigs.k8s.io/docs/user/quick-start/#installation
+                          - text: and issue the following command. Replace
+                          - code [ref=e778]: spectro-mgmt-cluster
+                          - text: with the name of your cluster if you used a different name.
+                        - generic [ref=e780]:
+                          - code [ref=e782]:
+                            - generic [ref=e783]: kind delete clusters spectro-mgmt-cluster
+                          - button "Copy code to clipboard" [ref=e785] [cursor=pointer]:
+                            - generic [ref=e786]:
+                              - img [ref=e787]
+                              - img [ref=e789]
+                        - paragraph [ref=e791]:
+                          - text: Restart the install process by referencing the
+                          - code [ref=e792]: ec.yaml
+                          - text: "file that was created during the first installation attempt. For example:"
+                        - generic [ref=e794]:
+                          - code [ref=e796]:
+                            - generic [ref=e797]: palette ec install --config-file /home/spectro/.palette/ec/ec-20230706150945/ec.yaml
+                          - generic [ref=e798]:
+                            - button "Toggle word wrap" [ref=e799] [cursor=pointer]:
+                              - img [ref=e800]
+                            - button "Copy code to clipboard" [ref=e802] [cursor=pointer]:
+                              - generic [ref=e803]:
+                                - img [ref=e804]
+                                - img [ref=e806]
+                    - paragraph [ref=e808]: When the installation is complete, Enterprise Cluster Details that include a URL and default credentials are displayed in the terminal. You will use these to access the Palette system console.
+                    - generic [ref=e810]:
+                      - code [ref=e812]:
+                        - generic [ref=e813]: ===========================================
+                        - generic [ref=e814]: ==== Enterprise Cluster System Console ====
+                        - generic [ref=e815]: ===========================================
+                        - generic [ref=e816]: "Console URL: https://10.10.100.0/system"
+                        - generic [ref=e817]: "Username: ************"
+                        - generic [ref=e818]: "Password: ************"
+                        - generic [ref=e819]: The first of three Enterprise Cluster nodes is online and will now provision nodes two and three.
+                        - generic [ref=e820]: It will take another ~30-45 minutes for the installation to complete.
+                        - generic [ref=e821]: You can monitor its progress via kubectl/k9s or by viewing the System Console.
+                        - generic [ref=e822]: export KUBECONFIG=/ubuntu/.palette/ec/ec-20231012215923/spectro_mgmt.conf
+                      - button "Toggle word wrap" [ref=e824] [cursor=pointer]:
+                        - img [ref=e825]
+                  - listitem [ref=e827]:
+                    - paragraph [ref=e828]:
+                      - text: To avoid potential vulnerabilities, once the installation is complete, remove the
+                      - code [ref=e829]: kind
+                      - text: images that were installed in the environment where you initiated the installation.
+                    - paragraph [ref=e830]:
+                      - text: Issue the following command to list all instances of
+                      - code [ref=e831]: kind
+                      - text: that exist in the environment.
+                    - generic [ref=e833]:
+                      - code [ref=e835]:
+                        - generic [ref=e836]: docker images
+                      - button "Copy code to clipboard" [ref=e838] [cursor=pointer]:
+                        - generic [ref=e839]:
+                          - img [ref=e840]
+                          - img [ref=e842]
+                    - generic [ref=e845]:
+                      - code [ref=e847]:
+                        - generic [ref=e848]: REPOSITORY TAG IMAGE ID CREATED SIZE
+                        - generic [ref=e849]: kindest/node v1.26.13 131ad18222cc 5 months ago 910MB
+                      - button "Copy code to clipboard" [ref=e851] [cursor=pointer]:
+                        - generic [ref=e852]:
+                          - img [ref=e853]
+                          - img [ref=e855]
+                    - paragraph [ref=e857]:
+                      - text: Then, use the following command template to remove all instances of
+                      - code [ref=e858]: kind
+                      - text: .
+                    - generic [ref=e860]:
+                      - code [ref=e862]:
+                        - generic [ref=e863]: docker image rm kindest/node:<version>
+                      - button "Copy code to clipboard" [ref=e865] [cursor=pointer]:
+                        - generic [ref=e866]:
+                          - img [ref=e867]
+                          - img [ref=e869]
+                    - paragraph [ref=e871]: Consider the following example for reference.
+                    - generic [ref=e873]:
+                      - code [ref=e875]:
+                        - generic [ref=e876]: docker image rm kindest/node:v1.26.13
+                      - button "Copy code to clipboard" [ref=e878] [cursor=pointer]:
+                        - generic [ref=e879]:
+                          - img [ref=e880]
+                          - img [ref=e882]
+                    - generic [ref=e885]:
+                      - code [ref=e887]:
+                        - generic [ref=e888]: "Untagged: kindest/node:v1.26.13"
+                        - generic [ref=e889]: "Untagged: kindest/node@sha256:15ae92d507b7d4aec6e8920d358fc63d3b980493db191d7327541fbaaed1f789"
+                        - generic [ref=e890]: "Deleted: sha256:131ad18222ccb05561b73e86bb09ac3cd6475bb6c36a7f14501067cba2eec785"
+                        - generic [ref=e891]: "Deleted: sha256:85a1a4dfc468cfeca99e359b74231e47aedb007a206d0e2cae2f8290e7290cfd"
+                      - generic [ref=e892]:
+                        - button "Toggle word wrap" [ref=e893] [cursor=pointer]:
+                          - img [ref=e894]
+                        - button "Copy code to clipboard" [ref=e896] [cursor=pointer]:
+                          - generic [ref=e897]:
+                            - img [ref=e898]
+                            - img [ref=e900]
+                  - listitem [ref=e902]:
+                    - paragraph [ref=e903]:
+                      - text: Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login, you will be prompted to create a new password. Enter a new password and save your changes. Refer to the
+                      - link "password requirements" [ref=e904] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/account-management/credentials/#password-requirements-and-security
+                      - text: documentation page to learn more about the password requirements.
+                    - paragraph [ref=e905]:
+                      - text: Use the username
+                      - code [ref=e906]: admin
+                      - text: and your new password to log in to the system console. You can create additional system administrator accounts and assign roles to users in the system console. Refer to the
+                      - link "Account Management" [ref=e907] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/account-management/
+                      - text: documentation page for more information.
+                    - generic [ref=e908]:
+                      - generic [ref=e909]:
+                        - img [ref=e911]
+                        - text: info
+                      - paragraph [ref=e914]: The first time you visit the Palette system console, a warning message about an untrusted SSL certificate may appear. This is expected, as you have not yet uploaded your SSL certificate to Palette. You can ignore this warning message and proceed.
+                    - paragraph [ref=e915]:
+                      - img "Screenshot of the Palette system console showing Username and Password fields." [ref=e916]
+                  - listitem [ref=e917]:
+                    - paragraph [ref=e918]: Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette system console.
+                  - listitem [ref=e919]:
+                    - paragraph [ref=e920]:
+                      - text: After login, a Summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette. You can upload the files using the Palette system console. Refer to the
+                      - link "Configure HTTPS Encryption" [ref=e921] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/ssl-certificate-management/
+                      - text: page for instructions on how to upload the SSL certificate files to Palette.
+                  - listitem [ref=e922]:
+                    - paragraph [ref=e923]:
+                      - text: The last step is to start setting up a tenant. To learn how to create a tenant, check out the
+                      - link "Tenant Management" [ref=e924] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/tenant-management/
+                      - text: guide.
+                    - paragraph [ref=e925]:
+                      - img "Screenshot of the Summary page showing where to click Go to Tenant Management button." [ref=e926]
+                    - generic [ref=e927]:
+                      - generic [ref=e928]:
+                        - img [ref=e930]
+                        - text: warning
+                      - paragraph [ref=e933]:
+                        - text: If Palette has only one tenant and you use local accounts with Single Sign-On (SSO) disabled, you can access Palette using the IP address or any domain name that resolves to that IP. However, once you enable SSO, users must log in using the tenant-specific subdomain. For example, if you create a tenant named
+                        - code [ref=e934]: tenant1
+                        - text: and the domain name you assigned to Palette is
+                        - code [ref=e935]: palette.example.com
+                        - text: ", the tenant URL will be"
+                        - code [ref=e936]: tenant1.palette.example.com
+                        - text: . We recommend you create an additional wildcard DNS record to map all tenant URLs to the Palette load balancer. For example,
+                        - code [ref=e937]: "*.palette.example.com"
+                        - text: .
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e938]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e939] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e940]:
+                  - text: You can verify the installation is successful if you can access the system console using the IP address provided in Enterprise Cluster Details and if the Summary page displays the
+                  - strong [ref=e941]: Go to Tenant Management
+                  - text: button.
+                - paragraph [ref=e942]: You can also validate that a three-node Kubernetes cluster is launched and Palette is deployed on it.
+                - list [ref=e943]:
+                  - listitem [ref=e944]:
+                    - paragraph [ref=e945]: Log in to the vCenter Server by using vSphere Client.
+                  - listitem [ref=e946]:
+                    - paragraph [ref=e947]:
+                      - text: Navigate to your vSphere data center and locate your Palette VM instances. The VMs are prefixed with the name you provided during the installation. For example, if you provided
+                      - code [ref=e948]: spectro-mgmt-cluster
+                      - text: as the name, the VMs are named
+                      - code [ref=e949]: spectro-mgmt-cluster-
+                      - text: ", followed by a unique set of alphanumeric values. Verify three nodes are available."
+                  - listitem [ref=e950]:
+                    - paragraph [ref=e951]:
+                      - text: Open a web browser session, and use the IP address provided in Enterprise Cluster Details at the completion of the installation to connect to the Palette system console. Copy the IP address to the address bar and append
+                      - code [ref=e952]: /system
+                      - text: .
+                  - listitem [ref=e953]:
+                    - paragraph [ref=e954]: Log in using your credentials.
+                  - listitem [ref=e955]:
+                    - paragraph [ref=e956]:
+                      - text: A
+                      - strong [ref=e957]: Summary
+                      - text: page will be displayed that contains a tile with a
+                      - strong [ref=e958]: Go to Tenant Management
+                      - text: button. After initial installation, the
+                      - strong [ref=e959]: Summary
+                      - text: page shows there are zero tenants.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e960]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e961] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e962]:
+                  - text: Now that you have installed Palette, you can either
+                  - link "create a tenant" [ref=e963] [cursor=pointer]:
+                    - /url: /enterprise-version/system-management/tenant-management
+                  - text: to host your users and set up your clusters, or you can
+                  - link "activate your installation" [ref=e964] [cursor=pointer]:
+                    - /url: /enterprise-version/activate-installation
+                  - text: .
+                - paragraph [ref=e965]: Beginning with version 4.6.32, once you install Palette, you have 30 days to activate it; versions older than 4.6.32 do not need to be activated. During the 30-day trial period, you can use Palette without any restrictions. After 30 days, you can continue to use Palette, but you cannot deploy additional clusters or perform any day-2 operations on existing clusters until Palette is activated. Each installation of Palette must be activated separately. We recommend activating Palette as soon as possible to avoid any disruptions.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e966]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e967] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e968]:
+                  - listitem [ref=e969]:
+                    - paragraph [ref=e970]:
+                      - link "Palette CLI" [ref=e971] [cursor=pointer]:
+                        - /url: /automation/palette-cli/install-palette-cli/#download-and-setup
+                  - listitem [ref=e972]:
+                    - paragraph [ref=e973]:
+                      - link "VMware System Requirements" [ref=e974] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/install-on-vmware/vmware-system-requirements/
+                  - listitem [ref=e975]:
+                    - paragraph [ref=e976]:
+                      - link "System Management" [ref=e977] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/
+                  - listitem [ref=e978]:
+                    - paragraph [ref=e979]:
+                      - link "Enterprise Install Troubleshooting" [ref=e980] [cursor=pointer]:
+                        - /url: /troubleshooting/enterprise-install/
+              - generic [ref=e981]:
+                - generic [ref=e983]:
+                  - text: "Tags:"
+                  - list [ref=e984]:
+                    - listitem [ref=e985]:
+                      - link "palette" [ref=e986] [cursor=pointer]:
+                        - /url: /tags/palette/
+                    - listitem [ref=e987]:
+                      - link "self-hosted" [ref=e988] [cursor=pointer]:
+                        - /url: /tags/self-hosted/
+                    - listitem [ref=e989]:
+                      - link "vmware" [ref=e990] [cursor=pointer]:
+                        - /url: /tags/vmware/
+                - link "Edit this page" [ref=e993] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/enterprise-version/install-palette/install-on-vmware/airgap-install/install.md
+                  - img [ref=e994]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e998]:
+              - link "Previous « Environment Setup with RHEL" [ref=e999] [cursor=pointer]:
+                - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/env-setup-vm/
+                - generic [ref=e1000]: Previous
+                - generic [ref=e1001]: « Environment Setup with RHEL
+              - link "Next Airgap Resources »" [ref=e1002] [cursor=pointer]:
+                - /url: /enterprise-version/install-palette/airgap/
+                - generic [ref=e1003]: Next
+                - generic [ref=e1004]: Airgap Resources »
+          - list [ref=e1007]:
+            - listitem [ref=e1008]:
+              - link "Prerequisites" [ref=e1009] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e1010]:
+              - link "Deployment" [ref=e1011] [cursor=pointer]:
+                - /url: "#deployment"
+            - listitem [ref=e1012]:
+              - link "Validate" [ref=e1013] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e1014]:
+              - link "Next Steps" [ref=e1015] [cursor=pointer]:
+                - /url: "#next-steps"
+            - listitem [ref=e1016]:
+              - link "Resources" [ref=e1017] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e1018] [cursor=pointer]:
+    - generic [ref=e1021]:
+      - img "Project Logo" [ref=e1022]
+      - paragraph [ref=e1023]: Ask AI
+```

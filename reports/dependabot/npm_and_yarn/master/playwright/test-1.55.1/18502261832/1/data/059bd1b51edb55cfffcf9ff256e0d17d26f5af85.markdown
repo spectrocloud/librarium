@@ -1,0 +1,663 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [expanded] [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+                - list [ref=e120]:
+                  - listitem [ref=e121]:
+                    - link "Architecture" [ref=e122] [cursor=pointer]:
+                      - /url: /vm-management/architecture/
+                  - listitem [ref=e123]:
+                    - link "Environment Setup" [ref=e124] [cursor=pointer]:
+                      - /url: /vm-management/environment-setup/
+                  - listitem [ref=e125]:
+                    - link "Install VMO in Airgap Environments" [ref=e126] [cursor=pointer]:
+                      - /url: /vm-management/install-vmo-in-airgap/
+                  - listitem [ref=e127]:
+                    - link "Create a VMO Profile" [ref=e128] [cursor=pointer]:
+                      - /url: /vm-management/create-vmo-profile/
+                  - listitem [ref=e129]:
+                    - link "Configure Private CA Certificate" [ref=e130] [cursor=pointer]:
+                      - /url: /vm-management/configure-private-ca-certificate/
+                  - listitem [ref=e131]:
+                    - link "Configure Direct Access to VM Dashboard" [ref=e132] [cursor=pointer]:
+                      - /url: /vm-management/configure-console-base-address/
+                  - listitem [ref=e133]:
+                    - generic [ref=e134]:
+                      - link "RBAC" [ref=e135] [cursor=pointer]:
+                        - /url: /vm-management/rbac/
+                      - button "Toggle the collapsible sidebar category 'RBAC'" [ref=e136] [cursor=pointer]
+                  - listitem [ref=e137]:
+                    - generic [ref=e138]:
+                      - link "Create and Manage VMs" [ref=e139] [cursor=pointer]:
+                        - /url: /vm-management/create-manage-vm/
+                      - button "Toggle the collapsible sidebar category 'Create and Manage VMs'" [ref=e140] [cursor=pointer]
+                  - listitem [ref=e141]:
+                    - generic [ref=e142]:
+                      - link "VM Migration Assistant" [expanded] [ref=e143] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/
+                      - button "Toggle the collapsible sidebar category 'VM Migration Assistant'" [ref=e144] [cursor=pointer]
+                    - list [ref=e145]:
+                      - listitem [ref=e146]:
+                        - link "Create a VM Migration Assistant Profile" [ref=e147] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/create-vm-migration-assistant-profile/
+                      - listitem [ref=e148]:
+                        - link "Create Source Providers" [ref=e149] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/create-source-providers/
+                      - listitem [ref=e150]:
+                        - link "Create Migration Plans" [ref=e151] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/create-migration-plans/
+                      - listitem [ref=e152]:
+                        - link "Start Migration Plans" [ref=e153] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/start-migration-plans/
+                      - listitem [ref=e154]:
+                        - link "Cancel Active Migration Plans" [ref=e155] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/cancel-active-migration-plans/
+                      - listitem [ref=e156]:
+                        - link "Additional Configuration" [ref=e157] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/additional-configuration/
+              - listitem [ref=e158]:
+                - generic [ref=e159]:
+                  - link "Workspaces" [ref=e160] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e162]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e164] [cursor=pointer]
+              - listitem [ref=e165]:
+                - generic [ref=e166]:
+                  - link "Packs List" [ref=e167] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e169]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e171] [cursor=pointer]
+              - listitem [ref=e172]:
+                - generic [ref=e173]:
+                  - link "User & Role Management" [ref=e174] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e176]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e178] [cursor=pointer]
+              - listitem [ref=e179]:
+                - generic [ref=e180]:
+                  - link "Registries and Packs" [ref=e181] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e183]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e185] [cursor=pointer]
+              - listitem [ref=e186]:
+                - generic [ref=e187]:
+                  - link "Security" [ref=e188] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e190]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e192] [cursor=pointer]
+              - listitem [ref=e193]:
+                - generic [ref=e194]:
+                  - link "Audit Logs" [ref=e195] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e197]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e199] [cursor=pointer]
+              - listitem [ref=e200]:
+                - generic [ref=e201]:
+                  - link "Self-Hosted Palette" [ref=e202] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e204]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e206] [cursor=pointer]
+              - listitem [ref=e207]:
+                - generic [ref=e208]:
+                  - link "Palette VerteX" [ref=e209] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e211]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e213] [cursor=pointer]
+              - listitem [ref=e214]:
+                - generic [ref=e215]:
+                  - link "Tenant Administration" [ref=e216] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e218]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e220] [cursor=pointer]
+              - listitem [ref=e221]:
+                - generic [ref=e222]:
+                  - link "Automation" [ref=e223] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e225]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e227] [cursor=pointer]
+              - listitem [ref=e228]:
+                - generic [ref=e229]:
+                  - link "Troubleshooting" [ref=e230] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e232]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e234] [cursor=pointer]
+              - listitem [ref=e235]:
+                - link "Glossary" [ref=e236] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e238]
+                  - text: Glossary
+              - listitem [ref=e240]:
+                - generic [ref=e241]:
+                  - link "Compliance & Legal" [ref=e242] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e244]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e246] [cursor=pointer]
+              - listitem [ref=e247]:
+                - button "Privacy Settings" [ref=e248] [cursor=pointer]:
+                  - img [ref=e249]
+                  - text: Privacy Settings
+      - main [ref=e251]:
+        - generic [ref=e253]:
+          - generic [ref=e255]:
+            - article [ref=e256]:
+              - navigation "Breadcrumbs" [ref=e257]:
+                - list [ref=e258]:
+                  - listitem [ref=e259]:
+                    - link "Home page" [ref=e260] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e261]
+                  - listitem [ref=e263]:
+                    - link "Virtual Machine Orchestrator" [ref=e264] [cursor=pointer]:
+                      - /url: /vm-management/
+                  - listitem [ref=e265]:
+                    - link "VM Migration Assistant" [ref=e266] [cursor=pointer]:
+                      - /url: /vm-management/vm-migration-assistant/
+                  - listitem [ref=e267]:
+                    - generic [ref=e268]: Create a VM Migration Assistant Profile
+              - generic [ref=e269]:
+                - heading "Create a VM Migration Assistant Profile" [level=1] [ref=e271]
+                - paragraph [ref=e272]: Follow these steps to create a new add-on profile that will be applied to your existing VMO cluster.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e273]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e274] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e275]:
+                  - listitem [ref=e276]:
+                    - text: Your Palette account role must have the
+                    - code [ref=e277]: clusterProfile.create
+                    - text: permission to create a cluster profile. Refer to the
+                    - link "Permissions" [ref=e278] [cursor=pointer]:
+                      - /url: /user-management/palette-rbac/permissions/#operations
+                    - text: documentation for more information.
+                  - listitem [ref=e279]:
+                    - text: A healthy VMO cluster. Refer to the
+                    - link "Create a VMO Profile" [ref=e280] [cursor=pointer]:
+                      - /url: /vm-management/create-vmo-profile/
+                    - text: for further guidance.
+                    - list [ref=e281]:
+                      - listitem [ref=e282]: The VMO cluster must have network connectivity to vCenter and ESXi hosts, and the VMs you want to migrate.
+                - heading "Create the ProfileDirect link to Create the Profile" [level=2] [ref=e283]:
+                  - text: Create the Profile
+                  - link "Direct link to Create the Profile" [ref=e284] [cursor=pointer]:
+                    - /url: "#create-the-profile"
+                    - text: "#"
+                - list [ref=e285]:
+                  - listitem [ref=e286]:
+                    - paragraph [ref=e287]:
+                      - text: Log in to
+                      - link "Palette" [ref=e288] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e289]:
+                    - paragraph [ref=e290]:
+                      - text: From the left
+                      - strong [ref=e291]: Main Menu
+                      - text: click
+                      - strong [ref=e292]: Profiles
+                      - text: .
+                  - listitem [ref=e293]:
+                    - paragraph [ref=e294]:
+                      - text: Click on the
+                      - strong [ref=e295]: Add Cluster Profile
+                      - text: button.
+                  - listitem [ref=e296]:
+                    - paragraph [ref=e297]:
+                      - text: Fill out the basic information and ensure you select
+                      - strong [ref=e298]: Add-on
+                      - text: for the type. Click on
+                      - strong [ref=e299]: Next
+                      - text: to continue.
+                  - listitem [ref=e300]:
+                    - paragraph [ref=e301]:
+                      - text: Select
+                      - strong [ref=e302]: Add New Pack
+                      - text: . In the next window that displays, enter
+                      - strong [ref=e303]: Virtual Machine Migration Assistant
+                      - text: in the
+                      - strong [ref=e304]: Filter by name
+                      - text: search bar. The pack is in the
+                      - strong [ref=e305]: Palette Community Registry
+                      - text: . Select the pack when it appears.
+                  - listitem [ref=e306]:
+                    - paragraph [ref=e307]: Palette displays the YAML file in the editor on the right. You can edit the YAML as needed. Review the following service console parameters and adjust to your requirements as needed.
+                    - table [ref=e308]:
+                      - rowgroup [ref=e309]:
+                        - row "Parameter Description Default Value" [ref=e310]:
+                          - cell "Parameter" [ref=e311]:
+                            - strong [ref=e312]: Parameter
+                          - cell "Description" [ref=e313]:
+                            - strong [ref=e314]: Description
+                          - cell "Default Value" [ref=e315]:
+                            - strong [ref=e316]: Default Value
+                      - rowgroup [ref=e317]:
+                        - 'row "vm-migration-assistant-ui.console.service.type Choose how to expose the service console: NodePort / LoadBalancer / ClusterIP. Refer to Service type for guidance on Kubernetes service types. \"LoadBalancer\"" [ref=e318]':
+                          - cell "vm-migration-assistant-ui.console.service.type" [ref=e319]:
+                            - code [ref=e320]: vm-migration-assistant-ui.console.service.type
+                          - 'cell "Choose how to expose the service console: NodePort / LoadBalancer / ClusterIP. Refer to Service type for guidance on Kubernetes service types." [ref=e321]':
+                            - text: "Choose how to expose the service console:"
+                            - code [ref=e322]: NodePort
+                            - text: /
+                            - code [ref=e323]: LoadBalancer
+                            - text: /
+                            - code [ref=e324]: ClusterIP
+                            - text: . Refer to
+                            - link "Service type" [ref=e325] [cursor=pointer]:
+                              - /url: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
+                            - text: for guidance on Kubernetes service types.
+                          - cell "\"LoadBalancer\"" [ref=e326]:
+                            - code [ref=e327]: "\"LoadBalancer\""
+                        - row "vm-migration-assistant-ui.console.service.loadBalancerPort Choose the external port to expose the service console when LoadBalancer is selected. \"443\"" [ref=e328]:
+                          - cell "vm-migration-assistant-ui.console.service.loadBalancerPort" [ref=e329]:
+                            - code [ref=e330]: vm-migration-assistant-ui.console.service.loadBalancerPort
+                          - cell "Choose the external port to expose the service console when LoadBalancer is selected." [ref=e331]
+                          - cell "\"443\"" [ref=e332]:
+                            - code [ref=e333]: "\"443\""
+                        - row "vm-migration-assistant-ui.console.service.nodePort Choose the external port to expose the service console when nodePort is selected. \"30443\"" [ref=e334]:
+                          - cell "vm-migration-assistant-ui.console.service.nodePort" [ref=e335]:
+                            - code [ref=e336]: vm-migration-assistant-ui.console.service.nodePort
+                          - cell "Choose the external port to expose the service console when nodePort is selected." [ref=e337]:
+                            - text: Choose the external port to expose the service console when
+                            - code [ref=e338]: nodePort
+                            - text: is selected.
+                          - cell "\"30443\"" [ref=e339]:
+                            - code [ref=e340]: "\"30443\""
+                        - row "vm-migration-assistant-ui.console.deployment.env.userAuth If you want to enable OIDC for the service console, set the value to oidc. The OIDC configuration is inherited from your Kubernetes pack configuration, and the service console only supports OIDC when Palette is configured as the Identity Provider. Refer to SAML and OIDC SSO for details. disabled" [ref=e341]:
+                          - cell "vm-migration-assistant-ui.console.deployment.env.userAuth" [ref=e342]:
+                            - code [ref=e343]: vm-migration-assistant-ui.console.deployment.env.userAuth
+                          - cell "If you want to enable OIDC for the service console, set the value to oidc. The OIDC configuration is inherited from your Kubernetes pack configuration, and the service console only supports OIDC when Palette is configured as the Identity Provider. Refer to SAML and OIDC SSO for details." [ref=e344]:
+                            - text: If you want to enable OIDC for the service console, set the value to
+                            - code [ref=e345]: oidc
+                            - text: . The OIDC configuration is inherited from your Kubernetes pack configuration, and the service console only supports OIDC when
+                            - strong [ref=e346]: Palette
+                            - text: is configured as the Identity Provider. Refer to
+                            - link "SAML and OIDC SSO" [ref=e347] [cursor=pointer]:
+                              - /url: /user-management/saml-sso/
+                            - text: for details.
+                          - cell "disabled" [ref=e348]:
+                            - code [ref=e349]: disabled
+                        - row "vm-migration-assistant-ui.console.ingress.enabled Choose whether to enable Ingress access to the VM Migration Assistant service console. If enabled, the Ingress provides external connectivity to the service console. You can still access the service console through the cluster services list in Palette if vm-migration-assistant-ui.console.service.type is set to LoadBalancer or NodePort. false" [ref=e350]:
+                          - cell "vm-migration-assistant-ui.console.ingress.enabled" [ref=e351]:
+                            - code [ref=e352]: vm-migration-assistant-ui.console.ingress.enabled
+                          - cell "Choose whether to enable Ingress access to the VM Migration Assistant service console. If enabled, the Ingress provides external connectivity to the service console. You can still access the service console through the cluster services list in Palette if vm-migration-assistant-ui.console.service.type is set to LoadBalancer or NodePort." [ref=e353]:
+                            - text: Choose whether to enable
+                            - link "Ingress" [ref=e354] [cursor=pointer]:
+                              - /url: https://kubernetes.io/docs/concepts/services-networking/ingress/
+                            - text: access to the VM Migration Assistant service console. If enabled, the Ingress provides external connectivity to the service console. You can still access the service console through the cluster services list in Palette if
+                            - code [ref=e355]: vm-migration-assistant-ui.console.service.type
+                            - text: is set to
+                            - code [ref=e356]: LoadBalancer
+                            - text: or
+                            - code [ref=e357]: NodePort
+                            - text: .
+                          - cell "false" [ref=e358]:
+                            - code [ref=e359]: "false"
+                        - row "vm-migration-assistant-ui.console.ingress.host Specify the domain name that the Ingress resource will use to expose the VM Migration Assistant service console." [ref=e360]:
+                          - cell "vm-migration-assistant-ui.console.ingress.host" [ref=e361]:
+                            - code [ref=e362]: vm-migration-assistant-ui.console.ingress.host
+                          - cell "Specify the domain name that the Ingress resource will use to expose the VM Migration Assistant service console." [ref=e363]
+                          - cell [ref=e364]
+                        - row "vm-migration-assistant-ui.console.ingress.tls If providing your own TLS certificates, define the TLS configuration for the Ingress within this parameter. If you need to secure multiple domains or subdomains with different certificates, you can add multiple entries. Each array must contain the secretName, hosts, crt, and key parameters." [ref=e365]:
+                          - cell "vm-migration-assistant-ui.console.ingress.tls" [ref=e366]:
+                            - code [ref=e367]: vm-migration-assistant-ui.console.ingress.tls
+                          - cell "If providing your own TLS certificates, define the TLS configuration for the Ingress within this parameter. If you need to secure multiple domains or subdomains with different certificates, you can add multiple entries. Each array must contain the secretName, hosts, crt, and key parameters." [ref=e368]:
+                            - text: If providing your own TLS certificates, define the TLS configuration for the Ingress within this parameter. If you need to secure multiple domains or subdomains with different certificates, you can add multiple entries. Each array must contain the
+                            - code [ref=e369]: secretName
+                            - text: ","
+                            - code [ref=e370]: hosts
+                            - text: ","
+                            - code [ref=e371]: crt
+                            - text: ", and"
+                            - code [ref=e372]: key
+                            - text: parameters.
+                          - cell [ref=e373]
+                        - row "vm-migration-assistant-ui.console.ingress.tls.secretName The name for the Kubernetes Secret where the TLS certificate and key will be stored." [ref=e374]:
+                          - cell "vm-migration-assistant-ui.console.ingress.tls.secretName" [ref=e375]:
+                            - code [ref=e376]: vm-migration-assistant-ui.console.ingress.tls.secretName
+                          - cell "The name for the Kubernetes Secret where the TLS certificate and key will be stored." [ref=e377]
+                          - cell [ref=e378]
+                        - row "vm-migration-assistant-ui.console.ingress.tls.hosts One or more hostnames that the certificate should secure." [ref=e379]:
+                          - cell "vm-migration-assistant-ui.console.ingress.tls.hosts" [ref=e380]:
+                            - code [ref=e381]: vm-migration-assistant-ui.console.ingress.tls.hosts
+                          - cell "One or more hostnames that the certificate should secure." [ref=e382]
+                          - cell [ref=e383]
+                        - row "vm-migration-assistant-ui.console.ingress.tls.crt The CA-issued TLS certificate." [ref=e384]:
+                          - cell "vm-migration-assistant-ui.console.ingress.tls.crt" [ref=e385]:
+                            - code [ref=e386]: vm-migration-assistant-ui.console.ingress.tls.crt
+                          - cell "The CA-issued TLS certificate." [ref=e387]
+                          - cell [ref=e388]
+                        - row "vm-migration-assistant-ui.console.ingress.tls.key The private key corresponding to the certificate." [ref=e389]:
+                          - cell "vm-migration-assistant-ui.console.ingress.tls.key" [ref=e390]:
+                            - code [ref=e391]: vm-migration-assistant-ui.console.ingress.tls.key
+                          - cell "The private key corresponding to the certificate." [ref=e392]
+                          - cell [ref=e393]
+                        - row "vm-migration-assistant-ui.console.ingress.selfSignedIssuer.enabled When set to true, cert-manager will automatically issue a self-signed TLS certificate based on the ingress.tls.hosts and ingress.tls.secretName values. This allows you to omit the manual certificate and key parameters being ingress.tls.crt and ingress.tls.key respectively. false" [ref=e394]:
+                          - cell "vm-migration-assistant-ui.console.ingress.selfSignedIssuer.enabled" [ref=e395]:
+                            - code [ref=e396]: vm-migration-assistant-ui.console.ingress.selfSignedIssuer.enabled
+                          - cell "When set to true, cert-manager will automatically issue a self-signed TLS certificate based on the ingress.tls.hosts and ingress.tls.secretName values. This allows you to omit the manual certificate and key parameters being ingress.tls.crt and ingress.tls.key respectively." [ref=e397]:
+                            - text: When set to
+                            - code [ref=e398]: "true"
+                            - text: ","
+                            - link "cert-manager" [ref=e399] [cursor=pointer]:
+                              - /url: https://cert-manager.io/docs/usage/ingress/
+                            - text: will automatically issue a self-signed TLS certificate based on the
+                            - code [ref=e400]: ingress.tls.hosts
+                            - text: and
+                            - code [ref=e401]: ingress.tls.secretName
+                            - text: values. This allows you to omit the manual certificate and key parameters being
+                            - code [ref=e402]: ingress.tls.crt
+                            - text: and
+                            - code [ref=e403]: ingress.tls.key
+                            - text: respectively.
+                          - cell "false" [ref=e404]:
+                            - code [ref=e405]: "false"
+                  - listitem [ref=e406]:
+                    - paragraph [ref=e407]:
+                      - text: Click on
+                      - strong [ref=e408]: Confirm & Create
+                      - text: .
+                  - listitem [ref=e409]:
+                    - paragraph [ref=e410]:
+                      - text: In the following screen, click
+                      - strong [ref=e411]: Next
+                      - text: .
+                  - listitem [ref=e412]:
+                    - paragraph [ref=e413]:
+                      - text: Click
+                      - strong [ref=e414]: Finish Configuration
+                      - text: .
+                  - listitem [ref=e415]:
+                    - paragraph [ref=e416]:
+                      - text: From the
+                      - strong [ref=e417]: Main Menu
+                      - text: ", choose"
+                      - strong [ref=e418]: Clusters
+                      - text: and select your VMO cluster.
+                  - listitem [ref=e419]:
+                    - paragraph [ref=e420]:
+                      - text: In the
+                      - strong [ref=e421]: Profile
+                      - text: tab, click
+                      - strong [ref=e422]: Add add-on profile (+)
+                      - text: and select the newly created profile. Click
+                      - strong [ref=e423]: Confirm
+                      - text: .
+                  - listitem [ref=e424]:
+                    - paragraph [ref=e425]:
+                      - text: Click
+                      - strong [ref=e426]: Save
+                      - text: to deploy the VM Migration Assistant to your cluster.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e427]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e428] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e429]:
+                  - listitem [ref=e430]:
+                    - paragraph [ref=e431]:
+                      - text: Log in to
+                      - link "Palette" [ref=e432] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e433]:
+                    - paragraph [ref=e434]:
+                      - text: Navigate to
+                      - strong [ref=e435]: Profiles
+                      - text: from the left
+                      - strong [ref=e436]: Main Menu
+                      - text: .
+                  - listitem [ref=e437]:
+                    - paragraph [ref=e438]: Locate the newly created profile in the list.
+                  - listitem [ref=e439]:
+                    - paragraph [ref=e440]:
+                      - text: From the left
+                      - strong [ref=e441]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e442]: Clusters
+                      - text: and select your cluster.
+                  - listitem [ref=e443]:
+                    - paragraph [ref=e444]:
+                      - text: In the
+                      - strong [ref=e445]: Overview
+                      - text: tab, ensure that the cluster status and health is
+                      - strong [ref=e446]: Running
+                      - text: and
+                      - strong [ref=e447]: Healthy
+                      - text: .
+                  - listitem [ref=e448]:
+                    - paragraph [ref=e449]:
+                      - text: In the
+                      - strong [ref=e450]: Overview
+                      - text: tab, the
+                      - strong [ref=e451]: Services
+                      - text: list displays the
+                      - strong [ref=e452]: vm-migration
+                      - text: service with a clickable port. Click the port to access the VM Migration Assistant service console. The port number is based on your service console configuration.
+                - heading "Access the VM Migration Assistant Service ConsoleDirect link to Access the VM Migration Assistant Service Console" [level=2] [ref=e453]:
+                  - text: Access the VM Migration Assistant Service Console
+                  - link "Direct link to Access the VM Migration Assistant Service Console" [ref=e454] [cursor=pointer]:
+                    - /url: "#access-the-vm-migration-assistant-service-console"
+                    - text: "#"
+                - paragraph [ref=e455]:
+                  - text: You can access the service console based on how you configured the VM Migration Assistant YAML manifest when
+                  - link "creating the cluster profile" [ref=e456] [cursor=pointer]:
+                    - /url: "#create-the-profile"
+                  - text: .
+                - paragraph [ref=e457]:
+                  - text: The following examples are for each
+                  - code [ref=e458]: console.service.type
+                  - text: ":"
+                - list [ref=e459]:
+                  - listitem [ref=e460]:
+                    - paragraph [ref=e461]:
+                      - text: If you configured an
+                      - code [ref=e462]: Ingress
+                      - text: with a
+                      - code [ref=e463]: domain
+                      - text: of
+                      - code [ref=e464]: vm-migration.mycompany.dev
+                      - text: ", you can access the service console at"
+                      - code [ref=e465]: https://vm-migration.mycompany.dev
+                      - text: .
+                  - listitem [ref=e466]:
+                    - paragraph [ref=e467]:
+                      - text: If you configured a
+                      - code [ref=e468]: NodePort
+                      - text: with a
+                      - code [ref=e469]: nodePort
+                      - text: of
+                      - code [ref=e470]: "30443"
+                      - text: ", you can access the service console at"
+                      - code [ref=e471]: https://<NODE_IP>:30443
+                      - text: .
+                - list [ref=e472]:
+                  - listitem [ref=e473]:
+                    - text: If you configured a
+                    - code [ref=e474]: LoadBalancer
+                    - text: with a
+                    - code [ref=e475]: loadBalancerPort
+                    - text: of
+                    - code [ref=e476]: "443"
+                    - text: ", you can access the service console at"
+                    - code [ref=e477]: https://<LOAD_BALANCER_IP>
+                    - text: ", where the load balancer IP address is provided by your load balancer solution (such as"
+                    - link "MetalLB" [ref=e478] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=lb-metallb-helm
+                    - text: ).
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e479]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e480] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e481]:
+                  - text: You can now use the VM Migration Assistant to migrate your VMs. Refer to the
+                  - link "Create Source Providers" [ref=e482] [cursor=pointer]:
+                    - /url: /vm-management/vm-migration-assistant/create-source-providers/
+                  - text: guide to start creating your source providers.
+              - generic [ref=e483]:
+                - generic [ref=e485]:
+                  - text: "Tags:"
+                  - list [ref=e486]:
+                    - listitem [ref=e487]:
+                      - link "vmo" [ref=e488] [cursor=pointer]:
+                        - /url: /tags/vmo/
+                    - listitem [ref=e489]:
+                      - link "vm migration assistant" [ref=e490] [cursor=pointer]:
+                        - /url: /tags/vm-migration-assistant/
+                - link "Edit this page" [ref=e493] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md
+                  - img [ref=e494]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e498]:
+              - link "Previous « VM Migration Assistant" [ref=e499] [cursor=pointer]:
+                - /url: /vm-management/vm-migration-assistant/
+                - generic [ref=e500]: Previous
+                - generic [ref=e501]: « VM Migration Assistant
+              - link "Next Create Source Providers »" [ref=e502] [cursor=pointer]:
+                - /url: /vm-management/vm-migration-assistant/create-source-providers/
+                - generic [ref=e503]: Next
+                - generic [ref=e504]: Create Source Providers »
+          - list [ref=e507]:
+            - listitem [ref=e508]:
+              - link "Prerequisites" [ref=e509] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e510]:
+              - link "Create the Profile" [ref=e511] [cursor=pointer]:
+                - /url: "#create-the-profile"
+            - listitem [ref=e512]:
+              - link "Validate" [ref=e513] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e514]:
+              - link "Access the VM Migration Assistant Service Console" [ref=e515] [cursor=pointer]:
+                - /url: "#access-the-vm-migration-assistant-service-console"
+            - listitem [ref=e516]:
+              - link "Next Steps" [ref=e517] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e518] [cursor=pointer]:
+    - generic [ref=e521]:
+      - img "Project Logo" [ref=e522]
+      - paragraph [ref=e523]: Ask AI
+```

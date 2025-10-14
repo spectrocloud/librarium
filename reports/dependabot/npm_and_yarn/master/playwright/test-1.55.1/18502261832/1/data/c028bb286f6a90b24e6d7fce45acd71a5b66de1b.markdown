@@ -1,0 +1,599 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [expanded] [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+                - list [ref=e106]:
+                  - listitem [ref=e107]:
+                    - generic [ref=e108]:
+                      - link "Create Images with Image Builder" [expanded] [ref=e109] [cursor=pointer]:
+                        - /url: /byoos/image-builder/
+                      - button "Toggle the collapsible sidebar category 'Create Images with Image Builder'" [ref=e110] [cursor=pointer]
+                    - list [ref=e111]:
+                      - listitem [ref=e112]:
+                        - link "Build Image" [ref=e113] [cursor=pointer]:
+                          - /url: /byoos/image-builder/build-image/
+                      - listitem [ref=e114]:
+                        - generic [ref=e115]:
+                          - link "Build Image for VMware vSphere" [expanded] [ref=e116] [cursor=pointer]:
+                            - /url: /byoos/image-builder/build-image-vmware/
+                          - button "Toggle the collapsible sidebar category 'Build Image for VMware vSphere'" [ref=e117] [cursor=pointer]
+                        - list [ref=e118]:
+                          - listitem [ref=e119]:
+                            - link "RHEL and Konvoy" [ref=e120] [cursor=pointer]:
+                              - /url: /byoos/image-builder/build-image-vmware/konvoy/
+                          - listitem [ref=e121]:
+                            - link "RHEL and PXK" [ref=e122] [cursor=pointer]:
+                              - /url: /byoos/image-builder/build-image-vmware/rhel-pxk/
+                  - listitem [ref=e123]:
+                    - generic [ref=e124]:
+                      - link "CAPI Image Builder" [ref=e125] [cursor=pointer]:
+                        - /url: /byoos/capi-image-builder/
+                      - button "Toggle the collapsible sidebar category 'CAPI Image Builder'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Palette Dev Engine" [ref=e129] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e131]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "Virtual Machine Orchestrator" [ref=e136] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e138]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Workspaces" [ref=e143] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e145]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Packs List" [ref=e150] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e152]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "User & Role Management" [ref=e157] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e159]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Registries and Packs" [ref=e164] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e166]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e168] [cursor=pointer]
+              - listitem [ref=e169]:
+                - generic [ref=e170]:
+                  - link "Security" [ref=e171] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e173]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e175] [cursor=pointer]
+              - listitem [ref=e176]:
+                - generic [ref=e177]:
+                  - link "Audit Logs" [ref=e178] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e180]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e182] [cursor=pointer]
+              - listitem [ref=e183]:
+                - generic [ref=e184]:
+                  - link "Self-Hosted Palette" [ref=e185] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e187]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e189] [cursor=pointer]
+              - listitem [ref=e190]:
+                - generic [ref=e191]:
+                  - link "Palette VerteX" [ref=e192] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e194]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e196] [cursor=pointer]
+              - listitem [ref=e197]:
+                - generic [ref=e198]:
+                  - link "Tenant Administration" [ref=e199] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e201]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e203] [cursor=pointer]
+              - listitem [ref=e204]:
+                - generic [ref=e205]:
+                  - link "Automation" [ref=e206] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e208]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e210] [cursor=pointer]
+              - listitem [ref=e211]:
+                - generic [ref=e212]:
+                  - link "Troubleshooting" [ref=e213] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e215]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e217] [cursor=pointer]
+              - listitem [ref=e218]:
+                - link "Glossary" [ref=e219] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e221]
+                  - text: Glossary
+              - listitem [ref=e223]:
+                - generic [ref=e224]:
+                  - link "Compliance & Legal" [ref=e225] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e227]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e229] [cursor=pointer]
+              - listitem [ref=e230]:
+                - button "Privacy Settings" [ref=e231] [cursor=pointer]:
+                  - img [ref=e232]
+                  - text: Privacy Settings
+      - main [ref=e234]:
+        - generic [ref=e236]:
+          - generic [ref=e238]:
+            - article [ref=e239]:
+              - navigation "Breadcrumbs" [ref=e240]:
+                - list [ref=e241]:
+                  - listitem [ref=e242]:
+                    - link "Home page" [ref=e243] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e244]
+                  - listitem [ref=e246]:
+                    - link "Bring Your Own OS (BYOOS)" [ref=e247] [cursor=pointer]:
+                      - /url: /byoos/
+                  - listitem [ref=e248]:
+                    - link "Create Images with Image Builder" [ref=e249] [cursor=pointer]:
+                      - /url: /byoos/image-builder/
+                  - listitem [ref=e250]:
+                    - link "Build Image for VMware vSphere" [ref=e251] [cursor=pointer]:
+                      - /url: /byoos/image-builder/build-image-vmware/
+                  - listitem [ref=e252]:
+                    - generic [ref=e253]: RHEL and Konvoy
+              - generic [ref=e254]:
+                - heading "RHEL and Konvoy" [level=1] [ref=e256]
+                - paragraph [ref=e257]:
+                  - text: This guide provides instructions for building a custom image using Red Hat Linux Enterprise (RHEL) with Konvoy. The guide assumes that you have a basic understanding of VMware vSphere, RHEL and
+                  - link "Konvoy" [ref=e258] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=kubernetes-konvoy
+                  - text: .
+                - paragraph [ref=e259]:
+                  - text: You will use the
+                  - link "Konvoy image builder" [ref=e260] [cursor=pointer]:
+                    - /url: https://github.com/mesosphere/konvoy-image-builder
+                  - text: project to build the custom RHEL image with Konvoy. The custom image will be used to deploy a Kubernetes cluster on VMware vSphere.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e261]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e262] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - paragraph [ref=e263]: Carefully review the prerequisites and follow the steps in the order provided to build and use a custom RHEL with Konvoy. Make sure you have met all the prerequisites before you begin.
+                - list [ref=e264]:
+                  - listitem [ref=e265]:
+                    - paragraph [ref=e266]: "A x86_64 Linux VM with the following resources:"
+                    - list [ref=e267]:
+                      - listitem [ref=e268]: 4 CPU
+                      - listitem [ref=e269]: 8 GB of RAM
+                      - listitem [ref=e270]: 50 GB of free disk space
+                  - listitem [ref=e271]:
+                    - paragraph [ref=e272]: The Linux VM must have connectivity to the internet and the VMware vSphere environment.
+                  - listitem [ref=e273]:
+                    - paragraph [ref=e274]: "The following software must be installed on the Linux VM:"
+                    - list [ref=e275]:
+                      - listitem [ref=e276]:
+                        - link "Docker Engine" [ref=e277] [cursor=pointer]:
+                          - /url: https://docs.docker.com/engine/install/
+                        - text: version 25.0.0 or later.
+                      - listitem [ref=e278]:
+                        - link "HashiCorp Packer" [ref=e279] [cursor=pointer]:
+                          - /url: https://developer.hashicorp.com/packer/
+                        - text: version 1.10.1 or later.
+                      - listitem [ref=e280]:
+                        - link "tar" [ref=e281] [cursor=pointer]:
+                          - /url: https://www.gnu.org/software/tar/
+                        - text: or similar tool to extract tarballs.
+                      - listitem [ref=e282]:
+                        - link "wget" [ref=e283] [cursor=pointer]:
+                          - /url: https://www.gnu.org/software/wget/
+                        - text: or similar tool, such as curl to download files from the internet.
+                  - listitem [ref=e284]:
+                    - paragraph [ref=e285]:
+                      - text: A valid
+                      - link "RHEL subscription" [ref=e286] [cursor=pointer]:
+                        - /url: https://www.redhat.com/en/store/linux-platforms
+                      - text: . You will need to provide the username and password for the subscription during the build process.
+                  - listitem [ref=e287]:
+                    - paragraph [ref=e288]: VMware vSphere template for RHEL 8.8 or later. The Konvoy image builder will use this template to create the custom RHEL with Konvoy image.
+                - group [ref=e289]:
+                  - generic "Click to learn more about VMware vSphere RHEL templates" [ref=e290] [cursor=pointer]
+                - list [ref=e291]:
+                  - listitem [ref=e292]:
+                    - paragraph [ref=e293]: SSH credentials to the RHEL template you are specifying in the Konvoy image builder configuration file.
+                    - generic [ref=e294]:
+                      - generic [ref=e295]:
+                        - img [ref=e297]
+                        - text: warning
+                      - paragraph [ref=e300]: Reach out to your VMware administrator if you need assistance with creating the VMware vSphere template. It's critical you configure the RHEL template correctly to ensure the Konvoy image builder can the template to create the custom RHEL with Konvoy image.
+                - heading "Build ImageDirect link to Build Image" [level=2] [ref=e301]:
+                  - text: Build Image
+                  - link "Direct link to Build Image" [ref=e302] [cursor=pointer]:
+                    - /url: "#build-image"
+                    - text: "#"
+                - paragraph [ref=e303]: The Konvoy image builder supports generating standard or FIPS-compliant Konvoy images. Select the appropriate tab for instructions on how to build the custom RHEL with Konvoy image.
+                - generic [ref=e304]:
+                  - tablist [ref=e305]:
+                    - tab "Standard" [selected] [ref=e306] [cursor=pointer]
+                    - tab "FIPS" [ref=e307] [cursor=pointer]
+                  - tabpanel [ref=e309]:
+                    - list [ref=e310]:
+                      - listitem [ref=e311]:
+                        - paragraph [ref=e312]: Open a terminal session in your Linux VM and create a new directory for the Konvoy image builder project.
+                        - generic [ref=e314]:
+                          - code [ref=e316]:
+                            - generic [ref=e317]: mkdir --parents ~/builder
+                            - generic [ref=e318]: cd ~/builder
+                          - button "Copy code to clipboard" [ref=e320] [cursor=pointer]:
+                            - generic [ref=e321]:
+                              - img [ref=e322]
+                              - img [ref=e324]
+                      - listitem [ref=e326]:
+                        - paragraph [ref=e327]: Download the Konvoy builder release artifact from the GitHub releases page. In this guide, version 2.8.5 is used.
+                        - generic [ref=e329]:
+                          - code [ref=e331]:
+                            - generic [ref=e332]: wget https://github.com/mesosphere/konvoy-image-builder/releases/download/v2.8.5/konvoy-image-bundle-v2.8.5_linux_amd64.tar.gz
+                          - generic [ref=e333]:
+                            - button "Toggle word wrap" [ref=e334] [cursor=pointer]:
+                              - img [ref=e335]
+                            - button "Copy code to clipboard" [ref=e337] [cursor=pointer]:
+                              - generic [ref=e338]:
+                                - img [ref=e339]
+                                - img [ref=e341]
+                      - listitem [ref=e343]:
+                        - paragraph [ref=e344]: Extract the downloaded tarball and navigate to the builder directory.
+                        - generic [ref=e346]:
+                          - code [ref=e348]:
+                            - generic [ref=e349]: tar --extract --file konvoy-image-bundle-v2.8.5_linux_amd64.tar.gz --directory builder && \
+                            - generic [ref=e350]: cd builder
+                          - generic [ref=e351]:
+                            - button "Toggle word wrap" [ref=e352] [cursor=pointer]:
+                              - img [ref=e353]
+                            - button "Copy code to clipboard" [ref=e355] [cursor=pointer]:
+                              - generic [ref=e356]:
+                                - img [ref=e357]
+                                - img [ref=e359]
+                      - listitem [ref=e361]:
+                        - paragraph [ref=e362]: Export your vSphere and RHEL credentials as environment variables. Replace the placeholders with your credentials. Issue the following commands to set these values in your terminal session.
+                        - generic [ref=e364]:
+                          - code [ref=e366]:
+                            - generic [ref=e367]: export VSPHERE_SERVER=your-vsphere-server-IP
+                            - generic [ref=e368]: export VSPHERE_USERNAME=your-vsphere-username
+                            - generic [ref=e369]: export VSPHERE_PASSWORD=your-vsphere-password
+                            - generic [ref=e370]: export RHSM_USER=your-redhat-email
+                            - generic [ref=e371]: export RHSM_PASS=your-redhat-password
+                            - generic [ref=e372]: export ANSIBLE_SUDO_PASS=admin
+                          - button "Copy code to clipboard" [ref=e374] [cursor=pointer]:
+                            - generic [ref=e375]:
+                              - img [ref=e376]
+                              - img [ref=e378]
+                      - listitem [ref=e380]:
+                        - paragraph [ref=e381]:
+                          - text: Modify the Packer configuration file for the version of RHEL you want to use. The RHEL configuration files are located in the
+                          - strong [ref=e382]: images/rhel
+                          - text: directory. In this guide, RHEL 8.8 is used. Use the following command to modify the file. You can use
+                          - code [ref=e383]: vi
+                          - text: or any other text editor to modify the file.
+                        - generic [ref=e385]:
+                          - code [ref=e387]:
+                            - generic [ref=e388]: vi images/ova/rhel-88.yaml
+                          - button "Copy code to clipboard" [ref=e390] [cursor=pointer]:
+                            - generic [ref=e391]:
+                              - img [ref=e392]
+                              - img [ref=e394]
+                      - listitem [ref=e396]:
+                        - paragraph [ref=e397]: Replace the following placeholders in the RHEL configuration file with your vSphere and RHEL template information.
+                        - table [ref=e398]:
+                          - rowgroup [ref=e399]:
+                            - row "Parameter Description" [ref=e400]:
+                              - cell "Parameter" [ref=e401]
+                              - cell "Description" [ref=e402]
+                          - rowgroup [ref=e403]:
+                            - row "packer.cluster The name of the vSphere cluster to deploy the Packer VM." [ref=e404]:
+                              - cell "packer.cluster" [ref=e405]:
+                                - code [ref=e406]: packer.cluster
+                              - cell "The name of the vSphere cluster to deploy the Packer VM." [ref=e407]
+                            - row "packer.datacenter The name of the vSphere data center to deploy the Packer VM." [ref=e408]:
+                              - cell "packer.datacenter" [ref=e409]:
+                                - code [ref=e410]: packer.datacenter
+                              - cell "The name of the vSphere data center to deploy the Packer VM." [ref=e411]
+                            - row "packer.datastore The name of the vSphere datastore to deploy the Packer VM." [ref=e412]:
+                              - cell "packer.datastore" [ref=e413]:
+                                - code [ref=e414]: packer.datastore
+                              - cell "The name of the vSphere datastore to deploy the Packer VM." [ref=e415]
+                            - row "packer.folder The name of the vSphere folder to deploy the Packer VM." [ref=e416]:
+                              - cell "packer.folder" [ref=e417]:
+                                - code [ref=e418]: packer.folder
+                              - cell "The name of the vSphere folder to deploy the Packer VM." [ref=e419]
+                            - row "packer.network The name of the vSphere network to deploy the Packer VM." [ref=e420]:
+                              - cell "packer.network" [ref=e421]:
+                                - code [ref=e422]: packer.network
+                              - cell "The name of the vSphere network to deploy the Packer VM." [ref=e423]
+                            - row "packer.insecure_connection Set to true if you are using a self-signed certificate for the vCenter endpoint." [ref=e424]:
+                              - cell "packer.insecure_connection" [ref=e425]:
+                                - code [ref=e426]: packer.insecure_connection
+                              - cell "Set to true if you are using a self-signed certificate for the vCenter endpoint." [ref=e427]:
+                                - text: Set to
+                                - code [ref=e428]: "true"
+                                - text: if you are using a self-signed certificate for the vCenter endpoint.
+                            - row "packer.resource_pool The name of the vSphere resource pool to deploy the Packer VM." [ref=e429]:
+                              - cell "packer.resource_pool" [ref=e430]:
+                                - code [ref=e431]: packer.resource_pool
+                              - cell "The name of the vSphere resource pool to deploy the Packer VM." [ref=e432]
+                            - row "packer.template The name of the RHEL template in vSphere that you created using the ISO file of the RHEL version you want to use." [ref=e433]:
+                              - cell "packer.template" [ref=e434]:
+                                - code [ref=e435]: packer.template
+                              - cell "The name of the RHEL template in vSphere that you created using the ISO file of the RHEL version you want to use." [ref=e436]
+                            - row "packer.ssh_username The username to SSH into the Packer VM. Specify the username you used to log in to the RHEL VM before converting it to a template." [ref=e437]:
+                              - cell "packer.ssh_username" [ref=e438]:
+                                - code [ref=e439]: packer.ssh_username
+                              - cell "The username to SSH into the Packer VM. Specify the username you used to log in to the RHEL VM before converting it to a template." [ref=e440]
+                            - row "packer.ssh_password The password to SSH into the Packer VM. Specify the password you used to log in to the RHEL VM before converting it to a template." [ref=e441]:
+                              - cell "packer.ssh_password" [ref=e442]:
+                                - code [ref=e443]: packer.ssh_password
+                              - cell "The password to SSH into the Packer VM. Specify the password you used to log in to the RHEL VM before converting it to a template." [ref=e444]
+                        - group [ref=e445]:
+                          - generic "Example RHEL configuration file" [ref=e446] [cursor=pointer]
+                    - list [ref=e447]:
+                      - listitem [ref=e448]:
+                        - paragraph [ref=e449]:
+                          - text: Review the
+                          - strong [ref=e450]: images/common.yaml
+                          - text: file and modify the file if necessary. The
+                          - strong [ref=e451]: common.yaml
+                          - text: file is where you specify the Kubernetes version. Refer to the
+                          - link "Konvoy" [ref=e452] [cursor=pointer]:
+                            - /url: /integrations/packs/?pack=kubernetes-konvoy
+                          - text: pack reference page to learn about supported Konvoy versions.
+                        - code [ref=e456]:
+                          - generic [ref=e457]: "---"
+                          - generic [ref=e458]: "kubernetes_version: \"1.27.6\""
+                          - generic [ref=e459]: "download_images: true"
+                          - generic [ref=e460]: "packer:"
+                          - generic [ref=e461]: "goss_arch: amd64"
+                          - generic [ref=e462]: "goss_entry_file: goss/goss.yaml"
+                          - generic [ref=e463]: "goss_format: json"
+                          - generic [ref=e464]: "goss_format_options: pretty"
+                          - generic [ref=e465]: "goss_inspect_mode: false"
+                          - generic [ref=e466]: "goss_tests_dir: goss"
+                          - generic [ref=e467]: "goss_url:"
+                          - generic [ref=e468]: "goss_vars_file: ansible/group_vars/all/system.yaml"
+                          - generic [ref=e469]: "goss_version: 0.3.16"
+                      - listitem [ref=e470]:
+                        - paragraph [ref=e471]: Start the Packer build process by issuing the following command.
+                        - generic [ref=e473]:
+                          - code [ref=e475]:
+                            - generic [ref=e476]: ./konvoy-image build images/ova/rhel-88.yaml --extra-vars ansible_sudo_pass="admin"
+                          - generic [ref=e477]:
+                            - button "Toggle word wrap" [ref=e478] [cursor=pointer]:
+                              - img [ref=e479]
+                            - button "Copy code to clipboard" [ref=e481] [cursor=pointer]:
+                              - generic [ref=e482]:
+                                - img [ref=e483]
+                                - img [ref=e485]
+                        - paragraph [ref=e487]: The build process will take some time to complete. Once the build process is complete, you will have a custom RHEL with Konvoy image located in the vSphere datastore folder you specified in the Packer configuration file. Take note of the image ID.
+                        - generic [ref=e489]:
+                          - code [ref=e491]:
+                            - generic [ref=e492]: "==> vsphere-clone.kib_image: Convert VM into template..."
+                            - generic [ref=e493]: "vsphere-clone.kib_image: Closing sessions ...."
+                            - generic [ref=e494]: "==> vsphere-clone.kib_image: Running post-processor: packer-manifest (type manifest)"
+                            - generic [ref=e495]: "==> vsphere-clone.kib_image: Running post-processor: (type shell-local)"
+                            - generic [ref=e496]: "==> vsphere-clone.kib_image (shell-local): Running local shell script: /tmp/packer-shell591621042"
+                            - generic [ref=e497]: Build 'vsphere-clone.kib_image' finished after 13 minutes 50 seconds.
+                            - generic [ref=e498]: ==> Wait completed after 13 minutes 50 seconds
+                            - generic [ref=e499]: "==> Builds finished. The artifacts of successful builds are:"
+                            - generic [ref=e500]: "--> vsphere-clone.kib_image: konvoy-rhel-88-1.27.6-20240229212552"
+                            - generic [ref=e501]: "--> vsphere-clone.kib_image: konvoy-rhel-88-1.27.6-20240229212552"
+                            - generic [ref=e502]: "--> vsphere-clone.kib_image: konvoy-rhel-88-1.27.6-20240229212552"
+                          - button "Toggle word wrap" [ref=e504] [cursor=pointer]:
+                            - img [ref=e505]
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e507]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e508] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e509]:
+                  - listitem [ref=e510]:
+                    - paragraph [ref=e511]: Log in to the vSphere web client and navigate to the datastore folder where the custom RHEL with Konvoy image is located. Verify that the image is present in the folder.
+                  - listitem [ref=e512]:
+                    - paragraph [ref=e513]:
+                      - text: Create a cluster profile and use the BYOOS pack to reference the custom RHEL with Konvoy image. Specify the path to the custom RHEL with Konvoy image in the pack's YAML file. Refer to
+                      - link "Usage with Cluster Profile" [ref=e514] [cursor=pointer]:
+                        - /url: "#usage-with-cluster-profile"
+                      - text: section for more details.
+                  - listitem [ref=e515]:
+                    - paragraph [ref=e516]: Deploy a cluster using the cluster profile you created.
+                - heading "Usage with Cluster ProfileDirect link to Usage with Cluster Profile" [level=2] [ref=e517]:
+                  - text: Usage with Cluster Profile
+                  - link "Direct link to Usage with Cluster Profile" [ref=e518] [cursor=pointer]:
+                    - /url: "#usage-with-cluster-profile"
+                    - text: "#"
+                - paragraph [ref=e519]:
+                  - text: To use the custom RHEL with Konvoy image, create a
+                  - link "cluster profile" [ref=e520] [cursor=pointer]:
+                    - /url: /profiles/cluster-profiles/create-cluster-profiles/create-full-profile/
+                  - text: and use the
+                  - link "BYOOS" [ref=e521] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=generic-byoi
+                  - text: pack to reference the custom RHEL with Konvoy image. Specify the vSphere path to the custom RHEL with Konvoy image in the pack's YAML file. The following example YAML content demonstrates how to use the custom RHEL with Konvoy image in a cluster profile.
+                - generic [ref=e523]:
+                  - code [ref=e525]:
+                    - generic [ref=e526]: "pack:"
+                    - generic [ref=e527]: "osImageOverride: \"/Datacenter/vm/internal/rhel/konvoy-rhel-88-1.27.6-20240229212552\""
+                    - generic [ref=e528]: "osName: \"konvoy-rhel-vmware\""
+                    - generic [ref=e529]: "osVersion: \"8.8\""
+                  - button "Toggle word wrap" [ref=e531] [cursor=pointer]:
+                    - img [ref=e532]
+                - paragraph [ref=e534]: When selecting the Kubernetes distribution and version, pick Konvoy as the Kubernetes distribution and the version of Kubernetes you specified in the Packer configuration file.
+                - generic [ref=e535]:
+                  - generic [ref=e536]:
+                    - img [ref=e538]
+                    - text: warning
+                  - paragraph [ref=e541]:
+                    - text: Make sure you select the same version of Konvoy as specified in the Packer configuration file
+                    - strong [ref=e542]: images/common.yaml
+                    - text: .
+                - paragraph [ref=e543]:
+                  - img "A view of the cluster profile Kubernetes selection screen" [ref=e544]
+              - generic [ref=e545]:
+                - generic [ref=e547]:
+                  - text: "Tags:"
+                  - list [ref=e548]:
+                    - listitem [ref=e549]:
+                      - link "operating system" [ref=e550] [cursor=pointer]:
+                        - /url: /tags/operating-system/
+                    - listitem [ref=e551]:
+                      - link "byoos" [ref=e552] [cursor=pointer]:
+                        - /url: /tags/byoos/
+                    - listitem [ref=e553]:
+                      - link "profiles" [ref=e554] [cursor=pointer]:
+                        - /url: /tags/profiles/
+                    - listitem [ref=e555]:
+                      - link "konvoy" [ref=e556] [cursor=pointer]:
+                        - /url: /tags/konvoy/
+                    - listitem [ref=e557]:
+                      - link "vmware" [ref=e558] [cursor=pointer]:
+                        - /url: /tags/vmware/
+                - link "Edit this page" [ref=e561] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/byoos/image-builder/build-image-vmware/konvoy.md
+                  - img [ref=e562]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e566]:
+              - link "Previous « Build Image for VMware vSphere" [ref=e567] [cursor=pointer]:
+                - /url: /byoos/image-builder/build-image-vmware/
+                - generic [ref=e568]: Previous
+                - generic [ref=e569]: « Build Image for VMware vSphere
+              - link "Next RHEL and PXK »" [ref=e570] [cursor=pointer]:
+                - /url: /byoos/image-builder/build-image-vmware/rhel-pxk/
+                - generic [ref=e571]: Next
+                - generic [ref=e572]: RHEL and PXK »
+          - list [ref=e575]:
+            - listitem [ref=e576]:
+              - link "Prerequisites" [ref=e577] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e578]:
+              - link "Build Image" [ref=e579] [cursor=pointer]:
+                - /url: "#build-image"
+            - listitem [ref=e580]:
+              - link "Validate" [ref=e581] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e582]:
+              - link "Usage with Cluster Profile" [ref=e583] [cursor=pointer]:
+                - /url: "#usage-with-cluster-profile"
+  - button "Project Logo Ask AI" [ref=e584] [cursor=pointer]:
+    - generic [ref=e587]:
+      - img "Project Logo" [ref=e588]
+      - paragraph [ref=e589]: Ask AI
+```

@@ -1,0 +1,848 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e101] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e103]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Palette Dev Engine" [ref=e108] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e110]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Virtual Machine Orchestrator" [ref=e115] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e117]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e119] [cursor=pointer]
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - link "Workspaces" [ref=e122] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e124]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e126] [cursor=pointer]
+              - listitem [ref=e127]:
+                - generic [ref=e128]:
+                  - link "Packs List" [ref=e129] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e131]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "User & Role Management" [expanded] [ref=e136] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e138]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e140] [cursor=pointer]
+                - list [ref=e141]:
+                  - listitem [ref=e142]:
+                    - generic [ref=e143]:
+                      - link "User Authentication" [ref=e144] [cursor=pointer]:
+                        - /url: /user-management/authentication/
+                      - button "Toggle the collapsible sidebar category 'User Authentication'" [ref=e145] [cursor=pointer]
+                  - listitem [ref=e146]:
+                    - generic [ref=e147]:
+                      - link "Users and Teams" [ref=e148] [cursor=pointer]:
+                        - /url: /user-management/users-and-teams/
+                      - button "Toggle the collapsible sidebar category 'Users and Teams'" [ref=e149] [cursor=pointer]
+                  - listitem [ref=e150]:
+                    - generic [ref=e151]:
+                      - link "Roles and Permissions" [ref=e152] [cursor=pointer]:
+                        - /url: /user-management/palette-rbac/
+                      - button "Toggle the collapsible sidebar category 'Roles and Permissions'" [ref=e153] [cursor=pointer]
+                  - listitem [ref=e154]:
+                    - generic [ref=e155]:
+                      - link "SAML and OIDC SSO" [expanded] [ref=e156] [cursor=pointer]:
+                        - /url: /user-management/saml-sso/
+                      - button "Toggle the collapsible sidebar category 'SAML and OIDC SSO'" [ref=e157] [cursor=pointer]
+                    - list [ref=e158]:
+                      - listitem [ref=e159]:
+                        - link "Palette SSO with Microsoft AD FS" [ref=e160] [cursor=pointer]:
+                          - /url: /user-management/saml-sso/palette-sso-with-adfs/
+                      - listitem [ref=e161]:
+                        - link "Palette SSO with Okta SAML" [ref=e162] [cursor=pointer]:
+                          - /url: /user-management/saml-sso/palette-sso-with-okta-saml/
+                      - listitem [ref=e163]:
+                        - link "Palette SSO with Okta OIDC" [ref=e164] [cursor=pointer]:
+                          - /url: /user-management/saml-sso/palette-sso-with-okta/
+                      - listitem [ref=e165]:
+                        - link "Palette SSO with OneLogin" [ref=e166] [cursor=pointer]:
+                          - /url: /user-management/saml-sso/palette-sso-with-onelogin/
+                      - listitem [ref=e167]:
+                        - link "Palette SSO with Keycloak" [ref=e168] [cursor=pointer]:
+                          - /url: /user-management/saml-sso/palette-sso-with-keycloak/
+                      - listitem [ref=e169]:
+                        - link "Palette SSO with Microsoft Entra ID" [ref=e170] [cursor=pointer]:
+                          - /url: /user-management/saml-sso/palette-sso-with-entra-id/
+                      - listitem [ref=e171]:
+                        - link "Palette SSO with Custom CA" [ref=e172] [cursor=pointer]:
+                          - /url: /user-management/saml-sso/palette-sso-with-custom-ca/
+              - listitem [ref=e173]:
+                - generic [ref=e174]:
+                  - link "Registries and Packs" [ref=e175] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e177]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e179] [cursor=pointer]
+              - listitem [ref=e180]:
+                - generic [ref=e181]:
+                  - link "Security" [ref=e182] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e184]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e186] [cursor=pointer]
+              - listitem [ref=e187]:
+                - generic [ref=e188]:
+                  - link "Audit Logs" [ref=e189] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e191]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e193] [cursor=pointer]
+              - listitem [ref=e194]:
+                - generic [ref=e195]:
+                  - link "Self-Hosted Palette" [ref=e196] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e198]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e200] [cursor=pointer]
+              - listitem [ref=e201]:
+                - generic [ref=e202]:
+                  - link "Palette VerteX" [ref=e203] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e205]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e207] [cursor=pointer]
+              - listitem [ref=e208]:
+                - generic [ref=e209]:
+                  - link "Tenant Administration" [ref=e210] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e212]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - generic [ref=e216]:
+                  - link "Automation" [ref=e217] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e219]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e221] [cursor=pointer]
+              - listitem [ref=e222]:
+                - generic [ref=e223]:
+                  - link "Troubleshooting" [ref=e224] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e226]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e228] [cursor=pointer]
+              - listitem [ref=e229]:
+                - link "Glossary" [ref=e230] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e232]
+                  - text: Glossary
+              - listitem [ref=e234]:
+                - generic [ref=e235]:
+                  - link "Compliance & Legal" [ref=e236] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e238]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e240] [cursor=pointer]
+              - listitem [ref=e241]:
+                - button "Privacy Settings" [ref=e242] [cursor=pointer]:
+                  - img [ref=e243]
+                  - text: Privacy Settings
+      - main [ref=e245]:
+        - generic [ref=e247]:
+          - generic [ref=e249]:
+            - article [ref=e250]:
+              - navigation "Breadcrumbs" [ref=e251]:
+                - list [ref=e252]:
+                  - listitem [ref=e253]:
+                    - link "Home page" [ref=e254] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e255]
+                  - listitem [ref=e257]:
+                    - link "User & Role Management" [ref=e258] [cursor=pointer]:
+                      - /url: /user-management/
+                  - listitem [ref=e259]:
+                    - link "SAML and OIDC SSO" [ref=e260] [cursor=pointer]:
+                      - /url: /user-management/saml-sso/
+                  - listitem [ref=e261]:
+                    - generic [ref=e262]: Palette SSO with Keycloak
+              - generic [ref=e263]:
+                - heading "Enable SSO with Keycloak" [level=1] [ref=e265]
+                - paragraph [ref=e266]: Keycloak is an open source Identity and Access Management (IAM) tool, primarily used for simplifying the authentication and authorization processes in modern applications and services. It provides a wide range of features including Single Sign-On (SSO), two-factor authentication, and social login capabilities. Keycloak is designed to manage users, credentials, roles, and groups efficiently, enabling developers to secure their applications and services with minimal additional coding. Keycloak supports various industry-standard protocols like OpenID Connect, OAuth 2.0, and SAML 2.0, facilitating integration with a multitude of platforms and services.
+                - paragraph [ref=e267]: You can integrate Keycloak with Palette to enable SSO for your users. This guide will walk you through the steps to set up Keycloak as an OIDC provider for Palette.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e268]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e269] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e270]:
+                  - listitem [ref=e271]:
+                    - paragraph [ref=e272]: Access to Palette as a Tenant Admin.
+                  - listitem [ref=e273]:
+                    - paragraph [ref=e274]: For Keycloak to work correctly with Palette, you must enable HTTPS and configure TLS.
+                  - listitem [ref=e275]:
+                    - paragraph [ref=e276]:
+                      - text: The Keycloak service must be exposed on an external IP address, preferably with a domain name. Refer to the
+                      - link "Configuring Keycloak for production" [ref=e277] [cursor=pointer]:
+                        - /url: https://www.keycloak.org/server/configuration-production
+                      - text: guide for more information.
+                  - listitem [ref=e278]:
+                    - paragraph [ref=e279]: Deploy a Kubernetes cluster with load balancer resources available. You will also need a set of open IP addresses for the Keycloak service.
+                    - generic [ref=e280]:
+                      - generic [ref=e281]:
+                        - img [ref=e283]
+                        - text: tip
+                      - paragraph [ref=e286]:
+                        - text: You can deploy a Kubernetes cluster in a public cloud with load balancer resources using Palette. You can also deploy to an on-prem or edge environment and use the MetalLB pack to expose a load balancer service. Check out the
+                        - link "Getting Started" [ref=e287] [cursor=pointer]:
+                          - /url: /getting-started/
+                        - text: tutorials for more information.
+                  - listitem [ref=e288]:
+                    - paragraph [ref=e289]: Kubectl installed and configured to access your Kubernetes cluster.
+                  - listitem [ref=e290]:
+                    - paragraph [ref=e291]: "Palette requires the following claims to be present in the OIDC token:"
+                    - table [ref=e292]:
+                      - rowgroup [ref=e293]:
+                        - row "Claim Name Default Value Description" [ref=e294]:
+                          - cell "Claim Name" [ref=e295]
+                          - cell "Default Value" [ref=e296]
+                          - cell "Description" [ref=e297]
+                      - rowgroup [ref=e298]:
+                        - row "Email email The user's email address." [ref=e299]:
+                          - cell "Email" [ref=e300]:
+                            - strong [ref=e301]: Email
+                          - cell "email" [ref=e302]:
+                            - code [ref=e303]: email
+                          - cell "The user's email address." [ref=e304]
+                        - row "First Name given_name The user's first name." [ref=e305]:
+                          - cell "First Name" [ref=e306]:
+                            - strong [ref=e307]: First Name
+                          - cell "given_name" [ref=e308]:
+                            - code [ref=e309]: given_name
+                          - cell "The user's first name." [ref=e310]
+                        - row "Last Name family_name The user's last name." [ref=e311]:
+                          - cell "Last Name" [ref=e312]:
+                            - strong [ref=e313]: Last Name
+                          - cell "family_name" [ref=e314]:
+                            - code [ref=e315]: family_name
+                          - cell "The user's last name." [ref=e316]
+                        - row "Spectro Team groups The user's group memberships in the Identity Provider." [ref=e317]:
+                          - cell "Spectro Team" [ref=e318]:
+                            - strong [ref=e319]: Spectro Team
+                          - cell "groups" [ref=e320]:
+                            - code [ref=e321]: groups
+                          - cell "The user's group memberships in the Identity Provider." [ref=e322]
+                    - paragraph [ref=e323]:
+                      - text: Change the claim names in your IdP if they are different from the default values. If the OIDC token does not contain these claims, toggle the
+                      - strong [ref=e324]: Use userinfo endpoint
+                      - text: option in the OIDC configuration to allow Palette to fetch the missing claims from the user information endpoint.
+                - heading "Enable SSO with KeycloakDirect link to Enable SSO with Keycloak" [level=2] [ref=e325]:
+                  - text: Enable SSO with Keycloak
+                  - link "Direct link to Enable SSO with Keycloak" [ref=e326] [cursor=pointer]:
+                    - /url: "#enable-sso-with-keycloak"
+                    - text: "#"
+                - list [ref=e327]:
+                  - listitem [ref=e328]:
+                    - paragraph [ref=e329]:
+                      - text: Ensure you can access your Kubernetes cluster using the kubectl CLI. Refer to the
+                      - link "Access Cluster with CLI" [ref=e330] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/
+                      - text: for guidance on how to access your cluster with the
+                      - code [ref=e331]: kubectl
+                      - text: CLI.
+                  - listitem [ref=e332]:
+                    - paragraph [ref=e333]: Install Keycloak on your Kubernetes cluster using the default configurations. This will create a Keycloak deployment and a service of the LoadBalancer type. The service will be exposed on an external IP address.
+                    - generic [ref=e335]:
+                      - code [ref=e337]:
+                        - generic [ref=e338]: kubectl create --filename https://raw.githubusercontent.com/keycloak/keycloak-quickstarts/latest/kubernetes/keycloak.yaml
+                      - generic [ref=e339]:
+                        - button "Toggle word wrap" [ref=e340] [cursor=pointer]:
+                          - img [ref=e341]
+                        - button "Copy code to clipboard" [ref=e343] [cursor=pointer]:
+                          - generic [ref=e344]:
+                            - img [ref=e345]
+                            - img [ref=e347]
+                    - generic [ref=e349]:
+                      - generic [ref=e350]:
+                        - img [ref=e352]
+                        - text: info
+                      - paragraph [ref=e355]: You can also download the YAML file and edit it to suit your requirements before deploying it to your cluster. If you choose to do so, replace the GitHub file link in the original command with a file path to your YAML file.
+                  - listitem [ref=e356]:
+                    - paragraph [ref=e357]: The installation process takes a couple of minutes. After installation completes, use the following command to retrieve the external IP address of the Keycloak service.
+                    - generic [ref=e359]:
+                      - code [ref=e361]:
+                        - generic [ref=e362]: "kubectl describe service keycloak | grep \"LoadBalancer Ingress\" | awk '{print $3}' && \\"
+                        - generic [ref=e363]: "IP=$(kubectl describe service keycloak | grep \"LoadBalancer Ingress\" | awk '{print $3}')"
+                      - generic [ref=e364]:
+                        - button "Toggle word wrap" [ref=e365] [cursor=pointer]:
+                          - img [ref=e366]
+                        - button "Copy code to clipboard" [ref=e368] [cursor=pointer]:
+                          - generic [ref=e369]:
+                            - img [ref=e370]
+                            - img [ref=e372]
+                    - generic [ref=e375]:
+                      - code [ref=e377]:
+                        - generic [ref=e378]: aacf4014d5cd34825803567201217410-1398304919.us-east-1.elb.amazonaws.com
+                      - button "Toggle word wrap" [ref=e380] [cursor=pointer]:
+                        - img [ref=e381]
+                  - listitem [ref=e383]:
+                    - paragraph [ref=e384]:
+                      - text: Next, download the Ingress YAML definition provided by Keycloak to create an Ingress resource in your cluster. The command below also automatically replaces the
+                      - code [ref=e385]: KEYCLOAK_HOST
+                      - text: placeholder with the external IP address of the Keycloak service.
+                    - generic [ref=e387]:
+                      - code [ref=e389]:
+                        - generic [ref=e390]: wget --quiet --output-document - https://raw.githubusercontent.com/keycloak/keycloak-quickstarts/latest/kubernetes/keycloak-ingress.yaml | sed "s/KEYCLOAK_HOST/$IP/" | kubectl create -f -
+                      - generic [ref=e391]:
+                        - button "Toggle word wrap" [ref=e392] [cursor=pointer]:
+                          - img [ref=e393]
+                        - button "Copy code to clipboard" [ref=e395] [cursor=pointer]:
+                          - generic [ref=e396]:
+                            - img [ref=e397]
+                            - img [ref=e399]
+                    - code [ref=e404]:
+                      - generic [ref=e405]: ingress.networking.k8s.io/keycloak created
+                    - generic [ref=e406]:
+                      - generic [ref=e407]:
+                        - img [ref=e409]
+                        - text: info
+                      - paragraph [ref=e412]:
+                        - text: If
+                        - code [ref=e413]: wget
+                        - text: and
+                        - code [ref=e414]: sed
+                        - text: are not available, download the file and manually edit the file to replace
+                        - code [ref=e415]: KEYCLOAK_HOST
+                        - text: with the external IP address of the Keycloak service.
+                    - paragraph [ref=e416]: After the ingress resource is created, the following services will be available in your cluster. You can review the exposed services in the cluster details page.
+                    - paragraph [ref=e417]:
+                      - img "View of the cluster details page" [ref=e418]
+                  - listitem [ref=e419]:
+                    - paragraph [ref=e420]:
+                      - text: Create a DNS CNAME record for the URL exposed by load balancer. For example, the CNAME
+                      - code [ref=e421]: keycloak.dmitry.sa.spectrodemos.com
+                      - text: points to the following URL exposed by the load balancer
+                      - code [ref=e422]: aacf4014d5cd34825803567201217410-1398304919.us-east-1.elb.amazonaws.com
+                      - text: .
+                  - listitem [ref=e423]:
+                    - paragraph [ref=e424]:
+                      - text: Log in to Keycloak with by using the domain name you created in the previous step, or you can use the exposed load balancer URL. The Keycloak admin console is available on port
+                      - code [ref=e425]: 8080/admin
+                      - text: . For example,
+                      - code [ref=e426]: http://keycloak.dmitry.sa.spectrodemos.com:8080/admin
+                      - text: . Use the default credentials
+                      - code [ref=e427]: admin:admin
+                      - text: to log into the admin console.
+                    - generic [ref=e428]:
+                      - generic [ref=e429]:
+                        - img [ref=e431]
+                        - text: warning
+                      - paragraph [ref=e434]: We recommend that you change the default credentials after logging in to the admin console.
+                    - paragraph [ref=e435]:
+                      - img "Keycloak Admin console" [ref=e436]
+                  - listitem [ref=e437]:
+                    - paragraph [ref=e438]:
+                      - text: Next, log in to
+                      - link "Palette" [ref=e439] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: ", and navigate to the left"
+                      - strong [ref=e440]: Main Menu
+                      - text: and select
+                      - strong [ref=e441]: Tenant Settings
+                      - text: . Next, select
+                      - strong [ref=e442]: SSO
+                      - text: from the
+                      - strong [ref=e443]: Tenant Menu
+                      - text: to access the SSO configuration page. Click on the
+                      - strong [ref=e444]: OIDC
+                      - text: tab to configure OIDC for Palette. Copy the values in the
+                      - strong [ref=e445]: Callback URL
+                      - text: and
+                      - strong [ref=e446]: Logout URL
+                      - text: fields. You will need these values to configure Keycloak.
+                    - paragraph [ref=e447]:
+                      - img "The callback URL" [ref=e448]
+                  - listitem [ref=e449]:
+                    - paragraph [ref=e450]:
+                      - text: Switch back to the Keycloak admin console and create a client for Palette. Navigate to the left
+                      - strong [ref=e451]: Main Menu
+                      - text: and select
+                      - strong [ref=e452]: Clients
+                      - text: . Click on the
+                      - strong [ref=e453]: Create
+                      - text: button to create a new client.
+                    - paragraph [ref=e454]:
+                      - img "The Client create screen" [ref=e455]
+                  - listitem [ref=e456]:
+                    - paragraph [ref=e457]:
+                      - text: Select
+                      - strong [ref=e458]: Client Type
+                      - text: value "OpenID Connect" and fill in the fields
+                      - strong [ref=e459]: Client ID
+                      - text: and
+                      - strong [ref=e460]: Name
+                      - text: with the value
+                      - code [ref=e461]: palette
+                      - text: . Click on
+                      - strong [ref=e462]: Next
+                      - text: .
+                    - paragraph [ref=e463]:
+                      - img "Fill out the user name" [ref=e464]
+                  - listitem [ref=e465]:
+                    - paragraph [ref=e466]:
+                      - text: Select
+                      - strong [ref=e467]: Client authentication
+                      - text: for increased security and check the
+                      - strong [ref=e468]: Standard Flow
+                      - text: box and the
+                      - strong [ref=e469]: Direct Access Grants
+                      - text: box. Click on
+                      - strong [ref=e470]: Next
+                      - text: .
+                    - paragraph [ref=e471]:
+                      - img "Client Authentication creation screen number two" [ref=e472]
+                  - listitem [ref=e473]:
+                    - paragraph [ref=e474]: Fill out the following fields with the instructions provided in the table.
+                    - table [ref=e475]:
+                      - rowgroup [ref=e476]:
+                        - row "Field Description" [ref=e477]:
+                          - cell "Field" [ref=e478]:
+                            - strong [ref=e479]: Field
+                          - cell "Description" [ref=e480]:
+                            - strong [ref=e481]: Description
+                      - rowgroup [ref=e482]:
+                        - row "Root URL Your Palette URL. For Palette SaaS, this value is prefixed with your tenant name. For example, https://docs-test.console.spectrocloud.com. For self-hosted Palette, or VerteX, this value is the URL of your Palette deployment." [ref=e483]:
+                          - cell "Root URL" [ref=e484]:
+                            - strong [ref=e485]: Root URL
+                          - cell "Your Palette URL. For Palette SaaS, this value is prefixed with your tenant name. For example, https://docs-test.console.spectrocloud.com. For self-hosted Palette, or VerteX, this value is the URL of your Palette deployment." [ref=e486]:
+                            - text: Your Palette URL. For Palette SaaS, this value is prefixed with your tenant name. For example,
+                            - code [ref=e487]: https://docs-test.console.spectrocloud.com
+                            - text: . For self-hosted Palette, or VerteX, this value is the URL of your Palette deployment.
+                        - row "Valid Redirect URIs The callback URL you copied from the Palette SSO configuration page." [ref=e488]:
+                          - cell "Valid Redirect URIs" [ref=e489]:
+                            - strong [ref=e490]: Valid Redirect URIs
+                          - cell "The callback URL you copied from the Palette SSO configuration page." [ref=e491]
+                        - row "Valid post logout redirect URIs The logout URL you copied from the Palette SSO configuration page." [ref=e492]:
+                          - cell "Valid post logout redirect URIs" [ref=e493]:
+                            - strong [ref=e494]: Valid post logout redirect URIs
+                          - cell "The logout URL you copied from the Palette SSO configuration page." [ref=e495]
+                  - listitem [ref=e496]:
+                    - paragraph [ref=e497]:
+                      - text: Click on
+                      - strong [ref=e498]: Save
+                      - text: to save the client configuration.
+                    - paragraph [ref=e499]:
+                      - img "Keycloak callback" [ref=e500]
+                  - listitem [ref=e501]:
+                    - paragraph [ref=e502]:
+                      - text: In the following screen, select the
+                      - strong [ref=e503]: Credentials
+                      - text: tab to retrieve client secret.
+                    - paragraph [ref=e504]:
+                      - img "Keycloak Credentials" [ref=e505]
+                  - listitem [ref=e506]:
+                    - paragraph [ref=e507]:
+                      - text: Switch back to Palette and paste client secret in the
+                      - strong [ref=e508]: Client Secret
+                      - text: field. Fill out the following fields with the instructions provided in the table below.
+                    - table [ref=e509]:
+                      - rowgroup [ref=e510]:
+                        - row "Field Description" [ref=e511]:
+                          - cell "Field" [ref=e512]:
+                            - strong [ref=e513]: Field
+                          - cell "Description" [ref=e514]:
+                            - strong [ref=e515]: Description
+                      - rowgroup [ref=e516]:
+                        - row "Issuer URL Your Keycloak URL with /realms/master appended to the end. For example, http://keycloak.dmitry.sa.spectrodemos.com:8080/realms/master." [ref=e517]:
+                          - cell "Issuer URL" [ref=e518]:
+                            - strong [ref=e519]: Issuer URL
+                          - cell "Your Keycloak URL with /realms/master appended to the end. For example, http://keycloak.dmitry.sa.spectrodemos.com:8080/realms/master." [ref=e520]:
+                            - text: Your Keycloak URL with
+                            - code [ref=e521]: /realms/master
+                            - text: appended to the end. For example,
+                            - code [ref=e522]: http://keycloak.dmitry.sa.spectrodemos.com:8080/realms/master
+                            - text: .
+                        - row "Client ID The client ID you created in the previous steps. In this guide, the name palette was used." [ref=e523]:
+                          - cell "Client ID" [ref=e524]:
+                            - strong [ref=e525]: Client ID
+                          - cell "The client ID you created in the previous steps. In this guide, the name palette was used." [ref=e526]:
+                            - text: The client ID you created in the previous steps. In this guide, the name
+                            - code [ref=e527]: palette
+                            - text: was used.
+                        - row "Client Secret The client secret you retrieved in the previous step." [ref=e528]:
+                          - cell "Client Secret" [ref=e529]:
+                            - strong [ref=e530]: Client Secret
+                          - cell "The client secret you retrieved in the previous step." [ref=e531]
+                    - paragraph [ref=e532]:
+                      - img "View of the Palette SSO screen" [ref=e533]
+                  - listitem [ref=e534]:
+                    - paragraph [ref=e535]:
+                      - text: Scroll down to the bottom of the page, and click on
+                      - strong [ref=e536]: Enable
+                      - text: . If all values are correct, you will receive green message stating "OIDC configured successfully" at the top right corner.
+                  - listitem [ref=e537]:
+                    - paragraph [ref=e538]:
+                      - text: Navigate back to the Keycloak admin console. In the left
+                      - strong [ref=e539]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e540]: Users
+                      - text: . Fill in first name, second name, and the email address of the admin user.
+                    - paragraph [ref=e541]:
+                      - img "View of the Keycloak admin portal screen" [ref=e542]
+                - paragraph [ref=e543]:
+                  - text: You have now configured SSO for Palette with Keycloak. You can now log in to Palette using the admin user you created in Keycloak. Use the validation steps below to validate the SSO configuration. Check out the
+                  - link "Create a Team" [ref=e544] [cursor=pointer]:
+                    - /url: "#create-a-team"
+                  - text: section to learn how to create a team and assign roles to users.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e545]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e546] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e547]: Use the following steps to validate the SSO configuration.
+                - list [ref=e548]:
+                  - listitem [ref=e549]:
+                    - paragraph [ref=e550]:
+                      - text: Log out of Palette. Click on the top right
+                      - strong [ref=e551]: User Menu
+                      - text: and select
+                      - strong [ref=e552]: Log out
+                      - text: .
+                  - listitem [ref=e553]:
+                    - paragraph [ref=e554]: Sign in to Palette using the admin user you created in Keycloak. You will be redirected to the Keycloak login page. Enter the credentials for the admin user you created in Keycloak.
+                    - paragraph [ref=e555]:
+                      - img "Image of Palette&#39;s main login screen" [ref=e556]
+                    - paragraph [ref=e557]:
+                      - img "Image of the Keycloak Admin console" [ref=e558]
+                  - listitem [ref=e559]:
+                    - paragraph [ref=e560]: Upon successful authentication, you will be redirected to Palette. You will be logged in to Palette as the admin user you created in Keycloak.
+                - heading "Create a TeamDirect link to Create a Team" [level=2] [ref=e561]:
+                  - text: Create a Team
+                  - link "Direct link to Create a Team" [ref=e562] [cursor=pointer]:
+                    - /url: "#create-a-team"
+                    - text: "#"
+                - list [ref=e563]:
+                  - listitem [ref=e564]:
+                    - paragraph [ref=e565]:
+                      - text: Log in to Palette as a Tenant Admin. Navigate to the left
+                      - strong [ref=e566]: Main Menu
+                      - text: and select
+                      - strong [ref=e567]: Users & Teams
+                      - text: . Click on the
+                      - strong [ref=e568]: Teams
+                      - text: tab to access the Teams page. Click on the
+                      - strong [ref=e569]: Create Team
+                      - text: button to create a new team.
+                    - paragraph [ref=e570]:
+                      - img "Image of the Palette Tenant menu with Users &amp; Teams highlighted" [ref=e571]
+                  - listitem [ref=e572]:
+                    - paragraph [ref=e573]:
+                      - text: Provide a team name, such as
+                      - code [ref=e574]: admins
+                      - text: but leave the
+                      - strong [ref=e575]: Members
+                      - text: field empty. Click on
+                      - strong [ref=e576]: Confirm
+                      - text: to create the team.
+                  - listitem [ref=e577]:
+                    - paragraph [ref=e578]:
+                      - text: Next, select the
+                      - strong [ref=e579]: admins
+                      - text: row to access the team settings page. Click on
+                      - strong [ref=e580]: New Project Role
+                      - text: and add the
+                      - strong [ref=e581]: Project Admin
+                      - text: role to the
+                      - strong [ref=e582]: Default
+                      - text: project. Click on
+                      - strong [ref=e583]: Confirm
+                      - text: to save the changes.
+                    - paragraph [ref=e584]:
+                      - img "Image of project roles highlighted" [ref=e585]
+                - heading "Sync Keycloak Groups and Palette TeamsDirect link to Sync Keycloak Groups and Palette Teams" [level=3] [ref=e586]:
+                  - text: Sync Keycloak Groups and Palette Teams
+                  - link "Direct link to Sync Keycloak Groups and Palette Teams" [ref=e587] [cursor=pointer]:
+                    - /url: "#sync-keycloak-groups-and-palette-teams"
+                    - text: "#"
+                - list [ref=e588]:
+                  - listitem [ref=e589]:
+                    - paragraph [ref=e590]:
+                      - text: Switch back to the Keycloak admin console and modify the
+                      - strong [ref=e591]: profile
+                      - text: Client Scope. Navigate to the left
+                      - strong [ref=e592]: Main Menu
+                      - text: and select
+                      - strong [ref=e593]: Client Scope
+                      - text: . Click on the
+                      - strong [ref=e594]: Profile
+                      - text: button.
+                    - paragraph [ref=e595]:
+                      - img "Image of keycloak mappers highlighted" [ref=e596]
+                  - listitem [ref=e597]:
+                    - paragraph [ref=e598]:
+                      - text: Within the
+                      - strong [ref=e599]: profile
+                      - text: Client scope details, click
+                      - strong [ref=e600]: Mappers
+                      - text: ", then"
+                      - strong [ref=e601]: Add mapper
+                      - text: and
+                      - strong [ref=e602]: By configuration
+                      - text: .
+                  - listitem [ref=e603]:
+                    - paragraph [ref=e604]:
+                      - text: Navigate to
+                      - strong [ref=e605]: Group Membership
+                      - text: in the Configure a new mapper modal.
+                  - listitem [ref=e606]:
+                    - paragraph [ref=e607]:
+                      - text: Next, ensure the
+                      - strong [ref=e608]: Name
+                      - text: and
+                      - strong [ref=e609]: Token Claim Name
+                      - text: fields are both
+                      - strong [ref=e610]: groups
+                      - text: .
+                    - paragraph [ref=e611]:
+                      - img "Image of keycloak client scopes highlighted" [ref=e612]
+                  - listitem [ref=e613]:
+                    - paragraph [ref=e614]:
+                      - text: Deselect the radio button for
+                      - strong [ref=e615]: Full group path
+                      - text: .
+                  - listitem [ref=e616]:
+                    - paragraph [ref=e617]: Save the add mapper page.
+                - paragraph [ref=e618]: You have now ensured that the groups for the Keycloak user are within the token attributes, ensure the Keycloak group and the Palette group match.
+                - heading "Default TeamsDirect link to Default Teams" [level=3] [ref=e619]:
+                  - text: Default Teams
+                  - link "Direct link to Default Teams" [ref=e620] [cursor=pointer]:
+                    - /url: "#default-teams"
+                    - text: "#"
+                - list [ref=e621]:
+                  - listitem [ref=e622]:
+                    - paragraph [ref=e623]:
+                      - text: From the left
+                      - strong [ref=e624]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e625]: Tenant Settings
+                      - text: . Next, click on
+                      - strong [ref=e626]: SSO
+                      - text: to access the SSO configuration page. Click on the
+                      - strong [ref=e627]: OIDC
+                      - text: tab to access the OIDC configuration page. Scroll down to the
+                      - strong [ref=e628]: SSO Admins
+                      - text: section and select the
+                      - strong [ref=e629]: admins
+                      - text: team from the
+                      - strong [ref=e630]: Default Team
+                      - text: drop-down Menu. Click on
+                      - strong [ref=e631]: Save
+                      - text: .
+                  - listitem [ref=e632]:
+                    - paragraph [ref=e633]:
+                      - text: Navigate back to the Keycloak admin console. From the left
+                      - strong [ref=e634]: Main Menu
+                      - text: click on
+                      - strong [ref=e635]: Users
+                      - text: . Create a user and ensure the field
+                      - strong [ref=e636]: Username
+                      - text: ","
+                      - strong [ref=e637]: Email
+                      - text: ", and"
+                      - strong [ref=e638]: First Name
+                      - text: are filled out. Click on
+                      - strong [ref=e639]: Save
+                      - text: to save the user.
+                    - paragraph [ref=e640]:
+                      - img "Keycloak&#39;s management portal with the User view in focus" [ref=e641]
+                  - listitem [ref=e642]:
+                    - paragraph [ref=e643]:
+                      - text: Next, click on the
+                      - strong [ref=e644]: Credentials
+                      - text: tab and assign the user password.
+                    - paragraph [ref=e645]:
+                      - img "Keycloak&#39;s management portal with the User view in focus that lists all current users" [ref=e646]
+                - paragraph [ref=e647]:
+                  - text: Repeat the steps above for all users you want to add to the
+                  - strong [ref=e648]: admins
+                  - text: team. You can now log in to Palette with the users you created in Keycloak. The users will be assigned the
+                  - strong [ref=e649]: Project Admin
+                  - text: role for the
+                  - strong [ref=e650]: Default
+                  - text: project. Check out the
+                  - link "Creating users" [ref=e651] [cursor=pointer]:
+                    - /url: https://www.keycloak.org/docs/latest/server_admin/index.html#proc-creating-user_server_administration_guide
+                  - text: guide to learn how to create users in Keycloak.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e652]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e653] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e654]:
+                  - listitem [ref=e655]:
+                    - paragraph [ref=e656]:
+                      - link "Keycloak Documentation" [ref=e657] [cursor=pointer]:
+                        - /url: https://www.keycloak.org/documentation
+                  - listitem [ref=e658]:
+                    - paragraph [ref=e659]:
+                      - link "Keycloak Quickstart" [ref=e660] [cursor=pointer]:
+                        - /url: https://www.keycloak.org/getting-started/getting-started-kube
+                  - listitem [ref=e661]:
+                    - paragraph [ref=e662]:
+                      - link "Create Keycloak Users" [ref=e663] [cursor=pointer]:
+                        - /url: https://www.keycloak.org/docs/latest/server_admin/index.html#proc-creating-user_server_administration_guide
+              - generic [ref=e664]:
+                - generic [ref=e666]:
+                  - text: "Tags:"
+                  - list [ref=e667]:
+                    - listitem [ref=e668]:
+                      - link "user-management" [ref=e669] [cursor=pointer]:
+                        - /url: /tags/user-management/
+                    - listitem [ref=e670]:
+                      - link "oidc-sso" [ref=e671] [cursor=pointer]:
+                        - /url: /tags/oidc-sso/
+                    - listitem [ref=e672]:
+                      - link "Keycloak" [ref=e673] [cursor=pointer]:
+                        - /url: /tags/keycloak/
+                - link "Edit this page" [ref=e676] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/user-management/saml-sso/palette-sso-with-keycloak.md
+                  - img [ref=e677]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e681]:
+              - link "Previous « Palette SSO with OneLogin" [ref=e682] [cursor=pointer]:
+                - /url: /user-management/saml-sso/palette-sso-with-onelogin/
+                - generic [ref=e683]: Previous
+                - generic [ref=e684]: « Palette SSO with OneLogin
+              - link "Next Palette SSO with Microsoft Entra ID »" [ref=e685] [cursor=pointer]:
+                - /url: /user-management/saml-sso/palette-sso-with-entra-id/
+                - generic [ref=e686]: Next
+                - generic [ref=e687]: Palette SSO with Microsoft Entra ID »
+          - list [ref=e690]:
+            - listitem [ref=e691]:
+              - link "Prerequisites" [ref=e692] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e693]:
+              - link "Enable SSO with Keycloak" [ref=e694] [cursor=pointer]:
+                - /url: "#enable-sso-with-keycloak"
+            - listitem [ref=e695]:
+              - link "Validate" [ref=e696] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e697]:
+              - link "Create a Team" [ref=e698] [cursor=pointer]:
+                - /url: "#create-a-team"
+              - list [ref=e699]:
+                - listitem [ref=e700]:
+                  - link "Sync Keycloak Groups and Palette Teams" [ref=e701] [cursor=pointer]:
+                    - /url: "#sync-keycloak-groups-and-palette-teams"
+                - listitem [ref=e702]:
+                  - link "Default Teams" [ref=e703] [cursor=pointer]:
+                    - /url: "#default-teams"
+            - listitem [ref=e704]:
+              - link "Resources" [ref=e705] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e706] [cursor=pointer]:
+    - generic [ref=e709]:
+      - img "Project Logo" [ref=e710]
+      - paragraph [ref=e711]: Ask AI
+```

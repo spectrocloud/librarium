@@ -1,0 +1,1029 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Ctrl+K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e27]: Search
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e34]:
+          - link "Spectro cloud logo" [ref=e35] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e36]
+          - navigation "Docs sidebar" [ref=e37]:
+            - list [ref=e38]:
+              - listitem [ref=e39]:
+                - generic [ref=e40]:
+                  - link "Release Notes" [ref=e41] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e43]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e45] [cursor=pointer]
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - link "Security Bulletins" [ref=e48] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e50]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "What is Palette?" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e57]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e59] [cursor=pointer]
+              - listitem [ref=e60]:
+                - link "Getting Started" [ref=e61] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e63]
+                  - text: Getting Started
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Architecture" [ref=e67] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e69]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Profiles" [ref=e74] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e76]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - link "Deployment Modes" [ref=e83] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e85]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e87] [cursor=pointer]
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Clusters" [expanded] [ref=e90] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e92]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e98] [cursor=pointer]
+                - list [ref=e99]:
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Public Cloud Clusters" [ref=e102] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e104]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e106] [cursor=pointer]
+                  - listitem [ref=e107]:
+                    - generic [ref=e108]:
+                      - link "Data Center Clusters" [expanded] [ref=e109] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e111]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e113] [cursor=pointer]
+                    - list [ref=e114]:
+                      - listitem [ref=e115]:
+                        - generic [ref=e116]:
+                          - link "MAAS" [ref=e117] [cursor=pointer]:
+                            - /url: /clusters/data-center/maas/
+                          - button "Toggle the collapsible sidebar category 'MAAS'" [ref=e118] [cursor=pointer]
+                      - listitem [ref=e119]:
+                        - generic [ref=e120]:
+                          - link "Nutanix" [expanded] [ref=e121] [cursor=pointer]:
+                            - /url: /clusters/data-center/nutanix/
+                          - button "Toggle the collapsible sidebar category 'Nutanix'" [ref=e122] [cursor=pointer]
+                        - list [ref=e123]:
+                          - listitem [ref=e124]:
+                            - link "Architecture" [ref=e125] [cursor=pointer]:
+                              - /url: /clusters/data-center/nutanix/architecture/
+                          - listitem [ref=e126]:
+                            - link "Register Nutanix Cloud" [ref=e127] [cursor=pointer]:
+                              - /url: /clusters/data-center/nutanix/register-nutanix-cloud/
+                          - listitem [ref=e128]:
+                            - generic [ref=e129]:
+                              - link "Install Private Cloud Gateway" [ref=e130] [cursor=pointer]:
+                                - /url: /clusters/data-center/nutanix/install-pcg/
+                              - button "Toggle the collapsible sidebar category 'Install Private Cloud Gateway'" [ref=e131] [cursor=pointer]
+                          - listitem [ref=e132]:
+                            - link "Add Nutanix Cloud Account" [ref=e133] [cursor=pointer]:
+                              - /url: /clusters/data-center/nutanix/add-nutanix-cloud-account/
+                          - listitem [ref=e134]:
+                            - link "Create and Manage Nutanix Cluster" [ref=e135] [cursor=pointer]:
+                              - /url: /clusters/data-center/nutanix/create-manage-nutanix-cluster/
+                      - listitem [ref=e136]:
+                        - link "OpenStack" [ref=e137] [cursor=pointer]:
+                          - /url: /clusters/data-center/openstack/
+                      - listitem [ref=e138]:
+                        - generic [ref=e139]:
+                          - link "VMware" [ref=e140] [cursor=pointer]:
+                            - /url: /clusters/data-center/vmware/
+                          - button "Toggle the collapsible sidebar category 'VMware'" [ref=e141] [cursor=pointer]
+                  - listitem [ref=e142]:
+                    - generic [ref=e143]:
+                      - link "Edge" [ref=e144] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e146]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e148] [cursor=pointer]
+                  - listitem [ref=e149]:
+                    - generic [ref=e150]:
+                      - link "Palette Virtual Clusters" [ref=e151] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e153]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e155] [cursor=pointer]
+                  - listitem [ref=e156]:
+                    - generic [ref=e157]:
+                      - link "Imported Clusters" [ref=e158] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e160]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e162] [cursor=pointer]
+                  - listitem [ref=e163]:
+                    - generic [ref=e164]:
+                      - link "Manage Clusters" [ref=e165] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e167]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e169] [cursor=pointer]
+                  - listitem [ref=e170]:
+                    - generic [ref=e171]:
+                      - link "Cluster Groups" [ref=e172] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e174]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e176] [cursor=pointer]
+                  - listitem [ref=e177]:
+                    - generic [ref=e178]:
+                      - link "Private Cloud Gateway" [ref=e179] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e181]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e183] [cursor=pointer]
+              - listitem [ref=e184]:
+                - generic [ref=e185]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e186] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e188]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e190] [cursor=pointer]
+              - listitem [ref=e191]:
+                - generic [ref=e192]:
+                  - link "Palette Dev Engine" [ref=e193] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e195]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e197] [cursor=pointer]
+              - listitem [ref=e198]:
+                - generic [ref=e199]:
+                  - link "Virtual Machine Orchestrator" [ref=e200] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e202]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e204] [cursor=pointer]
+              - listitem [ref=e205]:
+                - generic [ref=e206]:
+                  - link "Workspaces" [ref=e207] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e209]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e211] [cursor=pointer]
+              - listitem [ref=e212]:
+                - generic [ref=e213]:
+                  - link "Packs List" [ref=e214] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e216]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e218] [cursor=pointer]
+              - listitem [ref=e219]:
+                - generic [ref=e220]:
+                  - link "User & Role Management" [ref=e221] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e223]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e225] [cursor=pointer]
+              - listitem [ref=e226]:
+                - generic [ref=e227]:
+                  - link "Registries and Packs" [ref=e228] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e230]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e232] [cursor=pointer]
+              - listitem [ref=e233]:
+                - generic [ref=e234]:
+                  - link "Security" [ref=e235] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e237]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e239] [cursor=pointer]
+              - listitem [ref=e240]:
+                - generic [ref=e241]:
+                  - link "Audit Logs" [ref=e242] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e244]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e246] [cursor=pointer]
+              - listitem [ref=e247]:
+                - generic [ref=e248]:
+                  - link "Self-Hosted Palette" [ref=e249] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e251]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e253] [cursor=pointer]
+              - listitem [ref=e254]:
+                - generic [ref=e255]:
+                  - link "Palette VerteX" [ref=e256] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e258]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e260] [cursor=pointer]
+              - listitem [ref=e261]:
+                - generic [ref=e262]:
+                  - link "Tenant Administration" [ref=e263] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e265]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e267] [cursor=pointer]
+              - listitem [ref=e268]:
+                - generic [ref=e269]:
+                  - link "Automation" [ref=e270] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e272]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e274] [cursor=pointer]
+              - listitem [ref=e275]:
+                - generic [ref=e276]:
+                  - link "Troubleshooting" [ref=e277] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e279]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e281] [cursor=pointer]
+              - listitem [ref=e282]:
+                - link "Glossary" [ref=e283] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e285]
+                  - text: Glossary
+              - listitem [ref=e287]:
+                - generic [ref=e288]:
+                  - link "Compliance & Legal" [ref=e289] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e291]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e293] [cursor=pointer]
+              - listitem [ref=e294]:
+                - button "Privacy Settings" [ref=e295] [cursor=pointer]:
+                  - img [ref=e296]
+                  - text: Privacy Settings
+      - main [ref=e298]:
+        - generic [ref=e300]:
+          - generic [ref=e302]:
+            - article [ref=e303]:
+              - navigation "Breadcrumbs" [ref=e304]:
+                - list [ref=e305]:
+                  - listitem [ref=e306]:
+                    - link "Home page" [ref=e307] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e308]
+                  - listitem [ref=e310]:
+                    - link "Clusters" [ref=e311] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e312]:
+                    - link "Data Center Clusters" [ref=e313] [cursor=pointer]:
+                      - /url: /clusters/data-center/
+                  - listitem [ref=e314]:
+                    - link "Nutanix" [ref=e315] [cursor=pointer]:
+                      - /url: /clusters/data-center/nutanix/
+                  - listitem [ref=e316]:
+                    - generic [ref=e317]: Create and Manage Nutanix Cluster
+              - generic [ref=e318]:
+                - heading "Create and Manage Nutanix Cluster" [level=1] [ref=e320]
+                - paragraph [ref=e321]: Palette supports creating and managing Kubernetes clusters deployed to a Nutanix infrastructure environment. This section guides you in creating and updating a Kubernetes cluster in a Nutanix cloud managed by Palette.
+                - heading "Deploy a Nutanix ClusterDirect link to Deploy a Nutanix Cluster" [level=2] [ref=e322]:
+                  - text: Deploy a Nutanix Cluster
+                  - link "Direct link to Deploy a Nutanix Cluster" [ref=e323] [cursor=pointer]:
+                    - /url: "#deploy-a-nutanix-cluster"
+                    - text: "#"
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e324]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e325] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e326]:
+                  - listitem [ref=e327]:
+                    - text: A Nutanix cloud account added to Palette. Refer to
+                    - link "Add Nutanix Cloud Account" [ref=e328] [cursor=pointer]:
+                      - /url: /clusters/data-center/nutanix/add-nutanix-cloud-account/
+                    - text: .
+                - list [ref=e329]:
+                  - listitem [ref=e330]:
+                    - paragraph [ref=e331]:
+                      - text: A Nutanix Private Cloud Gateway (PCG) deployed. For guidance, review
+                      - link "Install Private Cloud Gateway" [ref=e332] [cursor=pointer]:
+                        - /url: /clusters/data-center/nutanix/install-pcg/
+                      - text: .
+                  - listitem [ref=e333]:
+                    - paragraph [ref=e334]:
+                      - text: An infrastructure cluster profile created for the Nutanix cloud. For guidance on creating a profile, refer to
+                      - link "Create an Infrastructure Profile" [ref=e335] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile/
+                      - text: . At the
+                      - strong [ref=e336]: Cloud Type
+                      - text: step of profile creation, select
+                      - strong [ref=e337]: Nutanix
+                      - text: listed under the
+                      - strong [ref=e338]: Tech Preview
+                      - text: . Select the custom packs provided at the OS and Kubernetes layers. Palette provides out-of-the-box packs for the network and storage profile layers, including the
+                      - link "Nutanix CSI" [ref=e339] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=nutanix-csi
+                      - text: storage pack.
+                  - listitem [ref=e340]:
+                    - paragraph [ref=e341]:
+                      - text: A Nutanix Prism Central account with
+                      - emphasis [ref=e342]: Prism Admin
+                      - text: role.
+                  - listitem [ref=e343]:
+                    - paragraph [ref=e344]: A Nutanix Prism Element cluster created.
+                  - listitem [ref=e345]:
+                    - paragraph [ref=e346]: A Nutanix subnet created in Nutanix Prism Central that will be assigned to the Virtual Machines (VMs) that will make up the Kubernetes cluster.
+                  - listitem [ref=e347]:
+                    - paragraph [ref=e348]:
+                      - text: A Nutanix Cluster API (CAPI) OS image. For guidance on creating the image, refer to
+                      - link "Building CAPI Images for Nutanix Cloud Platform" [ref=e349] [cursor=pointer]:
+                        - /url: https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp
+                      - text: .
+                - heading "EnablementDirect link to Enablement" [level=3] [ref=e350]:
+                  - text: Enablement
+                  - link "Direct link to Enablement" [ref=e351] [cursor=pointer]:
+                    - /url: "#enablement"
+                    - text: "#"
+                - paragraph [ref=e352]: Follow the steps below to deploy a Nutanix cluster.
+                - list [ref=e353]:
+                  - listitem [ref=e354]:
+                    - paragraph [ref=e355]:
+                      - text: Log in to
+                      - link "Palette" [ref=e356] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e357]:
+                    - paragraph [ref=e358]: Ensure you are in the correct project scope.
+                  - listitem [ref=e359]:
+                    - paragraph [ref=e360]:
+                      - text: From the left
+                      - strong [ref=e361]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e362]: Clusters
+                      - text: and click
+                      - strong [ref=e363]: Add New Cluster
+                      - text: .
+                  - listitem [ref=e364]:
+                    - paragraph [ref=e365]:
+                      - text: In
+                      - strong [ref=e366]: Tech Preview
+                      - text: ", select"
+                      - strong [ref=e367]: Nutanix
+                      - text: .
+                  - listitem [ref=e368]:
+                    - paragraph [ref=e369]:
+                      - text: In the bottom-right corner, click
+                      - strong [ref=e370]: Start Nutanix Configuration
+                      - text: .
+                  - listitem [ref=e371]:
+                    - paragraph [ref=e372]:
+                      - text: Fill out the following basic information, and click
+                      - strong [ref=e373]: Next
+                      - text: to continue.
+                    - table [ref=e374]:
+                      - rowgroup [ref=e375]:
+                        - row "Field Description" [ref=e376]:
+                          - cell "Field" [ref=e377]:
+                            - strong [ref=e378]: Field
+                          - cell "Description" [ref=e379]:
+                            - strong [ref=e380]: Description
+                      - rowgroup [ref=e381]:
+                        - row "Cluster Name A custom name for your cluster." [ref=e382]:
+                          - cell "Cluster Name" [ref=e383]:
+                            - strong [ref=e384]: Cluster Name
+                          - cell "A custom name for your cluster." [ref=e385]
+                        - row "Description Use the description to provide context about the cluster." [ref=e386]:
+                          - cell "Description" [ref=e387]:
+                            - strong [ref=e388]: Description
+                          - cell "Use the description to provide context about the cluster." [ref=e389]
+                        - row "Tags Assign any desired cluster tags." [ref=e390]:
+                          - cell "Tags" [ref=e391]:
+                            - strong [ref=e392]: Tags
+                          - cell "Assign any desired cluster tags." [ref=e393]
+                        - row "Cloud Account Select your Nutanix account from the drop-down Menu." [ref=e394]:
+                          - cell "Cloud Account" [ref=e395]:
+                            - strong [ref=e396]: Cloud Account
+                          - cell "Select your Nutanix account from the drop-down Menu." [ref=e397]:
+                            - text: Select your Nutanix account from the
+                            - strong [ref=e398]: drop-down Menu
+                            - text: .
+                  - listitem [ref=e399]:
+                    - paragraph [ref=e400]:
+                      - text: Select the Nutanix cluster profile you created and click
+                      - strong [ref=e401]: Next
+                      - text: . Palette displays the profile layers.
+                  - listitem [ref=e402]:
+                    - paragraph [ref=e403]:
+                      - text: Review profile layers, leaving the OS and Kubernetes packs empty, and customize parameters as desired in the YAML files that display when you select the network and storage layers. Click
+                      - strong [ref=e404]: Next
+                      - text: when you are done.
+                  - listitem [ref=e405]:
+                    - paragraph [ref=e406]:
+                      - text: In the
+                      - strong [ref=e407]: Cluster Configuration Macros
+                      - text: pane, enter values that apply to your Nutanix cloud environment and, if necessary, adjust the
+                      - strong [ref=e408]: Cluster configuration
+                      - text: YAML file to configure your cluster. Click
+                      - strong [ref=e409]: Next
+                      - text: when you are ready to proceed.
+                    - generic [ref=e410]:
+                      - generic [ref=e411]:
+                        - img [ref=e413]
+                        - text: info
+                      - paragraph [ref=e416]: The inactive fields are auto-populated from your Nutanix cloud account configuration. When entering other macros, make sure to verify the default values.
+                    - table [ref=e417]:
+                      - rowgroup [ref=e418]:
+                        - row "Field Description" [ref=e419]:
+                          - cell "Field" [ref=e420]:
+                            - strong [ref=e421]: Field
+                          - cell "Description" [ref=e422]:
+                            - strong [ref=e423]: Description
+                      - rowgroup [ref=e424]:
+                        - row "NUTANIX_ADDITIONAL_TRUST_BUNDLE An optional environment variable that allows CAPX to verify certificates that are not issued by a publicly trusted certificate authority. For more information, refer to the Nutanix Certificate Trust guide." [ref=e425]:
+                          - cell "NUTANIX_ADDITIONAL_TRUST_BUNDLE" [ref=e426]:
+                            - strong [ref=e427]: NUTANIX_ADDITIONAL_TRUST_BUNDLE
+                          - cell "An optional environment variable that allows CAPX to verify certificates that are not issued by a publicly trusted certificate authority. For more information, refer to the Nutanix Certificate Trust guide." [ref=e428]:
+                            - text: An optional environment variable that allows CAPX to verify certificates that are not issued by a publicly trusted certificate authority. For more information, refer to the
+                            - link "Nutanix Certificate Trust" [ref=e429] [cursor=pointer]:
+                              - /url: https://opendocs.nutanix.com/capx/v1.2.x/pc_certificates/#configure-an-additional-trust-bundle
+                            - text: guide.
+                        - row "CONTROL_PLANE_ENDPOINT_IP The host IP of the CAPX Kubernetes cluster." [ref=e430]:
+                          - cell "CONTROL_PLANE_ENDPOINT_IP" [ref=e431]:
+                            - strong [ref=e432]: CONTROL_PLANE_ENDPOINT_IP
+                          - cell "The host IP of the CAPX Kubernetes cluster." [ref=e433]
+                        - row "CONTROL_PLANE_ENDPOINT_PORT Port of the CAPX Kubernetes cluster that you assigned in cloudClusterTemplate.yaml. Defaults to 6443." [ref=e434]:
+                          - cell "CONTROL_PLANE_ENDPOINT_PORT" [ref=e435]:
+                            - strong [ref=e436]: CONTROL_PLANE_ENDPOINT_PORT
+                          - cell "Port of the CAPX Kubernetes cluster that you assigned in cloudClusterTemplate.yaml. Defaults to 6443." [ref=e437]:
+                            - text: Port of the CAPX Kubernetes cluster that you assigned in
+                            - code [ref=e438]: cloudClusterTemplate.yaml
+                            - text: . Defaults to
+                            - code [ref=e439]: "6443"
+                            - text: .
+                  - listitem [ref=e440]:
+                    - paragraph [ref=e441]:
+                      - text: In the
+                      - strong [ref=e442]: Node Pool Configuration Macros
+                      - text: panes for the control plane and worker pools, enter the values that apply to your Nutanix cloud environment and, if necessary, adjust their
+                      - strong [ref=e443]: Node pool configuration
+                      - text: YAML files.
+                    - paragraph [ref=e444]:
+                      - text: You can configure scaling in the Palette UI by specifying the number of nodes in the pool. This corresponds to
+                      - code [ref=e445]: replicas
+                      - text: in the YAML file.
+                    - generic [ref=e446]:
+                      - generic [ref=e447]:
+                        - img [ref=e449]
+                        - text: info
+                      - paragraph [ref=e452]: The inactive fields are auto-populated from the cluster configuration specified in the previous step. When entering other macros, make sure to verify the default values.
+                    - heading "Control Plane PoolDirect link to Control Plane Pool" [level=4] [ref=e453]:
+                      - text: Control Plane Pool
+                      - link "Direct link to Control Plane Pool" [ref=e454] [cursor=pointer]:
+                        - /url: "#control-plane-pool"
+                        - text: "#"
+                    - table [ref=e455]:
+                      - rowgroup [ref=e456]:
+                        - row "Field Description" [ref=e457]:
+                          - cell "Field" [ref=e458]:
+                            - strong [ref=e459]: Field
+                          - cell "Description" [ref=e460]:
+                            - strong [ref=e461]: Description
+                      - rowgroup [ref=e462]:
+                        - row "TLS_CIPHER_SUITES Cryptographic algorithms for securing network communications. Refer to Nutanix Cryptographic Module for OpenSSL for more options and details." [ref=e463]:
+                          - cell "TLS_CIPHER_SUITES" [ref=e464]:
+                            - strong [ref=e465]: TLS_CIPHER_SUITES
+                          - cell "Cryptographic algorithms for securing network communications. Refer to Nutanix Cryptographic Module for OpenSSL for more options and details." [ref=e466]:
+                            - text: Cryptographic algorithms for securing network communications. Refer to
+                            - link "Nutanix Cryptographic Module for OpenSSL" [ref=e467] [cursor=pointer]:
+                              - /url: https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp3460.pdf
+                            - text: for more options and details.
+                        - row "KUBEVIP_SVC_ENABLE This setting enables a service of type LoadBalancer. Refer to the Kubernetes Service Load Balancing docs for details." [ref=e468]:
+                          - cell "KUBEVIP_SVC_ENABLE" [ref=e469]:
+                            - strong [ref=e470]: KUBEVIP_SVC_ENABLE
+                          - cell "This setting enables a service of type LoadBalancer. Refer to the Kubernetes Service Load Balancing docs for details." [ref=e471]:
+                            - text: This setting enables a service of type
+                            - code [ref=e472]: LoadBalancer
+                            - text: . Refer to the
+                            - link "Kubernetes Service Load Balancing docs" [ref=e473] [cursor=pointer]:
+                              - /url: https://kube-vip.io/docs/about/architecture/#kubernetes-service-load-balancing
+                            - text: for details.
+                        - row "KUBEVIP_LB_ENABLE This setting allows control plane load balancing using IPVS. Refer to the Control Plane Load-Balancing docs for details." [ref=e474]:
+                          - cell "KUBEVIP_LB_ENABLE" [ref=e475]:
+                            - strong [ref=e476]: KUBEVIP_LB_ENABLE
+                          - cell "This setting allows control plane load balancing using IPVS. Refer to the Control Plane Load-Balancing docs for details." [ref=e477]:
+                            - text: This setting allows control plane load balancing using IPVS. Refer to the
+                            - link "Control Plane Load-Balancing docs" [ref=e478] [cursor=pointer]:
+                              - /url: https://kube-vip.io/docs/about/architecture/#control-plane-load-balancing
+                            - text: for details.
+                        - row "KUBEVIP_SVC_ELECTION This setting enables watching services of type LoadBalancer." [ref=e479]:
+                          - cell "KUBEVIP_SVC_ELECTION" [ref=e480]:
+                            - strong [ref=e481]: KUBEVIP_SVC_ELECTION
+                          - cell "This setting enables watching services of type LoadBalancer." [ref=e482]:
+                            - text: This setting enables watching services of type
+                            - code [ref=e483]: LoadBalancer
+                            - text: .
+                        - row "NUTANIX_SSH_AUTHORIZED_KEY Your public SSH key." [ref=e484]:
+                          - cell "NUTANIX_SSH_AUTHORIZED_KEY" [ref=e485]:
+                            - strong [ref=e486]: NUTANIX_SSH_AUTHORIZED_KEY
+                          - cell "Your public SSH key." [ref=e487]
+                        - row "KUBERNETES_VERSION Your cluster Kubernetes version preceded with v, for example, v1.26.3." [ref=e488]:
+                          - cell "KUBERNETES_VERSION" [ref=e489]:
+                            - strong [ref=e490]: KUBERNETES_VERSION
+                          - cell "Your cluster Kubernetes version preceded with v, for example, v1.26.3." [ref=e491]:
+                            - text: Your cluster Kubernetes version preceded with
+                            - code [ref=e492]: v
+                            - text: ", for example,"
+                            - code [ref=e493]: v1.26.3
+                            - text: .
+                        - 'row "NUTANIX_MACHINE_BOOT_TYPE The VM boot type. Depends on the OS image you''re using. Allowed values: legacy, uefi. Defaults to legacy." [ref=e494]':
+                          - cell "NUTANIX_MACHINE_BOOT_TYPE" [ref=e495]:
+                            - strong [ref=e496]: NUTANIX_MACHINE_BOOT_TYPE
+                          - 'cell "The VM boot type. Depends on the OS image you''re using. Allowed values: legacy, uefi. Defaults to legacy." [ref=e497]':
+                            - text: "The VM boot type. Depends on the OS image you're using. Allowed values:"
+                            - code [ref=e498]: legacy
+                            - text: ","
+                            - code [ref=e499]: uefi
+                            - text: . Defaults to
+                            - code [ref=e500]: legacy
+                            - text: .
+                        - row "NUTANIX_PRISM_ELEMENT_CLUSTER_NAME The name of your Nutanix AHV cluster as defined in Prism." [ref=e501]:
+                          - cell "NUTANIX_PRISM_ELEMENT_CLUSTER_NAME" [ref=e502]:
+                            - strong [ref=e503]: NUTANIX_PRISM_ELEMENT_CLUSTER_NAME
+                          - cell "The name of your Nutanix AHV cluster as defined in Prism." [ref=e504]
+                        - row "NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME The name of your OS image as defined in Prism Central. To locate images, in the Nutanix Prism dashboard, navigate to Compute & Storage and select Images." [ref=e505]:
+                          - cell "NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME" [ref=e506]:
+                            - strong [ref=e507]: NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME
+                          - cell "The name of your OS image as defined in Prism Central. To locate images, in the Nutanix Prism dashboard, navigate to Compute & Storage and select Images." [ref=e508]:
+                            - text: The name of your OS image as defined in Prism Central. To locate images, in the Nutanix Prism dashboard, navigate to
+                            - strong [ref=e509]: Compute & Storage
+                            - text: and select
+                            - strong [ref=e510]: Images
+                            - text: .
+                        - row "NUTANIX_MACHINE_MEMORY_SIZE Amount of memory. Defaults to 4Gi." [ref=e511]:
+                          - cell "NUTANIX_MACHINE_MEMORY_SIZE" [ref=e512]:
+                            - strong [ref=e513]: NUTANIX_MACHINE_MEMORY_SIZE
+                          - cell "Amount of memory. Defaults to 4Gi." [ref=e514]:
+                            - text: Amount of memory. Defaults to
+                            - code [ref=e515]: 4Gi
+                            - text: .
+                        - row "NUTANIX_SUBNET_NAME The name of the subnet defined in Prism Central, which will be assigned to the VMs deployed in this cluster." [ref=e516]:
+                          - cell "NUTANIX_SUBNET_NAME" [ref=e517]:
+                            - strong [ref=e518]: NUTANIX_SUBNET_NAME
+                          - cell "The name of the subnet defined in Prism Central, which will be assigned to the VMs deployed in this cluster." [ref=e519]
+                        - row "NUTANIX_SYSTEMDISK_SIZE Amount of storage assigned to the system disk. Defaults to 40Gi." [ref=e520]:
+                          - cell "NUTANIX_SYSTEMDISK_SIZE" [ref=e521]:
+                            - strong [ref=e522]: NUTANIX_SYSTEMDISK_SIZE
+                          - cell "Amount of storage assigned to the system disk. Defaults to 40Gi." [ref=e523]:
+                            - text: Amount of storage assigned to the system disk. Defaults to
+                            - code [ref=e524]: 40Gi
+                            - text: .
+                        - row "NUTANIX_MACHINE_VCPU_SOCKET Number of vCPU sockets. Defaults to 2." [ref=e525]:
+                          - cell "NUTANIX_MACHINE_VCPU_SOCKET" [ref=e526]:
+                            - strong [ref=e527]: NUTANIX_MACHINE_VCPU_SOCKET
+                          - cell "Number of vCPU sockets. Defaults to 2." [ref=e528]:
+                            - text: Number of vCPU sockets. Defaults to
+                            - code [ref=e529]: "2"
+                            - text: .
+                        - row "NUTANIX_MACHINE_VCPU_PER_SOCKET Number of vCPUs per socket. Defaults to 1." [ref=e530]:
+                          - cell "NUTANIX_MACHINE_VCPU_PER_SOCKET" [ref=e531]:
+                            - strong [ref=e532]: NUTANIX_MACHINE_VCPU_PER_SOCKET
+                          - cell "Number of vCPUs per socket. Defaults to 1." [ref=e533]:
+                            - text: Number of vCPUs per socket. Defaults to
+                            - code [ref=e534]: "1"
+                            - text: .
+                    - heading "Worker PoolDirect link to Worker Pool" [level=4] [ref=e535]:
+                      - text: Worker Pool
+                      - link "Direct link to Worker Pool" [ref=e536] [cursor=pointer]:
+                        - /url: "#worker-pool"
+                        - text: "#"
+                    - table [ref=e537]:
+                      - rowgroup [ref=e538]:
+                        - row "Field Description" [ref=e539]:
+                          - cell "Field" [ref=e540]:
+                            - strong [ref=e541]: Field
+                          - cell "Description" [ref=e542]:
+                            - strong [ref=e543]: Description
+                      - rowgroup [ref=e544]:
+                        - row "KUBERNETES_VERSION Your cluster Kubernetes version preceded with v, for example, v1.26.3." [ref=e545]:
+                          - cell "KUBERNETES_VERSION" [ref=e546]:
+                            - strong [ref=e547]: KUBERNETES_VERSION
+                          - cell "Your cluster Kubernetes version preceded with v, for example, v1.26.3." [ref=e548]:
+                            - text: Your cluster Kubernetes version preceded with
+                            - code [ref=e549]: v
+                            - text: ", for example,"
+                            - code [ref=e550]: v1.26.3
+                            - text: .
+                        - 'row "NUTANIX_MACHINE_BOOT_TYPE The VM boot type. Depends on the OS image you''re using. Allowed values: legacy, uefi. Defaults to legacy." [ref=e551]':
+                          - cell "NUTANIX_MACHINE_BOOT_TYPE" [ref=e552]:
+                            - strong [ref=e553]: NUTANIX_MACHINE_BOOT_TYPE
+                          - 'cell "The VM boot type. Depends on the OS image you''re using. Allowed values: legacy, uefi. Defaults to legacy." [ref=e554]':
+                            - text: "The VM boot type. Depends on the OS image you're using. Allowed values:"
+                            - code [ref=e555]: legacy
+                            - text: ","
+                            - code [ref=e556]: uefi
+                            - text: . Defaults to
+                            - code [ref=e557]: legacy
+                            - text: .
+                        - row "NUTANIX_PRISM_ELEMENT_CLUSTER_NAME The name of your Nutanix AHV cluster as defined in Prism." [ref=e558]:
+                          - cell "NUTANIX_PRISM_ELEMENT_CLUSTER_NAME" [ref=e559]:
+                            - strong [ref=e560]: NUTANIX_PRISM_ELEMENT_CLUSTER_NAME
+                          - cell "The name of your Nutanix AHV cluster as defined in Prism." [ref=e561]
+                        - row "NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME The name of your OS image as defined in Prism Central. To locate images, in the Nutanix Prism dashboard, navigate to Compute & Storage and select Images." [ref=e562]:
+                          - cell "NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME" [ref=e563]:
+                            - strong [ref=e564]: NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME
+                          - cell "The name of your OS image as defined in Prism Central. To locate images, in the Nutanix Prism dashboard, navigate to Compute & Storage and select Images." [ref=e565]:
+                            - text: The name of your OS image as defined in Prism Central. To locate images, in the Nutanix Prism dashboard, navigate to
+                            - strong [ref=e566]: Compute & Storage
+                            - text: and select
+                            - strong [ref=e567]: Images
+                            - text: .
+                        - row "NUTANIX_MACHINE_MEMORY_SIZE Amount of memory. Defaults to 4Gi." [ref=e568]:
+                          - cell "NUTANIX_MACHINE_MEMORY_SIZE" [ref=e569]:
+                            - strong [ref=e570]: NUTANIX_MACHINE_MEMORY_SIZE
+                          - cell "Amount of memory. Defaults to 4Gi." [ref=e571]:
+                            - text: Amount of memory. Defaults to
+                            - code [ref=e572]: 4Gi
+                            - text: .
+                        - row "NUTANIX_SUBNET_NAME The name of the subnet defined in Prism Central, which will be assigned to the VMs deployed in this cluster." [ref=e573]:
+                          - cell "NUTANIX_SUBNET_NAME" [ref=e574]:
+                            - strong [ref=e575]: NUTANIX_SUBNET_NAME
+                          - cell "The name of the subnet defined in Prism Central, which will be assigned to the VMs deployed in this cluster." [ref=e576]
+                        - row "NUTANIX_SYSTEMDISK_SIZE Amount of storage assigned to the system disk. Defaults to 40Gi." [ref=e577]:
+                          - cell "NUTANIX_SYSTEMDISK_SIZE" [ref=e578]:
+                            - strong [ref=e579]: NUTANIX_SYSTEMDISK_SIZE
+                          - cell "Amount of storage assigned to the system disk. Defaults to 40Gi." [ref=e580]:
+                            - text: Amount of storage assigned to the system disk. Defaults to
+                            - code [ref=e581]: 40Gi
+                            - text: .
+                        - row "NUTANIX_MACHINE_VCPU_SOCKET Number of vCPU sockets. Defaults to 2." [ref=e582]:
+                          - cell "NUTANIX_MACHINE_VCPU_SOCKET" [ref=e583]:
+                            - strong [ref=e584]: NUTANIX_MACHINE_VCPU_SOCKET
+                          - cell "Number of vCPU sockets. Defaults to 2." [ref=e585]:
+                            - text: Number of vCPU sockets. Defaults to
+                            - code [ref=e586]: "2"
+                            - text: .
+                        - row "NUTANIX_MACHINE_VCPU_PER_SOCKET Number of vCPUs per socket. Defaults to 1." [ref=e587]:
+                          - cell "NUTANIX_MACHINE_VCPU_PER_SOCKET" [ref=e588]:
+                            - strong [ref=e589]: NUTANIX_MACHINE_VCPU_PER_SOCKET
+                          - cell "Number of vCPUs per socket. Defaults to 1." [ref=e590]:
+                            - text: Number of vCPUs per socket. Defaults to
+                            - code [ref=e591]: "1"
+                            - text: .
+                        - row "TLS_CIPHER_SUITES Cryptographic algorithms for securing network communications. Refer to Nutanix Cryptographic Module for OpenSSL for more options and details." [ref=e592]:
+                          - cell "TLS_CIPHER_SUITES" [ref=e593]:
+                            - strong [ref=e594]: TLS_CIPHER_SUITES
+                          - cell "Cryptographic algorithms for securing network communications. Refer to Nutanix Cryptographic Module for OpenSSL for more options and details." [ref=e595]:
+                            - text: Cryptographic algorithms for securing network communications. Refer to
+                            - link "Nutanix Cryptographic Module for OpenSSL" [ref=e596] [cursor=pointer]:
+                              - /url: https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp3460.pdf
+                            - text: for more options and details.
+                        - row "NUTANIX_SSH_AUTHORIZED_KEY Your public SSH key." [ref=e597]:
+                          - cell "NUTANIX_SSH_AUTHORIZED_KEY" [ref=e598]:
+                            - strong [ref=e599]: NUTANIX_SSH_AUTHORIZED_KEY
+                          - cell "Your public SSH key." [ref=e600]
+                  - listitem [ref=e601]:
+                    - paragraph [ref=e602]:
+                      - text: Click
+                      - strong [ref=e603]: Next
+                      - text: when you are done.
+                  - listitem [ref=e604]:
+                    - paragraph [ref=e605]: Review the options for OS patching schedule, scanning, backups, and RBAC.
+                  - listitem [ref=e606]:
+                    - paragraph [ref=e607]:
+                      - text: Click
+                      - strong [ref=e608]: Validate
+                      - text: and review the cluster configuration and settings summary.
+                  - listitem [ref=e609]:
+                    - paragraph [ref=e610]:
+                      - text: Click
+                      - strong [ref=e611]: Finish Configuration
+                      - text: to deploy the cluster. The cluster details page contains the status and details of the deployment. Use this page to track deployment progress. Provisioning clusters can take several minutes to complete.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e612]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e613] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e614]:
+                  - listitem [ref=e615]:
+                    - paragraph [ref=e616]:
+                      - text: Log in to
+                      - link "Palette" [ref=e617] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e618]:
+                    - paragraph [ref=e619]:
+                      - text: Navigate to the left
+                      - strong [ref=e620]: Main Menu
+                      - text: and select
+                      - strong [ref=e621]: Clusters
+                      - text: . The Clusters page displays a list of all available clusters that Palette manages.
+                  - listitem [ref=e622]:
+                    - paragraph [ref=e623]: Click on the Nutanix cluster you created to view its details page.
+                  - listitem [ref=e624]:
+                    - paragraph [ref=e625]:
+                      - text: Ensure the
+                      - strong [ref=e626]: Cluster Status
+                      - text: field displays
+                      - strong [ref=e627]: Running
+                      - text: .
+                - heading "Update a Deployed ClusterDirect link to Update a Deployed Cluster" [level=2] [ref=e628]:
+                  - text: Update a Deployed Cluster
+                  - link "Direct link to Update a Deployed Cluster" [ref=e629] [cursor=pointer]:
+                    - /url: "#update-a-deployed-cluster"
+                    - text: "#"
+                - paragraph [ref=e630]: Palette supports editing the settings of a deployed Nutanix cluster, including the control plane and worker node pool configurations. You can change the memory, CPU, or storage of your node pools. Follow the steps described below to update your cluster.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e631]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e632] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e633]:
+                  - listitem [ref=e634]: An active Nutanix cluster in Palette.
+                  - listitem [ref=e635]:
+                    - text: The
+                    - code [ref=e636]: cluster.update
+                    - text: permission to update clusters. Refer to
+                    - link "Roles and Permissions" [ref=e637] [cursor=pointer]:
+                      - /url: /user-management/palette-rbac/project-scope-roles-permissions/#cluster
+                    - text: for more information.
+                - heading "EnablementDirect link to Enablement" [level=3] [ref=e638]:
+                  - text: Enablement
+                  - link "Direct link to Enablement" [ref=e639] [cursor=pointer]:
+                    - /url: "#enablement-1"
+                    - text: "#"
+                - list [ref=e640]:
+                  - listitem [ref=e641]:
+                    - paragraph [ref=e642]:
+                      - text: Log in to
+                      - link "Palette" [ref=e643] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e644]:
+                    - paragraph [ref=e645]:
+                      - text: From the left
+                      - strong [ref=e646]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e647]: Clusters
+                      - text: .
+                  - listitem [ref=e648]:
+                    - paragraph [ref=e649]: Click on the Nutanix cluster you created.
+                  - listitem [ref=e650]:
+                    - paragraph [ref=e651]:
+                      - text: To edit the cluster settings, from the cluster details page, click
+                      - strong [ref=e652]: Settings
+                      - text: and select
+                      - strong [ref=e653]: Cluster Configuration
+                      - text: . Edit the YAML file that Palette displays.
+                - heading "Update Control Plane Node PoolDirect link to Update Control Plane Node Pool" [level=4] [ref=e654]:
+                  - text: Update Control Plane Node Pool
+                  - link "Direct link to Update Control Plane Node Pool" [ref=e655] [cursor=pointer]:
+                    - /url: "#update-control-plane-node-pool"
+                    - text: "#"
+                - list [ref=e656]:
+                  - listitem [ref=e657]:
+                    - paragraph [ref=e658]:
+                      - text: Navigate to the cluster details page and click the
+                      - strong [ref=e659]: Nodes
+                      - text: tab.
+                  - listitem [ref=e660]:
+                    - paragraph [ref=e661]:
+                      - text: In the control plane node pool you want to edit, click
+                      - strong [ref=e662]: Edit
+                      - text: to open its YAML configuration file.
+                  - listitem [ref=e663]:
+                    - paragraph [ref=e664]:
+                      - text: Edit the
+                      - code [ref=e665]: NutanixMachineTemplate
+                      - text: object. You can update the memory (
+                      - code [ref=e666]: memorySize
+                      - text: ), CPU (
+                      - code [ref=e667]: vcpuSockets
+                      - text: and
+                      - code [ref=e668]: vcpuPerSocket
+                      - text: ), and storage (
+                      - code [ref=e669]: systemDiskSize
+                      - text: ). Once you are finished changing the node pool configurations, update the
+                      - code [ref=e670]: name
+                      - text: parameter under the
+                      - code [ref=e671]: metadata
+                      - text: line. For example, if the previous name was
+                      - strong [ref=e672]: control-plane-pool-resource-3
+                      - text: ", rename it to"
+                      - strong [ref=e673]: control-plane-pool-resource-4
+                      - text: .
+                    - generic [ref=e674]:
+                      - generic [ref=e675]:
+                        - img [ref=e677]
+                        - text: warning
+                      - paragraph [ref=e680]: You must update the node pool name for the configuration updates to take effect.
+                  - listitem [ref=e681]:
+                    - paragraph [ref=e682]:
+                      - text: Edit the
+                      - code [ref=e683]: KubeadmControlPlane
+                      - text: object. Change the
+                      - code [ref=e684]: name
+                      - text: parameter under the
+                      - code [ref=e685]: "kind: NutanixMachineTemplate"
+                      - text: line to match the new name you used in the
+                      - code [ref=e686]: NutanixMachineTemplate
+                      - text: object.
+                  - listitem [ref=e687]:
+                    - paragraph [ref=e688]:
+                      - text: When you are done updating the control plane node pool configuration, click
+                      - strong [ref=e689]: Confirm
+                      - text: and
+                      - strong [ref=e690]: Continue
+                      - text: to confirm the changes.
+                - heading "Update Worker Node PoolDirect link to Update Worker Node Pool" [level=4] [ref=e691]:
+                  - text: Update Worker Node Pool
+                  - link "Direct link to Update Worker Node Pool" [ref=e692] [cursor=pointer]:
+                    - /url: "#update-worker-node-pool"
+                    - text: "#"
+                - list [ref=e693]:
+                  - listitem [ref=e694]:
+                    - paragraph [ref=e695]:
+                      - text: Navigate to the cluster details page and click the
+                      - strong [ref=e696]: Nodes
+                      - text: tab.
+                  - listitem [ref=e697]:
+                    - paragraph [ref=e698]:
+                      - text: In the worker node pool you want to edit, click
+                      - strong [ref=e699]: Edit
+                      - text: to open its YAML configuration file.
+                  - listitem [ref=e700]:
+                    - paragraph [ref=e701]:
+                      - text: Edit the
+                      - code [ref=e702]: NutanixMachineTemplate
+                      - text: object. You can update the memory (
+                      - code [ref=e703]: memorySize
+                      - text: ), CPU (
+                      - code [ref=e704]: vcpuSockets
+                      - text: and
+                      - code [ref=e705]: vcpuPerSocket
+                      - text: ), and storage (
+                      - code [ref=e706]: systemDiskSize
+                      - text: ). Once you are finished editing the node pool configurations, update the
+                      - code [ref=e707]: name
+                      - text: parameter under the
+                      - code [ref=e708]: metadata
+                      - text: line. For example, if the previous name was
+                      - strong [ref=e709]: worker-pool-resource-3
+                      - text: ", rename it to"
+                      - strong [ref=e710]: worker-pool-resource-4
+                      - text: .
+                    - generic [ref=e711]:
+                      - generic [ref=e712]:
+                        - img [ref=e714]
+                        - text: warning
+                      - paragraph [ref=e717]: You must update the node pool name for the configuration updates to take effect.
+                  - listitem [ref=e718]:
+                    - paragraph [ref=e719]:
+                      - text: Edit the
+                      - code [ref=e720]: MachineDeployment
+                      - text: object. Change the
+                      - code [ref=e721]: name
+                      - text: parameter under the
+                      - code [ref=e722]: "kind: NutanixMachineTemplate"
+                      - text: line to match the new name you used in the
+                      - code [ref=e723]: NutanixMachineTemplate
+                      - text: object.
+                  - listitem [ref=e724]:
+                    - paragraph [ref=e725]:
+                      - text: When you are done updating the worker node pool configuration, click
+                      - strong [ref=e726]: Confirm
+                      - text: and
+                      - strong [ref=e727]: Continue
+                      - text: to confirm the changes.
+                  - listitem [ref=e728]:
+                    - paragraph [ref=e729]:
+                      - text: The node pool alterations will trigger a
+                      - link "cluster repave" [ref=e730] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/node-pool/#repave-behavior-and-configuration
+                      - text: . Follow the
+                      - link "Approve Cluster Repave" [ref=e731] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/node-pool/#approve-cluster-repave
+                      - text: guide to incorporate the updates to your cluster.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e732]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e733] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - list [ref=e734]:
+                  - listitem [ref=e735]:
+                    - paragraph [ref=e736]:
+                      - text: Log in to
+                      - link "Palette" [ref=e737] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e738]:
+                    - paragraph [ref=e739]:
+                      - text: From the left
+                      - strong [ref=e740]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e741]: Clusters
+                      - text: .
+                  - listitem [ref=e742]:
+                    - paragraph [ref=e743]:
+                      - text: Click on the Nutanix cluster you deployed, and then click on the
+                      - strong [ref=e744]: Nodes
+                      - text: tab.
+                  - listitem [ref=e745]:
+                    - paragraph [ref=e746]:
+                      - text: Verify that all nodes are in the
+                      - strong [ref=e747]: Running
+                      - text: and
+                      - strong [ref=e748]: Healthy
+                      - text: status, and reflect the applied repave changes.
+              - generic [ref=e749]:
+                - generic [ref=e751]:
+                  - text: "Tags:"
+                  - list [ref=e752]:
+                    - listitem [ref=e753]:
+                      - link "data center" [ref=e754] [cursor=pointer]:
+                        - /url: /tags/data-center/
+                    - listitem [ref=e755]:
+                      - link "nutanix" [ref=e756] [cursor=pointer]:
+                        - /url: /tags/nutanix/
+                - link "Edit this page" [ref=e759] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/data-center/nutanix/create-manage-nutanix-cluster.md
+                  - img [ref=e760]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e764]:
+              - link "Previous « Add Nutanix Cloud Account" [ref=e765] [cursor=pointer]:
+                - /url: /clusters/data-center/nutanix/add-nutanix-cloud-account/
+                - generic [ref=e766]: Previous
+                - generic [ref=e767]: « Add Nutanix Cloud Account
+              - link "Next OpenStack »" [ref=e768] [cursor=pointer]:
+                - /url: /clusters/data-center/openstack/
+                - generic [ref=e769]: Next
+                - generic [ref=e770]: OpenStack »
+          - list [ref=e773]:
+            - listitem [ref=e774]:
+              - link "Deploy a Nutanix Cluster" [ref=e775] [cursor=pointer]:
+                - /url: "#deploy-a-nutanix-cluster"
+              - list [ref=e776]:
+                - listitem [ref=e777]:
+                  - link "Prerequisites" [ref=e778] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e779]:
+                  - link "Enablement" [ref=e780] [cursor=pointer]:
+                    - /url: "#enablement"
+                - listitem [ref=e781]:
+                  - link "Validate" [ref=e782] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e783]:
+              - link "Update a Deployed Cluster" [ref=e784] [cursor=pointer]:
+                - /url: "#update-a-deployed-cluster"
+              - list [ref=e785]:
+                - listitem [ref=e786]:
+                  - link "Prerequisites" [ref=e787] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e788]:
+                  - link "Enablement" [ref=e789] [cursor=pointer]:
+                    - /url: "#enablement-1"
+                - listitem [ref=e790]:
+                  - link "Validate" [ref=e791] [cursor=pointer]:
+                    - /url: "#validate-1"
+  - button "Project Logo Ask AI" [ref=e792] [cursor=pointer]:
+    - generic [ref=e795]:
+      - img "Project Logo" [ref=e796]
+      - paragraph [ref=e797]: Ask AI
+```
