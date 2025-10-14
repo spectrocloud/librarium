@@ -76,7 +76,7 @@ is not supported for any Azure cluster.
     --query "[?capabilities[?name=='EncryptionAtHostSupported' && value=='True']].{VMName:name, EncryptionAtHost:capabilities[?name=='EncryptionAtHostSupported'].value | [0]}" \
     --output table
     ```
-    To help narrow the list down, append `-grep -i <VM family>` to the above command to limit the output to a specific family type.
+    To help narrow the list down, append `-grep --ignore-case <VM family>` to the above command to limit the output to a specific family type.
 
 </details>
 
