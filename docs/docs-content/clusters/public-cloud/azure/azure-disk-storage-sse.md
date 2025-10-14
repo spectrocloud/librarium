@@ -111,6 +111,7 @@ is not supported for any Azure cluster.
 - A [Disk Encryption Set](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-customer-managed-keys-portal#set-up-your-disk-encryption-set)
   with the encryption type set to **Encryption at-rest with a customer-managed key**.
 
+- [Encryption at Host](https://learn.microsoft.com/en-in/azure/virtual-machines/disks-enable-host-based-encryption-portal?tabs=azure-powershell) enabled on Azure when using **Encryption at Host**.
 <!-- prettier-ignore -->
 - The Azure Key Vault must have the following [access policies](https://learn.microsoft.com/en-us/azure/key-vault/general/assign-access-policy?tabs=azure-portal) assigned to
   the Disk Encryption Set that you want to use:
