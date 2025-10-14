@@ -40,66 +40,156 @@ using custom AMIs. Ensure you have accounted for this change in any of your auto
 
 3. Ensure you are in the correct project scope.
 
-4. From the left main menu, click **Clusters** and select your EKS cluster.
+4. From the left main menu, click **Profiles** and select the profile used to deploy your EKS cluster.
 
-5. Click the **Nodes** tab.
+5. [Create a new version of the cluster profile](../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md).
 
-6. Click **New Node Pool**.
+6. Select the **Kubernetes** layer of your cluster profile.
 
-7. Fill out the input fields in the **Add node pool** page as per your requirements.
+7. On the **Edit Pack** page, select **Values** under **Pack Details**.
 
-   Ensure that you select an **Amazon Linux 2023** AMI type, or, if you are using a custom AL2 AMI, select **Custom
-   AMI** and provide the AMI ID.
+8. Add your IRSA roles to the `managedControlPlane.irsaRoles` and `managedMachinePool.roleAdditionalPolicies` sections
+   if they are not already configured.
 
-8. Click **Confirm** to create the new node pool.
+   ```yaml hideClipboard title="Example configuration"
+   managedControlPlane:
+     ...
+     irsaRoles:
+       - name: "{{.spectro.system.cluster.name}}-irsa-cni"
+         policies:
+           - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+         serviceAccount:
+           name: aws-node
+           namespace: kube-system
+       - name: "{{.spectro.system.cluster.name}}-irsa-csi" # optional, defaults to audience sts.amazonaws.com
+         policies:
+           - arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy
+   ...
+   managedMachinePool:
+     ...
+     roleAdditionalPolicies:
+       - "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+   ```
 
-9. Wait for the new nodes to be ready and show a healthy status.
+   Refer to the
+   [Scenario - PV/PVC Stuck in Pending Status for EKS Cluster Using AL2023 AMI](#scenario---pvpvc-stuck-in-pending-status-for-eks-cluster-using-al2023-ami)
+   section for further information on why it is necessary to configure IRSA roles for AL2023.
 
-10. Repeat steps 6-9 to create additional AL2023 node pools as needed. Ensure that the total number of nodes in the
+9. Click **Confirm Updates** after editing.
+
+10. Select the **Storage** layer of your cluster profile.
+
+11. On the **Edit Pack** page, select **Values** under **Pack Details**.
+
+12. Use the YAML editor to add an IAM role ARN annotation to the AWS EBS CSI Driver so that the IRSA role is correctly
+    referenced. Replace `<aws-account-id>` with your AWS account ID.
+
+    ```yaml hideClipboard title="Example configuration" {12}
+    charts:
+    ...
+    aws-ebs-csi-driver:
+    ...
+      controller:
+        ...
+        serviceAccount:
+          # A service account will be created for you if set to true. Set to false if you want to use your own.
+          create: true
+          name: ebs-csi-controller-sa
+          annotations: {
+            "eks.amazonaws.com/role-arn":"arn:aws:iam::<aws-account-id>:role/{{.spectro.system.cluster.name}}-irsa-csi"
+          }
+          ## Enable if EKS IAM for SA is used
+          # eks.amazonaws.com/role-arn: arn:<partition>:iam::<account>:role/ebs-csi-role
+          automountServiceAccountToken: true
+    ```
+
+13. Click **Confirm Updates** after editing.
+
+14. Click **Save Changes** on the cluster profile page.
+
+15. From the left main menu, click **Clusters** and select your EKS cluster.
+
+16. Select the **Profile** tab.
+
+17. Click the version drop-down for **INFRASTRUCTURE LAYERS** and select the new version of the cluster profile that you
+    created with these changes.
+
+18. Click **Review & Save**. In the pop-up window, click **Review changes in Editor**.
+
+19. Review your changes and click **Apply Changes** when ready.
+
+20. Select the **Nodes** tab.
+
+21. Click **New Node Pool**.
+
+22. Fill out the input fields in the **Add node pool** page as per your requirements.
+
+    Ensure that you select an **Amazon Linux 2023** AMI type, or, if you are using a custom AL2 AMI, select **Custom
+    AMI** and provide the AMI ID.
+
+23. Click **Confirm** to create the new node pool.
+
+24. Wait for the new nodes to be **Healthy** (green tick) in the **Health** column and show a **Status** of **Running**.
+
+25. Repeat steps 20-24 to create additional AL2023 node pools as needed. Ensure that the total number of nodes in the
     AL2023 node pools meets your requirements to replace the AL2 node pools.
 
-11. On the **Nodes** tab, click the **Edit** option for your existing AL2 node pool.
+26. On the **Nodes** tab, click the **Edit** option for your existing AL2 node pool.
 
-12. Click the **Add New Taint** option and add a
+27. Click the **Add New Taint** option and add a
     [taint](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) to the AL2 node pool. Use the
     `NoExecute` effect to evict workloads from the AL2 nodes.
 
     Example:
 
-    - **Key** = `node.kubernetes.io/exclude-from-al2023`
+    - **Key** = `migrate-to-al2023`
     - **Value** = `true`
     - **Effect** = `NoExecute`
 
-13. Click **Confirm** to update the AL2 node pool.
+28. Click **Confirm** to update the AL2 node pool.
 
-14. Wait for the workloads to be evicted from the AL2 nodes and rescheduled on the AL2023 nodes.
+29. Wait for the workloads to be evicted from the AL2 nodes and rescheduled on the AL2023 nodes.
 
-    You can issue the following `kubectl` command to check for evicting events.
-
-    ```bash title="Example command"
-    kubectl get events --sort-by=.lastTimestamp | grep --ignore-case evict
-    ```
-
-    ```shell hideClipboard title="Example output"
-    Evicting Pod default/my-app-6f7d4d5fdb-z9hbm
-    ```
-
-    You can also check for running pods on the AL2 nodes by issuing the following command. Replace
-    `<al2-node-identifier>` with part of the name of one of your AL2 nodes.
+    You can check for running pods on the AL2 nodes by issuing the following command. Replace `<al2-node-identifier>`
+    with part of the name of one of your AL2 nodes.
 
     ```bash title="Example command"
-    kubectl get pods --all-namespaces --output=wide | grep <al2-node-identifier>
+    kubectl get pods --all-namespaces --output wide --field-selector spec.nodeName=<al2-node-identifier>
     ```
 
-    ```shell hideClipboard title="Example output"
-    NAMESPACE        NAME                                  READY   STATUS    RESTARTS   AGE   IP           NODE                           NOMINATED NODE   READINESS GATES
-    kube-system      aws-node-4xk8h                        1/1     Running   0          12h   10.0.1.25    ip-10-11-12-13.ec2.internal    <none>           <none>
-    kube-system      kube-proxy-npd7t                      1/1     Running   0          12h   10.0.1.26    ip-10-11-12-13.ec2.internal    <none>           <none>
-    default          nginx-deployment-6f7d4d5fdb-z9hbm     1/1     Running   0          6h    10.0.1.27    ip-10-11-12-13.ec2.internal    <none>           <none>
-    default          redis-6d7bc56f9b-c2x5q                1/1     Running   0          6h    10.0.1.28    ip-10-11-12-13.ec2.internal    <none>           <none>
+    The AL2 nodes will display only system pods, such as `aws-node`, `ebs-csi-controller`, `ebs-csi-node`, `kube-proxy`,
+    and potentially `palette-webhook`.
+
+    ```shell hideClipboard title="Example output from AL2 node"
+    NAMESPACE        NAME                                  READY   STATUS    RESTARTS   AGE   IP             NODE                           NOMINATED NODE   READINESS GATES
+    kube-system      aws-node-rvkbv                        2/2     Running   0          29m   10.0.206.110   ip-10-11-12-13.ec2.internal    <none>           <none>
+    kube-system      ebs-csi-controller-6f6f7d776b-q7hlj   5/5     Running   0          58m   10.0.196.103   ip-10-11-12-13.ec2.internal    <none>           <none>
+    kube-system      ebs-csi-node-tbm7t                    3/3     Running   0          29m   10.0.215.130   ip-10-11-12-13.ec2.internal    <none>           <none>
+    kube-system      kube-proxy-xqm5w                      1/1     Running   0          29m   10.0.206.110   ip-10-11-12-13.ec2.internal    <none>           <none>
+    palette-system   palette-webhook-86c7b5f99d-tdcf7      1/1     Running   0          29m   10.0.205.155   ip-10-11-12-13.ec2.internal    <none>           <none>
     ```
 
-15. Once all workloads have been successfully migrated to the AL2023 nodes, you can
+    You can compare this output with the output from the same command issued for one of your AL2023 nodes to confirm
+    that the workloads have been successfully migrated.
+
+    ```shell hideClipboard title="Example output from AL2023 node"
+    NAMESPACE                          NAME                                                             READY   STATUS    RESTARTS   AGE     IP             NODE                           NOMINATED NODE   READINESS GATES
+    capi-webhook-system                capa-controller-manager-59c947b948-lwwrv                         1/1     Running   0          8m22s   10.0.201.130   ip-20-21-22-23.ec2.internal   <none>           <none>
+    capi-webhook-system                capi-controller-manager-5455d67696-pv69l                         1/1     Running   0          8m21s   10.0.215.178   ip-20-21-22-23.ec2.internal   <none>           <none>
+    capi-webhook-system                capi-kubeadm-control-plane-controller-manager-67b7d996cd-96lqp   1/1     Running   0          8m21s   10.0.252.246   ip-20-21-22-23.ec2.internal   <none>           <none>
+    cert-manager                       cert-manager-webhook-6b5c469577-wwsqb                            1/1     Running   0          8m22s   10.0.234.189   ip-20-21-22-23.ec2.internal   <none>           <none>
+    cluster-68ee17be1ccd1304cf843c0f   cluster-management-agent-645f84964f-sw9n4                        1/1     Running   0          8m21s   10.0.212.43    ip-20-21-22-23.ec2.internal   <none>           <none>
+    cluster-68ee17be1ccd1304cf843c0f   metrics-server-56594bcd99-mkjlp                                  1/1     Running   0          8m17s   10.0.209.82    ip-20-21-22-23.ec2.internal   <none>           <none>
+    cluster-68ee17be1ccd1304cf843c0f   palette-controller-manager-68c698776c-xjnn4                      3/3     Running   0          8m22s   10.0.204.59    ip-20-21-22-23.ec2.internal   <none>           <none>
+    kube-system                        aws-node-77hv6                                                   2/2     Running   0          43m     10.0.200.120   ip-20-21-22-23.ec2.internal   <none>           <none>
+    kube-system                        coredns-6b9575c64c-trp5v                                         1/1     Running   0          8m22s   10.0.204.97    ip-20-21-22-23.ec2.internal   <none>           <none>
+    kube-system                        ebs-csi-controller-6f6f7d776b-q7hlj                              5/5     Running   0          42m     10.0.196.103   ip-20-21-22-23.ec2.internal   <none>           <none>
+    kube-system                        ebs-csi-node-mjth6                                               3/3     Running   0          42m     10.0.216.41    ip-20-21-22-23.ec2.internal   <none>           <none>
+    kube-system                        kube-proxy-544fg                                                 1/1     Running   0          40m     10.0.200.120   ip-20-21-22-23.ec2.internal   <none>           <none>
+    palette-system                     palette-webhook-86c7b5f99d-f8n5v                                 1/1     Running   0          40m     10.0.206.77    ip-20-21-22-23.ec2.internal   <none>           <none>
+    ```
+
+30. Once all workloads have been successfully migrated to the AL2023 nodes, you can
     [delete](../clusters/cluster-management/node-pool.md#delete-a-node-pool) the AL2 node pools.
 
 ## Scenario - PV/PVC Stuck in Pending Status for EKS Cluster Using AL2023 AMI
