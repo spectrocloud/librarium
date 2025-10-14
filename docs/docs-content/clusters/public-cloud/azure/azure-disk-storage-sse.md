@@ -15,20 +15,19 @@ or
 [Encryption at Host with platform-managed keys](https://learn.microsoft.com/en-in/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data).
 These can be used independently or in conjunction with each other.
 
-
-
-| **Feature**  | **Server Side Encryption (SSE)**                                                                                               | **Encryption at Host (EAH)**                                                                                                                                                                      |
-| -------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|**Encryption Method** | Encrypts your data stored on Azure-managed [OS](https://learn.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview#os-disk) and [data disks](https://learn.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview#data-disk). Does not encrypt [temporary disks](https://learn.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview#temporary-disk) or disk caches. | - **EAH only** - Encrypts temporary disks but not disk cache. <br /> - **EAH + SSE** - Encrypts temporary disks and disk cache, as well as [managed disks](https://learn.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview). |
-|**Management Keys**| Supports CMK via DES.                                                              | Uses PMK for temporary disks and disk cache. Can use DES for managed disks when used with SSE.                                                                                         |
-|**Special Requirements** | -                                                                                                | Requires VM SKUs that support `EncryptionAtHost` capability.                                                                                                                            |
-| **Default Configuration** | Enabled by default with PMK. Can opt to provide CMK via DES in `AzureMachineTemplate`. | Disabled by default.                                                                                                                                                                    |
+| **Feature**               | **Server Side Encryption (SSE)**                                                                                                                                                                                                                                                                                                                                                                         | **Encryption at Host (EAH)**                                                                                                                                                                                                                 |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Encryption Method**     | Encrypts your data stored on Azure-managed [OS](https://learn.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview#os-disk) and [data disks](https://learn.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview#data-disk). Does not encrypt [temporary disks](https://learn.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview#temporary-disk) or disk caches. | - **EAH only** - Encrypts temporary disks but not disk cache. <br /> - **EAH + SSE** - Encrypts temporary disks and disk cache, as well as [managed disks](https://learn.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview). |
+| **Management Keys**       | Supports CMK via DES.                                                                                                                                                                                                                                                                                                                                                                                    | Uses PMK for temporary disks and disk cache. Can use DES for managed disks when used with SSE.                                                                                                                                               |
+| **Special Requirements**  | -                                                                                                                                                                                                                                                                                                                                                                                                        | Requires VM SKUs that support `EncryptionAtHost` capability.                                                                                                                                                                                 |
+| **Default Configuration** | Enabled by default with PMK. Can opt to provide CMK via DES in `AzureMachineTemplate`.                                                                                                                                                                                                                                                                                                                   | Disabled by default.                                                                                                                                                                                                                         |
 
 ## Limitations
 
 - SSE and EAH are not supported for AKS clusters.
 
-- [Azure Disk Encryption for Virtual Machines and Virtual Machine Scale Sets](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/disk-encryption-overview) is not supported for any Azure cluster.
+- [Azure Disk Encryption for Virtual Machines and Virtual Machine Scale Sets](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/disk-encryption-overview)
+  is not supported for any Azure cluster.
 
 :::warning
 
@@ -38,17 +37,22 @@ is not supported for any Azure cluster.
 :::
 
 <!-- prettier-ignore-start -->
-- <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> must be used in the Kubernetes layer of your cluster profile to use SSE or EAH.
 
-- If a key expires in [Azure Key Vault](https://learn.microsoft.com/en-us/azure/key-vault/general/overview), your cluster may experience operation failures. To resolve this, generate a new
-  key in Azure Key Vault and update your disk encryption set to reference the new key. We recommend enabling [auto key rotation](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#automatic-key-rotation-of-customer-managed-keys) on your disk encryption set so it can automatically use new key versions from Azure Key Vault. 
+- <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> must be used in
+  the Kubernetes layer of your cluster profile to use SSE or EAH.
 
-     :::info 
+- If a key expires in [Azure Key Vault](https://learn.microsoft.com/en-us/azure/key-vault/general/overview), your
+  cluster may experience operation failures. To resolve this, generate a new key in Azure Key Vault and update your disk
+  encryption set to reference the new key. We recommend enabling
+  [auto key rotation](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#automatic-key-rotation-of-customer-managed-keys)
+  on your disk encryption set so it can automatically use new key versions from Azure Key Vault.
 
-     No changes are needed in Palette when a new key is created, as the PXK pack references the Uniform Resource Identifier (URI) of your disk encryption set, which remains unchanged. 
+  :::info
 
-     :::
-  
+  No changes are needed in Palette when a new key is created, as the PXK pack references the Uniform Resource Identifier
+  (URI) of your disk encryption set, which remains unchanged.
+
+  :::
 
   - No changes are needed in Palette, as the Palette eXtended Kubernetes pack configuration references the URI of your
     Disk Encryption Set, which remains unchanged.
@@ -73,11 +77,11 @@ is not supported for any Azure cluster.
 
 </details>
 
-
 ## New Cluster Profile
 
-Take the following steps to create a cluster profile with SSE or EAH enabled.
-Take the following steps to create a cluster profile with SSE or EAH enabled.
+Take the following steps to create a cluster profile with SSE or EAH enabled. Take the following steps to create a
+cluster profile with SSE or EAH enabled.
+
 ### Prerequisites {#prerequisites-new-cluster-profile}
 
 - An Azure user account with the following roles to create the Azure Key Vault and Disk Encryption Set with the
@@ -125,7 +129,8 @@ Use the following steps to enable disk encryption on a
 
 3.  From the left main menu, select **Profiles**, then **Add Cluster Profile**.
 
-4.  Fill out the **Basic Information** for your cluster profile. Choose a cluster profile **Type** of **Full** or **Infrastructure**. Select **Next**.
+4.  Fill out the **Basic Information** for your cluster profile. Choose a cluster profile **Type** of **Full** or
+    **Infrastructure**. Select **Next**.
 
 5.  Choose **Azure IaaS** for your **Infrastructure Provider** and select **Next**.
 
@@ -133,7 +138,8 @@ Use the following steps to enable disk encryption on a
 
 7.  Select **Palette eXtended Kubernetes (PXK)** as your Kubernetes pack.
 
-8.  On the **Configure Pack** drawer, below **Pack Details**, select **Values**, and click the **\</\>** button to display the YAML editor.
+8.  On the **Configure Pack** drawer, below **Pack Details**, select **Values**, and click the **\</\>** button to
+    display the YAML editor.
 
 9.  On the right side of the editor, expand the **Presets** drop-down menu, and select **Enable Encryption Using
     Customer-Managed Key** to use CMK with SSE.
@@ -234,11 +240,11 @@ Follow these steps to validate the enablement of customer-managed key encryption
 
 <TabItem value="EAH">
 
-
 2. Use the search bar to locate and select the **Virtual machines** resource.
 
-3. Find your cluster's VMs using the search filters provided. One way to locate the applicable VMs is to search for the cluster name, as the cluster name is appended to all relevant resources.For example: `<clusterName>-worker-pool-n5wsn-7m5jp` or
-   `<clusterName>-cp-ftxdh`.
+3. Find your cluster's VMs using the search filters provided. One way to locate the applicable VMs is to search for the
+   cluster name, as the cluster name is appended to all relevant resources.For example:
+   `<clusterName>-worker-pool-n5wsn-7m5jp` or `<clusterName>-cp-ftxdh`.
 
 4. Once identified, select a VM to view its details.
 
@@ -307,15 +313,15 @@ Performing these steps will cause a
 
 5.  Enter a new semantic **Version** for the cluster profile. Select **Confirm**.
 
+6.  Select the PXK layer to view the **Edit Pack** drawer.
 
-7.  Select the PXK layer to view the **Edit Pack** drawer.
+7.  On the **Edit Pack** drawer, below **Pack Details**, select **Values**, and click the **\</\>** button to display
+    the YAML editor.
 
-8.   On the **Edit Pack** drawer, below **Pack Details**, select **Values**, and click the **\</\>** button to display the YAML editor.
+8.  On the right side of the editor, expand the **Presets** drop-down menu, and select **Enable Encryption Using
+    Customer-Managed Key** to use CMK with SSE.
 
-9.  On the right side of the editor, expand the **Presets** drop-down menu, and select **Enable Encryption Using
-Customer-Managed Key** to use CMK with SSE.
-
-10. Scroll to the bottom of the YAML editor to view the additional configuration that was added.
+9.  Scroll to the bottom of the YAML editor to view the additional configuration that was added.
 
     ```yaml
     cloud:
@@ -323,7 +329,7 @@ Customer-Managed Key** to use CMK with SSE.
         diskEncryptionSetID: ""
     ```
 
-11. Fill in the `diskEncryptionSetID` with the Resource ID URI of your Disk Encryption Set.
+10. Fill in the `diskEncryptionSetID` with the Resource ID URI of your Disk Encryption Set.
 
     <!-- prettier-ignore -->
     <details>
@@ -349,7 +355,7 @@ Customer-Managed Key** to use CMK with SSE.
         diskEncryptionSetID: "/subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Compute/diskEncryptionSets/diskEncryptionSet"
     ```
 
-12. In the YAML editor, add a line after `diskEncryptionSetID` that has `encryptionAtHost: true`. This will enable
+11. In the YAML editor, add a line after `diskEncryptionSetID` that has `encryptionAtHost: true`. This will enable
     Encryption at Host.
 
     ```yaml
@@ -378,16 +384,17 @@ Customer-Managed Key** to use CMK with SSE.
 
         </details>
 
-13. Select **Confirm updates > Save Changes**.
+12. Select **Confirm updates > Save Changes**.
 
-15. From the left main menu, select **Clusters**.
+13. From the left main menu, select **Clusters**.
 
-16. Locate the cluster you want to update and select it.
+14. Locate the cluster you want to update and select it.
 
-17. On the **Profile** tab, expand the the version drop-down menu, and under **Infrastructure Layers**, select the new version of your cluster profile that has disk encryption enabled.
+15. On the **Profile** tab, expand the the version drop-down menu, and under **Infrastructure Layers**, select the new
+    version of your cluster profile that has disk encryption enabled.
 
-19. **Review & Save** your changes, then select **Review changes in Editor**. If no additional changes are needed, **Update** your cluster.
-
+16. **Review & Save** your changes, then select **Review changes in Editor**. If no additional changes are needed,
+    **Update** your cluster.
 
 Your cluster will now update and a full cluster repave will occur. Wait until the update has completed before
 [validating the disk encryption enablement](#validate-active-cluster).
@@ -420,8 +427,9 @@ Follow these steps to validate the enablement of customer-managed key encryption
 
 2. Use the search bar to locate and select the **Virtual machines** resource.
 
-3. Find your cluster's VMs using the search filters provided. One way to locate the applicable VMs is to search for the cluster name, as the cluster name is appended to all relevant resources. For example: `<clusterName>-worker-pool-n5wsn-7m5jp` or
-   `<clusterName>-cp-ftxdh`.
+3. Find your cluster's VMs using the search filters provided. One way to locate the applicable VMs is to search for the
+   cluster name, as the cluster name is appended to all relevant resources. For example:
+   `<clusterName>-worker-pool-n5wsn-7m5jp` or `<clusterName>-cp-ftxdh`.
 4. Once identified, select a VM to view its details.
 
 5. On the VM **Overview** page, scroll down to view the **Disk** section. Ensure that the **Encryption at Host** section
@@ -539,7 +547,8 @@ Follow these steps to validate the disablement of customer-managed key encryptio
 
 2. Use the search bar to locate and select the **Virtual machines** resource.
 
-3. Find your cluster's VMs using the search filters provided. One way to locate the applicable VMs is to search for the cluster name, as the cluster name is appended to all relevant resources.
+3. Find your cluster's VMs using the search filters provided. One way to locate the applicable VMs is to search for the
+   cluster name, as the cluster name is appended to all relevant resources.
 
 4. Once identified, select a VM to view its details.
 
