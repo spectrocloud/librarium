@@ -27,7 +27,7 @@ tags: ["release-notes"]
 #### Features
 
 - [Cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/create-cluster-profile-variables.md)
-  now support the dropdown input type. This improvement allows users to enforce the configuration of cluster profile
+  now support the drop-down input type. This improvement allows users to enforce the configuration of cluster profile
   variables using predefined values only, reducing input errors and enhancing cluster profile validation.
 
 #### Improvements
