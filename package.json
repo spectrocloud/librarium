@@ -37,8 +37,8 @@
     "react-live": ">=3.1.1 <4.0.0"
   },
   "dependencies": {
-    "@ant-design/icons": "^5.5.1",
-    "@commitlint/cli": "^19.8.1",
+    "@ant-design/icons": "^6.1.0",
+    "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@docusaurus/core": "^3.8.1",
     "@docusaurus/faster": "^3.8.1",
@@ -86,7 +86,7 @@
     "@typescript-eslint/eslint-plugin": "^8.44.0",
     "@typescript-eslint/parser": "^8.44.0",
     "babel-jest": "^29.6.2",
-    "dotenv": "^17.2.1",
+    "dotenv": "^17.2.3",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.27.5",
