@@ -77,7 +77,7 @@ using custom AMIs. Ensure you have accounted for this change in any of your auto
     You can issue the following `kubectl` command to check for evicting events.
 
     ```bash title="Example command"
-    kubectl get events --sort-by=.lastTimestamp | grep -i evict
+    kubectl get events --sort-by=.lastTimestamp | grep --ignore-case evict
     ```
 
     ```shell hideClipboard title="Example output"
