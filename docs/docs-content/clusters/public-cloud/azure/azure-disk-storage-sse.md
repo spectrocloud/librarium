@@ -77,6 +77,7 @@ is not supported for any Azure cluster.
 ## New Cluster Profile
 
 Take the following steps to create a cluster profile with SSE or EAH enabled.
+Take the following steps to create a cluster profile with SSE or EAH enabled.
 ### Prerequisites {#prerequisites-new-cluster-profile}
 
 - An Azure user account with the following roles to create the Azure Key Vault and Disk Encryption Set with the
