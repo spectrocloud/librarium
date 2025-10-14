@@ -8,9 +8,11 @@ tags: ["vertex", "fips"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-Palette VerteX is FIPS 140-3 compliant. This means that Palette VerteX uses FIPS 140-3 compliant algorithms and
-encryption methods. With its additional security scanning capabilities, Palette VerteX is designed to meet the stringent
-requirements of regulated industries. Palette VerteX operates on FIPS-compliant Ubuntu Pro versions.
+Palette VerteX is FIPS 140-3 certified
+([#5061](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5061)). This means that
+Palette VerteX uses FIPS 140-3 compliant algorithms and encryption methods. With its additional security scanning
+capabilities, Palette VerteX is designed to meet the stringent requirements of regulated industries. Palette VerteX
+operates on FIPS-compliant Ubuntu Pro versions.
 
 ## Non-FIPS Enablement
 
@@ -20,16 +22,12 @@ information.
 
 Something to note when using RKE2 and K3s:
 
-<br />
-
 - When we scan the binaries, which we consume directly from Rancher's RKE2 repository, issues are reported for the
   following components. These components were compiled with a Go compiler that is not FIPS-compliant.
 
   - `container-suseconnect`
   - `container-suseconnect-zypp`
   - `susecloud`
-
-  <br />
 
   Since these components are unrelated to Kubernetes and are instead used to access SUSE’s repositories during the
   Docker build process, RKE2 itself remains fully compliant.
