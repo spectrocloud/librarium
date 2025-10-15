@@ -34,6 +34,12 @@ tags: ["release-notes"]
 - [Cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/create-cluster-profile-variables.md)
   now support the dropdown input type. This improvement allows users to enforce the configuration of cluster profile
   variables using predefined values only, reducing input errors and enhancing cluster profile validation.
+- When creating Azure IaaS clusters, you can disable automatic creation of route table entries for pod-to-pod
+  communication using the `cloud.cloudControllerManager.configureCloudRoutes` parameter. This improvement is useful when
+  using Calico or Cilium Container Network Interfaces (CNIs), which support pod networking across nodes by default
+  without requiring these route tables and entries. Refer to the
+  [Create and Manage Azure IaaS Cluster](../clusters/public-cloud/azure/create-azure-cluster.md#deploy-an-azure-cluster)
+  guide for more information.
 
 #### Deprecations and Removals
 
