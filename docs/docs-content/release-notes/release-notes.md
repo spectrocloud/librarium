@@ -69,7 +69,7 @@ tags: ["release-notes"]
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.7.c Palette release is 4.7.c-canvos.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.7.c Palette release is 4.7.15.
 
 :::
 
@@ -77,7 +77,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- prettier-ignore-start -->
 
-- Overlay networks are now supported for the following cluster types. Refer to our [Enable Overlay Network](../clusters/edge/networking/vxlan-overlay.md#supported-clusters) guide for a comprehensive list of supported cluster combinations.
+- Overlay networks are exiting Tech Preview status and are now production-ready. They are now supported for the following cluster types. Refer to our [Enable Overlay Network](../clusters/edge/networking/vxlan-overlay.md#supported-clusters) guide for a comprehensive list of supported cluster combinations.
   
   - <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> - FIPS, single and multi-node clusters
   - <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> -  Agent Mode and Appliance Mode, centrally managed clusters
@@ -87,7 +87,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - Local UI now supports configurable rate limiting and account lockout to protect against repeated failed login
   attempts. By default, Local UI applies an increasing delay after three consecutive failed login attempts and
   temporarily blocks access after five failures for 15 minutes. These settings can be customized in the `user-data` file
-  for Edge hosts built with Palette agent version 4.7.c-canvos or later. For more information, refer to the
+  for Edge hosts built with Palette agent version 4.7.15 or later. For more information, refer to the
   `stylus.localUI.login` parameters description in the
   [Edge Installer Configuration Reference](../clusters/edge/edge-configuration/installer-reference.md#palette-agent-parameters).
 
@@ -95,9 +95,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - Remote shell access to an Edge host can now be enabled in Palette only if the parameter
   `stylus.site.remoteShell.disable` is omitted or set to `false` in the host’s `user-data` file before the host
-  registers with Palette. This change applies to Edge hosts built with Palette agent version 4.7.c-canvos or later.
-
-#### Bug Fixes
+  registers with Palette. This change applies to Edge hosts built with Palette agent version 4.7.15 or later.
 
 ### VerteX
 
@@ -116,11 +114,11 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Features
 
-- Terraform version 0.25.X of the
+- Terraform version 0.25.1 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   now available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
-- Crossplane version 0.25.X of the
+- Crossplane version 0.25.1 of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
   now available.
 
@@ -130,21 +128,15 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   now allows the specification of registry name in the cluster profile pack specification. This attribute can be used
   instead of `registry_uid` for better readability.
 
+- The
+  [`spectrocloud_registry` Terraform data source](hhttps://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/registry)
+  now supports the `type` attribute. This improvement allows users to filter packs based on registry type.
+
+- The
+  [`spectrocloud_virtual_machine` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine)
+  now provides [bootloader support](https://kubevirt.io/user-guide/compute/virtual_hardware/).
+
 ### Packs
-
-#### Pack Notes
-
-<!-- prettier-ignore-start -->
-
-- The <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack version 7.13.0 is now FIPS compliant.
-
-<!-- prettier-ignore-end -->
-
-#### OS
-
-| Pack Name     | New Version |
-| ------------- | ----------- |
-| Ubuntu (MAAS) | 24.04       |
 
 #### Kubernetes
 
@@ -160,34 +152,23 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | ------------------ | ----------- |
 | AWS VPC CNI (Helm) | 1.20.3      |
 | Cilium             | 1.18.1      |
-| Flannel            | 0.27.4      |
-
-#### CSI
-
-| Pack Name               | New Version |
-| ----------------------- | ----------- |
-| GCE Persistent Disk CSI | 1.17.15     |
 
 #### Add-on Packs
 
-| Pack Name                    | New Version |
-| ---------------------------- | ----------- |
-| Calico Network Policy        | 3.30.3      |
-| Harbor                       | 2.13.2      |
-| Kong                         | 2.52.0      |
-| Multus CNI Plugin            | 4.2.2       |
-| Prometheus Agent             | 27.39.0     |
-| Prometheus - Grafana         | 77.13.0     |
-| Spectro Kubernetes Dashboard | 7.13.0      |
+| Pack Name             | New Version |
+| --------------------- | ----------- |
+| Calico Network Policy | 3.30.3      |
+| Kong                  | 2.52.0      |
+| Prometheus Agent      | 27.39.0     |
+| Prometheus - Grafana  | 77.13.0     |
 
 #### FIPS Packs
 
-| Pack Name                    | New Version |
-| ---------------------------- | ----------- |
-| Calico                       | 3.30.3      |
-| Cilium                       | 1.17.6      |
-| Rook-Ceph                    | 1.17.7      |
-| Spectro Kubernetes Dashboard | 7.13.0      |
+| Pack Name | New Version |
+| --------- | ----------- |
+| Calico    | 3.30.3      |
+| Cilium    | 1.17.6      |
+| Rook-Ceph | 1.17.7      |
 
 ## October 10, 2025 - Component Updates {#component-updates-2025-41}
 
