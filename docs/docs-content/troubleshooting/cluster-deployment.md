@@ -22,7 +22,7 @@ upgraded to AL2023 worker nodes.
 
 :::info
 
-After 10th January 2026, you can only create node pools with the AL2023 AMI type in Palette. If AL2 is needed, consider
+After January 10, 2026, you can only create node pools with the AL2023 AMI type in Palette. If AL2 is needed, consider
 using custom AMIs. Ensure you have accounted for this change in any of your automation, such as Terraform, API, etc.
 
 :::
