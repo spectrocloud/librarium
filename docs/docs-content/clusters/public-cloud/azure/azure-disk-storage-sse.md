@@ -80,7 +80,7 @@ is not supported for any Azure cluster.
           --query "[?capabilities[?name=='EncryptionAtHostSupported' && value=='True']].{VMName:name, EncryptionAtHost:capabilities[?name=='EncryptionAtHostSupported'].value | [0]}" \
           --output table
           ```
-          To help narrow the list down, append `-grep --ignore-case <VM family>` to the above command to limit the output to a specific family type.
+          To limit your output to a specific [VM family type](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/overview, append `-grep -i <VM-family>` to the above command. Replace `<VM-family>` with the applicable family type.
 
       </details>
 
@@ -274,7 +274,7 @@ Performing these steps will cause a
 
 15. Locate the cluster you want to update and select it.
 
-16. On the **Profile** tab, expand the the version drop-down menu, and under **Infrastructure Layers**, select the new
+16. On the **Profile** tab, expand the version drop-down menu, and under **Infrastructure Layers**, select the new
     version of your cluster profile that has disk encryption enabled.
 
 17. **Review & Save** your changes, then select **Review changes in Editor**. If no additional changes are needed,
@@ -339,7 +339,7 @@ cloud:
 
 26. Locate the cluster you want to update and select it.
 
-27. On the **Profile** tab, expand the the version drop-down menu, and under **Infrastructure Layers**, select the new
+27. On the **Profile** tab, expand the version drop-down menu, and under **Infrastructure Layers**, select the new
     version of your cluster profile that has disk encryption enabled.
 
 28. **Review & Save** your changes, then select **Review changes in Editor**. If no additional changes are needed,
