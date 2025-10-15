@@ -1005,7 +1005,7 @@
   },
   {
     "name": "multus-cni",
-    "description": "Multus CNI is a container network interface plugin for Kubernetes that enables attaching multiple network interfaces to pods. Typically, in Kubernetes each pod only has one network interface,apart from a loopback. With Multus you can create a multi-homed pod that has multiple interfaces. This is accomplished by Multus acting as a meta-plugin, a CNI plugin that can call multiple other CNI plugins."
+    "description": "Multus CNI is a plugin for Kubernetes that allows you to attach multiple network interfaces to a single pod. By default, Kubernetes assigns only one network interface (in addition to the loopback interface) to each pod. With Multus, you can create multi-homed pods that have multiple network interfaces. Multus achieves this by acting as a meta-plugin, a CNI plugin that can invoke multiple other CNI plugins."
   },
   {
     "name": "csi-dell-csm-operator",
