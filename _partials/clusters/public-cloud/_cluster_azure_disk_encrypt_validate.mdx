@@ -1,0 +1,44 @@
+---
+partial_category: clusters
+partial_name: cluster-azure-disk-encrypt-validate
+---
+
+<Tabs groupId='validation'>
+
+<TabItem value='sse' label='Validating SSE'>
+
+1. Log in to the [Azure Portal](https://portal.azure.com/).
+
+2. In the search bar, look for **Disks**. Click on the service when found.
+
+3. Find your cluster's disks by using the search filters provided. You can use the cluster name as the cluster resources
+   contain the cluster name at the beginning, for example: `&lt;clusterName&gt;-e3c0-f7ljd_OSDisk`.
+
+4. Once identified, click on a disk name to view its details.
+
+5. Scroll down to view the **Properties** tab and check that the **Encryption** section shows **Platform-managed key**
+   for **Encryption type**.
+
+6. Repeat steps 4 and 5 for each disk in your cluster.
+
+</TabItem>
+
+<TabItem value='eah' label='Validating EAH'>
+
+1. Log in to the [Azure Portal](https://portal.azure.com/).
+
+2. Use the search bar to locate and select the **Virtual machines** resource.
+
+3. Find your cluster's VMs using the search filters provided. One way to locate the applicable VMs is to search for the
+   cluster name, as the cluster name is appended to all relevant resources.
+
+4. Once identified, select a VM to view its details.
+
+5. On the VM **Overview** page, scroll down to view the **Disk** section. Ensure that the **Encryption at Host** section
+   shows **Disabled**.
+
+6. Repeat steps 4 and 5 for each VM in your cluster.
+
+</TabItem>
+
+</Tabs>
