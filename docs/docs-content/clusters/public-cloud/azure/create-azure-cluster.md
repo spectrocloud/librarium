@@ -152,10 +152,10 @@ Use the following steps to deploy an Azure cluster.
 
     <summary> Example route table entries </summary>
 
-    | Name                                                      | Address prefix | Next hop type    | Next hop IP address |
-    | --------------------------------------------------------- | -------------- | ---------------- | ------------------- |
-    | az-iaas-cluster-cp-xfqnh\_\_\_\_1921680024                | 192.168.0.0/24 | VirtualAppliance | 10.0.0.4            |
-    | az-iaas-cluster-worker-pool-2cst7-scwck\_\_\_\_1921681024 | 192.168.1.0/24 | VirtualAppliance | 10.1.0.4            |
+    | Name                                                    | Address prefix | Next hop type    | Next hop IP address |
+    | ------------------------------------------------------- | -------------- | ---------------- | ------------------- |
+    | `az-iaas-cluster-cp-xfqnh____1921680024`                | 192.168.0.0/24 | VirtualAppliance | 10.0.0.4            |
+    | `az-iaas-cluster-worker-pool-2cst7-scwck____1921681024` | 192.168.1.0/24 | VirtualAppliance | 10.1.0.4            |
 
     </details>
 
