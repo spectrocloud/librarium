@@ -21,6 +21,12 @@ These can be used independently or in conjunction with each other.
 | **Management Keys**       | Supports CMK via DES.                                                                                                                                                                                                                                                                                                                                                                                    | Uses PMK for temporary disks and disk cache. Can use DES for managed disks when used with SSE.                                                                                                                                               |
 | **Special Requirements**  | -                                                                                                                                                                                                                                                                                                                                                                                                        | Requires VM SKUs that support `EncryptionAtHost` capability.                                                                                                                                                                                 |
 | **Default Configuration** | Enabled by default with PMK. Can opt to provide CMK via DES in `AzureMachineTemplate`.                                                                                                                                                                                                                                                                                                                   | Disabled by default.                                                                                                                                                                                                                         |
+| **Feature**               | **Server Side Encryption (SSE)**                                                                                                                                                                                                                                                                                                                                                                         | **Encryption at Host (EAH)**                                                                                                                                                                                                                 |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Encryption Method**     | Encrypts your data stored on Azure-managed [OS](https://learn.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview#os-disk) and [data disks](https://learn.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview#data-disk). Does not encrypt [temporary disks](https://learn.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview#temporary-disk) or disk caches. | - **EAH only** - Encrypts temporary disks but not disk cache. <br /> - **EAH + SSE** - Encrypts temporary disks and disk cache, as well as [managed disks](https://learn.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview). |
+| **Management Keys**       | Supports CMK via DES.                                                                                                                                                                                                                                                                                                                                                                                    | Uses PMK for temporary disks and disk cache. Can use DES for managed disks when used with SSE.                                                                                                                                               |
+| **Special Requirements**  | -                                                                                                                                                                                                                                                                                                                                                                                                        | Requires VM SKUs that support `EncryptionAtHost` capability.                                                                                                                                                                                 |
+| **Default Configuration** | Enabled by default with PMK. Can opt to provide CMK via DES in `AzureMachineTemplate`.                                                                                                                                                                                                                                                                                                                   | Disabled by default.                                                                                                                                                                                                                         |
 
 ## Limitations
 
@@ -38,12 +44,21 @@ is not supported for any Azure cluster.
 - <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> must be used in
   the Kubernetes layer of your cluster profile to use SSE or EAH.
 
+- <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> must be used in
+  the Kubernetes layer of your cluster profile to use SSE or EAH.
+
+- If a key expires in [Azure Key Vault](https://learn.microsoft.com/en-us/azure/key-vault/general/overview), your
+  cluster may experience operation failures. To resolve this, generate a new key in Azure Key Vault and update your disk
+  encryption set to reference the new key. We recommend enabling
+  [auto key rotation](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#automatic-key-rotation-of-customer-managed-keys)
+  on your disk encryption set so it can automatically use new key versions from Azure Key Vault.
 - If a key expires in [Azure Key Vault](https://learn.microsoft.com/en-us/azure/key-vault/general/overview), your
   cluster may experience operation failures. To resolve this, generate a new key in Azure Key Vault and update your disk
   encryption set to reference the new key. We recommend enabling
   [auto key rotation](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#automatic-key-rotation-of-customer-managed-keys)
   on your disk encryption set so it can automatically use new key versions from Azure Key Vault.
 
+  :::info
   :::info
 
   No changes are needed in Palette when a new key is created, as the PXK pack references the Uniform Resource Identifier
@@ -70,6 +85,9 @@ is not supported for any Azure cluster.
       </details>
 
 ## New Cluster Profile
+
+Take the following steps to create a cluster profile with SSE or EAH enabled. Take the following steps to create a
+cluster profile with SSE or EAH enabled.
 
 Take the following steps to create a cluster profile with SSE or EAH enabled. Take the following steps to create a
 cluster profile with SSE or EAH enabled.
@@ -269,7 +287,7 @@ Performing these steps will cause a
 9.  On the right side of the editor, expand the **Presets** drop-down menu, and select **Enable Encryption Using
     Customer-Managed Key** to use CMK with SSE.
 
-10. Scroll to the bottom of the YAML editor to view the additional configuration that was added.
+9.  Scroll to the bottom of the YAML editor to view the additional configuration that was added.
 
         ```yaml
         cloud:
@@ -277,7 +295,7 @@ Performing these steps will cause a
             diskEncryptionSetID: ""
         ```
 
-11. Fill in the `diskEncryptionSetID` with the Resource ID URI of your Disk Encryption Set.
+10. Fill in the `diskEncryptionSetID` with the Resource ID URI of your Disk Encryption Set.
 
 <!-- prettier-ignore -->
         <details>
