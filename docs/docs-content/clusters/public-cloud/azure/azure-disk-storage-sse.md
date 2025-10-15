@@ -14,7 +14,6 @@ Palette supports disk encryption of your Azure Kubernetes cluster using
 [Disk Encryption Sets with customer-managed keys](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#customer-managed-keys)
 or
 [Encryption at Host with platform-managed keys](https://learn.microsoft.com/en-in/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data).
-These can be used independently or in conjunction with each other.
 
 By default, Azure encrypts all managed disks with
 [platform-managed keys](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#platform-managed-keys).
