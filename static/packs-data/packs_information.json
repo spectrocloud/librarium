@@ -978,5 +978,37 @@
   {
     "name": "tekton-chains",
     "description": "Tekton Chains is a Kubernetes-native solution for signing and verifying the integrity of container images and other artifacts. It provides a framework for creating and managing digital signatures, ensuring the authenticity and provenance of software supply chains."
+  },
+  {
+    "name": "aws-efs",
+    "description": "Amazon EFS is a fully managed, elastic, shared file system that can be mounted by multiple Amazon EC2 instances. It is designed for high availability and durability, making it suitable for a wide range of applications."
+  },
+  {
+    "name": "upbound-crossplane",
+    "description": "Crossplane transforms Kubernetes clusters into universal control planes, extending the Kubernetes API and enabling infrastructure resource provisioning and management across major infrastructure providers."
+  },
+  {
+    "name": "nvidia-gpu-operator-ai",
+    "description": "The NVIDIA GPU Operator automates the management of the NVIDIA software components required for GPU provisioning. This allows Kubernetes cluster administrators to manage GPU nodes in the same way as CPU nodes."
+  },
+  {
+    "name": "edge-nodeadm",
+    "description": "Edge Node Administration (Edge NodeAdm) is a tool for managing Kubernetes nodes in edge computing environments. It provides features for node lifecycle management, monitoring, and configuration."
+  },
+  {
+    "name": "artifact-studio",
+    "description": "The Spectro Cloud Artifact Studio is a unified platform that helps airgapped, regulatory-focused, and security-conscious organizations populate their registries with bundles, packs, and installers to be used with self-hosted Palette or Palette VerteX."
+  },
+  {
+    "name": "appd",
+    "description": "AppDynamics Operator is a Kubernetes-native component designed to manage and automate the deployment and configuration of AppDynamics monitoring agents within Kubernetes environments."
+  },
+  {
+    "name": "multus-cni",
+    "description": "Multus CNI is a container network interface plugin for Kubernetes that enables attaching multiple network interfaces to pods. Typically, in Kubernetes each pod only has one network interface,apart from a loopback. With Multus you can create a multi-homed pod that has multiple interfaces. This is accomplished by Multus acting as a meta-plugin, a CNI plugin that can call multiple other CNI plugins."
+  },
+  {
+    "name": "csi-dell-csm-operator",
+    "description": "CSI Dell CSM Operator is a Container Storage Interface (CSI) driver for Dell's storage solutions. It enables the use of Dell's high-performance storage systems as a storage backend for Kubernetes."
   }
 ]
