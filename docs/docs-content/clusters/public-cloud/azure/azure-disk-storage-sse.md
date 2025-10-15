@@ -427,11 +427,11 @@ Performing these steps will cause a
 
         </details>
 
-```yaml
-cloud:
-  azure:
-    diskEncryptionSetID: "/subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Compute/diskEncryptionSets/diskEncryptionSet"
-```
+    ```yaml
+    cloud:
+      azure:
+        diskEncryptionSetID: "/subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Compute/diskEncryptionSets/diskEncryptionSet"
+    ```
 
 11. In the YAML editor, add a line after `diskEncryptionSetID` that has `encryptionAtHost: true`. This will enable
     Encryption at Host.
