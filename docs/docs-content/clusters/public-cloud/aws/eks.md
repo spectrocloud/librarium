@@ -14,10 +14,10 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 :::warning
 
 [EKS-optimized Amazon Linux 2 (AL2) AMIs](https://docs.aws.amazon.com/eks/latest/userguide/eks-ami-deprecation-faqs.html)
-will be disabled in Palette from January 2026 and removed in April 2026. This means you can no longer select the AL2
-AMIs for EKS worker nodes in Palette for new clusters as of January 2026. For existing clusters, you must create new
+will be disabled in Palette from January 10th 2026 and removed on 4th April 2026. When disabled, you will no longer be
+able to select the AL2 AMIs for EKS worker nodes in Palette for new clusters. For existing clusters, you must create new
 worker nodes using AL2023 AMIs. Existing AL2 AMI worker nodes will no longer receive bug fixes or security patches after
-April 2026. Refer to our
+the removal date. Refer to our
 [Scenario - Unable to Upgrade EKS Worker Nodes from AL2 to AL2023](../../../troubleshooting/cluster-deployment.md#scenario---unable-to-upgrade-eks-worker-nodes-from-al2-to-al2023)
 guide for help with migrating workloads.
 
