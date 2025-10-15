@@ -10,10 +10,26 @@ tags: ["public cloud", "azure", "encryption", "security", "disk"]
 sidebar_position: 12
 ---
 
+Palette supports disk encryption of your Azure Kubernetes cluster using
 [Disk Encryption Sets with customer-managed keys](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#customer-managed-keys)
 or
 [Encryption at Host with platform-managed keys](https://learn.microsoft.com/en-in/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data).
 These can be used independently or in conjunction with each other.
+
+By default, Azure encrypts all managed disks with
+[platform-managed keys](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#platform-managed-keys).
+However, customer-managed keys enable you to have greater control over your key management, specifically when using
+Server-Side Encryption (SSE).
+
+SSE will not encrypt temporary disks or disk caches. When you need to ensure that everything is encrypted from
+end-to-end, Encryption at Host is a good option for this. These encryption methods can be used independently or in
+conjunction with each other.
+
+To leverage either or both encryption methods, you must use the
+
+<VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> pack.
+
+The table below highlights use cases for each encryption method.
 
 | **Feature**               | **Server Side Encryption (SSE)**                                                                                                                                                                                                                                                                                                                                                                         | **Encryption at Host (EAH)**                                                                                                                                                                                                                 |
 | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
