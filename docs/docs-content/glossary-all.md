@@ -101,10 +101,10 @@ multiple clusters with unique requirements for security, networking, resource al
 ## Cluster Template
 
 [Cluster templates](./cluster-templates/cluster-templates.md) are reusable blueprints that define and enforce the
-desired state and lifecycle of for a fleet of clusters. They are created by referencing
-[cluster profiles](./profiles/cluster-profiles/cluster-profiles.md), which defines the software stack, and
+desired state and lifecycle for a fleet of clusters. They are created by referencing
+[cluster profiles](./profiles/cluster-profiles/cluster-profiles.md), which define the software stack, and
 [policies](./cluster-templates/create-cluster-template-policies/create-cluster-template-policies.md), which define the
-governance stack, specifying upgrade windows and other configurations.
+governance stack, such as upgrade windows and other configurations.
 
 ## Edge Appliances
 

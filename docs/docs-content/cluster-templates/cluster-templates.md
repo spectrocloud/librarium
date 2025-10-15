@@ -24,7 +24,7 @@ that define the governance stack. They reference existing cluster profiles and o
 [maintenance policies](./create-cluster-template-policies/maintenance-policy.md), and leverage
 [cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
 and [macros](../clusters/cluster-management/macros.md), allowing you to deploy, manage, and scale a synchronized fleet
-of clusters with minimal effort and configure environment-specific values where needed.
+of clusters with minimal effort while configuring environment-specific values where needed.
 
 Cluster templates can be created at both the tenant and project scope. Cluster templates do not embed cluster profile
 and policy configurations but reference them as objects, allowing you to edit and replace them as needed.
@@ -54,11 +54,11 @@ To make changes to a linked cluster profile, you must
 [create a new version](../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) of the cluster
 profile and update the version referenced in the cluster template. This ensures that all clusters using the cluster
 template have identical software stacks, preventing configuration drift that can naturally occur with inline, on-the-fly
-updates, or by using varied cluster profile versions across clusters. Each cluster can only be attached to one cluster
-template at a time, further guarding against drift.
+updates, or by using varied cluster profile versions. Each cluster can be attached to only one cluster template at a
+time, further guarding against drift.
 
-A cluster profile version cannot be linked to a cluster template if that profile version is already being used a cluster
-that is not attached to a cluster template.
+A cluster profile version cannot be linked to a cluster template if that profile version is already being used by a
+cluster that is not attached to a cluster template.
 
 ### Cluster Profile Variables
 
@@ -70,33 +70,17 @@ Much like deploying clusters with individual cluster profiles, variable values a
 deploy a cluster using a cluster template. Once the cluster is deployed, the variables appear on the **Variable values**
 tab of your cluster template with an **Assignment** status of **Assigned**.
 
+![Variables with a status of Assigned](/cluster-templates_variables-assigned.webp)
+
 Cluster templates help with the initial propagation of new variable values, but they are not the source of truth for
 ongoing variable management across clusters. The source of truth remains the cluster profile, which defines the schema,
-and the cluster itself, where values are overwritten in real time.
+and the cluster itself, where values are updated in real time.
 
-To add or remove cluster profile variables, or modify the existing schema, create a new version of your cluster profile,
-make the necessary changes, and update the version attached to the cluster template.
+To add or remove cluster profile variables, or to modify the existing schema, create a new version of your cluster
+profile, make the necessary changes, and update the version attached to the cluster template.
 
-[CURRENT BEHAVIOR - THIS IS SUBJECT TO CHANGE BEFORE RELEASE] When you update the linked version, all variables enter a
-**Pending** state. Upon referring to your cluster, the banner **Action required: This cluster has a pending variable
-assignment** is displayed. Select the link to view the list of cluster **Variable values** attached to your cluster
-template via cluster profiles.
-
-![Action required banner when viewing a cluster with pending variables](/cluster-templates_action-required.webp)
-
-Until you verify the **New value** for all variables and all variables are in an **Assigned** state, clusters attached
-to the template will not update to the latest profile version, regardless of whether you wait until the next maintenance
-window or initiate the update using the **Upgrade now** button.
-
-Use the below table to help you determine which workflow to use when updating profile variables.
-
-| **Scenario**                                                                                                                                                                   | **Recommended Workflow**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| - **Add or remove variables** <br /> - **Update the schema or definition of an existing variable** <br /> - **Modify existing variable values for a large number of clusters** | Create a new cluster profile version with your changes and update the version attached to the template. Verify each **New value** for all variables in the cluster. The cluster will not update until all variables are in an **Assigned** state, regardless of whether you wait until the next maintenance window or initiate the update using the **Upgrade now** button.                                                                                                                                     |
-| **Modify existing variable values for individual clusters**                                                                                                                    | Navigate to **Clusters > Profile > Configure Values** and update values as needed. Changes are automatically propagated to the cluster without waiting for the next update window defined in the maintenance policy. Refer to our [Modify Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/modify-cluster-profile-variables.md#modify-profile-variable-values-in-an-active-cluster) guide for more information on updating values in an active cluster. |
-
-For more information on modifying cluster profile variables post-cluster deployment, refer to our
-[Modify Cluster Templates](./modify-cluster-templates.md) guide.
+For information on modifying cluster profile variables post-cluster deployment, refer to our
+[Modify Cluster Templates](./modify-cluster-templates.md#variable-values-tab) guide.
 
 ### Cluster Profile vs. Cluster Template Deployment
 
@@ -106,10 +90,10 @@ ensure the clusters update together, consider using cluster templates.
 
 The following table compares two common cluster scenarios.
 
-| Operation                     | Cluster Profile Workflow                                                                                                                                                                                                                                                                                                                                                               | Cluster Template Workflow                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Batch cluster updates**     | Routine, automatic updates are not supported. You must initiate updates on a per-cluster basis by selecting a new cluster profile version for each cluster or making on-the-fly changes.                                                                                                                                                                                               | Update the cluster profile version in the cluster template. All clusters deployed with the template are updated during the next upgrade window defined in the linked maintenance policy or by manually triggering the update for all clusters. Updating the cluster profile version for a single cluster or making on-the-fly changes is not supported.                                                                                                                                                                                                                             |
-| **Cluster profile variables** | Initial values are specified during cluster deployment. Values are edited on a per-cluster basis. Batch updates for multiple clusters using the same profile are not supported. If adding or removing variables, or updating the schema, create a new version of the cluster profile, and manually update the version on each cluster. Values are modified and confirmed at this step. | Initial values are specified during cluster deployment. Values can be edited for individual clusters within cluster settings. To add or remove variables, update a schema, or update a value across a fleet of clusters, create a new version of the cluster profile, and update the version referenced in the cluster profile. Next, update the values in the **Variable values** for all applicable clusters. Once all values have a status of **Assigned**, all affected clusters are updated during the next specified maintenance window or by manually triggering the update. |
+| **Update Type**              | **Cluster Profile Workflow**                                                                                                                                                                                                                                                                                                                                                                                                                                          | **Cluster Template Workflow**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Cluster profile**          | - Initiate updates on a per-cluster basis by selecting a new cluster profile version for each cluster or making on-the-fly changes to a cluster. <br / > - Routine, automatic updates are not supported.                                                                                                                                                                                                                                                              | - Update the cluster profile version in the cluster template. All clusters deployed with the template are updated during the next update window specified by the [maintenance policy](./create-cluster-template-policies/maintenance-policy.md) or by manually triggering the update for all clusters. <br /> - Updating the cluster profile version for a single cluster or making on-the-fly changes to a cluster is not supported.                                                                                                                                                                                                                                                                                                       |
+| **Cluster profile variable** | - Specify initial values during cluster deployment. <br /> - Edit variable values for _individual clusters_ within cluster settings. Values are updated in real time. <br /> - To add or remove variables, or update the schema, create a new version of the cluster profile, and manually update the version on each cluster. Values are modified and confirmed at this step. <br /> - Batch updates for multiple clusters using the same profile are not supported. | - Specify initial values during cluster deployment. <br /> - Edit variable values for _individual clusters_ within cluster settings. Values are updated in real time. <br /> - To add or remove variables, update a schema, or update a value across _multiple clusters_, create a new version of the cluster profile, and update the version referenced in the cluster template. Next, update the **Variable values** for all applicable clusters. Once all values have a status of **Assigned**, all clusters deployed with the template are updated during the next update window specified by the [maintenance policy](./create-cluster-template-policies/maintenance-policy.md) or by manually triggering the update for all clusters. |
 
 ## Policy Behavior
 
@@ -120,7 +104,7 @@ policies independently; this includes updating and swapping them as needed to cr
 for your clusters.
 
 Currently, Palette supports [maintenance policies](./create-cluster-template-policies/maintenance-policy.md). Each
-cluster template can only be linked to one policy of each type. For example, while you can create multiple maintenance
+cluster template can be linked only to one policy of each type. For example, while you can create multiple maintenance
 policies that you can update or swap as needed, only one can be attached to the cluster template at any time. However,
 the same policy can be attached to multiple cluster templates.
 
@@ -137,7 +121,7 @@ guide.
 
 ## Next Steps
 
-Before you can use clusters templates to deploy clusters, you must first create a cluster template. To create a cluster
+Before you can use cluster templates to deploy clusters, you must first create a cluster template. To create a cluster
 template, you must have the following resources created in Palette:
 
 - A [full](../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md) or
