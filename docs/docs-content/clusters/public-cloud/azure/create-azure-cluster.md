@@ -146,9 +146,34 @@ Use the following steps to deploy an Azure cluster.
 
 <!-- prettier-ignore-end -->
 
-11. Click **Next** to continue.
+11. By default, Palette creates route tables and route entries for pod networking.
 
-12. Provide the cluster configuration information listed in the following table. If you are utilizing your own VNet,
+    <details>
+
+    <summary> Example route table entries </summary>
+
+    | Name                                                      | Address prefix | Next hop type    | Next hop IP address |
+    | --------------------------------------------------------- | -------------- | ---------------- | ------------------- |
+    | az-iaas-cluster-cp-xfqnh\_\_\_\_1921680024                | 192.168.0.0/24 | VirtualAppliance | 10.0.0.4            |
+    | az-iaas-cluster-worker-pool-2cst7-scwck\_\_\_\_1921681024 | 192.168.1.0/24 | VirtualAppliance | 10.1.0.4            |
+
+    </details>
+
+    If you do not want Palette to create these route entries, add the following configuration to your Kubernetes layer.
+
+    ```yaml
+    cloud:
+      cloudControllerManager:
+        configureCloudRoutes: false
+    ```
+
+    These route tables and entries are typically needed for pod-to-pod communication if your Container Network
+    Interfaces (CNI) does not support this by default. However, Calico and Cilium CNIs support pod networking across
+    nodes by default without requiring these route tables and entries.
+
+12. Click **Next** to continue.
+
+13. Provide the cluster configuration information listed in the following table. If you are utilizing your own VNet,
     ensure you also provide information listed in the Static Placement Settings table. If you have custom storage
     accounts or containers available, you can attach them to the cluster. To learn more about attaching custom storage
     to a cluster, check out [Azure storage](../azure/architecture.md#azure-storage).
@@ -203,9 +228,9 @@ Use the following steps to deploy an Azure cluster.
     | **IP Allocation Method**        | How the load balancer virtual IP is assigned. <br /> - **Dynamic** (default) lets Azure pick the next free address in the subnet. _This option is no longer supported, you must assign a static IP._ <br /> - **Static** lets you choose a specific IP address for the load balancer that you supply in the **Static IP** field. |
     | **Static IP**                   | The private IP address to use only when **IP Allocation Method** is set to **Static**. The address must be unused and inside the subnet delegated for the private API server load balancer.                                                                                                                                      |
 
-13. Click **Next** to continue.
+14. Click **Next** to continue.
 
-14. Provide the following node pool and cloud configuration information. To learn more about node pools, review the
+15. Provide the following node pool and cloud configuration information. To learn more about node pools, review the
     [Node Pool](../../cluster-management/node-pool.md) guide.
 
     :::info
@@ -261,14 +286,14 @@ Use the following steps to deploy an Azure cluster.
     | **Disk size**          | You can choose disk size based on your requirements. The default size is 60.                                                                                                                                                                                                                                                                                                                                                         |
     | **Availability zones** | The Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so.                                                                                                                                                                                                                     |
 
-15. Click **Next** to continue.
+16. Click **Next** to continue.
 
-16. Specify your preferred **OS Patching Schedule**.
+17. Specify your preferred **OS Patching Schedule**.
 
-17. Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
+18. Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
     Kubernetes configuration security, penetration testing, and conformance testing.
 
-18. Schedule any backups you want Palette to perform. Review
+19. Schedule any backups you want Palette to perform. Review
     [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
 
 <!-- prettier-ignore-start -->
