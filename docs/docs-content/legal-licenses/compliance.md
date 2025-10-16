@@ -7,29 +7,30 @@ sidebar_position: 0
 tags: ["compliance", "soc2", "fips"]
 ---
 
-## ISO 27001
+## ISO 27001:2022
 
 ![ISO 27001 logo](/legal-licenses_compliance_iso-27001.webp "#width=300px")
 
 The International Organization for Standardization 27001 Standard (ISO 27001) is one of the leading international
-standards focused on information security. Spectro Cloud has obtained the ISO 27001 Certification and undergoes periodic
-audits to maintain this certification. ISO 27001 Certification provides assurances that Spectro Cloud is identifying and
-managing risks effectively, consistently, and measurably.
+standards focused on information security. Spectro Cloud has obtained the ISO 27001:2022 Certification and undergoes
+periodic audits to maintain this certification. ISO 27001:2022 Certification provides assurances that Spectro Cloud is
+identifying and managing risks effectively, consistently, and measurably.
 
-Below are some reasons why an ISO 27001 Certification is important:
+Below are some reasons why an ISO 27001:2022 Certification is important:
 
-- Customer trust and confidence: Clients and partners often look for assurances that their sensitive information is
-  handled securely. Achieving ISO 27001 certification can enhance customer trust and confidence, potentially leading to
-  increased business opportunities.
+- **Customer trust and confidence**: Clients and partners often look for assurances that their sensitive information is
+  handled securely. Achieving ISO 27001:2022 certification can enhance customer trust and confidence, potentially
+  leading to increased business opportunities.
 
-- Risk Management: By implementing ISO controls and measures, companies can mitigate these risks, protecting sensitive
-  data from unauthorized access or disclosure.
+- **Risk Management**: By implementing ISO controls and measures, companies can mitigate these risks, protecting
+  sensitive data from unauthorized access or disclosure.
 
-- Legal and regulatory compliance: Adhering to ISO 27001 demonstrates a commitment to information security, which can
-  help organizations comply with various legal and regulatory requirements related to data protection and privacy.
+- **Legal and regulatory compliance**: Adhering to ISO 27001:2022 demonstrates a commitment to information security,
+  which can help organizations comply with various legal and regulatory requirements related to data protection and
+  privacy.
 
-- Global recognition: ISO 27001 is globally recognized. This helps organizations communicate their commitment to
-  information security across borders.
+- **Global recognition**: ISO 27001:2022 is globally recognized. This helps organizations communicate their commitment
+  to information security across borders.
 
 ## SOC 2 Type II
 
@@ -60,18 +61,6 @@ Our Spectro Cloud Cryptographic Module is a general-purpose cryptographic librar
 edition incorporates the module in the Kubernetes Management Platform and the infrastructure components of target
 clusters to protect the sensitive information of regulated industries. Palette VerteX supports FIPS at the tenant level.
 For more information about the FIPS-enforced Palette edition, check out [Palette VerteX](vertex/vertex.md).
-
-The module is tested against these configurations:
-
-- Android 13 running on Google Pixel 4a with Qualcomm Snapdragon 730 32-bit and 64-bit _with and without_ PAA
-- Android 13 running on Google Pixel 4XL with Qualcomm Snapdragon 855 32-bit and 64-bit _with and without_ PAA
-- Android 13 running on Google Pixel 5a with Qualcomm Snapdragon 765 32-bit and 64-bit _with and without_ PAA
-- Android 13 running on Google Pixel 6 Pro with Google Tensor 32-bit and 64-bit _with and without_ PAA
-- Android 13 running on Google Pixel 7 Pro with Google Tensor G2 32-bit and 64-bit _with and without_ PAA
-- Debian Linux 5.17.11 (Rodete) running on n2d with AMD EPYC 7B12 _with and without_ PAA
-- Google Prodimage with Linux 4.15.0 running on n1 with Intel Xeon E5 2696 v4 _with and without_ PAA
-- Google Prodimage with Linux 4.15.0 running on Tau t2a with Ampere Altra _with and without_ PAA
-- Google Prodimage with Linux 5.10.120 running on IN762 _with and without_ PAA
 
 ## Joint Certification Program
 

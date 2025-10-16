@@ -106,58 +106,91 @@ Use the following steps to deploy an Azure cluster.
     - Certain features, such as clusters with static placement and those using custom OpenID Connect (OIDC), require
       additional modifications to your cluster profile. Expand the appropriate panel for more information.
 
-                    <details>
-                    <summary> Static Placement </summary>
+      <details>
 
-                    To ensure that clusters with [static placement](#static-placement-settings) remain fully private, with no public IPs
-                    created for the control plane and worker nodes, add the following configuration to your Kubernetes layer.
+      <summary> Static Placement </summary>
 
-                    ```yaml
-                    cloud:
-                      azure:
-                        fullyPrivateAddressing: true
-                    ```
+      To ensure that clusters with [static placement](#static-placement-settings) remain fully private, with no public IPs
+      created for the control plane and worker nodes, add the following configuration to your Kubernetes layer.
 
-                    If you set the `fullyPrivateAddressing` property to `false` or leave it blank, Palette will create outbound load
-                    balancers for the control plane and worker nodes and assign public IPs to them.
+      ```yaml
+      cloud:
+        azure:
+          fullyPrivateAddressing: true
+      ```
 
-                    Consider the following limitations:
+      If you set the `fullyPrivateAddressing` property to `false` or leave it blank, Palette will create outbound load
+      balancers for the control plane and worker nodes and assign public IPs to them.
 
-                    - If the `fullyPrivateAddressing` parameter is set to `true`, the control plane and worker nodes in your cluster must
-                      still have outbound access to the internet, including the
-                      [Microsoft Container Registry](https://mcr.microsoft.com/), to download updates, patches, and the necessary
-                      container images.
+      Consider the following limitations:
 
-                    - Once the `fullyPrivateAddressing` parameter is set for your cluster, you cannot change its value. Changing the
-                      parameter value will result in errors until you return the value to its original configuration.
+      - If the `fullyPrivateAddressing` parameter is set to `true`, the control plane and worker nodes in your cluster must
+        still have outbound access to the internet, including the
+        [Microsoft Container Registry](https://mcr.microsoft.com/), to download updates, patches, and the necessary
+        container images.
 
-                    <br />
+      - Once the `fullyPrivateAddressing` parameter is set for your cluster, you cannot change its value. Changing the
+        parameter value will result in errors until you return the value to its original configuration.
 
-                    Toggle the **Private API Server LB** option to enable the use of a Private API Server load balancer and specify the
-                    [Private DNS Zone](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns) name you want to use.
-                    Select the desired **IP Allocation Method**. You can choose between **Static** and **Dynamic** IP allocation methods.
-                    If you select **Static**, you must provide a valid IP address.
+        <br />
 
-                    </details>
+        Toggle the **Private API Server LB** option to enable the use of a Private API Server load balancer and specify the
+        [Private DNS Zone](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns) name you want to use.
+        Select the desired **IP Allocation Method**. You can choose between **Static** and **Dynamic** IP allocation methods.
+        If you select **Static**, you must provide a valid IP address.
 
-                    <details>
-                    <summary> OpenID Connect (OIDC)</summary>
+      </details>
 
-                    <!-- prettier-ignore-start -->
+      <details>
 
-                    You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details for more information.
+      <summary> OpenID Connect (OIDC)</summary>
 
-                    :::warning
+      <!-- prettier-ignore-start -->
 
-                    All OIDC options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a
-                    Kubernetes role to users and groups, refer to
-                    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
+      You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details for more information.
 
-                    :::
+      :::warning
 
-                    <!-- prettier-ignore-end -->
+      All OIDC options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a
+      Kubernetes role to users and groups, refer to
+      [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
 
-                    </details>
+      :::
+
+      <!-- prettier-ignore-end -->
+
+      </details>
+
+      <details>
+
+      <summary> Disable automatic route table creation for pod networking </summary>
+
+      By default, Palette creates route tables and route entries for pod networking.
+
+      <details>
+
+      <summary> Example route table entries </summary>
+
+      | Name                                                    | Address prefix | Next hop type    | Next hop IP address |
+      | ------------------------------------------------------- | -------------- | ---------------- | ------------------- |
+      | `az-iaas-cluster-cp-xfqnh____1921680024`                | 192.168.0.0/24 | VirtualAppliance | 10.0.0.4            |
+      | `az-iaas-cluster-worker-pool-2cst7-scwck____1921681024` | 192.168.1.0/24 | VirtualAppliance | 10.1.0.4            |
+
+      </details>
+
+      If you do not want Palette to create these route entries, add the following configuration to your Kubernetes layer.
+
+      ```yaml
+      cloud:
+        cloudControllerManager:
+          configureCloudRoutes: false
+      ```
+
+      These route tables and entries are typically needed for pod-to-pod communication if your Container Network
+      Interfaces (CNI) does not support this by default. However, Calico and Cilium CNIs support pod networking across
+      nodes by default without requiring these route tables and entries.
+
+      </details>
 
 8.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
@@ -286,15 +319,15 @@ Use the following steps to deploy an Azure cluster.
 
 <!-- prettier-ignore-start -->
 
-19. Role-Based Access Control (RBAC) configuration is required when you configure custom OIDC. You must map a set of
+16. Role-Based Access Control (RBAC) configuration is required when you configure custom OIDC. You must map a set of
     users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
     [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details for an example.
 
 <!-- prettier-ignore-end -->
 
-20. Click **Validate** and review the cluster configuration and settings summary.
+17. Click **Validate** and review the cluster configuration and settings summary.
 
-21. Click **Finish Configuration** to deploy the cluster. Provisioning Azure clusters can take several minutes.
+18. Click **Finish Configuration** to deploy the cluster. Provisioning Azure clusters can take several minutes.
 
 The cluster details page contains the status and details of the deployment. Use this page to track the deployment
 progress.

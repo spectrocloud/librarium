@@ -11,6 +11,18 @@ sidebar_position: 30
 Palette supports creating and managing Amazon Web Services (AWS) Elastic Kubernetes Service (EKS) clusters deployed to
 an AWS account. This section guides you on how to create an EKS cluster in AWS that Palette manages.
 
+:::warning
+
+[EKS-optimized Amazon Linux 2 (AL2) AMIs](https://docs.aws.amazon.com/eks/latest/userguide/eks-ami-deprecation-faqs.html)
+will be disabled in Palette from January 10, 2026, and removed on April 4, 2026. When disabled, you will no longer be
+able to select the AL2 AMIs for EKS worker nodes in Palette for new clusters. For existing clusters, you must create new
+worker nodes using AL2023 AMIs. Existing AL2 AMI worker nodes will no longer receive bug fixes or security patches after
+the removal date. Refer to our
+[Scenario - Unable to Upgrade EKS Worker Nodes from AL2 to AL2023](../../../troubleshooting/cluster-deployment.md#scenario---unable-to-upgrade-eks-worker-nodes-from-al2-to-al2023)
+guide for help with migrating workloads.
+
+:::
+
 ## Prerequisites
 
 - Access to an AWS cloud account.
@@ -441,6 +453,10 @@ For guidance in setting up kubectl, review the [Kubectl](../../cluster-managemen
 - [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
 
 - [Enable Secrets Encryption for EKS Cluster](enable-secrets-encryption-kms-key.md)
+
+- [Enable Disk Encryption for EKS Cluster](enable-disk-encryption-eks-cluster.md)
+
+- [Configure Karpenter for EKS Clusters](configure-karpenter-eks-clusters.md)
 
 <!-- prettier-ignore-start -->
 
