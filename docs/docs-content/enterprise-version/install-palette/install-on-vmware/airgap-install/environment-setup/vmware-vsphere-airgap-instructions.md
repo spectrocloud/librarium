@@ -56,7 +56,7 @@ Palette.
   when provisioning workloads that require persistent storage. Refer to
   [Zone Tagging](../../../install-on-vmware/vmware-system-requirements.md#zone-tagging) for information.
 
-- A folder in vSphere VM and Template inventory on vCenter named `spectro-templates`. This is a hardcoded value and is
+- A folder named `spectro-templates` in the vCenter VM and Templates inventory. This is a hardcoded value and is
   case-sensitive.
 
 :::info
