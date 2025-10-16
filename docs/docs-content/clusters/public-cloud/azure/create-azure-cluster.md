@@ -110,8 +110,8 @@ Use the following steps to deploy an Azure cluster.
 
       <summary> Static Placement </summary>
 
-      To ensure that clusters with [static placement](#static-placement-settings) remain fully private, with no public IPs
-      created for the control plane and worker nodes, add the following configuration to your Kubernetes layer.
+      To ensure that clusters with [static placement](#static-placement-settings) remain fully private, with no public
+      IPs created for the control plane and worker nodes, add the following configuration to your Kubernetes layer.
 
       ```yaml
       cloud:
@@ -124,8 +124,8 @@ Use the following steps to deploy an Azure cluster.
 
       Consider the following limitations:
 
-      - If the `fullyPrivateAddressing` parameter is set to `true`, the control plane and worker nodes in your cluster must
-        still have outbound access to the internet, including the
+      - If the `fullyPrivateAddressing` parameter is set to `true`, the control plane and worker nodes in your cluster
+        must still have outbound access to the internet, including the
         [Microsoft Container Registry](https://mcr.microsoft.com/), to download updates, patches, and the necessary
         container images.
 
@@ -134,10 +134,10 @@ Use the following steps to deploy an Azure cluster.
 
         <br />
 
-        Toggle the **Private API Server LB** option to enable the use of a Private API Server load balancer and specify the
-        [Private DNS Zone](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns) name you want to use.
-        Select the desired **IP Allocation Method**. You can choose between **Static** and **Dynamic** IP allocation methods.
-        If you select **Static**, you must provide a valid IP address.
+        Toggle the **Private API Server LB** option to enable the use of a Private API Server load balancer and specify
+        the [Private DNS Zone](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns) name you want
+        to use. Select the desired **IP Allocation Method**. You can choose between **Static** and **Dynamic** IP
+        allocation methods. If you select **Static**, you must provide a valid IP address.
 
       </details>
 
@@ -147,7 +147,9 @@ Use the following steps to deploy an Azure cluster.
 
       <!-- prettier-ignore-start -->
 
-      You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details for more information.
+      You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out the
+      <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" />
+      pack additional details for more information.
 
       :::warning
 
@@ -178,7 +180,8 @@ Use the following steps to deploy an Azure cluster.
 
       </details>
 
-      If you do not want Palette to create these route entries, add the following configuration to your Kubernetes layer.
+      If you do not want Palette to create these route entries, add the following configuration to your Kubernetes
+      layer.
 
       ```yaml
       cloud:
