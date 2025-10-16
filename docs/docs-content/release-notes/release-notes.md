@@ -50,6 +50,13 @@ tags: ["release-notes"]
 - <TpBadge /> The packs list of the [Artifact Studio](../downloads/artifact-studio.md) now displays a single tile for
   all the pack versions, offering a streamlined user experience.
 
+- When creating Azure IaaS clusters, you can disable automatic creation of route table entries for pod-to-pod
+  communication using the `cloud.cloudControllerManager.configureCloudRoutes` parameter. This improvement is useful when
+  using Calico or Cilium Container Network Interfaces (CNIs), which support pod networking across nodes by default
+  without requiring these route tables and entries. Refer to the
+  [Create and Manage Azure IaaS Cluster](../clusters/public-cloud/azure/create-azure-cluster.md#deploy-an-azure-cluster)
+  guide for more information.
+
 #### Bug Fixes
 
 - Fixed an issue that prevented the
@@ -64,6 +71,14 @@ tags: ["release-notes"]
   [Azure IaaS clusters](../clusters/public-cloud/azure/create-azure-cluster.md) using static placement.
 
 #### Deprecations and Removals
+
+- [EKS-optimized Amazon Linux 2 (AL2) AMIs](https://docs.aws.amazon.com/eks/latest/userguide/eks-ami-deprecation-faqs.html)
+  will be disabled in Palette from January 10, 2026 and removed on April 4, 2026. When disabled, you will no longer be
+  able to select the AL2 AMIs for EKS worker nodes in Palette for new clusters. For existing clusters, you must create
+  new worker nodes using AL2023 AMIs. Existing AL2 AMI worker nodes will no longer receive bug fixes or security patches
+  after the removal date. Refer to our
+  [Scenario - Unable to Upgrade EKS Worker Nodes from AL2 to AL2023](../troubleshooting/cluster-deployment.md#scenario---unable-to-upgrade-eks-worker-nodes-from-al2-to-al2023)
+  guide for help with migrating workloads.
 
 ### Edge
 

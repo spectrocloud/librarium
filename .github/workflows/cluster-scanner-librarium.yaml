@@ -22,7 +22,7 @@ jobs:
           repository: spectrocloud/palette-samples
 
       - name: Set Up Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v6
         with:
           go-version-file: "scripts/cluster-scanner/go.mod"
 
