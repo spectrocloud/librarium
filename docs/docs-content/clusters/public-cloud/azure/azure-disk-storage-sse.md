@@ -10,25 +10,22 @@ tags: ["public cloud", "azure", "encryption", "security", "disk"]
 sidebar_position: 12
 ---
 
-Palette supports disk encryption of your Azure Kubernetes cluster using
-[Disk Encryption Sets with customer-managed keys](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#customer-managed-keys)
-or
-[Encryption at Host with platform-managed keys](https://learn.microsoft.com/en-in/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data).
+Palette supports disk encryption for Azure IaaS clusters using Azure Disk Storage
+[server-side encryption (SSE)](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption) and Azure
+[encryption at host (EAH)](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data).
+By default, Azure encrypts all SSE-managed disks with PMK
+[platform-managed keys (PMK)](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#platform-managed-keys);
+however, you can use
+[customer-managed keys (CMK)](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#customer-managed-keys)
+through
+[Azure Disk Encryption Sets (DES)](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-customer-managed-keys-portal#set-up-your-disk-encryption-set)
+instead of PMK, giving you greater control of your key-management.
 
-By default, Azure encrypts all managed disks with
-[platform-managed keys](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#platform-managed-keys).
-However, customer-managed keys enable you to have greater control over your key management, specifically when using
-Server-Side Encryption (SSE).
+<!-- prettier-ignore-start -->
+SSE does not encrypt [temporary disks](https://learn.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview#temporary-disk) or disk caches. To ensure end-to-end encryption, use EAH. SSE and EAH can be used independently or alongside one another. To leverage either or both encryption methods, you must use the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack.
+<!-- prettier-ignore-end -->
 
-SSE will not encrypt temporary disks or disk caches. When you need to ensure that everything is encrypted from
-end-to-end, Encryption at Host is a good option for this. These encryption methods can be used independently or in
-conjunction with each other.
-
-To leverage either or both encryption methods, you must use the
-
-<VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> pack.
-
-The table below highlights use cases for each encryption method.
+The following table highlights use cases for each encryption method.
 
 | **Feature**               | **Server Side Encryption (SSE)**                                                                                                                                                                                                                                                                                                                                                                         | **Encryption at Host (EAH)**                                                                                                                                                                                                                 |
 | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -64,7 +61,7 @@ is not supported for any Azure cluster.
 
   :::
 
-- Azure VMs must be compatible with the `encryptionAtHost` option.
+- (EAH only) Azure VMs compatible with EAH.
 
       <details>
 
@@ -85,23 +82,20 @@ is not supported for any Azure cluster.
 
 ## New Cluster Profile
 
-Take the following steps to create a cluster profile with SSE or EAH enabled. Take the following steps to create a
-cluster profile with SSE or EAH enabled.
+Take the following steps to create a cluster profile with SSE or EAH enabled.
 
 ### Prerequisites
 
-- An Azure user account with the following roles to create the Azure Key Vault and Disk Encryption Set with the
-  necessary Key Vault access policies.
-
-  | Task                                                                          | Required Role                            |
-  | ----------------------------------------------------------------------------- | ---------------------------------------- |
-  | Create Key Vault and Key                                                      | Key Vault Contributor                    |
-  | Create Disk Encryption Set & Assign Key Vault Key                             | Key Vault Administrator                  |
-  | Assign Key Vault Access Policies (GET, WRAP KEY, UNWRAP KEY)                  | Key Vault Crypto Service Encryption User |
-  | (Optional) Assign User-Assigned Identity to Key Vault and Disk Encryption Set | Managed Identity Operator                |
-
-  For more information, visit
+- An Azure user account with the following roles to create the Azure Key Vault and disk encryption set with the
+  necessary Azure Key Vault access policies. For more information, visit
   [Azure built-in roles for Key Vault data plane operations](https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide?tabs=azure-cli#azure-built-in-roles-for-key-vault-data-plane-operations).
+
+  | **Task**                                                                                    | **Required Role**                        |
+  | ------------------------------------------------------------------------------------------- | ---------------------------------------- |
+  | Create Azure Key Vault and key                                                              | Key Vault Contributor                    |
+  | Create disk encryption set and assign Azure Key Vault key                                   | Key Vault Administrator                  |
+  | Assign Azure Key Vault access policies (GET, WRAP KEY, UNWRAP KEY)                          | Key Vault Crypto Service Encryption User |
+  | (Optional) Assign user-assigned managed identity to Azure Key Vault and disk encryption set | Managed Identity Operator                |
 
 - An
   [Azure Key Vault](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-customer-managed-keys-portal#set-up-your-azure-key-vault)
@@ -111,21 +105,21 @@ cluster profile with SSE or EAH enabled.
   - Purge protection: **Enable purge protection**
 
 - A
-  [Disk Encryption Set](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-customer-managed-keys-portal#set-up-your-disk-encryption-set)
+  [disk encryption set](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-customer-managed-keys-portal#set-up-your-disk-encryption-set)
   with the encryption type set to **Encryption at-rest with a customer-managed key**.
 
-- [Encryption at Host](https://learn.microsoft.com/en-in/azure/virtual-machines/disks-enable-host-based-encryption-portal?tabs=azure-powershell)
+- [EAH](https://learn.microsoft.com/en-in/azure/virtual-machines/disks-enable-host-based-encryption-portal?tabs=azure-powershell)
   enabled on Azure when using **Encryption at Host**.
 
 - The Azure Key Vault must have the following
   [access policies](https://learn.microsoft.com/en-us/azure/key-vault/general/assign-access-policy?tabs=azure-portal)
-  assigned to the Disk Encryption Set that you want to use:
+  assigned to the disk encryption set that you want to use:
 
   - Key Management Operations: **Get**
   - Cryptographic Operations: **Unwrap Key**, **Wrap Key**
 
-  If you have designated a user-assigned identity to the Disk Encryption Set, assign the same access policies to the
-  user-assigned identity in the Azure Key Vault.
+  If you have designated a user-assigned managed identity to the disk encryption set, assign the same access policies to
+  the user-assigned managed identity in the Azure Key Vault.
 
 ### Enable Disk Encryption
 
@@ -145,145 +139,155 @@ Use the following steps to enable disk encryption on a
 
 6. Choose your base OS pack and make any necessary modifications. Select **Next layer** when complete.
 
-7. Select **Palette eXtended Kubernetes (PXK)** as your Kubernetes pack.
+<!-- prettier-ignore-start -->
+
+7. Select <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> as your
+Kubernetes pack.
+
+<!-- prettier-ignore-end -->
 
 8. On the **Configure Pack** drawer, below **Pack Details**, select **Values**, and click the **\</\>** button to
-   display the YAML editor.
+   display the YAML editor. Make the appropriate modifications based on your encryption method.
 
 <Tabs groupId="adding-encrypt">
 
-    <TabItem value="sse" label="SSE Only" default>
+<TabItem value="sse" label="SSE Only" default>
 
-    9.  On the right side of the editor, expand the **Presets** drop-down menu, and select **Enable Encryption Using
-        Customer-Managed Key** to use CMK with SSE.
+9.  On the right side of the editor, expand the **Presets** drop-down menu, and select **Enable Encryption Using
+    Customer-Managed Key** to use CMK with SSE.
 
-    10. Scroll to the bottom of the YAML editor to view the additional configuration that was added.
+10. Scroll to the bottom of the YAML editor to view the additional configuration that was added.
 
-        ```yaml
-        cloud:
-          azure:
-            diskEncryptionSetID: ""
-        ```
+    ```yaml
+    cloud:
+      azure:
+        diskEncryptionSetID: ""
+    ```
 
-    11. Fill in the `diskEncryptionSetID` with the Resource ID URI of your Disk Encryption Set.
+11. Fill in the `diskEncryptionSetID` with the Resource ID URI of your disk encryption set.
 
-            <!-- prettier-ignore -->
+    ```yaml
+    cloud:
+      azure:
+        diskEncryptionSetID: "/subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Compute/diskEncryptionSets/diskEncryptionSet"
+    ```
 
           <details>
 
-            <summary> How to find the Resource ID URI of your Disk Encryption Set </summary>
+          <summary> How to find the Resource ID URI of your disk encryption set </summary>
 
-            1. Log in to the [Azure Portal](https://portal.azure.com/).
+          1. Log in to the [Azure Portal](https://portal.azure.com/).
 
-            2. Click on the search bar, and enter **Disk Encryption Sets**. Click on the service when found.
+          2. Use the search bar to locate and select the **Disk Encryption Sets** resource.
 
-            3. Find your Disk Encryption Set from the list and click on it to view details.
+          3. On the **Overview** page, in the **Essentials** section, select **JSON View** to display the Resource ID for the disk
+            encryption set.
 
-            4. On the **Overview** page, click **JSON View** in the **Essentials** section. The Resource ID for the Disk
-              Encryption Set is displayed at the top.
-
-            5. Click the **Copy to clipboard** icon for the Resource ID and paste it into the `diskEncryptionSetID` field in the
-              Palette YAML editor.
-
-          </details>
-
-            ```yaml
-            cloud:
-              azure:
-                diskEncryptionSetID: "/subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Compute/diskEncryptionSets/diskEncryptionSet"
-            ```
-
-    12. Make any other changes that you need and click **Next layer**.
-
-    13. Select the remaining profile layers to finish the configuration.
-
-    You can now [create a new Azure IaaS cluster](./create-azure-cluster.md) with disk encryption enabled using this cluster
-    profile. Once the cluster is created, you can [validate disk encryption enablement](#validate-new-cluster-profile).
-
-    </TabItem>
-
-    <TabItem value="both" label="SSE + EAH">
-
-    9.  On the right side of the editor, expand the **Presets** drop-down menu, and select **Enable Encryption Using
-        Customer-Managed Key** to use CMK with SSE.
-
-    10. Scroll to the bottom of the YAML editor to view the additional configuration that was added.
-
-        ```yaml
-        cloud:
-          azure:
-            diskEncryptionSetID: ""
-        ```
-
-    11. Fill in the `diskEncryptionSetID` with the Resource ID URI of your Disk Encryption Set.
-
-        <!-- prettier-ignore -->
-        <details>
-        <summary> How to find the Resource ID URI of your Disk Encryption Set </summary>
-
-        1. Log in to the [Azure Portal](https://portal.azure.com/).
-
-        2. Click on the search bar, and enter **Disk Encryption Sets**. Click on the service when found.
-
-        3. Find your Disk Encryption Set from the list and click on it to view details.
-
-        4. On the **Overview** page, click **JSON View** in the **Essentials** section. The Resource ID for the Disk
-          Encryption Set is displayed at the top.
-
-        5. Click the **Copy to clipboard** icon for the Resource ID and paste it into the `diskEncryptionSetID` field in the
-          Palette YAML editor.
+          4. Select the **Copy to clipboard** icon for the Resource ID and paste the ID into the `diskEncryptionSetID` field in the
+            Palette YAML editor.
 
         </details>
 
-        ```yaml
-        cloud:
-          azure:
-            diskEncryptionSetID: "/subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Compute/diskEncryptionSets/diskEncryptionSet"
-        ```
+12. Make any other necessary changes and select **Next**.
 
-    12. In the YAML editor, add a line after `diskEncryptionSetID` that has `encryptionAtHost: true`. This will enable
-        Encryption at Host.
+13. Add the remaining storage and networking layers to your cluster profile, making changes where necessary. If you
+    selected **Full** for your cluster profile **Type**, you have the option to add add-on layers as well.
 
-        ```yaml
-        cloud:
-          azure:
-            diskEncryptionSetID: "/subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Compute/diskEncryptionSets/diskEncryptionSet"
-            encryptionAtHost: true
-        ```
+14. Select **Finish Configuration** to save your cluster profile. For more information on creating cluster profiles,
+    refer to our
+    [Create Cluster Profiles](../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md)
+    guide.
 
-    13. Make any other changes that you need and click **Next layer**.
+</TabItem>
 
-    14. Select the remaining profile layers to finish the configuration.
+<TabItem value="both" label="SSE + EAH">
 
-    You can now [create a new Azure IaaS cluster](./create-azure-cluster.md) with disk encryption enabled using this cluster
-    profile. Once the cluster is created, you can [validate disk encryption enablement](#validate-new-cluster-profile).
+9.  On the right side of the editor, expand the **Presets** drop-down menu, and select **Enable Encryption Using
+    Customer-Managed Key** to use CMK with SSE.
 
-    </TabItem>
+10. Scroll to the bottom of the YAML editor to view the additional configuration that was added.
 
-    <TabItem value="eah" label="EAH Only">
+    ```yaml
+    cloud:
+      azure:
+        diskEncryptionSetID: ""
+    ```
 
-    9.  In the YAML editor, add `encryptionAtHost: true` at the bottom of the manifest. This will enable Encryption at Host.
+11. Fill in the `diskEncryptionSetID` with the Resource ID URI of your Disk Encryption Set.
 
-        ```yaml
-        cloud:
-          azure:
-            encryptionAtHost: true
-        ```
+    ```yaml
+    cloud:
+      azure:
+        diskEncryptionSetID: "/subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Compute/diskEncryptionSets/diskEncryptionSet"
+    ```
 
-    10. Make any other changes that you need and click **Next layer**.
+          <details>
 
-    11. Select the remaining profile layers to finish the configuration.
+          <summary> How to find the Resource ID URI of your disk encryption set </summary>
 
-    You can now [create a new Azure IaaS cluster](./create-azure-cluster.md) with disk encryption enabled using this cluster
-    profile. Once the cluster is created, you can [validate disk encryption enablement](#validate-new-cluster-profile).
+          1. Log in to the [Azure Portal](https://portal.azure.com/).
 
-    </TabItem>
+          2. Use the search bar to locate and select the **Disk Encryption Sets** resource.
+
+          3. On the **Overview** page, in the **Essentials** section, select **JSON View** to display the Resource ID for the disk
+            encryption set.
+
+          4. Select the **Copy to clipboard** icon for the Resource ID and paste the ID into the `diskEncryptionSetID` field in the
+            Palette YAML editor.
+
+        </details>
+
+12. In the YAML editor, add a line after `diskEncryptionSetID` that has `encryptionAtHost: true` to enable EAH.
+
+    ```yaml {4}
+    cloud:
+      azure:
+        diskEncryptionSetID: "/subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Compute/diskEncryptionSets/diskEncryptionSet"
+        encryptionAtHost: true
+    ```
+
+13. Make any other necessary changes and select **Next**.
+
+14. Add the remaining storage and networking layers to your cluster profile, making changes where necessary. If you
+    selected **Full** for your cluster profile **Type**, you have the option to add add-on layers as well.
+
+15. Select **Finish Configuration** to save your cluster profile. For more information on creating cluster profiles,
+    refer to our
+    [Create Cluster Profiles](../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md)
+    guide.
+
+</TabItem>
+
+<TabItem value="eah" label="EAH Only">
+
+9. In the YAML editor, add `encryptionAtHost: true` at the bottom of the manifest to enable EAH.
+
+   ```yaml
+   cloud:
+     azure:
+       encryptionAtHost: true
+   ```
+
+10. Make any other necessary changes and select **Next**.
+
+11. Add the remaining storage and networking layers to your cluster profile, making changes where necessary. If you
+    selected **Full** for your cluster profile **Type**, you have the option to add add-on layers as well.
+
+12. Select **Finish Configuration** to save your cluster profile. For more information on creating cluster profiles,
+    refer to our
+    [Create Cluster Profiles](../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md)
+    guide.
+
+</TabItem>
 
 </Tabs>
 
+You can now [create a new Azure IaaS cluster](./create-azure-cluster.md) with disk encryption enabled using this cluster
+profile. Once the cluster is created, you can [validate disk encryption enablement](#validate-new-cluster-profile).
+
 ### Validate {#validate-new-cluster-profile}
 
-Follow these steps to validate the enablement of customer-managed key encryption on your Azure VM disks.
+Follow these steps to confirm that encryption is enabled on your Azure VM disks.
 
 <PartialsComponent category="clusters" name="cluster-azure-disk-encrypt-validate" />
 
@@ -291,15 +295,16 @@ Follow these steps to validate the enablement of customer-managed key encryption
 
 ### Prerequisites
 
-- An Azure user account with the following roles to create the Azure Key Vault and Disk Encryption Set with the
-  necessary Key Vault access policies.
+- An Azure user account with the following roles to create the Azure Key Vault and disk encryption set with the
+  necessary Azure Key Vault access policies. For more information, visit
+  [Azure built-in roles for Key Vault data plane operations](https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide?tabs=azure-cli#azure-built-in-roles-for-key-vault-data-plane-operations).
 
-  | Task                                                                          | Required Role                            |
-  | ----------------------------------------------------------------------------- | ---------------------------------------- |
-  | Create Key Vault and Key                                                      | Key Vault Contributor                    |
-  | Create Disk Encryption Set & Assign Key Vault Key                             | Key Vault Administrator                  |
-  | Assign Key Vault Access Policies (GET, WRAP KEY, UNWRAP KEY)                  | Key Vault Crypto Service Encryption User |
-  | (Optional) Assign User-Assigned Identity to Key Vault and Disk Encryption Set | Managed Identity Operator                |
+  | **Task**                                                                                    | **Required Role**                        |
+  | ------------------------------------------------------------------------------------------- | ---------------------------------------- |
+  | Create Azure Key Vault and key                                                              | Key Vault Contributor                    |
+  | Create disk encryption set and assign Azure Key Vault key                                   | Key Vault Administrator                  |
+  | Assign Azure Key Vault access policies (GET, WRAP KEY, UNWRAP KEY)                          | Key Vault Crypto Service Encryption User |
+  | (Optional) Assign user-assigned managed identity to Azure Key Vault and disk encryption set | Managed Identity Operator                |
 
 - An
   [Azure Key Vault](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-customer-managed-keys-portal#set-up-your-azure-key-vault)
@@ -309,18 +314,21 @@ Follow these steps to validate the enablement of customer-managed key encryption
   - Purge protection: **Enable purge protection**
 
 - A
-  [Disk Encryption Set](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-customer-managed-keys-portal#set-up-your-disk-encryption-set)
+  [disk encryption set](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-customer-managed-keys-portal#set-up-your-disk-encryption-set)
   with the encryption type set to **Encryption at-rest with a customer-managed key**.
+
+- [EAH](https://learn.microsoft.com/en-in/azure/virtual-machines/disks-enable-host-based-encryption-portal?tabs=azure-powershell)
+  enabled on Azure when using **Encryption at Host**.
 
 - The Azure Key Vault must have the following
   [access policies](https://learn.microsoft.com/en-us/azure/key-vault/general/assign-access-policy?tabs=azure-portal)
-  assigned to the Disk Encryption Set that you want to use:
+  assigned to the disk encryption set that you want to use:
 
   - Key Management Operations: **Get**
   - Cryptographic Operations: **Unwrap Key**, **Wrap Key**
 
-  If you have designated a user-assigned identity to the Disk Encryption Set, assign the same access policies to the
-  user-assigned identity in the Azure Key Vault.
+  If you have designated a user-assigned managed identity to the disk encryption set, assign the same access policies to
+  the user-assigned managed identity in the Azure Key Vault.
 
 ### Enable Disk Encryption
 
@@ -347,7 +355,7 @@ Performing these steps will cause a
 6. Select the PXK layer to view the **Edit Pack** drawer.
 
 7. On the **Edit Pack** drawer, below **Pack Details**, select **Values**, and click the **\</\>** button to display the
-   YAML editor.
+   YAML editor. Make the appropriate modifications based on your encryption method.
 
 <Tabs groupId="adding-encrypt">
 
@@ -364,48 +372,40 @@ Performing these steps will cause a
         diskEncryptionSetID: ""
     ```
 
-10. Fill in the `diskEncryptionSetID` with the Resource ID URI of your Disk Encryption Set.
+10. Fill in the `diskEncryptionSetID` with the Resource ID URI of your disk encryption set.
 
-        <!-- prettier-ignore -->
+    ```yaml
+    cloud:
+      azure:
+        diskEncryptionSetID: "/subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Compute/diskEncryptionSets/diskEncryptionSet"
+    ```
 
-       <details>
+          <details>
 
-         <summary> How to find the Resource ID URI of your Disk Encryption Set </summary>
+          <summary> How to find the Resource ID URI of your disk encryption set </summary>
 
-         1. Log in to the [Azure Portal](https://portal.azure.com/).
+          1. Log in to the [Azure Portal](https://portal.azure.com/).
 
-         2. Click on the search bar, and enter **Disk Encryption Sets**. Click on the service when found.
+          2. Use the search bar to locate and select the **Disk Encryption Sets** resource.
 
-         3. Find your Disk Encryption Set from the list and click on it to view details.
+          3. On the **Overview** page, in the **Essentials** section, select **JSON View** to display the Resource ID for the disk
+            encryption set.
 
-         4. On the **Overview** page, click **JSON View** in the **Essentials** section. The Resource ID for the Disk
-            Encryption Set is displayed at the top.
-
-         5. Click the **Copy to clipboard** icon for the Resource ID and paste it into the `diskEncryptionSetID` field in the
+          4. Select the **Copy to clipboard** icon for the Resource ID and paste the ID into the `diskEncryptionSetID` field in the
             Palette YAML editor.
 
-       </details>
+        </details>
 
-         ```yaml
-         cloud:
-           azure:
-             diskEncryptionSetID: "/subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Compute/diskEncryptionSets/diskEncryptionSet"
-         ```
+11. Make any other necessary changes and select **Confirm updates > Save Changes**.
 
-11. Make any other changes that you need and click **Next layer**.
+12. From the left main menu, select **Clusters**.
 
-12. Select the remaining profile layers to finish the configuration.
+13. Locate and select the cluster you want to update.
 
-13. Select **Confirm updates > Save Changes**.
-
-14. From the left main menu, select **Clusters**.
-
-15. Locate the cluster you want to update and select it.
-
-16. On the **Profile** tab, expand the version drop-down menu, and under **Infrastructure Layers**, select the new
+14. On the **Profile** tab, expand the version drop-down menu, and under **Infrastructure Layers**, select the new
     version of your cluster profile that has disk encryption enabled.
 
-17. **Review & Save** your changes, then select **Review changes in Editor**. If no additional changes are needed,
+15. **Review & Save** your changes, then select **Review changes in Editor**. If no additional changes are needed,
     **Update** your cluster.
 
 </TabItem>
@@ -417,30 +417,13 @@ Performing these steps will cause a
 
 9.  Scroll to the bottom of the YAML editor to view the additional configuration that was added.
 
-        ```yaml
-        cloud:
-          azure:
-            diskEncryptionSetID: ""
-        ```
+    ```yaml
+    cloud:
+      azure:
+        diskEncryptionSetID: ""
+    ```
 
 10. Fill in the `diskEncryptionSetID` with the Resource ID URI of your Disk Encryption Set.
-
-        <details>
-        <summary> How to find the Resource ID URI of your Disk Encryption Set </summary>
-
-        1. Log in to the [Azure Portal](https://portal.azure.com/).
-
-        2. Click on the search bar, and enter **Disk Encryption Sets**. Click on the service when found.
-
-        3. Find your Disk Encryption Set from the list and click on it to view details.
-
-        4. On the **Overview** page, click **JSON View** in the **Essentials** section. The Resource ID for the Disk
-           Encryption Set is displayed at the top.
-
-        5. Click the **Copy to clipboard** icon for the Resource ID and paste it into the `diskEncryptionSetID` field in
-           the Palette YAML editor.
-
-        </details>
 
     ```yaml
     cloud:
@@ -448,68 +431,77 @@ Performing these steps will cause a
         diskEncryptionSetID: "/subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Compute/diskEncryptionSets/diskEncryptionSet"
     ```
 
-11. In the YAML editor, add a line after `diskEncryptionSetID` that has `encryptionAtHost: true`. This will enable
-    Encryption at Host.
+          <details>
 
-    ```yaml
+          <summary> How to find the Resource ID URI of your disk encryption set </summary>
+
+          1. Log in to the [Azure Portal](https://portal.azure.com/).
+
+          2. Use the search bar to locate and select the **Disk Encryption Sets** resource.
+
+          3. On the **Overview** page, in the **Essentials** section, select **JSON View** to display the Resource ID for the disk
+            encryption set.
+
+          4. Select the **Copy to clipboard** icon for the Resource ID and paste the ID into the `diskEncryptionSetID` field in the
+            Palette YAML editor.
+
+        </details>
+
+11. In the YAML editor, add a line after `diskEncryptionSetID` that has `encryptionAtHost: true` to enable EAH.
+
+    ```yaml {4}
     cloud:
       azure:
         diskEncryptionSetID: "/subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Compute/diskEncryptionSets/diskEncryptionSet"
         encryptionAtHost: true
     ```
 
-12. Make any other changes that you need and click **Next layer**.
+12. Make any other necessary changes and select **Confirm updates > Save Changes**.
 
-13. Select **Confirm updates > Save Changes**.
+13. From the left main menu, select **Clusters**.
 
-14. From the left main menu, select **Clusters**.
+14. Locate and select the cluster you want to update.
 
-15. Locate the cluster you want to update and select it.
-
-16. On the **Profile** tab, expand the version drop-down menu, and under **Infrastructure Layers**, select the new
+15. On the **Profile** tab, expand the version drop-down menu, and under **Infrastructure Layers**, select the new
     version of your cluster profile that has disk encryption enabled.
 
-17. **Review & Save** your changes, then select **Review changes in Editor**. If no additional changes are needed,
+16. **Review & Save** your changes, then select **Review changes in Editor**. If no additional changes are needed,
     **Update** your cluster.
 
 </TabItem>
 
 <TabItem value="eah" label="EAH Only">
 
-8.  In the YAML editor, add `encryptionAtHost: true` at the bottom of the manifest. This will enable Encryption at Host.
+8. In the YAML editor, add `encryptionAtHost: true` at the bottom of the manifest to enable EAH.
 
-        ```yaml
-        cloud:
-          azure:
-            encryptionAtHost: true
-        ```
+   ```yaml
+   cloud:
+     azure:
+       encryptionAtHost: true
+   ```
 
-9.  Make any other changes that you need and click **Next layer**.
+9. Make any other necessary changes and select **Confirm updates > Save Changes**.
 
-10. Select the remaining profile layers to finish the configuration.
+10. From the left main menu, select **Clusters**.
 
-11. Select **Confirm updates > Save Changes**.
+11. Locate and select the cluster you want to update.
 
-12. From the left main menu, select **Clusters**.
-
-13. Locate the cluster you want to update and select it.
-
-14. On the **Profile** tab, expand the the version drop-down menu, and under **Infrastructure Layers**, select the new
+12. On the **Profile** tab, expand the version drop-down menu, and under **Infrastructure Layers**, select the new
     version of your cluster profile that has disk encryption enabled.
 
-15. **Review & Save** your changes, then select **Review changes in Editor**. If no additional changes are needed,
+13. **Review & Save** your changes, then select **Review changes in Editor**. If no additional changes are needed,
     **Update** your cluster.
 
 </TabItem>
 
 </Tabs>
 
-Your cluster will now update and a full cluster repave will occur. Wait until the update has completed before validating
-the disk encryption enablement.
+Your cluster will now update and a full cluster repave will occur. Wait until the update has completed before confirming
+that disk encryption is enabled.
 
 ### Validate
 
-Follow these steps to validate the enablement of customer-managed key encryption on your Azure VM disks.
+Follow these steps to confirm that encryption is enabled on your Azure VM disks.
 
 <PartialsComponent category="clusters" name="cluster-azure-disk-encrypt-validate" />
 
@@ -517,13 +509,14 @@ Follow these steps to validate the enablement of customer-managed key encryption
 
 ### Prerequisites
 
-- An Azure user account with access to view disks in your resource group where the cluster resources are created, for
-  example, **Reader** role.
+- An Azure user account with access to view disks in your resource group where the cluster resources are created (for
+  example, **Reader** role).
 
 ### Disable Disk Encryption
 
 Use the following steps to disable disk encryption on an active cluster by modifying an
-[existing cluster profile](../../../profiles/cluster-profiles/modify-cluster-profiles/modify-cluster-profiles.md).
+[existing cluster profile](../../../profiles/cluster-profiles/modify-cluster-profiles/modify-cluster-profiles.md). The
+process to disable disk encryption is the same regardless of the encryption method used.
 
 :::warning
 
@@ -536,10 +529,9 @@ Performing these steps will cause a
 
 2. Ensure you are in the correct project scope.
 
-3. From the left **Main Menu**, select **Profiles** and click the cluster profile that you want to edit.
+3. From the left main Menu, select **Profiles**. Locate and select the cluster profile to edit.
 
-4. Create a new version of your cluster profile. Click the version **drop-down Menu** next to the cluster profile name,
-   and click **Create new version**.
+4. Expand the version drop-down menu next to the cluster profile name, and select **Create new version**.
 
 5. Fill the **Version** field with a new version number.
 
@@ -617,23 +609,16 @@ Performing these steps will cause a
 
 12. From the left **Main Menu**, select **Clusters**.
 
-13. Find the cluster that you want to update and click on it.
+13. Locate and select the cluster you want to update.
 
-14. Click the **Profile** tab.
+14. On the **Profile** tab, expand the version drop-down menu, and under **Infrastructure Layers**, select the new
+    version of your cluster profile that has disk encryption enabled.
 
-15. Click the version **drop-down Menu** in **Infrastructure Layers** and select the version that has disk encryption
-    disabled.
+15. **Review & Save** your changes, then select **Review changes in Editor**. If no additional changes are needed,
+    **Update** your cluster.
 
-16. Click **Review & Save**, then click **Review changes in Editor** in the Changes Summary box.
-
-17. Review the changes and click **Update**.
-
-</TabItem>
-
-</Tabs>
-
-Your cluster will now update and a full cluster repave will occur. Wait until the update has completed before validating
-the disk encryption disablement.
+Your cluster will now update and a full cluster repave will occur. Wait until the update has completed before confirming
+that disk encryption is disabled.
 
 ### Validate
 
