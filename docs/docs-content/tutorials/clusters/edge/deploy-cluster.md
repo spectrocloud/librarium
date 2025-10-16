@@ -75,9 +75,9 @@ To complete this tutorial, you will need the following:
 
 - [Git](https://git-scm.com/downloads). Ensure git installation by issuing the `git --version` command.
 
-- (Optional) [Earthly](https://earthly.dev/) is installed and available. If you do not install Earthly, you can still
-  build the artifacts, but it would require root privileges, and some of the resulting artifacts will be owned by the
-  root user.
+- (Optional) [Earthly](https://earthly.dev/get-earthly) is installed and available. If you do not install Earthly, you
+  can still build the artifacts, but it would require root privileges, and some of the resulting artifacts will be owned
+  by the root user.
 
 - An image management tool such as [Docker](https://docs.docker.com/engine/install/) or
   [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and available. When
@@ -321,13 +321,13 @@ pack:
       - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
 options:
   system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
-  system.registry: ttl.sh
+  system.registry: spectrocloud
   system.repo: ubuntu
   system.k8sDistribution: k3s
   system.osName: ubuntu
   system.peVersion: v4.7.14
   system.customTag: demo
-  system.osVersion: 22
+  system.osVersion: 22.04
 ```
 
 ## View Artifacts
