@@ -91,7 +91,7 @@ const allScripts = [
     dataLayer: "GTM-T2F9ZMS",
   },
   {
-    src: "https://cdn.seersco.com/banners/55793/23380/cb.js",
+    src: "https://cdn.seersco.com/banners/55793/23438/cb.js",
     id: "seers-cmp",
     async: "true",
     "data-key": process.env.SEERS_CMP_KEY,
@@ -166,7 +166,7 @@ const config = {
       tagName: "link",
       attributes: {
         rel: "preload",
-        href: "https://cdn.seersco.com/banners/55793/23380/cb.js",
+        href: "https://cdn.seersco.com/banners/55793/23438/cb.js",
         as: "script",
       },
     },
