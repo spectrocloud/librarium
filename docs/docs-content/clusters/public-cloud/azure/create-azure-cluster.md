@@ -148,6 +148,7 @@ Use the following steps to deploy an Azure cluster.
       <!-- prettier-ignore-start -->
 
       You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out the
+
       <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" />
       pack additional details for more information.
 
