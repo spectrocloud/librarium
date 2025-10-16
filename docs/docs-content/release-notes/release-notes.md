@@ -47,15 +47,21 @@ tags: ["release-notes"]
   [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page to learn more about backup
   and restore tools in Palette.
 
-- <TpBadge /> The packs list of the [Artifact Studio](../downloads/artifact-studio.md) now displays a single tile for
-  all the pack versions, offering a streamlined user experience.
-
 - When creating Azure IaaS clusters, you can disable automatic creation of route table entries for pod-to-pod
   communication using the `cloud.cloudControllerManager.configureCloudRoutes` parameter. This improvement is useful when
   using Calico or Cilium Container Network Interfaces (CNIs), which support pod networking across nodes by default
   without requiring these route tables and entries. Refer to the
   [Create and Manage Azure IaaS Cluster](../clusters/public-cloud/azure/create-azure-cluster.md#deploy-an-azure-cluster)
   guide for more information.
+
+<!-- prettier-ignore-start -->
+
+- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now automatically
+  delete the `provider_extract` directory after deployment, removing unused files. Additionally, Palette and VerteX
+  management appliance now use <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> 1.32.8 and <VersionedLink text="Piraeus Operator" url="/integrations/packs/?pack=piraeus-operator" /> 2.9.0 internally.
+
+<!-- prettier-ignore-end -->
 
 #### Bug Fixes
 
@@ -152,14 +158,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   now provides [bootloader support](https://kubevirt.io/user-guide/compute/virtual_hardware/).
 
 ### Packs
-
-#### Kubernetes
-
-| Pack Name | New Version |
-| --------- | ----------- |
-| RKE2      | 1.33.5      |
-| RKE2      | 1.32.9      |
-| RKE2      | 1.31.13     |
 
 #### CNI
 
