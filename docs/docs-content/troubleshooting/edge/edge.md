@@ -10,6 +10,39 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - CoreDNS Pods Stuck in `CrashLoopBackOff` Due to DNS Loop
+
+On Edge clusters whose hosts run Ubuntu 24.04 with a Unified Kernel Image (UKI), CoreDNS pods may enter the `CrashLoopBackOff` state with logs showing the following error.
+
+```shell
+[FATAL] plugin/loop: Loop (127.0.0.1:<ephemeral-port> -> :53) detected for zone "."...
+```
+
+This happens because `/etc/resolv.conf` is symlinked to `/run/systemd/resolve/stub-resolv.conf`, which lacks real DNS server entries. As a result, CoreDNS forwards DNS queries to itself, creating a recursive loop.
+
+### Debug Steps
+
+1. Issue the following command to view the `/run/systemd/resolve/resolv.conf` file content.
+
+   ```bash
+   cat /run/systemd/resolve/resolv.conf
+   ```
+2. Verify that it lists at least one nameserver entry pointing to a real, reachable DNS server (not `nameserver 127.0.0.53` or `nameserver 127.0.0.1`).
+
+3. Open CoreDNS ConfigMap.
+
+   ```bash
+   kubectl -n kube-system edit configmap coredns
+   ```
+
+ 4. Replace `forward . /etc/resolv.conf` with `forward . /run/systemd/resolve/resolv.conf` if this file contains at least one nameserver other than `nameserver 127.0.0.53` or `nameserver 127.0.0.1`. Alternatively, if your environment maintains another resolver file containing real DNS servers, use that file path instead.
+
+ 5. Issue the following command to restart CoreDNS pods.
+
+    ```bash
+    kubectl -n kube-system rollout restart deployment coredns
+    ```
+
 ## Scenario - `x509: certificate signed by unknown authority` Errors during Agent Mode Cluster Creation
 
 Agent mode Edge cluster creation may fail with logs showing the following error.
