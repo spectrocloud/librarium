@@ -138,7 +138,8 @@ allow environment overrides where necessary.
 ## Next Steps
 
 Once you have created your cluster template, you are ready to deploy a new cluster using your template. The process to
-deploy a cluster using a cluster template instead of individual cluster profiles is similar; however, there are exceptions:
+deploy a cluster using a cluster template instead of individual cluster profiles is similar; however, there are
+exceptions:
 
 - On the **Cluster setup type** window, you must specify **Cluster Template** instead of **Cluster Profiles**.
 - You cannot make any adjustments to individual profile layers during the deployment workflow.
