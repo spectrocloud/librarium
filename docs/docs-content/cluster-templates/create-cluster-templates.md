@@ -54,7 +54,7 @@ allow environment overrides where necessary.
 
     - Select the plus icon beside **Maintenance Policy** on the left menu.
 
-    - Expand the **Maintenance policy** panel and **Select a maintenance policy**.
+    - In the expanded **Maintenance policy** panel, **Select a maintenance policy**.
 
     ![Adding a maintenance policy to a cluster template](/cluster-templates_create-cluster-templates_add-maintenance-policy.webp)
 
@@ -69,34 +69,31 @@ allow environment overrides where necessary.
 
         :::
 
-<!--prettier-ignore-start -->
-
 8.  The selected maintenance policy is displayed on the left menu and in the expanded **Maintenance policy** panel,
-    which provides an overview of the selected policy. Use either of the following methods to add a cluster profile to
-    your cluster template:
+    which provides an overview of the selected policy.
+
+    :::info
+
+    Once you select a maintenance policy, the option to add a maintenance policy is removed, as only one maintenance
+    policy can be linked to a cluster template at a time. To link a different policy, select either the three-dot menu
+    beside the maintenance policy in the left menu and choose **Replace**, or select **Replace** in the expanded
+    **Maintenance policy** panel.
+
+    :::
+
+9.  Use either of the following methods to add a cluster profile to your cluster template:
 
     - Select the plus icon beside **Linked Profiles** on the left menu.
-  
-    - Expand the **Linked profiles** panel and select **Add Cluster Profile**.
 
-        :::info
+    - In the expanded **Linked profiles** panel, select **Add Cluster Profile**.
 
-        Once you select a maintenance policy, the option to add a maintenance policy is removed, as only one maintenance
-        policy can be linked to a cluster template at a time. To link a different policy, select either the three-dot menu
-        beside the maintenance policy in the left menu and choose **Replace**, or select **Replace** in the expanded
-        **Maintenance policy** panel.
-
-        :::
-
-<!--prettier-ignore-end -->
-
-9.  The **Select a profile** drawer displays a list of infrastructure and full cluster profiles compatible with the
+10. The **Select a profile** drawer displays a list of infrastructure and full cluster profiles compatible with the
     infrastructure selected in step 4. Choose the desired cluster profile and **Confirm** your selection.
 
-10. The selected cluster profile is displayed on the left menu and in the expanded **Linked profiles** panel, which
+11. The selected cluster profile is displayed on the left menu and in the expanded **Linked profiles** panel, which
     provides an overview of the selected profile.
 
-11. Use the version drop-down menu to select the appropriate cluster profile version. A cluster profile version cannot
+12. Use the version drop-down menu to select the appropriate cluster profile version. A cluster profile version cannot
     be linked to a cluster template if that profile version is already being used by a cluster that is not attached to a
     cluster template.
 
@@ -112,12 +109,11 @@ allow environment overrides where necessary.
                 Once a cluster profile is linked to a cluster template, that version of the cluster profile becomes immutable.
                 To make changes to a linked cluster profile, you must
                 [create a new version](../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) of the
-                cluster profile and update the version referenced in the cluster template. This protects your cluster fleet from
-                configuration drift.
+                cluster profile and [update the version referenced](./modify-cluster-templates.md#cluster-profiles) in the cluster template. This protects your cluster fleet from configuration drift.
 
                 :::
 
-12. Use the **Add Addon Profile** button to link
+13. Use the **Add Addon Profile** button to link
     [add-on profiles](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md)
     to your cluster template. **Confirm** each addition, and ensure the correct profile version is selected. A cluster
     profile version cannot be linked to a cluster template if that profile version is already being used by a cluster
@@ -127,27 +123,28 @@ allow environment overrides where necessary.
     and choose **Replace** or **Remove**; alternatively, select the three-dot menu beside the add-on profile version in
     the expanded **Linked profiles** panel and choose **Replace** or **Remove**.
 
-13. Once you have added all applicable cluster profiles, select **Next Step**.
+14. Once you have added all applicable cluster profiles, select **Next Step**.
 
-14. Review your cluster template. To view the individual layers of your cluster profile stack, expand each cluster
+15. Review your cluster template. To view the individual layers of your cluster profile stack, expand each cluster
     profile panel. If any changes are needed, return to the **Previous** screen and make the required modifications;
     otherwise, **Finalize** your cluster template.
 
-15. When finished, your cluster template appears on the **Templates** list.
+16. When finished, your cluster template appears on the **Templates** list.
 
 ## Next Steps
 
 Once you have created your cluster template, you are ready to deploy a new cluster using your template. The process to
-deploy a cluster using a cluster template instead of individual cluster profiles is similar; however, there are exceptions:
+deploy a cluster using a cluster template instead of individual cluster profiles is similar with the exception of the
+following differences:
 
 - On the **Cluster setup type** window, you must specify **Cluster Template** instead of **Cluster Profiles**.
-- You cannot make any adjustments to individual profile layers during the deployment workflow.
+- You cannot make any adjustments to individual profile layers during the cluster deployment workflow.
 - When viewing the cluster attached to the cluster template, an additional **Templates** tab is available.
 
 Cluster profile variable values are assigned during the cluster deployment flow. Note that cluster templates can only be
 used to deploy new clusters. Certain Day-2 operations, such as attaching a cluster template to an existing cluster, are
-not supported at this time. Additionally, once a cluster template is attached to a cluster, it cannot be detached. For
-additional information, refer to the cluster deployment guide for your applicable infrastructure environment.
+not supported. Additionally, once a cluster template is attached to a cluster, it cannot be detached. For additional
+information, refer to the cluster deployment guide for your applicable infrastructure environment.
 
 | **Public Cloud (IaaS)**                                              | **Public Cloud (Managed)**                                    | **Data Center**                                                                   | **Edge**                                                              |
 | -------------------------------------------------------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------- |

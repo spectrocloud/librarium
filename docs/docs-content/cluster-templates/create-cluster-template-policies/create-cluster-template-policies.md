@@ -17,7 +17,7 @@ well as its lifecycle. Policies are linked rather than embedded within cluster t
 policies independently; this includes updating and swapping them as needed to create a comprehensive governance stack
 for your clusters.
 
-Currently, Palette supports [maintenance policies](maintenance-policy.md). Each cluster template can be linked only to
+Currently, Palette supports [maintenance policies](maintenance-policy.md). Each cluster template can be linked to only
 one policy of each type. For example, while you can create multiple maintenance policies that you can update or swap as
 needed, only one can be attached to the cluster template at any time. However, the same policy can be attached to
 multiple cluster templates.
@@ -54,7 +54,8 @@ selected policy.
 
 Use the menu bar to locate your template by name, infrastructure **Environment**, types of **Policies**, or **Tags**.
 Select the column headers to sort in ascending or descending order. Use the arrow beside **Tags** to view the
-**Policies** selected. To remove policies from the filter, select **Clear All** to remove all policies or select **x** to remove individual policies.
+**Policies** selected; to remove policies from the filter, select **Clear All** to remove all policies or select **x**
+to remove individual policies.
 
 Select the gear icon on the right of the table to customize the display using the same methods used to modify the list
 of policies. The following table lists the available columns.
@@ -74,8 +75,9 @@ To create a policy, make a selection from the **Create Policy** drop-down menu i
 
 ![Creating a new cluster template policy](/cluster-templates_create-cluster-template-policies_policies-tab.webp)
 
-To edit an existing policy, either select the policy, or select the three-dot menu beside the policy and choose **Edit**. Policies can be edited at
-any time, regardless of whether they are currently part of a cluster template that is or is not attached to a cluster.
+To edit an existing policy, either select the policy from the list, or select the three-dot menu beside the policy and
+choose **Edit**. Policies can be edited at any time, regardless of whether they are currently part of a cluster template
+that is or is not attached to a cluster.
 
 The fields and steps associated with creating and editing policies depend on the type of policy. At this time,
 maintenance policies are the only policy type. For detailed information on creating maintenance policies, refer to our

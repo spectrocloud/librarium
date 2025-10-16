@@ -11,29 +11,31 @@ tags: ["cluster templates", "policies"]
 
 :::
 
-A maintenance policy is a required component for
-[cluster templates](../cluster-templates.md). Maintenance policies determine when and how upgrades are executed on the
-cluster. Since clusters can be provisioned across multiple regions and time zones, upgrades are executed based on
-Coordinated Universal Time (UTC). [THIS WILL BE CHANGED TO LOCAL TIME IN THE FUTURE]
+A maintenance policy is a required component for [cluster templates](../cluster-templates.md). Maintenance policies
+determine when and how upgrades are executed on the cluster. Since clusters can be provisioned across multiple regions
+and time zones, upgrades are executed based on Coordinated Universal Time (UTC).
 
-When the cluster profile version linked to a cluster template is updated, or when profiles are added, deleted, or replaced, the associated maintenance policy automatically schedules upgrades for all active clusters. These clusters are then upgraded during the upgrade window defined in the maintenance policy. Each maintenance policy can have multiple upgrade schedules, and upgrades
-can be manually triggered outside of the defined schedule, giving you the flexibility to trigger upgrades across
-clusters whenever necessary.
+When the cluster profile version linked to a cluster template is updated, or when profiles are added, deleted, or
+replaced, the associated maintenance policy automatically schedules upgrades for all active clusters. These clusters are
+then upgraded during the upgrade window defined in the maintenance policy. Each maintenance policy can have multiple
+upgrade schedules, and upgrades can be [manually triggered](../modify-cluster-templates.md#overview-tab) outside of the
+defined schedule, giving you the flexibility to trigger upgrades across clusters whenever necessary.
 
 All clusters must be on the same version and all cluster profile variables must be in an **Assigned** state before
-upgrading to the next version. If some clusters fail to upgrade during the upgrade window, the template
-enters a "partially applied" state, and further version upgrades are blocked until all clusters are on the
-same version again. In this situation, you can either wait for the next upgrade window, at which time the system will attempt
-to upgrade the remaining clusters, or you can force the upgrade using the **Upgrade now** button.
+upgrading to the next version. If some clusters fail to upgrade during the upgrade window, or if clusters deployed with
+the same template are on two different versions (such as in the case of incomplete
+[variable assignments](../modify-cluster-templates.md#variable-values-tab)), the template enters a "partially applied"
+state, and further version upgrades and are blocked until all clusters are on the same version again. In this situation,
+you can either wait for the next upgrade window, at which time the system will attempt to upgrade the remaining
+clusters, or you can [force the upgrade](../modify-cluster-templates.md#overview-tab) using the **Upgrade now** button.
 
 The following table discusses several upgrade scenarios, as well as the result.
 
-| **Scenario**                                      | **Details**                                                                                                                                                                                                                                                                                                     | **Result**                                                                                                                                                                                                                                                                                                       |
-| ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Single Profile Update**                         | 1,000 clusters are deployed from Cluster Template **A**. A cluster profile linked to Cluster Template **A** is updated from version 1.0.0 to 2.0.0.                                                                                                                                                                     | All 1,000 clusters are upgraded to version 2.0.0 during the next scheduled upgrade window.                                                                                                                                                                                                                       |
-| **Multiple Profile Updates Before Rollout**       | 1,000 clusters are deployed from Cluster Template **B**. A cluster profile linked to Cluster Template **B** is updated from version 1.0.0 to 2.0.0. An additional update is made before the upgrade window begins, and the profile version is bumped from 2.0.0 to 3.0.0.                                              | Since the upgrade window did not begin until version 3.0.0 was specified, version 2.0.0 is skipped, and all 1,000 clusters are upgraded from version 1.0.0 to 3.0.0 during the next scheduled upgrade window.                                                                                                               |
-| **Multiple Profile Updates During Rollout**       | 1,000 clusters are deployed from Cluster Template **C**. A cluster profile linked to Cluster Template **C** is updated from version 1.0.0 to 2.0.0. During the upgrade window, as clusters are being upgraded from 1.0.0 to 2.0.0, an additional update is made, and the profile version is bumped from 2.0.0 to 3.0.0. | If some clusters were already upgraded to 2.0.0, the update to version 3.0.0 is blocked until all clusters have been updated to version 2.0.0. Once all clusters are updated to version 2.0.0, all 1,000 clusters are upgraded from version 2.0.0 to 3.0.0 during the next upgrade window.                       |
-| **Updates Do Not Complete During Upgrade Window** | 1,000 clusters are deployed from Cluster Template **D**. A cluster profile linked to Cluster Template **D** is updated from version 1.0.0 to 2.0.0. Some clusters begin to update to version 2.0.0 during the next scheduled upgrade window, but the updates do not finish before the upgrade window closes.            | Some clusters are upgraded to 2.0.0, and others remain on 1.0.0, forcing the template to enter a "partially applied" state and blocking additional version upgrades. During the next upgrade window, or via a forced upgrade, the clusters finish upgrading to version 2.0.0, and future upgrades are unblocked. |
+| **Scenario**                                      | **Details**                                                                                                                                                                                                                                                                                                  | **Result**                                                                                                                                                                                                                                                                                                       |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Single Profile Update**                         | 1,000 clusters are deployed from Cluster Template **A**. A cluster profile linked to Cluster Template **A** is updated from version 1.0.0 to 2.0.0.                                                                                                                                                          | All 1,000 clusters are upgraded to version 2.0.0 during the next scheduled upgrade window.                                                                                                                                                                                                                       |
+| **Multiple Profile Updates Before Rollout**       | 1,000 clusters are deployed from Cluster Template **B**. A cluster profile linked to Cluster Template **B** is updated from version 1.0.0 to 2.0.0. An additional update is made before the upgrade window begins, and the profile version is bumped from 2.0.0 to 3.0.0.                                    | Since the upgrade window did not begin until version 3.0.0 was specified, version 2.0.0 is skipped, and all 1,000 clusters are upgraded from version 1.0.0 to 3.0.0 during the next scheduled upgrade window.                                                                                                    |
+| **Updates Do Not Complete During Upgrade Window** | 1,000 clusters are deployed from Cluster Template **C**. A cluster profile linked to Cluster Template **C** is updated from version 1.0.0 to 2.0.0. Some clusters begin to update to version 2.0.0 during the next scheduled upgrade window, but the updates do not finish before the upgrade window closes. | Some clusters are upgraded to 2.0.0, and others remain on 1.0.0, forcing the template to enter a "partially applied" state and blocking additional version upgrades. During the next upgrade window, or via a forced upgrade, the clusters finish upgrading to version 2.0.0, and future upgrades are unblocked. |
 
 ## Create Maintenance Policies
 
@@ -68,7 +70,7 @@ cluster templates.
     following:
 
     - **Every week on Sunday at midnight**
-    - **Every two weeks at midnight** [ON SUNDAY? FROM THE DATE THE CLUSTER IS DEPLOYED?]
+    - **Every two weeks at midnight**
     - **Every month on the 1st at midnight**
     - **Every two months on the 1st at midnight**
     - **Custom**
@@ -77,13 +79,8 @@ cluster templates.
 
     #### Custom Schedules
 
-    Use the options described in the following table to create a **Custom** schedule.
-
-    :::info
-
-    All upgrade times are relative to UTC. [THIS WILL BE LOCAL TIME IN THE FUTURE]
-
-    :::
+    Use the options described in the following table to create a **Custom** schedule. All upgrade times are relative to
+    UTC.
 
     ![Configuring a schedule for a maintenance policy](/cluster-templates_create-cluster-template-policies_maintenance-policies_schedule.webp)
 
@@ -94,9 +91,6 @@ cluster templates.
     | **month** | - **every day of the month** - Initiate the update **every day of the month** or select one or multiple days of the month within the range 01 - 31. <br /> - **every day of the week** - Initiate the update **every day of the week** or multiple days of the week (Sunday - Saturday) in the selected month in addition to the selected day of the month. <br /> - **every hour** - Initiate the update **every hour** of the selected day of the month or day of the week or select one or multiple hours within the range 00 - 23. <br /> - **every minute** - Initiate the update **every minute** of the selected hour or select one or multiple minutes within the range 00 - 59.                                                                                                                                   |
     | **year**  | - **every month** - Initiate the update **every month** or select one or multiple months of the year (January - December). <br /> - **every day of the month** - Initiate the update **every day of the month** or select one or multiple days of the month within the range 01 - 31. <br /> - **every day of the week** - Initiate the update **every day of the week** or multiple days of the week (Sunday - Saturday) in the selected month in addition to the selected day of the month. <br /> - **every hour** - Initiate the update **every hour** of the selected day of the month or day of the week or select one or multiple hours within the range 00 - 23. <br /> - **every minute** - Initiate the update **every minute** of the selected hour or select one or multiple minutes within the range 00 - 59. |
 
-    - [FOR MONTHS, WHAT HAPPENS IF YOU SELECT A DAY THAT IS NOT PART OF A MONTH? LIKE 31? WILL IT BE SKIPPED THAT MONTH
-      OR WILL IT TRIGGER WHEN THE MONTH ROLLS OVER TO THE 1ST?]
-
 8.  Select how many hours you want the **Upgrade window** to last. Values range from 1 - 24 hours. During the duration
     of the upgrade window, updates will be rolled out to the cluster.
 
@@ -105,8 +99,9 @@ cluster templates.
     Depending on the number of clusters attached to the template, as well as cluster or environment constraints, the
     upgrade may not be applied to all eligible clusters within the specified time frame. In this scenario, the template
     enters a "partially applied" state, and further updates to the cluster are blocked. Updates to the cluster resume
-    during the next upgrade window or when manually triggered using the **Upgrade now** button on the cluster template
-    **Overview** tab. Once all clusters are on the same cluster profile version, normal updates are resumed.
+    during the next upgrade window or when [manually triggered](../modify-cluster-templates.md#overview-tab) using the
+    **Upgrade now** button on the cluster template **Overview** tab. Once all clusters are on the same cluster profile
+    version, normal updates are resumed.
 
     :::
 
@@ -126,7 +121,7 @@ cluster templates.
 11. Review your maintenance policy. If any changes are needed, return to the **Previous** screen, and make the necessary
     modifications; otherwise, **Finalize** your maintenance policy.
 
-12. Your maintenance policy is added to the **Policies** list. Repeat steps 3 - 12 to create additional policies as
+12. Your maintenance policy is added to the **Policies** list. Repeat steps 3 - 11 to create additional policies as
     needed.
 
 ## Edit Maintenance Policies
@@ -148,8 +143,8 @@ regardless if they are attached to a cluster template and the template is or is 
 
 2.  From the left main menu, select **Cluster Configurations**.
 
-3.  On the **Policies** tab, locate your maintenance policy. Beside the policy, select the three-dot menu, and choose
-    **Edit**.
+3.  On the **Policies** tab, locate and select your maintenance policy; alternately, beside the policy, select the
+    three-dot menu, and choose **Edit**.
 
 4.  On the **Basic Information** window, modify the **Name** and **Tags** as necessary.
 
@@ -166,7 +161,7 @@ regardless if they are attached to a cluster template and the template is or is 
 ## Delete Maintenance Policies
 
 Use the following procedure to delete an existing, detached maintenance policy. You can delete a maintenance policy only
-if it is not linked to a cluster template, regardless of whether the template is attached to a cluster.
+if it is not linked to a cluster template, regardless of whether the template is or is not attached to a cluster.
 
 ### Prerequisites
 
