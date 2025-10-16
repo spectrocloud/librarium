@@ -617,6 +617,10 @@ Performing these steps will cause a
 15. **Review & Save** your changes, then select **Review changes in Editor**. If no additional changes are needed,
     **Update** your cluster.
 
+</TabItem>
+
+</Tabs>
+
 Your cluster will now update and a full cluster repave will occur. Wait until the update has completed before confirming
 that disk encryption is disabled.
 
