@@ -54,7 +54,7 @@ selected policy.
 
 Use the menu bar to locate your template by name, infrastructure **Environment**, types of **Policies**, or **Tags**.
 Select the column headers to sort in ascending or descending order. Use the arrow beside **Tags** to view the
-**Policies** selected; to remove policies from the filter, select **Clear All** to remove all policies or select **x**
+**Policies** selected. To remove policies from the filter, select **Clear All** to remove all policies or select **x**
 to remove individual policies.
 
 Select the gear icon on the right of the table to customize the display using the same methods used to modify the list
