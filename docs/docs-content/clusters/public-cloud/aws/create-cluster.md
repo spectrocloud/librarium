@@ -104,21 +104,21 @@ Use the following steps to provision a new AWS cluster:
 
 9. Provide the AWS cloud account and placement information.
 
-| **Parameter**             | **Description**                                                                                                                                                                                                                         |
-| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Cloud Account**         | Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings.                                                                                                                |
-| **Region**                | Choose the preferred AWS region where you would like to provision clusters.                                                                                                                                                             |
-| **SSH Key Pair Name**     | Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the provisioned VMs.                                                                         |
-| **Static Placement**      | Check the **Static Placement** box if you want to deploy resources into pre-existing VPCs and subnets. Review the [Static Placement](#static-placement) table below to learn more about the required input fields.                      |
-| **Private API Server LB** | Enable to deploy the cluster load balancer in a private subnet. This feature requires Palette to have direct network connectivity with the private subnet or a [Private Cluster Gateway](../../pcg/pcg.md) deployed in the environment. |
+   | **Parameter**             | **Description**                                                                                                                                                                                                                         |
+   | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Cloud Account**         | Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings.                                                                                                                |
+   | **Region**                | Choose the preferred AWS region where you would like to provision clusters.                                                                                                                                                             |
+   | **SSH Key Pair Name**     | Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the provisioned VMs.                                                                         |
+   | **Static Placement**      | Check the **Static Placement** box if you want to deploy resources into pre-existing VPCs and subnets. Review the [Static Placement](#static-placement) table below to learn more about the required input fields.                      |
+   | **Private API Server LB** | Enable to deploy the cluster load balancer in a private subnet. This feature requires Palette to have direct network connectivity with the private subnet or a [Private Cluster Gateway](../../pcg/pcg.md) deployed in the environment. |
 
-#### Static Placement
+   #### Static Placement
 
-| Parameter                | Description                                                                    |
-| ------------------------ | ------------------------------------------------------------------------------ |
-| **VPCID**                | Select the Virtual Private Cloud (VPC) ID network from the **drop-down Menu**. |
-| **Control plane subnet** | Select the control plane network from the **drop-down Menu**.                  |
-| **Worker Network**       | Select the worker network from the **drop-down Menu**.                         |
+   | Parameter                | Description                                                                    |
+   | ------------------------ | ------------------------------------------------------------------------------ |
+   | **VPCID**                | Select the Virtual Private Cloud (VPC) ID network from the **drop-down Menu**. |
+   | **Control plane subnet** | Select the control plane network from the **drop-down Menu**.                  |
+   | **Worker Network**       | Select the worker network from the **drop-down Menu**.                         |
 
 10. Configure the control plane and worker node pool. Specify availability zones, instance types,
     [instance cost type](architecture.md#spot-instances), disk size, the number of nodes, and

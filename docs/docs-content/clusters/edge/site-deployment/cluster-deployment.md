@@ -21,16 +21,8 @@ refer to [Create Cluster with Local UI](../local-ui/cluster-management/create-cl
 
 Select the workflow that best fits your needs.
 
-- [Create an Edge Native Host Cluster](#create-an-edge-native-host-cluster)
-  - [Limitations](#limitations)
-  - [Prerequisites](#prerequisites)
-  - [Create Cluster](#create-cluster)
-  - [Validate](#validate)
-- [Add an Edge Host to a Host Cluster](#add-an-edge-host-to-a-host-cluster)
-  - [Limitations](#limitations-1)
-  - [Prerequisites](#prerequisites-1)
-  - [Add Edge Host to Node Pool](#add-edge-host-to-node-pool)
-  - [Validate](#validate-1)
+- [Create an Edge Native Host Cluster](#create-an-edge-native-host-cluster) <!-- omit in toc -->
+- [Add an Edge Host to a Host Cluster](#add-an-edge-host-to-a-host-cluster) <!-- omit in toc -->
 
 ## Create an Edge Native Host Cluster
 

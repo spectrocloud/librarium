@@ -19,13 +19,9 @@ define and manage the software stack and lifecycle of clusters deployed with Pal
 wrappers that reference existing profiles and policies as objects, you can modify cluster profiles and policies
 independent of cluster templates, regardless of whether the template is linked to a cluster.
 
-Each resource in Palette has a unique identifier (UID), including profiles, policies, and templates. When a cluster is
-deployed, it references the cluster template UID to determine its infrastructure, applications, and operational
-policies. Likewise, the cluster template references the UID of the individual cluster profiles and policies linked to
-it. For this reason, when an individual object referenced by the cluster template is updated (for example, changing the
-linked cluster profile version from 1.0.0 to 2.0.0), the associated UID referenced in the cluster template is updated,
-and the cluster is updated to reference the new profile UID during the its next upgrade window. This modular
-architecture allows users to swap the individual components that make up cluster templates at any time.
+Each resource in Palette, such as profiles, policies, and templates, has a unique identifier (UID). When a cluster is deployed, it references the UID of the associated cluster template, which in turn references the UIDs of linked profiles and policies to define its infrastructure, applications, and operational settings.
+
+If a linked object is updated, such as changing a cluster profile version from 1.0.0 to 2.0.0, the cluster template is updated to reference the new UID. During the cluster's next upgrade window, it uses this updated reference to apply the changes. This modular architecture allows users to swap out components in a cluster template at any time, enabling flexible, version-driven management.
 
 ![Diagram showing how cluster templates reference profiles and policies as objects](/cluster-templates_modify-cluster-templates_cluster-template-links.webp)
 
@@ -51,9 +47,12 @@ Use the appropriate cluster template tab depending on the required modification.
 
 ### Overview Tab
 
-Use the **Overview** tab to view a summary of your cluster template (including basic metadata, the number of linked
-policies, number of clusters linked to the cluster template, and a list of linked cluster profiles and their packs), and
-to manually update clusters linked to the cluster template.
+Use the **Overview** tab to manually update clusters linked to your cluster template and to view the following information about your cluster template:
+
+- Basic metadata
+- Number of linked policies
+- Number of clusters linked to the cluster template
+- List of linked cluster profiles and their packs
 
 The option to manually trigger cluster updates is available only if a cluster template is linked to a cluster _and_
 there is a discrepancy between the cluster profile variable versions used in the cluster and the versions referenced in
@@ -205,12 +204,11 @@ template:
     to a **Pending** state.
 
 5.  To proceed with cluster updates, each variable must be in an **Assigned** state. To resolve each variable, use one
-    of the following workflows based on the same value can be reused across multiple clusters or needs to be configured
-    individually.
+    of the following workflows:
 
     :::danger
 
-    When you upgrade the cluster profile version, the **New Value** reverts to the default cluster profile value
+    When you upgrade the cluster profile version, the **New Value** reverts to the default variable value
     configured in the cluster profile. If a default value is not configured, the **New Value** is blank. Make sure you
     closely review each **New Value** to avoid unexpected changes.
 
@@ -242,11 +240,11 @@ Take the following steps to verify that your cluster is using the correct profil
 
 2. Locate a cluster deployed with your cluster template in one of the following ways:
 
-- From the left main menu, select **Clusters**. Locate and select the desired cluster.
+   - From the left main menu, select **Clusters**. Locate and select the desired cluster.
 
-- From the left main menu, select **Cluster Configurations**. Navigate to the **Templates** tab, and select the drawer
-  icon in the **In use clusters** column to view a list of all clusters linked to the cluster template. Locate and
-  select the desired cluster.
+   - From the left main menu, select **Cluster Configurations**. Navigate to the **Templates** tab, and select the drawer
+     icon in the **In use clusters** column to view a list of all clusters linked to the cluster template. Locate and
+     select the desired cluster.
 
 3. From the cluster **Overview** page, select the **Profile** tab.
 

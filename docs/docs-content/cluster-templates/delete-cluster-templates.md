@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Delete Cluster Templates"
 title: "Delete Cluster Templates"
-description: "Test" # UPDATE
+description: "Learn how to delete a cluster template."
 hide_table_of_contents: false
 sidebar_position: 30
 tags: ["cluster templates"]
@@ -29,8 +29,6 @@ and policies in other clusters.
 - An existing [cluster template](cluster-templates.md) that is not attached to a cluster.
 
 ## Delete Cluster Templates
-
-Take the following steps to delete a cluster template that is not attached to a cluster:
 
 1.  Log in to [Palette](https://console.spectrocloud.com).
 
