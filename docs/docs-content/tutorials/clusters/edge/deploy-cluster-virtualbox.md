@@ -62,6 +62,7 @@ To complete this tutorial, you will need the following prerequisites in place.
     of Docker.
   - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
   - [VirtualBox](https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html) version 7.0
+- Access to a public image registry and permissions to push images. This tutorial uses [Docker Hub](https://www.docker.com/products/docker-hub/) as an example. If you need to use a private registry, refer to the [Deploy Cluster with a Private Provider Registry](../../../clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md) guide for instructions on how to configure the credentials.
 
 ## EdgeForge Workflow
 
@@ -123,14 +124,12 @@ string. This tutorial uses `vbox-tutorial` as an example.
 export CUSTOM_TAG=vbox-tutorial
 ```
 
-Next, issue the following command to create the **.arg** file with the custom tag. The other arguments will use the
-predefined values. For example, [K3s](https://k3s.io/) will be defined as the Kubernetes distribution, Ubuntu as the OS
-distribution, and [ttl.sh](https://ttl.sh/) as the image registry.
+Next, issue the following command to create the **.arg** file with the custom tag. Replace `spectrocloud` with the name of your registry. The other arguments will use the predefined values. For example, [K3s](https://k3s.io/) will be defined as the Kubernetes distribution and Ubuntu as the OS distribution. 
 
 ```bash
 cat << EOF > .arg
 CUSTOM_TAG=$CUSTOM_TAG
-IMAGE_REGISTRY=ttl.sh
+IMAGE_REGISTRY=spectrocloud
 OS_DISTRIBUTION=ubuntu
 IMAGE_REPO=ubuntu
 OS_VERSION=22
@@ -271,7 +270,7 @@ options:
   system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
 
 
-  system.registry: ttl.sh
+  system.registry: spectrocloud
   system.repo: ubuntu
   system.k8sDistribution: k3s
   system.osName: ubuntu
@@ -299,16 +298,27 @@ docker images --filter=reference="*/*:*$CUSTOM_TAG"
 
 ```text hideClipboard
 REPOSITORY      TAG                               IMAGE ID       CREATED          SIZE
-ttl.sh/ubuntu   k3s-1.29.6-v4.4.12-vbox-tutorial   75811e3dfb42   13 minutes ago   3.63GB
+spectrocloud/ubuntu   k3s-1.29.6-v4.4.12-vbox-tutorial   75811e3dfb42   13 minutes ago   3.63GB
 ```
 
 ### Push Provider Images
 
-Push the provider images to the [ttl.sh](https://ttl.sh/) registry so that you can reference it when creating the
-cluster profile.
+Push the provider images to the image registry specified in the `.arg` file so that you can reference it when creating the
+cluster profile. Issue the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
 
 ```bash
-docker push ttl.sh/ubuntu:k3s-1.29.6-v4.4.12-$CUSTOM_TAG
+docker login
+```
+
+```text hideClipboard
+Login Succeeded
+```
+
+Once authenticated, push the provider image to the registry so that your Edge host can download it during the cluster
+deployment.
+
+```bash
+docker push spectrocloud/ubuntu:k3s-1.29.6-v4.4.12-$CUSTOM_TAG
 ```
 
 The output confirms that the image was pushed to the registry with the correct tag.
@@ -317,15 +327,6 @@ The output confirms that the image was pushed to the registry with the correct t
 # Lines omitted for readability
 k3s-1.29.6-v4.4.12-vbox-tutorial: digest: sha256:42f8805830c7fd3816bb27e8d710d1747fea31a70cb7718d74e42fe1c0ed53ac size: 17815
 ```
-
-:::warning
-
-[ttl.sh](https://ttl.sh/) is free and does not require you to sign in to use it. However, this is a short-lived image
-registry, which means that the pushed images will expire after 24 hours. Refer to the
-[Build Edge Artifacts](../../../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) guide to learn how to
-push images to a different registry.
-
-:::
 
 ## Create Cluster Profile
 
@@ -352,7 +353,7 @@ Add the **BYOS Edge OS** pack to the OS layer.
 | BYOS Edge OS  | 1.0.0       | Public Repo  | Operating System |
 
 Replace the layer manifest with the custom manifest you built in the [Build Edge Artifacts](#build-edge-artifacts)
-section. This will make the cluster profile pull the provider images from the _ttl.sh_ registry. The image below
+section. This will make the cluster profile pull the provider images from the registry you pushed it to. The image below
 displays the OS layer with the custom manifest.
 
 ![A screenshot of the cluster profile creation step with the OS layer.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_byos-cluster-profile.webp)
@@ -657,8 +658,8 @@ rm build/palette-installer.iso.sha256
 Next, delete the provider images.
 
 ```bash
-docker rmi ttl.sh/ubuntu:k3s-1.29.6-v4.4.12-vbox-tutorial
-docker rmi ttl.sh/ubuntu:k3s-1.29.6-v4.4.12-vbox-tutorial_linux_amd64
+docker rmi spectrocloud/ubuntu:k3s-1.29.6-v4.4.12-vbox-tutorial
+docker rmi spectrocloud/ubuntu:k3s-1.29.6-v4.4.12-vbox-tutorial_linux_amd64
 ```
 
 ## Wrap-up

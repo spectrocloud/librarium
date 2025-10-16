@@ -49,11 +49,10 @@ registry.
 This guide presents two workflows - Basic and Advanced.
 
 The basic workflow has minimal customizations and offers a quick start to build Edge artifacts. This workflow builds an
-Ubuntu based Edge installer ISO and provider images. You will also push the provider images to the default image
-registry, [ttl.sh](https://ttl.sh/).
+Ubuntu based Edge installer ISO and provider images.
 
 The advanced workflow uses more customization options. This workflow builds an openSUSE based Edge installer ISO and
-provider images. You will push the provider images to your Docker Hub image registry.
+provider images.
 
 You can follow either of the workflows below that suits your use case.
 
@@ -100,6 +99,8 @@ To complete this basic guide, you will need the following items:
   generate a new registration token. For detailed instructions, refer to the
   [Create Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide.
 
+- Access to a public image registry and permissions to push images. This page uses [Docker Hub](https://www.docker.com/products/docker-hub/) as an example. If you need to use a private registry, refer to the [Deploy Cluster with a Private Provider Registry](/clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md) guide for instructions on how to configure the credentials.
+
 ### Instructions
 
 Use the following instructions on your Linux machine to create all the required Edge artifacts with minimal
@@ -126,23 +127,15 @@ customization.
 
 7. Issue the command below to assign an image tag value that will be used when creating the provider images. This guide
    uses the value `palette-learn` as an example. However, you can assign any lowercase and alphanumeric string to the
-   `CUSTOM_TAG` argument.
+   `CUSTOM_TAG` argument. Additionally, replace `spectrocloud` with the name of your registry.
 
    ```bash
    export CUSTOM_TAG=palette-learn
+   export IMAGE_REGISTRY=spectrocloud
    ```
 
 8. Issue the command below to create the `.arg` file containing the custom tag. The remaining arguments in the `.arg`
-   file will use the default values. For example, `ubuntu` is the default operating system, `demo` is the default tag,
-   and [ttl.sh](https://ttl.sh/) is the default image registry.
-
-   :::info
-
-   The default ttl.sh image registry is free and does not require a sign-up. Images pushed to ttl.sh are ephemeral and
-   will expire after the 24 hrs time limit. Should you need to use a different image registry, refer to the Advanced
-   workflow on this page.
-
-   :::
+   file will use the default values. For example, `ubuntu` is the default operating system, and `demo` is the default tag.
 
    Refer to [Edge Artifact Build Configurations](./arg.md) for all available configuration parameters.
 
@@ -156,12 +149,12 @@ customization.
 
    Using the arguments defined in the `.arg` file, the final provider images you generate will have the following naming
    convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. For example, one of the provider images will be
-   `ttl.sh/ubuntu:k3s-1.27.2-v4.4.12-palette-learn`.
+   `spectrocloud/ubuntu:k3s-1.27.2-v4.4.12-palette-learn`.
 
    ```bash
    cat << EOF > .arg
    CUSTOM_TAG=$CUSTOM_TAG
-   IMAGE_REGISTRY=ttl.sh
+   IMAGE_REGISTRY=$IMAGE_REGISTRY
    OS_DISTRIBUTION=ubuntu
    IMAGE_REPO=ubuntu
    OS_VERSION=22.04
@@ -330,7 +323,7 @@ customization.
         .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{
         .spectro.pack.edge-native-byoi.options.system.customTag }}"
 
-      system.registry: ttl.sh
+      system.registry: spectrocloud
       system.repo: ubuntu
       system.k8sDistribution: k3s
       system.osName: ubuntu
@@ -347,44 +340,39 @@ customization.
     ```
 
     ```hideClipboard bash
-    REPOSITORY             TAG                                   IMAGE ID       CREATED         SIZE
-    ttl.sh/ubuntu          k3s-1.27.2-v4.4.12-palette-learn       075134ad5d4b   10 minutes ago   4.11GB
+    REPOSITORY                          TAG                                    IMAGE ID       CREATED          SIZE
+    spectrocloud/ubuntu/ubuntu          k3s-1.27.2-v4.4.12-palette-learn       075134ad5d4b   10 minutes ago   4.11GB
     ```
 
-14. To use the provider images in your cluster profile, push them to the image registry mentioned in the `.arg` file.
-    The current example uses the [ttl.sh](https://ttl.sh/) image registry. This image registry is free to use and does
-    not require a sign-up. Images pushed to _ttl.sh_ are ephemeral and will expire after the 24 hrs time limit. Use the
-    following commands to push the provider images to the _ttl.sh_ image registry.
+14. To use the provider image with your Edge deployment, push it to the image registry specified in the `.arg` file. Issue the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
 
     ```bash
-    docker push ttl.sh/ubuntu:k3s-1.27.2-v4.4.12-palette-learn
+    docker login
     ```
 
-    :::warning
+15. Once authenticated, push the provider image to the registry so that your Edge host can download it during the cluster
+    deployment.
 
-    As a reminder, [ttl.sh](https://ttl.sh/) is a short-lived image registry. If you do not use these provider images in
-    your cluster profile within 24 hours of pushing to _ttl.sh_, they will expire and must be re-pushed. Refer to the
-    Advanced workflow in the current guide to learn how to use another registry, such as Docker Hub, and tag the docker
-    images accordingly.
+    ```bash
+    docker push $IMAGE_REGISTRY/ubuntu:k3s-1.27.2-v4.4.12-palette-learn
+    ```
 
-    :::
-
-15. After pushing the provider images to the image registry, open a web browser and log in to
+16. After pushing the provider images to the image registry, open a web browser and log in to
     [Palette](https://console.spectrocloud.com). Ensure you are in the **Default** project scope before creating a
     cluster profile.
 
-16. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
+17. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
     out the required basic information fields to create a cluster profile for Edge.
 
-17. Add the following <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS
+18. Add the following <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS
     layer in the **Profile Layers** section.
 
     | **Pack Type** | **Registry** | **Pack Name** | **Pack Version** |
     | ------------- | ------------ | ------------- | ---------------- |
     | OS            | Public Repo  | BYOS Edge OS  | `1.0.0`          |
 
-18. Replace the cluster profile's BYOOS pack manifest with the following custom manifest so that the cluster profile can
-    pull the provider image from the ttl.sh image registry.
+19. Replace the cluster profile's BYOOS pack manifest with the following custom manifest so that the cluster profile can
+    pull the provider image from the image registry.
 
     The `system.xxxxx` attribute values below refer to the arguments defined in the `.arg` file. If you modified the
     arguments in the `.arg` file, you must modify the attribute values below accordingly.
@@ -412,7 +400,7 @@ customization.
         .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{
         .spectro.pack.edge-native-byoi.options.system.customTag }}"
 
-      system.registry: ttl.sh
+      system.registry: spectrocloud
       system.repo: ubuntu
       system.k8sDistribution: k3s
       system.osName: ubuntu
@@ -434,15 +422,15 @@ customization.
 
     :::
 
-19. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the k3s
+20. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the k3s
     version 1.27.x because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.27.2 to the
-    ttl.sh image registry.
+    image registry.
 
     | **Pack Type** | **Registry** | **Pack Name**         | **Pack Version** |
     | ------------- | ------------ | --------------------- | ---------------- |
     | Kubernetes    | Public Repo  | Palette Optimized k3s | `1.27.x`         |
 
-20. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits
+21. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits
     your needs, such as Calico, Flannel, Cilium, or Custom CNI. For example, you can add the following network layer.
     This step completes the core infrastructure layers in the cluster profile.
 
@@ -450,9 +438,9 @@ customization.
     | ------------- | ------------ | ------------- | ---------------- |
     | Network       | Public Repo  | Calico        | `3.25.x`         |
 
-21. Add add-on layers and manifests to your cluster profile per your requirements.
+22. Add add-on layers and manifests to your cluster profile per your requirements.
 
-22. If there are no errors or compatibility issues, Palette displays the newly created complete cluster profile for
+23. If there are no errors or compatibility issues, Palette displays the newly created complete cluster profile for
     review. Verify the layers you added, and finish creating the cluster profile.
 
 ### Validate
@@ -558,7 +546,7 @@ required Edge artifacts.
    | **Argument**       | **Description**                                                                                                                                                                                                                  | **Default Value**                                   | **Allowed Values**                                                                             |
    | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
    | `CUSTOM_TAG`       | Tag for the provider images                                                                                                                                                                                                      | demo                                                | Lowercase alphanumeric string without spaces.                                                  |
-   | `IMAGE_REGISTRY`   | Image registry name                                                                                                                                                                                                              | ttl.sh                                              | Your image registry hostname, without `http` or `https` <br /> Example: docker.io/spectrocloud |
+   | `IMAGE_REGISTRY`   | Image registry name                                                                                                                                                                                                              | `$IMAGE_REGISTRY`                             | Your image registry hostname, without `http` or `https` <br /> Example: spectrocloud |
    | `OS_DISTRIBUTION`  | OS Distribution                                                                                                                                                                                                                  | ubuntu                                              | ubuntu, opensuse-leap                                                                          |
    | `IMAGE_REPO`       | Image repository name.<br /> It is the same as the OS distribution.                                                                                                                                                              | `$OS_DISTRIBUTION`                                  | Your image repository name.                                                                    |
    | `OS_VERSION`       | OS version, only applies to Ubuntu                                                                                                                                                                                               | 22                                                  | 20, 22                                                                                         |
@@ -584,11 +572,11 @@ required Edge artifacts.
    ```
 
 9. Use the command below to save the Docker Hub image registry hostname in the `IMAGE_REGISTRY` argument. Before you
-   execute the command, replace `[DOCKER-ID]` in the declaration below with your Docker ID. Your image registry hostname
+   execute the command, replace `spectrocloud` in the declaration below with your Docker ID. Your image registry hostname
    must comply with standard DNS rules and may not contain underscores.
 
    ```bash
-   export IMAGE_REGISTRY=docker.io/[DOCKER-ID]
+   export IMAGE_REGISTRY=spectrocloud
    ```
 
 10. Issue the following command to use the openSUSE Leap OS distribution.
@@ -634,9 +622,7 @@ required Edge artifacts.
 
     :::warning
 
-    Using the arguments defined in the `.arg` file, the final provider image name will have the following naming
-    pattern, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. Ensure the final artifact name conforms to the Docker Hub
-    image name syntax - `[HOST]/[DOCKER-ID]/[REPOSITORY]:[TAG]`.
+    Ensure the final artifact name conforms to the `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`naming pattern.
 
     :::
 
@@ -843,7 +829,7 @@ required Edge artifacts.
     options:
       system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
 
-      system.registry: docker.io/spectrocloud
+      system.registry: spectrocloud
       system.repo: opensuse-leap
       system.k8sDistribution: k3s
       system.osName: opensuse-leap
@@ -877,11 +863,11 @@ required Edge artifacts.
     ```
 
 20. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace the
-    `[DOCKER-ID]` and version numbers in the command below with your Docker ID and respective Kubernetes versions that
+    `spectrocloud` and version numbers in the command below with your Docker ID and respective Kubernetes versions that
     the utility created.
 
     ```bash
-    docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.27.2-v4.4.12-palette-learn
+    docker push spectrocloud/opensuse-leap:k3s-1.27.2-v4.4.12-palette-learn
     ```
 
 21. After pushing the provider images to the image registry, open a web browser and log in to
@@ -927,7 +913,7 @@ required Edge artifacts.
         .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{
         .spectro.pack.edge-native-byoi.options.system.customTag }}"
 
-      system.registry: docker.io/spectrocloud
+      system.registry: spectrocloud
       system.repo: opensuse-leap
       system.k8sDistribution: k3s
       system.osName: opensuse-leap
@@ -951,7 +937,7 @@ required Edge artifacts.
 
 25. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the K3s
     version 1.27.x because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.27.2 to the
-    ttl.sh image registry.
+    image registry.
 
     | **Pack Type** | **Registry** | **Pack Name**         | **Pack Version** |
     | ------------- | ------------ | --------------------- | ---------------- |
