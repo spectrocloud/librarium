@@ -49,6 +49,8 @@ server entries. As a result, CoreDNS forwards DNS queries to itself, creating a 
    kubectl -n kube-system rollout restart deployment coredns
    ```
 
+This will resolve the issue, ensuring CoreDNS and cluster DNS services operate as expected.
+
 ## Scenario - `x509: certificate signed by unknown authority` Errors during Agent Mode Cluster Creation
 
 Agent mode Edge cluster creation may fail with logs showing the following error.
