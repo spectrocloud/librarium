@@ -181,7 +181,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | --------- | ----------- |
 | Calico    | 3.30.3      |
 | Cilium    | 1.17.6      |
-| Rook-Ceph | 1.17.7      |
 
 ## October 10, 2025 - Component Updates {#component-updates-2025-41}
 
