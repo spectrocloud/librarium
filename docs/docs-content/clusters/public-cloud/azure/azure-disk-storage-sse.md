@@ -577,32 +577,39 @@ Performing these steps will cause a
 
 <TabItem value="both" label="SSE + EAH">
 
-9. On the right-hand side, click the **Presets drop-down Menu**, and select the **Disable Encryption Using
-   Customer-Managed Key** option.
+9.  On the right-hand side, click the **Presets drop-down Menu**, and select the **Disable Encryption Using
+    Customer-Managed Key** option.
 
-10. Click **Confirm updates**.
+10. In the YAML editor change `encryptionAtHost: true` to encryptionAtHost: false`.
 
-11. Click **Save Changes**.
+        ```yaml
+        cloud:
+          azure:
+            encryptionAtHost: false
+        ```
 
-12. From the left **Main Menu**, select **Clusters**.
+11. Click **Confirm updates**.
 
-13. Find the cluster that you want to update and click on it.
+12. Click **Save Changes**.
 
-14. Click the **Profile** tab.
+13. From the left **Main Menu**, select **Clusters**.
 
-15. Click the version **drop-down Menu** in **Infrastructure Layers** and select the version that has disk encryption
+14. Find the cluster that you want to update and click on it.
+
+15. Click the **Profile** tab.
+
+16. Click the version **drop-down Menu** in **Infrastructure Layers** and select the version that has disk encryption
     disabled.
 
-16. Click **Review & Save**, then click **Review changes in Editor** in the Changes Summary box.
+17. Click **Review & Save**, then click **Review changes in Editor** in the Changes Summary box.
 
-17. Review the changes and click **Update**.
+18. Review the changes and click **Update**.
 
 </TabItem>
 
 <TabItem value="eah" label="EAH Only">
 
-9. On the right-hand side, click the **Presets drop-down Menu**, and select the **Disable Encryption Using
-   Customer-Managed Key** option.
+9. In the YAML editor change `encryptionAtHost: true` to encryptionAtHost: false`.
 
 10. Click **Confirm updates**.
 
@@ -631,6 +638,8 @@ the disk encryption disablement.
 ### Validate
 
 Follow these steps to validate the disablement of customer-managed key encryption on your Azure VM disks.
+
+<PartialsComponent category="clusters" name="cluster-azure-disk-encrypt-validate" />
 
 ## Resources
 
