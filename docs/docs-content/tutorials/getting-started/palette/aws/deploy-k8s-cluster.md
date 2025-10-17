@@ -51,9 +51,9 @@ Description, Tags, and Cloud account. Click on **Next**.
 
 ![Palette clusters basic information](/getting-started/aws/getting-started_deploy-k8s-cluster_clusters_basic_info.webp)
 
-Click on **Add Cluster Profile**. A list is displayed of available profiles you can choose to deploy to AWS. Select the
-cluster profile you created in the [Create a Cluster Profile](./create-cluster-profile.md) tutorial, named
-**aws-profile**, and click on **Confirm**.
+On the **Cluster setup type** window, choose **Cluster Profiles > Add Cluster Profile**. A list is displayed of
+available profiles you can choose to deploy to AWS. Select the cluster profile you created in the
+[Create a Cluster Profile](./create-cluster-profile.md) tutorial, named **aws-profile**, and click on **Confirm**.
 
 The **Cluster Profile** section displays all the layers in the cluster profile.
 

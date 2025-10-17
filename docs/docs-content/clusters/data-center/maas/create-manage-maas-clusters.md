@@ -63,10 +63,9 @@ section of the pack Additional Guidance for further information.
 
 7.  Select your MAAS cloud account from the **drop-down Menu** and click **Next**.
 
-8.  Select the cluster profile for your MAAS cluster.
+8.  <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-9.  Review and override pack parameters as desired and click **Next**. By default, parameters for all packs are set with
-    values defined in the cluster profile.
+9.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
 10. Select a domain from the **Domain drop-down Menu** and click **Next**.
 

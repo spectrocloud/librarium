@@ -233,37 +233,35 @@ guide for help with migrating workloads.
 
 ## Deploy an AWS EKS Cluster
 
-1. Log in to [Palette](https://console.spectrocloud.com/).
+1.  Log in to [Palette](https://console.spectrocloud.com/).
 
-2. Ensure you are in the correct project scope.
+2.  Ensure you are in the correct project scope.
 
-3. From the left main menu, select **Clusters** and click **Add New Cluster**.
+3.  From the left main menu, select **Clusters** and click **Add New Cluster**.
 
-4. In **Public Clouds**, under **Managed Kubernetes**, select **AWS EKS**.
+4.  In **Public Clouds**, under **Managed Kubernetes**, select **AWS EKS**.
 
-5. In the bottom-right corner, click **Start AWS EKS Configuration**.
+5.  In the bottom-right corner, click **Start AWS EKS Configuration**.
 
-6. Fill out the following basic information and click **Next**.
+6.  Fill out the following basic information and click **Next**.
 
-   | **Field**         | **Description**                                                                                                                                                                                     |
-   | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Cluster Name**  | A custom name for the cluster.                                                                                                                                                                      |
-   | **Description**   | Use the description to provide context about the cluster.                                                                                                                                           |
-   | **Tags**          | Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: `region:us-east-1a` or `zone:vpc-private-us-east-1a`. |
-   | **Cloud Account** | If you already added your AWS account in Palette, select it from the **drop-down Menu**. Otherwise, click **Add New Account** and add your AWS account information.                                 |
+    | **Field**         | **Description**                                                                                                                                                                                     |
+    | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Cluster Name**  | A custom name for the cluster.                                                                                                                                                                      |
+    | **Description**   | Use the description to provide context about the cluster.                                                                                                                                           |
+    | **Tags**          | Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: `region:us-east-1a` or `zone:vpc-private-us-east-1a`. |
+    | **Cloud Account** | If you already added your AWS account in Palette, select it from the **drop-down Menu**. Otherwise, click **Add New Account** and add your AWS account information.                                 |
 
-   To learn how to add an AWS account, review the [Add an AWS Account to Palette](add-aws-accounts.md) guide.
+    To learn how to add an AWS account, review the [Add an AWS Account to Palette](add-aws-accounts.md) guide.
 
-7. Click **Add Cluster Profile**, select a cluster profile and click **Next**. Palette displays the cluster profile
-   layers.
+7.  <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-8. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer.
-   You can configure custom OpenID Connect (OIDC) for EKS clusters at the Kubernetes layer. Check out
-   [Access EKS Cluster](#access-eks-cluster) if you need more guidance.
+    - You can configure custom OpenID Connect (OIDC) for EKS clusters at the Kubernetes layer. Refer to the
+      [Access EKS Cluster](#access-eks-cluster) section for additional guidance.
 
-9. Click **Next** to continue.
+8.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
-10. Provide the following cluster configuration information and click **Next** to continue.
+9.  Provide the following cluster configuration information and click **Next** to continue.
 
     | **Parameter**               | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
     | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -283,7 +281,7 @@ guide for help with migrating workloads.
 
     :::
 
-11. Provide the following node pool and cloud configuration information. If you will be using Fargate profiles, you can
+10. Provide the following node pool and cloud configuration information. If you will be using Fargate profiles, you can
     add them here.
 
     :::info
@@ -333,14 +331,14 @@ guide for help with migrating workloads.
 
     :::
 
-12. Click **Next** to continue.
+11. Click **Next** to continue.
 
-13. Specify your preferred **OS Patching Schedule** for EKS-managed machines.
+12. Specify your preferred **OS Patching Schedule** for EKS-managed machines.
 
-14. Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
+13. Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
     Kubernetes configuration security, penetration testing, and conformance testing.
 
-15. Schedule any backups you want Palette to perform. Review
+14. Schedule any backups you want Palette to perform. Review
     [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
 
 <!-- prettier-ignore-start -->
