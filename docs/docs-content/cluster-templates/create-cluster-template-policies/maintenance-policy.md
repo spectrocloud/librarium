@@ -93,7 +93,7 @@ cluster templates.
     | **year**  | - **every month** - Initiate the update **every month** or select one or multiple months of the year (January - December). <br /> - **every day of the month** - Initiate the update **every day of the month** or select one or multiple days of the month within the range 01 - 31. <br /> - **every day of the week** - Initiate the update **every day of the week** or multiple days of the week (Sunday - Saturday) in the selected month in addition to the selected day of the month. <br /> - **every hour** - Initiate the update **every hour** of the selected day of the month or day of the week or select one or multiple hours within the range 00 - 23. <br /> - **every minute** - Initiate the update **every minute** of the selected hour or select one or multiple minutes within the range 00 - 59. |
 
 8.  Select how many hours you want the **Upgrade window** to last. Values range from 1 - 24 hours. During the duration
-    of the upgrade window, updates will be rolled out to the cluster.
+    of the upgrade window, updates will be rolled out to the clusters.
 
     :::warning
 
