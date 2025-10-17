@@ -21,8 +21,8 @@ then upgraded during the upgrade windows defined in the maintenance policy. Each
 upgrade schedules, and upgrades can be [manually triggered](../modify-cluster-templates.md#overview-tab) outside of the
 defined schedule, giving you the flexibility to trigger upgrades across clusters whenever necessary.
 
-All clusters must be on the same version and all cluster profile variables must be in an **Assigned** state before
-upgrading to the next version. If some clusters fail to upgrade during the upgrade window, or if clusters deployed with
+All clusters must be on the same cluster profile version, and all cluster profile variables must be in an **Assigned**
+state before they can be upgraded to the next cluster profile version. If some clusters fail to upgrade during the upgrade window, or if clusters deployed with
 the same template are on two different versions (such as in the case of incomplete
 [variable assignments](../modify-cluster-templates.md#variable-values-tab)), the template enters a "partially applied"
 state, and further version upgrades and are blocked until all clusters are on the same version again. In this situation,
