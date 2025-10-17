@@ -35,9 +35,9 @@ Cluster templates can also be managed using the [API](/api/introduction).
 
 ## Cluster Profile Behavior
 
-Cluster templates link to [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) (specifically cluster profile _versions_), which remain the
-foundation of deploying clusters in Palette. Each cluster template must link to one
-[full](../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md) or
+Cluster templates link to [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) (specifically cluster
+profile _versions_), which remain the foundation of deploying clusters in Palette. Each cluster template must link to
+one [full](../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md) or
 [infrastructure profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) and one
 [maintenance policy](./create-cluster-template-policies/maintenance-policy.md). You can reference as many
 [add-on profiles](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md) as
