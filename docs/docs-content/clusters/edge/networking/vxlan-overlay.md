@@ -8,10 +8,6 @@ sidebar_position: 30
 tags: ["edge"]
 ---
 
-:::preview
-
-:::
-
 Edge clusters are often deployed in locations where network environments are not managed by teams that maintain the Edge
 deployments. However, a Kubernetes cluster, specifically several control plane components, requires stable IP addresses.
 In the case of an extended network outage, it is possible that your cluster components would lose their original IP

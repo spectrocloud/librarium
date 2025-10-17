@@ -42,8 +42,8 @@ button.
 In the **Basic Information** section, set the cluster name to `gs-edge-cluster`, add a brief cluster description, and
 assign the tag `env:edge`. Click **Next** to proceed.
 
-In the **Cluster Profile** section, click **Add Cluster Profile**, select the `gs-profile` cluster profile you created
-earlier, and click **Confirm**.
+On the **Cluster setup type** window, choose **Cluster Profiles > Add Cluster Profile**. Select the `gs-profile` cluster
+profile you created earlier, and click **Confirm**.
 
 Review the cluster profile layers and click **Next** to proceed.
 

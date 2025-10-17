@@ -31,6 +31,25 @@ The following table describes the differences between profile variables and macr
 | Supports optionality restrictions.                                         |          ✅          |    ❌     |
 | Supports [sprig template functions](https://masterminds.github.io/sprig/). |          ❌          |    ✅     |
 
+## Cluster Templates
+
+:::preview
+
+:::
+
+Cluster profile variables are a key component to
+[cluster templates](../../../../cluster-templates/cluster-templates.md), allowing you to govern a fleet of clusters that
+use the same software stack and governance policies, such as upgrade windows, while offering the flexibility that
+cluster profile variables provide. Variable values are assigned during cluster deployment and can be updated at the
+individual cluster level or across clusters deployed by the same cluster template. To propagate changes across a fleet
+of clusters that include adding or removing variables, or modifying variable schemas, a
+[new cluster profile version](../../modify-cluster-profiles/version-cluster-profile.md) must be created and attached to
+the cluster template.
+
+For more information on how cluster profile variables interact with cluster templates, refer to our
+[Cluster Templates](../../../../cluster-templates/cluster-templates.md#cluster-profile-variables) and
+[Modify Cluster Templates](../../../../cluster-templates/modify-cluster-templates.md) guides.
+
 ## Limitations
 
 - Nesting profile variables within macros or other profile variables is not supported.
