@@ -114,8 +114,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Improvements
 
-- [Overlay network](../clusters/edge/networking/vxlan-overlay/) has now exited Tech Preview and is ready for production
-  workloads.
+- [Overlay network](../clusters/edge/networking/vxlan-overlay.md) has now exited Tech Preview and is ready for
+  production workloads.
 - Remote shell access to an Edge host can now be enabled in Palette only if the parameter
   `stylus.site.remoteShell.disable` is omitted or set to `false` in the host’s `user-data` file before the host
   registers with Palette. This change applies to Edge hosts built with Palette agent version 4.7.15 or later.
