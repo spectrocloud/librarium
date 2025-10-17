@@ -572,7 +572,7 @@ Performing these steps will cause a
 9.  On the right-hand side, click the **Presets drop-down Menu**, and select the **Disable Encryption Using
     Customer-Managed Key** option.
 
-10. In the YAML editor change `encryptionAtHost: true` to encryptionAtHost: false`.
+10. In the YAML editor change `encryptionAtHost: true` to `encryptionAtHost: false`.
 
         ```yaml
         cloud:
