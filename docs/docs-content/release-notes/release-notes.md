@@ -78,6 +78,11 @@ tags: ["release-notes"]
 
 #### Deprecations and Removals
 
+- [OpenStack](../clusters/data-center/openstack.md) support in Palette is now deprecated and will be removed in a future
+  release. After removal, you will no longer be able to create and manage OpenStack clusters, cluster profiles, cloud
+  accounts, or Private Cloud Gateways. We recommend migrating your workloads to another supported
+  [Data Center environment](../clusters/data-center/data-center.md).
+
 - [EKS-optimized Amazon Linux 2 (AL2) AMIs](https://docs.aws.amazon.com/eks/latest/userguide/eks-ami-deprecation-faqs.html)
   will be disabled in Palette from January 10, 2026 and removed on April 4, 2026. When disabled, you will no longer be
   able to select the AL2 AMIs for EKS worker nodes in Palette for new clusters. For existing clusters, you must create
