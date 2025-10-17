@@ -601,7 +601,7 @@ Performing these steps will cause a
 
 <TabItem value="eah" label="EAH Only">
 
-9. In the YAML editor change `encryptionAtHost: true` to encryptionAtHost: false`.
+9. In the YAML editor change `encryptionAtHost: true` to `encryptionAtHost: false`.
 
 10. Click **Confirm updates**.
 
