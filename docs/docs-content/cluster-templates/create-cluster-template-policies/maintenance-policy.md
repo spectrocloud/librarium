@@ -22,12 +22,13 @@ upgrade schedules, and upgrades can be [manually triggered](../modify-cluster-te
 defined schedule, giving you the flexibility to trigger upgrades across clusters whenever necessary.
 
 All clusters must be on the same cluster profile version, and all cluster profile variables must be in an **Assigned**
-state before they can be upgraded to the next cluster profile version. If some clusters fail to upgrade during the upgrade window, or if clusters deployed with
-the same template are on two different versions (such as in the case of incomplete
-[variable assignments](../modify-cluster-templates.md#variable-values-tab)), the template enters a "partially applied"
-state, and further version upgrades and are blocked until all clusters are on the same version again. In this situation,
-you can either wait for the next upgrade window, at which time the system will attempt to upgrade the remaining
-clusters, or you can [force the upgrade](../modify-cluster-templates.md#overview-tab) using the **Upgrade now** button.
+state before they can be upgraded to the next cluster profile version. If some clusters fail to upgrade during the
+upgrade window, or if clusters deployed with the same template are on two different versions (such as in the case of
+incomplete [variable assignments](../modify-cluster-templates.md#variable-values-tab)), the template enters a "partially
+applied" state, and further version upgrades and are blocked until all clusters are on the same version again. In this
+situation, you can either wait for the next upgrade window, at which time the system will attempt to upgrade the
+remaining clusters, or you can [force the upgrade](../modify-cluster-templates.md#overview-tab) using the **Upgrade
+now** button.
 
 The following table discusses several upgrade scenarios, as well as the result.
 
