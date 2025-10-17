@@ -29,15 +29,13 @@ of clusters with minimal effort while configuring environment-specific values wh
 Cluster templates can be created at both the tenant and project scope. Cluster templates do not embed cluster profile
 and policy configurations but reference them as objects, allowing you to edit and replace them as needed.
 
-Cluster templates can be managed using [Terraform](../automation/terraform/terraform.md),
-[Crossplane](../automation/crossplane/crossplane.md), the [Palette Go SDK](../automation/palette-sdk/palette-sdk.md),
-and [APIs](/api/introduction).
+Cluster templates can also be managed using the [API](/api/introduction).
 
 ![Diagram of cluster template architecture](/cluster-templates_diagram.webp)
 
 ## Cluster Profile Behavior
 
-Cluster templates link to [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md), which remain the
+Cluster templates link to [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) (specifically cluster profile _versions_), which remain the
 foundation of deploying clusters in Palette. Each cluster template must link to one
 [full](../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md) or
 [infrastructure profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) and one
@@ -46,7 +44,7 @@ foundation of deploying clusters in Palette. Each cluster template must link to 
 desired. Only one policy of each type can be linked per cluster template (for example, one maintenance policy per
 template).
 
-Once a cluster profile is linked to a cluster template, that version of the cluster profile becomes immutable.
+Once a cluster profile version is linked to a cluster template, that version of the cluster profile becomes immutable.
 
 ![Linked cluster profile version locked](/cluster-templates_locked-cluster-profile.webp)
 
@@ -64,7 +62,7 @@ cluster that is not attached to a cluster template.
 
 Since cluster profile versions are immutable once linked to a cluster template,
 [cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
-remain the recommended way to configure environment-specific values per cluster, such as IPs, resource limits, and more.
+are the best way to configure environment-specific values per cluster, such as IPs, resource limits, and more.
 
 Much like deploying clusters with individual cluster profiles, variable values are assigned and propagated when you
 deploy a cluster using a cluster template. Once the cluster is deployed, the variables appear on the **Variable values**

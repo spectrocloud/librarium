@@ -17,7 +17,7 @@ and time zones, upgrades are executed based on Coordinated Universal Time (UTC).
 
 When the cluster profile version linked to a cluster template is updated, or when profiles are added, deleted, or
 replaced, the associated maintenance policy automatically schedules upgrades for all active clusters. These clusters are
-then upgraded during the upgrade window defined in the maintenance policy. Each maintenance policy can have multiple
+then upgraded during the upgrade windows defined in the maintenance policy. Each maintenance policy can have multiple
 upgrade schedules, and upgrades can be [manually triggered](../modify-cluster-templates.md#overview-tab) outside of the
 defined schedule, giving you the flexibility to trigger upgrades across clusters whenever necessary.
 

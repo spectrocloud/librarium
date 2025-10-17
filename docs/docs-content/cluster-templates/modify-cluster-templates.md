@@ -76,7 +76,7 @@ To force cluster updates and bypass the scheduled maintenance window, select **O
 :::warning
 
 If there are any pending variable assignments, the banner **[N] cluster(s) pending variable assignment** is displayed.
-Even if you attempt to force an upgrade, the cluster will _not_ be updated when you select **Upgrade now**. Navigate to
+Even if you attempt to force an upgrade, any clusters without pending variable assignments will _not_ be updated when you select **Upgrade now**. Navigate to
 the [**Variable values**](#variable-values-tab) tab and assign a **New Value** to each variable before attempting the
 upgrade again.
 
@@ -123,7 +123,7 @@ To edit an existing maintenance policy, refer to our
 
 #### Cluster Profiles
 
-Once a cluster profile is linked to a cluster template, that version of the cluster profile is immutable. To make
+Once a cluster profile version is linked to a cluster template, that version of the cluster profile is immutable. To make
 changes to a cluster profile attached to a cluster template, you must
 [create a new version](../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) of your cluster
 profile and update the version referenced in the cluster template. Cluster profiles are modified the same way,
