@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## October 18, 2025 - Release 4.7.27 {#release-notes-4.7.c}
+## October 19, 2025 - Release 4.7.27 {#release-notes-4.7.c}
 
 ### Security Notices
 
