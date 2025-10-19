@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## October 18, 2025 - Release 4.7.X {#release-notes-4.7.c}
+## October 18, 2025 - Release 4.7.27 {#release-notes-4.7.c}
 
 ### Security Notices
 
@@ -95,7 +95,7 @@ tags: ["release-notes"]
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.7.c Palette release is 4.7.15.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.7.27 Palette release is 4.7.16.
 
 :::
 
