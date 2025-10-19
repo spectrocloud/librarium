@@ -98,6 +98,14 @@ Cluster Profile Variables enable you to create placeholders for parameters in pr
 can then populate for individual clusters during deployment. Meaning you can use a single cluster profile to deploy
 multiple clusters with unique requirements for security, networking, resource allocation, and so on.
 
+## Cluster Template
+
+[Cluster templates](./cluster-templates/cluster-templates.md) are reusable blueprints that define and enforce the
+desired state and lifecycle for a fleet of clusters. They are created by referencing
+[cluster profiles](./profiles/cluster-profiles/cluster-profiles.md), which define the software stack, and
+[policies](./cluster-templates/create-cluster-template-policies/create-cluster-template-policies.md), which define the
+governance stack, such as upgrade windows and other configurations.
+
 ## Edge Appliances
 
 Palette supports several kinds of appliances for the Edge deployment. These appliances can be registered with the
