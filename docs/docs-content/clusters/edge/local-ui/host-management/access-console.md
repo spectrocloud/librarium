@@ -41,8 +41,8 @@ mechanism begins after three unsuccessful login attempts.
 If you reach the maximum number of consecutive unsuccessful login attempts, Local UI temporarily blocks access for your
 user. By default, this lockout occurs after five consecutive failed attempts and lasts for 15 minutes.
 
-You can customize the default values in the `user-data` file for Edge hosts built with Palette agent version
-4.7.c-canvos or later. For more information, refer to the `stylus.localUI.login` parameters description in the
+You can customize the default values in the `user-data` file for Edge hosts built with Palette agent version 4.7.16 or
+later. For more information, refer to the `stylus.localUI.login` parameters description in the
 [Edge Installer Configuration Reference](../../edge-configuration/installer-reference.md#palette-agent-parameters).
 
 ### Validate
