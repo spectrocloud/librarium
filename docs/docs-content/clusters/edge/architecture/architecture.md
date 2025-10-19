@@ -41,7 +41,7 @@ The following are architectural highlights of Palette-provisioned Edge native cl
   - ARM64 architecture
   - Palette VerteX
   - Custom installation paths for Kubernetes and its dependencies in [agent mode](../../../deployment-modes/agent-mode/)
-  - [Network overlay](../networking/vxlan-overlay/)
+  - [Network overlay](../networking/vxlan-overlay/) in locally managed Edge clusters.
   - High availability mode with one or two nodes.
 
 - When scaling down a Palette Optimized Canonical Kubernetes cluster with two nodes, ensure you do not delete the leader
