@@ -1,0 +1,1297 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [expanded] [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+                - list [ref=e107]:
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Public Cloud Clusters" [expanded] [ref=e110] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e112]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e114] [cursor=pointer]
+                    - list [ref=e115]:
+                      - listitem [ref=e116]:
+                        - generic [ref=e117]:
+                          - link "AWS" [ref=e118] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/aws/
+                          - button "Toggle the collapsible sidebar category 'AWS'" [ref=e119] [cursor=pointer]
+                      - listitem [ref=e120]:
+                        - generic [ref=e121]:
+                          - link "Azure" [expanded] [ref=e122] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/azure/
+                          - button "Toggle the collapsible sidebar category 'Azure'" [ref=e123] [cursor=pointer]
+                        - list [ref=e124]:
+                          - listitem [ref=e125]:
+                            - link "Architecture" [ref=e126] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/azure/architecture/
+                          - listitem [ref=e127]:
+                            - link "Register and Manage Azure Cloud Account" [ref=e128] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/azure/azure-cloud/
+                          - listitem [ref=e129]:
+                            - link "Azure Disk Encryption" [ref=e130] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/azure/azure-disk-storage-sse/
+                          - listitem [ref=e131]:
+                            - link "Create and Manage Azure IaaS Cluster" [ref=e132] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/azure/create-azure-cluster/
+                          - listitem [ref=e133]:
+                            - link "Create and Manage Azure AKS Cluster" [ref=e134] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/azure/aks/
+                          - listitem [ref=e135]:
+                            - link "Deploy Windows Workloads" [ref=e136] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/azure/windows/
+                          - listitem [ref=e137]:
+                            - link "Required Permissions" [ref=e138] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/azure/required-permissions/
+                      - listitem [ref=e139]:
+                        - generic [ref=e140]:
+                          - link "GCP" [ref=e141] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/gcp/
+                          - button "Toggle the collapsible sidebar category 'GCP'" [ref=e142] [cursor=pointer]
+                  - listitem [ref=e143]:
+                    - generic [ref=e144]:
+                      - link "Data Center Clusters" [ref=e145] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e147]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e149] [cursor=pointer]
+                  - listitem [ref=e150]:
+                    - generic [ref=e151]:
+                      - link "Edge" [ref=e152] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e154]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e156] [cursor=pointer]
+                  - listitem [ref=e157]:
+                    - generic [ref=e158]:
+                      - link "Palette Virtual Clusters" [ref=e159] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e161]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e163] [cursor=pointer]
+                  - listitem [ref=e164]:
+                    - generic [ref=e165]:
+                      - link "Imported Clusters" [ref=e166] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e168]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e170] [cursor=pointer]
+                  - listitem [ref=e171]:
+                    - generic [ref=e172]:
+                      - link "Manage Clusters" [ref=e173] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e175]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e177] [cursor=pointer]
+                  - listitem [ref=e178]:
+                    - generic [ref=e179]:
+                      - link "Cluster Groups" [ref=e180] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e182]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e184] [cursor=pointer]
+                  - listitem [ref=e185]:
+                    - generic [ref=e186]:
+                      - link "Private Cloud Gateway" [ref=e187] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e189]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e191] [cursor=pointer]
+              - listitem [ref=e192]:
+                - generic [ref=e193]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e194] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e196]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e198] [cursor=pointer]
+              - listitem [ref=e199]:
+                - generic [ref=e200]:
+                  - link "Palette Dev Engine" [ref=e201] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e203]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e205] [cursor=pointer]
+              - listitem [ref=e206]:
+                - generic [ref=e207]:
+                  - link "Virtual Machine Orchestrator" [ref=e208] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e210]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e212] [cursor=pointer]
+              - listitem [ref=e213]:
+                - generic [ref=e214]:
+                  - link "Workspaces" [ref=e215] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e217]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e219] [cursor=pointer]
+              - listitem [ref=e220]:
+                - generic [ref=e221]:
+                  - link "Packs List" [ref=e222] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e224]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e226] [cursor=pointer]
+              - listitem [ref=e227]:
+                - generic [ref=e228]:
+                  - link "User & Role Management" [ref=e229] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e231]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e233] [cursor=pointer]
+              - listitem [ref=e234]:
+                - generic [ref=e235]:
+                  - link "Registries and Packs" [ref=e236] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e238]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e240] [cursor=pointer]
+              - listitem [ref=e241]:
+                - generic [ref=e242]:
+                  - link "Security" [ref=e243] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e245]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e247] [cursor=pointer]
+              - listitem [ref=e248]:
+                - generic [ref=e249]:
+                  - link "Audit Logs" [ref=e250] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e252]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e254] [cursor=pointer]
+              - listitem [ref=e255]:
+                - generic [ref=e256]:
+                  - link "Self-Hosted Palette" [ref=e257] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e259]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e261] [cursor=pointer]
+              - listitem [ref=e262]:
+                - generic [ref=e263]:
+                  - link "Palette VerteX" [ref=e264] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e266]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e268] [cursor=pointer]
+              - listitem [ref=e269]:
+                - generic [ref=e270]:
+                  - link "Tenant Administration" [ref=e271] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e273]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e275] [cursor=pointer]
+              - listitem [ref=e276]:
+                - generic [ref=e277]:
+                  - link "Automation" [ref=e278] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e280]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e282] [cursor=pointer]
+              - listitem [ref=e283]:
+                - generic [ref=e284]:
+                  - link "Troubleshooting" [ref=e285] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e287]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e289] [cursor=pointer]
+              - listitem [ref=e290]:
+                - link "Glossary" [ref=e291] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e293]
+                  - text: Glossary
+              - listitem [ref=e295]:
+                - generic [ref=e296]:
+                  - link "Compliance & Legal" [ref=e297] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e299]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e301] [cursor=pointer]
+              - listitem [ref=e302]:
+                - button "Privacy Settings" [ref=e303] [cursor=pointer]:
+                  - img [ref=e304]
+                  - text: Privacy Settings
+      - main [ref=e306]:
+        - generic [ref=e308]:
+          - generic [ref=e310]:
+            - article [ref=e311]:
+              - navigation "Breadcrumbs" [ref=e312]:
+                - list [ref=e313]:
+                  - listitem [ref=e314]:
+                    - link "Home page" [ref=e315] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e316]
+                  - listitem [ref=e318]:
+                    - link "Clusters" [ref=e319] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e320]:
+                    - link "Public Cloud Clusters" [ref=e321] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/
+                  - listitem [ref=e322]:
+                    - link "Azure" [ref=e323] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/azure/
+                  - listitem [ref=e324]:
+                    - generic [ref=e325]: Azure Disk Encryption
+              - generic [ref=e326]:
+                - heading "Azure Disk Encryption" [level=1] [ref=e328]
+                - paragraph [ref=e329]:
+                  - text: Palette supports disk encryption for Azure IaaS clusters using Azure Disk Storage
+                  - link "server-side encryption (SSE)" [ref=e330] [cursor=pointer]:
+                    - /url: https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption
+                  - text: and Azure
+                  - link "encryption at host (EAH)" [ref=e331] [cursor=pointer]:
+                    - /url: https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data
+                  - text: . By default, Azure encrypts all SSE-managed disks with PMK
+                  - link "platform-managed keys (PMK)" [ref=e332] [cursor=pointer]:
+                    - /url: https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#platform-managed-keys
+                  - text: ; however, you can use
+                  - link "customer-managed keys (CMK)" [ref=e333] [cursor=pointer]:
+                    - /url: https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#customer-managed-keys
+                  - text: through
+                  - link "Azure Disk Encryption Sets (DES)" [ref=e334] [cursor=pointer]:
+                    - /url: https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-customer-managed-keys-portal#set-up-your-disk-encryption-set
+                  - text: instead of PMK, giving you greater control of your key-management.
+                - paragraph [ref=e335]:
+                  - text: SSE does not encrypt
+                  - link "temporary disks" [ref=e336] [cursor=pointer]:
+                    - /url: https://learn.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview#temporary-disk
+                  - text: or disk caches. To ensure end-to-end encryption, use EAH. SSE and EAH can be used independently or alongside one another. To leverage either or both encryption methods, you must use the
+                  - link "Palette eXtended Kubernetes (PXK)" [ref=e337] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=kubernetes
+                  - text: pack.
+                - paragraph [ref=e338]: The following table highlights use cases for each encryption method.
+                - table [ref=e339]:
+                  - rowgroup [ref=e340]:
+                    - row "Feature Server Side Encryption (SSE) Encryption at Host (EAH)" [ref=e341]:
+                      - cell "Feature" [ref=e342]:
+                        - strong [ref=e343]: Feature
+                      - cell "Server Side Encryption (SSE)" [ref=e344]:
+                        - strong [ref=e345]: Server Side Encryption (SSE)
+                      - cell "Encryption at Host (EAH)" [ref=e346]:
+                        - strong [ref=e347]: Encryption at Host (EAH)
+                  - rowgroup [ref=e348]:
+                    - row "Encryption Method Encrypts your data stored on Azure-managed OS and data disks. Does not encrypt temporary disks or disk caches. - EAH only - Encrypts temporary disks but not disk cache. - EAH + SSE - Encrypts temporary disks and disk cache, as well as managed disks." [ref=e349]:
+                      - cell "Encryption Method" [ref=e350]:
+                        - strong [ref=e351]: Encryption Method
+                      - cell "Encrypts your data stored on Azure-managed OS and data disks. Does not encrypt temporary disks or disk caches." [ref=e352]:
+                        - text: Encrypts your data stored on Azure-managed
+                        - link "OS" [ref=e353] [cursor=pointer]:
+                          - /url: https://learn.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview#os-disk
+                        - text: and
+                        - link "data disks" [ref=e354] [cursor=pointer]:
+                          - /url: https://learn.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview#data-disk
+                        - text: . Does not encrypt
+                        - link "temporary disks" [ref=e355] [cursor=pointer]:
+                          - /url: https://learn.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview#temporary-disk
+                        - text: or disk caches.
+                      - cell "- EAH only - Encrypts temporary disks but not disk cache. - EAH + SSE - Encrypts temporary disks and disk cache, as well as managed disks." [ref=e356]:
+                        - text: "-"
+                        - strong [ref=e357]: EAH only
+                        - text: "- Encrypts temporary disks but not disk cache."
+                        - text: "-"
+                        - strong [ref=e358]: EAH + SSE
+                        - text: "- Encrypts temporary disks and disk cache, as well as"
+                        - link "managed disks" [ref=e359] [cursor=pointer]:
+                          - /url: https://learn.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview
+                        - text: .
+                    - row "Management Keys Supports CMK via DES. Uses PMK for temporary disks and disk cache. Can use DES for managed disks when used with SSE." [ref=e360]:
+                      - cell "Management Keys" [ref=e361]:
+                        - strong [ref=e362]: Management Keys
+                      - cell "Supports CMK via DES." [ref=e363]
+                      - cell "Uses PMK for temporary disks and disk cache. Can use DES for managed disks when used with SSE." [ref=e364]
+                    - row "Special Requirements - Requires VM SKUs that support EncryptionAtHost capability." [ref=e365]:
+                      - cell "Special Requirements" [ref=e366]:
+                        - strong [ref=e367]: Special Requirements
+                      - cell "-" [ref=e368]
+                      - cell "Requires VM SKUs that support EncryptionAtHost capability." [ref=e369]:
+                        - text: Requires VM SKUs that support
+                        - code [ref=e370]: EncryptionAtHost
+                        - text: capability.
+                    - row "Default Configuration Enabled by default with PMK. Can opt to provide CMK via DES in AzureMachineTemplate. Disabled by default." [ref=e371]:
+                      - cell "Default Configuration" [ref=e372]:
+                        - strong [ref=e373]: Default Configuration
+                      - cell "Enabled by default with PMK. Can opt to provide CMK via DES in AzureMachineTemplate." [ref=e374]:
+                        - text: Enabled by default with PMK. Can opt to provide CMK via DES in
+                        - code [ref=e375]: AzureMachineTemplate
+                        - text: .
+                      - cell "Disabled by default." [ref=e376]
+                - heading "LimitationsDirect link to Limitations" [level=2] [ref=e377]:
+                  - text: Limitations
+                  - link "Direct link to Limitations" [ref=e378] [cursor=pointer]:
+                    - /url: "#limitations"
+                    - text: "#"
+                - generic [ref=e379]:
+                  - generic [ref=e380]:
+                    - img [ref=e382]
+                    - text: warning
+                  - paragraph [ref=e385]:
+                    - link "Azure Disk Encryption for Virtual Machines and Virtual Machine Scale Sets" [ref=e386] [cursor=pointer]:
+                      - /url: https://learn.microsoft.com/en-us/azure/virtual-machines/linux/disk-encryption-overview
+                    - text: is not supported for any Azure cluster.
+                - list [ref=e387]:
+                  - listitem [ref=e388]:
+                    - paragraph [ref=e389]: SSE and EAH are not supported for AKS clusters.
+                  - listitem [ref=e390]:
+                    - paragraph [ref=e391]:
+                      - link "Palette eXtended Kubernetes (PXK)" [ref=e392] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubernetes
+                      - text: must be used in the Kubernetes layer of your cluster profile to use SSE or EAH.
+                  - listitem [ref=e393]:
+                    - paragraph [ref=e394]:
+                      - text: If a key expires in
+                      - link "Azure Key Vault" [ref=e395] [cursor=pointer]:
+                        - /url: https://learn.microsoft.com/en-us/azure/key-vault/general/overview
+                      - text: ", your cluster may experience operation failures. To resolve this, generate a new key in Azure Key Vault and update your disk encryption set to reference the new key. We recommend enabling"
+                      - link "auto key rotation" [ref=e396] [cursor=pointer]:
+                        - /url: https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#automatic-key-rotation-of-customer-managed-keys
+                      - text: on your disk encryption set so it can automatically use new key versions from Azure Key Vault.
+                    - generic [ref=e397]:
+                      - generic [ref=e398]:
+                        - img [ref=e400]
+                        - text: info
+                      - paragraph [ref=e403]: No changes are needed in Palette when a new key is created, as the PXK pack references the Uniform Resource Identifier (URI) of your disk encryption set, which remains unchanged.
+                  - listitem [ref=e404]:
+                    - paragraph [ref=e405]: (EAH only) Azure VMs compatible with EAH.
+                    - group [ref=e406]:
+                      - generic "Azure CLI command to validate EAH VM compatibility" [ref=e407] [cursor=pointer]
+                - heading "New Cluster ProfileDirect link to New Cluster Profile" [level=2] [ref=e408]:
+                  - text: New Cluster Profile
+                  - link "Direct link to New Cluster Profile" [ref=e409] [cursor=pointer]:
+                    - /url: "#new-cluster-profile"
+                    - text: "#"
+                - paragraph [ref=e410]: Take the following steps to create a cluster profile with SSE or EAH enabled.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e411]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e412] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e413]:
+                  - listitem [ref=e414]:
+                    - paragraph [ref=e415]:
+                      - text: An Azure user account with the following roles to create the Azure Key Vault and disk encryption set with the necessary Azure Key Vault access policies. For more information, visit
+                      - link "Azure built-in roles for Key Vault data plane operations" [ref=e416] [cursor=pointer]:
+                        - /url: https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide?tabs=azure-cli#azure-built-in-roles-for-key-vault-data-plane-operations
+                      - text: .
+                    - table [ref=e417]:
+                      - rowgroup [ref=e418]:
+                        - row "Task Required Role" [ref=e419]:
+                          - cell "Task" [ref=e420]:
+                            - strong [ref=e421]: Task
+                          - cell "Required Role" [ref=e422]:
+                            - strong [ref=e423]: Required Role
+                      - rowgroup [ref=e424]:
+                        - row "Create Azure Key Vault and key Key Vault Contributor" [ref=e425]:
+                          - cell "Create Azure Key Vault and key" [ref=e426]
+                          - cell "Key Vault Contributor" [ref=e427]
+                        - row "Create disk encryption set and assign Azure Key Vault key Key Vault Administrator" [ref=e428]:
+                          - cell "Create disk encryption set and assign Azure Key Vault key" [ref=e429]
+                          - cell "Key Vault Administrator" [ref=e430]
+                        - row "Assign Azure Key Vault access policies (GET, WRAP KEY, UNWRAP KEY) Key Vault Crypto Service Encryption User" [ref=e431]:
+                          - cell "Assign Azure Key Vault access policies (GET, WRAP KEY, UNWRAP KEY)" [ref=e432]
+                          - cell "Key Vault Crypto Service Encryption User" [ref=e433]
+                        - row "(Optional) Assign user-assigned managed identity to Azure Key Vault and disk encryption set Managed Identity Operator" [ref=e434]:
+                          - cell "(Optional) Assign user-assigned managed identity to Azure Key Vault and disk encryption set" [ref=e435]
+                          - cell "Managed Identity Operator" [ref=e436]
+                  - listitem [ref=e437]:
+                    - paragraph [ref=e438]:
+                      - text: An
+                      - link "Azure Key Vault" [ref=e439] [cursor=pointer]:
+                        - /url: https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-customer-managed-keys-portal#set-up-your-azure-key-vault
+                      - text: "with the following configuration:"
+                    - list [ref=e440]:
+                      - listitem [ref=e441]:
+                        - text: "Resource access:"
+                        - strong [ref=e442]: Azure Virtual Machines for deployment
+                      - listitem [ref=e443]:
+                        - text: "Purge protection:"
+                        - strong [ref=e444]: Enable purge protection
+                  - listitem [ref=e445]:
+                    - paragraph [ref=e446]:
+                      - text: A
+                      - link "disk encryption set" [ref=e447] [cursor=pointer]:
+                        - /url: https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-customer-managed-keys-portal#set-up-your-disk-encryption-set
+                      - text: with the encryption type set to
+                      - strong [ref=e448]: Encryption at-rest with a customer-managed key
+                      - text: .
+                  - listitem [ref=e449]:
+                    - paragraph [ref=e450]:
+                      - link "EAH" [ref=e451] [cursor=pointer]:
+                        - /url: https://learn.microsoft.com/en-in/azure/virtual-machines/disks-enable-host-based-encryption-portal?tabs=azure-powershell
+                      - text: enabled on Azure when using
+                      - strong [ref=e452]: Encryption at Host
+                      - text: .
+                  - listitem [ref=e453]:
+                    - paragraph [ref=e454]:
+                      - text: The Azure Key Vault must have the following
+                      - link "access policies" [ref=e455] [cursor=pointer]:
+                        - /url: https://learn.microsoft.com/en-us/azure/key-vault/general/assign-access-policy?tabs=azure-portal
+                      - text: "assigned to the disk encryption set that you want to use:"
+                    - list [ref=e456]:
+                      - listitem [ref=e457]:
+                        - text: "Key Management Operations:"
+                        - strong [ref=e458]: Get
+                      - listitem [ref=e459]:
+                        - text: "Cryptographic Operations:"
+                        - strong [ref=e460]: Unwrap Key
+                        - text: ","
+                        - strong [ref=e461]: Wrap Key
+                    - paragraph [ref=e462]: If you have designated a user-assigned managed identity to the disk encryption set, assign the same access policies to the user-assigned managed identity in the Azure Key Vault.
+                - heading "Enable Disk EncryptionDirect link to Enable Disk Encryption" [level=3] [ref=e463]:
+                  - text: Enable Disk Encryption
+                  - link "Direct link to Enable Disk Encryption" [ref=e464] [cursor=pointer]:
+                    - /url: "#enable-disk-encryption"
+                    - text: "#"
+                - paragraph [ref=e465]:
+                  - text: Use the following steps to enable disk encryption on a
+                  - link "new cluster profile" [ref=e466] [cursor=pointer]:
+                    - /url: /profiles/cluster-profiles/create-cluster-profiles/
+                  - text: .
+                - list [ref=e467]:
+                  - listitem [ref=e468]:
+                    - paragraph [ref=e469]:
+                      - text: Log in to
+                      - link "Palette" [ref=e470] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e471]:
+                    - paragraph [ref=e472]: Ensure you are in the correct project scope.
+                  - listitem [ref=e473]:
+                    - paragraph [ref=e474]:
+                      - text: From the left main menu, select
+                      - strong [ref=e475]: Profiles
+                      - text: ", then"
+                      - strong [ref=e476]: Add Cluster Profile
+                      - text: .
+                  - listitem [ref=e477]:
+                    - paragraph [ref=e478]:
+                      - text: Fill out the
+                      - strong [ref=e479]: Basic Information
+                      - text: for your cluster profile. Choose a cluster profile
+                      - strong [ref=e480]: Type
+                      - text: of
+                      - strong [ref=e481]: Full
+                      - text: or
+                      - strong [ref=e482]: Infrastructure
+                      - text: . Select
+                      - strong [ref=e483]: Next
+                      - text: .
+                  - listitem [ref=e484]:
+                    - paragraph [ref=e485]:
+                      - text: Choose
+                      - strong [ref=e486]: Azure IaaS
+                      - text: for your
+                      - strong [ref=e487]: Infrastructure Provider
+                      - text: and select
+                      - strong [ref=e488]: Next
+                      - text: .
+                  - listitem [ref=e489]:
+                    - paragraph [ref=e490]:
+                      - text: Choose your base OS pack and make any necessary modifications. Select
+                      - strong [ref=e491]: Next layer
+                      - text: when complete.
+                - list [ref=e492]:
+                  - listitem [ref=e493]:
+                    - text: Select
+                    - link "Palette eXtended Kubernetes (PXK)" [ref=e494] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=kubernetes
+                    - text: as your Kubernetes pack.
+                - list [ref=e495]:
+                  - listitem [ref=e496]:
+                    - text: On the
+                    - strong [ref=e497]: Configure Pack
+                    - text: drawer, below
+                    - strong [ref=e498]: Pack Details
+                    - text: ", select"
+                    - strong [ref=e499]: Values
+                    - text: ", and click the"
+                    - strong [ref=e500]: </>
+                    - text: button to display the YAML editor. Make the appropriate modifications based on your encryption method.
+                - generic [ref=e501]:
+                  - tablist [ref=e502]:
+                    - tab "SSE Only" [selected] [ref=e503] [cursor=pointer]
+                    - tab "SSE + EAH" [ref=e504] [cursor=pointer]
+                    - tab "EAH Only" [ref=e505] [cursor=pointer]
+                  - tabpanel [ref=e507]:
+                    - list [ref=e508]:
+                      - listitem [ref=e509]:
+                        - paragraph [ref=e510]:
+                          - text: On the right side of the editor, expand the
+                          - strong [ref=e511]: Presets
+                          - text: drop-down menu, and select
+                          - strong [ref=e512]: Enable Encryption Using Customer-Managed Key
+                          - text: to use CMK with SSE.
+                      - listitem [ref=e513]:
+                        - paragraph [ref=e514]: Scroll to the bottom of the YAML editor to view the additional configuration that was added.
+                        - generic [ref=e516]:
+                          - code [ref=e518]:
+                            - generic [ref=e519]: "cloud:"
+                            - generic [ref=e520]: "azure:"
+                            - generic [ref=e521]: "diskEncryptionSetID: \"\""
+                          - button "Copy code to clipboard" [ref=e523] [cursor=pointer]:
+                            - generic [ref=e524]:
+                              - img [ref=e525]
+                              - img [ref=e527]
+                      - listitem [ref=e529]:
+                        - paragraph [ref=e530]:
+                          - text: Fill in the
+                          - code [ref=e531]: diskEncryptionSetID
+                          - text: with the Resource ID URI of your disk encryption set.
+                        - generic [ref=e533]:
+                          - code [ref=e535]:
+                            - generic [ref=e536]: "cloud:"
+                            - generic [ref=e537]: "azure:"
+                            - generic [ref=e538]: "diskEncryptionSetID: \"/subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Compute/diskEncryptionSets/diskEncryptionSet\""
+                          - generic [ref=e539]:
+                            - button "Toggle word wrap" [ref=e540] [cursor=pointer]:
+                              - img [ref=e541]
+                            - button "Copy code to clipboard" [ref=e543] [cursor=pointer]:
+                              - generic [ref=e544]:
+                                - img [ref=e545]
+                                - img [ref=e547]
+                        - group [ref=e549]:
+                          - generic "How to find the Resource ID URI of your disk encryption set" [ref=e550] [cursor=pointer]
+                      - listitem [ref=e551]:
+                        - paragraph [ref=e552]:
+                          - text: Make any other necessary changes and select
+                          - strong [ref=e553]: Next
+                          - text: .
+                      - listitem [ref=e554]:
+                        - paragraph [ref=e555]:
+                          - text: Add the remaining storage and networking layers to your cluster profile, making changes where necessary. If you selected
+                          - strong [ref=e556]: Full
+                          - text: for your cluster profile
+                          - strong [ref=e557]: Type
+                          - text: ", you have the option to add add-on layers as well."
+                      - listitem [ref=e558]:
+                        - paragraph [ref=e559]:
+                          - text: Select
+                          - strong [ref=e560]: Finish Configuration
+                          - text: to save your cluster profile. For more information on creating cluster profiles, refer to our
+                          - link "Create Cluster Profiles" [ref=e561] [cursor=pointer]:
+                            - /url: /profiles/cluster-profiles/create-cluster-profiles/
+                          - text: guide.
+                - paragraph [ref=e562]:
+                  - text: You can now
+                  - link "create a new Azure IaaS cluster" [ref=e563] [cursor=pointer]:
+                    - /url: /clusters/public-cloud/azure/create-azure-cluster/
+                  - text: with disk encryption enabled using this cluster profile. Once the cluster is created, you can
+                  - link "validate disk encryption enablement" [ref=e564] [cursor=pointer]:
+                    - /url: "#validate-new-cluster-profile"
+                  - text: .
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e565]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e566] [cursor=pointer]:
+                    - /url: "#validate-new-cluster-profile"
+                    - text: "#"
+                - paragraph [ref=e567]: Follow these steps to confirm that encryption is enabled on your Azure VM disks.
+                - generic [ref=e568]:
+                  - tablist [ref=e569]:
+                    - tab "Validating SSE" [selected] [ref=e570] [cursor=pointer]
+                    - tab "Validating EAH" [ref=e571] [cursor=pointer]
+                  - tabpanel [ref=e573]:
+                    - list [ref=e574]:
+                      - listitem [ref=e575]:
+                        - paragraph [ref=e576]:
+                          - text: Log in to the
+                          - link "Azure Portal" [ref=e577] [cursor=pointer]:
+                            - /url: https://portal.azure.com/
+                          - text: .
+                      - listitem [ref=e578]:
+                        - paragraph [ref=e579]:
+                          - text: Use the search bar to locate and select the
+                          - strong [ref=e580]: Disks
+                          - text: resource.
+                      - listitem [ref=e581]:
+                        - paragraph [ref=e582]:
+                          - text: Locate and select a disk in your cluster using the search filters provided. One way to locate the applicable disks is to search for the cluster name, as the cluster name is prepended to all relevant resources (for example,
+                          - code [ref=e583]: <cluster-name>-worker-pool-1-9d40-8rcx9_OSDisk
+                          - text: and
+                          - code [ref=e584]: <cluster-name>-cp-36298-7gqb9_OSDisk
+                          - text: ).
+                      - listitem [ref=e585]:
+                        - paragraph [ref=e586]:
+                          - text: On the disk
+                          - strong [ref=e587]: Overview
+                          - text: page, select the
+                          - strong [ref=e588]: Properties
+                          - text: tab and scroll down to view the
+                          - strong [ref=e589]: Encryption
+                          - text: section. Ensure that the
+                          - strong [ref=e590]: Encryption type
+                          - text: shows
+                          - strong [ref=e591]: Platform-managed key
+                          - text: .
+                      - listitem [ref=e592]:
+                        - paragraph [ref=e593]:
+                          - text: Scroll down to view the
+                          - strong [ref=e594]: Properties
+                          - text: tab and check that the
+                          - strong [ref=e595]: Encryption
+                          - text: section shows
+                          - strong [ref=e596]: Customer-managed key
+                          - text: for
+                          - strong [ref=e597]: Encryption type
+                          - text: .
+                      - listitem [ref=e598]:
+                        - paragraph [ref=e599]: Repeat steps 4 and 5 for each disk in your cluster.
+                - heading "Active ClusterDirect link to Active Cluster" [level=2] [ref=e600]:
+                  - text: Active Cluster
+                  - link "Direct link to Active Cluster" [ref=e601] [cursor=pointer]:
+                    - /url: "#active-cluster"
+                    - text: "#"
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e602]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e603] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e604]:
+                  - listitem [ref=e605]:
+                    - paragraph [ref=e606]:
+                      - text: An Azure user account with the following roles to create the Azure Key Vault and disk encryption set with the necessary Azure Key Vault access policies. For more information, visit
+                      - link "Azure built-in roles for Key Vault data plane operations" [ref=e607] [cursor=pointer]:
+                        - /url: https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide?tabs=azure-cli#azure-built-in-roles-for-key-vault-data-plane-operations
+                      - text: .
+                    - table [ref=e608]:
+                      - rowgroup [ref=e609]:
+                        - row "Task Required Role" [ref=e610]:
+                          - cell "Task" [ref=e611]:
+                            - strong [ref=e612]: Task
+                          - cell "Required Role" [ref=e613]:
+                            - strong [ref=e614]: Required Role
+                      - rowgroup [ref=e615]:
+                        - row "Create Azure Key Vault and key Key Vault Contributor" [ref=e616]:
+                          - cell "Create Azure Key Vault and key" [ref=e617]
+                          - cell "Key Vault Contributor" [ref=e618]
+                        - row "Create disk encryption set and assign Azure Key Vault key Key Vault Administrator" [ref=e619]:
+                          - cell "Create disk encryption set and assign Azure Key Vault key" [ref=e620]
+                          - cell "Key Vault Administrator" [ref=e621]
+                        - row "Assign Azure Key Vault access policies (GET, WRAP KEY, UNWRAP KEY) Key Vault Crypto Service Encryption User" [ref=e622]:
+                          - cell "Assign Azure Key Vault access policies (GET, WRAP KEY, UNWRAP KEY)" [ref=e623]
+                          - cell "Key Vault Crypto Service Encryption User" [ref=e624]
+                        - row "(Optional) Assign user-assigned managed identity to Azure Key Vault and disk encryption set Managed Identity Operator" [ref=e625]:
+                          - cell "(Optional) Assign user-assigned managed identity to Azure Key Vault and disk encryption set" [ref=e626]
+                          - cell "Managed Identity Operator" [ref=e627]
+                  - listitem [ref=e628]:
+                    - paragraph [ref=e629]:
+                      - text: An
+                      - link "Azure Key Vault" [ref=e630] [cursor=pointer]:
+                        - /url: https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-customer-managed-keys-portal#set-up-your-azure-key-vault
+                      - text: "with the following configuration:"
+                    - list [ref=e631]:
+                      - listitem [ref=e632]:
+                        - text: "Resource access:"
+                        - strong [ref=e633]: Azure Virtual Machines for deployment
+                      - listitem [ref=e634]:
+                        - text: "Purge protection:"
+                        - strong [ref=e635]: Enable purge protection
+                  - listitem [ref=e636]:
+                    - paragraph [ref=e637]:
+                      - text: A
+                      - link "disk encryption set" [ref=e638] [cursor=pointer]:
+                        - /url: https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-customer-managed-keys-portal#set-up-your-disk-encryption-set
+                      - text: with the encryption type set to
+                      - strong [ref=e639]: Encryption at-rest with a customer-managed key
+                      - text: .
+                  - listitem [ref=e640]:
+                    - paragraph [ref=e641]:
+                      - link "EAH" [ref=e642] [cursor=pointer]:
+                        - /url: https://learn.microsoft.com/en-in/azure/virtual-machines/disks-enable-host-based-encryption-portal?tabs=azure-powershell
+                      - text: enabled on Azure when using
+                      - strong [ref=e643]: Encryption at Host
+                      - text: .
+                  - listitem [ref=e644]:
+                    - paragraph [ref=e645]:
+                      - text: The Azure Key Vault must have the following
+                      - link "access policies" [ref=e646] [cursor=pointer]:
+                        - /url: https://learn.microsoft.com/en-us/azure/key-vault/general/assign-access-policy?tabs=azure-portal
+                      - text: "assigned to the disk encryption set that you want to use:"
+                    - list [ref=e647]:
+                      - listitem [ref=e648]:
+                        - text: "Key Management Operations:"
+                        - strong [ref=e649]: Get
+                      - listitem [ref=e650]:
+                        - text: "Cryptographic Operations:"
+                        - strong [ref=e651]: Unwrap Key
+                        - text: ","
+                        - strong [ref=e652]: Wrap Key
+                    - paragraph [ref=e653]: If you have designated a user-assigned managed identity to the disk encryption set, assign the same access policies to the user-assigned managed identity in the Azure Key Vault.
+                - heading "Enable Disk EncryptionDirect link to Enable Disk Encryption" [level=3] [ref=e654]:
+                  - text: Enable Disk Encryption
+                  - link "Direct link to Enable Disk Encryption" [ref=e655] [cursor=pointer]:
+                    - /url: "#enable-disk-encryption-1"
+                    - text: "#"
+                - paragraph [ref=e656]:
+                  - text: Use the following steps to enable disk encryption on an active cluster by modifying an
+                  - link "existing cluster profile" [ref=e657] [cursor=pointer]:
+                    - /url: /profiles/cluster-profiles/modify-cluster-profiles/
+                  - text: .
+                - generic [ref=e658]:
+                  - generic [ref=e659]:
+                    - img [ref=e661]
+                    - text: warning
+                  - paragraph [ref=e664]:
+                    - text: Performing these steps will cause a
+                    - link "full cluster repave" [ref=e665] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/node-pool/#repave-behavior-and-configuration
+                    - text: .
+                - list [ref=e666]:
+                  - listitem [ref=e667]:
+                    - paragraph [ref=e668]:
+                      - text: Log in to
+                      - link "Palette" [ref=e669] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e670]:
+                    - paragraph [ref=e671]: Ensure you are in the correct project scope.
+                  - listitem [ref=e672]:
+                    - paragraph [ref=e673]:
+                      - text: From the left main Menu, select
+                      - strong [ref=e674]: Profiles
+                      - text: . Locate and select the cluster profile to edit.
+                  - listitem [ref=e675]:
+                    - paragraph [ref=e676]:
+                      - text: Expand the version drop-down menu next to the cluster profile name, and select
+                      - strong [ref=e677]: Create new version
+                      - text: .
+                  - listitem [ref=e678]:
+                    - paragraph [ref=e679]:
+                      - text: Enter a new semantic
+                      - strong [ref=e680]: Version
+                      - text: for the cluster profile. Select
+                      - strong [ref=e681]: Confirm
+                      - text: .
+                  - listitem [ref=e682]:
+                    - paragraph [ref=e683]:
+                      - text: Select the PXK layer to view the
+                      - strong [ref=e684]: Edit Pack
+                      - text: drawer.
+                  - listitem [ref=e685]:
+                    - paragraph [ref=e686]:
+                      - text: On the
+                      - strong [ref=e687]: Edit Pack
+                      - text: drawer, below
+                      - strong [ref=e688]: Pack Details
+                      - text: ", select"
+                      - strong [ref=e689]: Values
+                      - text: ", and click the"
+                      - strong [ref=e690]: </>
+                      - text: button to display the YAML editor. Make the appropriate modifications based on your encryption method.
+                - generic [ref=e691]:
+                  - tablist [ref=e692]:
+                    - tab "SSE Only" [selected] [ref=e693] [cursor=pointer]
+                    - tab "SSE + EAH" [ref=e694] [cursor=pointer]
+                    - tab "EAH Only" [ref=e695] [cursor=pointer]
+                  - tabpanel [ref=e697]:
+                    - list [ref=e698]:
+                      - listitem [ref=e699]:
+                        - paragraph [ref=e700]:
+                          - text: On the right side of the editor, expand the
+                          - strong [ref=e701]: Presets
+                          - text: drop-down menu, and select
+                          - strong [ref=e702]: Enable Encryption Using Customer-Managed Key
+                          - text: to use CMK with SSE.
+                      - listitem [ref=e703]:
+                        - paragraph [ref=e704]: Scroll to the bottom of the YAML editor to view the additional configuration that was added.
+                        - generic [ref=e706]:
+                          - code [ref=e708]:
+                            - generic [ref=e709]: "cloud:"
+                            - generic [ref=e710]: "azure:"
+                            - generic [ref=e711]: "diskEncryptionSetID: \"\""
+                          - button "Copy code to clipboard" [ref=e713] [cursor=pointer]:
+                            - generic [ref=e714]:
+                              - img [ref=e715]
+                              - img [ref=e717]
+                      - listitem [ref=e719]:
+                        - paragraph [ref=e720]:
+                          - text: Fill in the
+                          - code [ref=e721]: diskEncryptionSetID
+                          - text: with the Resource ID URI of your disk encryption set.
+                        - generic [ref=e723]:
+                          - code [ref=e725]:
+                            - generic [ref=e726]: "cloud:"
+                            - generic [ref=e727]: "azure:"
+                            - generic [ref=e728]: "diskEncryptionSetID: \"/subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Compute/diskEncryptionSets/diskEncryptionSet\""
+                          - generic [ref=e729]:
+                            - button "Toggle word wrap" [ref=e730] [cursor=pointer]:
+                              - img [ref=e731]
+                            - button "Copy code to clipboard" [ref=e733] [cursor=pointer]:
+                              - generic [ref=e734]:
+                                - img [ref=e735]
+                                - img [ref=e737]
+                        - group [ref=e739]:
+                          - generic "How to find the Resource ID URI of your disk encryption set" [ref=e740] [cursor=pointer]
+                      - listitem [ref=e741]:
+                        - paragraph [ref=e742]:
+                          - text: Make any other necessary changes and select
+                          - strong [ref=e743]: Confirm updates > Save Changes
+                          - text: .
+                      - listitem [ref=e744]:
+                        - paragraph [ref=e745]:
+                          - text: From the left main menu, select
+                          - strong [ref=e746]: Clusters
+                          - text: .
+                      - listitem [ref=e747]:
+                        - paragraph [ref=e748]: Locate and select the cluster you want to update.
+                      - listitem [ref=e749]:
+                        - paragraph [ref=e750]:
+                          - text: On the
+                          - strong [ref=e751]: Profile
+                          - text: tab, expand the version drop-down menu, and under
+                          - strong [ref=e752]: Infrastructure Layers
+                          - text: ", select the new version of your cluster profile that has disk encryption enabled."
+                      - listitem [ref=e753]:
+                        - paragraph [ref=e754]:
+                          - strong [ref=e755]: Review & Save
+                          - text: your changes, then select
+                          - strong [ref=e756]: Review changes in Editor
+                          - text: . If no additional changes are needed,
+                          - strong [ref=e757]: Update
+                          - text: your cluster.
+                - paragraph [ref=e758]: Your cluster will now update and a full cluster repave will occur. Wait until the update has completed before confirming that disk encryption is enabled.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e759]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e760] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e761]: Follow these steps to confirm that encryption is enabled on your Azure VM disks.
+                - generic [ref=e762]:
+                  - tablist [ref=e763]:
+                    - tab "Validating SSE" [selected] [ref=e764] [cursor=pointer]
+                    - tab "Validating EAH" [ref=e765] [cursor=pointer]
+                  - tabpanel [ref=e767]:
+                    - list [ref=e768]:
+                      - listitem [ref=e769]:
+                        - paragraph [ref=e770]:
+                          - text: Log in to the
+                          - link "Azure Portal" [ref=e771] [cursor=pointer]:
+                            - /url: https://portal.azure.com/
+                          - text: .
+                      - listitem [ref=e772]:
+                        - paragraph [ref=e773]:
+                          - text: Use the search bar to locate and select the
+                          - strong [ref=e774]: Disks
+                          - text: resource.
+                      - listitem [ref=e775]:
+                        - paragraph [ref=e776]:
+                          - text: Locate and select a disk in your cluster using the search filters provided. One way to locate the applicable disks is to search for the cluster name, as the cluster name is prepended to all relevant resources (for example,
+                          - code [ref=e777]: <cluster-name>-worker-pool-1-9d40-8rcx9_OSDisk
+                          - text: and
+                          - code [ref=e778]: <cluster-name>-cp-36298-7gqb9_OSDisk
+                          - text: ).
+                      - listitem [ref=e779]:
+                        - paragraph [ref=e780]:
+                          - text: On the disk
+                          - strong [ref=e781]: Overview
+                          - text: page, select the
+                          - strong [ref=e782]: Properties
+                          - text: tab and scroll down to view the
+                          - strong [ref=e783]: Encryption
+                          - text: section. Ensure that the
+                          - strong [ref=e784]: Encryption type
+                          - text: shows
+                          - strong [ref=e785]: Platform-managed key
+                          - text: .
+                      - listitem [ref=e786]:
+                        - paragraph [ref=e787]:
+                          - text: Scroll down to view the
+                          - strong [ref=e788]: Properties
+                          - text: tab and check that the
+                          - strong [ref=e789]: Encryption
+                          - text: section shows
+                          - strong [ref=e790]: Customer-managed key
+                          - text: for
+                          - strong [ref=e791]: Encryption type
+                          - text: .
+                      - listitem [ref=e792]:
+                        - paragraph [ref=e793]: Repeat steps 4 and 5 for each disk in your cluster.
+                - heading "Disable Disk Encryption on an Active ClusterDirect link to Disable Disk Encryption on an Active Cluster" [level=2] [ref=e794]:
+                  - text: Disable Disk Encryption on an Active Cluster
+                  - link "Direct link to Disable Disk Encryption on an Active Cluster" [ref=e795] [cursor=pointer]:
+                    - /url: "#disable-disk-encryption-on-an-active-cluster"
+                    - text: "#"
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e796]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e797] [cursor=pointer]:
+                    - /url: "#prerequisites-2"
+                    - text: "#"
+                - list [ref=e798]:
+                  - listitem [ref=e799]:
+                    - text: An Azure user account with access to view disks in your resource group where the cluster resources are created (for example,
+                    - strong [ref=e800]: Reader
+                    - text: role).
+                - heading "Disable Disk EncryptionDirect link to Disable Disk Encryption" [level=3] [ref=e801]:
+                  - text: Disable Disk Encryption
+                  - link "Direct link to Disable Disk Encryption" [ref=e802] [cursor=pointer]:
+                    - /url: "#disable-disk-encryption"
+                    - text: "#"
+                - paragraph [ref=e803]:
+                  - text: Use the following steps to disable disk encryption on an active cluster by modifying an
+                  - link "existing cluster profile" [ref=e804] [cursor=pointer]:
+                    - /url: /profiles/cluster-profiles/modify-cluster-profiles/
+                  - text: . The process to disable disk encryption is the same regardless of the encryption method used.
+                - generic [ref=e805]:
+                  - generic [ref=e806]:
+                    - img [ref=e808]
+                    - text: warning
+                  - paragraph [ref=e811]:
+                    - text: Performing these steps will cause a
+                    - link "full cluster repave" [ref=e812] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/node-pool/#repave-behavior-and-configuration
+                    - text: .
+                - list [ref=e813]:
+                  - listitem [ref=e814]:
+                    - paragraph [ref=e815]:
+                      - text: Log in to
+                      - link "Palette" [ref=e816] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e817]:
+                    - paragraph [ref=e818]: Ensure you are in the correct project scope.
+                  - listitem [ref=e819]:
+                    - paragraph [ref=e820]:
+                      - text: From the left main Menu, select
+                      - strong [ref=e821]: Profiles
+                      - text: . Locate and select the cluster profile to edit.
+                  - listitem [ref=e822]:
+                    - paragraph [ref=e823]:
+                      - text: Expand the version drop-down menu next to the cluster profile name, and select
+                      - strong [ref=e824]: Create new version
+                      - text: .
+                  - listitem [ref=e825]:
+                    - paragraph [ref=e826]:
+                      - text: Fill the
+                      - strong [ref=e827]: Version
+                      - text: field with a new version number.
+                  - listitem [ref=e828]:
+                    - paragraph [ref=e829]:
+                      - text: Click
+                      - strong [ref=e830]: Confirm
+                      - text: .
+                  - listitem [ref=e831]:
+                    - paragraph [ref=e832]:
+                      - text: Select the Kubernetes layer to view the
+                      - strong [ref=e833]: Edit Pack
+                      - text: drawer.
+                  - listitem [ref=e834]:
+                    - paragraph [ref=e835]:
+                      - text: In
+                      - strong [ref=e836]: Values
+                      - text: ", click the"
+                      - strong [ref=e837]: </>
+                      - text: button to show the YAML editor.
+                - generic [ref=e838]:
+                  - tablist [ref=e839]:
+                    - tab "SSE Only" [selected] [ref=e840] [cursor=pointer]
+                    - tab "SSE + EAH" [ref=e841] [cursor=pointer]
+                    - tab "EAH Only" [ref=e842] [cursor=pointer]
+                  - tabpanel [ref=e844]:
+                    - list [ref=e845]:
+                      - listitem [ref=e846]:
+                        - paragraph [ref=e847]:
+                          - text: On the right-hand side, click the
+                          - strong [ref=e848]: Presets drop-down Menu
+                          - text: ", and select the"
+                          - strong [ref=e849]: Disable Encryption Using Customer-Managed Key
+                          - text: option.
+                      - listitem [ref=e850]:
+                        - paragraph [ref=e851]:
+                          - text: Click
+                          - strong [ref=e852]: Confirm updates
+                          - text: .
+                      - listitem [ref=e853]:
+                        - paragraph [ref=e854]:
+                          - text: Click
+                          - strong [ref=e855]: Save Changes
+                          - text: .
+                      - listitem [ref=e856]:
+                        - paragraph [ref=e857]:
+                          - text: From the left
+                          - strong [ref=e858]: Main Menu
+                          - text: ", select"
+                          - strong [ref=e859]: Clusters
+                          - text: .
+                      - listitem [ref=e860]:
+                        - paragraph [ref=e861]: Find the cluster that you want to update and click on it.
+                      - listitem [ref=e862]:
+                        - paragraph [ref=e863]:
+                          - text: Click the
+                          - strong [ref=e864]: Profile
+                          - text: tab.
+                      - listitem [ref=e865]:
+                        - paragraph [ref=e866]:
+                          - text: Click the version
+                          - strong [ref=e867]: drop-down Menu
+                          - text: in
+                          - strong [ref=e868]: Infrastructure Layers
+                          - text: and select the version that has disk encryption disabled.
+                      - listitem [ref=e869]:
+                        - paragraph [ref=e870]:
+                          - text: Click
+                          - strong [ref=e871]: Review & Save
+                          - text: ", then click"
+                          - strong [ref=e872]: Review changes in Editor
+                          - text: in the Changes Summary box.
+                      - listitem [ref=e873]:
+                        - paragraph [ref=e874]:
+                          - text: Review the changes and click
+                          - strong [ref=e875]: Update
+                          - text: .
+                - paragraph [ref=e876]: Your cluster will now update and a full cluster repave will occur. Wait until the update has completed before confirming that disk encryption is disabled.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e877]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e878] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - paragraph [ref=e879]: Follow these steps to validate the disablement of customer-managed key encryption on your Azure VM disks.
+                - generic [ref=e880]:
+                  - tablist [ref=e881]:
+                    - tab "Validating SSE" [selected] [ref=e882] [cursor=pointer]
+                    - tab "Validating EAH" [ref=e883] [cursor=pointer]
+                  - tabpanel [ref=e885]:
+                    - list [ref=e886]:
+                      - listitem [ref=e887]:
+                        - paragraph [ref=e888]:
+                          - text: Log in to the
+                          - link "Azure Portal" [ref=e889] [cursor=pointer]:
+                            - /url: https://portal.azure.com/
+                          - text: .
+                      - listitem [ref=e890]:
+                        - paragraph [ref=e891]:
+                          - text: Use the search bar to locate and select the
+                          - strong [ref=e892]: Disks
+                          - text: resource.
+                      - listitem [ref=e893]:
+                        - paragraph [ref=e894]:
+                          - text: Locate and select a disk in your cluster using the search filters provided. One way to locate the applicable disks is to search for the cluster name, as the cluster name is prepended to all relevant resources (for example,
+                          - code [ref=e895]: <cluster-name>-worker-pool-1-9d40-8rcx9_OSDisk
+                          - text: and
+                          - code [ref=e896]: <cluster-name>-cp-36298-7gqb9_OSDisk
+                          - text: ).
+                      - listitem [ref=e897]:
+                        - paragraph [ref=e898]:
+                          - text: On the disk
+                          - strong [ref=e899]: Overview
+                          - text: page, select the
+                          - strong [ref=e900]: Properties
+                          - text: tab and scroll down to view the
+                          - strong [ref=e901]: Encryption
+                          - text: section. Ensure that the
+                          - strong [ref=e902]: Encryption type
+                          - text: shows
+                          - strong [ref=e903]: Platform-managed key
+                          - text: .
+                      - listitem [ref=e904]:
+                        - paragraph [ref=e905]:
+                          - text: Scroll down to view the
+                          - strong [ref=e906]: Properties
+                          - text: tab and check that the
+                          - strong [ref=e907]: Encryption
+                          - text: section shows
+                          - strong [ref=e908]: Customer-managed key
+                          - text: for
+                          - strong [ref=e909]: Encryption type
+                          - text: .
+                      - listitem [ref=e910]:
+                        - paragraph [ref=e911]: Repeat steps 4 and 5 for each disk in your cluster.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e912]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e913] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e914]:
+                  - listitem [ref=e915]:
+                    - paragraph [ref=e916]:
+                      - link "Encryption at host" [ref=e917] [cursor=pointer]:
+                        - /url: https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption?source=recommendations#encryption-at-host---end-to-end-encryption-for-your-vm-data
+                  - listitem [ref=e918]:
+                    - paragraph [ref=e919]:
+                      - link "Customer-managed keys" [ref=e920] [cursor=pointer]:
+                        - /url: https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#customer-managed-keys
+                  - listitem [ref=e921]:
+                    - paragraph [ref=e922]:
+                      - link "Create an Azure Key Vault and disk encryption set" [ref=e923] [cursor=pointer]:
+                        - /url: https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-host-based-encryption-portal?tabs=azure-powershell#create-an-azure-key-vault-and-disk-encryption-set
+                  - listitem [ref=e924]:
+                    - paragraph [ref=e925]:
+                      - link "Azure Disk Encryption and auto-rotation" [ref=e926] [cursor=pointer]:
+                        - /url: https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/disk-encryption-key-vault?wt.mc_id=knwlserapi_inproduct_azportal&tabs=azure-portal#azure-disk-encryption-and-auto-rotation
+              - generic [ref=e927]:
+                - generic [ref=e929]:
+                  - text: "Tags:"
+                  - list [ref=e930]:
+                    - listitem [ref=e931]:
+                      - link "public cloud" [ref=e932] [cursor=pointer]:
+                        - /url: /tags/public-cloud/
+                    - listitem [ref=e933]:
+                      - link "azure" [ref=e934] [cursor=pointer]:
+                        - /url: /tags/azure/
+                    - listitem [ref=e935]:
+                      - link "encryption" [ref=e936] [cursor=pointer]:
+                        - /url: /tags/encryption/
+                    - listitem [ref=e937]:
+                      - link "security" [ref=e938] [cursor=pointer]:
+                        - /url: /tags/security/
+                    - listitem [ref=e939]:
+                      - link "disk" [ref=e940] [cursor=pointer]:
+                        - /url: /tags/disk/
+                - link "Edit this page" [ref=e943] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/public-cloud/azure/azure-disk-storage-sse.md
+                  - img [ref=e944]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e948]:
+              - link "Previous « Register and Manage Azure Cloud Account" [ref=e949] [cursor=pointer]:
+                - /url: /clusters/public-cloud/azure/azure-cloud/
+                - generic [ref=e950]: Previous
+                - generic [ref=e951]: « Register and Manage Azure Cloud Account
+              - link "Next Create and Manage Azure IaaS Cluster »" [ref=e952] [cursor=pointer]:
+                - /url: /clusters/public-cloud/azure/create-azure-cluster/
+                - generic [ref=e953]: Next
+                - generic [ref=e954]: Create and Manage Azure IaaS Cluster »
+          - list [ref=e957]:
+            - listitem [ref=e958]:
+              - link "Limitations" [ref=e959] [cursor=pointer]:
+                - /url: "#limitations"
+            - listitem [ref=e960]:
+              - link "New Cluster Profile" [ref=e961] [cursor=pointer]:
+                - /url: "#new-cluster-profile"
+              - list [ref=e962]:
+                - listitem [ref=e963]:
+                  - link "Prerequisites" [ref=e964] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e965]:
+                  - link "Enable Disk Encryption" [ref=e966] [cursor=pointer]:
+                    - /url: "#enable-disk-encryption"
+                - listitem [ref=e967]:
+                  - link "Validate" [ref=e968] [cursor=pointer]:
+                    - /url: "#validate-new-cluster-profile"
+            - listitem [ref=e969]:
+              - link "Active Cluster" [ref=e970] [cursor=pointer]:
+                - /url: "#active-cluster"
+              - list [ref=e971]:
+                - listitem [ref=e972]:
+                  - link "Prerequisites" [ref=e973] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e974]:
+                  - link "Enable Disk Encryption" [ref=e975] [cursor=pointer]:
+                    - /url: "#enable-disk-encryption-1"
+                - listitem [ref=e976]:
+                  - link "Validate" [ref=e977] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e978]:
+              - link "Disable Disk Encryption on an Active Cluster" [ref=e979] [cursor=pointer]:
+                - /url: "#disable-disk-encryption-on-an-active-cluster"
+              - list [ref=e980]:
+                - listitem [ref=e981]:
+                  - link "Prerequisites" [ref=e982] [cursor=pointer]:
+                    - /url: "#prerequisites-2"
+                - listitem [ref=e983]:
+                  - link "Disable Disk Encryption" [ref=e984] [cursor=pointer]:
+                    - /url: "#disable-disk-encryption"
+                - listitem [ref=e985]:
+                  - link "Validate" [ref=e986] [cursor=pointer]:
+                    - /url: "#validate-1"
+            - listitem [ref=e987]:
+              - link "Resources" [ref=e988] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e989] [cursor=pointer]:
+    - generic [ref=e992]:
+      - img "Project Logo" [ref=e993]
+      - paragraph [ref=e994]: Ask AI
+```

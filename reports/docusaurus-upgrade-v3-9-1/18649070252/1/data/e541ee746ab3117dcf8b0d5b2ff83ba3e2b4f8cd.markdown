@@ -1,0 +1,971 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [expanded] [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+                - list [ref=e96]:
+                  - listitem [ref=e97]:
+                    - generic [ref=e98]:
+                      - link "Agent Mode" [expanded] [ref=e99] [cursor=pointer]:
+                        - /url: /deployment-modes/agent-mode/
+                      - button "Toggle the collapsible sidebar category 'Agent Mode'" [ref=e100] [cursor=pointer]
+                    - list [ref=e101]:
+                      - listitem [ref=e102]:
+                        - link "Install Palette Agent" [ref=e103] [cursor=pointer]:
+                          - /url: /deployment-modes/agent-mode/install-agent-host/
+                      - listitem [ref=e104]:
+                        - link "Configure networkd to Prepare Host for Overlay Network" [ref=e105] [cursor=pointer]:
+                          - /url: /deployment-modes/agent-mode/overlay-preparation/
+                      - listitem [ref=e106]:
+                        - link "Architecture" [ref=e107] [cursor=pointer]:
+                          - /url: /deployment-modes/agent-mode/architecture/
+                      - listitem [ref=e108]:
+                        - generic [ref=e109]:
+                          - link "Manage Hosts in Agent Mode" [ref=e110] [cursor=pointer]:
+                            - /url: /deployment-modes/agent-mode/manage-agent/
+                          - button "Toggle the collapsible sidebar category 'Manage Hosts in Agent Mode'" [ref=e111] [cursor=pointer]
+                  - listitem [ref=e112]:
+                    - generic [ref=e113]:
+                      - link "Appliance Mode" [ref=e114] [cursor=pointer]:
+                        - /url: /deployment-modes/appliance-mode/
+                      - button "Toggle the collapsible sidebar category 'Appliance Mode'" [ref=e115] [cursor=pointer]
+                  - listitem [ref=e116]:
+                    - link "Controller Mode" [ref=e117] [cursor=pointer]:
+                      - /url: /deployment-modes/controller-mode/
+              - listitem [ref=e118]:
+                - generic [ref=e119]:
+                  - link "Clusters" [ref=e120] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e122]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e128] [cursor=pointer]
+              - listitem [ref=e129]:
+                - generic [ref=e130]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e131] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e133]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e135] [cursor=pointer]
+              - listitem [ref=e136]:
+                - generic [ref=e137]:
+                  - link "Palette Dev Engine" [ref=e138] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e140]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e142] [cursor=pointer]
+              - listitem [ref=e143]:
+                - generic [ref=e144]:
+                  - link "Virtual Machine Orchestrator" [ref=e145] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e147]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e149] [cursor=pointer]
+              - listitem [ref=e150]:
+                - generic [ref=e151]:
+                  - link "Workspaces" [ref=e152] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e154]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e156] [cursor=pointer]
+              - listitem [ref=e157]:
+                - generic [ref=e158]:
+                  - link "Packs List" [ref=e159] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e161]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e163] [cursor=pointer]
+              - listitem [ref=e164]:
+                - generic [ref=e165]:
+                  - link "User & Role Management" [ref=e166] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e168]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e170] [cursor=pointer]
+              - listitem [ref=e171]:
+                - generic [ref=e172]:
+                  - link "Registries and Packs" [ref=e173] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e175]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e177] [cursor=pointer]
+              - listitem [ref=e178]:
+                - generic [ref=e179]:
+                  - link "Security" [ref=e180] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e182]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e184] [cursor=pointer]
+              - listitem [ref=e185]:
+                - generic [ref=e186]:
+                  - link "Audit Logs" [ref=e187] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e189]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e191] [cursor=pointer]
+              - listitem [ref=e192]:
+                - generic [ref=e193]:
+                  - link "Self-Hosted Palette" [ref=e194] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e196]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e198] [cursor=pointer]
+              - listitem [ref=e199]:
+                - generic [ref=e200]:
+                  - link "Palette VerteX" [ref=e201] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e203]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e205] [cursor=pointer]
+              - listitem [ref=e206]:
+                - generic [ref=e207]:
+                  - link "Tenant Administration" [ref=e208] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e210]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e212] [cursor=pointer]
+              - listitem [ref=e213]:
+                - generic [ref=e214]:
+                  - link "Automation" [ref=e215] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e217]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e219] [cursor=pointer]
+              - listitem [ref=e220]:
+                - generic [ref=e221]:
+                  - link "Troubleshooting" [ref=e222] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e224]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e226] [cursor=pointer]
+              - listitem [ref=e227]:
+                - link "Glossary" [ref=e228] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e230]
+                  - text: Glossary
+              - listitem [ref=e232]:
+                - generic [ref=e233]:
+                  - link "Compliance & Legal" [ref=e234] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e236]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e238] [cursor=pointer]
+              - listitem [ref=e239]:
+                - button "Privacy Settings" [ref=e240] [cursor=pointer]:
+                  - img [ref=e241]
+                  - text: Privacy Settings
+      - main [ref=e243]:
+        - generic [ref=e245]:
+          - generic [ref=e247]:
+            - article [ref=e248]:
+              - navigation "Breadcrumbs" [ref=e249]:
+                - list [ref=e250]:
+                  - listitem [ref=e251]:
+                    - link "Home page" [ref=e252] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e253]
+                  - listitem [ref=e255]:
+                    - link "Deployment Modes" [ref=e256] [cursor=pointer]:
+                      - /url: /deployment-modes/
+                  - listitem [ref=e257]:
+                    - link "Agent Mode" [ref=e258] [cursor=pointer]:
+                      - /url: /deployment-modes/agent-mode/
+                  - listitem [ref=e259]:
+                    - generic [ref=e260]: Install Palette Agent
+              - generic [ref=e261]:
+                - heading "Install Palette Agent" [level=1] [ref=e263]
+                - paragraph [ref=e264]:
+                  - text: Agent mode allows you to bring your own host, regardless of its architecture and Operating System (OS), to be managed by Palette and to operate as nodes in your Kubernetes clusters. For example, you can use an
+                  - link "AWS EC2 instance" [ref=e265] [cursor=pointer]:
+                    - /url: https://aws.amazon.com/ec2/
+                  - text: ", a"
+                  - link "Raspberry Pi" [ref=e266] [cursor=pointer]:
+                    - /url: https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.raspberrypi.com/&ved=2ahUKEwi-38Gt__SIAxU2CnkGHeU6Ha8QFnoECAkQAQ&usg=AOvVaw12ldjgQls5EV3KbUmJD0nz
+                  - text: ", a"
+                  - link "VMware vSphere virtual machine" [ref=e267] [cursor=pointer]:
+                    - /url: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-F559CE9C-2D8F-4F69-A846-56A1F4FC8529.html
+                  - text: ", and more, as long as they meet the minimum hardware requirements."
+                - paragraph [ref=e268]: This page guides you through the process of installing the Palette agent on your host. You will learn how to create the user data file to configure your host, install the agent, and verify that your host was successfully registered with Palette. You will then create a cluster profile and use the registered host to deploy a cluster.
+                - heading "LimitationsDirect link to Limitations" [level=2] [ref=e269]:
+                  - text: Limitations
+                  - link "Direct link to Limitations" [ref=e270] [cursor=pointer]:
+                    - /url: "#limitations"
+                    - text: "#"
+                - list [ref=e271]:
+                  - listitem [ref=e272]:
+                    - paragraph [ref=e273]: The following table presents the verified combinations of host architecture and cluster profile layers.
+                    - table [ref=e274]:
+                      - rowgroup [ref=e275]:
+                        - row "Host Architecture OS Kubernetes Container Network Interface (CNI) Verified" [ref=e276]:
+                          - cell "Host Architecture" [ref=e277]
+                          - cell "OS" [ref=e278]
+                          - cell "Kubernetes" [ref=e279]
+                          - cell "Container Network Interface (CNI)" [ref=e280]
+                          - cell "Verified" [ref=e281]
+                      - rowgroup [ref=e282]:
+                        - row "AMD64 Ubuntu Palette eXtended Kubernetes - Edge (PXK-E) Calico ✅" [ref=e283]:
+                          - cell "AMD64" [ref=e284]
+                          - cell "Ubuntu" [ref=e285]
+                          - cell "Palette eXtended Kubernetes - Edge (PXK-E)" [ref=e286]
+                          - cell "Calico" [ref=e287]
+                          - cell "✅" [ref=e288]
+                        - row "AMD64 Ubuntu K3s Flannel ✅" [ref=e289]:
+                          - cell "AMD64" [ref=e290]
+                          - cell "Ubuntu" [ref=e291]
+                          - cell "K3s" [ref=e292]
+                          - cell "Flannel" [ref=e293]
+                          - cell "✅" [ref=e294]
+                        - row "AMD64 Rocky Linux 8.10 (Green Obsidian) Palette eXtended Kubernetes - Edge (PXK-E) Cilium ✅" [ref=e295]:
+                          - cell "AMD64" [ref=e296]
+                          - cell "Rocky Linux 8.10 (Green Obsidian)" [ref=e297]
+                          - cell "Palette eXtended Kubernetes - Edge (PXK-E)" [ref=e298]
+                          - cell "Cilium" [ref=e299]
+                          - cell "✅" [ref=e300]
+                  - listitem [ref=e301]:
+                    - paragraph [ref=e302]: Clusters with Flannel CNI are not verified for local management mode deployments.
+                  - listitem [ref=e303]:
+                    - paragraph [ref=e304]:
+                      - text: Agent mode is only supported on Linux distributions that have
+                      - link "systemd" [ref=e305] [cursor=pointer]:
+                        - /url: https://www.freedesktop.org/software/systemd/man/latest/systemd.html
+                        - code [ref=e306]: systemd
+                      - text: installed and available.
+                  - listitem [ref=e307]:
+                    - paragraph [ref=e308]: The FIPS-compliant version of Agent Mode is only available for Red Hat Enterprise Linux (RHEL) and Rocky Linux 8 systems.
+                  - listitem [ref=e309]:
+                    - paragraph [ref=e310]: Palette versions prior to 4.6.32 do not support local management mode. Even if you build an ISO using Palette agent and CanvOS version 4.6.21 or later, which support local management mode, the agent may be downgraded if your cluster uses a content bundle built against a Palette instance older than 4.6.32. This results in deployment failure.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e311]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e312] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e313]:
+                  - listitem [ref=e314]:
+                    - paragraph [ref=e315]:
+                      - text: A physical or virtual host with SSH access, access to the internet, and connection to Palette. For local management mode deployments, the host does not need to have a connection to Palette and may have limited access to the internet. This guide uses an
+                      - strong [ref=e316]: Ubuntu 22.04
+                      - text: virtual machine deployed in VMware vSphere as an example.
+                  - listitem [ref=e317]:
+                    - paragraph [ref=e318]: "The host must meet the following minimum hardware requirements:"
+                    - list [ref=e319]:
+                      - listitem [ref=e320]: 2 CPU
+                      - listitem [ref=e321]: 8 GB memory
+                      - listitem [ref=e322]: 100 GB storage
+                  - listitem [ref=e323]:
+                    - paragraph [ref=e324]:
+                      - text: A Palette tenant registration token. Refer to the
+                      - link "Create a Registration Token" [ref=e325] [cursor=pointer]:
+                        - /url: /clusters/edge/site-deployment/site-installation/create-registration-token/
+                      - text: guide for instructions on how to create a token.
+                  - listitem [ref=e326]:
+                    - paragraph [ref=e327]: One IP address is required for the cluster's Virtual IP (VIP) address.
+                  - listitem [ref=e328]:
+                    - paragraph [ref=e329]:
+                      - text: Ensure that the host has
+                      - code [ref=e330]: Bash
+                      - text: configured as the default shell.
+                  - listitem [ref=e331]:
+                    - paragraph [ref=e332]: "Ensure the following software is installed and available:"
+                    - list [ref=e333]:
+                      - listitem [ref=e334]:
+                        - link "bash" [ref=e335] [cursor=pointer]:
+                          - /url: https://www.gnu.org/software/bash/
+                      - listitem [ref=e336]:
+                        - link "jq" [ref=e337] [cursor=pointer]:
+                          - /url: https://jqlang.github.io/jq/download/
+                      - listitem [ref=e338]:
+                        - link "Zstandard" [ref=e339] [cursor=pointer]:
+                          - /url: https://facebook.github.io/zstd/
+                      - listitem [ref=e340]:
+                        - link "rsync" [ref=e341] [cursor=pointer]:
+                          - /url: https://github.com/RsyncProject/rsync
+                      - listitem [ref=e342]:
+                        - link "systemd" [ref=e343] [cursor=pointer]:
+                          - /url: https://systemd.io/
+                      - listitem [ref=e344]:
+                        - link "systemd-timesyncd" [ref=e345] [cursor=pointer]:
+                          - /url: https://www.freedesktop.org/software/systemd/man/latest/systemd-timesyncd.service.html
+                        - text: "- Required if you want Palette to manage Network Time Protocol (NTP)."
+                      - listitem [ref=e346]:
+                        - link "systemd-resolved" [ref=e347] [cursor=pointer]:
+                          - /url: https://www.freedesktop.org/software/systemd/man/latest/systemd-resolved.service.html
+                        - text: "- Required if you want Palette to manage Domain Name System (DNS) or if you plan to use overlay networks for clusters deployed on your Edge host. Refer to our"
+                        - link "Configure networkd to Prepare Host for Overlay Network" [ref=e348] [cursor=pointer]:
+                          - /url: /deployment-modes/agent-mode/overlay-preparation/
+                        - text: guide for information on installing and configuring
+                        - code [ref=e349]: systemd-resolved
+                        - text: .
+                      - listitem [ref=e350]:
+                        - link "systemd-networkd" [ref=e351] [cursor=pointer]:
+                          - /url: https://www.freedesktop.org/software/systemd/man/latest/systemd-networkd.html
+                        - text: "- Required if you want Palette to manage static IP addresses or if you plan to use overlay networks for clusters deployed on your Edge host. Refer to our"
+                        - link "Configure networkd to Prepare Host for Overlay Network" [ref=e352] [cursor=pointer]:
+                          - /url: /deployment-modes/agent-mode/overlay-preparation/
+                        - text: guide for information on installing and configuring
+                        - code [ref=e353]: systemd-networkd
+                        - text: .
+                      - listitem [ref=e354]:
+                        - link "conntrack" [ref=e355] [cursor=pointer]:
+                          - /url: https://conntrack-tools.netfilter.org/downloads.html
+                        - text: "- Required for clusters that use PXK-E as its Kubernetes layer."
+                      - listitem [ref=e356]:
+                        - link "iptables" [ref=e357] [cursor=pointer]:
+                          - /url: https://linux.die.net/man/8/iptables
+                      - listitem [ref=e358]:
+                        - link "rsyslog" [ref=e359] [cursor=pointer]:
+                          - /url: https://github.com/rsyslog/rsyslog
+                        - text: "- Required for audit logs."
+                      - listitem [ref=e360]:
+                        - text: (Local management mode only)
+                        - link "Palette Edge CLI" [ref=e361] [cursor=pointer]:
+                          - /url: /downloads/cli-tools/#palette-edge-cli
+                    - paragraph [ref=e362]: "If you are using Ubuntu or any OS that uses apt or apt-get for package management, you can issue the following command to install all dependencies for installation (not including the Palette Edge CLI) with the following command:"
+                    - generic [ref=e364]:
+                      - code [ref=e366]:
+                        - generic [ref=e367]: sudo apt-get update && sudo apt-get install -y bash jq zstd rsync systemd-timesyncd conntrack iptables rsyslog --no-install-recommends
+                      - generic [ref=e368]:
+                        - button "Toggle word wrap" [ref=e369] [cursor=pointer]:
+                          - img [ref=e370]
+                        - button "Copy code to clipboard" [ref=e372] [cursor=pointer]:
+                          - generic [ref=e373]:
+                            - img [ref=e374]
+                            - img [ref=e376]
+                    - generic [ref=e378]:
+                      - generic [ref=e379]:
+                        - img [ref=e381]
+                        - text: warning
+                      - paragraph [ref=e384]: Avoid installing Docker on the host where you want to install the agent. Docker is a heavyweight tool that could interfere with the Palette agent.
+                  - listitem [ref=e385]:
+                    - paragraph [ref=e386]:
+                      - text: If you plan on creating clusters that need to enable network overlay, consider adding specific user data blocks to install and configure the necessary network prerequisites. Refer to
+                      - link "Configure networkd to Prepare Host for Overlay Network" [ref=e387] [cursor=pointer]:
+                        - /url: /deployment-modes/agent-mode/overlay-preparation/
+                      - text: for more information.
+                  - listitem [ref=e388]:
+                    - paragraph [ref=e389]: If installing the FIPS version of Agent Mode on a Rocky Linux edge host, you must configure your SELinux policies to grant rsync the required host permissions and ensure you enable cgroup V2.
+                    - paragraph [ref=e390]:
+                      - text: If you are using Cilium and have
+                      - code [ref=e391]: firewalld
+                      - text: enabled, you must also configure the appropriate
+                      - code [ref=e392]: firewalld
+                      - text: rules. Follow the process below to apply the necessary configurations before installing Agent Mode.
+                    - group [ref=e393]:
+                      - generic "Rocky Linux 8 Configurations" [ref=e394] [cursor=pointer]
+                      - text: "# # #"
+                - heading "Install Palette AgentDirect link to Install Palette Agent" [level=2] [ref=e395]:
+                  - text: Install Palette Agent
+                  - link "Direct link to Install Palette Agent" [ref=e396] [cursor=pointer]:
+                    - /url: "#install-palette-agent"
+                    - text: "#"
+                - generic [ref=e397]:
+                  - tablist [ref=e398]:
+                    - tab "Central Management Mode" [selected] [ref=e399] [cursor=pointer]
+                    - tab "Local Management Mode" [ref=e400] [cursor=pointer]
+                  - tabpanel [ref=e402]:
+                    - list [ref=e403]:
+                      - listitem [ref=e404]:
+                        - paragraph [ref=e405]:
+                          - text: In your terminal, use the following command to SSH into the host. Replace
+                          - code [ref=e406]: </path/to/private/key>
+                          - text: with the path to your private SSH key and
+                          - code [ref=e407]: <host-ip-or-domain>
+                          - text: with the host's IP address or hostname.
+                        - generic [ref=e409]:
+                          - code [ref=e411]:
+                            - generic [ref=e412]: ssh -i </path/to/private/key> ubuntu@<host-ip-or-domain>
+                          - button "Copy code to clipboard" [ref=e414] [cursor=pointer]:
+                            - generic [ref=e415]:
+                              - img [ref=e416]
+                              - img [ref=e418]
+                      - listitem [ref=e420]:
+                        - paragraph [ref=e421]:
+                          - text: Export your Palette registration token. Replace
+                          - code [ref=e422]: <your-palette-registration-token>
+                          - text: with your token.
+                        - generic [ref=e424]:
+                          - code [ref=e426]:
+                            - generic [ref=e427]: export TOKEN=<your-palette-registration-token>
+                          - button "Copy code to clipboard" [ref=e429] [cursor=pointer]:
+                            - generic [ref=e430]:
+                              - img [ref=e431]
+                              - img [ref=e433]
+                      - listitem [ref=e435]:
+                        - paragraph [ref=e436]: (Optional) If you are not installing the agent on a host that accesses the internet via a proxy, skip this step.
+                        - paragraph [ref=e437]:
+                          - text: If you are installing the agent on a host that accesses the internet via a network proxy, export the proxy configurations in your current terminal session. We recommend exporting the variables both in uppercase and lowercase to ensure compatibility. Replace
+                          - code [ref=e438]: <httpProxyAddress>
+                          - text: and
+                          - code [ref=e439]: <httpsProxyAddress>
+                          - text: with the address and port to your HTTP and HTTPS proxy servers, respectively.
+                        - generic [ref=e441]:
+                          - code [ref=e443]:
+                            - generic [ref=e444]: export http_proxy=<httpProxyAddress>
+                            - generic [ref=e445]: export https_proxy=<httpsProxyAddress>
+                            - generic [ref=e446]: export HTTP_PROXY=<httpProxyAddress>
+                            - generic [ref=e447]: export HTTPS_PROXY=<httpsProxyAddress>
+                          - button "Copy code to clipboard" [ref=e449] [cursor=pointer]:
+                            - generic [ref=e450]:
+                              - img [ref=e451]
+                              - img [ref=e453]
+                      - listitem [ref=e455]:
+                        - paragraph [ref=e456]:
+                          - text: Issue the command below to create the
+                          - strong [ref=e457]: user-data
+                          - text: file and configure your host declaratively.
+                        - generic [ref=e458]:
+                          - generic [ref=e459]:
+                            - img [ref=e461]
+                            - text: info
+                          - generic [ref=e463]:
+                            - paragraph [ref=e464]:
+                              - text: If your host needs a proxy to access the internet, you need to provide the proxy configurations in the user data as well. For more information, refer to
+                              - link "Site Network Parameters" [ref=e465] [cursor=pointer]:
+                                - /url: /clusters/edge/edge-configuration/installer-reference/#site-network-parameters
+                              - text: .
+                            - paragraph [ref=e466]:
+                              - text: Alternatively, you can install the agent first and configure proxy in Local UI. For more information, refer to
+                              - link "Configure HTTP Proxy" [ref=e467] [cursor=pointer]:
+                                - /url: /clusters/edge/local-ui/host-management/configure-proxy/
+                              - text: .
+                        - paragraph [ref=e468]:
+                          - text: The following configuration includes a Palette registration token and the default Palette endpoint, specifies a Palette project, and sets up the
+                          - code [ref=e469]: kairos
+                          - text: "user. It also specifies credentials for private external registries as well as registry mapping rules. Note the following:"
+                        - list [ref=e470]:
+                          - listitem [ref=e471]:
+                            - paragraph [ref=e472]:
+                              - text: The host will not shut down and will instead reboot after the agent is installed, with
+                              - link "kube-vip" [ref=e473] [cursor=pointer]:
+                                - /url: /clusters/edge/networking/kubevip/
+                              - text: enabled, as this is required for bare metal and VMware vSphere deployments. If your environment does not require kube-vip, set
+                              - code [ref=e474]: stylus.vip.skip
+                              - text: to
+                              - code [ref=e475]: "true"
+                              - text: . Refer to
+                              - link "Edge Installer Configuration Reference" [ref=e476] [cursor=pointer]:
+                                - /url: /clusters/edge/edge-configuration/installer-reference/
+                              - text: to learn more about user data configuration.
+                          - listitem [ref=e477]:
+                            - paragraph [ref=e478]:
+                              - text: The
+                              - code [ref=e479]: projectName
+                              - text: parameter is not required if the associated Palette
+                              - link "registration token" [ref=e480] [cursor=pointer]:
+                                - /url: /clusters/edge/site-deployment/site-installation/create-registration-token/
+                              - text: has a Default Project set.
+                            - generic [ref=e482]:
+                              - code [ref=e484]:
+                                - generic [ref=e485]: cat << EOF > user-data
+                                - generic [ref=e486]: "#cloud-config"
+                                - generic [ref=e487]: "install:"
+                                - generic [ref=e488]: "reboot: true"
+                                - generic [ref=e489]: "poweroff: false"
+                                - generic [ref=e490]: "stylus:"
+                                - generic [ref=e491]: "vip:"
+                                - generic [ref=e492]: "skip: false"
+                                - generic [ref=e493]: "site:"
+                                - generic [ref=e494]: "edgeHostToken: $TOKEN"
+                                - generic [ref=e495]: "paletteEndpoint: api.spectrocloud.com"
+                                - generic [ref=e496]: "projectName: Default"
+                                - generic [ref=e497]: "externalRegistries:"
+                                - generic [ref=e498]: "registries:"
+                                - generic [ref=e499]: "- domain: \"example.registry.com/palette-images\""
+                                - generic [ref=e500]: "username: \"admin\""
+                                - generic [ref=e501]: "password: \"***************\""
+                                - generic [ref=e502]: "repositoryName: example-repository-private"
+                                - generic [ref=e503]: "certificates:"
+                                - generic [ref=e504]: "- |"
+                                - generic [ref=e505]: "-----BEGIN CERTIFICATE-----"
+                                - generic [ref=e506]: "**********************"
+                                - generic [ref=e507]: "-----END CERTIFICATE-----"
+                                - generic [ref=e508]: "registryMappingRules:"
+                                - generic [ref=e509]: "\"us-docker.pkg.dev/palette-images\": \"example.registry.com/palette-images\""
+                                - generic [ref=e510]: "stages:"
+                                - generic [ref=e511]: "initramfs:"
+                                - generic [ref=e512]: "- users:"
+                                - generic [ref=e513]: "kairos:"
+                                - generic [ref=e514]: "groups:"
+                                - generic [ref=e515]: "- sudo"
+                                - generic [ref=e516]: "passwd: kairos"
+                                - generic [ref=e517]: EOF
+                              - generic [ref=e518]:
+                                - button "Toggle word wrap" [ref=e519] [cursor=pointer]:
+                                  - img [ref=e520]
+                                - button "Copy code to clipboard" [ref=e522] [cursor=pointer]:
+                                  - generic [ref=e523]:
+                                    - img [ref=e524]
+                                    - img [ref=e526]
+                        - paragraph [ref=e528]: Confirm that the file was created correctly.
+                        - generic [ref=e530]:
+                          - code [ref=e532]:
+                            - generic [ref=e533]: cat user-data
+                          - button "Copy code to clipboard" [ref=e535] [cursor=pointer]:
+                            - generic [ref=e536]:
+                              - img [ref=e537]
+                              - img [ref=e539]
+                        - paragraph [ref=e541]:
+                          - text: The output should contain the value of your Palette registration token assigned to the
+                          - code [ref=e542]: edgeHostToken
+                          - text: parameter, as displayed in the example output below.
+                        - generic [ref=e544]:
+                          - code [ref=e546]:
+                            - generic [ref=e547]: "#cloud-config"
+                            - generic [ref=e548]: "install:"
+                            - generic [ref=e549]: "reboot: true"
+                            - generic [ref=e550]: "poweroff: false"
+                            - generic [ref=e551]: "stylus:"
+                            - generic [ref=e552]: "vip:"
+                            - generic [ref=e553]: "skip: false"
+                            - generic [ref=e554]: "site:"
+                            - generic [ref=e555]: "edgeHostToken: ****************"
+                            - generic [ref=e556]: "paletteEndpoint: api.spectrocloud.com"
+                            - generic [ref=e557]: "projectName: Default"
+                            - generic [ref=e558]: "externalRegistries:"
+                            - generic [ref=e559]: "registries:"
+                            - generic [ref=e560]: "- domain: \"example.registry.com/palette-images\""
+                            - generic [ref=e561]: "username: \"admin\""
+                            - generic [ref=e562]: "password: \"***************\""
+                            - generic [ref=e563]: "repositoryName: example-repository-private"
+                            - generic [ref=e564]: "certificates:"
+                            - generic [ref=e565]: "- |"
+                            - generic [ref=e566]: "-----BEGIN CERTIFICATE-----"
+                            - generic [ref=e567]: "**********************"
+                            - generic [ref=e568]: "-----END CERTIFICATE-----"
+                            - generic [ref=e569]: "registryMappingRules:"
+                            - generic [ref=e570]: "\"us-docker.pkg.dev/palette-images\": \"example.registry.com/palette-images\""
+                            - generic [ref=e571]: "stages:"
+                            - generic [ref=e572]: "initramfs:"
+                            - generic [ref=e573]: "- users:"
+                            - generic [ref=e574]: "kairos:"
+                            - generic [ref=e575]: "groups:"
+                            - generic [ref=e576]: "- sudo"
+                            - generic [ref=e577]: "passwd: kairos"
+                          - button "Toggle word wrap" [ref=e579] [cursor=pointer]:
+                            - img [ref=e580]
+                        - generic [ref=e582]:
+                          - generic [ref=e583]:
+                            - img [ref=e585]
+                            - text: warning
+                          - generic [ref=e587]:
+                            - paragraph [ref=e588]:
+                              - text: If your setup meets the following conditions, include the following
+                              - code [ref=e589]: initramfs
+                              - text: stage in your
+                              - code [ref=e590]: user-data
+                              - text: file, replacing
+                              - code [ref=e591]: <interface-name>
+                              - text: "with the name of the network interface on your Edge host:"
+                            - list [ref=e592]:
+                              - listitem [ref=e593]:
+                                - paragraph [ref=e594]: Your host is a virtual machine.
+                              - listitem [ref=e595]:
+                                - paragraph [ref=e596]: The virtual machine uses a VMXNET3 adapter.
+                              - listitem [ref=e597]:
+                                - paragraph [ref=e598]:
+                                  - text: You are planning to use
+                                  - emphasis [ref=e599]: one
+                                  - text: "of the following in your Edge cluster:"
+                                - list [ref=e600]:
+                                  - listitem [ref=e601]:
+                                    - paragraph [ref=e602]:
+                                      - text: An
+                                      - link "overlay network" [ref=e603] [cursor=pointer]:
+                                        - /url: /clusters/edge/networking/vxlan-overlay/
+                                      - text: .
+                                  - listitem [ref=e604]:
+                                    - paragraph [ref=e605]:
+                                      - link "Flannel" [ref=e606] [cursor=pointer]:
+                                        - /url: /integrations/cni-flannel
+                                      - text: for your CNI.
+                                - generic [ref=e608]:
+                                  - code [ref=e610]:
+                                    - generic [ref=e611]: "stages:"
+                                    - generic [ref=e612]: "initramfs:"
+                                    - generic [ref=e613]: "- name: \"Disable UDP segmentation\""
+                                    - generic [ref=e614]: "commands:"
+                                    - generic [ref=e615]: "- ethtool --offload <interface-name> tx-udp_tnl-segmentation off"
+                                    - generic [ref=e616]: "- ethtool --offload <interface-name> tx-udp_tnl-csum-segmentation off"
+                                  - generic [ref=e617]:
+                                    - button "Toggle word wrap" [ref=e618] [cursor=pointer]:
+                                      - img [ref=e619]
+                                    - button "Copy code to clipboard" [ref=e621] [cursor=pointer]:
+                                      - generic [ref=e622]:
+                                        - img [ref=e623]
+                                        - img [ref=e625]
+                            - paragraph [ref=e627]:
+                              - text: This is due to a
+                              - link "known issue with VMware's VMXNET3 adapter" [ref=e628] [cursor=pointer]:
+                                - /url: https://github.com/cilium/cilium/issues/13096#issuecomment-723901955
+                              - text: ", which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V."
+                      - listitem [ref=e629]:
+                        - paragraph [ref=e630]: Export the path to your user data file.
+                        - generic [ref=e632]:
+                          - code [ref=e634]:
+                            - generic [ref=e635]: export USERDATA=./user-data
+                          - button "Copy code to clipboard" [ref=e637] [cursor=pointer]:
+                            - generic [ref=e638]:
+                              - img [ref=e639]
+                              - img [ref=e641]
+                      - listitem [ref=e643]:
+                        - paragraph [ref=e644]: If you are using Palette SaaS, download the latest Palette agent installation script. There is a FIPS-compliant script, if needed.
+                        - generic [ref=e645]:
+                          - tablist [ref=e646]:
+                            - tab "Non-FIPS" [selected] [ref=e647] [cursor=pointer]
+                            - tab "FIPS" [ref=e648] [cursor=pointer]
+                          - tabpanel [ref=e650]:
+                            - generic [ref=e652]:
+                              - code [ref=e654]:
+                                - generic [ref=e655]: curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/latest/download/palette-agent-install.sh
+                              - generic [ref=e656]:
+                                - button "Toggle word wrap" [ref=e657] [cursor=pointer]:
+                                  - img [ref=e658]
+                                - button "Copy code to clipboard" [ref=e660] [cursor=pointer]:
+                                  - generic [ref=e661]:
+                                    - img [ref=e662]
+                                    - img [ref=e664]
+                        - paragraph [ref=e666]: If you have a dedicated or on-prem instance of Palette, you need to identify the correct agent version and then download the corresponding version of the agent installation script.
+                        - list [ref=e667]:
+                          - listitem [ref=e668]:
+                            - paragraph [ref=e669]:
+                              - text: Use the following command to identify the agent version for your Palette instance. Replace
+                              - code [ref=e670]: <palette-endpoint>
+                              - text: with your Palette endpoint and
+                              - code [ref=e671]: <api-key>
+                              - text: with your
+                              - link "Palette API key" [ref=e672] [cursor=pointer]:
+                                - /url: /user-management/authentication/api-key/
+                              - text: .
+                            - generic [ref=e674]:
+                              - code [ref=e676]:
+                                - generic [ref=e677]: "curl --location --request GET 'https://<palette-endpoint>/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: <api-key>' | jq --raw-output '.spec.latestVersion.content | match(\"version: ([^\\n]+)\").captures[0].string'"
+                              - generic [ref=e678]:
+                                - button "Toggle word wrap" [ref=e679] [cursor=pointer]:
+                                  - img [ref=e680]
+                                - button "Copy code to clipboard" [ref=e682] [cursor=pointer]:
+                                  - generic [ref=e683]:
+                                    - img [ref=e684]
+                                    - img [ref=e686]
+                            - generic [ref=e688]:
+                              - generic [ref=e689]: Example output
+                              - code [ref=e692]:
+                                - generic [ref=e693]: 4.5.0
+                          - listitem [ref=e694]:
+                            - paragraph [ref=e695]:
+                              - text: Use the following command to download the version of the Palette agent for your dedicated or on-prem instance. Replace
+                              - code [ref=e696]: <stylus-version>
+                              - text: with your output from the previous step.
+                            - generic [ref=e697]:
+                              - tablist [ref=e698]:
+                                - tab "Non-FIPS" [selected] [ref=e699] [cursor=pointer]
+                                - tab "FIPS" [ref=e700] [cursor=pointer]
+                              - tabpanel [ref=e702]:
+                                - generic [ref=e704]:
+                                  - code [ref=e706]:
+                                    - generic [ref=e707]: curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/download/v<stylus-version>/palette-agent-install.sh
+                                  - generic [ref=e708]:
+                                    - button "Toggle word wrap" [ref=e709] [cursor=pointer]:
+                                      - img [ref=e710]
+                                    - button "Copy code to clipboard" [ref=e712] [cursor=pointer]:
+                                      - generic [ref=e713]:
+                                        - img [ref=e714]
+                                        - img [ref=e716]
+                      - listitem [ref=e718]:
+                        - paragraph [ref=e719]: Grant execution permissions to the installation script.
+                        - generic [ref=e720]:
+                          - tablist [ref=e721]:
+                            - tab "Non-FIPS" [selected] [ref=e722] [cursor=pointer]
+                            - tab "FIPS" [ref=e723] [cursor=pointer]
+                          - tabpanel [ref=e725]:
+                            - generic [ref=e727]:
+                              - code [ref=e729]:
+                                - generic [ref=e730]: chmod +x ./palette-agent-install.sh
+                              - button "Copy code to clipboard" [ref=e732] [cursor=pointer]:
+                                - generic [ref=e733]:
+                                  - img [ref=e734]
+                                  - img [ref=e736]
+                      - listitem [ref=e738]:
+                        - paragraph [ref=e739]: Issue the following command to install the agent on your host.
+                        - generic [ref=e740]:
+                          - tablist [ref=e741]:
+                            - tab "Non-FIPS" [selected] [ref=e742] [cursor=pointer]
+                            - tab "FIPS" [ref=e743] [cursor=pointer]
+                          - tabpanel [ref=e745]:
+                            - generic [ref=e747]:
+                              - code [ref=e749]:
+                                - generic [ref=e750]: sudo --preserve-env ./palette-agent-install.sh
+                              - button "Copy code to clipboard" [ref=e752] [cursor=pointer]:
+                                - generic [ref=e753]:
+                                  - img [ref=e754]
+                                  - img [ref=e756]
+                        - paragraph [ref=e758]: The termination of the SSH connection, as shown in the example below, confirms that the script has completed its tasks.
+                        - code [ref=e762]:
+                          - generic [ref=e763]: Connection to 192.168.1.100 closed by remote host.
+                          - generic [ref=e764]: Connection to 192.168.1.100 closed.
+                      - listitem [ref=e765]:
+                        - paragraph [ref=e766]:
+                          - text: Upon agent installation, the host will reboot to the registration screen and use the provided
+                          - code [ref=e767]: EdgeHostToken
+                          - text: for automatic registration with Palette. The host will be registered in the same project where the registration token was created.
+                      - listitem [ref=e768]:
+                        - paragraph [ref=e769]:
+                          - text: Log in to
+                          - link "Palette" [ref=e770] [cursor=pointer]:
+                            - /url: https://console.spectrocloud.com/
+                          - text: and select
+                          - strong [ref=e771]: Clusters
+                          - text: from the left
+                          - strong [ref=e772]: Main Menu
+                          - text: .
+                      - listitem [ref=e773]:
+                        - paragraph [ref=e774]:
+                          - text: Select the
+                          - strong [ref=e775]: Edge Hosts
+                          - text: tab and verify your host is displayed and marked as
+                          - strong [ref=e776]: Healthy
+                          - text: in the Edge hosts list.
+                      - listitem [ref=e777]:
+                        - paragraph [ref=e778]:
+                          - text: Once the host has been registered with Palette, proceed with the cluster profile creation. Select
+                          - strong [ref=e779]: Profiles
+                          - text: from the left
+                          - strong [ref=e780]: Main Menu
+                          - text: .
+                      - listitem [ref=e781]:
+                        - paragraph [ref=e782]:
+                          - text: Click on
+                          - strong [ref=e783]: Add Cluster Profile
+                          - text: .
+                      - listitem [ref=e784]:
+                        - paragraph [ref=e785]:
+                          - text: In the
+                          - strong [ref=e786]: Basic Information
+                          - text: section, assign a profile name, a description, and tags. Select the type as
+                          - strong [ref=e787]: Full
+                          - text: and click
+                          - strong [ref=e788]: Next
+                          - text: .
+                      - listitem [ref=e789]:
+                        - paragraph [ref=e790]:
+                          - text: Select
+                          - strong [ref=e791]: Edge Native
+                          - text: as the
+                          - strong [ref=e792]: Cloud Type
+                          - text: and click
+                          - strong [ref=e793]: Next
+                          - text: .
+                      - listitem [ref=e794]:
+                        - paragraph [ref=e795]:
+                          - text: The
+                          - strong [ref=e796]: Profile Layers
+                          - text: section specifies the packs that compose the profile. Add the
+                          - strong [ref=e797]: BYOS Edge OS
+                          - text: pack version
+                          - strong [ref=e798]: 2.1.0
+                          - text: to the OS layer.
+                      - listitem [ref=e799]:
+                        - paragraph [ref=e800]:
+                          - text: Click
+                          - strong [ref=e801]: Values
+                          - text: under
+                          - strong [ref=e802]: Pack Details
+                          - text: ", then click on"
+                          - strong [ref=e803]: Presets
+                          - text: on the right-hand side. Select
+                          - strong [ref=e804]: Agent Mode
+                          - text: .
+                        - paragraph [ref=e805]:
+                          - img "View of the cluster profile creation page with the BYOS pack." [ref=e806]
+                      - listitem [ref=e807]:
+                        - paragraph [ref=e808]:
+                          - text: Click
+                          - strong [ref=e809]: Next Layer
+                          - text: to continue.
+                      - listitem [ref=e810]:
+                        - paragraph [ref=e811]: Complete the cluster profile creation process by filling out the remaining layers.
+                      - listitem [ref=e812]:
+                        - paragraph [ref=e813]:
+                          - text: Follow the steps in the
+                          - link "Create Cluster Definition" [ref=e814] [cursor=pointer]:
+                            - /url: /clusters/edge/site-deployment/model-profile/
+                          - text: guide to deploy a cluster using your registered host as a cluster node.
+                    - generic [ref=e815]:
+                      - generic [ref=e816]:
+                        - img [ref=e818]
+                        - text: warning
+                      - paragraph [ref=e821]:
+                        - text: If using the FIPS version of Agent Mode on a Rocky Linux edge host, SELinux may incorrectly label the
+                        - strong [ref=e822]: kubeadm-flags.env
+                        - text: file during cluster deployment or when certain configurations are adjusted, preventing the Kubelet from accessing it and properly managing the cluster. Refer to the
+                        - link "Edge Troubleshooting Guide" [ref=e823] [cursor=pointer]:
+                          - /url: /troubleshooting/edge/#scenario---kubelet-process-cannot-access-kubeadm-flags
+                        - text: for guidance.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e824]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e825] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - generic [ref=e826]:
+                  - tablist [ref=e827]:
+                    - tab "Central Management Mode" [selected] [ref=e828] [cursor=pointer]
+                    - tab "Local Management Mode" [ref=e829] [cursor=pointer]
+                  - tabpanel [ref=e831]:
+                    - list [ref=e832]:
+                      - listitem [ref=e833]:
+                        - paragraph [ref=e834]:
+                          - text: Log in to
+                          - link "Palette" [ref=e835] [cursor=pointer]:
+                            - /url: https://console.spectrocloud.com/
+                          - text: .
+                      - listitem [ref=e836]:
+                        - paragraph [ref=e837]:
+                          - text: Select
+                          - strong [ref=e838]: Clusters
+                          - text: from the left
+                          - strong [ref=e839]: Main Menu
+                          - text: .
+                      - listitem [ref=e840]:
+                        - paragraph [ref=e841]: Select the host cluster you created to view its details page.
+                      - listitem [ref=e842]:
+                        - paragraph [ref=e843]:
+                          - text: Verify that the cluster is listed as
+                          - strong [ref=e844]: Healthy
+                          - text: and has a
+                          - strong [ref=e845]: Running
+                          - text: status.
+                    - paragraph [ref=e846]:
+                      - text: Alongside Palette,
+                      - link "Local UI" [ref=e847] [cursor=pointer]:
+                        - /url: /clusters/edge/local-ui/host-management/access-console/
+                      - text: allows you to fully manage the lifecycle of your edge hosts. Refer to the
+                      - link "Reboot, Shutdown, and Reset Edge Host" [ref=e848] [cursor=pointer]:
+                        - /url: /clusters/edge/local-ui/host-management/reset-reboot/
+                      - text: guide for further details on how to use these operations
+              - generic [ref=e849]:
+                - generic [ref=e851]:
+                  - text: "Tags:"
+                  - list [ref=e852]:
+                    - listitem [ref=e853]:
+                      - link "edge" [ref=e854] [cursor=pointer]:
+                        - /url: /tags/edge/
+                    - listitem [ref=e855]:
+                      - link "agent mode" [ref=e856] [cursor=pointer]:
+                        - /url: /tags/agent-mode/
+                - link "Edit this page" [ref=e859] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/deployment-modes/agent-mode/install-agent-host.md
+                  - img [ref=e860]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e864]:
+              - link "Previous « Agent Mode" [ref=e865] [cursor=pointer]:
+                - /url: /deployment-modes/agent-mode/
+                - generic [ref=e866]: Previous
+                - generic [ref=e867]: « Agent Mode
+              - link "Next Configure networkd to Prepare Host for Overlay Network »" [ref=e868] [cursor=pointer]:
+                - /url: /deployment-modes/agent-mode/overlay-preparation/
+                - generic [ref=e869]: Next
+                - generic [ref=e870]: Configure networkd to Prepare Host for Overlay Network »
+          - list [ref=e873]:
+            - listitem [ref=e874]:
+              - link "Limitations" [ref=e875] [cursor=pointer]:
+                - /url: "#limitations"
+            - listitem [ref=e876]:
+              - link "Prerequisites" [ref=e877] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e878]:
+              - link "Install Palette Agent" [ref=e879] [cursor=pointer]:
+                - /url: "#install-palette-agent"
+            - listitem [ref=e880]:
+              - link "Validate" [ref=e881] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e882] [cursor=pointer]:
+    - generic [ref=e885]:
+      - img "Project Logo" [ref=e886]
+      - paragraph [ref=e887]: Ask AI
+```

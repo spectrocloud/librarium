@@ -1,0 +1,155 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Palette Tutorials" [ref=e41] [cursor=pointer]:
+                  - /url: /tutorials/
+                  - img [ref=e43]
+                  - text: Palette Tutorials
+              - listitem [ref=e45]:
+                - generic [ref=e46]:
+                  - link "Getting Started" [ref=e47] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/
+                    - img [ref=e49]
+                    - text: Getting Started
+                  - button "Toggle the collapsible sidebar category 'Getting Started'" [ref=e51] [cursor=pointer]
+              - listitem [ref=e52]:
+                - generic [ref=e53]:
+                  - link "Packs and Registries" [ref=e54] [cursor=pointer]:
+                    - /url: /tutorials/packs-registries/
+                    - img [ref=e56]
+                    - text: Packs and Registries
+                  - button "Toggle the collapsible sidebar category 'Packs and Registries'" [ref=e58] [cursor=pointer]
+              - listitem [ref=e59]:
+                - generic [ref=e60]:
+                  - link "Profiles" [ref=e61] [cursor=pointer]:
+                    - /url: /tutorials/profiles/
+                    - img [ref=e63]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e67] [cursor=pointer]
+              - listitem [ref=e68]:
+                - generic [ref=e69]:
+                  - link "Clusters" [ref=e70] [cursor=pointer]:
+                    - /url: /tutorials/clusters/
+                    - img [ref=e72]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e78] [cursor=pointer]
+              - listitem [ref=e79]:
+                - generic [ref=e80]:
+                  - link "Palette Dev Engine" [ref=e81] [cursor=pointer]:
+                    - /url: /tutorials/pde/
+                    - img [ref=e83]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e85] [cursor=pointer]
+              - listitem [ref=e86]:
+                - button "Privacy Settings" [ref=e87] [cursor=pointer]
+      - main [ref=e88]:
+        - generic [ref=e92]:
+          - article [ref=e93]:
+            - navigation "Breadcrumbs" [ref=e94]:
+              - list [ref=e95]:
+                - listitem [ref=e96]:
+                  - link "Home page" [ref=e97] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e98]
+                - listitem [ref=e100]:
+                  - generic [ref=e101]: Palette Tutorials
+            - generic [ref=e102]:
+              - heading "Welcome to Palette Tutorials" [level=1] [ref=e104]
+              - paragraph [ref=e105]: This section provides hands-on tutorials you can complete in your environment to learn more about Palette. Here, you will find tutorials covering the aspects of Palette you need to become a proficient user, as well as advanced topics that require more time and attention to comprehend. These tutorials will enable you to maximize Palette's ability to manage Kubernetes at scale.
+              - paragraph [ref=e106]: Check out the sections below to learn more about key Palette concepts.
+              - generic [ref=e107]:
+                - link "Getting Started Learn how to deploy your first cluster with Palette. Learn more" [ref=e108] [cursor=pointer]:
+                  - /url: /tutorials/getting-started/
+                  - generic [ref=e109]:
+                    - generic [ref=e111]: Getting Started
+                    - paragraph [ref=e113]: Learn how to deploy your first cluster with Palette.
+                    - button "Learn more" [ref=e115]:
+                      - text: Learn more
+                      - img [ref=e116]
+                - link "Packs and Registries Learn how to create and use packs. Learn more" [ref=e118] [cursor=pointer]:
+                  - /url: /tutorials/packs-registries/
+                  - generic [ref=e119]:
+                    - generic [ref=e121]: Packs and Registries
+                    - paragraph [ref=e123]: Learn how to create and use packs.
+                    - button "Learn more" [ref=e125]:
+                      - text: Learn more
+                      - img [ref=e126]
+                - link "Profiles Learn how to manage cluster profiles. Learn more" [ref=e128] [cursor=pointer]:
+                  - /url: /tutorials/profiles/
+                  - generic [ref=e129]:
+                    - generic [ref=e131]: Profiles
+                    - paragraph [ref=e133]: Learn how to manage cluster profiles.
+                    - button "Learn more" [ref=e135]:
+                      - text: Learn more
+                      - img [ref=e136]
+                - link "Clusters Learn how to deploy Palette clusters to public cloud, data center, and Edge environments. Learn more" [ref=e138] [cursor=pointer]:
+                  - /url: /tutorials/clusters/
+                  - generic [ref=e139]:
+                    - generic [ref=e141]: Clusters
+                    - paragraph [ref=e143]: Learn how to deploy Palette clusters to public cloud, data center, and Edge environments.
+                    - button "Learn more" [ref=e145]:
+                      - text: Learn more
+                      - img [ref=e146]
+                - link "Palette Dev Engine Learn how to deploy applications with Palette Dev Engine. Learn more" [ref=e148] [cursor=pointer]:
+                  - /url: /tutorials/pde/
+                  - generic [ref=e149]:
+                    - generic [ref=e151]: Palette Dev Engine
+                    - paragraph [ref=e153]: Learn how to deploy applications with Palette Dev Engine.
+                    - button "Learn more" [ref=e155]:
+                      - text: Learn more
+                      - img [ref=e156]
+            - generic [ref=e158]:
+              - generic [ref=e160]:
+                - text: "Tags:"
+                - list [ref=e161]:
+                  - listitem [ref=e162]:
+                    - link "tutorials" [ref=e163] [cursor=pointer]:
+                      - /url: /tags/tutorials/
+              - link "Edit this page" [ref=e166] [cursor=pointer]:
+                - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/tutorials/tutorials.md
+                - img [ref=e167]
+                - text: Edit this page
+          - navigation "Docs pages"
+  - button "Project Logo Ask AI" [ref=e171] [cursor=pointer]:
+    - generic [ref=e174]:
+      - img "Project Logo" [ref=e175]
+      - paragraph [ref=e176]: Ask AI
+```

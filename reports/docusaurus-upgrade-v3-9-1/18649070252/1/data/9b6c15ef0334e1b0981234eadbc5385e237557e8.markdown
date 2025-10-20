@@ -1,0 +1,771 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [expanded] [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+                - list [ref=e107]:
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Public Cloud Clusters" [ref=e110] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e112]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e114] [cursor=pointer]
+                  - listitem [ref=e115]:
+                    - generic [ref=e116]:
+                      - link "Data Center Clusters" [ref=e117] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e119]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e121] [cursor=pointer]
+                  - listitem [ref=e122]:
+                    - generic [ref=e123]:
+                      - link "Edge" [expanded] [ref=e124] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e126]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e128] [cursor=pointer]
+                    - list [ref=e129]:
+                      - listitem [ref=e130]:
+                        - generic [ref=e131]:
+                          - link "Architecture" [ref=e132] [cursor=pointer]:
+                            - /url: /clusters/edge/architecture/
+                          - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e133] [cursor=pointer]
+                      - listitem [ref=e134]:
+                        - link "Hardware Requirements" [ref=e135] [cursor=pointer]:
+                          - /url: /clusters/edge/hardware-requirements/
+                      - listitem [ref=e136]:
+                        - link "Deployment Lifecycle" [ref=e137] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-native-lifecycle/
+                      - listitem [ref=e138]:
+                        - generic [ref=e139]:
+                          - link "Trusted Boot" [ref=e140] [cursor=pointer]:
+                            - /url: /clusters/edge/trusted-boot/
+                          - button "Toggle the collapsible sidebar category 'Trusted Boot'" [ref=e141] [cursor=pointer]
+                      - listitem [ref=e142]:
+                        - generic [ref=e143]:
+                          - link "Install Configuration" [ref=e144] [cursor=pointer]:
+                            - /url: /clusters/edge/edge-configuration/
+                          - button "Toggle the collapsible sidebar category 'Install Configuration'" [ref=e145] [cursor=pointer]
+                      - listitem [ref=e146]:
+                        - generic [ref=e147]:
+                          - link "EdgeForge Workflow" [ref=e148] [cursor=pointer]:
+                            - /url: /clusters/edge/edgeforge-workflow/
+                          - button "Toggle the collapsible sidebar category 'EdgeForge Workflow'" [ref=e149] [cursor=pointer]
+                      - listitem [ref=e150]:
+                        - generic [ref=e151]:
+                          - link "Local UI" [expanded] [ref=e152] [cursor=pointer]:
+                            - /url: /clusters/edge/local-ui/
+                          - button "Toggle the collapsible sidebar category 'Local UI'" [ref=e153] [cursor=pointer]
+                        - list [ref=e154]:
+                          - listitem [ref=e155]:
+                            - generic [ref=e156]:
+                              - link "Cluster Operations" [expanded] [ref=e157] [cursor=pointer]:
+                                - /url: /clusters/edge/local-ui/cluster-management/
+                              - button "Toggle the collapsible sidebar category 'Cluster Operations'" [ref=e158] [cursor=pointer]
+                            - list [ref=e159]:
+                              - listitem [ref=e160]:
+                                - link "Upload Content Bundle" [ref=e161] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/cluster-management/upload-content-bundle/
+                              - listitem [ref=e162]:
+                                - link "Export Cluster Definition" [ref=e163] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/cluster-management/export-cluster-definition/
+                              - listitem [ref=e164]:
+                                - link "Create Local Cluster" [ref=e165] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/cluster-management/create-cluster/
+                              - listitem [ref=e166]:
+                                - link "Link Hosts" [ref=e167] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/cluster-management/link-hosts/
+                              - listitem [ref=e168]:
+                                - link "Scale a Cluster" [ref=e169] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/cluster-management/scale-cluster/
+                              - listitem [ref=e170]:
+                                - link "Update Local Cluster" [ref=e171] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/cluster-management/update-cluster/
+                              - listitem [ref=e172]:
+                                - link "Pair Local Cluster with Palette" [ref=e173] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/cluster-management/local-to-central/
+                              - listitem [ref=e174]:
+                                - link "Share Local UI Authentication" [ref=e175] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/cluster-management/share-auth/
+                              - listitem [ref=e176]:
+                                - link "Delete a Cluster" [ref=e177] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/cluster-management/delete-cluster/
+                          - listitem [ref=e178]:
+                            - generic [ref=e179]:
+                              - link "Host Management" [ref=e180] [cursor=pointer]:
+                                - /url: /clusters/edge/local-ui/host-management/
+                              - button "Toggle the collapsible sidebar category 'Host Management'" [ref=e181] [cursor=pointer]
+                      - listitem [ref=e182]:
+                        - generic [ref=e183]:
+                          - link "Deployment" [ref=e184] [cursor=pointer]:
+                            - /url: /clusters/edge/site-deployment/
+                          - button "Toggle the collapsible sidebar category 'Deployment'" [ref=e185] [cursor=pointer]
+                      - listitem [ref=e186]:
+                        - generic [ref=e187]:
+                          - link "Cluster Management" [ref=e188] [cursor=pointer]:
+                            - /url: /clusters/edge/cluster-management/
+                          - button "Toggle the collapsible sidebar category 'Cluster Management'" [ref=e189] [cursor=pointer]
+                      - listitem [ref=e190]:
+                        - generic [ref=e191]:
+                          - link "Networking" [ref=e192] [cursor=pointer]:
+                            - /url: /clusters/edge/networking/
+                          - button "Toggle the collapsible sidebar category 'Networking'" [ref=e193] [cursor=pointer]
+                      - listitem [ref=e194]:
+                        - generic [ref=e195]:
+                          - link "Third Party Integrations" [ref=e196] [cursor=pointer]:
+                            - /url: /clusters/edge/third-party-integrations/
+                          - button "Toggle the collapsible sidebar category 'Third Party Integrations'" [ref=e197] [cursor=pointer]
+                  - listitem [ref=e198]:
+                    - generic [ref=e199]:
+                      - link "Palette Virtual Clusters" [ref=e200] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e202]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e204] [cursor=pointer]
+                  - listitem [ref=e205]:
+                    - generic [ref=e206]:
+                      - link "Imported Clusters" [ref=e207] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e209]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e211] [cursor=pointer]
+                  - listitem [ref=e212]:
+                    - generic [ref=e213]:
+                      - link "Manage Clusters" [ref=e214] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e216]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e218] [cursor=pointer]
+                  - listitem [ref=e219]:
+                    - generic [ref=e220]:
+                      - link "Cluster Groups" [ref=e221] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e223]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e225] [cursor=pointer]
+                  - listitem [ref=e226]:
+                    - generic [ref=e227]:
+                      - link "Private Cloud Gateway" [ref=e228] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e230]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e232] [cursor=pointer]
+              - listitem [ref=e233]:
+                - generic [ref=e234]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e235] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e237]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e239] [cursor=pointer]
+              - listitem [ref=e240]:
+                - generic [ref=e241]:
+                  - link "Palette Dev Engine" [ref=e242] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e244]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e246] [cursor=pointer]
+              - listitem [ref=e247]:
+                - generic [ref=e248]:
+                  - link "Virtual Machine Orchestrator" [ref=e249] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e251]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e253] [cursor=pointer]
+              - listitem [ref=e254]:
+                - generic [ref=e255]:
+                  - link "Workspaces" [ref=e256] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e258]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e260] [cursor=pointer]
+              - listitem [ref=e261]:
+                - generic [ref=e262]:
+                  - link "Packs List" [ref=e263] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e265]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e267] [cursor=pointer]
+              - listitem [ref=e268]:
+                - generic [ref=e269]:
+                  - link "User & Role Management" [ref=e270] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e272]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e274] [cursor=pointer]
+              - listitem [ref=e275]:
+                - generic [ref=e276]:
+                  - link "Registries and Packs" [ref=e277] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e279]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e281] [cursor=pointer]
+              - listitem [ref=e282]:
+                - generic [ref=e283]:
+                  - link "Security" [ref=e284] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e286]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e288] [cursor=pointer]
+              - listitem [ref=e289]:
+                - generic [ref=e290]:
+                  - link "Audit Logs" [ref=e291] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e293]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e295] [cursor=pointer]
+              - listitem [ref=e296]:
+                - generic [ref=e297]:
+                  - link "Self-Hosted Palette" [ref=e298] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e300]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e302] [cursor=pointer]
+              - listitem [ref=e303]:
+                - generic [ref=e304]:
+                  - link "Palette VerteX" [ref=e305] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e307]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e309] [cursor=pointer]
+              - listitem [ref=e310]:
+                - generic [ref=e311]:
+                  - link "Tenant Administration" [ref=e312] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e314]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e316] [cursor=pointer]
+              - listitem [ref=e317]:
+                - generic [ref=e318]:
+                  - link "Automation" [ref=e319] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e321]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e323] [cursor=pointer]
+              - listitem [ref=e324]:
+                - generic [ref=e325]:
+                  - link "Troubleshooting" [ref=e326] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e328]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e330] [cursor=pointer]
+              - listitem [ref=e331]:
+                - link "Glossary" [ref=e332] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e334]
+                  - text: Glossary
+              - listitem [ref=e336]:
+                - generic [ref=e337]:
+                  - link "Compliance & Legal" [ref=e338] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e340]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e342] [cursor=pointer]
+              - listitem [ref=e343]:
+                - button "Privacy Settings" [ref=e344] [cursor=pointer]:
+                  - img [ref=e345]
+                  - text: Privacy Settings
+      - main [ref=e347]:
+        - generic [ref=e349]:
+          - generic [ref=e351]:
+            - article [ref=e352]:
+              - navigation "Breadcrumbs" [ref=e353]:
+                - list [ref=e354]:
+                  - listitem [ref=e355]:
+                    - link "Home page" [ref=e356] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e357]
+                  - listitem [ref=e359]:
+                    - link "Clusters" [ref=e360] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e361]:
+                    - link "Edge" [ref=e362] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                  - listitem [ref=e363]:
+                    - link "Local UI" [ref=e364] [cursor=pointer]:
+                      - /url: /clusters/edge/local-ui/
+                  - listitem [ref=e365]:
+                    - link "Cluster Operations" [ref=e366] [cursor=pointer]:
+                      - /url: /clusters/edge/local-ui/cluster-management/
+                  - listitem [ref=e367]:
+                    - generic [ref=e368]: Link Hosts
+              - generic [ref=e369]:
+                - heading "Link Hosts" [level=1] [ref=e371]
+                - paragraph [ref=e372]: To create a multi-node cluster with hosts provisioned in the local management mode, the hosts must first be able to identify and securely communicate with each other. By default, hosts that are provisioned in the local management mode are not aware of each other even if they are on the same network, and they do not have the credentials to communicate with each other securely.
+                - paragraph [ref=e373]:
+                  - img "A diagram of the order of operations for linking hosts." [ref=e374]
+                - paragraph [ref=e375]: Host linking provides the hosts with the necessary network and security infrastructure to form a cluster together. In a group of linked hosts, hosts can broadcast information to all its peers.
+                - heading "Leader HostsDirect link to Leader Hosts" [level=2] [ref=e376]:
+                  - text: Leader Hosts
+                  - link "Direct link to Leader Hosts" [ref=e377] [cursor=pointer]:
+                    - /url: "#leader-hosts"
+                    - text: "#"
+                - paragraph [ref=e378]: "To link hosts together, you designate one host as the leader. The leader host has two obligations:"
+                - list [ref=e379]:
+                  - listitem [ref=e380]: Generate tokens with its IP address and One-Time Password (OTP) credentials, which you can use to link other hosts as followers.
+                  - listitem [ref=e381]: Sync content bundles uploaded to the host and configuration changes made to the host to the rest of the cluster.
+                - paragraph [ref=e382]: A group of linked hosts that have not formed a cluster only has one leader, where you can upload content bundles and create a cluster.
+                - paragraph [ref=e383]: Once a cluster is formed, every control plane node will be generating the pairing tokens and can act as the leader. When you perform an action on any control plane node, that node will act as the leader and propagate the action to the rest of the cluster. For example, if you upload a content bundle to a control plane node, the content bundle will be synced from that node to the rest of the cluster, even if the control plane node was not the leader before a cluster is formed. This design removes the need to memorize which host was the leader before forming a cluster.
+                - paragraph [ref=e384]:
+                  - text: When you
+                  - link "delete a cluster" [ref=e385] [cursor=pointer]:
+                    - /url: /clusters/edge/local-ui/cluster-management/delete-cluster/
+                  - text: ", all hosts will return to the"
+                  - strong [ref=e386]: Ready
+                  - text: state, but will remain linked. Since the group of hosts no longer have a cluster, they will only have one leader, which is the host where you performed the delete action from.
+                - heading "Link HostsDirect link to Link Hosts" [level=2] [ref=e387]:
+                  - text: Link Hosts
+                  - link "Direct link to Link Hosts" [ref=e388] [cursor=pointer]:
+                    - /url: "#link-hosts"
+                    - text: "#"
+                - paragraph [ref=e389]: Linked hosts will sync their status and uploaded content, including images for the Palette agent and provider images, with each other.
+                - heading "LimitationsDirect link to Limitations" [level=3] [ref=e390]:
+                  - text: Limitations
+                  - link "Direct link to Limitations" [ref=e391] [cursor=pointer]:
+                    - /url: "#limitations"
+                    - text: "#"
+                - list [ref=e392]:
+                  - listitem [ref=e393]:
+                    - paragraph [ref=e394]:
+                      - text: All hosts must be deployed in the same deployment mode. For more information, refer to
+                      - link "Deployment Modes" [ref=e395] [cursor=pointer]:
+                        - /url: /deployment-modes/
+                      - text: .
+                  - listitem [ref=e396]:
+                    - paragraph [ref=e397]:
+                      - text: For hosts that are deployed in
+                      - link "agent mode" [ref=e398] [cursor=pointer]:
+                        - /url: /deployment-modes/agent-mode/
+                      - text: ", all hosts must share the same Operating System (OS)."
+                  - listitem [ref=e399]:
+                    - paragraph [ref=e400]: You cannot update the IP address of a linked host.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e401]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e402] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e403]:
+                  - listitem [ref=e404]:
+                    - paragraph [ref=e405]:
+                      - text: Two or more hosts deployed in the same deployment mode on the same network. For more information, refer to
+                      - link "Appliance Mode Installation" [ref=e406] [cursor=pointer]:
+                        - /url: /clusters/edge/site-deployment/stage/
+                      - text: or
+                      - link "Agent Mode Installation" [ref=e407] [cursor=pointer]:
+                        - /url: /deployment-modes/agent-mode/install-agent-host/
+                      - text: .
+                  - listitem [ref=e408]:
+                    - paragraph [ref=e409]:
+                      - text: The
+                      - code [ref=e410]: stylus.enableMultiNode
+                      - text: parameter is set to
+                      - code [ref=e411]: "true"
+                      - text: in your user data configuration for all your hosts. For more information, refer to
+                      - link "Prepare User Data" [ref=e412] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/prepare-user-data/
+                      - text: and
+                      - link "Installer Reference" [ref=e413] [cursor=pointer]:
+                        - /url: /clusters/edge/edge-configuration/installer-reference/
+                      - text: .
+                  - listitem [ref=e414]:
+                    - paragraph [ref=e415]:
+                      - text: The
+                      - code [ref=e416]: stylus.managementMode
+                      - text: parameter is set to
+                      - code [ref=e417]: local
+                      - text: in your user data configuration for all your hosts.
+                  - listitem [ref=e418]:
+                    - paragraph [ref=e419]:
+                      - text: No follower host has any current cluster workloads. Refer to
+                      - link "Delete a Cluster" [ref=e420] [cursor=pointer]:
+                        - /url: /clusters/edge/local-ui/cluster-management/delete-cluster/
+                      - text: and
+                      - link "Unlink Hosts" [ref=e421] [cursor=pointer]:
+                        - /url: "#unlink-hosts"
+                      - text: to learn how to delete a cluster and unlink a host to free it up for linking.
+                - heading "ProcedureDirect link to Procedure" [level=3] [ref=e422]:
+                  - text: Procedure
+                  - link "Direct link to Procedure" [ref=e423] [cursor=pointer]:
+                    - /url: "#procedure"
+                    - text: "#"
+                - list [ref=e424]:
+                  - listitem [ref=e425]:
+                    - paragraph [ref=e426]:
+                      - text: Decide on host that you plan to use as the leader of the group. Log in to
+                      - link "Local UI" [ref=e427] [cursor=pointer]:
+                        - /url: /clusters/edge/local-ui/host-management/access-console/
+                      - text: of that host.
+                  - listitem [ref=e428]:
+                    - paragraph [ref=e429]:
+                      - text: From the left
+                      - strong [ref=e430]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e431]: Linked Edge Hosts
+                      - text: .
+                  - listitem [ref=e432]:
+                    - paragraph [ref=e433]:
+                      - text: Click
+                      - strong [ref=e434]: Generate token
+                      - text: . This will make the host start generating tokens you will use to link this host with other hosts. The base-64 encoded token contains the IP address of the host, as well as an OTP that will expire in two minutes. Once a token expires, the leader generates another token automatically.
+                    - paragraph [ref=e435]: If you have already made the
+                  - listitem [ref=e436]:
+                    - paragraph [ref=e437]:
+                      - text: Click the
+                      - strong [ref=e438]: Copy
+                      - text: button to copy the token.
+                  - listitem [ref=e439]:
+                    - paragraph [ref=e440]:
+                      - text: Log in to
+                      - link "Local UI" [ref=e441] [cursor=pointer]:
+                        - /url: /clusters/edge/local-ui/host-management/access-console/
+                      - text: on the host that you want to link to the leader host.
+                  - listitem [ref=e442]:
+                    - paragraph [ref=e443]:
+                      - text: From the left
+                      - strong [ref=e444]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e445]: Linked Edge Hosts
+                      - text: .
+                  - listitem [ref=e446]:
+                    - paragraph [ref=e447]:
+                      - text: Click
+                      - strong [ref=e448]: Link this device to another
+                      - text: .
+                  - listitem [ref=e449]:
+                    - paragraph [ref=e450]: In the pop-up box that appears, enter the token you copied from the leader host.
+                  - listitem [ref=e451]:
+                    - paragraph [ref=e452]:
+                      - text: Click
+                      - strong [ref=e453]: Confirm
+                      - text: .
+                  - listitem [ref=e454]:
+                    - paragraph [ref=e455]: Repeat this process for every host you want to link to the leader host.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e456]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e457] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e458]:
+                  - listitem [ref=e459]:
+                    - paragraph [ref=e460]:
+                      - text: Log in to
+                      - link "Local UI" [ref=e461] [cursor=pointer]:
+                        - /url: /clusters/edge/local-ui/host-management/access-console/
+                      - text: on the leader host.
+                  - listitem [ref=e462]:
+                    - paragraph [ref=e463]:
+                      - text: From the left
+                      - strong [ref=e464]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e465]: Linked Edge Hosts
+                      - text: .
+                  - listitem [ref=e466]:
+                    - paragraph [ref=e467]:
+                      - text: Confirm that all hosts you linked together show up in the
+                      - strong [ref=e468]: Linked Edge Hosts
+                      - text: table.
+                - heading "Unlink HostsDirect link to Unlink Hosts" [level=2] [ref=e469]:
+                  - text: Unlink Hosts
+                  - link "Direct link to Unlink Hosts" [ref=e470] [cursor=pointer]:
+                    - /url: "#unlink-hosts"
+                    - text: "#"
+                - paragraph [ref=e471]:
+                  - text: You can unlink a host to either link it to another host or to use it for independent workloads. You can only unlink a follower host. Once all follower hosts have been unlinked, you can
+                  - link "remove its leader status" [ref=e472] [cursor=pointer]:
+                    - /url: "#remove-leader-node-status"
+                  - text: and link it to another host.
+                - paragraph [ref=e473]: You can unlink a follower host on the follower host itself or from the leader host.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e474]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e475] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e476]:
+                  - listitem [ref=e477]:
+                    - paragraph [ref=e478]: Two or more linked hosts.
+                  - listitem [ref=e479]:
+                    - paragraph [ref=e480]:
+                      - link "Access to Local UI" [ref=e481] [cursor=pointer]:
+                        - /url: /clusters/edge/local-ui/host-management/access-console/
+                      - text: on the host you want to unlink or on the leader host.
+                  - listitem [ref=e482]:
+                    - paragraph [ref=e483]:
+                      - text: The host you want to unlink cannot be in-use by a cluster. If you want to remove a node from your cluster and then unlink it, you must first scale down the cluster. Once the host is in
+                      - strong [ref=e484]: Ready
+                      - text: state instead of
+                      - strong [ref=e485]: In-Use
+                      - text: ", you can proceed to unlink it. For more information, refer to"
+                      - link "Scale Down a Cluster" [ref=e486] [cursor=pointer]:
+                        - /url: /clusters/edge/local-ui/cluster-management/scale-cluster/#scale-down-a-cluster
+                      - text: .
+                - heading "ProcedureDirect link to Procedure" [level=3] [ref=e487]:
+                  - text: Procedure
+                  - link "Direct link to Procedure" [ref=e488] [cursor=pointer]:
+                    - /url: "#procedure-1"
+                    - text: "#"
+                - generic [ref=e489]:
+                  - tablist [ref=e490]:
+                    - tab "From Leader Host" [selected] [ref=e491] [cursor=pointer]
+                    - tab "On Follower Host" [ref=e492] [cursor=pointer]
+                  - tabpanel [ref=e494]:
+                    - list [ref=e495]:
+                      - listitem [ref=e496]:
+                        - paragraph [ref=e497]: Log in to Local UI on the leader host.
+                      - listitem [ref=e498]:
+                        - paragraph [ref=e499]:
+                          - text: From the left
+                          - strong [ref=e500]: Main Menu
+                          - text: ", click"
+                          - strong [ref=e501]: Linked Edge Hosts
+                          - text: .
+                      - listitem [ref=e502]:
+                        - paragraph [ref=e503]:
+                          - text: In the list of linked hosts, identify the host you want to unlink and click the
+                          - strong [ref=e504]: three-dot button
+                          - text: next to the IP address of the host.
+                      - listitem [ref=e505]:
+                        - paragraph [ref=e506]:
+                          - text: Click
+                          - strong [ref=e507]: Unlink
+                          - text: .
+                      - listitem [ref=e508]:
+                        - paragraph [ref=e509]:
+                          - text: Click
+                          - strong [ref=e510]: Confirm
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e511]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e512] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - list [ref=e513]:
+                  - listitem [ref=e514]:
+                    - paragraph [ref=e515]: Log in to Local UI on the host you unlinked.
+                  - listitem [ref=e516]:
+                    - paragraph [ref=e517]:
+                      - text: From the left
+                      - strong [ref=e518]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e519]: Linked Edge Hosts
+                      - text: .
+                  - listitem [ref=e520]:
+                    - paragraph [ref=e521]: Confirm that the host has been unlinked from the leader and is ready to be paired with another host.
+                - heading "Remove Leader Node StatusDirect link to Remove Leader Node Status" [level=2] [ref=e522]:
+                  - text: Remove Leader Node Status
+                  - link "Direct link to Remove Leader Node Status" [ref=e523] [cursor=pointer]:
+                    - /url: "#remove-leader-node-status"
+                    - text: "#"
+                - paragraph [ref=e524]: Removing the leader host status of a host allows you to link the host to another group of linked hosts as a follower. You can only do this when the host is not part of an active cluster.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e525]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e526] [cursor=pointer]:
+                    - /url: "#prerequisites-2"
+                    - text: "#"
+                - list [ref=e527]:
+                  - listitem [ref=e528]:
+                    - paragraph [ref=e529]: Access to Local UI on a host that generates pairing tokens.
+                  - listitem [ref=e530]:
+                    - paragraph [ref=e531]: The host is not linked with any other host. If your host is still linked with other hosts, you must unlink all its follower hosts.
+                - heading "ProcedureDirect link to Procedure" [level=3] [ref=e532]:
+                  - text: Procedure
+                  - link "Direct link to Procedure" [ref=e533] [cursor=pointer]:
+                    - /url: "#procedure-2"
+                    - text: "#"
+                - list [ref=e534]:
+                  - listitem [ref=e535]:
+                    - paragraph [ref=e536]: Log in to Local UI.
+                  - listitem [ref=e537]:
+                    - paragraph [ref=e538]:
+                      - text: From the left
+                      - strong [ref=e539]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e540]: Linked Edge Hosts
+                      - text: .
+                  - listitem [ref=e541]:
+                    - paragraph [ref=e542]:
+                      - text: Click the red
+                      - strong [ref=e543]: Stop token generation
+                      - text: button to stop the host from generating pairing tokens. This will make it ready to be paired with other hosts again as a follower.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e544]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e545] [cursor=pointer]:
+                    - /url: "#validate-2"
+                    - text: "#"
+                - list [ref=e546]:
+                  - listitem [ref=e547]:
+                    - paragraph [ref=e548]: Log in to Local UI.
+                  - listitem [ref=e549]:
+                    - paragraph [ref=e550]:
+                      - text: From the left
+                      - strong [ref=e551]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e552]: Linked Edge Hosts
+                      - text: .
+                  - listitem [ref=e553]:
+                    - paragraph [ref=e554]: Confirm that the host is no longer generating pairing tokens and can be linked to another host as a follower.
+              - generic [ref=e555]:
+                - generic [ref=e557]:
+                  - text: "Tags:"
+                  - list [ref=e558]:
+                    - listitem [ref=e559]:
+                      - link "edge" [ref=e560] [cursor=pointer]:
+                        - /url: /tags/edge/
+                - link "Edit this page" [ref=e563] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/edge/local-ui/cluster-management/link-hosts.md
+                  - img [ref=e564]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e568]:
+              - link "Previous « Create Local Cluster" [ref=e569] [cursor=pointer]:
+                - /url: /clusters/edge/local-ui/cluster-management/create-cluster/
+                - generic [ref=e570]: Previous
+                - generic [ref=e571]: « Create Local Cluster
+              - link "Next Scale a Cluster »" [ref=e572] [cursor=pointer]:
+                - /url: /clusters/edge/local-ui/cluster-management/scale-cluster/
+                - generic [ref=e573]: Next
+                - generic [ref=e574]: Scale a Cluster »
+          - list [ref=e577]:
+            - listitem [ref=e578]:
+              - link "Leader Hosts" [ref=e579] [cursor=pointer]:
+                - /url: "#leader-hosts"
+            - listitem [ref=e580]:
+              - link "Link Hosts" [ref=e581] [cursor=pointer]:
+                - /url: "#link-hosts"
+              - list [ref=e582]:
+                - listitem [ref=e583]:
+                  - link "Limitations" [ref=e584] [cursor=pointer]:
+                    - /url: "#limitations"
+                - listitem [ref=e585]:
+                  - link "Prerequisites" [ref=e586] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e587]:
+                  - link "Procedure" [ref=e588] [cursor=pointer]:
+                    - /url: "#procedure"
+                - listitem [ref=e589]:
+                  - link "Validate" [ref=e590] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e591]:
+              - link "Unlink Hosts" [ref=e592] [cursor=pointer]:
+                - /url: "#unlink-hosts"
+              - list [ref=e593]:
+                - listitem [ref=e594]:
+                  - link "Prerequisites" [ref=e595] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e596]:
+                  - link "Procedure" [ref=e597] [cursor=pointer]:
+                    - /url: "#procedure-1"
+                - listitem [ref=e598]:
+                  - link "Validate" [ref=e599] [cursor=pointer]:
+                    - /url: "#validate-1"
+            - listitem [ref=e600]:
+              - link "Remove Leader Node Status" [ref=e601] [cursor=pointer]:
+                - /url: "#remove-leader-node-status"
+              - list [ref=e602]:
+                - listitem [ref=e603]:
+                  - link "Prerequisites" [ref=e604] [cursor=pointer]:
+                    - /url: "#prerequisites-2"
+                - listitem [ref=e605]:
+                  - link "Procedure" [ref=e606] [cursor=pointer]:
+                    - /url: "#procedure-2"
+                - listitem [ref=e607]:
+                  - link "Validate" [ref=e608] [cursor=pointer]:
+                    - /url: "#validate-2"
+  - button "Project Logo Ask AI" [ref=e609] [cursor=pointer]:
+    - generic [ref=e612]:
+      - img "Project Logo" [ref=e613]
+      - paragraph [ref=e614]: Ask AI
+```

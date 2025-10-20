@@ -1,0 +1,734 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [expanded] [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+                - list [ref=e107]:
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Public Cloud Clusters" [expanded] [ref=e110] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e112]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e114] [cursor=pointer]
+                    - list [ref=e115]:
+                      - listitem [ref=e116]:
+                        - generic [ref=e117]:
+                          - link "AWS" [expanded] [ref=e118] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/aws/
+                          - button "Toggle the collapsible sidebar category 'AWS'" [ref=e119] [cursor=pointer]
+                        - list [ref=e120]:
+                          - listitem [ref=e121]:
+                            - link "Architecture" [ref=e122] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/architecture/
+                          - listitem [ref=e123]:
+                            - link "Register and Manage AWS Accounts" [ref=e124] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/add-aws-accounts/
+                          - listitem [ref=e125]:
+                            - link "Create and Manage AWS IaaS Cluster" [ref=e126] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/create-cluster/
+                          - listitem [ref=e127]:
+                            - link "Create and Manage AWS EKS Cluster" [ref=e128] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/eks/
+                          - listitem [ref=e129]:
+                            - generic [ref=e130]:
+                              - link "EKS Hybrid Nodes" [ref=e131] [cursor=pointer]:
+                                - /url: /clusters/public-cloud/aws/eks-hybrid-nodes/
+                              - button "Toggle the collapsible sidebar category 'EKS Hybrid Nodes'" [ref=e132] [cursor=pointer]
+                          - listitem [ref=e133]:
+                            - link "Enable Secrets Encryption for EKS Cluster" [ref=e134] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/enable-secrets-encryption-kms-key/
+                          - listitem [ref=e135]:
+                            - link "Enable Disk Encryption for EKS Cluster" [ref=e136] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/enable-disk-encryption-eks-cluster/
+                          - listitem [ref=e137]:
+                            - link "Configure Karpenter for EKS Clusters" [ref=e138] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/configure-karpenter-eks-clusters/
+                          - listitem [ref=e139]:
+                            - link "Required IAM Policies" [ref=e140] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/aws/required-iam-policies/
+                      - listitem [ref=e141]:
+                        - generic [ref=e142]:
+                          - link "Azure" [ref=e143] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/azure/
+                          - button "Toggle the collapsible sidebar category 'Azure'" [ref=e144] [cursor=pointer]
+                      - listitem [ref=e145]:
+                        - generic [ref=e146]:
+                          - link "GCP" [ref=e147] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/gcp/
+                          - button "Toggle the collapsible sidebar category 'GCP'" [ref=e148] [cursor=pointer]
+                  - listitem [ref=e149]:
+                    - generic [ref=e150]:
+                      - link "Data Center Clusters" [ref=e151] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e153]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e155] [cursor=pointer]
+                  - listitem [ref=e156]:
+                    - generic [ref=e157]:
+                      - link "Edge" [ref=e158] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e160]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e162] [cursor=pointer]
+                  - listitem [ref=e163]:
+                    - generic [ref=e164]:
+                      - link "Palette Virtual Clusters" [ref=e165] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e167]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e169] [cursor=pointer]
+                  - listitem [ref=e170]:
+                    - generic [ref=e171]:
+                      - link "Imported Clusters" [ref=e172] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e174]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e176] [cursor=pointer]
+                  - listitem [ref=e177]:
+                    - generic [ref=e178]:
+                      - link "Manage Clusters" [ref=e179] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e181]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e183] [cursor=pointer]
+                  - listitem [ref=e184]:
+                    - generic [ref=e185]:
+                      - link "Cluster Groups" [ref=e186] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e188]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e190] [cursor=pointer]
+                  - listitem [ref=e191]:
+                    - generic [ref=e192]:
+                      - link "Private Cloud Gateway" [ref=e193] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e195]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e197] [cursor=pointer]
+              - listitem [ref=e198]:
+                - generic [ref=e199]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e200] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e202]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e204] [cursor=pointer]
+              - listitem [ref=e205]:
+                - generic [ref=e206]:
+                  - link "Palette Dev Engine" [ref=e207] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e209]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e211] [cursor=pointer]
+              - listitem [ref=e212]:
+                - generic [ref=e213]:
+                  - link "Virtual Machine Orchestrator" [ref=e214] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e216]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e218] [cursor=pointer]
+              - listitem [ref=e219]:
+                - generic [ref=e220]:
+                  - link "Workspaces" [ref=e221] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e223]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e225] [cursor=pointer]
+              - listitem [ref=e226]:
+                - generic [ref=e227]:
+                  - link "Packs List" [ref=e228] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e230]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e232] [cursor=pointer]
+              - listitem [ref=e233]:
+                - generic [ref=e234]:
+                  - link "User & Role Management" [ref=e235] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e237]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e239] [cursor=pointer]
+              - listitem [ref=e240]:
+                - generic [ref=e241]:
+                  - link "Registries and Packs" [ref=e242] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e244]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e246] [cursor=pointer]
+              - listitem [ref=e247]:
+                - generic [ref=e248]:
+                  - link "Security" [ref=e249] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e251]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e253] [cursor=pointer]
+              - listitem [ref=e254]:
+                - generic [ref=e255]:
+                  - link "Audit Logs" [ref=e256] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e258]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e260] [cursor=pointer]
+              - listitem [ref=e261]:
+                - generic [ref=e262]:
+                  - link "Self-Hosted Palette" [ref=e263] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e265]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e267] [cursor=pointer]
+              - listitem [ref=e268]:
+                - generic [ref=e269]:
+                  - link "Palette VerteX" [ref=e270] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e272]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e274] [cursor=pointer]
+              - listitem [ref=e275]:
+                - generic [ref=e276]:
+                  - link "Tenant Administration" [ref=e277] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e279]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e281] [cursor=pointer]
+              - listitem [ref=e282]:
+                - generic [ref=e283]:
+                  - link "Automation" [ref=e284] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e286]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e288] [cursor=pointer]
+              - listitem [ref=e289]:
+                - generic [ref=e290]:
+                  - link "Troubleshooting" [ref=e291] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e293]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e295] [cursor=pointer]
+              - listitem [ref=e296]:
+                - link "Glossary" [ref=e297] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e299]
+                  - text: Glossary
+              - listitem [ref=e301]:
+                - generic [ref=e302]:
+                  - link "Compliance & Legal" [ref=e303] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e305]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e307] [cursor=pointer]
+              - listitem [ref=e308]:
+                - button "Privacy Settings" [ref=e309] [cursor=pointer]:
+                  - img [ref=e310]
+                  - text: Privacy Settings
+      - main [ref=e312]:
+        - generic [ref=e314]:
+          - generic [ref=e316]:
+            - article [ref=e317]:
+              - navigation "Breadcrumbs" [ref=e318]:
+                - list [ref=e319]:
+                  - listitem [ref=e320]:
+                    - link "Home page" [ref=e321] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e322]
+                  - listitem [ref=e324]:
+                    - link "Clusters" [ref=e325] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e326]:
+                    - link "Public Cloud Clusters" [ref=e327] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/
+                  - listitem [ref=e328]:
+                    - link "AWS" [ref=e329] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/
+                  - listitem [ref=e330]:
+                    - generic [ref=e331]: Architecture
+              - generic [ref=e332]:
+                - heading "AWS Architecture" [level=1] [ref=e334]
+                - paragraph [ref=e335]: "The following are some architectural highlights of the Amazon Web Services (AWS) clusters that Palette provisions:"
+                - list [ref=e336]:
+                  - listitem [ref=e337]:
+                    - paragraph [ref=e338]: Kubernetes nodes can be distributed across multiple availability zones (AZs) to achieve high availability (HA). For each of the AZs that you select, a public subnet and a private subnet is created.
+                  - listitem [ref=e339]:
+                    - paragraph [ref=e340]: All the control plane nodes and worker nodes are created within the private subnets, so there is no direct public access available.
+                  - listitem [ref=e341]:
+                    - paragraph [ref=e342]: A Network Address Translation (NAT) Gateway is created in the public subnet of each AZ, to allow nodes in the private subnet to be able to go out to the internet or call other AWS services.
+                  - listitem [ref=e343]:
+                    - paragraph [ref=e344]: An Internet Gateway (IG) is created for each Virtual Private Cloud (VPC), to allow Secure Shell Protocol (SSH) access to the bastion node for debugging purposes. SSH into Kubernetes nodes is only available through the bastion node. A bastion node helps to provide access to the Amazon Elastic Compute Cloud (EC2) instances. This is because the EC2 instances are created in a private subnet and the bastion node operates as a secure, single point of entry into the infrastructure. The bastion node can be accessed via SSH or Remote Desktop (RDP).
+                  - listitem [ref=e345]:
+                    - paragraph [ref=e346]: The Kubernetes API Server endpoint is accessible through an Elastic Load Balancing (ELB), which load balances across all the control plane nodes.
+                - paragraph [ref=e347]:
+                  - img "A diagram of AWS architecture" [ref=e348]
+                - heading "AWS EKS ArchitectureDirect link to AWS EKS Architecture" [level=2] [ref=e349]:
+                  - text: AWS EKS Architecture
+                  - link "Direct link to AWS EKS Architecture" [ref=e350] [cursor=pointer]:
+                    - /url: "#aws-eks-architecture"
+                    - text: "#"
+                - paragraph [ref=e351]: Palette also supports deploying and managing AWS Elastic Kubernetes Service (EKS) clusters. Review the architectural highlights pertaining to EKS when managed by Palette.
+                - list [ref=e352]:
+                  - listitem [ref=e353]:
+                    - paragraph [ref=e354]: Cluster resources such as Virtual Machines (VMs) can be provisioned into an existing infrastructure (gateways, VPCs, subnets etc.) as part of static provisioning as well as new dedicated infrastructure as part of dynamic provisioning.
+                  - listitem [ref=e355]:
+                    - paragraph [ref=e356]:
+                      - text: Palette supports the usage of
+                      - link "EKS Fargate Profiles" [ref=e357] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html
+                      - text: .
+                  - listitem [ref=e358]:
+                    - paragraph [ref=e359]: Spot instance support
+                - paragraph [ref=e360]:
+                  - img "eks_cluster_architecture.webp" [ref=e361]
+                - heading "Worker Node RequirementsDirect link to Worker Node Requirements" [level=3] [ref=e362]:
+                  - text: Worker Node Requirements
+                  - link "Direct link to Worker Node Requirements" [ref=e363] [cursor=pointer]:
+                    - /url: "#worker-node-requirements"
+                    - text: "#"
+                - paragraph [ref=e364]: Your Amazon EKS cluster must include at least one worker node to host the Palette agent, which is essential for Palette to manage the cluster. Due to the EKS architecture, the Palette agent cannot be installed on the EKS control plane.
+                - list [ref=e365]:
+                  - listitem [ref=e366]:
+                    - paragraph [ref=e367]:
+                      - strong [ref=e368]: Minimum Instance Type
+                      - text: ": Worker nodes must use an instance type of at least"
+                      - strong [ref=e369]: t3.xlarge
+                      - text: to ensure adequate resources. AWS sets a default storage of 20 GB for Linux-based EKS worker nodes (the
+                      - link "diskSize" [ref=e370] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/eks/latest/APIReference/API_CreateNodegroup.html#API_CreateNodegroup_RequestSyntax
+                      - text: parameter), and we recommend this as the minimum size.
+                  - listitem [ref=e371]:
+                    - paragraph [ref=e372]:
+                      - strong [ref=e373]: Ongoing Node Availability
+                      - text: ": To maintain continuous management capabilities, at least one worker node should remain available at all times for the Palette agent to operate effectively."
+                - heading "Disable OIDC Associate ProviderDirect link to Disable OIDC Associate Provider" [level=3] [ref=e374]:
+                  - text: Disable OIDC Associate Provider
+                  - link "Direct link to Disable OIDC Associate Provider" [ref=e375] [cursor=pointer]:
+                    - /url: "#disable-oidc-associate-provider"
+                    - text: "#"
+                - paragraph [ref=e376]: "You can disable the OIDC associate provider if the service provider restricts the cluster deployment with the OIDC associate provider in the enabled state. Customize the EKS Kubernetes pack YAML values with the following option:"
+                - generic [ref=e378]:
+                  - code [ref=e380]:
+                    - generic [ref=e381]: "managedControlPlane:"
+                    - generic [ref=e382]: "disableAssociateOIDCProvider: true"
+                  - button "Copy code to clipboard" [ref=e384] [cursor=pointer]:
+                    - generic [ref=e385]:
+                      - img [ref=e386]
+                      - img [ref=e388]
+                - heading "Karpenter SupportDirect link to Karpenter Support" [level=3] [ref=e390]:
+                  - text: Karpenter Support
+                  - link "Direct link to Karpenter Support" [ref=e391] [cursor=pointer]:
+                    - /url: "#karpenter-support"
+                    - text: "#"
+                - paragraph [ref=e392]:
+                  - text: Nodes provisioned through
+                  - link "Karpenter" [ref=e393] [cursor=pointer]:
+                    - /url: https://karpenter.sh/docs/
+                  - text: are visible in Palette and supported for read-only operations, such as billing and monitoring. However,
+                  - link "Day-2 operations" [ref=e394] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/
+                  - text: are not supported. Refer to the
+                  - link "Configure Karpenter for EKS Clusters" [ref=e395] [cursor=pointer]:
+                    - /url: /clusters/public-cloud/aws/configure-karpenter-eks-clusters/
+                  - text: guide to learn how to install Karpenter on an existing EKS cluster.
+                - heading "Visibility in PaletteDirect link to Visibility in Palette" [level=4] [ref=e396]:
+                  - text: Visibility in Palette
+                  - link "Direct link to Visibility in Palette" [ref=e397] [cursor=pointer]:
+                    - /url: "#visibility-in-palette"
+                    - text: "#"
+                - paragraph [ref=e398]:
+                  - text: In Palette, node pools provisioned by Karpenter display the
+                  - strong [ref=e399]: Managed by Karpenter
+                  - text: banner in the cluster’s
+                  - strong [ref=e400]: Nodes
+                  - text: tab.
+                - paragraph [ref=e401]:
+                  - img "Karpenter node in Palette" [ref=e402]
+                - heading "Known LimitationsDirect link to Known Limitations" [level=4] [ref=e403]:
+                  - text: Known Limitations
+                  - link "Direct link to Known Limitations" [ref=e404] [cursor=pointer]:
+                    - /url: "#known-limitations"
+                    - text: "#"
+                - list [ref=e405]:
+                  - listitem [ref=e406]:
+                    - paragraph [ref=e407]:
+                      - text: Palette does not support the following instance types, and any non-supported instance types launched by Karpenter will not be displayed in the node pool view. Additionally, they will not be included in
+                      - link "kCh" [ref=e408] [cursor=pointer]:
+                        - /url: /introduction/resource-usage-estimation/
+                      - text: calculations.
+                    - list [ref=e409]:
+                      - listitem [ref=e410]:
+                        - code [ref=e411]: t1
+                        - text: ","
+                        - code [ref=e412]: m1
+                        - text: ","
+                        - code [ref=e413]: c1
+                        - text: ","
+                        - code [ref=e414]: cc2
+                        - text: ","
+                        - code [ref=e415]: m2
+                        - text: ","
+                        - code [ref=e416]: cr1
+                        - text: ","
+                        - code [ref=e417]: cg1
+                        - text: ","
+                        - code [ref=e418]: i2
+                        - text: ","
+                        - code [ref=e419]: hs1
+                        - text: ","
+                        - code [ref=e420]: m3
+                        - text: ","
+                        - code [ref=e421]: c3
+                        - text: ","
+                        - code [ref=e422]: r3
+                  - listitem [ref=e423]:
+                    - paragraph [ref=e424]:
+                      - text: Palette does not display Karpenter-specific data for node pools managed by Karpenter, such as
+                      - link "NodeClaims" [ref=e425] [cursor=pointer]:
+                        - /url: https://karpenter.sh/preview/concepts/nodeclaims/
+                      - text: or
+                      - link "Metrics" [ref=e426] [cursor=pointer]:
+                        - /url: https://karpenter.sh/preview/reference/metrics/
+                      - text: .
+                - heading "AWS Instance Type and Pod CapacityDirect link to AWS Instance Type and Pod Capacity" [level=2] [ref=e427]:
+                  - text: AWS Instance Type and Pod Capacity
+                  - link "Direct link to AWS Instance Type and Pod Capacity" [ref=e428] [cursor=pointer]:
+                    - /url: "#aws-instance-type-and-pod-capacity"
+                    - text: "#"
+                - paragraph [ref=e429]: Choose the instance type and the number of instances to be launched by calculating the number of expected pods. You should also calculate the number of pods scheduled per node for an instance type. Improperly sized nodes can cause cluster creation to fail due to resource unavailability.
+                - paragraph [ref=e430]: The following section describes calculating the pod capacity for AWS instance types. This calculation will help you select the proper instance type and the number of desired workers in a worker pool. We recommend for most workloads choosing an instance that can support at least 30 pods.
+                - heading "Formula for Pod CalculationDirect link to Formula for Pod Calculation" [level=3] [ref=e431]:
+                  - text: Formula for Pod Calculation
+                  - link "Direct link to Formula for Pod Calculation" [ref=e432] [cursor=pointer]:
+                    - /url: "#formula-for-pod-calculation"
+                    - text: "#"
+                - paragraph [ref=e433]: Number of pods = N * (M-1) + 2
+                - paragraph [ref=e434]: "Where:"
+                - list [ref=e435]:
+                  - listitem [ref=e436]:
+                    - strong [ref=e437]: "N"
+                    - text: is the number of Elastic Network Interfaces (ENI) of the instance type (Maximum network interfaces).
+                  - listitem [ref=e438]:
+                    - strong [ref=e439]: M
+                    - text: is the number of IP addresses of a single ENI (Private IPv4 addresses per interface/IPv6 addresses per interface).
+                  - listitem [ref=e440]:
+                    - text: Values for
+                    - strong [ref=e441]: "N"
+                    - text: and
+                    - strong [ref=e442]: M
+                    - text: for each instance type can be referred from
+                    - link "this document" [ref=e443] [cursor=pointer]:
+                      - /url: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI
+                    - text: .
+                - heading "Example CalculationDirect link to Example Calculation" [level=3] [ref=e444]:
+                  - text: Example Calculation
+                  - link "Direct link to Example Calculation" [ref=e445] [cursor=pointer]:
+                    - /url: "#example-calculation"
+                    - text: "#"
+                - list [ref=e446]:
+                  - listitem [ref=e447]: For instance type = t3.medium
+                  - listitem [ref=e448]:
+                    - text: For values of N = 3, and M = 6 (values derived from AWS
+                    - link "document" [ref=e449] [cursor=pointer]:
+                      - /url: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI
+                    - text: )
+                  - listitem [ref=e450]: N * (M-1) + 2 = 3(6-1)+2 =17 pods/instances
+                  - listitem [ref=e451]: In this example, at least two (2) t3.medium instances are needed to reach the minimum of 30 pods threshold.
+                - paragraph [ref=e452]: When setting the desired size of the worker pool, make the choice as per pod requirement. In the example provided, two instances of t3.medium are needed to satisfy the resource requirement of an EKS cluster.
+                - heading "Spot InstancesDirect link to Spot Instances" [level=2] [ref=e453]:
+                  - text: Spot Instances
+                  - link "Direct link to Spot Instances" [ref=e454] [cursor=pointer]:
+                    - /url: "#spot-instances"
+                    - text: "#"
+                - paragraph [ref=e455]:
+                  - text: By default, worker pools are configured to use on-demand instances. However, to take advantage of discounted spot instance pricing you can specify spot instances when creating a cluster. The
+                  - strong [ref=e456]: On-Spot
+                  - text: option can be selected in the node configuration page during cluster creation. This option allows you to specify a maximum bid price for the nodes as a percentage of the on-demand price. Palette tracks the current price for spot instances and launches nodes, when the spot price falls in the specified range.
+                - heading "TagsDirect link to Tags" [level=2] [ref=e457]:
+                  - text: Tags
+                  - link "Direct link to Tags" [ref=e458] [cursor=pointer]:
+                    - /url: "#tags"
+                    - text: "#"
+                - paragraph [ref=e459]:
+                  - text: You can assign tags to clusters deployed to AWS. Tags can help you with user access control management and more granularly restrict access to various Palette resources, including clusters. Check out the
+                  - link "Resource Filters" [ref=e460] [cursor=pointer]:
+                    - /url: /tenant-settings/filters/
+                  - text: documentation page to learn more about using tags to restrict resource access.
+                - paragraph [ref=e461]:
+                  - text: "The custom tags you create are assigned to the clusters during the creation process. Tags follow the key-value-pair format:"
+                  - code [ref=e462]: "department: finance"
+                  - text: . In addition to the custom tags provided by you, Palette-provisioned AWS resources will receive the following default tags.
+                - table [ref=e463]:
+                  - rowgroup [ref=e464]:
+                    - row "Key Value Description" [ref=e465]:
+                      - cell "Key" [ref=e466]
+                      - cell "Value" [ref=e467]
+                      - cell "Description" [ref=e468]
+                  - rowgroup [ref=e469]:
+                    - 'row "Name [clusterName-resource] The name of the AWS resource. Use the format [cluster name] - [resource type name]. Example: mycluste2r-vpc" [ref=e470]':
+                      - cell "Name" [ref=e471]:
+                        - code [ref=e472]: Name
+                      - cell "[clusterName-resource]" [ref=e473]:
+                        - text: "["
+                        - code [ref=e474]: clusterName-resource
+                        - text: "]"
+                      - 'cell "The name of the AWS resource. Use the format [cluster name] - [resource type name]. Example: mycluste2r-vpc" [ref=e475]':
+                        - text: "The name of the AWS resource. Use the format [cluster name] - [resource type name]. Example:"
+                        - code [ref=e476]: mycluste2r-vpc
+                    - row "kubernetes.io/cluster/[clusterName]. owned This tag only applies to cluster nodes. Used for Palette internal purposes to help manage the lifecycle of the cluster." [ref=e477]:
+                      - cell "kubernetes.io/cluster/[clusterName]." [ref=e478]:
+                        - code [ref=e479]: kubernetes.io/cluster/[clusterName]
+                        - text: .
+                      - cell "owned" [ref=e480]
+                      - cell "This tag only applies to cluster nodes. Used for Palette internal purposes to help manage the lifecycle of the cluster." [ref=e481]
+                    - row "sigs.k8s.io/cluster-api-provider-aws/cluster/[clusterName] owned Used for Palette internal purposes to help manage the lifecycle of the cluster." [ref=e482]:
+                      - cell "sigs.k8s.io/cluster-api-provider-aws/cluster/[clusterName]" [ref=e483]:
+                        - code [ref=e484]: sigs.k8s.io/cluster-api-provider-aws/cluster/[clusterName]
+                      - cell "owned" [ref=e485]
+                      - cell "Used for Palette internal purposes to help manage the lifecycle of the cluster." [ref=e486]
+                    - row "sigs.k8s.io/cluster-api-provider-aws/role common Used for Palette internal purposes to help manage the lifecycle of the cluster." [ref=e487]:
+                      - cell "sigs.k8s.io/cluster-api-provider-aws/role" [ref=e488]:
+                        - code [ref=e489]: sigs.k8s.io/cluster-api-provider-aws/role
+                      - cell "common" [ref=e490]
+                      - cell "Used for Palette internal purposes to help manage the lifecycle of the cluster." [ref=e491]
+                    - 'row "spectro__ownerUid [uniqueId] The Palette tenant''s id. Example: 1356fc37ab1aac03a5d66b4c." [ref=e492]':
+                      - cell "spectro__ownerUid" [ref=e493]:
+                        - code [ref=e494]: spectro__ownerUid
+                      - cell "[uniqueId]" [ref=e495]:
+                        - text: "["
+                        - code [ref=e496]: uniqueId
+                        - text: "]"
+                      - 'cell "The Palette tenant''s id. Example: 1356fc37ab1aac03a5d66b4c." [ref=e497]':
+                        - text: "The Palette tenant's id. Example:"
+                        - code [ref=e498]: 1356fc37ab1aac03a5d66b4c
+                        - text: .
+                - heading "Automatic Network DiscoveryDirect link to Automatic Network Discovery" [level=2] [ref=e499]:
+                  - text: Automatic Network Discovery
+                  - link "Direct link to Automatic Network Discovery" [ref=e500] [cursor=pointer]:
+                    - /url: "#automatic-network-discovery"
+                    - text: "#"
+                - paragraph [ref=e501]:
+                  - text: You must add a set of specific tags to enable automatic subnet discovery by Palette for integration with the AWS load balancer service. Add the following tags Virtual Private Network (VPC) public subnets. Replace the value
+                  - code [ref=e502]: yourClusterName
+                  - text: with your cluster's name.
+                - list [ref=e503]:
+                  - listitem [ref=e504]:
+                    - code [ref=e505]: kubernetes.io/role/elb = 1
+                  - listitem [ref=e506]:
+                    - code [ref=e507]: sigs.k8s.io/cluster-api-provider-aws/role = public
+                  - listitem [ref=e508]:
+                    - code [ref=e509]: kubernetes.io/cluster/[yourClusterName] = shared
+                  - listitem [ref=e510]:
+                    - code [ref=e511]: sigs.k8s.io/cluster-api-provider-aws/cluster/[yourClusterName] = owned
+                - heading "Custom Security Group Ingress RulesDirect link to Custom Security Group Ingress Rules" [level=2] [ref=e512]:
+                  - text: Custom Security Group Ingress Rules
+                  - link "Direct link to Custom Security Group Ingress Rules" [ref=e513] [cursor=pointer]:
+                    - /url: "#custom-security-group-ingress-rules"
+                    - text: "#"
+                - paragraph [ref=e514]:
+                  - text: Palette provisions a Virtual Private Network (VPC) for the control plane and worker nodes of AWS IaaS clusters. It then also creates multiple security groups, which help manage and secure the resources within the VPC. By default, the API Load Balancer security group allows all inbound traffic, specified using an ingress rule with the CIDR range
+                  - code [ref=e515]: 0.0.0.0/0
+                  - text: and port
+                  - code [ref=e516]: "6443"
+                  - text: .
+                - generic [ref=e517]:
+                  - generic [ref=e518]:
+                    - img [ref=e520]
+                    - text: warning
+                  - generic [ref=e522]:
+                    - paragraph [ref=e523]:
+                      - text: Security groups with CIDR range
+                      - code [ref=e524]: 0.0.0.0/0
+                      - text: will be automatically removed in AWS environments configured with
+                      - link "auto remediation" [ref=e525] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/config/latest/developerguide/setup-autoremediation.html
+                      - text: . The cluster will then become inaccessible.
+                    - paragraph [ref=e526]: We recommend that you configure custom security group ingress rules to all the cluster profiles that you will be deploy to AWS IaaS on secure environments.
+                - paragraph [ref=e527]:
+                  - text: You can change the load balancer security group ingress rule by specifying a custom CIDR range in the Kubernetes pack
+                  - strong [ref=e528]: Values
+                  - text: of your cluster profile. This custom ingress rule allows node to node communication within the specified CIDR range.
+                - generic [ref=e530]:
+                  - code [ref=e532]:
+                    - generic [ref=e533]: "cloud:"
+                    - generic [ref=e534]: "aws:"
+                    - generic [ref=e535]: "nodePortCIDRBlocks:"
+                    - generic [ref=e536]: "- 10.0.0.0/16"
+                  - button "Copy code to clipboard" [ref=e538] [cursor=pointer]:
+                    - generic [ref=e539]:
+                      - img [ref=e540]
+                      - img [ref=e542]
+                - paragraph [ref=e544]:
+                  - text: Similarly, the bastion node also receives a security group ingress rule of
+                  - code [ref=e545]: 0.0.0.0/0
+                  - text: . You can specify a custom ingress rule for your bastion node to only allow traffic from hosts in the specified IP range.
+                - generic [ref=e547]:
+                  - code [ref=e549]:
+                    - generic [ref=e550]: "cloud:"
+                    - generic [ref=e551]: "aws:"
+                    - generic [ref=e552]: "bastion:"
+                    - generic [ref=e553]: "allowedCIDRBlocks:"
+                    - generic [ref=e554]: "- 10.0.0.0/16"
+                  - button "Copy code to clipboard" [ref=e556] [cursor=pointer]:
+                    - generic [ref=e557]:
+                      - img [ref=e558]
+                      - img [ref=e560]
+                - paragraph [ref=e562]: You can change your specified ingress rules by editing your cluster profile at any point, before or after cluster deployment.
+              - generic [ref=e563]:
+                - generic [ref=e565]:
+                  - text: "Tags:"
+                  - list [ref=e566]:
+                    - listitem [ref=e567]:
+                      - link "public cloud" [ref=e568] [cursor=pointer]:
+                        - /url: /tags/public-cloud/
+                    - listitem [ref=e569]:
+                      - link "aws" [ref=e570] [cursor=pointer]:
+                        - /url: /tags/aws/
+                    - listitem [ref=e571]:
+                      - link "architecture" [ref=e572] [cursor=pointer]:
+                        - /url: /tags/architecture/
+                - link "Edit this page" [ref=e575] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/public-cloud/aws/architecture.md
+                  - img [ref=e576]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e580]:
+              - link "Previous « AWS" [ref=e581] [cursor=pointer]:
+                - /url: /clusters/public-cloud/aws/
+                - generic [ref=e582]: Previous
+                - generic [ref=e583]: « AWS
+              - link "Next Register and Manage AWS Accounts »" [ref=e584] [cursor=pointer]:
+                - /url: /clusters/public-cloud/aws/add-aws-accounts/
+                - generic [ref=e585]: Next
+                - generic [ref=e586]: Register and Manage AWS Accounts »
+          - list [ref=e589]:
+            - listitem [ref=e590]:
+              - link "AWS EKS Architecture" [ref=e591] [cursor=pointer]:
+                - /url: "#aws-eks-architecture"
+              - list [ref=e592]:
+                - listitem [ref=e593]:
+                  - link "Worker Node Requirements" [ref=e594] [cursor=pointer]:
+                    - /url: "#worker-node-requirements"
+                - listitem [ref=e595]:
+                  - link "Disable OIDC Associate Provider" [ref=e596] [cursor=pointer]:
+                    - /url: "#disable-oidc-associate-provider"
+                - listitem [ref=e597]:
+                  - link "Karpenter Support" [ref=e598] [cursor=pointer]:
+                    - /url: "#karpenter-support"
+            - listitem [ref=e599]:
+              - link "AWS Instance Type and Pod Capacity" [ref=e600] [cursor=pointer]:
+                - /url: "#aws-instance-type-and-pod-capacity"
+              - list [ref=e601]:
+                - listitem [ref=e602]:
+                  - link "Formula for Pod Calculation" [ref=e603] [cursor=pointer]:
+                    - /url: "#formula-for-pod-calculation"
+                - listitem [ref=e604]:
+                  - link "Example Calculation" [ref=e605] [cursor=pointer]:
+                    - /url: "#example-calculation"
+            - listitem [ref=e606]:
+              - link "Spot Instances" [ref=e607] [cursor=pointer]:
+                - /url: "#spot-instances"
+            - listitem [ref=e608]:
+              - link "Tags" [ref=e609] [cursor=pointer]:
+                - /url: "#tags"
+            - listitem [ref=e610]:
+              - link "Automatic Network Discovery" [ref=e611] [cursor=pointer]:
+                - /url: "#automatic-network-discovery"
+            - listitem [ref=e612]:
+              - link "Custom Security Group Ingress Rules" [ref=e613] [cursor=pointer]:
+                - /url: "#custom-security-group-ingress-rules"
+  - button "Project Logo Ask AI" [ref=e614] [cursor=pointer]:
+    - generic [ref=e617]:
+      - img "Project Logo" [ref=e618]
+      - paragraph [ref=e619]: Ask AI
+```

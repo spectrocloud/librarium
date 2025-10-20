@@ -1,0 +1,493 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Introduction" [ref=e41] [cursor=pointer]:
+                  - /url: /api/introduction/
+                  - img [ref=e43]
+                  - text: Introduction
+              - listitem [ref=e45]:
+                - link "Example Usage" [ref=e46] [cursor=pointer]:
+                  - /url: /api/samples/
+              - listitem [ref=e47]:
+                - link "Postman Collection" [ref=e48] [cursor=pointer]:
+                  - /url: /api/postman-collection/
+              - listitem [ref=e49]:
+                - generic [ref=e50]:
+                  - link "Palette API V1" [expanded] [ref=e51] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Palette API V1'" [ref=e52] [cursor=pointer]
+                - list [ref=e53]:
+                  - listitem [ref=e54]:
+                    - link "Introduction" [ref=e55] [cursor=pointer]:
+                      - /url: /api/v1/palette-apis-4-7/
+                  - listitem [ref=e56]:
+                    - generic [ref=e57]:
+                      - link "Api Keys" [ref=e58] [cursor=pointer]:
+                        - /url: /api/v1/api-keys/
+                      - button "Toggle the collapsible sidebar category 'Api Keys'" [ref=e59] [cursor=pointer]
+                  - listitem [ref=e60]:
+                    - generic [ref=e61]:
+                      - link "App Deployments" [ref=e62] [cursor=pointer]:
+                        - /url: /api/v1/app-deployments/
+                      - button "Toggle the collapsible sidebar category 'App Deployments'" [ref=e63] [cursor=pointer]
+                  - listitem [ref=e64]:
+                    - generic [ref=e65]:
+                      - link "App Profiles" [ref=e66] [cursor=pointer]:
+                        - /url: /api/v1/app-profiles/
+                      - button "Toggle the collapsible sidebar category 'App Profiles'" [ref=e67] [cursor=pointer]
+                  - listitem [ref=e68]:
+                    - generic [ref=e69]:
+                      - link "Audits" [ref=e70] [cursor=pointer]:
+                        - /url: /api/v1/audits/
+                      - button "Toggle the collapsible sidebar category 'Audits'" [ref=e71] [cursor=pointer]
+                  - listitem [ref=e72]:
+                    - generic [ref=e73]:
+                      - link "Auth" [ref=e74] [cursor=pointer]:
+                        - /url: /api/v1/auth/
+                      - button "Toggle the collapsible sidebar category 'Auth'" [ref=e75] [cursor=pointer]
+                  - listitem [ref=e76]:
+                    - generic [ref=e77]:
+                      - link "Cloudaccounts" [ref=e78] [cursor=pointer]:
+                        - /url: /api/v1/cloudaccounts/
+                      - button "Toggle the collapsible sidebar category 'Cloudaccounts'" [ref=e79] [cursor=pointer]
+                  - listitem [ref=e80]:
+                    - generic [ref=e81]:
+                      - link "Cloudconfigs" [ref=e82] [cursor=pointer]:
+                        - /url: /api/v1/cloudconfigs/
+                      - button "Toggle the collapsible sidebar category 'Cloudconfigs'" [ref=e83] [cursor=pointer]
+                  - listitem [ref=e84]:
+                    - generic [ref=e85]:
+                      - link "Clouds" [ref=e86] [cursor=pointer]:
+                        - /url: /api/v1/clouds/
+                      - button "Toggle the collapsible sidebar category 'Clouds'" [ref=e87] [cursor=pointer]
+                  - listitem [ref=e88]:
+                    - generic [ref=e89]:
+                      - link "Cluster Templates" [ref=e90] [cursor=pointer]:
+                        - /url: /api/v1/cluster-templates/
+                      - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+                  - listitem [ref=e92]:
+                    - generic [ref=e93]:
+                      - link "Clustergroups" [ref=e94] [cursor=pointer]:
+                        - /url: /api/v1/clustergroups/
+                      - button "Toggle the collapsible sidebar category 'Clustergroups'" [ref=e95] [cursor=pointer]
+                  - listitem [ref=e96]:
+                    - generic [ref=e97]:
+                      - link "Clusterprofiles" [ref=e98] [cursor=pointer]:
+                        - /url: /api/v1/clusterprofiles/
+                      - button "Toggle the collapsible sidebar category 'Clusterprofiles'" [ref=e99] [cursor=pointer]
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Dashboard" [ref=e102] [cursor=pointer]:
+                        - /url: /api/v1/dashboard/
+                      - button "Toggle the collapsible sidebar category 'Dashboard'" [ref=e103] [cursor=pointer]
+                  - listitem [ref=e104]:
+                    - generic [ref=e105]:
+                      - link "Datasinks" [ref=e106] [cursor=pointer]:
+                        - /url: /api/v1/datasinks/
+                      - button "Toggle the collapsible sidebar category 'Datasinks'" [ref=e107] [cursor=pointer]
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Edgehosts" [ref=e110] [cursor=pointer]:
+                        - /url: /api/v1/edgehosts/
+                      - button "Toggle the collapsible sidebar category 'Edgehosts'" [ref=e111] [cursor=pointer]
+                  - listitem [ref=e112]:
+                    - generic [ref=e113]:
+                      - link "Events" [ref=e114] [cursor=pointer]:
+                        - /url: /api/v1/events/
+                      - button "Toggle the collapsible sidebar category 'Events'" [ref=e115] [cursor=pointer]
+                  - listitem [ref=e116]:
+                    - generic [ref=e117]:
+                      - link "Features" [ref=e118] [cursor=pointer]:
+                        - /url: /api/v1/features/
+                      - button "Toggle the collapsible sidebar category 'Features'" [ref=e119] [cursor=pointer]
+                  - listitem [ref=e120]:
+                    - generic [ref=e121]:
+                      - link "Filters" [ref=e122] [cursor=pointer]:
+                        - /url: /api/v1/filters/
+                      - button "Toggle the collapsible sidebar category 'Filters'" [ref=e123] [cursor=pointer]
+                  - listitem [ref=e124]:
+                    - generic [ref=e125]:
+                      - link "Metrics" [ref=e126] [cursor=pointer]:
+                        - /url: /api/v1/metrics/
+                      - button "Toggle the collapsible sidebar category 'Metrics'" [ref=e127] [cursor=pointer]
+                  - listitem [ref=e128]:
+                    - generic [ref=e129]:
+                      - link "Notifications" [ref=e130] [cursor=pointer]:
+                        - /url: /api/v1/notifications/
+                      - button "Toggle the collapsible sidebar category 'Notifications'" [ref=e131] [cursor=pointer]
+                  - listitem [ref=e132]:
+                    - generic [ref=e133]:
+                      - link "Overlords" [ref=e134] [cursor=pointer]:
+                        - /url: /api/v1/overlords/
+                      - button "Toggle the collapsible sidebar category 'Overlords'" [ref=e135] [cursor=pointer]
+                  - listitem [ref=e136]:
+                    - generic [ref=e137]:
+                      - link "Packs" [ref=e138] [cursor=pointer]:
+                        - /url: /api/v1/packs/
+                      - button "Toggle the collapsible sidebar category 'Packs'" [ref=e139] [cursor=pointer]
+                  - listitem [ref=e140]:
+                    - generic [ref=e141]:
+                      - link "Pcg" [ref=e142] [cursor=pointer]:
+                        - /url: /api/v1/pcg/
+                      - button "Toggle the collapsible sidebar category 'Pcg'" [ref=e143] [cursor=pointer]
+                  - listitem [ref=e144]:
+                    - generic [ref=e145]:
+                      - link "Permissions" [ref=e146] [cursor=pointer]:
+                        - /url: /api/v1/permissions/
+                      - button "Toggle the collapsible sidebar category 'Permissions'" [ref=e147] [cursor=pointer]
+                  - listitem [ref=e148]:
+                    - generic [ref=e149]:
+                      - link "Projects" [ref=e150] [cursor=pointer]:
+                        - /url: /api/v1/projects/
+                      - button "Toggle the collapsible sidebar category 'Projects'" [ref=e151] [cursor=pointer]
+                  - listitem [ref=e152]:
+                    - generic [ref=e153]:
+                      - link "Registries" [expanded] [ref=e154] [cursor=pointer]:
+                        - /url: /api/v1/registries/
+                      - button "Toggle the collapsible sidebar category 'Registries'" [ref=e155] [cursor=pointer]
+                    - list [ref=e156]:
+                      - listitem [ref=e157]:
+                        - link "get Retrieves a list of Helm registries" [ref=e158] [cursor=pointer]:
+                          - /url: /api/v1/v-1-registries-helm-list/
+                      - listitem [ref=e159]:
+                        - link "post Creates a helm registry" [ref=e160] [cursor=pointer]:
+                          - /url: /api/v1/v-1-registries-helm-create/
+                      - listitem [ref=e161]:
+                        - link "get Retrieves a list of helm registries as summary" [ref=e162] [cursor=pointer]:
+                          - /url: /api/v1/v-1-registries-helm-summary-list/
+                      - listitem [ref=e163]:
+                        - link "post Check if helm registry is valid" [ref=e164] [cursor=pointer]:
+                          - /url: /api/v1/v-1-registries-helm-validate/
+                      - listitem [ref=e165]:
+                        - link "del Deletes the specified helm registry" [ref=e166] [cursor=pointer]:
+                          - /url: /api/v1/v-1-registries-helm-uid-delete/
+                      - listitem [ref=e167]:
+                        - link "get Returns the specified Helm registry" [ref=e168] [cursor=pointer]:
+                          - /url: /api/v1/v-1-registries-helm-uid-get/
+                      - listitem [ref=e169]:
+                        - link "put Updates the specified helm registry" [ref=e170] [cursor=pointer]:
+                          - /url: /api/v1/v-1-registries-helm-uid-update/
+                      - listitem [ref=e171]:
+                        - link "post Sync Helm registry" [ref=e172] [cursor=pointer]:
+                          - /url: /api/v1/v-1-registries-helm-uid-sync/
+                      - listitem [ref=e173]:
+                        - link "get Get helm registry sync status" [ref=e174] [cursor=pointer]:
+                          - /url: /api/v1/v-1-registries-helm-uid-sync-status/
+                      - listitem [ref=e175]:
+                        - link "get Retrieves a list of registries metadata" [ref=e176] [cursor=pointer]:
+                          - /url: /api/v1/v-1-registries-metadata/
+                      - listitem [ref=e177]:
+                        - link "post Creates a basic oci registry" [ref=e178] [cursor=pointer]:
+                          - /url: /api/v1/v-1-basic-oci-registries-create/
+                      - listitem [ref=e179]:
+                        - link "post Check if oci registry is valid" [ref=e180] [cursor=pointer]:
+                          - /url: /api/v1/v-1-basic-oci-registries-validate/
+                      - listitem [ref=e181]:
+                        - link "post Creates a ecr registry" [ref=e182] [cursor=pointer]:
+                          - /url: /api/v1/v-1-ecr-registries-create/
+                      - listitem [ref=e183]:
+                        - link "post Check if ecr registry is valid" [ref=e184] [cursor=pointer]:
+                          - /url: /api/v1/v-1-ecr-registries-validate/
+                      - listitem [ref=e185]:
+                        - link "get Creates a image registry" [ref=e186] [cursor=pointer]:
+                          - /url: /api/v1/v-1-oci-image-registry-get/
+                      - listitem [ref=e187]:
+                        - link "get Retrieves a oci registries summary" [ref=e188] [cursor=pointer]:
+                          - /url: /api/v1/v-1-oci-registries-summary/
+                      - listitem [ref=e189]:
+                        - link "get Returns the information of specified oci registry" [ref=e190] [cursor=pointer]:
+                          - /url: /api/v1/v-1-oci-registries-get/
+                      - listitem [ref=e191]:
+                        - link "del Deletes the specified basic oci registry" [ref=e192] [cursor=pointer]:
+                          - /url: /api/v1/v-1-basic-oci-registries-uid-delete/
+                      - listitem [ref=e193]:
+                        - link "get Returns the basic oci registry" [ref=e194] [cursor=pointer]:
+                          - /url: /api/v1/v-1-basic-oci-registries-uid-get/
+                      - listitem [ref=e195]:
+                        - link "put Updates the specified basic oci registry" [ref=e196] [cursor=pointer]:
+                          - /url: /api/v1/v-1-basic-oci-registries-uid-update/
+                      - listitem [ref=e197]:
+                        - link "post Sync oci registry" [ref=e198] [cursor=pointer]:
+                          - /url: /api/v1/v-1-basic-oci-registries-uid-sync/
+                      - listitem [ref=e199]:
+                        - link "get Get oci registry sync status" [ref=e200] [cursor=pointer]:
+                          - /url: /api/v1/v-1-basic-oci-registries-uid-sync-status/
+                      - listitem [ref=e201]:
+                        - link "del Deletes the specified ecr registry" [ref=e202] [cursor=pointer]:
+                          - /url: /api/v1/v-1-ecr-registries-uid-delete/
+                      - listitem [ref=e203]:
+                        - link "get Returns the specified ecr registry" [ref=e204] [cursor=pointer]:
+                          - /url: /api/v1/v-1-ecr-registries-uid-get/
+                      - listitem [ref=e205]:
+                        - link "put Updates the specified ecr registry" [ref=e206] [cursor=pointer]:
+                          - /url: /api/v1/v-1-ecr-registries-uid-update/
+                      - listitem [ref=e207]:
+                        - link "post Sync ecr registry" [ref=e208] [cursor=pointer]:
+                          - /url: /api/v1/v-1-ecr-registries-uid-sync/
+                      - listitem [ref=e209]:
+                        - link "get Get ecr registry sync status" [ref=e210] [cursor=pointer]:
+                          - /url: /api/v1/v-1-ecr-registries-uid-sync-status/
+                      - listitem [ref=e211]:
+                        - link "get Retrieves a list of Pack registries" [ref=e212] [cursor=pointer]:
+                          - /url: /api/v1/v-1-registries-pack-list/
+                      - listitem [ref=e213]:
+                        - link "post Creates a pack registry" [ref=e214] [cursor=pointer]:
+                          - /url: /api/v1/v-1-registries-pack-create/
+                      - listitem [ref=e215]:
+                        - link "get Retrieves a list of pack registries as summary" [ref=e216] [cursor=pointer]:
+                          - /url: /api/v1/v-1-registries-pack-summary-list/
+                      - listitem [ref=e217]:
+                        - link "post Check if pack registry is valid" [ref=e218] [cursor=pointer]:
+                          - /url: /api/v1/v-1-registries-pack-validate/
+                      - listitem [ref=e219]:
+                        - link "del Deletes the specified pack registry" [ref=e220] [cursor=pointer]:
+                          - /url: /api/v1/v-1-registries-pack-uid-delete/
+                      - listitem [ref=e221]:
+                        - link "get Returns the specified Pack registry" [ref=e222] [cursor=pointer]:
+                          - /url: /api/v1/v-1-registries-pack-uid-get/
+                      - listitem [ref=e223]:
+                        - link "put Updates the specified pack registry" [ref=e224] [cursor=pointer]:
+                          - /url: /api/v1/v-1-registries-pack-uid-update/
+                      - listitem [ref=e225]:
+                        - link "post Sync Pack registry" [ref=e226] [cursor=pointer]:
+                          - /url: /api/v1/v-1-registries-pack-uid-sync/
+                      - listitem [ref=e227]:
+                        - link "get Get pack registry sync status" [ref=e228] [cursor=pointer]:
+                          - /url: /api/v1/v-1-registries-pack-uid-sync-status/
+                      - listitem [ref=e229]:
+                        - link "get Returns the specified system scope registry configuration" [ref=e230] [cursor=pointer]:
+                          - /url: /api/v1/v-1-registries-name-config-get/
+                      - listitem [ref=e231]:
+                        - link "del Deletes the specified registry" [ref=e232] [cursor=pointer]:
+                          - /url: /api/v1/v-1-registries-uid-delete/
+                  - listitem [ref=e233]:
+                    - generic [ref=e234]:
+                      - link "Roles" [ref=e235] [cursor=pointer]:
+                        - /url: /api/v1/roles/
+                      - button "Toggle the collapsible sidebar category 'Roles'" [ref=e236] [cursor=pointer]
+                  - listitem [ref=e237]:
+                    - generic [ref=e238]:
+                      - link "Services" [ref=e239] [cursor=pointer]:
+                        - /url: /api/v1/services/
+                      - button "Toggle the collapsible sidebar category 'Services'" [ref=e240] [cursor=pointer]
+                  - listitem [ref=e241]:
+                    - generic [ref=e242]:
+                      - link "Spc Policies" [ref=e243] [cursor=pointer]:
+                        - /url: /api/v1/spc-policies/
+                      - button "Toggle the collapsible sidebar category 'Spc Policies'" [ref=e244] [cursor=pointer]
+                  - listitem [ref=e245]:
+                    - generic [ref=e246]:
+                      - link "Spectroclusters" [ref=e247] [cursor=pointer]:
+                        - /url: /api/v1/spectroclusters/
+                      - button "Toggle the collapsible sidebar category 'Spectroclusters'" [ref=e248] [cursor=pointer]
+                  - listitem [ref=e249]:
+                    - generic [ref=e250]:
+                      - link "System" [ref=e251] [cursor=pointer]:
+                        - /url: /api/v1/system/
+                      - button "Toggle the collapsible sidebar category 'System'" [ref=e252] [cursor=pointer]
+                  - listitem [ref=e253]:
+                    - generic [ref=e254]:
+                      - link "Teams" [ref=e255] [cursor=pointer]:
+                        - /url: /api/v1/teams/
+                      - button "Toggle the collapsible sidebar category 'Teams'" [ref=e256] [cursor=pointer]
+                  - listitem [ref=e257]:
+                    - generic [ref=e258]:
+                      - link "Tenants" [ref=e259] [cursor=pointer]:
+                        - /url: /api/v1/tenants/
+                      - button "Toggle the collapsible sidebar category 'Tenants'" [ref=e260] [cursor=pointer]
+                  - listitem [ref=e261]:
+                    - generic [ref=e262]:
+                      - link "Users" [ref=e263] [cursor=pointer]:
+                        - /url: /api/v1/users/
+                      - button "Toggle the collapsible sidebar category 'Users'" [ref=e264] [cursor=pointer]
+                  - listitem [ref=e265]:
+                    - generic [ref=e266]:
+                      - link "Workspaces" [ref=e267] [cursor=pointer]:
+                        - /url: /api/v1/workspaces/
+                      - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e268] [cursor=pointer]
+              - listitem [ref=e269]:
+                - generic [ref=e270]:
+                  - link "Edge Management API V1" [ref=e271] [cursor=pointer]:
+                    - /url: /api/category/edge-management-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Edge Management API V1'" [ref=e272] [cursor=pointer]
+      - main [ref=e273]:
+        - generic [ref=e277]:
+          - article [ref=e278]:
+            - navigation "Breadcrumbs" [ref=e279]:
+              - list [ref=e280]:
+                - listitem [ref=e281]:
+                  - link "Home page" [ref=e282] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e283]
+                - listitem [ref=e285]:
+                  - link "Palette API V1" [ref=e286] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                - listitem [ref=e287]:
+                  - link "Registries" [ref=e288] [cursor=pointer]:
+                    - /url: /api/v1/registries/
+                - listitem [ref=e289]:
+                  - generic [ref=e290]: Get oci registry sync status
+            - generic [ref=e292]:
+              - generic [ref=e293]:
+                - heading "Get oci registry sync status" [level=1] [ref=e294]
+                - generic [ref=e295]:
+                  - generic [ref=e296]: GET
+                  - heading "https://api.spectrocloud.com/v1/registries/oci/:uid/basic/sync/status" [level=2] [ref=e297]
+                - paragraph [ref=e299]: Get sync status for the oci specified registry
+                - heading "RequestDirect link to Request" [level=2] [ref=e300]:
+                  - text: Request
+                  - link "Direct link to Request" [ref=e301] [cursor=pointer]:
+                    - /url: "#request"
+                    - text: "#"
+                - group [ref=e302]:
+                  - generic "Path Parameters" [ref=e303] [cursor=pointer]:
+                    - heading "Path Parameters" [level=3] [ref=e304]
+                  - list [ref=e307]:
+                    - generic [ref=e309]:
+                      - strong [ref=e310]: uid
+                      - generic [ref=e311]: string
+                      - generic [ref=e313]: required
+                - group [ref=e314]:
+                  - generic "Header Parameters" [ref=e315] [cursor=pointer]:
+                    - heading "Header Parameters" [level=3] [ref=e316]
+                  - list [ref=e319]:
+                    - generic [ref=e320]:
+                      - generic [ref=e321]:
+                        - strong [ref=e322]: ProjectUid
+                        - generic [ref=e323]: string
+                      - paragraph [ref=e324]: A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources
+                - generic [ref=e325]:
+                  - generic [ref=e326]:
+                    - heading "ResponsesDirect link to Responses" [level=2] [ref=e327]:
+                      - text: Responses
+                      - link "Direct link to Responses" [ref=e328] [cursor=pointer]:
+                        - /url: "#responses"
+                        - text: "#"
+                    - tablist [ref=e330]:
+                      - tab "200" [selected] [ref=e331] [cursor=pointer]
+                  - tabpanel [ref=e333]:
+                    - paragraph [ref=e336]: Oci registry sync status
+                    - generic [ref=e337]:
+                      - tablist [ref=e340]:
+                        - tab "application/json" [selected] [ref=e341] [cursor=pointer]
+                      - tabpanel [ref=e343]:
+                        - generic [ref=e344]:
+                          - tablist [ref=e346]:
+                            - tab "Schema" [selected] [ref=e347] [cursor=pointer]:
+                              - generic [ref=e348]: Schema
+                            - tab "Example (auto)" [ref=e349] [cursor=pointer]:
+                              - generic [ref=e350]: Example (auto)
+                          - tabpanel [ref=e352]:
+                            - group [ref=e353]:
+                              - generic "Schema" [ref=e354] [cursor=pointer]:
+                                - strong [ref=e355]: Schema
+                              - list [ref=e358]:
+                                - generic [ref=e361]:
+                                  - strong [ref=e362]: isSyncSupported
+                                  - generic [ref=e363]: boolean
+                                - generic [ref=e365]:
+                                  - generic [ref=e366]:
+                                    - strong [ref=e367]: lastRunTime
+                                    - generic [ref=e368]: string<date-time>
+                                  - paragraph [ref=e370]: Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON. Wrappers are provided for many of the factory methods that the time package offers.
+                                - generic [ref=e372]:
+                                  - generic [ref=e373]:
+                                    - strong [ref=e374]: lastSyncedTime
+                                    - generic [ref=e375]: string<date-time>
+                                  - paragraph [ref=e377]: Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON. Wrappers are provided for many of the factory methods that the time package offers.
+                                - generic [ref=e380]:
+                                  - strong [ref=e381]: message
+                                  - generic [ref=e382]: string
+                                - generic [ref=e385]:
+                                  - strong [ref=e386]: status
+                                  - generic [ref=e387]: string
+              - generic [ref=e388]:
+                - group [ref=e389]:
+                  - 'generic "Authorization: ApiKey" [ref=e390]':
+                    - 'heading "Authorization: ApiKey" [level=4] [ref=e391]'
+                - generic [ref=e392]:
+                  - tablist [ref=e393]:
+                    - tab "curl" [selected] [ref=e394] [cursor=pointer]:
+                      - generic [ref=e395]: curl
+                    - tab "python" [ref=e396] [cursor=pointer]:
+                      - generic [ref=e397]: python
+                    - tab "go" [ref=e398] [cursor=pointer]:
+                      - generic [ref=e399]: go
+                    - tab "nodejs" [ref=e400] [cursor=pointer]:
+                      - generic [ref=e401]: nodejs
+                    - tab "java" [ref=e402] [cursor=pointer]:
+                      - generic [ref=e403]: java
+                  - tabpanel [ref=e404]:
+                    - generic [ref=e405]:
+                      - tablist [ref=e406]:
+                        - tab "CURL" [selected] [ref=e407] [cursor=pointer]:
+                          - generic [ref=e408]: CURL
+                      - tabpanel [ref=e409]:
+                        - generic [ref=e411]:
+                          - code [ref=e413]:
+                            - generic [ref=e416]: curl -L 'https://api.spectrocloud.com/v1/registries/oci/:uid/basic/sync/status' \
+                            - generic [ref=e419]: "-H 'Accept: application/json' \\"
+                            - generic [ref=e422]: "-H 'ApiKey: <ApiKey>'"
+                          - generic [ref=e423]:
+                            - button "Toggle word wrap" [ref=e424] [cursor=pointer]:
+                              - img [ref=e425]
+                            - button "Copy code to clipboard" [ref=e427] [cursor=pointer]:
+                              - generic [ref=e428]:
+                                - img [ref=e429]
+                                - img [ref=e431]
+                            - button "Expand code to fullscreen" [ref=e433] [cursor=pointer]:
+                              - generic [ref=e434]:
+                                - img [ref=e435]
+                                - img [ref=e437]
+          - navigation "Docs pages" [ref=e441]:
+            - link "Previous « Sync oci registry" [ref=e442] [cursor=pointer]:
+              - /url: /api/v1/v-1-basic-oci-registries-uid-sync/
+              - generic [ref=e443]: Previous
+              - generic [ref=e444]: « Sync oci registry
+            - link "Next Deletes the specified ecr registry »" [ref=e445] [cursor=pointer]:
+              - /url: /api/v1/v-1-ecr-registries-uid-delete/
+              - generic [ref=e446]: Next
+              - generic [ref=e447]: Deletes the specified ecr registry »
+  - button "Project Logo Ask AI" [ref=e448] [cursor=pointer]:
+    - generic [ref=e451]:
+      - img "Project Logo" [ref=e452]
+      - paragraph [ref=e453]: Ask AI
+```

@@ -1,0 +1,444 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Audit Logs" [ref=e165] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e167]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Self-Hosted Palette" [ref=e172] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e174]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Palette VerteX" [ref=e179] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e181]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e183] [cursor=pointer]
+              - listitem [ref=e184]:
+                - generic [ref=e185]:
+                  - link "Tenant Administration" [expanded] [ref=e186] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e188]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e190] [cursor=pointer]
+                - list [ref=e191]:
+                  - listitem [ref=e192]:
+                    - link "Add Tenant-Level Registry" [ref=e193] [cursor=pointer]:
+                      - /url: /tenant-settings/add-registry/
+                  - listitem [ref=e194]:
+                    - link "Add a Resource Filter" [ref=e195] [cursor=pointer]:
+                      - /url: /tenant-settings/filters/
+                  - listitem [ref=e196]:
+                    - link "API Key Management" [ref=e197] [cursor=pointer]:
+                      - /url: /tenant-settings/api-key-management/
+                  - listitem [ref=e198]:
+                    - link "Default Resource Limits" [ref=e199] [cursor=pointer]:
+                      - /url: /tenant-settings/palette-resource-limits/
+                  - listitem [ref=e200]:
+                    - link "Login Banner" [ref=e201] [cursor=pointer]:
+                      - /url: /tenant-settings/login-banner/
+                  - listitem [ref=e202]:
+                    - link "Session Timeout" [ref=e203] [cursor=pointer]:
+                      - /url: /tenant-settings/session-timeout/
+                  - listitem [ref=e204]:
+                    - link "Password Policy" [ref=e205] [cursor=pointer]:
+                      - /url: /tenant-settings/password-policy/
+                  - listitem [ref=e206]:
+                    - generic [ref=e207]:
+                      - link "Projects" [ref=e208] [cursor=pointer]:
+                        - /url: /tenant-settings/projects/
+                      - button "Toggle the collapsible sidebar category 'Projects'" [ref=e209] [cursor=pointer]
+              - listitem [ref=e210]:
+                - generic [ref=e211]:
+                  - link "Automation" [ref=e212] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e214]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e216] [cursor=pointer]
+              - listitem [ref=e217]:
+                - generic [ref=e218]:
+                  - link "Troubleshooting" [ref=e219] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e221]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e223] [cursor=pointer]
+              - listitem [ref=e224]:
+                - link "Glossary" [ref=e225] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e227]
+                  - text: Glossary
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "Compliance & Legal" [ref=e231] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e233]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - button "Privacy Settings" [ref=e237] [cursor=pointer]:
+                  - img [ref=e238]
+                  - text: Privacy Settings
+      - main [ref=e240]:
+        - generic [ref=e242]:
+          - generic [ref=e244]:
+            - article [ref=e245]:
+              - navigation "Breadcrumbs" [ref=e246]:
+                - list [ref=e247]:
+                  - listitem [ref=e248]:
+                    - link "Home page" [ref=e249] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e250]
+                  - listitem [ref=e252]:
+                    - link "Tenant Administration" [ref=e253] [cursor=pointer]:
+                      - /url: /tenant-settings/
+                  - listitem [ref=e254]:
+                    - generic [ref=e255]: Add a Resource Filter
+              - generic [ref=e256]:
+                - heading "Add a Resource Filter" [level=1] [ref=e258]
+                - paragraph [ref=e259]:
+                  - text: Resource filters are used to limit the visibility of resources or actions to a
+                  - link "Resource role" [ref=e260] [cursor=pointer]:
+                    - /url: /user-management/palette-rbac/resource-scope-roles-permissions/
+                  - text: . A filter is a collection of expressions that together define the scope that Resource roles can access.
+                - paragraph [ref=e261]: Use the following steps to add a filter to your Palette tenant.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e262]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e263] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e264]:
+                  - listitem [ref=e265]: You must have tenant administrator permissions to add a filter to your Palette tenant.
+                - heading "Add a FilterDirect link to Add a Filter" [level=2] [ref=e266]:
+                  - text: Add a Filter
+                  - link "Direct link to Add a Filter" [ref=e267] [cursor=pointer]:
+                    - /url: "#add-a-filter"
+                    - text: "#"
+                - list [ref=e268]:
+                  - listitem [ref=e269]:
+                    - paragraph [ref=e270]:
+                      - text: Log in to
+                      - link "Palette" [ref=e271] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant admin.
+                  - listitem [ref=e272]:
+                    - paragraph [ref=e273]:
+                      - text: Navigate to the left
+                      - strong [ref=e274]: Main Menu
+                      - text: and select
+                      - strong [ref=e275]: Tenant Settings
+                      - text: .
+                  - listitem [ref=e276]:
+                    - paragraph [ref=e277]:
+                      - text: Next, click on
+                      - strong [ref=e278]: Platform Settings
+                      - text: from the
+                      - strong [ref=e279]: Tenant Settings Menu
+                      - text: .
+                  - listitem [ref=e280]:
+                    - paragraph [ref=e281]:
+                      - text: Click on
+                      - strong [ref=e282]: Filters
+                      - text: to open the
+                      - strong [ref=e283]: Filters
+                      - text: page.
+                  - listitem [ref=e284]:
+                    - paragraph [ref=e285]:
+                      - text: Click on
+                      - strong [ref=e286]: New Resource Filter
+                      - text: to add a new filter.
+                  - listitem [ref=e287]:
+                    - paragraph [ref=e288]:
+                      - text: Provide a name for the filter in the
+                      - strong [ref=e289]: Name
+                      - text: field.
+                  - listitem [ref=e290]:
+                    - paragraph [ref=e291]:
+                      - text: Next, select the Palette resource type you want to apply the filter to. For example,
+                      - strong [ref=e292]: Tag
+                      - text: .
+                  - listitem [ref=e293]:
+                    - paragraph [ref=e294]:
+                      - text: Next, define the query for the filter. You can chose between
+                      - strong [ref=e295]: is
+                      - text: and
+                      - strong [ref=e296]: is not
+                      - text: . Complete the expression by providing a value for the query.
+                    - paragraph [ref=e297]:
+                      - img "A view of the Add Resource Filter wizard with two tag expressions - tag is not equal to the value sensitive, and the tag is equal to the value claims." [ref=e298]
+                  - listitem [ref=e299]:
+                    - paragraph [ref=e300]:
+                      - text: If you want to add more expressions to the filter, click on
+                      - strong [ref=e301]: Add condition
+                      - text: .
+                  - listitem [ref=e302]:
+                    - paragraph [ref=e303]:
+                      - text: Select a
+                      - strong [ref=e304]: Conjunction
+                      - text: . You can choose between
+                      - strong [ref=e305]: and
+                      - text: and
+                      - strong [ref=e306]: or
+                      - text: .
+                  - listitem [ref=e307]:
+                    - paragraph [ref=e308]: Repeat steps 7-10 to add more expressions to the filter.
+                  - listitem [ref=e309]:
+                    - paragraph [ref=e310]:
+                      - text: Click on
+                      - strong [ref=e311]: Confirm
+                      - text: to save the filter.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e312]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e313] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e314]:
+                  - listitem [ref=e315]:
+                    - paragraph [ref=e316]:
+                      - text: Log in to
+                      - link "Palette" [ref=e317] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant admin.
+                  - listitem [ref=e318]:
+                    - paragraph [ref=e319]:
+                      - text: Navigate to the left
+                      - strong [ref=e320]: Main Menu
+                      - text: and select
+                      - strong [ref=e321]: Tenant Settings
+                      - text: .
+                  - listitem [ref=e322]:
+                    - paragraph [ref=e323]:
+                      - text: Next, click on
+                      - strong [ref=e324]: Platform Settings
+                      - text: from the
+                      - strong [ref=e325]: Tenant Settings Menu
+                      - text: .
+                  - listitem [ref=e326]:
+                    - paragraph [ref=e327]:
+                      - text: Click on
+                      - strong [ref=e328]: Filters
+                      - text: to open the
+                      - strong [ref=e329]: Filters
+                      - text: page.
+                  - listitem [ref=e330]:
+                    - paragraph [ref=e331]:
+                      - text: Verify that the filter you added is listed in the
+                      - strong [ref=e332]: Filters
+                      - text: page.
+                  - listitem [ref=e333]:
+                    - paragraph [ref=e334]:
+                      - text: To validate the impact of the filter, assign the filter to a Resource role. For more information, refer to the
+                      - link "Resource Roles and Permissions" [ref=e335] [cursor=pointer]:
+                        - /url: /user-management/palette-rbac/resource-scope-roles-permissions/
+                      - text: page.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e336]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e337] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e338]:
+                  - listitem [ref=e339]:
+                    - link "Resource Roles" [ref=e340] [cursor=pointer]:
+                      - /url: /user-management/palette-rbac/resource-scope-roles-permissions/
+              - generic [ref=e341]:
+                - generic [ref=e343]:
+                  - text: "Tags:"
+                  - list [ref=e344]:
+                    - listitem [ref=e345]:
+                      - link "tenant-administration" [ref=e346] [cursor=pointer]:
+                        - /url: /tags/tenant-administration/
+                    - listitem [ref=e347]:
+                      - link "filter" [ref=e348] [cursor=pointer]:
+                        - /url: /tags/filter/
+                - link "Edit this page" [ref=e351] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/tenant-settings/filters.md
+                  - img [ref=e352]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e356]:
+              - link "Previous « Add Tenant-Level Registry" [ref=e357] [cursor=pointer]:
+                - /url: /tenant-settings/add-registry/
+                - generic [ref=e358]: Previous
+                - generic [ref=e359]: « Add Tenant-Level Registry
+              - link "Next API Key Management »" [ref=e360] [cursor=pointer]:
+                - /url: /tenant-settings/api-key-management/
+                - generic [ref=e361]: Next
+                - generic [ref=e362]: API Key Management »
+          - list [ref=e365]:
+            - listitem [ref=e366]:
+              - link "Prerequisites" [ref=e367] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e368]:
+              - link "Add a Filter" [ref=e369] [cursor=pointer]:
+                - /url: "#add-a-filter"
+            - listitem [ref=e370]:
+              - link "Validate" [ref=e371] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e372]:
+              - link "Resources" [ref=e373] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e374] [cursor=pointer]:
+    - generic [ref=e377]:
+      - img "Project Logo" [ref=e378]
+      - paragraph [ref=e379]: Ask AI
+```

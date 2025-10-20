@@ -1,0 +1,787 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Audit Logs" [ref=e165] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e167]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Self-Hosted Palette" [ref=e172] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e174]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Palette VerteX" [expanded] [ref=e179] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e181]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e183] [cursor=pointer]
+                - list [ref=e184]:
+                  - listitem [ref=e185]:
+                    - generic [ref=e186]:
+                      - link "FIPS" [ref=e187] [cursor=pointer]:
+                        - /url: /vertex/fips/
+                      - button "Toggle the collapsible sidebar category 'FIPS'" [ref=e188] [cursor=pointer]
+                  - listitem [ref=e189]:
+                    - generic [ref=e190]:
+                      - link "Installation" [expanded] [ref=e191] [cursor=pointer]:
+                        - /url: /vertex/install-palette-vertex/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e192] [cursor=pointer]
+                    - list [ref=e193]:
+                      - listitem [ref=e194]:
+                        - generic [ref=e195]:
+                          - link "VMware" [ref=e196] [cursor=pointer]:
+                            - /url: /vertex/install-palette-vertex/install-on-vmware/
+                          - button "Toggle the collapsible sidebar category 'VMware'" [ref=e197] [cursor=pointer]
+                      - listitem [ref=e198]:
+                        - link "Airgap Resources" [ref=e199] [cursor=pointer]:
+                          - /url: /vertex/install-palette-vertex/airgap/
+                      - listitem [ref=e200]:
+                        - generic [ref=e201]:
+                          - link "Kubernetes" [ref=e202] [cursor=pointer]:
+                            - /url: /vertex/install-palette-vertex/install-on-kubernetes/
+                          - button "Toggle the collapsible sidebar category 'Kubernetes'" [ref=e203] [cursor=pointer]
+                      - listitem [ref=e204]:
+                        - link "VerteX Management Appliance" [ref=e205] [cursor=pointer]:
+                          - /url: /vertex/install-palette-vertex/vertex-management-appliance/
+                  - listitem [ref=e206]:
+                    - link "Activate VerteX" [ref=e207] [cursor=pointer]:
+                      - /url: /vertex/activate-installation/
+                  - listitem [ref=e208]:
+                    - link "Supported Platforms" [ref=e209] [cursor=pointer]:
+                      - /url: /vertex/supported-platforms/
+                  - listitem [ref=e210]:
+                    - generic [ref=e211]:
+                      - link "System Management" [ref=e212] [cursor=pointer]:
+                        - /url: /vertex/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e213] [cursor=pointer]
+                  - listitem [ref=e214]:
+                    - generic [ref=e215]:
+                      - link "Upgrade" [ref=e216] [cursor=pointer]:
+                        - /url: /vertex/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e217] [cursor=pointer]
+              - listitem [ref=e218]:
+                - generic [ref=e219]:
+                  - link "Tenant Administration" [ref=e220] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e222]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e224] [cursor=pointer]
+              - listitem [ref=e225]:
+                - generic [ref=e226]:
+                  - link "Automation" [ref=e227] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e229]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e231] [cursor=pointer]
+              - listitem [ref=e232]:
+                - generic [ref=e233]:
+                  - link "Troubleshooting" [ref=e234] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e236]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e238] [cursor=pointer]
+              - listitem [ref=e239]:
+                - link "Glossary" [ref=e240] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e242]
+                  - text: Glossary
+              - listitem [ref=e244]:
+                - generic [ref=e245]:
+                  - link "Compliance & Legal" [ref=e246] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e248]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e250] [cursor=pointer]
+              - listitem [ref=e251]:
+                - button "Privacy Settings" [ref=e252] [cursor=pointer]:
+                  - img [ref=e253]
+                  - text: Privacy Settings
+      - main [ref=e255]:
+        - generic [ref=e257]:
+          - generic [ref=e259]:
+            - article [ref=e260]:
+              - navigation "Breadcrumbs" [ref=e261]:
+                - list [ref=e262]:
+                  - listitem [ref=e263]:
+                    - link "Home page" [ref=e264] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e265]
+                  - listitem [ref=e267]:
+                    - link "Palette VerteX" [ref=e268] [cursor=pointer]:
+                      - /url: /vertex/
+                  - listitem [ref=e269]:
+                    - generic [ref=e270]: Installation
+              - generic [ref=e271]:
+                - heading "Installation" [level=1] [ref=e273]
+                - paragraph [ref=e274]: Palette VerteX is available as a self-hosted application that you install in your environment. Palette VerteX is available in the following modes.
+                - table [ref=e275]:
+                  - rowgroup [ref=e276]:
+                    - row "Method Supported Platforms Description Install Guide" [ref=e277]:
+                      - cell "Method" [ref=e278]:
+                        - strong [ref=e279]: Method
+                      - cell "Supported Platforms" [ref=e280]:
+                        - strong [ref=e281]: Supported Platforms
+                      - cell "Description" [ref=e282]:
+                        - strong [ref=e283]: Description
+                      - cell "Install Guide" [ref=e284]:
+                        - strong [ref=e285]: Install Guide
+                  - rowgroup [ref=e286]:
+                    - row "Palette CLI VMware Install Palette VerteX in VMware environment. Install on VMware" [ref=e287]:
+                      - cell "Palette CLI" [ref=e288]
+                      - cell "VMware" [ref=e289]
+                      - cell "Install Palette VerteX in VMware environment." [ref=e290]
+                      - cell "Install on VMware" [ref=e291]:
+                        - link "Install on VMware" [ref=e292] [cursor=pointer]:
+                          - /url: /vertex/install-palette-vertex/install-on-vmware/install/
+                    - row "Helm Chart Kubernetes Install Palette VerteX using a Helm Chart in an existing Kubernetes cluster. Install on Kubernetes" [ref=e293]:
+                      - cell "Helm Chart" [ref=e294]
+                      - cell "Kubernetes" [ref=e295]
+                      - cell "Install Palette VerteX using a Helm Chart in an existing Kubernetes cluster." [ref=e296]
+                      - cell "Install on Kubernetes" [ref=e297]:
+                        - link "Install on Kubernetes" [ref=e298] [cursor=pointer]:
+                          - /url: /vertex/install-palette-vertex/install-on-kubernetes/install/
+                    - row "Technical preview feature badge VerteX Management Appliance VMware, Bare Metal, MAAS Install Palette VerteX using the VerteX Management Appliance ISO file. Install with VerteX Management Appliance" [ref=e299]:
+                      - cell "Technical preview feature badge VerteX Management Appliance" [ref=e300]:
+                        - img "Technical preview feature badge" [ref=e301]
+                        - text: VerteX Management Appliance
+                      - cell "VMware, Bare Metal, MAAS" [ref=e302]
+                      - cell "Install Palette VerteX using the VerteX Management Appliance ISO file." [ref=e303]
+                      - cell "Install with VerteX Management Appliance" [ref=e304]:
+                        - link "Install with VerteX Management Appliance" [ref=e305] [cursor=pointer]:
+                          - /url: /vertex/install-palette-vertex/vertex-management-appliance/
+                - heading "Airgap InstallationDirect link to Airgap Installation" [level=2] [ref=e306]:
+                  - text: Airgap Installation
+                  - link "Direct link to Airgap Installation" [ref=e307] [cursor=pointer]:
+                    - /url: "#airgap-installation"
+                    - text: "#"
+                - paragraph [ref=e308]:
+                  - text: You can also install Palette VerteX in an airgap environment. For more information, refer to the
+                  - link "Airgap Installation" [ref=e309] [cursor=pointer]:
+                    - /url: /vertex/install-palette-vertex/airgap/
+                  - text: section.
+                - table [ref=e310]:
+                  - rowgroup [ref=e311]:
+                    - row "Method Supported Airgap Platforms Description Install Guide" [ref=e312]:
+                      - cell "Method" [ref=e313]:
+                        - strong [ref=e314]: Method
+                      - cell "Supported Airgap Platforms" [ref=e315]:
+                        - strong [ref=e316]: Supported Airgap Platforms
+                      - cell "Description" [ref=e317]:
+                        - strong [ref=e318]: Description
+                      - cell "Install Guide" [ref=e319]:
+                        - strong [ref=e320]: Install Guide
+                  - rowgroup [ref=e321]:
+                    - row "Palette CLI VMware Install Palette VerteX in VMware environment using your own OCI registry server." [ref=e322]:
+                      - cell "Palette CLI" [ref=e323]
+                      - cell "VMware" [ref=e324]
+                      - cell "Install Palette VerteX in VMware environment using your own OCI registry server." [ref=e325]
+                      - cell [ref=e326]
+                    - row "Helm Chart Kubernetes Install Palette VerteX using a Helm Chart in an existing Kubernetes cluster with your own OCI registry server OR use AWS ECR. Airgap Install" [ref=e327]:
+                      - cell "Helm Chart" [ref=e328]
+                      - cell "Kubernetes" [ref=e329]
+                      - cell "Install Palette VerteX using a Helm Chart in an existing Kubernetes cluster with your own OCI registry server OR use AWS ECR." [ref=e330]
+                      - cell "Airgap Install" [ref=e331]:
+                        - link "Airgap Install" [ref=e332] [cursor=pointer]:
+                          - /url: /vertex/install-palette-vertex/install-on-kubernetes/airgap-install/
+                    - row "Technical preview feature badge VerteX Management Appliance VMware, Bare Metal, MAAS Install Palette VerteX using the VerteX Management Appliance ISO file. Install with VerteX Management Appliance" [ref=e333]:
+                      - cell "Technical preview feature badge VerteX Management Appliance" [ref=e334]:
+                        - img "Technical preview feature badge" [ref=e335]
+                        - text: VerteX Management Appliance
+                      - cell "VMware, Bare Metal, MAAS" [ref=e336]
+                      - cell "Install Palette VerteX using the VerteX Management Appliance ISO file." [ref=e337]
+                      - cell "Install with VerteX Management Appliance" [ref=e338]:
+                        - link "Install with VerteX Management Appliance" [ref=e339] [cursor=pointer]:
+                          - /url: /vertex/install-palette-vertex/vertex-management-appliance/
+                - paragraph [ref=e340]: The next sections describe specific requirements for installing Palette VerteX.
+                - heading "Size GuidelinesDirect link to Size Guidelines" [level=2] [ref=e341]:
+                  - text: Size Guidelines
+                  - link "Direct link to Size Guidelines" [ref=e342] [cursor=pointer]:
+                    - /url: "#size-guidelines"
+                    - text: "#"
+                - paragraph [ref=e343]:
+                  - text: This section lists resource requirements for VerteX for various capacity levels. In VerteX, the terms
+                  - emphasis [ref=e344]: small
+                  - text: ","
+                  - emphasis [ref=e345]: medium
+                  - text: ", and"
+                  - emphasis [ref=e346]: large
+                  - text: are used to describe the instance size of worker pools that Palette is installed on. The following table lists the resource requirements for each size.
+                - generic [ref=e347]:
+                  - generic [ref=e348]:
+                    - img [ref=e350]
+                    - text: warning
+                  - paragraph [ref=e353]: The recommended maximum number of deployed nodes and clusters in the environment should not be exceeded. We have tested the performance of VerteX with the recommended maximum number of deployed nodes and clusters. Exceeding these limits can negatively impact performance and result in instability. The active workload limit refers to the maximum number of active nodes and pods at any given time.
+                - generic [ref=e354]:
+                  - tablist [ref=e355]:
+                    - tab "Palette CLI or Helm Chart" [selected] [ref=e356] [cursor=pointer]
+                    - tab "Management Appliance" [ref=e357] [cursor=pointer]
+                  - tabpanel [ref=e359]:
+                    - table [ref=e360]:
+                      - rowgroup [ref=e361]:
+                        - row "Size Total Nodes Node CPU Node Memory Node Storage MongoDB Node Storage Limit MongoDB Node Memory Limit MongoDB Node CPU Limit Total Deployed Workload Cluster Nodes Deployed Clusters with 10 Nodes" [ref=e362]:
+                          - cell "Size" [ref=e363]:
+                            - strong [ref=e364]: Size
+                          - cell "Total Nodes" [ref=e365]:
+                            - strong [ref=e366]: Total Nodes
+                          - cell "Node CPU" [ref=e367]:
+                            - strong [ref=e368]: Node CPU
+                          - cell "Node Memory" [ref=e369]:
+                            - strong [ref=e370]: Node Memory
+                          - cell "Node Storage" [ref=e371]:
+                            - strong [ref=e372]: Node Storage
+                          - cell "MongoDB Node Storage Limit" [ref=e373]:
+                            - strong [ref=e374]: MongoDB Node Storage Limit
+                          - cell "MongoDB Node Memory Limit" [ref=e375]:
+                            - strong [ref=e376]: MongoDB Node Memory Limit
+                          - cell "MongoDB Node CPU Limit" [ref=e377]:
+                            - strong [ref=e378]: MongoDB Node CPU Limit
+                          - cell "Total Deployed Workload Cluster Nodes" [ref=e379]:
+                            - strong [ref=e380]: Total Deployed Workload Cluster Nodes
+                          - cell "Deployed Clusters with 10 Nodes" [ref=e381]:
+                            - strong [ref=e382]: Deployed Clusters with 10 Nodes
+                      - rowgroup [ref=e383]:
+                        - row "Small 3 8 16 GB 60 GB 20 GB 4 GB 2 1000 100" [ref=e384]:
+                          - cell "Small" [ref=e385]
+                          - cell "3" [ref=e386]
+                          - cell "8" [ref=e387]
+                          - cell "16 GB" [ref=e388]
+                          - cell "60 GB" [ref=e389]
+                          - cell "20 GB" [ref=e390]
+                          - cell "4 GB" [ref=e391]
+                          - cell "2" [ref=e392]
+                          - cell "1000" [ref=e393]
+                          - cell "100" [ref=e394]
+                        - row "Medium (Recommended) 3 16 32 GB 100 GB 60 GB 8 GB 4 3000 300" [ref=e395]:
+                          - cell "Medium (Recommended)" [ref=e396]
+                          - cell "3" [ref=e397]
+                          - cell "16" [ref=e398]
+                          - cell "32 GB" [ref=e399]
+                          - cell "100 GB" [ref=e400]
+                          - cell "60 GB" [ref=e401]
+                          - cell "8 GB" [ref=e402]
+                          - cell "4" [ref=e403]
+                          - cell "3000" [ref=e404]
+                          - cell "300" [ref=e405]
+                        - row "Large 3 32 64 GB 120 GB 80 GB 12 GB 6 5000 500" [ref=e406]:
+                          - cell "Large" [ref=e407]
+                          - cell "3" [ref=e408]
+                          - cell "32" [ref=e409]
+                          - cell "64 GB" [ref=e410]
+                          - cell "120 GB" [ref=e411]
+                          - cell "80 GB" [ref=e412]
+                          - cell "12 GB" [ref=e413]
+                          - cell "6" [ref=e414]
+                          - cell "5000" [ref=e415]
+                          - cell "500" [ref=e416]
+                - generic [ref=e417]:
+                  - generic [ref=e418]:
+                    - img [ref=e420]
+                    - text: info
+                  - paragraph [ref=e423]: The Spectro manifest requires approximately 10 GB of storage. VerteX deployed clusters use the manifest to identify what images to pull for each microservice that makes up VerteX.
+                - heading "Instance SizingDirect link to Instance Sizing" [level=4] [ref=e424]:
+                  - text: Instance Sizing
+                  - link "Direct link to Instance Sizing" [ref=e425] [cursor=pointer]:
+                    - /url: "#instance-sizing"
+                    - text: "#"
+                - table [ref=e426]:
+                  - rowgroup [ref=e427]:
+                    - row "Configuration Active Workload Limit" [ref=e428]:
+                      - cell "Configuration" [ref=e429]:
+                        - strong [ref=e430]: Configuration
+                      - cell "Active Workload Limit" [ref=e431]:
+                        - strong [ref=e432]: Active Workload Limit
+                  - rowgroup [ref=e433]:
+                    - row "Small Up to 1000 nodes each with 30 pods (30,000 pods)" [ref=e434]:
+                      - cell "Small" [ref=e435]
+                      - cell "Up to 1000 nodes each with 30 pods (30,000 pods)" [ref=e436]
+                    - row "Medium (Recommended) Up to 3000 nodes each with 30 pods (90,000 pods)" [ref=e437]:
+                      - cell "Medium (Recommended)" [ref=e438]
+                      - cell "Up to 3000 nodes each with 30 pods (90,000 pods)" [ref=e439]
+                    - row "Large Up to 5000 nodes each with 30 pods (150,000 pods)" [ref=e440]:
+                      - cell "Large" [ref=e441]
+                      - cell "Up to 5000 nodes each with 30 pods (150,000 pods)" [ref=e442]
+                - heading "Kubernetes RequirementsDirect link to Kubernetes Requirements" [level=2] [ref=e443]:
+                  - text: Kubernetes Requirements
+                  - link "Direct link to Kubernetes Requirements" [ref=e444] [cursor=pointer]:
+                    - /url: "#kubernetes-requirements"
+                    - text: "#"
+                - paragraph [ref=e445]:
+                  - text: The following table presents the Kubernetes version corresponding to each Palette version for
+                  - link "VMware" [ref=e446] [cursor=pointer]:
+                    - /url: /vertex/install-palette-vertex/install-on-vmware/
+                  - text: and
+                  - link "Kubernetes" [ref=e447] [cursor=pointer]:
+                    - /url: /vertex/install-palette-vertex/install-on-kubernetes/
+                  - text: installations. Additionally, for VMware installations, it provides the download URLs for the required Operating System and Kubernetes distribution OVA.
+                - generic [ref=e448]:
+                  - tablist [ref=e449]:
+                    - tab "VMware" [selected] [ref=e450] [cursor=pointer]
+                    - tab "Kubernetes" [ref=e451] [cursor=pointer]
+                  - tabpanel [ref=e453]:
+                    - table [ref=e454]:
+                      - rowgroup [ref=e455]:
+                        - row "Palette Version Kubernetes Version FIPS OVA Download URL" [ref=e456]:
+                          - cell "Palette Version" [ref=e457]:
+                            - strong [ref=e458]: Palette Version
+                          - cell "Kubernetes Version" [ref=e459]:
+                            - strong [ref=e460]: Kubernetes Version
+                          - cell "FIPS OVA Download URL" [ref=e461]:
+                            - strong [ref=e462]: FIPS OVA Download URL
+                      - rowgroup [ref=e463]:
+                        - row "4.7.27 1.32.8 https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1328-fips.ova" [ref=e464]:
+                          - cell "4.7.27" [ref=e465]
+                          - cell "1.32.8" [ref=e466]
+                          - cell "https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1328-fips.ova" [ref=e467]:
+                            - code [ref=e468]: https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1328-fips.ova
+                        - row "4.7.20 1.31.8 https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1318-fips.ova" [ref=e469]:
+                          - cell "4.7.20" [ref=e470]
+                          - cell "1.31.8" [ref=e471]
+                          - cell "https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1318-fips.ova" [ref=e472]:
+                            - code [ref=e473]: https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1318-fips.ova
+                        - row "4.7.13 1.31.8 https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1318-fips.ova" [ref=e474]:
+                          - cell "4.7.13" [ref=e475]
+                          - cell "1.31.8" [ref=e476]
+                          - cell "https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1318-fips.ova" [ref=e477]:
+                            - code [ref=e478]: https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1318-fips.ova
+                        - row "4.7.3 1.31.8 https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1318-fips.ova" [ref=e479]:
+                          - cell "4.7.3" [ref=e480]
+                          - cell "1.31.8" [ref=e481]
+                          - cell "https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1318-fips.ova" [ref=e482]:
+                            - code [ref=e483]: https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1318-fips.ova
+                        - row "4.6.40 1.30.9 https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1309-fips.ova" [ref=e484]:
+                          - cell "4.6.40" [ref=e485]
+                          - cell "1.30.9" [ref=e486]
+                          - cell "https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1309-fips.ova" [ref=e487]:
+                            - code [ref=e488]: https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1309-fips.ova
+                        - row "4.6.32 1.30.9 https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1309-fips.ova" [ref=e489]:
+                          - cell "4.6.32" [ref=e490]
+                          - cell "1.30.9" [ref=e491]
+                          - cell "https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1309-fips.ova" [ref=e492]:
+                            - code [ref=e493]: https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1309-fips.ova
+                        - row "4.6.23 1.30.9 https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1309-fips.ova" [ref=e494]:
+                          - cell "4.6.23" [ref=e495]
+                          - cell "1.30.9" [ref=e496]
+                          - cell "https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1309-fips.ova" [ref=e497]:
+                            - code [ref=e498]: https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1309-fips.ova
+                        - row "4.6.12 1.30.9 https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1309-fips.ova" [ref=e499]:
+                          - cell "4.6.12" [ref=e500]
+                          - cell "1.30.9" [ref=e501]
+                          - cell "https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1309-fips.ova" [ref=e502]:
+                            - code [ref=e503]: https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1309-fips.ova
+                        - row "4.6.6 1.30.9 https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1309-fips.ova" [ref=e504]:
+                          - cell "4.6.6" [ref=e505]
+                          - cell "1.30.9" [ref=e506]
+                          - cell "https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1309-fips.ova" [ref=e507]:
+                            - code [ref=e508]: https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1309-fips.ova
+                        - row "4.5.21 1.29.12 https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-12912-fips.ova" [ref=e509]:
+                          - cell "4.5.21" [ref=e510]
+                          - cell "1.29.12" [ref=e511]
+                          - cell "https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-12912-fips.ova" [ref=e512]:
+                            - code [ref=e513]: https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-12912-fips.ova
+                        - row "4.5.20 1.29.12 https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-12912-fips.ova" [ref=e514]:
+                          - cell "4.5.20" [ref=e515]
+                          - cell "1.29.12" [ref=e516]
+                          - cell "https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-12912-fips.ova" [ref=e517]:
+                            - code [ref=e518]: https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-12912-fips.ova
+                        - row "4.5.15 1.29.9 https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1299-fips.ova" [ref=e519]:
+                          - cell "4.5.15" [ref=e520]
+                          - cell "1.29.9" [ref=e521]
+                          - cell "https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1299-fips.ova" [ref=e522]:
+                            - code [ref=e523]: https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1299-fips.ova
+                        - row "4.5.11 1.29.9 https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1299-fips.ova" [ref=e524]:
+                          - cell "4.5.11" [ref=e525]
+                          - cell "1.29.9" [ref=e526]
+                          - cell "https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1299-fips.ova" [ref=e527]:
+                            - code [ref=e528]: https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1299-fips.ova
+                        - row "4.5.10 1.29.9 https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1299-fips.ova" [ref=e529]:
+                          - cell "4.5.10" [ref=e530]
+                          - cell "1.29.9" [ref=e531]
+                          - cell "https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1299-fips.ova" [ref=e532]:
+                            - code [ref=e533]: https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1299-fips.ova
+                        - row "4.5.8 1.29.9 https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1299-fips.ova" [ref=e534]:
+                          - cell "4.5.8" [ref=e535]
+                          - cell "1.29.9" [ref=e536]
+                          - cell "https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1299-fips.ova" [ref=e537]:
+                            - code [ref=e538]: https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1299-fips.ova
+                        - row "4.5.5 1.29.9 https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1299-fips.ova" [ref=e539]:
+                          - cell "4.5.5" [ref=e540]
+                          - cell "1.29.9" [ref=e541]
+                          - cell "https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1299-fips.ova" [ref=e542]:
+                            - code [ref=e543]: https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1299-fips.ova
+                        - row "4.5.4 1.29.9 https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1299-fips.ova" [ref=e544]:
+                          - cell "4.5.4" [ref=e545]
+                          - cell "1.29.9" [ref=e546]
+                          - cell "https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1299-fips.ova" [ref=e547]:
+                            - code [ref=e548]: https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1299-fips.ova
+                        - row "4.5.3 1.29.9 https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1299-fips.ova" [ref=e549]:
+                          - cell "4.5.3" [ref=e550]
+                          - cell "1.29.9" [ref=e551]
+                          - cell "https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1299-fips.ova" [ref=e552]:
+                            - code [ref=e553]: https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1299-fips.ova
+                        - row "4.4.20 1.28.13 https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-12813-fips.ova" [ref=e554]:
+                          - cell "4.4.20" [ref=e555]
+                          - cell "1.28.13" [ref=e556]
+                          - cell "https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-12813-fips.ova" [ref=e557]:
+                            - code [ref=e558]: https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-12813-fips.ova
+                        - row "4.4.18 1.28.13 https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-12813-fips.ova" [ref=e559]:
+                          - cell "4.4.18" [ref=e560]
+                          - cell "1.28.13" [ref=e561]
+                          - cell "https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-12813-fips.ova" [ref=e562]:
+                            - code [ref=e563]: https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-12813-fips.ova
+                        - row "4.4.14 1.28.12 https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-12812-fips.ova" [ref=e564]:
+                          - cell "4.4.14" [ref=e565]
+                          - cell "1.28.12" [ref=e566]
+                          - cell "https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-12812-fips.ova" [ref=e567]:
+                            - code [ref=e568]: https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-12812-fips.ova
+                        - row "4.4.11 1.28.11 https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1289-fips.ova" [ref=e569]:
+                          - cell "4.4.11" [ref=e570]
+                          - cell "1.28.11" [ref=e571]
+                          - cell "https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1289-fips.ova" [ref=e572]:
+                            - code [ref=e573]: https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1289-fips.ova
+                        - row "4.4.6 1.28.9 https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1289-fips.ova" [ref=e574]:
+                          - cell "4.4.6" [ref=e575]
+                          - cell "1.28.9" [ref=e576]
+                          - cell "https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1289-fips.ova" [ref=e577]:
+                            - code [ref=e578]: https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1289-fips.ova
+                        - row "4.3.6 1.27.11 https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12711-fips.ova" [ref=e579]:
+                          - cell "4.3.6" [ref=e580]
+                          - cell "1.27.11" [ref=e581]
+                          - cell "https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12711-fips.ova" [ref=e582]:
+                            - code [ref=e583]: https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12711-fips.ova
+                        - row "4.2.13 1.26.10 https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12610-fips.ova" [ref=e584]:
+                          - cell "4.2.13" [ref=e585]
+                          - cell "1.26.10" [ref=e586]
+                          - cell "https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12610-fips.ova" [ref=e587]:
+                            - code [ref=e588]: https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12610-fips.ova
+                        - row "4.2.7 1.26.10 https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12610-fips.ova" [ref=e589]:
+                          - cell "4.2.7" [ref=e590]
+                          - cell "1.26.10" [ref=e591]
+                          - cell "https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12610-fips.ova" [ref=e592]:
+                            - code [ref=e593]: https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12610-fips.ova
+                        - row "4.1.12 1.26.8 https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1268-fips.ova" [ref=e594]:
+                          - cell "4.1.12" [ref=e595]
+                          - cell "1.26.8" [ref=e596]
+                          - cell "https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1268-fips.ova" [ref=e597]:
+                            - code [ref=e598]: https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1268-fips.ova
+                - heading "Proxy RequirementsDirect link to Proxy Requirements" [level=2] [ref=e599]:
+                  - text: Proxy Requirements
+                  - link "Direct link to Proxy Requirements" [ref=e600] [cursor=pointer]:
+                    - /url: "#proxy-requirements"
+                    - text: "#"
+                - paragraph [ref=e601]: "By default, VerteX connects to the internet to download images and packages. If your environment uses a proxy server, ensure the following domains and ports are accessible. The proxy server should meet the following requirements:"
+                - list [ref=e602]:
+                  - listitem [ref=e603]:
+                    - paragraph [ref=e604]: A proxy used for outgoing connections should support both HTTP and HTTPS traffic.
+                  - listitem [ref=e605]:
+                    - paragraph [ref=e606]: If you are deploying VerteX to a vSphere environment. Ensure the instance Palette is installed through network has access to vCenter.
+                  - listitem [ref=e607]:
+                    - paragraph [ref=e608]: Allow connectivity to domains and ports in the table.
+                - list [ref=e609]:
+                  - listitem [ref=e610]:
+                    - text: Review the
+                    - link "gRPC and Proxies" [ref=e611] [cursor=pointer]:
+                      - /url: /architecture/grps-proxy/
+                    - text: page to learn more about VerteX's support for gRPC in a proxy environment.
+                - generic [ref=e612]:
+                  - generic [ref=e613]:
+                    - img [ref=e615]
+                    - text: info
+                  - paragraph [ref=e618]: The statements above are not applicable to air-gapped installations. For air-gapped installations, you must download the required images and packages and make them available to the system.
+                - table [ref=e619]:
+                  - rowgroup [ref=e620]:
+                    - row "Top-Level Domain Port Description" [ref=e621]:
+                      - cell "Top-Level Domain" [ref=e622]:
+                        - strong [ref=e623]: Top-Level Domain
+                      - cell "Port" [ref=e624]:
+                        - strong [ref=e625]: Port
+                      - cell "Description" [ref=e626]:
+                        - strong [ref=e627]: Description
+                  - rowgroup [ref=e628]:
+                    - row "ecr.*.amazonaws.com 443 AWS ECR Registry" [ref=e629]:
+                      - cell "ecr.*.amazonaws.com" [ref=e630]
+                      - cell "443" [ref=e631]
+                      - cell "AWS ECR Registry" [ref=e632]
+                    - row "spectrocloud.com 443 Required content repository and pack registry" [ref=e633]:
+                      - cell "spectrocloud.com" [ref=e634]
+                      - cell "443" [ref=e635]
+                      - cell "Required content repository and pack registry" [ref=e636]
+                    - row "*.amazonaws.com 443 OVA files and other assets generated by us" [ref=e637]:
+                      - cell "*.amazonaws.com" [ref=e638]
+                      - cell "443" [ref=e639]
+                      - cell "OVA files and other assets generated by us" [ref=e640]
+                    - row "gcr.io 443 Assets maintained by us and common third party container images" [ref=e641]:
+                      - cell "gcr.io" [ref=e642]
+                      - cell "443" [ref=e643]
+                      - cell "Assets maintained by us and common third party container images" [ref=e644]
+                    - row "ghcr.io 443 Kubernetes VIP images" [ref=e645]:
+                      - cell "ghcr.io" [ref=e646]
+                      - cell "443" [ref=e647]
+                      - cell "Kubernetes VIP images" [ref=e648]
+                    - row "docker.io 443 Common third party content" [ref=e649]:
+                      - cell "docker.io" [ref=e650]
+                      - cell "443" [ref=e651]
+                      - cell "Common third party content" [ref=e652]
+                    - row "googleapis.com 443 For pulling images required by our services" [ref=e653]:
+                      - cell "googleapis.com" [ref=e654]
+                      - cell "443" [ref=e655]
+                      - cell "For pulling images required by our services" [ref=e656]
+                    - row "docker.com 443 Common third party container images" [ref=e657]:
+                      - cell "docker.com" [ref=e658]
+                      - cell "443" [ref=e659]
+                      - cell "Common third party container images" [ref=e660]
+                    - row "raw.githubusercontent.com 443 Common third party content" [ref=e661]:
+                      - cell "raw.githubusercontent.com" [ref=e662]
+                      - cell "443" [ref=e663]
+                      - cell "Common third party content" [ref=e664]
+                    - row "projectcalico.org 443 Calico container images" [ref=e665]:
+                      - cell "projectcalico.org" [ref=e666]
+                      - cell "443" [ref=e667]
+                      - cell "Calico container images" [ref=e668]
+                    - row "quay.io 443 Common third party container images" [ref=e669]:
+                      - cell "quay.io" [ref=e670]
+                      - cell "443" [ref=e671]
+                      - cell "Common third party container images" [ref=e672]
+                    - row "grafana.com 443 Grafana container images and manifests" [ref=e673]:
+                      - cell "grafana.com" [ref=e674]
+                      - cell "443" [ref=e675]
+                      - cell "Grafana container images and manifests" [ref=e676]
+                    - row "github.com 443 Common third party content" [ref=e677]:
+                      - cell "github.com" [ref=e678]
+                      - cell "443" [ref=e679]
+                      - cell "Common third party content" [ref=e680]
+                    - row "k8s.gcr.io 443 Kubernetes images [deprecated]" [ref=e681]:
+                      - cell "k8s.gcr.io" [ref=e682]
+                      - cell "443" [ref=e683]
+                      - cell "Kubernetes images [deprecated]" [ref=e684]
+                    - row "registry.k8s.io 443 Kubernetes images" [ref=e685]:
+                      - cell "registry.k8s.io" [ref=e686]
+                      - cell "443" [ref=e687]
+                      - cell "Kubernetes images" [ref=e688]
+                    - row "docker.pkg.dev 443 Common third party content" [ref=e689]:
+                      - cell "docker.pkg.dev" [ref=e690]
+                      - cell "443" [ref=e691]
+                      - cell "Common third party content" [ref=e692]
+                    - row "us-docker.pkg.dev 443 Required content repository and common third party content" [ref=e693]:
+                      - cell "us-docker.pkg.dev" [ref=e694]
+                      - cell "443" [ref=e695]
+                      - cell "Required content repository and common third party content" [ref=e696]
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e697]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e698] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e699]:
+                  - listitem [ref=e700]:
+                    - paragraph [ref=e701]:
+                      - link "Install on VMware vSphere" [ref=e702] [cursor=pointer]:
+                        - /url: /vertex/install-palette-vertex/install-on-vmware/
+                  - listitem [ref=e703]:
+                    - paragraph [ref=e704]:
+                      - link "Install Using Helm Chart" [ref=e705] [cursor=pointer]:
+                        - /url: /vertex/install-palette-vertex/install-on-kubernetes/
+                  - listitem [ref=e706]:
+                    - paragraph [ref=e707]:
+                      - link "Airgap Installation" [ref=e708] [cursor=pointer]:
+                        - /url: /vertex/install-palette-vertex/airgap/
+              - generic [ref=e709]:
+                - generic [ref=e711]:
+                  - text: "Tags:"
+                  - list [ref=e712]:
+                    - listitem [ref=e713]:
+                      - link "vertex" [ref=e714] [cursor=pointer]:
+                        - /url: /tags/vertex/
+                - link "Edit this page" [ref=e717] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vertex/install-palette-vertex/install-palette-vertex.md
+                  - img [ref=e718]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e722]:
+              - link "Previous « FIPS-Compliant Components" [ref=e723] [cursor=pointer]:
+                - /url: /vertex/fips/fips-compliant-components/
+                - generic [ref=e724]: Previous
+                - generic [ref=e725]: « FIPS-Compliant Components
+              - link "Next VMware »" [ref=e726] [cursor=pointer]:
+                - /url: /vertex/install-palette-vertex/install-on-vmware/
+                - generic [ref=e727]: Next
+                - generic [ref=e728]: VMware »
+          - list [ref=e731]:
+            - listitem [ref=e732]:
+              - link "Airgap Installation" [ref=e733] [cursor=pointer]:
+                - /url: "#airgap-installation"
+            - listitem [ref=e734]:
+              - link "Size Guidelines" [ref=e735] [cursor=pointer]:
+                - /url: "#size-guidelines"
+            - listitem [ref=e736]:
+              - link "Kubernetes Requirements" [ref=e737] [cursor=pointer]:
+                - /url: "#kubernetes-requirements"
+            - listitem [ref=e738]:
+              - link "Proxy Requirements" [ref=e739] [cursor=pointer]:
+                - /url: "#proxy-requirements"
+            - listitem [ref=e740]:
+              - link "Resources" [ref=e741] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e742] [cursor=pointer]:
+    - generic [ref=e745]:
+      - img "Project Logo" [ref=e746]
+      - paragraph [ref=e747]: Ask AI
+```

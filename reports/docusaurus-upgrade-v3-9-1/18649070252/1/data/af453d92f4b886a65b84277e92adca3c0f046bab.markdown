@@ -1,0 +1,1401 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Palette Tutorials" [ref=e41] [cursor=pointer]:
+                  - /url: /tutorials/
+                  - img [ref=e43]
+                  - text: Palette Tutorials
+              - listitem [ref=e45]:
+                - generic [ref=e46]:
+                  - link "Getting Started" [ref=e47] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/
+                    - img [ref=e49]
+                    - text: Getting Started
+                  - button "Toggle the collapsible sidebar category 'Getting Started'" [ref=e51] [cursor=pointer]
+              - listitem [ref=e52]:
+                - generic [ref=e53]:
+                  - link "Packs and Registries" [ref=e54] [cursor=pointer]:
+                    - /url: /tutorials/packs-registries/
+                    - img [ref=e56]
+                    - text: Packs and Registries
+                  - button "Toggle the collapsible sidebar category 'Packs and Registries'" [ref=e58] [cursor=pointer]
+              - listitem [ref=e59]:
+                - generic [ref=e60]:
+                  - link "Profiles" [expanded] [ref=e61] [cursor=pointer]:
+                    - /url: /tutorials/profiles/
+                    - img [ref=e63]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e67] [cursor=pointer]
+                - list [ref=e68]:
+                  - listitem [ref=e69]:
+                    - link "Deploy Cluster Profile Updates" [ref=e70] [cursor=pointer]:
+                      - /url: /tutorials/profiles/update-k8s-cluster/
+                  - listitem [ref=e71]:
+                    - link "Deploy Cluster with Profile Variables" [ref=e72] [cursor=pointer]:
+                      - /url: /tutorials/profiles/cluster-profile-variables/
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Clusters" [ref=e75] [cursor=pointer]:
+                    - /url: /tutorials/clusters/
+                    - img [ref=e77]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e83] [cursor=pointer]
+              - listitem [ref=e84]:
+                - generic [ref=e85]:
+                  - link "Palette Dev Engine" [ref=e86] [cursor=pointer]:
+                    - /url: /tutorials/pde/
+                    - img [ref=e88]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e90] [cursor=pointer]
+              - listitem [ref=e91]:
+                - button "Privacy Settings" [ref=e92] [cursor=pointer]
+      - main [ref=e93]:
+        - generic [ref=e95]:
+          - generic [ref=e97]:
+            - article [ref=e98]:
+              - navigation "Breadcrumbs" [ref=e99]:
+                - list [ref=e100]:
+                  - listitem [ref=e101]:
+                    - link "Home page" [ref=e102] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e103]
+                  - listitem [ref=e105]:
+                    - link "Profiles" [ref=e106] [cursor=pointer]:
+                      - /url: /tutorials/profiles/
+                  - listitem [ref=e107]:
+                    - generic [ref=e108]: Deploy Cluster with Profile Variables
+              - generic [ref=e109]:
+                - heading "Deploy Cluster with Profile Variables" [level=1] [ref=e111]
+                - paragraph [ref=e112]:
+                  - link "Cluster profile variables" [ref=e113] [cursor=pointer]:
+                    - /url: /profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/
+                  - text: allow you to provide profile-layer specific configurations. This capability provides you the ability to reuse a profile version for many different deployments while using unique specifications.
+                - paragraph [ref=e114]:
+                  - text: In many ways, this treats the cluster profile as a template that can be used and reused for Day-2 operations. It is important to consider the type of variable you create and use, and its context in the packs it is applied against. Some variables can be applied while a cluster is running; others may only be relevant when the cluster is deployed; and some may not be good candidates due to strict restrictions on the value. Refer to the
+                  - link "Limitations" [ref=e115] [cursor=pointer]:
+                    - /url: /profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/#limitations
+                  - text: section for further information on cluster profile variable definition.
+                - paragraph [ref=e116]:
+                  - text: In this tutorial, you will learn how to use cluster profile variables with workload clusters through both
+                  - link "Palette's UI" [ref=e117] [cursor=pointer]:
+                    - /url: "#cluster-profile-variables-ui-workflow"
+                  - text: and
+                  - link "Terraform" [ref=e118] [cursor=pointer]:
+                    - /url: "#cluster-profile-variables-terraform-workflow"
+                  - text: workflows. While the tutorial demonstrates the workflow using Amazon Web Services (AWS), you can also use the same steps with Microsoft Azure or Google Cloud Platform (GCP).
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e119]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e120] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e121]:
+                  - listitem [ref=e122]: A Palette account.
+                  - listitem [ref=e123]:
+                    - text: A Palette API key if you choose to follow along using the
+                    - link "Terraform" [ref=e124] [cursor=pointer]:
+                      - /url: "#cluster-profile-variables-terraform-workflow"
+                    - text: workflow. Refer to the
+                    - link "Create a Palette API Key" [ref=e125] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette/aws/setup/#create-a-palette-api-key
+                    - text: guide for further instructions.
+                  - listitem [ref=e126]:
+                    - text: A public cloud account registered in Palette. Refer to
+                    - link "AWS" [ref=e127] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/add-aws-accounts/#aws-account
+                    - text: ","
+                    - link "Azure" [ref=e128] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/azure/azure-cloud/#add-azure-cloud-account
+                    - text: or
+                    - link "Google Cloud" [ref=e129] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/gcp/add-gcp-accounts/#create-account
+                    - text: to learn how to register a cloud account.
+                  - listitem [ref=e130]: An SSH key available in the region where you plan to deploy the cluster.
+                  - listitem [ref=e131]:
+                    - text: Ensure that the
+                    - link "Palette Community Registry" [ref=e132] [cursor=pointer]:
+                      - /url: /registries-and-packs/registries/#default-registries
+                    - text: is available in your Palette environment. Refer to the
+                    - link "Add OCI Packs Registry" [ref=e133] [cursor=pointer]:
+                      - /url: /registries-and-packs/registries/oci-registry/add-oci-packs/
+                    - text: guide for additional guidance.
+                  - listitem [ref=e134]:
+                    - link "Docker Desktop" [ref=e135] [cursor=pointer]:
+                      - /url: https://www.docker.com/products/docker-desktop/
+                    - text: or
+                    - link "Podman" [ref=e136] [cursor=pointer]:
+                      - /url: https://podman.io/docs/installation
+                    - text: installed if you choose to follow along using the tutorial container.
+                  - listitem [ref=e137]:
+                    - text: Basic knowledge of containers and Kubernetes manifest file attributes. Refer to the
+                    - link "Docker Get Started" [ref=e138] [cursor=pointer]:
+                      - /url: https://docs.docker.com/get-started/
+                    - text: guide and the
+                    - link "Learn Kubernetes Basics" [ref=e139] [cursor=pointer]:
+                      - /url: https://kubernetes.io/docs/tutorials/kubernetes-basics/
+                    - text: tutorial to start learning.
+                  - listitem [ref=e140]:
+                    - text: Kubectl installed locally. Use the Kubernetes
+                    - link "Install Tools" [ref=e141] [cursor=pointer]:
+                      - /url: https://kubernetes.io/docs/tasks/tools/
+                    - text: for additional guidance.
+                - heading "Cluster Profile Variables (UI Workflow)Direct link to Cluster Profile Variables (UI Workflow)" [level=2] [ref=e142]:
+                  - text: Cluster Profile Variables (UI Workflow)
+                  - link "Direct link to Cluster Profile Variables (UI Workflow)" [ref=e143] [cursor=pointer]:
+                    - /url: "#cluster-profile-variables-ui-workflow"
+                    - text: "#"
+                - paragraph [ref=e144]:
+                  - text: In this part of the tutorial, you will use
+                  - link "Palette's UI" [ref=e145] [cursor=pointer]:
+                    - /url: https://console.spectrocloud.com/
+                  - text: to create your cluster and cluster profile. The cluster profile will have two versions as part of it. The
+                  - strong [ref=e146]: 1.0.0
+                  - text: version will be a clean, default version without cluster profile variables, while the
+                  - strong [ref=e147]: 1.1.0
+                  - text: version will have the variables added to it.
+                - heading "Create Cluster ProfileDirect link to Create Cluster Profile" [level=3] [ref=e148]:
+                  - text: Create Cluster Profile
+                  - link "Direct link to Create Cluster Profile" [ref=e149] [cursor=pointer]:
+                    - /url: "#create-cluster-profile"
+                    - text: "#"
+                - paragraph [ref=e150]:
+                  - text: Log in to
+                  - link "Palette" [ref=e151] [cursor=pointer]:
+                    - /url: https://console.spectrocloud.com/
+                  - text: ", select"
+                  - strong [ref=e152]: Profiles
+                  - text: from the left main menu, and click
+                  - strong [ref=e153]: Add Cluster Profile
+                  - text: .
+                - paragraph [ref=e154]:
+                  - text: Assign the cluster profile a name and leave the default value for the version. Click
+                  - strong [ref=e155]: Next
+                  - text: to continue.
+                - paragraph [ref=e156]:
+                  - text: In the
+                  - strong [ref=e157]: Profile Layers
+                  - text: section, configure your profile with the following packs.
+                - generic [ref=e158]:
+                  - tablist [ref=e159]:
+                    - tab "AWS" [selected] [ref=e160] [cursor=pointer]
+                    - tab "Azure" [ref=e161] [cursor=pointer]
+                    - tab "GCP" [ref=e162] [cursor=pointer]
+                  - tabpanel [ref=e164]:
+                    - table [ref=e165]:
+                      - rowgroup [ref=e166]:
+                        - row "Pack Version Registry" [ref=e167]:
+                          - cell "Pack" [ref=e168]
+                          - cell "Version" [ref=e169]
+                          - cell "Registry" [ref=e170]
+                      - rowgroup [ref=e171]:
+                        - row "Ubuntu 22.04.x Palette Registry (OCI)" [ref=e172]:
+                          - cell "Ubuntu" [ref=e173]:
+                            - link "Ubuntu" [ref=e174] [cursor=pointer]:
+                              - /url: /integrations/packs/?pack=ubuntu-aws
+                          - cell "22.04.x" [ref=e175]
+                          - cell "Palette Registry (OCI)" [ref=e176]
+                        - row "Palette eXtended Kubernetes 1.30.x Palette Registry (OCI)" [ref=e177]:
+                          - cell "Palette eXtended Kubernetes" [ref=e178]:
+                            - link "Palette eXtended Kubernetes" [ref=e179] [cursor=pointer]:
+                              - /url: /integrations/packs/?pack=kubernetes
+                          - cell "1.30.x" [ref=e180]
+                          - cell "Palette Registry (OCI)" [ref=e181]
+                        - row "Calico 3.29.2 Palette Registry (OCI)" [ref=e182]:
+                          - cell "Calico" [ref=e183]:
+                            - link "Calico" [ref=e184] [cursor=pointer]:
+                              - /url: /integrations/packs/?pack=cni-calico
+                          - cell "3.29.2" [ref=e185]
+                          - cell "Palette Registry (OCI)" [ref=e186]
+                        - row "Amazon EBS CSI 1.41.x Palette Registry (OCI)" [ref=e187]:
+                          - cell "Amazon EBS CSI" [ref=e188]:
+                            - link "Amazon EBS CSI" [ref=e189] [cursor=pointer]:
+                              - /url: /integrations/packs/?pack=csi-aws-ebs
+                          - cell "1.41.x" [ref=e190]
+                          - cell "Palette Registry (OCI)" [ref=e191]
+                        - row "WordPress 6.4.3 Palette Community Registry (OCI)" [ref=e192]:
+                          - cell "WordPress" [ref=e193]:
+                            - link "WordPress" [ref=e194] [cursor=pointer]:
+                              - /url: /integrations/packs/?pack=wordpress-chart
+                          - cell "6.4.3" [ref=e195]
+                          - cell "Palette Community Registry (OCI)" [ref=e196]
+                - paragraph [ref=e197]:
+                  - text: After adding the packs to your cluster profile, click
+                  - strong [ref=e198]: Confirm & Create
+                  - text: .
+                - paragraph [ref=e199]:
+                  - text: Click
+                  - strong [ref=e200]: Next
+                  - text: . Then, click
+                  - strong [ref=e201]: Finish Configuration
+                  - text: to create the
+                  - strong [ref=e202]: 1.0.0
+                  - text: cluster profile version.
+                - heading "Add Cluster Profile VariablesDirect link to Add Cluster Profile Variables" [level=3] [ref=e203]:
+                  - text: Add Cluster Profile Variables
+                  - link "Direct link to Add Cluster Profile Variables" [ref=e204] [cursor=pointer]:
+                    - /url: "#add-cluster-profile-variables"
+                    - text: "#"
+                - paragraph [ref=e205]:
+                  - text: Cluster profile versioning provides better change visibility and control over the layers in your host clusters. Refer to the
+                  - link "Version a Cluster Profile" [ref=e206] [cursor=pointer]:
+                    - /url: /profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile/
+                  - text: guide to learn more about cluster profile versioning.
+                - paragraph [ref=e207]:
+                  - text: To create a new cluster profile version, click on
+                  - strong [ref=e208]: Profiles
+                  - text: in the left main menu and select your cluster profile.
+                - paragraph [ref=e209]:
+                  - text: From the drop-down menu next to the cluster profile name, select
+                  - strong [ref=e210]: Create new version
+                  - text: .
+                - paragraph [ref=e211]:
+                  - text: Provide the version number
+                  - code [ref=e212]: 1.1.0
+                  - text: and click
+                  - strong [ref=e213]: Confirm
+                  - text: . A versioning successful message displays. Select
+                  - strong [ref=e214]: "{}Variables"
+                  - text: . Next, select
+                  - strong [ref=e215]: "{} Create variable"
+                  - text: .
+                - paragraph [ref=e216]:
+                  - text: On the
+                  - strong [ref=e217]: Create variable
+                  - text: page, fill in the following information.
+                - table [ref=e218]:
+                  - rowgroup [ref=e219]:
+                    - row "Variable Setting Value" [ref=e220]:
+                      - cell "Variable Setting" [ref=e221]
+                      - cell "Value" [ref=e222]
+                  - rowgroup [ref=e223]:
+                    - row "Variable wordpress_namespace" [ref=e224]:
+                      - cell "Variable" [ref=e225]:
+                        - strong [ref=e226]: Variable
+                      - cell "wordpress_namespace" [ref=e227]:
+                        - code [ref=e228]: wordpress_namespace
+                    - 'row "Display name WordPress: Namespace" [ref=e229]':
+                      - cell "Display name" [ref=e230]:
+                        - strong [ref=e231]: Display name
+                      - 'cell "WordPress: Namespace" [ref=e232]':
+                        - code [ref=e233]: "WordPress: Namespace"
+                    - row "Description Namespace for the WordPress pack" [ref=e234]:
+                      - cell "Description" [ref=e235]:
+                        - strong [ref=e236]: Description
+                      - cell "Namespace for the WordPress pack" [ref=e237]:
+                        - code [ref=e238]: Namespace for the WordPress pack
+                    - row "Format Select String from the drop-down." [ref=e239]:
+                      - cell "Format" [ref=e240]:
+                        - strong [ref=e241]: Format
+                      - cell "Select String from the drop-down." [ref=e242]:
+                        - text: Select
+                        - strong [ref=e243]: String
+                        - text: from the drop-down.
+                    - row "Default value Enable the option and enter wordpress." [ref=e244]:
+                      - cell "Default value" [ref=e245]:
+                        - strong [ref=e246]: Default value
+                      - cell "Enable the option and enter wordpress." [ref=e247]:
+                        - text: Enable the option and enter
+                        - code [ref=e248]: wordpress
+                        - text: .
+                - paragraph [ref=e249]:
+                  - text: Click
+                  - strong [ref=e250]: Create
+                  - text: to create the cluster profile variable.
+                - paragraph [ref=e251]:
+                  - img "Image that shows how to create the variable" [ref=e252]
+                - paragraph [ref=e253]:
+                  - text: You can now add the created cluster profile variable to the cluster profile. Click the
+                  - strong [ref=e254]: Copy to clipboard
+                  - text: icon and close the
+                  - strong [ref=e255]: Profile variables
+                  - text: tab.
+                - paragraph [ref=e256]:
+                  - text: You must add the variable to the pack manifest YAML file in order to use it. Click on the WordPress pack, and select the
+                  - strong [ref=e257]: Values
+                  - text: button to open the editor. Paste the variable to replace the default namespace value.
+                - paragraph [ref=e258]:
+                  - text: Click
+                  - strong [ref=e259]: Confirm Updates
+                  - text: ", and then click"
+                  - strong [ref=e260]: Save Changes
+                  - text: . This will make the variable part of the cluster profile.
+                - paragraph [ref=e261]:
+                  - img "Image that shows adding variable and confirm update" [ref=e262]
+                - paragraph [ref=e263]: As shown in the following image, the namespace variable is displayed as in use in one layer, corresponding to the WordPress pack.
+                - paragraph [ref=e264]:
+                  - img "Image that shows variables in use and warning that profile version in use" [ref=e265]
+                - paragraph [ref=e266]:
+                  - text: Next, select
+                  - strong [ref=e267]: Create variable
+                  - text: to add the remaining variables. Add the following variables and their default values to the new version of the cluster profile. After each variable, ensure you click
+                  - strong [ref=e268]: Create
+                  - text: .
+                - 'heading "Variable: wordpress_replicaDirect link to Variable: wordpress_replica" [level=4] [ref=e269]':
+                  - text: "Variable: wordpress_replica"
+                  - 'link "Direct link to Variable: wordpress_replica" [ref=e270] [cursor=pointer]':
+                    - /url: "#variable-wordpress_replica"
+                    - text: "#"
+                - table [ref=e271]:
+                  - rowgroup [ref=e272]:
+                    - row "Variable Setting Value" [ref=e273]:
+                      - cell "Variable Setting" [ref=e274]
+                      - cell "Value" [ref=e275]
+                  - rowgroup [ref=e276]:
+                    - row "Variable wordpress_replica" [ref=e277]:
+                      - cell "Variable" [ref=e278]:
+                        - strong [ref=e279]: Variable
+                      - cell "wordpress_replica" [ref=e280]:
+                        - code [ref=e281]: wordpress_replica
+                    - 'row "Display name WordPress: Replica Count" [ref=e282]':
+                      - cell "Display name" [ref=e283]:
+                        - strong [ref=e284]: Display name
+                      - 'cell "WordPress: Replica Count" [ref=e285]':
+                        - code [ref=e286]: "WordPress: Replica Count"
+                    - row "Description Number of replicas for the WordPress app" [ref=e287]:
+                      - cell "Description" [ref=e288]:
+                        - strong [ref=e289]: Description
+                      - cell "Number of replicas for the WordPress app" [ref=e290]:
+                        - code [ref=e291]: Number of replicas for the WordPress app
+                    - row "Format Select Number from the drop-down." [ref=e292]:
+                      - cell "Format" [ref=e293]:
+                        - strong [ref=e294]: Format
+                      - cell "Select Number from the drop-down." [ref=e295]:
+                        - text: Select
+                        - strong [ref=e296]: Number
+                        - text: from the drop-down.
+                    - row "Default value Enable the option and enter 1." [ref=e297]:
+                      - cell "Default value" [ref=e298]:
+                        - strong [ref=e299]: Default value
+                      - cell "Enable the option and enter 1." [ref=e300]:
+                        - text: Enable the option and enter
+                        - code [ref=e301]: "1"
+                        - text: .
+                - 'heading "Variable: wordpress_portDirect link to Variable: wordpress_port" [level=4] [ref=e302]':
+                  - text: "Variable: wordpress_port"
+                  - 'link "Direct link to Variable: wordpress_port" [ref=e303] [cursor=pointer]':
+                    - /url: "#variable-wordpress_port"
+                    - text: "#"
+                - table [ref=e304]:
+                  - rowgroup [ref=e305]:
+                    - row "Variable Setting Value" [ref=e306]:
+                      - cell "Variable Setting" [ref=e307]
+                      - cell "Value" [ref=e308]
+                  - rowgroup [ref=e309]:
+                    - row "Variable wordpress_port" [ref=e310]:
+                      - cell "Variable" [ref=e311]:
+                        - strong [ref=e312]: Variable
+                      - cell "wordpress_port" [ref=e313]:
+                        - code [ref=e314]: wordpress_port
+                    - 'row "Display name WordPress: New HTTP WordPress port" [ref=e315]':
+                      - cell "Display name" [ref=e316]:
+                        - strong [ref=e317]: Display name
+                      - 'cell "WordPress: New HTTP WordPress port" [ref=e318]':
+                        - code [ref=e319]: "WordPress: New HTTP WordPress port"
+                    - row "Description New port for WordPress HTTP" [ref=e320]:
+                      - cell "Description" [ref=e321]:
+                        - strong [ref=e322]: Description
+                      - cell "New port for WordPress HTTP" [ref=e323]:
+                        - code [ref=e324]: New port for WordPress HTTP
+                    - row "Format Select Number from drop-down." [ref=e325]:
+                      - cell "Format" [ref=e326]:
+                        - strong [ref=e327]: Format
+                      - cell "Select Number from drop-down." [ref=e328]:
+                        - text: Select
+                        - strong [ref=e329]: Number
+                        - text: from drop-down.
+                    - row "Default value Enable the option and enter 80." [ref=e330]:
+                      - cell "Default value" [ref=e331]:
+                        - strong [ref=e332]: Default value
+                      - cell "Enable the option and enter 80." [ref=e333]:
+                        - text: Enable the option and enter
+                        - code [ref=e334]: "80"
+                        - text: .
+                - paragraph [ref=e335]:
+                  - text: Now that your variables are created, add them to the WordPress manifest YAML using the same steps as you used for
+                  - code [ref=e336]: "{{.spectro.var.wordpress_namespace}}"
+                  - text: . For each variable, copy it to the clipboard and add it to the line location as noted in the following table.
+                - paragraph [ref=e337]:
+                  - text: Paste
+                  - code [ref=e338]: "'{{.spectro.var.wordpress_replica}}'"
+                  - text: to the value of the
+                  - code [ref=e339]: charts.wordpress.replicaCount
+                  - text: resource.
+                - paragraph [ref=e340]:
+                  - img "Image that shows WordPress variable for replicas" [ref=e341]
+                - paragraph [ref=e342]:
+                  - text: Next, paste
+                  - code [ref=e343]: "'{{.spectro.var.wordpress_port}}'"
+                  - text: to the value of the
+                  - code [ref=e344]: charts.wordpress.service.ports.http
+                  - text: resource.
+                - paragraph [ref=e345]:
+                  - img "Image that shows WordPress variable for ports" [ref=e346]
+                - paragraph [ref=e347]:
+                  - text: Click
+                  - strong [ref=e348]: Confirm Updates
+                  - text: and
+                  - strong [ref=e349]: Save Changes
+                  - text: to add the new variables to the WordPress pack.
+                - heading "Deploy Cluster with Cluster Profile VariablesDirect link to Deploy Cluster with Cluster Profile Variables" [level=3] [ref=e350]:
+                  - text: Deploy Cluster with Cluster Profile Variables
+                  - link "Direct link to Deploy Cluster with Cluster Profile Variables" [ref=e351] [cursor=pointer]:
+                    - /url: "#deploy-cluster-with-cluster-profile-variables"
+                    - text: "#"
+                - paragraph [ref=e352]: Your cluster profile now has two versions, one without variables and one with variables. You could either deploy two separate clusters, one for each version, or deploy one cluster using version 1.0.0 and then upgrade it to version 1.1.0. This tutorial demonstrates the latter option.
+                - paragraph [ref=e353]:
+                  - text: In
+                  - link "Palette" [ref=e354] [cursor=pointer]:
+                    - /url: https://console.spectrocloud.com/
+                  - text: ", select your profile and ensure the drop-down menu is set to version 1.0.0 . Select"
+                  - strong [ref=e355]: Deploy
+                  - text: to deploy the cluster. Check out the
+                  - link "Deploy a Cluster" [ref=e356] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/aws/deploy-k8s-cluster/
+                  - text: tutorial for guidance on how to deploy a cluster. The cluster deployment process can take 15 to 30 minutes. You can use either the Palette UI or the kubectl tool to verify that the deployment was successful.
+                - generic [ref=e357]:
+                  - tablist [ref=e358]:
+                    - tab "Access Cluster with CLI" [selected] [ref=e359] [cursor=pointer]
+                    - tab "Palette UI" [ref=e360] [cursor=pointer]
+                  - tabpanel [ref=e362]:
+                    - paragraph [ref=e363]:
+                      - text: From the left main menu, select
+                      - strong [ref=e364]: Clusters
+                      - text: . Then, select the cluster you created in this tutorial. Select the
+                      - strong [ref=e365]: Overview
+                      - text: tab, navigate to the middle column containing cluster details and locate the
+                      - strong [ref=e366]: Kubernetes Config File
+                      - text: row.
+                    - paragraph [ref=e367]:
+                      - text: Click on the
+                      - strong [ref=e368]: Admin Kubeconfig File
+                      - text: link to download the file.
+                    - paragraph [ref=e369]:
+                      - img "Image that shows how to download kubeconfig file" [ref=e370]
+                    - paragraph [ref=e371]:
+                      - text: Open a terminal window and set the
+                      - code [ref=e372]: KUBECONFIG
+                      - text: environment variable to the file path of the kubeconfig file.
+                    - generic [ref=e373]:
+                      - generic [ref=e374]: Example
+                      - generic [ref=e375]:
+                        - code [ref=e377]:
+                          - generic [ref=e378]: export KUBECONFIG=~/Downloads/admin.aws-profile-variables.kubeconfig
+                        - generic [ref=e379]:
+                          - button "Toggle word wrap" [ref=e380] [cursor=pointer]:
+                            - img [ref=e381]
+                          - button "Copy code to clipboard" [ref=e383] [cursor=pointer]:
+                            - generic [ref=e384]:
+                              - img [ref=e385]
+                              - img [ref=e387]
+                    - paragraph [ref=e389]: "Use the following command to get a listing of the default pod deployment for the Wordpress app. Three pods are displayed similar to the following output: one for MariaDB, one for WordPress database memory cache and one for the WordPress web server. The row highlighted in the output is an example of the Wordpress web server."
+                    - generic [ref=e391]:
+                      - code [ref=e393]:
+                        - generic [ref=e394]: kubectl get pods --namespace wordpress
+                      - button "Copy code to clipboard" [ref=e396] [cursor=pointer]:
+                        - generic [ref=e397]:
+                          - img [ref=e398]
+                          - img [ref=e400]
+                    - generic [ref=e402]:
+                      - generic [ref=e403]: Example Output
+                      - generic [ref=e404]:
+                        - code [ref=e406]:
+                          - generic [ref=e407]: NAME READY STATUS RESTARTS AGE
+                          - generic [ref=e408]: wordpress-chart-wordpress-dd7d944cb-vwd6c 1/1 Running 0 6m44s
+                          - generic [ref=e409]: wordpress-chart-wordpress-mariadb-0 1/1 Running 0 6m44s
+                          - generic [ref=e410]: wordpress-chart-wordpress-memcached-56cffcf458-7hw6d 1/1 Running 0 6m44s
+                        - generic [ref=e411]:
+                          - button "Toggle word wrap" [ref=e412] [cursor=pointer]:
+                            - img [ref=e413]
+                          - button "Copy code to clipboard" [ref=e415] [cursor=pointer]:
+                            - generic [ref=e416]:
+                              - img [ref=e417]
+                              - img [ref=e419]
+                - paragraph [ref=e421]:
+                  - text: Select the
+                  - strong [ref=e422]: Overview
+                  - text: tab to verify that the WordPress pack was deployed successfully. Click on the
+                  - code [ref=e423]: :80
+                  - text: port to launch the default Wordpress application.
+                - paragraph [ref=e424]:
+                  - img "Image that shows new port available for WordPress" [ref=e425]
+                - paragraph [ref=e426]: The default WordPress page will launch in a new browser tab.
+                - paragraph [ref=e427]:
+                  - img "Image that shows default WordPress page" [ref=e428]
+                - paragraph [ref=e429]:
+                  - text: Return to
+                  - link "Palette" [ref=e430] [cursor=pointer]:
+                    - /url: https://console.spectrocloud.com/
+                  - text: ", select your profile and use the drop-down menu to set the profile version to"
+                  - strong [ref=e431]: 1.1.0
+                  - text: . Choose
+                  - strong [ref=e432]: Review & Save
+                  - text: . On the
+                  - strong [ref=e433]: Changes Summary
+                  - text: page, select
+                  - strong [ref=e434]: Review changes in Editor
+                  - text: .
+                - paragraph [ref=e435]:
+                  - text: Select
+                  - strong [ref=e436]: Profile variables changes
+                  - text: ", open the"
+                  - strong [ref=e437]: Review Update Changes
+                  - text: ", and enter the following new values for each variable."
+                - table [ref=e438]:
+                  - rowgroup [ref=e439]:
+                    - row "Variable Name New Value" [ref=e440]:
+                      - cell "Variable Name" [ref=e441]
+                      - cell "New Value" [ref=e442]
+                  - rowgroup [ref=e443]:
+                    - 'row "WordPress: Replica Count 3" [ref=e444]':
+                      - 'cell "WordPress: Replica Count" [ref=e445]':
+                        - strong [ref=e446]: "WordPress: Replica Count"
+                      - cell "3" [ref=e447]:
+                        - code [ref=e448]: "3"
+                    - 'row "WordPress: HTTP Port 9090" [ref=e449]':
+                      - 'cell "WordPress: HTTP Port" [ref=e450]':
+                        - strong [ref=e451]: "WordPress: HTTP Port"
+                      - cell "9090" [ref=e452]:
+                        - code [ref=e453]: "9090"
+                    - 'row "WordPress: Namespace new-wordpress-ns" [ref=e454]':
+                      - 'cell "WordPress: Namespace" [ref=e455]':
+                        - strong [ref=e456]: "WordPress: Namespace"
+                      - cell "new-wordpress-ns" [ref=e457]:
+                        - code [ref=e458]: new-wordpress-ns
+                - paragraph [ref=e459]:
+                  - img "Image that shows how to copy and paste variable, then save it in the YAML file" [ref=e460]
+                - paragraph [ref=e461]:
+                  - text: Click
+                  - strong [ref=e462]: Apply Changes
+                  - text: . Wait until the cluster completes the
+                  - strong [ref=e463]: Addon deployment
+                  - text: step. This process causes the cluster to create a new namespace and three new replicas for WordPress under the new namespace, without deleting the existing resources. It will also cause the WordPress application to open a new HTTP port.
+                - paragraph [ref=e464]:
+                  - text: Select the
+                  - strong [ref=e465]: Overview
+                  - text: tab to verify that the WordPress pack was deployed successfully. Click on the
+                  - code [ref=e466]: :9090
+                  - text: port to launch the default Wordpress application.
+                - paragraph [ref=e467]:
+                  - img "Image that shows new port available for WordPress" [ref=e468]
+                - generic [ref=e469]:
+                  - tablist [ref=e470]:
+                    - tab "Access Cluster with CLI" [selected] [ref=e471] [cursor=pointer]
+                    - tab "Palette UI" [ref=e472] [cursor=pointer]
+                  - tabpanel [ref=e474]:
+                    - paragraph [ref=e475]: Return to your terminal window.
+                    - paragraph [ref=e476]: "Use the following command to get a listing of the default pod deployment for the Wordpress app. Five pods are displayed similar to the following output: one for MariaDB, one for WordPress database memory cache and three for the WordPress web server. The rows highlighted in the output are an example of the Wordpress web server."
+                    - generic [ref=e478]:
+                      - code [ref=e480]:
+                        - generic [ref=e481]: kubectl get pods --namespace wordpress
+                      - button "Copy code to clipboard" [ref=e483] [cursor=pointer]:
+                        - generic [ref=e484]:
+                          - img [ref=e485]
+                          - img [ref=e487]
+                    - generic [ref=e489]:
+                      - generic [ref=e490]: Example Output
+                      - generic [ref=e491]:
+                        - code [ref=e493]:
+                          - generic [ref=e494]: NAME READY STATUS RESTARTS AGE
+                          - generic [ref=e495]: wordpress-chart-wordpress-dd7d944cb-f2prh 0/1 Running 0 25s
+                          - generic [ref=e496]: wordpress-chart-wordpress-dd7d944cb-fdmwt 0/1 Running 0 25s
+                          - generic [ref=e497]: wordpress-chart-wordpress-dd7d944cb-n78rc 0/1 Running 0 25s
+                          - generic [ref=e498]: wordpress-chart-wordpress-mariadb-0 0/1 Running 0 25s
+                          - generic [ref=e499]: wordpress-chart-wordpress-memcached-56cffcf458-hd9x6 1/1 Running 0 25s
+                        - generic [ref=e500]:
+                          - button "Toggle word wrap" [ref=e501] [cursor=pointer]:
+                            - img [ref=e502]
+                          - button "Copy code to clipboard" [ref=e504] [cursor=pointer]:
+                            - generic [ref=e505]:
+                              - img [ref=e506]
+                              - img [ref=e508]
+                - heading "CleanupDirect link to Cleanup" [level=3] [ref=e510]:
+                  - text: Cleanup
+                  - link "Direct link to Cleanup" [ref=e511] [cursor=pointer]:
+                    - /url: "#cleanup"
+                    - text: "#"
+                - paragraph [ref=e512]: Use the following steps to clean up the resources you created for the tutorial.
+                - paragraph [ref=e513]:
+                  - text: From the left main menu, select
+                  - strong [ref=e514]: Clusters
+                  - text: . Then, select the cluster you created in this tutorial.
+                - paragraph [ref=e515]:
+                  - text: Select
+                  - strong [ref=e516]: Settings
+                  - text: to expand the menu, and select
+                  - strong [ref=e517]: Delete Cluster
+                  - text: .
+                - paragraph [ref=e518]: A dialog appears. Input the cluster name to confirm the delete action.
+                - paragraph [ref=e519]: The deletion process takes several minutes to complete.
+                - paragraph [ref=e520]:
+                  - text: Once the cluster is deleted, select
+                  - strong [ref=e521]: Profiles
+                  - text: from the left main menu.
+                - paragraph [ref=e522]:
+                  - text: Select the cluster profile you created in this tutorial. Select the three-dot menu to display the
+                  - strong [ref=e523]: Delete
+                  - text: button.
+                - paragraph [ref=e524]:
+                  - text: Select
+                  - strong [ref=e525]: Delete
+                  - text: and confirm the selection to remove the cluster profile. Make sure you delete both versions of this profile.
+                - heading "Cluster Profile Variables (Terraform Workflow)Direct link to Cluster Profile Variables (Terraform Workflow)" [level=2] [ref=e526]:
+                  - text: Cluster Profile Variables (Terraform Workflow)
+                  - link "Direct link to Cluster Profile Variables (Terraform Workflow)" [ref=e527] [cursor=pointer]:
+                    - /url: "#cluster-profile-variables-terraform-workflow"
+                    - text: "#"
+                - paragraph [ref=e528]: When you create cluster profiles in Terraform, the cluster profile variables can be defined in the profile versions that you want to apply the variables against.
+                - paragraph [ref=e529]:
+                  - text: You can clone the
+                  - link "Tutorials" [ref=e530] [cursor=pointer]:
+                    - /url: https://github.com/spectrocloud/tutorials
+                  - text: repository locally or follow along by downloading a container image that includes the tutorial code and all dependencies.
+                - generic [ref=e531]:
+                  - tablist [ref=e532]:
+                    - tab "Docker" [selected] [ref=e533] [cursor=pointer]
+                    - tab "Podman" [ref=e534] [cursor=pointer]
+                    - tab "Git" [ref=e535] [cursor=pointer]
+                  - tabpanel [ref=e537]:
+                    - paragraph [ref=e538]: Start Docker Desktop and ensure that the Docker daemon is available by issuing the following command.
+                    - generic [ref=e540]:
+                      - code [ref=e542]:
+                        - generic [ref=e543]: docker ps
+                      - button "Copy code to clipboard" [ref=e545] [cursor=pointer]:
+                        - generic [ref=e546]:
+                          - img [ref=e547]
+                          - img [ref=e549]
+                    - paragraph [ref=e551]: Next, download the tutorial image, start the container, and open a bash session into it.
+                    - generic [ref=e553]:
+                      - code [ref=e555]:
+                        - generic [ref=e556]: docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.3.0 bash
+                      - generic [ref=e557]:
+                        - button "Toggle word wrap" [ref=e558] [cursor=pointer]:
+                          - img [ref=e559]
+                        - button "Copy code to clipboard" [ref=e561] [cursor=pointer]:
+                          - generic [ref=e562]:
+                            - img [ref=e563]
+                            - img [ref=e565]
+                    - generic [ref=e567]:
+                      - generic [ref=e568]:
+                        - img [ref=e570]
+                        - text: warning
+                      - paragraph [ref=e573]: Do not exit the container until the tutorial is complete. Otherwise, you may lose your progress.
+                - paragraph [ref=e574]: Navigate to the folder that contains the tutorial code.
+                - generic [ref=e576]:
+                  - code [ref=e578]:
+                    - generic [ref=e579]: cd terraform/cluster-profile-variables-tf
+                  - button "Copy code to clipboard" [ref=e581] [cursor=pointer]:
+                    - generic [ref=e582]:
+                      - img [ref=e583]
+                      - img [ref=e585]
+                - heading "Resources ReviewDirect link to Resources Review" [level=3] [ref=e587]:
+                  - text: Resources Review
+                  - link "Direct link to Resources Review" [ref=e588] [cursor=pointer]:
+                    - /url: "#resources-review"
+                    - text: "#"
+                - paragraph [ref=e589]: To help you get started with Terraform, the tutorial code is structured to support deploying a cluster to either AWS, Azure, or GCP. Before you deploy a host cluster to AWS, review the following files in the folder structure.
+                - table [ref=e590]:
+                  - rowgroup [ref=e591]:
+                    - row "File Description" [ref=e592]:
+                      - cell "File" [ref=e593]:
+                        - strong [ref=e594]: File
+                      - cell "Description" [ref=e595]:
+                        - strong [ref=e596]: Description
+                  - rowgroup [ref=e597]:
+                    - row "provider.tf This file contains the Terraform providers that are used to support the deployment of the cluster." [ref=e598]:
+                      - cell "provider.tf" [ref=e599]:
+                        - strong [ref=e600]: provider.tf
+                      - cell "This file contains the Terraform providers that are used to support the deployment of the cluster." [ref=e601]
+                    - row "inputs.tf This file contains all the Terraform variables required for the deployment logic." [ref=e602]:
+                      - cell "inputs.tf" [ref=e603]:
+                        - strong [ref=e604]: inputs.tf
+                      - cell "This file contains all the Terraform variables required for the deployment logic." [ref=e605]
+                    - row "data.tf This file contains all the query resources that perform read actions." [ref=e606]:
+                      - cell "data.tf" [ref=e607]:
+                        - strong [ref=e608]: data.tf
+                      - cell "This file contains all the query resources that perform read actions." [ref=e609]
+                    - row "cluster_profiles.tf This file contains the cluster profile definitions for each cloud provider." [ref=e610]:
+                      - cell "cluster_profiles.tf" [ref=e611]:
+                        - strong [ref=e612]: cluster_profiles.tf
+                      - cell "This file contains the cluster profile definitions for each cloud provider." [ref=e613]
+                    - row "clusters.tf This file has the cluster configurations required to deploy a host cluster to one of the cloud providers." [ref=e614]:
+                      - cell "clusters.tf" [ref=e615]:
+                        - strong [ref=e616]: clusters.tf
+                      - cell "This file has the cluster configurations required to deploy a host cluster to one of the cloud providers." [ref=e617]
+                    - row "terraform.tfvars Use this file to target a specific cloud provider and customize the deployment. This is the only file you must modify." [ref=e618]:
+                      - cell "terraform.tfvars" [ref=e619]:
+                        - strong [ref=e620]: terraform.tfvars
+                      - cell "Use this file to target a specific cloud provider and customize the deployment. This is the only file you must modify." [ref=e621]
+                    - row "ssh-key.tf This file has the SSH key resource definition required for Azure deployments." [ref=e622]:
+                      - cell "ssh-key.tf" [ref=e623]:
+                        - strong [ref=e624]: ssh-key.tf
+                      - cell "This file has the SSH key resource definition required for Azure deployments." [ref=e625]
+                    - row "outputs.tf This file contains the content that will be displayed in the terminal after a successful Terraform apply action." [ref=e626]:
+                      - cell "outputs.tf" [ref=e627]:
+                        - strong [ref=e628]: outputs.tf
+                      - cell "This file contains the content that will be displayed in the terminal after a successful Terraform apply action." [ref=e629]:
+                        - text: This file contains the content that will be displayed in the terminal after a successful Terraform
+                        - code [ref=e630]: apply
+                        - text: action.
+                    - row "manifests/wordpress-default.yaml This file contains the default configuration for the WordPress pack." [ref=e631]:
+                      - cell "manifests/wordpress-default.yaml" [ref=e632]:
+                        - strong [ref=e633]: manifests/wordpress-default.yaml
+                      - cell "This file contains the default configuration for the WordPress pack." [ref=e634]
+                    - row "manifests/wordpress-variables.yaml This file contains the configuration for the WordPress pack with cluster profile variables added." [ref=e635]:
+                      - cell "manifests/wordpress-variables.yaml" [ref=e636]:
+                        - strong [ref=e637]: manifests/wordpress-variables.yaml
+                      - cell "This file contains the configuration for the WordPress pack with cluster profile variables added." [ref=e638]
+                - paragraph [ref=e639]:
+                  - text: Open the
+                  - strong [ref=e640]: cluster_profiles.tf
+                  - text: file. In the
+                  - strong [ref=e641]: AWS Cluster Profile v1.0.0
+                  - text: ", there are no variables defined and the WordPress pack points to"
+                  - code [ref=e642]: wordpress-default.yaml
+                  - text: . This file is the default YAML configuration file for the WordPress pack. Within the
+                  - strong [ref=e643]: AWS Cluster Profile v1.1.0
+                  - text: code block, the WordPress pack points to
+                  - code [ref=e644]: wordpress-variables.yaml
+                  - text: ", which references the cluster profile variables. Additionally, at the end of the code block, you will find the following cluster profile variables that will be used."
+                - generic [ref=e646]:
+                  - code [ref=e648]:
+                    - generic [ref=e649]: "profile_variables {"
+                    - generic [ref=e650]: "variable {"
+                    - generic [ref=e651]: name = "wordpress_replica"
+                    - generic [ref=e652]: display_name = "Number of replicas"
+                    - generic [ref=e653]: format = "number"
+                    - generic [ref=e654]: description = "The number of WordPress replicas to be deployed."
+                    - generic [ref=e655]: default_value = var.wordpress_replica
+                    - generic [ref=e656]: required = true
+                    - generic [ref=e657]: "}"
+                    - generic [ref=e658]: "variable {"
+                    - generic [ref=e659]: name = "wordpress_namespace"
+                    - generic [ref=e660]: "display_name = \"WordPress: Namespace\""
+                    - generic [ref=e661]: format = "string"
+                    - generic [ref=e662]: description = "The namespace for the WordPress pack."
+                    - generic [ref=e663]: default_value = var.wordpress_namespace
+                    - generic [ref=e664]: required = true
+                    - generic [ref=e665]: "}"
+                    - generic [ref=e666]: "variable {"
+                    - generic [ref=e667]: name = "wordpress_port"
+                    - generic [ref=e668]: "display_name = \"WordPress: Port\""
+                    - generic [ref=e669]: format = "number"
+                    - generic [ref=e670]: description = "The WordPress HTTP port."
+                    - generic [ref=e671]: default_value = var.wordpress_port
+                    - generic [ref=e672]: is_sensitive = true
+                    - generic [ref=e673]: required = true
+                    - generic [ref=e674]: "}"
+                    - generic [ref=e675]: "}"
+                  - generic [ref=e676]:
+                    - button "Toggle word wrap" [ref=e677] [cursor=pointer]:
+                      - img [ref=e678]
+                    - button "Copy code to clipboard" [ref=e680] [cursor=pointer]:
+                      - generic [ref=e681]:
+                        - img [ref=e682]
+                        - img [ref=e684]
+                - paragraph [ref=e686]:
+                  - text: Review the two files in the manifests folder.
+                  - code [ref=e687]: wordpress-default.yaml
+                  - text: contains the default configuration for the WordPress Chart application and
+                  - code [ref=e688]: wordpress-variables.yaml
+                  - text: has the following three variables defined in it.
+                - paragraph [ref=e689]:
+                  - text: For
+                  - code [ref=e690]: "namespace: '{{ .spectro.var.wordpress_namespace }}'"
+                  - text: ", the variable was added to"
+                  - code [ref=e691]: pack.namespace
+                  - text: .
+                - generic [ref=e693]:
+                  - code [ref=e695]:
+                    - generic [ref=e696]: "pack:"
+                    - generic [ref=e697]: "#The namespace (on the target cluster) to install this chart"
+                    - generic [ref=e698]: "#When not found, a new namespace will be created"
+                    - generic [ref=e699]: "content:"
+                    - generic [ref=e700]: "images:"
+                    - generic [ref=e701]: "- image: docker.io/bitnami/mariadb:11.2.3-debian-12-r4"
+                    - generic [ref=e702]: "- image: docker.io/bitnami/memcached:1.6.24-debian-12-r0"
+                    - generic [ref=e703]: "- image: docker.io/bitnami/wordpress:6.4.3-debian-12-r16"
+                    - generic [ref=e704]: "charts:"
+                    - generic [ref=e705]: "- repo: https://charts.bitnami.com/wordpress"
+                    - generic [ref=e706]: "name: wordpress"
+                    - generic [ref=e707]: "version: 19.4.3"
+                    - generic [ref=e708]: "namespace: '{{ .spectro.var.wordpress_namespace }}'"
+                    - generic [ref=e709]: "spectrocloud.com/install-priority: 0"
+                  - button "Copy code to clipboard" [ref=e711] [cursor=pointer]:
+                    - generic [ref=e712]:
+                      - img [ref=e713]
+                      - img [ref=e715]
+                - paragraph [ref=e717]:
+                  - text: For
+                  - code [ref=e718]: "replicaCount: '{{ .spectro.var.wordpress_replica }}'"
+                  - text: ", the variable was added to"
+                  - code [ref=e719]: charts.wordpress.replicaCount
+                  - text: .
+                - generic [ref=e721]:
+                  - code [ref=e723]:
+                    - generic [ref=e724]: "multisite:"
+                    - generic [ref=e725]: "enable: false"
+                    - generic [ref=e726]: "host: \"\""
+                    - generic [ref=e727]: "networkType: subdomain"
+                    - generic [ref=e728]: "enableNipIoRedirect: false"
+                    - generic [ref=e729]: "## @section WordPress deployment parameters"
+                    - generic [ref=e730]: "##"
+                    - generic [ref=e731]: "## @param replicaCount Number of WordPress replicas to deploy"
+                    - generic [ref=e732]: "## NOTE: ReadWriteMany PVC(s) are required if replicaCount > 1"
+                    - generic [ref=e733]: "##"
+                    - generic [ref=e734]: "replicaCount: '{{ .spectro.var.wordpress_replica }}'"
+                    - generic [ref=e735]: "## @param updateStrategy.type WordPress deployment strategy type"
+                    - generic [ref=e736]: "## ref: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#strategy"
+                    - generic [ref=e737]: "## NOTE: Set it to `Recreate` if you use a PV that cannot be mounted on multiple pods"
+                  - generic [ref=e738]:
+                    - button "Toggle word wrap" [ref=e739] [cursor=pointer]:
+                      - img [ref=e740]
+                    - button "Copy code to clipboard" [ref=e742] [cursor=pointer]:
+                      - generic [ref=e743]:
+                        - img [ref=e744]
+                        - img [ref=e746]
+                - paragraph [ref=e748]:
+                  - text: For
+                  - code [ref=e749]: "http: '{{ .spectro.var.wordpress_port }}'"
+                  - text: ", the variable was added to"
+                  - code [ref=e750]: charts.wordpress.service.ports.http
+                  - text: .
+                - generic [ref=e752]:
+                  - code [ref=e754]:
+                    - generic [ref=e755]: "## WordPress service parameters"
+                    - generic [ref=e756]: "##"
+                    - generic [ref=e757]: "service:"
+                    - generic [ref=e758]: "## @param service.type WordPress service type"
+                    - generic [ref=e759]: "##"
+                    - generic [ref=e760]: "type: LoadBalancer"
+                    - generic [ref=e761]: "## @param service.ports.http WordPress service HTTP port"
+                    - generic [ref=e762]: "## @param service.ports.https WordPress service HTTPS port"
+                    - generic [ref=e763]: "##"
+                    - generic [ref=e764]: "ports:"
+                    - generic [ref=e765]: "http: '{{ .spectro.var.wordpress_port }}'"
+                    - generic [ref=e766]: "https: 443"
+                    - generic [ref=e767]: "## @param service.httpsTargetPort Target port for HTTPS"
+                    - generic [ref=e768]: "##"
+                    - generic [ref=e769]: "httpsTargetPort: https"
+                  - button "Copy code to clipboard" [ref=e771] [cursor=pointer]:
+                    - generic [ref=e772]:
+                      - img [ref=e773]
+                      - img [ref=e775]
+                - paragraph [ref=e777]:
+                  - text: Note that the variable syntax requires spaces at both the beginning and end of the variable, as well as a
+                  - code [ref=e778]: .
+                  - text: at the start of the variable.
+                - heading "Input VariablesDirect link to Input Variables" [level=3] [ref=e779]:
+                  - text: Input Variables
+                  - link "Direct link to Input Variables" [ref=e780] [cursor=pointer]:
+                    - /url: "#input-variables"
+                    - text: "#"
+                - paragraph [ref=e781]:
+                  - text: With the references to the variables in place in the YAML file, you can modify their values in
+                  - strong [ref=e782]: terraform.tfvars
+                  - text: using the values listed in the following table.
+                - table [ref=e783]:
+                  - rowgroup [ref=e784]:
+                    - row "Variable Name New Value" [ref=e785]:
+                      - cell "Variable Name" [ref=e786]
+                      - cell "New Value" [ref=e787]
+                  - rowgroup [ref=e788]:
+                    - 'row "WordPress: Replica Count 3" [ref=e789]':
+                      - 'cell "WordPress: Replica Count" [ref=e790]':
+                        - strong [ref=e791]: "WordPress: Replica Count"
+                      - cell "3" [ref=e792]:
+                        - code [ref=e793]: "3"
+                    - 'row "WordPress: HTTP Port 9090" [ref=e794]':
+                      - 'cell "WordPress: HTTP Port" [ref=e795]':
+                        - strong [ref=e796]: "WordPress: HTTP Port"
+                      - cell "9090" [ref=e797]:
+                        - code [ref=e798]: "9090"
+                    - 'row "WordPress: Namespace new-wordpress-ns" [ref=e799]':
+                      - 'cell "WordPress: Namespace" [ref=e800]':
+                        - strong [ref=e801]: "WordPress: Namespace"
+                      - cell "new-wordpress-ns" [ref=e802]:
+                        - code [ref=e803]: new-wordpress-ns
+                - generic [ref=e805]:
+                  - code [ref=e807]:
+                    - generic [ref=e808]: "##############################"
+                    - generic [ref=e809]: "# Application Configuration"
+                    - generic [ref=e810]: "##############################"
+                    - generic [ref=e811]: "wordpress_replica = \"REPLACE ME\" # The number of pods to be created for WordPress."
+                    - generic [ref=e812]: "wordpress_namespace = \"REPLACE ME\" # The namespace to be created for WordPress."
+                    - generic [ref=e813]: "wordpress_port = \"REPLACE ME\" # The HTTP port to be exposed for WordPress."
+                  - generic [ref=e814]:
+                    - button "Toggle word wrap" [ref=e815] [cursor=pointer]:
+                      - img [ref=e816]
+                    - button "Copy code to clipboard" [ref=e818] [cursor=pointer]:
+                      - generic [ref=e819]:
+                        - img [ref=e820]
+                        - img [ref=e822]
+                - paragraph [ref=e824]: Additionally, fill in the cloud-specific configurations. If you are using either Azure or GCP, find the relevant provider section. For this tutorial, the steps will use AWS.
+                - paragraph [ref=e825]:
+                  - text: Locate the AWS provider section and change
+                  - code [ref=e826]: deploy-aws = false
+                  - text: to
+                  - code [ref=e827]: deploy-aws = true
+                  - text: . Additionally, replace all occurrences of
+                  - code [ref=e828]: REPLACE_ME
+                  - text: with their corresponding values, such as those for the
+                  - code [ref=e829]: aws-cloud-account-name
+                  - text: ","
+                  - code [ref=e830]: aws-region
+                  - text: ","
+                  - code [ref=e831]: aws-key-pair-name
+                  - text: ", and"
+                  - code [ref=e832]: availability_zones
+                  - text: variables. You can also update the values for the nodes in the control plane or worker node pools as needed.
+                - generic [ref=e834]:
+                  - code [ref=e836]:
+                    - generic [ref=e837]: "###########################"
+                    - generic [ref=e838]: "# AWS Deployment Settings"
+                    - generic [ref=e839]: "############################"
+                    - generic [ref=e840]: "deploy-aws = false # Set to true to deploy to AWS."
+                    - generic [ref=e841]: "deploy-aws-var = false # Set to true to deploy to AWS with cluster profile variables."
+                    - generic [ref=e842]: aws-cloud-account-name = "REPLACE ME"
+                    - generic [ref=e843]: aws-region = "REPLACE ME"
+                    - generic [ref=e844]: aws-key-pair-name = "REPLACE ME"
+                    - generic [ref=e845]: "aws_control_plane_nodes = {"
+                    - generic [ref=e846]: count = "1"
+                    - generic [ref=e847]: control_plane = true
+                    - generic [ref=e848]: instance_type = "m4.2xlarge"
+                    - generic [ref=e849]: disk_size_gb = "60"
+                    - generic [ref=e850]: "availability_zones = [\"REPLACE ME\"] # If you want to deploy to multiple AZs, add them here. Example: [\"us-east-1a\", \"us-east-1b\"]."
+                    - generic [ref=e851]: "}"
+                    - generic [ref=e852]: "aws_worker_nodes = {"
+                    - generic [ref=e853]: count = "1"
+                    - generic [ref=e854]: control_plane = false
+                    - generic [ref=e855]: instance_type = "m4.2xlarge"
+                    - generic [ref=e856]: disk_size_gb = "60"
+                    - generic [ref=e857]: "availability_zones = [\"REPLACE ME\"] # If you want to deploy to multiple AZs, add them here. Example: [\"us-east-1a\", \"us-east-1b\"]."
+                    - generic [ref=e858]: "}"
+                  - generic [ref=e859]:
+                    - button "Toggle word wrap" [ref=e860] [cursor=pointer]:
+                      - img [ref=e861]
+                    - button "Copy code to clipboard" [ref=e863] [cursor=pointer]:
+                      - generic [ref=e864]:
+                        - img [ref=e865]
+                        - img [ref=e867]
+                - paragraph [ref=e869]: Save the file after you have finished providing your configurations.
+                - heading "Deploy Cluster with Cluster Profile VariablesDirect link to Deploy Cluster with Cluster Profile Variables" [level=3] [ref=e870]:
+                  - text: Deploy Cluster with Cluster Profile Variables
+                  - link "Direct link to Deploy Cluster with Cluster Profile Variables" [ref=e871] [cursor=pointer]:
+                    - /url: "#deploy-cluster-with-cluster-profile-variables-1"
+                    - text: "#"
+                - paragraph [ref=e872]:
+                  - text: Export your
+                  - strong [ref=e873]: Palette API key
+                  - text: as an environment variable. This step allows the Terraform CLI to authenticate with the Palette API.
+                - generic [ref=e875]:
+                  - code [ref=e877]:
+                    - generic [ref=e878]: export SPECTROCLOUD_APIKEY=<Your-Spectro-Cloud-API-key>
+                  - button "Copy code to clipboard" [ref=e880] [cursor=pointer]:
+                    - generic [ref=e881]:
+                      - img [ref=e882]
+                      - img [ref=e884]
+                - generic [ref=e886]:
+                  - generic [ref=e887]:
+                    - img [ref=e889]
+                    - text: warning
+                  - paragraph [ref=e892]:
+                    - text: Before deploying the resources, ensure that there are no active clusters named
+                    - code [ref=e893]: aws-profile-var-cluster-tf
+                    - text: or cluster profiles named
+                    - code [ref=e894]: aws-profile-variables-tf
+                    - text: in your Palette project.
+                - paragraph [ref=e895]:
+                  - text: Issue the
+                  - code [ref=e896]: plan
+                  - text: command to preview the resources that Terraform will create.
+                - generic [ref=e898]:
+                  - code [ref=e900]:
+                    - generic [ref=e901]: terraform plan
+                  - button "Copy code to clipboard" [ref=e903] [cursor=pointer]:
+                    - generic [ref=e904]:
+                      - img [ref=e905]
+                      - img [ref=e907]
+                - paragraph [ref=e909]:
+                  - text: "The output indicates that three new resources will be created: two versions of the AWS cluster profile and the host cluster. The host cluster will use version"
+                  - code [ref=e910]: 1.0.0
+                  - text: of the cluster profile.
+                - generic [ref=e912]:
+                  - code [ref=e914]:
+                    - generic [ref=e915]: "Plan: 3 to add, 0 to change, 0 to destroy."
+                  - button "Copy code to clipboard" [ref=e917] [cursor=pointer]:
+                    - generic [ref=e918]:
+                      - img [ref=e919]
+                      - img [ref=e921]
+                - paragraph [ref=e923]:
+                  - text: To deploy the resources, use the
+                  - code [ref=e924]: apply
+                  - text: command.
+                - generic [ref=e926]:
+                  - code [ref=e928]:
+                    - generic [ref=e929]: terraform apply -auto-approve
+                  - button "Copy code to clipboard" [ref=e931] [cursor=pointer]:
+                    - generic [ref=e932]:
+                      - img [ref=e933]
+                      - img [ref=e935]
+                - paragraph [ref=e937]: The cluster deployment takes a few minutes.
+                - paragraph [ref=e938]:
+                  - text: Log in to
+                  - link "Palette" [ref=e939] [cursor=pointer]:
+                    - /url: https://console.spectrocloud.com
+                  - text: ", and click"
+                  - strong [ref=e940]: Clusters
+                  - text: from the left main menu.
+                - paragraph [ref=e941]:
+                  - text: Navigate to the newly created cluster and select the
+                  - strong [ref=e942]: Profile
+                  - text: tab. The profile in use should be version
+                  - strong [ref=e943]: 1.0.0
+                  - text: . To verify that the resources were deployed successfully, you can use either the Palette's UI or the kubectl tool.
+                - generic [ref=e944]:
+                  - tablist [ref=e945]:
+                    - tab "Access Cluster with CLI" [selected] [ref=e946] [cursor=pointer]
+                    - tab "Palette UI" [ref=e947] [cursor=pointer]
+                  - tabpanel [ref=e949]:
+                    - paragraph [ref=e950]:
+                      - text: From the left main menu, select
+                      - strong [ref=e951]: Clusters
+                      - text: . Then, select the cluster you created in this tutorial. Select the
+                      - strong [ref=e952]: Overview
+                      - text: tab, navigate to the middle column containing cluster details and locate the
+                      - strong [ref=e953]: Kubernetes Config File
+                      - text: row.
+                    - paragraph [ref=e954]:
+                      - text: Click on the
+                      - strong [ref=e955]: Admin Kubeconfig File
+                      - text: link to download the file.
+                    - paragraph [ref=e956]:
+                      - img "Image that shows how to download kubeconfig file" [ref=e957]
+                    - paragraph [ref=e958]:
+                      - text: Open a terminal window and set the
+                      - code [ref=e959]: KUBECONFIG
+                      - text: environment variable to the file path of the kubeconfig file.
+                    - generic [ref=e960]:
+                      - generic [ref=e961]: Example
+                      - generic [ref=e962]:
+                        - code [ref=e964]:
+                          - generic [ref=e965]: export KUBECONFIG=~/Downloads/admin.aws-profile-var-tf.kubeconfig
+                        - button "Copy code to clipboard" [ref=e967] [cursor=pointer]:
+                          - generic [ref=e968]:
+                            - img [ref=e969]
+                            - img [ref=e971]
+                    - paragraph [ref=e973]: "Use the following command to get a listing of the default pod deployment for the Wordpress app. Three pods are displayed similar to the following output: one for MariaDB, one for WordPress database memory cache and one for the WordPress web server. The row highlighted in the output is an example of the Wordpress web server."
+                    - generic [ref=e975]:
+                      - code [ref=e977]:
+                        - generic [ref=e978]: kubectl get pods --namespace wordpress
+                      - button "Copy code to clipboard" [ref=e980] [cursor=pointer]:
+                        - generic [ref=e981]:
+                          - img [ref=e982]
+                          - img [ref=e984]
+                    - generic [ref=e986]:
+                      - generic [ref=e987]: Example Output
+                      - generic [ref=e988]:
+                        - code [ref=e990]:
+                          - generic [ref=e991]: NAME READY STATUS RESTARTS AGE
+                          - generic [ref=e992]: wordpress-chart-wordpress-dd7d944cb-kw5dm 1/1 Running 0 23m
+                          - generic [ref=e993]: wordpress-chart-wordpress-mariadb-0 1/1 Running 0 23m
+                          - generic [ref=e994]: wordpress-chart-wordpress-memcached-56cffcf458-fq59l 1/1 Running 0 23m
+                        - generic [ref=e995]:
+                          - button "Toggle word wrap" [ref=e996] [cursor=pointer]:
+                            - img [ref=e997]
+                          - button "Copy code to clipboard" [ref=e999] [cursor=pointer]:
+                            - generic [ref=e1000]:
+                              - img [ref=e1001]
+                              - img [ref=e1003]
+                - paragraph [ref=e1005]:
+                  - text: Navigate to the
+                  - strong [ref=e1006]: Overview
+                  - text: tab and click the
+                  - strong [ref=e1007]: "80"
+                  - text: port to launch the WordPress blog page.
+                - paragraph [ref=e1008]:
+                  - img "Image that shows default WordPress page" [ref=e1009]
+                - paragraph [ref=e1010]:
+                  - text: Return to your terminal window and modify the
+                  - code [ref=e1011]: terraform.tfvars
+                  - text: file so that
+                  - code [ref=e1012]: deploy-aws-var
+                  - text: is set to
+                  - code [ref=e1013]: "true"
+                  - text: . This updates the cluster to use version 1.1.0 of the cluster profile, which contains the cluster profile variables.
+                - generic [ref=e1015]:
+                  - code [ref=e1017]:
+                    - generic [ref=e1018]: "##############################"
+                    - generic [ref=e1019]: "# Application Configuration"
+                    - generic [ref=e1020]: "##############################"
+                    - generic [ref=e1021]: "wordpress_replica = 3 # The number of pods to be created for Wordpress."
+                    - generic [ref=e1022]: "wordpress_namespace = \"new-wordpress-ns\" # The namespace to be created for Wordpress."
+                    - generic [ref=e1023]: "wordpress_port = 9090 # The port to be created for HTTP for Wordpress."
+                    - generic [ref=e1024]: "############################"
+                    - generic [ref=e1025]: "# AWS Deployment Settings"
+                    - generic [ref=e1026]: "############################"
+                    - generic [ref=e1027]: "deploy-aws = true # Set to true to deploy to AWS."
+                    - generic [ref=e1028]: "deploy-aws-var = true # Set to true to deploy AWS with WordPress Pack and cluster profile variables"
+                  - generic [ref=e1029]:
+                    - button "Toggle word wrap" [ref=e1030] [cursor=pointer]:
+                      - img [ref=e1031]
+                    - button "Copy code to clipboard" [ref=e1033] [cursor=pointer]:
+                      - generic [ref=e1034]:
+                        - img [ref=e1035]
+                        - img [ref=e1037]
+                - paragraph [ref=e1039]:
+                  - text: Issue the
+                  - code [ref=e1040]: plan
+                  - text: command to preview the resources that Terraform will create.
+                - generic [ref=e1042]:
+                  - code [ref=e1044]:
+                    - generic [ref=e1045]: terraform plan
+                  - button "Copy code to clipboard" [ref=e1047] [cursor=pointer]:
+                    - generic [ref=e1048]:
+                      - img [ref=e1049]
+                      - img [ref=e1051]
+                - paragraph [ref=e1053]:
+                  - text: The output indicates that one resource, the cluster, will be modified. This will create a new namespace and three new replicas for WordPress under the new namespace, without deleting the existing resources. The host cluster will use version
+                  - code [ref=e1054]: 1.1.0
+                  - text: of the cluster profile.
+                - generic [ref=e1056]:
+                  - code [ref=e1058]:
+                    - generic [ref=e1059]: "Plan: 0 to add, 1 to change, 0 to destroy."
+                  - button "Copy code to clipboard" [ref=e1061] [cursor=pointer]:
+                    - generic [ref=e1062]:
+                      - img [ref=e1063]
+                      - img [ref=e1065]
+                - paragraph [ref=e1067]:
+                  - text: To modify the cluster profile, use the
+                  - code [ref=e1068]: apply
+                  - text: command.
+                - generic [ref=e1070]:
+                  - code [ref=e1072]:
+                    - generic [ref=e1073]: terraform apply -auto-approve
+                  - button "Copy code to clipboard" [ref=e1075] [cursor=pointer]:
+                    - generic [ref=e1076]:
+                      - img [ref=e1077]
+                      - img [ref=e1079]
+                - paragraph [ref=e1081]: The cluster modification will take a few minutes.
+                - paragraph [ref=e1082]:
+                  - text: Return to
+                  - link "Palette" [ref=e1083] [cursor=pointer]:
+                    - /url: https://console.spectrocloud.com
+                  - text: ", and click"
+                  - strong [ref=e1084]: Clusters
+                  - text: from the left main menu.
+                - paragraph [ref=e1085]:
+                  - text: Navigate to your cluster and select the
+                  - strong [ref=e1086]: Profile
+                  - text: tab. The profile in use should be
+                  - strong [ref=e1087]: 1.1.0
+                  - text: . To verify that the resources were deployed successfully, you can use either the Palette's UI or the kubectl tool.
+                - generic [ref=e1088]:
+                  - tablist [ref=e1089]:
+                    - tab "Access Cluster with CLI" [selected] [ref=e1090] [cursor=pointer]
+                    - tab "Palette UI" [ref=e1091] [cursor=pointer]
+                  - tabpanel [ref=e1093]:
+                    - paragraph [ref=e1094]: Return to your terminal window.
+                    - paragraph [ref=e1095]: "Use the following command to get a listing of the default pod deployment for the Wordpress app. Five pods are displayed similar to the following output: one for MariaDB, one for WordPress database memory cache and three for the WordPress web server. The rows highlighted in the output are an example of the Wordpress web server."
+                    - generic [ref=e1097]:
+                      - code [ref=e1099]:
+                        - generic [ref=e1100]: kubectl get pods --namespace wordpress
+                      - button "Copy code to clipboard" [ref=e1102] [cursor=pointer]:
+                        - generic [ref=e1103]:
+                          - img [ref=e1104]
+                          - img [ref=e1106]
+                    - generic [ref=e1108]:
+                      - generic [ref=e1109]: Example Output
+                      - generic [ref=e1110]:
+                        - code [ref=e1112]:
+                          - generic [ref=e1113]: NAME READY STATUS RESTARTS AGE
+                          - generic [ref=e1114]: wordpress-chart-wordpress-dd7d944cb-f2prh 0/1 Running 0 25s
+                          - generic [ref=e1115]: wordpress-chart-wordpress-dd7d944cb-fdmwt 0/1 Running 0 25s
+                          - generic [ref=e1116]: wordpress-chart-wordpress-dd7d944cb-n78rc 0/1 Running 0 25s
+                          - generic [ref=e1117]: wordpress-chart-wordpress-mariadb-0 0/1 Running 0 25s
+                          - generic [ref=e1118]: wordpress-chart-wordpress-memcached-56cffcf458-hd9x6 1/1 Running 0 25s
+                        - generic [ref=e1119]:
+                          - button "Toggle word wrap" [ref=e1120] [cursor=pointer]:
+                            - img [ref=e1121]
+                          - button "Copy code to clipboard" [ref=e1123] [cursor=pointer]:
+                            - generic [ref=e1124]:
+                              - img [ref=e1125]
+                              - img [ref=e1127]
+                - paragraph [ref=e1129]:
+                  - text: Navigate to the
+                  - strong [ref=e1130]: Overview
+                  - text: tab and click the
+                  - strong [ref=e1131]: "9090"
+                  - text: port.
+                - paragraph [ref=e1132]:
+                  - img "Image that shows new port available for WordPress" [ref=e1133]
+                - paragraph [ref=e1134]: This launches the WordPress blog page. You may need to wait a few minutes for the port to be active.
+                - paragraph [ref=e1135]:
+                  - img "Image that shows default WordPress page" [ref=e1136]
+                - heading "CleanupDirect link to Cleanup" [level=3] [ref=e1137]:
+                  - text: Cleanup
+                  - link "Direct link to Cleanup" [ref=e1138] [cursor=pointer]:
+                    - /url: "#cleanup-1"
+                    - text: "#"
+                - paragraph [ref=e1139]:
+                  - text: Use the following steps to clean up the resources you created for the tutorial. Use the
+                  - code [ref=e1140]: destroy
+                  - text: command to remove all the resources you created through Terraform.
+                - generic [ref=e1142]:
+                  - code [ref=e1144]:
+                    - generic [ref=e1145]: terraform destroy --auto-approve
+                  - button "Copy code to clipboard" [ref=e1147] [cursor=pointer]:
+                    - generic [ref=e1148]:
+                      - img [ref=e1149]
+                      - img [ref=e1151]
+                - paragraph [ref=e1153]:
+                  - text: A successful execution of
+                  - code [ref=e1154]: terraform destroy
+                  - text: will output the following.
+                - generic [ref=e1156]:
+                  - code [ref=e1158]:
+                    - generic [ref=e1159]: "Destroy complete! Resources: 3 destroyed."
+                  - button "Copy code to clipboard" [ref=e1161] [cursor=pointer]:
+                    - generic [ref=e1162]:
+                      - img [ref=e1163]
+                      - img [ref=e1165]
+                - generic [ref=e1167]:
+                  - generic [ref=e1168]:
+                    - img [ref=e1170]
+                    - text: info
+                  - paragraph [ref=e1173]:
+                    - text: If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for force delete. To trigger a force delete action, navigate to the cluster’s details page and click on
+                    - strong [ref=e1174]: Settings
+                    - text: . Click on
+                    - strong [ref=e1175]: Force Delete Cluster
+                    - text: to delete the cluster. Palette automatically removes clusters stuck in the cluster deletion phase for over 24 hours.
+                - heading "Wrap-UpDirect link to Wrap-Up" [level=2] [ref=e1176]:
+                  - text: Wrap-Up
+                  - link "Direct link to Wrap-Up" [ref=e1177] [cursor=pointer]:
+                    - /url: "#wrap-up"
+                    - text: "#"
+                - paragraph [ref=e1178]: In this tutorial, you created two cluster profile versions, one with cluster profile variables and one without. You deployed a cluster and updated it to apply the cluster profile variables. Cluster profile variables provide the ability to leverage cluster profiles as a templating function.
+                - paragraph [ref=e1179]: We encourage you to check out the following reference resources to learn more about Palette.
+                - list [ref=e1180]:
+                  - listitem [ref=e1181]:
+                    - paragraph [ref=e1182]:
+                      - link "Cluster Profiles" [ref=e1183] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/
+                  - listitem [ref=e1184]:
+                    - paragraph [ref=e1185]:
+                      - link "Palette Clusters" [ref=e1186] [cursor=pointer]:
+                        - /url: /clusters/
+                  - listitem [ref=e1187]:
+                    - paragraph [ref=e1188]:
+                      - link "Backup and Restore" [ref=e1189] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/backup-restore/
+                  - listitem [ref=e1190]:
+                    - paragraph [ref=e1191]:
+                      - link "Deploy a Custom Pack" [ref=e1192] [cursor=pointer]:
+                        - /url: /tutorials/packs-registries/deploy-pack/
+              - generic [ref=e1193]:
+                - generic [ref=e1195]:
+                  - text: "Tags:"
+                  - list [ref=e1196]:
+                    - listitem [ref=e1197]:
+                      - link "cluster profiles" [ref=e1198] [cursor=pointer]:
+                        - /url: /tags/cluster-profiles/
+                    - listitem [ref=e1199]:
+                      - link "cluster profile variables" [ref=e1200] [cursor=pointer]:
+                        - /url: /tags/cluster-profile-variables/
+                    - listitem [ref=e1201]:
+                      - link "tutorial" [ref=e1202] [cursor=pointer]:
+                        - /url: /tags/tutorial/
+                - link "Edit this page" [ref=e1205] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/tutorials/profiles/cluster-profile-variables.md
+                  - img [ref=e1206]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e1210]:
+              - link "Previous « Deploy Cluster Profile Updates" [ref=e1211] [cursor=pointer]:
+                - /url: /tutorials/profiles/update-k8s-cluster/
+                - generic [ref=e1212]: Previous
+                - generic [ref=e1213]: « Deploy Cluster Profile Updates
+              - link "Next Clusters »" [ref=e1214] [cursor=pointer]:
+                - /url: /tutorials/clusters/
+                - generic [ref=e1215]: Next
+                - generic [ref=e1216]: Clusters »
+          - list [ref=e1219]:
+            - listitem [ref=e1220]:
+              - link "Prerequisites" [ref=e1221] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e1222]:
+              - link "Cluster Profile Variables (UI Workflow)" [ref=e1223] [cursor=pointer]:
+                - /url: "#cluster-profile-variables-ui-workflow"
+              - list [ref=e1224]:
+                - listitem [ref=e1225]:
+                  - link "Create Cluster Profile" [ref=e1226] [cursor=pointer]:
+                    - /url: "#create-cluster-profile"
+                - listitem [ref=e1227]:
+                  - link "Add Cluster Profile Variables" [ref=e1228] [cursor=pointer]:
+                    - /url: "#add-cluster-profile-variables"
+                - listitem [ref=e1229]:
+                  - link "Deploy Cluster with Cluster Profile Variables" [ref=e1230] [cursor=pointer]:
+                    - /url: "#deploy-cluster-with-cluster-profile-variables"
+                - listitem [ref=e1231]:
+                  - link "Cleanup" [ref=e1232] [cursor=pointer]:
+                    - /url: "#cleanup"
+            - listitem [ref=e1233]:
+              - link "Cluster Profile Variables (Terraform Workflow)" [ref=e1234] [cursor=pointer]:
+                - /url: "#cluster-profile-variables-terraform-workflow"
+              - list [ref=e1235]:
+                - listitem [ref=e1236]:
+                  - link "Resources Review" [ref=e1237] [cursor=pointer]:
+                    - /url: "#resources-review"
+                - listitem [ref=e1238]:
+                  - link "Input Variables" [ref=e1239] [cursor=pointer]:
+                    - /url: "#input-variables"
+                - listitem [ref=e1240]:
+                  - link "Deploy Cluster with Cluster Profile Variables" [ref=e1241] [cursor=pointer]:
+                    - /url: "#deploy-cluster-with-cluster-profile-variables-1"
+                - listitem [ref=e1242]:
+                  - link "Cleanup" [ref=e1243] [cursor=pointer]:
+                    - /url: "#cleanup-1"
+            - listitem [ref=e1244]:
+              - link "Wrap-Up" [ref=e1245] [cursor=pointer]:
+                - /url: "#wrap-up"
+  - button "Project Logo Ask AI" [ref=e1246] [cursor=pointer]:
+    - generic [ref=e1249]:
+      - img "Project Logo" [ref=e1250]
+      - paragraph [ref=e1251]: Ask AI
+```

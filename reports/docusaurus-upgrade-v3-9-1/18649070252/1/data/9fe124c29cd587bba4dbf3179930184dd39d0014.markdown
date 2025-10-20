@@ -1,0 +1,647 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [expanded] [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+                - list [ref=e107]:
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Public Cloud Clusters" [ref=e110] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e112]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e114] [cursor=pointer]
+                  - listitem [ref=e115]:
+                    - generic [ref=e116]:
+                      - link "Data Center Clusters" [ref=e117] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e119]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e121] [cursor=pointer]
+                  - listitem [ref=e122]:
+                    - generic [ref=e123]:
+                      - link "Edge" [expanded] [ref=e124] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e126]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e128] [cursor=pointer]
+                    - list [ref=e129]:
+                      - listitem [ref=e130]:
+                        - generic [ref=e131]:
+                          - link "Architecture" [ref=e132] [cursor=pointer]:
+                            - /url: /clusters/edge/architecture/
+                          - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e133] [cursor=pointer]
+                      - listitem [ref=e134]:
+                        - link "Hardware Requirements" [ref=e135] [cursor=pointer]:
+                          - /url: /clusters/edge/hardware-requirements/
+                      - listitem [ref=e136]:
+                        - link "Deployment Lifecycle" [ref=e137] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-native-lifecycle/
+                      - listitem [ref=e138]:
+                        - generic [ref=e139]:
+                          - link "Trusted Boot" [ref=e140] [cursor=pointer]:
+                            - /url: /clusters/edge/trusted-boot/
+                          - button "Toggle the collapsible sidebar category 'Trusted Boot'" [ref=e141] [cursor=pointer]
+                      - listitem [ref=e142]:
+                        - generic [ref=e143]:
+                          - link "Install Configuration" [ref=e144] [cursor=pointer]:
+                            - /url: /clusters/edge/edge-configuration/
+                          - button "Toggle the collapsible sidebar category 'Install Configuration'" [ref=e145] [cursor=pointer]
+                      - listitem [ref=e146]:
+                        - generic [ref=e147]:
+                          - link "EdgeForge Workflow" [ref=e148] [cursor=pointer]:
+                            - /url: /clusters/edge/edgeforge-workflow/
+                          - button "Toggle the collapsible sidebar category 'EdgeForge Workflow'" [ref=e149] [cursor=pointer]
+                      - listitem [ref=e150]:
+                        - generic [ref=e151]:
+                          - link "Local UI" [expanded] [ref=e152] [cursor=pointer]:
+                            - /url: /clusters/edge/local-ui/
+                          - button "Toggle the collapsible sidebar category 'Local UI'" [ref=e153] [cursor=pointer]
+                        - list [ref=e154]:
+                          - listitem [ref=e155]:
+                            - generic [ref=e156]:
+                              - link "Cluster Operations" [ref=e157] [cursor=pointer]:
+                                - /url: /clusters/edge/local-ui/cluster-management/
+                              - button "Toggle the collapsible sidebar category 'Cluster Operations'" [ref=e158] [cursor=pointer]
+                          - listitem [ref=e159]:
+                            - generic [ref=e160]:
+                              - link "Host Management" [expanded] [ref=e161] [cursor=pointer]:
+                                - /url: /clusters/edge/local-ui/host-management/
+                              - button "Toggle the collapsible sidebar category 'Host Management'" [ref=e162] [cursor=pointer]
+                            - list [ref=e163]:
+                              - listitem [ref=e164]:
+                                - link "Edit User Data" [ref=e165] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/edit-user-data/
+                              - listitem [ref=e166]:
+                                - link "Access Local UI" [ref=e167] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/access-console/
+                              - listitem [ref=e168]:
+                                - link "Reboot, Shutdown, and Reset Edge Host" [ref=e169] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/reset-reboot/
+                              - listitem [ref=e170]:
+                                - link "Configure HTTP-Proxy in Local UI" [ref=e171] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/configure-proxy/
+                              - listitem [ref=e172]:
+                                - link "Network Diagnostic Tools" [ref=e173] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/diagnostic-tools/
+                              - listitem [ref=e174]:
+                                - link "Add Custom Links to Sidebar" [ref=e175] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/custom-link/
+                              - listitem [ref=e176]:
+                                - link "Customize Local UI Theme" [ref=e177] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/theming/
+                              - listitem [ref=e178]:
+                                - link "Configure and Access Audit Logs" [ref=e179] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/audit-logs/
+                              - listitem [ref=e180]:
+                                - link "Download Files from Local UI" [ref=e181] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/download-files/
+                      - listitem [ref=e182]:
+                        - generic [ref=e183]:
+                          - link "Deployment" [ref=e184] [cursor=pointer]:
+                            - /url: /clusters/edge/site-deployment/
+                          - button "Toggle the collapsible sidebar category 'Deployment'" [ref=e185] [cursor=pointer]
+                      - listitem [ref=e186]:
+                        - generic [ref=e187]:
+                          - link "Cluster Management" [ref=e188] [cursor=pointer]:
+                            - /url: /clusters/edge/cluster-management/
+                          - button "Toggle the collapsible sidebar category 'Cluster Management'" [ref=e189] [cursor=pointer]
+                      - listitem [ref=e190]:
+                        - generic [ref=e191]:
+                          - link "Networking" [ref=e192] [cursor=pointer]:
+                            - /url: /clusters/edge/networking/
+                          - button "Toggle the collapsible sidebar category 'Networking'" [ref=e193] [cursor=pointer]
+                      - listitem [ref=e194]:
+                        - generic [ref=e195]:
+                          - link "Third Party Integrations" [ref=e196] [cursor=pointer]:
+                            - /url: /clusters/edge/third-party-integrations/
+                          - button "Toggle the collapsible sidebar category 'Third Party Integrations'" [ref=e197] [cursor=pointer]
+                  - listitem [ref=e198]:
+                    - generic [ref=e199]:
+                      - link "Palette Virtual Clusters" [ref=e200] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e202]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e204] [cursor=pointer]
+                  - listitem [ref=e205]:
+                    - generic [ref=e206]:
+                      - link "Imported Clusters" [ref=e207] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e209]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e211] [cursor=pointer]
+                  - listitem [ref=e212]:
+                    - generic [ref=e213]:
+                      - link "Manage Clusters" [ref=e214] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e216]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e218] [cursor=pointer]
+                  - listitem [ref=e219]:
+                    - generic [ref=e220]:
+                      - link "Cluster Groups" [ref=e221] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e223]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e225] [cursor=pointer]
+                  - listitem [ref=e226]:
+                    - generic [ref=e227]:
+                      - link "Private Cloud Gateway" [ref=e228] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e230]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e232] [cursor=pointer]
+              - listitem [ref=e233]:
+                - generic [ref=e234]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e235] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e237]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e239] [cursor=pointer]
+              - listitem [ref=e240]:
+                - generic [ref=e241]:
+                  - link "Palette Dev Engine" [ref=e242] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e244]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e246] [cursor=pointer]
+              - listitem [ref=e247]:
+                - generic [ref=e248]:
+                  - link "Virtual Machine Orchestrator" [ref=e249] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e251]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e253] [cursor=pointer]
+              - listitem [ref=e254]:
+                - generic [ref=e255]:
+                  - link "Workspaces" [ref=e256] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e258]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e260] [cursor=pointer]
+              - listitem [ref=e261]:
+                - generic [ref=e262]:
+                  - link "Packs List" [ref=e263] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e265]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e267] [cursor=pointer]
+              - listitem [ref=e268]:
+                - generic [ref=e269]:
+                  - link "User & Role Management" [ref=e270] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e272]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e274] [cursor=pointer]
+              - listitem [ref=e275]:
+                - generic [ref=e276]:
+                  - link "Registries and Packs" [ref=e277] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e279]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e281] [cursor=pointer]
+              - listitem [ref=e282]:
+                - generic [ref=e283]:
+                  - link "Security" [ref=e284] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e286]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e288] [cursor=pointer]
+              - listitem [ref=e289]:
+                - generic [ref=e290]:
+                  - link "Audit Logs" [ref=e291] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e293]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e295] [cursor=pointer]
+              - listitem [ref=e296]:
+                - generic [ref=e297]:
+                  - link "Self-Hosted Palette" [ref=e298] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e300]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e302] [cursor=pointer]
+              - listitem [ref=e303]:
+                - generic [ref=e304]:
+                  - link "Palette VerteX" [ref=e305] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e307]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e309] [cursor=pointer]
+              - listitem [ref=e310]:
+                - generic [ref=e311]:
+                  - link "Tenant Administration" [ref=e312] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e314]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e316] [cursor=pointer]
+              - listitem [ref=e317]:
+                - generic [ref=e318]:
+                  - link "Automation" [ref=e319] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e321]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e323] [cursor=pointer]
+              - listitem [ref=e324]:
+                - generic [ref=e325]:
+                  - link "Troubleshooting" [ref=e326] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e328]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e330] [cursor=pointer]
+              - listitem [ref=e331]:
+                - link "Glossary" [ref=e332] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e334]
+                  - text: Glossary
+              - listitem [ref=e336]:
+                - generic [ref=e337]:
+                  - link "Compliance & Legal" [ref=e338] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e340]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e342] [cursor=pointer]
+              - listitem [ref=e343]:
+                - button "Privacy Settings" [ref=e344] [cursor=pointer]:
+                  - img [ref=e345]
+                  - text: Privacy Settings
+      - main [ref=e347]:
+        - generic [ref=e349]:
+          - generic [ref=e351]:
+            - article [ref=e352]:
+              - navigation "Breadcrumbs" [ref=e353]:
+                - list [ref=e354]:
+                  - listitem [ref=e355]:
+                    - link "Home page" [ref=e356] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e357]
+                  - listitem [ref=e359]:
+                    - link "Clusters" [ref=e360] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e361]:
+                    - link "Edge" [ref=e362] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                  - listitem [ref=e363]:
+                    - link "Local UI" [ref=e364] [cursor=pointer]:
+                      - /url: /clusters/edge/local-ui/
+                  - listitem [ref=e365]:
+                    - link "Host Management" [ref=e366] [cursor=pointer]:
+                      - /url: /clusters/edge/local-ui/host-management/
+                  - listitem [ref=e367]:
+                    - generic [ref=e368]: Reboot, Shutdown, and Reset Edge Host
+              - generic [ref=e369]:
+                - heading "Reboot, Shutdown, and Reset Edge Host" [level=1] [ref=e371]
+                - paragraph [ref=e372]: You can reboot, shut down and reset an Edge host from Local UI.
+                - heading "Reboot Edge HostDirect link to Reboot Edge Host" [level=2] [ref=e373]:
+                  - text: Reboot Edge Host
+                  - link "Direct link to Reboot Edge Host" [ref=e374] [cursor=pointer]:
+                    - /url: "#reboot-edge-host"
+                    - text: "#"
+                - paragraph [ref=e375]: You can reboot the Edge host from Local UI. Doing so will cause you to temporarily lose access to Local UI while the Edge host is rebooting.
+                - heading "PrerequisiteDirect link to Prerequisite" [level=3] [ref=e376]:
+                  - text: Prerequisite
+                  - link "Direct link to Prerequisite" [ref=e377] [cursor=pointer]:
+                    - /url: "#prerequisite"
+                    - text: "#"
+                - list [ref=e378]:
+                  - listitem [ref=e379]:
+                    - paragraph [ref=e380]: Network access to the Edge device’s IP and port where Local UI is exposed. The default port is 5080.
+                  - listitem [ref=e381]:
+                    - paragraph [ref=e382]: Credentials to log in to Local UI. Any Operating System (OS) user can be used to log into Local UI.
+                - heading "InstructionsDirect link to Instructions" [level=3] [ref=e383]:
+                  - text: Instructions
+                  - link "Direct link to Instructions" [ref=e384] [cursor=pointer]:
+                    - /url: "#instructions"
+                    - text: "#"
+                - list [ref=e385]:
+                  - listitem [ref=e386]:
+                    - paragraph [ref=e387]:
+                      - text: Log in to
+                      - link "Local UI" [ref=e388] [cursor=pointer]:
+                        - /url: /clusters/edge/local-ui/host-management/access-console/#log-in-to-local-ui
+                      - text: .
+                  - listitem [ref=e389]:
+                    - paragraph [ref=e390]:
+                      - text: Under the upper-right
+                      - strong [ref=e391]: User Menu
+                      - text: ", click on"
+                      - strong [ref=e392]: Actions
+                      - text: to open the actions drop-down menu.
+                  - listitem [ref=e393]:
+                    - paragraph [ref=e394]:
+                      - text: Click on
+                      - strong [ref=e395]: Reboot
+                      - text: .
+                  - listitem [ref=e396]:
+                    - paragraph [ref=e397]:
+                      - text: Click
+                      - strong [ref=e398]: Confirm
+                      - text: to confirm the reboot.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e399]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e400] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e401]:
+                  - listitem [ref=e402]:
+                    - paragraph [ref=e403]: After confirming the reboot, you will be logged out of the current session immediately and the Edge host will reboot shortly afterwards.
+                  - listitem [ref=e404]:
+                    - paragraph [ref=e405]: Verify that the Edge host is rebooting by trying to visit Local UI. Confirm that the address is unreachable.
+                  - listitem [ref=e406]:
+                    - paragraph [ref=e407]: After waiting a few minutes, try to access Local UI again to confirm that the Edge host has rebooted successfully.
+                - heading "Reset Edge HostDirect link to Reset Edge Host" [level=2] [ref=e408]:
+                  - text: Reset Edge Host
+                  - link "Direct link to Reset Edge Host" [ref=e409] [cursor=pointer]:
+                    - /url: "#reset-edge-host"
+                    - text: "#"
+                - paragraph [ref=e410]:
+                  - text: You can reset an locally managed Edge host from Local UI. This restores the Edge host to the state right after the
+                  - link "initial configuration" [ref=e411] [cursor=pointer]:
+                    - /url: /clusters/edge/site-deployment/site-installation/initial-setup/
+                  - text: is completed in the Terminal User Interface (TUI).
+                - paragraph [ref=e412]:
+                  - text: A reset removes all workloads, content, and cluster definition from the Edge host. This includes content bundles that were built into the ISO image during EdgeForge. If your host was
+                  - link "linked" [ref=e413] [cursor=pointer]:
+                    - /url: /clusters/edge/local-ui/cluster-management/link-hosts/
+                  - text: with another host, resetting the host will unlink the host.
+                - paragraph [ref=e414]:
+                  - text: If your Edge host has a connection to Palette, you cannot reset the Edge host through Local UI as the cluster is managed through Palette. If you need to force a reset, you can
+                  - link "trigger one from the terminal" [ref=e415] [cursor=pointer]:
+                    - /url: /clusters/edge/cluster-management/reset-host/
+                  - text: .
+                - generic [ref=e416]:
+                  - generic [ref=e417]:
+                    - img [ref=e419]
+                    - text: info
+                  - paragraph [ref=e422]:
+                    - text: If you configured HTTP/HTTPS proxy through Local UI, the proxy setting will be retained after the reset. For more information about HTTP proxy, refer to
+                    - link "Configure HTTP Proxy" [ref=e423] [cursor=pointer]:
+                      - /url: /clusters/edge/local-ui/host-management/configure-proxy/
+                    - text: .
+                - heading "PrerequisiteDirect link to Prerequisite" [level=3] [ref=e424]:
+                  - text: Prerequisite
+                  - link "Direct link to Prerequisite" [ref=e425] [cursor=pointer]:
+                    - /url: "#prerequisite-1"
+                    - text: "#"
+                - list [ref=e426]:
+                  - listitem [ref=e427]:
+                    - paragraph [ref=e428]: Network access to the Edge device’s IP and port where Local UI is exposed. The default port is 5080.
+                  - listitem [ref=e429]:
+                    - paragraph [ref=e430]: Credentials to log in to Local UI. Any OS user can be used to log into Local UI.
+                - heading "InstructionsDirect link to Instructions" [level=3] [ref=e431]:
+                  - text: Instructions
+                  - link "Direct link to Instructions" [ref=e432] [cursor=pointer]:
+                    - /url: "#instructions-1"
+                    - text: "#"
+                - list [ref=e433]:
+                  - listitem [ref=e434]:
+                    - paragraph [ref=e435]:
+                      - text: Log in to
+                      - link "Local UI" [ref=e436] [cursor=pointer]:
+                        - /url: /clusters/edge/local-ui/host-management/access-console/#log-in-to-local-ui
+                      - text: .
+                  - listitem [ref=e437]:
+                    - paragraph [ref=e438]:
+                      - text: Under the upper-right
+                      - strong [ref=e439]: User Menu
+                      - text: ", click on"
+                      - strong [ref=e440]: Actions
+                      - text: to open the actions drop-down menu.
+                  - listitem [ref=e441]:
+                    - paragraph [ref=e442]:
+                      - text: Click
+                      - strong [ref=e443]: Reset
+                      - text: .
+                  - listitem [ref=e444]:
+                    - paragraph [ref=e445]:
+                      - text: Click
+                      - strong [ref=e446]: Confirm
+                      - text: to confirm.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e447]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e448] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - list [ref=e449]:
+                  - listitem [ref=e450]:
+                    - paragraph [ref=e451]: After confirming, a message displays that the Edge host is scheduled for a reset. Local UI might become unresponsive for a few minutes afterwards.
+                  - listitem [ref=e452]:
+                    - paragraph [ref=e453]: After a few minutes, visit Local UI in your browser and log in. Verify that all cluster data and content have been erased.
+                - heading "Shut Down Edge HostDirect link to Shut Down Edge Host" [level=2] [ref=e454]:
+                  - text: Shut Down Edge Host
+                  - link "Direct link to Shut Down Edge Host" [ref=e455] [cursor=pointer]:
+                    - /url: "#shut-down-edge-host"
+                    - text: "#"
+                - paragraph [ref=e456]: You can shut down the Edge host from Local UI.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e457]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e458] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e459]:
+                  - listitem [ref=e460]:
+                    - paragraph [ref=e461]: Network access to the Edge device’s IP and port where Local UI is exposed. The default port is 5080.
+                  - listitem [ref=e462]:
+                    - paragraph [ref=e463]: Credentials to log in to Local UI. Any OS user can be used to log into Local UI.
+                - heading "InstructionsDirect link to Instructions" [level=3] [ref=e464]:
+                  - text: Instructions
+                  - link "Direct link to Instructions" [ref=e465] [cursor=pointer]:
+                    - /url: "#instructions-2"
+                    - text: "#"
+                - list [ref=e466]:
+                  - listitem [ref=e467]:
+                    - paragraph [ref=e468]:
+                      - text: Log in to
+                      - link "Local UI" [ref=e469] [cursor=pointer]:
+                        - /url: /clusters/edge/local-ui/host-management/access-console/#log-in-to-local-ui
+                      - text: .
+                  - listitem [ref=e470]:
+                    - paragraph [ref=e471]:
+                      - text: Under the upper-right
+                      - strong [ref=e472]: User Menu
+                      - text: ", click on"
+                      - strong [ref=e473]: Actions
+                      - text: to open the actions
+                      - strong [ref=e474]: drop-down Menu
+                      - text: .
+                  - listitem [ref=e475]:
+                    - paragraph [ref=e476]:
+                      - text: Click
+                      - strong [ref=e477]: Shutdown
+                      - text: .
+                  - listitem [ref=e478]:
+                    - paragraph [ref=e479]:
+                      - text: Click
+                      - strong [ref=e480]: Confirm
+                      - text: to confirm shutting down the Edge host.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e481]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e482] [cursor=pointer]:
+                    - /url: "#validate-2"
+                    - text: "#"
+                - list [ref=e483]:
+                  - listitem [ref=e484]:
+                    - paragraph [ref=e485]: After confirming, a message displays that the Edge host will shut down.
+                  - listitem [ref=e486]:
+                    - paragraph [ref=e487]: Verify that the Edge host has shut down by observing the hardware has stopped. If your Edge host is a Virtual Machine (VM), observe on the VM platform that the VM is powered off.
+              - generic [ref=e488]:
+                - generic [ref=e490]:
+                  - text: "Tags:"
+                  - list [ref=e491]:
+                    - listitem [ref=e492]:
+                      - link "edge" [ref=e493] [cursor=pointer]:
+                        - /url: /tags/edge/
+                - link "Edit this page" [ref=e496] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/edge/local-ui/host-management/reset-reboot.md
+                  - img [ref=e497]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e501]:
+              - link "Previous « Access Local UI" [ref=e502] [cursor=pointer]:
+                - /url: /clusters/edge/local-ui/host-management/access-console/
+                - generic [ref=e503]: Previous
+                - generic [ref=e504]: « Access Local UI
+              - link "Next Configure HTTP-Proxy in Local UI »" [ref=e505] [cursor=pointer]:
+                - /url: /clusters/edge/local-ui/host-management/configure-proxy/
+                - generic [ref=e506]: Next
+                - generic [ref=e507]: Configure HTTP-Proxy in Local UI »
+          - list [ref=e510]:
+            - listitem [ref=e511]:
+              - link "Reboot Edge Host" [ref=e512] [cursor=pointer]:
+                - /url: "#reboot-edge-host"
+              - list [ref=e513]:
+                - listitem [ref=e514]:
+                  - link "Prerequisite" [ref=e515] [cursor=pointer]:
+                    - /url: "#prerequisite"
+                - listitem [ref=e516]:
+                  - link "Instructions" [ref=e517] [cursor=pointer]:
+                    - /url: "#instructions"
+                - listitem [ref=e518]:
+                  - link "Validate" [ref=e519] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e520]:
+              - link "Reset Edge Host" [ref=e521] [cursor=pointer]:
+                - /url: "#reset-edge-host"
+              - list [ref=e522]:
+                - listitem [ref=e523]:
+                  - link "Prerequisite" [ref=e524] [cursor=pointer]:
+                    - /url: "#prerequisite-1"
+                - listitem [ref=e525]:
+                  - link "Instructions" [ref=e526] [cursor=pointer]:
+                    - /url: "#instructions-1"
+                - listitem [ref=e527]:
+                  - link "Validate" [ref=e528] [cursor=pointer]:
+                    - /url: "#validate-1"
+            - listitem [ref=e529]:
+              - link "Shut Down Edge Host" [ref=e530] [cursor=pointer]:
+                - /url: "#shut-down-edge-host"
+              - list [ref=e531]:
+                - listitem [ref=e532]:
+                  - link "Prerequisites" [ref=e533] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e534]:
+                  - link "Instructions" [ref=e535] [cursor=pointer]:
+                    - /url: "#instructions-2"
+                - listitem [ref=e536]:
+                  - link "Validate" [ref=e537] [cursor=pointer]:
+                    - /url: "#validate-2"
+  - button "Project Logo Ask AI" [ref=e538] [cursor=pointer]:
+    - generic [ref=e541]:
+      - img "Project Logo" [ref=e542]
+      - paragraph [ref=e543]: Ask AI
+```

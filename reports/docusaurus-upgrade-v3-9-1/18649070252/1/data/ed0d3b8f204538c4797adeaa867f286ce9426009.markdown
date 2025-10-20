@@ -1,0 +1,509 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Audit Logs" [ref=e165] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e167]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Self-Hosted Palette" [expanded] [ref=e172] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e174]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e176] [cursor=pointer]
+                - list [ref=e177]:
+                  - listitem [ref=e178]:
+                    - generic [ref=e179]:
+                      - link "Installation" [ref=e180] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e181] [cursor=pointer]
+                  - listitem [ref=e182]:
+                    - link "Activate Palette" [ref=e183] [cursor=pointer]:
+                      - /url: /enterprise-version/activate-installation/
+                  - listitem [ref=e184]:
+                    - generic [ref=e185]:
+                      - link "System Management" [expanded] [ref=e186] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e187] [cursor=pointer]
+                    - list [ref=e188]:
+                      - listitem [ref=e189]:
+                        - generic [ref=e190]:
+                          - link "Account Management" [ref=e191] [cursor=pointer]:
+                            - /url: /enterprise-version/system-management/account-management/
+                          - button "Toggle the collapsible sidebar category 'Account Management'" [ref=e192] [cursor=pointer]
+                      - listitem [ref=e193]:
+                        - link "Add System-Level Registry" [ref=e194] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/add-registry/
+                      - listitem [ref=e195]:
+                        - link "Enable Adding AWS Accounts Using STS" [ref=e196] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/configure-aws-sts-account/
+                      - listitem [ref=e197]:
+                        - link "Backup and Restore" [ref=e198] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/backup-restore/
+                      - listitem [ref=e199]:
+                        - link "Configure SMTP" [ref=e200] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/smtp/
+                      - listitem [ref=e201]:
+                        - link "Configure Reverse Proxy" [ref=e202] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/reverse-proxy/
+                      - listitem [ref=e203]:
+                        - link "Customize Interface" [ref=e204] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/customize-interface/
+                      - listitem [ref=e205]:
+                        - link "Feature Flags" [ref=e206] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/feature-flags/
+                      - listitem [ref=e207]:
+                        - link "System Address Management" [ref=e208] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/ssl-certificate-management/
+                      - listitem [ref=e209]:
+                        - link "Tenant Management" [ref=e210] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/tenant-management/
+                      - listitem [ref=e211]:
+                        - link "Banners" [ref=e212] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/login-banner/
+                      - listitem [ref=e213]:
+                        - link "Override Registry Configuration" [ref=e214] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/registry-override/
+                      - listitem [ref=e215]:
+                        - link "Migrate SCAR to OCI Registry" [ref=e216] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/scar-migration/
+                      - listitem [ref=e217]:
+                        - link "Modify Cloud Provider Configuration" [ref=e218] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/change-cloud-config/
+                  - listitem [ref=e219]:
+                    - generic [ref=e220]:
+                      - link "Upgrade" [ref=e221] [cursor=pointer]:
+                        - /url: /enterprise-version/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e222] [cursor=pointer]
+              - listitem [ref=e223]:
+                - generic [ref=e224]:
+                  - link "Palette VerteX" [ref=e225] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e227]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e229] [cursor=pointer]
+              - listitem [ref=e230]:
+                - generic [ref=e231]:
+                  - link "Tenant Administration" [ref=e232] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e234]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e236] [cursor=pointer]
+              - listitem [ref=e237]:
+                - generic [ref=e238]:
+                  - link "Automation" [ref=e239] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e241]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e243] [cursor=pointer]
+              - listitem [ref=e244]:
+                - generic [ref=e245]:
+                  - link "Troubleshooting" [ref=e246] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e248]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e250] [cursor=pointer]
+              - listitem [ref=e251]:
+                - link "Glossary" [ref=e252] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e254]
+                  - text: Glossary
+              - listitem [ref=e256]:
+                - generic [ref=e257]:
+                  - link "Compliance & Legal" [ref=e258] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e260]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e262] [cursor=pointer]
+              - listitem [ref=e263]:
+                - button "Privacy Settings" [ref=e264] [cursor=pointer]:
+                  - img [ref=e265]
+                  - text: Privacy Settings
+      - main [ref=e267]:
+        - generic [ref=e269]:
+          - generic [ref=e271]:
+            - article [ref=e272]:
+              - navigation "Breadcrumbs" [ref=e273]:
+                - list [ref=e274]:
+                  - listitem [ref=e275]:
+                    - link "Home page" [ref=e276] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e277]
+                  - listitem [ref=e279]:
+                    - link "Self-Hosted Palette" [ref=e280] [cursor=pointer]:
+                      - /url: /enterprise-version/
+                  - listitem [ref=e281]:
+                    - link "System Management" [ref=e282] [cursor=pointer]:
+                      - /url: /enterprise-version/system-management/
+                  - listitem [ref=e283]:
+                    - generic [ref=e284]: Tenant Management
+              - generic [ref=e285]:
+                - heading "Tenant Management" [level=1] [ref=e287]
+                - paragraph [ref=e288]: Tenants are isolated environments in Palette that contain their own clusters, users, and resources. You can create multiple tenants in Palette to support multiple teams or projects. Instructions for creating and removing tenants are provided below.
+                - heading "Create a TenantDirect link to Create a Tenant" [level=2] [ref=e289]:
+                  - text: Create a Tenant
+                  - link "Direct link to Create a Tenant" [ref=e290] [cursor=pointer]:
+                    - /url: "#create-a-tenant"
+                    - text: "#"
+                - paragraph [ref=e291]: You can create a tenant in Palette by following these steps.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e292]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e293] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e294]:
+                  - listitem [ref=e295]: Access to the Palette system console.
+                - heading "EnablementDirect link to Enablement" [level=3] [ref=e296]:
+                  - text: Enablement
+                  - link "Direct link to Enablement" [ref=e297] [cursor=pointer]:
+                    - /url: "#enablement"
+                    - text: "#"
+                - list [ref=e298]:
+                  - listitem [ref=e299]:
+                    - paragraph [ref=e300]: Log in to the Palette system console.
+                  - listitem [ref=e301]:
+                    - paragraph [ref=e302]:
+                      - text: Navigate to the left
+                      - strong [ref=e303]: Main Menu
+                      - text: and select
+                      - strong [ref=e304]: Tenant Management
+                      - text: .
+                  - listitem [ref=e305]:
+                    - paragraph [ref=e306]:
+                      - text: Click
+                      - strong [ref=e307]: Create New Tenant
+                      - text: .
+                  - listitem [ref=e308]:
+                    - paragraph [ref=e309]:
+                      - text: Fill out the
+                      - strong [ref=e310]: Org Name
+                      - text: and the properties of the admin user by providing the
+                      - strong [ref=e311]: First Name
+                      - text: ","
+                      - strong [ref=e312]: Last Name
+                      - text: ", and"
+                      - strong [ref=e313]: Email
+                      - text: .
+                  - listitem [ref=e314]:
+                    - paragraph [ref=e315]: Confirm your changes.
+                  - listitem [ref=e316]:
+                    - paragraph [ref=e317]:
+                      - text: From the tenant list view, find your newly created tenant and click on the
+                      - strong [ref=e318]: three dots Menu
+                      - text: . Select
+                      - strong [ref=e319]: Activate
+                      - text: to activate the tenant.
+                - paragraph [ref=e320]:
+                  - img "View of a tenant activation option" [ref=e321]
+                - list [ref=e322]:
+                  - listitem [ref=e323]:
+                    - paragraph [ref=e324]: A pop-up box will present you with an activation URL. Copy the URL and paste it into your browser to activate the tenant.
+                  - listitem [ref=e325]:
+                    - paragraph [ref=e326]: Provide the admin user with a new password.
+                  - listitem [ref=e327]:
+                    - paragraph [ref=e328]: Log in to the tenant console using the admin user credentials.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e329]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e330] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e331]:
+                  - listitem [ref=e332]:
+                    - paragraph [ref=e333]: Log in to Palette.
+                  - listitem [ref=e334]:
+                    - paragraph [ref=e335]: Verify that you can access the tenant as the admin user.
+                - heading "Remove a TenantDirect link to Remove a Tenant" [level=2] [ref=e336]:
+                  - text: Remove a Tenant
+                  - link "Direct link to Remove a Tenant" [ref=e337] [cursor=pointer]:
+                    - /url: "#remove-a-tenant"
+                    - text: "#"
+                - paragraph [ref=e338]: You can remove a tenant in Palette using the following steps.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e339]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e340] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e341]:
+                  - listitem [ref=e342]: Access to the Palette system console.
+                - heading "RemovalDirect link to Removal" [level=3] [ref=e343]:
+                  - text: Removal
+                  - link "Direct link to Removal" [ref=e344] [cursor=pointer]:
+                    - /url: "#removal"
+                    - text: "#"
+                - list [ref=e345]:
+                  - listitem [ref=e346]:
+                    - paragraph [ref=e347]: Log in to the Palette system console.
+                  - listitem [ref=e348]:
+                    - paragraph [ref=e349]:
+                      - text: Navigate to the left
+                      - strong [ref=e350]: Main Menu
+                      - text: and select
+                      - strong [ref=e351]: Tenant Management
+                      - text: .
+                  - listitem [ref=e352]:
+                    - paragraph [ref=e353]:
+                      - text: From the tenant list view, select the tenant you want to remove and click on the
+                      - strong [ref=e354]: three dots Menu
+                      - text: .
+                  - listitem [ref=e355]:
+                    - paragraph [ref=e356]:
+                      - text: Select
+                      - strong [ref=e357]: Delete
+                      - text: to prepare the tenant for removal.
+                  - listitem [ref=e358]:
+                    - paragraph [ref=e359]:
+                      - text: Click on your tenant's
+                      - strong [ref=e360]: three dot Menu
+                      - text: and select
+                      - strong [ref=e361]: Clean up
+                      - text: to remove all the tenant's resources.
+                - paragraph [ref=e362]:
+                  - img "View of a tenant deletion option" [ref=e363]
+                - generic [ref=e364]:
+                  - generic [ref=e365]:
+                    - img [ref=e367]
+                    - text: warning
+                  - paragraph [ref=e370]:
+                    - text: If you do not clean up the tenant's resources, such as clusters and Private Cloud Gateways (PCGs), the tenant will remain in a
+                    - strong [ref=e371]: Deleting
+                    - text: state. You can use
+                    - strong [ref=e372]: Force Cleanup & Delete
+                    - text: to proceed with deletion without manually cleaning up tenant resources.
+                - paragraph [ref=e373]: After the cleanup process completes, the tenant will be removed from the tenant list view.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e374]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e375] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - list [ref=e376]:
+                  - listitem [ref=e377]:
+                    - paragraph [ref=e378]:
+                      - text: Log in to the Palette system console. Refer to the
+                      - link "Access Palette" [ref=e379] [cursor=pointer]:
+                        - /url: /enterprise-version/#access-palette
+                      - text: section for instructions on how to access the Palette system console.
+                  - listitem [ref=e380]:
+                    - paragraph [ref=e381]:
+                      - text: Navigate to the left
+                      - strong [ref=e382]: Main Menu
+                      - text: and select
+                      - strong [ref=e383]: Tenant Management
+                      - text: .
+                  - listitem [ref=e384]:
+                    - paragraph [ref=e385]: Validate that the tenant was removed by checking the tenant list view.
+              - generic [ref=e386]:
+                - generic [ref=e388]:
+                  - text: "Tags:"
+                  - list [ref=e389]:
+                    - listitem [ref=e390]:
+                      - link "palette" [ref=e391] [cursor=pointer]:
+                        - /url: /tags/palette/
+                    - listitem [ref=e392]:
+                      - link "self-hosted" [ref=e393] [cursor=pointer]:
+                        - /url: /tags/self-hosted/
+                    - listitem [ref=e394]:
+                      - link "management" [ref=e395] [cursor=pointer]:
+                        - /url: /tags/management/
+                - link "Edit this page" [ref=e398] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/enterprise-version/system-management/tenant-management.md
+                  - img [ref=e399]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e403]:
+              - link "Previous « System Address Management" [ref=e404] [cursor=pointer]:
+                - /url: /enterprise-version/system-management/ssl-certificate-management/
+                - generic [ref=e405]: Previous
+                - generic [ref=e406]: « System Address Management
+              - link "Next Banners »" [ref=e407] [cursor=pointer]:
+                - /url: /enterprise-version/system-management/login-banner/
+                - generic [ref=e408]: Next
+                - generic [ref=e409]: Banners »
+          - list [ref=e412]:
+            - listitem [ref=e413]:
+              - link "Create a Tenant" [ref=e414] [cursor=pointer]:
+                - /url: "#create-a-tenant"
+              - list [ref=e415]:
+                - listitem [ref=e416]:
+                  - link "Prerequisites" [ref=e417] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e418]:
+                  - link "Enablement" [ref=e419] [cursor=pointer]:
+                    - /url: "#enablement"
+                - listitem [ref=e420]:
+                  - link "Validate" [ref=e421] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e422]:
+              - link "Remove a Tenant" [ref=e423] [cursor=pointer]:
+                - /url: "#remove-a-tenant"
+              - list [ref=e424]:
+                - listitem [ref=e425]:
+                  - link "Prerequisites" [ref=e426] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e427]:
+                  - link "Removal" [ref=e428] [cursor=pointer]:
+                    - /url: "#removal"
+                - listitem [ref=e429]:
+                  - link "Validate" [ref=e430] [cursor=pointer]:
+                    - /url: "#validate-1"
+  - button "Project Logo Ask AI" [ref=e431] [cursor=pointer]:
+    - generic [ref=e434]:
+      - img "Project Logo" [ref=e435]
+      - paragraph [ref=e436]: Ask AI
+```

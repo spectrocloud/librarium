@@ -1,0 +1,600 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Audit Logs" [ref=e165] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e167]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Self-Hosted Palette" [ref=e172] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e174]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Palette VerteX" [ref=e179] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e181]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e183] [cursor=pointer]
+              - listitem [ref=e184]:
+                - generic [ref=e185]:
+                  - link "Tenant Administration" [ref=e186] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e188]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e190] [cursor=pointer]
+              - listitem [ref=e191]:
+                - generic [ref=e192]:
+                  - link "Automation" [expanded] [ref=e193] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e195]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e197] [cursor=pointer]
+                - list [ref=e198]:
+                  - listitem [ref=e199]:
+                    - generic [ref=e200]:
+                      - link "Palette CLI" [expanded] [ref=e201] [cursor=pointer]:
+                        - /url: /automation/palette-cli/
+                      - button "Toggle the collapsible sidebar category 'Palette CLI'" [ref=e202] [cursor=pointer]
+                    - list [ref=e203]:
+                      - listitem [ref=e204]:
+                        - link "Install" [ref=e205] [cursor=pointer]:
+                          - /url: /automation/palette-cli/install-palette-cli/
+                      - listitem [ref=e206]:
+                        - generic [ref=e207]:
+                          - link "Commands" [expanded] [ref=e208] [cursor=pointer]:
+                            - /url: /automation/palette-cli/commands/
+                          - button "Toggle the collapsible sidebar category 'Commands'" [ref=e209] [cursor=pointer]
+                        - list [ref=e210]:
+                          - listitem [ref=e211]:
+                            - link "Content" [ref=e212] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/content/
+                          - listitem [ref=e213]:
+                            - link "Docs" [ref=e214] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/docs/
+                          - listitem [ref=e215]:
+                            - link "EC" [ref=e216] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/ec/
+                          - listitem [ref=e217]:
+                            - link "FIPS Validate" [ref=e218] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/fips-validate/
+                          - listitem [ref=e219]:
+                            - link "Import" [ref=e220] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/import/
+                          - listitem [ref=e221]:
+                            - link "Login" [ref=e222] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/login/
+                          - listitem [ref=e223]:
+                            - link "PCG" [ref=e224] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/pcg/
+                          - listitem [ref=e225]:
+                            - link "PDE" [ref=e226] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/pde/
+                          - listitem [ref=e227]:
+                            - link "Project" [ref=e228] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/project/
+                          - listitem [ref=e229]:
+                            - link "Validate-Auth" [ref=e230] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/validate-auth/
+                          - listitem [ref=e231]:
+                            - link "VMO" [ref=e232] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/vmo/
+                  - listitem [ref=e233]:
+                    - generic [ref=e234]:
+                      - link "Palette Go SDK" [ref=e235] [cursor=pointer]:
+                        - /url: /automation/palette-sdk/
+                      - button "Toggle the collapsible sidebar category 'Palette Go SDK'" [ref=e236] [cursor=pointer]
+                  - listitem [ref=e237]:
+                    - link "Terraform" [ref=e238] [cursor=pointer]:
+                      - /url: /automation/terraform/
+                  - listitem [ref=e239]:
+                    - generic [ref=e240]:
+                      - link "Crossplane" [ref=e241] [cursor=pointer]:
+                        - /url: /automation/crossplane/
+                      - button "Toggle the collapsible sidebar category 'Crossplane'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - generic [ref=e244]:
+                  - link "Troubleshooting" [ref=e245] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e247]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e249] [cursor=pointer]
+              - listitem [ref=e250]:
+                - link "Glossary" [ref=e251] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e253]
+                  - text: Glossary
+              - listitem [ref=e255]:
+                - generic [ref=e256]:
+                  - link "Compliance & Legal" [ref=e257] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e259]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e261] [cursor=pointer]
+              - listitem [ref=e262]:
+                - button "Privacy Settings" [ref=e263] [cursor=pointer]:
+                  - img [ref=e264]
+                  - text: Privacy Settings
+      - main [ref=e266]:
+        - generic [ref=e268]:
+          - generic [ref=e270]:
+            - article [ref=e271]:
+              - navigation "Breadcrumbs" [ref=e272]:
+                - list [ref=e273]:
+                  - listitem [ref=e274]:
+                    - link "Home page" [ref=e275] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e276]
+                  - listitem [ref=e278]:
+                    - link "Automation" [ref=e279] [cursor=pointer]:
+                      - /url: /automation/
+                  - listitem [ref=e280]:
+                    - link "Palette CLI" [ref=e281] [cursor=pointer]:
+                      - /url: /automation/palette-cli/
+                  - listitem [ref=e282]:
+                    - link "Commands" [ref=e283] [cursor=pointer]:
+                      - /url: /automation/palette-cli/commands/
+                  - listitem [ref=e284]:
+                    - generic [ref=e285]: PCG
+              - generic [ref=e286]:
+                - heading "PCG" [level=1] [ref=e288]
+                - paragraph [ref=e289]:
+                  - text: The
+                  - code [ref=e290]: pcg
+                  - text: command supports Private Cloud Gateway (PCG) operations, such as installing a PCG cluster and validating its installation. A local
+                  - link "kind" [ref=e291] [cursor=pointer]:
+                    - /url: https://kind.sigs.k8s.io/
+                  - text: cluster is created to facilitate creating the PCG cluster in the target environment. You do not need to install kind or any other dependencies. The CLI includes all the required dependencies to set up the kind cluster.
+                - heading "SubcommandsDirect link to Subcommands" [level=2] [ref=e292]:
+                  - text: Subcommands
+                  - link "Direct link to Subcommands" [ref=e293] [cursor=pointer]:
+                    - /url: "#subcommands"
+                    - text: "#"
+                - paragraph [ref=e294]:
+                  - text: The
+                  - code [ref=e295]: pcg
+                  - text: command exposes the following subcommand.
+                - list [ref=e296]:
+                  - listitem [ref=e297]:
+                    - code [ref=e298]: install
+                    - text: "- Install a PCG through an interactive wizard. A container runtime is required to install a PCG cluster."
+                - heading "LimitationsDirect link to Limitations" [level=2] [ref=e299]:
+                  - text: Limitations
+                  - link "Direct link to Limitations" [ref=e300] [cursor=pointer]:
+                    - /url: "#limitations"
+                    - text: "#"
+                - list [ref=e301]:
+                  - listitem [ref=e302]:
+                    - paragraph [ref=e303]:
+                      - text: Credentials such as Palette API keys, passwords, and Ubuntu Pro tokens set using Palette CLI version 4.7.1 or earlier are not compatible with Palette CLI version 4.7.2 or later. As a result, users cannot use configuration files created using version 4.7.1 or earlier to perform Palette CLI operations after upgrading to version 4.7.2 or later. Refer to our
+                      - link "Troubleshooting" [ref=e304] [cursor=pointer]:
+                        - /url: /troubleshooting/automation#scenario---update-cli-configuration-files-credentials
+                      - text: guide for more information.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e305]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e306] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e307]:
+                  - listitem [ref=e308]:
+                    - text: Docker is required to install a PCG cluster. Refer to the
+                    - link "Docker" [ref=e309] [cursor=pointer]:
+                      - /url: https://docs.docker.com/get-docker/
+                    - text: documentation to learn how to install Docker on your system.
+                  - listitem [ref=e310]:
+                    - text: You must log in to Palette using the
+                    - code [ref=e311]: login
+                    - text: command before importing clusters.
+                  - listitem [ref=e312]:
+                    - text: You must provide an encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. You can provide the passphrase through the
+                    - code [ref=e313]: PALETTE_ENCRYPTION_PASSWORD
+                    - text: environment variable or the
+                    - code [ref=e314]: "-k"
+                    - text: or
+                    - code [ref=e315]: "--encryption-passphrase"
+                    - text: flag. Refer to the
+                    - link "Encryption" [ref=e316] [cursor=pointer]:
+                      - /url: /automation/palette-cli/#encryption
+                    - text: section for more information on encryption.
+                - heading "InstallDirect link to Install" [level=2] [ref=e317]:
+                  - text: Install
+                  - link "Direct link to Install" [ref=e318] [cursor=pointer]:
+                    - /url: "#install"
+                    - text: "#"
+                - paragraph [ref=e319]:
+                  - text: Use the
+                  - code [ref=e320]: install
+                  - text: subcommand to install a PCG cluster in the following environments. The following flags are supported by the
+                  - code [ref=e321]: install
+                  - text: subcommand.
+                - table [ref=e322]:
+                  - rowgroup [ref=e323]:
+                    - row "Short Flag Long Flag Description Type" [ref=e324]:
+                      - cell "Short Flag" [ref=e325]:
+                        - strong [ref=e326]: Short Flag
+                      - cell "Long Flag" [ref=e327]:
+                        - strong [ref=e328]: Long Flag
+                      - cell "Description" [ref=e329]:
+                        - strong [ref=e330]: Description
+                      - cell "Type" [ref=e331]:
+                        - strong [ref=e332]: Type
+                  - rowgroup [ref=e333]:
+                    - row "-f --config-file Install using a configuration file (optional). Use -config-only to generate a configuration file. string" [ref=e334]:
+                      - cell "-f" [ref=e335]:
+                        - code [ref=e336]: "-f"
+                      - cell "--config-file" [ref=e337]:
+                        - code [ref=e338]: "--config-file"
+                      - cell "Install using a configuration file (optional). Use -config-only to generate a configuration file." [ref=e339]:
+                        - text: Install using a configuration file (optional). Use
+                        - code [ref=e340]: "-config-only"
+                        - text: to generate a configuration file.
+                      - cell "string" [ref=e341]
+                    - row "-k --encryption-passphrase Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption. string" [ref=e342]:
+                      - cell "-k" [ref=e343]:
+                        - code [ref=e344]: "-k"
+                      - cell "--encryption-passphrase" [ref=e345]:
+                        - code [ref=e346]: "--encryption-passphrase"
+                      - cell "Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable PALETTE_ENCRYPTION_PASSWORD. Refer to the Encryption section for more information on encryption." [ref=e347]:
+                        - text: Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable
+                        - code [ref=e348]: PALETTE_ENCRYPTION_PASSWORD
+                        - text: . Refer to the
+                        - link "Encryption" [ref=e349] [cursor=pointer]:
+                          - /url: /automation/palette-cli/#encryption
+                        - text: section for more information on encryption.
+                      - cell "string" [ref=e350]
+                    - row "-o --config-only Generate configuration file only. This command will not proceed with installation. boolean" [ref=e351]:
+                      - cell "-o" [ref=e352]:
+                        - code [ref=e353]: "-o"
+                      - cell "--config-only" [ref=e354]:
+                        - code [ref=e355]: "--config-only"
+                      - cell "Generate configuration file only. This command will not proceed with installation." [ref=e356]
+                      - cell "boolean" [ref=e357]
+                    - row "-h --help Help for the install command. boolean" [ref=e358]:
+                      - cell "-h" [ref=e359]:
+                        - code [ref=e360]: "-h"
+                      - cell "--help" [ref=e361]:
+                        - code [ref=e362]: "--help"
+                      - cell "Help for the install command." [ref=e363]
+                      - cell "boolean" [ref=e364]
+                    - row "- --ubuntu-pro-token The Canonical subscription token for Ubuntu Pro. An Ubuntu Pro subscription is required, and Ubuntu Pro must be enabled. string" [ref=e365]:
+                      - cell "-" [ref=e366]
+                      - cell "--ubuntu-pro-token" [ref=e367]:
+                        - code [ref=e368]: "--ubuntu-pro-token"
+                      - cell "The Canonical subscription token for Ubuntu Pro. An Ubuntu Pro subscription is required, and Ubuntu Pro must be enabled." [ref=e369]:
+                        - text: The Canonical subscription token for
+                        - link "Ubuntu Pro" [ref=e370] [cursor=pointer]:
+                          - /url: https://ubuntu.com/pro
+                        - text: . An Ubuntu Pro subscription is required, and Ubuntu Pro must be enabled.
+                      - cell "string" [ref=e371]
+                    - 'row "-p --update-passwords Use to update the PCG password. This does not proceed with installation. The --config-file flag must be provided. Default: false. boolean" [ref=e372]':
+                      - cell "-p" [ref=e373]:
+                        - code [ref=e374]: "-p"
+                      - cell "--update-passwords" [ref=e375]:
+                        - code [ref=e376]: "--update-passwords"
+                      - 'cell "Use to update the PCG password. This does not proceed with installation. The --config-file flag must be provided. Default: false." [ref=e377]':
+                        - text: Use to update the PCG password. This does not proceed with installation. The
+                        - code [ref=e378]: "--config-file"
+                        - text: "flag must be provided. Default: false."
+                      - cell "boolean" [ref=e379]
+                - generic [ref=e380]:
+                  - generic [ref=e381]:
+                    - img [ref=e383]
+                    - text: warning
+                  - paragraph [ref=e386]:
+                    - text: Use the latest version of the Palette CLI that matches the version of your Palette or Palette VerteX instance. You can find the newest version of the Palette CLI on the
+                    - link "Downloads" [ref=e387] [cursor=pointer]:
+                      - /url: /downloads/cli-tools/#palette-cli
+                    - text: page.
+                - heading "Generate a Configuration FileDirect link to Generate a Configuration File" [level=3] [ref=e388]:
+                  - text: Generate a Configuration File
+                  - link "Direct link to Generate a Configuration File" [ref=e389] [cursor=pointer]:
+                    - /url: "#generate-a-configuration-file"
+                    - text: "#"
+                - paragraph [ref=e390]:
+                  - text: Use the
+                  - code [ref=e391]: "--config-only"
+                  - text: flag to generate a configuration file. The configuration file is used to install a PCG cluster with pre-defined values without having to go through the interactive wizard.
+                - generic [ref=e393]:
+                  - code [ref=e395]:
+                    - generic [ref=e396]: palette pcg install --config-only
+                  - button "Copy code to clipboard" [ref=e398] [cursor=pointer]:
+                    - generic [ref=e399]:
+                      - img [ref=e400]
+                      - img [ref=e402]
+                - paragraph [ref=e404]:
+                  - text: Upon completion of the wizard installation, the configuration file is generated in the HOME directory under the folder path
+                  - strong [ref=e405]: .palette/pcg/
+                  - text: . The configuration file is named
+                  - strong [ref=e406]: pcg.yaml
+                  - text: .
+                - code [ref=e410]:
+                  - generic [ref=e411]: ==== Create PCG reference config ====
+                  - generic [ref=e412]: ==== PCG config saved ====
+                  - generic [ref=e413]: "Location: /Users/demo/.palette/pcg/pcg-20240108150653/pcg.yaml"
+                - heading "Install With a Configuration FileDirect link to Install With a Configuration File" [level=3] [ref=e414]:
+                  - text: Install With a Configuration File
+                  - link "Direct link to Install With a Configuration File" [ref=e415] [cursor=pointer]:
+                    - /url: "#install-with-a-configuration-file"
+                    - text: "#"
+                - paragraph [ref=e416]:
+                  - text: Use the
+                  - code [ref=e417]: "--config-file"
+                  - text: flag to install a PCG cluster with a configuration file. You can generate a configuration file using the
+                  - code [ref=e418]: "--config-only"
+                  - text: flag. Refer to the
+                  - link "Generate a Configuration File" [ref=e419] [cursor=pointer]:
+                    - /url: "#generate-a-configuration-file"
+                  - text: section for more information.
+                - generic [ref=e421]:
+                  - code [ref=e423]:
+                    - generic [ref=e424]: palette pcg install --config-file <path-to-config-file>
+                  - button "Copy code to clipboard" [ref=e426] [cursor=pointer]:
+                    - generic [ref=e427]:
+                      - img [ref=e428]
+                      - img [ref=e430]
+                - heading "Update PasswordsDirect link to Update Passwords" [level=3] [ref=e432]:
+                  - text: Update Passwords
+                  - link "Direct link to Update Passwords" [ref=e433] [cursor=pointer]:
+                    - /url: "#update-passwords"
+                    - text: "#"
+                - paragraph [ref=e434]:
+                  - text: You can update the Ubuntu Pro token and the platform credentials in the configuration file using the
+                  - code [ref=e435]: "--update-passwords"
+                  - text: flag. The
+                  - code [ref=e436]: "--config-file"
+                  - text: flag must be provided. The
+                  - code [ref=e437]: "--update-passwords"
+                  - text: flag does not proceed with installation.
+                - generic [ref=e439]:
+                  - code [ref=e441]:
+                    - generic [ref=e442]: palette pcg install --config-file <path-to-config-file> --update-passwords
+                  - generic [ref=e443]:
+                    - button "Toggle word wrap" [ref=e444] [cursor=pointer]:
+                      - img [ref=e445]
+                    - button "Copy code to clipboard" [ref=e447] [cursor=pointer]:
+                      - generic [ref=e448]:
+                        - img [ref=e449]
+                        - img [ref=e451]
+                - heading "Supported EnvironmentsDirect link to Supported Environments" [level=3] [ref=e453]:
+                  - text: Supported Environments
+                  - link "Direct link to Supported Environments" [ref=e454] [cursor=pointer]:
+                    - /url: "#supported-environments"
+                    - text: "#"
+                - paragraph [ref=e455]:
+                  - text: You can use the
+                  - code [ref=e456]: install
+                  - text: subcommand to install a PCG cluster in the following environments.
+                - table [ref=e457]:
+                  - rowgroup [ref=e458]:
+                    - row "Platform Install Guide" [ref=e459]:
+                      - cell "Platform" [ref=e460]:
+                        - strong [ref=e461]: Platform
+                      - cell "Install Guide" [ref=e462]:
+                        - strong [ref=e463]: Install Guide
+                  - rowgroup [ref=e464]:
+                    - row "MAAS Link" [ref=e465]:
+                      - cell "MAAS" [ref=e466]
+                      - cell "Link" [ref=e467]:
+                        - link "Link" [ref=e468] [cursor=pointer]:
+                          - /url: /clusters/pcg/deploy-pcg/maas/
+                    - row "OpenStack Link" [ref=e469]:
+                      - cell "OpenStack" [ref=e470]
+                      - cell "Link" [ref=e471]:
+                        - link "Link" [ref=e472] [cursor=pointer]:
+                          - /url: /clusters/pcg/deploy-pcg/openstack/
+                    - row "VMware Link" [ref=e473]:
+                      - cell "VMware" [ref=e474]
+                      - cell "Link" [ref=e475]:
+                        - link "Link" [ref=e476] [cursor=pointer]:
+                          - /url: /clusters/pcg/deploy-pcg/vmware/
+              - generic [ref=e477]:
+                - generic [ref=e479]:
+                  - text: "Tags:"
+                  - list [ref=e480]:
+                    - listitem [ref=e481]:
+                      - link "palette-cli" [ref=e482] [cursor=pointer]:
+                        - /url: /tags/palette-cli/
+                - link "Edit this page" [ref=e485] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/automation/palette-cli/commands/pcg.md
+                  - img [ref=e486]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e490]:
+              - link "Previous « Login" [ref=e491] [cursor=pointer]:
+                - /url: /automation/palette-cli/commands/login/
+                - generic [ref=e492]: Previous
+                - generic [ref=e493]: « Login
+              - link "Next PDE »" [ref=e494] [cursor=pointer]:
+                - /url: /automation/palette-cli/commands/pde/
+                - generic [ref=e495]: Next
+                - generic [ref=e496]: PDE »
+          - list [ref=e499]:
+            - listitem [ref=e500]:
+              - link "Subcommands" [ref=e501] [cursor=pointer]:
+                - /url: "#subcommands"
+            - listitem [ref=e502]:
+              - link "Limitations" [ref=e503] [cursor=pointer]:
+                - /url: "#limitations"
+            - listitem [ref=e504]:
+              - link "Prerequisites" [ref=e505] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e506]:
+              - link "Install" [ref=e507] [cursor=pointer]:
+                - /url: "#install"
+              - list [ref=e508]:
+                - listitem [ref=e509]:
+                  - link "Generate a Configuration File" [ref=e510] [cursor=pointer]:
+                    - /url: "#generate-a-configuration-file"
+                - listitem [ref=e511]:
+                  - link "Install With a Configuration File" [ref=e512] [cursor=pointer]:
+                    - /url: "#install-with-a-configuration-file"
+                - listitem [ref=e513]:
+                  - link "Update Passwords" [ref=e514] [cursor=pointer]:
+                    - /url: "#update-passwords"
+                - listitem [ref=e515]:
+                  - link "Supported Environments" [ref=e516] [cursor=pointer]:
+                    - /url: "#supported-environments"
+  - button "Project Logo Ask AI" [ref=e517] [cursor=pointer]:
+    - generic [ref=e520]:
+      - img "Project Logo" [ref=e521]
+      - paragraph [ref=e522]: Ask AI
+```

@@ -1,0 +1,207 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Palette Tutorials" [ref=e41] [cursor=pointer]:
+                  - /url: /tutorials/
+                  - img [ref=e43]
+                  - text: Palette Tutorials
+              - listitem [ref=e45]:
+                - generic [ref=e46]:
+                  - link "Getting Started" [expanded] [ref=e47] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/
+                    - img [ref=e49]
+                    - text: Getting Started
+                  - button "Toggle the collapsible sidebar category 'Getting Started'" [ref=e51] [cursor=pointer]
+                - list [ref=e52]:
+                  - listitem [ref=e53]:
+                    - generic [ref=e54]:
+                      - link "Palette" [ref=e55] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette/
+                      - button "Toggle the collapsible sidebar category 'Palette'" [ref=e56] [cursor=pointer]
+                  - listitem [ref=e57]:
+                    - generic [ref=e58]:
+                      - link "Palette Edge" [ref=e59] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette-edge/
+                      - button "Toggle the collapsible sidebar category 'Palette Edge'" [ref=e60] [cursor=pointer]
+                  - listitem [ref=e61]:
+                    - generic [ref=e62]:
+                      - link "Additional Capabilities" [expanded] [ref=e63] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/additional-capabilities/
+                      - button "Toggle the collapsible sidebar category 'Additional Capabilities'" [ref=e64] [cursor=pointer]
+                    - list [ref=e65]:
+                      - listitem [ref=e66]:
+                        - link "VerteX and Self-Hosted Palette" [ref=e67] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/additional-capabilities/self-hosted/
+                      - listitem [ref=e68]:
+                        - link "Virtual Machine Orchestrator" [ref=e69] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/additional-capabilities/vmo/
+              - listitem [ref=e70]:
+                - generic [ref=e71]:
+                  - link "Packs and Registries" [ref=e72] [cursor=pointer]:
+                    - /url: /tutorials/packs-registries/
+                    - img [ref=e74]
+                    - text: Packs and Registries
+                  - button "Toggle the collapsible sidebar category 'Packs and Registries'" [ref=e76] [cursor=pointer]
+              - listitem [ref=e77]:
+                - generic [ref=e78]:
+                  - link "Profiles" [ref=e79] [cursor=pointer]:
+                    - /url: /tutorials/profiles/
+                    - img [ref=e81]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e85] [cursor=pointer]
+              - listitem [ref=e86]:
+                - generic [ref=e87]:
+                  - link "Clusters" [ref=e88] [cursor=pointer]:
+                    - /url: /tutorials/clusters/
+                    - img [ref=e90]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e96] [cursor=pointer]
+              - listitem [ref=e97]:
+                - generic [ref=e98]:
+                  - link "Palette Dev Engine" [ref=e99] [cursor=pointer]:
+                    - /url: /tutorials/pde/
+                    - img [ref=e101]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e103] [cursor=pointer]
+              - listitem [ref=e104]:
+                - button "Privacy Settings" [ref=e105] [cursor=pointer]
+      - main [ref=e106]:
+        - generic [ref=e108]:
+          - generic [ref=e110]:
+            - article [ref=e111]:
+              - navigation "Breadcrumbs" [ref=e112]:
+                - list [ref=e113]:
+                  - listitem [ref=e114]:
+                    - link "Home page" [ref=e115] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e116]
+                  - listitem [ref=e118]:
+                    - link "Getting Started" [ref=e119] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/
+                  - listitem [ref=e120]:
+                    - link "Additional Capabilities" [ref=e121] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/additional-capabilities/
+                  - listitem [ref=e122]:
+                    - generic [ref=e123]: VerteX and Self-Hosted Palette
+              - generic [ref=e124]:
+                - heading "VerteX and Self-Hosted Palette" [level=1] [ref=e126]
+                - heading "Self-Hosted PaletteDirect link to Self-Hosted Palette" [level=2] [ref=e127]:
+                  - text: Self-Hosted Palette
+                  - link "Direct link to Self-Hosted Palette" [ref=e128] [cursor=pointer]:
+                    - /url: "#self-hosted-palette"
+                    - text: "#"
+                - paragraph [ref=e129]: By default, the Palette management plane is available as a multi-tenant SaaS deployment in a public cloud with multiple availability zones. Should you need it, Palette is also offered as a dedicated SaaS instance, as well as a fully self-hosted option that allows your teams to directly deploy and manage a private instance of the Palette management plane in your data center or public cloud provider.
+                - paragraph [ref=e130]: Self-hosted Palette puts you in full control of the management plane, including its configuration and the timing of upgrades. A self-hosted instance may be necessary to meet compliance requirements or your organization's security policies. You may also need to deploy an instance of Palette within an airgapped facility to manage clusters where access to any outside service is not possible.
+                - heading "Palette VerteXDirect link to Palette VerteX" [level=2] [ref=e131]:
+                  - text: Palette VerteX
+                  - link "Direct link to Palette VerteX" [ref=e132] [cursor=pointer]:
+                    - /url: "#palette-vertex"
+                    - text: "#"
+                - paragraph [ref=e133]: Palette VerteX offers a simple, flexible, and secure way for government and regulated industries to deploy and manage Kubernetes workloads containing sensitive and classified information. It is available as a self-hosted platform offering that you can install in your data center or public cloud provider.
+                - paragraph [ref=e134]:
+                  - text: Palette VerteX is fully proven in operational environments as it has a Technology Readiness Level (TRL) 9 designation, making it suitable for use in high-security production environments up to Impact Levels (IL) 5, 6, and 6+. It enables you to deploy and manage the life cycle of multiple Kubernetes clusters in various environments. These include virtualized and bare metal data centers (such as
+                  - link "VMware vSphere" [ref=e135] [cursor=pointer]:
+                    - /url: https://www.vmware.com/products/vsphere.html
+                  - text: and
+                  - link "Nutanix" [ref=e136] [cursor=pointer]:
+                    - /url: https://www.nutanix.com/
+                  - text: ), clouds (including
+                  - link "AWS" [ref=e137] [cursor=pointer]:
+                    - /url: https://aws.amazon.com/govcloud-us/
+                  - text: and
+                  - link "Azure" [ref=e138] [cursor=pointer]:
+                    - /url: https://azure.microsoft.com/en-ca/explore/global-infrastructure/government
+                  - text: government clouds), and edge locations (including air-gapped setups), which makes VerteX also appropriate for addressing challenges like intermittent connectivity or low bandwidth.
+                - paragraph [ref=e139]: Additionally, VerteX incorporates validated Federal Information Processing Standards (FIPS) 140-3 cryptographic modules into its management plane and the Kubernetes clusters it deploys. It secures data in motion through encrypted Transport Layer Security (TLS) communication channels, includes a suite of scanning tools, and offers CONUS support from a dedicated public sector team. These capabilities ensure robust data protection for your organization’s infrastructure and applications.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e140]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e141] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - paragraph [ref=e142]:
+                  - text: Check out the
+                  - link "Self-Hosted Palette" [ref=e143] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                  - text: section to learn how to install the self-hosted version of Palette in your data centers or public cloud providers.
+                - paragraph [ref=e144]:
+                  - text: Review the
+                  - link "Palette VerteX" [ref=e145] [cursor=pointer]:
+                    - /url: /vertex/
+                  - text: section to learn how to install and configure VerteX in your data centers or public cloud providers.
+                - paragraph [ref=e146]: Check out the following video for a tour of Palette VerteX, our tailor-made Kubernetes management solution for government and regulated industries.
+              - generic [ref=e148]:
+                - generic [ref=e150]:
+                  - text: "Tags:"
+                  - list [ref=e151]:
+                    - listitem [ref=e152]:
+                      - link "getting-started" [ref=e153] [cursor=pointer]:
+                        - /url: /tags/getting-started/
+                    - listitem [ref=e154]:
+                      - link "tutorial" [ref=e155] [cursor=pointer]:
+                        - /url: /tags/tutorial/
+                - link "Edit this page" [ref=e158] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/tutorials/getting-started/additional-capabilities/self-hosted.md
+                  - img [ref=e159]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e163]:
+              - link "Previous « Additional Capabilities" [ref=e164] [cursor=pointer]:
+                - /url: /tutorials/getting-started/additional-capabilities/
+                - generic [ref=e165]: Previous
+                - generic [ref=e166]: « Additional Capabilities
+              - link "Next Virtual Machine Orchestrator »" [ref=e167] [cursor=pointer]:
+                - /url: /tutorials/getting-started/additional-capabilities/vmo/
+                - generic [ref=e168]: Next
+                - generic [ref=e169]: Virtual Machine Orchestrator »
+          - list [ref=e172]:
+            - listitem [ref=e173]:
+              - link "Self-Hosted Palette" [ref=e174] [cursor=pointer]:
+                - /url: "#self-hosted-palette"
+            - listitem [ref=e175]:
+              - link "Palette VerteX" [ref=e176] [cursor=pointer]:
+                - /url: "#palette-vertex"
+            - listitem [ref=e177]:
+              - link "Resources" [ref=e178] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e179] [cursor=pointer]:
+    - generic [ref=e182]:
+      - img "Project Logo" [ref=e183]
+      - paragraph [ref=e184]: Ask AI
+```

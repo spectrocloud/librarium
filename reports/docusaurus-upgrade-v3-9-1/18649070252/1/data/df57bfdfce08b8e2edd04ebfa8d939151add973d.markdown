@@ -1,0 +1,892 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [expanded] [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+                - list [ref=e107]:
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Public Cloud Clusters" [ref=e110] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e112]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e114] [cursor=pointer]
+                  - listitem [ref=e115]:
+                    - generic [ref=e116]:
+                      - link "Data Center Clusters" [ref=e117] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e119]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e121] [cursor=pointer]
+                  - listitem [ref=e122]:
+                    - generic [ref=e123]:
+                      - link "Edge" [ref=e124] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e126]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e128] [cursor=pointer]
+                  - listitem [ref=e129]:
+                    - generic [ref=e130]:
+                      - link "Palette Virtual Clusters" [ref=e131] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e133]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e135] [cursor=pointer]
+                  - listitem [ref=e136]:
+                    - generic [ref=e137]:
+                      - link "Imported Clusters" [ref=e138] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e140]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e142] [cursor=pointer]
+                  - listitem [ref=e143]:
+                    - generic [ref=e144]:
+                      - link "Manage Clusters" [ref=e145] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e147]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e149] [cursor=pointer]
+                  - listitem [ref=e150]:
+                    - generic [ref=e151]:
+                      - link "Cluster Groups" [ref=e152] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e154]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e156] [cursor=pointer]
+                  - listitem [ref=e157]:
+                    - generic [ref=e158]:
+                      - link "Private Cloud Gateway" [ref=e159] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e161]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e163] [cursor=pointer]
+              - listitem [ref=e164]:
+                - generic [ref=e165]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e166] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e168]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e170] [cursor=pointer]
+              - listitem [ref=e171]:
+                - generic [ref=e172]:
+                  - link "Palette Dev Engine" [ref=e173] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e175]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e177] [cursor=pointer]
+              - listitem [ref=e178]:
+                - generic [ref=e179]:
+                  - link "Virtual Machine Orchestrator" [ref=e180] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e182]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e184] [cursor=pointer]
+              - listitem [ref=e185]:
+                - generic [ref=e186]:
+                  - link "Workspaces" [ref=e187] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e189]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e191] [cursor=pointer]
+              - listitem [ref=e192]:
+                - generic [ref=e193]:
+                  - link "Packs List" [ref=e194] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e196]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e198] [cursor=pointer]
+              - listitem [ref=e199]:
+                - generic [ref=e200]:
+                  - link "User & Role Management" [ref=e201] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e203]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e205] [cursor=pointer]
+              - listitem [ref=e206]:
+                - generic [ref=e207]:
+                  - link "Registries and Packs" [ref=e208] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e210]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e212] [cursor=pointer]
+              - listitem [ref=e213]:
+                - generic [ref=e214]:
+                  - link "Security" [ref=e215] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e217]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e219] [cursor=pointer]
+              - listitem [ref=e220]:
+                - generic [ref=e221]:
+                  - link "Audit Logs" [ref=e222] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e224]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e226] [cursor=pointer]
+              - listitem [ref=e227]:
+                - generic [ref=e228]:
+                  - link "Self-Hosted Palette" [ref=e229] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e231]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e233] [cursor=pointer]
+              - listitem [ref=e234]:
+                - generic [ref=e235]:
+                  - link "Palette VerteX" [ref=e236] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e238]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e240] [cursor=pointer]
+              - listitem [ref=e241]:
+                - generic [ref=e242]:
+                  - link "Tenant Administration" [ref=e243] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e245]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e247] [cursor=pointer]
+              - listitem [ref=e248]:
+                - generic [ref=e249]:
+                  - link "Automation" [ref=e250] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e252]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e254] [cursor=pointer]
+              - listitem [ref=e255]:
+                - generic [ref=e256]:
+                  - link "Troubleshooting" [ref=e257] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e259]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e261] [cursor=pointer]
+              - listitem [ref=e262]:
+                - link "Glossary" [ref=e263] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e265]
+                  - text: Glossary
+              - listitem [ref=e267]:
+                - generic [ref=e268]:
+                  - link "Compliance & Legal" [ref=e269] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e271]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e273] [cursor=pointer]
+              - listitem [ref=e274]:
+                - button "Privacy Settings" [ref=e275] [cursor=pointer]:
+                  - img [ref=e276]
+                  - text: Privacy Settings
+      - main [ref=e278]:
+        - generic [ref=e280]:
+          - generic [ref=e282]:
+            - article [ref=e283]:
+              - navigation "Breadcrumbs" [ref=e284]:
+                - list [ref=e285]:
+                  - listitem [ref=e286]:
+                    - link "Home page" [ref=e287] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e288]
+                  - listitem [ref=e290]:
+                    - generic [ref=e291]: Clusters
+              - generic [ref=e292]:
+                - heading "Creating Clusters on Palette" [level=1] [ref=e294]
+                - paragraph [ref=e295]: "Kubernetes clusters in Palette are instantiated from cluster profiles. A cluster definition in Palette consists of a reference to a cluster profile, cloud configuration, as well as the cluster size and placement configuration. The following high-level tasks are performed as part of the cluster creation:"
+                - list [ref=e296]:
+                  - listitem [ref=e297]:
+                    - paragraph [ref=e298]: Orchestration of computing, network, and storage resources on the cloud environments along with the required placement infrastructure.
+                  - listitem [ref=e299]:
+                    - paragraph [ref=e300]: Installation and configuration of various Kubernetes components like Kubelet, API servers, etcd, or scheduler.
+                  - listitem [ref=e301]:
+                    - paragraph [ref=e302]: Installation and configuration of the cloud-specific network (CNI) and storage (CSI) plugins.
+                  - listitem [ref=e303]:
+                    - paragraph [ref=e304]: Securing the cluster infrastructure and configuration according to the relevant OS, Kubernetes, and cloud security best practices.
+                  - listitem [ref=e305]:
+                    - paragraph [ref=e306]: Deployment of additional Add-ons such as Prometheus, Permissions Manager, or Vault, as specified in the Cluster Profile.
+                - heading "ImagesDirect link to Images" [level=2] [ref=e307]:
+                  - text: Images
+                  - link "Direct link to Images" [ref=e308] [cursor=pointer]:
+                    - /url: "#images"
+                    - text: "#"
+                - paragraph [ref=e309]: Palette provides Virtual Machine (VM) images for cluster-computing infrastructure out of the box for the most recent versions of Operating Systems such as Ubuntu or CentOS. These images are security-hardened based on the respective CIS Benchmarks. In addition, Kubernetes components such as kubelet, kubeadm, etc. are preinstalled in these images. The specific image for a cluster is derived from the Operating System and Kubernetes packs configured in the cluster profile.
+                - paragraph [ref=e310]: The out-of-the-box images are hosted in the public cloud (AWS - AMI, Azure - VHD) or Palette's storage repository (vSphere - OVA). During provisioning, the image is copied (if missing) to the desired cloud region or downloaded onto a private data center.
+                - heading "SecurityDirect link to Security" [level=2] [ref=e311]:
+                  - text: Security
+                  - link "Direct link to Security" [ref=e312] [cursor=pointer]:
+                    - /url: "#security"
+                    - text: "#"
+                - paragraph [ref=e313]: Palette secures the Kubernetes clusters provisioned by following security best practices at the Operating System, Kubernetes, and Cloud Infrastructure levels.
+                - heading "Operating SystemDirect link to Operating System" [level=3] [ref=e314]:
+                  - text: Operating System
+                  - link "Direct link to Operating System" [ref=e315] [cursor=pointer]:
+                    - /url: "#operating-system"
+                    - text: "#"
+                - paragraph [ref=e316]: The Palette out-of-the-box VM images are hardened in accordance with the relevant OS CIS benchmark. Additionally, the images are scanned for vulnerabilities regularly, and fixes are applied to these images when available from the provider. The upgraded images are released in the form of updated OS packs in the Palette Pack Registry and are available to the users to apply to their existing clusters at a time convenient to them.
+                - heading "KubernetesDirect link to Kubernetes" [level=3] [ref=e317]:
+                  - text: Kubernetes
+                  - link "Direct link to Kubernetes" [ref=e318] [cursor=pointer]:
+                    - /url: "#kubernetes"
+                    - text: "#"
+                - paragraph [ref=e319]: Kubernetes components and configuration are hardened in accordance with the Kubernetes CIS Benchmark. Palette executes Kubebench, a CIS Benchmark scanner by Aqua Security, for every Kubernetes pack to ensure the control plane and worker nodes are configured securely.
+                - heading "Cloud InfrastructureDirect link to Cloud Infrastructure" [level=3] [ref=e320]:
+                  - text: Cloud Infrastructure
+                  - link "Direct link to Cloud Infrastructure" [ref=e321] [cursor=pointer]:
+                    - /url: "#cloud-infrastructure"
+                    - text: "#"
+                - paragraph [ref=e322]: Palette follows security best practices recommended by the various cloud providers when provisioning and configuring the computing, network, and storage infrastructure for the Kubernetes clusters. These include practices such as isolating control plane and worker nodes in dedicated network domains and limiting access through the use constructs like security groups.
+                - generic [ref=e323]:
+                  - generic [ref=e324]:
+                    - img [ref=e326]
+                    - text: info
+                  - paragraph [ref=e329]: The security measures mentioned above are implemented for Palette's out-of-the-box OS and Kubernetes packs. For customized OS Kubernetes packs, users are responsible for taking the relevant measures to secure their clusters.
+                - heading "Day-2 ManagementDirect link to Day-2 Management" [level=2] [ref=e330]:
+                  - text: Day-2 Management
+                  - link "Direct link to Day-2 Management" [ref=e331] [cursor=pointer]:
+                    - /url: "#day-2-management"
+                    - text: "#"
+                - paragraph [ref=e332]: Palette provides several options to manage Kubernetes clusters on an ongoing basis. These include opportunities to scale up/down the cluster by adding/reducing the number of nodes in a node pool, add extra worker pools, resizing nodes in a node pool by modifying the instance type, and adding additional fault domains such as availability zones to a node pool.
+                - generic [ref=e333]:
+                  - generic [ref=e334]:
+                    - img [ref=e336]
+                    - text: info
+                  - paragraph [ref=e339]: Cluster management operations result updating cluster definitions in Palette's database. The updated definition is retrieved by the management agent running in the cluster. A rolling upgrade is then performed to bring associated clusters to their desired state.
+                - heading "Cluster HealthDirect link to Cluster Health" [level=2] [ref=e340]:
+                  - text: Cluster Health
+                  - link "Direct link to Cluster Health" [ref=e341] [cursor=pointer]:
+                    - /url: "#cluster-health"
+                    - text: "#"
+                - paragraph [ref=e342]: Palette monitors the cluster infrastructure regularly and reports health on the management console.
+                - paragraph [ref=e343]: "Overall health is computed based on the following factors:"
+                - list [ref=e344]:
+                  - listitem [ref=e345]:
+                    - paragraph [ref=e346]:
+                      - strong [ref=e347]: Heartbeat
+                      - text: "- The Palette management agent, which runs inside the cluster, periodically sends a heartbeat to the management console. Missing heartbeats typically indicate of a problem such as a cluster infrastructure going down or lack of network connectivity. Failure to detect heartbeats over a 10 minute period results in an unhealthy status for the cluster."
+                    - paragraph [ref=e348]: Palette provides health check information for your workload clusters. This information is a value add to the cluster monitoring activities. In case a cluster goes to an unhealthy state, the last received healthy heartbeat can help you in troubleshooting.
+                - paragraph [ref=e349]:
+                  - img "Cluster Health Heart Beat" [ref=e350]
+                - list [ref=e351]:
+                  - listitem [ref=e352]:
+                    - paragraph [ref=e353]:
+                      - strong [ref=e354]: Node Conditions
+                      - text: "- Kubernetes maintains the status for each cluster node in the form of conditions such as DiskPressure, MemoryPressure, or NetworkUnavailable. Palette monitors these conditions and reports back to the management console. Any node condition indicating a problem with the node, results in an unhealthy status for the cluster."
+                  - listitem [ref=e355]:
+                    - paragraph [ref=e356]:
+                      - strong [ref=e357]: Metrics
+                      - text: "- Palette collects usage metrics such as CPU, Disk, or Memory. The cluster is marked as unhealthy if the usage metrics cross specific thresholds over some time."
+                - heading "Usage Monitoring" [level=1] [ref=e358]
+                - paragraph [ref=e359]: "Palette continuously monitors cluster resources and reports the usage for the cluster as well as individual nodes. The following metrics are reported on the Cluster Overview page of the management console. By default, the metrics are only displayed for the worker nodes in the cluster:"
+                - list [ref=e360]:
+                  - listitem [ref=e361]:
+                    - paragraph [ref=e362]:
+                      - strong [ref=e363]: Cores Used
+                      - text: "- A cluster-wide breakdown of the number of cores used."
+                  - listitem [ref=e364]:
+                    - paragraph [ref=e365]:
+                      - strong [ref=e366]: CPU Usage
+                      - text: "- Current CPUs used across all cluster nodes. Additionally, usage over some time is presented as a chart."
+                  - listitem [ref=e367]:
+                    - paragraph [ref=e368]:
+                      - strong [ref=e369]: Memory Usage
+                      - text: "- Current memory used across all cluster nodes. Additionally, usage over a while is presented as a chart."
+                  - listitem [ref=e370]:
+                    - paragraph [ref=e371]:
+                      - strong [ref=e372]: CPU Requests
+                      - text: "- Total CPUs requested across all pods."
+                  - listitem [ref=e373]:
+                    - paragraph [ref=e374]:
+                      - strong [ref=e375]: Memory Requests
+                      - text: "- Total memory requested across all pods."
+                - paragraph [ref=e376]:
+                  - img "Cluster Update Details" [ref=e377]
+                - paragraph [ref=e378]: Additionally, usage metrics for individual nodes and node conditions are accessible from the Node Details page.
+                - heading "Application ServicesDirect link to Application Services" [level=2] [ref=e379]:
+                  - text: Application Services
+                  - link "Direct link to Application Services" [ref=e380] [cursor=pointer]:
+                    - /url: "#application-services"
+                    - text: "#"
+                - paragraph [ref=e381]: Palette enables quick access to the application services installed on the Kubernetes clusters by providing a link to those on the management console. These include the applications and services deployed through Palette and the ones deployed through any other means. Services are monitored on an ongoing basis, and all services of the type LoadBalancer or NodePort are displayed on the management console.
+                - paragraph [ref=e382]:
+                  - img "Cluster Update Details" [ref=e383]
+                - heading "TroubleshootingDirect link to Troubleshooting" [level=2] [ref=e384]:
+                  - text: Troubleshooting
+                  - link "Direct link to Troubleshooting" [ref=e385] [cursor=pointer]:
+                    - /url: "#troubleshooting"
+                    - text: "#"
+                - paragraph [ref=e386]: Typically, when a cluster lifecycle action such as provisioning, upgrade, or deletion runs into a failure, it does not result in an outright error on the cluster. Instead, the Palette orchestration engine follows the reconciliation pattern, wherein the system repeatedly tries to perform various orchestration tasks to bring the cluster to its desired state until it succeeds. Initial cluster provisioning or subsequent updates can run into various issues related to cloud infrastructure availability, lack of resources, or networking issues.
+                - heading "Cluster ConditionsDirect link to Cluster Conditions" [level=2] [ref=e387]:
+                  - text: Cluster Conditions
+                  - link "Direct link to Cluster Conditions" [ref=e388] [cursor=pointer]:
+                    - /url: "#cluster-conditions"
+                    - text: "#"
+                - paragraph [ref=e389]:
+                  - text: Palette maintains specific milestones in a lifecycle and presents them as
+                  - strong [ref=e390]: Conditions
+                  - text: .
+                - paragraph [ref=e391]: "Examples include:"
+                - list [ref=e392]:
+                  - listitem [ref=e393]:
+                    - paragraph [ref=e394]: Creating Infrastructure
+                  - listitem [ref=e395]:
+                    - paragraph [ref=e396]: Adding Control Plane Node
+                  - listitem [ref=e397]:
+                    - paragraph [ref=e398]: Customizing Image
+                - paragraph [ref=e399]:
+                  - text: The active condition indicates what task Palette orchestration system is trying to perform. If a task fails, the condition is marked as
+                  - emphasis [ref=e400]: failed
+                  - text: ", with relevant error messages. Reconciliation, however, continues behind the scenes, and continuous attempts are made to perform the task. Failed conditions are a great source of troubleshooting provisioning issues."
+                - paragraph [ref=e401]:
+                  - img "Cluster Update Details" [ref=e402]
+                - paragraph [ref=e403]: For example, failure to create a Virtual Machine in AWS due to the exceeded vCPU limit will cause this error to be shown to the end-users. Then, they can choose to bring down some workloads in the AWS cloud to free up space. The next time a VM creation task is attempted, it will succeed, and the condition will be marked as a success.
+                - heading "Rolling upgradeDirect link to Rolling upgrade" [level=2] [ref=e404]:
+                  - text: Rolling upgrade
+                  - link "Direct link to Rolling upgrade" [ref=e405] [cursor=pointer]:
+                    - /url: "#rolling-upgrade"
+                    - text: "#"
+                - paragraph [ref=e406]: "Palette will perform a rolling upgrade on the nodes for any fundamental changes to the Cluster Configuration file. Below are some of the actions that will result in a rolling upgrade:"
+                - list [ref=e407]:
+                  - listitem [ref=e408]:
+                    - paragraph [ref=e409]: OS layer changes
+                  - listitem [ref=e410]:
+                    - paragraph [ref=e411]: Kubernetes layer changes
+                  - listitem [ref=e412]:
+                    - paragraph [ref=e413]: Kubernetes version upgrade
+                  - listitem [ref=e414]:
+                    - paragraph [ref=e415]: Kubernetes control plane upsize
+                  - listitem [ref=e416]:
+                    - paragraph [ref=e417]: Machine pool updates for disk size
+                  - listitem [ref=e418]:
+                    - paragraph [ref=e419]: Changes in availability zones
+                  - listitem [ref=e420]:
+                    - paragraph [ref=e421]: Changes in instance types
+                  - listitem [ref=e422]:
+                    - paragraph [ref=e423]: Certificate renewal and many more.
+                - paragraph [ref=e424]:
+                  - text: Palette keeps track of the reason that triggered the rolling upgrade on the nodes in the cluster and is made accessible under
+                  - strong [ref=e425]: Cluster Overview
+                  - text: ">"
+                  - strong [ref=e426]: Upgrade details
+                  - text: .
+                - paragraph [ref=e427]:
+                  - img "upgrade-details1.webp" [ref=e428]
+                - paragraph [ref=e429]: Besides actions taken by the user, Palette also performs a rolling upgrade if the cluster nodes' health degrades. Palette keeps track of the nodes machine's health and will relaunch the node when the machine health check fails.
+                - paragraph [ref=e430]:
+                  - img "upgrade-details2.webp" [ref=e431]
+                - paragraph [ref=e432]: "The following are some sample scenarios where the node health is considered as degraded:"
+                - list [ref=e433]:
+                  - listitem [ref=e434]:
+                    - paragraph [ref=e435]: Kubelet not up for 10 minutes.
+                  - listitem [ref=e436]:
+                    - paragraph [ref=e437]: Network unavailability for 10 minutes.
+                  - listitem [ref=e438]:
+                    - paragraph [ref=e439]: New node doesn't get ready in 30 minutes.
+                - heading "Event StreamDirect link to Event Stream" [level=2] [ref=e440]:
+                  - text: Event Stream
+                  - link "Direct link to Event Stream" [ref=e441] [cursor=pointer]:
+                    - /url: "#event-stream"
+                    - text: "#"
+                - paragraph [ref=e442]: Palette maintains an event stream with low-level details of the various orchestration tasks being performed. This event stream is a good source for identifying issues in the event an operation does not complete for a long time.
+                - generic [ref=e443]:
+                  - generic [ref=e444]:
+                    - img [ref=e446]
+                    - text: info
+                  - list [ref=e449]:
+                    - listitem [ref=e450]:
+                      - paragraph [ref=e451]: Cluster events are retained for the last 1000 events.
+                    - listitem [ref=e452]:
+                      - paragraph [ref=e453]:
+                        - text: Due to the Palette reconciliation logic, intermittent errors appear in the event stream.
+                        - text: As an example, errors might show up in the event stream regarding being unable to reach the node after launching a node. However, the errors clear up once the node comes up.
+                        - text: Error messages that persist over a long time or errors indicating issues with underlying infrastructure are an indication of a real problem.
+                - heading "Download Cluster LogsDirect link to Download Cluster Logs" [level=2] [ref=e454]:
+                  - text: Download Cluster Logs
+                  - link "Direct link to Download Cluster Logs" [ref=e455] [cursor=pointer]:
+                    - /url: "#download-cluster-logs"
+                    - text: "#"
+                - paragraph [ref=e456]: At times, you may be required to work with the Palette Support Team to troubleshoot an issue. Palette provides the ability to gather logs from the clusters it manages. Problems that occur during the orchestration lifecycle, may require access to the various containers, nodes, and system logs. Palette automates this log-collection process and provides a download option from the Palette UI console. Hence, it reduces the burden on the operator to log in to various cluster nodes individually and fetch these logs.
+                - heading "Collect the LogsDirect link to Collect the Logs" [level=3] [ref=e457]:
+                  - text: Collect the Logs
+                  - link "Direct link to Collect the Logs" [ref=e458] [cursor=pointer]:
+                    - /url: "#collect-the-logs"
+                    - text: "#"
+                - list [ref=e459]:
+                  - listitem [ref=e460]:
+                    - paragraph [ref=e461]: Select the running cluster.
+                  - listitem [ref=e462]:
+                    - paragraph [ref=e463]: Go to **Settings* and select **Download Logs**.
+                  - listitem [ref=e464]:
+                    - paragraph [ref=e465]: "Choose the desired log from the below options:"
+                    - list [ref=e466]:
+                      - listitem [ref=e467]:
+                        - text: Kube-System Logs
+                        - list [ref=e468]:
+                          - listitem [ref=e469]: Logs of all the Kubernetes components.
+                      - listitem [ref=e470]:
+                        - text: Logs
+                        - list [ref=e471]:
+                          - listitem [ref=e472]: Spectro namespace logs for the last one hour.
+                      - listitem [ref=e473]:
+                        - text: Node Logs
+                        - list [ref=e474]:
+                          - listitem [ref=e475]: Contains the Spectro log, system log, and the cloud-init log information collected for the last ten thousand lines of code.
+                  - listitem [ref=e476]:
+                    - paragraph [ref=e477]:
+                      - text: Click
+                      - strong [ref=e478]: Download Logs
+                      - text: .
+                    - paragraph [ref=e479]: "This message will display on the UI: \"The request was sent successfully. The download will be available soon.\" There is an average wait time of five (5) minutes."
+                    - paragraph [ref=e480]: "At the end of this short log fetching interval, the message will be displayed on the UI: \"The logs archive for {Cluster-name} was created successfully.\""
+                  - listitem [ref=e481]:
+                    - paragraph [ref=e482]:
+                      - text: Click
+                      - strong [ref=e483]:
+                        - text: Download <
+                        - emphasis [ref=e484]: cluster-name
+                        - text: "> logs"
+                      - text: to download the
+                      - strong [ref=e485]: Logs
+                      - text: folder to your local machine.
+                  - listitem [ref=e486]:
+                    - paragraph [ref=e487]: Unzip and rename the Logs folder as per the customer's choice.
+                - generic [ref=e488]:
+                  - generic [ref=e489]:
+                    - img [ref=e491]
+                    - text: info
+                  - list [ref=e494]:
+                    - listitem [ref=e495]:
+                      - paragraph [ref=e496]: In addition to the log contents briefed above, the folder will also contain a Manifest.yaml file describing the CRDs, Deployments, Pods, ConfigMap, Events, and Nodes details of the Cluster.
+                    - listitem [ref=e497]:
+                      - paragraph [ref=e498]: Palette recommends its users attach these logs, along with the support request, for accelerated troubleshooting.
+                    - listitem [ref=e499]:
+                      - paragraph [ref=e500]: Expect an average log fetching time of five (5) minutes for the ready-to-download message to appear on the UI, once the download log is clicked.
+                    - listitem [ref=e501]:
+                      - paragraph [ref=e502]:
+                        - text: The downloaded Zip file will be by default named as
+                        - strong [ref=e503]: spectro_logs.zip
+                        - text: . The users can unzip and choose a name of convenience.
+                - heading "Proxy WhitelistDirect link to Proxy Whitelist" [level=2] [ref=e504]:
+                  - text: Proxy Whitelist
+                  - link "Direct link to Proxy Whitelist" [ref=e505] [cursor=pointer]:
+                    - /url: "#proxy-whitelist"
+                    - text: "#"
+                - paragraph [ref=e506]:
+                  - text: The following table lists the proxy requirements required by Palette. Depending on the network equipment and configuration, you may have to specify all subdomains of the top-level domains listed in the table. For example, an entry containing
+                  - code [ref=e507]: gcr.io
+                  - text: and
+                  - code [ref=e508]: "*.gcr.io"
+                  - text: may be required. Consult your network administrator for the exact requirements.
+                - table [ref=e509]:
+                  - rowgroup [ref=e510]:
+                    - row "Top-level Domain Port Description" [ref=e511]:
+                      - cell "Top-level Domain" [ref=e512]:
+                        - strong [ref=e513]: Top-level Domain
+                      - cell "Port" [ref=e514]:
+                        - strong [ref=e515]: Port
+                      - cell "Description" [ref=e516]:
+                        - strong [ref=e517]: Description
+                  - rowgroup [ref=e518]:
+                    - row "docker.io 443 Third party container images." [ref=e519]:
+                      - cell "docker.io" [ref=e520]
+                      - cell "443" [ref=e521]
+                      - cell "Third party container images." [ref=e522]
+                    - row "docker.com 443 Third party container images." [ref=e523]:
+                      - cell "docker.com" [ref=e524]
+                      - cell "443" [ref=e525]
+                      - cell "Third party container images." [ref=e526]
+                    - row "gcr.io 443 Spectro Cloud and third party container images" [ref=e527]:
+                      - cell "gcr.io" [ref=e528]
+                      - cell "443" [ref=e529]
+                      - cell "Spectro Cloud and third party container images" [ref=e530]
+                    - row "ghcr.io 443 Third party container images." [ref=e531]:
+                      - cell "ghcr.io" [ref=e532]
+                      - cell "443" [ref=e533]
+                      - cell "Third party container images." [ref=e534]
+                    - row "github.com 443 Third party content." [ref=e535]:
+                      - cell "github.com" [ref=e536]
+                      - cell "443" [ref=e537]
+                      - cell "Third party content." [ref=e538]
+                    - row "googleapis.com 443 Spectro Cloud images." [ref=e539]:
+                      - cell "googleapis.com" [ref=e540]
+                      - cell "443" [ref=e541]
+                      - cell "Spectro Cloud images." [ref=e542]
+                    - row "grafana.com 443 Grafana container images and manifests." [ref=e543]:
+                      - cell "grafana.com" [ref=e544]
+                      - cell "443" [ref=e545]
+                      - cell "Grafana container images and manifests." [ref=e546]
+                    - row "k8s.gcr.io 443 Third party container images." [ref=e547]:
+                      - cell "k8s.gcr.io" [ref=e548]
+                      - cell "443" [ref=e549]
+                      - cell "Third party container images." [ref=e550]
+                    - row "projectcalico.org 443 Calico container images." [ref=e551]:
+                      - cell "projectcalico.org" [ref=e552]
+                      - cell "443" [ref=e553]
+                      - cell "Calico container images." [ref=e554]
+                    - row "registry.k8s.io 443 Third party container images." [ref=e555]:
+                      - cell "registry.k8s.io" [ref=e556]
+                      - cell "443" [ref=e557]
+                      - cell "Third party container images." [ref=e558]
+                    - row "raw.githubusercontent.com 443 Third party content." [ref=e559]:
+                      - cell "raw.githubusercontent.com" [ref=e560]
+                      - cell "443" [ref=e561]
+                      - cell "Third party content." [ref=e562]
+                    - row "spectrocloud.com 443 Spectro Cloud Palette SaaS." [ref=e563]:
+                      - cell "spectrocloud.com" [ref=e564]
+                      - cell "443" [ref=e565]
+                      - cell "Spectro Cloud Palette SaaS." [ref=e566]
+                    - row "s3.amazonaws.com 443 Spectro Cloud VMware OVA files." [ref=e567]:
+                      - cell "s3.amazonaws.com" [ref=e568]
+                      - cell "443" [ref=e569]
+                      - cell "Spectro Cloud VMware OVA files." [ref=e570]
+                    - row "quay.io 443 Third party container images." [ref=e571]:
+                      - cell "quay.io" [ref=e572]
+                      - cell "443" [ref=e573]
+                      - cell "Third party container images." [ref=e574]
+                    - row "ecr.us-east-1.amazonaws.com 443 OCI Pack images." [ref=e575]:
+                      - cell "ecr.us-east-1.amazonaws.com" [ref=e576]
+                      - cell "443" [ref=e577]
+                      - cell "OCI Pack images." [ref=e578]
+                    - row "ecr.us-west-2.amazonaws.com 443 OCI Pack images." [ref=e579]:
+                      - cell "ecr.us-west-2.amazonaws.com" [ref=e580]
+                      - cell "443" [ref=e581]
+                      - cell "OCI Pack images." [ref=e582]
+                    - row "us-docker.pkg.dev 443 Required content repository and common third party content." [ref=e583]:
+                      - cell "us-docker.pkg.dev" [ref=e584]
+                      - cell "443" [ref=e585]
+                      - cell "Required content repository and common third party content." [ref=e586]
+                - heading "ScopeDirect link to Scope" [level=2] [ref=e587]:
+                  - text: Scope
+                  - link "Direct link to Scope" [ref=e588] [cursor=pointer]:
+                    - /url: "#scope"
+                    - text: "#"
+                - paragraph [ref=e589]: Clusters can be launched at the project scope or at the tenant scope. A project-level cluster belongs to a single project. A tenant-level cluster does not belong to any project and can only be accessed by users with tenant-level permissions.
+                - paragraph [ref=e590]:
+                  - text: Access to clusters in Palette is governed by Palette's role-based access control. To be able to take any action on a cluster, you need the corresponding permission in the corresponding scope. For example, a user with the permission
+                  - code [ref=e591]: cluster.create
+                  - text: in the project
+                  - code [ref=e592]: foo
+                  - text: and can create clusters in the project
+                  - code [ref=e593]: foo
+                  - text: . Tenant-level permissions allow you to take the corresponding action on clusters in all projects in the tenant, as well as tenant-level clusters. Tenant-level permissions are required to take action on any tenant-level cluster. For more information about role-based access control in Palette, refer to
+                  - link "Palette RBAC" [ref=e594] [cursor=pointer]:
+                    - /url: /user-management/palette-rbac/
+                  - text: .
+                - generic [ref=e595]:
+                  - generic [ref=e596]:
+                    - img [ref=e598]
+                    - text: info
+                  - paragraph [ref=e601]: You cannot create a tenant-level Edge cluster. This is because Edge hosts always belong to a project and cannot be added at the tenant scope.
+                - heading "Cluster Grid ViewDirect link to Cluster Grid View" [level=2] [ref=e602]:
+                  - text: Cluster Grid View
+                  - link "Direct link to Cluster Grid View" [ref=e603] [cursor=pointer]:
+                    - /url: "#cluster-grid-view"
+                    - text: "#"
+                - paragraph [ref=e604]:
+                  - text: On the
+                  - strong [ref=e605]: Clusters
+                  - text: page, you can view all clusters within a given scope in a grid view that displays the clusters with their attributes. You can customize the grid by applying filters, removing and adding columns, pinning columns, as well as ordering the clusters by certain attributes.
+                - heading "Cluster AttributesDirect link to Cluster Attributes" [level=3] [ref=e606]:
+                  - text: Cluster Attributes
+                  - link "Direct link to Cluster Attributes" [ref=e607] [cursor=pointer]:
+                    - /url: "#cluster-attributes"
+                    - text: "#"
+                - paragraph [ref=e608]: The following are the attributes of a cluster that are displayed in the cluster grid view.
+                - table [ref=e609]:
+                  - rowgroup [ref=e610]:
+                    - row "Attribute Description Support Order-by" [ref=e611]:
+                      - cell "Attribute" [ref=e612]
+                      - cell "Description" [ref=e613]
+                      - cell "Support Order-by" [ref=e614]
+                  - rowgroup [ref=e615]:
+                    - row "Type The cluster type. Possible values are \"Palette-managed\" or \"Imported.\" When there is a small green arrow on the icon, it means there are pending updates to the cluster that requires acknowledgement. No" [ref=e616]:
+                      - cell "Type" [ref=e617]
+                      - cell "The cluster type. Possible values are \"Palette-managed\" or \"Imported.\" When there is a small green arrow on the icon, it means there are pending updates to the cluster that requires acknowledgement." [ref=e618]
+                      - cell "No" [ref=e619]
+                    - row "Environment The infrastructure provider of the cluster, such as AWS, Azure, GCP and Edge. Yes" [ref=e620]:
+                      - cell "Environment" [ref=e621]
+                      - cell "The infrastructure provider of the cluster, such as AWS, Azure, GCP and Edge." [ref=e622]
+                      - cell "Yes" [ref=e623]
+                    - row "Name The name of the cluster. Yes" [ref=e624]:
+                      - cell "Name" [ref=e625]
+                      - cell "The name of the cluster." [ref=e626]
+                      - cell "Yes" [ref=e627]
+                    - row "Status The status of the cluster. Possible values include \"Pending,\" \"Provisioning,\" \"Running,\" \"Deleting,\" \"Importing,\" \"Unknown,\" and \"Deleted.\" Yes" [ref=e628]:
+                      - cell "Status" [ref=e629]
+                      - cell "The status of the cluster. Possible values include \"Pending,\" \"Provisioning,\" \"Running,\" \"Deleting,\" \"Importing,\" \"Unknown,\" and \"Deleted.\"" [ref=e630]
+                      - cell "Yes" [ref=e631]
+                    - row "Last Modified The date and time when the cluster was last modified. Yes" [ref=e632]:
+                      - cell "Last Modified" [ref=e633]
+                      - cell "The date and time when the cluster was last modified." [ref=e634]
+                      - cell "Yes" [ref=e635]
+                    - row "Health The health status of the cluster. Refer to Cluster Health for details. Yes" [ref=e636]:
+                      - cell "Health" [ref=e637]
+                      - cell "The health status of the cluster. Refer to Cluster Health for details." [ref=e638]:
+                        - text: The health status of the cluster. Refer to
+                        - link "Cluster Health" [ref=e639] [cursor=pointer]:
+                          - /url: "#cluster-health"
+                        - text: for details.
+                      - cell "Yes" [ref=e640]
+                    - row "Heathy Nodes The number of healthy nodes in the cluster. No" [ref=e641]:
+                      - cell "Heathy Nodes" [ref=e642]
+                      - cell "The number of healthy nodes in the cluster." [ref=e643]
+                      - cell "No" [ref=e644]
+                    - row "CPU The CPU usage of the cluster. No" [ref=e645]:
+                      - cell "CPU" [ref=e646]
+                      - cell "The CPU usage of the cluster." [ref=e647]
+                      - cell "No" [ref=e648]
+                    - row "Memory The memory usage of the cluster. No" [ref=e649]:
+                      - cell "Memory" [ref=e650]
+                      - cell "The memory usage of the cluster." [ref=e651]
+                      - cell "No" [ref=e652]
+                    - row "Architecture The processor architecture of the cluster. No" [ref=e653]:
+                      - cell "Architecture" [ref=e654]
+                      - cell "The processor architecture of the cluster." [ref=e655]
+                      - cell "No" [ref=e656]
+                    - row "Tags The tags on the cluster. No" [ref=e657]:
+                      - cell "Tags" [ref=e658]
+                      - cell "The tags on the cluster." [ref=e659]
+                      - cell "No" [ref=e660]
+                - heading "Organize Cluster GridDirect link to Organize Cluster Grid" [level=3] [ref=e661]:
+                  - text: Organize Cluster Grid
+                  - link "Direct link to Organize Cluster Grid" [ref=e662] [cursor=pointer]:
+                    - /url: "#organize-cluster-grid"
+                    - text: "#"
+                - paragraph [ref=e663]: You can take the following actions to organize your clusters in the grid view.
+                - paragraph [ref=e664]:
+                  - img "Screenshot of cluster grid view with arrows pointing to the areas where actions to organize the gride view can be performed." [ref=e665]
+                - table [ref=e666]:
+                  - rowgroup [ref=e667]:
+                    - row "Action Description" [ref=e668]:
+                      - cell "Action" [ref=e669]
+                      - cell "Description" [ref=e670]
+                  - rowgroup [ref=e671]:
+                    - row "Reorder Columns Click on the gear icon at the top right corner of the grid. In the list of scrollable columns, drag and drop the six dots icon to the left of each list item to reorder the columns." [ref=e672]:
+                      - cell "Reorder Columns" [ref=e673]
+                      - cell "Click on the gear icon at the top right corner of the grid. In the list of scrollable columns, drag and drop the six dots icon to the left of each list item to reorder the columns." [ref=e674]
+                    - row "Remove Column From View Click on the gear icon at the top right corner of the grid. In the list of scrollable columns, uncheck the columns you want to hide from view." [ref=e675]:
+                      - cell "Remove Column From View" [ref=e676]
+                      - cell "Click on the gear icon at the top right corner of the grid. In the list of scrollable columns, uncheck the columns you want to hide from view." [ref=e677]
+                    - row "Pin a Column Click on the gear icon at the top right corner of the grid. In the list of scrollable columns, click on the pin icon to the right of the list item you want to pin." [ref=e678]:
+                      - cell "Pin a Column" [ref=e679]
+                      - cell "Click on the gear icon at the top right corner of the grid. In the list of scrollable columns, click on the pin icon to the right of the list item you want to pin." [ref=e680]
+                    - row "Order by a Column Click on the label row of the column you want to order by alphanumeric order. You can click it again to change the sort order. You can only sort by one column at a time." [ref=e681]:
+                      - cell "Order by a Column" [ref=e682]
+                      - cell "Click on the label row of the column you want to order by alphanumeric order. You can click it again to change the sort order. You can only sort by one column at a time." [ref=e683]
+                    - row "Filter by Attribute Click on Add Filter above the cluster grid and choose an existing filter or define a custom filter to apply to the clusters." [ref=e684]:
+                      - cell "Filter by Attribute" [ref=e685]
+                      - cell "Click on Add Filter above the cluster grid and choose an existing filter or define a custom filter to apply to the clusters." [ref=e686]:
+                        - text: Click on
+                        - strong [ref=e687]: Add Filter
+                        - text: above the cluster grid and choose an existing filter or define a custom filter to apply to the clusters.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e688]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e689] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e690]:
+                  - listitem [ref=e691]:
+                    - paragraph [ref=e692]:
+                      - link "Public Cloud Clusters" [ref=e693] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                  - listitem [ref=e694]:
+                    - paragraph [ref=e695]:
+                      - link "Data Center Clusters" [ref=e696] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                  - listitem [ref=e697]:
+                    - paragraph [ref=e698]:
+                      - link "Edge" [ref=e699] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                  - listitem [ref=e700]:
+                    - paragraph [ref=e701]:
+                      - link "Palette Virtual Clusters" [ref=e702] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                  - listitem [ref=e703]:
+                    - paragraph [ref=e704]:
+                      - link "Imported Clusters" [ref=e705] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                  - listitem [ref=e706]:
+                    - paragraph [ref=e707]:
+                      - link "Manage Clusters" [ref=e708] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                  - listitem [ref=e709]:
+                    - paragraph [ref=e710]:
+                      - link "Cluster Groups" [ref=e711] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                  - listitem [ref=e712]:
+                    - paragraph [ref=e713]:
+                      - link "Private Cloud Gateways" [ref=e714] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+              - link "Edit this page" [ref=e718] [cursor=pointer]:
+                - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/clusters.md
+                - img [ref=e719]
+                - text: Edit this page
+            - navigation "Docs pages" [ref=e723]:
+              - link "Previous « Controller Mode" [ref=e724] [cursor=pointer]:
+                - /url: /deployment-modes/controller-mode/
+                - generic [ref=e725]: Previous
+                - generic [ref=e726]: « Controller Mode
+              - link "Next Public Cloud Clusters »" [ref=e727] [cursor=pointer]:
+                - /url: /clusters/public-cloud/
+                - generic [ref=e728]: Next
+                - generic [ref=e729]: Public Cloud Clusters »
+          - list [ref=e732]:
+            - listitem [ref=e733]:
+              - link "Images" [ref=e734] [cursor=pointer]:
+                - /url: "#images"
+            - listitem [ref=e735]:
+              - link "Security" [ref=e736] [cursor=pointer]:
+                - /url: "#security"
+              - list [ref=e737]:
+                - listitem [ref=e738]:
+                  - link "Operating System" [ref=e739] [cursor=pointer]:
+                    - /url: "#operating-system"
+                - listitem [ref=e740]:
+                  - link "Kubernetes" [ref=e741] [cursor=pointer]:
+                    - /url: "#kubernetes"
+                - listitem [ref=e742]:
+                  - link "Cloud Infrastructure" [ref=e743] [cursor=pointer]:
+                    - /url: "#cloud-infrastructure"
+            - listitem [ref=e744]:
+              - link "Day-2 Management" [ref=e745] [cursor=pointer]:
+                - /url: "#day-2-management"
+            - listitem [ref=e746]:
+              - link "Cluster Health" [ref=e747] [cursor=pointer]:
+                - /url: "#cluster-health"
+            - listitem [ref=e748]:
+              - link "Application Services" [ref=e749] [cursor=pointer]:
+                - /url: "#application-services"
+            - listitem [ref=e750]:
+              - link "Troubleshooting" [ref=e751] [cursor=pointer]:
+                - /url: "#troubleshooting"
+            - listitem [ref=e752]:
+              - link "Cluster Conditions" [ref=e753] [cursor=pointer]:
+                - /url: "#cluster-conditions"
+            - listitem [ref=e754]:
+              - link "Rolling upgrade" [ref=e755] [cursor=pointer]:
+                - /url: "#rolling-upgrade"
+            - listitem [ref=e756]:
+              - link "Event Stream" [ref=e757] [cursor=pointer]:
+                - /url: "#event-stream"
+            - listitem [ref=e758]:
+              - link "Download Cluster Logs" [ref=e759] [cursor=pointer]:
+                - /url: "#download-cluster-logs"
+              - list [ref=e760]:
+                - listitem [ref=e761]:
+                  - link "Collect the Logs" [ref=e762] [cursor=pointer]:
+                    - /url: "#collect-the-logs"
+            - listitem [ref=e763]:
+              - link "Proxy Whitelist" [ref=e764] [cursor=pointer]:
+                - /url: "#proxy-whitelist"
+            - listitem [ref=e765]:
+              - link "Scope" [ref=e766] [cursor=pointer]:
+                - /url: "#scope"
+            - listitem [ref=e767]:
+              - link "Cluster Grid View" [ref=e768] [cursor=pointer]:
+                - /url: "#cluster-grid-view"
+              - list [ref=e769]:
+                - listitem [ref=e770]:
+                  - link "Cluster Attributes" [ref=e771] [cursor=pointer]:
+                    - /url: "#cluster-attributes"
+                - listitem [ref=e772]:
+                  - link "Organize Cluster Grid" [ref=e773] [cursor=pointer]:
+                    - /url: "#organize-cluster-grid"
+            - listitem [ref=e774]:
+              - link "Resources" [ref=e775] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e776] [cursor=pointer]:
+    - generic [ref=e779]:
+      - img "Project Logo" [ref=e780]
+      - paragraph [ref=e781]: Ask AI
+```

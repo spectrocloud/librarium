@@ -1,0 +1,846 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [expanded] [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+                - list [ref=e128]:
+                  - listitem [ref=e129]:
+                    - link "Architecture" [ref=e130] [cursor=pointer]:
+                      - /url: /vm-management/architecture/
+                  - listitem [ref=e131]:
+                    - link "Environment Setup" [ref=e132] [cursor=pointer]:
+                      - /url: /vm-management/environment-setup/
+                  - listitem [ref=e133]:
+                    - link "Install VMO in Airgap Environments" [ref=e134] [cursor=pointer]:
+                      - /url: /vm-management/install-vmo-in-airgap/
+                  - listitem [ref=e135]:
+                    - link "Create a VMO Profile" [ref=e136] [cursor=pointer]:
+                      - /url: /vm-management/create-vmo-profile/
+                  - listitem [ref=e137]:
+                    - link "Configure Private CA Certificate" [ref=e138] [cursor=pointer]:
+                      - /url: /vm-management/configure-private-ca-certificate/
+                  - listitem [ref=e139]:
+                    - link "Configure Direct Access to VM Dashboard" [ref=e140] [cursor=pointer]:
+                      - /url: /vm-management/configure-console-base-address/
+                  - listitem [ref=e141]:
+                    - generic [ref=e142]:
+                      - link "RBAC" [ref=e143] [cursor=pointer]:
+                        - /url: /vm-management/rbac/
+                      - button "Toggle the collapsible sidebar category 'RBAC'" [ref=e144] [cursor=pointer]
+                  - listitem [ref=e145]:
+                    - generic [ref=e146]:
+                      - link "Create and Manage VMs" [expanded] [ref=e147] [cursor=pointer]:
+                        - /url: /vm-management/create-manage-vm/
+                      - button "Toggle the collapsible sidebar category 'Create and Manage VMs'" [ref=e148] [cursor=pointer]
+                    - list [ref=e149]:
+                      - listitem [ref=e150]:
+                        - link "Deploy VM From a Template" [ref=e151] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/deploy-vm-from-template/
+                      - listitem [ref=e152]:
+                        - link "Update VM Configuration" [ref=e153] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/update-vm-configuration/
+                      - listitem [ref=e154]:
+                        - link "Migrate a VM to a Different Node" [ref=e155] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/migrate-vm-to-different-node/
+                      - listitem [ref=e156]:
+                        - link "Take a VM Snapshot" [ref=e157] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/take-snapshot-of-vm/
+                      - listitem [ref=e158]:
+                        - link "Clone a VM" [ref=e159] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/clone-vm/
+                      - listitem [ref=e160]:
+                        - link "Manage CPU and Memory" [ref=e161] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/enable-cpu-hotplug/
+                      - listitem [ref=e162]:
+                        - link "Locate VM Disks" [ref=e163] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/locate-vm-disks/
+                      - listitem [ref=e164]:
+                        - generic [ref=e165]:
+                          - link "Advanced Topics" [expanded] [ref=e166] [cursor=pointer]:
+                            - /url: /vm-management/create-manage-vm/advanced-topics/
+                          - button "Toggle the collapsible sidebar category 'Advanced Topics'" [ref=e167] [cursor=pointer]
+                        - list [ref=e168]:
+                          - listitem [ref=e169]:
+                            - link "Create a VM Template" [ref=e170] [cursor=pointer]:
+                              - /url: /vm-management/create-manage-vm/advanced-topics/create-vm-template/
+                          - listitem [ref=e171]:
+                            - link "Access VM Cluster with Virtctl" [ref=e172] [cursor=pointer]:
+                              - /url: /vm-management/create-manage-vm/advanced-topics/access-cluster-with-virtctl/
+                          - listitem [ref=e173]:
+                            - link "Create Disk Templates" [ref=e174] [cursor=pointer]:
+                              - /url: /vm-management/create-manage-vm/advanced-topics/create-disk-templates/
+                          - listitem [ref=e175]:
+                            - link "Migrate a VM to a VMO cluster using the Palette CLI" [ref=e176] [cursor=pointer]:
+                              - /url: /vm-management/create-manage-vm/advanced-topics/migrate-vm-kubevirt/
+                          - listitem [ref=e177]:
+                            - link "Over-Commit Resources to Enhance VM Performance" [ref=e178] [cursor=pointer]:
+                              - /url: /vm-management/create-manage-vm/advanced-topics/vm-oversubscription/
+                          - listitem [ref=e179]:
+                            - link "Import and Deploy OVAs to Palette VMO" [ref=e180] [cursor=pointer]:
+                              - /url: /vm-management/create-manage-vm/advanced-topics/deploy-import-ova/
+                  - listitem [ref=e181]:
+                    - generic [ref=e182]:
+                      - link "VM Migration Assistant" [ref=e183] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/
+                      - button "Toggle the collapsible sidebar category 'VM Migration Assistant'" [ref=e184] [cursor=pointer]
+              - listitem [ref=e185]:
+                - generic [ref=e186]:
+                  - link "Workspaces" [ref=e187] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e189]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e191] [cursor=pointer]
+              - listitem [ref=e192]:
+                - generic [ref=e193]:
+                  - link "Packs List" [ref=e194] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e196]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e198] [cursor=pointer]
+              - listitem [ref=e199]:
+                - generic [ref=e200]:
+                  - link "User & Role Management" [ref=e201] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e203]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e205] [cursor=pointer]
+              - listitem [ref=e206]:
+                - generic [ref=e207]:
+                  - link "Registries and Packs" [ref=e208] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e210]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e212] [cursor=pointer]
+              - listitem [ref=e213]:
+                - generic [ref=e214]:
+                  - link "Security" [ref=e215] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e217]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e219] [cursor=pointer]
+              - listitem [ref=e220]:
+                - generic [ref=e221]:
+                  - link "Audit Logs" [ref=e222] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e224]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e226] [cursor=pointer]
+              - listitem [ref=e227]:
+                - generic [ref=e228]:
+                  - link "Self-Hosted Palette" [ref=e229] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e231]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e233] [cursor=pointer]
+              - listitem [ref=e234]:
+                - generic [ref=e235]:
+                  - link "Palette VerteX" [ref=e236] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e238]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e240] [cursor=pointer]
+              - listitem [ref=e241]:
+                - generic [ref=e242]:
+                  - link "Tenant Administration" [ref=e243] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e245]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e247] [cursor=pointer]
+              - listitem [ref=e248]:
+                - generic [ref=e249]:
+                  - link "Automation" [ref=e250] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e252]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e254] [cursor=pointer]
+              - listitem [ref=e255]:
+                - generic [ref=e256]:
+                  - link "Troubleshooting" [ref=e257] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e259]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e261] [cursor=pointer]
+              - listitem [ref=e262]:
+                - link "Glossary" [ref=e263] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e265]
+                  - text: Glossary
+              - listitem [ref=e267]:
+                - generic [ref=e268]:
+                  - link "Compliance & Legal" [ref=e269] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e271]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e273] [cursor=pointer]
+              - listitem [ref=e274]:
+                - button "Privacy Settings" [ref=e275] [cursor=pointer]:
+                  - img [ref=e276]
+                  - text: Privacy Settings
+      - main [ref=e278]:
+        - generic [ref=e280]:
+          - generic [ref=e282]:
+            - article [ref=e283]:
+              - navigation "Breadcrumbs" [ref=e284]:
+                - list [ref=e285]:
+                  - listitem [ref=e286]:
+                    - link "Home page" [ref=e287] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e288]
+                  - listitem [ref=e290]:
+                    - link "Virtual Machine Orchestrator" [ref=e291] [cursor=pointer]:
+                      - /url: /vm-management/
+                  - listitem [ref=e292]:
+                    - link "Create and Manage VMs" [ref=e293] [cursor=pointer]:
+                      - /url: /vm-management/create-manage-vm/
+                  - listitem [ref=e294]:
+                    - link "Advanced Topics" [ref=e295] [cursor=pointer]:
+                      - /url: /vm-management/create-manage-vm/advanced-topics/
+                  - listitem [ref=e296]:
+                    - generic [ref=e297]: Migrate a VM to a VMO cluster using the Palette CLI
+              - generic [ref=e298]:
+                - heading "Migrate a VM to a VMO cluster using the Palette CLI" [level=1] [ref=e300]
+                - generic [ref=e301]:
+                  - generic [ref=e302]:
+                    - img [ref=e304]
+                    - text: info
+                  - paragraph [ref=e307]:
+                    - text: We recommend using the
+                    - link "VM Migration Assistant" [ref=e308] [cursor=pointer]:
+                      - /url: /vm-management/vm-migration-assistant/
+                    - text: instead of this method for new migrations.
+                - paragraph [ref=e309]:
+                  - text: This migration method uses the
+                  - link "Palette CLI" [ref=e310] [cursor=pointer]:
+                    - /url: /automation/palette-cli/
+                  - text: .
+                - heading "LimitationsDirect link to Limitations" [level=2] [ref=e311]:
+                  - text: Limitations
+                  - link "Direct link to Limitations" [ref=e312] [cursor=pointer]:
+                    - /url: "#limitations"
+                    - text: "#"
+                - list [ref=e313]:
+                  - listitem [ref=e314]:
+                    - paragraph [ref=e315]: You can migrate only VMs hosted in VMware vSphere 7.0 or 8.0.
+                  - listitem [ref=e316]:
+                    - paragraph [ref=e317]:
+                      - text: You can migrate only VMs whose operating systems are present in the
+                      - link "virt-v2v supported guest systems" [ref=e318] [cursor=pointer]:
+                        - /url: https://libguestfs.org/virt-v2v-support.1.html
+                        - code [ref=e319]: virt-v2v
+                        - text: supported guest systems
+                      - text: list. Refer to
+                      - link "Verified Migrations" [ref=e320] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/#verified-migrations
+                      - text: for a list of operating systems and migration combinations verified by Spectro Cloud.
+                  - listitem [ref=e321]:
+                    - paragraph [ref=e322]: If you are migrating more than one VM in the same plan, they must all share the same network.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e323]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e324] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e325]:
+                  - listitem [ref=e326]:
+                    - paragraph [ref=e327]:
+                      - text: A healthy VMO cluster. Refer to the
+                      - link "Create a VMO Profile" [ref=e328] [cursor=pointer]:
+                        - /url: /vm-management/create-vmo-profile/
+                      - text: for further guidance.
+                    - list [ref=e329]:
+                      - listitem [ref=e330]: The VMO cluster must have access to VMware and the VM you want to migrate.
+                    - generic [ref=e331]:
+                      - generic [ref=e332]:
+                        - img [ref=e334]
+                        - text: warning
+                      - generic [ref=e336]:
+                        - paragraph [ref=e337]:
+                          - text: If you need to provision
+                          - code [ref=e338]: Block
+                          - text: storage volumes during the VM migration process, add the following custom configuration to your VMO cluster OS pack. Applying this configuration may cause a cluster repave. For more information, refer to
+                          - link "Repave Behaviors and Configurations" [ref=e339] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/node-pool/#repave-behavior-and-configuration
+                        - paragraph [ref=e340]:
+                          - text: Additionally, we recommend provisioning volumes with the
+                          - code [ref=e341]: ReadWriteMany
+                          - text: access mode to ensure that VMs can be
+                          - link "live migrated" [ref=e342] [cursor=pointer]:
+                            - /url: https://kubevirt.io/user-guide/compute/live_migration/#limitations
+                          - text: .
+                        - generic [ref=e344]:
+                          - code [ref=e346]:
+                            - generic [ref=e347]: "kubeadmconfig:"
+                            - generic [ref=e348]: "preKubeadmCommands:"
+                            - generic [ref=e349]: "# Start containerd with new configuration"
+                            - generic [ref=e350]: "- systemctl daemon-reload"
+                            - generic [ref=e351]: "- systemctl restart containerd"
+                            - generic [ref=e352]: "files:"
+                            - generic [ref=e353]: "- targetPath: /etc/containerd/config.toml"
+                            - generic [ref=e354]: "targetOwner: \"root:root\""
+                            - generic [ref=e355]: "targetPermissions: \"0644\""
+                            - generic [ref=e356]: "content: |"
+                            - generic [ref=e357]: "## template: jinja"
+                            - generic [ref=e358]: "# Use config version 2 to enable new configuration fields."
+                            - generic [ref=e359]: version = 2
+                            - generic [ref=e360]: imports = ["/etc/containerd/conf.d/*.toml"]
+                            - generic [ref=e361]: "[plugins]"
+                            - generic [ref=e362]: "[plugins.\"io.containerd.grpc.v1.cri\"]"
+                            - generic [ref=e363]: sandbox_image = "registry.k8s.io/pause:3.9"
+                            - generic [ref=e364]: device_ownership_from_security_context = true
+                            - generic [ref=e365]: "[plugins.\"io.containerd.grpc.v1.cri\".containerd.runtimes.runc]"
+                            - generic [ref=e366]: runtime_type = "io.containerd.runc.v2"
+                            - generic [ref=e367]: "[plugins.\"io.containerd.grpc.v1.cri\".containerd.runtimes.runc.options]"
+                            - generic [ref=e368]: SystemdCgroup = true
+                          - generic [ref=e369]:
+                            - button "Toggle word wrap" [ref=e370] [cursor=pointer]:
+                              - img [ref=e371]
+                            - button "Copy code to clipboard" [ref=e373] [cursor=pointer]:
+                              - generic [ref=e374]:
+                                - img [ref=e375]
+                                - img [ref=e377]
+                  - listitem [ref=e379]:
+                    - paragraph [ref=e380]: A vCenter user account with the following necessary privileges to perform migrations.
+                    - table [ref=e381]:
+                      - rowgroup [ref=e382]:
+                        - row "Privileges Description" [ref=e383]:
+                          - cell "Privileges" [ref=e384]:
+                            - strong [ref=e385]: Privileges
+                          - cell "Description" [ref=e386]:
+                            - strong [ref=e387]: Description
+                      - rowgroup [ref=e388]:
+                        - row "Virtual machine.Interaction.Power Off Allows shutting down a powered-on virtual machine, powering down its guest operating system." [ref=e389]:
+                          - cell "Virtual machine.Interaction.Power Off" [ref=e390]:
+                            - strong [ref=e391]:
+                              - link "Virtual machine.Interaction.Power Off" [ref=e392] [cursor=pointer]:
+                                - /url: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-3D47149A-947D-4608-88B3-E5811129EFA8.html
+                          - cell "Allows shutting down a powered-on virtual machine, powering down its guest operating system." [ref=e393]
+                        - row "Virtual machine.Interaction.Power On Enables starting a powered-off virtual machine or resuming a suspended one." [ref=e394]:
+                          - cell "Virtual machine.Interaction.Power On" [ref=e395]:
+                            - strong [ref=e396]:
+                              - link "Virtual machine.Interaction.Power On" [ref=e397] [cursor=pointer]:
+                                - /url: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-3D47149A-947D-4608-88B3-E5811129EFA8.html
+                          - cell "Enables starting a powered-off virtual machine or resuming a suspended one." [ref=e398]
+                        - row "Virtual Machine Interaction Privileges Allow creating, cloning, modifying, customizing, and managing templates, virtual machines, their files, and customization specifications, as well as performing disk and deployment-related operations." [ref=e399]:
+                          - cell "Virtual Machine Interaction Privileges" [ref=e400]:
+                            - link "Virtual Machine Interaction Privileges" [ref=e401] [cursor=pointer]:
+                              - /url: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-3D47149A-947D-4608-88B3-E5811129EFA8.html
+                              - strong [ref=e402]: Virtual Machine Interaction Privileges
+                          - cell "Allow creating, cloning, modifying, customizing, and managing templates, virtual machines, their files, and customization specifications, as well as performing disk and deployment-related operations." [ref=e403]
+                        - row "Virtual machine.Snapshot management.Create snapshot Allows capturing the current state of a virtual machine as a snapshot." [ref=e404]:
+                          - cell "Virtual machine.Snapshot management.Create snapshot" [ref=e405]:
+                            - strong [ref=e406]:
+                              - link "Virtual machine.Snapshot management.Create snapshot" [ref=e407] [cursor=pointer]:
+                                - /url: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-222FE721-0968-4E9E-9F98-7CB03E7185E8.html
+                          - cell "Allows capturing the current state of a virtual machine as a snapshot." [ref=e408]
+                        - row "Virtual machine.Snapshot management.Remove Snapshot Permits deletion of a snapshot from the snapshot history." [ref=e409]:
+                          - cell "Virtual machine.Snapshot management.Remove Snapshot" [ref=e410]:
+                            - strong [ref=e411]:
+                              - link "Virtual machine.Snapshot management.Remove Snapshot" [ref=e412] [cursor=pointer]:
+                                - /url: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-222FE721-0968-4E9E-9F98-7CB03E7185E8.html
+                          - cell "Permits deletion of a snapshot from the snapshot history." [ref=e413]
+                    - list [ref=e414]:
+                      - listitem [ref=e415]: Migrations can be optionally accelerated by providing credentials for the ESXi hosts where the VMs reside.
+                  - listitem [ref=e416]:
+                    - paragraph [ref=e417]: One or more VMs hosted in VMware vSphere.
+                    - list [ref=e418]:
+                      - listitem [ref=e419]: The VMs must be powered off before migration.
+                      - listitem [ref=e420]: Ensure that VMs operating Windows are shut down at the virtualized OS level.
+                  - listitem [ref=e421]:
+                    - paragraph [ref=e422]:
+                      - text: The Palette CLI installed and setup. Refer to the
+                      - link "Installation" [ref=e423] [cursor=pointer]:
+                        - /url: /automation/palette-cli/install-palette-cli/
+                      - text: guide for further details.
+                    - list [ref=e424]:
+                      - listitem [ref=e425]: The Palette CLI must have access to both the VMO cluster and the machines to be migrated.
+                  - listitem [ref=e426]:
+                    - paragraph [ref=e427]:
+                      - text: The kubectl command-line tool should also be installed. Refer to the
+                      - link "kubectl installation" [ref=e428] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/tasks/tools/install-kubectl/
+                      - text: guide to learn more.
+                  - listitem [ref=e429]:
+                    - paragraph [ref=e430]:
+                      - text: We recommend providing a
+                      - link "VMware Virtual Disk Development Kit (VDDK) image" [ref=e431] [cursor=pointer]:
+                        - /url: https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/latest
+                      - text: for the migration. This will significantly speed up the migration. The migration engine uses VDDK on the destination VMO cluster to read virtual disks from the source environment, transfer the data, and write it to the target storage.
+                    - list [ref=e432]:
+                      - listitem [ref=e433]:
+                        - paragraph [ref=e434]: You must build and host the VDDK image in your own image registry, which must be accessible to the destination VMO cluster for migrations.
+                        - group [ref=e435]:
+                          - generic "Example steps to build and upload VDDK image" [ref=e436] [cursor=pointer]
+                      - listitem [ref=e437]:
+                        - paragraph [ref=e438]:
+                          - text: If you are using a private image registry, you must create a Secret to be used for the migration. The Secret must be in the form of a YAML file and the
+                          - code [ref=e439]: metadata.name
+                          - text: value must be
+                          - code [ref=e440]: vddk-image-pull-secret
+                          - text: . The
+                          - code [ref=e441]: metadata.namespace
+                          - text: value should be left blank or omitted, as the Palette CLI will automatically populate it.
+                        - group [ref=e442]:
+                          - generic "Example Secret Creation" [ref=e443] [cursor=pointer]
+                - heading "Migrate VMware vSphere VMsDirect link to Migrate VMware vSphere VMs" [level=2] [ref=e444]:
+                  - text: Migrate VMware vSphere VMs
+                  - link "Direct link to Migrate VMware vSphere VMs" [ref=e445] [cursor=pointer]:
+                    - /url: "#migrate-vmware-vsphere-vms"
+                    - text: "#"
+                - list [ref=e446]:
+                  - listitem [ref=e447]:
+                    - paragraph [ref=e448]:
+                      - text: Download the
+                      - link "Kubeconfig" [ref=e449] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/kubeconfig/
+                      - text: file of the VMO cluster to the host where the Palette CLI is installed.
+                  - listitem [ref=e450]:
+                    - paragraph [ref=e451]:
+                      - text: Open a terminal window and set the environment variable
+                      - code [ref=e452]: KUBECONFIG
+                      - text: to point to the file you downloaded.
+                    - generic [ref=e454]:
+                      - code [ref=e456]:
+                        - generic [ref=e457]: export KUBECONFIG=<path-to-downloaded-kubeconfig-file>
+                      - button "Copy code to clipboard" [ref=e459] [cursor=pointer]:
+                        - generic [ref=e460]:
+                          - img [ref=e461]
+                          - img [ref=e463]
+                  - listitem [ref=e465]:
+                    - paragraph [ref=e466]: Optionally, create a namespace where your VM will be migrated. We recommend that you migrate a VM to a dedicated namespace.
+                    - generic [ref=e468]:
+                      - code [ref=e470]:
+                        - generic [ref=e471]: kubectl create namespace <migration-namespace>
+                      - button "Copy code to clipboard" [ref=e473] [cursor=pointer]:
+                        - generic [ref=e474]:
+                          - img [ref=e475]
+                          - img [ref=e477]
+                  - listitem [ref=e479]:
+                    - paragraph [ref=e480]:
+                      - text: Execute the following command to start an interactive shell and begin the migration process to the cluster specified by the
+                      - code [ref=e481]: KUBECONFIG
+                      - text: variable.
+                    - generic [ref=e483]:
+                      - code [ref=e485]:
+                        - generic [ref=e486]: palette vmo migrate-vm
+                      - button "Copy code to clipboard" [ref=e488] [cursor=pointer]:
+                        - generic [ref=e489]:
+                          - img [ref=e490]
+                          - img [ref=e492]
+                    - generic [ref=e494]:
+                      - generic [ref=e495]:
+                        - img [ref=e497]
+                        - text: tip
+                      - generic [ref=e499]:
+                        - paragraph [ref=e500]: You can save your configuration to a file, allowing you to revise your configuration and perform the migration later.
+                        - generic [ref=e502]:
+                          - code [ref=e504]:
+                            - generic [ref=e505]: palette vmo migrate-vm --config-only
+                          - button "Copy code to clipboard" [ref=e507] [cursor=pointer]:
+                            - generic [ref=e508]:
+                              - img [ref=e509]
+                              - img [ref=e511]
+                    - paragraph [ref=e513]: The Palette CLI prompts you for information regarding the VM you want to migrate, vSphere environment, and resource configurations.
+                    - table [ref=e514]:
+                      - rowgroup [ref=e515]:
+                        - row "Parameter Description Values" [ref=e516]:
+                          - cell "Parameter" [ref=e517]:
+                            - strong [ref=e518]: Parameter
+                          - cell "Description" [ref=e519]:
+                            - strong [ref=e520]: Description
+                          - cell "Values" [ref=e521]:
+                            - strong [ref=e522]: Values
+                      - rowgroup [ref=e523]:
+                        - row "Migration Source Type The hypervisor configured on your migration VM. vCenter / vCenter + ESXi host" [ref=e524]:
+                          - cell "Migration Source Type" [ref=e525]:
+                            - strong [ref=e526]: Migration Source Type
+                          - cell "The hypervisor configured on your migration VM." [ref=e527]
+                          - cell "vCenter / vCenter + ESXi host" [ref=e528]:
+                            - code [ref=e529]: vCenter
+                            - text: /
+                            - code [ref=e530]: vCenter + ESXi host
+                        - row "Migration Name The name of your migration and its corresponding configuration files. A default name is generated by the Palette CLI." [ref=e531]:
+                          - cell "Migration Name" [ref=e532]:
+                            - strong [ref=e533]: Migration Name
+                          - cell "The name of your migration and its corresponding configuration files. A default name is generated by the Palette CLI." [ref=e534]
+                          - cell [ref=e535]
+                        - row "Forklift Installation Type A cluster to be used for performing the migration. You can either choose to create a local cluster or use the destination cluster. Forklift is installed on the migration cluster. Local Kind Cluster / Destination Cluster" [ref=e536]:
+                          - cell "Forklift Installation Type" [ref=e537]:
+                            - strong [ref=e538]: Forklift Installation Type
+                          - cell "A cluster to be used for performing the migration. You can either choose to create a local cluster or use the destination cluster. Forklift is installed on the migration cluster." [ref=e539]:
+                            - text: A cluster to be used for performing the migration. You can either choose to create a local cluster or use the destination cluster.
+                            - link "Forklift" [ref=e540] [cursor=pointer]:
+                              - /url: https://github.com/kubev2v/forklift
+                            - text: is installed on the migration cluster.
+                          - cell "Local Kind Cluster / Destination Cluster" [ref=e541]:
+                            - code [ref=e542]: Local Kind Cluster
+                            - text: /
+                            - code [ref=e543]: Destination Cluster
+                        - row "Install Forklift? Specify whether to install Forklift on the migration cluster. Y / n" [ref=e544]:
+                          - cell "Install Forklift?" [ref=e545]:
+                            - strong [ref=e546]: Install Forklift?
+                          - cell "Specify whether to install Forklift on the migration cluster." [ref=e547]
+                          - cell "Y / n" [ref=e548]:
+                            - code [ref=e549]: "Y"
+                            - text: /
+                            - code [ref=e550]: "n"
+                        - row "KUBECONFIG path The local filesystem path to the kubeconfig for your destination cluster. For example, ~/path/to/mycluster.kubeconfig." [ref=e551]:
+                          - cell "KUBECONFIG path" [ref=e552]:
+                            - strong [ref=e553]: KUBECONFIG path
+                          - cell "The local filesystem path to the kubeconfig for your destination cluster. For example, ~/path/to/mycluster.kubeconfig." [ref=e554]:
+                            - text: The local filesystem path to the kubeconfig for your destination cluster. For example,
+                            - code [ref=e555]: ~/path/to/mycluster.kubeconfig
+                            - text: .
+                          - cell [ref=e556]
+                        - row "Migration Namespace Namespace where the migration VM is created. The namespace must exist on the cluster. You can enter the namespace you created earlier or use the default namespace." [ref=e557]:
+                          - cell "Migration Namespace" [ref=e558]:
+                            - strong [ref=e559]: Migration Namespace
+                          - cell "Namespace where the migration VM is created. The namespace must exist on the cluster. You can enter the namespace you created earlier or use the default namespace." [ref=e560]:
+                            - text: Namespace where the migration VM is created. The namespace must exist on the cluster. You can enter the namespace you created earlier or use the
+                            - code [ref=e561]: default
+                            - text: namespace.
+                          - cell [ref=e562]
+                        - row "vSphere Endpoint Your vSphere endpoint. You can specify a Full Qualified Domain Name (FQDN) or an IP address. Make sure you specify the endpoint without the HTTP scheme https:// or http://. For example, vcenter.mycompany.com." [ref=e563]:
+                          - cell "vSphere Endpoint" [ref=e564]:
+                            - strong [ref=e565]: vSphere Endpoint
+                          - cell "Your vSphere endpoint. You can specify a Full Qualified Domain Name (FQDN) or an IP address. Make sure you specify the endpoint without the HTTP scheme https:// or http://. For example, vcenter.mycompany.com." [ref=e566]:
+                            - text: Your vSphere endpoint. You can specify a Full Qualified Domain Name (FQDN) or an IP address. Make sure you specify the endpoint without the HTTP scheme
+                            - code [ref=e567]: https://
+                            - text: or
+                            - code [ref=e568]: http://
+                            - text: . For example,
+                            - code [ref=e569]: vcenter.mycompany.com
+                            - text: .
+                          - cell [ref=e570]
+                        - row "vSphere Username (with domain) Your vSphere account username." [ref=e571]:
+                          - cell "vSphere Username (with domain)" [ref=e572]:
+                            - strong [ref=e573]: vSphere Username (with domain)
+                          - cell "Your vSphere account username." [ref=e574]
+                          - cell [ref=e575]
+                        - row "vSphere Password Your vSphere account password." [ref=e576]:
+                          - cell "vSphere Password" [ref=e577]:
+                            - strong [ref=e578]: vSphere Password
+                          - cell "Your vSphere account password." [ref=e579]
+                          - cell [ref=e580]
+                        - row "Allow Insecure Connection (Bypass x509 Verification) Enabling this option bypasses x509 CA verification. In production environments, enter N if using a custom registry with self-signed SSL certificates. Otherwise, enter Y. Y/n" [ref=e581]:
+                          - cell "Allow Insecure Connection (Bypass x509 Verification)" [ref=e582]:
+                            - strong [ref=e583]: Allow Insecure Connection (Bypass x509 Verification)
+                          - cell "Enabling this option bypasses x509 CA verification. In production environments, enter N if using a custom registry with self-signed SSL certificates. Otherwise, enter Y." [ref=e584]:
+                            - text: Enabling this option bypasses x509 CA verification. In production environments, enter
+                            - code [ref=e585]: "N"
+                            - text: if using a custom registry with self-signed SSL certificates. Otherwise, enter
+                            - code [ref=e586]: "Y"
+                            - text: .
+                          - cell "Y/n" [ref=e587]:
+                            - code [ref=e588]: "Y"
+                            - text: /
+                            - code [ref=e589]: "n"
+                        - row "Use VDDK (recommended)? Specify whether to provide a VMware Virtual Disk Development Kit (VDDK) image. Y / n" [ref=e590]:
+                          - cell "Use VDDK (recommended)?" [ref=e591]:
+                            - strong [ref=e592]: Use VDDK (recommended)?
+                          - cell "Specify whether to provide a VMware Virtual Disk Development Kit (VDDK) image." [ref=e593]
+                          - cell "Y / n" [ref=e594]:
+                            - code [ref=e595]: "Y"
+                            - text: /
+                            - code [ref=e596]: "n"
+                        - row "VDDK image Provide the registry URL to the VDDK image. Make sure you specify the registry URL without the HTTP scheme https:// or http://. For example, docker.io/myorganization/vddk:v8.0.3." [ref=e597]:
+                          - cell "VDDK image" [ref=e598]:
+                            - strong [ref=e599]: VDDK image
+                          - cell "Provide the registry URL to the VDDK image. Make sure you specify the registry URL without the HTTP scheme https:// or http://. For example, docker.io/myorganization/vddk:v8.0.3." [ref=e600]:
+                            - text: Provide the registry URL to the VDDK image. Make sure you specify the registry URL without the HTTP scheme
+                            - code [ref=e601]: https://
+                            - text: or
+                            - code [ref=e602]: http://
+                            - text: . For example,
+                            - code [ref=e603]: docker.io/myorganization/vddk:v8.0.3
+                            - text: .
+                          - cell [ref=e604]
+                        - row "VDDK image pull secret file path (optional, hit enter to skip) If your VDDK image is hosted on a private registry, provide the local filesystem path to your image pull secret file. For example, ~/path/to/image-pull-secret.yaml." [ref=e605]:
+                          - cell "VDDK image pull secret file path (optional, hit enter to skip)" [ref=e606]:
+                            - strong [ref=e607]: VDDK image pull secret file path (optional, hit enter to skip)
+                          - cell "If your VDDK image is hosted on a private registry, provide the local filesystem path to your image pull secret file. For example, ~/path/to/image-pull-secret.yaml." [ref=e608]:
+                            - text: If your VDDK image is hosted on a private registry, provide the local filesystem path to your image pull secret file. For example,
+                            - code [ref=e609]: ~/path/to/image-pull-secret.yaml
+                            - text: .
+                          - cell [ref=e610]
+                        - row "Datacenter The vSphere data center of the VM to migrate." [ref=e611]:
+                          - cell "Datacenter" [ref=e612]:
+                            - strong [ref=e613]: Datacenter
+                          - cell "The vSphere data center of the VM to migrate." [ref=e614]
+                          - cell [ref=e615]
+                        - row "Cluster The vSphere compute cluster of the VM to migrate." [ref=e616]:
+                          - cell "Cluster" [ref=e617]:
+                            - strong [ref=e618]: Cluster
+                          - cell "The vSphere compute cluster of the VM to migrate." [ref=e619]
+                          - cell [ref=e620]
+                        - row "ESXi Hypervisor The IP address of the node corresponding to the VM to migrate. If you have selected the vCenter + ESXi host migration source type, you will need to provide ESXi credentials." [ref=e621]:
+                          - cell "ESXi Hypervisor" [ref=e622]:
+                            - strong [ref=e623]: ESXi Hypervisor
+                          - cell "The IP address of the node corresponding to the VM to migrate. If you have selected the vCenter + ESXi host migration source type, you will need to provide ESXi credentials." [ref=e624]:
+                            - text: The IP address of the node corresponding to the VM to migrate. If you have selected the
+                            - code [ref=e625]: vCenter + ESXi host
+                            - text: migration source type, you will need to provide ESXi credentials.
+                          - cell [ref=e626]
+                        - row "VM The VM to migrate from the selected host." [ref=e627]:
+                          - cell "VM" [ref=e628]:
+                            - strong [ref=e629]: VM
+                          - cell "The VM to migrate from the selected host." [ref=e630]
+                          - cell [ref=e631]
+                        - row "Add Another VM? Indicate whether you want to select multiple VM from the vSphere environment. Y / n" [ref=e632]:
+                          - cell "Add Another VM?" [ref=e633]:
+                            - strong [ref=e634]: Add Another VM?
+                          - cell "Indicate whether you want to select multiple VM from the vSphere environment." [ref=e635]
+                          - cell "Y / n" [ref=e636]:
+                            - code [ref=e637]: "Y"
+                            - text: /
+                            - code [ref=e638]: "n"
+                        - row "Add Another Host? Indicate whether you would like to perform two migrations in the same configuration." [ref=e639]:
+                          - cell "Add Another Host?" [ref=e640]:
+                            - strong [ref=e641]: Add Another Host?
+                          - cell "Indicate whether you would like to perform two migrations in the same configuration." [ref=e642]
+                          - cell [ref=e643]
+                        - row "Destination Network Type The network that the VMs will be mapped to in the VMO cluster. pod / multus" [ref=e644]:
+                          - cell "Destination Network Type" [ref=e645]:
+                            - strong [ref=e646]: Destination Network Type
+                          - cell "The network that the VMs will be mapped to in the VMO cluster." [ref=e647]
+                          - cell "pod / multus" [ref=e648]:
+                            - code [ref=e649]: pod
+                            - text: /
+                            - code [ref=e650]: multus
+                        - row "Destination StorageClass The storage class on the destination that will be used to create the VM volumes." [ref=e651]:
+                          - cell "Destination StorageClass" [ref=e652]:
+                            - strong [ref=e653]: Destination StorageClass
+                          - cell "The storage class on the destination that will be used to create the VM volumes." [ref=e654]
+                          - cell [ref=e655]
+                        - row "Destination StorageClass Access Mode The configured access mode on the cluster storage class. ReadWriteOnce / ReadWriteMany" [ref=e656]:
+                          - cell "Destination StorageClass Access Mode" [ref=e657]:
+                            - strong [ref=e658]: Destination StorageClass Access Mode
+                          - cell "The configured access mode on the cluster storage class." [ref=e659]
+                          - cell "ReadWriteOnce / ReadWriteMany" [ref=e660]:
+                            - code [ref=e661]: ReadWriteOnce
+                            - text: /
+                            - code [ref=e662]: ReadWriteMany
+                  - listitem [ref=e663]:
+                    - paragraph [ref=e664]:
+                      - text: The migration begins as soon as you complete the configuration. Execute the following command to watch the migration status. Replace the
+                      - code [ref=e665]: <migration-name>
+                      - text: placeholder with the migration name you have configured.
+                    - generic [ref=e667]:
+                      - code [ref=e669]:
+                        - generic [ref=e670]: watch --interval 2 'kubectl --namespace konveyor-forklift get migrations.forklift.konveyor.io <migration-name>-migration'
+                      - generic [ref=e671]:
+                        - button "Toggle word wrap" [ref=e672] [cursor=pointer]:
+                          - img [ref=e673]
+                        - button "Copy code to clipboard" [ref=e675] [cursor=pointer]:
+                          - generic [ref=e676]:
+                            - img [ref=e677]
+                            - img [ref=e679]
+                    - paragraph [ref=e681]:
+                      - text: The migration with take approximately 20 minutes, depending on the size of the VM to migrate. Once the migration is complete, the
+                      - code [ref=e682]: watch
+                      - text: command will output the following.
+                    - generic [ref=e684]:
+                      - code [ref=e686]:
+                        - generic [ref=e687]: "Every 2.0s: kubectl --namespace konveyor-forklift get migrations.forklift.konveyor.io vmo-migration"
+                        - generic [ref=e688]: NAME READY RUNNING SUCCEEDED FAILED AGE
+                        - generic [ref=e689]: vmo-migration True True 18m
+                      - generic [ref=e690]:
+                        - button "Toggle word wrap" [ref=e691] [cursor=pointer]:
+                          - img [ref=e692]
+                        - button "Copy code to clipboard" [ref=e694] [cursor=pointer]:
+                          - generic [ref=e695]:
+                            - img [ref=e696]
+                            - img [ref=e698]
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e700]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e701] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e702]:
+                  - listitem [ref=e703]:
+                    - paragraph [ref=e704]:
+                      - text: Log in to
+                      - link "Palette" [ref=e705] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e706]:
+                    - paragraph [ref=e707]:
+                      - text: From the left
+                      - strong [ref=e708]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e709]: Clusters
+                      - text: . Then, choose the VMO cluster that you migrated your VM to. The
+                      - strong [ref=e710]: Overview
+                      - text: tab appears.
+                  - listitem [ref=e711]:
+                    - paragraph [ref=e712]:
+                      - text: Select the
+                      - strong [ref=e713]: Virtual Machines
+                      - text: tab. Then, select your migration namespace from the
+                      - strong [ref=e714]: Namespace
+                      - text: drop-down Menu. Your migrated VM appears.
+                  - listitem [ref=e715]:
+                    - paragraph [ref=e716]:
+                      - text: Click on the
+                      - strong [ref=e717]: three-dot Menu
+                      - text: and select
+                      - strong [ref=e718]: Start
+                      - text: . Your VM is now ready to use.
+                    - paragraph [ref=e719]:
+                      - img "Start migrated VM" [ref=e720]
+              - generic [ref=e721]:
+                - generic [ref=e723]:
+                  - text: "Tags:"
+                  - list [ref=e724]:
+                    - listitem [ref=e725]:
+                      - link "vmo" [ref=e726] [cursor=pointer]:
+                        - /url: /tags/vmo/
+                    - listitem [ref=e727]:
+                      - link "palette cli" [ref=e728] [cursor=pointer]:
+                        - /url: /tags/palette-cli/
+                - link "Edit this page" [ref=e731] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vm-management/create-manage-vm/advanced-topics/migrate-vm-kubevirt.md
+                  - img [ref=e732]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e736]:
+              - link "Previous « Create Disk Templates" [ref=e737] [cursor=pointer]:
+                - /url: /vm-management/create-manage-vm/advanced-topics/create-disk-templates/
+                - generic [ref=e738]: Previous
+                - generic [ref=e739]: « Create Disk Templates
+              - link "Next Over-Commit Resources to Enhance VM Performance »" [ref=e740] [cursor=pointer]:
+                - /url: /vm-management/create-manage-vm/advanced-topics/vm-oversubscription/
+                - generic [ref=e741]: Next
+                - generic [ref=e742]: Over-Commit Resources to Enhance VM Performance »
+          - list [ref=e745]:
+            - listitem [ref=e746]:
+              - link "Limitations" [ref=e747] [cursor=pointer]:
+                - /url: "#limitations"
+            - listitem [ref=e748]:
+              - link "Prerequisites" [ref=e749] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e750]:
+              - link "Migrate VMware vSphere VMs" [ref=e751] [cursor=pointer]:
+                - /url: "#migrate-vmware-vsphere-vms"
+            - listitem [ref=e752]:
+              - link "Validate" [ref=e753] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e754] [cursor=pointer]:
+    - generic [ref=e757]:
+      - img "Project Logo" [ref=e758]
+      - paragraph [ref=e759]: Ask AI
+```

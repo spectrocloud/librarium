@@ -1,0 +1,575 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [expanded] [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+                - list [ref=e156]:
+                  - listitem [ref=e157]:
+                    - link "Add a Custom Registry" [ref=e158] [cursor=pointer]:
+                      - /url: /registries-and-packs/adding-a-custom-registry/
+                  - listitem [ref=e159]:
+                    - link "Spectro Cloud CLI Tool" [ref=e160] [cursor=pointer]:
+                      - /url: /registries-and-packs/spectro-cli-reference/
+                  - listitem [ref=e161]:
+                    - link "Add a Custom Pack" [ref=e162] [cursor=pointer]:
+                      - /url: /registries-and-packs/add-custom-packs/
+                  - listitem [ref=e163]:
+                    - link "Add an Add-on Pack" [ref=e164] [cursor=pointer]:
+                      - /url: /registries-and-packs/adding-add-on-packs/
+                  - listitem [ref=e165]:
+                    - link "Pack Constraints" [ref=e166] [cursor=pointer]:
+                      - /url: /registries-and-packs/pack-constraints/
+                  - listitem [ref=e167]:
+                    - generic [ref=e168]:
+                      - link "Registries" [ref=e169] [cursor=pointer]:
+                        - /url: /registries-and-packs/registries/
+                      - button "Toggle the collapsible sidebar category 'Registries'" [ref=e170] [cursor=pointer]
+                  - listitem [ref=e171]:
+                    - link "Advanced CLI Configuration" [ref=e172] [cursor=pointer]:
+                      - /url: /registries-and-packs/advanced-configuration/
+              - listitem [ref=e173]:
+                - generic [ref=e174]:
+                  - link "Security" [ref=e175] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e177]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e179] [cursor=pointer]
+              - listitem [ref=e180]:
+                - generic [ref=e181]:
+                  - link "Audit Logs" [ref=e182] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e184]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e186] [cursor=pointer]
+              - listitem [ref=e187]:
+                - generic [ref=e188]:
+                  - link "Self-Hosted Palette" [ref=e189] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e191]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e193] [cursor=pointer]
+              - listitem [ref=e194]:
+                - generic [ref=e195]:
+                  - link "Palette VerteX" [ref=e196] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e198]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e200] [cursor=pointer]
+              - listitem [ref=e201]:
+                - generic [ref=e202]:
+                  - link "Tenant Administration" [ref=e203] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e205]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e207] [cursor=pointer]
+              - listitem [ref=e208]:
+                - generic [ref=e209]:
+                  - link "Automation" [ref=e210] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e212]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - generic [ref=e216]:
+                  - link "Troubleshooting" [ref=e217] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e219]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e221] [cursor=pointer]
+              - listitem [ref=e222]:
+                - link "Glossary" [ref=e223] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e225]
+                  - text: Glossary
+              - listitem [ref=e227]:
+                - generic [ref=e228]:
+                  - link "Compliance & Legal" [ref=e229] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e231]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e233] [cursor=pointer]
+              - listitem [ref=e234]:
+                - button "Privacy Settings" [ref=e235] [cursor=pointer]:
+                  - img [ref=e236]
+                  - text: Privacy Settings
+      - main [ref=e238]:
+        - generic [ref=e240]:
+          - generic [ref=e242]:
+            - article [ref=e243]:
+              - navigation "Breadcrumbs" [ref=e244]:
+                - list [ref=e245]:
+                  - listitem [ref=e246]:
+                    - link "Home page" [ref=e247] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e248]
+                  - listitem [ref=e250]:
+                    - link "Registries and Packs" [ref=e251] [cursor=pointer]:
+                      - /url: /registries-and-packs/
+                  - listitem [ref=e252]:
+                    - generic [ref=e253]: Advanced CLI Configuration
+              - generic [ref=e254]:
+                - heading "Advanced CLI Configuration" [level=1] [ref=e256]
+                - paragraph [ref=e257]: You can modify the deployment of the pack registry by providing a YAML configuration file. You can also override default configuration options through the usage of environment variables.
+                - paragraph [ref=e258]: The configuration file is divided into keys and values. The following is an example of a YAML configuration.
+                - generic [ref=e260]:
+                  - code [ref=e262]:
+                    - generic [ref=e263]: "version: 0.1"
+                    - generic [ref=e264]: "log:"
+                    - generic [ref=e265]: "level: info"
+                    - generic [ref=e266]: "fields:"
+                    - generic [ref=e267]: "environment: test"
+                  - button "Copy code to clipboard" [ref=e269] [cursor=pointer]:
+                    - generic [ref=e270]:
+                      - img [ref=e271]
+                      - img [ref=e273]
+                - paragraph [ref=e275]:
+                  - text: The key
+                  - code [ref=e276]: version
+                  - text: has a number value. The
+                  - code [ref=e277]: log
+                  - text: key has a value with multiple keys, which in turn have more keys.
+                - paragraph [ref=e278]:
+                  - text: To override the value of
+                  - code [ref=e279]: log.level
+                  - text: you can specify an environment variable named
+                  - code [ref=e280]: REGISTRY_LOG_LEVEL
+                  - text: .
+                - generic [ref=e282]:
+                  - code [ref=e284]:
+                    - generic [ref=e285]: export REGISTRY_LOG_LEVEL=debug
+                  - button "Copy code to clipboard" [ref=e287] [cursor=pointer]:
+                    - generic [ref=e288]:
+                      - img [ref=e289]
+                      - img [ref=e291]
+                - heading "Default ConfigurationDirect link to Default Configuration" [level=2] [ref=e293]:
+                  - text: Default Configuration
+                  - link "Direct link to Default Configuration" [ref=e294] [cursor=pointer]:
+                    - /url: "#default-configuration"
+                    - text: "#"
+                - paragraph [ref=e295]: The docker image for the registry contains the following default configuration values.
+                - generic [ref=e297]:
+                  - code [ref=e299]:
+                    - generic [ref=e300]: "version: 0.1"
+                    - generic [ref=e301]: "log:"
+                    - generic [ref=e302]: "fields:"
+                    - generic [ref=e303]: "service: registry"
+                    - generic [ref=e304]: "storage:"
+                    - generic [ref=e305]: "cache:"
+                    - generic [ref=e306]: "blobdescriptor: inmemory"
+                    - generic [ref=e307]: "filesystem:"
+                    - generic [ref=e308]: "rootdirectory: /data/.spectro-server"
+                    - generic [ref=e309]: "http:"
+                    - generic [ref=e310]: "addr: :5000"
+                    - generic [ref=e311]: "headers:"
+                    - generic [ref=e312]: "X-Content-Type-Options: [nosniff]"
+                    - generic [ref=e313]: "Strict-Transport-Security: [max-age=63072000; includeSubdomains; preload]"
+                    - generic [ref=e314]: "Content-Security-Policy: [img-src 'self'; script-src 'self'; style-src 'self]"
+                    - generic [ref=e315]: "X-Frame-Options: [DENY]"
+                    - generic [ref=e316]: "X-XSS-Protection: [1; mode=block]"
+                    - generic [ref=e317]: "Referrer-Policy: [same-origin]"
+                    - generic [ref=e318]: "auth:"
+                    - generic [ref=e319]: "htpasswd:"
+                    - generic [ref=e320]: "realm: basic-realm"
+                    - generic [ref=e321]: "path: /auth/htpasswd-basic"
+                  - generic [ref=e322]:
+                    - button "Toggle word wrap" [ref=e323] [cursor=pointer]:
+                      - img [ref=e324]
+                    - button "Copy code to clipboard" [ref=e326] [cursor=pointer]:
+                      - generic [ref=e327]:
+                        - img [ref=e328]
+                        - img [ref=e330]
+                - paragraph [ref=e332]:
+                  - text: The server is started with the command
+                  - code [ref=e333]: registy serve /etc/spectro/config.yml
+                  - text: . You can override the default values with specific values through environment variables, or you can use your own configuration file.
+                - paragraph [ref=e334]:
+                  - text: For example, you can start the docker container image with the following environment by using the variables to override the basic auth realm and logging level. In the following example, the
+                  - code [ref=e335]: "-e"
+                  - text: flag is used to provide environment variables to the container.
+                - generic [ref=e337]:
+                  - code [ref=e339]:
+                    - generic [ref=e340]: docker run -d \
+                    - generic [ref=e341]: "--rm \\"
+                    - generic [ref=e342]: "-p 443:5000 \\"
+                    - generic [ref=e343]: "--name spectro-registry\\"
+                    - generic [ref=e344]: "--volume $(pwd)/spectropaxconfig/:/etc/spectropaxconfig/"
+                    - generic [ref=e345]: "-e REGISTRY_LOG_LEVEL=debug \\"
+                    - generic [ref=e346]: "-e REGISTRY_AUTH=htpasswd \\"
+                    - generic [ref=e347]: "-e REGISTRY_AUTH_HTPASSWD_REALM=\"My Enterprise Realm\" \\"
+                    - generic [ref=e348]: us-docker.pkg.dev/palette-images/palette/spectro-registry:4.7.0
+                  - generic [ref=e349]:
+                    - button "Toggle word wrap" [ref=e350] [cursor=pointer]:
+                      - img [ref=e351]
+                    - button "Copy code to clipboard" [ref=e353] [cursor=pointer]:
+                      - generic [ref=e354]:
+                        - img [ref=e355]
+                        - img [ref=e357]
+                - paragraph [ref=e359]: Alternatively, you can start the container by mounting a directory with a new configuration file and pointing the server command to the configuration file.
+                - generic [ref=e361]:
+                  - code [ref=e363]:
+                    - generic [ref=e364]: docker run -d \
+                    - generic [ref=e365]: "--rm \\"
+                    - generic [ref=e366]: "-p 443:5000 \\"
+                    - generic [ref=e367]: "--name spectro-registry \\"
+                    - generic [ref=e368]: "--volume $(pwd)/myconfig.yml:/etc/myconfig.yml \\"
+                    - generic [ref=e369]: us-docker.pkg.dev/palette-images/palette/spectro-registry:4.7.0 \
+                    - generic [ref=e370]: serve /etc/spectropaxconfig/myconfig.yml
+                  - generic [ref=e371]:
+                    - button "Toggle word wrap" [ref=e372] [cursor=pointer]:
+                      - img [ref=e373]
+                    - button "Copy code to clipboard" [ref=e375] [cursor=pointer]:
+                      - generic [ref=e376]:
+                        - img [ref=e377]
+                        - img [ref=e379]
+                - heading "Storage BackendDirect link to Storage Backend" [level=2] [ref=e381]:
+                  - text: Storage Backend
+                  - link "Direct link to Storage Backend" [ref=e382] [cursor=pointer]:
+                    - /url: "#storage-backend"
+                    - text: "#"
+                - paragraph [ref=e383]: The pack registry can store data on a file system through a mounted volume, or you can specify object storage such as AWS S3.
+                - paragraph [ref=e384]: The following is an example of a configuration using a file system backend.
+                - generic [ref=e386]:
+                  - code [ref=e388]:
+                    - generic [ref=e389]: "storage:"
+                    - generic [ref=e390]: "cache:"
+                    - generic [ref=e391]: "blobdescriptor: inmemory"
+                    - generic [ref=e392]: "filesystem:"
+                    - generic [ref=e393]: "rootdirectory: /tmp/registry/data/.spectro-server"
+                  - button "Copy code to clipboard" [ref=e395] [cursor=pointer]:
+                    - generic [ref=e396]:
+                      - img [ref=e397]
+                      - img [ref=e399]
+                - paragraph [ref=e401]: If you are using S3 Storage, ensure you specify the required S3 parameters.
+                - generic [ref=e403]:
+                  - code [ref=e405]:
+                    - generic [ref=e406]: "storage:"
+                    - generic [ref=e407]: "cache:"
+                    - generic [ref=e408]: "blobdescriptor: inmemory"
+                    - generic [ref=e409]: "s3:"
+                    - generic [ref=e410]: "region: us-east-1"
+                    - generic [ref=e411]: "bucket: my-bucket"
+                    - generic [ref=e412]: "rootdirectory: /registry"
+                    - generic [ref=e413]: "encrypt: true|false"
+                    - generic [ref=e414]: "secure: false|true"
+                    - generic [ref=e415]: "accesskey: SAMPLEACCESSKEY"
+                    - generic [ref=e416]: "secretkey: SUPERSECRET"
+                    - generic [ref=e417]: "host: OPTIONAL_MINIO_HOST_IF_USING"
+                    - generic [ref=e418]: "port: OPTIONAL_MINIO_PORT_IF_USING"
+                  - button "Copy code to clipboard" [ref=e420] [cursor=pointer]:
+                    - generic [ref=e421]:
+                      - img [ref=e422]
+                      - img [ref=e424]
+                - paragraph [ref=e426]: You can also use ephemeral storage. We recommend using ephemeral storage for testing purposes. Production environments should use object storage or a file system.
+                - generic [ref=e428]:
+                  - code [ref=e430]:
+                    - generic [ref=e431]: "storage: inmemory"
+                  - button "Copy code to clipboard" [ref=e433] [cursor=pointer]:
+                    - generic [ref=e434]:
+                      - img [ref=e435]
+                      - img [ref=e437]
+                - heading "AuthenticationDirect link to Authentication" [level=2] [ref=e439]:
+                  - text: Authentication
+                  - link "Direct link to Authentication" [ref=e440] [cursor=pointer]:
+                    - /url: "#authentication"
+                    - text: "#"
+                - paragraph [ref=e441]:
+                  - text: You can configure basic HTTP Auth. Basic Auth requires providing the pack registry server with an
+                  - code [ref=e442]: httppasswd
+                  - text: file containing the credentials.
+                - generic [ref=e444]:
+                  - code [ref=e446]:
+                    - generic [ref=e447]: "auth:"
+                    - generic [ref=e448]: "htpasswd:"
+                    - generic [ref=e449]: "realm: basic-realm"
+                    - generic [ref=e450]: "path: /auth/htpasswd-basic"
+                  - button "Copy code to clipboard" [ref=e452] [cursor=pointer]:
+                    - generic [ref=e453]:
+                      - img [ref=e454]
+                      - img [ref=e456]
+                - heading "HTTPDirect link to HTTP" [level=2] [ref=e458]:
+                  - text: HTTP
+                  - link "Direct link to HTTP" [ref=e459] [cursor=pointer]:
+                    - /url: "#http"
+                    - text: "#"
+                - paragraph [ref=e460]: "The following options are available for modifying HTTP transport:"
+                - heading "Server and PortDirect link to Server and Port" [level=3] [ref=e461]:
+                  - text: Server and Port
+                  - link "Direct link to Server and Port" [ref=e462] [cursor=pointer]:
+                    - /url: "#server-and-port"
+                    - text: "#"
+                - paragraph [ref=e463]: "For serving content on all interfaces on port 5000:"
+                - generic [ref=e465]:
+                  - code [ref=e467]:
+                    - generic [ref=e468]: "http:"
+                    - generic [ref=e469]: "addr: :5000"
+                  - button "Copy code to clipboard" [ref=e471] [cursor=pointer]:
+                    - generic [ref=e472]:
+                      - img [ref=e473]
+                      - img [ref=e475]
+                - paragraph [ref=e477]: "Alternatively, the server can bind to a single IP and different port:"
+                - generic [ref=e479]:
+                  - code [ref=e481]:
+                    - generic [ref=e482]: "http:"
+                    - generic [ref=e483]: "addr: 192.168.122.77:25000"
+                  - button "Copy code to clipboard" [ref=e485] [cursor=pointer]:
+                    - generic [ref=e486]:
+                      - img [ref=e487]
+                      - img [ref=e489]
+                - heading "HTTP HeadersDirect link to HTTP Headers" [level=3] [ref=e491]:
+                  - text: HTTP Headers
+                  - link "Direct link to HTTP Headers" [ref=e492] [cursor=pointer]:
+                    - /url: "#http-headers"
+                    - text: "#"
+                - paragraph [ref=e493]: "The following headers are the default, and can be overridden:"
+                - generic [ref=e495]:
+                  - code [ref=e497]:
+                    - generic [ref=e498]: "http:"
+                    - generic [ref=e499]: "headers:"
+                    - generic [ref=e500]: "X-Content-Type-Options: [nosniff]"
+                    - generic [ref=e501]: "Strict-Transport-Security: [max-age=63072000; includeSubdomains; preload]"
+                    - generic [ref=e502]: "Content-Security-Policy: [img-src 'self'; script-src 'self'; style-src 'self]"
+                    - generic [ref=e503]: "X-Frame-Options: [DENY]"
+                    - generic [ref=e504]: "X-XSS-Protection: [1; mode=block]"
+                    - generic [ref=e505]: "Referrer-Policy: [same-origin]"
+                  - generic [ref=e506]:
+                    - button "Toggle word wrap" [ref=e507] [cursor=pointer]:
+                      - img [ref=e508]
+                    - button "Copy code to clipboard" [ref=e510] [cursor=pointer]:
+                      - generic [ref=e511]:
+                        - img [ref=e512]
+                        - img [ref=e514]
+                - heading "TLSDirect link to TLS" [level=3] [ref=e516]:
+                  - text: TLS
+                  - link "Direct link to TLS" [ref=e517] [cursor=pointer]:
+                    - /url: "#tls"
+                    - text: "#"
+                - paragraph [ref=e518]:
+                  - text: TLS can be configured using
+                  - link "Let's Encrypt" [ref=e519] [cursor=pointer]:
+                    - /url: https://letsencrypt.org
+                  - text: "or custom TLS certificates:"
+                - paragraph [ref=e520]:
+                  - text: When using Let's Encrypt, your registry server must be assigned to a public IP address accessible for HTTP-based validation by the Let's Encrypt services. Check out the
+                  - link "Deploy Pack Registry Server with Let's Encrypt" [ref=e521] [cursor=pointer]:
+                    - /url: /registries-and-packs/adding-a-custom-registry/#deploy-pack-registry-server-with-lets-encrypt
+                  - text: guide to learn more.
+                - generic [ref=e523]:
+                  - code [ref=e525]:
+                    - generic [ref=e526]: "http:"
+                    - generic [ref=e527]: "addr: :5000"
+                    - generic [ref=e528]: "tls:"
+                    - generic [ref=e529]: "letsencrypt:"
+                    - generic [ref=e530]: "cachefile: le-cache"
+                    - generic [ref=e531]: "email: you@companydomain.com"
+                    - generic [ref=e532]: "hosts:"
+                    - generic [ref=e533]: "- yourhost.companydomain.com"
+                  - button "Copy code to clipboard" [ref=e535] [cursor=pointer]:
+                    - generic [ref=e536]:
+                      - img [ref=e537]
+                      - img [ref=e539]
+                - paragraph [ref=e541]:
+                  - text: Let's Encrypt limits the number of free certificates issued for each domain for a set time. We recommend you mount a volume where the certificates are permanently stored. Use the option
+                  - code [ref=e542]: cachefile
+                  - text: to enable this behavior.
+                - paragraph [ref=e543]: You can specify custom certificates by providing the file path to the certificate files.
+                - generic [ref=e545]:
+                  - code [ref=e547]:
+                    - generic [ref=e548]: "http:"
+                    - generic [ref=e549]: "tls:"
+                    - generic [ref=e550]: "certificate: /path/to/x509/certificate/file"
+                    - generic [ref=e551]: "key: /pat/to/x509/key/file/which contains/private key/for x509 certificate above"
+                    - generic [ref=e552]: "clientcas: /path/to/file/with one or more/CA certificates encoded as PEM"
+                    - generic [ref=e553]: "minimumtls: minimum tls version to use"
+                  - generic [ref=e554]:
+                    - button "Toggle word wrap" [ref=e555] [cursor=pointer]:
+                      - img [ref=e556]
+                    - button "Copy code to clipboard" [ref=e558] [cursor=pointer]:
+                      - generic [ref=e559]:
+                        - img [ref=e560]
+                        - img [ref=e562]
+              - link "Edit this page" [ref=e567] [cursor=pointer]:
+                - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/registries-and-packs/advanced-configuration.md
+                - img [ref=e568]
+                - text: Edit this page
+            - navigation "Docs pages" [ref=e572]:
+              - link "Previous « Legacy Pack Registries" [ref=e573] [cursor=pointer]:
+                - /url: /registries-and-packs/registries/pack-registries/
+                - generic [ref=e574]: Previous
+                - generic [ref=e575]: « Legacy Pack Registries
+              - link "Next Security »" [ref=e576] [cursor=pointer]:
+                - /url: /security/
+                - generic [ref=e577]: Next
+                - generic [ref=e578]: Security »
+          - list [ref=e581]:
+            - listitem [ref=e582]:
+              - link "Default Configuration" [ref=e583] [cursor=pointer]:
+                - /url: "#default-configuration"
+            - listitem [ref=e584]:
+              - link "Storage Backend" [ref=e585] [cursor=pointer]:
+                - /url: "#storage-backend"
+            - listitem [ref=e586]:
+              - link "Authentication" [ref=e587] [cursor=pointer]:
+                - /url: "#authentication"
+            - listitem [ref=e588]:
+              - link "HTTP" [ref=e589] [cursor=pointer]:
+                - /url: "#http"
+              - list [ref=e590]:
+                - listitem [ref=e591]:
+                  - link "Server and Port" [ref=e592] [cursor=pointer]:
+                    - /url: "#server-and-port"
+                - listitem [ref=e593]:
+                  - link "HTTP Headers" [ref=e594] [cursor=pointer]:
+                    - /url: "#http-headers"
+                - listitem [ref=e595]:
+                  - link "TLS" [ref=e596] [cursor=pointer]:
+                    - /url: "#tls"
+  - button "Project Logo Ask AI" [ref=e597] [cursor=pointer]:
+    - generic [ref=e600]:
+      - img "Project Logo" [ref=e601]
+      - paragraph [ref=e602]: Ask AI
+```

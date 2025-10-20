@@ -1,0 +1,3511 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [expanded] [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+                - list [ref=e47]:
+                  - listitem [ref=e48]:
+                    - link "Announcements" [ref=e49] [cursor=pointer]:
+                      - /url: /release-notes/announcements/
+                  - listitem [ref=e50]:
+                    - link "Known Issues" [ref=e51] [cursor=pointer]:
+                      - /url: /release-notes/known-issues/
+              - listitem [ref=e52]:
+                - generic [ref=e53]:
+                  - link "Security Bulletins" [ref=e54] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e56]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e58] [cursor=pointer]
+              - listitem [ref=e59]:
+                - generic [ref=e60]:
+                  - link "What is Palette?" [ref=e61] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e63]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e65] [cursor=pointer]
+              - listitem [ref=e66]:
+                - link "Getting Started" [ref=e67] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e69]
+                  - text: Getting Started
+              - listitem [ref=e71]:
+                - generic [ref=e72]:
+                  - link "Architecture" [ref=e73] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e75]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e77] [cursor=pointer]
+              - listitem [ref=e78]:
+                - generic [ref=e79]:
+                  - link "Profiles" [ref=e80] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e82]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e86] [cursor=pointer]
+              - listitem [ref=e87]:
+                - generic [ref=e88]:
+                  - link "Cluster Templates" [ref=e89] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e91]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e93] [cursor=pointer]
+              - listitem [ref=e94]:
+                - generic [ref=e95]:
+                  - link "Deployment Modes" [ref=e96] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e98]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e100] [cursor=pointer]
+              - listitem [ref=e101]:
+                - generic [ref=e102]:
+                  - link "Clusters" [ref=e103] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e105]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e111] [cursor=pointer]
+              - listitem [ref=e112]:
+                - generic [ref=e113]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e114] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e116]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e118] [cursor=pointer]
+              - listitem [ref=e119]:
+                - generic [ref=e120]:
+                  - link "Palette Dev Engine" [ref=e121] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e123]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e125] [cursor=pointer]
+              - listitem [ref=e126]:
+                - generic [ref=e127]:
+                  - link "Virtual Machine Orchestrator" [ref=e128] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e130]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e132] [cursor=pointer]
+              - listitem [ref=e133]:
+                - generic [ref=e134]:
+                  - link "Workspaces" [ref=e135] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e137]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e139] [cursor=pointer]
+              - listitem [ref=e140]:
+                - generic [ref=e141]:
+                  - link "Packs List" [ref=e142] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e144]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e146] [cursor=pointer]
+              - listitem [ref=e147]:
+                - generic [ref=e148]:
+                  - link "User & Role Management" [ref=e149] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e151]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e153] [cursor=pointer]
+              - listitem [ref=e154]:
+                - generic [ref=e155]:
+                  - link "Registries and Packs" [ref=e156] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e158]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e160] [cursor=pointer]
+              - listitem [ref=e161]:
+                - generic [ref=e162]:
+                  - link "Security" [ref=e163] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e165]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e167] [cursor=pointer]
+              - listitem [ref=e168]:
+                - generic [ref=e169]:
+                  - link "Audit Logs" [ref=e170] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e172]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e174] [cursor=pointer]
+              - listitem [ref=e175]:
+                - generic [ref=e176]:
+                  - link "Self-Hosted Palette" [ref=e177] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e179]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e181] [cursor=pointer]
+              - listitem [ref=e182]:
+                - generic [ref=e183]:
+                  - link "Palette VerteX" [ref=e184] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e186]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e188] [cursor=pointer]
+              - listitem [ref=e189]:
+                - generic [ref=e190]:
+                  - link "Tenant Administration" [ref=e191] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e193]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e195] [cursor=pointer]
+              - listitem [ref=e196]:
+                - generic [ref=e197]:
+                  - link "Automation" [ref=e198] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e200]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e202] [cursor=pointer]
+              - listitem [ref=e203]:
+                - generic [ref=e204]:
+                  - link "Troubleshooting" [ref=e205] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e207]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e209] [cursor=pointer]
+              - listitem [ref=e210]:
+                - link "Glossary" [ref=e211] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e213]
+                  - text: Glossary
+              - listitem [ref=e215]:
+                - generic [ref=e216]:
+                  - link "Compliance & Legal" [ref=e217] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e219]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e221] [cursor=pointer]
+              - listitem [ref=e222]:
+                - button "Privacy Settings" [ref=e223] [cursor=pointer]:
+                  - img [ref=e224]
+                  - text: Privacy Settings
+      - main [ref=e226]:
+        - generic [ref=e228]:
+          - generic [ref=e230]:
+            - article [ref=e231]:
+              - navigation "Breadcrumbs" [ref=e232]:
+                - list [ref=e233]:
+                  - listitem [ref=e234]:
+                    - link "Home page" [ref=e235] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e236]
+                  - listitem [ref=e238]:
+                    - generic [ref=e239]: Release Notes
+              - generic [ref=e240]:
+                - heading "Release Notes" [level=1] [ref=e242]
+                - generic [ref=e243]:
+                  - generic [ref=e244]:
+                    - img [ref=e246]
+                    - text: tip
+                  - generic [ref=e248]:
+                    - paragraph [ref=e249]: Are you looking for the release notes for a specific version of Palette? Use the version selector below to navigate to the release notes of the desired version.
+                    - generic [ref=e250]:
+                      - generic [ref=e251]: Select release notes version
+                      - generic [ref=e252]:
+                        - log [ref=e254]
+                        - generic [ref=e255]:
+                          - generic [ref=e256]:
+                            - generic [ref=e257]: Select...
+                            - combobox "Select release notes version" [ref=e259]
+                          - img [ref=e263]
+                - heading "October 19, 2025 - Release 4.7.27Direct link to October 19, 2025 - Release 4.7.27" [level=2] [ref=e265]:
+                  - text: October 19, 2025 - Release 4.7.27
+                  - link "Direct link to October 19, 2025 - Release 4.7.27" [ref=e266] [cursor=pointer]:
+                    - /url: "#release-notes-4.7.c"
+                    - text: "#"
+                - heading "Security NoticesDirect link to Security Notices" [level=3] [ref=e267]:
+                  - text: Security Notices
+                  - link "Direct link to Security Notices" [ref=e268] [cursor=pointer]:
+                    - /url: "#security-notices"
+                    - text: "#"
+                - list [ref=e269]:
+                  - listitem [ref=e270]:
+                    - text: Review the
+                    - link "Security Bulletins" [ref=e271] [cursor=pointer]:
+                      - /url: /security-bulletins/reports/
+                    - text: page for the latest security advisories.
+                - heading "Palette EnterpriseDirect link to Palette Enterprise" [level=3] [ref=e272]:
+                  - text: Palette Enterprise
+                  - link "Direct link to Palette Enterprise" [ref=e273] [cursor=pointer]:
+                    - /url: "#palette-enterprise-4.7.c"
+                    - text: "#"
+                - heading "Breaking ChangesDirect link to Breaking Changes" [level=4] [ref=e274]:
+                  - text: Breaking Changes
+                  - link "Direct link to Breaking Changes" [ref=e275] [cursor=pointer]:
+                    - /url: "#breaking-changes-4.7.c"
+                    - text: "#"
+                - list [ref=e276]:
+                  - listitem [ref=e277]:
+                    - text: Palette and VerteX
+                    - link "password policies" [ref=e278] [cursor=pointer]:
+                      - /url: /tenant-settings/password-policy/
+                    - text: are now capped to a maximum of 128 characters. This change applies only to new passwords.
+                - heading "FeaturesDirect link to Features" [level=4] [ref=e279]:
+                  - text: Features
+                  - link "Direct link to Features" [ref=e280] [cursor=pointer]:
+                    - /url: "#features"
+                    - text: "#"
+                - list [ref=e281]:
+                  - listitem [ref=e282]:
+                    - link "Cluster profile variables" [ref=e283] [cursor=pointer]:
+                      - /url: /profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/create-cluster-profile-variables/
+                    - text: now support the drop-down input type. This improvement allows users to enforce the configuration of cluster profile variables using predefined values only, reducing input errors and enhancing cluster profile validation.
+                - heading "ImprovementsDirect link to Improvements" [level=4] [ref=e284]:
+                  - text: Improvements
+                  - link "Direct link to Improvements" [ref=e285] [cursor=pointer]:
+                    - /url: "#improvements"
+                    - text: "#"
+                - list [ref=e286]:
+                  - listitem [ref=e287]:
+                    - paragraph [ref=e288]:
+                      - text: When viewing project platform settings in Palette, the
+                      - link "Cluster Auto Remediation" [ref=e289] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/platform-settings/cluster-auto-remediation/
+                      - text: settings are now correctly labeled as an override to the tenant-level settings.
+                  - listitem [ref=e290]:
+                    - paragraph [ref=e291]:
+                      - text: Palette supports encryption at host of your Azure Kubernetes cluster using
+                      - link "End-to-End encryption with platform-managed keys" [ref=e292] [cursor=pointer]:
+                        - /url: https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data
+                      - text: . This ensures that encryption starts on the VM host itself, including temporary disks, operating system (OS), and data disk caches. Refer to the Azure Encryption At Host for Azure IaaS guide for further information.
+                  - listitem [ref=e293]:
+                    - paragraph [ref=e294]:
+                      - text: Velero has been upgraded to version 1.16, which is used internally by Palette for backing up and restoring clusters. Existing clusters with backups configured will be automatically updated to Velero version 1.16, ensuring continuous access to backup and restore functionality. Refer to the
+                      - link "Backup and Restore" [ref=e295] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/backup-restore/
+                      - text: page to learn more about backup and restore tools in Palette.
+                  - listitem [ref=e296]:
+                    - paragraph [ref=e297]:
+                      - text: When creating Azure IaaS clusters, you can disable automatic creation of route table entries for pod-to-pod communication using the
+                      - code [ref=e298]: cloud.cloudControllerManager.configureCloudRoutes
+                      - text: parameter. This improvement is useful when using Calico or Cilium Container Network Interfaces (CNIs), which support pod networking across nodes by default without requiring these route tables and entries. Refer to the
+                      - link "Create and Manage Azure IaaS Cluster" [ref=e299] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/azure/create-azure-cluster/#deploy-an-azure-cluster
+                      - text: guide for more information.
+                - list [ref=e300]:
+                  - listitem [ref=e301]:
+                    - link "Palette Management Appliance" [ref=e302] [cursor=pointer]:
+                      - /url: /enterprise-version/install-palette/palette-management-appliance/
+                    - text: and
+                    - link "VerteX Management Appliance" [ref=e303] [cursor=pointer]:
+                      - /url: /vertex/install-palette-vertex/vertex-management-appliance/
+                    - text: now automatically delete the
+                    - code [ref=e304]: provider_extract
+                    - text: directory after deployment, removing unused files. Additionally, Palette and VerteX management appliance now use
+                    - link "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e305] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=edge-k8s
+                    - text: 1.32.8 and
+                    - link "Piraeus Operator" [ref=e306] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=piraeus-operator
+                    - text: 2.9.0 internally.
+                - heading "Bug FixesDirect link to Bug Fixes" [level=4] [ref=e307]:
+                  - text: Bug Fixes
+                  - link "Direct link to Bug Fixes" [ref=e308] [cursor=pointer]:
+                    - /url: "#bug-fixes"
+                    - text: "#"
+                - list [ref=e309]:
+                  - listitem [ref=e310]:
+                    - paragraph [ref=e311]:
+                      - text: Fixed an issue that prevented the
+                      - link "Virtual Machine Migration Assistant" [ref=e312] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/
+                      - text: from successfully upgrading several resources in the
+                      - code [ref=e313]: konveyor-forklift
+                      - text: namespace.
+                  - listitem [ref=e314]:
+                    - paragraph [ref=e315]:
+                      - text: Fixed an issue that caused a public NAT gateway to be incorrectly provisioned for
+                      - link "Azure IaaS clusters" [ref=e316] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/azure/create-azure-cluster/
+                      - text: configured to use private networks.
+                  - listitem [ref=e317]:
+                    - paragraph [ref=e318]:
+                      - text: Fixed an issue that prevented the
+                      - link "Azure Service Operator (ASO)" [ref=e319] [cursor=pointer]:
+                        - /url: https://azure.github.io/azure-service-operator/
+                      - text: from attaching the worker pool subnet to the NAT Gateway for
+                      - link "Azure IaaS clusters" [ref=e320] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/azure/create-azure-cluster/
+                      - text: using static placement.
+                - heading "Deprecations and RemovalsDirect link to Deprecations and Removals" [level=4] [ref=e321]:
+                  - text: Deprecations and Removals
+                  - link "Direct link to Deprecations and Removals" [ref=e322] [cursor=pointer]:
+                    - /url: "#deprecations-and-removals"
+                    - text: "#"
+                - list [ref=e323]:
+                  - listitem [ref=e324]:
+                    - paragraph [ref=e325]:
+                      - link "OpenStack" [ref=e326] [cursor=pointer]:
+                        - /url: /clusters/data-center/openstack/
+                      - text: support in Palette is now deprecated and will be removed in a future release. After removal, you will no longer be able to create and manage OpenStack clusters, cluster profiles, cloud accounts, or Private Cloud Gateways. We recommend migrating your workloads to another supported
+                      - link "Data Center environment" [ref=e327] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                      - text: .
+                  - listitem [ref=e328]:
+                    - paragraph [ref=e329]:
+                      - link "EKS-optimized Amazon Linux 2 (AL2) AMIs" [ref=e330] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/eks/latest/userguide/eks-ami-deprecation-faqs.html
+                      - text: will be disabled in Palette from January 10, 2026 and removed on April 4, 2026. When disabled, you will no longer be able to select the AL2 AMIs for EKS worker nodes in Palette for new clusters. For existing clusters, you must create new worker nodes using AL2023 AMIs. Existing AL2 AMI worker nodes will no longer receive bug fixes or security patches after the removal date. Refer to our
+                      - link "Scenario - Unable to Upgrade EKS Worker Nodes from AL2 to AL2023" [ref=e331] [cursor=pointer]:
+                        - /url: /troubleshooting/cluster-deployment/#scenario---unable-to-upgrade-eks-worker-nodes-from-al2-to-al2023
+                      - text: guide for help with migrating workloads.
+                - heading "EdgeDirect link to Edge" [level=3] [ref=e332]:
+                  - text: Edge
+                  - link "Direct link to Edge" [ref=e333] [cursor=pointer]:
+                    - /url: "#edge"
+                    - text: "#"
+                - generic [ref=e334]:
+                  - generic [ref=e335]:
+                    - img [ref=e337]
+                    - text: info
+                  - paragraph [ref=e340]:
+                    - text: The
+                    - link "CanvOS" [ref=e341] [cursor=pointer]:
+                      - /url: https://github.com/spectrocloud/CanvOS
+                    - text: version corresponding to the 4.7.27 Palette release is 4.7.16.
+                - heading "FeaturesDirect link to Features" [level=4] [ref=e342]:
+                  - text: Features
+                  - link "Direct link to Features" [ref=e343] [cursor=pointer]:
+                    - /url: "#features-1"
+                    - text: "#"
+                - list [ref=e344]:
+                  - listitem [ref=e345]:
+                    - paragraph [ref=e346]:
+                      - text: Overlay networks are exiting Tech Preview status and are now production-ready. They are now supported for the following cluster types. Refer to our
+                      - link "Enable Overlay Network" [ref=e347] [cursor=pointer]:
+                        - /url: /clusters/edge/networking/vxlan-overlay/#supported-clusters
+                      - text: guide for a comprehensive list of supported cluster combinations.
+                    - list [ref=e348]:
+                      - listitem [ref=e349]:
+                        - link "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e350] [cursor=pointer]:
+                          - /url: /integrations/packs/?pack=edge-k8s
+                        - text: "- FIPS, single and multi-node clusters"
+                      - listitem [ref=e351]:
+                        - link "Palette Optimized Canonical" [ref=e352] [cursor=pointer]:
+                          - /url: /integrations/packs/?pack=edge-canonical
+                        - text: "- Agent Mode and Appliance Mode, centrally managed clusters"
+                - list [ref=e353]:
+                  - listitem [ref=e354]:
+                    - text: Local UI now supports configurable rate limiting and account lockout to protect against repeated failed login attempts. By default, Local UI applies an increasing delay after three consecutive failed login attempts and temporarily blocks access after five failures for 15 minutes. These settings can be customized in the
+                    - code [ref=e355]: user-data
+                    - text: file for Edge hosts built with Palette agent version 4.7.15 or later. For more information, refer to the
+                    - code [ref=e356]: stylus.localUI.login
+                    - text: parameters description in the
+                    - link "Edge Installer Configuration Reference" [ref=e357] [cursor=pointer]:
+                      - /url: /clusters/edge/edge-configuration/installer-reference/#palette-agent-parameters
+                    - text: .
+                - heading "ImprovementsDirect link to Improvements" [level=4] [ref=e358]:
+                  - text: Improvements
+                  - link "Direct link to Improvements" [ref=e359] [cursor=pointer]:
+                    - /url: "#improvements-1"
+                    - text: "#"
+                - list [ref=e360]:
+                  - listitem [ref=e361]:
+                    - link "Overlay network" [ref=e362] [cursor=pointer]:
+                      - /url: /clusters/edge/networking/vxlan-overlay/
+                    - text: has now exited Tech Preview and is ready for production workloads.
+                  - listitem [ref=e363]:
+                    - text: Remote shell access to an Edge host can now be enabled in Palette only if the parameter
+                    - code [ref=e364]: stylus.site.remoteShell.disable
+                    - text: is omitted or set to
+                    - code [ref=e365]: "false"
+                    - text: in the host’s
+                    - code [ref=e366]: user-data
+                    - text: file before the host registers with Palette. This change applies to Edge hosts built with Palette agent version 4.7.15 or later.
+                - heading "VerteXDirect link to VerteX" [level=3] [ref=e367]:
+                  - text: VerteX
+                  - link "Direct link to VerteX" [ref=e368] [cursor=pointer]:
+                    - /url: "#vertex"
+                    - text: "#"
+                - heading "FeaturesDirect link to Features" [level=4] [ref=e369]:
+                  - text: Features
+                  - link "Direct link to Features" [ref=e370] [cursor=pointer]:
+                    - /url: "#features-2"
+                    - text: "#"
+                - list [ref=e371]:
+                  - listitem [ref=e372]:
+                    - text: Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+                    - link "Palette section" [ref=e373] [cursor=pointer]:
+                      - /url: "#palette-enterprise-4.7.c"
+                    - text: for more details.
+                - heading "AutomationDirect link to Automation" [level=3] [ref=e374]:
+                  - text: Automation
+                  - link "Direct link to Automation" [ref=e375] [cursor=pointer]:
+                    - /url: "#automation"
+                    - text: "#"
+                - generic [ref=e376]:
+                  - generic [ref=e377]:
+                    - img [ref=e379]
+                    - text: info
+                  - paragraph [ref=e382]:
+                    - text: Check out the
+                    - link "CLI Tools" [ref=e383] [cursor=pointer]:
+                      - /url: /downloads/cli-tools/
+                    - text: page to find the compatible version of the Palette CLI.
+                - heading "FeaturesDirect link to Features" [level=4] [ref=e384]:
+                  - text: Features
+                  - link "Direct link to Features" [ref=e385] [cursor=pointer]:
+                    - /url: "#features-3"
+                    - text: "#"
+                - list [ref=e386]:
+                  - listitem [ref=e387]:
+                    - text: Terraform version 0.25.1 of the
+                    - link "Spectro Cloud Terraform provider" [ref=e388] [cursor=pointer]:
+                      - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs
+                    - text: is now available. For more details, refer to the Terraform provider
+                    - link "release page" [ref=e389] [cursor=pointer]:
+                      - /url: https://github.com/spectrocloud/terraform-provider-spectrocloud/releases
+                    - text: .
+                  - listitem [ref=e390]:
+                    - text: Crossplane version 0.25.1 of the
+                    - link "Spectro Cloud Crossplane provider" [ref=e391] [cursor=pointer]:
+                      - /url: https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette
+                    - text: is now available.
+                - heading "ImprovementsDirect link to Improvements" [level=4] [ref=e392]:
+                  - text: Improvements
+                  - link "Direct link to Improvements" [ref=e393] [cursor=pointer]:
+                    - /url: "#improvements-2"
+                    - text: "#"
+                - list [ref=e394]:
+                  - listitem [ref=e395]:
+                    - paragraph [ref=e396]:
+                      - text: The
+                      - link "Spectro Cloud Terraform provider" [ref=e397] [cursor=pointer]:
+                        - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs
+                      - text: now allows the specification of registry name in the cluster profile pack specification. This attribute can be used instead of
+                      - code [ref=e398]: registry_uid
+                      - text: for better readability.
+                  - listitem [ref=e399]:
+                    - paragraph [ref=e400]:
+                      - text: The
+                      - link "spectrocloud_registry Terraform data source" [ref=e401] [cursor=pointer]:
+                        - /url: hhttps://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/registry
+                        - code [ref=e402]: spectrocloud_registry
+                        - text: Terraform data source
+                      - text: now supports the
+                      - code [ref=e403]: type
+                      - text: attribute. This improvement allows users to filter packs based on registry type.
+                  - listitem [ref=e404]:
+                    - paragraph [ref=e405]:
+                      - text: The
+                      - link "spectrocloud_virtual_machine Terraform resource" [ref=e406] [cursor=pointer]:
+                        - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine
+                        - code [ref=e407]: spectrocloud_virtual_machine
+                        - text: Terraform resource
+                      - text: now provides
+                      - link "bootloader support" [ref=e408] [cursor=pointer]:
+                        - /url: https://kubevirt.io/user-guide/compute/virtual_hardware/
+                      - text: .
+                - heading "PacksDirect link to Packs" [level=3] [ref=e409]:
+                  - text: Packs
+                  - link "Direct link to Packs" [ref=e410] [cursor=pointer]:
+                    - /url: "#packs"
+                    - text: "#"
+                - heading "CNIDirect link to CNI" [level=4] [ref=e411]:
+                  - text: CNI
+                  - link "Direct link to CNI" [ref=e412] [cursor=pointer]:
+                    - /url: "#cni"
+                    - text: "#"
+                - table [ref=e413]:
+                  - rowgroup [ref=e414]:
+                    - row "Pack Name New Version" [ref=e415]:
+                      - cell "Pack Name" [ref=e416]
+                      - cell "New Version" [ref=e417]
+                  - rowgroup [ref=e418]:
+                    - row "AWS VPC CNI (Helm) 1.20.3" [ref=e419]:
+                      - cell "AWS VPC CNI (Helm)" [ref=e420]
+                      - cell "1.20.3" [ref=e421]
+                    - row "Cilium 1.18.1" [ref=e422]:
+                      - cell "Cilium" [ref=e423]
+                      - cell "1.18.1" [ref=e424]
+                - heading "Add-on PacksDirect link to Add-on Packs" [level=4] [ref=e425]:
+                  - text: Add-on Packs
+                  - link "Direct link to Add-on Packs" [ref=e426] [cursor=pointer]:
+                    - /url: "#add-on-packs"
+                    - text: "#"
+                - table [ref=e427]:
+                  - rowgroup [ref=e428]:
+                    - row "Pack Name New Version" [ref=e429]:
+                      - cell "Pack Name" [ref=e430]
+                      - cell "New Version" [ref=e431]
+                  - rowgroup [ref=e432]:
+                    - row "Calico Network Policy 3.30.3" [ref=e433]:
+                      - cell "Calico Network Policy" [ref=e434]
+                      - cell "3.30.3" [ref=e435]
+                    - row "Kong 2.52.0" [ref=e436]:
+                      - cell "Kong" [ref=e437]
+                      - cell "2.52.0" [ref=e438]
+                    - row "Prometheus Agent 27.39.0" [ref=e439]:
+                      - cell "Prometheus Agent" [ref=e440]
+                      - cell "27.39.0" [ref=e441]
+                    - row "Prometheus - Grafana 77.13.0" [ref=e442]:
+                      - cell "Prometheus - Grafana" [ref=e443]
+                      - cell "77.13.0" [ref=e444]
+                - heading "FIPS PacksDirect link to FIPS Packs" [level=4] [ref=e445]:
+                  - text: FIPS Packs
+                  - link "Direct link to FIPS Packs" [ref=e446] [cursor=pointer]:
+                    - /url: "#fips-packs"
+                    - text: "#"
+                - table [ref=e447]:
+                  - rowgroup [ref=e448]:
+                    - row "Pack Name New Version" [ref=e449]:
+                      - cell "Pack Name" [ref=e450]
+                      - cell "New Version" [ref=e451]
+                  - rowgroup [ref=e452]:
+                    - row "Calico 3.30.3" [ref=e453]:
+                      - cell "Calico" [ref=e454]
+                      - cell "3.30.3" [ref=e455]
+                    - row "Cilium 1.17.6" [ref=e456]:
+                      - cell "Cilium" [ref=e457]
+                      - cell "1.17.6" [ref=e458]
+                - heading "October 10, 2025 - Component UpdatesDirect link to October 10, 2025 - Component Updates" [level=2] [ref=e459]:
+                  - text: October 10, 2025 - Component Updates
+                  - link "Direct link to October 10, 2025 - Component Updates" [ref=e460] [cursor=pointer]:
+                    - /url: "#component-updates-2025-41"
+                    - text: "#"
+                - paragraph [ref=e461]: The following components have been updated for Palette version 4.7.20 - 4.7.23.
+                - table [ref=e462]:
+                  - rowgroup [ref=e463]:
+                    - row "Component Version" [ref=e464]:
+                      - cell "Component" [ref=e465]
+                      - cell "Version" [ref=e466]
+                  - rowgroup [ref=e467]:
+                    - row "Spectro Cloud Terraform provider 0.25.0" [ref=e468]:
+                      - cell "Spectro Cloud Terraform provider" [ref=e469]:
+                        - link "Spectro Cloud Terraform provider" [ref=e470] [cursor=pointer]:
+                          - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs
+                      - cell "0.25.0" [ref=e471]
+                    - row "Spectro Cloud Crossplane provider 0.25.0" [ref=e472]:
+                      - cell "Spectro Cloud Crossplane provider" [ref=e473]:
+                        - link "Spectro Cloud Crossplane provider" [ref=e474] [cursor=pointer]:
+                          - /url: https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette
+                      - cell "0.25.0" [ref=e475]
+                - heading "Breaking ChangesDirect link to Breaking Changes" [level=3] [ref=e476]:
+                  - text: Breaking Changes
+                  - link "Direct link to Breaking Changes" [ref=e477] [cursor=pointer]:
+                    - /url: "#breaking-changes"
+                    - text: "#"
+                - list [ref=e478]:
+                  - listitem [ref=e479]:
+                    - paragraph [ref=e480]:
+                      - text: To avoid unnecessary cluster repaves, the
+                      - link "Spectro Cloud Terraform provider" [ref=e481] [cursor=pointer]:
+                        - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs
+                      - text: no longer fails if a timeout occurs during cluster provisioning. Instead, the provider logs an error and continues provisioning in the background. Future Terraform executions reconcile the state of the cluster with the Terraform state.
+                    - paragraph [ref=e482]:
+                      - text: For increased transparency in these situations, the
+                      - link "spectrocloud_cluster data source" [ref=e483] [cursor=pointer]:
+                        - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/cluster
+                        - code [ref=e484]: spectrocloud_cluster
+                        - text: data source
+                      - text: now exposes state and health attributes. We recommend using these attributes to validate cluster readiness before triggering any
+                      - link "cluster management" [ref=e485] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                      - text: operations.
+                - heading "ImprovementsDirect link to Improvements" [level=3] [ref=e486]:
+                  - text: Improvements
+                  - link "Direct link to Improvements" [ref=e487] [cursor=pointer]:
+                    - /url: "#improvements-3"
+                    - text: "#"
+                - list [ref=e488]:
+                  - listitem [ref=e489]:
+                    - paragraph [ref=e490]:
+                      - text: The
+                      - link "spectrocloud_virtual_machine Terraform resource" [ref=e491] [cursor=pointer]:
+                        - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine
+                        - code [ref=e492]: spectrocloud_virtual_machine
+                        - text: Terraform resource
+                      - text: "now supports the following configurations:"
+                    - list [ref=e493]:
+                      - listitem [ref=e494]:
+                        - code [ref=e495]: network_data
+                        - text: under the
+                        - link "cloud_init_no_cloud set" [ref=e496] [cursor=pointer]:
+                          - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine#cloud_init_no_cloud-1
+                          - code [ref=e497]: cloud_init_no_cloud
+                          - text: set
+                        - text: ", allowing you to supply network configurations when provisioning VMs."
+                      - listitem [ref=e498]:
+                        - text: DataVolume storage under the
+                        - link "data_volume_templates.spec list" [ref=e499] [cursor=pointer]:
+                          - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine#nested-schema-for-data_volume_templatesspec
+                          - code [ref=e500]: data_volume_templates.spec
+                          - text: list
+                        - text: .
+                      - listitem [ref=e501]:
+                        - text: VM creation with blank
+                        - code [ref=e502]: pvc
+                        - text: and
+                        - code [ref=e503]: storage
+                        - text: fields under the
+                        - link "data_volume_templates.spec list" [ref=e504] [cursor=pointer]:
+                          - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine#nested-schema-for-data_volume_templatesspec
+                          - code [ref=e505]: data_volume_templates.spec
+                          - text: list
+                        - text: ", allowing you to create VMs without these specifications."
+                      - listitem [ref=e506]:
+                        - code [ref=e507]: boot_order
+                        - text: under the
+                        - link "disk list" [ref=e508] [cursor=pointer]:
+                          - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine#nested-schema-for-disk
+                          - code [ref=e509]: disk
+                          - text: list
+                        - text: ", allowing you to specify the order of boot devices."
+                - heading "Bug FixesDirect link to Bug Fixes" [level=3] [ref=e510]:
+                  - text: Bug Fixes
+                  - link "Direct link to Bug Fixes" [ref=e511] [cursor=pointer]:
+                    - /url: "#bug-fixes-1"
+                    - text: "#"
+                - list [ref=e512]:
+                  - listitem [ref=e513]:
+                    - text: Fixed an issue that caused repeated reconciliation when specifying a
+                    - link "spectrocloud_backup_storage_location Terraform resource" [ref=e514] [cursor=pointer]:
+                      - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/backup_storage_location
+                      - code [ref=e515]: spectrocloud_backup_storage_location
+                      - text: Terraform resource
+                    - text: due to AWS secret keys not being marked as sensitive.
+                - heading "PacksDirect link to Packs" [level=3] [ref=e516]:
+                  - text: Packs
+                  - link "Direct link to Packs" [ref=e517] [cursor=pointer]:
+                    - /url: "#packs-1"
+                    - text: "#"
+                - table [ref=e518]:
+                  - rowgroup [ref=e519]:
+                    - row "Pack Name Layer Non-FIPS FIPS New Version" [ref=e520]:
+                      - cell "Pack Name" [ref=e521]
+                      - cell "Layer" [ref=e522]
+                      - cell "Non-FIPS" [ref=e523]
+                      - cell "FIPS" [ref=e524]
+                      - cell "New Version" [ref=e525]
+                  - rowgroup [ref=e526]:
+                    - row "Argo CD Add-on ✅ ❌ 8.5.7" [ref=e527]:
+                      - cell "Argo CD" [ref=e528]
+                      - cell "Add-on" [ref=e529]
+                      - cell "✅" [ref=e530]
+                      - cell "❌" [ref=e531]
+                      - cell "8.5.7" [ref=e532]
+                    - row "AWS EFS CSI ✅ ❌ 2.1.12" [ref=e533]:
+                      - cell "AWS EFS" [ref=e534]
+                      - cell "CSI" [ref=e535]
+                      - cell "✅" [ref=e536]
+                      - cell "❌" [ref=e537]
+                      - cell "2.1.12" [ref=e538]
+                    - row "External Secrets Operator Add-on ✅ ❌ 0.20.1" [ref=e539]:
+                      - cell "External Secrets Operator" [ref=e540]
+                      - cell "Add-on" [ref=e541]
+                      - cell "✅" [ref=e542]
+                      - cell "❌" [ref=e543]
+                      - cell "0.20.1" [ref=e544]
+                    - row "Istio Add-on ✅ ❌ 1.27.1" [ref=e545]:
+                      - cell "Istio" [ref=e546]
+                      - cell "Add-on" [ref=e547]
+                      - cell "✅" [ref=e548]
+                      - cell "❌" [ref=e549]
+                      - cell "1.27.1" [ref=e550]
+                    - row "Nginx Add-on ✅ ❌ 1.13.2" [ref=e551]:
+                      - cell "Nginx" [ref=e552]
+                      - cell "Add-on" [ref=e553]
+                      - cell "✅" [ref=e554]
+                      - cell "❌" [ref=e555]
+                      - cell "1.13.2" [ref=e556]
+                    - row "Open Policy Agent Add-on ✅ ❌ 3.20.1" [ref=e557]:
+                      - cell "Open Policy Agent" [ref=e558]
+                      - cell "Add-on" [ref=e559]
+                      - cell "✅" [ref=e560]
+                      - cell "❌" [ref=e561]
+                      - cell "3.20.1" [ref=e562]
+                    - row "Palette eXtended Kubernetes Kubernetes ✅ ✅ 1.33.5" [ref=e563]:
+                      - cell "Palette eXtended Kubernetes" [ref=e564]
+                      - cell "Kubernetes" [ref=e565]
+                      - cell "✅" [ref=e566]
+                      - cell "✅" [ref=e567]
+                      - cell "1.33.5" [ref=e568]
+                    - row "Reloader Add-on ✅ ❌ 1.4.8" [ref=e569]:
+                      - cell "Reloader" [ref=e570]
+                      - cell "Add-on" [ref=e571]
+                      - cell "✅" [ref=e572]
+                      - cell "❌" [ref=e573]
+                      - cell "1.4.8" [ref=e574]
+                    - row "Vault Add-on ✅ ❌ 0.31.0" [ref=e575]:
+                      - cell "Vault" [ref=e576]
+                      - cell "Add-on" [ref=e577]
+                      - cell "✅" [ref=e578]
+                      - cell "❌" [ref=e579]
+                      - cell "0.31.0" [ref=e580]
+                    - row "Zot Registry Add-on ✅ ✅ 0.1.82" [ref=e581]:
+                      - cell "Zot Registry" [ref=e582]
+                      - cell "Add-on" [ref=e583]
+                      - cell "✅" [ref=e584]
+                      - cell "✅" [ref=e585]
+                      - cell "0.1.82" [ref=e586]
+                - heading "October 7, 2025 - Release 4.7.23Direct link to October 7, 2025 - Release 4.7.23" [level=2] [ref=e587]:
+                  - text: October 7, 2025 - Release 4.7.23
+                  - link "Direct link to October 7, 2025 - Release 4.7.23" [ref=e588] [cursor=pointer]:
+                    - /url: "#october-7-2025---release-4723"
+                    - text: "#"
+                - heading "Component UpdatesDirect link to Component Updates" [level=3] [ref=e589]:
+                  - text: Component Updates
+                  - link "Direct link to Component Updates" [ref=e590] [cursor=pointer]:
+                    - /url: "#component-updates"
+                    - text: "#"
+                - paragraph [ref=e591]: "The following component updates are applicable to this release:"
+                - list [ref=e592]:
+                  - listitem [ref=e593]:
+                    - link "October 10, 2025 - Component Updates" [ref=e594] [cursor=pointer]:
+                      - /url: "#component-updates-2025-41"
+                  - listitem [ref=e595]:
+                    - link "October 3, 2025 - Component Updates" [ref=e596] [cursor=pointer]:
+                      - /url: "#component-updates-2025-40"
+                  - listitem [ref=e597]:
+                    - link "September 26, 2025 - Component Updates" [ref=e598] [cursor=pointer]:
+                      - /url: "#component-updates-2025-39"
+                - heading "Bug FixesDirect link to Bug Fixes" [level=3] [ref=e599]:
+                  - text: Bug Fixes
+                  - link "Direct link to Bug Fixes" [ref=e600] [cursor=pointer]:
+                    - /url: "#bug-fixes-2"
+                    - text: "#"
+                - list [ref=e601]:
+                  - listitem [ref=e602]: Fixed an issue where the cluster management agent failed to initialize after a Palette upgrade when the cluster namespace annotation was missing. The Palette upgrade process now correctly preserves existing annotation.
+                  - listitem [ref=e603]:
+                    - text: Fixed an issue where the
+                    - link "Cluster API (CAPI)" [ref=e604] [cursor=pointer]:
+                      - /url: https://cluster-api.sigs.k8s.io/
+                    - text: custom resource definitions failed to apply on custom cloud clusters.
+                  - listitem [ref=e605]:
+                    - text: Fixed an issue that prevented the
+                    - link "SSO client secret" [ref=e606] [cursor=pointer]:
+                      - /url: /user-management/saml-sso/
+                    - text: from being masked in the
+                    - link "Tenant Administration" [ref=e607] [cursor=pointer]:
+                      - /url: /tenant-settings/
+                    - text: pages.
+                - heading "October 3, 2025 - Component UpdatesDirect link to October 3, 2025 - Component Updates" [level=2] [ref=e608]:
+                  - text: October 3, 2025 - Component Updates
+                  - link "Direct link to October 3, 2025 - Component Updates" [ref=e609] [cursor=pointer]:
+                    - /url: "#component-updates-2025-40"
+                    - text: "#"
+                - paragraph [ref=e610]: The following components have been updated for Palette version 4.7.20 - 4.7.21.
+                - heading "ImprovementsDirect link to Improvements" [level=3] [ref=e611]:
+                  - text: Improvements
+                  - link "Direct link to Improvements" [ref=e612] [cursor=pointer]:
+                    - /url: "#improvements-4"
+                    - text: "#"
+                - list [ref=e613]:
+                  - listitem [ref=e614]:
+                    - text: Access to
+                    - link "Artifact Studio" [ref=e615] [cursor=pointer]:
+                      - /url: /downloads/artifact-studio/
+                    - text: now requires authentication. To gain access, contact your Spectro Cloud representative or
+                    - link "open a support ticket" [ref=e616] [cursor=pointer]:
+                      - /url: https://support.spectrocloud.com/
+                    - text: .
+                - heading "PacksDirect link to Packs" [level=3] [ref=e617]:
+                  - text: Packs
+                  - link "Direct link to Packs" [ref=e618] [cursor=pointer]:
+                    - /url: "#packs-2"
+                    - text: "#"
+                - table [ref=e619]:
+                  - rowgroup [ref=e620]:
+                    - row "Pack Name Layer Non-FIPS FIPS New Version" [ref=e621]:
+                      - cell "Pack Name" [ref=e622]
+                      - cell "Layer" [ref=e623]
+                      - cell "Non-FIPS" [ref=e624]
+                      - cell "FIPS" [ref=e625]
+                      - cell "New Version" [ref=e626]
+                  - rowgroup [ref=e627]:
+                    - row "Amazon EBS CSI CSI ✅ ❌ 1.48.0" [ref=e628]:
+                      - cell "Amazon EBS CSI" [ref=e629]
+                      - cell "CSI" [ref=e630]
+                      - cell "✅" [ref=e631]
+                      - cell "❌" [ref=e632]
+                      - cell "1.48.0" [ref=e633]
+                    - row "Amazon EBS CSI CSI ❌ ✅ 1.46.0" [ref=e634]:
+                      - cell "Amazon EBS CSI" [ref=e635]
+                      - cell "CSI" [ref=e636]
+                      - cell "❌" [ref=e637]
+                      - cell "✅" [ref=e638]
+                      - cell "1.46.0" [ref=e639]
+                    - row "Azure Disk CSI Driver CSI ✅ ❌ 1.33.4" [ref=e640]:
+                      - cell "Azure Disk CSI Driver" [ref=e641]
+                      - cell "CSI" [ref=e642]
+                      - cell "✅" [ref=e643]
+                      - cell "❌" [ref=e644]
+                      - cell "1.33.4" [ref=e645]
+                    - row "Prometheus Agent Add-on ✅ ❌ 27.38.0" [ref=e646]:
+                      - cell "Prometheus Agent" [ref=e647]
+                      - cell "Add-on" [ref=e648]
+                      - cell "✅" [ref=e649]
+                      - cell "❌" [ref=e650]
+                      - cell "27.38.0" [ref=e651]
+                    - row "Prometheus - Grafana Add-on ✅ ❌ 77.10.0" [ref=e652]:
+                      - cell "Prometheus - Grafana" [ref=e653]
+                      - cell "Add-on" [ref=e654]
+                      - cell "✅" [ref=e655]
+                      - cell "❌" [ref=e656]
+                      - cell "77.10.0" [ref=e657]
+                    - row "Palette Optimized K3s Kubernetes ✅ ❌ 1.33.5" [ref=e658]:
+                      - cell "Palette Optimized K3s" [ref=e659]
+                      - cell "Kubernetes" [ref=e660]
+                      - cell "✅" [ref=e661]
+                      - cell "❌" [ref=e662]
+                      - cell "1.33.5" [ref=e663]
+                    - row "Palette Optimized K3s Kubernetes ✅ ❌ 1.32.9" [ref=e664]:
+                      - cell "Palette Optimized K3s" [ref=e665]
+                      - cell "Kubernetes" [ref=e666]
+                      - cell "✅" [ref=e667]
+                      - cell "❌" [ref=e668]
+                      - cell "1.32.9" [ref=e669]
+                    - row "Palette Optimized K3s Kubernetes ✅ ❌ 1.31.13" [ref=e670]:
+                      - cell "Palette Optimized K3s" [ref=e671]
+                      - cell "Kubernetes" [ref=e672]
+                      - cell "✅" [ref=e673]
+                      - cell "❌" [ref=e674]
+                      - cell "1.31.13" [ref=e675]
+                    - row "Palette Optimized RKE2 Kubernetes ✅ ✅ 1.33.5" [ref=e676]:
+                      - cell "Palette Optimized RKE2" [ref=e677]
+                      - cell "Kubernetes" [ref=e678]
+                      - cell "✅" [ref=e679]
+                      - cell "✅" [ref=e680]
+                      - cell "1.33.5" [ref=e681]
+                    - row "Palette Optimized RKE2 Kubernetes ✅ ✅ 1.32.9" [ref=e682]:
+                      - cell "Palette Optimized RKE2" [ref=e683]
+                      - cell "Kubernetes" [ref=e684]
+                      - cell "✅" [ref=e685]
+                      - cell "✅" [ref=e686]
+                      - cell "1.32.9" [ref=e687]
+                    - row "Palette Optimized RKE2 Kubernetes ✅ ✅ 1.31.13" [ref=e688]:
+                      - cell "Palette Optimized RKE2" [ref=e689]
+                      - cell "Kubernetes" [ref=e690]
+                      - cell "✅" [ref=e691]
+                      - cell "✅" [ref=e692]
+                      - cell "1.31.13" [ref=e693]
+                - heading "September 29, 2025 - Release 4.7.21Direct link to September 29, 2025 - Release 4.7.21" [level=2] [ref=e694]:
+                  - text: September 29, 2025 - Release 4.7.21
+                  - link "Direct link to September 29, 2025 - Release 4.7.21" [ref=e695] [cursor=pointer]:
+                    - /url: "#september-29-2025---release-4721"
+                    - text: "#"
+                - heading "Component UpdatesDirect link to Component Updates" [level=3] [ref=e696]:
+                  - text: Component Updates
+                  - link "Direct link to Component Updates" [ref=e697] [cursor=pointer]:
+                    - /url: "#component-updates-1"
+                    - text: "#"
+                - paragraph [ref=e698]: "The following component updates are applicable to this release:"
+                - list [ref=e699]:
+                  - listitem [ref=e700]:
+                    - link "October 10, 2025 - Component Updates" [ref=e701] [cursor=pointer]:
+                      - /url: "#component-updates-2025-41"
+                  - listitem [ref=e702]:
+                    - link "October 3, 2025 - Component Updates" [ref=e703] [cursor=pointer]:
+                      - /url: "#component-updates-2025-40"
+                  - listitem [ref=e704]:
+                    - link "September 26, 2025 - Component Updates" [ref=e705] [cursor=pointer]:
+                      - /url: "#component-updates-2025-39"
+                - heading "Breaking ChangesDirect link to Breaking Changes" [level=3] [ref=e706]:
+                  - text: Breaking Changes
+                  - link "Direct link to Breaking Changes" [ref=e707] [cursor=pointer]:
+                    - /url: "#breaking-changes-1"
+                    - text: "#"
+                - list [ref=e708]:
+                  - listitem [ref=e709]:
+                    - paragraph [ref=e710]:
+                      - link "AWS clusters" [ref=e711] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/aws/create-cluster/
+                      - text: created with Palette versions 4.6.32 to 4.7.20 use
+                      - link "Instance Metadata Service Version 2 (IMDSv2)" [ref=e712] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html
+                      - code [ref=e713]: IMDSv2 (token optional)
+                      - text: enforcement. This is due to a change made to upstream Cluster API AWS (CAPA), which was later reverted.
+                    - paragraph [ref=e714]: "The creation of new node pools in these clusters will fail if both of the following conditions are met:"
+                    - list [ref=e715]:
+                      - listitem [ref=e716]:
+                        - text: The applications in your cluster use
+                        - link "Instance Metadata Service Version 1 (IMDSv1)" [ref=e717] [cursor=pointer]:
+                          - /url: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html#instance-metadata-retrieval-examples-imdsv1
+                        - text: .
+                      - listitem [ref=e718]:
+                        - text: The AWS account used to provision your cluster is configured with metadata version
+                        - code [ref=e719]: IMDSv2 only (token required)
+                        - text: in your EC2 account defaults. Refer to the
+                        - link "Configure the Instance Metadata Service options" [ref=e720] [cursor=pointer]:
+                          - /url: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html
+                        - text: guide for further information.
+                    - paragraph [ref=e721]:
+                      - text: Beginning with Palette 4.7.21, newly created AWS nodes inherit the metadata version value set at the
+                      - link "AWS account level" [ref=e722] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html#where-to-configure-instance-metadata-options
+                      - text: .
+                    - paragraph [ref=e723]:
+                      - text: The AWS account used for IMDS configuration needs to be assigned the
+                      - code [ref=e724]: ec2:GetInstanceMetadataDefaults
+                      - text: permission. Clusters will be launched with
+                      - code [ref=e725]: IMDSv2 (token optional)
+                      - text: enforcement if this permission is not assigned. Refer to the
+                      - link "AWS reference" [ref=e726] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/cli/latest/reference/ec2/get-instance-metadata-defaults.html
+                      - text: guide for further information.
+                    - paragraph [ref=e727]:
+                      - text: We recommend
+                      - link "pausing agent upgrades" [ref=e728] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/platform-settings/pause-platform-upgrades/
+                      - text: "on the affected clusters and taking one of the following actions before upgrading to Palette 4.7.21:"
+                    - list [ref=e729]:
+                      - listitem [ref=e730]:
+                        - text: Set the metadata version to
+                        - code [ref=e731]: IMDSv2 (token optional)
+                        - text: in your EC2 account defaults.
+                      - listitem [ref=e732]:
+                        - text: Upgrade your applications to use IMDSv2. Refer to the
+                        - link "Transition to using Instance Metadata Service Version 2" [ref=e733] [cursor=pointer]:
+                          - /url: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-metadata-transition-to-version-2.html
+                        - text: guide for further information.
+                - heading "ImprovementsDirect link to Improvements" [level=3] [ref=e734]:
+                  - text: Improvements
+                  - link "Direct link to Improvements" [ref=e735] [cursor=pointer]:
+                    - /url: "#improvements-5"
+                    - text: "#"
+                - list [ref=e736]:
+                  - listitem [ref=e737]:
+                    - img "Technical preview feature badge" [ref=e738]
+                    - text: Palette now allows you to deploy and manage
+                    - link "MAAS Kubernetes clusters" [ref=e739] [cursor=pointer]:
+                      - /url: /clusters/data-center/maas/
+                    - text: on LXD Virtual Machines (VMs), enhancing resource efficiency by enabling users to host multiple control plane nodes on a single robust physical node. Refer to the
+                    - link "Create and Manage MAAS Clusters using LXD VMs" [ref=e740] [cursor=pointer]:
+                      - /url: /clusters/data-center/maas/create-manage-maas-lxd-clusters/
+                    - text: guide for further information.
+                - heading "Bug FixesDirect link to Bug Fixes" [level=3] [ref=e741]:
+                  - text: Bug Fixes
+                  - link "Direct link to Bug Fixes" [ref=e742] [cursor=pointer]:
+                    - /url: "#bug-fixes-3"
+                    - text: "#"
+                - list [ref=e743]:
+                  - listitem [ref=e744]:
+                    - text: Fixed an issue that caused
+                    - link "AWS Instance Metadata Service (IMDS)" [ref=e745] [cursor=pointer]:
+                      - /url: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html
+                    - text: configurations to be incorrectly inherited by newly created
+                    - link "AWS cluster" [ref=e746] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/create-cluster/
+                    - text: node pools created with Palette 4.6.32 to 4.7.20.
+                  - listitem [ref=e747]:
+                    - text: Fixed an issue that caused Out-of-Memory (OOM) errors on
+                    - code [ref=e748]: palette-controller-manager
+                    - text: pods.
+                  - listitem [ref=e749]:
+                    - text: Fixed an issue that prevented single node
+                    - link "overlay clusters" [ref=e750] [cursor=pointer]:
+                      - /url: /clusters/edge/networking/vxlan-overlay/
+                    - text: from provisioning correctly.
+                - heading "September 26, 2025 - Component UpdatesDirect link to September 26, 2025 - Component Updates" [level=2] [ref=e751]:
+                  - text: September 26, 2025 - Component Updates
+                  - link "Direct link to September 26, 2025 - Component Updates" [ref=e752] [cursor=pointer]:
+                    - /url: "#component-updates-2025-39"
+                    - text: "#"
+                - paragraph [ref=e753]: The following components have been updated for Palette version 4.7.20 - 4.7.21.
+                - table [ref=e754]:
+                  - rowgroup [ref=e755]:
+                    - row "Component Version" [ref=e756]:
+                      - cell "Component" [ref=e757]
+                      - cell "Version" [ref=e758]
+                  - rowgroup [ref=e759]:
+                    - row "Spectro Cloud Terraform provider 0.24.5" [ref=e760]:
+                      - cell "Spectro Cloud Terraform provider" [ref=e761]:
+                        - link "Spectro Cloud Terraform provider" [ref=e762] [cursor=pointer]:
+                          - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs
+                      - cell "0.24.5" [ref=e763]
+                    - row "Spectro Cloud Crossplane provider 0.24.5" [ref=e764]:
+                      - cell "Spectro Cloud Crossplane provider" [ref=e765]:
+                        - link "Spectro Cloud Crossplane provider" [ref=e766] [cursor=pointer]:
+                          - /url: https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette
+                      - cell "0.24.5" [ref=e767]
+                - heading "Bug FixesDirect link to Bug Fixes" [level=3] [ref=e768]:
+                  - text: Bug Fixes
+                  - link "Direct link to Bug Fixes" [ref=e769] [cursor=pointer]:
+                    - /url: "#bug-fixes-4"
+                    - text: "#"
+                - list [ref=e770]:
+                  - listitem [ref=e771]:
+                    - text: Fixed an issue that caused the
+                    - link "Spectro Cloud Terraform provider" [ref=e772] [cursor=pointer]:
+                      - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs
+                    - text: and
+                    - link "Spectro Cloud Crossplane provider" [ref=e773] [cursor=pointer]:
+                      - /url: https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette
+                    - text: to change the node pool order, causing unnecessary
+                    - link "cluster repaves" [ref=e774] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/node-pool/#repave-behavior-and-configuration
+                    - text: .
+                - heading "PacksDirect link to Packs" [level=3] [ref=e775]:
+                  - text: Packs
+                  - link "Direct link to Packs" [ref=e776] [cursor=pointer]:
+                    - /url: "#packs-3"
+                    - text: "#"
+                - heading "Pack NotesDirect link to Pack Notes" [level=4] [ref=e777]:
+                  - text: Pack Notes
+                  - link "Direct link to Pack Notes" [ref=e778] [cursor=pointer]:
+                    - /url: "#pack-notes"
+                    - text: "#"
+                - list [ref=e779]:
+                  - listitem [ref=e780]:
+                    - text: The
+                    - link "Karpenter" [ref=e781] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=karpenter
+                    - text: pack is now verified and has been updated to integrate with Karpenter 1.6. The updated version supports upgrading existing Karpenter-managed nodes on
+                    - link "EKS clusters" [ref=e782] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/eks/
+                    - text: . Refer to our
+                    - link "Karpenter Support" [ref=e783] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/architecture/#karpenter-support
+                    - text: guide for more details.
+                - table [ref=e784]:
+                  - rowgroup [ref=e785]:
+                    - row "Pack Name Layer FIPS New Version" [ref=e786]:
+                      - cell "Pack Name" [ref=e787]
+                      - cell "Layer" [ref=e788]
+                      - cell "FIPS" [ref=e789]
+                      - cell "New Version" [ref=e790]
+                  - rowgroup [ref=e791]:
+                    - row "Calico CNI No 3.30.3" [ref=e792]:
+                      - cell "Calico" [ref=e793]
+                      - cell "CNI" [ref=e794]
+                      - cell "No" [ref=e795]
+                      - cell "3.30.3" [ref=e796]
+                    - row "Cilium Tetragon Add-on No 1.5.0" [ref=e797]:
+                      - cell "Cilium Tetragon" [ref=e798]
+                      - cell "Add-on" [ref=e799]
+                      - cell "No" [ref=e800]
+                      - cell "1.5.0" [ref=e801]
+                    - row "Flannel CNI No 0.27.3" [ref=e802]:
+                      - cell "Flannel" [ref=e803]
+                      - cell "CNI" [ref=e804]
+                      - cell "No" [ref=e805]
+                      - cell "0.27.3" [ref=e806]
+                    - row "Longhorn CSI Yes 1.9.0" [ref=e807]:
+                      - cell "Longhorn" [ref=e808]
+                      - cell "CSI" [ref=e809]
+                      - cell "Yes" [ref=e810]
+                      - cell "1.9.0" [ref=e811]
+                    - row "Istio Add-on No 1.26.2-rev2" [ref=e812]:
+                      - cell "Istio" [ref=e813]
+                      - cell "Add-on" [ref=e814]
+                      - cell "No" [ref=e815]
+                      - cell "1.26.2-rev2" [ref=e816]
+                    - row "Istio Add-on No 1.26.0-rev2" [ref=e817]:
+                      - cell "Istio" [ref=e818]
+                      - cell "Add-on" [ref=e819]
+                      - cell "No" [ref=e820]
+                      - cell "1.26.0-rev2" [ref=e821]
+                    - row "Istio Add-on No 1.25.1-rev2" [ref=e822]:
+                      - cell "Istio" [ref=e823]
+                      - cell "Add-on" [ref=e824]
+                      - cell "No" [ref=e825]
+                      - cell "1.25.1-rev2" [ref=e826]
+                    - row "Istio Add-on No 1.24.3-rev2" [ref=e827]:
+                      - cell "Istio" [ref=e828]
+                      - cell "Add-on" [ref=e829]
+                      - cell "No" [ref=e830]
+                      - cell "1.24.3-rev2" [ref=e831]
+                    - row "Istio Add-on No 1.24.0-rev2" [ref=e832]:
+                      - cell "Istio" [ref=e833]
+                      - cell "Add-on" [ref=e834]
+                      - cell "No" [ref=e835]
+                      - cell "1.24.0-rev2" [ref=e836]
+                    - row "Prometheus - Grafana Add-on No 77.3.0" [ref=e837]:
+                      - cell "Prometheus - Grafana" [ref=e838]
+                      - cell "Add-on" [ref=e839]
+                      - cell "No" [ref=e840]
+                      - cell "77.3.0" [ref=e841]
+                    - row "Reloader Add-on No 1.4.7" [ref=e842]:
+                      - cell "Reloader" [ref=e843]
+                      - cell "Add-on" [ref=e844]
+                      - cell "No" [ref=e845]
+                      - cell "1.4.7" [ref=e846]
+                - heading "September 20, 2025 - Release 4.7.20Direct link to September 20, 2025 - Release 4.7.20" [level=2] [ref=e847]:
+                  - text: September 20, 2025 - Release 4.7.20
+                  - link "Direct link to September 20, 2025 - Release 4.7.20" [ref=e848] [cursor=pointer]:
+                    - /url: "#release-notes-4.7.b"
+                    - text: "#"
+                - heading "Component UpdatesDirect link to Component Updates" [level=3] [ref=e849]:
+                  - text: Component Updates
+                  - link "Direct link to Component Updates" [ref=e850] [cursor=pointer]:
+                    - /url: "#component-updates-2"
+                    - text: "#"
+                - paragraph [ref=e851]: "The following component updates are applicable to this release:"
+                - list [ref=e852]:
+                  - listitem [ref=e853]:
+                    - link "October 10, 2025 - Component Updates" [ref=e854] [cursor=pointer]:
+                      - /url: "#component-updates-2025-41"
+                  - listitem [ref=e855]:
+                    - link "October 3, 2025 - Component Updates" [ref=e856] [cursor=pointer]:
+                      - /url: "#component-updates-2025-40"
+                  - listitem [ref=e857]:
+                    - link "September 26, 2025 - Component Updates" [ref=e858] [cursor=pointer]:
+                      - /url: "#component-updates-2025-39"
+                - heading "Security NoticesDirect link to Security Notices" [level=3] [ref=e859]:
+                  - text: Security Notices
+                  - link "Direct link to Security Notices" [ref=e860] [cursor=pointer]:
+                    - /url: "#security-notices-1"
+                    - text: "#"
+                - list [ref=e861]:
+                  - listitem [ref=e862]:
+                    - text: Review the
+                    - link "Security Bulletins" [ref=e863] [cursor=pointer]:
+                      - /url: /security-bulletins/reports/
+                    - text: page for the latest security advisories.
+                - heading "Palette EnterpriseDirect link to Palette Enterprise" [level=3] [ref=e864]:
+                  - text: Palette Enterprise
+                  - link "Direct link to Palette Enterprise" [ref=e865] [cursor=pointer]:
+                    - /url: "#palette-enterprise-4.7.b"
+                    - text: "#"
+                - heading "Breaking ChangesDirect link to Breaking Changes" [level=4] [ref=e866]:
+                  - text: Breaking Changes
+                  - link "Direct link to Breaking Changes" [ref=e867] [cursor=pointer]:
+                    - /url: "#breaking-changes-4.7.b"
+                    - text: "#"
+                - list [ref=e868]:
+                  - listitem [ref=e869]:
+                    - text: The
+                    - code [ref=e870]: spec.jsonCredentialsFileUid
+                    - text: field in API requests is no longer available. Users who create GCP cloud accounts using the API should use the
+                    - code [ref=e871]: spec.jsonCredentials
+                    - text: field to supply their credentials in JSON format. Refer to the
+                    - link "API documentation" [ref=e872] [cursor=pointer]:
+                      - /url: /api/introduction/
+                    - text: for further details.
+                  - listitem [ref=e873]:
+                    - text: The previous encryption library used in the
+                    - link "Palette CLI" [ref=e874] [cursor=pointer]:
+                      - /url: /automation/palette-cli/
+                    - text: has been deprecated. As a result, users cannot use their existing credentials, such as Palette API keys, passwords, and Ubuntu Pro tokens, to perform operations after upgrading to Palette CLI version 4.7.2 or later. Users must update their credentials by either running the applicable commands and following the subsequent prompts or deleting the respective configuration files. Refer to our
+                    - link "Troubleshooting" [ref=e875] [cursor=pointer]:
+                      - /url: /troubleshooting/automation/#scenario---update-cli-configuration-files-credentials
+                    - text: guide for more information.
+                - heading "FeaturesDirect link to Features" [level=4] [ref=e876]:
+                  - text: Features
+                  - link "Direct link to Features" [ref=e877] [cursor=pointer]:
+                    - /url: "#features-4"
+                    - text: "#"
+                - list [ref=e878]:
+                  - listitem [ref=e879]:
+                    - img "Technical preview feature badge" [ref=e880]
+                    - text: Palette and VerteX Management Appliance now support Secure Boot. Refer to the
+                    - link "Palette Management Appliance" [ref=e881] [cursor=pointer]:
+                      - /url: /enterprise-version/install-palette/palette-management-appliance/
+                    - text: guide for further configuration information.
+                  - listitem [ref=e882]:
+                    - img "Technical preview feature badge" [ref=e883]
+                    - text: Palette and VerteX Management Appliance now support single node installation. We do not recommend this setup for production environments.
+                - heading "ImprovementsDirect link to Improvements" [level=4] [ref=e884]:
+                  - text: Improvements
+                  - link "Direct link to Improvements" [ref=e885] [cursor=pointer]:
+                    - /url: "#improvements-6"
+                    - text: "#"
+                - list [ref=e886]:
+                  - listitem [ref=e887]:
+                    - text: Palette now supports
+                    - link "automatic certificate renewal" [ref=e888] [cursor=pointer]:
+                      - /url: /clusters/edge/cluster-management/certificate-renewal/#automatic-renewal
+                    - text: for
+                    - link "MAAS" [ref=e889] [cursor=pointer]:
+                      - /url: /clusters/data-center/maas/
+                    - text: and
+                    - link "Edge" [ref=e890] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                    - text: clusters using
+                    - link "Palette Optimized Canonical" [ref=e891] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=edge-canonical
+                    - text: .
+                - heading "Bug FixesDirect link to Bug Fixes" [level=4] [ref=e892]:
+                  - text: Bug Fixes
+                  - link "Direct link to Bug Fixes" [ref=e893] [cursor=pointer]:
+                    - /url: "#bug-fixes-5"
+                    - text: "#"
+                - list [ref=e894]:
+                  - listitem [ref=e895]:
+                    - text: Fixed an issue that caused the
+                    - link "VM Migration Assistant" [ref=e896] [cursor=pointer]:
+                      - /url: /vm-management/vm-migration-assistant/
+                    - text: to leave open connections after VM migrations.
+                  - listitem [ref=e897]:
+                    - text: Fixed an issue that incorrectly allowed the creation of
+                    - link "EKS Fargate" [ref=e898] [cursor=pointer]:
+                      - /url: https://docs.aws.amazon.com/eks/latest/userguide/fargate.html
+                    - text: in
+                    - link "AWS GovCloud" [ref=e899] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/add-aws-accounts/#aws-govcloud-account-us
+                    - text: .
+                  - listitem [ref=e900]: Fixed an issue where, on Azure IaaS clusters created using a Palette version prior to 4.6.32, scaling worker node pools did not attach newly created nodes to an outbound load balancer after upgrading to Palette version 4.6.32 or later and the cluster's Palette Agent version to 4.6.7 or later.
+                  - listitem [ref=e901]:
+                    - text: Fixed an issue that caused manifest layers creating using
+                    - link "Crossplane" [ref=e902] [cursor=pointer]:
+                      - /url: /automation/crossplane/
+                    - text: to display incorrectly in the Palette UI.
+                  - listitem [ref=e903]:
+                    - text: Fixed an issue that caused
+                    - link "EKS nodes" [ref=e904] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/eks/#cloud-configuration-settings
+                    - text: customized with the
+                    - code [ref=e905]: AL2_x86_64
+                    - text: AMI label to be incorrectly configured with Amazon Linux 2023 (AL2023).
+                  - listitem [ref=e906]:
+                    - text: Fixed an issue that caused the
+                    - link "Virtual Machine Orchestrator" [ref=e907] [cursor=pointer]:
+                      - /url: /vm-management/
+                    - text: to incorrectly require admin permissions for managing persistent volume claims.
+                  - listitem [ref=e908]: Fixed an issue that prevented Palette from deleting nodes.
+                  - listitem [ref=e909]: Fixed an issue that prevented new DNS configurations from being applied without manually restarting the DNS pod.
+                  - listitem [ref=e910]: Fixed an issue that caused CNI labels and annotations to be incorrectly applied to cluster namespaces.
+                  - listitem [ref=e911]:
+                    - text: Fixed an issue that prevented
+                    - link "cluster profile variables" [ref=e912] [cursor=pointer]:
+                      - /url: /profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/create-cluster-profile-variables/
+                    - text: from correctly being applied to the configuration of
+                    - link "direct access to Virtual Machine Dashboard" [ref=e913] [cursor=pointer]:
+                      - /url: /vm-management/configure-console-base-address/
+                    - text: .
+                - heading "EdgeDirect link to Edge" [level=3] [ref=e914]:
+                  - text: Edge
+                  - link "Direct link to Edge" [ref=e915] [cursor=pointer]:
+                    - /url: "#edge-1"
+                    - text: "#"
+                - generic [ref=e916]:
+                  - generic [ref=e917]:
+                    - img [ref=e919]
+                    - text: info
+                  - paragraph [ref=e922]:
+                    - text: The
+                    - link "CanvOS" [ref=e923] [cursor=pointer]:
+                      - /url: https://github.com/spectrocloud/CanvOS
+                    - text: version corresponding to the 4.7.20 Palette release is 4.7.13.
+                - heading "Breaking ChangesDirect link to Breaking Changes" [level=4] [ref=e924]:
+                  - text: Breaking Changes
+                  - link "Direct link to Breaking Changes" [ref=e925] [cursor=pointer]:
+                    - /url: "#breaking-changes-2"
+                    - text: "#"
+                - list [ref=e926]:
+                  - listitem [ref=e927]:
+                    - text: Palette CLI versions prior to 4.7.2 do not support building content for local Edge cluster deployment on Palette version 4.7.20 or later because content created with older CLI versions lacks the required images. We recommend
+                    - link "downloading" [ref=e928] [cursor=pointer]:
+                      - /url: /downloads/cli-tools/#palette-cli
+                    - text: and using Palette CLI version 4.7.2 or later to build content for Palette version 4.7.20 or later.
+                - list [ref=e929]:
+                  - listitem [ref=e930]:
+                    - paragraph [ref=e931]: "Edge clusters deployed in agent mode with a Palette cluster agent version prior to 4.7.7 do not support upgrading to the following Kubernetes pack versions released in 4.7.20:"
+                    - list [ref=e932]:
+                      - listitem [ref=e933]:
+                        - link "Palette Optimized Canonical" [ref=e934] [cursor=pointer]:
+                          - /url: /integrations/packs/?pack=edge-canonical
+                        - text: 1.32.8 and 1.33.4
+                      - listitem [ref=e935]:
+                        - link "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e936] [cursor=pointer]:
+                          - /url: /integrations/packs/?pack=edge-k8s
+                        - text: 1.31.12, 1.32.8, and 1.33.4
+                    - paragraph [ref=e937]:
+                      - text: This breaking change affects agent mode clusters only and does not impact appliance mode clusters. For locally managed clusters, refer to
+                      - link "Configure Palette Agent Version" [ref=e938] [cursor=pointer]:
+                        - /url: /clusters/edge/cluster-management/agent-upgrade-airgap/
+                      - text: to upgrade the agent to the latest version before upgrading Kubernetes packs. For centrally managed clusters, do not
+                      - link "pause upgrades" [ref=e939] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/platform-settings/pause-platform-upgrades/
+                      - text: so the agent can upgrade automatically.
+                - list [ref=e940]:
+                  - listitem [ref=e941]:
+                    - text: The Palette Edge CLI does not support building content for local Edge cluster deployment in agent mode on Palette version 4.7.20 or later (Palette host agent version 4.7.13 or later). We recommend
+                    - link "downloading" [ref=e942] [cursor=pointer]:
+                      - /url: /downloads/cli-tools/#palette-cli
+                    - text: and using Palette CLI version 4.7.2 or later instead. This breaking change affects agent mode clusters only and does not impact appliance mode clusters.
+                - heading "ImprovementsDirect link to Improvements" [level=4] [ref=e943]:
+                  - text: Improvements
+                  - link "Direct link to Improvements" [ref=e944] [cursor=pointer]:
+                    - /url: "#improvements-7"
+                    - text: "#"
+                - list [ref=e945]:
+                  - listitem [ref=e946]:
+                    - link "Edge host grid view" [ref=e947] [cursor=pointer]:
+                      - /url: /clusters/edge/site-deployment/edge-host-view/
+                    - text: now supports the Graphics Processing Unit (GPU) attribute. It contains information about the GPU of the Edge host, including the GPU model, vendor, memory, count, and Multi-Instance GPU (MIG) capability and strategy. MIG fields are applicable for Nvidia devices only.
+                  - listitem [ref=e948]:
+                    - link "Local UI" [ref=e949] [cursor=pointer]:
+                      - /url: /clusters/edge/local-ui/
+                    - text: now supports displaying all date and time values in Coordinated Universal Time (UTC), the browser’s local time zone, or both simultaneously.
+                - heading "Bug FixesDirect link to Bug Fixes" [level=4] [ref=e950]:
+                  - text: Bug Fixes
+                  - link "Direct link to Bug Fixes" [ref=e951] [cursor=pointer]:
+                    - /url: "#bug-fixes-6"
+                    - text: "#"
+                - list [ref=e952]:
+                  - listitem [ref=e953]:
+                    - text: Fixed an issue that caused incorrect
+                    - link "Kube-vip" [ref=e954] [cursor=pointer]:
+                      - /url: /clusters/edge/networking/kubevip/
+                    - text: validation errors to appear when worker nodes were removed and re-added to clusters.
+                  - listitem [ref=e955]:
+                    - text: Fixed an issue that caused incorrect
+                    - link "Local UI" [ref=e956] [cursor=pointer]:
+                      - /url: /clusters/edge/local-ui/
+                    - text: ports when using VIP addresses.
+                - heading "VerteXDirect link to VerteX" [level=3] [ref=e957]:
+                  - text: VerteX
+                  - link "Direct link to VerteX" [ref=e958] [cursor=pointer]:
+                    - /url: "#vertex-1"
+                    - text: "#"
+                - heading "FeaturesDirect link to Features" [level=4] [ref=e959]:
+                  - text: Features
+                  - link "Direct link to Features" [ref=e960] [cursor=pointer]:
+                    - /url: "#features-5"
+                    - text: "#"
+                - list [ref=e961]:
+                  - listitem [ref=e962]:
+                    - text: Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+                    - link "Palette section" [ref=e963] [cursor=pointer]:
+                      - /url: "#palette-enterprise-4.7.b"
+                    - text: for more details.
+                - heading "AutomationDirect link to Automation" [level=3] [ref=e964]:
+                  - text: Automation
+                  - link "Direct link to Automation" [ref=e965] [cursor=pointer]:
+                    - /url: "#automation-1"
+                    - text: "#"
+                - generic [ref=e966]:
+                  - generic [ref=e967]:
+                    - img [ref=e969]
+                    - text: info
+                  - paragraph [ref=e972]:
+                    - text: Check out the
+                    - link "CLI Tools" [ref=e973] [cursor=pointer]:
+                      - /url: /downloads/cli-tools/
+                    - text: page to find the compatible version of the Palette CLI.
+                - heading "Breaking ChangesDirect link to Breaking Changes" [level=4] [ref=e974]:
+                  - text: Breaking Changes
+                  - link "Direct link to Breaking Changes" [ref=e975] [cursor=pointer]:
+                    - /url: "#breaking-changes-3"
+                    - text: "#"
+                - list [ref=e976]:
+                  - listitem [ref=e977]:
+                    - text: The
+                    - code [ref=e978]: spectrocloud_macro
+                    - text: Terraform resource is no longer available. We recommend using the
+                    - code [ref=e979]: spectrocloud_macros
+                    - text: resource to create and manage service output variables and macros. For more information, refer to the Spectro Cloud Terraform provider
+                    - link "documentation" [ref=e980] [cursor=pointer]:
+                      - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs
+                    - text: .
+                - heading "FeaturesDirect link to Features" [level=4] [ref=e981]:
+                  - text: Features
+                  - link "Direct link to Features" [ref=e982] [cursor=pointer]:
+                    - /url: "#features-6"
+                    - text: "#"
+                - list [ref=e983]:
+                  - listitem [ref=e984]:
+                    - text: Terraform version 0.24.4 of the
+                    - link "Spectro Cloud Terraform provider" [ref=e985] [cursor=pointer]:
+                      - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs
+                    - text: is now available. For more details, refer to the Terraform provider
+                    - link "release page" [ref=e986] [cursor=pointer]:
+                      - /url: https://github.com/spectrocloud/terraform-provider-spectrocloud/releases
+                    - text: .
+                  - listitem [ref=e987]:
+                    - text: Crossplane version 0.24.4 of the
+                    - link "Spectro Cloud Crossplane provider" [ref=e988] [cursor=pointer]:
+                      - /url: https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette
+                    - text: is now available. This version supports
+                    - link "Crossplane v2" [ref=e989] [cursor=pointer]:
+                      - /url: https://docs.crossplane.io/latest/whats-new/
+                    - text: .
+                - heading "Bug FixesDirect link to Bug Fixes" [level=4] [ref=e990]:
+                  - text: Bug Fixes
+                  - link "Direct link to Bug Fixes" [ref=e991] [cursor=pointer]:
+                    - /url: "#bug-fixes-7"
+                    - text: "#"
+                - list [ref=e992]:
+                  - listitem [ref=e993]:
+                    - text: Fixed an issue that caused
+                    - link "EKS clusters" [ref=e994] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/eks/
+                    - text: to be recreated when private and public access CIDRs are changed through Terraform.
+                - heading "PacksDirect link to Packs" [level=3] [ref=e995]:
+                  - text: Packs
+                  - link "Direct link to Packs" [ref=e996] [cursor=pointer]:
+                    - /url: "#packs-4"
+                    - text: "#"
+                - heading "Pack NotesDirect link to Pack Notes" [level=4] [ref=e997]:
+                  - text: Pack Notes
+                  - link "Direct link to Pack Notes" [ref=e998] [cursor=pointer]:
+                    - /url: "#pack-notes-1"
+                    - text: "#"
+                - list [ref=e999]:
+                  - listitem [ref=e1000]:
+                    - text: The
+                    - link "Piraeus Operator" [ref=e1001] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=piraeus-csi
+                    - text: pack is now compatible with Ubuntu 22.04 FIPS.
+                  - listitem [ref=e1002]:
+                    - text: The
+                    - link "OpenTelemetry Monitoring Stack" [ref=e1003] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/monitoring/open-telemetry/
+                    - text: now includes tracing and logging capabilities. The stack now supports integration with both
+                    - link "Open Observe" [ref=e1004] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=openobserve
+                    - text: and external SaaS tools for observability.
+                  - listitem [ref=e1005]:
+                    - text: The
+                    - link "Virtual Machine Orchestrator" [ref=e1006] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=virtual-machine-orchestrator
+                    - text: and
+                    - link "Virtual Machine Migration Assistant" [ref=e1007] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=vm-migration-assistant
+                    - text: packs are now verified.
+                  - listitem [ref=e1008]:
+                    - link "Calico CNI pack version 3.30.2-rev2" [ref=e1009] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=cni-calico&version=3.30.2-rev2
+                    - text: has been added. This pack version resolves an issue that causes Edge clusters using Calico version 3.30.2 to fail. Refer to the
+                    - link "Calico Additional Details" [ref=e1010] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=cni-calico&version=3.30.2-rev2&tab=custom
+                    - text: page for more information.
+                  - listitem [ref=e1011]:
+                    - text: Instructions for configuring Cilium for agent mode Edge clusters have been added to the
+                    - link "Cilium Additional Details" [ref=e1012] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=cni-cilium-oss&tab=custom
+                    - text: page. These instructions apply to Palette versions 4.2 and later.
+                  - listitem [ref=e1013]:
+                    - text: The
+                    - link "Piraeus Operator" [ref=e1014] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=piraeus-csi
+                    - text: airgap pack binary is not available for download.
+                - heading "KubernetesDirect link to Kubernetes" [level=4] [ref=e1015]:
+                  - text: Kubernetes
+                  - link "Direct link to Kubernetes" [ref=e1016] [cursor=pointer]:
+                    - /url: "#kubernetes"
+                    - text: "#"
+                - table [ref=e1017]:
+                  - rowgroup [ref=e1018]:
+                    - row "Pack Name New Version" [ref=e1019]:
+                      - cell "Pack Name" [ref=e1020]
+                      - cell "New Version" [ref=e1021]
+                  - rowgroup [ref=e1022]:
+                    - row "GKE 1.33" [ref=e1023]:
+                      - cell "GKE" [ref=e1024]
+                      - cell "1.33" [ref=e1025]
+                    - row "Kubernetes (AKS) 1.33" [ref=e1026]:
+                      - cell "Kubernetes (AKS)" [ref=e1027]
+                      - cell "1.33" [ref=e1028]
+                    - row "Palette eXtended Kubernetes Edge (PXK-E) 1.33.4" [ref=e1029]:
+                      - cell "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e1030]
+                      - cell "1.33.4" [ref=e1031]
+                    - row "Palette eXtended Kubernetes Edge (PXK-E) 1.32.8" [ref=e1032]:
+                      - cell "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e1033]
+                      - cell "1.32.8" [ref=e1034]
+                    - row "Palette eXtended Kubernetes Edge (PXK-E) 1.31.12" [ref=e1035]:
+                      - cell "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e1036]
+                      - cell "1.31.12" [ref=e1037]
+                    - row "Palette eXtended Kubernetes 1.33.4" [ref=e1038]:
+                      - cell "Palette eXtended Kubernetes" [ref=e1039]
+                      - cell "1.33.4" [ref=e1040]
+                    - row "Palette eXtended Kubernetes 1.32.8" [ref=e1041]:
+                      - cell "Palette eXtended Kubernetes" [ref=e1042]
+                      - cell "1.32.8" [ref=e1043]
+                    - row "Palette eXtended Kubernetes 1.31.12" [ref=e1044]:
+                      - cell "Palette eXtended Kubernetes" [ref=e1045]
+                      - cell "1.31.12" [ref=e1046]
+                - heading "CNIDirect link to CNI" [level=4] [ref=e1047]:
+                  - text: CNI
+                  - link "Direct link to CNI" [ref=e1048] [cursor=pointer]:
+                    - /url: "#cni-1"
+                    - text: "#"
+                - table [ref=e1049]:
+                  - rowgroup [ref=e1050]:
+                    - row "Pack Name New Version" [ref=e1051]:
+                      - cell "Pack Name" [ref=e1052]
+                      - cell "New Version" [ref=e1053]
+                  - rowgroup [ref=e1054]:
+                    - row "AWS VPC CNI (Helm) 1.20.1" [ref=e1055]:
+                      - cell "AWS VPC CNI (Helm)" [ref=e1056]
+                      - cell "1.20.1" [ref=e1057]
+                    - row "Calico 3.30.2 - Revision 2" [ref=e1058]:
+                      - cell "Calico" [ref=e1059]
+                      - cell "3.30.2 - Revision 2" [ref=e1060]
+                    - row "Cilium 1.17.6" [ref=e1061]:
+                      - cell "Cilium" [ref=e1062]
+                      - cell "1.17.6" [ref=e1063]
+                    - row "Flannel 0.27.2" [ref=e1064]:
+                      - cell "Flannel" [ref=e1065]
+                      - cell "0.27.2" [ref=e1066]
+                - heading "CSIDirect link to CSI" [level=4] [ref=e1067]:
+                  - text: CSI
+                  - link "Direct link to CSI" [ref=e1068] [cursor=pointer]:
+                    - /url: "#csi"
+                    - text: "#"
+                - table [ref=e1069]:
+                  - rowgroup [ref=e1070]:
+                    - row "Pack Name New Version" [ref=e1071]:
+                      - cell "Pack Name" [ref=e1072]
+                      - cell "New Version" [ref=e1073]
+                  - rowgroup [ref=e1074]:
+                    - row "Azure Disk 1.31.2 - Revision 2" [ref=e1075]:
+                      - cell "Azure Disk" [ref=e1076]
+                      - cell "1.31.2 - Revision 2" [ref=e1077]
+                    - row "AWS EFS 3.2.2" [ref=e1078]:
+                      - cell "AWS EFS" [ref=e1079]
+                      - cell "3.2.2" [ref=e1080]
+                    - row "AWS EFS 2.1.10" [ref=e1081]:
+                      - cell "AWS EFS" [ref=e1082]
+                      - cell "2.1.10" [ref=e1083]
+                    - row "Amazon EFS 2.1.11" [ref=e1084]:
+                      - cell "Amazon EFS" [ref=e1085]
+                      - cell "2.1.11" [ref=e1086]
+                    - row "Amazon EFS 2.1.10" [ref=e1087]:
+                      - cell "Amazon EFS" [ref=e1088]
+                      - cell "2.1.10" [ref=e1089]
+                    - row "Dell CSM Operator 1.9.1" [ref=e1090]:
+                      - cell "Dell CSM Operator" [ref=e1091]
+                      - cell "1.9.1" [ref=e1092]
+                    - row "Longhorn 1.8.1" [ref=e1093]:
+                      - cell "Longhorn" [ref=e1094]
+                      - cell "1.8.1" [ref=e1095]
+                    - row "Rook-Ceph 1.18.0" [ref=e1096]:
+                      - cell "Rook-Ceph" [ref=e1097]
+                      - cell "1.18.0" [ref=e1098]
+                    - row "Rook-Ceph 1.17.7" [ref=e1099]:
+                      - cell "Rook-Ceph" [ref=e1100]
+                      - cell "1.17.7" [ref=e1101]
+                    - row "Piraeus Operator 2.9.0" [ref=e1102]:
+                      - cell "Piraeus Operator" [ref=e1103]
+                      - cell "2.9.0" [ref=e1104]
+                    - row "Volume Snapshot Controller 8.3.0" [ref=e1105]:
+                      - cell "Volume Snapshot Controller" [ref=e1106]
+                      - cell "8.3.0" [ref=e1107]
+                - heading "Add-on PacksDirect link to Add-on Packs" [level=4] [ref=e1108]:
+                  - text: Add-on Packs
+                  - link "Direct link to Add-on Packs" [ref=e1109] [cursor=pointer]:
+                    - /url: "#add-on-packs-1"
+                    - text: "#"
+                - table [ref=e1110]:
+                  - rowgroup [ref=e1111]:
+                    - row "Pack Name New Version" [ref=e1112]:
+                      - cell "Pack Name" [ref=e1113]
+                      - cell "New Version" [ref=e1114]
+                  - rowgroup [ref=e1115]:
+                    - row "Argo CD 8.3.0" [ref=e1116]:
+                      - cell "Argo CD" [ref=e1117]
+                      - cell "8.3.0" [ref=e1118]
+                    - row "Argo CD 8.1.4" [ref=e1119]:
+                      - cell "Argo CD" [ref=e1120]
+                      - cell "8.1.4" [ref=e1121]
+                    - row "AWS Application Loadbalancer 2.13.4" [ref=e1122]:
+                      - cell "AWS Application Loadbalancer" [ref=e1123]
+                      - cell "2.13.4" [ref=e1124]
+                    - row "Amazon EFS 2.1.11" [ref=e1125]:
+                      - cell "Amazon EFS" [ref=e1126]
+                      - cell "2.1.11" [ref=e1127]
+                    - row "Amazon EFS 2.1.10" [ref=e1128]:
+                      - cell "Amazon EFS" [ref=e1129]
+                      - cell "2.1.10" [ref=e1130]
+                    - row "Calico Network Policy 3.30.2" [ref=e1131]:
+                      - cell "Calico Network Policy" [ref=e1132]
+                      - cell "3.30.2" [ref=e1133]
+                    - row "Crossplane 2.0.2" [ref=e1134]:
+                      - cell "Crossplane" [ref=e1135]
+                      - cell "2.0.2" [ref=e1136]
+                    - row "Dell CSM Operator 1.9.1" [ref=e1137]:
+                      - cell "Dell CSM Operator" [ref=e1138]
+                      - cell "1.9.1" [ref=e1139]
+                    - row "Dex 2.42.0" [ref=e1140]:
+                      - cell "Dex" [ref=e1141]
+                      - cell "2.42.0" [ref=e1142]
+                    - row "External Secrets Operator 0.19.2" [ref=e1143]:
+                      - cell "External Secrets Operator" [ref=e1144]
+                      - cell "0.19.2" [ref=e1145]
+                    - row "External Secrets Operator 0.18.2" [ref=e1146]:
+                      - cell "External Secrets Operator" [ref=e1147]
+                      - cell "0.18.2" [ref=e1148]
+                    - row "Flux2 2.16.4" [ref=e1149]:
+                      - cell "Flux2" [ref=e1150]
+                      - cell "2.16.4" [ref=e1151]
+                    - row "Istio 1.27.0" [ref=e1152]:
+                      - cell "Istio" [ref=e1153]
+                      - cell "1.27.0" [ref=e1154]
+                    - row "Kong 2.51.0" [ref=e1155]:
+                      - cell "Kong" [ref=e1156]
+                      - cell "2.51.0" [ref=e1157]
+                    - row "Loki 2.10.2" [ref=e1158]:
+                      - cell "Loki" [ref=e1159]
+                      - cell "2.10.2" [ref=e1160]
+                    - row "Nginx 1.31.1" [ref=e1161]:
+                      - cell "Nginx" [ref=e1162]
+                      - cell "1.31.1" [ref=e1163]
+                    - row "Rook-Ceph 1.17.7" [ref=e1164]:
+                      - cell "Rook-Ceph" [ref=e1165]
+                      - cell "1.17.7" [ref=e1166]
+                    - row "Prometheus Agent 27.23.0" [ref=e1167]:
+                      - cell "Prometheus Agent" [ref=e1168]
+                      - cell "27.23.0" [ref=e1169]
+                    - row "Prometheus - Grafana 75.9.0" [ref=e1170]:
+                      - cell "Prometheus - Grafana" [ref=e1171]
+                      - cell "75.9.0" [ref=e1172]
+                    - row "Upbound Crossplane 2.0.1" [ref=e1173]:
+                      - cell "Upbound Crossplane" [ref=e1174]
+                      - cell "2.0.1" [ref=e1175]
+                    - row "Vault 0.30.1" [ref=e1176]:
+                      - cell "Vault" [ref=e1177]
+                      - cell "0.30.1" [ref=e1178]
+                    - row "VMO Namespace Management 1.0.4" [ref=e1179]:
+                      - cell "VMO Namespace Management" [ref=e1180]
+                      - cell "1.0.4" [ref=e1181]
+                    - row "Volume Snapshot Controller 8.3.0" [ref=e1182]:
+                      - cell "Volume Snapshot Controller" [ref=e1183]
+                      - cell "8.3.0" [ref=e1184]
+                - heading "FIPS PacksDirect link to FIPS Packs" [level=4] [ref=e1185]:
+                  - text: FIPS Packs
+                  - link "Direct link to FIPS Packs" [ref=e1186] [cursor=pointer]:
+                    - /url: "#fips-packs-1"
+                    - text: "#"
+                - table [ref=e1187]:
+                  - rowgroup [ref=e1188]:
+                    - row "Pack Name New Version" [ref=e1189]:
+                      - cell "Pack Name" [ref=e1190]
+                      - cell "New Version" [ref=e1191]
+                  - rowgroup [ref=e1192]:
+                    - row "Longhorn 1.8.1" [ref=e1193]:
+                      - cell "Longhorn" [ref=e1194]
+                      - cell "1.8.1" [ref=e1195]
+                    - row "Palette eXtended Kubernetes Edge (PXK-E) 1.33.4" [ref=e1196]:
+                      - cell "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e1197]
+                      - cell "1.33.4" [ref=e1198]
+                    - row "Palette eXtended Kubernetes Edge (PXK-E) 1.32.8" [ref=e1199]:
+                      - cell "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e1200]
+                      - cell "1.32.8" [ref=e1201]
+                    - row "Palette eXtended Kubernetes Edge (PXK-E) 1.31.12" [ref=e1202]:
+                      - cell "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e1203]
+                      - cell "1.31.12" [ref=e1204]
+                    - row "Palette eXtended Kubernetes 1.33.4" [ref=e1205]:
+                      - cell "Palette eXtended Kubernetes" [ref=e1206]
+                      - cell "1.33.4" [ref=e1207]
+                    - row "Palette eXtended Kubernetes 1.32.8" [ref=e1208]:
+                      - cell "Palette eXtended Kubernetes" [ref=e1209]
+                      - cell "1.32.8" [ref=e1210]
+                    - row "Palette eXtended Kubernetes 1.31.12" [ref=e1211]:
+                      - cell "Palette eXtended Kubernetes" [ref=e1212]
+                      - cell "1.31.12" [ref=e1213]
+                    - row "Piraeus Operator 2.9.0" [ref=e1214]:
+                      - cell "Piraeus Operator" [ref=e1215]
+                      - cell "2.9.0" [ref=e1216]
+                - heading "September 1, 2025 - Release 4.7.16Direct link to September 1, 2025 - Release 4.7.16" [level=2] [ref=e1217]:
+                  - text: September 1, 2025 - Release 4.7.16
+                  - link "Direct link to September 1, 2025 - Release 4.7.16" [ref=e1218] [cursor=pointer]:
+                    - /url: "#september-1-2025---release-4716"
+                    - text: "#"
+                - heading "Bug FixesDirect link to Bug Fixes" [level=3] [ref=e1219]:
+                  - text: Bug Fixes
+                  - link "Direct link to Bug Fixes" [ref=e1220] [cursor=pointer]:
+                    - /url: "#bug-fixes-8"
+                    - text: "#"
+                - list [ref=e1221]:
+                  - listitem [ref=e1222]:
+                    - text: Fixed an issue where
+                    - link "Azure IaaS clusters" [ref=e1223] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/azure/create-azure-cluster/
+                    - text: configured with
+                    - code [ref=e1224]: fullyPrivateAddressing
+                    - text: failed to deploy.
+                - heading "August 21, 2025 - Release 4.7.15Direct link to August 21, 2025 - Release 4.7.15" [level=2] [ref=e1225]:
+                  - text: August 21, 2025 - Release 4.7.15
+                  - link "Direct link to August 21, 2025 - Release 4.7.15" [ref=e1226] [cursor=pointer]:
+                    - /url: "#august-21-2025---release-4715"
+                    - text: "#"
+                - heading "Bug FixesDirect link to Bug Fixes" [level=3] [ref=e1227]:
+                  - text: Bug Fixes
+                  - link "Direct link to Bug Fixes" [ref=e1228] [cursor=pointer]:
+                    - /url: "#bug-fixes-9"
+                    - text: "#"
+                - list [ref=e1229]:
+                  - listitem [ref=e1230]:
+                    - text: Fixed an issue that prevented
+                    - link "HTTP-Proxies" [ref=e1231] [cursor=pointer]:
+                      - /url: /clusters/edge/local-ui/host-management/configure-proxy/
+                    - text: from being correctly applied when configured in Local UI prior to cluster creation.
+                  - listitem [ref=e1232]:
+                    - text: Fixed an issue that prevented certain
+                    - code [ref=e1233]: hubble-system
+                    - text: pods from being scheduled when upgrading self-hosted Palette and VerteX VMware vSphere installations from 4.6.x to 4.7.x.
+                  - listitem [ref=e1234]:
+                    - text: Fixed an issue that caused the Palette
+                    - link "Terminal User Interface (TUI)" [ref=e1235] [cursor=pointer]:
+                      - /url: /clusters/edge/site-deployment/site-installation/initial-setup/
+                    - text: on Edge hosts to restart after entering
+                    - strong [ref=e1236]: DNS Configuration
+                    - text: details.
+                  - listitem [ref=e1237]:
+                    - text: Fixed a UI issue where the
+                    - link "Virtual Machine Dashboard" [ref=e1238] [cursor=pointer]:
+                      - /url: /vm-management/configure-console-base-address/
+                    - strong [ref=e1239]: Connect
+                    - text: button disappeared for
+                    - link "Virtual Machine Orchestrator (VMO)" [ref=e1240] [cursor=pointer]:
+                      - /url: /vm-management/
+                    - text: clusters after switching between
+                    - strong [ref=e1241]: Proxied
+                    - text: and
+                    - strong [ref=e1242]: Direct
+                    - text: access in the applied
+                    - link "Virtual Machine Orchestrator" [ref=e1243] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=virtual-machine-orchestrator
+                    - text: pack.
+                  - listitem [ref=e1244]:
+                    - text: Fixed a UI issue where Edge host tags were not displayed in the
+                    - strong [ref=e1245]: Tags
+                    - text: drop-down menu on the
+                    - strong [ref=e1246]: Clusters > Edge Hosts
+                    - text: tab of Palette.
+                - heading "AutomationDirect link to Automation" [level=3] [ref=e1247]:
+                  - text: Automation
+                  - link "Direct link to Automation" [ref=e1248] [cursor=pointer]:
+                    - /url: "#automation-2"
+                    - text: "#"
+                - heading "FeaturesDirect link to Features" [level=4] [ref=e1249]:
+                  - text: Features
+                  - link "Direct link to Features" [ref=e1250] [cursor=pointer]:
+                    - /url: "#features-7"
+                    - text: "#"
+                - list [ref=e1251]:
+                  - listitem [ref=e1252]:
+                    - text: Terraform version 0.24.2 of the
+                    - link "Spectro Cloud Terraform provider" [ref=e1253] [cursor=pointer]:
+                      - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs
+                    - text: is now available. For more details, refer to the Terraform provider
+                    - link "release page" [ref=e1254] [cursor=pointer]:
+                      - /url: https://github.com/spectrocloud/terraform-provider-spectrocloud/releases
+                    - text: .
+                - heading "Bug FixesDirect link to Bug Fixes" [level=4] [ref=e1255]:
+                  - text: Bug Fixes
+                  - link "Direct link to Bug Fixes" [ref=e1256] [cursor=pointer]:
+                    - /url: "#bug-fixes-10"
+                    - text: "#"
+                - list [ref=e1257]:
+                  - listitem [ref=e1258]:
+                    - text: Fixed a
+                    - code [ref=e1259]: spectrocloud_sso
+                    - text: Terraform resource issue where
+                    - code [ref=e1260]: preferred_email
+                    - text: was not an accepted value for
+                    - code [ref=e1261]: oidc.email
+                    - text: .
+                - heading "August 17, 2025 - Release 4.7.13Direct link to August 17, 2025 - Release 4.7.13" [level=2] [ref=e1262]:
+                  - text: August 17, 2025 - Release 4.7.13
+                  - link "Direct link to August 17, 2025 - Release 4.7.13" [ref=e1263] [cursor=pointer]:
+                    - /url: "#release-notes-4.7.a"
+                    - text: "#"
+                - heading "Security NoticesDirect link to Security Notices" [level=3] [ref=e1264]:
+                  - text: Security Notices
+                  - link "Direct link to Security Notices" [ref=e1265] [cursor=pointer]:
+                    - /url: "#security-notices-2"
+                    - text: "#"
+                - list [ref=e1266]:
+                  - listitem [ref=e1267]:
+                    - text: Review the
+                    - link "Security Bulletins" [ref=e1268] [cursor=pointer]:
+                      - /url: /security-bulletins/reports/
+                    - text: page for the latest security advisories.
+                - heading "Palette EnterpriseDirect link to Palette Enterprise" [level=3] [ref=e1269]:
+                  - text: Palette Enterprise
+                  - link "Direct link to Palette Enterprise" [ref=e1270] [cursor=pointer]:
+                    - /url: "#palette-enterprise-4.7.a"
+                    - text: "#"
+                - heading "Breaking ChangesDirect link to Breaking Changes" [level=4] [ref=e1271]:
+                  - text: Breaking Changes
+                  - link "Direct link to Breaking Changes" [ref=e1272] [cursor=pointer]:
+                    - /url: "#breaking-changes-4.7.a"
+                    - text: "#"
+                - list [ref=e1273]:
+                  - listitem [ref=e1274]:
+                    - text: Availability zones are now required when creating MAAS
+                    - link "node pools" [ref=e1275] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/node-pool/
+                    - text: .
+                    - list [ref=e1276]:
+                      - listitem [ref=e1277]:
+                        - text: For
+                        - link "MAAS clusters" [ref=e1278] [cursor=pointer]:
+                          - /url: /clusters/data-center/maas/create-manage-maas-clusters/
+                        - text: deployed prior to Palette version 4.7.13, selecting an availability zone is required when creating a new node pool; however, selecting an availability zone is
+                        - emphasis [ref=e1279]: not
+                        - text: required when modifying an existing node pool, as modifying availability zones post-cluster deployment will trigger a
+                        - link "node pool repave" [ref=e1280] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-pool/#repave-behavior-and-configuration
+                        - text: .
+                      - listitem [ref=e1281]:
+                        - text: For MAAS clusters deployed prior to 4.7.13, we recommend creating a new node pool with an availability zone selected and migrating existing workloads to the new node pool when convenient. For guidance on migrating workloads, refer to the
+                        - link "Taints and Tolerations" [ref=e1282] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/taints/
+                        - text: guide.
+                - heading "FeaturesDirect link to Features" [level=4] [ref=e1283]:
+                  - text: Features
+                  - link "Direct link to Features" [ref=e1284] [cursor=pointer]:
+                    - /url: "#features-8"
+                    - text: "#"
+                - list [ref=e1285]:
+                  - listitem [ref=e1286]:
+                    - paragraph [ref=e1287]:
+                      - text: Amazon EKS node customization is now supported for custom AMIs, such as Amazon Linux 2 (AL2) and Amazon Linux 2023 (AL2023). This feature allows you to provide pre- and post-
+                      - link "kubeadm" [ref=e1288] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/reference/setup-tools/kubeadm/
+                      - text: commands for AL2, and provide
+                      - link "user data" [ref=e1289] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html#launch-template-user-data
+                      - text: customization in the form of shell scripts for AL2023. This functionality is provided through the Kubernetes EKS pack.
+                    - paragraph [ref=e1290]:
+                      - text: Refer to the
+                      - link "Node Customization" [ref=e1291] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubernetes-eks&tab=custom#node-customization
+                      - text: section of the Kubernetes EKS pack for configurable options available for these AMIs. For general guidance on deploying EKS clusters, refer to the
+                      - link "Create and Manage AWS EKS Cluster" [ref=e1292] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/aws/eks/
+                      - text: guide.
+                - list [ref=e1293]:
+                  - listitem [ref=e1294]:
+                    - text: Palette now provides a new platform setting for
+                    - link "automatic cluster role bindings" [ref=e1295] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/platform-settings/cluster-auto-rbac/
+                    - text: . This feature allows Palette to automatically apply the appropriate Kubernetes cluster role bindings based on user roles, ensuring that Role-Based Access Control (RBAC) permissions are consistently applied for all deployed clusters.
+                  - listitem [ref=e1296]:
+                    - img "Technical preview feature badge" [ref=e1297]
+                    - text: Palette now supports Canonical Kubernetes using the Ubuntu for Canonical Kubernetes OS pack. This feature currently supports the creation of
+                    - link "MAAS clusters" [ref=e1298] [cursor=pointer]:
+                      - /url: /clusters/data-center/maas/
+                    - text: with Canonical Kubernetes version 1.32. Refer to the MAAS
+                    - link "Architecture" [ref=e1299] [cursor=pointer]:
+                      - /url: /clusters/data-center/maas/architecture/#palette-maas-distribution
+                    - text: page for further details.
+                  - listitem [ref=e1300]:
+                    - link "Workspace resource quotas" [ref=e1301] [cursor=pointer]:
+                      - /url: /workspace/workspace-mgmt/resource-mgmt/#implement-resource-quotas
+                    - text: and
+                    - link "namespace resource quotas" [ref=e1302] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/namespace-management/#assign-resource-quotas
+                    - text: now support GPU limits. This feature currently supports Nvidia GPUs only.
+                  - listitem [ref=e1303]:
+                    - text: Palette now supports the AI pack type. This category streamlines the grouping and finding of AI-related packs. Refer to the
+                    - link "Packs List" [ref=e1304] [cursor=pointer]:
+                      - /url: /integrations/
+                    - text: to search and filter packs.
+                - heading "ImprovementsDirect link to Improvements" [level=4] [ref=e1305]:
+                  - text: Improvements
+                  - link "Direct link to Improvements" [ref=e1306] [cursor=pointer]:
+                    - /url: "#improvements-8"
+                    - text: "#"
+                - list [ref=e1307]:
+                  - listitem [ref=e1308]:
+                    - text: Nodes provisioned through
+                    - link "Karpenter" [ref=e1309] [cursor=pointer]:
+                      - /url: https://karpenter.sh/docs/
+                    - text: are now visible in Palette and supported for read-only operations, such as billing and monitoring. However,
+                    - link "Day-2 operations" [ref=e1310] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/
+                    - text: are not supported. Refer to
+                    - link "Karpenter Support" [ref=e1311] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/architecture/#karpenter-support
+                    - text: for more details.
+                  - listitem [ref=e1312]:
+                    - img "Technical preview feature badge" [ref=e1313]
+                    - text: A technical preview banner is now displayed on all
+                    - link "Artifact Studio" [ref=e1314] [cursor=pointer]:
+                      - /url: /downloads/artifact-studio/
+                    - text: pages.
+                - heading "Bug FixesDirect link to Bug Fixes" [level=4] [ref=e1315]:
+                  - text: Bug Fixes
+                  - link "Direct link to Bug Fixes" [ref=e1316] [cursor=pointer]:
+                    - /url: "#bug-fixes-11"
+                    - text: "#"
+                - list [ref=e1317]:
+                  - listitem [ref=e1318]:
+                    - text: Fixed an issue that caused errors on message broker pods after upgrading
+                    - link "self-hosted Palette" [ref=e1319] [cursor=pointer]:
+                      - /url: /enterprise-version/
+                    - text: installations to version 4.7.4 or later.
+                  - listitem [ref=e1320]:
+                    - text: Fixed an issue that caused validation errors to appear when
+                    - link "adding an Amazon ECR" [ref=e1321] [cursor=pointer]:
+                      - /url: /registries-and-packs/registries/oci-registry/add-oci-packs/
+                    - text: hosted in
+                    - link "AWS GovCloud" [ref=e1322] [cursor=pointer]:
+                      - /url: https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-ecr.html
+                    - text: to Palette.
+                  - listitem [ref=e1323]:
+                    - text: Fixed an issue that caused
+                    - link "self-hosted Palette" [ref=e1324] [cursor=pointer]:
+                      - /url: /enterprise-version/
+                    - text: installations to allow passing open redirects in URLs using the
+                    - code [ref=e1325]: returnTo
+                    - text: parameter.
+                - list [ref=e1326]:
+                  - listitem [ref=e1327]:
+                    - text: Fixed an issue that caused multiple repeated creations and reconciliations of
+                    - link "Spectro Proxy" [ref=e1328] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=spectro-proxy
+                    - text: pack resources.
+                - list [ref=e1329]:
+                  - listitem [ref=e1330]:
+                    - text: Fixed an issue that caused
+                    - link "sprig template functions" [ref=e1331] [cursor=pointer]:
+                      - /url: /registries-and-packs/pack-constraints/#sprig-template-functions
+                    - text: to fail when being used together with system and tenant scope
+                    - link "macros" [ref=e1332] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/macros/#scope-of-palette-macros
+                    - text: .
+                  - listitem [ref=e1333]:
+                    - text: Fixed an issue that caused the worker nodes of
+                    - link "MAAS" [ref=e1334] [cursor=pointer]:
+                      - /url: /clusters/data-center/maas/
+                    - text: clusters to be repaved in parallel.
+                  - listitem [ref=e1335]:
+                    - text: Fixed an issue that caused certificates to be incorrectly updated in cluster
+                    - link "Kubeconfig" [ref=e1336] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/kubeconfig/
+                    - text: files after certificate updates.
+                - heading "EdgeDirect link to Edge" [level=3] [ref=e1337]:
+                  - text: Edge
+                  - link "Direct link to Edge" [ref=e1338] [cursor=pointer]:
+                    - /url: "#edge-2"
+                    - text: "#"
+                - generic [ref=e1339]:
+                  - generic [ref=e1340]:
+                    - img [ref=e1342]
+                    - text: info
+                  - paragraph [ref=e1345]:
+                    - text: The
+                    - link "CanvOS" [ref=e1346] [cursor=pointer]:
+                      - /url: https://github.com/spectrocloud/CanvOS
+                    - text: version corresponding to the 4.7.13 Palette release is 4.7.9.
+                - heading "ImprovementsDirect link to Improvements" [level=4] [ref=e1347]:
+                  - text: Improvements
+                  - link "Direct link to Improvements" [ref=e1348] [cursor=pointer]:
+                    - /url: "#improvements-9"
+                    - text: "#"
+                - list [ref=e1349]:
+                  - listitem [ref=e1350]:
+                    - link "Remote shell" [ref=e1351] [cursor=pointer]:
+                      - /url: /clusters/edge/cluster-management/remote-shell/
+                    - text: has now exited Tech Preview and is ready for production workloads.
+                - list [ref=e1352]:
+                  - listitem [ref=e1353]:
+                    - text: The
+                    - link "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e1354] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=edge-k8s
+                    - text: distribution now supports virtual network overlays for multi-node clusters deployed with
+                    - link "agent mode" [ref=e1355] [cursor=pointer]:
+                      - /url: /deployment-modes/agent-mode/
+                    - text: or
+                    - link "appliance mode" [ref=e1356] [cursor=pointer]:
+                      - /url: /deployment-modes/appliance-mode/
+                    - text: . Refer to the
+                    - link "Enable Overlay Network" [ref=e1357] [cursor=pointer]:
+                      - /url: /clusters/edge/networking/vxlan-overlay/
+                    - text: guide for further details.
+                - list [ref=e1358]:
+                  - listitem [ref=e1359]:
+                    - text: The
+                    - link "Kubeconfig" [ref=e1360] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/kubeconfig/
+                    - text: file names of Edge clusters deployed with
+                    - link "agent mode" [ref=e1361] [cursor=pointer]:
+                      - /url: /deployment-modes/agent-mode/
+                    - text: or
+                    - link "appliance mode" [ref=e1362] [cursor=pointer]:
+                      - /url: /deployment-modes/appliance-mode/
+                    - text: now contain the cluster name.
+                - heading "Bug FixesDirect link to Bug Fixes" [level=4] [ref=e1363]:
+                  - text: Bug Fixes
+                  - link "Direct link to Bug Fixes" [ref=e1364] [cursor=pointer]:
+                    - /url: "#bug-fixes-12"
+                    - text: "#"
+                - list [ref=e1365]:
+                  - listitem [ref=e1366]:
+                    - text: Fixed an issue that caused the creation of locally deployed clusters to fail when adding a custom
+                    - code [ref=e1367]: stylus.path
+                    - text: to the
+                    - code [ref=e1368]: user-data
+                    - text: file.
+                  - listitem [ref=e1369]:
+                    - text: Fixed an issue that prevented Kubernetes upgrades from being applied to the control plane nodes of
+                    - link "agent mode" [ref=e1370] [cursor=pointer]:
+                      - /url: /deployment-modes/agent-mode/
+                    - text: clusters.
+                  - listitem [ref=e1371]:
+                    - text: Fixed an issue that caused single-node
+                    - link "Local UI" [ref=e1372] [cursor=pointer]:
+                      - /url: /clusters/edge/local-ui/
+                    - text: clusters configured with add-on packs to be stuck in the Provisioning state.
+                  - listitem [ref=e1373]:
+                    - text: Fixed an issue that caused Palette to report single-node Edge clusters with invalid
+                    - link "kube-vip configurations" [ref=e1374] [cursor=pointer]:
+                      - /url: /clusters/edge/networking/kubevip/
+                    - text: as Healthy, even though they were unreachable.
+                - heading "VerteXDirect link to VerteX" [level=3] [ref=e1375]:
+                  - text: VerteX
+                  - link "Direct link to VerteX" [ref=e1376] [cursor=pointer]:
+                    - /url: "#vertex-2"
+                    - text: "#"
+                - heading "FeaturesDirect link to Features" [level=4] [ref=e1377]:
+                  - text: Features
+                  - link "Direct link to Features" [ref=e1378] [cursor=pointer]:
+                    - /url: "#features-9"
+                    - text: "#"
+                - list [ref=e1379]:
+                  - listitem [ref=e1380]:
+                    - text: Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+                    - link "Palette section" [ref=e1381] [cursor=pointer]:
+                      - /url: "#palette-enterprise-4.7.a"
+                    - text: for more details.
+                - heading "AutomationDirect link to Automation" [level=3] [ref=e1382]:
+                  - text: Automation
+                  - link "Direct link to Automation" [ref=e1383] [cursor=pointer]:
+                    - /url: "#automation-3"
+                    - text: "#"
+                - generic [ref=e1384]:
+                  - generic [ref=e1385]:
+                    - img [ref=e1387]
+                    - text: info
+                  - paragraph [ref=e1390]:
+                    - text: Check out the
+                    - link "CLI Tools" [ref=e1391] [cursor=pointer]:
+                      - /url: /downloads/cli-tools/
+                    - text: page to find the compatible version of the Palette CLI.
+                - heading "FeaturesDirect link to Features" [level=4] [ref=e1392]:
+                  - text: Features
+                  - link "Direct link to Features" [ref=e1393] [cursor=pointer]:
+                    - /url: "#features-10"
+                    - text: "#"
+                - list [ref=e1394]:
+                  - listitem [ref=e1395]:
+                    - text: All cluster Terraform resources now support the
+                    - code [ref=e1396]: gpu_limit
+                    - text: and
+                    - code [ref=e1397]: gpu_provider
+                    - text: fields to enforce GPU resource limits. For more information, refer to the Spectro Cloud Terraform provider
+                    - link "documentation" [ref=e1398] [cursor=pointer]:
+                      - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs
+                    - text: . The Terraform resource
+                    - code [ref=e1399]: spectrocloud_workspace
+                    - text: now also supports these configurations.
+                  - listitem [ref=e1400]:
+                    - text: Terraform version 0.24.1 of the
+                    - link "Spectro Cloud Terraform provider" [ref=e1401] [cursor=pointer]:
+                      - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs
+                    - text: is available. For more details, refer to the Terraform provider
+                    - link "release page" [ref=e1402] [cursor=pointer]:
+                      - /url: https://github.com/spectrocloud/terraform-provider-spectrocloud/releases
+                    - text: .
+                  - listitem [ref=e1403]:
+                    - text: Crossplane version 0.24.1 of the
+                    - link "Spectro Cloud Crossplane provider" [ref=e1404] [cursor=pointer]:
+                      - /url: https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/v0.24.1
+                    - text: is now available.
+                - heading "Bug FixesDirect link to Bug Fixes" [level=4] [ref=e1405]:
+                  - text: Bug Fixes
+                  - link "Direct link to Bug Fixes" [ref=e1406] [cursor=pointer]:
+                    - /url: "#bug-fixes-13"
+                    - text: "#"
+                - list [ref=e1407]:
+                  - listitem [ref=e1408]:
+                    - text: Fixed an issue that prevented the taints configuration from being correctly applied to the
+                    - code [ref=e1409]: spectrocloud_cluster_custom_cloud
+                    - text: Terraform resource.
+                  - listitem [ref=e1410]:
+                    - text: Fixed an issue that caused the
+                    - code [ref=e1411]: spectrocloud_cluster_profile
+                    - text: Terraform resource to create invalid objects when cluster profile variables are not correctly initialized before creation.
+                - heading "Virtual Machine Orchestrator (VMO)Direct link to Virtual Machine Orchestrator (VMO)" [level=3] [ref=e1412]:
+                  - text: Virtual Machine Orchestrator (VMO)
+                  - link "Direct link to Virtual Machine Orchestrator (VMO)" [ref=e1413] [cursor=pointer]:
+                    - /url: "#virtual-machine-orchestrator-vmo"
+                    - text: "#"
+                - heading "FeaturesDirect link to Features" [level=4] [ref=e1414]:
+                  - text: Features
+                  - link "Direct link to Features" [ref=e1415] [cursor=pointer]:
+                    - /url: "#features-11"
+                    - text: "#"
+                - list [ref=e1416]:
+                  - listitem [ref=e1417]:
+                    - text: Palette now supports the configuration of a direct address for the
+                    - strong [ref=e1418]: Virtual Machines
+                    - text: dashboard of clusters configured using
+                    - link "Virtual Machine Orchestrator" [ref=e1419] [cursor=pointer]:
+                      - /url: /vm-management/
+                    - text: . Refer to the
+                    - link "Configure Direct Access to Virtual Machine Dashboard" [ref=e1420] [cursor=pointer]:
+                      - /url: /vm-management/configure-console-base-address/
+                    - text: guide for further details.
+                - heading "PacksDirect link to Packs" [level=3] [ref=e1421]:
+                  - text: Packs
+                  - link "Direct link to Packs" [ref=e1422] [cursor=pointer]:
+                    - /url: "#packs-5"
+                    - text: "#"
+                - heading "Pack NotesDirect link to Pack Notes" [level=4] [ref=e1423]:
+                  - text: Pack Notes
+                  - link "Direct link to Pack Notes" [ref=e1424] [cursor=pointer]:
+                    - /url: "#pack-notes-2"
+                    - text: "#"
+                - list [ref=e1425]:
+                  - listitem [ref=e1426]:
+                    - text: The Spectro Addon Repo registry has been removed from Palette multi-tenant SaaS. Refer to the
+                    - link "Default Registries" [ref=e1427] [cursor=pointer]:
+                      - /url: /registries-and-packs/registries/#default-registries
+                    - text: for the list of registries available to all SaaS tenants.
+                - heading "OSDirect link to OS" [level=4] [ref=e1428]:
+                  - text: OS
+                  - link "Direct link to OS" [ref=e1429] [cursor=pointer]:
+                    - /url: "#os"
+                    - text: "#"
+                - table [ref=e1430]:
+                  - rowgroup [ref=e1431]:
+                    - row "Pack Name New Version" [ref=e1432]:
+                      - cell "Pack Name" [ref=e1433]
+                      - cell "New Version" [ref=e1434]
+                  - rowgroup [ref=e1435]:
+                    - row "Ubuntu for Canonical K8s (MAAS) 22.04" [ref=e1436]:
+                      - cell "Ubuntu for Canonical K8s (MAAS)" [ref=e1437]
+                      - cell "22.04" [ref=e1438]
+                - heading "KubernetesDirect link to Kubernetes" [level=4] [ref=e1439]:
+                  - text: Kubernetes
+                  - link "Direct link to Kubernetes" [ref=e1440] [cursor=pointer]:
+                    - /url: "#kubernetes-1"
+                    - text: "#"
+                - table [ref=e1441]:
+                  - rowgroup [ref=e1442]:
+                    - row "Pack Name New Version" [ref=e1443]:
+                      - cell "Pack Name" [ref=e1444]
+                      - cell "New Version" [ref=e1445]
+                  - rowgroup [ref=e1446]:
+                    - row "Canonical Kubernetes 1.32" [ref=e1447]:
+                      - cell "Canonical Kubernetes" [ref=e1448]
+                      - cell "1.32" [ref=e1449]
+                    - row "GKE 1.32" [ref=e1450]:
+                      - cell "GKE" [ref=e1451]
+                      - cell "1.32" [ref=e1452]
+                    - row "Palette eXtended Kubernetes 1.32.6" [ref=e1453]:
+                      - cell "Palette eXtended Kubernetes" [ref=e1454]
+                      - cell "1.32.6" [ref=e1455]
+                    - row "Palette eXtended Kubernetes 1.31.10" [ref=e1456]:
+                      - cell "Palette eXtended Kubernetes" [ref=e1457]
+                      - cell "1.31.10" [ref=e1458]
+                    - row "Palette eXtended Kubernetes 1.30.14" [ref=e1459]:
+                      - cell "Palette eXtended Kubernetes" [ref=e1460]
+                      - cell "1.30.14" [ref=e1461]
+                    - row "Palette eXtended Kubernetes Edge (PXK-E) 1.33.3" [ref=e1462]:
+                      - cell "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e1463]
+                      - cell "1.33.3" [ref=e1464]
+                    - row "Palette eXtended Kubernetes Edge (PXK-E) 1.32.6" [ref=e1465]:
+                      - cell "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e1466]
+                      - cell "1.32.6" [ref=e1467]
+                    - row "Palette eXtended Kubernetes Edge (PXK-E) 1.31.10" [ref=e1468]:
+                      - cell "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e1469]
+                      - cell "1.31.10" [ref=e1470]
+                    - row "Palette eXtended Kubernetes Edge (PXK-E) 1.30.14" [ref=e1471]:
+                      - cell "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e1472]
+                      - cell "1.30.14" [ref=e1473]
+                    - row "Palette Optimized Canonical 1.33.2" [ref=e1474]:
+                      - cell "Palette Optimized Canonical" [ref=e1475]
+                      - cell "1.33.2" [ref=e1476]
+                    - row "Palette Optimized Canonical 1.32.6" [ref=e1477]:
+                      - cell "Palette Optimized Canonical" [ref=e1478]
+                      - cell "1.32.6" [ref=e1479]
+                    - row "Palette Optimized K3s 1.33.3" [ref=e1480]:
+                      - cell "Palette Optimized K3s" [ref=e1481]
+                      - cell "1.33.3" [ref=e1482]
+                    - row "Palette Optimized K3s 1.32.6" [ref=e1483]:
+                      - cell "Palette Optimized K3s" [ref=e1484]
+                      - cell "1.32.6" [ref=e1485]
+                    - row "Palette Optimized K3s 1.31.10" [ref=e1486]:
+                      - cell "Palette Optimized K3s" [ref=e1487]
+                      - cell "1.31.10" [ref=e1488]
+                    - row "Palette Optimized K3s 1.30.14" [ref=e1489]:
+                      - cell "Palette Optimized K3s" [ref=e1490]
+                      - cell "1.30.14" [ref=e1491]
+                    - row "Palette Optimized RKE2 1.33.3" [ref=e1492]:
+                      - cell "Palette Optimized RKE2" [ref=e1493]
+                      - cell "1.33.3" [ref=e1494]
+                    - row "Palette Optimized RKE2 1.32.6" [ref=e1495]:
+                      - cell "Palette Optimized RKE2" [ref=e1496]
+                      - cell "1.32.6" [ref=e1497]
+                    - row "Palette Optimized RKE2 1.31.10" [ref=e1498]:
+                      - cell "Palette Optimized RKE2" [ref=e1499]
+                      - cell "1.31.10" [ref=e1500]
+                    - row "Palette Optimized RKE2 1.30.14" [ref=e1501]:
+                      - cell "Palette Optimized RKE2" [ref=e1502]
+                      - cell "1.30.14" [ref=e1503]
+                    - row "RKE2 1.32.6" [ref=e1504]:
+                      - cell "RKE2" [ref=e1505]
+                      - cell "1.32.6" [ref=e1506]
+                    - row "RKE2 1.31.10" [ref=e1507]:
+                      - cell "RKE2" [ref=e1508]
+                      - cell "1.31.10" [ref=e1509]
+                    - row "RKE2 1.30.14" [ref=e1510]:
+                      - cell "RKE2" [ref=e1511]
+                      - cell "1.30.14" [ref=e1512]
+                - heading "CNIDirect link to CNI" [level=4] [ref=e1513]:
+                  - text: CNI
+                  - link "Direct link to CNI" [ref=e1514] [cursor=pointer]:
+                    - /url: "#cni-2"
+                    - text: "#"
+                - table [ref=e1515]:
+                  - rowgroup [ref=e1516]:
+                    - row "Pack Name New Version" [ref=e1517]:
+                      - cell "Pack Name" [ref=e1518]
+                      - cell "New Version" [ref=e1519]
+                  - rowgroup [ref=e1520]:
+                    - row "Calico 3.30.2" [ref=e1521]:
+                      - cell "Calico" [ref=e1522]
+                      - cell "3.30.2" [ref=e1523]
+                    - row "Calico (Azure) 3.30.2" [ref=e1524]:
+                      - cell "Calico (Azure)" [ref=e1525]
+                      - cell "3.30.2" [ref=e1526]
+                    - row "Cilium CNI (Canonical K8s) 1.16.3" [ref=e1527]:
+                      - cell "Cilium CNI (Canonical K8s)" [ref=e1528]
+                      - cell "1.16.3" [ref=e1529]
+                - heading "CSIDirect link to CSI" [level=4] [ref=e1530]:
+                  - text: CSI
+                  - link "Direct link to CSI" [ref=e1531] [cursor=pointer]:
+                    - /url: "#csi-1"
+                    - text: "#"
+                - table [ref=e1532]:
+                  - rowgroup [ref=e1533]:
+                    - row "Pack Name New Version" [ref=e1534]:
+                      - cell "Pack Name" [ref=e1535]
+                      - cell "New Version" [ref=e1536]
+                  - rowgroup [ref=e1537]:
+                    - row "Amazon EBS CSI 1.46.0" [ref=e1538]:
+                      - cell "Amazon EBS CSI" [ref=e1539]
+                      - cell "1.46.0" [ref=e1540]
+                    - row "Amazon EFS 2.1.9" [ref=e1541]:
+                      - cell "Amazon EFS" [ref=e1542]
+                      - cell "2.1.9" [ref=e1543]
+                    - row "Azure Disk CSI Driver 1.33.2" [ref=e1544]:
+                      - cell "Azure Disk CSI Driver" [ref=e1545]
+                      - cell "1.33.2" [ref=e1546]
+                    - row "Longhorn 1.9.0" [ref=e1547]:
+                      - cell "Longhorn" [ref=e1548]
+                      - cell "1.9.0" [ref=e1549]
+                    - row "vSphere CSI 3.5.0" [ref=e1550]:
+                      - cell "vSphere CSI" [ref=e1551]
+                      - cell "3.5.0" [ref=e1552]
+                - heading "Add-on PacksDirect link to Add-on Packs" [level=4] [ref=e1553]:
+                  - text: Add-on Packs
+                  - link "Direct link to Add-on Packs" [ref=e1554] [cursor=pointer]:
+                    - /url: "#add-on-packs-2"
+                    - text: "#"
+                - table [ref=e1555]:
+                  - rowgroup [ref=e1556]:
+                    - row "Pack Name New Version" [ref=e1557]:
+                      - cell "Pack Name" [ref=e1558]
+                      - cell "New Version" [ref=e1559]
+                  - rowgroup [ref=e1560]:
+                    - row "Amazon EFS 2.1.9" [ref=e1561]:
+                      - cell "Amazon EFS" [ref=e1562]
+                      - cell "2.1.9" [ref=e1563]
+                    - row "AWS Application Loadbalancer 2.13.3" [ref=e1564]:
+                      - cell "AWS Application Loadbalancer" [ref=e1565]
+                      - cell "2.13.3" [ref=e1566]
+                    - row "AWS Cluster Autoscaler Helm 1.33.0" [ref=e1567]:
+                      - cell "AWS Cluster Autoscaler Helm" [ref=e1568]
+                      - cell "1.33.0" [ref=e1569]
+                    - row "Cilium Tetragon 1.4.1" [ref=e1570]:
+                      - cell "Cilium Tetragon" [ref=e1571]
+                      - cell "1.4.1" [ref=e1572]
+                    - row "ExternalDNS 0.18.0" [ref=e1573]:
+                      - cell "ExternalDNS" [ref=e1574]
+                      - cell "0.18.0" [ref=e1575]
+                    - row "Flux2 2.16.2" [ref=e1576]:
+                      - cell "Flux2" [ref=e1577]
+                      - cell "2.16.2" [ref=e1578]
+                    - row "Longhorn 1.9.0" [ref=e1579]:
+                      - cell "Longhorn" [ref=e1580]
+                      - cell "1.9.0" [ref=e1581]
+                    - row "Multus CNI Plugin 2.2.18" [ref=e1582]:
+                      - cell "Multus CNI Plugin" [ref=e1583]
+                      - cell "2.2.18" [ref=e1584]
+                    - row "Nvidia GPU Operator 25.3.1" [ref=e1585]:
+                      - cell "Nvidia GPU Operator" [ref=e1586]
+                      - cell "25.3.1" [ref=e1587]
+                    - row "Open Policy Agent 3.19.2" [ref=e1588]:
+                      - cell "Open Policy Agent" [ref=e1589]
+                      - cell "3.19.2" [ref=e1590]
+                    - row "VMO Namespace Management 1.0.3" [ref=e1591]:
+                      - cell "VMO Namespace Management" [ref=e1592]
+                      - cell "1.0.3" [ref=e1593]
+                - heading "FIPS PacksDirect link to FIPS Packs" [level=4] [ref=e1594]:
+                  - text: FIPS Packs
+                  - link "Direct link to FIPS Packs" [ref=e1595] [cursor=pointer]:
+                    - /url: "#fips-packs-2"
+                    - text: "#"
+                - table [ref=e1596]:
+                  - rowgroup [ref=e1597]:
+                    - row "Pack Name New Version" [ref=e1598]:
+                      - cell "Pack Name" [ref=e1599]
+                      - cell "New Version" [ref=e1600]
+                  - rowgroup [ref=e1601]:
+                    - row "Azure Disk CSI Driver 1.33.2" [ref=e1602]:
+                      - cell "Azure Disk CSI Driver" [ref=e1603]
+                      - cell "1.33.2" [ref=e1604]
+                    - row "Calico 3.30.2" [ref=e1605]:
+                      - cell "Calico" [ref=e1606]
+                      - cell "3.30.2" [ref=e1607]
+                    - row "Calico (Azure) 3.30.2" [ref=e1608]:
+                      - cell "Calico (Azure)" [ref=e1609]
+                      - cell "3.30.2" [ref=e1610]
+                    - row "Palette eXtended Kubernetes 1.32.6" [ref=e1611]:
+                      - cell "Palette eXtended Kubernetes" [ref=e1612]
+                      - cell "1.32.6" [ref=e1613]
+                    - row "Palette eXtended Kubernetes 1.31.10" [ref=e1614]:
+                      - cell "Palette eXtended Kubernetes" [ref=e1615]
+                      - cell "1.31.10" [ref=e1616]
+                    - row "Palette eXtended Kubernetes 1.30.14" [ref=e1617]:
+                      - cell "Palette eXtended Kubernetes" [ref=e1618]
+                      - cell "1.30.14" [ref=e1619]
+                    - row "Palette eXtended Kubernetes Edge (PXK-E) 1.33.3" [ref=e1620]:
+                      - cell "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e1621]
+                      - cell "1.33.3" [ref=e1622]
+                    - row "Palette eXtended Kubernetes Edge (PXK-E) 1.32.6" [ref=e1623]:
+                      - cell "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e1624]
+                      - cell "1.32.6" [ref=e1625]
+                    - row "Palette eXtended Kubernetes Edge (PXK-E) 1.31.10" [ref=e1626]:
+                      - cell "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e1627]
+                      - cell "1.31.10" [ref=e1628]
+                    - row "Palette eXtended Kubernetes Edge (PXK-E) 1.30.14" [ref=e1629]:
+                      - cell "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e1630]
+                      - cell "1.30.14" [ref=e1631]
+                    - row "Palette Optimized RKE2 1.33.3" [ref=e1632]:
+                      - cell "Palette Optimized RKE2" [ref=e1633]
+                      - cell "1.33.3" [ref=e1634]
+                    - row "Palette Optimized RKE2 1.32.6" [ref=e1635]:
+                      - cell "Palette Optimized RKE2" [ref=e1636]
+                      - cell "1.32.6" [ref=e1637]
+                    - row "Palette Optimized RKE2 1.31.10" [ref=e1638]:
+                      - cell "Palette Optimized RKE2" [ref=e1639]
+                      - cell "1.31.10" [ref=e1640]
+                    - row "Palette Optimized RKE2 1.30.14" [ref=e1641]:
+                      - cell "Palette Optimized RKE2" [ref=e1642]
+                      - cell "1.30.14" [ref=e1643]
+                    - row "RKE2 1.32.6" [ref=e1644]:
+                      - cell "RKE2" [ref=e1645]
+                      - cell "1.32.6" [ref=e1646]
+                    - row "RKE2 1.31.10" [ref=e1647]:
+                      - cell "RKE2" [ref=e1648]
+                      - cell "1.31.10" [ref=e1649]
+                    - row "RKE2 1.30.14" [ref=e1650]:
+                      - cell "RKE2" [ref=e1651]
+                      - cell "1.30.14" [ref=e1652]
+                    - row "vSphere CSI 3.5.0" [ref=e1653]:
+                      - cell "vSphere CSI" [ref=e1654]
+                      - cell "3.5.0" [ref=e1655]
+                - heading "August 4, 2025 - Release 4.7.8Direct link to August 4, 2025 - Release 4.7.8" [level=2] [ref=e1656]:
+                  - text: August 4, 2025 - Release 4.7.8
+                  - link "Direct link to August 4, 2025 - Release 4.7.8" [ref=e1657] [cursor=pointer]:
+                    - /url: "#august-4-2025---release-478"
+                    - text: "#"
+                - heading "Bug FixesDirect link to Bug Fixes" [level=3] [ref=e1658]:
+                  - text: Bug Fixes
+                  - link "Direct link to Bug Fixes" [ref=e1659] [cursor=pointer]:
+                    - /url: "#bug-fixes-14"
+                    - text: "#"
+                - list [ref=e1660]:
+                  - listitem [ref=e1661]:
+                    - text: Fixed an issue that caused
+                    - link "EKS clusters" [ref=e1662] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/eks/
+                    - text: using
+                    - link "custom AMI images" [ref=e1663] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/eks/#cloud-configuration-settings
+                    - text: to be stuck in the Provisioning status.
+                  - listitem [ref=e1664]:
+                    - text: Fixed an issue that prevented Palette from honoring the
+                    - code [ref=e1665]: cluster.kubevipArgs.vip_ddns
+                    - text: value on clusters that use
+                    - code [ref=e1666]: kube-vip
+                    - text: to provide a virtual IP address for
+                    - link "Edge" [ref=e1667] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                    - text: clusters. Refer to the
+                    - link "Publish Cluster Services with Kube-vip" [ref=e1668] [cursor=pointer]:
+                      - /url: /clusters/edge/networking/kubevip/
+                    - text: guide for further information.
+                - heading "July 31, 2025 - Release 4.7.7Direct link to July 31, 2025 - Release 4.7.7" [level=2] [ref=e1669]:
+                  - text: July 31, 2025 - Release 4.7.7
+                  - link "Direct link to July 31, 2025 - Release 4.7.7" [ref=e1670] [cursor=pointer]:
+                    - /url: "#july-31-2025---release-477"
+                    - text: "#"
+                - heading "ImprovementsDirect link to Improvements" [level=3] [ref=e1671]:
+                  - text: Improvements
+                  - link "Direct link to Improvements" [ref=e1672] [cursor=pointer]:
+                    - /url: "#improvements-10"
+                    - text: "#"
+                - list [ref=e1673]:
+                  - listitem [ref=e1674]:
+                    - text: Clusters provisioned in
+                    - link "controller mode" [ref=e1675] [cursor=pointer]:
+                      - /url: /deployment-modes/controller-mode/
+                    - text: using
+                    - link "Cluster API (CAPI)" [ref=e1676] [cursor=pointer]:
+                      - /url: https://cluster-api.sigs.k8s.io/
+                    - text: now support the configuration of
+                    - link "node taints" [ref=e1677] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/taints/
+                    - text: .
+                  - listitem [ref=e1678]:
+                    - text: The
+                    - link "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e1679] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=edge-k8s
+                    - text: distribution now supports virtual network overlays for single node clusters. Refer to the
+                    - link "Enable Overlay Network" [ref=e1680] [cursor=pointer]:
+                      - /url: /clusters/edge/networking/vxlan-overlay/
+                    - text: guide for further details.
+                  - listitem [ref=e1681]:
+                    - link "Locally managed" [ref=e1682] [cursor=pointer]:
+                      - /url: /clusters/edge/local-ui/
+                    - text: clusters now support
+                    - link "network overlays" [ref=e1683] [cursor=pointer]:
+                      - /url: /clusters/edge/networking/vxlan-overlay/
+                    - text: .
+                - heading "Bug FixesDirect link to Bug Fixes" [level=3] [ref=e1684]:
+                  - text: Bug Fixes
+                  - link "Direct link to Bug Fixes" [ref=e1685] [cursor=pointer]:
+                    - /url: "#bug-fixes-15"
+                    - text: "#"
+                - list [ref=e1686]:
+                  - listitem [ref=e1687]:
+                    - text: Fixed an issue that caused certificates added through the
+                    - link "Registry Connect" [ref=e1688] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=registry-connect
+                    - text: pack to be incorrectly added on Edge clusters.
+                  - listitem [ref=e1689]:
+                    - text: Fixed an issue that caused
+                    - link "registry mapping rules" [ref=e1690] [cursor=pointer]:
+                      - /url: /clusters/edge/edge-configuration/installer-reference/#registry-mapping-rules
+                    - text: to be incorrectly applied for registries configured using the
+                    - link "Registry Connect" [ref=e1691] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=registry-connect
+                    - text: pack.
+                  - listitem [ref=e1692]:
+                    - text: Fixed an issue that caused masked cluster profile variable values to be displayed as plain text in
+                    - link "Edge Management API" [ref=e1693] [cursor=pointer]:
+                      - /url: /api/introduction/#edge-management-api
+                    - text: calls.
+                - heading "July 23, 2025 - Release 4.7.4Direct link to July 23, 2025 - Release 4.7.4" [level=2] [ref=e1694]:
+                  - text: July 23, 2025 - Release 4.7.4
+                  - link "Direct link to July 23, 2025 - Release 4.7.4" [ref=e1695] [cursor=pointer]:
+                    - /url: "#july-23-2025---release-474"
+                    - text: "#"
+                - heading "Bug FixesDirect link to Bug Fixes" [level=3] [ref=e1696]:
+                  - text: Bug Fixes
+                  - link "Direct link to Bug Fixes" [ref=e1697] [cursor=pointer]:
+                    - /url: "#bug-fixes-16"
+                    - text: "#"
+                - list [ref=e1698]:
+                  - listitem [ref=e1699]:
+                    - text: Fixed an issue where the Palette agent failed to start when using a
+                    - link "MAAS PCG" [ref=e1700] [cursor=pointer]:
+                      - /url: /clusters/pcg/deploy-pcg/maas/
+                    - text: with the
+                    - code [ref=e1701]: maas-preferred-subnet
+                    - text: ConfigMap.
+                - heading "July 19, 2025 - Release 4.7.0 - 4.7.3Direct link to July 19, 2025 - Release 4.7.0 - 4.7.3" [level=2] [ref=e1702]:
+                  - text: July 19, 2025 - Release 4.7.0 - 4.7.3
+                  - link "Direct link to July 19, 2025 - Release 4.7.0 - 4.7.3" [ref=e1703] [cursor=pointer]:
+                    - /url: "#release-notes-4.7.0"
+                    - text: "#"
+                - heading "Security NoticesDirect link to Security Notices" [level=3] [ref=e1704]:
+                  - text: Security Notices
+                  - link "Direct link to Security Notices" [ref=e1705] [cursor=pointer]:
+                    - /url: "#security-notices-3"
+                    - text: "#"
+                - list [ref=e1706]:
+                  - listitem [ref=e1707]:
+                    - text: Review the
+                    - link "Security Bulletins" [ref=e1708] [cursor=pointer]:
+                      - /url: /security-bulletins/reports/
+                    - text: page for the latest security advisories.
+                - heading "Palette EnterpriseDirect link to Palette Enterprise" [level=3] [ref=e1709]:
+                  - text: Palette Enterprise
+                  - link "Direct link to Palette Enterprise" [ref=e1710] [cursor=pointer]:
+                    - /url: "#palette-enterprise-4.7.0"
+                    - text: "#"
+                - heading "Breaking ChangesDirect link to Breaking Changes" [level=4] [ref=e1711]:
+                  - text: Breaking Changes
+                  - link "Direct link to Breaking Changes" [ref=e1712] [cursor=pointer]:
+                    - /url: "#breaking-changes-4.7.0"
+                    - text: "#"
+                - list [ref=e1713]:
+                  - listitem [ref=e1714]:
+                    - paragraph [ref=e1715]:
+                      - text: The
+                      - link "log fetcher API endpoints" [ref=e1716] [cursor=pointer]:
+                        - /url: /api/v1/v-1-cluster-feature-log-fetcher-create/
+                      - text: "now only support creating and retrieving logs from the following log paths:"
+                    - list [ref=e1717]:
+                      - listitem [ref=e1718]:
+                        - code [ref=e1719]: /var/log
+                      - listitem [ref=e1720]:
+                        - code [ref=e1721]: /var/log/syslog
+                      - listitem [ref=e1722]:
+                        - code [ref=e1723]: /var/log/cloud-init
+                    - paragraph [ref=e1724]: All other log paths are now unsupported.
+                    - paragraph [ref=e1725]: "In addition, log downloads are only permitted from the following namespaces:"
+                    - list [ref=e1726]:
+                      - listitem [ref=e1727]:
+                        - code [ref=e1728]: kube-system
+                      - listitem [ref=e1729]:
+                        - code [ref=e1730]: cluster-<cluster-uid>
+                  - listitem [ref=e1731]:
+                    - paragraph [ref=e1732]:
+                      - text: The Palette UI now supports the configuration of custom Amazon Linux 2023 (AL2023) and Amazon Linux 2 (AL2) AMIs for AWS EKS nodes. Previously, default AMI types were configured using node labels. EKS clusters previously deployed with
+                      - strong [ref=e1733]: Enable Nodepool Customization
+                      - text: enabled and AMI node labels will be repaved upon upgrading to version 4.7.3. AWS EKS clusters that did not specify an AMI type will now use AL2_X86_64 by default. Refer to the
+                      - link "Create and Manage AWS EKS Cluster" [ref=e1734] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/aws/eks/#cloud-configuration-settings
+                      - text: guide for the updated configuration process.
+                - heading "FeaturesDirect link to Features" [level=4] [ref=e1735]:
+                  - text: Features
+                  - link "Direct link to Features" [ref=e1736] [cursor=pointer]:
+                    - /url: "#features-12"
+                    - text: "#"
+                - list [ref=e1737]:
+                  - listitem [ref=e1738]:
+                    - paragraph [ref=e1739]:
+                      - img "Technical preview feature badge" [ref=e1740]
+                      - text: The
+                      - link "Palette Management Appliance" [ref=e1741] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/palette-management-appliance/
+                      - text: is a new method to install self-hosted Palette in your infrastructure environment. It provides a simple and efficient way to deploy Palette using an ISO file. The Palette Management Appliance is available for VMware, Bare Metal, and Machine as a Service (MAAS) environments.
+                  - listitem [ref=e1742]:
+                    - paragraph [ref=e1743]:
+                      - img "Technical preview feature badge" [ref=e1744]
+                      - text: The
+                      - link "Artifact Studio" [ref=e1745] [cursor=pointer]:
+                        - /url: /downloads/artifact-studio/
+                      - text: is a new platform for obtaining bundles, packs, and installers relating to Palette Enterprise and Palette VerteX. It provides a single source for these artifacts, which you can download and then upload to your registries.
+                  - listitem [ref=e1746]:
+                    - paragraph [ref=e1747]:
+                      - link "Self-hosted Palette" [ref=e1748] [cursor=pointer]:
+                        - /url: /enterprise-version/
+                      - text: now supports the configuration of a classification banner. System administrators can set the banner text and color through the
+                      - link "system console" [ref=e1749] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/#system-console
+                      - text: . Refer to the
+                      - link "Banners" [ref=e1750] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/login-banner/
+                      - text: guide for further guidance.
+                  - listitem [ref=e1751]:
+                    - paragraph [ref=e1752]:
+                      - text: All ZST bundles, ISO files, and images in Spectro Cloud-owned registries are now signed using
+                      - link "Cosign" [ref=e1753] [cursor=pointer]:
+                        - /url: https://docs.sigstore.dev/cosign/system_config/installation/
+                      - text: ", ensuring artifacts are traceable, tamper-evident, and aligned with modern compliance frameworks. Generated keys use the FIPS-compliant ECDSA-P256 cryptographic algorithm for the signature and SHA256 for hashes; keys are stored in PEM-encoded PKCS8 format. Refer to the"
+                      - link "Artifact Signatures" [ref=e1754] [cursor=pointer]:
+                        - /url: /security/artifact-signatures/
+                      - text: guide for further information.
+                - heading "ImprovementsDirect link to Improvements" [level=4] [ref=e1755]:
+                  - text: Improvements
+                  - link "Direct link to Improvements" [ref=e1756] [cursor=pointer]:
+                    - /url: "#improvements-11"
+                    - text: "#"
+                - list [ref=e1757]:
+                  - listitem [ref=e1758]:
+                    - paragraph [ref=e1759]:
+                      - text: Palette now supports
+                      - link "Azure Entra ID authentication for Azure Blob Storage" [ref=e1760] [cursor=pointer]:
+                        - /url: https://learn.microsoft.com/en-us/azure/storage/blobs/authorize-access-azure-active-directory
+                      - text: for
+                      - link "Azure IaaS" [ref=e1761] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/azure/
+                      - text: and
+                      - link "AKS" [ref=e1762] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/azure/aks/
+                      - text: cluster provisioning. Palette still uses
+                      - link "Shared Access Signature (SAS)" [ref=e1763] [cursor=pointer]:
+                        - /url: https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview
+                      - text: by default, but if your Azure environment has restrictions that block SAS, Entra ID is automatically used instead.
+                    - paragraph [ref=e1764]:
+                      - text: To enable this feature, the following
+                      - code [ref=e1765]: DataActions
+                      - text: "have been added to the dynamic and static Azure IaaS permission sets:"
+                    - list [ref=e1766]:
+                      - listitem [ref=e1767]:
+                        - code [ref=e1768]: Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read
+                      - listitem [ref=e1769]:
+                        - code [ref=e1770]: Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write
+                    - paragraph [ref=e1771]:
+                      - text: These additional permissions are not required for AKS. Refer to the
+                      - link "Required Permissions" [ref=e1772] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/azure/required-permissions/
+                      - text: guide for all required permissions.
+                - heading "Bug FixesDirect link to Bug Fixes" [level=4] [ref=e1773]:
+                  - text: Bug Fixes
+                  - link "Direct link to Bug Fixes" [ref=e1774] [cursor=pointer]:
+                    - /url: "#bug-fixes-17"
+                    - text: "#"
+                - list [ref=e1775]:
+                  - listitem [ref=e1776]: Fixed an issue that caused the certificate renewal job to fail once clusters provisioned with Kubernetes 1.28 or older are updated to Kubernetes 1.29.
+                  - listitem [ref=e1777]: Fixed an issue that caused resource reconciliation to fail when deleting a pack whose resources have already been removed.
+                  - listitem [ref=e1778]:
+                    - text: "Fixed an issue that restricted cluster tags from containing numbers, spaces, and the following special characters:"
+                    - code [ref=e1779]: _
+                    - text: ","
+                    - code [ref=e1780]: .
+                    - text: ","
+                    - code [ref=e1781]: ":"
+                    - text: ","
+                    - code [ref=e1782]: /
+                    - text: ","
+                    - code [ref=e1783]: =
+                    - text: ","
+                    - code [ref=e1784]: +
+                    - text: ","
+                    - code [ref=e1785]: "-"
+                    - text: ", and"
+                    - code [ref=e1786]: "@"
+                    - text: .
+                  - listitem [ref=e1787]: Fixed an issue that caused cluster health events to be incorrectly reported in Palette after partial broker service outages.
+                - heading "EdgeDirect link to Edge" [level=3] [ref=e1788]:
+                  - text: Edge
+                  - link "Direct link to Edge" [ref=e1789] [cursor=pointer]:
+                    - /url: "#edge-3"
+                    - text: "#"
+                - generic [ref=e1790]:
+                  - generic [ref=e1791]:
+                    - img [ref=e1793]
+                    - text: info
+                  - paragraph [ref=e1796]:
+                    - text: The
+                    - link "CanvOS" [ref=e1797] [cursor=pointer]:
+                      - /url: https://github.com/spectrocloud/CanvOS
+                    - text: version corresponding to the 4.7.3 Palette release is 4.7.2.
+                - heading "ImprovementsDirect link to Improvements" [level=4] [ref=e1798]:
+                  - text: Improvements
+                  - link "Direct link to Improvements" [ref=e1799] [cursor=pointer]:
+                    - /url: "#improvements-12"
+                    - text: "#"
+                - list [ref=e1800]:
+                  - listitem [ref=e1801]:
+                    - text: Palette now provides enhanced support for upgrades to
+                    - link "Palette Optimized Canonical" [ref=e1802] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=edge-canonical
+                    - text: . This improvement ensures successful upgrades between minor and patch versions on connected and airgapped Edge clusters.
+                - list [ref=e1803]:
+                  - listitem [ref=e1804]:
+                    - link "Remote shell" [ref=e1805] [cursor=pointer]:
+                      - /url: /clusters/edge/cluster-management/remote-shell/
+                    - text: temporary user credentials and the remote shell tunnel are now removed after 24 hours of inactivity. The removal of inactive tunnels and credentials reduces the risk of unauthorized access and helps maintain an efficient system.
+                  - listitem [ref=e1806]:
+                    - text: The Palette UI now partially obfuscates
+                    - link "Edge host registration tokens" [ref=e1807] [cursor=pointer]:
+                      - /url: /clusters/edge/site-deployment/site-installation/edge-host-registration/
+                    - text: . Users must manually reveal the full token using a toggle.
+                  - listitem [ref=e1808]:
+                    - link "Edge Management API" [ref=e1809] [cursor=pointer]:
+                      - /url: /api/introduction/#edge-management-api
+                    - text: has now exited Tech Preview and is ready for production workloads.
+                  - listitem [ref=e1810]:
+                    - link "Cluster Definition" [ref=e1811] [cursor=pointer]:
+                      - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso/
+                    - text: has now exited Tech Preview and is ready for production workloads.
+                - heading "Bug FixesDirect link to Bug Fixes" [level=4] [ref=e1812]:
+                  - text: Bug Fixes
+                  - link "Direct link to Bug Fixes" [ref=e1813] [cursor=pointer]:
+                    - /url: "#bug-fixes-18"
+                    - text: "#"
+                - list [ref=e1814]:
+                  - listitem [ref=e1815]:
+                    - text: Fixed an issue that prevented
+                    - link "Edge clusters" [ref=e1816] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                    - text: with multi-hyphen Helm chart names from provisioning.
+                  - listitem [ref=e1817]:
+                    - text: Fixed an issue that caused the
+                    - code [ref=e1818]: containerd sync
+                    - text: job to perform unnecessary file copying and I/O operations on disconnected
+                    - link "Edge clusters" [ref=e1819] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                    - text: .
+                  - listitem [ref=e1820]:
+                    - text: Fixed an issue that caused API calls to add
+                    - link "Edge cluster" [ref=e1821] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                    - text: nodes to fail.
+                  - listitem [ref=e1822]:
+                    - text: Fixed an issue that caused proxy certificates to be incorrectly shown in
+                    - link "Local UI" [ref=e1823] [cursor=pointer]:
+                      - /url: /clusters/edge/local-ui/
+                    - text: .
+                  - listitem [ref=e1824]:
+                    - text: Fixed an issue that caused the connection configuration validation in the Palette UI to fail for certain valid endpoints and
+                    - link "registration tokens" [ref=e1825] [cursor=pointer]:
+                      - /url: /clusters/edge/site-deployment/site-installation/edge-host-registration/
+                    - text: .
+                  - listitem [ref=e1826]:
+                    - text: Fixed an issue that caused commands to the API delete endpoint to reset Edge hosts actively being provisioned to an
+                    - link "Edge cluster" [ref=e1827] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                    - text: .
+                  - listitem [ref=e1828]:
+                    - text: Fixed an issue that caused the
+                    - code [ref=e1829]: /usr/local
+                    - text: directory on Edge nodes to be repeatedly resized.
+                  - listitem [ref=e1830]: Fixed an issue that prevented new certificates from being reconciled in clusters provisioned with a certificate that has recently expired.
+                  - listitem [ref=e1831]:
+                    - text: Fixed an issue that prevented the migration of resources from the
+                    - code [ref=e1832]: system-upgrade
+                    - text: namespace to the
+                    - code [ref=e1833]: system-upgrade-<cluster-uid>
+                    - text: namespace.
+                  - listitem [ref=e1834]: Fixed an issue that caused Palette to incorrectly report the status of successfully installed packs.
+                  - listitem [ref=e1835]:
+                    - text: Fixed an issue that caused pods related to
+                    - link "agent mode" [ref=e1836] [cursor=pointer]:
+                      - /url: /deployment-modes/agent-mode/
+                    - text: cluster upgrades to get stuck in a
+                    - code [ref=e1837]: Terminating
+                    - text: state.
+                  - listitem [ref=e1838]:
+                    - text: Fixed an issue that caused Palette to incorrectly report certificate errors on
+                    - link "Edge clusters" [ref=e1839] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                    - text: .
+                  - listitem [ref=e1840]:
+                    - text: Fixed an issue that caused continuous retries on malformed bundles during the deployment of
+                    - link "Edge clusters" [ref=e1841] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                    - text: instead of initializing a fresh pack download.
+                  - listitem [ref=e1842]:
+                    - text: Fixed an issue that caused
+                    - link "Kube-vip" [ref=e1843] [cursor=pointer]:
+                      - /url: /clusters/edge/networking/kubevip/
+                    - text: arguments to be incorrectly reconciled after cluster creation.
+                - heading "VerteXDirect link to VerteX" [level=3] [ref=e1844]:
+                  - text: VerteX
+                  - link "Direct link to VerteX" [ref=e1845] [cursor=pointer]:
+                    - /url: "#vertex-3"
+                    - text: "#"
+                - heading "FeaturesDirect link to Features" [level=4] [ref=e1846]:
+                  - text: Features
+                  - link "Direct link to Features" [ref=e1847] [cursor=pointer]:
+                    - /url: "#features-13"
+                    - text: "#"
+                - list [ref=e1848]:
+                  - listitem [ref=e1849]:
+                    - paragraph [ref=e1850]:
+                      - img "Technical preview feature badge" [ref=e1851]
+                      - text: The VerteX Management Appliance is a new method to install Palette VerteX in your infrastructure environment. It provides a simple and efficient way to deploy Palette VerteX using an ISO file. The VerteX Management Appliance is available for VMware, Bare Metal, and Machine as a Service (MAAS) environments. Refer to the VerteX Management Appliance guide for further information.
+                  - listitem [ref=e1852]:
+                    - paragraph [ref=e1853]: The Artifact Studio is a new platform for obtaining bundles, packs, and installers relating to Palette Enterprise and Palette VerteX. It provides a single source for these artifacts, which you can download and then upload to your registries. Refer to the Artifact Studio guide for further information.
+                  - listitem [ref=e1854]:
+                    - paragraph [ref=e1855]:
+                      - text: The
+                      - link "Zot" [ref=e1856] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=zot-registry
+                      - text: registry is now supported as a primary registry for clusters managed by VerteX. Refer to
+                      - link "Deploy Cluster with a Primary Registry" [ref=e1857] [cursor=pointer]:
+                        - /url: /clusters/edge/site-deployment/deploy-custom-registries/deploy-primary-registry/
+                      - text: for more information.
+                  - listitem [ref=e1858]:
+                    - paragraph [ref=e1859]:
+                      - text: Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+                      - link "Palette section" [ref=e1860] [cursor=pointer]:
+                        - /url: "#palette-enterprise-4.7.0"
+                      - text: for more details.
+                - heading "AutomationDirect link to Automation" [level=3] [ref=e1861]:
+                  - text: Automation
+                  - link "Direct link to Automation" [ref=e1862] [cursor=pointer]:
+                    - /url: "#automation-4"
+                    - text: "#"
+                - generic [ref=e1863]:
+                  - generic [ref=e1864]:
+                    - img [ref=e1866]
+                    - text: info
+                  - paragraph [ref=e1869]:
+                    - text: Check out the
+                    - link "CLI Tools" [ref=e1870] [cursor=pointer]:
+                      - /url: /downloads/cli-tools/
+                    - text: page to find the compatible version of the Palette CLI.
+                - heading "Breaking ChangesDirect link to Breaking Changes" [level=4] [ref=e1871]:
+                  - text: Breaking Changes
+                  - link "Direct link to Breaking Changes" [ref=e1872] [cursor=pointer]:
+                    - /url: "#breaking-changes-automation-4.7.0"
+                    - text: "#"
+                - list [ref=e1873]:
+                  - listitem [ref=e1874]:
+                    - text: A new field
+                    - code [ref=e1875]: isTwoNodeCluster
+                    - text: has been introduced to the request body of the
+                    - link "Updates the cluster configuration information" [ref=e1876] [cursor=pointer]:
+                      - /url: /api/v1/v-1-cloud-configs-edge-native-uid-cluster-config/
+                    - text: API endpoint. This field must now be set to
+                    - code [ref=e1877]: "true"
+                    - text: before setting the
+                    - code [ref=e1878]: twoNodeCandidatePriority
+                    - text: field on Edge hosts using the
+                    - link "Creates an Hybrid AWS cloud config's Edge-Native machine pool" [ref=e1879] [cursor=pointer]:
+                      - /url: /api/v1/v-1-aws-cloud-configs-edge-native-uid-machine-pool-create/
+                    - text: and
+                    - link "Updates the specified Hybrid AWS cluster cloud config's Edge-Native machine pool" [ref=e1880] [cursor=pointer]:
+                      - /url: /api/v1/v-1-aws-cloud-configs-edge-native-machine-pool-update/
+                    - text: API endpoints.
+                - heading "FeaturesDirect link to Features" [level=4] [ref=e1881]:
+                  - text: Features
+                  - link "Direct link to Features" [ref=e1882] [cursor=pointer]:
+                    - /url: "#features-14"
+                    - text: "#"
+                - list [ref=e1883]:
+                  - listitem [ref=e1884]:
+                    - text: The
+                    - code [ref=e1885]: content build
+                    - text: command of the
+                    - link "Palette CLI" [ref=e1886] [cursor=pointer]:
+                      - /url: /automation/palette-cli/
+                    - text: now includes the
+                    - code [ref=e1887]: "--exclude-profiles"
+                    - text: flag. This flag allows you to exclude content such as images, charts, or raw files present in the listed profiles from the generated content bundle. Additionally, content bundles are now saved to the
+                    - code [ref=e1888]: <current-directory>/output/content-bundle/
+                    - text: directory by default; you can override this location by using the
+                    - code [ref=e1889]: "--output"
+                    - text: flag. Refer to the
+                    - link "Content" [ref=e1890] [cursor=pointer]:
+                      - /url: /automation/palette-cli/commands/content/
+                    - text: command reference page for further information.
+                  - listitem [ref=e1891]:
+                    - text: Terraform version 0.23.8 of the
+                    - link "Spectro Cloud Terraform provider" [ref=e1892] [cursor=pointer]:
+                      - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs
+                    - text: is available. For more details, refer to the Terraform provider
+                    - link "release page" [ref=e1893] [cursor=pointer]:
+                      - /url: https://github.com/spectrocloud/terraform-provider-spectrocloud/releases
+                    - text: .
+                  - listitem [ref=e1894]:
+                    - text: Crossplane version 0.23.9 of the
+                    - link "Spectro Cloud Crossplane provider" [ref=e1895] [cursor=pointer]:
+                      - /url: https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/v0.23.9
+                    - text: is available. The provider now includes support for
+                    - link "public cloud" [ref=e1896] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/
+                    - text: ","
+                    - link "VMware" [ref=e1897] [cursor=pointer]:
+                      - /url: /clusters/data-center/vmware/
+                    - text: ", and"
+                    - link "Canonical MAAS" [ref=e1898] [cursor=pointer]:
+                      - /url: /clusters/data-center/maas/
+                    - text: clusters.
+                - heading "ImprovementsDirect link to Improvements" [level=4] [ref=e1899]:
+                  - text: Improvements
+                  - link "Direct link to Improvements" [ref=e1900] [cursor=pointer]:
+                    - /url: "#improvements-13"
+                    - text: "#"
+                - list [ref=e1901]:
+                  - listitem [ref=e1902]:
+                    - text: The Terraform resource
+                    - code [ref=e1903]: spectrocloud_macros
+                    - text: now supports the
+                    - code [ref=e1904]: terraform import
+                    - text: command. For more information, refer to the Spectro Cloud Terraform provider
+                    - link "documentation" [ref=e1905] [cursor=pointer]:
+                      - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs
+                    - text: .
+                  - listitem [ref=e1906]:
+                    - text: The Terraform resource
+                    - code [ref=e1907]: spectrocloud_cluster_profile
+                    - text: now resolves the
+                    - code [ref=e1908]: pack_uid
+                    - text: based on the
+                    - code [ref=e1909]: registry_uid
+                    - text: ","
+                    - code [ref=e1910]: tag
+                    - text: ", and"
+                    - code [ref=e1911]: name
+                    - text: fields. For more information, refer to the Spectro Cloud Terraform provider
+                    - link "documentation" [ref=e1912] [cursor=pointer]:
+                      - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs
+                    - text: .
+                - heading "Bug FixesDirect link to Bug Fixes" [level=4] [ref=e1913]:
+                  - text: Bug Fixes
+                  - link "Direct link to Bug Fixes" [ref=e1914] [cursor=pointer]:
+                    - /url: "#bug-fixes-19"
+                    - text: "#"
+                - list [ref=e1915]:
+                  - listitem [ref=e1916]:
+                    - text: Fixed an issue that caused the
+                    - link "Palette CLI content command" [ref=e1917] [cursor=pointer]:
+                      - /url: /automation/palette-cli/commands/content/
+                      - text: Palette CLI
+                      - code [ref=e1918]: content
+                      - text: command
+                    - text: to fail to bundle packs content.
+                - heading "Virtual Machine Orchestrator (VMO)Direct link to Virtual Machine Orchestrator (VMO)" [level=3] [ref=e1919]:
+                  - text: Virtual Machine Orchestrator (VMO)
+                  - link "Direct link to Virtual Machine Orchestrator (VMO)" [ref=e1920] [cursor=pointer]:
+                    - /url: "#virtual-machine-orchestrator-vmo-1"
+                    - text: "#"
+                - heading "ImprovementsDirect link to Improvements" [level=4] [ref=e1921]:
+                  - text: Improvements
+                  - link "Direct link to Improvements" [ref=e1922] [cursor=pointer]:
+                    - /url: "#improvements-14"
+                    - text: "#"
+                - list [ref=e1923]:
+                  - listitem [ref=e1924]:
+                    - paragraph [ref=e1925]:
+                      - text: Configuration adjustments have been made to improve the compatibility of the
+                      - link "Virtual Machine Orchestrator" [ref=e1926] [cursor=pointer]:
+                        - /url: /vm-management/
+                      - text: with
+                      - link "self-hosted Palette" [ref=e1927] [cursor=pointer]:
+                        - /url: /enterprise-version/
+                      - text: installations. This includes the ability to configure a private CA certificate for secure communication. Refer to the
+                      - link "Configure Private CA Certificate" [ref=e1928] [cursor=pointer]:
+                        - /url: /vm-management/configure-private-ca-certificate/
+                      - text: guide for more details.
+                  - listitem [ref=e1929]:
+                    - paragraph [ref=e1930]: The KubeVirt version in use is now v1.5.0. Other components of the VMO pack have also been upgraded, enhancing system reliability and security.
+                - heading "PacksDirect link to Packs" [level=3] [ref=e1931]:
+                  - text: Packs
+                  - link "Direct link to Packs" [ref=e1932] [cursor=pointer]:
+                    - /url: "#packs-6"
+                    - text: "#"
+                - heading "Pack NotesDirect link to Pack Notes" [level=4] [ref=e1933]:
+                  - text: Pack Notes
+                  - link "Direct link to Pack Notes" [ref=e1934] [cursor=pointer]:
+                    - /url: "#pack-notes-3"
+                    - text: "#"
+                - list [ref=e1935]:
+                  - listitem [ref=e1936]:
+                    - text: Palette VerteX now supports Zot OCI-native container image registries through the
+                    - link "Zot Registry" [ref=e1937] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=zot-registry
+                    - text: pack.
+                - heading "KubernetesDirect link to Kubernetes" [level=4] [ref=e1938]:
+                  - text: Kubernetes
+                  - link "Direct link to Kubernetes" [ref=e1939] [cursor=pointer]:
+                    - /url: "#kubernetes-2"
+                    - text: "#"
+                - table [ref=e1940]:
+                  - rowgroup [ref=e1941]:
+                    - row "Pack Name New Version" [ref=e1942]:
+                      - cell "Pack Name" [ref=e1943]
+                      - cell "New Version" [ref=e1944]
+                  - rowgroup [ref=e1945]:
+                    - row "Palette Optimized Canonical 1.33.0" [ref=e1946]:
+                      - cell "Palette Optimized Canonical" [ref=e1947]
+                      - cell "1.33.0" [ref=e1948]
+                    - row "Palette Optimized K3s 1.33.1" [ref=e1949]:
+                      - cell "Palette Optimized K3s" [ref=e1950]
+                      - cell "1.33.1" [ref=e1951]
+                    - row "Palette Optimized K3s 1.32.4" [ref=e1952]:
+                      - cell "Palette Optimized K3s" [ref=e1953]
+                      - cell "1.32.4" [ref=e1954]
+                    - row "Palette Optimized K3s 1.31.8" [ref=e1955]:
+                      - cell "Palette Optimized K3s" [ref=e1956]
+                      - cell "1.31.8" [ref=e1957]
+                    - row "Palette Optimized K3s 1.30.12" [ref=e1958]:
+                      - cell "Palette Optimized K3s" [ref=e1959]
+                      - cell "1.30.12" [ref=e1960]
+                    - row "Palette eXtended Kubernetes 1.32.4" [ref=e1961]:
+                      - cell "Palette eXtended Kubernetes" [ref=e1962]
+                      - cell "1.32.4" [ref=e1963]
+                    - row "Palette eXtended Kubernetes 1.31.8" [ref=e1964]:
+                      - cell "Palette eXtended Kubernetes" [ref=e1965]
+                      - cell "1.31.8" [ref=e1966]
+                    - row "Palette eXtended Kubernetes 1.30.12" [ref=e1967]:
+                      - cell "Palette eXtended Kubernetes" [ref=e1968]
+                      - cell "1.30.12" [ref=e1969]
+                    - row "Palette eXtended Kubernetes Edge (PXK-E) 1.33.1" [ref=e1970]:
+                      - cell "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e1971]
+                      - cell "1.33.1" [ref=e1972]
+                    - row "Palette eXtended Kubernetes Edge (PXK-E) 1.32.4" [ref=e1973]:
+                      - cell "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e1974]
+                      - cell "1.32.4" [ref=e1975]
+                    - row "Palette eXtended Kubernetes Edge (PXK-E) 1.31.8" [ref=e1976]:
+                      - cell "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e1977]
+                      - cell "1.31.8" [ref=e1978]
+                    - row "Palette eXtended Kubernetes Edge (PXK-E) 1.30.12" [ref=e1979]:
+                      - cell "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e1980]
+                      - cell "1.30.12" [ref=e1981]
+                    - row "Palette Optimized RKE2 1.33.1" [ref=e1982]:
+                      - cell "Palette Optimized RKE2" [ref=e1983]
+                      - cell "1.33.1" [ref=e1984]
+                    - row "Palette Optimized RKE2 1.32.4" [ref=e1985]:
+                      - cell "Palette Optimized RKE2" [ref=e1986]
+                      - cell "1.32.4" [ref=e1987]
+                    - row "Palette Optimized RKE2 1.31.8" [ref=e1988]:
+                      - cell "Palette Optimized RKE2" [ref=e1989]
+                      - cell "1.31.8" [ref=e1990]
+                    - row "Palette Optimized RKE2 1.30.12" [ref=e1991]:
+                      - cell "Palette Optimized RKE2" [ref=e1992]
+                      - cell "1.30.12" [ref=e1993]
+                    - row "RKE2 1.32.7" [ref=e1994]:
+                      - cell "RKE2" [ref=e1995]
+                      - cell "1.32.7" [ref=e1996]
+                    - row "RKE2 1.31.8" [ref=e1997]:
+                      - cell "RKE2" [ref=e1998]
+                      - cell "1.31.8" [ref=e1999]
+                    - row "RKE2 1.30.12" [ref=e2000]:
+                      - cell "RKE2" [ref=e2001]
+                      - cell "1.30.12" [ref=e2002]
+                - heading "CNIDirect link to CNI" [level=4] [ref=e2003]:
+                  - text: CNI
+                  - link "Direct link to CNI" [ref=e2004] [cursor=pointer]:
+                    - /url: "#cni-3"
+                    - text: "#"
+                - table [ref=e2005]:
+                  - rowgroup [ref=e2006]:
+                    - row "Pack Name New Version" [ref=e2007]:
+                      - cell "Pack Name" [ref=e2008]
+                      - cell "New Version" [ref=e2009]
+                  - rowgroup [ref=e2010]:
+                    - row "AWS VPC CNI (Helm) 1.19.5" [ref=e2011]:
+                      - cell "AWS VPC CNI (Helm)" [ref=e2012]
+                      - cell "1.19.5" [ref=e2013]
+                    - row "Calico 3.30.1" [ref=e2014]:
+                      - cell "Calico" [ref=e2015]
+                      - cell "3.30.1" [ref=e2016]
+                    - row "Calico (Azure) 3.30.1" [ref=e2017]:
+                      - cell "Calico (Azure)" [ref=e2018]
+                      - cell "3.30.1" [ref=e2019]
+                    - row "Calico (FIPS) 3.30.1" [ref=e2020]:
+                      - cell "Calico (FIPS)" [ref=e2021]
+                      - cell "3.30.1" [ref=e2022]
+                    - row "Cilium 1.17.4" [ref=e2023]:
+                      - cell "Cilium" [ref=e2024]
+                      - cell "1.17.4" [ref=e2025]
+                    - row "Cilium 1.16.10" [ref=e2026]:
+                      - cell "Cilium" [ref=e2027]
+                      - cell "1.16.10" [ref=e2028]
+                    - row "Flannel 0.27.0" [ref=e2029]:
+                      - cell "Flannel" [ref=e2030]
+                      - cell "0.27.0" [ref=e2031]
+                    - row "Flannel 0.26.7" [ref=e2032]:
+                      - cell "Flannel" [ref=e2033]
+                      - cell "0.26.7" [ref=e2034]
+                - heading "CSIDirect link to CSI" [level=4] [ref=e2035]:
+                  - text: CSI
+                  - link "Direct link to CSI" [ref=e2036] [cursor=pointer]:
+                    - /url: "#csi-2"
+                    - text: "#"
+                - table [ref=e2037]:
+                  - rowgroup [ref=e2038]:
+                    - row "Pack Name New Version" [ref=e2039]:
+                      - cell "Pack Name" [ref=e2040]
+                      - cell "New Version" [ref=e2041]
+                  - rowgroup [ref=e2042]:
+                    - row "Amazon EBS CSI 1.43.0" [ref=e2043]:
+                      - cell "Amazon EBS CSI" [ref=e2044]
+                      - cell "1.43.0" [ref=e2045]
+                    - row "Amazon EFS 2.1.7" [ref=e2046]:
+                      - cell "Amazon EFS" [ref=e2047]
+                      - cell "2.1.7" [ref=e2048]
+                    - row "Amazon EFS 2.1.8" [ref=e2049]:
+                      - cell "Amazon EFS" [ref=e2050]
+                      - cell "2.1.8" [ref=e2051]
+                    - row "Longhorn 1.8.1" [ref=e2052]:
+                      - cell "Longhorn" [ref=e2053]
+                      - cell "1.8.1" [ref=e2054]
+                    - row "Piraeus Operator 2.8.1" [ref=e2055]:
+                      - cell "Piraeus Operator" [ref=e2056]
+                      - cell "2.8.1" [ref=e2057]
+                    - row "Portworx 3.3.1" [ref=e2058]:
+                      - cell "Portworx" [ref=e2059]
+                      - cell "3.3.1" [ref=e2060]
+                    - row "vSphere CSI 3.4.0" [ref=e2061]:
+                      - cell "vSphere CSI" [ref=e2062]
+                      - cell "3.4.0" [ref=e2063]
+                - heading "Add-on PacksDirect link to Add-on Packs" [level=4] [ref=e2064]:
+                  - text: Add-on Packs
+                  - link "Direct link to Add-on Packs" [ref=e2065] [cursor=pointer]:
+                    - /url: "#add-on-packs-3"
+                    - text: "#"
+                - table [ref=e2066]:
+                  - rowgroup [ref=e2067]:
+                    - row "Pack Name New Version" [ref=e2068]:
+                      - cell "Pack Name" [ref=e2069]
+                      - cell "New Version" [ref=e2070]
+                  - rowgroup [ref=e2071]:
+                    - row "AWS Application Loadbalancer 2.13.2" [ref=e2072]:
+                      - cell "AWS Application Loadbalancer" [ref=e2073]
+                      - cell "2.13.2" [ref=e2074]
+                    - row "Amazon EFS 2.1.7" [ref=e2075]:
+                      - cell "Amazon EFS" [ref=e2076]
+                      - cell "2.1.7" [ref=e2077]
+                    - row "Amazon EFS 2.1.8" [ref=e2078]:
+                      - cell "Amazon EFS" [ref=e2079]
+                      - cell "2.1.8" [ref=e2080]
+                    - row "Argo CD 8.0.1" [ref=e2081]:
+                      - cell "Argo CD" [ref=e2082]
+                      - cell "8.0.1" [ref=e2083]
+                    - row "Argo CD 7.9.0" [ref=e2084]:
+                      - cell "Argo CD" [ref=e2085]
+                      - cell "7.9.0" [ref=e2086]
+                    - row "ExternalDNS 0.16.1" [ref=e2087]:
+                      - cell "ExternalDNS" [ref=e2088]
+                      - cell "0.16.1" [ref=e2089]
+                    - row "External Secrets Operator 0.17.0" [ref=e2090]:
+                      - cell "External Secrets Operator" [ref=e2091]
+                      - cell "0.17.0" [ref=e2092]
+                    - row "Istio 1.26.0" [ref=e2093]:
+                      - cell "Istio" [ref=e2094]
+                      - cell "1.26.0" [ref=e2095]
+                    - row "Istio 1.25.1" [ref=e2096]:
+                      - cell "Istio" [ref=e2097]
+                      - cell "1.25.1" [ref=e2098]
+                    - row "Kong 2.48.0" [ref=e2099]:
+                      - cell "Kong" [ref=e2100]
+                      - cell "2.48.0" [ref=e2101]
+                    - row "MetalLB 0.15.2" [ref=e2102]:
+                      - cell "MetalLB" [ref=e2103]
+                      - cell "0.15.2" [ref=e2104]
+                    - row "Nginx 1.12.2" [ref=e2105]:
+                      - cell "Nginx" [ref=e2106]
+                      - cell "1.12.2" [ref=e2107]
+                    - row "Open Policy Agent 3.18.3" [ref=e2108]:
+                      - cell "Open Policy Agent" [ref=e2109]
+                      - cell "3.18.3" [ref=e2110]
+                    - row "Open Observe 0.14.7" [ref=e2111]:
+                      - cell "Open Observe" [ref=e2112]
+                      - cell "0.14.7" [ref=e2113]
+                    - row "Open Telemetry 0.127.0" [ref=e2114]:
+                      - cell "Open Telemetry" [ref=e2115]
+                      - cell "0.127.0" [ref=e2116]
+                    - row "PostgreSQL 1.22.1" [ref=e2117]:
+                      - cell "PostgreSQL" [ref=e2118]
+                      - cell "1.22.1" [ref=e2119]
+                    - row "Reloader 1.4.2" [ref=e2120]:
+                      - cell "Reloader" [ref=e2121]
+                      - cell "1.4.2" [ref=e2122]
+                    - row "Vault 0.30.0" [ref=e2123]:
+                      - cell "Vault" [ref=e2124]
+                      - cell "0.30.0" [ref=e2125]
+                - heading "FIPS PacksDirect link to FIPS Packs" [level=4] [ref=e2126]:
+                  - text: FIPS Packs
+                  - link "Direct link to FIPS Packs" [ref=e2127] [cursor=pointer]:
+                    - /url: "#fips-packs-3"
+                    - text: "#"
+                - table [ref=e2128]:
+                  - rowgroup [ref=e2129]:
+                    - row "Pack Name New Version" [ref=e2130]:
+                      - cell "Pack Name" [ref=e2131]
+                      - cell "New Version" [ref=e2132]
+                  - rowgroup [ref=e2133]:
+                    - row "AWS VPC CNI (Helm) 1.19.5" [ref=e2134]:
+                      - cell "AWS VPC CNI (Helm)" [ref=e2135]
+                      - cell "1.19.5" [ref=e2136]
+                    - row "Calico 3.30.1" [ref=e2137]:
+                      - cell "Calico" [ref=e2138]
+                      - cell "3.30.1" [ref=e2139]
+                    - row "Calico (FIPS) 3.30.1" [ref=e2140]:
+                      - cell "Calico (FIPS)" [ref=e2141]
+                      - cell "3.30.1" [ref=e2142]
+                    - row "Cilium 1.17.4" [ref=e2143]:
+                      - cell "Cilium" [ref=e2144]
+                      - cell "1.17.4" [ref=e2145]
+                    - row "Palette eXtended Kubernetes 1.32.4" [ref=e2146]:
+                      - cell "Palette eXtended Kubernetes" [ref=e2147]
+                      - cell "1.32.4" [ref=e2148]
+                    - row "Palette eXtended Kubernetes 1.31.8" [ref=e2149]:
+                      - cell "Palette eXtended Kubernetes" [ref=e2150]
+                      - cell "1.31.8" [ref=e2151]
+                    - row "Palette eXtended Kubernetes 1.30.12" [ref=e2152]:
+                      - cell "Palette eXtended Kubernetes" [ref=e2153]
+                      - cell "1.30.12" [ref=e2154]
+                    - row "Palette eXtended Kubernetes Edge (PXK-E) 1.33.1" [ref=e2155]:
+                      - cell "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e2156]
+                      - cell "1.33.1" [ref=e2157]
+                    - row "Palette eXtended Kubernetes Edge (PXK-E) 1.32.4" [ref=e2158]:
+                      - cell "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e2159]
+                      - cell "1.32.4" [ref=e2160]
+                    - row "Palette eXtended Kubernetes Edge (PXK-E) 1.31.8" [ref=e2161]:
+                      - cell "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e2162]
+                      - cell "1.31.8" [ref=e2163]
+                    - row "Palette eXtended Kubernetes Edge (PXK-E) 1.30.12" [ref=e2164]:
+                      - cell "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e2165]
+                      - cell "1.30.12" [ref=e2166]
+                    - row "Palette Optimized RKE2 1.33.1" [ref=e2167]:
+                      - cell "Palette Optimized RKE2" [ref=e2168]
+                      - cell "1.33.1" [ref=e2169]
+                    - row "Palette Optimized RKE2 1.32.4" [ref=e2170]:
+                      - cell "Palette Optimized RKE2" [ref=e2171]
+                      - cell "1.32.4" [ref=e2172]
+                    - row "Palette Optimized RKE2 1.31.8" [ref=e2173]:
+                      - cell "Palette Optimized RKE2" [ref=e2174]
+                      - cell "1.31.8" [ref=e2175]
+                    - row "Palette Optimized RKE2 1.30.12" [ref=e2176]:
+                      - cell "Palette Optimized RKE2" [ref=e2177]
+                      - cell "1.30.12" [ref=e2178]
+                    - row "Piraeus Operator 2.8.1" [ref=e2179]:
+                      - cell "Piraeus Operator" [ref=e2180]
+                      - cell "2.8.1" [ref=e2181]
+                    - row "RKE2 1.32.7" [ref=e2182]:
+                      - cell "RKE2" [ref=e2183]
+                      - cell "1.32.7" [ref=e2184]
+                    - row "RKE2 1.31.8" [ref=e2185]:
+                      - cell "RKE2" [ref=e2186]
+                      - cell "1.31.8" [ref=e2187]
+                    - row "RKE2 1.30.12" [ref=e2188]:
+                      - cell "RKE2" [ref=e2189]
+                      - cell "1.30.12" [ref=e2190]
+                    - row "vSphere CSI 3.4.0" [ref=e2191]:
+                      - cell "vSphere CSI" [ref=e2192]
+                      - cell "3.4.0" [ref=e2193]
+              - generic [ref=e2194]:
+                - generic [ref=e2196]:
+                  - text: "Tags:"
+                  - list [ref=e2197]:
+                    - listitem [ref=e2198]:
+                      - link "release-notes" [ref=e2199] [cursor=pointer]:
+                        - /url: /tags/release-notes/
+                - link "Edit this page" [ref=e2202] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/release-notes/release-notes.md
+                  - img [ref=e2203]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e2207]:
+              - link "Next Announcements »" [ref=e2208] [cursor=pointer]:
+                - /url: /release-notes/announcements/
+                - generic [ref=e2209]: Next
+                - generic [ref=e2210]: Announcements »
+          - list [ref=e2213]:
+            - listitem [ref=e2214]:
+              - link "October 19, 2025 - Release 4.7.27" [ref=e2215] [cursor=pointer]:
+                - /url: "#release-notes-4.7.c"
+              - list [ref=e2216]:
+                - listitem [ref=e2217]:
+                  - link "Security Notices" [ref=e2218] [cursor=pointer]:
+                    - /url: "#security-notices"
+                - listitem [ref=e2219]:
+                  - link "Palette Enterprise" [ref=e2220] [cursor=pointer]:
+                    - /url: "#palette-enterprise-4.7.c"
+                - listitem [ref=e2221]:
+                  - link "Edge" [ref=e2222] [cursor=pointer]:
+                    - /url: "#edge"
+                - listitem [ref=e2223]:
+                  - link "VerteX" [ref=e2224] [cursor=pointer]:
+                    - /url: "#vertex"
+                - listitem [ref=e2225]:
+                  - link "Automation" [ref=e2226] [cursor=pointer]:
+                    - /url: "#automation"
+                - listitem [ref=e2227]:
+                  - link "Packs" [ref=e2228] [cursor=pointer]:
+                    - /url: "#packs"
+            - listitem [ref=e2229]:
+              - link "October 10, 2025 - Component Updates" [ref=e2230] [cursor=pointer]:
+                - /url: "#component-updates-2025-41"
+              - list [ref=e2231]:
+                - listitem [ref=e2232]:
+                  - link "Breaking Changes" [ref=e2233] [cursor=pointer]:
+                    - /url: "#breaking-changes"
+                - listitem [ref=e2234]:
+                  - link "Improvements" [ref=e2235] [cursor=pointer]:
+                    - /url: "#improvements-3"
+                - listitem [ref=e2236]:
+                  - link "Bug Fixes" [ref=e2237] [cursor=pointer]:
+                    - /url: "#bug-fixes-1"
+                - listitem [ref=e2238]:
+                  - link "Packs" [ref=e2239] [cursor=pointer]:
+                    - /url: "#packs-1"
+            - listitem [ref=e2240]:
+              - link "October 7, 2025 - Release 4.7.23" [ref=e2241] [cursor=pointer]:
+                - /url: "#october-7-2025---release-4723"
+              - list [ref=e2242]:
+                - listitem [ref=e2243]:
+                  - link "Component Updates" [ref=e2244] [cursor=pointer]:
+                    - /url: "#component-updates"
+                - listitem [ref=e2245]:
+                  - link "Bug Fixes" [ref=e2246] [cursor=pointer]:
+                    - /url: "#bug-fixes-2"
+            - listitem [ref=e2247]:
+              - link "October 3, 2025 - Component Updates" [ref=e2248] [cursor=pointer]:
+                - /url: "#component-updates-2025-40"
+              - list [ref=e2249]:
+                - listitem [ref=e2250]:
+                  - link "Improvements" [ref=e2251] [cursor=pointer]:
+                    - /url: "#improvements-4"
+                - listitem [ref=e2252]:
+                  - link "Packs" [ref=e2253] [cursor=pointer]:
+                    - /url: "#packs-2"
+            - listitem [ref=e2254]:
+              - link "September 29, 2025 - Release 4.7.21" [ref=e2255] [cursor=pointer]:
+                - /url: "#september-29-2025---release-4721"
+              - list [ref=e2256]:
+                - listitem [ref=e2257]:
+                  - link "Component Updates" [ref=e2258] [cursor=pointer]:
+                    - /url: "#component-updates-1"
+                - listitem [ref=e2259]:
+                  - link "Breaking Changes" [ref=e2260] [cursor=pointer]:
+                    - /url: "#breaking-changes-1"
+                - listitem [ref=e2261]:
+                  - link "Improvements" [ref=e2262] [cursor=pointer]:
+                    - /url: "#improvements-5"
+                - listitem [ref=e2263]:
+                  - link "Bug Fixes" [ref=e2264] [cursor=pointer]:
+                    - /url: "#bug-fixes-3"
+            - listitem [ref=e2265]:
+              - link "September 26, 2025 - Component Updates" [ref=e2266] [cursor=pointer]:
+                - /url: "#component-updates-2025-39"
+              - list [ref=e2267]:
+                - listitem [ref=e2268]:
+                  - link "Bug Fixes" [ref=e2269] [cursor=pointer]:
+                    - /url: "#bug-fixes-4"
+                - listitem [ref=e2270]:
+                  - link "Packs" [ref=e2271] [cursor=pointer]:
+                    - /url: "#packs-3"
+            - listitem [ref=e2272]:
+              - link "September 20, 2025 - Release 4.7.20" [ref=e2273] [cursor=pointer]:
+                - /url: "#release-notes-4.7.b"
+              - list [ref=e2274]:
+                - listitem [ref=e2275]:
+                  - link "Component Updates" [ref=e2276] [cursor=pointer]:
+                    - /url: "#component-updates-2"
+                - listitem [ref=e2277]:
+                  - link "Security Notices" [ref=e2278] [cursor=pointer]:
+                    - /url: "#security-notices-1"
+                - listitem [ref=e2279]:
+                  - link "Palette Enterprise" [ref=e2280] [cursor=pointer]:
+                    - /url: "#palette-enterprise-4.7.b"
+                - listitem [ref=e2281]:
+                  - link "Edge" [ref=e2282] [cursor=pointer]:
+                    - /url: "#edge-1"
+                - listitem [ref=e2283]:
+                  - link "VerteX" [ref=e2284] [cursor=pointer]:
+                    - /url: "#vertex-1"
+                - listitem [ref=e2285]:
+                  - link "Automation" [ref=e2286] [cursor=pointer]:
+                    - /url: "#automation-1"
+                - listitem [ref=e2287]:
+                  - link "Packs" [ref=e2288] [cursor=pointer]:
+                    - /url: "#packs-4"
+            - listitem [ref=e2289]:
+              - link "September 1, 2025 - Release 4.7.16" [ref=e2290] [cursor=pointer]:
+                - /url: "#september-1-2025---release-4716"
+              - list [ref=e2291]:
+                - listitem [ref=e2292]:
+                  - link "Bug Fixes" [ref=e2293] [cursor=pointer]:
+                    - /url: "#bug-fixes-8"
+            - listitem [ref=e2294]:
+              - link "August 21, 2025 - Release 4.7.15" [ref=e2295] [cursor=pointer]:
+                - /url: "#august-21-2025---release-4715"
+              - list [ref=e2296]:
+                - listitem [ref=e2297]:
+                  - link "Bug Fixes" [ref=e2298] [cursor=pointer]:
+                    - /url: "#bug-fixes-9"
+                - listitem [ref=e2299]:
+                  - link "Automation" [ref=e2300] [cursor=pointer]:
+                    - /url: "#automation-2"
+            - listitem [ref=e2301]:
+              - link "August 17, 2025 - Release 4.7.13" [ref=e2302] [cursor=pointer]:
+                - /url: "#release-notes-4.7.a"
+              - list [ref=e2303]:
+                - listitem [ref=e2304]:
+                  - link "Security Notices" [ref=e2305] [cursor=pointer]:
+                    - /url: "#security-notices-2"
+                - listitem [ref=e2306]:
+                  - link "Palette Enterprise" [ref=e2307] [cursor=pointer]:
+                    - /url: "#palette-enterprise-4.7.a"
+                - listitem [ref=e2308]:
+                  - link "Edge" [ref=e2309] [cursor=pointer]:
+                    - /url: "#edge-2"
+                - listitem [ref=e2310]:
+                  - link "VerteX" [ref=e2311] [cursor=pointer]:
+                    - /url: "#vertex-2"
+                - listitem [ref=e2312]:
+                  - link "Automation" [ref=e2313] [cursor=pointer]:
+                    - /url: "#automation-3"
+                - listitem [ref=e2314]:
+                  - link "Virtual Machine Orchestrator (VMO)" [ref=e2315] [cursor=pointer]:
+                    - /url: "#virtual-machine-orchestrator-vmo"
+                - listitem [ref=e2316]:
+                  - link "Packs" [ref=e2317] [cursor=pointer]:
+                    - /url: "#packs-5"
+            - listitem [ref=e2318]:
+              - link "August 4, 2025 - Release 4.7.8" [ref=e2319] [cursor=pointer]:
+                - /url: "#august-4-2025---release-478"
+              - list [ref=e2320]:
+                - listitem [ref=e2321]:
+                  - link "Bug Fixes" [ref=e2322] [cursor=pointer]:
+                    - /url: "#bug-fixes-14"
+            - listitem [ref=e2323]:
+              - link "July 31, 2025 - Release 4.7.7" [ref=e2324] [cursor=pointer]:
+                - /url: "#july-31-2025---release-477"
+              - list [ref=e2325]:
+                - listitem [ref=e2326]:
+                  - link "Improvements" [ref=e2327] [cursor=pointer]:
+                    - /url: "#improvements-10"
+                - listitem [ref=e2328]:
+                  - link "Bug Fixes" [ref=e2329] [cursor=pointer]:
+                    - /url: "#bug-fixes-15"
+            - listitem [ref=e2330]:
+              - link "July 23, 2025 - Release 4.7.4" [ref=e2331] [cursor=pointer]:
+                - /url: "#july-23-2025---release-474"
+              - list [ref=e2332]:
+                - listitem [ref=e2333]:
+                  - link "Bug Fixes" [ref=e2334] [cursor=pointer]:
+                    - /url: "#bug-fixes-16"
+            - listitem [ref=e2335]:
+              - link "July 19, 2025 - Release 4.7.0 - 4.7.3" [ref=e2336] [cursor=pointer]:
+                - /url: "#release-notes-4.7.0"
+              - list [ref=e2337]:
+                - listitem [ref=e2338]:
+                  - link "Security Notices" [ref=e2339] [cursor=pointer]:
+                    - /url: "#security-notices-3"
+                - listitem [ref=e2340]:
+                  - link "Palette Enterprise" [ref=e2341] [cursor=pointer]:
+                    - /url: "#palette-enterprise-4.7.0"
+                - listitem [ref=e2342]:
+                  - link "Edge" [ref=e2343] [cursor=pointer]:
+                    - /url: "#edge-3"
+                - listitem [ref=e2344]:
+                  - link "VerteX" [ref=e2345] [cursor=pointer]:
+                    - /url: "#vertex-3"
+                - listitem [ref=e2346]:
+                  - link "Automation" [ref=e2347] [cursor=pointer]:
+                    - /url: "#automation-4"
+                - listitem [ref=e2348]:
+                  - link "Virtual Machine Orchestrator (VMO)" [ref=e2349] [cursor=pointer]:
+                    - /url: "#virtual-machine-orchestrator-vmo-1"
+                - listitem [ref=e2350]:
+                  - link "Packs" [ref=e2351] [cursor=pointer]:
+                    - /url: "#packs-6"
+  - button "Project Logo Ask AI" [ref=e2352] [cursor=pointer]:
+    - generic [ref=e2355]:
+      - img "Project Logo" [ref=e2356]
+      - paragraph [ref=e2357]: Ask AI
+```

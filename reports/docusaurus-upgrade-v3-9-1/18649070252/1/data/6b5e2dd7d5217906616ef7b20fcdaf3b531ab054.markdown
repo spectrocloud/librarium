@@ -1,0 +1,190 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Introduction" [ref=e41] [cursor=pointer]:
+                  - /url: /api/introduction/
+                  - img [ref=e43]
+                  - text: Introduction
+              - listitem [ref=e45]:
+                - link "Example Usage" [ref=e46] [cursor=pointer]:
+                  - /url: /api/samples/
+              - listitem [ref=e47]:
+                - link "Postman Collection" [ref=e48] [cursor=pointer]:
+                  - /url: /api/postman-collection/
+              - listitem [ref=e49]:
+                - generic [ref=e50]:
+                  - link "Palette API V1" [ref=e51] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Palette API V1'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "Edge Management API V1" [expanded] [ref=e55] [cursor=pointer]:
+                    - /url: /api/category/edge-management-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Edge Management API V1'" [ref=e56] [cursor=pointer]
+                - list [ref=e57]:
+                  - listitem [ref=e58]:
+                    - link "Introduction" [ref=e59] [cursor=pointer]:
+                      - /url: /api/edge-v1/local-management-apis/
+                  - listitem [ref=e60]:
+                    - generic [ref=e61]:
+                      - link "Edge Mgmt" [ref=e62] [cursor=pointer]:
+                        - /url: /api/edge-v1/edge-mgmt/
+                      - button "Toggle the collapsible sidebar category 'Edge Mgmt'" [ref=e63] [cursor=pointer]
+                  - listitem [ref=e64]:
+                    - generic [ref=e65]:
+                      - link "Ping" [expanded] [ref=e66] [cursor=pointer]:
+                        - /url: /api/edge-v1/ping/
+                      - button "Toggle the collapsible sidebar category 'Ping'" [ref=e67] [cursor=pointer]
+                    - list [ref=e68]:
+                      - listitem [ref=e69]:
+                        - link "get Ping Service" [ref=e70] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-ping/
+                  - listitem [ref=e71]:
+                    - generic [ref=e72]:
+                      - link "Users" [ref=e73] [cursor=pointer]:
+                        - /url: /api/edge-v1/users/
+                      - button "Toggle the collapsible sidebar category 'Users'" [ref=e74] [cursor=pointer]
+      - main [ref=e75]:
+        - generic [ref=e79]:
+          - article [ref=e80]:
+            - navigation "Breadcrumbs" [ref=e81]:
+              - list [ref=e82]:
+                - listitem [ref=e83]:
+                  - link "Home page" [ref=e84] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e85]
+                - listitem [ref=e87]:
+                  - link "Edge Management API V1" [ref=e88] [cursor=pointer]:
+                    - /url: /api/category/edge-management-api-v1/
+                - listitem [ref=e89]:
+                  - link "Ping" [ref=e90] [cursor=pointer]:
+                    - /url: /api/edge-v1/ping/
+                - listitem [ref=e91]:
+                  - generic [ref=e92]: Ping Service
+            - generic [ref=e94]:
+              - generic [ref=e95]:
+                - heading "Ping Service" [level=1] [ref=e96]
+                - generic [ref=e97]:
+                  - generic [ref=e98]: GET
+                  - heading "https://edge-host-ip:5080/v1/ping" [level=2] [ref=e99]
+                - paragraph [ref=e101]: Ping Service
+                - generic [ref=e102]:
+                  - generic [ref=e103]:
+                    - heading "ResponsesDirect link to Responses" [level=2] [ref=e104]:
+                      - text: Responses
+                      - link "Direct link to Responses" [ref=e105] [cursor=pointer]:
+                        - /url: "#responses"
+                        - text: "#"
+                    - tablist [ref=e107]:
+                      - tab "200" [selected] [ref=e108] [cursor=pointer]
+                      - tab "default" [ref=e109] [cursor=pointer]
+                  - tabpanel [ref=e111]:
+                    - paragraph [ref=e114]: OK
+                    - generic [ref=e115]:
+                      - tablist [ref=e118]:
+                        - tab "application/json" [selected] [ref=e119] [cursor=pointer]
+                      - tabpanel [ref=e121]:
+                        - generic [ref=e122]:
+                          - tablist [ref=e124]:
+                            - tab "Schema" [selected] [ref=e125] [cursor=pointer]:
+                              - generic [ref=e126]: Schema
+                            - tab "Example (auto)" [ref=e127] [cursor=pointer]:
+                              - generic [ref=e128]: Example (auto)
+                          - tabpanel [ref=e130]:
+                            - group [ref=e131]:
+                              - generic "Schema" [ref=e132] [cursor=pointer]:
+                                - strong [ref=e133]: Schema
+                              - list [ref=e136]:
+                                - generic [ref=e139]:
+                                  - strong [ref=e140]: msg
+                                  - generic [ref=e141]: string
+              - generic [ref=e142]:
+                - group [ref=e143]:
+                  - 'generic "Authorization: Authorization" [ref=e144]':
+                    - 'heading "Authorization: Authorization" [level=4] [ref=e145]'
+                - generic [ref=e146]:
+                  - tablist [ref=e147]:
+                    - tab "curl" [selected] [ref=e148] [cursor=pointer]:
+                      - generic [ref=e149]: curl
+                    - tab "python" [ref=e150] [cursor=pointer]:
+                      - generic [ref=e151]: python
+                    - tab "go" [ref=e152] [cursor=pointer]:
+                      - generic [ref=e153]: go
+                    - tab "nodejs" [ref=e154] [cursor=pointer]:
+                      - generic [ref=e155]: nodejs
+                    - tab "java" [ref=e156] [cursor=pointer]:
+                      - generic [ref=e157]: java
+                  - tabpanel [ref=e158]:
+                    - generic [ref=e159]:
+                      - tablist [ref=e160]:
+                        - tab "CURL" [selected] [ref=e161] [cursor=pointer]:
+                          - generic [ref=e162]: CURL
+                      - tabpanel [ref=e163]:
+                        - generic [ref=e165]:
+                          - code [ref=e167]:
+                            - generic [ref=e170]: curl -L 'https://edge-host-ip:5080/v1/ping' \
+                            - generic [ref=e173]: "-H 'Accept: application/json' \\"
+                            - generic [ref=e176]: "-H 'Authorization: <Authorization>'"
+                          - generic [ref=e177]:
+                            - button "Toggle word wrap" [ref=e178] [cursor=pointer]:
+                              - img [ref=e179]
+                            - button "Copy code to clipboard" [ref=e181] [cursor=pointer]:
+                              - generic [ref=e182]:
+                                - img [ref=e183]
+                                - img [ref=e185]
+                            - button "Expand code to fullscreen" [ref=e187] [cursor=pointer]:
+                              - generic [ref=e188]:
+                                - img [ref=e189]
+                                - img [ref=e191]
+          - navigation "Docs pages" [ref=e195]:
+            - link "Previous « Ping" [ref=e196] [cursor=pointer]:
+              - /url: /api/edge-v1/ping/
+              - generic [ref=e197]: Previous
+              - generic [ref=e198]: « Ping
+            - link "Next Users »" [ref=e199] [cursor=pointer]:
+              - /url: /api/edge-v1/users/
+              - generic [ref=e200]: Next
+              - generic [ref=e201]: Users »
+  - button "Project Logo Ask AI" [ref=e202] [cursor=pointer]:
+    - generic [ref=e205]:
+      - img "Project Logo" [ref=e206]
+      - paragraph [ref=e207]: Ask AI
+```

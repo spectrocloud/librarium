@@ -1,0 +1,446 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Introduction" [ref=e41] [cursor=pointer]:
+                  - /url: /api/introduction/
+                  - img [ref=e43]
+                  - text: Introduction
+              - listitem [ref=e45]:
+                - link "Example Usage" [ref=e46] [cursor=pointer]:
+                  - /url: /api/samples/
+              - listitem [ref=e47]:
+                - link "Postman Collection" [ref=e48] [cursor=pointer]:
+                  - /url: /api/postman-collection/
+              - listitem [ref=e49]:
+                - generic [ref=e50]:
+                  - link "Palette API V1" [expanded] [ref=e51] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Palette API V1'" [ref=e52] [cursor=pointer]
+                - list [ref=e53]:
+                  - listitem [ref=e54]:
+                    - link "Introduction" [ref=e55] [cursor=pointer]:
+                      - /url: /api/v1/palette-apis-4-7/
+                  - listitem [ref=e56]:
+                    - generic [ref=e57]:
+                      - link "Api Keys" [ref=e58] [cursor=pointer]:
+                        - /url: /api/v1/api-keys/
+                      - button "Toggle the collapsible sidebar category 'Api Keys'" [ref=e59] [cursor=pointer]
+                  - listitem [ref=e60]:
+                    - generic [ref=e61]:
+                      - link "App Deployments" [ref=e62] [cursor=pointer]:
+                        - /url: /api/v1/app-deployments/
+                      - button "Toggle the collapsible sidebar category 'App Deployments'" [ref=e63] [cursor=pointer]
+                  - listitem [ref=e64]:
+                    - generic [ref=e65]:
+                      - link "App Profiles" [ref=e66] [cursor=pointer]:
+                        - /url: /api/v1/app-profiles/
+                      - button "Toggle the collapsible sidebar category 'App Profiles'" [ref=e67] [cursor=pointer]
+                  - listitem [ref=e68]:
+                    - generic [ref=e69]:
+                      - link "Audits" [ref=e70] [cursor=pointer]:
+                        - /url: /api/v1/audits/
+                      - button "Toggle the collapsible sidebar category 'Audits'" [ref=e71] [cursor=pointer]
+                  - listitem [ref=e72]:
+                    - generic [ref=e73]:
+                      - link "Auth" [ref=e74] [cursor=pointer]:
+                        - /url: /api/v1/auth/
+                      - button "Toggle the collapsible sidebar category 'Auth'" [ref=e75] [cursor=pointer]
+                  - listitem [ref=e76]:
+                    - generic [ref=e77]:
+                      - link "Cloudaccounts" [ref=e78] [cursor=pointer]:
+                        - /url: /api/v1/cloudaccounts/
+                      - button "Toggle the collapsible sidebar category 'Cloudaccounts'" [ref=e79] [cursor=pointer]
+                  - listitem [ref=e80]:
+                    - generic [ref=e81]:
+                      - link "Cloudconfigs" [ref=e82] [cursor=pointer]:
+                        - /url: /api/v1/cloudconfigs/
+                      - button "Toggle the collapsible sidebar category 'Cloudconfigs'" [ref=e83] [cursor=pointer]
+                  - listitem [ref=e84]:
+                    - generic [ref=e85]:
+                      - link "Clouds" [ref=e86] [cursor=pointer]:
+                        - /url: /api/v1/clouds/
+                      - button "Toggle the collapsible sidebar category 'Clouds'" [ref=e87] [cursor=pointer]
+                  - listitem [ref=e88]:
+                    - generic [ref=e89]:
+                      - link "Cluster Templates" [ref=e90] [cursor=pointer]:
+                        - /url: /api/v1/cluster-templates/
+                      - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+                  - listitem [ref=e92]:
+                    - generic [ref=e93]:
+                      - link "Clustergroups" [ref=e94] [cursor=pointer]:
+                        - /url: /api/v1/clustergroups/
+                      - button "Toggle the collapsible sidebar category 'Clustergroups'" [ref=e95] [cursor=pointer]
+                  - listitem [ref=e96]:
+                    - generic [ref=e97]:
+                      - link "Clusterprofiles" [ref=e98] [cursor=pointer]:
+                        - /url: /api/v1/clusterprofiles/
+                      - button "Toggle the collapsible sidebar category 'Clusterprofiles'" [ref=e99] [cursor=pointer]
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Dashboard" [ref=e102] [cursor=pointer]:
+                        - /url: /api/v1/dashboard/
+                      - button "Toggle the collapsible sidebar category 'Dashboard'" [ref=e103] [cursor=pointer]
+                  - listitem [ref=e104]:
+                    - generic [ref=e105]:
+                      - link "Datasinks" [ref=e106] [cursor=pointer]:
+                        - /url: /api/v1/datasinks/
+                      - button "Toggle the collapsible sidebar category 'Datasinks'" [ref=e107] [cursor=pointer]
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Edgehosts" [ref=e110] [cursor=pointer]:
+                        - /url: /api/v1/edgehosts/
+                      - button "Toggle the collapsible sidebar category 'Edgehosts'" [ref=e111] [cursor=pointer]
+                  - listitem [ref=e112]:
+                    - generic [ref=e113]:
+                      - link "Events" [expanded] [ref=e114] [cursor=pointer]:
+                        - /url: /api/v1/events/
+                      - button "Toggle the collapsible sidebar category 'Events'" [ref=e115] [cursor=pointer]
+                    - list [ref=e116]:
+                      - listitem [ref=e117]:
+                        - link "get Returns a paginated list of component events based on request parameters" [ref=e118] [cursor=pointer]:
+                          - /url: /api/v1/v-1-events-components-list/
+                      - listitem [ref=e119]:
+                        - link "post Creates a component event" [ref=e120] [cursor=pointer]:
+                          - /url: /api/v1/v-1-events-components-create/
+                      - listitem [ref=e121]:
+                        - link "post Creates the component events in bulk" [ref=e122] [cursor=pointer]:
+                          - /url: /api/v1/v-1-events-components-create-bulk/
+                      - listitem [ref=e123]:
+                        - link "del Delete all the components events for the specified related object" [ref=e124] [cursor=pointer]:
+                          - /url: /api/v1/v-1-events-components-obj-type-uid-delete/
+                      - listitem [ref=e125]:
+                        - link "get Returns a list of components events for the specified related object" [ref=e126] [cursor=pointer]:
+                          - /url: /api/v1/v-1-events-components-obj-type-uid-list/
+                  - listitem [ref=e127]:
+                    - generic [ref=e128]:
+                      - link "Features" [ref=e129] [cursor=pointer]:
+                        - /url: /api/v1/features/
+                      - button "Toggle the collapsible sidebar category 'Features'" [ref=e130] [cursor=pointer]
+                  - listitem [ref=e131]:
+                    - generic [ref=e132]:
+                      - link "Filters" [ref=e133] [cursor=pointer]:
+                        - /url: /api/v1/filters/
+                      - button "Toggle the collapsible sidebar category 'Filters'" [ref=e134] [cursor=pointer]
+                  - listitem [ref=e135]:
+                    - generic [ref=e136]:
+                      - link "Metrics" [ref=e137] [cursor=pointer]:
+                        - /url: /api/v1/metrics/
+                      - button "Toggle the collapsible sidebar category 'Metrics'" [ref=e138] [cursor=pointer]
+                  - listitem [ref=e139]:
+                    - generic [ref=e140]:
+                      - link "Notifications" [ref=e141] [cursor=pointer]:
+                        - /url: /api/v1/notifications/
+                      - button "Toggle the collapsible sidebar category 'Notifications'" [ref=e142] [cursor=pointer]
+                  - listitem [ref=e143]:
+                    - generic [ref=e144]:
+                      - link "Overlords" [ref=e145] [cursor=pointer]:
+                        - /url: /api/v1/overlords/
+                      - button "Toggle the collapsible sidebar category 'Overlords'" [ref=e146] [cursor=pointer]
+                  - listitem [ref=e147]:
+                    - generic [ref=e148]:
+                      - link "Packs" [ref=e149] [cursor=pointer]:
+                        - /url: /api/v1/packs/
+                      - button "Toggle the collapsible sidebar category 'Packs'" [ref=e150] [cursor=pointer]
+                  - listitem [ref=e151]:
+                    - generic [ref=e152]:
+                      - link "Pcg" [ref=e153] [cursor=pointer]:
+                        - /url: /api/v1/pcg/
+                      - button "Toggle the collapsible sidebar category 'Pcg'" [ref=e154] [cursor=pointer]
+                  - listitem [ref=e155]:
+                    - generic [ref=e156]:
+                      - link "Permissions" [ref=e157] [cursor=pointer]:
+                        - /url: /api/v1/permissions/
+                      - button "Toggle the collapsible sidebar category 'Permissions'" [ref=e158] [cursor=pointer]
+                  - listitem [ref=e159]:
+                    - generic [ref=e160]:
+                      - link "Projects" [ref=e161] [cursor=pointer]:
+                        - /url: /api/v1/projects/
+                      - button "Toggle the collapsible sidebar category 'Projects'" [ref=e162] [cursor=pointer]
+                  - listitem [ref=e163]:
+                    - generic [ref=e164]:
+                      - link "Registries" [ref=e165] [cursor=pointer]:
+                        - /url: /api/v1/registries/
+                      - button "Toggle the collapsible sidebar category 'Registries'" [ref=e166] [cursor=pointer]
+                  - listitem [ref=e167]:
+                    - generic [ref=e168]:
+                      - link "Roles" [ref=e169] [cursor=pointer]:
+                        - /url: /api/v1/roles/
+                      - button "Toggle the collapsible sidebar category 'Roles'" [ref=e170] [cursor=pointer]
+                  - listitem [ref=e171]:
+                    - generic [ref=e172]:
+                      - link "Services" [ref=e173] [cursor=pointer]:
+                        - /url: /api/v1/services/
+                      - button "Toggle the collapsible sidebar category 'Services'" [ref=e174] [cursor=pointer]
+                  - listitem [ref=e175]:
+                    - generic [ref=e176]:
+                      - link "Spc Policies" [ref=e177] [cursor=pointer]:
+                        - /url: /api/v1/spc-policies/
+                      - button "Toggle the collapsible sidebar category 'Spc Policies'" [ref=e178] [cursor=pointer]
+                  - listitem [ref=e179]:
+                    - generic [ref=e180]:
+                      - link "Spectroclusters" [ref=e181] [cursor=pointer]:
+                        - /url: /api/v1/spectroclusters/
+                      - button "Toggle the collapsible sidebar category 'Spectroclusters'" [ref=e182] [cursor=pointer]
+                  - listitem [ref=e183]:
+                    - generic [ref=e184]:
+                      - link "System" [ref=e185] [cursor=pointer]:
+                        - /url: /api/v1/system/
+                      - button "Toggle the collapsible sidebar category 'System'" [ref=e186] [cursor=pointer]
+                  - listitem [ref=e187]:
+                    - generic [ref=e188]:
+                      - link "Teams" [ref=e189] [cursor=pointer]:
+                        - /url: /api/v1/teams/
+                      - button "Toggle the collapsible sidebar category 'Teams'" [ref=e190] [cursor=pointer]
+                  - listitem [ref=e191]:
+                    - generic [ref=e192]:
+                      - link "Tenants" [ref=e193] [cursor=pointer]:
+                        - /url: /api/v1/tenants/
+                      - button "Toggle the collapsible sidebar category 'Tenants'" [ref=e194] [cursor=pointer]
+                  - listitem [ref=e195]:
+                    - generic [ref=e196]:
+                      - link "Users" [ref=e197] [cursor=pointer]:
+                        - /url: /api/v1/users/
+                      - button "Toggle the collapsible sidebar category 'Users'" [ref=e198] [cursor=pointer]
+                  - listitem [ref=e199]:
+                    - generic [ref=e200]:
+                      - link "Workspaces" [ref=e201] [cursor=pointer]:
+                        - /url: /api/v1/workspaces/
+                      - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e202] [cursor=pointer]
+              - listitem [ref=e203]:
+                - generic [ref=e204]:
+                  - link "Edge Management API V1" [ref=e205] [cursor=pointer]:
+                    - /url: /api/category/edge-management-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Edge Management API V1'" [ref=e206] [cursor=pointer]
+      - main [ref=e207]:
+        - generic [ref=e211]:
+          - article [ref=e212]:
+            - navigation "Breadcrumbs" [ref=e213]:
+              - list [ref=e214]:
+                - listitem [ref=e215]:
+                  - link "Home page" [ref=e216] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e217]
+                - listitem [ref=e219]:
+                  - link "Palette API V1" [ref=e220] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                - listitem [ref=e221]:
+                  - link "Events" [ref=e222] [cursor=pointer]:
+                    - /url: /api/v1/events/
+                - listitem [ref=e223]:
+                  - generic [ref=e224]: Creates a component event
+            - generic [ref=e226]:
+              - generic [ref=e227]:
+                - heading "Creates a component event" [level=1] [ref=e228]
+                - generic [ref=e229]:
+                  - generic [ref=e230]: POST
+                  - heading "https://api.spectrocloud.com/v1/events/components" [level=2] [ref=e231]
+                - paragraph [ref=e233]: Creates a component event
+                - heading "RequestDirect link to Request" [level=2] [ref=e234]:
+                  - text: Request
+                  - link "Direct link to Request" [ref=e235] [cursor=pointer]:
+                    - /url: "#request"
+                    - text: "#"
+                - group [ref=e236]:
+                  - generic "Header Parameters" [ref=e237] [cursor=pointer]:
+                    - heading "Header Parameters" [level=3] [ref=e238]
+                  - list [ref=e241]:
+                    - generic [ref=e242]:
+                      - generic [ref=e243]:
+                        - strong [ref=e244]: ProjectUid
+                        - generic [ref=e245]: string
+                      - paragraph [ref=e246]: A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources
+                - generic [ref=e247]:
+                  - tablist [ref=e250]:
+                    - tab "application/json" [selected] [ref=e251] [cursor=pointer]
+                  - tabpanel [ref=e253]:
+                    - group [ref=e254]:
+                      - generic "Body" [ref=e255] [cursor=pointer]:
+                        - heading "Body" [level=3] [ref=e256]
+                      - list [ref=e259]:
+                        - group [ref=e261]:
+                          - generic "involvedObject object" [ref=e262] [cursor=pointer]:
+                            - generic [ref=e263]:
+                              - strong [ref=e264]: involvedObject
+                              - generic [ref=e265]: object
+                        - generic [ref=e267]:
+                          - generic [ref=e268]:
+                            - strong [ref=e269]: message
+                            - generic [ref=e270]: string
+                          - paragraph [ref=e272]: Describes message associated with the event
+                        - group [ref=e274]:
+                          - generic "metadata object" [ref=e275] [cursor=pointer]:
+                            - generic [ref=e276]:
+                              - strong [ref=e277]: metadata
+                              - generic [ref=e278]: object
+                        - generic [ref=e280]:
+                          - generic [ref=e281]:
+                            - strong [ref=e282]: reason
+                            - generic [ref=e283]: string
+                          - paragraph [ref=e285]: Describes the reason for the event
+                        - group [ref=e287]:
+                          - generic "relatedObject object" [ref=e288] [cursor=pointer]:
+                            - generic [ref=e289]:
+                              - strong [ref=e290]: relatedObject
+                              - generic [ref=e291]: object
+                        - generic [ref=e293]:
+                          - generic [ref=e294]:
+                            - strong [ref=e295]: severity
+                            - generic [ref=e296]: string
+                          - paragraph [ref=e298]: Describes the gravitas for the event
+                        - group [ref=e300]:
+                          - generic "source object" [ref=e301] [cursor=pointer]:
+                            - generic [ref=e302]:
+                              - strong [ref=e303]: source
+                              - generic [ref=e304]: object
+                - generic [ref=e305]:
+                  - generic [ref=e306]:
+                    - heading "ResponsesDirect link to Responses" [level=2] [ref=e307]:
+                      - text: Responses
+                      - link "Direct link to Responses" [ref=e308] [cursor=pointer]:
+                        - /url: "#responses"
+                        - text: "#"
+                    - tablist [ref=e310]:
+                      - tab "201" [selected] [ref=e311] [cursor=pointer]
+                  - tabpanel [ref=e313]:
+                    - paragraph [ref=e316]: Created successfully
+                    - group [ref=e317]:
+                      - generic "Response Headers" [ref=e318] [cursor=pointer]:
+                        - strong [ref=e319]: Response Headers
+                    - generic [ref=e320]:
+                      - tablist [ref=e323]:
+                        - tab "application/json" [selected] [ref=e324] [cursor=pointer]
+                      - tabpanel [ref=e326]:
+                        - generic [ref=e327]:
+                          - tablist [ref=e329]:
+                            - tab "Schema" [selected] [ref=e330] [cursor=pointer]:
+                              - generic [ref=e331]: Schema
+                            - tab "Example (auto)" [ref=e332] [cursor=pointer]:
+                              - generic [ref=e333]: Example (auto)
+                          - tabpanel [ref=e335]:
+                            - group [ref=e336]:
+                              - generic "Schema" [ref=e337] [cursor=pointer]:
+                                - strong [ref=e338]: Schema
+                              - list [ref=e341]:
+                                - generic [ref=e344]:
+                                  - strong [ref=e345]: uid
+                                  - generic [ref=e346]: string
+                                  - generic [ref=e348]: required
+              - generic [ref=e349]:
+                - group [ref=e350]:
+                  - 'generic "Authorization: ApiKey" [ref=e351]':
+                    - 'heading "Authorization: ApiKey" [level=4] [ref=e352]'
+                - generic [ref=e353]:
+                  - tablist [ref=e354]:
+                    - tab "curl" [selected] [ref=e355] [cursor=pointer]:
+                      - generic [ref=e356]: curl
+                    - tab "python" [ref=e357] [cursor=pointer]:
+                      - generic [ref=e358]: python
+                    - tab "go" [ref=e359] [cursor=pointer]:
+                      - generic [ref=e360]: go
+                    - tab "nodejs" [ref=e361] [cursor=pointer]:
+                      - generic [ref=e362]: nodejs
+                    - tab "java" [ref=e363] [cursor=pointer]:
+                      - generic [ref=e364]: java
+                  - tabpanel [ref=e365]:
+                    - generic [ref=e366]:
+                      - tablist [ref=e367]:
+                        - tab "CURL" [selected] [ref=e368] [cursor=pointer]:
+                          - generic [ref=e369]: CURL
+                      - tabpanel [ref=e370]:
+                        - generic [ref=e372]:
+                          - code [ref=e374]:
+                            - generic [ref=e377]: curl -L 'https://api.spectrocloud.com/v1/events/components' \
+                            - generic [ref=e380]: "-H 'Content-Type: application/json' \\"
+                            - generic [ref=e383]: "-H 'Accept: application/json' \\"
+                            - generic [ref=e386]: "-H 'ApiKey: <ApiKey>' \\"
+                            - generic [ref=e389]: "-d '{"
+                            - generic [ref=e392]: "\"involvedObject\": {"
+                            - generic [ref=e395]: "\"kind\": \"string\","
+                            - generic [ref=e398]: "\"name\": \"string\","
+                            - generic [ref=e401]: "\"uid\": \"string\""
+                            - generic [ref=e404]: "},"
+                            - generic [ref=e407]: "\"message\": \"string\","
+                            - generic [ref=e410]: "\"metadata\": {"
+                            - generic [ref=e413]: "\"annotations\": {},"
+                            - generic [ref=e416]: "\"creationTimestamp\": \"2024-07-29T15:51:28.071Z\","
+                            - generic [ref=e419]: "\"deletionTimestamp\": \"2024-07-29T15:51:28.071Z\","
+                            - generic [ref=e422]: "\"labels\": {},"
+                            - generic [ref=e425]: "\"lastModifiedTimestamp\": \"2024-07-29T15:51:28.071Z\","
+                            - generic [ref=e428]: "\"name\": \"string\","
+                            - generic [ref=e431]: "\"uid\": \"string\""
+                            - generic [ref=e434]: "},"
+                            - generic [ref=e437]: "\"reason\": \"string\","
+                            - generic [ref=e440]: "\"relatedObject\": {"
+                            - generic [ref=e443]: "\"kind\": \"spectrocluster\","
+                            - generic [ref=e446]: "\"name\": \"string\","
+                            - generic [ref=e449]: "\"uid\": \"string\""
+                            - generic [ref=e452]: "},"
+                            - generic [ref=e455]: "\"severity\": \"string\","
+                            - generic [ref=e458]: "\"source\": {"
+                            - generic [ref=e461]: "\"component\": \"string\","
+                            - generic [ref=e464]: "\"host\": \"string\""
+                            - generic [ref=e467]: "}"
+                            - generic [ref=e470]: "}'"
+                          - generic [ref=e471]:
+                            - button "Toggle word wrap" [ref=e472] [cursor=pointer]:
+                              - img [ref=e473]
+                            - button "Copy code to clipboard" [ref=e475] [cursor=pointer]:
+                              - generic [ref=e476]:
+                                - img [ref=e477]
+                                - img [ref=e479]
+                            - button "Expand code to fullscreen" [ref=e481] [cursor=pointer]:
+                              - generic [ref=e482]:
+                                - img [ref=e483]
+                                - img [ref=e485]
+          - navigation "Docs pages" [ref=e489]:
+            - link "Previous « Returns a paginated list of component events based on request parameters" [ref=e490] [cursor=pointer]:
+              - /url: /api/v1/v-1-events-components-list/
+              - generic [ref=e491]: Previous
+              - generic [ref=e492]: « Returns a paginated list of component events based on request parameters
+            - link "Next Creates the component events in bulk »" [ref=e493] [cursor=pointer]:
+              - /url: /api/v1/v-1-events-components-create-bulk/
+              - generic [ref=e494]: Next
+              - generic [ref=e495]: Creates the component events in bulk »
+  - button "Project Logo Ask AI" [ref=e496] [cursor=pointer]:
+    - generic [ref=e499]:
+      - img "Project Logo" [ref=e500]
+      - paragraph [ref=e501]: Ask AI
+```

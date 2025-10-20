@@ -1,0 +1,1278 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Palette Tutorials" [ref=e41] [cursor=pointer]:
+                  - /url: /tutorials/
+                  - img [ref=e43]
+                  - text: Palette Tutorials
+              - listitem [ref=e45]:
+                - generic [ref=e46]:
+                  - link "Getting Started" [ref=e47] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/
+                    - img [ref=e49]
+                    - text: Getting Started
+                  - button "Toggle the collapsible sidebar category 'Getting Started'" [ref=e51] [cursor=pointer]
+              - listitem [ref=e52]:
+                - generic [ref=e53]:
+                  - link "Packs and Registries" [ref=e54] [cursor=pointer]:
+                    - /url: /tutorials/packs-registries/
+                    - img [ref=e56]
+                    - text: Packs and Registries
+                  - button "Toggle the collapsible sidebar category 'Packs and Registries'" [ref=e58] [cursor=pointer]
+              - listitem [ref=e59]:
+                - generic [ref=e60]:
+                  - link "Profiles" [ref=e61] [cursor=pointer]:
+                    - /url: /tutorials/profiles/
+                    - img [ref=e63]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e67] [cursor=pointer]
+              - listitem [ref=e68]:
+                - generic [ref=e69]:
+                  - link "Clusters" [expanded] [ref=e70] [cursor=pointer]:
+                    - /url: /tutorials/clusters/
+                    - img [ref=e72]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e78] [cursor=pointer]
+                - list [ref=e79]:
+                  - listitem [ref=e80]:
+                    - link "Edge" [ref=e82] [cursor=pointer]:
+                      - /url: "#"
+                  - listitem [ref=e83]:
+                    - link "Private Cloud Gateway" [expanded] [ref=e85] [cursor=pointer]:
+                      - /url: "#"
+                    - list [ref=e86]:
+                      - listitem [ref=e87]:
+                        - link "Deploy App Workloads with a PCG" [ref=e88] [cursor=pointer]:
+                          - /url: /tutorials/clusters/pcg/deploy-app-pcg/
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Palette Dev Engine" [ref=e91] [cursor=pointer]:
+                    - /url: /tutorials/pde/
+                    - img [ref=e93]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - button "Privacy Settings" [ref=e97] [cursor=pointer]
+      - main [ref=e98]:
+        - generic [ref=e100]:
+          - generic [ref=e102]:
+            - article [ref=e103]:
+              - navigation "Breadcrumbs" [ref=e104]:
+                - list [ref=e105]:
+                  - listitem [ref=e106]:
+                    - link "Home page" [ref=e107] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e108]
+                  - listitem [ref=e110]:
+                    - link "Clusters" [ref=e111] [cursor=pointer]:
+                      - /url: /tutorials/clusters/
+                  - listitem [ref=e112]:
+                    - generic [ref=e113]: Private Cloud Gateway
+                  - listitem [ref=e114]:
+                    - generic [ref=e115]: Deploy App Workloads with a PCG
+              - generic [ref=e116]:
+                - heading "Deploy App Workloads with a PCG" [level=1] [ref=e118]
+                - paragraph [ref=e119]: Palette Private Cloud Gateway (PCG) is a crucial infrastructure support component that acts as a bridge between your private cloud environment or data center and Palette.
+                - paragraph [ref=e120]: A PCG is required in environments lacking direct network access to Palette. For example, many infrastructure environments reside within private networks that restrict external connections, preventing internal devices and resources from reaching Palette directly.
+                - paragraph [ref=e121]:
+                  - text: Upon installation, the PCG initiates a connection from inside the private network to Palette, serving as an endpoint for Palette to communicate with the infrastructure environment. The PCG continuously polls Palette for instructions to either deploy or delete Kubernetes clusters within the environment. This connection uses a secure communication channel that is encrypted using the Transport Layer Security (TLS) protocol. Once a cluster is deployed, the PCG is no longer involved in the communication between Palette and the deployed cluster. The cluster then communicates directly with Palette through the Palette agent available within each cluster, which originates all network requests outbound toward Palette. Refer to the
+                  - link "PCG Architecture" [ref=e122] [cursor=pointer]:
+                    - /url: /clusters/pcg/architecture/
+                  - text: section for more information.
+                - paragraph [ref=e123]:
+                  - text: A PCG comprises a cluster of nodes and can be deployed using two methods. The first method uses the Palette CLI to deploy a PCG in one of the three supported infrastructure environments; MAAS, OpenStack, or VMware vSphere. The other method manually deploys a PCG
+                  - link "onto an existing Kubernetes cluster" [ref=e124] [cursor=pointer]:
+                    - /url: /clusters/pcg/deploy-pcg-k8s/
+                  - text: .
+                - paragraph [ref=e125]:
+                  - text: In this tutorial, you will deploy a VMware PCG using Palette CLI. Next, you will learn how to deploy a VMware cluster with a sample Kubernetes application called
+                  - link "Hello Universe" [ref=e126] [cursor=pointer]:
+                    - /url: https://github.com/spectrocloud/hello-universe#hello-universe
+                  - text: ", utilizing either the Palette dashboard or Terraform."
+                - paragraph [ref=e127]: The following diagram illustrates the components that will be deployed in this tutorial and how they communicate with each other.
+                - paragraph [ref=e128]:
+                  - img "An architecture diagram of PCG" [ref=e129]
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e130]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e131] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - paragraph [ref=e132]: To complete this tutorial, you will need the following prerequisites in place.
+                - list [ref=e133]:
+                  - listitem [ref=e134]:
+                    - paragraph [ref=e135]:
+                      - text: A Palette account with
+                      - link "tenant admin" [ref=e136] [cursor=pointer]:
+                        - /url: /tenant-settings/
+                      - text: access.
+                  - listitem [ref=e137]:
+                    - paragraph [ref=e138]:
+                      - text: A Palette API key. Refer to the
+                      - link "Create API Key" [ref=e139] [cursor=pointer]:
+                        - /url: /user-management/authentication/api-key/create-api-key/
+                      - text: page for instructions on how to create an API key.
+                  - listitem [ref=e140]:
+                    - paragraph [ref=e141]:
+                      - text: A
+                      - link "VMware vSphere" [ref=e142] [cursor=pointer]:
+                        - /url: https://docs.vmware.com/en/VMware-vSphere/index.html
+                      - text: user account with the
+                      - link "required permissions" [ref=e143] [cursor=pointer]:
+                        - /url: /clusters/data-center/vmware/permissions/
+                      - text: .
+                  - listitem [ref=e144]:
+                    - paragraph [ref=e145]: A Linux x86-64 machine with access to a terminal and Internet, as well as connection to both Palette and VMware vSphere.
+                  - listitem [ref=e146]:
+                    - paragraph [ref=e147]:
+                      - text: An SSH key pair. Use the
+                      - link "Create and Upload an SSH Key" [ref=e148] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/ssh/ssh-keys/
+                      - text: guide to learn how to create an SSH key and upload it to Palette.
+                  - listitem [ref=e149]:
+                    - paragraph [ref=e150]: "The following IP address requirements must be met in your VMware vSphere environment:"
+                    - list [ref=e151]:
+                      - listitem [ref=e152]:
+                        - text: One IP address available for the single-node PCG deployment. Refer to the
+                        - link "PCG Sizing" [ref=e153] [cursor=pointer]:
+                          - /url: /clusters/pcg/manage-pcg/scale-pcg-nodes/
+                        - text: section for more information on sizing.
+                      - listitem [ref=e154]: One IP address reserved for cluster repave operations.
+                      - listitem [ref=e155]: One IP address for the Virtual IP (VIP).
+                      - listitem [ref=e156]:
+                        - text: DNS must be able to resolve the domain
+                        - code [ref=e157]: api.spectrocloud.com
+                        - text: .
+                      - listitem [ref=e158]: NTP server must be reachable from the PCG.
+                  - listitem [ref=e159]:
+                    - paragraph [ref=e160]: "The following minimum resources must be available in your VMware vSphere environment:"
+                    - list [ref=e161]:
+                      - listitem [ref=e162]: "CPU: 4 cores."
+                      - listitem [ref=e163]: "Memory: 4 GiB."
+                      - listitem [ref=e164]: "Storage: 60 GiB."
+                    - generic [ref=e165]:
+                      - generic [ref=e166]:
+                        - img [ref=e168]
+                        - text: info
+                      - paragraph [ref=e171]: In production environments, we recommend deploying a three-node PCG, each node with 8 cores of CPU, 8 GiB of memory, and 100 GiB of storage.
+                  - listitem [ref=e172]:
+                    - paragraph [ref=e173]: Ensure the following software is installed and available on your Linux machine.
+                    - list [ref=e174]:
+                      - listitem [ref=e175]:
+                        - link "Palette CLI" [ref=e176] [cursor=pointer]:
+                          - /url: /automation/palette-cli/install-palette-cli/
+                        - text: .
+                      - listitem [ref=e177]:
+                        - link "Docker" [ref=e178] [cursor=pointer]:
+                          - /url: https://docs.docker.com/desktop
+                        - text: .
+                      - listitem [ref=e179]:
+                        - link "Kind" [ref=e180] [cursor=pointer]:
+                          - /url: https://kind.sigs.k8s.io/docs/user/quick-start/#installation
+                        - text: .
+                      - listitem [ref=e181]:
+                        - link "Git" [ref=e182] [cursor=pointer]:
+                          - /url: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+                        - text: .
+                      - listitem [ref=e183]:
+                        - link "Terraform CLI" [ref=e184] [cursor=pointer]:
+                          - /url: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
+                        - text: v1.4.0 or greater, if you choose to follow along with the Terraform workflow.
+                - heading "Authenticate with PaletteDirect link to Authenticate with Palette" [level=2] [ref=e185]:
+                  - text: Authenticate with Palette
+                  - link "Direct link to Authenticate with Palette" [ref=e186] [cursor=pointer]:
+                    - /url: "#authenticate-with-palette"
+                    - text: "#"
+                - paragraph [ref=e187]:
+                  - text: The initial step to deploy a PCG using Palette CLI involves authenticating with your Palette environment using the
+                  - link "palette login" [ref=e188] [cursor=pointer]:
+                    - /url: /automation/palette-cli/commands/login
+                  - text: command. In your terminal, execute the following command.
+                - generic [ref=e190]:
+                  - code [ref=e192]:
+                    - generic [ref=e193]: palette login
+                  - button "Copy code to clipboard" [ref=e195] [cursor=pointer]:
+                    - generic [ref=e196]:
+                      - img [ref=e197]
+                      - img [ref=e199]
+                - paragraph [ref=e201]:
+                  - text: Once issued, you will be prompted for several parameters to complete the authentication. The table below outlines the required parameters along with the values that will be utilized in this tutorial. If a parameter is specific to your environment and Palette account, such as your Palette API key, ensure to input the value according to your environment. Check out the
+                  - link "Deploy a PCG to VMware vSphere" [ref=e202] [cursor=pointer]:
+                    - /url: /clusters/pcg/deploy-pcg/vmware
+                  - text: guide for more information. option.
+                - table [ref=e203]:
+                  - rowgroup [ref=e204]:
+                    - row "Parameter Value Environment-Specific" [ref=e205]:
+                      - cell "Parameter" [ref=e206]:
+                        - strong [ref=e207]: Parameter
+                      - cell "Value" [ref=e208]:
+                        - strong [ref=e209]: Value
+                      - cell "Environment-Specific" [ref=e210]:
+                        - strong [ref=e211]: Environment-Specific
+                  - rowgroup [ref=e212]:
+                    - row "Spectro Cloud Console https://console.spectrocloud.com. If using a self-hosted instance of Palette, enter the URL for that instance. No" [ref=e213]:
+                      - cell "Spectro Cloud Console" [ref=e214]:
+                        - strong [ref=e215]: Spectro Cloud Console
+                      - cell "https://console.spectrocloud.com. If using a self-hosted instance of Palette, enter the URL for that instance." [ref=e216]:
+                        - code [ref=e217]: https://console.spectrocloud.com
+                        - text: . If using a self-hosted instance of Palette, enter the URL for that instance.
+                      - cell "No" [ref=e218]
+                    - row "Allow Insecure Connection Y. Enabling this option bypasses x509 CA verification. In production environments, enter Y if you are using a self-hosted Palette or VerteX instance with self-signed TLS certificates and need to provide a file path to the instance CA. Otherwise, enter N. No" [ref=e219]:
+                      - cell "Allow Insecure Connection" [ref=e220]:
+                        - strong [ref=e221]: Allow Insecure Connection
+                      - cell "Y. Enabling this option bypasses x509 CA verification. In production environments, enter Y if you are using a self-hosted Palette or VerteX instance with self-signed TLS certificates and need to provide a file path to the instance CA. Otherwise, enter N." [ref=e222]:
+                        - code [ref=e223]: "Y"
+                        - text: . Enabling this option bypasses x509 CA verification. In production environments, enter
+                        - code [ref=e224]: "Y"
+                        - text: if you are using a self-hosted Palette or VerteX instance with self-signed TLS certificates and need to provide a file path to the instance CA. Otherwise, enter
+                        - code [ref=e225]: "N"
+                        - text: .
+                      - cell "No" [ref=e226]
+                    - row "Spectro Cloud API Key Enter your Palette API Key. Yes" [ref=e227]:
+                      - cell "Spectro Cloud API Key" [ref=e228]:
+                        - strong [ref=e229]: Spectro Cloud API Key
+                      - cell "Enter your Palette API Key." [ref=e230]
+                      - cell "Yes" [ref=e231]
+                    - row "Spectro Cloud Organization Select your Palette Organization name. Yes" [ref=e232]:
+                      - cell "Spectro Cloud Organization" [ref=e233]:
+                        - strong [ref=e234]: Spectro Cloud Organization
+                      - cell "Select your Palette Organization name." [ref=e235]
+                      - cell "Yes" [ref=e236]
+                    - row "Spectro Cloud Project None (TenantAdmin) No" [ref=e237]:
+                      - cell "Spectro Cloud Project" [ref=e238]:
+                        - strong [ref=e239]: Spectro Cloud Project
+                      - cell "None (TenantAdmin)" [ref=e240]:
+                        - code [ref=e241]: None (TenantAdmin)
+                      - cell "No" [ref=e242]
+                    - row "Acknowledge Accept the login banner message. Login banner messages are only displayed if the tenant admin enabled a login banner. Yes" [ref=e243]:
+                      - cell "Acknowledge" [ref=e244]:
+                        - strong [ref=e245]: Acknowledge
+                      - cell "Accept the login banner message. Login banner messages are only displayed if the tenant admin enabled a login banner." [ref=e246]:
+                        - text: Accept the login banner message.
+                        - link "Login banner" [ref=e247] [cursor=pointer]:
+                          - /url: /tenant-settings/login-banner
+                        - text: messages are only displayed if the tenant admin enabled a login banner.
+                      - cell "Yes" [ref=e248]
+                - paragraph [ref=e249]: After accepting the login banner message, you will receive the following output confirming you have successfully authenticated with Palette.
+                - code [ref=e253]:
+                  - generic [ref=e254]: Welcome to Spectro Cloud Palette
+                - paragraph [ref=e255]: The video below demonstrates Palette's authentication process. Ensure you utilize values specific to your environment, such as the correct Palette URL. Contact your Palette administrator for the correct URL if you use a self-hosted Palette or VerteX instance.
+                - generic "palette-login-video" [ref=e256]
+                - heading "Deploy a PCG with Palette CLIDirect link to Deploy a PCG with Palette CLI" [level=2] [ref=e257]:
+                  - text: Deploy a PCG with Palette CLI
+                  - link "Direct link to Deploy a PCG with Palette CLI" [ref=e258] [cursor=pointer]:
+                    - /url: "#deploy-a-pcg-with-palette-cli"
+                    - text: "#"
+                - paragraph [ref=e259]: After authenticating with Palette, you can proceed with the PCG creation process. Issue the command below to start the PCG installation.
+                - generic [ref=e261]:
+                  - code [ref=e263]:
+                    - generic [ref=e264]: palette pcg install
+                  - button "Copy code to clipboard" [ref=e266] [cursor=pointer]:
+                    - generic [ref=e267]:
+                      - img [ref=e268]
+                      - img [ref=e270]
+                - paragraph [ref=e272]:
+                  - text: The
+                  - code [ref=e273]: palette pcg install
+                  - text: command will prompt you for information regarding your PCG cluster, vSphere environment, and resource configurations. The following tables display the required parameters along with the values that will be used in this tutorial. Enter the provided values when prompted. If a parameter is specific to your environment, such as your vSphere endpoint, enter the corresponding value according to your environment. For detailed information about each parameter, refer to the
+                  - link "Deploy a PCG to VMware vSphere" [ref=e274] [cursor=pointer]:
+                    - /url: /clusters/pcg/deploy-pcg/vmware
+                  - text: guide.
+                - generic [ref=e275]:
+                  - generic [ref=e276]:
+                    - img [ref=e278]
+                    - text: info
+                  - paragraph [ref=e281]: The PCG to be deployed in this tutorial is intended for educational purposes only and is not recommended for production environments.
+                - list [ref=e282]:
+                  - listitem [ref=e283]:
+                    - paragraph [ref=e284]:
+                      - strong [ref=e285]: PCG General Information
+                    - paragraph [ref=e286]:
+                      - text: Configure the PCG general information, including the
+                      - strong [ref=e287]: Cloud Type
+                      - text: and
+                      - strong [ref=e288]: Private Cloud Gateway Name
+                      - text: ", as shown in the table below."
+                    - table [ref=e289]:
+                      - rowgroup [ref=e290]:
+                        - row "Parameter Value Environment-Specific" [ref=e291]:
+                          - cell "Parameter" [ref=e292]:
+                            - strong [ref=e293]: Parameter
+                          - cell "Value" [ref=e294]:
+                            - strong [ref=e295]: Value
+                          - cell "Environment-Specific" [ref=e296]:
+                            - strong [ref=e297]: Environment-Specific
+                      - rowgroup [ref=e298]:
+                        - row "Management Plane Type Palette No" [ref=e299]:
+                          - cell "Management Plane Type" [ref=e300]:
+                            - strong [ref=e301]: Management Plane Type
+                          - cell "Palette" [ref=e302]:
+                            - code [ref=e303]: Palette
+                          - cell "No" [ref=e304]
+                        - row "Enable Ubuntu Pro (required for production) N No" [ref=e305]:
+                          - cell "Enable Ubuntu Pro (required for production)" [ref=e306]:
+                            - strong [ref=e307]: Enable Ubuntu Pro (required for production)
+                          - cell "N" [ref=e308]:
+                            - code [ref=e309]: "N"
+                          - cell "No" [ref=e310]
+                        - row "Select an image registry type Default No" [ref=e311]:
+                          - cell "Select an image registry type" [ref=e312]:
+                            - strong [ref=e313]: Select an image registry type
+                          - cell "Default" [ref=e314]:
+                            - code [ref=e315]: Default
+                          - cell "No" [ref=e316]
+                        - row "Cloud Type VMware vSphere No" [ref=e317]:
+                          - cell "Cloud Type" [ref=e318]:
+                            - strong [ref=e319]: Cloud Type
+                          - cell "VMware vSphere" [ref=e320]:
+                            - code [ref=e321]: VMware vSphere
+                          - cell "No" [ref=e322]
+                        - row "Private Cloud Gateway Name gateway-tutorial No" [ref=e323]:
+                          - cell "Private Cloud Gateway Name" [ref=e324]:
+                            - strong [ref=e325]: Private Cloud Gateway Name
+                          - cell "gateway-tutorial" [ref=e326]:
+                            - code [ref=e327]: gateway-tutorial
+                          - cell "No" [ref=e328]
+                        - row "Share PCG Cloud Account across platform Projects Y No" [ref=e329]:
+                          - cell "Share PCG Cloud Account across platform Projects" [ref=e330]:
+                            - strong [ref=e331]: Share PCG Cloud Account across platform Projects
+                          - cell "Y" [ref=e332]:
+                            - code [ref=e333]: "Y"
+                          - cell "No" [ref=e334]
+                  - listitem [ref=e335]:
+                    - paragraph [ref=e336]:
+                      - strong [ref=e337]: Environment Configuration
+                    - paragraph [ref=e338]:
+                      - text: Enter the environment configuration information, such as the
+                      - strong [ref=e339]: Pod CIDR
+                      - text: and
+                      - strong [ref=e340]: Service IP Range
+                      - text: according to the table below.
+                    - table [ref=e341]:
+                      - rowgroup [ref=e342]:
+                        - row "Parameter Value Environment-Specific" [ref=e343]:
+                          - cell "Parameter" [ref=e344]:
+                            - strong [ref=e345]: Parameter
+                          - cell "Value" [ref=e346]:
+                            - strong [ref=e347]: Value
+                          - cell "Environment-Specific" [ref=e348]:
+                            - strong [ref=e349]: Environment-Specific
+                      - rowgroup [ref=e350]:
+                        - row "HTTPS Proxy Skip. No" [ref=e351]:
+                          - cell "HTTPS Proxy" [ref=e352]:
+                            - strong [ref=e353]: HTTPS Proxy
+                          - cell "Skip." [ref=e354]
+                          - cell "No" [ref=e355]
+                        - row "HTTP Proxy Skip. No" [ref=e356]:
+                          - cell "HTTP Proxy" [ref=e357]:
+                            - strong [ref=e358]: HTTP Proxy
+                          - cell "Skip." [ref=e359]
+                          - cell "No" [ref=e360]
+                        - row "Pod CIDR 172.16.0.0/20. The pod IP addresses should be unique and not overlap with any machine IPs in the environment. No" [ref=e361]:
+                          - cell "Pod CIDR" [ref=e362]:
+                            - strong [ref=e363]: Pod CIDR
+                          - cell "172.16.0.0/20. The pod IP addresses should be unique and not overlap with any machine IPs in the environment." [ref=e364]:
+                            - code [ref=e365]: 172.16.0.0/20
+                            - text: . The pod IP addresses should be unique and not overlap with any machine IPs in the environment.
+                          - cell "No" [ref=e366]
+                        - row "Service IP Range 10.155.0.0/24. The service IP addresses should be unique and not overlap with any machine IPs in the environment. No" [ref=e367]:
+                          - cell "Service IP Range" [ref=e368]:
+                            - strong [ref=e369]: Service IP Range
+                          - cell "10.155.0.0/24. The service IP addresses should be unique and not overlap with any machine IPs in the environment." [ref=e370]:
+                            - code [ref=e371]: 10.155.0.0/24
+                            - text: . The service IP addresses should be unique and not overlap with any machine IPs in the environment.
+                          - cell "No" [ref=e372]
+                  - listitem [ref=e373]:
+                    - paragraph [ref=e374]:
+                      - strong [ref=e375]: vSphere Account Information
+                    - paragraph [ref=e376]: Enter the information specific to your vSphere account.
+                    - table [ref=e377]:
+                      - rowgroup [ref=e378]:
+                        - row "Parameter Value Environment-Specific" [ref=e379]:
+                          - cell "Parameter" [ref=e380]:
+                            - strong [ref=e381]: Parameter
+                          - cell "Value" [ref=e382]:
+                            - strong [ref=e383]: Value
+                          - cell "Environment-Specific" [ref=e384]:
+                            - strong [ref=e385]: Environment-Specific
+                      - rowgroup [ref=e386]:
+                        - 'row "vSphere Endpoint Your vSphere endpoint. You can specify a Full Qualified Domain Name (FQDN) or an IP address. Make sure you specify the endpoint without the HTTP scheme https:// or http://. Example: vcenter.mycompany.com. Yes" [ref=e387]':
+                          - cell "vSphere Endpoint" [ref=e388]:
+                            - strong [ref=e389]: vSphere Endpoint
+                          - 'cell "Your vSphere endpoint. You can specify a Full Qualified Domain Name (FQDN) or an IP address. Make sure you specify the endpoint without the HTTP scheme https:// or http://. Example: vcenter.mycompany.com." [ref=e390]':
+                            - text: Your vSphere endpoint. You can specify a Full Qualified Domain Name (FQDN) or an IP address. Make sure you specify the endpoint without the HTTP scheme
+                            - code [ref=e391]: https://
+                            - text: or
+                            - code [ref=e392]: http://
+                            - text: ". Example:"
+                            - code [ref=e393]: vcenter.mycompany.com
+                            - text: .
+                          - cell "Yes" [ref=e394]
+                        - row "vSphere Username Your vSphere account username. Yes" [ref=e395]:
+                          - cell "vSphere Username" [ref=e396]:
+                            - strong [ref=e397]: vSphere Username
+                          - cell "Your vSphere account username." [ref=e398]
+                          - cell "Yes" [ref=e399]
+                        - row "vSphere Password Your vSphere account password. Yes" [ref=e400]:
+                          - cell "vSphere Password" [ref=e401]:
+                            - strong [ref=e402]: vSphere Password
+                          - cell "Your vSphere account password." [ref=e403]
+                          - cell "Yes" [ref=e404]
+                        - row "Allow Insecure Connection (Bypass x509 Verification) Y. Enabling this option bypasses x509 CA verification. In production environments, enter N if using a custom registry with self-signed SSL certificates. Otherwise, enter Y. No" [ref=e405]:
+                          - cell "Allow Insecure Connection (Bypass x509 Verification)" [ref=e406]:
+                            - strong [ref=e407]: Allow Insecure Connection (Bypass x509 Verification)
+                          - cell "Y. Enabling this option bypasses x509 CA verification. In production environments, enter N if using a custom registry with self-signed SSL certificates. Otherwise, enter Y." [ref=e408]:
+                            - code [ref=e409]: "Y"
+                            - text: . Enabling this option bypasses x509 CA verification. In production environments, enter
+                            - code [ref=e410]: "N"
+                            - text: if using a custom registry with self-signed SSL certificates. Otherwise, enter
+                            - code [ref=e411]: "Y"
+                            - text: .
+                          - cell "No" [ref=e412]
+                  - listitem [ref=e413]:
+                    - paragraph [ref=e414]:
+                      - strong [ref=e415]: vSphere Cluster Configuration
+                    - paragraph [ref=e416]:
+                      - text: Enter the PCG cluster configuration information. For example, specify the vSphere
+                      - strong [ref=e417]: Resource Pool
+                      - text: to be targeted by the PCG cluster.
+                    - table [ref=e418]:
+                      - rowgroup [ref=e419]:
+                        - row "Parameter Value Environment-Specific" [ref=e420]:
+                          - cell "Parameter" [ref=e421]:
+                            - strong [ref=e422]: Parameter
+                          - cell "Value" [ref=e423]:
+                            - strong [ref=e424]: Value
+                          - cell "Environment-Specific" [ref=e425]:
+                            - strong [ref=e426]: Environment-Specific
+                      - rowgroup [ref=e427]:
+                        - row "Datacenter The vSphere data center to target when deploying the PCG cluster. Yes" [ref=e428]:
+                          - cell "Datacenter" [ref=e429]:
+                            - strong [ref=e430]: Datacenter
+                          - cell "The vSphere data center to target when deploying the PCG cluster." [ref=e431]
+                          - cell "Yes" [ref=e432]
+                        - row "Folder The vSphere folder to target when deploying the PCG cluster. Yes" [ref=e433]:
+                          - cell "Folder" [ref=e434]:
+                            - strong [ref=e435]: Folder
+                          - cell "The vSphere folder to target when deploying the PCG cluster." [ref=e436]
+                          - cell "Yes" [ref=e437]
+                        - row "Network The port group to which the PCG cluster will be connected. Yes" [ref=e438]:
+                          - cell "Network" [ref=e439]:
+                            - strong [ref=e440]: Network
+                          - cell "The port group to which the PCG cluster will be connected." [ref=e441]
+                          - cell "Yes" [ref=e442]
+                        - row "Resource Pool The vSphere resource pool to target when deploying the PCG cluster. Yes" [ref=e443]:
+                          - cell "Resource Pool" [ref=e444]:
+                            - strong [ref=e445]: Resource Pool
+                          - cell "The vSphere resource pool to target when deploying the PCG cluster." [ref=e446]
+                          - cell "Yes" [ref=e447]
+                        - row "Cluster The vSphere compute cluster to use for the PCG deployment. Yes" [ref=e448]:
+                          - cell "Cluster" [ref=e449]:
+                            - strong [ref=e450]: Cluster
+                          - cell "The vSphere compute cluster to use for the PCG deployment." [ref=e451]
+                          - cell "Yes" [ref=e452]
+                        - row "Select specific Datastore or use a VM Storage Policy Datastore No" [ref=e453]:
+                          - cell "Select specific Datastore or use a VM Storage Policy" [ref=e454]:
+                            - strong [ref=e455]: Select specific Datastore or use a VM Storage Policy
+                          - cell "Datastore" [ref=e456]:
+                            - code [ref=e457]: Datastore
+                          - cell "No" [ref=e458]
+                        - row "Datastore The vSphere datastore to use for the PCG deployment. Yes" [ref=e459]:
+                          - cell "Datastore" [ref=e460]:
+                            - strong [ref=e461]: Datastore
+                          - cell "The vSphere datastore to use for the PCG deployment." [ref=e462]
+                          - cell "Yes" [ref=e463]
+                        - row "Add another Fault Domain N No" [ref=e464]:
+                          - cell "Add another Fault Domain" [ref=e465]:
+                            - strong [ref=e466]: Add another Fault Domain
+                          - cell "N" [ref=e467]:
+                            - code [ref=e468]: "N"
+                          - cell "No" [ref=e469]
+                        - row "NTP Servers Skip. No" [ref=e470]:
+                          - cell "NTP Servers" [ref=e471]:
+                            - strong [ref=e472]: NTP Servers
+                          - cell "Skip." [ref=e473]
+                          - cell "No" [ref=e474]
+                        - row "SSH Public Keys Provide a public OpenSSH key to be used to connect to the PCG cluster. Yes" [ref=e475]:
+                          - cell "SSH Public Keys" [ref=e476]:
+                            - strong [ref=e477]: SSH Public Keys
+                          - cell "Provide a public OpenSSH key to be used to connect to the PCG cluster." [ref=e478]
+                          - cell "Yes" [ref=e479]
+                  - listitem [ref=e480]:
+                    - paragraph [ref=e481]:
+                      - strong [ref=e482]: PCG Cluster Size
+                    - paragraph [ref=e483]:
+                      - text: This tutorial will deploy a one-node PCG with dynamic IP placement (DDNS). If needed, you can convert a single-node PCG to a multi-node PCG to provide additional capacity. Refer to the
+                      - link "Increase PCG Node Count" [ref=e484] [cursor=pointer]:
+                        - /url: /clusters/pcg/manage-pcg/scale-pcg-nodes
+                      - text: guide for more information.
+                    - table [ref=e485]:
+                      - rowgroup [ref=e486]:
+                        - row "Parameter Value Environment-Specific" [ref=e487]:
+                          - cell "Parameter" [ref=e488]:
+                            - strong [ref=e489]: Parameter
+                          - cell "Value" [ref=e490]:
+                            - strong [ref=e491]: Value
+                          - cell "Environment-Specific" [ref=e492]:
+                            - strong [ref=e493]: Environment-Specific
+                      - rowgroup [ref=e494]:
+                        - row "Number of Nodes 1 No" [ref=e495]:
+                          - cell "Number of Nodes" [ref=e496]:
+                            - strong [ref=e497]: Number of Nodes
+                          - cell "1" [ref=e498]:
+                            - code [ref=e499]: "1"
+                          - cell "No" [ref=e500]
+                        - row "Placement Type DDNS No" [ref=e501]:
+                          - cell "Placement Type" [ref=e502]:
+                            - strong [ref=e503]: Placement Type
+                          - cell "DDNS" [ref=e504]:
+                            - code [ref=e505]: DDNS
+                          - cell "No" [ref=e506]
+                        - row "Search domains Comma-separated list of DNS search domains. For example, spectrocloud.dev. Yes" [ref=e507]:
+                          - cell "Search domains" [ref=e508]:
+                            - strong [ref=e509]: Search domains
+                          - cell "Comma-separated list of DNS search domains. For example, spectrocloud.dev." [ref=e510]:
+                            - text: Comma-separated list of DNS search domains. For example,
+                            - code [ref=e511]: spectrocloud.dev
+                            - text: .
+                          - cell "Yes" [ref=e512]
+                  - listitem [ref=e513]:
+                    - paragraph [ref=e514]:
+                      - strong [ref=e515]: Cluster Settings
+                    - paragraph [ref=e516]:
+                      - text: Set the parameter
+                      - strong [ref=e517]: Patch OS on boot
+                      - text: to
+                      - code [ref=e518]: "N"
+                      - text: ", meaning the OS of the PCG hosts will not be patched on the first boot."
+                    - table [ref=e519]:
+                      - rowgroup [ref=e520]:
+                        - row "Parameter Value Environment-Specific" [ref=e521]:
+                          - cell "Parameter" [ref=e522]:
+                            - strong [ref=e523]: Parameter
+                          - cell "Value" [ref=e524]:
+                            - strong [ref=e525]: Value
+                          - cell "Environment-Specific" [ref=e526]:
+                            - strong [ref=e527]: Environment-Specific
+                      - rowgroup [ref=e528]:
+                        - row "Patch OS on boot N No" [ref=e529]:
+                          - cell "Patch OS on boot" [ref=e530]:
+                            - strong [ref=e531]: Patch OS on boot
+                          - cell "N" [ref=e532]:
+                            - code [ref=e533]: "N"
+                          - cell "No" [ref=e534]
+                  - listitem [ref=e535]:
+                    - paragraph [ref=e536]:
+                      - strong [ref=e537]: vSphere Machine Configuration
+                    - paragraph [ref=e538]:
+                      - text: Set the size of the PCG as small (
+                      - strong [ref=e539]: S
+                      - text: ) as this PCG will not be used in production environments.
+                    - table [ref=e540]:
+                      - rowgroup [ref=e541]:
+                        - row "Parameter Value Environment-Specific" [ref=e542]:
+                          - cell "Parameter" [ref=e543]:
+                            - strong [ref=e544]: Parameter
+                          - cell "Value" [ref=e545]:
+                            - strong [ref=e546]: Value
+                          - cell "Environment-Specific" [ref=e547]:
+                            - strong [ref=e548]: Environment-Specific
+                      - rowgroup [ref=e549]:
+                        - row "S 4 CPU, 4 GB of Memory, and 60 GB of Storage No" [ref=e550]:
+                          - cell "S" [ref=e551]:
+                            - strong [ref=e552]: S
+                          - cell "4 CPU, 4 GB of Memory, and 60 GB of Storage" [ref=e553]:
+                            - code [ref=e554]: 4 CPU, 4 GB of Memory, and 60 GB of Storage
+                          - cell "No" [ref=e555]
+                  - listitem [ref=e556]:
+                    - paragraph [ref=e557]:
+                      - strong [ref=e558]: Node Affinity Configuration Information
+                    - paragraph [ref=e559]:
+                      - text: Set
+                      - strong [ref=e560]: Node Affinity
+                      - text: to
+                      - code [ref=e561]: "N"
+                      - text: ", indicating no affinity between Palette pods and control plane nodes."
+                    - table [ref=e562]:
+                      - rowgroup [ref=e563]:
+                        - row "Parameter Value Environment-Specific" [ref=e564]:
+                          - cell "Parameter" [ref=e565]:
+                            - strong [ref=e566]: Parameter
+                          - cell "Value" [ref=e567]:
+                            - strong [ref=e568]: Value
+                          - cell "Environment-Specific" [ref=e569]:
+                            - strong [ref=e570]: Environment-Specific
+                      - rowgroup [ref=e571]:
+                        - row "Node Affinity N No" [ref=e572]:
+                          - cell "Node Affinity" [ref=e573]:
+                            - strong [ref=e574]: Node Affinity
+                          - cell "N" [ref=e575]:
+                            - code [ref=e576]: "N"
+                          - cell "No" [ref=e577]
+                - paragraph [ref=e578]:
+                  - text: After answering the prompts of the
+                  - code [ref=e579]: pcg install
+                  - text: command, a new PCG configuration file is generated, and its location is displayed on the console.
+                - generic [ref=e581]:
+                  - code [ref=e583]:
+                    - generic [ref=e584]: "==== PCG config saved ==== Location: /home/ubuntu/.palette/pcg/pcg-20240313152521/pcg.yaml"
+                  - button "Toggle word wrap" [ref=e586] [cursor=pointer]:
+                    - img [ref=e587]
+                - paragraph [ref=e589]:
+                  - text: Next, Palette CLI will create a local
+                  - link "kind" [ref=e590] [cursor=pointer]:
+                    - /url: https://kind.sigs.k8s.io/
+                  - text: cluster that will be used to bootstrap the PCG cluster deployment in your VMware environment. Once installed, the PCG registers itself with Palette and creates a VMware cloud account with the same name as the PCG.
+                - paragraph [ref=e591]:
+                  - text: The following recording demonstrates the
+                  - code [ref=e592]: pcg install
+                  - text: command with the
+                  - code [ref=e593]: "--config-only"
+                  - text: flag. When using this flag, a reusable configuration file named
+                  - strong [ref=e594]: pcg.yaml
+                  - text: is created under the path
+                  - strong [ref=e595]: .palette/pcg
+                  - text: . You can then utilize this file to install a PCG with predefined values using the command
+                  - code [ref=e596]: pcg install
+                  - text: with the
+                  - code [ref=e597]: "--config-file"
+                  - text: flag. Refer to the
+                  - link "Palette CLI PCG Command" [ref=e598] [cursor=pointer]:
+                    - /url: /automation/palette-cli/commands/pcg
+                  - text: page for further information about the command.
+                - generic "palette-pcg-config-only" [ref=e599]
+                - paragraph [ref=e600]:
+                  - text: You can monitor the PCG cluster creation by logging into Palette and switching to the
+                  - strong [ref=e601]: Tenant Admin
+                  - text: scope. Next, click on
+                  - strong [ref=e602]: Tenant Settings
+                  - text: from the left
+                  - strong [ref=e603]: Main Menu
+                  - text: and select
+                  - strong [ref=e604]: Private Cloud Gateways
+                  - text: . Then, click on the PCG cluster you just created and check the deployment progress under the
+                  - strong [ref=e605]: Events
+                  - text: tab.
+                - paragraph [ref=e606]:
+                  - img "PCG Events page." [ref=e607]
+                - paragraph [ref=e608]: You can also track the PCG deployment progress from your terminal. Depending on the PCG size and infrastructure environment, the deployment might take up to 30 minutes. Upon completion, the local kind cluster is automatically deleted from your machine.
+                - paragraph [ref=e609]:
+                  - img "Palette CLI PCG deployment" [ref=e610]
+                - paragraph [ref=e611]:
+                  - text: Next, log in to Palette as a tenant admin. Navigate to the left
+                  - strong [ref=e612]: Main Menu
+                  - text: and select
+                  - strong [ref=e613]: Tenant Settings
+                  - text: . Click on
+                  - strong [ref=e614]: Private Cloud Gateways
+                  - text: from the
+                  - strong [ref=e615]: Tenant Settings Menu
+                  - text: and select the PCG you just created. Ensure that the PCG cluster status is
+                  - strong [ref=e616]: Running
+                  - text: and
+                  - strong [ref=e617]: Healthy
+                  - text: before proceeding.
+                - paragraph [ref=e618]:
+                  - img "PCG Overview page." [ref=e619]
+                - heading "Create a Cluster Profile and Deploy a ClusterDirect link to Create a Cluster Profile and Deploy a Cluster" [level=2] [ref=e620]:
+                  - text: Create a Cluster Profile and Deploy a Cluster
+                  - link "Direct link to Create a Cluster Profile and Deploy a Cluster" [ref=e621] [cursor=pointer]:
+                    - /url: "#create-a-cluster-profile-and-deploy-a-cluster"
+                    - text: "#"
+                - paragraph [ref=e622]:
+                  - text: Once you have successfully deployed the PCG, proceed to create a cluster profile with the
+                  - link "Hello Universe" [ref=e623] [cursor=pointer]:
+                    - /url: https://github.com/spectrocloud/hello-universe
+                  - text: application and use it to deploy a VMware cluster. You can use the Palette dashboard or Terraform.
+                - generic [ref=e624]:
+                  - tablist [ref=e625]:
+                    - tab "UI Workflow" [selected] [ref=e626] [cursor=pointer]
+                    - tab "Terraform Workflow" [ref=e627] [cursor=pointer]
+                  - generic [ref=e628]:
+                    - tabpanel [ref=e629]:
+                      - heading "Create a Cluster ProfileDirect link to Create a Cluster Profile" [level=3] [ref=e630]:
+                        - text: Create a Cluster Profile
+                        - link "Direct link to Create a Cluster Profile" [ref=e631] [cursor=pointer]:
+                          - /url: "#create-a-cluster-profile"
+                          - text: "#"
+                      - paragraph [ref=e632]:
+                        - text: Log in to Palette and select
+                        - strong [ref=e633]: Profiles
+                        - text: from the left
+                        - strong [ref=e634]: Main Menu
+                        - text: to access the cluster profile page. Click on the
+                        - strong [ref=e635]: Add Cluster Profile
+                        - text: button and follow the wizard to create a new cluster profile.
+                      - paragraph [ref=e636]:
+                        - strong [ref=e637]: Basic Information
+                      - paragraph [ref=e638]:
+                        - text: Complete the
+                        - strong [ref=e639]: Basic Information
+                        - text: section with the values provided below.
+                      - table [ref=e640]:
+                        - rowgroup [ref=e641]:
+                          - row "Field Value" [ref=e642]:
+                            - cell "Field" [ref=e643]:
+                              - strong [ref=e644]: Field
+                            - cell "Value" [ref=e645]:
+                              - strong [ref=e646]: Value
+                        - rowgroup [ref=e647]:
+                          - row "Name pcg-tutorial-profile" [ref=e648]:
+                            - cell "Name" [ref=e649]
+                            - cell "pcg-tutorial-profile" [ref=e650]:
+                              - code [ref=e651]: pcg-tutorial-profile
+                          - row "Version 1.0.0" [ref=e652]:
+                            - cell "Version" [ref=e653]
+                            - cell "1.0.0" [ref=e654]:
+                              - code [ref=e655]: 1.0.0
+                          - row "Description Cluster profile as part of the Deploy App Workloads with a PCG tutorial." [ref=e656]:
+                            - cell "Description" [ref=e657]
+                            - cell "Cluster profile as part of the Deploy App Workloads with a PCG tutorial." [ref=e658]
+                          - row "Type Full" [ref=e659]:
+                            - cell "Type" [ref=e660]
+                            - cell "Full" [ref=e661]
+                          - row "Tags spectro-cloud-education, app:hello-universe, terraform_managed:false, repository:spectrocloud:tutorials, tutorial:DEPLOY_APP_WORKLOADS_WITH_A_PCG" [ref=e662]:
+                            - cell "Tags" [ref=e663]
+                            - cell "spectro-cloud-education, app:hello-universe, terraform_managed:false, repository:spectrocloud:tutorials, tutorial:DEPLOY_APP_WORKLOADS_WITH_A_PCG" [ref=e664]:
+                              - code [ref=e665]: spectro-cloud-education
+                              - text: ","
+                              - code [ref=e666]: app:hello-universe
+                              - text: ","
+                              - code [ref=e667]: terraform_managed:false
+                              - text: ","
+                              - code [ref=e668]: repository:spectrocloud:tutorials
+                              - text: ","
+                              - code [ref=e669]: tutorial:DEPLOY_APP_WORKLOADS_WITH_A_PCG
+                      - paragraph [ref=e670]:
+                        - text: Click on
+                        - strong [ref=e671]: Next
+                        - text: to continue.
+                      - paragraph [ref=e672]:
+                        - strong [ref=e673]: Cloud Type
+                      - paragraph [ref=e674]:
+                        - text: In the
+                        - strong [ref=e675]: Cloud Type
+                        - text: section, select VMware as the infrastructure provider, then click
+                        - strong [ref=e676]: Next
+                        - text: to proceed.
+                      - paragraph [ref=e677]:
+                        - strong [ref=e678]: Profile Layers
+                      - paragraph [ref=e679]: Add the following core infrastructure layers displayed to your profile.
+                      - table [ref=e680]:
+                        - rowgroup [ref=e681]:
+                          - row "Pack Name Version Layer" [ref=e682]:
+                            - cell "Pack Name" [ref=e683]
+                            - cell "Version" [ref=e684]
+                            - cell "Layer" [ref=e685]
+                        - rowgroup [ref=e686]:
+                          - row "ubuntu-vsphere LTS 22.4.x Operating System" [ref=e687]:
+                            - cell "ubuntu-vsphere LTS" [ref=e688]:
+                              - code [ref=e689]: ubuntu-vsphere LTS
+                            - cell "22.4.x" [ref=e690]
+                            - cell "Operating System" [ref=e691]
+                          - row "kubernetes 1.28.x Kubernetes" [ref=e692]:
+                            - cell "kubernetes" [ref=e693]:
+                              - code [ref=e694]: kubernetes
+                            - cell "1.28.x" [ref=e695]
+                            - cell "Kubernetes" [ref=e696]
+                          - row "cni-calico 3.26.x Network" [ref=e697]:
+                            - cell "cni-calico" [ref=e698]:
+                              - code [ref=e699]: cni-calico
+                            - cell "3.26.x" [ref=e700]
+                            - cell "Network" [ref=e701]
+                          - row "csi-vsphere-csi 3.0.x Storage" [ref=e702]:
+                            - cell "csi-vsphere-csi" [ref=e703]:
+                              - code [ref=e704]: csi-vsphere-csi
+                            - cell "3.0.x" [ref=e705]
+                            - cell "Storage" [ref=e706]
+                      - paragraph [ref=e707]:
+                        - text: After adding each layer, click on the
+                        - strong [ref=e708]: Next Layer
+                        - text: button. Once the storage layer is added, click
+                        - strong [ref=e709]: Confirm
+                        - text: to complete the core infrastructure stack.
+                      - paragraph [ref=e710]:
+                        - text: Next, click on the
+                        - strong [ref=e711]: Add New Pack
+                        - text: button to include add-on layers to your cluster profile.
+                      - paragraph [ref=e712]:
+                        - text: Add the
+                        - strong [ref=e713]: MetalLB (Helm)
+                        - text: pack to your profile. The
+                      - paragraph [ref=e714]:
+                        - link "MetalLB" [ref=e715] [cursor=pointer]:
+                          - /url: /integrations/packs/?pack=lb-metallb-helm
+                        - text: pack provides a load-balancer implementation for your Kubernetes cluster, as VMware does not offer a load balancer solution natively. The load balancer is required to help the
+                        - emphasis [ref=e716]: LoadBalancer
+                        - text: service specified in the Hello Universe application manifest obtain an IP address, so that you can access the application from your browser.
+                      - table [ref=e717]:
+                        - rowgroup [ref=e718]:
+                          - row "Pack Name Version Layer" [ref=e719]:
+                            - cell "Pack Name" [ref=e720]
+                            - cell "Version" [ref=e721]
+                            - cell "Layer" [ref=e722]
+                        - rowgroup [ref=e723]:
+                          - row "lb-metallb-helm 0.13.x Load Balancer" [ref=e724]:
+                            - cell "lb-metallb-helm" [ref=e725]
+                            - cell "0.13.x" [ref=e726]
+                            - cell "Load Balancer" [ref=e727]
+                      - paragraph [ref=e728]:
+                        - text: Now, under
+                        - strong [ref=e729]: Pack Details
+                        - text: ", click on"
+                        - strong [ref=e730]: Values
+                        - text: and replace the predefined
+                        - code [ref=e731]: 192.168.10.0/24
+                        - text: IP CIDR listed below the
+                        - strong [ref=e732]: addresses
+                        - text: line with a valid IP address or IP range from your VMware environment to be assigned to your load balancer. Next, click
+                        - strong [ref=e733]: Confirm & Create
+                        - text: to add the MetalLB pack.
+                      - paragraph [ref=e734]:
+                        - img "MetalLb Helm-based pack." [ref=e735]
+                      - paragraph [ref=e736]:
+                        - text: Finally, click again on the
+                        - strong [ref=e737]: Add New Pack
+                        - text: button to add the Hello Universe pack.
+                      - table [ref=e738]:
+                        - rowgroup [ref=e739]:
+                          - row "Pack Name Version Layer" [ref=e740]:
+                            - cell "Pack Name" [ref=e741]
+                            - cell "Version" [ref=e742]
+                            - cell "Layer" [ref=e743]
+                        - rowgroup [ref=e744]:
+                          - row "hello-universe 1.1.x App Service" [ref=e745]:
+                            - cell "hello-universe" [ref=e746]
+                            - cell "1.1.x" [ref=e747]
+                            - cell "App Service" [ref=e748]
+                      - paragraph [ref=e749]:
+                        - text: Click on the
+                        - strong [ref=e750]: Confirm & Create
+                        - text: button and then click
+                        - strong [ref=e751]: Next
+                        - text: .
+                      - paragraph [ref=e752]:
+                        - strong [ref=e753]: Review
+                      - paragraph [ref=e754]:
+                        - text: Review the selected cluster layers and configurations. Click on
+                        - strong [ref=e755]: Finish Configuration
+                        - text: to complete the cluster profile creation.
+                      - paragraph [ref=e756]:
+                        - img "Cluster profile review page." [ref=e757]
+                      - heading "Deploy a VMware ClusterDirect link to Deploy a VMware Cluster" [level=3] [ref=e758]:
+                        - text: Deploy a VMware Cluster
+                        - link "Direct link to Deploy a VMware Cluster" [ref=e759] [cursor=pointer]:
+                          - /url: "#deploy-a-vmware-cluster"
+                          - text: "#"
+                      - paragraph [ref=e760]:
+                        - text: Navigate to the left
+                        - strong [ref=e761]: Main Menu
+                        - text: and select
+                        - strong [ref=e762]: Profiles
+                        - text: . Locate and click on the cluster profile you previously created. Next, click on the
+                        - strong [ref=e763]: Deploy
+                        - text: button and confirm by clicking
+                        - strong [ref=e764]: OK
+                        - text: to start the cluster deployment using the selected cluster profile.
+                      - paragraph [ref=e765]:
+                        - img "Cluster profile page." [ref=e766]
+                      - paragraph [ref=e767]:
+                        - strong [ref=e768]: Basic Information
+                      - paragraph [ref=e769]:
+                        - text: Ensure the following values are set for the
+                        - strong [ref=e770]: Basic Information
+                        - text: section.
+                      - table [ref=e771]:
+                        - rowgroup [ref=e772]:
+                          - row "Field Value" [ref=e773]:
+                            - cell "Field" [ref=e774]:
+                              - strong [ref=e775]: Field
+                            - cell "Value" [ref=e776]:
+                              - strong [ref=e777]: Value
+                        - rowgroup [ref=e778]:
+                          - row "Cluster name pcg-tutorial-cluster" [ref=e779]:
+                            - cell "Cluster name" [ref=e780]
+                            - cell "pcg-tutorial-cluster" [ref=e781]:
+                              - code [ref=e782]: pcg-tutorial-cluster
+                          - row "Description Cluster as part of the Deploy App Workloads with a PCG tutorial." [ref=e783]:
+                            - cell "Description" [ref=e784]
+                            - cell "Cluster as part of the Deploy App Workloads with a PCG tutorial." [ref=e785]
+                          - row "Tags spectro-cloud-education, app:hello-universe, terraform_managed:false, repository:spectrocloud:tutorials, tutorial:DEPLOY_APP_WORKLOADS_WITH_A_PCG" [ref=e786]:
+                            - cell "Tags" [ref=e787]
+                            - cell "spectro-cloud-education, app:hello-universe, terraform_managed:false, repository:spectrocloud:tutorials, tutorial:DEPLOY_APP_WORKLOADS_WITH_A_PCG" [ref=e788]:
+                              - code [ref=e789]: spectro-cloud-education
+                              - text: ","
+                              - code [ref=e790]: app:hello-universe
+                              - text: ","
+                              - code [ref=e791]: terraform_managed:false
+                              - text: ","
+                              - code [ref=e792]: repository:spectrocloud:tutorials
+                              - text: ","
+                              - code [ref=e793]: tutorial:DEPLOY_APP_WORKLOADS_WITH_A_PCG
+                          - row "Type of cluster Data center" [ref=e794]:
+                            - cell "Type of cluster" [ref=e795]
+                            - cell "Data center" [ref=e796]
+                          - row "Cloud Account Select the VMware cloud account that was registered with Palette during the PCG creation. The cloud account has the same name as the PCG. In this tutorial, the cloud account is called gateway-tutorial." [ref=e797]:
+                            - cell "Cloud Account" [ref=e798]
+                            - cell "Select the VMware cloud account that was registered with Palette during the PCG creation. The cloud account has the same name as the PCG. In this tutorial, the cloud account is called gateway-tutorial." [ref=e799]:
+                              - text: Select the VMware cloud account that was registered with Palette during the PCG creation. The cloud account has the same name as the PCG. In this tutorial, the cloud account is called
+                              - code [ref=e800]: gateway-tutorial
+                              - text: .
+                      - paragraph [ref=e801]:
+                        - strong [ref=e802]: Parameters
+                      - paragraph [ref=e803]:
+                        - text: The
+                        - strong [ref=e804]: Parameters
+                        - text: section displays all the layers in the cluster profile and allows you to modify profile configurations if needed. Proceed by clicking
+                        - strong [ref=e805]: Next
+                        - text: .
+                      - paragraph [ref=e806]:
+                        - strong [ref=e807]: Cluster Configuration
+                      - paragraph [ref=e808]:
+                        - text: In the
+                        - strong [ref=e809]: Cluster Config
+                        - text: section, provide specific information about your VMware vSphere environment. First, select the
+                        - strong [ref=e810]: Datacenter
+                        - text: and
+                        - strong [ref=e811]: Deployment Folder
+                        - text: where the cluster nodes will be launched. Next, select the
+                        - strong [ref=e812]: Image Template Folder
+                        - text: to which the Spectro templates are imported, and choose
+                        - strong [ref=e813]: DHCP
+                        - text: as the
+                        - strong [ref=e814]: Network Type
+                        - text: . Finally, provide the
+                        - strong [ref=e815]: SSH key
+                        - text: for accessing the cluster nodes. Proceed by clicking
+                        - strong [ref=e816]: Next
+                        - text: to advance to the
+                        - strong [ref=e817]: Nodes Configuration
+                        - text: section.
+                      - paragraph [ref=e818]:
+                        - strong [ref=e819]: Nodes Configuration
+                      - paragraph [ref=e820]: Provide the details for the nodes of the control plane and worker pools.
+                      - table [ref=e821]:
+                        - rowgroup [ref=e822]:
+                          - row "Field Control Plane Pool Worker Pool" [ref=e823]:
+                            - cell "Field" [ref=e824]:
+                              - strong [ref=e825]: Field
+                            - cell "Control Plane Pool" [ref=e826]:
+                              - strong [ref=e827]: Control Plane Pool
+                            - cell "Worker Pool" [ref=e828]:
+                              - strong [ref=e829]: Worker Pool
+                        - rowgroup [ref=e830]:
+                          - row "Node pool name control-plane-pool worker-pool" [ref=e831]:
+                            - cell "Node pool name" [ref=e832]
+                            - cell "control-plane-pool" [ref=e833]
+                            - cell "worker-pool" [ref=e834]
+                          - row "Number of nodes in the pool 1 1" [ref=e835]:
+                            - cell "Number of nodes in the pool" [ref=e836]
+                            - cell "1" [ref=e837]:
+                              - code [ref=e838]: "1"
+                            - cell "1" [ref=e839]:
+                              - code [ref=e840]: "1"
+                          - row "Allow worker capability No Not applicable" [ref=e841]:
+                            - cell "Allow worker capability" [ref=e842]
+                            - cell "No" [ref=e843]
+                            - cell "Not applicable" [ref=e844]
+                          - row "Enable Autoscaler Not applicable No" [ref=e845]:
+                            - cell "Enable Autoscaler" [ref=e846]
+                            - cell "Not applicable" [ref=e847]
+                            - cell "No" [ref=e848]
+                          - row "Rolling update Not applicable Expand First" [ref=e849]:
+                            - cell "Rolling update" [ref=e850]
+                            - cell "Not applicable" [ref=e851]
+                            - cell "Expand First" [ref=e852]
+                      - paragraph [ref=e853]:
+                        - text: Keep the
+                        - strong [ref=e854]: Cloud Configuration
+                        - text: settings the same for both pools, with
+                        - strong [ref=e855]: CPU
+                        - text: set to 4 cores,
+                        - strong [ref=e856]: memory
+                        - text: allocated at 8 GB, and
+                        - strong [ref=e857]: disk
+                        - text: space at 60 GB. Next, populate the
+                        - strong [ref=e858]: Compute cluster
+                        - text: ","
+                        - strong [ref=e859]: Resource Pool
+                        - text: ","
+                        - strong [ref=e860]: Datastore
+                        - text: ", and"
+                        - strong [ref=e861]: Network
+                        - text: fields according to your VMware vSphere environment. Click
+                        - strong [ref=e862]: Next
+                        - text: to proceed.
+                      - paragraph [ref=e863]:
+                        - strong [ref=e864]: Settings
+                      - paragraph [ref=e865]:
+                        - text: The
+                        - strong [ref=e866]: Settings
+                        - text: section offers advanced options for OS patching, scheduled scans, scheduled backups, and cluster role binding. Utilize the default values, and click on the
+                        - strong [ref=e867]: Validate
+                        - text: button.
+                      - paragraph [ref=e868]:
+                        - strong [ref=e869]: Review
+                      - paragraph [ref=e870]:
+                        - text: The
+                        - strong [ref=e871]: Review
+                        - text: section allows you to review the cluster configuration before deploying the cluster. Click on
+                        - strong [ref=e872]: Finish Configuration
+                        - text: to start the cluster deployment, which may take up to 20 minutes.
+                      - paragraph [ref=e873]:
+                        - img "Cluster review page." [ref=e874]
+                      - paragraph [ref=e875]:
+                        - text: Now, navigate to the left
+                        - strong [ref=e876]: Main Menu
+                        - text: and click on
+                        - strong [ref=e877]: Clusters
+                        - text: . While the deployment is in progress, Palette displays the cluster status as
+                        - strong [ref=e878]: Provisioning
+                        - text: . You can view detailed cluster information, including deployment status and event logs, by selecting your cluster.
+                      - paragraph [ref=e879]:
+                        - img "Palette&#39;s Clusters page." [ref=e880]
+                    - text: "# #"
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e881]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e882] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e883]:
+                  - text: Once the cluster creation process has finished, log in to Palette, navigate to the left
+                  - strong [ref=e884]: Main Menu
+                  - text: ", and click on"
+                  - strong [ref=e885]: Clusters
+                  - text: . Select the
+                  - strong [ref=e886]: pcg-tutorial-cluster
+                  - text: to display the cluster's
+                  - strong [ref=e887]: Overview
+                  - text: page. Once the cluster status displays
+                  - strong [ref=e888]: Running
+                  - text: and
+                  - strong [ref=e889]: Healthy
+                  - text: ", you can access the application through the exposed service URL along with the displayed port number."
+                - paragraph [ref=e890]:
+                  - img "Healthy VMware cluster" [ref=e891]
+                - paragraph [ref=e892]:
+                  - text: Click on the URL for port
+                  - strong [ref=e893]: :8080
+                  - text: to access the Hello Universe application landing page.
+                - paragraph [ref=e894]:
+                  - img "Hello Universe application" [ref=e895]
+                - paragraph [ref=e896]: Once you have completed the steps and accessed the application, you have successfully deployed your first application to a VMware cluster managed by Palette.
+                - heading "Clean UpDirect link to Clean Up" [level=2] [ref=e897]:
+                  - text: Clean Up
+                  - link "Direct link to Clean Up" [ref=e898] [cursor=pointer]:
+                    - /url: "#clean-up"
+                    - text: "#"
+                - paragraph [ref=e899]: The following steps will guide you to clean up your environment after completing the tutorial. Follow the steps below to delete the PCG, the cluster profile, and the VMware cluster.
+                - heading "Delete the Cluster Profile and ClusterDirect link to Delete the Cluster Profile and Cluster" [level=3] [ref=e900]:
+                  - text: Delete the Cluster Profile and Cluster
+                  - link "Direct link to Delete the Cluster Profile and Cluster" [ref=e901] [cursor=pointer]:
+                    - /url: "#delete-the-cluster-profile-and-cluster"
+                    - text: "#"
+                - generic [ref=e902]:
+                  - tablist [ref=e903]:
+                    - tab "UI Workflow" [selected] [ref=e904] [cursor=pointer]
+                    - tab "Terraform Workflow" [ref=e905] [cursor=pointer]
+                  - tabpanel [ref=e907]:
+                    - paragraph [ref=e908]:
+                      - text: In Palette, navigate to the left
+                      - strong [ref=e909]: Main Menu
+                      - text: ", click on"
+                      - strong [ref=e910]: Clusters
+                      - text: and select the
+                      - code [ref=e911]: pcg-tutorial-cluster
+                      - text: to access its details page. Next, click on the
+                      - strong [ref=e912]: Settings
+                      - text: button to expand the
+                      - strong [ref=e913]: drop-down Menu
+                      - text: ", then select the"
+                      - strong [ref=e914]: Delete Cluster
+                      - text: . Confirm the deletion by entering the cluster name when prompted.
+                    - paragraph [ref=e915]:
+                      - img "Delete Palette cluster" [ref=e916]
+                    - paragraph [ref=e917]:
+                      - text: The cluster status will change to
+                      - strong [ref=e918]: Deleting
+                      - text: ", and the deletion process may take up to 15 minutes."
+                    - paragraph [ref=e919]:
+                      - text: Once the cluster is deleted, proceed to delete the cluster profile. On the left
+                      - strong [ref=e920]: Main Menu
+                      - text: ", click on"
+                      - strong [ref=e921]: Profiles
+                      - text: ", and select the profile"
+                      - code [ref=e922]: pcg-tutorial-profile
+                      - text: . Next, click on the
+                      - strong [ref=e923]: three-dot Menu
+                      - text: ", select"
+                      - strong [ref=e924]: Delete
+                      - text: ", and confirm the selection to remove the cluster profile."
+                - heading "Delete the PCGDirect link to Delete the PCG" [level=3] [ref=e925]:
+                  - text: Delete the PCG
+                  - link "Direct link to Delete the PCG" [ref=e926] [cursor=pointer]:
+                    - /url: "#delete-the-pcg"
+                    - text: "#"
+                - paragraph [ref=e927]:
+                  - text: After deleting your VMware cluster and cluster profile, proceed with the PCG deletion. Log in to Palette as a tenant admin, navigate to the left
+                  - strong [ref=e928]: Main Menu
+                  - text: and select
+                  - strong [ref=e929]: Tenant Settings
+                  - text: . Next, from the
+                  - strong [ref=e930]: Tenant Settings Menu
+                  - text: ", click on"
+                  - strong [ref=e931]: Private Cloud Gateways
+                  - text: . Identify the PCG you want to delete, click on the
+                  - strong [ref=e932]: Three-Dot Menu
+                  - text: at the end of the PCG row, and select
+                  - strong [ref=e933]: Delete
+                  - text: . Click
+                  - strong [ref=e934]: OK
+                  - text: to confirm the PCG deletion.
+                - paragraph [ref=e935]:
+                  - img "Delete PCG image" [ref=e936]
+                - paragraph [ref=e937]: Palette will delete the PCG and the Palette services deployed on the PCG node. However, the underlying infrastructure resources, such as the virtual machine, must be removed manually from VMware vSphere.
+                - paragraph [ref=e938]:
+                  - text: Log in to your VMware vSphere server and select the VM representing the PCG node named
+                  - code [ref=e939]: gateway-tutorial-cp
+                  - text: . Click on the
+                  - strong [ref=e940]: Three-Dot Actions
+                  - text: button, select
+                  - strong [ref=e941]: Power
+                  - text: ", and"
+                  - strong [ref=e942]: Power Off
+                  - text: to power off the machine. Once the machine is powered off, click on the
+                  - strong [ref=e943]: Three-Dot Actions
+                  - text: button again and select
+                  - strong [ref=e944]: Delete from Disk
+                  - text: to remove the machine from your VMware vSphere environment.
+                - paragraph [ref=e945]:
+                  - img "Delete VMware VM" [ref=e946]
+                - heading "Wrap-UpDirect link to Wrap-Up" [level=2] [ref=e947]:
+                  - text: Wrap-Up
+                  - link "Direct link to Wrap-Up" [ref=e948] [cursor=pointer]:
+                    - /url: "#wrap-up"
+                    - text: "#"
+                - paragraph [ref=e949]: In this tutorial, you learned how to deploy a VMware PCG using the Palette CLI. Then, you used the PCG to support the deployment of a Kubernetes cluster with a sample application to your VMware vSphere environment. Next, you accessed the Hello Universe application landing page through the exposed service URL.
+                - paragraph [ref=e950]: A PCG is a powerful component that enables Palette to communicate with private clouds or data center environments residing in restricted networks that don't allow inbound connections from external sources. The PCG acts as an endpoint and continuously polls Palette for instructions. With a PCG, you can deploy Palette clusters and support their lifecycle in environments like VMware vSphere without the need to configure complex firewall rules or expose public endpoints.
+                - paragraph [ref=e951]: We encourage you to check out the reference resources below to learn more about PCGs.
+                - list [ref=e952]:
+                  - listitem [ref=e953]:
+                    - link "Private Cloud Gateway" [ref=e954] [cursor=pointer]:
+                      - /url: /clusters/pcg/
+                  - listitem [ref=e955]:
+                    - link "PCG Architecture" [ref=e956] [cursor=pointer]:
+                      - /url: /clusters/pcg/architecture/
+                  - listitem [ref=e957]:
+                    - link "Deploy a PCG to VMware vSphere" [ref=e958] [cursor=pointer]:
+                      - /url: /clusters/pcg/deploy-pcg/vmware/
+                  - listitem [ref=e959]:
+                    - link "Manage PCG" [ref=e960] [cursor=pointer]:
+                      - /url: /clusters/pcg/manage-pcg/
+              - generic [ref=e961]:
+                - generic [ref=e963]:
+                  - text: "Tags:"
+                  - list [ref=e964]:
+                    - listitem [ref=e965]:
+                      - link "pcg" [ref=e966] [cursor=pointer]:
+                        - /url: /tags/pcg/
+                    - listitem [ref=e967]:
+                      - link "tutorial" [ref=e968] [cursor=pointer]:
+                        - /url: /tags/tutorial/
+                - link "Edit this page" [ref=e971] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/tutorials/clusters/pcg/deploy-app-pcg.md
+                  - img [ref=e972]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e976]:
+              - link "Previous « Deploy an Edge Cluster on VirtualBox" [ref=e977] [cursor=pointer]:
+                - /url: /tutorials/clusters/edge/deploy-cluster-virtualbox/
+                - generic [ref=e978]: Previous
+                - generic [ref=e979]: « Deploy an Edge Cluster on VirtualBox
+              - link "Next Palette Dev Engine »" [ref=e980] [cursor=pointer]:
+                - /url: /tutorials/pde/
+                - generic [ref=e981]: Next
+                - generic [ref=e982]: Palette Dev Engine »
+          - list [ref=e985]:
+            - listitem [ref=e986]:
+              - link "Prerequisites" [ref=e987] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e988]:
+              - link "Authenticate with Palette" [ref=e989] [cursor=pointer]:
+                - /url: "#authenticate-with-palette"
+            - listitem [ref=e990]:
+              - link "Deploy a PCG with Palette CLI" [ref=e991] [cursor=pointer]:
+                - /url: "#deploy-a-pcg-with-palette-cli"
+            - listitem [ref=e992]:
+              - link "Create a Cluster Profile and Deploy a Cluster" [ref=e993] [cursor=pointer]:
+                - /url: "#create-a-cluster-profile-and-deploy-a-cluster"
+              - list [ref=e994]:
+                - listitem [ref=e995]:
+                  - link "Create a Cluster Profile" [ref=e996] [cursor=pointer]:
+                    - /url: "#create-a-cluster-profile"
+                - listitem [ref=e997]:
+                  - link "Deploy a VMware Cluster" [ref=e998] [cursor=pointer]:
+                    - /url: "#deploy-a-vmware-cluster"
+                - listitem [ref=e999]:
+                  - link "Set Up the Tutorial Environment" [ref=e1000] [cursor=pointer]:
+                    - /url: "#set-up-the-tutorial-environment"
+                - listitem [ref=e1001]:
+                  - link "Create a Cluster Profile and Deploy a VMware Cluster" [ref=e1002] [cursor=pointer]:
+                    - /url: "#create-a-cluster-profile-and-deploy-a-vmware-cluster"
+            - listitem [ref=e1003]:
+              - link "Validate" [ref=e1004] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e1005]:
+              - link "Clean Up" [ref=e1006] [cursor=pointer]:
+                - /url: "#clean-up"
+              - list [ref=e1007]:
+                - listitem [ref=e1008]:
+                  - link "Delete the Cluster Profile and Cluster" [ref=e1009] [cursor=pointer]:
+                    - /url: "#delete-the-cluster-profile-and-cluster"
+                - listitem [ref=e1010]:
+                  - link "Delete the PCG" [ref=e1011] [cursor=pointer]:
+                    - /url: "#delete-the-pcg"
+            - listitem [ref=e1012]:
+              - link "Wrap-Up" [ref=e1013] [cursor=pointer]:
+                - /url: "#wrap-up"
+  - button "Project Logo Ask AI" [ref=e1014] [cursor=pointer]:
+    - generic [ref=e1017]:
+      - img "Project Logo" [ref=e1018]
+      - paragraph [ref=e1019]: Ask AI
+```

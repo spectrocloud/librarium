@@ -1,0 +1,580 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [expanded] [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+                - list [ref=e82]:
+                  - listitem [ref=e83]:
+                    - generic [ref=e84]:
+                      - link "Cluster Profiles" [expanded] [ref=e85] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/
+                      - button "Toggle the collapsible sidebar category 'Cluster Profiles'" [ref=e86] [cursor=pointer]
+                    - list [ref=e87]:
+                      - listitem [ref=e88]:
+                        - generic [ref=e89]:
+                          - link "Create Cluster Profiles" [expanded] [ref=e90] [cursor=pointer]:
+                            - /url: /profiles/cluster-profiles/create-cluster-profiles/
+                          - button "Toggle the collapsible sidebar category 'Create Cluster Profiles'" [ref=e91] [cursor=pointer]
+                        - list [ref=e92]:
+                          - listitem [ref=e93]:
+                            - link "Create an Infrastructure Profile" [ref=e94] [cursor=pointer]:
+                              - /url: /profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile/
+                          - listitem [ref=e95]:
+                            - generic [ref=e96]:
+                              - link "Create an Add-on Profile" [ref=e97] [cursor=pointer]:
+                                - /url: /profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/
+                              - button "Toggle the collapsible sidebar category 'Create an Add-on Profile'" [ref=e98] [cursor=pointer]
+                          - listitem [ref=e99]:
+                            - link "Create a Full Profile" [ref=e100] [cursor=pointer]:
+                              - /url: /profiles/cluster-profiles/create-cluster-profiles/create-full-profile/
+                          - listitem [ref=e101]:
+                            - link "Deploy the Same Pack to Multiple Layers" [ref=e102] [cursor=pointer]:
+                              - /url: /profiles/cluster-profiles/create-cluster-profiles/duplicate-pack-in-profile/
+                          - listitem [ref=e103]:
+                            - generic [ref=e104]:
+                              - link "Cluster Profile Variables" [ref=e105] [cursor=pointer]:
+                                - /url: /profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/
+                              - button "Toggle the collapsible sidebar category 'Cluster Profile Variables'" [ref=e106] [cursor=pointer]
+                      - listitem [ref=e107]:
+                        - generic [ref=e108]:
+                          - link "Modify Cluster Profiles" [ref=e109] [cursor=pointer]:
+                            - /url: /profiles/cluster-profiles/modify-cluster-profiles/
+                          - button "Toggle the collapsible sidebar category 'Modify Cluster Profiles'" [ref=e110] [cursor=pointer]
+                      - listitem [ref=e111]:
+                        - link "Export and Import a Cluster Profile" [ref=e112] [cursor=pointer]:
+                          - /url: /profiles/cluster-profiles/export-import-cluster-profile/
+                      - listitem [ref=e113]:
+                        - link "Clone a Cluster Profile" [ref=e114] [cursor=pointer]:
+                          - /url: /profiles/cluster-profiles/clone-cluster-profile/
+                      - listitem [ref=e115]:
+                        - link "Delete a Cluster Profile" [ref=e116] [cursor=pointer]:
+                          - /url: /profiles/cluster-profiles/delete-cluster-profile/
+                  - listitem [ref=e117]:
+                    - generic [ref=e118]:
+                      - link "App Profiles" [ref=e119] [cursor=pointer]:
+                        - /url: /profiles/app-profiles/
+                      - button "Toggle the collapsible sidebar category 'App Profiles'" [ref=e120] [cursor=pointer]
+                  - listitem [ref=e121]:
+                    - link "Profile Customization" [ref=e122] [cursor=pointer]:
+                      - /url: /profiles/profile-customization/
+              - listitem [ref=e123]:
+                - generic [ref=e124]:
+                  - link "Cluster Templates" [ref=e125] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e127]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e129] [cursor=pointer]
+              - listitem [ref=e130]:
+                - generic [ref=e131]:
+                  - link "Deployment Modes" [ref=e132] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e134]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e136] [cursor=pointer]
+              - listitem [ref=e137]:
+                - generic [ref=e138]:
+                  - link "Clusters" [ref=e139] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e141]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e150] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e152]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Palette Dev Engine" [ref=e157] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e159]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Virtual Machine Orchestrator" [ref=e164] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e166]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e168] [cursor=pointer]
+              - listitem [ref=e169]:
+                - generic [ref=e170]:
+                  - link "Workspaces" [ref=e171] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e173]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e175] [cursor=pointer]
+              - listitem [ref=e176]:
+                - generic [ref=e177]:
+                  - link "Packs List" [ref=e178] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e180]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e182] [cursor=pointer]
+              - listitem [ref=e183]:
+                - generic [ref=e184]:
+                  - link "User & Role Management" [ref=e185] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e187]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e189] [cursor=pointer]
+              - listitem [ref=e190]:
+                - generic [ref=e191]:
+                  - link "Registries and Packs" [ref=e192] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e194]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e196] [cursor=pointer]
+              - listitem [ref=e197]:
+                - generic [ref=e198]:
+                  - link "Security" [ref=e199] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e201]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e203] [cursor=pointer]
+              - listitem [ref=e204]:
+                - generic [ref=e205]:
+                  - link "Audit Logs" [ref=e206] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e208]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e210] [cursor=pointer]
+              - listitem [ref=e211]:
+                - generic [ref=e212]:
+                  - link "Self-Hosted Palette" [ref=e213] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e215]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e217] [cursor=pointer]
+              - listitem [ref=e218]:
+                - generic [ref=e219]:
+                  - link "Palette VerteX" [ref=e220] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e222]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e224] [cursor=pointer]
+              - listitem [ref=e225]:
+                - generic [ref=e226]:
+                  - link "Tenant Administration" [ref=e227] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e229]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e231] [cursor=pointer]
+              - listitem [ref=e232]:
+                - generic [ref=e233]:
+                  - link "Automation" [ref=e234] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e236]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e238] [cursor=pointer]
+              - listitem [ref=e239]:
+                - generic [ref=e240]:
+                  - link "Troubleshooting" [ref=e241] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e243]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e245] [cursor=pointer]
+              - listitem [ref=e246]:
+                - link "Glossary" [ref=e247] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e249]
+                  - text: Glossary
+              - listitem [ref=e251]:
+                - generic [ref=e252]:
+                  - link "Compliance & Legal" [ref=e253] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e255]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e257] [cursor=pointer]
+              - listitem [ref=e258]:
+                - button "Privacy Settings" [ref=e259] [cursor=pointer]:
+                  - img [ref=e260]
+                  - text: Privacy Settings
+      - main [ref=e262]:
+        - generic [ref=e264]:
+          - generic [ref=e266]:
+            - article [ref=e267]:
+              - navigation "Breadcrumbs" [ref=e268]:
+                - list [ref=e269]:
+                  - listitem [ref=e270]:
+                    - link "Home page" [ref=e271] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e272]
+                  - listitem [ref=e274]:
+                    - link "Profiles" [ref=e275] [cursor=pointer]:
+                      - /url: /profiles/
+                  - listitem [ref=e276]:
+                    - link "Cluster Profiles" [ref=e277] [cursor=pointer]:
+                      - /url: /profiles/cluster-profiles/
+                  - listitem [ref=e278]:
+                    - link "Create Cluster Profiles" [ref=e279] [cursor=pointer]:
+                      - /url: /profiles/cluster-profiles/create-cluster-profiles/
+                  - listitem [ref=e280]:
+                    - generic [ref=e281]: Create a Full Profile
+              - generic [ref=e282]:
+                - heading "Create a Full Profile" [level=1] [ref=e284]
+                - paragraph [ref=e285]: Create a full profile by first adding infrastructure layers composed of an OS, Kubernetes distribution, network pack, and storage pack. Next, add add-on layers to expand the functionality of your clusters.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e286]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e287] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e288]:
+                  - listitem [ref=e289]:
+                    - text: Your Palette account role must have the
+                    - code [ref=e290]: clusterProfile.create
+                    - text: permission to create a profile. Refer to our
+                    - link "Cluster Profile Permissions" [ref=e291] [cursor=pointer]:
+                      - /url: /user-management/palette-rbac/project-scope-roles-permissions/#cluster-profile
+                    - text: reference guide for more information about roles and permissions.
+                - heading "Create a Full ProfileDirect link to Create a Full Profile" [level=2] [ref=e292]:
+                  - text: Create a Full Profile
+                  - link "Direct link to Create a Full Profile" [ref=e293] [cursor=pointer]:
+                    - /url: "#create-a-full-profile"
+                    - text: "#"
+                - list [ref=e294]:
+                  - listitem [ref=e295]:
+                    - paragraph [ref=e296]:
+                      - text: Log in to
+                      - link "Palette" [ref=e297] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e298]:
+                    - paragraph [ref=e299]:
+                      - text: From the left main menu, select
+                      - strong [ref=e300]: Profiles
+                      - text: .
+                  - listitem [ref=e301]:
+                    - paragraph [ref=e302]:
+                      - text: In the top-right, select
+                      - strong [ref=e303]: Add Cluster Profile
+                      - text: .
+                  - listitem [ref=e304]:
+                    - paragraph [ref=e305]:
+                      - text: Complete the following fields. Ensure you select a cluster profile
+                      - strong [ref=e306]: Type
+                      - text: of
+                      - strong [ref=e307]: Full
+                      - text: . Select
+                      - strong [ref=e308]: Next
+                      - text: to continue.
+                    - table [ref=e309]:
+                      - rowgroup [ref=e310]:
+                        - row "Field Description" [ref=e311]:
+                          - cell "Field" [ref=e312]:
+                            - strong [ref=e313]: Field
+                          - cell "Description" [ref=e314]:
+                            - strong [ref=e315]: Description
+                      - rowgroup [ref=e316]:
+                        - row "Name Enter a unique name for the cluster profile." [ref=e317]:
+                          - cell "Name" [ref=e318]:
+                            - strong [ref=e319]: Name
+                          - cell "Enter a unique name for the cluster profile." [ref=e320]
+                        - row "Version Assign a version to the profile using semantic versioning. Version 1.0.0 is assigned automatically when creating a new cluster profile unless otherwise specified. You only need to specify a version if you create multiple versions of a profile using the same profile name. Refer to our Version a Cluster Profile guide for more information." [ref=e321]:
+                          - cell "Version" [ref=e322]:
+                            - strong [ref=e323]: Version
+                          - cell "Assign a version to the profile using semantic versioning. Version 1.0.0 is assigned automatically when creating a new cluster profile unless otherwise specified. You only need to specify a version if you create multiple versions of a profile using the same profile name. Refer to our Version a Cluster Profile guide for more information." [ref=e324]:
+                            - text: Assign a version to the profile using semantic versioning. Version
+                            - code [ref=e325]: 1.0.0
+                            - text: is assigned automatically when creating a new cluster profile unless otherwise specified. You only need to specify a version if you create multiple versions of a profile using the same profile name. Refer to our
+                            - link "Version a Cluster Profile" [ref=e326] [cursor=pointer]:
+                              - /url: /profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile
+                            - text: guide for more information.
+                        - row "Description (Optional) Provide context about the profile." [ref=e327]:
+                          - cell "Description" [ref=e328]:
+                            - strong [ref=e329]: Description
+                          - cell "(Optional) Provide context about the profile." [ref=e330]
+                        - row "Type Choose the type of cluster profile. Select Full." [ref=e331]:
+                          - cell "Type" [ref=e332]:
+                            - strong [ref=e333]: Type
+                          - cell "Choose the type of cluster profile. Select Full." [ref=e334]:
+                            - text: Choose the type of cluster profile. Select
+                            - strong [ref=e335]: Full
+                            - text: .
+                        - 'row "Tags (Optional) Assign any desired profile tags. Tags propagate to the VMs deployed in the cloud or data center environment when clusters are created from this cluster profile. Example: owner or region." [ref=e336]':
+                          - cell "Tags" [ref=e337]:
+                            - strong [ref=e338]: Tags
+                          - 'cell "(Optional) Assign any desired profile tags. Tags propagate to the VMs deployed in the cloud or data center environment when clusters are created from this cluster profile. Example: owner or region." [ref=e339]':
+                            - text: "(Optional) Assign any desired profile tags. Tags propagate to the VMs deployed in the cloud or data center environment when clusters are created from this cluster profile. Example:"
+                            - code [ref=e340]: owner
+                            - text: or
+                            - code [ref=e341]: region
+                            - text: .
+                - list [ref=e342]:
+                  - listitem [ref=e343]:
+                    - paragraph [ref=e344]:
+                      - text: Choose the
+                      - strong [ref=e345]: Infrastructure provider
+                      - text: or
+                      - strong [ref=e346]: Managed Kubernetes
+                      - text: environment to deploy your cluster on, and select
+                      - strong [ref=e347]: Next
+                      - text: .
+                - list [ref=e348]:
+                  - listitem [ref=e349]:
+                    - paragraph [ref=e350]:
+                      - text: Configure the following infrastructure layers by selecting the
+                      - strong [ref=e351]: Registry
+                      - text: ","
+                      - strong [ref=e352]: Pack Name
+                      - text: ", and"
+                      - strong [ref=e353]: Pack Version
+                      - text: for each layer. Choose from among
+                      - strong [ref=e354]: Presets
+                      - text: ", update pack"
+                      - strong [ref=e355]: Values
+                      - text: ", and create"
+                      - link "cluster profile variables" [ref=e356] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/
+                      - text: as needed. When finished, select
+                      - strong [ref=e357]: Next Layer
+                      - text: to proceed to the next infrastructure layer.
+                    - table [ref=e358]:
+                      - rowgroup [ref=e359]:
+                        - row "Layer Description" [ref=e360]:
+                          - cell "Layer" [ref=e361]:
+                            - strong [ref=e362]: Layer
+                          - cell "Description" [ref=e363]:
+                            - strong [ref=e364]: Description
+                      - rowgroup [ref=e365]:
+                        - row "Operating System Select an OS to use with your Kubernetes clusters. Use the Bring Your Own OS (BYOOS) pack to use a different or custom OS. Refer to our Bring Your Own OS (BYOOS) guide to learn more." [ref=e366]:
+                          - cell "Operating System" [ref=e367]:
+                            - strong [ref=e368]: Operating System
+                          - cell "Select an OS to use with your Kubernetes clusters. Use the Bring Your Own OS (BYOOS) pack to use a different or custom OS. Refer to our Bring Your Own OS (BYOOS) guide to learn more." [ref=e369]:
+                            - text: Select an OS to use with your Kubernetes clusters. Use the
+                            - link "Bring Your Own OS (BYOOS)" [ref=e370] [cursor=pointer]:
+                              - /url: /integrations/packs/?pack=generic-byoi
+                            - text: pack to use a different or custom OS. Refer to our
+                            - link "Bring Your Own OS (BYOOS)" [ref=e371] [cursor=pointer]:
+                              - /url: /byoos/
+                            - text: guide to learn more.
+                        - row "Kubernetes Select the Kubernetes distribution and version to use with the cluster. The Palette eXtended Kubernetes (PXK) pack allows you to manage an OpenID Connect (OIDC) Identity Provider (IDP). This is particularly useful if your environment does not have an IDP configured, as you can use Palette in place of a third-party IDP." [ref=e372]:
+                          - cell "Kubernetes" [ref=e373]:
+                            - strong [ref=e374]: Kubernetes
+                          - cell "Select the Kubernetes distribution and version to use with the cluster. The Palette eXtended Kubernetes (PXK) pack allows you to manage an OpenID Connect (OIDC) Identity Provider (IDP). This is particularly useful if your environment does not have an IDP configured, as you can use Palette in place of a third-party IDP." [ref=e375]:
+                            - text: Select the Kubernetes distribution and version to use with the cluster. The
+                            - link "Palette eXtended Kubernetes (PXK)" [ref=e376] [cursor=pointer]:
+                              - /url: /integrations/packs/?pack=kubernetes
+                            - text: pack allows you to manage an OpenID Connect (OIDC) Identity Provider (IDP). This is particularly useful if your environment does not have an IDP configured, as you can use Palette in place of a third-party IDP.
+                        - row "Network Select a network pack to use with your cluster." [ref=e377]:
+                          - cell "Network" [ref=e378]:
+                            - strong [ref=e379]: Network
+                          - cell "Select a network pack to use with your cluster." [ref=e380]
+                        - row "Storage Select a storage pack to use with your cluster." [ref=e381]:
+                          - cell "Storage" [ref=e382]:
+                            - strong [ref=e383]: Storage
+                          - cell "Select a storage pack to use with your cluster." [ref=e384]
+                - list [ref=e385]:
+                  - listitem [ref=e386]:
+                    - paragraph [ref=e387]:
+                      - text: Once your infrastructure layers are created, select the type of layer to add to the cluster profile. Choose from among
+                      - link "add-on packs" [ref=e388] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-pack-addon/
+                      - text: ","
+                      - link "manifests" [ref=e389] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon/
+                      - text: ", and"
+                      - link "Helm charts" [ref=e390] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-helm-addon/
+                      - text: ", and fill out the required input fields for each layer. When finished, select"
+                      - strong [ref=e391]: Confirm & Create
+                      - text: to add the layer to the cluster profile.
+                    - paragraph [ref=e392]:
+                      - text: For more information about layers, applying pack versions, configuration parameters, and presets, refer to our
+                      - link "Profile Layers" [ref=e393] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/#profile-layers
+                      - text: guide.
+                  - listitem [ref=e394]:
+                    - paragraph [ref=e395]:
+                      - text: Repeat step 7 to add additional layers. When finished, select
+                      - strong [ref=e396]: Next
+                      - text: to review the cluster profile.
+                  - listitem [ref=e397]:
+                    - paragraph [ref=e398]:
+                      - text: Select
+                      - strong [ref=e399]: Finish Configuration
+                      - text: to create your cluster profile.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e400]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e401] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e402]:
+                  - listitem [ref=e403]:
+                    - paragraph [ref=e404]:
+                      - text: Log in to
+                      - link "Palette" [ref=e405] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e406]:
+                    - paragraph [ref=e407]:
+                      - text: From the left main menu, select
+                      - strong [ref=e408]: Profiles
+                      - text: .
+                  - listitem [ref=e409]:
+                    - paragraph [ref=e410]: Select your cluster profile to review its layers or make changes.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e411]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e412] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e413]: You can now deploy a cluster using the full cluster profile you created.
+                - paragraph [ref=e414]:
+                  - text: If you need to make changes to your cluster profile, we recommend
+                  - link "creating a new cluster profile version" [ref=e415] [cursor=pointer]:
+                    - /url: /profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile/
+                  - text: or
+                  - link "updating your cluster profile" [ref=e416] [cursor=pointer]:
+                    - /url: /profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile/
+                  - text: .
+                - paragraph [ref=e417]:
+                  - text: For general cluster deployment information, check out our
+                  - link "Clusters" [ref=e418] [cursor=pointer]:
+                    - /url: /clusters/
+                  - text: guide. For an end-to-end walkthrough of deploying a cluster on your desired infrastructure, refer to our
+                  - link "Getting Started" [ref=e419] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/palette/
+                  - text: tutorials.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e420]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e421] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e422]:
+                  - listitem [ref=e423]:
+                    - paragraph [ref=e424]:
+                      - link "Profile Layers" [ref=e425] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/#profile-layers
+                  - listitem [ref=e426]:
+                    - paragraph [ref=e427]:
+                      - link "Update Cluster Profile" [ref=e428] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile/
+                  - listitem [ref=e429]:
+                    - paragraph [ref=e430]:
+                      - link "Version a Cluster Profile" [ref=e431] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile/
+                  - listitem [ref=e432]:
+                    - paragraph [ref=e433]:
+                      - link "Duplicate a Pack in a Profile" [ref=e434] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/duplicate-pack-in-profile/
+              - generic [ref=e435]:
+                - generic [ref=e437]:
+                  - text: "Tags:"
+                  - list [ref=e438]:
+                    - listitem [ref=e439]:
+                      - link "profiles" [ref=e440] [cursor=pointer]:
+                        - /url: /tags/profiles/
+                    - listitem [ref=e441]:
+                      - link "cluster profiles" [ref=e442] [cursor=pointer]:
+                        - /url: /tags/cluster-profiles/
+                - link "Edit this page" [ref=e445] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md
+                  - img [ref=e446]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e450]:
+              - link "Previous « Add a Helm Chart" [ref=e451] [cursor=pointer]:
+                - /url: /profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-helm-addon/
+                - generic [ref=e452]: Previous
+                - generic [ref=e453]: « Add a Helm Chart
+              - link "Next Deploy the Same Pack to Multiple Layers »" [ref=e454] [cursor=pointer]:
+                - /url: /profiles/cluster-profiles/create-cluster-profiles/duplicate-pack-in-profile/
+                - generic [ref=e455]: Next
+                - generic [ref=e456]: Deploy the Same Pack to Multiple Layers »
+          - list [ref=e459]:
+            - listitem [ref=e460]:
+              - link "Prerequisites" [ref=e461] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e462]:
+              - link "Create a Full Profile" [ref=e463] [cursor=pointer]:
+                - /url: "#create-a-full-profile"
+            - listitem [ref=e464]:
+              - link "Validate" [ref=e465] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e466]:
+              - link "Next Steps" [ref=e467] [cursor=pointer]:
+                - /url: "#next-steps"
+            - listitem [ref=e468]:
+              - link "Resources" [ref=e469] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e470] [cursor=pointer]:
+    - generic [ref=e473]:
+      - img "Project Logo" [ref=e474]
+      - paragraph [ref=e475]: Ask AI
+```

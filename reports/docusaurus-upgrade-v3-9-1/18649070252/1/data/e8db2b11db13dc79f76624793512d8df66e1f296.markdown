@@ -1,0 +1,452 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [expanded] [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+                - list [ref=e128]:
+                  - listitem [ref=e129]:
+                    - link "Architecture" [ref=e130] [cursor=pointer]:
+                      - /url: /vm-management/architecture/
+                  - listitem [ref=e131]:
+                    - link "Environment Setup" [ref=e132] [cursor=pointer]:
+                      - /url: /vm-management/environment-setup/
+                  - listitem [ref=e133]:
+                    - link "Install VMO in Airgap Environments" [ref=e134] [cursor=pointer]:
+                      - /url: /vm-management/install-vmo-in-airgap/
+                  - listitem [ref=e135]:
+                    - link "Create a VMO Profile" [ref=e136] [cursor=pointer]:
+                      - /url: /vm-management/create-vmo-profile/
+                  - listitem [ref=e137]:
+                    - link "Configure Private CA Certificate" [ref=e138] [cursor=pointer]:
+                      - /url: /vm-management/configure-private-ca-certificate/
+                  - listitem [ref=e139]:
+                    - link "Configure Direct Access to VM Dashboard" [ref=e140] [cursor=pointer]:
+                      - /url: /vm-management/configure-console-base-address/
+                  - listitem [ref=e141]:
+                    - generic [ref=e142]:
+                      - link "RBAC" [ref=e143] [cursor=pointer]:
+                        - /url: /vm-management/rbac/
+                      - button "Toggle the collapsible sidebar category 'RBAC'" [ref=e144] [cursor=pointer]
+                  - listitem [ref=e145]:
+                    - generic [ref=e146]:
+                      - link "Create and Manage VMs" [expanded] [ref=e147] [cursor=pointer]:
+                        - /url: /vm-management/create-manage-vm/
+                      - button "Toggle the collapsible sidebar category 'Create and Manage VMs'" [ref=e148] [cursor=pointer]
+                    - list [ref=e149]:
+                      - listitem [ref=e150]:
+                        - link "Deploy VM From a Template" [ref=e151] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/deploy-vm-from-template/
+                      - listitem [ref=e152]:
+                        - link "Update VM Configuration" [ref=e153] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/update-vm-configuration/
+                      - listitem [ref=e154]:
+                        - link "Migrate a VM to a Different Node" [ref=e155] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/migrate-vm-to-different-node/
+                      - listitem [ref=e156]:
+                        - link "Take a VM Snapshot" [ref=e157] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/take-snapshot-of-vm/
+                      - listitem [ref=e158]:
+                        - link "Clone a VM" [ref=e159] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/clone-vm/
+                      - listitem [ref=e160]:
+                        - link "Manage CPU and Memory" [ref=e161] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/enable-cpu-hotplug/
+                      - listitem [ref=e162]:
+                        - link "Locate VM Disks" [ref=e163] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/locate-vm-disks/
+                      - listitem [ref=e164]:
+                        - generic [ref=e165]:
+                          - link "Advanced Topics" [expanded] [ref=e166] [cursor=pointer]:
+                            - /url: /vm-management/create-manage-vm/advanced-topics/
+                          - button "Toggle the collapsible sidebar category 'Advanced Topics'" [ref=e167] [cursor=pointer]
+                        - list [ref=e168]:
+                          - listitem [ref=e169]:
+                            - link "Create a VM Template" [ref=e170] [cursor=pointer]:
+                              - /url: /vm-management/create-manage-vm/advanced-topics/create-vm-template/
+                          - listitem [ref=e171]:
+                            - link "Access VM Cluster with Virtctl" [ref=e172] [cursor=pointer]:
+                              - /url: /vm-management/create-manage-vm/advanced-topics/access-cluster-with-virtctl/
+                          - listitem [ref=e173]:
+                            - link "Create Disk Templates" [ref=e174] [cursor=pointer]:
+                              - /url: /vm-management/create-manage-vm/advanced-topics/create-disk-templates/
+                          - listitem [ref=e175]:
+                            - link "Migrate a VM to a VMO cluster using the Palette CLI" [ref=e176] [cursor=pointer]:
+                              - /url: /vm-management/create-manage-vm/advanced-topics/migrate-vm-kubevirt/
+                          - listitem [ref=e177]:
+                            - link "Over-Commit Resources to Enhance VM Performance" [ref=e178] [cursor=pointer]:
+                              - /url: /vm-management/create-manage-vm/advanced-topics/vm-oversubscription/
+                          - listitem [ref=e179]:
+                            - link "Import and Deploy OVAs to Palette VMO" [ref=e180] [cursor=pointer]:
+                              - /url: /vm-management/create-manage-vm/advanced-topics/deploy-import-ova/
+                  - listitem [ref=e181]:
+                    - generic [ref=e182]:
+                      - link "VM Migration Assistant" [ref=e183] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/
+                      - button "Toggle the collapsible sidebar category 'VM Migration Assistant'" [ref=e184] [cursor=pointer]
+              - listitem [ref=e185]:
+                - generic [ref=e186]:
+                  - link "Workspaces" [ref=e187] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e189]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e191] [cursor=pointer]
+              - listitem [ref=e192]:
+                - generic [ref=e193]:
+                  - link "Packs List" [ref=e194] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e196]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e198] [cursor=pointer]
+              - listitem [ref=e199]:
+                - generic [ref=e200]:
+                  - link "User & Role Management" [ref=e201] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e203]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e205] [cursor=pointer]
+              - listitem [ref=e206]:
+                - generic [ref=e207]:
+                  - link "Registries and Packs" [ref=e208] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e210]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e212] [cursor=pointer]
+              - listitem [ref=e213]:
+                - generic [ref=e214]:
+                  - link "Security" [ref=e215] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e217]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e219] [cursor=pointer]
+              - listitem [ref=e220]:
+                - generic [ref=e221]:
+                  - link "Audit Logs" [ref=e222] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e224]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e226] [cursor=pointer]
+              - listitem [ref=e227]:
+                - generic [ref=e228]:
+                  - link "Self-Hosted Palette" [ref=e229] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e231]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e233] [cursor=pointer]
+              - listitem [ref=e234]:
+                - generic [ref=e235]:
+                  - link "Palette VerteX" [ref=e236] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e238]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e240] [cursor=pointer]
+              - listitem [ref=e241]:
+                - generic [ref=e242]:
+                  - link "Tenant Administration" [ref=e243] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e245]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e247] [cursor=pointer]
+              - listitem [ref=e248]:
+                - generic [ref=e249]:
+                  - link "Automation" [ref=e250] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e252]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e254] [cursor=pointer]
+              - listitem [ref=e255]:
+                - generic [ref=e256]:
+                  - link "Troubleshooting" [ref=e257] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e259]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e261] [cursor=pointer]
+              - listitem [ref=e262]:
+                - link "Glossary" [ref=e263] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e265]
+                  - text: Glossary
+              - listitem [ref=e267]:
+                - generic [ref=e268]:
+                  - link "Compliance & Legal" [ref=e269] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e271]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e273] [cursor=pointer]
+              - listitem [ref=e274]:
+                - button "Privacy Settings" [ref=e275] [cursor=pointer]:
+                  - img [ref=e276]
+                  - text: Privacy Settings
+      - main [ref=e278]:
+        - generic [ref=e280]:
+          - generic [ref=e282]:
+            - article [ref=e283]:
+              - navigation "Breadcrumbs" [ref=e284]:
+                - list [ref=e285]:
+                  - listitem [ref=e286]:
+                    - link "Home page" [ref=e287] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e288]
+                  - listitem [ref=e290]:
+                    - link "Virtual Machine Orchestrator" [ref=e291] [cursor=pointer]:
+                      - /url: /vm-management/
+                  - listitem [ref=e292]:
+                    - link "Create and Manage VMs" [ref=e293] [cursor=pointer]:
+                      - /url: /vm-management/create-manage-vm/
+                  - listitem [ref=e294]:
+                    - link "Advanced Topics" [ref=e295] [cursor=pointer]:
+                      - /url: /vm-management/create-manage-vm/advanced-topics/
+                  - listitem [ref=e296]:
+                    - generic [ref=e297]: Access VM Cluster with Virtctl
+              - generic [ref=e298]:
+                - heading "Set up Virtctl" [level=1] [ref=e300]
+                - paragraph [ref=e301]: The virtctl command-line interface (CLI) tool facilitates some of the virtual machine (VM) operations you will perform by providing convenient commands for copying and pasting into the virtual console, starting and stopping VMs, live migrating VMs, and uploading VM disk images.
+                - paragraph [ref=e302]:
+                  - text: The virtctl CLI also provides a lightweight Secure Copy Protocol (SCP) client with the
+                  - code [ref=e303]: virtctl scp
+                  - text: command, which you can use to transfer files to and from a VM. Its usage is similar to the ssh command.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e304]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e305] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e306]:
+                  - listitem [ref=e307]:
+                    - paragraph [ref=e308]: An active cluster with Palette Virtual Machine Orchestrator (VMO).
+                  - listitem [ref=e309]:
+                    - paragraph [ref=e310]: Access to the cluster.
+                - heading "Download and Connect virtctlDirect link to Download and Connect virtctl" [level=2] [ref=e311]:
+                  - text: Download and Connect virtctl
+                  - link "Direct link to Download and Connect virtctl" [ref=e312] [cursor=pointer]:
+                    - /url: "#download-and-connect-virtctl"
+                    - text: "#"
+                - list [ref=e313]:
+                  - listitem [ref=e314]:
+                    - paragraph [ref=e315]:
+                      - text: Download the most recent virtctl artifact based on your machine type from the official
+                      - link "KubeVirt Assets" [ref=e316] [cursor=pointer]:
+                        - /url: https://github.com/kubevirt/kubevirt/releases/tag/v0.60.0-alpha.0
+                      - text: . Scroll down to the
+                      - strong [ref=e317]: Assets
+                      - text: section.
+                  - listitem [ref=e318]:
+                    - paragraph [ref=e319]: Assign the execute permission to the virtctl command.
+                    - generic [ref=e321]:
+                      - code [ref=e323]:
+                        - generic [ref=e324]: chmod +x virtctl
+                      - button "Copy code to clipboard" [ref=e326] [cursor=pointer]:
+                        - generic [ref=e327]:
+                          - img [ref=e328]
+                          - img [ref=e330]
+                  - listitem [ref=e332]:
+                    - paragraph [ref=e333]:
+                      - text: Next, log in to
+                      - link "Palette" [ref=e334] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: to connect your host cluster with the virtctl CLI.
+                  - listitem [ref=e335]:
+                    - paragraph [ref=e336]:
+                      - text: Navigate to the left
+                      - strong [ref=e337]: Main Menu
+                      - text: and select
+                      - strong [ref=e338]: Clusters
+                      - text: .
+                  - listitem [ref=e339]:
+                    - paragraph [ref=e340]: Select the cluster you want to connect to.
+                  - listitem [ref=e341]:
+                    - paragraph [ref=e342]:
+                      - text: From the cluster overview page, navigate to the middle column containing cluster details and locate the
+                      - strong [ref=e343]: Kubernetes Config File
+                      - text: row.
+                  - listitem [ref=e344]:
+                    - paragraph [ref=e345]: Click on the kubeconfig link to download the file.
+                  - listitem [ref=e346]:
+                    - paragraph [ref=e347]: Open a terminal window and set the KUBECONFIG environment variable to the file path of the kubeconfig file.
+                    - paragraph [ref=e348]: "Example:"
+                    - generic [ref=e350]:
+                      - code [ref=e352]:
+                        - generic [ref=e353]: export KUBECONFIG=~/Downloads/dev-cluster.kubeconfig
+                      - button "Copy code to clipboard" [ref=e355] [cursor=pointer]:
+                        - generic [ref=e356]:
+                          - img [ref=e357]
+                          - img [ref=e359]
+                  - listitem [ref=e361]:
+                    - paragraph [ref=e362]:
+                      - text: Issue the
+                      - code [ref=e363]: virtctl ssh <virtual_machinename>
+                      - text: or
+                      - code [ref=e364]: virtctl vnc <virtual_machinename>
+                      - text: command to display the login screen.
+                    - paragraph [ref=e365]: "Example:"
+                    - generic [ref=e367]:
+                      - code [ref=e369]:
+                        - generic [ref=e370]: virtctl ssh ubuntu
+                      - button "Copy code to clipboard" [ref=e372] [cursor=pointer]:
+                        - generic [ref=e373]:
+                          - img [ref=e374]
+                          - img [ref=e376]
+                - paragraph [ref=e378]: You can now issue virtctl commands against the VM in your Kubernetes cluster.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e379]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e380] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e381]: Verify you have access to your virtual machine by issuing virtctl commands against it, as shown in the example below.
+                - generic [ref=e383]:
+                  - code [ref=e385]:
+                    - generic [ref=e386]: virtctl guestosinfo
+                  - button "Copy code to clipboard" [ref=e388] [cursor=pointer]:
+                    - generic [ref=e389]:
+                      - img [ref=e390]
+                      - img [ref=e392]
+              - generic [ref=e394]:
+                - generic [ref=e396]:
+                  - text: "Tags:"
+                  - list [ref=e397]:
+                    - listitem [ref=e398]:
+                      - link "vmo" [ref=e399] [cursor=pointer]:
+                        - /url: /tags/vmo/
+                - link "Edit this page" [ref=e402] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vm-management/create-manage-vm/advanced-topics/access-cluster-with-virtctl.md
+                  - img [ref=e403]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e407]:
+              - link "Previous « Create a VM Template" [ref=e408] [cursor=pointer]:
+                - /url: /vm-management/create-manage-vm/advanced-topics/create-vm-template/
+                - generic [ref=e409]: Previous
+                - generic [ref=e410]: « Create a VM Template
+              - link "Next Create Disk Templates »" [ref=e411] [cursor=pointer]:
+                - /url: /vm-management/create-manage-vm/advanced-topics/create-disk-templates/
+                - generic [ref=e412]: Next
+                - generic [ref=e413]: Create Disk Templates »
+          - list [ref=e416]:
+            - listitem [ref=e417]:
+              - link "Prerequisites" [ref=e418] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e419]:
+              - link "Download and Connect virtctl" [ref=e420] [cursor=pointer]:
+                - /url: "#download-and-connect-virtctl"
+            - listitem [ref=e421]:
+              - link "Validate" [ref=e422] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e423] [cursor=pointer]:
+    - generic [ref=e426]:
+      - img "Project Logo" [ref=e427]
+      - paragraph [ref=e428]: Ask AI
+```

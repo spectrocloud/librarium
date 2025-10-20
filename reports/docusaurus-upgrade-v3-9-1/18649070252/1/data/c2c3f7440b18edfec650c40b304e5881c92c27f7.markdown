@@ -1,0 +1,435 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Introduction" [ref=e41] [cursor=pointer]:
+                  - /url: /api/introduction/
+                  - img [ref=e43]
+                  - text: Introduction
+              - listitem [ref=e45]:
+                - link "Example Usage" [ref=e46] [cursor=pointer]:
+                  - /url: /api/samples/
+              - listitem [ref=e47]:
+                - link "Postman Collection" [ref=e48] [cursor=pointer]:
+                  - /url: /api/postman-collection/
+              - listitem [ref=e49]:
+                - generic [ref=e50]:
+                  - link "Palette API V1" [expanded] [ref=e51] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Palette API V1'" [ref=e52] [cursor=pointer]
+                - list [ref=e53]:
+                  - listitem [ref=e54]:
+                    - link "Introduction" [ref=e55] [cursor=pointer]:
+                      - /url: /api/v1/palette-apis-4-7/
+                  - listitem [ref=e56]:
+                    - generic [ref=e57]:
+                      - link "Api Keys" [ref=e58] [cursor=pointer]:
+                        - /url: /api/v1/api-keys/
+                      - button "Toggle the collapsible sidebar category 'Api Keys'" [ref=e59] [cursor=pointer]
+                  - listitem [ref=e60]:
+                    - generic [ref=e61]:
+                      - link "App Deployments" [ref=e62] [cursor=pointer]:
+                        - /url: /api/v1/app-deployments/
+                      - button "Toggle the collapsible sidebar category 'App Deployments'" [ref=e63] [cursor=pointer]
+                  - listitem [ref=e64]:
+                    - generic [ref=e65]:
+                      - link "App Profiles" [ref=e66] [cursor=pointer]:
+                        - /url: /api/v1/app-profiles/
+                      - button "Toggle the collapsible sidebar category 'App Profiles'" [ref=e67] [cursor=pointer]
+                  - listitem [ref=e68]:
+                    - generic [ref=e69]:
+                      - link "Audits" [ref=e70] [cursor=pointer]:
+                        - /url: /api/v1/audits/
+                      - button "Toggle the collapsible sidebar category 'Audits'" [ref=e71] [cursor=pointer]
+                  - listitem [ref=e72]:
+                    - generic [ref=e73]:
+                      - link "Auth" [ref=e74] [cursor=pointer]:
+                        - /url: /api/v1/auth/
+                      - button "Toggle the collapsible sidebar category 'Auth'" [ref=e75] [cursor=pointer]
+                  - listitem [ref=e76]:
+                    - generic [ref=e77]:
+                      - link "Cloudaccounts" [ref=e78] [cursor=pointer]:
+                        - /url: /api/v1/cloudaccounts/
+                      - button "Toggle the collapsible sidebar category 'Cloudaccounts'" [ref=e79] [cursor=pointer]
+                  - listitem [ref=e80]:
+                    - generic [ref=e81]:
+                      - link "Cloudconfigs" [ref=e82] [cursor=pointer]:
+                        - /url: /api/v1/cloudconfigs/
+                      - button "Toggle the collapsible sidebar category 'Cloudconfigs'" [ref=e83] [cursor=pointer]
+                  - listitem [ref=e84]:
+                    - generic [ref=e85]:
+                      - link "Clouds" [ref=e86] [cursor=pointer]:
+                        - /url: /api/v1/clouds/
+                      - button "Toggle the collapsible sidebar category 'Clouds'" [ref=e87] [cursor=pointer]
+                  - listitem [ref=e88]:
+                    - generic [ref=e89]:
+                      - link "Cluster Templates" [ref=e90] [cursor=pointer]:
+                        - /url: /api/v1/cluster-templates/
+                      - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+                  - listitem [ref=e92]:
+                    - generic [ref=e93]:
+                      - link "Clustergroups" [ref=e94] [cursor=pointer]:
+                        - /url: /api/v1/clustergroups/
+                      - button "Toggle the collapsible sidebar category 'Clustergroups'" [ref=e95] [cursor=pointer]
+                  - listitem [ref=e96]:
+                    - generic [ref=e97]:
+                      - link "Clusterprofiles" [ref=e98] [cursor=pointer]:
+                        - /url: /api/v1/clusterprofiles/
+                      - button "Toggle the collapsible sidebar category 'Clusterprofiles'" [ref=e99] [cursor=pointer]
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Dashboard" [ref=e102] [cursor=pointer]:
+                        - /url: /api/v1/dashboard/
+                      - button "Toggle the collapsible sidebar category 'Dashboard'" [ref=e103] [cursor=pointer]
+                  - listitem [ref=e104]:
+                    - generic [ref=e105]:
+                      - link "Datasinks" [ref=e106] [cursor=pointer]:
+                        - /url: /api/v1/datasinks/
+                      - button "Toggle the collapsible sidebar category 'Datasinks'" [ref=e107] [cursor=pointer]
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Edgehosts" [ref=e110] [cursor=pointer]:
+                        - /url: /api/v1/edgehosts/
+                      - button "Toggle the collapsible sidebar category 'Edgehosts'" [ref=e111] [cursor=pointer]
+                  - listitem [ref=e112]:
+                    - generic [ref=e113]:
+                      - link "Events" [ref=e114] [cursor=pointer]:
+                        - /url: /api/v1/events/
+                      - button "Toggle the collapsible sidebar category 'Events'" [ref=e115] [cursor=pointer]
+                  - listitem [ref=e116]:
+                    - generic [ref=e117]:
+                      - link "Features" [ref=e118] [cursor=pointer]:
+                        - /url: /api/v1/features/
+                      - button "Toggle the collapsible sidebar category 'Features'" [ref=e119] [cursor=pointer]
+                  - listitem [ref=e120]:
+                    - generic [ref=e121]:
+                      - link "Filters" [ref=e122] [cursor=pointer]:
+                        - /url: /api/v1/filters/
+                      - button "Toggle the collapsible sidebar category 'Filters'" [ref=e123] [cursor=pointer]
+                  - listitem [ref=e124]:
+                    - generic [ref=e125]:
+                      - link "Metrics" [ref=e126] [cursor=pointer]:
+                        - /url: /api/v1/metrics/
+                      - button "Toggle the collapsible sidebar category 'Metrics'" [ref=e127] [cursor=pointer]
+                  - listitem [ref=e128]:
+                    - generic [ref=e129]:
+                      - link "Notifications" [ref=e130] [cursor=pointer]:
+                        - /url: /api/v1/notifications/
+                      - button "Toggle the collapsible sidebar category 'Notifications'" [ref=e131] [cursor=pointer]
+                  - listitem [ref=e132]:
+                    - generic [ref=e133]:
+                      - link "Overlords" [ref=e134] [cursor=pointer]:
+                        - /url: /api/v1/overlords/
+                      - button "Toggle the collapsible sidebar category 'Overlords'" [ref=e135] [cursor=pointer]
+                  - listitem [ref=e136]:
+                    - generic [ref=e137]:
+                      - link "Packs" [ref=e138] [cursor=pointer]:
+                        - /url: /api/v1/packs/
+                      - button "Toggle the collapsible sidebar category 'Packs'" [ref=e139] [cursor=pointer]
+                  - listitem [ref=e140]:
+                    - generic [ref=e141]:
+                      - link "Pcg" [ref=e142] [cursor=pointer]:
+                        - /url: /api/v1/pcg/
+                      - button "Toggle the collapsible sidebar category 'Pcg'" [ref=e143] [cursor=pointer]
+                  - listitem [ref=e144]:
+                    - generic [ref=e145]:
+                      - link "Permissions" [ref=e146] [cursor=pointer]:
+                        - /url: /api/v1/permissions/
+                      - button "Toggle the collapsible sidebar category 'Permissions'" [ref=e147] [cursor=pointer]
+                  - listitem [ref=e148]:
+                    - generic [ref=e149]:
+                      - link "Projects" [ref=e150] [cursor=pointer]:
+                        - /url: /api/v1/projects/
+                      - button "Toggle the collapsible sidebar category 'Projects'" [ref=e151] [cursor=pointer]
+                  - listitem [ref=e152]:
+                    - generic [ref=e153]:
+                      - link "Registries" [ref=e154] [cursor=pointer]:
+                        - /url: /api/v1/registries/
+                      - button "Toggle the collapsible sidebar category 'Registries'" [ref=e155] [cursor=pointer]
+                  - listitem [ref=e156]:
+                    - generic [ref=e157]:
+                      - link "Roles" [ref=e158] [cursor=pointer]:
+                        - /url: /api/v1/roles/
+                      - button "Toggle the collapsible sidebar category 'Roles'" [ref=e159] [cursor=pointer]
+                  - listitem [ref=e160]:
+                    - generic [ref=e161]:
+                      - link "Services" [ref=e162] [cursor=pointer]:
+                        - /url: /api/v1/services/
+                      - button "Toggle the collapsible sidebar category 'Services'" [ref=e163] [cursor=pointer]
+                  - listitem [ref=e164]:
+                    - generic [ref=e165]:
+                      - link "Spc Policies" [ref=e166] [cursor=pointer]:
+                        - /url: /api/v1/spc-policies/
+                      - button "Toggle the collapsible sidebar category 'Spc Policies'" [ref=e167] [cursor=pointer]
+                  - listitem [ref=e168]:
+                    - generic [ref=e169]:
+                      - link "Spectroclusters" [ref=e170] [cursor=pointer]:
+                        - /url: /api/v1/spectroclusters/
+                      - button "Toggle the collapsible sidebar category 'Spectroclusters'" [ref=e171] [cursor=pointer]
+                  - listitem [ref=e172]:
+                    - generic [ref=e173]:
+                      - link "System" [ref=e174] [cursor=pointer]:
+                        - /url: /api/v1/system/
+                      - button "Toggle the collapsible sidebar category 'System'" [ref=e175] [cursor=pointer]
+                  - listitem [ref=e176]:
+                    - generic [ref=e177]:
+                      - link "Teams" [ref=e178] [cursor=pointer]:
+                        - /url: /api/v1/teams/
+                      - button "Toggle the collapsible sidebar category 'Teams'" [ref=e179] [cursor=pointer]
+                  - listitem [ref=e180]:
+                    - generic [ref=e181]:
+                      - link "Tenants" [ref=e182] [cursor=pointer]:
+                        - /url: /api/v1/tenants/
+                      - button "Toggle the collapsible sidebar category 'Tenants'" [ref=e183] [cursor=pointer]
+                  - listitem [ref=e184]:
+                    - generic [ref=e185]:
+                      - link "Users" [ref=e186] [cursor=pointer]:
+                        - /url: /api/v1/users/
+                      - button "Toggle the collapsible sidebar category 'Users'" [ref=e187] [cursor=pointer]
+                  - listitem [ref=e188]:
+                    - generic [ref=e189]:
+                      - link "Workspaces" [expanded] [ref=e190] [cursor=pointer]:
+                        - /url: /api/v1/workspaces/
+                      - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e191] [cursor=pointer]
+                    - list [ref=e192]:
+                      - listitem [ref=e193]:
+                        - link "post Create workspace" [ref=e194] [cursor=pointer]:
+                          - /url: /api/v1/v-1-workspaces-create/
+                      - listitem [ref=e195]:
+                        - link "get Returns the specified team's workspaces and roles data" [ref=e196] [cursor=pointer]:
+                          - /url: /api/v1/v-1-teams-workspace-get-roles/
+                      - listitem [ref=e197]:
+                        - link "put Updates the workspace roles for the specified team" [ref=e198] [cursor=pointer]:
+                          - /url: /api/v1/v-1-teams-workspace-roles-put/
+                      - listitem [ref=e199]:
+                        - link "get Returns the specified User workspaces and Roles information" [ref=e200] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-workspace-get-roles/
+                      - listitem [ref=e201]:
+                        - link "put Updates the workspace roles for user" [ref=e202] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-workspace-roles-put/
+                      - listitem [ref=e203]:
+                        - link "get Validates the workspace name" [ref=e204] [cursor=pointer]:
+                          - /url: /api/v1/v-1-workspaces-validate-name/
+                      - listitem [ref=e205]:
+                        - link "del Deletes the specified workspace" [ref=e206] [cursor=pointer]:
+                          - /url: /api/v1/v-1-workspaces-uid-delete/
+                      - listitem [ref=e207]:
+                        - link "get Returns the specified workspace" [ref=e208] [cursor=pointer]:
+                          - /url: /api/v1/v-1-workspaces-uid-get/
+                      - listitem [ref=e209]:
+                        - link "del Delete workspace backup" [ref=e210] [cursor=pointer]:
+                          - /url: /api/v1/v-1-workspace-ops-backup-delete/
+                      - listitem [ref=e211]:
+                        - link "get Returns the workspace backup result" [ref=e212] [cursor=pointer]:
+                          - /url: /api/v1/v-1-workspace-ops-backup-get/
+                      - listitem [ref=e213]:
+                        - link "post Create workspace backup settings" [ref=e214] [cursor=pointer]:
+                          - /url: /api/v1/v-1-workspace-ops-backup-create/
+                      - listitem [ref=e215]:
+                        - link "put Update workspace backup settings" [ref=e216] [cursor=pointer]:
+                          - /url: /api/v1/v-1-workspace-ops-backup-update/
+                      - listitem [ref=e217]:
+                        - link "post Create On demand Workspace Backup" [ref=e218] [cursor=pointer]:
+                          - /url: /api/v1/v-1-workspace-ops-backup-on-demand-create/
+                      - listitem [ref=e219]:
+                        - link "put Updates the specified workspace namespaces" [ref=e220] [cursor=pointer]:
+                          - /url: /api/v1/v-1-workspaces-uid-cluster-namespaces-update/
+                      - listitem [ref=e221]:
+                        - link "post Create cluster rbac in workspace" [ref=e222] [cursor=pointer]:
+                          - /url: /api/v1/v-1-workspaces-cluster-rbac-create/
+                      - listitem [ref=e223]:
+                        - link "del Deletes the specified workspace cluster rbac" [ref=e224] [cursor=pointer]:
+                          - /url: /api/v1/v-1-workspaces-uid-cluster-rbac-delete/
+                      - listitem [ref=e225]:
+                        - link "put Updates the specified workspace cluster rbac" [ref=e226] [cursor=pointer]:
+                          - /url: /api/v1/v-1-workspaces-uid-cluster-rbac-update/
+                      - listitem [ref=e227]:
+                        - link "put Updates the specified workspace meta" [ref=e228] [cursor=pointer]:
+                          - /url: /api/v1/v-1-workspaces-uid-meta-update/
+                      - listitem [ref=e229]:
+                        - link "put Updates the specified workspace resource allocations" [ref=e230] [cursor=pointer]:
+                          - /url: /api/v1/v-1-workspaces-uid-resource-allocations-update/
+                      - listitem [ref=e231]:
+                        - link "get Returns the workspace restore result" [ref=e232] [cursor=pointer]:
+                          - /url: /api/v1/v-1-workspace-ops-restore-get/
+                      - listitem [ref=e233]:
+                        - link "post Create On demand Workspace Restore" [ref=e234] [cursor=pointer]:
+                          - /url: /api/v1/v-1-workspace-ops-restore-on-demand-create/
+              - listitem [ref=e235]:
+                - generic [ref=e236]:
+                  - link "Edge Management API V1" [ref=e237] [cursor=pointer]:
+                    - /url: /api/category/edge-management-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Edge Management API V1'" [ref=e238] [cursor=pointer]
+      - main [ref=e239]:
+        - generic [ref=e243]:
+          - article [ref=e244]:
+            - navigation "Breadcrumbs" [ref=e245]:
+              - list [ref=e246]:
+                - listitem [ref=e247]:
+                  - link "Home page" [ref=e248] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e249]
+                - listitem [ref=e251]:
+                  - link "Palette API V1" [ref=e252] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                - listitem [ref=e253]:
+                  - generic [ref=e254]: Workspaces
+            - generic [ref=e255]:
+              - heading "Workspaces" [level=1] [ref=e257]
+              - generic [ref=e260]:
+                - article [ref=e261]:
+                  - link "📄️ Create workspace Create workspace" [ref=e262] [cursor=pointer]:
+                    - /url: /api/v1/v-1-workspaces-create/
+                    - heading "📄️ Create workspace" [level=2] [ref=e263]
+                    - paragraph [ref=e264]: Create workspace
+                - article [ref=e265]:
+                  - link "📄️ Returns the specified team's workspaces ... Returns the specified team's workspaces and roles data" [ref=e266] [cursor=pointer]:
+                    - /url: /api/v1/v-1-teams-workspace-get-roles/
+                    - heading "📄️ Returns the specified team's workspaces ..." [level=2] [ref=e267]
+                    - paragraph [ref=e268]: Returns the specified team's workspaces and roles data
+                - article [ref=e269]:
+                  - link "📄️ Updates the workspace roles for the spec ... Updates the workspace roles for the specified team" [ref=e270] [cursor=pointer]:
+                    - /url: /api/v1/v-1-teams-workspace-roles-put/
+                    - heading "📄️ Updates the workspace roles for the spec ..." [level=2] [ref=e271]
+                    - paragraph [ref=e272]: Updates the workspace roles for the specified team
+                - article [ref=e273]:
+                  - link "📄️ Returns the specified User workspaces an ... Returns a User with workspaces and roles" [ref=e274] [cursor=pointer]:
+                    - /url: /api/v1/v-1-users-workspace-get-roles/
+                    - heading "📄️ Returns the specified User workspaces an ..." [level=2] [ref=e275]
+                    - paragraph [ref=e276]: Returns a User with workspaces and roles
+                - article [ref=e277]:
+                  - link "📄️ Updates the workspace roles for user User is updated with workspace roles" [ref=e278] [cursor=pointer]:
+                    - /url: /api/v1/v-1-users-workspace-roles-put/
+                    - heading "📄️ Updates the workspace roles for user" [level=2] [ref=e279]
+                    - paragraph [ref=e280]: User is updated with workspace roles
+                - article [ref=e281]:
+                  - link "📄️ Validates the workspace name Validates the workspace name" [ref=e282] [cursor=pointer]:
+                    - /url: /api/v1/v-1-workspaces-validate-name/
+                    - heading "📄️ Validates the workspace name" [level=2] [ref=e283]
+                    - paragraph [ref=e284]: Validates the workspace name
+                - article [ref=e285]:
+                  - link "📄️ Deletes the specified workspace Deletes the specified workspace" [ref=e286] [cursor=pointer]:
+                    - /url: /api/v1/v-1-workspaces-uid-delete/
+                    - heading "📄️ Deletes the specified workspace" [level=2] [ref=e287]
+                    - paragraph [ref=e288]: Deletes the specified workspace
+                - article [ref=e289]:
+                  - link "📄️ Returns the specified workspace Returns the specified workspace" [ref=e290] [cursor=pointer]:
+                    - /url: /api/v1/v-1-workspaces-uid-get/
+                    - heading "📄️ Returns the specified workspace" [level=2] [ref=e291]
+                    - paragraph [ref=e292]: Returns the specified workspace
+                - article [ref=e293]:
+                  - link "📄️ Delete workspace backup Delete workspace backup" [ref=e294] [cursor=pointer]:
+                    - /url: /api/v1/v-1-workspace-ops-backup-delete/
+                    - heading "📄️ Delete workspace backup" [level=2] [ref=e295]
+                    - paragraph [ref=e296]: Delete workspace backup
+                - article [ref=e297]:
+                  - link "📄️ Returns the workspace backup result Returns the workspace backup result" [ref=e298] [cursor=pointer]:
+                    - /url: /api/v1/v-1-workspace-ops-backup-get/
+                    - heading "📄️ Returns the workspace backup result" [level=2] [ref=e299]
+                    - paragraph [ref=e300]: Returns the workspace backup result
+                - article [ref=e301]:
+                  - link "📄️ Create workspace backup settings Create workspace backup settings" [ref=e302] [cursor=pointer]:
+                    - /url: /api/v1/v-1-workspace-ops-backup-create/
+                    - heading "📄️ Create workspace backup settings" [level=2] [ref=e303]
+                    - paragraph [ref=e304]: Create workspace backup settings
+                - article [ref=e305]:
+                  - link "📄️ Update workspace backup settings Update workspace backup settings" [ref=e306] [cursor=pointer]:
+                    - /url: /api/v1/v-1-workspace-ops-backup-update/
+                    - heading "📄️ Update workspace backup settings" [level=2] [ref=e307]
+                    - paragraph [ref=e308]: Update workspace backup settings
+                - article [ref=e309]:
+                  - link "📄️ Create On demand Workspace Backup Create On demand Workspace Backup" [ref=e310] [cursor=pointer]:
+                    - /url: /api/v1/v-1-workspace-ops-backup-on-demand-create/
+                    - heading "📄️ Create On demand Workspace Backup" [level=2] [ref=e311]
+                    - paragraph [ref=e312]: Create On demand Workspace Backup
+                - article [ref=e313]:
+                  - link "📄️ Updates the specified workspace namespac ... Updates the specified workspace namespaces" [ref=e314] [cursor=pointer]:
+                    - /url: /api/v1/v-1-workspaces-uid-cluster-namespaces-update/
+                    - heading "📄️ Updates the specified workspace namespac ..." [level=2] [ref=e315]
+                    - paragraph [ref=e316]: Updates the specified workspace namespaces
+                - article [ref=e317]:
+                  - link "📄️ Create cluster rbac in workspace Create cluster rbac in workspace" [ref=e318] [cursor=pointer]:
+                    - /url: /api/v1/v-1-workspaces-cluster-rbac-create/
+                    - heading "📄️ Create cluster rbac in workspace" [level=2] [ref=e319]
+                    - paragraph [ref=e320]: Create cluster rbac in workspace
+                - article [ref=e321]:
+                  - link "📄️ Deletes the specified workspace cluster ... Deletes the specified workspace cluster rbac" [ref=e322] [cursor=pointer]:
+                    - /url: /api/v1/v-1-workspaces-uid-cluster-rbac-delete/
+                    - heading "📄️ Deletes the specified workspace cluster ..." [level=2] [ref=e323]
+                    - paragraph [ref=e324]: Deletes the specified workspace cluster rbac
+                - article [ref=e325]:
+                  - link "📄️ Updates the specified workspace cluster ... Updates the specified workspace cluster rbac" [ref=e326] [cursor=pointer]:
+                    - /url: /api/v1/v-1-workspaces-uid-cluster-rbac-update/
+                    - heading "📄️ Updates the specified workspace cluster ..." [level=2] [ref=e327]
+                    - paragraph [ref=e328]: Updates the specified workspace cluster rbac
+                - article [ref=e329]:
+                  - link "📄️ Updates the specified workspace meta Updates the specified workspace meta" [ref=e330] [cursor=pointer]:
+                    - /url: /api/v1/v-1-workspaces-uid-meta-update/
+                    - heading "📄️ Updates the specified workspace meta" [level=2] [ref=e331]
+                    - paragraph [ref=e332]: Updates the specified workspace meta
+                - article [ref=e333]:
+                  - link "📄️ Updates the specified workspace resource ... Deprecated" [ref=e334] [cursor=pointer]:
+                    - /url: /api/v1/v-1-workspaces-uid-resource-allocations-update/
+                    - heading "📄️ Updates the specified workspace resource ..." [level=2] [ref=e335]
+                    - paragraph [ref=e336]: Deprecated
+                - article [ref=e337]:
+                  - link "📄️ Returns the workspace restore result Returns the workspace restore result" [ref=e338] [cursor=pointer]:
+                    - /url: /api/v1/v-1-workspace-ops-restore-get/
+                    - heading "📄️ Returns the workspace restore result" [level=2] [ref=e339]
+                    - paragraph [ref=e340]: Returns the workspace restore result
+                - article [ref=e341]:
+                  - link "📄️ Create On demand Workspace Restore Create On demand Workspace Restore" [ref=e342] [cursor=pointer]:
+                    - /url: /api/v1/v-1-workspace-ops-restore-on-demand-create/
+                    - heading "📄️ Create On demand Workspace Restore" [level=2] [ref=e343]
+                    - paragraph [ref=e344]: Create On demand Workspace Restore
+          - navigation "Docs pages" [ref=e347]:
+            - link "Previous « Users status login mode" [ref=e348] [cursor=pointer]:
+              - /url: /api/v1/v-1-users-status-login-mode/
+              - generic [ref=e349]: Previous
+              - generic [ref=e350]: « Users status login mode
+            - link "Next Create workspace »" [ref=e351] [cursor=pointer]:
+              - /url: /api/v1/v-1-workspaces-create/
+              - generic [ref=e352]: Next
+              - generic [ref=e353]: Create workspace »
+  - button "Project Logo Ask AI" [ref=e354] [cursor=pointer]:
+    - generic [ref=e357]:
+      - img "Project Logo" [ref=e358]
+      - paragraph [ref=e359]: Ask AI
+```

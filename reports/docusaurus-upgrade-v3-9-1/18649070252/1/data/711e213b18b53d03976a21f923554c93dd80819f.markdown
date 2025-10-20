@@ -1,0 +1,556 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [expanded] [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+                - list [ref=e107]:
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Public Cloud Clusters" [ref=e110] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e112]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e114] [cursor=pointer]
+                  - listitem [ref=e115]:
+                    - generic [ref=e116]:
+                      - link "Data Center Clusters" [ref=e117] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e119]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e121] [cursor=pointer]
+                  - listitem [ref=e122]:
+                    - generic [ref=e123]:
+                      - link "Edge" [ref=e124] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e126]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e128] [cursor=pointer]
+                  - listitem [ref=e129]:
+                    - generic [ref=e130]:
+                      - link "Palette Virtual Clusters" [ref=e131] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e133]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e135] [cursor=pointer]
+                  - listitem [ref=e136]:
+                    - generic [ref=e137]:
+                      - link "Imported Clusters" [ref=e138] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e140]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e142] [cursor=pointer]
+                  - listitem [ref=e143]:
+                    - generic [ref=e144]:
+                      - link "Manage Clusters" [expanded] [ref=e145] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e147]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e149] [cursor=pointer]
+                    - list [ref=e150]:
+                      - listitem [ref=e151]:
+                        - generic [ref=e152]:
+                          - link "SSH" [ref=e153] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/ssh/
+                          - button "Toggle the collapsible sidebar category 'SSH'" [ref=e154] [cursor=pointer]
+                      - listitem [ref=e155]:
+                        - link "Update a Cluster" [ref=e156] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-updates/
+                      - listitem [ref=e157]:
+                        - generic [ref=e158]:
+                          - link "Cluster Monitoring" [ref=e159] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/monitoring/
+                          - button "Toggle the collapsible sidebar category 'Cluster Monitoring'" [ref=e160] [cursor=pointer]
+                      - listitem [ref=e161]:
+                        - link "Cluster Health Alerts" [ref=e162] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/health-alerts/
+                      - listitem [ref=e163]:
+                        - generic [ref=e164]:
+                          - link "Backup and Restore" [expanded] [ref=e165] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/backup-restore/
+                          - button "Toggle the collapsible sidebar category 'Backup and Restore'" [ref=e166] [cursor=pointer]
+                        - list [ref=e167]:
+                          - listitem [ref=e168]:
+                            - link "Add Backup Location using Static Credentials" [ref=e169] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/backup-restore/add-backup-location-static/
+                          - listitem [ref=e170]:
+                            - link "Add Backup Location using Dynamic Credentials" [ref=e171] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/backup-restore/add-backup-location-dynamic/
+                          - listitem [ref=e172]:
+                            - link "Create Cluster Backup" [ref=e173] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/backup-restore/create-cluster-backup/
+                          - listitem [ref=e174]:
+                            - link "Restore Cluster Backup" [ref=e175] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/backup-restore/restore-cluster-backup/
+                          - listitem [ref=e176]:
+                            - link "Configure etcd Backup" [ref=e177] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/backup-restore/enable-etcd-backup/
+                      - listitem [ref=e178]:
+                        - link "Renew Cluster PKI Certificates" [ref=e179] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/certificate-management/
+                      - listitem [ref=e180]:
+                        - link "Compliance Scan" [ref=e181] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/compliance-scan/
+                      - listitem [ref=e182]:
+                        - link "OS Patching" [ref=e183] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/os-patching/
+                      - listitem [ref=e184]:
+                        - link "Cost Visibility" [ref=e185] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cloud-cost/
+                      - listitem [ref=e186]:
+                        - link "Workload Visibility" [ref=e187] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/workloads/
+                      - listitem [ref=e188]:
+                        - link "Node Labels" [ref=e189] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-labels/
+                      - listitem [ref=e190]:
+                        - link "Taints and Tolerations" [ref=e191] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/taints/
+                      - listitem [ref=e192]:
+                        - link "RBAC and Namespace Support" [ref=e193] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-rbac/
+                      - listitem [ref=e194]:
+                        - link "Namespace Management" [ref=e195] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/namespace-management/
+                      - listitem [ref=e196]:
+                        - link "Palette Macros" [ref=e197] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/macros/
+                      - listitem [ref=e198]:
+                        - link "Pack Monitoring" [ref=e199] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/pack-monitoring/
+                      - listitem [ref=e200]:
+                        - link "Kubeconfig" [ref=e201] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/kubeconfig/
+                      - listitem [ref=e202]:
+                        - link "Kubectl" [ref=e203] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/palette-webctl/
+                      - listitem [ref=e204]:
+                        - generic [ref=e205]:
+                          - link "Platform Settings" [ref=e206] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/platform-settings/
+                          - button "Toggle the collapsible sidebar category 'Platform Settings'" [ref=e207] [cursor=pointer]
+                      - listitem [ref=e208]:
+                        - link "Map and Filter Clusters" [ref=e209] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-map-filters/
+                      - listitem [ref=e210]:
+                        - link "Node Pools" [ref=e211] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-pool/
+                      - listitem [ref=e212]:
+                        - link "Configure Applications to Use Proxy Server" [ref=e213] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-proxy/
+                      - listitem [ref=e214]:
+                        - link "Spectro Kubernetes Dashboard" [ref=e215] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/spectro-kubernetes-dashboard/
+                      - listitem [ref=e216]:
+                        - link "Cluster Removal" [ref=e217] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/remove-clusters/
+                      - listitem [ref=e218]:
+                        - link "Image Swap" [ref=e219] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/image-swap/
+                      - listitem [ref=e220]:
+                        - link "Maintenance Mode" [ref=e221] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/maintenance-mode/
+                  - listitem [ref=e222]:
+                    - generic [ref=e223]:
+                      - link "Cluster Groups" [ref=e224] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e226]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e228] [cursor=pointer]
+                  - listitem [ref=e229]:
+                    - generic [ref=e230]:
+                      - link "Private Cloud Gateway" [ref=e231] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e233]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - generic [ref=e237]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e238] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e240]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - generic [ref=e244]:
+                  - link "Palette Dev Engine" [ref=e245] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e247]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e249] [cursor=pointer]
+              - listitem [ref=e250]:
+                - generic [ref=e251]:
+                  - link "Virtual Machine Orchestrator" [ref=e252] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e254]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e256] [cursor=pointer]
+              - listitem [ref=e257]:
+                - generic [ref=e258]:
+                  - link "Workspaces" [ref=e259] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e261]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e263] [cursor=pointer]
+              - listitem [ref=e264]:
+                - generic [ref=e265]:
+                  - link "Packs List" [ref=e266] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e268]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e270] [cursor=pointer]
+              - listitem [ref=e271]:
+                - generic [ref=e272]:
+                  - link "User & Role Management" [ref=e273] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e275]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e277] [cursor=pointer]
+              - listitem [ref=e278]:
+                - generic [ref=e279]:
+                  - link "Registries and Packs" [ref=e280] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e282]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e284] [cursor=pointer]
+              - listitem [ref=e285]:
+                - generic [ref=e286]:
+                  - link "Security" [ref=e287] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e289]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e291] [cursor=pointer]
+              - listitem [ref=e292]:
+                - generic [ref=e293]:
+                  - link "Audit Logs" [ref=e294] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e296]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e298] [cursor=pointer]
+              - listitem [ref=e299]:
+                - generic [ref=e300]:
+                  - link "Self-Hosted Palette" [ref=e301] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e303]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e305] [cursor=pointer]
+              - listitem [ref=e306]:
+                - generic [ref=e307]:
+                  - link "Palette VerteX" [ref=e308] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e310]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e312] [cursor=pointer]
+              - listitem [ref=e313]:
+                - generic [ref=e314]:
+                  - link "Tenant Administration" [ref=e315] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e317]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e319] [cursor=pointer]
+              - listitem [ref=e320]:
+                - generic [ref=e321]:
+                  - link "Automation" [ref=e322] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e324]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e326] [cursor=pointer]
+              - listitem [ref=e327]:
+                - generic [ref=e328]:
+                  - link "Troubleshooting" [ref=e329] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e331]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e333] [cursor=pointer]
+              - listitem [ref=e334]:
+                - link "Glossary" [ref=e335] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e337]
+                  - text: Glossary
+              - listitem [ref=e339]:
+                - generic [ref=e340]:
+                  - link "Compliance & Legal" [ref=e341] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e343]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e345] [cursor=pointer]
+              - listitem [ref=e346]:
+                - button "Privacy Settings" [ref=e347] [cursor=pointer]:
+                  - img [ref=e348]
+                  - text: Privacy Settings
+      - main [ref=e350]:
+        - generic [ref=e352]:
+          - generic [ref=e354]:
+            - article [ref=e355]:
+              - navigation "Breadcrumbs" [ref=e356]:
+                - list [ref=e357]:
+                  - listitem [ref=e358]:
+                    - link "Home page" [ref=e359] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e360]
+                  - listitem [ref=e362]:
+                    - link "Clusters" [ref=e363] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e364]:
+                    - link "Manage Clusters" [ref=e365] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/
+                  - listitem [ref=e366]:
+                    - link "Backup and Restore" [ref=e367] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/backup-restore/
+                  - listitem [ref=e368]:
+                    - generic [ref=e369]: Configure etcd Backup
+              - generic [ref=e370]:
+                - heading "Configure etcd Backup" [level=1] [ref=e372]
+                - paragraph [ref=e373]: etcd backups are enabled by default and backups are performed on each etcd node. You can adjust the backup frequency, the location of the backup files, and the maximum number of backup files to retain by editing the YAML file of your cluster profile's Kubernetes layer.
+                - heading "PrerequisiteDirect link to Prerequisite" [level=2] [ref=e374]:
+                  - text: Prerequisite
+                  - link "Direct link to Prerequisite" [ref=e375] [cursor=pointer]:
+                    - /url: "#prerequisite"
+                    - text: "#"
+                - list [ref=e376]:
+                  - listitem [ref=e377]:
+                    - text: An active cluster in Palette using PXK, PXK-E, RKE2, or K3s as its Kubernetes layer.
+                    - list [ref=e378]:
+                      - listitem [ref=e379]: The MicroK8s distribution of Kubernetes uses dqlite3 instead of etcd for its data store by default, so these steps are not applicable to MicroK8s instances.
+                - heading "Configure etcd BackupDirect link to Configure etcd Backup" [level=2] [ref=e380]:
+                  - text: Configure etcd Backup
+                  - link "Direct link to Configure etcd Backup" [ref=e381] [cursor=pointer]:
+                    - /url: "#configure-etcd-backup"
+                    - text: "#"
+                - list [ref=e382]:
+                  - listitem [ref=e383]:
+                    - paragraph [ref=e384]:
+                      - text: Log in to
+                      - link "Palette" [ref=e385] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e386]:
+                    - paragraph [ref=e387]:
+                      - text: From the
+                      - strong [ref=e388]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e389]: Profiles
+                      - text: .
+                  - listitem [ref=e390]:
+                    - paragraph [ref=e391]: Select the profile you use to deploy clusters. And then, select the Kubernetes layer of your profile.
+                  - listitem [ref=e392]:
+                    - paragraph [ref=e393]: Edit the YAML file of your Kubernetes layer and add the following configurations. Depending on your Kubernetes distribution, different configuration parameters are available.
+                    - generic [ref=e394]:
+                      - tablist [ref=e395]:
+                        - tab "PXK/PXK-E" [selected] [ref=e396] [cursor=pointer]
+                        - tab "RKE2" [ref=e397] [cursor=pointer]
+                        - tab "K3S" [ref=e398] [cursor=pointer]
+                      - tabpanel [ref=e400]:
+                        - paragraph [ref=e401]:
+                          - text: In Palette eXtended Kubernetes (PXK), etcd backup is enabled by default and cannot be disabled. You also cannot change the directory where the backups are stored, which is
+                          - code [ref=e402]: /var/lib/etcd
+                          - text: .
+                        - table [ref=e403]:
+                          - rowgroup [ref=e404]:
+                            - row "Parameter Description Default" [ref=e405]:
+                              - cell "Parameter" [ref=e406]
+                              - cell "Description" [ref=e407]
+                              - cell "Default" [ref=e408]
+                          - rowgroup [ref=e409]:
+                            - row "kubeadmconfig.etcd.local.extraArgs.snapshot-count The number of committed transactions required to trigger a snapshot. 100000" [ref=e410]:
+                              - cell "kubeadmconfig.etcd.local.extraArgs.snapshot-count" [ref=e411]:
+                                - code [ref=e412]: kubeadmconfig.etcd.local.extraArgs.snapshot-count
+                              - cell "The number of committed transactions required to trigger a snapshot." [ref=e413]
+                              - cell "100000" [ref=e414]
+                            - row "kubeadmconfig.etcd.local.extraArgs.max-snapshots The maximum number of etcd backups to retain. 5" [ref=e415]:
+                              - cell "kubeadmconfig.etcd.local.extraArgs.max-snapshots" [ref=e416]:
+                                - code [ref=e417]: kubeadmconfig.etcd.local.extraArgs.max-snapshots
+                              - cell "The maximum number of etcd backups to retain." [ref=e418]
+                              - cell "5" [ref=e419]
+                        - paragraph [ref=e420]: For example,
+                        - generic [ref=e422]:
+                          - code [ref=e424]:
+                            - generic [ref=e425]: "kubeadmconfig:"
+                            - generic [ref=e426]: "etcd:"
+                            - generic [ref=e427]: "local:"
+                            - generic [ref=e428]: "extraArgs:"
+                            - generic [ref=e429]: "max-snapshots: 10"
+                            - generic [ref=e430]: "snapshot-count: \"10000\""
+                          - button "Copy code to clipboard" [ref=e432] [cursor=pointer]:
+                            - generic [ref=e433]:
+                              - img [ref=e434]
+                              - img [ref=e436]
+                  - listitem [ref=e438]:
+                    - paragraph [ref=e439]:
+                      - text: If you have not deployed a cluster, finish the cluster profile creation and deploy a cluster. For more information, refer to
+                      - link "Create Cluster Profile" [ref=e440] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/create-full-profile/
+                      - text: for non-Edge and
+                      - link "Model Cluster Profile" [ref=e441] [cursor=pointer]:
+                        - /url: /clusters/edge/site-deployment/model-profile/
+                      - text: .
+                    - paragraph [ref=e442]:
+                      - text: If you are editing the profile of an active cluster, updating the profile will trigger and update to the active cluster. We recommend that you publish a new version of the profile instead of updating a profile directly. For more information, refer to
+                      - link "Update a Cluster" [ref=e443] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/cluster-updates/
+                      - text: .
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e444]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e445] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e446]: To validate the snapshots are successfully configured, connect to any control plane node of the cluster via SSH and change into the directory where the etcd snapshots are saved. Confirm that the snapshots are being created in the directory.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e447]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e448] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e449]:
+                  - text: If your cluster experiences data corruption issues, you can use the etcd snapshots to restore the cluster to working conditions. Restoring a cluster may be a challenging procedure, depending on your experience and technical skill level. The restoration also requires SSH access to the node and intimate knowledge of etcd. If you have concerns or need assistance, contact us
+                  - link "support@spectrocloud.com" [ref=e450] [cursor=pointer]:
+                    - /url: mailto:support@spectrocloud.com
+                  - text: for additional guidance.
+                - paragraph [ref=e451]: "The following is list of helpful resources that can help you understand disaster recovery for etcd:"
+                - list [ref=e452]:
+                  - listitem [ref=e453]:
+                    - paragraph [ref=e454]:
+                      - link "Disaster recovery" [ref=e455] [cursor=pointer]:
+                        - /url: https://etcd.io/docs/v3.5/op-guide/recovery/
+                  - listitem [ref=e456]:
+                    - paragraph [ref=e457]:
+                      - link "Operating etcd clusters for Kubernetes" [ref=e458] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/
+              - generic [ref=e459]:
+                - generic [ref=e461]:
+                  - text: "Tags:"
+                  - list [ref=e462]:
+                    - listitem [ref=e463]:
+                      - link "clusters" [ref=e464] [cursor=pointer]:
+                        - /url: /tags/clusters/
+                    - listitem [ref=e465]:
+                      - link "cluster management" [ref=e466] [cursor=pointer]:
+                        - /url: /tags/cluster-management/
+                    - listitem [ref=e467]:
+                      - link "backup" [ref=e468] [cursor=pointer]:
+                        - /url: /tags/backup/
+                - link "Edit this page" [ref=e471] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/cluster-management/backup-restore/enable-etcd-backup.md
+                  - img [ref=e472]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e476]:
+              - link "Previous « Restore Cluster Backup" [ref=e477] [cursor=pointer]:
+                - /url: /clusters/cluster-management/backup-restore/restore-cluster-backup/
+                - generic [ref=e478]: Previous
+                - generic [ref=e479]: « Restore Cluster Backup
+              - link "Next Renew Cluster PKI Certificates »" [ref=e480] [cursor=pointer]:
+                - /url: /clusters/cluster-management/certificate-management/
+                - generic [ref=e481]: Next
+                - generic [ref=e482]: Renew Cluster PKI Certificates »
+          - list [ref=e485]:
+            - listitem [ref=e486]:
+              - link "Prerequisite" [ref=e487] [cursor=pointer]:
+                - /url: "#prerequisite"
+            - listitem [ref=e488]:
+              - link "Configure etcd Backup" [ref=e489] [cursor=pointer]:
+                - /url: "#configure-etcd-backup"
+            - listitem [ref=e490]:
+              - link "Validate" [ref=e491] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e492]:
+              - link "Next Steps" [ref=e493] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e494] [cursor=pointer]:
+    - generic [ref=e497]:
+      - img "Project Logo" [ref=e498]
+      - paragraph [ref=e499]: Ask AI
+```

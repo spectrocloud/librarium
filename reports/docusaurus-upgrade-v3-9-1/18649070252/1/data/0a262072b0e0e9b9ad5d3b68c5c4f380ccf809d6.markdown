@@ -1,0 +1,170 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Downloads" [ref=e41] [cursor=pointer]:
+                  - /url: /downloads/
+                  - img [ref=e43]
+                  - text: Downloads
+              - listitem [ref=e45]:
+                - link "Artifact Studio" [ref=e46] [cursor=pointer]:
+                  - /url: /downloads/artifact-studio/
+                  - img [ref=e48]
+                  - text: Artifact Studio
+              - listitem [ref=e50]:
+                - link "CLI Tools" [ref=e51] [cursor=pointer]:
+                  - /url: /downloads/cli-tools/
+                  - img [ref=e53]
+                  - text: CLI Tools
+              - listitem [ref=e55]:
+                - generic [ref=e56]:
+                  - link "Self-Hosted Palette" [ref=e57] [cursor=pointer]:
+                    - /url: /downloads/self-hosted-palette/
+                    - img [ref=e59]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e61] [cursor=pointer]
+              - listitem [ref=e62]:
+                - generic [ref=e63]:
+                  - link "Palette VerteX" [expanded] [ref=e64] [cursor=pointer]:
+                    - /url: /downloads/palette-vertex/
+                    - img [ref=e66]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e68] [cursor=pointer]
+                - list [ref=e69]:
+                  - listitem [ref=e70]:
+                    - link "Additional Packs" [ref=e71] [cursor=pointer]:
+                      - /url: /downloads/palette-vertex/additional-packs/
+                  - listitem [ref=e72]:
+                    - link "Additional OVAs" [ref=e73] [cursor=pointer]:
+                      - /url: /downloads/palette-vertex/additional-ovas/
+                  - listitem [ref=e74]:
+                    - link "Kubernetes Requirements" [ref=e75] [cursor=pointer]:
+                      - /url: /downloads/palette-vertex/kubernetes-requirements/
+              - listitem [ref=e76]:
+                - link "Agent Mode" [ref=e77] [cursor=pointer]:
+                  - /url: /downloads/agent-mode/
+                  - img [ref=e79]
+                  - text: Agent Mode
+              - listitem [ref=e81]:
+                - link "CAPI Image Builder" [ref=e82] [cursor=pointer]:
+                  - /url: /downloads/capi-image-builder/
+                  - img [ref=e84]
+                  - text: CAPI Image Builder
+              - listitem [ref=e86]:
+                - link "Offline Documentation" [ref=e87] [cursor=pointer]:
+                  - /url: /downloads/offline-docs/
+                  - img [ref=e89]
+                  - text: Offline Documentation
+              - listitem [ref=e91]:
+                - button "Privacy Settings" [ref=e92] [cursor=pointer]
+      - main [ref=e93]:
+        - generic [ref=e95]:
+          - generic [ref=e97]:
+            - article [ref=e98]:
+              - navigation "Breadcrumbs" [ref=e99]:
+                - list [ref=e100]:
+                  - listitem [ref=e101]:
+                    - link "Home page" [ref=e102] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e103]
+                  - listitem [ref=e105]:
+                    - generic [ref=e106]: Palette VerteX
+              - generic [ref=e107]:
+                - heading "Palette VerteX" [level=1] [ref=e109]
+                - paragraph [ref=e110]: Palette VerteX is a FIPS-compliant Kubernetes management platform designed specifically for regulated industries such as government and public sector organizations that handle sensitive and classified information. It's available as a self-hosted platform that you can install in your data centers or public cloud providers.
+                - paragraph [ref=e111]: Find the additional download links for Palette VerteX in this section.
+                - paragraph [ref=e112]:
+                  - text: Refer to the
+                  - link "Palette VerteX documentation" [ref=e113] [cursor=pointer]:
+                    - /url: /vertex/install-palette-vertex/
+                  - text: for guidance on how to deploy Palette VerteX to your environment.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e114]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e115] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e116]:
+                  - listitem [ref=e117]:
+                    - link "Additional Packs" [ref=e118] [cursor=pointer]:
+                      - /url: /downloads/palette-vertex/additional-packs/
+                  - listitem [ref=e119]:
+                    - link "Additional OVAs" [ref=e120] [cursor=pointer]:
+                      - /url: /downloads/palette-vertex/additional-ovas/
+                  - listitem [ref=e121]:
+                    - link "Kubernetes Requirements" [ref=e122] [cursor=pointer]:
+                      - /url: /downloads/palette-vertex/kubernetes-requirements/
+              - generic [ref=e123]:
+                - generic [ref=e125]:
+                  - text: "Tags:"
+                  - list [ref=e126]:
+                    - listitem [ref=e127]:
+                      - link "palette" [ref=e128] [cursor=pointer]:
+                        - /url: /tags/palette/
+                    - listitem [ref=e129]:
+                      - link "airgap" [ref=e130] [cursor=pointer]:
+                        - /url: /tags/airgap/
+                    - listitem [ref=e131]:
+                      - link "downloads" [ref=e132] [cursor=pointer]:
+                        - /url: /tags/downloads/
+                    - listitem [ref=e133]:
+                      - link "vertex" [ref=e134] [cursor=pointer]:
+                        - /url: /tags/vertex/
+                - link "Edit this page" [ref=e137] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/downloads/palette-vertex/palette-vertex.md
+                  - img [ref=e138]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e142]:
+              - link "Previous « Kubernetes Requirements" [ref=e143] [cursor=pointer]:
+                - /url: /downloads/self-hosted-palette/kubernetes-requirements/
+                - generic [ref=e144]: Previous
+                - generic [ref=e145]: « Kubernetes Requirements
+              - link "Next Additional Packs »" [ref=e146] [cursor=pointer]:
+                - /url: /downloads/palette-vertex/additional-packs/
+                - generic [ref=e147]: Next
+                - generic [ref=e148]: Additional Packs »
+          - list [ref=e151]:
+            - listitem [ref=e152]:
+              - link "Resources" [ref=e153] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e154] [cursor=pointer]:
+    - generic [ref=e157]:
+      - img "Project Logo" [ref=e158]
+      - paragraph [ref=e159]: Ask AI
+```

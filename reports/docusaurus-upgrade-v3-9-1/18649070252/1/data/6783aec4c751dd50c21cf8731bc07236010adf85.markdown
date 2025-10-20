@@ -1,0 +1,454 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Audit Logs" [ref=e165] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e167]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Self-Hosted Palette" [expanded] [ref=e172] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e174]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e176] [cursor=pointer]
+                - list [ref=e177]:
+                  - listitem [ref=e178]:
+                    - generic [ref=e179]:
+                      - link "Installation" [ref=e180] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e181] [cursor=pointer]
+                  - listitem [ref=e182]:
+                    - link "Activate Palette" [ref=e183] [cursor=pointer]:
+                      - /url: /enterprise-version/activate-installation/
+                  - listitem [ref=e184]:
+                    - generic [ref=e185]:
+                      - link "System Management" [ref=e186] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e187] [cursor=pointer]
+                  - listitem [ref=e188]:
+                    - generic [ref=e189]:
+                      - link "Upgrade" [ref=e190] [cursor=pointer]:
+                        - /url: /enterprise-version/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e191] [cursor=pointer]
+              - listitem [ref=e192]:
+                - generic [ref=e193]:
+                  - link "Palette VerteX" [ref=e194] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e196]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e198] [cursor=pointer]
+              - listitem [ref=e199]:
+                - generic [ref=e200]:
+                  - link "Tenant Administration" [ref=e201] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e203]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e205] [cursor=pointer]
+              - listitem [ref=e206]:
+                - generic [ref=e207]:
+                  - link "Automation" [ref=e208] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e210]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e212] [cursor=pointer]
+              - listitem [ref=e213]:
+                - generic [ref=e214]:
+                  - link "Troubleshooting" [ref=e215] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e217]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e219] [cursor=pointer]
+              - listitem [ref=e220]:
+                - link "Glossary" [ref=e221] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e223]
+                  - text: Glossary
+              - listitem [ref=e225]:
+                - generic [ref=e226]:
+                  - link "Compliance & Legal" [ref=e227] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e229]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e231] [cursor=pointer]
+              - listitem [ref=e232]:
+                - button "Privacy Settings" [ref=e233] [cursor=pointer]:
+                  - img [ref=e234]
+                  - text: Privacy Settings
+      - main [ref=e236]:
+        - generic [ref=e238]:
+          - generic [ref=e240]:
+            - article [ref=e241]:
+              - navigation "Breadcrumbs" [ref=e242]:
+                - list [ref=e243]:
+                  - listitem [ref=e244]:
+                    - link "Home page" [ref=e245] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e246]
+                  - listitem [ref=e248]:
+                    - link "Self-Hosted Palette" [ref=e249] [cursor=pointer]:
+                      - /url: /enterprise-version/
+                  - listitem [ref=e250]:
+                    - generic [ref=e251]: Activate Palette
+              - generic [ref=e252]:
+                - heading "Activate Palette" [level=1] [ref=e254]
+                - paragraph [ref=e255]: "Beginning with version 4.6.32, once you install Palette or upgrade to version 4.6.32 or later, you have 30 days to activate it. During this time, you have unrestricted access to all of Palette's features. After 30 days, you can continue to use Palette, and existing clusters will continue to run, but you cannot perform the following operations until Palette is activated:"
+                - list [ref=e256]:
+                  - listitem [ref=e257]:
+                    - paragraph [ref=e258]: Create new clusters.
+                  - listitem [ref=e259]:
+                    - paragraph [ref=e260]:
+                      - text: Modify the configuration of active clusters. This includes modifying
+                      - link "cluster profile variables" [ref=e261] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/
+                      - text: ; changing
+                      - link "cluster profile versions" [ref=e262] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/cluster-updates/#enablement
+                      - text: ; editing, deleting, or replacing profile layers; and editing YAML files.
+                  - listitem [ref=e263]:
+                    - paragraph [ref=e264]:
+                      - text: Update
+                      - link "node configurations" [ref=e265] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/node-pool/
+                      - text: ", such as the node pool size."
+                - paragraph [ref=e266]:
+                  - text: Each installation of Palette has a unique product ID and corresponding activation key. Activation keys are single-use and valid for the entirety of the Palette installation, including all subsequent version upgrades. Once Palette is activated, it does not need to be reactivated unless you need to reinstall Palette, at which time a new product ID will be assigned, and a new activation key will be needed. Activation keys are no additional cost and are included with your purchase of Palette. The activation process is the same for connected and airgapped installations, regardless of whether Palette is installed via the
+                  - link "Palette CLI" [ref=e267] [cursor=pointer]:
+                    - /url: /automation/palette-cli/
+                  - text: or a
+                  - link "Helm Chart" [ref=e268] [cursor=pointer]:
+                    - /url: /enterprise-version/install-palette/install-on-kubernetes/
+                  - text: .
+                - paragraph [ref=e269]:
+                  - text: If you are in trial mode or your trial has expired, Palette displays the appropriate banner on the
+                  - strong [ref=e270]: Summary
+                  - text: screen of your system console, as well as at
+                  - strong [ref=e271]: Administration > Activation
+                  - text: . Trial mode and expired statuses are also displayed in the Palette UI at the bottom of the left main menu.
+                - paragraph [ref=e272]:
+                  - img "License status of expired on the left main menu" [ref=e273]
+                - heading "OverviewDirect link to Overview" [level=2] [ref=e274]:
+                  - text: Overview
+                  - link "Direct link to Overview" [ref=e275] [cursor=pointer]:
+                    - /url: "#overview"
+                    - text: "#"
+                - paragraph [ref=e276]: Below is an overview of the activation process.
+                - paragraph [ref=e277]:
+                  - img "Diagram of the self-hosted system activation process" [ref=e278]
+                - list [ref=e279]:
+                  - listitem [ref=e280]:
+                    - paragraph [ref=e281]: The system admin installs Palette or upgrades to version 4.6.32 or later.
+                  - listitem [ref=e282]:
+                    - paragraph [ref=e283]:
+                      - text: Palette enters trial mode. During this time, you have 30 days to take advantage of all of Palette's features. After 30 days, the trial expires, and Palette functionality is restricted. Any clusters that you have deployed will remain functional, but you cannot perform
+                      - link "day-2 operations" [ref=e284] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                      - text: ", and you cannot deploy additional clusters."
+                  - listitem [ref=e285]:
+                    - paragraph [ref=e286]: Before or after your trial expires, contact a Spectro Cloud customer support representative. You must specify whether you are activating Palette or VerteX and also provide a short description of your instance, along with your installation's product ID.
+                  - listitem [ref=e287]:
+                    - paragraph [ref=e288]: Spectro Cloud provides the activation key.
+                  - listitem [ref=e289]:
+                    - paragraph [ref=e290]: The system admin enters the activation key and activates Palette, allowing you to resume day-2 operations and deploy additional clusters.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e291]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e292] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e293]:
+                  - listitem [ref=e294]:
+                    - paragraph [ref=e295]: A Palette subscription.
+                  - listitem [ref=e296]:
+                    - paragraph [ref=e297]:
+                      - text: A self-hosted instance of Palette that is not activated. For help installing Palette, check out our
+                      - link "Installation" [ref=e298] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/
+                      - text: guide.
+                  - listitem [ref=e299]:
+                    - paragraph [ref=e300]:
+                      - text: Access to the
+                      - link "system console" [ref=e301] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/#access-the-system-console
+                      - text: .
+                - heading "EnablementDirect link to Enablement" [level=2] [ref=e302]:
+                  - text: Enablement
+                  - link "Direct link to Enablement" [ref=e303] [cursor=pointer]:
+                    - /url: "#enablement"
+                    - text: "#"
+                - list [ref=e304]:
+                  - listitem [ref=e305]:
+                    - paragraph [ref=e306]:
+                      - text: Log in to the system console. For more information, refer to the
+                      - link "Access the System Console" [ref=e307] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/#access-the-system-console
+                      - text: guide.
+                  - listitem [ref=e308]:
+                    - paragraph [ref=e309]:
+                      - text: A banner is displayed on the
+                      - strong [ref=e310]: Summary
+                      - text: screen, alerting you that your product is either in trial mode or has expired. On the banner, select
+                      - strong [ref=e311]: Activate Palette
+                      - text: . Alternatively, from the left main menu, select
+                      - strong [ref=e312]: Administration > Activation
+                      - text: .
+                    - paragraph [ref=e313]:
+                      - img "Trial mode banner in the system console" [ref=e314]
+                  - listitem [ref=e315]:
+                    - paragraph [ref=e316]:
+                      - text: The
+                      - strong [ref=e317]: Activation
+                      - text: tab of the
+                      - strong [ref=e318]: Administration
+                      - text: screen reiterates your product's status and displays your
+                      - strong [ref=e319]: Product Setup ID
+                      - text: ". Contact your customer support representative and provide them the following information:"
+                    - list [ref=e320]:
+                      - listitem [ref=e321]:
+                        - paragraph [ref=e322]: Your installation type (Palette).
+                      - listitem [ref=e323]:
+                        - paragraph [ref=e324]:
+                          - text: A short description of your instance. For example,
+                          - code [ref=e325]: Spacetastic - Dev Team 1
+                          - text: .
+                      - listitem [ref=e326]:
+                        - paragraph [ref=e327]:
+                          - text: Your instance's
+                          - strong [ref=e328]: Product Setup ID
+                          - text: .
+                  - listitem [ref=e329]:
+                    - paragraph [ref=e330]:
+                      - text: Your customer support representative will provide you an
+                      - strong [ref=e331]: Activation key
+                      - text: . The activation key is single-use and cannot be used to activate another Palette or VerteX installation.
+                  - listitem [ref=e332]:
+                    - paragraph [ref=e333]:
+                      - text: On the
+                      - strong [ref=e334]: Activation
+                      - text: tab, enter the
+                      - strong [ref=e335]: Activation key
+                      - text: and
+                      - strong [ref=e336]: Update
+                      - text: your settings. If the product ID and activation key pair is correct, an activation successful message is displayed, and your banner is updated to state that your license is active.
+                - heading "ValidationDirect link to Validation" [level=2] [ref=e337]:
+                  - text: Validation
+                  - link "Direct link to Validation" [ref=e338] [cursor=pointer]:
+                    - /url: "#validation"
+                    - text: "#"
+                - paragraph [ref=e339]: You can view the status of your license from the system console. If your license is active, the license status is removed from the left main menu of the Palette UI.
+                - list [ref=e340]:
+                  - listitem [ref=e341]:
+                    - paragraph [ref=e342]:
+                      - text: Log in to the
+                      - link "system console" [ref=e343] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/#access-the-system-console
+                      - text: .
+                  - listitem [ref=e344]:
+                    - paragraph [ref=e345]:
+                      - text: The activation banner is no longer displayed on the
+                      - strong [ref=e346]: Summary
+                      - text: screen, indicating your license is active. Confirm your license status by navigating to
+                      - strong [ref=e347]: Administration > Activation
+                      - text: . The banner states that
+                      - strong [ref=e348]: Your license is active
+                      - text: .
+              - generic [ref=e349]:
+                - generic [ref=e351]:
+                  - text: "Tags:"
+                  - list [ref=e352]:
+                    - listitem [ref=e353]:
+                      - link "self-hosted" [ref=e354] [cursor=pointer]:
+                        - /url: /tags/self-hosted/
+                    - listitem [ref=e355]:
+                      - link "account" [ref=e356] [cursor=pointer]:
+                        - /url: /tags/account/
+                    - listitem [ref=e357]:
+                      - link "activate" [ref=e358] [cursor=pointer]:
+                        - /url: /tags/activate/
+                - link "Edit this page" [ref=e361] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/enterprise-version/activate-installation/activate-installation.md
+                  - img [ref=e362]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e366]:
+              - link "Previous « Palette Management Appliance" [ref=e367] [cursor=pointer]:
+                - /url: /enterprise-version/install-palette/palette-management-appliance/
+                - generic [ref=e368]: Previous
+                - generic [ref=e369]: « Palette Management Appliance
+              - link "Next System Management »" [ref=e370] [cursor=pointer]:
+                - /url: /enterprise-version/system-management/
+                - generic [ref=e371]: Next
+                - generic [ref=e372]: System Management »
+          - list [ref=e375]:
+            - listitem [ref=e376]:
+              - link "Overview" [ref=e377] [cursor=pointer]:
+                - /url: "#overview"
+            - listitem [ref=e378]:
+              - link "Prerequisites" [ref=e379] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e380]:
+              - link "Enablement" [ref=e381] [cursor=pointer]:
+                - /url: "#enablement"
+            - listitem [ref=e382]:
+              - link "Validation" [ref=e383] [cursor=pointer]:
+                - /url: "#validation"
+  - button "Project Logo Ask AI" [ref=e384] [cursor=pointer]:
+    - generic [ref=e387]:
+      - img "Project Logo" [ref=e388]
+      - paragraph [ref=e389]: Ask AI
+```

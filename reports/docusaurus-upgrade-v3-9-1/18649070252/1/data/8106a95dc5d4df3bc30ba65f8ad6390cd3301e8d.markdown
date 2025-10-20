@@ -1,0 +1,504 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [expanded] [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+                - list [ref=e107]:
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Public Cloud Clusters" [ref=e110] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e112]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e114] [cursor=pointer]
+                  - listitem [ref=e115]:
+                    - generic [ref=e116]:
+                      - link "Data Center Clusters" [ref=e117] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e119]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e121] [cursor=pointer]
+                  - listitem [ref=e122]:
+                    - generic [ref=e123]:
+                      - link "Edge" [expanded] [ref=e124] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e126]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e128] [cursor=pointer]
+                    - list [ref=e129]:
+                      - listitem [ref=e130]:
+                        - generic [ref=e131]:
+                          - link "Architecture" [ref=e132] [cursor=pointer]:
+                            - /url: /clusters/edge/architecture/
+                          - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e133] [cursor=pointer]
+                      - listitem [ref=e134]:
+                        - link "Hardware Requirements" [ref=e135] [cursor=pointer]:
+                          - /url: /clusters/edge/hardware-requirements/
+                      - listitem [ref=e136]:
+                        - link "Deployment Lifecycle" [ref=e137] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-native-lifecycle/
+                      - listitem [ref=e138]:
+                        - generic [ref=e139]:
+                          - link "Trusted Boot" [expanded] [ref=e140] [cursor=pointer]:
+                            - /url: /clusters/edge/trusted-boot/
+                          - button "Toggle the collapsible sidebar category 'Trusted Boot'" [ref=e141] [cursor=pointer]
+                        - list [ref=e142]:
+                          - listitem [ref=e143]:
+                            - generic [ref=e144]:
+                              - link "Trusted Boot Keys" [expanded] [ref=e145] [cursor=pointer]:
+                                - /url: /clusters/edge/trusted-boot/keys/
+                              - button "Toggle the collapsible sidebar category 'Trusted Boot Keys'" [ref=e146] [cursor=pointer]
+                            - list [ref=e147]:
+                              - listitem [ref=e148]:
+                                - link "Export Factory Keys with Command-line Tools" [ref=e149] [cursor=pointer]:
+                                  - /url: /clusters/edge/trusted-boot/keys/export-keys/
+                              - listitem [ref=e150]:
+                                - link "Generate Keys" [ref=e151] [cursor=pointer]:
+                                  - /url: /clusters/edge/trusted-boot/keys/generate-keys/
+                              - listitem [ref=e152]:
+                                - link "Key Management" [ref=e153] [cursor=pointer]:
+                                  - /url: /clusters/edge/trusted-boot/keys/key-management/
+                          - listitem [ref=e154]:
+                            - generic [ref=e155]:
+                              - link "EdgeForge" [ref=e156] [cursor=pointer]:
+                                - /url: /clusters/edge/trusted-boot/edgeforge/
+                              - button "Toggle the collapsible sidebar category 'EdgeForge'" [ref=e157] [cursor=pointer]
+                          - listitem [ref=e158]:
+                            - generic [ref=e159]:
+                              - link "Deployment and Management" [ref=e160] [cursor=pointer]:
+                                - /url: /clusters/edge/trusted-boot/deployment-day2/
+                              - button "Toggle the collapsible sidebar category 'Deployment and Management'" [ref=e161] [cursor=pointer]
+                      - listitem [ref=e162]:
+                        - generic [ref=e163]:
+                          - link "Install Configuration" [ref=e164] [cursor=pointer]:
+                            - /url: /clusters/edge/edge-configuration/
+                          - button "Toggle the collapsible sidebar category 'Install Configuration'" [ref=e165] [cursor=pointer]
+                      - listitem [ref=e166]:
+                        - generic [ref=e167]:
+                          - link "EdgeForge Workflow" [ref=e168] [cursor=pointer]:
+                            - /url: /clusters/edge/edgeforge-workflow/
+                          - button "Toggle the collapsible sidebar category 'EdgeForge Workflow'" [ref=e169] [cursor=pointer]
+                      - listitem [ref=e170]:
+                        - generic [ref=e171]:
+                          - link "Local UI" [ref=e172] [cursor=pointer]:
+                            - /url: /clusters/edge/local-ui/
+                          - button "Toggle the collapsible sidebar category 'Local UI'" [ref=e173] [cursor=pointer]
+                      - listitem [ref=e174]:
+                        - generic [ref=e175]:
+                          - link "Deployment" [ref=e176] [cursor=pointer]:
+                            - /url: /clusters/edge/site-deployment/
+                          - button "Toggle the collapsible sidebar category 'Deployment'" [ref=e177] [cursor=pointer]
+                      - listitem [ref=e178]:
+                        - generic [ref=e179]:
+                          - link "Cluster Management" [ref=e180] [cursor=pointer]:
+                            - /url: /clusters/edge/cluster-management/
+                          - button "Toggle the collapsible sidebar category 'Cluster Management'" [ref=e181] [cursor=pointer]
+                      - listitem [ref=e182]:
+                        - generic [ref=e183]:
+                          - link "Networking" [ref=e184] [cursor=pointer]:
+                            - /url: /clusters/edge/networking/
+                          - button "Toggle the collapsible sidebar category 'Networking'" [ref=e185] [cursor=pointer]
+                      - listitem [ref=e186]:
+                        - generic [ref=e187]:
+                          - link "Third Party Integrations" [ref=e188] [cursor=pointer]:
+                            - /url: /clusters/edge/third-party-integrations/
+                          - button "Toggle the collapsible sidebar category 'Third Party Integrations'" [ref=e189] [cursor=pointer]
+                  - listitem [ref=e190]:
+                    - generic [ref=e191]:
+                      - link "Palette Virtual Clusters" [ref=e192] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e194]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e196] [cursor=pointer]
+                  - listitem [ref=e197]:
+                    - generic [ref=e198]:
+                      - link "Imported Clusters" [ref=e199] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e201]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e203] [cursor=pointer]
+                  - listitem [ref=e204]:
+                    - generic [ref=e205]:
+                      - link "Manage Clusters" [ref=e206] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e208]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e210] [cursor=pointer]
+                  - listitem [ref=e211]:
+                    - generic [ref=e212]:
+                      - link "Cluster Groups" [ref=e213] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e215]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e217] [cursor=pointer]
+                  - listitem [ref=e218]:
+                    - generic [ref=e219]:
+                      - link "Private Cloud Gateway" [ref=e220] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e222]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e224] [cursor=pointer]
+              - listitem [ref=e225]:
+                - generic [ref=e226]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e227] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e229]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e231] [cursor=pointer]
+              - listitem [ref=e232]:
+                - generic [ref=e233]:
+                  - link "Palette Dev Engine" [ref=e234] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e236]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e238] [cursor=pointer]
+              - listitem [ref=e239]:
+                - generic [ref=e240]:
+                  - link "Virtual Machine Orchestrator" [ref=e241] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e243]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e245] [cursor=pointer]
+              - listitem [ref=e246]:
+                - generic [ref=e247]:
+                  - link "Workspaces" [ref=e248] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e250]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e252] [cursor=pointer]
+              - listitem [ref=e253]:
+                - generic [ref=e254]:
+                  - link "Packs List" [ref=e255] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e257]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e259] [cursor=pointer]
+              - listitem [ref=e260]:
+                - generic [ref=e261]:
+                  - link "User & Role Management" [ref=e262] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e264]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e266] [cursor=pointer]
+              - listitem [ref=e267]:
+                - generic [ref=e268]:
+                  - link "Registries and Packs" [ref=e269] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e271]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e273] [cursor=pointer]
+              - listitem [ref=e274]:
+                - generic [ref=e275]:
+                  - link "Security" [ref=e276] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e278]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e280] [cursor=pointer]
+              - listitem [ref=e281]:
+                - generic [ref=e282]:
+                  - link "Audit Logs" [ref=e283] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e285]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e287] [cursor=pointer]
+              - listitem [ref=e288]:
+                - generic [ref=e289]:
+                  - link "Self-Hosted Palette" [ref=e290] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e292]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e294] [cursor=pointer]
+              - listitem [ref=e295]:
+                - generic [ref=e296]:
+                  - link "Palette VerteX" [ref=e297] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e299]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e301] [cursor=pointer]
+              - listitem [ref=e302]:
+                - generic [ref=e303]:
+                  - link "Tenant Administration" [ref=e304] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e306]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e308] [cursor=pointer]
+              - listitem [ref=e309]:
+                - generic [ref=e310]:
+                  - link "Automation" [ref=e311] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e313]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e315] [cursor=pointer]
+              - listitem [ref=e316]:
+                - generic [ref=e317]:
+                  - link "Troubleshooting" [ref=e318] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e320]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e322] [cursor=pointer]
+              - listitem [ref=e323]:
+                - link "Glossary" [ref=e324] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e326]
+                  - text: Glossary
+              - listitem [ref=e328]:
+                - generic [ref=e329]:
+                  - link "Compliance & Legal" [ref=e330] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e332]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e334] [cursor=pointer]
+              - listitem [ref=e335]:
+                - button "Privacy Settings" [ref=e336] [cursor=pointer]:
+                  - img [ref=e337]
+                  - text: Privacy Settings
+      - main [ref=e339]:
+        - generic [ref=e341]:
+          - generic [ref=e343]:
+            - article [ref=e344]:
+              - navigation "Breadcrumbs" [ref=e345]:
+                - list [ref=e346]:
+                  - listitem [ref=e347]:
+                    - link "Home page" [ref=e348] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e349]
+                  - listitem [ref=e351]:
+                    - link "Clusters" [ref=e352] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e353]:
+                    - link "Edge" [ref=e354] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                  - listitem [ref=e355]:
+                    - link "Trusted Boot" [ref=e356] [cursor=pointer]:
+                      - /url: /clusters/edge/trusted-boot/
+                  - listitem [ref=e357]:
+                    - generic [ref=e358]: Trusted Boot Keys
+              - generic [ref=e359]:
+                - heading "Trusted Boot Keys" [level=1] [ref=e361]
+                - paragraph [ref=e362]: All security features of Trusted Boot rely on cryptographic keys. Secure Boot relies on the chain of trust between Platform Key (PK), Key Exchange Keys (KEK), and Signature Database (DB) keys to achieve a tamper proof boot process. Full Disk Encryption also relies on a key pair. This section talks about the different keys used in Trusted Boot, their roles, and best practices to manage them securely.
+                - paragraph [ref=e363]:
+                  - img "Relationship between Secure Boot Keys" [ref=e364]
+                - heading "Platform Key (PK)Direct link to Platform Key (PK)" [level=2] [ref=e365]:
+                  - text: Platform Key (PK)
+                  - link "Direct link to Platform Key (PK)" [ref=e366] [cursor=pointer]:
+                    - /url: "#platform-key-pk"
+                    - text: "#"
+                - paragraph [ref=e367]: The PK is at the top of the Secure Boot cryptographic key hierarchy. It's a key pair that has a private key and a public key.
+                - paragraph [ref=e368]: The private PK signs updates to the Key Exchange Key (KEK) variable, which contains a list of certificates, public keys, or signatures in a EFI Signature List (ESL). The public PK is used to verify whether updates to the KEK are signed with the authentic private key and can be trusted. It establishes a relationship of trust between the platform owner and the platform firmware. A system can only have one PK.
+                - heading "Key Exchange Key (KEK)Direct link to Key Exchange Key (KEK)" [level=2] [ref=e369]:
+                  - text: Key Exchange Key (KEK)
+                  - link "Direct link to Key Exchange Key (KEK)" [ref=e370] [cursor=pointer]:
+                    - /url: "#key-exchange-key-kek"
+                    - text: "#"
+                - paragraph [ref=e371]: The KEK is a set of certificates, public keys, or signatures in an ESL signed by a private PK key. Entries in the KEK set are used to update the Signature Database (DB) and the Forbidden Signature Database (DBX). Each entry in the KEK set has a corresponding private key. It establishes a relationship of trust between the firmware and the operating system (OS).
+                - paragraph [ref=e372]: Any private key corresponding to an entry in the KEK set can sign updates to the DB. When there are updates to the DB, the corresponding public key, certificate, or signature in the KEK set is used to verify that those updates are signed by the authentic private key.
+                - heading "Signature Database (DB) and Forbidden Signature Database (DBX)Direct link to Signature Database (DB) and Forbidden Signature Database (DBX)" [level=2] [ref=e373]:
+                  - text: Signature Database (DB) and Forbidden Signature Database (DBX)
+                  - link "Direct link to Signature Database (DB) and Forbidden Signature Database (DBX)" [ref=e374] [cursor=pointer]:
+                    - /url: "#signature-database-db-and-forbidden-signature-database-dbx"
+                    - text: "#"
+                - paragraph [ref=e375]: "The DB validates signed EFI (Extensible Firmware Interface) binaries. The DB may contain a mixed set of certificates, public keys, signatures or hashes of binary files. The signature stored in the EFI binary (or a hash of the binary if there is no signature) is compared against the entries in the database. The binary will be executed if one of the following conditions is met:"
+                - list [ref=e376]:
+                  - listitem [ref=e377]: The EFI binary is signed, and the signing key is in the DB.
+                  - listitem [ref=e378]: The EFI binary is signed, and the signature on the binary is in the DB.
+                  - listitem [ref=e379]: The EFI binary is unsigned and a SHA-256 hash of the image is in the DB.
+                - paragraph [ref=e380]: Similarly, DBX may contain a mixed set of certificates, signatures or hashes. Any EFI whose signatures, hashes, or signing key matches the entries in DBX is forbidden from being executed.
+                - heading "Platform Configuration Registers (PCR) Policy KeyDirect link to Platform Configuration Registers (PCR) Policy Key" [level=2] [ref=e381]:
+                  - text: Platform Configuration Registers (PCR) Policy Key
+                  - link "Direct link to Platform Configuration Registers (PCR) Policy Key" [ref=e382] [cursor=pointer]:
+                    - /url: "#platform-configuration-registers-pcr-policy-key"
+                    - text: "#"
+                - paragraph [ref=e383]: The PCR policy key pair is in charge of signing the pre-calculated measurements of the boot process and involved in disk encryption. The private PCR policy key signs the pre-calculated measurement during EdgeForge. The public key is embedded in the UKI image.
+                - paragraph [ref=e384]:
+                  - text: During EdgeForge, each boot component is hashed and these hash values, or measurements, are signed by the PCR private key. The signed measurements are embedded in the UKI image, along with the public key of the PCR policy key pair. For more information about EdgeForge, refer to
+                  - link "EdgeForge with Trusted Boot" [ref=e385] [cursor=pointer]:
+                    - /url: /clusters/edge/trusted-boot/edgeforge/
+                  - text: .
+                - paragraph [ref=e386]: During installation, encrypted partitions are setup using a Disk Encryption Key (DEK), which is itself encrypted by the TPM and stored in a secure blob. The PCR public key embedded in the ISO is used to form a binding policy. The binding policy states that in order to decrypt the secure blob containing the DEK, the PCR measurements must match a pre-calculated set of measurements signed by the corresponding PCR private key.
+                - paragraph [ref=e387]: "During the boot process, before the encrypted disk partition is mounted, the TPM will perform the following:"
+                - list [ref=e388]:
+                  - listitem [ref=e389]: Verify the public key in the image is valid
+                  - listitem [ref=e390]: Verify the signature on the pre-calculated measurements using the public key
+                  - listitem [ref=e391]: Compare the pre-calculated measurements vs the actual PCR measurements
+                - paragraph [ref=e392]: If all three verifications are successful, TPM will decrypt the secure blob, release DEK, and the OS can use it to decrypt the encrypted partitions of the disk.
+                - heading "Disk Encryption Key (DEK)Direct link to Disk Encryption Key (DEK)" [level=2] [ref=e393]:
+                  - text: Disk Encryption Key (DEK)
+                  - link "Direct link to Disk Encryption Key (DEK)" [ref=e394] [cursor=pointer]:
+                    - /url: "#disk-encryption-key-dek"
+                    - text: "#"
+                - paragraph [ref=e395]: The disk encryption key (DEK) is generated during installation, encrypted by the TPM with an internal key, and sealed inside the TPM. You will never interact with the DEK itself.
+                - paragraph [ref=e396]:
+                  - text: During the boot process, the TPM will perform a series of verifications. If all of them are successful, the TPM will decrypt and release the DEK to the OS, so it can use it to decrypt the encrypted partitions. Refer to the
+                  - link "PCR Policy Key" [ref=e397] [cursor=pointer]:
+                    - /url: "#platform-configuration-registers-pcr-policy-key"
+                  - text: section for details.
+                - heading "Factory KeysDirect link to Factory Keys" [level=2] [ref=e398]:
+                  - text: Factory Keys
+                  - link "Direct link to Factory Keys" [ref=e399] [cursor=pointer]:
+                    - /url: "#factory-keys"
+                    - text: "#"
+                - paragraph [ref=e400]:
+                  - text: Factory keys refer to the secure boot keys that are stored on the device in factory settings. In EdgeForge, these keys are stored in the folder
+                  - strong [ref=e401]: exported-keys
+                  - text: . They may include PK, KEK, and DB keys. Factory keys are often used to authenticate the firmware of a device. For more information, refer to
+                  - link "Export Factory Keys" [ref=e402] [cursor=pointer]:
+                    - /url: /clusters/edge/trusted-boot/keys/export-keys/
+                  - text: .
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e403]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e404] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e405]:
+                  - listitem [ref=e406]:
+                    - link "Export Factory Keys" [ref=e407] [cursor=pointer]:
+                      - /url: /clusters/edge/trusted-boot/keys/export-keys/
+                  - listitem [ref=e408]:
+                    - link "Generate Keys" [ref=e409] [cursor=pointer]:
+                      - /url: /clusters/edge/trusted-boot/keys/generate-keys/
+                  - listitem [ref=e410]:
+                    - link "Key Management" [ref=e411] [cursor=pointer]:
+                      - /url: /clusters/edge/trusted-boot/keys/key-management/
+              - generic [ref=e412]:
+                - generic [ref=e414]:
+                  - text: "Tags:"
+                  - list [ref=e415]:
+                    - listitem [ref=e416]:
+                      - link "edge" [ref=e417] [cursor=pointer]:
+                        - /url: /tags/edge/
+                - link "Edit this page" [ref=e420] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/edge/trusted-boot/keys/keys.md
+                  - img [ref=e421]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e425]:
+              - link "Previous « Trusted Boot" [ref=e426] [cursor=pointer]:
+                - /url: /clusters/edge/trusted-boot/
+                - generic [ref=e427]: Previous
+                - generic [ref=e428]: « Trusted Boot
+              - link "Next Export Factory Keys with Command-line Tools »" [ref=e429] [cursor=pointer]:
+                - /url: /clusters/edge/trusted-boot/keys/export-keys/
+                - generic [ref=e430]: Next
+                - generic [ref=e431]: Export Factory Keys with Command-line Tools »
+          - list [ref=e434]:
+            - listitem [ref=e435]:
+              - link "Platform Key (PK)" [ref=e436] [cursor=pointer]:
+                - /url: "#platform-key-pk"
+            - listitem [ref=e437]:
+              - link "Key Exchange Key (KEK)" [ref=e438] [cursor=pointer]:
+                - /url: "#key-exchange-key-kek"
+            - listitem [ref=e439]:
+              - link "Signature Database (DB) and Forbidden Signature Database (DBX)" [ref=e440] [cursor=pointer]:
+                - /url: "#signature-database-db-and-forbidden-signature-database-dbx"
+            - listitem [ref=e441]:
+              - link "Platform Configuration Registers (PCR) Policy Key" [ref=e442] [cursor=pointer]:
+                - /url: "#platform-configuration-registers-pcr-policy-key"
+            - listitem [ref=e443]:
+              - link "Disk Encryption Key (DEK)" [ref=e444] [cursor=pointer]:
+                - /url: "#disk-encryption-key-dek"
+            - listitem [ref=e445]:
+              - link "Factory Keys" [ref=e446] [cursor=pointer]:
+                - /url: "#factory-keys"
+            - listitem [ref=e447]:
+              - link "Resources" [ref=e448] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e449] [cursor=pointer]:
+    - generic [ref=e452]:
+      - img "Project Logo" [ref=e453]
+      - paragraph [ref=e454]: Ask AI
+```

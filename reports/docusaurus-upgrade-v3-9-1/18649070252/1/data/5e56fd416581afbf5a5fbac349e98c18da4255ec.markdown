@@ -1,0 +1,310 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Palette Tutorials" [ref=e41] [cursor=pointer]:
+                  - /url: /tutorials/
+                  - img [ref=e43]
+                  - text: Palette Tutorials
+              - listitem [ref=e45]:
+                - generic [ref=e46]:
+                  - link "Getting Started" [expanded] [ref=e47] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/
+                    - img [ref=e49]
+                    - text: Getting Started
+                  - button "Toggle the collapsible sidebar category 'Getting Started'" [ref=e51] [cursor=pointer]
+                - list [ref=e52]:
+                  - listitem [ref=e53]:
+                    - generic [ref=e54]:
+                      - link "Palette" [expanded] [ref=e55] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette/
+                      - button "Toggle the collapsible sidebar category 'Palette'" [ref=e56] [cursor=pointer]
+                    - list [ref=e57]:
+                      - listitem [ref=e58]:
+                        - link "Introduction to Palette" [ref=e59] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette/introduction-palette/
+                      - listitem [ref=e60]:
+                        - generic [ref=e61]:
+                          - link "Deploy a Cluster to AWS" [ref=e62] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/aws/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to AWS'" [ref=e63] [cursor=pointer]
+                      - listitem [ref=e64]:
+                        - generic [ref=e65]:
+                          - link "Deploy a Cluster to Azure" [ref=e66] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/azure/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to Azure'" [ref=e67] [cursor=pointer]
+                      - listitem [ref=e68]:
+                        - generic [ref=e69]:
+                          - link "Deploy a Cluster to GCP" [ref=e70] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/gcp/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to GCP'" [ref=e71] [cursor=pointer]
+                      - listitem [ref=e72]:
+                        - generic [ref=e73]:
+                          - link "Deploy a Cluster to VMware" [expanded] [ref=e74] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/vmware/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to VMware'" [ref=e75] [cursor=pointer]
+                        - list [ref=e76]:
+                          - listitem [ref=e77]:
+                            - link "Set up Palette" [ref=e78] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/vmware/setup/
+                          - listitem [ref=e79]:
+                            - link "Deploy a PCG" [ref=e80] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/vmware/deploy-pcg/
+                          - listitem [ref=e81]:
+                            - link "Create a Cluster Profile" [ref=e82] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/vmware/create-cluster-profile/
+                          - listitem [ref=e83]:
+                            - link "Deploy a Cluster" [ref=e84] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/vmware/deploy-k8s-cluster/
+                          - listitem [ref=e85]:
+                            - link "Deploy Cluster Profile Updates" [ref=e86] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/vmware/update-k8s-cluster/
+                          - listitem [ref=e87]:
+                            - link "Cluster Management with Terraform" [ref=e88] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/vmware/deploy-manage-k8s-cluster-tf/
+                          - listitem [ref=e89]:
+                            - link "Scale, Upgrade, and Secure Clusters" [ref=e90] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/vmware/scale-secure-cluster/
+                  - listitem [ref=e91]:
+                    - generic [ref=e92]:
+                      - link "Palette Edge" [ref=e93] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette-edge/
+                      - button "Toggle the collapsible sidebar category 'Palette Edge'" [ref=e94] [cursor=pointer]
+                  - listitem [ref=e95]:
+                    - generic [ref=e96]:
+                      - link "Additional Capabilities" [ref=e97] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/additional-capabilities/
+                      - button "Toggle the collapsible sidebar category 'Additional Capabilities'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Packs and Registries" [ref=e101] [cursor=pointer]:
+                    - /url: /tutorials/packs-registries/
+                    - img [ref=e103]
+                    - text: Packs and Registries
+                  - button "Toggle the collapsible sidebar category 'Packs and Registries'" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - link "Profiles" [ref=e108] [cursor=pointer]:
+                    - /url: /tutorials/profiles/
+                    - img [ref=e110]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e114] [cursor=pointer]
+              - listitem [ref=e115]:
+                - generic [ref=e116]:
+                  - link "Clusters" [ref=e117] [cursor=pointer]:
+                    - /url: /tutorials/clusters/
+                    - img [ref=e119]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e125] [cursor=pointer]
+              - listitem [ref=e126]:
+                - generic [ref=e127]:
+                  - link "Palette Dev Engine" [ref=e128] [cursor=pointer]:
+                    - /url: /tutorials/pde/
+                    - img [ref=e130]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e132] [cursor=pointer]
+              - listitem [ref=e133]:
+                - button "Privacy Settings" [ref=e134] [cursor=pointer]
+      - main [ref=e135]:
+        - generic [ref=e137]:
+          - generic [ref=e139]:
+            - article [ref=e140]:
+              - navigation "Breadcrumbs" [ref=e141]:
+                - list [ref=e142]:
+                  - listitem [ref=e143]:
+                    - link "Home page" [ref=e144] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e145]
+                  - listitem [ref=e147]:
+                    - link "Getting Started" [ref=e148] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/
+                  - listitem [ref=e149]:
+                    - link "Palette" [ref=e150] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette/
+                  - listitem [ref=e151]:
+                    - generic [ref=e152]: Deploy a Cluster to VMware
+              - generic [ref=e153]:
+                - heading "Deploy a Cluster to VMware" [level=1] [ref=e155]
+                - paragraph [ref=e156]:
+                  - text: Palette supports integration with
+                  - link "VMware" [ref=e157] [cursor=pointer]:
+                    - /url: https://www.vmware.com
+                  - text: . You can deploy and manage
+                  - link "Host Clusters" [ref=e158] [cursor=pointer]:
+                    - /url: /glossary-all/#host-cluster
+                  - text: on VMware. The concepts you learn about in the Getting Started section are centered around a fictional case study company. This approach gives you a solution focused approach, while introducing you to Palette workflows and capabilities.
+                - heading "🧑‍🚀 Welcome to Spacetastic!Direct link to 🧑‍🚀 Welcome to Spacetastic!" [level=2] [ref=e159]:
+                  - text: 🧑‍🚀 Welcome to Spacetastic!
+                  - link "Direct link to 🧑‍🚀 Welcome to Spacetastic!" [ref=e160] [cursor=pointer]:
+                    - /url: "#-welcome-to-spacetastic"
+                    - text: "#"
+                - paragraph [ref=e161]: Spacetastic Ltd., our fictional example company, is on a mission to teach its users about space. They have assembled a team of bright minds who are passionate about astronomy and the universe. They are a startup that is gaining popularity as they expand their dashboards and grow their subscribers. Their small team has been in charge of developing new features alongside scaling and maintaining their infrastructure, but they are dedicated to providing the best astronomy education platform on Planet Earth.
+                - blockquote [ref=e162]:
+                  - paragraph [ref=e163]: "\"I'm the resident space expert around here!\" says Anya, Lead Astrophycist, with a beaming smile. \"My mission is to make astrophysics, the science of space, accessible to everyone.\""
+                  - paragraph [ref=e164]: "\"I'm here to support you and your mission. I build all the dashboards, pages, and features that bring your vast space knowledge to our users in a beautiful visual format!\" says Wren, Founding Engineer."
+                  - paragraph [ref=e165]: Kai smiles and nods. "I work closely with both Wren and Anya. As Platform Engineer, I ensure that our platform is reliable and scalable for everyone around the world and beyond!"
+                  - paragraph [ref=e166]: Meera, Head of Cybersecurity, is the final member of the Spacetastic team. "Let's not forget about the security of our platform. I make sure that our systems are designed and implemented with security in mind, the true SecDevOps way."
+                - paragraph [ref=e167]:
+                  - img "Meet the Spacetastic team" [ref=e168]
+                - paragraph [ref=e169]: The team has deployed their services to a single cloud provider. They rely on Kubernetes for the reliability and scalability of their systems. The team must ensure the systems are secure, patched regularly, scalable, and meet a reliability SLA of at least 99% uptime. The following diagram presents an overview of their systems.
+                - paragraph [ref=e170]:
+                  - img "Spacetastic system diagram" [ref=e171]
+                - paragraph [ref=e172]: While the system architecture they have chosen was a great place to start, the team soon faced common challenges that many growing organizations encounter with Kubernetes.
+                - blockquote [ref=e173]:
+                  - paragraph [ref=e174]: Wren hurriedly walks into the office, looking at their phone with a worried expression. "Users are reporting on social media that our systems are down! This must be related to the new feature we have just released."
+                  - paragraph [ref=e175]: Meera looks up from their monitor. "I've also received an alert about a new zero-day vulnerability. We need to patch our services without further downtime, as soon as you are able to stabilize our platform."
+                  - paragraph [ref=e176]: "\"Team, we need to rethink our platform engineering tools. We need a solution that can help us scale and deploy with confidence, ultimately supporting the growth of our company,\" says Kai with a determined look."
+                - paragraph [ref=e177]:
+                  - img "Kubernetes challenges" [ref=e178]
+                - heading "Get StartedDirect link to Get Started" [level=2] [ref=e179]:
+                  - text: Get Started
+                  - link "Direct link to Get Started" [ref=e180] [cursor=pointer]:
+                    - /url: "#get-started"
+                    - text: "#"
+                - paragraph [ref=e181]: In this section, you learn how to create a cluster profile. Then, you deploy a cluster to VMware vSphere using Palette. Once your cluster is deployed, you can update it using cluster profile updates.
+                - generic [ref=e182]:
+                  - link "1 Set up Palette with VMware Set up the prerequisites of using Palette with VMware. Learn more" [ref=e183] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/vmware/setup
+                    - generic [ref=e184]:
+                      - generic [ref=e185]:
+                        - generic [ref=e186]: "1"
+                        - generic [ref=e187]: Set up Palette with VMware
+                      - paragraph [ref=e189]: Set up the prerequisites of using Palette with VMware.
+                      - button "Learn more" [ref=e191]:
+                        - text: Learn more
+                        - img [ref=e192]
+                  - link "2 Deploy a PCG Learn to deploy a PCG with Palette CLI. Learn more" [ref=e194] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/vmware/deploy-pcg
+                    - generic [ref=e195]:
+                      - generic [ref=e196]:
+                        - generic [ref=e197]: "2"
+                        - generic [ref=e198]: Deploy a PCG
+                      - paragraph [ref=e200]: Learn to deploy a PCG with Palette CLI.
+                      - button "Learn more" [ref=e202]:
+                        - text: Learn more
+                        - img [ref=e203]
+                  - link "3 Create a Cluster Profile Create a full cluster profile in Palette. Learn more" [ref=e205] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/create-cluster-profile
+                    - generic [ref=e206]:
+                      - generic [ref=e207]:
+                        - generic [ref=e208]: "3"
+                        - generic [ref=e209]: Create a Cluster Profile
+                      - paragraph [ref=e211]: Create a full cluster profile in Palette.
+                      - button "Learn more" [ref=e213]:
+                        - text: Learn more
+                        - img [ref=e214]
+                  - link "4 Deploy a Cluster Deploy a Palette host cluster to VMware. Learn more" [ref=e216] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/vmware/deploy-k8s-cluster
+                    - generic [ref=e217]:
+                      - generic [ref=e218]:
+                        - generic [ref=e219]: "4"
+                        - generic [ref=e220]: Deploy a Cluster
+                      - paragraph [ref=e222]: Deploy a Palette host cluster to VMware.
+                      - button "Learn more" [ref=e224]:
+                        - text: Learn more
+                        - img [ref=e225]
+                  - link "5 Deploy Cluster Profile Updates Update your deployed clusters using Palette Cluster Profiles. Learn more" [ref=e227] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/vmware/update-k8s-cluster
+                    - generic [ref=e228]:
+                      - generic [ref=e229]:
+                        - generic [ref=e230]: "5"
+                        - generic [ref=e231]: Deploy Cluster Profile Updates
+                      - paragraph [ref=e233]: Update your deployed clusters using Palette Cluster Profiles.
+                      - button "Learn more" [ref=e235]:
+                        - text: Learn more
+                        - img [ref=e236]
+                  - link "6 Cluster Management with Terraform Deploy and update a Palette host cluster with Terraform. Learn more" [ref=e238] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/vmware/deploy-manage-k8s-cluster-tf
+                    - generic [ref=e239]:
+                      - generic [ref=e240]:
+                        - generic [ref=e241]: "6"
+                        - generic [ref=e242]: Cluster Management with Terraform
+                      - paragraph [ref=e244]: Deploy and update a Palette host cluster with Terraform.
+                      - button "Learn more" [ref=e246]:
+                        - text: Learn more
+                        - img [ref=e247]
+                  - link "7 Scale, Upgrade, and Secure Clusters Learn how to scale, upgrade, and secure Palette host clusters deployed to VMware. Learn more" [ref=e249] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/vmware/scale-secure-cluster
+                    - generic [ref=e250]:
+                      - generic [ref=e251]:
+                        - generic [ref=e252]: "7"
+                        - generic [ref=e253]: Scale, Upgrade, and Secure Clusters
+                      - paragraph [ref=e255]: Learn how to scale, upgrade, and secure Palette host clusters deployed to VMware.
+                      - button "Learn more" [ref=e257]:
+                        - text: Learn more
+                        - img [ref=e258]
+              - generic [ref=e260]:
+                - generic [ref=e262]:
+                  - text: "Tags:"
+                  - list [ref=e263]:
+                    - listitem [ref=e264]:
+                      - link "getting-started" [ref=e265] [cursor=pointer]:
+                        - /url: /tags/getting-started/
+                    - listitem [ref=e266]:
+                      - link "vmware" [ref=e267] [cursor=pointer]:
+                        - /url: /tags/vmware/
+                    - listitem [ref=e268]:
+                      - link "tutorial" [ref=e269] [cursor=pointer]:
+                        - /url: /tags/tutorial/
+                - link "Edit this page" [ref=e272] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/tutorials/getting-started/palette/vmware/vmware.md
+                  - img [ref=e273]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e277]:
+              - link "Previous « Scale, Upgrade, and Secure Clusters" [ref=e278] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette/gcp/scale-secure-cluster/
+                - generic [ref=e279]: Previous
+                - generic [ref=e280]: « Scale, Upgrade, and Secure Clusters
+              - link "Next Set up Palette »" [ref=e281] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette/vmware/setup/
+                - generic [ref=e282]: Next
+                - generic [ref=e283]: Set up Palette »
+          - list [ref=e286]:
+            - listitem [ref=e287]:
+              - link "🧑‍🚀 Welcome to Spacetastic!" [ref=e288] [cursor=pointer]:
+                - /url: "#-welcome-to-spacetastic"
+            - listitem [ref=e289]:
+              - link "Get Started" [ref=e290] [cursor=pointer]:
+                - /url: "#get-started"
+  - button "Project Logo Ask AI" [ref=e291] [cursor=pointer]:
+    - generic [ref=e294]:
+      - img "Project Logo" [ref=e295]
+      - paragraph [ref=e296]: Ask AI
+```

@@ -1,0 +1,663 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [expanded] [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+                - list [ref=e107]:
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Public Cloud Clusters" [ref=e110] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e112]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e114] [cursor=pointer]
+                  - listitem [ref=e115]:
+                    - generic [ref=e116]:
+                      - link "Data Center Clusters" [ref=e117] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e119]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e121] [cursor=pointer]
+                  - listitem [ref=e122]:
+                    - generic [ref=e123]:
+                      - link "Edge" [expanded] [ref=e124] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e126]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e128] [cursor=pointer]
+                    - list [ref=e129]:
+                      - listitem [ref=e130]:
+                        - generic [ref=e131]:
+                          - link "Architecture" [ref=e132] [cursor=pointer]:
+                            - /url: /clusters/edge/architecture/
+                          - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e133] [cursor=pointer]
+                      - listitem [ref=e134]:
+                        - link "Hardware Requirements" [ref=e135] [cursor=pointer]:
+                          - /url: /clusters/edge/hardware-requirements/
+                      - listitem [ref=e136]:
+                        - link "Deployment Lifecycle" [ref=e137] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-native-lifecycle/
+                      - listitem [ref=e138]:
+                        - generic [ref=e139]:
+                          - link "Trusted Boot" [ref=e140] [cursor=pointer]:
+                            - /url: /clusters/edge/trusted-boot/
+                          - button "Toggle the collapsible sidebar category 'Trusted Boot'" [ref=e141] [cursor=pointer]
+                      - listitem [ref=e142]:
+                        - generic [ref=e143]:
+                          - link "Install Configuration" [ref=e144] [cursor=pointer]:
+                            - /url: /clusters/edge/edge-configuration/
+                          - button "Toggle the collapsible sidebar category 'Install Configuration'" [ref=e145] [cursor=pointer]
+                      - listitem [ref=e146]:
+                        - generic [ref=e147]:
+                          - link "EdgeForge Workflow" [ref=e148] [cursor=pointer]:
+                            - /url: /clusters/edge/edgeforge-workflow/
+                          - button "Toggle the collapsible sidebar category 'EdgeForge Workflow'" [ref=e149] [cursor=pointer]
+                      - listitem [ref=e150]:
+                        - generic [ref=e151]:
+                          - link "Local UI" [ref=e152] [cursor=pointer]:
+                            - /url: /clusters/edge/local-ui/
+                          - button "Toggle the collapsible sidebar category 'Local UI'" [ref=e153] [cursor=pointer]
+                      - listitem [ref=e154]:
+                        - generic [ref=e155]:
+                          - link "Deployment" [expanded] [ref=e156] [cursor=pointer]:
+                            - /url: /clusters/edge/site-deployment/
+                          - button "Toggle the collapsible sidebar category 'Deployment'" [ref=e157] [cursor=pointer]
+                        - list [ref=e158]:
+                          - listitem [ref=e159]:
+                            - link "Model Edge Native Cluster Profile" [ref=e160] [cursor=pointer]:
+                              - /url: /clusters/edge/site-deployment/model-profile/
+                          - listitem [ref=e161]:
+                            - link "Installation" [ref=e162] [cursor=pointer]:
+                              - /url: /clusters/edge/site-deployment/stage/
+                          - listitem [ref=e163]:
+                            - generic [ref=e164]:
+                              - link "Deploy Edge Hosts On-Site" [ref=e165] [cursor=pointer]:
+                                - /url: /clusters/edge/site-deployment/site-installation/
+                              - button "Toggle the collapsible sidebar category 'Deploy Edge Hosts On-Site'" [ref=e166] [cursor=pointer]
+                          - listitem [ref=e167]:
+                            - generic [ref=e168]:
+                              - link "Deploy Edge Hosts as Virtual Machines" [expanded] [ref=e169] [cursor=pointer]:
+                                - /url: /clusters/edge/site-deployment/virtual-deployment/
+                              - button "Toggle the collapsible sidebar category 'Deploy Edge Hosts as Virtual Machines'" [ref=e170] [cursor=pointer]
+                            - list [ref=e171]:
+                              - listitem [ref=e172]:
+                                - link "Provision an Edge Host VM" [ref=e173] [cursor=pointer]:
+                                  - /url: /clusters/edge/site-deployment/virtual-deployment/vm-edge-host/
+                              - listitem [ref=e174]:
+                                - link "Create an Edge OVF Template" [ref=e175] [cursor=pointer]:
+                                  - /url: /clusters/edge/site-deployment/virtual-deployment/create-ovf-template/
+                              - listitem [ref=e176]:
+                                - link "Provision an Edge Host VM Using iPXE Netboot" [ref=e177] [cursor=pointer]:
+                                  - /url: /clusters/edge/site-deployment/virtual-deployment/ipxe-boot/
+                          - listitem [ref=e178]:
+                            - link "Edge Host Grid View" [ref=e179] [cursor=pointer]:
+                              - /url: /clusters/edge/site-deployment/edge-host-view/
+                          - listitem [ref=e180]:
+                            - link "Create Cluster Definition" [ref=e181] [cursor=pointer]:
+                              - /url: /clusters/edge/site-deployment/cluster-deployment/
+                          - listitem [ref=e182]:
+                            - generic [ref=e183]:
+                              - link "Deployment with Custom Image Registries" [ref=e184] [cursor=pointer]:
+                                - /url: /clusters/edge/site-deployment/deploy-custom-registries/
+                              - button "Toggle the collapsible sidebar category 'Deployment with Custom Image Registries'" [ref=e185] [cursor=pointer]
+                      - listitem [ref=e186]:
+                        - generic [ref=e187]:
+                          - link "Cluster Management" [ref=e188] [cursor=pointer]:
+                            - /url: /clusters/edge/cluster-management/
+                          - button "Toggle the collapsible sidebar category 'Cluster Management'" [ref=e189] [cursor=pointer]
+                      - listitem [ref=e190]:
+                        - generic [ref=e191]:
+                          - link "Networking" [ref=e192] [cursor=pointer]:
+                            - /url: /clusters/edge/networking/
+                          - button "Toggle the collapsible sidebar category 'Networking'" [ref=e193] [cursor=pointer]
+                      - listitem [ref=e194]:
+                        - generic [ref=e195]:
+                          - link "Third Party Integrations" [ref=e196] [cursor=pointer]:
+                            - /url: /clusters/edge/third-party-integrations/
+                          - button "Toggle the collapsible sidebar category 'Third Party Integrations'" [ref=e197] [cursor=pointer]
+                  - listitem [ref=e198]:
+                    - generic [ref=e199]:
+                      - link "Palette Virtual Clusters" [ref=e200] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e202]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e204] [cursor=pointer]
+                  - listitem [ref=e205]:
+                    - generic [ref=e206]:
+                      - link "Imported Clusters" [ref=e207] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e209]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e211] [cursor=pointer]
+                  - listitem [ref=e212]:
+                    - generic [ref=e213]:
+                      - link "Manage Clusters" [ref=e214] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e216]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e218] [cursor=pointer]
+                  - listitem [ref=e219]:
+                    - generic [ref=e220]:
+                      - link "Cluster Groups" [ref=e221] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e223]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e225] [cursor=pointer]
+                  - listitem [ref=e226]:
+                    - generic [ref=e227]:
+                      - link "Private Cloud Gateway" [ref=e228] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e230]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e232] [cursor=pointer]
+              - listitem [ref=e233]:
+                - generic [ref=e234]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e235] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e237]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e239] [cursor=pointer]
+              - listitem [ref=e240]:
+                - generic [ref=e241]:
+                  - link "Palette Dev Engine" [ref=e242] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e244]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e246] [cursor=pointer]
+              - listitem [ref=e247]:
+                - generic [ref=e248]:
+                  - link "Virtual Machine Orchestrator" [ref=e249] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e251]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e253] [cursor=pointer]
+              - listitem [ref=e254]:
+                - generic [ref=e255]:
+                  - link "Workspaces" [ref=e256] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e258]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e260] [cursor=pointer]
+              - listitem [ref=e261]:
+                - generic [ref=e262]:
+                  - link "Packs List" [ref=e263] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e265]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e267] [cursor=pointer]
+              - listitem [ref=e268]:
+                - generic [ref=e269]:
+                  - link "User & Role Management" [ref=e270] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e272]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e274] [cursor=pointer]
+              - listitem [ref=e275]:
+                - generic [ref=e276]:
+                  - link "Registries and Packs" [ref=e277] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e279]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e281] [cursor=pointer]
+              - listitem [ref=e282]:
+                - generic [ref=e283]:
+                  - link "Security" [ref=e284] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e286]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e288] [cursor=pointer]
+              - listitem [ref=e289]:
+                - generic [ref=e290]:
+                  - link "Audit Logs" [ref=e291] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e293]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e295] [cursor=pointer]
+              - listitem [ref=e296]:
+                - generic [ref=e297]:
+                  - link "Self-Hosted Palette" [ref=e298] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e300]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e302] [cursor=pointer]
+              - listitem [ref=e303]:
+                - generic [ref=e304]:
+                  - link "Palette VerteX" [ref=e305] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e307]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e309] [cursor=pointer]
+              - listitem [ref=e310]:
+                - generic [ref=e311]:
+                  - link "Tenant Administration" [ref=e312] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e314]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e316] [cursor=pointer]
+              - listitem [ref=e317]:
+                - generic [ref=e318]:
+                  - link "Automation" [ref=e319] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e321]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e323] [cursor=pointer]
+              - listitem [ref=e324]:
+                - generic [ref=e325]:
+                  - link "Troubleshooting" [ref=e326] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e328]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e330] [cursor=pointer]
+              - listitem [ref=e331]:
+                - link "Glossary" [ref=e332] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e334]
+                  - text: Glossary
+              - listitem [ref=e336]:
+                - generic [ref=e337]:
+                  - link "Compliance & Legal" [ref=e338] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e340]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e342] [cursor=pointer]
+              - listitem [ref=e343]:
+                - button "Privacy Settings" [ref=e344] [cursor=pointer]:
+                  - img [ref=e345]
+                  - text: Privacy Settings
+      - main [ref=e347]:
+        - generic [ref=e349]:
+          - generic [ref=e351]:
+            - article [ref=e352]:
+              - navigation "Breadcrumbs" [ref=e353]:
+                - list [ref=e354]:
+                  - listitem [ref=e355]:
+                    - link "Home page" [ref=e356] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e357]
+                  - listitem [ref=e359]:
+                    - link "Clusters" [ref=e360] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e361]:
+                    - link "Edge" [ref=e362] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                  - listitem [ref=e363]:
+                    - link "Deployment" [ref=e364] [cursor=pointer]:
+                      - /url: /clusters/edge/site-deployment/
+                  - listitem [ref=e365]:
+                    - link "Deploy Edge Hosts as Virtual Machines" [ref=e366] [cursor=pointer]:
+                      - /url: /clusters/edge/site-deployment/virtual-deployment/
+                  - listitem [ref=e367]:
+                    - generic [ref=e368]: Provision an Edge Host VM Using iPXE Netboot
+              - generic [ref=e369]:
+                - heading "Provision an Edge Host VM Using iPXE Netboot" [level=1] [ref=e371]
+                - paragraph [ref=e372]:
+                  - text: Palette Edge supports deployment through iPXE netboot. This method is helpful when you want to automate provisioning, use external configuration, or avoid embedding
+                  - code [ref=e373]: user-data
+                  - text: configuration into each ISO. It’s especially useful when deploying many VMs or Edge hosts dynamically. This guide teaches you how to provision Edge hosts in VMware using iPXE. To use iPXE provisioning, you must use an HTTP/HTTPS server to serve the necessary boot artifacts and the iPXE configuration files, and configure the VMs to boot from a iPXE ISO file, which then chains a script that downloads the boot artifacts and boot using those artifacts.
+                - paragraph [ref=e374]:
+                  - text: You do not need to customize the Palette Edge Installer ISO. It is only used to extract the generic kernel,
+                  - code [ref=e375]: initrd
+                  - text: ", and root filesystem. Configuration is handled externally via a"
+                  - code [ref=e376]: config.yaml
+                  - text: file served over HTTP. This lets you reuse the same boot artifacts across any number of nodes.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e377]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e378] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e379]:
+                  - listitem [ref=e380]:
+                    - paragraph [ref=e381]:
+                      - text: A Palette Installer ISO built using CanvOS tag version 4.6.21 or later. You do not need to customize this installer using
+                      - code [ref=e382]: user-data
+                      - text: ", because you only need to extract a few boot artifacts from this ISO and it does not preserve customizations. For more information, refer to"
+                      - link "Build Installer ISO" [ref=e383] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso/
+                      - text: .
+                  - listitem [ref=e384]:
+                    - paragraph [ref=e385]:
+                      - text: A Linux host machine that is capable of serving files over an HTTP/HTTPS server. This guide uses Python 3 and the
+                      - code [ref=e386]: http-server
+                      - text: module to serve the artifacts, but you can use any other tool to start your server.
+                  - listitem [ref=e387]:
+                    - paragraph [ref=e388]:
+                      - code [ref=e389]: govc
+                      - text: is installed on your Linux VM and available.
+                  - listitem [ref=e390]:
+                    - paragraph [ref=e391]: Access to a VMware vCenter environment where you can provision new VMs and upload files to datastores. Your VMs in vCenter must be able to access the HTTP/HTTPS server you provision.
+                - heading "ProcedureDirect link to Procedure" [level=2] [ref=e392]:
+                  - text: Procedure
+                  - link "Direct link to Procedure" [ref=e393] [cursor=pointer]:
+                    - /url: "#procedure"
+                    - text: "#"
+                - list [ref=e394]:
+                  - listitem [ref=e395]:
+                    - paragraph [ref=e396]:
+                      - text: Mount your Palette Edge installer ISO onto your Linux host. Replace
+                      - code [ref=e397]: /path/to/palette-edge-installer-<version>.iso
+                      - text: with the path to your Palette Edge installer ISO file. Create a folder to hold netboot files.
+                    - generic [ref=e399]:
+                      - code [ref=e401]:
+                        - generic [ref=e402]: sudo mount /path/to/palette-edge-installer-<version>.iso /mnt
+                        - generic [ref=e403]: mkdir -p ~/ipxe/netboot
+                      - button "Copy code to clipboard" [ref=e405] [cursor=pointer]:
+                        - generic [ref=e406]:
+                          - img [ref=e407]
+                          - img [ref=e409]
+                  - listitem [ref=e411]:
+                    - paragraph [ref=e412]: Copy the necessary boot artifacts into the netboot directory.
+                    - generic [ref=e414]:
+                      - code [ref=e416]:
+                        - generic [ref=e417]: cp /mnt/boot/kernel ~/ipxe/netboot/palette-kernel
+                        - generic [ref=e418]: cp /mnt/boot/initrd ~/ipxe/netboot/palette-initrd
+                        - generic [ref=e419]: cp /mnt/rootfs.squashfs ~/ipxe/netboot/palette.squashfs
+                      - button "Copy code to clipboard" [ref=e421] [cursor=pointer]:
+                        - generic [ref=e422]:
+                          - img [ref=e423]
+                          - img [ref=e425]
+                    - paragraph [ref=e427]:
+                      - text: The files are the
+                      - code [ref=e428]: initrd
+                      - text: ","
+                      - code [ref=e429]: kernel
+                      - text: and
+                      - code [ref=e430]: squashfs
+                      - text: .
+                  - listitem [ref=e431]:
+                    - paragraph [ref=e432]: Unmount the ISO after you finish copying the files.
+                    - generic [ref=e434]:
+                      - code [ref=e436]:
+                        - generic [ref=e437]: sudo umount /mnt
+                      - button "Copy code to clipboard" [ref=e439] [cursor=pointer]:
+                        - generic [ref=e440]:
+                          - img [ref=e441]
+                          - img [ref=e443]
+                  - listitem [ref=e445]:
+                    - paragraph [ref=e446]:
+                      - text: Create a configuration file for the installer to use. This is equivalent to your
+                      - code [ref=e447]: user-data
+                      - text: file you use to configure the Edge installer ISO. Refer to
+                      - link "Prepare User Data and Argument Files" [ref=e448] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/prepare-user-data/
+                      - text: for more information.
+                    - generic [ref=e450]:
+                      - code [ref=e452]:
+                        - generic [ref=e453]: cat > ~/ipxe/netboot/config.yaml <<'EOF'
+                        - generic [ref=e454]: "#cloud-config"
+                        - generic [ref=e455]: "# ... your settings here ..."
+                        - generic [ref=e456]: EOF
+                      - button "Copy code to clipboard" [ref=e458] [cursor=pointer]:
+                        - generic [ref=e459]:
+                          - img [ref=e460]
+                          - img [ref=e462]
+                  - listitem [ref=e464]:
+                    - paragraph [ref=e465]:
+                      - text: Change into the
+                      - code [ref=e466]: netboot
+                      - text: directory and start an HTTP server.
+                    - generic [ref=e468]:
+                      - code [ref=e470]:
+                        - generic [ref=e471]: cd ~/ipxe/netboot
+                        - generic [ref=e472]: python3 -m http.server 8080 &
+                      - button "Copy code to clipboard" [ref=e474] [cursor=pointer]:
+                        - generic [ref=e475]:
+                          - img [ref=e476]
+                          - img [ref=e478]
+                    - paragraph [ref=e480]: Leave this server running and perform the subsequent steps in a different terminal tab.
+                  - listitem [ref=e481]:
+                    - paragraph [ref=e482]:
+                      - text: In a different terminal tab, but still on your Linux host, create an iPXE script that tells your VMs booted from the iPXE ISO to download the boot artifacts and boot using those artifacts. Replace
+                      - code [ref=e483]: <YOUR_SERVER_IP>
+                      - text: with the IP address of your HTTP server. Often, this is the IP address of your Linux host unless you specify otherwise. You can use
+                      - code [ref=e484]: ip addr show
+                      - text: to obtain your IP address if your do not know it.
+                    - generic [ref=e486]:
+                      - code [ref=e488]:
+                        - generic [ref=e489]: cat > ~/ipxe/netboot/palette.ipxe <<'EOF'
+                        - generic [ref=e490]: "#!ipxe"
+                        - generic [ref=e491]: kernel http://<YOUR_SERVER_IP>:8080/palette-kernel initrd=palette-initrd rd.neednet=1 ip=dhcp rd.cos.disable root=live:http://<YOUR_SERVER_IP>:8080/palette.squashfs netboot install-mode config_url=http://<YOUR_SERVER_IP>:8080/config.yaml console=tty1
+                        - generic [ref=e492]: initrd http://<YOUR_SERVER_IP>:8080/palette-initrd
+                        - generic [ref=e493]: boot
+                        - generic [ref=e494]: EOF
+                      - generic [ref=e495]:
+                        - button "Toggle word wrap" [ref=e496] [cursor=pointer]:
+                          - img [ref=e497]
+                        - button "Copy code to clipboard" [ref=e499] [cursor=pointer]:
+                          - generic [ref=e500]:
+                            - img [ref=e501]
+                            - img [ref=e503]
+                  - listitem [ref=e505]:
+                    - paragraph [ref=e506]:
+                      - text: Download the generic iPXE ISO and upload it to your vCenter datastore. Replace
+                      - code [ref=e507]: path/to/datastore/iso
+                      - text: with the vCenter datastore path where you want to upload the ISO. You may need to configure the correct environment variables with credentials to your vCenter environment to use the
+                      - code [ref=e508]: govc
+                      - text: command.
+                    - generic [ref=e510]:
+                      - code [ref=e512]:
+                        - generic [ref=e513]: wget https://boot.ipxe.org/ipxe.iso -O ~/ipxe/ipxe.iso
+                        - generic [ref=e514]: govc datastore.upload ~/ipxe/ipxe.iso path/to/datastore/iso
+                      - button "Copy code to clipboard" [ref=e516] [cursor=pointer]:
+                        - generic [ref=e517]:
+                          - img [ref=e518]
+                          - img [ref=e520]
+                    - paragraph [ref=e522]:
+                      - text: You are now done with all the steps you need to perform from your Linux host. Your
+                      - code [ref=e523]: ~/ipxe/netboot
+                      - text: folder should contain the following files.
+                    - generic [ref=e525]:
+                      - code [ref=e527]:
+                        - generic [ref=e528]: ~/ipxe/netboot/
+                        - generic [ref=e529]: ├── palette-kernel
+                        - generic [ref=e530]: ├── palette-initrd
+                        - generic [ref=e531]: ├── palette.squashfs
+                        - generic [ref=e532]: ├── config.yaml
+                        - generic [ref=e533]: └── palette.ipxe
+                      - button "Copy code to clipboard" [ref=e535] [cursor=pointer]:
+                        - generic [ref=e536]:
+                          - img [ref=e537]
+                          - img [ref=e539]
+                    - paragraph [ref=e541]: Leave your HTTP server running and open your browser to your vCenter environment.
+                  - listitem [ref=e542]:
+                    - paragraph [ref=e543]: In your vCenter, create a new VM with the following hardware configurations.
+                    - list [ref=e544]:
+                      - listitem [ref=e545]: 8 vCPUs
+                      - listitem [ref=e546]: 32 GB RAM
+                      - listitem [ref=e547]: 300 GB disk
+                  - listitem [ref=e548]:
+                    - paragraph [ref=e549]:
+                      - text: Add a CD/DVD device to your VM. Choose the iPXE ISO you previously uploaded to your vCenter datastore. Make sure you check
+                      - strong [ref=e550]: Connect on Power On
+                      - text: option to ensure that the ISO is connected when your VM boots.
+                  - listitem [ref=e551]:
+                    - paragraph [ref=e552]: Finish configuring your VM and power it on.
+                  - listitem [ref=e553]:
+                    - paragraph [ref=e554]:
+                      - text: Open the VM’s console via the vCenter web client to access your VM. As soon as the "iPXE boot image" screen shows, press
+                      - strong [ref=e555]: CTRL + B
+                      - text: to interrupt and enter the
+                      - code [ref=e556]: iPXE>
+                      - text: prompt. The interval you have to press
+                      - strong [ref=e557]: CTRL + B
+                      - text: is very short. Therefore, make sure to launch the web console as soon as your VM boots and get ready to press the keys.
+                    - generic [ref=e558]:
+                      - generic [ref=e559]:
+                        - img [ref=e561]
+                        - text: tip
+                      - paragraph [ref=e564]:
+                        - text: If the VM does not register
+                        - strong [ref=e565]: CTRL + B
+                        - text: ", try pressing"
+                        - strong [ref=e566]: ESC + B
+                        - text: instead. Many BIOS-level environments and virtual terminals interpret
+                        - strong [ref=e567]: ESC + B
+                        - text: as a fallback for
+                        - strong [ref=e568]: CTRL + B
+                        - text: ", especially when CTRL is not reliably passed through."
+                  - listitem [ref=e569]:
+                    - paragraph [ref=e570]:
+                      - text: Issue the following commands in the
+                      - code [ref=e571]: iPXE> prompt
+                      - text: .
+                    - generic [ref=e573]:
+                      - code [ref=e575]:
+                        - generic [ref=e576]: dhcp
+                        - generic [ref=e577]: chain http://<YOUR_SERVER_IP>:8080/palette.ipxe
+                      - button "Copy code to clipboard" [ref=e579] [cursor=pointer]:
+                        - generic [ref=e580]:
+                          - img [ref=e581]
+                          - img [ref=e583]
+                    - paragraph [ref=e585]:
+                      - text: This tells iPXE to download and execute the script you wrote, which kicks off the install using the boot artifacts and your config file. The VM then downloads
+                      - code [ref=e586]: kernel
+                      - text: ","
+                      - code [ref=e587]: initrd
+                      - text: ", and"
+                      - code [ref=e588]: rootfs
+                      - text: and begin the installation using your
+                      - code [ref=e589]: config.yaml
+                      - text: (user-data).
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e590]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e591] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e592]:
+                  - listitem [ref=e593]:
+                    - paragraph [ref=e594]: After installation is complete, power on your VM.
+                  - listitem [ref=e595]:
+                    - paragraph [ref=e596]: Ensure that the VM displays that the Edge host is ready to be added to a cluster in Palette or the address of Local UI, depending on how you configured the management mode for the Edge host.
+              - generic [ref=e597]:
+                - generic [ref=e599]:
+                  - text: "Tags:"
+                  - list [ref=e600]:
+                    - listitem [ref=e601]:
+                      - link "edge" [ref=e602] [cursor=pointer]:
+                        - /url: /tags/edge/
+                    - listitem [ref=e603]:
+                      - link "tutorial" [ref=e604] [cursor=pointer]:
+                        - /url: /tags/tutorial/
+                - link "Edit this page" [ref=e607] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/edge/site-deployment/virtual-deployment/ipxe-boot.md
+                  - img [ref=e608]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e612]:
+              - link "Previous « Create an Edge OVF Template" [ref=e613] [cursor=pointer]:
+                - /url: /clusters/edge/site-deployment/virtual-deployment/create-ovf-template/
+                - generic [ref=e614]: Previous
+                - generic [ref=e615]: « Create an Edge OVF Template
+              - link "Next Edge Host Grid View »" [ref=e616] [cursor=pointer]:
+                - /url: /clusters/edge/site-deployment/edge-host-view/
+                - generic [ref=e617]: Next
+                - generic [ref=e618]: Edge Host Grid View »
+          - list [ref=e621]:
+            - listitem [ref=e622]:
+              - link "Prerequisites" [ref=e623] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e624]:
+              - link "Procedure" [ref=e625] [cursor=pointer]:
+                - /url: "#procedure"
+            - listitem [ref=e626]:
+              - link "Validate" [ref=e627] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e628] [cursor=pointer]:
+    - generic [ref=e631]:
+      - img "Project Logo" [ref=e632]
+      - paragraph [ref=e633]: Ask AI
+```

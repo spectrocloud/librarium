@@ -1,0 +1,706 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [expanded] [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+                - list [ref=e149]:
+                  - listitem [ref=e150]:
+                    - generic [ref=e151]:
+                      - link "User Authentication" [ref=e152] [cursor=pointer]:
+                        - /url: /user-management/authentication/
+                      - button "Toggle the collapsible sidebar category 'User Authentication'" [ref=e153] [cursor=pointer]
+                  - listitem [ref=e154]:
+                    - generic [ref=e155]:
+                      - link "Users and Teams" [ref=e156] [cursor=pointer]:
+                        - /url: /user-management/users-and-teams/
+                      - button "Toggle the collapsible sidebar category 'Users and Teams'" [ref=e157] [cursor=pointer]
+                  - listitem [ref=e158]:
+                    - generic [ref=e159]:
+                      - link "Roles and Permissions" [expanded] [ref=e160] [cursor=pointer]:
+                        - /url: /user-management/palette-rbac/
+                      - button "Toggle the collapsible sidebar category 'Roles and Permissions'" [ref=e161] [cursor=pointer]
+                    - list [ref=e162]:
+                      - listitem [ref=e163]:
+                        - link "Create and Manage a Custom Role" [ref=e164] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/create-custom-role/
+                      - listitem [ref=e165]:
+                        - link "Create and Manage a Role Assignment" [ref=e166] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/assign-a-role/
+                      - listitem [ref=e167]:
+                        - link "Permissions" [ref=e168] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/permissions/
+                      - listitem [ref=e169]:
+                        - link "Tenant Roles" [ref=e170] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/tenant-scope-roles-permissions/
+                      - listitem [ref=e171]:
+                        - link "Project Roles" [ref=e172] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/project-scope-roles-permissions/
+                      - listitem [ref=e173]:
+                        - link "Resource Roles" [ref=e174] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/resource-scope-roles-permissions/
+                      - listitem [ref=e175]:
+                        - link "ABAC in Palette" [ref=e176] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/implement-abac/
+                  - listitem [ref=e177]:
+                    - generic [ref=e178]:
+                      - link "SAML and OIDC SSO" [ref=e179] [cursor=pointer]:
+                        - /url: /user-management/saml-sso/
+                      - button "Toggle the collapsible sidebar category 'SAML and OIDC SSO'" [ref=e180] [cursor=pointer]
+              - listitem [ref=e181]:
+                - generic [ref=e182]:
+                  - link "Registries and Packs" [ref=e183] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e185]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e187] [cursor=pointer]
+              - listitem [ref=e188]:
+                - generic [ref=e189]:
+                  - link "Security" [ref=e190] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e192]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e194] [cursor=pointer]
+              - listitem [ref=e195]:
+                - generic [ref=e196]:
+                  - link "Audit Logs" [ref=e197] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e199]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e201] [cursor=pointer]
+              - listitem [ref=e202]:
+                - generic [ref=e203]:
+                  - link "Self-Hosted Palette" [ref=e204] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e206]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e208] [cursor=pointer]
+              - listitem [ref=e209]:
+                - generic [ref=e210]:
+                  - link "Palette VerteX" [ref=e211] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e213]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e215] [cursor=pointer]
+              - listitem [ref=e216]:
+                - generic [ref=e217]:
+                  - link "Tenant Administration" [ref=e218] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e220]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e222] [cursor=pointer]
+              - listitem [ref=e223]:
+                - generic [ref=e224]:
+                  - link "Automation" [ref=e225] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e227]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e229] [cursor=pointer]
+              - listitem [ref=e230]:
+                - generic [ref=e231]:
+                  - link "Troubleshooting" [ref=e232] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e234]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e236] [cursor=pointer]
+              - listitem [ref=e237]:
+                - link "Glossary" [ref=e238] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e240]
+                  - text: Glossary
+              - listitem [ref=e242]:
+                - generic [ref=e243]:
+                  - link "Compliance & Legal" [ref=e244] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e246]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e248] [cursor=pointer]
+              - listitem [ref=e249]:
+                - button "Privacy Settings" [ref=e250] [cursor=pointer]:
+                  - img [ref=e251]
+                  - text: Privacy Settings
+      - main [ref=e253]:
+        - generic [ref=e255]:
+          - generic [ref=e257]:
+            - article [ref=e258]:
+              - navigation "Breadcrumbs" [ref=e259]:
+                - list [ref=e260]:
+                  - listitem [ref=e261]:
+                    - link "Home page" [ref=e262] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e263]
+                  - listitem [ref=e265]:
+                    - link "User & Role Management" [ref=e266] [cursor=pointer]:
+                      - /url: /user-management/
+                  - listitem [ref=e267]:
+                    - link "Roles and Permissions" [ref=e268] [cursor=pointer]:
+                      - /url: /user-management/palette-rbac/
+                  - listitem [ref=e269]:
+                    - generic [ref=e270]: Project Roles
+              - generic [ref=e271]:
+                - heading "Project Roles" [level=1] [ref=e273]
+                - paragraph [ref=e274]:
+                  - text: Palette provides the following Project roles out-of-the-box. These roles are predefined and cannot be modified. You can assign these roles to users and teams to manage the resources within the project scope. The roles are categorized based on the resources they can manage. If you need to manage resources across multiple projects, consider using a
+                  - link "Tenant" [ref=e275] [cursor=pointer]:
+                    - /url: /user-management/palette-rbac/tenant-scope-roles-permissions/
+                  - text: role instead.
+                - generic [ref=e276]:
+                  - generic [ref=e277]:
+                    - img [ref=e279]
+                    - text: tip
+                  - paragraph [ref=e282]:
+                    - text: Create your own custom project role if none of the predefined roles meet your requirements. Refer to the
+                    - link "Create a Custom Role" [ref=e283] [cursor=pointer]:
+                      - /url: /user-management/palette-rbac/create-custom-role/#project-roles
+                    - text: guide for more information.
+                - heading "Default Project RolesDirect link to Default Project Roles" [level=2] [ref=e284]:
+                  - text: Default Project Roles
+                  - link "Direct link to Default Project Roles" [ref=e285] [cursor=pointer]:
+                    - /url: "#default-project-roles"
+                    - text: "#"
+                - paragraph [ref=e286]: Palette comes with a set of immutable predefined Project roles out-of-the-box that you can assign to users or teams. To review the permissions associated with each Project role, click on the role name to expand the list of permissions.
+                - heading "App DeploymentDirect link to App Deployment" [level=3] [ref=e287]:
+                  - text: App Deployment
+                  - link "Direct link to App Deployment" [ref=e288] [cursor=pointer]:
+                    - /url: "#app-deployment"
+                    - text: "#"
+                - table [ref=e289]:
+                  - rowgroup [ref=e290]:
+                    - row "Role Name Description" [ref=e291]:
+                      - cell "Role Name" [ref=e292]
+                      - cell "Description" [ref=e293]
+                  - rowgroup [ref=e294]:
+                    - row "App Deployment Admin Provides administrative privilege to perform all the App operations on App resources." [ref=e295]:
+                      - cell "App Deployment Admin" [ref=e296]
+                      - cell "Provides administrative privilege to perform all the App operations on App resources." [ref=e297]
+                    - row "App Deployment Editor Allows the user to perform edit operations on an App but not to create or delete an App." [ref=e298]:
+                      - cell "App Deployment Editor" [ref=e299]
+                      - cell "Allows the user to perform edit operations on an App but not to create or delete an App." [ref=e300]
+                    - row "App Deployment Viewer Allows the user to view all the App resources but not to make modifications." [ref=e301]:
+                      - cell "App Deployment Viewer" [ref=e302]
+                      - cell "Allows the user to view all the App resources but not to make modifications." [ref=e303]
+                - generic [ref=e304]:
+                  - button "collapsed App Deployment Admin" [ref=e306] [cursor=pointer]:
+                    - img "collapsed" [ref=e308]:
+                      - img [ref=e309]
+                    - generic [ref=e311]: App Deployment Admin
+                  - button "collapsed App Deployment Editor" [ref=e313] [cursor=pointer]:
+                    - img "collapsed" [ref=e315]:
+                      - img [ref=e316]
+                    - generic [ref=e318]: App Deployment Editor
+                  - button "collapsed App Deployment Viewer" [ref=e320] [cursor=pointer]:
+                    - img "collapsed" [ref=e322]:
+                      - img [ref=e323]
+                    - generic [ref=e325]: App Deployment Viewer
+                - heading "App ProfileDirect link to App Profile" [level=3] [ref=e326]:
+                  - text: App Profile
+                  - link "Direct link to App Profile" [ref=e327] [cursor=pointer]:
+                    - /url: "#app-profile"
+                    - text: "#"
+                - table [ref=e328]:
+                  - rowgroup [ref=e329]:
+                    - row "Role Name Description" [ref=e330]:
+                      - cell "Role Name" [ref=e331]
+                      - cell "Description" [ref=e332]
+                  - rowgroup [ref=e333]:
+                    - row "App Profile Admin Provides administrative privilege to perform all the App operations on App profile resources." [ref=e334]:
+                      - cell "App Profile Admin" [ref=e335]
+                      - cell "Provides administrative privilege to perform all the App operations on App profile resources." [ref=e336]
+                    - row "App Profile Editor Allows the user to perform edit operations on App profiles but not to create or delete an App profile." [ref=e337]:
+                      - cell "App Profile Editor" [ref=e338]
+                      - cell "Allows the user to perform edit operations on App profiles but not to create or delete an App profile." [ref=e339]
+                    - row "App Profile Viewer Allows the user to view all the App profile resources but not to modify them." [ref=e340]:
+                      - cell "App Profile Viewer" [ref=e341]
+                      - cell "Allows the user to view all the App profile resources but not to modify them." [ref=e342]
+                - generic [ref=e343]:
+                  - button "collapsed App Profile Admin" [ref=e345] [cursor=pointer]:
+                    - img "collapsed" [ref=e347]:
+                      - img [ref=e348]
+                    - generic [ref=e350]: App Profile Admin
+                  - button "collapsed App Profile Editor" [ref=e352] [cursor=pointer]:
+                    - img "collapsed" [ref=e354]:
+                      - img [ref=e355]
+                    - generic [ref=e357]: App Profile Editor
+                  - button "collapsed App Profile Viewer" [ref=e359] [cursor=pointer]:
+                    - img "collapsed" [ref=e361]:
+                      - img [ref=e362]
+                    - generic [ref=e364]: App Profile Viewer
+                - heading "Cloud AccountDirect link to Cloud Account" [level=3] [ref=e365]:
+                  - text: Cloud Account
+                  - link "Direct link to Cloud Account" [ref=e366] [cursor=pointer]:
+                    - /url: "#cloud-account"
+                    - text: "#"
+                - table [ref=e367]:
+                  - rowgroup [ref=e368]:
+                    - row "Role Name Description" [ref=e369]:
+                      - cell "Role Name" [ref=e370]
+                      - cell "Description" [ref=e371]
+                  - rowgroup [ref=e372]:
+                    - row "Cloud Account Admin An administrative access to cloud account operations." [ref=e373]:
+                      - cell "Cloud Account Admin" [ref=e374]
+                      - cell "An administrative access to cloud account operations." [ref=e375]
+                    - row "Cloud Account Editor An editor access to cloud account operations." [ref=e376]:
+                      - cell "Cloud Account Editor" [ref=e377]
+                      - cell "An editor access to cloud account operations." [ref=e378]
+                    - row "Cloud Account Viewer A read-only role for cloud account operations." [ref=e379]:
+                      - cell "Cloud Account Viewer" [ref=e380]
+                      - cell "A read-only role for cloud account operations." [ref=e381]
+                - generic [ref=e382]:
+                  - button "collapsed Cluster Account Admin" [ref=e384] [cursor=pointer]:
+                    - img "collapsed" [ref=e386]:
+                      - img [ref=e387]
+                    - generic [ref=e389]: Cluster Account Admin
+                  - button "collapsed Cluster Account Editor" [ref=e391] [cursor=pointer]:
+                    - img "collapsed" [ref=e393]:
+                      - img [ref=e394]
+                    - generic [ref=e396]: Cluster Account Editor
+                  - button "collapsed Cluster Account Viewer" [ref=e398] [cursor=pointer]:
+                    - img "collapsed" [ref=e400]:
+                      - img [ref=e401]
+                    - generic [ref=e403]: Cluster Account Viewer
+                - heading "ClusterDirect link to Cluster" [level=3] [ref=e404]:
+                  - text: Cluster
+                  - link "Direct link to Cluster" [ref=e405] [cursor=pointer]:
+                    - /url: "#cluster"
+                    - text: "#"
+                - table [ref=e406]:
+                  - rowgroup [ref=e407]:
+                    - row "Role Name Description" [ref=e408]:
+                      - cell "Role Name" [ref=e409]
+                      - cell "Description" [ref=e410]
+                  - rowgroup [ref=e411]:
+                    - row "Cluster Admin A cluster admin in the Project scope has all the privileges related to the cluster operation." [ref=e412]:
+                      - cell "Cluster Admin" [ref=e413]
+                      - cell "A cluster admin in the Project scope has all the privileges related to the cluster operation." [ref=e414]
+                    - row "Cluster Editor A cluster editor in the Project scope has the privileges to update, delete, get, and list cluster resources. This role is not privileged for cluster creation." [ref=e415]:
+                      - cell "Cluster Editor" [ref=e416]
+                      - cell "A cluster editor in the Project scope has the privileges to update, delete, get, and list cluster resources. This role is not privileged for cluster creation." [ref=e417]
+                    - row "Cluster Viewer A cluster viewer in Project scope is a read-only privilege to cluster operations." [ref=e418]:
+                      - cell "Cluster Viewer" [ref=e419]
+                      - cell "A cluster viewer in Project scope is a read-only privilege to cluster operations." [ref=e420]
+                - generic [ref=e421]:
+                  - button "collapsed Cluster Admin" [ref=e423] [cursor=pointer]:
+                    - img "collapsed" [ref=e425]:
+                      - img [ref=e426]
+                    - generic [ref=e428]: Cluster Admin
+                  - button "collapsed Cluster Editor" [ref=e430] [cursor=pointer]:
+                    - img "collapsed" [ref=e432]:
+                      - img [ref=e433]
+                    - generic [ref=e435]: Cluster Editor
+                  - button "collapsed Cluster Viewer" [ref=e437] [cursor=pointer]:
+                    - img "collapsed" [ref=e439]:
+                      - img [ref=e440]
+                    - generic [ref=e442]: Cluster Viewer
+                - heading "Cluster ProfileDirect link to Cluster Profile" [level=3] [ref=e443]:
+                  - text: Cluster Profile
+                  - link "Direct link to Cluster Profile" [ref=e444] [cursor=pointer]:
+                    - /url: "#cluster-profile"
+                    - text: "#"
+                - table [ref=e445]:
+                  - rowgroup [ref=e446]:
+                    - row "Role Name Description" [ref=e447]:
+                      - cell "Role Name" [ref=e448]
+                      - cell "Description" [ref=e449]
+                  - rowgroup [ref=e450]:
+                    - row "Cluster Profile Admin Cluster Profile Admin role has admin privileges to all the cluster profile operations." [ref=e451]:
+                      - cell "Cluster Profile Admin" [ref=e452]
+                      - cell "Cluster Profile Admin role has admin privileges to all the cluster profile operations." [ref=e453]
+                    - row "Cluster Profile Editor Cluster Profile Editor role has privileges to edit and list operations on the cluster profile." [ref=e454]:
+                      - cell "Cluster Profile Editor" [ref=e455]
+                      - cell "Cluster Profile Editor role has privileges to edit and list operations on the cluster profile." [ref=e456]
+                    - row "Cluster Profile Viewer Cluster Profile Viewer role has read-only privileges to cluster profiles." [ref=e457]:
+                      - cell "Cluster Profile Viewer" [ref=e458]
+                      - cell "Cluster Profile Viewer role has read-only privileges to cluster profiles." [ref=e459]
+                - generic [ref=e460]:
+                  - button "collapsed Cluster Profile Admin" [ref=e462] [cursor=pointer]:
+                    - img "collapsed" [ref=e464]:
+                      - img [ref=e465]
+                    - generic [ref=e467]: Cluster Profile Admin
+                  - button "collapsed Cluster Profile Editor" [ref=e469] [cursor=pointer]:
+                    - img "collapsed" [ref=e471]:
+                      - img [ref=e472]
+                    - generic [ref=e474]: Cluster Profile Editor
+                  - button "collapsed Cluster Profile Viewer" [ref=e476] [cursor=pointer]:
+                    - img "collapsed" [ref=e478]:
+                      - img [ref=e479]
+                    - generic [ref=e481]: Cluster Profile Viewer
+                - heading "ProjectDirect link to Project" [level=3] [ref=e482]:
+                  - text: Project
+                  - link "Direct link to Project" [ref=e483] [cursor=pointer]:
+                    - /url: "#project"
+                    - text: "#"
+                - table [ref=e484]:
+                  - rowgroup [ref=e485]:
+                    - row "Role Name Description" [ref=e486]:
+                      - cell "Role Name" [ref=e487]
+                      - cell "Description" [ref=e488]
+                  - rowgroup [ref=e489]:
+                    - row "Project Admin The Project Admin role is a closure of all the project operations. It is an administrative privilege for the project resources." [ref=e490]:
+                      - cell "Project Admin" [ref=e491]
+                      - cell "The Project Admin role is a closure of all the project operations. It is an administrative privilege for the project resources." [ref=e492]
+                    - row "Project Editor The Project Editor role can perform edit operations within a project, but the user is not able to create or delete a project." [ref=e493]:
+                      - cell "Project Editor" [ref=e494]
+                      - cell "The Project Editor role can perform edit operations within a project, but the user is not able to create or delete a project." [ref=e495]
+                    - row "Project Viewer The Project Viewer will be able to view all the resources within a project, but is not privileged to make modifications." [ref=e496]:
+                      - cell "Project Viewer" [ref=e497]
+                      - cell "The Project Viewer will be able to view all the resources within a project, but is not privileged to make modifications." [ref=e498]
+                - generic [ref=e499]:
+                  - button "collapsed Project Admin" [ref=e501] [cursor=pointer]:
+                    - img "collapsed" [ref=e503]:
+                      - img [ref=e504]
+                    - generic [ref=e506]: Project Admin
+                  - button "collapsed Project Editor" [ref=e508] [cursor=pointer]:
+                    - img "collapsed" [ref=e510]:
+                      - img [ref=e511]
+                    - generic [ref=e513]: Project Editor
+                  - button "collapsed Project Viewer" [ref=e515] [cursor=pointer]:
+                    - img "collapsed" [ref=e517]:
+                      - img [ref=e518]
+                    - generic [ref=e520]: Project Viewer
+                - heading "Project Cluster GroupDirect link to Project Cluster Group" [level=3] [ref=e521]:
+                  - text: Project Cluster Group
+                  - link "Direct link to Project Cluster Group" [ref=e522] [cursor=pointer]:
+                    - /url: "#project-cluster-group"
+                    - text: "#"
+                - table [ref=e523]:
+                  - rowgroup [ref=e524]:
+                    - row "Role Name Description" [ref=e525]:
+                      - cell "Role Name" [ref=e526]
+                      - cell "Description" [ref=e527]
+                  - rowgroup [ref=e528]:
+                    - row "Project Cluster Group Admin Provides administrative privilege to perform all the operations on the cluster group resources." [ref=e529]:
+                      - cell "Project Cluster Group Admin" [ref=e530]
+                      - cell "Provides administrative privilege to perform all the operations on the cluster group resources." [ref=e531]
+                    - row "Project Cluster Group Editor Allows the user to perform edit operations on a cluster group but not to create or delete a cluster group." [ref=e532]:
+                      - cell "Project Cluster Group Editor" [ref=e533]
+                      - cell "Allows the user to perform edit operations on a cluster group but not to create or delete a cluster group." [ref=e534]
+                    - row "Project Cluster Group Viewer Allows the user to view all the cluster group resources but not to modify them." [ref=e535]:
+                      - cell "Project Cluster Group Viewer" [ref=e536]
+                      - cell "Allows the user to view all the cluster group resources but not to modify them." [ref=e537]
+                - generic [ref=e538]:
+                  - button "collapsed Project Cluster Group Admin" [ref=e540] [cursor=pointer]:
+                    - img "collapsed" [ref=e542]:
+                      - img [ref=e543]
+                    - generic [ref=e545]: Project Cluster Group Admin
+                  - button "collapsed Project Cluster Group Editor" [ref=e547] [cursor=pointer]:
+                    - img "collapsed" [ref=e549]:
+                      - img [ref=e550]
+                    - generic [ref=e552]: Project Cluster Group Editor
+                  - button "collapsed Project Cluster Group Viewer" [ref=e554] [cursor=pointer]:
+                    - img "collapsed" [ref=e556]:
+                      - img [ref=e557]
+                    - generic [ref=e559]: Project Cluster Group Viewer
+                - heading "Virtual ClusterDirect link to Virtual Cluster" [level=3] [ref=e560]:
+                  - text: Virtual Cluster
+                  - link "Direct link to Virtual Cluster" [ref=e561] [cursor=pointer]:
+                    - /url: "#virtual-cluster"
+                    - text: "#"
+                - table [ref=e562]:
+                  - rowgroup [ref=e563]:
+                    - row "Role Name Description" [ref=e564]:
+                      - cell "Role Name" [ref=e565]
+                      - cell "Description" [ref=e566]
+                  - rowgroup [ref=e567]:
+                    - row "Virtual Cluster Admin Provides administrative privilege to perform all virtual cluster operations on App resources." [ref=e568]:
+                      - cell "Virtual Cluster Admin" [ref=e569]
+                      - cell "Provides administrative privilege to perform all virtual cluster operations on App resources." [ref=e570]
+                    - row "Virtual Cluster Editor Allows the user to perform edit operations on a virtual cluster but not to create or delete a virtual cluster." [ref=e571]:
+                      - cell "Virtual Cluster Editor" [ref=e572]
+                      - cell "Allows the user to perform edit operations on a virtual cluster but not to create or delete a virtual cluster." [ref=e573]
+                    - row "Virtual Cluster Viewer Allows the user to view all the virtual cluster resources but not to modify them." [ref=e574]:
+                      - cell "Virtual Cluster Viewer" [ref=e575]
+                      - cell "Allows the user to view all the virtual cluster resources but not to modify them." [ref=e576]
+                - generic [ref=e577]:
+                  - button "collapsed Virtual Cluster Admin" [ref=e579] [cursor=pointer]:
+                    - img "collapsed" [ref=e581]:
+                      - img [ref=e582]
+                    - generic [ref=e584]: Virtual Cluster Admin
+                  - button "collapsed Virtual Cluster Editor" [ref=e586] [cursor=pointer]:
+                    - img "collapsed" [ref=e588]:
+                      - img [ref=e589]
+                    - generic [ref=e591]: Virtual Cluster Editor
+                  - button "collapsed Virtual Cluster Viewer" [ref=e593] [cursor=pointer]:
+                    - img "collapsed" [ref=e595]:
+                      - img [ref=e596]
+                    - generic [ref=e598]: Virtual Cluster Viewer
+                - heading "Virtual MachineDirect link to Virtual Machine" [level=3] [ref=e599]:
+                  - text: Virtual Machine
+                  - link "Direct link to Virtual Machine" [ref=e600] [cursor=pointer]:
+                    - /url: "#virtual-machine"
+                    - text: "#"
+                - table [ref=e601]:
+                  - rowgroup [ref=e602]:
+                    - row "Role Name Description" [ref=e603]:
+                      - cell "Role Name" [ref=e604]
+                      - cell "Description" [ref=e605]
+                  - rowgroup [ref=e606]:
+                    - row "Virtual Machine Admin Provides administrative privilege to perform all the virtual machine operations." [ref=e607]:
+                      - cell "Virtual Machine Admin" [ref=e608]
+                      - cell "Provides administrative privilege to perform all the virtual machine operations." [ref=e609]
+                    - row "Virtual Machine Power User Provides the user with the ability to most of the virtual machine operations." [ref=e610]:
+                      - cell "Virtual Machine Power User" [ref=e611]
+                      - cell "Provides the user with the ability to most of the virtual machine operations." [ref=e612]
+                    - row "Virtual Machine User Provides the user with the ability to perform non-destructive operations on virtual machines." [ref=e613]:
+                      - cell "Virtual Machine User" [ref=e614]
+                      - cell "Provides the user with the ability to perform non-destructive operations on virtual machines." [ref=e615]
+                    - row "Virtual Machine Viewer Provides the user with the ability to view virtual machines." [ref=e616]:
+                      - cell "Virtual Machine Viewer" [ref=e617]
+                      - cell "Provides the user with the ability to view virtual machines." [ref=e618]
+                - generic [ref=e619]:
+                  - button "collapsed Virtual Machine Admin" [ref=e621] [cursor=pointer]:
+                    - img "collapsed" [ref=e623]:
+                      - img [ref=e624]
+                    - generic [ref=e626]: Virtual Machine Admin
+                  - button "collapsed Virtual Machine Power User" [ref=e628] [cursor=pointer]:
+                    - img "collapsed" [ref=e630]:
+                      - img [ref=e631]
+                    - generic [ref=e633]: Virtual Machine Power User
+                  - button "collapsed Virtual Machine User" [ref=e635] [cursor=pointer]:
+                    - img "collapsed" [ref=e637]:
+                      - img [ref=e638]
+                    - generic [ref=e640]: Virtual Machine User
+                  - button "collapsed Virtual Machine Viewer" [ref=e642] [cursor=pointer]:
+                    - img "collapsed" [ref=e644]:
+                      - img [ref=e645]
+                    - generic [ref=e647]: Virtual Machine Viewer
+                - heading "WorkspaceDirect link to Workspace" [level=3] [ref=e648]:
+                  - text: Workspace
+                  - link "Direct link to Workspace" [ref=e649] [cursor=pointer]:
+                    - /url: "#workspace"
+                    - text: "#"
+                - table [ref=e650]:
+                  - rowgroup [ref=e651]:
+                    - row "Role Name Description" [ref=e652]:
+                      - cell "Role Name" [ref=e653]
+                      - cell "Description" [ref=e654]
+                  - rowgroup [ref=e655]:
+                    - row "Workspace Admin Administrator role to workspace operations." [ref=e656]:
+                      - cell "Workspace Admin" [ref=e657]
+                      - cell "Administrator role to workspace operations." [ref=e658]
+                    - row "Workspace Editor Editor role to workspace operations." [ref=e659]:
+                      - cell "Workspace Editor" [ref=e660]
+                      - cell "Editor role to workspace operations." [ref=e661]
+                - generic [ref=e662]:
+                  - button "collapsed Workspace Admin" [ref=e664] [cursor=pointer]:
+                    - img "collapsed" [ref=e666]:
+                      - img [ref=e667]
+                    - generic [ref=e669]: Workspace Admin
+                  - button "collapsed Workspace Operator" [ref=e671] [cursor=pointer]:
+                    - img "collapsed" [ref=e673]:
+                      - img [ref=e674]
+                    - generic [ref=e676]: Workspace Operator
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e677]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e678] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e679]:
+                  - listitem [ref=e680]:
+                    - link "Permissions" [ref=e681] [cursor=pointer]:
+                      - /url: /user-management/palette-rbac/permissions/
+              - generic [ref=e682]:
+                - generic [ref=e684]:
+                  - text: "Tags:"
+                  - list [ref=e685]:
+                    - listitem [ref=e686]:
+                      - link "user-management" [ref=e687] [cursor=pointer]:
+                        - /url: /tags/user-management/
+                    - listitem [ref=e688]:
+                      - link "project" [ref=e689] [cursor=pointer]:
+                        - /url: /tags/project/
+                    - listitem [ref=e690]:
+                      - link "rbac" [ref=e691] [cursor=pointer]:
+                        - /url: /tags/rbac/
+                - link "Edit this page" [ref=e694] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/user-management/palette-rbac/project-scope-roles-permissions.md
+                  - img [ref=e695]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e699]:
+              - link "Previous « Tenant Roles" [ref=e700] [cursor=pointer]:
+                - /url: /user-management/palette-rbac/tenant-scope-roles-permissions/
+                - generic [ref=e701]: Previous
+                - generic [ref=e702]: « Tenant Roles
+              - link "Next Resource Roles »" [ref=e703] [cursor=pointer]:
+                - /url: /user-management/palette-rbac/resource-scope-roles-permissions/
+                - generic [ref=e704]: Next
+                - generic [ref=e705]: Resource Roles »
+          - list [ref=e708]:
+            - listitem [ref=e709]:
+              - link "Default Project Roles" [ref=e710] [cursor=pointer]:
+                - /url: "#default-project-roles"
+              - list [ref=e711]:
+                - listitem [ref=e712]:
+                  - link "App Deployment" [ref=e713] [cursor=pointer]:
+                    - /url: "#app-deployment"
+                - listitem [ref=e714]:
+                  - link "App Profile" [ref=e715] [cursor=pointer]:
+                    - /url: "#app-profile"
+                - listitem [ref=e716]:
+                  - link "Cloud Account" [ref=e717] [cursor=pointer]:
+                    - /url: "#cloud-account"
+                - listitem [ref=e718]:
+                  - link "Cluster" [ref=e719] [cursor=pointer]:
+                    - /url: "#cluster"
+                - listitem [ref=e720]:
+                  - link "Cluster Profile" [ref=e721] [cursor=pointer]:
+                    - /url: "#cluster-profile"
+                - listitem [ref=e722]:
+                  - link "Project" [ref=e723] [cursor=pointer]:
+                    - /url: "#project"
+                - listitem [ref=e724]:
+                  - link "Project Cluster Group" [ref=e725] [cursor=pointer]:
+                    - /url: "#project-cluster-group"
+                - listitem [ref=e726]:
+                  - link "Virtual Cluster" [ref=e727] [cursor=pointer]:
+                    - /url: "#virtual-cluster"
+                - listitem [ref=e728]:
+                  - link "Virtual Machine" [ref=e729] [cursor=pointer]:
+                    - /url: "#virtual-machine"
+                - listitem [ref=e730]:
+                  - link "Workspace" [ref=e731] [cursor=pointer]:
+                    - /url: "#workspace"
+            - listitem [ref=e732]:
+              - link "Resources" [ref=e733] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e734] [cursor=pointer]:
+    - generic [ref=e737]:
+      - img "Project Logo" [ref=e738]
+      - paragraph [ref=e739]: Ask AI
+```
