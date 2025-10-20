@@ -67,16 +67,17 @@ cluster templates.
 6.  Enter a **Name** for your first schedule. The name must be unique within the scope of the current maintenance
     policy.
 
-7.  Use the **Schedule** drop-down menu to specify when to initiate cluster updates. Update schedules use
-    cron expressions under the hood; the cron expression for predefined options cannot be changed. Available options include the following:
+7.  Use the **Schedule** drop-down menu to specify when to initiate cluster updates. Update schedules use cron
+    expressions under the hood; the cron expression for predefined options cannot be changed. Available options include
+    the following:
 
-| **Option** | **Equivalent Cron Expression** | **Cron Expression Interpretation**|
-| --- | --- | --- | 
-| **Every week on Sunday at midnight** | `0 0 * * SUN` | At 12:00 AM, only on Sunday |
-| **Every two weeks at midnight** | `0 0 1,15 * *` | At 12:00 AM, on day one and 15 of the month |
-| **Every month on the 1st at midnight** | `0 0 1 * *` | At 12:00 AM, on day one of the month |
-| **Every two months on the 1st at midnight** | `0 0 1 */2 *` | At 12:00 AM, on day one of the month, every two months |
-| **Custom** | Varies. Refer to the [Custom Schedules](#custom-schedules) section. | Not applicable |
+| **Option**                                  | **Equivalent Cron Expression**                                      | **Cron Expression Interpretation**                     |
+| ------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------ |
+| **Every week on Sunday at midnight**        | `0 0 * * SUN`                                                       | At 12:00 AM, only on Sunday                            |
+| **Every two weeks at midnight**             | `0 0 1,15 * *`                                                      | At 12:00 AM, on day one and 15 of the month            |
+| **Every month on the 1st at midnight**      | `0 0 1 * *`                                                         | At 12:00 AM, on day one of the month                   |
+| **Every two months on the 1st at midnight** | `0 0 1 */2 *`                                                       | At 12:00 AM, on day one of the month, every two months |
+| **Custom**                                  | Varies. Refer to the [Custom Schedules](#custom-schedules) section. | Not applicable                                         |
 
     <br />
 
