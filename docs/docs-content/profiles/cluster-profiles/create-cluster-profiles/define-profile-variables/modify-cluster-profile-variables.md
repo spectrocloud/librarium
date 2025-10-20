@@ -141,6 +141,7 @@ the appropriate workflow based on the changes you make to your cluster.
    action.
 
 7. **Review & Save** your changes. The **Changes Summary** dialog appears. Select **Review changes in Editor**.
+
 8. Use the **Profile variable changes** tab to view the profiles that were changed. Expand each profile to compare the
    **Running configuration** and **New configuration**, making any necessary changes to your cluster profile variables.
    If you are overwriting the default value, you can revert to the original value by selecting **Use Default**. Updated
@@ -148,12 +149,12 @@ the appropriate workflow based on the changes you make to your cluster.
 
    Each profile must have a **Reviewed** status, indicated by a green check mark, before you can apply your changes.
    Hovering over each icon between **Running configuration** and **New configuration** explains what is being done for
-   each variable. In the below example, we made the following changes:
+   each variable. The below example includes the following changes:
 
    - Changed the Kubecost frontend `imagePullPolicy` from `Always` to `IfNotPresent`.
 
    - Changed the default value of the Hello Universe `namespace` variable. The value assigned for profile version 1.1.0
-     is the same as the value for version 1.0.0 and is not overwritten unless we select **Use new default**.
+     is the same as the value for version 1.0.0 and is not overwritten unless you select **Use new default**.
 
    - Added a new profile variable for Grafana.
 
@@ -198,7 +199,7 @@ the appropriate workflow based on the changes you make to your cluster.
 
 6. Modify the values of your profile variables. The updated value must match the schema defined in the cluster profile
    variable. If you are overwriting the default value, you can revert to the original value by selecting **Use
-   Default**. In the example below, we changed the Kubecost frontend `imagePullPolicy` from `Always` to `IfNotPresent`.
+   Default**. In the example below, the Kubecost frontend `imagePullPolicy` changed from `Always` to `IfNotPresent`.
 
    ![Overwriting existing cluster profile variables without modifying cluster profile](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_modify-cluster-profile-variable-override-updated.webp)
 
