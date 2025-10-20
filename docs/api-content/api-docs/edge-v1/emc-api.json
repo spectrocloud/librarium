@@ -24,7 +24,7 @@
         ],
         "description": "Get the details of the cluster.",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Get the details of the cluster.",
         "operationId": "v1ClusterConfig",
