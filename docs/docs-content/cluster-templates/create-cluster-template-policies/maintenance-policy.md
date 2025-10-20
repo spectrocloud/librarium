@@ -70,7 +70,7 @@ cluster templates.
 7.  Use the **Schedule** drop-down menu to specify when to initiate cluster updates. Update schedules use
     cron expressions under the hood; the cron expression for predefined options cannot be changed. Available options include the following:
 
-| **Option** | **Equivalent Cron Expression** | **Regular Expression Interpretation**|
+| **Option** | **Equivalent Cron Expression** | **Cron Expression Interpretation**|
 | --- | --- | --- | 
 | **Every week on Sunday at midnight** | `0 0 * * SUN` | At 12:00 AM, only on Sunday |
 | **Every two weeks at midnight** | `0 0 1,15 * *` | At 12:00 AM, on day one and 15 of the month |
