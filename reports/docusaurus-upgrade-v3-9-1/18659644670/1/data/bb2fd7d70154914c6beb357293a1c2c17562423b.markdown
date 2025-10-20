@@ -1,0 +1,484 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [expanded] [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+                - list [ref=e149]:
+                  - listitem [ref=e150]:
+                    - generic [ref=e151]:
+                      - link "User Authentication" [ref=e152] [cursor=pointer]:
+                        - /url: /user-management/authentication/
+                      - button "Toggle the collapsible sidebar category 'User Authentication'" [ref=e153] [cursor=pointer]
+                  - listitem [ref=e154]:
+                    - generic [ref=e155]:
+                      - link "Users and Teams" [ref=e156] [cursor=pointer]:
+                        - /url: /user-management/users-and-teams/
+                      - button "Toggle the collapsible sidebar category 'Users and Teams'" [ref=e157] [cursor=pointer]
+                  - listitem [ref=e158]:
+                    - generic [ref=e159]:
+                      - link "Roles and Permissions" [expanded] [ref=e160] [cursor=pointer]:
+                        - /url: /user-management/palette-rbac/
+                      - button "Toggle the collapsible sidebar category 'Roles and Permissions'" [ref=e161] [cursor=pointer]
+                    - list [ref=e162]:
+                      - listitem [ref=e163]:
+                        - link "Create and Manage a Custom Role" [ref=e164] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/create-custom-role/
+                      - listitem [ref=e165]:
+                        - link "Create and Manage a Role Assignment" [ref=e166] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/assign-a-role/
+                      - listitem [ref=e167]:
+                        - link "Permissions" [ref=e168] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/permissions/
+                      - listitem [ref=e169]:
+                        - link "Tenant Roles" [ref=e170] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/tenant-scope-roles-permissions/
+                      - listitem [ref=e171]:
+                        - link "Project Roles" [ref=e172] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/project-scope-roles-permissions/
+                      - listitem [ref=e173]:
+                        - link "Resource Roles" [ref=e174] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/resource-scope-roles-permissions/
+                      - listitem [ref=e175]:
+                        - link "ABAC in Palette" [ref=e176] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/implement-abac/
+                  - listitem [ref=e177]:
+                    - generic [ref=e178]:
+                      - link "SAML and OIDC SSO" [ref=e179] [cursor=pointer]:
+                        - /url: /user-management/saml-sso/
+                      - button "Toggle the collapsible sidebar category 'SAML and OIDC SSO'" [ref=e180] [cursor=pointer]
+              - listitem [ref=e181]:
+                - generic [ref=e182]:
+                  - link "Registries and Packs" [ref=e183] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e185]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e187] [cursor=pointer]
+              - listitem [ref=e188]:
+                - generic [ref=e189]:
+                  - link "Security" [ref=e190] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e192]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e194] [cursor=pointer]
+              - listitem [ref=e195]:
+                - generic [ref=e196]:
+                  - link "Audit Logs" [ref=e197] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e199]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e201] [cursor=pointer]
+              - listitem [ref=e202]:
+                - generic [ref=e203]:
+                  - link "Self-Hosted Palette" [ref=e204] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e206]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e208] [cursor=pointer]
+              - listitem [ref=e209]:
+                - generic [ref=e210]:
+                  - link "Palette VerteX" [ref=e211] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e213]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e215] [cursor=pointer]
+              - listitem [ref=e216]:
+                - generic [ref=e217]:
+                  - link "Tenant Administration" [ref=e218] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e220]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e222] [cursor=pointer]
+              - listitem [ref=e223]:
+                - generic [ref=e224]:
+                  - link "Automation" [ref=e225] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e227]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e229] [cursor=pointer]
+              - listitem [ref=e230]:
+                - generic [ref=e231]:
+                  - link "Troubleshooting" [ref=e232] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e234]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e236] [cursor=pointer]
+              - listitem [ref=e237]:
+                - link "Glossary" [ref=e238] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e240]
+                  - text: Glossary
+              - listitem [ref=e242]:
+                - generic [ref=e243]:
+                  - link "Compliance & Legal" [ref=e244] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e246]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e248] [cursor=pointer]
+              - listitem [ref=e249]:
+                - button "Privacy Settings" [ref=e250] [cursor=pointer]:
+                  - img [ref=e251]
+                  - text: Privacy Settings
+      - main [ref=e253]:
+        - generic [ref=e255]:
+          - generic [ref=e257]:
+            - article [ref=e258]:
+              - navigation "Breadcrumbs" [ref=e259]:
+                - list [ref=e260]:
+                  - listitem [ref=e261]:
+                    - link "Home page" [ref=e262] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e263]
+                  - listitem [ref=e265]:
+                    - link "User & Role Management" [ref=e266] [cursor=pointer]:
+                      - /url: /user-management/
+                  - listitem [ref=e267]:
+                    - link "Roles and Permissions" [ref=e268] [cursor=pointer]:
+                      - /url: /user-management/palette-rbac/
+                  - listitem [ref=e269]:
+                    - generic [ref=e270]: ABAC in Palette
+              - generic [ref=e271]:
+                - heading "Attribute-Based Access Control in Palette" [level=1] [ref=e273]
+                - paragraph [ref=e274]:
+                  - text: Attribute-Based Access Control (ABAC) is a security model that uses attributes to determine access to resources. In Palette, ABAC is implemented using
+                  - link "Resource roles" [ref=e275] [cursor=pointer]:
+                    - /url: /user-management/palette-rbac/resource-scope-roles-permissions/
+                  - text: and
+                  - link "Resource filters" [ref=e276] [cursor=pointer]:
+                    - /url: /tenant-settings/filters/
+                  - text: .
+                - paragraph [ref=e277]: The Resource role defines the permissions a user has on resources, and the Resource filters define the scope of the resources the user can access. When a Resource role is assigned to a user or team, it must be paired with a Resource filter to control access based on a tag value.
+                - paragraph [ref=e278]: This guide will teach you how to implement ABAC in Palette.
+                - generic [ref=e279]:
+                  - generic [ref=e280]:
+                    - img [ref=e282]
+                    - text: info
+                  - paragraph [ref=e285]:
+                    - text: ABAC in Palette can be achieved with a handful of resources. You can identify the Palette components eligible for ABAC on the
+                    - link "Permissions" [ref=e286] [cursor=pointer]:
+                      - /url: /user-management/palette-rbac/permissions/#operations
+                    - text: page. Review the components table and all components that have a checkmark in the Resource Role Scope column.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e287]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e288] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e289]:
+                  - listitem [ref=e290]:
+                    - paragraph [ref=e291]:
+                      - text: Tenant admin access to Palette with the permissions
+                      - code [ref=e292]: user.update
+                      - text: ","
+                      - code [ref=e293]: role.list
+                      - text: ","
+                      - code [ref=e294]: team.update
+                      - text: ", and"
+                      - code [ref=e295]: filter.list
+                      - text: .
+                  - listitem [ref=e296]:
+                    - paragraph [ref=e297]:
+                      - text: A user or team available. Check out the
+                      - link "Create and Manage a User" [ref=e298] [cursor=pointer]:
+                        - /url: /user-management/users-and-teams/create-user/
+                      - text: or
+                      - link "Create and Manage a Team" [ref=e299] [cursor=pointer]:
+                        - /url: /user-management/users-and-teams/create-a-team/
+                      - text: guide to learn how to create a user or team.
+                - heading "Implement ABACDirect link to Implement ABAC" [level=2] [ref=e300]:
+                  - text: Implement ABAC
+                  - link "Direct link to Implement ABAC" [ref=e301] [cursor=pointer]:
+                    - /url: "#implement-abac"
+                    - text: "#"
+                - paragraph [ref=e302]: To implement ABAC in Palette, use the following steps.
+                - list [ref=e303]:
+                  - listitem [ref=e304]:
+                    - paragraph [ref=e305]:
+                      - text: Log in to
+                      - link "Palette" [ref=e306] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant admin.
+                  - listitem [ref=e307]:
+                    - paragraph [ref=e308]:
+                      - text: Navigate to the left
+                      - strong [ref=e309]: Main Menu
+                      - text: and click on
+                      - strong [ref=e310]: Tenant Settings
+                      - text: .
+                  - listitem [ref=e311]:
+                    - paragraph [ref=e312]:
+                      - text: From the
+                      - strong [ref=e313]: Tenant Settings Menu
+                      - text: page, expand the
+                      - strong [ref=e314]: Platform
+                      - text: section and click on
+                      - strong [ref=e315]: Filters
+                      - text: .
+                  - listitem [ref=e316]:
+                    - paragraph [ref=e317]:
+                      - text: Create a filter by clicking on the
+                      - strong [ref=e318]: New Resource Filter
+                      - text: button. The resource filter creation page will open. Refer to the
+                      - link "Add a Resource Filter" [ref=e319] [cursor=pointer]:
+                        - /url: /tenant-settings/filters/
+                      - text: for detailed steps on creating a filter.
+                  - listitem [ref=e320]:
+                    - paragraph [ref=e321]:
+                      - text: After creating the filter, navigate to the left
+                      - strong [ref=e322]: Main Menu
+                      - text: and click on
+                      - strong [ref=e323]: Roles
+                      - text: .
+                  - listitem [ref=e324]:
+                    - paragraph [ref=e325]:
+                      - text: Click on the
+                      - strong [ref=e326]: Resource Roles
+                      - text: tab.
+                  - listitem [ref=e327]:
+                    - paragraph [ref=e328]:
+                      - text: Click on
+                      - strong [ref=e329]: Create Resource Role
+                      - text: . Provide the role a name and select the desired permissions. You can find detailed steps for how to create a Resource role in the
+                      - link "Create and Manage a Custom Role" [ref=e330] [cursor=pointer]:
+                        - /url: /user-management/palette-rbac/create-custom-role/#create-a-custom-resource-role
+                      - text: guide.
+                    - group [ref=e331]:
+                      - generic "What permissions do I select?" [ref=e332] [cursor=pointer]
+                  - listitem [ref=e333]:
+                    - paragraph [ref=e334]:
+                      - text: After creating the Resource role, navigate to the left
+                      - strong [ref=e335]: Main Menu
+                      - text: and click on
+                      - strong [ref=e336]: Users & Teams
+                      - text: .
+                  - listitem [ref=e337]:
+                    - paragraph [ref=e338]: Select the tab of the resource you want to assign with the Resource role, either a user or a team.
+                  - listitem [ref=e339]:
+                    - paragraph [ref=e340]: Click on the row of the user or team to display its overview page.
+                  - listitem [ref=e341]:
+                    - paragraph [ref=e342]:
+                      - text: Click on the
+                      - strong [ref=e343]: Resource Roles
+                      - text: tab.
+                  - listitem [ref=e344]:
+                    - paragraph [ref=e345]:
+                      - text: Click on the
+                      - strong [ref=e346]: New Resource Role
+                      - text: button.
+                  - listitem [ref=e347]:
+                    - paragraph [ref=e348]: Select the projects you want the Resource to have access to.
+                  - listitem [ref=e349]:
+                    - paragraph [ref=e350]: Assign the Resource filter you created in step 4.
+                  - listitem [ref=e351]:
+                    - paragraph [ref=e352]: Select the Resource role you created in step 7.
+                  - listitem [ref=e353]:
+                    - paragraph [ref=e354]:
+                      - text: Click
+                      - strong [ref=e355]: Confirm
+                      - text: to assign the Resource role to the user or team.
+                - paragraph [ref=e356]: The user or team can now interact with the Palette components that match the conditions defined in the Resource filter and the permissions defined in the Resource role.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e357]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e358] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e359]:
+                  - listitem [ref=e360]:
+                    - paragraph [ref=e361]:
+                      - text: Log in to
+                      - link "Palette" [ref=e362] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e363]:
+                    - paragraph [ref=e364]:
+                      - text: Create a resource that matches the conditions defined in the Resource filter. For example, if you created a filter that only allows users to view cluster profiles with the tag
+                      - code [ref=e365]: development
+                      - text: ", create a cluster profile with that tag."
+                  - listitem [ref=e366]:
+                    - paragraph [ref=e367]:
+                      - text: Have the user or team log in to
+                      - link "Palette" [ref=e368] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e369]:
+                    - paragraph [ref=e370]: Verify the user or team can only view and interact with resources that match the conditions defined in the Resource filter and the permissions defined in the Resource role.
+              - generic [ref=e371]:
+                - generic [ref=e373]:
+                  - text: "Tags:"
+                  - list [ref=e374]:
+                    - listitem [ref=e375]:
+                      - link "user-management" [ref=e376] [cursor=pointer]:
+                        - /url: /tags/user-management/
+                    - listitem [ref=e377]:
+                      - link "users" [ref=e378] [cursor=pointer]:
+                        - /url: /tags/users/
+                    - listitem [ref=e379]:
+                      - link "teams" [ref=e380] [cursor=pointer]:
+                        - /url: /tags/teams/
+                    - listitem [ref=e381]:
+                      - link "roles" [ref=e382] [cursor=pointer]:
+                        - /url: /tags/roles/
+                - link "Edit this page" [ref=e385] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/user-management/palette-rbac/implement-abac.md
+                  - img [ref=e386]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e390]:
+              - link "Previous « Resource Roles" [ref=e391] [cursor=pointer]:
+                - /url: /user-management/palette-rbac/resource-scope-roles-permissions/
+                - generic [ref=e392]: Previous
+                - generic [ref=e393]: « Resource Roles
+              - link "Next SAML and OIDC SSO »" [ref=e394] [cursor=pointer]:
+                - /url: /user-management/saml-sso/
+                - generic [ref=e395]: Next
+                - generic [ref=e396]: SAML and OIDC SSO »
+          - list [ref=e399]:
+            - listitem [ref=e400]:
+              - link "Prerequisites" [ref=e401] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e402]:
+              - link "Implement ABAC" [ref=e403] [cursor=pointer]:
+                - /url: "#implement-abac"
+            - listitem [ref=e404]:
+              - link "Validate" [ref=e405] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e406] [cursor=pointer]:
+    - generic [ref=e409]:
+      - img "Project Logo" [ref=e410]
+      - paragraph [ref=e411]: Ask AI
+```

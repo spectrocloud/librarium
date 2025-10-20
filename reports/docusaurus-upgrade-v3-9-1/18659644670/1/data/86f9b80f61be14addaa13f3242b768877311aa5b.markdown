@@ -1,0 +1,966 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [expanded] [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+                - list [ref=e107]:
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Public Cloud Clusters" [ref=e110] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e112]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e114] [cursor=pointer]
+                  - listitem [ref=e115]:
+                    - generic [ref=e116]:
+                      - link "Data Center Clusters" [ref=e117] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e119]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e121] [cursor=pointer]
+                  - listitem [ref=e122]:
+                    - generic [ref=e123]:
+                      - link "Edge" [ref=e124] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e126]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e128] [cursor=pointer]
+                  - listitem [ref=e129]:
+                    - generic [ref=e130]:
+                      - link "Palette Virtual Clusters" [ref=e131] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e133]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e135] [cursor=pointer]
+                  - listitem [ref=e136]:
+                    - generic [ref=e137]:
+                      - link "Imported Clusters" [ref=e138] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e140]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e142] [cursor=pointer]
+                  - listitem [ref=e143]:
+                    - generic [ref=e144]:
+                      - link "Manage Clusters" [expanded] [ref=e145] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e147]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e149] [cursor=pointer]
+                    - list [ref=e150]:
+                      - listitem [ref=e151]:
+                        - generic [ref=e152]:
+                          - link "SSH" [ref=e153] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/ssh/
+                          - button "Toggle the collapsible sidebar category 'SSH'" [ref=e154] [cursor=pointer]
+                      - listitem [ref=e155]:
+                        - link "Update a Cluster" [ref=e156] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-updates/
+                      - listitem [ref=e157]:
+                        - generic [ref=e158]:
+                          - link "Cluster Monitoring" [ref=e159] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/monitoring/
+                          - button "Toggle the collapsible sidebar category 'Cluster Monitoring'" [ref=e160] [cursor=pointer]
+                      - listitem [ref=e161]:
+                        - link "Cluster Health Alerts" [ref=e162] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/health-alerts/
+                      - listitem [ref=e163]:
+                        - generic [ref=e164]:
+                          - link "Backup and Restore" [expanded] [ref=e165] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/backup-restore/
+                          - button "Toggle the collapsible sidebar category 'Backup and Restore'" [ref=e166] [cursor=pointer]
+                        - list [ref=e167]:
+                          - listitem [ref=e168]:
+                            - link "Add Backup Location using Static Credentials" [ref=e169] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/backup-restore/add-backup-location-static/
+                          - listitem [ref=e170]:
+                            - link "Add Backup Location using Dynamic Credentials" [ref=e171] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/backup-restore/add-backup-location-dynamic/
+                          - listitem [ref=e172]:
+                            - link "Create Cluster Backup" [ref=e173] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/backup-restore/create-cluster-backup/
+                          - listitem [ref=e174]:
+                            - link "Restore Cluster Backup" [ref=e175] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/backup-restore/restore-cluster-backup/
+                          - listitem [ref=e176]:
+                            - link "Configure etcd Backup" [ref=e177] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/backup-restore/enable-etcd-backup/
+                      - listitem [ref=e178]:
+                        - link "Renew Cluster PKI Certificates" [ref=e179] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/certificate-management/
+                      - listitem [ref=e180]:
+                        - link "Compliance Scan" [ref=e181] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/compliance-scan/
+                      - listitem [ref=e182]:
+                        - link "OS Patching" [ref=e183] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/os-patching/
+                      - listitem [ref=e184]:
+                        - link "Cost Visibility" [ref=e185] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cloud-cost/
+                      - listitem [ref=e186]:
+                        - link "Workload Visibility" [ref=e187] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/workloads/
+                      - listitem [ref=e188]:
+                        - link "Node Labels" [ref=e189] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-labels/
+                      - listitem [ref=e190]:
+                        - link "Taints and Tolerations" [ref=e191] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/taints/
+                      - listitem [ref=e192]:
+                        - link "RBAC and Namespace Support" [ref=e193] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-rbac/
+                      - listitem [ref=e194]:
+                        - link "Namespace Management" [ref=e195] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/namespace-management/
+                      - listitem [ref=e196]:
+                        - link "Palette Macros" [ref=e197] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/macros/
+                      - listitem [ref=e198]:
+                        - link "Pack Monitoring" [ref=e199] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/pack-monitoring/
+                      - listitem [ref=e200]:
+                        - link "Kubeconfig" [ref=e201] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/kubeconfig/
+                      - listitem [ref=e202]:
+                        - link "Kubectl" [ref=e203] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/palette-webctl/
+                      - listitem [ref=e204]:
+                        - generic [ref=e205]:
+                          - link "Platform Settings" [ref=e206] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/platform-settings/
+                          - button "Toggle the collapsible sidebar category 'Platform Settings'" [ref=e207] [cursor=pointer]
+                      - listitem [ref=e208]:
+                        - link "Map and Filter Clusters" [ref=e209] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-map-filters/
+                      - listitem [ref=e210]:
+                        - link "Node Pools" [ref=e211] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-pool/
+                      - listitem [ref=e212]:
+                        - link "Configure Applications to Use Proxy Server" [ref=e213] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-proxy/
+                      - listitem [ref=e214]:
+                        - link "Spectro Kubernetes Dashboard" [ref=e215] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/spectro-kubernetes-dashboard/
+                      - listitem [ref=e216]:
+                        - link "Cluster Removal" [ref=e217] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/remove-clusters/
+                      - listitem [ref=e218]:
+                        - link "Image Swap" [ref=e219] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/image-swap/
+                      - listitem [ref=e220]:
+                        - link "Maintenance Mode" [ref=e221] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/maintenance-mode/
+                  - listitem [ref=e222]:
+                    - generic [ref=e223]:
+                      - link "Cluster Groups" [ref=e224] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e226]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e228] [cursor=pointer]
+                  - listitem [ref=e229]:
+                    - generic [ref=e230]:
+                      - link "Private Cloud Gateway" [ref=e231] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e233]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - generic [ref=e237]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e238] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e240]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - generic [ref=e244]:
+                  - link "Palette Dev Engine" [ref=e245] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e247]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e249] [cursor=pointer]
+              - listitem [ref=e250]:
+                - generic [ref=e251]:
+                  - link "Virtual Machine Orchestrator" [ref=e252] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e254]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e256] [cursor=pointer]
+              - listitem [ref=e257]:
+                - generic [ref=e258]:
+                  - link "Workspaces" [ref=e259] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e261]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e263] [cursor=pointer]
+              - listitem [ref=e264]:
+                - generic [ref=e265]:
+                  - link "Packs List" [ref=e266] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e268]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e270] [cursor=pointer]
+              - listitem [ref=e271]:
+                - generic [ref=e272]:
+                  - link "User & Role Management" [ref=e273] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e275]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e277] [cursor=pointer]
+              - listitem [ref=e278]:
+                - generic [ref=e279]:
+                  - link "Registries and Packs" [ref=e280] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e282]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e284] [cursor=pointer]
+              - listitem [ref=e285]:
+                - generic [ref=e286]:
+                  - link "Security" [ref=e287] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e289]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e291] [cursor=pointer]
+              - listitem [ref=e292]:
+                - generic [ref=e293]:
+                  - link "Audit Logs" [ref=e294] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e296]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e298] [cursor=pointer]
+              - listitem [ref=e299]:
+                - generic [ref=e300]:
+                  - link "Self-Hosted Palette" [ref=e301] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e303]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e305] [cursor=pointer]
+              - listitem [ref=e306]:
+                - generic [ref=e307]:
+                  - link "Palette VerteX" [ref=e308] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e310]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e312] [cursor=pointer]
+              - listitem [ref=e313]:
+                - generic [ref=e314]:
+                  - link "Tenant Administration" [ref=e315] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e317]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e319] [cursor=pointer]
+              - listitem [ref=e320]:
+                - generic [ref=e321]:
+                  - link "Automation" [ref=e322] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e324]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e326] [cursor=pointer]
+              - listitem [ref=e327]:
+                - generic [ref=e328]:
+                  - link "Troubleshooting" [ref=e329] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e331]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e333] [cursor=pointer]
+              - listitem [ref=e334]:
+                - link "Glossary" [ref=e335] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e337]
+                  - text: Glossary
+              - listitem [ref=e339]:
+                - generic [ref=e340]:
+                  - link "Compliance & Legal" [ref=e341] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e343]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e345] [cursor=pointer]
+              - listitem [ref=e346]:
+                - button "Privacy Settings" [ref=e347] [cursor=pointer]:
+                  - img [ref=e348]
+                  - text: Privacy Settings
+      - main [ref=e350]:
+        - generic [ref=e352]:
+          - generic [ref=e354]:
+            - article [ref=e355]:
+              - navigation "Breadcrumbs" [ref=e356]:
+                - list [ref=e357]:
+                  - listitem [ref=e358]:
+                    - link "Home page" [ref=e359] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e360]
+                  - listitem [ref=e362]:
+                    - link "Clusters" [ref=e363] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e364]:
+                    - link "Manage Clusters" [ref=e365] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/
+                  - listitem [ref=e366]:
+                    - link "Backup and Restore" [ref=e367] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/backup-restore/
+                  - listitem [ref=e368]:
+                    - generic [ref=e369]: Create Cluster Backup
+              - generic [ref=e370]:
+                - heading "Create Cluster Backup" [level=1] [ref=e372]
+                - paragraph [ref=e373]:
+                  - text: This guide provides instructions for how to create a cluster backup using Palette. You can refer to the cluster from where you created the backup as the
+                  - emphasis [ref=e374]: source cluster
+                  - text: .
+                - paragraph [ref=e375]: A backup operation can only back up specified namespaces, cluster-scoped resources, and Persistent Volumes (PVs) from the source cluster.
+                - generic [ref=e376]:
+                  - generic [ref=e377]:
+                    - img [ref=e379]
+                    - text: info
+                  - paragraph [ref=e382]:
+                    - text: Palette uses Velero to provide backup and restore capabilities. Check out their
+                    - link "Restore Reference" [ref=e383] [cursor=pointer]:
+                      - /url: https://velero.io/docs/main/restore-reference
+                    - text: and
+                    - link "Backup Reference" [ref=e384] [cursor=pointer]:
+                      - /url: https://velero.io/docs/main/backup-reference
+                    - text: to learn more about the project.
+                - paragraph [ref=e385]: You can schedule a cluster backup or initiate a backup on demand. You can define a backup schedule during cluster creation or in the cluster settings of an existing cluster.
+                - paragraph [ref=e386]: Palette supports scheduling recurring backups, with the ability to customize the frequency and the time. You can also specify the backup expiry period, meaning the duration after which Palette will delete the backup automatically. For example, you can schedule a backup for every week on Sunday at midnight and automatically expire the backup after three months. Additionally, you can initiate a backup on demand for an existing cluster.
+                - heading "LimitationsDirect link to Limitations" [level=2] [ref=e387]:
+                  - text: Limitations
+                  - link "Direct link to Limitations" [ref=e388] [cursor=pointer]:
+                    - /url: "#limitations"
+                    - text: "#"
+                - list [ref=e389]:
+                  - listitem [ref=e390]:
+                    - text: Nodes in
+                    - link "Maintenance Mode" [ref=e391] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/maintenance-mode/
+                    - text: are not included in the backup process.
+                - heading "Schedule a BackupDirect link to Schedule a Backup" [level=2] [ref=e392]:
+                  - text: Schedule a Backup
+                  - link "Direct link to Schedule a Backup" [ref=e393] [cursor=pointer]:
+                    - /url: "#schedule-a-backup"
+                    - text: "#"
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e394]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e395] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e396]:
+                  - listitem [ref=e397]:
+                    - paragraph [ref=e398]:
+                      - text: An available backup location in Palette. Refer to the
+                      - link "Add a Backup Location using Static Credentials" [ref=e399] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/backup-restore/add-backup-location-static/
+                      - text: or
+                      - link "Add a Backup Location using Dynamic Credentials" [ref=e400] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/backup-restore/add-backup-location-dynamic/
+                      - text: .
+                  - listitem [ref=e401]:
+                    - paragraph [ref=e402]: An active cluster in Palette.
+                - list [ref=e403]:
+                  - listitem [ref=e404]:
+                    - paragraph [ref=e405]:
+                      - text: If you want to include volume snapshots in the backup, ensure that your CSI driver supports volume snapshots. For more information about volume support, review the CSI pack README for your CSI driver in use. Refer to the
+                      - link "Volume Snapshots" [ref=e406] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/backup-restore/#volume-snapshots
+                      - text: section for more information.
+                    - generic [ref=e407]:
+                      - generic [ref=e408]:
+                        - img [ref=e410]
+                        - text: warning
+                      - generic [ref=e412]:
+                        - paragraph [ref=e413]:
+                          - text: Ensure that
+                          - code [ref=e414]: manifests.volume-snapshot-class.deletionPolicy
+                          - text: is set to the
+                          - code [ref=e415]: Retain
+                          - text: value if you have configured
+                          - link "Volume Snapshot Controller" [ref=e416] [cursor=pointer]:
+                            - /url: /integrations/packs/?pack=volume-snapshot-controller
+                          - text: as a layer in your cluster profile. This setting allows volume snapshot content to be retained when volume snapshots are deleted, facilitating backup and restore functionality.
+                        - code [ref=e420]:
+                          - generic [ref=e421]: "volume-snapshot-class:"
+                          - generic [ref=e422]: "create: true"
+                          - generic [ref=e423]: "name: \"spectro-volume-snapshot-class\""
+                          - generic [ref=e424]: "driver: \"\""
+                          - generic [ref=e425]: "deletionPolicy: \"Retain\""
+                        - paragraph [ref=e426]:
+                          - text: Additionally, you must add the following snippet under the
+                          - code [ref=e427]: manifests.volume-snapshot-class
+                          - text: field if you are using
+                          - link "Portworx" [ref=e428] [cursor=pointer]:
+                            - /url: /integrations/packs/?pack=csi-portworx-generic
+                          - text: as your CSI layer on a cluster deployed to a MAAS environment. These labels ensure that the
+                          - link "Volume Snapshot Controller" [ref=e429] [cursor=pointer]:
+                            - /url: /integrations/packs/?pack=volume-snapshot-controller
+                          - text: pack installs correctly.
+                        - generic [ref=e431]:
+                          - code [ref=e433]:
+                            - generic [ref=e434]: "extraLabels:"
+                            - generic [ref=e435]: "pod-security.kubernetes.io/enforce: privileged"
+                            - generic [ref=e436]: "pod-security.kubernetes.io/audit: privileged"
+                            - generic [ref=e437]: "pod-security.kubernetes.io/warn: privileged"
+                          - button "Copy code to clipboard" [ref=e439] [cursor=pointer]:
+                            - generic [ref=e440]:
+                              - img [ref=e441]
+                              - img [ref=e443]
+                - heading "EnablementDirect link to Enablement" [level=3] [ref=e445]:
+                  - text: Enablement
+                  - link "Direct link to Enablement" [ref=e446] [cursor=pointer]:
+                    - /url: "#enablement"
+                    - text: "#"
+                - list [ref=e447]:
+                  - listitem [ref=e448]:
+                    - paragraph [ref=e449]:
+                      - text: Log in to
+                      - link "Palette" [ref=e450] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e451]:
+                    - paragraph [ref=e452]:
+                      - text: Navigate to the left
+                      - strong [ref=e453]: Main Menu
+                      - text: ", and then select"
+                      - strong [ref=e454]: Clusters
+                      - text: . The list of clusters appears.
+                  - listitem [ref=e455]:
+                    - paragraph [ref=e456]:
+                      - text: Select a cluster you want to back up. The cluster
+                      - strong [ref=e457]: Overview
+                      - text: appears. Ensure the cluster status is
+                      - emphasis [ref=e458]: Healthy
+                      - text: .
+                  - listitem [ref=e459]:
+                    - paragraph [ref=e460]:
+                      - text: Click on the
+                      - strong [ref=e461]: Settings Menu
+                      - text: in the top right corner, and select
+                      - strong [ref=e462]: Cluster Settings
+                      - text: . The
+                      - strong [ref=e463]: Settings
+                      - text: pane appears.
+                  - listitem [ref=e464]:
+                    - paragraph [ref=e465]:
+                      - text: Select
+                      - strong [ref=e466]: Schedule Backups
+                      - text: . The backup configuration appears.
+                    - paragraph [ref=e467]:
+                      - img "A screenshot highlighting the fields for scheduling a backup for an existing cluster." [ref=e468]
+                  - listitem [ref=e469]:
+                    - paragraph [ref=e470]: Fill out the required input fields to schedule a backup. Refer to the following table to learn more about each input field.
+                    - table [ref=e471]:
+                      - rowgroup [ref=e472]:
+                        - row "Field Description" [ref=e473]:
+                          - cell "Field" [ref=e474]:
+                            - strong [ref=e475]: Field
+                          - cell "Description" [ref=e476]:
+                            - strong [ref=e477]: Description
+                      - rowgroup [ref=e478]:
+                        - row "Backup prefix Palette will generate a name automatically. Provide a prefix string you want to prepend to the auto-generated name." [ref=e479]:
+                          - cell "Backup prefix" [ref=e480]:
+                            - strong [ref=e481]: Backup prefix
+                          - cell "Palette will generate a name automatically. Provide a prefix string you want to prepend to the auto-generated name." [ref=e482]
+                        - row "Select backup location Choose a backup location. You must configure a location before creating a backup." [ref=e483]:
+                          - cell "Select backup location" [ref=e484]:
+                            - strong [ref=e485]: Select backup location
+                          - cell "Choose a backup location. You must configure a location before creating a backup." [ref=e486]
+                        - row "Backup schedule Create a backup schedule of your choice. Palette provides several scheduling options, including a fully customized date." [ref=e487]:
+                          - cell "Backup schedule" [ref=e488]:
+                            - strong [ref=e489]: Backup schedule
+                          - cell "Create a backup schedule of your choice. Palette provides several scheduling options, including a fully customized date." [ref=e490]
+                        - row "Select period until expiry Select an expiry duration for the backups. Palette will delete the backup after the expiry duration." [ref=e491]:
+                          - cell "Select period until expiry" [ref=e492]:
+                            - strong [ref=e493]: Select period until expiry
+                          - cell "Select an expiry duration for the backups. Palette will delete the backup after the expiry duration." [ref=e494]
+                        - row "Include all disks Select this checkbox if you want to include all the disks in the backup." [ref=e495]:
+                          - cell "Include all disks" [ref=e496]:
+                            - strong [ref=e497]: Include all disks
+                          - cell "Select this checkbox if you want to include all the disks in the backup." [ref=e498]
+                        - row "Include cluster-wide resources Select one the options from the dropdown. The available options are Auto, Always and Never. Auto is selected by default." [ref=e499]:
+                          - cell "Include cluster-wide resources" [ref=e500]:
+                            - strong [ref=e501]: Include cluster-wide resources
+                          - cell "Select one the options from the dropdown. The available options are Auto, Always and Never. Auto is selected by default." [ref=e502]:
+                            - text: Select one the options from the dropdown. The available options are
+                            - strong [ref=e503]: Auto
+                            - text: ","
+                            - strong [ref=e504]: Always
+                            - text: and
+                            - strong [ref=e505]: Never
+                            - text: .
+                            - strong [ref=e506]: Auto
+                            - text: is selected by default.
+                        - row "Include Namespaces (Optional) Palette will back up all namespaces by default. However, you can specify any namespaces you do not want backed up." [ref=e507]:
+                          - cell "Include Namespaces (Optional)" [ref=e508]:
+                            - strong [ref=e509]: Include Namespaces
+                            - text: (Optional)
+                          - cell "Palette will back up all namespaces by default. However, you can specify any namespaces you do not want backed up." [ref=e510]
+                    - generic [ref=e511]:
+                      - generic [ref=e512]:
+                        - img [ref=e514]
+                        - text: info
+                      - generic [ref=e516]:
+                        - paragraph [ref=e517]: "In Kubernetes, there are two types of resources: cluster-scoped and namespace-scoped."
+                        - paragraph [ref=e518]: Cluster-scoped resources, such as StorageClasses, ClusterRoles, and others, are visible and accessible to all users in the cluster, regardless of the namespaces.
+                        - paragraph [ref=e519]: Namespace-scoped resources, like Pods, Deployments, Services, and others, belong to a specific namespace and can only be accessed by users with the necessary permissions.
+                    - paragraph [ref=e520]: "A cluster backup supports the following scheduling options:"
+                    - list [ref=e521]:
+                      - listitem [ref=e522]: You can customize your backup to occur at a specific month, day, hour, and minute that suits your needs.
+                      - listitem [ref=e523]: Every week on Sunday at midnight
+                      - listitem [ref=e524]: Every two weeks at midnight
+                      - listitem [ref=e525]: Every month on the first at midnight
+                      - listitem [ref=e526]: Every two months on the first at midnight
+                      - listitem [ref=e527]: Never
+                    - paragraph [ref=e528]: A cluster-wide backup operation of the source cluster can be configured using three options. The following table summarizes the different options.
+                    - table [ref=e529]:
+                      - rowgroup [ref=e530]:
+                        - row "Backup Configuration Description" [ref=e531]:
+                          - cell "Backup Configuration" [ref=e532]:
+                            - strong [ref=e533]: Backup Configuration
+                          - cell "Description" [ref=e534]:
+                            - strong [ref=e535]: Description
+                      - rowgroup [ref=e536]:
+                        - row "Always Include all cluster-wide resources regardless of any selected namespaces. This option is designed for restore operations to be performed exclusively on the source cluster." [ref=e537]:
+                          - cell "Always" [ref=e538]:
+                            - strong [ref=e539]: Always
+                          - cell "Include all cluster-wide resources regardless of any selected namespaces. This option is designed for restore operations to be performed exclusively on the source cluster." [ref=e540]
+                        - row "Auto Include persistent volumes that are linked to claims within the selected namespaces, but exclude cluster-wide resources. This is the default option for new backups." [ref=e541]:
+                          - cell "Auto" [ref=e542]:
+                            - strong [ref=e543]: Auto
+                          - cell "Include persistent volumes that are linked to claims within the selected namespaces, but exclude cluster-wide resources. This is the default option for new backups." [ref=e544]
+                        - row "Never Excludes all cluster-wide resources, including persistent volumes." [ref=e545]:
+                          - cell "Never" [ref=e546]:
+                            - strong [ref=e547]: Never
+                          - cell "Excludes all cluster-wide resources, including persistent volumes." [ref=e548]
+                  - listitem [ref=e549]:
+                    - paragraph [ref=e550]:
+                      - text: Click on
+                      - strong [ref=e551]: Save Changes
+                      - text: . Depending on the size of the cluster, the backup process may take some time to complete. You can view the status of the backup in the
+                      - strong [ref=e552]: Backups
+                      - text: tab.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e553]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e554] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e555]:
+                  - listitem [ref=e556]:
+                    - paragraph [ref=e557]:
+                      - text: Log in to
+                      - link "Palette" [ref=e558] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e559]:
+                    - paragraph [ref=e560]:
+                      - text: Navigate to the left
+                      - strong [ref=e561]: Main Menu
+                      - text: ", and then select"
+                      - strong [ref=e562]: Clusters
+                      - text: .
+                  - listitem [ref=e563]:
+                    - paragraph [ref=e564]:
+                      - text: Select the cluster that you configured a backup for. The cluster
+                      - strong [ref=e565]: Overview
+                      - text: appears.
+                  - listitem [ref=e566]:
+                    - paragraph [ref=e567]:
+                      - text: Navigate to the
+                      - strong [ref=e568]: Backups
+                      - text: tab and click on the
+                      - strong [ref=e569]: Backups
+                      - text: nested tab. Palette displays a list of all available backups for the current cluster, including the newly created one.
+                    - paragraph [ref=e570]:
+                      - img "A screenshot highlighting the list of available backups for the specific cluster." [ref=e571]
+                  - listitem [ref=e572]:
+                    - paragraph [ref=e573]: You can click on the newly created backup from the list to view its details. Palette displays the backup name, status, creation date, expiry date, list of backed-up namespaces, and a boolean field indicating whether the backup includes all disks and cluster-scoped resources.
+                - heading "On-Demand backupDirect link to On-Demand backup" [level=2] [ref=e574]:
+                  - text: On-Demand backup
+                  - link "Direct link to On-Demand backup" [ref=e575] [cursor=pointer]:
+                    - /url: "#on-demand-backup"
+                    - text: "#"
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e576]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e577] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e578]:
+                  - listitem [ref=e579]:
+                    - paragraph [ref=e580]:
+                      - text: An available backup location in Palette. Refer to the
+                      - link "Add a Backup Location using Static Credentials" [ref=e581] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/backup-restore/add-backup-location-static/
+                      - text: or
+                      - link "Add a Backup Location using Dynamic Credentials" [ref=e582] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/backup-restore/add-backup-location-dynamic/
+                      - text: .
+                  - listitem [ref=e583]:
+                    - paragraph [ref=e584]: An active cluster in Palette.
+                - list [ref=e585]:
+                  - listitem [ref=e586]:
+                    - paragraph [ref=e587]:
+                      - text: If you want to include volume snapshots in the backup, ensure that your CSI driver supports volume snapshots. For more information about volume support, review the CSI pack README for your CSI driver in use. Refer to the
+                      - link "Volume Snapshots" [ref=e588] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/backup-restore/#volume-snapshots
+                      - text: section for more information.
+                    - generic [ref=e589]:
+                      - generic [ref=e590]:
+                        - img [ref=e592]
+                        - text: warning
+                      - generic [ref=e594]:
+                        - paragraph [ref=e595]:
+                          - text: Ensure that
+                          - code [ref=e596]: manifests.volume-snapshot-class.deletionPolicy
+                          - text: is set to the
+                          - code [ref=e597]: Retain
+                          - text: value if you have configured
+                          - link "Volume Snapshot Controller" [ref=e598] [cursor=pointer]:
+                            - /url: /integrations/packs/?pack=volume-snapshot-controller
+                          - text: as a layer in your cluster profile. This setting allows volume snapshot content to be retained when volume snapshots are deleted, facilitating backup and restore functionality.
+                        - code [ref=e602]:
+                          - generic [ref=e603]: "volume-snapshot-class:"
+                          - generic [ref=e604]: "create: true"
+                          - generic [ref=e605]: "name: \"spectro-volume-snapshot-class\""
+                          - generic [ref=e606]: "driver: \"\""
+                          - generic [ref=e607]: "deletionPolicy: \"Retain\""
+                        - paragraph [ref=e608]:
+                          - text: Additionally, you must add the following snippet under the
+                          - code [ref=e609]: manifests.volume-snapshot-class
+                          - text: field if you are using
+                          - link "Portworx" [ref=e610] [cursor=pointer]:
+                            - /url: /integrations/packs/?pack=csi-portworx-generic
+                          - text: as your CSI layer on a cluster deployed to a MAAS environment. These labels ensure that the
+                          - link "Volume Snapshot Controller" [ref=e611] [cursor=pointer]:
+                            - /url: /integrations/packs/?pack=volume-snapshot-controller
+                          - text: pack installs correctly.
+                        - generic [ref=e613]:
+                          - code [ref=e615]:
+                            - generic [ref=e616]: "extraLabels:"
+                            - generic [ref=e617]: "pod-security.kubernetes.io/enforce: privileged"
+                            - generic [ref=e618]: "pod-security.kubernetes.io/audit: privileged"
+                            - generic [ref=e619]: "pod-security.kubernetes.io/warn: privileged"
+                          - button "Copy code to clipboard" [ref=e621] [cursor=pointer]:
+                            - generic [ref=e622]:
+                              - img [ref=e623]
+                              - img [ref=e625]
+                - heading "EnablementDirect link to Enablement" [level=3] [ref=e627]:
+                  - text: Enablement
+                  - link "Direct link to Enablement" [ref=e628] [cursor=pointer]:
+                    - /url: "#enablement-1"
+                    - text: "#"
+                - list [ref=e629]:
+                  - listitem [ref=e630]:
+                    - paragraph [ref=e631]:
+                      - text: Log in to
+                      - link "Palette" [ref=e632] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e633]:
+                    - paragraph [ref=e634]:
+                      - text: Navigate to the left
+                      - strong [ref=e635]: Main Menu
+                      - text: and select
+                      - strong [ref=e636]: Clusters
+                      - text: .
+                  - listitem [ref=e637]:
+                    - paragraph [ref=e638]:
+                      - text: Select a cluster you want to back up. Ensure the cluster status is
+                      - emphasis [ref=e639]: Healthy
+                      - text: .
+                  - listitem [ref=e640]:
+                    - paragraph [ref=e641]:
+                      - text: Navigate to the
+                      - strong [ref=e642]: Backups
+                      - text: tab and click on the
+                      - strong [ref=e643]: Create Backup
+                      - text: button. The
+                      - strong [ref=e644]: Create Backup
+                      - text: window appears.
+                    - paragraph [ref=e645]:
+                      - img "A screenshot highlighting the fields for an on-demand backup for an existing cluster." [ref=e646]
+                  - listitem [ref=e647]:
+                    - paragraph [ref=e648]: Use the following information to configure a scheduled backup.
+                    - table [ref=e649]:
+                      - rowgroup [ref=e650]:
+                        - row "Field Description" [ref=e651]:
+                          - cell "Field" [ref=e652]:
+                            - strong [ref=e653]: Field
+                          - cell "Description" [ref=e654]:
+                            - strong [ref=e655]: Description
+                      - rowgroup [ref=e656]:
+                        - row "Backup name Provide a name for the backup." [ref=e657]:
+                          - cell "Backup name" [ref=e658]:
+                            - strong [ref=e659]: Backup name
+                          - cell "Provide a name for the backup." [ref=e660]
+                        - row "Select backup location Choose a backup location. You must configure a backup location before creating a backup. Refer to the Add a Backup Location using Static Credentials or Add a Backup Location using Dynamic Credentials guides to learn about adding a backup location using static or dynamic credentials." [ref=e661]:
+                          - cell "Select backup location" [ref=e662]:
+                            - strong [ref=e663]: Select backup location
+                          - cell "Choose a backup location. You must configure a backup location before creating a backup. Refer to the Add a Backup Location using Static Credentials or Add a Backup Location using Dynamic Credentials guides to learn about adding a backup location using static or dynamic credentials." [ref=e664]:
+                            - text: Choose a backup location. You must configure a backup location before creating a backup. Refer to the
+                            - link "Add a Backup Location using Static Credentials" [ref=e665] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/backup-restore/add-backup-location-static/
+                            - text: or
+                            - link "Add a Backup Location using Dynamic Credentials" [ref=e666] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/backup-restore/add-backup-location-dynamic/
+                            - text: guides to learn about adding a backup location using static or dynamic credentials.
+                        - row "Select period until expiry Select an expiry duration for the backup. The backup will be automatically removed after the expiry duration." [ref=e667]:
+                          - cell "Select period until expiry" [ref=e668]:
+                            - strong [ref=e669]: Select period until expiry
+                          - cell "Select an expiry duration for the backup. The backup will be automatically removed after the expiry duration." [ref=e670]
+                        - row "Include all disks Select this checkbox if you want to include PVs and volume snapshots in the backup." [ref=e671]:
+                          - cell "Include all disks" [ref=e672]:
+                            - strong [ref=e673]: Include all disks
+                          - cell "Select this checkbox if you want to include PVs and volume snapshots in the backup." [ref=e674]
+                        - row "Include cluster-wide resources Select one the options from the dropdown. The available options are Auto, Always and Never. Auto is selected by default." [ref=e675]:
+                          - cell "Include cluster-wide resources" [ref=e676]:
+                            - strong [ref=e677]: Include cluster-wide resources
+                          - cell "Select one the options from the dropdown. The available options are Auto, Always and Never. Auto is selected by default." [ref=e678]:
+                            - text: Select one the options from the dropdown. The available options are
+                            - strong [ref=e679]: Auto
+                            - text: ","
+                            - strong [ref=e680]: Always
+                            - text: and
+                            - strong [ref=e681]: Never
+                            - text: .
+                            - strong [ref=e682]: Auto
+                            - text: is selected by default.
+                        - row "Include Namespaces (Optional) Palette will back up all namespaces by default. However, you can specify namespaces you do not want backed up." [ref=e683]:
+                          - cell "Include Namespaces (Optional)" [ref=e684]:
+                            - strong [ref=e685]: Include Namespaces
+                            - text: (Optional)
+                          - cell "Palette will back up all namespaces by default. However, you can specify namespaces you do not want backed up." [ref=e686]
+                    - generic [ref=e687]:
+                      - generic [ref=e688]:
+                        - img [ref=e690]
+                        - text: info
+                      - generic [ref=e692]:
+                        - paragraph [ref=e693]: "In Kubernetes, there are two types of resources: cluster-scoped and namespace-scoped."
+                        - paragraph [ref=e694]: Cluster-scoped resources, such as StorageClasses, ClusterRoles, and others, are visible and accessible to all users in the cluster, regardless of the namespaces.
+                        - paragraph [ref=e695]: Namespace-scoped resources, like Pods, Deployments, Services, and others, belong to a specific namespace and can only be accessed by users with the necessary permissions.
+                    - paragraph [ref=e696]: A cluster-wide backup operation of the source cluster can be configured using three options. The following table summarizes the different options.
+                    - table [ref=e697]:
+                      - rowgroup [ref=e698]:
+                        - row "Backup Configuration Description" [ref=e699]:
+                          - cell "Backup Configuration" [ref=e700]:
+                            - strong [ref=e701]: Backup Configuration
+                          - cell "Description" [ref=e702]:
+                            - strong [ref=e703]: Description
+                      - rowgroup [ref=e704]:
+                        - row "Always Include all cluster-wide resources regardless of any selected namespaces. This option is designed for restore operations to be performed exclusively on the source cluster." [ref=e705]:
+                          - cell "Always" [ref=e706]:
+                            - strong [ref=e707]: Always
+                          - cell "Include all cluster-wide resources regardless of any selected namespaces. This option is designed for restore operations to be performed exclusively on the source cluster." [ref=e708]
+                        - row "Auto Include persistent volumes that are linked to claims within the selected namespaces, but exclude cluster-wide resources. This is the default option for new backups." [ref=e709]:
+                          - cell "Auto" [ref=e710]:
+                            - strong [ref=e711]: Auto
+                          - cell "Include persistent volumes that are linked to claims within the selected namespaces, but exclude cluster-wide resources. This is the default option for new backups." [ref=e712]
+                        - row "Never Excludes all cluster-wide resources, including persistent volumes." [ref=e713]:
+                          - cell "Never" [ref=e714]:
+                            - strong [ref=e715]: Never
+                          - cell "Excludes all cluster-wide resources, including persistent volumes." [ref=e716]
+                  - listitem [ref=e717]:
+                    - paragraph [ref=e718]:
+                      - text: Click on the
+                      - strong [ref=e719]: Create Backup
+                      - text: button. Depending on the size of the cluster, the backup process may take some time to complete. You can view the status of the backup in the
+                      - strong [ref=e720]: Backups
+                      - text: tab.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e721]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e722] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - list [ref=e723]:
+                  - listitem [ref=e724]:
+                    - paragraph [ref=e725]:
+                      - text: Log in to
+                      - link "Palette" [ref=e726] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e727]:
+                    - paragraph [ref=e728]:
+                      - text: Navigate to the left
+                      - strong [ref=e729]: Main Menu
+                      - text: ", and then select"
+                      - strong [ref=e730]: Clusters
+                      - text: .
+                  - listitem [ref=e731]:
+                    - paragraph [ref=e732]:
+                      - text: Select the cluster that you configured a backup for. The cluster
+                      - strong [ref=e733]: Overview
+                      - text: appears.
+                  - listitem [ref=e734]:
+                    - paragraph [ref=e735]:
+                      - text: Navigate to the
+                      - strong [ref=e736]: Backups
+                      - text: tab and click on the
+                      - strong [ref=e737]: Backups
+                      - text: nested tab. Palette displays a list of all available backups for the current cluster, including the newly created one.
+                    - paragraph [ref=e738]:
+                      - img "A screenshot highlighting the list of available backups for the specific cluster." [ref=e739]
+                  - listitem [ref=e740]:
+                    - paragraph [ref=e741]: You can click on the newly created backup from the list to view its details. Palette displays the backup name, status, creation date, expiry date, list of backed-up namespaces, and a boolean field indicating whether the backup includes all disks and cluster-scoped resources.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e742]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e743] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e744]:
+                  - text: When the backup is available, you can restore it to the same or to a different cluster. Refer to the
+                  - link "Restore a Cluster Backup" [ref=e745] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/backup-restore/restore-cluster-backup/
+                  - text: guide to learn more about restoring a backup.
+              - generic [ref=e746]:
+                - generic [ref=e748]:
+                  - text: "Tags:"
+                  - list [ref=e749]:
+                    - listitem [ref=e750]:
+                      - link "clusters" [ref=e751] [cursor=pointer]:
+                        - /url: /tags/clusters/
+                    - listitem [ref=e752]:
+                      - link "cluster management" [ref=e753] [cursor=pointer]:
+                        - /url: /tags/cluster-management/
+                    - listitem [ref=e754]:
+                      - link "backup" [ref=e755] [cursor=pointer]:
+                        - /url: /tags/backup/
+                - link "Edit this page" [ref=e758] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/cluster-management/backup-restore/create-cluster-backup.md
+                  - img [ref=e759]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e763]:
+              - link "Previous « Add Backup Location using Dynamic Credentials" [ref=e764] [cursor=pointer]:
+                - /url: /clusters/cluster-management/backup-restore/add-backup-location-dynamic/
+                - generic [ref=e765]: Previous
+                - generic [ref=e766]: « Add Backup Location using Dynamic Credentials
+              - link "Next Restore Cluster Backup »" [ref=e767] [cursor=pointer]:
+                - /url: /clusters/cluster-management/backup-restore/restore-cluster-backup/
+                - generic [ref=e768]: Next
+                - generic [ref=e769]: Restore Cluster Backup »
+          - list [ref=e772]:
+            - listitem [ref=e773]:
+              - link "Limitations" [ref=e774] [cursor=pointer]:
+                - /url: "#limitations"
+            - listitem [ref=e775]:
+              - link "Schedule a Backup" [ref=e776] [cursor=pointer]:
+                - /url: "#schedule-a-backup"
+              - list [ref=e777]:
+                - listitem [ref=e778]:
+                  - link "Prerequisites" [ref=e779] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e780]:
+                  - link "Enablement" [ref=e781] [cursor=pointer]:
+                    - /url: "#enablement"
+                - listitem [ref=e782]:
+                  - link "Validate" [ref=e783] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e784]:
+              - link "On-Demand backup" [ref=e785] [cursor=pointer]:
+                - /url: "#on-demand-backup"
+              - list [ref=e786]:
+                - listitem [ref=e787]:
+                  - link "Prerequisites" [ref=e788] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e789]:
+                  - link "Enablement" [ref=e790] [cursor=pointer]:
+                    - /url: "#enablement-1"
+                - listitem [ref=e791]:
+                  - link "Validate" [ref=e792] [cursor=pointer]:
+                    - /url: "#validate-1"
+            - listitem [ref=e793]:
+              - link "Next Steps" [ref=e794] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e795] [cursor=pointer]:
+    - generic [ref=e798]:
+      - img "Project Logo" [ref=e799]
+      - paragraph [ref=e800]: Ask AI
+```

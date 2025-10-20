@@ -1,0 +1,866 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [expanded] [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+                - list [ref=e89]:
+                  - listitem [ref=e90]:
+                    - generic [ref=e91]:
+                      - link "Create and Manage Template Policies" [ref=e92] [cursor=pointer]:
+                        - /url: /cluster-templates/create-cluster-template-policies/
+                      - button "Toggle the collapsible sidebar category 'Create and Manage Template Policies'" [ref=e93] [cursor=pointer]
+                  - listitem [ref=e94]:
+                    - link "Create Cluster Templates" [ref=e95] [cursor=pointer]:
+                      - /url: /cluster-templates/create-cluster-templates/
+                  - listitem [ref=e96]:
+                    - link "Modify Cluster Templates" [ref=e97] [cursor=pointer]:
+                      - /url: /cluster-templates/modify-cluster-templates/
+                  - listitem [ref=e98]:
+                    - link "Delete Cluster Templates" [ref=e99] [cursor=pointer]:
+                      - /url: /cluster-templates/delete-cluster-templates/
+              - listitem [ref=e100]:
+                - generic [ref=e101]:
+                  - link "Deployment Modes" [ref=e102] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e104]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Clusters" [ref=e109] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e111]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e117] [cursor=pointer]
+              - listitem [ref=e118]:
+                - generic [ref=e119]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e120] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e122]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e124] [cursor=pointer]
+              - listitem [ref=e125]:
+                - generic [ref=e126]:
+                  - link "Palette Dev Engine" [ref=e127] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e129]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e131] [cursor=pointer]
+              - listitem [ref=e132]:
+                - generic [ref=e133]:
+                  - link "Virtual Machine Orchestrator" [ref=e134] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e136]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e138] [cursor=pointer]
+              - listitem [ref=e139]:
+                - generic [ref=e140]:
+                  - link "Workspaces" [ref=e141] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e143]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e145] [cursor=pointer]
+              - listitem [ref=e146]:
+                - generic [ref=e147]:
+                  - link "Packs List" [ref=e148] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e150]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e152] [cursor=pointer]
+              - listitem [ref=e153]:
+                - generic [ref=e154]:
+                  - link "User & Role Management" [ref=e155] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e157]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e159] [cursor=pointer]
+              - listitem [ref=e160]:
+                - generic [ref=e161]:
+                  - link "Registries and Packs" [ref=e162] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e164]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e166] [cursor=pointer]
+              - listitem [ref=e167]:
+                - generic [ref=e168]:
+                  - link "Security" [ref=e169] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e171]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e173] [cursor=pointer]
+              - listitem [ref=e174]:
+                - generic [ref=e175]:
+                  - link "Audit Logs" [ref=e176] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e178]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e180] [cursor=pointer]
+              - listitem [ref=e181]:
+                - generic [ref=e182]:
+                  - link "Self-Hosted Palette" [ref=e183] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e185]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e187] [cursor=pointer]
+              - listitem [ref=e188]:
+                - generic [ref=e189]:
+                  - link "Palette VerteX" [ref=e190] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e192]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e194] [cursor=pointer]
+              - listitem [ref=e195]:
+                - generic [ref=e196]:
+                  - link "Tenant Administration" [ref=e197] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e199]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e201] [cursor=pointer]
+              - listitem [ref=e202]:
+                - generic [ref=e203]:
+                  - link "Automation" [ref=e204] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e206]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e208] [cursor=pointer]
+              - listitem [ref=e209]:
+                - generic [ref=e210]:
+                  - link "Troubleshooting" [ref=e211] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e213]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e215] [cursor=pointer]
+              - listitem [ref=e216]:
+                - link "Glossary" [ref=e217] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e219]
+                  - text: Glossary
+              - listitem [ref=e221]:
+                - generic [ref=e222]:
+                  - link "Compliance & Legal" [ref=e223] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e225]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e227] [cursor=pointer]
+              - listitem [ref=e228]:
+                - button "Privacy Settings" [ref=e229] [cursor=pointer]:
+                  - img [ref=e230]
+                  - text: Privacy Settings
+      - main [ref=e232]:
+        - generic [ref=e234]:
+          - generic [ref=e236]:
+            - article [ref=e237]:
+              - navigation "Breadcrumbs" [ref=e238]:
+                - list [ref=e239]:
+                  - listitem [ref=e240]:
+                    - link "Home page" [ref=e241] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e242]
+                  - listitem [ref=e244]:
+                    - link "Cluster Templates" [ref=e245] [cursor=pointer]:
+                      - /url: /cluster-templates/
+                  - listitem [ref=e246]:
+                    - generic [ref=e247]: Modify Cluster Templates
+              - generic [ref=e248]:
+                - heading "Modify Cluster Templates" [level=1] [ref=e250]
+                - generic [ref=e251]:
+                  - generic [ref=e252]:
+                    - img [ref=e254]
+                    - text: tech preview
+                  - generic [ref=e256]: This is a Tech Preview feature and is subject to change. Do not use this feature in production workloads.
+                - paragraph [ref=e257]:
+                  - link "Cluster templates" [ref=e258] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                  - text: use
+                  - link "cluster profiles" [ref=e259] [cursor=pointer]:
+                    - /url: /profiles/cluster-profiles/
+                  - text: and cluster
+                  - link "template policies" [ref=e260] [cursor=pointer]:
+                    - /url: /cluster-templates/create-cluster-template-policies/
+                  - text: to declaratively define and manage the software stack and lifecycle of clusters deployed with Palette. Since cluster templates are wrappers that reference existing profiles and policies as objects, you can modify cluster profiles and policies independent of cluster templates, regardless of whether the template is linked to a cluster.
+                - paragraph [ref=e261]: Each resource in Palette, such as profiles, policies, and templates, has a unique identifier (UID). When a cluster is deployed, it references the UID of the associated cluster template, which in turn references the UIDs of linked profiles and policies to define the cluster's infrastructure, applications, and operational settings.
+                - paragraph [ref=e262]: If a linked object is updated, such as changing a cluster profile version from 1.0.0 to 2.0.0, the cluster template is updated to reference the new UID. During the cluster's next upgrade window, it uses this updated reference to apply the changes. This modular architecture allows users to swap out components in a cluster template at any time, enabling flexible, version-driven management.
+                - paragraph [ref=e263]:
+                  - img "Diagram showing how cluster templates reference profiles and policies as objects" [ref=e264]
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e265]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e266] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e267]:
+                  - listitem [ref=e268]:
+                    - paragraph [ref=e269]:
+                      - text: The
+                      - strong [ref=e270]: ClusterTemplate
+                      - link "feature flag" [ref=e271] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/feature-flags/
+                      - text: enabled.
+                  - listitem [ref=e272]:
+                    - paragraph [ref=e273]:
+                      - text: The
+                      - code [ref=e274]: clusterTemplate.update
+                      - text: permission to modify cluster templates. Refer to our
+                      - link "Roles and Permissions" [ref=e275] [cursor=pointer]:
+                        - /url: /user-management/palette-rbac/project-scope-roles-permissions/#project
+                      - text: guide for more information.
+                  - listitem [ref=e276]:
+                    - paragraph [ref=e277]:
+                      - text: An existing
+                      - link "cluster template" [ref=e278] [cursor=pointer]:
+                        - /url: /cluster-templates/
+                      - text: .
+                - heading "Modify Cluster TemplatesDirect link to Modify Cluster Templates" [level=2] [ref=e279]:
+                  - text: Modify Cluster Templates
+                  - link "Direct link to Modify Cluster Templates" [ref=e280] [cursor=pointer]:
+                    - /url: "#modify-cluster-templates"
+                    - text: "#"
+                - paragraph [ref=e281]: Use the appropriate cluster template tab depending on the required modification.
+                - table [ref=e282]:
+                  - rowgroup [ref=e283]:
+                    - row "Tab Available Actions" [ref=e284]:
+                      - cell "Tab" [ref=e285]:
+                        - strong [ref=e286]: Tab
+                      - cell "Available Actions" [ref=e287]:
+                        - strong [ref=e288]: Available Actions
+                  - rowgroup [ref=e289]:
+                    - row "Overview - Update your cluster to the latest version, regardless of the upgrade schedule specified in the maintenance policy." [ref=e290]:
+                      - cell "Overview" [ref=e291]:
+                        - link "Overview" [ref=e292] [cursor=pointer]:
+                          - /url: "#overview-tab"
+                          - strong [ref=e293]: Overview
+                      - cell "- Update your cluster to the latest version, regardless of the upgrade schedule specified in the maintenance policy." [ref=e294]
+                    - row "Policies - Add, update, replace, and remove referenced cluster templates and policies. - Modify the cluster profile version of a linked cluster profile." [ref=e295]:
+                      - cell "Policies" [ref=e296]:
+                        - link "Policies" [ref=e297] [cursor=pointer]:
+                          - /url: "#policies-tab"
+                          - strong [ref=e298]: Policies
+                      - cell "- Add, update, replace, and remove referenced cluster templates and policies. - Modify the cluster profile version of a linked cluster profile." [ref=e299]:
+                        - text: "- Add, update, replace, and remove referenced cluster templates and policies."
+                        - text: "- Modify the cluster profile version of a linked cluster profile."
+                    - row "Variable values - Get a high-level overview of all cluster profile variables deployed using the cluster profiles linked to the cluster template. - Perform batch updates for cluster variable values across specified clusters." [ref=e300]:
+                      - cell "Variable values" [ref=e301]:
+                        - link "Variable values" [ref=e302] [cursor=pointer]:
+                          - /url: "#variable-values-tab"
+                          - strong [ref=e303]: Variable values
+                      - cell "- Get a high-level overview of all cluster profile variables deployed using the cluster profiles linked to the cluster template. - Perform batch updates for cluster variable values across specified clusters." [ref=e304]:
+                        - text: "- Get a high-level overview of all cluster profile variables deployed using the cluster profiles linked to the cluster template."
+                        - text: "- Perform batch updates for cluster variable values across specified clusters."
+                - heading "Overview TabDirect link to Overview Tab" [level=3] [ref=e305]:
+                  - text: Overview Tab
+                  - link "Direct link to Overview Tab" [ref=e306] [cursor=pointer]:
+                    - /url: "#overview-tab"
+                    - text: "#"
+                - paragraph [ref=e307]:
+                  - text: Use the
+                  - strong [ref=e308]: Overview
+                  - text: "tab to manually update clusters linked to your cluster template and to view the following information about your cluster template:"
+                - list [ref=e309]:
+                  - listitem [ref=e310]:
+                    - paragraph [ref=e311]: Basic metadata
+                  - listitem [ref=e312]:
+                    - paragraph [ref=e313]: Number of linked policies
+                  - listitem [ref=e314]:
+                    - paragraph [ref=e315]: Number of clusters linked to the cluster template
+                  - listitem [ref=e316]:
+                    - paragraph [ref=e317]: List of linked cluster profiles and their packs
+                - paragraph [ref=e318]:
+                  - text: The option to manually trigger cluster updates is available only if a cluster template is linked to a cluster
+                  - emphasis [ref=e319]: and
+                  - text: there is a discrepancy between the cluster profile variable versions used in the cluster and the versions referenced in the template. This is caused when a cluster profile has been recently added to or removed from the cluster template, or the version of a cluster profile linked to a cluster template has been updated, but the upgrade window specified in the attached maintenance policy has not passed.
+                - paragraph [ref=e320]:
+                  - text: To force cluster updates and bypass the scheduled maintenance window, select
+                  - strong [ref=e321]: Options > Upgrade now
+                  - text: .
+                - paragraph [ref=e322]:
+                  - img "Manually updating clusters attached to a cluster template" [ref=e323]
+                - generic [ref=e324]:
+                  - generic [ref=e325]:
+                    - img [ref=e327]
+                    - text: warning
+                  - paragraph [ref=e330]:
+                    - text: If there are any pending variable assignments, the banner
+                    - strong [ref=e331]: "[N] cluster(s) pending variable assignment"
+                    - text: is displayed. Even if you attempt to force an upgrade, any clusters without pending variable assignments will
+                    - emphasis [ref=e332]: not
+                    - text: be updated when you select
+                    - strong [ref=e333]: Upgrade now
+                    - text: . Navigate to the
+                    - link "Variable values" [ref=e334] [cursor=pointer]:
+                      - /url: "#variable-values-tab"
+                      - strong [ref=e335]: Variable values
+                    - text: tab and assign a
+                    - strong [ref=e336]: New Value
+                    - text: to each variable before attempting the upgrade again.
+                - heading "Policies TabDirect link to Policies Tab" [level=3] [ref=e337]:
+                  - text: Policies Tab
+                  - link "Direct link to Policies Tab" [ref=e338] [cursor=pointer]:
+                    - /url: "#policies-tab"
+                    - text: "#"
+                - paragraph [ref=e339]:
+                  - text: Use the
+                  - strong [ref=e340]: Policies
+                  - text: "tab to perform the following actions:"
+                - list [ref=e341]:
+                  - listitem [ref=e342]:
+                    - paragraph [ref=e343]:
+                      - text: Replace the linked
+                      - link "maintenance policy" [ref=e344] [cursor=pointer]:
+                        - /url: /cluster-templates/create-cluster-template-policies/maintenance-policy/
+                      - text: .
+                  - listitem [ref=e345]:
+                    - paragraph [ref=e346]:
+                      - text: Replace the linked
+                      - link "infrastructure" [ref=e347] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile/
+                      - text: or
+                      - link "full cluster profile" [ref=e348] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/create-full-profile/
+                      - text: .
+                  - listitem [ref=e349]:
+                    - paragraph [ref=e350]:
+                      - text: Add or remove
+                      - link "add-on cluster profiles" [ref=e351] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/
+                      - text: .
+                  - listitem [ref=e352]:
+                    - paragraph [ref=e353]: Update the version of a linked cluster profile.
+                - generic [ref=e354]:
+                  - generic [ref=e355]:
+                    - img [ref=e357]
+                    - text: info
+                  - paragraph [ref=e360]: Infrastructure and full cluster profiles, as well as maintenance policies, can only be replaced, not removed, as they are required components of cluster templates.
+                - heading "Maintenance PoliciesDirect link to Maintenance Policies" [level=4] [ref=e361]:
+                  - text: Maintenance Policies
+                  - link "Direct link to Maintenance Policies" [ref=e362] [cursor=pointer]:
+                    - /url: "#maintenance-policies"
+                    - text: "#"
+                - paragraph [ref=e363]:
+                  - text: Currently, maintenance policies are the only policy type. To swap the current maintenance policy attached to your cluster template for another, select
+                  - strong [ref=e364]: Replace
+                  - text: and choose another maintenance policy.
+                  - strong [ref=e365]: Save
+                  - text: your changes when finished, or
+                  - strong [ref=e366]: Discard
+                  - text: your changes to revert to the previous policy.
+                - paragraph [ref=e367]:
+                  - text: To edit an existing maintenance policy, refer to our
+                  - link "Maintenance Policies" [ref=e368] [cursor=pointer]:
+                    - /url: /cluster-templates/create-cluster-template-policies/maintenance-policy/#edit-maintenance-policies
+                  - text: guide.
+                - generic [ref=e369]:
+                  - generic [ref=e370]:
+                    - img [ref=e372]
+                    - text: tip
+                  - list [ref=e375]:
+                    - listitem [ref=e376]:
+                      - paragraph [ref=e377]:
+                        - text: If you do not have a maintenance policy that fits your needs, choose
+                        - strong [ref=e378]: Create a maintenance policy
+                        - text: . Refer to our
+                        - link "Maintenance Policies" [ref=e379] [cursor=pointer]:
+                          - /url: /cluster-templates/create-cluster-template-policies/maintenance-policy/
+                        - text: guide for more information on creating maintenance policies.
+                    - listitem [ref=e380]:
+                      - paragraph [ref=e381]:
+                        - text: The
+                        - strong [ref=e382]: In Use Templates
+                        - text: column indicates if the maintenance policy is currently referenced by another cluster template. Refer to our
+                        - link "Create and Manage Cluster Template Policies" [ref=e383] [cursor=pointer]:
+                          - /url: /cluster-templates/create-cluster-template-policies/#policies-tab
+                        - text: guide for details on modifying the default display for policies.
+                - heading "Cluster ProfilesDirect link to Cluster Profiles" [level=4] [ref=e384]:
+                  - text: Cluster Profiles
+                  - link "Direct link to Cluster Profiles" [ref=e385] [cursor=pointer]:
+                    - /url: "#cluster-profiles"
+                    - text: "#"
+                - paragraph [ref=e386]:
+                  - text: Once a cluster profile version is linked to a cluster template, that version of the cluster profile is immutable. To make changes to a cluster profile attached to a cluster template, you must
+                  - link "create a new version" [ref=e387] [cursor=pointer]:
+                    - /url: /profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile/
+                  - text: of your cluster profile and update the version referenced in the cluster template. Cluster profiles are modified the same way, regardless of whether a cluster is or is not deployed using the cluster template.
+                - heading "Update Cluster Profile VersionDirect link to Update Cluster Profile Version" [level=5] [ref=e388]:
+                  - text: Update Cluster Profile Version
+                  - link "Direct link to Update Cluster Profile Version" [ref=e389] [cursor=pointer]:
+                    - /url: "#update-cluster-profile-version"
+                    - text: "#"
+                - paragraph [ref=e390]: To update the cluster profile version used for clusters deployed with the cluster template, expand the version drop-down menu beside the cluster profile, and choose the version that contains the desired changes.
+                - paragraph [ref=e391]:
+                  - img "Updating the cluster profile version linked in a cluster template" [ref=e392]
+                - paragraph [ref=e393]:
+                  - text: When you are finished,
+                  - strong [ref=e394]: Save
+                  - text: your changes, or
+                  - strong [ref=e395]: Discard
+                  - text: your changes to revert your cluster profile stack to its previous state.
+                - generic [ref=e396]:
+                  - generic [ref=e397]:
+                    - img [ref=e399]
+                    - text: warning
+                  - paragraph [ref=e402]:
+                    - text: If you attempt to update the cluster profile version when cluster profile variable values are in a
+                    - strong [ref=e403]: Pending
+                    - text: state, you will not be able to
+                    - strong [ref=e404]: Save
+                    - text: your changes, as the upgrade is blocked until all variable values are in an
+                    - strong [ref=e405]: Assigned
+                    - text: state. Refer to the
+                    - link "Variable Values Tab" [ref=e406] [cursor=pointer]:
+                      - /url: "#variable-values-tab"
+                      - strong [ref=e407]: Variable Values
+                      - text: Tab
+                    - text: section of this guide for additional information.
+                - heading "Add ProfilesDirect link to Add Profiles" [level=5] [ref=e408]:
+                  - text: Add Profiles
+                  - link "Direct link to Add Profiles" [ref=e409] [cursor=pointer]:
+                    - /url: "#add-profiles"
+                    - text: "#"
+                - paragraph [ref=e410]:
+                  - text: Use the
+                  - strong [ref=e411]: Add Addon Profile
+                  - text: button to link
+                  - link "add-on profiles" [ref=e412] [cursor=pointer]:
+                    - /url: /profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/
+                  - text: to your cluster template.
+                  - strong [ref=e413]: Confirm
+                  - text: each addition, and ensure the correct profile version is selected. A cluster profile version cannot be linked to a cluster template if that profile version is already being used by a cluster that is not attached to a cluster template.
+                - paragraph [ref=e414]:
+                  - text: When you are finished,
+                  - strong [ref=e415]: Save
+                  - text: your changes, or
+                  - strong [ref=e416]: Discard
+                  - text: your changes to revert your cluster profile stack to its previous state.
+                - generic [ref=e417]:
+                  - generic [ref=e418]:
+                    - img [ref=e420]
+                    - text: info
+                  - paragraph [ref=e423]:
+                    - text: Only one infrastructure or full cluster profile can be linked to a cluster template. To change the infrastructure or full cluster profile linked to a cluster template, select the three-dot menu beside the profile, and
+                    - strong [ref=e424]: Replace
+                    - text: the profile with a new one.
+                - heading "Replace or Delete ProfilesDirect link to Replace or Delete Profiles" [level=5] [ref=e425]:
+                  - text: Replace or Delete Profiles
+                  - link "Direct link to Replace or Delete Profiles" [ref=e426] [cursor=pointer]:
+                    - /url: "#replace-or-delete-profiles"
+                    - text: "#"
+                - paragraph [ref=e427]:
+                  - text: To replace or delete an add-on profile, select either the three-dot menu beside the add-on profile in the left menu and choose
+                  - strong [ref=e428]: Replace
+                  - text: or
+                  - strong [ref=e429]: Remove
+                  - text: ; alternatively, select the three-dot menu beside the add-on profile version in the expanded
+                  - strong [ref=e430]: Linked profiles
+                  - text: panel and choose
+                  - strong [ref=e431]: Replace
+                  - text: or
+                  - strong [ref=e432]: Remove
+                  - text: .
+                - paragraph [ref=e433]:
+                  - text: When you are finished,
+                  - strong [ref=e434]: Save
+                  - text: your changes, or
+                  - strong [ref=e435]: Discard
+                  - text: your changes to revert your cluster profile stack to its previous state.
+                - generic [ref=e436]:
+                  - generic [ref=e437]:
+                    - img [ref=e439]
+                    - text: info
+                  - paragraph [ref=e442]:
+                    - text: Only add-on profiles can be deleted. To change the infrastructure or full cluster profile linked to a cluster template, select the three-dot menu beside the profile, and
+                    - strong [ref=e443]: Replace
+                    - text: the profile with a new one.
+                - heading "Update ProcessDirect link to Update Process" [level=5] [ref=e444]:
+                  - text: Update Process
+                  - link "Direct link to Update Process" [ref=e445] [cursor=pointer]:
+                    - /url: "#update-process"
+                    - text: "#"
+                - paragraph [ref=e446]:
+                  - text: If a cluster is currently deployed using the cluster template, the cluster will update during the next upgrade window specified in the linked maintenance policy. To force cluster updates and bypass the scheduled maintenance window, navigate to the
+                  - strong [ref=e447]: Overview
+                  - text: tab, and select
+                  - strong [ref=e448]: Options > Upgrade now
+                  - text: .
+                - generic [ref=e449]:
+                  - generic [ref=e450]:
+                    - img [ref=e452]
+                    - text: warning
+                  - paragraph [ref=e455]:
+                    - text: If there are any pending variable assignments, the banner
+                    - strong [ref=e456]: "[N] cluster(s) pending variable assignment"
+                    - text: is displayed. Even if you attempt to force an upgrade, the cluster will
+                    - emphasis [ref=e457]: not
+                    - text: be updated when you select
+                    - strong [ref=e458]: Upgrade now
+                    - text: . Navigate to the
+                    - link "Variable values" [ref=e459] [cursor=pointer]:
+                      - /url: "#variable-values-tab"
+                      - strong [ref=e460]: Variable values
+                    - text: tab and assign a
+                    - strong [ref=e461]: New Value
+                    - text: to each variable before attempting the upgrade again.
+                - heading "Variable Values TabDirect link to Variable Values Tab" [level=3] [ref=e462]:
+                  - text: Variable Values Tab
+                  - link "Direct link to Variable Values Tab" [ref=e463] [cursor=pointer]:
+                    - /url: "#variable-values-tab"
+                    - text: "#"
+                - paragraph [ref=e464]:
+                  - text: If your cluster template is linked to a cluster profile that contains
+                  - link "cluster profile variables" [ref=e465] [cursor=pointer]:
+                    - /url: /profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/
+                  - text: (regardless if variables are present in the layer configuration) and a cluster is deployed using the cluster template, the
+                  - strong [ref=e466]: Variable values
+                  - text: tab is populated.
+                - paragraph [ref=e467]: Since cluster profile versions are immutable once linked to a cluster template, cluster profile variables remain the recommended way to configure environment-specific values per cluster, such as IPs, resource limits, and more.
+                - paragraph [ref=e468]:
+                  - text: Variable values are assigned and propagated when you deploy a cluster using a cluster template. Once the cluster is deployed, the variables appear on the
+                  - strong [ref=e469]: Variable values
+                  - text: tab of your cluster template with an
+                  - strong [ref=e470]: Assignment
+                  - text: status of
+                  - strong [ref=e471]: Assigned
+                  - text: .
+                - paragraph [ref=e472]:
+                  - img "Variables with a status of Assigned" [ref=e473]
+                - paragraph [ref=e474]: Cluster templates help with the initial propagation of new variable values, but they are not the source of truth for ongoing variable management across clusters. The source of truth remains the cluster profile, which defines the schema, and the cluster itself, where values are updated in real time.
+                - paragraph [ref=e475]: Use the following table to help you determine which workflow to use when updating profile variables.
+                - table [ref=e476]:
+                  - rowgroup [ref=e477]:
+                    - row "Scenario Recommended Workflow" [ref=e478]:
+                      - cell "Scenario" [ref=e479]:
+                        - strong [ref=e480]: Scenario
+                      - cell "Recommended Workflow" [ref=e481]:
+                        - strong [ref=e482]: Recommended Workflow
+                  - rowgroup [ref=e483]:
+                    - row "Modify existing variable values for individual clusters Clusters > Profile > Configure Values" [ref=e484]:
+                      - cell "Modify existing variable values for individual clusters" [ref=e485]
+                      - cell "Clusters > Profile > Configure Values" [ref=e486]:
+                        - link "Clusters > Profile > Configure Values" [ref=e487] [cursor=pointer]:
+                          - /url: /profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/modify-cluster-profile-variables/#modify-profile-variable-values-in-an-active-cluster
+                          - strong [ref=e488]: Clusters > Profile > Configure Values
+                    - row "Modify existing variable values for several clusters at once Variable Values tab" [ref=e489]:
+                      - cell "Modify existing variable values for several clusters at once" [ref=e490]
+                      - cell "Variable Values tab" [ref=e491]:
+                        - link "Variable Values tab" [ref=e492] [cursor=pointer]:
+                          - /url: "#update-variables-via-the-variable-values-tab"
+                          - strong [ref=e493]: Variable Values
+                          - text: tab
+                    - row "Add or remove variables Variable Values tab" [ref=e494]:
+                      - cell "Add or remove variables" [ref=e495]
+                      - cell "Variable Values tab" [ref=e496]:
+                        - link "Variable Values tab" [ref=e497] [cursor=pointer]:
+                          - /url: "#update-variables-via-the-variable-values-tab"
+                          - strong [ref=e498]: Variable Values
+                          - text: tab
+                    - row "Update the schema of an existing variable Variable Values tab" [ref=e499]:
+                      - cell "Update the schema of an existing variable" [ref=e500]
+                      - cell "Variable Values tab" [ref=e501]:
+                        - link "Variable Values tab" [ref=e502] [cursor=pointer]:
+                          - /url: "#update-variables-via-the-variable-values-tab"
+                          - strong [ref=e503]: Variable Values
+                          - text: tab
+                - heading "Update Variables via the Variable Values TabDirect link to Update Variables via the Variable Values Tab" [level=4] [ref=e504]:
+                  - text: Update Variables via the Variable Values Tab
+                  - link "Direct link to Update Variables via the Variable Values Tab" [ref=e505] [cursor=pointer]:
+                    - /url: "#update-variables-via-the-variable-values-tab"
+                    - text: "#"
+                - paragraph [ref=e506]:
+                  - text: When you update the cluster profile version linked to a cluster template or add or remove a cluster profile containing variables, all variables enter a
+                  - strong [ref=e507]: Pending
+                  - text: state. Upon viewing your cluster or the cluster profile version linked to your cluster template, the banner
+                  - strong [ref=e508]: "Action required: This cluster is managed by the template [name] and has unassigned profile variables"
+                  - text: is displayed. Select the linked cluster template to view the list of cluster
+                  - strong [ref=e509]: Variable values
+                  - text: attached to your cluster template via cluster profiles.
+                - paragraph [ref=e510]:
+                  - img "Action required banner when viewing a cluster with pending variables" [ref=e511]
+                - paragraph [ref=e512]:
+                  - text: Until you verify a
+                  - strong [ref=e513]: New Value
+                  - text: for all variables and all variables are in an
+                  - strong [ref=e514]: Assigned
+                  - text: state, clusters attached to the template will not update to the latest profile version, regardless of whether you wait until the next update window specified by the
+                  - link "maintenance policy" [ref=e515] [cursor=pointer]:
+                    - /url: /cluster-templates/create-cluster-template-policies/maintenance-policy/
+                  - text: or initiate the update from the
+                  - strong [ref=e516]: Overview
+                  - text: tab using
+                  - strong [ref=e517]: Options > Upgrade now
+                  - text: .
+                - paragraph [ref=e518]: Use the following procedure to modify variable values across a fleet of clusters deployed with the same cluster template.
+                - list [ref=e519]:
+                  - listitem [ref=e520]:
+                    - paragraph [ref=e521]:
+                      - text: Log in to
+                      - link "Palette" [ref=e522] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e523]:
+                    - paragraph [ref=e524]:
+                      - text: From the left main menu, select
+                      - strong [ref=e525]: Cluster Configurations
+                      - text: .
+                  - listitem [ref=e526]:
+                    - paragraph [ref=e527]:
+                      - text: Select the
+                      - strong [ref=e528]: Policies
+                      - text: tab. Add, replace, and update your cluster profiles as necessary, and
+                      - strong [ref=e529]: Save
+                      - text: your changes when finished. Refer to the
+                      - link "Cluster Profiles" [ref=e530] [cursor=pointer]:
+                        - /url: "#cluster-profiles"
+                      - text: section of this guide for additional information.
+                  - listitem [ref=e531]:
+                    - paragraph [ref=e532]:
+                      - text: Navigate to the
+                      - strong [ref=e533]: Variable values
+                      - text: tab. Each variable has its own collapsible panel, identified using the formula
+                      - code [ref=e534]: <cluster-profile> / <variable-display-name>
+                      - text: . Each variable contains a list of all clusters that have the variable defined in their cluster profile. When you update the profiles linked to the cluster template, all variables revert to a
+                      - strong [ref=e535]: Pending
+                      - text: state.
+                  - listitem [ref=e536]:
+                    - paragraph [ref=e537]:
+                      - text: To proceed with cluster updates, each variable must be in an
+                      - strong [ref=e538]: Assigned
+                      - text: "state. To resolve each variable, use one of the following workflows:"
+                    - list [ref=e539]:
+                      - listitem [ref=e540]:
+                        - paragraph [ref=e541]:
+                          - text: To set individual values for a single cluster or multiple clusters, enter the
+                          - strong [ref=e542]: New Value
+                          - text: for one or multiple clusters. When finished, select
+                          - strong [ref=e543]: Apply changes [N] > OK
+                          - text: ", where"
+                          - strong [ref=e544]: "[N]"
+                          - text: is the number of clusters for which you set the value.
+                      - listitem [ref=e545]:
+                        - paragraph [ref=e546]:
+                          - text: To set the same value for multiple clusters, select the check box to the left of each applicable cluster, and choose
+                          - strong [ref=e547]: Assign new value
+                          - text: . Update the value and
+                          - strong [ref=e548]: Apply
+                          - text: your changes.
+                    - generic [ref=e549]:
+                      - generic [ref=e550]:
+                        - img [ref=e552]
+                        - text: info
+                      - paragraph [ref=e555]:
+                        - text: Even if you do not need to make any changes to the
+                        - strong [ref=e556]: New Value
+                        - text: ", you must still confirm the value to use. To do so, mark the check box to the left of the cluster, and select"
+                        - strong [ref=e557]: Assign new value
+                        - text: . If no default value is assigned, the field remains blank; otherwise, the default value is displayed, which may
+                        - emphasis [ref=e558]: not
+                        - text: match the value currently being used in the cluster. Verify and enter the correct value, and select
+                        - strong [ref=e559]: Apply
+                        - text: .
+                  - listitem [ref=e560]:
+                    - paragraph [ref=e561]:
+                      - text: Once a new value is applied, the variable's
+                      - strong [ref=e562]: Assignment
+                      - text: status changes to
+                      - strong [ref=e563]: Assigned
+                      - text: ", and the"
+                      - strong [ref=e564]: New value
+                      - text: column is disabled. The updated value becomes the
+                      - strong [ref=e565]: Running value
+                      - text: . Repeat step 5 until all variables are
+                      - strong [ref=e566]: Assigned
+                      - text: .
+                  - listitem [ref=e567]:
+                    - paragraph [ref=e568]:
+                      - text: Once all variables have an
+                      - strong [ref=e569]: Assigned
+                      - text: value, you can proceed with cluster updates. Either wait until the next upgrade window specified in the linked maintenance policy, or force the updates by navigating to the
+                      - strong [ref=e570]: Overview
+                      - text: tab and selecting
+                      - strong [ref=e571]: Options > Upgrade now
+                      - text: .
+                - heading "ValidateDirect link to Validate" [level=4] [ref=e572]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e573] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e574]: Take the following steps to verify that your cluster is using the correct profile variable values.
+                - list [ref=e575]:
+                  - listitem [ref=e576]:
+                    - paragraph [ref=e577]:
+                      - text: Log in to
+                      - link "Palette" [ref=e578] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e579]:
+                    - paragraph [ref=e580]: "Locate a cluster deployed with your cluster template in one of the following ways:"
+                    - list [ref=e581]:
+                      - listitem [ref=e582]:
+                        - paragraph [ref=e583]:
+                          - text: From the left main menu, select
+                          - strong [ref=e584]: Clusters
+                          - text: . Locate and select the desired cluster.
+                      - listitem [ref=e585]:
+                        - paragraph [ref=e586]:
+                          - text: From the left main menu, select
+                          - strong [ref=e587]: Cluster Configurations
+                          - text: . Navigate to the
+                          - strong [ref=e588]: Templates
+                          - text: tab, and select the drawer icon in the
+                          - strong [ref=e589]: In use clusters
+                          - text: column to view a list of all clusters linked to the cluster template. Locate and select the desired cluster.
+                  - listitem [ref=e590]:
+                    - paragraph [ref=e591]:
+                      - text: From the cluster
+                      - strong [ref=e592]: Overview
+                      - text: page, select the
+                      - strong [ref=e593]: Profile
+                      - text: tab.
+                  - listitem [ref=e594]:
+                    - paragraph [ref=e595]:
+                      - text: Below the list of cluster profiles, select
+                      - strong [ref=e596]: Configure Values
+                      - text: to open the
+                      - strong [ref=e597]: Settings
+                      - text: drawer.
+                  - listitem [ref=e598]:
+                    - paragraph [ref=e599]:
+                      - text: Scroll through the
+                      - strong [ref=e600]: Profile Variables Configuration
+                      - text: list. Note that the variable values currently used in the cluster are the same as those specified on the
+                      - strong [ref=e601]: Variable values
+                      - text: tab.
+              - generic [ref=e602]:
+                - generic [ref=e604]:
+                  - text: "Tags:"
+                  - list [ref=e605]:
+                    - listitem [ref=e606]:
+                      - link "cluster templates" [ref=e607] [cursor=pointer]:
+                        - /url: /tags/cluster-templates/
+                - link "Edit this page" [ref=e610] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/cluster-templates/modify-cluster-templates.md
+                  - img [ref=e611]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e615]:
+              - link "Previous « Create Cluster Templates" [ref=e616] [cursor=pointer]:
+                - /url: /cluster-templates/create-cluster-templates/
+                - generic [ref=e617]: Previous
+                - generic [ref=e618]: « Create Cluster Templates
+              - link "Next Delete Cluster Templates »" [ref=e619] [cursor=pointer]:
+                - /url: /cluster-templates/delete-cluster-templates/
+                - generic [ref=e620]: Next
+                - generic [ref=e621]: Delete Cluster Templates »
+          - list [ref=e624]:
+            - listitem [ref=e625]:
+              - link "Prerequisites" [ref=e626] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e627]:
+              - link "Modify Cluster Templates" [ref=e628] [cursor=pointer]:
+                - /url: "#modify-cluster-templates"
+              - list [ref=e629]:
+                - listitem [ref=e630]:
+                  - link "Overview Tab" [ref=e631] [cursor=pointer]:
+                    - /url: "#overview-tab"
+                - listitem [ref=e632]:
+                  - link "Policies Tab" [ref=e633] [cursor=pointer]:
+                    - /url: "#policies-tab"
+                  - list [ref=e634]:
+                    - listitem [ref=e635]:
+                      - link "Maintenance Policies" [ref=e636] [cursor=pointer]:
+                        - /url: "#maintenance-policies"
+                    - listitem [ref=e637]:
+                      - link "Cluster Profiles" [ref=e638] [cursor=pointer]:
+                        - /url: "#cluster-profiles"
+                - listitem [ref=e639]:
+                  - link "Variable Values Tab" [ref=e640] [cursor=pointer]:
+                    - /url: "#variable-values-tab"
+                  - list [ref=e641]:
+                    - listitem [ref=e642]:
+                      - link "Update Variables via the Variable Values Tab" [ref=e643] [cursor=pointer]:
+                        - /url: "#update-variables-via-the-variable-values-tab"
+                    - listitem [ref=e644]:
+                      - link "Validate" [ref=e645] [cursor=pointer]:
+                        - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e646] [cursor=pointer]:
+    - generic [ref=e649]:
+      - img "Project Logo" [ref=e650]
+      - paragraph [ref=e651]: Ask AI
+```

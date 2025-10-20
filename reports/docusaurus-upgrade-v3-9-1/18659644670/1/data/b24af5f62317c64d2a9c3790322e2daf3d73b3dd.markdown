@@ -1,0 +1,330 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [expanded] [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+                - list [ref=e163]:
+                  - listitem [ref=e164]:
+                    - link "Core Principles" [ref=e165] [cursor=pointer]:
+                      - /url: /security/core-principles/
+                  - listitem [ref=e166]:
+                    - generic [ref=e167]:
+                      - link "Lifecycle" [ref=e168] [cursor=pointer]:
+                        - /url: /security/lifecycle/
+                      - button "Toggle the collapsible sidebar category 'Lifecycle'" [ref=e169] [cursor=pointer]
+                  - listitem [ref=e170]:
+                    - generic [ref=e171]:
+                      - link "Secure Product Architecture" [expanded] [ref=e172] [cursor=pointer]:
+                        - /url: /security/product-architecture/
+                      - button "Toggle the collapsible sidebar category 'Secure Product Architecture'" [ref=e173] [cursor=pointer]
+                    - list [ref=e174]:
+                      - listitem [ref=e175]:
+                        - link "Platform Security" [ref=e176] [cursor=pointer]:
+                          - /url: /security/product-architecture/platform-security/
+                      - listitem [ref=e177]:
+                        - link "Data Encryption" [ref=e178] [cursor=pointer]:
+                          - /url: /security/product-architecture/data-encryption/
+                      - listitem [ref=e179]:
+                        - link "SaaS Operation" [ref=e180] [cursor=pointer]:
+                          - /url: /security/product-architecture/saas-operation/
+                      - listitem [ref=e181]:
+                        - link "Self-Hosted Operation" [ref=e182] [cursor=pointer]:
+                          - /url: /security/product-architecture/self-hosted-operation/
+                      - listitem [ref=e183]:
+                        - link "Tenant Cluster Security" [ref=e184] [cursor=pointer]:
+                          - /url: /security/product-architecture/tenant-cluster/
+                  - listitem [ref=e185]:
+                    - link "Vulnerability Management" [ref=e186] [cursor=pointer]:
+                      - /url: /security/vulnerability-management/
+                  - listitem [ref=e187]:
+                    - link "Artifact Signatures" [ref=e188] [cursor=pointer]:
+                      - /url: /security/artifact-signatures/
+              - listitem [ref=e189]:
+                - generic [ref=e190]:
+                  - link "Audit Logs" [ref=e191] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e193]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e195] [cursor=pointer]
+              - listitem [ref=e196]:
+                - generic [ref=e197]:
+                  - link "Self-Hosted Palette" [ref=e198] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e200]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e202] [cursor=pointer]
+              - listitem [ref=e203]:
+                - generic [ref=e204]:
+                  - link "Palette VerteX" [ref=e205] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e207]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e209] [cursor=pointer]
+              - listitem [ref=e210]:
+                - generic [ref=e211]:
+                  - link "Tenant Administration" [ref=e212] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e214]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e216] [cursor=pointer]
+              - listitem [ref=e217]:
+                - generic [ref=e218]:
+                  - link "Automation" [ref=e219] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e221]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e223] [cursor=pointer]
+              - listitem [ref=e224]:
+                - generic [ref=e225]:
+                  - link "Troubleshooting" [ref=e226] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e228]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e230] [cursor=pointer]
+              - listitem [ref=e231]:
+                - link "Glossary" [ref=e232] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e234]
+                  - text: Glossary
+              - listitem [ref=e236]:
+                - generic [ref=e237]:
+                  - link "Compliance & Legal" [ref=e238] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e240]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - button "Privacy Settings" [ref=e244] [cursor=pointer]:
+                  - img [ref=e245]
+                  - text: Privacy Settings
+      - main [ref=e247]:
+        - generic [ref=e249]:
+          - generic [ref=e251]:
+            - article [ref=e252]:
+              - navigation "Breadcrumbs" [ref=e253]:
+                - list [ref=e254]:
+                  - listitem [ref=e255]:
+                    - link "Home page" [ref=e256] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e257]
+                  - listitem [ref=e259]:
+                    - link "Security" [ref=e260] [cursor=pointer]:
+                      - /url: /security/
+                  - listitem [ref=e261]:
+                    - link "Secure Product Architecture" [ref=e262] [cursor=pointer]:
+                      - /url: /security/product-architecture/
+                  - listitem [ref=e263]:
+                    - generic [ref=e264]: Platform Security
+              - generic [ref=e265]:
+                - heading "Platform Security" [level=1] [ref=e267]
+                - paragraph [ref=e268]: "Based on the deployment model, Palette is composed of a multi-layer deployment stack: Cloud > VM > OS > Container Runtime > Kubernetes > Pods."
+                - paragraph [ref=e269]: To ensure maximum security, we follow defense-in-depth principles that prescribe securing each layer in a multi-layer deployment stack.
+                - paragraph [ref=e270]: For SaaS deployment models, cloud and Virtual Machine (VM) security are handled by SaaS platform operation security controls. For on-prem deployment models, the customer’s data center infrastructure team typically handles cloud and VM security.
+                - heading "Operating SystemsDirect link to Operating Systems" [level=2] [ref=e271]:
+                  - text: Operating Systems
+                  - link "Direct link to Operating Systems" [ref=e272] [cursor=pointer]:
+                    - /url: "#operating-systems"
+                    - text: "#"
+                - paragraph [ref=e273]: The operating system that Palette uses for its Kubernetes management cluster is Ubuntu 22.04 LTS. We follow CIS standards to harden the operating system.
+                - paragraph [ref=e274]: These hardened images are used to launch control planes and worker nodes for the Kubernetes cluster hosting Palette. Additionally, all OS images are scanned for vulnerabilities prior to being published to a repository.
+                - heading "Container SecurityDirect link to Container Security" [level=2] [ref=e275]:
+                  - text: Container Security
+                  - link "Direct link to Container Security" [ref=e276] [cursor=pointer]:
+                    - /url: "#container-security"
+                    - text: "#"
+                - paragraph [ref=e277]: Spectro Cloud uses Containerd for container runtime. Containerd is an industry-standard container runtime that emphasizes simplicity, robustness, and portability in managing the complete container lifecycle. It runs as a demon on Ubuntu instances.
+                - paragraph [ref=e278]: Container images for various application services are built using distroless images, which have significantly fewer packages and improve security by reducing attack surface.
+                - paragraph [ref=e279]: All container images are scanned for vulnerabilities prior to being published to a repository or deployed to the SaaS platform.
+                - heading "Kubernetes HardeningDirect link to Kubernetes Hardening" [level=2] [ref=e280]:
+                  - text: Kubernetes Hardening
+                  - link "Direct link to Kubernetes Hardening" [ref=e281] [cursor=pointer]:
+                    - /url: "#kubernetes-hardening"
+                    - text: "#"
+                - paragraph [ref=e282]: We secure Palette's Kubernetes version based on Center for Internet Security (CIS) Kubernetes benchmarks. Several additional rules are also enforced on components such as the API Server, Controller Manager, Scheduler, and Kubelet.
+              - generic [ref=e283]:
+                - generic [ref=e285]:
+                  - text: "Tags:"
+                  - list [ref=e286]:
+                    - listitem [ref=e287]:
+                      - link "security" [ref=e288] [cursor=pointer]:
+                        - /url: /tags/security/
+                - link "Edit this page" [ref=e291] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/security/product-architecture/platform-security.md
+                  - img [ref=e292]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e296]:
+              - link "Previous « Secure Product Architecture" [ref=e297] [cursor=pointer]:
+                - /url: /security/product-architecture/
+                - generic [ref=e298]: Previous
+                - generic [ref=e299]: « Secure Product Architecture
+              - link "Next Data Encryption »" [ref=e300] [cursor=pointer]:
+                - /url: /security/product-architecture/data-encryption/
+                - generic [ref=e301]: Next
+                - generic [ref=e302]: Data Encryption »
+          - list [ref=e305]:
+            - listitem [ref=e306]:
+              - link "Operating Systems" [ref=e307] [cursor=pointer]:
+                - /url: "#operating-systems"
+            - listitem [ref=e308]:
+              - link "Container Security" [ref=e309] [cursor=pointer]:
+                - /url: "#container-security"
+            - listitem [ref=e310]:
+              - link "Kubernetes Hardening" [ref=e311] [cursor=pointer]:
+                - /url: "#kubernetes-hardening"
+  - button "Project Logo Ask AI" [ref=e312] [cursor=pointer]:
+    - generic [ref=e315]:
+      - img "Project Logo" [ref=e316]
+      - paragraph [ref=e317]: Ask AI
+```

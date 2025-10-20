@@ -1,0 +1,1895 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [expanded] [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+                - list [ref=e107]:
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Public Cloud Clusters" [ref=e110] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e112]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e114] [cursor=pointer]
+                  - listitem [ref=e115]:
+                    - generic [ref=e116]:
+                      - link "Data Center Clusters" [ref=e117] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e119]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e121] [cursor=pointer]
+                  - listitem [ref=e122]:
+                    - generic [ref=e123]:
+                      - link "Edge" [expanded] [ref=e124] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e126]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e128] [cursor=pointer]
+                    - list [ref=e129]:
+                      - listitem [ref=e130]:
+                        - generic [ref=e131]:
+                          - link "Architecture" [ref=e132] [cursor=pointer]:
+                            - /url: /clusters/edge/architecture/
+                          - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e133] [cursor=pointer]
+                      - listitem [ref=e134]:
+                        - link "Hardware Requirements" [ref=e135] [cursor=pointer]:
+                          - /url: /clusters/edge/hardware-requirements/
+                      - listitem [ref=e136]:
+                        - link "Deployment Lifecycle" [ref=e137] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-native-lifecycle/
+                      - listitem [ref=e138]:
+                        - generic [ref=e139]:
+                          - link "Trusted Boot" [ref=e140] [cursor=pointer]:
+                            - /url: /clusters/edge/trusted-boot/
+                          - button "Toggle the collapsible sidebar category 'Trusted Boot'" [ref=e141] [cursor=pointer]
+                      - listitem [ref=e142]:
+                        - generic [ref=e143]:
+                          - link "Install Configuration" [expanded] [ref=e144] [cursor=pointer]:
+                            - /url: /clusters/edge/edge-configuration/
+                          - button "Toggle the collapsible sidebar category 'Install Configuration'" [ref=e145] [cursor=pointer]
+                        - list [ref=e146]:
+                          - listitem [ref=e147]:
+                            - link "Cloud Init Stages" [ref=e148] [cursor=pointer]:
+                              - /url: /clusters/edge/edge-configuration/cloud-init/
+                          - listitem [ref=e149]:
+                            - link "Sensitive User Data Handling" [ref=e150] [cursor=pointer]:
+                              - /url: /clusters/edge/edge-configuration/skip-copying-stages/
+                          - listitem [ref=e151]:
+                            - link "Installer Configuration Reference" [ref=e152] [cursor=pointer]:
+                              - /url: /clusters/edge/edge-configuration/installer-reference/
+                      - listitem [ref=e153]:
+                        - generic [ref=e154]:
+                          - link "EdgeForge Workflow" [ref=e155] [cursor=pointer]:
+                            - /url: /clusters/edge/edgeforge-workflow/
+                          - button "Toggle the collapsible sidebar category 'EdgeForge Workflow'" [ref=e156] [cursor=pointer]
+                      - listitem [ref=e157]:
+                        - generic [ref=e158]:
+                          - link "Local UI" [ref=e159] [cursor=pointer]:
+                            - /url: /clusters/edge/local-ui/
+                          - button "Toggle the collapsible sidebar category 'Local UI'" [ref=e160] [cursor=pointer]
+                      - listitem [ref=e161]:
+                        - generic [ref=e162]:
+                          - link "Deployment" [ref=e163] [cursor=pointer]:
+                            - /url: /clusters/edge/site-deployment/
+                          - button "Toggle the collapsible sidebar category 'Deployment'" [ref=e164] [cursor=pointer]
+                      - listitem [ref=e165]:
+                        - generic [ref=e166]:
+                          - link "Cluster Management" [ref=e167] [cursor=pointer]:
+                            - /url: /clusters/edge/cluster-management/
+                          - button "Toggle the collapsible sidebar category 'Cluster Management'" [ref=e168] [cursor=pointer]
+                      - listitem [ref=e169]:
+                        - generic [ref=e170]:
+                          - link "Networking" [ref=e171] [cursor=pointer]:
+                            - /url: /clusters/edge/networking/
+                          - button "Toggle the collapsible sidebar category 'Networking'" [ref=e172] [cursor=pointer]
+                      - listitem [ref=e173]:
+                        - generic [ref=e174]:
+                          - link "Third Party Integrations" [ref=e175] [cursor=pointer]:
+                            - /url: /clusters/edge/third-party-integrations/
+                          - button "Toggle the collapsible sidebar category 'Third Party Integrations'" [ref=e176] [cursor=pointer]
+                  - listitem [ref=e177]:
+                    - generic [ref=e178]:
+                      - link "Palette Virtual Clusters" [ref=e179] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e181]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e183] [cursor=pointer]
+                  - listitem [ref=e184]:
+                    - generic [ref=e185]:
+                      - link "Imported Clusters" [ref=e186] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e188]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e190] [cursor=pointer]
+                  - listitem [ref=e191]:
+                    - generic [ref=e192]:
+                      - link "Manage Clusters" [ref=e193] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e195]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e197] [cursor=pointer]
+                  - listitem [ref=e198]:
+                    - generic [ref=e199]:
+                      - link "Cluster Groups" [ref=e200] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e202]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e204] [cursor=pointer]
+                  - listitem [ref=e205]:
+                    - generic [ref=e206]:
+                      - link "Private Cloud Gateway" [ref=e207] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e209]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e211] [cursor=pointer]
+              - listitem [ref=e212]:
+                - generic [ref=e213]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e214] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e216]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e218] [cursor=pointer]
+              - listitem [ref=e219]:
+                - generic [ref=e220]:
+                  - link "Palette Dev Engine" [ref=e221] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e223]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e225] [cursor=pointer]
+              - listitem [ref=e226]:
+                - generic [ref=e227]:
+                  - link "Virtual Machine Orchestrator" [ref=e228] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e230]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e232] [cursor=pointer]
+              - listitem [ref=e233]:
+                - generic [ref=e234]:
+                  - link "Workspaces" [ref=e235] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e237]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e239] [cursor=pointer]
+              - listitem [ref=e240]:
+                - generic [ref=e241]:
+                  - link "Packs List" [ref=e242] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e244]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e246] [cursor=pointer]
+              - listitem [ref=e247]:
+                - generic [ref=e248]:
+                  - link "User & Role Management" [ref=e249] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e251]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e253] [cursor=pointer]
+              - listitem [ref=e254]:
+                - generic [ref=e255]:
+                  - link "Registries and Packs" [ref=e256] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e258]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e260] [cursor=pointer]
+              - listitem [ref=e261]:
+                - generic [ref=e262]:
+                  - link "Security" [ref=e263] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e265]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e267] [cursor=pointer]
+              - listitem [ref=e268]:
+                - generic [ref=e269]:
+                  - link "Audit Logs" [ref=e270] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e272]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e274] [cursor=pointer]
+              - listitem [ref=e275]:
+                - generic [ref=e276]:
+                  - link "Self-Hosted Palette" [ref=e277] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e279]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e281] [cursor=pointer]
+              - listitem [ref=e282]:
+                - generic [ref=e283]:
+                  - link "Palette VerteX" [ref=e284] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e286]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e288] [cursor=pointer]
+              - listitem [ref=e289]:
+                - generic [ref=e290]:
+                  - link "Tenant Administration" [ref=e291] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e293]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e295] [cursor=pointer]
+              - listitem [ref=e296]:
+                - generic [ref=e297]:
+                  - link "Automation" [ref=e298] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e300]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e302] [cursor=pointer]
+              - listitem [ref=e303]:
+                - generic [ref=e304]:
+                  - link "Troubleshooting" [ref=e305] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e307]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e309] [cursor=pointer]
+              - listitem [ref=e310]:
+                - link "Glossary" [ref=e311] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e313]
+                  - text: Glossary
+              - listitem [ref=e315]:
+                - generic [ref=e316]:
+                  - link "Compliance & Legal" [ref=e317] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e319]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e321] [cursor=pointer]
+              - listitem [ref=e322]:
+                - button "Privacy Settings" [ref=e323] [cursor=pointer]:
+                  - img [ref=e324]
+                  - text: Privacy Settings
+      - main [ref=e326]:
+        - generic [ref=e328]:
+          - generic [ref=e330]:
+            - article [ref=e331]:
+              - navigation "Breadcrumbs" [ref=e332]:
+                - list [ref=e333]:
+                  - listitem [ref=e334]:
+                    - link "Home page" [ref=e335] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e336]
+                  - listitem [ref=e338]:
+                    - link "Clusters" [ref=e339] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e340]:
+                    - link "Edge" [ref=e341] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                  - listitem [ref=e342]:
+                    - link "Install Configuration" [ref=e343] [cursor=pointer]:
+                      - /url: /clusters/edge/edge-configuration/
+                  - listitem [ref=e344]:
+                    - generic [ref=e345]: Installer Configuration Reference
+              - generic [ref=e346]:
+                - heading "Edge Installer Configuration Reference" [level=1] [ref=e348]
+                - paragraph [ref=e349]:
+                  - text: The Edge Installer configuration user data accepts a parameter named
+                  - code [ref=e350]: stylus
+                  - text: . In addition to the
+                  - code [ref=e351]: stylus
+                  - text: parameter, the user data file also supports the use of cloud-init stages and other Kairos-supported parameters. The
+                  - code [ref=e352]: stylus.site
+                  - text: parameter is how you primarily configure the Edge host, but you can also use cloud-init stages to customize the installation. Refer to the
+                  - link "Site Parameters" [ref=e353] [cursor=pointer]:
+                    - /url: "#site-parameters"
+                  - text: for a list of all the parameters supported in the
+                  - code [ref=e354]: stylus.site
+                  - text: parameter block.
+                - generic [ref=e355]:
+                  - generic [ref=e356]:
+                    - img [ref=e358]
+                    - text: info
+                  - paragraph [ref=e361]:
+                    - text: The
+                    - code [ref=e362]: "#cloud-config"
+                    - text: value is a required cloud-init header required by the
+                    - link "cloud-init" [ref=e363] [cursor=pointer]:
+                      - /url: https://cloudinit.readthedocs.io/en/latest/explanation/format.html
+                    - text: standard.
+                - heading "Palette Agent ParametersDirect link to Palette Agent Parameters" [level=2] [ref=e364]:
+                  - text: Palette Agent Parameters
+                  - link "Direct link to Palette Agent Parameters" [ref=e365] [cursor=pointer]:
+                    - /url: "#palette-agent-parameters"
+                    - text: "#"
+                - paragraph [ref=e366]:
+                  - text: These parameters start with the prefix
+                  - code [ref=e367]: stylus
+                  - text: . Palette agent parameters control various aspects of the Edge host's configuration, including networking, logging, services, as well as users and permissions. Parameters in this section are listed in alphabetical order.
+                - table [ref=e368]:
+                  - rowgroup [ref=e369]:
+                    - row "Parameter Description Type Default" [ref=e370]:
+                      - cell "Parameter" [ref=e371]
+                      - cell "Description" [ref=e372]
+                      - cell "Type" [ref=e373]
+                      - cell "Default" [ref=e374]
+                  - rowgroup [ref=e375]:
+                    - row "stylus.debug Enable this parameter for debug output. Allowed values are true or false. boolean false" [ref=e376]:
+                      - cell "stylus.debug" [ref=e377]:
+                        - code [ref=e378]: stylus.debug
+                      - cell "Enable this parameter for debug output. Allowed values are true or false." [ref=e379]:
+                        - text: Enable this parameter for debug output. Allowed values are
+                        - code [ref=e380]: "true"
+                        - text: or
+                        - code [ref=e381]: "false"
+                        - text: .
+                      - cell "boolean" [ref=e382]
+                      - cell "false" [ref=e383]:
+                        - code [ref=e384]: "false"
+                    - row "stylus.disablePasswordUpdate Disables the ability to update Operating System (OS) user passwords from Local UI if set to true. Updating the password through the OS and API is still allowed. boolean false" [ref=e385]:
+                      - cell "stylus.disablePasswordUpdate" [ref=e386]:
+                        - code [ref=e387]: stylus.disablePasswordUpdate
+                      - cell "Disables the ability to update Operating System (OS) user passwords from Local UI if set to true. Updating the password through the OS and API is still allowed." [ref=e388]
+                      - cell "boolean" [ref=e389]
+                      - cell "false" [ref=e390]:
+                        - code [ref=e391]: "false"
+                    - row "stylus.enableMultiNode When set to true, the host can link with other nodes to form a multi-node cluster. For more information, refer to Link Hosts. boolean false" [ref=e392]:
+                      - cell "stylus.enableMultiNode" [ref=e393]:
+                        - code [ref=e394]: stylus.enableMultiNode
+                      - cell "When set to true, the host can link with other nodes to form a multi-node cluster. For more information, refer to Link Hosts." [ref=e395]:
+                        - text: When set to
+                        - code [ref=e396]: "true"
+                        - text: ", the host can link with other nodes to form a multi-node cluster. For more information, refer to"
+                        - link "Link Hosts" [ref=e397] [cursor=pointer]:
+                          - /url: /clusters/edge/local-ui/cluster-management/link-hosts/
+                        - text: .
+                      - cell "boolean" [ref=e398]
+                      - cell "false" [ref=e399]:
+                        - code [ref=e400]: "false"
+                    - row "stylus.externalRegistries Use this parameter to configure multiple external registries and apply domain re-mapping rules. Refer to Multiple External Registries for more details. Object None" [ref=e401]:
+                      - cell "stylus.externalRegistries" [ref=e402]:
+                        - code [ref=e403]: stylus.externalRegistries
+                      - cell "Use this parameter to configure multiple external registries and apply domain re-mapping rules. Refer to Multiple External Registries for more details." [ref=e404]:
+                        - text: Use this parameter to configure multiple external registries and apply domain re-mapping rules. Refer to
+                        - link "Multiple External Registries" [ref=e405] [cursor=pointer]:
+                          - /url: "#multiple-external-registries"
+                        - text: for more details.
+                      - cell "Object" [ref=e406]
+                      - cell "None" [ref=e407]
+                    - row "stylus.featureGate This parameter contains a comma-separated list of features you want to enable on your host. String ''" [ref=e408]:
+                      - cell "stylus.featureGate" [ref=e409]:
+                        - code [ref=e410]: stylus.featureGate
+                      - cell "This parameter contains a comma-separated list of features you want to enable on your host." [ref=e411]
+                      - cell "String" [ref=e412]
+                      - cell "''" [ref=e413]:
+                        - code [ref=e414]: "''"
+                    - row "stylus.includeTui Enable Palette TUI for initial Edge host configuration. For more information, refer to Initial Edge Host Configuration. boolean false" [ref=e415]:
+                      - cell "stylus.includeTui" [ref=e416]:
+                        - code [ref=e417]: stylus.includeTui
+                      - cell "Enable Palette TUI for initial Edge host configuration. For more information, refer to Initial Edge Host Configuration." [ref=e418]:
+                        - text: Enable Palette TUI for initial Edge host configuration. For more information, refer to
+                        - link "Initial Edge Host Configuration" [ref=e419] [cursor=pointer]:
+                          - /url: /clusters/edge/site-deployment/site-installation/initial-setup/
+                        - text: .
+                      - cell "boolean" [ref=e420]
+                      - cell "false" [ref=e421]:
+                        - code [ref=e422]: "false"
+                    - row "stylus.installationMode (Deprecated) Allowed values are connected and airgap. connected means the Edge host is connected to Palette; airgap means the Edge host has no connection. This parameter has been deprecated and will be removed in an future release. Use the stylus.managementMode parameter instead. String connected" [ref=e423]:
+                      - cell "stylus.installationMode" [ref=e424]:
+                        - code [ref=e425]: stylus.installationMode
+                      - cell "(Deprecated) Allowed values are connected and airgap. connected means the Edge host is connected to Palette; airgap means the Edge host has no connection. This parameter has been deprecated and will be removed in an future release. Use the stylus.managementMode parameter instead." [ref=e426]:
+                        - text: (Deprecated) Allowed values are
+                        - code [ref=e427]: connected
+                        - text: and
+                        - code [ref=e428]: airgap
+                        - text: .
+                        - code [ref=e429]: connected
+                        - text: means the Edge host is connected to Palette;
+                        - code [ref=e430]: airgap
+                        - text: means the Edge host has no connection. This parameter has been deprecated and will be removed in an future release. Use the
+                        - code [ref=e431]: stylus.managementMode
+                        - text: parameter instead.
+                      - cell "String" [ref=e432]
+                      - cell "connected" [ref=e433]:
+                        - code [ref=e434]: connected
+                    - row "stylus.localUI.login.attemptsBeforeExponentialDelayStarts Number of consecutive failed Local UI login attempts before the exponential delay begins. After this threshold, each additional failed attempt doubles the wait time before the user can attempt to log in again. This parameter takes effect only when stylus.localUI.login.disableRateLimiting is set to false and is supported for Edge hosts built with Palette agent version 4.7.16 or later. Integer 3" [ref=e435]:
+                      - cell "stylus.localUI.login.attemptsBeforeExponentialDelayStarts" [ref=e436]:
+                        - code [ref=e437]: stylus.localUI.login.attemptsBeforeExponentialDelayStarts
+                      - cell "Number of consecutive failed Local UI login attempts before the exponential delay begins. After this threshold, each additional failed attempt doubles the wait time before the user can attempt to log in again. This parameter takes effect only when stylus.localUI.login.disableRateLimiting is set to false and is supported for Edge hosts built with Palette agent version 4.7.16 or later." [ref=e438]:
+                        - text: Number of consecutive failed Local UI login attempts before the exponential delay begins. After this threshold, each additional failed attempt doubles the wait time before the user can attempt to log in again. This parameter takes effect only when
+                        - code [ref=e439]: stylus.localUI.login.disableRateLimiting
+                        - text: is set to
+                        - code [ref=e440]: "false"
+                        - text: and is supported for Edge hosts built with Palette agent version 4.7.16 or later.
+                      - cell "Integer" [ref=e441]
+                      - cell "3" [ref=e442]:
+                        - code [ref=e443]: "3"
+                    - row "stylus.localUI.login.disableRateLimiting When set to false, Local UI enforces a short delay after several consecutive failed login attempts and temporarily blocks the user's access. This parameter is supported for Edge hosts built with Palette agent version 4.7.16 or later. boolean false" [ref=e444]:
+                      - cell "stylus.localUI.login.disableRateLimiting" [ref=e445]:
+                        - code [ref=e446]: stylus.localUI.login.disableRateLimiting
+                      - cell "When set to false, Local UI enforces a short delay after several consecutive failed login attempts and temporarily blocks the user's access. This parameter is supported for Edge hosts built with Palette agent version 4.7.16 or later." [ref=e447]:
+                        - text: When set to
+                        - code [ref=e448]: "false"
+                        - text: ", Local UI enforces a short delay after several consecutive failed login attempts and temporarily blocks the user's access. This parameter is supported for Edge hosts built with Palette agent version 4.7.16 or later."
+                      - cell "boolean" [ref=e449]
+                      - cell "false" [ref=e450]:
+                        - code [ref=e451]: "false"
+                    - row "stylus.localUI.login.lockoutDurationInMinutes Duration in minutes that Local UI login remains blocked after the user reaches the maximum number of unsuccessful login attempts. This parameter takes effect only when stylus.localUI.login.disableRateLimiting is set to false and is supported for Edge hosts built with Palette agent version 4.7.16 or later. Integer 15" [ref=e452]:
+                      - cell "stylus.localUI.login.lockoutDurationInMinutes" [ref=e453]:
+                        - code [ref=e454]: stylus.localUI.login.lockoutDurationInMinutes
+                      - cell "Duration in minutes that Local UI login remains blocked after the user reaches the maximum number of unsuccessful login attempts. This parameter takes effect only when stylus.localUI.login.disableRateLimiting is set to false and is supported for Edge hosts built with Palette agent version 4.7.16 or later." [ref=e455]:
+                        - text: Duration in minutes that Local UI login remains blocked after the user reaches the maximum number of unsuccessful login attempts. This parameter takes effect only when
+                        - code [ref=e456]: stylus.localUI.login.disableRateLimiting
+                        - text: is set to
+                        - code [ref=e457]: "false"
+                        - text: and is supported for Edge hosts built with Palette agent version 4.7.16 or later.
+                      - cell "Integer" [ref=e458]
+                      - cell "15" [ref=e459]:
+                        - code [ref=e460]: "15"
+                    - row "stylus.localUI.login.maxFailedAttemptsBeforeLockout Number of consecutive failed login attempts allowed before Local UI access is temporarily locked for the user. This parameter takes effect only when stylus.localUI.login.disableRateLimiting is set to false and is supported for Edge hosts built with Palette agent version 4.7.16 or later. Integer 5" [ref=e461]:
+                      - cell "stylus.localUI.login.maxFailedAttemptsBeforeLockout" [ref=e462]:
+                        - code [ref=e463]: stylus.localUI.login.maxFailedAttemptsBeforeLockout
+                      - cell "Number of consecutive failed login attempts allowed before Local UI access is temporarily locked for the user. This parameter takes effect only when stylus.localUI.login.disableRateLimiting is set to false and is supported for Edge hosts built with Palette agent version 4.7.16 or later." [ref=e464]:
+                        - text: Number of consecutive failed login attempts allowed before Local UI access is temporarily locked for the user. This parameter takes effect only when
+                        - code [ref=e465]: stylus.localUI.login.disableRateLimiting
+                        - text: is set to
+                        - code [ref=e466]: "false"
+                        - text: and is supported for Edge hosts built with Palette agent version 4.7.16 or later.
+                      - cell "Integer" [ref=e467]
+                      - cell "5" [ref=e468]:
+                        - code [ref=e469]: "5"
+                    - row "stylus.localUI.port Specifies the port that Local UI is exposed on. Integer 5080" [ref=e470]:
+                      - cell "stylus.localUI.port" [ref=e471]:
+                        - code [ref=e472]: stylus.localUI.port
+                      - cell "Specifies the port that Local UI is exposed on." [ref=e473]
+                      - cell "Integer" [ref=e474]
+                      - cell "5080" [ref=e475]:
+                        - code [ref=e476]: "5080"
+                    - row "stylus.managementMode Allowed values are local and central. central means the Edge host is connected to Palette; local means the Edge host has no connection to a Palette instance. String central" [ref=e477]:
+                      - cell "stylus.managementMode" [ref=e478]:
+                        - code [ref=e479]: stylus.managementMode
+                      - cell "Allowed values are local and central. central means the Edge host is connected to Palette; local means the Edge host has no connection to a Palette instance." [ref=e480]:
+                        - text: Allowed values are
+                        - code [ref=e481]: local
+                        - text: and
+                        - code [ref=e482]: central
+                        - text: .
+                        - code [ref=e483]: central
+                        - text: means the Edge host is connected to Palette;
+                        - code [ref=e484]: local
+                        - text: means the Edge host has no connection to a Palette instance.
+                      - cell "String" [ref=e485]
+                      - cell "central" [ref=e486]:
+                        - code [ref=e487]: central
+                    - row "stylus.path Specifies Stylus installation directory. Stylus appends its internal layout, /opt/spectrocloud, to this path. If you omit this parameter, the system uses / as the default root and installs Stylus to /opt/spectrocloud. String /" [ref=e488]:
+                      - cell "stylus.path" [ref=e489]:
+                        - code [ref=e490]: stylus.path
+                      - cell "Specifies Stylus installation directory. Stylus appends its internal layout, /opt/spectrocloud, to this path. If you omit this parameter, the system uses / as the default root and installs Stylus to /opt/spectrocloud." [ref=e491]:
+                        - text: Specifies Stylus installation directory. Stylus appends its internal layout,
+                        - code [ref=e492]: /opt/spectrocloud
+                        - text: ", to this path. If you omit this parameter, the system uses"
+                        - code [ref=e493]: /
+                        - text: as the default root and installs Stylus to
+                        - code [ref=e494]: /opt/spectrocloud
+                        - text: .
+                      - cell "String" [ref=e495]
+                      - cell / [ref=e496]:
+                        - code [ref=e497]: /
+                    - row "stylus.registryCredentials Only used when a single external registry is in use and no mapping rules are needed. Refer to Single External Registry for more details. Object None" [ref=e498]:
+                      - cell "stylus.registryCredentials" [ref=e499]:
+                        - code [ref=e500]: stylus.registryCredentials
+                      - cell "Only used when a single external registry is in use and no mapping rules are needed. Refer to Single External Registry for more details." [ref=e501]:
+                        - text: Only used when a single external registry is in use and no mapping rules are needed. Refer to
+                        - link "Single External Registry" [ref=e502] [cursor=pointer]:
+                          - /url: "#single-external-registry"
+                        - text: for more details.
+                      - cell "Object" [ref=e503]
+                      - cell "None" [ref=e504]
+                    - row "stylus.site Review Site Parameters for more information. Object None" [ref=e505]:
+                      - cell "stylus.site" [ref=e506]:
+                        - code [ref=e507]: stylus.site
+                      - cell "Review Site Parameters for more information." [ref=e508]:
+                        - text: Review
+                        - link "Site Parameters" [ref=e509] [cursor=pointer]:
+                          - /url: "#site-parameters"
+                        - text: for more information.
+                      - cell "Object" [ref=e510]
+                      - cell "None" [ref=e511]
+                    - row "stylus.trace Enable trace output. Allowed values are true or false. boolean false" [ref=e512]:
+                      - cell "stylus.trace" [ref=e513]:
+                        - code [ref=e514]: stylus.trace
+                      - cell "Enable trace output. Allowed values are true or false." [ref=e515]:
+                        - text: Enable trace output. Allowed values are
+                        - code [ref=e516]: "true"
+                        - text: or
+                        - code [ref=e517]: "false"
+                        - text: .
+                      - cell "boolean" [ref=e518]
+                      - cell "false" [ref=e519]:
+                        - code [ref=e520]: "false"
+                    - row "stylus.vip.skip When set to true, the installer skips the configuration of kube-vip and enables the use of an external load balancer instead. boolean false" [ref=e521]:
+                      - cell "stylus.vip.skip" [ref=e522]:
+                        - code [ref=e523]: stylus.vip.skip
+                      - cell "When set to true, the installer skips the configuration of kube-vip and enables the use of an external load balancer instead." [ref=e524]:
+                        - text: When set to
+                        - code [ref=e525]: "true"
+                        - text: ", the installer skips the configuration of kube-vip and enables the use of an external load balancer instead."
+                      - cell "boolean" [ref=e526]
+                      - cell "false" [ref=e527]:
+                        - code [ref=e528]: "false"
+                - generic [ref=e529]:
+                  - generic [ref=e530]:
+                    - img [ref=e532]
+                    - text: warning
+                  - paragraph [ref=e535]:
+                    - text: Using custom
+                    - code [ref=e536]: stylus.path
+                    - text: values can lead to deployment issues in some configurations. Refer to
+                    - link "Known issues" [ref=e537] [cursor=pointer]:
+                      - /url: /release-notes/known-issues/
+                    - text: for details.
+                - heading "Feature GatesDirect link to Feature Gates" [level=3] [ref=e538]:
+                  - text: Feature Gates
+                  - link "Direct link to Feature Gates" [ref=e539] [cursor=pointer]:
+                    - /url: "#feature-gates"
+                    - text: "#"
+                - paragraph [ref=e540]:
+                  - code [ref=e541]: stylus.featureGate
+                  - text: contains a comma-separated list of features you want to enable on your host. These features are not enabled by default unless you include the feature in the parameter. The following table displays the available features you can enable using this parameter.
+                - table [ref=e542]:
+                  - rowgroup [ref=e543]:
+                    - row "Value Description" [ref=e544]:
+                      - cell "Value" [ref=e545]
+                      - cell "Description" [ref=e546]
+                  - rowgroup [ref=e547]:
+                    - row "UserDataForm This value enables you to edit the installer user data after installation in Local UI. For more information, refer to Edit User Data." [ref=e548]:
+                      - cell "UserDataForm" [ref=e549]:
+                        - code [ref=e550]: UserDataForm
+                      - cell "This value enables you to edit the installer user data after installation in Local UI. For more information, refer to Edit User Data." [ref=e551]:
+                        - text: This value enables you to edit the installer user data after installation in Local UI. For more information, refer to
+                        - link "Edit User Data" [ref=e552] [cursor=pointer]:
+                          - /url: /clusters/edge/local-ui/host-management/edit-user-data/
+                        - text: .
+                - heading "Multiple External RegistriesDirect link to Multiple External Registries" [level=3] [ref=e553]:
+                  - text: Multiple External Registries
+                  - link "Direct link to Multiple External Registries" [ref=e554] [cursor=pointer]:
+                    - /url: "#multiple-external-registries"
+                    - text: "#"
+                - paragraph [ref=e555]:
+                  - text: You can configure multiple external registries by using the
+                  - code [ref=e556]: stylus.externalRegistries
+                  - text: parameter object. You can also apply domain mapping rules to map domain names to external registries.
+                - paragraph [ref=e557]:
+                  - text: If you are using an external registry and want to use content bundles when deploying your Edge cluster, you must also use an in-cluster primary registry. For more information, refer to
+                  - link "Build Content Bundles" [ref=e558] [cursor=pointer]:
+                    - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle/
+                  - text: and
+                  - link "Deploy Cluster with Primary Registry" [ref=e559] [cursor=pointer]:
+                    - /url: /clusters/edge/site-deployment/deploy-custom-registries/deploy-primary-registry/
+                  - text: ..
+                - paragraph [ref=e560]: Review the following parameters to configure external registries.
+                - table [ref=e561]:
+                  - rowgroup [ref=e562]:
+                    - row "Parameter Description Type Default" [ref=e563]:
+                      - cell "Parameter" [ref=e564]
+                      - cell "Description" [ref=e565]
+                      - cell "Type" [ref=e566]
+                      - cell "Default" [ref=e567]
+                  - rowgroup [ref=e568]:
+                    - row "stylus.externalRegistries.registries A list of external registries. Refer to Registry Parameters for more details. Array of Credentials None" [ref=e569]:
+                      - cell "stylus.externalRegistries.registries" [ref=e570]:
+                        - code [ref=e571]: stylus.externalRegistries.registries
+                      - cell "A list of external registries. Refer to Registry Parameters for more details." [ref=e572]:
+                        - text: A list of external registries. Refer to
+                        - link "Registry Parameters" [ref=e573] [cursor=pointer]:
+                          - /url: "#registry-parameters"
+                        - text: for more details.
+                      - cell "Array of Credentials" [ref=e574]:
+                        - text: Array of
+                        - code [ref=e575]: Credentials
+                      - cell "None" [ref=e576]
+                    - row "stylus.externalRegistries.registryMappingRules A list of key-pair rules to map domain names to external registries. Refer to Registry Mapping Rules for more details. Map of string keys and values None" [ref=e577]:
+                      - cell "stylus.externalRegistries.registryMappingRules" [ref=e578]:
+                        - code [ref=e579]: stylus.externalRegistries.registryMappingRules
+                      - cell "A list of key-pair rules to map domain names to external registries. Refer to Registry Mapping Rules for more details." [ref=e580]:
+                        - text: A list of key-pair rules to map domain names to external registries. Refer to
+                        - link "Registry Mapping Rules" [ref=e581] [cursor=pointer]:
+                          - /url: "#registry-mapping-rules"
+                        - text: for more details.
+                      - cell "Map of string keys and values" [ref=e582]:
+                        - text: Map of
+                        - code [ref=e583]: string
+                        - text: keys and values
+                      - cell "None" [ref=e584]
+                - heading "Registry ParametersDirect link to Registry Parameters" [level=4] [ref=e585]:
+                  - text: Registry Parameters
+                  - link "Direct link to Registry Parameters" [ref=e586] [cursor=pointer]:
+                    - /url: "#registry-parameters"
+                    - text: "#"
+                - paragraph [ref=e587]:
+                  - text: The
+                  - code [ref=e588]: stylus.externalRegistries.registries
+                  - text: block accepts the following parameters.
+                - table [ref=e589]:
+                  - rowgroup [ref=e590]:
+                    - row "Parameter Description Type Default" [ref=e591]:
+                      - cell "Parameter" [ref=e592]
+                      - cell "Description" [ref=e593]
+                      - cell "Type" [ref=e594]
+                      - cell "Default" [ref=e595]
+                  - rowgroup [ref=e596]:
+                    - row "domain The domain of the registry. String ''" [ref=e597]:
+                      - cell "domain" [ref=e598]:
+                        - code [ref=e599]: domain
+                      - cell "The domain of the registry." [ref=e600]
+                      - cell "String" [ref=e601]
+                      - cell "''" [ref=e602]:
+                        - code [ref=e603]: "''"
+                    - row "username The username to authenticate with the registry. String ''" [ref=e604]:
+                      - cell "username" [ref=e605]:
+                        - code [ref=e606]: username
+                      - cell "The username to authenticate with the registry." [ref=e607]
+                      - cell "String" [ref=e608]
+                      - cell "''" [ref=e609]:
+                        - code [ref=e610]: "''"
+                    - row "password The password to authenticate with the registry. String ''" [ref=e611]:
+                      - cell "password" [ref=e612]:
+                        - code [ref=e613]: password
+                      - cell "The password to authenticate with the registry." [ref=e614]
+                      - cell "String" [ref=e615]
+                      - cell "''" [ref=e616]:
+                        - code [ref=e617]: "''"
+                    - row "repositoryName The name of the repository within the registry. String ''" [ref=e618]:
+                      - cell "repositoryName" [ref=e619]:
+                        - code [ref=e620]: repositoryName
+                      - cell "The name of the repository within the registry." [ref=e621]
+                      - cell "String" [ref=e622]
+                      - cell "''" [ref=e623]:
+                        - code [ref=e624]: "''"
+                    - row "certificates A list of certificates in PEM format to use when accessing the registry. Array of strings None" [ref=e625]:
+                      - cell "certificates" [ref=e626]:
+                        - code [ref=e627]: certificates
+                      - cell "A list of certificates in PEM format to use when accessing the registry." [ref=e628]
+                      - cell "Array of strings" [ref=e629]
+                      - cell "None" [ref=e630]
+                    - row "insecure Whether to allow insecure connections to the registry. boolean false" [ref=e631]:
+                      - cell "insecure" [ref=e632]:
+                        - code [ref=e633]: insecure
+                      - cell "Whether to allow insecure connections to the registry." [ref=e634]
+                      - cell "boolean" [ref=e635]
+                      - cell "false" [ref=e636]:
+                        - code [ref=e637]: "false"
+                    - row "encodedPassword Whether the password is base64 encoded. boolean false" [ref=e638]:
+                      - cell "encodedPassword" [ref=e639]:
+                        - code [ref=e640]: encodedPassword
+                      - cell "Whether the password is base64 encoded." [ref=e641]
+                      - cell "boolean" [ref=e642]
+                      - cell "false" [ref=e643]:
+                        - code [ref=e644]: "false"
+                - paragraph [ref=e645]: Below is an example of how to configure an external registry.
+                - generic [ref=e647]:
+                  - code [ref=e649]:
+                    - generic [ref=e650]: "stylus:"
+                    - generic [ref=e651]: "externalRegistries:"
+                    - generic [ref=e652]: "registries:"
+                    - generic [ref=e653]: "- domain: \"example.registry.com/palette-images\""
+                    - generic [ref=e654]: "username: \"admin\""
+                    - generic [ref=e655]: "password: \"***************\""
+                    - generic [ref=e656]: "repositoryName: example-repository-private"
+                    - generic [ref=e657]: "certificates:"
+                    - generic [ref=e658]: "- |"
+                    - generic [ref=e659]: "-----BEGIN CERTIFICATE-----"
+                    - generic [ref=e660]: MIIENDCCAxygAwIBAgIUSdnFq4anqjgKf2iRX2RP65LYpkwwDQYJKoZIhvcNAQEL
+                    - generic [ref=e661]: BQAwfzEpMCcGA1UEAwwgc2hydXRoaS1haXJnYXAyLnNwZWN0cm9jbG91ZC5kZXYx
+                    - generic [ref=e662]: FTATBgNVBAoMDFNwZWN0cm9DbG91ZDELMAkGA1UECwwCSVQxFDASBgNVBAcMC1Nh
+                    - generic [ref=e663]: bnRhIENsYXJhMQswCQYDVQQIDAJDQTELMAkGA1UEBhMCVVMwHhcNMjQwMTExMDkz
+                    - generic [ref=e664]: ODUzWhcNMzQwMTA4MDkzODUzWjB/MSkwJwYDVQQDDCBzaHJ1dGhpLWFpcmdhcDIu
+                    - generic [ref=e665]: c3BlY3Ryb2Nsb3VkLmRldjEVMBMGA1UECgwMU3BlY3Ryb0Nsb3VkMQswCQYDVQQL
+                    - generic [ref=e666]: DAJJVDEUMBIGA1UEBwwLU2FudGEgQ2xhcmExCzAJBgNVBAgMAkNBMQswCQYDVQQG
+                    - generic [ref=e667]: EwJVUzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANcPucLatrCHmR+o
+                    - generic [ref=e668]: h6pIReisVxbJI0jqlVfive+mDp64Z3aXbzlX634chbyjd6G8xmZXH0beIZE91yGD
+                    - generic [ref=e669]: 42atamrqDSADcZRvjUmqGzf/nrm3sOCHOKNMvMFZJ0uGFjwuwxIDf91+Vgj0FZRe
+                    - generic [ref=e670]: j+nVRI3XQyAdJXP6sls8vu8bHk6RDMLYb+IzMWzFuPGDUv3fU41a3dijVfMxt6hj
+                    - generic [ref=e671]: MdoUe6wzTr46ylUgm5rB/SKrMcg41ZNFcqYLhHt6KsS/0G8hjrvo7d+BeNcxf6GP
+                    - generic [ref=e672]: xOWyimdq18suHqFQ82ieCxB8gR2Ig15ch8UG1p95JbVMjzLTi3tgU9EARuftsUK9
+                    - generic [ref=e673]: spdn2cUCAwEAAaOBpzCBpDAdBgNVHQ4EFgQUDVk6cnlax94aPm3F+fubzHj8vaIw
+                    - generic [ref=e674]: HwYDVR0jBBgwFoAUDVk6cnlax94aPm3F+fubzHj8vaIwDwYDVR0TAQH/BAUwAwEB
+                    - generic [ref=e675]: /zA8BgNVHREENTAzgglsb2NhbGhvc3SHBH8AAAGCIHNocnV0aGktYWlyZ2FwMi5z
+                    - generic [ref=e676]: cGVjdHJvY2xvdWQuZGV2MBMGA1UdJQQMMAoGCCsGAQUFBwMBMA0GCSqGSIb3DQEB
+                    - generic [ref=e677]: CwUAA4IBAQATfu3drGJkmFD58KvUKuOhAY28TpVquH63W40JchVjhtOmg+WHfPIE
+                    - generic [ref=e678]: 8dvYYKiZtrpFZDUcAVtn/KJIZoNbq51o7mWj/rl6W5pcajBLoqcvlDH0zXzVgF+f
+                    - generic [ref=e679]: +gj68SMegHwp+EO/dK9LfLp2bxNuBPCnvLj3eMs0HCdmZW1uzVm71YIXTSXwgm/2
+                    - generic [ref=e680]: nMnI5ELi2kuufCZh5wQxr7km+qZgTteaZI2h+YNU88m/SreRFHfBP8QRfkqTumfW
+                    - generic [ref=e681]: Sz3rWOQ93KXO/CEk+XySnVFgS+JdGtpmRalOfGeJ0Kk8hraX3h/2KkD0Vd99DIMN
+                    - generic [ref=e682]: DlN636dYFSJBG3LjGuzyO66kEvbGJAIT
+                    - generic [ref=e683]: "-----END CERTIFICATE-----"
+                    - generic [ref=e684]: "registryMappingRules:"
+                    - generic [ref=e685]: "\"us-docker.pkg.dev/palette-images\": \"example.registry.com/palette-images\""
+                    - generic [ref=e686]: "\"us-east1-docker.pkg.dev/spectro-images/daily\": \"example.registry.com/palette-images\""
+                    - generic [ref=e687]: "\"gcr.io/spectro-dev-public\": \"example.registry.com/palette-images\""
+                    - generic [ref=e688]: "\"gcr.io/spectro-images-public\": \"example.registry.com/palette-images\""
+                  - generic [ref=e689]:
+                    - button "Toggle word wrap" [ref=e690] [cursor=pointer]:
+                      - img [ref=e691]
+                    - button "Copy code to clipboard" [ref=e693] [cursor=pointer]:
+                      - generic [ref=e694]:
+                        - img [ref=e695]
+                        - img [ref=e697]
+                - heading "Registry Mapping RulesDirect link to Registry Mapping Rules" [level=4] [ref=e699]:
+                  - text: Registry Mapping Rules
+                  - link "Direct link to Registry Mapping Rules" [ref=e700] [cursor=pointer]:
+                    - /url: "#registry-mapping-rules"
+                    - text: "#"
+                - paragraph [ref=e701]:
+                  - text: Use registry mapping rules to map a domain name to an external registry. The
+                  - code [ref=e702]: registryMappingRules
+                  - text: parameter accepts a list of key-value pairs where the key is the domain name and the value is a URL mapping to the external registry.
+                - paragraph [ref=e703]:
+                  - text: Below is an example of registry mapping rules. The registry in the code snippet,
+                  - code [ref=e704]: example.registry.com/palette-images
+                  - text: is assumed to contain the images that are mapped from the external registries.
+                - generic [ref=e706]:
+                  - code [ref=e708]:
+                    - generic [ref=e709]: "stylus:"
+                    - generic [ref=e710]: "externalRegistries:"
+                    - generic [ref=e711]: "registries:"
+                    - generic [ref=e712]: "- domain: \"example.registry.com/palette-images\""
+                    - generic [ref=e713]: "repositoryName: \"primary-registry\""
+                    - generic [ref=e714]: "username: \"admin\""
+                    - generic [ref=e715]: "password: \"***************\""
+                    - generic [ref=e716]: "registryMappingRules:"
+                    - generic [ref=e717]: "\"us-docker.pkg.dev/palette-images\": \"example.registry.com/palette-images\""
+                    - generic [ref=e718]: "\"us-east1-docker.pkg.dev/spectro-images/daily\": \"example.registry.com/palette-images\""
+                    - generic [ref=e719]: "\"gcr.io/spectro-dev-public\": \"example.registry.com/palette-images\""
+                    - generic [ref=e720]: "\"gcr.io/spectro-images-public\": \"example.registry.com/palette-images\""
+                  - generic [ref=e721]:
+                    - button "Toggle word wrap" [ref=e722] [cursor=pointer]:
+                      - img [ref=e723]
+                    - button "Copy code to clipboard" [ref=e725] [cursor=pointer]:
+                      - generic [ref=e726]:
+                        - img [ref=e727]
+                        - img [ref=e729]
+                - paragraph [ref=e731]:
+                  - text: All matched portion on the source URL will be replaced with the mapped value and any unmatched path is preserved. Using the example in the following diagram, if an image named
+                  - code [ref=e732]: alpine:latest
+                  - text: is stored at
+                  - code [ref=e733]: somedomain.com/somepath/example-repo/alpine:latest
+                  - text: ", the mapping rules will rewrite image pulls so that they reference"
+                  - code [ref=e734]: targetdomain.com/other/path/example-repo/alpine:latest
+                  - text: .
+                - paragraph [ref=e735]:
+                  - img "Example of registry mapping rules" [ref=e736]
+                - heading "Local ManagementDirect link to Local Management" [level=5] [ref=e737]:
+                  - text: Local Management
+                  - link "Direct link to Local Management" [ref=e738] [cursor=pointer]:
+                    - /url: "#local-management"
+                    - text: "#"
+                - paragraph [ref=e739]:
+                  - text: For a locally managed cluster, use the
+                  - code [ref=e740]: registryMappingRules
+                  - text: parameter to map domain names to external registries that were downloaded when creating the
+                  - link "content bundle" [ref=e741] [cursor=pointer]:
+                    - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle/
+                  - text: .
+                - generic [ref=e742]:
+                  - generic [ref=e743]:
+                    - img [ref=e745]
+                    - text: info
+                  - generic [ref=e747]:
+                    - paragraph [ref=e748]:
+                      - text: Palette will automatically update the image path when
+                      - link "Harbor Edge-Native Config" [ref=e749] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=harbor-edge-native-config
+                      - text: or
+                      - link "Registry Connect" [ref=e750] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=registry-connect
+                      - text: pack is enabled. For example, if you have a registry mapping rule such as the following.
+                    - generic [ref=e752]:
+                      - code [ref=e754]:
+                        - generic [ref=e755]: "\"us-docker.pkg.dev/palette-images\": \"example.registry.com/palette-images\""
+                      - generic [ref=e756]:
+                        - button "Toggle word wrap" [ref=e757] [cursor=pointer]:
+                          - img [ref=e758]
+                        - button "Copy code to clipboard" [ref=e760] [cursor=pointer]:
+                          - generic [ref=e761]:
+                            - img [ref=e762]
+                            - img [ref=e764]
+                    - paragraph [ref=e766]:
+                      - text: Then the image tag will be updated with the prefix URL to the primary registry, such as
+                      - code [ref=e767]: https://10.10.100.45:30003/example.registry.com/palette-images
+                      - text: . Palette will do this for all registry mapping rules specified in the user data. This allows the Edge host to find and pull images that came from an external registry through the primary registry.
+                    - paragraph [ref=e768]:
+                      - text: Note that the Harbor Edge-Native Config pack is deprecated and will be removed in a future release. Refer to
+                      - link "Migrate from Harbor Edge-Native Config Pack" [ref=e769] [cursor=pointer]:
+                        - /url: /clusters/edge/site-deployment/deploy-custom-registries/migrate-edge-native-config/
+                      - text: for guidance on transitioning to Registry Connect.
+                    - paragraph [ref=e770]:
+                      - text: The Registry Connect pack additionally supports
+                      - code [ref=e771]: imageReplacementRules
+                      - text: (defined in the pack YAML under
+                      - code [ref=e772]: charts.registry-connect.config.registry.imageReplacementRules
+                      - text: ), which serve the same purpose as
+                      - code [ref=e773]: registryMappingRules
+                      - text: . If you provide both settings, the configuration in
+                      - code [ref=e774]: imageReplacementRules
+                      - text: takes precedence over
+                      - code [ref=e775]: registryMappingRules
+                      - text: .
+                - generic [ref=e777]:
+                  - code [ref=e779]:
+                    - generic [ref=e780]: "stylus:"
+                    - generic [ref=e781]: "managementMode: local"
+                    - generic [ref=e782]: "externalRegistries:"
+                    - generic [ref=e783]: "registryMappingRules:"
+                    - generic [ref=e784]: "\"us-docker.pkg.dev/palette-images\": \"example.registry.com/palette-images\""
+                    - generic [ref=e785]: "\"us-east1-docker.pkg.dev/spectro-images/daily\": \"example.registry.com/palette-images\""
+                    - generic [ref=e786]: "\"gcr.io/spectro-dev-public\": \"example.registry.com/palette-images\""
+                    - generic [ref=e787]: "\"gcr.io/spectro-images-public\": \"example.registry.com/palette-images\""
+                  - generic [ref=e788]:
+                    - button "Toggle word wrap" [ref=e789] [cursor=pointer]:
+                      - img [ref=e790]
+                    - button "Copy code to clipboard" [ref=e792] [cursor=pointer]:
+                      - generic [ref=e793]:
+                        - img [ref=e794]
+                        - img [ref=e796]
+                - heading "Single External RegistryDirect link to Single External Registry" [level=3] [ref=e798]:
+                  - text: Single External Registry
+                  - link "Direct link to Single External Registry" [ref=e799] [cursor=pointer]:
+                    - /url: "#single-external-registry"
+                    - text: "#"
+                - paragraph [ref=e800]:
+                  - text: You can point the Edge Installer to a non-default registry to load content from another source. Use the
+                  - code [ref=e801]: registryCredentials
+                  - text: parameter object to specify the registry configurations. If you have multiple external registries, use the
+                  - code [ref=e802]: stylus.externalRegistries
+                  - text: parameter object instead. Refer to the
+                  - link "Multiple External Registries" [ref=e803] [cursor=pointer]:
+                    - /url: "#multiple-external-registries"
+                  - text: section for more information.
+                - paragraph [ref=e804]:
+                  - text: If you are using an external registry and want to use content bundles when deploying your Edge cluster, you must also enable the local Harbor registry. For more information, refer to
+                  - link "Build Content Bundles" [ref=e805] [cursor=pointer]:
+                    - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle/
+                  - text: and
+                  - link "Deploy Cluster with Primary Registry" [ref=e806] [cursor=pointer]:
+                    - /url: /clusters/edge/site-deployment/deploy-custom-registries/deploy-primary-registry/
+                  - text: .
+                - table [ref=e807]:
+                  - rowgroup [ref=e808]:
+                    - row "Parameter Description Type Default" [ref=e809]:
+                      - cell "Parameter" [ref=e810]
+                      - cell "Description" [ref=e811]
+                      - cell "Type" [ref=e812]
+                      - cell "Default" [ref=e813]
+                  - rowgroup [ref=e814]:
+                    - row "stylus.registryCredentials.domain The domain of the registry. You can use an IP address plus a port or a domain name. String ''" [ref=e815]:
+                      - cell "stylus.registryCredentials.domain" [ref=e816]:
+                        - code [ref=e817]: stylus.registryCredentials.domain
+                      - cell "The domain of the registry. You can use an IP address plus a port or a domain name." [ref=e818]
+                      - cell "String" [ref=e819]
+                      - cell "''" [ref=e820]:
+                        - code [ref=e821]: "''"
+                    - row "stylus.registryCredentials.username The username to authenticate with the registry. String ''" [ref=e822]:
+                      - cell "stylus.registryCredentials.username" [ref=e823]:
+                        - code [ref=e824]: stylus.registryCredentials.username
+                      - cell "The username to authenticate with the registry." [ref=e825]
+                      - cell "String" [ref=e826]
+                      - cell "''" [ref=e827]:
+                        - code [ref=e828]: "''"
+                    - row "stylus.registryCredentials.password The password to authenticate with the registry. String ''" [ref=e829]:
+                      - cell "stylus.registryCredentials.password" [ref=e830]:
+                        - code [ref=e831]: stylus.registryCredentials.password
+                      - cell "The password to authenticate with the registry." [ref=e832]
+                      - cell "String" [ref=e833]
+                      - cell "''" [ref=e834]:
+                        - code [ref=e835]: "''"
+                    - row "stylus.registryCredentials.encodedPassword Set to true if the password given is base64 encoded. Set to false if the password given is not encoded. boolean false" [ref=e836]:
+                      - cell "stylus.registryCredentials.encodedPassword" [ref=e837]:
+                        - code [ref=e838]: stylus.registryCredentials.encodedPassword
+                      - cell "Set to true if the password given is base64 encoded. Set to false if the password given is not encoded." [ref=e839]:
+                        - text: Set to
+                        - code [ref=e840]: "true"
+                        - text: if the password given is base64 encoded. Set to
+                        - code [ref=e841]: "false"
+                        - text: if the password given is not encoded.
+                      - cell "boolean" [ref=e842]
+                      - cell "false" [ref=e843]:
+                        - code [ref=e844]: "false"
+                - generic [ref=e846]:
+                  - code [ref=e848]:
+                    - generic [ref=e849]: "#cloud-config"
+                    - generic [ref=e850]: "stylus:"
+                    - generic [ref=e851]: "registryCredentials:"
+                    - generic [ref=e852]: "domain: 10.10.254.254:8000/spectro-images"
+                    - generic [ref=e853]: "username: ubuntu"
+                    - generic [ref=e854]: "password: <yourPassword>"
+                    - generic [ref=e855]: "insecure: true"
+                  - button "Copy code to clipboard" [ref=e857] [cursor=pointer]:
+                    - generic [ref=e858]:
+                      - img [ref=e859]
+                      - img [ref=e861]
+                - heading "Site ParametersDirect link to Site Parameters" [level=3] [ref=e863]:
+                  - text: Site Parameters
+                  - link "Direct link to Site Parameters" [ref=e864] [cursor=pointer]:
+                    - /url: "#site-parameters"
+                    - text: "#"
+                - paragraph [ref=e865]:
+                  - text: The
+                  - code [ref=e866]: stylus.site
+                  - text: blocks accept the following parameters.
+                - table [ref=e867]:
+                  - rowgroup [ref=e868]:
+                    - row "Parameter Description Type Default" [ref=e869]:
+                      - cell "Parameter" [ref=e870]
+                      - cell "Description" [ref=e871]
+                      - cell "Type" [ref=e872]
+                      - cell "Default" [ref=e873]
+                  - rowgroup [ref=e874]:
+                    - row "stylus.site.caCerts The Secure Sockets Layer (SSL) Certificate Authority (CA) certificates. The certificates must be base64-encoded. Array of strings None" [ref=e875]:
+                      - cell "stylus.site.caCerts" [ref=e876]:
+                        - code [ref=e877]: stylus.site.caCerts
+                      - cell "The Secure Sockets Layer (SSL) Certificate Authority (CA) certificates. The certificates must be base64-encoded." [ref=e878]
+                      - cell "Array of strings" [ref=e879]
+                      - cell "None" [ref=e880]
+                    - row "stylus.site.clusterId The ID of the cluster the Edge host belongs to. String ''" [ref=e881]:
+                      - cell "stylus.site.clusterId" [ref=e882]:
+                        - code [ref=e883]: stylus.site.clusterId
+                      - cell "The ID of the cluster the Edge host belongs to." [ref=e884]
+                      - cell "String" [ref=e885]
+                      - cell "''" [ref=e886]:
+                        - code [ref=e887]: "''"
+                    - row "stylus.site.clusterName The name of the cluster the Edge host belongs to. String ''" [ref=e888]:
+                      - cell "stylus.site.clusterName" [ref=e889]:
+                        - code [ref=e890]: stylus.site.clusterName
+                      - cell "The name of the cluster the Edge host belongs to." [ref=e891]
+                      - cell "String" [ref=e892]
+                      - cell "''" [ref=e893]:
+                        - code [ref=e894]: "''"
+                    - row "stylus.site.deviceUIDPaths A list of file paths for reading in a product or board serial that can be used to set the device ID. The default file path is /sys/class/dmi/id/product_uuid. Refer to the Device ID (UID) Parameters section to learn more. Array of FileList None" [ref=e895]:
+                      - cell "stylus.site.deviceUIDPaths" [ref=e896]:
+                        - code [ref=e897]: stylus.site.deviceUIDPaths
+                      - cell "A list of file paths for reading in a product or board serial that can be used to set the device ID. The default file path is /sys/class/dmi/id/product_uuid. Refer to the Device ID (UID) Parameters section to learn more." [ref=e898]:
+                        - text: A list of file paths for reading in a product or board serial that can be used to set the device ID. The default file path is
+                        - code [ref=e899]: /sys/class/dmi/id/product_uuid
+                        - text: . Refer to the
+                        - link "Device ID (UID) Parameters" [ref=e900] [cursor=pointer]:
+                          - /url: "#device-id-uid-parameters"
+                        - text: section to learn more.
+                      - cell "Array of FileList" [ref=e901]:
+                        - text: Array of
+                        - code [ref=e902]: FileList
+                      - cell "None" [ref=e903]
+                    - row "stylus.site.edgeHostToken A token created at the tenant scope that is required for auto registration. String ''" [ref=e904]:
+                      - cell "stylus.site.edgeHostToken" [ref=e905]:
+                        - code [ref=e906]: stylus.site.edgeHostToken
+                      - cell "A token created at the tenant scope that is required for auto registration." [ref=e907]
+                      - cell "String" [ref=e908]
+                      - cell "''" [ref=e909]:
+                        - code [ref=e910]: "''"
+                    - row "stylus.site.hostName The host name for the Edge host. This will also be the node's name when the host is added to a cluster. If you do not specify a host name, the stylus.site.name value becomes the host name. String ''" [ref=e911]:
+                      - cell "stylus.site.hostName" [ref=e912]:
+                        - code [ref=e913]: stylus.site.hostName
+                      - cell "The host name for the Edge host. This will also be the node's name when the host is added to a cluster. If you do not specify a host name, the stylus.site.name value becomes the host name." [ref=e914]:
+                        - text: The host name for the Edge host. This will also be the node's name when the host is added to a cluster. If you do not specify a host name, the
+                        - code [ref=e915]: stylus.site.name
+                        - text: value becomes the host name.
+                      - cell "String" [ref=e916]
+                      - cell "''" [ref=e917]:
+                        - code [ref=e918]: "''"
+                    - row "stylus.site.insecureSkipVerify This controls whether or not a client verifies the server’s certificate chain and hostname. boolean false" [ref=e919]:
+                      - cell "stylus.site.insecureSkipVerify" [ref=e920]:
+                        - code [ref=e921]: stylus.site.insecureSkipVerify
+                      - cell "This controls whether or not a client verifies the server’s certificate chain and hostname." [ref=e922]
+                      - cell "boolean" [ref=e923]
+                      - cell "false" [ref=e924]:
+                        - code [ref=e925]: "false"
+                    - row "stylus.site.name The Edge host ID with which the host registers with Palette. String ''" [ref=e926]:
+                      - cell "stylus.site.name" [ref=e927]:
+                        - code [ref=e928]: stylus.site.name
+                      - cell "The Edge host ID with which the host registers with Palette." [ref=e929]
+                      - cell "String" [ref=e930]
+                      - cell "''" [ref=e931]:
+                        - code [ref=e932]: "''"
+                    - row "stylus.site.network The network configuration settings. Refer to Site Network Parameters for more details. Object None" [ref=e933]:
+                      - cell "stylus.site.network" [ref=e934]:
+                        - code [ref=e935]: stylus.site.network
+                      - cell "The network configuration settings. Refer to Site Network Parameters for more details." [ref=e936]:
+                        - text: The network configuration settings. Refer to
+                        - link "Site Network Parameters" [ref=e937] [cursor=pointer]:
+                          - /url: "#site-network-parameters"
+                        - text: for more details.
+                      - cell "Object" [ref=e938]
+                      - cell "None" [ref=e939]
+                    - 'row "stylus.site.paletteEndpoint The URL endpoint that points to Palette. Example: api.spectrocloud.com String ''''" [ref=e940]':
+                      - cell "stylus.site.paletteEndpoint" [ref=e941]:
+                        - code [ref=e942]: stylus.site.paletteEndpoint
+                      - 'cell "The URL endpoint that points to Palette. Example: api.spectrocloud.com" [ref=e943]':
+                        - text: "The URL endpoint that points to Palette. Example:"
+                        - code [ref=e944]: api.spectrocloud.com
+                      - cell "String" [ref=e945]
+                      - cell "''" [ref=e946]:
+                        - code [ref=e947]: "''"
+                    - row "stylus.site.prefix A prefix prepended to the Edge device hostname to form the Edge device ID. Only alphanumeric characters and - are allowed. String edge" [ref=e948]:
+                      - cell "stylus.site.prefix" [ref=e949]:
+                        - code [ref=e950]: stylus.site.prefix
+                      - cell "A prefix prepended to the Edge device hostname to form the Edge device ID. Only alphanumeric characters and - are allowed." [ref=e951]:
+                        - text: A prefix prepended to the Edge device hostname to form the Edge device ID. Only alphanumeric characters and
+                        - code [ref=e952]: "-"
+                        - text: are allowed.
+                      - cell "String" [ref=e953]
+                      - cell "edge" [ref=e954]:
+                        - code [ref=e955]: edge
+                    - row "stylus.site.projectName The name of the project to which the Edge host belongs. String ''" [ref=e956]:
+                      - cell "stylus.site.projectName" [ref=e957]:
+                        - code [ref=e958]: stylus.site.projectName
+                      - cell "The name of the project to which the Edge host belongs." [ref=e959]
+                      - cell "String" [ref=e960]
+                      - cell "''" [ref=e961]:
+                        - code [ref=e962]: "''"
+                    - row "stylus.site.projectUid The ID of the project to which the Edge host belongs. String ''" [ref=e963]:
+                      - cell "stylus.site.projectUid" [ref=e964]:
+                        - code [ref=e965]: stylus.site.projectUid
+                      - cell "The ID of the project to which the Edge host belongs." [ref=e966]
+                      - cell "String" [ref=e967]
+                      - cell "''" [ref=e968]:
+                        - code [ref=e969]: "''"
+                    - row "stylus.site.registrationURL The URL that operators use to register the Edge host with Palette. String ''" [ref=e970]:
+                      - cell "stylus.site.registrationURL" [ref=e971]:
+                        - code [ref=e972]: stylus.site.registrationURL
+                      - cell "The URL that operators use to register the Edge host with Palette." [ref=e973]
+                      - cell "String" [ref=e974]
+                      - cell "''" [ref=e975]:
+                        - code [ref=e976]: "''"
+                    - row "stylus.site.remoteShell.disable When set to true, disables remote shell access to the host. This parameter is supported for Edge hosts built with Palette agent version 4.7.16 or later. boolean false" [ref=e977]:
+                      - cell "stylus.site.remoteShell.disable" [ref=e978]:
+                        - code [ref=e979]: stylus.site.remoteShell.disable
+                      - cell "When set to true, disables remote shell access to the host. This parameter is supported for Edge hosts built with Palette agent version 4.7.16 or later." [ref=e980]:
+                        - text: When set to
+                        - code [ref=e981]: "true"
+                        - text: ", disables remote shell access to the host. This parameter is supported for Edge hosts built with Palette agent version 4.7.16 or later."
+                      - cell "boolean" [ref=e982]
+                      - cell "false" [ref=e983]:
+                        - code [ref=e984]: "false"
+                    - row "stylus.site.tags A parameter object you can use to provide optional key-value pairs. Refer to the Tags section to learn more. Map of string and object value None" [ref=e985]:
+                      - cell "stylus.site.tags" [ref=e986]:
+                        - code [ref=e987]: stylus.site.tags
+                      - cell "A parameter object you can use to provide optional key-value pairs. Refer to the Tags section to learn more." [ref=e988]:
+                        - text: A parameter object you can use to provide optional key-value pairs. Refer to the
+                        - link "Tags" [ref=e989] [cursor=pointer]:
+                          - /url: "#tags"
+                        - text: section to learn more.
+                      - cell "Map of string and object value" [ref=e990]:
+                        - text: Map of
+                        - code [ref=e991]: string
+                        - text: and object value
+                      - cell "None" [ref=e992]
+                    - row "stylus.site.tagsFromFile Specify tags from a file. Refer to Tags for more information. TagsFromFile object None" [ref=e993]:
+                      - cell "stylus.site.tagsFromFile" [ref=e994]:
+                        - code [ref=e995]: stylus.site.tagsFromFile
+                      - cell "Specify tags from a file. Refer to Tags for more information." [ref=e996]:
+                        - text: Specify tags from a file. Refer to
+                        - link "Tags" [ref=e997] [cursor=pointer]:
+                          - /url: "#tags"
+                        - text: for more information.
+                      - cell "TagsFromFile object" [ref=e998]:
+                        - code [ref=e999]: TagsFromFile
+                        - text: object
+                      - cell "None" [ref=e1000]
+                    - row "stylus.site.tagsFromScript Use a script to generate tags. Refer to Tags for more information. TagsFromScript object None" [ref=e1001]:
+                      - cell "stylus.site.tagsFromScript" [ref=e1002]:
+                        - code [ref=e1003]: stylus.site.tagsFromScript
+                      - cell "Use a script to generate tags. Refer to Tags for more information." [ref=e1004]:
+                        - text: Use a script to generate tags. Refer to
+                        - link "Tags" [ref=e1005] [cursor=pointer]:
+                          - /url: "#tags"
+                        - text: for more information.
+                      - cell "TagsFromScript object" [ref=e1006]:
+                        - code [ref=e1007]: TagsFromScript
+                        - text: object
+                      - cell "None" [ref=e1008]
+                - generic [ref=e1009]:
+                  - generic [ref=e1010]:
+                    - img [ref=e1012]
+                    - text: info
+                  - paragraph [ref=e1015]:
+                    - text: If you do not specify an Edge host ID for the Edge host with
+                    - code [ref=e1016]: stylus.site.name
+                    - text: ", the system will generate one from the serial number of the device in the format of"
+                    - code [ref=e1017]: edge-<serial-number>
+                    - text: . If the Edge Installer cannot identify the serial number, it will generate a random ID instead. In cases where the hardware does not have a serial number, we suggest that you specify a value so there is minimal chance of duplication. Use the value
+                    - code [ref=e1018]: "\"$random\""
+                    - text: to generate a random ID. You can also use the
+                    - code [ref=e1019]: DeviceUIDPaths
+                    - text: to read in a value from a system file.
+                - heading "Device ID (UID) ParametersDirect link to Device ID (UID) Parameters" [level=4] [ref=e1020]:
+                  - text: Device ID (UID) Parameters
+                  - link "Direct link to Device ID (UID) Parameters" [ref=e1021] [cursor=pointer]:
+                    - /url: "#device-id-uid-parameters"
+                    - text: "#"
+                - paragraph [ref=e1022]:
+                  - text: The device ID is generated by a specific priority sequence. The below table outlines the priority order from top to bottom when generating a UID for the Edge host. The UID generation starts with priority one, the device
+                  - code [ref=e1023]: name
+                  - text: ", followed by attributes within the"
+                  - code [ref=e1024]: deviceUIDPAths
+                  - text: ", and lastly generating a random UUID if all other methods are unsuccessful."
+                - table [ref=e1025]:
+                  - rowgroup [ref=e1026]:
+                    - row "Priority Method Description" [ref=e1027]:
+                      - cell "Priority" [ref=e1028]
+                      - cell "Method" [ref=e1029]
+                      - cell "Description" [ref=e1030]
+                  - rowgroup [ref=e1031]:
+                    - row "1 name The device name is used as the primary identifier for the Edge host." [ref=e1032]:
+                      - cell "1" [ref=e1033]
+                      - cell "name" [ref=e1034]:
+                        - code [ref=e1035]: name
+                      - cell "The device name is used as the primary identifier for the Edge host." [ref=e1036]
+                    - row "2 deviceUIDPaths Specifies the paths and associated regular expressions to extract the UID." [ref=e1037]:
+                      - cell "2" [ref=e1038]
+                      - cell "deviceUIDPaths" [ref=e1039]:
+                        - code [ref=e1040]: deviceUIDPaths
+                      - cell "Specifies the paths and associated regular expressions to extract the UID." [ref=e1041]
+                    - row "3 \"$random\" Assigns a random UUID as the Edge host ID." [ref=e1042]:
+                      - cell "3" [ref=e1043]
+                      - cell "\"$random\"" [ref=e1044]:
+                        - code [ref=e1045]: "\"$random\""
+                      - cell "Assigns a random UUID as the Edge host ID." [ref=e1046]
+                - paragraph [ref=e1047]:
+                  - text: By default, the product UID path is set to
+                  - code [ref=e1048]: /sys/class/dmi/id/product_uuid
+                  - text: . To modify this path and use other attributes within the same folder, such as the product or board serial, use the
+                  - code [ref=e1049]: regex
+                  - text: parameter. For example, instead of the default path
+                  - strong [ref=e1050]: /sys/class/dmi/id/product_uuid
+                  - text: ", you can use the board Serial Number path"
+                  - strong [ref=e1051]: /sys/class/dmi/id/board_serial
+                  - text: by applying a
+                  - code [ref=e1052]: regex
+                  - text: parameter. Refer to the
+                  - link "regex syntax" [ref=e1053] [cursor=pointer]:
+                    - /url: https://github.com/google/re2/wiki/Syntax
+                  - text: reference guide to learn more.
+                - table [ref=e1054]:
+                  - rowgroup [ref=e1055]:
+                    - row "Parameter Description" [ref=e1056]:
+                      - cell "Parameter" [ref=e1057]
+                      - cell "Description" [ref=e1058]
+                  - rowgroup [ref=e1059]:
+                    - row "stylus.site.deviceUIDPaths[*].name The path of the file containing the UID." [ref=e1060]:
+                      - cell "stylus.site.deviceUIDPaths[*].name" [ref=e1061]:
+                        - code [ref=e1062]: stylus.site.deviceUIDPaths[*].name
+                      - cell "The path of the file containing the UID." [ref=e1063]
+                    - row "stylus.site.deviceUIDPaths[*].regex The regular expression pattern to match the UID." [ref=e1064]:
+                      - cell "stylus.site.deviceUIDPaths[*].regex" [ref=e1065]:
+                        - code [ref=e1066]: stylus.site.deviceUIDPaths[*].regex
+                      - cell "The regular expression pattern to match the UID." [ref=e1067]
+                - paragraph [ref=e1068]:
+                  - text: You can use the
+                  - code [ref=e1069]: regex
+                  - text: parameter to remove unsupported characters from attributes. Refer to the warning box below for a list of unsupported characters.
+                - generic [ref=e1071]:
+                  - code [ref=e1073]:
+                    - generic [ref=e1074]: "#cloud-config"
+                    - generic [ref=e1075]: "stylus:"
+                    - generic [ref=e1076]: "site:"
+                    - generic [ref=e1077]: "deviceUIDPaths:"
+                    - generic [ref=e1078]: "- name: /etc/palette/metadata-regex"
+                    - generic [ref=e1079]: "regex: \"edge.*\""
+                  - button "Copy code to clipboard" [ref=e1081] [cursor=pointer]:
+                    - generic [ref=e1082]:
+                      - img [ref=e1083]
+                      - img [ref=e1085]
+                - generic [ref=e1087]:
+                  - generic [ref=e1088]:
+                    - img [ref=e1090]
+                    - text: warning
+                  - generic [ref=e1092]:
+                    - paragraph [ref=e1093]: "The length of the UID truncates to a maximum allowed length of 128 characters. The following characters are unsupported:"
+                    - paragraph [ref=e1094]:
+                      - code [ref=e1095]: "/ ? # & + % , $ ~ ! @ * () {} | = ; : <> ' . ^ \""
+                - heading "Site Network ParametersDirect link to Site Network Parameters" [level=4] [ref=e1096]:
+                  - text: Site Network Parameters
+                  - link "Direct link to Site Network Parameters" [ref=e1097] [cursor=pointer]:
+                    - /url: "#site-network-parameters"
+                    - text: "#"
+                - paragraph [ref=e1098]: Use the site network parameters to configure network settings so the edge host can communicate with Palette.
+                - table [ref=e1099]:
+                  - rowgroup [ref=e1100]:
+                    - row "Parameter Description Type Default" [ref=e1101]:
+                      - cell "Parameter" [ref=e1102]
+                      - cell "Description" [ref=e1103]
+                      - cell "Type" [ref=e1104]
+                      - cell "Default" [ref=e1105]
+                  - rowgroup [ref=e1106]:
+                    - row "stylus.site.network.httpProxy The URL of the HTTP proxy endpoint. String ''" [ref=e1107]:
+                      - cell "stylus.site.network.httpProxy" [ref=e1108]:
+                        - code [ref=e1109]: stylus.site.network.httpProxy
+                      - cell "The URL of the HTTP proxy endpoint." [ref=e1110]
+                      - cell "String" [ref=e1111]
+                      - cell "''" [ref=e1112]:
+                        - code [ref=e1113]: "''"
+                    - row "stylus.site.network.httpsProxy The URL of the HTTPS proxy endpoint. String ''" [ref=e1114]:
+                      - cell "stylus.site.network.httpsProxy" [ref=e1115]:
+                        - code [ref=e1116]: stylus.site.network.httpsProxy
+                      - cell "The URL of the HTTPS proxy endpoint." [ref=e1117]
+                      - cell "String" [ref=e1118]
+                      - cell "''" [ref=e1119]:
+                        - code [ref=e1120]: "''"
+                    - row "stylus.site.network.noProxy The list of IP addresses or CIDR ranges to exclude from routing through the proxy. String ''" [ref=e1121]:
+                      - cell "stylus.site.network.noProxy" [ref=e1122]:
+                        - code [ref=e1123]: stylus.site.network.noProxy
+                      - cell "The list of IP addresses or CIDR ranges to exclude from routing through the proxy." [ref=e1124]
+                      - cell "String" [ref=e1125]
+                      - cell "''" [ref=e1126]:
+                        - code [ref=e1127]: "''"
+                    - row "stylus.site.network.interfaces The network settings for each interface. This parameter accepts a map of keys named after your NICs (for example, eth0). Map of string keys and NetworkInterface values None" [ref=e1128]:
+                      - cell "stylus.site.network.interfaces" [ref=e1129]:
+                        - code [ref=e1130]: stylus.site.network.interfaces
+                      - cell "The network settings for each interface. This parameter accepts a map of keys named after your NICs (for example, eth0)." [ref=e1131]:
+                        - text: The network settings for each interface. This parameter accepts a map of keys named after your NICs (for example,
+                        - code [ref=e1132]: eth0
+                        - text: ).
+                      - cell "Map of string keys and NetworkInterface values" [ref=e1133]:
+                        - text: Map of
+                        - code [ref=e1134]: string
+                        - text: keys and
+                        - code [ref=e1135]: NetworkInterface
+                        - text: values
+                      - cell "None" [ref=e1136]
+                    - row "stylus.site.network.interfaces.[NIC].ipAddress The assigned IP address to the network interface. String ''" [ref=e1137]:
+                      - cell "stylus.site.network.interfaces.[NIC].ipAddress" [ref=e1138]:
+                        - code [ref=e1139]: stylus.site.network.interfaces.[NIC].ipAddress
+                      - cell "The assigned IP address to the network interface." [ref=e1140]
+                      - cell "String" [ref=e1141]
+                      - cell "''" [ref=e1142]:
+                        - code [ref=e1143]: "''"
+                    - row "stylus.site.network.interfaces.[NIC].mask The network mask for the assigned IP address. String ''" [ref=e1144]:
+                      - cell "stylus.site.network.interfaces.[NIC].mask" [ref=e1145]:
+                        - code [ref=e1146]: stylus.site.network.interfaces.[NIC].mask
+                      - cell "The network mask for the assigned IP address." [ref=e1147]
+                      - cell "String" [ref=e1148]
+                      - cell "''" [ref=e1149]:
+                        - code [ref=e1150]: "''"
+                    - row "stylus.site.network.interfaces.[NIC].type Defines how the IP address is assigned. Allowed values are dhcp or static. String dhcp" [ref=e1151]:
+                      - cell "stylus.site.network.interfaces.[NIC].type" [ref=e1152]:
+                        - code [ref=e1153]: stylus.site.network.interfaces.[NIC].type
+                      - cell "Defines how the IP address is assigned. Allowed values are dhcp or static." [ref=e1154]:
+                        - text: Defines how the IP address is assigned. Allowed values are
+                        - code [ref=e1155]: dhcp
+                        - text: or
+                        - code [ref=e1156]: static
+                        - text: .
+                      - cell "String" [ref=e1157]
+                      - cell "dhcp" [ref=e1158]:
+                        - code [ref=e1159]: dhcp
+                    - row "stylus.site.network.interfaces.[NIC].gateway The network gateway IP address. String ''" [ref=e1160]:
+                      - cell "stylus.site.network.interfaces.[NIC].gateway" [ref=e1161]:
+                        - code [ref=e1162]: stylus.site.network.interfaces.[NIC].gateway
+                      - cell "The network gateway IP address." [ref=e1163]
+                      - cell "String" [ref=e1164]
+                      - cell "''" [ref=e1165]:
+                        - code [ref=e1166]: "''"
+                    - row "stylus.site.network.interfaces.[NIC].nameserver The IP address of the DNS nameserver for this interface. String ''" [ref=e1167]:
+                      - cell "stylus.site.network.interfaces.[NIC].nameserver" [ref=e1168]:
+                        - code [ref=e1169]: stylus.site.network.interfaces.[NIC].nameserver
+                      - cell "The IP address of the DNS nameserver for this interface." [ref=e1170]
+                      - cell "String" [ref=e1171]
+                      - cell "''" [ref=e1172]:
+                        - code [ref=e1173]: "''"
+                    - row "stylus.site.network.nameserver The IP address of the global DNS nameserver to route requests to. String ''" [ref=e1174]:
+                      - cell "stylus.site.network.nameserver" [ref=e1175]:
+                        - code [ref=e1176]: stylus.site.network.nameserver
+                      - cell "The IP address of the global DNS nameserver to route requests to." [ref=e1177]
+                      - cell "String" [ref=e1178]
+                      - cell "''" [ref=e1179]:
+                        - code [ref=e1180]: "''"
+                - generic [ref=e1181]:
+                  - generic [ref=e1182]:
+                    - img [ref=e1184]
+                    - text: warning
+                  - paragraph [ref=e1187]:
+                    - text: The proxy settings in user data configure Palette services to use the proxy network. However, these settings do not automatically apply to application workloads. To configure applications to use the proxy configurations, refer to
+                    - link "Configure Applications to Use Proxy Server" [ref=e1188] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/cluster-proxy/
+                    - text: .
+                - heading "TagsDirect link to Tags" [level=4] [ref=e1189]:
+                  - text: Tags
+                  - link "Direct link to Tags" [ref=e1190] [cursor=pointer]:
+                    - /url: "#tags"
+                    - text: "#"
+                - paragraph [ref=e1191]:
+                  - text: You can specify tags from a file by using the
+                  - code [ref=e1192]: tagsFromFile
+                  - text: parameter object or from a script by using the
+                  - code [ref=e1193]: tagsFromScript
+                  - text: parameter.
+                - table [ref=e1194]:
+                  - rowgroup [ref=e1195]:
+                    - row "Parameter Description Type Default" [ref=e1196]:
+                      - cell "Parameter" [ref=e1197]
+                      - cell "Description" [ref=e1198]
+                      - cell "Type" [ref=e1199]
+                      - cell "Default" [ref=e1200]
+                  - rowgroup [ref=e1201]:
+                    - row "stylus.site.tagsFromFile.fileName The path to the file containing the tags. String ''" [ref=e1202]:
+                      - cell "stylus.site.tagsFromFile.fileName" [ref=e1203]:
+                        - code [ref=e1204]: stylus.site.tagsFromFile.fileName
+                      - cell "The path to the file containing the tags." [ref=e1205]
+                      - cell "String" [ref=e1206]
+                      - cell "''" [ref=e1207]:
+                        - code [ref=e1208]: "''"
+                    - row "stylus.site.tagsFromFile.delimiter The delimiter used to separate each key-value pair. String \\n" [ref=e1209]:
+                      - cell "stylus.site.tagsFromFile.delimiter" [ref=e1210]:
+                        - code [ref=e1211]: stylus.site.tagsFromFile.delimiter
+                      - cell "The delimiter used to separate each key-value pair." [ref=e1212]
+                      - cell "String" [ref=e1213]
+                      - cell "\\n" [ref=e1214]:
+                        - code [ref=e1215]: \n
+                    - row "stylus.site.tagsFromFile.separator The separator used to split the key from the value. String :" [ref=e1216]:
+                      - cell "stylus.site.tagsFromFile.separator" [ref=e1217]:
+                        - code [ref=e1218]: stylus.site.tagsFromFile.separator
+                      - cell "The separator used to split the key from the value." [ref=e1219]
+                      - cell "String" [ref=e1220]
+                      - cell ":" [ref=e1221]:
+                        - code [ref=e1222]: ":"
+                    - row "stylus.site.tagsFromScript.scriptName The path to the script that returns a JSON object. String ''" [ref=e1223]:
+                      - cell "stylus.site.tagsFromScript.scriptName" [ref=e1224]:
+                        - code [ref=e1225]: stylus.site.tagsFromScript.scriptName
+                      - cell "The path to the script that returns a JSON object." [ref=e1226]
+                      - cell "String" [ref=e1227]
+                      - cell "''" [ref=e1228]:
+                        - code [ref=e1229]: "''"
+                    - row "stylus.site.tagsFromScript.timeout The timeout value in seconds for the script to return. Integer 60" [ref=e1230]:
+                      - cell "stylus.site.tagsFromScript.timeout" [ref=e1231]:
+                        - code [ref=e1232]: stylus.site.tagsFromScript.timeout
+                      - cell "The timeout value in seconds for the script to return." [ref=e1233]
+                      - cell "Integer" [ref=e1234]
+                      - cell "60" [ref=e1235]:
+                        - code [ref=e1236]: "60"
+                - paragraph [ref=e1237]:
+                  - text: With tags from a file, you can specify different delimiters and separators to parse the content of a file depending on how the content is formatted. For example, assume the file
+                  - strong [ref=e1238]: /etc/palette/tags.txt
+                  - text: contains the following content.
+                - generic [ref=e1240]:
+                  - code [ref=e1242]:
+                    - generic [ref=e1243]: Location:Mumbai,India; Latitude:48.856614; Longitude:2.352221; owner:p78125d
+                  - button "Toggle word wrap" [ref=e1245] [cursor=pointer]:
+                    - img [ref=e1246]
+                - paragraph [ref=e1248]:
+                  - text: "The following configuration can produce these tags:"
+                  - code [ref=e1249]: "Location: Mumbai,India"
+                  - text: ","
+                  - code [ref=e1250]: "Latitude: 48.856614"
+                  - text: ","
+                  - code [ref=e1251]: Longitude:2.352221
+                  - text: ","
+                  - code [ref=e1252]: owner:p78125d
+                  - text: ","
+                  - code [ref=e1253]: "department: sales"
+                  - text: .
+                - generic [ref=e1255]:
+                  - code [ref=e1257]:
+                    - generic [ref=e1258]: "#cloud-config"
+                    - generic [ref=e1259]: "stylus:"
+                    - generic [ref=e1260]: "site:"
+                    - generic [ref=e1261]: "tags:"
+                    - generic [ref=e1262]: "department: \"sales\""
+                    - generic [ref=e1263]: "tagsFromFile:"
+                    - generic [ref=e1264]: "fileName: \"/etc/palette/tags.txt\""
+                    - generic [ref=e1265]: "delimiter: \";\""
+                    - generic [ref=e1266]: "separator: \":\""
+                  - button "Copy code to clipboard" [ref=e1268] [cursor=pointer]:
+                    - generic [ref=e1269]:
+                      - img [ref=e1270]
+                      - img [ref=e1272]
+                - paragraph [ref=e1274]:
+                  - text: You can specify tags from a script by using the
+                  - code [ref=e1275]: tagsFromScript
+                  - text: parameter object. The script must be bash script that is executable and return a JSON object that contains the tags in the following format.
+                - code [ref=e1279]:
+                  - generic [ref=e1280]: "{"
+                  - generic [ref=e1281]: "\"key\": \"value\""
+                  - generic [ref=e1282]: "}"
+                - paragraph [ref=e1283]: "For example, if you have a bash script that returns the following JSON output:"
+                - generic [ref=e1285]:
+                  - code [ref=e1287]:
+                    - generic [ref=e1288]: "{"
+                    - generic [ref=e1289]: "\"department\": \"sales\","
+                    - generic [ref=e1290]: "\"owner\": \"p78125d\""
+                    - generic [ref=e1291]: "}"
+                  - button "Copy code to clipboard" [ref=e1293] [cursor=pointer]:
+                    - generic [ref=e1294]:
+                      - img [ref=e1295]
+                      - img [ref=e1297]
+                - paragraph [ref=e1299]:
+                  - text: You can configure
+                  - code [ref=e1300]: stylus.site.tagsFromScript
+                  - text: to point to the script, and it will add the tags
+                  - code [ref=e1301]: owner:p78125d
+                  - text: and
+                  - code [ref=e1302]: "department: sales"
+                  - text: to the Edge host.
+                - heading "Site Registry ParametersDirect link to Site Registry Parameters" [level=3] [ref=e1303]:
+                  - text: Site Registry Parameters
+                  - link "Direct link to Site Registry Parameters" [ref=e1304] [cursor=pointer]:
+                    - /url: "#site-registry-parameters"
+                    - text: "#"
+                - paragraph [ref=e1305]:
+                  - text: Palette uses a webhook to redirect image pulls when you have specified an external registry or use a local Harbor registry. If you find this redirect behavior to be limiting, you can disable the webhook. For more information, refer to
+                  - link "Disable Webhook to Customize Image Pull Behavior" [ref=e1306] [cursor=pointer]:
+                    - /url: /clusters/edge/site-deployment/deploy-custom-registries/webhook-disable/
+                  - text: .
+                - table [ref=e1307]:
+                  - rowgroup [ref=e1308]:
+                    - row "Parameter Description Type Default" [ref=e1309]:
+                      - cell "Parameter" [ref=e1310]
+                      - cell "Description" [ref=e1311]
+                      - cell "Type" [ref=e1312]
+                      - cell "Default" [ref=e1313]
+                  - rowgroup [ref=e1314]:
+                    - row "stylus.imageRedirectWebhook.enable Whether to enable the webhook to redirect image pulls. boolean true" [ref=e1315]:
+                      - cell "stylus.imageRedirectWebhook.enable" [ref=e1316]:
+                        - code [ref=e1317]: stylus.imageRedirectWebhook.enable
+                      - cell "Whether to enable the webhook to redirect image pulls." [ref=e1318]
+                      - cell "boolean" [ref=e1319]
+                      - cell "true" [ref=e1320]:
+                        - code [ref=e1321]: "true"
+                    - row "stylus.imageRedirectWebhook.port The port on which the webhook listens. Integer 0" [ref=e1322]:
+                      - cell "stylus.imageRedirectWebhook.port" [ref=e1323]:
+                        - code [ref=e1324]: stylus.imageRedirectWebhook.port
+                      - cell "The port on which the webhook listens." [ref=e1325]
+                      - cell "Integer" [ref=e1326]
+                      - cell "0" [ref=e1327]:
+                        - code [ref=e1328]: "0"
+                - heading "Install ParametersDirect link to Install Parameters" [level=2] [ref=e1329]:
+                  - text: Install Parameters
+                  - link "Direct link to Install Parameters" [ref=e1330] [cursor=pointer]:
+                    - /url: "#install-parameters"
+                    - text: "#"
+                - paragraph [ref=e1331]:
+                  - text: The
+                  - code [ref=e1332]: install
+                  - text: block allows you to configure the installer to make bind mounts and disk partitions on the Edge host. In addition, you can specify post-installation behavior, such as instructing the Edge host to power off automatically after installation is complete.
+                - table [ref=e1333]:
+                  - rowgroup [ref=e1334]:
+                    - row "Parameter Description Type Default" [ref=e1335]:
+                      - cell "Parameter" [ref=e1336]
+                      - cell "Description" [ref=e1337]
+                      - cell "Type" [ref=e1338]
+                      - cell "Default" [ref=e1339]
+                  - rowgroup [ref=e1340]:
+                    - row "install.bind_mounts The list of folders to bind mount from the installer environment into the Edge host. Array of strings None" [ref=e1341]:
+                      - cell "install.bind_mounts" [ref=e1342]:
+                        - code [ref=e1343]: install.bind_mounts
+                      - cell "The list of folders to bind mount from the installer environment into the Edge host." [ref=e1344]
+                      - cell "Array of strings" [ref=e1345]
+                      - cell "None" [ref=e1346]
+                    - row "install.extra-dirs-rootfs The list of folders to bind mount from the installer to the Edge host's root file system. These folders are created in the rootfs path during installation. Array of strings None" [ref=e1347]:
+                      - cell "install.extra-dirs-rootfs" [ref=e1348]:
+                        - code [ref=e1349]: install.extra-dirs-rootfs
+                      - cell "The list of folders to bind mount from the installer to the Edge host's root file system. These folders are created in the rootfs path during installation." [ref=e1350]:
+                        - text: The list of folders to bind mount from the installer to the Edge host's root file system. These folders are created in the
+                        - code [ref=e1351]: rootfs
+                        - text: path during installation.
+                      - cell "Array of strings" [ref=e1352]
+                      - cell "None" [ref=e1353]
+                    - row "install.grub_options.extra_cmdline Kernel command-line parameters to add to the installer. Map of strings None" [ref=e1354]:
+                      - cell "install.grub_options.extra_cmdline" [ref=e1355]:
+                        - code [ref=e1356]: install.grub_options.extra_cmdline
+                      - cell "Kernel command-line parameters to add to the installer." [ref=e1357]
+                      - cell "Map of strings" [ref=e1358]
+                      - cell "None" [ref=e1359]
+                    - row "install.partitions.persistent A persistent partition object that you can configure for extra storage. Object None" [ref=e1360]:
+                      - cell "install.partitions.persistent" [ref=e1361]:
+                        - code [ref=e1362]: install.partitions.persistent
+                      - cell "A persistent partition object that you can configure for extra storage." [ref=e1363]
+                      - cell "Object" [ref=e1364]
+                      - cell "None" [ref=e1365]
+                    - row "install.partitions.persistent.size The size of the persistent partition. Integer 0" [ref=e1366]:
+                      - cell "install.partitions.persistent.size" [ref=e1367]:
+                        - code [ref=e1368]: install.partitions.persistent.size
+                      - cell "The size of the persistent partition." [ref=e1369]
+                      - cell "Integer" [ref=e1370]
+                      - cell "0" [ref=e1371]:
+                        - code [ref=e1372]: "0"
+                    - row "install.partitions.persistent.fs The file system type for the persistent partition. You must provide a value for this parameter (for example, ext4). String ''" [ref=e1373]:
+                      - cell "install.partitions.persistent.fs" [ref=e1374]:
+                        - code [ref=e1375]: install.partitions.persistent.fs
+                      - cell "The file system type for the persistent partition. You must provide a value for this parameter (for example, ext4)." [ref=e1376]:
+                        - text: The file system type for the persistent partition. You must provide a value for this parameter (for example,
+                        - code [ref=e1377]: ext4
+                        - text: ).
+                      - cell "String" [ref=e1378]
+                      - cell "''" [ref=e1379]:
+                        - code [ref=e1380]: "''"
+                    - row "install.extra-partitions The list of extra partitions to create. Each item accepts name, size, fs, and label. Array of partition objects None" [ref=e1381]:
+                      - cell "install.extra-partitions" [ref=e1382]:
+                        - code [ref=e1383]: install.extra-partitions
+                      - cell "The list of extra partitions to create. Each item accepts name, size, fs, and label." [ref=e1384]:
+                        - text: The list of extra partitions to create. Each item accepts
+                        - code [ref=e1385]: name
+                        - text: ","
+                        - code [ref=e1386]: size
+                        - text: ","
+                        - code [ref=e1387]: fs
+                        - text: ", and"
+                        - code [ref=e1388]: label
+                        - text: .
+                      - cell "Array of partition objects" [ref=e1389]
+                      - cell "None" [ref=e1390]
+                    - row "install.extra-partitions[*].name The name of the extra partition. String ''" [ref=e1391]:
+                      - cell "install.extra-partitions[*].name" [ref=e1392]:
+                        - code [ref=e1393]: install.extra-partitions[*].name
+                      - cell "The name of the extra partition." [ref=e1394]
+                      - cell "String" [ref=e1395]
+                      - cell "''" [ref=e1396]:
+                        - code [ref=e1397]: "''"
+                    - row "install.extra-partitions[*].size The size of the extra partition. Integer 0" [ref=e1398]:
+                      - cell "install.extra-partitions[*].size" [ref=e1399]:
+                        - code [ref=e1400]: install.extra-partitions[*].size
+                      - cell "The size of the extra partition." [ref=e1401]
+                      - cell "Integer" [ref=e1402]
+                      - cell "0" [ref=e1403]:
+                        - code [ref=e1404]: "0"
+                    - row "install.extra-partitions[*].fs The file system of the extra partition. String ''" [ref=e1405]:
+                      - cell "install.extra-partitions[*].fs" [ref=e1406]:
+                        - code [ref=e1407]: install.extra-partitions[*].fs
+                      - cell "The file system of the extra partition." [ref=e1408]
+                      - cell "String" [ref=e1409]
+                      - cell "''" [ref=e1410]:
+                        - code [ref=e1411]: "''"
+                    - row "install.extra-partitions[*].label The label of the extra partition. String ''" [ref=e1412]:
+                      - cell "install.extra-partitions[*].label" [ref=e1413]:
+                        - code [ref=e1414]: install.extra-partitions[*].label
+                      - cell "The label of the extra partition." [ref=e1415]
+                      - cell "String" [ref=e1416]
+                      - cell "''" [ref=e1417]:
+                        - code [ref=e1418]: "''"
+                    - row "install.poweroff Whether to power off the Edge host after installation completes. boolean false" [ref=e1419]:
+                      - cell "install.poweroff" [ref=e1420]:
+                        - code [ref=e1421]: install.poweroff
+                      - cell "Whether to power off the Edge host after installation completes." [ref=e1422]
+                      - cell "boolean" [ref=e1423]
+                      - cell "false" [ref=e1424]:
+                        - code [ref=e1425]: "false"
+                    - row "install.reboot Whether to reboot the Edge host after installation completes. boolean false" [ref=e1426]:
+                      - cell "install.reboot" [ref=e1427]:
+                        - code [ref=e1428]: install.reboot
+                      - cell "Whether to reboot the Edge host after installation completes." [ref=e1429]
+                      - cell "boolean" [ref=e1430]
+                      - cell "false" [ref=e1431]:
+                        - code [ref=e1432]: "false"
+                - heading "Cloud Init StagesDirect link to Cloud Init Stages" [level=2] [ref=e1433]:
+                  - text: Cloud Init Stages
+                  - link "Direct link to Cloud Init Stages" [ref=e1434] [cursor=pointer]:
+                    - /url: "#cloud-init-stages"
+                    - text: "#"
+                - paragraph [ref=e1435]:
+                  - text: Cloud init stages allow you to automates the initialization of your Edge hosts during various stages of the system boot process. You can perform For more information, refer to
+                  - link "Cloud-init Stages" [ref=e1436] [cursor=pointer]:
+                    - /url: /clusters/edge/edge-configuration/cloud-init/
+                  - text: .
+                - generic [ref=e1437]:
+                  - generic [ref=e1438]:
+                    - img [ref=e1440]
+                    - text: info
+                  - generic [ref=e1442]:
+                    - paragraph [ref=e1443]:
+                      - text: You can configure users during any cloud-init stage. However, we strongly recommend that you use the
+                      - code [ref=e1444]: initramfs
+                      - text: stage to configure users, because this is the earliest cloud-init stage.
+                    - paragraph [ref=e1445]: If you need to debug the Edge host in the event it is unable to progress past a certain stage, you will be able to establish an SSH connection into the Edge host because the users are already there. On the other hand, if you configure users at a later stage and your Edge host is not able to progress to that stage during installation, you will not be able to access your Edge host because there are no users.
+                - table [ref=e1446]:
+                  - rowgroup [ref=e1447]:
+                    - row "Parameter Description Default" [ref=e1448]:
+                      - cell "Parameter" [ref=e1449]
+                      - cell "Description" [ref=e1450]
+                      - cell "Default" [ref=e1451]
+                  - rowgroup [ref=e1452]:
+                    - row "stages.*.users The list of users to create at any cloud-init stage. Replace * with the specific stage. Each list item accepts parameters as follows in this table. None" [ref=e1453]:
+                      - cell "stages.*.users" [ref=e1454]:
+                        - code [ref=e1455]: stages.*.users
+                      - cell "The list of users to create at any cloud-init stage. Replace * with the specific stage. Each list item accepts parameters as follows in this table." [ref=e1456]:
+                        - text: The list of users to create at any cloud-init stage. Replace
+                        - code [ref=e1457]: "*"
+                        - text: with the specific stage. Each list item accepts parameters as follows in this table.
+                      - cell "None" [ref=e1458]
+                    - row "stages.*.users[*].groups The list of groups that the user belongs to. Replace * with your username. None" [ref=e1459]:
+                      - cell "stages.*.users[*].groups" [ref=e1460]:
+                        - code [ref=e1461]: stages.*.users[*].groups
+                      - cell "The list of groups that the user belongs to. Replace * with your username." [ref=e1462]:
+                        - text: The list of groups that the user belongs to. Replace
+                        - code [ref=e1463]: "*"
+                        - text: with your username.
+                      - cell "None" [ref=e1464]
+                    - row "stages.*.users[*].passwd The password of the user. Replace * with your username. None" [ref=e1465]:
+                      - cell "stages.*.users[*].passwd" [ref=e1466]:
+                        - code [ref=e1467]: stages.*.users[*].passwd
+                      - cell "The password of the user. Replace * with your username." [ref=e1468]:
+                        - text: The password of the user. Replace
+                        - code [ref=e1469]: "*"
+                        - text: with your username.
+                      - cell "None" [ref=e1470]
+                    - row "stages.*.users[*].lock_passwd When set to true, disables password configuration by the user. Replace * with your username. false" [ref=e1471]:
+                      - cell "stages.*.users[*].lock_passwd" [ref=e1472]:
+                        - code [ref=e1473]: stages.*.users[*].lock_passwd
+                      - cell "When set to true, disables password configuration by the user. Replace * with your username." [ref=e1474]:
+                        - text: When set to
+                        - code [ref=e1475]: "true"
+                        - text: ", disables password configuration by the user. Replace"
+                        - code [ref=e1476]: "*"
+                        - text: with your username.
+                      - cell "false" [ref=e1477]:
+                        - code [ref=e1478]: "false"
+                    - row "stages.*.users[*].ssh_authorized_keys The list of public SSH keys authorized for the user. Replace * with your username. None" [ref=e1479]:
+                      - cell "stages.*.users[*].ssh_authorized_keys" [ref=e1480]:
+                        - code [ref=e1481]: stages.*.users[*].ssh_authorized_keys
+                      - cell "The list of public SSH keys authorized for the user. Replace * with your username." [ref=e1482]:
+                        - text: The list of public SSH keys authorized for the user. Replace
+                        - code [ref=e1483]: "*"
+                        - text: with your username.
+                      - cell "None" [ref=e1484]
+                    - row "stages.initramfs The initramfs stage during Edge host installation. For more information, refer to Cloud Init Stages. None" [ref=e1485]:
+                      - cell "stages.initramfs" [ref=e1486]:
+                        - code [ref=e1487]: stages.initramfs
+                      - cell "The initramfs stage during Edge host installation. For more information, refer to Cloud Init Stages." [ref=e1488]:
+                        - text: The
+                        - code [ref=e1489]: initramfs
+                        - text: stage during Edge host installation. For more information, refer to
+                        - link "Cloud Init Stages" [ref=e1490] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-configuration/cloud-init/
+                        - text: .
+                      - cell "None" [ref=e1491]
+                    - row "stages.rootfs The rootfs stage during Edge host installation. For more information, refer to Cloud Init Stages None" [ref=e1492]:
+                      - cell "stages.rootfs" [ref=e1493]:
+                        - code [ref=e1494]: stages.rootfs
+                      - cell "The rootfs stage during Edge host installation. For more information, refer to Cloud Init Stages" [ref=e1495]:
+                        - text: The
+                        - code [ref=e1496]: rootfs
+                        - text: stage during Edge host installation. For more information, refer to
+                        - link "Cloud Init Stages" [ref=e1497] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-configuration/cloud-init/
+                      - cell "None" [ref=e1498]
+                    - row "stages.boot The boot stage during Edge host installation. For more information, refer to Cloud Init Stages None" [ref=e1499]:
+                      - cell "stages.boot" [ref=e1500]:
+                        - code [ref=e1501]: stages.boot
+                      - cell "The boot stage during Edge host installation. For more information, refer to Cloud Init Stages" [ref=e1502]:
+                        - text: The
+                        - code [ref=e1503]: boot
+                        - text: stage during Edge host installation. For more information, refer to
+                        - link "Cloud Init Stages" [ref=e1504] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-configuration/cloud-init/
+                      - cell "None" [ref=e1505]
+                    - row "stages.fs The fs stage during Edge host installation. For more information, refer to Cloud Init Stages None" [ref=e1506]:
+                      - cell "stages.fs" [ref=e1507]:
+                        - code [ref=e1508]: stages.fs
+                      - cell "The fs stage during Edge host installation. For more information, refer to Cloud Init Stages" [ref=e1509]:
+                        - text: The
+                        - code [ref=e1510]: fs
+                        - text: stage during Edge host installation. For more information, refer to
+                        - link "Cloud Init Stages" [ref=e1511] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-configuration/cloud-init/
+                      - cell "None" [ref=e1512]
+                    - row "stages.network The network stage during Edge host installation. For more information, refer to Cloud Init Stages None" [ref=e1513]:
+                      - cell "stages.network" [ref=e1514]:
+                        - code [ref=e1515]: stages.network
+                      - cell "The network stage during Edge host installation. For more information, refer to Cloud Init Stages" [ref=e1516]:
+                        - text: The
+                        - code [ref=e1517]: network
+                        - text: stage during Edge host installation. For more information, refer to
+                        - link "Cloud Init Stages" [ref=e1518] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-configuration/cloud-init/
+                      - cell "None" [ref=e1519]
+                    - row "stages.reconcile The reconcile stage during Edge host installation. For more information, refer to Cloud Init Stages None" [ref=e1520]:
+                      - cell "stages.reconcile" [ref=e1521]:
+                        - code [ref=e1522]: stages.reconcile
+                      - cell "The reconcile stage during Edge host installation. For more information, refer to Cloud Init Stages" [ref=e1523]:
+                        - text: The
+                        - code [ref=e1524]: reconcile
+                        - text: stage during Edge host installation. For more information, refer to
+                        - link "Cloud Init Stages" [ref=e1525] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-configuration/cloud-init/
+                      - cell "None" [ref=e1526]
+                    - row "stages.after-install The after-install stage during Edge host installation. For more information, refer to Cloud Init Stages None" [ref=e1527]:
+                      - cell "stages.after-install" [ref=e1528]:
+                        - code [ref=e1529]: stages.after-install
+                      - cell "The after-install stage during Edge host installation. For more information, refer to Cloud Init Stages" [ref=e1530]:
+                        - text: The
+                        - code [ref=e1531]: after-install
+                        - text: stage during Edge host installation. For more information, refer to
+                        - link "Cloud Init Stages" [ref=e1532] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-configuration/cloud-init/
+                      - cell "None" [ref=e1533]
+                    - row "stages.after-install-chroot The after-install-chroot stage during Edge host installation. For more information, refer to Cloud Init Stages None" [ref=e1534]:
+                      - cell "stages.after-install-chroot" [ref=e1535]:
+                        - code [ref=e1536]: stages.after-install-chroot
+                      - cell "The after-install-chroot stage during Edge host installation. For more information, refer to Cloud Init Stages" [ref=e1537]:
+                        - text: The
+                        - code [ref=e1538]: after-install-chroot
+                        - text: stage during Edge host installation. For more information, refer to
+                        - link "Cloud Init Stages" [ref=e1539] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-configuration/cloud-init/
+                      - cell "None" [ref=e1540]
+                    - row "stages.after-reset The after-reset stage during Edge host installation. For more information, refer to Cloud Init Stages None" [ref=e1541]:
+                      - cell "stages.after-reset" [ref=e1542]:
+                        - code [ref=e1543]: stages.after-reset
+                      - cell "The after-reset stage during Edge host installation. For more information, refer to Cloud Init Stages" [ref=e1544]:
+                        - text: The
+                        - code [ref=e1545]: after-reset
+                        - text: stage during Edge host installation. For more information, refer to
+                        - link "Cloud Init Stages" [ref=e1546] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-configuration/cloud-init/
+                      - cell "None" [ref=e1547]
+                    - row "stages.after-reset-chroot The after-reset-chroot stage during Edge host installation. For more information, refer to Cloud Init Stages None" [ref=e1548]:
+                      - cell "stages.after-reset-chroot" [ref=e1549]:
+                        - code [ref=e1550]: stages.after-reset-chroot
+                      - cell "The after-reset-chroot stage during Edge host installation. For more information, refer to Cloud Init Stages" [ref=e1551]:
+                        - text: The
+                        - code [ref=e1552]: after-reset-chroot
+                        - text: stage during Edge host installation. For more information, refer to
+                        - link "Cloud Init Stages" [ref=e1553] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-configuration/cloud-init/
+                      - cell "None" [ref=e1554]
+                    - row "stages.before-install The before-install stage during Edge host installation. For more information, refer to Cloud Init Stages None" [ref=e1555]:
+                      - cell "stages.before-install" [ref=e1556]:
+                        - code [ref=e1557]: stages.before-install
+                      - cell "The before-install stage during Edge host installation. For more information, refer to Cloud Init Stages" [ref=e1558]:
+                        - text: The
+                        - code [ref=e1559]: before-install
+                        - text: stage during Edge host installation. For more information, refer to
+                        - link "Cloud Init Stages" [ref=e1560] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-configuration/cloud-init/
+                      - cell "None" [ref=e1561]
+                    - row "stages.before-upgrade The before-upgrade stage during Edge host installation. For more information, refer to Cloud Init Stages None" [ref=e1562]:
+                      - cell "stages.before-upgrade" [ref=e1563]:
+                        - code [ref=e1564]: stages.before-upgrade
+                      - cell "The before-upgrade stage during Edge host installation. For more information, refer to Cloud Init Stages" [ref=e1565]:
+                        - text: The
+                        - code [ref=e1566]: before-upgrade
+                        - text: stage during Edge host installation. For more information, refer to
+                        - link "Cloud Init Stages" [ref=e1567] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-configuration/cloud-init/
+                      - cell "None" [ref=e1568]
+                    - row "stages.before-reset The before-reset stage during Edge host installation. For more information, refer to Cloud Init Stages None" [ref=e1569]:
+                      - cell "stages.before-reset" [ref=e1570]:
+                        - code [ref=e1571]: stages.before-reset
+                      - cell "The before-reset stage during Edge host installation. For more information, refer to Cloud Init Stages" [ref=e1572]:
+                        - text: The
+                        - code [ref=e1573]: before-reset
+                        - text: stage during Edge host installation. For more information, refer to
+                        - link "Cloud Init Stages" [ref=e1574] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-configuration/cloud-init/
+                      - cell "None" [ref=e1575]
+              - generic [ref=e1576]:
+                - generic [ref=e1578]:
+                  - text: "Tags:"
+                  - list [ref=e1579]:
+                    - listitem [ref=e1580]:
+                      - link "edge" [ref=e1581] [cursor=pointer]:
+                        - /url: /tags/edge/
+                - link "Edit this page" [ref=e1584] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/edge/edge-configuration/installer-reference.md
+                  - img [ref=e1585]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e1589]:
+              - link "Previous « Sensitive User Data Handling" [ref=e1590] [cursor=pointer]:
+                - /url: /clusters/edge/edge-configuration/skip-copying-stages/
+                - generic [ref=e1591]: Previous
+                - generic [ref=e1592]: « Sensitive User Data Handling
+              - link "Next EdgeForge Workflow »" [ref=e1593] [cursor=pointer]:
+                - /url: /clusters/edge/edgeforge-workflow/
+                - generic [ref=e1594]: Next
+                - generic [ref=e1595]: EdgeForge Workflow »
+          - list [ref=e1598]:
+            - listitem [ref=e1599]:
+              - link "Palette Agent Parameters" [ref=e1600] [cursor=pointer]:
+                - /url: "#palette-agent-parameters"
+              - list [ref=e1601]:
+                - listitem [ref=e1602]:
+                  - link "Feature Gates" [ref=e1603] [cursor=pointer]:
+                    - /url: "#feature-gates"
+                - listitem [ref=e1604]:
+                  - link "Multiple External Registries" [ref=e1605] [cursor=pointer]:
+                    - /url: "#multiple-external-registries"
+                - listitem [ref=e1606]:
+                  - link "Single External Registry" [ref=e1607] [cursor=pointer]:
+                    - /url: "#single-external-registry"
+                - listitem [ref=e1608]:
+                  - link "Site Parameters" [ref=e1609] [cursor=pointer]:
+                    - /url: "#site-parameters"
+                - listitem [ref=e1610]:
+                  - link "Site Registry Parameters" [ref=e1611] [cursor=pointer]:
+                    - /url: "#site-registry-parameters"
+            - listitem [ref=e1612]:
+              - link "Install Parameters" [ref=e1613] [cursor=pointer]:
+                - /url: "#install-parameters"
+            - listitem [ref=e1614]:
+              - link "Cloud Init Stages" [ref=e1615] [cursor=pointer]:
+                - /url: "#cloud-init-stages"
+  - button "Project Logo Ask AI" [ref=e1616] [cursor=pointer]:
+    - generic [ref=e1619]:
+      - img "Project Logo" [ref=e1620]
+      - paragraph [ref=e1621]: Ask AI
+```

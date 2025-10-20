@@ -1,0 +1,455 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Introduction" [ref=e41] [cursor=pointer]:
+                  - /url: /api/introduction/
+                  - img [ref=e43]
+                  - text: Introduction
+              - listitem [ref=e45]:
+                - link "Example Usage" [ref=e46] [cursor=pointer]:
+                  - /url: /api/samples/
+              - listitem [ref=e47]:
+                - link "Postman Collection" [ref=e48] [cursor=pointer]:
+                  - /url: /api/postman-collection/
+              - listitem [ref=e49]:
+                - generic [ref=e50]:
+                  - link "Palette API V1" [expanded] [ref=e51] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Palette API V1'" [ref=e52] [cursor=pointer]
+                - list [ref=e53]:
+                  - listitem [ref=e54]:
+                    - link "Introduction" [ref=e55] [cursor=pointer]:
+                      - /url: /api/v1/palette-apis-4-7/
+                  - listitem [ref=e56]:
+                    - generic [ref=e57]:
+                      - link "Api Keys" [ref=e58] [cursor=pointer]:
+                        - /url: /api/v1/api-keys/
+                      - button "Toggle the collapsible sidebar category 'Api Keys'" [ref=e59] [cursor=pointer]
+                  - listitem [ref=e60]:
+                    - generic [ref=e61]:
+                      - link "App Deployments" [expanded] [ref=e62] [cursor=pointer]:
+                        - /url: /api/v1/app-deployments/
+                      - button "Toggle the collapsible sidebar category 'App Deployments'" [ref=e63] [cursor=pointer]
+                    - list [ref=e64]:
+                      - listitem [ref=e65]:
+                        - link "post Creates a application deployment in the virtual cluster" [ref=e66] [cursor=pointer]:
+                          - /url: /api/v1/v-1-app-deployments-virtual-cluster-create/
+                      - listitem [ref=e67]:
+                        - link "post Creates a application deployment in one of virtual clusters in the cluster group" [ref=e68] [cursor=pointer]:
+                          - /url: /api/v1/v-1-app-deployments-cluster-group-create/
+                      - listitem [ref=e69]:
+                        - link "del Deletes the specified application deployment" [ref=e70] [cursor=pointer]:
+                          - /url: /api/v1/v-1-app-deployments-uid-delete/
+                      - listitem [ref=e71]:
+                        - link "get Returns the specified application deployment" [ref=e72] [cursor=pointer]:
+                          - /url: /api/v1/v-1-app-deployments-uid-get/
+                      - listitem [ref=e73]:
+                        - link "get Returns profile of the specified application deployment" [ref=e74] [cursor=pointer]:
+                          - /url: /api/v1/v-1-app-deployments-uid-profile-get/
+                      - listitem [ref=e75]:
+                        - link "put Updates the specified application deployment profile" [ref=e76] [cursor=pointer]:
+                          - /url: /api/v1/v-1-app-deployments-uid-profile-update/
+                      - listitem [ref=e77]:
+                        - link "patch Apply the application deployment profile updates" [ref=e78] [cursor=pointer]:
+                          - /url: /api/v1/v-1-app-deployments-uid-profile-apply/
+                      - listitem [ref=e79]:
+                        - link "get Returns the specified application deployment profile tier information" [ref=e80] [cursor=pointer]:
+                          - /url: /api/v1/v-1-app-deployments-profile-tiers-uid-get/
+                      - listitem [ref=e81]:
+                        - link "put Updates the specified application deployment profile tier information" [ref=e82] [cursor=pointer]:
+                          - /url: /api/v1/v-1-app-deployments-profile-tiers-uid-update/
+                      - listitem [ref=e83]:
+                        - link "get Retrieves a list of manifests of the specified application deployment profile tier" [ref=e84] [cursor=pointer]:
+                          - /url: /api/v1/v-1-app-deployments-profile-tiers-uid-manifests-get/
+                      - listitem [ref=e85]:
+                        - link "get Returns the specified application deployment tier manifest information" [ref=e86] [cursor=pointer]:
+                          - /url: /api/v1/v-1-app-deployments-profile-tiers-manifests-uid-get/
+                      - listitem [ref=e87]:
+                        - link "put Updates the specified application deployment tier manifest information" [ref=e88] [cursor=pointer]:
+                          - /url: /api/v1/v-1-app-deployments-profile-tiers-manifests-uid-update/
+                      - listitem [ref=e89]:
+                        - link "get Retrieves a list of profile versions of the specified application deployment" [ref=e90] [cursor=pointer]:
+                          - /url: /api/v1/v-1-app-deployments-uid-profile-versions-get/
+                  - listitem [ref=e91]:
+                    - generic [ref=e92]:
+                      - link "App Profiles" [ref=e93] [cursor=pointer]:
+                        - /url: /api/v1/app-profiles/
+                      - button "Toggle the collapsible sidebar category 'App Profiles'" [ref=e94] [cursor=pointer]
+                  - listitem [ref=e95]:
+                    - generic [ref=e96]:
+                      - link "Audits" [ref=e97] [cursor=pointer]:
+                        - /url: /api/v1/audits/
+                      - button "Toggle the collapsible sidebar category 'Audits'" [ref=e98] [cursor=pointer]
+                  - listitem [ref=e99]:
+                    - generic [ref=e100]:
+                      - link "Auth" [ref=e101] [cursor=pointer]:
+                        - /url: /api/v1/auth/
+                      - button "Toggle the collapsible sidebar category 'Auth'" [ref=e102] [cursor=pointer]
+                  - listitem [ref=e103]:
+                    - generic [ref=e104]:
+                      - link "Cloudaccounts" [ref=e105] [cursor=pointer]:
+                        - /url: /api/v1/cloudaccounts/
+                      - button "Toggle the collapsible sidebar category 'Cloudaccounts'" [ref=e106] [cursor=pointer]
+                  - listitem [ref=e107]:
+                    - generic [ref=e108]:
+                      - link "Cloudconfigs" [ref=e109] [cursor=pointer]:
+                        - /url: /api/v1/cloudconfigs/
+                      - button "Toggle the collapsible sidebar category 'Cloudconfigs'" [ref=e110] [cursor=pointer]
+                  - listitem [ref=e111]:
+                    - generic [ref=e112]:
+                      - link "Clouds" [ref=e113] [cursor=pointer]:
+                        - /url: /api/v1/clouds/
+                      - button "Toggle the collapsible sidebar category 'Clouds'" [ref=e114] [cursor=pointer]
+                  - listitem [ref=e115]:
+                    - generic [ref=e116]:
+                      - link "Cluster Templates" [ref=e117] [cursor=pointer]:
+                        - /url: /api/v1/cluster-templates/
+                      - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e118] [cursor=pointer]
+                  - listitem [ref=e119]:
+                    - generic [ref=e120]:
+                      - link "Clustergroups" [ref=e121] [cursor=pointer]:
+                        - /url: /api/v1/clustergroups/
+                      - button "Toggle the collapsible sidebar category 'Clustergroups'" [ref=e122] [cursor=pointer]
+                  - listitem [ref=e123]:
+                    - generic [ref=e124]:
+                      - link "Clusterprofiles" [ref=e125] [cursor=pointer]:
+                        - /url: /api/v1/clusterprofiles/
+                      - button "Toggle the collapsible sidebar category 'Clusterprofiles'" [ref=e126] [cursor=pointer]
+                  - listitem [ref=e127]:
+                    - generic [ref=e128]:
+                      - link "Dashboard" [ref=e129] [cursor=pointer]:
+                        - /url: /api/v1/dashboard/
+                      - button "Toggle the collapsible sidebar category 'Dashboard'" [ref=e130] [cursor=pointer]
+                  - listitem [ref=e131]:
+                    - generic [ref=e132]:
+                      - link "Datasinks" [ref=e133] [cursor=pointer]:
+                        - /url: /api/v1/datasinks/
+                      - button "Toggle the collapsible sidebar category 'Datasinks'" [ref=e134] [cursor=pointer]
+                  - listitem [ref=e135]:
+                    - generic [ref=e136]:
+                      - link "Edgehosts" [ref=e137] [cursor=pointer]:
+                        - /url: /api/v1/edgehosts/
+                      - button "Toggle the collapsible sidebar category 'Edgehosts'" [ref=e138] [cursor=pointer]
+                  - listitem [ref=e139]:
+                    - generic [ref=e140]:
+                      - link "Events" [ref=e141] [cursor=pointer]:
+                        - /url: /api/v1/events/
+                      - button "Toggle the collapsible sidebar category 'Events'" [ref=e142] [cursor=pointer]
+                  - listitem [ref=e143]:
+                    - generic [ref=e144]:
+                      - link "Features" [ref=e145] [cursor=pointer]:
+                        - /url: /api/v1/features/
+                      - button "Toggle the collapsible sidebar category 'Features'" [ref=e146] [cursor=pointer]
+                  - listitem [ref=e147]:
+                    - generic [ref=e148]:
+                      - link "Filters" [ref=e149] [cursor=pointer]:
+                        - /url: /api/v1/filters/
+                      - button "Toggle the collapsible sidebar category 'Filters'" [ref=e150] [cursor=pointer]
+                  - listitem [ref=e151]:
+                    - generic [ref=e152]:
+                      - link "Metrics" [ref=e153] [cursor=pointer]:
+                        - /url: /api/v1/metrics/
+                      - button "Toggle the collapsible sidebar category 'Metrics'" [ref=e154] [cursor=pointer]
+                  - listitem [ref=e155]:
+                    - generic [ref=e156]:
+                      - link "Notifications" [ref=e157] [cursor=pointer]:
+                        - /url: /api/v1/notifications/
+                      - button "Toggle the collapsible sidebar category 'Notifications'" [ref=e158] [cursor=pointer]
+                  - listitem [ref=e159]:
+                    - generic [ref=e160]:
+                      - link "Overlords" [ref=e161] [cursor=pointer]:
+                        - /url: /api/v1/overlords/
+                      - button "Toggle the collapsible sidebar category 'Overlords'" [ref=e162] [cursor=pointer]
+                  - listitem [ref=e163]:
+                    - generic [ref=e164]:
+                      - link "Packs" [ref=e165] [cursor=pointer]:
+                        - /url: /api/v1/packs/
+                      - button "Toggle the collapsible sidebar category 'Packs'" [ref=e166] [cursor=pointer]
+                  - listitem [ref=e167]:
+                    - generic [ref=e168]:
+                      - link "Pcg" [ref=e169] [cursor=pointer]:
+                        - /url: /api/v1/pcg/
+                      - button "Toggle the collapsible sidebar category 'Pcg'" [ref=e170] [cursor=pointer]
+                  - listitem [ref=e171]:
+                    - generic [ref=e172]:
+                      - link "Permissions" [ref=e173] [cursor=pointer]:
+                        - /url: /api/v1/permissions/
+                      - button "Toggle the collapsible sidebar category 'Permissions'" [ref=e174] [cursor=pointer]
+                  - listitem [ref=e175]:
+                    - generic [ref=e176]:
+                      - link "Projects" [ref=e177] [cursor=pointer]:
+                        - /url: /api/v1/projects/
+                      - button "Toggle the collapsible sidebar category 'Projects'" [ref=e178] [cursor=pointer]
+                  - listitem [ref=e179]:
+                    - generic [ref=e180]:
+                      - link "Registries" [ref=e181] [cursor=pointer]:
+                        - /url: /api/v1/registries/
+                      - button "Toggle the collapsible sidebar category 'Registries'" [ref=e182] [cursor=pointer]
+                  - listitem [ref=e183]:
+                    - generic [ref=e184]:
+                      - link "Roles" [ref=e185] [cursor=pointer]:
+                        - /url: /api/v1/roles/
+                      - button "Toggle the collapsible sidebar category 'Roles'" [ref=e186] [cursor=pointer]
+                  - listitem [ref=e187]:
+                    - generic [ref=e188]:
+                      - link "Services" [ref=e189] [cursor=pointer]:
+                        - /url: /api/v1/services/
+                      - button "Toggle the collapsible sidebar category 'Services'" [ref=e190] [cursor=pointer]
+                  - listitem [ref=e191]:
+                    - generic [ref=e192]:
+                      - link "Spc Policies" [ref=e193] [cursor=pointer]:
+                        - /url: /api/v1/spc-policies/
+                      - button "Toggle the collapsible sidebar category 'Spc Policies'" [ref=e194] [cursor=pointer]
+                  - listitem [ref=e195]:
+                    - generic [ref=e196]:
+                      - link "Spectroclusters" [ref=e197] [cursor=pointer]:
+                        - /url: /api/v1/spectroclusters/
+                      - button "Toggle the collapsible sidebar category 'Spectroclusters'" [ref=e198] [cursor=pointer]
+                  - listitem [ref=e199]:
+                    - generic [ref=e200]:
+                      - link "System" [ref=e201] [cursor=pointer]:
+                        - /url: /api/v1/system/
+                      - button "Toggle the collapsible sidebar category 'System'" [ref=e202] [cursor=pointer]
+                  - listitem [ref=e203]:
+                    - generic [ref=e204]:
+                      - link "Teams" [ref=e205] [cursor=pointer]:
+                        - /url: /api/v1/teams/
+                      - button "Toggle the collapsible sidebar category 'Teams'" [ref=e206] [cursor=pointer]
+                  - listitem [ref=e207]:
+                    - generic [ref=e208]:
+                      - link "Tenants" [ref=e209] [cursor=pointer]:
+                        - /url: /api/v1/tenants/
+                      - button "Toggle the collapsible sidebar category 'Tenants'" [ref=e210] [cursor=pointer]
+                  - listitem [ref=e211]:
+                    - generic [ref=e212]:
+                      - link "Users" [ref=e213] [cursor=pointer]:
+                        - /url: /api/v1/users/
+                      - button "Toggle the collapsible sidebar category 'Users'" [ref=e214] [cursor=pointer]
+                  - listitem [ref=e215]:
+                    - generic [ref=e216]:
+                      - link "Workspaces" [ref=e217] [cursor=pointer]:
+                        - /url: /api/v1/workspaces/
+                      - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e218] [cursor=pointer]
+              - listitem [ref=e219]:
+                - generic [ref=e220]:
+                  - link "Edge Management API V1" [ref=e221] [cursor=pointer]:
+                    - /url: /api/category/edge-management-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Edge Management API V1'" [ref=e222] [cursor=pointer]
+      - main [ref=e223]:
+        - generic [ref=e227]:
+          - article [ref=e228]:
+            - navigation "Breadcrumbs" [ref=e229]:
+              - list [ref=e230]:
+                - listitem [ref=e231]:
+                  - link "Home page" [ref=e232] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e233]
+                - listitem [ref=e235]:
+                  - link "Palette API V1" [ref=e236] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                - listitem [ref=e237]:
+                  - link "App Deployments" [ref=e238] [cursor=pointer]:
+                    - /url: /api/v1/app-deployments/
+                - listitem [ref=e239]:
+                  - generic [ref=e240]: Updates the specified application deployment profile tier information
+            - generic [ref=e242]:
+              - generic [ref=e243]:
+                - heading "Updates the specified application deployment profile tier information" [level=1] [ref=e244]
+                - generic [ref=e245]:
+                  - generic [ref=e246]: PUT
+                  - heading "https://api.spectrocloud.com/v1/appDeployments/:uid/profile/tiers/:tierUid" [level=2] [ref=e247]
+                - paragraph [ref=e249]: Updates the specified application deployment profile tier information
+                - heading "RequestDirect link to Request" [level=2] [ref=e250]:
+                  - text: Request
+                  - link "Direct link to Request" [ref=e251] [cursor=pointer]:
+                    - /url: "#request"
+                    - text: "#"
+                - group [ref=e252]:
+                  - generic "Path Parameters" [ref=e253] [cursor=pointer]:
+                    - heading "Path Parameters" [level=3] [ref=e254]
+                  - list [ref=e257]:
+                    - generic [ref=e258]:
+                      - generic [ref=e259]:
+                        - strong [ref=e260]: uid
+                        - generic [ref=e261]: string
+                        - generic [ref=e263]: required
+                      - paragraph [ref=e264]: Application deployment uid
+                    - generic [ref=e265]:
+                      - generic [ref=e266]:
+                        - strong [ref=e267]: tierUid
+                        - generic [ref=e268]: string
+                        - generic [ref=e270]: required
+                      - paragraph [ref=e271]: Application deployment tier uid
+                - group [ref=e272]:
+                  - generic "Header Parameters" [ref=e273] [cursor=pointer]:
+                    - heading "Header Parameters" [level=3] [ref=e274]
+                  - list [ref=e277]:
+                    - generic [ref=e278]:
+                      - generic [ref=e279]:
+                        - strong [ref=e280]: ProjectUid
+                        - generic [ref=e281]: string
+                      - paragraph [ref=e282]: A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources
+                - generic [ref=e283]:
+                  - tablist [ref=e286]:
+                    - tab "application/json" [selected] [ref=e287] [cursor=pointer]
+                  - tabpanel [ref=e289]:
+                    - group [ref=e290]:
+                      - generic "Body" [ref=e291] [cursor=pointer]:
+                        - heading "Body" [level=3] [ref=e292]
+                      - list [ref=e295]:
+                        - generic [ref=e297]:
+                          - generic [ref=e298]:
+                            - strong [ref=e299]: containerRegistryUid
+                            - generic [ref=e300]: string
+                          - paragraph [ref=e302]: Application tier container registry uid
+                        - generic [ref=e304]:
+                          - generic [ref=e305]:
+                            - strong [ref=e306]: installOrder
+                            - generic [ref=e307]: integer<int32>
+                          - paragraph [ref=e309]: Application tier installation order
+                        - group [ref=e311]:
+                          - generic "manifests undefined[]" [ref=e312] [cursor=pointer]:
+                            - generic [ref=e313]:
+                              - strong [ref=e314]: manifests
+                              - generic [ref=e315]: undefined[]
+                        - generic [ref=e317]:
+                          - generic [ref=e318]:
+                            - strong [ref=e319]: name
+                            - generic [ref=e320]: string
+                          - paragraph [ref=e322]: Application tier name
+                        - group [ref=e324]:
+                          - generic "properties undefined[]" [ref=e325] [cursor=pointer]:
+                            - generic [ref=e326]:
+                              - strong [ref=e327]: properties
+                              - generic [ref=e328]: undefined[]
+                        - generic [ref=e330]:
+                          - generic [ref=e331]:
+                            - strong [ref=e332]: values
+                            - generic [ref=e333]: string
+                          - paragraph [ref=e335]: Application tier configuration values in yaml format
+                        - generic [ref=e337]:
+                          - generic [ref=e338]:
+                            - strong [ref=e339]: version
+                            - generic [ref=e340]: string
+                          - paragraph [ref=e342]: Application tier version
+                - generic [ref=e343]:
+                  - generic [ref=e344]:
+                    - heading "ResponsesDirect link to Responses" [level=2] [ref=e345]:
+                      - text: Responses
+                      - link "Direct link to Responses" [ref=e346] [cursor=pointer]:
+                        - /url: "#responses"
+                        - text: "#"
+                    - tablist [ref=e348]:
+                      - tab "204" [selected] [ref=e349] [cursor=pointer]
+                  - tabpanel [ref=e351]:
+                    - paragraph [ref=e354]: The resource was updated successfully
+              - generic [ref=e355]:
+                - group [ref=e356]:
+                  - 'generic "Authorization: ApiKey" [ref=e357]':
+                    - 'heading "Authorization: ApiKey" [level=4] [ref=e358]'
+                - generic [ref=e359]:
+                  - tablist [ref=e360]:
+                    - tab "curl" [selected] [ref=e361] [cursor=pointer]:
+                      - generic [ref=e362]: curl
+                    - tab "python" [ref=e363] [cursor=pointer]:
+                      - generic [ref=e364]: python
+                    - tab "go" [ref=e365] [cursor=pointer]:
+                      - generic [ref=e366]: go
+                    - tab "nodejs" [ref=e367] [cursor=pointer]:
+                      - generic [ref=e368]: nodejs
+                    - tab "java" [ref=e369] [cursor=pointer]:
+                      - generic [ref=e370]: java
+                  - tabpanel [ref=e371]:
+                    - generic [ref=e372]:
+                      - tablist [ref=e373]:
+                        - tab "CURL" [selected] [ref=e374] [cursor=pointer]:
+                          - generic [ref=e375]: CURL
+                      - tabpanel [ref=e376]:
+                        - generic [ref=e378]:
+                          - code [ref=e380]:
+                            - generic [ref=e383]: curl -L -X PUT 'https://api.spectrocloud.com/v1/appDeployments/:uid/profile/tiers/:tierUid' \
+                            - generic [ref=e386]: "-H 'Content-Type: application/json' \\"
+                            - generic [ref=e389]: "-H 'ApiKey: <ApiKey>' \\"
+                            - generic [ref=e392]: "-d '{"
+                            - generic [ref=e395]: "\"containerRegistryUid\": \"string\","
+                            - generic [ref=e398]: "\"installOrder\": 0,"
+                            - generic [ref=e401]: "\"manifests\": ["
+                            - generic [ref=e404]: "{"
+                            - generic [ref=e407]: "\"content\": \"string\","
+                            - generic [ref=e410]: "\"name\": \"string\","
+                            - generic [ref=e413]: "\"uid\": \"string\""
+                            - generic [ref=e416]: "}"
+                            - generic [ref=e419]: "],"
+                            - generic [ref=e422]: "\"name\": \"string\","
+                            - generic [ref=e425]: "\"properties\": ["
+                            - generic [ref=e428]: "{"
+                            - generic [ref=e431]: "\"name\": \"string\","
+                            - generic [ref=e434]: "\"value\": \"string\""
+                            - generic [ref=e437]: "}"
+                            - generic [ref=e440]: "],"
+                            - generic [ref=e443]: "\"values\": \"string\","
+                            - generic [ref=e446]: "\"version\": \"string\""
+                            - generic [ref=e449]: "}'"
+                          - generic [ref=e450]:
+                            - button "Toggle word wrap" [ref=e451] [cursor=pointer]:
+                              - img [ref=e452]
+                            - button "Copy code to clipboard" [ref=e454] [cursor=pointer]:
+                              - generic [ref=e455]:
+                                - img [ref=e456]
+                                - img [ref=e458]
+                            - button "Expand code to fullscreen" [ref=e460] [cursor=pointer]:
+                              - generic [ref=e461]:
+                                - img [ref=e462]
+                                - img [ref=e464]
+          - navigation "Docs pages" [ref=e468]:
+            - link "Previous « Returns the specified application deployment profile tier information" [ref=e469] [cursor=pointer]:
+              - /url: /api/v1/v-1-app-deployments-profile-tiers-uid-get/
+              - generic [ref=e470]: Previous
+              - generic [ref=e471]: « Returns the specified application deployment profile tier information
+            - link "Next Retrieves a list of manifests of the specified application deployment profile tier »" [ref=e472] [cursor=pointer]:
+              - /url: /api/v1/v-1-app-deployments-profile-tiers-uid-manifests-get/
+              - generic [ref=e473]: Next
+              - generic [ref=e474]: Retrieves a list of manifests of the specified application deployment profile tier »
+  - button "Project Logo Ask AI" [ref=e475] [cursor=pointer]:
+    - generic [ref=e478]:
+      - img "Project Logo" [ref=e479]
+      - paragraph [ref=e480]: Ask AI
+```

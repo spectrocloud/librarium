@@ -1,0 +1,1044 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Audit Logs" [ref=e165] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e167]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Self-Hosted Palette" [ref=e172] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e174]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Palette VerteX" [ref=e179] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e181]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e183] [cursor=pointer]
+              - listitem [ref=e184]:
+                - generic [ref=e185]:
+                  - link "Tenant Administration" [ref=e186] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e188]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e190] [cursor=pointer]
+              - listitem [ref=e191]:
+                - generic [ref=e192]:
+                  - link "Automation" [ref=e193] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e195]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e197] [cursor=pointer]
+              - listitem [ref=e198]:
+                - generic [ref=e199]:
+                  - link "Troubleshooting" [expanded] [ref=e200] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e202]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e204] [cursor=pointer]
+                - list [ref=e205]:
+                  - listitem [ref=e206]:
+                    - link "Kubernetes Debugging" [ref=e207] [cursor=pointer]:
+                      - /url: /troubleshooting/kubernetes-tips/
+                  - listitem [ref=e208]:
+                    - link "Automation" [ref=e209] [cursor=pointer]:
+                      - /url: /troubleshooting/automation/
+                  - listitem [ref=e210]:
+                    - link "Cluster Deployment" [ref=e211] [cursor=pointer]:
+                      - /url: /troubleshooting/cluster-deployment/
+                  - listitem [ref=e212]:
+                    - link "Nodes & Clusters" [ref=e213] [cursor=pointer]:
+                      - /url: /troubleshooting/nodes/
+                  - listitem [ref=e214]:
+                    - link "Packs" [ref=e215] [cursor=pointer]:
+                      - /url: /troubleshooting/pack-issues/
+                  - listitem [ref=e216]:
+                    - link "Palette Dev Engine" [ref=e217] [cursor=pointer]:
+                      - /url: /troubleshooting/palette-dev-engine/
+                  - listitem [ref=e218]:
+                    - generic [ref=e219]:
+                      - link "Edge" [expanded] [ref=e220] [cursor=pointer]:
+                        - /url: /troubleshooting/edge/
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e221] [cursor=pointer]
+                    - list [ref=e222]:
+                      - listitem [ref=e223]:
+                        - link "Collect Support Bundles" [ref=e224] [cursor=pointer]:
+                          - /url: /troubleshooting/edge/collect-support-bundles/
+                  - listitem [ref=e225]:
+                    - link "Private Cloud Gateway" [ref=e226] [cursor=pointer]:
+                      - /url: /troubleshooting/pcg/
+                  - listitem [ref=e227]:
+                    - link "Virtual Machine Orchestrator" [ref=e228] [cursor=pointer]:
+                      - /url: /troubleshooting/vmo-issues/
+                  - listitem [ref=e229]:
+                    - link "Enterprise Install" [ref=e230] [cursor=pointer]:
+                      - /url: /troubleshooting/enterprise-install/
+                  - listitem [ref=e231]:
+                    - link "Palette Upgrade" [ref=e232] [cursor=pointer]:
+                      - /url: /troubleshooting/palette-upgrade/
+                  - listitem [ref=e233]:
+                    - link "Generate HAR Files" [ref=e234] [cursor=pointer]:
+                      - /url: /troubleshooting/generate-har-files/
+              - listitem [ref=e235]:
+                - link "Glossary" [ref=e236] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e238]
+                  - text: Glossary
+              - listitem [ref=e240]:
+                - generic [ref=e241]:
+                  - link "Compliance & Legal" [ref=e242] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e244]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e246] [cursor=pointer]
+              - listitem [ref=e247]:
+                - button "Privacy Settings" [ref=e248] [cursor=pointer]:
+                  - img [ref=e249]
+                  - text: Privacy Settings
+      - main [ref=e251]:
+        - generic [ref=e253]:
+          - generic [ref=e255]:
+            - article [ref=e256]:
+              - navigation "Breadcrumbs" [ref=e257]:
+                - list [ref=e258]:
+                  - listitem [ref=e259]:
+                    - link "Home page" [ref=e260] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e261]
+                  - listitem [ref=e263]:
+                    - link "Troubleshooting" [ref=e264] [cursor=pointer]:
+                      - /url: /troubleshooting/
+                  - listitem [ref=e265]:
+                    - link "Edge" [ref=e266] [cursor=pointer]:
+                      - /url: /troubleshooting/edge/
+                  - listitem [ref=e267]:
+                    - generic [ref=e268]: Collect Support Bundles
+              - generic [ref=e269]:
+                - heading "Collect Support Bundles for Edge Cluster Troubleshooting" [level=1] [ref=e271]
+                - paragraph [ref=e272]: When deploying or operating Edge clusters, you may encounter issues that require assistance from the Spectro Cloud support team, such as Edge hosts failing to register, pod failures, or provisioning errors. To help our team troubleshoot these issues more effectively, follow this guide to collect support bundles and attach them to your support ticket.
+                - heading "LimitationsDirect link to Limitations" [level=2] [ref=e273]:
+                  - text: Limitations
+                  - link "Direct link to Limitations" [ref=e274] [cursor=pointer]:
+                    - /url: "#limitations"
+                    - text: "#"
+                - list [ref=e275]:
+                  - listitem [ref=e276]:
+                    - text: Only the
+                    - code [ref=e277]: support-bundle-edge.sh
+                    - text: script is embedded and can run on hosts without an internet connection. The
+                    - code [ref=e278]: support-bundle-infra.sh
+                    - text: script is not embedded and requires internet access.
+                  - listitem [ref=e279]:
+                    - text: The embedded
+                    - code [ref=e280]: support-bundle-edge.sh
+                    - text: script is included with the version of Palette agent that was in use at the time of provisioning. It is updated only when Palette agent is upgraded through an ISO or a Palette update. To ensure you are using the most current version, download and run the script manually.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e281]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e282] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - generic [ref=e283]:
+                  - tablist [ref=e284]:
+                    - tab "Downloaded Scripts" [selected] [ref=e285] [cursor=pointer]
+                    - tab "Embedded Script" [ref=e286] [cursor=pointer]
+                  - tabpanel [ref=e288]:
+                    - list [ref=e289]:
+                      - listitem [ref=e290]: The host you need to troubleshoot has an active internet connection to access the troubleshooting script.
+                      - listitem [ref=e291]:
+                        - text: You are connected to the host using SSH,
+                        - link "remote shell" [ref=e292] [cursor=pointer]:
+                          - /url: /clusters/edge/cluster-management/remote-shell/
+                        - text: ", direct terminal access, or another connection method."
+                      - listitem [ref=e293]:
+                        - text: "The following tools are available on the host:"
+                        - list [ref=e294]:
+                          - listitem [ref=e295]:
+                            - code [ref=e296]: journalctl
+                          - listitem [ref=e297]:
+                            - code [ref=e298]: systemctl
+                      - listitem [ref=e299]:
+                        - text: (Optional) The host has a valid
+                        - code [ref=e300]: kubeconfig
+                        - text: file configured and
+                        - code [ref=e301]: kubectl
+                        - text: installed (required for the full output of
+                        - code [ref=e302]: support-bundle-infra.sh
+                        - text: ).
+                - heading "Run the Troubleshooting ScriptsDirect link to Run the Troubleshooting Scripts" [level=2] [ref=e303]:
+                  - text: Run the Troubleshooting Scripts
+                  - link "Direct link to Run the Troubleshooting Scripts" [ref=e304] [cursor=pointer]:
+                    - /url: "#run-the-troubleshooting-scripts"
+                    - text: "#"
+                - generic [ref=e305]:
+                  - tablist [ref=e306]:
+                    - tab "Downloaded Scripts" [selected] [ref=e307] [cursor=pointer]
+                    - tab "Embedded Script" [ref=e308] [cursor=pointer]
+                  - generic [ref=e309]:
+                    - tabpanel [ref=e310]:
+                      - heading "Run the Script to Collect Cluster LogsDirect link to Run the Script to Collect Cluster Logs" [level=3] [ref=e311]:
+                        - text: Run the Script to Collect Cluster Logs
+                        - link "Direct link to Run the Script to Collect Cluster Logs" [ref=e312] [cursor=pointer]:
+                          - /url: "#run-the-script-to-collect-cluster-logs"
+                          - text: "#"
+                      - paragraph [ref=e313]:
+                        - text: The
+                        - code [ref=e314]: support-bundle-infra.sh
+                        - text: script collects cluster-level diagnostics. Follow the steps below on a host with a valid
+                        - code [ref=e315]: kubeconfig
+                        - text: and
+                        - code [ref=e316]: kubectl
+                        - text: installed, typically a control plane node.
+                      - list [ref=e317]:
+                        - listitem [ref=e318]:
+                          - paragraph [ref=e319]:
+                            - text: Set the path to your
+                            - code [ref=e320]: kubeconfig
+                            - text: file.
+                          - generic [ref=e322]:
+                            - code [ref=e324]:
+                              - generic [ref=e325]: export KUBECONFIG=/etc/kubernetes/admin.conf
+                            - button "Copy code to clipboard" [ref=e327] [cursor=pointer]:
+                              - generic [ref=e328]:
+                                - img [ref=e329]
+                                - img [ref=e331]
+                        - listitem [ref=e333]:
+                          - paragraph [ref=e334]:
+                            - text: Download and run the
+                            - code [ref=e335]: support-bundle-infra.sh
+                            - text: script.
+                          - generic [ref=e337]:
+                            - code [ref=e339]:
+                              - generic [ref=e340]: curl --remote-name https://software.spectrocloud.com/scripts/support-bundle-infra.sh
+                              - generic [ref=e341]: bash support-bundle-infra.sh
+                            - generic [ref=e342]:
+                              - button "Toggle word wrap" [ref=e343] [cursor=pointer]:
+                                - img [ref=e344]
+                              - button "Copy code to clipboard" [ref=e346] [cursor=pointer]:
+                                - generic [ref=e347]:
+                                  - img [ref=e348]
+                                  - img [ref=e350]
+                          - paragraph [ref=e352]: The table below contains the optional flags you can use when running the script.
+                          - table [ref=e353]:
+                            - rowgroup [ref=e354]:
+                              - row "Longhand Flag Shorthand Flag Description Example" [ref=e355]:
+                                - cell "Longhand Flag" [ref=e356]:
+                                  - strong [ref=e357]: Longhand Flag
+                                - cell "Shorthand Flag" [ref=e358]:
+                                  - strong [ref=e359]: Shorthand Flag
+                                - cell "Description" [ref=e360]:
+                                  - strong [ref=e361]: Description
+                                - cell "Example" [ref=e362]:
+                                  - strong [ref=e363]: Example
+                            - rowgroup [ref=e364]:
+                              - row "--directory -d Custom output directory for temporary files and the final archive. -d /var/tmp" [ref=e365]:
+                                - cell "--directory" [ref=e366]:
+                                  - code [ref=e367]: "--directory"
+                                - cell "-d" [ref=e368]:
+                                  - code [ref=e369]: "-d"
+                                - cell "Custom output directory for temporary files and the final archive." [ref=e370]
+                                - cell "-d /var/tmp" [ref=e371]:
+                                  - code [ref=e372]: "-d /var/tmp"
+                              - 'row "--namespaces -n Additional namespaces to collect logs from. By default, the script collects the logs from the following namespaces: capa-system, capi-kubeadm-bootstrap-system, capi-kubeadm-control-plane-system, capi-system, capi-webhook-system, cert-manager, default, harbor, kube-system, kube-public, longhorn-system, os-patch, palette-system, reach-system, spectro-system, and system-upgrade. -n hello-universe,hello-world" [ref=e373]':
+                                - cell "--namespaces" [ref=e374]:
+                                  - code [ref=e375]: "--namespaces"
+                                - cell "-n" [ref=e376]:
+                                  - code [ref=e377]: "-n"
+                                - 'cell "Additional namespaces to collect logs from. By default, the script collects the logs from the following namespaces: capa-system, capi-kubeadm-bootstrap-system, capi-kubeadm-control-plane-system, capi-system, capi-webhook-system, cert-manager, default, harbor, kube-system, kube-public, longhorn-system, os-patch, palette-system, reach-system, spectro-system, and system-upgrade." [ref=e378]':
+                                  - text: "Additional namespaces to collect logs from. By default, the script collects the logs from the following namespaces:"
+                                  - code [ref=e379]: capa-system
+                                  - text: ","
+                                  - code [ref=e380]: capi-kubeadm-bootstrap-system
+                                  - text: ","
+                                  - code [ref=e381]: capi-kubeadm-control-plane-system
+                                  - text: ","
+                                  - code [ref=e382]: capi-system
+                                  - text: ","
+                                  - code [ref=e383]: capi-webhook-system
+                                  - text: ","
+                                  - code [ref=e384]: cert-manager
+                                  - text: ","
+                                  - code [ref=e385]: default
+                                  - text: ","
+                                  - code [ref=e386]: harbor
+                                  - text: ","
+                                  - code [ref=e387]: kube-system
+                                  - text: ","
+                                  - code [ref=e388]: kube-public
+                                  - text: ","
+                                  - code [ref=e389]: longhorn-system
+                                  - text: ","
+                                  - code [ref=e390]: os-patch
+                                  - text: ","
+                                  - code [ref=e391]: palette-system
+                                  - text: ","
+                                  - code [ref=e392]: reach-system
+                                  - text: ","
+                                  - code [ref=e393]: spectro-system
+                                  - text: ", and"
+                                  - code [ref=e394]: system-upgrade
+                                  - text: .
+                                - cell "-n hello-universe,hello-world" [ref=e395]:
+                                  - code [ref=e396]: "-n hello-universe,hello-world"
+                              - 'row "--resources-namespaced -r Additional namespace-scoped resources to collect. By default, the script collects the following namespace-scoped resources: apiservices, configmaps, cronjobs, daemonsets, deployments, endpoints, endpointslices, events, hpa, ingress, jobs, leases, limitranges, networkpolicies, poddisruptionbudgets, pods, pvc, replicasets, resourcequotas, roles, rolebindings, services, serviceaccounts, and statefulsets. -r certificates.cert-manager.io" [ref=e397]':
+                                - cell "--resources-namespaced" [ref=e398]:
+                                  - code [ref=e399]: "--resources-namespaced"
+                                - cell "-r" [ref=e400]:
+                                  - code [ref=e401]: "-r"
+                                - 'cell "Additional namespace-scoped resources to collect. By default, the script collects the following namespace-scoped resources: apiservices, configmaps, cronjobs, daemonsets, deployments, endpoints, endpointslices, events, hpa, ingress, jobs, leases, limitranges, networkpolicies, poddisruptionbudgets, pods, pvc, replicasets, resourcequotas, roles, rolebindings, services, serviceaccounts, and statefulsets." [ref=e402]':
+                                  - text: "Additional namespace-scoped resources to collect. By default, the script collects the following namespace-scoped resources:"
+                                  - code [ref=e403]: apiservices
+                                  - text: ","
+                                  - code [ref=e404]: configmaps
+                                  - text: ","
+                                  - code [ref=e405]: cronjobs
+                                  - text: ","
+                                  - code [ref=e406]: daemonsets
+                                  - text: ","
+                                  - code [ref=e407]: deployments
+                                  - text: ","
+                                  - code [ref=e408]: endpoints
+                                  - text: ","
+                                  - code [ref=e409]: endpointslices
+                                  - text: ","
+                                  - code [ref=e410]: events
+                                  - text: ","
+                                  - code [ref=e411]: hpa
+                                  - text: ","
+                                  - code [ref=e412]: ingress
+                                  - text: ","
+                                  - code [ref=e413]: jobs
+                                  - text: ","
+                                  - code [ref=e414]: leases
+                                  - text: ","
+                                  - code [ref=e415]: limitranges
+                                  - text: ","
+                                  - code [ref=e416]: networkpolicies
+                                  - text: ","
+                                  - code [ref=e417]: poddisruptionbudgets
+                                  - text: ","
+                                  - code [ref=e418]: pods
+                                  - text: ","
+                                  - code [ref=e419]: pvc
+                                  - text: ","
+                                  - code [ref=e420]: replicasets
+                                  - text: ","
+                                  - code [ref=e421]: resourcequotas
+                                  - text: ","
+                                  - code [ref=e422]: roles
+                                  - text: ","
+                                  - code [ref=e423]: rolebindings
+                                  - text: ","
+                                  - code [ref=e424]: services
+                                  - text: ","
+                                  - code [ref=e425]: serviceaccounts
+                                  - text: ", and"
+                                  - code [ref=e426]: statefulsets
+                                  - text: .
+                                - cell "-r certificates.cert-manager.io" [ref=e427]:
+                                  - code [ref=e428]: "-r certificates.cert-manager.io"
+                              - 'row "--resources-cluster-scoped -R Additional cluster-scoped resources to collect. By default, the script collects the following cluster-scoped resources: apiservices, clusterroles, clusterrolebindings, crds, csr, mutatingwebhookconfigurations, namespaces, nodes, priorityclasses, pv, storageclasses, validatingwebhookconfigurations, and volumeattachments. -R clusterissuers.cert-manager.io" [ref=e429]':
+                                - cell "--resources-cluster-scoped" [ref=e430]:
+                                  - code [ref=e431]: "--resources-cluster-scoped"
+                                - cell "-R" [ref=e432]:
+                                  - code [ref=e433]: "-R"
+                                - 'cell "Additional cluster-scoped resources to collect. By default, the script collects the following cluster-scoped resources: apiservices, clusterroles, clusterrolebindings, crds, csr, mutatingwebhookconfigurations, namespaces, nodes, priorityclasses, pv, storageclasses, validatingwebhookconfigurations, and volumeattachments." [ref=e434]':
+                                  - text: "Additional cluster-scoped resources to collect. By default, the script collects the following cluster-scoped resources:"
+                                  - code [ref=e435]: apiservices
+                                  - text: ","
+                                  - code [ref=e436]: clusterroles
+                                  - text: ","
+                                  - code [ref=e437]: clusterrolebindings
+                                  - text: ","
+                                  - code [ref=e438]: crds
+                                  - text: ","
+                                  - code [ref=e439]: csr
+                                  - text: ","
+                                  - code [ref=e440]: mutatingwebhookconfigurations
+                                  - text: ","
+                                  - code [ref=e441]: namespaces
+                                  - text: ","
+                                  - code [ref=e442]: nodes
+                                  - text: ","
+                                  - code [ref=e443]: priorityclasses
+                                  - text: ","
+                                  - code [ref=e444]: pv
+                                  - text: ","
+                                  - code [ref=e445]: storageclasses
+                                  - text: ","
+                                  - code [ref=e446]: validatingwebhookconfigurations
+                                  - text: ", and"
+                                  - code [ref=e447]: volumeattachments
+                                  - text: .
+                                - cell "-R clusterissuers.cert-manager.io" [ref=e448]:
+                                  - code [ref=e449]: "-R clusterissuers.cert-manager.io"
+                          - generic [ref=e450]:
+                            - generic [ref=e451]:
+                              - img [ref=e453]
+                              - text: info
+                            - generic [ref=e455]:
+                              - paragraph [ref=e456]: The default values for flags may change. Refer to the scripts for the most accurate information. For example, you can display the script content in the terminal with the following command.
+                              - generic [ref=e458]:
+                                - code [ref=e460]:
+                                  - generic [ref=e461]: cat support-bundle-infra.sh
+                                - button "Copy code to clipboard" [ref=e463] [cursor=pointer]:
+                                  - generic [ref=e464]:
+                                    - img [ref=e465]
+                                    - img [ref=e467]
+                          - paragraph [ref=e469]:
+                            - text: If the script runs successfully, it creates a file in the directory specified by the
+                            - code [ref=e470]: "-d"
+                            - text: flag. If you do not specify
+                            - code [ref=e471]: "-d"
+                            - text: ", the script saves the file in your home directory by default. The file name follows the pattern"
+                            - code [ref=e472]: <cluster name>-<YYYY-MM-DD>_<HH_MM_SS>.tar.gz
+                            - text: . If the script is unable to determine the cluster name, it defaults to
+                            - code [ref=e473]: spectro-cluster
+                            - text: . One of the messages the terminal displays contains the name of the created file.
+                          - generic [ref=e475]:
+                            - code [ref=e477]:
+                              - generic [ref=e478]: Logs are archived in spectro-cluster-2025-05-13_16_50_50.tar.gz
+                            - button "Copy code to clipboard" [ref=e480] [cursor=pointer]:
+                              - generic [ref=e481]:
+                                - img [ref=e482]
+                                - img [ref=e484]
+                        - listitem [ref=e486]:
+                          - paragraph [ref=e487]:
+                            - text: Copy the file to your local computer. The command below serves as an example of how to copy the file
+                            - code [ref=e488]: spectro-cluster-2025-05-13_16_50_50.tar.gz
+                            - text: from the
+                            - code [ref=e489]: kairos@10.10.150.150
+                            - text: host to your
+                            - code [ref=e490]: Downloads
+                            - text: folder. Run the command on the machine to which you want to copy the file.
+                          - generic [ref=e492]:
+                            - code [ref=e494]:
+                              - generic [ref=e495]: scp kairos@10.10.150.150:~/spectro-cluster-2025-05-13_16_50_50.tar.gz ~/Downloads/
+                            - generic [ref=e496]:
+                              - button "Toggle word wrap" [ref=e497] [cursor=pointer]:
+                                - img [ref=e498]
+                              - button "Copy code to clipboard" [ref=e500] [cursor=pointer]:
+                                - generic [ref=e501]:
+                                  - img [ref=e502]
+                                  - img [ref=e504]
+                      - heading "Run the Script to Collect Edge Host LogsDirect link to Run the Script to Collect Edge Host Logs" [level=3] [ref=e506]:
+                        - text: Run the Script to Collect Edge Host Logs
+                        - link "Direct link to Run the Script to Collect Edge Host Logs" [ref=e507] [cursor=pointer]:
+                          - /url: "#run-the-script-to-collect-edge-host-logs"
+                          - text: "#"
+                      - paragraph [ref=e508]:
+                        - text: The
+                        - code [ref=e509]: support-bundle-edge.sh
+                        - text: script collects host-level diagnostics from an Edge node and, if available, includes Kubernetes data accessible locally on that host. Follow the steps below on every Edge host you want to troubleshoot.
+                      - list [ref=e510]:
+                        - listitem [ref=e511]:
+                          - paragraph [ref=e512]:
+                            - text: (Optional) Set the path to your
+                            - code [ref=e513]: kubeconfig
+                            - text: file.
+                          - generic [ref=e515]:
+                            - code [ref=e517]:
+                              - generic [ref=e518]: export KUBECONFIG=/etc/kubernetes/admin.conf
+                            - button "Copy code to clipboard" [ref=e520] [cursor=pointer]:
+                              - generic [ref=e521]:
+                                - img [ref=e522]
+                                - img [ref=e524]
+                          - paragraph [ref=e526]:
+                            - text: If you do not perform this step, the script defaults to using
+                            - code [ref=e527]: /run/kubeconfig
+                            - text: if it exists.
+                        - listitem [ref=e528]:
+                          - paragraph [ref=e529]:
+                            - text: Download the
+                            - code [ref=e530]: support-bundle-edge.sh
+                            - text: script and run it as a user with root privileges.
+                          - generic [ref=e532]:
+                            - code [ref=e534]:
+                              - generic [ref=e535]: curl --remote-name https://software.spectrocloud.com/scripts/support-bundle-edge.sh
+                              - generic [ref=e536]: sudo bash support-bundle-edge.sh
+                            - generic [ref=e537]:
+                              - button "Toggle word wrap" [ref=e538] [cursor=pointer]:
+                                - img [ref=e539]
+                              - button "Copy code to clipboard" [ref=e541] [cursor=pointer]:
+                                - generic [ref=e542]:
+                                  - img [ref=e543]
+                                  - img [ref=e545]
+                          - paragraph [ref=e547]: The table below contains the optional flags you can use when running the script.
+                          - table [ref=e548]:
+                            - rowgroup [ref=e549]:
+                              - row "Longhand Flags Shorthand Flags Description Example" [ref=e550]:
+                                - cell "Longhand Flags" [ref=e551]:
+                                  - strong [ref=e552]: Longhand Flags
+                                - cell "Shorthand Flags" [ref=e553]:
+                                  - strong [ref=e554]: Shorthand Flags
+                                - cell "Description" [ref=e555]:
+                                  - strong [ref=e556]: Description
+                                - cell "Example" [ref=e557]:
+                                  - strong [ref=e558]: Example
+                            - rowgroup [ref=e559]:
+                              - row "--directory -d Custom output directory for temporary files and the final archive. -d /var/tmp" [ref=e560]:
+                                - cell "--directory" [ref=e561]:
+                                  - code [ref=e562]: "--directory"
+                                - cell "-d" [ref=e563]:
+                                  - code [ref=e564]: "-d"
+                                - cell "Custom output directory for temporary files and the final archive." [ref=e565]
+                                - cell "-d /var/tmp" [ref=e566]:
+                                  - code [ref=e567]: "-d /var/tmp"
+                              - row "--start-days-ago -s Number of days in the past to start collecting journald logs from. -s 7" [ref=e568]:
+                                - cell "--start-days-ago" [ref=e569]:
+                                  - code [ref=e570]: "--start-days-ago"
+                                - cell "-s" [ref=e571]:
+                                  - code [ref=e572]: "-s"
+                                - cell "Number of days in the past to start collecting journald logs from." [ref=e573]
+                                - cell "-s 7" [ref=e574]:
+                                  - code [ref=e575]: "-s 7"
+                              - row "--end-days-ago -e Number of days before now to stop collecting journald logs. The value must be smaller than -s. -e 5" [ref=e576]:
+                                - cell "--end-days-ago" [ref=e577]:
+                                  - code [ref=e578]: "--end-days-ago"
+                                - cell "-e" [ref=e579]:
+                                  - code [ref=e580]: "-e"
+                                - cell "Number of days before now to stop collecting journald logs. The value must be smaller than -s." [ref=e581]:
+                                  - text: Number of days before now to stop collecting journald logs. The value must be smaller than
+                                  - code [ref=e582]: "-s"
+                                  - text: .
+                                - cell "-e 5" [ref=e583]:
+                                  - code [ref=e584]: "-e 5"
+                              - row "--start-date -S Start date for journald log collection. -S 2024-01-01" [ref=e585]:
+                                - cell "--start-date" [ref=e586]:
+                                  - code [ref=e587]: "--start-date"
+                                - cell "-S" [ref=e588]:
+                                  - code [ref=e589]: "-S"
+                                - cell "Start date for journald log collection." [ref=e590]
+                                - cell "-S 2024-01-01" [ref=e591]:
+                                  - code [ref=e592]: "-S 2024-01-01"
+                              - row "--end-date -E End date for journald log collection. Must be later than -S. -E 2024-01-06" [ref=e593]:
+                                - cell "--end-date" [ref=e594]:
+                                  - code [ref=e595]: "--end-date"
+                                - cell "-E" [ref=e596]:
+                                  - code [ref=e597]: "-E"
+                                - cell "End date for journald log collection. Must be later than -S." [ref=e598]:
+                                  - text: End date for journald log collection. Must be later than
+                                  - code [ref=e599]: "-S"
+                                  - text: .
+                                - cell "-E 2024-01-06" [ref=e600]:
+                                  - code [ref=e601]: "-E 2024-01-06"
+                              - row "--lines -l Number of log lines to collect from journald logs. -l 500000" [ref=e602]:
+                                - cell "--lines" [ref=e603]:
+                                  - code [ref=e604]: "--lines"
+                                - cell "-l" [ref=e605]:
+                                  - code [ref=e606]: "-l"
+                                - cell "Number of log lines to collect from journald logs." [ref=e607]
+                                - cell "-l 500000" [ref=e608]:
+                                  - code [ref=e609]: "-l 500000"
+                              - 'row "--namespaces -n Additional namespaces to collect logs from. By default, the script collects the logs from the following namespaces: capi-webhook-system, cert-manager, harbor, kube-system, kube-public, longhorn-system, os-patch, palette-system, reach-system, spectro-system, and system-upgrade. -n hello-universe,hello-world" [ref=e610]':
+                                - cell "--namespaces" [ref=e611]:
+                                  - code [ref=e612]: "--namespaces"
+                                - cell "-n" [ref=e613]:
+                                  - code [ref=e614]: "-n"
+                                - 'cell "Additional namespaces to collect logs from. By default, the script collects the logs from the following namespaces: capi-webhook-system, cert-manager, harbor, kube-system, kube-public, longhorn-system, os-patch, palette-system, reach-system, spectro-system, and system-upgrade." [ref=e615]':
+                                  - text: "Additional namespaces to collect logs from. By default, the script collects the logs from the following namespaces:"
+                                  - code [ref=e616]: capi-webhook-system
+                                  - text: ","
+                                  - code [ref=e617]: cert-manager
+                                  - text: ","
+                                  - code [ref=e618]: harbor
+                                  - text: ","
+                                  - code [ref=e619]: kube-system
+                                  - text: ","
+                                  - code [ref=e620]: kube-public
+                                  - text: ","
+                                  - code [ref=e621]: longhorn-system
+                                  - text: ","
+                                  - code [ref=e622]: os-patch
+                                  - text: ","
+                                  - code [ref=e623]: palette-system
+                                  - text: ","
+                                  - code [ref=e624]: reach-system
+                                  - text: ","
+                                  - code [ref=e625]: spectro-system
+                                  - text: ", and"
+                                  - code [ref=e626]: system-upgrade
+                                  - text: .
+                                - cell "-n hello-universe,hello-world" [ref=e627]:
+                                  - code [ref=e628]: "-n hello-universe,hello-world"
+                              - 'row "--resources-namespaced -r Additional namespace-scoped resources to collect. By default, the script collects the following namespace-scoped resources: apiservices, configmaps, cronjobs, daemonsets, deployments, endpoints, endpointslices, events, hpa, ingress, jobs, leases, limitranges, networkpolicies, poddisruptionbudgets, pods, pvc, replicasets, resourcequotas, roles, rolebindings, services, serviceaccounts, and statefulsets. -r certificates.cert-manager.io" [ref=e629]':
+                                - cell "--resources-namespaced" [ref=e630]:
+                                  - code [ref=e631]: "--resources-namespaced"
+                                - cell "-r" [ref=e632]:
+                                  - code [ref=e633]: "-r"
+                                - 'cell "Additional namespace-scoped resources to collect. By default, the script collects the following namespace-scoped resources: apiservices, configmaps, cronjobs, daemonsets, deployments, endpoints, endpointslices, events, hpa, ingress, jobs, leases, limitranges, networkpolicies, poddisruptionbudgets, pods, pvc, replicasets, resourcequotas, roles, rolebindings, services, serviceaccounts, and statefulsets." [ref=e634]':
+                                  - text: "Additional namespace-scoped resources to collect. By default, the script collects the following namespace-scoped resources:"
+                                  - code [ref=e635]: apiservices
+                                  - text: ","
+                                  - code [ref=e636]: configmaps
+                                  - text: ","
+                                  - code [ref=e637]: cronjobs
+                                  - text: ","
+                                  - code [ref=e638]: daemonsets
+                                  - text: ","
+                                  - code [ref=e639]: deployments
+                                  - text: ","
+                                  - code [ref=e640]: endpoints
+                                  - text: ","
+                                  - code [ref=e641]: endpointslices
+                                  - text: ","
+                                  - code [ref=e642]: events
+                                  - text: ","
+                                  - code [ref=e643]: hpa
+                                  - text: ","
+                                  - code [ref=e644]: ingress
+                                  - text: ","
+                                  - code [ref=e645]: jobs
+                                  - text: ","
+                                  - code [ref=e646]: leases
+                                  - text: ","
+                                  - code [ref=e647]: limitranges
+                                  - text: ","
+                                  - code [ref=e648]: networkpolicies
+                                  - text: ","
+                                  - code [ref=e649]: poddisruptionbudgets
+                                  - text: ","
+                                  - code [ref=e650]: pods
+                                  - text: ","
+                                  - code [ref=e651]: pvc
+                                  - text: ","
+                                  - code [ref=e652]: replicasets
+                                  - text: ","
+                                  - code [ref=e653]: resourcequotas
+                                  - text: ","
+                                  - code [ref=e654]: roles
+                                  - text: ","
+                                  - code [ref=e655]: rolebindings
+                                  - text: ","
+                                  - code [ref=e656]: services
+                                  - text: ","
+                                  - code [ref=e657]: serviceaccounts
+                                  - text: ", and"
+                                  - code [ref=e658]: statefulsets
+                                  - text: .
+                                - cell "-r certificates.cert-manager.io" [ref=e659]:
+                                  - code [ref=e660]: "-r certificates.cert-manager.io"
+                              - 'row "--resources-cluster-scoped -R Additional cluster-scoped resources to collect. By default, the script collects the following cluster-scoped resources: apiservices, clusterroles, clusterrolebindings, crds, csr, mutatingwebhookconfigurations, namespaces, nodes, priorityclasses, pv, storageclasses, validatingwebhookconfigurations, and volumeattachments. -R clusterissuers.cert-manager.io" [ref=e661]':
+                                - cell "--resources-cluster-scoped" [ref=e662]:
+                                  - code [ref=e663]: "--resources-cluster-scoped"
+                                - cell "-R" [ref=e664]:
+                                  - code [ref=e665]: "-R"
+                                - 'cell "Additional cluster-scoped resources to collect. By default, the script collects the following cluster-scoped resources: apiservices, clusterroles, clusterrolebindings, crds, csr, mutatingwebhookconfigurations, namespaces, nodes, priorityclasses, pv, storageclasses, validatingwebhookconfigurations, and volumeattachments." [ref=e666]':
+                                  - text: "Additional cluster-scoped resources to collect. By default, the script collects the following cluster-scoped resources:"
+                                  - code [ref=e667]: apiservices
+                                  - text: ","
+                                  - code [ref=e668]: clusterroles
+                                  - text: ","
+                                  - code [ref=e669]: clusterrolebindings
+                                  - text: ","
+                                  - code [ref=e670]: crds
+                                  - text: ","
+                                  - code [ref=e671]: csr
+                                  - text: ","
+                                  - code [ref=e672]: mutatingwebhookconfigurations
+                                  - text: ","
+                                  - code [ref=e673]: namespaces
+                                  - text: ","
+                                  - code [ref=e674]: nodes
+                                  - text: ","
+                                  - code [ref=e675]: priorityclasses
+                                  - text: ","
+                                  - code [ref=e676]: pv
+                                  - text: ","
+                                  - code [ref=e677]: storageclasses
+                                  - text: ","
+                                  - code [ref=e678]: validatingwebhookconfigurations
+                                  - text: ", and"
+                                  - code [ref=e679]: volumeattachments
+                                  - text: .
+                                - cell "-R clusterissuers.cert-manager.io" [ref=e680]:
+                                  - code [ref=e681]: "-R clusterissuers.cert-manager.io"
+                              - 'row "--journald-services -j By default, the script includes the following journald services: stylus-agent, stylus-operator, palette-tui, spectro-stylus-agent, spectro-stylus-operator, spectro-init, spectro-palette-agent-start, spectro-palette-agent-initramfs, spectro-palette-agent-boot, spectro-palette-agent-network, spectro-palette-agent-bootstrap, systemd-timesyncd, containerd, kubelet, k3s, k3s-agent, rke2-server, rke2-agent, and cos-setup-boot. -j cloud-init,systemd-resolved" [ref=e682]':
+                                - cell "--journald-services" [ref=e683]:
+                                  - code [ref=e684]: "--journald-services"
+                                - cell "-j" [ref=e685]:
+                                  - code [ref=e686]: "-j"
+                                - 'cell "By default, the script includes the following journald services: stylus-agent, stylus-operator, palette-tui, spectro-stylus-agent, spectro-stylus-operator, spectro-init, spectro-palette-agent-start, spectro-palette-agent-initramfs, spectro-palette-agent-boot, spectro-palette-agent-network, spectro-palette-agent-bootstrap, systemd-timesyncd, containerd, kubelet, k3s, k3s-agent, rke2-server, rke2-agent, and cos-setup-boot." [ref=e687]':
+                                  - text: "By default, the script includes the following journald services:"
+                                  - code [ref=e688]: stylus-agent
+                                  - text: ","
+                                  - code [ref=e689]: stylus-operator
+                                  - text: ","
+                                  - code [ref=e690]: palette-tui
+                                  - text: ","
+                                  - code [ref=e691]: spectro-stylus-agent
+                                  - text: ","
+                                  - code [ref=e692]: spectro-stylus-operator
+                                  - text: ","
+                                  - code [ref=e693]: spectro-init
+                                  - text: ","
+                                  - code [ref=e694]: spectro-palette-agent-start
+                                  - text: ","
+                                  - code [ref=e695]: spectro-palette-agent-initramfs
+                                  - text: ","
+                                  - code [ref=e696]: spectro-palette-agent-boot
+                                  - text: ","
+                                  - code [ref=e697]: spectro-palette-agent-network
+                                  - text: ","
+                                  - code [ref=e698]: spectro-palette-agent-bootstrap
+                                  - text: ","
+                                  - code [ref=e699]: systemd-timesyncd
+                                  - text: ","
+                                  - code [ref=e700]: containerd
+                                  - text: ","
+                                  - code [ref=e701]: kubelet
+                                  - text: ","
+                                  - code [ref=e702]: k3s
+                                  - text: ","
+                                  - code [ref=e703]: k3s-agent
+                                  - text: ","
+                                  - code [ref=e704]: rke2-server
+                                  - text: ","
+                                  - code [ref=e705]: rke2-agent
+                                  - text: ", and"
+                                  - code [ref=e706]: cos-setup-boot
+                                  - text: .
+                                - cell "-j cloud-init,systemd-resolved" [ref=e707]:
+                                  - code [ref=e708]: "-j cloud-init,systemd-resolved"
+                          - generic [ref=e709]:
+                            - generic [ref=e710]:
+                              - img [ref=e712]
+                              - text: info
+                            - generic [ref=e714]:
+                              - paragraph [ref=e715]: The default values for flags may change. Refer to the scripts for the most accurate information. For example, you can display the script content in the terminal with the following command.
+                              - generic [ref=e717]:
+                                - code [ref=e719]:
+                                  - generic [ref=e720]: cat support-bundle-infra.sh
+                                - button "Copy code to clipboard" [ref=e722] [cursor=pointer]:
+                                  - generic [ref=e723]:
+                                    - img [ref=e724]
+                                    - img [ref=e726]
+                          - paragraph [ref=e728]:
+                            - text: If the script runs successfully, it creates a file in the directory specified by the
+                            - code [ref=e729]: "-d"
+                            - text: flag. If you do not specify
+                            - code [ref=e730]: "-d"
+                            - text: ", the script saves the file in the system's temporary directory (typically"
+                            - code [ref=e731]: /tmp
+                            - text: ). The file name follows the pattern
+                            - code [ref=e732]: <hostname>-<YYYY-MM-DD>_<HH_MM_SS>.tar.gz
+                            - text: . One of the messages the terminal displays contains the created file's name and its path.
+                          - generic [ref=e734]:
+                            - code [ref=e736]:
+                              - generic [ref=e737]: Logs are archived in /tmp/tmp.qrKKeY1LqA/edge-e965384209c2d45078a29480e90bd275-2025-05-13_16_58_20.tar.gz
+                            - generic [ref=e738]:
+                              - button "Toggle word wrap" [ref=e739] [cursor=pointer]:
+                                - img [ref=e740]
+                              - button "Copy code to clipboard" [ref=e742] [cursor=pointer]:
+                                - generic [ref=e743]:
+                                  - img [ref=e744]
+                                  - img [ref=e746]
+                          - generic [ref=e748]:
+                            - generic [ref=e749]:
+                              - img [ref=e751]
+                              - text: info
+                            - paragraph [ref=e754]: The script collects only Helm release secrets from Spectro Cloud namespaces and excludes other Kubernetes secrets to protect sensitive data.
+                        - listitem [ref=e755]:
+                          - paragraph [ref=e756]:
+                            - text: Copy the file to your local computer. The command below serves as an example of how to copy the file
+                            - code [ref=e757]: edge-e965384209c2d45078a29480e90bd275-2025-05-13_16_58_20.tar.gz
+                            - text: from the
+                            - code [ref=e758]: kairos@10.10.150.150
+                            - text: host to your
+                            - code [ref=e759]: Downloads
+                            - text: folder. Run the command on the machine to which you want to copy the file.
+                          - generic [ref=e761]:
+                            - code [ref=e763]:
+                              - generic [ref=e764]: scp kairos@10.10.150.150:/tmp/tmp.qrKKeY1LqA/edge-e965384209c2d45078a29480e90bd275-2025-05-13_16_58_20.tar.gz ~/Downloads/
+                            - generic [ref=e765]:
+                              - button "Toggle word wrap" [ref=e766] [cursor=pointer]:
+                                - img [ref=e767]
+                              - button "Copy code to clipboard" [ref=e769] [cursor=pointer]:
+                                - generic [ref=e770]:
+                                  - img [ref=e771]
+                                  - img [ref=e773]
+                    - text: "#"
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e775]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e776] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - generic [ref=e777]:
+                  - tablist [ref=e778]:
+                    - tab "Downloaded Scripts" [selected] [ref=e779] [cursor=pointer]
+                    - tab "Embedded Script" [ref=e780] [cursor=pointer]
+                  - tabpanel [ref=e782]:
+                    - paragraph [ref=e783]:
+                      - text: Review the files you copied to the
+                      - code [ref=e784]: Downloads
+                      - text: folder. The scripts archive the collected logs into compressed tarballs TAR.GAR.
+                    - paragraph [ref=e785]:
+                      - text: Extract the file named in the format
+                      - code [ref=e786]: <cluster name>-<YYYY-MM-DD>_<HH_MM_SS>.tar.gz
+                      - text: and verify it contains the
+                      - code [ref=e787]: k8s
+                      - text: "folder with the following subfolders:"
+                    - list [ref=e788]:
+                      - listitem [ref=e789]:
+                        - code [ref=e790]: cluster-info
+                      - listitem [ref=e791]:
+                        - code [ref=e792]: cluster-resources
+                      - listitem [ref=e793]:
+                        - code [ref=e794]: metrics
+                      - listitem [ref=e795]:
+                        - code [ref=e796]: previous-pod-logs
+                    - paragraph [ref=e797]:
+                      - text: Extract the file named in the format
+                      - code [ref=e798]: <hostname>-<YYYY-MM-DD>_<HH_MM_SS>.tar.gz
+                      - text: "and ensure it contains the following:"
+                    - list [ref=e799]:
+                      - listitem [ref=e800]:
+                        - code [ref=e801]: console.log
+                        - text: file
+                      - listitem [ref=e802]:
+                        - code [ref=e803]: helm
+                        - text: folder
+                      - listitem [ref=e804]:
+                        - code [ref=e805]: journald
+                        - text: folder
+                      - listitem [ref=e806]:
+                        - code [ref=e807]: networking
+                        - text: folder
+                      - listitem [ref=e808]:
+                        - code [ref=e809]: oem
+                        - text: folder
+                      - listitem [ref=e810]:
+                        - code [ref=e811]: run
+                        - text: folder
+                      - listitem [ref=e812]:
+                        - code [ref=e813]: systeminfo
+                        - text: folder
+                      - listitem [ref=e814]:
+                        - code [ref=e815]: usr
+                        - text: folder
+                      - listitem [ref=e816]:
+                        - code [ref=e817]: var
+                        - text: folder
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e818]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e819] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e820]: After you have successfully collected support bundles, attach the TAR.GAR archives to the support ticket.
+              - generic [ref=e821]:
+                - generic [ref=e823]:
+                  - text: "Tags:"
+                  - list [ref=e824]:
+                    - listitem [ref=e825]:
+                      - link "edge" [ref=e826] [cursor=pointer]:
+                        - /url: /tags/edge/
+                    - listitem [ref=e827]:
+                      - link "troubleshooting" [ref=e828] [cursor=pointer]:
+                        - /url: /tags/troubleshooting/
+                    - listitem [ref=e829]:
+                      - link "support" [ref=e830] [cursor=pointer]:
+                        - /url: /tags/support/
+                - link "Edit this page" [ref=e833] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/troubleshooting/edge/collect-support-bundles.md
+                  - img [ref=e834]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e838]:
+              - link "Previous « Edge" [ref=e839] [cursor=pointer]:
+                - /url: /troubleshooting/edge/
+                - generic [ref=e840]: Previous
+                - generic [ref=e841]: « Edge
+              - link "Next Private Cloud Gateway »" [ref=e842] [cursor=pointer]:
+                - /url: /troubleshooting/pcg/
+                - generic [ref=e843]: Next
+                - generic [ref=e844]: Private Cloud Gateway »
+          - list [ref=e847]:
+            - listitem [ref=e848]:
+              - link "Limitations" [ref=e849] [cursor=pointer]:
+                - /url: "#limitations"
+            - listitem [ref=e850]:
+              - link "Prerequisites" [ref=e851] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e852]:
+              - link "Run the Troubleshooting Scripts" [ref=e853] [cursor=pointer]:
+                - /url: "#run-the-troubleshooting-scripts"
+              - list [ref=e854]:
+                - listitem [ref=e855]:
+                  - link "Run the Script to Collect Cluster Logs" [ref=e856] [cursor=pointer]:
+                    - /url: "#run-the-script-to-collect-cluster-logs"
+                - listitem [ref=e857]:
+                  - link "Run the Script to Collect Edge Host Logs" [ref=e858] [cursor=pointer]:
+                    - /url: "#run-the-script-to-collect-edge-host-logs"
+                - listitem [ref=e859]:
+                  - link "Run the Script to Collect Edge Host Logs" [ref=e860] [cursor=pointer]:
+                    - /url: "#run-the-script-to-collect-edge-host-logs-1"
+            - listitem [ref=e861]:
+              - link "Validate" [ref=e862] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e863]:
+              - link "Next Steps" [ref=e864] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e865] [cursor=pointer]:
+    - generic [ref=e868]:
+      - img "Project Logo" [ref=e869]
+      - paragraph [ref=e870]: Ask AI
+```

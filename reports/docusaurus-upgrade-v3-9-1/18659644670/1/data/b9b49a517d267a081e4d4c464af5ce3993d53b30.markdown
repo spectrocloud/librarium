@@ -1,0 +1,934 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Introduction" [ref=e41] [cursor=pointer]:
+                  - /url: /api/introduction/
+                  - img [ref=e43]
+                  - text: Introduction
+              - listitem [ref=e45]:
+                - link "Example Usage" [ref=e46] [cursor=pointer]:
+                  - /url: /api/samples/
+              - listitem [ref=e47]:
+                - link "Postman Collection" [ref=e48] [cursor=pointer]:
+                  - /url: /api/postman-collection/
+              - listitem [ref=e49]:
+                - generic [ref=e50]:
+                  - link "Palette API V1" [ref=e51] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Palette API V1'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "Edge Management API V1" [ref=e55] [cursor=pointer]:
+                    - /url: /api/category/edge-management-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Edge Management API V1'" [ref=e56] [cursor=pointer]
+      - main [ref=e57]:
+        - generic [ref=e59]:
+          - generic [ref=e61]:
+            - article [ref=e62]:
+              - navigation "Breadcrumbs" [ref=e63]:
+                - list [ref=e64]:
+                  - listitem [ref=e65]:
+                    - link "Home page" [ref=e66] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e67]
+                  - listitem [ref=e69]:
+                    - generic [ref=e70]: Introduction
+              - generic [ref=e71]:
+                - heading "Introduction" [level=1] [ref=e73]
+                - generic [ref=e75]:
+                  - paragraph [ref=e76]: The API documentation section includes documentation for Palette API and Edge Management API.
+                  - heading "Palette APIDirect link to Palette API" [level=2] [ref=e77]:
+                    - text: Palette API
+                    - link "Direct link to Palette API" [ref=e78] [cursor=pointer]:
+                      - /url: "#palette-api"
+                      - text: "#"
+                  - paragraph [ref=e79]: Palette offers a range of capabilities you can access through the REST APIs. These REST APIs are designed in accordance with open API standards, which ensure that the platform's features can be integrated with other applications and systems. By utilizing these APIs, you can tap into the platform's capabilities through programmatic methods. Use the APIs to build custom integrations and workflows that leverage the power of the Palette.
+                  - heading "PathsDirect link to Paths" [level=3] [ref=e80]:
+                    - text: Paths
+                    - link "Direct link to Paths" [ref=e81] [cursor=pointer]:
+                      - /url: "#paths"
+                      - text: "#"
+                  - paragraph [ref=e82]:
+                    - text: "Every API's URI has the prefix of the version and the Palette resource, such as:"
+                    - code [ref=e83]: v1/spectroclusters/...
+                  - heading "AuthenticationDirect link to Authentication" [level=3] [ref=e84]:
+                    - text: Authentication
+                    - link "Direct link to Authentication" [ref=e85] [cursor=pointer]:
+                      - /url: "#authentication"
+                      - text: "#"
+                  - paragraph [ref=e86]: "Palette supports two types of API authentication methods that can be used to authenticate API requests:"
+                  - list [ref=e87]:
+                    - listitem [ref=e88]:
+                      - paragraph [ref=e89]:
+                        - link "Authorization Token" [ref=e90] [cursor=pointer]:
+                          - /url: "#authorization-token"
+                    - listitem [ref=e91]:
+                      - paragraph [ref=e92]:
+                        - link "API Key" [ref=e93] [cursor=pointer]:
+                          - /url: "#api-key"
+                  - heading "Authorization TokenDirect link to Authorization Token" [level=4] [ref=e94]:
+                    - text: Authorization Token
+                    - link "Direct link to Authorization Token" [ref=e95] [cursor=pointer]:
+                      - /url: "#authorization-token"
+                      - text: "#"
+                  - paragraph [ref=e96]:
+                    - text: You can acquire authorization tokens from Palette that have a 15-minute lifetime. The authorization token is passed as part of the HTTP request header. You can use the authorization token to authenticate and authorize the request. The header name is
+                    - code [ref=e97]: Authorization
+                    - text: ", and the token is the header value. Refer to the"
+                    - link "Authorization Token" [ref=e98] [cursor=pointer]:
+                      - /url: /user-management/authentication/authorization-token/
+                    - text: section to learn more about the authorization token.
+                  - heading "API KeyDirect link to API Key" [level=4] [ref=e99]:
+                    - text: API Key
+                    - link "Direct link to API Key" [ref=e100] [cursor=pointer]:
+                      - /url: "#api-key"
+                      - text: "#"
+                  - paragraph [ref=e101]:
+                    - text: You can use API keys to authenticate with the Palette API. API keys allow you to interact with Palette APIs without requiring user credentials such as username and password. The API key must be present in each API request to authenticate and authorize the request. The API Key is passed as part of the HTTP request header. The header name is
+                    - code [ref=e102]: apiKey
+                    - text: ", and the API key is the header value."
+                  - paragraph [ref=e103]: "The following example shows how to pass the API key in the HTTP request header:"
+                  - generic [ref=e105]:
+                    - code [ref=e107]:
+                      - generic [ref=e108]: curl --location "https://api.spectrocloud.com/v1/spectroclusters/123456789?ProjectUid=12345678" \
+                      - generic [ref=e109]: "--header 'Accept: application/json' \\"
+                      - generic [ref=e110]: "--header \"apiKey: 123456789\""
+                    - button "Toggle word wrap" [ref=e112] [cursor=pointer]:
+                      - img [ref=e113]
+                  - paragraph [ref=e115]:
+                    - text: Refer to the
+                    - link "API Key" [ref=e116] [cursor=pointer]:
+                      - /url: /user-management/authentication/api-key/
+                    - text: section to learn how to create and manage API keys.
+                  - heading "RequestsDirect link to Requests" [level=3] [ref=e117]:
+                    - text: Requests
+                    - link "Direct link to Requests" [ref=e118] [cursor=pointer]:
+                      - /url: "#requests"
+                      - text: "#"
+                  - paragraph [ref=e119]:
+                    - text: All requests are in the
+                    - code [ref=e120]: JSON
+                    - text: "format. In general, the request payload has three sections:"
+                    - emphasis [ref=e121]: metadata, spec and status
+                    - text: .
+                  - list [ref=e122]:
+                    - listitem [ref=e123]:
+                      - emphasis [ref=e124]: Metadata
+                      - text: consists of common attributes for all the resources such as ids, names, creation timestamps etc.
+                    - listitem [ref=e125]:
+                      - emphasis [ref=e126]: Spec
+                      - text: consists of attributes that define the resource
+                    - listitem [ref=e127]:
+                      - emphasis [ref=e128]: Status
+                      - text: contains the status information of the resource. The API does not support creating or modifying the status section.
+                  - generic [ref=e129]:
+                    - generic [ref=e130]:
+                      - img [ref=e132]
+                      - text: info
+                    - paragraph [ref=e135]: Certain update request schemas have restricted spec resource definitions, and specific fields like uid and creation timestamp cannot be modified post-creation.
+                  - table [ref=e136]:
+                    - rowgroup [ref=e137]:
+                      - row "HTTP Method Description" [ref=e138]:
+                        - cell "HTTP Method" [ref=e139]:
+                          - strong [ref=e140]: HTTP Method
+                        - cell "Description" [ref=e141]:
+                          - strong [ref=e142]: Description
+                    - rowgroup [ref=e143]:
+                      - row "POST To create a resource or a sub-resource." [ref=e144]:
+                        - cell "POST" [ref=e145]
+                        - cell "To create a resource or a sub-resource." [ref=e146]
+                      - row "PUT To update the resource or a sub-resource. The PUT request will overwrite the existing resource data." [ref=e147]:
+                        - cell "PUT" [ref=e148]
+                        - cell "To update the resource or a sub-resource. The PUT request will overwrite the existing resource data." [ref=e149]
+                      - row "PATCH To add, modify, remove a specific attribute or sub-resource within a resource." [ref=e150]:
+                        - cell "PATCH" [ref=e151]
+                        - cell "To add, modify, remove a specific attribute or sub-resource within a resource." [ref=e152]
+                      - row "DELETE To delete the resource." [ref=e153]:
+                        - cell "DELETE" [ref=e154]
+                        - cell "To delete the resource." [ref=e155]
+                  - heading "Response CodesDirect link to Response Codes" [level=3] [ref=e156]:
+                    - text: Response Codes
+                    - link "Direct link to Response Codes" [ref=e157] [cursor=pointer]:
+                      - /url: "#response-codes"
+                      - text: "#"
+                  - paragraph [ref=e158]: "The API returns standard HTTP response codes:"
+                  - table [ref=e159]:
+                    - rowgroup [ref=e160]:
+                      - row "HTTP Code Description" [ref=e161]:
+                        - cell "HTTP Code" [ref=e162]:
+                          - strong [ref=e163]: HTTP Code
+                        - cell "Description" [ref=e164]:
+                          - strong [ref=e165]: Description
+                    - rowgroup [ref=e166]:
+                      - row "200 Request succeeded. The response payload will vary depending upon the API. Refer to the respective API response schema." [ref=e167]:
+                        - cell "200" [ref=e168]
+                        - cell "Request succeeded. The response payload will vary depending upon the API. Refer to the respective API response schema." [ref=e169]
+                      - row "201 A resource was successfully created. The response payload contains the uid of the created resource." [ref=e170]:
+                        - cell "201" [ref=e171]
+                        - cell "A resource was successfully created. The response payload contains the uid of the created resource." [ref=e172]
+                      - row "204 Response without any content for a successful operation. These operations include update, delete and the other actions on the resource." [ref=e173]:
+                        - cell "204" [ref=e174]
+                        - cell "Response without any content for a successful operation. These operations include update, delete and the other actions on the resource." [ref=e175]
+                      - row "400 Bad request. The request does not adhere to the API request payload schema." [ref=e176]:
+                        - cell "400" [ref=e177]
+                        - cell "Bad request. The request does not adhere to the API request payload schema." [ref=e178]
+                      - row "401 Missing authorization token or invalid authorization token." [ref=e179]:
+                        - cell "401" [ref=e180]
+                        - cell "Missing authorization token or invalid authorization token." [ref=e181]
+                      - row "403 The API operation is forbidden for the user." [ref=e182]:
+                        - cell "403" [ref=e183]
+                        - cell "The API operation is forbidden for the user." [ref=e184]
+                      - row "404 The resource or the dependent resource is not found for the operation." [ref=e185]:
+                        - cell "404" [ref=e186]
+                        - cell "The resource or the dependent resource is not found for the operation." [ref=e187]
+                      - row "500 Operational error. For 500 error code, the server responds with an explicit error code and an error message." [ref=e188]:
+                        - cell "500" [ref=e189]
+                        - cell "Operational error. For 500 error code, the server responds with an explicit error code and an error message." [ref=e190]
+                  - heading "Palette API LifecycleDirect link to Palette API Lifecycle" [level=3] [ref=e191]:
+                    - text: Palette API Lifecycle
+                    - link "Direct link to Palette API Lifecycle" [ref=e192] [cursor=pointer]:
+                      - /url: "#palette-api-lifecycle"
+                      - text: "#"
+                  - paragraph [ref=e193]:
+                    - text: Palette APIs maintain backward compatibility until deprecation. The three API phases in the lifecycle are
+                    - emphasis [ref=e194]: Production
+                    - text: ","
+                    - emphasis [ref=e195]: Sunset
+                    - text: ", and"
+                    - emphasis [ref=e196]: Deprecated
+                    - text: . Spectro Cloud will inform users when APIs transition through this lifecycle.
+                  - heading "ProductionDirect link to Production" [level=4] [ref=e197]:
+                    - text: Production
+                    - link "Direct link to Production" [ref=e198] [cursor=pointer]:
+                      - /url: "#production"
+                      - text: "#"
+                  - paragraph [ref=e199]: The Palette APIs are designed to work as intended and expected.
+                  - heading "SunsetDirect link to Sunset" [level=4] [ref=e200]:
+                    - text: Sunset
+                    - link "Direct link to Sunset" [ref=e201] [cursor=pointer]:
+                      - /url: "#sunset"
+                      - text: "#"
+                  - paragraph [ref=e202]: As the API approaches deprecation because it is being replaced or will no longer be supported, a notice will be provided in the documentation that outlines our intent and provides a cut-off date. Within three months of the deprecation date, a notice will be shared that counts down to the end date and recommends the API to use instead.
+                  - heading "DeprecatedDirect link to Deprecated" [level=4] [ref=e203]:
+                    - text: Deprecated
+                    - link "Direct link to Deprecated" [ref=e204] [cursor=pointer]:
+                      - /url: "#deprecated"
+                      - text: "#"
+                  - paragraph [ref=e205]: We indicate that an API is deprecated when it is no longer supported or recommended for use by including a tag to indicate its state. The API documentation will remain available as a subsection of deprecated APIs.
+                  - generic [ref=e206]:
+                    - generic [ref=e207]:
+                      - img [ref=e209]
+                      - text: info
+                    - paragraph [ref=e212]: The API lifecycle also applies to external-facing tools such as Terraform.
+                  - heading "VersioningDirect link to Versioning" [level=3] [ref=e213]:
+                    - text: Versioning
+                    - link "Direct link to Versioning" [ref=e214] [cursor=pointer]:
+                      - /url: "#versioning"
+                      - text: "#"
+                  - paragraph [ref=e215]:
+                    - text: The version information is included in the API URI, such as
+                    - code [ref=e216]: v1alpha1
+                    - text: or
+                    - code [ref=e217]: v1
+                    - text: . Future APIs will increment the version, leaving the earlier version intact. The existing API request and response schema will be modified to add new attributes or query parameters while maintaining backward compatibility with earlier schemas. Prior notice will be given before advancing to the next version, and users will be advised to migrate to the new API.
+                  - heading "ScopeDirect link to Scope" [level=3] [ref=e218]:
+                    - text: Scope
+                    - link "Direct link to Scope" [ref=e219] [cursor=pointer]:
+                      - /url: "#scope"
+                      - text: "#"
+                  - paragraph [ref=e220]:
+                    - text: Palette groups resources under either a Tenant or Project scope. When making API requests targeting resources belonging to a project, the project scope should be specified. To specify the project scope, use the HTTP header key
+                    - code [ref=e221]: ProjectUid
+                    - text: with the value
+                    - code [ref=e222]: <Project Uid>
+                    - text: in the API request. The
+                    - code [ref=e223]: ProjectUid
+                    - text: needs to be specified for a request to be applied under a specific project scope.
+                  - paragraph [ref=e224]:
+                    - strong [ref=e225]: Example
+                    - text: ":"
+                  - generic [ref=e227]:
+                    - code [ref=e229]:
+                      - generic [ref=e230]: curl --location --request \
+                      - generic [ref=e231]: GET 'https://api.spectrocloud.com/v1/edgehosts/ad3d90ab-de6e-3e48-800f-4d663cec3060?resolvePackValues=false' \
+                      - generic [ref=e232]: "--header 'Accept: application/json' \\"
+                      - generic [ref=e233]: "--header 'ProjectUid: ad3d90ab-de6e-3e48-800f-4d663cec3060'"
+                    - generic [ref=e234]:
+                      - button "Toggle word wrap" [ref=e235] [cursor=pointer]:
+                        - img [ref=e236]
+                      - button "Copy code to clipboard" [ref=e238] [cursor=pointer]:
+                        - generic [ref=e239]:
+                          - img [ref=e240]
+                          - img [ref=e242]
+                  - generic [ref=e244]:
+                    - generic [ref=e245]:
+                      - img [ref=e247]
+                      - text: info
+                    - paragraph [ref=e250]: If you do not provide the ProjectUid header, then the assumed scope is of the tenant.
+                  - heading "PaginationDirect link to Pagination" [level=3] [ref=e251]:
+                    - text: Pagination
+                    - link "Direct link to Pagination" [ref=e252] [cursor=pointer]:
+                      - /url: "#pagination"
+                      - text: "#"
+                  - paragraph [ref=e253]:
+                    - text: API endpoints that return a list have a limit of 50 items per return payload. Pagination is necessary for this purpose. The API response for the list includes the listMeta resource that contains the
+                    - code [ref=e254]: continue
+                    - text: token. To perform pagination, you need to check whether the
+                    - code [ref=e255]: continue
+                    - text: token value is present in the API response. For subsequent requests, use the
+                    - code [ref=e256]: continue
+                    - text: token as a query parameter to paginate the remaining resource items.
+                  - generic [ref=e258]:
+                    - code [ref=e260]:
+                      - generic [ref=e261]: "\"listmeta\": {"
+                      - generic [ref=e262]: "\"continue\": \"eyJvZmZzZXQiOjUwLCJjb3VudCI6MTE3LCJ0b2tlbiI6IiJ9\","
+                      - generic [ref=e263]: "\"count\": 117,"
+                      - generic [ref=e264]: "\"limit\": 50,"
+                      - generic [ref=e265]: "\"offset\": 50"
+                      - generic [ref=e266]: "}"
+                    - button "Toggle word wrap" [ref=e268] [cursor=pointer]:
+                      - img [ref=e269]
+                  - paragraph [ref=e271]:
+                    - text: Example of a subsequent request using the
+                    - code [ref=e272]: continue
+                    - text: token.
+                  - generic [ref=e274]:
+                    - code [ref=e276]:
+                      - generic [ref=e277]: curl --location 'https://api.spectrocloud.com/v1/packs?continue=eyJvZmZzZXQiOjUwLCJjb3VudCI6MTE3LCJ0b2tlbiI6IiJ9' \
+                      - generic [ref=e278]: "--header 'Accept: application/json' \\"
+                      - generic [ref=e279]: "--header 'ProjectUid: yourProjectUid' \\"
+                      - generic [ref=e280]: "--header 'apiKey: yourAPIKey'"
+                    - button "Toggle word wrap" [ref=e282] [cursor=pointer]:
+                      - img [ref=e283]
+                  - heading "Rate LimitsDirect link to Rate Limits" [level=3] [ref=e285]:
+                    - text: Rate Limits
+                    - link "Direct link to Rate Limits" [ref=e286] [cursor=pointer]:
+                      - /url: "#rate-limits"
+                      - text: "#"
+                  - paragraph [ref=e287]: "The API rate limits are as follows:"
+                  - list [ref=e288]:
+                    - listitem [ref=e289]:
+                      - paragraph [ref=e290]:
+                        - text: Most Palette APIs have a limit of ten API requests per second for each source IP address. The API supports additional bursts through the usage of a burst queue. The default burst queue size is set to five. You could make 50 (10 * 5) requests in seconds before the API returns a
+                        - code [ref=e291]: 429 - TooManyRequests
+                        - text: error. Refer to the
+                        - link "Endpoint Prefix Rate" [ref=e292] [cursor=pointer]:
+                          - /url: "#endpoint-prefix-rate"
+                        - text: for additional information.
+                    - listitem [ref=e293]:
+                      - paragraph [ref=e294]:
+                        - text: API request limits are categorized by the parent resources, such as
+                        - code [ref=e295]: /v1/cloudconfig/:uid
+                        - text: and
+                        - code [ref=e296]: /v1/roles
+                        - text: . You can find a list of all resource types in the
+                        - link "API documentation" [ref=e297] [cursor=pointer]:
+                          - /url: /api/category/palette-api-v1/
+                        - text: . The requests are counted together if you make multiple requests to the same resource type but use different sub-resources. For example, if you make five requests to
+                        - code [ref=e298]: /v1/clusterprofiles
+                        - text: and five requests to
+                        - code [ref=e299]: /v1/clusterprofiles/macros
+                        - text: ", the requests are counted together as ten requests to the resource"
+                        - code [ref=e300]: clusterprofiles
+                        - text: .
+                    - listitem [ref=e301]:
+                      - paragraph [ref=e302]:
+                        - text: If too many requests are issued, you may receive an error with HTTP code
+                        - code [ref=e303]: "429"
+                        - text: "-"
+                        - code [ref=e304]: TooManyRequests.
+                        - text: We recommend retrying the API call after a few moments.
+                  - heading "Endpoint Prefix RateDirect link to Endpoint Prefix Rate" [level=3] [ref=e305]:
+                    - text: Endpoint Prefix Rate
+                    - link "Direct link to Endpoint Prefix Rate" [ref=e306] [cursor=pointer]:
+                      - /url: "#endpoint-prefix-rate"
+                      - text: "#"
+                  - table [ref=e307]:
+                    - rowgroup [ref=e308]:
+                      - row "Endpoint Prefix Request Per Second Burst Size Max with Burst" [ref=e309]:
+                        - cell "Endpoint Prefix" [ref=e310]:
+                          - strong [ref=e311]: Endpoint Prefix
+                        - cell "Request Per Second" [ref=e312]:
+                          - strong [ref=e313]: Request Per Second
+                        - cell "Burst Size" [ref=e314]:
+                          - strong [ref=e315]: Burst Size
+                        - cell "Max with Burst" [ref=e316]:
+                          - strong [ref=e317]: Max with Burst
+                    - rowgroup [ref=e318]:
+                      - row "/v1/apiKeys 10 5 50" [ref=e319]:
+                        - cell "/v1/apiKeys" [ref=e320]
+                        - cell "10" [ref=e321]
+                        - cell "5" [ref=e322]
+                        - cell "50" [ref=e323]
+                      - row "/v1/async 10 5 50" [ref=e324]:
+                        - cell "/v1/async" [ref=e325]
+                        - cell "10" [ref=e326]
+                        - cell "5" [ref=e327]
+                        - cell "50" [ref=e328]
+                      - row "/v1/audits 10 5 50" [ref=e329]:
+                        - cell "/v1/audits" [ref=e330]
+                        - cell "10" [ref=e331]
+                        - cell "5" [ref=e332]
+                        - cell "50" [ref=e333]
+                      - row "/v1/auth 10 5 50" [ref=e334]:
+                        - cell "/v1/auth" [ref=e335]
+                        - cell "10" [ref=e336]
+                        - cell "5" [ref=e337]
+                        - cell "50" [ref=e338]
+                      - row "/v1/auth/authenticate 10 5 50" [ref=e339]:
+                        - cell "/v1/auth/authenticate" [ref=e340]
+                        - cell "10" [ref=e341]
+                        - cell "5" [ref=e342]
+                        - cell "50" [ref=e343]
+                      - row "/v1/auth/services/edge/login 10 5 50" [ref=e344]:
+                        - cell "/v1/auth/services/edge/login" [ref=e345]
+                        - cell "10" [ref=e346]
+                        - cell "5" [ref=e347]
+                        - cell "50" [ref=e348]
+                      - row "/v1/auth/services/login 10 5 50" [ref=e349]:
+                        - cell "/v1/auth/services/login" [ref=e350]
+                        - cell "10" [ref=e351]
+                        - cell "5" [ref=e352]
+                        - cell "50" [ref=e353]
+                      - row "/v1/auth/user/password/reset 2 5 10" [ref=e354]:
+                        - cell "/v1/auth/user/password/reset" [ref=e355]
+                        - cell "2" [ref=e356]
+                        - cell "5" [ref=e357]
+                        - cell "10" [ref=e358]
+                      - row "/v1/cache 10 5 50" [ref=e359]:
+                        - cell "/v1/cache" [ref=e360]
+                        - cell "10" [ref=e361]
+                        - cell "5" [ref=e362]
+                        - cell "50" [ref=e363]
+                      - row "/v1/cloudaccounts 10 5 50" [ref=e364]:
+                        - cell "/v1/cloudaccounts" [ref=e365]
+                        - cell "10" [ref=e366]
+                        - cell "5" [ref=e367]
+                        - cell "50" [ref=e368]
+                      - row "/v1/cloudconfigs 50 5 250" [ref=e369]:
+                        - cell "/v1/cloudconfigs" [ref=e370]
+                        - cell "50" [ref=e371]
+                        - cell "5" [ref=e372]
+                        - cell "250" [ref=e373]
+                      - 'row "/v1/cloudconfigs/{cloudType}/:uid/machinePools/{machinePoolName}/machines 50 5 250" [ref=e374]':
+                        - 'cell "/v1/cloudconfigs/{cloudType}/:uid/machinePools/{machinePoolName}/machines" [ref=e375]'
+                        - cell "50" [ref=e376]
+                        - cell "5" [ref=e377]
+                        - cell "250" [ref=e378]
+                      - 'row "/v1/cloudconfigs/{cloudType}/:uid/machinePools/{machinePoolName}/machines/:machineUid 50 5 250" [ref=e379]':
+                        - 'cell "/v1/cloudconfigs/{cloudType}/:uid/machinePools/{machinePoolName}/machines/:machineUid" [ref=e380]'
+                        - cell "50" [ref=e381]
+                        - cell "5" [ref=e382]
+                        - cell "250" [ref=e383]
+                      - 'row "/v1/cloudconfigs/{cloudType}/{uid}/machinePools 50 5 250" [ref=e384]':
+                        - 'cell "/v1/cloudconfigs/{cloudType}/{uid}/machinePools" [ref=e385]'
+                        - cell "50" [ref=e386]
+                        - cell "5" [ref=e387]
+                        - cell "250" [ref=e388]
+                      - row "/v1/clouds 10 5 50" [ref=e389]:
+                        - cell "/v1/clouds" [ref=e390]
+                        - cell "10" [ref=e391]
+                        - cell "5" [ref=e392]
+                        - cell "50" [ref=e393]
+                      - row "/v1/cluster 10 5 50" [ref=e394]:
+                        - cell "/v1/cluster" [ref=e395]
+                        - cell "10" [ref=e396]
+                        - cell "5" [ref=e397]
+                        - cell "50" [ref=e398]
+                      - row "/v1/clusterprofiles 50 5 250" [ref=e399]:
+                        - cell "/v1/clusterprofiles" [ref=e400]
+                        - cell "50" [ref=e401]
+                        - cell "5" [ref=e402]
+                        - cell "250" [ref=e403]
+                      - row "/v1/clusterprofiles/:uid/packs 50 5 250" [ref=e404]:
+                        - cell "/v1/clusterprofiles/:uid/packs" [ref=e405]
+                        - cell "50" [ref=e406]
+                        - cell "5" [ref=e407]
+                        - cell "250" [ref=e408]
+                      - 'row "/v1/clusterprofiles/:uid/packs/{packName}/manifests 50 5 250" [ref=e409]':
+                        - 'cell "/v1/clusterprofiles/:uid/packs/{packName}/manifests" [ref=e410]'
+                        - cell "50" [ref=e411]
+                        - cell "5" [ref=e412]
+                        - cell "250" [ref=e413]
+                      - row "/v1/clusterprofiles/:uid/packs/manifests 50 5 250" [ref=e414]:
+                        - cell "/v1/clusterprofiles/:uid/packs/manifests" [ref=e415]
+                        - cell "50" [ref=e416]
+                        - cell "5" [ref=e417]
+                        - cell "250" [ref=e418]
+                      - row "/v1/clusterprofiles/:uid/validate/packs 50 5 250" [ref=e419]:
+                        - cell "/v1/clusterprofiles/:uid/validate/packs" [ref=e420]
+                        - cell "50" [ref=e421]
+                        - cell "5" [ref=e422]
+                        - cell "250" [ref=e423]
+                      - row "/v1/clusterprofiles/validate/packs 50 5 250" [ref=e424]:
+                        - cell "/v1/clusterprofiles/validate/packs" [ref=e425]
+                        - cell "50" [ref=e426]
+                        - cell "5" [ref=e427]
+                        - cell "250" [ref=e428]
+                      - row "/v1/crypto 10 5 50" [ref=e429]:
+                        - cell "/v1/crypto" [ref=e430]
+                        - cell "10" [ref=e431]
+                        - cell "5" [ref=e432]
+                        - cell "50" [ref=e433]
+                      - row "/v1/dashboard 10 5 50" [ref=e434]:
+                        - cell "/v1/dashboard" [ref=e435]
+                        - cell "10" [ref=e436]
+                        - cell "5" [ref=e437]
+                        - cell "50" [ref=e438]
+                      - row "/v1/datasinks 10 5 50" [ref=e439]:
+                        - cell "/v1/datasinks" [ref=e440]
+                        - cell "10" [ref=e441]
+                        - cell "5" [ref=e442]
+                        - cell "50" [ref=e443]
+                      - row "/v1/edgehosts 10 5 50" [ref=e444]:
+                        - cell "/v1/edgehosts" [ref=e445]
+                        - cell "10" [ref=e446]
+                        - cell "5" [ref=e447]
+                        - cell "50" [ref=e448]
+                      - row "/v1/edgehosts/:uid/health 10 5 50" [ref=e449]:
+                        - cell "/v1/edgehosts/:uid/health" [ref=e450]
+                        - cell "10" [ref=e451]
+                        - cell "5" [ref=e452]
+                        - cell "50" [ref=e453]
+                      - row "/v1/edgehosts/:uid/spc/download 10 5 50" [ref=e454]:
+                        - cell "/v1/edgehosts/:uid/spc/download" [ref=e455]
+                        - cell "10" [ref=e456]
+                        - cell "5" [ref=e457]
+                        - cell "50" [ref=e458]
+                      - row "/v1/edgehosts/registers 10 5 50" [ref=e459]:
+                        - cell "/v1/edgehosts/registers" [ref=e460]
+                        - cell "10" [ref=e461]
+                        - cell "5" [ref=e462]
+                        - cell "50" [ref=e463]
+                      - row "/v1/errlogs 10 5 50" [ref=e464]:
+                        - cell "/v1/errlogs" [ref=e465]
+                        - cell "10" [ref=e466]
+                        - cell "5" [ref=e467]
+                        - cell "50" [ref=e468]
+                      - row "/v1/events 10 5 50" [ref=e469]:
+                        - cell "/v1/events" [ref=e470]
+                        - cell "10" [ref=e471]
+                        - cell "5" [ref=e472]
+                        - cell "50" [ref=e473]
+                      - row "/v1/events/components 50 5 250" [ref=e474]:
+                        - cell "/v1/events/components" [ref=e475]
+                        - cell "50" [ref=e476]
+                        - cell "5" [ref=e477]
+                        - cell "250" [ref=e478]
+                      - row "/v1/files 10 5 50" [ref=e479]:
+                        - cell "/v1/files" [ref=e480]
+                        - cell "10" [ref=e481]
+                        - cell "5" [ref=e482]
+                        - cell "50" [ref=e483]
+                      - row "/v1/git/webhook 10 5 50" [ref=e484]:
+                        - cell "/v1/git/webhook" [ref=e485]
+                        - cell "10" [ref=e486]
+                        - cell "5" [ref=e487]
+                        - cell "50" [ref=e488]
+                      - row "/v1/health 10 5 50" [ref=e489]:
+                        - cell "/v1/health" [ref=e490]
+                        - cell "10" [ref=e491]
+                        - cell "5" [ref=e492]
+                        - cell "50" [ref=e493]
+                      - row "/v1/installers 10 5 50" [ref=e494]:
+                        - cell "/v1/installers" [ref=e495]
+                        - cell "10" [ref=e496]
+                        - cell "5" [ref=e497]
+                        - cell "50" [ref=e498]
+                      - row "/v1/jobs 10 5 50" [ref=e499]:
+                        - cell "/v1/jobs" [ref=e500]
+                        - cell "10" [ref=e501]
+                        - cell "5" [ref=e502]
+                        - cell "50" [ref=e503]
+                      - row "/v1/metrics 10 5 50" [ref=e504]:
+                        - cell "/v1/metrics" [ref=e505]
+                        - cell "10" [ref=e506]
+                        - cell "5" [ref=e507]
+                        - cell "50" [ref=e508]
+                      - row "/v1/mgmt 10 5 50" [ref=e509]:
+                        - cell "/v1/mgmt" [ref=e510]
+                        - cell "10" [ref=e511]
+                        - cell "5" [ref=e512]
+                        - cell "50" [ref=e513]
+                      - row "/v1/notifications 10 5 50" [ref=e514]:
+                        - cell "/v1/notifications" [ref=e515]
+                        - cell "10" [ref=e516]
+                        - cell "5" [ref=e517]
+                        - cell "50" [ref=e518]
+                      - row "/v1/oidc 10 5 50" [ref=e519]:
+                        - cell "/v1/oidc" [ref=e520]
+                        - cell "10" [ref=e521]
+                        - cell "5" [ref=e522]
+                        - cell "50" [ref=e523]
+                      - row "/v1/overlords 10 5 50" [ref=e524]:
+                        - cell "/v1/overlords" [ref=e525]
+                        - cell "10" [ref=e526]
+                        - cell "5" [ref=e527]
+                        - cell "50" [ref=e528]
+                      - row "/v1/packs 10 5 50" [ref=e529]:
+                        - cell "/v1/packs" [ref=e530]
+                        - cell "10" [ref=e531]
+                        - cell "5" [ref=e532]
+                        - cell "50" [ref=e533]
+                      - row "/v1/payments 10 5 50" [ref=e534]:
+                        - cell "/v1/payments" [ref=e535]
+                        - cell "10" [ref=e536]
+                        - cell "5" [ref=e537]
+                        - cell "50" [ref=e538]
+                      - row "/v1/permissions 10 5 50" [ref=e539]:
+                        - cell "/v1/permissions" [ref=e540]
+                        - cell "10" [ref=e541]
+                        - cell "5" [ref=e542]
+                        - cell "50" [ref=e543]
+                      - row "/v1/plans 10 5 50" [ref=e544]:
+                        - cell "/v1/plans" [ref=e545]
+                        - cell "10" [ref=e546]
+                        - cell "5" [ref=e547]
+                        - cell "50" [ref=e548]
+                      - row "/v1/projects 10 5 50" [ref=e549]:
+                        - cell "/v1/projects" [ref=e550]
+                        - cell "10" [ref=e551]
+                        - cell "5" [ref=e552]
+                        - cell "50" [ref=e553]
+                      - row "/v1/registries 10 5 50" [ref=e554]:
+                        - cell "/v1/registries" [ref=e555]
+                        - cell "10" [ref=e556]
+                        - cell "5" [ref=e557]
+                        - cell "50" [ref=e558]
+                      - row "/v1/roles 10 5 50" [ref=e559]:
+                        - cell "/v1/roles" [ref=e560]
+                        - cell "10" [ref=e561]
+                        - cell "5" [ref=e562]
+                        - cell "50" [ref=e563]
+                      - row "/v1/services 10 5 50" [ref=e564]:
+                        - cell "/v1/services" [ref=e565]
+                        - cell "10" [ref=e566]
+                        - cell "5" [ref=e567]
+                        - cell "50" [ref=e568]
+                      - row "/v1/spectroclusters 50 5 250" [ref=e569]:
+                        - cell "/v1/spectroclusters" [ref=e570]
+                        - cell "50" [ref=e571]
+                        - cell "5" [ref=e572]
+                        - cell "250" [ref=e573]
+                      - row "/v1/spectroclusters/:uid/assets 10 5 50" [ref=e574]:
+                        - cell "/v1/spectroclusters/:uid/assets" [ref=e575]
+                        - cell "10" [ref=e576]
+                        - cell "5" [ref=e577]
+                        - cell "50" [ref=e578]
+                      - row "/v1/spectroclusters/:uid/download 10 5 50" [ref=e579]:
+                        - cell "/v1/spectroclusters/:uid/download" [ref=e580]
+                        - cell "10" [ref=e581]
+                        - cell "5" [ref=e582]
+                        - cell "50" [ref=e583]
+                      - row "/v1/spectroclusters/:uid/profiles 50 5 250" [ref=e584]:
+                        - cell "/v1/spectroclusters/:uid/profiles" [ref=e585]
+                        - cell "50" [ref=e586]
+                        - cell "5" [ref=e587]
+                        - cell "250" [ref=e588]
+                      - row "/v1/spectroclusters/acquire 10 5 50" [ref=e589]:
+                        - cell "/v1/spectroclusters/acquire" [ref=e590]
+                        - cell "10" [ref=e591]
+                        - cell "5" [ref=e592]
+                        - cell "50" [ref=e593]
+                      - row "/v1/spectroclusters/cost 10 5 50" [ref=e594]:
+                        - cell "/v1/spectroclusters/cost" [ref=e595]
+                        - cell "10" [ref=e596]
+                        - cell "5" [ref=e597]
+                        - cell "50" [ref=e598]
+                      - row "/v1/spectroclusters/features/logFetcher 10 5 50" [ref=e599]:
+                        - cell "/v1/spectroclusters/features/logFetcher" [ref=e600]
+                        - cell "10" [ref=e601]
+                        - cell "5" [ref=e602]
+                        - cell "50" [ref=e603]
+                      - row "/v1/spectroclusters/usage 10 5 50" [ref=e604]:
+                        - cell "/v1/spectroclusters/usage" [ref=e605]
+                        - cell "10" [ref=e606]
+                        - cell "5" [ref=e607]
+                        - cell "50" [ref=e608]
+                      - row "/v1/system 10 5 50" [ref=e609]:
+                        - cell "/v1/system" [ref=e610]
+                        - cell "10" [ref=e611]
+                        - cell "5" [ref=e612]
+                        - cell "50" [ref=e613]
+                      - row "/v1/teams 10 5 50" [ref=e614]:
+                        - cell "/v1/teams" [ref=e615]
+                        - cell "10" [ref=e616]
+                        - cell "5" [ref=e617]
+                        - cell "50" [ref=e618]
+                      - row "/v1/tenants 10 5 50" [ref=e619]:
+                        - cell "/v1/tenants" [ref=e620]
+                        - cell "10" [ref=e621]
+                        - cell "5" [ref=e622]
+                        - cell "50" [ref=e623]
+                      - row "/v1/userprofiles 10 5 50" [ref=e624]:
+                        - cell "/v1/userprofiles" [ref=e625]
+                        - cell "10" [ref=e626]
+                        - cell "5" [ref=e627]
+                        - cell "50" [ref=e628]
+                      - row "/v1/users 10 5 50" [ref=e629]:
+                        - cell "/v1/users" [ref=e630]
+                        - cell "10" [ref=e631]
+                        - cell "5" [ref=e632]
+                        - cell "50" [ref=e633]
+                      - row "/v1/workspaces 10 5 50" [ref=e634]:
+                        - cell "/v1/workspaces" [ref=e635]
+                        - cell "10" [ref=e636]
+                        - cell "5" [ref=e637]
+                        - cell "50" [ref=e638]
+                  - heading "Edge Management APIDirect link to Edge Management API" [level=2] [ref=e639]:
+                    - text: Edge Management API
+                    - link "Direct link to Edge Management API" [ref=e640] [cursor=pointer]:
+                      - /url: "#edge-management-api"
+                      - text: "#"
+                  - paragraph [ref=e641]: An Edge host has its own set of API endpoints. These API endpoints are available on each Edge host instead of on a Palette instance. You can use Edge Management API endpoints to programmatically perform tasks such as retrieve information about Edge clusters, retrieve the list of available images on your Edge host, and create local clusters using embedded cluster definitions.
+                  - paragraph [ref=e642]:
+                    - text: "You can find the Open API Swagger specification for the Edge Management API at the following location:"
+                    - link "https://raw.githubusercontent.com/spectrocloud/librarium/version-4-4/docs/api-content/api-docs/edge-v1/emc-api.json" [ref=e643] [cursor=pointer]:
+                      - /url: https://raw.githubusercontent.com/spectrocloud/librarium/version-4-4/docs/api-content/api-docs/edge-v1/emc-api.json
+                  - heading "AuthenticationDirect link to Authentication" [level=3] [ref=e644]:
+                    - text: Authentication
+                    - link "Direct link to Authentication" [ref=e645] [cursor=pointer]:
+                      - /url: "#authentication-1"
+                      - text: "#"
+                  - paragraph [ref=e646]:
+                    - text: Use the
+                    - code [ref=e647]: POST /v1/users/default/login
+                    - text: endpoint to generate an authentication token with your OS username and password. The following curl command is an example. Replace
+                    - code [ref=e648]: edge-host-ip
+                    - text: with the IP of your Edge host and replace
+                    - code [ref=e649]: os-username
+                    - text: and
+                    - code [ref=e650]: os-password
+                    - text: with your OS user credentials.
+                  - generic [ref=e652]:
+                    - code [ref=e654]:
+                      - generic [ref=e655]: curl --location 'https://edge-host-ip:5080/v1/users/default/login' \
+                      - generic [ref=e656]: "--header 'Content-Type: application/json' \\"
+                      - generic [ref=e657]: "--data '{"
+                      - generic [ref=e658]: "\"username\": \"os-username\","
+                      - generic [ref=e659]: "\"password\": \"os-password\""
+                      - generic [ref=e660]: "}'"
+                    - generic [ref=e661]:
+                      - button "Toggle word wrap" [ref=e662] [cursor=pointer]:
+                        - img [ref=e663]
+                      - button "Copy code to clipboard" [ref=e665] [cursor=pointer]:
+                        - generic [ref=e666]:
+                          - img [ref=e667]
+                          - img [ref=e669]
+                  - paragraph [ref=e671]: If your credentials are valid, you will receive a authorization token.
+                  - code [ref=e675]:
+                    - generic [ref=e676]: "{"
+                    - generic [ref=e677]: "\"Token\": {"
+                    - generic [ref=e678]: "\"Authorization\": \"******\""
+                    - generic [ref=e679]: "}"
+                    - generic [ref=e680]: "}"
+                  - paragraph [ref=e681]: Include this token in the header of your subsequent requests to the Local Management API to authenticate your requests. For example, the following request retrieves information about the Edge host such as the processor architecture and the host name.
+                  - generic [ref=e683]:
+                    - code [ref=e685]:
+                      - generic [ref=e686]: curl --location 'https://10.10.135.182:5080/v1/edge-mgmt/edgehosts/current' \
+                      - generic [ref=e687]: "--header 'Authorization: *******'"
+                    - generic [ref=e688]:
+                      - button "Toggle word wrap" [ref=e689] [cursor=pointer]:
+                        - img [ref=e690]
+                      - button "Copy code to clipboard" [ref=e692] [cursor=pointer]:
+                        - generic [ref=e693]:
+                          - img [ref=e694]
+                          - img [ref=e696]
+                  - code [ref=e701]:
+                    - generic [ref=e702]: "{"
+                    - generic [ref=e703]: "\"metadata\": {"
+                    - generic [ref=e704]: "\"creationTimestamp\": \"2024-02-29T20:31:42.204Z\","
+                    - generic [ref=e705]: "\"id\": \"edge-bc4a38428b71300e371150263b651b8d\","
+                    - generic [ref=e706]: "\"lastModifiedTimestamp\": \"0001-01-01T00:00:00.000Z\","
+                    - generic [ref=e707]: "\"name\": \"edge-bc4a38428b71300e371150263b651b8d\""
+                    - generic [ref=e708]: "},"
+                    - generic [ref=e709]: "\"spec\": {"
+                    - generic [ref=e710]: "\"connectionMode\": \"airgap\","
+                    - generic [ref=e711]: "\"hardwareSpec\": {"
+                    - generic [ref=e712]: "\"archType\": \"amd64\","
+                    - generic [ref=e713]: "\"cpu\": {"
+                    - generic [ref=e714]: "\"cores\": 4"
+                    - generic [ref=e715]: "},"
+                    - generic [ref=e716]: "\"disks\": ["
+                    - generic [ref=e717]: "{"
+                    - generic [ref=e718]: "\"controller\": \"SCSI\","
+                    - generic [ref=e719]: "\"partitions\": ["
+                    - generic [ref=e720]: "{"
+                    - generic [ref=e721]: "\"fileSystemType\": \"ext4\","
+                    - generic [ref=e722]: "\"freeSpace\": 13,"
+                    - generic [ref=e723]: "\"mountPoint\": \"/run/initramfs/cos-state\","
+                    - generic [ref=e724]: "\"totalSpace\": 24,"
+                    - generic [ref=e725]: "\"usedSpace\": 9"
+                    - generic [ref=e726]: "}"
+                    - generic [ref=e727]: "],"
+                    - generic [ref=e728]: "\"size\": 300,"
+                    - generic [ref=e729]: "\"vendor\": \"VMware\""
+                    - generic [ref=e730]: "},"
+                    - generic [ref=e731]: "{"
+                    - generic [ref=e732]: "\"controller\": \"SCSI\","
+                    - generic [ref=e733]: "\"partitions\": [],"
+                    - generic [ref=e734]: "\"size\": 4,"
+                    - generic [ref=e735]: "\"vendor\": \"NECVMWar\""
+                    - generic [ref=e736]: "},"
+                    - generic [ref=e737]: "{"
+                    - generic [ref=e738]: "\"controller\": \"SCSI\","
+                    - generic [ref=e739]: "\"partitions\": [],"
+                    - generic [ref=e740]: "\"vendor\": \"NECVMWar\""
+                    - generic [ref=e741]: "}"
+                    - generic [ref=e742]: "],"
+                    - generic [ref=e743]: "\"gpus\": [],"
+                    - generic [ref=e744]: "\"memory\": {"
+                    - generic [ref=e745]: "\"sizeInMB\": 7930"
+                    - generic [ref=e746]: "},"
+                    - generic [ref=e747]: "\"os\": {"
+                    - generic [ref=e748]: "\"family\": \"kairos-core-sles\","
+                    - generic [ref=e749]: "\"version\": \"v2.4.3\""
+                    - generic [ref=e750]: "}"
+                    - generic [ref=e751]: "},"
+                    - generic [ref=e752]: "\"networkInfo\": ["
+                    - generic [ref=e753]: "{"
+                    - generic [ref=e754]: "\"dns\": ["
+                    - generic [ref=e755]: "\"10.10.128.8\""
+                    - generic [ref=e756]: "],"
+                    - generic [ref=e757]: "\"gateway\": \"10.10.128.1\","
+                    - generic [ref=e758]: "\"ip\": \"10.10.135.182\","
+                    - generic [ref=e759]: "\"isDefault\": true,"
+                    - generic [ref=e760]: "\"macAddr\": \"00:50:56:b8:9e:98\","
+                    - generic [ref=e761]: "\"nicName\": \"ens160\","
+                    - generic [ref=e762]: "\"subnet\": \"255.255.192.0\""
+                    - generic [ref=e763]: "}"
+                    - generic [ref=e764]: "]"
+                    - generic [ref=e765]: "},"
+                    - generic [ref=e766]: "\"status\": {"
+                    - generic [ref=e767]: "\"agentVersion\": \"4.3.0-rc4\","
+                    - generic [ref=e768]: "\"configurationStatus\": \"pending\","
+                    - generic [ref=e769]: "\"dns\": {"
+                    - generic [ref=e770]: "\"nameservers\": ["
+                    - generic [ref=e771]: "\"10.10.128.8\""
+                    - generic [ref=e772]: "],"
+                    - generic [ref=e773]: "\"options\": [],"
+                    - generic [ref=e774]: "\"searchDomains\": ["
+                    - generic [ref=e775]: "\".\""
+                    - generic [ref=e776]: "]"
+                    - generic [ref=e777]: "},"
+                    - generic [ref=e778]: "\"hostName\": \"edge-bc4a38428b71300e371150263b651b8d\","
+                    - generic [ref=e779]: "\"ntp\": {"
+                    - generic [ref=e780]: "\"fallbackNtpServers\": [],"
+                    - generic [ref=e781]: "\"ntpServers\": []"
+                    - generic [ref=e782]: "},"
+                    - generic [ref=e783]: "\"registrationStatus\": \"not applicable\""
+                    - generic [ref=e784]: "}"
+                    - generic [ref=e785]: "}"
+                  - heading "List of Endpoints Unavailable to Connected Edge HostsDirect link to List of Endpoints Unavailable to Connected Edge Hosts" [level=3] [ref=e786]:
+                    - text: List of Endpoints Unavailable to Connected Edge Hosts
+                    - link "Direct link to List of Endpoints Unavailable to Connected Edge Hosts" [ref=e787] [cursor=pointer]:
+                      - /url: "#list-of-endpoints-unavailable-to-connected-edge-hosts"
+                      - text: "#"
+                  - paragraph [ref=e788]: Most Edge Management API endpoints are available for Edge hosts with or without a connection to Palette. However, some endpoints are not available to connected Edge hosts and are available to airgapped Edge hosts only. Specifically, endpoints that create or update clusters, create or update cluster profile variables, and update cluster settings are unavailable, as those operations must be performed from Palette.
+                  - paragraph [ref=e789]: "The following is a list of endpoints that are only available to Edge hosts that are not connected to Palette:"
+                  - list [ref=e790]:
+                    - listitem [ref=e791]:
+                      - code [ref=e792]: POST https://edge-host-ip:5080/v1/edge-mgmt/cluster
+                    - listitem [ref=e793]:
+                      - code [ref=e794]: PATCH https://edge-host-ip:5080/v1/edge-mgmt/cluster
+                    - listitem [ref=e795]:
+                      - code [ref=e796]: PUT https://edge-host-ip:5080/v1/edge-mgmt/cluster
+                    - listitem [ref=e797]:
+                      - code [ref=e798]: PUT https://edge-host-ip:5080/v1/edge-mgmt/cluster/profiles
+                    - listitem [ref=e799]:
+                      - code [ref=e800]: PUT https://edge-host-ip:5080/v1/edge-mgmt/cluster/settings
+                    - listitem [ref=e801]:
+                      - code [ref=e802]: POST https://edge-host-ip:5080/v1/edge-mgmt/cluster/profiles/variables/validate
+            - navigation "Docs pages" [ref=e805]:
+              - link "Next Example Usage »" [ref=e806] [cursor=pointer]:
+                - /url: /api/samples/
+                - generic [ref=e807]: Next
+                - generic [ref=e808]: Example Usage »
+          - list [ref=e811]:
+            - listitem [ref=e812]:
+              - link "Palette API" [ref=e813] [cursor=pointer]:
+                - /url: "#palette-api"
+              - list [ref=e814]:
+                - listitem [ref=e815]:
+                  - link "Paths" [ref=e816] [cursor=pointer]:
+                    - /url: "#paths"
+                - listitem [ref=e817]:
+                  - link "Authentication" [ref=e818] [cursor=pointer]:
+                    - /url: "#authentication"
+                - listitem [ref=e819]:
+                  - link "Requests" [ref=e820] [cursor=pointer]:
+                    - /url: "#requests"
+                - listitem [ref=e821]:
+                  - link "Response Codes" [ref=e822] [cursor=pointer]:
+                    - /url: "#response-codes"
+                - listitem [ref=e823]:
+                  - link "Palette API Lifecycle" [ref=e824] [cursor=pointer]:
+                    - /url: "#palette-api-lifecycle"
+                - listitem [ref=e825]:
+                  - link "Versioning" [ref=e826] [cursor=pointer]:
+                    - /url: "#versioning"
+                - listitem [ref=e827]:
+                  - link "Scope" [ref=e828] [cursor=pointer]:
+                    - /url: "#scope"
+                - listitem [ref=e829]:
+                  - link "Pagination" [ref=e830] [cursor=pointer]:
+                    - /url: "#pagination"
+                - listitem [ref=e831]:
+                  - link "Rate Limits" [ref=e832] [cursor=pointer]:
+                    - /url: "#rate-limits"
+                - listitem [ref=e833]:
+                  - link "Endpoint Prefix Rate" [ref=e834] [cursor=pointer]:
+                    - /url: "#endpoint-prefix-rate"
+            - listitem [ref=e835]:
+              - link "Edge Management API" [ref=e836] [cursor=pointer]:
+                - /url: "#edge-management-api"
+              - list [ref=e837]:
+                - listitem [ref=e838]:
+                  - link "Authentication" [ref=e839] [cursor=pointer]:
+                    - /url: "#authentication-1"
+                - listitem [ref=e840]:
+                  - link "List of Endpoints Unavailable to Connected Edge Hosts" [ref=e841] [cursor=pointer]:
+                    - /url: "#list-of-endpoints-unavailable-to-connected-edge-hosts"
+  - button "Project Logo Ask AI" [ref=e842] [cursor=pointer]:
+    - generic [ref=e845]:
+      - img "Project Logo" [ref=e846]
+      - paragraph [ref=e847]: Ask AI
+```

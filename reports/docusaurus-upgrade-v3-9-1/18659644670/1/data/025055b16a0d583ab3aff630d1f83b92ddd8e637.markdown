@@ -1,0 +1,530 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [expanded] [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+                - list [ref=e128]:
+                  - listitem [ref=e129]:
+                    - link "Architecture" [ref=e130] [cursor=pointer]:
+                      - /url: /vm-management/architecture/
+                  - listitem [ref=e131]:
+                    - link "Environment Setup" [ref=e132] [cursor=pointer]:
+                      - /url: /vm-management/environment-setup/
+                  - listitem [ref=e133]:
+                    - link "Install VMO in Airgap Environments" [ref=e134] [cursor=pointer]:
+                      - /url: /vm-management/install-vmo-in-airgap/
+                  - listitem [ref=e135]:
+                    - link "Create a VMO Profile" [ref=e136] [cursor=pointer]:
+                      - /url: /vm-management/create-vmo-profile/
+                  - listitem [ref=e137]:
+                    - link "Configure Private CA Certificate" [ref=e138] [cursor=pointer]:
+                      - /url: /vm-management/configure-private-ca-certificate/
+                  - listitem [ref=e139]:
+                    - link "Configure Direct Access to VM Dashboard" [ref=e140] [cursor=pointer]:
+                      - /url: /vm-management/configure-console-base-address/
+                  - listitem [ref=e141]:
+                    - generic [ref=e142]:
+                      - link "RBAC" [ref=e143] [cursor=pointer]:
+                        - /url: /vm-management/rbac/
+                      - button "Toggle the collapsible sidebar category 'RBAC'" [ref=e144] [cursor=pointer]
+                  - listitem [ref=e145]:
+                    - generic [ref=e146]:
+                      - link "Create and Manage VMs" [ref=e147] [cursor=pointer]:
+                        - /url: /vm-management/create-manage-vm/
+                      - button "Toggle the collapsible sidebar category 'Create and Manage VMs'" [ref=e148] [cursor=pointer]
+                  - listitem [ref=e149]:
+                    - generic [ref=e150]:
+                      - link "VM Migration Assistant" [ref=e151] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/
+                      - button "Toggle the collapsible sidebar category 'VM Migration Assistant'" [ref=e152] [cursor=pointer]
+              - listitem [ref=e153]:
+                - generic [ref=e154]:
+                  - link "Workspaces" [ref=e155] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e157]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e159] [cursor=pointer]
+              - listitem [ref=e160]:
+                - generic [ref=e161]:
+                  - link "Packs List" [ref=e162] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e164]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e166] [cursor=pointer]
+              - listitem [ref=e167]:
+                - generic [ref=e168]:
+                  - link "User & Role Management" [ref=e169] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e171]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e173] [cursor=pointer]
+              - listitem [ref=e174]:
+                - generic [ref=e175]:
+                  - link "Registries and Packs" [ref=e176] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e178]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e180] [cursor=pointer]
+              - listitem [ref=e181]:
+                - generic [ref=e182]:
+                  - link "Security" [ref=e183] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e185]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e187] [cursor=pointer]
+              - listitem [ref=e188]:
+                - generic [ref=e189]:
+                  - link "Audit Logs" [ref=e190] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e192]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e194] [cursor=pointer]
+              - listitem [ref=e195]:
+                - generic [ref=e196]:
+                  - link "Self-Hosted Palette" [ref=e197] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e199]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e201] [cursor=pointer]
+              - listitem [ref=e202]:
+                - generic [ref=e203]:
+                  - link "Palette VerteX" [ref=e204] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e206]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e208] [cursor=pointer]
+              - listitem [ref=e209]:
+                - generic [ref=e210]:
+                  - link "Tenant Administration" [ref=e211] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e213]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e215] [cursor=pointer]
+              - listitem [ref=e216]:
+                - generic [ref=e217]:
+                  - link "Automation" [ref=e218] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e220]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e222] [cursor=pointer]
+              - listitem [ref=e223]:
+                - generic [ref=e224]:
+                  - link "Troubleshooting" [ref=e225] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e227]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e229] [cursor=pointer]
+              - listitem [ref=e230]:
+                - link "Glossary" [ref=e231] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e233]
+                  - text: Glossary
+              - listitem [ref=e235]:
+                - generic [ref=e236]:
+                  - link "Compliance & Legal" [ref=e237] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e239]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e241] [cursor=pointer]
+              - listitem [ref=e242]:
+                - button "Privacy Settings" [ref=e243] [cursor=pointer]:
+                  - img [ref=e244]
+                  - text: Privacy Settings
+      - main [ref=e246]:
+        - generic [ref=e248]:
+          - generic [ref=e250]:
+            - article [ref=e251]:
+              - navigation "Breadcrumbs" [ref=e252]:
+                - list [ref=e253]:
+                  - listitem [ref=e254]:
+                    - link "Home page" [ref=e255] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e256]
+                  - listitem [ref=e258]:
+                    - link "Virtual Machine Orchestrator" [ref=e259] [cursor=pointer]:
+                      - /url: /vm-management/
+                  - listitem [ref=e260]:
+                    - generic [ref=e261]: Create a VMO Profile
+              - generic [ref=e262]:
+                - heading "Create a VMO Profile" [level=1] [ref=e264]
+                - paragraph [ref=e265]:
+                  - text: The
+                  - strong [ref=e266]: Virtual Machine Orchestrator
+                  - text: pack conveniently includes several components and automatically installs the
+                  - link "Spectro Proxy" [ref=e267] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=spectro-proxy
+                  - text: pack when you use the default profile configuration. To learn about pack components, refer to
+                  - link "Palette VMO" [ref=e268] [cursor=pointer]:
+                    - /url: /vm-management/
+                  - text: .
+                - heading "LimitationsDirect link to Limitations" [level=2] [ref=e269]:
+                  - text: Limitations
+                  - link "Direct link to Limitations" [ref=e270] [cursor=pointer]:
+                    - /url: "#limitations"
+                    - text: "#"
+                - list [ref=e271]:
+                  - listitem [ref=e272]:
+                    - paragraph [ref=e273]:
+                      - text: If you are updating the profile of an existing cluster that already has the
+                      - strong [ref=e274]: Spectro Proxy
+                      - text: pack. You must restart the Spectro Proxy pod for the proxy to work as expected.
+                    - paragraph [ref=e275]: "To restart the Spectro Proxy pod, delete the pod and it will restart automatically. You can issue the following command to delete the pod:"
+                    - generic [ref=e277]:
+                      - code [ref=e279]:
+                        - generic [ref=e280]: kubectl delete pods --selector app=spectro-proxy --all-namespaces
+                      - generic [ref=e281]:
+                        - button "Toggle word wrap" [ref=e282] [cursor=pointer]:
+                          - img [ref=e283]
+                        - button "Copy code to clipboard" [ref=e285] [cursor=pointer]:
+                          - generic [ref=e286]:
+                            - img [ref=e287]
+                            - img [ref=e289]
+                  - listitem [ref=e291]:
+                    - paragraph [ref=e292]:
+                      - text: Ensure the cluster that you are using with the Virtual Machine Orchestrator pack does not have the
+                      - link "Volume Snapshot Controller" [ref=e293] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=volume-snapshot-controller
+                      - text: pack already present in its cluster profile. The Virtual Machine Orchestrator will configure snapshots.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e294]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e295] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - generic [ref=e296]:
+                  - tablist [ref=e297]:
+                    - tab "Non-edge" [selected] [ref=e298] [cursor=pointer]
+                    - tab "Edge" [ref=e299] [cursor=pointer]
+                    - tab "Airgap" [ref=e300] [cursor=pointer]
+                  - tabpanel [ref=e302]:
+                    - list [ref=e303]:
+                      - listitem [ref=e304]:
+                        - text: A Palette permission key
+                        - code [ref=e305]: create
+                        - text: for the resource
+                        - code [ref=e306]: clusterProfile
+                        - text: .
+                - heading "Create the ProfileDirect link to Create the Profile" [level=2] [ref=e307]:
+                  - text: Create the Profile
+                  - link "Direct link to Create the Profile" [ref=e308] [cursor=pointer]:
+                    - /url: "#create-the-profile"
+                    - text: "#"
+                - generic [ref=e309]:
+                  - tablist [ref=e310]:
+                    - tab "Non-edge" [selected] [ref=e311] [cursor=pointer]
+                    - tab "Edge" [ref=e312] [cursor=pointer]
+                    - tab "Airgap" [ref=e313] [cursor=pointer]
+                  - tabpanel [ref=e315]:
+                    - list [ref=e316]:
+                      - listitem [ref=e317]:
+                        - paragraph [ref=e318]:
+                          - text: Log in to
+                          - link "Palette" [ref=e319] [cursor=pointer]:
+                            - /url: https://console.spectrocloud.com
+                          - text: .
+                      - listitem [ref=e320]:
+                        - paragraph [ref=e321]:
+                          - text: Select
+                          - strong [ref=e322]: Profiles
+                          - text: in the left
+                          - strong [ref=e323]: Main Menu
+                          - text: and click the
+                          - strong [ref=e324]: Add Cluster Profile
+                          - text: button.
+                      - listitem [ref=e325]:
+                        - paragraph [ref=e326]: "Enter basic information for the profile: name, version if desired, and optional description."
+                      - listitem [ref=e327]:
+                        - paragraph [ref=e328]:
+                          - text: Select type
+                          - strong [ref=e329]: Add-on
+                          - text: ", and click"
+                          - strong [ref=e330]: Next
+                          - text: .
+                      - listitem [ref=e331]:
+                        - paragraph [ref=e332]:
+                          - text: In the following screen, click
+                          - strong [ref=e333]: Add New Pack
+                          - text: .
+                      - listitem [ref=e334]:
+                        - paragraph [ref=e335]:
+                          - text: Locate the
+                          - strong [ref=e336]: Virtual Machine Orchestrator
+                          - text: pack and add it to your profile.
+                      - listitem [ref=e337]:
+                        - paragraph [ref=e338]:
+                          - text: Review the
+                          - strong [ref=e339]: Access
+                          - text: configuration panel at right. The default setting is
+                          - strong [ref=e340]: Proxied
+                          - text: ", which automatically adds the"
+                          - strong [ref=e341]: Spectro Proxy
+                          - text: pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere. Check out the
+                          - link "Spectro Proxy" [ref=e342] [cursor=pointer]:
+                            - /url: /integrations/packs/?pack=spectro-proxy
+                          - text: guide to learn more. Changing the default may require some additional configuration.
+                        - paragraph [ref=e343]:
+                          - text: The
+                          - strong [ref=e344]: Direct
+                          - text: option is intended for a private configuration where a proxy is not implemented or not desired. Ensure that you configure the
+                          - link "Spectro Proxy" [ref=e345] [cursor=pointer]:
+                            - /url: /integrations/packs/?pack=spectro-proxy
+                          - text: pack separately in your cluster profile if you select this option.
+                        - generic [ref=e346]:
+                          - generic [ref=e347]:
+                            - img [ref=e349]
+                            - text: warning
+                          - paragraph [ref=e352]: We recommend using the pack defaults. Default settings provide best practices for your clusters. Changing the default settings can introduce misconfigurations. Carefully review the changes you make to a pack.
+                      - listitem [ref=e353]:
+                        - paragraph [ref=e354]:
+                          - text: Click
+                          - strong [ref=e355]: Confirm & Create
+                          - text: .
+                      - listitem [ref=e356]:
+                        - paragraph [ref=e357]:
+                          - text: In the following screen, click
+                          - strong [ref=e358]: Next
+                          - text: .
+                      - listitem [ref=e359]:
+                        - paragraph [ref=e360]:
+                          - text: Review the profile and click
+                          - strong [ref=e361]: Finish Configuration
+                          - text: .
+                      - listitem [ref=e362]:
+                        - paragraph [ref=e363]:
+                          - text: Apply the profile to your cluster. For more information, refer to the
+                          - link "Getting Started" [ref=e364] [cursor=pointer]:
+                            - /url: /getting-started/
+                          - text: tutorials.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e365]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e366] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e367]: You can validate the profile is created.
+                - generic [ref=e368]:
+                  - tablist [ref=e369]:
+                    - tab "Non-edge" [selected] [ref=e370] [cursor=pointer]
+                    - tab "Edge" [ref=e371] [cursor=pointer]
+                    - tab "Airgap" [ref=e372] [cursor=pointer]
+                  - tabpanel [ref=e374]:
+                    - list [ref=e375]:
+                      - listitem [ref=e376]:
+                        - paragraph [ref=e377]:
+                          - text: Log in to
+                          - link "Palette" [ref=e378] [cursor=pointer]:
+                            - /url: https://console.spectrocloud.com
+                          - text: .
+                      - listitem [ref=e379]:
+                        - paragraph [ref=e380]:
+                          - text: Navigate to
+                          - strong [ref=e381]: Profiles
+                          - text: from the left
+                          - strong [ref=e382]: Main Menu
+                          - text: .
+                      - listitem [ref=e383]:
+                        - paragraph [ref=e384]: Locate the newly created profile in the list.
+                      - listitem [ref=e385]:
+                        - paragraph [ref=e386]:
+                          - text: From the left
+                          - strong [ref=e387]: Main Menu
+                          - text: ", click"
+                          - strong [ref=e388]: Clusters
+                          - text: and select your cluster.
+                      - listitem [ref=e389]:
+                        - paragraph [ref=e390]:
+                          - text: Based on your Single Sign-On (SSO) settings, the
+                          - strong [ref=e391]: Virtual Machines
+                          - text: tab may display on the
+                          - strong [ref=e392]: Cluster Overview
+                          - text: page, or the
+                          - strong [ref=e393]: Connect
+                          - text: button may display next to
+                          - strong [ref=e394]: Virtual Machines Dashboard
+                          - text: in cluster details.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e395]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e396] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e397]:
+                  - text: You will need to configure roles and role bindings to give users access to clusters. You can use VM user roles and permissions or standard Kubernetes roles. For configuration guidance, refer to
+                  - link "Add Roles and Role Bindings" [ref=e398] [cursor=pointer]:
+                    - /url: /vm-management/rbac/add-roles-and-role-bindings/
+                  - text: . The
+                  - link "VM User Roles and Permissions" [ref=e399] [cursor=pointer]:
+                    - /url: /vm-management/rbac/vm-roles-permissions/
+                  - text: reference lists Cluster Roles and equivalent Palette Roles.
+                - paragraph [ref=e400]:
+                  - text: If you have OpenID Connect (OIDC) configured at the Kubernetes layer of your cluster profile, you can create a role binding that maps individual users or groups assigned within the OIDC provider's configuration to a role. Refer to the
+                  - link "Palette eXtended Kubernetes (PXK)" [ref=e401] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=kubernetes&tab=custom
+                  - text: pack additional guidance for more information.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e402]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e403] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e404]:
+                  - listitem [ref=e405]:
+                    - link "Add Roles and Role Bindings" [ref=e406] [cursor=pointer]:
+                      - /url: /vm-management/rbac/add-roles-and-role-bindings/
+              - generic [ref=e407]:
+                - generic [ref=e409]:
+                  - text: "Tags:"
+                  - list [ref=e410]:
+                    - listitem [ref=e411]:
+                      - link "vmo" [ref=e412] [cursor=pointer]:
+                        - /url: /tags/vmo/
+                - link "Edit this page" [ref=e415] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vm-management/create-vmo-profile.md
+                  - img [ref=e416]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e420]:
+              - link "Previous « Install VMO in Airgap Environments" [ref=e421] [cursor=pointer]:
+                - /url: /vm-management/install-vmo-in-airgap/
+                - generic [ref=e422]: Previous
+                - generic [ref=e423]: « Install VMO in Airgap Environments
+              - link "Next Configure Private CA Certificate »" [ref=e424] [cursor=pointer]:
+                - /url: /vm-management/configure-private-ca-certificate/
+                - generic [ref=e425]: Next
+                - generic [ref=e426]: Configure Private CA Certificate »
+          - list [ref=e429]:
+            - listitem [ref=e430]:
+              - link "Limitations" [ref=e431] [cursor=pointer]:
+                - /url: "#limitations"
+            - listitem [ref=e432]:
+              - link "Prerequisites" [ref=e433] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e434]:
+              - link "Create the Profile" [ref=e435] [cursor=pointer]:
+                - /url: "#create-the-profile"
+            - listitem [ref=e436]:
+              - link "Validate" [ref=e437] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e438]:
+              - link "Next Steps" [ref=e439] [cursor=pointer]:
+                - /url: "#next-steps"
+            - listitem [ref=e440]:
+              - link "Resources" [ref=e441] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e442] [cursor=pointer]:
+    - generic [ref=e445]:
+      - img "Project Logo" [ref=e446]
+      - paragraph [ref=e447]: Ask AI
+```

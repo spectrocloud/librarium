@@ -1,0 +1,1498 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Audit Logs" [ref=e165] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e167]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Self-Hosted Palette" [ref=e172] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e174]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Palette VerteX" [ref=e179] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e181]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e183] [cursor=pointer]
+              - listitem [ref=e184]:
+                - generic [ref=e185]:
+                  - link "Tenant Administration" [ref=e186] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e188]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e190] [cursor=pointer]
+              - listitem [ref=e191]:
+                - generic [ref=e192]:
+                  - link "Automation" [ref=e193] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e195]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e197] [cursor=pointer]
+              - listitem [ref=e198]:
+                - generic [ref=e199]:
+                  - link "Troubleshooting" [expanded] [ref=e200] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e202]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e204] [cursor=pointer]
+                - list [ref=e205]:
+                  - listitem [ref=e206]:
+                    - link "Kubernetes Debugging" [ref=e207] [cursor=pointer]:
+                      - /url: /troubleshooting/kubernetes-tips/
+                  - listitem [ref=e208]:
+                    - link "Automation" [ref=e209] [cursor=pointer]:
+                      - /url: /troubleshooting/automation/
+                  - listitem [ref=e210]:
+                    - link "Cluster Deployment" [ref=e211] [cursor=pointer]:
+                      - /url: /troubleshooting/cluster-deployment/
+                  - listitem [ref=e212]:
+                    - link "Nodes & Clusters" [ref=e213] [cursor=pointer]:
+                      - /url: /troubleshooting/nodes/
+                  - listitem [ref=e214]:
+                    - link "Packs" [ref=e215] [cursor=pointer]:
+                      - /url: /troubleshooting/pack-issues/
+                  - listitem [ref=e216]:
+                    - link "Palette Dev Engine" [ref=e217] [cursor=pointer]:
+                      - /url: /troubleshooting/palette-dev-engine/
+                  - listitem [ref=e218]:
+                    - generic [ref=e219]:
+                      - link "Edge" [ref=e220] [cursor=pointer]:
+                        - /url: /troubleshooting/edge/
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e221] [cursor=pointer]
+                  - listitem [ref=e222]:
+                    - link "Private Cloud Gateway" [ref=e223] [cursor=pointer]:
+                      - /url: /troubleshooting/pcg/
+                  - listitem [ref=e224]:
+                    - link "Virtual Machine Orchestrator" [ref=e225] [cursor=pointer]:
+                      - /url: /troubleshooting/vmo-issues/
+                  - listitem [ref=e226]:
+                    - link "Enterprise Install" [ref=e227] [cursor=pointer]:
+                      - /url: /troubleshooting/enterprise-install/
+                  - listitem [ref=e228]:
+                    - link "Palette Upgrade" [ref=e229] [cursor=pointer]:
+                      - /url: /troubleshooting/palette-upgrade/
+                  - listitem [ref=e230]:
+                    - link "Generate HAR Files" [ref=e231] [cursor=pointer]:
+                      - /url: /troubleshooting/generate-har-files/
+              - listitem [ref=e232]:
+                - link "Glossary" [ref=e233] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e235]
+                  - text: Glossary
+              - listitem [ref=e237]:
+                - generic [ref=e238]:
+                  - link "Compliance & Legal" [ref=e239] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e241]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e243] [cursor=pointer]
+              - listitem [ref=e244]:
+                - button "Privacy Settings" [ref=e245] [cursor=pointer]:
+                  - img [ref=e246]
+                  - text: Privacy Settings
+      - main [ref=e248]:
+        - generic [ref=e250]:
+          - generic [ref=e252]:
+            - article [ref=e253]:
+              - navigation "Breadcrumbs" [ref=e254]:
+                - list [ref=e255]:
+                  - listitem [ref=e256]:
+                    - link "Home page" [ref=e257] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e258]
+                  - listitem [ref=e260]:
+                    - link "Troubleshooting" [ref=e261] [cursor=pointer]:
+                      - /url: /troubleshooting/
+                  - listitem [ref=e262]:
+                    - generic [ref=e263]: Packs
+              - generic [ref=e264]:
+                - heading "Packs" [level=1] [ref=e266]
+                - paragraph [ref=e267]: The following are common scenarios that you may encounter when using Packs.
+                - heading "Scenario - Pods with NamespaceLabels are Stuck on DeploymentDirect link to Scenario - Pods with NamespaceLabels are Stuck on Deployment" [level=2] [ref=e268]:
+                  - text: Scenario - Pods with NamespaceLabels are Stuck on Deployment
+                  - link "Direct link to Scenario - Pods with NamespaceLabels are Stuck on Deployment" [ref=e269] [cursor=pointer]:
+                    - /url: "#scenario---pods-with-namespacelabels-are-stuck-on-deployment"
+                    - text: "#"
+                - paragraph [ref=e270]:
+                  - text: When deploying a workload cluster with packs that declare
+                  - code [ref=e271]: namespaceLabels
+                  - text: ", the associated Pods never start if the cluster was deployed via self-hosted"
+                  - link "Palette" [ref=e272] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                  - text: or
+                  - link "Palette VerteX" [ref=e273] [cursor=pointer]:
+                    - /url: /vertex/
+                  - text: or if the
+                  - code [ref=e274]: palette-agent
+                  - text: ConfigMap has
+                  - code [ref=e275]: "data.feature.workloads: disable"
+                  - text: . This is due to the necessary labels not being applied to the target namespace, resulting in the namespace lacking the elevated privileges the Pods require and the Kubernetes’ PodSecurity admission blocks the Pods.
+                - paragraph [ref=e276]: To resolve this issue, force-apply the PodSecurity policies directly to the namespace of the affected Pods.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e277]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e278] [cursor=pointer]:
+                    - /url: "#debug-steps"
+                    - text: "#"
+                - list [ref=e279]:
+                  - listitem [ref=e280]:
+                    - paragraph [ref=e281]:
+                      - text: Log in to
+                      - link "Palette" [ref=e282] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e283]:
+                    - paragraph [ref=e284]:
+                      - text: From the left main menu, select
+                      - strong [ref=e285]: Clusters
+                      - text: . Choose the affected cluster.
+                  - listitem [ref=e286]:
+                    - paragraph [ref=e287]:
+                      - text: On the cluster
+                      - strong [ref=e288]: Overview
+                      - text: tab, click the
+                      - strong [ref=e289]: Kubeconfig file
+                      - text: link to download the cluster's
+                      - code [ref=e290]: kubeconfig
+                      - text: file.
+                  - listitem [ref=e291]:
+                    - paragraph [ref=e292]:
+                      - text: Open a terminal session and set the
+                      - code [ref=e293]: KUBECONFIG
+                      - text: environment variable to the path of the
+                      - code [ref=e294]: kubeconfig
+                      - text: file.
+                    - generic [ref=e296]:
+                      - code [ref=e298]:
+                        - generic [ref=e299]: export KUBECONFIG=<path-to-kubeconfig-file>
+                      - button "Copy code to clipboard" [ref=e301] [cursor=pointer]:
+                        - generic [ref=e302]:
+                          - img [ref=e303]
+                          - img [ref=e305]
+                  - listitem [ref=e307]:
+                    - paragraph [ref=e308]:
+                      - text: Use
+                      - code [ref=e309]: kubectl
+                      - text: to identify any Pods in the cluster that are not running. Note the namespace that belongs to the Pods associated with the pack using
+                      - code [ref=e310]: namespaceLabels
+                      - text: .
+                    - generic [ref=e312]:
+                      - code [ref=e314]:
+                        - generic [ref=e315]: kubectl get pods --all-namespaces --field-selector status.phase!=Running
+                      - generic [ref=e316]:
+                        - button "Toggle word wrap" [ref=e317] [cursor=pointer]:
+                          - img [ref=e318]
+                        - button "Copy code to clipboard" [ref=e320] [cursor=pointer]:
+                          - generic [ref=e321]:
+                            - img [ref=e322]
+                            - img [ref=e324]
+                    - generic [ref=e326]:
+                      - generic [ref=e327]: Example output
+                      - generic [ref=e328]:
+                        - code [ref=e330]:
+                          - generic [ref=e331]: NAME READY STATUS RESTARTS AGE
+                          - generic [ref=e332]: lb-metallb-helm-metallb-full-speaker-abcde 0/1 Pending 0 3m
+                          - generic [ref=e333]: lb-metallb-helm-metallb-full-speaker-fghij 0/1 CreateContainerConfigError 0 3m
+                        - button "Toggle word wrap" [ref=e335] [cursor=pointer]:
+                          - img [ref=e336]
+                  - listitem [ref=e338]:
+                    - paragraph [ref=e339]:
+                      - text: Confirm the namespace is missing the
+                      - code [ref=e340]: privileged
+                      - text: labels. Replace
+                      - code [ref=e341]: <namespace>
+                      - text: with the namespace of the affected Pods.
+                    - generic [ref=e343]:
+                      - code [ref=e345]:
+                        - generic [ref=e346]: kubectl get namespace <namespace> --show-labels
+                      - button "Copy code to clipboard" [ref=e348] [cursor=pointer]:
+                        - generic [ref=e349]:
+                          - img [ref=e350]
+                          - img [ref=e352]
+                    - generic [ref=e354]:
+                      - generic [ref=e355]: Example output
+                      - generic [ref=e356]:
+                        - code [ref=e358]:
+                          - generic [ref=e359]: NAME STATUS AGE LABELS
+                          - generic [ref=e360]: metallb-system Active 10m kubernetes.io/metadata.name=metallb-system
+                        - button "Toggle word wrap" [ref=e362] [cursor=pointer]:
+                          - img [ref=e363]
+                  - listitem [ref=e365]:
+                    - paragraph [ref=e366]:
+                      - text: Force-apply the
+                      - code [ref=e367]: privileged
+                      - text: labels to the namespace.
+                    - generic [ref=e369]:
+                      - code [ref=e371]:
+                        - generic [ref=e372]: kubectl label namespace <namespace> \
+                        - generic [ref=e373]: pod-security.kubernetes.io/enforce=privileged \
+                        - generic [ref=e374]: pod-security.kubernetes.io/audit=privileged \
+                        - generic [ref=e375]: pod-security.kubernetes.io/warn=privileged \
+                        - generic [ref=e376]: "--overwrite"
+                      - button "Copy code to clipboard" [ref=e378] [cursor=pointer]:
+                        - generic [ref=e379]:
+                          - img [ref=e380]
+                          - img [ref=e382]
+                  - listitem [ref=e384]:
+                    - paragraph [ref=e385]: Verify the labels are now present.
+                    - generic [ref=e387]:
+                      - code [ref=e389]:
+                        - generic [ref=e390]: kubectl get namespace <namespace> --show-labels
+                      - button "Copy code to clipboard" [ref=e392] [cursor=pointer]:
+                        - generic [ref=e393]:
+                          - img [ref=e394]
+                          - img [ref=e396]
+                    - generic [ref=e398]:
+                      - generic [ref=e399]: Example output
+                      - generic [ref=e400]:
+                        - code [ref=e402]:
+                          - generic [ref=e403]: NAME STATUS AGE LABELS
+                          - generic [ref=e404]: metallb-system Active 12m kubernetes.io/metadata.name=metallb-system,
+                          - generic [ref=e405]: pod-security.kubernetes.io/enforce=privileged,
+                          - generic [ref=e406]: pod-security.kubernetes.io/audit=privileged,
+                          - generic [ref=e407]: pod-security.kubernetes.io/warn=privileged
+                        - button "Toggle word wrap" [ref=e409] [cursor=pointer]:
+                          - img [ref=e410]
+                  - listitem [ref=e412]:
+                    - paragraph [ref=e413]: Delete the stuck Pods so that they pick up the new labels.
+                - generic [ref=e415]:
+                  - code [ref=e417]:
+                    - generic [ref=e418]: kubectl delete pods --namespace <namespace> --all
+                  - button "Copy code to clipboard" [ref=e420] [cursor=pointer]:
+                    - generic [ref=e421]:
+                      - img [ref=e422]
+                      - img [ref=e424]
+                - list [ref=e426]:
+                  - listitem [ref=e427]:
+                    - text: Wait for the Pods to be redeployed and come up in a
+                    - code [ref=e428]: Running
+                    - text: state.
+                - generic [ref=e430]:
+                  - code [ref=e432]:
+                    - generic [ref=e433]: kubectl get pods --namespace <namespace>
+                  - button "Copy code to clipboard" [ref=e435] [cursor=pointer]:
+                    - generic [ref=e436]:
+                      - img [ref=e437]
+                      - img [ref=e439]
+                - generic [ref=e441]:
+                  - generic [ref=e442]: Example output
+                  - generic [ref=e443]:
+                    - code [ref=e445]:
+                      - generic [ref=e446]: NAME READY STATUS RESTARTS AGE
+                      - generic [ref=e447]: lb-metallb-helm-metallb-full-speaker-abcde 1/1 Running 0 30s
+                      - generic [ref=e448]: lb-metallb-helm-metallb-full-speaker-fghij 1/1 Running 0 30s
+                    - generic [ref=e449]:
+                      - button "Toggle word wrap" [ref=e450] [cursor=pointer]:
+                        - img [ref=e451]
+                      - button "Copy code to clipboard" [ref=e453] [cursor=pointer]:
+                        - generic [ref=e454]:
+                          - img [ref=e455]
+                          - img [ref=e457]
+                - heading "Scenario - Calico Fails to Start when IPv6 is EnabledDirect link to Scenario - Calico Fails to Start when IPv6 is Enabled" [level=2] [ref=e459]:
+                  - text: Scenario - Calico Fails to Start when IPv6 is Enabled
+                  - link "Direct link to Scenario - Calico Fails to Start when IPv6 is Enabled" [ref=e460] [cursor=pointer]:
+                    - /url: "#scenario---calico-fails-to-start-when-ipv6-is-enabled"
+                    - text: "#"
+                - paragraph [ref=e461]:
+                  - text: When deploying clusters with the
+                  - link "Calico" [ref=e462] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=cni-calico
+                  - text: pack and IPv6 enabled, Calico fails to start on hosts running specific Linux kernel versions due to missing or incompatible kernel modules required for
+                  - code [ref=e463]: ip6tables
+                  - code [ref=e464]: MARK
+                  - text: support. You can observe the following error in the pod logs.
+                - generic [ref=e466]:
+                  - code [ref=e468]:
+                    - generic [ref=e469]: "Failed to execute ip(6)tables-restore command error=exit status 2 errorOutput=... MARK: bad value for option \\\"--set-mark\\\", or out of range (0–4294967295)..."
+                  - generic [ref=e470]:
+                    - button "Toggle word wrap" [ref=e471] [cursor=pointer]:
+                      - img [ref=e472]
+                    - button "Copy code to clipboard" [ref=e474] [cursor=pointer]:
+                      - generic [ref=e475]:
+                        - img [ref=e476]
+                        - img [ref=e478]
+                - paragraph [ref=e480]: "There are several possible ways to troubleshoot this issue:"
+                - list [ref=e481]:
+                  - listitem [ref=e482]: Use a Container Network Interface (CNI) other than Calico. This is a preferred approach if Calico is optional.
+                  - listitem [ref=e483]:
+                    - link "Use an unaffected or fixed kernel version" [ref=e484] [cursor=pointer]:
+                      - /url: "#debug-steps---use-an-unaffected-or-fixed-kernel-version"
+                    - text: . This is a preferred approach if you need Calico and IPv6.
+                  - listitem [ref=e485]:
+                    - link "Disable IPv6 on the Calico pack level" [ref=e486] [cursor=pointer]:
+                      - /url: "#debug-steps---disable-ipv6-on-the-calico-pack-level"
+                    - text: . This is a preferred approach if you need Calico but not IPv6.
+                  - listitem [ref=e487]:
+                    - link "Disable IPv6 on the BYOS Edge OS pack level" [ref=e488] [cursor=pointer]:
+                      - /url: "#debug-steps---disable-ipv6-on-the-byos-edge-os-pack-level"
+                    - text: . We do not recommend using this approach on its own, as it may not fully resolve the issue. For completeness, pair it with disabling IPv6 at the Calico pack level.
+                  - listitem [ref=e489]:
+                    - link "Disable IPv6 in User Data for Edge Deployment" [ref=e490] [cursor=pointer]:
+                      - /url: "#debug-steps---disable-ipv6-in-user-data-for-edge-deployment"
+                    - text: . We do not recommend using this approach on its own, as it may not fully resolve the issue. For completeness, pair it with disabling IPv6 at the Calico pack level.
+                - heading "Debug Steps - Use an Unaffected or Fixed Kernel VersionDirect link to Debug Steps - Use an Unaffected or Fixed Kernel Version" [level=3] [ref=e491]:
+                  - text: Debug Steps - Use an Unaffected or Fixed Kernel Version
+                  - link "Direct link to Debug Steps - Use an Unaffected or Fixed Kernel Version" [ref=e492] [cursor=pointer]:
+                    - /url: "#debug-steps---use-an-unaffected-or-fixed-kernel-version"
+                    - text: "#"
+                - list [ref=e493]:
+                  - listitem [ref=e494]:
+                    - paragraph [ref=e495]: Check your current kernel version using the command below.
+                    - generic [ref=e497]:
+                      - code [ref=e499]:
+                        - generic [ref=e500]: uname --kernel-release
+                      - button "Copy code to clipboard" [ref=e502] [cursor=pointer]:
+                        - generic [ref=e503]:
+                          - img [ref=e504]
+                          - img [ref=e506]
+                  - listitem [ref=e508]:
+                    - paragraph [ref=e509]: Compare your version with the affected list below.
+                    - table [ref=e510]:
+                      - rowgroup [ref=e511]:
+                        - row "Branch Affected Versions Fixed Version" [ref=e512]:
+                          - cell "Branch" [ref=e513]
+                          - cell "Affected Versions" [ref=e514]
+                          - cell "Fixed Version" [ref=e515]
+                      - rowgroup [ref=e516]:
+                        - row "5.15.0 generic 5.15.0-127, 5.15.0-128 5.15.0-130" [ref=e517]:
+                          - cell "5.15.0 generic" [ref=e518]
+                          - cell "5.15.0-127, 5.15.0-128" [ref=e519]
+                          - cell "5.15.0-130" [ref=e520]
+                        - row "6.8.0 generic 6.8.0-57, 6.8.0-58 6.8.0-60" [ref=e521]:
+                          - cell "6.8.0 generic" [ref=e522]
+                          - cell "6.8.0-57, 6.8.0-58" [ref=e523]
+                          - cell "6.8.0-60" [ref=e524]
+                        - row "6.8.0 cloud 6.8.0-1022 6.8.0-1027" [ref=e525]:
+                          - cell "6.8.0 cloud" [ref=e526]
+                          - cell "6.8.0-1022" [ref=e527]
+                          - cell "6.8.0-1027" [ref=e528]
+                  - listitem [ref=e529]:
+                    - paragraph [ref=e530]: If your current kernel version matches any affected version, update it to a fixed or unaffected version. The method for updating depends on your deployment environment.
+                    - generic [ref=e531]:
+                      - generic [ref=e532]:
+                        - img [ref=e534]
+                        - text: warning
+                      - paragraph [ref=e537]:
+                        - text: When updating kernel version for Edge deployments, ensure that the
+                        - code [ref=e538]: UPDATE_KERNEL
+                        - text: parameter value in the
+                        - code [ref=e539]: .arg
+                        - text: file is
+                        - code [ref=e540]: "false"
+                        - text: . This prevents Kairos from updating the kernel during runtime upgrades.
+                - heading "Example - Pin Kernel Version in Kairos Base Image (Dockerfile.ubuntu)Direct link to example---pin-kernel-version-in-kairos-base-image-dockerfileubuntu" [level=4] [ref=e541]:
+                  - text: Example - Pin Kernel Version in Kairos Base Image (
+                  - code [ref=e542]: Dockerfile.ubuntu
+                  - text: )
+                  - link "Direct link to example---pin-kernel-version-in-kairos-base-image-dockerfileubuntu" [ref=e543] [cursor=pointer]:
+                    - /url: "#example---pin-kernel-version-in-kairos-base-image-dockerfileubuntu"
+                    - text: "#"
+                - paragraph [ref=e544]:
+                  - text: Use this approach if you are building a Kairos image from
+                  - code [ref=e545]: Dockerfile.ubuntu
+                  - text: and want to pin the kernel version.
+                - list [ref=e546]:
+                  - listitem [ref=e547]:
+                    - paragraph [ref=e548]:
+                      - text: Clone the
+                      - link "Kairos GitHub Repository" [ref=e549] [cursor=pointer]:
+                        - /url: https://github.com/kairos-io/kairos
+                      - text: and check out the required version.
+                    - generic [ref=e551]:
+                      - code [ref=e553]:
+                        - generic [ref=e554]: git clone https://github.com/kairos-io/kairos.git
+                        - generic [ref=e555]: cd kairos
+                        - generic [ref=e556]: git checkout v3.1.3
+                      - button "Copy code to clipboard" [ref=e558] [cursor=pointer]:
+                        - generic [ref=e559]:
+                          - img [ref=e560]
+                          - img [ref=e562]
+                  - listitem [ref=e564]:
+                    - paragraph [ref=e565]:
+                      - text: Customize the
+                      - code [ref=e566]: images/Dockerfile.ubuntu
+                      - text: file. Remove the following lines.
+                    - generic [ref=e568]:
+                      - code [ref=e570]:
+                        - generic [ref=e571]: RUN [ -z "$(ls -A /boot/vmlinuz*)" ] && apt-get install -y --no-install-recommends \
+                        - generic [ref=e572]: linux-image-generic-hwe-24.04 || true
+                        - generic [ref=e573]: RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+                      - generic [ref=e574]:
+                        - button "Toggle word wrap" [ref=e575] [cursor=pointer]:
+                          - img [ref=e576]
+                        - button "Copy code to clipboard" [ref=e578] [cursor=pointer]:
+                          - generic [ref=e579]:
+                            - img [ref=e580]
+                            - img [ref=e582]
+                    - paragraph [ref=e584]:
+                      - text: Paste the following lines instead. In this example, the kernel version is set to
+                      - code [ref=e585]: 6.8.0-60-generic
+                      - text: . Replace it with the required version.
+                    - generic [ref=e587]:
+                      - code [ref=e589]:
+                        - generic [ref=e590]: RUN [ -z "$(ls -A /boot/vmlinuz*)" ] && apt-get install --yes --no-install-recommends \
+                        - generic [ref=e591]: linux-image-6.8.0-60-generic linux-modules-extra-6.8.0-60-generic || true
+                        - generic [ref=e592]: RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+                      - generic [ref=e593]:
+                        - button "Toggle word wrap" [ref=e594] [cursor=pointer]:
+                          - img [ref=e595]
+                        - button "Copy code to clipboard" [ref=e597] [cursor=pointer]:
+                          - generic [ref=e598]:
+                            - img [ref=e599]
+                            - img [ref=e601]
+                  - listitem [ref=e603]:
+                    - paragraph [ref=e604]:
+                      - text: Issue the following command to generate a custom Kairos base image. For Trusted Boot (Unified Kernel Image) builds, replace
+                      - code [ref=e605]: "--BOOTLOADER=grub"
+                      - text: with
+                      - code [ref=e606]: "--BOOTLOADER=systemd-boot"
+                      - text: .
+                    - generic [ref=e608]:
+                      - code [ref=e610]:
+                        - generic [ref=e611]: ./earthly.sh +base-image \
+                        - generic [ref=e612]: "--FLAVOR=ubuntu \\"
+                        - generic [ref=e613]: "--FLAVOR_RELEASE=24.04 \\"
+                        - generic [ref=e614]: "--FAMILY=ubuntu \\"
+                        - generic [ref=e615]: "--MODEL=generic \\"
+                        - generic [ref=e616]: "--VARIANT=core \\"
+                        - generic [ref=e617]: "--BASE_IMAGE=ubuntu:24.04 \\"
+                        - generic [ref=e618]: "--BOOTLOADER=grub"
+                      - button "Copy code to clipboard" [ref=e620] [cursor=pointer]:
+                        - generic [ref=e621]:
+                          - img [ref=e622]
+                          - img [ref=e624]
+                  - listitem [ref=e626]:
+                    - paragraph [ref=e627]: Once the build is complete, tag the image for your registry and version.
+                    - generic [ref=e629]:
+                      - code [ref=e631]:
+                        - generic [ref=e632]: docker tag <local-image> <your-registry>/<your-kairos-image>:<your-version>
+                      - generic [ref=e633]:
+                        - button "Toggle word wrap" [ref=e634] [cursor=pointer]:
+                          - img [ref=e635]
+                        - button "Copy code to clipboard" [ref=e637] [cursor=pointer]:
+                          - generic [ref=e638]:
+                            - img [ref=e639]
+                            - img [ref=e641]
+                    - generic [ref=e643]:
+                      - generic [ref=e644]: Example
+                      - generic [ref=e645]:
+                        - code [ref=e647]:
+                          - generic [ref=e648]: docker tag kairos/ubuntu-core-base:latest my-registry.io/kairos/kairos-base:6.8.0-60
+                        - generic [ref=e649]:
+                          - button "Toggle word wrap" [ref=e650] [cursor=pointer]:
+                            - img [ref=e651]
+                          - button "Copy code to clipboard" [ref=e653] [cursor=pointer]:
+                            - generic [ref=e654]:
+                              - img [ref=e655]
+                              - img [ref=e657]
+                  - listitem [ref=e659]:
+                    - paragraph [ref=e660]: Push the image to your registry.
+                    - generic [ref=e661]:
+                      - generic [ref=e662]: Example
+                      - generic [ref=e663]:
+                        - code [ref=e665]:
+                          - generic [ref=e666]: docker push my-registry.io/kairos/kairos-base:6.8.0-60
+                        - button "Copy code to clipboard" [ref=e668] [cursor=pointer]:
+                          - generic [ref=e669]:
+                            - img [ref=e670]
+                            - img [ref=e672]
+                  - listitem [ref=e674]:
+                    - paragraph [ref=e675]:
+                      - text: Set the
+                      - code [ref=e676]: BASE_IMAGE
+                      - text: value in the
+                      - code [ref=e677]: .arg
+                      - text: file in the
+                      - code [ref=e678]: CanvOS
+                      - text: directory to the image name.
+                    - generic [ref=e679]:
+                      - generic [ref=e680]: Example
+                      - generic [ref=e681]:
+                        - code [ref=e683]:
+                          - generic [ref=e684]: BASE_IMAGE=my-registry.io/kairos/kairos-base:6.8.0-60
+                        - button "Copy code to clipboard" [ref=e686] [cursor=pointer]:
+                          - generic [ref=e687]:
+                            - img [ref=e688]
+                            - img [ref=e690]
+                  - listitem [ref=e692]:
+                    - paragraph [ref=e693]: Build the custom provider image and use it for cluster deployment.
+                    - generic [ref=e694]:
+                      - generic [ref=e695]:
+                        - img [ref=e697]
+                        - text: info
+                      - paragraph [ref=e700]:
+                        - text: For more information on how to build provider images and ISO artifacts for Edge deployments and how to use them in your cluster setup, refer to
+                        - link "Build Edge Artifacts" [ref=e701] [cursor=pointer]:
+                          - /url: /clusters/edge/edgeforge-workflow/palette-canvos/
+                        - text: .
+                - heading "Example - Pin Kernel Version with Full Boot Configuration (Dockerfile)Direct link to example---pin-kernel-version-with-full-boot-configuration-dockerfile" [level=4] [ref=e702]:
+                  - text: Example - Pin Kernel Version with Full Boot Configuration (
+                  - code [ref=e703]: Dockerfile
+                  - text: )
+                  - link "Direct link to example---pin-kernel-version-with-full-boot-configuration-dockerfile" [ref=e704] [cursor=pointer]:
+                    - /url: "#example---pin-kernel-version-with-full-boot-configuration-dockerfile"
+                    - text: "#"
+                - paragraph [ref=e705]:
+                  - text: Use this approach if you are building a Kairos image from a
+                  - code [ref=e706]: Dockerfile
+                  - text: and need full control over the kernel and boot configuration.
+                - list [ref=e707]:
+                  - listitem [ref=e708]:
+                    - paragraph [ref=e709]:
+                      - text: Customize the
+                      - code [ref=e710]: Dockerfile
+                      - text: in the
+                      - code [ref=e711]: CanvOS
+                      - text: directory. For example, add the command below to set a specific kernel version for Ubuntu. Replace
+                      - code [ref=e712]: 6.8.0-60-generic
+                      - text: with the required version.
+                    - generic [ref=e714]:
+                      - code [ref=e716]:
+                        - generic [ref=e717]: ...
+                        - generic [ref=e718]: "########################### Add any other image customizations here #######################"
+                        - generic [ref=e719]: "# Install specific kernel version if KERNEL_VERSION is provided"
+                        - generic [ref=e720]: "RUN if [ \"${OS_DISTRIBUTION}\" = \"ubuntu\" ]; then \\"
+                        - generic [ref=e721]: apt-get update && \
+                        - generic [ref=e722]: apt-get install --yes "linux-image-6.8.0-60-generic" "linux-headers-6.8.0-60-generic" "linux-modules-6.8.0-60-generic" && \
+                        - generic [ref=e723]: "apt-get purge --yes $(dpkg-query --list | awk '/^ii\\s+linux-(image|headers|modules)/ {print $2}' | grep --invert-match \"6.8.0-60-generic\") && \\"
+                        - generic [ref=e724]: apt-get autoremove --yes && \
+                        - generic [ref=e725]: rm --recursive --force /var/lib/apt/lists/* && \
+                        - generic [ref=e726]: kernel=$(ls /boot/vmlinuz-* | grep "6.8.0-60-generic" | head --lines=1) && \
+                        - generic [ref=e727]: "ln --symbolic --force \"${kernel#/boot/}\" /boot/vmlinuz && \\"
+                        - generic [ref=e728]: kernel=$(ls /lib/modules | grep "6.8.0-60-generic" | head --lines=1) && \
+                        - generic [ref=e729]: "dracut --force \"/boot/initrd-${kernel}\" \"${kernel}\" && \\"
+                        - generic [ref=e730]: "ln --symbolic --force \"initrd-${kernel}\" /boot/initrd && \\"
+                        - generic [ref=e731]: "depmod --all \"${kernel}\"; \\"
+                        - generic [ref=e732]: fi; \
+                      - generic [ref=e733]:
+                        - button "Toggle word wrap" [ref=e734] [cursor=pointer]:
+                          - img [ref=e735]
+                        - button "Copy code to clipboard" [ref=e737] [cursor=pointer]:
+                          - generic [ref=e738]:
+                            - img [ref=e739]
+                            - img [ref=e741]
+                    - generic [ref=e743]:
+                      - generic [ref=e744]:
+                        - img [ref=e746]
+                        - text: info
+                      - paragraph [ref=e749]:
+                        - text: For more information on how to build provider images and ISO artifacts for Edge deployments and how to use them in your cluster setup, refer to
+                        - link "Build Edge Artifacts" [ref=e750] [cursor=pointer]:
+                          - /url: /clusters/edge/edgeforge-workflow/palette-canvos/
+                        - text: . For details on
+                        - code [ref=e751]: Dockerfile
+                        - text: usage in EdgeForge, refer to the advanced workflow.
+                  - listitem [ref=e752]:
+                    - paragraph [ref=e753]: Build the required image and use it for cluster deployment.
+                - heading "Example - Pin Kernel Version During MAAS ProvisioningDirect link to Example - Pin Kernel Version During MAAS Provisioning" [level=4] [ref=e754]:
+                  - text: Example - Pin Kernel Version During MAAS Provisioning
+                  - link "Direct link to Example - Pin Kernel Version During MAAS Provisioning" [ref=e755] [cursor=pointer]:
+                    - /url: "#example---pin-kernel-version-during-maas-provisioning"
+                    - text: "#"
+                - paragraph [ref=e756]: Use this approach if you want to override the kernel during MAAS provisioning without rebuilding the OS image.
+                - list [ref=e757]:
+                  - listitem [ref=e758]:
+                    - paragraph [ref=e759]: "To pin the kernel version during host provisioning with MAAS, create or modify the appropriate file depending on the image type you're deploying:"
+                    - list [ref=e760]:
+                      - listitem [ref=e761]:
+                        - text: If you are using MAAS to deploy an official unmodified Ubuntu image for Agent Mode clusters, create the
+                        - code [ref=e762]: /var/lib/snap/maas/current/preseeds/curtin_userdata_ubuntu
+                        - text: file.
+                      - listitem [ref=e763]:
+                        - text: If you are using MAAS to deploy a custom OS image, modify the
+                        - code [ref=e764]: /var/lib/snap/maas/current/preseeds/curtin_userdata_custom
+                        - text: file.
+                    - paragraph [ref=e765]:
+                      - text: In both cases, add the following contents to pin the kernel. Replace
+                      - code [ref=e766]: 6.8.0-60-generic
+                      - text: with the required version.
+                    - generic [ref=e768]:
+                      - code [ref=e770]:
+                        - generic [ref=e771]: "#cloud-config"
+                        - generic [ref=e772]: "kernel:"
+                        - generic [ref=e773]: "package: linux-image-6.8.0-60-generic"
+                        - generic [ref=e774]: "flavor: hwe"
+                        - generic [ref=e775]: "debconf_selections:"
+                        - generic [ref=e776]: "maas: |"
+                        - generic [ref=e777]: "{{for line in str(curtin_preseed).splitlines()}}"
+                        - generic [ref=e778]: "{{line}}"
+                        - generic [ref=e779]: "{{endfor}}"
+                        - generic [ref=e780]: "late_commands:"
+                        - generic [ref=e781]: "maas: [wget, '--no-proxy', {{node_disable_pxe_url|escape.json}}, '--post-data', {{node_disable_pxe_data|escape.json}}, '-O', '/dev/null']"
+                        - generic [ref=e782]: "extra_modules: [\"curtin\", \"in-target\", \"--\", \"apt\", \"install\", \"--yes\", \"linux-modules-extra-6.8.0-60-generic\"]"
+                      - generic [ref=e783]:
+                        - button "Toggle word wrap" [ref=e784] [cursor=pointer]:
+                          - img [ref=e785]
+                        - button "Copy code to clipboard" [ref=e787] [cursor=pointer]:
+                          - generic [ref=e788]:
+                            - img [ref=e789]
+                            - img [ref=e791]
+                  - listitem [ref=e793]:
+                    - paragraph [ref=e794]:
+                      - text: Deploy the node through MAAS to apply the pinned kernel during installation. Refer to
+                      - link "Create and Manage MAAS Clusters" [ref=e795] [cursor=pointer]:
+                        - /url: /clusters/data-center/maas/create-manage-maas-clusters/
+                      - text: for the details.
+                - heading "Debug Steps - Disable IPv6 on the Calico Pack LevelDirect link to Debug Steps - Disable IPv6 on the Calico Pack Level" [level=3] [ref=e796]:
+                  - text: Debug Steps - Disable IPv6 on the Calico Pack Level
+                  - link "Direct link to Debug Steps - Disable IPv6 on the Calico Pack Level" [ref=e797] [cursor=pointer]:
+                    - /url: "#debug-steps---disable-ipv6-on-the-calico-pack-level"
+                    - text: "#"
+                - list [ref=e798]:
+                  - listitem [ref=e799]:
+                    - paragraph [ref=e800]:
+                      - text: Log in to
+                      - link "Palette" [ref=e801] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e802]:
+                    - paragraph [ref=e803]:
+                      - text: From the left
+                      - strong [ref=e804]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e805]: Profiles
+                      - text: .
+                  - listitem [ref=e806]:
+                    - paragraph [ref=e807]:
+                      - text: On the
+                      - strong [ref=e808]: Profiles
+                      - text: page, click on your cluster profile, which uses Calico as the network pack.
+                  - listitem [ref=e809]:
+                    - paragraph [ref=e810]:
+                      - text: Click on the Calico pack to view the
+                      - strong [ref=e811]: Edit Pack
+                      - text: page.
+                  - listitem [ref=e812]:
+                    - paragraph [ref=e813]:
+                      - text: In the pack's YAML file, uncomment the following parameter and set its value to
+                      - code [ref=e814]: "false"
+                      - text: .
+                    - generic [ref=e816]:
+                      - code [ref=e818]:
+                        - generic [ref=e819]: "env:"
+                        - generic [ref=e820]: "calicoNode:"
+                        - generic [ref=e821]: "FELIX_IPV6SUPPORT: false"
+                      - button "Copy code to clipboard" [ref=e823] [cursor=pointer]:
+                        - generic [ref=e824]:
+                          - img [ref=e825]
+                          - img [ref=e827]
+                  - listitem [ref=e829]:
+                    - paragraph [ref=e830]:
+                      - text: Click
+                      - strong [ref=e831]: Confirm Updates
+                      - text: after making the required changes.
+                  - listitem [ref=e832]:
+                    - paragraph [ref=e833]:
+                      - text: Click
+                      - strong [ref=e834]: Save Changes
+                      - text: on the cluster profile page.
+                  - listitem [ref=e835]:
+                    - paragraph [ref=e836]: Deploy a new cluster using this profile or update an existing cluster to apply the change.
+                - heading "Debug Steps - Disable IPv6 on the BYOS Edge OS Pack LevelDirect link to Debug Steps - Disable IPv6 on the BYOS Edge OS Pack Level" [level=3] [ref=e837]:
+                  - text: Debug Steps - Disable IPv6 on the BYOS Edge OS Pack Level
+                  - link "Direct link to Debug Steps - Disable IPv6 on the BYOS Edge OS Pack Level" [ref=e838] [cursor=pointer]:
+                    - /url: "#debug-steps---disable-ipv6-on-the-byos-edge-os-pack-level"
+                    - text: "#"
+                - list [ref=e839]:
+                  - listitem [ref=e840]:
+                    - paragraph [ref=e841]:
+                      - text: Log in to
+                      - link "Palette" [ref=e842] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e843]:
+                    - paragraph [ref=e844]:
+                      - text: From the left
+                      - strong [ref=e845]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e846]: Profiles
+                      - text: .
+                  - listitem [ref=e847]:
+                    - paragraph [ref=e848]:
+                      - text: On the
+                      - strong [ref=e849]: Profiles
+                      - text: page, click on your cluster profile that uses the BYOS Edge OS pack.
+                  - listitem [ref=e850]:
+                    - paragraph [ref=e851]:
+                      - text: Click on the BYOS pack to view the
+                      - strong [ref=e852]: Edit Pack
+                      - text: page.
+                  - listitem [ref=e853]:
+                    - paragraph [ref=e854]: In the pack's YAML file, add the following lines.
+                    - generic [ref=e856]:
+                      - code [ref=e858]:
+                        - generic [ref=e859]: "stages:"
+                        - generic [ref=e860]: "boot:"
+                        - generic [ref=e861]: "- name: disable-ipv6"
+                        - generic [ref=e862]: "commands:"
+                        - generic [ref=e863]: "- sysctl --write net.ipv6.conf.all.disable_ipv6=1"
+                        - generic [ref=e864]: "- sysctl --write net.ipv6.conf.default.disable_ipv6=1"
+                      - button "Copy code to clipboard" [ref=e866] [cursor=pointer]:
+                        - generic [ref=e867]:
+                          - img [ref=e868]
+                          - img [ref=e870]
+                  - listitem [ref=e872]:
+                    - paragraph [ref=e873]:
+                      - text: Click
+                      - strong [ref=e874]: Confirm Updates
+                      - text: after making the required changes.
+                  - listitem [ref=e875]:
+                    - paragraph [ref=e876]:
+                      - text: Click
+                      - strong [ref=e877]: Save Changes
+                      - text: on the cluster profile page.
+                  - listitem [ref=e878]:
+                    - paragraph [ref=e879]: Deploy a new cluster using this profile.
+                    - paragraph [ref=e880]: If the cluster is already operating and you need to update it, reboot the nodes. Establish an SSH connection to each node and use the following command to trigger a reboot.
+                    - generic [ref=e882]:
+                      - code [ref=e884]:
+                        - generic [ref=e885]: sudo reboot
+                      - button "Copy code to clipboard" [ref=e887] [cursor=pointer]:
+                        - generic [ref=e888]:
+                          - img [ref=e889]
+                          - img [ref=e891]
+                - heading "Debug Steps - Disable IPv6 in User Data for Edge DeploymentDirect link to Debug Steps - Disable IPv6 in User Data for Edge Deployment" [level=3] [ref=e893]:
+                  - text: Debug Steps - Disable IPv6 in User Data for Edge Deployment
+                  - link "Direct link to Debug Steps - Disable IPv6 in User Data for Edge Deployment" [ref=e894] [cursor=pointer]:
+                    - /url: "#debug-steps---disable-ipv6-in-user-data-for-edge-deployment"
+                    - text: "#"
+                - list [ref=e895]:
+                  - listitem [ref=e896]:
+                    - paragraph [ref=e897]:
+                      - text: Add the following lines to the
+                      - code [ref=e898]: user-data
+                      - text: file.
+                    - generic [ref=e900]:
+                      - code [ref=e902]:
+                        - generic [ref=e903]: "stages:"
+                        - generic [ref=e904]: "boot:"
+                        - generic [ref=e905]: "- name: disable-ipv6"
+                        - generic [ref=e906]: "commands:"
+                        - generic [ref=e907]: "- sysctl --write net.ipv6.conf.all.disable_ipv6=1"
+                        - generic [ref=e908]: "- sysctl --write net.ipv6.conf.default.disable_ipv6=1"
+                      - button "Copy code to clipboard" [ref=e910] [cursor=pointer]:
+                        - generic [ref=e911]:
+                          - img [ref=e912]
+                          - img [ref=e914]
+                  - listitem [ref=e916]:
+                    - paragraph [ref=e917]: If you don't have an ISO image or the cluster is already operating, build a new ISO image and deploy (or redeploy) the cluster.
+                    - paragraph [ref=e918]:
+                      - text: If you already have an ISO image, but the cluster is not operating yet, create an ISO file containing the additional user data and apply the changes. Refer to
+                      - link "Apply Site User Data" [ref=e919] [cursor=pointer]:
+                        - /url: /clusters/edge/site-deployment/site-installation/site-user-data/
+                      - text: for more information.
+                - heading "Scenario - AWS EKS Cluster Deployment Fails when Cilium is Used as CNIDirect link to Scenario - AWS EKS Cluster Deployment Fails when Cilium is Used as CNI" [level=2] [ref=e920]:
+                  - text: Scenario - AWS EKS Cluster Deployment Fails when Cilium is Used as CNI
+                  - link "Direct link to Scenario - AWS EKS Cluster Deployment Fails when Cilium is Used as CNI" [ref=e921] [cursor=pointer]:
+                    - /url: "#scenario---aws-eks-cluster-deployment-fails-when-cilium-is-used-as-cni"
+                    - text: "#"
+                - paragraph [ref=e922]:
+                  - text: When deploying AWS EKS clusters using the
+                  - link "Cilium" [ref=e923] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=cni-cilium-oss
+                  - text: pack, worker node provisioning fails as the AWS VPC CNI and Cilium CNI clash with each other. This is because installation of the AWS VPC CNI cannot be disabled by default on EKS cluster nodes.
+                - paragraph [ref=e924]: "To resolve this, you will need to make the following additions and changes:"
+                - list [ref=e925]:
+                  - listitem [ref=e926]: Kube-proxy must be replaced with eBPF.
+                  - listitem [ref=e927]: Specific Cilium configuration parameters must be set.
+                  - listitem [ref=e928]: An additional manifest must be included with the Cilium pack.
+                  - listitem [ref=e929]:
+                    - text: The
+                    - code [ref=e930]: charts.cilium.k8sServiceHost
+                    - text: parameter value must be manually changed to the cluster API server endpoint during deployment.
+                - paragraph [ref=e931]: Use the following debug steps to learn how to make these configuration changes and additions.
+                - generic [ref=e932]:
+                  - generic [ref=e933]:
+                    - img [ref=e935]
+                    - text: warning
+                  - list [ref=e938]:
+                    - listitem [ref=e939]: You must use a pre-created static VPC for EKS deployments using Cilium.
+                    - listitem [ref=e940]: This workaround has only been validated on Cilium 1.15.3 and above.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e941]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e942] [cursor=pointer]:
+                    - /url: "#debug-steps-1"
+                    - text: "#"
+                - list [ref=e943]:
+                  - listitem [ref=e944]:
+                    - paragraph [ref=e945]:
+                      - text: Log in to
+                      - link "Palette" [ref=e946] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e947]:
+                    - paragraph [ref=e948]:
+                      - text: From the left
+                      - strong [ref=e949]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e950]: Profiles
+                      - text: .
+                  - listitem [ref=e951]:
+                    - paragraph [ref=e952]:
+                      - text: On the
+                      - strong [ref=e953]: Profiles
+                      - text: page, click on your EKS cluster profile that uses Cilium as the network pack.
+                  - listitem [ref=e954]:
+                    - paragraph [ref=e955]:
+                      - text: Click on the Cilium pack to view the
+                      - strong [ref=e956]: Edit Pack
+                      - text: page.
+                  - listitem [ref=e957]:
+                    - paragraph [ref=e958]:
+                      - text: Click on the
+                      - strong [ref=e959]: Presets
+                      - text: button to expand the options drawer.
+                  - listitem [ref=e960]:
+                    - paragraph [ref=e961]:
+                      - text: Scroll down the presets option menu and enable
+                      - strong [ref=e962]: Replace kube-proxy with eBPF
+                      - text: .
+                  - listitem [ref=e963]:
+                    - paragraph [ref=e964]:
+                      - text: Review the following parameters and adjust to the required values as needed. Some of these parameters are changed automatically after enabling
+                      - strong [ref=e965]: Replace kube-proxy with eBPF
+                      - text: .
+                    - table [ref=e966]:
+                      - rowgroup [ref=e967]:
+                        - row "Parameter Required Value Description Change Required After Enabling Preset?" [ref=e968]:
+                          - cell "Parameter" [ref=e969]
+                          - cell "Required Value" [ref=e970]
+                          - cell "Description" [ref=e971]
+                          - cell "Change Required After Enabling Preset?" [ref=e972]
+                      - rowgroup [ref=e973]:
+                        - row "charts.cilium.bpf.masquerade false Disables eBPF masquerading because AWS handles NAT and IP masquerading through the ENI interface. True" [ref=e974]:
+                          - cell "charts.cilium.bpf.masquerade" [ref=e975]:
+                            - code [ref=e976]: charts.cilium.bpf.masquerade
+                          - cell "false" [ref=e977]:
+                            - code [ref=e978]: "false"
+                          - cell "Disables eBPF masquerading because AWS handles NAT and IP masquerading through the ENI interface." [ref=e979]
+                          - cell "True" [ref=e980]:
+                            - strong [ref=e981]: "True"
+                        - row "charts.cilium.endpointRoutes.enabled true Enables per-endpoint routing to allow direct pod-to-pod communication in ENI mode without encapsulation. True" [ref=e982]:
+                          - cell "charts.cilium.endpointRoutes.enabled" [ref=e983]:
+                            - code [ref=e984]: charts.cilium.endpointRoutes.enabled
+                          - cell "true" [ref=e985]:
+                            - code [ref=e986]: "true"
+                          - cell "Enables per-endpoint routing to allow direct pod-to-pod communication in ENI mode without encapsulation." [ref=e987]
+                          - cell "True" [ref=e988]:
+                            - strong [ref=e989]: "True"
+                        - row "charts.cilium.eni.enabled true Enables AWS ENI integration for direct networking instead of using an overlay network. True" [ref=e990]:
+                          - cell "charts.cilium.eni.enabled" [ref=e991]:
+                            - code [ref=e992]: charts.cilium.eni.enabled
+                          - cell "true" [ref=e993]:
+                            - code [ref=e994]: "true"
+                          - cell "Enables AWS ENI integration for direct networking instead of using an overlay network." [ref=e995]
+                          - cell "True" [ref=e996]:
+                            - strong [ref=e997]: "True"
+                        - row "charts.cilium.ipam.mode \"eni\" Uses AWS ENI-based IP address management (IPAM) to allocate pod IPs directly from AWS VPC subnets. True" [ref=e998]:
+                          - cell "charts.cilium.ipam.mode" [ref=e999]:
+                            - code [ref=e1000]: charts.cilium.ipam.mode
+                          - cell "\"eni\"" [ref=e1001]:
+                            - code [ref=e1002]: "\"eni\""
+                          - cell "Uses AWS ENI-based IP address management (IPAM) to allocate pod IPs directly from AWS VPC subnets." [ref=e1003]
+                          - cell "True" [ref=e1004]:
+                            - strong [ref=e1005]: "True"
+                        - row "charts.cilium.enableIPv4Masquerade false Disables IPv4 masquerading for outgoing packets because AWS ENI mode provides direct pod-to-pod routing without NAT. True" [ref=e1006]:
+                          - cell "charts.cilium.enableIPv4Masquerade" [ref=e1007]:
+                            - code [ref=e1008]: charts.cilium.enableIPv4Masquerade
+                          - cell "false" [ref=e1009]:
+                            - code [ref=e1010]: "false"
+                          - cell "Disables IPv4 masquerading for outgoing packets because AWS ENI mode provides direct pod-to-pod routing without NAT." [ref=e1011]
+                          - cell "True" [ref=e1012]:
+                            - strong [ref=e1013]: "True"
+                        - row "charts.cilium.enableIPv6Masquerade false Disables IPv6 masquerading for outgoing packets because AWS handles IPv6 routing without the need for masquerading. True" [ref=e1014]:
+                          - cell "charts.cilium.enableIPv6Masquerade" [ref=e1015]:
+                            - code [ref=e1016]: charts.cilium.enableIPv6Masquerade
+                          - cell "false" [ref=e1017]:
+                            - code [ref=e1018]: "false"
+                          - cell "Disables IPv6 masquerading for outgoing packets because AWS handles IPv6 routing without the need for masquerading." [ref=e1019]
+                          - cell "True" [ref=e1020]:
+                            - strong [ref=e1021]: "True"
+                        - row "charts.cilium.k8sServiceHost auto Ensures Cilium correctly connects to the EKS control plane. This value will be changed during cluster deployment. False" [ref=e1022]:
+                          - cell "charts.cilium.k8sServiceHost" [ref=e1023]:
+                            - code [ref=e1024]: charts.cilium.k8sServiceHost
+                          - cell "auto" [ref=e1025]:
+                            - code [ref=e1026]: auto
+                          - cell "Ensures Cilium correctly connects to the EKS control plane. This value will be changed during cluster deployment." [ref=e1027]
+                          - cell "False" [ref=e1028]:
+                            - strong [ref=e1029]: "False"
+                        - row "charts.cilium.k8sServicePort \"443\" Uses port 443 to connect to the Kubernetes API server because EKS API server communication happens over HTTPS. True" [ref=e1030]:
+                          - cell "charts.cilium.k8sServicePort" [ref=e1031]:
+                            - code [ref=e1032]: charts.cilium.k8sServicePort
+                          - cell "\"443\"" [ref=e1033]:
+                            - code [ref=e1034]: "\"443\""
+                          - cell "Uses port 443 to connect to the Kubernetes API server because EKS API server communication happens over HTTPS." [ref=e1035]
+                          - cell "True" [ref=e1036]:
+                            - strong [ref=e1037]: "True"
+                        - row "charts.cilium.kubeProxyReplacement \"true\" Enables eBPF-based kube-proxy replacement because kube-proxy is disabled, and Cilium must handle service load balancing. False" [ref=e1038]:
+                          - cell "charts.cilium.kubeProxyReplacement" [ref=e1039]:
+                            - code [ref=e1040]: charts.cilium.kubeProxyReplacement
+                          - cell "\"true\"" [ref=e1041]:
+                            - code [ref=e1042]: "\"true\""
+                          - cell "Enables eBPF-based kube-proxy replacement because kube-proxy is disabled, and Cilium must handle service load balancing." [ref=e1043]
+                          - cell "False" [ref=e1044]:
+                            - strong [ref=e1045]: "False"
+                        - row "charts.cilium.kubeProxyReplacementHealthzBindAddr 0.0.0.0:10256 Binds the health check service to 0.0.0.0:10256 for the kube-proxy replacement. False" [ref=e1046]:
+                          - cell "charts.cilium.kubeProxyReplacementHealthzBindAddr" [ref=e1047]:
+                            - code [ref=e1048]: charts.cilium.kubeProxyReplacementHealthzBindAddr
+                          - cell "0.0.0.0:10256" [ref=e1049]:
+                            - code [ref=e1050]: 0.0.0.0:10256
+                          - cell "Binds the health check service to 0.0.0.0:10256 for the kube-proxy replacement." [ref=e1051]:
+                            - text: Binds the health check service to
+                            - code [ref=e1052]: 0.0.0.0:10256
+                            - text: for the kube-proxy replacement.
+                          - cell "False" [ref=e1053]:
+                            - strong [ref=e1054]: "False"
+                        - row "charts.cilium.autoDirectNodeRoutes false Disables automatic direct routing between nodes because AWS ENI mode already manages routing, making additional direct routes unnecessary. True" [ref=e1055]:
+                          - cell "charts.cilium.autoDirectNodeRoutes" [ref=e1056]:
+                            - code [ref=e1057]: charts.cilium.autoDirectNodeRoutes
+                          - cell "false" [ref=e1058]:
+                            - code [ref=e1059]: "false"
+                          - cell "Disables automatic direct routing between nodes because AWS ENI mode already manages routing, making additional direct routes unnecessary." [ref=e1060]
+                          - cell "True" [ref=e1061]:
+                            - strong [ref=e1062]: "True"
+                        - row "charts.cilium.ipv4NativeRoutingCIDR <POD_SUBNET_CIDR> Set this to a CIDR block that covers all AWS VPC subnets where your worker nodes will be deployed. For example, if your worker node subnets are 10.0.64.0/18, 10.0.128.0/18, and 10.0.192.0/18, set this to 10.0.0.0/16 to ensure all ranges are encapsulated. True" [ref=e1063]:
+                          - cell "charts.cilium.ipv4NativeRoutingCIDR" [ref=e1064]:
+                            - code [ref=e1065]: charts.cilium.ipv4NativeRoutingCIDR
+                          - cell "<POD_SUBNET_CIDR>" [ref=e1066]:
+                            - code [ref=e1067]: <POD_SUBNET_CIDR>
+                          - cell "Set this to a CIDR block that covers all AWS VPC subnets where your worker nodes will be deployed. For example, if your worker node subnets are 10.0.64.0/18, 10.0.128.0/18, and 10.0.192.0/18, set this to 10.0.0.0/16 to ensure all ranges are encapsulated." [ref=e1068]:
+                            - text: Set this to a CIDR block that covers all AWS VPC subnets where your worker nodes will be deployed. For example, if your worker node subnets are
+                            - code [ref=e1069]: 10.0.64.0/18
+                            - text: ","
+                            - code [ref=e1070]: 10.0.128.0/18
+                            - text: ", and"
+                            - code [ref=e1071]: 10.0.192.0/18
+                            - text: ", set this to"
+                            - code [ref=e1072]: 10.0.0.0/16
+                            - text: to ensure all ranges are encapsulated.
+                          - cell "True" [ref=e1073]:
+                            - strong [ref=e1074]: "True"
+                        - row "charts.cilium.routingMode native Uses native routing mode because AWS ENI mode supports direct pod-to-pod routing, making encapsulation unnecessary. False" [ref=e1075]:
+                          - cell "charts.cilium.routingMode" [ref=e1076]:
+                            - code [ref=e1077]: charts.cilium.routingMode
+                          - cell "native" [ref=e1078]:
+                            - code [ref=e1079]: native
+                          - cell "Uses native routing mode because AWS ENI mode supports direct pod-to-pod routing, making encapsulation unnecessary." [ref=e1080]
+                          - cell "False" [ref=e1081]:
+                            - strong [ref=e1082]: "False"
+                  - listitem [ref=e1083]:
+                    - paragraph [ref=e1084]:
+                      - text: Click the
+                      - strong [ref=e1085]: New manifest
+                      - text: option, and provide a name for the manifest, such as
+                      - code [ref=e1086]: job-fix-cni
+                      - text: . Click the tick button afterwards.
+                  - listitem [ref=e1087]:
+                    - paragraph [ref=e1088]:
+                      - text: Copy the following manifest into the YAML editor. This manifest disables the
+                      - code [ref=e1089]: kube-proxy
+                      - text: and
+                      - code [ref=e1090]: aws-node
+                      - text: DaemonSets by applying a node selector that does not match any nodes. It also removes existing Cilium,
+                      - code [ref=e1091]: kube-dns
+                      - text: ", and"
+                      - code [ref=e1092]: cert-manager
+                      - text: pods to ensure a clean state for Cilium deployment.
+                    - generic [ref=e1094]:
+                      - code [ref=e1096]:
+                        - generic [ref=e1097]: "apiVersion: batch/v1"
+                        - generic [ref=e1098]: "kind: Job"
+                        - generic [ref=e1099]: "metadata:"
+                        - generic [ref=e1100]: "name: ds-fix"
+                        - generic [ref=e1101]: "namespace: kube-system"
+                        - generic [ref=e1102]: "spec:"
+                        - generic [ref=e1103]: "template:"
+                        - generic [ref=e1104]: "metadata:"
+                        - generic [ref=e1105]: "name: ds-fix"
+                        - generic [ref=e1106]: "spec:"
+                        - generic [ref=e1107]: "serviceAccountName: ds-fix-sa"
+                        - generic [ref=e1108]: "hostNetwork: true"
+                        - generic [ref=e1109]: "dnsPolicy: ClusterFirstWithHostNet"
+                        - generic [ref=e1110]: "initContainers:"
+                        - generic [ref=e1111]: "- name: kubectl-init-pod-1"
+                        - generic [ref=e1112]: "image: bitnami/kubectl"
+                        - generic [ref=e1113]: "args:"
+                        - generic [ref=e1114]: "- \"-n\""
+                        - generic [ref=e1115]: "- \"kube-system\""
+                        - generic [ref=e1116]: "- \"patch\""
+                        - generic [ref=e1117]: "- \"daemonset\""
+                        - generic [ref=e1118]: "- \"kube-proxy\""
+                        - generic [ref=e1119]: "- \"aws-node\""
+                        - generic [ref=e1120]: "- --patch={\"spec\":{\"template\":{\"spec\":{\"nodeSelector\":{\"io.cilium/aws-node-enabled\":\"true\"}}}}}"
+                        - generic [ref=e1121]: "containers:"
+                        - generic [ref=e1122]: "- name: kubectl-pod-1"
+                        - generic [ref=e1123]: "image: bitnami/kubectl"
+                        - generic [ref=e1124]: "args:"
+                        - generic [ref=e1125]: "- \"delete\""
+                        - generic [ref=e1126]: "- \"pod\""
+                        - generic [ref=e1127]: "- \"-n\""
+                        - generic [ref=e1128]: "- \"kube-system\""
+                        - generic [ref=e1129]: "- \"-l app.kubernetes.io/part-of=cilium\""
+                        - generic [ref=e1130]: "- name: kubectl-pod-2"
+                        - generic [ref=e1131]: "image: bitnami/kubectl"
+                        - generic [ref=e1132]: "args:"
+                        - generic [ref=e1133]: "- \"delete\""
+                        - generic [ref=e1134]: "- \"pod\""
+                        - generic [ref=e1135]: "- \"-n\""
+                        - generic [ref=e1136]: "- \"kube-system\""
+                        - generic [ref=e1137]: "- \"-l k8s-app=kube-dns\""
+                        - generic [ref=e1138]: "- name: kubectl-pod-3"
+                        - generic [ref=e1139]: "image: bitnami/kubectl"
+                        - generic [ref=e1140]: "args:"
+                        - generic [ref=e1141]: "- \"delete\""
+                        - generic [ref=e1142]: "- \"pod\""
+                        - generic [ref=e1143]: "- \"-n\""
+                        - generic [ref=e1144]: "- \"cert-manager\""
+                        - generic [ref=e1145]: "- \"--all\""
+                        - generic [ref=e1146]: "restartPolicy: Never"
+                        - generic [ref=e1147]: "---"
+                        - generic [ref=e1148]: "apiVersion: v1"
+                        - generic [ref=e1149]: "kind: ServiceAccount"
+                        - generic [ref=e1150]: "metadata:"
+                        - generic [ref=e1151]: "name: ds-fix-sa"
+                        - generic [ref=e1152]: "namespace: kube-system"
+                        - generic [ref=e1153]: "---"
+                        - generic [ref=e1154]: "apiVersion: rbac.authorization.k8s.io/v1"
+                        - generic [ref=e1155]: "kind: Role"
+                        - generic [ref=e1156]: "metadata:"
+                        - generic [ref=e1157]: "name: ds-fix-role"
+                        - generic [ref=e1158]: "namespace: kube-system"
+                        - generic [ref=e1159]: "rules:"
+                        - generic [ref=e1160]: "- apiGroups:"
+                        - generic [ref=e1161]: "- apps"
+                        - generic [ref=e1162]: "resources:"
+                        - generic [ref=e1163]: "- daemonsets"
+                        - generic [ref=e1164]: "resourceNames:"
+                        - generic [ref=e1165]: "- kube-proxy"
+                        - generic [ref=e1166]: "- aws-node"
+                        - generic [ref=e1167]: "verbs:"
+                        - generic [ref=e1168]: "- get"
+                        - generic [ref=e1169]: "- patch"
+                        - generic [ref=e1170]: "---"
+                        - generic [ref=e1171]: "apiVersion: rbac.authorization.k8s.io/v1"
+                        - generic [ref=e1172]: "kind: ClusterRole"
+                        - generic [ref=e1173]: "metadata:"
+                        - generic [ref=e1174]: "name: ds-fix-role"
+                        - generic [ref=e1175]: "rules:"
+                        - generic [ref=e1176]: "- apiGroups:"
+                        - generic [ref=e1177]: "- \"\""
+                        - generic [ref=e1178]: "resources:"
+                        - generic [ref=e1179]: "- pods"
+                        - generic [ref=e1180]: "verbs:"
+                        - generic [ref=e1181]: "- list"
+                        - generic [ref=e1182]: "- delete"
+                        - generic [ref=e1183]: "---"
+                        - generic [ref=e1184]: "apiVersion: rbac.authorization.k8s.io/v1"
+                        - generic [ref=e1185]: "kind: RoleBinding"
+                        - generic [ref=e1186]: "metadata:"
+                        - generic [ref=e1187]: "name: ds-fix-rolebinding"
+                        - generic [ref=e1188]: "namespace: kube-system"
+                        - generic [ref=e1189]: "subjects:"
+                        - generic [ref=e1190]: "- kind: ServiceAccount"
+                        - generic [ref=e1191]: "name: ds-fix-sa"
+                        - generic [ref=e1192]: "namespace: kube-system"
+                        - generic [ref=e1193]: "roleRef:"
+                        - generic [ref=e1194]: "kind: Role"
+                        - generic [ref=e1195]: "name: ds-fix-role"
+                        - generic [ref=e1196]: "apiGroup: rbac.authorization.k8s.io"
+                        - generic [ref=e1197]: "---"
+                        - generic [ref=e1198]: "apiVersion: rbac.authorization.k8s.io/v1"
+                        - generic [ref=e1199]: "kind: ClusterRoleBinding"
+                        - generic [ref=e1200]: "metadata:"
+                        - generic [ref=e1201]: "name: ds-fix-rolebinding"
+                        - generic [ref=e1202]: "subjects:"
+                        - generic [ref=e1203]: "- kind: ServiceAccount"
+                        - generic [ref=e1204]: "name: ds-fix-sa"
+                        - generic [ref=e1205]: "namespace: kube-system"
+                        - generic [ref=e1206]: "roleRef:"
+                        - generic [ref=e1207]: "kind: ClusterRole"
+                        - generic [ref=e1208]: "name: ds-fix-role"
+                        - generic [ref=e1209]: "apiGroup: rbac.authorization.k8s.io"
+                      - generic [ref=e1210]:
+                        - button "Toggle word wrap" [ref=e1211] [cursor=pointer]:
+                          - img [ref=e1212]
+                        - button "Copy code to clipboard" [ref=e1214] [cursor=pointer]:
+                          - generic [ref=e1215]:
+                            - img [ref=e1216]
+                            - img [ref=e1218]
+                  - listitem [ref=e1220]:
+                    - paragraph [ref=e1221]:
+                      - text: Click
+                      - strong [ref=e1222]: Confirm Updates
+                      - text: after making the required changes.
+                  - listitem [ref=e1223]:
+                    - paragraph [ref=e1224]:
+                      - text: Click
+                      - strong [ref=e1225]: Save Changes
+                      - text: on the cluster profile page.
+                  - listitem [ref=e1226]:
+                    - paragraph [ref=e1227]:
+                      - text: Click
+                      - strong [ref=e1228]: Deploy
+                      - text: on the cluster profile page, and click
+                      - strong [ref=e1229]: OK
+                      - text: in the pop-up window.
+                  - listitem [ref=e1230]:
+                    - paragraph [ref=e1231]:
+                      - text: Provide the basic information for the cluster and click
+                      - strong [ref=e1232]: Next
+                      - text: .
+                  - listitem [ref=e1233]:
+                    - paragraph [ref=e1234]:
+                      - text: Click
+                      - strong [ref=e1235]: Next
+                      - text: on the
+                      - strong [ref=e1236]: Cluster Profile
+                      - text: page.
+                  - listitem [ref=e1237]:
+                    - paragraph [ref=e1238]:
+                      - text: On the
+                      - strong [ref=e1239]: Cluster Config
+                      - text: page, configure the cluster as required, and ensure you select
+                      - strong [ref=e1240]: Enable static placement (Optional)
+                      - text: to provide your AWS VPC details. Click
+                      - strong [ref=e1241]: Next
+                      - text: when complete.
+                  - listitem [ref=e1242]:
+                    - paragraph [ref=e1243]:
+                      - text: Configure the remaining settings as needed, and deploy the cluster. Refer to
+                      - link "Create and Manage AWS EKS Cluster" [ref=e1244] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/aws/eks/#deploy-an-aws-eks-cluster
+                      - text: if you need guidance on the available options.
+                  - listitem [ref=e1245]:
+                    - paragraph [ref=e1246]:
+                      - text: As soon as it is available, obtain the
+                      - strong [ref=e1247]: API server endpoint
+                      - text: for the cluster.
+                    - paragraph [ref=e1248]:
+                      - text: If using the AWS Console, go to
+                      - strong [ref=e1249]:
+                        - text: AWS > Clusters >
+                        - code [ref=e1250]: <clusterName>
+                      - text: and view the
+                      - strong [ref=e1251]: Overview
+                      - text: tab for the cluster. Click the clipboard icon next to the
+                      - strong [ref=e1252]: API server endpoint
+                      - text: field.
+                    - paragraph [ref=e1253]:
+                      - text: If using the AWS CLI, issue the following command to obtain the API endpoint for the cluster. Replace
+                      - code [ref=e1254]: <clusterName>
+                      - text: with the name of your cluster, and
+                      - code [ref=e1255]: <awsRegion>
+                      - text: with your AWS region.
+                    - generic [ref=e1257]:
+                      - code [ref=e1259]:
+                        - generic [ref=e1260]: aws eks update-kubeconfig --region <awsRegion> --name <clusterName>
+                        - generic [ref=e1261]: aws eks describe-cluster --name <clusterName> --query "cluster.endpoint" --output text
+                      - generic [ref=e1262]:
+                        - button "Toggle word wrap" [ref=e1263] [cursor=pointer]:
+                          - img [ref=e1264]
+                        - button "Copy code to clipboard" [ref=e1266] [cursor=pointer]:
+                          - generic [ref=e1267]:
+                            - img [ref=e1268]
+                            - img [ref=e1270]
+                    - paragraph [ref=e1272]: Example output.
+                    - generic [ref=e1274]:
+                      - code [ref=e1276]:
+                        - generic [ref=e1277]: https://MY2567C9923FENDPOINT882F9EXAMPLE.gr7.us-east-1.eks.amazonaws.com
+                      - button "Toggle word wrap" [ref=e1279] [cursor=pointer]:
+                        - img [ref=e1280]
+                  - listitem [ref=e1282]:
+                    - paragraph [ref=e1283]:
+                      - text: On your cluster page in Palette, click the
+                      - strong [ref=e1284]: Profile
+                      - text: tab.
+                  - listitem [ref=e1285]:
+                    - paragraph [ref=e1286]:
+                      - text: Select the Cilium layer and find the
+                      - code [ref=e1287]: k8sServiceHost
+                      - text: parameter in the YAML editor.
+                  - listitem [ref=e1288]:
+                    - paragraph [ref=e1289]:
+                      - text: Change the value from
+                      - code [ref=e1290]: auto
+                      - text: to the cluster API server endpoint discovered in step 17, but
+                      - emphasis [ref=e1291]: without
+                      - text: the
+                      - code [ref=e1292]: https://
+                      - text: portion.
+                    - paragraph [ref=e1293]:
+                      - text: For example,
+                      - code [ref=e1294]: "\"MY2567C9923FENDPOINT882F9EXAMPLE.gr7.us-east-1.eks.amazonaws.com\""
+                      - text: .
+                  - listitem [ref=e1295]:
+                    - paragraph [ref=e1296]:
+                      - text: Click
+                      - strong [ref=e1297]: Save
+                      - text: .
+                - paragraph [ref=e1298]: The EKS cluster will now deploy successfully.
+                - heading "Scenario - Control Plane Node Fails to Upgrade in Sequential MicroK8s UpgradesDirect link to Scenario - Control Plane Node Fails to Upgrade in Sequential MicroK8s Upgrades" [level=2] [ref=e1299]:
+                  - text: Scenario - Control Plane Node Fails to Upgrade in Sequential MicroK8s Upgrades
+                  - link "Direct link to Scenario - Control Plane Node Fails to Upgrade in Sequential MicroK8s Upgrades" [ref=e1300] [cursor=pointer]:
+                    - /url: "#scenario---control-plane-node-fails-to-upgrade-in-sequential-microk8s-upgrades"
+                    - text: "#"
+                - paragraph [ref=e1301]:
+                  - text: In clusters that use
+                  - link "MicroK8s" [ref=e1302] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=kubernetes-microk8s
+                  - text: as the Kubernetes distribution, there is a known issue when using the
+                  - code [ref=e1303]: InPlaceUpgrade
+                  - text: strategy for sequential Kubernetes upgrades. For example, upgrading from version 1.25.x to version 1.26.x and then to version 1.27.x may cause the control plane node to fail to upgrade. Use the following steps to troubleshoot and resolve the issue.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e1304]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e1305] [cursor=pointer]:
+                    - /url: "#debug-steps-2"
+                    - text: "#"
+                - list [ref=e1306]:
+                  - listitem [ref=e1307]:
+                    - paragraph [ref=e1308]: Execute the first MicroK8s upgrade in your cluster. For example, upgrade from version 1.25.x to version 1.26.x.
+                  - listitem [ref=e1309]:
+                    - paragraph [ref=e1310]:
+                      - text: Ensure you can access your cluster using kubectl. Refer to the
+                      - link "Access Cluster with CLI" [ref=e1311] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/
+                      - text: guide for more information.
+                  - listitem [ref=e1312]:
+                    - paragraph [ref=e1313]:
+                      - text: After the first upgrade is complete, issue the following command to delete the pod named
+                      - code [ref=e1314]: upgrade-pod
+                      - text: .
+                    - generic [ref=e1316]:
+                      - code [ref=e1318]:
+                        - generic [ref=e1319]: kubectl delete pod upgrade-pod --namespace default
+                      - button "Copy code to clipboard" [ref=e1321] [cursor=pointer]:
+                        - generic [ref=e1322]:
+                          - img [ref=e1323]
+                          - img [ref=e1325]
+                  - listitem [ref=e1327]:
+                    - paragraph [ref=e1328]: Once the pod is deleted, proceed to the next upgrade. For example, upgrade from version 1.26.x to version 1.27.x.
+                  - listitem [ref=e1329]:
+                    - paragraph [ref=e1330]: Within a few minutes, the control plane node will be upgraded correctly.
+              - generic [ref=e1331]:
+                - generic [ref=e1333]:
+                  - text: "Tags:"
+                  - list [ref=e1334]:
+                    - listitem [ref=e1335]:
+                      - link "troubleshooting" [ref=e1336] [cursor=pointer]:
+                        - /url: /tags/troubleshooting/
+                    - listitem [ref=e1337]:
+                      - link "packs" [ref=e1338] [cursor=pointer]:
+                        - /url: /tags/packs/
+                - link "Edit this page" [ref=e1341] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/troubleshooting/pack-issues.md
+                  - img [ref=e1342]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e1346]:
+              - link "Previous « Nodes & Clusters" [ref=e1347] [cursor=pointer]:
+                - /url: /troubleshooting/nodes/
+                - generic [ref=e1348]: Previous
+                - generic [ref=e1349]: « Nodes & Clusters
+              - link "Next Palette Dev Engine »" [ref=e1350] [cursor=pointer]:
+                - /url: /troubleshooting/palette-dev-engine/
+                - generic [ref=e1351]: Next
+                - generic [ref=e1352]: Palette Dev Engine »
+          - list [ref=e1355]:
+            - listitem [ref=e1356]:
+              - link "Scenario - Pods with NamespaceLabels are Stuck on Deployment" [ref=e1357] [cursor=pointer]:
+                - /url: "#scenario---pods-with-namespacelabels-are-stuck-on-deployment"
+              - list [ref=e1358]:
+                - listitem [ref=e1359]:
+                  - link "Debug Steps" [ref=e1360] [cursor=pointer]:
+                    - /url: "#debug-steps"
+            - listitem [ref=e1361]:
+              - link "Scenario - Calico Fails to Start when IPv6 is Enabled" [ref=e1362] [cursor=pointer]:
+                - /url: "#scenario---calico-fails-to-start-when-ipv6-is-enabled"
+              - list [ref=e1363]:
+                - listitem [ref=e1364]:
+                  - link "Debug Steps - Use an Unaffected or Fixed Kernel Version" [ref=e1365] [cursor=pointer]:
+                    - /url: "#debug-steps---use-an-unaffected-or-fixed-kernel-version"
+                - listitem [ref=e1366]:
+                  - link "Debug Steps - Disable IPv6 on the Calico Pack Level" [ref=e1367] [cursor=pointer]:
+                    - /url: "#debug-steps---disable-ipv6-on-the-calico-pack-level"
+                - listitem [ref=e1368]:
+                  - link "Debug Steps - Disable IPv6 on the BYOS Edge OS Pack Level" [ref=e1369] [cursor=pointer]:
+                    - /url: "#debug-steps---disable-ipv6-on-the-byos-edge-os-pack-level"
+                - listitem [ref=e1370]:
+                  - link "Debug Steps - Disable IPv6 in User Data for Edge Deployment" [ref=e1371] [cursor=pointer]:
+                    - /url: "#debug-steps---disable-ipv6-in-user-data-for-edge-deployment"
+            - listitem [ref=e1372]:
+              - link "Scenario - AWS EKS Cluster Deployment Fails when Cilium is Used as CNI" [ref=e1373] [cursor=pointer]:
+                - /url: "#scenario---aws-eks-cluster-deployment-fails-when-cilium-is-used-as-cni"
+              - list [ref=e1374]:
+                - listitem [ref=e1375]:
+                  - link "Debug Steps" [ref=e1376] [cursor=pointer]:
+                    - /url: "#debug-steps-1"
+            - listitem [ref=e1377]:
+              - link "Scenario - Control Plane Node Fails to Upgrade in Sequential MicroK8s Upgrades" [ref=e1378] [cursor=pointer]:
+                - /url: "#scenario---control-plane-node-fails-to-upgrade-in-sequential-microk8s-upgrades"
+              - list [ref=e1379]:
+                - listitem [ref=e1380]:
+                  - link "Debug Steps" [ref=e1381] [cursor=pointer]:
+                    - /url: "#debug-steps-2"
+  - button "Project Logo Ask AI" [ref=e1382] [cursor=pointer]:
+    - generic [ref=e1385]:
+      - img "Project Logo" [ref=e1386]
+      - paragraph [ref=e1387]: Ask AI
+```

@@ -1,0 +1,1078 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [expanded] [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+                - list [ref=e128]:
+                  - listitem [ref=e129]:
+                    - link "Architecture" [ref=e130] [cursor=pointer]:
+                      - /url: /vm-management/architecture/
+                  - listitem [ref=e131]:
+                    - link "Environment Setup" [ref=e132] [cursor=pointer]:
+                      - /url: /vm-management/environment-setup/
+                  - listitem [ref=e133]:
+                    - link "Install VMO in Airgap Environments" [ref=e134] [cursor=pointer]:
+                      - /url: /vm-management/install-vmo-in-airgap/
+                  - listitem [ref=e135]:
+                    - link "Create a VMO Profile" [ref=e136] [cursor=pointer]:
+                      - /url: /vm-management/create-vmo-profile/
+                  - listitem [ref=e137]:
+                    - link "Configure Private CA Certificate" [ref=e138] [cursor=pointer]:
+                      - /url: /vm-management/configure-private-ca-certificate/
+                  - listitem [ref=e139]:
+                    - link "Configure Direct Access to VM Dashboard" [ref=e140] [cursor=pointer]:
+                      - /url: /vm-management/configure-console-base-address/
+                  - listitem [ref=e141]:
+                    - generic [ref=e142]:
+                      - link "RBAC" [ref=e143] [cursor=pointer]:
+                        - /url: /vm-management/rbac/
+                      - button "Toggle the collapsible sidebar category 'RBAC'" [ref=e144] [cursor=pointer]
+                  - listitem [ref=e145]:
+                    - generic [ref=e146]:
+                      - link "Create and Manage VMs" [ref=e147] [cursor=pointer]:
+                        - /url: /vm-management/create-manage-vm/
+                      - button "Toggle the collapsible sidebar category 'Create and Manage VMs'" [ref=e148] [cursor=pointer]
+                  - listitem [ref=e149]:
+                    - generic [ref=e150]:
+                      - link "VM Migration Assistant" [expanded] [ref=e151] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/
+                      - button "Toggle the collapsible sidebar category 'VM Migration Assistant'" [ref=e152] [cursor=pointer]
+                    - list [ref=e153]:
+                      - listitem [ref=e154]:
+                        - link "Create a VM Migration Assistant Profile" [ref=e155] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/create-vm-migration-assistant-profile/
+                      - listitem [ref=e156]:
+                        - link "Create Source Providers" [ref=e157] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/create-source-providers/
+                      - listitem [ref=e158]:
+                        - link "Create Migration Plans" [ref=e159] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/create-migration-plans/
+                      - listitem [ref=e160]:
+                        - link "Start Migration Plans" [ref=e161] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/start-migration-plans/
+                      - listitem [ref=e162]:
+                        - link "Cancel Active Migration Plans" [ref=e163] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/cancel-active-migration-plans/
+                      - listitem [ref=e164]:
+                        - link "Additional Configuration" [ref=e165] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/additional-configuration/
+              - listitem [ref=e166]:
+                - generic [ref=e167]:
+                  - link "Workspaces" [ref=e168] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e170]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e172] [cursor=pointer]
+              - listitem [ref=e173]:
+                - generic [ref=e174]:
+                  - link "Packs List" [ref=e175] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e177]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e179] [cursor=pointer]
+              - listitem [ref=e180]:
+                - generic [ref=e181]:
+                  - link "User & Role Management" [ref=e182] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e184]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e186] [cursor=pointer]
+              - listitem [ref=e187]:
+                - generic [ref=e188]:
+                  - link "Registries and Packs" [ref=e189] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e191]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e193] [cursor=pointer]
+              - listitem [ref=e194]:
+                - generic [ref=e195]:
+                  - link "Security" [ref=e196] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e198]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e200] [cursor=pointer]
+              - listitem [ref=e201]:
+                - generic [ref=e202]:
+                  - link "Audit Logs" [ref=e203] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e205]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e207] [cursor=pointer]
+              - listitem [ref=e208]:
+                - generic [ref=e209]:
+                  - link "Self-Hosted Palette" [ref=e210] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e212]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - generic [ref=e216]:
+                  - link "Palette VerteX" [ref=e217] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e219]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e221] [cursor=pointer]
+              - listitem [ref=e222]:
+                - generic [ref=e223]:
+                  - link "Tenant Administration" [ref=e224] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e226]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e228] [cursor=pointer]
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "Automation" [ref=e231] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e233]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - generic [ref=e237]:
+                  - link "Troubleshooting" [ref=e238] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e240]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - link "Glossary" [ref=e244] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e246]
+                  - text: Glossary
+              - listitem [ref=e248]:
+                - generic [ref=e249]:
+                  - link "Compliance & Legal" [ref=e250] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e252]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e254] [cursor=pointer]
+              - listitem [ref=e255]:
+                - button "Privacy Settings" [ref=e256] [cursor=pointer]:
+                  - img [ref=e257]
+                  - text: Privacy Settings
+      - main [ref=e259]:
+        - generic [ref=e261]:
+          - generic [ref=e263]:
+            - article [ref=e264]:
+              - navigation "Breadcrumbs" [ref=e265]:
+                - list [ref=e266]:
+                  - listitem [ref=e267]:
+                    - link "Home page" [ref=e268] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e269]
+                  - listitem [ref=e271]:
+                    - link "Virtual Machine Orchestrator" [ref=e272] [cursor=pointer]:
+                      - /url: /vm-management/
+                  - listitem [ref=e273]:
+                    - link "VM Migration Assistant" [ref=e274] [cursor=pointer]:
+                      - /url: /vm-management/vm-migration-assistant/
+                  - listitem [ref=e275]:
+                    - generic [ref=e276]: Additional Configuration
+              - generic [ref=e277]:
+                - heading "VM Migration Assistant Additional Configuration" [level=1] [ref=e279]
+                - heading "Overview SettingsDirect link to Overview Settings" [level=2] [ref=e280]:
+                  - text: Overview Settings
+                  - link "Direct link to Overview Settings" [ref=e281] [cursor=pointer]:
+                    - /url: "#overview-settings"
+                    - text: "#"
+                - paragraph [ref=e282]:
+                  - text: Navigate to your overview settings by clicking
+                  - strong [ref=e283]: Overview
+                  - text: on the left
+                  - strong [ref=e284]: Main Menu
+                  - text: .
+                - heading "Overview TabDirect link to Overview Tab" [level=3] [ref=e285]:
+                  - text: Overview Tab
+                  - link "Direct link to Overview Tab" [ref=e286] [cursor=pointer]:
+                    - /url: "#overview-tab"
+                    - text: "#"
+                - paragraph [ref=e287]:
+                  - text: The
+                  - strong [ref=e288]: Overview
+                  - text: tab has configurable settings for the migration controller. These parameters define the resource allocation, performance tuning, and operational settings for efficiently managing virtual machine migrations.
+                - paragraph [ref=e289]:
+                  - img "Overview - Overview Tab Settings" [ref=e290]
+                - heading "Configure Migration ControllerDirect link to Configure Migration Controller" [level=4] [ref=e291]:
+                  - text: Configure Migration Controller
+                  - link "Direct link to Configure Migration Controller" [ref=e292] [cursor=pointer]:
+                    - /url: "#configure-migration-controller"
+                    - text: "#"
+                - paragraph [ref=e293]: The configurable parameters are described in the following table.
+                - table [ref=e294]:
+                  - rowgroup [ref=e295]:
+                    - row "Parameter Description Default Value" [ref=e296]:
+                      - cell "Parameter" [ref=e297]
+                      - cell "Description" [ref=e298]
+                      - cell "Default Value" [ref=e299]
+                  - rowgroup [ref=e300]:
+                    - row "Max concurrent virtual machine migrations The maximum number of VMs that can be migrated simultaneously. Consider the available system resources and network bandwidth, as too many concurrent migrations can overload the system and cause slower speeds or congestion. Start with a lower value and gradually increase it to find the optimal balance. Migration plans can enter an Unknown state if you have selected to migrate more VMs than this setting allows. Refer to Scenario - Virtual Machine (VM) Migrations Plans in Unknown State in our troubleshooting section for details of this scenario. 20" [ref=e301]:
+                      - cell "Max concurrent virtual machine migrations" [ref=e302]:
+                        - strong [ref=e303]: Max concurrent virtual machine migrations
+                      - cell "The maximum number of VMs that can be migrated simultaneously. Consider the available system resources and network bandwidth, as too many concurrent migrations can overload the system and cause slower speeds or congestion. Start with a lower value and gradually increase it to find the optimal balance. Migration plans can enter an Unknown state if you have selected to migrate more VMs than this setting allows. Refer to Scenario - Virtual Machine (VM) Migrations Plans in Unknown State in our troubleshooting section for details of this scenario." [ref=e304]:
+                        - text: The maximum number of VMs that can be migrated simultaneously. Consider the available system resources and network bandwidth, as too many concurrent migrations can overload the system and cause slower speeds or congestion. Start with a lower value and gradually increase it to find the optimal balance. Migration plans can enter an
+                        - strong [ref=e305]: Unknown
+                        - text: state if you have selected to migrate more VMs than this setting allows. Refer to
+                        - link "Scenario - Virtual Machine (VM) Migrations Plans in Unknown State" [ref=e306] [cursor=pointer]:
+                          - /url: /troubleshooting/vmo-issues/#scenario---virtual-machine-vm-migration-plans-in-unknown-state
+                        - text: in our troubleshooting section for details of this scenario.
+                      - cell "20" [ref=e307]:
+                        - code [ref=e308]: "20"
+                    - row "Controller main container CPU limit The CPU limit (in milliCPU) allocated to the main container in the controller pod. 500m" [ref=e309]:
+                      - cell "Controller main container CPU limit" [ref=e310]:
+                        - strong [ref=e311]: Controller main container CPU limit
+                      - cell "The CPU limit (in milliCPU) allocated to the main container in the controller pod." [ref=e312]
+                      - cell "500m" [ref=e313]:
+                        - code [ref=e314]: 500m
+                    - row "Controller main container Memory limit The Memory limit (in mebibytes) allocated to the main container in the controller pod. 800Mi" [ref=e315]:
+                      - cell "Controller main container Memory limit" [ref=e316]:
+                        - strong [ref=e317]: Controller main container Memory limit
+                      - cell "The Memory limit (in mebibytes) allocated to the main container in the controller pod." [ref=e318]
+                      - cell "800Mi" [ref=e319]:
+                        - code [ref=e320]: 800Mi
+                    - row "Precopy interval (minutes) (Only applicable to warm migrations) The interval time at which a new snapshot is requested prior to initiating a warm migration. The optimal choice depends on various factors such as network bandwidth and the rate of data changes. For example, VMs with heavy write workloads benefit from shorter intervals. 60" [ref=e321]:
+                      - cell "Precopy interval (minutes)" [ref=e322]:
+                        - strong [ref=e323]: Precopy interval (minutes)
+                      - cell "(Only applicable to warm migrations) The interval time at which a new snapshot is requested prior to initiating a warm migration. The optimal choice depends on various factors such as network bandwidth and the rate of data changes. For example, VMs with heavy write workloads benefit from shorter intervals." [ref=e324]:
+                        - emphasis [ref=e325]: (Only applicable to warm migrations)
+                        - text: The interval time at which a new snapshot is requested prior to initiating a warm migration. The optimal choice depends on various factors such as network bandwidth and the rate of data changes. For example, VMs with heavy write workloads benefit from shorter intervals.
+                      - cell "60" [ref=e326]:
+                        - code [ref=e327]: "60"
+                    - row "Snapshot polling interval (seconds) (Only applicable to warm migrations) The frequency at which the migration controller checks for changes or updates in snapshots during the migration process. Shorter frequencies may reduce the overall migration time, but will also increase resource usage. 10" [ref=e328]:
+                      - cell "Snapshot polling interval (seconds)" [ref=e329]:
+                        - strong [ref=e330]: Snapshot polling interval (seconds)
+                      - cell "(Only applicable to warm migrations) The frequency at which the migration controller checks for changes or updates in snapshots during the migration process. Shorter frequencies may reduce the overall migration time, but will also increase resource usage." [ref=e331]:
+                        - emphasis [ref=e332]: (Only applicable to warm migrations)
+                        - text: The frequency at which the migration controller checks for changes or updates in snapshots during the migration process. Shorter frequencies may reduce the overall migration time, but will also increase resource usage.
+                      - cell "10" [ref=e333]:
+                        - code [ref=e334]: "10"
+                - paragraph [ref=e335]: Perform the following steps to change a setting.
+                - list [ref=e336]:
+                  - listitem [ref=e337]: Click the pencil icon next to each value.
+                  - listitem [ref=e338]: Adjust the value in the pop-up window.
+                  - listitem [ref=e339]:
+                    - text: Click
+                    - strong [ref=e340]: Save
+                    - text: after making changes.
+                - heading "YAML TabDirect link to YAML Tab" [level=3] [ref=e341]:
+                  - text: YAML Tab
+                  - link "Direct link to YAML Tab" [ref=e342] [cursor=pointer]:
+                    - /url: "#yaml-tab"
+                    - text: "#"
+                - paragraph [ref=e343]:
+                  - text: The
+                  - strong [ref=e344]: YAML
+                  - text: tab displays a YAML editor for the VM Migration Assistant resource.
+                - paragraph [ref=e345]:
+                  - text: View and edit the
+                  - link "Custom Resource" [ref=e346] [cursor=pointer]:
+                    - /url: https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/
+                  - text: for the VM Migration Assistant on this tab.
+                - heading "Metrics TabDirect link to Metrics Tab" [level=3] [ref=e347]:
+                  - text: Metrics Tab
+                  - link "Direct link to Metrics Tab" [ref=e348] [cursor=pointer]:
+                    - /url: "#metrics-tab"
+                    - text: "#"
+                - paragraph [ref=e349]:
+                  - text: The
+                  - strong [ref=e350]: Metrics
+                  - text: tab displays your migration metrics.
+                - paragraph [ref=e351]: Perform the following steps to change the time period displayed for the Migrations and Virtual Machine Migrations graphs.
+                - list [ref=e352]:
+                  - listitem [ref=e353]:
+                    - paragraph [ref=e354]:
+                      - text: Click the
+                      - strong [ref=e355]: three-dot Menu
+                      - text: at the top-right of each graph.
+                    - paragraph [ref=e356]:
+                      - img "Overview - Metrics Tab" [ref=e357]
+                  - listitem [ref=e358]:
+                    - paragraph [ref=e359]:
+                      - text: Select from
+                      - strong [ref=e360]: 7 days
+                      - text: ","
+                      - strong [ref=e361]: 31 days
+                      - text: ", or"
+                      - strong [ref=e362]: 24 hours
+                      - text: . The graph updates after selection.
+                - heading "Provider SettingsDirect link to Provider Settings" [level=2] [ref=e363]:
+                  - text: Provider Settings
+                  - link "Direct link to Provider Settings" [ref=e364] [cursor=pointer]:
+                    - /url: "#provider-settings"
+                    - text: "#"
+                - paragraph [ref=e365]:
+                  - text: Navigate to your providers by clicking
+                  - strong [ref=e366]: Providers for virtualization
+                  - text: on the left
+                  - strong [ref=e367]: Main Menu
+                  - text: .
+                - paragraph [ref=e368]: Click on a provider name to view the provider settings.
+                - paragraph [ref=e369]:
+                  - img "Providers for virtualization - Providers Table" [ref=e370]
+                - heading "Details TabDirect link to Details Tab" [level=3] [ref=e371]:
+                  - text: Details Tab
+                  - link "Direct link to Details Tab" [ref=e372] [cursor=pointer]:
+                    - /url: "#details-tab"
+                    - text: "#"
+                - paragraph [ref=e373]:
+                  - text: The
+                  - strong [ref=e374]: Details
+                  - text: tab has configurable settings for the provider.
+                - heading "Configure Provider DetailsDirect link to Configure Provider Details" [level=4] [ref=e375]:
+                  - text: Configure Provider Details
+                  - link "Direct link to Configure Provider Details" [ref=e376] [cursor=pointer]:
+                    - /url: "#configure-provider-details"
+                    - text: "#"
+                - heading "Source ProviderDirect link to Source Provider" [level=5] [ref=e377]:
+                  - text: Source Provider
+                  - link "Direct link to Source Provider" [ref=e378] [cursor=pointer]:
+                    - /url: "#source-provider"
+                    - text: "#"
+                - paragraph [ref=e379]:
+                  - text: The configurable settings are described in the following table. These were originally defined when you performed the steps in
+                  - link "Create Source Providers" [ref=e380] [cursor=pointer]:
+                    - /url: /vm-management/vm-migration-assistant/create-source-providers/
+                  - text: .
+                - table [ref=e381]:
+                  - rowgroup [ref=e382]:
+                    - row "Setting Description" [ref=e383]:
+                      - cell "Setting" [ref=e384]
+                      - cell "Description" [ref=e385]
+                  - rowgroup [ref=e386]:
+                    - row "URL Your vSphere / ESXi API endpoint for the SDK. You can specify a Full Qualified Domain Name (FQDN) or an IP address. For example, https://vcenter.mycompany.com/sdk." [ref=e387]:
+                      - cell "URL" [ref=e388]:
+                        - strong [ref=e389]: URL
+                      - cell "Your vSphere / ESXi API endpoint for the SDK. You can specify a Full Qualified Domain Name (FQDN) or an IP address. For example, https://vcenter.mycompany.com/sdk." [ref=e390]:
+                        - text: Your vSphere / ESXi API endpoint for the SDK. You can specify a Full Qualified Domain Name (FQDN) or an IP address. For example,
+                        - code [ref=e391]: https://vcenter.mycompany.com/sdk
+                        - text: .
+                    - row "External web UI link Your vSphere / ESXi UI endpoint. You can specify a Full Qualified Domain Name (FQDN) or an IP address. For example, https://vcenter.mycompany.com/ui." [ref=e392]:
+                      - cell "External web UI link" [ref=e393]:
+                        - strong [ref=e394]: External web UI link
+                      - cell "Your vSphere / ESXi UI endpoint. You can specify a Full Qualified Domain Name (FQDN) or an IP address. For example, https://vcenter.mycompany.com/ui." [ref=e395]:
+                        - text: Your vSphere / ESXi UI endpoint. You can specify a Full Qualified Domain Name (FQDN) or an IP address. For example,
+                        - code [ref=e396]: https://vcenter.mycompany.com/ui
+                        - text: .
+                    - row "Convert Disk When enabled, disk conversion is handled using virt-v2v. For example, if you're migrating from VMware to Virtual Machine Orchestrator (VMO), virt-v2v can convert Virtual Machine Disk (VMDK) to raw or QEMU copy-on-write version 2 (qcow2) formats that are optimal for the target environment." [ref=e397]:
+                      - cell "Convert Disk" [ref=e398]:
+                        - strong [ref=e399]: Convert Disk
+                      - cell "When enabled, disk conversion is handled using virt-v2v. For example, if you're migrating from VMware to Virtual Machine Orchestrator (VMO), virt-v2v can convert Virtual Machine Disk (VMDK) to raw or QEMU copy-on-write version 2 (qcow2) formats that are optimal for the target environment." [ref=e400]:
+                        - text: When enabled, disk conversion is handled using
+                        - code [ref=e401]: virt-v2v
+                        - text: . For example, if you're migrating from VMware to Virtual Machine Orchestrator (VMO),
+                        - code [ref=e402]: virt-v2v
+                        - text: can convert Virtual Machine Disk (VMDK) to raw or QEMU copy-on-write version 2 (qcow2) formats that are optimal for the target environment.
+                    - row "VDDK init image Provide the registry URL to the VMware Virtual Disk Development Kit (VDDK) image. If providing an image, make sure you specify the registry URL without the HTTP scheme https:// or http://. For example, docker.io/myorganization/vddk:v8.0.3." [ref=e403]:
+                      - cell "VDDK init image" [ref=e404]:
+                        - strong [ref=e405]: VDDK init image
+                      - cell "Provide the registry URL to the VMware Virtual Disk Development Kit (VDDK) image. If providing an image, make sure you specify the registry URL without the HTTP scheme https:// or http://. For example, docker.io/myorganization/vddk:v8.0.3." [ref=e406]:
+                        - text: Provide the registry URL to the VMware Virtual Disk Development Kit (VDDK) image. If providing an image, make sure you specify the registry URL without the HTTP scheme
+                        - code [ref=e407]: https://
+                        - text: or
+                        - code [ref=e408]: http://
+                        - text: . For example,
+                        - code [ref=e409]: docker.io/myorganization/vddk:v8.0.3
+                        - text: .
+                - paragraph [ref=e410]: Perform the following steps to change a setting.
+                - list [ref=e411]:
+                  - listitem [ref=e412]: Click the pencil icon next to each value.
+                  - listitem [ref=e413]: Adjust the value in the pop-up window.
+                  - listitem [ref=e414]:
+                    - text: Click
+                    - strong [ref=e415]: Save
+                    - text: after making changes.
+                - heading "Host ClusterDirect link to Host Cluster" [level=5] [ref=e416]:
+                  - text: Host Cluster
+                  - link "Direct link to Host Cluster" [ref=e417] [cursor=pointer]:
+                    - /url: "#host-cluster"
+                    - text: "#"
+                - paragraph [ref=e418]: The configurable settings are described in the following table. These are automatically defined when the VM Migration Assistant is installed on your VMO cluster.
+                - table [ref=e419]:
+                  - rowgroup [ref=e420]:
+                    - row "Setting Description" [ref=e421]:
+                      - cell "Setting" [ref=e422]
+                      - cell "Description" [ref=e423]
+                  - rowgroup [ref=e424]:
+                    - row "Default Transfer Network Select a default migration network. If no network is selected, the pod network is used by default." [ref=e425]:
+                      - cell "Default Transfer Network" [ref=e426]:
+                        - strong [ref=e427]: Default Transfer Network
+                      - cell "Select a default migration network. If no network is selected, the pod network is used by default." [ref=e428]
+                - paragraph [ref=e429]: Perform the following steps to change a setting.
+                - list [ref=e430]:
+                  - listitem [ref=e431]: Click the pencil icon next to each value.
+                  - listitem [ref=e432]: Adjust the value in the pop-up window.
+                  - listitem [ref=e433]:
+                    - text: Click
+                    - strong [ref=e434]: Save
+                    - text: after making changes.
+                - heading "YAML TabDirect link to YAML Tab" [level=3] [ref=e435]:
+                  - text: YAML Tab
+                  - link "Direct link to YAML Tab" [ref=e436] [cursor=pointer]:
+                    - /url: "#yaml-tab-1"
+                    - text: "#"
+                - paragraph [ref=e437]:
+                  - text: The
+                  - strong [ref=e438]: YAML
+                  - text: tab displays a YAML editor for the provider resource.
+                - paragraph [ref=e439]:
+                  - text: View and edit the
+                  - link "Custom Resource" [ref=e440] [cursor=pointer]:
+                    - /url: https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/
+                  - text: for the provider on this tab.
+                - heading "Credentials TabDirect link to Credentials Tab" [level=3] [ref=e441]:
+                  - text: Credentials Tab
+                  - link "Direct link to Credentials Tab" [ref=e442] [cursor=pointer]:
+                    - /url: "#credentials-tab"
+                    - text: "#"
+                - paragraph [ref=e443]:
+                  - text: The
+                  - strong [ref=e444]: Credentials
+                  - text: tab has configurable settings for the provider credentials.
+                - heading "Configure Provider CredentialsDirect link to Configure Provider Credentials" [level=4] [ref=e445]:
+                  - text: Configure Provider Credentials
+                  - link "Direct link to Configure Provider Credentials" [ref=e446] [cursor=pointer]:
+                    - /url: "#configure-provider-credentials"
+                    - text: "#"
+                - paragraph [ref=e447]:
+                  - text: The configurable settings are described in the following table. These were originally defined when you performed the steps in
+                  - link "Create Source Providers" [ref=e448] [cursor=pointer]:
+                    - /url: /vm-management/vm-migration-assistant/create-source-providers/
+                  - text: .
+                - table [ref=e449]:
+                  - rowgroup [ref=e450]:
+                    - row "Setting Description" [ref=e451]:
+                      - cell "Setting" [ref=e452]
+                      - cell "Description" [ref=e453]
+                  - rowgroup [ref=e454]:
+                    - row "Username Your vSphere / ESXi account username. For example, user@vsphere.local." [ref=e455]:
+                      - cell "Username" [ref=e456]:
+                        - strong [ref=e457]: Username
+                      - cell "Your vSphere / ESXi account username. For example, user@vsphere.local." [ref=e458]:
+                        - text: Your vSphere / ESXi account username. For example,
+                        - code [ref=e459]: user@vsphere.local
+                        - text: .
+                    - row "Password Your vSphere / ESXi account password." [ref=e460]:
+                      - cell "Password" [ref=e461]:
+                        - strong [ref=e462]: Password
+                      - cell "Your vSphere / ESXi account password." [ref=e463]
+                    - row "Skip certificate validation Enabling this option bypasses x509 CA verification. In production environments, do not enable if you are using a custom registry with self-signed SSL certificates, as the certificate can be provided in the next setting." [ref=e464]:
+                      - cell "Skip certificate validation" [ref=e465]:
+                        - strong [ref=e466]: Skip certificate validation
+                      - cell "Enabling this option bypasses x509 CA verification. In production environments, do not enable if you are using a custom registry with self-signed SSL certificates, as the certificate can be provided in the next setting." [ref=e467]
+                    - row "CA certificate Upload or drag and drop the CA certificate for your vSphere / ESXi. You can also use the Fetch certificate from URL option if your CA certificate is not third party or self-managed." [ref=e468]:
+                      - cell "CA certificate" [ref=e469]:
+                        - strong [ref=e470]: CA certificate
+                      - cell "Upload or drag and drop the CA certificate for your vSphere / ESXi. You can also use the Fetch certificate from URL option if your CA certificate is not third party or self-managed." [ref=e471]:
+                        - text: Upload or drag and drop the CA certificate for your vSphere / ESXi. You can also use the
+                        - strong [ref=e472]: Fetch certificate from URL
+                        - text: option if your CA certificate is not third party or self-managed.
+                - paragraph [ref=e473]: Perform the following steps to change a setting.
+                - list [ref=e474]:
+                  - listitem [ref=e475]:
+                    - text: Click on
+                    - strong [ref=e476]: Edit credentials
+                    - text: .
+                  - listitem [ref=e477]: Update the value for each setting that you want to change.
+                  - listitem [ref=e478]:
+                    - text: Click
+                    - strong [ref=e479]: Update credentials
+                    - text: after making changes.
+                - heading "Virtual Machines TabDirect link to Virtual Machines Tab" [level=3] [ref=e480]:
+                  - text: Virtual Machines Tab
+                  - link "Direct link to Virtual Machines Tab" [ref=e481] [cursor=pointer]:
+                    - /url: "#virtual-machines-tab"
+                    - text: "#"
+                - paragraph [ref=e482]:
+                  - text: The
+                  - strong [ref=e483]: Virtual Machines
+                  - text: tab displays a table of virtual machines from the provider.
+                - paragraph [ref=e484]:
+                  - text: You can initiate migrations from this tab by selecting VMs and clicking on
+                  - strong [ref=e485]: Create migration plan
+                  - text: . Refer to
+                  - link "Create Migration Plans" [ref=e486] [cursor=pointer]:
+                    - /url: /vm-management/vm-migration-assistant/create-migration-plans/
+                  - text: for guidance.
+                - heading "Hosts TabDirect link to Hosts Tab" [level=3] [ref=e487]:
+                  - text: Hosts Tab
+                  - link "Direct link to Hosts Tab" [ref=e488] [cursor=pointer]:
+                    - /url: "#hosts-tab"
+                    - text: "#"
+                - paragraph [ref=e489]:
+                  - text: The
+                  - strong [ref=e490]: Hosts
+                  - text: tab displays a table of hosts from the provider. This tab is not visible on host clusters.
+                - paragraph [ref=e491]: You can configure the migration network for each listed host in the table.
+                - generic [ref=e492]:
+                  - generic [ref=e493]:
+                    - img [ref=e495]
+                    - text: info
+                  - generic [ref=e497]:
+                    - paragraph [ref=e498]: Using the default management network for migration can lead to poor performance. Disk transfer operations may saturate may saturate network bandwidth, which could affect communication between vCenter and ESXi hosts.
+                    - paragraph [ref=e499]: A dedicated migration network can improve performance and reduce risks to the VMware environment.
+                - heading "Configure Provider Host NetworkDirect link to Configure Provider Host Network" [level=4] [ref=e500]:
+                  - text: Configure Provider Host Network
+                  - link "Direct link to Configure Provider Host Network" [ref=e501] [cursor=pointer]:
+                    - /url: "#configure-provider-host-network"
+                    - text: "#"
+                - list [ref=e502]:
+                  - listitem [ref=e503]:
+                    - paragraph [ref=e504]: For each host that you want to configure, click the checkbox next to the hosts' name.
+                  - listitem [ref=e505]:
+                    - paragraph [ref=e506]:
+                      - text: Click on
+                      - strong [ref=e507]: Select migration network
+                      - text: .
+                  - listitem [ref=e508]:
+                    - paragraph [ref=e509]: The configurable settings are described in the following table.
+                    - table [ref=e510]:
+                      - rowgroup [ref=e511]:
+                        - row "Setting Description" [ref=e512]:
+                          - cell "Setting" [ref=e513]
+                          - cell "Description" [ref=e514]
+                      - rowgroup [ref=e515]:
+                        - row "Network Select the migration network to use from the drop-down Menu." [ref=e516]:
+                          - cell "Network" [ref=e517]:
+                            - strong [ref=e518]: Network
+                          - cell "Select the migration network to use from the drop-down Menu." [ref=e519]
+                        - row "ESXi host admin username Specify the ESXi host admin username. For example, root." [ref=e520]:
+                          - cell "ESXi host admin username" [ref=e521]:
+                            - strong [ref=e522]: ESXi host admin username
+                          - cell "Specify the ESXi host admin username. For example, root." [ref=e523]:
+                            - text: Specify the ESXi host admin username. For example,
+                            - code [ref=e524]: root
+                            - text: .
+                        - row "ESXi host admin password Specify the ESXi host admin password." [ref=e525]:
+                          - cell "ESXi host admin password" [ref=e526]:
+                            - strong [ref=e527]: ESXi host admin password
+                          - cell "Specify the ESXi host admin password." [ref=e528]
+                  - listitem [ref=e529]:
+                    - paragraph [ref=e530]:
+                      - text: After making changes, click
+                      - strong [ref=e531]: Save
+                      - text: .
+                - heading "Networks TabDirect link to Networks Tab" [level=3] [ref=e532]:
+                  - text: Networks Tab
+                  - link "Direct link to Networks Tab" [ref=e533] [cursor=pointer]:
+                    - /url: "#networks-tab"
+                    - text: "#"
+                - paragraph [ref=e534]:
+                  - text: The
+                  - strong [ref=e535]: Networks
+                  - text: tab displays a table of
+                  - link "NetworkAttachmentDefinitions" [ref=e536] [cursor=pointer]:
+                    - /url: https://docs.openshift.com/container-platform/4.8/rest_api/network_apis/networkattachmentdefinition-k8s-cni-cncf-io-v1.html
+                  - text: from the cluster. This tab is only visible on host clusters.
+                - paragraph [ref=e537]: You can select a default migration network for the cluster to improve disk transfer performance. If no network is selected, the pod network is used by default, which may not be optimal.
+                - heading "Configure Default Transfer Network for Host ClusterDirect link to Configure Default Transfer Network for Host Cluster" [level=4] [ref=e538]:
+                  - text: Configure Default Transfer Network for Host Cluster
+                  - link "Direct link to Configure Default Transfer Network for Host Cluster" [ref=e539] [cursor=pointer]:
+                    - /url: "#configure-default-transfer-network-for-host-cluster"
+                    - text: "#"
+                - list [ref=e540]:
+                  - listitem [ref=e541]:
+                    - text: Click on
+                    - strong [ref=e542]: Set default transfer network
+                    - text: .
+                  - listitem [ref=e543]:
+                    - text: Select a network name from the
+                    - strong [ref=e544]: drop-down Menu
+                    - text: .
+                  - listitem [ref=e545]:
+                    - text: After making changes, click
+                    - strong [ref=e546]: Save
+                    - text: .
+                - heading "Plan SettingsDirect link to Plan Settings" [level=2] [ref=e547]:
+                  - text: Plan Settings
+                  - link "Direct link to Plan Settings" [ref=e548] [cursor=pointer]:
+                    - /url: "#plan-settings"
+                    - text: "#"
+                - paragraph [ref=e549]:
+                  - text: Navigate to your plans by clicking
+                  - strong [ref=e550]: Plans for virtualization
+                  - text: on the left
+                  - strong [ref=e551]: Main Menu
+                  - text: .
+                - paragraph [ref=e552]: Click on a plan name to view the plan settings.
+                - paragraph [ref=e553]:
+                  - img "Plans for virtualization - Plans Table" [ref=e554]
+                - heading "Details TabDirect link to Details Tab" [level=3] [ref=e555]:
+                  - text: Details Tab
+                  - link "Direct link to Details Tab" [ref=e556] [cursor=pointer]:
+                    - /url: "#details-tab-1"
+                    - text: "#"
+                - paragraph [ref=e557]:
+                  - text: The
+                  - strong [ref=e558]: Details
+                  - text: tab has configurable settings for the plan.
+                - heading "Configure Plan DetailsDirect link to Configure Plan Details" [level=4] [ref=e559]:
+                  - text: Configure Plan Details
+                  - link "Direct link to Configure Plan Details" [ref=e560] [cursor=pointer]:
+                    - /url: "#configure-plan-details"
+                    - text: "#"
+                - paragraph [ref=e561]:
+                  - text: The configurable settings are described in the following table. Some of these were originally defined when you performed the steps in
+                  - link "Create Migration Plans" [ref=e562] [cursor=pointer]:
+                    - /url: /vm-management/vm-migration-assistant/create-migration-plans/
+                  - text: .
+                - table [ref=e563]:
+                  - rowgroup [ref=e564]:
+                    - row "Setting Description" [ref=e565]:
+                      - cell "Setting" [ref=e566]
+                      - cell "Description" [ref=e567]
+                  - rowgroup [ref=e568]:
+                    - row "Warm migration Choose whether this will be a warm or cold migration. A cold migration is when VMs are shut down at the start of migration. A warm migration is when VMs are shut down during the final switchover." [ref=e569]:
+                      - cell "Warm migration" [ref=e570]:
+                        - strong [ref=e571]: Warm migration
+                      - cell "Choose whether this will be a warm or cold migration. A cold migration is when VMs are shut down at the start of migration. A warm migration is when VMs are shut down during the final switchover." [ref=e572]
+                    - row "Target namespace The target namespace is where the migrated VMs will be located on your VMO cluster." [ref=e573]:
+                      - cell "Target namespace" [ref=e574]:
+                        - strong [ref=e575]: Target namespace
+                      - cell "The target namespace is where the migrated VMs will be located on your VMO cluster." [ref=e576]
+                    - row "Disk decryption passphrases Provide a list of passphrases for LUKS-encrypted devices on the VMs you intend to migrate." [ref=e577]:
+                      - cell "Disk decryption passphrases" [ref=e578]:
+                        - strong [ref=e579]: Disk decryption passphrases
+                      - cell "Provide a list of passphrases for LUKS-encrypted devices on the VMs you intend to migrate." [ref=e580]:
+                        - text: Provide a list of passphrases for
+                        - link "LUKS-encrypted devices" [ref=e581] [cursor=pointer]:
+                          - /url: https://docs.fedoraproject.org/en-US/quick-docs/encrypting-drives-using-LUKS/#_encrypting_block_devices_using_dm_cryptluks
+                        - text: on the VMs you intend to migrate.
+                    - row "Transfer Network Change the migration transfer network for this plan. If a migration transfer network is defined for the source provider and exists in the target namespace, it is used by default. Otherwise, the pod network is used." [ref=e582]:
+                      - cell "Transfer Network" [ref=e583]:
+                        - strong [ref=e584]: Transfer Network
+                      - cell "Change the migration transfer network for this plan. If a migration transfer network is defined for the source provider and exists in the target namespace, it is used by default. Otherwise, the pod network is used." [ref=e585]
+                    - row "Preserve static IPs Choose whether to preserve the static IPs of the VMs migrated from vSphere." [ref=e586]:
+                      - cell "Preserve static IPs" [ref=e587]:
+                        - strong [ref=e588]: Preserve static IPs
+                      - cell "Choose whether to preserve the static IPs of the VMs migrated from vSphere." [ref=e589]
+                    - row "Root device Choose the root filesystem to convert. By default, the first root device is chosen in multi-boot systems. You can specify a root device (for example, /dev/sda1) for multi-boot systems, but if it is not detected as a root device, the migration will fail." [ref=e590]:
+                      - cell "Root device" [ref=e591]:
+                        - strong [ref=e592]: Root device
+                      - cell "Choose the root filesystem to convert. By default, the first root device is chosen in multi-boot systems. You can specify a root device (for example, /dev/sda1) for multi-boot systems, but if it is not detected as a root device, the migration will fail." [ref=e593]:
+                        - text: Choose the root filesystem to convert. By default, the first root device is chosen in multi-boot systems. You can specify a root device (for example,
+                        - code [ref=e594]: /dev/sda1
+                        - text: ) for multi-boot systems, but if it is not detected as a root device, the migration will fail.
+                - paragraph [ref=e595]: Perform the following steps to change a setting.
+                - list [ref=e596]:
+                  - listitem [ref=e597]: Click the pencil icon next to each value.
+                  - listitem [ref=e598]: Adjust the value in the pop-up window.
+                  - listitem [ref=e599]:
+                    - text: Click
+                    - strong [ref=e600]: Save
+                    - text: after making changes.
+                - heading "YAML TabDirect link to YAML Tab" [level=3] [ref=e601]:
+                  - text: YAML Tab
+                  - link "Direct link to YAML Tab" [ref=e602] [cursor=pointer]:
+                    - /url: "#yaml-tab-2"
+                    - text: "#"
+                - paragraph [ref=e603]:
+                  - text: The
+                  - strong [ref=e604]: YAML
+                  - text: tab displays a YAML editor for the plan resource.
+                - paragraph [ref=e605]:
+                  - text: View and edit the
+                  - link "Custom Resource" [ref=e606] [cursor=pointer]:
+                    - /url: https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/
+                  - text: for the plan on this tab.
+                - heading "Virtual Machines TabDirect link to Virtual Machines Tab" [level=3] [ref=e607]:
+                  - text: Virtual Machines Tab
+                  - link "Direct link to Virtual Machines Tab" [ref=e608] [cursor=pointer]:
+                    - /url: "#virtual-machines-tab-1"
+                    - text: "#"
+                - paragraph [ref=e609]:
+                  - text: The
+                  - strong [ref=e610]: Virtual Machines
+                  - text: tab displays a table of VMs from the migration plan.
+                - paragraph [ref=e611]:
+                  - text: You can view the status of your VM migrations in the
+                  - strong [ref=e612]: Pipeline status
+                  - text: column for each VM.
+                - heading "Remove VMs from PlanDirect link to Remove VMs from Plan" [level=4] [ref=e613]:
+                  - text: Remove VMs from Plan
+                  - link "Direct link to Remove VMs from Plan" [ref=e614] [cursor=pointer]:
+                    - /url: "#remove-vms-from-plan"
+                    - text: "#"
+                - paragraph [ref=e615]: Perform the following steps to remove VMs from your plan. You can only remove VMs from a plan if the plan has not yet been started.
+                - list [ref=e616]:
+                  - listitem [ref=e617]:
+                    - paragraph [ref=e618]: Click the checkbox next to each VM that you want to remove from the plan.
+                  - listitem [ref=e619]:
+                    - paragraph [ref=e620]:
+                      - text: Click on
+                      - strong [ref=e621]: Remove virtual machines
+                      - text: .
+                  - listitem [ref=e622]:
+                    - paragraph [ref=e623]:
+                      - text: Click
+                      - strong [ref=e624]: Delete
+                      - text: in the pop-up window.
+                    - generic [ref=e625]:
+                      - generic [ref=e626]:
+                        - img [ref=e628]
+                        - text: info
+                      - paragraph [ref=e631]: If you only have one VM remaining in your plan, delete the plan instead, as deleting all VMs from a plan is not allowed.
+                - heading "Resources TabDirect link to Resources Tab" [level=3] [ref=e632]:
+                  - text: Resources Tab
+                  - link "Direct link to Resources Tab" [ref=e633] [cursor=pointer]:
+                    - /url: "#resources-tab"
+                    - text: "#"
+                - paragraph [ref=e634]:
+                  - text: The
+                  - strong [ref=e635]: Resources
+                  - text: tab displays the calculated resources of your VMs from the migration plan.
+                - heading "Mappings tabDirect link to Mappings tab" [level=3] [ref=e636]:
+                  - text: Mappings tab
+                  - link "Direct link to Mappings tab" [ref=e637] [cursor=pointer]:
+                    - /url: "#mappings-tab"
+                    - text: "#"
+                - paragraph [ref=e638]:
+                  - text: The
+                  - strong [ref=e639]: Mappings
+                  - text: tab displays the network and storage mappings for the migration plan.
+                - heading "Configure Plan MappingsDirect link to Configure Plan Mappings" [level=4] [ref=e640]:
+                  - text: Configure Plan Mappings
+                  - link "Direct link to Configure Plan Mappings" [ref=e641] [cursor=pointer]:
+                    - /url: "#configure-plan-mappings"
+                    - text: "#"
+                - paragraph [ref=e642]:
+                  - text: The configurable settings are described in the following table. These were originally defined when you performed the steps in
+                  - link "Create Migration Plans" [ref=e643] [cursor=pointer]:
+                    - /url: /vm-management/vm-migration-assistant/create-migration-plans/
+                  - text: .
+                - table [ref=e644]:
+                  - rowgroup [ref=e645]:
+                    - row "Setting Description Example" [ref=e646]:
+                      - cell "Setting" [ref=e647]
+                      - cell "Description" [ref=e648]
+                      - cell "Example" [ref=e649]
+                  - rowgroup [ref=e650]:
+                    - row "Network map The source provider to target provider network map. Adjust the mapping, or leave the default mapping in place. VM Network / Pod Networking" [ref=e651]:
+                      - cell "Network map" [ref=e652]:
+                        - strong [ref=e653]: Network map
+                      - cell "The source provider to target provider network map. Adjust the mapping, or leave the default mapping in place." [ref=e654]
+                      - cell "VM Network / Pod Networking" [ref=e655]:
+                        - code [ref=e656]: VM Network
+                        - text: /
+                        - code [ref=e657]: Pod Networking
+                    - row "Storage map The source provider to target provider storage map. Adjust the mapping, or leave the default mapping in place. vsanDatastore / spectro-storage-class" [ref=e658]:
+                      - cell "Storage map" [ref=e659]:
+                        - strong [ref=e660]: Storage map
+                      - cell "The source provider to target provider storage map. Adjust the mapping, or leave the default mapping in place." [ref=e661]
+                      - cell "vsanDatastore / spectro-storage-class" [ref=e662]:
+                        - code [ref=e663]: vsanDatastore
+                        - text: /
+                        - code [ref=e664]: spectro-storage-class
+                - paragraph [ref=e665]: Perform the following steps to change a setting.
+                - list [ref=e666]:
+                  - listitem [ref=e667]:
+                    - text: Click on
+                    - strong [ref=e668]: Edit mappings
+                    - text: .
+                  - listitem [ref=e669]:
+                    - text: Click on the
+                    - strong [ref=e670]: drop-down Menu
+                    - text: for each map and select a different option from the list.
+                  - listitem [ref=e671]:
+                    - text: Click
+                    - strong [ref=e672]: Update mappings
+                    - text: after making changes.
+                - heading "Hooks TabDirect link to Hooks Tab" [level=3] [ref=e673]:
+                  - text: Hooks Tab
+                  - link "Direct link to Hooks Tab" [ref=e674] [cursor=pointer]:
+                    - /url: "#hooks-tab"
+                    - text: "#"
+                - paragraph [ref=e675]:
+                  - text: The
+                  - strong [ref=e676]: Hooks
+                  - text: tab displays the migration hooks for the migration plan.
+                - heading "Configure Plan HooksDirect link to Configure Plan Hooks" [level=4] [ref=e677]:
+                  - text: Configure Plan Hooks
+                  - link "Direct link to Configure Plan Hooks" [ref=e678] [cursor=pointer]:
+                    - /url: "#configure-plan-hooks"
+                    - text: "#"
+                - paragraph [ref=e679]: Perform the following steps to enable a hook.
+                - list [ref=e680]:
+                  - listitem [ref=e681]:
+                    - paragraph [ref=e682]:
+                      - text: Click on
+                      - strong [ref=e683]: Enable hook
+                      - text: toggle for either
+                      - strong [ref=e684]: Pre migration hook
+                      - text: or
+                      - strong [ref=e685]: Post migration hook
+                      - text: .
+                  - listitem [ref=e686]:
+                    - paragraph [ref=e687]: The configurable settings are described in the following table.
+                    - table [ref=e688]:
+                      - rowgroup [ref=e689]:
+                        - row "Setting Description" [ref=e690]:
+                          - cell "Setting" [ref=e691]
+                          - cell "Description" [ref=e692]
+                      - rowgroup [ref=e693]:
+                        - row "Hook runner image If enabling a pre or post migration hook, provide registry URL to the hook-runner or custom image. Make sure you specify the registry URL without the HTTP scheme https:// or http://. For example, quay.io/konveyor/hook-runner." [ref=e694]:
+                          - cell "Hook runner image" [ref=e695]:
+                            - strong [ref=e696]: Hook runner image
+                          - cell "If enabling a pre or post migration hook, provide registry URL to the hook-runner or custom image. Make sure you specify the registry URL without the HTTP scheme https:// or http://. For example, quay.io/konveyor/hook-runner." [ref=e697]:
+                            - text: If enabling a pre or post migration hook, provide registry URL to the hook-runner or custom image. Make sure you specify the registry URL without the HTTP scheme
+                            - code [ref=e698]: https://
+                            - text: or
+                            - code [ref=e699]: http://
+                            - text: . For example,
+                            - code [ref=e700]: quay.io/konveyor/hook-runner
+                            - text: .
+                        - row "Ansible playbook You can optionally provide an Ansible playbook for the hook. You can only specify a playbook if you are using a hook-runner image." [ref=e701]:
+                          - cell "Ansible playbook" [ref=e702]:
+                            - strong [ref=e703]: Ansible playbook
+                          - cell "You can optionally provide an Ansible playbook for the hook. You can only specify a playbook if you are using a hook-runner image." [ref=e704]:
+                            - text: You can optionally provide an
+                            - link "Ansible playbook" [ref=e705] [cursor=pointer]:
+                              - /url: https://ansible.readthedocs.io/projects/runner/en/stable/intro/
+                            - text: for the hook. You can only specify a playbook if you are using a hook-runner image.
+                  - listitem [ref=e706]:
+                    - paragraph [ref=e707]:
+                      - text: Click
+                      - strong [ref=e708]: Update hooks
+                      - text: after making changes.
+                - heading "Storage MapsDirect link to Storage Maps" [level=2] [ref=e709]:
+                  - text: Storage Maps
+                  - link "Direct link to Storage Maps" [ref=e710] [cursor=pointer]:
+                    - /url: "#storage-maps"
+                    - text: "#"
+                - paragraph [ref=e711]:
+                  - text: Navigate to your storage maps by clicking
+                  - strong [ref=e712]: StorageMaps for virtualization
+                  - text: on the left
+                  - strong [ref=e713]: Main Menu
+                  - text: . A storage map defines the mapping of source storage domains to target storage classes or datastores, ensuring VM disks are correctly placed in the destination environment.
+                - paragraph [ref=e714]:
+                  - text: Storage maps are visible on the
+                  - strong [ref=e715]: StorageMaps for virtualization
+                  - text: page once you have
+                  - link "created a migration plan" [ref=e716] [cursor=pointer]:
+                    - /url: /vm-management/vm-migration-assistant/create-migration-plans/
+                  - text: . Click on a storage plan name to view the its details.
+                - heading "Network MapsDirect link to Network Maps" [level=2] [ref=e717]:
+                  - text: Network Maps
+                  - link "Direct link to Network Maps" [ref=e718] [cursor=pointer]:
+                    - /url: "#network-maps"
+                    - text: "#"
+                - paragraph [ref=e719]:
+                  - text: Navigate to your network maps by clicking
+                  - strong [ref=e720]: NetworkMaps for virtualization
+                  - text: on the left
+                  - strong [ref=e721]: Main Menu
+                  - text: . A network map defines the mapping of source networks to target networks, ensuring VM network interfaces are correctly connected in the destination environment.
+                - paragraph [ref=e722]:
+                  - text: Network maps are visible on the
+                  - strong [ref=e723]: NetworkMaps for virtualization
+                  - text: page once you have
+                  - link "created a migration plan" [ref=e724] [cursor=pointer]:
+                    - /url: /vm-management/vm-migration-assistant/create-migration-plans/
+                  - text: . Click on a network plan name to view the its details.
+              - generic [ref=e725]:
+                - generic [ref=e727]:
+                  - text: "Tags:"
+                  - list [ref=e728]:
+                    - listitem [ref=e729]:
+                      - link "vmo" [ref=e730] [cursor=pointer]:
+                        - /url: /tags/vmo/
+                    - listitem [ref=e731]:
+                      - link "vm migration assistant" [ref=e732] [cursor=pointer]:
+                        - /url: /tags/vm-migration-assistant/
+                - link "Edit this page" [ref=e735] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vm-management/vm-migration-assistant/additional-configuration.md
+                  - img [ref=e736]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e740]:
+              - link "Previous « Cancel Active Migration Plans" [ref=e741] [cursor=pointer]:
+                - /url: /vm-management/vm-migration-assistant/cancel-active-migration-plans/
+                - generic [ref=e742]: Previous
+                - generic [ref=e743]: « Cancel Active Migration Plans
+              - link "Next Workspaces »" [ref=e744] [cursor=pointer]:
+                - /url: /workspace/
+                - generic [ref=e745]: Next
+                - generic [ref=e746]: Workspaces »
+          - list [ref=e749]:
+            - listitem [ref=e750]:
+              - link "Overview Settings" [ref=e751] [cursor=pointer]:
+                - /url: "#overview-settings"
+              - list [ref=e752]:
+                - listitem [ref=e753]:
+                  - link "Overview Tab" [ref=e754] [cursor=pointer]:
+                    - /url: "#overview-tab"
+                - listitem [ref=e755]:
+                  - link "YAML Tab" [ref=e756] [cursor=pointer]:
+                    - /url: "#yaml-tab"
+                - listitem [ref=e757]:
+                  - link "Metrics Tab" [ref=e758] [cursor=pointer]:
+                    - /url: "#metrics-tab"
+            - listitem [ref=e759]:
+              - link "Provider Settings" [ref=e760] [cursor=pointer]:
+                - /url: "#provider-settings"
+              - list [ref=e761]:
+                - listitem [ref=e762]:
+                  - link "Details Tab" [ref=e763] [cursor=pointer]:
+                    - /url: "#details-tab"
+                - listitem [ref=e764]:
+                  - link "YAML Tab" [ref=e765] [cursor=pointer]:
+                    - /url: "#yaml-tab-1"
+                - listitem [ref=e766]:
+                  - link "Credentials Tab" [ref=e767] [cursor=pointer]:
+                    - /url: "#credentials-tab"
+                - listitem [ref=e768]:
+                  - link "Virtual Machines Tab" [ref=e769] [cursor=pointer]:
+                    - /url: "#virtual-machines-tab"
+                - listitem [ref=e770]:
+                  - link "Hosts Tab" [ref=e771] [cursor=pointer]:
+                    - /url: "#hosts-tab"
+                - listitem [ref=e772]:
+                  - link "Networks Tab" [ref=e773] [cursor=pointer]:
+                    - /url: "#networks-tab"
+            - listitem [ref=e774]:
+              - link "Plan Settings" [ref=e775] [cursor=pointer]:
+                - /url: "#plan-settings"
+              - list [ref=e776]:
+                - listitem [ref=e777]:
+                  - link "Details Tab" [ref=e778] [cursor=pointer]:
+                    - /url: "#details-tab-1"
+                - listitem [ref=e779]:
+                  - link "YAML Tab" [ref=e780] [cursor=pointer]:
+                    - /url: "#yaml-tab-2"
+                - listitem [ref=e781]:
+                  - link "Virtual Machines Tab" [ref=e782] [cursor=pointer]:
+                    - /url: "#virtual-machines-tab-1"
+                - listitem [ref=e783]:
+                  - link "Resources Tab" [ref=e784] [cursor=pointer]:
+                    - /url: "#resources-tab"
+                - listitem [ref=e785]:
+                  - link "Mappings tab" [ref=e786] [cursor=pointer]:
+                    - /url: "#mappings-tab"
+                - listitem [ref=e787]:
+                  - link "Hooks Tab" [ref=e788] [cursor=pointer]:
+                    - /url: "#hooks-tab"
+            - listitem [ref=e789]:
+              - link "Storage Maps" [ref=e790] [cursor=pointer]:
+                - /url: "#storage-maps"
+            - listitem [ref=e791]:
+              - link "Network Maps" [ref=e792] [cursor=pointer]:
+                - /url: "#network-maps"
+  - button "Project Logo Ask AI" [ref=e793] [cursor=pointer]:
+    - generic [ref=e796]:
+      - img "Project Logo" [ref=e797]
+      - paragraph [ref=e798]: Ask AI
+```

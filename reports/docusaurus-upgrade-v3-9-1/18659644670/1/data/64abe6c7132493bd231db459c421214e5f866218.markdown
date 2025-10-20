@@ -1,0 +1,547 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Introduction" [ref=e41] [cursor=pointer]:
+                  - /url: /api/introduction/
+                  - img [ref=e43]
+                  - text: Introduction
+              - listitem [ref=e45]:
+                - link "Example Usage" [ref=e46] [cursor=pointer]:
+                  - /url: /api/samples/
+              - listitem [ref=e47]:
+                - link "Postman Collection" [ref=e48] [cursor=pointer]:
+                  - /url: /api/postman-collection/
+              - listitem [ref=e49]:
+                - generic [ref=e50]:
+                  - link "Palette API V1" [expanded] [ref=e51] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Palette API V1'" [ref=e52] [cursor=pointer]
+                - list [ref=e53]:
+                  - listitem [ref=e54]:
+                    - link "Introduction" [ref=e55] [cursor=pointer]:
+                      - /url: /api/v1/palette-apis-4-7/
+                  - listitem [ref=e56]:
+                    - generic [ref=e57]:
+                      - link "Api Keys" [ref=e58] [cursor=pointer]:
+                        - /url: /api/v1/api-keys/
+                      - button "Toggle the collapsible sidebar category 'Api Keys'" [ref=e59] [cursor=pointer]
+                  - listitem [ref=e60]:
+                    - generic [ref=e61]:
+                      - link "App Deployments" [ref=e62] [cursor=pointer]:
+                        - /url: /api/v1/app-deployments/
+                      - button "Toggle the collapsible sidebar category 'App Deployments'" [ref=e63] [cursor=pointer]
+                  - listitem [ref=e64]:
+                    - generic [ref=e65]:
+                      - link "App Profiles" [ref=e66] [cursor=pointer]:
+                        - /url: /api/v1/app-profiles/
+                      - button "Toggle the collapsible sidebar category 'App Profiles'" [ref=e67] [cursor=pointer]
+                  - listitem [ref=e68]:
+                    - generic [ref=e69]:
+                      - link "Audits" [ref=e70] [cursor=pointer]:
+                        - /url: /api/v1/audits/
+                      - button "Toggle the collapsible sidebar category 'Audits'" [ref=e71] [cursor=pointer]
+                  - listitem [ref=e72]:
+                    - generic [ref=e73]:
+                      - link "Auth" [ref=e74] [cursor=pointer]:
+                        - /url: /api/v1/auth/
+                      - button "Toggle the collapsible sidebar category 'Auth'" [ref=e75] [cursor=pointer]
+                  - listitem [ref=e76]:
+                    - generic [ref=e77]:
+                      - link "Cloudaccounts" [ref=e78] [cursor=pointer]:
+                        - /url: /api/v1/cloudaccounts/
+                      - button "Toggle the collapsible sidebar category 'Cloudaccounts'" [ref=e79] [cursor=pointer]
+                  - listitem [ref=e80]:
+                    - generic [ref=e81]:
+                      - link "Cloudconfigs" [ref=e82] [cursor=pointer]:
+                        - /url: /api/v1/cloudconfigs/
+                      - button "Toggle the collapsible sidebar category 'Cloudconfigs'" [ref=e83] [cursor=pointer]
+                  - listitem [ref=e84]:
+                    - generic [ref=e85]:
+                      - link "Clouds" [ref=e86] [cursor=pointer]:
+                        - /url: /api/v1/clouds/
+                      - button "Toggle the collapsible sidebar category 'Clouds'" [ref=e87] [cursor=pointer]
+                  - listitem [ref=e88]:
+                    - generic [ref=e89]:
+                      - link "Cluster Templates" [ref=e90] [cursor=pointer]:
+                        - /url: /api/v1/cluster-templates/
+                      - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+                  - listitem [ref=e92]:
+                    - generic [ref=e93]:
+                      - link "Clustergroups" [ref=e94] [cursor=pointer]:
+                        - /url: /api/v1/clustergroups/
+                      - button "Toggle the collapsible sidebar category 'Clustergroups'" [ref=e95] [cursor=pointer]
+                  - listitem [ref=e96]:
+                    - generic [ref=e97]:
+                      - link "Clusterprofiles" [ref=e98] [cursor=pointer]:
+                        - /url: /api/v1/clusterprofiles/
+                      - button "Toggle the collapsible sidebar category 'Clusterprofiles'" [ref=e99] [cursor=pointer]
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Dashboard" [ref=e102] [cursor=pointer]:
+                        - /url: /api/v1/dashboard/
+                      - button "Toggle the collapsible sidebar category 'Dashboard'" [ref=e103] [cursor=pointer]
+                  - listitem [ref=e104]:
+                    - generic [ref=e105]:
+                      - link "Datasinks" [ref=e106] [cursor=pointer]:
+                        - /url: /api/v1/datasinks/
+                      - button "Toggle the collapsible sidebar category 'Datasinks'" [ref=e107] [cursor=pointer]
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Edgehosts" [ref=e110] [cursor=pointer]:
+                        - /url: /api/v1/edgehosts/
+                      - button "Toggle the collapsible sidebar category 'Edgehosts'" [ref=e111] [cursor=pointer]
+                  - listitem [ref=e112]:
+                    - generic [ref=e113]:
+                      - link "Events" [ref=e114] [cursor=pointer]:
+                        - /url: /api/v1/events/
+                      - button "Toggle the collapsible sidebar category 'Events'" [ref=e115] [cursor=pointer]
+                  - listitem [ref=e116]:
+                    - generic [ref=e117]:
+                      - link "Features" [ref=e118] [cursor=pointer]:
+                        - /url: /api/v1/features/
+                      - button "Toggle the collapsible sidebar category 'Features'" [ref=e119] [cursor=pointer]
+                  - listitem [ref=e120]:
+                    - generic [ref=e121]:
+                      - link "Filters" [ref=e122] [cursor=pointer]:
+                        - /url: /api/v1/filters/
+                      - button "Toggle the collapsible sidebar category 'Filters'" [ref=e123] [cursor=pointer]
+                  - listitem [ref=e124]:
+                    - generic [ref=e125]:
+                      - link "Metrics" [ref=e126] [cursor=pointer]:
+                        - /url: /api/v1/metrics/
+                      - button "Toggle the collapsible sidebar category 'Metrics'" [ref=e127] [cursor=pointer]
+                  - listitem [ref=e128]:
+                    - generic [ref=e129]:
+                      - link "Notifications" [ref=e130] [cursor=pointer]:
+                        - /url: /api/v1/notifications/
+                      - button "Toggle the collapsible sidebar category 'Notifications'" [ref=e131] [cursor=pointer]
+                  - listitem [ref=e132]:
+                    - generic [ref=e133]:
+                      - link "Overlords" [ref=e134] [cursor=pointer]:
+                        - /url: /api/v1/overlords/
+                      - button "Toggle the collapsible sidebar category 'Overlords'" [ref=e135] [cursor=pointer]
+                  - listitem [ref=e136]:
+                    - generic [ref=e137]:
+                      - link "Packs" [ref=e138] [cursor=pointer]:
+                        - /url: /api/v1/packs/
+                      - button "Toggle the collapsible sidebar category 'Packs'" [ref=e139] [cursor=pointer]
+                  - listitem [ref=e140]:
+                    - generic [ref=e141]:
+                      - link "Pcg" [ref=e142] [cursor=pointer]:
+                        - /url: /api/v1/pcg/
+                      - button "Toggle the collapsible sidebar category 'Pcg'" [ref=e143] [cursor=pointer]
+                  - listitem [ref=e144]:
+                    - generic [ref=e145]:
+                      - link "Permissions" [ref=e146] [cursor=pointer]:
+                        - /url: /api/v1/permissions/
+                      - button "Toggle the collapsible sidebar category 'Permissions'" [ref=e147] [cursor=pointer]
+                  - listitem [ref=e148]:
+                    - generic [ref=e149]:
+                      - link "Projects" [ref=e150] [cursor=pointer]:
+                        - /url: /api/v1/projects/
+                      - button "Toggle the collapsible sidebar category 'Projects'" [ref=e151] [cursor=pointer]
+                  - listitem [ref=e152]:
+                    - generic [ref=e153]:
+                      - link "Registries" [ref=e154] [cursor=pointer]:
+                        - /url: /api/v1/registries/
+                      - button "Toggle the collapsible sidebar category 'Registries'" [ref=e155] [cursor=pointer]
+                  - listitem [ref=e156]:
+                    - generic [ref=e157]:
+                      - link "Roles" [ref=e158] [cursor=pointer]:
+                        - /url: /api/v1/roles/
+                      - button "Toggle the collapsible sidebar category 'Roles'" [ref=e159] [cursor=pointer]
+                  - listitem [ref=e160]:
+                    - generic [ref=e161]:
+                      - link "Services" [ref=e162] [cursor=pointer]:
+                        - /url: /api/v1/services/
+                      - button "Toggle the collapsible sidebar category 'Services'" [ref=e163] [cursor=pointer]
+                  - listitem [ref=e164]:
+                    - generic [ref=e165]:
+                      - link "Spc Policies" [ref=e166] [cursor=pointer]:
+                        - /url: /api/v1/spc-policies/
+                      - button "Toggle the collapsible sidebar category 'Spc Policies'" [ref=e167] [cursor=pointer]
+                  - listitem [ref=e168]:
+                    - generic [ref=e169]:
+                      - link "Spectroclusters" [ref=e170] [cursor=pointer]:
+                        - /url: /api/v1/spectroclusters/
+                      - button "Toggle the collapsible sidebar category 'Spectroclusters'" [ref=e171] [cursor=pointer]
+                  - listitem [ref=e172]:
+                    - generic [ref=e173]:
+                      - link "System" [ref=e174] [cursor=pointer]:
+                        - /url: /api/v1/system/
+                      - button "Toggle the collapsible sidebar category 'System'" [ref=e175] [cursor=pointer]
+                  - listitem [ref=e176]:
+                    - generic [ref=e177]:
+                      - link "Teams" [ref=e178] [cursor=pointer]:
+                        - /url: /api/v1/teams/
+                      - button "Toggle the collapsible sidebar category 'Teams'" [ref=e179] [cursor=pointer]
+                  - listitem [ref=e180]:
+                    - generic [ref=e181]:
+                      - link "Tenants" [ref=e182] [cursor=pointer]:
+                        - /url: /api/v1/tenants/
+                      - button "Toggle the collapsible sidebar category 'Tenants'" [ref=e183] [cursor=pointer]
+                  - listitem [ref=e184]:
+                    - generic [ref=e185]:
+                      - link "Users" [expanded] [ref=e186] [cursor=pointer]:
+                        - /url: /api/v1/users/
+                      - button "Toggle the collapsible sidebar category 'Users'" [ref=e187] [cursor=pointer]
+                    - list [ref=e188]:
+                      - listitem [ref=e189]:
+                        - link "get Lists users" [ref=e190] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-list/
+                      - listitem [ref=e191]:
+                        - link "post Create User" [ref=e192] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-create/
+                      - listitem [ref=e193]:
+                        - link "get Returns the specified users location" [ref=e194] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-assets-location-get/
+                      - listitem [ref=e195]:
+                        - link "post Create a Azure location" [ref=e196] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-assets-location-azure-create/
+                      - listitem [ref=e197]:
+                        - link "get Returns the specified Azure location" [ref=e198] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-assets-location-azure-get/
+                      - listitem [ref=e199]:
+                        - link "put Updates the specified Azure location" [ref=e200] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-assets-location-azure-update/
+                      - listitem [ref=e201]:
+                        - link "post Create a GCP location" [ref=e202] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-assets-location-gcp-create/
+                      - listitem [ref=e203]:
+                        - link "get Returns the specified GCP location" [ref=e204] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-assets-location-gcp-get/
+                      - listitem [ref=e205]:
+                        - link "put Updates the specified GCP location" [ref=e206] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-assets-location-gcp-update/
+                      - listitem [ref=e207]:
+                        - link "post Create a MinIO location" [ref=e208] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-assets-location-minio-create/
+                      - listitem [ref=e209]:
+                        - link "get Returns the specified MinIO location" [ref=e210] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-assets-location-minio-get/
+                      - listitem [ref=e211]:
+                        - link "put Updates the specified MinIO location" [ref=e212] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-assets-location-minio-update/
+                      - listitem [ref=e213]:
+                        - link "post Create a S3 location" [ref=e214] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-assets-location-s-3-create/
+                      - listitem [ref=e215]:
+                        - link "del Returns the specified S3 location" [ref=e216] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-assets-location-s-3-delete/
+                      - listitem [ref=e217]:
+                        - link "get Returns the specified S3 location" [ref=e218] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-assets-location-s-3-get/
+                      - listitem [ref=e219]:
+                        - link "put Updates the specified S3 location" [ref=e220] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-assets-location-s-3-update/
+                      - listitem [ref=e221]:
+                        - link "patch Update the default backup location" [ref=e222] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-assets-location-default-update/
+                      - listitem [ref=e223]:
+                        - link "del Deletes the specified location" [ref=e224] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-assets-location-delete/
+                      - listitem [ref=e225]:
+                        - link "get Returns the SSH keys" [ref=e226] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-assets-ssh-get/
+                      - listitem [ref=e227]:
+                        - link "post Creates a SSH key" [ref=e228] [cursor=pointer]:
+                          - /url: /api/v1/v-1-user-assets-ssh-create/
+                      - listitem [ref=e229]:
+                        - link "del Returns the specified user ssh key" [ref=e230] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-asset-ssh-delete/
+                      - listitem [ref=e231]:
+                        - link "get Returns the specified user ssh key" [ref=e232] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-asset-ssh-get-uid/
+                      - listitem [ref=e233]:
+                        - link "put Updates the specified user ssh key" [ref=e234] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-asset-ssh-update/
+                      - listitem [ref=e235]:
+                        - link "get Returns the specified vSphere DNS mapping" [ref=e236] [cursor=pointer]:
+                          - /url: /api/v1/v-1-vsphere-mapping-get/
+                      - listitem [ref=e237]:
+                        - link "get Returns the specified vSphere DNS mappings" [ref=e238] [cursor=pointer]:
+                          - /url: /api/v1/v-1-vsphere-dns-mappings-get/
+                      - listitem [ref=e239]:
+                        - link "post Create a vSphere DNS mapping" [ref=e240] [cursor=pointer]:
+                          - /url: /api/v1/v-1-vsphere-dns-mapping-create/
+                      - listitem [ref=e241]:
+                        - link "del Deletes the specified vSphere DNS mapping" [ref=e242] [cursor=pointer]:
+                          - /url: /api/v1/v-1-vsphere-dns-mapping-delete/
+                      - listitem [ref=e243]:
+                        - link "get Returns the specified vSphere DNS mapping" [ref=e244] [cursor=pointer]:
+                          - /url: /api/v1/v-1-vsphere-dns-mapping-get/
+                      - listitem [ref=e245]:
+                        - link "put Updates the specified vSphere DNS mapping" [ref=e246] [cursor=pointer]:
+                          - /url: /api/v1/v-1-vsphere-dns-mapping-update/
+                      - listitem [ref=e247]:
+                        - link "post Revoke access of specific token(s)" [ref=e248] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-auth-tokens-revoke/
+                      - listitem [ref=e249]:
+                        - link "get Get the system Spectro repository. Restricted to edge services" [ref=e250] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-config-scar-get/
+                      - listitem [ref=e251]:
+                        - link "get Returns the base information of specified User" [ref=e252] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-info-get/
+                      - listitem [ref=e253]:
+                        - link "get gets users kubectl session" [ref=e254] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-kubectl-session-uid/
+                      - listitem [ref=e255]:
+                        - link "get Retrieves a list of users metadata" [ref=e256] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-metadata/
+                      - listitem [ref=e257]:
+                        - link "patch User password change request using the user emailId" [ref=e258] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-password-change/
+                      - listitem [ref=e259]:
+                        - link "patch User password reset request using the email id" [ref=e260] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-email-password-reset/
+                      - listitem [ref=e261]:
+                        - link "get Returns the specified user summary list" [ref=e262] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-summary/
+                      - listitem [ref=e263]:
+                        - link "post Retrieves a list of users summary with provided filter spec" [ref=e264] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-summary-get/
+                      - listitem [ref=e265]:
+                        - link "get Returns the users system feature" [ref=e266] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-system-feature/
+                      - listitem [ref=e267]:
+                        - link "del Delete the macros for the system user by macro name" [ref=e268] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-system-macros-delete-by-macro-name/
+                      - listitem [ref=e269]:
+                        - link "get List the macros of the system" [ref=e270] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-system-macros-list/
+                      - listitem [ref=e271]:
+                        - link "patch Update the macros for the system user by macro name" [ref=e272] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-system-macros-update-by-macro-name/
+                      - listitem [ref=e273]:
+                        - link "post Create or add new macros for the system user" [ref=e274] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-system-macros-create/
+                      - listitem [ref=e275]:
+                        - link "put Update the macros of the system" [ref=e276] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-system-macros-update/
+                      - listitem [ref=e277]:
+                        - link "del Deletes the specified User" [ref=e278] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-uid-delete/
+                      - listitem [ref=e279]:
+                        - link "get Returns the specified User" [ref=e280] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-uid-get/
+                      - listitem [ref=e281]:
+                        - link "patch Patches the specified User" [ref=e282] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-uid-patch/
+                      - listitem [ref=e283]:
+                        - link "put Update User" [ref=e284] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-uid-update/
+                      - listitem [ref=e285]:
+                        - link "patch User password change request using the user uid" [ref=e286] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-uid-password-change/
+                      - listitem [ref=e287]:
+                        - link "patch User password reset request using the user uid" [ref=e288] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-uid-password-reset/
+                      - listitem [ref=e289]:
+                        - link "get Returns the specified User Projects and Roles information" [ref=e290] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-project-roles/
+                      - listitem [ref=e291]:
+                        - link "put Updates the projects and roles for user" [ref=e292] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-project-roles-put/
+                      - listitem [ref=e293]:
+                        - link "get Returns the specified individual and resource roles for a user" [ref=e294] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-uid-resource-roles/
+                      - listitem [ref=e295]:
+                        - link "post Add resource roles for user" [ref=e296] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-uid-resource-roles-create/
+                      - listitem [ref=e297]:
+                        - link "del Deleted the resource roles from user" [ref=e298] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-uid-resource-roles-uid-delete/
+                      - listitem [ref=e299]:
+                        - link "patch Updates the resource roles for user" [ref=e300] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-resource-roles-uid-update/
+                      - listitem [ref=e301]:
+                        - link "get Returns the specified individual and team roles for a user" [ref=e302] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-uid-roles/
+                      - listitem [ref=e303]:
+                        - link "put Updates the roles for user" [ref=e304] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-uid-roles-update/
+                      - listitem [ref=e305]:
+                        - link "patch Users status login mode" [ref=e306] [cursor=pointer]:
+                          - /url: /api/v1/v-1-users-status-login-mode/
+                  - listitem [ref=e307]:
+                    - generic [ref=e308]:
+                      - link "Workspaces" [ref=e309] [cursor=pointer]:
+                        - /url: /api/v1/workspaces/
+                      - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e310] [cursor=pointer]
+              - listitem [ref=e311]:
+                - generic [ref=e312]:
+                  - link "Edge Management API V1" [ref=e313] [cursor=pointer]:
+                    - /url: /api/category/edge-management-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Edge Management API V1'" [ref=e314] [cursor=pointer]
+      - main [ref=e315]:
+        - generic [ref=e319]:
+          - article [ref=e320]:
+            - navigation "Breadcrumbs" [ref=e321]:
+              - list [ref=e322]:
+                - listitem [ref=e323]:
+                  - link "Home page" [ref=e324] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e325]
+                - listitem [ref=e327]:
+                  - link "Palette API V1" [ref=e328] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                - listitem [ref=e329]:
+                  - link "Users" [ref=e330] [cursor=pointer]:
+                    - /url: /api/v1/users/
+                - listitem [ref=e331]:
+                  - generic [ref=e332]: Updates the specified user ssh key
+            - generic [ref=e334]:
+              - generic [ref=e335]:
+                - heading "Updates the specified user ssh key" [level=1] [ref=e336]
+                - generic [ref=e337]:
+                  - generic [ref=e338]: PUT
+                  - heading "https://api.spectrocloud.com/v1/users/assets/sshkeys/:uid" [level=2] [ref=e339]
+                - paragraph [ref=e341]: Updates the specified user ssh key
+                - heading "RequestDirect link to Request" [level=2] [ref=e342]:
+                  - text: Request
+                  - link "Direct link to Request" [ref=e343] [cursor=pointer]:
+                    - /url: "#request"
+                    - text: "#"
+                - group [ref=e344]:
+                  - generic "Path Parameters" [ref=e345] [cursor=pointer]:
+                    - heading "Path Parameters" [level=3] [ref=e346]
+                  - list [ref=e349]:
+                    - generic [ref=e350]:
+                      - generic [ref=e351]:
+                        - strong [ref=e352]: uid
+                        - generic [ref=e353]: string
+                        - generic [ref=e355]: required
+                      - paragraph [ref=e356]: Specify the SSH key uid
+                - generic [ref=e357]:
+                  - tablist [ref=e360]:
+                    - tab "application/json" [selected] [ref=e361] [cursor=pointer]
+                  - tabpanel [ref=e363]:
+                    - group [ref=e364]:
+                      - generic "Body" [ref=e365] [cursor=pointer]:
+                        - heading "Body" [level=3] [ref=e366]
+                      - list [ref=e369]:
+                        - group [ref=e371]:
+                          - generic "metadata object" [ref=e372] [cursor=pointer]:
+                            - generic [ref=e373]:
+                              - strong [ref=e374]: metadata
+                              - generic [ref=e375]: object
+                        - group [ref=e377]:
+                          - generic "spec object" [ref=e378] [cursor=pointer]:
+                            - generic [ref=e379]:
+                              - strong [ref=e380]: spec
+                              - generic [ref=e381]: object
+                - generic [ref=e382]:
+                  - generic [ref=e383]:
+                    - heading "ResponsesDirect link to Responses" [level=2] [ref=e384]:
+                      - text: Responses
+                      - link "Direct link to Responses" [ref=e385] [cursor=pointer]:
+                        - /url: "#responses"
+                        - text: "#"
+                    - tablist [ref=e387]:
+                      - tab "204" [selected] [ref=e388] [cursor=pointer]
+                  - tabpanel [ref=e390]:
+                    - paragraph [ref=e393]: The resource was updated successfully
+              - generic [ref=e394]:
+                - group [ref=e395]:
+                  - 'generic "Authorization: ApiKey" [ref=e396]':
+                    - 'heading "Authorization: ApiKey" [level=4] [ref=e397]'
+                - generic [ref=e398]:
+                  - tablist [ref=e399]:
+                    - tab "curl" [selected] [ref=e400] [cursor=pointer]:
+                      - generic [ref=e401]: curl
+                    - tab "python" [ref=e402] [cursor=pointer]:
+                      - generic [ref=e403]: python
+                    - tab "go" [ref=e404] [cursor=pointer]:
+                      - generic [ref=e405]: go
+                    - tab "nodejs" [ref=e406] [cursor=pointer]:
+                      - generic [ref=e407]: nodejs
+                    - tab "java" [ref=e408] [cursor=pointer]:
+                      - generic [ref=e409]: java
+                  - tabpanel [ref=e410]:
+                    - generic [ref=e411]:
+                      - tablist [ref=e412]:
+                        - tab "CURL" [selected] [ref=e413] [cursor=pointer]:
+                          - generic [ref=e414]: CURL
+                      - tabpanel [ref=e415]:
+                        - generic [ref=e417]:
+                          - code [ref=e419]:
+                            - generic [ref=e422]: curl -L -X PUT 'https://api.spectrocloud.com/v1/users/assets/sshkeys/:uid' \
+                            - generic [ref=e425]: "-H 'Content-Type: application/json' \\"
+                            - generic [ref=e428]: "-H 'ApiKey: <ApiKey>' \\"
+                            - generic [ref=e431]: "-d '{"
+                            - generic [ref=e434]: "\"metadata\": {"
+                            - generic [ref=e437]: "\"annotations\": {},"
+                            - generic [ref=e440]: "\"creationTimestamp\": \"2024-07-29T15:51:28.071Z\","
+                            - generic [ref=e443]: "\"deletionTimestamp\": \"2024-07-29T15:51:28.071Z\","
+                            - generic [ref=e446]: "\"labels\": {},"
+                            - generic [ref=e449]: "\"lastModifiedTimestamp\": \"2024-07-29T15:51:28.071Z\","
+                            - generic [ref=e452]: "\"name\": \"string\","
+                            - generic [ref=e455]: "\"uid\": \"string\""
+                            - generic [ref=e458]: "},"
+                            - generic [ref=e461]: "\"spec\": {"
+                            - generic [ref=e464]: "\"publicKey\": \"string\""
+                            - generic [ref=e467]: "}"
+                            - generic [ref=e470]: "}'"
+                          - generic [ref=e471]:
+                            - button "Toggle word wrap" [ref=e472] [cursor=pointer]:
+                              - img [ref=e473]
+                            - button "Copy code to clipboard" [ref=e475] [cursor=pointer]:
+                              - generic [ref=e476]:
+                                - img [ref=e477]
+                                - img [ref=e479]
+                            - button "Expand code to fullscreen" [ref=e481] [cursor=pointer]:
+                              - generic [ref=e482]:
+                                - img [ref=e483]
+                                - img [ref=e485]
+          - navigation "Docs pages" [ref=e489]:
+            - link "Previous « Returns the specified user ssh key" [ref=e490] [cursor=pointer]:
+              - /url: /api/v1/v-1-users-asset-ssh-get-uid/
+              - generic [ref=e491]: Previous
+              - generic [ref=e492]: « Returns the specified user ssh key
+            - link "Next Returns the specified vSphere DNS mapping »" [ref=e493] [cursor=pointer]:
+              - /url: /api/v1/v-1-vsphere-mapping-get/
+              - generic [ref=e494]: Next
+              - generic [ref=e495]: Returns the specified vSphere DNS mapping »
+  - button "Project Logo Ask AI" [ref=e496] [cursor=pointer]:
+    - generic [ref=e499]:
+      - img "Project Logo" [ref=e500]
+      - paragraph [ref=e501]: Ask AI
+```

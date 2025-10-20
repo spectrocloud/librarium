@@ -1,0 +1,810 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [expanded] [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+                - list [ref=e82]:
+                  - listitem [ref=e83]:
+                    - generic [ref=e84]:
+                      - link "Cluster Profiles" [expanded] [ref=e85] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/
+                      - button "Toggle the collapsible sidebar category 'Cluster Profiles'" [ref=e86] [cursor=pointer]
+                    - list [ref=e87]:
+                      - listitem [ref=e88]:
+                        - generic [ref=e89]:
+                          - link "Create Cluster Profiles" [expanded] [ref=e90] [cursor=pointer]:
+                            - /url: /profiles/cluster-profiles/create-cluster-profiles/
+                          - button "Toggle the collapsible sidebar category 'Create Cluster Profiles'" [ref=e91] [cursor=pointer]
+                        - list [ref=e92]:
+                          - listitem [ref=e93]:
+                            - link "Create an Infrastructure Profile" [ref=e94] [cursor=pointer]:
+                              - /url: /profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile/
+                          - listitem [ref=e95]:
+                            - generic [ref=e96]:
+                              - link "Create an Add-on Profile" [ref=e97] [cursor=pointer]:
+                                - /url: /profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/
+                              - button "Toggle the collapsible sidebar category 'Create an Add-on Profile'" [ref=e98] [cursor=pointer]
+                          - listitem [ref=e99]:
+                            - link "Create a Full Profile" [ref=e100] [cursor=pointer]:
+                              - /url: /profiles/cluster-profiles/create-cluster-profiles/create-full-profile/
+                          - listitem [ref=e101]:
+                            - link "Deploy the Same Pack to Multiple Layers" [ref=e102] [cursor=pointer]:
+                              - /url: /profiles/cluster-profiles/create-cluster-profiles/duplicate-pack-in-profile/
+                          - listitem [ref=e103]:
+                            - generic [ref=e104]:
+                              - link "Cluster Profile Variables" [expanded] [ref=e105] [cursor=pointer]:
+                                - /url: /profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/
+                              - button "Toggle the collapsible sidebar category 'Cluster Profile Variables'" [ref=e106] [cursor=pointer]
+                            - list [ref=e107]:
+                              - listitem [ref=e108]:
+                                - link "Create Cluster Profile Variables" [ref=e109] [cursor=pointer]:
+                                  - /url: /profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/create-cluster-profile-variables/
+                              - listitem [ref=e110]:
+                                - link "Modify Cluster Profile Variables" [ref=e111] [cursor=pointer]:
+                                  - /url: /profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/modify-cluster-profile-variables/
+                              - listitem [ref=e112]:
+                                - link "Delete Cluster Profile Variables" [ref=e113] [cursor=pointer]:
+                                  - /url: /profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/delete-cluster-profile-variables/
+                      - listitem [ref=e114]:
+                        - generic [ref=e115]:
+                          - link "Modify Cluster Profiles" [ref=e116] [cursor=pointer]:
+                            - /url: /profiles/cluster-profiles/modify-cluster-profiles/
+                          - button "Toggle the collapsible sidebar category 'Modify Cluster Profiles'" [ref=e117] [cursor=pointer]
+                      - listitem [ref=e118]:
+                        - link "Export and Import a Cluster Profile" [ref=e119] [cursor=pointer]:
+                          - /url: /profiles/cluster-profiles/export-import-cluster-profile/
+                      - listitem [ref=e120]:
+                        - link "Clone a Cluster Profile" [ref=e121] [cursor=pointer]:
+                          - /url: /profiles/cluster-profiles/clone-cluster-profile/
+                      - listitem [ref=e122]:
+                        - link "Delete a Cluster Profile" [ref=e123] [cursor=pointer]:
+                          - /url: /profiles/cluster-profiles/delete-cluster-profile/
+                  - listitem [ref=e124]:
+                    - generic [ref=e125]:
+                      - link "App Profiles" [ref=e126] [cursor=pointer]:
+                        - /url: /profiles/app-profiles/
+                      - button "Toggle the collapsible sidebar category 'App Profiles'" [ref=e127] [cursor=pointer]
+                  - listitem [ref=e128]:
+                    - link "Profile Customization" [ref=e129] [cursor=pointer]:
+                      - /url: /profiles/profile-customization/
+              - listitem [ref=e130]:
+                - generic [ref=e131]:
+                  - link "Cluster Templates" [ref=e132] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e134]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e136] [cursor=pointer]
+              - listitem [ref=e137]:
+                - generic [ref=e138]:
+                  - link "Deployment Modes" [ref=e139] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e141]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e143] [cursor=pointer]
+              - listitem [ref=e144]:
+                - generic [ref=e145]:
+                  - link "Clusters" [ref=e146] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e148]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e157] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e159]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Palette Dev Engine" [ref=e164] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e166]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e168] [cursor=pointer]
+              - listitem [ref=e169]:
+                - generic [ref=e170]:
+                  - link "Virtual Machine Orchestrator" [ref=e171] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e173]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e175] [cursor=pointer]
+              - listitem [ref=e176]:
+                - generic [ref=e177]:
+                  - link "Workspaces" [ref=e178] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e180]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e182] [cursor=pointer]
+              - listitem [ref=e183]:
+                - generic [ref=e184]:
+                  - link "Packs List" [ref=e185] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e187]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e189] [cursor=pointer]
+              - listitem [ref=e190]:
+                - generic [ref=e191]:
+                  - link "User & Role Management" [ref=e192] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e194]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e196] [cursor=pointer]
+              - listitem [ref=e197]:
+                - generic [ref=e198]:
+                  - link "Registries and Packs" [ref=e199] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e201]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e203] [cursor=pointer]
+              - listitem [ref=e204]:
+                - generic [ref=e205]:
+                  - link "Security" [ref=e206] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e208]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e210] [cursor=pointer]
+              - listitem [ref=e211]:
+                - generic [ref=e212]:
+                  - link "Audit Logs" [ref=e213] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e215]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e217] [cursor=pointer]
+              - listitem [ref=e218]:
+                - generic [ref=e219]:
+                  - link "Self-Hosted Palette" [ref=e220] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e222]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e224] [cursor=pointer]
+              - listitem [ref=e225]:
+                - generic [ref=e226]:
+                  - link "Palette VerteX" [ref=e227] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e229]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e231] [cursor=pointer]
+              - listitem [ref=e232]:
+                - generic [ref=e233]:
+                  - link "Tenant Administration" [ref=e234] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e236]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e238] [cursor=pointer]
+              - listitem [ref=e239]:
+                - generic [ref=e240]:
+                  - link "Automation" [ref=e241] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e243]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e245] [cursor=pointer]
+              - listitem [ref=e246]:
+                - generic [ref=e247]:
+                  - link "Troubleshooting" [ref=e248] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e250]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e252] [cursor=pointer]
+              - listitem [ref=e253]:
+                - link "Glossary" [ref=e254] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e256]
+                  - text: Glossary
+              - listitem [ref=e258]:
+                - generic [ref=e259]:
+                  - link "Compliance & Legal" [ref=e260] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e262]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e264] [cursor=pointer]
+              - listitem [ref=e265]:
+                - button "Privacy Settings" [ref=e266] [cursor=pointer]:
+                  - img [ref=e267]
+                  - text: Privacy Settings
+      - main [ref=e269]:
+        - generic [ref=e271]:
+          - generic [ref=e273]:
+            - article [ref=e274]:
+              - navigation "Breadcrumbs" [ref=e275]:
+                - list [ref=e276]:
+                  - listitem [ref=e277]:
+                    - link "Home page" [ref=e278] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e279]
+                  - listitem [ref=e281]:
+                    - link "Profiles" [ref=e282] [cursor=pointer]:
+                      - /url: /profiles/
+                  - listitem [ref=e283]:
+                    - link "Cluster Profiles" [ref=e284] [cursor=pointer]:
+                      - /url: /profiles/cluster-profiles/
+                  - listitem [ref=e285]:
+                    - link "Create Cluster Profiles" [ref=e286] [cursor=pointer]:
+                      - /url: /profiles/cluster-profiles/create-cluster-profiles/
+                  - listitem [ref=e287]:
+                    - link "Cluster Profile Variables" [ref=e288] [cursor=pointer]:
+                      - /url: /profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/
+                  - listitem [ref=e289]:
+                    - generic [ref=e290]: Create Cluster Profile Variables
+              - generic [ref=e291]:
+                - heading "Create Cluster Profile Variables" [level=1] [ref=e293]
+                - paragraph [ref=e294]:
+                  - link "Cluster profile variables" [ref=e295] [cursor=pointer]:
+                    - /url: /profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/
+                  - text: allow you to define and manage reusable configuration parameters within a cluster profile, helping standardize deployments, reduce manual configuration errors, and simplify updates by allowing values to be dynamically set during cluster provisioning. This guide takes you through the process of creating cluster profile variables, adding them to profile layers, and deploying clusters with them.
+                - heading "Create a Cluster Profile VariableDirect link to Create a Cluster Profile Variable" [level=2] [ref=e296]:
+                  - text: Create a Cluster Profile Variable
+                  - link "Direct link to Create a Cluster Profile Variable" [ref=e297] [cursor=pointer]:
+                    - /url: "#create-a-cluster-profile-variable"
+                    - text: "#"
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e298]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e299] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e300]:
+                  - listitem [ref=e301]:
+                    - paragraph [ref=e302]:
+                      - text: The
+                      - code [ref=e303]: clusterProfile.create
+                      - text: and
+                      - code [ref=e304]: clusterProfile.update
+                      - text: permissions to create and update cluster profiles. Refer to
+                      - link "Roles and Permissions" [ref=e305] [cursor=pointer]:
+                        - /url: /user-management/palette-rbac/project-scope-roles-permissions/#cluster-profile
+                      - text: for more information.
+                  - listitem [ref=e306]:
+                    - paragraph [ref=e307]:
+                      - text: An existing
+                      - link "cluster profile" [ref=e308] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/
+                      - text: .
+                - heading "EnablementDirect link to Enablement" [level=3] [ref=e309]:
+                  - text: Enablement
+                  - link "Direct link to Enablement" [ref=e310] [cursor=pointer]:
+                    - /url: "#enablement"
+                    - text: "#"
+                - paragraph [ref=e311]:
+                  - text: You can define profile variables when creating or updating cluster profiles. This guide assumes you have already created a cluster profile. Refer to the
+                  - link "Create Cluster Profiles" [ref=e312] [cursor=pointer]:
+                    - /url: /profiles/cluster-profiles/create-cluster-profiles/
+                  - text: guide to learn how to create a cluster profile.
+                - list [ref=e313]:
+                  - listitem [ref=e314]:
+                    - paragraph [ref=e315]:
+                      - text: Log in to
+                      - link "Palette" [ref=e316] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e317]:
+                    - paragraph [ref=e318]:
+                      - text: On the left main menu, select
+                      - strong [ref=e319]: Profiles
+                      - text: and choose the cluster profile for which you want to define profile variables.
+                  - listitem [ref=e320]:
+                    - paragraph [ref=e321]:
+                      - text: In the upper-right corner, select
+                      - strong [ref=e322]: Variables > Create variable
+                      - text: .
+                    - paragraph [ref=e323]:
+                      - img "Palette with the Variables button highlighted." [ref=e324]
+                    - generic [ref=e325]:
+                      - generic [ref=e326]:
+                        - img [ref=e328]
+                        - text: tip
+                      - paragraph [ref=e331]:
+                        - text: Alternatively, open a profile layer and, in the upper-right corner of its YAML configuration editor, select
+                        - strong [ref=e332]: Variables > Create variable
+                        - text: .
+                  - listitem [ref=e333]:
+                    - paragraph [ref=e334]:
+                      - text: Enter the
+                      - strong [ref=e335]: Variable
+                      - text: name. This name is automatically preceded by
+                      - code [ref=e336]: .spectro.var.
+                      - text: ", which cannot be changed. The full cluster profile variable,"
+                      - code [ref=e337]: "{{.spectro.var.variable_name}}"
+                      - text: ", is used when adding variables to layer configurations. The"
+                      - strong [ref=e338]: Variable
+                      - text: name must be unique within the scope of the cluster profile.
+                  - listitem [ref=e339]:
+                    - paragraph [ref=e340]:
+                      - text: Enter the variable
+                      - strong [ref=e341]: Display name
+                      - text: that Palette will display during cluster deployment. The
+                      - strong [ref=e342]: Display name
+                      - text: must be unique within the scope of the cluster profile.
+                  - listitem [ref=e343]:
+                    - paragraph [ref=e344]:
+                      - text: Optionally, enter a variable
+                      - strong [ref=e345]: Description
+                      - text: .
+                  - listitem [ref=e346]:
+                    - paragraph [ref=e347]:
+                      - text: Select the
+                      - strong [ref=e348]: Input type
+                      - text: of the variable. You can choose between
+                      - strong [ref=e349]: Text
+                      - text: and
+                      - strong [ref=e350]: Dropdown
+                      - text: . The default input type is
+                      - strong [ref=e351]: Text
+                      - text: .
+                    - generic [ref=e352]:
+                      - generic [ref=e353]:
+                        - img [ref=e355]
+                        - text: info
+                      - paragraph [ref=e358]:
+                        - text: The dropdown input type is currently not supported in
+                        - link "Local UI" [ref=e359] [cursor=pointer]:
+                          - /url: /clusters/edge/local-ui/
+                        - text: .
+                  - listitem [ref=e360]:
+                    - paragraph [ref=e361]: Select the data format for the variable. The following table describes available data formats.
+                    - table [ref=e362]:
+                      - rowgroup [ref=e363]:
+                        - row "Format Description" [ref=e364]:
+                          - cell "Format" [ref=e365]:
+                            - strong [ref=e366]: Format
+                          - cell "Description" [ref=e367]:
+                            - strong [ref=e368]: Description
+                      - rowgroup [ref=e369]:
+                        - row "String Custom text input." [ref=e370]:
+                          - cell "String" [ref=e371]
+                          - cell "Custom text input." [ref=e372]
+                        - row "Number Any numeric type, such as integers and floating point numbers." [ref=e373]:
+                          - cell "Number" [ref=e374]
+                          - cell "Any numeric type, such as integers and floating point numbers." [ref=e375]
+                        - row "Boolean true or false. Values that evaluate to true or false, such as 1 and 0, are not accepted." [ref=e376]:
+                          - cell "Boolean" [ref=e377]
+                          - cell "true or false. Values that evaluate to true or false, such as 1 and 0, are not accepted." [ref=e378]:
+                            - code [ref=e379]: "true"
+                            - text: or
+                            - code [ref=e380]: "false"
+                            - text: . Values that evaluate to
+                            - code [ref=e381]: "true"
+                            - text: or
+                            - code [ref=e382]: "false"
+                            - text: ", such as 1 and 0, are not accepted."
+                        - row "Version Version value that follows the Semantic Versioning convention, such as x.y.z." [ref=e383]:
+                          - cell "Version" [ref=e384]
+                          - cell "Version value that follows the Semantic Versioning convention, such as x.y.z." [ref=e385]:
+                            - text: Version value that follows the
+                            - link "Semantic Versioning" [ref=e386] [cursor=pointer]:
+                              - /url: https://semver.org/
+                            - text: convention, such as
+                            - code [ref=e387]: x.y.z
+                            - text: .
+                        - row "IPv4 Valid representation of an IPv4 address." [ref=e388]:
+                          - cell "IPv4" [ref=e389]
+                          - cell "Valid representation of an IPv4 address." [ref=e390]
+                        - row "IPv4 CIDR A CIDR block of IP addresses that follow the IPv4 standard." [ref=e391]:
+                          - cell "IPv4 CIDR" [ref=e392]
+                          - cell "A CIDR block of IP addresses that follow the IPv4 standard." [ref=e393]
+                        - row "IPv6 Valid representation of an IPv6 address." [ref=e394]:
+                          - cell "IPv6" [ref=e395]
+                          - cell "Valid representation of an IPv6 address." [ref=e396]
+                  - listitem [ref=e397]:
+                    - paragraph [ref=e398]:
+                      - text: If you selected
+                      - strong [ref=e399]: Dropdown
+                      - text: for the
+                      - strong [ref=e400]: Input type
+                      - text: in step 7, select
+                      - strong [ref=e401]: Add dropdown option
+                      - text: . The following table describes the available configuration fields. You must provide at least one dropdown option.
+                    - table [ref=e402]:
+                      - rowgroup [ref=e403]:
+                        - row "Field Description" [ref=e404]:
+                          - cell "Field" [ref=e405]:
+                            - strong [ref=e406]: Field
+                          - cell "Description" [ref=e407]:
+                            - strong [ref=e408]: Description
+                      - rowgroup [ref=e409]:
+                        - row "Value Value of the dropdown option. This field is required." [ref=e410]:
+                          - cell "Value" [ref=e411]:
+                            - strong [ref=e412]: Value
+                          - cell "Value of the dropdown option. This field is required." [ref=e413]
+                        - row "Label Display name for the dropdown option. If no label is provided, the Value is used as the display name." [ref=e414]:
+                          - cell "Label" [ref=e415]:
+                            - strong [ref=e416]: Label
+                          - cell "Display name for the dropdown option. If no label is provided, the Value is used as the display name." [ref=e417]:
+                            - text: Display name for the dropdown option. If no label is provided, the
+                            - strong [ref=e418]: Value
+                            - text: is used as the display name.
+                        - row "Description Long form description of the dropdown option." [ref=e419]:
+                          - cell "Description" [ref=e420]:
+                            - strong [ref=e421]: Description
+                          - cell "Long form description of the dropdown option." [ref=e422]
+                    - paragraph [ref=e423]: Repeat this step for every dropdown option you want to add.
+                  - listitem [ref=e424]:
+                    - paragraph [ref=e425]: Optionally, configure additional data validation. The following table describes the available parameters.
+                    - table [ref=e426]:
+                      - rowgroup [ref=e427]:
+                        - row "Parameter Description" [ref=e428]:
+                          - cell "Parameter" [ref=e429]:
+                            - strong [ref=e430]: Parameter
+                          - cell "Description" [ref=e431]:
+                            - strong [ref=e432]: Description
+                      - rowgroup [ref=e433]:
+                        - row "Custom input validation Validate the cluster profile variable definition against a regular expression based on the regexp engine." [ref=e434]:
+                          - cell "Custom input validation" [ref=e435]:
+                            - strong [ref=e436]: Custom input validation
+                          - cell "Validate the cluster profile variable definition against a regular expression based on the regexp engine." [ref=e437]:
+                            - text: Validate the cluster profile variable definition against a regular expression based on the
+                            - link "regexp" [ref=e438] [cursor=pointer]:
+                              - /url: https://pkg.go.dev/regexp
+                            - text: engine.
+                        - row "Required Require a value for the cluster profile variable." [ref=e439]:
+                          - cell "Required" [ref=e440]:
+                            - strong [ref=e441]: Required
+                          - cell "Require a value for the cluster profile variable." [ref=e442]
+                        - row "Default value Set a default value for the cluster profile variable. If the Input type is Dropdown, a default value must be specified using one of the configured dropdown options." [ref=e443]:
+                          - cell "Default value" [ref=e444]:
+                            - strong [ref=e445]: Default value
+                          - cell "Set a default value for the cluster profile variable. If the Input type is Dropdown, a default value must be specified using one of the configured dropdown options." [ref=e446]:
+                            - text: Set a default value for the cluster profile variable. If the
+                            - strong [ref=e447]: Input type
+                            - text: is
+                            - strong [ref=e448]: Dropdown
+                            - text: ", a default value must be specified using one of the configured dropdown options."
+                        - row "Mask value Mask the cluster profile variable with asterisks in the layer YAML configuration. When you export a profile with masked variables, they will be masked in the exported profile. Upon import, you will be required to provide the masked values." [ref=e449]:
+                          - cell "Mask value" [ref=e450]:
+                            - strong [ref=e451]: Mask value
+                          - cell "Mask the cluster profile variable with asterisks in the layer YAML configuration. When you export a profile with masked variables, they will be masked in the exported profile. Upon import, you will be required to provide the masked values." [ref=e452]
+                        - row "Hidden Hide the cluster profile variable during cluster deployment. If the variable is both hidden and required, it must have a default value set." [ref=e453]:
+                          - cell "Hidden" [ref=e454]:
+                            - strong [ref=e455]: Hidden
+                          - cell "Hide the cluster profile variable during cluster deployment. If the variable is both hidden and required, it must have a default value set." [ref=e456]
+                        - row "Read-only Prevent the cluster profile variable from being edited during cluster deployment. Read-only variables must have a default value set." [ref=e457]:
+                          - cell "Read-only" [ref=e458]:
+                            - strong [ref=e459]: Read-only
+                          - cell "Prevent the cluster profile variable from being edited during cluster deployment. Read-only variables must have a default value set." [ref=e460]
+                  - listitem [ref=e461]:
+                    - paragraph [ref=e462]:
+                      - text: As you make changes in the
+                      - strong [ref=e463]: Create variable
+                      - text: pane, the
+                      - strong [ref=e464]: Preview
+                      - text: field is updated, mirroring how the field will look and behave when deploying and updating clusters. When you are satisfied,
+                      - strong [ref=e465]: Create
+                      - text: the variable.
+                    - paragraph [ref=e466]:
+                      - img "Palette YAML editor with the added profile variables." [ref=e467]
+                  - listitem [ref=e468]:
+                    - paragraph [ref=e469]:
+                      - text: Navigate to the YAML configuration of the profile layer to which you want to add the variable. In the upper-right corner of its YAML configuration editor, select
+                      - strong [ref=e470]: Variables
+                      - text: .
+                  - listitem [ref=e471]:
+                    - paragraph [ref=e472]:
+                      - text: Next to the variable you want to add, select the
+                      - strong [ref=e473]: Copy to clipboard
+                      - text: icon to copy its name.
+                  - listitem [ref=e474]:
+                    - paragraph [ref=e475]:
+                      - text: Paste the variable in the
+                      - code [ref=e476]: "parameter: '{{.spectro.var.variable_name}}'"
+                      - text: format. You
+                      - emphasis [ref=e477]: must
+                      - text: wrap each profile variable in single quotes (
+                      - code [ref=e478]: "'"
+                      - text: ) to properly validate the schema. Select
+                      - strong [ref=e479]: Confirm Updates
+                      - text: when finished.
+                    - paragraph [ref=e480]:
+                      - text: Alternatively, you can start typing
+                      - code [ref=e481]: "{{.spectro.var.}}"
+                      - text: in the YAML configuration editor, and Palette will list the profile variables you have created. Continue typing to filter the list, or use the
+                      - strong [ref=e482]: UP ARROW
+                      - text: and
+                      - strong [ref=e483]: DOWN ARROW
+                      - text: keys to select the appropriate profile variable. Press
+                      - strong [ref=e484]: TAB
+                      - text: to accept the suggestion and add the variable. You must still wrap the profile variable in single quotes (
+                      - code [ref=e485]: "'"
+                      - text: ).
+                    - generic [ref=e486]:
+                      - generic [ref=e487]:
+                        - img [ref=e489]
+                        - text: warning
+                      - paragraph [ref=e492]:
+                        - text: If you plan to populate your variables with values that contain single quotes (
+                        - code [ref=e493]: "'"
+                        - text: ), wrap
+                        - code [ref=e494]: "{{.spectro.var.variable_name}}"
+                        - text: in double quotes (
+                        - code [ref=e495]: "\""
+                        - text: ); otherwise, the YAML file will be invalid when the variable is resolved.
+                    - paragraph [ref=e496]:
+                      - img "Palette YAML editor with the added profile variables." [ref=e497]
+                    - generic [ref=e498]:
+                      - generic [ref=e499]:
+                        - img [ref=e501]
+                        - text: tip
+                      - paragraph [ref=e504]:
+                        - text: By default, profile variables are listed in the order they are created. This order is also used when deploying or modifying clusters. To change the display order of variables, select the
+                        - strong [ref=e505]: Variables
+                        - text: three-dot menu, choose
+                        - strong [ref=e506]: Reorder variables
+                        - text: ", and drag and drop variables to change their display order. Finally, select"
+                        - strong [ref=e507]: Confirm order
+                        - text: .
+                  - listitem [ref=e508]:
+                    - paragraph [ref=e509]:
+                      - text: Repeat the steps described in this guide to define more variables and add them to the necessary cluster profile layers. Remember to choose
+                      - strong [ref=e510]: Confirm Updates
+                      - text: when you are finished with each layer, and select
+                      - strong [ref=e511]: Save Changes
+                      - text: when you are finished modifying your profile.
+                    - generic [ref=e512]:
+                      - generic [ref=e513]:
+                        - img [ref=e515]
+                        - text: warning
+                      - paragraph [ref=e518]:
+                        - text: Some packs may not support certain cluster profile variable data formats. If there is an existing schema constraint defined in the pack, the variable must satisfy the schema; otherwise, the variable cannot be used, and the updated cluster profile cannot be saved. Refer to the
+                        - link "Pack Constraints" [ref=e519] [cursor=pointer]:
+                          - /url: /registries-and-packs/pack-constraints/
+                        - text: page for more information.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e520]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e521] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e522]:
+                  - listitem [ref=e523]:
+                    - paragraph [ref=e524]:
+                      - text: Log in to
+                      - link "Palette" [ref=e525] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e526]:
+                    - paragraph [ref=e527]:
+                      - text: From the left main menu, select
+                      - strong [ref=e528]: Profiles
+                      - text: and navigate to the cluster profile for which you have created profile variables.
+                  - listitem [ref=e529]:
+                    - paragraph [ref=e530]:
+                      - text: In the upper-right corner, select
+                      - strong [ref=e531]: Variables
+                      - text: and, on the
+                      - strong [ref=e532]: Profile variables
+                      - text: pane, check that the necessary variables are properly defined.
+                  - listitem [ref=e533]:
+                    - paragraph [ref=e534]:
+                      - text: Hover over the
+                      - strong [ref=e535]: "[#] layers"
+                      - text: pill next to the variables to review the profile layers where they are used.
+                  - listitem [ref=e536]:
+                    - paragraph [ref=e537]: Open the necessary profile layers and check that their YAML configuration contains the expected variables.
+                - heading "Cluster DeploymentDirect link to Cluster Deployment" [level=2] [ref=e538]:
+                  - text: Cluster Deployment
+                  - link "Direct link to Cluster Deployment" [ref=e539] [cursor=pointer]:
+                    - /url: "#cluster-deployment"
+                    - text: "#"
+                - paragraph [ref=e540]:
+                  - text: You can now use your cluster profile to deploy or update a cluster. The steps involved in deploying a cluster depend on the infrastructure provider; however, when cluster profile variables are configured in the cluster profile, there will always be an additional
+                  - strong [ref=e541]: Profile Config
+                  - text: window displayed prior to deploying the cluster. To learn more about deploying clusters, visit our
+                  - link "Getting Started" [ref=e542] [cursor=pointer]:
+                    - /url: /getting-started/
+                  - text: series.
+                - paragraph [ref=e543]:
+                  - text: Note that in the below example,
+                  - code [ref=e544]: amazing-hello-universe-namespace
+                  - text: is the namespace of the Hello Universe application. The
+                  - code [ref=e545]: "Calico: Network CIDR"
+                  - text: and
+                  - code [ref=e546]: "Kubecost: Frontend ImagePullPolicy"
+                  - text: variables have the dropdown input type. You can select any configured dropdown option for the cluster.
+                - paragraph [ref=e547]:
+                  - img "Deploying a cluster and configuring cluster profile variables on the Profile Config window." [ref=e548]
+                - paragraph [ref=e549]:
+                  - text: Once you deploy a cluster using profile variables, verify that any parameters containing cluster profile variables were populated with the expected values. The following validation process uses the
+                  - link "kubectl CLI" [ref=e550] [cursor=pointer]:
+                    - /url: https://kubernetes.io/docs/reference/kubectl/
+                  - text: and the cluster's
+                  - link "kubeconfig" [ref=e551] [cursor=pointer]:
+                    - /url: https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/
+                  - text: file. For more information on how to use
+                  - code [ref=e552]: kubectl
+                  - text: and
+                  - code [ref=e553]: kubeconfig
+                  - text: with your Palette clusters, refer to the Spectro Cloud
+                  - link "Kubectl" [ref=e554] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/palette-webctl/
+                  - text: and
+                  - link "Kubeconfig" [ref=e555] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/kubeconfig/
+                  - text: guides.
+                - list [ref=e556]:
+                  - listitem [ref=e557]:
+                    - paragraph [ref=e558]:
+                      - text: Log in to
+                      - link "Palette" [ref=e559] [cursor=pointer]:
+                        - /url: https://spectrocloud.com
+                      - text: .
+                  - listitem [ref=e560]:
+                    - paragraph [ref=e561]:
+                      - text: Navigate to the left main menu and select
+                      - strong [ref=e562]: Clusters
+                      - text: .
+                  - listitem [ref=e563]:
+                    - paragraph [ref=e564]: Select the host cluster you want to access.
+                  - listitem [ref=e565]:
+                    - paragraph [ref=e566]:
+                      - text: Follow the
+                      - link "Kubectl" [ref=e567] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/
+                      - text: guide to download your cluster's
+                      - code [ref=e568]: kubeconfig
+                      - text: file and access your cluster using
+                      - code [ref=e569]: kubectl
+                      - text: .
+                  - listitem [ref=e570]:
+                    - paragraph [ref=e571]:
+                      - text: Issue the appropriate
+                      - code [ref=e572]: kubectl
+                      - text: command to verify that your parameter was populated correctly.
+                    - paragraph [ref=e573]:
+                      - text: The following example verifies that the Hello Universe namespace entered on the
+                      - strong [ref=e574]: Profile Config
+                      - text: window during cluster deployment was created.
+                    - generic [ref=e576]:
+                      - code [ref=e578]:
+                        - generic [ref=e579]: kubectl get namespaces
+                      - button "Copy code to clipboard" [ref=e581] [cursor=pointer]:
+                        - generic [ref=e582]:
+                          - img [ref=e583]
+                          - img [ref=e585]
+                    - generic [ref=e587]:
+                      - generic [ref=e588]: Example Output
+                      - code [ref=e591]:
+                        - generic [ref=e592]: NAME STATUS AGE
+                        - generic [ref=e593]: amazing-hello-universe-namespace Active 5m49s
+                        - generic [ref=e594]: capi-webhook-system Active 14m
+                        - generic [ref=e595]: cert-manager Active 14m
+                        - generic [ref=e596]: cluster-67a235d83902eab79410087b Active 14m
+                        - generic [ref=e597]: default Active 15m
+                        - generic [ref=e598]: kube-node-lease Active 15m
+                        - generic [ref=e599]: kube-public Active 15m
+                        - generic [ref=e600]: kube-system Active 15m
+                        - generic [ref=e601]: kubecost Active 5m55s
+                        - generic [ref=e602]: os-patch Active 11m
+                        - generic [ref=e603]: palette-system Active 12m
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e604]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e605] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e606]:
+                  - text: Cluster profile variables were created not just to make deploying clusters easier but also updating their configuration values. Refer to the
+                  - link "Modify Cluster Profile Variables" [ref=e607] [cursor=pointer]:
+                    - /url: /profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/modify-cluster-profile-variables/
+                  - text: guide to learn more.
+              - generic [ref=e608]:
+                - generic [ref=e610]:
+                  - text: "Tags:"
+                  - list [ref=e611]:
+                    - listitem [ref=e612]:
+                      - link "profiles" [ref=e613] [cursor=pointer]:
+                        - /url: /tags/profiles/
+                    - listitem [ref=e614]:
+                      - link "cluster profiles" [ref=e615] [cursor=pointer]:
+                        - /url: /tags/cluster-profiles/
+                    - listitem [ref=e616]:
+                      - link "cluster profile variables" [ref=e617] [cursor=pointer]:
+                        - /url: /tags/cluster-profile-variables/
+                - link "Edit this page" [ref=e620] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/create-cluster-profile-variables.md
+                  - img [ref=e621]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e625]:
+              - link "Previous « Cluster Profile Variables" [ref=e626] [cursor=pointer]:
+                - /url: /profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/
+                - generic [ref=e627]: Previous
+                - generic [ref=e628]: « Cluster Profile Variables
+              - link "Next Modify Cluster Profile Variables »" [ref=e629] [cursor=pointer]:
+                - /url: /profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/modify-cluster-profile-variables/
+                - generic [ref=e630]: Next
+                - generic [ref=e631]: Modify Cluster Profile Variables »
+          - list [ref=e634]:
+            - listitem [ref=e635]:
+              - link "Create a Cluster Profile Variable" [ref=e636] [cursor=pointer]:
+                - /url: "#create-a-cluster-profile-variable"
+              - list [ref=e637]:
+                - listitem [ref=e638]:
+                  - link "Prerequisites" [ref=e639] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e640]:
+                  - link "Enablement" [ref=e641] [cursor=pointer]:
+                    - /url: "#enablement"
+                - listitem [ref=e642]:
+                  - link "Validate" [ref=e643] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e644]:
+              - link "Cluster Deployment" [ref=e645] [cursor=pointer]:
+                - /url: "#cluster-deployment"
+            - listitem [ref=e646]:
+              - link "Next Steps" [ref=e647] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e648] [cursor=pointer]:
+    - generic [ref=e651]:
+      - img "Project Logo" [ref=e652]
+      - paragraph [ref=e653]: Ask AI
+```

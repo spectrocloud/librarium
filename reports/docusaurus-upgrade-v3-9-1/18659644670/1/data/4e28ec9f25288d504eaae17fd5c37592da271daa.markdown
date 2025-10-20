@@ -1,0 +1,598 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [expanded] [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+                - list [ref=e121]:
+                  - listitem [ref=e122]:
+                    - link "Use Cases" [ref=e123] [cursor=pointer]:
+                      - /url: /devx/enterprise-user/
+                  - listitem [ref=e124]:
+                    - generic [ref=e125]:
+                      - link "Apps" [ref=e126] [cursor=pointer]:
+                        - /url: /devx/apps/
+                      - button "Toggle the collapsible sidebar category 'Apps'" [ref=e127] [cursor=pointer]
+                  - listitem [ref=e128]:
+                    - generic [ref=e129]:
+                      - link "Palette Virtual Clusters" [ref=e130] [cursor=pointer]:
+                        - /url: /devx/palette-virtual-clusters/
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e131] [cursor=pointer]
+                  - listitem [ref=e132]:
+                    - generic [ref=e133]:
+                      - link "Manage Dev Engine" [ref=e134] [cursor=pointer]:
+                        - /url: /devx/manage-dev-engine/
+                      - button "Toggle the collapsible sidebar category 'Manage Dev Engine'" [ref=e135] [cursor=pointer]
+                  - listitem [ref=e136]:
+                    - generic [ref=e137]:
+                      - link "Services" [expanded] [ref=e138] [cursor=pointer]:
+                        - /url: /devx/services/
+                      - button "Toggle the collapsible sidebar category 'Services'" [ref=e139] [cursor=pointer]
+                    - list [ref=e140]:
+                      - listitem [ref=e141]:
+                        - link "Service Connectivity" [ref=e142] [cursor=pointer]:
+                          - /url: /devx/services/connectivity/
+                      - listitem [ref=e143]:
+                        - link "Databases" [ref=e144] [cursor=pointer]:
+                          - /url: /devx/services/db-services/
+                      - listitem [ref=e145]:
+                        - generic [ref=e146]:
+                          - link "Available Services" [expanded] [ref=e147] [cursor=pointer]:
+                            - /url: /devx/services/service-listings/
+                          - button "Toggle the collapsible sidebar category 'Available Services'" [ref=e148] [cursor=pointer]
+                        - list [ref=e149]:
+                          - listitem [ref=e150]:
+                            - link "MongoDB" [ref=e151] [cursor=pointer]:
+                              - /url: /devx/services/service-listings/mongo-db/
+                          - listitem [ref=e152]:
+                            - link "MySQL" [ref=e153] [cursor=pointer]:
+                              - /url: /devx/services/service-listings/mysql/
+                          - listitem [ref=e154]:
+                            - link "Postgres" [ref=e155] [cursor=pointer]:
+                              - /url: /devx/services/service-listings/postgresql-db/
+                          - listitem [ref=e156]:
+                            - link "Redis" [ref=e157] [cursor=pointer]:
+                              - /url: /devx/services/service-listings/redis-db/
+                          - listitem [ref=e158]:
+                            - link "Vault" [ref=e159] [cursor=pointer]:
+                              - /url: /devx/services/service-listings/vault/
+                          - listitem [ref=e160]:
+                            - link "CockroachDB" [ref=e161] [cursor=pointer]:
+                              - /url: /devx/services/service-listings/cockroach-db/
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Virtual Machine Orchestrator" [ref=e164] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e166]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e168] [cursor=pointer]
+              - listitem [ref=e169]:
+                - generic [ref=e170]:
+                  - link "Workspaces" [ref=e171] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e173]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e175] [cursor=pointer]
+              - listitem [ref=e176]:
+                - generic [ref=e177]:
+                  - link "Packs List" [ref=e178] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e180]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e182] [cursor=pointer]
+              - listitem [ref=e183]:
+                - generic [ref=e184]:
+                  - link "User & Role Management" [ref=e185] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e187]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e189] [cursor=pointer]
+              - listitem [ref=e190]:
+                - generic [ref=e191]:
+                  - link "Registries and Packs" [ref=e192] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e194]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e196] [cursor=pointer]
+              - listitem [ref=e197]:
+                - generic [ref=e198]:
+                  - link "Security" [ref=e199] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e201]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e203] [cursor=pointer]
+              - listitem [ref=e204]:
+                - generic [ref=e205]:
+                  - link "Audit Logs" [ref=e206] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e208]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e210] [cursor=pointer]
+              - listitem [ref=e211]:
+                - generic [ref=e212]:
+                  - link "Self-Hosted Palette" [ref=e213] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e215]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e217] [cursor=pointer]
+              - listitem [ref=e218]:
+                - generic [ref=e219]:
+                  - link "Palette VerteX" [ref=e220] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e222]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e224] [cursor=pointer]
+              - listitem [ref=e225]:
+                - generic [ref=e226]:
+                  - link "Tenant Administration" [ref=e227] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e229]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e231] [cursor=pointer]
+              - listitem [ref=e232]:
+                - generic [ref=e233]:
+                  - link "Automation" [ref=e234] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e236]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e238] [cursor=pointer]
+              - listitem [ref=e239]:
+                - generic [ref=e240]:
+                  - link "Troubleshooting" [ref=e241] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e243]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e245] [cursor=pointer]
+              - listitem [ref=e246]:
+                - link "Glossary" [ref=e247] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e249]
+                  - text: Glossary
+              - listitem [ref=e251]:
+                - generic [ref=e252]:
+                  - link "Compliance & Legal" [ref=e253] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e255]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e257] [cursor=pointer]
+              - listitem [ref=e258]:
+                - button "Privacy Settings" [ref=e259] [cursor=pointer]:
+                  - img [ref=e260]
+                  - text: Privacy Settings
+      - main [ref=e262]:
+        - generic [ref=e264]:
+          - generic [ref=e266]:
+            - article [ref=e267]:
+              - navigation "Breadcrumbs" [ref=e268]:
+                - list [ref=e269]:
+                  - listitem [ref=e270]:
+                    - link "Home page" [ref=e271] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e272]
+                  - listitem [ref=e274]:
+                    - link "Palette Dev Engine" [ref=e275] [cursor=pointer]:
+                      - /url: /devx/
+                  - listitem [ref=e276]:
+                    - link "Services" [ref=e277] [cursor=pointer]:
+                      - /url: /devx/services/
+                  - listitem [ref=e278]:
+                    - link "Available Services" [ref=e279] [cursor=pointer]:
+                      - /url: /devx/services/service-listings/
+                  - listitem [ref=e280]:
+                    - generic [ref=e281]: MySQL
+              - generic [ref=e282]:
+                - paragraph [ref=e283]:
+                  - link "MySQL" [ref=e284] [cursor=pointer]:
+                    - /url: https://mysql.com/
+                  - text: "is an open source relational database management system commonly used in web applications and other software that requires a database. It is known for its reliability, ease of use, and flexibility. MySQL is covered under the GNU license and uses structured query language (SQL) to manage data with the following properties:"
+                - list [ref=e285]:
+                  - listitem [ref=e286]:
+                    - paragraph [ref=e287]: Creates a database for storing and manipulating data and defining the relationship of each table.
+                  - listitem [ref=e288]:
+                    - paragraph [ref=e289]: Clients can retrieve and manipulate data by creating SQL queries and submitting them to the MySQL instance.
+                - heading "Add MySQL to App Profile" [level=1] [ref=e291]
+                - paragraph [ref=e292]: Use the following steps to add MySQL to an app profile.
+                - heading "PrerequisiteDirect link to Prerequisite" [level=2] [ref=e293]:
+                  - text: Prerequisite
+                  - link "Direct link to Prerequisite" [ref=e294] [cursor=pointer]:
+                    - /url: "#prerequisite"
+                    - text: "#"
+                - list [ref=e295]:
+                  - listitem [ref=e296]: Access to Palette Dev Engine.
+                - heading "EnablementDirect link to Enablement" [level=3] [ref=e297]:
+                  - text: Enablement
+                  - link "Direct link to Enablement" [ref=e298] [cursor=pointer]:
+                    - /url: "#enablement"
+                    - text: "#"
+                - list [ref=e299]:
+                  - listitem [ref=e300]:
+                    - paragraph [ref=e301]:
+                      - text: Log in to
+                      - link "Palette" [ref=e302] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e303]:
+                    - paragraph [ref=e304]:
+                      - text: On the right side of the window, click on the
+                      - strong [ref=e305]: User Menu
+                      - text: ", then select"
+                      - strong [ref=e306]: Switch to App Mode
+                      - text: .
+                  - listitem [ref=e307]:
+                    - paragraph [ref=e308]:
+                      - text: Navigate to the left
+                      - strong [ref=e309]: Main Menu
+                      - text: and click
+                      - strong [ref=e310]: App Profiles
+                      - text: to create a new
+                      - link "app profile" [ref=e311] [cursor=pointer]:
+                        - /url: /profiles/app-profiles/create-app-profiles/
+                      - text: . Provide the following basic information and click
+                      - strong [ref=e312]: Next
+                      - text: .
+                - table [ref=e313]:
+                  - rowgroup [ref=e314]:
+                    - row "Parameter Description" [ref=e315]:
+                      - cell "Parameter" [ref=e316]:
+                        - strong [ref=e317]: Parameter
+                      - cell "Description" [ref=e318]:
+                        - strong [ref=e319]: Description
+                  - rowgroup [ref=e320]:
+                    - row "Application Profile Name A custom name for the app profile." [ref=e321]:
+                      - cell "Application Profile Name" [ref=e322]
+                      - cell "A custom name for the app profile." [ref=e323]
+                    - row "Version (optional) The default value is 1.0.0. You can create multiple versions of an App Profile using the format major.minor.patch." [ref=e324]:
+                      - cell "Version (optional)" [ref=e325]
+                      - cell "The default value is 1.0.0. You can create multiple versions of an App Profile using the format major.minor.patch." [ref=e326]:
+                        - text: The default value is 1.0.0. You can create multiple versions of an App Profile using the format
+                        - strong [ref=e327]:
+                          - code [ref=e328]: major.minor.patch
+                        - text: .
+                    - row "Description (optional) Description of the app profile." [ref=e329]:
+                      - cell "Description (optional)" [ref=e330]
+                      - cell "Description of the app profile." [ref=e331]
+                    - row "Tag (optional) Assign tags to the app profile." [ref=e332]:
+                      - cell "Tag (optional)" [ref=e333]
+                      - cell "Assign tags to the app profile." [ref=e334]
+                - list [ref=e335]:
+                  - listitem [ref=e336]:
+                    - paragraph [ref=e337]:
+                      - text: Select
+                      - strong [ref=e338]: MySQL
+                      - text: from the database services and start the configuration.
+                  - listitem [ref=e339]:
+                    - paragraph [ref=e340]: "Provide the following information to the wizard:"
+                - list [ref=e341]:
+                  - listitem [ref=e342]:
+                    - paragraph [ref=e343]:
+                      - strong [ref=e344]: "Name:"
+                      - text: The database name. You can use the auto-generated name or create a custom name.
+                  - listitem [ref=e345]:
+                    - paragraph [ref=e346]:
+                      - strong [ref=e347]: "Root Password:"
+                      - text: The root password for the database service.
+                  - listitem [ref=e348]:
+                    - paragraph [ref=e349]: "Database Volume Size (GiB): Select the volume size for the database. Ensure you stay within the storage amount available in the cluster group and virtual clusters."
+                  - listitem [ref=e350]:
+                    - paragraph [ref=e351]:
+                      - text: Select the version from the
+                      - strong [ref=e352]: Version
+                      - text: drop-down menu.
+                - list [ref=e353]:
+                  - listitem [ref=e354]:
+                    - text: Click on
+                    - strong [ref=e355]: Save Changes
+                    - text: .
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e356]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e357] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e358]:
+                  - listitem [ref=e359]:
+                    - paragraph [ref=e360]:
+                      - text: Log in to
+                      - link "Palette" [ref=e361] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: and switch to
+                      - strong [ref=e362]: App Mode
+                      - text: .
+                  - listitem [ref=e363]:
+                    - paragraph [ref=e364]:
+                      - text: Navigate to the left
+                      - strong [ref=e365]: Main Menu
+                      - text: and select
+                      - strong [ref=e366]: Apps
+                      - text: .
+                  - listitem [ref=e367]:
+                    - paragraph [ref=e368]: Select the application that contains MySQL.
+                  - listitem [ref=e369]:
+                    - paragraph [ref=e370]: Validate your application is displaying the green status. The color code in the app profile box shows the status of the service deployment.
+                - table [ref=e371]:
+                  - rowgroup [ref=e372]:
+                    - row "Color Code Description" [ref=e373]:
+                      - cell "Color Code" [ref=e374]:
+                        - strong [ref=e375]: Color Code
+                      - cell "Description" [ref=e376]:
+                        - strong [ref=e377]: Description
+                  - rowgroup [ref=e378]:
+                    - row "Green Successfully Deployed" [ref=e379]:
+                      - cell "Green" [ref=e380]
+                      - cell "Successfully Deployed" [ref=e381]
+                    - row "Blue Under Deployment" [ref=e382]:
+                      - cell "Blue" [ref=e383]
+                      - cell "Under Deployment" [ref=e384]
+                    - row "Red Error State" [ref=e385]:
+                      - cell "Red" [ref=e386]
+                      - cell "Error State" [ref=e387]
+                - heading "Output VariablesDirect link to Output Variables" [level=2] [ref=e388]:
+                  - text: Output Variables
+                  - link "Direct link to Output Variables" [ref=e389] [cursor=pointer]:
+                    - /url: "#output-variables"
+                    - text: "#"
+                - paragraph [ref=e390]: "The exposed output variables of this service layer may be used in other service layers. These output variables are typically used for connectivity purposes:"
+                - table [ref=e391]:
+                  - rowgroup [ref=e392]:
+                    - row "Parameter Output Variable Description" [ref=e393]:
+                      - cell "Parameter" [ref=e394]
+                      - cell "Output Variable" [ref=e395]
+                      - cell "Description" [ref=e396]
+                  - rowgroup [ref=e397]:
+                    - 'row "Database Root Password {{.spectro.app.$appDeploymentName.<service-name>.ROOT_PASSWORD}} The root password of the MySQL database." [ref=e398]':
+                      - cell "Database Root Password" [ref=e399]
+                      - 'cell "{{.spectro.app.$appDeploymentName.<service-name>.ROOT_PASSWORD}}" [ref=e400]':
+                        - code [ref=e401]: "{{.spectro.app.$appDeploymentName.<service-name>.ROOT_PASSWORD}}"
+                      - cell "The root password of the MySQL database." [ref=e402]
+                    - 'row "Service Hostname {{.spectro.app.$appDeploymentName.<service-name>.MYSQLMSTR_SVC}} The Kubernetes service hostname for the database." [ref=e403]':
+                      - cell "Service Hostname" [ref=e404]
+                      - 'cell "{{.spectro.app.$appDeploymentName.<service-name>.MYSQLMSTR_SVC}}" [ref=e405]':
+                        - code [ref=e406]: "{{.spectro.app.$appDeploymentName.<service-name>.MYSQLMSTR_SVC}}"
+                      - cell "The Kubernetes service hostname for the database." [ref=e407]
+                    - 'row "Service Port {{.spectro.app.$appDeploymentName.<service-name>.MYSQLMSTR_SVC_PORT}} The exposed ports for the database service." [ref=e408]':
+                      - cell "Service Port" [ref=e409]
+                      - 'cell "{{.spectro.app.$appDeploymentName.<service-name>.MYSQLMSTR_SVC_PORT}}" [ref=e410]':
+                        - code [ref=e411]: "{{.spectro.app.$appDeploymentName.<service-name>.MYSQLMSTR_SVC_PORT}}"
+                      - cell "The exposed ports for the database service." [ref=e412]
+                    - 'row "Namespace {{.spectro.app.$appDeploymentName.<service-name>.MYSQLMSTR_SVC_NAMESPACE}} The Kubernetes namespace the MySQL database is deployed to." [ref=e413]':
+                      - cell "Namespace" [ref=e414]
+                      - 'cell "{{.spectro.app.$appDeploymentName.<service-name>.MYSQLMSTR_SVC_NAMESPACE}}" [ref=e415]':
+                        - code [ref=e416]: "{{.spectro.app.$appDeploymentName.<service-name>.MYSQLMSTR_SVC_NAMESPACE}}"
+                      - cell "The Kubernetes namespace the MySQL database is deployed to." [ref=e417]
+                - heading "Database PasswordDirect link to Database Password" [level=2] [ref=e418]:
+                  - text: Database Password
+                  - link "Direct link to Database Password" [ref=e419] [cursor=pointer]:
+                    - /url: "#database-password"
+                    - text: "#"
+                - paragraph [ref=e420]: You can get the database password by reading the content of the Kubernetes secret created for the database. To retrieve the password for the MySQL database root user, use the following command format.
+                - generic [ref=e422]:
+                  - code [ref=e424]:
+                    - generic [ref=e425]: kubectl get secret <app-name>-<service-name>-user \
+                    - generic [ref=e426]: "--namespace <app name>-<service name>-ns --output jsonpath='{.data.ROOT_PASSWORD}' | base64 --decode"
+                  - generic [ref=e427]:
+                    - button "Toggle word wrap" [ref=e428] [cursor=pointer]:
+                      - img [ref=e429]
+                    - button "Copy code to clipboard" [ref=e431] [cursor=pointer]:
+                      - generic [ref=e432]:
+                        - img [ref=e433]
+                        - img [ref=e435]
+                - paragraph [ref=e437]: Replace the values with the respective names.
+                - list [ref=e438]:
+                  - listitem [ref=e439]: "app-name: represents the name of the app provided during the app creation process."
+                  - listitem [ref=e440]: "service-name: The name of the service layer in the app profile."
+                - heading "ExampleDirect link to Example" [level=4] [ref=e441]:
+                  - text: Example
+                  - link "Direct link to Example" [ref=e442] [cursor=pointer]:
+                    - /url: "#example"
+                    - text: "#"
+                - list [ref=e443]:
+                  - listitem [ref=e444]:
+                    - paragraph [ref=e445]:
+                      - text: "App Name:"
+                      - code [ref=e446]: app-tarfful
+                  - listitem [ref=e447]:
+                    - paragraph [ref=e448]:
+                      - text: "Service Name:"
+                      - code [ref=e449]: mysql-2
+                - generic [ref=e451]:
+                  - code [ref=e453]:
+                    - generic [ref=e454]: kubectl get secret app-tarfful-mysql-2-user \
+                    - generic [ref=e455]: "--namespace app-tarfful-mysql-2-ns --output jsonpath='{.data.ROOT_PASSWORD}' | base64 --decode"
+                  - generic [ref=e456]:
+                    - button "Toggle word wrap" [ref=e457] [cursor=pointer]:
+                      - img [ref=e458]
+                    - button "Copy code to clipboard" [ref=e460] [cursor=pointer]:
+                      - generic [ref=e461]:
+                        - img [ref=e462]
+                        - img [ref=e464]
+                - heading "OutputDirect link to Output" [level=4] [ref=e466]:
+                  - text: Output
+                  - link "Direct link to Output" [ref=e467] [cursor=pointer]:
+                    - /url: "#output"
+                    - text: "#"
+                - code [ref=e471]:
+                  - generic [ref=e472]: "****************"
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e473]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e474] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e475]:
+                  - text: You can add MySQL to your application profile and start integrating MySQL with your applications. To learn more about integrating MySQL with your applications, check out the
+                  - link "MySQL" [ref=e476] [cursor=pointer]:
+                    - /url: https://dev.mysql.com/doc/
+                  - text: documentation from Oracle.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e477]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e478] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e479]:
+                  - listitem [ref=e480]:
+                    - link "MySQL Documentation" [ref=e481] [cursor=pointer]:
+                      - /url: https://dev.mysql.com/doc/
+              - generic [ref=e482]:
+                - generic [ref=e484]:
+                  - text: "Tags:"
+                  - list [ref=e485]:
+                    - listitem [ref=e486]:
+                      - link "devx" [ref=e487] [cursor=pointer]:
+                        - /url: /tags/devx/
+                    - listitem [ref=e488]:
+                      - link "app mode" [ref=e489] [cursor=pointer]:
+                        - /url: /tags/app-mode/
+                    - listitem [ref=e490]:
+                      - link "pde" [ref=e491] [cursor=pointer]:
+                        - /url: /tags/pde/
+                    - listitem [ref=e492]:
+                      - link "databases" [ref=e493] [cursor=pointer]:
+                        - /url: /tags/databases/
+                - link "Edit this page" [ref=e496] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/devx/services/service-listings/mysql.md
+                  - img [ref=e497]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e501]:
+              - link "Previous « MongoDB" [ref=e502] [cursor=pointer]:
+                - /url: /devx/services/service-listings/mongo-db/
+                - generic [ref=e503]: Previous
+                - generic [ref=e504]: « MongoDB
+              - link "Next Postgres »" [ref=e505] [cursor=pointer]:
+                - /url: /devx/services/service-listings/postgresql-db/
+                - generic [ref=e506]: Next
+                - generic [ref=e507]: Postgres »
+          - list [ref=e510]:
+            - listitem [ref=e511]:
+              - link "Prerequisite" [ref=e512] [cursor=pointer]:
+                - /url: "#prerequisite"
+              - list [ref=e513]:
+                - listitem [ref=e514]:
+                  - link "Enablement" [ref=e515] [cursor=pointer]:
+                    - /url: "#enablement"
+                - listitem [ref=e516]:
+                  - link "Validate" [ref=e517] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e518]:
+              - link "Output Variables" [ref=e519] [cursor=pointer]:
+                - /url: "#output-variables"
+            - listitem [ref=e520]:
+              - link "Database Password" [ref=e521] [cursor=pointer]:
+                - /url: "#database-password"
+            - listitem [ref=e522]:
+              - link "Next Steps" [ref=e523] [cursor=pointer]:
+                - /url: "#next-steps"
+            - listitem [ref=e524]:
+              - link "Resources" [ref=e525] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e526] [cursor=pointer]:
+    - generic [ref=e529]:
+      - img "Project Logo" [ref=e530]
+      - paragraph [ref=e531]: Ask AI
+```

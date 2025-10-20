@@ -1,0 +1,352 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [expanded] [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+                - list [ref=e82]:
+                  - listitem [ref=e83]:
+                    - generic [ref=e84]:
+                      - link "Cluster Profiles" [ref=e85] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/
+                      - button "Toggle the collapsible sidebar category 'Cluster Profiles'" [ref=e86] [cursor=pointer]
+                  - listitem [ref=e87]:
+                    - generic [ref=e88]:
+                      - link "App Profiles" [expanded] [ref=e89] [cursor=pointer]:
+                        - /url: /profiles/app-profiles/
+                      - button "Toggle the collapsible sidebar category 'App Profiles'" [ref=e90] [cursor=pointer]
+                    - list [ref=e91]:
+                      - listitem [ref=e92]:
+                        - generic [ref=e93]:
+                          - link "Create App Profiles" [expanded] [ref=e94] [cursor=pointer]:
+                            - /url: /profiles/app-profiles/create-app-profiles/
+                          - button "Toggle the collapsible sidebar category 'Create App Profiles'" [ref=e95] [cursor=pointer]
+                        - list [ref=e96]:
+                          - listitem [ref=e97]:
+                            - link "Add an Out-of-the-Box Service" [ref=e98] [cursor=pointer]:
+                              - /url: /profiles/app-profiles/create-app-profiles/create-out-of-box-app-profile/
+                          - listitem [ref=e99]:
+                            - link "Add a Container" [ref=e100] [cursor=pointer]:
+                              - /url: /profiles/app-profiles/create-app-profiles/container-deployment/
+                          - listitem [ref=e101]:
+                            - link "Add a Manifest" [ref=e102] [cursor=pointer]:
+                              - /url: /profiles/app-profiles/create-app-profiles/create-manifest-app-profile/
+                          - listitem [ref=e103]:
+                            - link "Add a Helm Chart" [ref=e104] [cursor=pointer]:
+                              - /url: /profiles/app-profiles/create-app-profiles/create-helm-app-profile/
+                      - listitem [ref=e105]:
+                        - generic [ref=e106]:
+                          - link "Modify App Profiles" [ref=e107] [cursor=pointer]:
+                            - /url: /profiles/app-profiles/modify-app-profiles/
+                          - button "Toggle the collapsible sidebar category 'Modify App Profiles'" [ref=e108] [cursor=pointer]
+                      - listitem [ref=e109]:
+                        - link "Clone an App Profile" [ref=e110] [cursor=pointer]:
+                          - /url: /profiles/app-profiles/clone-app-profile/
+                      - listitem [ref=e111]:
+                        - link "Delete an App Profile" [ref=e112] [cursor=pointer]:
+                          - /url: /profiles/app-profiles/delete-app-profile/
+                      - listitem [ref=e113]:
+                        - link "Output Variables" [ref=e114] [cursor=pointer]:
+                          - /url: /profiles/app-profiles/app-profile-output-vars/
+                  - listitem [ref=e115]:
+                    - link "Profile Customization" [ref=e116] [cursor=pointer]:
+                      - /url: /profiles/profile-customization/
+              - listitem [ref=e117]:
+                - generic [ref=e118]:
+                  - link "Cluster Templates" [ref=e119] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e121]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e123] [cursor=pointer]
+              - listitem [ref=e124]:
+                - generic [ref=e125]:
+                  - link "Deployment Modes" [ref=e126] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e128]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e130] [cursor=pointer]
+              - listitem [ref=e131]:
+                - generic [ref=e132]:
+                  - link "Clusters" [ref=e133] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e135]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e144] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e146]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Palette Dev Engine" [ref=e151] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e153]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Virtual Machine Orchestrator" [ref=e158] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e160]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Workspaces" [ref=e165] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e167]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Packs List" [ref=e172] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e174]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "User & Role Management" [ref=e179] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e181]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e183] [cursor=pointer]
+              - listitem [ref=e184]:
+                - generic [ref=e185]:
+                  - link "Registries and Packs" [ref=e186] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e188]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e190] [cursor=pointer]
+              - listitem [ref=e191]:
+                - generic [ref=e192]:
+                  - link "Security" [ref=e193] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e195]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e197] [cursor=pointer]
+              - listitem [ref=e198]:
+                - generic [ref=e199]:
+                  - link "Audit Logs" [ref=e200] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e202]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e204] [cursor=pointer]
+              - listitem [ref=e205]:
+                - generic [ref=e206]:
+                  - link "Self-Hosted Palette" [ref=e207] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e209]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e211] [cursor=pointer]
+              - listitem [ref=e212]:
+                - generic [ref=e213]:
+                  - link "Palette VerteX" [ref=e214] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e216]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e218] [cursor=pointer]
+              - listitem [ref=e219]:
+                - generic [ref=e220]:
+                  - link "Tenant Administration" [ref=e221] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e223]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e225] [cursor=pointer]
+              - listitem [ref=e226]:
+                - generic [ref=e227]:
+                  - link "Automation" [ref=e228] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e230]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e232] [cursor=pointer]
+              - listitem [ref=e233]:
+                - generic [ref=e234]:
+                  - link "Troubleshooting" [ref=e235] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e237]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e239] [cursor=pointer]
+              - listitem [ref=e240]:
+                - link "Glossary" [ref=e241] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e243]
+                  - text: Glossary
+              - listitem [ref=e245]:
+                - generic [ref=e246]:
+                  - link "Compliance & Legal" [ref=e247] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e249]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e251] [cursor=pointer]
+              - listitem [ref=e252]:
+                - button "Privacy Settings" [ref=e253] [cursor=pointer]:
+                  - img [ref=e254]
+                  - text: Privacy Settings
+      - main [ref=e256]:
+        - generic [ref=e258]:
+          - generic [ref=e260]:
+            - article [ref=e261]:
+              - navigation "Breadcrumbs" [ref=e262]:
+                - list [ref=e263]:
+                  - listitem [ref=e264]:
+                    - link "Home page" [ref=e265] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e266]
+                  - listitem [ref=e268]:
+                    - link "Profiles" [ref=e269] [cursor=pointer]:
+                      - /url: /profiles/
+                  - listitem [ref=e270]:
+                    - link "App Profiles" [ref=e271] [cursor=pointer]:
+                      - /url: /profiles/app-profiles/
+                  - listitem [ref=e272]:
+                    - generic [ref=e273]: Create App Profiles
+              - generic [ref=e274]:
+                - heading "Create App Profiles" [level=1] [ref=e276]
+                - paragraph [ref=e277]: Create app profiles by configuring layers of preconfigured services, such as containers, Helm charts, custom manifests, and other out-of-the-box services for your Palette Virtual Cluster deployments.
+                - paragraph [ref=e278]:
+                  - text: You can create as many app profiles as needed for your Palette
+                  - link "Virtual Clusters" [ref=e279] [cursor=pointer]:
+                    - /url: /devx/palette-virtual-clusters/
+                  - text: . Each app profile can contain multiple services, which are layers in the app profile stack. You can also create multiple versions of an app profile. For more information about versioning, review
+                  - link "Version an App Profile" [ref=e280] [cursor=pointer]:
+                    - /url: /profiles/app-profiles/modify-app-profiles/version-app-profile/
+                  - text: .
+                - paragraph [ref=e281]: The next sections guide you in creating a standard app profile, creating an app profile for container deployment, and creating an app profile using Helm Charts and manifests.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e282]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e283] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e284]:
+                  - listitem [ref=e285]:
+                    - paragraph [ref=e286]:
+                      - link "Add Out-of-the-Box Services" [ref=e287] [cursor=pointer]:
+                        - /url: /profiles/app-profiles/create-app-profiles/create-out-of-box-app-profile/
+                  - listitem [ref=e288]:
+                    - paragraph [ref=e289]:
+                      - link "Add a Container" [ref=e290] [cursor=pointer]:
+                        - /url: /profiles/app-profiles/create-app-profiles/container-deployment/
+                  - listitem [ref=e291]:
+                    - paragraph [ref=e292]:
+                      - link "Add a Helm Chart" [ref=e293] [cursor=pointer]:
+                        - /url: /profiles/app-profiles/create-app-profiles/create-helm-app-profile/
+                  - listitem [ref=e294]:
+                    - paragraph [ref=e295]:
+                      - link "Add a Manifest" [ref=e296] [cursor=pointer]:
+                        - /url: /profiles/app-profiles/create-app-profiles/create-manifest-app-profile/
+              - generic [ref=e297]:
+                - generic [ref=e299]:
+                  - text: "Tags:"
+                  - list [ref=e300]:
+                    - listitem [ref=e301]:
+                      - link "devx" [ref=e302] [cursor=pointer]:
+                        - /url: /tags/devx/
+                    - listitem [ref=e303]:
+                      - link "app mode" [ref=e304] [cursor=pointer]:
+                        - /url: /tags/app-mode/
+                    - listitem [ref=e305]:
+                      - link "pde" [ref=e306] [cursor=pointer]:
+                        - /url: /tags/pde/
+                    - listitem [ref=e307]:
+                      - link "app profiles" [ref=e308] [cursor=pointer]:
+                        - /url: /tags/app-profiles/
+                - link "Edit this page" [ref=e311] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/profiles/app-profiles/create-app-profiles/create-app-profiles.md
+                  - img [ref=e312]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e316]:
+              - link "Previous « App Profiles" [ref=e317] [cursor=pointer]:
+                - /url: /profiles/app-profiles/
+                - generic [ref=e318]: Previous
+                - generic [ref=e319]: « App Profiles
+              - link "Next Add an Out-of-the-Box Service »" [ref=e320] [cursor=pointer]:
+                - /url: /profiles/app-profiles/create-app-profiles/create-out-of-box-app-profile/
+                - generic [ref=e321]: Next
+                - generic [ref=e322]: Add an Out-of-the-Box Service »
+          - list [ref=e325]:
+            - listitem [ref=e326]:
+              - link "Resources" [ref=e327] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e328] [cursor=pointer]:
+    - generic [ref=e331]:
+      - img "Project Logo" [ref=e332]
+      - paragraph [ref=e333]: Ask AI
+```

@@ -1,0 +1,1248 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [expanded] [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+                - list [ref=e54]:
+                  - listitem [ref=e55]:
+                    - generic [ref=e56]:
+                      - link "CVE Reports" [ref=e57] [cursor=pointer]:
+                        - /url: /security-bulletins/reports/
+                      - button "Toggle the collapsible sidebar category 'CVE Reports'" [ref=e58] [cursor=pointer]
+                  - listitem [ref=e59]:
+                    - generic [ref=e60]:
+                      - link "OS Security Notices" [ref=e61] [cursor=pointer]:
+                        - /url: /security-bulletins/os-k8s/
+                      - button "Toggle the collapsible sidebar category 'OS Security Notices'" [ref=e62] [cursor=pointer]
+                  - listitem [ref=e63]:
+                    - link "Security Advisories" [ref=e64] [cursor=pointer]:
+                      - /url: /security-bulletins/security-advisories/
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "What is Palette?" [ref=e67] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e69]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - link "Getting Started" [ref=e73] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e75]
+                  - text: Getting Started
+              - listitem [ref=e77]:
+                - generic [ref=e78]:
+                  - link "Architecture" [ref=e79] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e81]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e83] [cursor=pointer]
+              - listitem [ref=e84]:
+                - generic [ref=e85]:
+                  - link "Profiles" [ref=e86] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e88]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e92] [cursor=pointer]
+              - listitem [ref=e93]:
+                - generic [ref=e94]:
+                  - link "Cluster Templates" [ref=e95] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e97]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e99] [cursor=pointer]
+              - listitem [ref=e100]:
+                - generic [ref=e101]:
+                  - link "Deployment Modes" [ref=e102] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e104]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Clusters" [ref=e109] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e111]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e117] [cursor=pointer]
+              - listitem [ref=e118]:
+                - generic [ref=e119]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e120] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e122]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e124] [cursor=pointer]
+              - listitem [ref=e125]:
+                - generic [ref=e126]:
+                  - link "Palette Dev Engine" [ref=e127] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e129]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e131] [cursor=pointer]
+              - listitem [ref=e132]:
+                - generic [ref=e133]:
+                  - link "Virtual Machine Orchestrator" [ref=e134] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e136]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e138] [cursor=pointer]
+              - listitem [ref=e139]:
+                - generic [ref=e140]:
+                  - link "Workspaces" [ref=e141] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e143]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e145] [cursor=pointer]
+              - listitem [ref=e146]:
+                - generic [ref=e147]:
+                  - link "Packs List" [ref=e148] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e150]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e152] [cursor=pointer]
+              - listitem [ref=e153]:
+                - generic [ref=e154]:
+                  - link "User & Role Management" [ref=e155] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e157]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e159] [cursor=pointer]
+              - listitem [ref=e160]:
+                - generic [ref=e161]:
+                  - link "Registries and Packs" [ref=e162] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e164]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e166] [cursor=pointer]
+              - listitem [ref=e167]:
+                - generic [ref=e168]:
+                  - link "Security" [ref=e169] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e171]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e173] [cursor=pointer]
+              - listitem [ref=e174]:
+                - generic [ref=e175]:
+                  - link "Audit Logs" [ref=e176] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e178]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e180] [cursor=pointer]
+              - listitem [ref=e181]:
+                - generic [ref=e182]:
+                  - link "Self-Hosted Palette" [ref=e183] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e185]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e187] [cursor=pointer]
+              - listitem [ref=e188]:
+                - generic [ref=e189]:
+                  - link "Palette VerteX" [ref=e190] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e192]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e194] [cursor=pointer]
+              - listitem [ref=e195]:
+                - generic [ref=e196]:
+                  - link "Tenant Administration" [ref=e197] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e199]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e201] [cursor=pointer]
+              - listitem [ref=e202]:
+                - generic [ref=e203]:
+                  - link "Automation" [ref=e204] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e206]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e208] [cursor=pointer]
+              - listitem [ref=e209]:
+                - generic [ref=e210]:
+                  - link "Troubleshooting" [ref=e211] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e213]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e215] [cursor=pointer]
+              - listitem [ref=e216]:
+                - link "Glossary" [ref=e217] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e219]
+                  - text: Glossary
+              - listitem [ref=e221]:
+                - generic [ref=e222]:
+                  - link "Compliance & Legal" [ref=e223] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e225]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e227] [cursor=pointer]
+              - listitem [ref=e228]:
+                - button "Privacy Settings" [ref=e229] [cursor=pointer]:
+                  - img [ref=e230]
+                  - text: Privacy Settings
+      - main [ref=e232]:
+        - generic [ref=e234]:
+          - generic [ref=e236]:
+            - article [ref=e237]:
+              - navigation "Breadcrumbs" [ref=e238]:
+                - list [ref=e239]:
+                  - listitem [ref=e240]:
+                    - link "Home page" [ref=e241] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e242]
+                  - listitem [ref=e244]:
+                    - link "Security Bulletins" [ref=e245] [cursor=pointer]:
+                      - /url: /security-bulletins/
+                  - listitem [ref=e246]:
+                    - generic [ref=e247]: Security Advisories
+              - generic [ref=e248]:
+                - heading "Security Advisories" [level=1] [ref=e250]
+                - paragraph [ref=e251]:
+                  - text: Security advisories supplement
+                  - link "security bulletins" [ref=e252] [cursor=pointer]:
+                    - /url: /security-bulletins/reports/
+                  - text: ", providing additional details regarding vulnerabilities and offering remediation steps."
+                - 'heading "Security Advisory 004 - MongoDB: FIPS Mode Cryptographic Algorithm Use from Non-FIPS ProvidersDirect link to Security Advisory 004 - MongoDB: FIPS Mode Cryptographic Algorithm Use from Non-FIPS Providers" [level=2] [ref=e253]':
+                  - text: "Security Advisory 004 - MongoDB: FIPS Mode Cryptographic Algorithm Use from Non-FIPS Providers"
+                  - 'link "Direct link to Security Advisory 004 - MongoDB: FIPS Mode Cryptographic Algorithm Use from Non-FIPS Providers" [ref=e254] [cursor=pointer]':
+                    - /url: "#security-advisory-004---mongodb-fips-mode-cryptographic-algorithm-use-from-non-fips-providers"
+                    - text: "#"
+                - list [ref=e255]:
+                  - listitem [ref=e256]:
+                    - strong [ref=e257]: Release Date
+                    - text: ": September 11, 2025"
+                  - listitem [ref=e258]:
+                    - strong [ref=e259]: Last Updated
+                    - text: ": September 11, 2025"
+                  - listitem [ref=e260]:
+                    - strong [ref=e261]: Severity
+                    - text: ": High"
+                  - listitem [ref=e262]:
+                    - strong [ref=e263]: Applicable Deployments
+                    - text: ": Self-Hosted Palette VerteX"
+                - heading "SummaryDirect link to Summary" [level=3] [ref=e264]:
+                  - text: Summary
+                  - link "Direct link to Summary" [ref=e265] [cursor=pointer]:
+                    - /url: "#summary"
+                    - text: "#"
+                - paragraph [ref=e266]: On September 11, 2025, Spectro Cloud became aware of a recently disclosed vulnerability related to the use of MongoDB servers configured for FIPS mode, in which MongoDB incorrectly allows the use of cryptographic algorithms from non-FIPS providers. This may allow client TLS connections to agree to use (negotiate) non-FIPS-compliant cryptographic algorithms even when FIPS mode is enabled on MongoDB. As a result, self-hosted Palette VerteX deployments running on a non-FIPS-compliant OS or Kubernetes cluster may allow negotiation of non-FIPS cryptographic algorithms.
+                - paragraph [ref=e267]:
+                  - text: For additional information regarding this advisory, refer to
+                  - link "MongoDB Jira issue SERVER-109268" [ref=e268] [cursor=pointer]:
+                    - /url: https://jira.mongodb.org/browse/SERVER-109268
+                  - text: .
+                - heading "Applicable DeploymentsDirect link to Applicable Deployments" [level=3] [ref=e269]:
+                  - text: Applicable Deployments
+                  - link "Direct link to Applicable Deployments" [ref=e270] [cursor=pointer]:
+                    - /url: "#applicable-deployments"
+                    - text: "#"
+                - paragraph [ref=e271]: By default, Spectro Cloud enforces FIPS-only mode on the MongoDB container. Self-hosted Palette VerteX deployments, only when running on a non-FIPS-compliant OS or Kubernetes cluster, may allow negotiation of non-FIPS cryptographic algorithms.
+                - paragraph [ref=e272]:
+                  - text: Self-hosted instances that meet the
+                  - link "FIPS prerequisite" [ref=e273] [cursor=pointer]:
+                    - /url: /vertex/install-palette-vertex/install-on-kubernetes/install/#prerequisites
+                  - text: as outlined in our user documentation are not affected by this vulnerability.
+                - heading "Recommended ActionsDirect link to Recommended Actions" [level=3] [ref=e274]:
+                  - text: Recommended Actions
+                  - link "Direct link to Recommended Actions" [ref=e275] [cursor=pointer]:
+                    - /url: "#recommended-actions"
+                    - text: "#"
+                - paragraph [ref=e276]: Customers should verify their Palette VerteX setup to ensure they are not affected. No additional action is required for customers with Palette VerteX installed on a FIPS-compliant OS or Kubernetes cluster.
+                - paragraph [ref=e277]: MongoDB will be upgraded to the latest version in the next Palette release. Affected customers should either take the appropriate actions to secure their environment to meet the FIPS prerequisite or upgrade their Palette VerteX installation following the next Palette release.
+                - heading "Security Advisory 003 - Self-Deleting Nodes with OwnerReferenceDirect link to Security Advisory 003 - Self-Deleting Nodes with OwnerReference" [level=2] [ref=e278]:
+                  - text: Security Advisory 003 - Self-Deleting Nodes with OwnerReference
+                  - link "Direct link to Security Advisory 003 - Self-Deleting Nodes with OwnerReference" [ref=e279] [cursor=pointer]:
+                    - /url: "#security-advisory-003---self-deleting-nodes-with-ownerreference"
+                    - text: "#"
+                - list [ref=e280]:
+                  - listitem [ref=e281]:
+                    - strong [ref=e282]: Release Date
+                    - text: ": August 14, 2025"
+                  - listitem [ref=e283]:
+                    - strong [ref=e284]: Last Updated
+                    - text: ": August 14, 2025"
+                  - listitem [ref=e285]:
+                    - strong [ref=e286]: Severity
+                    - text: ": Medium (5.4)"
+                  - listitem [ref=e287]:
+                    - strong [ref=e288]: Affected Versions
+                    - text: ": v1.31.0 - v1.31.11, v1.32.0 - v1.32.7, and v1.33.0 - v1.33.3"
+                - heading "SummaryDirect link to Summary" [level=3] [ref=e289]:
+                  - text: Summary
+                  - link "Direct link to Summary" [ref=e290] [cursor=pointer]:
+                    - /url: "#summary-1"
+                    - text: "#"
+                - paragraph [ref=e291]:
+                  - text: A recently disclosed vulnerability in the
+                  - code [ref=e292]: NodeRestriction
+                  - text: admission controller allows node users to delete their own
+                  - code [ref=e293]: Node
+                  - text: object by patching it with an
+                  - code [ref=e294]: OwnerReference
+                  - text: to a cluster-scoped resource.
+                - paragraph [ref=e295]:
+                  - text: Normally, node users are authorized to create and patch their own
+                  - code [ref=e296]: Node
+                  - text: object but not delete it. However, the
+                  - code [ref=e297]: NodeRestriction
+                  - text: controller does not block patches that set
+                  - code [ref=e298]: OwnerReferences
+                  - text: ", enabling a compromised node to delete and then recreate its own"
+                  - code [ref=e299]: Node
+                  - text: object.
+                - paragraph [ref=e300]: This recreation can bypass the usual restrictions on modifying taints or labels, allowing an attacker to change node scheduling behavior and control which pods run on the compromised node.
+                - paragraph [ref=e301]: This vulnerability affects all clusters using an affected Kubernetes version across all Palette Enterprise and Palette VerteX releases.
+                - paragraph [ref=e302]:
+                  - text: For additional information regarding this advisory, refer to the
+                  - link "Kubernetes GitHub issue" [ref=e303] [cursor=pointer]:
+                    - /url: https://github.com/kubernetes/kubernetes/issues/133471
+                  - text: .
+                - heading "Recommended ActionsDirect link to Recommended Actions" [level=3] [ref=e304]:
+                  - text: Recommended Actions
+                  - link "Direct link to Recommended Actions" [ref=e305] [cursor=pointer]:
+                    - /url: "#recommended-actions-1"
+                    - text: "#"
+                - generic [ref=e306]:
+                  - generic [ref=e307]:
+                    - img [ref=e309]
+                    - text: info
+                  - list [ref=e312]:
+                    - listitem [ref=e313]:
+                      - text: This workaround will result in a cluster
+                      - link "repave" [ref=e314] [cursor=pointer]:
+                        - /url: /glossary-all/#repavement
+                      - text: .
+                    - listitem [ref=e315]: This workaround is not applicable for cloud-managed clusters such as EKS, GKE, and AKS. Refer to your cloud provider for steps on patching cloud-managed clusters.
+                - paragraph [ref=e316]:
+                  - text: In the Kubernetes layer of the
+                  - link "infrastructure cluster profile" [ref=e317] [cursor=pointer]:
+                    - /url: /profiles/
+                  - text: for the affected cluster, enable the
+                  - code [ref=e318]: OwnerReferencesPermissionEnforcement
+                  - text: admission controller by adding it to the
+                  - code [ref=e319]: enable-admission-plugins
+                  - text: argument under the
+                  - code [ref=e320]: apiServer
+                  - text: section. After saving your changes, make sure to
+                  - link "update" [ref=e321] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/cluster-updates/
+                  - text: all affected clusters.
+                - paragraph [ref=e322]:
+                  - text: When enabled, this admission controller prevents any user or service account from modifying an object’s
+                  - code [ref=e323]: OwnerReferences
+                  - text: unless they have delete permission on the owner object (the object referenced in
+                  - code [ref=e324]: OwnerReferences
+                  - text: ).
+                - heading "RoadmapDirect link to Roadmap" [level=3] [ref=e325]:
+                  - text: Roadmap
+                  - link "Direct link to Roadmap" [ref=e326] [cursor=pointer]:
+                    - /url: "#roadmap"
+                    - text: "#"
+                - paragraph [ref=e327]: Patch releases for Kubernetes versions 1.31, 1.32, and 1.33 that address this vulnerability will be available in future Palette Enterprise and Palette VerteX releases. No patches will be available for 1.30 and older versions.
+                - heading "Security Advisory 002 - Kubernetes Race ConditionDirect link to Security Advisory 002 - Kubernetes Race Condition" [level=2] [ref=e328]:
+                  - text: Security Advisory 002 - Kubernetes Race Condition
+                  - link "Direct link to Security Advisory 002 - Kubernetes Race Condition" [ref=e329] [cursor=pointer]:
+                    - /url: "#security-advisory-002---kubernetes-race-condition"
+                    - text: "#"
+                - paragraph [ref=e330]:
+                  - text: This advisory outlines security vulnerabilities related to the use of the
+                  - code [ref=e331]: os.RemoveAll
+                  - text: function in Go, which affects Kubernetes clusters compiled with vulnerable Go versions, as well as the recommended remediation actions.
+                - list [ref=e332]:
+                  - listitem [ref=e333]:
+                    - strong [ref=e334]: Release Date
+                    - text: ": June 18, 2025"
+                  - listitem [ref=e335]:
+                    - strong [ref=e336]: Last Updated
+                    - text: ": June 18, 2025"
+                  - listitem [ref=e337]:
+                    - strong [ref=e338]: Severity
+                    - text: ": High"
+                  - listitem [ref=e339]:
+                    - strong [ref=e340]: Affected Versions
+                    - text: ": Kubernetes versions that were compiled with Go versions earlier than 1.21.11 or 1.22.4"
+                  - listitem [ref=e341]:
+                    - strong [ref=e342]: Fixed Versions
+                    - text: ": v1.27.15+, v1.28.11+, v1.29.6+, and v1.30.2+"
+                - heading "Related CVEsDirect link to Related CVEs" [level=3] [ref=e343]:
+                  - text: Related CVEs
+                  - link "Direct link to Related CVEs" [ref=e344] [cursor=pointer]:
+                    - /url: "#related-cves"
+                    - text: "#"
+                - paragraph [ref=e345]: This advisory has not been assigned a CVE.
+                - heading "TimelineDirect link to Timeline" [level=3] [ref=e346]:
+                  - text: Timeline
+                  - link "Direct link to Timeline" [ref=e347] [cursor=pointer]:
+                    - /url: "#timeline"
+                    - text: "#"
+                - list [ref=e348]:
+                  - listitem [ref=e349]:
+                    - strong [ref=e350]: June 17, 2025
+                    - text: ": First notified of vulnerabilities."
+                - heading "SummaryDirect link to Summary" [level=3] [ref=e351]:
+                  - text: Summary
+                  - link "Direct link to Summary" [ref=e352] [cursor=pointer]:
+                    - /url: "#summary-2"
+                    - text: "#"
+                - paragraph [ref=e353]:
+                  - text: The identified vulnerability affects Kubernetes versions that were compiled with Go versions earlier than 1.21.11 or 1.22.4. The issue relates to the use of the
+                  - code [ref=e354]: os.RemoveAll
+                  - text: function in Go. It involves a symlink race condition that allows local non-root users (such as a containerized process) with the same UID as the Pod user to delete arbitrary directories on a host node with root privileges. This issue is especially relevant in environments running multi-tenant or untrusted workloads, where a compromised workload may pose a broader threat to the host.
+                - paragraph [ref=e355]: All the clusters using an affected Kubernetes version must be updated manually. Users must review their cluster profiles, workload clusters, and instances of Palette Enterprise or Palette VerteX, and upgrade the Kubernetes version to a fixed version. The following Kubernetes versions, available in Palette Enterprise or Palette VerteX deployments for workload cluster provisioning, are vulnerable.
+                - table [ref=e356]:
+                  - rowgroup [ref=e357]:
+                    - row "Palette Version Kubernetes Versions" [ref=e358]:
+                      - cell "Palette Version" [ref=e359]
+                      - cell "Kubernetes Versions" [ref=e360]
+                  - rowgroup [ref=e361]:
+                    - row "Palette Enterprise 4.6.x Kubernetes < 1.30.2 Kubernetes < 1.29.6 Kubernetes < 1.28.11 Kubernetes < 1.27.15" [ref=e362]:
+                      - cell "Palette Enterprise 4.6.x" [ref=e363]
+                      - cell "Kubernetes < 1.30.2 Kubernetes < 1.29.6 Kubernetes < 1.28.11 Kubernetes < 1.27.15" [ref=e364]:
+                        - text: Kubernetes < 1.30.2
+                        - text: Kubernetes < 1.29.6
+                        - text: Kubernetes < 1.28.11
+                        - text: Kubernetes < 1.27.15
+                    - row "Palette Enterprise 4.5.x Kubernetes < 1.30.2 Kubernetes < 1.29.6 Kubernetes < 1.28.11 Kubernetes < 1.27.15 Kubernetes < 1.26.15" [ref=e365]:
+                      - cell "Palette Enterprise 4.5.x" [ref=e366]
+                      - cell "Kubernetes < 1.30.2 Kubernetes < 1.29.6 Kubernetes < 1.28.11 Kubernetes < 1.27.15 Kubernetes < 1.26.15" [ref=e367]:
+                        - text: Kubernetes < 1.30.2
+                        - text: Kubernetes < 1.29.6
+                        - text: Kubernetes < 1.28.11
+                        - text: Kubernetes < 1.27.15
+                        - text: Kubernetes < 1.26.15
+                    - row "Palette Enterprise 4.4.x Kubernetes < 1.30.2 Kubernetes < 1.29.6 Kubernetes < 1.28.11 Kubernetes < 1.27.15 Kubernetes < 1.26.15" [ref=e368]:
+                      - cell "Palette Enterprise 4.4.x" [ref=e369]
+                      - cell "Kubernetes < 1.30.2 Kubernetes < 1.29.6 Kubernetes < 1.28.11 Kubernetes < 1.27.15 Kubernetes < 1.26.15" [ref=e370]:
+                        - text: Kubernetes < 1.30.2
+                        - text: Kubernetes < 1.29.6
+                        - text: Kubernetes < 1.28.11
+                        - text: Kubernetes < 1.27.15
+                        - text: Kubernetes < 1.26.15
+                    - row "Palette Enterprise 4.3.x Kubernetes < 1.29.6 Kubernetes < 1.28.11 Kubernetes < 1.27.15 Kubernetes < 1.26.15" [ref=e371]:
+                      - cell "Palette Enterprise 4.3.x" [ref=e372]
+                      - cell "Kubernetes < 1.29.6 Kubernetes < 1.28.11 Kubernetes < 1.27.15 Kubernetes < 1.26.15" [ref=e373]:
+                        - text: Kubernetes < 1.29.6
+                        - text: Kubernetes < 1.28.11
+                        - text: Kubernetes < 1.27.15
+                        - text: Kubernetes < 1.26.15
+                    - row "Palette Enterprise 4.2.x Kubernetes < 1.28.11 Kubernetes < 1.27.15 Kubernetes < 1.26.15" [ref=e374]:
+                      - cell "Palette Enterprise 4.2.x" [ref=e375]
+                      - cell "Kubernetes < 1.28.11 Kubernetes < 1.27.15 Kubernetes < 1.26.15" [ref=e376]:
+                        - text: Kubernetes < 1.28.11
+                        - text: Kubernetes < 1.27.15
+                        - text: Kubernetes < 1.26.15
+                    - row "Palette Enterprise 4.1.x Kubernetes < 1.28.11 Kubernetes < 1.27.15 Kubernetes < 1.26.15" [ref=e377]:
+                      - cell "Palette Enterprise 4.1.x" [ref=e378]
+                      - cell "Kubernetes < 1.28.11 Kubernetes < 1.27.15 Kubernetes < 1.26.15" [ref=e379]:
+                        - text: Kubernetes < 1.28.11
+                        - text: Kubernetes < 1.27.15
+                        - text: Kubernetes < 1.26.15
+                    - row "Palette Enterprise 4.0.x Kubernetes < 1.27.15 Kubernetes < 1.26.15" [ref=e380]:
+                      - cell "Palette Enterprise 4.0.x" [ref=e381]
+                      - cell "Kubernetes < 1.27.15 Kubernetes < 1.26.15" [ref=e382]:
+                        - text: Kubernetes < 1.27.15
+                        - text: Kubernetes < 1.26.15
+                - heading "Recommended ActionsDirect link to Recommended Actions" [level=3] [ref=e383]:
+                  - text: Recommended Actions
+                  - link "Direct link to Recommended Actions" [ref=e384] [cursor=pointer]:
+                    - /url: "#recommended-actions-2"
+                    - text: "#"
+                - paragraph [ref=e385]: This vulnerability affects both workload clusters and Palette deployments. If you have any workload clusters, Palette Enterprise or Palette VerteX clusters using an affected Kubernetes version, you must update the cluster to use one of the patched versions (v1.27.15, v1.28.11, v1.29.6, and v1.30.2) or newer.
+                - list [ref=e386]:
+                  - listitem [ref=e387]:
+                    - paragraph [ref=e388]:
+                      - text: Refer to the
+                      - link "Update a Cluster Profile" [ref=e389] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile/
+                      - text: guide for instructions on how to update a cluster profile and apply the updates to workload clusters.
+                  - listitem [ref=e390]:
+                    - paragraph [ref=e391]:
+                      - text: Refer to the
+                      - link "Palette Enterprise" [ref=e392] [cursor=pointer]:
+                        - /url: /enterprise-version/upgrade/
+                      - text: or
+                      - link "Palette VerteX" [ref=e393] [cursor=pointer]:
+                        - /url: /vertex/upgrade/
+                      - text: upgrade guides for guidance on upgrading the version for all connected and airgapped Palette Enterprise and Palette VerteX clusters.
+                - heading "Security Advisory 001 - Nginx VulnerabilityDirect link to Security Advisory 001 - Nginx Vulnerability" [level=2] [ref=e394]:
+                  - text: Security Advisory 001 - Nginx Vulnerability
+                  - link "Direct link to Security Advisory 001 - Nginx Vulnerability" [ref=e395] [cursor=pointer]:
+                    - /url: "#security-advisory-001---nginx-vulnerability"
+                    - text: "#"
+                - paragraph [ref=e396]:
+                  - text: This advisory outlines security vulnerabilities related to
+                  - link "ingress-nginx" [ref=e397] [cursor=pointer]:
+                    - /url: https://github.com/kubernetes/ingress-nginx
+                  - text: and the recommended remediation actions.
+                - list [ref=e398]:
+                  - listitem [ref=e399]:
+                    - strong [ref=e400]: Release Date
+                    - text: ": March 27, 2025"
+                  - listitem [ref=e401]:
+                    - strong [ref=e402]: Last Updated
+                    - text: ": April 8, 2025"
+                  - listitem [ref=e403]:
+                    - strong [ref=e404]: Severity
+                    - text: ": 9.8"
+                  - listitem [ref=e405]:
+                    - strong [ref=e406]: Affected Versions
+                    - text: ": All versions prior to v1.11.0, v1.11.0 - v1.11.4, and v1.12.0"
+                  - listitem [ref=e407]:
+                    - strong [ref=e408]: Fixed Versions
+                    - text: ": v1.11.5 and v1.12.1"
+                - heading "Related CVEsDirect link to Related CVEs" [level=3] [ref=e409]:
+                  - text: Related CVEs
+                  - link "Direct link to Related CVEs" [ref=e410] [cursor=pointer]:
+                    - /url: "#related-cves-1"
+                    - text: "#"
+                - paragraph [ref=e411]:
+                  - text: Refer to the
+                  - link "Security Bulletins" [ref=e412] [cursor=pointer]:
+                    - /url: /security-bulletins/reports/
+                  - text: page for detailed information about each CVE.
+                - list [ref=e413]:
+                  - listitem [ref=e414]:
+                    - link "CVE-2025-1097" [ref=e415] [cursor=pointer]:
+                      - /url: https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-1097/
+                  - listitem [ref=e416]:
+                    - link "CVE-2025-1098" [ref=e417] [cursor=pointer]:
+                      - /url: https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-1098/
+                  - listitem [ref=e418]:
+                    - link "CVE-2025-1974" [ref=e419] [cursor=pointer]:
+                      - /url: https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-1974/
+                  - listitem [ref=e420]:
+                    - link "CVE-2025-24513" [ref=e421] [cursor=pointer]:
+                      - /url: https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-24513/
+                  - listitem [ref=e422]:
+                    - link "CVE-2025-24514" [ref=e423] [cursor=pointer]:
+                      - /url: https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-24514/
+                - heading "TimelineDirect link to Timeline" [level=3] [ref=e424]:
+                  - text: Timeline
+                  - link "Direct link to Timeline" [ref=e425] [cursor=pointer]:
+                    - /url: "#timeline-1"
+                    - text: "#"
+                - list [ref=e426]:
+                  - listitem [ref=e427]:
+                    - strong [ref=e428]: March 24, 2025
+                    - text: ": First notified of vulnerabilities."
+                  - listitem [ref=e429]:
+                    - strong [ref=e430]: March 24, 2025
+                    - text: ": CVE bulletin published."
+                  - listitem [ref=e431]:
+                    - strong [ref=e432]: March 26, 2025
+                    - text: ": New Nginx pack published."
+                  - listitem [ref=e433]:
+                    - strong [ref=e434]: March 26, 2025, 11:30 PM PST - March 27, 2025, 12:43 AM PST
+                    - text: ": All managed Palette instances patched."
+                  - listitem [ref=e435]:
+                    - strong [ref=e436]: March 27, 2025
+                    - text: ": Manual patch procedure provided for connected and airgapped Palette Enterprise and VerteX installations."
+                  - listitem [ref=e437]:
+                    - strong [ref=e438]: March 28, 2025
+                    - text: ": Affected Nginx packs deprecated."
+                  - listitem [ref=e439]:
+                    - strong [ref=e440]: March 28, 2025
+                    - text: ": Connected Palette Enterprise and VerteX patches available for versions 4.5 and 4.6."
+                  - listitem [ref=e441]:
+                    - strong [ref=e442]: April 1, 2025
+                    - text: ": Connected Palette Enterprise and VerteX patches available for version 4.4."
+                  - listitem [ref=e443]:
+                    - strong [ref=e444]: April 2, 2025
+                    - text: ": Airgapped Palette Enterprise and VerteX patches available for versions 4.4 and 4.6."
+                  - listitem [ref=e445]:
+                    - strong [ref=e446]: April 4, 2025
+                    - text: ": Airgapped Palette Enterprise and VerteX patches available for version 4.5."
+                - heading "SummaryDirect link to Summary" [level=3] [ref=e447]:
+                  - text: Summary
+                  - link "Direct link to Summary" [ref=e448] [cursor=pointer]:
+                    - /url: "#summary-3"
+                    - text: "#"
+                - paragraph [ref=e449]: The identified CVEs affect all ingress-nginx controller deployments using the vulnerable image versions mentioned in this advisory. When chained together, the vulnerabilities can enable unauthenticated users to execute arbitrary code and download confidential information such as secrets available in the cluster. These vulnerable images are used in the Palette and VerteX management planes. Additionally, Spectro Cloud also provides the Nginx pack to customers for their workload clusters, which contains several vulnerable image versions.
+                - paragraph [ref=e450]: As of April 4, 2025, all vulnerable Nginx packs have been deprecated, all managed Palette instances have been patched, and patches are available for connected and airgapped Palette Enterprise and VerteX versions 4.4 - 4.6.
+                - paragraph [ref=e451]:
+                  - text: All workload clusters across all Palette and VerteX installations must be updated manually. All users should review their cluster profiles and workload clusters and upgrade the Nginx pack to version
+                  - code [ref=e452]: 1.11.5
+                  - text: .
+                - heading "Recommended ActionsDirect link to Recommended Actions" [level=3] [ref=e453]:
+                  - text: Recommended Actions
+                  - link "Direct link to Recommended Actions" [ref=e454] [cursor=pointer]:
+                    - /url: "#recommended-actions-3"
+                    - text: "#"
+                - paragraph [ref=e455]: This vulnerability affects both workload clusters and Palette deployments.
+                - list [ref=e456]:
+                  - listitem [ref=e457]:
+                    - paragraph [ref=e458]:
+                      - text: If you have any workload clusters using the affected version of the Nginx pack, you must update the cluster profile to use version
+                      - code [ref=e459]: 1.11.5
+                      - text: of the Nginx pack. Refer to the
+                      - link "Update a Cluster Profile" [ref=e460] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile/
+                      - text: guide for instructions on how to update a cluster profile and apply the updates to workload clusters.
+                  - listitem [ref=e461]:
+                    - paragraph [ref=e462]:
+                      - text: Connected and airgapped Palette Enterprise and VerteX versions 4.4 - 4.6 must apply the latest patch to automatically upgrade the
+                      - code [ref=e463]: ingress-nginx-controller
+                      - text: DaemonSet to version
+                      - code [ref=e464]: 1.11.5
+                      - text: . For guidance on upgrading your Palette version, refer to the
+                      - link "Palette Enterprise" [ref=e465] [cursor=pointer]:
+                        - /url: /enterprise-version/upgrade/
+                      - text: or
+                      - link "VerteX" [ref=e466] [cursor=pointer]:
+                        - /url: /vertex/upgrade/
+                      - text: upgrade guide.
+                    - generic [ref=e467]:
+                      - generic [ref=e468]:
+                        - img [ref=e470]
+                        - text: warning
+                      - paragraph [ref=e473]: If you do not apply the patch, follow the steps described in the upcoming sections to manually upgrade the controller version.
+                - heading "Multi-Tenant and Dedicated SaaS PaletteDirect link to Multi-Tenant and Dedicated SaaS Palette" [level=4] [ref=e474]:
+                  - text: Multi-Tenant and Dedicated SaaS Palette
+                  - link "Direct link to Multi-Tenant and Dedicated SaaS Palette" [ref=e475] [cursor=pointer]:
+                    - /url: "#multi-tenant-and-dedicated-saas-palette"
+                    - text: "#"
+                - paragraph [ref=e476]:
+                  - text: As of March 26, 2025, the
+                  - code [ref=e477]: ingress-nginx-controller
+                  - text: DaemonSet used for multi-tenant and dedicated SaaS Palette has been upgraded to version
+                  - code [ref=e478]: 1.11.5
+                  - text: .
+                - paragraph [ref=e479]:
+                  - text: Workload clusters must be identified and updated manually to use version
+                  - code [ref=e480]: 1.11.5
+                  - text: of the Nginx pack. Follow the below instructions to upgrade Nginx.
+                - list [ref=e481]:
+                  - listitem [ref=e482]:
+                    - paragraph [ref=e483]:
+                      - text: Log in to
+                      - link "Palette" [ref=e484] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e485]:
+                    - paragraph [ref=e486]:
+                      - text: Navigate to the left main menu and select
+                      - strong [ref=e487]: Clusters
+                      - text: .
+                  - listitem [ref=e488]:
+                    - paragraph [ref=e489]:
+                      - text: Select a workload cluster to review. Navigate to the cluster's
+                      - strong [ref=e490]: Profile
+                      - text: tab and note if the cluster profile being used contains Nginx.
+                  - listitem [ref=e491]:
+                    - paragraph [ref=e492]: Repeat step 3 for each cluster to ensure all cluster profiles using Nginx are identified.
+                  - listitem [ref=e493]:
+                    - paragraph [ref=e494]:
+                      - text: Update all cluster profiles currently using the affected version of the Nginx pack to
+                      - code [ref=e495]: 1.11.5
+                      - text: . Refer to the
+                      - link "Update a Cluster Profile" [ref=e496] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile/
+                      - text: guide for instructions on how to update a cluster profile.
+                  - listitem [ref=e497]:
+                    - paragraph [ref=e498]:
+                      - text: Apply the profile updates to all affected clusters. Refer to the
+                      - link "Apply Profile Updates to Clusters" [ref=e499] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile/#apply-profile-updates-to-clusters
+                      - text: guide to learn how to apply profile updates to clusters.
+                - heading "Palette Enterprise or VerteX Installed with Helm ChartsDirect link to Palette Enterprise or VerteX Installed with Helm Charts" [level=4] [ref=e500]:
+                  - text: Palette Enterprise or VerteX Installed with Helm Charts
+                  - link "Direct link to Palette Enterprise or VerteX Installed with Helm Charts" [ref=e501] [cursor=pointer]:
+                    - /url: "#palette-enterprise-or-vertex-installed-with-helm-charts"
+                    - text: "#"
+                - paragraph [ref=e502]:
+                  - text: If you have any instances of Palette enterprise or VerteX installed via Helm Charts with the affected version of the
+                  - code [ref=e503]: ingress-nginx-controller
+                  - text: DaemonSet, you must update it to version
+                  - code [ref=e504]: 1.11.5
+                  - text: . Follow the steps below to download the updated version of the component and update your instance.
+                - list [ref=e505]:
+                  - listitem [ref=e506]:
+                    - paragraph [ref=e507]:
+                      - text: Use the
+                      - code [ref=e508]: kubeconfig
+                      - text: file and
+                      - code [ref=e509]: kubectl
+                      - text: tool to access your Palette enterprise or VerteX cluster. Refer to the
+                      - link "Access Cluster with CLI" [ref=e510] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/
+                      - text: guide for more information.
+                  - listitem [ref=e511]:
+                    - paragraph [ref=e512]:
+                      - text: Check the image used by the
+                      - code [ref=e513]: ingress-nginx-controller
+                      - text: DaemonSet in the
+                      - code [ref=e514]: ingress-nginx
+                      - text: namespace.
+                    - generic [ref=e516]:
+                      - code [ref=e518]:
+                        - generic [ref=e519]: kubectl get daemonset ingress-nginx-controller --namespace ingress-nginx --output yaml | grep 'image:'
+                      - generic [ref=e520]:
+                        - button "Toggle word wrap" [ref=e521] [cursor=pointer]:
+                          - img [ref=e522]
+                        - button "Copy code to clipboard" [ref=e524] [cursor=pointer]:
+                          - generic [ref=e525]:
+                            - img [ref=e526]
+                            - img [ref=e528]
+                  - listitem [ref=e530]:
+                    - paragraph [ref=e531]:
+                      - text: Once you identify the image, update its tag to
+                      - code [ref=e532]: v1.11.5
+                      - text: . You can use the
+                      - code [ref=e533]: kubectl set image
+                      - text: command to update the image.
+                - list [ref=e534]:
+                  - listitem [ref=e535]:
+                    - paragraph [ref=e536]:
+                      - text: If the
+                      - code [ref=e537]: ingress-nginx-controller
+                      - text: DaemonSet is using the image
+                      - code [ref=e538]: gcr.io/spectro-images-public/release-fips/ingress-nginx/controller:v1.11.2
+                      - text: ", update it to"
+                      - code [ref=e539]: gcr.io/spectro-images-public/release-fips/ingress-nginx/controller:v1.11.5
+                      - text: . Replace
+                      - code [ref=e540]: <container-name>
+                      - text: with the name of the container.
+                    - generic [ref=e542]:
+                      - code [ref=e544]:
+                        - generic [ref=e545]: kubectl set image daemonset/ingress-nginx-controller <container-name>=gcr.io/spectro-images-public/release-fips/ingress-nginx/controller:v1.11.5 --namespace ingress-nginx
+                      - generic [ref=e546]:
+                        - button "Toggle word wrap" [ref=e547] [cursor=pointer]:
+                          - img [ref=e548]
+                        - button "Copy code to clipboard" [ref=e550] [cursor=pointer]:
+                          - generic [ref=e551]:
+                            - img [ref=e552]
+                            - img [ref=e554]
+                  - listitem [ref=e556]:
+                    - paragraph [ref=e557]:
+                      - text: If the
+                      - code [ref=e558]: ingress-nginx-controller
+                      - text: DaemonSet is using the image
+                      - code [ref=e559]: us-docker.pkg.dev/palette-images/third-party/ingress-nginx/controller:v1.11.2
+                      - text: ", update it to"
+                      - code [ref=e560]: us-docker.pkg.dev/palette-images/third-party/ingress-nginx/controller:v1.11.5
+                      - text: . Replace
+                      - code [ref=e561]: <container-name>
+                      - text: with the name of the container.
+                    - generic [ref=e563]:
+                      - code [ref=e565]:
+                        - generic [ref=e566]: kubectl set image daemonset/ingress-nginx-controller <container-name>=us-docker.pkg.dev/palette-images/third-party/ingress-nginx/controller:v1.11.5 --namespace ingress-nginx
+                      - generic [ref=e567]:
+                        - button "Toggle word wrap" [ref=e568] [cursor=pointer]:
+                          - img [ref=e569]
+                        - button "Copy code to clipboard" [ref=e571] [cursor=pointer]:
+                          - generic [ref=e572]:
+                            - img [ref=e573]
+                            - img [ref=e575]
+                - heading "Palette Enterprise or VerteX Installed with the Palette CLIDirect link to Palette Enterprise or VerteX Installed with the Palette CLI" [level=4] [ref=e577]:
+                  - text: Palette Enterprise or VerteX Installed with the Palette CLI
+                  - link "Direct link to Palette Enterprise or VerteX Installed with the Palette CLI" [ref=e578] [cursor=pointer]:
+                    - /url: "#palette-enterprise-or-vertex-installed-with-the-palette-cli"
+                    - text: "#"
+                - paragraph [ref=e579]:
+                  - text: If you have any instances of Palette enterprise or VerteX installed via the Palette CLI with the affected version of the
+                  - code [ref=e580]: ingress-nginx-controller
+                  - text: DaemonSet, you must update it to version
+                  - code [ref=e581]: 1.11.5
+                  - text: . Follow the steps below to download the updated version of the component and update your instance.
+                - list [ref=e582]:
+                  - listitem [ref=e583]:
+                    - paragraph [ref=e584]:
+                      - text: Use the
+                      - code [ref=e585]: kubeconfig
+                      - text: file and
+                      - code [ref=e586]: kubectl
+                      - text: tool to access your Palette enterprise or VerteX cluster. Refer to the
+                      - link "Access Cluster with CLI" [ref=e587] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/
+                      - text: guide for more information.
+                  - listitem [ref=e588]:
+                    - paragraph [ref=e589]:
+                      - text: Scale down the
+                      - code [ref=e590]: palette-controller-manager
+                      - text: deployment to zero replicas in the
+                      - code [ref=e591]: cluster-mgmt-*
+                      - text: namespace, replacing
+                      - code [ref=e592]: "*"
+                      - text: with the suffix associated with your namespace.
+                    - generic [ref=e594]:
+                      - code [ref=e596]:
+                        - generic [ref=e597]: kubectl scale deployment palette-controller-manager --replicas=0 --namespace cluster-mgmt-*
+                      - generic [ref=e598]:
+                        - button "Toggle word wrap" [ref=e599] [cursor=pointer]:
+                          - img [ref=e600]
+                        - button "Copy code to clipboard" [ref=e602] [cursor=pointer]:
+                          - generic [ref=e603]:
+                            - img [ref=e604]
+                            - img [ref=e606]
+                  - listitem [ref=e608]:
+                    - paragraph [ref=e609]:
+                      - text: Scale down the
+                      - code [ref=e610]: cluster-management-agent
+                      - text: deployment to zero replicas in the
+                      - code [ref=e611]: cluster-mgmt-*
+                      - text: namespace, replacing
+                      - code [ref=e612]: "*"
+                      - text: with the suffix associated with your namespace.
+                    - generic [ref=e614]:
+                      - code [ref=e616]:
+                        - generic [ref=e617]: kubectl scale deployment cluster-management-agent --replicas=0 --namespace cluster-mgmt-*
+                      - generic [ref=e618]:
+                        - button "Toggle word wrap" [ref=e619] [cursor=pointer]:
+                          - img [ref=e620]
+                        - button "Copy code to clipboard" [ref=e622] [cursor=pointer]:
+                          - generic [ref=e623]:
+                            - img [ref=e624]
+                            - img [ref=e626]
+                  - listitem [ref=e628]:
+                    - paragraph [ref=e629]:
+                      - text: Confirm that both deployments have been scaled down to zero replicas. Replace
+                      - code [ref=e630]: "*"
+                      - text: with the suffix associated with your namespace.
+                    - generic [ref=e632]:
+                      - code [ref=e634]:
+                        - generic [ref=e635]: kubectl get deployments --namespace cluster-mgmt-*
+                      - button "Copy code to clipboard" [ref=e637] [cursor=pointer]:
+                        - generic [ref=e638]:
+                          - img [ref=e639]
+                          - img [ref=e641]
+                  - listitem [ref=e643]:
+                    - paragraph [ref=e644]:
+                      - text: Check the image used by the
+                      - code [ref=e645]: ingress-nginx-controller
+                      - text: DaemonSet in the
+                      - code [ref=e646]: ingress-nginx
+                      - text: namespace.
+                    - generic [ref=e648]:
+                      - code [ref=e650]:
+                        - generic [ref=e651]: kubectl get daemonset ingress-nginx-controller --namespace ingress-nginx --output yaml | grep 'image:'
+                      - generic [ref=e652]:
+                        - button "Toggle word wrap" [ref=e653] [cursor=pointer]:
+                          - img [ref=e654]
+                        - button "Copy code to clipboard" [ref=e656] [cursor=pointer]:
+                          - generic [ref=e657]:
+                            - img [ref=e658]
+                            - img [ref=e660]
+                  - listitem [ref=e662]:
+                    - paragraph [ref=e663]:
+                      - text: Once you identify the image, update its tag to
+                      - code [ref=e664]: v1.11.5
+                      - text: . You can use the
+                      - code [ref=e665]: kubectl set image
+                      - text: command to update the image.
+                - list [ref=e666]:
+                  - listitem [ref=e667]:
+                    - paragraph [ref=e668]:
+                      - text: If the
+                      - code [ref=e669]: ingress-nginx-controller
+                      - text: DaemonSet is using the image
+                      - code [ref=e670]: gcr.io/spectro-images-public/release-fips/ingress-nginx/controller:v1.11.2
+                      - text: ", update it to"
+                      - code [ref=e671]: gcr.io/spectro-images-public/release-fips/ingress-nginx/controller:v1.11.5
+                      - text: . Replace
+                      - code [ref=e672]: <container-name>
+                      - text: with the name of the container.
+                    - generic [ref=e674]:
+                      - code [ref=e676]:
+                        - generic [ref=e677]: kubectl set image daemonset/ingress-nginx-controller <container-name>=gcr.io/spectro-images-public/release-fips/ingress-nginx/controller:v1.11.5 --namespace ingress-nginx
+                      - generic [ref=e678]:
+                        - button "Toggle word wrap" [ref=e679] [cursor=pointer]:
+                          - img [ref=e680]
+                        - button "Copy code to clipboard" [ref=e682] [cursor=pointer]:
+                          - generic [ref=e683]:
+                            - img [ref=e684]
+                            - img [ref=e686]
+                  - listitem [ref=e688]:
+                    - paragraph [ref=e689]:
+                      - text: If the
+                      - code [ref=e690]: ingress-nginx-controller
+                      - text: DaemonSet is using the image
+                      - code [ref=e691]: us-docker.pkg.dev/palette-images/third-party/ingress-nginx/controller:v1.11.2
+                      - text: ", update it to"
+                      - code [ref=e692]: us-docker.pkg.dev/palette-images/third-party/ingress-nginx/controller:v1.11.5
+                      - text: . Replace
+                      - code [ref=e693]: <container-name>
+                      - text: with the name of the container.
+                    - generic [ref=e695]:
+                      - code [ref=e697]:
+                        - generic [ref=e698]: kubectl set image daemonset/ingress-nginx-controller <container-name>=us-docker.pkg.dev/palette-images/third-party/ingress-nginx/controller:v1.11.5 --namespace ingress-nginx
+                      - generic [ref=e699]:
+                        - button "Toggle word wrap" [ref=e700] [cursor=pointer]:
+                          - img [ref=e701]
+                        - button "Copy code to clipboard" [ref=e703] [cursor=pointer]:
+                          - generic [ref=e704]:
+                            - img [ref=e705]
+                            - img [ref=e707]
+                - heading "Airgap Palette Enterprise or VerteXDirect link to Airgap Palette Enterprise or VerteX" [level=4] [ref=e709]:
+                  - text: Airgap Palette Enterprise or VerteX
+                  - link "Direct link to Airgap Palette Enterprise or VerteX" [ref=e710] [cursor=pointer]:
+                    - /url: "#airgap-palette-enterprise-or-vertex"
+                    - text: "#"
+                - paragraph [ref=e711]:
+                  - text: If you have any airgapped instances of Palette enterprise or VerteX using the affected version of the
+                  - code [ref=e712]: ingress-nginx-controller
+                  - text: DaemonSet, you must update it to version
+                  - code [ref=e713]: 1.11.5
+                  - text: . Follow the steps below to download the updated version of the component and update your instance.
+                - generic [ref=e714]:
+                  - tablist [ref=e715]:
+                    - tab "Palette Enterprise" [selected] [ref=e716] [cursor=pointer]
+                    - tab "Palette VerteX" [ref=e717] [cursor=pointer]
+                  - tabpanel [ref=e719]:
+                    - list [ref=e720]:
+                      - listitem [ref=e721]:
+                        - paragraph [ref=e722]:
+                          - text: Contact your Palette support representative to obtain the
+                          - code [ref=e723]: airgap-palette-nginx
+                          - text: binary version
+                          - code [ref=e724]: 1.11.5
+                          - text: . Ensure the SHA of the binary is
+                          - code [ref=e725]: 8148734578378da043b918f893f3bbfcae9d421b9ac4426e10762d832734e1dd
+                          - text: . Once obtained, upload the
+                          - code [ref=e726]: airgap-palette-nginx
+                          - text: binary to the registry. Follow the
+                          - link "Usage Instructions" [ref=e727] [cursor=pointer]:
+                            - /url: /downloads/self-hosted-palette/additional-packs/
+                          - text: guide for detailed steps on downloading and installing the binary.
+                      - listitem [ref=e728]:
+                        - paragraph [ref=e729]: Log in to the Palette system console.
+                      - listitem [ref=e730]:
+                        - paragraph [ref=e731]:
+                          - text: From the left
+                          - strong [ref=e732]: Main Menu
+                          - text: ", select"
+                          - strong [ref=e733]: Administration > Pack Registries
+                          - text: . Then, next to the packs registry, click the three-dot button >
+                          - strong [ref=e734]: Sync
+                          - text: . Wait for the registry synchronization to complete.
+                      - listitem [ref=e735]:
+                        - paragraph [ref=e736]:
+                          - text: Use the
+                          - code [ref=e737]: kubeconfig
+                          - text: file and
+                          - code [ref=e738]: kubectl
+                          - text: tool to access your Palette enterprise cluster. Refer to the
+                          - link "Access Cluster with CLI" [ref=e739] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/palette-webctl/
+                          - text: guide for more information.
+                      - listitem [ref=e740]:
+                        - paragraph [ref=e741]:
+                          - text: Scale down the
+                          - code [ref=e742]: palette-controller-manager
+                          - text: deployment to zero replicas in the
+                          - code [ref=e743]: cluster-mgmt-*
+                          - text: namespace, replacing
+                          - code [ref=e744]: "*"
+                          - text: with the suffix associated with your namespace.
+                        - generic [ref=e746]:
+                          - code [ref=e748]:
+                            - generic [ref=e749]: kubectl scale deployment palette-controller-manager --replicas=0 --namespace cluster-mgmt-*
+                          - generic [ref=e750]:
+                            - button "Toggle word wrap" [ref=e751] [cursor=pointer]:
+                              - img [ref=e752]
+                            - button "Copy code to clipboard" [ref=e754] [cursor=pointer]:
+                              - generic [ref=e755]:
+                                - img [ref=e756]
+                                - img [ref=e758]
+                      - listitem [ref=e760]:
+                        - paragraph [ref=e761]:
+                          - text: Scale down the
+                          - code [ref=e762]: cluster-management-agent
+                          - text: deployment to zero replicas in the
+                          - code [ref=e763]: cluster-mgmt-*
+                          - text: namespace, replacing
+                          - code [ref=e764]: "*"
+                          - text: with the suffix associated with your namespace.
+                        - generic [ref=e766]:
+                          - code [ref=e768]:
+                            - generic [ref=e769]: kubectl scale deployment cluster-management-agent --replicas=0 --namespace cluster-mgmt-*
+                          - generic [ref=e770]:
+                            - button "Toggle word wrap" [ref=e771] [cursor=pointer]:
+                              - img [ref=e772]
+                            - button "Copy code to clipboard" [ref=e774] [cursor=pointer]:
+                              - generic [ref=e775]:
+                                - img [ref=e776]
+                                - img [ref=e778]
+                      - listitem [ref=e780]:
+                        - paragraph [ref=e781]:
+                          - text: Confirm that both deployments have been scaled down to zero replicas. Replace
+                          - code [ref=e782]: "*"
+                          - text: with the suffix associated with your namespace.
+                        - generic [ref=e784]:
+                          - code [ref=e786]:
+                            - generic [ref=e787]: kubectl get deployments --namespace cluster-mgmt-*
+                          - button "Copy code to clipboard" [ref=e789] [cursor=pointer]:
+                            - generic [ref=e790]:
+                              - img [ref=e791]
+                              - img [ref=e793]
+                      - listitem [ref=e795]:
+                        - paragraph [ref=e796]:
+                          - text: Check the image used by the
+                          - code [ref=e797]: ingress-nginx-controller
+                          - text: DaemonSet in the
+                          - code [ref=e798]: ingress-nginx
+                          - text: namespace.
+                        - generic [ref=e800]:
+                          - code [ref=e802]:
+                            - generic [ref=e803]: kubectl get daemonset ingress-nginx-controller --namespace ingress-nginx --output yaml | grep 'image:'
+                          - generic [ref=e804]:
+                            - button "Toggle word wrap" [ref=e805] [cursor=pointer]:
+                              - img [ref=e806]
+                            - button "Copy code to clipboard" [ref=e808] [cursor=pointer]:
+                              - generic [ref=e809]:
+                                - img [ref=e810]
+                                - img [ref=e812]
+                      - listitem [ref=e814]:
+                        - paragraph [ref=e815]:
+                          - text: Once you identify the image, update its tag to
+                          - code [ref=e816]: v1.11.5
+                          - text: . You can use the
+                          - code [ref=e817]: kubectl set image
+                          - text: command to update the image.
+                    - list [ref=e818]:
+                      - listitem [ref=e819]:
+                        - paragraph [ref=e820]:
+                          - text: If the
+                          - code [ref=e821]: ingress-nginx-controller
+                          - text: DaemonSet is using the image
+                          - code [ref=e822]: gcr.io/spectro-images-public/release-fips/ingress-nginx/controller:v1.11.2
+                          - text: ", update it to"
+                          - code [ref=e823]: gcr.io/spectro-images-public/release-fips/ingress-nginx/controller:v1.11.5
+                          - text: . Replace
+                          - code [ref=e824]: <container-name>
+                          - text: with the name of the container.
+                        - generic [ref=e826]:
+                          - code [ref=e828]:
+                            - generic [ref=e829]: kubectl set image daemonset/ingress-nginx-controller <container-name>=gcr.io/spectro-images-public/release-fips/ingress-nginx/controller:v1.11.5 --namespace ingress-nginx
+                          - generic [ref=e830]:
+                            - button "Toggle word wrap" [ref=e831] [cursor=pointer]:
+                              - img [ref=e832]
+                            - button "Copy code to clipboard" [ref=e834] [cursor=pointer]:
+                              - generic [ref=e835]:
+                                - img [ref=e836]
+                                - img [ref=e838]
+                      - listitem [ref=e840]:
+                        - paragraph [ref=e841]:
+                          - text: If the
+                          - code [ref=e842]: ingress-nginx-controller
+                          - text: DaemonSet is using the image
+                          - code [ref=e843]: us-docker.pkg.dev/palette-images/third-party/ingress-nginx/controller:v1.11.2
+                          - text: ", update it to"
+                          - code [ref=e844]: us-docker.pkg.dev/palette-images/third-party/ingress-nginx/controller:v1.11.5
+                          - text: . Replace
+                          - code [ref=e845]: <container-name>
+                          - text: with the name of the container.
+                        - generic [ref=e847]:
+                          - code [ref=e849]:
+                            - generic [ref=e850]: kubectl set image daemonset/ingress-nginx-controller <container-name>=us-docker.pkg.dev/palette-images/third-party/ingress-nginx/controller:v1.11.5 --namespace ingress-nginx
+                          - generic [ref=e851]:
+                            - button "Toggle word wrap" [ref=e852] [cursor=pointer]:
+                              - img [ref=e853]
+                            - button "Copy code to clipboard" [ref=e855] [cursor=pointer]:
+                              - generic [ref=e856]:
+                                - img [ref=e857]
+                                - img [ref=e859]
+                - heading "Airgap Workload Clusters Using the Nginx PackDirect link to Airgap Workload Clusters Using the Nginx Pack" [level=4] [ref=e861]:
+                  - text: Airgap Workload Clusters Using the Nginx Pack
+                  - link "Direct link to Airgap Workload Clusters Using the Nginx Pack" [ref=e862] [cursor=pointer]:
+                    - /url: "#airgap-workload-clusters-using-the-nginx-pack"
+                    - text: "#"
+                - paragraph [ref=e863]:
+                  - text: If you have any airgap workload clusters using the affected version of the Nginx pack, you must update the cluster profile to version
+                  - code [ref=e864]: 1.11.5
+                  - text: of the Nginx pack. Follow the steps below to download the updated pack and modify your cluster profile.
+                - generic [ref=e865]:
+                  - tablist [ref=e866]:
+                    - tab "Palette Enterprise" [selected] [ref=e867] [cursor=pointer]
+                    - tab "Palette VerteX" [ref=e868] [cursor=pointer]
+                  - tabpanel [ref=e870]:
+                    - list [ref=e871]:
+                      - listitem [ref=e872]:
+                        - paragraph [ref=e873]:
+                          - text: Contact your Palette support representative to obtain the
+                          - code [ref=e874]: airgap-pack-nginx
+                          - text: binary version
+                          - code [ref=e875]: 1.11.5
+                          - text: . Ensure the SHA of the binary is
+                          - code [ref=e876]: f526bdf9fba8031d50846e503ea8011d67ffdc23b9331a62ebe644ae49c06fb1
+                          - text: . Once obtained, upload the
+                          - code [ref=e877]: airgap-pack-nginx
+                          - text: binary to the registry. Follow the
+                          - link "Usage Instructions" [ref=e878] [cursor=pointer]:
+                            - /url: /downloads/self-hosted-palette/additional-packs/
+                          - text: guide for detailed steps on downloading and installing the binary.
+                      - listitem [ref=e879]:
+                        - paragraph [ref=e880]: Log in to the Palette system console.
+                      - listitem [ref=e881]:
+                        - paragraph [ref=e882]:
+                          - text: From the left main menu, select
+                          - strong [ref=e883]: Administration > Pack Registries
+                          - text: . Then, next to the packs registry, click the three-dot button >
+                          - strong [ref=e884]: Sync
+                          - text: . Wait for the registry synchronization to complete.
+                      - listitem [ref=e885]:
+                        - paragraph [ref=e886]: Log in to the Palette console.
+                      - listitem [ref=e887]:
+                        - paragraph [ref=e888]:
+                          - text: Update all cluster profiles currently using the affected version of the Nginx pack. Refer to the
+                          - link "Update a Cluster Profile" [ref=e889] [cursor=pointer]:
+                            - /url: /profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile/
+                          - text: guide for instructions on how to update a cluster profile.
+                      - listitem [ref=e890]:
+                        - paragraph [ref=e891]:
+                          - text: Apply the profile updates to all affected clusters. Refer to the
+                          - link "Apply Profile Updates to Clusters" [ref=e892] [cursor=pointer]:
+                            - /url: /profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile/#apply-profile-updates-to-clusters
+                          - text: guide to learn how to apply profile updates to clusters.
+              - generic [ref=e893]:
+                - generic [ref=e895]:
+                  - text: "Tags:"
+                  - list [ref=e896]:
+                    - listitem [ref=e897]:
+                      - link "security" [ref=e898] [cursor=pointer]:
+                        - /url: /tags/security/
+                    - listitem [ref=e899]:
+                      - link "cve" [ref=e900] [cursor=pointer]:
+                        - /url: /tags/cve/
+                    - listitem [ref=e901]:
+                      - link "advisories" [ref=e902] [cursor=pointer]:
+                        - /url: /tags/advisories/
+                - link "Edit this page" [ref=e905] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/security-bulletins/security-advisories/security-advisories.md
+                  - img [ref=e906]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e910]:
+              - link "Previous « u-2204-0-k-1322-0" [ref=e911] [cursor=pointer]:
+                - /url: /security-bulletins/os-k8s/u-2204-0-k-1322-0/
+                - generic [ref=e912]: Previous
+                - generic [ref=e913]: « u-2204-0-k-1322-0
+              - link "Next What is Palette? »" [ref=e914] [cursor=pointer]:
+                - /url: /
+                - generic [ref=e915]: Next
+                - generic [ref=e916]: What is Palette? »
+          - list [ref=e919]:
+            - listitem [ref=e920]:
+              - 'link "Security Advisory 004 - MongoDB: FIPS Mode Cryptographic Algorithm Use from Non-FIPS Providers" [ref=e921] [cursor=pointer]':
+                - /url: "#security-advisory-004---mongodb-fips-mode-cryptographic-algorithm-use-from-non-fips-providers"
+              - list [ref=e922]:
+                - listitem [ref=e923]:
+                  - link "Summary" [ref=e924] [cursor=pointer]:
+                    - /url: "#summary"
+                - listitem [ref=e925]:
+                  - link "Applicable Deployments" [ref=e926] [cursor=pointer]:
+                    - /url: "#applicable-deployments"
+                - listitem [ref=e927]:
+                  - link "Recommended Actions" [ref=e928] [cursor=pointer]:
+                    - /url: "#recommended-actions"
+            - listitem [ref=e929]:
+              - link "Security Advisory 003 - Self-Deleting Nodes with OwnerReference" [ref=e930] [cursor=pointer]:
+                - /url: "#security-advisory-003---self-deleting-nodes-with-ownerreference"
+              - list [ref=e931]:
+                - listitem [ref=e932]:
+                  - link "Summary" [ref=e933] [cursor=pointer]:
+                    - /url: "#summary-1"
+                - listitem [ref=e934]:
+                  - link "Recommended Actions" [ref=e935] [cursor=pointer]:
+                    - /url: "#recommended-actions-1"
+                - listitem [ref=e936]:
+                  - link "Roadmap" [ref=e937] [cursor=pointer]:
+                    - /url: "#roadmap"
+            - listitem [ref=e938]:
+              - link "Security Advisory 002 - Kubernetes Race Condition" [ref=e939] [cursor=pointer]:
+                - /url: "#security-advisory-002---kubernetes-race-condition"
+              - list [ref=e940]:
+                - listitem [ref=e941]:
+                  - link "Related CVEs" [ref=e942] [cursor=pointer]:
+                    - /url: "#related-cves"
+                - listitem [ref=e943]:
+                  - link "Timeline" [ref=e944] [cursor=pointer]:
+                    - /url: "#timeline"
+                - listitem [ref=e945]:
+                  - link "Summary" [ref=e946] [cursor=pointer]:
+                    - /url: "#summary-2"
+                - listitem [ref=e947]:
+                  - link "Recommended Actions" [ref=e948] [cursor=pointer]:
+                    - /url: "#recommended-actions-2"
+            - listitem [ref=e949]:
+              - link "Security Advisory 001 - Nginx Vulnerability" [ref=e950] [cursor=pointer]:
+                - /url: "#security-advisory-001---nginx-vulnerability"
+              - list [ref=e951]:
+                - listitem [ref=e952]:
+                  - link "Related CVEs" [ref=e953] [cursor=pointer]:
+                    - /url: "#related-cves-1"
+                - listitem [ref=e954]:
+                  - link "Timeline" [ref=e955] [cursor=pointer]:
+                    - /url: "#timeline-1"
+                - listitem [ref=e956]:
+                  - link "Summary" [ref=e957] [cursor=pointer]:
+                    - /url: "#summary-3"
+                - listitem [ref=e958]:
+                  - link "Recommended Actions" [ref=e959] [cursor=pointer]:
+                    - /url: "#recommended-actions-3"
+                  - list [ref=e960]:
+                    - listitem [ref=e961]:
+                      - link "Multi-Tenant and Dedicated SaaS Palette" [ref=e962] [cursor=pointer]:
+                        - /url: "#multi-tenant-and-dedicated-saas-palette"
+                    - listitem [ref=e963]:
+                      - link "Palette Enterprise or VerteX Installed with Helm Charts" [ref=e964] [cursor=pointer]:
+                        - /url: "#palette-enterprise-or-vertex-installed-with-helm-charts"
+                    - listitem [ref=e965]:
+                      - link "Palette Enterprise or VerteX Installed with the Palette CLI" [ref=e966] [cursor=pointer]:
+                        - /url: "#palette-enterprise-or-vertex-installed-with-the-palette-cli"
+                    - listitem [ref=e967]:
+                      - link "Airgap Palette Enterprise or VerteX" [ref=e968] [cursor=pointer]:
+                        - /url: "#airgap-palette-enterprise-or-vertex"
+                    - listitem [ref=e969]:
+                      - link "Airgap Workload Clusters Using the Nginx Pack" [ref=e970] [cursor=pointer]:
+                        - /url: "#airgap-workload-clusters-using-the-nginx-pack"
+  - button "Project Logo Ask AI" [ref=e971] [cursor=pointer]:
+    - generic [ref=e974]:
+      - img "Project Logo" [ref=e975]
+      - paragraph [ref=e976]: Ask AI
+```

@@ -1,0 +1,447 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [expanded] [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+                - list [ref=e149]:
+                  - listitem [ref=e150]:
+                    - generic [ref=e151]:
+                      - link "User Authentication" [expanded] [ref=e152] [cursor=pointer]:
+                        - /url: /user-management/authentication/
+                      - button "Toggle the collapsible sidebar category 'User Authentication'" [ref=e153] [cursor=pointer]
+                    - list [ref=e154]:
+                      - listitem [ref=e155]:
+                        - link "Authorization Token" [ref=e156] [cursor=pointer]:
+                          - /url: /user-management/authentication/authorization-token/
+                      - listitem [ref=e157]:
+                        - generic [ref=e158]:
+                          - link "API Key" [expanded] [ref=e159] [cursor=pointer]:
+                            - /url: /user-management/authentication/api-key/
+                          - button "Toggle the collapsible sidebar category 'API Key'" [ref=e160] [cursor=pointer]
+                        - list [ref=e161]:
+                          - listitem [ref=e162]:
+                            - link "Create API Key" [ref=e163] [cursor=pointer]:
+                              - /url: /user-management/authentication/api-key/create-api-key/
+                          - listitem [ref=e164]:
+                            - link "Edit API Key" [ref=e165] [cursor=pointer]:
+                              - /url: /user-management/authentication/api-key/modify-api-key/
+                          - listitem [ref=e166]:
+                            - link "Revoke API Key" [ref=e167] [cursor=pointer]:
+                              - /url: /user-management/authentication/api-key/revoke-api-key/
+                          - listitem [ref=e168]:
+                            - link "Delete API Key" [ref=e169] [cursor=pointer]:
+                              - /url: /user-management/authentication/api-key/delete-api-key/
+                      - listitem [ref=e170]:
+                        - link "User Interface Authentication" [ref=e171] [cursor=pointer]:
+                          - /url: /user-management/authentication/ui-autentication/
+                      - listitem [ref=e172]:
+                        - link "Switch Tenant" [ref=e173] [cursor=pointer]:
+                          - /url: /user-management/authentication/switch-tenant/
+                  - listitem [ref=e174]:
+                    - generic [ref=e175]:
+                      - link "Users and Teams" [ref=e176] [cursor=pointer]:
+                        - /url: /user-management/users-and-teams/
+                      - button "Toggle the collapsible sidebar category 'Users and Teams'" [ref=e177] [cursor=pointer]
+                  - listitem [ref=e178]:
+                    - generic [ref=e179]:
+                      - link "Roles and Permissions" [ref=e180] [cursor=pointer]:
+                        - /url: /user-management/palette-rbac/
+                      - button "Toggle the collapsible sidebar category 'Roles and Permissions'" [ref=e181] [cursor=pointer]
+                  - listitem [ref=e182]:
+                    - generic [ref=e183]:
+                      - link "SAML and OIDC SSO" [ref=e184] [cursor=pointer]:
+                        - /url: /user-management/saml-sso/
+                      - button "Toggle the collapsible sidebar category 'SAML and OIDC SSO'" [ref=e185] [cursor=pointer]
+              - listitem [ref=e186]:
+                - generic [ref=e187]:
+                  - link "Registries and Packs" [ref=e188] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e190]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e192] [cursor=pointer]
+              - listitem [ref=e193]:
+                - generic [ref=e194]:
+                  - link "Security" [ref=e195] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e197]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e199] [cursor=pointer]
+              - listitem [ref=e200]:
+                - generic [ref=e201]:
+                  - link "Audit Logs" [ref=e202] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e204]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e206] [cursor=pointer]
+              - listitem [ref=e207]:
+                - generic [ref=e208]:
+                  - link "Self-Hosted Palette" [ref=e209] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e211]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e213] [cursor=pointer]
+              - listitem [ref=e214]:
+                - generic [ref=e215]:
+                  - link "Palette VerteX" [ref=e216] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e218]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e220] [cursor=pointer]
+              - listitem [ref=e221]:
+                - generic [ref=e222]:
+                  - link "Tenant Administration" [ref=e223] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e225]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e227] [cursor=pointer]
+              - listitem [ref=e228]:
+                - generic [ref=e229]:
+                  - link "Automation" [ref=e230] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e232]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e234] [cursor=pointer]
+              - listitem [ref=e235]:
+                - generic [ref=e236]:
+                  - link "Troubleshooting" [ref=e237] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e239]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e241] [cursor=pointer]
+              - listitem [ref=e242]:
+                - link "Glossary" [ref=e243] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e245]
+                  - text: Glossary
+              - listitem [ref=e247]:
+                - generic [ref=e248]:
+                  - link "Compliance & Legal" [ref=e249] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e251]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e253] [cursor=pointer]
+              - listitem [ref=e254]:
+                - button "Privacy Settings" [ref=e255] [cursor=pointer]:
+                  - img [ref=e256]
+                  - text: Privacy Settings
+      - main [ref=e258]:
+        - generic [ref=e260]:
+          - generic [ref=e262]:
+            - article [ref=e263]:
+              - navigation "Breadcrumbs" [ref=e264]:
+                - list [ref=e265]:
+                  - listitem [ref=e266]:
+                    - link "Home page" [ref=e267] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e268]
+                  - listitem [ref=e270]:
+                    - link "User & Role Management" [ref=e271] [cursor=pointer]:
+                      - /url: /user-management/
+                  - listitem [ref=e272]:
+                    - link "User Authentication" [ref=e273] [cursor=pointer]:
+                      - /url: /user-management/authentication/
+                  - listitem [ref=e274]:
+                    - link "API Key" [ref=e275] [cursor=pointer]:
+                      - /url: /user-management/authentication/api-key/
+                  - listitem [ref=e276]:
+                    - generic [ref=e277]: Edit API Key
+              - generic [ref=e278]:
+                - heading "Edit API Key" [level=1] [ref=e280]
+                - paragraph [ref=e281]: "You can edit an API key you have already created. The following attributes of an API key can be changed:"
+                - table [ref=e282]:
+                  - rowgroup [ref=e283]:
+                    - row "Attribute Description Edit" [ref=e284]:
+                      - cell "Attribute" [ref=e285]:
+                        - strong [ref=e286]: Attribute
+                      - cell "Description" [ref=e287]:
+                        - strong [ref=e288]: Description
+                      - cell "Edit" [ref=e289]:
+                        - strong [ref=e290]: Edit
+                  - rowgroup [ref=e291]:
+                    - row "API Key Name The user assigned name of the API key. ✅" [ref=e292]:
+                      - cell "API Key Name" [ref=e293]:
+                        - strong [ref=e294]: API Key Name
+                      - cell "The user assigned name of the API key." [ref=e295]
+                      - cell "✅" [ref=e296]
+                    - row "Description An optional description about the key. ✅" [ref=e297]:
+                      - cell "Description" [ref=e298]:
+                        - strong [ref=e299]: Description
+                      - cell "An optional description about the key." [ref=e300]
+                      - cell "✅" [ref=e301]
+                    - row "Expiration Date The expiration date of the key. ✅" [ref=e302]:
+                      - cell "Expiration Date" [ref=e303]:
+                        - strong [ref=e304]: Expiration Date
+                      - cell "The expiration date of the key." [ref=e305]
+                      - cell "✅" [ref=e306]
+                    - row "Value The API key value. ❌" [ref=e307]:
+                      - cell "Value" [ref=e308]:
+                        - strong [ref=e309]: Value
+                      - cell "The API key value." [ref=e310]
+                      - cell "❌" [ref=e311]
+                - paragraph [ref=e312]: Tenant administrators can edit an API key on behalf of any user within the tenant. Select the Tenant tab below to learn more about editing an API key as a tenant admin.
+                - generic [ref=e313]:
+                  - generic [ref=e314]:
+                    - img [ref=e316]
+                    - text: info
+                  - paragraph [ref=e319]: Tenant administrators can only edit the API key name, description, and expiration date. The API key value and the assigned user cannot be edited.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e320]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e321] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - generic [ref=e322]:
+                  - tablist [ref=e323]:
+                    - tab "User" [selected] [ref=e324] [cursor=pointer]
+                    - tab "Tenant" [ref=e325] [cursor=pointer]
+                  - tabpanel [ref=e327]:
+                    - list [ref=e328]:
+                      - listitem [ref=e329]:
+                        - paragraph [ref=e330]: You must have a Palette account, and you must be logged in.
+                      - listitem [ref=e331]:
+                        - paragraph [ref=e332]: An existing API key.
+                - heading "Edit API KeyDirect link to Edit API Key" [level=2] [ref=e333]:
+                  - text: Edit API Key
+                  - link "Direct link to Edit API Key" [ref=e334] [cursor=pointer]:
+                    - /url: "#edit-api-key"
+                    - text: "#"
+                - generic [ref=e335]:
+                  - tablist [ref=e336]:
+                    - tab "User" [selected] [ref=e337] [cursor=pointer]
+                    - tab "Tenant" [ref=e338] [cursor=pointer]
+                  - tabpanel [ref=e340]:
+                    - list [ref=e341]:
+                      - listitem [ref=e342]:
+                        - paragraph [ref=e343]:
+                          - text: Log in to
+                          - link "Palette" [ref=e344] [cursor=pointer]:
+                            - /url: https://console.spectrocloud.com
+                          - text: .
+                      - listitem [ref=e345]:
+                        - paragraph [ref=e346]:
+                          - text: Navigate to the
+                          - strong [ref=e347]: User Menu
+                          - text: ", and select"
+                          - strong [ref=e348]: My API Keys
+                          - text: .
+                      - listitem [ref=e349]:
+                        - paragraph [ref=e350]:
+                          - text: Identify your API key in the table, and click on the
+                          - strong [ref=e351]: three-dot Menu
+                          - text: .
+                      - listitem [ref=e352]:
+                        - paragraph [ref=e353]:
+                          - text: Click on
+                          - strong [ref=e354]: Edit
+                          - text: .
+                      - listitem [ref=e355]:
+                        - paragraph [ref=e356]:
+                          - text: Make the necessary changes to the API key attributes and click
+                          - strong [ref=e357]: Save
+                          - text: .
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e358]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e359] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - generic [ref=e360]:
+                  - tablist [ref=e361]:
+                    - tab "User" [selected] [ref=e362] [cursor=pointer]
+                    - tab "Tenant" [ref=e363] [cursor=pointer]
+                  - tabpanel [ref=e365]:
+                    - list [ref=e366]:
+                      - listitem [ref=e367]:
+                        - paragraph [ref=e368]:
+                          - text: Log in to
+                          - link "Palette" [ref=e369] [cursor=pointer]:
+                            - /url: https://console.spectrocloud.com
+                          - text: .
+                      - listitem [ref=e370]:
+                        - paragraph [ref=e371]:
+                          - text: Navigate to the
+                          - strong [ref=e372]: User Menu
+                          - text: ", and select"
+                          - strong [ref=e373]: My API Keys
+                          - text: .
+                      - listitem [ref=e374]:
+                        - paragraph [ref=e375]: Identify your API key in the table.
+                      - listitem [ref=e376]:
+                        - paragraph [ref=e377]: Verify the changes you made to the API key attributes are reflected in the table, including API key name, description, and expiration date.
+              - generic [ref=e378]:
+                - generic [ref=e380]:
+                  - text: "Tags:"
+                  - list [ref=e381]:
+                    - listitem [ref=e382]:
+                      - link "user-management" [ref=e383] [cursor=pointer]:
+                        - /url: /tags/user-management/
+                    - listitem [ref=e384]:
+                      - link "authentication" [ref=e385] [cursor=pointer]:
+                        - /url: /tags/authentication/
+                    - listitem [ref=e386]:
+                      - link "api-key" [ref=e387] [cursor=pointer]:
+                        - /url: /tags/api-key/
+                - link "Edit this page" [ref=e390] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/user-management/authentication/api-key/modify-api-key.md
+                  - img [ref=e391]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e395]:
+              - link "Previous « Create API Key" [ref=e396] [cursor=pointer]:
+                - /url: /user-management/authentication/api-key/create-api-key/
+                - generic [ref=e397]: Previous
+                - generic [ref=e398]: « Create API Key
+              - link "Next Revoke API Key »" [ref=e399] [cursor=pointer]:
+                - /url: /user-management/authentication/api-key/revoke-api-key/
+                - generic [ref=e400]: Next
+                - generic [ref=e401]: Revoke API Key »
+          - list [ref=e404]:
+            - listitem [ref=e405]:
+              - link "Prerequisites" [ref=e406] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e407]:
+              - link "Edit API Key" [ref=e408] [cursor=pointer]:
+                - /url: "#edit-api-key"
+            - listitem [ref=e409]:
+              - link "Validate" [ref=e410] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e411] [cursor=pointer]:
+    - generic [ref=e414]:
+      - img "Project Logo" [ref=e415]
+      - paragraph [ref=e416]: Ask AI
+```

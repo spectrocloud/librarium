@@ -1,0 +1,642 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [expanded] [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+                - list [ref=e156]:
+                  - listitem [ref=e157]:
+                    - link "Add a Custom Registry" [ref=e158] [cursor=pointer]:
+                      - /url: /registries-and-packs/adding-a-custom-registry/
+                  - listitem [ref=e159]:
+                    - link "Spectro Cloud CLI Tool" [ref=e160] [cursor=pointer]:
+                      - /url: /registries-and-packs/spectro-cli-reference/
+                  - listitem [ref=e161]:
+                    - link "Add a Custom Pack" [ref=e162] [cursor=pointer]:
+                      - /url: /registries-and-packs/add-custom-packs/
+                  - listitem [ref=e163]:
+                    - link "Add an Add-on Pack" [ref=e164] [cursor=pointer]:
+                      - /url: /registries-and-packs/adding-add-on-packs/
+                  - listitem [ref=e165]:
+                    - link "Pack Constraints" [ref=e166] [cursor=pointer]:
+                      - /url: /registries-and-packs/pack-constraints/
+                  - listitem [ref=e167]:
+                    - generic [ref=e168]:
+                      - link "Registries" [ref=e169] [cursor=pointer]:
+                        - /url: /registries-and-packs/registries/
+                      - button "Toggle the collapsible sidebar category 'Registries'" [ref=e170] [cursor=pointer]
+                  - listitem [ref=e171]:
+                    - link "Advanced CLI Configuration" [ref=e172] [cursor=pointer]:
+                      - /url: /registries-and-packs/advanced-configuration/
+              - listitem [ref=e173]:
+                - generic [ref=e174]:
+                  - link "Security" [ref=e175] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e177]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e179] [cursor=pointer]
+              - listitem [ref=e180]:
+                - generic [ref=e181]:
+                  - link "Audit Logs" [ref=e182] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e184]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e186] [cursor=pointer]
+              - listitem [ref=e187]:
+                - generic [ref=e188]:
+                  - link "Self-Hosted Palette" [ref=e189] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e191]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e193] [cursor=pointer]
+              - listitem [ref=e194]:
+                - generic [ref=e195]:
+                  - link "Palette VerteX" [ref=e196] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e198]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e200] [cursor=pointer]
+              - listitem [ref=e201]:
+                - generic [ref=e202]:
+                  - link "Tenant Administration" [ref=e203] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e205]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e207] [cursor=pointer]
+              - listitem [ref=e208]:
+                - generic [ref=e209]:
+                  - link "Automation" [ref=e210] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e212]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - generic [ref=e216]:
+                  - link "Troubleshooting" [ref=e217] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e219]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e221] [cursor=pointer]
+              - listitem [ref=e222]:
+                - link "Glossary" [ref=e223] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e225]
+                  - text: Glossary
+              - listitem [ref=e227]:
+                - generic [ref=e228]:
+                  - link "Compliance & Legal" [ref=e229] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e231]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e233] [cursor=pointer]
+              - listitem [ref=e234]:
+                - button "Privacy Settings" [ref=e235] [cursor=pointer]:
+                  - img [ref=e236]
+                  - text: Privacy Settings
+      - main [ref=e238]:
+        - generic [ref=e240]:
+          - generic [ref=e242]:
+            - article [ref=e243]:
+              - navigation "Breadcrumbs" [ref=e244]:
+                - list [ref=e245]:
+                  - listitem [ref=e246]:
+                    - link "Home page" [ref=e247] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e248]
+                  - listitem [ref=e250]:
+                    - link "Registries and Packs" [ref=e251] [cursor=pointer]:
+                      - /url: /registries-and-packs/
+                  - listitem [ref=e252]:
+                    - generic [ref=e253]: Add a Custom Registry
+              - generic [ref=e254]:
+                - heading "Add a Custom Registry" [level=1] [ref=e256]
+                - paragraph [ref=e257]:
+                  - text: Setting up a custom pack registry is a two-step process. The first step is to deploy a pack registry server using a Docker image provided by us. While deploying a pack registry server, you can employ a TLS certificate from a Certificate Authority (CA) or a self-signed certificate. The current guide will provide instructions for both methods - using TLS and self-signed certificates. You can check out the
+                  - link "Advanced Configuration" [ref=e258] [cursor=pointer]:
+                    - /url: /registries-and-packs/advanced-configuration/
+                  - text: guide to learn about the customization options while deploying a pack registry server.
+                - paragraph [ref=e259]: After deploying a pack registry server, the next step is configuring the pack registry server in Palette. Once you finish configuring the pack registry server in Palette, Palette will synchronize the pack contents from the pack registry server periodically.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e260]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e261] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e262]:
+                  - listitem [ref=e263]:
+                    - paragraph [ref=e264]: Ensure you have a Docker container runtime Docker to be installed on the machine.
+                  - listitem [ref=e265]:
+                    - paragraph [ref=e266]:
+                      - text: The HTTP utility
+                      - code [ref=e267]: htpasswd
+                      - text: is required to be installed for user authentication encryption.
+                  - listitem [ref=e268]:
+                    - paragraph [ref=e269]: The minimum machine compute specifications are 1 vCPU and 2 GB Memory.
+                  - listitem [ref=e270]:
+                    - paragraph [ref=e271]: Firewall ports 443/80 are required to be opened on the machine to allow traffic from the Palette console and Spectro CLI tool.
+                  - listitem [ref=e272]:
+                    - paragraph [ref=e273]:
+                      - link "OpenSSL" [ref=e274] [cursor=pointer]:
+                        - /url: https://www.openssl.org/source/
+                      - text: if creating a self-signed certificate. Refer to the
+                      - link "Self-Signed Certificates" [ref=e275] [cursor=pointer]:
+                        - /url: "#self-signed-certificates"
+                      - text: section below for more guidance.
+                - generic [ref=e276]:
+                  - generic [ref=e277]:
+                    - img [ref=e279]
+                    - text: warning
+                  - paragraph [ref=e282]: Please ensure that the ports 443 and 80 are exclusively allocated to the registry server and are not in use by other processes.
+                - heading "Deploy Pack Registry Server with Let's EncryptDirect link to Deploy Pack Registry Server with Let's Encrypt" [level=2] [ref=e283]:
+                  - text: Deploy Pack Registry Server with Let's Encrypt
+                  - link "Direct link to Deploy Pack Registry Server with Let's Encrypt" [ref=e284] [cursor=pointer]:
+                    - /url: "#deploy-pack-registry-server-with-lets-encrypt"
+                    - text: "#"
+                - paragraph [ref=e285]:
+                  - text: We provide a Docker image for setting up a pack registry server. Use the following steps to deploy a pack registry server using the designated Docker image and a TLS certificate issued by
+                  - link "Let's Encrypt" [ref=e286] [cursor=pointer]:
+                    - /url: https://letsencrypt.org/
+                  - text: .
+                - list [ref=e287]:
+                  - listitem [ref=e288]:
+                    - text: Create a folder that contains an
+                    - code [ref=e289]: httppasswd
+                    - text: file.
+                - generic [ref=e291]:
+                  - code [ref=e293]:
+                    - generic [ref=e294]: mkdir spectropaxconfig
+                  - button "Copy code to clipboard" [ref=e296] [cursor=pointer]:
+                    - generic [ref=e297]:
+                      - img [ref=e298]
+                      - img [ref=e300]
+                - list [ref=e302]:
+                  - listitem [ref=e303]: Create a htpasswd file.
+                - generic [ref=e305]:
+                  - code [ref=e307]:
+                    - generic [ref=e308]: htpasswd -Bbn admin "yourPasswordHere" > spectropaxconfig/htpasswd-basic
+                  - generic [ref=e309]:
+                    - button "Toggle word wrap" [ref=e310] [cursor=pointer]:
+                      - img [ref=e311]
+                    - button "Copy code to clipboard" [ref=e313] [cursor=pointer]:
+                      - generic [ref=e314]:
+                        - img [ref=e315]
+                        - img [ref=e317]
+                - list [ref=e319]:
+                  - listitem [ref=e320]:
+                    - text: Create a pax registry configuration file titled
+                    - code [ref=e321]: myconfig.yml
+                    - text: in the
+                    - code [ref=e322]: spectropaxconfig
+                    - text: directory. The YAML code block below displays the sample content for the
+                    - code [ref=e323]: myconfig.yml
+                    - text: file. The current example assumes that your pack registry server will be hosted at
+                    - code [ref=e324]: yourhost.companydomain.com
+                    - text: and the email id for notifications is
+                    - code [ref=e325]: you@companydomain.com
+                    - text: . Replace the
+                    - code [ref=e326]: host
+                    - text: and
+                    - code [ref=e327]: email
+                    - text: attribute values as applicable to you.
+                - generic [ref=e329]:
+                  - code [ref=e331]:
+                    - generic [ref=e332]: "version: 0.1"
+                    - generic [ref=e333]: "log:"
+                    - generic [ref=e334]: "level: debug"
+                    - generic [ref=e335]: "storage: inmemory"
+                    - generic [ref=e336]: "http:"
+                    - generic [ref=e337]: "addr: :5000"
+                    - generic [ref=e338]: "tls:"
+                    - generic [ref=e339]: "letsencrypt:"
+                    - generic [ref=e340]: "cachefile: /etc/spectropaxconfig/le-cache"
+                    - generic [ref=e341]: "email: you@companydomain.com"
+                    - generic [ref=e342]: "hosts:"
+                    - generic [ref=e343]: "- yourhost.companydomain.com"
+                    - generic [ref=e344]: "auth:"
+                    - generic [ref=e345]: "htpasswd:"
+                    - generic [ref=e346]: "realm: basic-realm"
+                    - generic [ref=e347]: "path: /etc/spectropaxconfig/htpasswd-basic"
+                  - button "Copy code to clipboard" [ref=e349] [cursor=pointer]:
+                    - generic [ref=e350]:
+                      - img [ref=e351]
+                      - img [ref=e353]
+                - list [ref=e355]:
+                  - listitem [ref=e356]: Start the container image with the following flags.
+                - generic [ref=e358]:
+                  - code [ref=e360]:
+                    - generic [ref=e361]: docker run \
+                    - generic [ref=e362]: "--rm \\"
+                    - generic [ref=e363]: "-p 443:5000 \\"
+                    - generic [ref=e364]: "--name spectro-registry \\"
+                    - generic [ref=e365]: "--volume $(pwd)/spectropaxconfig/:/etc/spectropaxconfig/ \\"
+                    - generic [ref=e366]: gcr.io/spectro-images-public/release/spectro-registry:4.0.2 \
+                    - generic [ref=e367]: serve /etc/spectropaxconfig/myconfig.yml
+                  - button "Copy code to clipboard" [ref=e369] [cursor=pointer]:
+                    - generic [ref=e370]:
+                      - img [ref=e371]
+                      - img [ref=e373]
+                - paragraph [ref=e375]:
+                  - text: You can now access the pack registry at
+                  - code [ref=e376]: https://yourhost.companydomain.com/v1/
+                  - text: . You will be prompted to give the user admin and the password of your choice.
+                - heading "Deploy a Pack Registry Server with Self-Signed CertificatesDirect link to Deploy a Pack Registry Server with Self-Signed Certificates" [level=2] [ref=e377]:
+                  - text: Deploy a Pack Registry Server with Self-Signed Certificates
+                  - link "Direct link to Deploy a Pack Registry Server with Self-Signed Certificates" [ref=e378] [cursor=pointer]:
+                    - /url: "#deploy-a-pack-registry-server-with-self-signed-certificates"
+                    - text: "#"
+                - paragraph [ref=e379]: "The following steps need to be performed to deploy the pack registry server using self-signed certificates:"
+                - list [ref=e380]:
+                  - listitem [ref=e381]:
+                    - text: Configure the user credentials by using the
+                    - code [ref=e382]: htpasswd
+                    - text: utility and store the credentials in a file locally. This file will be mounted inside the pack registry docker container.
+                - generic [ref=e384]:
+                  - code [ref=e386]:
+                    - generic [ref=e387]: mkdir -p /root/auth
+                  - button "Copy code to clipboard" [ref=e389] [cursor=pointer]:
+                    - generic [ref=e390]:
+                      - img [ref=e391]
+                      - img [ref=e393]
+                - list [ref=e395]:
+                  - listitem [ref=e396]: For admin users, the command below has a placeholder to specify your unique secure password for admin users.
+                - generic [ref=e398]:
+                  - code [ref=e400]:
+                    - generic [ref=e401]: htpasswd -Bbn admin "yourPasswordHere" > /root/auth/htpasswd-basic
+                  - button "Copy code to clipboard" [ref=e403] [cursor=pointer]:
+                    - generic [ref=e404]:
+                      - img [ref=e405]
+                      - img [ref=e407]
+                - list [ref=e409]:
+                  - listitem [ref=e410]: For other users. The following command has the placeholder to specify your unique secure password for read-only users.
+                - generic [ref=e412]:
+                  - code [ref=e414]:
+                    - generic [ref=e415]: htpasswd -Bbn spectro "yourPasswordHere" >> /root/auth/htpasswd-basic
+                  - generic [ref=e416]:
+                    - button "Toggle word wrap" [ref=e417] [cursor=pointer]:
+                      - img [ref=e418]
+                    - button "Copy code to clipboard" [ref=e420] [cursor=pointer]:
+                      - generic [ref=e421]:
+                        - img [ref=e422]
+                        - img [ref=e424]
+                - list [ref=e426]:
+                  - listitem [ref=e427]:
+                    - text: If HTTPS mode is used, create a directory called
+                    - code [ref=e428]: certs
+                    - text: .
+                - generic [ref=e430]:
+                  - code [ref=e432]:
+                    - generic [ref=e433]: mkdir -p /root/certs
+                  - button "Copy code to clipboard" [ref=e435] [cursor=pointer]:
+                    - generic [ref=e436]:
+                      - img [ref=e437]
+                      - img [ref=e439]
+                - list [ref=e441]:
+                  - listitem [ref=e442]:
+                    - paragraph [ref=e443]:
+                      - text: Copy the
+                      - strong [ref=e444]: tls.crt
+                      - text: and
+                      - strong [ref=e445]: tls.key
+                      - text: files from the CA into the
+                      - strong [ref=e446]: /roots/certs
+                      - text: directory. This directory will be mounted inside the registry Docker container.
+                  - listitem [ref=e447]:
+                    - paragraph [ref=e448]:
+                      - text: "Pack contents in a pack registry can be stored locally on the host or an external file system. An external file system is recommended so that the pack contents can be mounted on another pack registry instance in the event of restarts and failures. Create a directory or mount an external volume to the desired storage location. Example:"
+                      - code [ref=e449]: /root/data
+                  - listitem [ref=e450]:
+                    - paragraph [ref=e451]: Issue the following command to pull the pack registry server image. The image will help you instantiate a Docker container as a pack registry server.
+                - generic [ref=e453]:
+                  - code [ref=e455]:
+                    - generic [ref=e456]: docker pull gcr.io/spectro-images-public/release/spectro-registry:4.0.2
+                  - generic [ref=e457]:
+                    - button "Toggle word wrap" [ref=e458] [cursor=pointer]:
+                      - img [ref=e459]
+                    - button "Copy code to clipboard" [ref=e461] [cursor=pointer]:
+                      - generic [ref=e462]:
+                        - img [ref=e463]
+                        - img [ref=e465]
+                - list [ref=e467]:
+                  - listitem [ref=e468]:
+                    - paragraph [ref=e469]:
+                      - text: Use the
+                      - code [ref=e470]: docker run
+                      - text: command to instantiate a Docker container. If you encounter an error while instantiating the Docker container, below are some common scenarios and troubleshooting tips.
+                    - list [ref=e471]:
+                      - listitem [ref=e472]:
+                        - paragraph [ref=e473]:
+                          - text: The Registry CLI login command fails with the error message
+                          - code [ref=e474]: "x509: cannot validate certificate for ip_address, because it doesn't contain any IP SANs"
+                          - text: . The error occurs when a self-signed certificate is created using an IP address rather than a hostname. To resolve the error, recreate the certificate to include an IP SAN or use a DNS name instead of an IP address.
+                      - listitem [ref=e475]:
+                        - paragraph [ref=e476]:
+                          - text: The Registry CLI login command fails with the error message
+                          - code [ref=e477]: "x509: certificate signed by unknown authority"
+                          - text: . The error occurs when the self-signed certificate is invalid. To resolve the error, you must configure the host where CLI is installed to trust the certificate.
+                - generic [ref=e478]:
+                  - tablist [ref=e479]:
+                    - tab "HTTPS" [selected] [ref=e480] [cursor=pointer]
+                    - tab "HTTP" [ref=e481] [cursor=pointer]
+                  - tabpanel [ref=e483]:
+                    - generic [ref=e485]:
+                      - code [ref=e487]:
+                        - generic [ref=e488]: docker run -d \
+                        - generic [ref=e489]: "-p 443:5000 \\"
+                        - generic [ref=e490]: "--restart=always \\"
+                        - generic [ref=e491]: "--name spectro-registry \\"
+                        - generic [ref=e492]: "--mount type=bind,source=/root/auth,target=/auth,readonly \\"
+                        - generic [ref=e493]: "--mount type=bind,source=/root/data,target=/data \\"
+                        - generic [ref=e494]: "--mount type=bind,source=/root/certs,target=/certs,readonly \\"
+                        - generic [ref=e495]: "-e REGISTRY_LOG_LEVEL=info \\"
+                        - generic [ref=e496]: "-e REGISTRY_AUTH=htpasswd \\"
+                        - generic [ref=e497]: "-e REGISTRY_AUTH_HTPASSWD_REALM=\"Registry Realm\" \\"
+                        - generic [ref=e498]: "-e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \\"
+                        - generic [ref=e499]: "-e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/tls.crt \\"
+                        - generic [ref=e500]: "-e REGISTRY_HTTP_TLS_KEY=/certs/tls.key \\"
+                        - generic [ref=e501]: gcr.io/spectro-images-public/release/spectro-registry:4.0.2
+                      - button "Copy code to clipboard" [ref=e503] [cursor=pointer]:
+                        - generic [ref=e504]:
+                          - img [ref=e505]
+                          - img [ref=e507]
+                - list [ref=e509]:
+                  - listitem [ref=e510]:
+                    - paragraph [ref=e511]: Expose the container host's port publicly to allow the console to interact with the pack registry. This would be typically done via environment-specific constructs like Security Groups, Firewalls, etc.
+                  - listitem [ref=e512]:
+                    - paragraph [ref=e513]: Verify the installation by invoking the pack registry APIs using the curl command. This should result in a 200 response.
+                - generic [ref=e514]:
+                  - tablist [ref=e515]:
+                    - tab "HTTPS" [selected] [ref=e516] [cursor=pointer]
+                    - tab "HTTP" [ref=e517] [cursor=pointer]
+                  - tabpanel [ref=e519]:
+                    - generic [ref=e521]:
+                      - code [ref=e523]:
+                        - generic [ref=e524]: curl --cacert tls.crt -v [REGISTRY_SERVER]/health
+                        - generic [ref=e525]: curl --cacert tls.crt -v -u [USERNAME] [REGISTRY_SERVER]/v1/_catalog
+                      - generic [ref=e526]:
+                        - button "Toggle word wrap" [ref=e527] [cursor=pointer]:
+                          - img [ref=e528]
+                        - button "Copy code to clipboard" [ref=e530] [cursor=pointer]:
+                          - generic [ref=e531]:
+                            - img [ref=e532]
+                            - img [ref=e534]
+                - heading "Configure a Custom Pack Registry in PaletteDirect link to Configure a Custom Pack Registry in Palette" [level=2] [ref=e536]:
+                  - text: Configure a Custom Pack Registry in Palette
+                  - link "Direct link to Configure a Custom Pack Registry in Palette" [ref=e537] [cursor=pointer]:
+                    - /url: "#configure-a-custom-pack-registry-in-palette"
+                    - text: "#"
+                - paragraph [ref=e538]: Once you deploy the pack registry server, use the following steps to configure the pack registry server in Palette.
+                - list [ref=e539]:
+                  - listitem [ref=e540]:
+                    - paragraph [ref=e541]: Log in to Palette, and switch to the tenant admin view.
+                  - listitem [ref=e542]:
+                    - paragraph [ref=e543]:
+                      - text: Navigate to the
+                      - strong [ref=e544]: Tenant Settings
+                      - text: ">"
+                      - strong [ref=e545]: Registries
+                      - text: ">"
+                      - strong [ref=e546]: Pack Registries
+                      - text: section.
+                  - listitem [ref=e547]:
+                    - paragraph [ref=e548]:
+                      - text: Click on the
+                      - strong [ref=e549]: Add New Pack Registry
+                      - text: . Palette will open a pop-up window asking for the fields to configure a pack registry server, as highlighted in the screenshot below.
+                - paragraph [ref=e550]:
+                  - img "A screenshot highlighting the fields to configure a custom pack registry." [ref=e551]
+                - list [ref=e552]:
+                  - listitem [ref=e553]:
+                    - paragraph [ref=e554]: Provide the pack registry server name, endpoint, and user credentials in the pop-up window. Ensure to use an "https://" prefix in the pack registry server endpoint.
+                  - listitem [ref=e555]:
+                    - paragraph [ref=e556]:
+                      - text: If you want Palette to establish a secure and encrypted HTTPS connection with your pack registry server, upload the certificate in the
+                      - strong [ref=e557]: TLS Configuration
+                      - text: section. The certificate file must be in the PEM format and have a complete trust chain.
+                - paragraph [ref=e558]: If you used a TLS certificate issued by a CA while configuring the pack registry server, check with your CA to obtain a certificate chain. If you used a self-signed certificate, upload the entire certificate trust chain. The file content must have the server, the intermediate, and the root certificates.
+                - paragraph [ref=e559]:
+                  - text: Once you upload the
+                  - emphasis [ref=e560]: .pem
+                  - text: certificate file and click the
+                  - strong [ref=e561]: Validate
+                  - text: button, Palette will perform the TLS verification to affirm the certificate's authenticity before establishing a communication channel.
+                - list [ref=e562]:
+                  - listitem [ref=e563]:
+                    - paragraph [ref=e564]:
+                      - text: Select the
+                      - strong [ref=e565]: Insecure Skip TLS Verify
+                      - text: checkbox if you do not want an HTTPS connection between Palette and your pack registry server. If you upload a TLS certificate and also select the
+                      - strong [ref=e566]: Insecure Skip TLS Verify
+                      - text: checkbox. The
+                      - strong [ref=e567]: Insecure Skip TLS Verify
+                      - text: checkbox value will take precedence in that case.
+                  - listitem [ref=e568]:
+                    - paragraph [ref=e569]:
+                      - text: Click the
+                      - strong [ref=e570]: Confirm
+                      - text: button to finish configuring the pack registry server. After you finish the configuration, Palette will periodically synchronize with the pack registry server to download pack updates, if any.
+                - heading "Self-Signed CertificatesDirect link to Self-Signed Certificates" [level=2] [ref=e571]:
+                  - text: Self-Signed Certificates
+                  - link "Direct link to Self-Signed Certificates" [ref=e572] [cursor=pointer]:
+                    - /url: "#self-signed-certificates"
+                    - text: "#"
+                - paragraph [ref=e573]: For self-signed certificates, use the following command to generate certificates.
+                - generic [ref=e575]:
+                  - code [ref=e577]:
+                    - generic [ref=e578]: openssl req \
+                    - generic [ref=e579]: "-newkey rsa:4096 -nodes -sha256 -keyout tls.key \\"
+                    - generic [ref=e580]: "-x509 -days 1825 -out tls.crt"
+                  - button "Copy code to clipboard" [ref=e582] [cursor=pointer]:
+                    - generic [ref=e583]:
+                      - img [ref=e584]
+                      - img [ref=e586]
+                - paragraph [ref=e588]: Provide the appropriate values while ensuring that the Common Name matches the registry hostname.
+                - generic [ref=e590]:
+                  - code [ref=e592]:
+                    - generic [ref=e593]: "Country Name (2 letter code) [XX]:"
+                    - generic [ref=e594]: "State or Province Name (full name) []:"
+                    - generic [ref=e595]: "Locality Name (eg, city) [Default City]:"
+                    - generic [ref=e596]: "Organization Name (eg, company) [Default Company Ltd]:"
+                    - generic [ref=e597]: "Organizational Unit Name (eg, section) []:"
+                    - generic [ref=e598]: Common Name (eg, your name or your server's hostname) []:[REGISTRY_HOST_DNS]
+                    - generic [ref=e599]: "Email Address []:"
+                    - generic [ref=e600]: "Example:"
+                    - generic [ref=e601]: REGISTRY_HOST_DNS - registry.com
+                  - button "Toggle word wrap" [ref=e603] [cursor=pointer]:
+                    - img [ref=e604]
+              - link "Edit this page" [ref=e609] [cursor=pointer]:
+                - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/registries-and-packs/adding-a-custom-registry.md
+                - img [ref=e610]
+                - text: Edit this page
+            - navigation "Docs pages" [ref=e614]:
+              - link "Previous « Registries and Packs" [ref=e615] [cursor=pointer]:
+                - /url: /registries-and-packs/
+                - generic [ref=e616]: Previous
+                - generic [ref=e617]: « Registries and Packs
+              - link "Next Spectro Cloud CLI Tool »" [ref=e618] [cursor=pointer]:
+                - /url: /registries-and-packs/spectro-cli-reference/
+                - generic [ref=e619]: Next
+                - generic [ref=e620]: Spectro Cloud CLI Tool »
+          - list [ref=e623]:
+            - listitem [ref=e624]:
+              - link "Prerequisites" [ref=e625] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e626]:
+              - link "Deploy Pack Registry Server with Let's Encrypt" [ref=e627] [cursor=pointer]:
+                - /url: "#deploy-pack-registry-server-with-lets-encrypt"
+            - listitem [ref=e628]:
+              - link "Deploy a Pack Registry Server with Self-Signed Certificates" [ref=e629] [cursor=pointer]:
+                - /url: "#deploy-a-pack-registry-server-with-self-signed-certificates"
+            - listitem [ref=e630]:
+              - link "Configure a Custom Pack Registry in Palette" [ref=e631] [cursor=pointer]:
+                - /url: "#configure-a-custom-pack-registry-in-palette"
+            - listitem [ref=e632]:
+              - link "Self-Signed Certificates" [ref=e633] [cursor=pointer]:
+                - /url: "#self-signed-certificates"
+  - button "Project Logo Ask AI" [ref=e634] [cursor=pointer]:
+    - generic [ref=e637]:
+      - img "Project Logo" [ref=e638]
+      - paragraph [ref=e639]: Ask AI
+```

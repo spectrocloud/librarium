@@ -1,0 +1,732 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Audit Logs" [ref=e165] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e167]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Self-Hosted Palette" [ref=e172] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e174]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Palette VerteX" [ref=e179] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e181]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e183] [cursor=pointer]
+              - listitem [ref=e184]:
+                - generic [ref=e185]:
+                  - link "Tenant Administration" [ref=e186] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e188]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e190] [cursor=pointer]
+              - listitem [ref=e191]:
+                - generic [ref=e192]:
+                  - link "Automation" [ref=e193] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e195]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e197] [cursor=pointer]
+              - listitem [ref=e198]:
+                - generic [ref=e199]:
+                  - link "Troubleshooting" [expanded] [ref=e200] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e202]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e204] [cursor=pointer]
+                - list [ref=e205]:
+                  - listitem [ref=e206]:
+                    - link "Kubernetes Debugging" [ref=e207] [cursor=pointer]:
+                      - /url: /troubleshooting/kubernetes-tips/
+                  - listitem [ref=e208]:
+                    - link "Automation" [ref=e209] [cursor=pointer]:
+                      - /url: /troubleshooting/automation/
+                  - listitem [ref=e210]:
+                    - link "Cluster Deployment" [ref=e211] [cursor=pointer]:
+                      - /url: /troubleshooting/cluster-deployment/
+                  - listitem [ref=e212]:
+                    - link "Nodes & Clusters" [ref=e213] [cursor=pointer]:
+                      - /url: /troubleshooting/nodes/
+                  - listitem [ref=e214]:
+                    - link "Packs" [ref=e215] [cursor=pointer]:
+                      - /url: /troubleshooting/pack-issues/
+                  - listitem [ref=e216]:
+                    - link "Palette Dev Engine" [ref=e217] [cursor=pointer]:
+                      - /url: /troubleshooting/palette-dev-engine/
+                  - listitem [ref=e218]:
+                    - generic [ref=e219]:
+                      - link "Edge" [ref=e220] [cursor=pointer]:
+                        - /url: /troubleshooting/edge/
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e221] [cursor=pointer]
+                  - listitem [ref=e222]:
+                    - link "Private Cloud Gateway" [ref=e223] [cursor=pointer]:
+                      - /url: /troubleshooting/pcg/
+                  - listitem [ref=e224]:
+                    - link "Virtual Machine Orchestrator" [ref=e225] [cursor=pointer]:
+                      - /url: /troubleshooting/vmo-issues/
+                  - listitem [ref=e226]:
+                    - link "Enterprise Install" [ref=e227] [cursor=pointer]:
+                      - /url: /troubleshooting/enterprise-install/
+                  - listitem [ref=e228]:
+                    - link "Palette Upgrade" [ref=e229] [cursor=pointer]:
+                      - /url: /troubleshooting/palette-upgrade/
+                  - listitem [ref=e230]:
+                    - link "Generate HAR Files" [ref=e231] [cursor=pointer]:
+                      - /url: /troubleshooting/generate-har-files/
+              - listitem [ref=e232]:
+                - link "Glossary" [ref=e233] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e235]
+                  - text: Glossary
+              - listitem [ref=e237]:
+                - generic [ref=e238]:
+                  - link "Compliance & Legal" [ref=e239] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e241]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e243] [cursor=pointer]
+              - listitem [ref=e244]:
+                - button "Privacy Settings" [ref=e245] [cursor=pointer]:
+                  - img [ref=e246]
+                  - text: Privacy Settings
+      - main [ref=e248]:
+        - generic [ref=e250]:
+          - generic [ref=e252]:
+            - article [ref=e253]:
+              - navigation "Breadcrumbs" [ref=e254]:
+                - list [ref=e255]:
+                  - listitem [ref=e256]:
+                    - link "Home page" [ref=e257] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e258]
+                  - listitem [ref=e260]:
+                    - link "Troubleshooting" [ref=e261] [cursor=pointer]:
+                      - /url: /troubleshooting/
+                  - listitem [ref=e262]:
+                    - generic [ref=e263]: Private Cloud Gateway
+              - generic [ref=e264]:
+                - heading "Private Cloud Gateway" [level=1] [ref=e266]
+                - paragraph [ref=e267]: When you deploy a Kubernetes cluster in a private data center environment, you must already have a Private Cloud Gateway (PCG) cluster deployed in the data center environment. A PCG enables secure communication between Palette and the private data center environment.
+                - paragraph [ref=e268]: While deploying a PCG, you may encounter one of the following error scenarios. Some scenarios below apply to all data center environments, whereas others apply to a specific data center environment, such as VMware. Each scenario covers a specific problem, including an overview, possible causes, and debugging steps.
+                - heading "Scenario - PCG Installer VM IP Address Assignment ErrorDirect link to Scenario - PCG Installer VM IP Address Assignment Error" [level=2] [ref=e269]:
+                  - text: Scenario - PCG Installer VM IP Address Assignment Error
+                  - link "Direct link to Scenario - PCG Installer VM IP Address Assignment Error" [ref=e270] [cursor=pointer]:
+                    - /url: "#scenario---pcg-installer-vm-ip-address-assignment-error"
+                    - text: "#"
+                - paragraph [ref=e271]: When deploying a PCG in VMware vSphere, the VMs that make up the cluster nodes may fail to get an IP address.
+                - paragraph [ref=e272]: If the PCG node fails to get an IP address assigned, it implies a networking error or an incomplete cloud-init. The selected IP allocation scheme specified in the network settings of the PCG installation assigns an IP address to the PCG node. The IP allocation scheme offers two options - static IP or DHCP. You must check the selected IP allocation scheme for troubleshooting.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e273]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e274] [cursor=pointer]:
+                    - /url: "#debug-steps"
+                    - text: "#"
+                - list [ref=e275]:
+                  - listitem [ref=e276]:
+                    - paragraph [ref=e277]: If you chose the static IP allocation scheme, ensure you have correctly provided the values for the gateway IP address, DNS addresses, and static IP subnet prefix. Check that the subnet prefix you provided allows the creation of an IP pool with sufficient IP addresses to allocate to the new PCG installer VM.
+                  - listitem [ref=e278]:
+                    - paragraph [ref=e279]: If you chose the DHCP allocation scheme, check that the DHCP service is available on the DHCP server. Restart the service if it's not in an active state.
+                  - listitem [ref=e280]:
+                    - paragraph [ref=e281]: If the DHCP server is active, recheck the DHCP scope and the DHCP reservations. The DHCP scope defines the range of IP addresses that the DHCP server allocates on the selected network. You must have sufficient IP addresses from the DHCP scope for dynamic allocation.
+                  - listitem [ref=e282]:
+                    - paragraph [ref=e283]: If you chose the DHCP allocation scheme, ensure Dynamic DNS is enabled in the DHCP server. A Dynamic DNS is only required if you are using DHCP. Dynamic DNS is not required for a static IP allocation scheme.
+                  - listitem [ref=e284]:
+                    - paragraph [ref=e285]:
+                      - text: If there are no network-related issues, SSH into the PCG installer VM using the username
+                      - code [ref=e286]: ubuntu
+                      - text: and the SSH public key you provided during the installation.
+                  - listitem [ref=e287]:
+                    - paragraph [ref=e288]:
+                      - text: Inspect the log files in the
+                      - strong [ref=e289]: /var/log
+                      - text: directory.
+                  - listitem [ref=e290]:
+                    - paragraph [ref=e291]: Examine the cloud-init logs for potential errors or warnings related to the IP address assignment.
+                  - listitem [ref=e292]:
+                    - paragraph [ref=e293]:
+                      - text: If the problem persists, email the log files to our support team at
+                      - link "support@spectrocloud.com" [ref=e294] [cursor=pointer]:
+                        - /url: mailto:support@spectrocloud.com
+                      - text: .
+                - heading "Scenario - PCG Cluster Provisioning Stalled or FailedDirect link to Scenario - PCG Cluster Provisioning Stalled or Failed" [level=2] [ref=e295]:
+                  - text: Scenario - PCG Cluster Provisioning Stalled or Failed
+                  - link "Direct link to Scenario - PCG Cluster Provisioning Stalled or Failed" [ref=e296] [cursor=pointer]:
+                    - /url: "#scenario---pcg-cluster-provisioning-stalled-or-failed"
+                    - text: "#"
+                - paragraph [ref=e297]: After you finish configuring the cloud gateway in Palette, the PCG cluster provisioning process may take up to 15 minutes to finish the PCG cluster deployment.
+                - paragraph [ref=e298]: However, if the PCG cluster provisioning gets stuck, it could hint at incorrect cloud gateway configurations, unavailable IP addresses for the worker nodes, or the inability to perform a Network Time Protocol (NTP) sync.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e299]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e300] [cursor=pointer]:
+                    - /url: "#debug-steps-1"
+                    - text: "#"
+                - list [ref=e301]:
+                  - listitem [ref=e302]:
+                    - paragraph [ref=e303]:
+                      - text: Log in to
+                      - link "Palette" [ref=e304] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e305]:
+                    - paragraph [ref=e306]:
+                      - text: Navigate to the left
+                      - strong [ref=e307]: Main Menu
+                      - text: and select
+                      - strong [ref=e308]: Tenant Settings
+                      - text: . From the
+                      - strong [ref=e309]: Tenant settings
+                      - text: menu, select
+                      - strong [ref=e310]: Private Cloud Gateways
+                      - text: .
+                  - listitem [ref=e311]:
+                    - paragraph [ref=e312]: Click on the newly provisioned PCG cluster to review its details.
+                  - listitem [ref=e313]:
+                    - paragraph [ref=e314]:
+                      - text: Click on the
+                      - strong [ref=e315]: Events
+                      - text: tab.
+                  - listitem [ref=e316]:
+                    - paragraph [ref=e317]:
+                      - text: Examine all events in the
+                      - strong [ref=e318]: Events
+                      - text: tab to identify specific errors or issues. Each event will have a status, timestamp, associated service name, and orchestration details.
+                  - listitem [ref=e319]:
+                    - paragraph [ref=e320]:
+                      - text: If you encounter one of the following error events -
+                      - code [ref=e321]: "Failed to deploy image: Failed to create govomiClient"
+                      - text: or
+                      - code [ref=e322]: No route to host
+                      - text: ", refer to the remediation steps in the"
+                      - link "Scenario - No Route to the Kubernetes API Server" [ref=e323] [cursor=pointer]:
+                        - /url: "#scenario---no-route-to-the-kubernetes-api-server"
+                      - text: section, respectively.
+                  - listitem [ref=e324]:
+                    - paragraph [ref=e325]:
+                      - text: If you encounter errors other than the ones mentioned in the previous step, it is possible that the cluster configuration or the DNS settings are not set correctly. You can review and edit the cluster configuration in the cluster settings. The screenshot below highlights the cluster configuration section in the cluster settings blade.
+                      - img "A screenshot highlighting the cluster configuration section in the cluster settings blade." [ref=e326]
+                  - listitem [ref=e327]:
+                    - paragraph [ref=e328]:
+                      - text: If the cluster settings look correct, ensure the search domain is correctly defined in the fault domain's DNS settings. The screenshot below highlights how you can review and edit the DNS mapping of an existing PCG cluster.
+                      - img "A screenshot highlighting the DNS mapping settings." [ref=e329]
+                  - listitem [ref=e330]:
+                    - paragraph [ref=e331]: If the problem persists, download the cluster logs from Palette. The screenshot below will help you locate the button to download logs from the cluster details page.
+                    - paragraph [ref=e332]:
+                      - img "A screenshot highlighting how to download the cluster logs from Palette." [ref=e333]
+                  - listitem [ref=e334]:
+                    - paragraph [ref=e335]:
+                      - text: Share the logs with our support team at
+                      - link "support@spectrocloud.com" [ref=e336] [cursor=pointer]:
+                        - /url: mailto:support@spectrocloud.com
+                      - text: .
+                - heading "Scenario - No Route to the Kubernetes API ServerDirect link to Scenario - No Route to the Kubernetes API Server" [level=2] [ref=e337]:
+                  - text: Scenario - No Route to the Kubernetes API Server
+                  - link "Direct link to Scenario - No Route to the Kubernetes API Server" [ref=e338] [cursor=pointer]:
+                    - /url: "#scenario---no-route-to-the-kubernetes-api-server"
+                    - text: "#"
+                - paragraph [ref=e339]:
+                  - text: If one of the event logs displays the
+                  - code [ref=e340]: No route to host.
+                  - text: error. The error indicates an issue with the PCG cluster nodes attempting to connect to the cluster's Kubernetes API server. This issue can occur due to improper networking configuration or an error in the cloud-init process.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e341]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e342] [cursor=pointer]:
+                    - /url: "#debug-steps-2"
+                    - text: "#"
+                - list [ref=e343]:
+                  - listitem [ref=e344]:
+                    - paragraph [ref=e345]: Check the data center network settings. Ensure no network restrictions, firewalls, or security groups block communication between the nodes and the API server.
+                  - listitem [ref=e346]:
+                    - paragraph [ref=e347]: If you use the DHCP allocation scheme, check that the DHCP service is available on the DHCP server. Restart the service if it's not in an active state.
+                  - listitem [ref=e348]:
+                    - paragraph [ref=e349]: If you use the DHCP allocation scheme, ensure Dynamic DNS is enabled in the DHCP server. A Dynamic DNS is only required if you are using DHCP. Dynamic DNS is not required for a static IP allocation scheme.
+                  - listitem [ref=e350]:
+                    - paragraph [ref=e351]: Check the Kubernetes API server status. The Kubernetes API server must be active and healthy on the control plane node. Use the following steps to check the status.
+                    - list [ref=e352]:
+                      - listitem [ref=e353]:
+                        - paragraph [ref=e354]:
+                          - text: Switch to
+                          - link "Palette" [ref=e355] [cursor=pointer]:
+                            - /url: https://console.spectrocloud.com
+                          - text: .
+                      - listitem [ref=e356]:
+                        - paragraph [ref=e357]:
+                          - text: Navigate to the
+                          - strong [ref=e358]: Tenant Settings
+                          - text: ">"
+                          - strong [ref=e359]: Private Cloud Gateways
+                          - text: page.
+                      - listitem [ref=e360]:
+                        - paragraph [ref=e361]: Click on the newly provisioned PCG cluster to review its details.
+                      - listitem [ref=e362]:
+                        - paragraph [ref=e363]:
+                          - text: Download the PCG cluster's kubeconfig file from the
+                          - strong [ref=e364]: Overview
+                          - text: tab. Click on the kubeconfig file name to download it to your local machine, as highlighted in the screenshot below.
+                        - paragraph [ref=e365]:
+                          - img "A screenshot highlighting the kubeconfig file to download from Palette." [ref=e366]
+                      - listitem [ref=e367]:
+                        - paragraph [ref=e368]:
+                          - text: After you download the PCG cluster's kubeconfig file, use the following commands to make a GET request to one of the
+                          - link "Kubernetes API server endpoints" [ref=e369] [cursor=pointer]:
+                            - /url: https://kubernetes.io/docs/reference/using-api/health-checks/#api-endpoints-for-health
+                          - text: ","
+                          - code [ref=e370]: /readyz
+                          - text: or
+                          - code [ref=e371]: "'/livez'"
+                          - text: . Replace
+                          - code [ref=e372]: "[path_to_kubeconfig]"
+                          - text: placeholder with the path to the kubeconfig file you downloaded in the previous step. A status code
+                          - code [ref=e373]: ok
+                          - text: or
+                          - code [ref=e374]: "200"
+                          - text: indicates the Kubernetes API server is healthy.
+                        - generic [ref=e376]:
+                          - code [ref=e378]:
+                            - generic [ref=e379]: kubectl --kubeconfig [path_to_kubeconfig] get --raw='/readyz'
+                          - generic [ref=e380]:
+                            - button "Toggle word wrap" [ref=e381] [cursor=pointer]:
+                              - img [ref=e382]
+                            - button "Copy code to clipboard" [ref=e384] [cursor=pointer]:
+                              - generic [ref=e385]:
+                                - img [ref=e386]
+                                - img [ref=e388]
+                      - listitem [ref=e390]:
+                        - paragraph [ref=e391]:
+                          - text: If the previous command does not return an
+                          - code [ref=e392]: ok
+                          - text: ", use the command below to make a verbose GET request by specifying the"
+                          - code [ref=e393]: verbose
+                          - text: parameter. The output will display the individual health checks so you can decide on further debugging steps based on the failed checks.
+                        - generic [ref=e395]:
+                          - code [ref=e397]:
+                            - generic [ref=e398]: kubectl --kubeconfig [path_to_kubeconfig] get --raw='/readyz?verbose'
+                          - generic [ref=e399]:
+                            - button "Toggle word wrap" [ref=e400] [cursor=pointer]:
+                              - img [ref=e401]
+                            - button "Copy code to clipboard" [ref=e403] [cursor=pointer]:
+                              - generic [ref=e404]:
+                                - img [ref=e405]
+                                - img [ref=e407]
+                  - listitem [ref=e409]:
+                    - paragraph [ref=e410]:
+                      - text: If the PCG node has an IP address assigned, SSH into the VM using the username
+                      - code [ref=e411]: spectro
+                      - text: and the public SSH key you provided during the PCG install. If you installed the PCG onto an
+                      - link "existing Kubernetes cluster" [ref=e412] [cursor=pointer]:
+                        - /url: /clusters/pcg/deploy-pcg-k8s/
+                      - text: ", contact your Kubernetes system administrator for the SSH credentials."
+                  - listitem [ref=e413]:
+                    - paragraph [ref=e414]:
+                      - text: Navigate to the
+                      - strong [ref=e415]: /var/log
+                      - text: directory containing the log files.
+                  - listitem [ref=e416]:
+                    - paragraph [ref=e417]: Examine the cloud-init and system logs for potential errors or warnings.
+                  - listitem [ref=e418]:
+                    - paragraph [ref=e419]:
+                      - text: If the problem persists, reach out to our support team at
+                      - link "support@spectrocloud.com" [ref=e420] [cursor=pointer]:
+                        - /url: mailto:support@spectrocloud.com
+                      - text: .
+                - heading "Scenario - Permission Denied to ProvisionDirect link to Scenario - Permission Denied to Provision" [level=2] [ref=e421]:
+                  - text: Scenario - Permission Denied to Provision
+                  - link "Direct link to Scenario - Permission Denied to Provision" [ref=e422] [cursor=pointer]:
+                    - /url: "#scenario---permission-denied-to-provision"
+                    - text: "#"
+                - paragraph [ref=e423]: if you receive the event log message "Permission to perform this operation denied" error.
+                - paragraph [ref=e424]: You must have the necessary permissions to provision a PCG cluster in the VMware environment. If you do not have adequate permissions, the PCG cluster provisioning will fail, and you will get the above-mentioned error in the events log.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e425]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e426] [cursor=pointer]:
+                    - /url: "#debug-steps-3"
+                    - text: "#"
+                - list [ref=e427]:
+                  - listitem [ref=e428]:
+                    - paragraph [ref=e429]:
+                      - text: Ensure you have all the permissions listed in the
+                      - link "VMware Privileges" [ref=e430] [cursor=pointer]:
+                        - /url: /clusters/pcg/deploy-pcg/vmware/
+                      - text: section before proceeding to provision a PCG cluster.
+                  - listitem [ref=e431]:
+                    - paragraph [ref=e432]: Contact your VMware administrator if you are missing any of the required permissions.
+                  - listitem [ref=e433]:
+                    - paragraph [ref=e434]: Delete the existing PCG cluster and redeploy a new one so that the new permissions take effect.
+                - heading "Scenario - VMware Resources Remain After Cluster DeletionDirect link to Scenario - VMware Resources Remain After Cluster Deletion" [level=2] [ref=e435]:
+                  - text: Scenario - VMware Resources Remain After Cluster Deletion
+                  - link "Direct link to Scenario - VMware Resources Remain After Cluster Deletion" [ref=e436] [cursor=pointer]:
+                    - /url: "#scenario---vmware-resources-remain-after-cluster-deletion"
+                    - text: "#"
+                - paragraph [ref=e437]: In the scenario where a VMWare workload cluster is deleted and later re-created with the same name, the resources from the previous cluster may not be fully cleaned up. This can cause the new cluster to fail to provision. To address this issue, you must manually clean up the resources from the previous cluster. Use the following steps for guidance.
+                - generic [ref=e438]:
+                  - generic [ref=e439]:
+                    - img [ref=e441]
+                    - text: info
+                  - paragraph [ref=e444]: If you are using the System PCG for VMware cluster deployments, follow the same steps below but target the self-hosted Palette or VerteX cluster instead when issuing the kubectl command. You will need access to the kubeconfig file for the self-hosted Palette or VerteX cluster. Reach out to your Palette system administrator for the kubeconfig file.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e445]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e446] [cursor=pointer]:
+                    - /url: "#debug-steps-4"
+                    - text: "#"
+                - list [ref=e447]:
+                  - listitem [ref=e448]:
+                    - paragraph [ref=e449]:
+                      - text: Open a terminal session and ensure you have the
+                      - link "kubectl command-line tool" [ref=e450] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/tasks/tools/
+                      - text: installed.
+                  - listitem [ref=e451]:
+                    - paragraph [ref=e452]: Download the kubeconfig file for the PCG cluster from Palette. The kubeconfig file contains the necessary configuration details to access the Kubernetes cluster.
+                    - generic [ref=e453]:
+                      - generic [ref=e454]:
+                        - img [ref=e456]
+                        - text: tip
+                      - paragraph [ref=e459]:
+                        - text: You can find the kubeconfig file in the PCG cluster's details page in Palette. Navigate to the left
+                        - strong [ref=e460]: Main Menu
+                        - text: and select
+                        - strong [ref=e461]: Tenant Settings
+                        - text: . From the
+                        - strong [ref=e462]: Tenant settings Menu
+                        - text: ", select"
+                        - strong [ref=e463]: Private Cloud Gateways
+                        - text: . Select the PCG cluster that is deployed in the VMware environment to access the details page.
+                  - listitem [ref=e464]:
+                    - paragraph [ref=e465]:
+                      - text: Setup kubectl to use the kubeconfig file you downloaded in the previous step. Check out the
+                      - link "Access Cluster with CLI" [ref=e466] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/
+                      - text: page to learn how to set up kubectl.
+                    - generic [ref=e468]:
+                      - code [ref=e470]:
+                        - generic [ref=e471]: export KUBECONFIG=[path_to_kubeconfig]
+                      - button "Copy code to clipboard" [ref=e473] [cursor=pointer]:
+                        - generic [ref=e474]:
+                          - img [ref=e475]
+                          - img [ref=e477]
+                  - listitem [ref=e479]:
+                    - paragraph [ref=e480]:
+                      - text: Issue the following command to remove the remaining cluster resources. Replace
+                      - code [ref=e481]: <cluster-name>
+                      - text: with the name of the cluster you removed.
+                    - generic [ref=e483]:
+                      - code [ref=e485]:
+                        - generic [ref=e486]: kubectl delete VSphereFailureDomain <cluster-name>
+                      - button "Copy code to clipboard" [ref=e488] [cursor=pointer]:
+                        - generic [ref=e489]:
+                          - img [ref=e490]
+                          - img [ref=e492]
+                - heading "Scenario - vSphere Controller Pod Fails to Start in Single Node PCG ClusterDirect link to Scenario - vSphere Controller Pod Fails to Start in Single Node PCG Cluster" [level=2] [ref=e494]:
+                  - text: Scenario - vSphere Controller Pod Fails to Start in Single Node PCG Cluster
+                  - link "Direct link to Scenario - vSphere Controller Pod Fails to Start in Single Node PCG Cluster" [ref=e495] [cursor=pointer]:
+                    - /url: "#scenario---vsphere-controller-pod-fails-to-start-in-single-node-pcg-cluster"
+                    - text: "#"
+                - paragraph [ref=e496]: In a single-node PCG cluster, the vSphere controller pod may fail to start due to no matching node affinity rules. If you encounter this issue, follow the steps below to resolve it.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e497]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e498] [cursor=pointer]:
+                    - /url: "#debug-steps-5"
+                    - text: "#"
+                - list [ref=e499]:
+                  - listitem [ref=e500]:
+                    - paragraph [ref=e501]:
+                      - text: Connect to the PCG cluster using the
+                      - code [ref=e502]: kubectl
+                      - text: command-line tool. You can find the kubeconfig file in the PCG cluster's details page in Palette. Log in to Palette and navigate to the left
+                      - strong [ref=e503]: Main Menu
+                      - text: and select
+                      - strong [ref=e504]: Tenant Settings
+                      - text: . From the
+                      - strong [ref=e505]: Tenant settings Menu
+                      - text: ", select"
+                      - strong [ref=e506]: Private Cloud Gateways
+                      - text: . Select the PCG cluster that is deployed in the VMware vSphere environment to access the details page. For additional guidance on how to setup kubectl, check out the
+                      - link "Access Cluster with CLI" [ref=e507] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/
+                      - text: page.
+                  - listitem [ref=e508]:
+                    - paragraph [ref=e509]: Issue the following command to get the vSphere controller pod's status. Take note of the pod's name.
+                    - generic [ref=e511]:
+                      - code [ref=e513]:
+                        - generic [ref=e514]: kubectl get pods --namespace kube-system
+                      - button "Copy code to clipboard" [ref=e516] [cursor=pointer]:
+                        - generic [ref=e517]:
+                          - img [ref=e518]
+                          - img [ref=e520]
+                  - listitem [ref=e522]:
+                    - paragraph [ref=e523]:
+                      - text: If the vSphere controller pod is in a
+                      - code [ref=e524]: Pending
+                      - text: state, issue the following command to delete the existing pod and force a restart.
+                    - generic [ref=e526]:
+                      - code [ref=e528]:
+                        - generic [ref=e529]: kubectl delete pod <vSphere-controller-pod-name> --namespace kube-system
+                      - generic [ref=e530]:
+                        - button "Toggle word wrap" [ref=e531] [cursor=pointer]:
+                          - img [ref=e532]
+                        - button "Copy code to clipboard" [ref=e534] [cursor=pointer]:
+                          - generic [ref=e535]:
+                            - img [ref=e536]
+                            - img [ref=e538]
+                  - listitem [ref=e540]:
+                    - paragraph [ref=e541]: After deleting the pod, issue the following command to check the pod's status.
+                    - generic [ref=e543]:
+                      - code [ref=e545]:
+                        - generic [ref=e546]: kubectl get pods --namespace kube-system
+                      - button "Copy code to clipboard" [ref=e548] [cursor=pointer]:
+                        - generic [ref=e549]:
+                          - img [ref=e550]
+                          - img [ref=e552]
+                  - listitem [ref=e554]:
+                    - paragraph [ref=e555]:
+                      - text: If the pod is still in a
+                      - code [ref=e556]: Pending
+                      - text: state, check the pod's events to investigate the issue.
+                    - generic [ref=e558]:
+                      - code [ref=e560]:
+                        - generic [ref=e561]: kubectl describe pod <vSphere-controller-pod-name> --namespace kube-system
+                      - generic [ref=e562]:
+                        - button "Toggle word wrap" [ref=e563] [cursor=pointer]:
+                          - img [ref=e564]
+                        - button "Copy code to clipboard" [ref=e566] [cursor=pointer]:
+                          - generic [ref=e567]:
+                            - img [ref=e568]
+                            - img [ref=e570]
+                  - listitem [ref=e572]:
+                    - paragraph [ref=e573]:
+                      - text: If the problem persists, reach out to our support team at
+                      - link "support@spectrocloud.com" [ref=e574] [cursor=pointer]:
+                        - /url: mailto:support@spectrocloud.com
+                      - text: .
+              - generic [ref=e575]:
+                - generic [ref=e577]:
+                  - text: "Tags:"
+                  - list [ref=e578]:
+                    - listitem [ref=e579]:
+                      - link "troubleshooting" [ref=e580] [cursor=pointer]:
+                        - /url: /tags/troubleshooting/
+                    - listitem [ref=e581]:
+                      - link "pcg" [ref=e582] [cursor=pointer]:
+                        - /url: /tags/pcg/
+                - link "Edit this page" [ref=e585] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/troubleshooting/pcg.md
+                  - img [ref=e586]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e590]:
+              - link "Previous « Collect Support Bundles" [ref=e591] [cursor=pointer]:
+                - /url: /troubleshooting/edge/collect-support-bundles/
+                - generic [ref=e592]: Previous
+                - generic [ref=e593]: « Collect Support Bundles
+              - link "Next Virtual Machine Orchestrator »" [ref=e594] [cursor=pointer]:
+                - /url: /troubleshooting/vmo-issues/
+                - generic [ref=e595]: Next
+                - generic [ref=e596]: Virtual Machine Orchestrator »
+          - list [ref=e599]:
+            - listitem [ref=e600]:
+              - link "Scenario - PCG Installer VM IP Address Assignment Error" [ref=e601] [cursor=pointer]:
+                - /url: "#scenario---pcg-installer-vm-ip-address-assignment-error"
+              - list [ref=e602]:
+                - listitem [ref=e603]:
+                  - link "Debug Steps" [ref=e604] [cursor=pointer]:
+                    - /url: "#debug-steps"
+            - listitem [ref=e605]:
+              - link "Scenario - PCG Cluster Provisioning Stalled or Failed" [ref=e606] [cursor=pointer]:
+                - /url: "#scenario---pcg-cluster-provisioning-stalled-or-failed"
+              - list [ref=e607]:
+                - listitem [ref=e608]:
+                  - link "Debug Steps" [ref=e609] [cursor=pointer]:
+                    - /url: "#debug-steps-1"
+            - listitem [ref=e610]:
+              - link "Scenario - No Route to the Kubernetes API Server" [ref=e611] [cursor=pointer]:
+                - /url: "#scenario---no-route-to-the-kubernetes-api-server"
+              - list [ref=e612]:
+                - listitem [ref=e613]:
+                  - link "Debug Steps" [ref=e614] [cursor=pointer]:
+                    - /url: "#debug-steps-2"
+            - listitem [ref=e615]:
+              - link "Scenario - Permission Denied to Provision" [ref=e616] [cursor=pointer]:
+                - /url: "#scenario---permission-denied-to-provision"
+              - list [ref=e617]:
+                - listitem [ref=e618]:
+                  - link "Debug Steps" [ref=e619] [cursor=pointer]:
+                    - /url: "#debug-steps-3"
+            - listitem [ref=e620]:
+              - link "Scenario - VMware Resources Remain After Cluster Deletion" [ref=e621] [cursor=pointer]:
+                - /url: "#scenario---vmware-resources-remain-after-cluster-deletion"
+              - list [ref=e622]:
+                - listitem [ref=e623]:
+                  - link "Debug Steps" [ref=e624] [cursor=pointer]:
+                    - /url: "#debug-steps-4"
+            - listitem [ref=e625]:
+              - link "Scenario - vSphere Controller Pod Fails to Start in Single Node PCG Cluster" [ref=e626] [cursor=pointer]:
+                - /url: "#scenario---vsphere-controller-pod-fails-to-start-in-single-node-pcg-cluster"
+              - list [ref=e627]:
+                - listitem [ref=e628]:
+                  - link "Debug Steps" [ref=e629] [cursor=pointer]:
+                    - /url: "#debug-steps-5"
+  - button "Project Logo Ask AI" [ref=e630] [cursor=pointer]:
+    - generic [ref=e633]:
+      - img "Project Logo" [ref=e634]
+      - paragraph [ref=e635]: Ask AI
+```

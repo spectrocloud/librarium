@@ -1,0 +1,1723 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Audit Logs" [ref=e165] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e167]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Self-Hosted Palette" [ref=e172] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e174]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Palette VerteX" [ref=e179] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e181]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e183] [cursor=pointer]
+              - listitem [ref=e184]:
+                - generic [ref=e185]:
+                  - link "Tenant Administration" [ref=e186] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e188]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e190] [cursor=pointer]
+              - listitem [ref=e191]:
+                - generic [ref=e192]:
+                  - link "Automation" [ref=e193] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e195]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e197] [cursor=pointer]
+              - listitem [ref=e198]:
+                - generic [ref=e199]:
+                  - link "Troubleshooting" [expanded] [ref=e200] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e202]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e204] [cursor=pointer]
+                - list [ref=e205]:
+                  - listitem [ref=e206]:
+                    - link "Kubernetes Debugging" [ref=e207] [cursor=pointer]:
+                      - /url: /troubleshooting/kubernetes-tips/
+                  - listitem [ref=e208]:
+                    - link "Automation" [ref=e209] [cursor=pointer]:
+                      - /url: /troubleshooting/automation/
+                  - listitem [ref=e210]:
+                    - link "Cluster Deployment" [ref=e211] [cursor=pointer]:
+                      - /url: /troubleshooting/cluster-deployment/
+                  - listitem [ref=e212]:
+                    - link "Nodes & Clusters" [ref=e213] [cursor=pointer]:
+                      - /url: /troubleshooting/nodes/
+                  - listitem [ref=e214]:
+                    - link "Packs" [ref=e215] [cursor=pointer]:
+                      - /url: /troubleshooting/pack-issues/
+                  - listitem [ref=e216]:
+                    - link "Palette Dev Engine" [ref=e217] [cursor=pointer]:
+                      - /url: /troubleshooting/palette-dev-engine/
+                  - listitem [ref=e218]:
+                    - generic [ref=e219]:
+                      - link "Edge" [expanded] [ref=e220] [cursor=pointer]:
+                        - /url: /troubleshooting/edge/
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e221] [cursor=pointer]
+                    - list [ref=e222]:
+                      - listitem [ref=e223]:
+                        - link "Collect Support Bundles" [ref=e224] [cursor=pointer]:
+                          - /url: /troubleshooting/edge/collect-support-bundles/
+                  - listitem [ref=e225]:
+                    - link "Private Cloud Gateway" [ref=e226] [cursor=pointer]:
+                      - /url: /troubleshooting/pcg/
+                  - listitem [ref=e227]:
+                    - link "Virtual Machine Orchestrator" [ref=e228] [cursor=pointer]:
+                      - /url: /troubleshooting/vmo-issues/
+                  - listitem [ref=e229]:
+                    - link "Enterprise Install" [ref=e230] [cursor=pointer]:
+                      - /url: /troubleshooting/enterprise-install/
+                  - listitem [ref=e231]:
+                    - link "Palette Upgrade" [ref=e232] [cursor=pointer]:
+                      - /url: /troubleshooting/palette-upgrade/
+                  - listitem [ref=e233]:
+                    - link "Generate HAR Files" [ref=e234] [cursor=pointer]:
+                      - /url: /troubleshooting/generate-har-files/
+              - listitem [ref=e235]:
+                - link "Glossary" [ref=e236] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e238]
+                  - text: Glossary
+              - listitem [ref=e240]:
+                - generic [ref=e241]:
+                  - link "Compliance & Legal" [ref=e242] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e244]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e246] [cursor=pointer]
+              - listitem [ref=e247]:
+                - button "Privacy Settings" [ref=e248] [cursor=pointer]:
+                  - img [ref=e249]
+                  - text: Privacy Settings
+      - main [ref=e251]:
+        - generic [ref=e253]:
+          - generic [ref=e255]:
+            - article [ref=e256]:
+              - navigation "Breadcrumbs" [ref=e257]:
+                - list [ref=e258]:
+                  - listitem [ref=e259]:
+                    - link "Home page" [ref=e260] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e261]
+                  - listitem [ref=e263]:
+                    - link "Troubleshooting" [ref=e264] [cursor=pointer]:
+                      - /url: /troubleshooting/
+                  - listitem [ref=e265]:
+                    - generic [ref=e266]: Edge
+              - generic [ref=e267]:
+                - heading "Edge" [level=1] [ref=e269]
+                - paragraph [ref=e270]: The following are common scenarios that you may encounter when using Edge.
+                - 'heading "Scenario - x509: certificate signed by unknown authority Errors during Agent Mode Cluster CreationDirect link to scenario---x509-certificate-signed-by-unknown-authority-errors-during-agent-mode-cluster-creation" [level=2] [ref=e271]':
+                  - text: Scenario -
+                  - code [ref=e272]: "x509: certificate signed by unknown authority"
+                  - text: Errors during Agent Mode Cluster Creation
+                  - link "Direct link to scenario---x509-certificate-signed-by-unknown-authority-errors-during-agent-mode-cluster-creation" [ref=e273] [cursor=pointer]:
+                    - /url: "#scenario---x509-certificate-signed-by-unknown-authority-errors-during-agent-mode-cluster-creation"
+                    - text: "#"
+                - paragraph [ref=e274]: Agent mode Edge cluster creation may fail with logs showing the following error.
+                - generic [ref=e276]:
+                  - code [ref=e278]:
+                    - generic [ref=e279]: "failed calling webhook \"pod-registry.spectrocloud.com\": tls: failed to verify certificate:"
+                    - generic [ref=e280]: "x509: certificate signed by unknown authority (\"Spectro Cloud\")"
+                    - generic [ref=e281]: "http: TLS handshake error ... remote error: tls: bad certificate"
+                  - generic [ref=e282]:
+                    - button "Toggle word wrap" [ref=e283] [cursor=pointer]:
+                      - img [ref=e284]
+                    - button "Copy code to clipboard" [ref=e286] [cursor=pointer]:
+                      - generic [ref=e287]:
+                        - img [ref=e288]
+                        - img [ref=e290]
+                - paragraph [ref=e292]:
+                  - text: As a result, core components such as CNI, Harbor, and cluster controllers never start. All pods remain in
+                  - strong [ref=e293]: Pending
+                  - text: or
+                  - strong [ref=e294]: Failed
+                  - text: state. In the Local UI, packs display
+                  - strong [ref=e295]: Invalid date
+                  - text: in the
+                  - strong [ref=e296]: Started On
+                  - text: and
+                  - strong [ref=e297]: Completed On
+                  - text: fields.
+                - paragraph [ref=e298]:
+                  - text: This issue occurs when the
+                  - code [ref=e299]: stylus-webhook
+                  - text: agent admission webhook and its Transport Layer Security (TLS)
+                  - code [ref=e300]: stylus-webhook-tls
+                  - text: secret are temporarily mismatched due to a timing issue during cluster bootstrap. As a result, the Kubernetes API server rejects the certificate as signed by an unknown authority, causing admission requests to fail.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e301]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e302] [cursor=pointer]:
+                    - /url: "#debug-steps"
+                    - text: "#"
+                - list [ref=e303]:
+                  - listitem [ref=e304]:
+                    - paragraph [ref=e305]: Issue the following command on all cluster nodes to stop the Palette Agent operator service.
+                    - generic [ref=e307]:
+                      - code [ref=e309]:
+                        - generic [ref=e310]: systemctl stop spectro-stylus-operator
+                      - button "Copy code to clipboard" [ref=e312] [cursor=pointer]:
+                        - generic [ref=e313]:
+                          - img [ref=e314]
+                          - img [ref=e316]
+                  - listitem [ref=e318]:
+                    - paragraph [ref=e319]: Issue the following commands on one of the control plane nodes to remove the mismatched webhook resources.
+                    - generic [ref=e321]:
+                      - code [ref=e323]:
+                        - generic [ref=e324]: kubectl delete secret --namespace spectro-system stylus-webhook-tls
+                        - generic [ref=e325]: kubectl delete svc --namespace spectro-system stylus-webhook
+                        - generic [ref=e326]: kubectl delete MutatingWebhookConfiguration stylus-webhook
+                      - generic [ref=e327]:
+                        - button "Toggle word wrap" [ref=e328] [cursor=pointer]:
+                          - img [ref=e329]
+                        - button "Copy code to clipboard" [ref=e331] [cursor=pointer]:
+                          - generic [ref=e332]:
+                            - img [ref=e333]
+                            - img [ref=e335]
+                  - listitem [ref=e337]:
+                    - paragraph [ref=e338]: Issue the following command on all cluster nodes to restart the Palette Agent operator service and regenerate a new, consistent set of webhook resources.
+                    - generic [ref=e340]:
+                      - code [ref=e342]:
+                        - generic [ref=e343]: systemctl restart spectro-stylus-operator
+                      - button "Copy code to clipboard" [ref=e345] [cursor=pointer]:
+                        - generic [ref=e346]:
+                          - img [ref=e347]
+                          - img [ref=e349]
+                - paragraph [ref=e351]: This will resolve the issue, and cluster creation will proceed as expected.
+                - 'heading "Scenario - content-length: 0 Errors during Content SynchronizationDirect link to scenario---content-length-0-errors-during-content-synchronization" [level=2] [ref=e352]':
+                  - text: Scenario -
+                  - code [ref=e353]: "content-length: 0"
+                  - text: Errors during Content Synchronization
+                  - link "Direct link to scenario---content-length-0-errors-during-content-synchronization" [ref=e354] [cursor=pointer]:
+                    - /url: "#scenario---content-length-0-errors-during-content-synchronization"
+                    - text: "#"
+                - paragraph [ref=e355]:
+                  - text: Unintended or non-graceful reboots during content bundle push operations can cause inconsistency in the primary registry, resulting in 0-byte blob files and subsequent
+                  - code [ref=e356]: "content-length: 0"
+                  - text: errors during content synchronization.
+                - paragraph [ref=e357]:
+                  - text: When operating a locally managed cluster, if you observe the
+                  - code [ref=e358]: "content-length: 0"
+                  - text: error during content sync, follow the steps below to verify whether the error was caused by an inconsistency in the primary registry and to fix the issue.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e359]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e360] [cursor=pointer]:
+                    - /url: "#debug-steps-1"
+                    - text: "#"
+                - list [ref=e361]:
+                  - listitem [ref=e362]:
+                    - paragraph [ref=e363]: Issue the following command and observe if there are files that are zero bytes in size.
+                    - generic [ref=e365]:
+                      - code [ref=e367]:
+                        - generic [ref=e368]: ls -la /usr/local/spectrocloud/peerbundle/sha256/
+                      - button "Copy code to clipboard" [ref=e370] [cursor=pointer]:
+                        - generic [ref=e371]:
+                          - img [ref=e372]
+                          - img [ref=e374]
+                    - paragraph [ref=e376]: If you observe output similar to the following, where the file size is zero, proceed to the next step.
+                    - generic [ref=e378]:
+                      - code [ref=e380]:
+                        - generic [ref=e381]: "-rw------- 1 root root 0 Aug 11 01:52 /usr/local/spectrocloud/peerbundle/sha256"
+                      - generic [ref=e382]:
+                        - button "Toggle word wrap" [ref=e383] [cursor=pointer]:
+                          - img [ref=e384]
+                        - button "Copy code to clipboard" [ref=e386] [cursor=pointer]:
+                          - generic [ref=e387]:
+                            - img [ref=e388]
+                            - img [ref=e390]
+                  - listitem [ref=e392]:
+                    - paragraph [ref=e393]: Issue the following command to remove all files with zero size.
+                    - generic [ref=e395]:
+                      - code [ref=e397]:
+                        - generic [ref=e398]: sudo find /usr/local/spectrocloud/peerbundle/sha256/ -type f -size 0 -delete
+                      - generic [ref=e399]:
+                        - button "Toggle word wrap" [ref=e400] [cursor=pointer]:
+                          - img [ref=e401]
+                        - button "Copy code to clipboard" [ref=e403] [cursor=pointer]:
+                          - generic [ref=e404]:
+                            - img [ref=e405]
+                            - img [ref=e407]
+                  - listitem [ref=e409]:
+                    - paragraph [ref=e410]: Restart the Palette agent service and verify that it is active.
+                    - generic [ref=e412]:
+                      - code [ref=e414]:
+                        - generic [ref=e415]: sudo systemctl restart spectro-stylus-agent.service
+                        - generic [ref=e416]: sudo systemctl status spectro-stylus-agent.service
+                      - button "Copy code to clipboard" [ref=e418] [cursor=pointer]:
+                        - generic [ref=e419]:
+                          - img [ref=e420]
+                          - img [ref=e422]
+                - paragraph [ref=e424]: This will resolve the issue and content sync will proceed normally.
+                - heading "Scenario – PXK-E Clusters on RHEL and Rocky 8 Fail Kubernetes InitializationDirect link to Scenario – PXK-E Clusters on RHEL and Rocky 8 Fail Kubernetes Initialization" [level=2] [ref=e425]:
+                  - text: Scenario – PXK-E Clusters on RHEL and Rocky 8 Fail Kubernetes Initialization
+                  - link "Direct link to Scenario – PXK-E Clusters on RHEL and Rocky 8 Fail Kubernetes Initialization" [ref=e426] [cursor=pointer]:
+                    - /url: "#scenario--pxk-e-clusters-on-rhel-and-rocky-8-fail-kubernetes-initialization"
+                    - text: "#"
+                - paragraph [ref=e427]:
+                  - link "Palette eXtended Kubernetes - Edge (PXK-E)" [ref=e428] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=edge-k8s
+                  - text: clusters running Kubernetes v1.32.x or later on RHEL or Rocky Linux 8.x may experience failure during Kubernetes initialization. This occurs because RHEL and Rocky 8.x come with kernel version 4.18.x, which does not meet the
+                  - link "kubeadm" [ref=e429] [cursor=pointer]:
+                    - /url: https://kubernetes.io/docs/reference/setup-tools/kubeadm/
+                  - text: system requirements introduced in Kubernetes v1.32.x. You can observe the following error in
+                  - code [ref=e430]: kube-init
+                  - text: logs.
+                - generic [ref=e432]:
+                  - code [ref=e434]:
+                    - generic [ref=e435]: "[ERROR SystemVerification]: kernel release 4.18.0-553.16.1.el8_10.x86_64 is unsupported. Recommended LTS version from the 4.x series is 4.19. Any 5.x or 6.x versions are also supported. For cgroups v2 support, the minimal version is 4.15 and the recommended version is 5.8+..."
+                  - generic [ref=e436]:
+                    - button "Toggle word wrap" [ref=e437] [cursor=pointer]:
+                      - img [ref=e438]
+                    - button "Copy code to clipboard" [ref=e440] [cursor=pointer]:
+                      - generic [ref=e441]:
+                        - img [ref=e442]
+                        - img [ref=e444]
+                - paragraph [ref=e446]: "There are several possible ways to troubleshoot this issue:"
+                - list [ref=e447]:
+                  - listitem [ref=e448]: Rebuild the OS using RHEL or Rocky Linux 9.x, as they come with kernel 5.14+ by default.
+                  - listitem [ref=e449]:
+                    - link "Update the kernel version" [ref=e450] [cursor=pointer]:
+                      - /url: "#debug-steps---update-the-kernel-version"
+                    - text: to 4.19 or later in the 4.x series, or to any 5.x or 6.x version.
+                - generic [ref=e451]:
+                  - generic [ref=e452]:
+                    - img [ref=e454]
+                    - text: info
+                  - generic [ref=e456]:
+                    - paragraph [ref=e457]:
+                      - text: To view all available versions of the
+                      - code [ref=e458]: kernel-lt
+                      - text: (long-term support) package from ELRepo, run the following command on a system that uses
+                      - code [ref=e459]: dnf
+                      - text: ", such as RHEL, Rocky Linux, CentOS, or a compatible container."
+                    - generic [ref=e461]:
+                      - code [ref=e463]:
+                        - generic [ref=e464]: dnf --showduplicates --enablerepo=elrepo-kernel list available kernel-lt
+                      - generic [ref=e465]:
+                        - button "Toggle word wrap" [ref=e466] [cursor=pointer]:
+                          - img [ref=e467]
+                        - button "Copy code to clipboard" [ref=e469] [cursor=pointer]:
+                          - generic [ref=e470]:
+                            - img [ref=e471]
+                            - img [ref=e473]
+                - heading "Debug Steps - Update the Kernel VersionDirect link to Debug Steps - Update the Kernel Version" [level=3] [ref=e475]:
+                  - text: Debug Steps - Update the Kernel Version
+                  - link "Direct link to Debug Steps - Update the Kernel Version" [ref=e476] [cursor=pointer]:
+                    - /url: "#debug-steps---update-the-kernel-version"
+                    - text: "#"
+                - heading "LimitationsDirect link to Limitations" [level=4] [ref=e477]:
+                  - text: Limitations
+                  - link "Direct link to Limitations" [ref=e478] [cursor=pointer]:
+                    - /url: "#limitations"
+                    - text: "#"
+                - list [ref=e479]:
+                  - listitem [ref=e480]: Appliance mode is supported only for RHEL-based images and is not supported for Rocky Linux.
+                - heading "Debug Steps - Update the Kernel Version for Appliance ModeDirect link to Debug Steps - Update the Kernel Version for Appliance Mode" [level=4] [ref=e481]:
+                  - text: Debug Steps - Update the Kernel Version for Appliance Mode
+                  - link "Direct link to Debug Steps - Update the Kernel Version for Appliance Mode" [ref=e482] [cursor=pointer]:
+                    - /url: "#debug-steps---update-the-kernel-version-for-appliance-mode"
+                    - text: "#"
+                - list [ref=e483]:
+                  - listitem [ref=e484]:
+                    - paragraph [ref=e485]:
+                      - text: Customize the
+                      - code [ref=e486]: Dockerfile
+                      - text: in the
+                      - code [ref=e487]: CanvOS
+                      - text: directory. Find the conditional block for RHEL.
+                    - generic [ref=e489]:
+                      - code [ref=e491]:
+                        - generic [ref=e492]: "RUN if [ \"${OS_DISTRIBUTION}\" = \"rhel\" ]; then \\"
+                        - generic [ref=e493]: cp -a /certs/. /etc/pki/ca-trust/source/anchors/ && \
+                        - generic [ref=e494]: update-ca-trust; \
+                        - generic [ref=e495]: fi
+                      - button "Copy code to clipboard" [ref=e497] [cursor=pointer]:
+                        - generic [ref=e498]:
+                          - img [ref=e499]
+                          - img [ref=e501]
+                    - paragraph [ref=e503]: Update the conditional block as in the example below to install the latest available version in the 5.4.x Long-Term Support (LTS) kernel line using ELRepo.
+                    - generic [ref=e505]:
+                      - code [ref=e507]:
+                        - generic [ref=e508]: "RUN if [ \"${OS_DISTRIBUTION}\" = \"rhel\" ]; then \\"
+                        - generic [ref=e509]: cp --archive /certs/. /etc/pki/ca-trust/source/anchors/ && \
+                        - generic [ref=e510]: update-ca-trust && \
+                        - generic [ref=e511]: dnf install --assumeyes https://www.elrepo.org/elrepo-release-8.el8.elrepo.noarch.rpm && \
+                        - generic [ref=e512]: dnf update --assumeyes && \
+                        - generic [ref=e513]: dnf --enablerepo=elrepo-kernel install --assumeyes kernel-lt kernel-lt-modules-extra && \
+                        - generic [ref=e514]: dnf clean all; \
+                        - generic [ref=e515]: fi
+                      - generic [ref=e516]:
+                        - button "Toggle word wrap" [ref=e517] [cursor=pointer]:
+                          - img [ref=e518]
+                        - button "Copy code to clipboard" [ref=e520] [cursor=pointer]:
+                          - generic [ref=e521]:
+                            - img [ref=e522]
+                            - img [ref=e524]
+                    - paragraph [ref=e526]:
+                      - text: Alternatively, you can update the conditional block as in the example below to pin an exact version. Replace
+                      - code [ref=e527]: 5.4.261-1.el8.elrepo
+                      - text: with the required version.
+                    - generic [ref=e529]:
+                      - code [ref=e531]:
+                        - generic [ref=e532]: "RUN if [ \"${OS_DISTRIBUTION}\" = \"rhel\" ]; then \\"
+                        - generic [ref=e533]: cp --archive /certs/. /etc/pki/ca-trust/source/anchors/ && \
+                        - generic [ref=e534]: update-ca-trust && \
+                        - generic [ref=e535]: dnf install --assumeyes https://www.elrepo.org/elrepo-release-8.el8.elrepo.noarch.rpm && \
+                        - generic [ref=e536]: dnf update --assumeyes && \
+                        - generic [ref=e537]: dnf --enablerepo=elrepo-kernel install --assumeyes \
+                        - generic [ref=e538]: kernel-lt-5.4.261-1.el8.elrepo \
+                        - generic [ref=e539]: kernel-lt-modules-extra-5.4.261-1.el8.elrepo && \
+                        - generic [ref=e540]: dnf clean all; \
+                        - generic [ref=e541]: fi
+                      - generic [ref=e542]:
+                        - button "Toggle word wrap" [ref=e543] [cursor=pointer]:
+                          - img [ref=e544]
+                        - button "Copy code to clipboard" [ref=e546] [cursor=pointer]:
+                          - generic [ref=e547]:
+                            - img [ref=e548]
+                            - img [ref=e550]
+                  - listitem [ref=e552]:
+                    - paragraph [ref=e553]: Rebuild the ISO and provider image and redeploy the cluster.
+                  - listitem [ref=e554]:
+                    - paragraph [ref=e555]: After the deployment is complete, issue the following command on the node to ensure you updated the kernel version to a supported one.
+                    - generic [ref=e557]:
+                      - code [ref=e559]:
+                        - generic [ref=e560]: uname --kernel-release
+                      - button "Copy code to clipboard" [ref=e562] [cursor=pointer]:
+                        - generic [ref=e563]:
+                          - img [ref=e564]
+                          - img [ref=e566]
+                - heading "Debug Steps - Update the Kernel Version for Agent ModeDirect link to Debug Steps - Update the Kernel Version for Agent Mode" [level=4] [ref=e568]:
+                  - text: Debug Steps - Update the Kernel Version for Agent Mode
+                  - link "Direct link to Debug Steps - Update the Kernel Version for Agent Mode" [ref=e569] [cursor=pointer]:
+                    - /url: "#debug-steps---update-the-kernel-version-for-agent-mode"
+                    - text: "#"
+                - list [ref=e570]:
+                  - listitem [ref=e571]:
+                    - paragraph [ref=e572]: Install the latest available version in the 5.4.x LTS kernel line using ELRepo. Establish an SSH connection to the PXK-E node and issue the following commands.
+                    - generic [ref=e574]:
+                      - code [ref=e576]:
+                        - generic [ref=e577]: dnf install --assumeyes https://www.elrepo.org/elrepo-release-8.el8.elrepo.noarch.rpm
+                        - generic [ref=e578]: dnf update --assumeyes
+                        - generic [ref=e579]: dnf --enablerepo=elrepo-kernel install --assumeyes kernel-lt kernel-lt-modules-extra
+                        - generic [ref=e580]: reboot
+                      - generic [ref=e581]:
+                        - button "Toggle word wrap" [ref=e582] [cursor=pointer]:
+                          - img [ref=e583]
+                        - button "Copy code to clipboard" [ref=e585] [cursor=pointer]:
+                          - generic [ref=e586]:
+                            - img [ref=e587]
+                            - img [ref=e589]
+                    - paragraph [ref=e591]:
+                      - text: Alternatively, you can issue the following command to pin an exact version. Replace
+                      - code [ref=e592]: 5.4.261-1.el8.elrepo
+                      - text: with the required version.
+                    - generic [ref=e594]:
+                      - code [ref=e596]:
+                        - generic [ref=e597]: dnf install --assumeyes https://www.elrepo.org/elrepo-release-8.el8.elrepo.noarch.rpm
+                        - generic [ref=e598]: dnf update --assumeyes
+                        - generic [ref=e599]: dnf --enablerepo=elrepo-kernel install --assumeyes \
+                        - generic [ref=e600]: kernel-lt-5.4.261-1.el8.elrepo \
+                        - generic [ref=e601]: kernel-lt-modules-extra-5.4.261-1.el8.elrepo
+                        - generic [ref=e602]: reboot
+                      - generic [ref=e603]:
+                        - button "Toggle word wrap" [ref=e604] [cursor=pointer]:
+                          - img [ref=e605]
+                        - button "Copy code to clipboard" [ref=e607] [cursor=pointer]:
+                          - generic [ref=e608]:
+                            - img [ref=e609]
+                            - img [ref=e611]
+                  - listitem [ref=e613]:
+                    - paragraph [ref=e614]: Issue the following command after the reboot to ensure you updated the kernel version to a supported one.
+                    - generic [ref=e616]:
+                      - code [ref=e618]:
+                        - generic [ref=e619]: uname --kernel-release
+                      - button "Copy code to clipboard" [ref=e621] [cursor=pointer]:
+                        - generic [ref=e622]:
+                          - img [ref=e623]
+                          - img [ref=e625]
+                - heading "Scenario - PXK-E Clusters in VerteX Deployments Experience Failure upon RebootDirect link to Scenario - PXK-E Clusters in VerteX Deployments Experience Failure upon Reboot" [level=2] [ref=e627]:
+                  - text: Scenario - PXK-E Clusters in VerteX Deployments Experience Failure upon Reboot
+                  - link "Direct link to Scenario - PXK-E Clusters in VerteX Deployments Experience Failure upon Reboot" [ref=e628] [cursor=pointer]:
+                    - /url: "#scenario---pxk-e-clusters-in-vertex-deployments-experience-failure-upon-reboot"
+                    - text: "#"
+                - paragraph [ref=e629]:
+                  - text: When rebooting control plane nodes in
+                  - link "Palette eXtended Kubernetes - Edge (PXK-E)" [ref=e630] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=edge-k8s
+                  - text: clusters deployed via VerteX, the
+                  - code [ref=e631]: kube-vip
+                  - text: component may fail to start due to early DNS resolution issues. You can observe repeated errors in the system logs using
+                  - code [ref=e632]: journalctl --unit=kubelet
+                  - text: .
+                - generic [ref=e633]:
+                  - generic [ref=e634]: Example output
+                  - generic [ref=e635]:
+                    - code [ref=e637]:
+                      - generic [ref=e638]: "E0619 21:53:53.613367 1 leaderelection.go:327] error retrieving resource lock kube-system/plndr-cp-lock: Get \"https://kubernetes:6443/apis/coordination.k8s.io/v1/namespaces/kube-system/leases/plndr-cp-lock\": dial tcp: lookup kubernetes on 10.10.128.8:53: no such host"
+                      - generic [ref=e639]: "E0619 21:54:00.647219 1 leaderelection.go:327] error retrieving resource lock kube-system/plndr-cp-lock: Get \"https://kubernetes:6443/apis/coordination.k8s.io/v1/namespaces/kube-system/leases/plndr-cp-lock\": dial tcp: lookup kubernetes on 10.10.128.8:53: no such host"
+                    - generic [ref=e640]:
+                      - button "Toggle word wrap" [ref=e641] [cursor=pointer]:
+                        - img [ref=e642]
+                      - button "Copy code to clipboard" [ref=e644] [cursor=pointer]:
+                        - generic [ref=e645]:
+                          - img [ref=e646]
+                          - img [ref=e648]
+                - paragraph [ref=e650]:
+                  - text: Although DNS becomes available shortly after boot,
+                  - code [ref=e651]: kube-vip
+                  - text: does not recover automatically. To fix this, stop and remove the container manually. The kubelet then restarts the component using the current system state.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e652]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e653] [cursor=pointer]:
+                    - /url: "#debug-steps-2"
+                    - text: "#"
+                - list [ref=e654]:
+                  - listitem [ref=e655]:
+                    - paragraph [ref=e656]:
+                      - text: On each control plane node, list all operating
+                      - code [ref=e657]: kube-vip
+                      - text: containers using the
+                      - link "crictl" [ref=e658] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/
+                        - code [ref=e659]: crictl
+                      - text: tool.
+                    - generic [ref=e661]:
+                      - code [ref=e663]:
+                        - generic [ref=e664]: "crictl ps 2>/dev/null | grep kube-vip | awk '{print $1}'"
+                      - button "Copy code to clipboard" [ref=e666] [cursor=pointer]:
+                        - generic [ref=e667]:
+                          - img [ref=e668]
+                          - img [ref=e670]
+                  - listitem [ref=e672]:
+                    - paragraph [ref=e673]: Stop and remove each container.
+                    - generic [ref=e675]:
+                      - code [ref=e677]:
+                        - generic [ref=e678]: crictl stop <container-id> && crictl rm <container-id>
+                      - button "Copy code to clipboard" [ref=e680] [cursor=pointer]:
+                        - generic [ref=e681]:
+                          - img [ref=e682]
+                          - img [ref=e684]
+                - heading "Scenario - Canonical Edge Clusters in Proxied Environments Experience Failure upon RebootDirect link to Scenario - Canonical Edge Clusters in Proxied Environments Experience Failure upon Reboot" [level=2] [ref=e686]:
+                  - text: Scenario - Canonical Edge Clusters in Proxied Environments Experience Failure upon Reboot
+                  - link "Direct link to Scenario - Canonical Edge Clusters in Proxied Environments Experience Failure upon Reboot" [ref=e687] [cursor=pointer]:
+                    - /url: "#scenario---canonical-edge-clusters-in-proxied-environments-experience-failure-upon-reboot"
+                    - text: "#"
+                - paragraph [ref=e688]:
+                  - text: When rebooting nodes in an Edge cluster using Palette Optimized Canonical deployed in a proxied environment, the nodes may fail to come back online. To prevent this, add the second IP address in the
+                  - code [ref=e689]: service_cidr
+                  - text: range from the Canonical pack to the
+                  - code [ref=e690]: NO_PROXY
+                  - text: list in your Edge installer
+                  - code [ref=e691]: user-data
+                  - text: .
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e692]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e693] [cursor=pointer]:
+                    - /url: "#debug-steps-3"
+                    - text: "#"
+                - list [ref=e694]:
+                  - listitem [ref=e695]:
+                    - paragraph [ref=e696]:
+                      - text: Log in to
+                      - link "Palette" [ref=e697] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e698]:
+                    - paragraph [ref=e699]:
+                      - text: From the left
+                      - strong [ref=e700]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e701]: Profiles
+                      - text: . Then select the profile you will use to deploy your cluster.
+                  - listitem [ref=e702]:
+                    - paragraph [ref=e703]:
+                      - text: Select the Kubernetes layer, the
+                      - code [ref=e704]: Palette Optimized Canonical
+                      - text: pack. Click
+                      - strong [ref=e705]: values.yaml
+                      - text: to view the values.
+                  - listitem [ref=e706]:
+                    - paragraph [ref=e707]:
+                      - text: Take note of the
+                      - code [ref=e708]: service_cidr
+                      - text: value in
+                      - code [ref=e709]: pack.cluster.config
+                      - text: .
+                  - listitem [ref=e710]:
+                    - paragraph [ref=e711]:
+                      - text: Add the second IP of the CIDR block in the
+                      - code [ref=e712]: service_cidr
+                      - text: range to the
+                      - code [ref=e713]: stylus.site.network.noProxy
+                      - text: parameter. For example, if your
+                      - code [ref=e714]: service_cidr
+                      - text: is
+                      - code [ref=e715]: 192.169.0.0/16
+                      - text: ", you need to add"
+                      - code [ref=e716]: 192.169.0.1
+                      - text: to the parameter.
+                    - generic [ref=e717]:
+                      - generic [ref=e718]: Example
+                      - generic [ref=e719]:
+                        - code [ref=e721]:
+                          - generic [ref=e722]: "#cloud-config"
+                          - generic [ref=e723]: "stylus:"
+                          - generic [ref=e724]: "site:"
+                          - generic [ref=e725]: "paletteEndpoint: api.spectrocloud.com"
+                          - generic [ref=e726]: "edgeHostToken: <yourRegistrationToken>"
+                          - generic [ref=e727]: "projectName: edge-sites"
+                          - generic [ref=e728]: "tags:"
+                          - generic [ref=e729]: "city: chicago"
+                          - generic [ref=e730]: "building: building-1"
+                          - generic [ref=e731]: "zip-code: 95135"
+                          - generic [ref=e732]: "network:"
+                          - generic [ref=e733]: "httpProxy: http://proxy.example.com"
+                          - generic [ref=e734]: "httpsProxy: https://proxy.example.com"
+                          - generic [ref=e735]: "noProxy: 10.10.128.10,10.0.0.0/8,192.169.0.1"
+                          - generic [ref=e736]: "nameserver: 1.1.1.1"
+                        - button "Copy code to clipboard" [ref=e738] [cursor=pointer]:
+                          - generic [ref=e739]:
+                            - img [ref=e740]
+                            - img [ref=e742]
+                - heading "Scenario - Cilium Pod Stuck During Kubernetes Upgrade Due to nsenter Permission IssueDirect link to Scenario - Cilium Pod Stuck During Kubernetes Upgrade Due to nsenter Permission Issue" [level=2] [ref=e744]:
+                  - text: Scenario - Cilium Pod Stuck During Kubernetes Upgrade Due to nsenter Permission Issue
+                  - link "Direct link to Scenario - Cilium Pod Stuck During Kubernetes Upgrade Due to nsenter Permission Issue" [ref=e745] [cursor=pointer]:
+                    - /url: "#scenario---cilium-pod-stuck-during-kubernetes-upgrade-due-to-nsenter-permission-issue"
+                    - text: "#"
+                - paragraph [ref=e746]:
+                  - text: During a Kubernetes upgrade, the Cilium pod may get stuck in the
+                  - code [ref=e747]: Init:CrashLoopBackoff
+                  - text: state due to nsenter permission issues. To address the issue, patch the cilium DaemonSet with the specified annotations.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e748]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e749] [cursor=pointer]:
+                    - /url: "#debug-steps-4"
+                    - text: "#"
+                - list [ref=e750]:
+                  - listitem [ref=e751]:
+                    - paragraph [ref=e752]:
+                      - link "Connect to your cluster" [ref=e753] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/
+                      - text: via
+                      - code [ref=e754]: kubectl
+                      - text: .
+                  - listitem [ref=e755]:
+                    - paragraph [ref=e756]: Issue the following command to edit the DaemonSet.
+                    - generic [ref=e758]:
+                      - code [ref=e760]:
+                        - generic [ref=e761]: kubectl --namespace kube-system edit ds cilium
+                      - button "Copy code to clipboard" [ref=e763] [cursor=pointer]:
+                        - generic [ref=e764]:
+                          - img [ref=e765]
+                          - img [ref=e767]
+                  - listitem [ref=e769]:
+                    - paragraph [ref=e770]: Add the following annotations to the DaemonSet.
+                    - generic [ref=e772]:
+                      - code [ref=e774]:
+                        - generic [ref=e775]: "spec:"
+                        - generic [ref=e776]: "template:"
+                        - generic [ref=e777]: "metadata:"
+                        - generic [ref=e778]: "annotations:"
+                        - generic [ref=e779]: "container.apparmor.security.beta.kubernetes.io/cilium-agent: \"unconfined\""
+                        - generic [ref=e780]: "container.apparmor.security.beta.kubernetes.io/mount-cgroup: \"unconfined\""
+                        - generic [ref=e781]: "container.apparmor.security.beta.kubernetes.io/clean-cilium-state: \"unconfined\""
+                        - generic [ref=e782]: "container.apparmor.security.beta.kubernetes.io/apply-sysctl-overwrites: \"unconfined\""
+                      - generic [ref=e783]:
+                        - button "Toggle word wrap" [ref=e784] [cursor=pointer]:
+                          - img [ref=e785]
+                        - button "Copy code to clipboard" [ref=e787] [cursor=pointer]:
+                          - generic [ref=e788]:
+                            - img [ref=e789]
+                            - img [ref=e791]
+                - heading "Scenario - Cluster Creation Failure Due to Nodeadm not FoundDirect link to Scenario - Cluster Creation Failure Due to Nodeadm not Found" [level=2] [ref=e793]:
+                  - text: Scenario - Cluster Creation Failure Due to Nodeadm not Found
+                  - link "Direct link to Scenario - Cluster Creation Failure Due to Nodeadm not Found" [ref=e794] [cursor=pointer]:
+                    - /url: "#scenario---cluster-creation-failure-due-to-nodeadm-not-found"
+                    - text: "#"
+                - paragraph [ref=e795]:
+                  - text: When attempting to deploy a cluster with
+                  - link "Palette eXtended Kubernetes - Edge (PXK-E)" [ref=e796] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=edge-k8s
+                  - text: and
+                  - link "agent mode" [ref=e797] [cursor=pointer]:
+                    - /url: /deployment-modes/agent-mode/
+                  - text: on Palette agent version 4.5.14, adding a custom
+                  - code [ref=e798]: stylus.path
+                  - text: to the
+                  - strong [ref=e799]: user-data
+                  - text: file causes cluster creation to fail as it cannot find
+                  - link "kubeadm" [ref=e800] [cursor=pointer]:
+                    - /url: https://kubernetes.io/docs/reference/setup-tools/kubeadm/
+                  - text: . A custom
+                  - code [ref=e801]: stylus.path
+                  - text: can be added during the
+                  - link "Install Palette Agent" [ref=e802] [cursor=pointer]:
+                    - /url: /deployment-modes/agent-mode/install-agent-host/#install-palette-agent
+                  - text: steps.
+                - generic [ref=e803]:
+                  - generic [ref=e804]:
+                    - img [ref=e806]
+                    - text: tip
+                  - paragraph [ref=e809]:
+                    - text: Refer to
+                    - link "Identify the Target Agent Version" [ref=e810] [cursor=pointer]:
+                      - /url: /clusters/edge/cluster-management/agent-upgrade-airgap/#identify-the-target-agent-version
+                    - text: for guidance in retrieving your Palette agent version number.
+                - paragraph [ref=e811]:
+                  - text: To resolve this scenario, add a cloud-init stage to your
+                  - link "BYOS Edge OS" [ref=e812] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=edge-native-byoi
+                  - text: pack configuration by following the debug steps below.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e813]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e814] [cursor=pointer]:
+                    - /url: "#debug-steps-5"
+                    - text: "#"
+                - list [ref=e815]:
+                  - listitem [ref=e816]:
+                    - paragraph [ref=e817]:
+                      - text: Log in to
+                      - link "Palette" [ref=e818] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e819]:
+                    - paragraph [ref=e820]:
+                      - text: From the left
+                      - strong [ref=e821]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e822]: Profiles
+                      - text: .
+                  - listitem [ref=e823]:
+                    - paragraph [ref=e824]:
+                      - text: On the
+                      - strong [ref=e825]: Profiles
+                      - text: page, find and click on your cluster profile.
+                  - listitem [ref=e826]:
+                    - paragraph [ref=e827]:
+                      - text: Select the
+                      - strong [ref=e828]: OS
+                      - text: layer of your cluster profile.
+                  - listitem [ref=e829]:
+                    - paragraph [ref=e830]:
+                      - text: Click
+                      - strong [ref=e831]: Values
+                      - text: in the
+                      - strong [ref=e832]: Pack Details
+                      - text: section. In the YAML editor, add the following entry.
+                    - generic [ref=e834]:
+                      - code [ref=e836]:
+                        - generic [ref=e837]: "stages:"
+                        - generic [ref=e838]: "initramfs:"
+                        - generic [ref=e839]: "- name: \"Workaround for kubeadm path issue in Palette agent v4.5.14\""
+                        - generic [ref=e840]: "if: \"[ ! -f /usr/bin/kubeadm ]\""
+                        - generic [ref=e841]: "commands:"
+                        - generic [ref=e842]: "- cp <customStylusPath>/usr/bin/kubeadm /usr/bin/"
+                        - generic [ref=e843]: "- reboot now"
+                      - generic [ref=e844]:
+                        - button "Toggle word wrap" [ref=e845] [cursor=pointer]:
+                          - img [ref=e846]
+                        - button "Copy code to clipboard" [ref=e848] [cursor=pointer]:
+                          - generic [ref=e849]:
+                            - img [ref=e850]
+                            - img [ref=e852]
+                    - paragraph [ref=e854]:
+                      - text: Replace
+                      - code [ref=e855]: <customStylusPath>
+                      - text: with the custom
+                      - code [ref=e856]: stylus.path
+                      - text: you provided in the
+                      - strong [ref=e857]: user-data
+                      - text: file during the
+                      - link "Install Palette Agent" [ref=e858] [cursor=pointer]:
+                        - /url: /deployment-modes/agent-mode/install-agent-host/#install-palette-agent
+                      - text: steps, as demonstrated in the following example.
+                    - generic [ref=e860]:
+                      - code [ref=e862]:
+                        - generic [ref=e863]: "pack:"
+                        - generic [ref=e864]: "content:"
+                        - generic [ref=e865]: "images:"
+                        - generic [ref=e866]: "- image: \"{{.spectro.pack.edge-native-byoi.options.system.uri}}\""
+                        - generic [ref=e867]: "options:"
+                        - generic [ref=e868]: "---"
+                        - generic [ref=e869]: "stages:"
+                        - generic [ref=e870]: "initramfs:"
+                        - generic [ref=e871]: "- name: \"Workaround for kubeadm path issue in Palette agent v4.5.14\""
+                        - generic [ref=e872]: "if: \"[ ! -f /usr/bin/kubeadm ]\""
+                        - generic [ref=e873]: "commands:"
+                        - generic [ref=e874]: "- cp /persistent/spectro/usr/bin/kubeadm /usr/bin/"
+                        - generic [ref=e875]: "- reboot now"
+                      - button "Toggle word wrap" [ref=e877] [cursor=pointer]:
+                        - img [ref=e878]
+                  - listitem [ref=e880]:
+                    - paragraph [ref=e881]:
+                      - text: Click
+                      - strong [ref=e882]: Confirm Updates
+                      - text: to save your changes.
+                  - listitem [ref=e883]:
+                    - paragraph [ref=e884]:
+                      - text: Click
+                      - strong [ref=e885]: Save Changes
+                      - text: on the cluster profile page.
+                  - listitem [ref=e886]:
+                    - paragraph [ref=e887]: Deploy your cluster using the updated cluster profile.
+                - heading "Scenario - IP Address not Assigned to Edge HostDirect link to Scenario - IP Address not Assigned to Edge Host" [level=2] [ref=e888]:
+                  - text: Scenario - IP Address not Assigned to Edge Host
+                  - link "Direct link to Scenario - IP Address not Assigned to Edge Host" [ref=e889] [cursor=pointer]:
+                    - /url: "#scenario---ip-address-not-assigned-to-edge-host"
+                    - text: "#"
+                - paragraph [ref=e890]: When you add a new VMware vSphere Edge host to an Edge cluster, the IP address may fail to be assigned to the Edge host after a reboot.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e891]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e892] [cursor=pointer]:
+                    - /url: "#debug-steps-6"
+                    - text: "#"
+                - list [ref=e893]:
+                  - listitem [ref=e894]:
+                    - paragraph [ref=e895]:
+                      - text: Access the Edge host through the
+                      - link "vSphere Web Console" [ref=e896] [cursor=pointer]:
+                        - /url: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-92986CAA-4FDE-4AA0-A9E9-084FF9E03323.html
+                      - text: .
+                  - listitem [ref=e897]:
+                    - paragraph [ref=e898]: Issue the following command.
+                    - generic [ref=e900]:
+                      - code [ref=e902]:
+                        - generic [ref=e903]: networkctl reload
+                      - button "Copy code to clipboard" [ref=e905] [cursor=pointer]:
+                        - generic [ref=e906]:
+                          - img [ref=e907]
+                          - img [ref=e909]
+                    - paragraph [ref=e911]: This command restarts the Edge host network and allows the Edge host to receive an IP address.
+                - heading "Scenario - Override or Reconfigure Read-only File System StageDirect link to Scenario - Override or Reconfigure Read-only File System Stage" [level=2] [ref=e912]:
+                  - text: Scenario - Override or Reconfigure Read-only File System Stage
+                  - link "Direct link to Scenario - Override or Reconfigure Read-only File System Stage" [ref=e913] [cursor=pointer]:
+                    - /url: "#scenario---override-or-reconfigure-read-only-file-system-stage"
+                    - text: "#"
+                - paragraph [ref=e914]: If you need to override or reconfigure the read-only file system, you can do so using the following steps.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e915]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e916] [cursor=pointer]:
+                    - /url: "#debug-steps-7"
+                    - text: "#"
+                - list [ref=e917]:
+                  - listitem [ref=e918]:
+                    - paragraph [ref=e919]: Power on the Edge host.
+                  - listitem [ref=e920]:
+                    - paragraph [ref=e921]:
+                      - text: Press the keyboard key
+                      - code [ref=e922]: E
+                      - text: after highlighting the menu in
+                      - code [ref=e923]: grubmenu
+                      - text: .
+                  - listitem [ref=e924]:
+                    - paragraph [ref=e925]:
+                      - text: Type
+                      - code [ref=e926]: rd.cos.debugrw
+                      - text: and press
+                      - code [ref=e927]: Enter
+                      - text: .
+                    - paragraph [ref=e928]:
+                      - img "The grub menu displays with the command rd.cos.debugrw typed in the terminal." [ref=e929]
+                  - listitem [ref=e930]:
+                    - paragraph [ref=e931]:
+                      - text: Press the keys
+                      - strong [ref=e932]: CTRL + X
+                      - text: to boot the system.
+                  - listitem [ref=e933]:
+                    - paragraph [ref=e934]: Make the required changes to the image.
+                  - listitem [ref=e935]:
+                    - paragraph [ref=e936]: Reboot the system to resume the default read-only file system.
+                - heading "Scenario - Pod State Unknown After Reboot with Overlay Network EnabledDirect link to Scenario - Pod State Unknown After Reboot with Overlay Network Enabled" [level=2] [ref=e937]:
+                  - text: Scenario - Pod State Unknown After Reboot with Overlay Network Enabled
+                  - link "Direct link to Scenario - Pod State Unknown After Reboot with Overlay Network Enabled" [ref=e938] [cursor=pointer]:
+                    - /url: "#scenario---pod-state-unknown-after-reboot-with-overlay-network-enabled"
+                    - text: "#"
+                - paragraph [ref=e939]: On slower networks, it's possible that this is due to KubeVip leader election timeouts. To debug, you can manually adjust the values of related environment variables in the KubeVip DaemonSet with the following steps.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e940]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e941] [cursor=pointer]:
+                    - /url: "#debug-steps-8"
+                    - text: "#"
+                - list [ref=e942]:
+                  - listitem [ref=e943]:
+                    - paragraph [ref=e944]:
+                      - text: Ensure you can access the cluster using kubectl. For more information, refer to
+                      - link "Access Cluster with CLI" [ref=e945] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/
+                      - text: .
+                  - listitem [ref=e946]:
+                    - paragraph [ref=e947]: "Issue the following command:"
+                    - generic [ref=e949]:
+                      - code [ref=e951]:
+                        - generic [ref=e952]: kubectl edit ds kube-vip-ds --namespace kube-system
+                      - button "Copy code to clipboard" [ref=e954] [cursor=pointer]:
+                        - generic [ref=e955]:
+                          - img [ref=e956]
+                          - img [ref=e958]
+                  - listitem [ref=e960]:
+                    - paragraph [ref=e961]:
+                      - text: In the
+                      - code [ref=e962]: env
+                      - text: of the KubeVip service, modify the environment variables to have the following corresponding values.
+                    - generic [ref=e964]:
+                      - code [ref=e966]:
+                        - generic [ref=e967]: "env:"
+                        - generic [ref=e968]: "- name: vip_leaderelection"
+                        - generic [ref=e969]: "value: \"true\""
+                        - generic [ref=e970]: "- name: vip_leaseduration"
+                        - generic [ref=e971]: "value: \"30\""
+                        - generic [ref=e972]: "- name: vip_renewdeadline"
+                        - generic [ref=e973]: "value: \"20\""
+                        - generic [ref=e974]: "- name: vip_retryperiod"
+                        - generic [ref=e975]: "value: \"4\""
+                      - button "Copy code to clipboard" [ref=e977] [cursor=pointer]:
+                        - generic [ref=e978]:
+                          - img [ref=e979]
+                          - img [ref=e981]
+                  - listitem [ref=e983]:
+                    - paragraph [ref=e984]: Within a minute, the old Pods in unknown state will be terminated and Pods will come up with the updated values.
+                - heading "Scenario - Palette Webhook Pods Fail to StartDirect link to Scenario - Palette Webhook Pods Fail to Start" [level=2] [ref=e985]:
+                  - text: Scenario - Palette Webhook Pods Fail to Start
+                  - link "Direct link to Scenario - Palette Webhook Pods Fail to Start" [ref=e986] [cursor=pointer]:
+                    - /url: "#scenario---palette-webhook-pods-fail-to-start"
+                    - text: "#"
+                - paragraph [ref=e987]:
+                  - text: If the Palette webhook pods fail to start, it may be due to the
+                  - emphasis [ref=e988]: palette-lite-controller-manager
+                  - text: pods encountering issues or not being available. Use the following steps to troubleshoot and resolve the issue.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e989]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e990] [cursor=pointer]:
+                    - /url: "#debug-steps-9"
+                    - text: "#"
+                - list [ref=e991]:
+                  - listitem [ref=e992]:
+                    - paragraph [ref=e993]:
+                      - text: Ensure you can access the Kubernetes cluster using kubectl. For more information, refer to
+                      - link "Access Cluster with CLI" [ref=e994] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/
+                      - text: .
+                  - listitem [ref=e995]:
+                    - paragraph [ref=e996]:
+                      - text: Open up a terminal session and issue the following command to check the status of the
+                      - emphasis [ref=e997]: palette-lite-controller-manager
+                      - text: pods.
+                    - generic [ref=e999]:
+                      - code [ref=e1001]:
+                        - generic [ref=e1002]: kubectl get pods --all-namespaces | grep palette-lite-controller-manager
+                      - generic [ref=e1003]:
+                        - button "Toggle word wrap" [ref=e1004] [cursor=pointer]:
+                          - img [ref=e1005]
+                        - button "Copy code to clipboard" [ref=e1007] [cursor=pointer]:
+                          - generic [ref=e1008]:
+                            - img [ref=e1009]
+                            - img [ref=e1011]
+                    - generic [ref=e1014]:
+                      - code [ref=e1016]:
+                        - generic [ref=e1017]: cluster-661acf1dfc746f8217de2712 palette-lite-controller-manager-6856746c8-7p9k2 2/2 Running 0 6m
+                      - button "Toggle word wrap" [ref=e1019] [cursor=pointer]:
+                        - img [ref=e1020]
+                    - paragraph [ref=e1022]: If the pods are active and available with an age greater than five minutes, then the issue may be with the Palette webhook. Proceed to the next step.
+                    - generic [ref=e1023]:
+                      - generic [ref=e1024]:
+                        - img [ref=e1026]
+                        - text: info
+                      - paragraph [ref=e1029]:
+                        - text: If the pods are not active, use the command
+                        - code [ref=e1030]: kubectl describe pod <pod-name> --namespace palette-system
+                        - text: to check the pod logs for more information about why the pods are not starting. Replace
+                        - code [ref=e1031]: <pod-name>
+                        - text: with the name of the pod that is not starting. Scroll down to the
+                        - code [ref=e1032]: Events
+                        - text: section to view the logs. You can try to delete the pod and check if it starts successfully. If the issue persists, contact our support team by emailing.
+                  - listitem [ref=e1033]:
+                    - paragraph [ref=e1034]: Check the status of the Palette webhook pods. Use the following command to verify the status.
+                    - generic [ref=e1036]:
+                      - code [ref=e1038]:
+                        - generic [ref=e1039]: kubectl get pods --namespace palette-system
+                      - button "Copy code to clipboard" [ref=e1041] [cursor=pointer]:
+                        - generic [ref=e1042]:
+                          - img [ref=e1043]
+                          - img [ref=e1045]
+                    - generic [ref=e1048]:
+                      - code [ref=e1050]:
+                        - generic [ref=e1051]: No resources found in palette-system namespace
+                      - button "Copy code to clipboard" [ref=e1053] [cursor=pointer]:
+                        - generic [ref=e1054]:
+                          - img [ref=e1055]
+                          - img [ref=e1057]
+                    - paragraph [ref=e1059]:
+                      - text: If the output displays a message stating
+                      - strong [ref=e1060]: No resources found in palette-system namespace
+                      - text: then the lacking Palette webhook pods are the issue for the cluster not starting.
+                  - listitem [ref=e1061]:
+                    - paragraph [ref=e1062]:
+                      - text: Delete all existing
+                      - emphasis [ref=e1063]: palette-lite-controller-manager
+                      - text: pods using the following commands.
+                    - generic [ref=e1065]:
+                      - code [ref=e1067]:
+                        - generic [ref=e1068]: "export NAMESPACE=$(kubectl get pods --all-namespaces | grep palette-lite-controller-manager | awk '{print $1}')"
+                        - generic [ref=e1069]: "export PALETTE_POD_NAME=$(kubectl get pods --all-namespaces | grep palette-lite-controller-manager | awk '{print $2}')"
+                        - generic [ref=e1070]: kubectl delete pod $PALETTE_POD_NAME --namespace $NAMESPACE
+                      - generic [ref=e1071]:
+                        - button "Toggle word wrap" [ref=e1072] [cursor=pointer]:
+                          - img [ref=e1073]
+                        - button "Copy code to clipboard" [ref=e1075] [cursor=pointer]:
+                          - generic [ref=e1076]:
+                            - img [ref=e1077]
+                            - img [ref=e1079]
+                  - listitem [ref=e1081]:
+                    - paragraph [ref=e1082]:
+                      - text: After a few seconds, verify that the
+                      - emphasis [ref=e1083]: palette-lite-controller-manager
+                      - text: pods are active and available.
+                    - generic [ref=e1085]:
+                      - code [ref=e1087]:
+                        - generic [ref=e1088]: kubectl get pods --all-namespaces | grep palette-lite-controller-manager
+                      - generic [ref=e1089]:
+                        - button "Toggle word wrap" [ref=e1090] [cursor=pointer]:
+                          - img [ref=e1091]
+                        - button "Copy code to clipboard" [ref=e1093] [cursor=pointer]:
+                          - generic [ref=e1094]:
+                            - img [ref=e1095]
+                            - img [ref=e1097]
+                  - listitem [ref=e1099]:
+                    - paragraph [ref=e1100]:
+                      - text: Check the status of the Palette webhook pods. A successful output should display the status of the
+                      - emphasis [ref=e1101]: palette-webhook
+                      - text: pods.
+                    - generic [ref=e1103]:
+                      - code [ref=e1105]:
+                        - generic [ref=e1106]: kubectl get pods --namespace palette-system
+                      - button "Copy code to clipboard" [ref=e1108] [cursor=pointer]:
+                        - generic [ref=e1109]:
+                          - img [ref=e1110]
+                          - img [ref=e1112]
+                    - generic [ref=e1115]:
+                      - code [ref=e1117]:
+                        - generic [ref=e1118]: NAME READY STATUS RESTARTS AGE
+                        - generic [ref=e1119]: palette-webhook-548c55568c-p74zz 1/1 Running 0 2m
+                      - generic [ref=e1120]:
+                        - button "Toggle word wrap" [ref=e1121] [cursor=pointer]:
+                          - img [ref=e1122]
+                        - button "Copy code to clipboard" [ref=e1124] [cursor=pointer]:
+                          - generic [ref=e1125]:
+                            - img [ref=e1126]
+                            - img [ref=e1128]
+                  - listitem [ref=e1130]:
+                    - paragraph [ref=e1131]:
+                      - text: If you continue to encounter issues, contact our support team by emailing
+                      - link "support@spectrocloud.com" [ref=e1132] [cursor=pointer]:
+                        - /url: mailto:support@spectrocloud.com
+                      - text: so that we can provide you with further guidance.
+                - heading "Scenario - systemd-resolved.service Enters Failed StateDirect link to Scenario - systemd-resolved.service Enters Failed State" [level=2] [ref=e1133]:
+                  - text: Scenario - systemd-resolved.service Enters Failed State
+                  - link "Direct link to Scenario - systemd-resolved.service Enters Failed State" [ref=e1134] [cursor=pointer]:
+                    - /url: "#scenario---systemd-resolvedservice-enters-failed-state"
+                    - text: "#"
+                - paragraph [ref=e1135]:
+                  - text: When you create a cluster with an Edge host that operates the Red Hat Enterprise Linux (RHEL) and Ubuntu Operating Systems (OS), you may encounter an error where the
+                  - code [ref=e1136]: systemd-resolved.service
+                  - text: process enters the
+                  - strong [ref=e1137]: failed
+                  - text: state. This prevents the nameserver from being configured, which will result in cluster deployment failure.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e1138]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e1139] [cursor=pointer]:
+                    - /url: "#debug-steps-10"
+                    - text: "#"
+                - list [ref=e1140]:
+                  - listitem [ref=e1141]:
+                    - paragraph [ref=e1142]: Establish an SSH connection to the Edge host.
+                    - paragraph [ref=e1143]:
+                      - text: Alternatively, press the keys
+                      - strong [ref=e1144]: FN + CTRL + CMD + F1
+                      - text: on a keyboard that is connected to the Edge host to log in to the terminal. If you are on Windows, press
+                      - strong [ref=e1145]: FN + CTRL + ALT + F1
+                      - text: .
+                  - listitem [ref=e1146]:
+                    - paragraph [ref=e1147]: Issue the following command.
+                    - generic [ref=e1149]:
+                      - code [ref=e1151]:
+                        - generic [ref=e1152]: chmod a+rwxt /var/tmp
+                        - generic [ref=e1153]: systemctl enable --now systemd-resolved.service
+                      - button "Copy code to clipboard" [ref=e1155] [cursor=pointer]:
+                        - generic [ref=e1156]:
+                          - img [ref=e1157]
+                          - img [ref=e1159]
+                    - paragraph [ref=e1161]:
+                      - text: This will start the
+                      - code [ref=e1162]: systemd-resolved.service
+                      - text: process and move the cluster creation process forward.
+                - heading "Scenario - Degraded Performance on Disk DrivesDirect link to Scenario - Degraded Performance on Disk Drives" [level=2] [ref=e1163]:
+                  - text: Scenario - Degraded Performance on Disk Drives
+                  - link "Direct link to Scenario - Degraded Performance on Disk Drives" [ref=e1164] [cursor=pointer]:
+                    - /url: "#scenario---degraded-performance-on-disk-drives"
+                    - text: "#"
+                - paragraph [ref=e1165]:
+                  - text: If you are experiencing degraded performance on disk drives, such as Solid-State Drive or Nonvolatile Memory Express drives, and you have
+                  - link "Trusted Boot" [ref=e1166] [cursor=pointer]:
+                    - /url: /clusters/edge/trusted-boot/
+                  - text: enabled. The degraded performance may be caused by TRIM operations not being enabled on the drives. TRIM allows the OS to notify the drive which data blocks are no longer in use and can be erased internally. To enable TRIM operations, use the following steps.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e1167]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e1168] [cursor=pointer]:
+                    - /url: "#debug-steps-11"
+                    - text: "#"
+                - list [ref=e1169]:
+                  - listitem [ref=e1170]:
+                    - paragraph [ref=e1171]:
+                      - text: Log in to
+                      - link "Palette" [ref=e1172] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e1173]:
+                    - paragraph [ref=e1174]:
+                      - text: Navigate to the left
+                      - strong [ref=e1175]: Main Menu
+                      - text: and click on
+                      - strong [ref=e1176]: Profiles
+                      - text: .
+                  - listitem [ref=e1177]:
+                    - paragraph [ref=e1178]:
+                      - text: Select the
+                      - strong [ref=e1179]: Cluster Profile
+                      - text: that you want to use for your Edge cluster.
+                  - listitem [ref=e1180]:
+                    - paragraph [ref=e1181]: Click on the BYOOS layer to access its YAML configuration.
+                  - listitem [ref=e1182]:
+                    - paragraph [ref=e1183]: Add the following configuration to the YAML to enable TRIM operations on encrypted partitions.
+                    - generic [ref=e1185]:
+                      - code [ref=e1187]:
+                        - generic [ref=e1188]: "stages:"
+                        - generic [ref=e1189]: "boot.after:"
+                        - generic [ref=e1190]: "- name: Ensure encrypted partitions can be trimmed"
+                        - generic [ref=e1191]: "commands:"
+                        - generic [ref=e1192]: "- |"
+                        - generic [ref=e1193]: DEVICES=$(lsblk -p -n -l -o NAME)
+                        - generic [ref=e1194]: if cat /proc/cmdline | grep rd.immucore.uki; then TRUSTED_BOOT="true"; fi
+                        - generic [ref=e1195]: for part in $DEVICES
+                        - generic [ref=e1196]: do
+                        - generic [ref=e1197]: if cryptsetup isLuks $part; then
+                        - generic [ref=e1198]: echo "Detected encrypted partition $part, ensuring TRIM is enabled..."
+                        - generic [ref=e1199]: "if ! cryptsetup status ${part#/dev/} | grep discards; then"
+                        - generic [ref=e1200]: echo "TRIM is not enabled on $part, enabling TRIM..."
+                        - generic [ref=e1201]: if [ "$TRUSTED_BOOT" = "true" ]; then
+                        - generic [ref=e1202]: "cryptsetup refresh --allow-discards --persistent ${part#/dev/}"
+                        - generic [ref=e1203]: else
+                        - generic [ref=e1204]: "if cryptsetup status ${part#/dev/} | grep LUKS2; then OPTIONS=\"--persistent\"; fi"
+                        - generic [ref=e1205]: "passphrase=$(echo '{ \"data\": \"{ \\\"label\\\": \\\"LABEL\\\" }\"}' | /system/discovery/kcrypt-discovery-challenger \"discovery.password\" | jq -r '.data')"
+                        - generic [ref=e1206]: "echo $passphrase | cryptsetup refresh --allow-discards $OPTIONS ${part#/dev/}"
+                        - generic [ref=e1207]: fi
+                        - generic [ref=e1208]: if [ "$?" = "0" ]; then
+                        - generic [ref=e1209]: echo "TRIM is now enabled on $part"
+                        - generic [ref=e1210]: else
+                        - generic [ref=e1211]: echo "TRIM coud not be enabled on $part!"
+                        - generic [ref=e1212]: fi
+                        - generic [ref=e1213]: else
+                        - generic [ref=e1214]: echo "TRIM is already enabled on $part, nothing to do."
+                        - generic [ref=e1215]: fi
+                        - generic [ref=e1216]: fi
+                        - generic [ref=e1217]: done
+                      - generic [ref=e1218]:
+                        - button "Toggle word wrap" [ref=e1219] [cursor=pointer]:
+                          - img [ref=e1220]
+                        - button "Copy code to clipboard" [ref=e1222] [cursor=pointer]:
+                          - generic [ref=e1223]:
+                            - img [ref=e1224]
+                            - img [ref=e1226]
+                  - listitem [ref=e1228]:
+                    - paragraph [ref=e1229]:
+                      - text: Click on
+                      - strong [ref=e1230]: Confirm Updates
+                      - text: to save the changes.
+                  - listitem [ref=e1231]:
+                    - paragraph [ref=e1232]:
+                      - text: Use the updated profile to create a
+                      - link "new Edge cluster" [ref=e1233] [cursor=pointer]:
+                        - /url: /clusters/edge/site-deployment/cluster-deployment/
+                      - text: or update an existing Edge cluster.
+                - heading "Scenario - Clusters with Cilium and RKE2 Experiences Kubernetes Upgrade FailureDirect link to Scenario - Clusters with Cilium and RKE2 Experiences Kubernetes Upgrade Failure" [level=2] [ref=e1234]:
+                  - text: Scenario - Clusters with Cilium and RKE2 Experiences Kubernetes Upgrade Failure
+                  - link "Direct link to Scenario - Clusters with Cilium and RKE2 Experiences Kubernetes Upgrade Failure" [ref=e1235] [cursor=pointer]:
+                    - /url: "#scenario---clusters-with-cilium-and-rke2-experiences-kubernetes-upgrade-failure"
+                    - text: "#"
+                - paragraph [ref=e1236]:
+                  - text: When you upgrade your cluster from RKE2 1.29 to 1.30 and your cluster uses the Cilium Container Network Interface (CNI), the upgrade could fail with error messages similar to the following. This is due to an
+                  - link "upstream issue" [ref=e1237] [cursor=pointer]:
+                    - /url: https://github.com/rancher/rancher/issues/46726
+                  - text: . You can fix this issue by adding a few annotations to the Cilium DaemonSet.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e1238]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e1239] [cursor=pointer]:
+                    - /url: "#debug-steps-12"
+                    - text: "#"
+                - list [ref=e1240]:
+                  - listitem [ref=e1241]:
+                    - paragraph [ref=e1242]:
+                      - text: Connect to your cluster using kubectl. For more information, refer to
+                      - link "Access Cluster with kubectl" [ref=e1243] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/
+                      - text: .
+                  - listitem [ref=e1244]:
+                    - paragraph [ref=e1245]: Issue the following command from the terminal edit the Cilium DaemonSet.
+                    - generic [ref=e1247]:
+                      - code [ref=e1249]:
+                        - generic [ref=e1250]: kubectl edit ds cilium --namespace kube-system
+                      - button "Copy code to clipboard" [ref=e1252] [cursor=pointer]:
+                        - generic [ref=e1253]:
+                          - img [ref=e1254]
+                          - img [ref=e1256]
+                  - listitem [ref=e1258]:
+                    - paragraph [ref=e1259]:
+                      - text: Under
+                      - code [ref=e1260]: metadata.annotations
+                      - text: ", add the following annotations."
+                    - generic [ref=e1262]:
+                      - code [ref=e1264]:
+                        - generic [ref=e1265]: "metadata:"
+                        - generic [ref=e1266]: "annotations:"
+                        - generic [ref=e1267]: "deprecated.daemonset.template.generation: \"1\""
+                        - generic [ref=e1268]: "meta.helm.sh/release-name: cilium-cilium"
+                        - generic [ref=e1269]: "meta.helm.sh/release-namespace: kube-system"
+                        - generic [ref=e1270]: "container.apparmor.security.beta.kubernetes.io/cilium-agent: \"unconfined\""
+                        - generic [ref=e1271]: "container.apparmor.security.beta.kubernetes.io/clean-cilium-state: \"unconfined\""
+                        - generic [ref=e1272]: "container.apparmor.security.beta.kubernetes.io/mount-cgroup: \"unconfined\""
+                        - generic [ref=e1273]: "container.apparmor.security.beta.kubernetes.io/apply-sysctl-overwrites: \"unconfined\""
+                      - generic [ref=e1274]:
+                        - button "Toggle word wrap" [ref=e1275] [cursor=pointer]:
+                          - img [ref=e1276]
+                        - button "Copy code to clipboard" [ref=e1278] [cursor=pointer]:
+                          - generic [ref=e1279]:
+                            - img [ref=e1280]
+                            - img [ref=e1282]
+                - heading "Download Node Logs from Edge ClustersDirect link to Download Node Logs from Edge Clusters" [level=2] [ref=e1284]:
+                  - text: Download Node Logs from Edge Clusters
+                  - link "Direct link to Download Node Logs from Edge Clusters" [ref=e1285] [cursor=pointer]:
+                    - /url: "#download-node-logs-from-edge-clusters"
+                    - text: "#"
+                - paragraph [ref=e1286]:
+                  - text: If you experience issues with your Edge cluster control plane or workloads, you can download the logs of your cluster nodes to help investigate the root cause as long as your cluster is in
+                  - strong [ref=e1287]: Healthy
+                  - text: status.
+                - paragraph [ref=e1288]: "The downloaded log archive includes the following systemd service log files as well as other log files related to the Palette agent:"
+                - list [ref=e1289]:
+                  - listitem [ref=e1290]:
+                    - strong [ref=e1291]: stylus-agent.service
+                  - listitem [ref=e1292]:
+                    - strong [ref=e1293]: stylus-operator.service
+                  - listitem [ref=e1294]:
+                    - strong [ref=e1295]: spectro-stylus-agent.service
+                  - listitem [ref=e1296]:
+                    - strong [ref=e1297]: spectro-stylus-operator.service
+                  - listitem [ref=e1298]:
+                    - strong [ref=e1299]: k3s.service
+                  - listitem [ref=e1300]:
+                    - strong [ref=e1301]: k3s-agent.service
+                  - listitem [ref=e1302]:
+                    - strong [ref=e1303]: rke2.service
+                  - listitem [ref=e1304]:
+                    - strong [ref=e1305]: rke2-agent.service
+                  - listitem [ref=e1306]:
+                    - strong [ref=e1307]: /var/log/stylus-upgrade.log
+                  - listitem [ref=e1308]:
+                    - strong [ref=e1309]: /var/log/stylus-upgrade-script.log
+                  - listitem [ref=e1310]:
+                    - strong [ref=e1311]: /var/log/stylus-init-upgrade.log
+                  - listitem [ref=e1312]:
+                    - strong [ref=e1313]: /var/log/kube-init.log
+                  - listitem [ref=e1314]:
+                    - strong [ref=e1315]: /var/log/kube-join.log
+                  - listitem [ref=e1316]:
+                    - strong [ref=e1317]: /var/log/kube-upgrade.log
+                  - listitem [ref=e1318]:
+                    - strong [ref=e1319]: /var/log/kube-post-init.log
+                  - listitem [ref=e1320]:
+                    - strong [ref=e1321]: /proc/cmdline
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e1322]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e1323] [cursor=pointer]:
+                    - /url: "#debug-steps-13"
+                    - text: "#"
+                - list [ref=e1324]:
+                  - listitem [ref=e1325]:
+                    - paragraph [ref=e1326]:
+                      - text: Log in to
+                      - link "Palette" [ref=e1327] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e1328]:
+                    - paragraph [ref=e1329]:
+                      - text: Navigate to the left
+                      - strong [ref=e1330]: Main Menu
+                      - text: and click on
+                      - strong [ref=e1331]: Clusters
+                      - text: .
+                  - listitem [ref=e1332]:
+                    - paragraph [ref=e1333]: Select the cluster whose logs you want to download.
+                  - listitem [ref=e1334]:
+                    - paragraph [ref=e1335]:
+                      - text: In the upper-right corner of the cluster page, click
+                      - strong [ref=e1336]: Settings
+                      - text: .
+                  - listitem [ref=e1337]:
+                    - paragraph [ref=e1338]:
+                      - text: In the
+                      - strong [ref=e1339]: drop-down Menu
+                      - text: that appears, click
+                      - strong [ref=e1340]: Download Logs
+                      - text: .
+                  - listitem [ref=e1341]:
+                    - paragraph [ref=e1342]:
+                      - text: Check the
+                      - strong [ref=e1343]: Node Logs
+                      - text: box and click
+                      - strong [ref=e1344]: Download
+                      - text: . You may also download logs from other components at the same time.
+                - heading "Scenario - Kubelet Process Cannot Access kubeadm-flagsDirect link to Scenario - Kubelet Process Cannot Access kubeadm-flags" [level=2] [ref=e1345]:
+                  - text: Scenario - Kubelet Process Cannot Access kubeadm-flags
+                  - link "Direct link to Scenario - Kubelet Process Cannot Access kubeadm-flags" [ref=e1346] [cursor=pointer]:
+                    - /url: "#scenario---kubelet-process-cannot-access-kubeadm-flags"
+                    - text: "#"
+                - paragraph [ref=e1347]:
+                  - text: If using the FIPS version of
+                  - link "Agent Mode" [ref=e1348] [cursor=pointer]:
+                    - /url: /deployment-modes/agent-mode/install-agent-host/
+                  - text: on a Rocky Linux edge host, SELinux may incorrectly label the
+                  - strong [ref=e1349]: kubeadm-flags.env
+                  - text: file during cluster deployment or when certain configurations are adjusted, preventing the Kubelet from accessing it and properly managing the cluster. To resolve this issue, reset the SELinux context of the Kubelet environment variable to its default state based on SELinux policy rules.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e1350]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e1351] [cursor=pointer]:
+                    - /url: "#debug-steps-14"
+                    - text: "#"
+                - list [ref=e1352]:
+                  - listitem [ref=e1353]:
+                    - paragraph [ref=e1354]: After deploying the cluster, monitor the Kubelet status.
+                    - generic [ref=e1356]:
+                      - code [ref=e1358]:
+                        - generic [ref=e1359]: systemctl status kubelet
+                      - button "Copy code to clipboard" [ref=e1361] [cursor=pointer]:
+                        - generic [ref=e1362]:
+                          - img [ref=e1363]
+                          - img [ref=e1365]
+                  - listitem [ref=e1367]:
+                    - paragraph [ref=e1368]:
+                      - text: Check the logs for messages related to SELinux denials and
+                      - strong [ref=e1369]: kubeadm-flags.env
+                      - text: .
+                    - generic [ref=e1371]:
+                      - code [ref=e1373]:
+                        - generic [ref=e1374]: ausearch -message avc --start recent | grep kubeadm-flags.env
+                      - button "Copy code to clipboard" [ref=e1376] [cursor=pointer]:
+                        - generic [ref=e1377]:
+                          - img [ref=e1378]
+                          - img [ref=e1380]
+                    - paragraph [ref=e1382]: The following output indicates that SELinux security policies are denying read operations attempted by the Kubelet.
+                    - generic [ref=e1384]:
+                      - code [ref=e1386]:
+                        - generic [ref=e1387]: time->Wed Jan 17 14:32:01 2025
+                        - generic [ref=e1388]: "type=AVC msg=audit(1673968321.452:456): avc: denied { read } for pid=1234 comm=\"kubelet\" name=\"kubeadm-flags.env\" dev=\"sda1\" ino=56789 scontext=system_u:system_r:kubelet_t:s0 tcontext=unconfined_u:object_r:default_t:s0 tclass=file permissive=0"
+                      - button "Toggle word wrap" [ref=e1390] [cursor=pointer]:
+                        - img [ref=e1391]
+                  - listitem [ref=e1393]:
+                    - paragraph [ref=e1394]: Reset the SELinux context of the Kubelet environment variable to its default state.
+                    - generic [ref=e1396]:
+                      - code [ref=e1398]:
+                        - generic [ref=e1399]: restorecon -v /var/lib/kubelet/kubeadm-flags.env
+                      - button "Copy code to clipboard" [ref=e1401] [cursor=pointer]:
+                        - generic [ref=e1402]:
+                          - img [ref=e1403]
+                          - img [ref=e1405]
+                  - listitem [ref=e1407]:
+                    - paragraph [ref=e1408]: Restart the Kubelet to apply your changes.
+                    - generic [ref=e1410]:
+                      - code [ref=e1412]:
+                        - generic [ref=e1413]: systemctl restart kubelet
+                      - button "Copy code to clipboard" [ref=e1415] [cursor=pointer]:
+                        - generic [ref=e1416]:
+                          - img [ref=e1417]
+                          - img [ref=e1419]
+                - heading "Scenario - Agent Mode Deployments CNI Folder Permission IssuesDirect link to Scenario - Agent Mode Deployments CNI Folder Permission Issues" [level=2] [ref=e1421]:
+                  - text: Scenario - Agent Mode Deployments CNI Folder Permission Issues
+                  - link "Direct link to Scenario - Agent Mode Deployments CNI Folder Permission Issues" [ref=e1422] [cursor=pointer]:
+                    - /url: "#scenario---agent-mode-deployments-cni-folder-permission-issues"
+                    - text: "#"
+                - paragraph [ref=e1423]:
+                  - text: Agent mode clusters that use PKX-E as the Kubernetes layer have the contents of the
+                  - code [ref=e1424]: /opt/cni/bin
+                  - text: folder set incorrectly. This prevents the CNI that do not run as root, such as Cilium, from operating.
+                - heading "Debug StepsDirect link to Debug Steps" [level=3] [ref=e1425]:
+                  - text: Debug Steps
+                  - link "Direct link to Debug Steps" [ref=e1426] [cursor=pointer]:
+                    - /url: "#debug-steps-15"
+                    - text: "#"
+                - list [ref=e1427]:
+                  - listitem [ref=e1428]:
+                    - paragraph [ref=e1429]:
+                      - text: Log in to
+                      - link "Palette" [ref=e1430] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e1431]:
+                    - paragraph [ref=e1432]:
+                      - text: Navigate to the left
+                      - strong [ref=e1433]: Main Menu
+                      - text: and click on
+                      - strong [ref=e1434]: Profiles
+                      - text: .
+                  - listitem [ref=e1435]:
+                    - paragraph [ref=e1436]: Click on the profile used by your agent mode cluster.
+                  - listitem [ref=e1437]:
+                    - paragraph [ref=e1438]: In the OS pack of your agent mode cluster profile, configure the following cloud-init stages. The same commands are executed in multiple stages to ensure that they take effect.
+                    - generic [ref=e1440]:
+                      - code [ref=e1442]:
+                        - generic [ref=e1443]: "stages:"
+                        - generic [ref=e1444]: "boot.before:"
+                        - generic [ref=e1445]: "- name: \"Ensure CNI directory permissions on restart\""
+                        - generic [ref=e1446]: "if: '[ -d /opt/cni/bin ]'"
+                        - generic [ref=e1447]: "commands:"
+                        - generic [ref=e1448]: "- chown root:root -R /opt/cni/bin"
+                        - generic [ref=e1449]: "boot:"
+                        - generic [ref=e1450]: "- name: \"Ensure CNI directory permissions on restart\""
+                        - generic [ref=e1451]: "if: '[ -d /opt/cni/bin ]'"
+                        - generic [ref=e1452]: "commands:"
+                        - generic [ref=e1453]: "- chown root:root -R /opt/cni/bin"
+                        - generic [ref=e1454]: "boot.after:"
+                        - generic [ref=e1455]: "- name: \"Ensure CNI directory permissions on restart\""
+                        - generic [ref=e1456]: "if: '[ -d /opt/cni/bin ]'"
+                        - generic [ref=e1457]: "commands:"
+                        - generic [ref=e1458]: "- chown root:root -R /opt/cni/bin"
+                      - button "Copy code to clipboard" [ref=e1460] [cursor=pointer]:
+                        - generic [ref=e1461]:
+                          - img [ref=e1462]
+                          - img [ref=e1464]
+                  - listitem [ref=e1466]:
+                    - paragraph [ref=e1467]:
+                      - text: Save the changes as a new version of the cluster profile and update your agent mode cluster to use the updated profile. For more information, refer to
+                      - link "Update a Cluster" [ref=e1468] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/cluster-updates/
+                      - text: .
+              - generic [ref=e1469]:
+                - generic [ref=e1471]:
+                  - text: "Tags:"
+                  - list [ref=e1472]:
+                    - listitem [ref=e1473]:
+                      - link "edge" [ref=e1474] [cursor=pointer]:
+                        - /url: /tags/edge/
+                    - listitem [ref=e1475]:
+                      - link "troubleshooting" [ref=e1476] [cursor=pointer]:
+                        - /url: /tags/troubleshooting/
+                - link "Edit this page" [ref=e1479] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/troubleshooting/edge/edge.md
+                  - img [ref=e1480]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e1484]:
+              - link "Previous « Palette Dev Engine" [ref=e1485] [cursor=pointer]:
+                - /url: /troubleshooting/palette-dev-engine/
+                - generic [ref=e1486]: Previous
+                - generic [ref=e1487]: « Palette Dev Engine
+              - link "Next Collect Support Bundles »" [ref=e1488] [cursor=pointer]:
+                - /url: /troubleshooting/edge/collect-support-bundles/
+                - generic [ref=e1489]: Next
+                - generic [ref=e1490]: Collect Support Bundles »
+          - list [ref=e1493]:
+            - listitem [ref=e1494]:
+              - 'link "Scenario - x509: certificate signed by unknown authority Errors during Agent Mode Cluster Creation" [ref=e1495] [cursor=pointer]':
+                - /url: "#scenario---x509-certificate-signed-by-unknown-authority-errors-during-agent-mode-cluster-creation"
+                - text: Scenario -
+                - code [ref=e1496]: "x509: certificate signed by unknown authority"
+                - text: Errors during Agent Mode Cluster Creation
+              - list [ref=e1497]:
+                - listitem [ref=e1498]:
+                  - link "Debug Steps" [ref=e1499] [cursor=pointer]:
+                    - /url: "#debug-steps"
+            - listitem [ref=e1500]:
+              - 'link "Scenario - content-length: 0 Errors during Content Synchronization" [ref=e1501] [cursor=pointer]':
+                - /url: "#scenario---content-length-0-errors-during-content-synchronization"
+                - text: Scenario -
+                - code [ref=e1502]: "content-length: 0"
+                - text: Errors during Content Synchronization
+              - list [ref=e1503]:
+                - listitem [ref=e1504]:
+                  - link "Debug Steps" [ref=e1505] [cursor=pointer]:
+                    - /url: "#debug-steps-1"
+            - listitem [ref=e1506]:
+              - link "Scenario – PXK-E Clusters on RHEL and Rocky 8 Fail Kubernetes Initialization" [ref=e1507] [cursor=pointer]:
+                - /url: "#scenario--pxk-e-clusters-on-rhel-and-rocky-8-fail-kubernetes-initialization"
+              - list [ref=e1508]:
+                - listitem [ref=e1509]:
+                  - link "Debug Steps - Update the Kernel Version" [ref=e1510] [cursor=pointer]:
+                    - /url: "#debug-steps---update-the-kernel-version"
+            - listitem [ref=e1511]:
+              - link "Scenario - PXK-E Clusters in VerteX Deployments Experience Failure upon Reboot" [ref=e1512] [cursor=pointer]:
+                - /url: "#scenario---pxk-e-clusters-in-vertex-deployments-experience-failure-upon-reboot"
+              - list [ref=e1513]:
+                - listitem [ref=e1514]:
+                  - link "Debug Steps" [ref=e1515] [cursor=pointer]:
+                    - /url: "#debug-steps-2"
+            - listitem [ref=e1516]:
+              - link "Scenario - Canonical Edge Clusters in Proxied Environments Experience Failure upon Reboot" [ref=e1517] [cursor=pointer]:
+                - /url: "#scenario---canonical-edge-clusters-in-proxied-environments-experience-failure-upon-reboot"
+              - list [ref=e1518]:
+                - listitem [ref=e1519]:
+                  - link "Debug Steps" [ref=e1520] [cursor=pointer]:
+                    - /url: "#debug-steps-3"
+            - listitem [ref=e1521]:
+              - link "Scenario - Cilium Pod Stuck During Kubernetes Upgrade Due to nsenter Permission Issue" [ref=e1522] [cursor=pointer]:
+                - /url: "#scenario---cilium-pod-stuck-during-kubernetes-upgrade-due-to-nsenter-permission-issue"
+              - list [ref=e1523]:
+                - listitem [ref=e1524]:
+                  - link "Debug Steps" [ref=e1525] [cursor=pointer]:
+                    - /url: "#debug-steps-4"
+            - listitem [ref=e1526]:
+              - link "Scenario - Cluster Creation Failure Due to Nodeadm not Found" [ref=e1527] [cursor=pointer]:
+                - /url: "#scenario---cluster-creation-failure-due-to-nodeadm-not-found"
+              - list [ref=e1528]:
+                - listitem [ref=e1529]:
+                  - link "Debug Steps" [ref=e1530] [cursor=pointer]:
+                    - /url: "#debug-steps-5"
+            - listitem [ref=e1531]:
+              - link "Scenario - IP Address not Assigned to Edge Host" [ref=e1532] [cursor=pointer]:
+                - /url: "#scenario---ip-address-not-assigned-to-edge-host"
+              - list [ref=e1533]:
+                - listitem [ref=e1534]:
+                  - link "Debug Steps" [ref=e1535] [cursor=pointer]:
+                    - /url: "#debug-steps-6"
+            - listitem [ref=e1536]:
+              - link "Scenario - Override or Reconfigure Read-only File System Stage" [ref=e1537] [cursor=pointer]:
+                - /url: "#scenario---override-or-reconfigure-read-only-file-system-stage"
+              - list [ref=e1538]:
+                - listitem [ref=e1539]:
+                  - link "Debug Steps" [ref=e1540] [cursor=pointer]:
+                    - /url: "#debug-steps-7"
+            - listitem [ref=e1541]:
+              - link "Scenario - Pod State Unknown After Reboot with Overlay Network Enabled" [ref=e1542] [cursor=pointer]:
+                - /url: "#scenario---pod-state-unknown-after-reboot-with-overlay-network-enabled"
+              - list [ref=e1543]:
+                - listitem [ref=e1544]:
+                  - link "Debug Steps" [ref=e1545] [cursor=pointer]:
+                    - /url: "#debug-steps-8"
+            - listitem [ref=e1546]:
+              - link "Scenario - Palette Webhook Pods Fail to Start" [ref=e1547] [cursor=pointer]:
+                - /url: "#scenario---palette-webhook-pods-fail-to-start"
+              - list [ref=e1548]:
+                - listitem [ref=e1549]:
+                  - link "Debug Steps" [ref=e1550] [cursor=pointer]:
+                    - /url: "#debug-steps-9"
+            - listitem [ref=e1551]:
+              - link "Scenario - systemd-resolved.service Enters Failed State" [ref=e1552] [cursor=pointer]:
+                - /url: "#scenario---systemd-resolvedservice-enters-failed-state"
+              - list [ref=e1553]:
+                - listitem [ref=e1554]:
+                  - link "Debug Steps" [ref=e1555] [cursor=pointer]:
+                    - /url: "#debug-steps-10"
+            - listitem [ref=e1556]:
+              - link "Scenario - Degraded Performance on Disk Drives" [ref=e1557] [cursor=pointer]:
+                - /url: "#scenario---degraded-performance-on-disk-drives"
+              - list [ref=e1558]:
+                - listitem [ref=e1559]:
+                  - link "Debug Steps" [ref=e1560] [cursor=pointer]:
+                    - /url: "#debug-steps-11"
+            - listitem [ref=e1561]:
+              - link "Scenario - Clusters with Cilium and RKE2 Experiences Kubernetes Upgrade Failure" [ref=e1562] [cursor=pointer]:
+                - /url: "#scenario---clusters-with-cilium-and-rke2-experiences-kubernetes-upgrade-failure"
+              - list [ref=e1563]:
+                - listitem [ref=e1564]:
+                  - link "Debug Steps" [ref=e1565] [cursor=pointer]:
+                    - /url: "#debug-steps-12"
+            - listitem [ref=e1566]:
+              - link "Download Node Logs from Edge Clusters" [ref=e1567] [cursor=pointer]:
+                - /url: "#download-node-logs-from-edge-clusters"
+              - list [ref=e1568]:
+                - listitem [ref=e1569]:
+                  - link "Debug Steps" [ref=e1570] [cursor=pointer]:
+                    - /url: "#debug-steps-13"
+            - listitem [ref=e1571]:
+              - link "Scenario - Kubelet Process Cannot Access kubeadm-flags" [ref=e1572] [cursor=pointer]:
+                - /url: "#scenario---kubelet-process-cannot-access-kubeadm-flags"
+              - list [ref=e1573]:
+                - listitem [ref=e1574]:
+                  - link "Debug Steps" [ref=e1575] [cursor=pointer]:
+                    - /url: "#debug-steps-14"
+            - listitem [ref=e1576]:
+              - link "Scenario - Agent Mode Deployments CNI Folder Permission Issues" [ref=e1577] [cursor=pointer]:
+                - /url: "#scenario---agent-mode-deployments-cni-folder-permission-issues"
+              - list [ref=e1578]:
+                - listitem [ref=e1579]:
+                  - link "Debug Steps" [ref=e1580] [cursor=pointer]:
+                    - /url: "#debug-steps-15"
+  - button "Project Logo Ask AI" [ref=e1581] [cursor=pointer]:
+    - generic [ref=e1584]:
+      - img "Project Logo" [ref=e1585]
+      - paragraph [ref=e1586]: Ask AI
+```

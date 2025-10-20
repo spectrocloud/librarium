@@ -1,0 +1,699 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [expanded] [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+                - list [ref=e107]:
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Public Cloud Clusters" [ref=e110] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e112]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e114] [cursor=pointer]
+                  - listitem [ref=e115]:
+                    - generic [ref=e116]:
+                      - link "Data Center Clusters" [ref=e117] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e119]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e121] [cursor=pointer]
+                  - listitem [ref=e122]:
+                    - generic [ref=e123]:
+                      - link "Edge" [expanded] [ref=e124] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e126]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e128] [cursor=pointer]
+                    - list [ref=e129]:
+                      - listitem [ref=e130]:
+                        - generic [ref=e131]:
+                          - link "Architecture" [ref=e132] [cursor=pointer]:
+                            - /url: /clusters/edge/architecture/
+                          - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e133] [cursor=pointer]
+                      - listitem [ref=e134]:
+                        - link "Hardware Requirements" [ref=e135] [cursor=pointer]:
+                          - /url: /clusters/edge/hardware-requirements/
+                      - listitem [ref=e136]:
+                        - link "Deployment Lifecycle" [ref=e137] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-native-lifecycle/
+                      - listitem [ref=e138]:
+                        - generic [ref=e139]:
+                          - link "Trusted Boot" [ref=e140] [cursor=pointer]:
+                            - /url: /clusters/edge/trusted-boot/
+                          - button "Toggle the collapsible sidebar category 'Trusted Boot'" [ref=e141] [cursor=pointer]
+                      - listitem [ref=e142]:
+                        - generic [ref=e143]:
+                          - link "Install Configuration" [ref=e144] [cursor=pointer]:
+                            - /url: /clusters/edge/edge-configuration/
+                          - button "Toggle the collapsible sidebar category 'Install Configuration'" [ref=e145] [cursor=pointer]
+                      - listitem [ref=e146]:
+                        - generic [ref=e147]:
+                          - link "EdgeForge Workflow" [ref=e148] [cursor=pointer]:
+                            - /url: /clusters/edge/edgeforge-workflow/
+                          - button "Toggle the collapsible sidebar category 'EdgeForge Workflow'" [ref=e149] [cursor=pointer]
+                      - listitem [ref=e150]:
+                        - generic [ref=e151]:
+                          - link "Local UI" [ref=e152] [cursor=pointer]:
+                            - /url: /clusters/edge/local-ui/
+                          - button "Toggle the collapsible sidebar category 'Local UI'" [ref=e153] [cursor=pointer]
+                      - listitem [ref=e154]:
+                        - generic [ref=e155]:
+                          - link "Deployment" [ref=e156] [cursor=pointer]:
+                            - /url: /clusters/edge/site-deployment/
+                          - button "Toggle the collapsible sidebar category 'Deployment'" [ref=e157] [cursor=pointer]
+                      - listitem [ref=e158]:
+                        - generic [ref=e159]:
+                          - link "Cluster Management" [ref=e160] [cursor=pointer]:
+                            - /url: /clusters/edge/cluster-management/
+                          - button "Toggle the collapsible sidebar category 'Cluster Management'" [ref=e161] [cursor=pointer]
+                      - listitem [ref=e162]:
+                        - generic [ref=e163]:
+                          - link "Networking" [expanded] [ref=e164] [cursor=pointer]:
+                            - /url: /clusters/edge/networking/
+                          - button "Toggle the collapsible sidebar category 'Networking'" [ref=e165] [cursor=pointer]
+                        - list [ref=e166]:
+                          - listitem [ref=e167]:
+                            - link "Publish Cluster Services with Kube-vip" [ref=e168] [cursor=pointer]:
+                              - /url: /clusters/edge/networking/kubevip/
+                          - listitem [ref=e169]:
+                            - link "Enable Overlay Network" [ref=e170] [cursor=pointer]:
+                              - /url: /clusters/edge/networking/vxlan-overlay/
+                          - listitem [ref=e171]:
+                            - link "Connect Edge Host to Wi-Fi" [ref=e172] [cursor=pointer]:
+                              - /url: /clusters/edge/networking/connect-wifi/
+                      - listitem [ref=e173]:
+                        - generic [ref=e174]:
+                          - link "Third Party Integrations" [ref=e175] [cursor=pointer]:
+                            - /url: /clusters/edge/third-party-integrations/
+                          - button "Toggle the collapsible sidebar category 'Third Party Integrations'" [ref=e176] [cursor=pointer]
+                  - listitem [ref=e177]:
+                    - generic [ref=e178]:
+                      - link "Palette Virtual Clusters" [ref=e179] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e181]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e183] [cursor=pointer]
+                  - listitem [ref=e184]:
+                    - generic [ref=e185]:
+                      - link "Imported Clusters" [ref=e186] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e188]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e190] [cursor=pointer]
+                  - listitem [ref=e191]:
+                    - generic [ref=e192]:
+                      - link "Manage Clusters" [ref=e193] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e195]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e197] [cursor=pointer]
+                  - listitem [ref=e198]:
+                    - generic [ref=e199]:
+                      - link "Cluster Groups" [ref=e200] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e202]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e204] [cursor=pointer]
+                  - listitem [ref=e205]:
+                    - generic [ref=e206]:
+                      - link "Private Cloud Gateway" [ref=e207] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e209]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e211] [cursor=pointer]
+              - listitem [ref=e212]:
+                - generic [ref=e213]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e214] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e216]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e218] [cursor=pointer]
+              - listitem [ref=e219]:
+                - generic [ref=e220]:
+                  - link "Palette Dev Engine" [ref=e221] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e223]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e225] [cursor=pointer]
+              - listitem [ref=e226]:
+                - generic [ref=e227]:
+                  - link "Virtual Machine Orchestrator" [ref=e228] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e230]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e232] [cursor=pointer]
+              - listitem [ref=e233]:
+                - generic [ref=e234]:
+                  - link "Workspaces" [ref=e235] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e237]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e239] [cursor=pointer]
+              - listitem [ref=e240]:
+                - generic [ref=e241]:
+                  - link "Packs List" [ref=e242] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e244]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e246] [cursor=pointer]
+              - listitem [ref=e247]:
+                - generic [ref=e248]:
+                  - link "User & Role Management" [ref=e249] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e251]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e253] [cursor=pointer]
+              - listitem [ref=e254]:
+                - generic [ref=e255]:
+                  - link "Registries and Packs" [ref=e256] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e258]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e260] [cursor=pointer]
+              - listitem [ref=e261]:
+                - generic [ref=e262]:
+                  - link "Security" [ref=e263] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e265]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e267] [cursor=pointer]
+              - listitem [ref=e268]:
+                - generic [ref=e269]:
+                  - link "Audit Logs" [ref=e270] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e272]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e274] [cursor=pointer]
+              - listitem [ref=e275]:
+                - generic [ref=e276]:
+                  - link "Self-Hosted Palette" [ref=e277] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e279]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e281] [cursor=pointer]
+              - listitem [ref=e282]:
+                - generic [ref=e283]:
+                  - link "Palette VerteX" [ref=e284] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e286]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e288] [cursor=pointer]
+              - listitem [ref=e289]:
+                - generic [ref=e290]:
+                  - link "Tenant Administration" [ref=e291] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e293]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e295] [cursor=pointer]
+              - listitem [ref=e296]:
+                - generic [ref=e297]:
+                  - link "Automation" [ref=e298] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e300]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e302] [cursor=pointer]
+              - listitem [ref=e303]:
+                - generic [ref=e304]:
+                  - link "Troubleshooting" [ref=e305] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e307]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e309] [cursor=pointer]
+              - listitem [ref=e310]:
+                - link "Glossary" [ref=e311] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e313]
+                  - text: Glossary
+              - listitem [ref=e315]:
+                - generic [ref=e316]:
+                  - link "Compliance & Legal" [ref=e317] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e319]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e321] [cursor=pointer]
+              - listitem [ref=e322]:
+                - button "Privacy Settings" [ref=e323] [cursor=pointer]:
+                  - img [ref=e324]
+                  - text: Privacy Settings
+      - main [ref=e326]:
+        - generic [ref=e328]:
+          - generic [ref=e330]:
+            - article [ref=e331]:
+              - navigation "Breadcrumbs" [ref=e332]:
+                - list [ref=e333]:
+                  - listitem [ref=e334]:
+                    - link "Home page" [ref=e335] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e336]
+                  - listitem [ref=e338]:
+                    - link "Clusters" [ref=e339] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e340]:
+                    - link "Edge" [ref=e341] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                  - listitem [ref=e342]:
+                    - link "Networking" [ref=e343] [cursor=pointer]:
+                      - /url: /clusters/edge/networking/
+                  - listitem [ref=e344]:
+                    - generic [ref=e345]: Publish Cluster Services with Kube-vip
+              - generic [ref=e346]:
+                - heading "Publish Cluster Services with Kube-vip" [level=1] [ref=e348]
+                - paragraph [ref=e349]:
+                  - text: You can use kube-vip to provide a virtual IP address for your cluster and use it to expose a service of type
+                  - code [ref=e350]: LoadBalancer
+                  - text: on the external network. You can have kube-vip dynamically request IP addresses or use a static IP address.
+                - paragraph [ref=e351]:
+                  - text: Kube-vip supports DHCP environments and can request additional IP address from the DHCP server automatically. Using kube-vip, you can expose services inside your cluster externally with a virtual IP address even if you do not have control over your host's network. Kube-vip can also act as a load balancer for both your control plane and Kubernetes services of type
+                  - code [ref=e352]: LoadBalancer
+                  - text: .
+                - heading "Default ValuesDirect link to Default Values" [level=2] [ref=e353]:
+                  - text: Default Values
+                  - link "Direct link to Default Values" [ref=e354] [cursor=pointer]:
+                    - /url: "#default-values"
+                    - text: "#"
+                - paragraph [ref=e355]:
+                  - text: Kube-vip has many environment variables you can use to customize its behavior. To set values for kube-vip, use the
+                  - code [ref=e356]: cluster.kubevipArgs
+                  - text: parameter. For a complete list of environment variables, refer to the
+                  - link "kube-vip documentation" [ref=e357] [cursor=pointer]:
+                    - /url: https://kube-vip.io/docs/installation/flags/?query=vip_interface#environment-variables
+                  - text: .
+                - paragraph [ref=e358]:
+                  - text: By default, Palette uses the following
+                  - code [ref=e359]: cluster.kubevipArgs
+                  - text: values during initial cluster deployment. You can change these values when deploying a cluster or performing Day-2 cluster operations.
+                - table [ref=e360]:
+                  - rowgroup [ref=e361]:
+                    - row "Environment Variable Description Default Value" [ref=e362]:
+                      - cell "Environment Variable" [ref=e363]
+                      - cell "Description" [ref=e364]
+                      - cell "Default Value" [ref=e365]
+                  - rowgroup [ref=e366]:
+                    - row "vip_arp Enables ARP broadcasts from leader. true" [ref=e367]:
+                      - cell "vip_arp" [ref=e368]:
+                        - code [ref=e369]: vip_arp
+                      - cell "Enables ARP broadcasts from leader." [ref=e370]
+                      - cell "true" [ref=e371]:
+                        - code [ref=e372]: "true"
+                    - row "port Specifies the port number that kube-vip will use. 6443" [ref=e373]:
+                      - cell "port" [ref=e374]:
+                        - code [ref=e375]: port
+                      - cell "Specifies the port number that kube-vip will use." [ref=e376]:
+                        - text: Specifies the port number that
+                        - code [ref=e377]: kube-vip
+                        - text: will use.
+                      - cell "6443" [ref=e378]:
+                        - code [ref=e379]: "6443"
+                    - row "vip_cidr Sets the CIDR notation for the Virtual IP. A value of 32 denotes a single IP address in IPv4. 32" [ref=e380]:
+                      - cell "vip_cidr" [ref=e381]:
+                        - code [ref=e382]: vip_cidr
+                      - cell "Sets the CIDR notation for the Virtual IP. A value of 32 denotes a single IP address in IPv4." [ref=e383]:
+                        - text: Sets the CIDR notation for the Virtual IP. A value of
+                        - code [ref=e384]: "32"
+                        - text: denotes a single IP address in IPv4.
+                      - cell "32" [ref=e385]:
+                        - code [ref=e386]: "32"
+                    - row "cp_enable Enables kube-vip control plane functionality. true" [ref=e387]:
+                      - cell "cp_enable" [ref=e388]:
+                        - code [ref=e389]: cp_enable
+                      - cell "Enables kube-vip control plane functionality." [ref=e390]
+                      - cell "true" [ref=e391]:
+                        - code [ref=e392]: "true"
+                    - row "cp_namespace The namespace where the lease will reside. kube-system" [ref=e393]:
+                      - cell "cp_namespace" [ref=e394]:
+                        - code [ref=e395]: cp_namespace
+                      - cell "The namespace where the lease will reside." [ref=e396]
+                      - cell "kube-system" [ref=e397]:
+                        - code [ref=e398]: kube-system
+                    - 'row "vip_ddns Enables Dynamic DNS support. {{ .DDNS}}" [ref=e399]':
+                      - cell "vip_ddns" [ref=e400]:
+                        - code [ref=e401]: vip_ddns
+                      - cell "Enables Dynamic DNS support." [ref=e402]
+                      - 'cell "{{ .DDNS}}" [ref=e403]':
+                        - code [ref=e404]: "{{ .DDNS}}"
+                    - row "vip_leaderelection Enables Kubernetes LeaderElection. true" [ref=e405]:
+                      - cell "vip_leaderelection" [ref=e406]:
+                        - code [ref=e407]: vip_leaderelection
+                      - cell "Enables Kubernetes LeaderElection." [ref=e408]
+                      - cell "true" [ref=e409]:
+                        - code [ref=e410]: "true"
+                    - row "vip_leaseduration Sets the lease duration in seconds. 5" [ref=e411]:
+                      - cell "vip_leaseduration" [ref=e412]:
+                        - code [ref=e413]: vip_leaseduration
+                      - cell "Sets the lease duration in seconds." [ref=e414]
+                      - cell "5" [ref=e415]:
+                        - code [ref=e416]: "5"
+                    - row "vip_renewdeadline Specifies the deadline in seconds for renewing the lease. 3" [ref=e417]:
+                      - cell "vip_renewdeadline" [ref=e418]:
+                        - code [ref=e419]: vip_renewdeadline
+                      - cell "Specifies the deadline in seconds for renewing the lease." [ref=e420]
+                      - cell "3" [ref=e421]:
+                        - code [ref=e422]: "3"
+                    - row "vip_retryperiod Number of times the leader holds the lease for. 1" [ref=e423]:
+                      - cell "vip_retryperiod" [ref=e424]:
+                        - code [ref=e425]: vip_retryperiod
+                      - cell "Number of times the leader holds the lease for." [ref=e426]
+                      - cell "1" [ref=e427]:
+                        - code [ref=e428]: "1"
+                    - 'row "address Template placeholder for the virtual IP address. {{ .VIP}}" [ref=e429]':
+                      - cell "address" [ref=e430]:
+                        - code [ref=e431]: address
+                      - cell "Template placeholder for the virtual IP address." [ref=e432]
+                      - 'cell "{{ .VIP}}" [ref=e433]':
+                        - code [ref=e434]: "{{ .VIP}}"
+                - generic [ref=e435]:
+                  - generic [ref=e436]:
+                    - img [ref=e438]
+                    - text: warning
+                  - paragraph [ref=e441]:
+                    - text: Do not modify the default
+                    - code [ref=e442]: address
+                    - text: value. Changing this value makes the cluster inaccessible. If no value is provided for the
+                    - code [ref=e443]: vip_ddns
+                    - text: variable, it defaults to
+                    - code [ref=e444]: "false"
+                    - text: if the
+                    - code [ref=e445]: address
+                    - text: is a valid IP address and
+                    - code [ref=e446]: "true"
+                    - text: if it is a domain name.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e447]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e448] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e449]:
+                  - listitem [ref=e450]: At least one Edge device with x86_64 or AMD64 processor architecture registered in your Palette account
+                - heading "EnablementDirect link to Enablement" [level=2] [ref=e451]:
+                  - text: Enablement
+                  - link "Direct link to Enablement" [ref=e452] [cursor=pointer]:
+                    - /url: "#enablement"
+                    - text: "#"
+                - list [ref=e453]:
+                  - listitem [ref=e454]:
+                    - paragraph [ref=e455]:
+                      - text: Log in to
+                      - link "Palette" [ref=e456] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e457]:
+                    - paragraph [ref=e458]:
+                      - text: From the left
+                      - strong [ref=e459]: Main Menu
+                      - text: click
+                      - strong [ref=e460]: Clusters
+                      - text: and select
+                      - strong [ref=e461]: Add a New Cluster
+                      - text: .
+                  - listitem [ref=e462]:
+                    - paragraph [ref=e463]:
+                      - text: Choose
+                      - strong [ref=e464]: Edge Native
+                      - text: for the cluster type and click
+                      - strong [ref=e465]: Start Edge Native Configuration
+                      - text: .
+                  - listitem [ref=e466]:
+                    - paragraph [ref=e467]:
+                      - text: Give the cluster a name, description, and tags. Click on
+                      - strong [ref=e468]: Next
+                      - text: .
+                  - listitem [ref=e469]:
+                    - paragraph [ref=e470]:
+                      - text: Select the cluster profile that you plan to use to deploy your cluster with. Click
+                      - strong [ref=e471]: Next
+                      - text: .
+                  - listitem [ref=e472]:
+                    - paragraph [ref=e473]:
+                      - text: In the
+                      - strong [ref=e474]: Parameters
+                      - text: step, click on the Kubernetes layer of your profile. In the YAML file for the Kubernetes layer of your cluster profile, add the following parameters.
+                    - generic [ref=e476]:
+                      - code [ref=e478]:
+                        - generic [ref=e479]: "cluster:"
+                        - generic [ref=e480]: "kubevipArgs:"
+                        - generic [ref=e481]: "vip_interface: \"INTERFACE_NAME\""
+                        - generic [ref=e482]: "svc_enable: true"
+                        - generic [ref=e483]: "vip_servicesinterface: \"INTERFACE_NAME\""
+                      - button "Copy code to clipboard" [ref=e485] [cursor=pointer]:
+                        - generic [ref=e486]:
+                          - img [ref=e487]
+                          - img [ref=e489]
+                    - paragraph [ref=e491]: "These are kube-vip environment variables that enable kube-vip to provide load balancing services for Kubernetes services and specify which network interface will be used by kube-vip for handling traffic to the Kubernetes API server and Kubernetes services. The following table provides you guidance on how to choose the values for each parameter:"
+                - table [ref=e492]:
+                  - rowgroup [ref=e493]:
+                    - row "Parameter Description" [ref=e494]:
+                      - cell "Parameter" [ref=e495]:
+                        - strong [ref=e496]: Parameter
+                      - cell "Description" [ref=e497]:
+                        - strong [ref=e498]: Description
+                  - rowgroup [ref=e499]:
+                    - row "vip_interface Specifies the Network Interface Controller (NIC) that kube-vip will use for handling traffic to the Kubernetes API. If you do not specify vip_serviceinterface, kube-vip will also use this interface for handling traffic to LoadBalancer-type services." [ref=e500]:
+                      - cell "vip_interface" [ref=e501]:
+                        - code [ref=e502]: vip_interface
+                      - cell "Specifies the Network Interface Controller (NIC) that kube-vip will use for handling traffic to the Kubernetes API. If you do not specify vip_serviceinterface, kube-vip will also use this interface for handling traffic to LoadBalancer-type services." [ref=e503]:
+                        - text: Specifies the Network Interface Controller (NIC) that kube-vip will use for handling traffic to the Kubernetes API. If you do not specify
+                        - code [ref=e504]: vip_serviceinterface
+                        - text: ", kube-vip will also use this interface for handling traffic to LoadBalancer-type services."
+                    - row "svc_enable Enables kube-vip to handle traffic for services of type LoadBalancer." [ref=e505]:
+                      - cell "svc_enable" [ref=e506]:
+                        - code [ref=e507]: svc_enable
+                      - cell "Enables kube-vip to handle traffic for services of type LoadBalancer." [ref=e508]
+                    - row "vip_serviceinterface Specifies the NIC that kube-vip will use for handling traffic to LoadBalancer-type services. If your cluster has network overlay enabled, or if your host has multiple NICs and you want to publish services on a different NIC than the one used by Kubernetes, you should specify the name of the NIC as the value of this parameter. If this parameter is not specified and you have set svc_enable to true, kube-vip will use the NIC you specified in vip_interface to handle traffic to LoadBalancer-type services." [ref=e509]:
+                      - cell "vip_serviceinterface" [ref=e510]:
+                        - code [ref=e511]: vip_serviceinterface
+                      - cell "Specifies the NIC that kube-vip will use for handling traffic to LoadBalancer-type services. If your cluster has network overlay enabled, or if your host has multiple NICs and you want to publish services on a different NIC than the one used by Kubernetes, you should specify the name of the NIC as the value of this parameter. If this parameter is not specified and you have set svc_enable to true, kube-vip will use the NIC you specified in vip_interface to handle traffic to LoadBalancer-type services." [ref=e512]:
+                        - text: Specifies the NIC that kube-vip will use for handling traffic to LoadBalancer-type services. If your cluster has network overlay enabled, or if your host has multiple NICs and you want to publish services on a different NIC than the one used by Kubernetes, you should specify the name of the NIC as the value of this parameter. If this parameter is not specified and you have set
+                        - code [ref=e513]: svc_enable
+                        - text: to
+                        - code [ref=e514]: "true"
+                        - text: ", kube-vip will use the NIC you specified in"
+                        - code [ref=e515]: vip_interface
+                        - text: to handle traffic to LoadBalancer-type services.
+                - list [ref=e516]:
+                  - listitem [ref=e517]:
+                    - text: Next, in layer of your cluster profile that has the service you want to expose, add two parameters
+                    - code [ref=e518]: "loadBalancerIP: IP_ADDRESS"
+                    - text: and
+                    - code [ref=e519]: "loadBalancerClass: kube-vip.io/kube-vip-class"
+                    - text: to the service spec. The following example manifest displays the usage of these two parameters.
+                - paragraph [ref=e520]:
+                  - text: If you are deploying in a DHCP environment, use
+                  - code [ref=e521]: 0.0.0.0
+                  - text: as the value for the
+                  - code [ref=e522]: loadBalancerIP
+                  - text: parameter. If you want kube-vip to use a static IP, specify the IP address and make sure it's unused by other hosts in the network. The following example manifest displays the usage of these two parameters.
+                - generic [ref=e524]:
+                  - code [ref=e526]:
+                    - generic [ref=e527]: "apiVersion: v1"
+                    - generic [ref=e528]: "kind: Service"
+                    - generic [ref=e529]: "metadata:"
+                    - generic [ref=e530]: "name: http-app-svc"
+                    - generic [ref=e531]: "namespace: myapp"
+                    - generic [ref=e532]: "spec:"
+                    - generic [ref=e533]: "loadBalancerIP: 0.0.0.0"
+                    - generic [ref=e534]: "loadBalancerClass: kube-vip.io/kube-vip-class"
+                    - generic [ref=e535]: "ports:"
+                    - generic [ref=e536]: "- port: 80"
+                    - generic [ref=e537]: "protocol: TCP"
+                    - generic [ref=e538]: "targetPort: http"
+                    - generic [ref=e539]: "selector:"
+                    - generic [ref=e540]: "app.kubernetes.io/name: http-app"
+                    - generic [ref=e541]: "type: LoadBalancer"
+                  - button "Copy code to clipboard" [ref=e543] [cursor=pointer]:
+                    - generic [ref=e544]:
+                      - img [ref=e545]
+                      - img [ref=e547]
+                - list [ref=e549]:
+                  - listitem [ref=e550]:
+                    - text: Click
+                    - strong [ref=e551]: Next
+                    - text: and finish the rest of the configurations. For more information, refer to
+                    - link "Create Cluster Definition" [ref=e552] [cursor=pointer]:
+                      - /url: /clusters/edge/site-deployment/cluster-deployment/
+                    - text: .
+                - paragraph [ref=e553]:
+                  - text: When the cluster finishes deploying, kube-vip adds an annotation named
+                  - code [ref=e554]: kube-vip.io/requestedIP
+                  - text: to the Service resource to document which IP address it has received from the external network. Whenever kube-vip restarts, it will attempt to re-request the same IP address for that service. You can remove the annotation to make kube-vip request a fresh address with the following command. Replace
+                  - code [ref=e555]: SERVICE_NAME
+                  - text: with the name of your service, and make sure to include the minus symbol
+                  - code [ref=e556]: "-"
+                  - text: at the end of the annotation.
+                - generic [ref=e558]:
+                  - code [ref=e560]:
+                    - generic [ref=e561]: kubectl annotate service SERVICE_NAME kube-vip.io/requestedIP-
+                  - button "Copy code to clipboard" [ref=e563] [cursor=pointer]:
+                    - generic [ref=e564]:
+                      - img [ref=e565]
+                      - img [ref=e567]
+                - heading "ValidationDirect link to Validation" [level=2] [ref=e569]:
+                  - text: Validation
+                  - link "Direct link to Validation" [ref=e570] [cursor=pointer]:
+                    - /url: "#validation"
+                    - text: "#"
+                - paragraph [ref=e571]: Use the following steps to validate that kube-vip has been set up correctly and is performing load balancing services for your cluster.
+                - list [ref=e572]:
+                  - listitem [ref=e573]:
+                    - text: Access the cluster via kubectl CLI. For more information, refer to
+                    - link "Access Cluster with CLI" [ref=e574] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/palette-webctl/
+                    - text: .
+                  - listitem [ref=e575]:
+                    - text: Issue the command
+                    - code [ref=e576]: kubectl get service SERVICE_NAME
+                    - text: and replace
+                    - code [ref=e577]: SERVICE_NAME
+                    - text: with the name of the service you configure with kube-vip. The output of the command displays the external IP address that kube-vip has received from the external network or the IP address you specified in the
+                    - code [ref=e578]: loadBalancerIP
+                    - text: parameter.
+                - generic [ref=e580]:
+                  - code [ref=e582]:
+                    - generic [ref=e583]: kubectl get service http-app-svc
+                  - button "Copy code to clipboard" [ref=e585] [cursor=pointer]:
+                    - generic [ref=e586]:
+                      - img [ref=e587]
+                      - img [ref=e589]
+                - code [ref=e594]:
+                  - generic [ref=e595]: NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE
+                  - generic [ref=e596]: http-app-svc LoadBalancer 10.100.200.10 10.10.1.100 80:30720/TCP 5m
+                - paragraph [ref=e597]:
+                  - text: In the above example, the external IP
+                  - code [ref=e598]: 10.10.1.100
+                  - text: is the IP address that kube-vip received from the DHCP server or the IP address you specified in the
+                  - code [ref=e599]: loadBalancerIP
+                  - text: parameter.
+              - generic [ref=e600]:
+                - generic [ref=e602]:
+                  - text: "Tags:"
+                  - list [ref=e603]:
+                    - listitem [ref=e604]:
+                      - link "edge" [ref=e605] [cursor=pointer]:
+                        - /url: /tags/edge/
+                - link "Edit this page" [ref=e608] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/edge/networking/kubevip.md
+                  - img [ref=e609]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e613]:
+              - link "Previous « Networking" [ref=e614] [cursor=pointer]:
+                - /url: /clusters/edge/networking/
+                - generic [ref=e615]: Previous
+                - generic [ref=e616]: « Networking
+              - link "Next Enable Overlay Network »" [ref=e617] [cursor=pointer]:
+                - /url: /clusters/edge/networking/vxlan-overlay/
+                - generic [ref=e618]: Next
+                - generic [ref=e619]: Enable Overlay Network »
+          - list [ref=e622]:
+            - listitem [ref=e623]:
+              - link "Default Values" [ref=e624] [cursor=pointer]:
+                - /url: "#default-values"
+            - listitem [ref=e625]:
+              - link "Prerequisites" [ref=e626] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e627]:
+              - link "Enablement" [ref=e628] [cursor=pointer]:
+                - /url: "#enablement"
+            - listitem [ref=e629]:
+              - link "Validation" [ref=e630] [cursor=pointer]:
+                - /url: "#validation"
+  - button "Project Logo Ask AI" [ref=e631] [cursor=pointer]:
+    - generic [ref=e634]:
+      - img "Project Logo" [ref=e635]
+      - paragraph [ref=e636]: Ask AI
+```

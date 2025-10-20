@@ -1,0 +1,313 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [expanded] [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+                - list [ref=e163]:
+                  - listitem [ref=e164]:
+                    - link "Core Principles" [ref=e165] [cursor=pointer]:
+                      - /url: /security/core-principles/
+                  - listitem [ref=e166]:
+                    - generic [ref=e167]:
+                      - link "Lifecycle" [ref=e168] [cursor=pointer]:
+                        - /url: /security/lifecycle/
+                      - button "Toggle the collapsible sidebar category 'Lifecycle'" [ref=e169] [cursor=pointer]
+                  - listitem [ref=e170]:
+                    - generic [ref=e171]:
+                      - link "Secure Product Architecture" [ref=e172] [cursor=pointer]:
+                        - /url: /security/product-architecture/
+                      - button "Toggle the collapsible sidebar category 'Secure Product Architecture'" [ref=e173] [cursor=pointer]
+                  - listitem [ref=e174]:
+                    - link "Vulnerability Management" [ref=e175] [cursor=pointer]:
+                      - /url: /security/vulnerability-management/
+                  - listitem [ref=e176]:
+                    - link "Artifact Signatures" [ref=e177] [cursor=pointer]:
+                      - /url: /security/artifact-signatures/
+              - listitem [ref=e178]:
+                - generic [ref=e179]:
+                  - link "Audit Logs" [ref=e180] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e182]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e184] [cursor=pointer]
+              - listitem [ref=e185]:
+                - generic [ref=e186]:
+                  - link "Self-Hosted Palette" [ref=e187] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e189]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e191] [cursor=pointer]
+              - listitem [ref=e192]:
+                - generic [ref=e193]:
+                  - link "Palette VerteX" [ref=e194] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e196]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e198] [cursor=pointer]
+              - listitem [ref=e199]:
+                - generic [ref=e200]:
+                  - link "Tenant Administration" [ref=e201] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e203]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e205] [cursor=pointer]
+              - listitem [ref=e206]:
+                - generic [ref=e207]:
+                  - link "Automation" [ref=e208] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e210]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e212] [cursor=pointer]
+              - listitem [ref=e213]:
+                - generic [ref=e214]:
+                  - link "Troubleshooting" [ref=e215] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e217]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e219] [cursor=pointer]
+              - listitem [ref=e220]:
+                - link "Glossary" [ref=e221] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e223]
+                  - text: Glossary
+              - listitem [ref=e225]:
+                - generic [ref=e226]:
+                  - link "Compliance & Legal" [ref=e227] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e229]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e231] [cursor=pointer]
+              - listitem [ref=e232]:
+                - button "Privacy Settings" [ref=e233] [cursor=pointer]:
+                  - img [ref=e234]
+                  - text: Privacy Settings
+      - main [ref=e236]:
+        - generic [ref=e240]:
+          - article [ref=e241]:
+            - navigation "Breadcrumbs" [ref=e242]:
+              - list [ref=e243]:
+                - listitem [ref=e244]:
+                  - link "Home page" [ref=e245] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e246]
+                - listitem [ref=e248]:
+                  - link "Security" [ref=e249] [cursor=pointer]:
+                    - /url: /security/
+                - listitem [ref=e250]:
+                  - generic [ref=e251]: Vulnerability Management
+            - generic [ref=e252]:
+              - heading "Vulnerability Management" [level=1] [ref=e254]
+              - paragraph [ref=e255]: Our proactive and comprehensive vulnerability management program includes continuously monitoring, identifying, communicating, and remediating vulnerabilities in our products, including vulnerabilities that originate in third-party components or open source components.
+              - paragraph [ref=e256]: Each stage of our vulnerability management program is designed to foster a culture of security resilience. The following table provides a summary of the activities that comprise each stage.
+              - table [ref=e257]:
+                - rowgroup [ref=e258]:
+                  - row "Stage Description" [ref=e259]:
+                    - cell "Stage" [ref=e260]:
+                      - strong [ref=e261]: Stage
+                    - cell "Description" [ref=e262]:
+                      - strong [ref=e263]: Description
+                - rowgroup [ref=e264]:
+                  - row "Identification Detecting vulnerabilities through regular 24/7 monitoring, external penetration testing, weekly and daily vulnerability scans, and our Bug Bounty Program." [ref=e265]:
+                    - cell "Identification" [ref=e266]
+                    - cell "Detecting vulnerabilities through regular 24/7 monitoring, external penetration testing, weekly and daily vulnerability scans, and our Bug Bounty Program." [ref=e267]
+                  - row "Prioritization We rely on NIST CVE severity as the most authoritative data for open source and third-party product vulnerabilities. Vulnerabilities found in our core products are prioritized based on criteria and our internal testing." [ref=e268]:
+                    - cell "Prioritization" [ref=e269]
+                    - cell "We rely on NIST CVE severity as the most authoritative data for open source and third-party product vulnerabilities. Vulnerabilities found in our core products are prioritized based on criteria and our internal testing." [ref=e270]
+                  - row "Assessment We rely on NIST CVE severity where applicable. Where not applicable, we use a risk-based approach to assessing vulnerabilities and consider the likelihood of being exploited, impact on business continuity, and/or how the software is sourced, built, packaged, and deployed." [ref=e271]:
+                    - cell "Assessment" [ref=e272]
+                    - cell "We rely on NIST CVE severity where applicable. Where not applicable, we use a risk-based approach to assessing vulnerabilities and consider the likelihood of being exploited, impact on business continuity, and/or how the software is sourced, built, packaged, and deployed." [ref=e273]
+                  - row "Communication Security advisories are published for all critical and high vulnerabilities after they are discovered, prioritized, and assessed. Refer to Security Bulletins for further information." [ref=e274]:
+                    - cell "Communication" [ref=e275]
+                    - cell "Security advisories are published for all critical and high vulnerabilities after they are discovered, prioritized, and assessed. Refer to Security Bulletins for further information." [ref=e276]:
+                      - text: Security advisories are published for all critical and high vulnerabilities after they are discovered, prioritized, and assessed. Refer to
+                      - link "Security Bulletins" [ref=e277] [cursor=pointer]:
+                        - /url: /security-bulletins/
+                      - text: for further information.
+                  - row "Remediation Developed fixes are applied as soon as practical. Third-party component remediation may be delayed depending on the availability of upstream fixes." [ref=e278]:
+                    - cell "Remediation" [ref=e279]
+                    - cell "Developed fixes are applied as soon as practical. Third-party component remediation may be delayed depending on the availability of upstream fixes." [ref=e280]
+                  - row "Verification Once the remediation has been completed, thorough testing is done to ensure the fixes are effective. Customers may need to upgrade their existing clusters to inherit vulnerability fixes." [ref=e281]:
+                    - cell "Verification" [ref=e282]
+                    - cell "Once the remediation has been completed, thorough testing is done to ensure the fixes are effective. Customers may need to upgrade their existing clusters to inherit vulnerability fixes." [ref=e283]
+              - generic [ref=e284]:
+                - generic [ref=e285]:
+                  - img [ref=e287]
+                  - text: info
+                - paragraph [ref=e290]: Like most other cloud native products, our products depend on many open source libraries and third-party components. Often there are external dependencies on open source communities and third-party vendors in addressing these vulnerabilities. Where applicable and appropriate, we will include workarounds in the security advisories.
+            - generic [ref=e291]:
+              - generic [ref=e293]:
+                - text: "Tags:"
+                - list [ref=e294]:
+                  - listitem [ref=e295]:
+                    - link "security" [ref=e296] [cursor=pointer]:
+                      - /url: /tags/security/
+              - link "Edit this page" [ref=e299] [cursor=pointer]:
+                - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/security/vulnerability-management/vulnerability-management.md
+                - img [ref=e300]
+                - text: Edit this page
+          - navigation "Docs pages" [ref=e304]:
+            - link "Previous « Tenant Cluster Security" [ref=e305] [cursor=pointer]:
+              - /url: /security/product-architecture/tenant-cluster/
+              - generic [ref=e306]: Previous
+              - generic [ref=e307]: « Tenant Cluster Security
+            - link "Next Artifact Signatures »" [ref=e308] [cursor=pointer]:
+              - /url: /security/artifact-signatures/
+              - generic [ref=e309]: Next
+              - generic [ref=e310]: Artifact Signatures »
+  - button "Project Logo Ask AI" [ref=e311] [cursor=pointer]:
+    - generic [ref=e314]:
+      - img "Project Logo" [ref=e315]
+      - paragraph [ref=e316]: Ask AI
+```

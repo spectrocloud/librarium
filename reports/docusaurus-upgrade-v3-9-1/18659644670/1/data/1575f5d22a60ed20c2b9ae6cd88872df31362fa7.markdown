@@ -1,0 +1,397 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [expanded] [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+                - list [ref=e96]:
+                  - listitem [ref=e97]:
+                    - generic [ref=e98]:
+                      - link "Agent Mode" [ref=e99] [cursor=pointer]:
+                        - /url: /deployment-modes/agent-mode/
+                      - button "Toggle the collapsible sidebar category 'Agent Mode'" [ref=e100] [cursor=pointer]
+                  - listitem [ref=e101]:
+                    - generic [ref=e102]:
+                      - link "Appliance Mode" [ref=e103] [cursor=pointer]:
+                        - /url: /deployment-modes/appliance-mode/
+                      - button "Toggle the collapsible sidebar category 'Appliance Mode'" [ref=e104] [cursor=pointer]
+                  - listitem [ref=e105]:
+                    - link "Controller Mode" [ref=e106] [cursor=pointer]:
+                      - /url: /deployment-modes/controller-mode/
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Clusters" [ref=e109] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e111]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e117] [cursor=pointer]
+              - listitem [ref=e118]:
+                - generic [ref=e119]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e120] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e122]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e124] [cursor=pointer]
+              - listitem [ref=e125]:
+                - generic [ref=e126]:
+                  - link "Palette Dev Engine" [ref=e127] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e129]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e131] [cursor=pointer]
+              - listitem [ref=e132]:
+                - generic [ref=e133]:
+                  - link "Virtual Machine Orchestrator" [ref=e134] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e136]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e138] [cursor=pointer]
+              - listitem [ref=e139]:
+                - generic [ref=e140]:
+                  - link "Workspaces" [ref=e141] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e143]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e145] [cursor=pointer]
+              - listitem [ref=e146]:
+                - generic [ref=e147]:
+                  - link "Packs List" [ref=e148] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e150]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e152] [cursor=pointer]
+              - listitem [ref=e153]:
+                - generic [ref=e154]:
+                  - link "User & Role Management" [ref=e155] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e157]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e159] [cursor=pointer]
+              - listitem [ref=e160]:
+                - generic [ref=e161]:
+                  - link "Registries and Packs" [ref=e162] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e164]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e166] [cursor=pointer]
+              - listitem [ref=e167]:
+                - generic [ref=e168]:
+                  - link "Security" [ref=e169] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e171]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e173] [cursor=pointer]
+              - listitem [ref=e174]:
+                - generic [ref=e175]:
+                  - link "Audit Logs" [ref=e176] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e178]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e180] [cursor=pointer]
+              - listitem [ref=e181]:
+                - generic [ref=e182]:
+                  - link "Self-Hosted Palette" [ref=e183] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e185]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e187] [cursor=pointer]
+              - listitem [ref=e188]:
+                - generic [ref=e189]:
+                  - link "Palette VerteX" [ref=e190] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e192]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e194] [cursor=pointer]
+              - listitem [ref=e195]:
+                - generic [ref=e196]:
+                  - link "Tenant Administration" [ref=e197] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e199]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e201] [cursor=pointer]
+              - listitem [ref=e202]:
+                - generic [ref=e203]:
+                  - link "Automation" [ref=e204] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e206]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e208] [cursor=pointer]
+              - listitem [ref=e209]:
+                - generic [ref=e210]:
+                  - link "Troubleshooting" [ref=e211] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e213]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e215] [cursor=pointer]
+              - listitem [ref=e216]:
+                - link "Glossary" [ref=e217] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e219]
+                  - text: Glossary
+              - listitem [ref=e221]:
+                - generic [ref=e222]:
+                  - link "Compliance & Legal" [ref=e223] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e225]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e227] [cursor=pointer]
+              - listitem [ref=e228]:
+                - button "Privacy Settings" [ref=e229] [cursor=pointer]:
+                  - img [ref=e230]
+                  - text: Privacy Settings
+      - main [ref=e232]:
+        - generic [ref=e234]:
+          - generic [ref=e236]:
+            - article [ref=e237]:
+              - navigation "Breadcrumbs" [ref=e238]:
+                - list [ref=e239]:
+                  - listitem [ref=e240]:
+                    - link "Home page" [ref=e241] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e242]
+                  - listitem [ref=e244]:
+                    - generic [ref=e245]: Deployment Modes
+              - generic [ref=e246]:
+                - heading "Deployment Modes" [level=1] [ref=e248]
+                - paragraph [ref=e249]: Applications in Kubernetes can operate in many different environments with varying security, compliance, and performance requirements. Palette offers three different deployment modes that can help you meet the needs of your organization. Whether you want to operate your cluster in public cloud, private data centers, or at the Edge, and whether you want to use your own organization's hardware and Operating Systems (OS) or build secure, immutable OS to bootstrap your applications, you can choose a solution that works for you.
+                - paragraph [ref=e250]: The table and diagram below provide you with a brief overview of the different deployment modes and the distinctions between them.
+                - table [ref=e251]:
+                  - rowgroup [ref=e252]:
+                    - row "Mode Infrastructure Operating System OS Mutability Require Cloud Account Credentials" [ref=e253]:
+                      - cell "Mode" [ref=e254]
+                      - cell "Infrastructure" [ref=e255]
+                      - cell "Operating System" [ref=e256]
+                      - cell "OS Mutability" [ref=e257]
+                      - cell "Require Cloud Account Credentials" [ref=e258]
+                  - rowgroup [ref=e259]:
+                    - row "Controller mode Provisioned by Palette management plane using Cluster API (CAPI) Use Palette-provided OS packs or build your own OS image Mutable Yes" [ref=e260]:
+                      - cell "Controller mode" [ref=e261]:
+                        - link "Controller mode" [ref=e262] [cursor=pointer]:
+                          - /url: "#controller-mode"
+                      - cell "Provisioned by Palette management plane using Cluster API (CAPI)" [ref=e263]
+                      - cell "Use Palette-provided OS packs or build your own OS image" [ref=e264]
+                      - cell "Mutable" [ref=e265]
+                      - cell "Yes" [ref=e266]
+                    - row "Appliance mode Provided and managed by the user Built with EdgeForge Immutable No" [ref=e267]:
+                      - cell "Appliance mode" [ref=e268]:
+                        - link "Appliance mode" [ref=e269] [cursor=pointer]:
+                          - /url: "#appliance-mode"
+                      - cell "Provided and managed by the user" [ref=e270]
+                      - cell "Built with EdgeForge" [ref=e271]
+                      - cell "Immutable" [ref=e272]
+                      - cell "No" [ref=e273]
+                    - row "Agent mode Provided and managed by the user Provided and managed by the user Mutable or immutable No" [ref=e274]:
+                      - cell "Agent mode" [ref=e275]:
+                        - link "Agent mode" [ref=e276] [cursor=pointer]:
+                          - /url: "#agent-mode"
+                      - cell "Provided and managed by the user" [ref=e277]
+                      - cell "Provided and managed by the user" [ref=e278]
+                      - cell "Mutable or immutable" [ref=e279]
+                      - cell "No" [ref=e280]
+                - paragraph [ref=e281]
+                - heading "Controller ModeDirect link to Controller Mode" [level=2] [ref=e282]:
+                  - text: Controller Mode
+                  - link "Direct link to Controller Mode" [ref=e283] [cursor=pointer]:
+                    - /url: "#controller-mode"
+                    - text: "#"
+                - paragraph [ref=e284]:
+                  - link "Controller mode" [ref=e285] [cursor=pointer]:
+                    - /url: /deployment-modes/controller-mode/
+                  - text: is how you use Palette to deploy clusters in public clouds and data centers. In controller mode, the act of provisioning infrastructure comes from the Palette management plane using Cluster API (CAPI). After the infrastructure is provisioned, the Palette agent managing the cluster starts to download images, including those for the Operating System (OS), Kubernetes, network and storage plugins, as well as applications. You may customize the OS in any way you wish, and use that OS image in your cluster profile.
+                - heading "Why Use Controller ModeDirect link to Why Use Controller Mode" [level=3] [ref=e286]:
+                  - text: Why Use Controller Mode
+                  - link "Direct link to Why Use Controller Mode" [ref=e287] [cursor=pointer]:
+                    - /url: "#why-use-controller-mode"
+                    - text: "#"
+                - paragraph [ref=e288]: The advantage of controller mode is that your cluster is fully managed by Palette, saving you significant time, effort, and upfront investment that would have been required for managing your own infrastructure. If your applications primarily deploy on public clouds or data centers, using controller mode allows you to manage everything for your cluster, from infrastructure to applications, in a unified platform.
+                - paragraph [ref=e289]:
+                  - text: Because Palette is provisioning and managing infrastructure for you, controller mode also requires that you provide Palette with all the necessary permissions and credentials to perform these actions. For more information on the required permissions, refer to the Required Permissions page for the corresponding infrastructure provider. For example, for AWS, refer to the
+                  - link "Required IAM Policies" [ref=e290] [cursor=pointer]:
+                    - /url: /clusters/public-cloud/aws/required-iam-policies/
+                  - text: page.
+                - heading "Appliance ModeDirect link to Appliance Mode" [level=2] [ref=e291]:
+                  - text: Appliance Mode
+                  - link "Direct link to Appliance Mode" [ref=e292] [cursor=pointer]:
+                    - /url: "#appliance-mode"
+                    - text: "#"
+                - paragraph [ref=e293]:
+                  - text: In
+                  - link "appliance mode" [ref=e294] [cursor=pointer]:
+                    - /url: /deployment-modes/appliance-mode/
+                  - text: ", you provide your own infrastructure. You start by using"
+                  - link "EdgeForge" [ref=e295] [cursor=pointer]:
+                    - /url: /clusters/edge/edgeforge-workflow/
+                  - text: to build artifacts, including provider images and the installer ISO. You then
+                  - link "install" [ref=e296] [cursor=pointer]:
+                    - /url: /clusters/edge/site-deployment/stage/
+                  - text: the Palette agent on your host using the installer ISO. Once installed, you can use either
+                  - link "Local UI" [ref=e297] [cursor=pointer]:
+                    - /url: /clusters/edge/local-ui/
+                  - text: or the Palette management plane to instruct the Palette agent to create and manage clusters.
+                - paragraph [ref=e298]:
+                  - text: Unlike controller mode, where clusters are always managed by Palette, you can choose to manage your cluster with Palette or locally using
+                  - link "Local UI" [ref=e299] [cursor=pointer]:
+                    - /url: /clusters/edge/local-ui/
+                  - text: ", with no network connection between your cluster and Palette. In addition, clusters deployed in appliance mode are immutable. Once your cluster is operational, no one will be able to make further changes to the OS, unless you build a new provider image to upgrade your cluster."
+                - heading "Why Use Appliance ModeDirect link to Why Use Appliance Mode" [level=3] [ref=e300]:
+                  - text: Why Use Appliance Mode
+                  - link "Direct link to Why Use Appliance Mode" [ref=e301] [cursor=pointer]:
+                    - /url: "#why-use-appliance-mode"
+                    - text: "#"
+                - paragraph [ref=e302]:
+                  - text: Appliance mode does not require you to provide us with any credentials to your cloud environments. In addition, the immutability and security provided by appliance mode make it an ideal choice for deployment in Edge locations, though you can still use it to deploy clusters to a data center or public cloud. Additionally, appliance mode allows you to take advantage of features such as
+                  - link "Trusted Boot" [ref=e303] [cursor=pointer]:
+                    - /url: /clusters/edge/trusted-boot/
+                  - text: ", ensuring the authenticity of your boot process and further enhancing the security of your systems. Since Palette is no longer managing the infrastructure for you, you will have more overhead in managing the cluster's infrastructure yourself."
+                - heading "Agent ModeDirect link to Agent Mode" [level=2] [ref=e304]:
+                  - text: Agent Mode
+                  - link "Direct link to Agent Mode" [ref=e305] [cursor=pointer]:
+                    - /url: "#agent-mode"
+                    - text: "#"
+                - paragraph [ref=e306]:
+                  - link "Agent mode" [ref=e307] [cursor=pointer]:
+                    - /url: /deployment-modes/agent-mode/
+                  - text: follows a similar model to appliance mode, requiring you to provide your own infrastructure. Once the Palette agent is installed, you can instruct the agent to create and manage a cluster either from Local UI or Palette Management plane.
+                - paragraph [ref=e308]: Unlike appliance mode, you have more freedom to manage the OS for your clusters. Agent mode does not require you to use EdgeForge to create an immutable OS image or Kubernetes image. Instead, you can use a script to install the Palette agent on your existing machine, with its existing OS, or build an OS image that includes the Palette agent.
+                - heading "Why Use Agent ModeDirect link to Why Use Agent Mode" [level=3] [ref=e309]:
+                  - text: Why Use Agent Mode
+                  - link "Direct link to Why Use Agent Mode" [ref=e310] [cursor=pointer]:
+                    - /url: "#why-use-agent-mode"
+                    - text: "#"
+                - paragraph [ref=e311]: Agent mode is especially convenient for organizations that have stringent security policies and you already have tools in place to manage some specific OS. Since it allows you to use your existing OS, you no longer need to obtain additional approval for using a new OS that you build with EdgeForge.
+                - paragraph [ref=e312]: In addition, agent mode does not require you to have an immutable OS, so you can continue to use the tools that you may already have in place for your OS lifecycle management. Compared with appliance mode, agent mode provides more flexibility, but it may not have the security provided by appliance mode's immutable OS and you will not be able to use Trusted Boot to ensure the software on your hosts are never tempered with.
+              - generic [ref=e313]:
+                - generic [ref=e315]:
+                  - text: "Tags:"
+                  - list [ref=e316]:
+                    - listitem [ref=e317]:
+                      - link "edge" [ref=e318] [cursor=pointer]:
+                        - /url: /tags/edge/
+                - link "Edit this page" [ref=e321] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/deployment-modes/deployment-modes.md
+                  - img [ref=e322]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e326]:
+              - link "Previous « Delete Cluster Templates" [ref=e327] [cursor=pointer]:
+                - /url: /cluster-templates/delete-cluster-templates/
+                - generic [ref=e328]: Previous
+                - generic [ref=e329]: « Delete Cluster Templates
+              - link "Next Agent Mode »" [ref=e330] [cursor=pointer]:
+                - /url: /deployment-modes/agent-mode/
+                - generic [ref=e331]: Next
+                - generic [ref=e332]: Agent Mode »
+          - list [ref=e335]:
+            - listitem [ref=e336]:
+              - link "Controller Mode" [ref=e337] [cursor=pointer]:
+                - /url: "#controller-mode"
+              - list [ref=e338]:
+                - listitem [ref=e339]:
+                  - link "Why Use Controller Mode" [ref=e340] [cursor=pointer]:
+                    - /url: "#why-use-controller-mode"
+            - listitem [ref=e341]:
+              - link "Appliance Mode" [ref=e342] [cursor=pointer]:
+                - /url: "#appliance-mode"
+              - list [ref=e343]:
+                - listitem [ref=e344]:
+                  - link "Why Use Appliance Mode" [ref=e345] [cursor=pointer]:
+                    - /url: "#why-use-appliance-mode"
+            - listitem [ref=e346]:
+              - link "Agent Mode" [ref=e347] [cursor=pointer]:
+                - /url: "#agent-mode"
+              - list [ref=e348]:
+                - listitem [ref=e349]:
+                  - link "Why Use Agent Mode" [ref=e350] [cursor=pointer]:
+                    - /url: "#why-use-agent-mode"
+  - button "Project Logo Ask AI" [ref=e351] [cursor=pointer]:
+    - generic [ref=e354]:
+      - img "Project Logo" [ref=e355]
+      - paragraph [ref=e356]: Ask AI
+```

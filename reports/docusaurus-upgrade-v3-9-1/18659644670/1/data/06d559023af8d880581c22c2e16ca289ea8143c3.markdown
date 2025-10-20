@@ -1,0 +1,546 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Introduction" [ref=e41] [cursor=pointer]:
+                  - /url: /api/introduction/
+                  - img [ref=e43]
+                  - text: Introduction
+              - listitem [ref=e45]:
+                - link "Example Usage" [ref=e46] [cursor=pointer]:
+                  - /url: /api/samples/
+              - listitem [ref=e47]:
+                - link "Postman Collection" [ref=e48] [cursor=pointer]:
+                  - /url: /api/postman-collection/
+              - listitem [ref=e49]:
+                - generic [ref=e50]:
+                  - link "Palette API V1" [ref=e51] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Palette API V1'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "Edge Management API V1" [expanded] [ref=e55] [cursor=pointer]:
+                    - /url: /api/category/edge-management-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Edge Management API V1'" [ref=e56] [cursor=pointer]
+                - list [ref=e57]:
+                  - listitem [ref=e58]:
+                    - link "Introduction" [ref=e59] [cursor=pointer]:
+                      - /url: /api/edge-v1/local-management-apis/
+                  - listitem [ref=e60]:
+                    - generic [ref=e61]:
+                      - link "Edge Mgmt" [expanded] [ref=e62] [cursor=pointer]:
+                        - /url: /api/edge-v1/edge-mgmt/
+                      - button "Toggle the collapsible sidebar category 'Edge Mgmt'" [ref=e63] [cursor=pointer]
+                    - list [ref=e64]:
+                      - listitem [ref=e65]:
+                        - link "get Get the details of the cluster." [ref=e66] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-config/
+                      - listitem [ref=e67]:
+                        - link "post Creates a cluster with the provided cluster configuration" [ref=e68] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-create-cluster/
+                      - listitem [ref=e69]:
+                        - link "del Delete a cluster" [ref=e70] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-delete-cluster/
+                      - listitem [ref=e71]:
+                        - 'link "patch DEPRECATED - This endpoint is deprecated and will be removed in future versions. Use /v1/edge-mgmt/cluster/{clusterName} instead" [ref=e72] [cursor=pointer]':
+                          - /url: /api/edge-v1/v-1-patch-cluster/
+                      - listitem [ref=e73]:
+                        - link "get list the details of the cluster’s packs." [ref=e74] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-applications/
+                      - listitem [ref=e75]:
+                        - link "get Get Cluster Certificates Info" [ref=e76] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-certificate-details/
+                      - listitem [ref=e77]:
+                        - link "get Get Edge Cluster details" [ref=e78] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-get/
+                      - listitem [ref=e79]:
+                        - link "get List cluster events" [ref=e80] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-get-cluster-events/
+                      - listitem [ref=e81]:
+                        - link "post Creates a pairing request" [ref=e82] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-pair/
+                      - listitem [ref=e83]:
+                        - link "get Get all existing pairing requests" [ref=e84] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-pair-details/
+                      - listitem [ref=e85]:
+                        - link "post Rejects a pairing request" [ref=e86] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-pair-reject/
+                      - listitem [ref=e87]:
+                        - link "post Verifies whether all cluster hosts are able to connect to palette" [ref=e88] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-pair-verify-connection/
+                      - listitem [ref=e89]:
+                        - link "put Updates a cluster with the provided cluster configuration" [ref=e90] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-update-cluster-profiles/
+                      - listitem [ref=e91]:
+                        - link "post Validate cluster profile variables" [ref=e92] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-validate-cluster-profile-variables/
+                      - listitem [ref=e93]:
+                        - link "get List existing Harbor Content Details" [ref=e94] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-harbor-contents-details/
+                      - listitem [ref=e95]:
+                        - link "get List Harbor Content Sync Status" [ref=e96] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-harbor-contents-sync-status-details/
+                      - listitem [ref=e97]:
+                        - link "get Gets the harbor health status" [ref=e98] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-harbor-health/
+                      - listitem [ref=e99]:
+                        - link "post Renew Cluster Certificates" [ref=e100] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-renew-certs/
+                      - listitem [ref=e101]:
+                        - link "put Update cluster settings" [ref=e102] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-native-cluster-settings/
+                      - listitem [ref=e103]:
+                        - link "put Updates a cluster with the provided cluster configuration" [ref=e104] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-update-cluster-config/
+                      - listitem [ref=e105]:
+                        - link "patch Patch a cluster with the provided cluster configuration" [ref=e106] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-patch-cluster-config/
+                      - listitem [ref=e107]:
+                        - link "get parses the preloaded cluster-config archive if it was included in the ISO." [ref=e108] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-config-archive-embedded/
+                      - listitem [ref=e109]:
+                        - link "get parses the cluster-config archive if it exists." [ref=e110] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-config-archive-overriden/
+                      - listitem [ref=e111]:
+                        - link "del Delete or reject the cluster update archive" [ref=e112] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-delete-cluster-update-archive/
+                      - listitem [ref=e113]:
+                        - link "get parses the cluster-config update archive if it was included in the uploaded content-bundle." [ref=e114] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-config-archive-update/
+                      - listitem [ref=e115]:
+                        - link "get Fetch the cluster node pool details including edge host details." [ref=e116] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-machine-pool-detail/
+                      - listitem [ref=e117]:
+                        - link "post Create a machine pool" [ref=e118] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-machine-pool-create/
+                      - listitem [ref=e119]:
+                        - link "put Update machine pools" [ref=e120] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-machine-pool-update/
+                      - listitem [ref=e121]:
+                        - link "del Delete machine pools" [ref=e122] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-machine-pool-delete/
+                      - listitem [ref=e123]:
+                        - link "patch Patch machine pools" [ref=e124] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-machine-pool-patch/
+                      - listitem [ref=e125]:
+                        - link "del Delete a machine pool node" [ref=e126] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-machine-pool-node-delete/
+                      - listitem [ref=e127]:
+                        - link "get A list of the K8s Cluster Nodes" [ref=e128] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-nodes/
+                      - listitem [ref=e129]:
+                        - link "get Ping an endpoint" [ref=e130] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-ping-host/
+                      - listitem [ref=e131]:
+                        - link "get Display route that IP packets take to a network host" [ref=e132] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-trace-route-host/
+                      - listitem [ref=e133]:
+                        - link "get Get edge host info" [ref=e134] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-info/
+                      - listitem [ref=e135]:
+                        - link "get Get the public key used to verify the signed content." [ref=e136] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-get-content-signing-public-key/
+                      - listitem [ref=e137]:
+                        - link "post Reboot edge host" [ref=e138] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-action-reboot/
+                      - listitem [ref=e139]:
+                        - link "post Reset edge host" [ref=e140] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-action-reset/
+                      - listitem [ref=e141]:
+                        - link "post Shutdown edge host" [ref=e142] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-action-shutdown/
+                      - listitem [ref=e143]:
+                        - link "post Uploads the cluster config archive and extracts it to the required location on the edge host." [ref=e144] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-config-upload/
+                      - listitem [ref=e145]:
+                        - link "post Uploads an archive file and extracts it to the required location on the edge host." [ref=e146] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-content-upload/
+                      - listitem [ref=e147]:
+                        - link "get Retrieves the list of audit logs" [ref=e148] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-audits/
+                      - listitem [ref=e149]:
+                        - link "get Download audit logs" [ref=e150] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-audit-download/
+                      - listitem [ref=e151]:
+                        - link "get Retrieves the list of filter options to display on audit ui page" [ref=e152] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-audit-filter/
+                      - listitem [ref=e153]:
+                        - link "get Get edge host configurations." [ref=e154] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-configurations-get/
+                      - listitem [ref=e155]:
+                        - link "put Update Edge Host configurations" [ref=e156] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-configurations-update/
+                      - listitem [ref=e157]:
+                        - link "get Edge host configurations status" [ref=e158] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-configuration-status/
+                      - listitem [ref=e159]:
+                        - link "get Download edge host Logs" [ref=e160] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-download-logs/
+                      - listitem [ref=e161]:
+                        - link "get List last 'logCount' edge host error logs" [ref=e162] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-error-logs/
+                      - listitem [ref=e163]:
+                        - link "get List custom files from the '/var/log/files' directory" [ref=e164] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-list-custom-files/
+                      - listitem [ref=e165]:
+                        - link "get Download a custom file from the user-defined or default directory" [ref=e166] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-custom-file-download/
+                      - listitem [ref=e167]:
+                        - link "post Start edge host log collection" [ref=e168] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-generate-logs/
+                      - listitem [ref=e169]:
+                        - link "get Edge host log collection status" [ref=e170] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-generate-logs-status/
+                      - listitem [ref=e171]:
+                        - link "post Link edge host to another edge host" [ref=e172] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-link/
+                      - listitem [ref=e173]:
+                        - link "post Generate a link token for linking edge hosts" [ref=e174] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-link-generate-token/
+                      - listitem [ref=e175]:
+                        - link "get Get the status of the edge host link" [ref=e176] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-link-status/
+                      - listitem [ref=e177]:
+                        - link "post Unlink edge host from other edge hosts" [ref=e178] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-unlink/
+                      - listitem [ref=e179]:
+                        - link "get Get metadata of last uploaded content archive file" [ref=e180] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-uploaded-content-details/
+                      - listitem [ref=e181]:
+                        - link "get Get edge host userdata" [ref=e182] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-get-edge-host-userdata/
+                      - listitem [ref=e183]:
+                        - link "put Update edge host userdata" [ref=e184] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-put-edge-host-userdata/
+                      - listitem [ref=e185]:
+                        - link "post Update edge host userdata" [ref=e186] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-post-edge-host-userdata/
+                      - listitem [ref=e187]:
+                        - link "get Get life cycle events of cluster and edge host" [ref=e188] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-get-lifecycle-events/
+                      - listitem [ref=e189]:
+                        - link "get Get general settings" [ref=e190] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-settings/
+                  - listitem [ref=e191]:
+                    - generic [ref=e192]:
+                      - link "Ping" [ref=e193] [cursor=pointer]:
+                        - /url: /api/edge-v1/ping/
+                      - button "Toggle the collapsible sidebar category 'Ping'" [ref=e194] [cursor=pointer]
+                  - listitem [ref=e195]:
+                    - generic [ref=e196]:
+                      - link "Users" [ref=e197] [cursor=pointer]:
+                        - /url: /api/edge-v1/users/
+                      - button "Toggle the collapsible sidebar category 'Users'" [ref=e198] [cursor=pointer]
+      - main [ref=e199]:
+        - generic [ref=e203]:
+          - article [ref=e204]:
+            - navigation "Breadcrumbs" [ref=e205]:
+              - list [ref=e206]:
+                - listitem [ref=e207]:
+                  - link "Home page" [ref=e208] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e209]
+                - listitem [ref=e211]:
+                  - link "Edge Management API V1" [ref=e212] [cursor=pointer]:
+                    - /url: /api/category/edge-management-api-v1/
+                - listitem [ref=e213]:
+                  - link "Edge Mgmt" [ref=e214] [cursor=pointer]:
+                    - /url: /api/edge-v1/edge-mgmt/
+                - listitem [ref=e215]:
+                  - generic [ref=e216]: Creates a cluster with the provided cluster configuration
+            - generic [ref=e218]:
+              - generic [ref=e219]:
+                - heading "Creates a cluster with the provided cluster configuration" [level=1] [ref=e220]
+                - generic [ref=e221]:
+                  - generic [ref=e222]: POST
+                  - heading "https://edge-host-ip:5080/v1/edge-mgmt/cluster" [level=2] [ref=e223]
+                - paragraph [ref=e225]: Creates a cluster with the provided cluster configuration
+                - heading "RequestDirect link to Request" [level=2] [ref=e226]:
+                  - text: Request
+                  - link "Direct link to Request" [ref=e227] [cursor=pointer]:
+                    - /url: "#request"
+                    - text: "#"
+                - generic [ref=e228]:
+                  - tablist [ref=e231]:
+                    - tab "application/json" [selected] [ref=e232] [cursor=pointer]
+                  - tabpanel [ref=e234]:
+                    - group [ref=e235]:
+                      - generic "Body required" [ref=e236] [cursor=pointer]:
+                        - heading "Body required" [level=3] [ref=e237]:
+                          - text: Body
+                          - strong [ref=e238]: required
+                      - list [ref=e241]:
+                        - group [ref=e243]:
+                          - generic "metadata object" [ref=e244] [cursor=pointer]:
+                            - generic [ref=e245]:
+                              - strong [ref=e246]: metadata
+                              - generic [ref=e247]: object
+                        - group [ref=e249]:
+                          - generic "spec object" [ref=e250] [cursor=pointer]:
+                            - generic [ref=e251]:
+                              - strong [ref=e252]: spec
+                              - generic [ref=e253]: object
+                - generic [ref=e254]:
+                  - generic [ref=e255]:
+                    - heading "ResponsesDirect link to Responses" [level=2] [ref=e256]:
+                      - text: Responses
+                      - link "Direct link to Responses" [ref=e257] [cursor=pointer]:
+                        - /url: "#responses"
+                        - text: "#"
+                    - tablist [ref=e259]:
+                      - tab "202" [selected] [ref=e260] [cursor=pointer]
+                      - tab "500" [ref=e261] [cursor=pointer]
+                  - tabpanel [ref=e263]:
+                    - paragraph [ref=e266]: (empty)
+                    - generic [ref=e267]:
+                      - tablist [ref=e270]:
+                        - tab "application/json" [selected] [ref=e271] [cursor=pointer]
+                      - tabpanel [ref=e273]:
+                        - generic [ref=e274]:
+                          - tablist [ref=e276]:
+                            - tab "Schema" [selected] [ref=e277] [cursor=pointer]:
+                              - generic [ref=e278]: Schema
+                            - tab "Example (auto)" [ref=e279] [cursor=pointer]:
+                              - generic [ref=e280]: Example (auto)
+                          - tabpanel [ref=e282]:
+                            - group [ref=e283]:
+                              - generic "Schema" [ref=e284] [cursor=pointer]:
+                                - strong [ref=e285]: Schema
+                              - list [ref=e288]:
+                                - generic [ref=e291]:
+                                  - strong [ref=e292]: message
+                                  - generic [ref=e293]: string
+              - generic [ref=e294]:
+                - group [ref=e295]:
+                  - 'generic "Authorization: Authorization" [ref=e296]':
+                    - 'heading "Authorization: Authorization" [level=4] [ref=e297]'
+                - generic [ref=e298]:
+                  - tablist [ref=e299]:
+                    - tab "curl" [selected] [ref=e300] [cursor=pointer]:
+                      - generic [ref=e301]: curl
+                    - tab "python" [ref=e302] [cursor=pointer]:
+                      - generic [ref=e303]: python
+                    - tab "go" [ref=e304] [cursor=pointer]:
+                      - generic [ref=e305]: go
+                    - tab "nodejs" [ref=e306] [cursor=pointer]:
+                      - generic [ref=e307]: nodejs
+                    - tab "java" [ref=e308] [cursor=pointer]:
+                      - generic [ref=e309]: java
+                  - tabpanel [ref=e310]:
+                    - generic [ref=e311]:
+                      - tablist [ref=e312]:
+                        - tab "CURL" [selected] [ref=e313] [cursor=pointer]:
+                          - generic [ref=e314]: CURL
+                      - tabpanel [ref=e315]:
+                        - generic [ref=e317]:
+                          - code [ref=e319]:
+                            - generic [ref=e322]: curl -L 'https://edge-host-ip:5080/v1/edge-mgmt/cluster' \
+                            - generic [ref=e325]: "-H 'Content-Type: application/json' \\"
+                            - generic [ref=e328]: "-H 'Accept: application/json' \\"
+                            - generic [ref=e331]: "-H 'Authorization: <Authorization>' \\"
+                            - generic [ref=e334]: "-d '{"
+                            - generic [ref=e337]: "\"metadata\": {"
+                            - generic [ref=e340]: "\"creationTimestamp\": \"2024-07-29T15:51:28.071Z\","
+                            - generic [ref=e343]: "\"id\": \"string\","
+                            - generic [ref=e346]: "\"labels\": {},"
+                            - generic [ref=e349]: "\"lastModifiedTimestamp\": \"2024-07-29T15:51:28.071Z\","
+                            - generic [ref=e352]: "\"name\": \"string\","
+                            - generic [ref=e355]: "\"tags\": {}"
+                            - generic [ref=e358]: "},"
+                            - generic [ref=e361]: "\"spec\": {"
+                            - generic [ref=e364]: "\"archiveUploadPath\": \"string\","
+                            - generic [ref=e367]: "\"cloudConfig\": {"
+                            - generic [ref=e370]: "\"metadata\": {"
+                            - generic [ref=e373]: "\"annotations\": {},"
+                            - generic [ref=e376]: "\"creationTimestamp\": \"2024-07-29T15:51:28.071Z\","
+                            - generic [ref=e379]: "\"deletionTimestamp\": \"2024-07-29T15:51:28.071Z\","
+                            - generic [ref=e382]: "\"labels\": {},"
+                            - generic [ref=e385]: "\"lastModifiedTimestamp\": \"2024-07-29T15:51:28.071Z\","
+                            - generic [ref=e388]: "\"name\": \"string\","
+                            - generic [ref=e391]: "\"namespace\": \"string\","
+                            - generic [ref=e394]: "\"resourceVersion\": \"string\","
+                            - generic [ref=e397]: "\"selfLink\": \"string\","
+                            - generic [ref=e400]: "\"uid\": \"string\""
+                            - generic [ref=e403]: "},"
+                            - generic [ref=e406]: "\"spec\": {"
+                            - generic [ref=e409]: "\"clusterConfig\": {"
+                            - generic [ref=e412]: "\"controlPlaneEndpoint\": {"
+                            - generic [ref=e415]: "\"ddnsSearchDomain\": \"string\","
+                            - generic [ref=e418]: "\"host\": \"string\","
+                            - generic [ref=e421]: "\"type\": \"string\""
+                            - generic [ref=e424]: "},"
+                            - generic [ref=e427]: "\"ntpServers\": ["
+                            - generic [ref=e430]: "\"string\""
+                            - generic [ref=e433]: "],"
+                            - generic [ref=e436]: "\"overlayNetworkConfiguration\": {"
+                            - generic [ref=e439]: "\"cidr\": \"string\","
+                            - generic [ref=e442]: "\"enable\": true"
+                            - generic [ref=e445]: "},"
+                            - generic [ref=e448]: "\"sshKeys\": ["
+                            - generic [ref=e451]: "\"\""
+                            - generic [ref=e454]: "],"
+                            - generic [ref=e457]: "\"staticIp\": true"
+                            - generic [ref=e460]: "},"
+                            - generic [ref=e463]: "\"machinePoolConfig\": ["
+                            - generic [ref=e466]: "{"
+                            - generic [ref=e469]: "\"additionalLabels\": {},"
+                            - generic [ref=e472]: "\"additionalTags\": {},"
+                            - generic [ref=e475]: "\"hosts\": ["
+                            - generic [ref=e478]: "{"
+                            - generic [ref=e481]: "\"IsCandidateCaption\": false,"
+                            - generic [ref=e484]: "\"caCert\": \"string\","
+                            - generic [ref=e487]: "\"hostAddress\": \"\","
+                            - generic [ref=e490]: "\"hostName\": \"\","
+                            - generic [ref=e493]: "\"hostUid\": \"\","
+                            - generic [ref=e496]: "\"networkInfo\": ["
+                            - generic [ref=e499]: "{"
+                            - generic [ref=e502]: "\"dns\": ["
+                            - generic [ref=e505]: "\"string\""
+                            - generic [ref=e508]: "],"
+                            - generic [ref=e511]: "\"gateway\": \"string\","
+                            - generic [ref=e514]: "\"ip\": \"string\","
+                            - generic [ref=e517]: "\"isDefault\": true,"
+                            - generic [ref=e520]: "\"macAddr\": \"string\","
+                            - generic [ref=e523]: "\"nicName\": \"string\","
+                            - generic [ref=e526]: "\"subnet\": \"string\""
+                            - generic [ref=e529]: "}"
+                            - generic [ref=e532]: "],"
+                            - generic [ref=e535]: "\"nic\": {"
+                            - generic [ref=e538]: "\"dns\": ["
+                            - generic [ref=e541]: "\"string\""
+                            - generic [ref=e544]: "],"
+                            - generic [ref=e547]: "\"gateway\": \"string\","
+                            - generic [ref=e550]: "\"ip\": \"string\","
+                            - generic [ref=e553]: "\"isDefault\": true,"
+                            - generic [ref=e556]: "\"macAddr\": \"string\","
+                            - generic [ref=e559]: "\"nicName\": \"string\","
+                            - generic [ref=e562]: "\"subnet\": \"string\""
+                            - generic [ref=e565]: "},"
+                            - generic [ref=e568]: "\"nicName\": \"string\","
+                            - generic [ref=e571]: "\"nodeInfo\": {"
+                            - generic [ref=e574]: "\"age\": \"string\","
+                            - generic [ref=e577]: "\"architecture\": \"string\","
+                            - generic [ref=e580]: "\"conditions\": ["
+                            - generic [ref=e583]: "{"
+                            - generic [ref=e586]: "\"lastProbeTime\": \"2024-07-29T15:51:28.071Z\","
+                            - generic [ref=e589]: "\"lastTransitionTime\": \"2024-07-29T15:51:28.071Z\","
+                            - generic [ref=e592]: "\"message\": \"string\","
+                            - generic [ref=e595]: "\"reason\": \"string\","
+                            - generic [ref=e598]: "\"status\": \"string\","
+                            - generic [ref=e601]: "\"type\": \"string\""
+                            - generic [ref=e604]: "}"
+                            - generic [ref=e607]: "],"
+                            - generic [ref=e610]: "\"health\": {"
+                            - generic [ref=e613]: "\"reason\": \"string\","
+                            - generic [ref=e616]: "\"status\": \"Healthy\""
+                            - generic [ref=e619]: "},"
+                            - generic [ref=e622]: "\"ipv4\": \"string\","
+                            - generic [ref=e625]: "\"k8sVersion\": \"string\","
+                            - generic [ref=e628]: "\"nodeName\": \"string\","
+                            - generic [ref=e631]: "\"nodeState\": \"string\""
+                            - generic [ref=e634]: "},"
+                            - generic [ref=e637]: "\"staticIP\": \"string\","
+                            - generic [ref=e640]: "\"twoNodeCandidatePriority\": \"primary\""
+                            - generic [ref=e643]: "}"
+                            - generic [ref=e646]: "],"
+                            - generic [ref=e649]: "\"isControlPlane\": true,"
+                            - generic [ref=e652]: "\"labels\": ["
+                            - generic [ref=e655]: "\"\""
+                            - generic [ref=e658]: "],"
+                            - generic [ref=e661]: "\"machinePoolProperties\": {"
+                            - generic [ref=e664]: "\"archType\": \"amd64\""
+                            - generic [ref=e667]: "},"
+                            - generic [ref=e670]: "\"maxSize\": 0,"
+                            - generic [ref=e673]: "\"minSize\": 0,"
+                            - generic [ref=e676]: "\"name\": \"string\","
+                            - generic [ref=e679]: "\"nodeRepaveInterval\": 0,"
+                            - generic [ref=e682]: "\"osType\": \"string\","
+                            - generic [ref=e685]: "\"size\": 0,"
+                            - generic [ref=e688]: "\"taints\": ["
+                            - generic [ref=e691]: "{"
+                            - generic [ref=e694]: "\"effect\": \"NoSchedule\","
+                            - generic [ref=e697]: "\"key\": \"string\","
+                            - generic [ref=e700]: "\"timeAdded\": \"2024-07-29T15:51:28.071Z\","
+                            - generic [ref=e703]: "\"value\": \"string\""
+                            - generic [ref=e706]: "}"
+                            - generic [ref=e709]: "],"
+                            - generic [ref=e712]: "\"updateStrategy\": {"
+                            - generic [ref=e715]: "\"type\": \"RollingUpdateScaleOut\""
+                            - generic [ref=e718]: "},"
+                            - generic [ref=e721]: "\"useControlPlaneAsWorker\": true"
+                            - generic [ref=e724]: "}"
+                            - generic [ref=e727]: "]"
+                            - generic [ref=e730]: "}"
+                            - generic [ref=e733]: "},"
+                            - generic [ref=e736]: "\"profileVariables\": ["
+                            - generic [ref=e739]: "{"
+                            - generic [ref=e742]: "\"name\": \"string\","
+                            - generic [ref=e745]: "\"profileUid\": \"string\","
+                            - generic [ref=e748]: "\"value\": \"string\""
+                            - generic [ref=e751]: "}"
+                            - generic [ref=e754]: "],"
+                            - generic [ref=e757]: "\"scheduleAt\": \"string\""
+                            - generic [ref=e760]: "}"
+                            - generic [ref=e763]: "}'"
+                          - generic [ref=e764]:
+                            - button "Toggle word wrap" [ref=e765] [cursor=pointer]:
+                              - img [ref=e766]
+                            - button "Copy code to clipboard" [ref=e768] [cursor=pointer]:
+                              - generic [ref=e769]:
+                                - img [ref=e770]
+                                - img [ref=e772]
+                            - button "Expand code to fullscreen" [ref=e774] [cursor=pointer]:
+                              - generic [ref=e775]:
+                                - img [ref=e776]
+                                - img [ref=e778]
+          - navigation "Docs pages" [ref=e782]:
+            - link "Previous « Get the details of the cluster." [ref=e783] [cursor=pointer]:
+              - /url: /api/edge-v1/v-1-cluster-config/
+              - generic [ref=e784]: Previous
+              - generic [ref=e785]: « Get the details of the cluster.
+            - link "Next Delete a cluster »" [ref=e786] [cursor=pointer]:
+              - /url: /api/edge-v1/v-1-delete-cluster/
+              - generic [ref=e787]: Next
+              - generic [ref=e788]: Delete a cluster »
+  - button "Project Logo Ask AI" [ref=e789] [cursor=pointer]:
+    - generic [ref=e792]:
+      - img "Project Logo" [ref=e793]
+      - paragraph [ref=e794]: Ask AI
+```

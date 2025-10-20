@@ -1,0 +1,490 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Palette Tutorials" [ref=e41] [cursor=pointer]:
+                  - /url: /tutorials/
+                  - img [ref=e43]
+                  - text: Palette Tutorials
+              - listitem [ref=e45]:
+                - generic [ref=e46]:
+                  - link "Getting Started" [expanded] [ref=e47] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/
+                    - img [ref=e49]
+                    - text: Getting Started
+                  - button "Toggle the collapsible sidebar category 'Getting Started'" [ref=e51] [cursor=pointer]
+                - list [ref=e52]:
+                  - listitem [ref=e53]:
+                    - generic [ref=e54]:
+                      - link "Palette" [expanded] [ref=e55] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette/
+                      - button "Toggle the collapsible sidebar category 'Palette'" [ref=e56] [cursor=pointer]
+                    - list [ref=e57]:
+                      - listitem [ref=e58]:
+                        - link "Introduction to Palette" [ref=e59] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette/introduction-palette/
+                      - listitem [ref=e60]:
+                        - generic [ref=e61]:
+                          - link "Deploy a Cluster to AWS" [expanded] [ref=e62] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/aws/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to AWS'" [ref=e63] [cursor=pointer]
+                        - list [ref=e64]:
+                          - listitem [ref=e65]:
+                            - link "Set up Palette" [ref=e66] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/aws/setup/
+                          - listitem [ref=e67]:
+                            - link "Create a Cluster Profile" [ref=e68] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/aws/create-cluster-profile/
+                          - listitem [ref=e69]:
+                            - link "Deploy a Cluster" [ref=e70] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/aws/deploy-k8s-cluster/
+                          - listitem [ref=e71]:
+                            - link "Deploy Cluster Profile Updates" [ref=e72] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/aws/update-k8s-cluster/
+                          - listitem [ref=e73]:
+                            - link "Cluster Management with Terraform" [ref=e74] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/aws/deploy-manage-k8s-cluster-tf/
+                          - listitem [ref=e75]:
+                            - link "Scale, Upgrade, and Secure Clusters" [ref=e76] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/aws/scale-secure-cluster/
+                      - listitem [ref=e77]:
+                        - generic [ref=e78]:
+                          - link "Deploy a Cluster to Azure" [ref=e79] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/azure/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to Azure'" [ref=e80] [cursor=pointer]
+                      - listitem [ref=e81]:
+                        - generic [ref=e82]:
+                          - link "Deploy a Cluster to GCP" [ref=e83] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/gcp/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to GCP'" [ref=e84] [cursor=pointer]
+                      - listitem [ref=e85]:
+                        - generic [ref=e86]:
+                          - link "Deploy a Cluster to VMware" [ref=e87] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/vmware/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to VMware'" [ref=e88] [cursor=pointer]
+                  - listitem [ref=e89]:
+                    - generic [ref=e90]:
+                      - link "Palette Edge" [ref=e91] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette-edge/
+                      - button "Toggle the collapsible sidebar category 'Palette Edge'" [ref=e92] [cursor=pointer]
+                  - listitem [ref=e93]:
+                    - generic [ref=e94]:
+                      - link "Additional Capabilities" [ref=e95] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/additional-capabilities/
+                      - button "Toggle the collapsible sidebar category 'Additional Capabilities'" [ref=e96] [cursor=pointer]
+              - listitem [ref=e97]:
+                - generic [ref=e98]:
+                  - link "Packs and Registries" [ref=e99] [cursor=pointer]:
+                    - /url: /tutorials/packs-registries/
+                    - img [ref=e101]
+                    - text: Packs and Registries
+                  - button "Toggle the collapsible sidebar category 'Packs and Registries'" [ref=e103] [cursor=pointer]
+              - listitem [ref=e104]:
+                - generic [ref=e105]:
+                  - link "Profiles" [ref=e106] [cursor=pointer]:
+                    - /url: /tutorials/profiles/
+                    - img [ref=e108]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Clusters" [ref=e115] [cursor=pointer]:
+                    - /url: /tutorials/clusters/
+                    - img [ref=e117]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e123] [cursor=pointer]
+              - listitem [ref=e124]:
+                - generic [ref=e125]:
+                  - link "Palette Dev Engine" [ref=e126] [cursor=pointer]:
+                    - /url: /tutorials/pde/
+                    - img [ref=e128]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e130] [cursor=pointer]
+              - listitem [ref=e131]:
+                - button "Privacy Settings" [ref=e132] [cursor=pointer]
+      - main [ref=e133]:
+        - generic [ref=e135]:
+          - generic [ref=e137]:
+            - article [ref=e138]:
+              - navigation "Breadcrumbs" [ref=e139]:
+                - list [ref=e140]:
+                  - listitem [ref=e141]:
+                    - link "Home page" [ref=e142] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e143]
+                  - listitem [ref=e145]:
+                    - link "Getting Started" [ref=e146] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/
+                  - listitem [ref=e147]:
+                    - link "Palette" [ref=e148] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette/
+                  - listitem [ref=e149]:
+                    - link "Deploy a Cluster to AWS" [ref=e150] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette/aws/
+                  - listitem [ref=e151]:
+                    - generic [ref=e152]: Set up Palette
+              - generic [ref=e153]:
+                - heading "Set up Palette with AWS" [level=1] [ref=e155]
+                - paragraph [ref=e156]: In this guide, you will learn how to set up Palette for use with your AWS cloud account. These steps are required in order to authenticate Palette and allow it to deploy host clusters. The concepts you learn about in the Getting Started section are centered around a fictional case study company, Spacetastic Ltd.
+                - heading "🧑‍🚀 Back at Spacetastic HQDirect link to 🧑‍🚀 Back at Spacetastic HQ" [level=2] [ref=e157]:
+                  - text: 🧑‍🚀 Back at Spacetastic HQ
+                  - link "Direct link to 🧑‍🚀 Back at Spacetastic HQ" [ref=e158] [cursor=pointer]:
+                    - /url: "#-back-at-spacetastic-hq"
+                    - text: "#"
+                - paragraph [ref=e159]: The Spacetastic team decide to look for an external solution that can help them scale and manage their Kubernetes services. Partnering with a team of Kubernetes experts allows them to focus on expanding their astronomy education platform, instead of spending countless hours migrating and rehosting their services. They identify the following list of benefits that their new platform should provide.
+                - list [ref=e160]:
+                  - listitem [ref=e161]: Simplified Kubernetes cluster deployment processes across cloud providers.
+                  - listitem [ref=e162]: Cluster maintenance and security patching across environments.
+                  - listitem [ref=e163]: Monitoring and observability of Kubernetes workloads.
+                - blockquote [ref=e164]:
+                  - paragraph [ref=e165]: "\"I have so many ideas for new features for our backlog.\" says Anya, Lead Astrophycist. \"Our community of space explorers want to keep learning, so we shouldn't slow down our implementation cycle. We need to keep expanding our astronomy education product.\""
+                  - paragraph [ref=e166]: Kai nods knowingly. As a Platform Engineer, they agree with Anya's concerns. "I've done some research on Kubernetes orchestration solutions. It seems that Palette has all the capabilities we need to help us grow."
+                  - paragraph [ref=e167]: "\"I agree with both of you, but I want to review the developer experience in detail before we agree to implement a new solution in production.\" says Wren, whose main concern as Founding Engineer is to ensure development velocity does not decrease. \"Let's reach out to Spectro Cloud to create an account. Then, we can make an informed decision after we complete their Getting Started tutorials.\""
+                - paragraph [ref=e168]:
+                  - img "The Spacetastic team are reading Palette Getting Started" [ref=e169]
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e170]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e171] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e172]:
+                  - listitem [ref=e173]:
+                    - paragraph [ref=e174]:
+                      - text: A Palette account with
+                      - link "tenant admin" [ref=e175] [cursor=pointer]:
+                        - /url: /tenant-settings/
+                      - text: access.
+                  - listitem [ref=e176]:
+                    - paragraph [ref=e177]:
+                      - text: A public
+                      - link "AWS" [ref=e178] [cursor=pointer]:
+                        - /url: https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account
+                      - text: account.
+                  - listitem [ref=e179]:
+                    - paragraph [ref=e180]:
+                      - text: An AWS account with an
+                      - link "IAM Role" [ref=e181] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html
+                      - text: or
+                      - link "IAM User" [ref=e182] [cursor=pointer]:
+                        - /url: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html
+                      - text: for Palette.
+                  - listitem [ref=e183]:
+                    - paragraph [ref=e184]:
+                      - text: An AWS account with the
+                      - link "required IAM policies" [ref=e185] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/aws/required-iam-policies/
+                      - text: assigned to the Palette IAM user or IAM role.
+                - heading "EnablementDirect link to Enablement" [level=2] [ref=e186]:
+                  - text: Enablement
+                  - link "Direct link to Enablement" [ref=e187] [cursor=pointer]:
+                    - /url: "#enablement"
+                    - text: "#"
+                - paragraph [ref=e188]: Palette needs access to your AWS cloud account in order to create and manage AWS clusters and resources.
+                - heading "Static Credentials AccessDirect link to Static Credentials Access" [level=3] [ref=e189]:
+                  - text: Static Credentials Access
+                  - link "Direct link to Static Credentials Access" [ref=e190] [cursor=pointer]:
+                    - /url: "#static-credentials-access"
+                    - text: "#"
+                - list [ref=e191]:
+                  - listitem [ref=e192]:
+                    - paragraph [ref=e193]:
+                      - text: Log in to
+                      - link "Palette" [ref=e194] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as tenant admin.
+                  - listitem [ref=e195]:
+                    - paragraph [ref=e196]:
+                      - text: From the left
+                      - strong [ref=e197]: Main Menu
+                      - text: ", click on"
+                      - strong [ref=e198]: Tenant Settings
+                      - text: .
+                  - listitem [ref=e199]:
+                    - paragraph [ref=e200]:
+                      - text: Select
+                      - strong [ref=e201]: Cloud Accounts
+                      - text: ", and click"
+                      - strong [ref=e202]: Add AWS Account
+                      - text: .
+                  - listitem [ref=e203]:
+                    - paragraph [ref=e204]: "In the cloud account creation wizard provide the following information:"
+                    - list [ref=e205]:
+                      - listitem [ref=e206]:
+                        - paragraph [ref=e207]:
+                          - strong [ref=e208]: "Account Name:"
+                          - text: Custom name for the cloud account.
+                      - listitem [ref=e209]:
+                        - paragraph [ref=e210]:
+                          - strong [ref=e211]: "Description:"
+                          - text: Optional description for the cloud account.
+                      - listitem [ref=e212]:
+                        - paragraph [ref=e213]:
+                          - strong [ref=e214]: "Partition:"
+                          - text: Choose
+                          - strong [ref=e215]: AWS
+                          - text: from the
+                          - strong [ref=e216]: drop-down Menu
+                          - text: .
+                      - listitem [ref=e217]:
+                        - paragraph [ref=e218]:
+                          - strong [ref=e219]: "Credentials:"
+                        - list [ref=e220]:
+                          - listitem [ref=e221]:
+                            - paragraph [ref=e222]: AWS Access key
+                          - listitem [ref=e223]:
+                            - paragraph [ref=e224]: AWS Secret access key
+                  - listitem [ref=e225]:
+                    - paragraph [ref=e226]:
+                      - text: Click the
+                      - strong [ref=e227]: Validate
+                      - text: button to validate the credentials.
+                  - listitem [ref=e228]:
+                    - paragraph [ref=e229]:
+                      - text: Once the credentials are validated, the
+                      - strong [ref=e230]: Add IAM Policies
+                      - text: toggle is displayed. Toggle
+                      - strong [ref=e231]: Add IAM Policies
+                      - text: on.
+                  - listitem [ref=e232]:
+                    - paragraph [ref=e233]:
+                      - text: Use the
+                      - strong [ref=e234]: drop-down Menu
+                      - text: ", which lists available IAM policies in your AWS account, to select any desired IAM policies you want to assign to the Palette IAM role or IAM user."
+                - heading "Create a Palette API KeyDirect link to Create a Palette API Key" [level=3] [ref=e235]:
+                  - text: Create a Palette API Key
+                  - link "Direct link to Create a Palette API Key" [ref=e236] [cursor=pointer]:
+                    - /url: "#create-a-palette-api-key"
+                    - text: "#"
+                - paragraph [ref=e237]:
+                  - text: Follow the steps below to create a Palette API key. This is required for the
+                  - link "Cluster Management with Terraform" [ref=e238] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/aws/deploy-manage-k8s-cluster-tf/
+                  - text: tutorial.
+                - list [ref=e239]:
+                  - listitem [ref=e240]:
+                    - paragraph [ref=e241]:
+                      - text: Log in to
+                      - link "Palette" [ref=e242] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e243]:
+                    - paragraph [ref=e244]:
+                      - text: Click on the
+                      - strong [ref=e245]: drop-down Menu
+                      - text: at the top of the page and switch to the
+                      - strong [ref=e246]: Tenant Admin
+                      - text: scope.
+                  - listitem [ref=e247]:
+                    - paragraph [ref=e248]:
+                      - text: Navigate to the left
+                      - strong [ref=e249]: Main Menu
+                      - text: and select
+                      - strong [ref=e250]: Tenant Settings
+                      - text: .
+                  - listitem [ref=e251]:
+                    - paragraph [ref=e252]:
+                      - text: From the
+                      - strong [ref=e253]: Tenant Settings Menu
+                      - text: ", click on"
+                      - strong [ref=e254]: Security
+                      - text: and select
+                      - strong [ref=e255]: API Keys
+                      - text: .
+                  - listitem [ref=e256]:
+                    - paragraph [ref=e257]:
+                      - text: Click on
+                      - strong [ref=e258]: Add New API key
+                      - text: .
+                  - listitem [ref=e259]:
+                    - paragraph [ref=e260]: "Fill out the following input fields:"
+                - table [ref=e261]:
+                  - rowgroup [ref=e262]:
+                    - row "Input Field Description" [ref=e263]:
+                      - cell "Input Field" [ref=e264]:
+                        - strong [ref=e265]: Input Field
+                      - cell "Description" [ref=e266]:
+                        - strong [ref=e267]: Description
+                  - rowgroup [ref=e268]:
+                    - row "API Key Name Assign a name to the API key." [ref=e269]:
+                      - cell "API Key Name" [ref=e270]:
+                        - strong [ref=e271]: API Key Name
+                      - cell "Assign a name to the API key." [ref=e272]
+                    - row "Description Provide a description for the API key." [ref=e273]:
+                      - cell "Description" [ref=e274]:
+                        - strong [ref=e275]: Description
+                      - cell "Provide a description for the API key." [ref=e276]
+                    - row "User Name Select the user to assign the API key." [ref=e277]:
+                      - cell "User Name" [ref=e278]:
+                        - strong [ref=e279]: User Name
+                      - cell "Select the user to assign the API key." [ref=e280]
+                    - row "Expiration Date Select an expiration date from the available options. You can also specify a custom date by selecting Custom." [ref=e281]:
+                      - cell "Expiration Date" [ref=e282]:
+                        - strong [ref=e283]: Expiration Date
+                      - cell "Select an expiration date from the available options. You can also specify a custom date by selecting Custom." [ref=e284]:
+                        - text: Select an expiration date from the available options. You can also specify a custom date by selecting
+                        - strong [ref=e285]: Custom
+                        - text: .
+                - list [ref=e286]:
+                  - listitem [ref=e287]:
+                    - paragraph [ref=e288]:
+                      - text: Click the
+                      - strong [ref=e289]: Generate
+                      - text: button.
+                  - listitem [ref=e290]:
+                    - paragraph [ref=e291]: Copy the API key and save it in a secure location, such as a password manager. Share the API key with the user you created the API key for.
+                - generic [ref=e292]:
+                  - generic [ref=e293]:
+                    - img [ref=e295]
+                    - text: warning
+                  - paragraph [ref=e298]: Ensure you save the API key in a secure location. You will not be able to view the API key again.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e299]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e300] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e301]: You can verify your account is added.
+                - list [ref=e302]:
+                  - listitem [ref=e303]:
+                    - paragraph [ref=e304]:
+                      - text: Log in to
+                      - link "Palette" [ref=e305] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e306]:
+                    - paragraph [ref=e307]:
+                      - text: From the left
+                      - strong [ref=e308]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e309]: Tenant Settings
+                      - text: .
+                  - listitem [ref=e310]:
+                    - paragraph [ref=e311]:
+                      - text: Next, on the
+                      - strong [ref=e312]: Tenant Settings Menu
+                      - text: ", select"
+                      - strong [ref=e313]: Cloud Accounts
+                      - text: .
+                  - listitem [ref=e314]:
+                    - paragraph [ref=e315]:
+                      - text: The added cloud account is listed under
+                      - strong [ref=e316]: AWS
+                      - text: with all other available AWS cloud accounts.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e317]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e318] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e319]:
+                  - text: Now that you set up Palette for use with AWS, you can start deploying Kubernetes clusters to your AWS account. To learn how to get started with deploying Kubernetes clusters to AWS, we recommend that you continue to the
+                  - link "Create a Cluster Profile" [ref=e320] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/aws/create-cluster-profile/
+                  - text: tutorial to create a full cluster profile for your host cluster.
+                - heading "🧑‍🚀 Catch up with SpacetasticDirect link to 🧑‍🚀 Catch up with Spacetastic" [level=2] [ref=e321]:
+                  - text: 🧑‍🚀 Catch up with Spacetastic
+                  - link "Direct link to 🧑‍🚀 Catch up with Spacetastic" [ref=e322] [cursor=pointer]:
+                    - /url: "#-catch-up-with-spacetastic"
+                    - text: "#"
+                - paragraph [ref=e323]: After following the detailed Palette setup instructions, the Spacetastic team have added their cloud accounts on the Palette dashboard. They are ready to learn about Palette.
+                - blockquote [ref=e324]:
+                  - paragraph [ref=e325]: "\"The Spectro Cloud team has provided our Palette accounts,\" says Kai. \"I have followed their setup guide and have added our cloud accounts. I can already tell at a first glance that they offer many Kubernetes customization features.\""
+                  - paragraph [ref=e326]:
+                    - text: Wren joins Kai in looking at the Palette dashboard. "I'm interested to learn more, but I never believe in
+                    - emphasis [ref=e327]: magic
+                    - text: solutions. We should review their Getting Started material in detail to ensure that Palette is a good fit for us."
+                - paragraph [ref=e328]:
+                  - img "The Spacetastic team have set up Palette" [ref=e329]
+              - generic [ref=e330]:
+                - generic [ref=e332]:
+                  - text: "Tags:"
+                  - list [ref=e333]:
+                    - listitem [ref=e334]:
+                      - link "getting-started" [ref=e335] [cursor=pointer]:
+                        - /url: /tags/getting-started/
+                    - listitem [ref=e336]:
+                      - link "aws" [ref=e337] [cursor=pointer]:
+                        - /url: /tags/aws/
+                    - listitem [ref=e338]:
+                      - link "tutorial" [ref=e339] [cursor=pointer]:
+                        - /url: /tags/tutorial/
+                - link "Edit this page" [ref=e342] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/tutorials/getting-started/palette/aws/setup.md
+                  - img [ref=e343]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e347]:
+              - link "Previous « Deploy a Cluster to AWS" [ref=e348] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette/aws/
+                - generic [ref=e349]: Previous
+                - generic [ref=e350]: « Deploy a Cluster to AWS
+              - link "Next Create a Cluster Profile »" [ref=e351] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette/aws/create-cluster-profile/
+                - generic [ref=e352]: Next
+                - generic [ref=e353]: Create a Cluster Profile »
+          - list [ref=e356]:
+            - listitem [ref=e357]:
+              - link "🧑‍🚀 Back at Spacetastic HQ" [ref=e358] [cursor=pointer]:
+                - /url: "#-back-at-spacetastic-hq"
+            - listitem [ref=e359]:
+              - link "Prerequisites" [ref=e360] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e361]:
+              - link "Enablement" [ref=e362] [cursor=pointer]:
+                - /url: "#enablement"
+              - list [ref=e363]:
+                - listitem [ref=e364]:
+                  - link "Static Credentials Access" [ref=e365] [cursor=pointer]:
+                    - /url: "#static-credentials-access"
+                - listitem [ref=e366]:
+                  - link "Create a Palette API Key" [ref=e367] [cursor=pointer]:
+                    - /url: "#create-a-palette-api-key"
+            - listitem [ref=e368]:
+              - link "Validate" [ref=e369] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e370]:
+              - link "Next Steps" [ref=e371] [cursor=pointer]:
+                - /url: "#next-steps"
+            - listitem [ref=e372]:
+              - link "🧑‍🚀 Catch up with Spacetastic" [ref=e373] [cursor=pointer]:
+                - /url: "#-catch-up-with-spacetastic"
+  - button "Project Logo Ask AI" [ref=e374] [cursor=pointer]:
+    - generic [ref=e377]:
+      - img "Project Logo" [ref=e378]
+      - paragraph [ref=e379]: Ask AI
+```

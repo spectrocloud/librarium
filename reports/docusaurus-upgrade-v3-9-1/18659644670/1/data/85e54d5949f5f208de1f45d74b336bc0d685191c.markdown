@@ -1,0 +1,673 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Audit Logs" [ref=e165] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e167]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Self-Hosted Palette" [ref=e172] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e174]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Palette VerteX" [expanded] [ref=e179] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e181]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e183] [cursor=pointer]
+                - list [ref=e184]:
+                  - listitem [ref=e185]:
+                    - generic [ref=e186]:
+                      - link "FIPS" [ref=e187] [cursor=pointer]:
+                        - /url: /vertex/fips/
+                      - button "Toggle the collapsible sidebar category 'FIPS'" [ref=e188] [cursor=pointer]
+                  - listitem [ref=e189]:
+                    - generic [ref=e190]:
+                      - link "Installation" [expanded] [ref=e191] [cursor=pointer]:
+                        - /url: /vertex/install-palette-vertex/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e192] [cursor=pointer]
+                    - list [ref=e193]:
+                      - listitem [ref=e194]:
+                        - generic [ref=e195]:
+                          - link "VMware" [ref=e196] [cursor=pointer]:
+                            - /url: /vertex/install-palette-vertex/install-on-vmware/
+                          - button "Toggle the collapsible sidebar category 'VMware'" [ref=e197] [cursor=pointer]
+                      - listitem [ref=e198]:
+                        - link "Airgap Resources" [ref=e199] [cursor=pointer]:
+                          - /url: /vertex/install-palette-vertex/airgap/
+                      - listitem [ref=e200]:
+                        - generic [ref=e201]:
+                          - link "Kubernetes" [expanded] [ref=e202] [cursor=pointer]:
+                            - /url: /vertex/install-palette-vertex/install-on-kubernetes/
+                          - button "Toggle the collapsible sidebar category 'Kubernetes'" [ref=e203] [cursor=pointer]
+                        - list [ref=e204]:
+                          - listitem [ref=e205]:
+                            - link "Non-Airgap Installation" [ref=e206] [cursor=pointer]:
+                              - /url: /vertex/install-palette-vertex/install-on-kubernetes/install/
+                          - listitem [ref=e207]:
+                            - generic [ref=e208]:
+                              - link "Airgap Installation" [expanded] [ref=e209] [cursor=pointer]:
+                                - /url: /vertex/install-palette-vertex/install-on-kubernetes/airgap-install/
+                              - button "Toggle the collapsible sidebar category 'Airgap Installation'" [ref=e210] [cursor=pointer]
+                            - list [ref=e211]:
+                              - listitem [ref=e212]:
+                                - link "Checklist" [ref=e213] [cursor=pointer]:
+                                  - /url: /vertex/install-palette-vertex/install-on-kubernetes/airgap-install/checklist/
+                              - listitem [ref=e214]:
+                                - link "Environment Setup" [ref=e215] [cursor=pointer]:
+                                  - /url: /vertex/install-palette-vertex/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions/
+                              - listitem [ref=e216]:
+                                - link "Install VerteX" [ref=e217] [cursor=pointer]:
+                                  - /url: /vertex/install-palette-vertex/install-on-kubernetes/airgap-install/install/
+                          - listitem [ref=e218]:
+                            - link "Helm Configuration Reference" [ref=e219] [cursor=pointer]:
+                              - /url: /vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref/
+                          - listitem [ref=e220]:
+                            - link "Uninstallation" [ref=e221] [cursor=pointer]:
+                              - /url: /vertex/install-palette-vertex/install-on-kubernetes/uninstall/
+                      - listitem [ref=e222]:
+                        - link "VerteX Management Appliance" [ref=e223] [cursor=pointer]:
+                          - /url: /vertex/install-palette-vertex/vertex-management-appliance/
+                  - listitem [ref=e224]:
+                    - link "Activate VerteX" [ref=e225] [cursor=pointer]:
+                      - /url: /vertex/activate-installation/
+                  - listitem [ref=e226]:
+                    - link "Supported Platforms" [ref=e227] [cursor=pointer]:
+                      - /url: /vertex/supported-platforms/
+                  - listitem [ref=e228]:
+                    - generic [ref=e229]:
+                      - link "System Management" [ref=e230] [cursor=pointer]:
+                        - /url: /vertex/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e231] [cursor=pointer]
+                  - listitem [ref=e232]:
+                    - generic [ref=e233]:
+                      - link "Upgrade" [ref=e234] [cursor=pointer]:
+                        - /url: /vertex/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - generic [ref=e237]:
+                  - link "Tenant Administration" [ref=e238] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e240]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - generic [ref=e244]:
+                  - link "Automation" [ref=e245] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e247]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e249] [cursor=pointer]
+              - listitem [ref=e250]:
+                - generic [ref=e251]:
+                  - link "Troubleshooting" [ref=e252] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e254]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e256] [cursor=pointer]
+              - listitem [ref=e257]:
+                - link "Glossary" [ref=e258] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e260]
+                  - text: Glossary
+              - listitem [ref=e262]:
+                - generic [ref=e263]:
+                  - link "Compliance & Legal" [ref=e264] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e266]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e268] [cursor=pointer]
+              - listitem [ref=e269]:
+                - button "Privacy Settings" [ref=e270] [cursor=pointer]:
+                  - img [ref=e271]
+                  - text: Privacy Settings
+      - main [ref=e273]:
+        - generic [ref=e275]:
+          - generic [ref=e277]:
+            - article [ref=e278]:
+              - navigation "Breadcrumbs" [ref=e279]:
+                - list [ref=e280]:
+                  - listitem [ref=e281]:
+                    - link "Home page" [ref=e282] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e283]
+                  - listitem [ref=e285]:
+                    - link "Palette VerteX" [ref=e286] [cursor=pointer]:
+                      - /url: /vertex/
+                  - listitem [ref=e287]:
+                    - link "Installation" [ref=e288] [cursor=pointer]:
+                      - /url: /vertex/install-palette-vertex/
+                  - listitem [ref=e289]:
+                    - link "Kubernetes" [ref=e290] [cursor=pointer]:
+                      - /url: /vertex/install-palette-vertex/install-on-kubernetes/
+                  - listitem [ref=e291]:
+                    - link "Airgap Installation" [ref=e292] [cursor=pointer]:
+                      - /url: /vertex/install-palette-vertex/install-on-kubernetes/airgap-install/
+                  - listitem [ref=e293]:
+                    - generic [ref=e294]: Environment Setup
+              - generic [ref=e295]:
+                - heading "Environment Setup" [level=1] [ref=e297]
+                - paragraph [ref=e298]:
+                  - img "Overview diagram of the pre-install steps eager-load" [ref=e299]
+                - paragraph [ref=e300]: This guide provides instructions to prepare your airgap environment for a Palette VerteX installation by completing the required preparatory steps one through four shown in the diagram. The respective installation guides for each platform cover the remaining installation process.
+                - heading "Prepare Airgap InstallationDirect link to Prepare Airgap Installation" [level=2] [ref=e301]:
+                  - text: Prepare Airgap Installation
+                  - link "Direct link to Prepare Airgap Installation" [ref=e302] [cursor=pointer]:
+                    - /url: "#prepare-airgap-installation"
+                    - text: "#"
+                - paragraph [ref=e303]: Use the following steps to prepare your airgap environment for a VerteX installation.
+                - generic [ref=e304]:
+                  - generic [ref=e305]:
+                    - img [ref=e307]
+                    - text: tip
+                  - paragraph [ref=e310]:
+                    - text: Carefully review the
+                    - link "prerequisites" [ref=e311] [cursor=pointer]:
+                      - /url: "#prerequisites"
+                    - text: section before proceeding. This will save you time and frustration. Each prerequisite is required for a successful installation.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e312]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e313] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e314]:
+                  - listitem [ref=e315]:
+                    - paragraph [ref=e316]: An x86 Linux jumpbox or bastion host with connectivity to the target platform where you are installing VerteX.
+                  - listitem [ref=e317]:
+                    - paragraph [ref=e318]: 120 GB of disk space available for the airgap setup binary and temporary files. The uncompressed airgap content is approximately 20 GB.
+                  - listitem [ref=e319]:
+                    - paragraph [ref=e320]:
+                      - text: An OCI registry such as
+                      - link "Harbor" [ref=e321] [cursor=pointer]:
+                        - /url: https://goharbor.io/
+                      - text: or
+                      - link "AWS ECR" [ref=e322] [cursor=pointer]:
+                        - /url: https://aws.amazon.com/ecr/
+                      - text: to store VerteX images and packages. The OCI registry must be accessible from the Kubernetes cluster. We have verified the installation against Harbor and AWS ECR. Other OCI registries may work but have not been tested.
+                    - generic [ref=e323]:
+                      - generic [ref=e324]:
+                        - img [ref=e326]
+                        - text: warning
+                      - paragraph [ref=e329]:
+                        - text: Ensure the OCI registries are set up with HTTPS. AWS ECR is enabled with HTTPS by default. Harbor requires you to enable HTTPS. If you are using Harbor, you must enable HTTPS to authenticate with the registry. Refer to the
+                        - link "Harbor" [ref=e330] [cursor=pointer]:
+                          - /url: https://goharbor.io/docs/2.9.0/install-config/configure-https
+                        - text: documentation for guidance.
+                  - listitem [ref=e331]:
+                    - paragraph [ref=e332]: To interact with the OCI registry, you must have the following tools installed and available.
+                    - list [ref=e333]:
+                      - listitem [ref=e334]:
+                        - link "AWS CLI v2" [ref=e335] [cursor=pointer]:
+                          - /url: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+                        - text: "- Required for AWS ECR."
+                      - listitem [ref=e336]:
+                        - link "Oras" [ref=e337] [cursor=pointer]:
+                          - /url: https://oras.land/docs/installation.html
+                        - text: CLI v1.0.0 - This version is explicitly required for the setup script.
+                      - listitem [ref=e338]:
+                        - link "zip" [ref=e339] [cursor=pointer]:
+                          - /url: https://linux.die.net/man/3/zip
+                        - text: "- Required for the setup script."
+                      - listitem [ref=e340]:
+                        - link "unzip" [ref=e341] [cursor=pointer]:
+                          - /url: https://linux.die.net/man/1/unzip
+                        - text: "- Or equivalent for extracting the manifest content from the airgap setup binary."
+                      - listitem [ref=e342]:
+                        - link "jq" [ref=e343] [cursor=pointer]:
+                          - /url: https://jqlang.github.io/jq/download/
+                        - text: "- Command-line JSON processor installed and available."
+                      - listitem [ref=e344]:
+                        - link "Docker" [ref=e345] [cursor=pointer]:
+                          - /url: https://docs.docker.com/get-docker/
+                        - text: "- The airgap setup binary requires Docker to be installed and available."
+                - heading "InstructionsDirect link to Instructions" [level=2] [ref=e346]:
+                  - text: Instructions
+                  - link "Direct link to Instructions" [ref=e347] [cursor=pointer]:
+                    - /url: "#instructions"
+                    - text: "#"
+                - paragraph [ref=e348]: Complete the following steps before deploying the airgap VerteX installation.
+                - list [ref=e349]:
+                  - listitem [ref=e350]:
+                    - paragraph [ref=e351]: Log in to the OCI registry where you will host the VerteX images and packages.
+                  - listitem [ref=e352]:
+                    - paragraph [ref=e353]:
+                      - text: Create a private repository named
+                      - code [ref=e354]: spectro-packs
+                      - text: . This repository will host the VerteX packs.
+                    - list [ref=e355]:
+                      - listitem [ref=e356]:
+                        - text: Refer to the
+                        - link "Create Projects" [ref=e357] [cursor=pointer]:
+                          - /url: https://goharbor.io/docs/2.0.0/working-with-projects/create-projects/
+                        - text: guide for information about creating a repository in Harbor.
+                      - listitem [ref=e358]:
+                        - text: Refer to the
+                        - link "Create a repository" [ref=e359] [cursor=pointer]:
+                          - /url: https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-create.html
+                        - text: guide for information about creating a repository in AWS ECR.
+                  - listitem [ref=e360]:
+                    - paragraph [ref=e361]:
+                      - text: In your OCI registry, create a public repository named
+                      - code [ref=e362]: spectro-images
+                      - text: . The public repository will host the images required by VerteX.
+                  - listitem [ref=e363]:
+                    - paragraph [ref=e364]: Download the Certificate Authority (CA) for your OCI registry and make it available in the local file system. You will need to provide the CA to the Palette CLI installation wizard later in the installation process. If you don't give the Palette CLI the file path to the CA when prompted, you may encounter errors when authenticating with the OCI registry, which could result in an incomplete installation. Skip this step if you are using AWS ECR.
+                  - listitem [ref=e365]:
+                    - paragraph [ref=e366]: Log in to the Linux environment where you will download the airgap binaries. This steps requires internet access to download the airgap setup binary.
+                  - listitem [ref=e367]:
+                    - paragraph [ref=e368]: Download the airgap setup binary. Our support team will provide you with the proper version and credentials. Replace the values in the commands below with our support team's recommended version and credentials.
+                    - generic [ref=e370]:
+                      - code [ref=e372]:
+                        - generic [ref=e373]: VERSION=X.X.X
+                      - button "Copy code to clipboard" [ref=e375] [cursor=pointer]:
+                        - generic [ref=e376]:
+                          - img [ref=e377]
+                          - img [ref=e379]
+                    - generic [ref=e382]:
+                      - code [ref=e384]:
+                        - generic [ref=e385]: curl --user XXXXX:YYYYYYY https://software-private.spectrocloud.com/airgap-fips/$VERSION/airgap-fips-v$VERSION.bin \
+                        - generic [ref=e386]: "--output airgap-fips-v$VERSION.bin"
+                      - generic [ref=e387]:
+                        - button "Toggle word wrap" [ref=e388] [cursor=pointer]:
+                          - img [ref=e389]
+                        - button "Copy code to clipboard" [ref=e391] [cursor=pointer]:
+                          - generic [ref=e392]:
+                            - img [ref=e393]
+                            - img [ref=e395]
+                  - listitem [ref=e397]:
+                    - paragraph [ref=e398]: Update the airgap setup binary permissions to allow execution. Replace the file name below with the name of the airgap setup binary you downloaded.
+                    - generic [ref=e400]:
+                      - code [ref=e402]:
+                        - generic [ref=e403]: chmod +x airgap-fips-v$VERSION.bin
+                      - button "Copy code to clipboard" [ref=e405] [cursor=pointer]:
+                        - generic [ref=e406]:
+                          - img [ref=e407]
+                          - img [ref=e409]
+                  - listitem [ref=e411]:
+                    - paragraph [ref=e412]: Copy or move the airgap binary to another Linux environment inside your airgap environment. Use any approved method to transfer the binary to the airgap environment.
+                  - listitem [ref=e413]:
+                    - paragraph [ref=e414]: Log in to the Linux environment inside your airgap environment where you copied the airgap setup binary.
+                  - listitem [ref=e415]:
+                    - paragraph [ref=e416]: Authenticate with your OCI registry and acquire credentials to both repositories you created earlier. You will need these credentials when deploying the airgap VerteX installation.
+                    - generic [ref=e417]:
+                      - tablist [ref=e418]:
+                        - tab "Harbor" [selected] [ref=e419] [cursor=pointer]
+                        - tab "AWS ECR" [ref=e420] [cursor=pointer]
+                      - tabpanel [ref=e422]:
+                        - paragraph [ref=e423]:
+                          - text: Use
+                          - code [ref=e424]: oras
+                          - text: to log in to your OCI registry. Replace the values below with your environment configuration values. Check out the
+                          - link "oras login" [ref=e425] [cursor=pointer]:
+                            - /url: https://oras.land/docs/commands/oras_login
+                          - text: documentation for information about additional CLI flags and examples.
+                        - generic [ref=e427]:
+                          - code [ref=e429]:
+                            - generic [ref=e430]: oras login X.X.X.X --username 'yourUserNameHere' --password 'yourPasswordHere'
+                          - generic [ref=e431]:
+                            - button "Toggle word wrap" [ref=e432] [cursor=pointer]:
+                              - img [ref=e433]
+                            - button "Copy code to clipboard" [ref=e435] [cursor=pointer]:
+                              - generic [ref=e436]:
+                                - img [ref=e437]
+                                - img [ref=e439]
+                        - paragraph [ref=e441]:
+                          - text: If you are using a Harbor registry with a self-signed certificate, you will need to add the
+                          - code [ref=e442]: "--insecure"
+                          - text: flag to the
+                          - code [ref=e443]: oras
+                          - text: command.
+                        - generic [ref=e445]:
+                          - code [ref=e447]:
+                            - generic [ref=e448]: oras login X.X.X.X --insecure --username 'yourUserNameHere' --password 'yourPasswordHere'
+                          - generic [ref=e449]:
+                            - button "Toggle word wrap" [ref=e450] [cursor=pointer]:
+                              - img [ref=e451]
+                            - button "Copy code to clipboard" [ref=e453] [cursor=pointer]:
+                              - generic [ref=e454]:
+                                - img [ref=e455]
+                                - img [ref=e457]
+                    - generic [ref=e459]:
+                      - generic [ref=e460]:
+                        - img [ref=e462]
+                        - text: tip
+                      - paragraph [ref=e465]: Be aware of the timeout period for the authentication token. The process of uploading images and packages to the OCI registry can take a approximately an hour. If the authentication token expires, you will need to re-authenticate to the OCI registry and restart the upload process.
+                  - listitem [ref=e466]:
+                    - paragraph [ref=e467]: The airgap setup binary requires a set of environment variables to be available and populated. The environment variables will be different depending on the OCI registry you are using. Select the OCI registry and populate the environment variables accordingly.
+                    - generic [ref=e468]:
+                      - tablist [ref=e469]:
+                        - tab "Harbor" [selected] [ref=e470] [cursor=pointer]
+                        - tab "AWS ECR" [ref=e471] [cursor=pointer]
+                      - tabpanel [ref=e473]:
+                        - list [ref=e474]:
+                          - listitem [ref=e475]:
+                            - paragraph [ref=e476]:
+                              - code [ref=e477]: OCI_IMAGE_REGISTRY
+                              - text: ": The IP address or domain name of the OCI registry."
+                          - listitem [ref=e478]:
+                            - paragraph [ref=e479]:
+                              - code [ref=e480]: OCI_PACK_BASE
+                              - text: ": The namespace or repository name that hosts the VerteX Packs."
+                          - listitem [ref=e481]:
+                            - paragraph [ref=e482]:
+                              - code [ref=e483]: OCI_PACK_REGISTRY
+                              - text: ": The IP address or domain name of the OCI registry."
+                          - listitem [ref=e484]:
+                            - paragraph [ref=e485]:
+                              - code [ref=e486]: OCI_IMAGE_BASE
+                              - text: ": The namespace or repository name that hosts the VerteX images."
+                            - generic [ref=e488]:
+                              - code [ref=e490]:
+                                - generic [ref=e491]: export OCI_IMAGE_REGISTRY=<harbor-endpoint>
+                                - generic [ref=e492]: export OCI_PACK_BASE=spectro-packs
+                                - generic [ref=e493]: export OCI_PACK_REGISTRY=<harbor-endpoint>
+                                - generic [ref=e494]: export OCI_IMAGE_BASE=spectro-images
+                              - button "Copy code to clipboard" [ref=e496] [cursor=pointer]:
+                                - generic [ref=e497]:
+                                  - img [ref=e498]
+                                  - img [ref=e500]
+                            - paragraph [ref=e502]: Consider the following example.
+                            - generic [ref=e503]:
+                              - generic [ref=e504]: Example values
+                              - code [ref=e507]:
+                                - generic [ref=e508]: export OCI_IMAGE_REGISTRY=example.internal.com
+                                - generic [ref=e509]: export OCI_PACK_BASE=spectro-packs
+                                - generic [ref=e510]: export OCI_PACK_REGISTRY=10.10.100.48
+                                - generic [ref=e511]: export OCI_IMAGE_BASE=spectro-images
+                  - listitem [ref=e512]:
+                    - paragraph [ref=e513]: Start the airgap setup binary. Replace the file name below with the name of the airgap setup binary you downloaded.
+                    - generic [ref=e515]:
+                      - code [ref=e517]:
+                        - generic [ref=e518]: ./airgap-fips-v$VERSION.bin
+                      - button "Copy code to clipboard" [ref=e520] [cursor=pointer]:
+                        - generic [ref=e521]:
+                          - img [ref=e522]
+                          - img [ref=e524]
+                    - paragraph [ref=e526]: Upon completion, a success message will be displayed. The output is condensed for brevity.
+                    - generic [ref=e527]:
+                      - generic [ref=e528]: Example output
+                      - generic [ref=e529]:
+                        - code [ref=e531]:
+                          - generic [ref=e532]: Verifying archive integrity... 100% MD5 checksums are OK. All good.
+                          - generic [ref=e533]: Uncompressing Airgap Setup - Version 4.0.17 100%
+                          - generic [ref=e534]: Setting up Packs
+                          - generic [ref=e535]: "- Pushing Pack cni-calico:3.25.1"
+                          - generic [ref=e536]: ...
+                          - generic [ref=e537]: Setting up Images
+                          - generic [ref=e538]: "- Pushing image docker.io/kindest/kindnetd:v20230227-15197099"
+                          - generic [ref=e539]: ...
+                          - generic [ref=e540]: Preparing Manifests Archive
+                          - generic [ref=e541]: Manifests are available in /tmp/spectro-manifests-1696971110.zip.
+                          - generic [ref=e542]: Setup Completed
+                        - button "Toggle word wrap" [ref=e544] [cursor=pointer]:
+                          - img [ref=e545]
+                    - generic [ref=e547]:
+                      - generic [ref=e548]:
+                        - img [ref=e550]
+                        - text: info
+                      - paragraph [ref=e553]: If you encounter an error during the airgap setup process, verify the required environment variables are set and populated correctly. If you are still having issues, reach out to our support team for assistance.
+                  - listitem [ref=e554]:
+                    - paragraph [ref=e555]:
+                      - text: Review the additional packs available for download. The supplemental packs are optional and not required for a successful installation. However, to create cluster profiles you may require several of the packs available for download. Refer to the
+                      - link "Additional Packs" [ref=e556] [cursor=pointer]:
+                        - /url: /downloads/palette-vertex/additional-packs/
+                      - text: resource for a list of available packs.
+                  - listitem [ref=e557]:
+                    - paragraph [ref=e558]: Once you select the packs you want to install, download the pack binaries and start the binary to initiate the upload process. This step requires internet access, so you may have to download the binaries on a separate machine outside the airgap environment and transfer them to the airgap environment using an approved method.
+                    - paragraph [ref=e559]:
+                      - text: In the example below, the
+                      - code [ref=e560]: airgap-fips-pack-amazon-linux-eks-1.0.0.bin
+                      - text: binary permissions are updated to allow execution and the binary is started.
+                    - generic [ref=e562]:
+                      - code [ref=e564]:
+                        - generic [ref=e565]: chmod +x airgap-fips-pack-amazon-linux-eks-1.0.0.bin && \
+                        - generic [ref=e566]: ./airgap-fips-pack-amazon-linux-eks-1.0.0.bin
+                      - button "Copy code to clipboard" [ref=e568] [cursor=pointer]:
+                        - generic [ref=e569]:
+                          - img [ref=e570]
+                          - img [ref=e572]
+                    - generic [ref=e575]:
+                      - code [ref=e577]:
+                        - generic [ref=e578]: Verifying archive integrity... 100% MD5 checksums are OK. All good.
+                        - generic [ref=e579]: Uncompressing Airgap Pack - amazon-linux-eks Version 4.0.17 100%
+                        - generic [ref=e580]: Setting up Packs
+                        - generic [ref=e581]: "- Pushing Pack amazon-linux-eks:1.0.0"
+                        - generic [ref=e582]: Setup Completed
+                      - button "Toggle word wrap" [ref=e584] [cursor=pointer]:
+                        - img [ref=e585]
+                  - listitem [ref=e587]:
+                    - paragraph [ref=e588]: Repeat step 13 for each pack you want to install.
+                - paragraph [ref=e589]:
+                  - text: You now have completed the preparation steps for an airgap installation. Check out the
+                  - link "Validate" [ref=e590] [cursor=pointer]:
+                    - /url: "#validate"
+                  - text: section to ensure the airgap setup process completed successfully.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e591]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e592] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e593]: Use the following steps to validate the airgap setup process completed successfully.
+                - list [ref=e594]:
+                  - listitem [ref=e595]: Log in to your OCI registry and verify the VerteX images and packs are available.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e596]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e597] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e598]:
+                  - text: You are now ready to deploy the airgap VerteX installation. The important difference is that you will specify your OCI registry during the installation process. Refer to the
+                  - link "VerteX Install" [ref=e599] [cursor=pointer]:
+                    - /url: /vertex/install-palette-vertex/install-on-kubernetes/airgap-install/install/
+                  - text: guide for detailed guidance on installing VerteX.
+              - generic [ref=e600]:
+                - generic [ref=e602]:
+                  - text: "Tags:"
+                  - list [ref=e603]:
+                    - listitem [ref=e604]:
+                      - link "vertex" [ref=e605] [cursor=pointer]:
+                        - /url: /tags/vertex/
+                    - listitem [ref=e606]:
+                      - link "enterprise" [ref=e607] [cursor=pointer]:
+                        - /url: /tags/enterprise/
+                    - listitem [ref=e608]:
+                      - link "airgap" [ref=e609] [cursor=pointer]:
+                        - /url: /tags/airgap/
+                    - listitem [ref=e610]:
+                      - link "kubernetes" [ref=e611] [cursor=pointer]:
+                        - /url: /tags/kubernetes/
+                - link "Edit this page" [ref=e614] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions.md
+                  - img [ref=e615]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e619]:
+              - link "Previous « Checklist" [ref=e620] [cursor=pointer]:
+                - /url: /vertex/install-palette-vertex/install-on-kubernetes/airgap-install/checklist/
+                - generic [ref=e621]: Previous
+                - generic [ref=e622]: « Checklist
+              - link "Next Install VerteX »" [ref=e623] [cursor=pointer]:
+                - /url: /vertex/install-palette-vertex/install-on-kubernetes/airgap-install/install/
+                - generic [ref=e624]: Next
+                - generic [ref=e625]: Install VerteX »
+          - list [ref=e628]:
+            - listitem [ref=e629]:
+              - link "Prepare Airgap Installation" [ref=e630] [cursor=pointer]:
+                - /url: "#prepare-airgap-installation"
+            - listitem [ref=e631]:
+              - link "Prerequisites" [ref=e632] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e633]:
+              - link "Instructions" [ref=e634] [cursor=pointer]:
+                - /url: "#instructions"
+            - listitem [ref=e635]:
+              - link "Validate" [ref=e636] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e637]:
+              - link "Next Steps" [ref=e638] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e639] [cursor=pointer]:
+    - generic [ref=e642]:
+      - img "Project Logo" [ref=e643]
+      - paragraph [ref=e644]: Ask AI
+```

@@ -1,0 +1,367 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [expanded] [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+                - list [ref=e128]:
+                  - listitem [ref=e129]:
+                    - link "Architecture" [ref=e130] [cursor=pointer]:
+                      - /url: /vm-management/architecture/
+                  - listitem [ref=e131]:
+                    - link "Environment Setup" [ref=e132] [cursor=pointer]:
+                      - /url: /vm-management/environment-setup/
+                  - listitem [ref=e133]:
+                    - link "Install VMO in Airgap Environments" [ref=e134] [cursor=pointer]:
+                      - /url: /vm-management/install-vmo-in-airgap/
+                  - listitem [ref=e135]:
+                    - link "Create a VMO Profile" [ref=e136] [cursor=pointer]:
+                      - /url: /vm-management/create-vmo-profile/
+                  - listitem [ref=e137]:
+                    - link "Configure Private CA Certificate" [ref=e138] [cursor=pointer]:
+                      - /url: /vm-management/configure-private-ca-certificate/
+                  - listitem [ref=e139]:
+                    - link "Configure Direct Access to VM Dashboard" [ref=e140] [cursor=pointer]:
+                      - /url: /vm-management/configure-console-base-address/
+                  - listitem [ref=e141]:
+                    - generic [ref=e142]:
+                      - link "RBAC" [ref=e143] [cursor=pointer]:
+                        - /url: /vm-management/rbac/
+                      - button "Toggle the collapsible sidebar category 'RBAC'" [ref=e144] [cursor=pointer]
+                  - listitem [ref=e145]:
+                    - generic [ref=e146]:
+                      - link "Create and Manage VMs" [expanded] [ref=e147] [cursor=pointer]:
+                        - /url: /vm-management/create-manage-vm/
+                      - button "Toggle the collapsible sidebar category 'Create and Manage VMs'" [ref=e148] [cursor=pointer]
+                    - list [ref=e149]:
+                      - listitem [ref=e150]:
+                        - link "Deploy VM From a Template" [ref=e151] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/deploy-vm-from-template/
+                      - listitem [ref=e152]:
+                        - link "Update VM Configuration" [ref=e153] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/update-vm-configuration/
+                      - listitem [ref=e154]:
+                        - link "Migrate a VM to a Different Node" [ref=e155] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/migrate-vm-to-different-node/
+                      - listitem [ref=e156]:
+                        - link "Take a VM Snapshot" [ref=e157] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/take-snapshot-of-vm/
+                      - listitem [ref=e158]:
+                        - link "Clone a VM" [ref=e159] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/clone-vm/
+                      - listitem [ref=e160]:
+                        - link "Manage CPU and Memory" [ref=e161] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/enable-cpu-hotplug/
+                      - listitem [ref=e162]:
+                        - link "Locate VM Disks" [ref=e163] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/locate-vm-disks/
+                      - listitem [ref=e164]:
+                        - generic [ref=e165]:
+                          - link "Advanced Topics" [expanded] [ref=e166] [cursor=pointer]:
+                            - /url: /vm-management/create-manage-vm/advanced-topics/
+                          - button "Toggle the collapsible sidebar category 'Advanced Topics'" [ref=e167] [cursor=pointer]
+                        - list [ref=e168]:
+                          - listitem [ref=e169]:
+                            - link "Create a VM Template" [ref=e170] [cursor=pointer]:
+                              - /url: /vm-management/create-manage-vm/advanced-topics/create-vm-template/
+                          - listitem [ref=e171]:
+                            - link "Access VM Cluster with Virtctl" [ref=e172] [cursor=pointer]:
+                              - /url: /vm-management/create-manage-vm/advanced-topics/access-cluster-with-virtctl/
+                          - listitem [ref=e173]:
+                            - link "Create Disk Templates" [ref=e174] [cursor=pointer]:
+                              - /url: /vm-management/create-manage-vm/advanced-topics/create-disk-templates/
+                          - listitem [ref=e175]:
+                            - link "Migrate a VM to a VMO cluster using the Palette CLI" [ref=e176] [cursor=pointer]:
+                              - /url: /vm-management/create-manage-vm/advanced-topics/migrate-vm-kubevirt/
+                          - listitem [ref=e177]:
+                            - link "Over-Commit Resources to Enhance VM Performance" [ref=e178] [cursor=pointer]:
+                              - /url: /vm-management/create-manage-vm/advanced-topics/vm-oversubscription/
+                          - listitem [ref=e179]:
+                            - link "Import and Deploy OVAs to Palette VMO" [ref=e180] [cursor=pointer]:
+                              - /url: /vm-management/create-manage-vm/advanced-topics/deploy-import-ova/
+                  - listitem [ref=e181]:
+                    - generic [ref=e182]:
+                      - link "VM Migration Assistant" [ref=e183] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/
+                      - button "Toggle the collapsible sidebar category 'VM Migration Assistant'" [ref=e184] [cursor=pointer]
+              - listitem [ref=e185]:
+                - generic [ref=e186]:
+                  - link "Workspaces" [ref=e187] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e189]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e191] [cursor=pointer]
+              - listitem [ref=e192]:
+                - generic [ref=e193]:
+                  - link "Packs List" [ref=e194] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e196]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e198] [cursor=pointer]
+              - listitem [ref=e199]:
+                - generic [ref=e200]:
+                  - link "User & Role Management" [ref=e201] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e203]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e205] [cursor=pointer]
+              - listitem [ref=e206]:
+                - generic [ref=e207]:
+                  - link "Registries and Packs" [ref=e208] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e210]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e212] [cursor=pointer]
+              - listitem [ref=e213]:
+                - generic [ref=e214]:
+                  - link "Security" [ref=e215] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e217]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e219] [cursor=pointer]
+              - listitem [ref=e220]:
+                - generic [ref=e221]:
+                  - link "Audit Logs" [ref=e222] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e224]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e226] [cursor=pointer]
+              - listitem [ref=e227]:
+                - generic [ref=e228]:
+                  - link "Self-Hosted Palette" [ref=e229] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e231]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e233] [cursor=pointer]
+              - listitem [ref=e234]:
+                - generic [ref=e235]:
+                  - link "Palette VerteX" [ref=e236] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e238]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e240] [cursor=pointer]
+              - listitem [ref=e241]:
+                - generic [ref=e242]:
+                  - link "Tenant Administration" [ref=e243] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e245]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e247] [cursor=pointer]
+              - listitem [ref=e248]:
+                - generic [ref=e249]:
+                  - link "Automation" [ref=e250] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e252]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e254] [cursor=pointer]
+              - listitem [ref=e255]:
+                - generic [ref=e256]:
+                  - link "Troubleshooting" [ref=e257] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e259]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e261] [cursor=pointer]
+              - listitem [ref=e262]:
+                - link "Glossary" [ref=e263] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e265]
+                  - text: Glossary
+              - listitem [ref=e267]:
+                - generic [ref=e268]:
+                  - link "Compliance & Legal" [ref=e269] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e271]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e273] [cursor=pointer]
+              - listitem [ref=e274]:
+                - button "Privacy Settings" [ref=e275] [cursor=pointer]:
+                  - img [ref=e276]
+                  - text: Privacy Settings
+      - main [ref=e278]:
+        - generic [ref=e280]:
+          - generic [ref=e282]:
+            - article [ref=e283]:
+              - navigation "Breadcrumbs" [ref=e284]:
+                - list [ref=e285]:
+                  - listitem [ref=e286]:
+                    - link "Home page" [ref=e287] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e288]
+                  - listitem [ref=e290]:
+                    - link "Virtual Machine Orchestrator" [ref=e291] [cursor=pointer]:
+                      - /url: /vm-management/
+                  - listitem [ref=e292]:
+                    - link "Create and Manage VMs" [ref=e293] [cursor=pointer]:
+                      - /url: /vm-management/create-manage-vm/
+                  - listitem [ref=e294]:
+                    - generic [ref=e295]: Advanced Topics
+              - generic [ref=e296]:
+                - heading "Advanced Topics" [level=1] [ref=e298]
+                - paragraph [ref=e299]: Beyond the standard Virtual Machine (VM) operations such as deployment, clone, and migration, Palette Virtual Machine Orchestrator (VMO) supports further customization and advanced use cases.
+                - paragraph [ref=e300]: This section discusses advanced topics such as creating and modifying VM template and disk templates. You will also learn how to perform standard VM operations via the command-line tool, virtctl, and how to maximize your VM performance by over-committing CPU and memory.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e301]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e302] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e303]:
+                  - listitem [ref=e304]:
+                    - link "Access VM Cluster with Virtctl" [ref=e305] [cursor=pointer]:
+                      - /url: /vm-management/create-manage-vm/advanced-topics/access-cluster-with-virtctl/
+                  - listitem [ref=e306]:
+                    - link "Create VM Templates" [ref=e307] [cursor=pointer]:
+                      - /url: /vm-management/create-manage-vm/advanced-topics/create-vm-template/
+                  - listitem [ref=e308]:
+                    - link "Create DISK Templates" [ref=e309] [cursor=pointer]:
+                      - /url: /vm-management/create-manage-vm/advanced-topics/create-disk-templates/
+                  - listitem [ref=e310]:
+                    - link "Over-commit Resources to Enhance VM Performance" [ref=e311] [cursor=pointer]:
+                      - /url: /vm-management/create-manage-vm/advanced-topics/vm-oversubscription/
+                  - listitem [ref=e312]:
+                    - link "Import and Deploy OVAs to Palette VMO" [ref=e313] [cursor=pointer]:
+                      - /url: /vm-management/create-manage-vm/advanced-topics/deploy-import-ova/
+              - generic [ref=e314]:
+                - generic [ref=e316]:
+                  - text: "Tags:"
+                  - list [ref=e317]:
+                    - listitem [ref=e318]:
+                      - link "vmo" [ref=e319] [cursor=pointer]:
+                        - /url: /tags/vmo/
+                - link "Edit this page" [ref=e322] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vm-management/create-manage-vm/advanced-topics/advanced-topics.md
+                  - img [ref=e323]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e327]:
+              - link "Previous « Locate VM Disks" [ref=e328] [cursor=pointer]:
+                - /url: /vm-management/create-manage-vm/locate-vm-disks/
+                - generic [ref=e329]: Previous
+                - generic [ref=e330]: « Locate VM Disks
+              - link "Next Create a VM Template »" [ref=e331] [cursor=pointer]:
+                - /url: /vm-management/create-manage-vm/advanced-topics/create-vm-template/
+                - generic [ref=e332]: Next
+                - generic [ref=e333]: Create a VM Template »
+          - list [ref=e336]:
+            - listitem [ref=e337]:
+              - link "Resources" [ref=e338] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e339] [cursor=pointer]:
+    - generic [ref=e342]:
+      - img "Project Logo" [ref=e343]
+      - paragraph [ref=e344]: Ask AI
+```

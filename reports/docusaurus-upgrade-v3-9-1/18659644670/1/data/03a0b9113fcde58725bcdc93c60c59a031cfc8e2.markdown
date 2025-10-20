@@ -1,0 +1,592 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [expanded] [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+                - list [ref=e128]:
+                  - listitem [ref=e129]:
+                    - link "Architecture" [ref=e130] [cursor=pointer]:
+                      - /url: /vm-management/architecture/
+                  - listitem [ref=e131]:
+                    - link "Environment Setup" [ref=e132] [cursor=pointer]:
+                      - /url: /vm-management/environment-setup/
+                  - listitem [ref=e133]:
+                    - link "Install VMO in Airgap Environments" [ref=e134] [cursor=pointer]:
+                      - /url: /vm-management/install-vmo-in-airgap/
+                  - listitem [ref=e135]:
+                    - link "Create a VMO Profile" [ref=e136] [cursor=pointer]:
+                      - /url: /vm-management/create-vmo-profile/
+                  - listitem [ref=e137]:
+                    - link "Configure Private CA Certificate" [ref=e138] [cursor=pointer]:
+                      - /url: /vm-management/configure-private-ca-certificate/
+                  - listitem [ref=e139]:
+                    - link "Configure Direct Access to VM Dashboard" [ref=e140] [cursor=pointer]:
+                      - /url: /vm-management/configure-console-base-address/
+                  - listitem [ref=e141]:
+                    - generic [ref=e142]:
+                      - link "RBAC" [ref=e143] [cursor=pointer]:
+                        - /url: /vm-management/rbac/
+                      - button "Toggle the collapsible sidebar category 'RBAC'" [ref=e144] [cursor=pointer]
+                  - listitem [ref=e145]:
+                    - generic [ref=e146]:
+                      - link "Create and Manage VMs" [expanded] [ref=e147] [cursor=pointer]:
+                        - /url: /vm-management/create-manage-vm/
+                      - button "Toggle the collapsible sidebar category 'Create and Manage VMs'" [ref=e148] [cursor=pointer]
+                    - list [ref=e149]:
+                      - listitem [ref=e150]:
+                        - link "Deploy VM From a Template" [ref=e151] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/deploy-vm-from-template/
+                      - listitem [ref=e152]:
+                        - link "Update VM Configuration" [ref=e153] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/update-vm-configuration/
+                      - listitem [ref=e154]:
+                        - link "Migrate a VM to a Different Node" [ref=e155] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/migrate-vm-to-different-node/
+                      - listitem [ref=e156]:
+                        - link "Take a VM Snapshot" [ref=e157] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/take-snapshot-of-vm/
+                      - listitem [ref=e158]:
+                        - link "Clone a VM" [ref=e159] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/clone-vm/
+                      - listitem [ref=e160]:
+                        - link "Manage CPU and Memory" [ref=e161] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/enable-cpu-hotplug/
+                      - listitem [ref=e162]:
+                        - link "Locate VM Disks" [ref=e163] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/locate-vm-disks/
+                      - listitem [ref=e164]:
+                        - generic [ref=e165]:
+                          - link "Advanced Topics" [ref=e166] [cursor=pointer]:
+                            - /url: /vm-management/create-manage-vm/advanced-topics/
+                          - button "Toggle the collapsible sidebar category 'Advanced Topics'" [ref=e167] [cursor=pointer]
+                  - listitem [ref=e168]:
+                    - generic [ref=e169]:
+                      - link "VM Migration Assistant" [ref=e170] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/
+                      - button "Toggle the collapsible sidebar category 'VM Migration Assistant'" [ref=e171] [cursor=pointer]
+              - listitem [ref=e172]:
+                - generic [ref=e173]:
+                  - link "Workspaces" [ref=e174] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e176]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e178] [cursor=pointer]
+              - listitem [ref=e179]:
+                - generic [ref=e180]:
+                  - link "Packs List" [ref=e181] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e183]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e185] [cursor=pointer]
+              - listitem [ref=e186]:
+                - generic [ref=e187]:
+                  - link "User & Role Management" [ref=e188] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e190]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e192] [cursor=pointer]
+              - listitem [ref=e193]:
+                - generic [ref=e194]:
+                  - link "Registries and Packs" [ref=e195] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e197]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e199] [cursor=pointer]
+              - listitem [ref=e200]:
+                - generic [ref=e201]:
+                  - link "Security" [ref=e202] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e204]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e206] [cursor=pointer]
+              - listitem [ref=e207]:
+                - generic [ref=e208]:
+                  - link "Audit Logs" [ref=e209] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e211]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e213] [cursor=pointer]
+              - listitem [ref=e214]:
+                - generic [ref=e215]:
+                  - link "Self-Hosted Palette" [ref=e216] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e218]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e220] [cursor=pointer]
+              - listitem [ref=e221]:
+                - generic [ref=e222]:
+                  - link "Palette VerteX" [ref=e223] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e225]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e227] [cursor=pointer]
+              - listitem [ref=e228]:
+                - generic [ref=e229]:
+                  - link "Tenant Administration" [ref=e230] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e232]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e234] [cursor=pointer]
+              - listitem [ref=e235]:
+                - generic [ref=e236]:
+                  - link "Automation" [ref=e237] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e239]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e241] [cursor=pointer]
+              - listitem [ref=e242]:
+                - generic [ref=e243]:
+                  - link "Troubleshooting" [ref=e244] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e246]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e248] [cursor=pointer]
+              - listitem [ref=e249]:
+                - link "Glossary" [ref=e250] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e252]
+                  - text: Glossary
+              - listitem [ref=e254]:
+                - generic [ref=e255]:
+                  - link "Compliance & Legal" [ref=e256] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e258]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e260] [cursor=pointer]
+              - listitem [ref=e261]:
+                - button "Privacy Settings" [ref=e262] [cursor=pointer]:
+                  - img [ref=e263]
+                  - text: Privacy Settings
+      - main [ref=e265]:
+        - generic [ref=e267]:
+          - generic [ref=e269]:
+            - article [ref=e270]:
+              - navigation "Breadcrumbs" [ref=e271]:
+                - list [ref=e272]:
+                  - listitem [ref=e273]:
+                    - link "Home page" [ref=e274] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e275]
+                  - listitem [ref=e277]:
+                    - link "Virtual Machine Orchestrator" [ref=e278] [cursor=pointer]:
+                      - /url: /vm-management/
+                  - listitem [ref=e279]:
+                    - link "Create and Manage VMs" [ref=e280] [cursor=pointer]:
+                      - /url: /vm-management/create-manage-vm/
+                  - listitem [ref=e281]:
+                    - generic [ref=e282]: Migrate a VM to a Different Node
+              - generic [ref=e283]:
+                - heading "Migrate a VM to a Different Node" [level=1] [ref=e285]
+                - paragraph [ref=e286]:
+                  - text: Palette supports Virtual Machine (VM) migration to another physical host in the cluster. This is known as
+                  - emphasis [ref=e287]: live migration
+                  - text: . During live migration, the VM and its memory, storage, and CPU resources are moved from one cluster compute node to another without any noticeable downtime.
+                - paragraph [ref=e288]:
+                  - text: Successful live migrations rely on appropriately configured storage and networking, and live migration must be enabled as a feature gate. Live migration is enabled by default in the
+                  - code [ref=e289]: feature-gates
+                  - text: section of the KubeVirt configuration file that is part of the
+                  - strong [ref=e290]: Virtual Machine Orchestrator
+                  - text: pack. Refer to
+                  - link "Feature Gates" [ref=e291] [cursor=pointer]:
+                    - /url: /vm-management/
+                  - text: for more information.
+                - paragraph [ref=e292]:
+                  - text: Live migration is used with rolling Kubernetes upgrades and workload balancing. To avoid interrupting a VM when a node is placed into maintenance or upgraded, all VM instances require a
+                  - code [ref=e293]: LiveMigrate
+                  - text: eviction strategy.
+                - heading "Migrate VM to a Different NodeDirect link to Migrate VM to a Different Node" [level=2] [ref=e294]:
+                  - text: Migrate VM to a Different Node
+                  - link "Direct link to Migrate VM to a Different Node" [ref=e295] [cursor=pointer]:
+                    - /url: "#migrate-vm-to-a-different-node"
+                    - text: "#"
+                - paragraph [ref=e296]: Follow the instructions below to migrate VMs to a different node.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e297]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e298] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e299]:
+                  - listitem [ref=e300]:
+                    - paragraph [ref=e301]:
+                      - text: All VM instances must have an eviction strategy set as
+                      - code [ref=e302]: "evictionStrategy: LiveMigrate"
+                      - text: to ensure that a VM is not interrupted if the node is placed into maintenance. This is configured automatically in the KubeVirt configuration file. If needed, you can override the default setting by configuring
+                      - code [ref=e303]: spec.template.spec.evictionStrategy
+                      - text: .
+                  - listitem [ref=e304]:
+                    - paragraph [ref=e305]:
+                      - text: VMs that use Persistent Volumes must have shared
+                      - code [ref=e306]: ReadWriteMany
+                      - text: (
+                      - code [ref=e307]: RWX
+                      - text: ) access. For more information, refer to the
+                      - link "Persistent Volume Access Modes" [ref=e308] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
+                      - text: Kubernetes resource. VMs that do not use persistent storage, such as
+                      - code [ref=e309]: containerDisks
+                      - text: ", do not require modifications for live migration."
+                  - listitem [ref=e310]:
+                    - paragraph [ref=e311]: A VM’s pod network cannot use a Bridge interface. Disable the default Bridge interface on the pod network. However, other interfaces such as those that Multus grants, may use a bridge interface for live migration.
+                - heading "InstructionsDirect link to Instructions" [level=3] [ref=e312]:
+                  - text: Instructions
+                  - link "Direct link to Instructions" [ref=e313] [cursor=pointer]:
+                    - /url: "#instructions"
+                    - text: "#"
+                - list [ref=e314]:
+                  - listitem [ref=e315]:
+                    - paragraph [ref=e316]:
+                      - text: Log in to
+                      - link "Palette" [ref=e317] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e318]:
+                    - paragraph [ref=e319]:
+                      - text: From the left
+                      - strong [ref=e320]: Main Menu
+                      - text: ", choose"
+                      - strong [ref=e321]: Clusters
+                      - text: and click on your cluster.
+                  - listitem [ref=e322]:
+                    - paragraph [ref=e323]:
+                      - text: Click on the
+                      - strong [ref=e324]: Virtual Machines
+                      - text: tab.
+                  - listitem [ref=e325]:
+                    - paragraph [ref=e326]:
+                      - text: Select the VM to migrate and click either the
+                      - strong [ref=e327]: three-dot Menu
+                      - text: or
+                      - strong [ref=e328]: Actions
+                      - text: .
+                  - listitem [ref=e329]:
+                    - paragraph [ref=e330]:
+                      - text: Click
+                      - strong [ref=e331]: Migrate Node to Node
+                      - text: .
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e332]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e333] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e334]:
+                  - listitem [ref=e335]:
+                    - paragraph [ref=e336]:
+                      - text: Log in to
+                      - link "Palette" [ref=e337] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e338]:
+                    - paragraph [ref=e339]:
+                      - text: From the left
+                      - strong [ref=e340]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e341]: Clusters
+                      - text: and select the cluster.
+                  - listitem [ref=e342]:
+                    - paragraph [ref=e343]:
+                      - text: Navigate to the
+                      - strong [ref=e344]: Virtual Machines
+                      - text: tab, and click the VM you migrated.
+                  - listitem [ref=e345]:
+                    - paragraph [ref=e346]:
+                      - text: Click the
+                      - strong [ref=e347]: Details
+                      - text: tab, and verify that the name and IP address of the new node is changed.
+                - heading "Evacuate a HostDirect link to Evacuate a Host" [level=2] [ref=e348]:
+                  - text: Evacuate a Host
+                  - link "Direct link to Evacuate a Host" [ref=e349] [cursor=pointer]:
+                    - /url: "#evacuate-a-host"
+                    - text: "#"
+                - paragraph [ref=e350]:
+                  - text: Compute nodes can be placed into
+                  - link "maintenance mode" [ref=e351] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/maintenance-mode/
+                  - text: using Palette or manually using the
+                  - code [ref=e352]: cordon
+                  - text: and
+                  - code [ref=e353]: drain
+                  - text: commands. The
+                  - code [ref=e354]: cordon
+                  - text: command marks the node as un-schedulable and the
+                  - code [ref=e355]: drain
+                  - text: command evacuates all the VMs and pods from it. This process is useful in case you need to perform hardware maintenance on the node - for example to replace a disk or network interface card (NIC) card, perform memory maintenance, or if there are any issues with a particular node that need to be resolved. To learn more, check out the
+                  - link "Safely Drain a Node" [ref=e356] [cursor=pointer]:
+                    - /url: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#use-kubectl-drain-to-remove-a-node-from-service
+                  - text: Kubernetes resource.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e357]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e358] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e359]:
+                  - listitem [ref=e360]:
+                    - text: Ensure
+                    - code [ref=e361]: LiveMigrate
+                    - text: is set as the eviction strategy for all affected VMs. When the host is put in maintenance mode, this feature allows for a smooth and uninterrupted migration process.
+                - heading "InstructionsDirect link to Instructions" [level=3] [ref=e362]:
+                  - text: Instructions
+                  - link "Direct link to Instructions" [ref=e363] [cursor=pointer]:
+                    - /url: "#instructions-1"
+                    - text: "#"
+                - generic [ref=e364]:
+                  - tablist [ref=e365]:
+                    - tab "Evacuate VMs using Palette" [selected] [ref=e366] [cursor=pointer]
+                    - tab "Evacuate VMs Manually" [ref=e367] [cursor=pointer]
+                  - tabpanel [ref=e369]:
+                    - list [ref=e370]:
+                      - listitem [ref=e371]:
+                        - paragraph [ref=e372]:
+                          - text: Log in to
+                          - link "Palette" [ref=e373] [cursor=pointer]:
+                            - /url: https://console.spectrocloud.com
+                          - text: .
+                      - listitem [ref=e374]:
+                        - paragraph [ref=e375]:
+                          - text: From the left
+                          - strong [ref=e376]: Main Menu
+                          - text: ", choose"
+                          - strong [ref=e377]: Clusters
+                          - text: and click on the
+                          - strong [ref=e378]: Nodes
+                          - text: tab.
+                      - listitem [ref=e379]:
+                        - paragraph [ref=e380]:
+                          - text: Click the
+                          - strong [ref=e381]: three-dot Menu
+                          - text: in the row of the node you want to evacuate and select
+                          - strong [ref=e382]: Turn on maintenance mode
+                          - text: . This evacuates all workloads from the node to other nodes in the worker pool.
+                      - listitem [ref=e383]:
+                        - paragraph [ref=e384]:
+                          - text: Turn off maintenance mode by clicking the
+                          - strong [ref=e385]: three-dot Menu
+                          - text: in the row of the evacuated node and select
+                          - strong [ref=e386]: Turn off maintenance mode
+                          - text: .
+                        - generic [ref=e387]:
+                          - generic [ref=e388]:
+                            - img [ref=e390]
+                            - text: warning
+                          - paragraph [ref=e393]: Maintenance mode reduces cluster capacity. Be sure to turn off maintenance mode after maintenance completes.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e394]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e395] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - generic [ref=e396]:
+                  - tablist [ref=e397]:
+                    - tab "Palette" [selected] [ref=e398] [cursor=pointer]
+                    - tab "kubectl" [ref=e399] [cursor=pointer]
+                  - tabpanel [ref=e401]:
+                    - paragraph [ref=e402]: You can validate evacuation completed by following the steps below.
+                    - list [ref=e403]:
+                      - listitem [ref=e404]:
+                        - paragraph [ref=e405]:
+                          - text: Log in to
+                          - link "Palette" [ref=e406] [cursor=pointer]:
+                            - /url: https://console.spectrocloud.com
+                          - text: .
+                      - listitem [ref=e407]:
+                        - paragraph [ref=e408]:
+                          - text: From the left
+                          - strong [ref=e409]: Main Menu
+                          - text: ", choose"
+                          - strong [ref=e410]: Clusters
+                          - text: .
+                      - listitem [ref=e411]:
+                        - paragraph [ref=e412]:
+                          - text: Verify the
+                          - strong [ref=e413]: Health
+                          - text: column displays the
+                          - strong [ref=e414]: "Maintenance mode: Completed"
+                          - text: icon.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e415]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e416] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e417]:
+                  - listitem [ref=e418]:
+                    - paragraph [ref=e419]:
+                      - link "Persistent Volume Access Modes" [ref=e420] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
+                  - listitem [ref=e421]:
+                    - paragraph [ref=e422]:
+                      - link "Safely Drain a Node" [ref=e423] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#use-kubectl-drain-to-remove-a-node-from-service
+                  - listitem [ref=e424]:
+                    - paragraph [ref=e425]:
+                      - link "Maintenance Mode" [ref=e426] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/maintenance-mode/
+              - generic [ref=e427]:
+                - generic [ref=e429]:
+                  - text: "Tags:"
+                  - list [ref=e430]:
+                    - listitem [ref=e431]:
+                      - link "vmo" [ref=e432] [cursor=pointer]:
+                        - /url: /tags/vmo/
+                - link "Edit this page" [ref=e435] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vm-management/create-manage-vm/migrate-vm-to-different-node.md
+                  - img [ref=e436]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e440]:
+              - link "Previous « Update VM Configuration" [ref=e441] [cursor=pointer]:
+                - /url: /vm-management/create-manage-vm/update-vm-configuration/
+                - generic [ref=e442]: Previous
+                - generic [ref=e443]: « Update VM Configuration
+              - link "Next Take a VM Snapshot »" [ref=e444] [cursor=pointer]:
+                - /url: /vm-management/create-manage-vm/take-snapshot-of-vm/
+                - generic [ref=e445]: Next
+                - generic [ref=e446]: Take a VM Snapshot »
+          - list [ref=e449]:
+            - listitem [ref=e450]:
+              - link "Migrate VM to a Different Node" [ref=e451] [cursor=pointer]:
+                - /url: "#migrate-vm-to-a-different-node"
+              - list [ref=e452]:
+                - listitem [ref=e453]:
+                  - link "Prerequisites" [ref=e454] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e455]:
+                  - link "Instructions" [ref=e456] [cursor=pointer]:
+                    - /url: "#instructions"
+                - listitem [ref=e457]:
+                  - link "Validate" [ref=e458] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e459]:
+              - link "Evacuate a Host" [ref=e460] [cursor=pointer]:
+                - /url: "#evacuate-a-host"
+              - list [ref=e461]:
+                - listitem [ref=e462]:
+                  - link "Prerequisites" [ref=e463] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e464]:
+                  - link "Instructions" [ref=e465] [cursor=pointer]:
+                    - /url: "#instructions-1"
+                - listitem [ref=e466]:
+                  - link "Validate" [ref=e467] [cursor=pointer]:
+                    - /url: "#validate-1"
+            - listitem [ref=e468]:
+              - link "Resources" [ref=e469] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e470] [cursor=pointer]:
+    - generic [ref=e473]:
+      - img "Project Logo" [ref=e474]
+      - paragraph [ref=e475]: Ask AI
+```

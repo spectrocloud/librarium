@@ -1,0 +1,1262 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Palette Tutorials" [ref=e41] [cursor=pointer]:
+                  - /url: /tutorials/
+                  - img [ref=e43]
+                  - text: Palette Tutorials
+              - listitem [ref=e45]:
+                - generic [ref=e46]:
+                  - link "Getting Started" [expanded] [ref=e47] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/
+                    - img [ref=e49]
+                    - text: Getting Started
+                  - button "Toggle the collapsible sidebar category 'Getting Started'" [ref=e51] [cursor=pointer]
+                - list [ref=e52]:
+                  - listitem [ref=e53]:
+                    - generic [ref=e54]:
+                      - link "Palette" [expanded] [ref=e55] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette/
+                      - button "Toggle the collapsible sidebar category 'Palette'" [ref=e56] [cursor=pointer]
+                    - list [ref=e57]:
+                      - listitem [ref=e58]:
+                        - link "Introduction to Palette" [ref=e59] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette/introduction-palette/
+                      - listitem [ref=e60]:
+                        - generic [ref=e61]:
+                          - link "Deploy a Cluster to AWS" [expanded] [ref=e62] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/aws/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to AWS'" [ref=e63] [cursor=pointer]
+                        - list [ref=e64]:
+                          - listitem [ref=e65]:
+                            - link "Set up Palette" [ref=e66] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/aws/setup/
+                          - listitem [ref=e67]:
+                            - link "Create a Cluster Profile" [ref=e68] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/aws/create-cluster-profile/
+                          - listitem [ref=e69]:
+                            - link "Deploy a Cluster" [ref=e70] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/aws/deploy-k8s-cluster/
+                          - listitem [ref=e71]:
+                            - link "Deploy Cluster Profile Updates" [ref=e72] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/aws/update-k8s-cluster/
+                          - listitem [ref=e73]:
+                            - link "Cluster Management with Terraform" [ref=e74] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/aws/deploy-manage-k8s-cluster-tf/
+                          - listitem [ref=e75]:
+                            - link "Scale, Upgrade, and Secure Clusters" [ref=e76] [cursor=pointer]:
+                              - /url: /tutorials/getting-started/palette/aws/scale-secure-cluster/
+                      - listitem [ref=e77]:
+                        - generic [ref=e78]:
+                          - link "Deploy a Cluster to Azure" [ref=e79] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/azure/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to Azure'" [ref=e80] [cursor=pointer]
+                      - listitem [ref=e81]:
+                        - generic [ref=e82]:
+                          - link "Deploy a Cluster to GCP" [ref=e83] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/gcp/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to GCP'" [ref=e84] [cursor=pointer]
+                      - listitem [ref=e85]:
+                        - generic [ref=e86]:
+                          - link "Deploy a Cluster to VMware" [ref=e87] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/vmware/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to VMware'" [ref=e88] [cursor=pointer]
+                  - listitem [ref=e89]:
+                    - generic [ref=e90]:
+                      - link "Palette Edge" [ref=e91] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette-edge/
+                      - button "Toggle the collapsible sidebar category 'Palette Edge'" [ref=e92] [cursor=pointer]
+                  - listitem [ref=e93]:
+                    - generic [ref=e94]:
+                      - link "Additional Capabilities" [ref=e95] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/additional-capabilities/
+                      - button "Toggle the collapsible sidebar category 'Additional Capabilities'" [ref=e96] [cursor=pointer]
+              - listitem [ref=e97]:
+                - generic [ref=e98]:
+                  - link "Packs and Registries" [ref=e99] [cursor=pointer]:
+                    - /url: /tutorials/packs-registries/
+                    - img [ref=e101]
+                    - text: Packs and Registries
+                  - button "Toggle the collapsible sidebar category 'Packs and Registries'" [ref=e103] [cursor=pointer]
+              - listitem [ref=e104]:
+                - generic [ref=e105]:
+                  - link "Profiles" [ref=e106] [cursor=pointer]:
+                    - /url: /tutorials/profiles/
+                    - img [ref=e108]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Clusters" [ref=e115] [cursor=pointer]:
+                    - /url: /tutorials/clusters/
+                    - img [ref=e117]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e123] [cursor=pointer]
+              - listitem [ref=e124]:
+                - generic [ref=e125]:
+                  - link "Palette Dev Engine" [ref=e126] [cursor=pointer]:
+                    - /url: /tutorials/pde/
+                    - img [ref=e128]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e130] [cursor=pointer]
+              - listitem [ref=e131]:
+                - button "Privacy Settings" [ref=e132] [cursor=pointer]
+      - main [ref=e133]:
+        - generic [ref=e135]:
+          - generic [ref=e137]:
+            - article [ref=e138]:
+              - navigation "Breadcrumbs" [ref=e139]:
+                - list [ref=e140]:
+                  - listitem [ref=e141]:
+                    - link "Home page" [ref=e142] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e143]
+                  - listitem [ref=e145]:
+                    - link "Getting Started" [ref=e146] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/
+                  - listitem [ref=e147]:
+                    - link "Palette" [ref=e148] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette/
+                  - listitem [ref=e149]:
+                    - link "Deploy a Cluster to AWS" [ref=e150] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette/aws/
+                  - listitem [ref=e151]:
+                    - generic [ref=e152]: Cluster Management with Terraform
+              - generic [ref=e153]:
+                - heading "Cluster Management with Terraform" [level=1] [ref=e155]
+                - paragraph [ref=e156]:
+                  - text: The
+                  - link "Spectro Cloud Terraform" [ref=e157] [cursor=pointer]:
+                    - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs
+                  - text: provider allows you to create and manage Palette resources using Infrastructure as Code (IaC). With IaC, you can automate the provisioning of resources, collaborate on changes, and maintain a single source of truth for your infrastructure.
+                - paragraph [ref=e158]: This tutorial will teach you how to use Terraform to deploy and update an Amazon Web Services (AWS) host cluster. You will learn how to create two versions of a cluster profile with different demo applications, update the deployed cluster with the new cluster profile version, and then perform a rollback. The concepts you learn about in the Getting Started section are centered around a fictional case study company, Spacetastic Ltd.
+                - heading "🧑‍🚀 Back at Spacetastic HQDirect link to 🧑‍🚀 Back at Spacetastic HQ" [level=2] [ref=e159]:
+                  - text: 🧑‍🚀 Back at Spacetastic HQ
+                  - link "Direct link to 🧑‍🚀 Back at Spacetastic HQ" [ref=e160] [cursor=pointer]:
+                    - /url: "#-back-at-spacetastic-hq"
+                    - text: "#"
+                - paragraph [ref=e161]: After following the tutorials in the Getting Started section, the Spacetastic team have been have been impressed with Palette's capabilities. Wren, Founding Engineer, and Kai, Platform Engineer, have been discussing adopting IaC workflows and have been upskilling with Terraform throughout the past year. They are interested in learning if Palette can support IaC workflows too.
+                - blockquote [ref=e162]:
+                  - paragraph [ref=e163]: "\"While we're on the topic of platform improvements, it would be great to kick off our adoption of Infrastructure as Code at Spacetastic,\" says Wren. \"I've been wanting to roll this out for a while, but we don't have that much in-house expertise.\""
+                  - paragraph [ref=e164]: "\"Yes, this would definitely be a big improvement to our processes,\" says Kai, Platform Engineer. \"Some people might think that it slows down the development and release processes, due to the extra code reviews. However, the ability to revert in the case of an outage more than makes up for this small drop in velocity.\""
+                  - paragraph [ref=e165]: Wren nods, knowingly. "Let's explore Palette's IaC capabilities and maybe we can apply some learnings to our infrastructure."
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e166]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e167] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - paragraph [ref=e168]: "To complete this tutorial, you will need the following items in place:"
+                - list [ref=e169]:
+                  - listitem [ref=e170]:
+                    - text: Follow the steps described in the
+                    - link "Set up Palette with AWS" [ref=e171] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette/aws/setup/
+                    - text: guide to authenticate Palette for use with your AWS cloud account and create a Palette API key.
+                  - listitem [ref=e172]:
+                    - link "Docker Desktop" [ref=e173] [cursor=pointer]:
+                      - /url: https://www.docker.com/products/docker-desktop/
+                    - text: or
+                    - link "Podman" [ref=e174] [cursor=pointer]:
+                      - /url: https://podman.io/docs/installation
+                    - text: installed if you choose to follow along using the tutorial container.
+                  - listitem [ref=e175]:
+                    - text: "If you choose to clone the repository instead of using the tutorial container, make sure you have the following software installed:"
+                    - list [ref=e176]:
+                      - listitem [ref=e177]:
+                        - link "Terraform" [ref=e178] [cursor=pointer]:
+                          - /url: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
+                        - text: v1.9.0 or greater
+                      - listitem [ref=e179]:
+                        - link "Git" [ref=e180] [cursor=pointer]:
+                          - /url: https://git-scm.com/downloads
+                      - listitem [ref=e181]:
+                        - link "Kubectl" [ref=e182] [cursor=pointer]:
+                          - /url: https://kubernetes.io/docs/tasks/tools/
+                - heading "Set Up Local EnvironmentDirect link to Set Up Local Environment" [level=2] [ref=e183]:
+                  - text: Set Up Local Environment
+                  - link "Direct link to Set Up Local Environment" [ref=e184] [cursor=pointer]:
+                    - /url: "#set-up-local-environment"
+                    - text: "#"
+                - paragraph [ref=e185]:
+                  - text: You can clone the
+                  - link "Tutorials" [ref=e186] [cursor=pointer]:
+                    - /url: https://github.com/spectrocloud/tutorials
+                  - text: repository locally or follow along by downloading a container image that includes the tutorial code and all dependencies.
+                - generic [ref=e187]:
+                  - tablist [ref=e188]:
+                    - tab "Docker" [selected] [ref=e189] [cursor=pointer]
+                    - tab "Podman" [ref=e190] [cursor=pointer]
+                    - tab "Git" [ref=e191] [cursor=pointer]
+                  - tabpanel [ref=e193]:
+                    - paragraph [ref=e194]: Start Docker Desktop and ensure that the Docker daemon is available by issuing the following command.
+                    - generic [ref=e196]:
+                      - code [ref=e198]:
+                        - generic [ref=e199]: docker ps
+                      - button "Copy code to clipboard" [ref=e201] [cursor=pointer]:
+                        - generic [ref=e202]:
+                          - img [ref=e203]
+                          - img [ref=e205]
+                    - paragraph [ref=e207]: Next, download the tutorial image, start the container, and open a bash session into it.
+                    - generic [ref=e209]:
+                      - code [ref=e211]:
+                        - generic [ref=e212]: docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.3.0 bash
+                      - generic [ref=e213]:
+                        - button "Toggle word wrap" [ref=e214] [cursor=pointer]:
+                          - img [ref=e215]
+                        - button "Copy code to clipboard" [ref=e217] [cursor=pointer]:
+                          - generic [ref=e218]:
+                            - img [ref=e219]
+                            - img [ref=e221]
+                    - generic [ref=e223]:
+                      - generic [ref=e224]:
+                        - img [ref=e226]
+                        - text: warning
+                      - paragraph [ref=e229]: Do not exit the container until the tutorial is complete. Otherwise, you may lose your progress.
+                - paragraph [ref=e230]: Navigate to the folder that contains the tutorial code.
+                - generic [ref=e232]:
+                  - code [ref=e234]:
+                    - generic [ref=e235]: cd terraform/getting-started-deployment-tf
+                  - button "Copy code to clipboard" [ref=e237] [cursor=pointer]:
+                    - generic [ref=e238]:
+                      - img [ref=e239]
+                      - img [ref=e241]
+                - heading "Resources ReviewDirect link to Resources Review" [level=2] [ref=e243]:
+                  - text: Resources Review
+                  - link "Direct link to Resources Review" [ref=e244] [cursor=pointer]:
+                    - /url: "#resources-review"
+                    - text: "#"
+                - paragraph [ref=e245]: To help you get started with Terraform, the tutorial code is structured to support deploying a cluster to either AWS, Azure, GCP, or VMware vSphere. Before you deploy a host cluster to AWS, review the following files in the folder structure.
+                - table [ref=e246]:
+                  - rowgroup [ref=e247]:
+                    - row "File Description" [ref=e248]:
+                      - cell "File" [ref=e249]:
+                        - strong [ref=e250]: File
+                      - cell "Description" [ref=e251]:
+                        - strong [ref=e252]: Description
+                  - rowgroup [ref=e253]:
+                    - row "provider.tf This file contains the Terraform providers that are used to support the deployment of the cluster." [ref=e254]:
+                      - cell "provider.tf" [ref=e255]:
+                        - strong [ref=e256]: provider.tf
+                      - cell "This file contains the Terraform providers that are used to support the deployment of the cluster." [ref=e257]
+                    - row "inputs.tf This file contains all the Terraform variables required for the deployment logic." [ref=e258]:
+                      - cell "inputs.tf" [ref=e259]:
+                        - strong [ref=e260]: inputs.tf
+                      - cell "This file contains all the Terraform variables required for the deployment logic." [ref=e261]
+                    - row "data.tf This file contains all the query resources that perform read actions." [ref=e262]:
+                      - cell "data.tf" [ref=e263]:
+                        - strong [ref=e264]: data.tf
+                      - cell "This file contains all the query resources that perform read actions." [ref=e265]
+                    - row "cluster_profiles.tf This file contains the cluster profile definitions for each cloud provider." [ref=e266]:
+                      - cell "cluster_profiles.tf" [ref=e267]:
+                        - strong [ref=e268]: cluster_profiles.tf
+                      - cell "This file contains the cluster profile definitions for each cloud provider." [ref=e269]
+                    - row "clusters.tf This file has the cluster configurations required to deploy a host cluster to one of the cloud providers." [ref=e270]:
+                      - cell "clusters.tf" [ref=e271]:
+                        - strong [ref=e272]: clusters.tf
+                      - cell "This file has the cluster configurations required to deploy a host cluster to one of the cloud providers." [ref=e273]
+                    - row "terraform.tfvars Use this file to target a specific cloud provider and customize the deployment. This is the only file you must modify." [ref=e274]:
+                      - cell "terraform.tfvars" [ref=e275]:
+                        - strong [ref=e276]: terraform.tfvars
+                      - cell "Use this file to target a specific cloud provider and customize the deployment. This is the only file you must modify." [ref=e277]
+                    - row "ippool.tf This file contains the configuration required for VMware deployments that use static IP placement." [ref=e278]:
+                      - cell "ippool.tf" [ref=e279]:
+                        - strong [ref=e280]: ippool.tf
+                      - cell "This file contains the configuration required for VMware deployments that use static IP placement." [ref=e281]
+                    - row "ssh-key.tf This file has the SSH key resource definition required for Azure and VMware deployments." [ref=e282]:
+                      - cell "ssh-key.tf" [ref=e283]:
+                        - strong [ref=e284]: ssh-key.tf
+                      - cell "This file has the SSH key resource definition required for Azure and VMware deployments." [ref=e285]
+                    - row "outputs.tf This file contains the content that will be displayed in the terminal after a successful Terraform apply action." [ref=e286]:
+                      - cell "outputs.tf" [ref=e287]:
+                        - strong [ref=e288]: outputs.tf
+                      - cell "This file contains the content that will be displayed in the terminal after a successful Terraform apply action." [ref=e289]:
+                        - text: This file contains the content that will be displayed in the terminal after a successful Terraform
+                        - code [ref=e290]: apply
+                        - text: action.
+                - paragraph [ref=e291]: The following section reviews the core Terraform resources more closely.
+                - heading "ProviderDirect link to Provider" [level=4] [ref=e292]:
+                  - text: Provider
+                  - link "Direct link to Provider" [ref=e293] [cursor=pointer]:
+                    - /url: "#provider"
+                    - text: "#"
+                - paragraph [ref=e294]:
+                  - text: The
+                  - strong [ref=e295]: provider.tf
+                  - text: "file contains the Terraform providers used in the tutorial and their respective versions. This tutorial uses four providers:"
+                - list [ref=e296]:
+                  - listitem [ref=e297]:
+                    - link "Spectro Cloud" [ref=e298] [cursor=pointer]:
+                      - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs
+                  - listitem [ref=e299]:
+                    - link "TLS" [ref=e300] [cursor=pointer]:
+                      - /url: https://registry.terraform.io/providers/hashicorp/tls/latest
+                  - listitem [ref=e301]:
+                    - link "vSphere" [ref=e302] [cursor=pointer]:
+                      - /url: https://registry.terraform.io/providers/hashicorp/vsphere/latest
+                  - listitem [ref=e303]:
+                    - link "Local" [ref=e304] [cursor=pointer]:
+                      - /url: https://registry.terraform.io/providers/hashicorp/local/latest
+                - paragraph [ref=e305]:
+                  - text: Note how the project name is specified in the
+                  - code [ref=e306]: "provider \"spectrocloud\" {}"
+                  - text: block. You can change the target project by modifying the value of the
+                  - code [ref=e307]: palette-project
+                  - text: variable in the
+                  - strong [ref=e308]: terraform.tfvars
+                  - text: file.
+                - generic [ref=e310]:
+                  - code [ref=e312]:
+                    - generic [ref=e313]: "terraform {"
+                    - generic [ref=e314]: "required_providers {"
+                    - generic [ref=e315]: "spectrocloud = {"
+                    - generic [ref=e316]: version = ">= 0.20.6"
+                    - generic [ref=e317]: source = "spectrocloud/spectrocloud"
+                    - generic [ref=e318]: "}"
+                    - generic [ref=e319]: "tls = {"
+                    - generic [ref=e320]: source = "hashicorp/tls"
+                    - generic [ref=e321]: version = "4.0.4"
+                    - generic [ref=e322]: "}"
+                    - generic [ref=e323]: "vsphere = {"
+                    - generic [ref=e324]: source = "hashicorp/vsphere"
+                    - generic [ref=e325]: version = ">= 2.6.1"
+                    - generic [ref=e326]: "}"
+                    - generic [ref=e327]: "local = {"
+                    - generic [ref=e328]: source = "hashicorp/local"
+                    - generic [ref=e329]: version = "2.4.1"
+                    - generic [ref=e330]: "}"
+                    - generic [ref=e331]: "}"
+                    - generic [ref=e332]: required_version = ">= 1.9"
+                    - generic [ref=e333]: "}"
+                    - generic [ref=e334]: "provider \"spectrocloud\" {"
+                    - generic [ref=e335]: project_name = var.palette-project
+                    - generic [ref=e336]: "}"
+                  - button "Copy code to clipboard" [ref=e338] [cursor=pointer]:
+                    - generic [ref=e339]:
+                      - img [ref=e340]
+                      - img [ref=e342]
+                - heading "Cluster ProfileDirect link to Cluster Profile" [level=4] [ref=e344]:
+                  - text: Cluster Profile
+                  - link "Direct link to Cluster Profile" [ref=e345] [cursor=pointer]:
+                    - /url: "#cluster-profile"
+                    - text: "#"
+                - paragraph [ref=e346]:
+                  - text: The next file you should become familiar with is the
+                  - strong [ref=e347]: cluster_profiles.tf
+                  - text: file. The
+                  - code [ref=e348]: spectrocloud_cluster_profile
+                  - text: resource allows you to create a cluster profile and customize its layers. You can specify the packs and versions to use or add a manifest or Helm chart.
+                - paragraph [ref=e349]:
+                  - text: The cluster profile resource is declared eight times in the
+                  - strong [ref=e350]: cluster-profiles.tf
+                  - text: "file, with each pair of resources being designated for a specific provider. In this tutorial, two versions of the AWS cluster profile are deployed: version"
+                  - code [ref=e351]: 1.0.0
+                  - text: deploys the
+                  - link "Hello Universe" [ref=e352] [cursor=pointer]:
+                    - /url: https://github.com/spectrocloud/hello-universe
+                  - text: pack, while version
+                  - code [ref=e353]: 1.1.0
+                  - text: deploys the
+                  - link "Kubecost" [ref=e354] [cursor=pointer]:
+                    - /url: https://www.kubecost.com/
+                  - text: pack along with the
+                  - link "Hello Universe" [ref=e355] [cursor=pointer]:
+                    - /url: https://github.com/spectrocloud/hello-universe
+                  - text: application.
+                - paragraph [ref=e356]:
+                  - text: The cluster profiles include layers for the Operating System (OS), Kubernetes, container network interface, and container storage interface. The first
+                  - code [ref=e357]: "pack {}"
+                  - text: block in the list equates to the bottom layer of the cluster profile. Ensure you define the bottom layer of the cluster profile - the OS layer - first in the list of
+                  - code [ref=e358]: "pack {}"
+                  - text: blocks, as the order in which you arrange the contents of the
+                  - code [ref=e359]: "pack {}"
+                  - text: blocks plays an important role in the cluster profile creation. The table below displays the packs deployed in each version of the cluster profile.
+                - table [ref=e360]:
+                  - rowgroup [ref=e361]:
+                    - row "Pack Type Pack Name Version Cluster Profile v1.0.0 Cluster Profile v1.1.0" [ref=e362]:
+                      - cell "Pack Type" [ref=e363]:
+                        - strong [ref=e364]: Pack Type
+                      - cell "Pack Name" [ref=e365]:
+                        - strong [ref=e366]: Pack Name
+                      - cell "Version" [ref=e367]:
+                        - strong [ref=e368]: Version
+                      - cell "Cluster Profile v1.0.0" [ref=e369]:
+                        - strong [ref=e370]: Cluster Profile v1.0.0
+                      - cell "Cluster Profile v1.1.0" [ref=e371]:
+                        - strong [ref=e372]: Cluster Profile v1.1.0
+                  - rowgroup [ref=e373]:
+                    - row "OS ubuntu-aws 22.04 ✅ ✅" [ref=e374]:
+                      - cell "OS" [ref=e375]
+                      - cell "ubuntu-aws" [ref=e376]:
+                        - code [ref=e377]: ubuntu-aws
+                      - cell "22.04" [ref=e378]:
+                        - code [ref=e379]: "22.04"
+                      - cell "✅" [ref=e380]
+                      - cell "✅" [ref=e381]
+                    - row "Kubernetes kubernetes 1.32.3 ✅ ✅" [ref=e382]:
+                      - cell "Kubernetes" [ref=e383]
+                      - cell "kubernetes" [ref=e384]:
+                        - code [ref=e385]: kubernetes
+                      - cell "1.32.3" [ref=e386]:
+                        - code [ref=e387]: 1.32.3
+                      - cell "✅" [ref=e388]
+                      - cell "✅" [ref=e389]
+                    - row "Network cni-calico 3.29.3 ✅ ✅" [ref=e390]:
+                      - cell "Network" [ref=e391]
+                      - cell "cni-calico" [ref=e392]:
+                        - code [ref=e393]: cni-calico
+                      - cell "3.29.3" [ref=e394]:
+                        - code [ref=e395]: 3.29.3
+                      - cell "✅" [ref=e396]
+                      - cell "✅" [ref=e397]
+                    - row "Storage csi-aws-ebs 1.41.0 ✅ ✅" [ref=e398]:
+                      - cell "Storage" [ref=e399]
+                      - cell "csi-aws-ebs" [ref=e400]:
+                        - code [ref=e401]: csi-aws-ebs
+                      - cell "1.41.0" [ref=e402]:
+                        - code [ref=e403]: 1.41.0
+                      - cell "✅" [ref=e404]
+                      - cell "✅" [ref=e405]
+                    - row "App Services hellouniverse 1.2.0 ✅ ✅" [ref=e406]:
+                      - cell "App Services" [ref=e407]
+                      - cell "hellouniverse" [ref=e408]:
+                        - code [ref=e409]: hellouniverse
+                      - cell "1.2.0" [ref=e410]:
+                        - code [ref=e411]: 1.2.0
+                      - cell "✅" [ref=e412]
+                      - cell "✅" [ref=e413]
+                    - row "App Services cost-analyzer 1.103.3 ❌ ✅" [ref=e414]:
+                      - cell "App Services" [ref=e415]
+                      - cell "cost-analyzer" [ref=e416]:
+                        - code [ref=e417]: cost-analyzer
+                      - cell "1.103.3" [ref=e418]:
+                        - code [ref=e419]: 1.103.3
+                      - cell "❌" [ref=e420]
+                      - cell "✅" [ref=e421]
+                - paragraph [ref=e422]:
+                  - text: The Hello Universe pack has two configured
+                  - link "presets" [ref=e423] [cursor=pointer]:
+                    - /url: /glossary-all/#presets
+                  - text: . The first preset deploys a standalone frontend application, while the second one deploys a three-tier application with a frontend, API server, and Postgres database. This tutorial deploys the three-tier version of the
+                  - link "Hello Universe" [ref=e424] [cursor=pointer]:
+                    - /url: https://github.com/spectrocloud/hello-universe
+                  - text: pack. The preset selection in the Terraform code is specified within the Hello Universe pack block with the
+                  - code [ref=e425]: values
+                  - text: field and by using the
+                  - strong [ref=e426]: values-3tier.yaml
+                  - text: file. Below is an example of version
+                  - code [ref=e427]: 1.0.0
+                  - text: of the AWS cluster profile Terraform resource.
+                - generic [ref=e429]:
+                  - code [ref=e431]:
+                    - generic [ref=e432]: "resource \"spectrocloud_cluster_profile\" \"aws-profile\" {"
+                    - generic [ref=e433]: "count = var.deploy-aws ? 1 : 0"
+                    - generic [ref=e434]: name = "tf-aws-profile"
+                    - generic [ref=e435]: description = "A basic cluster profile for AWS"
+                    - generic [ref=e436]: tags = concat(var.tags, ["env:aws"])
+                    - generic [ref=e437]: cloud = "aws"
+                    - generic [ref=e438]: type = "cluster"
+                    - generic [ref=e439]: version = "1.0.0"
+                    - generic [ref=e440]: "pack {"
+                    - generic [ref=e441]: name = data.spectrocloud_pack.aws_ubuntu.name
+                    - generic [ref=e442]: tag = data.spectrocloud_pack.aws_ubuntu.version
+                    - generic [ref=e443]: uid = data.spectrocloud_pack.aws_ubuntu.id
+                    - generic [ref=e444]: values = data.spectrocloud_pack.aws_ubuntu.values
+                    - generic [ref=e445]: type = "spectro"
+                    - generic [ref=e446]: "}"
+                    - generic [ref=e447]: "pack {"
+                    - generic [ref=e448]: name = data.spectrocloud_pack.aws_k8s.name
+                    - generic [ref=e449]: tag = data.spectrocloud_pack.aws_k8s.version
+                    - generic [ref=e450]: uid = data.spectrocloud_pack.aws_k8s.id
+                    - generic [ref=e451]: values = data.spectrocloud_pack.aws_k8s.values
+                    - generic [ref=e452]: type = "spectro"
+                    - generic [ref=e453]: "}"
+                    - generic [ref=e454]: "pack {"
+                    - generic [ref=e455]: name = data.spectrocloud_pack.aws_cni.name
+                    - generic [ref=e456]: tag = data.spectrocloud_pack.aws_cni.version
+                    - generic [ref=e457]: uid = data.spectrocloud_pack.aws_cni.id
+                    - generic [ref=e458]: values = data.spectrocloud_pack.aws_cni.values
+                    - generic [ref=e459]: type = "spectro"
+                    - generic [ref=e460]: "}"
+                    - generic [ref=e461]: "pack {"
+                    - generic [ref=e462]: name = data.spectrocloud_pack.aws_csi.name
+                    - generic [ref=e463]: tag = data.spectrocloud_pack.aws_csi.version
+                    - generic [ref=e464]: uid = data.spectrocloud_pack.aws_csi.id
+                    - generic [ref=e465]: values = data.spectrocloud_pack.aws_csi.values
+                    - generic [ref=e466]: type = "spectro"
+                    - generic [ref=e467]: "}"
+                    - generic [ref=e468]: "pack {"
+                    - generic [ref=e469]: name = data.spectrocloud_pack.hellouniverse.name
+                    - generic [ref=e470]: tag = data.spectrocloud_pack.hellouniverse.version
+                    - generic [ref=e471]: uid = data.spectrocloud_pack.hellouniverse.id
+                    - generic [ref=e472]: "values = templatefile(\"manifests/values-3tier.yaml\", {"
+                    - generic [ref=e473]: namespace = var.app_namespace,
+                    - generic [ref=e474]: port = var.app_port,
+                    - generic [ref=e475]: replicas = var.replicas_number
+                    - generic [ref=e476]: db_password = base64encode(var.db_password),
+                    - generic [ref=e477]: auth_token = base64encode(var.auth_token)
+                    - generic [ref=e478]: "})"
+                    - generic [ref=e479]: type = "oci"
+                    - generic [ref=e480]: "}"
+                    - generic [ref=e481]: "}"
+                  - button "Copy code to clipboard" [ref=e483] [cursor=pointer]:
+                    - generic [ref=e484]:
+                      - img [ref=e485]
+                      - img [ref=e487]
+                - heading "Data ResourcesDirect link to Data Resources" [level=4] [ref=e489]:
+                  - text: Data Resources
+                  - link "Direct link to Data Resources" [ref=e490] [cursor=pointer]:
+                    - /url: "#data-resources"
+                    - text: "#"
+                - paragraph [ref=e491]:
+                  - text: Each
+                  - code [ref=e492]: "pack {}"
+                  - text: block contains references to a data resource.
+                  - link "Data resources" [ref=e493] [cursor=pointer]:
+                    - /url: https://developer.hashicorp.com/terraform/language/data-sources
+                  - text: are used to perform read actions in Terraform. The Spectro Cloud Terraform provider exposes several data resources to help you make your Terraform code more dynamic. The data resource used in the cluster profile is
+                  - code [ref=e494]: spectrocloud_pack
+                  - text: . This resource enables you to query Palette for information about a specific pack, such as its unique ID, registry ID, available versions, and YAML values.
+                - paragraph [ref=e495]:
+                  - text: Below is the data resource used to query Palette for information about the Kubernetes pack for version
+                  - code [ref=e496]: 1.29.0
+                  - text: .
+                - generic [ref=e498]:
+                  - code [ref=e500]:
+                    - generic [ref=e501]: "data \"spectrocloud_pack\" \"aws_k8s\" {"
+                    - generic [ref=e502]: name = "kubernetes"
+                    - generic [ref=e503]: version = "1.32.3"
+                    - generic [ref=e504]: registry_uid = data.spectrocloud_registry.public_registry.id
+                    - generic [ref=e505]: "}"
+                  - button "Copy code to clipboard" [ref=e507] [cursor=pointer]:
+                    - generic [ref=e508]:
+                      - img [ref=e509]
+                      - img [ref=e511]
+                - paragraph [ref=e513]:
+                  - text: Using the data resource helps you avoid manually entering the parameter values required by the cluster profile's
+                  - code [ref=e514]: "pack {}"
+                  - text: block.
+                - heading "ClusterDirect link to Cluster" [level=4] [ref=e515]:
+                  - text: Cluster
+                  - link "Direct link to Cluster" [ref=e516] [cursor=pointer]:
+                    - /url: "#cluster"
+                    - text: "#"
+                - paragraph [ref=e517]:
+                  - text: The
+                  - strong [ref=e518]: clusters.tf
+                  - text: file contains the definitions required for deploying a host cluster to one of the infrastructure providers. To create an AWS host cluster, you must set the
+                  - code [ref=e519]: deploy-aws
+                  - text: variable in the
+                  - strong [ref=e520]: terraform.tfvars
+                  - text: file to true.
+                - paragraph [ref=e521]:
+                  - text: When deploying a cluster using Terraform, you must provide the same parameters as those available in the Palette UI for the cluster deployment step, such as the instance size and number of nodes. You can learn more about each parameter by reviewing the
+                  - link "AWS cluster resource" [ref=e522] [cursor=pointer]:
+                    - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aws
+                  - text: documentation.
+                - generic [ref=e524]:
+                  - code [ref=e526]:
+                    - generic [ref=e527]: "resource \"spectrocloud_cluster_aws\" \"aws-cluster\" {"
+                    - generic [ref=e528]: "count = var.deploy-aws ? 1 : 0"
+                    - generic [ref=e529]: name = "aws-cluster"
+                    - generic [ref=e530]: tags = concat(var.tags, ["env:aws"])
+                    - generic [ref=e531]: cloud_account_id = data.spectrocloud_cloudaccount_aws.account[0].id
+                    - generic [ref=e532]: "cloud_config {"
+                    - generic [ref=e533]: region = var.aws-region
+                    - generic [ref=e534]: ssh_key_name = var.aws-key-pair-name
+                    - generic [ref=e535]: "}"
+                    - generic [ref=e536]: "cluster_profile {"
+                    - generic [ref=e537]: "id = var.deploy-aws && var.deploy-aws-kubecost ? resource.spectrocloud_cluster_profile.aws-profile-kubecost[0].id : resource.spectrocloud_cluster_profile.aws-profile[0].id"
+                    - generic [ref=e538]: "}"
+                    - generic [ref=e539]: "machine_pool {"
+                    - generic [ref=e540]: control_plane = true
+                    - generic [ref=e541]: control_plane_as_worker = true
+                    - generic [ref=e542]: name = "control-plane-pool"
+                    - generic [ref=e543]: count = var.aws_control_plane_nodes.count
+                    - generic [ref=e544]: instance_type = var.aws_control_plane_nodes.instance_type
+                    - generic [ref=e545]: disk_size_gb = var.aws_control_plane_nodes.disk_size_gb
+                    - generic [ref=e546]: azs = var.aws_control_plane_nodes.availability_zones
+                    - generic [ref=e547]: "}"
+                    - generic [ref=e548]: "machine_pool {"
+                    - generic [ref=e549]: name = "worker-pool"
+                    - generic [ref=e550]: count = var.aws_worker_nodes.count
+                    - generic [ref=e551]: instance_type = var.aws_worker_nodes.instance_type
+                    - generic [ref=e552]: disk_size_gb = var.aws_worker_nodes.disk_size_gb
+                    - generic [ref=e553]: azs = var.aws_worker_nodes.availability_zones
+                    - generic [ref=e554]: "}"
+                    - generic [ref=e555]: "timeouts {"
+                    - generic [ref=e556]: create = "45m"
+                    - generic [ref=e557]: delete = "45m"
+                    - generic [ref=e558]: "}"
+                    - generic [ref=e559]: "}"
+                  - generic [ref=e560]:
+                    - button "Toggle word wrap" [ref=e561] [cursor=pointer]:
+                      - img [ref=e562]
+                    - button "Copy code to clipboard" [ref=e564] [cursor=pointer]:
+                      - generic [ref=e565]:
+                        - img [ref=e566]
+                        - img [ref=e568]
+                - heading "Terraform TestsDirect link to Terraform Tests" [level=2] [ref=e570]:
+                  - text: Terraform Tests
+                  - link "Direct link to Terraform Tests" [ref=e571] [cursor=pointer]:
+                    - /url: "#terraform-tests"
+                    - text: "#"
+                - paragraph [ref=e572]: Before starting the cluster deployment, test the Terraform code to ensure the resources will be provisioned correctly.
+                - paragraph [ref=e573]:
+                  - text: Issue the following command in your terminal to initialize Terraform. The
+                  - code [ref=e574]: init
+                  - text: command initializes the working directory that contains the Terraform files.
+                - generic [ref=e576]:
+                  - code [ref=e578]:
+                    - generic [ref=e579]: terraform init
+                  - button "Copy code to clipboard" [ref=e581] [cursor=pointer]:
+                    - generic [ref=e582]:
+                      - img [ref=e583]
+                      - img [ref=e585]
+                - code [ref=e590]:
+                  - generic [ref=e591]: Terraform has been successfully initialized!
+                - paragraph [ref=e592]:
+                  - text: Next, issue the
+                  - code [ref=e593]: terraform test
+                  - text: command to start the tests.
+                - generic [ref=e595]:
+                  - code [ref=e597]:
+                    - generic [ref=e598]: terraform test
+                  - button "Copy code to clipboard" [ref=e600] [cursor=pointer]:
+                    - generic [ref=e601]:
+                      - img [ref=e602]
+                      - img [ref=e604]
+                - paragraph [ref=e606]: A successful test execution will output the following.
+                - code [ref=e610]:
+                  - generic [ref=e611]: Success! 16 passed, 0 failed.
+                - heading "Input VariablesDirect link to Input Variables" [level=2] [ref=e612]:
+                  - text: Input Variables
+                  - link "Direct link to Input Variables" [ref=e613] [cursor=pointer]:
+                    - /url: "#input-variables"
+                    - text: "#"
+                - paragraph [ref=e614]:
+                  - text: To deploy a cluster using Terraform, you must first modify the
+                  - strong [ref=e615]: terraform.tfvars
+                  - text: file. Open it in the editor of your choice. The tutorial container includes the editor
+                  - link "Nano" [ref=e616] [cursor=pointer]:
+                    - /url: https://www.nano-editor.org
+                  - text: .
+                - paragraph [ref=e617]:
+                  - text: The file is structured with different sections. Each provider has a section with variables that need to be filled in, identified by the placeholder
+                  - code [ref=e618]: REPLACE_ME
+                  - text: . Additionally, there is a toggle variable named
+                  - code [ref=e619]: deploy-<cloud-provider>
+                  - text: available for each provider, which you can use to select the deployment environment.
+                - paragraph [ref=e620]:
+                  - text: In the
+                  - strong [ref=e621]: Palette Settings
+                  - text: section, modify the name of the
+                  - code [ref=e622]: palette-project
+                  - text: variable if you wish to deploy to a Palette project different from the default one.
+                - generic [ref=e624]:
+                  - code [ref=e626]:
+                    - generic [ref=e627]: "#####################"
+                    - generic [ref=e628]: "# Palette Settings"
+                    - generic [ref=e629]: "#####################"
+                    - generic [ref=e630]: "palette-project = \"Default\" # The name of your project in Palette."
+                  - button "Copy code to clipboard" [ref=e632] [cursor=pointer]:
+                    - generic [ref=e633]:
+                      - img [ref=e634]
+                      - img [ref=e636]
+                - paragraph [ref=e638]:
+                  - text: Next, in the
+                  - strong [ref=e639]: Hello Universe Configuration
+                  - text: section, provide values for the database password and authentication token for the Hello Universe pack. For example, you can use the value
+                  - code [ref=e640]: password
+                  - text: for the database password and the default token provided in the
+                  - link "Hello Universe" [ref=e641] [cursor=pointer]:
+                    - /url: https://github.com/spectrocloud/hello-universe/tree/main?tab=readme-ov-file#reverse-proxy-with-kubernetes
+                  - text: repository for the authentication token.
+                - generic [ref=e643]:
+                  - code [ref=e645]:
+                    - generic [ref=e646]: "##############################"
+                    - generic [ref=e647]: "# Hello Universe Configuration"
+                    - generic [ref=e648]: "##############################"
+                    - generic [ref=e649]: "app_namespace = \"hello-universe\" # The namespace in which the application will be deployed."
+                    - generic [ref=e650]: "app_port = 8080 # The cluster port number on which the service will listen for incoming traffic."
+                    - generic [ref=e651]: "replicas_number = 1 # The number of pods to be created."
+                    - generic [ref=e652]: "db_password = \"REPLACE ME\" # The database password to connect to the API database."
+                    - generic [ref=e653]: "auth_token = \"REPLACE ME\" # The auth token for the API connection."
+                  - generic [ref=e654]:
+                    - button "Toggle word wrap" [ref=e655] [cursor=pointer]:
+                      - img [ref=e656]
+                    - button "Copy code to clipboard" [ref=e658] [cursor=pointer]:
+                      - generic [ref=e659]:
+                        - img [ref=e660]
+                        - img [ref=e662]
+                - paragraph [ref=e664]:
+                  - text: Locate the AWS provider section and change
+                  - code [ref=e665]: deploy-aws = false
+                  - text: to
+                  - code [ref=e666]: deploy-aws = true
+                  - text: . Additionally, replace all occurrences of
+                  - code [ref=e667]: REPLACE_ME
+                  - text: with their corresponding values, such as those for the
+                  - code [ref=e668]: aws-cloud-account-name
+                  - text: ","
+                  - code [ref=e669]: aws-region
+                  - text: ","
+                  - code [ref=e670]: aws-key-pair-name
+                  - text: ", and"
+                  - code [ref=e671]: availability_zones
+                  - text: variables. You can also update the values for the nodes in the control plane or worker node pools as needed.
+                - generic [ref=e672]:
+                  - generic [ref=e673]:
+                    - img [ref=e675]
+                    - text: warning
+                  - paragraph [ref=e678]:
+                    - text: Note that
+                    - code [ref=e679]: aws-cloud-account-name
+                    - text: must be replaced with the name of the AWS cloud account registered in Palette. Additionally, ensure that the SSH key pair specified in
+                    - code [ref=e680]: aws-key-pair-name
+                    - text: is available in the same region specified by
+                    - code [ref=e681]: aws-region
+                    - text: . For example, if
+                    - code [ref=e682]: aws-region
+                    - text: is set to
+                    - code [ref=e683]: us-east-1
+                    - text: ", use the name of a key pair that exists in the"
+                    - code [ref=e684]: us-east-1
+                    - text: region.
+                - generic [ref=e686]:
+                  - code [ref=e688]:
+                    - generic [ref=e689]: "###########################"
+                    - generic [ref=e690]: "# AWS Deployment Settings"
+                    - generic [ref=e691]: "###########################"
+                    - generic [ref=e692]: "deploy-aws = false # Set to true to deploy to AWS."
+                    - generic [ref=e693]: "deploy-aws-kubecost = false # Set to true to deploy to AWS and include Kubecost to your cluster profile."
+                    - generic [ref=e694]: aws-cloud-account-name = "REPLACE ME"
+                    - generic [ref=e695]: aws-region = "REPLACE ME"
+                    - generic [ref=e696]: aws-key-pair-name = "REPLACE ME"
+                    - generic [ref=e697]: "aws_control_plane_nodes = {"
+                    - generic [ref=e698]: count = "1"
+                    - generic [ref=e699]: control_plane = true
+                    - generic [ref=e700]: instance_type = "m4.2xlarge"
+                    - generic [ref=e701]: disk_size_gb = "60"
+                    - generic [ref=e702]: "availability_zones = [\"REPLACE ME\"] # If you want to deploy to multiple AZs, add them here. Example: [\"us-east-1a\", \"us-east-1b\"]."
+                    - generic [ref=e703]: "}"
+                    - generic [ref=e704]: "aws_worker_nodes = {"
+                    - generic [ref=e705]: count = "1"
+                    - generic [ref=e706]: control_plane = false
+                    - generic [ref=e707]: instance_type = "m4.2xlarge"
+                    - generic [ref=e708]: disk_size_gb = "60"
+                    - generic [ref=e709]: "availability_zones = [\"REPLACE ME\"] # If you want to deploy to multiple AZs, add them here. Example: [\"us-east-1a\", \"us-east-1b\"]."
+                    - generic [ref=e710]: "}"
+                  - generic [ref=e711]:
+                    - button "Toggle word wrap" [ref=e712] [cursor=pointer]:
+                      - img [ref=e713]
+                    - button "Copy code to clipboard" [ref=e715] [cursor=pointer]:
+                      - generic [ref=e716]:
+                        - img [ref=e717]
+                        - img [ref=e719]
+                - paragraph [ref=e721]: When you are done making the required changes, save the file.
+                - heading "Deploy the ClusterDirect link to Deploy the Cluster" [level=2] [ref=e722]:
+                  - text: Deploy the Cluster
+                  - link "Direct link to Deploy the Cluster" [ref=e723] [cursor=pointer]:
+                    - /url: "#deploy-the-cluster"
+                    - text: "#"
+                - paragraph [ref=e724]:
+                  - text: Before starting the cluster provisioning, export your
+                  - link "Palette API key" [ref=e725] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/aws/setup/#create-a-palette-api-key
+                  - text: as an environment variable. This step allows the Terraform code to authenticate with the Palette API.
+                - generic [ref=e727]:
+                  - code [ref=e729]:
+                    - generic [ref=e730]: export SPECTROCLOUD_APIKEY=<Your-Spectro-Cloud-API-key>
+                  - button "Copy code to clipboard" [ref=e732] [cursor=pointer]:
+                    - generic [ref=e733]:
+                      - img [ref=e734]
+                      - img [ref=e736]
+                - generic [ref=e738]:
+                  - generic [ref=e739]:
+                    - img [ref=e741]
+                    - text: warning
+                  - paragraph [ref=e744]:
+                    - text: Before deploying the resources, ensure that there are no active clusters named
+                    - code [ref=e745]: aws-cluster
+                    - text: or cluster profiles named
+                    - code [ref=e746]: tf-aws-profile
+                    - text: in your Palette project.
+                - paragraph [ref=e747]:
+                  - text: Issue the
+                  - code [ref=e748]: plan
+                  - text: command to preview the resources that Terraform will create.
+                - generic [ref=e750]:
+                  - code [ref=e752]:
+                    - generic [ref=e753]: terraform plan
+                  - button "Copy code to clipboard" [ref=e755] [cursor=pointer]:
+                    - generic [ref=e756]:
+                      - img [ref=e757]
+                      - img [ref=e759]
+                - paragraph [ref=e761]:
+                  - text: "The output indicates that three new resources will be created: two versions of the AWS cluster profile and the host cluster. The host cluster will use version"
+                  - code [ref=e762]: 1.0.0
+                  - text: of the cluster profile.
+                - generic [ref=e764]:
+                  - code [ref=e766]:
+                    - generic [ref=e767]: "Plan: 3 to add, 0 to change, 0 to destroy."
+                  - button "Copy code to clipboard" [ref=e769] [cursor=pointer]:
+                    - generic [ref=e770]:
+                      - img [ref=e771]
+                      - img [ref=e773]
+                - paragraph [ref=e775]:
+                  - text: To deploy the resources, use the
+                  - code [ref=e776]: apply
+                  - text: command.
+                - generic [ref=e778]:
+                  - code [ref=e780]:
+                    - generic [ref=e781]: terraform apply -auto-approve
+                  - button "Copy code to clipboard" [ref=e783] [cursor=pointer]:
+                    - generic [ref=e784]:
+                      - img [ref=e785]
+                      - img [ref=e787]
+                - paragraph [ref=e789]:
+                  - text: To check that the cluster profile was created correctly, log in to
+                  - link "Palette" [ref=e790] [cursor=pointer]:
+                    - /url: https://console.spectrocloud.com
+                  - text: ", and click"
+                  - strong [ref=e791]: Profiles
+                  - text: from the left
+                  - strong [ref=e792]: Main Menu
+                  - text: . Locate the cluster profile named
+                  - code [ref=e793]: tf-aws-profile
+                  - text: . Click on the cluster profile to review its layers and versions.
+                - paragraph [ref=e794]:
+                  - img "A view of the cluster profile" [ref=e795]
+                - paragraph [ref=e796]:
+                  - text: You can also check the cluster creation process by selecting
+                  - strong [ref=e797]: Clusters
+                  - text: from the left
+                  - strong [ref=e798]: Main Menu
+                  - text: .
+                - paragraph [ref=e799]:
+                  - img "Update the cluster" [ref=e800]
+                - paragraph [ref=e801]: Select your cluster to review its details page, which contains the status, cluster profile, event logs, and more.
+                - paragraph [ref=e802]:
+                  - text: The cluster deployment may take 15 to 30 minutes depending on the cloud provider, cluster profile, cluster size, and the node pool configurations provided. You can learn more about the deployment progress by reviewing the event log. Click on the
+                  - strong [ref=e803]: Events
+                  - text: tab to check the log.
+                - paragraph [ref=e804]:
+                  - img "Update the cluster" [ref=e805]
+                - heading "Verify the ApplicationDirect link to Verify the Application" [level=3] [ref=e806]:
+                  - text: Verify the Application
+                  - link "Direct link to Verify the Application" [ref=e807] [cursor=pointer]:
+                    - /url: "#verify-the-application"
+                    - text: "#"
+                - paragraph [ref=e808]:
+                  - text: In Palette, navigate to the left
+                  - strong [ref=e809]: Main Menu
+                  - text: and select
+                  - strong [ref=e810]: Clusters
+                  - text: .
+                - paragraph [ref=e811]:
+                  - text: Select your cluster to view its
+                  - strong [ref=e812]: Overview
+                  - text: tab. When the application is deployed and ready for network traffic, indicated in the
+                  - strong [ref=e813]: Services
+                  - text: field, Palette exposes the service URL. Click on the URL for port
+                  - strong [ref=e814]: :8080
+                  - text: to access the Hello Universe application.
+                - generic [ref=e815]:
+                  - generic [ref=e816]:
+                    - img [ref=e818]
+                    - text: warning
+                  - paragraph [ref=e821]: It can take up to three minutes for DNS to properly resolve the public load balancer URL. We recommend waiting a few moments before clicking on the service URL to prevent the browser from caching an unresolved DNS request.
+                - paragraph [ref=e822]:
+                  - img "Deployed application" [ref=e823]
+                - paragraph [ref=e824]: Welcome to the Spacetastic astronomy education platform. Feel free to explore the pages and learn more about space. The statistics page offers information on visitor counts on your deployed cluster.
+                - heading "Version Cluster ProfilesDirect link to Version Cluster Profiles" [level=2] [ref=e825]:
+                  - text: Version Cluster Profiles
+                  - link "Direct link to Version Cluster Profiles" [ref=e826] [cursor=pointer]:
+                    - /url: "#version-cluster-profiles"
+                    - text: "#"
+                - paragraph [ref=e827]: Palette supports the creation of multiple cluster profile versions using the same profile name. This provides you with better change visibility and control over the layers in your host clusters. Profile versions are commonly used for adding or removing layers and pack configuration updates.
+                - paragraph [ref=e828]:
+                  - text: The version number of a given profile must be unique and use the semantic versioning format
+                  - code [ref=e829]: major.minor.patch
+                  - text: . In this tutorial, you used Terraform to deploy two versions of an AWS cluster profile. The snippet below displays a segment of the Terraform cluster profile resource version
+                  - code [ref=e830]: 1.0.0
+                  - text: that was deployed.
+                - generic [ref=e832]:
+                  - code [ref=e834]:
+                    - generic [ref=e835]: "resource \"spectrocloud_cluster_profile\" \"aws-profile\" {"
+                    - generic [ref=e836]: "count = var.deploy-aws ? 1 : 0"
+                    - generic [ref=e837]: name = "tf-aws-profile"
+                    - generic [ref=e838]: description = "A basic cluster profile for AWS"
+                    - generic [ref=e839]: tags = concat(var.tags, ["env:aws"])
+                    - generic [ref=e840]: cloud = "aws"
+                    - generic [ref=e841]: type = "cluster"
+                    - generic [ref=e842]: version = "1.0.0"
+                  - button "Copy code to clipboard" [ref=e844] [cursor=pointer]:
+                    - generic [ref=e845]:
+                      - img [ref=e846]
+                      - img [ref=e848]
+                - paragraph [ref=e850]:
+                  - text: Open the
+                  - strong [ref=e851]: terraform.tfvars
+                  - text: file, set the
+                  - code [ref=e852]: deploy-aws-kubecost
+                  - text: variable to true, and save the file. Once applied, the host cluster will use version
+                  - code [ref=e853]: 1.1.0
+                  - text: of the cluster profile with the Kubecost pack.
+                - paragraph [ref=e854]:
+                  - text: The snippet below displays the segment of the Terraform resource that creates the cluster profile version
+                  - code [ref=e855]: 1.1.0
+                  - text: . Note how the name
+                  - code [ref=e856]: tf-aws-profile
+                  - text: is the same as in the first cluster profile resource, but the version is different.
+                - generic [ref=e858]:
+                  - code [ref=e860]:
+                    - generic [ref=e861]: "resource \"spectrocloud_cluster_profile\" \"aws-profile-kubecost\" {"
+                    - generic [ref=e862]: "count = var.deploy-aws-kubecost ? 1 : 0"
+                    - generic [ref=e863]: name = "tf-aws-profile"
+                    - generic [ref=e864]: description = "A basic cluster profile for AWS with Kubecost"
+                    - generic [ref=e865]: tags = concat(var.tags, ["env:aws"])
+                    - generic [ref=e866]: cloud = "aws"
+                    - generic [ref=e867]: type = "cluster"
+                    - generic [ref=e868]: version = "1.1.0"
+                  - button "Copy code to clipboard" [ref=e870] [cursor=pointer]:
+                    - generic [ref=e871]:
+                      - img [ref=e872]
+                      - img [ref=e874]
+                - paragraph [ref=e876]: In the terminal window, issue the following command to plan the changes.
+                - generic [ref=e878]:
+                  - code [ref=e880]:
+                    - generic [ref=e881]: terraform plan
+                  - button "Copy code to clipboard" [ref=e883] [cursor=pointer]:
+                    - generic [ref=e884]:
+                      - img [ref=e885]
+                      - img [ref=e887]
+                - paragraph [ref=e889]:
+                  - text: The output states that one resource will be modified. The deployed cluster will now use version
+                  - code [ref=e890]: 1.1.0
+                  - text: of the cluster profile.
+                - code [ref=e894]:
+                  - generic [ref=e895]: "Plan: 0 to add, 1 to change, 0 to destroy."
+                - paragraph [ref=e896]:
+                  - text: Issue the
+                  - code [ref=e897]: apply
+                  - text: command to deploy the changes.
+                - generic [ref=e899]:
+                  - code [ref=e901]:
+                    - generic [ref=e902]: terraform apply -auto-approve
+                  - button "Copy code to clipboard" [ref=e904] [cursor=pointer]:
+                    - generic [ref=e905]:
+                      - img [ref=e906]
+                      - img [ref=e908]
+                - paragraph [ref=e910]: Palette will now reconcile the current state of your workloads with the desired state specified by the new cluster profile version.
+                - paragraph [ref=e911]:
+                  - text: To visualize the reconciliation behavior, log in to
+                  - link "Palette" [ref=e912] [cursor=pointer]:
+                    - /url: https://console.spectrocloud.com
+                  - text: ", and click"
+                  - strong [ref=e913]: Clusters
+                  - text: from the left
+                  - strong [ref=e914]: Main Menu
+                  - text: .
+                - paragraph [ref=e915]:
+                  - text: Select the cluster named
+                  - code [ref=e916]: aws-cluster
+                  - text: . Click on the
+                  - strong [ref=e917]: Events
+                  - text: tab. Note how a cluster reconciliation action was triggered due to cluster profile changes.
+                - paragraph [ref=e918]:
+                  - img "Image that shows the cluster profile reconciliation behavior" [ref=e919]
+                - paragraph [ref=e920]:
+                  - text: Next, click on the
+                  - strong [ref=e921]: Profile
+                  - text: tab. Observe that the cluster is now using version
+                  - code [ref=e922]: 1.1.0
+                  - text: of the
+                  - code [ref=e923]: tf-aws-profile
+                  - text: cluster profile.
+                - paragraph [ref=e924]:
+                  - img "Image that shows the new cluster profile version with Kubecost" [ref=e925]
+                - paragraph [ref=e926]:
+                  - text: Once the changes have been completed, Palette marks the cluster layers with a green status indicator. Click the
+                  - strong [ref=e927]: Overview
+                  - text: tab to verify that the Kubecost pack was successfully deployed.
+                - paragraph [ref=e928]:
+                  - img "Image that shows the cluster with Kubecost" [ref=e929]
+                - paragraph [ref=e930]:
+                  - text: Next, download the
+                  - link "kubeconfig" [ref=e931] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/kubeconfig/
+                  - text: file for your cluster from the Palette UI. This file enables you and other users to issue
+                  - code [ref=e932]: kubectl
+                  - text: commands against the host cluster.
+                - paragraph [ref=e933]:
+                  - img "Image that shows the cluster&#39;s kubeconfig file location" [ref=e934]
+                - paragraph [ref=e935]:
+                  - text: Open a new terminal window and set the environment variable
+                  - code [ref=e936]: KUBECONFIG
+                  - text: to point to the kubeconfig file you downloaded.
+                - generic [ref=e938]:
+                  - code [ref=e940]:
+                    - generic [ref=e941]: export KUBECONFIG=~/Downloads/admin.aws-cluster.kubeconfig
+                  - button "Copy code to clipboard" [ref=e943] [cursor=pointer]:
+                    - generic [ref=e944]:
+                      - img [ref=e945]
+                      - img [ref=e947]
+                - paragraph [ref=e949]:
+                  - text: Forward the Kubecost UI to your local network. The Kubecost dashboard is not exposed externally by default, so the command below will allow you to access it locally on port
+                  - strong [ref=e950]: "9090"
+                  - text: . If port 9090 is already taken, you can choose a different one.
+                - generic [ref=e952]:
+                  - code [ref=e954]:
+                    - generic [ref=e955]: kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090
+                  - generic [ref=e956]:
+                    - button "Toggle word wrap" [ref=e957] [cursor=pointer]:
+                      - img [ref=e958]
+                    - button "Copy code to clipboard" [ref=e960] [cursor=pointer]:
+                      - generic [ref=e961]:
+                        - img [ref=e962]
+                        - img [ref=e964]
+                - paragraph [ref=e966]:
+                  - text: Open your browser window and navigate to
+                  - code [ref=e967]: http://localhost:9090
+                  - text: . The Kubecost UI provides you with a variety of cost information about your cluster. Read more about
+                  - link "Navigating the Kubecost UI" [ref=e968] [cursor=pointer]:
+                    - /url: https://docs.kubecost.com/using-kubecost/navigating-the-kubecost-ui
+                  - text: to make the most of the cost analyzer pack.
+                - paragraph [ref=e969]:
+                  - img "Image that shows the Kubecost UI" [ref=e970]
+                - paragraph [ref=e971]:
+                  - text: Once you are done exploring the Kubecost dashboard, stop the
+                  - code [ref=e972]: kubectl port-forward
+                  - text: command by closing the terminal window it is executing from.
+                - heading "Roll Back Cluster ProfilesDirect link to Roll Back Cluster Profiles" [level=2] [ref=e973]:
+                  - text: Roll Back Cluster Profiles
+                  - link "Direct link to Roll Back Cluster Profiles" [ref=e974] [cursor=pointer]:
+                    - /url: "#roll-back-cluster-profiles"
+                    - text: "#"
+                - paragraph [ref=e975]: One of the key advantages of using cluster profile versions is that they make it possible to maintain a copy of previously known working states. The ability to roll back to a previously working cluster profile in one action shortens the time to recovery in the event of an incident.
+                - paragraph [ref=e976]: The process of rolling back to a previous version using Terraform is similar to the process of applying a new version.
+                - paragraph [ref=e977]:
+                  - text: Open the
+                  - strong [ref=e978]: terraform.tfvars
+                  - text: file, set the
+                  - code [ref=e979]: deploy-aws-kubecost
+                  - text: variable to false, and save the file. Once applied, this action will make the active cluster use version
+                  - strong [ref=e980]: 1.0.0
+                  - text: of the cluster profile again.
+                - paragraph [ref=e981]: In the terminal window, issue the following command to plan the changes.
+                - generic [ref=e983]:
+                  - code [ref=e985]:
+                    - generic [ref=e986]: terraform plan
+                  - button "Copy code to clipboard" [ref=e988] [cursor=pointer]:
+                    - generic [ref=e989]:
+                      - img [ref=e990]
+                      - img [ref=e992]
+                - paragraph [ref=e994]:
+                  - text: The output states that the deployed cluster will now use version
+                  - code [ref=e995]: 1.0.0
+                  - text: of the cluster profile.
+                - code [ref=e999]:
+                  - generic [ref=e1000]: "Plan: 0 to add, 1 to change, 0 to destroy."
+                - paragraph [ref=e1001]:
+                  - text: Issue the
+                  - code [ref=e1002]: apply
+                  - text: command to deploy the changes.
+                - generic [ref=e1004]:
+                  - code [ref=e1006]:
+                    - generic [ref=e1007]: terraform apply -auto-approve
+                  - button "Copy code to clipboard" [ref=e1009] [cursor=pointer]:
+                    - generic [ref=e1010]:
+                      - img [ref=e1011]
+                      - img [ref=e1013]
+                - paragraph [ref=e1015]:
+                  - text: Palette now makes the changes required for the cluster to return to the state specified in version
+                  - code [ref=e1016]: 1.0.0
+                  - text: of your cluster profile. Once your changes have completed, Palette marks your layers with the green status indicator.
+                - paragraph [ref=e1017]:
+                  - img "Image that shows the cluster using version 1.0.0 of the cluster profile" [ref=e1018]
+                - heading "CleanupDirect link to Cleanup" [level=2] [ref=e1019]:
+                  - text: Cleanup
+                  - link "Direct link to Cleanup" [ref=e1020] [cursor=pointer]:
+                    - /url: "#cleanup"
+                    - text: "#"
+                - paragraph [ref=e1021]:
+                  - text: Use the following steps to clean up the resources you created for the tutorial. Use the
+                  - code [ref=e1022]: destroy
+                  - text: command to remove all the resources you created through Terraform.
+                - generic [ref=e1024]:
+                  - code [ref=e1026]:
+                    - generic [ref=e1027]: terraform destroy --auto-approve
+                  - button "Copy code to clipboard" [ref=e1029] [cursor=pointer]:
+                    - generic [ref=e1030]:
+                      - img [ref=e1031]
+                      - img [ref=e1033]
+                - paragraph [ref=e1035]:
+                  - text: A successful execution of
+                  - code [ref=e1036]: terraform destroy
+                  - text: will output the following.
+                - generic [ref=e1038]:
+                  - code [ref=e1040]:
+                    - generic [ref=e1041]: "Destroy complete! Resources: 3 destroyed."
+                  - button "Copy code to clipboard" [ref=e1043] [cursor=pointer]:
+                    - generic [ref=e1044]:
+                      - img [ref=e1045]
+                      - img [ref=e1047]
+                - generic [ref=e1049]:
+                  - generic [ref=e1050]:
+                    - img [ref=e1052]
+                    - text: info
+                  - paragraph [ref=e1055]:
+                    - text: If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for force delete. To trigger a force delete action, navigate to the cluster’s details page and click on
+                    - strong [ref=e1056]: Settings
+                    - text: . Click on
+                    - strong [ref=e1057]: Force Delete Cluster
+                    - text: to delete the cluster. Palette automatically removes clusters stuck in the cluster deletion phase for over 24 hours.
+                - paragraph [ref=e1058]:
+                  - text: If you are using the tutorial container, type
+                  - code [ref=e1059]: exit
+                  - text: in your terminal session and press the
+                  - strong [ref=e1060]: Enter
+                  - text: key. Next, issue the following command to stop and remove the container.
+                - generic [ref=e1061]:
+                  - tablist [ref=e1062]:
+                    - tab "Docker" [selected] [ref=e1063] [cursor=pointer]
+                    - tab "Podman" [ref=e1064] [cursor=pointer]
+                  - tabpanel [ref=e1066]:
+                    - generic [ref=e1068]:
+                      - code [ref=e1070]:
+                        - generic [ref=e1071]: docker stop tutorialContainer && \
+                        - generic [ref=e1072]: docker rmi --force ghcr.io/spectrocloud/tutorials:1.3.0
+                      - button "Copy code to clipboard" [ref=e1074] [cursor=pointer]:
+                        - generic [ref=e1075]:
+                          - img [ref=e1076]
+                          - img [ref=e1078]
+                - heading "Wrap-UpDirect link to Wrap-Up" [level=2] [ref=e1080]:
+                  - text: Wrap-Up
+                  - link "Direct link to Wrap-Up" [ref=e1081] [cursor=pointer]:
+                    - /url: "#wrap-up"
+                    - text: "#"
+                - paragraph [ref=e1082]: In this tutorial, you learned how to create different versions of a cluster profile using Terraform. You deployed a host AWS cluster and then updated it to use a different version of a cluster profile. Finally, you learned how to perform cluster profile roll backs.
+                - paragraph [ref=e1083]:
+                  - text: We encourage you to check out the
+                  - link "Scale, Upgrade, and Secure Clusters" [ref=e1084] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/aws/scale-secure-cluster/
+                  - text: tutorial to learn how to perform common Day-2 operations on your deployed clusters.
+                - heading "🧑‍🚀 Catch up with SpacetasticDirect link to 🧑‍🚀 Catch up with Spacetastic" [level=2] [ref=e1085]:
+                  - text: 🧑‍🚀 Catch up with Spacetastic
+                  - link "Direct link to 🧑‍🚀 Catch up with Spacetastic" [ref=e1086] [cursor=pointer]:
+                    - /url: "#-catch-up-with-spacetastic"
+                    - text: "#"
+                - paragraph [ref=e1087]: Wren and Kai have followed this tutorial and have learned how Palette supports IaC through Terraform. They found the essentials covered to be a great introduction to IaC, and it gives them the confidence to kick off this initiative at Spacetastic.
+                - blockquote [ref=e1088]:
+                  - paragraph [ref=e1089]: "\"I'd say that deploying Palette clusters with Terraform is even more convenient than through the UI,\" says Kai. \"The Palette Terraform provider includes a lot of the same functionality that the UI provides.\""
+                  - paragraph [ref=e1090]: "\"Yes! I definitely agree. I'm a Terraform novice and I could follow along with this tutorial,\" says Wren. \"This has definitely inspired me to make our IaC adoption a priority in the medium term future.\""
+              - generic [ref=e1091]:
+                - generic [ref=e1093]:
+                  - text: "Tags:"
+                  - list [ref=e1094]:
+                    - listitem [ref=e1095]:
+                      - link "getting-started" [ref=e1096] [cursor=pointer]:
+                        - /url: /tags/getting-started/
+                    - listitem [ref=e1097]:
+                      - link "aws" [ref=e1098] [cursor=pointer]:
+                        - /url: /tags/aws/
+                    - listitem [ref=e1099]:
+                      - link "terraform" [ref=e1100] [cursor=pointer]:
+                        - /url: /tags/terraform/
+                    - listitem [ref=e1101]:
+                      - link "tutorial" [ref=e1102] [cursor=pointer]:
+                        - /url: /tags/tutorial/
+                - link "Edit this page" [ref=e1105] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/tutorials/getting-started/palette/aws/deploy-manage-k8s-cluster-tf.md
+                  - img [ref=e1106]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e1110]:
+              - link "Previous « Deploy Cluster Profile Updates" [ref=e1111] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette/aws/update-k8s-cluster/
+                - generic [ref=e1112]: Previous
+                - generic [ref=e1113]: « Deploy Cluster Profile Updates
+              - link "Next Scale, Upgrade, and Secure Clusters »" [ref=e1114] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette/aws/scale-secure-cluster/
+                - generic [ref=e1115]: Next
+                - generic [ref=e1116]: Scale, Upgrade, and Secure Clusters »
+          - list [ref=e1119]:
+            - listitem [ref=e1120]:
+              - link "🧑‍🚀 Back at Spacetastic HQ" [ref=e1121] [cursor=pointer]:
+                - /url: "#-back-at-spacetastic-hq"
+            - listitem [ref=e1122]:
+              - link "Prerequisites" [ref=e1123] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e1124]:
+              - link "Set Up Local Environment" [ref=e1125] [cursor=pointer]:
+                - /url: "#set-up-local-environment"
+            - listitem [ref=e1126]:
+              - link "Resources Review" [ref=e1127] [cursor=pointer]:
+                - /url: "#resources-review"
+            - listitem [ref=e1128]:
+              - link "Terraform Tests" [ref=e1129] [cursor=pointer]:
+                - /url: "#terraform-tests"
+            - listitem [ref=e1130]:
+              - link "Input Variables" [ref=e1131] [cursor=pointer]:
+                - /url: "#input-variables"
+            - listitem [ref=e1132]:
+              - link "Deploy the Cluster" [ref=e1133] [cursor=pointer]:
+                - /url: "#deploy-the-cluster"
+            - listitem [ref=e1134]:
+              - link "Version Cluster Profiles" [ref=e1135] [cursor=pointer]:
+                - /url: "#version-cluster-profiles"
+            - listitem [ref=e1136]:
+              - link "Roll Back Cluster Profiles" [ref=e1137] [cursor=pointer]:
+                - /url: "#roll-back-cluster-profiles"
+            - listitem [ref=e1138]:
+              - link "Cleanup" [ref=e1139] [cursor=pointer]:
+                - /url: "#cleanup"
+            - listitem [ref=e1140]:
+              - link "Wrap-Up" [ref=e1141] [cursor=pointer]:
+                - /url: "#wrap-up"
+            - listitem [ref=e1142]:
+              - link "🧑‍🚀 Catch up with Spacetastic" [ref=e1143] [cursor=pointer]:
+                - /url: "#-catch-up-with-spacetastic"
+  - button "Project Logo Ask AI" [ref=e1144] [cursor=pointer]:
+    - generic [ref=e1147]:
+      - img "Project Logo" [ref=e1148]
+      - paragraph [ref=e1149]: Ask AI
+```

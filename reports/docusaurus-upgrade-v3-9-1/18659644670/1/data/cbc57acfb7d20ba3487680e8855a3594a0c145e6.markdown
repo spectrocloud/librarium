@@ -1,0 +1,557 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Palette Tutorials" [ref=e41] [cursor=pointer]:
+                  - /url: /tutorials/
+                  - img [ref=e43]
+                  - text: Palette Tutorials
+              - listitem [ref=e45]:
+                - generic [ref=e46]:
+                  - link "Getting Started" [expanded] [ref=e47] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/
+                    - img [ref=e49]
+                    - text: Getting Started
+                  - button "Toggle the collapsible sidebar category 'Getting Started'" [ref=e51] [cursor=pointer]
+                - list [ref=e52]:
+                  - listitem [ref=e53]:
+                    - generic [ref=e54]:
+                      - link "Palette" [ref=e55] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette/
+                      - button "Toggle the collapsible sidebar category 'Palette'" [ref=e56] [cursor=pointer]
+                  - listitem [ref=e57]:
+                    - generic [ref=e58]:
+                      - link "Palette Edge" [expanded] [ref=e59] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette-edge/
+                      - button "Toggle the collapsible sidebar category 'Palette Edge'" [ref=e60] [cursor=pointer]
+                    - list [ref=e61]:
+                      - listitem [ref=e62]:
+                        - link "Introduction to Edge" [ref=e63] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/introduction-edge/
+                      - listitem [ref=e64]:
+                        - link "Prepare User Data" [ref=e65] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/prepare-user-data/
+                      - listitem [ref=e66]:
+                        - link "Build Edge Artifacts" [ref=e67] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/build-edge-artifacts/
+                      - listitem [ref=e68]:
+                        - link "Create Edge Cluster Profile" [ref=e69] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/edge-cluster-profile/
+                      - listitem [ref=e70]:
+                        - link "Prepare Edge Host" [ref=e71] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/prepare-edge-host/
+                      - listitem [ref=e72]:
+                        - link "Deploy Edge Cluster" [ref=e73] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/deploy-edge-cluster/
+                  - listitem [ref=e74]:
+                    - generic [ref=e75]:
+                      - link "Additional Capabilities" [ref=e76] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/additional-capabilities/
+                      - button "Toggle the collapsible sidebar category 'Additional Capabilities'" [ref=e77] [cursor=pointer]
+              - listitem [ref=e78]:
+                - generic [ref=e79]:
+                  - link "Packs and Registries" [ref=e80] [cursor=pointer]:
+                    - /url: /tutorials/packs-registries/
+                    - img [ref=e82]
+                    - text: Packs and Registries
+                  - button "Toggle the collapsible sidebar category 'Packs and Registries'" [ref=e84] [cursor=pointer]
+              - listitem [ref=e85]:
+                - generic [ref=e86]:
+                  - link "Profiles" [ref=e87] [cursor=pointer]:
+                    - /url: /tutorials/profiles/
+                    - img [ref=e89]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e93] [cursor=pointer]
+              - listitem [ref=e94]:
+                - generic [ref=e95]:
+                  - link "Clusters" [ref=e96] [cursor=pointer]:
+                    - /url: /tutorials/clusters/
+                    - img [ref=e98]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e104] [cursor=pointer]
+              - listitem [ref=e105]:
+                - generic [ref=e106]:
+                  - link "Palette Dev Engine" [ref=e107] [cursor=pointer]:
+                    - /url: /tutorials/pde/
+                    - img [ref=e109]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e111] [cursor=pointer]
+              - listitem [ref=e112]:
+                - button "Privacy Settings" [ref=e113] [cursor=pointer]
+      - main [ref=e114]:
+        - generic [ref=e116]:
+          - generic [ref=e118]:
+            - article [ref=e119]:
+              - navigation "Breadcrumbs" [ref=e120]:
+                - list [ref=e121]:
+                  - listitem [ref=e122]:
+                    - link "Home page" [ref=e123] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e124]
+                  - listitem [ref=e126]:
+                    - link "Getting Started" [ref=e127] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/
+                  - listitem [ref=e128]:
+                    - link "Palette Edge" [ref=e129] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette-edge/
+                  - listitem [ref=e130]:
+                    - generic [ref=e131]: Deploy Edge Cluster
+              - generic [ref=e132]:
+                - heading "Deploy Edge Cluster" [level=1] [ref=e134]
+                - paragraph [ref=e135]: This is the final tutorial in the Edge Getting Started series. It teaches you how to deploy an Edge Kubernetes cluster in Palette using the provider images, Edge host, and cluster profile created in the previous tutorials.
+                - paragraph [ref=e136]:
+                  - text: You will learn how to select the desired cluster profile, assign the registered Edge host to the cluster, configure the number of nodes, and verify the deployment was successful by accessing the demo application included in the cluster profile,
+                  - link "Hello Universe" [ref=e137] [cursor=pointer]:
+                    - /url: https://github.com/spectrocloud/hello-universe
+                  - text: .
+                - paragraph [ref=e138]:
+                  - img "Palette Edge architecture diagram" [ref=e139]
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e140]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e141] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e142]:
+                  - listitem [ref=e143]:
+                    - text: You have completed the
+                    - link "Build Edge Artifacts" [ref=e144] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette-edge/build-edge-artifacts/
+                    - text: tutorial and pushed the provider images to a registry.
+                  - listitem [ref=e145]:
+                    - text: You have completed the
+                    - link "Prepare Edge Host" [ref=e146] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette-edge/prepare-edge-host/
+                    - text: tutorial and have a registered Edge host in Palette.
+                  - listitem [ref=e147]:
+                    - text: You have completed the
+                    - link "Create Edge Cluster Profile" [ref=e148] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette-edge/edge-cluster-profile/
+                    - text: tutorial and have an Edge cluster profile created in Palette.
+                  - listitem [ref=e149]:
+                    - text: You have access to
+                    - link "Palette's UI" [ref=e150] [cursor=pointer]:
+                      - /url: https://www.spectrocloud.com/get-started
+                    - text: .
+                  - listitem [ref=e151]: You have a DHCP-enabled network with one available IP address on the same network as the Edge host. You will use this IP as the cluster's Virtual IP (VIP) address.
+                - heading "Deploy Edge ClusterDirect link to Deploy Edge Cluster" [level=2] [ref=e152]:
+                  - text: Deploy Edge Cluster
+                  - link "Direct link to Deploy Edge Cluster" [ref=e153] [cursor=pointer]:
+                    - /url: "#deploy-edge-cluster"
+                    - text: "#"
+                - paragraph [ref=e154]:
+                  - text: Log in to
+                  - link "Palette" [ref=e155] [cursor=pointer]:
+                    - /url: https://console.spectrocloud.com/
+                  - text: .
+                - paragraph [ref=e156]:
+                  - text: From the left main menu, select
+                  - strong [ref=e157]: Clusters
+                  - text: ", then click"
+                  - strong [ref=e158]: Create Cluster
+                  - text: . If you already have clusters deployed, select
+                  - strong [ref=e159]: Add New Cluster
+                  - text: instead. Ensure you are in the
+                  - strong [ref=e160]: Default
+                  - text: project.
+                - paragraph [ref=e161]:
+                  - text: Palette prompts you to select the cluster type. Select
+                  - strong [ref=e162]: Edge Native
+                  - text: and click the
+                  - strong [ref=e163]: Start Edge Native Configuration
+                  - text: button.
+                - paragraph [ref=e164]:
+                  - text: In the
+                  - strong [ref=e165]: Basic Information
+                  - text: section, set the cluster name to
+                  - code [ref=e166]: gs-edge-cluster
+                  - text: ", add a brief cluster description, and assign the tag"
+                  - code [ref=e167]: env:edge
+                  - text: . Click
+                  - strong [ref=e168]: Next
+                  - text: to proceed.
+                - paragraph [ref=e169]:
+                  - text: On the
+                  - strong [ref=e170]: Cluster setup type
+                  - text: window, choose
+                  - strong [ref=e171]: Cluster Profiles > Add Cluster Profile
+                  - text: . Select the
+                  - code [ref=e172]: gs-profile
+                  - text: cluster profile you created earlier, and click
+                  - strong [ref=e173]: Confirm
+                  - text: .
+                - paragraph [ref=e174]:
+                  - text: Review the cluster profile layers and click
+                  - strong [ref=e175]: Next
+                  - text: to proceed.
+                - generic [ref=e176]:
+                  - generic [ref=e177]:
+                    - img [ref=e179]
+                    - text: tip
+                  - paragraph [ref=e182]:
+                    - text: We recommend enabling the overlay network configuration when using DHCP-enabled networks to ensure stable IP addresses for the cluster. However, for education purposes, this tutorial does not use the overlay network. For production use or detailed configuration instructions, refer to the
+                    - link "Enable Overlay Network" [ref=e183] [cursor=pointer]:
+                      - /url: /clusters/edge/networking/vxlan-overlay/
+                    - text: guide.
+                - paragraph [ref=e184]:
+                  - text: In the
+                  - strong [ref=e185]: Cluster Config
+                  - text: section, provide a Virtual IP (VIP) address for the Edge cluster. This address must be an unused address on the same network as your Edge host.
+                - generic [ref=e186]:
+                  - generic [ref=e187]:
+                    - img [ref=e189]
+                    - text: tip
+                  - generic [ref=e191]:
+                    - paragraph [ref=e192]:
+                      - text: You can use the
+                      - link "nmap" [ref=e193] [cursor=pointer]:
+                        - /url: https://nmap.org/book/man.html
+                      - text: tool to scan your network and check which IP addresses are in use. Issue the following command in your terminal, replacing the example CIDR
+                      - code [ref=e194]: 192.168.0.0/24
+                      - text: with your network's CIDR.
+                    - generic [ref=e196]:
+                      - code [ref=e198]:
+                        - generic [ref=e199]: sudo nmap -sn 192.168.0.0/24
+                      - button "Copy code to clipboard" [ref=e201] [cursor=pointer]:
+                        - generic [ref=e202]:
+                          - img [ref=e203]
+                          - img [ref=e205]
+                    - paragraph [ref=e207]: The output displays the IP addresses that are currently in use on your network.
+                - paragraph [ref=e208]: Optionally, you can also select an SSH key to access the cluster's nodes and specify a Network Time Protocol (NTP) server list.
+                - paragraph [ref=e209]:
+                  - text: Click
+                  - strong [ref=e210]: Next
+                  - text: to continue.
+                - paragraph [ref=e211]:
+                  - text: In the
+                  - strong [ref=e212]: Nodes Config
+                  - text: section, provide the following details for the control plane pool. This tutorial deploys a single-node Edge cluster with no worker pool.
+                - table [ref=e213]:
+                  - rowgroup [ref=e214]:
+                    - row "Field Value" [ref=e215]:
+                      - cell "Field" [ref=e216]:
+                        - strong [ref=e217]: Field
+                      - cell "Value" [ref=e218]:
+                        - strong [ref=e219]: Value
+                  - rowgroup [ref=e220]:
+                    - row "Node pool name control-plane-pool" [ref=e221]:
+                      - cell "Node pool name" [ref=e222]:
+                        - strong [ref=e223]: Node pool name
+                      - cell "control-plane-pool" [ref=e224]:
+                        - code [ref=e225]: control-plane-pool
+                    - row "Allow worker capability Yes" [ref=e226]:
+                      - cell "Allow worker capability" [ref=e227]:
+                        - strong [ref=e228]: Allow worker capability
+                      - cell "Yes" [ref=e229]
+                    - row "Additional Labels (Optional) None" [ref=e230]:
+                      - cell "Additional Labels (Optional)" [ref=e231]:
+                        - strong [ref=e232]: Additional Labels (Optional)
+                      - cell "None" [ref=e233]
+                    - row "Taints (Optional) None" [ref=e234]:
+                      - cell "Taints (Optional)" [ref=e235]:
+                        - strong [ref=e236]: Taints (Optional)
+                      - cell "None" [ref=e237]
+                    - row "Pool Configuration > Edge Hosts Select the Edge host configured in the Prepare Edge Host tutorial to become the node of your cluster." [ref=e238]:
+                      - cell "Pool Configuration > Edge Hosts" [ref=e239]:
+                        - strong [ref=e240]: Pool Configuration
+                        - text: ">"
+                        - strong [ref=e241]: Edge Hosts
+                      - cell "Select the Edge host configured in the Prepare Edge Host tutorial to become the node of your cluster." [ref=e242]:
+                        - text: Select the Edge host configured in the
+                        - link "Prepare Edge Host" [ref=e243] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/prepare-edge-host/
+                        - text: tutorial to become the node of your cluster.
+                - paragraph [ref=e244]: The following image shows the Edge host selection in the control plane pool.
+                - paragraph [ref=e245]:
+                  - img "A screenshot of the nodes config during cluster deployment." [ref=e246]
+                - paragraph [ref=e247]:
+                  - text: Next, select
+                  - strong [ref=e248]: Remove
+                  - text: to delete the worker pool and click
+                  - strong [ref=e249]: Next
+                  - text: to proceed with the deployment.
+                - paragraph [ref=e250]:
+                  - text: The
+                  - strong [ref=e251]: Cluster Settings
+                  - text: section provides advanced options for scheduled scans, scheduled backups, and cluster role binding. For this tutorial, you can use the default settings. Select
+                  - strong [ref=e252]: Validate
+                  - text: to continue.
+                - paragraph [ref=e253]:
+                  - text: The
+                  - strong [ref=e254]: Review
+                  - text: section allows you to review the cluster configuration. If everything looks correct, click
+                  - strong [ref=e255]: Finish Configuration
+                  - text: to deploy the cluster.
+                - paragraph [ref=e256]:
+                  - text: After you create the cluster, the Palette Edge host agent pulls the provider images you built in the
+                  - link "Build Edge Artifacts" [ref=e257] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette-edge/build-edge-artifacts/
+                  - text: tutorial and starts the installation process.
+                - paragraph [ref=e258]: The cluster deployment may take 15 to 30 minutes, depending on the host and cluster configuration.
+                - paragraph [ref=e259]:
+                  - text: You can track the installation progress in Palette. The cluster
+                  - strong [ref=e260]: Overview
+                  - text: page displays a summary of the deployment progress, while the
+                  - strong [ref=e261]: Events
+                  - text: tab provides detailed logs.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e262]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e263] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e264]:
+                  - text: From Palette's left main menu, select
+                  - strong [ref=e265]: Clusters
+                  - text: .
+                - paragraph [ref=e266]:
+                  - text: Next, select your cluster to open its
+                  - strong [ref=e267]: Overview
+                  - text: tab.
+                - paragraph [ref=e268]:
+                  - text: Confirm that your cluster displays a
+                  - strong [ref=e269]: Running
+                  - text: status and is listed as
+                  - strong [ref=e270]: Healthy
+                  - text: .
+                - paragraph [ref=e271]:
+                  - text: When the Hello Universe application is deployed and ready for network traffic, Palette exposes the service URL in the
+                  - strong [ref=e272]: Services
+                  - text: field. Click the URL on port
+                  - strong [ref=e273]: :8080
+                  - text: to access the application's landing page.
+                - paragraph [ref=e274]:
+                  - img "A screenshot of the cluster&#39;s Overview tab" [ref=e275]
+                - paragraph [ref=e276]: Welcome to the Spacetastic astronomy education platform. Feel free to explore the pages to learn more about space. The statistics page offers information on visitor counts for your deployed cluster.
+                - paragraph [ref=e277]:
+                  - img "A screenshot of the Hello Universe application." [ref=e278]
+                - heading "Clean UpDirect link to Clean Up" [level=2] [ref=e279]:
+                  - text: Clean Up
+                  - link "Direct link to Clean Up" [ref=e280] [cursor=pointer]:
+                    - /url: "#clean-up"
+                    - text: "#"
+                - paragraph [ref=e281]: You have successfully provisioned an Edge cluster with a three-tier demo application. Use the following steps to remove the resources created during this tutorial series.
+                - heading "Cluster and Cluster ProfileDirect link to Cluster and Cluster Profile" [level=3] [ref=e282]:
+                  - text: Cluster and Cluster Profile
+                  - link "Direct link to Cluster and Cluster Profile" [ref=e283] [cursor=pointer]:
+                    - /url: "#cluster-and-cluster-profile"
+                    - text: "#"
+                - paragraph [ref=e284]:
+                  - text: To remove the Edge cluster, log in to Palette and select
+                  - strong [ref=e285]: Clusters
+                  - text: from the left main menu. Select the
+                  - code [ref=e286]: gs-edge-cluster
+                  - text: cluster to access its details page.
+                - paragraph [ref=e287]:
+                  - text: Next, click on
+                  - strong [ref=e288]: Settings
+                  - text: and select
+                  - strong [ref=e289]: Delete Cluster
+                  - text: .
+                - paragraph [ref=e290]: Type the cluster name to proceed with the deletion. This process may take several minutes to complete.
+                - generic [ref=e291]:
+                  - generic [ref=e292]:
+                    - img [ref=e294]
+                    - text: info
+                  - paragraph [ref=e297]:
+                    - text: If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for force deletion. To force delete a cluster, access the cluster’s details page, click
+                    - strong [ref=e298]: Settings
+                    - text: ", then select"
+                    - strong [ref=e299]: Force Delete Cluster
+                    - text: . Palette automatically removes clusters stuck in the cluster deletion phase for over 24 hours.
+                - paragraph [ref=e300]: Once the cluster is deleted, proceed with the cluster profile deletion.
+                - paragraph [ref=e301]:
+                  - text: From the left main menu, select
+                  - strong [ref=e302]: Profiles
+                  - text: . Select the
+                  - code [ref=e303]: gs-profile
+                  - text: cluster profile, click on the three-dot menu, and select
+                  - strong [ref=e304]: Delete
+                  - text: . Confirm the selection to remove the cluster profile.
+                - heading "Edge HostDirect link to Edge Host" [level=3] [ref=e305]:
+                  - text: Edge Host
+                  - link "Direct link to Edge Host" [ref=e306] [cursor=pointer]:
+                    - /url: "#edge-host"
+                    - text: "#"
+                - paragraph [ref=e307]:
+                  - text: After removing the Edge cluster and cluster profile, select
+                  - strong [ref=e308]: Clusters
+                  - text: from the left main menu, then select
+                  - strong [ref=e309]: Edge Hosts
+                  - text: .
+                - paragraph [ref=e310]:
+                  - text: Locate the Edge host configured in the
+                  - link "Prepare Edge Host" [ref=e311] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette-edge/prepare-edge-host/
+                  - text: tutorial. Click on the three-dot menu and select
+                  - strong [ref=e312]: Delete
+                  - text: to delete the Edge host. Confirm the deletion by clicking
+                  - strong [ref=e313]: OK
+                  - text: . This removes the Edge host from Palette but does not delete the underlying infrastructure.
+                - paragraph [ref=e314]:
+                  - img "A screenshot of the Edge Hosts page." [ref=e315]
+                - generic [ref=e316]:
+                  - tablist [ref=e317]:
+                    - tab "VM Host" [selected] [ref=e318] [cursor=pointer]
+                    - tab "Bare Metal Host" [ref=e319] [cursor=pointer]
+                  - tabpanel [ref=e321]:
+                    - paragraph [ref=e322]:
+                      - text: If you used a VirtualBox VM as the Edge host, open the
+                      - strong [ref=e323]: VirtualBox
+                      - text: application on your host machine to delete the VM.
+                    - paragraph [ref=e324]:
+                      - text: Right-click the
+                      - code [ref=e325]: edge-vm
+                      - text: VM and select
+                      - strong [ref=e326]: Stop
+                      - text: . Then, click
+                      - strong [ref=e327]: Power Off
+                      - text: to turn the machine off.
+                    - paragraph [ref=e328]:
+                      - text: Next, right-click the VM again and select
+                      - strong [ref=e329]: Remove
+                      - text: . Click
+                      - strong [ref=e330]: Delete all files
+                      - text: to delete the VM and its hard disk.
+                - heading "Edge ArtifactsDirect link to Edge Artifacts" [level=3] [ref=e331]:
+                  - text: Edge Artifacts
+                  - link "Direct link to Edge Artifacts" [ref=e332] [cursor=pointer]:
+                    - /url: "#edge-artifacts"
+                    - text: "#"
+                - paragraph [ref=e333]:
+                  - text: Open a terminal window on the machine you used to build the artifacts in the
+                  - link "Build Edge Artifacts" [ref=e334] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette-edge/build-edge-artifacts/
+                  - text: tutorial and navigate to the
+                  - code [ref=e335]: CanvOS
+                  - text: repository.
+                - paragraph [ref=e336]: Delete the Edge Installer ISO image and its checksum by issuing the following commands.
+                - generic [ref=e338]:
+                  - code [ref=e340]:
+                    - generic [ref=e341]: rm build/palette-edge-installer.iso
+                    - generic [ref=e342]: rm build/palette-edge-installer.iso.sha256
+                  - button "Copy code to clipboard" [ref=e344] [cursor=pointer]:
+                    - generic [ref=e345]:
+                      - img [ref=e346]
+                      - img [ref=e348]
+                - paragraph [ref=e350]:
+                  - text: Next, delete the provider images both locally and from the registry where you pushed them. Issue the following command to delete them locally, replacing
+                  - code [ref=e351]: <registry-name>
+                  - text: with the name of your registry.
+                - generic [ref=e353]:
+                  - code [ref=e355]:
+                    - generic [ref=e356]: docker rmi <registry-name>/ubuntu:k3s-1.32.1-v4.6.9-gs-tutorial
+                    - generic [ref=e357]: docker rmi <registry-name>/ubuntu:k3s-1.32.1-v4.6.9-gs-tutorial_linux_amd64
+                  - generic [ref=e358]:
+                    - button "Toggle word wrap" [ref=e359] [cursor=pointer]:
+                      - img [ref=e360]
+                    - button "Copy code to clipboard" [ref=e362] [cursor=pointer]:
+                      - generic [ref=e363]:
+                        - img [ref=e364]
+                        - img [ref=e366]
+                - heading "Wrap-upDirect link to Wrap-up" [level=2] [ref=e368]:
+                  - text: Wrap-up
+                  - link "Direct link to Wrap-up" [ref=e369] [cursor=pointer]:
+                    - /url: "#wrap-up"
+                    - text: "#"
+                - paragraph [ref=e370]: In this tutorial, you learned how to deploy a single-node Edge cluster along with a demo application, using the Edge host, cluster profile, and artifacts prepared in earlier tutorials from this series. This deployment completes the Edge Getting Started tutorial series.
+                - paragraph [ref=e371]:
+                  - text: We encourage you to check out the
+                  - link "Additional Capabilities" [ref=e372] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/additional-capabilities/
+                  - text: section to explore other Palette functionalities, and the
+                  - link "Edge" [ref=e373] [cursor=pointer]:
+                    - /url: /clusters/edge/
+                  - text: documentation section to learn more about Palette Edge.
+              - generic [ref=e374]:
+                - generic [ref=e376]:
+                  - text: "Tags:"
+                  - list [ref=e377]:
+                    - listitem [ref=e378]:
+                      - link "getting-started" [ref=e379] [cursor=pointer]:
+                        - /url: /tags/getting-started/
+                    - listitem [ref=e380]:
+                      - link "tutorial" [ref=e381] [cursor=pointer]:
+                        - /url: /tags/tutorial/
+                    - listitem [ref=e382]:
+                      - link "edge" [ref=e383] [cursor=pointer]:
+                        - /url: /tags/edge/
+                - link "Edit this page" [ref=e386] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/tutorials/getting-started/palette-edge/deploy-edge-cluster.md
+                  - img [ref=e387]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e391]:
+              - link "Previous « Prepare Edge Host" [ref=e392] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette-edge/prepare-edge-host/
+                - generic [ref=e393]: Previous
+                - generic [ref=e394]: « Prepare Edge Host
+              - link "Next Additional Capabilities »" [ref=e395] [cursor=pointer]:
+                - /url: /tutorials/getting-started/additional-capabilities/
+                - generic [ref=e396]: Next
+                - generic [ref=e397]: Additional Capabilities »
+          - list [ref=e400]:
+            - listitem [ref=e401]:
+              - link "Prerequisites" [ref=e402] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e403]:
+              - link "Deploy Edge Cluster" [ref=e404] [cursor=pointer]:
+                - /url: "#deploy-edge-cluster"
+            - listitem [ref=e405]:
+              - link "Validate" [ref=e406] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e407]:
+              - link "Clean Up" [ref=e408] [cursor=pointer]:
+                - /url: "#clean-up"
+              - list [ref=e409]:
+                - listitem [ref=e410]:
+                  - link "Cluster and Cluster Profile" [ref=e411] [cursor=pointer]:
+                    - /url: "#cluster-and-cluster-profile"
+                - listitem [ref=e412]:
+                  - link "Edge Host" [ref=e413] [cursor=pointer]:
+                    - /url: "#edge-host"
+                - listitem [ref=e414]:
+                  - link "Edge Artifacts" [ref=e415] [cursor=pointer]:
+                    - /url: "#edge-artifacts"
+            - listitem [ref=e416]:
+              - link "Wrap-up" [ref=e417] [cursor=pointer]:
+                - /url: "#wrap-up"
+  - button "Project Logo Ask AI" [ref=e418] [cursor=pointer]:
+    - generic [ref=e421]:
+      - img "Project Logo" [ref=e422]
+      - paragraph [ref=e423]: Ask AI
+```

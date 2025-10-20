@@ -1,0 +1,680 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [expanded] [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+                - list [ref=e149]:
+                  - listitem [ref=e150]:
+                    - generic [ref=e151]:
+                      - link "User Authentication" [ref=e152] [cursor=pointer]:
+                        - /url: /user-management/authentication/
+                      - button "Toggle the collapsible sidebar category 'User Authentication'" [ref=e153] [cursor=pointer]
+                  - listitem [ref=e154]:
+                    - generic [ref=e155]:
+                      - link "Users and Teams" [ref=e156] [cursor=pointer]:
+                        - /url: /user-management/users-and-teams/
+                      - button "Toggle the collapsible sidebar category 'Users and Teams'" [ref=e157] [cursor=pointer]
+                  - listitem [ref=e158]:
+                    - generic [ref=e159]:
+                      - link "Roles and Permissions" [expanded] [ref=e160] [cursor=pointer]:
+                        - /url: /user-management/palette-rbac/
+                      - button "Toggle the collapsible sidebar category 'Roles and Permissions'" [ref=e161] [cursor=pointer]
+                    - list [ref=e162]:
+                      - listitem [ref=e163]:
+                        - link "Create and Manage a Custom Role" [ref=e164] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/create-custom-role/
+                      - listitem [ref=e165]:
+                        - link "Create and Manage a Role Assignment" [ref=e166] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/assign-a-role/
+                      - listitem [ref=e167]:
+                        - link "Permissions" [ref=e168] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/permissions/
+                      - listitem [ref=e169]:
+                        - link "Tenant Roles" [ref=e170] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/tenant-scope-roles-permissions/
+                      - listitem [ref=e171]:
+                        - link "Project Roles" [ref=e172] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/project-scope-roles-permissions/
+                      - listitem [ref=e173]:
+                        - link "Resource Roles" [ref=e174] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/resource-scope-roles-permissions/
+                      - listitem [ref=e175]:
+                        - link "ABAC in Palette" [ref=e176] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/implement-abac/
+                  - listitem [ref=e177]:
+                    - generic [ref=e178]:
+                      - link "SAML and OIDC SSO" [ref=e179] [cursor=pointer]:
+                        - /url: /user-management/saml-sso/
+                      - button "Toggle the collapsible sidebar category 'SAML and OIDC SSO'" [ref=e180] [cursor=pointer]
+              - listitem [ref=e181]:
+                - generic [ref=e182]:
+                  - link "Registries and Packs" [ref=e183] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e185]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e187] [cursor=pointer]
+              - listitem [ref=e188]:
+                - generic [ref=e189]:
+                  - link "Security" [ref=e190] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e192]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e194] [cursor=pointer]
+              - listitem [ref=e195]:
+                - generic [ref=e196]:
+                  - link "Audit Logs" [ref=e197] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e199]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e201] [cursor=pointer]
+              - listitem [ref=e202]:
+                - generic [ref=e203]:
+                  - link "Self-Hosted Palette" [ref=e204] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e206]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e208] [cursor=pointer]
+              - listitem [ref=e209]:
+                - generic [ref=e210]:
+                  - link "Palette VerteX" [ref=e211] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e213]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e215] [cursor=pointer]
+              - listitem [ref=e216]:
+                - generic [ref=e217]:
+                  - link "Tenant Administration" [ref=e218] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e220]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e222] [cursor=pointer]
+              - listitem [ref=e223]:
+                - generic [ref=e224]:
+                  - link "Automation" [ref=e225] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e227]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e229] [cursor=pointer]
+              - listitem [ref=e230]:
+                - generic [ref=e231]:
+                  - link "Troubleshooting" [ref=e232] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e234]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e236] [cursor=pointer]
+              - listitem [ref=e237]:
+                - link "Glossary" [ref=e238] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e240]
+                  - text: Glossary
+              - listitem [ref=e242]:
+                - generic [ref=e243]:
+                  - link "Compliance & Legal" [ref=e244] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e246]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e248] [cursor=pointer]
+              - listitem [ref=e249]:
+                - button "Privacy Settings" [ref=e250] [cursor=pointer]:
+                  - img [ref=e251]
+                  - text: Privacy Settings
+      - main [ref=e253]:
+        - generic [ref=e255]:
+          - generic [ref=e257]:
+            - article [ref=e258]:
+              - navigation "Breadcrumbs" [ref=e259]:
+                - list [ref=e260]:
+                  - listitem [ref=e261]:
+                    - link "Home page" [ref=e262] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e263]
+                  - listitem [ref=e265]:
+                    - link "User & Role Management" [ref=e266] [cursor=pointer]:
+                      - /url: /user-management/
+                  - listitem [ref=e267]:
+                    - link "Roles and Permissions" [ref=e268] [cursor=pointer]:
+                      - /url: /user-management/palette-rbac/
+                  - listitem [ref=e269]:
+                    - generic [ref=e270]: Permissions
+              - generic [ref=e271]:
+                - heading "Permissions" [level=1] [ref=e273]
+                - paragraph [ref=e274]:
+                  - text: All actions in Palette are controlled by permissions. Permissions are assigned to roles, and roles are assigned to users or teams. Each Palette component has a corresponding
+                  - emphasis [ref=e275]: resource key
+                  - text: and a set of operations that can be performed on that component.
+                - paragraph [ref=e276]: Palette components are managed at different scopes. The available scopes are Tenant and Project. The Tenant scope is global and applies to all projects within the tenant. The Project scope is specific to a project.
+                - heading "Components and Resource KeysDirect link to Components and Resource Keys" [level=2] [ref=e277]:
+                  - text: Components and Resource Keys
+                  - link "Direct link to Components and Resource Keys" [ref=e278] [cursor=pointer]:
+                    - /url: "#components-and-resource-keys"
+                    - text: "#"
+                - paragraph [ref=e279]: The following table lists the available Palette components, their corresponding resource keys, and the applicable Role scopes you can assign permissions to.
+                - table [ref=e280]:
+                  - rowgroup [ref=e281]:
+                    - row "Component Resource Key Tenant Role Scope Project Role Scope Resource Role Scope Description" [ref=e282]:
+                      - cell "Component" [ref=e283]
+                      - cell "Resource Key" [ref=e284]
+                      - cell "Tenant Role Scope" [ref=e285]
+                      - cell "Project Role Scope" [ref=e286]
+                      - cell "Resource Role Scope" [ref=e287]
+                      - cell "Description" [ref=e288]
+                  - rowgroup [ref=e289]:
+                    - row "API Key apiKey ✅ API Key related operations" [ref=e290]:
+                      - cell "API Key" [ref=e291]
+                      - cell "apiKey" [ref=e292]:
+                        - code [ref=e293]: apiKey
+                      - cell "✅" [ref=e294]
+                      - cell [ref=e295]
+                      - cell [ref=e296]
+                      - cell "API Key related operations" [ref=e297]
+                    - row "Audit audit ✅ Audit log access" [ref=e298]:
+                      - cell "Audit" [ref=e299]
+                      - cell "audit" [ref=e300]:
+                        - code [ref=e301]: audit
+                      - cell "✅" [ref=e302]
+                      - cell [ref=e303]
+                      - cell [ref=e304]
+                      - cell "Audit log access" [ref=e305]
+                    - row "App Deployment appDeployment ✅ ✅ Application deployment and management in the context of Palette Dev Engine" [ref=e306]:
+                      - cell "App Deployment" [ref=e307]
+                      - cell "appDeployment" [ref=e308]:
+                        - code [ref=e309]: appDeployment
+                      - cell "✅" [ref=e310]
+                      - cell "✅" [ref=e311]
+                      - cell [ref=e312]
+                      - cell "Application deployment and management in the context of Palette Dev Engine" [ref=e313]
+                    - row "App Profile appProfile ✅ Management of Application profiles" [ref=e314]:
+                      - cell "App Profile" [ref=e315]
+                      - cell "appProfile" [ref=e316]:
+                        - code [ref=e317]: appProfile
+                      - cell [ref=e318]
+                      - cell "✅" [ref=e319]
+                      - cell [ref=e320]
+                      - cell "Management of Application profiles" [ref=e321]
+                    - row "Cloud Account cloudaccount ✅ ✅ ✅ Cloud account creation and management" [ref=e322]:
+                      - cell "Cloud Account" [ref=e323]
+                      - cell "cloudaccount" [ref=e324]:
+                        - code [ref=e325]: cloudaccount
+                      - cell "✅" [ref=e326]
+                      - cell "✅" [ref=e327]
+                      - cell "✅" [ref=e328]
+                      - cell "Cloud account creation and management" [ref=e329]
+                    - row "Cloud Config cloudconfig ✅ ✅ ✅ Cluster level cloud configuration" [ref=e330]:
+                      - cell "Cloud Config" [ref=e331]
+                      - cell "cloudconfig" [ref=e332]:
+                        - code [ref=e333]: cloudconfig
+                      - cell "✅" [ref=e334]
+                      - cell "✅" [ref=e335]
+                      - cell "✅" [ref=e336]
+                      - cell "Cluster level cloud configuration" [ref=e337]
+                    - row "Cluster cluster ✅ ✅ ✅ Creation and management of Palette workload clusters" [ref=e338]:
+                      - cell "Cluster" [ref=e339]
+                      - cell "cluster" [ref=e340]:
+                        - code [ref=e341]: cluster
+                      - cell "✅" [ref=e342]
+                      - cell "✅" [ref=e343]
+                      - cell "✅" [ref=e344]
+                      - cell "Creation and management of Palette workload clusters" [ref=e345]
+                    - row "Cluster Pair clusterPair ✅ ✅ Management of cluster pairing requests." [ref=e346]:
+                      - cell "Cluster Pair" [ref=e347]
+                      - cell "clusterPair" [ref=e348]:
+                        - code [ref=e349]: clusterPair
+                      - cell "✅" [ref=e350]
+                      - cell "✅" [ref=e351]
+                      - cell [ref=e352]
+                      - cell "Management of cluster pairing requests." [ref=e353]
+                    - row "Cluster Group clusterGroup ✅ ✅ Creation and management of cluster groups" [ref=e354]:
+                      - cell "Cluster Group" [ref=e355]
+                      - cell "clusterGroup" [ref=e356]:
+                        - code [ref=e357]: clusterGroup
+                      - cell "✅" [ref=e358]
+                      - cell "✅" [ref=e359]
+                      - cell [ref=e360]
+                      - cell "Creation and management of cluster groups" [ref=e361]
+                    - row "Cluster Profile clusterProfile ✅ ✅ ✅ Creation and management of Palette cluster profiles" [ref=e362]:
+                      - cell "Cluster Profile" [ref=e363]
+                      - cell "clusterProfile" [ref=e364]:
+                        - code [ref=e365]: clusterProfile
+                      - cell "✅" [ref=e366]
+                      - cell "✅" [ref=e367]
+                      - cell "✅" [ref=e368]
+                      - cell "Creation and management of Palette cluster profiles" [ref=e369]
+                    - row "DNS Mapping dnsMapping ✅ ✅ Domain Name Server mapping services creation and management" [ref=e370]:
+                      - cell "DNS Mapping" [ref=e371]
+                      - cell "dnsMapping" [ref=e372]:
+                        - code [ref=e373]: dnsMapping
+                      - cell [ref=e374]
+                      - cell "✅" [ref=e375]
+                      - cell "✅" [ref=e376]
+                      - cell "Domain Name Server mapping services creation and management" [ref=e377]
+                    - row "Edge Host edgehost ✅ ✅ Edge host deployment and management" [ref=e378]:
+                      - cell "Edge Host" [ref=e379]
+                      - cell "edgehost" [ref=e380]:
+                        - code [ref=e381]: edgehost
+                      - cell "✅" [ref=e382]
+                      - cell "✅" [ref=e383]
+                      - cell [ref=e384]
+                      - cell "Edge host deployment and management" [ref=e385]
+                    - row "Edge Host Token edgeToken ✅ Edge host registration token management" [ref=e386]:
+                      - cell "Edge Host Token" [ref=e387]
+                      - cell "edgeToken" [ref=e388]:
+                        - code [ref=e389]: edgeToken
+                      - cell "✅" [ref=e390]
+                      - cell [ref=e391]
+                      - cell [ref=e392]
+                      - cell "Edge host registration token management" [ref=e393]
+                    - row "Filter filter ✅ Creation and management of resource filters" [ref=e394]:
+                      - cell "Filter" [ref=e395]
+                      - cell "filter" [ref=e396]:
+                        - code [ref=e397]: filter
+                      - cell "✅" [ref=e398]
+                      - cell [ref=e399]
+                      - cell [ref=e400]
+                      - cell "Creation and management of resource filters" [ref=e401]
+                    - row "Location location ✅ ✅ ✅ Location services related to backup and restore" [ref=e402]:
+                      - cell "Location" [ref=e403]
+                      - cell "location" [ref=e404]:
+                        - code [ref=e405]: location
+                      - cell "✅" [ref=e406]
+                      - cell "✅" [ref=e407]
+                      - cell "✅" [ref=e408]
+                      - cell "Location services related to backup and restore" [ref=e409]
+                    - row "Macro macro ✅ ✅ ✅ Key value management for Palette resources" [ref=e410]:
+                      - cell "Macro" [ref=e411]
+                      - cell "macro" [ref=e412]:
+                        - code [ref=e413]: macro
+                      - cell "✅" [ref=e414]
+                      - cell "✅" [ref=e415]
+                      - cell "✅" [ref=e416]
+                      - cell "Key value management for Palette resources" [ref=e417]
+                    - row "Machine machine ✅ ✅ ✅ Palette node pool management" [ref=e418]:
+                      - cell "Machine" [ref=e419]
+                      - cell "machine" [ref=e420]:
+                        - code [ref=e421]: machine
+                      - cell "✅" [ref=e422]
+                      - cell "✅" [ref=e423]
+                      - cell "✅" [ref=e424]
+                      - cell "Palette node pool management" [ref=e425]
+                    - row "Private Gateway privateGateway ✅ Private Cloud Gateway creation and maintenance" [ref=e426]:
+                      - cell "Private Gateway" [ref=e427]
+                      - cell "privateGateway" [ref=e428]:
+                        - code [ref=e429]: privateGateway
+                      - cell "✅" [ref=e430]
+                      - cell [ref=e431]
+                      - cell [ref=e432]
+                      - cell "Private Cloud Gateway creation and maintenance" [ref=e433]
+                    - row "Registry packRegistry ✅ ✅ ✅ Creation and management of registries" [ref=e434]:
+                      - cell "Registry" [ref=e435]
+                      - cell "packRegistry" [ref=e436]:
+                        - code [ref=e437]: packRegistry
+                      - cell "✅" [ref=e438]
+                      - cell "✅" [ref=e439]
+                      - cell "✅" [ref=e440]
+                      - cell "Creation and management of registries" [ref=e441]
+                    - row "Role role ✅ Creation and management of Palette roles" [ref=e442]:
+                      - cell "Role" [ref=e443]
+                      - cell "role" [ref=e444]:
+                        - code [ref=e445]: role
+                      - cell "✅" [ref=e446]
+                      - cell [ref=e447]
+                      - cell [ref=e448]
+                      - cell "Creation and management of Palette roles" [ref=e449]
+                    - row "Project project ✅ ✅ Creation and management of Palette projects" [ref=e450]:
+                      - cell "Project" [ref=e451]
+                      - cell "project" [ref=e452]:
+                        - code [ref=e453]: project
+                      - cell "✅" [ref=e454]
+                      - cell "✅" [ref=e455]
+                      - cell [ref=e456]
+                      - cell "Creation and management of Palette projects" [ref=e457]
+                    - row "Tag tag ✅ ✅ Creation and management of tags" [ref=e458]:
+                      - cell "Tag" [ref=e459]
+                      - cell "tag" [ref=e460]:
+                        - code [ref=e461]: tag
+                      - cell "✅" [ref=e462]
+                      - cell "✅" [ref=e463]
+                      - cell [ref=e464]
+                      - cell "Creation and management of tags" [ref=e465]
+                    - row "Team team ✅ Creation and management of user teams" [ref=e466]:
+                      - cell "Team" [ref=e467]
+                      - cell "team" [ref=e468]:
+                        - code [ref=e469]: team
+                      - cell "✅" [ref=e470]
+                      - cell [ref=e471]
+                      - cell [ref=e472]
+                      - cell "Creation and management of user teams" [ref=e473]
+                    - row "User user ✅ Creation and management of users" [ref=e474]:
+                      - cell "User" [ref=e475]
+                      - cell "user" [ref=e476]:
+                        - code [ref=e477]: user
+                      - cell "✅" [ref=e478]
+                      - cell [ref=e479]
+                      - cell [ref=e480]
+                      - cell "Creation and management of users" [ref=e481]
+                    - row "Virtual Cloud Config virtualCloudConfig ✅ Allows the user to deploy and manage applications in virtual clusters" [ref=e482]:
+                      - cell "Virtual Cloud Config" [ref=e483]
+                      - cell "virtualCloudConfig" [ref=e484]:
+                        - code [ref=e485]: virtualCloudConfig
+                      - cell [ref=e486]
+                      - cell "✅" [ref=e487]
+                      - cell [ref=e488]
+                      - cell "Allows the user to deploy and manage applications in virtual clusters" [ref=e489]
+                    - row "Virtual Cluster virtualCluster ✅ Creation and management of virtual clusters" [ref=e490]:
+                      - cell "Virtual Cluster" [ref=e491]
+                      - cell "virtualCluster" [ref=e492]:
+                        - code [ref=e493]: virtualCluster
+                      - cell [ref=e494]
+                      - cell "✅" [ref=e495]
+                      - cell [ref=e496]
+                      - cell "Creation and management of virtual clusters" [ref=e497]
+                    - row "Virtual Machine virtualMachine ✅ Creation and management of virtual machines" [ref=e498]:
+                      - cell "Virtual Machine" [ref=e499]
+                      - cell "virtualMachine" [ref=e500]:
+                        - code [ref=e501]: virtualMachine
+                      - cell [ref=e502]
+                      - cell "✅" [ref=e503]
+                      - cell [ref=e504]
+                      - cell "Creation and management of virtual machines" [ref=e505]
+                    - row "Workspace workspace ✅ Workspace operations including backup and restore" [ref=e506]:
+                      - cell "Workspace" [ref=e507]
+                      - cell "workspace" [ref=e508]:
+                        - code [ref=e509]: workspace
+                      - cell [ref=e510]
+                      - cell "✅" [ref=e511]
+                      - cell [ref=e512]
+                      - cell "Workspace operations including backup and restore" [ref=e513]
+                - heading "OperationsDirect link to Operations" [level=2] [ref=e514]:
+                  - text: Operations
+                  - link "Direct link to Operations" [ref=e515] [cursor=pointer]:
+                    - /url: "#operations"
+                    - text: "#"
+                - paragraph [ref=e516]: To review the operations that can be performed on each component, click on the Palette component name below to display the list of operations.
+                - generic [ref=e517]:
+                  - button "collapsed API Keys" [ref=e519] [cursor=pointer]:
+                    - img "collapsed" [ref=e521]:
+                      - img [ref=e522]
+                    - generic [ref=e524]: API Keys
+                  - button "collapsed Audit" [ref=e526] [cursor=pointer]:
+                    - img "collapsed" [ref=e528]:
+                      - img [ref=e529]
+                    - generic [ref=e531]: Audit
+                  - button "collapsed App Deployment" [ref=e533] [cursor=pointer]:
+                    - img "collapsed" [ref=e535]:
+                      - img [ref=e536]
+                    - generic [ref=e538]: App Deployment
+                  - button "collapsed App Profile" [ref=e540] [cursor=pointer]:
+                    - img "collapsed" [ref=e542]:
+                      - img [ref=e543]
+                    - generic [ref=e545]: App Profile
+                  - button "collapsed Cloud Account" [ref=e547] [cursor=pointer]:
+                    - img "collapsed" [ref=e549]:
+                      - img [ref=e550]
+                    - generic [ref=e552]: Cloud Account
+                  - button "collapsed Cloud Config" [ref=e554] [cursor=pointer]:
+                    - img "collapsed" [ref=e556]:
+                      - img [ref=e557]
+                    - generic [ref=e559]: Cloud Config
+                  - button "collapsed Cluster" [ref=e561] [cursor=pointer]:
+                    - img "collapsed" [ref=e563]:
+                      - img [ref=e564]
+                    - generic [ref=e566]: Cluster
+                  - button "collapsed Cluster Group" [ref=e568] [cursor=pointer]:
+                    - img "collapsed" [ref=e570]:
+                      - img [ref=e571]
+                    - generic [ref=e573]: Cluster Group
+                  - button "collapsed Cluster Pair" [ref=e575] [cursor=pointer]:
+                    - img "collapsed" [ref=e577]:
+                      - img [ref=e578]
+                    - generic [ref=e580]: Cluster Pair
+                  - button "collapsed Cluster Profile" [ref=e582] [cursor=pointer]:
+                    - img "collapsed" [ref=e584]:
+                      - img [ref=e585]
+                    - generic [ref=e587]: Cluster Profile
+                  - button "collapsed DNS Mapping" [ref=e589] [cursor=pointer]:
+                    - img "collapsed" [ref=e591]:
+                      - img [ref=e592]
+                    - generic [ref=e594]: DNS Mapping
+                  - button "collapsed Edge Host" [ref=e596] [cursor=pointer]:
+                    - img "collapsed" [ref=e598]:
+                      - img [ref=e599]
+                    - generic [ref=e601]: Edge Host
+                  - button "collapsed Edge Host Token" [ref=e603] [cursor=pointer]:
+                    - img "collapsed" [ref=e605]:
+                      - img [ref=e606]
+                    - generic [ref=e608]: Edge Host Token
+                  - button "collapsed Filter" [ref=e610] [cursor=pointer]:
+                    - img "collapsed" [ref=e612]:
+                      - img [ref=e613]
+                    - generic [ref=e615]: Filter
+                  - button "collapsed Location" [ref=e617] [cursor=pointer]:
+                    - img "collapsed" [ref=e619]:
+                      - img [ref=e620]
+                    - generic [ref=e622]: Location
+                  - button "collapsed Macro" [ref=e624] [cursor=pointer]:
+                    - img "collapsed" [ref=e626]:
+                      - img [ref=e627]
+                    - generic [ref=e629]: Macro
+                  - button "collapsed Machine" [ref=e631] [cursor=pointer]:
+                    - img "collapsed" [ref=e633]:
+                      - img [ref=e634]
+                    - generic [ref=e636]: Machine
+                  - button "collapsed Private Gateway" [ref=e638] [cursor=pointer]:
+                    - img "collapsed" [ref=e640]:
+                      - img [ref=e641]
+                    - generic [ref=e643]: Private Gateway
+                  - button "collapsed Project" [ref=e645] [cursor=pointer]:
+                    - img "collapsed" [ref=e647]:
+                      - img [ref=e648]
+                    - generic [ref=e650]: Project
+                  - button "collapsed Role" [ref=e652] [cursor=pointer]:
+                    - img "collapsed" [ref=e654]:
+                      - img [ref=e655]
+                    - generic [ref=e657]: Role
+                  - button "collapsed Registry" [ref=e659] [cursor=pointer]:
+                    - img "collapsed" [ref=e661]:
+                      - img [ref=e662]
+                    - generic [ref=e664]: Registry
+                  - button "collapsed Tag" [ref=e666] [cursor=pointer]:
+                    - img "collapsed" [ref=e668]:
+                      - img [ref=e669]
+                    - generic [ref=e671]: Tag
+                  - button "collapsed Team" [ref=e673] [cursor=pointer]:
+                    - img "collapsed" [ref=e675]:
+                      - img [ref=e676]
+                    - generic [ref=e678]: Team
+                  - button "collapsed User" [ref=e680] [cursor=pointer]:
+                    - img "collapsed" [ref=e682]:
+                      - img [ref=e683]
+                    - generic [ref=e685]: User
+                  - button "collapsed Virtual Cloud Config" [ref=e687] [cursor=pointer]:
+                    - img "collapsed" [ref=e689]:
+                      - img [ref=e690]
+                    - generic [ref=e692]: Virtual Cloud Config
+                  - button "collapsed Virtual Cluster" [ref=e694] [cursor=pointer]:
+                    - img "collapsed" [ref=e696]:
+                      - img [ref=e697]
+                    - generic [ref=e699]: Virtual Cluster
+                  - button "collapsed Virtual Machine" [ref=e701] [cursor=pointer]:
+                    - img "collapsed" [ref=e703]:
+                      - img [ref=e704]
+                    - generic [ref=e706]: Virtual Machine
+                  - button "collapsed Workspace" [ref=e708] [cursor=pointer]:
+                    - img "collapsed" [ref=e710]:
+                      - img [ref=e711]
+                    - generic [ref=e713]: Workspace
+              - generic [ref=e714]:
+                - generic [ref=e716]:
+                  - text: "Tags:"
+                  - list [ref=e717]:
+                    - listitem [ref=e718]:
+                      - link "user-management" [ref=e719] [cursor=pointer]:
+                        - /url: /tags/user-management/
+                    - listitem [ref=e720]:
+                      - link "permissions" [ref=e721] [cursor=pointer]:
+                        - /url: /tags/permissions/
+                    - listitem [ref=e722]:
+                      - link "rbac" [ref=e723] [cursor=pointer]:
+                        - /url: /tags/rbac/
+                - link "Edit this page" [ref=e726] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/user-management/palette-rbac/permissions.md
+                  - img [ref=e727]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e731]:
+              - link "Previous « Create and Manage a Role Assignment" [ref=e732] [cursor=pointer]:
+                - /url: /user-management/palette-rbac/assign-a-role/
+                - generic [ref=e733]: Previous
+                - generic [ref=e734]: « Create and Manage a Role Assignment
+              - link "Next Tenant Roles »" [ref=e735] [cursor=pointer]:
+                - /url: /user-management/palette-rbac/tenant-scope-roles-permissions/
+                - generic [ref=e736]: Next
+                - generic [ref=e737]: Tenant Roles »
+          - list [ref=e740]:
+            - listitem [ref=e741]:
+              - link "Components and Resource Keys" [ref=e742] [cursor=pointer]:
+                - /url: "#components-and-resource-keys"
+            - listitem [ref=e743]:
+              - link "Operations" [ref=e744] [cursor=pointer]:
+                - /url: "#operations"
+  - button "Project Logo Ask AI" [ref=e745] [cursor=pointer]:
+    - generic [ref=e748]:
+      - img "Project Logo" [ref=e749]
+      - paragraph [ref=e750]: Ask AI
+```

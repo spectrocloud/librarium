@@ -1,0 +1,267 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Downloads" [ref=e41] [cursor=pointer]:
+                  - /url: /downloads/
+                  - img [ref=e43]
+                  - text: Downloads
+              - listitem [ref=e45]:
+                - link "Artifact Studio" [ref=e46] [cursor=pointer]:
+                  - /url: /downloads/artifact-studio/
+                  - img [ref=e48]
+                  - text: Artifact Studio
+              - listitem [ref=e50]:
+                - link "CLI Tools" [ref=e51] [cursor=pointer]:
+                  - /url: /downloads/cli-tools/
+                  - img [ref=e53]
+                  - text: CLI Tools
+              - listitem [ref=e55]:
+                - generic [ref=e56]:
+                  - link "Self-Hosted Palette" [ref=e57] [cursor=pointer]:
+                    - /url: /downloads/self-hosted-palette/
+                    - img [ref=e59]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e61] [cursor=pointer]
+              - listitem [ref=e62]:
+                - generic [ref=e63]:
+                  - link "Palette VerteX" [ref=e64] [cursor=pointer]:
+                    - /url: /downloads/palette-vertex/
+                    - img [ref=e66]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e68] [cursor=pointer]
+              - listitem [ref=e69]:
+                - link "Agent Mode" [ref=e70] [cursor=pointer]:
+                  - /url: /downloads/agent-mode/
+                  - img [ref=e72]
+                  - text: Agent Mode
+              - listitem [ref=e74]:
+                - link "CAPI Image Builder" [ref=e75] [cursor=pointer]:
+                  - /url: /downloads/capi-image-builder/
+                  - img [ref=e77]
+                  - text: CAPI Image Builder
+              - listitem [ref=e79]:
+                - link "Offline Documentation" [ref=e80] [cursor=pointer]:
+                  - /url: /downloads/offline-docs/
+                  - img [ref=e82]
+                  - text: Offline Documentation
+              - listitem [ref=e84]:
+                - button "Privacy Settings" [ref=e85] [cursor=pointer]
+      - main [ref=e86]:
+        - generic [ref=e88]:
+          - generic [ref=e90]:
+            - article [ref=e91]:
+              - navigation "Breadcrumbs" [ref=e92]:
+                - list [ref=e93]:
+                  - listitem [ref=e94]:
+                    - link "Home page" [ref=e95] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e96]
+                  - listitem [ref=e98]:
+                    - generic [ref=e99]: Agent Mode
+              - generic [ref=e100]:
+                - heading "Agent Mode" [level=1] [ref=e102]
+                - paragraph [ref=e103]: The following sections provide links to download the agent mode installation scripts depending on your environment.
+                - paragraph [ref=e104]:
+                  - text: Agent mode is a deployment mode that enables Palette to manage your own host and operating system. Unlike other deployment modes, agent mode gives you more flexibility in managing your infrastructure and OS. Refer to the
+                  - link "agent mode documentation" [ref=e105] [cursor=pointer]:
+                    - /url: /deployment-modes/agent-mode/
+                  - text: for guidance on how to set up agent mode on your hosts.
+                - heading "Central Management ModeDirect link to Central Management Mode" [level=2] [ref=e106]:
+                  - text: Central Management Mode
+                  - link "Direct link to Central Management Mode" [ref=e107] [cursor=pointer]:
+                    - /url: "#central-management-mode"
+                    - text: "#"
+                - paragraph [ref=e108]: This version of agent mode requires internet access on the host to connect to a Palette instance.
+                - heading "LatestDirect link to Latest" [level=3] [ref=e109]:
+                  - text: Latest
+                  - link "Direct link to Latest" [ref=e110] [cursor=pointer]:
+                    - /url: "#latest"
+                    - text: "#"
+                - paragraph [ref=e111]: Use the following command to download the latest version of the Palette agent installation script.
+                - generic [ref=e112]:
+                  - tablist [ref=e113]:
+                    - tab "Non-FIPS" [selected] [ref=e114] [cursor=pointer]
+                    - tab "FIPS" [ref=e115] [cursor=pointer]
+                  - tabpanel [ref=e117]:
+                    - generic [ref=e119]:
+                      - code [ref=e121]:
+                        - generic [ref=e122]: curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/latest/download/palette-agent-install.sh
+                      - generic [ref=e123]:
+                        - button "Toggle word wrap" [ref=e124] [cursor=pointer]:
+                          - img [ref=e125]
+                        - button "Copy code to clipboard" [ref=e127] [cursor=pointer]:
+                          - generic [ref=e128]:
+                            - img [ref=e129]
+                            - img [ref=e131]
+                - heading "VersionedDirect link to Versioned" [level=3] [ref=e133]:
+                  - text: Versioned
+                  - link "Direct link to Versioned" [ref=e134] [cursor=pointer]:
+                    - /url: "#versioned"
+                    - text: "#"
+                - paragraph [ref=e135]: If you have a dedicated or on-prem instance of Palette, you need to identify the correct agent version and then download the corresponding version of the agent installation script.
+                - list [ref=e136]:
+                  - listitem [ref=e137]:
+                    - paragraph [ref=e138]:
+                      - text: Use the following command to identify the agent version for your Palette instance. Replace
+                      - code [ref=e139]: <palette-endpoint>
+                      - text: with your Palette endpoint and
+                      - code [ref=e140]: <api-key>
+                      - text: with your
+                      - link "Palette API key" [ref=e141] [cursor=pointer]:
+                        - /url: /user-management/authentication/api-key/
+                      - text: .
+                    - generic [ref=e143]:
+                      - code [ref=e145]:
+                        - generic [ref=e146]: "curl --location --request GET 'https://<palette-endpoint>/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: <api-key>' | jq --raw-output '.spec.latestVersion.content | match(\"version: ([^\\n]+)\").captures[0].string'"
+                      - generic [ref=e147]:
+                        - button "Toggle word wrap" [ref=e148] [cursor=pointer]:
+                          - img [ref=e149]
+                        - button "Copy code to clipboard" [ref=e151] [cursor=pointer]:
+                          - generic [ref=e152]:
+                            - img [ref=e153]
+                            - img [ref=e155]
+                    - generic [ref=e157]:
+                      - generic [ref=e158]: Example output
+                      - code [ref=e161]:
+                        - generic [ref=e162]: 4.5.0
+                  - listitem [ref=e163]:
+                    - paragraph [ref=e164]:
+                      - text: Use the following command to download the version of the Palette agent for your dedicated or on-prem instance. Replace
+                      - code [ref=e165]: <stylus-version>
+                      - text: with your output from the previous step.
+                    - generic [ref=e166]:
+                      - tablist [ref=e167]:
+                        - tab "Non-FIPS" [selected] [ref=e168] [cursor=pointer]
+                        - tab "FIPS" [ref=e169] [cursor=pointer]
+                      - tabpanel [ref=e171]:
+                        - generic [ref=e173]:
+                          - code [ref=e175]:
+                            - generic [ref=e176]: curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/download/v<stylus-version>/palette-agent-install.sh
+                          - generic [ref=e177]:
+                            - button "Toggle word wrap" [ref=e178] [cursor=pointer]:
+                              - img [ref=e179]
+                            - button "Copy code to clipboard" [ref=e181] [cursor=pointer]:
+                              - generic [ref=e182]:
+                                - img [ref=e183]
+                                - img [ref=e185]
+                - heading "Local Management ModeDirect link to Local Management Mode" [level=2] [ref=e187]:
+                  - text: Local Management Mode
+                  - link "Direct link to Local Management Mode" [ref=e188] [cursor=pointer]:
+                    - /url: "#local-management-mode"
+                    - text: "#"
+                - paragraph [ref=e189]: This version of agent mode is designed for environments without a connection to Palette and may also have limited access to the internet.
+                - paragraph [ref=e190]: Download the agent installation package and save it as a TAR file.
+                - list [ref=e191]:
+                  - listitem [ref=e192]:
+                    - text: Replace
+                    - code [ref=e193]: <architecture>
+                    - text: with the architecture of your CPU. If you have ARM64, use
+                    - code [ref=e194]: arm64
+                    - text: . If you have AMD64 or x86_64, use
+                    - code [ref=e195]: amd64
+                    - text: .
+                  - listitem [ref=e196]:
+                    - text: Replace
+                    - code [ref=e197]: <version>
+                    - text: with the desired version number. Refer to
+                    - link "agent mode releases" [ref=e198] [cursor=pointer]:
+                      - /url: https://github.com/spectrocloud/agent-mode/releases
+                    - text: for all the available releases.
+                - generic [ref=e199]:
+                  - tablist [ref=e200]:
+                    - tab "Non-FIPS" [selected] [ref=e201] [cursor=pointer]
+                    - tab "FIPS" [ref=e202] [cursor=pointer]
+                  - tabpanel [ref=e204]:
+                    - generic [ref=e206]:
+                      - code [ref=e208]:
+                        - generic [ref=e209]: curl -L https://github.com/spectrocloud/agent-mode/releases/download/<version>/agent-mode-linux-<architecture>.tar --output agent-mode-linux-<architecture>.tar
+                      - generic [ref=e210]:
+                        - button "Toggle word wrap" [ref=e211] [cursor=pointer]:
+                          - img [ref=e212]
+                        - button "Copy code to clipboard" [ref=e214] [cursor=pointer]:
+                          - generic [ref=e215]:
+                            - img [ref=e216]
+                            - img [ref=e218]
+              - generic [ref=e220]:
+                - generic [ref=e222]:
+                  - text: "Tags:"
+                  - list [ref=e223]:
+                    - listitem [ref=e224]:
+                      - link "downloads" [ref=e225] [cursor=pointer]:
+                        - /url: /tags/downloads/
+                    - listitem [ref=e226]:
+                      - link "edge" [ref=e227] [cursor=pointer]:
+                        - /url: /tags/edge/
+                    - listitem [ref=e228]:
+                      - link "agent mode" [ref=e229] [cursor=pointer]:
+                        - /url: /tags/agent-mode/
+                - link "Edit this page" [ref=e232] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/downloads/agent-mode.md
+                  - img [ref=e233]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e237]:
+              - link "Previous « Kubernetes Requirements" [ref=e238] [cursor=pointer]:
+                - /url: /downloads/palette-vertex/kubernetes-requirements/
+                - generic [ref=e239]: Previous
+                - generic [ref=e240]: « Kubernetes Requirements
+              - link "Next CAPI Image Builder »" [ref=e241] [cursor=pointer]:
+                - /url: /downloads/capi-image-builder/
+                - generic [ref=e242]: Next
+                - generic [ref=e243]: CAPI Image Builder »
+          - list [ref=e246]:
+            - listitem [ref=e247]:
+              - link "Central Management Mode" [ref=e248] [cursor=pointer]:
+                - /url: "#central-management-mode"
+              - list [ref=e249]:
+                - listitem [ref=e250]:
+                  - link "Latest" [ref=e251] [cursor=pointer]:
+                    - /url: "#latest"
+                - listitem [ref=e252]:
+                  - link "Versioned" [ref=e253] [cursor=pointer]:
+                    - /url: "#versioned"
+            - listitem [ref=e254]:
+              - link "Local Management Mode" [ref=e255] [cursor=pointer]:
+                - /url: "#local-management-mode"
+  - button "Project Logo Ask AI" [ref=e256] [cursor=pointer]:
+    - generic [ref=e259]:
+      - img "Project Logo" [ref=e260]
+      - paragraph [ref=e261]: Ask AI
+```

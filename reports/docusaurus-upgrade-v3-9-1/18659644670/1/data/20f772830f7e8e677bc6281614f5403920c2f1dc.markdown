@@ -1,0 +1,644 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Audit Logs" [expanded] [ref=e165] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e167]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e169] [cursor=pointer]
+                - list [ref=e170]:
+                  - listitem [ref=e171]:
+                    - link "Monitor Clusters with Datadog" [ref=e172] [cursor=pointer]:
+                      - /url: /audit-logs/monitor-with-datadog/
+              - listitem [ref=e173]:
+                - generic [ref=e174]:
+                  - link "Self-Hosted Palette" [ref=e175] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e177]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e179] [cursor=pointer]
+              - listitem [ref=e180]:
+                - generic [ref=e181]:
+                  - link "Palette VerteX" [ref=e182] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e184]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e186] [cursor=pointer]
+              - listitem [ref=e187]:
+                - generic [ref=e188]:
+                  - link "Tenant Administration" [ref=e189] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e191]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e193] [cursor=pointer]
+              - listitem [ref=e194]:
+                - generic [ref=e195]:
+                  - link "Automation" [ref=e196] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e198]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e200] [cursor=pointer]
+              - listitem [ref=e201]:
+                - generic [ref=e202]:
+                  - link "Troubleshooting" [ref=e203] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e205]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e207] [cursor=pointer]
+              - listitem [ref=e208]:
+                - link "Glossary" [ref=e209] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e211]
+                  - text: Glossary
+              - listitem [ref=e213]:
+                - generic [ref=e214]:
+                  - link "Compliance & Legal" [ref=e215] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e217]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e219] [cursor=pointer]
+              - listitem [ref=e220]:
+                - button "Privacy Settings" [ref=e221] [cursor=pointer]:
+                  - img [ref=e222]
+                  - text: Privacy Settings
+      - main [ref=e224]:
+        - generic [ref=e226]:
+          - generic [ref=e228]:
+            - article [ref=e229]:
+              - navigation "Breadcrumbs" [ref=e230]:
+                - list [ref=e231]:
+                  - listitem [ref=e232]:
+                    - link "Home page" [ref=e233] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e234]
+                  - listitem [ref=e236]:
+                    - link "Audit Logs" [ref=e237] [cursor=pointer]:
+                      - /url: /audit-logs/
+                  - listitem [ref=e238]:
+                    - generic [ref=e239]: Monitor Clusters with Datadog
+              - generic [ref=e240]:
+                - heading "Monitor Host Clusters with Datadog" [level=1] [ref=e242]
+                - paragraph [ref=e243]:
+                  - text: You can use
+                  - link "Datadog" [ref=e244] [cursor=pointer]:
+                    - /url: https://www.datadoghq.com/
+                  - text: ", a monitoring and analytics tool, to visualize the audit logs of your host clusters."
+                - paragraph [ref=e245]: This guide will help you through the process of configuring your clusters deployed with Palette to export audit logs to Datadog.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e246]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e247] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e248]:
+                  - listitem [ref=e249]:
+                    - paragraph [ref=e250]:
+                      - text: A
+                      - link "Palette account" [ref=e251] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: with tenant admin access.
+                  - listitem [ref=e252]:
+                    - paragraph [ref=e253]:
+                      - text: A Datadog account. Visit the
+                      - link "Datadog official website" [ref=e254] [cursor=pointer]:
+                        - /url: https://app.datadoghq.eu/signup
+                      - text: to create a Datadog account.
+                  - listitem [ref=e255]:
+                    - paragraph [ref=e256]:
+                      - text: An active
+                      - link "host cluster" [ref=e257] [cursor=pointer]:
+                        - /url: /glossary-all/#host-cluster
+                      - text: . Refer to the
+                      - link "Getting Started" [ref=e258] [cursor=pointer]:
+                        - /url: /getting-started/
+                      - text: tutorials for instructions on how to deploy a cluster.
+                  - listitem [ref=e259]:
+                    - paragraph [ref=e260]:
+                      - link "Kubectl" [ref=e261] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/tasks/tools/#kubectl
+                      - text: installed and configured to access your host cluster. Refer to the
+                      - link "Access Cluster with CLI" [ref=e262] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/
+                      - text: page for guidance on how to access your cluster with the kubectl CLI.
+                - heading "Configure Host Cluster to Export LogsDirect link to Configure Host Cluster to Export Logs" [level=2] [ref=e263]:
+                  - text: Configure Host Cluster to Export Logs
+                  - link "Direct link to Configure Host Cluster to Export Logs" [ref=e264] [cursor=pointer]:
+                    - /url: "#configure-host-cluster-to-export-logs"
+                    - text: "#"
+                - list [ref=e265]:
+                  - listitem [ref=e266]:
+                    - paragraph [ref=e267]:
+                      - text: Log in to Datadog and select
+                      - strong [ref=e268]: Kubernetes
+                      - text: from the left
+                      - strong [ref=e269]: Main Menu
+                      - text: .
+                  - listitem [ref=e270]:
+                    - paragraph [ref=e271]:
+                      - text: Select
+                      - strong [ref=e272]: Helm Chart
+                      - text: . Datadog provides you with an API key. Copy and save the key.
+                    - paragraph [ref=e273]:
+                      - img "Datadog Agent Setup Page" [ref=e274]
+                  - listitem [ref=e275]:
+                    - paragraph [ref=e276]:
+                      - text: Log in to
+                      - link "Palette" [ref=e277] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e278]:
+                    - paragraph [ref=e279]:
+                      - text: From the left
+                      - strong [ref=e280]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e281]: Tenant Settings
+                      - text: .
+                  - listitem [ref=e282]:
+                    - paragraph [ref=e283]:
+                      - text: Click
+                      - strong [ref=e284]: Registries
+                      - text: and select
+                      - strong [ref=e285]: Add New Helm Registry
+                      - text: under
+                      - strong [ref=e286]: Helm Registries
+                      - text: to add the Datadog Helm repository.
+                  - listitem [ref=e287]:
+                    - paragraph [ref=e288]:
+                      - text: Assign the registry a name, for example,
+                      - code [ref=e289]: Datadog
+                      - text: ", and include"
+                      - code [ref=e290]: https://helm.datadoghq.com
+                      - text: as the endpoint. Click
+                      - strong [ref=e291]: Confirm
+                      - text: . The synchronization may take a few minutes to complete.
+                    - paragraph [ref=e292]:
+                      - img "Palette Registry Setup Page" [ref=e293]
+                  - listitem [ref=e294]:
+                    - paragraph [ref=e295]:
+                      - text: Once the synchronization is finished, click on
+                      - strong [ref=e296]: Profiles
+                      - text: from the left
+                      - strong [ref=e297]: Main Menu
+                      - text: and select
+                      - strong [ref=e298]: Add Cluster Profile
+                      - text: to create a Datadog add-on cluster profile.
+                  - listitem [ref=e299]:
+                    - paragraph [ref=e300]:
+                      - text: Give the profile a name, select the type
+                      - strong [ref=e301]: Add-on
+                      - text: ", and click"
+                      - strong [ref=e302]: Next
+                      - text: .
+                  - listitem [ref=e303]:
+                    - paragraph [ref=e304]:
+                      - text: Click on
+                      - strong [ref=e305]: Add Helm chart
+                      - text: ", choose"
+                      - strong [ref=e306]: Public packs
+                      - text: ", and select the"
+                      - strong [ref=e307]: Datadog
+                      - text: registry.
+                  - listitem [ref=e308]:
+                    - paragraph [ref=e309]:
+                      - text: Next, select the latest version of the
+                      - code [ref=e310]: datadog
+                      - text: chart.
+                    - paragraph [ref=e311]:
+                      - img "Datadog Helm Chart Pack" [ref=e312]
+                  - listitem [ref=e313]:
+                    - paragraph [ref=e314]:
+                      - text: Click
+                      - strong [ref=e315]: Values
+                      - text: under
+                      - strong [ref=e316]: Pack Details
+                      - text: to configure the Datadog Helm chart. Modify the parameters according to the following table.
+                    - table [ref=e317]:
+                      - rowgroup [ref=e318]:
+                        - row "Parameter Modification" [ref=e319]:
+                          - cell "Parameter" [ref=e320]:
+                            - strong [ref=e321]: Parameter
+                          - cell "Modification" [ref=e322]:
+                            - strong [ref=e323]: Modification
+                      - rowgroup [ref=e324]:
+                        - row "pack.namespace Provide a namespace for the Datadog installation, for example, datadog." [ref=e325]:
+                          - cell "pack.namespace" [ref=e326]:
+                            - strong [ref=e327]: pack.namespace
+                          - cell "Provide a namespace for the Datadog installation, for example, datadog." [ref=e328]:
+                            - text: Provide a namespace for the Datadog installation, for example,
+                            - code [ref=e329]: datadog
+                            - text: .
+                        - row "datadog.apiKey Insert your Datadog API key." [ref=e330]:
+                          - cell "datadog.apiKey" [ref=e331]:
+                            - strong [ref=e332]: datadog.apiKey
+                          - cell "Insert your Datadog API key." [ref=e333]
+                        - row "datadog.site Insert your regional Datadog website, for example, us5.datadoghq.com. Refer to the Getting Started with Datadog Sites page for a complete list of websites." [ref=e334]:
+                          - cell "datadog.site" [ref=e335]:
+                            - strong [ref=e336]: datadog.site
+                          - cell "Insert your regional Datadog website, for example, us5.datadoghq.com. Refer to the Getting Started with Datadog Sites page for a complete list of websites." [ref=e337]:
+                            - text: Insert your regional Datadog website, for example,
+                            - code [ref=e338]: us5.datadoghq.com
+                            - text: . Refer to the
+                            - link "Getting Started with Datadog Sites" [ref=e339] [cursor=pointer]:
+                              - /url: https://docs.datadoghq.com/getting_started/site/
+                            - text: page for a complete list of websites.
+                        - row "datadog.logs.enabled Set it to true to enable the Datadog Agent log collection." [ref=e340]:
+                          - cell "datadog.logs.enabled" [ref=e341]:
+                            - strong [ref=e342]: datadog.logs.enabled
+                          - cell "Set it to true to enable the Datadog Agent log collection." [ref=e343]:
+                            - text: Set it to
+                            - code [ref=e344]: "true"
+                            - text: to enable the Datadog Agent log collection.
+                        - row "datadog.logs.containerCollectAll Set it to true to allow log collection for all containers." [ref=e345]:
+                          - cell "datadog.logs.containerCollectAll" [ref=e346]:
+                            - strong [ref=e347]: datadog.logs.containerCollectAll
+                          - cell "Set it to true to allow log collection for all containers." [ref=e348]:
+                            - text: Set it to
+                            - code [ref=e349]: "true"
+                            - text: to allow log collection for all containers.
+                        - row "datadog.processAgent.processCollection Set it to true to enable process collection." [ref=e350]:
+                          - cell "datadog.processAgent.processCollection" [ref=e351]:
+                            - strong [ref=e352]: datadog.processAgent.processCollection
+                          - cell "Set it to true to enable process collection." [ref=e353]:
+                            - text: Set it to
+                            - code [ref=e354]: "true"
+                            - text: to enable process collection.
+                        - row "datadog.networkMonitoring.enabled Set it to true to enable network performance monitoring." [ref=e355]:
+                          - cell "datadog.networkMonitoring.enabled" [ref=e356]:
+                            - strong [ref=e357]: datadog.networkMonitoring.enabled
+                          - cell "Set it to true to enable network performance monitoring." [ref=e358]:
+                            - text: Set it to
+                            - code [ref=e359]: "true"
+                            - text: to enable network performance monitoring.
+                        - row "datadog.serviceMonitoring.enabled Set it to true to enable universal service monitoring." [ref=e360]:
+                          - cell "datadog.serviceMonitoring.enabled" [ref=e361]:
+                            - strong [ref=e362]: datadog.serviceMonitoring.enabled
+                          - cell "Set it to true to enable universal service monitoring." [ref=e363]:
+                            - text: Set it to
+                            - code [ref=e364]: "true"
+                            - text: to enable universal service monitoring.
+                        - row "datadog.securityAgent.compliance.enabled Set it to true to enable the security agent." [ref=e365]:
+                          - cell "datadog.securityAgent.compliance.enabled" [ref=e366]:
+                            - strong [ref=e367]: datadog.securityAgent.compliance.enabled
+                          - cell "Set it to true to enable the security agent." [ref=e368]:
+                            - text: Set it to
+                            - code [ref=e369]: "true"
+                            - text: to enable the security agent.
+                  - listitem [ref=e370]:
+                    - paragraph [ref=e371]:
+                      - text: Next, paste the following snippet under the
+                      - code [ref=e372]: clusterAgent.volumes
+                      - text: section to enable the volume and volume mount for collecting audit logs. Replace
+                      - code [ref=e373]: /var/log/apiserver
+                      - text: with the
+                      - code [ref=e374]: audit-log
+                      - text: path configured in the Kubernetes layer of your host cluster. You can find this path in the Kubernetes layer of your host cluster profile in Palette.
+                    - generic [ref=e376]:
+                      - code [ref=e378]:
+                        - generic [ref=e379]: "volumes:"
+                        - generic [ref=e380]: "- hostPath:"
+                        - generic [ref=e381]: "path: /var/log/apiserver"
+                        - generic [ref=e382]: "name: auditdir"
+                        - generic [ref=e383]: "- name: dd-agent-config"
+                        - generic [ref=e384]: "configMap:"
+                        - generic [ref=e385]: "name: dd-agent-config"
+                        - generic [ref=e386]: "items:"
+                        - generic [ref=e387]: "- key: kubernetes-audit-log"
+                        - generic [ref=e388]: "path: conf.yaml"
+                        - generic [ref=e389]: "volumeMounts:"
+                        - generic [ref=e390]: "- name: auditdir"
+                        - generic [ref=e391]: "mountPath: /var/log/apiserver"
+                        - generic [ref=e392]: "- name: dd-agent-config"
+                        - generic [ref=e393]: "mountPath: /conf.d/kubernetes_audit.d"
+                      - button "Copy code to clipboard" [ref=e395] [cursor=pointer]:
+                        - generic [ref=e396]:
+                          - img [ref=e397]
+                          - img [ref=e399]
+                  - listitem [ref=e401]:
+                    - paragraph [ref=e402]:
+                      - text: Additionally, if your host cluster uses Kubernetes version 1.25 or later, add the following lines under the
+                      - code [ref=e403]: pack.namespace
+                      - text: section to accommodate the elevated privileges required by the Datadog pods. Replace
+                      - code [ref=e404]: <k8s_version>
+                      - text: with your cluster's Kubernetes version and only include the major and minor version following the lowercase letter
+                      - strong [ref=e405]: v
+                      - text: . For example,
+                      - code [ref=e406]: v1.30
+                      - text: . Refer to the
+                      - link "Deployment Violates Pod Security" [ref=e407] [cursor=pointer]:
+                        - /url: /troubleshooting/cluster-deployment/#scenario---deployment-violates-pod-security
+                      - text: troubleshooting guide for more information.
+                    - generic [ref=e409]:
+                      - code [ref=e411]:
+                        - generic [ref=e412]: "pack:"
+                        - generic [ref=e413]: "namespace: \"datadog\""
+                        - generic [ref=e414]: "namespaceLabels:"
+                        - generic [ref=e415]: "\"datadog\": \"pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v<k8s_version>\""
+                      - generic [ref=e416]:
+                        - button "Toggle word wrap" [ref=e417] [cursor=pointer]:
+                          - img [ref=e418]
+                        - button "Copy code to clipboard" [ref=e420] [cursor=pointer]:
+                          - generic [ref=e421]:
+                            - img [ref=e422]
+                            - img [ref=e424]
+                  - listitem [ref=e426]:
+                    - paragraph [ref=e427]:
+                      - text: Once you finish making the necessary changes, click
+                      - strong [ref=e428]: Confirm & Create
+                      - text: ", then select"
+                      - strong [ref=e429]: Next
+                      - text: .
+                  - listitem [ref=e430]:
+                    - paragraph [ref=e431]:
+                      - text: Review the cluster profile and click
+                      - strong [ref=e432]: Finish Configuration
+                      - text: .
+                  - listitem [ref=e433]:
+                    - paragraph [ref=e434]:
+                      - text: In Palette, attach the Datadog add-on cluster profile to your host cluster. Refer to the
+                      - link "Attach an Add-on Profile" [ref=e435] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/attach-add-on-profile/
+                      - text: guide for instructions.
+                  - listitem [ref=e436]:
+                    - paragraph [ref=e437]:
+                      - text: Open a terminal window and use the
+                      - code [ref=e438]: cat
+                      - text: command to create a ConfigMap resource for the host cluster to collect data.
+                    - generic [ref=e440]:
+                      - code [ref=e442]:
+                        - generic [ref=e443]: cat << EOF > datadog-configmap.yaml
+                        - generic [ref=e444]: "kind: ConfigMap"
+                        - generic [ref=e445]: "apiVersion: v1"
+                        - generic [ref=e446]: "metadata:"
+                        - generic [ref=e447]: "name: dd-agent-config"
+                        - generic [ref=e448]: "namespace: datadog"
+                        - generic [ref=e449]: "data:"
+                        - generic [ref=e450]: "kubernetes-audit-log: |-"
+                        - generic [ref=e451]: "logs:"
+                        - generic [ref=e452]: "- type: file"
+                        - generic [ref=e453]: "path: /var/log/apiserver/audit.log"
+                        - generic [ref=e454]: "source: kubernetes.audit"
+                        - generic [ref=e455]: "service: audit"
+                        - generic [ref=e456]: EOF
+                      - button "Copy code to clipboard" [ref=e458] [cursor=pointer]:
+                        - generic [ref=e459]:
+                          - img [ref=e460]
+                          - img [ref=e462]
+                  - listitem [ref=e464]:
+                    - paragraph [ref=e465]: Issue the following command to apply the ConfigMap to your host cluster.
+                    - generic [ref=e467]:
+                      - code [ref=e469]:
+                        - generic [ref=e470]: kubectl apply --namespace datadog --filename datadog-configmap.yaml
+                      - generic [ref=e471]:
+                        - button "Toggle word wrap" [ref=e472] [cursor=pointer]:
+                          - img [ref=e473]
+                        - button "Copy code to clipboard" [ref=e475] [cursor=pointer]:
+                          - generic [ref=e476]:
+                            - img [ref=e477]
+                            - img [ref=e479]
+                    - code [ref=e484]:
+                      - generic [ref=e485]: configmap/dd-agent-config created
+                  - listitem [ref=e486]:
+                    - paragraph [ref=e487]:
+                      - text: After a few minutes, the Datadog agent will start reporting. Log in to Datadog and select
+                      - strong [ref=e488]: Kubernetes
+                      - text: from the left
+                      - strong [ref=e489]: Main Menu
+                      - text: to verify that the audit logs are being transferred successfully to Datadog.
+                    - paragraph [ref=e490]:
+                      - img "Datadog Agent Reporting" [ref=e491]
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e492]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e493] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e494]:
+                  - listitem [ref=e495]:
+                    - paragraph [ref=e496]: Log in to Datadog.
+                  - listitem [ref=e497]:
+                    - paragraph [ref=e498]:
+                      - text: Click on
+                      - strong [ref=e499]: Logs
+                      - text: in the left
+                      - strong [ref=e500]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e501]: Explorer
+                      - text: ", and verify that your host cluster audit logs are visible."
+                    - paragraph [ref=e502]:
+                      - img "Datadog UI Displaying the Logs" [ref=e503]
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e504]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e505] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e506]:
+                  - listitem [ref=e507]:
+                    - paragraph [ref=e508]:
+                      - link "Cluster Monitoring" [ref=e509] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/monitoring/
+                  - listitem [ref=e510]:
+                    - paragraph [ref=e511]:
+                      - link "Audit Logs" [ref=e512] [cursor=pointer]:
+                        - /url: /audit-logs/
+                  - listitem [ref=e513]:
+                    - paragraph [ref=e514]:
+                      - link "Monitoring Kubernetes with Datadog" [ref=e515] [cursor=pointer]:
+                        - /url: https://www.datadoghq.com/blog/monitoring-kubernetes-with-datadog/
+              - generic [ref=e516]:
+                - generic [ref=e518]:
+                  - text: "Tags:"
+                  - list [ref=e519]:
+                    - listitem [ref=e520]:
+                      - link "audit-logs" [ref=e521] [cursor=pointer]:
+                        - /url: /tags/audit-logs/
+                    - listitem [ref=e522]:
+                      - link "datadog" [ref=e523] [cursor=pointer]:
+                        - /url: /tags/datadog/
+                    - listitem [ref=e524]:
+                      - link "monitoring" [ref=e525] [cursor=pointer]:
+                        - /url: /tags/monitoring/
+                - link "Edit this page" [ref=e528] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/audit-logs/monitor-with-datadog.md
+                  - img [ref=e529]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e533]:
+              - link "Previous « Audit Logs" [ref=e534] [cursor=pointer]:
+                - /url: /audit-logs/
+                - generic [ref=e535]: Previous
+                - generic [ref=e536]: « Audit Logs
+              - link "Next Self-Hosted Palette »" [ref=e537] [cursor=pointer]:
+                - /url: /enterprise-version/
+                - generic [ref=e538]: Next
+                - generic [ref=e539]: Self-Hosted Palette »
+          - list [ref=e542]:
+            - listitem [ref=e543]:
+              - link "Prerequisites" [ref=e544] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e545]:
+              - link "Configure Host Cluster to Export Logs" [ref=e546] [cursor=pointer]:
+                - /url: "#configure-host-cluster-to-export-logs"
+            - listitem [ref=e547]:
+              - link "Validate" [ref=e548] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e549]:
+              - link "Resources" [ref=e550] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e551] [cursor=pointer]:
+    - generic [ref=e554]:
+      - img "Project Logo" [ref=e555]
+      - paragraph [ref=e556]: Ask AI
+```

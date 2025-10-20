@@ -1,0 +1,399 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [expanded] [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+                - list [ref=e82]:
+                  - listitem [ref=e83]:
+                    - generic [ref=e84]:
+                      - link "Cluster Profiles" [expanded] [ref=e85] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/
+                      - button "Toggle the collapsible sidebar category 'Cluster Profiles'" [ref=e86] [cursor=pointer]
+                    - list [ref=e87]:
+                      - listitem [ref=e88]:
+                        - generic [ref=e89]:
+                          - link "Create Cluster Profiles" [expanded] [ref=e90] [cursor=pointer]:
+                            - /url: /profiles/cluster-profiles/create-cluster-profiles/
+                          - button "Toggle the collapsible sidebar category 'Create Cluster Profiles'" [ref=e91] [cursor=pointer]
+                        - list [ref=e92]:
+                          - listitem [ref=e93]:
+                            - link "Create an Infrastructure Profile" [ref=e94] [cursor=pointer]:
+                              - /url: /profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile/
+                          - listitem [ref=e95]:
+                            - generic [ref=e96]:
+                              - link "Create an Add-on Profile" [expanded] [ref=e97] [cursor=pointer]:
+                                - /url: /profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/
+                              - button "Toggle the collapsible sidebar category 'Create an Add-on Profile'" [ref=e98] [cursor=pointer]
+                            - list [ref=e99]:
+                              - listitem [ref=e100]:
+                                - link "Add a Pack" [ref=e101] [cursor=pointer]:
+                                  - /url: /profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-pack-addon/
+                              - listitem [ref=e102]:
+                                - link "Add a Manifest" [ref=e103] [cursor=pointer]:
+                                  - /url: /profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon/
+                              - listitem [ref=e104]:
+                                - link "Add a Helm Chart" [ref=e105] [cursor=pointer]:
+                                  - /url: /profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-helm-addon/
+                          - listitem [ref=e106]:
+                            - link "Create a Full Profile" [ref=e107] [cursor=pointer]:
+                              - /url: /profiles/cluster-profiles/create-cluster-profiles/create-full-profile/
+                          - listitem [ref=e108]:
+                            - link "Deploy the Same Pack to Multiple Layers" [ref=e109] [cursor=pointer]:
+                              - /url: /profiles/cluster-profiles/create-cluster-profiles/duplicate-pack-in-profile/
+                          - listitem [ref=e110]:
+                            - generic [ref=e111]:
+                              - link "Cluster Profile Variables" [ref=e112] [cursor=pointer]:
+                                - /url: /profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/
+                              - button "Toggle the collapsible sidebar category 'Cluster Profile Variables'" [ref=e113] [cursor=pointer]
+                      - listitem [ref=e114]:
+                        - generic [ref=e115]:
+                          - link "Modify Cluster Profiles" [ref=e116] [cursor=pointer]:
+                            - /url: /profiles/cluster-profiles/modify-cluster-profiles/
+                          - button "Toggle the collapsible sidebar category 'Modify Cluster Profiles'" [ref=e117] [cursor=pointer]
+                      - listitem [ref=e118]:
+                        - link "Export and Import a Cluster Profile" [ref=e119] [cursor=pointer]:
+                          - /url: /profiles/cluster-profiles/export-import-cluster-profile/
+                      - listitem [ref=e120]:
+                        - link "Clone a Cluster Profile" [ref=e121] [cursor=pointer]:
+                          - /url: /profiles/cluster-profiles/clone-cluster-profile/
+                      - listitem [ref=e122]:
+                        - link "Delete a Cluster Profile" [ref=e123] [cursor=pointer]:
+                          - /url: /profiles/cluster-profiles/delete-cluster-profile/
+                  - listitem [ref=e124]:
+                    - generic [ref=e125]:
+                      - link "App Profiles" [ref=e126] [cursor=pointer]:
+                        - /url: /profiles/app-profiles/
+                      - button "Toggle the collapsible sidebar category 'App Profiles'" [ref=e127] [cursor=pointer]
+                  - listitem [ref=e128]:
+                    - link "Profile Customization" [ref=e129] [cursor=pointer]:
+                      - /url: /profiles/profile-customization/
+              - listitem [ref=e130]:
+                - generic [ref=e131]:
+                  - link "Cluster Templates" [ref=e132] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e134]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e136] [cursor=pointer]
+              - listitem [ref=e137]:
+                - generic [ref=e138]:
+                  - link "Deployment Modes" [ref=e139] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e141]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e143] [cursor=pointer]
+              - listitem [ref=e144]:
+                - generic [ref=e145]:
+                  - link "Clusters" [ref=e146] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e148]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e157] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e159]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Palette Dev Engine" [ref=e164] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e166]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e168] [cursor=pointer]
+              - listitem [ref=e169]:
+                - generic [ref=e170]:
+                  - link "Virtual Machine Orchestrator" [ref=e171] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e173]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e175] [cursor=pointer]
+              - listitem [ref=e176]:
+                - generic [ref=e177]:
+                  - link "Workspaces" [ref=e178] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e180]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e182] [cursor=pointer]
+              - listitem [ref=e183]:
+                - generic [ref=e184]:
+                  - link "Packs List" [ref=e185] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e187]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e189] [cursor=pointer]
+              - listitem [ref=e190]:
+                - generic [ref=e191]:
+                  - link "User & Role Management" [ref=e192] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e194]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e196] [cursor=pointer]
+              - listitem [ref=e197]:
+                - generic [ref=e198]:
+                  - link "Registries and Packs" [ref=e199] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e201]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e203] [cursor=pointer]
+              - listitem [ref=e204]:
+                - generic [ref=e205]:
+                  - link "Security" [ref=e206] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e208]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e210] [cursor=pointer]
+              - listitem [ref=e211]:
+                - generic [ref=e212]:
+                  - link "Audit Logs" [ref=e213] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e215]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e217] [cursor=pointer]
+              - listitem [ref=e218]:
+                - generic [ref=e219]:
+                  - link "Self-Hosted Palette" [ref=e220] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e222]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e224] [cursor=pointer]
+              - listitem [ref=e225]:
+                - generic [ref=e226]:
+                  - link "Palette VerteX" [ref=e227] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e229]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e231] [cursor=pointer]
+              - listitem [ref=e232]:
+                - generic [ref=e233]:
+                  - link "Tenant Administration" [ref=e234] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e236]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e238] [cursor=pointer]
+              - listitem [ref=e239]:
+                - generic [ref=e240]:
+                  - link "Automation" [ref=e241] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e243]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e245] [cursor=pointer]
+              - listitem [ref=e246]:
+                - generic [ref=e247]:
+                  - link "Troubleshooting" [ref=e248] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e250]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e252] [cursor=pointer]
+              - listitem [ref=e253]:
+                - link "Glossary" [ref=e254] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e256]
+                  - text: Glossary
+              - listitem [ref=e258]:
+                - generic [ref=e259]:
+                  - link "Compliance & Legal" [ref=e260] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e262]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e264] [cursor=pointer]
+              - listitem [ref=e265]:
+                - button "Privacy Settings" [ref=e266] [cursor=pointer]:
+                  - img [ref=e267]
+                  - text: Privacy Settings
+      - main [ref=e269]:
+        - generic [ref=e271]:
+          - generic [ref=e273]:
+            - article [ref=e274]:
+              - navigation "Breadcrumbs" [ref=e275]:
+                - list [ref=e276]:
+                  - listitem [ref=e277]:
+                    - link "Home page" [ref=e278] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e279]
+                  - listitem [ref=e281]:
+                    - link "Profiles" [ref=e282] [cursor=pointer]:
+                      - /url: /profiles/
+                  - listitem [ref=e283]:
+                    - link "Cluster Profiles" [ref=e284] [cursor=pointer]:
+                      - /url: /profiles/cluster-profiles/
+                  - listitem [ref=e285]:
+                    - link "Create Cluster Profiles" [ref=e286] [cursor=pointer]:
+                      - /url: /profiles/cluster-profiles/create-cluster-profiles/
+                  - listitem [ref=e287]:
+                    - generic [ref=e288]: Create an Add-on Profile
+              - generic [ref=e289]:
+                - heading "Create an Add-on Profile" [level=1] [ref=e291]
+                - paragraph [ref=e292]:
+                  - text: Add-on cluster profiles offer a range of benefits for workload cluster deployments. These profiles provide enhanced functionality by allowing the addition of various layers such as system apps, authentication, security, monitoring, logging, ingress, and load balancers to the cluster. Since add-on cluster profiles do not contain the required OS, Kubernetes, network, and storage components, they must be used in tandem with an
+                  - link "infrastructure" [ref=e293] [cursor=pointer]:
+                    - /url: /profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile/
+                  - text: or
+                  - link "full cluster profile" [ref=e294] [cursor=pointer]:
+                    - /url: /profiles/cluster-profiles/create-cluster-profiles/create-full-profile/
+                  - text: .
+                - paragraph [ref=e295]: This capability allows you to customize and configure clusters based on specific requirements. Add-on cluster profiles follow a modular approach, making managing and maintaining cluster configurations more flexible. Add-on profiles also promote reusability by allowing profiles to be used across multiple environments, projects, and tenants. Additionally, add-on profiles support integration-specific packs, charts, and manifests, providing flexibility and customization options for workload cluster deployments.
+                - paragraph [ref=e296]: The next sections provide guidance in creating each type of these add-on profiles.
+                - heading "Install OrderDirect link to Install Order" [level=2] [ref=e297]:
+                  - text: Install Order
+                  - link "Direct link to Install Order" [ref=e298] [cursor=pointer]:
+                    - /url: "#install-order"
+                    - text: "#"
+                - paragraph [ref=e299]: You can specify the install order of each add-on pack layer in a cluster profile. The install order value accepts negative and positive numbers and 0. The default install order value is 0. The install order determines the order in which manifests in the profile are applied. The lowest-numbered packs will be installed first. Palette will wait a few moments when installing layers to ensure the readiness checks pass.
+                - paragraph [ref=e300]:
+                  - text: To set the install order for an add-on pack layer, add the
+                  - code [ref=e301]: spectrocloud.com/install-priority
+                  - text: annotation to the pack layer YAML. Replace the number with the desired install order value.
+                - generic [ref=e303]:
+                  - code [ref=e305]:
+                    - generic [ref=e306]: "pack:"
+                    - generic [ref=e307]: "spectrocloud.com/install-priority: \"30\""
+                  - button "Copy code to clipboard" [ref=e309] [cursor=pointer]:
+                    - generic [ref=e310]:
+                      - img [ref=e311]
+                      - img [ref=e313]
+                - paragraph [ref=e315]: If a readiness check for an add-on pack layer fails, Palette will keep checking the status every two minutes until the check passes. Once the readiness check passes for a pack with a lower priority, add-on layer packs with higher install priority will be installed.
+                - paragraph [ref=e316]: A cluster profile containing several different install order values will take a few minutes longer to install versus a cluster profile with the same install order for all add-on packs.
+                - generic [ref=e317]:
+                  - generic [ref=e318]:
+                    - img [ref=e320]
+                    - text: info
+                  - paragraph [ref=e323]: Palette will deploy together all packs that have the same install order. Palette will wait for all pack readiness checks to pass before moving to the next install order.
+                - heading "Deletion OrderDirect link to Deletion Order" [level=2] [ref=e324]:
+                  - text: Deletion Order
+                  - link "Direct link to Deletion Order" [ref=e325] [cursor=pointer]:
+                    - /url: "#deletion-order"
+                    - text: "#"
+                - paragraph [ref=e326]: When you delete a cluster, Palette removes the add-on pack layers in the reverse order of their installation. Packs with the highest installation priority are deleted first, while those with the lowest priority are deleted last. This approach ensures that dependent resources are cleaned up in the correct order, avoiding issues during deletion.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e327]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e328] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e329]:
+                  - listitem [ref=e330]:
+                    - paragraph [ref=e331]:
+                      - link "Add a Pack" [ref=e332] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-pack-addon/
+                  - listitem [ref=e333]:
+                    - paragraph [ref=e334]:
+                      - link "Add a Manifest" [ref=e335] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon/
+                  - listitem [ref=e336]:
+                    - paragraph [ref=e337]:
+                      - link "Add a Helm Chart" [ref=e338] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-helm-addon/
+              - generic [ref=e339]:
+                - generic [ref=e341]:
+                  - text: "Tags:"
+                  - list [ref=e342]:
+                    - listitem [ref=e343]:
+                      - link "profiles" [ref=e344] [cursor=pointer]:
+                        - /url: /tags/profiles/
+                    - listitem [ref=e345]:
+                      - link "cluster profiles" [ref=e346] [cursor=pointer]:
+                        - /url: /tags/cluster-profiles/
+                - link "Edit this page" [ref=e349] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md
+                  - img [ref=e350]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e354]:
+              - link "Previous « Create an Infrastructure Profile" [ref=e355] [cursor=pointer]:
+                - /url: /profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile/
+                - generic [ref=e356]: Previous
+                - generic [ref=e357]: « Create an Infrastructure Profile
+              - link "Next Add a Pack »" [ref=e358] [cursor=pointer]:
+                - /url: /profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-pack-addon/
+                - generic [ref=e359]: Next
+                - generic [ref=e360]: Add a Pack »
+          - list [ref=e363]:
+            - listitem [ref=e364]:
+              - link "Install Order" [ref=e365] [cursor=pointer]:
+                - /url: "#install-order"
+            - listitem [ref=e366]:
+              - link "Deletion Order" [ref=e367] [cursor=pointer]:
+                - /url: "#deletion-order"
+            - listitem [ref=e368]:
+              - link "Resources" [ref=e369] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e370] [cursor=pointer]:
+    - generic [ref=e373]:
+      - img "Project Logo" [ref=e374]
+      - paragraph [ref=e375]: Ask AI
+```

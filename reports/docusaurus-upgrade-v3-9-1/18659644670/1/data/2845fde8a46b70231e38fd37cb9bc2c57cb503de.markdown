@@ -1,0 +1,627 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [expanded] [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+                - list [ref=e107]:
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Public Cloud Clusters" [ref=e110] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e112]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e114] [cursor=pointer]
+                  - listitem [ref=e115]:
+                    - generic [ref=e116]:
+                      - link "Data Center Clusters" [ref=e117] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e119]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e121] [cursor=pointer]
+                  - listitem [ref=e122]:
+                    - generic [ref=e123]:
+                      - link "Edge" [expanded] [ref=e124] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e126]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e128] [cursor=pointer]
+                    - list [ref=e129]:
+                      - listitem [ref=e130]:
+                        - generic [ref=e131]:
+                          - link "Architecture" [ref=e132] [cursor=pointer]:
+                            - /url: /clusters/edge/architecture/
+                          - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e133] [cursor=pointer]
+                      - listitem [ref=e134]:
+                        - link "Hardware Requirements" [ref=e135] [cursor=pointer]:
+                          - /url: /clusters/edge/hardware-requirements/
+                      - listitem [ref=e136]:
+                        - link "Deployment Lifecycle" [ref=e137] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-native-lifecycle/
+                      - listitem [ref=e138]:
+                        - generic [ref=e139]:
+                          - link "Trusted Boot" [ref=e140] [cursor=pointer]:
+                            - /url: /clusters/edge/trusted-boot/
+                          - button "Toggle the collapsible sidebar category 'Trusted Boot'" [ref=e141] [cursor=pointer]
+                      - listitem [ref=e142]:
+                        - generic [ref=e143]:
+                          - link "Install Configuration" [ref=e144] [cursor=pointer]:
+                            - /url: /clusters/edge/edge-configuration/
+                          - button "Toggle the collapsible sidebar category 'Install Configuration'" [ref=e145] [cursor=pointer]
+                      - listitem [ref=e146]:
+                        - generic [ref=e147]:
+                          - link "EdgeForge Workflow" [ref=e148] [cursor=pointer]:
+                            - /url: /clusters/edge/edgeforge-workflow/
+                          - button "Toggle the collapsible sidebar category 'EdgeForge Workflow'" [ref=e149] [cursor=pointer]
+                      - listitem [ref=e150]:
+                        - generic [ref=e151]:
+                          - link "Local UI" [ref=e152] [cursor=pointer]:
+                            - /url: /clusters/edge/local-ui/
+                          - button "Toggle the collapsible sidebar category 'Local UI'" [ref=e153] [cursor=pointer]
+                      - listitem [ref=e154]:
+                        - generic [ref=e155]:
+                          - link "Deployment" [ref=e156] [cursor=pointer]:
+                            - /url: /clusters/edge/site-deployment/
+                          - button "Toggle the collapsible sidebar category 'Deployment'" [ref=e157] [cursor=pointer]
+                      - listitem [ref=e158]:
+                        - generic [ref=e159]:
+                          - link "Cluster Management" [ref=e160] [cursor=pointer]:
+                            - /url: /clusters/edge/cluster-management/
+                          - button "Toggle the collapsible sidebar category 'Cluster Management'" [ref=e161] [cursor=pointer]
+                      - listitem [ref=e162]:
+                        - generic [ref=e163]:
+                          - link "Networking" [expanded] [ref=e164] [cursor=pointer]:
+                            - /url: /clusters/edge/networking/
+                          - button "Toggle the collapsible sidebar category 'Networking'" [ref=e165] [cursor=pointer]
+                        - list [ref=e166]:
+                          - listitem [ref=e167]:
+                            - link "Publish Cluster Services with Kube-vip" [ref=e168] [cursor=pointer]:
+                              - /url: /clusters/edge/networking/kubevip/
+                          - listitem [ref=e169]:
+                            - link "Enable Overlay Network" [ref=e170] [cursor=pointer]:
+                              - /url: /clusters/edge/networking/vxlan-overlay/
+                          - listitem [ref=e171]:
+                            - link "Connect Edge Host to Wi-Fi" [ref=e172] [cursor=pointer]:
+                              - /url: /clusters/edge/networking/connect-wifi/
+                      - listitem [ref=e173]:
+                        - generic [ref=e174]:
+                          - link "Third Party Integrations" [ref=e175] [cursor=pointer]:
+                            - /url: /clusters/edge/third-party-integrations/
+                          - button "Toggle the collapsible sidebar category 'Third Party Integrations'" [ref=e176] [cursor=pointer]
+                  - listitem [ref=e177]:
+                    - generic [ref=e178]:
+                      - link "Palette Virtual Clusters" [ref=e179] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e181]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e183] [cursor=pointer]
+                  - listitem [ref=e184]:
+                    - generic [ref=e185]:
+                      - link "Imported Clusters" [ref=e186] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e188]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e190] [cursor=pointer]
+                  - listitem [ref=e191]:
+                    - generic [ref=e192]:
+                      - link "Manage Clusters" [ref=e193] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e195]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e197] [cursor=pointer]
+                  - listitem [ref=e198]:
+                    - generic [ref=e199]:
+                      - link "Cluster Groups" [ref=e200] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e202]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e204] [cursor=pointer]
+                  - listitem [ref=e205]:
+                    - generic [ref=e206]:
+                      - link "Private Cloud Gateway" [ref=e207] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e209]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e211] [cursor=pointer]
+              - listitem [ref=e212]:
+                - generic [ref=e213]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e214] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e216]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e218] [cursor=pointer]
+              - listitem [ref=e219]:
+                - generic [ref=e220]:
+                  - link "Palette Dev Engine" [ref=e221] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e223]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e225] [cursor=pointer]
+              - listitem [ref=e226]:
+                - generic [ref=e227]:
+                  - link "Virtual Machine Orchestrator" [ref=e228] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e230]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e232] [cursor=pointer]
+              - listitem [ref=e233]:
+                - generic [ref=e234]:
+                  - link "Workspaces" [ref=e235] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e237]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e239] [cursor=pointer]
+              - listitem [ref=e240]:
+                - generic [ref=e241]:
+                  - link "Packs List" [ref=e242] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e244]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e246] [cursor=pointer]
+              - listitem [ref=e247]:
+                - generic [ref=e248]:
+                  - link "User & Role Management" [ref=e249] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e251]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e253] [cursor=pointer]
+              - listitem [ref=e254]:
+                - generic [ref=e255]:
+                  - link "Registries and Packs" [ref=e256] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e258]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e260] [cursor=pointer]
+              - listitem [ref=e261]:
+                - generic [ref=e262]:
+                  - link "Security" [ref=e263] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e265]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e267] [cursor=pointer]
+              - listitem [ref=e268]:
+                - generic [ref=e269]:
+                  - link "Audit Logs" [ref=e270] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e272]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e274] [cursor=pointer]
+              - listitem [ref=e275]:
+                - generic [ref=e276]:
+                  - link "Self-Hosted Palette" [ref=e277] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e279]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e281] [cursor=pointer]
+              - listitem [ref=e282]:
+                - generic [ref=e283]:
+                  - link "Palette VerteX" [ref=e284] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e286]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e288] [cursor=pointer]
+              - listitem [ref=e289]:
+                - generic [ref=e290]:
+                  - link "Tenant Administration" [ref=e291] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e293]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e295] [cursor=pointer]
+              - listitem [ref=e296]:
+                - generic [ref=e297]:
+                  - link "Automation" [ref=e298] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e300]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e302] [cursor=pointer]
+              - listitem [ref=e303]:
+                - generic [ref=e304]:
+                  - link "Troubleshooting" [ref=e305] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e307]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e309] [cursor=pointer]
+              - listitem [ref=e310]:
+                - link "Glossary" [ref=e311] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e313]
+                  - text: Glossary
+              - listitem [ref=e315]:
+                - generic [ref=e316]:
+                  - link "Compliance & Legal" [ref=e317] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e319]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e321] [cursor=pointer]
+              - listitem [ref=e322]:
+                - button "Privacy Settings" [ref=e323] [cursor=pointer]:
+                  - img [ref=e324]
+                  - text: Privacy Settings
+      - main [ref=e326]:
+        - generic [ref=e328]:
+          - generic [ref=e330]:
+            - article [ref=e331]:
+              - navigation "Breadcrumbs" [ref=e332]:
+                - list [ref=e333]:
+                  - listitem [ref=e334]:
+                    - link "Home page" [ref=e335] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e336]
+                  - listitem [ref=e338]:
+                    - link "Clusters" [ref=e339] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e340]:
+                    - link "Edge" [ref=e341] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                  - listitem [ref=e342]:
+                    - link "Networking" [ref=e343] [cursor=pointer]:
+                      - /url: /clusters/edge/networking/
+                  - listitem [ref=e344]:
+                    - generic [ref=e345]: Connect Edge Host to Wi-Fi
+              - generic [ref=e346]:
+                - heading "Connect Edge Host to Wi-Fi" [level=1] [ref=e348]
+                - paragraph [ref=e349]:
+                  - text: This how-to walks you through how to connect an Edge host to a Wi-Fi network with
+                  - link "wpa_supplicant" [ref=e350] [cursor=pointer]:
+                    - /url: https://linux.die.net/man/8/wpa_supplicant
+                  - text: ", using an Intel mini-PC as an example. You can apply the steps in this how-to with other hardware, but steps for configuring the network interface might be different."
+                - paragraph [ref=e351]:
+                  - text: To connect an Edge host to Wi-Fi using
+                  - code [ref=e352]: wpa_supplicant
+                  - text: ", you need to build"
+                  - code [ref=e353]: wpa_supplicant
+                  - text: into the Operating System (OS) image used for the Edge host and provide the Wi-Fi credentials to the Edge host. Depending on how Edge devices are managed at an organization, these two steps are often done by different teams. If they are being done by the same team or person, you can merge the user-data in the step
+                  - link "Supply Site-Specific User Data" [ref=e354] [cursor=pointer]:
+                    - /url: "#supply-site-specific-user-data"
+                  - text: with the original user data you use to build Edge artifacts and skip that step.
+                - heading "Build OS Image with wpa_supplicant IncludedDirect link to Build OS Image with wpa_supplicant Included" [level=2] [ref=e355]:
+                  - text: Build OS Image with wpa_supplicant Included
+                  - link "Direct link to Build OS Image with wpa_supplicant Included" [ref=e356] [cursor=pointer]:
+                    - /url: "#build-os-image-with-wpa_supplicant-included"
+                    - text: "#"
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e357]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e358] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e359]:
+                  - listitem [ref=e360]:
+                    - paragraph [ref=e361]: A physical or virtual Linux machine with AMD64 (also known as x86_64) processor architecture to build the Edge artifacts. You can issue the following command in the terminal to check your processor architecture.
+                    - generic [ref=e363]:
+                      - code [ref=e365]:
+                        - generic [ref=e366]: uname -m
+                      - button "Copy code to clipboard" [ref=e368] [cursor=pointer]:
+                        - generic [ref=e369]:
+                          - img [ref=e370]
+                          - img [ref=e372]
+                  - listitem [ref=e374]:
+                    - paragraph [ref=e375]: "Minimum hardware configuration of the Linux machine:"
+                    - list [ref=e376]:
+                      - listitem [ref=e377]: 4 CPU
+                      - listitem [ref=e378]: 8 GB memory
+                      - listitem [ref=e379]: 50 GB storage
+                  - listitem [ref=e380]:
+                    - paragraph [ref=e381]: A bootable device such as a USB drive, or a Preboot Execution Environment (PXE) server.
+                  - listitem [ref=e382]:
+                    - paragraph [ref=e383]:
+                      - text: A
+                      - link "Spectro Cloud" [ref=e384] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: account. If you have not signed up, you can sign up for an account
+                      - link "here" [ref=e385] [cursor=pointer]:
+                        - /url: https://www.spectrocloud.com/get-started
+                      - text: .
+                  - listitem [ref=e386]:
+                    - paragraph [ref=e387]:
+                      - text: A Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to generate a new registration token. For detailed instructions, refer to the
+                      - link "Create Registration Token" [ref=e388] [cursor=pointer]:
+                        - /url: /clusters/edge/site-deployment/site-installation/create-registration-token/
+                      - text: guide.
+                - heading "ProcedureDirect link to Procedure" [level=3] [ref=e389]:
+                  - text: Procedure
+                  - link "Direct link to Procedure" [ref=e390] [cursor=pointer]:
+                    - /url: "#procedure"
+                    - text: "#"
+                - list [ref=e391]:
+                  - listitem [ref=e392]:
+                    - paragraph [ref=e393]: Clone the CanvOS repository.
+                    - generic [ref=e395]:
+                      - code [ref=e397]:
+                        - generic [ref=e398]: git clone https://github.com/spectrocloud/CanvOS.git
+                      - button "Copy code to clipboard" [ref=e400] [cursor=pointer]:
+                        - generic [ref=e401]:
+                          - img [ref=e402]
+                          - img [ref=e404]
+                  - listitem [ref=e406]:
+                    - paragraph [ref=e407]:
+                      - text: Edit the file
+                      - strong [ref=e408]: Dockerfile
+                      - text: in the root directory of the repository. At the bottom of the file, add the following lines.
+                    - generic [ref=e410]:
+                      - code [ref=e412]:
+                        - generic [ref=e413]: RUN apt-get update && apt-get install wpasupplicant && \
+                        - generic [ref=e414]: mkdir /var/lib/wpa
+                      - button "Copy code to clipboard" [ref=e416] [cursor=pointer]:
+                        - generic [ref=e417]:
+                          - img [ref=e418]
+                          - img [ref=e420]
+                    - generic [ref=e422]:
+                      - generic [ref=e423]:
+                        - img [ref=e425]
+                        - text: tip
+                      - generic [ref=e427]:
+                        - paragraph [ref=e428]: Consider including some other lightweight network utilities in the OS image that can help you troubleshoot or set up network configurations alternatively if needed. For example, if you are using Ubuntu, consider replacing the RUN statement with the following to also include network manager and ping.
+                        - generic [ref=e430]:
+                          - code [ref=e432]:
+                            - generic [ref=e433]: RUN apt-get update && apt-get install wpasupplicant -y && \
+                            - generic [ref=e434]: apt-get update && apt-get install network-manager -y && \
+                            - generic [ref=e435]: apt-get install iputils-ping -y && \
+                            - generic [ref=e436]: mkdir /var/lib/wpa
+                          - generic [ref=e437]:
+                            - button "Toggle word wrap" [ref=e438] [cursor=pointer]:
+                              - img [ref=e439]
+                            - button "Copy code to clipboard" [ref=e441] [cursor=pointer]:
+                              - generic [ref=e442]:
+                                - img [ref=e443]
+                                - img [ref=e445]
+                  - listitem [ref=e447]:
+                    - paragraph [ref=e448]:
+                      - text: Follow the rest of the steps in the guide
+                      - link "Build Edge Artifact" [ref=e449] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/palette-canvos/
+                      - text: . When finished, identify the
+                      - strong [ref=e450]: palette-edge-installer.iso
+                      - text: file in the
+                      - strong [ref=e451]: build
+                      - text: folder.
+                  - listitem [ref=e452]:
+                    - paragraph [ref=e453]: Plug in your bootable device and flash it with the ISO image.
+                  - listitem [ref=e454]:
+                    - paragraph [ref=e455]: Plug the bootable device into the Edge host and power on the Edge host. When the Edge host powers on, open the boot menu by pressing F10, and select the bootable device as your boot volume.
+                  - listitem [ref=e456]:
+                    - paragraph [ref=e457]: Wait for installation to finish. The Edge host will reboot by default upon completion unless you specify a different option in the Edge Installer configuration user data.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e458]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e459] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e460]: You can validate that the Edge host is ready for the on-site deployment by powering on the Edge host and simulating an on-site deployment. The simulation process will require you to complete the installation process and reset the device after the validation.
+                - heading "Supply Site-Specific User DataDirect link to Supply Site-Specific User Data" [level=2] [ref=e461]:
+                  - text: Supply Site-Specific User Data
+                  - link "Direct link to Supply Site-Specific User Data" [ref=e462] [cursor=pointer]:
+                    - /url: "#supply-site-specific-user-data"
+                    - text: "#"
+                - paragraph [ref=e463]: It is likely that your Wi-Fi network name and passwords are site-specific, which means you won't be able to include the network credentials in the installer. You can use site-specific user data to provide this information to you Edge hosts instead.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e464]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e465] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e466]:
+                  - listitem [ref=e467]: A bootable device such as a USB drive, or a Preboot Execution Environment (PXE) server.
+                  - listitem [ref=e468]:
+                    - code [ref=e469]: mkisofs
+                    - text: ", or"
+                    - code [ref=e470]: genisoimage
+                    - text: ", or similar ISO management software."
+                    - list [ref=e471]:
+                      - listitem [ref=e472]:
+                        - code [ref=e473]: cdrtools
+                        - text: or
+                        - code [ref=e474]: wodim
+                        - text: for Windows.
+                  - listitem [ref=e475]: An Edge host that has already been prepared for installation.
+                - heading "ProcedureDirect link to Procedure" [level=3] [ref=e476]:
+                  - text: Procedure
+                  - link "Direct link to Procedure" [ref=e477] [cursor=pointer]:
+                    - /url: "#procedure-1"
+                    - text: "#"
+                - list [ref=e478]:
+                  - listitem [ref=e479]:
+                    - paragraph [ref=e480]:
+                      - text: Create a file named
+                      - code [ref=e481]: user-data
+                      - text: ", and include the following content. Replace"
+                      - code [ref=e482]: network-name
+                      - text: and
+                      - code [ref=e483]: network-password
+                      - text: with the name and password of your Wi-Fi network.
+                    - generic [ref=e485]:
+                      - code [ref=e487]:
+                        - generic [ref=e488]: "#cloud-config"
+                        - generic [ref=e489]: "install:"
+                        - generic [ref=e490]: "bind_mounts:"
+                        - generic [ref=e491]: "- /var/lib/wpa"
+                        - generic [ref=e492]: "stages:"
+                        - generic [ref=e493]: "network.before:"
+                        - generic [ref=e494]: "- name: \"Connect to Wi-Fi\""
+                        - generic [ref=e495]: "commands:"
+                        - generic [ref=e496]: "- |"
+                        - generic [ref=e497]: "# Find the first wireless network interface"
+                        - generic [ref=e498]: wireless_interface=""
+                        - generic [ref=e499]: "for interface in $(ip link | grep -oP '^\\d+: \\K[^:]+(?=:)')"
+                        - generic [ref=e500]: do
+                        - generic [ref=e501]: if [ -d "/sys/class/net/$interface/wireless" ]; then
+                        - generic [ref=e502]: wireless_interface=$interface
+                        - generic [ref=e503]: break
+                        - generic [ref=e504]: fi
+                        - generic [ref=e505]: done
+                        - generic [ref=e506]: "# Check if a wireless interface was found and connect it to WiFi"
+                        - generic [ref=e507]: if [ -n "$wireless_interface" ]; then
+                        - generic [ref=e508]: wpa_passphrase network-name network-password | tee /var/lib/wpa/wpa_supplicant.conf
+                        - generic [ref=e509]: wpa_supplicant -B -c /var/lib/wpa/wpa_supplicant.conf -i $wireless_interface
+                        - generic [ref=e510]: dhclient $wireless_interface
+                        - generic [ref=e511]: else
+                        - generic [ref=e512]: echo "No wireless network interface found."
+                        - generic [ref=e513]: fi
+                      - generic [ref=e514]:
+                        - button "Toggle word wrap" [ref=e515] [cursor=pointer]:
+                          - img [ref=e516]
+                        - button "Copy code to clipboard" [ref=e518] [cursor=pointer]:
+                          - generic [ref=e519]:
+                            - img [ref=e520]
+                            - img [ref=e522]
+                  - listitem [ref=e524]:
+                    - paragraph [ref=e525]:
+                      - text: Follow the rest of the steps in the
+                      - link "Apply Site User Data" [ref=e526] [cursor=pointer]:
+                        - /url: /clusters/edge/site-deployment/site-installation/site-user-data/
+                      - text: section.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e527]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e528] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - list [ref=e529]:
+                  - listitem [ref=e530]: Power up the Edge host and wait for it to boot to the registration screen. Do not connect the Edge host with a wired connection.
+                  - listitem [ref=e531]:
+                    - text: In the
+                    - strong [ref=e532]: Default Address
+                    - text: field, confirm that the Edge host has an IP address. This means the Edge host is connected to a network. Since you did not connect the Edge host with a wired connection, this means that the Edge host has successfully connected to your wireless network and received an IP address.
+              - generic [ref=e533]:
+                - generic [ref=e535]:
+                  - text: "Tags:"
+                  - list [ref=e536]:
+                    - listitem [ref=e537]:
+                      - link "edge" [ref=e538] [cursor=pointer]:
+                        - /url: /tags/edge/
+                - link "Edit this page" [ref=e541] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/edge/networking/connect-wifi.md
+                  - img [ref=e542]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e546]:
+              - link "Previous « Enable Overlay Network" [ref=e547] [cursor=pointer]:
+                - /url: /clusters/edge/networking/vxlan-overlay/
+                - generic [ref=e548]: Previous
+                - generic [ref=e549]: « Enable Overlay Network
+              - link "Next Third Party Integrations »" [ref=e550] [cursor=pointer]:
+                - /url: /clusters/edge/third-party-integrations/
+                - generic [ref=e551]: Next
+                - generic [ref=e552]: Third Party Integrations »
+          - list [ref=e555]:
+            - listitem [ref=e556]:
+              - link "Build OS Image with wpa_supplicant Included" [ref=e557] [cursor=pointer]:
+                - /url: "#build-os-image-with-wpa_supplicant-included"
+              - list [ref=e558]:
+                - listitem [ref=e559]:
+                  - link "Prerequisites" [ref=e560] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e561]:
+                  - link "Procedure" [ref=e562] [cursor=pointer]:
+                    - /url: "#procedure"
+                - listitem [ref=e563]:
+                  - link "Validate" [ref=e564] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e565]:
+              - link "Supply Site-Specific User Data" [ref=e566] [cursor=pointer]:
+                - /url: "#supply-site-specific-user-data"
+              - list [ref=e567]:
+                - listitem [ref=e568]:
+                  - link "Prerequisites" [ref=e569] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e570]:
+                  - link "Procedure" [ref=e571] [cursor=pointer]:
+                    - /url: "#procedure-1"
+                - listitem [ref=e572]:
+                  - link "Validate" [ref=e573] [cursor=pointer]:
+                    - /url: "#validate-1"
+  - button "Project Logo Ask AI" [ref=e574] [cursor=pointer]:
+    - generic [ref=e577]:
+      - img "Project Logo" [ref=e578]
+      - paragraph [ref=e579]: Ask AI
+```

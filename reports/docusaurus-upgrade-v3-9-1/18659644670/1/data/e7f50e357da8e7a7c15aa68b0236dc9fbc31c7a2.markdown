@@ -1,0 +1,502 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Introduction" [ref=e41] [cursor=pointer]:
+                  - /url: /api/introduction/
+                  - img [ref=e43]
+                  - text: Introduction
+              - listitem [ref=e45]:
+                - link "Example Usage" [ref=e46] [cursor=pointer]:
+                  - /url: /api/samples/
+              - listitem [ref=e47]:
+                - link "Postman Collection" [ref=e48] [cursor=pointer]:
+                  - /url: /api/postman-collection/
+              - listitem [ref=e49]:
+                - generic [ref=e50]:
+                  - link "Palette API V1" [expanded] [ref=e51] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Palette API V1'" [ref=e52] [cursor=pointer]
+                - list [ref=e53]:
+                  - listitem [ref=e54]:
+                    - link "Introduction" [ref=e55] [cursor=pointer]:
+                      - /url: /api/v1/palette-apis-4-7/
+                  - listitem [ref=e56]:
+                    - generic [ref=e57]:
+                      - link "Api Keys" [ref=e58] [cursor=pointer]:
+                        - /url: /api/v1/api-keys/
+                      - button "Toggle the collapsible sidebar category 'Api Keys'" [ref=e59] [cursor=pointer]
+                  - listitem [ref=e60]:
+                    - generic [ref=e61]:
+                      - link "App Deployments" [ref=e62] [cursor=pointer]:
+                        - /url: /api/v1/app-deployments/
+                      - button "Toggle the collapsible sidebar category 'App Deployments'" [ref=e63] [cursor=pointer]
+                  - listitem [ref=e64]:
+                    - generic [ref=e65]:
+                      - link "App Profiles" [ref=e66] [cursor=pointer]:
+                        - /url: /api/v1/app-profiles/
+                      - button "Toggle the collapsible sidebar category 'App Profiles'" [ref=e67] [cursor=pointer]
+                  - listitem [ref=e68]:
+                    - generic [ref=e69]:
+                      - link "Audits" [ref=e70] [cursor=pointer]:
+                        - /url: /api/v1/audits/
+                      - button "Toggle the collapsible sidebar category 'Audits'" [ref=e71] [cursor=pointer]
+                  - listitem [ref=e72]:
+                    - generic [ref=e73]:
+                      - link "Auth" [ref=e74] [cursor=pointer]:
+                        - /url: /api/v1/auth/
+                      - button "Toggle the collapsible sidebar category 'Auth'" [ref=e75] [cursor=pointer]
+                  - listitem [ref=e76]:
+                    - generic [ref=e77]:
+                      - link "Cloudaccounts" [ref=e78] [cursor=pointer]:
+                        - /url: /api/v1/cloudaccounts/
+                      - button "Toggle the collapsible sidebar category 'Cloudaccounts'" [ref=e79] [cursor=pointer]
+                  - listitem [ref=e80]:
+                    - generic [ref=e81]:
+                      - link "Cloudconfigs" [ref=e82] [cursor=pointer]:
+                        - /url: /api/v1/cloudconfigs/
+                      - button "Toggle the collapsible sidebar category 'Cloudconfigs'" [ref=e83] [cursor=pointer]
+                  - listitem [ref=e84]:
+                    - generic [ref=e85]:
+                      - link "Clouds" [ref=e86] [cursor=pointer]:
+                        - /url: /api/v1/clouds/
+                      - button "Toggle the collapsible sidebar category 'Clouds'" [ref=e87] [cursor=pointer]
+                  - listitem [ref=e88]:
+                    - generic [ref=e89]:
+                      - link "Cluster Templates" [ref=e90] [cursor=pointer]:
+                        - /url: /api/v1/cluster-templates/
+                      - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+                  - listitem [ref=e92]:
+                    - generic [ref=e93]:
+                      - link "Clustergroups" [ref=e94] [cursor=pointer]:
+                        - /url: /api/v1/clustergroups/
+                      - button "Toggle the collapsible sidebar category 'Clustergroups'" [ref=e95] [cursor=pointer]
+                  - listitem [ref=e96]:
+                    - generic [ref=e97]:
+                      - link "Clusterprofiles" [ref=e98] [cursor=pointer]:
+                        - /url: /api/v1/clusterprofiles/
+                      - button "Toggle the collapsible sidebar category 'Clusterprofiles'" [ref=e99] [cursor=pointer]
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Dashboard" [ref=e102] [cursor=pointer]:
+                        - /url: /api/v1/dashboard/
+                      - button "Toggle the collapsible sidebar category 'Dashboard'" [ref=e103] [cursor=pointer]
+                  - listitem [ref=e104]:
+                    - generic [ref=e105]:
+                      - link "Datasinks" [ref=e106] [cursor=pointer]:
+                        - /url: /api/v1/datasinks/
+                      - button "Toggle the collapsible sidebar category 'Datasinks'" [ref=e107] [cursor=pointer]
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Edgehosts" [ref=e110] [cursor=pointer]:
+                        - /url: /api/v1/edgehosts/
+                      - button "Toggle the collapsible sidebar category 'Edgehosts'" [ref=e111] [cursor=pointer]
+                  - listitem [ref=e112]:
+                    - generic [ref=e113]:
+                      - link "Events" [ref=e114] [cursor=pointer]:
+                        - /url: /api/v1/events/
+                      - button "Toggle the collapsible sidebar category 'Events'" [ref=e115] [cursor=pointer]
+                  - listitem [ref=e116]:
+                    - generic [ref=e117]:
+                      - link "Features" [ref=e118] [cursor=pointer]:
+                        - /url: /api/v1/features/
+                      - button "Toggle the collapsible sidebar category 'Features'" [ref=e119] [cursor=pointer]
+                  - listitem [ref=e120]:
+                    - generic [ref=e121]:
+                      - link "Filters" [ref=e122] [cursor=pointer]:
+                        - /url: /api/v1/filters/
+                      - button "Toggle the collapsible sidebar category 'Filters'" [ref=e123] [cursor=pointer]
+                  - listitem [ref=e124]:
+                    - generic [ref=e125]:
+                      - link "Metrics" [ref=e126] [cursor=pointer]:
+                        - /url: /api/v1/metrics/
+                      - button "Toggle the collapsible sidebar category 'Metrics'" [ref=e127] [cursor=pointer]
+                  - listitem [ref=e128]:
+                    - generic [ref=e129]:
+                      - link "Notifications" [ref=e130] [cursor=pointer]:
+                        - /url: /api/v1/notifications/
+                      - button "Toggle the collapsible sidebar category 'Notifications'" [ref=e131] [cursor=pointer]
+                  - listitem [ref=e132]:
+                    - generic [ref=e133]:
+                      - link "Overlords" [expanded] [ref=e134] [cursor=pointer]:
+                        - /url: /api/v1/overlords/
+                      - button "Toggle the collapsible sidebar category 'Overlords'" [ref=e135] [cursor=pointer]
+                    - list [ref=e136]:
+                      - listitem [ref=e137]:
+                        - link "get Retrieves a list of overlords owned by the tenant" [ref=e138] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-list/
+                      - listitem [ref=e139]:
+                        - link "get Returns the manifests required for the private gateway installation" [ref=e140] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-maas-manifest/
+                      - listitem [ref=e141]:
+                        - link "post create the maas cloudaccount for the private gateway" [ref=e142] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-maas-account-create/
+                      - listitem [ref=e143]:
+                        - link "put update the maas cloudaccount for the private gateway" [ref=e144] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-maas-account-update/
+                      - listitem [ref=e145]:
+                        - link "post validate the maas cloudaccount for the private gateway" [ref=e146] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-maas-account-validate/
+                      - listitem [ref=e147]:
+                        - link "post create the maas cloud config for the private gateway" [ref=e148] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-maas-cloud-config-create/
+                      - listitem [ref=e149]:
+                        - link "put update the maas cloud config for the private gateway" [ref=e150] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-maas-cloud-config-update/
+                      - listitem [ref=e151]:
+                        - link "get Returns the specified maas private gateway cluster profile" [ref=e152] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-maas-cluster-profile/
+                      - listitem [ref=e153]:
+                        - link "get Retrieves a list of IP Pools for the specified maas private gateway" [ref=e154] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-maas-pools-list/
+                      - listitem [ref=e155]:
+                        - link "post Creates an IP pool definition for the specified maas private gateway" [ref=e156] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-maas-pool-create/
+                      - listitem [ref=e157]:
+                        - link "del Deletes the maas private gateway's specified IP Pool data" [ref=e158] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-maas-pool-delete/
+                      - listitem [ref=e159]:
+                        - link "put Updates the maas private gateway's specified IP Pool data" [ref=e160] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-maas-pool-update/
+                      - listitem [ref=e161]:
+                        - link "post migrate all the clusters from source overlord to target overlord" [ref=e162] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-migrate/
+                      - listitem [ref=e163]:
+                        - link "get Returns the manifests required for the private gateway installation" [ref=e164] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-open-stack-manifest/
+                      - listitem [ref=e165]:
+                        - link "post create the OpenStack cloudaccount for the private gateway" [ref=e166] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-open-stack-account-create/
+                      - listitem [ref=e167]:
+                        - link "put update the OpenStack cloudaccount for the private gateway" [ref=e168] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-open-stack-account-update/
+                      - listitem [ref=e169]:
+                        - link "post validate the OpenStack cloudaccount for the private gateway" [ref=e170] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-open-stack-account-validate/
+                      - listitem [ref=e171]:
+                        - link "post create the OpenStack cloud config for the private gateway" [ref=e172] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-open-stack-cloud-config-create/
+                      - listitem [ref=e173]:
+                        - link "put update the OpenStack cloud config for the private gateway" [ref=e174] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-open-stack-cloud-config-update/
+                      - listitem [ref=e175]:
+                        - link "get Returns the specified OpenStack private gateway cluster profile" [ref=e176] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-open-stack-cluster-profile/
+                      - listitem [ref=e177]:
+                        - link "get Returns the pairing code for the private gateway" [ref=e178] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-pairing-code/
+                      - listitem [ref=e179]:
+                        - link "get Returns the manifests required for the private gateway installation" [ref=e180] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-vsphere-manifest/
+                      - listitem [ref=e181]:
+                        - link "get Returns overlord's ova information" [ref=e182] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-vsphere-ova-get/
+                      - listitem [ref=e183]:
+                        - link "post create the vSphere cloudaccount for the private gateway" [ref=e184] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-vsphere-account-create/
+                      - listitem [ref=e185]:
+                        - link "put update the vSphere cloudaccount for the private gateway" [ref=e186] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-vsphere-account-update/
+                      - listitem [ref=e187]:
+                        - link "post validate the vSphere cloudaccount for the private gateway" [ref=e188] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-vsphere-account-validate/
+                      - listitem [ref=e189]:
+                        - link "post create the vSphere cloud config for the private gateway" [ref=e190] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-vsphere-cloud-config-create/
+                      - listitem [ref=e191]:
+                        - link "put update the vSphere cloud config for the private gateway" [ref=e192] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-vsphere-cloud-config-update/
+                      - listitem [ref=e193]:
+                        - link "get Returns the specified vsphere private gateway cluster profile" [ref=e194] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-vsphere-cluster-profile/
+                      - listitem [ref=e195]:
+                        - link "get Retrieves a list of IP Pools for the specified private gateway" [ref=e196] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-pools-list/
+                      - listitem [ref=e197]:
+                        - link "post Creates an IP pool defintion for the sepcified private gateway" [ref=e198] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-pool-create/
+                      - listitem [ref=e199]:
+                        - link "del Deletes the private gateways's specified IP Pool data" [ref=e200] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-pool-delete/
+                      - listitem [ref=e201]:
+                        - link "put Updates the private gateways's specified IP Pool data" [ref=e202] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-pool-update/
+                      - listitem [ref=e203]:
+                        - link "get Retrieves the vSphere computecluster resources for the specified private gateway's account" [ref=e204] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-vsphere-computecluster-res/
+                      - listitem [ref=e205]:
+                        - link "get Retrieves the vSphere datacenters & datacluster for the specified private gateway's account" [ref=e206] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-vsphere-datacenters/
+                      - listitem [ref=e207]:
+                        - link "del delete the private gateway" [ref=e208] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-delete/
+                      - listitem [ref=e209]:
+                        - link "get Returns the specified private gateway's for the given uid" [ref=e210] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-get/
+                      - listitem [ref=e211]:
+                        - link "put update the private gateway's metadata" [ref=e212] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-metadata-update/
+                      - listitem [ref=e213]:
+                        - link "put reset the private gateway by disaaociating the private gateway's resources" [ref=e214] [cursor=pointer]:
+                          - /url: /api/v1/v-1-overlords-uid-reset/
+                  - listitem [ref=e215]:
+                    - generic [ref=e216]:
+                      - link "Packs" [ref=e217] [cursor=pointer]:
+                        - /url: /api/v1/packs/
+                      - button "Toggle the collapsible sidebar category 'Packs'" [ref=e218] [cursor=pointer]
+                  - listitem [ref=e219]:
+                    - generic [ref=e220]:
+                      - link "Pcg" [ref=e221] [cursor=pointer]:
+                        - /url: /api/v1/pcg/
+                      - button "Toggle the collapsible sidebar category 'Pcg'" [ref=e222] [cursor=pointer]
+                  - listitem [ref=e223]:
+                    - generic [ref=e224]:
+                      - link "Permissions" [ref=e225] [cursor=pointer]:
+                        - /url: /api/v1/permissions/
+                      - button "Toggle the collapsible sidebar category 'Permissions'" [ref=e226] [cursor=pointer]
+                  - listitem [ref=e227]:
+                    - generic [ref=e228]:
+                      - link "Projects" [ref=e229] [cursor=pointer]:
+                        - /url: /api/v1/projects/
+                      - button "Toggle the collapsible sidebar category 'Projects'" [ref=e230] [cursor=pointer]
+                  - listitem [ref=e231]:
+                    - generic [ref=e232]:
+                      - link "Registries" [ref=e233] [cursor=pointer]:
+                        - /url: /api/v1/registries/
+                      - button "Toggle the collapsible sidebar category 'Registries'" [ref=e234] [cursor=pointer]
+                  - listitem [ref=e235]:
+                    - generic [ref=e236]:
+                      - link "Roles" [ref=e237] [cursor=pointer]:
+                        - /url: /api/v1/roles/
+                      - button "Toggle the collapsible sidebar category 'Roles'" [ref=e238] [cursor=pointer]
+                  - listitem [ref=e239]:
+                    - generic [ref=e240]:
+                      - link "Services" [ref=e241] [cursor=pointer]:
+                        - /url: /api/v1/services/
+                      - button "Toggle the collapsible sidebar category 'Services'" [ref=e242] [cursor=pointer]
+                  - listitem [ref=e243]:
+                    - generic [ref=e244]:
+                      - link "Spc Policies" [ref=e245] [cursor=pointer]:
+                        - /url: /api/v1/spc-policies/
+                      - button "Toggle the collapsible sidebar category 'Spc Policies'" [ref=e246] [cursor=pointer]
+                  - listitem [ref=e247]:
+                    - generic [ref=e248]:
+                      - link "Spectroclusters" [ref=e249] [cursor=pointer]:
+                        - /url: /api/v1/spectroclusters/
+                      - button "Toggle the collapsible sidebar category 'Spectroclusters'" [ref=e250] [cursor=pointer]
+                  - listitem [ref=e251]:
+                    - generic [ref=e252]:
+                      - link "System" [ref=e253] [cursor=pointer]:
+                        - /url: /api/v1/system/
+                      - button "Toggle the collapsible sidebar category 'System'" [ref=e254] [cursor=pointer]
+                  - listitem [ref=e255]:
+                    - generic [ref=e256]:
+                      - link "Teams" [ref=e257] [cursor=pointer]:
+                        - /url: /api/v1/teams/
+                      - button "Toggle the collapsible sidebar category 'Teams'" [ref=e258] [cursor=pointer]
+                  - listitem [ref=e259]:
+                    - generic [ref=e260]:
+                      - link "Tenants" [ref=e261] [cursor=pointer]:
+                        - /url: /api/v1/tenants/
+                      - button "Toggle the collapsible sidebar category 'Tenants'" [ref=e262] [cursor=pointer]
+                  - listitem [ref=e263]:
+                    - generic [ref=e264]:
+                      - link "Users" [ref=e265] [cursor=pointer]:
+                        - /url: /api/v1/users/
+                      - button "Toggle the collapsible sidebar category 'Users'" [ref=e266] [cursor=pointer]
+                  - listitem [ref=e267]:
+                    - generic [ref=e268]:
+                      - link "Workspaces" [ref=e269] [cursor=pointer]:
+                        - /url: /api/v1/workspaces/
+                      - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e270] [cursor=pointer]
+              - listitem [ref=e271]:
+                - generic [ref=e272]:
+                  - link "Edge Management API V1" [ref=e273] [cursor=pointer]:
+                    - /url: /api/category/edge-management-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Edge Management API V1'" [ref=e274] [cursor=pointer]
+      - main [ref=e275]:
+        - generic [ref=e279]:
+          - article [ref=e280]:
+            - navigation "Breadcrumbs" [ref=e281]:
+              - list [ref=e282]:
+                - listitem [ref=e283]:
+                  - link "Home page" [ref=e284] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e285]
+                - listitem [ref=e287]:
+                  - link "Palette API V1" [ref=e288] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                - listitem [ref=e289]:
+                  - link "Overlords" [ref=e290] [cursor=pointer]:
+                    - /url: /api/v1/overlords/
+                - listitem [ref=e291]:
+                  - generic [ref=e292]: Returns the specified vsphere private gateway cluster profile
+            - generic [ref=e294]:
+              - generic [ref=e295]:
+                - heading "Returns the specified vsphere private gateway cluster profile" [level=1] [ref=e296]
+                - generic [ref=e297]:
+                  - generic [ref=e298]: GET
+                  - heading "https://api.spectrocloud.com/v1/overlords/vsphere/:uid/clusterprofile" [level=2] [ref=e299]
+                - paragraph [ref=e301]: Returns the specified vsphere private gateway cluster profile
+                - heading "RequestDirect link to Request" [level=2] [ref=e302]:
+                  - text: Request
+                  - link "Direct link to Request" [ref=e303] [cursor=pointer]:
+                    - /url: "#request"
+                    - text: "#"
+                - group [ref=e304]:
+                  - generic "Path Parameters" [ref=e305] [cursor=pointer]:
+                    - heading "Path Parameters" [level=3] [ref=e306]
+                  - list [ref=e309]:
+                    - generic [ref=e311]:
+                      - strong [ref=e312]: uid
+                      - generic [ref=e313]: string
+                      - generic [ref=e315]: required
+                - group [ref=e316]:
+                  - generic "Header Parameters" [ref=e317] [cursor=pointer]:
+                    - heading "Header Parameters" [level=3] [ref=e318]
+                  - list [ref=e321]:
+                    - generic [ref=e322]:
+                      - generic [ref=e323]:
+                        - strong [ref=e324]: ProjectUid
+                        - generic [ref=e325]: string
+                      - paragraph [ref=e326]: A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources
+                - generic [ref=e327]:
+                  - generic [ref=e328]:
+                    - heading "ResponsesDirect link to Responses" [level=2] [ref=e329]:
+                      - text: Responses
+                      - link "Direct link to Responses" [ref=e330] [cursor=pointer]:
+                        - /url: "#responses"
+                        - text: "#"
+                    - tablist [ref=e332]:
+                      - tab "200" [selected] [ref=e333] [cursor=pointer]
+                  - tabpanel [ref=e335]:
+                    - paragraph [ref=e338]: OK
+                    - generic [ref=e339]:
+                      - tablist [ref=e342]:
+                        - tab "application/json" [selected] [ref=e343] [cursor=pointer]
+                      - tabpanel [ref=e345]:
+                        - generic [ref=e346]:
+                          - tablist [ref=e348]:
+                            - tab "Schema" [selected] [ref=e349] [cursor=pointer]:
+                              - generic [ref=e350]: Schema
+                            - tab "Example (auto)" [ref=e351] [cursor=pointer]:
+                              - generic [ref=e352]: Example (auto)
+                          - tabpanel [ref=e354]:
+                            - group [ref=e355]:
+                              - generic "Schema" [ref=e356] [cursor=pointer]:
+                                - strong [ref=e357]: Schema
+                              - list [ref=e360]:
+                                - generic [ref=e362]:
+                                  - generic [ref=e363]:
+                                    - strong [ref=e364]: apiVersion
+                                    - generic [ref=e365]: string
+                                  - paragraph [ref=e367]: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources"
+                                - generic [ref=e369]:
+                                  - generic [ref=e370]:
+                                    - strong [ref=e371]: kind
+                                    - generic [ref=e372]: string
+                                  - paragraph [ref=e374]: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
+                                - group [ref=e376]:
+                                  - generic "metadata object" [ref=e377] [cursor=pointer]:
+                                    - generic [ref=e378]:
+                                      - strong [ref=e379]: metadata
+                                      - generic [ref=e380]: object
+                                - group [ref=e382]:
+                                  - generic "spec object" [ref=e383] [cursor=pointer]:
+                                    - generic [ref=e384]:
+                                      - strong [ref=e385]: spec
+                                      - generic [ref=e386]: object
+                                - group [ref=e388]:
+                                  - generic "status object" [ref=e389] [cursor=pointer]:
+                                    - generic [ref=e390]:
+                                      - strong [ref=e391]: status
+                                      - generic [ref=e392]: object
+              - generic [ref=e393]:
+                - group [ref=e394]:
+                  - 'generic "Authorization: ApiKey" [ref=e395]':
+                    - 'heading "Authorization: ApiKey" [level=4] [ref=e396]'
+                - generic [ref=e397]:
+                  - tablist [ref=e398]:
+                    - tab "curl" [selected] [ref=e399] [cursor=pointer]:
+                      - generic [ref=e400]: curl
+                    - tab "python" [ref=e401] [cursor=pointer]:
+                      - generic [ref=e402]: python
+                    - tab "go" [ref=e403] [cursor=pointer]:
+                      - generic [ref=e404]: go
+                    - tab "nodejs" [ref=e405] [cursor=pointer]:
+                      - generic [ref=e406]: nodejs
+                    - tab "java" [ref=e407] [cursor=pointer]:
+                      - generic [ref=e408]: java
+                  - tabpanel [ref=e409]:
+                    - generic [ref=e410]:
+                      - tablist [ref=e411]:
+                        - tab "CURL" [selected] [ref=e412] [cursor=pointer]:
+                          - generic [ref=e413]: CURL
+                      - tabpanel [ref=e414]:
+                        - generic [ref=e416]:
+                          - code [ref=e418]:
+                            - generic [ref=e421]: curl -L 'https://api.spectrocloud.com/v1/overlords/vsphere/:uid/clusterprofile' \
+                            - generic [ref=e424]: "-H 'Accept: application/json' \\"
+                            - generic [ref=e427]: "-H 'ApiKey: <ApiKey>'"
+                          - generic [ref=e428]:
+                            - button "Toggle word wrap" [ref=e429] [cursor=pointer]:
+                              - img [ref=e430]
+                            - button "Copy code to clipboard" [ref=e432] [cursor=pointer]:
+                              - generic [ref=e433]:
+                                - img [ref=e434]
+                                - img [ref=e436]
+                            - button "Expand code to fullscreen" [ref=e438] [cursor=pointer]:
+                              - generic [ref=e439]:
+                                - img [ref=e440]
+                                - img [ref=e442]
+          - navigation "Docs pages" [ref=e446]:
+            - link "Previous « update the vSphere cloud config for the private gateway" [ref=e447] [cursor=pointer]:
+              - /url: /api/v1/v-1-overlords-uid-vsphere-cloud-config-update/
+              - generic [ref=e448]: Previous
+              - generic [ref=e449]: « update the vSphere cloud config for the private gateway
+            - link "Next Retrieves a list of IP Pools for the specified private gateway »" [ref=e450] [cursor=pointer]:
+              - /url: /api/v1/v-1-overlords-uid-pools-list/
+              - generic [ref=e451]: Next
+              - generic [ref=e452]: Retrieves a list of IP Pools for the specified private gateway »
+  - button "Project Logo Ask AI" [ref=e453] [cursor=pointer]:
+    - generic [ref=e456]:
+      - img "Project Logo" [ref=e457]
+      - paragraph [ref=e458]: Ask AI
+```

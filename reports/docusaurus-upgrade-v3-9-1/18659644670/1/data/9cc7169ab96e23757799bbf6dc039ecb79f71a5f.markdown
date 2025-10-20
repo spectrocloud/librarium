@@ -1,0 +1,327 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [expanded] [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+                - list [ref=e96]:
+                  - listitem [ref=e97]:
+                    - generic [ref=e98]:
+                      - link "Agent Mode" [expanded] [ref=e99] [cursor=pointer]:
+                        - /url: /deployment-modes/agent-mode/
+                      - button "Toggle the collapsible sidebar category 'Agent Mode'" [ref=e100] [cursor=pointer]
+                    - list [ref=e101]:
+                      - listitem [ref=e102]:
+                        - link "Install Palette Agent" [ref=e103] [cursor=pointer]:
+                          - /url: /deployment-modes/agent-mode/install-agent-host/
+                      - listitem [ref=e104]:
+                        - link "Configure networkd to Prepare Host for Overlay Network" [ref=e105] [cursor=pointer]:
+                          - /url: /deployment-modes/agent-mode/overlay-preparation/
+                      - listitem [ref=e106]:
+                        - link "Architecture" [ref=e107] [cursor=pointer]:
+                          - /url: /deployment-modes/agent-mode/architecture/
+                      - listitem [ref=e108]:
+                        - generic [ref=e109]:
+                          - link "Manage Hosts in Agent Mode" [expanded] [ref=e110] [cursor=pointer]:
+                            - /url: /deployment-modes/agent-mode/manage-agent/
+                          - button "Toggle the collapsible sidebar category 'Manage Hosts in Agent Mode'" [ref=e111] [cursor=pointer]
+                        - list [ref=e112]:
+                          - listitem [ref=e113]:
+                            - link "Customize Local UI Theme" [ref=e114] [cursor=pointer]:
+                              - /url: /deployment-modes/agent-mode/manage-agent/localui-theming/
+                          - listitem [ref=e115]:
+                            - link "Configure Regularly Scheduled OS Upgrades" [ref=e116] [cursor=pointer]:
+                              - /url: /deployment-modes/agent-mode/manage-agent/os-upgrades/
+                  - listitem [ref=e117]:
+                    - generic [ref=e118]:
+                      - link "Appliance Mode" [ref=e119] [cursor=pointer]:
+                        - /url: /deployment-modes/appliance-mode/
+                      - button "Toggle the collapsible sidebar category 'Appliance Mode'" [ref=e120] [cursor=pointer]
+                  - listitem [ref=e121]:
+                    - link "Controller Mode" [ref=e122] [cursor=pointer]:
+                      - /url: /deployment-modes/controller-mode/
+              - listitem [ref=e123]:
+                - generic [ref=e124]:
+                  - link "Clusters" [ref=e125] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e127]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e136] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e138]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Palette Dev Engine" [ref=e143] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e145]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Virtual Machine Orchestrator" [ref=e150] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e152]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Workspaces" [ref=e157] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e159]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Packs List" [ref=e164] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e166]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e168] [cursor=pointer]
+              - listitem [ref=e169]:
+                - generic [ref=e170]:
+                  - link "User & Role Management" [ref=e171] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e173]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e175] [cursor=pointer]
+              - listitem [ref=e176]:
+                - generic [ref=e177]:
+                  - link "Registries and Packs" [ref=e178] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e180]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e182] [cursor=pointer]
+              - listitem [ref=e183]:
+                - generic [ref=e184]:
+                  - link "Security" [ref=e185] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e187]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e189] [cursor=pointer]
+              - listitem [ref=e190]:
+                - generic [ref=e191]:
+                  - link "Audit Logs" [ref=e192] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e194]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e196] [cursor=pointer]
+              - listitem [ref=e197]:
+                - generic [ref=e198]:
+                  - link "Self-Hosted Palette" [ref=e199] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e201]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e203] [cursor=pointer]
+              - listitem [ref=e204]:
+                - generic [ref=e205]:
+                  - link "Palette VerteX" [ref=e206] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e208]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e210] [cursor=pointer]
+              - listitem [ref=e211]:
+                - generic [ref=e212]:
+                  - link "Tenant Administration" [ref=e213] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e215]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e217] [cursor=pointer]
+              - listitem [ref=e218]:
+                - generic [ref=e219]:
+                  - link "Automation" [ref=e220] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e222]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e224] [cursor=pointer]
+              - listitem [ref=e225]:
+                - generic [ref=e226]:
+                  - link "Troubleshooting" [ref=e227] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e229]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e231] [cursor=pointer]
+              - listitem [ref=e232]:
+                - link "Glossary" [ref=e233] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e235]
+                  - text: Glossary
+              - listitem [ref=e237]:
+                - generic [ref=e238]:
+                  - link "Compliance & Legal" [ref=e239] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e241]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e243] [cursor=pointer]
+              - listitem [ref=e244]:
+                - button "Privacy Settings" [ref=e245] [cursor=pointer]:
+                  - img [ref=e246]
+                  - text: Privacy Settings
+      - main [ref=e248]:
+        - generic [ref=e250]:
+          - generic [ref=e252]:
+            - article [ref=e253]:
+              - navigation "Breadcrumbs" [ref=e254]:
+                - list [ref=e255]:
+                  - listitem [ref=e256]:
+                    - link "Home page" [ref=e257] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e258]
+                  - listitem [ref=e260]:
+                    - link "Deployment Modes" [ref=e261] [cursor=pointer]:
+                      - /url: /deployment-modes/
+                  - listitem [ref=e262]:
+                    - link "Agent Mode" [ref=e263] [cursor=pointer]:
+                      - /url: /deployment-modes/agent-mode/
+                  - listitem [ref=e264]:
+                    - generic [ref=e265]: Manage Hosts in Agent Mode
+              - generic [ref=e266]:
+                - heading "Manage Hosts in Agent Mode" [level=1] [ref=e268]
+                - paragraph [ref=e269]:
+                  - text: This section provides guidance on how to manage hosts deployed in agent mode. Hosts deployed in agent mode have access to Local UI unless you disable it in your installer configuration user data. Refer to
+                  - link "Access Local UI" [ref=e270] [cursor=pointer]:
+                    - /url: /clusters/edge/local-ui/host-management/access-console/
+                  - text: to learn how to access Local UI.
+                - paragraph [ref=e271]:
+                  - text: Review the following resource to learn more about customizing the
+                  - link "Local UI" [ref=e272] [cursor=pointer]:
+                    - /url: /clusters/edge/local-ui/
+                  - text: web interface, which you can use to configure and manage your host. You may also review the
+                  - link "Local UI section" [ref=e273] [cursor=pointer]:
+                    - /url: /clusters/edge/local-ui/
+                  - text: to learn more about the host management features that Local UI has to offer.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e274]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e275] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e276]:
+                  - listitem [ref=e277]:
+                    - paragraph [ref=e278]:
+                      - link "Customize Local UI Theme" [ref=e279] [cursor=pointer]:
+                        - /url: /deployment-modes/agent-mode/manage-agent/localui-theming/
+                  - listitem [ref=e280]:
+                    - paragraph [ref=e281]:
+                      - link "Local UI" [ref=e282] [cursor=pointer]:
+                        - /url: /clusters/edge/local-ui/
+              - generic [ref=e283]:
+                - generic [ref=e285]:
+                  - text: "Tags:"
+                  - list [ref=e286]:
+                    - listitem [ref=e287]:
+                      - link "agent mode" [ref=e288] [cursor=pointer]:
+                        - /url: /tags/agent-mode/
+                - link "Edit this page" [ref=e291] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/deployment-modes/agent-mode/manage-agent/manage-agent.md
+                  - img [ref=e292]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e296]:
+              - link "Previous « Architecture" [ref=e297] [cursor=pointer]:
+                - /url: /deployment-modes/agent-mode/architecture/
+                - generic [ref=e298]: Previous
+                - generic [ref=e299]: « Architecture
+              - link "Next Customize Local UI Theme »" [ref=e300] [cursor=pointer]:
+                - /url: /deployment-modes/agent-mode/manage-agent/localui-theming/
+                - generic [ref=e301]: Next
+                - generic [ref=e302]: Customize Local UI Theme »
+          - list [ref=e305]:
+            - listitem [ref=e306]:
+              - link "Resources" [ref=e307] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e308] [cursor=pointer]:
+    - generic [ref=e311]:
+      - img "Project Logo" [ref=e312]
+      - paragraph [ref=e313]: Ask AI
+```

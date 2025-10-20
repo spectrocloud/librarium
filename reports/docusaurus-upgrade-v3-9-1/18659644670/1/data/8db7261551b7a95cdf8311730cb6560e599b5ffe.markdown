@@ -1,0 +1,433 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Audit Logs" [ref=e165] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e167]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Self-Hosted Palette" [expanded] [ref=e172] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e174]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e176] [cursor=pointer]
+                - list [ref=e177]:
+                  - listitem [ref=e178]:
+                    - generic [ref=e179]:
+                      - link "Installation" [ref=e180] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e181] [cursor=pointer]
+                  - listitem [ref=e182]:
+                    - link "Activate Palette" [ref=e183] [cursor=pointer]:
+                      - /url: /enterprise-version/activate-installation/
+                  - listitem [ref=e184]:
+                    - generic [ref=e185]:
+                      - link "System Management" [expanded] [ref=e186] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e187] [cursor=pointer]
+                    - list [ref=e188]:
+                      - listitem [ref=e189]:
+                        - generic [ref=e190]:
+                          - link "Account Management" [expanded] [ref=e191] [cursor=pointer]:
+                            - /url: /enterprise-version/system-management/account-management/
+                          - button "Toggle the collapsible sidebar category 'Account Management'" [ref=e192] [cursor=pointer]
+                        - list [ref=e193]:
+                          - listitem [ref=e194]:
+                            - link "Create and Manage System Accounts" [ref=e195] [cursor=pointer]:
+                              - /url: /enterprise-version/system-management/account-management/manage-system-accounts/
+                          - listitem [ref=e196]:
+                            - link "Manage User Credentials" [ref=e197] [cursor=pointer]:
+                              - /url: /enterprise-version/system-management/account-management/credentials/
+                          - listitem [ref=e198]:
+                            - link "Update Email Address" [ref=e199] [cursor=pointer]:
+                              - /url: /enterprise-version/system-management/account-management/email/
+                          - listitem [ref=e200]:
+                            - link "Manage Password Blocklist" [ref=e201] [cursor=pointer]:
+                              - /url: /enterprise-version/system-management/account-management/password-blocklist/
+                      - listitem [ref=e202]:
+                        - link "Add System-Level Registry" [ref=e203] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/add-registry/
+                      - listitem [ref=e204]:
+                        - link "Enable Adding AWS Accounts Using STS" [ref=e205] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/configure-aws-sts-account/
+                      - listitem [ref=e206]:
+                        - link "Backup and Restore" [ref=e207] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/backup-restore/
+                      - listitem [ref=e208]:
+                        - link "Configure SMTP" [ref=e209] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/smtp/
+                      - listitem [ref=e210]:
+                        - link "Configure Reverse Proxy" [ref=e211] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/reverse-proxy/
+                      - listitem [ref=e212]:
+                        - link "Customize Interface" [ref=e213] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/customize-interface/
+                      - listitem [ref=e214]:
+                        - link "Feature Flags" [ref=e215] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/feature-flags/
+                      - listitem [ref=e216]:
+                        - link "System Address Management" [ref=e217] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/ssl-certificate-management/
+                      - listitem [ref=e218]:
+                        - link "Tenant Management" [ref=e219] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/tenant-management/
+                      - listitem [ref=e220]:
+                        - link "Banners" [ref=e221] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/login-banner/
+                      - listitem [ref=e222]:
+                        - link "Override Registry Configuration" [ref=e223] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/registry-override/
+                      - listitem [ref=e224]:
+                        - link "Migrate SCAR to OCI Registry" [ref=e225] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/scar-migration/
+                      - listitem [ref=e226]:
+                        - link "Modify Cloud Provider Configuration" [ref=e227] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/change-cloud-config/
+                  - listitem [ref=e228]:
+                    - generic [ref=e229]:
+                      - link "Upgrade" [ref=e230] [cursor=pointer]:
+                        - /url: /enterprise-version/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e231] [cursor=pointer]
+              - listitem [ref=e232]:
+                - generic [ref=e233]:
+                  - link "Palette VerteX" [ref=e234] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e236]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e238] [cursor=pointer]
+              - listitem [ref=e239]:
+                - generic [ref=e240]:
+                  - link "Tenant Administration" [ref=e241] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e243]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e245] [cursor=pointer]
+              - listitem [ref=e246]:
+                - generic [ref=e247]:
+                  - link "Automation" [ref=e248] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e250]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e252] [cursor=pointer]
+              - listitem [ref=e253]:
+                - generic [ref=e254]:
+                  - link "Troubleshooting" [ref=e255] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e257]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e259] [cursor=pointer]
+              - listitem [ref=e260]:
+                - link "Glossary" [ref=e261] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e263]
+                  - text: Glossary
+              - listitem [ref=e265]:
+                - generic [ref=e266]:
+                  - link "Compliance & Legal" [ref=e267] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e269]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e271] [cursor=pointer]
+              - listitem [ref=e272]:
+                - button "Privacy Settings" [ref=e273] [cursor=pointer]:
+                  - img [ref=e274]
+                  - text: Privacy Settings
+      - main [ref=e276]:
+        - generic [ref=e278]:
+          - generic [ref=e280]:
+            - article [ref=e281]:
+              - navigation "Breadcrumbs" [ref=e282]:
+                - list [ref=e283]:
+                  - listitem [ref=e284]:
+                    - link "Home page" [ref=e285] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e286]
+                  - listitem [ref=e288]:
+                    - link "Self-Hosted Palette" [ref=e289] [cursor=pointer]:
+                      - /url: /enterprise-version/
+                  - listitem [ref=e290]:
+                    - link "System Management" [ref=e291] [cursor=pointer]:
+                      - /url: /enterprise-version/system-management/
+                  - listitem [ref=e292]:
+                    - link "Account Management" [ref=e293] [cursor=pointer]:
+                      - /url: /enterprise-version/system-management/account-management/
+                  - listitem [ref=e294]:
+                    - generic [ref=e295]: Update Email Address
+              - generic [ref=e296]:
+                - heading "Update Email Address" [level=1] [ref=e298]
+                - paragraph [ref=e299]: You can manage the credentials of the admin user by logging in to the system console. Updating or changing the email address of the admin user requires the current password.
+                - paragraph [ref=e300]: Use the following steps to change the email address of the admin user.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e301]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e302] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e303]:
+                  - listitem [ref=e304]:
+                    - paragraph [ref=e305]: Access to the Palette system console.
+                  - listitem [ref=e306]:
+                    - paragraph [ref=e307]: Current password of the admin user.
+                  - listitem [ref=e308]:
+                    - paragraph [ref=e309]:
+                      - text: A Simple Mail Transfer Protocol (SMTP) server must be configured in the system console. Refer to
+                      - link "Configure SMTP" [ref=e310] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/smtp/
+                      - text: page for guidance on how to configure an SMTP server.
+                - heading "Change Email AddressDirect link to Change Email Address" [level=2] [ref=e311]:
+                  - text: Change Email Address
+                  - link "Direct link to Change Email Address" [ref=e312] [cursor=pointer]:
+                    - /url: "#change-email-address"
+                    - text: "#"
+                - list [ref=e313]:
+                  - listitem [ref=e314]:
+                    - paragraph [ref=e315]:
+                      - text: Log in to the Palette system console. Refer to
+                      - link "Access the System Console" [ref=e316] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/#access-the-system-console
+                      - text: guide.
+                  - listitem [ref=e317]:
+                    - paragraph [ref=e318]:
+                      - text: From the
+                      - strong [ref=e319]: left Main Menu
+                      - text: select
+                      - strong [ref=e320]: My Account
+                      - text: .
+                  - listitem [ref=e321]:
+                    - paragraph [ref=e322]:
+                      - text: Type the new email address in the
+                      - strong [ref=e323]: Email
+                      - text: field.
+                  - listitem [ref=e324]:
+                    - paragraph [ref=e325]:
+                      - text: Provide the current password in the
+                      - strong [ref=e326]: Current Password
+                      - text: field.
+                  - listitem [ref=e327]:
+                    - paragraph [ref=e328]:
+                      - text: Click
+                      - strong [ref=e329]: Apply
+                      - text: to save the changes.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e330]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e331] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e332]:
+                  - listitem [ref=e333]:
+                    - paragraph [ref=e334]:
+                      - text: Log out of the system console. You can log out by clicking the
+                      - strong [ref=e335]: Logout
+                      - text: button in the bottom right corner of the
+                      - strong [ref=e336]: left Main Menu
+                      - text: .
+                  - listitem [ref=e337]:
+                    - paragraph [ref=e338]:
+                      - text: Log in to the system console. Refer to
+                      - link "Access the System Console" [ref=e339] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/#access-the-system-console
+                      - text: guide.
+                  - listitem [ref=e340]:
+                    - paragraph [ref=e341]: Use the new email address and your current password to log in to the system console.
+                - paragraph [ref=e342]: A successful login indicates that the email address has been changed successfully.
+              - generic [ref=e343]:
+                - generic [ref=e345]:
+                  - text: "Tags:"
+                  - list [ref=e346]:
+                    - listitem [ref=e347]:
+                      - link "vertex" [ref=e348] [cursor=pointer]:
+                        - /url: /tags/vertex/
+                    - listitem [ref=e349]:
+                      - link "management" [ref=e350] [cursor=pointer]:
+                        - /url: /tags/management/
+                    - listitem [ref=e351]:
+                      - link "account" [ref=e352] [cursor=pointer]:
+                        - /url: /tags/account/
+                    - listitem [ref=e353]:
+                      - link "credentials" [ref=e354] [cursor=pointer]:
+                        - /url: /tags/credentials/
+                - link "Edit this page" [ref=e357] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/enterprise-version/system-management/account-management/email.md
+                  - img [ref=e358]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e362]:
+              - link "Previous « Manage User Credentials" [ref=e363] [cursor=pointer]:
+                - /url: /enterprise-version/system-management/account-management/credentials/
+                - generic [ref=e364]: Previous
+                - generic [ref=e365]: « Manage User Credentials
+              - link "Next Manage Password Blocklist »" [ref=e366] [cursor=pointer]:
+                - /url: /enterprise-version/system-management/account-management/password-blocklist/
+                - generic [ref=e367]: Next
+                - generic [ref=e368]: Manage Password Blocklist »
+          - list [ref=e371]:
+            - listitem [ref=e372]:
+              - link "Prerequisites" [ref=e373] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e374]:
+              - link "Change Email Address" [ref=e375] [cursor=pointer]:
+                - /url: "#change-email-address"
+            - listitem [ref=e376]:
+              - link "Validate" [ref=e377] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e378] [cursor=pointer]:
+    - generic [ref=e381]:
+      - img "Project Logo" [ref=e382]
+      - paragraph [ref=e383]: Ask AI
+```
