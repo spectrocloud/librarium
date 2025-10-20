@@ -20,8 +20,7 @@ On Edge clusters whose hosts run Ubuntu 24.04 with a Unified Kernel Image (UKI),
 ```
 
 This happens because `/etc/resolv.conf` is symlinked to `/run/systemd/resolve/stub-resolv.conf`, which lacks real DNS
-server entries and points to the local systemd stub `127.0.0.53`. `127.0.0.1` and `127.0.0.53` are localhost addresses.
-They never leave the host and cannot reach external DNS servers. As a result, CoreDNS forwards DNS queries to itself,
+server entries and points to the local systemd stub `127.0.0.53`. Both `127.0.0.1` and `127.0.0.53` are localhost addresses, meaning they only communicate within the host and cannot access external DNS servers.  As a result, CoreDNS forwards DNS queries to itself,
 creating a recursive loop.
 
 ### Debug Steps
