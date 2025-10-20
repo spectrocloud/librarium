@@ -71,15 +71,13 @@ cluster templates.
     expressions under the hood; the cron expression for predefined options cannot be changed. Available options include
     the following:
 
-| **Option**                                  | **Equivalent Cron Expression**                                      | **Cron Expression Interpretation**                     |
-| ------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------ |
-| **Every week on Sunday at midnight**        | `0 0 * * SUN`                                                       | At 12:00 AM, only on Sunday                            |
-| **Every two weeks at midnight**             | `0 0 1,15 * *`                                                      | At 12:00 AM, on day one and 15 of the month            |
-| **Every month on the 1st at midnight**      | `0 0 1 * *`                                                         | At 12:00 AM, on day one of the month                   |
-| **Every two months on the 1st at midnight** | `0 0 1 */2 *`                                                       | At 12:00 AM, on day one of the month, every two months |
-| **Custom**                                  | Varies. Refer to the [Custom Schedules](#custom-schedules) section. | Not applicable                                         |
-
-    <br />
+    | **Option**                                  | **Equivalent Cron Expression**                                                           | **Cron Expression Interpretation**                     |
+    | ------------------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+    | **Every week on Sunday at midnight**        | `0 0 * * SUN`                                                                            | At 12:00 AM, only on Sunday                            |
+    | **Every two weeks at midnight**             | `0 0 1,15 * *`                                                                           | At 12:00 AM, on day one and 15 of the month            |
+    | **Every month on the 1st at midnight**      | `0 0 1 * *`                                                                              | At 12:00 AM, on day one of the month                   |
+    | **Every two months on the 1st at midnight** | `0 0 1 */2 *`                                                                            | At 12:00 AM, on day one of the month, every two months |
+    | **Custom**                                  | Varies. Refer to the [Custom Schedules](#custom-schedules) section for more information. | Not applicable                                         |
 
     #### Custom Schedules
 
