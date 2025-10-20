@@ -82,9 +82,9 @@ Before you begin, ensure that you have the following prerequisites:
    | **Tags**          | Tags to help you identify the cluster.                                                                                                                                          | No       |
    | **Cloud Account** | The VMware vSphere account to use for the cluster. If no account is available, ensure you [deployed a PCG](../../pcg/deploy-pcg/vmware.md) into the VMware vSphere environment. | Yes      |
 
-6. Select the cluster profile you want to use for the cluster. Click the **Next** to proceed.
+6. <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-7. Modify any cluster profile layers as needed. Click **Next** to continue.
+7. <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
 8. Fill out the VMware vSphere configuration details for the cluster. Refer to the table below to learn more about each
    option. Click **Next** to proceed.
