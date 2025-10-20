@@ -1,0 +1,1208 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Audit Logs" [ref=e165] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e167]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Self-Hosted Palette" [expanded] [ref=e172] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e174]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e176] [cursor=pointer]
+                - list [ref=e177]:
+                  - listitem [ref=e178]:
+                    - generic [ref=e179]:
+                      - link "Installation" [expanded] [ref=e180] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e181] [cursor=pointer]
+                    - list [ref=e182]:
+                      - listitem [ref=e183]:
+                        - generic [ref=e184]:
+                          - link "VMware" [ref=e185] [cursor=pointer]:
+                            - /url: /enterprise-version/install-palette/install-on-vmware/
+                          - button "Toggle the collapsible sidebar category 'VMware'" [ref=e186] [cursor=pointer]
+                      - listitem [ref=e187]:
+                        - link "Airgap Resources" [ref=e188] [cursor=pointer]:
+                          - /url: /enterprise-version/install-palette/airgap/
+                      - listitem [ref=e189]:
+                        - generic [ref=e190]:
+                          - link "Kubernetes" [expanded] [ref=e191] [cursor=pointer]:
+                            - /url: /enterprise-version/install-palette/install-on-kubernetes/
+                          - button "Toggle the collapsible sidebar category 'Kubernetes'" [ref=e192] [cursor=pointer]
+                        - list [ref=e193]:
+                          - listitem [ref=e194]:
+                            - link "Non-Airgap Installation" [ref=e195] [cursor=pointer]:
+                              - /url: /enterprise-version/install-palette/install-on-kubernetes/install/
+                          - listitem [ref=e196]:
+                            - generic [ref=e197]:
+                              - link "Airgap Installation" [expanded] [ref=e198] [cursor=pointer]:
+                                - /url: /enterprise-version/install-palette/install-on-kubernetes/airgap-install/
+                              - button "Toggle the collapsible sidebar category 'Airgap Installation'" [ref=e199] [cursor=pointer]
+                            - list [ref=e200]:
+                              - listitem [ref=e201]:
+                                - link "Checklist" [ref=e202] [cursor=pointer]:
+                                  - /url: /enterprise-version/install-palette/install-on-kubernetes/airgap-install/checklist/
+                              - listitem [ref=e203]:
+                                - link "Environment Setup" [ref=e204] [cursor=pointer]:
+                                  - /url: /enterprise-version/install-palette/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions/
+                              - listitem [ref=e205]:
+                                - link "Install Palette" [ref=e206] [cursor=pointer]:
+                                  - /url: /enterprise-version/install-palette/install-on-kubernetes/airgap-install/install/
+                          - listitem [ref=e207]:
+                            - link "Helm Configuration Reference" [ref=e208] [cursor=pointer]:
+                              - /url: /enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref/
+                          - listitem [ref=e209]:
+                            - link "Uninstallation" [ref=e210] [cursor=pointer]:
+                              - /url: /enterprise-version/install-palette/install-on-kubernetes/uninstall/
+                      - listitem [ref=e211]:
+                        - link "Palette Management Appliance" [ref=e212] [cursor=pointer]:
+                          - /url: /enterprise-version/install-palette/palette-management-appliance/
+                  - listitem [ref=e213]:
+                    - link "Activate Palette" [ref=e214] [cursor=pointer]:
+                      - /url: /enterprise-version/activate-installation/
+                  - listitem [ref=e215]:
+                    - generic [ref=e216]:
+                      - link "System Management" [ref=e217] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e218] [cursor=pointer]
+                  - listitem [ref=e219]:
+                    - generic [ref=e220]:
+                      - link "Upgrade" [ref=e221] [cursor=pointer]:
+                        - /url: /enterprise-version/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e222] [cursor=pointer]
+              - listitem [ref=e223]:
+                - generic [ref=e224]:
+                  - link "Palette VerteX" [ref=e225] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e227]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e229] [cursor=pointer]
+              - listitem [ref=e230]:
+                - generic [ref=e231]:
+                  - link "Tenant Administration" [ref=e232] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e234]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e236] [cursor=pointer]
+              - listitem [ref=e237]:
+                - generic [ref=e238]:
+                  - link "Automation" [ref=e239] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e241]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e243] [cursor=pointer]
+              - listitem [ref=e244]:
+                - generic [ref=e245]:
+                  - link "Troubleshooting" [ref=e246] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e248]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e250] [cursor=pointer]
+              - listitem [ref=e251]:
+                - link "Glossary" [ref=e252] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e254]
+                  - text: Glossary
+              - listitem [ref=e256]:
+                - generic [ref=e257]:
+                  - link "Compliance & Legal" [ref=e258] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e260]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e262] [cursor=pointer]
+              - listitem [ref=e263]:
+                - button "Privacy Settings" [ref=e264] [cursor=pointer]:
+                  - img [ref=e265]
+                  - text: Privacy Settings
+      - main [ref=e267]:
+        - generic [ref=e269]:
+          - generic [ref=e271]:
+            - article [ref=e272]:
+              - navigation "Breadcrumbs" [ref=e273]:
+                - list [ref=e274]:
+                  - listitem [ref=e275]:
+                    - link "Home page" [ref=e276] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e277]
+                  - listitem [ref=e279]:
+                    - link "Self-Hosted Palette" [ref=e280] [cursor=pointer]:
+                      - /url: /enterprise-version/
+                  - listitem [ref=e281]:
+                    - link "Installation" [ref=e282] [cursor=pointer]:
+                      - /url: /enterprise-version/install-palette/
+                  - listitem [ref=e283]:
+                    - link "Kubernetes" [ref=e284] [cursor=pointer]:
+                      - /url: /enterprise-version/install-palette/install-on-kubernetes/
+                  - listitem [ref=e285]:
+                    - link "Airgap Installation" [ref=e286] [cursor=pointer]:
+                      - /url: /enterprise-version/install-palette/install-on-kubernetes/airgap-install/
+                  - listitem [ref=e287]:
+                    - generic [ref=e288]: Install Palette
+              - generic [ref=e289]:
+                - heading "Install Airgap Self-Hosted Palette" [level=1] [ref=e291]
+                - paragraph [ref=e292]: You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster in your airgap production environment.
+                - paragraph [ref=e293]:
+                  - text: This installation method is common in secure environments with restricted network access that prohibits using Palette SaaS. Review our
+                  - link "architecture diagrams" [ref=e294] [cursor=pointer]:
+                    - /url: /architecture/networking-ports/
+                  - text: to ensure your Kubernetes cluster has the necessary network connectivity for self-hosted Palette to operate successfully.
+                - generic [ref=e295]:
+                  - generic [ref=e296]:
+                    - img [ref=e298]
+                    - text: warning
+                  - paragraph [ref=e301]:
+                    - text: Complete the
+                    - link "Environment Setup" [ref=e302] [cursor=pointer]:
+                      - /url: /enterprise-version/install-palette/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions/
+                    - text: steps before proceeding with the installation.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e303]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e304] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e305]:
+                  - listitem [ref=e306]:
+                    - paragraph [ref=e307]:
+                      - link "kubectl" [ref=e308] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/tasks/tools/#kubectl
+                      - text: is installed and available.
+                  - listitem [ref=e309]:
+                    - paragraph [ref=e310]:
+                      - link "Helm" [ref=e311] [cursor=pointer]:
+                        - /url: https://helm.sh/docs/intro/install/
+                      - text: is installed and available.
+                  - listitem [ref=e312]:
+                    - paragraph [ref=e313]:
+                      - text: Access to the target Kubernetes cluster's kubeconfig file. You must be able to interact with the cluster using
+                      - code [ref=e314]: kubectl
+                      - text: commands and have sufficient permissions to install Palette. We recommend using a role with
+                      - code [ref=e315]: cluster-admin
+                      - text: permissions to install Palette.
+                  - listitem [ref=e316]:
+                    - paragraph [ref=e317]:
+                      - text: Ensure
+                      - code [ref=e318]: unzip
+                      - text: or a similar extraction utility is installed on your system.
+                  - listitem [ref=e319]:
+                    - paragraph [ref=e320]:
+                      - text: The Kubernetes cluster must be set up on a supported version of Kubernetes. Refer to the
+                      - link "Kubernetes Requirements" [ref=e321] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/#kubernetes-requirements
+                      - text: section to find the version required for your Palette installation.
+                  - listitem [ref=e322]:
+                    - paragraph [ref=e323]: Ensure the Kubernetes cluster does not have Cert Manager installed. Palette requires a unique Cert Manager configuration to be installed as part of the installation process. If Cert Manager is already installed, you must uninstall it before installing Palette.
+                  - listitem [ref=e324]:
+                    - paragraph [ref=e325]: Palette requires a Container Storage Interface (CSI) to create Persistent Volumes, which are used to store persistent data. You may install any CSI that is compatible with your Kubernetes cluster.
+                  - listitem [ref=e326]:
+                    - paragraph [ref=e327]:
+                      - text: If you are using a
+                      - emphasis [ref=e328]: self-hosted MongoDB
+                      - text: instance, such as MongoDB Atlas, ensure the MongoDB database has a user named
+                      - code [ref=e329]: hubble
+                      - text: with the permission
+                      - code [ref=e330]: readWriteAnyDatabase
+                      - text: . Refer to the
+                      - link "Add a Database User" [ref=e331] [cursor=pointer]:
+                        - /url: https://www.mongodb.com/docs/guides/atlas/db-user/
+                      - text: guide for guidance on how to create a database user in Atlas.
+                  - listitem [ref=e332]:
+                    - paragraph [ref=e333]:
+                      - text: We recommended the following resources for Palette. Refer to the
+                      - link "Palette size guidelines" [ref=e334] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/#size-guidelines
+                      - text: for additional sizing information.
+                    - list [ref=e335]:
+                      - listitem [ref=e336]:
+                        - paragraph [ref=e337]: 8 CPUs per node.
+                      - listitem [ref=e338]:
+                        - paragraph [ref=e339]: 16 GB Memory per node.
+                      - listitem [ref=e340]:
+                        - paragraph [ref=e341]: 110 GB Disk Space per node.
+                      - listitem [ref=e342]:
+                        - paragraph [ref=e343]: A minimum of three worker nodes or three untainted control plane nodes.
+                  - listitem [ref=e344]:
+                    - paragraph [ref=e345]: The following network ports must be accessible for Palette to operate successfully.
+                    - list [ref=e346]:
+                      - listitem [ref=e347]:
+                        - paragraph [ref=e348]: "TCP/443: Inbound and outbound to and from the Palette management cluster."
+                      - listitem [ref=e349]:
+                        - paragraph [ref=e350]: "TCP/6443: Outbound traffic from the Palette management cluster to the deployed clusters' Kubernetes API server."
+                  - listitem [ref=e351]:
+                    - paragraph [ref=e352]: "Ensure you have an SSL certificate that matches the domain name you will assign to Palette. You will need this to enable HTTPS encryption for Palette. Reach out to your network administrator or security team to obtain the SSL certificate. You need the following files:"
+                    - list [ref=e353]:
+                      - listitem [ref=e354]:
+                        - paragraph [ref=e355]: x509 SSL certificate file in the base64 format.
+                      - listitem [ref=e356]:
+                        - paragraph [ref=e357]: x509 SSL certificate key file in the base64 format.
+                      - listitem [ref=e358]:
+                        - paragraph [ref=e359]: x509 SSL certificate authority file in the base64 format.
+                  - listitem [ref=e360]:
+                    - paragraph [ref=e361]:
+                      - text: A
+                      - link "StorageClass" [ref=e362] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/concepts/storage/storage-classes/
+                      - text: to manage persistent storage, with the annotation
+                      - code [ref=e363]: storageclass.kubernetes.io/is-default-class
+                      - text: set to
+                      - code [ref=e364]: "true"
+                      - text: . To override the default StorageClass for a workload, modify the
+                      - code [ref=e365]: storageClass
+                      - text: parameter. Check out the
+                      - link "Change the default StorageClass" [ref=e366] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/
+                      - text: page to learn more about modifying StorageClasses.
+                  - listitem [ref=e367]:
+                    - paragraph [ref=e368]:
+                      - text: An Nginx controller will be installed by default. If you already have an Nginx controller deployed in the cluster, you must set the
+                      - code [ref=e369]: ingress.enabled
+                      - text: parameter to
+                      - code [ref=e370]: "false"
+                      - text: in the
+                      - strong [ref=e371]: values.yaml
+                      - text: file.
+                  - listitem [ref=e372]:
+                    - paragraph [ref=e373]: A custom domain and the ability to update Domain Name System (DNS) records. You will need this to enable HTTPS encryption for Palette.
+                  - listitem [ref=e374]:
+                    - paragraph [ref=e375]: If you are installing Palette behind a network proxy server, ensure you have the Certificate Authority (CA) certificate file in the base64 format. You will need this to enable Palette to communicate with the network proxy server.
+                  - listitem [ref=e376]:
+                    - paragraph [ref=e377]:
+                      - text: Access to the Palette Helm Charts. Refer to the
+                      - link "Access Palette" [ref=e378] [cursor=pointer]:
+                        - /url: /enterprise-version/#access-palette
+                      - text: for instructions on how to request access to the Helm Chart.
+                - generic [ref=e379]:
+                  - generic [ref=e380]:
+                    - img [ref=e382]
+                    - text: warning
+                  - paragraph [ref=e385]: Do not use a Palette-managed Kubernetes cluster when installing Palette. Palette-managed clusters contain the Palette agent and Palette-created Kubernetes resources that will interfere with the installation.
+                - heading "Install PaletteDirect link to Install Palette" [level=2] [ref=e386]:
+                  - text: Install Palette
+                  - link "Direct link to Install Palette" [ref=e387] [cursor=pointer]:
+                    - /url: "#install-palette"
+                    - text: "#"
+                - paragraph [ref=e388]: The following instructions are agnostic to the Kubernetes distribution you are using. Depending on the underlying infrastructure provider and your Kubernetes distribution, you may need to modify the instructions to match your environment. Reach out to our support team if you need assistance.
+                - list [ref=e389]:
+                  - listitem [ref=e390]:
+                    - paragraph [ref=e391]:
+                      - text: Open a terminal session and navigate to the directory where you downloaded the Palette installation zip file provided by our support. Unzip the file to a directory named
+                      - strong [ref=e392]: palette-install
+                      - text: .
+                    - generic [ref=e394]:
+                      - code [ref=e396]:
+                        - generic [ref=e397]: unzip release-*.zip -d palette-install
+                      - button "Copy code to clipboard" [ref=e399] [cursor=pointer]:
+                        - generic [ref=e400]:
+                          - img [ref=e401]
+                          - img [ref=e403]
+                  - listitem [ref=e405]:
+                    - paragraph [ref=e406]:
+                      - text: Navigate to the release folder inside the
+                      - strong [ref=e407]: palette-install
+                      - text: directory.
+                    - generic [ref=e409]:
+                      - code [ref=e411]:
+                        - generic [ref=e412]: cd palette-install/charts/release-*
+                      - button "Copy code to clipboard" [ref=e414] [cursor=pointer]:
+                        - generic [ref=e415]:
+                          - img [ref=e416]
+                          - img [ref=e418]
+                  - listitem [ref=e420]:
+                    - paragraph [ref=e421]:
+                      - text: Open the file
+                      - strong [ref=e422]: extras/cert-manager/values.yaml
+                      - text: in a text editor and append the URL to your OCI registry, which also includes the namespace or project that is hosting the Spectro Cloud images. The URL should be in the format
+                      - code [ref=e423]: <registry-url>/<namespace>
+                      - text: . In the example configuration below, the value
+                      - code [ref=e424]: my-oci-registry.com/spectro-images
+                      - text: is prefixed to each URL. Save the file after you have appended the URL.
+                    - generic [ref=e426]:
+                      - code [ref=e428]:
+                        - generic [ref=e429]: "image:"
+                        - generic [ref=e430]: "cainjectorImage: \"my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-cainjector:v1.17.0-spectro-4.6.1\""
+                        - generic [ref=e431]: "controllerImage: \"my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-controller:v1.17.0-spectro-4.6.1\""
+                        - generic [ref=e432]: "webhookImage: \"my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-webhook:v1.17.0-spectro-4.6.1\""
+                        - generic [ref=e433]: "amceResolverImage: \"my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-acmesolver:v1.17.0-spectro-4.6.1\""
+                      - button "Toggle word wrap" [ref=e435] [cursor=pointer]:
+                        - img [ref=e436]
+                  - listitem [ref=e438]:
+                    - paragraph [ref=e439]: Install Cert Manager using the following command. Replace the actual file name of the Cert Manager Helm Chart with the one you downloaded, as the version number may be different.
+                    - generic [ref=e441]:
+                      - code [ref=e443]:
+                        - generic [ref=e444]: helm upgrade --values extras/cert-manager/values.yaml \
+                        - generic [ref=e445]: cert-manager extras/cert-manager/cert-manager-*.tgz --install
+                      - button "Copy code to clipboard" [ref=e447] [cursor=pointer]:
+                        - generic [ref=e448]:
+                          - img [ref=e449]
+                          - img [ref=e451]
+                    - code [ref=e456]:
+                      - generic [ref=e457]: Release "cert-manager" does not exist. Installing it now.
+                      - generic [ref=e458]: "NAME: cert-manager"
+                      - generic [ref=e459]: "LAST DEPLOYED: Mon Jan 29 16:32:33 2024"
+                      - generic [ref=e460]: "NAMESPACE: default"
+                      - generic [ref=e461]: "STATUS: deployed"
+                      - generic [ref=e462]: "REVISION: 1"
+                      - generic [ref=e463]: "TEST SUITE: None"
+                  - listitem [ref=e464]:
+                    - paragraph [ref=e465]:
+                      - text: Open the file
+                      - strong [ref=e466]: extras/image-swap/values.yaml
+                      - text: in a text editor and append the URL to your OCI registry that also includes the namespace or project that is hosting the Spectro Cloud images.
+                    - generic [ref=e468]:
+                      - code [ref=e470]:
+                        - generic [ref=e471]: "config:"
+                        - generic [ref=e472]: "imageSwapImages:"
+                        - generic [ref=e473]: "imageSwapInitImage: \"my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release/thewebroot/imageswap-init:v1.5.3-spectro-4.5.1\""
+                        - generic [ref=e474]: "imageSwapImage: \"my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release/thewebroot/imageswap:v1.5.3-spectro-4.5.1\""
+                      - button "Toggle word wrap" [ref=e476] [cursor=pointer]:
+                        - img [ref=e477]
+                  - listitem [ref=e479]:
+                    - paragraph [ref=e480]:
+                      - text: Update the
+                      - code [ref=e481]: ociImageRegistry
+                      - text: section with the proper configuration values to your OCI registry. The
+                      - code [ref=e482]: ociImageRegistry
+                      - text: section should look similar to the following example.
+                    - generic [ref=e483]:
+                      - generic [ref=e484]:
+                        - img [ref=e486]
+                        - text: info
+                      - generic [ref=e488]:
+                        - paragraph [ref=e489]:
+                          - text: Use the following
+                          - code [ref=e490]: mirrorRegistries
+                          - text: placeholder string to replace the respective values of your OCI registry.
+                        - generic [ref=e492]:
+                          - code [ref=e494]:
+                            - generic [ref=e495]: docker.io::OCI_URL/IMAGE_PROJECT/docker.io,gcr.io::OCI_URL/IMAGE_PROJECT/gcr.io,ghcr.io::OCI_URL/IMAGE_PROJECT/ghcr.io,k8s.gcr.io::OCI_URL/IMAGE_PROJECT/k8s.gcr.io,registry.k8s.io::OCI_URL/IMAGE_PROJECT/registry.k8s.io,quay.io::OCI_URL/IMAGE_PROJECT/quay.io"
+                          - generic [ref=e496]:
+                            - button "Toggle word wrap" [ref=e497] [cursor=pointer]:
+                              - img [ref=e498]
+                            - button "Copy code to clipboard" [ref=e500] [cursor=pointer]:
+                              - generic [ref=e501]:
+                                - img [ref=e502]
+                                - img [ref=e504]
+                    - generic [ref=e507]:
+                      - code [ref=e509]:
+                        - generic [ref=e510]: "ociImageRegistry:"
+                        - generic [ref=e511]: "endpoint: \"my-oci-registry.com\""
+                        - generic [ref=e512]: "name: \"Airgap Images OCI\""
+                        - generic [ref=e513]: "password: \"\""
+                        - generic [ref=e514]: "username: \"\""
+                        - generic [ref=e515]: "baseContentPath: \"spectro-images\""
+                        - generic [ref=e516]: "insecureSkipVerify: true"
+                        - generic [ref=e517]: "caCert: \"\""
+                        - generic [ref=e518]: "mirrorRegistries: \"docker.io::my-oci-registry.com/spectro-images/docker.io,gcr.io::my-oci-registry.com/spectro-images,ghcr.io::my-oci-registry.com/spectro-images/ghcr.io,k8s.gcr.io::my-oci-registry.com/spectro-images/k8s.gcr.io,registry.k8s.io::my-oci-registry.com/spectro-images/registry.k8s.io,quay.io::my-oci-registry.com/spectro-images/quay.io\""
+                      - button "Toggle word wrap" [ref=e520] [cursor=pointer]:
+                        - img [ref=e521]
+                  - listitem [ref=e523]:
+                    - paragraph [ref=e524]:
+                      - text: Go ahead and install the image-swap chart using the following command. Point to the
+                      - strong [ref=e525]: values.yaml
+                      - text: file you configured in steps five through six.
+                    - generic [ref=e527]:
+                      - code [ref=e529]:
+                        - generic [ref=e530]: helm upgrade --values extras/image-swap/values.yaml \
+                        - generic [ref=e531]: image-swap extras/image-swap/image-swap-*.tgz --install
+                      - button "Copy code to clipboard" [ref=e533] [cursor=pointer]:
+                        - generic [ref=e534]:
+                          - img [ref=e535]
+                          - img [ref=e537]
+                    - code [ref=e542]:
+                      - generic [ref=e543]: Release "image-swap" does not exist. Installing it now.
+                      - generic [ref=e544]: "NAME: image-swap"
+                      - generic [ref=e545]: "LAST DEPLOYED: Mon Jan 29 17:04:23 2024"
+                      - generic [ref=e546]: "NAMESPACE: default"
+                      - generic [ref=e547]: "STATUS: deployed"
+                      - generic [ref=e548]: "REVISION: 1"
+                      - generic [ref=e549]: "TEST SUITE: None"
+                    - generic [ref=e550]:
+                      - generic [ref=e551]:
+                        - img [ref=e553]
+                        - text: tip
+                      - paragraph [ref=e556]:
+                        - text: If you need to override the image-swap registry configuration post-deployment, refer to the
+                        - link "Override Registry Configuration" [ref=e557] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/registry-override/
+                        - text: page for instructions.
+                  - listitem [ref=e558]:
+                    - paragraph [ref=e559]:
+                      - text: Open the
+                      - strong [ref=e560]: values.yaml
+                      - text: file in the
+                      - strong [ref=e561]: spectro-mgmt-plane
+                      - text: folder with a text editor of your choice. The
+                      - strong [ref=e562]: values.yaml
+                      - text: file contains the default values for the Palette installation parameters. However, you must populate the following parameters before installing Palette. You can learn more about the parameters on the
+                      - strong [ref=e563]: values.yaml
+                      - text: file on the
+                      - link "Helm Configuration Reference" [ref=e564] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref/
+                      - text: page.
+                    - paragraph [ref=e565]:
+                      - text: Ensure you provide the proper
+                      - code [ref=e566]: ociImageRegistry.mirrorRegistries
+                      - text: values if you are using a self-hosted OCI registry. You can find the placeholder string in the
+                      - code [ref=e567]: ociImageRegistry
+                      - text: section of the
+                      - strong [ref=e568]: values.yaml
+                      - text: file.
+                    - table [ref=e569]:
+                      - rowgroup [ref=e570]:
+                        - row "Parameter Description Type" [ref=e571]:
+                          - cell "Parameter" [ref=e572]:
+                            - strong [ref=e573]: Parameter
+                          - cell "Description" [ref=e574]:
+                            - strong [ref=e575]: Description
+                          - cell "Type" [ref=e576]:
+                            - strong [ref=e577]: Type
+                      - rowgroup [ref=e578]:
+                        - row "env.rootDomain The URL name or IP address you will use for the Palette installation. string" [ref=e579]:
+                          - cell "env.rootDomain" [ref=e580]:
+                            - code [ref=e581]: env.rootDomain
+                          - cell "The URL name or IP address you will use for the Palette installation." [ref=e582]
+                          - cell "string" [ref=e583]
+                        - row "config.installationMode The installation mode for Palette. The values can be connected or airgap. Set this value to airgap. string" [ref=e584]:
+                          - cell "config.installationMode" [ref=e585]:
+                            - code [ref=e586]: config.installationMode
+                          - cell "The installation mode for Palette. The values can be connected or airgap. Set this value to airgap." [ref=e587]:
+                            - text: The installation mode for Palette. The values can be
+                            - code [ref=e588]: connected
+                            - text: or
+                            - code [ref=e589]: airgap
+                            - text: . Set this value to
+                            - code [ref=e590]: airgap
+                            - text: .
+                          - cell "string" [ref=e591]
+                        - row "ociPackEcrRegistry The OCI registry credentials for the Palette FIPS packs repository. object" [ref=e592]:
+                          - cell "ociPackEcrRegistry" [ref=e593]:
+                            - code [ref=e594]: ociPackEcrRegistry
+                          - cell "The OCI registry credentials for the Palette FIPS packs repository." [ref=e595]
+                          - cell "object" [ref=e596]
+                        - row "ociImageRegistry The OCI registry credentials for the Palette images repository. object" [ref=e597]:
+                          - cell "ociImageRegistry" [ref=e598]:
+                            - code [ref=e599]: ociImageRegistry
+                          - cell "The OCI registry credentials for the Palette images repository." [ref=e600]
+                          - cell "object" [ref=e601]
+                        - row "ociImageRegistry.mirrorRegistries Replace the placeholder string with the respective values of your OCI registry repository that is hosting the images. Do not use the same values you provided to the image-swap values.yaml. The placeholders require a /v2/ endpoint if your OCI registry supports the Docker Registry protocol v2, otherwise container pull images will fail." [ref=e602]:
+                          - cell "ociImageRegistry.mirrorRegistries" [ref=e603]:
+                            - code [ref=e604]: ociImageRegistry.mirrorRegistries
+                          - cell "Replace the placeholder string with the respective values of your OCI registry repository that is hosting the images. Do not use the same values you provided to the image-swap values.yaml. The placeholders require a /v2/ endpoint if your OCI registry supports the Docker Registry protocol v2, otherwise container pull images will fail." [ref=e605]:
+                            - text: Replace the placeholder string with the respective values of your OCI registry repository that is hosting the images. Do not use the same values you provided to the image-swap
+                            - strong [ref=e606]: values.yaml
+                            - text: . The placeholders require a
+                            - code [ref=e607]: /v2/
+                            - text: endpoint if your OCI registry supports the Docker Registry protocol v2, otherwise container pull images will fail.
+                          - cell [ref=e608]
+                        - 'row "imageSwapImages The image swap configuration for Palette. If you are using an OCI registry, such as Harbor. Replace the prefix URLs with your OCI registry URL that includes the image namespace or project: <registry-url>/<namespace>. object" [ref=e609]':
+                          - cell "imageSwapImages" [ref=e610]:
+                            - code [ref=e611]: imageSwapImages
+                          - 'cell "The image swap configuration for Palette. If you are using an OCI registry, such as Harbor. Replace the prefix URLs with your OCI registry URL that includes the image namespace or project: <registry-url>/<namespace>." [ref=e612]':
+                            - text: "The image swap configuration for Palette. If you are using an OCI registry, such as Harbor. Replace the prefix URLs with your OCI registry URL that includes the image namespace or project:"
+                            - code [ref=e613]: <registry-url>/<namespace>
+                            - text: .
+                          - cell "object" [ref=e614]
+                        - row "imageSwapConfig.isEKSCluster If you are NOT installing Palette on an EKS cluster, set this value to false. boolean" [ref=e615]:
+                          - cell "imageSwapConfig.isEKSCluster" [ref=e616]:
+                            - code [ref=e617]: imageSwapConfig.isEKSCluster
+                          - cell "If you are NOT installing Palette on an EKS cluster, set this value to false." [ref=e618]:
+                            - text: If you are NOT installing Palette on an EKS cluster, set this value to
+                            - code [ref=e619]: "false"
+                            - text: .
+                          - cell "boolean" [ref=e620]
+                        - row "ingress.enabled Whether to install the Nginx ingress controller. Set this to false if you already have an Nginx controller deployed in the cluster. boolean" [ref=e621]:
+                          - cell "ingress.enabled" [ref=e622]:
+                            - code [ref=e623]: ingress.enabled
+                          - cell "Whether to install the Nginx ingress controller. Set this to false if you already have an Nginx controller deployed in the cluster." [ref=e624]:
+                            - text: Whether to install the Nginx ingress controller. Set this to
+                            - code [ref=e625]: "false"
+                            - text: if you already have an Nginx controller deployed in the cluster.
+                          - cell "boolean" [ref=e626]
+                        - row "reach-system Set reach-system.enabled to true and configure the reach-system.proxySettings parameters for Palette to use a network proxy in your environment. object" [ref=e627]:
+                          - cell "reach-system" [ref=e628]:
+                            - code [ref=e629]: reach-system
+                          - cell "Set reach-system.enabled to true and configure the reach-system.proxySettings parameters for Palette to use a network proxy in your environment." [ref=e630]:
+                            - text: Set
+                            - code [ref=e631]: reach-system.enabled
+                            - text: to
+                            - code [ref=e632]: "true"
+                            - text: and configure the
+                            - code [ref=e633]: reach-system.proxySettings
+                            - text: parameters for Palette to use a network proxy in your environment.
+                          - cell "object" [ref=e634]
+                    - generic [ref=e635]:
+                      - generic [ref=e636]:
+                        - img [ref=e638]
+                        - text: info
+                      - paragraph [ref=e641]:
+                        - text: If you are installing Palette by pulling required images from a private mirror registry, you will need to provide the credentials to your registry in the
+                        - strong [ref=e642]: values.yaml
+                        - text: file. For more information, refer to
+                        - link "Helm Configuration Reference" [ref=e643] [cursor=pointer]:
+                          - /url: /enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref/#image-pull-secret
+                        - text: .
+                    - paragraph [ref=e644]:
+                      - text: Save the
+                      - strong [ref=e645]: values.yaml
+                      - text: file after you have populated the required parameters mentioned in the table. Select one of the following tabs to review an example of the
+                      - strong [ref=e646]: values.yaml
+                      - text: file with the required parameters highlighted.
+                    - generic [ref=e647]:
+                      - tablist [ref=e648]:
+                        - tab "OCI Registry" [selected] [ref=e649] [cursor=pointer]
+                        - tab "AWS ECR Registry" [ref=e650] [cursor=pointer]
+                      - tabpanel [ref=e652]:
+                        - generic [ref=e654]:
+                          - code [ref=e656]:
+                            - generic [ref=e657]: "#########################"
+                            - generic [ref=e658]: "# Spectro Cloud Palette #"
+                            - generic [ref=e659]: "#########################"
+                            - generic [ref=e660]: "global:"
+                            - generic [ref=e661]: "imagePullSecret:"
+                            - generic [ref=e662]: "create: false"
+                            - generic [ref=e663]: "# Provide your own base64 encoded dockerconfigjson value below if using ImagePullSecret for Private registry Authentication"
+                            - generic [ref=e664]: "dockerConfigJson: \"\""
+                            - generic [ref=e665]: "# MongoDB Configuration"
+                            - generic [ref=e666]: "mongo:"
+                            - generic [ref=e667]: "# Whether to deploy MongoDB in-cluster (internal == true) or use Mongo Atlas"
+                            - generic [ref=e668]: "internal: true"
+                            - generic [ref=e669]: "# Mongodb URL. Only change if using Mongo Atlas."
+                            - generic [ref=e670]: "databaseUrl: \"mongo-0.mongo,mongo-1.mongo,mongo-2.mongo\""
+                            - generic [ref=e671]: "# Mongo Atlas password, base64 encoded. Only enter if using Mongo Atlas."
+                            - generic [ref=e672]: "databasePassword: \"\""
+                            - generic [ref=e673]: "#No. of mongo replicas to run, default is 3"
+                            - generic [ref=e674]: "replicas: 3"
+                            - generic [ref=e675]: "# The following only apply if mongo.internal == true"
+                            - generic [ref=e676]: "cpuLimit: \"2000m\""
+                            - generic [ref=e677]: "memoryLimit: \"4Gi\""
+                            - generic [ref=e678]: "pvcSize: \"20Gi\""
+                            - generic [ref=e679]: "storageClass: \"\" # leave empty to use the default storage class"
+                            - generic [ref=e680]: "config:"
+                            - generic [ref=e681]: "installationMode: \"airgap\" #values can be connected or airgap."
+                            - generic [ref=e682]: "# SSO SAML Configuration (Optional for self-hosted type)"
+                            - generic [ref=e683]: "sso:"
+                            - generic [ref=e684]: "saml:"
+                            - generic [ref=e685]: "enabled: false"
+                            - generic [ref=e686]: "acsUrlRoot: \"myfirstpalette.spectrocloud.com\""
+                            - generic [ref=e687]: "acsUrlScheme: \"https\""
+                            - generic [ref=e688]: "audienceUrl: \"https://www.spectrocloud.com\""
+                            - generic [ref=e689]: "entityId: \"https://www.spectrocloud.com\""
+                            - generic [ref=e690]: "apiVersion: \"v1\""
+                            - generic [ref=e691]: "# Email Configurations. (Optional for self-hosted type)"
+                            - generic [ref=e692]: "email:"
+                            - generic [ref=e693]: "enabled: false"
+                            - generic [ref=e694]: "emailId: \"noreply@spectrocloud.com\""
+                            - generic [ref=e695]: "smtpServer: \"smtp.gmail.com\""
+                            - generic [ref=e696]: "smtpPort: 587"
+                            - generic [ref=e697]: "insecureSkipVerifyTls: true"
+                            - generic [ref=e698]: "fromEmailId: \"noreply@spectrocloud.com\""
+                            - generic [ref=e699]: "password: \"\" # base64 encoded SMTP password"
+                            - generic [ref=e700]: "env:"
+                            - generic [ref=e701]: "# rootDomain is a DNS record which will be mapped to the ingress-nginx-controller load balancer"
+                            - generic [ref=e702]: "# E.g., myfirstpalette.spectrocloud.com"
+                            - generic [ref=e703]: "# - Mandatory if ingress.internal == false"
+                            - generic [ref=e704]: "# - Optional if ingress.internal == true (leave empty)"
+                            - generic [ref=e705]: "#"
+                            - generic [ref=e706]: "# IMPORTANT: a DNS record must be created separately and it must be a wildcard to account for Organization prefixes"
+                            - generic [ref=e707]: "# E.g., *.myfirstpalette.spectrocloud.com"
+                            - generic [ref=e708]: "rootDomain: \"palette.example.com\""
+                            - generic [ref=e709]: "# stableEndpointAccess is used when deploying EKS clusters in Private network type."
+                            - generic [ref=e710]: "# When your Saas installed instance have connectivity to the private VPC where you want to launch the cluster set the stableEndpointAccess to true"
+                            - generic [ref=e711]: "cluster:"
+                            - generic [ref=e712]: "stableEndpointAccess: false"
+                            - generic [ref=e713]: "# registry:"
+                            - generic [ref=e714]: "# endpoint: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e715]: "# name: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e716]: "# password: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e717]: "# username: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e718]: "# insecureSkipVerify: false"
+                            - generic [ref=e719]: "# caCert: \"\""
+                            - generic [ref=e720]: "ociPackRegistry:"
+                            - generic [ref=e721]: "endpoint: \"my-oci-registry.com\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e722]: "name: \"Airgap Packs OCI\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e723]: "password: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e724]: "username: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e725]: "baseContentPath: \"spectro-packs\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e726]: "insecureSkipVerify: false"
+                            - generic [ref=e727]: "caCert: \"\""
+                            - generic [ref=e728]: "# ociPackEcrRegistry:"
+                            - generic [ref=e729]: "# endpoint: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e730]: "# name: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e731]: "# accessKey: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e732]: "# secretKey: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e733]: "# baseContentPath: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e734]: "# isPrivate: true"
+                            - generic [ref=e735]: "# insecureSkipVerify: false"
+                            - generic [ref=e736]: "# caCert: \"\""
+                            - generic [ref=e737]: "ociImageRegistry:"
+                            - generic [ref=e738]: "endpoint: \"my-oci-registry.com\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e739]: "name: \"Airgap Images OCI\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e740]: "password: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e741]: "username: \"\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e742]: "baseContentPath: \"spectro-images\" #<Contact Spectro Cloud Sales for More info>"
+                            - generic [ref=e743]: "insecureSkipVerify: true"
+                            - generic [ref=e744]: "caCert: \"\""
+                            - generic [ref=e745]: "mirrorRegistries: \"docker.io::my-oci-registry.com/v2/spectro-images/docker.io,gcr.io::my-oci-registry.com/v2/spectro-images/gcr.io,ghcr.io::my-oci-registry.com/v2/spectro-images/ghcr.io,k8s.gcr.io::my-oci-registry.com/v2/spectro-images/k8s.gcr.io,registry.k8s.io::my-oci-registry.com/v2/spectro-images/registry.k8s.io,quay.io::my-oci-registry.com/v2/spectro-images/quay.io\" # See instructions below."
+                            - generic [ref=e746]: "# Instruction for mirrorRegistries."
+                            - generic [ref=e747]: "# ----------------------------------"
+                            - generic [ref=e748]: "# Please provide the registry endpoint for the following registries, separated by double colons (::):"
+                            - generic [ref=e749]: "# docker.io"
+                            - generic [ref=e750]: "# gcr.io"
+                            - generic [ref=e751]: "# ghcr.io"
+                            - generic [ref=e752]: "# k8s.gcr.io"
+                            - generic [ref=e753]: "# registry.k8s.io"
+                            - generic [ref=e754]: "# quay.io"
+                            - generic [ref=e755]: "# For each registry, follow this example format:"
+                            - generic [ref=e756]: "# docker.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<DOCKER_IO_ENDPOINT>,gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GCR_IO_ENDPOINT>,ghcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GHCR_IO_ENDPOINT>,k8s.gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<K8S_IO_ENDPOINT>,registry.k8s.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<REGISTRY_K8S_IO_ENDPOINT>,quay.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<QUAY_IO_ENDPOINT>,us-docker.pkg.dev::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<US_DOCKER_ENDPOINT>"
+                            - generic [ref=e757]: "# Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry."
+                            - generic [ref=e758]: "imageSwapImages:"
+                            - generic [ref=e759]: "imageSwapInitImage: \"my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/thewebroot/imageswap:v1.5.3-spectro-4.5.1\""
+                            - generic [ref=e760]: "imageSwapImage: \"my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/thewebroot/imageswap:v1.5.3-spectro-4.5.1\""
+                            - generic [ref=e761]: "imageSwapConfig:"
+                            - generic [ref=e762]: "isEKSCluster: true #If the Cluster you are trying to install is EKS cluster set value to true else set to false"
+                            - generic [ref=e763]: "grpc:"
+                            - generic [ref=e764]: "external: false"
+                            - generic [ref=e765]: "endpoint: \"\" #Please provide DNS endpoint with the port eg: msg.spectrocloud.com:443"
+                            - generic [ref=e766]: "annotations: {}"
+                            - generic [ref=e767]: "# AWS example"
+                            - generic [ref=e768]: "# service.beta.kubernetes.io/aws-load-balancer-internal: \"true\""
+                            - generic [ref=e769]: "# service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp"
+                            - generic [ref=e770]: "# service.beta.kubernetes.io/aws-load-balancer-ssl-ports: \"https\""
+                            - generic [ref=e771]: "# Azure example"
+                            - generic [ref=e772]: "# service.beta.kubernetes.io/azure-load-balancer-internal: \"true\""
+                            - generic [ref=e773]: "# service.beta.kubernetes.io/azure-dns-label-name: myserviceuniquelabel"
+                            - generic [ref=e774]: "# Static IP for the GRPC load balancer service. If empty, a dynamic IP will be generated."
+                            - generic [ref=e775]: "grpcStaticIP: \"\""
+                            - generic [ref=e776]: "caCertificateBase64: \"\" #Please provide caCertificate for the grpc server Cert"
+                            - generic [ref=e777]: "serverCrtBase64: \"\""
+                            - generic [ref=e778]: "serverKeyBase64: \"\""
+                            - generic [ref=e779]: "insecureSkipVerify: false"
+                            - generic [ref=e780]: "ingress:"
+                            - generic [ref=e781]: "# When enabled nginx ingress controller would be installed"
+                            - generic [ref=e782]: "enabled: true"
+                            - generic [ref=e783]: "ingress:"
+                            - generic [ref=e784]: "# Whether to front NGINX Ingress Controller with a cloud"
+                            - generic [ref=e785]: "# load balancer (internal == false) or use host network"
+                            - generic [ref=e786]: "internal: false"
+                            - generic [ref=e787]: "# Default SSL certificate and key for NGINX Ingress Controller (Optional)"
+                            - generic [ref=e788]: "# A wildcard cert for config.env.rootDomain, e.g., *.myfirstpalette.spectrocloud.com"
+                            - generic [ref=e789]: "# If left blank, the NGINX ingress controller will generate a self-signed cert (when terminating TLS upstream of ingress-nginx-controller)"
+                            - generic [ref=e790]: "certificate: \"\""
+                            - generic [ref=e791]: "key: \"\""
+                            - generic [ref=e792]: "#If ACM is enabled please use grpc as a non internal and bring grpc on different LB. Provide certificate and dns for it."
+                            - generic [ref=e793]: "annotations: {}"
+                            - generic [ref=e794]: "# AWS example"
+                            - generic [ref=e795]: "# service.beta.kubernetes.io/aws-load-balancer-internal: \"true\""
+                            - generic [ref=e796]: "# service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp"
+                            - generic [ref=e797]: "# service.beta.kubernetes.io/aws-load-balancer-ssl-cert: <ACM_ARN>"
+                            - generic [ref=e798]: "# service.beta.kubernetes.io/aws-load-balancer-ssl-ports: \"https\""
+                            - generic [ref=e799]: "# Azure example"
+                            - generic [ref=e800]: "# service.beta.kubernetes.io/azure-load-balancer-internal: \"true\""
+                            - generic [ref=e801]: "# service.beta.kubernetes.io/azure-dns-label-name: myserviceuniquelabel"
+                            - generic [ref=e802]: "# Static IP for the Ingress load balancer service. If empty, a dynamic IP will be generated."
+                            - generic [ref=e803]: "ingressStaticIP: \"\""
+                            - generic [ref=e804]: "# For Service like AWS Load Balancer using https we would want to terminate the HTTPS at Load Balancer."
+                            - generic [ref=e805]: "terminateHTTPSAtLoadBalancer: false"
+                            - generic [ref=e806]: "frps:"
+                            - generic [ref=e807]: "frps:"
+                            - generic [ref=e808]: "enabled: false"
+                            - generic [ref=e809]: "frpHostURL: proxy.sample.spectrocloud.com"
+                            - generic [ref=e810]: "server:"
+                            - generic [ref=e811]: "crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURqekNDQW5lZ0F3SUJBZ0lVZTVMdXBBZGljd0Z1SFJpWWMyWEgzNTFEUzJJd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0tERW1NQ1FHQTFVRUF3d2RjSEp2ZUhrdWMyRnRjR3hsTG5Od1pXTjBjbTlqYkc5MVpDNWpiMjB3SGhjTgpNakl4TURFME1UTXlOREV5V2hjTk1qY3hNREV6TVRNeU5ERXlXakI3TVFzd0NRWURWUVFHRXdKVlV6RUxNQWtHCkExVUVDQk1DUTBFeEV6QVJCZ05WQkFjVENsTmhiblJoUTJ4aGNtRXhGVEFUQmdOVkJBb1RERk53WldOMGNtOUQKYkc5MVpERUxNQWtHQTFVRUN4TUNTVlF4SmpBa0JnTlZCQU1USFhCeWIzaDVMbk5oYlhCc1pTNXpjR1ZqZEhKdgpZMnh2ZFdRdVkyOXRNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ0tDQVFFQXd5bEt3MmlxClBXM2JrQU0wV3RhaEFLbEppcWFHd05LUDVRRTZ6ZW5NM2FURko3TjIwN0dWcUNGYzJHTDNodmNhTDFranZjeEkKK2lybHpkbm9hcVhUSmV3ZkJiTGs2SGVhZmdXUVp3NHNNeE5QRUVYYlNXYm54Mm03Y2FlbVJiUWZSQWhPWXRvWgpIWG1IMzQ1Q25mNjF0RnhMeEEzb0JRNm1yb0JMVXNOOUh2WWFzeGE5QUFmZUNNZm5sYWVBWE9CVmROalJTN1VzCkN5NmlSRXpEWFgvem1nOG5WWFUwemlrcXdoS3pqSlBJd2FQa2ViaXVSdUJYdEZ0VlQwQmFzS3VqbURzd0lsRFQKVmR4SHRRQUVyUmM4Q2Nhb20yUkpZbTd1aHNEYlo2WVFzS3JiMmhIbU5rNENVWUd5eUJPZnBwbzR2bFd1S2FEcgpsVFNYUXlPN0M0ejM1d0lEQVFBQm8xNHdYREJhQmdOVkhSRUVVekJSZ2dsc2IyTmhiR2h2YzNTSEJIOEFBQUdDCkhYQnliM2g1TG5OaGJYQnNaUzV6Y0dWamRISnZZMnh2ZFdRdVkyOXRnaDhxTG5CeWIzaDVMbk5oYlhCc1pTNXoKY0dWamRISnZZMnh2ZFdRdVkyOXRNQTBHQ1NxR1NJYjNEUUVCQ3dVQUE0SUJBUUEvRFJFVm54SWJRdi9uMDEvSQpJd1d0ekhKNGNHOUp6UlB6dmszNUcvRGJOVzZYZ0M3djBoWlFIVHg5bzMrckxoSUFiWTNmbjc1VEtlN3hMRWpiCkI3M3pGWURJSStkYzM5NkQzZU51M2NxRGIvY01kYmlFalhod2ttZk9NRm9qMnpOdHJIdzFsSjA0QlNFMWw1YWgKMDk0Vy9aaEQ2YTVLU3B0cDh1YUpKVmNrejRYMEdRWjVPYjZadGdxZVVxNytqWVZOZ0tLQzJCMW1SNjMyMDNsZwozVFZmZEkrdmI3b292dVdOOFRBVG9qdXNuS25WMmRMeTFBOWViWXYwMEM3WWZ6Q0NhODgrN2dzTGhJaUJjRHBPClJkWjU3QStKanJmSU5IYy9vNm5YWFhDZ2h2YkFwUVk1QnFnMWIzYUpUZERNWThUY0hoQVVaQzB5eU04bXcwMnQKWHRRQwotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="
+                            - generic [ref=e812]: "key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0NBUUVBd3lsS3cyaXFQVzNia0FNMFd0YWhBS2xKaXFhR3dOS1A1UUU2emVuTTNhVEZKN04yCjA3R1ZxQ0ZjMkdMM2h2Y2FMMWtqdmN4SStpcmx6ZG5vYXFYVEpld2ZCYkxrNkhlYWZnV1FadzRzTXhOUEVFWGIKU1dibngybTdjYWVtUmJRZlJBaE9ZdG9aSFhtSDM0NUNuZjYxdEZ4THhBM29CUTZtcm9CTFVzTjlIdllhc3hhOQpBQWZlQ01mbmxhZUFYT0JWZE5qUlM3VXNDeTZpUkV6RFhYL3ptZzhuVlhVMHppa3F3aEt6akpQSXdhUGtlYml1ClJ1Qlh0RnRWVDBCYXNLdWptRHN3SWxEVFZkeEh0UUFFclJjOENjYW9tMlJKWW03dWhzRGJaNllRc0tyYjJoSG0KTms0Q1VZR3l5Qk9mcHBvNHZsV3VLYURybFRTWFF5TzdDNHozNXdJREFRQUJBb0lCQUFPVVZFeTFOTG9mczdFMgpmZFZVcm10R3I1U2RiVWRJRlYrTDREbzZtWWxQSmxhT0VoWGI0ZlROZDloNEtEWVBmaWwwSnhXcUU0U1RHTmZuCnNUMlRnUVhuQ01LZi8xYk1Lc2M0N3VjVStYYU9XaHJnVFI5UmhkckFjN0duODRLL3hQc0ljL2VZTEhHLzh1QUUKeWUvLzVmRkM2QmpXY0hUM1NkTlZnd3duamJudG5XTXIzTFJBVnJBamZBckxveWUwS0F2YytYdXJLTEVCcmMyVQpjaHlDbitZemJKN0VlSG44UXdQNGdBNXVSK0NCMFJPeFErYXIzS3M5YUhkZTQ1OEVNNEtLMnpUOXA4RWZRc1lFCkFtNUpxWjliR0JEVHV1dEkyNm9GK0pLQ1IzZzhXNERRcHVYRUZoVjlya0pMSm13RDhQb0JaclF6UzZvdmJhdkkKRk42QVM4RUNnWUVBOEcxQzFxZVh4dTQ4aEYxak5MTCswRmxkeWdFem9SMmFoRGJCai8weUZkQVVjU2pYTzk0NAozN1dORTBUUG10WG1Vc3NZTlBTR21XaWI2OUhicEFoMTY3SWVwNE9LaVlZdkozYm1oUC9WNzFvK3M0SWJlSHh1CkVJbWVVckFOZWRoQURVQnZ4c1lXRWxlVlVJSFFRcjY1VHM2ZjIrWkpTKzg4TU05bUorL3BmcmNDZ1lFQXo4MXgKR3JiSE5oak56RjhZMjhiK0hMNW5rdDR0SUdkU3hnbW9PMFFJeGkrQVNZTzB0WW42VFk0ZHI5ZXErMzE3b21ZawpMbDNtNENORDhudG1vYzRvWnM4SUpDQ0IrZjNqcTY4OHdoQU9vVHZ4dDhjZVJqOFRhRHl1SHZwS043OVNsVVd2CjBJd2ZRNDNIemd3SWJiSWhjcTRJVGswanI0VHdWbThia283VElGRUNnWUJoNnUzVXhHN0JHeGZVaE1BNW4waSsKREJkeGhPbkZEV3gzdW1FOHhrN1dxV2NaNnhzMWk3eTRCNVhNS2pNdkNUeURyYWxQTCtOOXFTZ1BjK216TmFybwo4aU1mOENmRStMeE5vMVFoQ0p6Vm5YaDUzVnhZeHJ5QXlidU1TNTFCYVh3MHFYQ2NrT0krV0NNOHBaSHZEUVFsCmYydUZ3SlZMY3NTZDBHbjNpL01ab3dLQmdBY1BzUjg2Uk15MnpROTd6OGx3R3FSNVorV2F2U2ZUdXdGVnhLeTIKNUNGdjdja1J1NnRMbEFEY3FtK1dRWTRvTm5KUFREMXpIV3hTWm5XdjhjM2Z4b212MFZRQThzbSs4ZVNjb05EcgpZTVBqMkpQcEpVTTMwMzRBU2Q1dG5PWUdEMVZaTjk4N1U3aWs4Ynd6dG5tYnl2MHRvc1NlWkc4TGNtdE5mVDllCnNSZnhBb0dCQUpTV1lDellyTlRMNnRUSnh5M2FqWm5jZkxrMEV0eWNCd05FRXZHVzVSVE9LOUFYTE96RzN0eHUKajZqWlRpaUFRU09aaVd0clJHU0U0bEkyQ1MvcjNjd3VuSGlnZlovd1dKZldkZ0JpRnZqOTVFbUVQWUZaRDRobQpkT3l5UHhRRXFTRmprQ21BS2plOFBpTDdpU01GbGhBZTZQWFljQlExdCtzd01UeXBnY3RrCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg=="
+                            - generic [ref=e813]: "ca:"
+                            - generic [ref=e814]: "crt : LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURNVENDQWhtZ0F3SUJBZ0lVSHhWK0ljVGZHUElzdW8yY3dqQ0Q0Z2RSTFFRd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0tERW1NQ1FHQTFVRUF3d2RjSEp2ZUhrdWMyRnRjR3hsTG5Od1pXTjBjbTlqYkc5MVpDNWpiMjB3SGhjTgpNakl4TURFME1UTXlOREV5V2hjTk16WXdOakl5TVRNeU5ERXlXakFvTVNZd0pBWURWUVFEREIxd2NtOTRlUzV6CllXMXdiR1V1YzNCbFkzUnliMk5zYjNWa0xtTnZiVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0MKQVFvQ2dnRUJBSy90WXBHVi9HRURUWnZzL25QQ2lOK0U3K1dOQ21GeU1NQjdkazVOT3JzQWZIaVVvZ1JRVUo0WQptSjhwVmYrSzhTRFBsdGNYcW40WVVTbmxiUERsVlBkWU5zOTEwT3RaS1EwNW96aUtGV2pNbS85NHlLSjVyVzNsCndDNEN0ayttUm9Ib0ZQQS81dmFVbVZHdlVadjlGY0JuL0pKN2F4WnRIQk1PRiticXQ0Zmd0ci9YMWdOeWhPVzUKZTVScGpESkozRjJTVnc5NUpBQSt4a3V3UitFSmVseEtnQVpxdDc0ejB4U2ROODZ0QzNtK0wxRGs2WVVlQWEzZApvM3Rsa3ZkeDV6dUJvSmI2QmpZWEV4UE1PbThRcHFNVWRLK3lDZUdrem9XQStDOUtFdGtVaERCWktENStNWXRZCktVMUh1RXJCbmw2Z3BuWTRlbzJjVTRxdkNwZzZ4S3NDQXdFQUFhTlRNRkV3SFFZRFZSME9CQllFRklKMkRkTjgKc2ZtVjRCT1ZFL0FjZ0VEejArNmlNQjhHQTFVZEl3UVlNQmFBRklKMkRkTjhzZm1WNEJPVkUvQWNnRUR6MCs2aQpNQThHQTFVZEV3RUIvd1FGTUFNQkFmOHdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBQWhQVi9RMVl1YWVTOTZVCmhjVGQ4RWdJaHhpbHFiTWlTQm5WaVdrdlJzWk94UUIwNTFScWtwT3g0UTRsckdaOGVJWWc3T0trTTdzejhuTVQKL2pxS21sZDY0MzJCcURCMlNkNVp5ZFdReHAwU1laRTlnVWszYk9KRGtZVXQ4b1cvZDBWeG9uU05LQVN3QmZKaApWV1VZUUlpNm55K0ZZZmtuRFNvRnFlY2Z3SDBQQVUraXpnMkI3KzFkbko5YisyQ21IOUVCallOZ2hoNlFzVlFQCkh2SkdQQURtandPNkJOam5HK0Z3K0Z6cmFXUTNCTjAwb08zUjF6UmgxZERmTTQzR3oxRmZGRW5GSXI5aGFuUnQKWHJFZm8vZWU5bjBLWUFESEJnV1g4dlhuNHZrRmdWRjgwYW9MUUJSQTBxWXErcW1pVlp6YnREeE9ldFEyRWFyTQpyNmVWL0lZPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="
+                            - generic [ref=e815]: "service:"
+                            - generic [ref=e816]: "annotations: {}"
+                            - generic [ref=e817]: "ui-system:"
+                            - generic [ref=e818]: "enabled: true"
+                            - generic [ref=e819]: "ui:"
+                            - generic [ref=e820]: "nocUI:"
+                            - generic [ref=e821]: "enable: true"
+                            - generic [ref=e822]: "mapBoxAccessToken: \"\" # Leave Empty to use Default Access Token from Palette"
+                            - generic [ref=e823]: "mapBoxStyledLayerID: \"\" # Leave Empty to use Default Style Layer ID"
+                            - generic [ref=e824]: "reachSystem:"
+                            - generic [ref=e825]: "enabled: false"
+                            - generic [ref=e826]: "proxySettings:"
+                            - generic [ref=e827]: "http_proxy: \"\""
+                            - generic [ref=e828]: "https_proxy: \"\""
+                            - generic [ref=e829]: "no_proxy: \"\""
+                            - generic [ref=e830]: "ca_crt_path: \"\" # Set the 'ca_crt_path' parameter to the location of the certificate file on each node. This file should contain the Proxy CA Certificate, in case the Proxy being used requires a certificate."
+                            - generic [ref=e831]: "scheduleOnControlPlane: true"
+                          - generic [ref=e832]:
+                            - button "Toggle word wrap" [ref=e833] [cursor=pointer]:
+                              - img [ref=e834]
+                            - button "Copy code to clipboard" [ref=e836] [cursor=pointer]:
+                              - generic [ref=e837]:
+                                - img [ref=e838]
+                                - img [ref=e840]
+                    - generic [ref=e842]:
+                      - generic [ref=e843]:
+                        - img [ref=e845]
+                        - text: warning
+                      - paragraph [ref=e848]:
+                        - text: Ensure you have configured the
+                        - strong [ref=e849]: values.yaml
+                        - text: file with the required parameters before proceeding to the next steps. For the parameter
+                        - code [ref=e850]: ociImageRegistry.mirrorRegistries
+                        - text: ", ensure a"
+                        - code [ref=e851]: /v2/
+                        - text: endpoint is used if your OCI registry supports the Docker Registry protocol v2, otherwise container pull images will fail.
+                  - listitem [ref=e852]:
+                    - paragraph [ref=e853]: This step is only required if you are installing Palette in an environment where a network proxy must be configured for Palette to access the internet. If you are not using a network proxy, skip to the next step.
+                    - paragraph [ref=e854]:
+                      - text: Install the reach-system chart using the following command. Point to the
+                      - strong [ref=e855]: values.yaml
+                      - text: file you configured in step eight.
+                    - generic [ref=e857]:
+                      - code [ref=e859]:
+                        - generic [ref=e860]: helm upgrade --values palette/values.yaml \
+                        - generic [ref=e861]: reach-system extras/reach-system/reach-system-*.tgz --install
+                      - button "Copy code to clipboard" [ref=e863] [cursor=pointer]:
+                        - generic [ref=e864]:
+                          - img [ref=e865]
+                          - img [ref=e867]
+                    - code [ref=e872]:
+                      - generic [ref=e873]: Release "reach-system" does not exist. Installing it now.
+                      - generic [ref=e874]: "NAME: reach-system"
+                      - generic [ref=e875]: "LAST DEPLOYED: Mon Jan 29 17:04:23 2024"
+                      - generic [ref=e876]: "NAMESPACE: default"
+                      - generic [ref=e877]: "STATUS: deployed"
+                      - generic [ref=e878]: "REVISION: 1"
+                      - generic [ref=e879]: "TEST SUITE: None"
+                    - group [ref=e880]:
+                      - generic "How to update containerd to use proxy configurations" [ref=e881] [cursor=pointer]
+                  - listitem [ref=e882]:
+                    - paragraph [ref=e883]: Install the Palette Helm Chart using the following command.
+                    - generic [ref=e885]:
+                      - code [ref=e887]:
+                        - generic [ref=e888]: helm upgrade --values palette/values.yaml \
+                        - generic [ref=e889]: hubble palette/spectro-mgmt-plane-*.tgz --install
+                      - button "Copy code to clipboard" [ref=e891] [cursor=pointer]:
+                        - generic [ref=e892]:
+                          - img [ref=e893]
+                          - img [ref=e895]
+                    - code [ref=e900]:
+                      - generic [ref=e901]: Release "hubble" does not exist. Installing it now.
+                      - generic [ref=e902]: "NAME: hubble"
+                      - generic [ref=e903]: "LAST DEPLOYED: Mon Jan 29 17:07:51 2024"
+                      - generic [ref=e904]: "NAMESPACE: default"
+                      - generic [ref=e905]: "STATUS: deployed"
+                      - generic [ref=e906]: "REVISION: 1"
+                      - generic [ref=e907]: "TEST SUITE: None"
+                  - listitem [ref=e908]:
+                    - paragraph [ref=e909]:
+                      - text: Track the installation process using the command below. Palette is ready when the deployments in the namespaces
+                      - code [ref=e910]: cp-system
+                      - text: ","
+                      - code [ref=e911]: hubble-system
+                      - text: ","
+                      - code [ref=e912]: ingress-nginx
+                      - text: ","
+                      - code [ref=e913]: jet-system
+                      - text: ", and"
+                      - code [ref=e914]: ui-system
+                      - text: reach the
+                      - emphasis [ref=e915]: Ready
+                      - text: state. The installation takes two to three minutes to complete.
+                    - generic [ref=e917]:
+                      - code [ref=e919]:
+                        - generic [ref=e920]: kubectl get pods --all-namespaces --watch
+                      - button "Copy code to clipboard" [ref=e922] [cursor=pointer]:
+                        - generic [ref=e923]:
+                          - img [ref=e924]
+                          - img [ref=e926]
+                    - generic [ref=e928]:
+                      - generic [ref=e929]:
+                        - img [ref=e931]
+                        - text: tip
+                      - paragraph [ref=e934]:
+                        - text: For a more user-friendly experience, use the open source tool
+                        - link "k9s" [ref=e935] [cursor=pointer]:
+                          - /url: https://k9scli.io/
+                        - text: to monitor the installation process.
+                  - listitem [ref=e936]:
+                    - paragraph [ref=e937]:
+                      - text: Create a DNS CNAME record that is mapped to the Palette
+                      - code [ref=e938]: ingress-nginx-controller
+                      - text: load balancer. You can use the following command to retrieve the load balancer IP address. You may require the assistance of your network administrator to create the DNS record.
+                    - generic [ref=e940]:
+                      - code [ref=e942]:
+                        - generic [ref=e943]: kubectl get service ingress-nginx-controller --namespace ingress-nginx \
+                        - generic [ref=e944]: "--output jsonpath='{.status.loadBalancer.ingress[0].hostname}'"
+                      - generic [ref=e945]:
+                        - button "Toggle word wrap" [ref=e946] [cursor=pointer]:
+                          - img [ref=e947]
+                        - button "Copy code to clipboard" [ref=e949] [cursor=pointer]:
+                          - generic [ref=e950]:
+                            - img [ref=e951]
+                            - img [ref=e953]
+                    - generic [ref=e955]:
+                      - generic [ref=e956]:
+                        - img [ref=e958]
+                        - text: warning
+                      - paragraph [ref=e961]:
+                        - text: If Palette has only one tenant and you use local accounts with Single Sign-On (SSO) disabled, you can access Palette using the IP address or any domain name that resolves to that IP. However, once you enable SSO, users must log in using the tenant-specific subdomain. For example, if you create a tenant named
+                        - code [ref=e962]: tenant1
+                        - text: and the domain name you assigned to Palette is
+                        - code [ref=e963]: palette.example.com
+                        - text: ", the tenant URL will be"
+                        - code [ref=e964]: tenant1.palette.example.com
+                        - text: . We recommend you create an additional wildcard DNS record to map all tenant URLs to the Palette load balancer. For example,
+                        - code [ref=e965]: "*.palette.example.com"
+                        - text: .
+                  - listitem [ref=e966]:
+                    - paragraph [ref=e967]:
+                      - text: Use the custom domain name or the IP address of the load balancer to visit the Palette system console. To access the system console, open a web browser, paste the custom domain URL in the address bar, and append the value
+                      - code [ref=e968]: /system
+                      - text: .
+                    - paragraph [ref=e969]: The first time you visit the Palette system console, a warning message about a not-trusted SSL certificate may appear. This is expected, as you have not yet uploaded your SSL certificate to Palette. You can ignore this warning message and proceed.
+                    - paragraph [ref=e970]:
+                      - img "Screenshot of the Palette system console showing Username and Password fields." [ref=e971]
+                  - listitem [ref=e972]:
+                    - paragraph [ref=e973]:
+                      - text: Log in to the system console using the following default credentials. Refer to the
+                      - link "password requirements" [ref=e974] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/account-management/credentials/#password-requirements-and-security
+                      - text: documentation page to learn more about password requirements.
+                    - table [ref=e975]:
+                      - rowgroup [ref=e976]:
+                        - row "Parameter Value" [ref=e977]:
+                          - cell "Parameter" [ref=e978]:
+                            - strong [ref=e979]: Parameter
+                          - cell "Value" [ref=e980]:
+                            - strong [ref=e981]: Value
+                      - rowgroup [ref=e982]:
+                        - row "Username admin" [ref=e983]:
+                          - cell "Username" [ref=e984]
+                          - cell "admin" [ref=e985]:
+                            - code [ref=e986]: admin
+                        - row "Password admin" [ref=e987]:
+                          - cell "Password" [ref=e988]
+                          - cell "admin" [ref=e989]:
+                            - code [ref=e990]: admin
+                    - paragraph [ref=e991]:
+                      - text: After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette system console. Use the username
+                      - code [ref=e992]: admin
+                      - text: and your new password to log in to the system console. You can create additional system administrator accounts and assign roles to users in the system console. Refer to the
+                      - link "Account Management" [ref=e993] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/account-management/
+                      - text: documentation page for more information.
+                  - listitem [ref=e994]:
+                    - paragraph [ref=e995]:
+                      - text: After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a different SSL certificate, you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette. You can upload the files using the Palette system console. Refer to the
+                      - link "Configure HTTPS Encryption" [ref=e996] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/ssl-certificate-management/
+                      - text: page for instructions on how to upload the SSL certificate files to Palette.
+                    - generic [ref=e997]:
+                      - generic [ref=e998]:
+                        - img [ref=e1000]
+                        - text: warning
+                      - paragraph [ref=e1003]:
+                        - text: If you plan to deploy host clusters into different networks, you may require a reverse proxy. Check out the
+                        - link "Configure Reverse Proxy" [ref=e1004] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/reverse-proxy/
+                        - text: guide for instructions on how to configure a reverse proxy for Palette.
+                - paragraph [ref=e1005]:
+                  - text: You now have a self-hosted instance of Palette installed in a Kubernetes cluster. Make sure you retain the
+                  - strong [ref=e1006]: values.yaml
+                  - text: file, as you may need it for future upgrades.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e1007]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e1008] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e1009]: Use the following steps to validate the Palette installation.
+                - list [ref=e1010]:
+                  - listitem [ref=e1011]:
+                    - paragraph [ref=e1012]:
+                      - text: Open up a web browser and navigate to the Palette system console. To access the system console, open a web browser, paste the
+                      - code [ref=e1013]: env.rootDomain
+                      - text: value you provided in the address bar, and append the value
+                      - code [ref=e1014]: /system
+                      - text: "in the following format:"
+                      - code [ref=e1015]: <env.rootDomain>/system
+                      - text: . You can also use the IP address of the load balancer.
+                  - listitem [ref=e1016]:
+                    - paragraph [ref=e1017]: Log in using the credentials you received from our support team. After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette system console.
+                  - listitem [ref=e1018]:
+                    - paragraph [ref=e1019]:
+                      - text: Open a terminal session and issue the following command to verify the Palette installation. The command should return a list of deployments in the
+                      - code [ref=e1020]: cp-system
+                      - text: ","
+                      - code [ref=e1021]: hubble-system
+                      - text: ","
+                      - code [ref=e1022]: ingress-nginx
+                      - text: ","
+                      - code [ref=e1023]: jet-system
+                      - text: ", and"
+                      - code [ref=e1024]: ui-system
+                      - text: namespaces.
+                    - generic [ref=e1026]:
+                      - code [ref=e1028]:
+                        - generic [ref=e1029]: kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
+                        - generic [ref=e1030]: "| grep -E '^(cp-system|hubble-system|ingress-nginx|jet-system|ui-system)\\s'"
+                      - generic [ref=e1031]:
+                        - button "Toggle word wrap" [ref=e1032] [cursor=pointer]:
+                          - img [ref=e1033]
+                        - button "Copy code to clipboard" [ref=e1035] [cursor=pointer]:
+                          - generic [ref=e1036]:
+                            - img [ref=e1037]
+                            - img [ref=e1039]
+                    - paragraph [ref=e1041]: Your output should look similar to the following.
+                    - generic [ref=e1043]:
+                      - code [ref=e1045]:
+                        - generic [ref=e1046]: cp-system spectro-cp-ui-689984f88d-54wsw Running
+                        - generic [ref=e1047]: hubble-system auth-85b748cbf4-6drkn Running
+                        - generic [ref=e1048]: hubble-system auth-85b748cbf4-dwhw2 Running
+                        - generic [ref=e1049]: hubble-system cloud-fb74b8558-lqjq5 Running
+                        - generic [ref=e1050]: hubble-system cloud-fb74b8558-zkfp5 Running
+                        - generic [ref=e1051]: hubble-system configserver-685fcc5b6d-t8f8h Running
+                        - generic [ref=e1052]: hubble-system event-68568f54c7-jzx5t Running
+                        - generic [ref=e1053]: hubble-system event-68568f54c7-w9rnh Running
+                        - generic [ref=e1054]: hubble-system foreq-6b689f54fb-vxjts Running
+                        - generic [ref=e1055]: hubble-system hashboard-897bc9884-pxpvn Running
+                        - generic [ref=e1056]: hubble-system hashboard-897bc9884-rmn69 Running
+                        - generic [ref=e1057]: hubble-system hutil-6d7c478c96-td8q4 Running
+                        - generic [ref=e1058]: hubble-system hutil-6d7c478c96-zjhk4 Running
+                        - generic [ref=e1059]: hubble-system mgmt-85dbf6bf9c-jbggc Running
+                        - generic [ref=e1060]: hubble-system mongo-0 Running
+                        - generic [ref=e1061]: hubble-system mongo-1 Running
+                        - generic [ref=e1062]: hubble-system mongo-2 Running
+                        - generic [ref=e1063]: hubble-system msgbroker-6c9b9fbf8b-mcsn5 Running
+                        - generic [ref=e1064]: hubble-system oci-proxy-7789cf9bd8-qcjkl Running
+                        - generic [ref=e1065]: hubble-system packsync-28205220-bmzcg Succeeded
+                        - generic [ref=e1066]: hubble-system spectrocluster-6c57f5775d-dcm2q Running
+                        - generic [ref=e1067]: hubble-system spectrocluster-6c57f5775d-gmdt2 Running
+                        - generic [ref=e1068]: hubble-system spectrocluster-6c57f5775d-sxks5 Running
+                        - generic [ref=e1069]: hubble-system system-686d77b947-8949z Running
+                        - generic [ref=e1070]: hubble-system system-686d77b947-cgzx6 Running
+                        - generic [ref=e1071]: hubble-system timeseries-7865bc9c56-5q87l Running
+                        - generic [ref=e1072]: hubble-system timeseries-7865bc9c56-scncb Running
+                        - generic [ref=e1073]: hubble-system timeseries-7865bc9c56-sxmgb Running
+                        - generic [ref=e1074]: hubble-system user-5c9f6c6f4b-9dgqz Running
+                        - generic [ref=e1075]: hubble-system user-5c9f6c6f4b-hxkj6 Running
+                        - generic [ref=e1076]: ingress-nginx ingress-nginx-controller-2txsv Running
+                        - generic [ref=e1077]: ingress-nginx ingress-nginx-controller-55pk2 Running
+                        - generic [ref=e1078]: ingress-nginx ingress-nginx-controller-gmps9 Running
+                        - generic [ref=e1079]: jet-system jet-6599b9856d-t9mr4 Running
+                        - generic [ref=e1080]: ui-system spectro-ui-76ffdf67fb-rkgx8 Running
+                      - button "Toggle word wrap" [ref=e1082] [cursor=pointer]:
+                        - img [ref=e1083]
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e1085]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e1086] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e1087]:
+                  - text: Now that you have installed Palette, you can either
+                  - link "create a tenant" [ref=e1088] [cursor=pointer]:
+                    - /url: /enterprise-version/system-management/tenant-management
+                  - text: to host your users and set up your clusters, or you can
+                  - link "activate your installation" [ref=e1089] [cursor=pointer]:
+                    - /url: /enterprise-version/activate-installation
+                  - text: .
+                - paragraph [ref=e1090]: Beginning with version 4.6.32, once you install Palette, you have 30 days to activate it; versions older than 4.6.32 do not need to be activated. During the 30-day trial period, you can use Palette without any restrictions. After 30 days, you can continue to use Palette, but you cannot deploy additional clusters or perform any day-2 operations on existing clusters until Palette is activated. Each installation of Palette must be activated separately. We recommend activating Palette as soon as possible to avoid any disruptions.
+              - generic [ref=e1091]:
+                - generic [ref=e1093]:
+                  - text: "Tags:"
+                  - list [ref=e1094]:
+                    - listitem [ref=e1095]:
+                      - link "self-hosted" [ref=e1096] [cursor=pointer]:
+                        - /url: /tags/self-hosted/
+                    - listitem [ref=e1097]:
+                      - link "enterprise" [ref=e1098] [cursor=pointer]:
+                        - /url: /tags/enterprise/
+                    - listitem [ref=e1099]:
+                      - link "airgap" [ref=e1100] [cursor=pointer]:
+                        - /url: /tags/airgap/
+                - link "Edit this page" [ref=e1103] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/enterprise-version/install-palette/install-on-kubernetes/airgap-install/install.md
+                  - img [ref=e1104]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e1108]:
+              - link "Previous « Environment Setup" [ref=e1109] [cursor=pointer]:
+                - /url: /enterprise-version/install-palette/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions/
+                - generic [ref=e1110]: Previous
+                - generic [ref=e1111]: « Environment Setup
+              - link "Next Helm Configuration Reference »" [ref=e1112] [cursor=pointer]:
+                - /url: /enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref/
+                - generic [ref=e1113]: Next
+                - generic [ref=e1114]: Helm Configuration Reference »
+          - list [ref=e1117]:
+            - listitem [ref=e1118]:
+              - link "Prerequisites" [ref=e1119] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e1120]:
+              - link "Install Palette" [ref=e1121] [cursor=pointer]:
+                - /url: "#install-palette"
+            - listitem [ref=e1122]:
+              - link "Validate" [ref=e1123] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e1124]:
+              - link "Next Steps" [ref=e1125] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e1126] [cursor=pointer]:
+    - generic [ref=e1129]:
+      - img "Project Logo" [ref=e1130]
+      - paragraph [ref=e1131]: Ask AI
+```

@@ -1,0 +1,638 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Audit Logs" [ref=e165] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e167]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Self-Hosted Palette" [ref=e172] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e174]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Palette VerteX" [expanded] [ref=e179] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e181]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e183] [cursor=pointer]
+                - list [ref=e184]:
+                  - listitem [ref=e185]:
+                    - generic [ref=e186]:
+                      - link "FIPS" [expanded] [ref=e187] [cursor=pointer]:
+                        - /url: /vertex/fips/
+                      - button "Toggle the collapsible sidebar category 'FIPS'" [ref=e188] [cursor=pointer]
+                    - list [ref=e189]:
+                      - listitem [ref=e190]:
+                        - link "FIPS Status Icons" [ref=e191] [cursor=pointer]:
+                          - /url: /vertex/fips/fips-status-icons/
+                      - listitem [ref=e192]:
+                        - link "FIPS-Compliant Components" [ref=e193] [cursor=pointer]:
+                          - /url: /vertex/fips/fips-compliant-components/
+                  - listitem [ref=e194]:
+                    - generic [ref=e195]:
+                      - link "Installation" [ref=e196] [cursor=pointer]:
+                        - /url: /vertex/install-palette-vertex/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e197] [cursor=pointer]
+                  - listitem [ref=e198]:
+                    - link "Activate VerteX" [ref=e199] [cursor=pointer]:
+                      - /url: /vertex/activate-installation/
+                  - listitem [ref=e200]:
+                    - link "Supported Platforms" [ref=e201] [cursor=pointer]:
+                      - /url: /vertex/supported-platforms/
+                  - listitem [ref=e202]:
+                    - generic [ref=e203]:
+                      - link "System Management" [ref=e204] [cursor=pointer]:
+                        - /url: /vertex/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e205] [cursor=pointer]
+                  - listitem [ref=e206]:
+                    - generic [ref=e207]:
+                      - link "Upgrade" [ref=e208] [cursor=pointer]:
+                        - /url: /vertex/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e209] [cursor=pointer]
+              - listitem [ref=e210]:
+                - generic [ref=e211]:
+                  - link "Tenant Administration" [ref=e212] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e214]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e216] [cursor=pointer]
+              - listitem [ref=e217]:
+                - generic [ref=e218]:
+                  - link "Automation" [ref=e219] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e221]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e223] [cursor=pointer]
+              - listitem [ref=e224]:
+                - generic [ref=e225]:
+                  - link "Troubleshooting" [ref=e226] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e228]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e230] [cursor=pointer]
+              - listitem [ref=e231]:
+                - link "Glossary" [ref=e232] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e234]
+                  - text: Glossary
+              - listitem [ref=e236]:
+                - generic [ref=e237]:
+                  - link "Compliance & Legal" [ref=e238] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e240]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - button "Privacy Settings" [ref=e244] [cursor=pointer]:
+                  - img [ref=e245]
+                  - text: Privacy Settings
+      - main [ref=e247]:
+        - generic [ref=e249]:
+          - generic [ref=e251]:
+            - article [ref=e252]:
+              - navigation "Breadcrumbs" [ref=e253]:
+                - list [ref=e254]:
+                  - listitem [ref=e255]:
+                    - link "Home page" [ref=e256] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e257]
+                  - listitem [ref=e259]:
+                    - link "Palette VerteX" [ref=e260] [cursor=pointer]:
+                      - /url: /vertex/
+                  - listitem [ref=e261]:
+                    - link "FIPS" [ref=e262] [cursor=pointer]:
+                      - /url: /vertex/fips/
+                  - listitem [ref=e263]:
+                    - generic [ref=e264]: FIPS-Compliant Components
+              - generic [ref=e265]:
+                - heading "FIPS-Compliant Components" [level=1] [ref=e267]
+                - paragraph [ref=e268]: Federal Information Processing Standards (FIPS) is a series of standards developed by the National Institute of Standards and Technology (NIST) in the United States for computer security and encryption algorithms.
+                - paragraph [ref=e269]: FIPS 140-3 is a specific standard for security requirements for cryptographic modules. It outlines the criteria these modules must meet to ensure their security and integrity.
+                - heading "FIPS Support in ClustersDirect link to FIPS Support in Clusters" [level=2] [ref=e270]:
+                  - text: FIPS Support in Clusters
+                  - link "Direct link to FIPS Support in Clusters" [ref=e271] [cursor=pointer]:
+                    - /url: "#fips-support-in-clusters"
+                    - text: "#"
+                - paragraph [ref=e272]: "Palette VerteX provides FIPS-compliant infrastructure components in Kubernetes clusters it deploys. These components are:"
+                - list [ref=e273]:
+                  - listitem [ref=e274]:
+                    - paragraph [ref=e275]: Operating System (OS)
+                    - generic [ref=e276]:
+                      - generic [ref=e277]:
+                        - img [ref=e279]
+                        - text: info
+                      - paragraph [ref=e282]: Ubuntu Pro subscription keys must be obtained independently or purchased through Spectro Cloud. Contact your support representative to learn more.
+                    - list [ref=e283]:
+                      - listitem [ref=e284]: Ubuntu Pro
+                  - listitem [ref=e285]:
+                    - paragraph [ref=e286]: Kubernetes
+                    - list [ref=e287]:
+                      - listitem [ref=e288]: Palette eXtended Kubernetes (PXK)
+                      - listitem [ref=e289]: Palette eXtended Kubernetes - Edge (PXK-E)
+                  - listitem [ref=e290]:
+                    - paragraph [ref=e291]: Container Network Interface (CNI)
+                    - list [ref=e292]:
+                      - listitem [ref=e293]: Calico
+                  - listitem [ref=e294]:
+                    - paragraph [ref=e295]: Container Storage Interface (CSI)
+                    - list [ref=e296]:
+                      - listitem [ref=e297]: vSphere CSI
+                - heading "Management PlaneDirect link to Management Plane" [level=2] [ref=e298]:
+                  - text: Management Plane
+                  - link "Direct link to Management Plane" [ref=e299] [cursor=pointer]:
+                    - /url: "#management-plane"
+                    - text: "#"
+                - paragraph [ref=e300]:
+                  - text: All services in the management plane are FIPS compiled with Go using
+                  - link "BoringCrypto libraries" [ref=e301] [cursor=pointer]:
+                    - /url: https://pkg.go.dev/crypto/internal/boring
+                  - text: and static linking. Refer to the
+                  - link "Spectro Cloud Cryptographic Module" [ref=e302] [cursor=pointer]:
+                    - /url: https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5061
+                  - text: resource to learn about our NIST certificate.
+                - heading "FIPS-Compliant KubernetesDirect link to FIPS-Compliant Kubernetes" [level=2] [ref=e303]:
+                  - text: FIPS-Compliant Kubernetes
+                  - link "Direct link to FIPS-Compliant Kubernetes" [ref=e304] [cursor=pointer]:
+                    - /url: "#fips-compliant-kubernetes"
+                    - text: "#"
+                - paragraph [ref=e305]:
+                  - text: Our customized version of Kubernetes is FIPS-compliant. Both
+                  - link "Palette eXtended Kubernetes (PXK)" [ref=e306] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=kubernetes
+                  - text: and
+                  - link "Palette eXtended Kubernetes-Edge (PXK-E)" [ref=e307] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=edge-k8s
+                  - text: are compiled with FIPS-compliant compiler and libraries.
+                - generic [ref=e308]:
+                  - generic [ref=e309]:
+                    - img [ref=e311]
+                    - text: info
+                  - paragraph [ref=e314]:
+                    - text: Refer to the
+                    - link "Palette eXtended Kubernetes (PXK)" [ref=e315] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=kubernetes
+                    - text: and
+                    - link "Palette eXtended Kubernetes-Edge (PXK-E)" [ref=e316] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=edge-k8s
+                    - text: documentation to learn more about the each Kubernetes distribution.
+                - paragraph [ref=e317]: "All PXK and PXKE components and supporting open source components are compiled in their native programming language using language specific FIPS-compliant libraries and static linking. If the component is not available in the form of a FIPS-compliant binary, we compile it with FIPS-compliant compiler and libraries. The following tables list the FIPS-compliant components in PXK and PXK-E:"
+                - heading "Core Kubernetes ComponentsDirect link to Core Kubernetes Components" [level=3] [ref=e318]:
+                  - text: Core Kubernetes Components
+                  - link "Direct link to Core Kubernetes Components" [ref=e319] [cursor=pointer]:
+                    - /url: "#core-kubernetes-components"
+                    - text: "#"
+                - table [ref=e320]:
+                  - rowgroup [ref=e321]:
+                    - row "Component Description" [ref=e322]:
+                      - cell "Component" [ref=e323]:
+                        - strong [ref=e324]: Component
+                      - cell "Description" [ref=e325]:
+                        - strong [ref=e326]: Description
+                  - rowgroup [ref=e327]:
+                    - row "API Server The API server is the central management entity that receives all REST requests for the cluster." [ref=e328]:
+                      - cell "API Server" [ref=e329]
+                      - cell "The API server is the central management entity that receives all REST requests for the cluster." [ref=e330]
+                    - row "Controller Manager The controller manager is a daemon that embeds the core control loops shipped with Kubernetes." [ref=e331]:
+                      - cell "Controller Manager" [ref=e332]
+                      - cell "The controller manager is a daemon that embeds the core control loops shipped with Kubernetes." [ref=e333]
+                    - row "Scheduler The scheduler is a daemon that finds the best node for a pod, based on the scheduling requirements you specify." [ref=e334]:
+                      - cell "Scheduler" [ref=e335]
+                      - cell "The scheduler is a daemon that finds the best node for a pod, based on the scheduling requirements you specify." [ref=e336]
+                    - row "Kubelet The kubelet is the primary node agent that is deployed on each node." [ref=e337]:
+                      - cell "Kubelet" [ref=e338]
+                      - cell "The kubelet is the primary node agent that is deployed on each node." [ref=e339]:
+                        - text: The kubelet is the primary
+                        - emphasis [ref=e340]: node agent
+                        - text: that is deployed on each node.
+                    - row "Kube-proxy The kube-proxy is a network proxy that runs on each node in your cluster, implementing part of the Kubernetes Service concept." [ref=e341]:
+                      - cell "Kube-proxy" [ref=e342]
+                      - cell "The kube-proxy is a network proxy that runs on each node in your cluster, implementing part of the Kubernetes Service concept." [ref=e343]
+                    - row "Kubeadm Kubeadm is a tool built to provide best-practice “fast paths” for creating Kubernetes clusters." [ref=e344]:
+                      - cell "Kubeadm" [ref=e345]
+                      - cell "Kubeadm is a tool built to provide best-practice “fast paths” for creating Kubernetes clusters." [ref=e346]
+                    - row "Kubectl Kubectl is a command line interface for issuing commands against Kubernetes clusters." [ref=e347]:
+                      - cell "Kubectl" [ref=e348]
+                      - cell "Kubectl is a command line interface for issuing commands against Kubernetes clusters." [ref=e349]
+                - heading "Auxiliary Kubernetes ComponentsDirect link to Auxiliary Kubernetes Components" [level=3] [ref=e350]:
+                  - text: Auxiliary Kubernetes Components
+                  - link "Direct link to Auxiliary Kubernetes Components" [ref=e351] [cursor=pointer]:
+                    - /url: "#auxiliary-kubernetes-components"
+                    - text: "#"
+                - table [ref=e352]:
+                  - rowgroup [ref=e353]:
+                    - row "Component Description" [ref=e354]:
+                      - cell "Component" [ref=e355]:
+                        - strong [ref=e356]: Component
+                      - cell "Description" [ref=e357]:
+                        - strong [ref=e358]: Description
+                  - rowgroup [ref=e359]:
+                    - row "CoreDNS CoreDNS is a Domain Name System (DNS) server deployed as a cluster DNS service." [ref=e360]:
+                      - cell "CoreDNS" [ref=e361]
+                      - cell "CoreDNS is a Domain Name System (DNS) server deployed as a cluster DNS service." [ref=e362]
+                    - row "Etcd Etcd is a distributed key-value store used as Kubernetes’ backing store for all cluster data." [ref=e363]:
+                      - cell "Etcd" [ref=e364]
+                      - cell "Etcd is a distributed key-value store used as Kubernetes’ backing store for all cluster data." [ref=e365]
+                    - row "Metrics Server Metrics Server is a scalable, efficient source of container resource metrics for Kubernetes built-in autoscaling pipelines." [ref=e366]:
+                      - cell "Metrics Server" [ref=e367]
+                      - cell "Metrics Server is a scalable, efficient source of container resource metrics for Kubernetes built-in autoscaling pipelines." [ref=e368]
+                    - row "Ingress Controller Nginx is used as the ingress controller. An ingress controller is a piece of software that provides reverse proxy, configurable traffic routing, and Transport Layer Security (TLS) termination for Kubernetes services." [ref=e369]:
+                      - cell "Ingress Controller" [ref=e370]
+                      - cell "Nginx is used as the ingress controller. An ingress controller is a piece of software that provides reverse proxy, configurable traffic routing, and Transport Layer Security (TLS) termination for Kubernetes services." [ref=e371]
+                    - row "Nginx Server The Nginx server is a web server that can also be used as a reverse proxy, load balancer, mail proxy, and HTTP cache." [ref=e372]:
+                      - cell "Nginx Server" [ref=e373]
+                      - cell "The Nginx server is a web server that can also be used as a reverse proxy, load balancer, mail proxy, and HTTP cache." [ref=e374]
+                    - row "Nginx Ingress Controller The Nginx ingress controller uses ConfigMap to store the Nginx configuration." [ref=e375]:
+                      - cell "Nginx Ingress Controller" [ref=e376]
+                      - cell "The Nginx ingress controller uses ConfigMap to store the Nginx configuration." [ref=e377]
+                - heading "Runtime ComponentsDirect link to Runtime Components" [level=3] [ref=e378]:
+                  - text: Runtime Components
+                  - link "Direct link to Runtime Components" [ref=e379] [cursor=pointer]:
+                    - /url: "#runtime-components"
+                    - text: "#"
+                - table [ref=e380]:
+                  - rowgroup [ref=e381]:
+                    - row "Component Description" [ref=e382]:
+                      - cell "Component" [ref=e383]:
+                        - strong [ref=e384]: Component
+                      - cell "Description" [ref=e385]:
+                        - strong [ref=e386]: Description
+                  - rowgroup [ref=e387]:
+                    - row "containerd containerd is an industry-standard container runtime with an emphasis on simplicity, robustness, and portability." [ref=e388]:
+                      - cell "containerd" [ref=e389]:
+                        - code [ref=e390]: containerd
+                      - cell "containerd is an industry-standard container runtime with an emphasis on simplicity, robustness, and portability." [ref=e391]
+                    - row "containerd-shim containerd-shim is a shim used by containerd to launch containers." [ref=e392]:
+                      - cell "containerd-shim" [ref=e393]:
+                        - code [ref=e394]: containerd-shim
+                      - cell "containerd-shim is a shim used by containerd to launch containers." [ref=e395]:
+                        - code [ref=e396]: containerd-shim
+                        - text: is a shim used by containerd to launch containers.
+                    - row "containerd-shim-runc-v1 containerd-shim-runc-v1 is a shim used by containerd to launch containers." [ref=e397]:
+                      - cell "containerd-shim-runc-v1" [ref=e398]:
+                        - code [ref=e399]: containerd-shim-runc-v1
+                      - cell "containerd-shim-runc-v1 is a shim used by containerd to launch containers." [ref=e400]:
+                        - code [ref=e401]: containerd-shim-runc-v1
+                        - text: is a shim used by containerd to launch containers.
+                    - row "containerd-shim-runc-v2 containerd-shim-runc-v2 is a shim used by containerd to launch containers." [ref=e402]:
+                      - cell "containerd-shim-runc-v2" [ref=e403]:
+                        - code [ref=e404]: containerd-shim-runc-v2
+                      - cell "containerd-shim-runc-v2 is a shim used by containerd to launch containers." [ref=e405]:
+                        - code [ref=e406]: containerd-shim-runc-v2
+                        - text: is a shim used by containerd to launch containers.
+                    - row "ctr Ctr is a command line interface for containerd." [ref=e407]:
+                      - cell "ctr" [ref=e408]:
+                        - code [ref=e409]: ctr
+                      - cell "Ctr is a command line interface for containerd." [ref=e410]
+                    - row "crictl Crictl is a command line interface for CRI-compatible container runtimes." [ref=e411]:
+                      - cell "crictl" [ref=e412]:
+                        - code [ref=e413]: crictl
+                      - cell "Crictl is a command line interface for CRI-compatible container runtimes." [ref=e414]
+                    - row "runc Runc is a CLI tool for spawning and running containers according to the OCI specification." [ref=e415]:
+                      - cell "runc" [ref=e416]:
+                        - code [ref=e417]: runc
+                      - cell "Runc is a CLI tool for spawning and running containers according to the OCI specification." [ref=e418]
+                - heading "Container Network Interface ComponentsDirect link to Container Network Interface Components" [level=3] [ref=e419]:
+                  - text: Container Network Interface Components
+                  - link "Direct link to Container Network Interface Components" [ref=e420] [cursor=pointer]:
+                    - /url: "#container-network-interface-components"
+                    - text: "#"
+                - table [ref=e421]:
+                  - rowgroup [ref=e422]:
+                    - row "Component Description" [ref=e423]:
+                      - cell "Component" [ref=e424]:
+                        - strong [ref=e425]: Component
+                      - cell "Description" [ref=e426]:
+                        - strong [ref=e427]: Description
+                  - rowgroup [ref=e428]:
+                    - row "Calico Calico is a Container Network Interface plugin that provides networking and network policy for Kubernetes clusters." [ref=e429]:
+                      - cell "Calico" [ref=e430]
+                      - cell "Calico is a Container Network Interface plugin that provides networking and network policy for Kubernetes clusters." [ref=e431]
+                - heading "Container Storage Interface ComponentsDirect link to Container Storage Interface Components" [level=3] [ref=e432]:
+                  - text: Container Storage Interface Components
+                  - link "Direct link to Container Storage Interface Components" [ref=e433] [cursor=pointer]:
+                    - /url: "#container-storage-interface-components"
+                    - text: "#"
+                - table [ref=e434]:
+                  - rowgroup [ref=e435]:
+                    - row "Component Description" [ref=e436]:
+                      - cell "Component" [ref=e437]:
+                        - strong [ref=e438]: Component
+                      - cell "Description" [ref=e439]:
+                        - strong [ref=e440]: Description
+                  - rowgroup [ref=e441]:
+                    - row "AWS EBS CSI AWS EBS CSI is a CSI plugin that provides storage for Kubernetes clusters." [ref=e442]:
+                      - cell "AWS EBS CSI" [ref=e443]
+                      - cell "AWS EBS CSI is a CSI plugin that provides storage for Kubernetes clusters." [ref=e444]
+                    - row "vSphere CSI vSphere CSI is a CSI plugin that provides storage for Kubernetes clusters." [ref=e445]:
+                      - cell "vSphere CSI" [ref=e446]
+                      - cell "vSphere CSI is a CSI plugin that provides storage for Kubernetes clusters." [ref=e447]
+                    - row "Longhorn CSI Longhorn CSI is a CSI plugin that provides storage for Kubernetes clusters. Longhorn is the only supported CSI for PXKE." [ref=e448]:
+                      - cell "Longhorn CSI" [ref=e449]
+                      - cell "Longhorn CSI is a CSI plugin that provides storage for Kubernetes clusters. Longhorn is the only supported CSI for PXKE." [ref=e450]
+                - heading "AWS EBS CSI ComponentsDirect link to AWS EBS CSI Components" [level=5] [ref=e451]:
+                  - text: AWS EBS CSI Components
+                  - link "Direct link to AWS EBS CSI Components" [ref=e452] [cursor=pointer]:
+                    - /url: "#aws-ebs-csi-components"
+                    - text: "#"
+                - table [ref=e453]:
+                  - rowgroup [ref=e454]:
+                    - row "Component Description" [ref=e455]:
+                      - cell "Component" [ref=e456]:
+                        - strong [ref=e457]: Component
+                      - cell "Description" [ref=e458]:
+                        - strong [ref=e459]: Description
+                  - rowgroup [ref=e460]:
+                    - row "Driver The driver is a CSI plugin that provides storage for Kubernetes clusters." [ref=e461]:
+                      - cell "Driver" [ref=e462]
+                      - cell "The driver is a CSI plugin that provides storage for Kubernetes clusters." [ref=e463]
+                    - row "External Attacher The external attacher is a CSI plugin that attaches volumes to nodes." [ref=e464]:
+                      - cell "External Attacher" [ref=e465]
+                      - cell "The external attacher is a CSI plugin that attaches volumes to nodes." [ref=e466]
+                    - row "External Provisioner The external provisioner is a CSI plugin that provisions volumes." [ref=e467]:
+                      - cell "External Provisioner" [ref=e468]
+                      - cell "The external provisioner is a CSI plugin that provisions volumes." [ref=e469]
+                    - row "External Resizer The external resizer is a CSI plugin that resizes volumes." [ref=e470]:
+                      - cell "External Resizer" [ref=e471]
+                      - cell "The external resizer is a CSI plugin that resizes volumes." [ref=e472]
+                    - row "External Snapshotter The external snapshotter is a CSI plugin that takes snapshots of volumes." [ref=e473]:
+                      - cell "External Snapshotter" [ref=e474]
+                      - cell "The external snapshotter is a CSI plugin that takes snapshots of volumes." [ref=e475]
+                    - row "Liveness Probe The liveness probe is a CSI plugin that checks the health of the driver." [ref=e476]:
+                      - cell "Liveness Probe" [ref=e477]
+                      - cell "The liveness probe is a CSI plugin that checks the health of the driver." [ref=e478]
+                    - row "Node Driver Registrar The node driver registrar is a CSI plugin that registers the driver with the kubelet." [ref=e479]:
+                      - cell "Node Driver Registrar" [ref=e480]
+                      - cell "The node driver registrar is a CSI plugin that registers the driver with the kubelet." [ref=e481]
+                - heading "Longhorn CSI ComponentsDirect link to Longhorn CSI Components" [level=5] [ref=e482]:
+                  - text: Longhorn CSI Components
+                  - link "Direct link to Longhorn CSI Components" [ref=e483] [cursor=pointer]:
+                    - /url: "#longhorn-csi-components"
+                    - text: "#"
+                - table [ref=e484]:
+                  - rowgroup [ref=e485]:
+                    - row "Component Description" [ref=e486]:
+                      - cell "Component" [ref=e487]:
+                        - strong [ref=e488]: Component
+                      - cell "Description" [ref=e489]:
+                        - strong [ref=e490]: Description
+                  - rowgroup [ref=e491]:
+                    - row "Backing image manager Manages backing images for Longhorn volumes." [ref=e492]:
+                      - cell "Backing image manager" [ref=e493]
+                      - cell "Manages backing images for Longhorn volumes." [ref=e494]
+                    - row "Attacher Handles attaching and detaching of volumes to nodes." [ref=e495]:
+                      - cell "Attacher" [ref=e496]
+                      - cell "Handles attaching and detaching of volumes to nodes." [ref=e497]
+                    - row "Provisioner Manages provisioning and de-provisioning of storage resources." [ref=e498]:
+                      - cell "Provisioner" [ref=e499]
+                      - cell "Manages provisioning and de-provisioning of storage resources." [ref=e500]
+                    - row "Resizer Enables resizing of storage volumes." [ref=e501]:
+                      - cell "Resizer" [ref=e502]
+                      - cell "Enables resizing of storage volumes." [ref=e503]
+                    - row "Snapshotter Manages snapshots of Longhorn volumes." [ref=e504]:
+                      - cell "Snapshotter" [ref=e505]
+                      - cell "Manages snapshots of Longhorn volumes." [ref=e506]
+                    - row "Node driver registrar Registers the CSI driver with the Kubernetes node." [ref=e507]:
+                      - cell "Node driver registrar" [ref=e508]
+                      - cell "Registers the CSI driver with the Kubernetes node." [ref=e509]
+                    - row "Liveness probe Monitors health of CSI components." [ref=e510]:
+                      - cell "Liveness probe" [ref=e511]
+                      - cell "Monitors health of CSI components." [ref=e512]
+                    - row "Longhorn engine Core component that handles read and write operations to the storage backend." [ref=e513]:
+                      - cell "Longhorn engine" [ref=e514]
+                      - cell "Core component that handles read and write operations to the storage backend." [ref=e515]
+                    - row "Longhorn instance manager Manages Longhorn engine and replica instances." [ref=e516]:
+                      - cell "Longhorn instance manager" [ref=e517]
+                      - cell "Manages Longhorn engine and replica instances." [ref=e518]
+                    - row "Longhorn share manager Manages shared volumes and exposes them via protocols like Network File System (NFS)." [ref=e519]:
+                      - cell "Longhorn share manager" [ref=e520]
+                      - cell "Manages shared volumes and exposes them via protocols like Network File System (NFS)." [ref=e521]
+                    - row "Longhorn UI User interface for managing Longhorn components and resources." [ref=e522]:
+                      - cell "Longhorn UI" [ref=e523]
+                      - cell "User interface for managing Longhorn components and resources." [ref=e524]
+                    - row "Longhorn support bundle kit Collects logs and system information for debugging." [ref=e525]:
+                      - cell "Longhorn support bundle kit" [ref=e526]
+                      - cell "Collects logs and system information for debugging." [ref=e527]
+              - generic [ref=e528]:
+                - generic [ref=e530]:
+                  - text: "Tags:"
+                  - list [ref=e531]:
+                    - listitem [ref=e532]:
+                      - link "vertex" [ref=e533] [cursor=pointer]:
+                        - /url: /tags/vertex/
+                    - listitem [ref=e534]:
+                      - link "fips" [ref=e535] [cursor=pointer]:
+                        - /url: /tags/fips/
+                    - listitem [ref=e536]:
+                      - link "compliance" [ref=e537] [cursor=pointer]:
+                        - /url: /tags/compliance/
+                    - listitem [ref=e538]:
+                      - link "pxk" [ref=e539] [cursor=pointer]:
+                        - /url: /tags/pxk/
+                    - listitem [ref=e540]:
+                      - link "pxke" [ref=e541] [cursor=pointer]:
+                        - /url: /tags/pxke/
+                - link "Edit this page" [ref=e544] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vertex/fips/fips-compliant-components.md
+                  - img [ref=e545]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e549]:
+              - link "Previous « FIPS Status Icons" [ref=e550] [cursor=pointer]:
+                - /url: /vertex/fips/fips-status-icons/
+                - generic [ref=e551]: Previous
+                - generic [ref=e552]: « FIPS Status Icons
+              - link "Next Installation »" [ref=e553] [cursor=pointer]:
+                - /url: /vertex/install-palette-vertex/
+                - generic [ref=e554]: Next
+                - generic [ref=e555]: Installation »
+          - list [ref=e558]:
+            - listitem [ref=e559]:
+              - link "FIPS Support in Clusters" [ref=e560] [cursor=pointer]:
+                - /url: "#fips-support-in-clusters"
+            - listitem [ref=e561]:
+              - link "Management Plane" [ref=e562] [cursor=pointer]:
+                - /url: "#management-plane"
+            - listitem [ref=e563]:
+              - link "FIPS-Compliant Kubernetes" [ref=e564] [cursor=pointer]:
+                - /url: "#fips-compliant-kubernetes"
+              - list [ref=e565]:
+                - listitem [ref=e566]:
+                  - link "Core Kubernetes Components" [ref=e567] [cursor=pointer]:
+                    - /url: "#core-kubernetes-components"
+                - listitem [ref=e568]:
+                  - link "Auxiliary Kubernetes Components" [ref=e569] [cursor=pointer]:
+                    - /url: "#auxiliary-kubernetes-components"
+                - listitem [ref=e570]:
+                  - link "Runtime Components" [ref=e571] [cursor=pointer]:
+                    - /url: "#runtime-components"
+                - listitem [ref=e572]:
+                  - link "Container Network Interface Components" [ref=e573] [cursor=pointer]:
+                    - /url: "#container-network-interface-components"
+                - listitem [ref=e574]:
+                  - link "Container Storage Interface Components" [ref=e575] [cursor=pointer]:
+                    - /url: "#container-storage-interface-components"
+  - button "Project Logo Ask AI" [ref=e576] [cursor=pointer]:
+    - generic [ref=e579]:
+      - img "Project Logo" [ref=e580]
+      - paragraph [ref=e581]: Ask AI
+```

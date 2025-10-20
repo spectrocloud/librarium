@@ -1,0 +1,1299 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Audit Logs" [ref=e165] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e167]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Self-Hosted Palette" [ref=e172] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e174]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Palette VerteX" [expanded] [ref=e179] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e181]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e183] [cursor=pointer]
+                - list [ref=e184]:
+                  - listitem [ref=e185]:
+                    - generic [ref=e186]:
+                      - link "FIPS" [ref=e187] [cursor=pointer]:
+                        - /url: /vertex/fips/
+                      - button "Toggle the collapsible sidebar category 'FIPS'" [ref=e188] [cursor=pointer]
+                  - listitem [ref=e189]:
+                    - generic [ref=e190]:
+                      - link "Installation" [ref=e191] [cursor=pointer]:
+                        - /url: /vertex/install-palette-vertex/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e192] [cursor=pointer]
+                  - listitem [ref=e193]:
+                    - link "Activate VerteX" [ref=e194] [cursor=pointer]:
+                      - /url: /vertex/activate-installation/
+                  - listitem [ref=e195]:
+                    - link "Supported Platforms" [ref=e196] [cursor=pointer]:
+                      - /url: /vertex/supported-platforms/
+                  - listitem [ref=e197]:
+                    - generic [ref=e198]:
+                      - link "System Management" [ref=e199] [cursor=pointer]:
+                        - /url: /vertex/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e200] [cursor=pointer]
+                  - listitem [ref=e201]:
+                    - generic [ref=e202]:
+                      - link "Upgrade" [expanded] [ref=e203] [cursor=pointer]:
+                        - /url: /vertex/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e204] [cursor=pointer]
+                    - list [ref=e205]:
+                      - listitem [ref=e206]:
+                        - link "Upgrade Notes" [ref=e207] [cursor=pointer]:
+                          - /url: /vertex/upgrade/upgrade-notes/
+                      - listitem [ref=e208]:
+                        - link "VMware" [ref=e210] [cursor=pointer]:
+                          - /url: "#"
+                      - listitem [ref=e211]:
+                        - link "VerteX Management Appliance" [ref=e212] [cursor=pointer]:
+                          - /url: /vertex/upgrade/vertex-management-appliance/
+                      - listitem [ref=e213]:
+                        - link "Kubernetes" [ref=e215] [cursor=pointer]:
+                          - /url: "#"
+              - listitem [ref=e216]:
+                - generic [ref=e217]:
+                  - link "Tenant Administration" [ref=e218] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e220]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e222] [cursor=pointer]
+              - listitem [ref=e223]:
+                - generic [ref=e224]:
+                  - link "Automation" [ref=e225] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e227]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e229] [cursor=pointer]
+              - listitem [ref=e230]:
+                - generic [ref=e231]:
+                  - link "Troubleshooting" [ref=e232] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e234]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e236] [cursor=pointer]
+              - listitem [ref=e237]:
+                - link "Glossary" [ref=e238] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e240]
+                  - text: Glossary
+              - listitem [ref=e242]:
+                - generic [ref=e243]:
+                  - link "Compliance & Legal" [ref=e244] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e246]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e248] [cursor=pointer]
+              - listitem [ref=e249]:
+                - button "Privacy Settings" [ref=e250] [cursor=pointer]:
+                  - img [ref=e251]
+                  - text: Privacy Settings
+      - main [ref=e253]:
+        - generic [ref=e255]:
+          - generic [ref=e257]:
+            - article [ref=e258]:
+              - navigation "Breadcrumbs" [ref=e259]:
+                - list [ref=e260]:
+                  - listitem [ref=e261]:
+                    - link "Home page" [ref=e262] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e263]
+                  - listitem [ref=e265]:
+                    - link "Palette VerteX" [ref=e266] [cursor=pointer]:
+                      - /url: /vertex/
+                  - listitem [ref=e267]:
+                    - generic [ref=e268]: Upgrade
+              - generic [ref=e269]:
+                - heading "VerteX Upgrade" [level=1] [ref=e271]
+                - paragraph [ref=e272]:
+                  - text: This page offers links and reference information for upgrading self-hosted Palette VerteX instances. If you have questions or concerns,
+                  - link "reach out to our support team" [ref=e273] [cursor=pointer]:
+                    - /url: http://support.spectrocloud.io/
+                  - text: .
+                - generic [ref=e274]:
+                  - generic [ref=e275]:
+                    - img [ref=e277]
+                    - text: tip
+                  - paragraph [ref=e280]:
+                    - text: If you are using self-hosted Palette, refer to the
+                    - link "Palette Upgrade" [ref=e281] [cursor=pointer]:
+                      - /url: /enterprise-version/upgrade/
+                    - text: page for upgrade guidance.
+                - heading "Private Cloud GatewayDirect link to Private Cloud Gateway" [level=3] [ref=e282]:
+                  - text: Private Cloud Gateway
+                  - link "Direct link to Private Cloud Gateway" [ref=e283] [cursor=pointer]:
+                    - /url: "#private-cloud-gateway"
+                    - text: "#"
+                - paragraph [ref=e284]:
+                  - text: If your setup includes a PCG, make sure to
+                  - link "allow the PCG to upgrade automatically" [ref=e285] [cursor=pointer]:
+                    - /url: /clusters/pcg/manage-pcg/pcg-upgrade/
+                  - text: before each major or minor Palette VerteX upgrade.
+                - heading "Supported Upgrade PathsDirect link to Supported Upgrade Paths" [level=2] [ref=e286]:
+                  - text: Supported Upgrade Paths
+                  - link "Direct link to Supported Upgrade Paths" [ref=e287] [cursor=pointer]:
+                    - /url: "#supported-upgrade-paths"
+                    - text: "#"
+                - paragraph [ref=e288]:
+                  - text: Refer to the following tables for the supported Palette VerteX upgrade paths for
+                  - link "VMware" [ref=e289] [cursor=pointer]:
+                    - /url: /vertex/install-palette-vertex/install-on-vmware/
+                  - text: and
+                  - link "Kubernetes" [ref=e290] [cursor=pointer]:
+                    - /url: /vertex/install-palette-vertex/install-on-kubernetes/
+                  - text: installations.
+                - generic [ref=e291]:
+                  - generic [ref=e292]:
+                    - img [ref=e294]
+                    - text: danger
+                  - paragraph [ref=e297]: Before upgrading Palette VerteX to a new major version, you must first update it to the latest patch version of the latest minor version available.
+                - generic [ref=e298]:
+                  - generic [ref=e299]:
+                    - img [ref=e301]
+                    - text: warning
+                  - paragraph [ref=e304]:
+                    - text: Upgrading self-hosted Palette or Palette VerteX from version 4.6.x to 4.7.x can cause the upgrade to hang if any member of the MongoDB ReplicaSet is not fully synced and in a healthy state prior to the upgrade. For guidance on verifying the health status of MongoDB ReplicaSet members, refer to our
+                    - link "Troubleshooting" [ref=e305] [cursor=pointer]:
+                      - /url: /troubleshooting/palette-upgrade/#self-hosted-palette-or-palette-vertex-upgrade-hangs
+                    - text: guide.
+                - generic [ref=e306]:
+                  - tablist [ref=e307]:
+                    - tab "VMware" [selected] [ref=e308] [cursor=pointer]
+                    - tab "Kubernetes" [ref=e309] [cursor=pointer]
+                    - tab "VerteX Management Appliance" [ref=e310] [cursor=pointer]
+                  - tabpanel [ref=e312]:
+                    - paragraph [ref=e313]:
+                      - strong [ref=e314]: 4.7.x
+                    - table [ref=e315]:
+                      - rowgroup [ref=e316]:
+                        - row "Source Version Target Version Support" [ref=e317]:
+                          - cell "Source Version" [ref=e318]:
+                            - strong [ref=e319]: Source Version
+                          - cell "Target Version" [ref=e320]:
+                            - strong [ref=e321]: Target Version
+                          - cell "Support" [ref=e322]:
+                            - strong [ref=e323]: Support
+                      - rowgroup [ref=e324]:
+                        - row "4.7.21 4.7.27 ✅" [ref=e325]:
+                          - cell "4.7.21" [ref=e326]
+                          - cell "4.7.27" [ref=e327]
+                          - cell "✅" [ref=e328]
+                        - row "4.7.20 4.7.27 ✅" [ref=e329]:
+                          - cell "4.7.20" [ref=e330]
+                          - cell "4.7.27" [ref=e331]
+                          - cell "✅" [ref=e332]
+                        - row "4.7.16 4.7.27 ✅" [ref=e333]:
+                          - cell "4.7.16" [ref=e334]
+                          - cell "4.7.27" [ref=e335]
+                          - cell "✅" [ref=e336]
+                        - row "4.7.16 4.7.20 ✅" [ref=e337]:
+                          - cell "4.7.16" [ref=e338]
+                          - cell "4.7.20" [ref=e339]
+                          - cell "✅" [ref=e340]
+                        - row "4.7.15 4.7.27 ✅" [ref=e341]:
+                          - cell "4.7.15" [ref=e342]
+                          - cell "4.7.27" [ref=e343]
+                          - cell "✅" [ref=e344]
+                        - row "4.7.15 4.7.20 ✅" [ref=e345]:
+                          - cell "4.7.15" [ref=e346]
+                          - cell "4.7.20" [ref=e347]
+                          - cell "✅" [ref=e348]
+                        - row "4.7.3 4.7.27 ✅" [ref=e349]:
+                          - cell "4.7.3" [ref=e350]
+                          - cell "4.7.27" [ref=e351]
+                          - cell "✅" [ref=e352]
+                        - row "4.7.3 4.7.20 ✅" [ref=e353]:
+                          - cell "4.7.3" [ref=e354]
+                          - cell "4.7.20" [ref=e355]
+                          - cell "✅" [ref=e356]
+                        - row "4.7.3 4.7.15 ✅" [ref=e357]:
+                          - cell "4.7.3" [ref=e358]
+                          - cell "4.7.15" [ref=e359]
+                          - cell "✅" [ref=e360]
+                        - row "4.6.41 4.7.27 ✅" [ref=e361]:
+                          - cell "4.6.41" [ref=e362]
+                          - cell "4.7.27" [ref=e363]
+                          - cell "✅" [ref=e364]
+                        - row "4.6.41 4.7.20 ✅" [ref=e365]:
+                          - cell "4.6.41" [ref=e366]
+                          - cell "4.7.20" [ref=e367]
+                          - cell "✅" [ref=e368]
+                        - row "4.6.41 4.7.15 ✅" [ref=e369]:
+                          - cell "4.6.41" [ref=e370]
+                          - cell "4.7.15" [ref=e371]
+                          - cell "✅" [ref=e372]
+                        - row "4.6.41 4.7.3 ✅" [ref=e373]:
+                          - cell "4.6.41" [ref=e374]
+                          - cell "4.7.3" [ref=e375]
+                          - cell "✅" [ref=e376]
+                        - row "4.6.6 4.7.15 ✅" [ref=e377]:
+                          - cell "4.6.6" [ref=e378]
+                          - cell "4.7.15" [ref=e379]
+                          - cell "✅" [ref=e380]
+                    - paragraph [ref=e381]:
+                      - strong [ref=e382]: 4.6.x
+                    - table [ref=e383]:
+                      - rowgroup [ref=e384]:
+                        - row "Source Version Target Version Support" [ref=e385]:
+                          - cell "Source Version" [ref=e386]:
+                            - strong [ref=e387]: Source Version
+                          - cell "Target Version" [ref=e388]:
+                            - strong [ref=e389]: Target Version
+                          - cell "Support" [ref=e390]:
+                            - strong [ref=e391]: Support
+                      - rowgroup [ref=e392]:
+                        - row "4.6.41 4.6.43 ✅" [ref=e393]:
+                          - cell "4.6.41" [ref=e394]
+                          - cell "4.6.43" [ref=e395]
+                          - cell "✅" [ref=e396]
+                        - row "4.6.36 4.6.43 ✅" [ref=e397]:
+                          - cell "4.6.36" [ref=e398]
+                          - cell "4.6.43" [ref=e399]
+                          - cell "✅" [ref=e400]
+                        - row "4.6.36 4.6.41 ✅" [ref=e401]:
+                          - cell "4.6.36" [ref=e402]
+                          - cell "4.6.41" [ref=e403]
+                          - cell "✅" [ref=e404]
+                        - row "4.6.32 4.6.43 ✅" [ref=e405]:
+                          - cell "4.6.32" [ref=e406]
+                          - cell "4.6.43" [ref=e407]
+                          - cell "✅" [ref=e408]
+                        - row "4.6.32 4.6.41 ✅" [ref=e409]:
+                          - cell "4.6.32" [ref=e410]
+                          - cell "4.6.41" [ref=e411]
+                          - cell "✅" [ref=e412]
+                        - row "4.6.32 4.6.34 ✅" [ref=e413]:
+                          - cell "4.6.32" [ref=e414]
+                          - cell "4.6.34" [ref=e415]
+                          - cell "✅" [ref=e416]
+                        - row "4.6.28 4.6.43 ✅" [ref=e417]:
+                          - cell "4.6.28" [ref=e418]
+                          - cell "4.6.43" [ref=e419]
+                          - cell "✅" [ref=e420]
+                        - row "4.6.28 4.6.41 ✅" [ref=e421]:
+                          - cell "4.6.28" [ref=e422]
+                          - cell "4.6.41" [ref=e423]
+                          - cell "✅" [ref=e424]
+                        - row "4.6.28 4.6.34 ✅" [ref=e425]:
+                          - cell "4.6.28" [ref=e426]
+                          - cell "4.6.34" [ref=e427]
+                          - cell "✅" [ref=e428]
+                        - row "4.6.28 4.6.32 ✅" [ref=e429]:
+                          - cell "4.6.28" [ref=e430]
+                          - cell "4.6.32" [ref=e431]
+                          - cell "✅" [ref=e432]
+                        - row "4.6.26 4.6.43 ✅" [ref=e433]:
+                          - cell "4.6.26" [ref=e434]
+                          - cell "4.6.43" [ref=e435]
+                          - cell "✅" [ref=e436]
+                        - row "4.6.26 4.6.41 ✅" [ref=e437]:
+                          - cell "4.6.26" [ref=e438]
+                          - cell "4.6.41" [ref=e439]
+                          - cell "✅" [ref=e440]
+                        - row "4.6.26 4.6.34 ✅" [ref=e441]:
+                          - cell "4.6.26" [ref=e442]
+                          - cell "4.6.34" [ref=e443]
+                          - cell "✅" [ref=e444]
+                        - row "4.6.26 4.6.32 ✅" [ref=e445]:
+                          - cell "4.6.26" [ref=e446]
+                          - cell "4.6.32" [ref=e447]
+                          - cell "✅" [ref=e448]
+                        - row "4.6.25 4.6.43 ✅" [ref=e449]:
+                          - cell "4.6.25" [ref=e450]
+                          - cell "4.6.43" [ref=e451]
+                          - cell "✅" [ref=e452]
+                        - row "4.6.25 4.6.41 ✅" [ref=e453]:
+                          - cell "4.6.25" [ref=e454]
+                          - cell "4.6.41" [ref=e455]
+                          - cell "✅" [ref=e456]
+                        - row "4.6.25 4.6.34 ✅" [ref=e457]:
+                          - cell "4.6.25" [ref=e458]
+                          - cell "4.6.34" [ref=e459]
+                          - cell "✅" [ref=e460]
+                        - row "4.6.25 4.6.32 ✅" [ref=e461]:
+                          - cell "4.6.25" [ref=e462]
+                          - cell "4.6.32" [ref=e463]
+                          - cell "✅" [ref=e464]
+                        - row "4.6.24 4.6.43 ✅" [ref=e465]:
+                          - cell "4.6.24" [ref=e466]
+                          - cell "4.6.43" [ref=e467]
+                          - cell "✅" [ref=e468]
+                        - row "4.6.24 4.6.41 ✅" [ref=e469]:
+                          - cell "4.6.24" [ref=e470]
+                          - cell "4.6.41" [ref=e471]
+                          - cell "✅" [ref=e472]
+                        - row "4.6.24 4.6.34 ✅" [ref=e473]:
+                          - cell "4.6.24" [ref=e474]
+                          - cell "4.6.34" [ref=e475]
+                          - cell "✅" [ref=e476]
+                        - row "4.6.24 4.6.32 ✅" [ref=e477]:
+                          - cell "4.6.24" [ref=e478]
+                          - cell "4.6.32" [ref=e479]
+                          - cell "✅" [ref=e480]
+                        - row "4.6.23 4.6.43 ✅" [ref=e481]:
+                          - cell "4.6.23" [ref=e482]
+                          - cell "4.6.43" [ref=e483]
+                          - cell "✅" [ref=e484]
+                        - row "4.6.23 4.6.41 ✅" [ref=e485]:
+                          - cell "4.6.23" [ref=e486]
+                          - cell "4.6.41" [ref=e487]
+                          - cell "✅" [ref=e488]
+                        - row "4.6.23 4.6.34 ✅" [ref=e489]:
+                          - cell "4.6.23" [ref=e490]
+                          - cell "4.6.34" [ref=e491]
+                          - cell "✅" [ref=e492]
+                        - row "4.6.23 4.6.32 ✅" [ref=e493]:
+                          - cell "4.6.23" [ref=e494]
+                          - cell "4.6.32" [ref=e495]
+                          - cell "✅" [ref=e496]
+                        - row "4.6.23 4.6.28 ✅" [ref=e497]:
+                          - cell "4.6.23" [ref=e498]
+                          - cell "4.6.28" [ref=e499]
+                          - cell "✅" [ref=e500]
+                        - row "4.6.23 4.6.24 ✅" [ref=e501]:
+                          - cell "4.6.23" [ref=e502]
+                          - cell "4.6.24" [ref=e503]
+                          - cell "✅" [ref=e504]
+                        - row "4.6.18 4.6.43 ✅" [ref=e505]:
+                          - cell "4.6.18" [ref=e506]
+                          - cell "4.6.43" [ref=e507]
+                          - cell "✅" [ref=e508]
+                        - row "4.6.18 4.6.41 ✅" [ref=e509]:
+                          - cell "4.6.18" [ref=e510]
+                          - cell "4.6.41" [ref=e511]
+                          - cell "✅" [ref=e512]
+                        - row "4.6.18 4.6.34 ✅" [ref=e513]:
+                          - cell "4.6.18" [ref=e514]
+                          - cell "4.6.34" [ref=e515]
+                          - cell "✅" [ref=e516]
+                        - row "4.6.18 4.6.32 ✅" [ref=e517]:
+                          - cell "4.6.18" [ref=e518]
+                          - cell "4.6.32" [ref=e519]
+                          - cell "✅" [ref=e520]
+                        - row "4.6.18 4.6.28 ✅" [ref=e521]:
+                          - cell "4.6.18" [ref=e522]
+                          - cell "4.6.28" [ref=e523]
+                          - cell "✅" [ref=e524]
+                        - row "4.6.18 4.6.24 ✅" [ref=e525]:
+                          - cell "4.6.18" [ref=e526]
+                          - cell "4.6.24" [ref=e527]
+                          - cell "✅" [ref=e528]
+                        - row "4.6.18 4.6.23 ✅" [ref=e529]:
+                          - cell "4.6.18" [ref=e530]
+                          - cell "4.6.23" [ref=e531]
+                          - cell "✅" [ref=e532]
+                        - row "4.6.13 4.6.43 ✅" [ref=e533]:
+                          - cell "4.6.13" [ref=e534]
+                          - cell "4.6.43" [ref=e535]
+                          - cell "✅" [ref=e536]
+                        - row "4.6.13 4.6.41 ✅" [ref=e537]:
+                          - cell "4.6.13" [ref=e538]
+                          - cell "4.6.41" [ref=e539]
+                          - cell "✅" [ref=e540]
+                        - row "4.6.13 4.6.34 ✅" [ref=e541]:
+                          - cell "4.6.13" [ref=e542]
+                          - cell "4.6.34" [ref=e543]
+                          - cell "✅" [ref=e544]
+                        - row "4.6.13 4.6.32 ✅" [ref=e545]:
+                          - cell "4.6.13" [ref=e546]
+                          - cell "4.6.32" [ref=e547]
+                          - cell "✅" [ref=e548]
+                        - row "4.6.13 4.6.28 ✅" [ref=e549]:
+                          - cell "4.6.13" [ref=e550]
+                          - cell "4.6.28" [ref=e551]
+                          - cell "✅" [ref=e552]
+                        - row "4.6.13 4.6.24 ✅" [ref=e553]:
+                          - cell "4.6.13" [ref=e554]
+                          - cell "4.6.24" [ref=e555]
+                          - cell "✅" [ref=e556]
+                        - row "4.6.13 4.6.23 ✅" [ref=e557]:
+                          - cell "4.6.13" [ref=e558]
+                          - cell "4.6.23" [ref=e559]
+                          - cell "✅" [ref=e560]
+                        - row "4.6.13 4.6.18 ✅" [ref=e561]:
+                          - cell "4.6.13" [ref=e562]
+                          - cell "4.6.18" [ref=e563]
+                          - cell "✅" [ref=e564]
+                        - row "4.6.12 4.6.43 ✅" [ref=e565]:
+                          - cell "4.6.12" [ref=e566]
+                          - cell "4.6.43" [ref=e567]
+                          - cell "✅" [ref=e568]
+                        - row "4.6.12 4.6.41 ✅" [ref=e569]:
+                          - cell "4.6.12" [ref=e570]
+                          - cell "4.6.41" [ref=e571]
+                          - cell "✅" [ref=e572]
+                        - row "4.6.12 4.6.34 ✅" [ref=e573]:
+                          - cell "4.6.12" [ref=e574]
+                          - cell "4.6.34" [ref=e575]
+                          - cell "✅" [ref=e576]
+                        - row "4.6.12 4.6.32 ✅" [ref=e577]:
+                          - cell "4.6.12" [ref=e578]
+                          - cell "4.6.32" [ref=e579]
+                          - cell "✅" [ref=e580]
+                        - row "4.6.12 4.6.28 ✅" [ref=e581]:
+                          - cell "4.6.12" [ref=e582]
+                          - cell "4.6.28" [ref=e583]
+                          - cell "✅" [ref=e584]
+                        - row "4.6.12 4.6.24 ✅" [ref=e585]:
+                          - cell "4.6.12" [ref=e586]
+                          - cell "4.6.24" [ref=e587]
+                          - cell "✅" [ref=e588]
+                        - row "4.6.12 4.6.23 ✅" [ref=e589]:
+                          - cell "4.6.12" [ref=e590]
+                          - cell "4.6.23" [ref=e591]
+                          - cell "✅" [ref=e592]
+                        - row "4.6.12 4.6.18 ✅" [ref=e593]:
+                          - cell "4.6.12" [ref=e594]
+                          - cell "4.6.18" [ref=e595]
+                          - cell "✅" [ref=e596]
+                        - row "4.6.12 4.6.13 ✅" [ref=e597]:
+                          - cell "4.6.12" [ref=e598]
+                          - cell "4.6.13" [ref=e599]
+                          - cell "✅" [ref=e600]
+                        - row "4.6.9 4.6.43 ✅" [ref=e601]:
+                          - cell "4.6.9" [ref=e602]
+                          - cell "4.6.43" [ref=e603]
+                          - cell "✅" [ref=e604]
+                        - row "4.6.9 4.6.41 ✅" [ref=e605]:
+                          - cell "4.6.9" [ref=e606]
+                          - cell "4.6.41" [ref=e607]
+                          - cell "✅" [ref=e608]
+                        - row "4.6.9 4.6.34 ✅" [ref=e609]:
+                          - cell "4.6.9" [ref=e610]
+                          - cell "4.6.34" [ref=e611]
+                          - cell "✅" [ref=e612]
+                        - row "4.6.9 4.6.32 ✅" [ref=e613]:
+                          - cell "4.6.9" [ref=e614]
+                          - cell "4.6.32" [ref=e615]
+                          - cell "✅" [ref=e616]
+                        - row "4.6.9 4.6.28 ✅" [ref=e617]:
+                          - cell "4.6.9" [ref=e618]
+                          - cell "4.6.28" [ref=e619]
+                          - cell "✅" [ref=e620]
+                        - row "4.6.9 4.6.24 ✅" [ref=e621]:
+                          - cell "4.6.9" [ref=e622]
+                          - cell "4.6.24" [ref=e623]
+                          - cell "✅" [ref=e624]
+                        - row "4.6.9 4.6.23 ✅" [ref=e625]:
+                          - cell "4.6.9" [ref=e626]
+                          - cell "4.6.23" [ref=e627]
+                          - cell "✅" [ref=e628]
+                        - row "4.6.9 4.6.18 ✅" [ref=e629]:
+                          - cell "4.6.9" [ref=e630]
+                          - cell "4.6.18" [ref=e631]
+                          - cell "✅" [ref=e632]
+                        - row "4.6.9 4.6.13 ✅" [ref=e633]:
+                          - cell "4.6.9" [ref=e634]
+                          - cell "4.6.13" [ref=e635]
+                          - cell "✅" [ref=e636]
+                        - row "4.6.9 4.6.12 ✅" [ref=e637]:
+                          - cell "4.6.9" [ref=e638]
+                          - cell "4.6.12" [ref=e639]
+                          - cell "✅" [ref=e640]
+                        - row "4.6.8 4.6.43 ✅" [ref=e641]:
+                          - cell "4.6.8" [ref=e642]
+                          - cell "4.6.43" [ref=e643]
+                          - cell "✅" [ref=e644]
+                        - row "4.6.8 4.6.41 ✅" [ref=e645]:
+                          - cell "4.6.8" [ref=e646]
+                          - cell "4.6.41" [ref=e647]
+                          - cell "✅" [ref=e648]
+                        - row "4.6.8 4.6.34 ✅" [ref=e649]:
+                          - cell "4.6.8" [ref=e650]
+                          - cell "4.6.34" [ref=e651]
+                          - cell "✅" [ref=e652]
+                        - row "4.6.8 4.6.32 ✅" [ref=e653]:
+                          - cell "4.6.8" [ref=e654]
+                          - cell "4.6.32" [ref=e655]
+                          - cell "✅" [ref=e656]
+                        - row "4.6.8 4.6.28 ✅" [ref=e657]:
+                          - cell "4.6.8" [ref=e658]
+                          - cell "4.6.28" [ref=e659]
+                          - cell "✅" [ref=e660]
+                        - row "4.6.8 4.6.24 ✅" [ref=e661]:
+                          - cell "4.6.8" [ref=e662]
+                          - cell "4.6.24" [ref=e663]
+                          - cell "✅" [ref=e664]
+                        - row "4.6.8 4.6.23 ✅" [ref=e665]:
+                          - cell "4.6.8" [ref=e666]
+                          - cell "4.6.23" [ref=e667]
+                          - cell "✅" [ref=e668]
+                        - row "4.6.8 4.6.18 ✅" [ref=e669]:
+                          - cell "4.6.8" [ref=e670]
+                          - cell "4.6.18" [ref=e671]
+                          - cell "✅" [ref=e672]
+                        - row "4.6.8 4.6.13 ✅" [ref=e673]:
+                          - cell "4.6.8" [ref=e674]
+                          - cell "4.6.13" [ref=e675]
+                          - cell "✅" [ref=e676]
+                        - row "4.6.8 4.6.12 ✅" [ref=e677]:
+                          - cell "4.6.8" [ref=e678]
+                          - cell "4.6.12" [ref=e679]
+                          - cell "✅" [ref=e680]
+                        - row "4.6.8 4.6.9 ✅" [ref=e681]:
+                          - cell "4.6.8" [ref=e682]
+                          - cell "4.6.9" [ref=e683]
+                          - cell "✅" [ref=e684]
+                        - row "4.6.7 4.6.43 ✅" [ref=e685]:
+                          - cell "4.6.7" [ref=e686]
+                          - cell "4.6.43" [ref=e687]
+                          - cell "✅" [ref=e688]
+                        - row "4.6.7 4.6.41 ✅" [ref=e689]:
+                          - cell "4.6.7" [ref=e690]
+                          - cell "4.6.41" [ref=e691]
+                          - cell "✅" [ref=e692]
+                        - row "4.6.7 4.6.34 ✅" [ref=e693]:
+                          - cell "4.6.7" [ref=e694]
+                          - cell "4.6.34" [ref=e695]
+                          - cell "✅" [ref=e696]
+                        - row "4.6.7 4.6.32 ✅" [ref=e697]:
+                          - cell "4.6.7" [ref=e698]
+                          - cell "4.6.32" [ref=e699]
+                          - cell "✅" [ref=e700]
+                        - row "4.6.7 4.6.28 ✅" [ref=e701]:
+                          - cell "4.6.7" [ref=e702]
+                          - cell "4.6.28" [ref=e703]
+                          - cell "✅" [ref=e704]
+                        - row "4.6.7 4.6.24 ✅" [ref=e705]:
+                          - cell "4.6.7" [ref=e706]
+                          - cell "4.6.24" [ref=e707]
+                          - cell "✅" [ref=e708]
+                        - row "4.6.7 4.6.23 ✅" [ref=e709]:
+                          - cell "4.6.7" [ref=e710]
+                          - cell "4.6.23" [ref=e711]
+                          - cell "✅" [ref=e712]
+                        - row "4.6.7 4.6.18 ✅" [ref=e713]:
+                          - cell "4.6.7" [ref=e714]
+                          - cell "4.6.18" [ref=e715]
+                          - cell "✅" [ref=e716]
+                        - row "4.6.7 4.6.13 ✅" [ref=e717]:
+                          - cell "4.6.7" [ref=e718]
+                          - cell "4.6.13" [ref=e719]
+                          - cell "✅" [ref=e720]
+                        - row "4.6.7 4.6.12 ✅" [ref=e721]:
+                          - cell "4.6.7" [ref=e722]
+                          - cell "4.6.12" [ref=e723]
+                          - cell "✅" [ref=e724]
+                        - row "4.6.7 4.6.9 ✅" [ref=e725]:
+                          - cell "4.6.7" [ref=e726]
+                          - cell "4.6.9" [ref=e727]
+                          - cell "✅" [ref=e728]
+                        - row "4.6.7 4.6.8 ✅" [ref=e729]:
+                          - cell "4.6.7" [ref=e730]
+                          - cell "4.6.8" [ref=e731]
+                          - cell "✅" [ref=e732]
+                        - row "4.6.6 4.6.43 ✅" [ref=e733]:
+                          - cell "4.6.6" [ref=e734]
+                          - cell "4.6.43" [ref=e735]
+                          - cell "✅" [ref=e736]
+                        - row "4.6.6 4.6.41 ✅" [ref=e737]:
+                          - cell "4.6.6" [ref=e738]
+                          - cell "4.6.41" [ref=e739]
+                          - cell "✅" [ref=e740]
+                        - row "4.6.6 4.6.34 ✅" [ref=e741]:
+                          - cell "4.6.6" [ref=e742]
+                          - cell "4.6.34" [ref=e743]
+                          - cell "✅" [ref=e744]
+                        - row "4.6.6 4.6.32 ✅" [ref=e745]:
+                          - cell "4.6.6" [ref=e746]
+                          - cell "4.6.32" [ref=e747]
+                          - cell "✅" [ref=e748]
+                        - row "4.6.6 4.6.28 ✅" [ref=e749]:
+                          - cell "4.6.6" [ref=e750]
+                          - cell "4.6.28" [ref=e751]
+                          - cell "✅" [ref=e752]
+                        - row "4.6.6 4.6.24 ✅" [ref=e753]:
+                          - cell "4.6.6" [ref=e754]
+                          - cell "4.6.24" [ref=e755]
+                          - cell "✅" [ref=e756]
+                        - row "4.6.6 4.6.23 ✅" [ref=e757]:
+                          - cell "4.6.6" [ref=e758]
+                          - cell "4.6.23" [ref=e759]
+                          - cell "✅" [ref=e760]
+                        - row "4.6.6 4.6.18 ✅" [ref=e761]:
+                          - cell "4.6.6" [ref=e762]
+                          - cell "4.6.18" [ref=e763]
+                          - cell "✅" [ref=e764]
+                        - row "4.6.6 4.6.13 ✅" [ref=e765]:
+                          - cell "4.6.6" [ref=e766]
+                          - cell "4.6.13" [ref=e767]
+                          - cell "✅" [ref=e768]
+                        - row "4.6.6 4.6.12 ✅" [ref=e769]:
+                          - cell "4.6.6" [ref=e770]
+                          - cell "4.6.12" [ref=e771]
+                          - cell "✅" [ref=e772]
+                        - row "4.6.6 4.6.9 ✅" [ref=e773]:
+                          - cell "4.6.6" [ref=e774]
+                          - cell "4.6.9" [ref=e775]
+                          - cell "✅" [ref=e776]
+                        - row "4.6.6 4.6.8 ✅" [ref=e777]:
+                          - cell "4.6.6" [ref=e778]
+                          - cell "4.6.8" [ref=e779]
+                          - cell "✅" [ref=e780]
+                        - row "4.6.6 4.6.7 ✅" [ref=e781]:
+                          - cell "4.6.6" [ref=e782]
+                          - cell "4.6.7" [ref=e783]
+                          - cell "✅" [ref=e784]
+                        - row "4.5.23 4.6.43 ✅" [ref=e785]:
+                          - cell "4.5.23" [ref=e786]
+                          - cell "4.6.43" [ref=e787]
+                          - cell "✅" [ref=e788]
+                        - row "4.5.23 4.6.41 ✅" [ref=e789]:
+                          - cell "4.5.23" [ref=e790]
+                          - cell "4.6.41" [ref=e791]
+                          - cell "✅" [ref=e792]
+                        - row "4.5.23 4.6.34 ✅" [ref=e793]:
+                          - cell "4.5.23" [ref=e794]
+                          - cell "4.6.34" [ref=e795]
+                          - cell "✅" [ref=e796]
+                        - row "4.5.23 4.6.32 ✅" [ref=e797]:
+                          - cell "4.5.23" [ref=e798]
+                          - cell "4.6.32" [ref=e799]
+                          - cell "✅" [ref=e800]
+                        - row "4.5.23 4.6.28 ✅" [ref=e801]:
+                          - cell "4.5.23" [ref=e802]
+                          - cell "4.6.28" [ref=e803]
+                          - cell "✅" [ref=e804]
+                        - row "4.5.23 4.6.24 ✅" [ref=e805]:
+                          - cell "4.5.23" [ref=e806]
+                          - cell "4.6.24" [ref=e807]
+                          - cell "✅" [ref=e808]
+                        - row "4.5.23 4.6.23 ✅" [ref=e809]:
+                          - cell "4.5.23" [ref=e810]
+                          - cell "4.6.23" [ref=e811]
+                          - cell "✅" [ref=e812]
+                        - row "4.5.23 4.6.18 ✅" [ref=e813]:
+                          - cell "4.5.23" [ref=e814]
+                          - cell "4.6.18" [ref=e815]
+                          - cell "✅" [ref=e816]
+                        - row "4.5.21 4.6.43 ✅" [ref=e817]:
+                          - cell "4.5.21" [ref=e818]
+                          - cell "4.6.43" [ref=e819]
+                          - cell "✅" [ref=e820]
+                        - row "4.5.21 4.6.41 ✅" [ref=e821]:
+                          - cell "4.5.21" [ref=e822]
+                          - cell "4.6.41" [ref=e823]
+                          - cell "✅" [ref=e824]
+                        - row "4.5.21 4.6.34 ✅" [ref=e825]:
+                          - cell "4.5.21" [ref=e826]
+                          - cell "4.6.34" [ref=e827]
+                          - cell "✅" [ref=e828]
+                        - row "4.5.21 4.6.32 ✅" [ref=e829]:
+                          - cell "4.5.21" [ref=e830]
+                          - cell "4.6.32" [ref=e831]
+                          - cell "✅" [ref=e832]
+                        - row "4.5.21 4.6.28 ✅" [ref=e833]:
+                          - cell "4.5.21" [ref=e834]
+                          - cell "4.6.28" [ref=e835]
+                          - cell "✅" [ref=e836]
+                        - row "4.5.21 4.6.24 ✅" [ref=e837]:
+                          - cell "4.5.21" [ref=e838]
+                          - cell "4.6.24" [ref=e839]
+                          - cell "✅" [ref=e840]
+                        - row "4.5.21 4.6.23 ✅" [ref=e841]:
+                          - cell "4.5.21" [ref=e842]
+                          - cell "4.6.23" [ref=e843]
+                          - cell "✅" [ref=e844]
+                        - row "4.5.21 4.6.18 ✅" [ref=e845]:
+                          - cell "4.5.21" [ref=e846]
+                          - cell "4.6.18" [ref=e847]
+                          - cell "✅" [ref=e848]
+                        - row "4.5.21 4.6.13 ✅" [ref=e849]:
+                          - cell "4.5.21" [ref=e850]
+                          - cell "4.6.13" [ref=e851]
+                          - cell "✅" [ref=e852]
+                        - row "4.5.21 4.6.12 ✅" [ref=e853]:
+                          - cell "4.5.21" [ref=e854]
+                          - cell "4.6.12" [ref=e855]
+                          - cell "✅" [ref=e856]
+                        - row "4.5.21 4.6.9 ✅" [ref=e857]:
+                          - cell "4.5.21" [ref=e858]
+                          - cell "4.6.9" [ref=e859]
+                          - cell "✅" [ref=e860]
+                        - row "4.5.21 4.6.8 ✅" [ref=e861]:
+                          - cell "4.5.21" [ref=e862]
+                          - cell "4.6.8" [ref=e863]
+                          - cell "✅" [ref=e864]
+                        - row "4.5.21 4.6.7 ✅" [ref=e865]:
+                          - cell "4.5.21" [ref=e866]
+                          - cell "4.6.7" [ref=e867]
+                          - cell "✅" [ref=e868]
+                        - row "4.5.21 4.6.6 ✅" [ref=e869]:
+                          - cell "4.5.21" [ref=e870]
+                          - cell "4.6.6" [ref=e871]
+                          - cell "✅" [ref=e872]
+                        - row "4.5.20 4.6.43 ✅" [ref=e873]:
+                          - cell "4.5.20" [ref=e874]
+                          - cell "4.6.43" [ref=e875]
+                          - cell "✅" [ref=e876]
+                        - row "4.5.20 4.6.41 ✅" [ref=e877]:
+                          - cell "4.5.20" [ref=e878]
+                          - cell "4.6.41" [ref=e879]
+                          - cell "✅" [ref=e880]
+                        - row "4.5.20 4.6.34 ✅" [ref=e881]:
+                          - cell "4.5.20" [ref=e882]
+                          - cell "4.6.34" [ref=e883]
+                          - cell "✅" [ref=e884]
+                        - row "4.5.20 4.6.32 ✅" [ref=e885]:
+                          - cell "4.5.20" [ref=e886]
+                          - cell "4.6.32" [ref=e887]
+                          - cell "✅" [ref=e888]
+                        - row "4.5.20 4.6.28 ✅" [ref=e889]:
+                          - cell "4.5.20" [ref=e890]
+                          - cell "4.6.28" [ref=e891]
+                          - cell "✅" [ref=e892]
+                        - row "4.5.20 4.6.24 ✅" [ref=e893]:
+                          - cell "4.5.20" [ref=e894]
+                          - cell "4.6.24" [ref=e895]
+                          - cell "✅" [ref=e896]
+                        - row "4.5.20 4.6.23 ✅" [ref=e897]:
+                          - cell "4.5.20" [ref=e898]
+                          - cell "4.6.23" [ref=e899]
+                          - cell "✅" [ref=e900]
+                        - row "4.5.20 4.6.18 ✅" [ref=e901]:
+                          - cell "4.5.20" [ref=e902]
+                          - cell "4.6.18" [ref=e903]
+                          - cell "✅" [ref=e904]
+                        - row "4.5.20 4.6.13 ✅" [ref=e905]:
+                          - cell "4.5.20" [ref=e906]
+                          - cell "4.6.13" [ref=e907]
+                          - cell "✅" [ref=e908]
+                        - row "4.5.20 4.6.12 ✅" [ref=e909]:
+                          - cell "4.5.20" [ref=e910]
+                          - cell "4.6.12" [ref=e911]
+                          - cell "✅" [ref=e912]
+                        - row "4.5.20 4.6.9 ✅" [ref=e913]:
+                          - cell "4.5.20" [ref=e914]
+                          - cell "4.6.9" [ref=e915]
+                          - cell "✅" [ref=e916]
+                        - row "4.5.20 4.6.8 ✅" [ref=e917]:
+                          - cell "4.5.20" [ref=e918]
+                          - cell "4.6.8" [ref=e919]
+                          - cell "✅" [ref=e920]
+                        - row "4.5.20 4.6.7 ✅" [ref=e921]:
+                          - cell "4.5.20" [ref=e922]
+                          - cell "4.6.7" [ref=e923]
+                          - cell "✅" [ref=e924]
+                        - row "4.5.20 4.6.6 ✅" [ref=e925]:
+                          - cell "4.5.20" [ref=e926]
+                          - cell "4.6.6" [ref=e927]
+                          - cell "✅" [ref=e928]
+                        - row "4.4.24 4.6.43 ✅" [ref=e929]:
+                          - cell "4.4.24" [ref=e930]
+                          - cell "4.6.43" [ref=e931]
+                          - cell "✅" [ref=e932]
+                        - row "4.4.24 4.6.41 ✅" [ref=e933]:
+                          - cell "4.4.24" [ref=e934]
+                          - cell "4.6.41" [ref=e935]
+                          - cell "✅" [ref=e936]
+                        - row "4.4.24 4.6.34 ✅" [ref=e937]:
+                          - cell "4.4.24" [ref=e938]
+                          - cell "4.6.34" [ref=e939]
+                          - cell "✅" [ref=e940]
+                        - row "4.4.24 4.6.32 ✅" [ref=e941]:
+                          - cell "4.4.24" [ref=e942]
+                          - cell "4.6.32" [ref=e943]
+                          - cell "✅" [ref=e944]
+                        - row "4.4.24 4.6.28 ✅" [ref=e945]:
+                          - cell "4.4.24" [ref=e946]
+                          - cell "4.6.28" [ref=e947]
+                          - cell "✅" [ref=e948]
+                        - row "4.4.24 4.6.24 ✅" [ref=e949]:
+                          - cell "4.4.24" [ref=e950]
+                          - cell "4.6.24" [ref=e951]
+                          - cell "✅" [ref=e952]
+                        - row "4.4.24 4.6.23 ✅" [ref=e953]:
+                          - cell "4.4.24" [ref=e954]
+                          - cell "4.6.23" [ref=e955]
+                          - cell "✅" [ref=e956]
+                    - paragraph [ref=e957]:
+                      - strong [ref=e958]: 4.5.x
+                    - table [ref=e959]:
+                      - rowgroup [ref=e960]:
+                        - row "Source Version Target Version Support" [ref=e961]:
+                          - cell "Source Version" [ref=e962]:
+                            - strong [ref=e963]: Source Version
+                          - cell "Target Version" [ref=e964]:
+                            - strong [ref=e965]: Target Version
+                          - cell "Support" [ref=e966]:
+                            - strong [ref=e967]: Support
+                      - rowgroup [ref=e968]:
+                        - row "4.5.21 4.5.23 ✅" [ref=e969]:
+                          - cell "4.5.21" [ref=e970]
+                          - cell "4.5.23" [ref=e971]
+                          - cell "✅" [ref=e972]
+                        - row "4.5.20 4.5.23 ✅" [ref=e973]:
+                          - cell "4.5.20" [ref=e974]
+                          - cell "4.5.23" [ref=e975]
+                          - cell "✅" [ref=e976]
+                        - row "4.5.20 4.5.21 ✅" [ref=e977]:
+                          - cell "4.5.20" [ref=e978]
+                          - cell "4.5.21" [ref=e979]
+                          - cell "✅" [ref=e980]
+                        - row "4.5.15 4.5.23 ✅" [ref=e981]:
+                          - cell "4.5.15" [ref=e982]
+                          - cell "4.5.23" [ref=e983]
+                          - cell "✅" [ref=e984]
+                        - row "4.5.15 4.5.21 ✅" [ref=e985]:
+                          - cell "4.5.15" [ref=e986]
+                          - cell "4.5.21" [ref=e987]
+                          - cell "✅" [ref=e988]
+                        - row "4.5.15 4.5.20 ✅" [ref=e989]:
+                          - cell "4.5.15" [ref=e990]
+                          - cell "4.5.20" [ref=e991]
+                          - cell "✅" [ref=e992]
+                        - row "4.5.11 4.5.23 ✅" [ref=e993]:
+                          - cell "4.5.11" [ref=e994]
+                          - cell "4.5.23" [ref=e995]
+                          - cell "✅" [ref=e996]
+                        - row "4.5.11 4.5.21 ✅" [ref=e997]:
+                          - cell "4.5.11" [ref=e998]
+                          - cell "4.5.21" [ref=e999]
+                          - cell "✅" [ref=e1000]
+                        - row "4.5.11 4.5.20 ✅" [ref=e1001]:
+                          - cell "4.5.11" [ref=e1002]
+                          - cell "4.5.20" [ref=e1003]
+                          - cell "✅" [ref=e1004]
+                        - row "4.5.11 4.5.15 ✅" [ref=e1005]:
+                          - cell "4.5.11" [ref=e1006]
+                          - cell "4.5.15" [ref=e1007]
+                          - cell "✅" [ref=e1008]
+                        - row "4.5.8 4.5.23 ✅" [ref=e1009]:
+                          - cell "4.5.8" [ref=e1010]
+                          - cell "4.5.23" [ref=e1011]
+                          - cell "✅" [ref=e1012]
+                        - row "4.5.8 4.5.21 ✅" [ref=e1013]:
+                          - cell "4.5.8" [ref=e1014]
+                          - cell "4.5.21" [ref=e1015]
+                          - cell "✅" [ref=e1016]
+                        - row "4.5.8 4.5.20 ✅" [ref=e1017]:
+                          - cell "4.5.8" [ref=e1018]
+                          - cell "4.5.20" [ref=e1019]
+                          - cell "✅" [ref=e1020]
+                        - row "4.5.8 4.5.15 ✅" [ref=e1021]:
+                          - cell "4.5.8" [ref=e1022]
+                          - cell "4.5.15" [ref=e1023]
+                          - cell "✅" [ref=e1024]
+                        - row "4.5.8 4.5.11 ✅" [ref=e1025]:
+                          - cell "4.5.8" [ref=e1026]
+                          - cell "4.5.11" [ref=e1027]
+                          - cell "✅" [ref=e1028]
+                        - row "4.5.4 4.5.23 ✅" [ref=e1029]:
+                          - cell "4.5.4" [ref=e1030]
+                          - cell "4.5.23" [ref=e1031]
+                          - cell "✅" [ref=e1032]
+                        - row "4.5.4 4.5.21 ✅" [ref=e1033]:
+                          - cell "4.5.4" [ref=e1034]
+                          - cell "4.5.21" [ref=e1035]
+                          - cell "✅" [ref=e1036]
+                        - row "4.5.4 4.5.20 ✅" [ref=e1037]:
+                          - cell "4.5.4" [ref=e1038]
+                          - cell "4.5.20" [ref=e1039]
+                          - cell "✅" [ref=e1040]
+                        - row "4.5.4 4.5.15 ✅" [ref=e1041]:
+                          - cell "4.5.4" [ref=e1042]
+                          - cell "4.5.15" [ref=e1043]
+                          - cell "✅" [ref=e1044]
+                        - row "4.5.4 4.5.11 ✅" [ref=e1045]:
+                          - cell "4.5.4" [ref=e1046]
+                          - cell "4.5.11" [ref=e1047]
+                          - cell "✅" [ref=e1048]
+                        - row "4.5.4 4.5.8 ✅" [ref=e1049]:
+                          - cell "4.5.4" [ref=e1050]
+                          - cell "4.5.8" [ref=e1051]
+                          - cell "✅" [ref=e1052]
+                        - row "4.4.24 4.5.23 ✅" [ref=e1053]:
+                          - cell "4.4.24" [ref=e1054]
+                          - cell "4.5.23" [ref=e1055]
+                          - cell "✅" [ref=e1056]
+                        - row "4.4.20 4.5.23 ✅" [ref=e1057]:
+                          - cell "4.4.20" [ref=e1058]
+                          - cell "4.5.23" [ref=e1059]
+                          - cell "✅" [ref=e1060]
+                        - row "4.4.20 4.5.21 ✅" [ref=e1061]:
+                          - cell "4.4.20" [ref=e1062]
+                          - cell "4.5.21" [ref=e1063]
+                          - cell "✅" [ref=e1064]
+                        - row "4.4.20 4.5.20 ✅" [ref=e1065]:
+                          - cell "4.4.20" [ref=e1066]
+                          - cell "4.5.20" [ref=e1067]
+                          - cell "✅" [ref=e1068]
+                        - row "4.4.20 4.5.15 ✅" [ref=e1069]:
+                          - cell "4.4.20" [ref=e1070]
+                          - cell "4.5.15" [ref=e1071]
+                          - cell "✅" [ref=e1072]
+                        - row "4.4.20 4.5.11 ✅" [ref=e1073]:
+                          - cell "4.4.20" [ref=e1074]
+                          - cell "4.5.11" [ref=e1075]
+                          - cell "✅" [ref=e1076]
+                        - row "4.4.20 4.5.8 ✅" [ref=e1077]:
+                          - cell "4.4.20" [ref=e1078]
+                          - cell "4.5.8" [ref=e1079]
+                          - cell "✅" [ref=e1080]
+                        - row "4.4.20 4.5.4 ✅" [ref=e1081]:
+                          - cell "4.4.20" [ref=e1082]
+                          - cell "4.5.4" [ref=e1083]
+                          - cell "✅" [ref=e1084]
+                    - paragraph [ref=e1085]:
+                      - strong [ref=e1086]: 4.4.x
+                    - table [ref=e1087]:
+                      - rowgroup [ref=e1088]:
+                        - row "Source Version Target Version Support" [ref=e1089]:
+                          - cell "Source Version" [ref=e1090]:
+                            - strong [ref=e1091]: Source Version
+                          - cell "Target Version" [ref=e1092]:
+                            - strong [ref=e1093]: Target Version
+                          - cell "Support" [ref=e1094]:
+                            - strong [ref=e1095]: Support
+                      - rowgroup [ref=e1096]:
+                        - row "4.4.20 4.4.23 ✅" [ref=e1097]:
+                          - cell "4.4.20" [ref=e1098]
+                          - cell "4.4.23" [ref=e1099]
+                          - cell "✅" [ref=e1100]
+                        - row "4.4.18 4.4.23 ✅" [ref=e1101]:
+                          - cell "4.4.18" [ref=e1102]
+                          - cell "4.4.23" [ref=e1103]
+                          - cell "✅" [ref=e1104]
+                        - row "4.4.18 4.4.20 ✅" [ref=e1105]:
+                          - cell "4.4.18" [ref=e1106]
+                          - cell "4.4.20" [ref=e1107]
+                          - cell "✅" [ref=e1108]
+                        - row "4.4.14 4.4.23 ✅" [ref=e1109]:
+                          - cell "4.4.14" [ref=e1110]
+                          - cell "4.4.23" [ref=e1111]
+                          - cell "✅" [ref=e1112]
+                        - row "4.4.14 4.4.20 ✅" [ref=e1113]:
+                          - cell "4.4.14" [ref=e1114]
+                          - cell "4.4.20" [ref=e1115]
+                          - cell "✅" [ref=e1116]
+                        - row "4.4.14 4.4.18 ✅" [ref=e1117]:
+                          - cell "4.4.14" [ref=e1118]
+                          - cell "4.4.18" [ref=e1119]
+                          - cell "✅" [ref=e1120]
+                        - row "4.4.11 4.4.23 ✅" [ref=e1121]:
+                          - cell "4.4.11" [ref=e1122]
+                          - cell "4.4.23" [ref=e1123]
+                          - cell "✅" [ref=e1124]
+                        - row "4.4.11 4.4.20 ✅" [ref=e1125]:
+                          - cell "4.4.11" [ref=e1126]
+                          - cell "4.4.20" [ref=e1127]
+                          - cell "✅" [ref=e1128]
+                        - row "4.4.11 4.4.18 ✅" [ref=e1129]:
+                          - cell "4.4.11" [ref=e1130]
+                          - cell "4.4.18" [ref=e1131]
+                          - cell "✅" [ref=e1132]
+                        - row "4.4.11 4.4.14 ✅" [ref=e1133]:
+                          - cell "4.4.11" [ref=e1134]
+                          - cell "4.4.14" [ref=e1135]
+                          - cell "✅" [ref=e1136]
+                        - row "4.4.6 4.4.23 ✅" [ref=e1137]:
+                          - cell "4.4.6" [ref=e1138]
+                          - cell "4.4.23" [ref=e1139]
+                          - cell "✅" [ref=e1140]
+                        - row "4.4.6 4.4.20 ✅" [ref=e1141]:
+                          - cell "4.4.6" [ref=e1142]
+                          - cell "4.4.20" [ref=e1143]
+                          - cell "✅" [ref=e1144]
+                        - row "4.4.6 4.4.18 ✅" [ref=e1145]:
+                          - cell "4.4.6" [ref=e1146]
+                          - cell "4.4.18" [ref=e1147]
+                          - cell "✅" [ref=e1148]
+                        - row "4.4.6 4.4.14 ✅" [ref=e1149]:
+                          - cell "4.4.6" [ref=e1150]
+                          - cell "4.4.14" [ref=e1151]
+                          - cell "✅" [ref=e1152]
+                        - row "4.4.6 4.4.11 ✅" [ref=e1153]:
+                          - cell "4.4.6" [ref=e1154]
+                          - cell "4.4.11" [ref=e1155]
+                          - cell "✅" [ref=e1156]
+                        - row "4.3.6 4.4.23 ✅" [ref=e1157]:
+                          - cell "4.3.6" [ref=e1158]
+                          - cell "4.4.23" [ref=e1159]
+                          - cell "✅" [ref=e1160]
+                        - row "4.3.6 4.4.20 ✅" [ref=e1161]:
+                          - cell "4.3.6" [ref=e1162]
+                          - cell "4.4.20" [ref=e1163]
+                          - cell "✅" [ref=e1164]
+                        - row "4.3.6 4.4.18 ✅" [ref=e1165]:
+                          - cell "4.3.6" [ref=e1166]
+                          - cell "4.4.18" [ref=e1167]
+                          - cell "✅" [ref=e1168]
+                        - row "4.3.6 4.4.14 ✅" [ref=e1169]:
+                          - cell "4.3.6" [ref=e1170]
+                          - cell "4.4.14" [ref=e1171]
+                          - cell "✅" [ref=e1172]
+                        - row "4.3.6 4.4.11 ✅" [ref=e1173]:
+                          - cell "4.3.6" [ref=e1174]
+                          - cell "4.4.11" [ref=e1175]
+                          - cell "✅" [ref=e1176]
+                        - row "4.3.6 4.4.6 ✅" [ref=e1177]:
+                          - cell "4.3.6" [ref=e1178]
+                          - cell "4.4.6" [ref=e1179]
+                          - cell "✅" [ref=e1180]
+                    - paragraph [ref=e1181]:
+                      - strong [ref=e1182]: 4.3.x and Prior
+                    - table [ref=e1183]:
+                      - rowgroup [ref=e1184]:
+                        - row "Source Version Target Version Support" [ref=e1185]:
+                          - cell "Source Version" [ref=e1186]:
+                            - strong [ref=e1187]: Source Version
+                          - cell "Target Version" [ref=e1188]:
+                            - strong [ref=e1189]: Target Version
+                          - cell "Support" [ref=e1190]:
+                            - strong [ref=e1191]: Support
+                      - rowgroup [ref=e1192]:
+                        - row "4.2.13 4.3.6 ✅" [ref=e1193]:
+                          - cell "4.2.13" [ref=e1194]
+                          - cell "4.3.6" [ref=e1195]
+                          - cell "✅" [ref=e1196]
+                        - row "4.2.7 4.2.13 ✅" [ref=e1197]:
+                          - cell "4.2.7" [ref=e1198]
+                          - cell "4.2.13" [ref=e1199]
+                          - cell "✅" [ref=e1200]
+                        - row "4.1.x 4.3.6 ❌" [ref=e1201]:
+                          - cell "4.1.x" [ref=e1202]
+                          - cell "4.3.6" [ref=e1203]
+                          - cell "❌" [ref=e1204]
+                        - row "4.1.12 4.2.7 ✅" [ref=e1205]:
+                          - cell "4.1.12" [ref=e1206]
+                          - cell "4.2.7" [ref=e1207]
+                          - cell "✅" [ref=e1208]
+                        - row "4.1.12 4.1.13 ✅" [ref=e1209]:
+                          - cell "4.1.12" [ref=e1210]
+                          - cell "4.1.13" [ref=e1211]
+                          - cell "✅" [ref=e1212]
+                        - row "4.1.7 4.2.7 ✅" [ref=e1213]:
+                          - cell "4.1.7" [ref=e1214]
+                          - cell "4.2.7" [ref=e1215]
+                          - cell "✅" [ref=e1216]
+                - heading "Upgrade GuidesDirect link to Upgrade Guides" [level=2] [ref=e1217]:
+                  - text: Upgrade Guides
+                  - link "Direct link to Upgrade Guides" [ref=e1218] [cursor=pointer]:
+                    - /url: "#upgrade-guides"
+                    - text: "#"
+                - paragraph [ref=e1219]: Refer to the respective guide for guidance on upgrading your self-hosted Palette VerteX instance.
+                - list [ref=e1220]:
+                  - listitem [ref=e1221]:
+                    - link "Upgrade Notes" [ref=e1222] [cursor=pointer]:
+                      - /url: /vertex/upgrade/upgrade-notes/
+                  - listitem [ref=e1223]:
+                    - link "Non-Airgap VMware" [ref=e1224] [cursor=pointer]:
+                      - /url: /vertex/upgrade/upgrade-vmware/non-airgap/
+                  - listitem [ref=e1225]:
+                    - link "Airgap VMware" [ref=e1226] [cursor=pointer]:
+                      - /url: /vertex/upgrade/upgrade-vmware/airgap/
+                  - listitem [ref=e1227]:
+                    - link "Non-Airgap Kubernetes" [ref=e1228] [cursor=pointer]:
+                      - /url: /vertex/upgrade/upgrade-k8s/non-airgap/
+                  - listitem [ref=e1229]:
+                    - link "Airgap Kubernetes" [ref=e1230] [cursor=pointer]:
+                      - /url: /vertex/upgrade/upgrade-k8s/airgap/
+                  - listitem [ref=e1231]:
+                    - link "VerteX Management Appliance" [ref=e1232] [cursor=pointer]:
+                      - /url: /vertex/upgrade/vertex-management-appliance/
+              - generic [ref=e1233]:
+                - generic [ref=e1235]:
+                  - text: "Tags:"
+                  - list [ref=e1236]:
+                    - listitem [ref=e1237]:
+                      - link "vertex" [ref=e1238] [cursor=pointer]:
+                        - /url: /tags/vertex/
+                    - listitem [ref=e1239]:
+                      - link "self-hosted" [ref=e1240] [cursor=pointer]:
+                        - /url: /tags/self-hosted/
+                    - listitem [ref=e1241]:
+                      - link "upgrade" [ref=e1242] [cursor=pointer]:
+                        - /url: /tags/upgrade/
+                - link "Edit this page" [ref=e1245] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vertex/upgrade/upgrade.md
+                  - img [ref=e1246]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e1250]:
+              - link "Previous « Modify Cloud Provider Configuration" [ref=e1251] [cursor=pointer]:
+                - /url: /vertex/system-management/change-cloud-config/
+                - generic [ref=e1252]: Previous
+                - generic [ref=e1253]: « Modify Cloud Provider Configuration
+              - link "Next Upgrade Notes »" [ref=e1254] [cursor=pointer]:
+                - /url: /vertex/upgrade/upgrade-notes/
+                - generic [ref=e1255]: Next
+                - generic [ref=e1256]: Upgrade Notes »
+          - list [ref=e1259]:
+            - listitem [ref=e1260]:
+              - link "Private Cloud Gateway" [ref=e1261] [cursor=pointer]:
+                - /url: "#private-cloud-gateway"
+            - listitem [ref=e1262]:
+              - link "Supported Upgrade Paths" [ref=e1263] [cursor=pointer]:
+                - /url: "#supported-upgrade-paths"
+            - listitem [ref=e1264]:
+              - link "Upgrade Guides" [ref=e1265] [cursor=pointer]:
+                - /url: "#upgrade-guides"
+  - button "Project Logo Ask AI" [ref=e1266] [cursor=pointer]:
+    - generic [ref=e1269]:
+      - img "Project Logo" [ref=e1270]
+      - paragraph [ref=e1271]: Ask AI
+```

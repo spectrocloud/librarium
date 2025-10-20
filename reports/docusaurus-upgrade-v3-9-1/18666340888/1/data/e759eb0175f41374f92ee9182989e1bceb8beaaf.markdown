@@ -1,0 +1,416 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [expanded] [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+                - list [ref=e128]:
+                  - listitem [ref=e129]:
+                    - link "Architecture" [ref=e130] [cursor=pointer]:
+                      - /url: /vm-management/architecture/
+                  - listitem [ref=e131]:
+                    - link "Environment Setup" [ref=e132] [cursor=pointer]:
+                      - /url: /vm-management/environment-setup/
+                  - listitem [ref=e133]:
+                    - link "Install VMO in Airgap Environments" [ref=e134] [cursor=pointer]:
+                      - /url: /vm-management/install-vmo-in-airgap/
+                  - listitem [ref=e135]:
+                    - link "Create a VMO Profile" [ref=e136] [cursor=pointer]:
+                      - /url: /vm-management/create-vmo-profile/
+                  - listitem [ref=e137]:
+                    - link "Configure Private CA Certificate" [ref=e138] [cursor=pointer]:
+                      - /url: /vm-management/configure-private-ca-certificate/
+                  - listitem [ref=e139]:
+                    - link "Configure Direct Access to VM Dashboard" [ref=e140] [cursor=pointer]:
+                      - /url: /vm-management/configure-console-base-address/
+                  - listitem [ref=e141]:
+                    - generic [ref=e142]:
+                      - link "RBAC" [ref=e143] [cursor=pointer]:
+                        - /url: /vm-management/rbac/
+                      - button "Toggle the collapsible sidebar category 'RBAC'" [ref=e144] [cursor=pointer]
+                  - listitem [ref=e145]:
+                    - generic [ref=e146]:
+                      - link "Create and Manage VMs" [ref=e147] [cursor=pointer]:
+                        - /url: /vm-management/create-manage-vm/
+                      - button "Toggle the collapsible sidebar category 'Create and Manage VMs'" [ref=e148] [cursor=pointer]
+                  - listitem [ref=e149]:
+                    - generic [ref=e150]:
+                      - link "VM Migration Assistant" [expanded] [ref=e151] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/
+                      - button "Toggle the collapsible sidebar category 'VM Migration Assistant'" [ref=e152] [cursor=pointer]
+                    - list [ref=e153]:
+                      - listitem [ref=e154]:
+                        - link "Create a VM Migration Assistant Profile" [ref=e155] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/create-vm-migration-assistant-profile/
+                      - listitem [ref=e156]:
+                        - link "Create Source Providers" [ref=e157] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/create-source-providers/
+                      - listitem [ref=e158]:
+                        - link "Create Migration Plans" [ref=e159] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/create-migration-plans/
+                      - listitem [ref=e160]:
+                        - link "Start Migration Plans" [ref=e161] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/start-migration-plans/
+                      - listitem [ref=e162]:
+                        - link "Cancel Active Migration Plans" [ref=e163] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/cancel-active-migration-plans/
+                      - listitem [ref=e164]:
+                        - link "Additional Configuration" [ref=e165] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/additional-configuration/
+              - listitem [ref=e166]:
+                - generic [ref=e167]:
+                  - link "Workspaces" [ref=e168] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e170]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e172] [cursor=pointer]
+              - listitem [ref=e173]:
+                - generic [ref=e174]:
+                  - link "Packs List" [ref=e175] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e177]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e179] [cursor=pointer]
+              - listitem [ref=e180]:
+                - generic [ref=e181]:
+                  - link "User & Role Management" [ref=e182] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e184]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e186] [cursor=pointer]
+              - listitem [ref=e187]:
+                - generic [ref=e188]:
+                  - link "Registries and Packs" [ref=e189] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e191]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e193] [cursor=pointer]
+              - listitem [ref=e194]:
+                - generic [ref=e195]:
+                  - link "Security" [ref=e196] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e198]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e200] [cursor=pointer]
+              - listitem [ref=e201]:
+                - generic [ref=e202]:
+                  - link "Audit Logs" [ref=e203] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e205]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e207] [cursor=pointer]
+              - listitem [ref=e208]:
+                - generic [ref=e209]:
+                  - link "Self-Hosted Palette" [ref=e210] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e212]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - generic [ref=e216]:
+                  - link "Palette VerteX" [ref=e217] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e219]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e221] [cursor=pointer]
+              - listitem [ref=e222]:
+                - generic [ref=e223]:
+                  - link "Tenant Administration" [ref=e224] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e226]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e228] [cursor=pointer]
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "Automation" [ref=e231] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e233]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - generic [ref=e237]:
+                  - link "Troubleshooting" [ref=e238] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e240]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - link "Glossary" [ref=e244] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e246]
+                  - text: Glossary
+              - listitem [ref=e248]:
+                - generic [ref=e249]:
+                  - link "Compliance & Legal" [ref=e250] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e252]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e254] [cursor=pointer]
+              - listitem [ref=e255]:
+                - button "Privacy Settings" [ref=e256] [cursor=pointer]:
+                  - img [ref=e257]
+                  - text: Privacy Settings
+      - main [ref=e259]:
+        - generic [ref=e261]:
+          - generic [ref=e263]:
+            - article [ref=e264]:
+              - navigation "Breadcrumbs" [ref=e265]:
+                - list [ref=e266]:
+                  - listitem [ref=e267]:
+                    - link "Home page" [ref=e268] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e269]
+                  - listitem [ref=e271]:
+                    - link "Virtual Machine Orchestrator" [ref=e272] [cursor=pointer]:
+                      - /url: /vm-management/
+                  - listitem [ref=e273]:
+                    - generic [ref=e274]: VM Migration Assistant
+              - generic [ref=e275]:
+                - heading "Virtual Machine Migration Assistant" [level=1] [ref=e277]
+                - paragraph [ref=e278]:
+                  - text: During large scale Kubernetes adoptions, workloads are often rehosted or migrated instead of being redeployed from scratch. This process allows system administrators to copy the application, together with its data, to a Kubernetes cluster. However, the migration of Virtual Machines (VMs) can be time consuming if done manually, so it is often automated with open source tools such as
+                  - link "Forklift" [ref=e279] [cursor=pointer]:
+                    - /url: https://github.com/kubev2v/forklift
+                  - text: .
+                - paragraph [ref=e280]:
+                  - text: Palette provides the ability to migrate VMs from VMware vSphere to Virtual Machine Orchestrator (VMO) using the Virtual Machine Migration Assistant (VM Migration Assistant). The
+                  - link "VM Migration Assistant" [ref=e281] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=vm-migration-assistant
+                  - text: is an add-on pack that can be added to your cluster profile and works alongside the
+                  - link "VMO" [ref=e282] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=virtual-machine-orchestrator
+                  - text: pack.
+                - heading "LimitationsDirect link to Limitations" [level=2] [ref=e283]:
+                  - text: Limitations
+                  - link "Direct link to Limitations" [ref=e284] [cursor=pointer]:
+                    - /url: "#limitations"
+                    - text: "#"
+                - list [ref=e285]:
+                  - listitem [ref=e286]:
+                    - paragraph [ref=e287]: You can migrate only VMs hosted in VMware vSphere 7.0 or 8.0.
+                  - listitem [ref=e288]:
+                    - paragraph [ref=e289]:
+                      - text: You can migrate only VMs whose operating systems are present in the
+                      - link "virt-v2v supported guest systems" [ref=e290] [cursor=pointer]:
+                        - /url: https://libguestfs.org/virt-v2v-support.1.html
+                        - code [ref=e291]: virt-v2v
+                        - text: supported guest systems
+                      - text: list.
+                  - listitem [ref=e292]:
+                    - paragraph [ref=e293]: Open Virtual Appliance (OVA) files are not supported as a provider type for migrations.
+                - heading "Verified MigrationsDirect link to Verified Migrations" [level=2] [ref=e294]:
+                  - text: Verified Migrations
+                  - link "Direct link to Verified Migrations" [ref=e295] [cursor=pointer]:
+                    - /url: "#verified-migrations"
+                    - text: "#"
+                - paragraph [ref=e296]:
+                  - text: The following table lists
+                  - code [ref=e297]: virt-v2v
+                  - text: migration combinations verified by Spectro Cloud. Other combinations may be valid but have not been verified.
+                - table [ref=e298]:
+                  - rowgroup [ref=e299]:
+                    - row "Operating System Cold Migration Warm Migration" [ref=e300]:
+                      - cell "Operating System" [ref=e301]
+                      - cell "Cold Migration" [ref=e302]
+                      - cell "Warm Migration" [ref=e303]
+                  - rowgroup [ref=e304]:
+                    - row "Fedora ✅ ❌" [ref=e305]:
+                      - cell "Fedora" [ref=e306]
+                      - cell "✅" [ref=e307]
+                      - cell "❌" [ref=e308]
+                    - row "Red Hat Enterprise Linux 9 ✅ ❌" [ref=e309]:
+                      - cell "Red Hat Enterprise Linux 9" [ref=e310]
+                      - cell "✅" [ref=e311]
+                      - cell "❌" [ref=e312]
+                    - row "Red Hat Enterprise Linux 9.4 ✅ ❌" [ref=e313]:
+                      - cell "Red Hat Enterprise Linux 9.4" [ref=e314]
+                      - cell "✅" [ref=e315]
+                      - cell "❌" [ref=e316]
+                    - row "Ubuntu ✅ ❌" [ref=e317]:
+                      - cell "Ubuntu" [ref=e318]
+                      - cell "✅" [ref=e319]
+                      - cell "❌" [ref=e320]
+                    - row "Windows Server 2019 ✅ ✅" [ref=e321]:
+                      - cell "Windows Server 2019" [ref=e322]
+                      - cell "✅" [ref=e323]
+                      - cell "✅" [ref=e324]
+                - generic [ref=e325]:
+                  - generic [ref=e326]:
+                    - img [ref=e328]
+                    - text: info
+                  - paragraph [ref=e331]: Oracle Enterprise Linux (OEL) is supported for cold and warm migrations, but has not been officially verified by Spectro Cloud.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e332]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e333] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e334]:
+                  - listitem [ref=e335]:
+                    - link "Create a VM Migration Assistant Cluster Profile" [ref=e336] [cursor=pointer]:
+                      - /url: /vm-management/vm-migration-assistant/create-vm-migration-assistant-profile/
+                  - listitem [ref=e337]:
+                    - link "Create Source Providers" [ref=e338] [cursor=pointer]:
+                      - /url: /vm-management/vm-migration-assistant/create-source-providers/
+                  - listitem [ref=e339]:
+                    - link "Create Migration Plans" [ref=e340] [cursor=pointer]:
+                      - /url: /vm-management/vm-migration-assistant/create-migration-plans/
+                  - listitem [ref=e341]:
+                    - link "Start Migration Plans" [ref=e342] [cursor=pointer]:
+                      - /url: /vm-management/vm-migration-assistant/start-migration-plans/
+                  - listitem [ref=e343]:
+                    - link "Cancel Active Migration Plans" [ref=e344] [cursor=pointer]:
+                      - /url: /vm-management/vm-migration-assistant/cancel-active-migration-plans/
+                  - listitem [ref=e345]:
+                    - link "Additional Configuration" [ref=e346] [cursor=pointer]:
+                      - /url: /vm-management/vm-migration-assistant/additional-configuration/
+              - generic [ref=e347]:
+                - generic [ref=e349]:
+                  - text: "Tags:"
+                  - list [ref=e350]:
+                    - listitem [ref=e351]:
+                      - link "vmo" [ref=e352] [cursor=pointer]:
+                        - /url: /tags/vmo/
+                - link "Edit this page" [ref=e355] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vm-management/vm-migration-assistant/vm-migration-assistant.md
+                  - img [ref=e356]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e360]:
+              - link "Previous « Import and Deploy OVAs to Palette VMO" [ref=e361] [cursor=pointer]:
+                - /url: /vm-management/create-manage-vm/advanced-topics/deploy-import-ova/
+                - generic [ref=e362]: Previous
+                - generic [ref=e363]: « Import and Deploy OVAs to Palette VMO
+              - link "Next Create a VM Migration Assistant Profile »" [ref=e364] [cursor=pointer]:
+                - /url: /vm-management/vm-migration-assistant/create-vm-migration-assistant-profile/
+                - generic [ref=e365]: Next
+                - generic [ref=e366]: Create a VM Migration Assistant Profile »
+          - list [ref=e369]:
+            - listitem [ref=e370]:
+              - link "Limitations" [ref=e371] [cursor=pointer]:
+                - /url: "#limitations"
+            - listitem [ref=e372]:
+              - link "Verified Migrations" [ref=e373] [cursor=pointer]:
+                - /url: "#verified-migrations"
+            - listitem [ref=e374]:
+              - link "Resources" [ref=e375] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e376] [cursor=pointer]:
+    - generic [ref=e379]:
+      - img "Project Logo" [ref=e380]
+      - paragraph [ref=e381]: Ask AI
+```

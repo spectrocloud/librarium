@@ -1,0 +1,345 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [expanded] [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+                - list [ref=e114]:
+                  - listitem [ref=e115]:
+                    - generic [ref=e116]:
+                      - link "Create Images with Image Builder" [ref=e117] [cursor=pointer]:
+                        - /url: /byoos/image-builder/
+                      - button "Toggle the collapsible sidebar category 'Create Images with Image Builder'" [ref=e118] [cursor=pointer]
+                  - listitem [ref=e119]:
+                    - generic [ref=e120]:
+                      - link "CAPI Image Builder" [expanded] [ref=e121] [cursor=pointer]:
+                        - /url: /byoos/capi-image-builder/
+                      - button "Toggle the collapsible sidebar category 'CAPI Image Builder'" [ref=e122] [cursor=pointer]
+                    - list [ref=e123]:
+                      - listitem [ref=e124]:
+                        - generic [ref=e125]:
+                          - link "Build Image for VMware vSphere" [expanded] [ref=e126] [cursor=pointer]:
+                            - /url: /byoos/capi-image-builder/build-image-vmware/
+                          - button "Toggle the collapsible sidebar category 'Build Image for VMware vSphere'" [ref=e127] [cursor=pointer]
+                        - list [ref=e128]:
+                          - listitem [ref=e129]:
+                            - generic [ref=e130]:
+                              - link "Non-Airgap Build" [ref=e131] [cursor=pointer]:
+                                - /url: /byoos/capi-image-builder/build-image-vmware/non-airgap-build/
+                              - button "Toggle the collapsible sidebar category 'Non-Airgap Build'" [ref=e132] [cursor=pointer]
+                          - listitem [ref=e133]:
+                            - generic [ref=e134]:
+                              - link "Airgap Build" [expanded] [ref=e135] [cursor=pointer]:
+                                - /url: /byoos/capi-image-builder/build-image-vmware/airgap-build/
+                              - button "Toggle the collapsible sidebar category 'Airgap Build'" [ref=e136] [cursor=pointer]
+                            - list [ref=e137]:
+                              - listitem [ref=e138]:
+                                - link "RHEL and PXK" [ref=e139] [cursor=pointer]:
+                                  - /url: /byoos/capi-image-builder/build-image-vmware/airgap-build/rhel-capi-airgap/
+                              - listitem [ref=e140]:
+                                - link "Rocky and PXK" [ref=e141] [cursor=pointer]:
+                                  - /url: /byoos/capi-image-builder/build-image-vmware/airgap-build/rocky-capi-airgap/
+                      - listitem [ref=e142]:
+                        - link "Configuration Reference" [ref=e143] [cursor=pointer]:
+                          - /url: /byoos/capi-image-builder/config-reference/
+                      - listitem [ref=e144]:
+                        - link "Compatibility Matrix" [ref=e145] [cursor=pointer]:
+                          - /url: /byoos/capi-image-builder/comp-matrix-capi-builder/
+              - listitem [ref=e146]:
+                - generic [ref=e147]:
+                  - link "Palette Dev Engine" [ref=e148] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e150]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e152] [cursor=pointer]
+              - listitem [ref=e153]:
+                - generic [ref=e154]:
+                  - link "Virtual Machine Orchestrator" [ref=e155] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e157]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e159] [cursor=pointer]
+              - listitem [ref=e160]:
+                - generic [ref=e161]:
+                  - link "Workspaces" [ref=e162] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e164]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e166] [cursor=pointer]
+              - listitem [ref=e167]:
+                - generic [ref=e168]:
+                  - link "Packs List" [ref=e169] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e171]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e173] [cursor=pointer]
+              - listitem [ref=e174]:
+                - generic [ref=e175]:
+                  - link "User & Role Management" [ref=e176] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e178]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e180] [cursor=pointer]
+              - listitem [ref=e181]:
+                - generic [ref=e182]:
+                  - link "Registries and Packs" [ref=e183] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e185]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e187] [cursor=pointer]
+              - listitem [ref=e188]:
+                - generic [ref=e189]:
+                  - link "Security" [ref=e190] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e192]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e194] [cursor=pointer]
+              - listitem [ref=e195]:
+                - generic [ref=e196]:
+                  - link "Audit Logs" [ref=e197] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e199]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e201] [cursor=pointer]
+              - listitem [ref=e202]:
+                - generic [ref=e203]:
+                  - link "Self-Hosted Palette" [ref=e204] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e206]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e208] [cursor=pointer]
+              - listitem [ref=e209]:
+                - generic [ref=e210]:
+                  - link "Palette VerteX" [ref=e211] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e213]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e215] [cursor=pointer]
+              - listitem [ref=e216]:
+                - generic [ref=e217]:
+                  - link "Tenant Administration" [ref=e218] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e220]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e222] [cursor=pointer]
+              - listitem [ref=e223]:
+                - generic [ref=e224]:
+                  - link "Automation" [ref=e225] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e227]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e229] [cursor=pointer]
+              - listitem [ref=e230]:
+                - generic [ref=e231]:
+                  - link "Troubleshooting" [ref=e232] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e234]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e236] [cursor=pointer]
+              - listitem [ref=e237]:
+                - link "Glossary" [ref=e238] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e240]
+                  - text: Glossary
+              - listitem [ref=e242]:
+                - generic [ref=e243]:
+                  - link "Compliance & Legal" [ref=e244] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e246]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e248] [cursor=pointer]
+              - listitem [ref=e249]:
+                - button "Privacy Settings" [ref=e250] [cursor=pointer]:
+                  - img [ref=e251]
+                  - text: Privacy Settings
+      - main [ref=e253]:
+        - generic [ref=e255]:
+          - generic [ref=e257]:
+            - article [ref=e258]:
+              - navigation "Breadcrumbs" [ref=e259]:
+                - list [ref=e260]:
+                  - listitem [ref=e261]:
+                    - link "Home page" [ref=e262] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e263]
+                  - listitem [ref=e265]:
+                    - link "Bring Your Own OS (BYOOS)" [ref=e266] [cursor=pointer]:
+                      - /url: /byoos/
+                  - listitem [ref=e267]:
+                    - link "CAPI Image Builder" [ref=e268] [cursor=pointer]:
+                      - /url: /byoos/capi-image-builder/
+                  - listitem [ref=e269]:
+                    - link "Build Image for VMware vSphere" [ref=e270] [cursor=pointer]:
+                      - /url: /byoos/capi-image-builder/build-image-vmware/
+                  - listitem [ref=e271]:
+                    - generic [ref=e272]: Airgap Build
+              - generic [ref=e273]:
+                - heading "Airgap CAPI Image Build" [level=1] [ref=e275]
+                - paragraph [ref=e276]:
+                  - text: The CAPI Image Builder can be used in airgapped environments to build images for Kubernetes clusters deployed through Palette and VerteX that use VMware vSphere as the infrastructure provider. Review the guides below for examples on how to build custom
+                  - link "Rocky Linux" [ref=e277] [cursor=pointer]:
+                    - /url: https://rockylinux.org/
+                  - text: and
+                  - link "Red Hat Enterprise Linux (RHEL)" [ref=e278] [cursor=pointer]:
+                    - /url: https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux
+                  - text: images with
+                  - link "Palette eXtended Kubernetes (PXK)" [ref=e279] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=kubernetes
+                  - text: .
+                - generic [ref=e280]:
+                  - generic [ref=e281]:
+                    - img [ref=e283]
+                    - text: tech preview
+                  - generic [ref=e285]: This is a Tech Preview feature and is subject to change. Do not use this feature in production workloads.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e286]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e287] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e288]:
+                  - listitem [ref=e289]:
+                    - link "Airgap RHEL and PXK" [ref=e290] [cursor=pointer]:
+                      - /url: /byoos/capi-image-builder/build-image-vmware/airgap-build/rhel-capi-airgap/
+                  - listitem [ref=e291]:
+                    - link "Airgap Rocky and PXK" [ref=e292] [cursor=pointer]:
+                      - /url: /byoos/capi-image-builder/build-image-vmware/airgap-build/rocky-capi-airgap/
+              - generic [ref=e293]:
+                - generic [ref=e295]:
+                  - text: "Tags:"
+                  - list [ref=e296]:
+                    - listitem [ref=e297]:
+                      - link "operating system" [ref=e298] [cursor=pointer]:
+                        - /url: /tags/operating-system/
+                    - listitem [ref=e299]:
+                      - link "byoos" [ref=e300] [cursor=pointer]:
+                        - /url: /tags/byoos/
+                    - listitem [ref=e301]:
+                      - link "capi iamge builder" [ref=e302] [cursor=pointer]:
+                        - /url: /tags/capi-iamge-builder/
+                    - listitem [ref=e303]:
+                      - link "airgap" [ref=e304] [cursor=pointer]:
+                        - /url: /tags/airgap/
+                - link "Edit this page" [ref=e307] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/byoos/capi-image-builder/build-image-vmware/airgap-build/airgap-build.md
+                  - img [ref=e308]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e312]:
+              - link "Previous « Rocky and PXK" [ref=e313] [cursor=pointer]:
+                - /url: /byoos/capi-image-builder/build-image-vmware/non-airgap-build/rocky-capi/
+                - generic [ref=e314]: Previous
+                - generic [ref=e315]: « Rocky and PXK
+              - link "Next RHEL and PXK »" [ref=e316] [cursor=pointer]:
+                - /url: /byoos/capi-image-builder/build-image-vmware/airgap-build/rhel-capi-airgap/
+                - generic [ref=e317]: Next
+                - generic [ref=e318]: RHEL and PXK »
+          - list [ref=e321]:
+            - listitem [ref=e322]:
+              - link "Resources" [ref=e323] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e324] [cursor=pointer]:
+    - generic [ref=e327]:
+      - img "Project Logo" [ref=e328]
+      - paragraph [ref=e329]: Ask AI
+```

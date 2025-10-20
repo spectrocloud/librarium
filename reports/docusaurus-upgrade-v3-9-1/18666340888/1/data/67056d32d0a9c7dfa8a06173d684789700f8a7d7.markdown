@@ -1,0 +1,471 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [expanded] [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+                - list [ref=e96]:
+                  - listitem [ref=e97]:
+                    - generic [ref=e98]:
+                      - link "Agent Mode" [ref=e99] [cursor=pointer]:
+                        - /url: /deployment-modes/agent-mode/
+                      - button "Toggle the collapsible sidebar category 'Agent Mode'" [ref=e100] [cursor=pointer]
+                  - listitem [ref=e101]:
+                    - generic [ref=e102]:
+                      - link "Appliance Mode" [expanded] [ref=e103] [cursor=pointer]:
+                        - /url: /deployment-modes/appliance-mode/
+                      - button "Toggle the collapsible sidebar category 'Appliance Mode'" [ref=e104] [cursor=pointer]
+                    - list [ref=e105]:
+                      - listitem [ref=e106]:
+                        - link "Appliance Studio" [ref=e107] [cursor=pointer]:
+                          - /url: /deployment-modes/appliance-mode/appliance-studio/
+                  - listitem [ref=e108]:
+                    - link "Controller Mode" [ref=e109] [cursor=pointer]:
+                      - /url: /deployment-modes/controller-mode/
+              - listitem [ref=e110]:
+                - generic [ref=e111]:
+                  - link "Clusters" [ref=e112] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e114]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e123] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e125]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Palette Dev Engine" [ref=e130] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e132]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Virtual Machine Orchestrator" [ref=e137] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e139]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "Workspaces" [ref=e144] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e146]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Packs List" [ref=e151] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e153]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "User & Role Management" [ref=e158] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e160]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Registries and Packs" [ref=e165] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e167]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Security" [ref=e172] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e174]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Audit Logs" [ref=e179] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e181]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e183] [cursor=pointer]
+              - listitem [ref=e184]:
+                - generic [ref=e185]:
+                  - link "Self-Hosted Palette" [ref=e186] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e188]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e190] [cursor=pointer]
+              - listitem [ref=e191]:
+                - generic [ref=e192]:
+                  - link "Palette VerteX" [ref=e193] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e195]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e197] [cursor=pointer]
+              - listitem [ref=e198]:
+                - generic [ref=e199]:
+                  - link "Tenant Administration" [ref=e200] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e202]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e204] [cursor=pointer]
+              - listitem [ref=e205]:
+                - generic [ref=e206]:
+                  - link "Automation" [ref=e207] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e209]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e211] [cursor=pointer]
+              - listitem [ref=e212]:
+                - generic [ref=e213]:
+                  - link "Troubleshooting" [ref=e214] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e216]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e218] [cursor=pointer]
+              - listitem [ref=e219]:
+                - link "Glossary" [ref=e220] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e222]
+                  - text: Glossary
+              - listitem [ref=e224]:
+                - generic [ref=e225]:
+                  - link "Compliance & Legal" [ref=e226] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e228]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e230] [cursor=pointer]
+              - listitem [ref=e231]:
+                - button "Privacy Settings" [ref=e232] [cursor=pointer]:
+                  - img [ref=e233]
+                  - text: Privacy Settings
+      - main [ref=e235]:
+        - generic [ref=e237]:
+          - generic [ref=e239]:
+            - article [ref=e240]:
+              - navigation "Breadcrumbs" [ref=e241]:
+                - list [ref=e242]:
+                  - listitem [ref=e243]:
+                    - link "Home page" [ref=e244] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e245]
+                  - listitem [ref=e247]:
+                    - link "Deployment Modes" [ref=e248] [cursor=pointer]:
+                      - /url: /deployment-modes/
+                  - listitem [ref=e249]:
+                    - link "Appliance Mode" [ref=e250] [cursor=pointer]:
+                      - /url: /deployment-modes/appliance-mode/
+                  - listitem [ref=e251]:
+                    - generic [ref=e252]: Appliance Studio
+              - generic [ref=e253]:
+                - heading "Appliance Studio" [level=1] [ref=e255]
+                - paragraph [ref=e256]: Appliance Studio is a lightweight and standalone configuration Graphic User Interface (GUI) for EdgeForge. It runs locally on your machine and allows you to build, save, edit, and manage the two configuration files that are essential to the EdgeForge process, with zero risk of syntax errors.
+                - paragraph [ref=e257]: It also allows you to create presets, which are optional building blocks that you can reuse to create new configuration files.
+                - generic [ref=e258]:
+                  - generic [ref=e259]:
+                    - img [ref=e261]
+                    - text: tech preview
+                  - generic [ref=e263]: This is a Tech Preview feature and is subject to change. Do not use this feature in production workloads.
+                - heading "Deploy Appliance StudioDirect link to Deploy Appliance Studio" [level=2] [ref=e264]:
+                  - text: Deploy Appliance Studio
+                  - link "Direct link to Deploy Appliance Studio" [ref=e265] [cursor=pointer]:
+                    - /url: "#deploy-appliance-studio"
+                    - text: "#"
+                - paragraph [ref=e266]: You can deploy Appliance Studio locally either through Docker or Podman. Both AMD64 and ARM64 processor architectures are supported.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e267]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e268] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e269]:
+                  - listitem [ref=e270]: A terminal with Internet access.
+                - generic [ref=e271]:
+                  - tablist [ref=e272]:
+                    - tab "Docker Compose" [selected] [ref=e273] [cursor=pointer]
+                    - tab "Podman Compose" [ref=e274] [cursor=pointer]
+                  - tabpanel [ref=e276]:
+                    - list [ref=e277]:
+                      - listitem [ref=e278]:
+                        - link "Docker" [ref=e279] [cursor=pointer]:
+                          - /url: https://docker.io
+                        - text: and
+                        - link "Docker Compose" [ref=e280] [cursor=pointer]:
+                          - /url: https://docs.docker.com/compose/install/
+                        - text: are installed and available.
+                - heading "ProcedureDirect link to Procedure" [level=3] [ref=e281]:
+                  - text: Procedure
+                  - link "Direct link to Procedure" [ref=e282] [cursor=pointer]:
+                    - /url: "#procedure"
+                    - text: "#"
+                - list [ref=e283]:
+                  - listitem [ref=e284]:
+                    - paragraph [ref=e285]:
+                      - text: Download the
+                      - code [ref=e286]: docker-compose.yml
+                      - text: file to your local machine using the following command.
+                    - generic [ref=e288]:
+                      - code [ref=e290]:
+                        - generic [ref=e291]: wget software.spectrocloud.com/appliance-studio/v4.6.1/docker-compose.yml
+                      - generic [ref=e292]:
+                        - button "Toggle word wrap" [ref=e293] [cursor=pointer]:
+                          - img [ref=e294]
+                        - button "Copy code to clipboard" [ref=e296] [cursor=pointer]:
+                          - generic [ref=e297]:
+                            - img [ref=e298]
+                            - img [ref=e300]
+                - generic [ref=e302]:
+                  - tablist [ref=e303]:
+                    - tab "Docker Compose" [selected] [ref=e304] [cursor=pointer]
+                    - tab "Podman Compose" [ref=e305] [cursor=pointer]
+                  - tabpanel [ref=e307]:
+                    - list [ref=e308]:
+                      - listitem [ref=e309]:
+                        - paragraph [ref=e310]:
+                          - text: (Optional) Modify the persistent data directory. By default, the
+                          - code [ref=e311]: docker-compose.yml
+                          - text: file configures the
+                          - code [ref=e312]: deploy/appliance-studio-data
+                          - text: directory as the persistent data directory. You may change this to point to any other directory by modifying the
+                          - code [ref=e313]: services.server.volumes
+                          - text: field. Create a directory named
+                          - code [ref=e314]: appliance-studio-data
+                          - text: in the same directory as your
+                          - code [ref=e315]: docker-compose.yml
+                          - text: file to match the default configuration.
+                        - paragraph [ref=e316]:
+                          - text: Change the path before the
+                          - code [ref=e317]: ":"
+                          - text: sign to point to the directory you want to mount. You can use an absolute path or a relative path. If you use a relative path, the path is relative to the
+                          - code [ref=e318]: docker-compose.yml
+                          - text: file, not the directory from which you issue the
+                          - code [ref=e319]: docker compose up
+                          - text: command.
+                        - generic [ref=e320]:
+                          - generic [ref=e321]: Example
+                          - generic [ref=e322]:
+                            - code [ref=e324]:
+                              - generic [ref=e325]: "services:"
+                              - generic [ref=e326]: "server:"
+                              - generic [ref=e327]: "container_name: appliance-studio-server"
+                              - generic [ref=e328]: "ports:"
+                              - generic [ref=e329]: "- \"4500:4500\""
+                              - generic [ref=e330]: "networks:"
+                              - generic [ref=e331]: "- appliance-studio-net"
+                              - generic [ref=e332]: "restart: unless-stopped"
+                              - generic [ref=e333]: "volumes:"
+                              - generic [ref=e334]: "# Mount a host directory to /data inside the container for persistent storage."
+                              - generic [ref=e335]: "# IMPORTANT: Ensure the host directory (e.g., ./appliance-studio-data below) exists locally before running 'docker-compose up'."
+                              - generic [ref=e336]: "# You can change './appliance-studio-data' to any path on your host machine."
+                              - generic [ref=e337]: "- ./appliance-studio-data/additional-path:/data"
+                            - button "Toggle word wrap" [ref=e339] [cursor=pointer]:
+                              - img [ref=e340]
+                        - paragraph [ref=e342]: The data stored in the data directory includes your saved configurations and presets.
+                      - listitem [ref=e343]:
+                        - paragraph [ref=e344]: If you did not modify the persistent data mount directory, skip this step.
+                        - paragraph [ref=e345]: If you modified the persistent data mount directory, ensure that the directory exists before proceeding to the next step. Create the directory if it does not exist.
+                      - listitem [ref=e346]:
+                        - paragraph [ref=e347]: Issue the following command to bring up Appliance Studio.
+                        - generic [ref=e349]:
+                          - code [ref=e351]:
+                            - generic [ref=e352]: docker compose up -d
+                          - button "Copy code to clipboard" [ref=e354] [cursor=pointer]:
+                            - generic [ref=e355]:
+                              - img [ref=e356]
+                              - img [ref=e358]
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e360]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e361] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e362]:
+                  - listitem [ref=e363]:
+                    - paragraph [ref=e364]:
+                      - text: Visit port 8443 of your machine to access the Appliance Studio UI. You can do this by opening a web browser and entering the URL of
+                      - code [ref=e365]: http://localhost:8443
+                      - text: .
+                  - listitem [ref=e366]:
+                    - paragraph [ref=e367]: Confirm that Appliance Studio is accessible.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e368]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e369] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e370]:
+                  - text: Refer to
+                  - link "Prepare User Data and Argument Files" [ref=e371] [cursor=pointer]:
+                    - /url: /clusters/edge/edgeforge-workflow/prepare-user-data/
+                  - text: to learn how to use Appliance Studio to prepare your EdgeForge configuration files.
+                - paragraph [ref=e372]: Issue the following commands to bring down Application Studio once you are done. Your saved presets and configurations will persist when you bring it up again.
+                - generic [ref=e373]:
+                  - tablist [ref=e374]:
+                    - tab "Docker Compose" [selected] [ref=e375] [cursor=pointer]
+                    - tab "Podman Compose" [ref=e376] [cursor=pointer]
+                  - tabpanel [ref=e378]:
+                    - generic [ref=e380]:
+                      - code [ref=e382]:
+                        - generic [ref=e383]: docker compose down
+                      - button "Copy code to clipboard" [ref=e385] [cursor=pointer]:
+                        - generic [ref=e386]:
+                          - img [ref=e387]
+                          - img [ref=e389]
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e391]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e392] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - paragraph [ref=e393]:
+                  - text: Appliance Studio can help you prepare the two essential configuration files used during the EdgeForge process. Refer to the following pages for more information on the
+                  - code [ref=e394]: .arg
+                  - text: file and
+                  - code [ref=e395]: user-data
+                  - text: file.
+                - list [ref=e396]:
+                  - listitem [ref=e397]:
+                    - paragraph [ref=e398]:
+                      - link "Prepare User Data and Argument Files" [ref=e399] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/prepare-user-data/
+                  - listitem [ref=e400]:
+                    - paragraph [ref=e401]:
+                      - link "Edge Installer Reference" [ref=e402] [cursor=pointer]:
+                        - /url: /clusters/edge/edge-configuration/installer-reference/
+                  - listitem [ref=e403]:
+                    - paragraph [ref=e404]:
+                      - link "EdgeForge Build Configuration" [ref=e405] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/palette-canvos/arg/
+              - generic [ref=e406]:
+                - generic [ref=e408]:
+                  - text: "Tags:"
+                  - list [ref=e409]:
+                    - listitem [ref=e410]:
+                      - link "edge" [ref=e411] [cursor=pointer]:
+                        - /url: /tags/edge/
+                - link "Edit this page" [ref=e414] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/deployment-modes/appliance-mode/appliance-studio.md
+                  - img [ref=e415]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e419]:
+              - link "Previous « Appliance Mode" [ref=e420] [cursor=pointer]:
+                - /url: /deployment-modes/appliance-mode/
+                - generic [ref=e421]: Previous
+                - generic [ref=e422]: « Appliance Mode
+              - link "Next Controller Mode »" [ref=e423] [cursor=pointer]:
+                - /url: /deployment-modes/controller-mode/
+                - generic [ref=e424]: Next
+                - generic [ref=e425]: Controller Mode »
+          - list [ref=e428]:
+            - listitem [ref=e429]:
+              - link "Deploy Appliance Studio" [ref=e430] [cursor=pointer]:
+                - /url: "#deploy-appliance-studio"
+              - list [ref=e431]:
+                - listitem [ref=e432]:
+                  - link "Prerequisites" [ref=e433] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e434]:
+                  - link "Procedure" [ref=e435] [cursor=pointer]:
+                    - /url: "#procedure"
+                - listitem [ref=e436]:
+                  - link "Validate" [ref=e437] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e438]:
+              - link "Next Steps" [ref=e439] [cursor=pointer]:
+                - /url: "#next-steps"
+            - listitem [ref=e440]:
+              - link "Resources" [ref=e441] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e442] [cursor=pointer]:
+    - generic [ref=e445]:
+      - img "Project Logo" [ref=e446]
+      - paragraph [ref=e447]: Ask AI
+```

@@ -1,0 +1,369 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Audit Logs" [ref=e165] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e167]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Self-Hosted Palette" [ref=e172] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e174]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Palette VerteX" [expanded] [ref=e179] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e181]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e183] [cursor=pointer]
+                - list [ref=e184]:
+                  - listitem [ref=e185]:
+                    - generic [ref=e186]:
+                      - link "FIPS" [ref=e187] [cursor=pointer]:
+                        - /url: /vertex/fips/
+                      - button "Toggle the collapsible sidebar category 'FIPS'" [ref=e188] [cursor=pointer]
+                  - listitem [ref=e189]:
+                    - generic [ref=e190]:
+                      - link "Installation" [ref=e191] [cursor=pointer]:
+                        - /url: /vertex/install-palette-vertex/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e192] [cursor=pointer]
+                  - listitem [ref=e193]:
+                    - link "Activate VerteX" [ref=e194] [cursor=pointer]:
+                      - /url: /vertex/activate-installation/
+                  - listitem [ref=e195]:
+                    - link "Supported Platforms" [ref=e196] [cursor=pointer]:
+                      - /url: /vertex/supported-platforms/
+                  - listitem [ref=e197]:
+                    - generic [ref=e198]:
+                      - link "System Management" [ref=e199] [cursor=pointer]:
+                        - /url: /vertex/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e200] [cursor=pointer]
+                  - listitem [ref=e201]:
+                    - generic [ref=e202]:
+                      - link "Upgrade" [ref=e203] [cursor=pointer]:
+                        - /url: /vertex/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e204] [cursor=pointer]
+              - listitem [ref=e205]:
+                - generic [ref=e206]:
+                  - link "Tenant Administration" [ref=e207] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e209]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e211] [cursor=pointer]
+              - listitem [ref=e212]:
+                - generic [ref=e213]:
+                  - link "Automation" [ref=e214] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e216]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e218] [cursor=pointer]
+              - listitem [ref=e219]:
+                - generic [ref=e220]:
+                  - link "Troubleshooting" [ref=e221] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e223]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e225] [cursor=pointer]
+              - listitem [ref=e226]:
+                - link "Glossary" [ref=e227] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e229]
+                  - text: Glossary
+              - listitem [ref=e231]:
+                - generic [ref=e232]:
+                  - link "Compliance & Legal" [ref=e233] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e235]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e237] [cursor=pointer]
+              - listitem [ref=e238]:
+                - button "Privacy Settings" [ref=e239] [cursor=pointer]:
+                  - img [ref=e240]
+                  - text: Privacy Settings
+      - main [ref=e242]:
+        - generic [ref=e244]:
+          - generic [ref=e246]:
+            - article [ref=e247]:
+              - navigation "Breadcrumbs" [ref=e248]:
+                - list [ref=e249]:
+                  - listitem [ref=e250]:
+                    - link "Home page" [ref=e251] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e252]
+                  - listitem [ref=e254]:
+                    - generic [ref=e255]: Palette VerteX
+              - generic [ref=e256]:
+                - heading "Palette VerteX" [level=1] [ref=e258]
+                - paragraph [ref=e259]: Palette VerteX offers regulated industries, such as government and public sector organizations that handle sensitive and classified information simplicity, security, and scale in production Kubernetes. VerteX is available as a self-hosted platform offering that you can install in your data centers or public cloud providers to manage Kubernetes clusters.
+                - heading "FIPS-CompliantDirect link to FIPS-Compliant" [level=2] [ref=e260]:
+                  - text: FIPS-Compliant
+                  - link "Direct link to FIPS-Compliant" [ref=e261] [cursor=pointer]:
+                    - /url: "#fips-compliant"
+                    - text: "#"
+                - paragraph [ref=e262]: Palette VerteX integrates validated Federal Information Processing Standards (FIPS) 140-3 cryptographic modules in Kubernetes clusters it deploys to ensure robust data protection for your organization’s infrastructure and applications.
+                - paragraph [ref=e263]:
+                  - text: To learn more about our FIPS 140-3 certification, review
+                  - link "Spectro Cloud Cryptographic Module" [ref=e264] [cursor=pointer]:
+                    - /url: https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5061
+                  - text: . FIPS modules, which are accessible in our private artifact repository, extend Palette’s existing security features that include security scans, powerful RBAC, and tamper-proof edge device images. Palette VerteX protects sensitive data in clusters across edge, bare metal, on-prem data centers, air-gapped environments, and cloud.
+                - paragraph [ref=e265]:
+                  - text: To learn more about FIPS in Palette VerteX, check out the
+                  - link "FIPS" [ref=e266] [cursor=pointer]:
+                    - /url: /vertex/fips/
+                  - text: section.
+                - heading "Supported PlatformsDirect link to Supported Platforms" [level=2] [ref=e267]:
+                  - text: Supported Platforms
+                  - link "Direct link to Supported Platforms" [ref=e268] [cursor=pointer]:
+                    - /url: "#supported-platforms"
+                    - text: "#"
+                - paragraph [ref=e269]:
+                  - text: To learn more about infrastructure platforms supported by Palette VerteX, refer to the
+                  - link "Supported Platforms" [ref=e270] [cursor=pointer]:
+                    - /url: /vertex/supported-platforms/
+                  - text: section.
+                - heading "Access Palette VerteXDirect link to Access Palette VerteX" [level=2] [ref=e271]:
+                  - text: Access Palette VerteX
+                  - link "Direct link to Access Palette VerteX" [ref=e272] [cursor=pointer]:
+                    - /url: "#access-palette-vertex"
+                    - text: "#"
+                - paragraph [ref=e273]:
+                  - text: To set up a Palette VerteX account, contact our support team by sending an email to
+                  - link "support@spectrocloud.com" [ref=e274] [cursor=pointer]:
+                    - /url: mailto:support@spectrocloud.com
+                  - text: ". Include the following information in your email:"
+                - list [ref=e275]:
+                  - listitem [ref=e276]: Your full name
+                  - listitem [ref=e277]: Organization name (if applicable)
+                  - listitem [ref=e278]: Email address
+                  - listitem [ref=e279]: Phone number (optional)
+                  - listitem [ref=e280]: Target Platform (VMware or Kubernetes)
+                  - listitem [ref=e281]: A brief description of your intended use of VerteX
+                - paragraph [ref=e282]: Our dedicated support team will promptly get in touch with you to provide the necessary assistance and share the installer image, credentials, and an endpoint URL to access the FIPS registry.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e283]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e284] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e285]:
+                  - listitem [ref=e286]:
+                    - paragraph [ref=e287]:
+                      - link "FIPS" [ref=e288] [cursor=pointer]:
+                        - /url: /vertex/fips/
+                  - listitem [ref=e289]:
+                    - paragraph [ref=e290]:
+                      - link "Installation" [ref=e291] [cursor=pointer]:
+                        - /url: /vertex/install-palette-vertex/
+                  - listitem [ref=e292]:
+                    - paragraph [ref=e293]:
+                      - link "Supported Platforms" [ref=e294] [cursor=pointer]:
+                        - /url: /vertex/supported-platforms/
+                  - listitem [ref=e295]:
+                    - paragraph [ref=e296]:
+                      - link "System Management" [ref=e297] [cursor=pointer]:
+                        - /url: /vertex/system-management/
+                  - listitem [ref=e298]:
+                    - paragraph [ref=e299]:
+                      - link "Upgrade Notes" [ref=e300] [cursor=pointer]:
+                        - /url: /vertex/upgrade/
+                  - listitem [ref=e301]:
+                    - paragraph [ref=e302]:
+                      - link "Enterprise Install Troubleshooting" [ref=e303] [cursor=pointer]:
+                        - /url: /troubleshooting/enterprise-install/
+              - generic [ref=e304]:
+                - generic [ref=e306]:
+                  - text: "Tags:"
+                  - list [ref=e307]:
+                    - listitem [ref=e308]:
+                      - link "vertex" [ref=e309] [cursor=pointer]:
+                        - /url: /tags/vertex/
+                - link "Edit this page" [ref=e312] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vertex/vertex.md
+                  - img [ref=e313]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e317]:
+              - link "Previous « Palette Management Appliance" [ref=e318] [cursor=pointer]:
+                - /url: /enterprise-version/upgrade/palette-management-appliance/
+                - generic [ref=e319]: Previous
+                - generic [ref=e320]: « Palette Management Appliance
+              - link "Next FIPS »" [ref=e321] [cursor=pointer]:
+                - /url: /vertex/fips/
+                - generic [ref=e322]: Next
+                - generic [ref=e323]: FIPS »
+          - list [ref=e326]:
+            - listitem [ref=e327]:
+              - link "FIPS-Compliant" [ref=e328] [cursor=pointer]:
+                - /url: "#fips-compliant"
+            - listitem [ref=e329]:
+              - link "Supported Platforms" [ref=e330] [cursor=pointer]:
+                - /url: "#supported-platforms"
+            - listitem [ref=e331]:
+              - link "Access Palette VerteX" [ref=e332] [cursor=pointer]:
+                - /url: "#access-palette-vertex"
+            - listitem [ref=e333]:
+              - link "Resources" [ref=e334] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e335] [cursor=pointer]:
+    - generic [ref=e338]:
+      - img "Project Logo" [ref=e339]
+      - paragraph [ref=e340]: Ask AI
+```

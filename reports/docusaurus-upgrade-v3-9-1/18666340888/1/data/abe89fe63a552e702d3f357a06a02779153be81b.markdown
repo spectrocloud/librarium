@@ -1,0 +1,353 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Audit Logs" [ref=e165] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e167]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Self-Hosted Palette" [ref=e172] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e174]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Palette VerteX" [ref=e179] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e181]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e183] [cursor=pointer]
+              - listitem [ref=e184]:
+                - generic [ref=e185]:
+                  - link "Tenant Administration" [ref=e186] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e188]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e190] [cursor=pointer]
+              - listitem [ref=e191]:
+                - generic [ref=e192]:
+                  - link "Automation" [expanded] [ref=e193] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e195]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e197] [cursor=pointer]
+                - list [ref=e198]:
+                  - listitem [ref=e199]:
+                    - generic [ref=e200]:
+                      - link "Palette CLI" [ref=e201] [cursor=pointer]:
+                        - /url: /automation/palette-cli/
+                      - button "Toggle the collapsible sidebar category 'Palette CLI'" [ref=e202] [cursor=pointer]
+                  - listitem [ref=e203]:
+                    - generic [ref=e204]:
+                      - link "Palette Go SDK" [ref=e205] [cursor=pointer]:
+                        - /url: /automation/palette-sdk/
+                      - button "Toggle the collapsible sidebar category 'Palette Go SDK'" [ref=e206] [cursor=pointer]
+                  - listitem [ref=e207]:
+                    - link "Terraform" [ref=e208] [cursor=pointer]:
+                      - /url: /automation/terraform/
+                  - listitem [ref=e209]:
+                    - generic [ref=e210]:
+                      - link "Crossplane" [expanded] [ref=e211] [cursor=pointer]:
+                        - /url: /automation/crossplane/
+                      - button "Toggle the collapsible sidebar category 'Crossplane'" [ref=e212] [cursor=pointer]
+                    - list [ref=e213]:
+                      - listitem [ref=e214]:
+                        - link "Deploy an AWS IaaS Cluster with Crossplane" [ref=e215] [cursor=pointer]:
+                          - /url: /automation/crossplane/deploy-cluster-aws-crossplane/
+                      - listitem [ref=e216]:
+                        - link "Deploy an Azure IaaS Cluster with Crossplane" [ref=e217] [cursor=pointer]:
+                          - /url: /automation/crossplane/deploy-cluster-azure-crossplane/
+                      - listitem [ref=e218]:
+                        - link "Deploy a GCP IaaS Cluster with Crossplane" [ref=e219] [cursor=pointer]:
+                          - /url: /automation/crossplane/deploy-cluster-gcp-crossplane/
+              - listitem [ref=e220]:
+                - generic [ref=e221]:
+                  - link "Troubleshooting" [ref=e222] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e224]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e226] [cursor=pointer]
+              - listitem [ref=e227]:
+                - link "Glossary" [ref=e228] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e230]
+                  - text: Glossary
+              - listitem [ref=e232]:
+                - generic [ref=e233]:
+                  - link "Compliance & Legal" [ref=e234] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e236]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e238] [cursor=pointer]
+              - listitem [ref=e239]:
+                - button "Privacy Settings" [ref=e240] [cursor=pointer]:
+                  - img [ref=e241]
+                  - text: Privacy Settings
+      - main [ref=e243]:
+        - generic [ref=e245]:
+          - generic [ref=e247]:
+            - article [ref=e248]:
+              - navigation "Breadcrumbs" [ref=e249]:
+                - list [ref=e250]:
+                  - listitem [ref=e251]:
+                    - link "Home page" [ref=e252] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e253]
+                  - listitem [ref=e255]:
+                    - link "Automation" [ref=e256] [cursor=pointer]:
+                      - /url: /automation/
+                  - listitem [ref=e257]:
+                    - generic [ref=e258]: Crossplane
+              - generic [ref=e259]:
+                - heading "Crossplane" [level=1] [ref=e261]
+                - paragraph [ref=e262]:
+                  - text: Palette supports the open source Cloud Native Computing Foundation (CNCF) project
+                  - link "Crossplane" [ref=e263] [cursor=pointer]:
+                    - /url: https://www.crossplane.io/
+                  - text: . Crossplane transforms Kubernetes clusters into universal control planes, extending the Kubernetes API and enabling infrastructure resource provisioning and management across major infrastructure providers.
+                - paragraph [ref=e264]:
+                  - text: These resources, called
+                  - link "Managed Resources (MR)" [ref=e265] [cursor=pointer]:
+                    - /url: https://docs.crossplane.io/v2.0/managed-resources/managed-resources/#managed-resource-fields
+                  - text: within the Crossplane environment, are essentially Kubernetes Custom Resource Definitions (CRDs) that represent infrastructure resources as native Kubernetes objects. Because they are Kubernetes objects, you can interact with them using standard commands like
+                  - code [ref=e266]: kubectl describe
+                  - text: . When users create a managed resource, Crossplane interacts with the infrastructure provider API to request the creation of the resource within the provider's environment.
+                - heading "Palette ProviderDirect link to Palette Provider" [level=2] [ref=e267]:
+                  - text: Palette Provider
+                  - link "Direct link to Palette Provider" [ref=e268] [cursor=pointer]:
+                    - /url: "#palette-provider"
+                    - text: "#"
+                - paragraph [ref=e269]: You can use the Palette Crossplane provider to interact with the Palette API and create resources declaratively.
+                - paragraph [ref=e270]:
+                  - text: Refer to the
+                  - link "Palette Provider" [ref=e271] [cursor=pointer]:
+                    - /url: https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/latest
+                  - text: page for a complete list of managed resources and examples.
+                - heading "Get StartedDirect link to Get Started" [level=2] [ref=e272]:
+                  - text: Get Started
+                  - link "Direct link to Get Started" [ref=e273] [cursor=pointer]:
+                    - /url: "#get-started"
+                    - text: "#"
+                - paragraph [ref=e274]: "You can use the Palette Crossplane Provider to deploy Kubernetes clusters on supported public cloud, data center, and bare metal infrastructures. For examples of end-to-end cluster provisioning with Crossplane, review the following guides:"
+                - list [ref=e275]:
+                  - listitem [ref=e276]:
+                    - link "Deploy an AWS IaaS Cluster with Crossplane" [ref=e277] [cursor=pointer]:
+                      - /url: /automation/crossplane/deploy-cluster-aws-crossplane/
+                  - listitem [ref=e278]:
+                    - link "Deploy an Azure IaaS Cluster with Crossplane" [ref=e279] [cursor=pointer]:
+                      - /url: /automation/crossplane/deploy-cluster-azure-crossplane/
+                  - listitem [ref=e280]:
+                    - link "Deploy a GCP IaaS Cluster with Crossplane" [ref=e281] [cursor=pointer]:
+                      - /url: /automation/crossplane/deploy-cluster-gcp-crossplane/
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e282]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e283] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e284]:
+                  - listitem [ref=e285]:
+                    - link "Crossplane Documentation" [ref=e286] [cursor=pointer]:
+                      - /url: https://docs.crossplane.io/latest/
+              - generic [ref=e287]:
+                - generic [ref=e289]:
+                  - text: "Tags:"
+                  - list [ref=e290]:
+                    - listitem [ref=e291]:
+                      - link "crossplane" [ref=e292] [cursor=pointer]:
+                        - /url: /tags/crossplane/
+                    - listitem [ref=e293]:
+                      - link "iac" [ref=e294] [cursor=pointer]:
+                        - /url: /tags/iac/
+                    - listitem [ref=e295]:
+                      - link "automation" [ref=e296] [cursor=pointer]:
+                        - /url: /tags/automation/
+                    - listitem [ref=e297]:
+                      - link "infrastructure as code" [ref=e298] [cursor=pointer]:
+                        - /url: /tags/infrastructure-as-code/
+                - link "Edit this page" [ref=e301] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/automation/crossplane/crossplane.md
+                  - img [ref=e302]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e306]:
+              - link "Previous « Terraform" [ref=e307] [cursor=pointer]:
+                - /url: /automation/terraform/
+                - generic [ref=e308]: Previous
+                - generic [ref=e309]: « Terraform
+              - link "Next Deploy an AWS IaaS Cluster with Crossplane »" [ref=e310] [cursor=pointer]:
+                - /url: /automation/crossplane/deploy-cluster-aws-crossplane/
+                - generic [ref=e311]: Next
+                - generic [ref=e312]: Deploy an AWS IaaS Cluster with Crossplane »
+          - list [ref=e315]:
+            - listitem [ref=e316]:
+              - link "Palette Provider" [ref=e317] [cursor=pointer]:
+                - /url: "#palette-provider"
+            - listitem [ref=e318]:
+              - link "Get Started" [ref=e319] [cursor=pointer]:
+                - /url: "#get-started"
+            - listitem [ref=e320]:
+              - link "Resources" [ref=e321] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e322] [cursor=pointer]:
+    - generic [ref=e325]:
+      - img "Project Logo" [ref=e326]
+      - paragraph [ref=e327]: Ask AI
+```

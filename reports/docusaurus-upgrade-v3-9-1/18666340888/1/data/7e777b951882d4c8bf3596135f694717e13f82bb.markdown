@@ -1,0 +1,1107 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Introduction" [ref=e41] [cursor=pointer]:
+                  - /url: /api/introduction/
+                  - img [ref=e43]
+                  - text: Introduction
+              - listitem [ref=e45]:
+                - link "Example Usage" [ref=e46] [cursor=pointer]:
+                  - /url: /api/samples/
+              - listitem [ref=e47]:
+                - link "Postman Collection" [ref=e48] [cursor=pointer]:
+                  - /url: /api/postman-collection/
+              - listitem [ref=e49]:
+                - generic [ref=e50]:
+                  - link "Palette API V1" [expanded] [ref=e51] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Palette API V1'" [ref=e52] [cursor=pointer]
+                - list [ref=e53]:
+                  - listitem [ref=e54]:
+                    - link "Introduction" [ref=e55] [cursor=pointer]:
+                      - /url: /api/v1/palette-apis-4-7/
+                  - listitem [ref=e56]:
+                    - generic [ref=e57]:
+                      - link "Api Keys" [ref=e58] [cursor=pointer]:
+                        - /url: /api/v1/api-keys/
+                      - button "Toggle the collapsible sidebar category 'Api Keys'" [ref=e59] [cursor=pointer]
+                  - listitem [ref=e60]:
+                    - generic [ref=e61]:
+                      - link "App Deployments" [ref=e62] [cursor=pointer]:
+                        - /url: /api/v1/app-deployments/
+                      - button "Toggle the collapsible sidebar category 'App Deployments'" [ref=e63] [cursor=pointer]
+                  - listitem [ref=e64]:
+                    - generic [ref=e65]:
+                      - link "App Profiles" [ref=e66] [cursor=pointer]:
+                        - /url: /api/v1/app-profiles/
+                      - button "Toggle the collapsible sidebar category 'App Profiles'" [ref=e67] [cursor=pointer]
+                  - listitem [ref=e68]:
+                    - generic [ref=e69]:
+                      - link "Audits" [ref=e70] [cursor=pointer]:
+                        - /url: /api/v1/audits/
+                      - button "Toggle the collapsible sidebar category 'Audits'" [ref=e71] [cursor=pointer]
+                  - listitem [ref=e72]:
+                    - generic [ref=e73]:
+                      - link "Auth" [ref=e74] [cursor=pointer]:
+                        - /url: /api/v1/auth/
+                      - button "Toggle the collapsible sidebar category 'Auth'" [ref=e75] [cursor=pointer]
+                  - listitem [ref=e76]:
+                    - generic [ref=e77]:
+                      - link "Cloudaccounts" [ref=e78] [cursor=pointer]:
+                        - /url: /api/v1/cloudaccounts/
+                      - button "Toggle the collapsible sidebar category 'Cloudaccounts'" [ref=e79] [cursor=pointer]
+                  - listitem [ref=e80]:
+                    - generic [ref=e81]:
+                      - link "Cloudconfigs" [ref=e82] [cursor=pointer]:
+                        - /url: /api/v1/cloudconfigs/
+                      - button "Toggle the collapsible sidebar category 'Cloudconfigs'" [ref=e83] [cursor=pointer]
+                  - listitem [ref=e84]:
+                    - generic [ref=e85]:
+                      - link "Clouds" [expanded] [ref=e86] [cursor=pointer]:
+                        - /url: /api/v1/clouds/
+                      - button "Toggle the collapsible sidebar category 'Clouds'" [ref=e87] [cursor=pointer]
+                    - list [ref=e88]:
+                      - listitem [ref=e89]:
+                        - link "post Retrieves the Aws secret credentials" [ref=e90] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-account-secret-credentials/
+                      - listitem [ref=e91]:
+                        - link "get Retrieves AWS external id and account id" [ref=e92] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-account-sts-get/
+                      - listitem [ref=e93]:
+                        - link "post Validate the specified AWS account credentials" [ref=e94] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-account-validate/
+                      - listitem [ref=e95]:
+                        - link "get Retrieves a list of AWS AMI types" [ref=e96] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-ami-types/
+                      - listitem [ref=e97]:
+                        - link "post validates aws cloud watch credentials" [ref=e98] [cursor=pointer]:
+                          - /url: /api/v1/v-1-clouds-aws-cloud-watch-validate/
+                      - listitem [ref=e99]:
+                        - link "post Retrieves AWS cloud account usage cost from cost explorer." [ref=e100] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-cloud-cost/
+                      - listitem [ref=e101]:
+                        - link "get Get AWS Volume Size" [ref=e102] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-volume-size-get/
+                      - listitem [ref=e103]:
+                        - link "post Retrieves a list of AWS policies for the specified account" [ref=e104] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-iam-policies/
+                      - listitem [ref=e105]:
+                        - link "post Validate the aws policy arns validate" [ref=e106] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-policy-arns-validate/
+                      - listitem [ref=e107]:
+                        - link "post Validate AWS properties" [ref=e108] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-properties-validate/
+                      - listitem [ref=e109]:
+                        - link "get Retrieves a list of AWS regions for the specified account" [ref=e110] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-regions/
+                      - listitem [ref=e111]:
+                        - link "get Retrieves a list of AWS availability zones for the specified region" [ref=e112] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-zones/
+                      - listitem [ref=e113]:
+                        - link "post Copies the specified image from one region to another region" [ref=e114] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-copy-image-from-default-region/
+                      - listitem [ref=e115]:
+                        - link "get Check if Aws cluster name is valid" [ref=e116] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-cluster-name-validate/
+                      - listitem [ref=e117]:
+                        - link "post Returns AWS image for the specified AMI name" [ref=e118] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-find-image/
+                      - listitem [ref=e119]:
+                        - link "get Retrieves a list of AWS instance types" [ref=e120] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-instance-types/
+                      - listitem [ref=e121]:
+                        - link "get Retrieves a list of AWS keypairs" [ref=e122] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-key-pairs/
+                      - listitem [ref=e123]:
+                        - link "post Validate the specified AWS keypair" [ref=e124] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-key-pair-validate/
+                      - listitem [ref=e125]:
+                        - link "get Get AWS KMS key by Id" [ref=e126] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-kms-key-get/
+                      - listitem [ref=e127]:
+                        - link "get Retrieves a list of AWS KMS keys for the specified account" [ref=e128] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-kms-keys/
+                      - listitem [ref=e129]:
+                        - link "get Validate an Aws KMS key for the specified account" [ref=e130] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-kms-key-validate/
+                      - listitem [ref=e131]:
+                        - link "get Retrieves a list of AWS storage types" [ref=e132] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-storage-types/
+                      - listitem [ref=e133]:
+                        - link "get Retrieves a list of VPCs for the specified account" [ref=e134] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-vpcs/
+                      - listitem [ref=e135]:
+                        - link "post Validate the AWS S3 bucket" [ref=e136] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-s-3-validate/
+                      - listitem [ref=e137]:
+                        - link "get Retrieves a list of AWS security groups for the specified account" [ref=e138] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-security-groups/
+                      - listitem [ref=e139]:
+                        - link "get Get all AWS Volume Types" [ref=e140] [cursor=pointer]:
+                          - /url: /api/v1/v-1-aws-volume-types-get/
+                      - listitem [ref=e141]:
+                        - link "post Check if Azure account is valid" [ref=e142] [cursor=pointer]:
+                          - /url: /api/v1/v-1-azure-account-validate/
+                      - listitem [ref=e143]:
+                        - link "get Retrieves a list of Azure groups" [ref=e144] [cursor=pointer]:
+                          - /url: /api/v1/v-1-azure-groups/
+                      - listitem [ref=e145]:
+                        - link "get Retrieves a list of Azure regions" [ref=e146] [cursor=pointer]:
+                          - /url: /api/v1/v-1-azure-regions/
+                      - listitem [ref=e147]:
+                        - link "get Retrieves a list of Azure instance types" [ref=e148] [cursor=pointer]:
+                          - /url: /api/v1/v-1-azure-instance-types/
+                      - listitem [ref=e149]:
+                        - link "get Retrieves a list of Azure storage types" [ref=e150] [cursor=pointer]:
+                          - /url: /api/v1/v-1-azure-storage-types/
+                      - listitem [ref=e151]:
+                        - link "get Check if Azure cluster name is valid" [ref=e152] [cursor=pointer]:
+                          - /url: /api/v1/v-1-azure-cluster-name-validate/
+                      - listitem [ref=e153]:
+                        - link "get Retrieves a list of Azure virtual network list for the sepcified account" [ref=e154] [cursor=pointer]:
+                          - /url: /api/v1/v-1-azure-virtual-network-list/
+                      - listitem [ref=e155]:
+                        - link "get Retrieves a list of Azure resource group for the specified account" [ref=e156] [cursor=pointer]:
+                          - /url: /api/v1/v-1-azure-resource-group-list/
+                      - listitem [ref=e157]:
+                        - link "get Retrieves a list of Azure zones for the specified region" [ref=e158] [cursor=pointer]:
+                          - /url: /api/v1/v-1-azure-zones/
+                      - listitem [ref=e159]:
+                        - link "get Get Azure private DNS zones for the given resource group" [ref=e160] [cursor=pointer]:
+                          - /url: /api/v1/v-1-azure-private-dns-zones/
+                      - listitem [ref=e161]:
+                        - link "get Get Azure storage accounts" [ref=e162] [cursor=pointer]:
+                          - /url: /api/v1/v-1-azure-storage-accounts/
+                      - listitem [ref=e163]:
+                        - link "get Get Azure storage containers" [ref=e164] [cursor=pointer]:
+                          - /url: /api/v1/v-1-azure-storage-containers/
+                      - listitem [ref=e165]:
+                        - link "get Get Azure storage account types" [ref=e166] [cursor=pointer]:
+                          - /url: /api/v1/v-1-azure-storage-account-types/
+                      - listitem [ref=e167]:
+                        - link "get Retrieves a list of Azure subscription list for the specified account" [ref=e168] [cursor=pointer]:
+                          - /url: /api/v1/v-1-azure-subscription-list/
+                      - listitem [ref=e169]:
+                        - link "get Returns the Azure vhd url for the specified vhd location" [ref=e170] [cursor=pointer]:
+                          - /url: /api/v1/v-1-azure-vhd-url/
+                      - listitem [ref=e171]:
+                        - link "get Returns the custom cloud types" [ref=e172] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-types-get/
+                      - listitem [ref=e173]:
+                        - link "post Registers the custom cloud type" [ref=e174] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-register/
+                      - listitem [ref=e175]:
+                        - link "del Deletes the custom cloud type" [ref=e176] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-types-delete/
+                      - listitem [ref=e177]:
+                        - link "get Returns valid keys for the cloud account used for custom cloud type" [ref=e178] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-cloud-account-keys-get/
+                      - listitem [ref=e179]:
+                        - link "put Update the custom cloud type cloud account keys" [ref=e180] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-cloud-account-keys-update/
+                      - listitem [ref=e181]:
+                        - link "del Delete the custom cloud type bootstrap" [ref=e182] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-bootstrap-delete/
+                      - listitem [ref=e183]:
+                        - link "get Returns the custom cloud type bootstrap" [ref=e184] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-bootstrap-get/
+                      - listitem [ref=e185]:
+                        - link "put Update the custom cloud type bootstrap" [ref=e186] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-bootstrap-update/
+                      - listitem [ref=e187]:
+                        - link "del Delete the custom cloud type cloud provider" [ref=e188] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-cloud-provider-delete/
+                      - listitem [ref=e189]:
+                        - link "get Returns the custom cloud type cloud provider" [ref=e190] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-cloud-provider-get/
+                      - listitem [ref=e191]:
+                        - link "put Update the custom cloud type cloud provider" [ref=e192] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-cloud-provider-update/
+                      - listitem [ref=e193]:
+                        - link "del Delete the custom cloud type control plane" [ref=e194] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-control-plane-delete/
+                      - listitem [ref=e195]:
+                        - link "get Returns the custom cloud type control plane" [ref=e196] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-control-plane-get/
+                      - listitem [ref=e197]:
+                        - link "put Update the custom cloud type control plane" [ref=e198] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-control-plane-update/
+                      - listitem [ref=e199]:
+                        - link "del Delete the custom cloud type core" [ref=e200] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-core-delete/
+                      - listitem [ref=e201]:
+                        - link "get Returns the custom cloud type core" [ref=e202] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-core-get/
+                      - listitem [ref=e203]:
+                        - link "put Update the custom cloud type core" [ref=e204] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-core-update/
+                      - listitem [ref=e205]:
+                        - link "del Delete the custom cloud type cluster template" [ref=e206] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-cluster-template-delete/
+                      - listitem [ref=e207]:
+                        - link "get Returns the custom cloud type cluster template" [ref=e208] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-cluster-template-get/
+                      - listitem [ref=e209]:
+                        - link "put Update the custom cloud type cluster template" [ref=e210] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-cluster-template-update/
+                      - listitem [ref=e211]:
+                        - link "del Delete the custom cloud type controlPlane pool template" [ref=e212] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-control-plane-pool-template-delete/
+                      - listitem [ref=e213]:
+                        - link "get Returns the custom cloud type controlPlane pool template" [ref=e214] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-control-plane-pool-template-get/
+                      - listitem [ref=e215]:
+                        - link "put Update the custom cloud type controlPlane pool template" [ref=e216] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-control-plane-pool-template-update/
+                      - listitem [ref=e217]:
+                        - link "del Delete the custom cloud type worker pool template" [ref=e218] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-worker-pool-template-delete/
+                      - listitem [ref=e219]:
+                        - link "get Returns the custom cloud type worker pool template" [ref=e220] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-worker-pool-template-get/
+                      - listitem [ref=e221]:
+                        - link "put Update the custom cloud type worker pool template" [ref=e222] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-worker-pool-template-update/
+                      - listitem [ref=e223]:
+                        - link "get Returns the custom cloud type logo" [ref=e224] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-logo-get/
+                      - listitem [ref=e225]:
+                        - link "put Update the custom cloud type logo" [ref=e226] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-logo-update/
+                      - listitem [ref=e227]:
+                        - link "get Returns the custom cloud type meta" [ref=e228] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-meta-get/
+                      - listitem [ref=e229]:
+                        - link "put Update the custom cloud type meta" [ref=e230] [cursor=pointer]:
+                          - /url: /api/v1/v-1-custom-cloud-type-meta-update/
+                      - listitem [ref=e231]:
+                        - link "post Validate EKS properties" [ref=e232] [cursor=pointer]:
+                          - /url: /api/v1/v-1-eks-properties-validate/
+                      - listitem [ref=e233]:
+                        - link "post Validate the specified GCP account credentials" [ref=e234] [cursor=pointer]:
+                          - /url: /api/v1/v-1-gcp-account-validate/
+                      - listitem [ref=e235]:
+                        - link "post Validate the specified GCP az" [ref=e236] [cursor=pointer]:
+                          - /url: /api/v1/v-1-gcp-az-validate/
+                      - listitem [ref=e237]:
+                        - link "post Validate the specified GCP bucket name credentials" [ref=e238] [cursor=pointer]:
+                          - /url: /api/v1/v-1-gcp-bucket-name-validate/
+                      - listitem [ref=e239]:
+                        - link "get Validates the image with tag" [ref=e240] [cursor=pointer]:
+                          - /url: /api/v1/v-1-gcp-container-image-validate/
+                      - listitem [ref=e241]:
+                        - link "get Returns the Gcp image url for the specified image location" [ref=e242] [cursor=pointer]:
+                          - /url: /api/v1/v-1-gcp-image-url/
+                      - listitem [ref=e243]:
+                        - link "get Retrieves a list of GCP projects for the specified account" [ref=e244] [cursor=pointer]:
+                          - /url: /api/v1/v-1-gcp-projects/
+                      - listitem [ref=e245]:
+                        - link "get Retrieves a list of GCP regions" [ref=e246] [cursor=pointer]:
+                          - /url: /api/v1/v-1-gcp-regions/
+                      - listitem [ref=e247]:
+                        - link "get Retrieves a list of GCP networks for the specified account" [ref=e248] [cursor=pointer]:
+                          - /url: /api/v1/v-1-gcp-networks/
+                      - listitem [ref=e249]:
+                        - link "get Retrieves a list of GCP zones for the specified account and region" [ref=e250] [cursor=pointer]:
+                          - /url: /api/v1/v-1-gcp-zones/
+                      - listitem [ref=e251]:
+                        - link "post Validate the specified GCP project" [ref=e252] [cursor=pointer]:
+                          - /url: /api/v1/v-1-gcp-project-validate/
+                      - listitem [ref=e253]:
+                        - link "get Retrieves a list of GCP zones for the specified account" [ref=e254] [cursor=pointer]:
+                          - /url: /api/v1/v-1-gcp-availability-zones/
+                      - listitem [ref=e255]:
+                        - link "post Validate GCP properties" [ref=e256] [cursor=pointer]:
+                          - /url: /api/v1/v-1-gcp-properties-validate/
+                      - listitem [ref=e257]:
+                        - link "get Retrieves a list of GCP instance types" [ref=e258] [cursor=pointer]:
+                          - /url: /api/v1/v-1-gcp-instance-types/
+                      - listitem [ref=e259]:
+                        - link "get Retrieves a list of Gcp storage types" [ref=e260] [cursor=pointer]:
+                          - /url: /api/v1/v-1-gcp-storage-types/
+                      - listitem [ref=e261]:
+                        - link "post Check if Maas account is valid" [ref=e262] [cursor=pointer]:
+                          - /url: /api/v1/v-1-maas-account-validate/
+                      - listitem [ref=e263]:
+                        - link "get Retrieves a list of Maas zones for a particular account uid" [ref=e264] [cursor=pointer]:
+                          - /url: /api/v1/v-1-maas-zones-get/
+                      - listitem [ref=e265]:
+                        - link "get Retrieves a list of Maas domains" [ref=e266] [cursor=pointer]:
+                          - /url: /api/v1/v-1-maas-domains-get/
+                      - listitem [ref=e267]:
+                        - link "get Retrieves a list of Maas pools for a particular account uid" [ref=e268] [cursor=pointer]:
+                          - /url: /api/v1/v-1-maas-pools-get/
+                      - listitem [ref=e269]:
+                        - link "get Retrieves a list of Maas subnets for a particular account uid" [ref=e270] [cursor=pointer]:
+                          - /url: /api/v1/v-1-maas-subnets-get/
+                      - listitem [ref=e271]:
+                        - link "get Retrieves a list of Maas tags for a particular account uid" [ref=e272] [cursor=pointer]:
+                          - /url: /api/v1/v-1-maas-tags-get/
+                      - listitem [ref=e273]:
+                        - link "post Check if OpenStack account is valid" [ref=e274] [cursor=pointer]:
+                          - /url: /api/v1/v-1-open-stack-account-validate/
+                      - listitem [ref=e275]:
+                        - link "get Retrieves a list of OpenStack azs for a particular account uid" [ref=e276] [cursor=pointer]:
+                          - /url: /api/v1/v-1-open-stack-azs-get/
+                      - listitem [ref=e277]:
+                        - link "get Returns the OpenStack flavors" [ref=e278] [cursor=pointer]:
+                          - /url: /api/v1/v-1-open-stack-flavors-get/
+                      - listitem [ref=e279]:
+                        - link "get Returns the OpenStack keypair" [ref=e280] [cursor=pointer]:
+                          - /url: /api/v1/v-1-open-stack-keypairs-get/
+                      - listitem [ref=e281]:
+                        - link "get Returns the OpenStack networks" [ref=e282] [cursor=pointer]:
+                          - /url: /api/v1/v-1-open-stack-networks-get/
+                      - listitem [ref=e283]:
+                        - link "get Returns the OpenStack projects" [ref=e284] [cursor=pointer]:
+                          - /url: /api/v1/v-1-open-stack-projects-get/
+                      - listitem [ref=e285]:
+                        - link "get Returns the OpenStack regions" [ref=e286] [cursor=pointer]:
+                          - /url: /api/v1/v-1-open-stack-regions-get/
+                      - listitem [ref=e287]:
+                        - link "post Check if Vsphere account is valid" [ref=e288] [cursor=pointer]:
+                          - /url: /api/v1/v-1-vsphere-account-validate/
+                      - listitem [ref=e289]:
+                        - link "get Returns the vsphere data centers" [ref=e290] [cursor=pointer]:
+                          - /url: /api/v1/v-1-vsphere-datacenters/
+                      - listitem [ref=e291]:
+                        - link "get Returns the resources for vsphere compute cluster" [ref=e292] [cursor=pointer]:
+                          - /url: /api/v1/v-1-vsphere-compute-cluster-resources/
+                      - listitem [ref=e293]:
+                        - link "get Retrieves vsphere env" [ref=e294] [cursor=pointer]:
+                          - /url: /api/v1/v-1-vsphere-env/
+                      - listitem [ref=e295]:
+                        - link "get Returns the cloud compute rate" [ref=e296] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-compute-rate/
+                      - listitem [ref=e297]:
+                        - link "get Returns the cloud storage rate" [ref=e298] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-storage-rate/
+                  - listitem [ref=e299]:
+                    - generic [ref=e300]:
+                      - link "Cluster Templates" [ref=e301] [cursor=pointer]:
+                        - /url: /api/v1/cluster-templates/
+                      - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e302] [cursor=pointer]
+                  - listitem [ref=e303]:
+                    - generic [ref=e304]:
+                      - link "Clustergroups" [ref=e305] [cursor=pointer]:
+                        - /url: /api/v1/clustergroups/
+                      - button "Toggle the collapsible sidebar category 'Clustergroups'" [ref=e306] [cursor=pointer]
+                  - listitem [ref=e307]:
+                    - generic [ref=e308]:
+                      - link "Clusterprofiles" [ref=e309] [cursor=pointer]:
+                        - /url: /api/v1/clusterprofiles/
+                      - button "Toggle the collapsible sidebar category 'Clusterprofiles'" [ref=e310] [cursor=pointer]
+                  - listitem [ref=e311]:
+                    - generic [ref=e312]:
+                      - link "Dashboard" [ref=e313] [cursor=pointer]:
+                        - /url: /api/v1/dashboard/
+                      - button "Toggle the collapsible sidebar category 'Dashboard'" [ref=e314] [cursor=pointer]
+                  - listitem [ref=e315]:
+                    - generic [ref=e316]:
+                      - link "Datasinks" [ref=e317] [cursor=pointer]:
+                        - /url: /api/v1/datasinks/
+                      - button "Toggle the collapsible sidebar category 'Datasinks'" [ref=e318] [cursor=pointer]
+                  - listitem [ref=e319]:
+                    - generic [ref=e320]:
+                      - link "Edgehosts" [ref=e321] [cursor=pointer]:
+                        - /url: /api/v1/edgehosts/
+                      - button "Toggle the collapsible sidebar category 'Edgehosts'" [ref=e322] [cursor=pointer]
+                  - listitem [ref=e323]:
+                    - generic [ref=e324]:
+                      - link "Events" [ref=e325] [cursor=pointer]:
+                        - /url: /api/v1/events/
+                      - button "Toggle the collapsible sidebar category 'Events'" [ref=e326] [cursor=pointer]
+                  - listitem [ref=e327]:
+                    - generic [ref=e328]:
+                      - link "Features" [ref=e329] [cursor=pointer]:
+                        - /url: /api/v1/features/
+                      - button "Toggle the collapsible sidebar category 'Features'" [ref=e330] [cursor=pointer]
+                  - listitem [ref=e331]:
+                    - generic [ref=e332]:
+                      - link "Filters" [ref=e333] [cursor=pointer]:
+                        - /url: /api/v1/filters/
+                      - button "Toggle the collapsible sidebar category 'Filters'" [ref=e334] [cursor=pointer]
+                  - listitem [ref=e335]:
+                    - generic [ref=e336]:
+                      - link "Metrics" [ref=e337] [cursor=pointer]:
+                        - /url: /api/v1/metrics/
+                      - button "Toggle the collapsible sidebar category 'Metrics'" [ref=e338] [cursor=pointer]
+                  - listitem [ref=e339]:
+                    - generic [ref=e340]:
+                      - link "Notifications" [ref=e341] [cursor=pointer]:
+                        - /url: /api/v1/notifications/
+                      - button "Toggle the collapsible sidebar category 'Notifications'" [ref=e342] [cursor=pointer]
+                  - listitem [ref=e343]:
+                    - generic [ref=e344]:
+                      - link "Overlords" [ref=e345] [cursor=pointer]:
+                        - /url: /api/v1/overlords/
+                      - button "Toggle the collapsible sidebar category 'Overlords'" [ref=e346] [cursor=pointer]
+                  - listitem [ref=e347]:
+                    - generic [ref=e348]:
+                      - link "Packs" [ref=e349] [cursor=pointer]:
+                        - /url: /api/v1/packs/
+                      - button "Toggle the collapsible sidebar category 'Packs'" [ref=e350] [cursor=pointer]
+                  - listitem [ref=e351]:
+                    - generic [ref=e352]:
+                      - link "Pcg" [ref=e353] [cursor=pointer]:
+                        - /url: /api/v1/pcg/
+                      - button "Toggle the collapsible sidebar category 'Pcg'" [ref=e354] [cursor=pointer]
+                  - listitem [ref=e355]:
+                    - generic [ref=e356]:
+                      - link "Permissions" [ref=e357] [cursor=pointer]:
+                        - /url: /api/v1/permissions/
+                      - button "Toggle the collapsible sidebar category 'Permissions'" [ref=e358] [cursor=pointer]
+                  - listitem [ref=e359]:
+                    - generic [ref=e360]:
+                      - link "Projects" [ref=e361] [cursor=pointer]:
+                        - /url: /api/v1/projects/
+                      - button "Toggle the collapsible sidebar category 'Projects'" [ref=e362] [cursor=pointer]
+                  - listitem [ref=e363]:
+                    - generic [ref=e364]:
+                      - link "Registries" [ref=e365] [cursor=pointer]:
+                        - /url: /api/v1/registries/
+                      - button "Toggle the collapsible sidebar category 'Registries'" [ref=e366] [cursor=pointer]
+                  - listitem [ref=e367]:
+                    - generic [ref=e368]:
+                      - link "Roles" [ref=e369] [cursor=pointer]:
+                        - /url: /api/v1/roles/
+                      - button "Toggle the collapsible sidebar category 'Roles'" [ref=e370] [cursor=pointer]
+                  - listitem [ref=e371]:
+                    - generic [ref=e372]:
+                      - link "Services" [ref=e373] [cursor=pointer]:
+                        - /url: /api/v1/services/
+                      - button "Toggle the collapsible sidebar category 'Services'" [ref=e374] [cursor=pointer]
+                  - listitem [ref=e375]:
+                    - generic [ref=e376]:
+                      - link "Spc Policies" [ref=e377] [cursor=pointer]:
+                        - /url: /api/v1/spc-policies/
+                      - button "Toggle the collapsible sidebar category 'Spc Policies'" [ref=e378] [cursor=pointer]
+                  - listitem [ref=e379]:
+                    - generic [ref=e380]:
+                      - link "Spectroclusters" [ref=e381] [cursor=pointer]:
+                        - /url: /api/v1/spectroclusters/
+                      - button "Toggle the collapsible sidebar category 'Spectroclusters'" [ref=e382] [cursor=pointer]
+                  - listitem [ref=e383]:
+                    - generic [ref=e384]:
+                      - link "System" [ref=e385] [cursor=pointer]:
+                        - /url: /api/v1/system/
+                      - button "Toggle the collapsible sidebar category 'System'" [ref=e386] [cursor=pointer]
+                  - listitem [ref=e387]:
+                    - generic [ref=e388]:
+                      - link "Teams" [ref=e389] [cursor=pointer]:
+                        - /url: /api/v1/teams/
+                      - button "Toggle the collapsible sidebar category 'Teams'" [ref=e390] [cursor=pointer]
+                  - listitem [ref=e391]:
+                    - generic [ref=e392]:
+                      - link "Tenants" [ref=e393] [cursor=pointer]:
+                        - /url: /api/v1/tenants/
+                      - button "Toggle the collapsible sidebar category 'Tenants'" [ref=e394] [cursor=pointer]
+                  - listitem [ref=e395]:
+                    - generic [ref=e396]:
+                      - link "Users" [ref=e397] [cursor=pointer]:
+                        - /url: /api/v1/users/
+                      - button "Toggle the collapsible sidebar category 'Users'" [ref=e398] [cursor=pointer]
+                  - listitem [ref=e399]:
+                    - generic [ref=e400]:
+                      - link "Workspaces" [ref=e401] [cursor=pointer]:
+                        - /url: /api/v1/workspaces/
+                      - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e402] [cursor=pointer]
+              - listitem [ref=e403]:
+                - generic [ref=e404]:
+                  - link "Edge Management API V1" [ref=e405] [cursor=pointer]:
+                    - /url: /api/category/edge-management-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Edge Management API V1'" [ref=e406] [cursor=pointer]
+      - main [ref=e407]:
+        - generic [ref=e411]:
+          - article [ref=e412]:
+            - navigation "Breadcrumbs" [ref=e413]:
+              - list [ref=e414]:
+                - listitem [ref=e415]:
+                  - link "Home page" [ref=e416] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e417]
+                - listitem [ref=e419]:
+                  - link "Palette API V1" [ref=e420] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                - listitem [ref=e421]:
+                  - generic [ref=e422]: Clouds
+            - generic [ref=e423]:
+              - heading "Clouds" [level=1] [ref=e425]
+              - generic [ref=e428]:
+                - article [ref=e429]:
+                  - link "📄️ Retrieves the Aws secret credentials Retrieves the Aws secret credentials" [ref=e430] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-account-secret-credentials/
+                    - heading "📄️ Retrieves the Aws secret credentials" [level=2] [ref=e431]
+                    - paragraph [ref=e432]: Retrieves the Aws secret credentials
+                - article [ref=e433]:
+                  - link "📄️ Retrieves AWS external id and account id Retrieves AWS external id and account id" [ref=e434] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-account-sts-get/
+                    - heading "📄️ Retrieves AWS external id and account id" [level=2] [ref=e435]
+                    - paragraph [ref=e436]: Retrieves AWS external id and account id
+                - article [ref=e437]:
+                  - link "📄️ Validate the specified AWS account crede ... Validate the specified AWS account credentials" [ref=e438] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-account-validate/
+                    - heading "📄️ Validate the specified AWS account crede ..." [level=2] [ref=e439]
+                    - paragraph [ref=e440]: Validate the specified AWS account credentials
+                - article [ref=e441]:
+                  - link "📄️ Retrieves a list of AWS AMI types Retrieves a list of AWS AMI types" [ref=e442] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-ami-types/
+                    - heading "📄️ Retrieves a list of AWS AMI types" [level=2] [ref=e443]
+                    - paragraph [ref=e444]: Retrieves a list of AWS AMI types
+                - article [ref=e445]:
+                  - link "📄️ validates aws cloud watch credentials Validates aws cloud watch credentials" [ref=e446] [cursor=pointer]:
+                    - /url: /api/v1/v-1-clouds-aws-cloud-watch-validate/
+                    - heading "📄️ validates aws cloud watch credentials" [level=2] [ref=e447]
+                    - paragraph [ref=e448]: Validates aws cloud watch credentials
+                - article [ref=e449]:
+                  - link "📄️ Retrieves AWS cloud account usage cost f ... Retrieves AWS cloud account usage cost from cost explorer." [ref=e450] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-cloud-cost/
+                    - heading "📄️ Retrieves AWS cloud account usage cost f ..." [level=2] [ref=e451]
+                    - paragraph [ref=e452]: Retrieves AWS cloud account usage cost from cost explorer.
+                - article [ref=e453]:
+                  - link "📄️ Get AWS Volume Size Get AWS Volume Size" [ref=e454] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-volume-size-get/
+                    - heading "📄️ Get AWS Volume Size" [level=2] [ref=e455]
+                    - paragraph [ref=e456]: Get AWS Volume Size
+                - article [ref=e457]:
+                  - link "📄️ Retrieves a list of AWS policies for the ... Retrieves a list of AWS policies for the specified account" [ref=e458] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-iam-policies/
+                    - heading "📄️ Retrieves a list of AWS policies for the ..." [level=2] [ref=e459]
+                    - paragraph [ref=e460]: Retrieves a list of AWS policies for the specified account
+                - article [ref=e461]:
+                  - link "📄️ Validate the aws policy arns validate Validate the aws policy arns validate" [ref=e462] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-policy-arns-validate/
+                    - heading "📄️ Validate the aws policy arns validate" [level=2] [ref=e463]
+                    - paragraph [ref=e464]: Validate the aws policy arns validate
+                - article [ref=e465]:
+                  - link "📄️ Validate AWS properties Validate AWS properties" [ref=e466] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-properties-validate/
+                    - heading "📄️ Validate AWS properties" [level=2] [ref=e467]
+                    - paragraph [ref=e468]: Validate AWS properties
+                - article [ref=e469]:
+                  - link "📄️ Retrieves a list of AWS regions for the ... Retrieves a list of AWS regions for the specified account" [ref=e470] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-regions/
+                    - heading "📄️ Retrieves a list of AWS regions for the ..." [level=2] [ref=e471]
+                    - paragraph [ref=e472]: Retrieves a list of AWS regions for the specified account
+                - article [ref=e473]:
+                  - link "📄️ Retrieves a list of AWS availability zon ... Retrieves a list of AWS availability zones for the specified region" [ref=e474] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-zones/
+                    - heading "📄️ Retrieves a list of AWS availability zon ..." [level=2] [ref=e475]
+                    - paragraph [ref=e476]: Retrieves a list of AWS availability zones for the specified region
+                - article [ref=e477]:
+                  - link "📄️ Copies the specified image from one regi ... Copies the specified image from one region to another region" [ref=e478] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-copy-image-from-default-region/
+                    - heading "📄️ Copies the specified image from one regi ..." [level=2] [ref=e479]
+                    - paragraph [ref=e480]: Copies the specified image from one region to another region
+                - article [ref=e481]:
+                  - link "📄️ Check if Aws cluster name is valid Returns no contents if aws cluster name is valid else error." [ref=e482] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-cluster-name-validate/
+                    - heading "📄️ Check if Aws cluster name is valid" [level=2] [ref=e483]
+                    - paragraph [ref=e484]: Returns no contents if aws cluster name is valid else error.
+                - article [ref=e485]:
+                  - link "📄️ Returns AWS image for the specified AMI ... Returns AWS image for the specified AMI name" [ref=e486] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-find-image/
+                    - heading "📄️ Returns AWS image for the specified AMI ..." [level=2] [ref=e487]
+                    - paragraph [ref=e488]: Returns AWS image for the specified AMI name
+                - article [ref=e489]:
+                  - link "📄️ Retrieves a list of AWS instance types Retrieves a list of AWS instance types" [ref=e490] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-instance-types/
+                    - heading "📄️ Retrieves a list of AWS instance types" [level=2] [ref=e491]
+                    - paragraph [ref=e492]: Retrieves a list of AWS instance types
+                - article [ref=e493]:
+                  - link "📄️ Retrieves a list of AWS keypairs Retrieves a list of AWS keypairs" [ref=e494] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-key-pairs/
+                    - heading "📄️ Retrieves a list of AWS keypairs" [level=2] [ref=e495]
+                    - paragraph [ref=e496]: Retrieves a list of AWS keypairs
+                - article [ref=e497]:
+                  - link "📄️ Validate the specified AWS keypair Validate the specified AWS keypair" [ref=e498] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-key-pair-validate/
+                    - heading "📄️ Validate the specified AWS keypair" [level=2] [ref=e499]
+                    - paragraph [ref=e500]: Validate the specified AWS keypair
+                - article [ref=e501]:
+                  - link "📄️ Get AWS KMS key by Id Get AWS KMS key by Id" [ref=e502] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-kms-key-get/
+                    - heading "📄️ Get AWS KMS key by Id" [level=2] [ref=e503]
+                    - paragraph [ref=e504]: Get AWS KMS key by Id
+                - article [ref=e505]:
+                  - link "📄️ Retrieves a list of AWS KMS keys for the ... Retrieves a list of AWS KMS keys for the specified account" [ref=e506] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-kms-keys/
+                    - heading "📄️ Retrieves a list of AWS KMS keys for the ..." [level=2] [ref=e507]
+                    - paragraph [ref=e508]: Retrieves a list of AWS KMS keys for the specified account
+                - article [ref=e509]:
+                  - link "📄️ Validate an Aws KMS key for the specifie ... Validate an Aws KMS key for the specified account" [ref=e510] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-kms-key-validate/
+                    - heading "📄️ Validate an Aws KMS key for the specifie ..." [level=2] [ref=e511]
+                    - paragraph [ref=e512]: Validate an Aws KMS key for the specified account
+                - article [ref=e513]:
+                  - link "📄️ Retrieves a list of AWS storage types Retrieves a list of AWS storage types" [ref=e514] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-storage-types/
+                    - heading "📄️ Retrieves a list of AWS storage types" [level=2] [ref=e515]
+                    - paragraph [ref=e516]: Retrieves a list of AWS storage types
+                - article [ref=e517]:
+                  - link "📄️ Retrieves a list of VPCs for the specifi ... Retrieves a list of VPCs for the specified account" [ref=e518] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-vpcs/
+                    - heading "📄️ Retrieves a list of VPCs for the specifi ..." [level=2] [ref=e519]
+                    - paragraph [ref=e520]: Retrieves a list of VPCs for the specified account
+                - article [ref=e521]:
+                  - link "📄️ Validate the AWS S3 bucket Validate the AWS S3 bucket" [ref=e522] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-s-3-validate/
+                    - heading "📄️ Validate the AWS S3 bucket" [level=2] [ref=e523]
+                    - paragraph [ref=e524]: Validate the AWS S3 bucket
+                - article [ref=e525]:
+                  - link "📄️ Retrieves a list of AWS security groups ... Retrieves a list of AWS security groups for the specified account" [ref=e526] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-security-groups/
+                    - heading "📄️ Retrieves a list of AWS security groups ..." [level=2] [ref=e527]
+                    - paragraph [ref=e528]: Retrieves a list of AWS security groups for the specified account
+                - article [ref=e529]:
+                  - link "📄️ Get all AWS Volume Types List all AWS Volume Types" [ref=e530] [cursor=pointer]:
+                    - /url: /api/v1/v-1-aws-volume-types-get/
+                    - heading "📄️ Get all AWS Volume Types" [level=2] [ref=e531]
+                    - paragraph [ref=e532]: List all AWS Volume Types
+                - article [ref=e533]:
+                  - link "📄️ Check if Azure account is valid Returns no contents if account is valid else error." [ref=e534] [cursor=pointer]:
+                    - /url: /api/v1/v-1-azure-account-validate/
+                    - heading "📄️ Check if Azure account is valid" [level=2] [ref=e535]
+                    - paragraph [ref=e536]: Returns no contents if account is valid else error.
+                - article [ref=e537]:
+                  - link "📄️ Retrieves a list of Azure groups Retrieves a list of Azure groups" [ref=e538] [cursor=pointer]:
+                    - /url: /api/v1/v-1-azure-groups/
+                    - heading "📄️ Retrieves a list of Azure groups" [level=2] [ref=e539]
+                    - paragraph [ref=e540]: Retrieves a list of Azure groups
+                - article [ref=e541]:
+                  - link "📄️ Retrieves a list of Azure regions Retrieves a list of Azure regions" [ref=e542] [cursor=pointer]:
+                    - /url: /api/v1/v-1-azure-regions/
+                    - heading "📄️ Retrieves a list of Azure regions" [level=2] [ref=e543]
+                    - paragraph [ref=e544]: Retrieves a list of Azure regions
+                - article [ref=e545]:
+                  - link "📄️ Retrieves a list of Azure instance types Retrieves a list of Azure instance types" [ref=e546] [cursor=pointer]:
+                    - /url: /api/v1/v-1-azure-instance-types/
+                    - heading "📄️ Retrieves a list of Azure instance types" [level=2] [ref=e547]
+                    - paragraph [ref=e548]: Retrieves a list of Azure instance types
+                - article [ref=e549]:
+                  - link "📄️ Retrieves a list of Azure storage types Retrieves a list of Azure storage types" [ref=e550] [cursor=pointer]:
+                    - /url: /api/v1/v-1-azure-storage-types/
+                    - heading "📄️ Retrieves a list of Azure storage types" [level=2] [ref=e551]
+                    - paragraph [ref=e552]: Retrieves a list of Azure storage types
+                - article [ref=e553]:
+                  - link "📄️ Check if Azure cluster name is valid Returns no contents if Azure cluster name is valid else error." [ref=e554] [cursor=pointer]:
+                    - /url: /api/v1/v-1-azure-cluster-name-validate/
+                    - heading "📄️ Check if Azure cluster name is valid" [level=2] [ref=e555]
+                    - paragraph [ref=e556]: Returns no contents if Azure cluster name is valid else error.
+                - article [ref=e557]:
+                  - link "📄️ Retrieves a list of Azure virtual networ ... Retrieves a list of Azure virtual network list for the sepcified account" [ref=e558] [cursor=pointer]:
+                    - /url: /api/v1/v-1-azure-virtual-network-list/
+                    - heading "📄️ Retrieves a list of Azure virtual networ ..." [level=2] [ref=e559]
+                    - paragraph [ref=e560]: Retrieves a list of Azure virtual network list for the sepcified account
+                - article [ref=e561]:
+                  - link "📄️ Retrieves a list of Azure resource group ... Retrieves a list of Azure resource group for the specified account" [ref=e562] [cursor=pointer]:
+                    - /url: /api/v1/v-1-azure-resource-group-list/
+                    - heading "📄️ Retrieves a list of Azure resource group ..." [level=2] [ref=e563]
+                    - paragraph [ref=e564]: Retrieves a list of Azure resource group for the specified account
+                - article [ref=e565]:
+                  - link "📄️ Retrieves a list of Azure zones for the ... Retrieves a list of Azure zones for the specified region" [ref=e566] [cursor=pointer]:
+                    - /url: /api/v1/v-1-azure-zones/
+                    - heading "📄️ Retrieves a list of Azure zones for the ..." [level=2] [ref=e567]
+                    - paragraph [ref=e568]: Retrieves a list of Azure zones for the specified region
+                - article [ref=e569]:
+                  - link "📄️ Get Azure private DNS zones for the give ... Returns Azure private DNS zones" [ref=e570] [cursor=pointer]:
+                    - /url: /api/v1/v-1-azure-private-dns-zones/
+                    - heading "📄️ Get Azure private DNS zones for the give ..." [level=2] [ref=e571]
+                    - paragraph [ref=e572]: Returns Azure private DNS zones
+                - article [ref=e573]:
+                  - link "📄️ Get Azure storage accounts Returns Azure storage accounts." [ref=e574] [cursor=pointer]:
+                    - /url: /api/v1/v-1-azure-storage-accounts/
+                    - heading "📄️ Get Azure storage accounts" [level=2] [ref=e575]
+                    - paragraph [ref=e576]: Returns Azure storage accounts.
+                - article [ref=e577]:
+                  - link "📄️ Get Azure storage containers Returns Azure storage containers for the given account." [ref=e578] [cursor=pointer]:
+                    - /url: /api/v1/v-1-azure-storage-containers/
+                    - heading "📄️ Get Azure storage containers" [level=2] [ref=e579]
+                    - paragraph [ref=e580]: Returns Azure storage containers for the given account.
+                - article [ref=e581]:
+                  - link "📄️ Get Azure storage account types Returns Azure storage account types." [ref=e582] [cursor=pointer]:
+                    - /url: /api/v1/v-1-azure-storage-account-types/
+                    - heading "📄️ Get Azure storage account types" [level=2] [ref=e583]
+                    - paragraph [ref=e584]: Returns Azure storage account types.
+                - article [ref=e585]:
+                  - link "📄️ Retrieves a list of Azure subscription l ... Returns list of Azure subscription list." [ref=e586] [cursor=pointer]:
+                    - /url: /api/v1/v-1-azure-subscription-list/
+                    - heading "📄️ Retrieves a list of Azure subscription l ..." [level=2] [ref=e587]
+                    - paragraph [ref=e588]: Returns list of Azure subscription list.
+                - article [ref=e589]:
+                  - link "📄️ Returns the Azure vhd url for the specif ... Returns the Azure vhd url for the specified vhd location" [ref=e590] [cursor=pointer]:
+                    - /url: /api/v1/v-1-azure-vhd-url/
+                    - heading "📄️ Returns the Azure vhd url for the specif ..." [level=2] [ref=e591]
+                    - paragraph [ref=e592]: Returns the Azure vhd url for the specified vhd location
+                - article [ref=e593]:
+                  - link "📄️ Returns the custom cloud types Returns the custom cloud types" [ref=e594] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-types-get/
+                    - heading "📄️ Returns the custom cloud types" [level=2] [ref=e595]
+                    - paragraph [ref=e596]: Returns the custom cloud types
+                - article [ref=e597]:
+                  - link "📄️ Registers the custom cloud type Registers the custom cloud type" [ref=e598] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-register/
+                    - heading "📄️ Registers the custom cloud type" [level=2] [ref=e599]
+                    - paragraph [ref=e600]: Registers the custom cloud type
+                - article [ref=e601]:
+                  - link "📄️ Deletes the custom cloud type Deletes the custom cloud type" [ref=e602] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-types-delete/
+                    - heading "📄️ Deletes the custom cloud type" [level=2] [ref=e603]
+                    - paragraph [ref=e604]: Deletes the custom cloud type
+                - article [ref=e605]:
+                  - link "📄️ Returns valid keys for the cloud account ... Returns valid keys for the cloud account used for custom cloud type" [ref=e606] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-cloud-account-keys-get/
+                    - heading "📄️ Returns valid keys for the cloud account ..." [level=2] [ref=e607]
+                    - paragraph [ref=e608]: Returns valid keys for the cloud account used for custom cloud type
+                - article [ref=e609]:
+                  - link "📄️ Update the custom cloud type cloud accou ... Update the custom cloud type cloud account keys" [ref=e610] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-cloud-account-keys-update/
+                    - heading "📄️ Update the custom cloud type cloud accou ..." [level=2] [ref=e611]
+                    - paragraph [ref=e612]: Update the custom cloud type cloud account keys
+                - article [ref=e613]:
+                  - link "📄️ Delete the custom cloud type bootstrap Delete the custom cloud type bootstrap" [ref=e614] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-bootstrap-delete/
+                    - heading "📄️ Delete the custom cloud type bootstrap" [level=2] [ref=e615]
+                    - paragraph [ref=e616]: Delete the custom cloud type bootstrap
+                - article [ref=e617]:
+                  - link "📄️ Returns the custom cloud type bootstrap Returns the custom cloud type bootstrap" [ref=e618] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-bootstrap-get/
+                    - heading "📄️ Returns the custom cloud type bootstrap" [level=2] [ref=e619]
+                    - paragraph [ref=e620]: Returns the custom cloud type bootstrap
+                - article [ref=e621]:
+                  - link "📄️ Update the custom cloud type bootstrap Update the custom cloud type bootstrap" [ref=e622] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-bootstrap-update/
+                    - heading "📄️ Update the custom cloud type bootstrap" [level=2] [ref=e623]
+                    - paragraph [ref=e624]: Update the custom cloud type bootstrap
+                - article [ref=e625]:
+                  - link "📄️ Delete the custom cloud type cloud provi ... Delete the custom cloud type cloud provider" [ref=e626] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-cloud-provider-delete/
+                    - heading "📄️ Delete the custom cloud type cloud provi ..." [level=2] [ref=e627]
+                    - paragraph [ref=e628]: Delete the custom cloud type cloud provider
+                - article [ref=e629]:
+                  - link "📄️ Returns the custom cloud type cloud prov ... Returns the custom cloud type cloud provider" [ref=e630] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-cloud-provider-get/
+                    - heading "📄️ Returns the custom cloud type cloud prov ..." [level=2] [ref=e631]
+                    - paragraph [ref=e632]: Returns the custom cloud type cloud provider
+                - article [ref=e633]:
+                  - link "📄️ Update the custom cloud type cloud provi ... Update the custom cloud type cloud provider" [ref=e634] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-cloud-provider-update/
+                    - heading "📄️ Update the custom cloud type cloud provi ..." [level=2] [ref=e635]
+                    - paragraph [ref=e636]: Update the custom cloud type cloud provider
+                - article [ref=e637]:
+                  - link "📄️ Delete the custom cloud type control pla ... Delete the custom cloud type control plane" [ref=e638] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-control-plane-delete/
+                    - heading "📄️ Delete the custom cloud type control pla ..." [level=2] [ref=e639]
+                    - paragraph [ref=e640]: Delete the custom cloud type control plane
+                - article [ref=e641]:
+                  - link "📄️ Returns the custom cloud type control pl ... Returns the custom cloud type control plane" [ref=e642] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-control-plane-get/
+                    - heading "📄️ Returns the custom cloud type control pl ..." [level=2] [ref=e643]
+                    - paragraph [ref=e644]: Returns the custom cloud type control plane
+                - article [ref=e645]:
+                  - link "📄️ Update the custom cloud type control pla ... Update the custom cloud type control plane" [ref=e646] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-control-plane-update/
+                    - heading "📄️ Update the custom cloud type control pla ..." [level=2] [ref=e647]
+                    - paragraph [ref=e648]: Update the custom cloud type control plane
+                - article [ref=e649]:
+                  - link "📄️ Delete the custom cloud type core Delete the custom cloud type core" [ref=e650] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-core-delete/
+                    - heading "📄️ Delete the custom cloud type core" [level=2] [ref=e651]
+                    - paragraph [ref=e652]: Delete the custom cloud type core
+                - article [ref=e653]:
+                  - link "📄️ Returns the custom cloud type core Returns the custom cloud type core" [ref=e654] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-core-get/
+                    - heading "📄️ Returns the custom cloud type core" [level=2] [ref=e655]
+                    - paragraph [ref=e656]: Returns the custom cloud type core
+                - article [ref=e657]:
+                  - link "📄️ Update the custom cloud type core Update the custom cloud type core" [ref=e658] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-core-update/
+                    - heading "📄️ Update the custom cloud type core" [level=2] [ref=e659]
+                    - paragraph [ref=e660]: Update the custom cloud type core
+                - article [ref=e661]:
+                  - link "📄️ Delete the custom cloud type cluster tem ... Delete the custom cloud type cluster template" [ref=e662] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-cluster-template-delete/
+                    - heading "📄️ Delete the custom cloud type cluster tem ..." [level=2] [ref=e663]
+                    - paragraph [ref=e664]: Delete the custom cloud type cluster template
+                - article [ref=e665]:
+                  - link "📄️ Returns the custom cloud type cluster te ... Returns the custom cloud type cluster template" [ref=e666] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-cluster-template-get/
+                    - heading "📄️ Returns the custom cloud type cluster te ..." [level=2] [ref=e667]
+                    - paragraph [ref=e668]: Returns the custom cloud type cluster template
+                - article [ref=e669]:
+                  - link "📄️ Update the custom cloud type cluster tem ... Update the custom cloud type cluster template" [ref=e670] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-cluster-template-update/
+                    - heading "📄️ Update the custom cloud type cluster tem ..." [level=2] [ref=e671]
+                    - paragraph [ref=e672]: Update the custom cloud type cluster template
+                - article [ref=e673]:
+                  - link "📄️ Delete the custom cloud type controlPlan ... Delete the custom cloud type controlPlane pool template" [ref=e674] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-control-plane-pool-template-delete/
+                    - heading "📄️ Delete the custom cloud type controlPlan ..." [level=2] [ref=e675]
+                    - paragraph [ref=e676]: Delete the custom cloud type controlPlane pool template
+                - article [ref=e677]:
+                  - link "📄️ Returns the custom cloud type controlPla ... Returns the custom cloud type controlPlane pool template" [ref=e678] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-control-plane-pool-template-get/
+                    - heading "📄️ Returns the custom cloud type controlPla ..." [level=2] [ref=e679]
+                    - paragraph [ref=e680]: Returns the custom cloud type controlPlane pool template
+                - article [ref=e681]:
+                  - link "📄️ Update the custom cloud type controlPlan ... Update the custom cloud type controlPlane pool template" [ref=e682] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-control-plane-pool-template-update/
+                    - heading "📄️ Update the custom cloud type controlPlan ..." [level=2] [ref=e683]
+                    - paragraph [ref=e684]: Update the custom cloud type controlPlane pool template
+                - article [ref=e685]:
+                  - link "📄️ Delete the custom cloud type worker pool ... Delete the custom cloud type worker pool template" [ref=e686] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-worker-pool-template-delete/
+                    - heading "📄️ Delete the custom cloud type worker pool ..." [level=2] [ref=e687]
+                    - paragraph [ref=e688]: Delete the custom cloud type worker pool template
+                - article [ref=e689]:
+                  - link "📄️ Returns the custom cloud type worker poo ... Returns the custom cloud type worker pool template" [ref=e690] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-worker-pool-template-get/
+                    - heading "📄️ Returns the custom cloud type worker poo ..." [level=2] [ref=e691]
+                    - paragraph [ref=e692]: Returns the custom cloud type worker pool template
+                - article [ref=e693]:
+                  - link "📄️ Update the custom cloud type worker pool ... Update the custom cloud type worker pool template" [ref=e694] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-worker-pool-template-update/
+                    - heading "📄️ Update the custom cloud type worker pool ..." [level=2] [ref=e695]
+                    - paragraph [ref=e696]: Update the custom cloud type worker pool template
+                - article [ref=e697]:
+                  - link "📄️ Returns the custom cloud type logo Returns the custom cloud type logo" [ref=e698] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-logo-get/
+                    - heading "📄️ Returns the custom cloud type logo" [level=2] [ref=e699]
+                    - paragraph [ref=e700]: Returns the custom cloud type logo
+                - article [ref=e701]:
+                  - link "📄️ Update the custom cloud type logo Update the custom cloud type logo" [ref=e702] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-logo-update/
+                    - heading "📄️ Update the custom cloud type logo" [level=2] [ref=e703]
+                    - paragraph [ref=e704]: Update the custom cloud type logo
+                - article [ref=e705]:
+                  - link "📄️ Returns the custom cloud type meta Returns the custom cloud type meta" [ref=e706] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-meta-get/
+                    - heading "📄️ Returns the custom cloud type meta" [level=2] [ref=e707]
+                    - paragraph [ref=e708]: Returns the custom cloud type meta
+                - article [ref=e709]:
+                  - link "📄️ Update the custom cloud type meta Update the custom cloud type meta" [ref=e710] [cursor=pointer]:
+                    - /url: /api/v1/v-1-custom-cloud-type-meta-update/
+                    - heading "📄️ Update the custom cloud type meta" [level=2] [ref=e711]
+                    - paragraph [ref=e712]: Update the custom cloud type meta
+                - article [ref=e713]:
+                  - link "📄️ Validate EKS properties Validate EKS properties" [ref=e714] [cursor=pointer]:
+                    - /url: /api/v1/v-1-eks-properties-validate/
+                    - heading "📄️ Validate EKS properties" [level=2] [ref=e715]
+                    - paragraph [ref=e716]: Validate EKS properties
+                - article [ref=e717]:
+                  - link "📄️ Validate the specified GCP account crede ... Validate the specified GCP account credentials" [ref=e718] [cursor=pointer]:
+                    - /url: /api/v1/v-1-gcp-account-validate/
+                    - heading "📄️ Validate the specified GCP account crede ..." [level=2] [ref=e719]
+                    - paragraph [ref=e720]: Validate the specified GCP account credentials
+                - article [ref=e721]:
+                  - link "📄️ Validate the specified GCP az Validate the specified GCP az" [ref=e722] [cursor=pointer]:
+                    - /url: /api/v1/v-1-gcp-az-validate/
+                    - heading "📄️ Validate the specified GCP az" [level=2] [ref=e723]
+                    - paragraph [ref=e724]: Validate the specified GCP az
+                - article [ref=e725]:
+                  - link "📄️ Validate the specified GCP bucket name c ... Validate the specified GCP bucket name credentials" [ref=e726] [cursor=pointer]:
+                    - /url: /api/v1/v-1-gcp-bucket-name-validate/
+                    - heading "📄️ Validate the specified GCP bucket name c ..." [level=2] [ref=e727]
+                    - paragraph [ref=e728]: Validate the specified GCP bucket name credentials
+                - article [ref=e729]:
+                  - link "📄️ Validates the image with tag Validates the image with tag" [ref=e730] [cursor=pointer]:
+                    - /url: /api/v1/v-1-gcp-container-image-validate/
+                    - heading "📄️ Validates the image with tag" [level=2] [ref=e731]
+                    - paragraph [ref=e732]: Validates the image with tag
+                - article [ref=e733]:
+                  - link "📄️ Returns the Gcp image url for the specif ... Returns the Gcp image url for the specified image location" [ref=e734] [cursor=pointer]:
+                    - /url: /api/v1/v-1-gcp-image-url/
+                    - heading "📄️ Returns the Gcp image url for the specif ..." [level=2] [ref=e735]
+                    - paragraph [ref=e736]: Returns the Gcp image url for the specified image location
+                - article [ref=e737]:
+                  - link "📄️ Retrieves a list of GCP projects for the ... Retrieves a list of GCP projects for the specified account" [ref=e738] [cursor=pointer]:
+                    - /url: /api/v1/v-1-gcp-projects/
+                    - heading "📄️ Retrieves a list of GCP projects for the ..." [level=2] [ref=e739]
+                    - paragraph [ref=e740]: Retrieves a list of GCP projects for the specified account
+                - article [ref=e741]:
+                  - link "📄️ Retrieves a list of GCP regions Retrieves a list of GCP regions" [ref=e742] [cursor=pointer]:
+                    - /url: /api/v1/v-1-gcp-regions/
+                    - heading "📄️ Retrieves a list of GCP regions" [level=2] [ref=e743]
+                    - paragraph [ref=e744]: Retrieves a list of GCP regions
+                - article [ref=e745]:
+                  - link "📄️ Retrieves a list of GCP networks for the ... Retrieves a list of GCP networks for the specified account" [ref=e746] [cursor=pointer]:
+                    - /url: /api/v1/v-1-gcp-networks/
+                    - heading "📄️ Retrieves a list of GCP networks for the ..." [level=2] [ref=e747]
+                    - paragraph [ref=e748]: Retrieves a list of GCP networks for the specified account
+                - article [ref=e749]:
+                  - link "📄️ Retrieves a list of GCP zones for the sp ... Retrieves a list of GCP zones for the specified account and region" [ref=e750] [cursor=pointer]:
+                    - /url: /api/v1/v-1-gcp-zones/
+                    - heading "📄️ Retrieves a list of GCP zones for the sp ..." [level=2] [ref=e751]
+                    - paragraph [ref=e752]: Retrieves a list of GCP zones for the specified account and region
+                - article [ref=e753]:
+                  - link "📄️ Validate the specified GCP project Validate the specified GCP project" [ref=e754] [cursor=pointer]:
+                    - /url: /api/v1/v-1-gcp-project-validate/
+                    - heading "📄️ Validate the specified GCP project" [level=2] [ref=e755]
+                    - paragraph [ref=e756]: Validate the specified GCP project
+                - article [ref=e757]:
+                  - link "📄️ Retrieves a list of GCP zones for the sp ... Retrieves a list of GCP zones for the specified account" [ref=e758] [cursor=pointer]:
+                    - /url: /api/v1/v-1-gcp-availability-zones/
+                    - heading "📄️ Retrieves a list of GCP zones for the sp ..." [level=2] [ref=e759]
+                    - paragraph [ref=e760]: Retrieves a list of GCP zones for the specified account
+                - article [ref=e761]:
+                  - link "📄️ Validate GCP properties Validate GCP properties" [ref=e762] [cursor=pointer]:
+                    - /url: /api/v1/v-1-gcp-properties-validate/
+                    - heading "📄️ Validate GCP properties" [level=2] [ref=e763]
+                    - paragraph [ref=e764]: Validate GCP properties
+                - article [ref=e765]:
+                  - link "📄️ Retrieves a list of GCP instance types Retrieves a list of GCP instance types" [ref=e766] [cursor=pointer]:
+                    - /url: /api/v1/v-1-gcp-instance-types/
+                    - heading "📄️ Retrieves a list of GCP instance types" [level=2] [ref=e767]
+                    - paragraph [ref=e768]: Retrieves a list of GCP instance types
+                - article [ref=e769]:
+                  - link "📄️ Retrieves a list of Gcp storage types Retrieves a list of Gcp storage types" [ref=e770] [cursor=pointer]:
+                    - /url: /api/v1/v-1-gcp-storage-types/
+                    - heading "📄️ Retrieves a list of Gcp storage types" [level=2] [ref=e771]
+                    - paragraph [ref=e772]: Retrieves a list of Gcp storage types
+                - article [ref=e773]:
+                  - link "📄️ Check if Maas account is valid Returns no contents if account is valid else error." [ref=e774] [cursor=pointer]:
+                    - /url: /api/v1/v-1-maas-account-validate/
+                    - heading "📄️ Check if Maas account is valid" [level=2] [ref=e775]
+                    - paragraph [ref=e776]: Returns no contents if account is valid else error.
+                - article [ref=e777]:
+                  - link "📄️ Retrieves a list of Maas zones for a par ... Retrieves a list of Maas zones for a particular account uid" [ref=e778] [cursor=pointer]:
+                    - /url: /api/v1/v-1-maas-zones-get/
+                    - heading "📄️ Retrieves a list of Maas zones for a par ..." [level=2] [ref=e779]
+                    - paragraph [ref=e780]: Retrieves a list of Maas zones for a particular account uid
+                - article [ref=e781]:
+                  - link "📄️ Retrieves a list of Maas domains Retrieves a list of Maas domains" [ref=e782] [cursor=pointer]:
+                    - /url: /api/v1/v-1-maas-domains-get/
+                    - heading "📄️ Retrieves a list of Maas domains" [level=2] [ref=e783]
+                    - paragraph [ref=e784]: Retrieves a list of Maas domains
+                - article [ref=e785]:
+                  - link "📄️ Retrieves a list of Maas pools for a par ... Retrieves a list of Maas pools for a particular account uid" [ref=e786] [cursor=pointer]:
+                    - /url: /api/v1/v-1-maas-pools-get/
+                    - heading "📄️ Retrieves a list of Maas pools for a par ..." [level=2] [ref=e787]
+                    - paragraph [ref=e788]: Retrieves a list of Maas pools for a particular account uid
+                - article [ref=e789]:
+                  - link "📄️ Retrieves a list of Maas subnets for a p ... Retrieves a list of Maas subnets for a particular account uid" [ref=e790] [cursor=pointer]:
+                    - /url: /api/v1/v-1-maas-subnets-get/
+                    - heading "📄️ Retrieves a list of Maas subnets for a p ..." [level=2] [ref=e791]
+                    - paragraph [ref=e792]: Retrieves a list of Maas subnets for a particular account uid
+                - article [ref=e793]:
+                  - link "📄️ Retrieves a list of Maas tags for a part ... Retrieves a list of Maas tags for a particular account uid" [ref=e794] [cursor=pointer]:
+                    - /url: /api/v1/v-1-maas-tags-get/
+                    - heading "📄️ Retrieves a list of Maas tags for a part ..." [level=2] [ref=e795]
+                    - paragraph [ref=e796]: Retrieves a list of Maas tags for a particular account uid
+                - article [ref=e797]:
+                  - link "📄️ Check if OpenStack account is valid Returns no contents if account is valid else error." [ref=e798] [cursor=pointer]:
+                    - /url: /api/v1/v-1-open-stack-account-validate/
+                    - heading "📄️ Check if OpenStack account is valid" [level=2] [ref=e799]
+                    - paragraph [ref=e800]: Returns no contents if account is valid else error.
+                - article [ref=e801]:
+                  - link "📄️ Retrieves a list of OpenStack azs for a ... Retrieves a list of OpenStack azs for a particular account uid" [ref=e802] [cursor=pointer]:
+                    - /url: /api/v1/v-1-open-stack-azs-get/
+                    - heading "📄️ Retrieves a list of OpenStack azs for a ..." [level=2] [ref=e803]
+                    - paragraph [ref=e804]: Retrieves a list of OpenStack azs for a particular account uid
+                - article [ref=e805]:
+                  - link "📄️ Returns the OpenStack flavors Returns the OpenStack flavors" [ref=e806] [cursor=pointer]:
+                    - /url: /api/v1/v-1-open-stack-flavors-get/
+                    - heading "📄️ Returns the OpenStack flavors" [level=2] [ref=e807]
+                    - paragraph [ref=e808]: Returns the OpenStack flavors
+                - article [ref=e809]:
+                  - link "📄️ Returns the OpenStack keypair Returns the OpenStack keypair" [ref=e810] [cursor=pointer]:
+                    - /url: /api/v1/v-1-open-stack-keypairs-get/
+                    - heading "📄️ Returns the OpenStack keypair" [level=2] [ref=e811]
+                    - paragraph [ref=e812]: Returns the OpenStack keypair
+                - article [ref=e813]:
+                  - link "📄️ Returns the OpenStack networks Returns the OpenStack networks" [ref=e814] [cursor=pointer]:
+                    - /url: /api/v1/v-1-open-stack-networks-get/
+                    - heading "📄️ Returns the OpenStack networks" [level=2] [ref=e815]
+                    - paragraph [ref=e816]: Returns the OpenStack networks
+                - article [ref=e817]:
+                  - link "📄️ Returns the OpenStack projects Returns the OpenStack projects" [ref=e818] [cursor=pointer]:
+                    - /url: /api/v1/v-1-open-stack-projects-get/
+                    - heading "📄️ Returns the OpenStack projects" [level=2] [ref=e819]
+                    - paragraph [ref=e820]: Returns the OpenStack projects
+                - article [ref=e821]:
+                  - link "📄️ Returns the OpenStack regions Returns the OpenStack regions" [ref=e822] [cursor=pointer]:
+                    - /url: /api/v1/v-1-open-stack-regions-get/
+                    - heading "📄️ Returns the OpenStack regions" [level=2] [ref=e823]
+                    - paragraph [ref=e824]: Returns the OpenStack regions
+                - article [ref=e825]:
+                  - link "📄️ Check if Vsphere account is valid Returns no contents if account is valid else error." [ref=e826] [cursor=pointer]:
+                    - /url: /api/v1/v-1-vsphere-account-validate/
+                    - heading "📄️ Check if Vsphere account is valid" [level=2] [ref=e827]
+                    - paragraph [ref=e828]: Returns no contents if account is valid else error.
+                - article [ref=e829]:
+                  - link "📄️ Returns the vsphere data centers Returns the vsphere data centers" [ref=e830] [cursor=pointer]:
+                    - /url: /api/v1/v-1-vsphere-datacenters/
+                    - heading "📄️ Returns the vsphere data centers" [level=2] [ref=e831]
+                    - paragraph [ref=e832]: Returns the vsphere data centers
+                - article [ref=e833]:
+                  - link "📄️ Returns the resources for vsphere comput ... Returns the resources for vsphere compute cluster" [ref=e834] [cursor=pointer]:
+                    - /url: /api/v1/v-1-vsphere-compute-cluster-resources/
+                    - heading "📄️ Returns the resources for vsphere comput ..." [level=2] [ref=e835]
+                    - paragraph [ref=e836]: Returns the resources for vsphere compute cluster
+                - article [ref=e837]:
+                  - link "📄️ Retrieves vsphere env Retrieves vsphere env" [ref=e838] [cursor=pointer]:
+                    - /url: /api/v1/v-1-vsphere-env/
+                    - heading "📄️ Retrieves vsphere env" [level=2] [ref=e839]
+                    - paragraph [ref=e840]: Retrieves vsphere env
+                - article [ref=e841]:
+                  - link "📄️ Returns the cloud compute rate Returns the cloud compute rate" [ref=e842] [cursor=pointer]:
+                    - /url: /api/v1/v-1-cloud-compute-rate/
+                    - heading "📄️ Returns the cloud compute rate" [level=2] [ref=e843]
+                    - paragraph [ref=e844]: Returns the cloud compute rate
+                - article [ref=e845]:
+                  - link "📄️ Returns the cloud storage rate Returns the cloud storage rate" [ref=e846] [cursor=pointer]:
+                    - /url: /api/v1/v-1-cloud-storage-rate/
+                    - heading "📄️ Returns the cloud storage rate" [level=2] [ref=e847]
+                    - paragraph [ref=e848]: Returns the cloud storage rate
+          - navigation "Docs pages" [ref=e851]:
+            - link "Previous « Returns the specified cloud config's machine pools and machine uid" [ref=e852] [cursor=pointer]:
+              - /url: /api/v1/v-1-cloud-configs-machine-pools-machine-uids-get/
+              - generic [ref=e853]: Previous
+              - generic [ref=e854]: « Returns the specified cloud config's machine pools and machine uid
+            - link "Next Retrieves the Aws secret credentials »" [ref=e855] [cursor=pointer]:
+              - /url: /api/v1/v-1-aws-account-secret-credentials/
+              - generic [ref=e856]: Next
+              - generic [ref=e857]: Retrieves the Aws secret credentials »
+  - button "Project Logo Ask AI" [ref=e858] [cursor=pointer]:
+    - generic [ref=e861]:
+      - img "Project Logo" [ref=e862]
+      - paragraph [ref=e863]: Ask AI
+```

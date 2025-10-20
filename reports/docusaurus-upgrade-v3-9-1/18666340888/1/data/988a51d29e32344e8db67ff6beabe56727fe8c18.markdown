@@ -1,0 +1,399 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Palette Tutorials" [ref=e41] [cursor=pointer]:
+                  - /url: /tutorials/
+                  - img [ref=e43]
+                  - text: Palette Tutorials
+              - listitem [ref=e45]:
+                - generic [ref=e46]:
+                  - link "Getting Started" [expanded] [ref=e47] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/
+                    - img [ref=e49]
+                    - text: Getting Started
+                  - button "Toggle the collapsible sidebar category 'Getting Started'" [ref=e51] [cursor=pointer]
+                - list [ref=e52]:
+                  - listitem [ref=e53]:
+                    - generic [ref=e54]:
+                      - link "Palette" [ref=e55] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette/
+                      - button "Toggle the collapsible sidebar category 'Palette'" [ref=e56] [cursor=pointer]
+                  - listitem [ref=e57]:
+                    - generic [ref=e58]:
+                      - link "Palette Edge" [expanded] [ref=e59] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette-edge/
+                      - button "Toggle the collapsible sidebar category 'Palette Edge'" [ref=e60] [cursor=pointer]
+                    - list [ref=e61]:
+                      - listitem [ref=e62]:
+                        - link "Introduction to Edge" [ref=e63] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/introduction-edge/
+                      - listitem [ref=e64]:
+                        - link "Prepare User Data" [ref=e65] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/prepare-user-data/
+                      - listitem [ref=e66]:
+                        - link "Build Edge Artifacts" [ref=e67] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/build-edge-artifacts/
+                      - listitem [ref=e68]:
+                        - link "Create Edge Cluster Profile" [ref=e69] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/edge-cluster-profile/
+                      - listitem [ref=e70]:
+                        - link "Prepare Edge Host" [ref=e71] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/prepare-edge-host/
+                      - listitem [ref=e72]:
+                        - link "Deploy Edge Cluster" [ref=e73] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/deploy-edge-cluster/
+                  - listitem [ref=e74]:
+                    - generic [ref=e75]:
+                      - link "Additional Capabilities" [ref=e76] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/additional-capabilities/
+                      - button "Toggle the collapsible sidebar category 'Additional Capabilities'" [ref=e77] [cursor=pointer]
+              - listitem [ref=e78]:
+                - generic [ref=e79]:
+                  - link "Packs and Registries" [ref=e80] [cursor=pointer]:
+                    - /url: /tutorials/packs-registries/
+                    - img [ref=e82]
+                    - text: Packs and Registries
+                  - button "Toggle the collapsible sidebar category 'Packs and Registries'" [ref=e84] [cursor=pointer]
+              - listitem [ref=e85]:
+                - generic [ref=e86]:
+                  - link "Profiles" [ref=e87] [cursor=pointer]:
+                    - /url: /tutorials/profiles/
+                    - img [ref=e89]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e93] [cursor=pointer]
+              - listitem [ref=e94]:
+                - generic [ref=e95]:
+                  - link "Clusters" [ref=e96] [cursor=pointer]:
+                    - /url: /tutorials/clusters/
+                    - img [ref=e98]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e104] [cursor=pointer]
+              - listitem [ref=e105]:
+                - generic [ref=e106]:
+                  - link "Palette Dev Engine" [ref=e107] [cursor=pointer]:
+                    - /url: /tutorials/pde/
+                    - img [ref=e109]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e111] [cursor=pointer]
+              - listitem [ref=e112]:
+                - button "Privacy Settings" [ref=e113] [cursor=pointer]
+      - main [ref=e114]:
+        - generic [ref=e116]:
+          - generic [ref=e118]:
+            - article [ref=e119]:
+              - navigation "Breadcrumbs" [ref=e120]:
+                - list [ref=e121]:
+                  - listitem [ref=e122]:
+                    - link "Home page" [ref=e123] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e124]
+                  - listitem [ref=e126]:
+                    - link "Getting Started" [ref=e127] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/
+                  - listitem [ref=e128]:
+                    - link "Palette Edge" [ref=e129] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette-edge/
+                  - listitem [ref=e130]:
+                    - generic [ref=e131]: Prepare Edge Host
+              - generic [ref=e132]:
+                - heading "Prepare Edge Host" [level=1] [ref=e134]
+                - paragraph [ref=e135]: Edge clusters are Kubernetes clusters configured on Edge hosts. These hosts can be either bare metal or virtual machines and must have the Palette agent installed.
+                - paragraph [ref=e136]:
+                  - text: In this tutorial, you will learn how to install the Palette agent on your virtual or physical host. You will boot the host using the Edge installer ISO created in the
+                  - link "Build Edge Artifacts" [ref=e137] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette-edge/build-edge-artifacts/
+                  - text: tutorial, and then register the host with Palette. Once registered, the host will be ready to be part of an Edge cluster.
+                - paragraph [ref=e138]:
+                  - img "Palette Edge architecture diagram" [ref=e139]
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e140]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e141] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e142]:
+                  - listitem [ref=e143]:
+                    - text: A bare metal or virtual Linux host with an
+                    - emphasis [ref=e144]: AMD64
+                    - text: processor architecture (also known as
+                    - emphasis [ref=e145]: x86_64
+                    - text: ) and the following minimum hardware specifications.
+                    - list [ref=e146]:
+                      - listitem [ref=e147]: 2 CPUs
+                      - listitem [ref=e148]: 8 GB memory
+                      - listitem [ref=e149]: 150 GB storage
+                  - listitem [ref=e150]:
+                    - text: If you plan to use a virtual machine as the Edge host, ensure that you have a VMM (Virtual Machine Manager) installed. This tutorial uses
+                    - link "VirtualBox" [ref=e151] [cursor=pointer]:
+                      - /url: https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html
+                    - text: version 7.0 as an example. Additionally, the underlying physical host must allow the creation of a VM that meets the same minimum hardware requirements.
+                  - listitem [ref=e152]:
+                    - text: The Edge installer ISO file built in the
+                    - link "Build Edge Artifacts" [ref=e153] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette-edge/build-edge-artifacts/
+                    - text: tutorial. If you are using a physical device as the Edge host, ensure the device has USB ports, the ISO file is flashed to a USB drive, and you are able to modify the host's boot order settings to boot from the USB drive.
+                  - listitem [ref=e154]: A DHCP-enabled network with at least one available IP address for the Edge host.
+                  - listitem [ref=e155]:
+                    - text: A
+                    - link "Palette account" [ref=e156] [cursor=pointer]:
+                      - /url: https://www.spectrocloud.com/get-started
+                    - text: .
+                  - listitem [ref=e157]: The host must have access to the internet.
+                - heading "Set Up Edge HostDirect link to Set Up Edge Host" [level=2] [ref=e158]:
+                  - text: Set Up Edge Host
+                  - link "Direct link to Set Up Edge Host" [ref=e159] [cursor=pointer]:
+                    - /url: "#set-up-edge-host"
+                    - text: "#"
+                - generic [ref=e160]:
+                  - tablist [ref=e161]:
+                    - tab "VM Host" [selected] [ref=e162] [cursor=pointer]
+                    - tab "Bare Metal Host" [ref=e163] [cursor=pointer]
+                  - tabpanel [ref=e165]:
+                    - paragraph [ref=e166]: Once the Edge artifacts and cluster profile have been created, you can proceed with the VirtualBox VM deployment. The VM will use the Edge installer ISO to bootstrap the Edge installation and serve as the Edge host for your cluster.
+                    - paragraph [ref=e167]:
+                      - text: Launch the VirtualBox application and click
+                      - strong [ref=e168]: New
+                      - text: to create a new VM.
+                    - paragraph [ref=e169]:
+                      - text: Give the machine a name, for example,
+                      - code [ref=e170]: edge-vm
+                      - text: .
+                    - paragraph [ref=e171]:
+                      - text: In the
+                      - strong [ref=e172]: ISO Image
+                      - text: field, select the Edge installer ISO file you built in the
+                      - link "Build Edge Artifacts" [ref=e173] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette-edge/build-edge-artifacts/
+                      - text: tutorial. The ISO file is located in the
+                      - code [ref=e174]: CanvOS/build
+                      - text: directory.
+                    - paragraph [ref=e175]:
+                      - text: Set the machine
+                      - strong [ref=e176]: Type
+                      - text: as
+                      - strong [ref=e177]: Linux
+                      - text: and the
+                      - strong [ref=e178]: Version
+                      - text: as
+                      - strong [ref=e179]: Ubuntu (64-bit)
+                      - text: ", and click"
+                      - strong [ref=e180]: Next
+                      - text: .
+                    - paragraph [ref=e181]:
+                      - img "A screenshot of the VirtualBox VM configuration." [ref=e182]
+                    - paragraph [ref=e183]:
+                      - text: Adjust the
+                      - strong [ref=e184]: Base Memory
+                      - text: to 8000 MB and
+                      - strong [ref=e185]: Processors
+                      - text: to 2 CPU. Click
+                      - strong [ref=e186]: Next
+                      - text: to proceed.
+                    - paragraph [ref=e187]:
+                      - text: Set the
+                      - strong [ref=e188]: Disk Size
+                      - text: to 150 GB and ensure the option
+                      - strong [ref=e189]: Pre-Allocate Full Size
+                      - text: is
+                      - emphasis [ref=e190]: not
+                      - text: checked. Click
+                      - strong [ref=e191]: Next
+                      - text: .
+                    - generic [ref=e192]:
+                      - generic [ref=e193]:
+                        - img [ref=e195]
+                        - text: info
+                      - paragraph [ref=e198]: These are the minimum hardware requirements for an Edge host. In production environments, the required configuration may vary.
+                    - paragraph [ref=e199]:
+                      - text: Confirm the VM settings and click
+                      - strong [ref=e200]: Finish
+                      - text: to create the VM.
+                    - paragraph [ref=e201]:
+                      - text: Select the VM to adjust its network settings. Click
+                      - strong [ref=e202]: Settings
+                      - text: ", then select"
+                      - strong [ref=e203]: Network
+                      - text: .
+                    - paragraph [ref=e204]:
+                      - text: Change the
+                      - strong [ref=e205]: "Attached to:"
+                      - text: option from
+                      - strong [ref=e206]: NAT
+                      - text: to
+                      - strong [ref=e207]: Bridged Adapter
+                      - text: . This allows the VM to receive an IP address from the same network as the host. Click
+                      - strong [ref=e208]: OK
+                      - text: .
+                    - paragraph [ref=e209]:
+                      - img "A screenshot of the VirtualBox VM network configuration." [ref=e210]
+                    - paragraph [ref=e211]:
+                      - text: Select the created VM and click
+                      - strong [ref=e212]: Start
+                      - text: to turn it on. The Edge installer bootstraps the Palette Edge installation onto the VM.
+                    - paragraph [ref=e213]:
+                      - text: Wait for the Edge Installer to complete copying content to the VM. This process may take a few minutes. When the installation is complete, the VM shuts down automatically. This behavior is configured in the
+                      - code [ref=e214]: user-data
+                      - text: file, as specified in the
+                      - link "Prepare User Data" [ref=e215] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette-edge/prepare-user-data/
+                      - text: tutorial with the line
+                      - code [ref=e216]: "poweroff: true"
+                      - text: .
+                    - paragraph [ref=e217]:
+                      - text: After the VM powers off, select it in VirtualBox. Click
+                      - strong [ref=e218]: Settings
+                      - text: ", then select"
+                      - strong [ref=e219]: Storage
+                      - text: .
+                    - paragraph [ref=e220]:
+                      - text: Select the Edge installer ISO and click
+                      - strong [ref=e221]: Remove Attachment
+                      - text: to remove it from your VM. Confirm the deletion with
+                      - strong [ref=e222]: Remove
+                      - text: and click
+                      - strong [ref=e223]: OK
+                      - text: to close the settings window. Leaving the installer ISO attached would cause the VM to boot from it again, restarting the installation process.
+                    - paragraph [ref=e224]:
+                      - img "A screenshot of the VirtualBox VM storage configuration." [ref=e225]
+                - heading "Register Edge HostDirect link to Register Edge Host" [level=2] [ref=e226]:
+                  - text: Register Edge Host
+                  - link "Direct link to Register Edge Host" [ref=e227] [cursor=pointer]:
+                    - /url: "#register-edge-host"
+                    - text: "#"
+                - generic [ref=e228]:
+                  - tablist [ref=e229]:
+                    - tab "VM Host" [selected] [ref=e230] [cursor=pointer]
+                    - tab "Bare Metal Host" [ref=e231] [cursor=pointer]
+                  - tabpanel [ref=e233]:
+                    - paragraph [ref=e234]:
+                      - text: To register the host with Palette, select the VM in VirtualBox and click
+                      - strong [ref=e235]: Start
+                      - text: to power it on. The VM boots and obtains an IP address from the host machine's bridged network.
+                    - paragraph [ref=e236]:
+                      - text: After a few minutes, the VM screen displays an IP address and automatically registers with Palette as an Edge host, using the registration token provided in the
+                      - code [ref=e237]: user-data
+                      - text: file during the
+                      - link "Prepare User Data for Edge Installation" [ref=e238] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette-edge/prepare-user-data/
+                      - text: tutorial.
+                    - paragraph [ref=e239]:
+                      - img "A screenshot of the Edge host." [ref=e240]
+                    - generic [ref=e241]:
+                      - generic [ref=e242]:
+                        - img [ref=e244]
+                        - text: tip
+                      - paragraph [ref=e247]:
+                        - text: You can provide site-specific Edge installer configuration user data if you need to apply new values or override default values from the Edge installer user data you created during the EdgeForge process. Refer to
+                        - link "Apply Site User Data" [ref=e248] [cursor=pointer]:
+                          - /url: /clusters/edge/site-deployment/site-installation/site-user-data/
+                        - text: for more information.
+                    - paragraph [ref=e249]:
+                      - text: Log in to
+                      - link "Palette" [ref=e250] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: . From the left main menu, select
+                      - strong [ref=e251]: Clusters
+                      - text: . Click the
+                      - strong [ref=e252]: Edge Hosts
+                      - text: tab to view the registered hosts.
+                    - paragraph [ref=e253]:
+                      - text: Confirm that your Edge host is listed with a
+                      - strong [ref=e254]: Healthy
+                      - text: and
+                      - strong [ref=e255]: Ready
+                      - text: status. The
+                      - strong [ref=e256]: Machine ID
+                      - text: displayed in Palette should match the ID displayed on the VM screen.
+                    - paragraph [ref=e257]:
+                      - img "A screenshot of the Edge host in Palette." [ref=e258]
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e259]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e260] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e261]:
+                  - text: In this tutorial, you learned how to install the Palette agent on your host and register the host with Palette. We recommend proceeding to the
+                  - link "Deploy Edge Cluster" [ref=e262] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette-edge/deploy-edge-cluster/
+                  - text: tutorial to learn how to use the registered Edge host to deploy an Edge cluster in Palette.
+              - generic [ref=e263]:
+                - generic [ref=e265]:
+                  - text: "Tags:"
+                  - list [ref=e266]:
+                    - listitem [ref=e267]:
+                      - link "getting-started" [ref=e268] [cursor=pointer]:
+                        - /url: /tags/getting-started/
+                    - listitem [ref=e269]:
+                      - link "tutorial" [ref=e270] [cursor=pointer]:
+                        - /url: /tags/tutorial/
+                    - listitem [ref=e271]:
+                      - link "edge" [ref=e272] [cursor=pointer]:
+                        - /url: /tags/edge/
+                - link "Edit this page" [ref=e275] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/tutorials/getting-started/palette-edge/prepare-edge-host.md
+                  - img [ref=e276]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e280]:
+              - link "Previous « Create Edge Cluster Profile" [ref=e281] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette-edge/edge-cluster-profile/
+                - generic [ref=e282]: Previous
+                - generic [ref=e283]: « Create Edge Cluster Profile
+              - link "Next Deploy Edge Cluster »" [ref=e284] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette-edge/deploy-edge-cluster/
+                - generic [ref=e285]: Next
+                - generic [ref=e286]: Deploy Edge Cluster »
+          - list [ref=e289]:
+            - listitem [ref=e290]:
+              - link "Prerequisites" [ref=e291] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e292]:
+              - link "Set Up Edge Host" [ref=e293] [cursor=pointer]:
+                - /url: "#set-up-edge-host"
+            - listitem [ref=e294]:
+              - link "Register Edge Host" [ref=e295] [cursor=pointer]:
+                - /url: "#register-edge-host"
+            - listitem [ref=e296]:
+              - link "Next Steps" [ref=e297] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e298] [cursor=pointer]:
+    - generic [ref=e301]:
+      - img "Project Logo" [ref=e302]
+      - paragraph [ref=e303]: Ask AI
+```

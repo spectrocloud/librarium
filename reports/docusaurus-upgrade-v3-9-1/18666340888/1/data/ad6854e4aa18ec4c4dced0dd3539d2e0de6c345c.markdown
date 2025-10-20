@@ -1,0 +1,2140 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Introduction" [ref=e41] [cursor=pointer]:
+                  - /url: /api/introduction/
+                  - img [ref=e43]
+                  - text: Introduction
+              - listitem [ref=e45]:
+                - link "Example Usage" [ref=e46] [cursor=pointer]:
+                  - /url: /api/samples/
+              - listitem [ref=e47]:
+                - link "Postman Collection" [ref=e48] [cursor=pointer]:
+                  - /url: /api/postman-collection/
+              - listitem [ref=e49]:
+                - generic [ref=e50]:
+                  - link "Palette API V1" [expanded] [ref=e51] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Palette API V1'" [ref=e52] [cursor=pointer]
+                - list [ref=e53]:
+                  - listitem [ref=e54]:
+                    - link "Introduction" [ref=e55] [cursor=pointer]:
+                      - /url: /api/v1/palette-apis-4-7/
+                  - listitem [ref=e56]:
+                    - generic [ref=e57]:
+                      - link "Api Keys" [ref=e58] [cursor=pointer]:
+                        - /url: /api/v1/api-keys/
+                      - button "Toggle the collapsible sidebar category 'Api Keys'" [ref=e59] [cursor=pointer]
+                  - listitem [ref=e60]:
+                    - generic [ref=e61]:
+                      - link "App Deployments" [ref=e62] [cursor=pointer]:
+                        - /url: /api/v1/app-deployments/
+                      - button "Toggle the collapsible sidebar category 'App Deployments'" [ref=e63] [cursor=pointer]
+                  - listitem [ref=e64]:
+                    - generic [ref=e65]:
+                      - link "App Profiles" [ref=e66] [cursor=pointer]:
+                        - /url: /api/v1/app-profiles/
+                      - button "Toggle the collapsible sidebar category 'App Profiles'" [ref=e67] [cursor=pointer]
+                  - listitem [ref=e68]:
+                    - generic [ref=e69]:
+                      - link "Audits" [ref=e70] [cursor=pointer]:
+                        - /url: /api/v1/audits/
+                      - button "Toggle the collapsible sidebar category 'Audits'" [ref=e71] [cursor=pointer]
+                  - listitem [ref=e72]:
+                    - generic [ref=e73]:
+                      - link "Auth" [ref=e74] [cursor=pointer]:
+                        - /url: /api/v1/auth/
+                      - button "Toggle the collapsible sidebar category 'Auth'" [ref=e75] [cursor=pointer]
+                  - listitem [ref=e76]:
+                    - generic [ref=e77]:
+                      - link "Cloudaccounts" [ref=e78] [cursor=pointer]:
+                        - /url: /api/v1/cloudaccounts/
+                      - button "Toggle the collapsible sidebar category 'Cloudaccounts'" [ref=e79] [cursor=pointer]
+                  - listitem [ref=e80]:
+                    - generic [ref=e81]:
+                      - link "Cloudconfigs" [ref=e82] [cursor=pointer]:
+                        - /url: /api/v1/cloudconfigs/
+                      - button "Toggle the collapsible sidebar category 'Cloudconfigs'" [ref=e83] [cursor=pointer]
+                  - listitem [ref=e84]:
+                    - generic [ref=e85]:
+                      - link "Clouds" [ref=e86] [cursor=pointer]:
+                        - /url: /api/v1/clouds/
+                      - button "Toggle the collapsible sidebar category 'Clouds'" [ref=e87] [cursor=pointer]
+                  - listitem [ref=e88]:
+                    - generic [ref=e89]:
+                      - link "Cluster Templates" [ref=e90] [cursor=pointer]:
+                        - /url: /api/v1/cluster-templates/
+                      - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+                  - listitem [ref=e92]:
+                    - generic [ref=e93]:
+                      - link "Clustergroups" [ref=e94] [cursor=pointer]:
+                        - /url: /api/v1/clustergroups/
+                      - button "Toggle the collapsible sidebar category 'Clustergroups'" [ref=e95] [cursor=pointer]
+                  - listitem [ref=e96]:
+                    - generic [ref=e97]:
+                      - link "Clusterprofiles" [ref=e98] [cursor=pointer]:
+                        - /url: /api/v1/clusterprofiles/
+                      - button "Toggle the collapsible sidebar category 'Clusterprofiles'" [ref=e99] [cursor=pointer]
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Dashboard" [ref=e102] [cursor=pointer]:
+                        - /url: /api/v1/dashboard/
+                      - button "Toggle the collapsible sidebar category 'Dashboard'" [ref=e103] [cursor=pointer]
+                  - listitem [ref=e104]:
+                    - generic [ref=e105]:
+                      - link "Datasinks" [ref=e106] [cursor=pointer]:
+                        - /url: /api/v1/datasinks/
+                      - button "Toggle the collapsible sidebar category 'Datasinks'" [ref=e107] [cursor=pointer]
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Edgehosts" [ref=e110] [cursor=pointer]:
+                        - /url: /api/v1/edgehosts/
+                      - button "Toggle the collapsible sidebar category 'Edgehosts'" [ref=e111] [cursor=pointer]
+                  - listitem [ref=e112]:
+                    - generic [ref=e113]:
+                      - link "Events" [ref=e114] [cursor=pointer]:
+                        - /url: /api/v1/events/
+                      - button "Toggle the collapsible sidebar category 'Events'" [ref=e115] [cursor=pointer]
+                  - listitem [ref=e116]:
+                    - generic [ref=e117]:
+                      - link "Features" [ref=e118] [cursor=pointer]:
+                        - /url: /api/v1/features/
+                      - button "Toggle the collapsible sidebar category 'Features'" [ref=e119] [cursor=pointer]
+                  - listitem [ref=e120]:
+                    - generic [ref=e121]:
+                      - link "Filters" [ref=e122] [cursor=pointer]:
+                        - /url: /api/v1/filters/
+                      - button "Toggle the collapsible sidebar category 'Filters'" [ref=e123] [cursor=pointer]
+                  - listitem [ref=e124]:
+                    - generic [ref=e125]:
+                      - link "Metrics" [ref=e126] [cursor=pointer]:
+                        - /url: /api/v1/metrics/
+                      - button "Toggle the collapsible sidebar category 'Metrics'" [ref=e127] [cursor=pointer]
+                  - listitem [ref=e128]:
+                    - generic [ref=e129]:
+                      - link "Notifications" [ref=e130] [cursor=pointer]:
+                        - /url: /api/v1/notifications/
+                      - button "Toggle the collapsible sidebar category 'Notifications'" [ref=e131] [cursor=pointer]
+                  - listitem [ref=e132]:
+                    - generic [ref=e133]:
+                      - link "Overlords" [ref=e134] [cursor=pointer]:
+                        - /url: /api/v1/overlords/
+                      - button "Toggle the collapsible sidebar category 'Overlords'" [ref=e135] [cursor=pointer]
+                  - listitem [ref=e136]:
+                    - generic [ref=e137]:
+                      - link "Packs" [ref=e138] [cursor=pointer]:
+                        - /url: /api/v1/packs/
+                      - button "Toggle the collapsible sidebar category 'Packs'" [ref=e139] [cursor=pointer]
+                  - listitem [ref=e140]:
+                    - generic [ref=e141]:
+                      - link "Pcg" [ref=e142] [cursor=pointer]:
+                        - /url: /api/v1/pcg/
+                      - button "Toggle the collapsible sidebar category 'Pcg'" [ref=e143] [cursor=pointer]
+                  - listitem [ref=e144]:
+                    - generic [ref=e145]:
+                      - link "Permissions" [ref=e146] [cursor=pointer]:
+                        - /url: /api/v1/permissions/
+                      - button "Toggle the collapsible sidebar category 'Permissions'" [ref=e147] [cursor=pointer]
+                  - listitem [ref=e148]:
+                    - generic [ref=e149]:
+                      - link "Projects" [ref=e150] [cursor=pointer]:
+                        - /url: /api/v1/projects/
+                      - button "Toggle the collapsible sidebar category 'Projects'" [ref=e151] [cursor=pointer]
+                  - listitem [ref=e152]:
+                    - generic [ref=e153]:
+                      - link "Registries" [ref=e154] [cursor=pointer]:
+                        - /url: /api/v1/registries/
+                      - button "Toggle the collapsible sidebar category 'Registries'" [ref=e155] [cursor=pointer]
+                  - listitem [ref=e156]:
+                    - generic [ref=e157]:
+                      - link "Roles" [ref=e158] [cursor=pointer]:
+                        - /url: /api/v1/roles/
+                      - button "Toggle the collapsible sidebar category 'Roles'" [ref=e159] [cursor=pointer]
+                  - listitem [ref=e160]:
+                    - generic [ref=e161]:
+                      - link "Services" [ref=e162] [cursor=pointer]:
+                        - /url: /api/v1/services/
+                      - button "Toggle the collapsible sidebar category 'Services'" [ref=e163] [cursor=pointer]
+                  - listitem [ref=e164]:
+                    - generic [ref=e165]:
+                      - link "Spc Policies" [ref=e166] [cursor=pointer]:
+                        - /url: /api/v1/spc-policies/
+                      - button "Toggle the collapsible sidebar category 'Spc Policies'" [ref=e167] [cursor=pointer]
+                  - listitem [ref=e168]:
+                    - generic [ref=e169]:
+                      - link "Spectroclusters" [expanded] [ref=e170] [cursor=pointer]:
+                        - /url: /api/v1/spectroclusters/
+                      - button "Toggle the collapsible sidebar category 'Spectroclusters'" [ref=e171] [cursor=pointer]
+                    - list [ref=e172]:
+                      - listitem [ref=e173]:
+                        - link "post Creates an AKS cluster" [ref=e174] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-aks-create/
+                      - listitem [ref=e175]:
+                        - link "post Get AKS cluster estimated rate information" [ref=e176] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-aks-rate/
+                      - listitem [ref=e177]:
+                        - link "post Validates AKS cluster create operation" [ref=e178] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-aks-validate/
+                      - listitem [ref=e179]:
+                        - link "post Creates an AWS cluster" [ref=e180] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-aws-create/
+                      - listitem [ref=e181]:
+                        - link "post Imports an AWS cluster" [ref=e182] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-aws-import/
+                      - listitem [ref=e183]:
+                        - link "post Get AWS cluster estimated rate information" [ref=e184] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-aws-rate/
+                      - listitem [ref=e185]:
+                        - link "post Validates AWS cluster create operation" [ref=e186] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-aws-validate/
+                      - listitem [ref=e187]:
+                        - link "post Creates an Azure cluster" [ref=e188] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-azure-create/
+                      - listitem [ref=e189]:
+                        - link "post Imports an Azure cluster" [ref=e190] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-azure-import/
+                      - listitem [ref=e191]:
+                        - link "post Get Azure cluster estimated rate information" [ref=e192] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-azure-rate/
+                      - listitem [ref=e193]:
+                        - link "post Validates Azure cluster create operation" [ref=e194] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-azure-validate/
+                      - listitem [ref=e195]:
+                        - link "post Creates a Custom cluster" [ref=e196] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-custom-create/
+                      - listitem [ref=e197]:
+                        - link "post Validates Custom cluster create operation" [ref=e198] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-custom-validate/
+                      - listitem [ref=e199]:
+                        - link "patch Upgrades clusters launched from the specified cluster template" [ref=e200] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-templates-uid-clusters-upgrade/
+                      - listitem [ref=e201]:
+                        - link "get Returns the associated profiles for all the cluster of launched from the specified cluster template" [ref=e202] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-cluster-templates-uid-profiles-get/
+                      - listitem [ref=e203]:
+                        - link "get Cluster configuration for the edge installer" [ref=e204] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-config-edge-installer/
+                      - listitem [ref=e205]:
+                        - link "post Creates an EdgeNative cluster" [ref=e206] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-edge-native-create/
+                      - listitem [ref=e207]:
+                        - link "post Imports an EdgeNative cluster" [ref=e208] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-edge-native-import/
+                      - listitem [ref=e209]:
+                        - link "post Get edge-native cluster estimated rate information" [ref=e210] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-edge-native-rate/
+                      - listitem [ref=e211]:
+                        - link "post Validates edge-native cluster create operation" [ref=e212] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-edge-native-validate/
+                      - listitem [ref=e213]:
+                        - link "post Creates an EKS cluster" [ref=e214] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-eks-create/
+                      - listitem [ref=e215]:
+                        - link "post Get EKS cluster estimated rate information" [ref=e216] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-eks-rate/
+                      - listitem [ref=e217]:
+                        - link "post Validates EKS cluster create operation" [ref=e218] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-eks-validate/
+                      - listitem [ref=e219]:
+                        - link "get Returns the cluster object references based on locationUid" [ref=e220] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-backup-location-uid-get/
+                      - listitem [ref=e221]:
+                        - link "put Change cluster backup location" [ref=e222] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-backup-location-uid-change/
+                      - listitem [ref=e223]:
+                        - link "get Download log fetcher logs for cluster by log fetcher uid" [ref=e224] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-log-fetcher-log-download/
+                      - listitem [ref=e225]:
+                        - link "post Update log fetcher logs by log fetcher uid" [ref=e226] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-log-fetcher-log-update/
+                      - listitem [ref=e227]:
+                        - link "post Creates a GCP cluster" [ref=e228] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-gcp-create/
+                      - listitem [ref=e229]:
+                        - link "post Imports a GCP cluster" [ref=e230] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-gcp-import/
+                      - listitem [ref=e231]:
+                        - link "post Get GCP cluster estimated rate information" [ref=e232] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-gcp-rate/
+                      - listitem [ref=e233]:
+                        - link "post Validates GCP cluster create operation" [ref=e234] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-gcp-validate/
+                      - listitem [ref=e235]:
+                        - link "post Imports a cluster of any cloud type in generic way" [ref=e236] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-generic-import/
+                      - listitem [ref=e237]:
+                        - link "post Get generic cluster estimated rate information" [ref=e238] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-generic-rate/
+                      - listitem [ref=e239]:
+                        - link "post Creates an GKE cluster" [ref=e240] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-gke-create/
+                      - listitem [ref=e241]:
+                        - link "post Get GKE cluster estimated rate information" [ref=e242] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-gke-rate/
+                      - listitem [ref=e243]:
+                        - link "post Validates GKE cluster create operation" [ref=e244] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-gke-validate/
+                      - listitem [ref=e245]:
+                        - link "post Creates a MAAS cluster" [ref=e246] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-maas-create/
+                      - listitem [ref=e247]:
+                        - link "post Imports a Maas cluster" [ref=e248] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-maas-import/
+                      - listitem [ref=e249]:
+                        - link "post Get maas cluster estimated rate information" [ref=e250] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-maas-rate/
+                      - listitem [ref=e251]:
+                        - link "post Validates MAAS cluster create operation" [ref=e252] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-maas-validate/
+                      - listitem [ref=e253]:
+                        - link "post Creates a OpenStack cluster" [ref=e254] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-open-stack-create/
+                      - listitem [ref=e255]:
+                        - link "post Imports an OpenStack cluster" [ref=e256] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-open-stack-import/
+                      - listitem [ref=e257]:
+                        - link "post Get openstack cluster estimated rate information" [ref=e258] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-open-stack-rate/
+                      - listitem [ref=e259]:
+                        - link "post Validates OpenStack cluster create operation" [ref=e260] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-open-stack-validate/
+                      - listitem [ref=e261]:
+                        - link "post Downloads the cluster definition archive file" [ref=e262] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-spc-download/
+                      - listitem [ref=e263]:
+                        - link "get Retrieves a list of spectrocluster tags" [ref=e264] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-tags-get/
+                      - listitem [ref=e265]:
+                        - link "get Get cluster settings by context" [ref=e266] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-upgrade-settings-get/
+                      - listitem [ref=e267]:
+                        - link "post Update all clusters upgrade settings" [ref=e268] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-upgrade-settings/
+                      - listitem [ref=e269]:
+                        - link "get Validates the cluster name" [ref=e270] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-validate-name/
+                      - listitem [ref=e271]:
+                        - link "post Validates spectro cluster packs" [ref=e272] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-validate-packs/
+                      - listitem [ref=e273]:
+                        - link "post Creates a virtual cluster" [ref=e274] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-virtual-create/
+                      - listitem [ref=e275]:
+                        - link "get Get the cluster pack values yaml" [ref=e276] [cursor=pointer]:
+                          - /url: /api/v1/v-1-virtual-clusters-packs-values/
+                      - listitem [ref=e277]:
+                        - link "post Validates virtual cluster create operation" [ref=e278] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-virtual-validate/
+                      - listitem [ref=e279]:
+                        - link "post Creates a vSphere cluster" [ref=e280] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vsphere-create/
+                      - listitem [ref=e281]:
+                        - link "post Imports a vSphere cluster" [ref=e282] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vsphere-import/
+                      - listitem [ref=e283]:
+                        - link "post Get vSphere cluster estimated rate information" [ref=e284] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vsphere-rate/
+                      - listitem [ref=e285]:
+                        - link "post Validates vSphere cluster create operation" [ref=e286] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vsphere-validate/
+                      - listitem [ref=e287]:
+                        - link "del Deletes the specified cluster" [ref=e288] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-delete/
+                      - listitem [ref=e289]:
+                        - link "get Returns the specified cluster" [ref=e290] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-get/
+                      - listitem [ref=e291]:
+                        - link "get Get the cluster asset doc" [ref=e292] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-assets-get/
+                      - listitem [ref=e293]:
+                        - link "post Associate the assets for the cluster" [ref=e294] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-assets/
+                      - listitem [ref=e295]:
+                        - link "get Returns the specified cluster's kube config file" [ref=e296] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-admin-kube-config/
+                      - listitem [ref=e297]:
+                        - link "del Deletes the cluster's token kube config data" [ref=e298] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-token-kube-config-delete/
+                      - listitem [ref=e299]:
+                        - link "get Returns the specified cluster's token kube config file" [ref=e300] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-token-kube-config-get/
+                      - listitem [ref=e301]:
+                        - link "put Updates the cluster's token kube config data" [ref=e302] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-token-kube-config-update/
+                      - listitem [ref=e303]:
+                        - link "del Deletes the cluster's frp kube config client data" [ref=e304] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-frp-kube-config-delete/
+                      - listitem [ref=e305]:
+                        - link "get Returns the specified cluster's frp kube config file" [ref=e306] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-frp-kube-config-get/
+                      - listitem [ref=e307]:
+                        - link "put Updates the cluster's frp kube config data" [ref=e308] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-frp-kube-config-update/
+                      - listitem [ref=e309]:
+                        - link "get Returns the specified cluster's kube config file" [ref=e310] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-kube-config/
+                      - listitem [ref=e311]:
+                        - link "put Updates the cluster's manifest data" [ref=e312] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-kube-config-update/
+                      - listitem [ref=e313]:
+                        - link "del Deletes the cluster's kube config client data" [ref=e314] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-kube-config-client-delete/
+                      - listitem [ref=e315]:
+                        - link "get Returns the specified cluster's kube config client file" [ref=e316] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-kube-config-client-get/
+                      - listitem [ref=e317]:
+                        - link "put Updates the cluster's kube config client data" [ref=e318] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-kube-config-client-update/
+                      - listitem [ref=e319]:
+                        - link "get Returns the specified cluster's manifest data" [ref=e320] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-manifest-get/
+                      - listitem [ref=e321]:
+                        - link "put Updates the specified cluster's manifest data" [ref=e322] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-manifest-update/
+                      - listitem [ref=e323]:
+                        - link "patch Updates the specified cluster meta attribute" [ref=e324] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-cluster-meta-attribute-update/
+                      - listitem [ref=e325]:
+                        - link "patch Updates the specified cluster controlPlane health check timeout" [ref=e326] [cursor=pointer]:
+                          - /url: /api/v1/v-1-control-plane-health-check-timeout-update/
+                      - listitem [ref=e327]:
+                        - link "patch Updates the specified cluster host config" [ref=e328] [cursor=pointer]:
+                          - /url: /api/v1/v-1-host-cluster-config-update/
+                      - listitem [ref=e329]:
+                        - link "patch Updates the specified cluster Life cycle configuration" [ref=e330] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-lifecycle-config-update/
+                      - listitem [ref=e331]:
+                        - link "patch Updates the specified cluster OS patch configuration" [ref=e332] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-os-patch-update/
+                      - listitem [ref=e333]:
+                        - link "get Retrieves namespaces for the specified cluster" [ref=e334] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-config-namespaces-get/
+                      - listitem [ref=e335]:
+                        - link "put Updates namespaces for the specified cluster" [ref=e336] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-config-namespaces-update/
+                      - listitem [ref=e337]:
+                        - link "get Retrieves the specified namespace of the cluster" [ref=e338] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-config-namespaces-uid-get/
+                      - listitem [ref=e339]:
+                        - link "put Updates the specified namespace of the cluster" [ref=e340] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-config-namespaces-uid-update/
+                      - listitem [ref=e341]:
+                        - link "get Retrieves RBAC information for the specified cluster" [ref=e342] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-config-rbacs-get/
+                      - listitem [ref=e343]:
+                        - link "put Updates RBAC information for the specified cluster" [ref=e344] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-config-rbacs-update/
+                      - listitem [ref=e345]:
+                        - link "get Retrieves the specified RBAC of the cluster" [ref=e346] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-config-rbacs-uid-get/
+                      - listitem [ref=e347]:
+                        - link "put Updates the specified RBAC of the cluster" [ref=e348] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-config-rbacs-uid-update/
+                      - listitem [ref=e349]:
+                        - link "get Download the specified cluster" [ref=e350] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-download/
+                      - listitem [ref=e351]:
+                        - link "get Retrieves a list of edge host of edge-native cluster" [ref=e352] [cursor=pointer]:
+                          - /url: /api/v1/v-1-edge-native-clusters-hosts-list/
+                      - listitem [ref=e353]:
+                        - link "post reset the edge clusters by deleting machine pools and conditions" [ref=e354] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-edge-reset/
+                      - listitem [ref=e355]:
+                        - link "del Reset cluster backup schedule settings" [ref=e356] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-backup-schedule-reset/
+                      - listitem [ref=e357]:
+                        - link "get Returns the cluster backup result" [ref=e358] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-backup-get/
+                      - listitem [ref=e359]:
+                        - link "post Create cluster backup settings" [ref=e360] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-backup-create/
+                      - listitem [ref=e361]:
+                        - link "put Update cluster backup settings" [ref=e362] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-backup-update/
+                      - listitem [ref=e363]:
+                        - link "post Create on demand cluster backup" [ref=e364] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-backup-on-demand-create/
+                      - listitem [ref=e365]:
+                        - link "del Delete cluster backup" [ref=e366] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-backup-delete/
+                      - listitem [ref=e367]:
+                        - link "get Returns the compliance scan of cluster, if driverType is provided then specific status of driverType will be returned" [ref=e368] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-compliance-scan-get/
+                      - listitem [ref=e369]:
+                        - link "post Create cluster compliance scan" [ref=e370] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-compliance-scan-create/
+                      - listitem [ref=e371]:
+                        - link "put Update cluster compliance scan settings" [ref=e372] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-compliance-scan-update/
+                      - listitem [ref=e373]:
+                        - link "get Returns the compliance scan log by cluster uid and driver type" [ref=e374] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-compliance-scan-logs-get/
+                      - listitem [ref=e375]:
+                        - link "put Update the KubeBench compliance scan log by uid" [ref=e376] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-scan-kube-bench-log-update/
+                      - listitem [ref=e377]:
+                        - link "put Update the KubeHunter compliance scan log by uid" [ref=e378] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-scan-kube-hunter-log-update/
+                      - listitem [ref=e379]:
+                        - link "put Update the Sonobuoy compliance scan log by uid" [ref=e380] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-scan-sonobuoy-log-update/
+                      - listitem [ref=e381]:
+                        - link "patch Update the Syft compliance scan log by uid" [ref=e382] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-scan-syft-log-update/
+                      - listitem [ref=e383]:
+                        - link "del Delete the compliance scan log by uid" [ref=e384] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-compliance-scan-log-delete/
+                      - listitem [ref=e385]:
+                        - link "get Returns the KubeBench compliance scan log by uid" [ref=e386] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-kube-bench-log-get/
+                      - listitem [ref=e387]:
+                        - link "get Returns the KubeHunter compliance scan log by uid" [ref=e388] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-kube-hunter-log-get/
+                      - listitem [ref=e389]:
+                        - link "get Returns the Sonobuoy compliance scan log by uid" [ref=e390] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-sonobuoy-log-get/
+                      - listitem [ref=e391]:
+                        - link "get Returns the Syft compliance scan log by uid" [ref=e392] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-syft-log-get/
+                      - listitem [ref=e393]:
+                        - link "get Returns the image sbom of syft scan log of cluster" [ref=e394] [cursor=pointer]:
+                          - /url: /api/v1/v-1-syft-scan-log-image-sbom-get/
+                      - listitem [ref=e395]:
+                        - link "get Downloads the driver cluster logs" [ref=e396] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-driver-log-download/
+                      - listitem [ref=e397]:
+                        - link "post Create on demand cluster compliance scan" [ref=e398] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-compliance-scan-on-demand-create/
+                      - listitem [ref=e399]:
+                        - link "get Get the installed helm charts of a specified cluster" [ref=e400] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-helm-charts-get/
+                      - listitem [ref=e401]:
+                        - link "get Get the log fetcher for cluster" [ref=e402] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-log-fetcher-get/
+                      - listitem [ref=e403]:
+                        - link "post Create the log fetcher for cluster" [ref=e404] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-log-fetcher-create/
+                      - listitem [ref=e405]:
+                        - link "get Get the installed manifests of a specified cluster" [ref=e406] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-manifests-get/
+                      - listitem [ref=e407]:
+                        - link "get Returns the cluster restore of cluster" [ref=e408] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-restore-get/
+                      - listitem [ref=e409]:
+                        - link "post Create on demand cluster restore" [ref=e410] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-feature-restore-on-demand-create/
+                      - listitem [ref=e411]:
+                        - link "put Update specific cluster heartbeat" [ref=e412] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-heartbeat-update/
+                      - listitem [ref=e413]:
+                        - link "get Returns the metadata of all hybrid pools associated with the specified cluster" [ref=e414] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-get-hybrid-pools-metadata/
+                      - listitem [ref=e415]:
+                        - link "patch Update specific cluster hybrid settings" [ref=e416] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-hybrid-settings/
+                      - listitem [ref=e417]:
+                        - link "get Returns the specified cluster's import manifest file" [ref=e418] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-import-manifest/
+                      - listitem [ref=e419]:
+                        - link "patch Upgrade the specified imported read only cluster with full permissions" [ref=e420] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-import-upgrade-patch/
+                      - listitem [ref=e421]:
+                        - link "get Get K8Certificate for spectro cluster" [ref=e422] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-k-8-certificate/
+                      - listitem [ref=e423]:
+                        - link "put Update K8Certificate for spectro cluster" [ref=e424] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-k-8-certificate-update/
+                      - listitem [ref=e425]:
+                        - link "patch Sets the cluster control plane nodes Kubernetes certificates for renewal" [ref=e426] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-certificates-renew/
+                      - listitem [ref=e427]:
+                        - link "get Returns the specified cluster's kube config file" [ref=e428] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-kube-ctl-redirect/
+                      - listitem [ref=e429]:
+                        - link "put Associate the assets for the cluster" [ref=e430] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-location-put/
+                      - listitem [ref=e431]:
+                        - link "patch Update the specified spectro cluster metadata" [ref=e432] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-metadata-update/
+                      - listitem [ref=e433]:
+                        - link "get Returns available namespaces for the cluster" [ref=e434] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-namespaces-get/
+                      - listitem [ref=e435]:
+                        - link "get Returns k8s spectrocluster oidc" [ref=e436] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-oidc/
+                      - listitem [ref=e437]:
+                        - link "get Returns k8s dashboard url" [ref=e438] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-oidc-dashboard-url/
+                      - listitem [ref=e439]:
+                        - link "get Returns the specified cluster's manifest" [ref=e440] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-pack-manifests-uid-get/
+                      - listitem [ref=e441]:
+                        - link "get Get specified cluster pack properties" [ref=e442] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-pack-properties/
+                      - listitem [ref=e443]:
+                        - link "patch Updates the cluster's pack references" [ref=e444] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-packs-ref-update/
+                      - listitem [ref=e445]:
+                        - link "get Returns the specified cluster's packs resolved values" [ref=e446] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-packs-resolved-values-get/
+                      - listitem [ref=e447]:
+                        - link "patch Patch update specified cluster's packs status" [ref=e448] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-packs-status-patch/
+                      - listitem [ref=e449]:
+                        - link "get Returns the profile updates of a specified cluster" [ref=e450] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-get-profile-updates/
+                      - listitem [ref=e451]:
+                        - link "del Remove cluster profiles from the specified cluster" [ref=e452] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-delete-profiles/
+                      - listitem [ref=e453]:
+                        - link "get Returns the associated profiles of a specified cluster" [ref=e454] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-get-profiles/
+                      - listitem [ref=e455]:
+                        - link "patch Patch cluster profiles to the specified cluster" [ref=e456] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-patch-profiles/
+                      - listitem [ref=e457]:
+                        - link "put Associate cluster profiles to the specified cluster" [ref=e458] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-update-profiles/
+                      - listitem [ref=e459]:
+                        - link "get Returns the associated profile's pack manifests of a specified cluster" [ref=e460] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-get-profiles-packs-manifests/
+                      - listitem [ref=e461]:
+                        - link "get Returns the specified cluster's profile pack configuration" [ref=e462] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-profiles-uid-packs-config-get/
+                      - listitem [ref=e463]:
+                        - link "get Returns the associated profiles pack manifests of the specified cluster" [ref=e464] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-profiles-uid-pack-manifests-get/
+                      - listitem [ref=e465]:
+                        - link "put Updates cluster profiles pack manifests to the specified cluster" [ref=e466] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-profiles-uid-pack-manifests-update/
+                      - listitem [ref=e467]:
+                        - link "get Returns the estimated rate of the specified cluster" [ref=e468] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-rate/
+                      - listitem [ref=e469]:
+                        - link "patch Returns the spectrocluster repave approve update" [ref=e470] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-repave-approve-update/
+                      - listitem [ref=e471]:
+                        - link "get Returns the spectrocluster repave" [ref=e472] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-repave-get/
+                      - listitem [ref=e473]:
+                        - link "put reset the cluster s by deleting machine pools and condtions" [ref=e474] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-reset/
+                      - listitem [ref=e475]:
+                        - link "get Get the cluster's status" [ref=e476] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-status/
+                      - listitem [ref=e477]:
+                        - link "put Updates the specified cluster status condition" [ref=e478] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-update-status-condition/
+                      - listitem [ref=e479]:
+                        - link "patch Updates the specified cluster status conditions" [ref=e480] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-update-status-conditions/
+                      - listitem [ref=e481]:
+                        - link "put Updates the specified cluster's service endpoints information" [ref=e482] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-update-status-endpoints/
+                      - listitem [ref=e483]:
+                        - link "patch Updates the specified cluster status as imported" [ref=e484] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-update-status-imported/
+                      - listitem [ref=e485]:
+                        - link "put Updates the specified cluster's services information" [ref=e486] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-update-status-services/
+                      - listitem [ref=e487]:
+                        - link "get Returns the SPC apply information for the agent" [ref=e488] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-status-spc-apply-get/
+                      - listitem [ref=e489]:
+                        - link "post Set the CanBeApplied to true on the spcApply status. CanBeApplied indicates the agent to orchestrate the spc changes" [ref=e490] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-status-spc-apply/
+                      - listitem [ref=e491]:
+                        - link "patch Updates the agent patch time for the SPC changes" [ref=e492] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-status-spc-patch-time/
+                      - listitem [ref=e493]:
+                        - link "put Updates the cluster's upgrade status" [ref=e494] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-upgrades-put/
+                      - listitem [ref=e495]:
+                        - link "post Update specific cluster upgrade settings" [ref=e496] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-upgrade-settings/
+                      - listitem [ref=e497]:
+                        - link "post Validates cluster packs" [ref=e498] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-validate-packs/
+                      - listitem [ref=e499]:
+                        - link "post Validates if cluster gets repaved for the specified packs" [ref=e500] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-validate-repave/
+                      - listitem [ref=e501]:
+                        - link "get Retrieve a list of variables associated with the cluster" [ref=e502] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-variables-get/
+                      - listitem [ref=e503]:
+                        - link "patch Update cluster variable values for specified cluster" [ref=e504] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-variables-patch/
+                      - listitem [ref=e505]:
+                        - link "get Returns the list of virtual machines" [ref=e506] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-list/
+                      - listitem [ref=e507]:
+                        - link "post Create virtual machine" [ref=e508] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-create/
+                      - listitem [ref=e509]:
+                        - link "get Returns the list of snapshots of given namespaces" [ref=e510] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-vm-snapshots-list/
+                      - listitem [ref=e511]:
+                        - link "del Deletes the virtual machine" [ref=e512] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-delete/
+                      - listitem [ref=e513]:
+                        - link "get Get virtual machine" [ref=e514] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-get/
+                      - listitem [ref=e515]:
+                        - link "put Updates the specified virtual machine of the cluster" [ref=e516] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-update/
+                      - listitem [ref=e517]:
+                        - link "put Add volume to the virtual machine instance" [ref=e518] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-add-volume/
+                      - listitem [ref=e519]:
+                        - link "post Clone virtual machine" [ref=e520] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-clone/
+                      - listitem [ref=e521]:
+                        - link "put Migrate the virtual machine" [ref=e522] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-migrate/
+                      - listitem [ref=e523]:
+                        - link "put Pause the virtual machine instance" [ref=e524] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-pause/
+                      - listitem [ref=e525]:
+                        - link "put Remove volume from the virtual machine instance" [ref=e526] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-remove-volume/
+                      - listitem [ref=e527]:
+                        - link "put Restart the virtual machine" [ref=e528] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-restart/
+                      - listitem [ref=e529]:
+                        - link "put Resume the virtual machine instance" [ref=e530] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-resume/
+                      - listitem [ref=e531]:
+                        - link "post Create snapshot of virtual machine" [ref=e532] [cursor=pointer]:
+                          - /url: /api/v1/v-1-vm-snapshot-create/
+                      - listitem [ref=e533]:
+                        - link "del Delete the snapshot of virtual machine" [ref=e534] [cursor=pointer]:
+                          - /url: /api/v1/v-1-vm-snapshot-delete/
+                      - listitem [ref=e535]:
+                        - link "get Get virtual machine snapshot" [ref=e536] [cursor=pointer]:
+                          - /url: /api/v1/v-1-vm-snapshot-get/
+                      - listitem [ref=e537]:
+                        - link "put Updates the specified snapshot of a virtual machine" [ref=e538] [cursor=pointer]:
+                          - /url: /api/v1/v-1-vm-snapshot-update/
+                      - listitem [ref=e539]:
+                        - link "put Start the virtual machine" [ref=e540] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-start/
+                      - listitem [ref=e541]:
+                        - link "put Stop the virtual machine" [ref=e542] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-vm-stop/
+                      - listitem [ref=e543]:
+                        - link "post Sync specified cluster workload" [ref=e544] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-workloads-sync/
+                      - listitem [ref=e545]:
+                        - link "post Sync specified cluster workload" [ref=e546] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spectro-clusters-uid-workloads-kind-sync/
+                  - listitem [ref=e547]:
+                    - generic [ref=e548]:
+                      - link "System" [ref=e549] [cursor=pointer]:
+                        - /url: /api/v1/system/
+                      - button "Toggle the collapsible sidebar category 'System'" [ref=e550] [cursor=pointer]
+                  - listitem [ref=e551]:
+                    - generic [ref=e552]:
+                      - link "Teams" [ref=e553] [cursor=pointer]:
+                        - /url: /api/v1/teams/
+                      - button "Toggle the collapsible sidebar category 'Teams'" [ref=e554] [cursor=pointer]
+                  - listitem [ref=e555]:
+                    - generic [ref=e556]:
+                      - link "Tenants" [ref=e557] [cursor=pointer]:
+                        - /url: /api/v1/tenants/
+                      - button "Toggle the collapsible sidebar category 'Tenants'" [ref=e558] [cursor=pointer]
+                  - listitem [ref=e559]:
+                    - generic [ref=e560]:
+                      - link "Users" [ref=e561] [cursor=pointer]:
+                        - /url: /api/v1/users/
+                      - button "Toggle the collapsible sidebar category 'Users'" [ref=e562] [cursor=pointer]
+                  - listitem [ref=e563]:
+                    - generic [ref=e564]:
+                      - link "Workspaces" [ref=e565] [cursor=pointer]:
+                        - /url: /api/v1/workspaces/
+                      - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e566] [cursor=pointer]
+              - listitem [ref=e567]:
+                - generic [ref=e568]:
+                  - link "Edge Management API V1" [ref=e569] [cursor=pointer]:
+                    - /url: /api/category/edge-management-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Edge Management API V1'" [ref=e570] [cursor=pointer]
+      - main [ref=e571]:
+        - generic [ref=e575]:
+          - article [ref=e576]:
+            - navigation "Breadcrumbs" [ref=e577]:
+              - list [ref=e578]:
+                - listitem [ref=e579]:
+                  - link "Home page" [ref=e580] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e581]
+                - listitem [ref=e583]:
+                  - link "Palette API V1" [ref=e584] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                - listitem [ref=e585]:
+                  - link "Spectroclusters" [ref=e586] [cursor=pointer]:
+                    - /url: /api/v1/spectroclusters/
+                - listitem [ref=e587]:
+                  - generic [ref=e588]: Updates the specified virtual machine of the cluster
+            - generic [ref=e590]:
+              - generic [ref=e591]:
+                - heading "Updates the specified virtual machine of the cluster" [level=1] [ref=e592]
+                - generic [ref=e593]:
+                  - generic [ref=e594]: PUT
+                  - heading "https://api.spectrocloud.com/v1/spectroclusters/:uid/vms/:vmName" [level=2] [ref=e595]
+                - paragraph [ref=e597]: Updates the specified virtual machine of the cluster
+                - heading "RequestDirect link to Request" [level=2] [ref=e598]:
+                  - text: Request
+                  - link "Direct link to Request" [ref=e599] [cursor=pointer]:
+                    - /url: "#request"
+                    - text: "#"
+                - group [ref=e600]:
+                  - generic "Path Parameters" [ref=e601] [cursor=pointer]:
+                    - heading "Path Parameters" [level=3] [ref=e602]
+                  - list [ref=e605]:
+                    - generic [ref=e606]:
+                      - generic [ref=e607]:
+                        - strong [ref=e608]: uid
+                        - generic [ref=e609]: string
+                        - generic [ref=e611]: required
+                      - paragraph [ref=e612]: Cluster uid
+                    - generic [ref=e613]:
+                      - generic [ref=e614]:
+                        - strong [ref=e615]: vmName
+                        - generic [ref=e616]: string
+                        - generic [ref=e618]: required
+                      - paragraph [ref=e619]: Virtual Machine name
+                - group [ref=e620]:
+                  - generic "Query Parameters" [ref=e621] [cursor=pointer]:
+                    - heading "Query Parameters" [level=3] [ref=e622]
+                  - list [ref=e625]:
+                    - generic [ref=e626]:
+                      - generic [ref=e627]:
+                        - strong [ref=e628]: namespace
+                        - generic [ref=e629]: string
+                        - generic [ref=e631]: required
+                      - paragraph [ref=e632]: Namespace name
+                - group [ref=e633]:
+                  - generic "Header Parameters" [ref=e634] [cursor=pointer]:
+                    - heading "Header Parameters" [level=3] [ref=e635]
+                  - list [ref=e638]:
+                    - generic [ref=e639]:
+                      - generic [ref=e640]:
+                        - strong [ref=e641]: ProjectUid
+                        - generic [ref=e642]: string
+                      - paragraph [ref=e643]: A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources
+                - generic [ref=e644]:
+                  - tablist [ref=e647]:
+                    - tab "application/json" [selected] [ref=e648] [cursor=pointer]
+                  - tabpanel [ref=e650]:
+                    - group [ref=e651]:
+                      - generic "Body" [ref=e652] [cursor=pointer]:
+                        - heading "Body" [level=3] [ref=e653]
+                      - list [ref=e656]:
+                        - generic [ref=e658]:
+                          - generic [ref=e659]:
+                            - strong [ref=e660]: apiVersion
+                            - generic [ref=e661]: string
+                          - paragraph [ref=e663]: APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values.
+                        - generic [ref=e665]:
+                          - generic [ref=e666]:
+                            - strong [ref=e667]: kind
+                            - generic [ref=e668]: string
+                          - paragraph [ref=e670]: Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase.
+                        - group [ref=e672]:
+                          - generic "metadata object" [ref=e673] [cursor=pointer]:
+                            - generic [ref=e674]:
+                              - strong [ref=e675]: metadata
+                              - generic [ref=e676]: object
+                        - group [ref=e678]:
+                          - generic "spec object required" [ref=e679] [cursor=pointer]:
+                            - generic [ref=e680]:
+                              - strong [ref=e681]: spec
+                              - generic [ref=e682]: object
+                              - generic [ref=e684]: required
+                        - group [ref=e686]:
+                          - generic "status object nullable" [ref=e687] [cursor=pointer]:
+                            - generic [ref=e688]:
+                              - strong [ref=e689]: status
+                              - generic [ref=e690]: object
+                              - generic [ref=e692]: nullable
+                - generic [ref=e693]:
+                  - generic [ref=e694]:
+                    - heading "ResponsesDirect link to Responses" [level=2] [ref=e695]:
+                      - text: Responses
+                      - link "Direct link to Responses" [ref=e696] [cursor=pointer]:
+                        - /url: "#responses"
+                        - text: "#"
+                    - tablist [ref=e698]:
+                      - tab "200" [selected] [ref=e699] [cursor=pointer]
+                  - tabpanel [ref=e701]:
+                    - paragraph [ref=e704]: (empty)
+                    - generic [ref=e705]:
+                      - tablist [ref=e708]:
+                        - tab "application/json" [selected] [ref=e709] [cursor=pointer]
+                      - tabpanel [ref=e711]:
+                        - generic [ref=e712]:
+                          - tablist [ref=e714]:
+                            - tab "Schema" [selected] [ref=e715] [cursor=pointer]:
+                              - generic [ref=e716]: Schema
+                            - tab "Example (auto)" [ref=e717] [cursor=pointer]:
+                              - generic [ref=e718]: Example (auto)
+                          - tabpanel [ref=e720]:
+                            - group [ref=e721]:
+                              - generic "Schema" [ref=e722] [cursor=pointer]:
+                                - strong [ref=e723]: Schema
+                              - list [ref=e726]:
+                                - generic [ref=e728]:
+                                  - generic [ref=e729]:
+                                    - strong [ref=e730]: apiVersion
+                                    - generic [ref=e731]: string
+                                  - paragraph [ref=e733]: APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values.
+                                - generic [ref=e735]:
+                                  - generic [ref=e736]:
+                                    - strong [ref=e737]: kind
+                                    - generic [ref=e738]: string
+                                  - paragraph [ref=e740]: Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase.
+                                - group [ref=e742]:
+                                  - generic "metadata object" [ref=e743] [cursor=pointer]:
+                                    - generic [ref=e744]:
+                                      - strong [ref=e745]: metadata
+                                      - generic [ref=e746]: object
+                                - group [ref=e748]:
+                                  - generic "spec object required" [ref=e749] [cursor=pointer]:
+                                    - generic [ref=e750]:
+                                      - strong [ref=e751]: spec
+                                      - generic [ref=e752]: object
+                                      - generic [ref=e754]: required
+                                - group [ref=e756]:
+                                  - generic "status object nullable" [ref=e757] [cursor=pointer]:
+                                    - generic [ref=e758]:
+                                      - strong [ref=e759]: status
+                                      - generic [ref=e760]: object
+                                      - generic [ref=e762]: nullable
+              - generic [ref=e763]:
+                - group [ref=e764]:
+                  - 'generic "Authorization: ApiKey" [ref=e765]':
+                    - 'heading "Authorization: ApiKey" [level=4] [ref=e766]'
+                - generic [ref=e767]:
+                  - tablist [ref=e768]:
+                    - tab "curl" [selected] [ref=e769] [cursor=pointer]:
+                      - generic [ref=e770]: curl
+                    - tab "python" [ref=e771] [cursor=pointer]:
+                      - generic [ref=e772]: python
+                    - tab "go" [ref=e773] [cursor=pointer]:
+                      - generic [ref=e774]: go
+                    - tab "nodejs" [ref=e775] [cursor=pointer]:
+                      - generic [ref=e776]: nodejs
+                    - tab "java" [ref=e777] [cursor=pointer]:
+                      - generic [ref=e778]: java
+                  - tabpanel [ref=e779]:
+                    - generic [ref=e780]:
+                      - tablist [ref=e781]:
+                        - tab "CURL" [selected] [ref=e782] [cursor=pointer]:
+                          - generic [ref=e783]: CURL
+                      - tabpanel [ref=e784]:
+                        - generic [ref=e786]:
+                          - code [ref=e788]:
+                            - generic [ref=e791]: curl -L -X PUT 'https://api.spectrocloud.com/v1/spectroclusters/:uid/vms/:vmName' \
+                            - generic [ref=e794]: "-H 'Content-Type: application/json' \\"
+                            - generic [ref=e797]: "-H 'Accept: application/json' \\"
+                            - generic [ref=e800]: "-H 'ApiKey: <ApiKey>' \\"
+                            - generic [ref=e803]: "-d '{"
+                            - generic [ref=e806]: "\"apiVersion\": \"string\","
+                            - generic [ref=e809]: "\"kind\": \"string\","
+                            - generic [ref=e812]: "\"metadata\": {"
+                            - generic [ref=e815]: "\"annotations\": {},"
+                            - generic [ref=e818]: "\"clusterName\": \"string\","
+                            - generic [ref=e821]: "\"creationTimestamp\": \"string\","
+                            - generic [ref=e824]: "\"deletionGracePeriodSeconds\": 0,"
+                            - generic [ref=e827]: "\"deletionTimestamp\": \"2024-07-29T15:51:28.071Z\","
+                            - generic [ref=e830]: "\"finalizers\": ["
+                            - generic [ref=e833]: "\"string\""
+                            - generic [ref=e836]: "],"
+                            - generic [ref=e839]: "\"generateName\": \"string\","
+                            - generic [ref=e842]: "\"generation\": 0,"
+                            - generic [ref=e845]: "\"labels\": {},"
+                            - generic [ref=e848]: "\"managedFields\": ["
+                            - generic [ref=e851]: "{"
+                            - generic [ref=e854]: "\"apiVersion\": \"string\","
+                            - generic [ref=e857]: "\"fieldsType\": \"string\","
+                            - generic [ref=e860]: "\"fieldsV1\": {"
+                            - generic [ref=e863]: "\"Raw\": ["
+                            - generic [ref=e866]: "\"string\""
+                            - generic [ref=e869]: "]"
+                            - generic [ref=e872]: "},"
+                            - generic [ref=e875]: "\"manager\": \"string\","
+                            - generic [ref=e878]: "\"operation\": \"string\","
+                            - generic [ref=e881]: "\"subresource\": \"string\","
+                            - generic [ref=e884]: "\"time\": \"2024-07-29T15:51:28.071Z\""
+                            - generic [ref=e887]: "}"
+                            - generic [ref=e890]: "],"
+                            - generic [ref=e893]: "\"name\": \"string\","
+                            - generic [ref=e896]: "\"namespace\": \"string\","
+                            - generic [ref=e899]: "\"ownerReferences\": ["
+                            - generic [ref=e902]: "{"
+                            - generic [ref=e905]: "\"apiVersion\": \"string\","
+                            - generic [ref=e908]: "\"blockOwnerDeletion\": true,"
+                            - generic [ref=e911]: "\"controller\": true,"
+                            - generic [ref=e914]: "\"kind\": \"string\","
+                            - generic [ref=e917]: "\"name\": \"string\","
+                            - generic [ref=e920]: "\"uid\": \"string\""
+                            - generic [ref=e923]: "}"
+                            - generic [ref=e926]: "],"
+                            - generic [ref=e929]: "\"resourceVersion\": \"string\","
+                            - generic [ref=e932]: "\"selfLink\": \"string\","
+                            - generic [ref=e935]: "\"uid\": \"string\""
+                            - generic [ref=e938]: "},"
+                            - generic [ref=e941]: "\"spec\": {"
+                            - generic [ref=e944]: "\"dataVolumeTemplates\": ["
+                            - generic [ref=e947]: "{"
+                            - generic [ref=e950]: "\"apiVersion\": \"string\","
+                            - generic [ref=e953]: "\"kind\": \"string\","
+                            - generic [ref=e956]: "\"metadata\": {"
+                            - generic [ref=e959]: "\"annotations\": {},"
+                            - generic [ref=e962]: "\"clusterName\": \"string\","
+                            - generic [ref=e965]: "\"creationTimestamp\": \"string\","
+                            - generic [ref=e968]: "\"deletionGracePeriodSeconds\": 0,"
+                            - generic [ref=e971]: "\"deletionTimestamp\": \"2024-07-29T15:51:28.071Z\","
+                            - generic [ref=e974]: "\"finalizers\": ["
+                            - generic [ref=e977]: "\"string\""
+                            - generic [ref=e980]: "],"
+                            - generic [ref=e983]: "\"generateName\": \"string\","
+                            - generic [ref=e986]: "\"generation\": 0,"
+                            - generic [ref=e989]: "\"labels\": {},"
+                            - generic [ref=e992]: "\"managedFields\": ["
+                            - generic [ref=e995]: "{"
+                            - generic [ref=e998]: "\"apiVersion\": \"string\","
+                            - generic [ref=e1001]: "\"fieldsType\": \"string\","
+                            - generic [ref=e1004]: "\"fieldsV1\": {"
+                            - generic [ref=e1007]: "\"Raw\": ["
+                            - generic [ref=e1010]: "\"string\""
+                            - generic [ref=e1013]: "]"
+                            - generic [ref=e1016]: "},"
+                            - generic [ref=e1019]: "\"manager\": \"string\","
+                            - generic [ref=e1022]: "\"operation\": \"string\","
+                            - generic [ref=e1025]: "\"subresource\": \"string\","
+                            - generic [ref=e1028]: "\"time\": \"2024-07-29T15:51:28.071Z\""
+                            - generic [ref=e1031]: "}"
+                            - generic [ref=e1034]: "],"
+                            - generic [ref=e1037]: "\"name\": \"string\","
+                            - generic [ref=e1040]: "\"namespace\": \"string\","
+                            - generic [ref=e1043]: "\"ownerReferences\": ["
+                            - generic [ref=e1046]: "{"
+                            - generic [ref=e1049]: "\"apiVersion\": \"string\","
+                            - generic [ref=e1052]: "\"blockOwnerDeletion\": true,"
+                            - generic [ref=e1055]: "\"controller\": true,"
+                            - generic [ref=e1058]: "\"kind\": \"string\","
+                            - generic [ref=e1061]: "\"name\": \"string\","
+                            - generic [ref=e1064]: "\"uid\": \"string\""
+                            - generic [ref=e1067]: "}"
+                            - generic [ref=e1070]: "],"
+                            - generic [ref=e1073]: "\"resourceVersion\": \"string\","
+                            - generic [ref=e1076]: "\"selfLink\": \"string\","
+                            - generic [ref=e1079]: "\"uid\": \"string\""
+                            - generic [ref=e1082]: "},"
+                            - generic [ref=e1085]: "\"spec\": {"
+                            - generic [ref=e1088]: "\"checkpoints\": ["
+                            - generic [ref=e1091]: "{"
+                            - generic [ref=e1094]: "\"current\": \"string\","
+                            - generic [ref=e1097]: "\"previous\": \"string\""
+                            - generic [ref=e1100]: "}"
+                            - generic [ref=e1103]: "],"
+                            - generic [ref=e1106]: "\"contentType\": \"string\","
+                            - generic [ref=e1109]: "\"finalCheckpoint\": true,"
+                            - generic [ref=e1112]: "\"preallocation\": true,"
+                            - generic [ref=e1115]: "\"priorityClassName\": \"string\","
+                            - generic [ref=e1118]: "\"pvc\": {"
+                            - generic [ref=e1121]: "\"accessModes\": ["
+                            - generic [ref=e1124]: "\"string\""
+                            - generic [ref=e1127]: "],"
+                            - generic [ref=e1130]: "\"dataSource\": {"
+                            - generic [ref=e1133]: "\"apiGroup\": \"string\","
+                            - generic [ref=e1136]: "\"kind\": \"string\","
+                            - generic [ref=e1139]: "\"name\": \"string\""
+                            - generic [ref=e1142]: "},"
+                            - generic [ref=e1145]: "\"dataSourceRef\": {"
+                            - generic [ref=e1148]: "\"apiGroup\": \"string\","
+                            - generic [ref=e1151]: "\"kind\": \"string\","
+                            - generic [ref=e1154]: "\"name\": \"string\""
+                            - generic [ref=e1157]: "},"
+                            - generic [ref=e1160]: "\"resources\": {"
+                            - generic [ref=e1163]: "\"limits\": {},"
+                            - generic [ref=e1166]: "\"requests\": {}"
+                            - generic [ref=e1169]: "},"
+                            - generic [ref=e1172]: "\"selector\": {"
+                            - generic [ref=e1175]: "\"matchExpressions\": ["
+                            - generic [ref=e1178]: "{"
+                            - generic [ref=e1181]: "\"key\": \"string\","
+                            - generic [ref=e1184]: "\"operator\": \"string\","
+                            - generic [ref=e1187]: "\"values\": ["
+                            - generic [ref=e1190]: "\"string\""
+                            - generic [ref=e1193]: "]"
+                            - generic [ref=e1196]: "}"
+                            - generic [ref=e1199]: "],"
+                            - generic [ref=e1202]: "\"matchLabels\": {}"
+                            - generic [ref=e1205]: "},"
+                            - generic [ref=e1208]: "\"storageClassName\": \"string\","
+                            - generic [ref=e1211]: "\"volumeMode\": \"string\","
+                            - generic [ref=e1214]: "\"volumeName\": \"string\""
+                            - generic [ref=e1217]: "},"
+                            - generic [ref=e1220]: "\"source\": {"
+                            - generic [ref=e1223]: "\"blank\": {},"
+                            - generic [ref=e1226]: "\"http\": {"
+                            - generic [ref=e1229]: "\"certConfigMap\": \"string\","
+                            - generic [ref=e1232]: "\"extraHeaders\": ["
+                            - generic [ref=e1235]: "\"string\""
+                            - generic [ref=e1238]: "],"
+                            - generic [ref=e1241]: "\"secretExtraHeaders\": ["
+                            - generic [ref=e1244]: "\"string\""
+                            - generic [ref=e1247]: "],"
+                            - generic [ref=e1250]: "\"secretRef\": \"string\","
+                            - generic [ref=e1253]: "\"url\": \"string\""
+                            - generic [ref=e1256]: "},"
+                            - generic [ref=e1259]: "\"imageio\": {"
+                            - generic [ref=e1262]: "\"certConfigMap\": \"string\","
+                            - generic [ref=e1265]: "\"diskId\": \"string\","
+                            - generic [ref=e1268]: "\"secretRef\": \"string\","
+                            - generic [ref=e1271]: "\"url\": \"string\""
+                            - generic [ref=e1274]: "},"
+                            - generic [ref=e1277]: "\"pvc\": {"
+                            - generic [ref=e1280]: "\"name\": \"string\","
+                            - generic [ref=e1283]: "\"namespace\": \"string\""
+                            - generic [ref=e1286]: "},"
+                            - generic [ref=e1289]: "\"registry\": {"
+                            - generic [ref=e1292]: "\"certConfigMap\": \"string\","
+                            - generic [ref=e1295]: "\"imageStream\": \"string\","
+                            - generic [ref=e1298]: "\"pullMethod\": \"string\","
+                            - generic [ref=e1301]: "\"secretRef\": \"string\","
+                            - generic [ref=e1304]: "\"url\": \"string\""
+                            - generic [ref=e1307]: "},"
+                            - generic [ref=e1310]: "\"s3\": {"
+                            - generic [ref=e1313]: "\"certConfigMap\": \"string\","
+                            - generic [ref=e1316]: "\"secretRef\": \"string\","
+                            - generic [ref=e1319]: "\"url\": \"string\""
+                            - generic [ref=e1322]: "},"
+                            - generic [ref=e1325]: "\"upload\": {},"
+                            - generic [ref=e1328]: "\"vddk\": {"
+                            - generic [ref=e1331]: "\"backingFile\": \"string\","
+                            - generic [ref=e1334]: "\"initImageURL\": \"string\","
+                            - generic [ref=e1337]: "\"secretRef\": \"string\","
+                            - generic [ref=e1340]: "\"thumbprint\": \"string\","
+                            - generic [ref=e1343]: "\"url\": \"string\","
+                            - generic [ref=e1346]: "\"uuid\": \"string\""
+                            - generic [ref=e1349]: "}"
+                            - generic [ref=e1352]: "},"
+                            - generic [ref=e1355]: "\"sourceRef\": {"
+                            - generic [ref=e1358]: "\"kind\": \"string\","
+                            - generic [ref=e1361]: "\"name\": \"string\","
+                            - generic [ref=e1364]: "\"namespace\": \"string\""
+                            - generic [ref=e1367]: "},"
+                            - generic [ref=e1370]: "\"storage\": {"
+                            - generic [ref=e1373]: "\"accessModes\": ["
+                            - generic [ref=e1376]: "\"string\""
+                            - generic [ref=e1379]: "],"
+                            - generic [ref=e1382]: "\"dataSource\": {"
+                            - generic [ref=e1385]: "\"apiGroup\": \"string\","
+                            - generic [ref=e1388]: "\"kind\": \"string\","
+                            - generic [ref=e1391]: "\"name\": \"string\""
+                            - generic [ref=e1394]: "},"
+                            - generic [ref=e1397]: "\"resources\": {"
+                            - generic [ref=e1400]: "\"limits\": {},"
+                            - generic [ref=e1403]: "\"requests\": {}"
+                            - generic [ref=e1406]: "},"
+                            - generic [ref=e1409]: "\"selector\": {"
+                            - generic [ref=e1412]: "\"matchExpressions\": ["
+                            - generic [ref=e1415]: "{"
+                            - generic [ref=e1418]: "\"key\": \"string\","
+                            - generic [ref=e1421]: "\"operator\": \"string\","
+                            - generic [ref=e1424]: "\"values\": ["
+                            - generic [ref=e1427]: "\"string\""
+                            - generic [ref=e1430]: "]"
+                            - generic [ref=e1433]: "}"
+                            - generic [ref=e1436]: "],"
+                            - generic [ref=e1439]: "\"matchLabels\": {}"
+                            - generic [ref=e1442]: "},"
+                            - generic [ref=e1445]: "\"storageClassName\": \"string\","
+                            - generic [ref=e1448]: "\"volumeMode\": \"string\","
+                            - generic [ref=e1451]: "\"volumeName\": \"string\""
+                            - generic [ref=e1454]: "}"
+                            - generic [ref=e1457]: "}"
+                            - generic [ref=e1460]: "}"
+                            - generic [ref=e1463]: "],"
+                            - generic [ref=e1466]: "\"instancetype\": {"
+                            - generic [ref=e1469]: "\"inferFromVolume\": \"string\","
+                            - generic [ref=e1472]: "\"kind\": \"string\","
+                            - generic [ref=e1475]: "\"name\": \"string\","
+                            - generic [ref=e1478]: "\"revisionName\": \"string\""
+                            - generic [ref=e1481]: "},"
+                            - generic [ref=e1484]: "\"preference\": {"
+                            - generic [ref=e1487]: "\"inferFromVolume\": \"string\","
+                            - generic [ref=e1490]: "\"kind\": \"string\","
+                            - generic [ref=e1493]: "\"name\": \"string\","
+                            - generic [ref=e1496]: "\"revisionName\": \"string\""
+                            - generic [ref=e1499]: "},"
+                            - generic [ref=e1502]: "\"runStrategy\": \"string\","
+                            - generic [ref=e1505]: "\"running\": true,"
+                            - generic [ref=e1508]: "\"template\": {"
+                            - generic [ref=e1511]: "\"metadata\": {"
+                            - generic [ref=e1514]: "\"annotations\": {},"
+                            - generic [ref=e1517]: "\"clusterName\": \"string\","
+                            - generic [ref=e1520]: "\"creationTimestamp\": \"string\","
+                            - generic [ref=e1523]: "\"deletionGracePeriodSeconds\": 0,"
+                            - generic [ref=e1526]: "\"deletionTimestamp\": \"2024-07-29T15:51:28.071Z\","
+                            - generic [ref=e1529]: "\"finalizers\": ["
+                            - generic [ref=e1532]: "\"string\""
+                            - generic [ref=e1535]: "],"
+                            - generic [ref=e1538]: "\"generateName\": \"string\","
+                            - generic [ref=e1541]: "\"generation\": 0,"
+                            - generic [ref=e1544]: "\"labels\": {},"
+                            - generic [ref=e1547]: "\"managedFields\": ["
+                            - generic [ref=e1550]: "{"
+                            - generic [ref=e1553]: "\"apiVersion\": \"string\","
+                            - generic [ref=e1556]: "\"fieldsType\": \"string\","
+                            - generic [ref=e1559]: "\"fieldsV1\": {"
+                            - generic [ref=e1562]: "\"Raw\": ["
+                            - generic [ref=e1565]: "\"string\""
+                            - generic [ref=e1568]: "]"
+                            - generic [ref=e1571]: "},"
+                            - generic [ref=e1574]: "\"manager\": \"string\","
+                            - generic [ref=e1577]: "\"operation\": \"string\","
+                            - generic [ref=e1580]: "\"subresource\": \"string\","
+                            - generic [ref=e1583]: "\"time\": \"2024-07-29T15:51:28.071Z\""
+                            - generic [ref=e1586]: "}"
+                            - generic [ref=e1589]: "],"
+                            - generic [ref=e1592]: "\"name\": \"string\","
+                            - generic [ref=e1595]: "\"namespace\": \"string\","
+                            - generic [ref=e1598]: "\"ownerReferences\": ["
+                            - generic [ref=e1601]: "{"
+                            - generic [ref=e1604]: "\"apiVersion\": \"string\","
+                            - generic [ref=e1607]: "\"blockOwnerDeletion\": true,"
+                            - generic [ref=e1610]: "\"controller\": true,"
+                            - generic [ref=e1613]: "\"kind\": \"string\","
+                            - generic [ref=e1616]: "\"name\": \"string\","
+                            - generic [ref=e1619]: "\"uid\": \"string\""
+                            - generic [ref=e1622]: "}"
+                            - generic [ref=e1625]: "],"
+                            - generic [ref=e1628]: "\"resourceVersion\": \"string\","
+                            - generic [ref=e1631]: "\"selfLink\": \"string\","
+                            - generic [ref=e1634]: "\"uid\": \"string\""
+                            - generic [ref=e1637]: "},"
+                            - generic [ref=e1640]: "\"spec\": {"
+                            - generic [ref=e1643]: "\"accessCredentials\": ["
+                            - generic [ref=e1646]: "{"
+                            - generic [ref=e1649]: "\"sshPublicKey\": {"
+                            - generic [ref=e1652]: "\"propagationMethod\": {"
+                            - generic [ref=e1655]: "\"configDrive\": {},"
+                            - generic [ref=e1658]: "\"qemuGuestAgent\": {"
+                            - generic [ref=e1661]: "\"users\": ["
+                            - generic [ref=e1664]: "\"string\""
+                            - generic [ref=e1667]: "]"
+                            - generic [ref=e1670]: "}"
+                            - generic [ref=e1673]: "},"
+                            - generic [ref=e1676]: "\"source\": {"
+                            - generic [ref=e1679]: "\"secret\": {"
+                            - generic [ref=e1682]: "\"secretName\": \"string\""
+                            - generic [ref=e1685]: "}"
+                            - generic [ref=e1688]: "}"
+                            - generic [ref=e1691]: "},"
+                            - generic [ref=e1694]: "\"userPassword\": {"
+                            - generic [ref=e1697]: "\"propagationMethod\": {"
+                            - generic [ref=e1700]: "\"qemuGuestAgent\": {}"
+                            - generic [ref=e1703]: "},"
+                            - generic [ref=e1706]: "\"source\": {"
+                            - generic [ref=e1709]: "\"secret\": {"
+                            - generic [ref=e1712]: "\"secretName\": \"string\""
+                            - generic [ref=e1715]: "}"
+                            - generic [ref=e1718]: "}"
+                            - generic [ref=e1721]: "}"
+                            - generic [ref=e1724]: "}"
+                            - generic [ref=e1727]: "],"
+                            - generic [ref=e1730]: "\"affinity\": {"
+                            - generic [ref=e1733]: "\"nodeAffinity\": {"
+                            - generic [ref=e1736]: "\"preferredDuringSchedulingIgnoredDuringExecution\": ["
+                            - generic [ref=e1739]: "{"
+                            - generic [ref=e1742]: "\"preference\": {"
+                            - generic [ref=e1745]: "\"matchExpressions\": ["
+                            - generic [ref=e1748]: "{"
+                            - generic [ref=e1751]: "\"key\": \"string\","
+                            - generic [ref=e1754]: "\"operator\": \"string\","
+                            - generic [ref=e1757]: "\"values\": ["
+                            - generic [ref=e1760]: "\"string\""
+                            - generic [ref=e1763]: "]"
+                            - generic [ref=e1766]: "}"
+                            - generic [ref=e1769]: "],"
+                            - generic [ref=e1772]: "\"matchFields\": ["
+                            - generic [ref=e1775]: "{"
+                            - generic [ref=e1778]: "\"key\": \"string\","
+                            - generic [ref=e1781]: "\"operator\": \"string\","
+                            - generic [ref=e1784]: "\"values\": ["
+                            - generic [ref=e1787]: "\"string\""
+                            - generic [ref=e1790]: "]"
+                            - generic [ref=e1793]: "}"
+                            - generic [ref=e1796]: "]"
+                            - generic [ref=e1799]: "},"
+                            - generic [ref=e1802]: "\"weight\": 0"
+                            - generic [ref=e1805]: "}"
+                            - generic [ref=e1808]: "],"
+                            - generic [ref=e1811]: "\"requiredDuringSchedulingIgnoredDuringExecution\": {"
+                            - generic [ref=e1814]: "\"nodeSelectorTerms\": ["
+                            - generic [ref=e1817]: "{"
+                            - generic [ref=e1820]: "\"matchExpressions\": ["
+                            - generic [ref=e1823]: "{"
+                            - generic [ref=e1826]: "\"key\": \"string\","
+                            - generic [ref=e1829]: "\"operator\": \"string\","
+                            - generic [ref=e1832]: "\"values\": ["
+                            - generic [ref=e1835]: "\"string\""
+                            - generic [ref=e1838]: "]"
+                            - generic [ref=e1841]: "}"
+                            - generic [ref=e1844]: "],"
+                            - generic [ref=e1847]: "\"matchFields\": ["
+                            - generic [ref=e1850]: "{"
+                            - generic [ref=e1853]: "\"key\": \"string\","
+                            - generic [ref=e1856]: "\"operator\": \"string\","
+                            - generic [ref=e1859]: "\"values\": ["
+                            - generic [ref=e1862]: "\"string\""
+                            - generic [ref=e1865]: "]"
+                            - generic [ref=e1868]: "}"
+                            - generic [ref=e1871]: "]"
+                            - generic [ref=e1874]: "}"
+                            - generic [ref=e1877]: "]"
+                            - generic [ref=e1880]: "}"
+                            - generic [ref=e1883]: "},"
+                            - generic [ref=e1886]: "\"podAffinity\": {"
+                            - generic [ref=e1889]: "\"preferredDuringSchedulingIgnoredDuringExecution\": ["
+                            - generic [ref=e1892]: "{"
+                            - generic [ref=e1895]: "\"podAffinityTerm\": {"
+                            - generic [ref=e1898]: "\"labelSelector\": {"
+                            - generic [ref=e1901]: "\"matchExpressions\": ["
+                            - generic [ref=e1904]: "{"
+                            - generic [ref=e1907]: "\"key\": \"string\","
+                            - generic [ref=e1910]: "\"operator\": \"string\","
+                            - generic [ref=e1913]: "\"values\": ["
+                            - generic [ref=e1916]: "\"string\""
+                            - generic [ref=e1919]: "]"
+                            - generic [ref=e1922]: "}"
+                            - generic [ref=e1925]: "],"
+                            - generic [ref=e1928]: "\"matchLabels\": {}"
+                            - generic [ref=e1931]: "},"
+                            - generic [ref=e1934]: "\"namespaceSelector\": {"
+                            - generic [ref=e1937]: "\"matchExpressions\": ["
+                            - generic [ref=e1940]: "{"
+                            - generic [ref=e1943]: "\"key\": \"string\","
+                            - generic [ref=e1946]: "\"operator\": \"string\","
+                            - generic [ref=e1949]: "\"values\": ["
+                            - generic [ref=e1952]: "\"string\""
+                            - generic [ref=e1955]: "]"
+                            - generic [ref=e1958]: "}"
+                            - generic [ref=e1961]: "],"
+                            - generic [ref=e1964]: "\"matchLabels\": {}"
+                            - generic [ref=e1967]: "},"
+                            - generic [ref=e1970]: "\"namespaces\": ["
+                            - generic [ref=e1973]: "\"string\""
+                            - generic [ref=e1976]: "],"
+                            - generic [ref=e1979]: "\"topologyKey\": \"string\""
+                            - generic [ref=e1982]: "},"
+                            - generic [ref=e1985]: "\"weight\": 0"
+                            - generic [ref=e1988]: "}"
+                            - generic [ref=e1991]: "],"
+                            - generic [ref=e1994]: "\"requiredDuringSchedulingIgnoredDuringExecution\": ["
+                            - generic [ref=e1997]: "{"
+                            - generic [ref=e2000]: "\"labelSelector\": {"
+                            - generic [ref=e2003]: "\"matchExpressions\": ["
+                            - generic [ref=e2006]: "{"
+                            - generic [ref=e2009]: "\"key\": \"string\","
+                            - generic [ref=e2012]: "\"operator\": \"string\","
+                            - generic [ref=e2015]: "\"values\": ["
+                            - generic [ref=e2018]: "\"string\""
+                            - generic [ref=e2021]: "]"
+                            - generic [ref=e2024]: "}"
+                            - generic [ref=e2027]: "],"
+                            - generic [ref=e2030]: "\"matchLabels\": {}"
+                            - generic [ref=e2033]: "},"
+                            - generic [ref=e2036]: "\"namespaceSelector\": {"
+                            - generic [ref=e2039]: "\"matchExpressions\": ["
+                            - generic [ref=e2042]: "{"
+                            - generic [ref=e2045]: "\"key\": \"string\","
+                            - generic [ref=e2048]: "\"operator\": \"string\","
+                            - generic [ref=e2051]: "\"values\": ["
+                            - generic [ref=e2054]: "\"string\""
+                            - generic [ref=e2057]: "]"
+                            - generic [ref=e2060]: "}"
+                            - generic [ref=e2063]: "],"
+                            - generic [ref=e2066]: "\"matchLabels\": {}"
+                            - generic [ref=e2069]: "},"
+                            - generic [ref=e2072]: "\"namespaces\": ["
+                            - generic [ref=e2075]: "\"string\""
+                            - generic [ref=e2078]: "],"
+                            - generic [ref=e2081]: "\"topologyKey\": \"string\""
+                            - generic [ref=e2084]: "}"
+                            - generic [ref=e2087]: "]"
+                            - generic [ref=e2090]: "},"
+                            - generic [ref=e2093]: "\"podAntiAffinity\": {"
+                            - generic [ref=e2096]: "\"preferredDuringSchedulingIgnoredDuringExecution\": ["
+                            - generic [ref=e2099]: "{"
+                            - generic [ref=e2102]: "\"podAffinityTerm\": {"
+                            - generic [ref=e2105]: "\"labelSelector\": {"
+                            - generic [ref=e2108]: "\"matchExpressions\": ["
+                            - generic [ref=e2111]: "{"
+                            - generic [ref=e2114]: "\"key\": \"string\","
+                            - generic [ref=e2117]: "\"operator\": \"string\","
+                            - generic [ref=e2120]: "\"values\": ["
+                            - generic [ref=e2123]: "\"string\""
+                            - generic [ref=e2126]: "]"
+                            - generic [ref=e2129]: "}"
+                            - generic [ref=e2132]: "],"
+                            - generic [ref=e2135]: "\"matchLabels\": {}"
+                            - generic [ref=e2138]: "},"
+                            - generic [ref=e2141]: "\"namespaceSelector\": {"
+                            - generic [ref=e2144]: "\"matchExpressions\": ["
+                            - generic [ref=e2147]: "{"
+                            - generic [ref=e2150]: "\"key\": \"string\","
+                            - generic [ref=e2153]: "\"operator\": \"string\","
+                            - generic [ref=e2156]: "\"values\": ["
+                            - generic [ref=e2159]: "\"string\""
+                            - generic [ref=e2162]: "]"
+                            - generic [ref=e2165]: "}"
+                            - generic [ref=e2168]: "],"
+                            - generic [ref=e2171]: "\"matchLabels\": {}"
+                            - generic [ref=e2174]: "},"
+                            - generic [ref=e2177]: "\"namespaces\": ["
+                            - generic [ref=e2180]: "\"string\""
+                            - generic [ref=e2183]: "],"
+                            - generic [ref=e2186]: "\"topologyKey\": \"string\""
+                            - generic [ref=e2189]: "},"
+                            - generic [ref=e2192]: "\"weight\": 0"
+                            - generic [ref=e2195]: "}"
+                            - generic [ref=e2198]: "],"
+                            - generic [ref=e2201]: "\"requiredDuringSchedulingIgnoredDuringExecution\": ["
+                            - generic [ref=e2204]: "{"
+                            - generic [ref=e2207]: "\"labelSelector\": {"
+                            - generic [ref=e2210]: "\"matchExpressions\": ["
+                            - generic [ref=e2213]: "{"
+                            - generic [ref=e2216]: "\"key\": \"string\","
+                            - generic [ref=e2219]: "\"operator\": \"string\","
+                            - generic [ref=e2222]: "\"values\": ["
+                            - generic [ref=e2225]: "\"string\""
+                            - generic [ref=e2228]: "]"
+                            - generic [ref=e2231]: "}"
+                            - generic [ref=e2234]: "],"
+                            - generic [ref=e2237]: "\"matchLabels\": {}"
+                            - generic [ref=e2240]: "},"
+                            - generic [ref=e2243]: "\"namespaceSelector\": {"
+                            - generic [ref=e2246]: "\"matchExpressions\": ["
+                            - generic [ref=e2249]: "{"
+                            - generic [ref=e2252]: "\"key\": \"string\","
+                            - generic [ref=e2255]: "\"operator\": \"string\","
+                            - generic [ref=e2258]: "\"values\": ["
+                            - generic [ref=e2261]: "\"string\""
+                            - generic [ref=e2264]: "]"
+                            - generic [ref=e2267]: "}"
+                            - generic [ref=e2270]: "],"
+                            - generic [ref=e2273]: "\"matchLabels\": {}"
+                            - generic [ref=e2276]: "},"
+                            - generic [ref=e2279]: "\"namespaces\": ["
+                            - generic [ref=e2282]: "\"string\""
+                            - generic [ref=e2285]: "],"
+                            - generic [ref=e2288]: "\"topologyKey\": \"string\""
+                            - generic [ref=e2291]: "}"
+                            - generic [ref=e2294]: "]"
+                            - generic [ref=e2297]: "}"
+                            - generic [ref=e2300]: "},"
+                            - generic [ref=e2303]: "\"architecture\": \"string\","
+                            - generic [ref=e2306]: "\"dnsConfig\": {"
+                            - generic [ref=e2309]: "\"nameservers\": ["
+                            - generic [ref=e2312]: "\"string\""
+                            - generic [ref=e2315]: "],"
+                            - generic [ref=e2318]: "\"options\": ["
+                            - generic [ref=e2321]: "{"
+                            - generic [ref=e2324]: "\"name\": \"string\","
+                            - generic [ref=e2327]: "\"value\": \"string\""
+                            - generic [ref=e2330]: "}"
+                            - generic [ref=e2333]: "],"
+                            - generic [ref=e2336]: "\"searches\": ["
+                            - generic [ref=e2339]: "\"string\""
+                            - generic [ref=e2342]: "]"
+                            - generic [ref=e2345]: "},"
+                            - generic [ref=e2348]: "\"dnsPolicy\": \"string\","
+                            - generic [ref=e2351]: "\"domain\": {"
+                            - generic [ref=e2354]: "\"chassis\": {"
+                            - generic [ref=e2357]: "\"asset\": \"string\","
+                            - generic [ref=e2360]: "\"manufacturer\": \"string\","
+                            - generic [ref=e2363]: "\"serial\": \"string\","
+                            - generic [ref=e2366]: "\"sku\": \"string\","
+                            - generic [ref=e2369]: "\"version\": \"string\""
+                            - generic [ref=e2372]: "},"
+                            - generic [ref=e2375]: "\"clock\": {"
+                            - generic [ref=e2378]: "\"timer\": {"
+                            - generic [ref=e2381]: "\"hpet\": {"
+                            - generic [ref=e2384]: "\"present\": true,"
+                            - generic [ref=e2387]: "\"tickPolicy\": \"string\""
+                            - generic [ref=e2390]: "},"
+                            - generic [ref=e2393]: "\"hyperv\": {"
+                            - generic [ref=e2396]: "\"present\": true"
+                            - generic [ref=e2399]: "},"
+                            - generic [ref=e2402]: "\"kvm\": {"
+                            - generic [ref=e2405]: "\"present\": true"
+                            - generic [ref=e2408]: "},"
+                            - generic [ref=e2411]: "\"pit\": {"
+                            - generic [ref=e2414]: "\"present\": true,"
+                            - generic [ref=e2417]: "\"tickPolicy\": \"string\""
+                            - generic [ref=e2420]: "},"
+                            - generic [ref=e2423]: "\"rtc\": {"
+                            - generic [ref=e2426]: "\"present\": true,"
+                            - generic [ref=e2429]: "\"tickPolicy\": \"string\","
+                            - generic [ref=e2432]: "\"track\": \"string\""
+                            - generic [ref=e2435]: "}"
+                            - generic [ref=e2438]: "},"
+                            - generic [ref=e2441]: "\"timezone\": \"string\","
+                            - generic [ref=e2444]: "\"utc\": {"
+                            - generic [ref=e2447]: "\"offsetSeconds\": 0"
+                            - generic [ref=e2450]: "}"
+                            - generic [ref=e2453]: "},"
+                            - generic [ref=e2456]: "\"cpu\": {"
+                            - generic [ref=e2459]: "\"cores\": 0,"
+                            - generic [ref=e2462]: "\"dedicatedCpuPlacement\": true,"
+                            - generic [ref=e2465]: "\"features\": ["
+                            - generic [ref=e2468]: "{"
+                            - generic [ref=e2471]: "\"name\": \"string\","
+                            - generic [ref=e2474]: "\"policy\": \"string\""
+                            - generic [ref=e2477]: "}"
+                            - generic [ref=e2480]: "],"
+                            - generic [ref=e2483]: "\"isolateEmulatorThread\": true,"
+                            - generic [ref=e2486]: "\"model\": \"string\","
+                            - generic [ref=e2489]: "\"numa\": {"
+                            - generic [ref=e2492]: "\"guestMappingPassthrough\": {}"
+                            - generic [ref=e2495]: "},"
+                            - generic [ref=e2498]: "\"realtime\": {"
+                            - generic [ref=e2501]: "\"mask\": \"string\""
+                            - generic [ref=e2504]: "},"
+                            - generic [ref=e2507]: "\"sockets\": 0,"
+                            - generic [ref=e2510]: "\"threads\": 0"
+                            - generic [ref=e2513]: "},"
+                            - generic [ref=e2516]: "\"devices\": {"
+                            - generic [ref=e2519]: "\"autoattachGraphicsDevice\": true,"
+                            - generic [ref=e2522]: "\"autoattachInputDevice\": true,"
+                            - generic [ref=e2525]: "\"autoattachMemBalloon\": true,"
+                            - generic [ref=e2528]: "\"autoattachPodInterface\": true,"
+                            - generic [ref=e2531]: "\"autoattachSerialConsole\": true,"
+                            - generic [ref=e2534]: "\"autoattachVSOCK\": true,"
+                            - generic [ref=e2537]: "\"blockMultiQueue\": true,"
+                            - generic [ref=e2540]: "\"clientPassthrough\": {},"
+                            - generic [ref=e2543]: "\"disableHotplug\": true,"
+                            - generic [ref=e2546]: "\"disks\": ["
+                            - generic [ref=e2549]: "{"
+                            - generic [ref=e2552]: "\"blockSize\": {"
+                            - generic [ref=e2555]: "\"custom\": {"
+                            - generic [ref=e2558]: "\"logical\": 0,"
+                            - generic [ref=e2561]: "\"physical\": 0"
+                            - generic [ref=e2564]: "},"
+                            - generic [ref=e2567]: "\"matchVolume\": {"
+                            - generic [ref=e2570]: "\"enabled\": true"
+                            - generic [ref=e2573]: "}"
+                            - generic [ref=e2576]: "},"
+                            - generic [ref=e2579]: "\"bootOrder\": 0,"
+                            - generic [ref=e2582]: "\"cache\": \"string\","
+                            - generic [ref=e2585]: "\"cdrom\": {"
+                            - generic [ref=e2588]: "\"bus\": \"string\","
+                            - generic [ref=e2591]: "\"readonly\": true,"
+                            - generic [ref=e2594]: "\"tray\": \"string\""
+                            - generic [ref=e2597]: "},"
+                            - generic [ref=e2600]: "\"dedicatedIOThread\": true,"
+                            - generic [ref=e2603]: "\"disk\": {"
+                            - generic [ref=e2606]: "\"bus\": \"string\","
+                            - generic [ref=e2609]: "\"pciAddress\": \"string\","
+                            - generic [ref=e2612]: "\"readonly\": true"
+                            - generic [ref=e2615]: "},"
+                            - generic [ref=e2618]: "\"io\": \"string\","
+                            - generic [ref=e2621]: "\"lun\": {"
+                            - generic [ref=e2624]: "\"bus\": \"string\","
+                            - generic [ref=e2627]: "\"readonly\": true"
+                            - generic [ref=e2630]: "},"
+                            - generic [ref=e2633]: "\"name\": \"string\","
+                            - generic [ref=e2636]: "\"serial\": \"string\","
+                            - generic [ref=e2639]: "\"shareable\": true,"
+                            - generic [ref=e2642]: "\"tag\": \"string\""
+                            - generic [ref=e2645]: "}"
+                            - generic [ref=e2648]: "],"
+                            - generic [ref=e2651]: "\"downwardMetrics\": {},"
+                            - generic [ref=e2654]: "\"filesystems\": ["
+                            - generic [ref=e2657]: "{"
+                            - generic [ref=e2660]: "\"name\": \"string\","
+                            - generic [ref=e2663]: "\"virtiofs\": {}"
+                            - generic [ref=e2666]: "}"
+                            - generic [ref=e2669]: "],"
+                            - generic [ref=e2672]: "\"gpus\": ["
+                            - generic [ref=e2675]: "{"
+                            - generic [ref=e2678]: "\"deviceName\": \"string\","
+                            - generic [ref=e2681]: "\"name\": \"string\","
+                            - generic [ref=e2684]: "\"tag\": \"string\","
+                            - generic [ref=e2687]: "\"virtualGPUOptions\": {"
+                            - generic [ref=e2690]: "\"display\": {"
+                            - generic [ref=e2693]: "\"enabled\": true,"
+                            - generic [ref=e2696]: "\"ramFB\": {"
+                            - generic [ref=e2699]: "\"enabled\": true"
+                            - generic [ref=e2702]: "}"
+                            - generic [ref=e2705]: "}"
+                            - generic [ref=e2708]: "}"
+                            - generic [ref=e2711]: "}"
+                            - generic [ref=e2714]: "],"
+                            - generic [ref=e2717]: "\"hostDevices\": ["
+                            - generic [ref=e2720]: "{"
+                            - generic [ref=e2723]: "\"deviceName\": \"string\","
+                            - generic [ref=e2726]: "\"name\": \"string\","
+                            - generic [ref=e2729]: "\"tag\": \"string\""
+                            - generic [ref=e2732]: "}"
+                            - generic [ref=e2735]: "],"
+                            - generic [ref=e2738]: "\"inputs\": ["
+                            - generic [ref=e2741]: "{"
+                            - generic [ref=e2744]: "\"bus\": \"string\","
+                            - generic [ref=e2747]: "\"name\": \"string\","
+                            - generic [ref=e2750]: "\"type\": \"string\""
+                            - generic [ref=e2753]: "}"
+                            - generic [ref=e2756]: "],"
+                            - generic [ref=e2759]: "\"interfaces\": ["
+                            - generic [ref=e2762]: "{"
+                            - generic [ref=e2765]: "\"acpiIndex\": 0,"
+                            - generic [ref=e2768]: "\"bootOrder\": 0,"
+                            - generic [ref=e2771]: "\"bridge\": {},"
+                            - generic [ref=e2774]: "\"dhcpOptions\": {"
+                            - generic [ref=e2777]: "\"bootFileName\": \"string\","
+                            - generic [ref=e2780]: "\"ntpServers\": ["
+                            - generic [ref=e2783]: "\"string\""
+                            - generic [ref=e2786]: "],"
+                            - generic [ref=e2789]: "\"privateOptions\": ["
+                            - generic [ref=e2792]: "{"
+                            - generic [ref=e2795]: "\"option\": 0,"
+                            - generic [ref=e2798]: "\"value\": \"string\""
+                            - generic [ref=e2801]: "}"
+                            - generic [ref=e2804]: "],"
+                            - generic [ref=e2807]: "\"tftpServerName\": \"string\""
+                            - generic [ref=e2810]: "},"
+                            - generic [ref=e2813]: "\"macAddress\": \"string\","
+                            - generic [ref=e2816]: "\"macvtap\": {},"
+                            - generic [ref=e2819]: "\"masquerade\": {},"
+                            - generic [ref=e2822]: "\"model\": \"string\","
+                            - generic [ref=e2825]: "\"name\": \"string\","
+                            - generic [ref=e2828]: "\"passt\": {},"
+                            - generic [ref=e2831]: "\"pciAddress\": \"string\","
+                            - generic [ref=e2834]: "\"ports\": ["
+                            - generic [ref=e2837]: "{"
+                            - generic [ref=e2840]: "\"name\": \"string\","
+                            - generic [ref=e2843]: "\"port\": 0,"
+                            - generic [ref=e2846]: "\"protocol\": \"string\""
+                            - generic [ref=e2849]: "}"
+                            - generic [ref=e2852]: "],"
+                            - generic [ref=e2855]: "\"slirp\": {},"
+                            - generic [ref=e2858]: "\"sriov\": {},"
+                            - generic [ref=e2861]: "\"tag\": \"string\""
+                            - generic [ref=e2864]: "}"
+                            - generic [ref=e2867]: "],"
+                            - generic [ref=e2870]: "\"logSerialConsole\": true,"
+                            - generic [ref=e2873]: "\"networkInterfaceMultiqueue\": true,"
+                            - generic [ref=e2876]: "\"rng\": {},"
+                            - generic [ref=e2879]: "\"sound\": {"
+                            - generic [ref=e2882]: "\"model\": \"string\","
+                            - generic [ref=e2885]: "\"name\": \"string\""
+                            - generic [ref=e2888]: "},"
+                            - generic [ref=e2891]: "\"tpm\": {},"
+                            - generic [ref=e2894]: "\"useVirtioTransitional\": true,"
+                            - generic [ref=e2897]: "\"watchdog\": {"
+                            - generic [ref=e2900]: "\"i6300esb\": {"
+                            - generic [ref=e2903]: "\"action\": \"string\""
+                            - generic [ref=e2906]: "},"
+                            - generic [ref=e2909]: "\"name\": \"string\""
+                            - generic [ref=e2912]: "}"
+                            - generic [ref=e2915]: "},"
+                            - generic [ref=e2918]: "\"features\": {"
+                            - generic [ref=e2921]: "\"acpi\": {"
+                            - generic [ref=e2924]: "\"enabled\": true"
+                            - generic [ref=e2927]: "},"
+                            - generic [ref=e2930]: "\"apic\": {"
+                            - generic [ref=e2933]: "\"enabled\": true,"
+                            - generic [ref=e2936]: "\"endOfInterrupt\": true"
+                            - generic [ref=e2939]: "},"
+                            - generic [ref=e2942]: "\"hyperv\": {"
+                            - generic [ref=e2945]: "\"evmcs\": {"
+                            - generic [ref=e2948]: "\"enabled\": true"
+                            - generic [ref=e2951]: "},"
+                            - generic [ref=e2954]: "\"frequencies\": {"
+                            - generic [ref=e2957]: "\"enabled\": true"
+                            - generic [ref=e2960]: "},"
+                            - generic [ref=e2963]: "\"ipi\": {"
+                            - generic [ref=e2966]: "\"enabled\": true"
+                            - generic [ref=e2969]: "},"
+                            - generic [ref=e2972]: "\"reenlightenment\": {"
+                            - generic [ref=e2975]: "\"enabled\": true"
+                            - generic [ref=e2978]: "},"
+                            - generic [ref=e2981]: "\"relaxed\": {"
+                            - generic [ref=e2984]: "\"enabled\": true"
+                            - generic [ref=e2987]: "},"
+                            - generic [ref=e2990]: "\"reset\": {"
+                            - generic [ref=e2993]: "\"enabled\": true"
+                            - generic [ref=e2996]: "},"
+                            - generic [ref=e2999]: "\"runtime\": {"
+                            - generic [ref=e3002]: "\"enabled\": true"
+                            - generic [ref=e3005]: "},"
+                            - generic [ref=e3008]: "\"spinlocks\": {"
+                            - generic [ref=e3011]: "\"enabled\": true,"
+                            - generic [ref=e3014]: "\"spinlocks\": 0"
+                            - generic [ref=e3017]: "},"
+                            - generic [ref=e3020]: "\"synic\": {"
+                            - generic [ref=e3023]: "\"enabled\": true"
+                            - generic [ref=e3026]: "},"
+                            - generic [ref=e3029]: "\"synictimer\": {"
+                            - generic [ref=e3032]: "\"direct\": {"
+                            - generic [ref=e3035]: "\"enabled\": true"
+                            - generic [ref=e3038]: "},"
+                            - generic [ref=e3041]: "\"enabled\": true"
+                            - generic [ref=e3044]: "},"
+                            - generic [ref=e3047]: "\"tlbflush\": {"
+                            - generic [ref=e3050]: "\"enabled\": true"
+                            - generic [ref=e3053]: "},"
+                            - generic [ref=e3056]: "\"vapic\": {"
+                            - generic [ref=e3059]: "\"enabled\": true"
+                            - generic [ref=e3062]: "},"
+                            - generic [ref=e3065]: "\"vendorid\": {"
+                            - generic [ref=e3068]: "\"enabled\": true,"
+                            - generic [ref=e3071]: "\"vendorid\": \"string\""
+                            - generic [ref=e3074]: "},"
+                            - generic [ref=e3077]: "\"vpindex\": {"
+                            - generic [ref=e3080]: "\"enabled\": true"
+                            - generic [ref=e3083]: "}"
+                            - generic [ref=e3086]: "},"
+                            - generic [ref=e3089]: "\"kvm\": {"
+                            - generic [ref=e3092]: "\"hidden\": true"
+                            - generic [ref=e3095]: "},"
+                            - generic [ref=e3098]: "\"pvspinlock\": {"
+                            - generic [ref=e3101]: "\"enabled\": true"
+                            - generic [ref=e3104]: "},"
+                            - generic [ref=e3107]: "\"smm\": {"
+                            - generic [ref=e3110]: "\"enabled\": true"
+                            - generic [ref=e3113]: "}"
+                            - generic [ref=e3116]: "},"
+                            - generic [ref=e3119]: "\"firmware\": {"
+                            - generic [ref=e3122]: "\"bootloader\": {"
+                            - generic [ref=e3125]: "\"bios\": {"
+                            - generic [ref=e3128]: "\"useSerial\": true"
+                            - generic [ref=e3131]: "},"
+                            - generic [ref=e3134]: "\"efi\": {"
+                            - generic [ref=e3137]: "\"secureBoot\": true"
+                            - generic [ref=e3140]: "}"
+                            - generic [ref=e3143]: "},"
+                            - generic [ref=e3146]: "\"kernelBoot\": {"
+                            - generic [ref=e3149]: "\"container\": {"
+                            - generic [ref=e3152]: "\"image\": \"string\","
+                            - generic [ref=e3155]: "\"imagePullPolicy\": \"string\","
+                            - generic [ref=e3158]: "\"imagePullSecret\": \"string\","
+                            - generic [ref=e3161]: "\"initrdPath\": \"string\","
+                            - generic [ref=e3164]: "\"kernelPath\": \"string\""
+                            - generic [ref=e3167]: "},"
+                            - generic [ref=e3170]: "\"kernelArgs\": \"string\""
+                            - generic [ref=e3173]: "},"
+                            - generic [ref=e3176]: "\"serial\": \"string\","
+                            - generic [ref=e3179]: "\"uuid\": \"string\""
+                            - generic [ref=e3182]: "},"
+                            - generic [ref=e3185]: "\"ioThreads\": {"
+                            - generic [ref=e3188]: "\"supplementalPoolThreadCount\": 0"
+                            - generic [ref=e3191]: "},"
+                            - generic [ref=e3194]: "\"ioThreadsPolicy\": \"string\","
+                            - generic [ref=e3197]: "\"launchSecurity\": {"
+                            - generic [ref=e3200]: "\"sev\": {}"
+                            - generic [ref=e3203]: "},"
+                            - generic [ref=e3206]: "\"machine\": {"
+                            - generic [ref=e3209]: "\"type\": \"string\""
+                            - generic [ref=e3212]: "},"
+                            - generic [ref=e3215]: "\"memory\": {"
+                            - generic [ref=e3218]: "\"guest\": \"string\","
+                            - generic [ref=e3221]: "\"hugepages\": {"
+                            - generic [ref=e3224]: "\"pageSize\": \"string\""
+                            - generic [ref=e3227]: "}"
+                            - generic [ref=e3230]: "},"
+                            - generic [ref=e3233]: "\"resources\": {"
+                            - generic [ref=e3236]: "\"limits\": {},"
+                            - generic [ref=e3239]: "\"overcommitGuestOverhead\": true,"
+                            - generic [ref=e3242]: "\"requests\": {}"
+                            - generic [ref=e3245]: "}"
+                            - generic [ref=e3248]: "},"
+                            - generic [ref=e3251]: "\"evictionStrategy\": \"string\","
+                            - generic [ref=e3254]: "\"hostname\": \"string\","
+                            - generic [ref=e3257]: "\"livenessProbe\": {"
+                            - generic [ref=e3260]: "\"exec\": {"
+                            - generic [ref=e3263]: "\"command\": ["
+                            - generic [ref=e3266]: "\"string\""
+                            - generic [ref=e3269]: "]"
+                            - generic [ref=e3272]: "},"
+                            - generic [ref=e3275]: "\"failureThreshold\": 0,"
+                            - generic [ref=e3278]: "\"guestAgentPing\": {},"
+                            - generic [ref=e3281]: "\"httpGet\": {"
+                            - generic [ref=e3284]: "\"host\": \"string\","
+                            - generic [ref=e3287]: "\"httpHeaders\": ["
+                            - generic [ref=e3290]: "{"
+                            - generic [ref=e3293]: "\"name\": \"string\","
+                            - generic [ref=e3296]: "\"value\": \"string\""
+                            - generic [ref=e3299]: "}"
+                            - generic [ref=e3302]: "],"
+                            - generic [ref=e3305]: "\"path\": \"string\","
+                            - generic [ref=e3308]: "\"port\": \"string\","
+                            - generic [ref=e3311]: "\"scheme\": \"string\""
+                            - generic [ref=e3314]: "},"
+                            - generic [ref=e3317]: "\"initialDelaySeconds\": 0,"
+                            - generic [ref=e3320]: "\"periodSeconds\": 0,"
+                            - generic [ref=e3323]: "\"successThreshold\": 0,"
+                            - generic [ref=e3326]: "\"tcpSocket\": {"
+                            - generic [ref=e3329]: "\"host\": \"string\","
+                            - generic [ref=e3332]: "\"port\": \"string\""
+                            - generic [ref=e3335]: "},"
+                            - generic [ref=e3338]: "\"timeoutSeconds\": 0"
+                            - generic [ref=e3341]: "},"
+                            - generic [ref=e3344]: "\"networks\": ["
+                            - generic [ref=e3347]: "{"
+                            - generic [ref=e3350]: "\"multus\": {"
+                            - generic [ref=e3353]: "\"default\": true,"
+                            - generic [ref=e3356]: "\"networkName\": \"string\""
+                            - generic [ref=e3359]: "},"
+                            - generic [ref=e3362]: "\"name\": \"string\","
+                            - generic [ref=e3365]: "\"pod\": {"
+                            - generic [ref=e3368]: "\"vmIPv6NetworkCIDR\": \"string\","
+                            - generic [ref=e3371]: "\"vmNetworkCIDR\": \"string\""
+                            - generic [ref=e3374]: "}"
+                            - generic [ref=e3377]: "}"
+                            - generic [ref=e3380]: "],"
+                            - generic [ref=e3383]: "\"nodeSelector\": {},"
+                            - generic [ref=e3386]: "\"priorityClassName\": \"string\","
+                            - generic [ref=e3389]: "\"readinessProbe\": {"
+                            - generic [ref=e3392]: "\"exec\": {"
+                            - generic [ref=e3395]: "\"command\": ["
+                            - generic [ref=e3398]: "\"string\""
+                            - generic [ref=e3401]: "]"
+                            - generic [ref=e3404]: "},"
+                            - generic [ref=e3407]: "\"failureThreshold\": 0,"
+                            - generic [ref=e3410]: "\"guestAgentPing\": {},"
+                            - generic [ref=e3413]: "\"httpGet\": {"
+                            - generic [ref=e3416]: "\"host\": \"string\","
+                            - generic [ref=e3419]: "\"httpHeaders\": ["
+                            - generic [ref=e3422]: "{"
+                            - generic [ref=e3425]: "\"name\": \"string\","
+                            - generic [ref=e3428]: "\"value\": \"string\""
+                            - generic [ref=e3431]: "}"
+                            - generic [ref=e3434]: "],"
+                            - generic [ref=e3437]: "\"path\": \"string\","
+                            - generic [ref=e3440]: "\"port\": \"string\","
+                            - generic [ref=e3443]: "\"scheme\": \"string\""
+                            - generic [ref=e3446]: "},"
+                            - generic [ref=e3449]: "\"initialDelaySeconds\": 0,"
+                            - generic [ref=e3452]: "\"periodSeconds\": 0,"
+                            - generic [ref=e3455]: "\"successThreshold\": 0,"
+                            - generic [ref=e3458]: "\"tcpSocket\": {"
+                            - generic [ref=e3461]: "\"host\": \"string\","
+                            - generic [ref=e3464]: "\"port\": \"string\""
+                            - generic [ref=e3467]: "},"
+                            - generic [ref=e3470]: "\"timeoutSeconds\": 0"
+                            - generic [ref=e3473]: "},"
+                            - generic [ref=e3476]: "\"schedulerName\": \"string\","
+                            - generic [ref=e3479]: "\"startStrategy\": \"string\","
+                            - generic [ref=e3482]: "\"subdomain\": \"string\","
+                            - generic [ref=e3485]: "\"terminationGracePeriodSeconds\": 0,"
+                            - generic [ref=e3488]: "\"tolerations\": ["
+                            - generic [ref=e3491]: "{"
+                            - generic [ref=e3494]: "\"effect\": \"string\","
+                            - generic [ref=e3497]: "\"key\": \"string\","
+                            - generic [ref=e3500]: "\"operator\": \"string\","
+                            - generic [ref=e3503]: "\"tolerationSeconds\": 0,"
+                            - generic [ref=e3506]: "\"value\": \"string\""
+                            - generic [ref=e3509]: "}"
+                            - generic [ref=e3512]: "],"
+                            - generic [ref=e3515]: "\"topologySpreadConstraints\": ["
+                            - generic [ref=e3518]: "{"
+                            - generic [ref=e3521]: "\"labelSelector\": {"
+                            - generic [ref=e3524]: "\"matchExpressions\": ["
+                            - generic [ref=e3527]: "{"
+                            - generic [ref=e3530]: "\"key\": \"string\","
+                            - generic [ref=e3533]: "\"operator\": \"string\","
+                            - generic [ref=e3536]: "\"values\": ["
+                            - generic [ref=e3539]: "\"string\""
+                            - generic [ref=e3542]: "]"
+                            - generic [ref=e3545]: "}"
+                            - generic [ref=e3548]: "],"
+                            - generic [ref=e3551]: "\"matchLabels\": {}"
+                            - generic [ref=e3554]: "},"
+                            - generic [ref=e3557]: "\"maxSkew\": 0,"
+                            - generic [ref=e3560]: "\"topologyKey\": \"string\","
+                            - generic [ref=e3563]: "\"whenUnsatisfiable\": \"string\""
+                            - generic [ref=e3566]: "}"
+                            - generic [ref=e3569]: "],"
+                            - generic [ref=e3572]: "\"volumes\": ["
+                            - generic [ref=e3575]: "{"
+                            - generic [ref=e3578]: "\"cloudInitConfigDrive\": {"
+                            - generic [ref=e3581]: "\"networkData\": \"string\","
+                            - generic [ref=e3584]: "\"networkDataBase64\": \"string\","
+                            - generic [ref=e3587]: "\"networkDataSecretRef\": {"
+                            - generic [ref=e3590]: "\"name\": \"string\""
+                            - generic [ref=e3593]: "},"
+                            - generic [ref=e3596]: "\"secretRef\": {"
+                            - generic [ref=e3599]: "\"name\": \"string\""
+                            - generic [ref=e3602]: "},"
+                            - generic [ref=e3605]: "\"userData\": \"string\","
+                            - generic [ref=e3608]: "\"userDataBase64\": \"string\""
+                            - generic [ref=e3611]: "},"
+                            - generic [ref=e3614]: "\"cloudInitNoCloud\": {"
+                            - generic [ref=e3617]: "\"networkData\": \"string\","
+                            - generic [ref=e3620]: "\"networkDataBase64\": \"string\","
+                            - generic [ref=e3623]: "\"networkDataSecretRef\": {"
+                            - generic [ref=e3626]: "\"name\": \"string\""
+                            - generic [ref=e3629]: "},"
+                            - generic [ref=e3632]: "\"secretRef\": {"
+                            - generic [ref=e3635]: "\"name\": \"string\""
+                            - generic [ref=e3638]: "},"
+                            - generic [ref=e3641]: "\"userData\": \"string\","
+                            - generic [ref=e3644]: "\"userDataBase64\": \"string\""
+                            - generic [ref=e3647]: "},"
+                            - generic [ref=e3650]: "\"configMap\": {"
+                            - generic [ref=e3653]: "\"name\": \"string\","
+                            - generic [ref=e3656]: "\"optional\": true,"
+                            - generic [ref=e3659]: "\"volumeLabel\": \"string\""
+                            - generic [ref=e3662]: "},"
+                            - generic [ref=e3665]: "\"containerDisk\": {"
+                            - generic [ref=e3668]: "\"image\": \"string\","
+                            - generic [ref=e3671]: "\"imagePullPolicy\": \"string\","
+                            - generic [ref=e3674]: "\"imagePullSecret\": \"string\","
+                            - generic [ref=e3677]: "\"path\": \"string\""
+                            - generic [ref=e3680]: "},"
+                            - generic [ref=e3683]: "\"dataVolume\": {"
+                            - generic [ref=e3686]: "\"hotpluggable\": true,"
+                            - generic [ref=e3689]: "\"name\": \"string\""
+                            - generic [ref=e3692]: "},"
+                            - generic [ref=e3695]: "\"downwardAPI\": {"
+                            - generic [ref=e3698]: "\"fields\": ["
+                            - generic [ref=e3701]: "{"
+                            - generic [ref=e3704]: "\"fieldRef\": {"
+                            - generic [ref=e3707]: "\"apiVersion\": \"string\","
+                            - generic [ref=e3710]: "\"fieldPath\": \"string\""
+                            - generic [ref=e3713]: "},"
+                            - generic [ref=e3716]: "\"mode\": 0,"
+                            - generic [ref=e3719]: "\"path\": \"string\","
+                            - generic [ref=e3722]: "\"resourceFieldRef\": {"
+                            - generic [ref=e3725]: "\"containerName\": \"string\","
+                            - generic [ref=e3728]: "\"divisor\": \"string\","
+                            - generic [ref=e3731]: "\"resource\": \"string\""
+                            - generic [ref=e3734]: "}"
+                            - generic [ref=e3737]: "}"
+                            - generic [ref=e3740]: "],"
+                            - generic [ref=e3743]: "\"volumeLabel\": \"string\""
+                            - generic [ref=e3746]: "},"
+                            - generic [ref=e3749]: "\"downwardMetrics\": {},"
+                            - generic [ref=e3752]: "\"emptyDisk\": {"
+                            - generic [ref=e3755]: "\"capacity\": \"string\""
+                            - generic [ref=e3758]: "},"
+                            - generic [ref=e3761]: "\"ephemeral\": {"
+                            - generic [ref=e3764]: "\"persistentVolumeClaim\": {"
+                            - generic [ref=e3767]: "\"claimName\": \"string\","
+                            - generic [ref=e3770]: "\"hotpluggable\": true,"
+                            - generic [ref=e3773]: "\"readOnly\": true"
+                            - generic [ref=e3776]: "}"
+                            - generic [ref=e3779]: "},"
+                            - generic [ref=e3782]: "\"hostDisk\": {"
+                            - generic [ref=e3785]: "\"capacity\": \"string\","
+                            - generic [ref=e3788]: "\"path\": \"string\","
+                            - generic [ref=e3791]: "\"shared\": true,"
+                            - generic [ref=e3794]: "\"type\": \"string\""
+                            - generic [ref=e3797]: "},"
+                            - generic [ref=e3800]: "\"memoryDump\": {"
+                            - generic [ref=e3803]: "\"claimName\": \"string\","
+                            - generic [ref=e3806]: "\"hotpluggable\": true,"
+                            - generic [ref=e3809]: "\"readOnly\": true"
+                            - generic [ref=e3812]: "},"
+                            - generic [ref=e3815]: "\"name\": \"string\","
+                            - generic [ref=e3818]: "\"persistentVolumeClaim\": {"
+                            - generic [ref=e3821]: "\"claimName\": \"string\","
+                            - generic [ref=e3824]: "\"hotpluggable\": true,"
+                            - generic [ref=e3827]: "\"readOnly\": true"
+                            - generic [ref=e3830]: "},"
+                            - generic [ref=e3833]: "\"secret\": {"
+                            - generic [ref=e3836]: "\"optional\": true,"
+                            - generic [ref=e3839]: "\"secretName\": \"string\","
+                            - generic [ref=e3842]: "\"volumeLabel\": \"string\""
+                            - generic [ref=e3845]: "},"
+                            - generic [ref=e3848]: "\"serviceAccount\": {"
+                            - generic [ref=e3851]: "\"serviceAccountName\": \"string\""
+                            - generic [ref=e3854]: "},"
+                            - generic [ref=e3857]: "\"sysprep\": {"
+                            - generic [ref=e3860]: "\"configMap\": {"
+                            - generic [ref=e3863]: "\"name\": \"string\""
+                            - generic [ref=e3866]: "},"
+                            - generic [ref=e3869]: "\"secret\": {"
+                            - generic [ref=e3872]: "\"name\": \"string\""
+                            - generic [ref=e3875]: "}"
+                            - generic [ref=e3878]: "}"
+                            - generic [ref=e3881]: "}"
+                            - generic [ref=e3884]: "]"
+                            - generic [ref=e3887]: "}"
+                            - generic [ref=e3890]: "},"
+                            - generic [ref=e3893]: "\"updateVolumesStrategy\": \"string\""
+                            - generic [ref=e3896]: "},"
+                            - generic [ref=e3899]: "\"status\": {"
+                            - generic [ref=e3902]: "\"conditions\": ["
+                            - generic [ref=e3905]: "{"
+                            - generic [ref=e3908]: "\"lastProbeTime\": \"string\","
+                            - generic [ref=e3911]: "\"lastTransitionTime\": \"string\","
+                            - generic [ref=e3914]: "\"message\": \"string\","
+                            - generic [ref=e3917]: "\"reason\": \"string\","
+                            - generic [ref=e3920]: "\"status\": \"string\","
+                            - generic [ref=e3923]: "\"type\": \"string\""
+                            - generic [ref=e3926]: "}"
+                            - generic [ref=e3929]: "],"
+                            - generic [ref=e3932]: "\"created\": true,"
+                            - generic [ref=e3935]: "\"memoryDumpRequest\": {"
+                            - generic [ref=e3938]: "\"claimName\": \"string\","
+                            - generic [ref=e3941]: "\"endTimestamp\": \"2024-07-29T15:51:28.071Z\","
+                            - generic [ref=e3944]: "\"fileName\": \"string\","
+                            - generic [ref=e3947]: "\"message\": \"string\","
+                            - generic [ref=e3950]: "\"phase\": \"string\","
+                            - generic [ref=e3953]: "\"remove\": true,"
+                            - generic [ref=e3956]: "\"startTimestamp\": \"2024-07-29T15:51:28.071Z\""
+                            - generic [ref=e3959]: "},"
+                            - generic [ref=e3962]: "\"printableStatus\": \"string\","
+                            - generic [ref=e3965]: "\"ready\": true,"
+                            - generic [ref=e3968]: "\"restoreInProgress\": \"string\","
+                            - generic [ref=e3971]: "\"snapshotInProgress\": \"string\","
+                            - generic [ref=e3974]: "\"startFailure\": {"
+                            - generic [ref=e3977]: "\"consecutiveFailCount\": 0,"
+                            - generic [ref=e3980]: "\"lastFailedVMIUID\": \"string\","
+                            - generic [ref=e3983]: "\"retryAfterTimestamp\": \"2024-07-29T15:51:28.071Z\""
+                            - generic [ref=e3986]: "},"
+                            - generic [ref=e3989]: "\"stateChangeRequests\": ["
+                            - generic [ref=e3992]: "{"
+                            - generic [ref=e3995]: "\"action\": \"string\","
+                            - generic [ref=e3998]: "\"data\": {},"
+                            - generic [ref=e4001]: "\"uid\": \"string\""
+                            - generic [ref=e4004]: "}"
+                            - generic [ref=e4007]: "],"
+                            - generic [ref=e4010]: "\"volumeRequests\": ["
+                            - generic [ref=e4013]: "{"
+                            - generic [ref=e4016]: "\"addVolumeOptions\": {"
+                            - generic [ref=e4019]: "\"disk\": {"
+                            - generic [ref=e4022]: "\"blockSize\": {"
+                            - generic [ref=e4025]: "\"custom\": {"
+                            - generic [ref=e4028]: "\"logical\": 0,"
+                            - generic [ref=e4031]: "\"physical\": 0"
+                            - generic [ref=e4034]: "},"
+                            - generic [ref=e4037]: "\"matchVolume\": {"
+                            - generic [ref=e4040]: "\"enabled\": true"
+                            - generic [ref=e4043]: "}"
+                            - generic [ref=e4046]: "},"
+                            - generic [ref=e4049]: "\"bootOrder\": 0,"
+                            - generic [ref=e4052]: "\"cache\": \"string\","
+                            - generic [ref=e4055]: "\"cdrom\": {"
+                            - generic [ref=e4058]: "\"bus\": \"string\","
+                            - generic [ref=e4061]: "\"readonly\": true,"
+                            - generic [ref=e4064]: "\"tray\": \"string\""
+                            - generic [ref=e4067]: "},"
+                            - generic [ref=e4070]: "\"dedicatedIOThread\": true,"
+                            - generic [ref=e4073]: "\"disk\": {"
+                            - generic [ref=e4076]: "\"bus\": \"string\","
+                            - generic [ref=e4079]: "\"pciAddress\": \"string\","
+                            - generic [ref=e4082]: "\"readonly\": true"
+                            - generic [ref=e4085]: "},"
+                            - generic [ref=e4088]: "\"io\": \"string\","
+                            - generic [ref=e4091]: "\"lun\": {"
+                            - generic [ref=e4094]: "\"bus\": \"string\","
+                            - generic [ref=e4097]: "\"readonly\": true"
+                            - generic [ref=e4100]: "},"
+                            - generic [ref=e4103]: "\"name\": \"string\","
+                            - generic [ref=e4106]: "\"serial\": \"string\","
+                            - generic [ref=e4109]: "\"shareable\": true,"
+                            - generic [ref=e4112]: "\"tag\": \"string\""
+                            - generic [ref=e4115]: "},"
+                            - generic [ref=e4118]: "\"dryRun\": ["
+                            - generic [ref=e4121]: "\"string\""
+                            - generic [ref=e4124]: "],"
+                            - generic [ref=e4127]: "\"name\": \"string\","
+                            - generic [ref=e4130]: "\"volumeSource\": {"
+                            - generic [ref=e4133]: "\"dataVolume\": {"
+                            - generic [ref=e4136]: "\"hotpluggable\": true,"
+                            - generic [ref=e4139]: "\"name\": \"string\""
+                            - generic [ref=e4142]: "},"
+                            - generic [ref=e4145]: "\"persistentVolumeClaim\": {"
+                            - generic [ref=e4148]: "\"claimName\": \"string\","
+                            - generic [ref=e4151]: "\"hotpluggable\": true,"
+                            - generic [ref=e4154]: "\"readOnly\": true"
+                            - generic [ref=e4157]: "}"
+                            - generic [ref=e4160]: "}"
+                            - generic [ref=e4163]: "},"
+                            - generic [ref=e4166]: "\"removeVolumeOptions\": {"
+                            - generic [ref=e4169]: "\"dryRun\": ["
+                            - generic [ref=e4172]: "\"string\""
+                            - generic [ref=e4175]: "],"
+                            - generic [ref=e4178]: "\"name\": \"string\""
+                            - generic [ref=e4181]: "}"
+                            - generic [ref=e4184]: "}"
+                            - generic [ref=e4187]: "],"
+                            - generic [ref=e4190]: "\"volumeSnapshotStatuses\": ["
+                            - generic [ref=e4193]: "{"
+                            - generic [ref=e4196]: "\"enabled\": true,"
+                            - generic [ref=e4199]: "\"name\": \"string\","
+                            - generic [ref=e4202]: "\"reason\": \"string\""
+                            - generic [ref=e4205]: "}"
+                            - generic [ref=e4208]: "]"
+                            - generic [ref=e4211]: "}"
+                            - generic [ref=e4214]: "}'"
+                          - generic [ref=e4215]:
+                            - button "Toggle word wrap" [ref=e4216] [cursor=pointer]:
+                              - img [ref=e4217]
+                            - button "Copy code to clipboard" [ref=e4219] [cursor=pointer]:
+                              - generic [ref=e4220]:
+                                - img [ref=e4221]
+                                - img [ref=e4223]
+                            - button "Expand code to fullscreen" [ref=e4225] [cursor=pointer]:
+                              - generic [ref=e4226]:
+                                - img [ref=e4227]
+                                - img [ref=e4229]
+          - navigation "Docs pages" [ref=e4233]:
+            - link "Previous « Get virtual machine" [ref=e4234] [cursor=pointer]:
+              - /url: /api/v1/v-1-spectro-clusters-vm-get/
+              - generic [ref=e4235]: Previous
+              - generic [ref=e4236]: « Get virtual machine
+            - link "Next Add volume to the virtual machine instance »" [ref=e4237] [cursor=pointer]:
+              - /url: /api/v1/v-1-spectro-clusters-vm-add-volume/
+              - generic [ref=e4238]: Next
+              - generic [ref=e4239]: Add volume to the virtual machine instance »
+  - button "Project Logo Ask AI" [ref=e4240] [cursor=pointer]:
+    - generic [ref=e4243]:
+      - img "Project Logo" [ref=e4244]
+      - paragraph [ref=e4245]: Ask AI
+```

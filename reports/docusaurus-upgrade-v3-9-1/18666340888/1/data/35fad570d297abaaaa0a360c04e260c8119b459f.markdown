@@ -1,0 +1,439 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [expanded] [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+                - list [ref=e121]:
+                  - listitem [ref=e122]:
+                    - link "Use Cases" [ref=e123] [cursor=pointer]:
+                      - /url: /devx/enterprise-user/
+                  - listitem [ref=e124]:
+                    - generic [ref=e125]:
+                      - link "Apps" [ref=e126] [cursor=pointer]:
+                        - /url: /devx/apps/
+                      - button "Toggle the collapsible sidebar category 'Apps'" [ref=e127] [cursor=pointer]
+                  - listitem [ref=e128]:
+                    - generic [ref=e129]:
+                      - link "Palette Virtual Clusters" [ref=e130] [cursor=pointer]:
+                        - /url: /devx/palette-virtual-clusters/
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e131] [cursor=pointer]
+                  - listitem [ref=e132]:
+                    - generic [ref=e133]:
+                      - link "Manage Dev Engine" [expanded] [ref=e134] [cursor=pointer]:
+                        - /url: /devx/manage-dev-engine/
+                      - button "Toggle the collapsible sidebar category 'Manage Dev Engine'" [ref=e135] [cursor=pointer]
+                    - list [ref=e136]:
+                      - listitem [ref=e137]:
+                        - link "Resource Quotas" [ref=e138] [cursor=pointer]:
+                          - /url: /devx/manage-dev-engine/resource-quota/
+                      - listitem [ref=e139]:
+                        - link "Dev Engine Registries" [ref=e140] [cursor=pointer]:
+                          - /url: /devx/manage-dev-engine/registries/
+                      - listitem [ref=e141]:
+                        - link "Manage Single Sign-On (SSO)" [ref=e142] [cursor=pointer]:
+                          - /url: /devx/manage-dev-engine/sso/
+                  - listitem [ref=e143]:
+                    - generic [ref=e144]:
+                      - link "Services" [ref=e145] [cursor=pointer]:
+                        - /url: /devx/services/
+                      - button "Toggle the collapsible sidebar category 'Services'" [ref=e146] [cursor=pointer]
+              - listitem [ref=e147]:
+                - generic [ref=e148]:
+                  - link "Virtual Machine Orchestrator" [ref=e149] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e151]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e153] [cursor=pointer]
+              - listitem [ref=e154]:
+                - generic [ref=e155]:
+                  - link "Workspaces" [ref=e156] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e158]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e160] [cursor=pointer]
+              - listitem [ref=e161]:
+                - generic [ref=e162]:
+                  - link "Packs List" [ref=e163] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e165]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e167] [cursor=pointer]
+              - listitem [ref=e168]:
+                - generic [ref=e169]:
+                  - link "User & Role Management" [ref=e170] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e172]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e174] [cursor=pointer]
+              - listitem [ref=e175]:
+                - generic [ref=e176]:
+                  - link "Registries and Packs" [ref=e177] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e179]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e181] [cursor=pointer]
+              - listitem [ref=e182]:
+                - generic [ref=e183]:
+                  - link "Security" [ref=e184] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e186]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e188] [cursor=pointer]
+              - listitem [ref=e189]:
+                - generic [ref=e190]:
+                  - link "Audit Logs" [ref=e191] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e193]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e195] [cursor=pointer]
+              - listitem [ref=e196]:
+                - generic [ref=e197]:
+                  - link "Self-Hosted Palette" [ref=e198] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e200]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e202] [cursor=pointer]
+              - listitem [ref=e203]:
+                - generic [ref=e204]:
+                  - link "Palette VerteX" [ref=e205] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e207]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e209] [cursor=pointer]
+              - listitem [ref=e210]:
+                - generic [ref=e211]:
+                  - link "Tenant Administration" [ref=e212] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e214]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e216] [cursor=pointer]
+              - listitem [ref=e217]:
+                - generic [ref=e218]:
+                  - link "Automation" [ref=e219] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e221]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e223] [cursor=pointer]
+              - listitem [ref=e224]:
+                - generic [ref=e225]:
+                  - link "Troubleshooting" [ref=e226] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e228]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e230] [cursor=pointer]
+              - listitem [ref=e231]:
+                - link "Glossary" [ref=e232] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e234]
+                  - text: Glossary
+              - listitem [ref=e236]:
+                - generic [ref=e237]:
+                  - link "Compliance & Legal" [ref=e238] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e240]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - button "Privacy Settings" [ref=e244] [cursor=pointer]:
+                  - img [ref=e245]
+                  - text: Privacy Settings
+      - main [ref=e247]:
+        - generic [ref=e249]:
+          - generic [ref=e251]:
+            - article [ref=e252]:
+              - navigation "Breadcrumbs" [ref=e253]:
+                - list [ref=e254]:
+                  - listitem [ref=e255]:
+                    - link "Home page" [ref=e256] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e257]
+                  - listitem [ref=e259]:
+                    - link "Palette Dev Engine" [ref=e260] [cursor=pointer]:
+                      - /url: /devx/
+                  - listitem [ref=e261]:
+                    - link "Manage Dev Engine" [ref=e262] [cursor=pointer]:
+                      - /url: /devx/manage-dev-engine/
+                  - listitem [ref=e263]:
+                    - generic [ref=e264]: Manage Single Sign-On (SSO)
+              - generic [ref=e265]:
+                - heading "Manage Single Sign-On (SSO)" [level=1] [ref=e267]
+                - paragraph [ref=e268]: Palette supports the ability to use Single Sign-On (SSO) and third-party Social Sign-In Providers, such as Google and GitHub. Use the following steps to either enable or disable the feature.
+                - heading "Enable SSODirect link to Enable SSO" [level=2] [ref=e269]:
+                  - text: Enable SSO
+                  - link "Direct link to Enable SSO" [ref=e270] [cursor=pointer]:
+                    - /url: "#enable-sso"
+                    - text: "#"
+                - paragraph [ref=e271]: To enable SSO with third-party Social Sign-In Providers use the following steps.
+                - generic [ref=e272]:
+                  - generic [ref=e273]:
+                    - img [ref=e275]
+                    - text: info
+                  - paragraph [ref=e278]:
+                    - text: To learn more about the Sign-In Flow, refer to the
+                    - link "User Authentication" [ref=e279] [cursor=pointer]:
+                      - /url: /user-management/authentication/ui-autentication/
+                    - text: documentation.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e280]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e281] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e282]:
+                  - listitem [ref=e283]: Palette Tenant Administrator access.
+                - heading "Enable SSODirect link to Enable SSO" [level=3] [ref=e284]:
+                  - text: Enable SSO
+                  - link "Direct link to Enable SSO" [ref=e285] [cursor=pointer]:
+                    - /url: "#enable-sso-1"
+                    - text: "#"
+                - list [ref=e286]:
+                  - listitem [ref=e287]:
+                    - paragraph [ref=e288]:
+                      - text: Log in to
+                      - link "Palette" [ref=e289] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a Tenant Admin.
+                  - listitem [ref=e290]:
+                    - paragraph [ref=e291]:
+                      - text: Navigate to the left
+                      - strong [ref=e292]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e293]: Tenant Settings
+                      - text: ", and select"
+                      - strong [ref=e294]: SSO
+                      - text: .
+                  - listitem [ref=e295]:
+                    - paragraph [ref=e296]:
+                      - text: Next, click the
+                      - strong [ref=e297]: Auth Providers
+                      - text: tab and toggle the
+                      - strong [ref=e298]: Enable Provider Login
+                      - text: button on.
+                - paragraph [ref=e299]:
+                  - img "The Auth providers tenant settings page with an arrow toward the toggle button." [ref=e300]
+                - list [ref=e301]:
+                  - listitem [ref=e302]: Select one of the supported Social Sign-In providers, and confirm your change.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e303]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e304] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e305]: You can validate SSO is enabled by attempting to log into your Palette tenant through SSO. Select the third-party provider you enabled for SSO.
+                - paragraph [ref=e306]:
+                  - img "Palette&#39;s login view with the SSO providers highlighted." [ref=e307]
+                - heading "Disable SSODirect link to Disable SSO" [level=2] [ref=e308]:
+                  - text: Disable SSO
+                  - link "Direct link to Disable SSO" [ref=e309] [cursor=pointer]:
+                    - /url: "#disable-sso"
+                    - text: "#"
+                - paragraph [ref=e310]: Palette provides the flexibility to disable SSO to restrict this capability. Use the following steps to disable SSO for Palette.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e311]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e312] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e313]:
+                  - listitem [ref=e314]: Palette Tenant Administrator access.
+                - heading "Disable StepsDirect link to Disable Steps" [level=3] [ref=e315]:
+                  - text: Disable Steps
+                  - link "Direct link to Disable Steps" [ref=e316] [cursor=pointer]:
+                    - /url: "#disable-steps"
+                    - text: "#"
+                - list [ref=e317]:
+                  - listitem [ref=e318]:
+                    - paragraph [ref=e319]:
+                      - text: Log in to
+                      - link "Palette" [ref=e320] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a Tenant Admin.
+                  - listitem [ref=e321]:
+                    - paragraph [ref=e322]:
+                      - text: Navigate to the left
+                      - strong [ref=e323]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e324]: Tenant Settings
+                      - text: ", and select"
+                      - strong [ref=e325]: SSO
+                      - text: .
+                  - listitem [ref=e326]:
+                    - paragraph [ref=e327]:
+                      - text: Next, click the
+                      - strong [ref=e328]: Auth Providers
+                      - text: tab and toggle the
+                      - strong [ref=e329]: Enable Provider Login
+                      - text: button off.
+                  - listitem [ref=e330]:
+                    - paragraph [ref=e331]: Log out of Palette.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e332]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e333] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - paragraph [ref=e334]: You can validate SSO is disabled by attempting to log into your Palette tenant through SSO. Any SSO attempts will fail due to SSO being disabled at the tenant level.
+              - generic [ref=e335]:
+                - generic [ref=e337]:
+                  - text: "Tags:"
+                  - list [ref=e338]:
+                    - listitem [ref=e339]:
+                      - link "devx" [ref=e340] [cursor=pointer]:
+                        - /url: /tags/devx/
+                    - listitem [ref=e341]:
+                      - link "app mode" [ref=e342] [cursor=pointer]:
+                        - /url: /tags/app-mode/
+                    - listitem [ref=e343]:
+                      - link "pde" [ref=e344] [cursor=pointer]:
+                        - /url: /tags/pde/
+                - link "Edit this page" [ref=e347] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/devx/manage-dev-engine/sso.md
+                  - img [ref=e348]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e352]:
+              - link "Previous « Dev Engine Registries" [ref=e353] [cursor=pointer]:
+                - /url: /devx/manage-dev-engine/registries/
+                - generic [ref=e354]: Previous
+                - generic [ref=e355]: « Dev Engine Registries
+              - link "Next Services »" [ref=e356] [cursor=pointer]:
+                - /url: /devx/services/
+                - generic [ref=e357]: Next
+                - generic [ref=e358]: Services »
+          - list [ref=e361]:
+            - listitem [ref=e362]:
+              - link "Enable SSO" [ref=e363] [cursor=pointer]:
+                - /url: "#enable-sso"
+              - list [ref=e364]:
+                - listitem [ref=e365]:
+                  - link "Prerequisites" [ref=e366] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e367]:
+                  - link "Enable SSO" [ref=e368] [cursor=pointer]:
+                    - /url: "#enable-sso-1"
+                - listitem [ref=e369]:
+                  - link "Validate" [ref=e370] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e371]:
+              - link "Disable SSO" [ref=e372] [cursor=pointer]:
+                - /url: "#disable-sso"
+              - list [ref=e373]:
+                - listitem [ref=e374]:
+                  - link "Prerequisites" [ref=e375] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e376]:
+                  - link "Disable Steps" [ref=e377] [cursor=pointer]:
+                    - /url: "#disable-steps"
+                - listitem [ref=e378]:
+                  - link "Validate" [ref=e379] [cursor=pointer]:
+                    - /url: "#validate-1"
+  - button "Project Logo Ask AI" [ref=e380] [cursor=pointer]:
+    - generic [ref=e383]:
+      - img "Project Logo" [ref=e384]
+      - paragraph [ref=e385]: Ask AI
+```

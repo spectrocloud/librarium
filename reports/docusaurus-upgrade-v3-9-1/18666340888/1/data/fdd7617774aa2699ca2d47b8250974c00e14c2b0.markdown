@@ -1,0 +1,879 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [expanded] [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+                - list [ref=e107]:
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Public Cloud Clusters" [ref=e110] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e112]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e114] [cursor=pointer]
+                  - listitem [ref=e115]:
+                    - generic [ref=e116]:
+                      - link "Data Center Clusters" [ref=e117] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e119]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e121] [cursor=pointer]
+                  - listitem [ref=e122]:
+                    - generic [ref=e123]:
+                      - link "Edge" [expanded] [ref=e124] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e126]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e128] [cursor=pointer]
+                    - list [ref=e129]:
+                      - listitem [ref=e130]:
+                        - generic [ref=e131]:
+                          - link "Architecture" [ref=e132] [cursor=pointer]:
+                            - /url: /clusters/edge/architecture/
+                          - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e133] [cursor=pointer]
+                      - listitem [ref=e134]:
+                        - link "Hardware Requirements" [ref=e135] [cursor=pointer]:
+                          - /url: /clusters/edge/hardware-requirements/
+                      - listitem [ref=e136]:
+                        - link "Deployment Lifecycle" [ref=e137] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-native-lifecycle/
+                      - listitem [ref=e138]:
+                        - generic [ref=e139]:
+                          - link "Trusted Boot" [ref=e140] [cursor=pointer]:
+                            - /url: /clusters/edge/trusted-boot/
+                          - button "Toggle the collapsible sidebar category 'Trusted Boot'" [ref=e141] [cursor=pointer]
+                      - listitem [ref=e142]:
+                        - generic [ref=e143]:
+                          - link "Install Configuration" [ref=e144] [cursor=pointer]:
+                            - /url: /clusters/edge/edge-configuration/
+                          - button "Toggle the collapsible sidebar category 'Install Configuration'" [ref=e145] [cursor=pointer]
+                      - listitem [ref=e146]:
+                        - generic [ref=e147]:
+                          - link "EdgeForge Workflow" [ref=e148] [cursor=pointer]:
+                            - /url: /clusters/edge/edgeforge-workflow/
+                          - button "Toggle the collapsible sidebar category 'EdgeForge Workflow'" [ref=e149] [cursor=pointer]
+                      - listitem [ref=e150]:
+                        - generic [ref=e151]:
+                          - link "Local UI" [ref=e152] [cursor=pointer]:
+                            - /url: /clusters/edge/local-ui/
+                          - button "Toggle the collapsible sidebar category 'Local UI'" [ref=e153] [cursor=pointer]
+                      - listitem [ref=e154]:
+                        - generic [ref=e155]:
+                          - link "Deployment" [expanded] [ref=e156] [cursor=pointer]:
+                            - /url: /clusters/edge/site-deployment/
+                          - button "Toggle the collapsible sidebar category 'Deployment'" [ref=e157] [cursor=pointer]
+                        - list [ref=e158]:
+                          - listitem [ref=e159]:
+                            - link "Model Edge Native Cluster Profile" [ref=e160] [cursor=pointer]:
+                              - /url: /clusters/edge/site-deployment/model-profile/
+                          - listitem [ref=e161]:
+                            - link "Installation" [ref=e162] [cursor=pointer]:
+                              - /url: /clusters/edge/site-deployment/stage/
+                          - listitem [ref=e163]:
+                            - generic [ref=e164]:
+                              - link "Deploy Edge Hosts On-Site" [ref=e165] [cursor=pointer]:
+                                - /url: /clusters/edge/site-deployment/site-installation/
+                              - button "Toggle the collapsible sidebar category 'Deploy Edge Hosts On-Site'" [ref=e166] [cursor=pointer]
+                          - listitem [ref=e167]:
+                            - generic [ref=e168]:
+                              - link "Deploy Edge Hosts as Virtual Machines" [ref=e169] [cursor=pointer]:
+                                - /url: /clusters/edge/site-deployment/virtual-deployment/
+                              - button "Toggle the collapsible sidebar category 'Deploy Edge Hosts as Virtual Machines'" [ref=e170] [cursor=pointer]
+                          - listitem [ref=e171]:
+                            - link "Edge Host Grid View" [ref=e172] [cursor=pointer]:
+                              - /url: /clusters/edge/site-deployment/edge-host-view/
+                          - listitem [ref=e173]:
+                            - link "Create Cluster Definition" [ref=e174] [cursor=pointer]:
+                              - /url: /clusters/edge/site-deployment/cluster-deployment/
+                          - listitem [ref=e175]:
+                            - generic [ref=e176]:
+                              - link "Deployment with Custom Image Registries" [expanded] [ref=e177] [cursor=pointer]:
+                                - /url: /clusters/edge/site-deployment/deploy-custom-registries/
+                              - button "Toggle the collapsible sidebar category 'Deployment with Custom Image Registries'" [ref=e178] [cursor=pointer]
+                            - list [ref=e179]:
+                              - listitem [ref=e180]:
+                                - link "Deploy Cluster with a Primary Registry" [ref=e181] [cursor=pointer]:
+                                  - /url: /clusters/edge/site-deployment/deploy-custom-registries/deploy-primary-registry/
+                              - listitem [ref=e182]:
+                                - link "Deploy Cluster with a Private External Registry" [ref=e183] [cursor=pointer]:
+                                  - /url: /clusters/edge/site-deployment/deploy-custom-registries/deploy-external-registry/
+                              - listitem [ref=e184]:
+                                - link "Deploy Cluster with a Private Provider Registry" [ref=e185] [cursor=pointer]:
+                                  - /url: /clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry/
+                              - listitem [ref=e186]:
+                                - link "Enable Local Harbor Image Registry" [ref=e187] [cursor=pointer]:
+                                  - /url: /clusters/edge/site-deployment/deploy-custom-registries/local-registry/
+                              - listitem [ref=e188]:
+                                - link "Upload Cluster Images to Registry with the CLI" [ref=e189] [cursor=pointer]:
+                                  - /url: /clusters/edge/site-deployment/deploy-custom-registries/upload-images-to-registry/
+                              - listitem [ref=e190]:
+                                - link "Migrate from Harbor Edge-Native Config Pack" [ref=e191] [cursor=pointer]:
+                                  - /url: /clusters/edge/site-deployment/deploy-custom-registries/migrate-edge-native-config/
+                              - listitem [ref=e192]:
+                                - link "Disable Webhook to Customize Image Pull Behavior" [ref=e193] [cursor=pointer]:
+                                  - /url: /clusters/edge/site-deployment/deploy-custom-registries/webhook-disable/
+                      - listitem [ref=e194]:
+                        - generic [ref=e195]:
+                          - link "Cluster Management" [ref=e196] [cursor=pointer]:
+                            - /url: /clusters/edge/cluster-management/
+                          - button "Toggle the collapsible sidebar category 'Cluster Management'" [ref=e197] [cursor=pointer]
+                      - listitem [ref=e198]:
+                        - generic [ref=e199]:
+                          - link "Networking" [ref=e200] [cursor=pointer]:
+                            - /url: /clusters/edge/networking/
+                          - button "Toggle the collapsible sidebar category 'Networking'" [ref=e201] [cursor=pointer]
+                      - listitem [ref=e202]:
+                        - generic [ref=e203]:
+                          - link "Third Party Integrations" [ref=e204] [cursor=pointer]:
+                            - /url: /clusters/edge/third-party-integrations/
+                          - button "Toggle the collapsible sidebar category 'Third Party Integrations'" [ref=e205] [cursor=pointer]
+                  - listitem [ref=e206]:
+                    - generic [ref=e207]:
+                      - link "Palette Virtual Clusters" [ref=e208] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e210]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e212] [cursor=pointer]
+                  - listitem [ref=e213]:
+                    - generic [ref=e214]:
+                      - link "Imported Clusters" [ref=e215] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e217]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e219] [cursor=pointer]
+                  - listitem [ref=e220]:
+                    - generic [ref=e221]:
+                      - link "Manage Clusters" [ref=e222] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e224]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e226] [cursor=pointer]
+                  - listitem [ref=e227]:
+                    - generic [ref=e228]:
+                      - link "Cluster Groups" [ref=e229] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e231]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e233] [cursor=pointer]
+                  - listitem [ref=e234]:
+                    - generic [ref=e235]:
+                      - link "Private Cloud Gateway" [ref=e236] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e238]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e240] [cursor=pointer]
+              - listitem [ref=e241]:
+                - generic [ref=e242]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e243] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e245]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e247] [cursor=pointer]
+              - listitem [ref=e248]:
+                - generic [ref=e249]:
+                  - link "Palette Dev Engine" [ref=e250] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e252]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e254] [cursor=pointer]
+              - listitem [ref=e255]:
+                - generic [ref=e256]:
+                  - link "Virtual Machine Orchestrator" [ref=e257] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e259]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e261] [cursor=pointer]
+              - listitem [ref=e262]:
+                - generic [ref=e263]:
+                  - link "Workspaces" [ref=e264] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e266]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e268] [cursor=pointer]
+              - listitem [ref=e269]:
+                - generic [ref=e270]:
+                  - link "Packs List" [ref=e271] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e273]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e275] [cursor=pointer]
+              - listitem [ref=e276]:
+                - generic [ref=e277]:
+                  - link "User & Role Management" [ref=e278] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e280]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e282] [cursor=pointer]
+              - listitem [ref=e283]:
+                - generic [ref=e284]:
+                  - link "Registries and Packs" [ref=e285] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e287]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e289] [cursor=pointer]
+              - listitem [ref=e290]:
+                - generic [ref=e291]:
+                  - link "Security" [ref=e292] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e294]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e296] [cursor=pointer]
+              - listitem [ref=e297]:
+                - generic [ref=e298]:
+                  - link "Audit Logs" [ref=e299] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e301]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e303] [cursor=pointer]
+              - listitem [ref=e304]:
+                - generic [ref=e305]:
+                  - link "Self-Hosted Palette" [ref=e306] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e308]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e310] [cursor=pointer]
+              - listitem [ref=e311]:
+                - generic [ref=e312]:
+                  - link "Palette VerteX" [ref=e313] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e315]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e317] [cursor=pointer]
+              - listitem [ref=e318]:
+                - generic [ref=e319]:
+                  - link "Tenant Administration" [ref=e320] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e322]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e324] [cursor=pointer]
+              - listitem [ref=e325]:
+                - generic [ref=e326]:
+                  - link "Automation" [ref=e327] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e329]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e331] [cursor=pointer]
+              - listitem [ref=e332]:
+                - generic [ref=e333]:
+                  - link "Troubleshooting" [ref=e334] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e336]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e338] [cursor=pointer]
+              - listitem [ref=e339]:
+                - link "Glossary" [ref=e340] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e342]
+                  - text: Glossary
+              - listitem [ref=e344]:
+                - generic [ref=e345]:
+                  - link "Compliance & Legal" [ref=e346] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e348]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e350] [cursor=pointer]
+              - listitem [ref=e351]:
+                - button "Privacy Settings" [ref=e352] [cursor=pointer]:
+                  - img [ref=e353]
+                  - text: Privacy Settings
+      - main [ref=e355]:
+        - generic [ref=e357]:
+          - generic [ref=e359]:
+            - article [ref=e360]:
+              - navigation "Breadcrumbs" [ref=e361]:
+                - list [ref=e362]:
+                  - listitem [ref=e363]:
+                    - link "Home page" [ref=e364] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e365]
+                  - listitem [ref=e367]:
+                    - link "Clusters" [ref=e368] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e369]:
+                    - link "Edge" [ref=e370] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                  - listitem [ref=e371]:
+                    - link "Deployment" [ref=e372] [cursor=pointer]:
+                      - /url: /clusters/edge/site-deployment/
+                  - listitem [ref=e373]:
+                    - link "Deployment with Custom Image Registries" [ref=e374] [cursor=pointer]:
+                      - /url: /clusters/edge/site-deployment/deploy-custom-registries/
+                  - listitem [ref=e375]:
+                    - generic [ref=e376]: Disable Webhook to Customize Image Pull Behavior
+              - generic [ref=e377]:
+                - heading "Disable Webhook to Customize Image Pull Behavior" [level=1] [ref=e379]
+                - paragraph [ref=e380]: Palette Edge allows you to deploy clusters to an external registry and use an in-cluster primary registry without manually configuring rewrites. This is possible because the Palette agent uses a webhook to redirect image pulls to the appropriate locations depending on your configuration.
+                - paragraph [ref=e381]: While the webhook makes using an external registry or the primary registry more streamlined, it can limit your flexibility to configure your own image pull behavior. This guide guides you through how to disable the Palette agent webhook and provides an example custom image pull configuration.
+                - heading "What Happens When You Disable the WebhookDirect link to What Happens When You Disable the Webhook" [level=2] [ref=e382]:
+                  - text: What Happens When You Disable the Webhook
+                  - link "Direct link to What Happens When You Disable the Webhook" [ref=e383] [cursor=pointer]:
+                    - /url: "#what-happens-when-you-disable-the-webhook"
+                    - text: "#"
+                - paragraph [ref=e384]:
+                  - text: When the agent webhook is disabled, the Palette agent will not redirect any image pull operation by default. This means that even if you specify an external registry in the
+                  - strong [ref=e385]: user-data
+                  - text: ", the Palette agent will not pull images from that registry unless it is otherwise configured to do so. This also means that the Palette agent will not pull images from the primary registry, even if the images are downloaded and stored in the registry, unless it is otherwise configured to do so. Disabling the webhook removes restrictions, but does place the burden of ensuring that images are pulled from the correct locations on yourself."
+                - paragraph [ref=e386]: You may consider disabling the webhook if you want to configure your cluster to pull images from multiple authenticated registries, or if you do not want the default behavior that forces image pulls to be redirected to the primary registry. Once the webhook is disabled, you can then take advantage of the rewrite features of some Kubernetes distributions such as K3s and RKE2, or other redirect mechanism that you implement on your own to customize the image pull behavior.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e387]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e388] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e389]:
+                  - listitem [ref=e390]:
+                    - paragraph [ref=e391]:
+                      - text: The process to disable webhook is based on the EdgeForge process. We recommend that you familiarize yourself with
+                      - link "EdgeForge" [ref=e392] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/
+                      - text: and the process to build Edge artifacts.
+                  - listitem [ref=e393]:
+                    - paragraph [ref=e394]:
+                      - text: A physical or virtual Linux machine with
+                      - emphasis [ref=e395]: AMD64
+                      - text: (also known as
+                      - emphasis [ref=e396]: x86_64
+                      - text: ) processor architecture to build the Edge artifacts. You can issue the following command in the terminal to check your processor architecture.
+                    - generic [ref=e398]:
+                      - code [ref=e400]:
+                        - generic [ref=e401]: uname -m
+                      - button "Copy code to clipboard" [ref=e403] [cursor=pointer]:
+                        - generic [ref=e404]:
+                          - img [ref=e405]
+                          - img [ref=e407]
+                  - listitem [ref=e409]:
+                    - paragraph [ref=e410]: "Minimum hardware configuration of the Linux machine:"
+                    - list [ref=e411]:
+                      - listitem [ref=e412]: 4 CPU
+                      - listitem [ref=e413]: 8 GB memory
+                      - listitem [ref=e414]: 150 GB storage
+                  - listitem [ref=e415]:
+                    - paragraph [ref=e416]:
+                      - link "Git" [ref=e417] [cursor=pointer]:
+                        - /url: https://git-scm.com/downloads
+                      - text: . You can ensure git installation by issuing the
+                      - code [ref=e418]: git --version
+                      - text: command.
+                  - listitem [ref=e419]:
+                    - paragraph [ref=e420]:
+                      - link "Docker Engine" [ref=e421] [cursor=pointer]:
+                        - /url: https://docs.docker.com/engine/install/
+                      - text: version 18.09.x or later. You can use the
+                      - code [ref=e422]: docker --version
+                      - text: command to view the existing Docker version. You should have root-level or
+                      - code [ref=e423]: sudo
+                      - text: privileges on your Linux machine to create privileged containers.
+                  - listitem [ref=e424]:
+                    - paragraph [ref=e425]:
+                      - text: A
+                      - link "Spectro Cloud" [ref=e426] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: account.
+                - heading "ProcedureDirect link to Procedure" [level=2] [ref=e427]:
+                  - text: Procedure
+                  - link "Direct link to Procedure" [ref=e428] [cursor=pointer]:
+                    - /url: "#procedure"
+                    - text: "#"
+                - heading "Disable WebhookDirect link to Disable Webhook" [level=3] [ref=e429]:
+                  - text: Disable Webhook
+                  - link "Direct link to Disable Webhook" [ref=e430] [cursor=pointer]:
+                    - /url: "#disable-webhook"
+                    - text: "#"
+                - list [ref=e431]:
+                  - listitem [ref=e432]:
+                    - paragraph [ref=e433]:
+                      - text: Clone the
+                      - strong [ref=e434]: CanvOS
+                      - text: repository.
+                    - generic [ref=e436]:
+                      - code [ref=e438]:
+                        - generic [ref=e439]: git clone https://github.com/spectrocloud/CanvOS.git
+                      - button "Copy code to clipboard" [ref=e441] [cursor=pointer]:
+                        - generic [ref=e442]:
+                          - img [ref=e443]
+                          - img [ref=e445]
+                  - listitem [ref=e447]:
+                    - paragraph [ref=e448]:
+                      - text: Change into the
+                      - strong [ref=e449]: CanvOS
+                      - text: directory.
+                    - generic [ref=e451]:
+                      - code [ref=e453]:
+                        - generic [ref=e454]: cd CanvOS
+                      - button "Copy code to clipboard" [ref=e456] [cursor=pointer]:
+                        - generic [ref=e457]:
+                          - img [ref=e458]
+                          - img [ref=e460]
+                  - listitem [ref=e462]:
+                    - paragraph [ref=e463]:
+                      - text: View the available tags and use the latest available tag. This guide uses
+                      - code [ref=e464]: v4.5.0
+                      - text: as an example.
+                    - generic [ref=e466]:
+                      - code [ref=e468]:
+                        - generic [ref=e469]: git tag
+                        - generic [ref=e470]: git checkout v4.5.0
+                      - button "Copy code to clipboard" [ref=e472] [cursor=pointer]:
+                        - generic [ref=e473]:
+                          - img [ref=e474]
+                          - img [ref=e476]
+                  - listitem [ref=e478]:
+                    - paragraph [ref=e479]:
+                      - text: In your
+                      - strong [ref=e480]: user-data
+                      - text: file, set
+                      - code [ref=e481]: stylus.imageRedirectWebhook.enable
+                      - text: to
+                      - code [ref=e482]: "false"
+                      - text: . This parameter defaults to true if you do not explicitly set it to
+                      - code [ref=e483]: "false"
+                      - text: .
+                    - generic [ref=e485]:
+                      - code [ref=e487]:
+                        - generic [ref=e488]: "#cloud-config"
+                        - generic [ref=e489]: "stylus:"
+                        - generic [ref=e490]: "site:"
+                        - generic [ref=e491]: "edgeHostToken: XXXXXXXXXXXXXX"
+                        - generic [ref=e492]: "paletteEndpoint: XXXXXX"
+                        - generic [ref=e493]: "projectUid: XXXXXX"
+                        - generic [ref=e494]: "imageRedirectWebhook:"
+                        - generic [ref=e495]: "enable: false"
+                      - button "Copy code to clipboard" [ref=e497] [cursor=pointer]:
+                        - generic [ref=e498]:
+                          - img [ref=e499]
+                          - img [ref=e501]
+                  - listitem [ref=e503]:
+                    - paragraph [ref=e504]:
+                      - text: Follow the rest of the
+                      - link "Build Edge Artifact" [ref=e505] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/palette-canvos/
+                      - text: guide and build the Installer ISO with the user data configurations. The Edge clusters provisioned with the ISO will no longer automatically redirect image pull requests to the external registry or the local Harbor registry.
+                - heading "Redirect Image PullDirect link to Redirect Image Pull" [level=3] [ref=e506]:
+                  - text: Redirect Image Pull
+                  - link "Direct link to Redirect Image Pull" [ref=e507] [cursor=pointer]:
+                    - /url: "#redirect-image-pull"
+                    - text: "#"
+                - paragraph [ref=e508]: The process to redirect image pulls varies by Kubernetes distribution as well as your registry setup. This section provides an example that shows how you might customize the image pull behavior of your Edge cluster using PXK-E.
+                - list [ref=e509]:
+                  - listitem [ref=e510]:
+                    - paragraph [ref=e511]:
+                      - text: Log in to
+                      - link "Palette" [ref=e512] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e513]:
+                    - paragraph [ref=e514]:
+                      - text: From the left
+                      - strong [ref=e515]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e516]: Profiles
+                      - text: . Click on the profile you use to deploy your Edge cluster.
+                  - listitem [ref=e517]:
+                    - paragraph [ref=e518]:
+                      - text: (PXK-E Only) In the Kubernetes layer of the profile, include the following lines in the
+                      - code [ref=e519]: initramfs
+                      - text: stage to adjust the containerd configuration to supports reading additional files, which you will use to configure the redirect behavior and provide registry credentials.
+                    - generic [ref=e521]:
+                      - code [ref=e523]:
+                        - generic [ref=e524]: "stages:"
+                        - generic [ref=e525]: "initramfs:"
+                        - generic [ref=e526]: "- name: \"Manage containerd config\""
+                        - generic [ref=e527]: "files:"
+                        - generic [ref=e528]: "- path: /etc/containerd/config.toml"
+                        - generic [ref=e529]: "permissions: 0644"
+                        - generic [ref=e530]: "owner: 0"
+                        - generic [ref=e531]: "group: 0"
+                        - generic [ref=e532]: "content: |-"
+                        - generic [ref=e533]: version = 2
+                        - generic [ref=e534]: imports = ["/etc/containerd/conf.d/*.toml"]
+                        - generic [ref=e535]: "[plugins]"
+                        - generic [ref=e536]: "[plugins.\"io.containerd.grpc.v1.cri\"]"
+                        - generic [ref=e537]: sandbox_image = "registry.k8s.io/pause:3.9"
+                        - generic [ref=e538]: enable_unprivileged_ports = true
+                        - generic [ref=e539]: enable_unprivileged_icmp = true
+                        - generic [ref=e540]: "[plugins.\"io.containerd.grpc.v1.cri\".containerd.runtimes.runc]"
+                        - generic [ref=e541]: runtime_type = "io.containerd.runc.v2"
+                        - generic [ref=e542]: "[plugins.\"io.containerd.grpc.v1.cri\".containerd.runtimes.runc.options]"
+                        - generic [ref=e543]: SystemdCgroup = true
+                        - generic [ref=e544]: "[plugins.\"io.containerd.grpc.v1.cri\".registry]"
+                        - generic [ref=e545]: config_path = "/etc/containerd/certs.d"
+                      - generic [ref=e546]:
+                        - button "Toggle word wrap" [ref=e547] [cursor=pointer]:
+                          - img [ref=e548]
+                        - button "Copy code to clipboard" [ref=e550] [cursor=pointer]:
+                          - generic [ref=e551]:
+                            - img [ref=e552]
+                            - img [ref=e554]
+                    - generic [ref=e556]:
+                      - generic [ref=e557]:
+                        - img [ref=e559]
+                        - text: info
+                      - paragraph [ref=e562]:
+                        - text: This configuration change is only needed to PXK-E. Since it changes the
+                        - code [ref=e563]: initramfs
+                        - text: stage, this will require a reboot of the node. If you are using K3s or RKE2, the ability fo read additional files is enabled by default and you don't need to add this configuration.
+                  - listitem [ref=e564]:
+                    - paragraph [ref=e565]:
+                      - text: In the Kubernetes layer of the profile, include the following lines in the reconcile stage. For more information, refer to
+                      - link "Cloud-init Stages" [ref=e566] [cursor=pointer]:
+                        - /url: /clusters/edge/edge-configuration/cloud-init/
+                      - text: . Replace the server address and the host address with your registry and its mirror. Since you are only editing the reconcile stage, this will not result in a reboot or service restart for your cluster.
+                    - paragraph [ref=e567]:
+                      - text: The following example will redirect image pulls for
+                      - code [ref=e568]: https://gcr.io
+                      - text: to
+                      - code [ref=e569]: https://gcr-io-mirror.company.local
+                      - text: .
+                    - generic [ref=e571]:
+                      - code [ref=e573]:
+                        - generic [ref=e574]: "stages:"
+                        - generic [ref=e575]: "reconcile:"
+                        - generic [ref=e576]: "- name: \"Redirect registries\""
+                        - generic [ref=e577]: "files:"
+                        - generic [ref=e578]: "- path: /etc/containerd/certs.d/gcr.io/hosts.toml"
+                        - generic [ref=e579]: "owner: 0"
+                        - generic [ref=e580]: "group: 0"
+                        - generic [ref=e581]: "permissions: 0644"
+                        - generic [ref=e582]: "content: |-"
+                        - generic [ref=e583]: server = "https://gcr.io"
+                        - generic [ref=e584]: "[host.\"https://gcr-io-mirror.company.local\"]"
+                        - generic [ref=e585]: capabilities = ["pull", "resolve"]
+                      - button "Copy code to clipboard" [ref=e587] [cursor=pointer]:
+                        - generic [ref=e588]:
+                          - img [ref=e589]
+                          - img [ref=e591]
+                - heading "Provide Registry CredentialsDirect link to Provide Registry Credentials" [level=3] [ref=e593]:
+                  - text: Provide Registry Credentials
+                  - link "Direct link to Provide Registry Credentials" [ref=e594] [cursor=pointer]:
+                    - /url: "#provide-registry-credentials"
+                    - text: "#"
+                - paragraph [ref=e595]: If you are using public registries that do not require authentication, you can skip this step.
+                - paragraph [ref=e596]:
+                  - text: If your registries require authentication, you will need to provide credentials to enable image pulls. This example uses an open source generic Kubernetes credentials provider to provide the resources. There are other resources that you can take advantage of to provide registry credentials, including using a
+                  - code [ref=e597]: registry.yaml
+                  - text: file in
+                  - link "K3s" [ref=e598] [cursor=pointer]:
+                    - /url: https://docs.k3s.io/installation/private-registry
+                  - text: or
+                  - link "RKE2" [ref=e599] [cursor=pointer]:
+                    - /url: https://docs.rke2.io/install/private_registry
+                  - text: . However, the advantage of the approach used in this example is that after installation, you will not need to restart your cluster services to update the registry paths or the registry credentials.
+                - generic [ref=e600]:
+                  - generic [ref=e601]:
+                    - img [ref=e603]
+                    - text: info
+                  - paragraph [ref=e606]:
+                    - text: Refer to the
+                    - link "generic-credential-provider GitHub repository" [ref=e607] [cursor=pointer]:
+                      - /url: https://github.com/JonTheNiceGuy/generic-credential-provider
+                      - code [ref=e608]: generic-credential-provider
+                      - text: GitHub repository
+                    - text: for the source code for the credential provider on GitHub.
+                - list [ref=e609]:
+                  - listitem [ref=e610]:
+                    - paragraph [ref=e611]:
+                      - text: Install the generic credential provider by including the following lines in either the OS layer or the Kubernetes layer of the cluster profile. This will create the file at
+                      - code [ref=e612]: /usr/local/bin/generic-credential-provider
+                      - text: ", populate the content, and set the file permissions to ensure that it is executable, during the"
+                      - code [ref=e613]: initramfs
+                      - text: stage. Click on the box below to expand the instructions.
+                    - group [ref=e614]:
+                      - generic "Install Credential Provider" [ref=e615] [cursor=pointer]
+                  - listitem [ref=e616]:
+                    - paragraph [ref=e617]:
+                      - text: In the Kubernetes layer of your cluster, add the following lines to the
+                      - code [ref=e618]: kubeadmconfig.KubeletExtraArgs
+                      - text: field. This tells Kubernetes to use the credential provider you installed in the previous step.
+                    - generic [ref=e620]:
+                      - code [ref=e622]:
+                        - generic [ref=e623]: "KubeletExtraArgs:"
+                        - generic [ref=e624]: "cluster:"
+                        - generic [ref=e625]: "config: |"
+                        - generic [ref=e626]: "initConfiguration:"
+                        - generic [ref=e627]: "nodeRegistration:"
+                        - generic [ref=e628]: "KubeletExtraArgs:"
+                        - generic [ref=e629]: "image-credential-provider-bin-dir: /usr/local/bin"
+                        - generic [ref=e630]: "image-credential-provider-config: /opt/kubernetes/generic-credential-provider-config.json"
+                        - generic [ref=e631]: "joinConfiguration:"
+                        - generic [ref=e632]: "discovery: {}"
+                        - generic [ref=e633]: "nodeRegistration:"
+                        - generic [ref=e634]: "KubeletExtraArgs:"
+                        - generic [ref=e635]: "image-credential-provider-bin-dir: /usr/local/bin"
+                        - generic [ref=e636]: "image-credential-provider-config: /opt/kubernetes/generic-credential-provider-config.json"
+                      - generic [ref=e637]:
+                        - button "Toggle word wrap" [ref=e638] [cursor=pointer]:
+                          - img [ref=e639]
+                        - button "Copy code to clipboard" [ref=e641] [cursor=pointer]:
+                          - generic [ref=e642]:
+                            - img [ref=e643]
+                            - img [ref=e645]
+                  - listitem [ref=e647]:
+                    - paragraph [ref=e648]:
+                      - text: In the Kubernetes or OS layer of your cluster profile, use a
+                      - code [ref=e649]: reconcile
+                      - text: stage to define the JSON file with the
+                      - code [ref=e650]: CredentialProviderConfig
+                      - text: for Kubelet. This configuration specifies the registries that will use the credential provider.
+                    - generic [ref=e652]:
+                      - code [ref=e654]:
+                        - generic [ref=e655]: "stages:"
+                        - generic [ref=e656]: "reconcile:"
+                        - generic [ref=e657]: "- name: \"Registry credential management\""
+                        - generic [ref=e658]: "files:"
+                        - generic [ref=e659]: "- path: /opt/kubernetes/generic-credential-provider-config.json"
+                        - generic [ref=e660]: "owner: 0"
+                        - generic [ref=e661]: "group: 0"
+                        - generic [ref=e662]: "permissions: 0644"
+                        - generic [ref=e663]: "content: |-"
+                        - generic [ref=e664]: "{"
+                        - generic [ref=e665]: "\"apiVersion\": \"Kubelet.config.k8s.io/v1\","
+                        - generic [ref=e666]: "\"kind\": \"CredentialProviderConfig\","
+                        - generic [ref=e667]: "\"providers\": ["
+                        - generic [ref=e668]: "{"
+                        - generic [ref=e669]: "\"name\": \"generic-credential-provider\","
+                        - generic [ref=e670]: "\"matchImages\": ["
+                        - generic [ref=e671]: "\"*.io\","
+                        - generic [ref=e672]: "\"*.*.io\""
+                        - generic [ref=e673]: "],"
+                        - generic [ref=e674]: "\"defaultCacheDuration\": \"5m\","
+                        - generic [ref=e675]: "\"apiVersion\": \"credentialprovider.Kubelet.k8s.io/v1\""
+                        - generic [ref=e676]: "}"
+                        - generic [ref=e677]: "]"
+                        - generic [ref=e678]: "}"
+                      - generic [ref=e679]:
+                        - button "Toggle word wrap" [ref=e680] [cursor=pointer]:
+                          - img [ref=e681]
+                        - button "Copy code to clipboard" [ref=e683] [cursor=pointer]:
+                          - generic [ref=e684]:
+                            - img [ref=e685]
+                            - img [ref=e687]
+                    - paragraph [ref=e689]:
+                      - text: Registry URLs that match the patterns in the
+                      - code [ref=e690]: mathImages
+                      - text: field will use this provider for credentials. For example,
+                      - code [ref=e691]: "*.io"
+                      - text: would match
+                      - code [ref=e692]: docker.io
+                      - text: ","
+                      - code [ref=e693]: quay.io
+                      - text: ","
+                      - code [ref=e694]: gcr.io
+                      - text: and
+                      - code [ref=e695]: "*.*.io"
+                      - text: would cover URLs like
+                      - code [ref=e696]: us.gcr.io
+                      - text: . Refer to
+                      - link "Kubernetes documentation" [ref=e697] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/tasks/administer-cluster/Kubelet-credential-provider/#configure-a-Kubelet-credential-provider
+                      - text: about the parameters you can use to configure credential providers for Kubelet.
+                    - generic [ref=e698]:
+                      - generic [ref=e699]:
+                        - img [ref=e701]
+                        - text: tip
+                      - paragraph [ref=e704]: "We suggest that you define a broad pattern, as updating this file requires Kubelet to restart. There are no adverse effects when the pattern matches a registry URL for which there is no defined credentials: the Palette agent will still perform the image pull, but it will not use the credential provider."
+                  - listitem [ref=e705]:
+                    - paragraph [ref=e706]:
+                      - text: With the credential provider installed and configured, you can now provide your registry credentials. Similar to other configurations, you will also perform this step during the
+                      - code [ref=e707]: reconcile
+                      - text: stage. Add the following lines to your cluster profile in the OS or the Kubernetes layer. Replace
+                      - code [ref=e708]: <registry-url>
+                      - text: with the URL of your image registry. Replace the username and password fields with your credentials.
+                    - generic [ref=e710]:
+                      - code [ref=e712]:
+                        - generic [ref=e713]: "stages:"
+                        - generic [ref=e714]: "reconcile:"
+                        - generic [ref=e715]: "- name: \"Registry credential management\""
+                        - generic [ref=e716]: "files:"
+                        - generic [ref=e717]: "- path: /etc/kubernetes/registries/<registry-url>.json"
+                        - generic [ref=e718]: "owner: 0"
+                        - generic [ref=e719]: "group: 0"
+                        - generic [ref=e720]: "permissions: 0644"
+                        - generic [ref=e721]: "content: |-"
+                        - generic [ref=e722]: "{"
+                        - generic [ref=e723]: "\"username\": \"proxy-access\","
+                        - generic [ref=e724]: "\"password\": \"*****\","
+                        - generic [ref=e725]: "\"duration\": \"0h5m0s\""
+                        - generic [ref=e726]: "}"
+                      - button "Copy code to clipboard" [ref=e728] [cursor=pointer]:
+                        - generic [ref=e729]:
+                          - img [ref=e730]
+                          - img [ref=e732]
+                    - generic [ref=e734]:
+                      - generic [ref=e735]:
+                        - img [ref=e737]
+                        - text: warning
+                      - paragraph [ref=e740]:
+                        - text: Avoid entering sensitive information like passwords directly into your cluster profile in plain text. Instead, you can either use a
+                        - link "cluster profile variable" [ref=e741] [cursor=pointer]:
+                          - /url: /profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/
+                        - text: or a
+                        - link "macro" [ref=e742] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/macros/
+                        - text: .
+                    - paragraph [ref=e743]:
+                      - text: The script will lookup the JSON file by registry naming and allows partial matches. For example,
+                      - code [ref=e744]: gcr.io.json
+                      - text: would match
+                      - code [ref=e745]: gcr.io
+                      - text: as well as
+                      - code [ref=e746]: us.gcr.io
+                      - text: ", and those image pulls to those registries will use the credentials your provided."
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e747]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e748] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e749]:
+                  - listitem [ref=e750]:
+                    - paragraph [ref=e751]:
+                      - text: Use the ISO to install Palette Edge on an Edge host. For more information, refer to
+                      - link "Installation" [ref=e752] [cursor=pointer]:
+                        - /url: /clusters/edge/site-deployment/site-installation/
+                      - text: .
+                  - listitem [ref=e753]:
+                    - paragraph [ref=e754]: Create a cluster profile that references the image registries you configured.
+                  - listitem [ref=e755]:
+                    - paragraph [ref=e756]: Deploy a cluster with the cluster profile. Confirm that the cluster is able to download the necessary images.
+              - generic [ref=e757]:
+                - generic [ref=e759]:
+                  - text: "Tags:"
+                  - list [ref=e760]:
+                    - listitem [ref=e761]:
+                      - link "edge" [ref=e762] [cursor=pointer]:
+                        - /url: /tags/edge/
+                - link "Edit this page" [ref=e765] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/edge/site-deployment/deploy-custom-registries/webhook-disable.md
+                  - img [ref=e766]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e770]:
+              - link "Previous « Migrate from Harbor Edge-Native Config Pack" [ref=e771] [cursor=pointer]:
+                - /url: /clusters/edge/site-deployment/deploy-custom-registries/migrate-edge-native-config/
+                - generic [ref=e772]: Previous
+                - generic [ref=e773]: « Migrate from Harbor Edge-Native Config Pack
+              - link "Next Cluster Management »" [ref=e774] [cursor=pointer]:
+                - /url: /clusters/edge/cluster-management/
+                - generic [ref=e775]: Next
+                - generic [ref=e776]: Cluster Management »
+          - list [ref=e779]:
+            - listitem [ref=e780]:
+              - link "What Happens When You Disable the Webhook" [ref=e781] [cursor=pointer]:
+                - /url: "#what-happens-when-you-disable-the-webhook"
+            - listitem [ref=e782]:
+              - link "Prerequisites" [ref=e783] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e784]:
+              - link "Procedure" [ref=e785] [cursor=pointer]:
+                - /url: "#procedure"
+              - list [ref=e786]:
+                - listitem [ref=e787]:
+                  - link "Disable Webhook" [ref=e788] [cursor=pointer]:
+                    - /url: "#disable-webhook"
+                - listitem [ref=e789]:
+                  - link "Redirect Image Pull" [ref=e790] [cursor=pointer]:
+                    - /url: "#redirect-image-pull"
+                - listitem [ref=e791]:
+                  - link "Provide Registry Credentials" [ref=e792] [cursor=pointer]:
+                    - /url: "#provide-registry-credentials"
+            - listitem [ref=e793]:
+              - link "Validate" [ref=e794] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e795] [cursor=pointer]:
+    - generic [ref=e798]:
+      - img "Project Logo" [ref=e799]
+      - paragraph [ref=e800]: Ask AI
+```

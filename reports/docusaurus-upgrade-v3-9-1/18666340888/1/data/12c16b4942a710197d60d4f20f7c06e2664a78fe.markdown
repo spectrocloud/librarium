@@ -1,0 +1,376 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Introduction" [ref=e41] [cursor=pointer]:
+                  - /url: /api/introduction/
+                  - img [ref=e43]
+                  - text: Introduction
+              - listitem [ref=e45]:
+                - link "Example Usage" [ref=e46] [cursor=pointer]:
+                  - /url: /api/samples/
+              - listitem [ref=e47]:
+                - link "Postman Collection" [ref=e48] [cursor=pointer]:
+                  - /url: /api/postman-collection/
+              - listitem [ref=e49]:
+                - generic [ref=e50]:
+                  - link "Palette API V1" [expanded] [ref=e51] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Palette API V1'" [ref=e52] [cursor=pointer]
+                - list [ref=e53]:
+                  - listitem [ref=e54]:
+                    - link "Introduction" [ref=e55] [cursor=pointer]:
+                      - /url: /api/v1/palette-apis-4-7/
+                  - listitem [ref=e56]:
+                    - generic [ref=e57]:
+                      - link "Api Keys" [ref=e58] [cursor=pointer]:
+                        - /url: /api/v1/api-keys/
+                      - button "Toggle the collapsible sidebar category 'Api Keys'" [ref=e59] [cursor=pointer]
+                  - listitem [ref=e60]:
+                    - generic [ref=e61]:
+                      - link "App Deployments" [ref=e62] [cursor=pointer]:
+                        - /url: /api/v1/app-deployments/
+                      - button "Toggle the collapsible sidebar category 'App Deployments'" [ref=e63] [cursor=pointer]
+                  - listitem [ref=e64]:
+                    - generic [ref=e65]:
+                      - link "App Profiles" [ref=e66] [cursor=pointer]:
+                        - /url: /api/v1/app-profiles/
+                      - button "Toggle the collapsible sidebar category 'App Profiles'" [ref=e67] [cursor=pointer]
+                  - listitem [ref=e68]:
+                    - generic [ref=e69]:
+                      - link "Audits" [ref=e70] [cursor=pointer]:
+                        - /url: /api/v1/audits/
+                      - button "Toggle the collapsible sidebar category 'Audits'" [ref=e71] [cursor=pointer]
+                  - listitem [ref=e72]:
+                    - generic [ref=e73]:
+                      - link "Auth" [ref=e74] [cursor=pointer]:
+                        - /url: /api/v1/auth/
+                      - button "Toggle the collapsible sidebar category 'Auth'" [ref=e75] [cursor=pointer]
+                  - listitem [ref=e76]:
+                    - generic [ref=e77]:
+                      - link "Cloudaccounts" [ref=e78] [cursor=pointer]:
+                        - /url: /api/v1/cloudaccounts/
+                      - button "Toggle the collapsible sidebar category 'Cloudaccounts'" [ref=e79] [cursor=pointer]
+                  - listitem [ref=e80]:
+                    - generic [ref=e81]:
+                      - link "Cloudconfigs" [ref=e82] [cursor=pointer]:
+                        - /url: /api/v1/cloudconfigs/
+                      - button "Toggle the collapsible sidebar category 'Cloudconfigs'" [ref=e83] [cursor=pointer]
+                  - listitem [ref=e84]:
+                    - generic [ref=e85]:
+                      - link "Clouds" [ref=e86] [cursor=pointer]:
+                        - /url: /api/v1/clouds/
+                      - button "Toggle the collapsible sidebar category 'Clouds'" [ref=e87] [cursor=pointer]
+                  - listitem [ref=e88]:
+                    - generic [ref=e89]:
+                      - link "Cluster Templates" [ref=e90] [cursor=pointer]:
+                        - /url: /api/v1/cluster-templates/
+                      - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+                  - listitem [ref=e92]:
+                    - generic [ref=e93]:
+                      - link "Clustergroups" [ref=e94] [cursor=pointer]:
+                        - /url: /api/v1/clustergroups/
+                      - button "Toggle the collapsible sidebar category 'Clustergroups'" [ref=e95] [cursor=pointer]
+                  - listitem [ref=e96]:
+                    - generic [ref=e97]:
+                      - link "Clusterprofiles" [ref=e98] [cursor=pointer]:
+                        - /url: /api/v1/clusterprofiles/
+                      - button "Toggle the collapsible sidebar category 'Clusterprofiles'" [ref=e99] [cursor=pointer]
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Dashboard" [ref=e102] [cursor=pointer]:
+                        - /url: /api/v1/dashboard/
+                      - button "Toggle the collapsible sidebar category 'Dashboard'" [ref=e103] [cursor=pointer]
+                  - listitem [ref=e104]:
+                    - generic [ref=e105]:
+                      - link "Datasinks" [ref=e106] [cursor=pointer]:
+                        - /url: /api/v1/datasinks/
+                      - button "Toggle the collapsible sidebar category 'Datasinks'" [ref=e107] [cursor=pointer]
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Edgehosts" [ref=e110] [cursor=pointer]:
+                        - /url: /api/v1/edgehosts/
+                      - button "Toggle the collapsible sidebar category 'Edgehosts'" [ref=e111] [cursor=pointer]
+                  - listitem [ref=e112]:
+                    - generic [ref=e113]:
+                      - link "Events" [ref=e114] [cursor=pointer]:
+                        - /url: /api/v1/events/
+                      - button "Toggle the collapsible sidebar category 'Events'" [ref=e115] [cursor=pointer]
+                  - listitem [ref=e116]:
+                    - generic [ref=e117]:
+                      - link "Features" [ref=e118] [cursor=pointer]:
+                        - /url: /api/v1/features/
+                      - button "Toggle the collapsible sidebar category 'Features'" [ref=e119] [cursor=pointer]
+                  - listitem [ref=e120]:
+                    - generic [ref=e121]:
+                      - link "Filters" [ref=e122] [cursor=pointer]:
+                        - /url: /api/v1/filters/
+                      - button "Toggle the collapsible sidebar category 'Filters'" [ref=e123] [cursor=pointer]
+                  - listitem [ref=e124]:
+                    - generic [ref=e125]:
+                      - link "Metrics" [ref=e126] [cursor=pointer]:
+                        - /url: /api/v1/metrics/
+                      - button "Toggle the collapsible sidebar category 'Metrics'" [ref=e127] [cursor=pointer]
+                  - listitem [ref=e128]:
+                    - generic [ref=e129]:
+                      - link "Notifications" [ref=e130] [cursor=pointer]:
+                        - /url: /api/v1/notifications/
+                      - button "Toggle the collapsible sidebar category 'Notifications'" [ref=e131] [cursor=pointer]
+                  - listitem [ref=e132]:
+                    - generic [ref=e133]:
+                      - link "Overlords" [ref=e134] [cursor=pointer]:
+                        - /url: /api/v1/overlords/
+                      - button "Toggle the collapsible sidebar category 'Overlords'" [ref=e135] [cursor=pointer]
+                  - listitem [ref=e136]:
+                    - generic [ref=e137]:
+                      - link "Packs" [ref=e138] [cursor=pointer]:
+                        - /url: /api/v1/packs/
+                      - button "Toggle the collapsible sidebar category 'Packs'" [ref=e139] [cursor=pointer]
+                  - listitem [ref=e140]:
+                    - generic [ref=e141]:
+                      - link "Pcg" [ref=e142] [cursor=pointer]:
+                        - /url: /api/v1/pcg/
+                      - button "Toggle the collapsible sidebar category 'Pcg'" [ref=e143] [cursor=pointer]
+                  - listitem [ref=e144]:
+                    - generic [ref=e145]:
+                      - link "Permissions" [ref=e146] [cursor=pointer]:
+                        - /url: /api/v1/permissions/
+                      - button "Toggle the collapsible sidebar category 'Permissions'" [ref=e147] [cursor=pointer]
+                  - listitem [ref=e148]:
+                    - generic [ref=e149]:
+                      - link "Projects" [ref=e150] [cursor=pointer]:
+                        - /url: /api/v1/projects/
+                      - button "Toggle the collapsible sidebar category 'Projects'" [ref=e151] [cursor=pointer]
+                  - listitem [ref=e152]:
+                    - generic [ref=e153]:
+                      - link "Registries" [ref=e154] [cursor=pointer]:
+                        - /url: /api/v1/registries/
+                      - button "Toggle the collapsible sidebar category 'Registries'" [ref=e155] [cursor=pointer]
+                  - listitem [ref=e156]:
+                    - generic [ref=e157]:
+                      - link "Roles" [ref=e158] [cursor=pointer]:
+                        - /url: /api/v1/roles/
+                      - button "Toggle the collapsible sidebar category 'Roles'" [ref=e159] [cursor=pointer]
+                  - listitem [ref=e160]:
+                    - generic [ref=e161]:
+                      - link "Services" [ref=e162] [cursor=pointer]:
+                        - /url: /api/v1/services/
+                      - button "Toggle the collapsible sidebar category 'Services'" [ref=e163] [cursor=pointer]
+                  - listitem [ref=e164]:
+                    - generic [ref=e165]:
+                      - link "Spc Policies" [expanded] [ref=e166] [cursor=pointer]:
+                        - /url: /api/v1/spc-policies/
+                      - button "Toggle the collapsible sidebar category 'Spc Policies'" [ref=e167] [cursor=pointer]
+                    - list [ref=e168]:
+                      - listitem [ref=e169]:
+                        - link "post Create a new maintenance policy" [ref=e170] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spc-policies-maintenance-create/
+                      - listitem [ref=e171]:
+                        - link "get Returns the specified maintenance policy" [ref=e172] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spc-policies-maintenance-uid-get/
+                      - listitem [ref=e173]:
+                        - link "put Updates the specified maintenance policy" [ref=e174] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spc-policies-maintenance-uid-update/
+                      - listitem [ref=e175]:
+                        - link "get Retrieves a list of spc policy tags" [ref=e176] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spc-policies-tags-get/
+                      - listitem [ref=e177]:
+                        - link "get Validates the spc policy name" [ref=e178] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spc-policies-validate-name/
+                      - listitem [ref=e179]:
+                        - link "del Delete a policy by uid" [ref=e180] [cursor=pointer]:
+                          - /url: /api/v1/v-1-spc-policies-uid-delete/
+                  - listitem [ref=e181]:
+                    - generic [ref=e182]:
+                      - link "Spectroclusters" [ref=e183] [cursor=pointer]:
+                        - /url: /api/v1/spectroclusters/
+                      - button "Toggle the collapsible sidebar category 'Spectroclusters'" [ref=e184] [cursor=pointer]
+                  - listitem [ref=e185]:
+                    - generic [ref=e186]:
+                      - link "System" [ref=e187] [cursor=pointer]:
+                        - /url: /api/v1/system/
+                      - button "Toggle the collapsible sidebar category 'System'" [ref=e188] [cursor=pointer]
+                  - listitem [ref=e189]:
+                    - generic [ref=e190]:
+                      - link "Teams" [ref=e191] [cursor=pointer]:
+                        - /url: /api/v1/teams/
+                      - button "Toggle the collapsible sidebar category 'Teams'" [ref=e192] [cursor=pointer]
+                  - listitem [ref=e193]:
+                    - generic [ref=e194]:
+                      - link "Tenants" [ref=e195] [cursor=pointer]:
+                        - /url: /api/v1/tenants/
+                      - button "Toggle the collapsible sidebar category 'Tenants'" [ref=e196] [cursor=pointer]
+                  - listitem [ref=e197]:
+                    - generic [ref=e198]:
+                      - link "Users" [ref=e199] [cursor=pointer]:
+                        - /url: /api/v1/users/
+                      - button "Toggle the collapsible sidebar category 'Users'" [ref=e200] [cursor=pointer]
+                  - listitem [ref=e201]:
+                    - generic [ref=e202]:
+                      - link "Workspaces" [ref=e203] [cursor=pointer]:
+                        - /url: /api/v1/workspaces/
+                      - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e204] [cursor=pointer]
+              - listitem [ref=e205]:
+                - generic [ref=e206]:
+                  - link "Edge Management API V1" [ref=e207] [cursor=pointer]:
+                    - /url: /api/category/edge-management-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Edge Management API V1'" [ref=e208] [cursor=pointer]
+      - main [ref=e209]:
+        - generic [ref=e213]:
+          - article [ref=e214]:
+            - navigation "Breadcrumbs" [ref=e215]:
+              - list [ref=e216]:
+                - listitem [ref=e217]:
+                  - link "Home page" [ref=e218] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e219]
+                - listitem [ref=e221]:
+                  - link "Palette API V1" [ref=e222] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                - listitem [ref=e223]:
+                  - link "Spc Policies" [ref=e224] [cursor=pointer]:
+                    - /url: /api/v1/spc-policies/
+                - listitem [ref=e225]:
+                  - generic [ref=e226]: Validates the spc policy name
+            - generic [ref=e228]:
+              - generic [ref=e229]:
+                - heading "Validates the spc policy name" [level=1] [ref=e230]
+                - generic [ref=e231]:
+                  - generic [ref=e232]: GET
+                  - heading "https://api.spectrocloud.com/v1/spcPolicies/:policyType/validate/name" [level=2] [ref=e233]
+                - paragraph [ref=e235]: Validates the spc policy name
+                - heading "RequestDirect link to Request" [level=2] [ref=e236]:
+                  - text: Request
+                  - link "Direct link to Request" [ref=e237] [cursor=pointer]:
+                    - /url: "#request"
+                    - text: "#"
+                - group [ref=e238]:
+                  - generic "Path Parameters" [ref=e239] [cursor=pointer]:
+                    - heading "Path Parameters" [level=3] [ref=e240]
+                  - list [ref=e243]:
+                    - generic [ref=e244]:
+                      - generic [ref=e245]:
+                        - strong [ref=e246]: policyType
+                        - generic [ref=e247]: string
+                        - generic [ref=e249]: required
+                      - paragraph [ref=e250]: Spc policy type
+                - group [ref=e251]:
+                  - generic "Query Parameters" [ref=e252] [cursor=pointer]:
+                    - heading "Query Parameters" [level=3] [ref=e253]
+                  - list [ref=e256]:
+                    - generic [ref=e257]:
+                      - generic [ref=e258]:
+                        - strong [ref=e259]: name
+                        - generic [ref=e260]: string
+                      - paragraph [ref=e261]: Spc policy name
+                - group [ref=e262]:
+                  - generic "Header Parameters" [ref=e263] [cursor=pointer]:
+                    - heading "Header Parameters" [level=3] [ref=e264]
+                  - list [ref=e267]:
+                    - generic [ref=e268]:
+                      - generic [ref=e269]:
+                        - strong [ref=e270]: ProjectUid
+                        - generic [ref=e271]: string
+                      - paragraph [ref=e272]: A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources
+                - generic [ref=e273]:
+                  - generic [ref=e274]:
+                    - heading "ResponsesDirect link to Responses" [level=2] [ref=e275]:
+                      - text: Responses
+                      - link "Direct link to Responses" [ref=e276] [cursor=pointer]:
+                        - /url: "#responses"
+                        - text: "#"
+                    - tablist [ref=e278]:
+                      - tab "204" [selected] [ref=e279] [cursor=pointer]
+                  - tabpanel [ref=e281]:
+                    - paragraph [ref=e284]: Ok response without content
+                    - group [ref=e285]:
+                      - generic "Response Headers" [ref=e286] [cursor=pointer]:
+                        - strong [ref=e287]: Response Headers
+              - generic [ref=e288]:
+                - group [ref=e289]:
+                  - 'generic "Authorization: ApiKey" [ref=e290]':
+                    - 'heading "Authorization: ApiKey" [level=4] [ref=e291]'
+                - generic [ref=e292]:
+                  - tablist [ref=e293]:
+                    - tab "curl" [selected] [ref=e294] [cursor=pointer]:
+                      - generic [ref=e295]: curl
+                    - tab "python" [ref=e296] [cursor=pointer]:
+                      - generic [ref=e297]: python
+                    - tab "go" [ref=e298] [cursor=pointer]:
+                      - generic [ref=e299]: go
+                    - tab "nodejs" [ref=e300] [cursor=pointer]:
+                      - generic [ref=e301]: nodejs
+                    - tab "java" [ref=e302] [cursor=pointer]:
+                      - generic [ref=e303]: java
+                  - tabpanel [ref=e304]:
+                    - generic [ref=e305]:
+                      - tablist [ref=e306]:
+                        - tab "CURL" [selected] [ref=e307] [cursor=pointer]:
+                          - generic [ref=e308]: CURL
+                      - tabpanel [ref=e309]:
+                        - generic [ref=e311]:
+                          - code [ref=e313]:
+                            - generic [ref=e316]: curl -L 'https://api.spectrocloud.com/v1/spcPolicies/:policyType/validate/name' \
+                            - generic [ref=e319]: "-H 'ApiKey: <ApiKey>'"
+                          - generic [ref=e320]:
+                            - button "Toggle word wrap" [ref=e321] [cursor=pointer]:
+                              - img [ref=e322]
+                            - button "Copy code to clipboard" [ref=e324] [cursor=pointer]:
+                              - generic [ref=e325]:
+                                - img [ref=e326]
+                                - img [ref=e328]
+                            - button "Expand code to fullscreen" [ref=e330] [cursor=pointer]:
+                              - generic [ref=e331]:
+                                - img [ref=e332]
+                                - img [ref=e334]
+          - navigation "Docs pages" [ref=e338]:
+            - link "Previous « Retrieves a list of spc policy tags" [ref=e339] [cursor=pointer]:
+              - /url: /api/v1/v-1-spc-policies-tags-get/
+              - generic [ref=e340]: Previous
+              - generic [ref=e341]: « Retrieves a list of spc policy tags
+            - link "Next Delete a policy by uid »" [ref=e342] [cursor=pointer]:
+              - /url: /api/v1/v-1-spc-policies-uid-delete/
+              - generic [ref=e343]: Next
+              - generic [ref=e344]: Delete a policy by uid »
+  - button "Project Logo Ask AI" [ref=e345] [cursor=pointer]:
+    - generic [ref=e348]:
+      - img "Project Logo" [ref=e349]
+      - paragraph [ref=e350]: Ask AI
+```

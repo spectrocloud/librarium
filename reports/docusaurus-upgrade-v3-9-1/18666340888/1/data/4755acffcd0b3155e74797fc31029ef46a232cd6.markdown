@@ -1,0 +1,273 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Palette Tutorials" [ref=e41] [cursor=pointer]:
+                  - /url: /tutorials/
+                  - img [ref=e43]
+                  - text: Palette Tutorials
+              - listitem [ref=e45]:
+                - generic [ref=e46]:
+                  - link "Getting Started" [expanded] [ref=e47] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/
+                    - img [ref=e49]
+                    - text: Getting Started
+                  - button "Toggle the collapsible sidebar category 'Getting Started'" [ref=e51] [cursor=pointer]
+                - list [ref=e52]:
+                  - listitem [ref=e53]:
+                    - generic [ref=e54]:
+                      - link "Palette" [expanded] [ref=e55] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette/
+                      - button "Toggle the collapsible sidebar category 'Palette'" [ref=e56] [cursor=pointer]
+                    - list [ref=e57]:
+                      - listitem [ref=e58]:
+                        - link "Introduction to Palette" [ref=e59] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette/introduction-palette/
+                      - listitem [ref=e60]:
+                        - generic [ref=e61]:
+                          - link "Deploy a Cluster to AWS" [ref=e62] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/aws/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to AWS'" [ref=e63] [cursor=pointer]
+                      - listitem [ref=e64]:
+                        - generic [ref=e65]:
+                          - link "Deploy a Cluster to Azure" [ref=e66] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/azure/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to Azure'" [ref=e67] [cursor=pointer]
+                      - listitem [ref=e68]:
+                        - generic [ref=e69]:
+                          - link "Deploy a Cluster to GCP" [ref=e70] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/gcp/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to GCP'" [ref=e71] [cursor=pointer]
+                      - listitem [ref=e72]:
+                        - generic [ref=e73]:
+                          - link "Deploy a Cluster to VMware" [ref=e74] [cursor=pointer]:
+                            - /url: /tutorials/getting-started/palette/vmware/
+                          - button "Toggle the collapsible sidebar category 'Deploy a Cluster to VMware'" [ref=e75] [cursor=pointer]
+                  - listitem [ref=e76]:
+                    - generic [ref=e77]:
+                      - link "Palette Edge" [ref=e78] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette-edge/
+                      - button "Toggle the collapsible sidebar category 'Palette Edge'" [ref=e79] [cursor=pointer]
+                  - listitem [ref=e80]:
+                    - generic [ref=e81]:
+                      - link "Additional Capabilities" [ref=e82] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/additional-capabilities/
+                      - button "Toggle the collapsible sidebar category 'Additional Capabilities'" [ref=e83] [cursor=pointer]
+              - listitem [ref=e84]:
+                - generic [ref=e85]:
+                  - link "Packs and Registries" [ref=e86] [cursor=pointer]:
+                    - /url: /tutorials/packs-registries/
+                    - img [ref=e88]
+                    - text: Packs and Registries
+                  - button "Toggle the collapsible sidebar category 'Packs and Registries'" [ref=e90] [cursor=pointer]
+              - listitem [ref=e91]:
+                - generic [ref=e92]:
+                  - link "Profiles" [ref=e93] [cursor=pointer]:
+                    - /url: /tutorials/profiles/
+                    - img [ref=e95]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e99] [cursor=pointer]
+              - listitem [ref=e100]:
+                - generic [ref=e101]:
+                  - link "Clusters" [ref=e102] [cursor=pointer]:
+                    - /url: /tutorials/clusters/
+                    - img [ref=e104]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e110] [cursor=pointer]
+              - listitem [ref=e111]:
+                - generic [ref=e112]:
+                  - link "Palette Dev Engine" [ref=e113] [cursor=pointer]:
+                    - /url: /tutorials/pde/
+                    - img [ref=e115]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e117] [cursor=pointer]
+              - listitem [ref=e118]:
+                - button "Privacy Settings" [ref=e119] [cursor=pointer]
+      - main [ref=e120]:
+        - generic [ref=e122]:
+          - generic [ref=e124]:
+            - article [ref=e125]:
+              - navigation "Breadcrumbs" [ref=e126]:
+                - list [ref=e127]:
+                  - listitem [ref=e128]:
+                    - link "Home page" [ref=e129] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e130]
+                  - listitem [ref=e132]:
+                    - link "Getting Started" [ref=e133] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/
+                  - listitem [ref=e134]:
+                    - link "Palette" [ref=e135] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette/
+                  - listitem [ref=e136]:
+                    - generic [ref=e137]: Introduction to Palette
+              - generic [ref=e138]:
+                - heading "Introduction to Palette" [level=1] [ref=e140]
+                - paragraph [ref=e141]: Palette is a complete and integrated platform that enables organizations to effectively manage the entire lifecycle of any combination of new or existing Kubernetes environments, whether in a data center or the cloud.
+                - paragraph [ref=e142]: With a unique approach to managing multiple clusters, Palette gives IT teams complete control, visibility, and production-scale efficiencies to provide developers with highly curated Kubernetes stacks and tools based on their specific needs, with granular governance and enterprise-grade security.
+                - paragraph [ref=e143]:
+                  - img "Palette product high level overview eager-load" [ref=e144]
+                - heading "Supported EnvironmentsDirect link to Supported Environments" [level=2] [ref=e145]:
+                  - text: Supported Environments
+                  - link "Direct link to Supported Environments" [ref=e146] [cursor=pointer]:
+                    - /url: "#supported-environments"
+                    - text: "#"
+                - paragraph [ref=e147]: "Palette has the richest coverage in supported environments that includes:"
+                - list [ref=e148]:
+                  - listitem [ref=e149]:
+                    - strong [ref=e150]: Public Clouds
+                    - text: ": AWS, Azure, and Google Cloud. Palette supports both IaaS and managed Kubernetes services, such as AWS EKS, Azure AKS, and Google GKE."
+                  - listitem [ref=e151]:
+                    - strong [ref=e152]: Data Centers
+                    - text: ": VMware, Nutanix, and OpenStack"
+                  - listitem [ref=e153]:
+                    - strong [ref=e154]: Bare Metal
+                    - text: ": Canonical MAAS"
+                  - listitem [ref=e155]:
+                    - strong [ref=e156]: Edge
+                - paragraph [ref=e157]:
+                  - text: The Palette Getting Started section covers deployment flows for clusters hosted in
+                  - link "AWS" [ref=e158] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/aws/
+                  - text: ","
+                  - link "Azure" [ref=e159] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/azure/
+                  - text: ","
+                  - link "Google Cloud" [ref=e160] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/gcp/
+                  - text: and
+                  - link "VMware vSphere" [ref=e161] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette/vmware/
+                  - text: .
+                - heading "Cluster ProfilesDirect link to Cluster Profiles" [level=2] [ref=e162]:
+                  - text: Cluster Profiles
+                  - link "Direct link to Cluster Profiles" [ref=e163] [cursor=pointer]:
+                    - /url: "#cluster-profiles"
+                    - text: "#"
+                - paragraph [ref=e164]: Cluster profiles are the declarative, full-stack models that Palette follows when it provisions, scales, and maintains your clusters. Cluster profiles are composed of layers using packs, Helm charts, Zarf packages, or cluster manifests to meet specific types of workloads on your Palette cluster deployments. You can create as many profiles as needed for your workloads.
+                - paragraph [ref=e165]: Cluster profiles provide you with a repeatable deployment process for all of your development and production environments. They also give you visibility on the layers, packages and versions present on your deployed clusters.
+                - paragraph [ref=e166]: Finally, if you want to update or maintain your deployed workloads, cluster profiles give you the flexibility to make changes to all clusters deployed with the profile by removing, swapping or adding a new layer. Palette will then reconcile the current state of your workloads with the desired state specified by the profile.
+                - paragraph [ref=e167]: "Below are cluster profile types you can create:"
+                - list [ref=e168]:
+                  - listitem [ref=e169]:
+                    - paragraph [ref=e170]:
+                      - emphasis [ref=e171]: Infrastructure
+                      - text: profiles provide the essential components for workload cluster deployments within a
+                      - link "tenant" [ref=e172] [cursor=pointer]:
+                        - /url: /glossary-all/#tenant
+                      - text: ": Operating System (OS), Kubernetes, Network, and Storage."
+                  - listitem [ref=e173]:
+                    - paragraph [ref=e174]:
+                      - emphasis [ref=e175]: Add-on
+                      - text: profiles are exclusively composed of add-on layers. They usually do not contain infrastructure components and are instead designed for reusability across multiple clusters and multiple projects within a tenant.
+                  - listitem [ref=e176]:
+                    - paragraph [ref=e177]:
+                      - emphasis [ref=e178]: Full profiles
+                      - text: combine infrastructure packs with add-on layers. By adding layers, you can enhance cluster functionality. For example, you might add system apps, authentication, monitoring, ingress, load balancers, and more to your cluster.
+                - heading "PacksDirect link to Packs" [level=2] [ref=e179]:
+                  - text: Packs
+                  - link "Direct link to Packs" [ref=e180] [cursor=pointer]:
+                    - /url: "#packs"
+                    - text: "#"
+                - paragraph [ref=e181]:
+                  - text: Packs are the smallest component of a cluster profile. Each layer of a cluster profile is made up of a specific pack. Palette provides packs that are tailored for specific uses to support the core infrastructure a cluster needs. You can also use add-on packs or create your own custom pack to extend Kubernetes functionality. Check out the
+                  - link "Packs List" [ref=e182] [cursor=pointer]:
+                    - /url: /integrations/
+                  - text: page to learn more about individual packs.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e183]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e184] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e185]: "On this page, you became familiar with Palette, its core concepts, and the supported environments. Choose your preferred infrastructure provider from the following list to start exploring Palette:"
+                - list [ref=e186]:
+                  - listitem [ref=e187]:
+                    - link "Deploy a Cluster to Amazon Web Services (AWS)" [ref=e188] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette/aws/
+                  - listitem [ref=e189]:
+                    - link "Deploy a Cluster to Azure" [ref=e190] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette/azure/
+                  - listitem [ref=e191]:
+                    - link "Deploy a Cluster to Google Cloud Platform (GCP)" [ref=e192] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette/gcp/
+                  - listitem [ref=e193]:
+                    - link "Deploy a Cluster to VMware" [ref=e194] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette/vmware/
+              - generic [ref=e195]:
+                - generic [ref=e197]:
+                  - text: "Tags:"
+                  - list [ref=e198]:
+                    - listitem [ref=e199]:
+                      - link "getting-started" [ref=e200] [cursor=pointer]:
+                        - /url: /tags/getting-started/
+                    - listitem [ref=e201]:
+                      - link "tutorial" [ref=e202] [cursor=pointer]:
+                        - /url: /tags/tutorial/
+                - link "Edit this page" [ref=e205] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/tutorials/getting-started/palette/introduction-palette.md
+                  - img [ref=e206]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e210]:
+              - link "Previous « Palette" [ref=e211] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette/
+                - generic [ref=e212]: Previous
+                - generic [ref=e213]: « Palette
+              - link "Next Deploy a Cluster to AWS »" [ref=e214] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette/aws/
+                - generic [ref=e215]: Next
+                - generic [ref=e216]: Deploy a Cluster to AWS »
+          - list [ref=e219]:
+            - listitem [ref=e220]:
+              - link "Supported Environments" [ref=e221] [cursor=pointer]:
+                - /url: "#supported-environments"
+            - listitem [ref=e222]:
+              - link "Cluster Profiles" [ref=e223] [cursor=pointer]:
+                - /url: "#cluster-profiles"
+            - listitem [ref=e224]:
+              - link "Packs" [ref=e225] [cursor=pointer]:
+                - /url: "#packs"
+            - listitem [ref=e226]:
+              - link "Next Steps" [ref=e227] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e228] [cursor=pointer]:
+    - generic [ref=e231]:
+      - img "Project Logo" [ref=e232]
+      - paragraph [ref=e233]: Ask AI
+```

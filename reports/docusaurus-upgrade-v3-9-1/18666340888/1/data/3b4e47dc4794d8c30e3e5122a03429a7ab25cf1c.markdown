@@ -1,0 +1,1412 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Audit Logs" [ref=e165] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e167]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Self-Hosted Palette" [ref=e172] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e174]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Palette VerteX" [ref=e179] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e181]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e183] [cursor=pointer]
+              - listitem [ref=e184]:
+                - generic [ref=e185]:
+                  - link "Tenant Administration" [ref=e186] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e188]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e190] [cursor=pointer]
+              - listitem [ref=e191]:
+                - generic [ref=e192]:
+                  - link "Automation" [expanded] [ref=e193] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e195]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e197] [cursor=pointer]
+                - list [ref=e198]:
+                  - listitem [ref=e199]:
+                    - generic [ref=e200]:
+                      - link "Palette CLI" [ref=e201] [cursor=pointer]:
+                        - /url: /automation/palette-cli/
+                      - button "Toggle the collapsible sidebar category 'Palette CLI'" [ref=e202] [cursor=pointer]
+                  - listitem [ref=e203]:
+                    - generic [ref=e204]:
+                      - link "Palette Go SDK" [ref=e205] [cursor=pointer]:
+                        - /url: /automation/palette-sdk/
+                      - button "Toggle the collapsible sidebar category 'Palette Go SDK'" [ref=e206] [cursor=pointer]
+                  - listitem [ref=e207]:
+                    - link "Terraform" [ref=e208] [cursor=pointer]:
+                      - /url: /automation/terraform/
+                  - listitem [ref=e209]:
+                    - generic [ref=e210]:
+                      - link "Crossplane" [expanded] [ref=e211] [cursor=pointer]:
+                        - /url: /automation/crossplane/
+                      - button "Toggle the collapsible sidebar category 'Crossplane'" [ref=e212] [cursor=pointer]
+                    - list [ref=e213]:
+                      - listitem [ref=e214]:
+                        - link "Deploy an AWS IaaS Cluster with Crossplane" [ref=e215] [cursor=pointer]:
+                          - /url: /automation/crossplane/deploy-cluster-aws-crossplane/
+                      - listitem [ref=e216]:
+                        - link "Deploy an Azure IaaS Cluster with Crossplane" [ref=e217] [cursor=pointer]:
+                          - /url: /automation/crossplane/deploy-cluster-azure-crossplane/
+                      - listitem [ref=e218]:
+                        - link "Deploy a GCP IaaS Cluster with Crossplane" [ref=e219] [cursor=pointer]:
+                          - /url: /automation/crossplane/deploy-cluster-gcp-crossplane/
+              - listitem [ref=e220]:
+                - generic [ref=e221]:
+                  - link "Troubleshooting" [ref=e222] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e224]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e226] [cursor=pointer]
+              - listitem [ref=e227]:
+                - link "Glossary" [ref=e228] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e230]
+                  - text: Glossary
+              - listitem [ref=e232]:
+                - generic [ref=e233]:
+                  - link "Compliance & Legal" [ref=e234] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e236]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e238] [cursor=pointer]
+              - listitem [ref=e239]:
+                - button "Privacy Settings" [ref=e240] [cursor=pointer]:
+                  - img [ref=e241]
+                  - text: Privacy Settings
+      - main [ref=e243]:
+        - generic [ref=e245]:
+          - generic [ref=e247]:
+            - article [ref=e248]:
+              - navigation "Breadcrumbs" [ref=e249]:
+                - list [ref=e250]:
+                  - listitem [ref=e251]:
+                    - link "Home page" [ref=e252] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e253]
+                  - listitem [ref=e255]:
+                    - link "Automation" [ref=e256] [cursor=pointer]:
+                      - /url: /automation/
+                  - listitem [ref=e257]:
+                    - link "Crossplane" [ref=e258] [cursor=pointer]:
+                      - /url: /automation/crossplane/
+                  - listitem [ref=e259]:
+                    - generic [ref=e260]: Deploy an AWS IaaS Cluster with Crossplane
+              - generic [ref=e261]:
+                - heading "Deploy an AWS IaaS Cluster with Crossplane" [level=1] [ref=e263]
+                - paragraph [ref=e264]:
+                  - text: Palette supports using
+                  - link "Crossplane" [ref=e265] [cursor=pointer]:
+                    - /url: https://www.crossplane.io
+                  - text: to create and manage Kubernetes
+                  - link "host clusters" [ref=e266] [cursor=pointer]:
+                    - /url: /glossary-all/#host-cluster
+                  - text: across major infrastructure providers. This section guides you on how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e267]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e268] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e269]:
+                  - listitem [ref=e270]:
+                    - text: A
+                    - link "Palette" [ref=e271] [cursor=pointer]:
+                      - /url: https://www.spectrocloud.com/get-started
+                    - text: account and API key. Refer to the
+                    - link "Create API Key" [ref=e272] [cursor=pointer]:
+                      - /url: /user-management/authentication/api-key/create-api-key/
+                    - text: page for instructions on creating an API key.
+                  - listitem [ref=e273]:
+                    - text: A public
+                    - link "AWS" [ref=e274] [cursor=pointer]:
+                      - /url: https://repost.aws/knowledge-center/create-and-activate-aws-account
+                    - text: cloud account with the required
+                    - link "IAM Policies" [ref=e275] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/required-iam-policies/
+                    - text: .
+                  - listitem [ref=e276]:
+                    - text: An SSH key pair available in the region where you want to deploy the cluster. Check out the AWS
+                    - link "Create EC2 SSH Key Pair" [ref=e277] [cursor=pointer]:
+                      - /url: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html
+                    - text: page for guidance.
+                  - listitem [ref=e278]:
+                    - text: The AWS account must be registered in Palette. Follow the
+                    - link "Add an AWS Account to Palette" [ref=e279] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/add-aws-accounts/
+                    - text: guide to register your account in Palette.
+                  - listitem [ref=e280]:
+                    - text: A Kubernetes cluster with at least 2 GB of RAM. This guide uses a
+                    - link "kind" [ref=e281] [cursor=pointer]:
+                      - /url: https://kind.sigs.k8s.io
+                    - text: cluster as an example. Refer to the
+                    - link "kind Quick Start" [ref=e282] [cursor=pointer]:
+                      - /url: https://kind.sigs.k8s.io/docs/user/quick-start/
+                    - text: guide to learn how to install kind and create a cluster.
+                  - listitem [ref=e283]:
+                    - text: "The following software must be installed on your host:"
+                    - list [ref=e284]:
+                      - listitem [ref=e285]:
+                        - link "curl" [ref=e286] [cursor=pointer]:
+                          - /url: https://curl.se/docs/install.html
+                      - listitem [ref=e287]:
+                        - link "jq" [ref=e288] [cursor=pointer]:
+                          - /url: https://jqlang.github.io/jq/download/
+                      - listitem [ref=e289]:
+                        - link "Helm" [ref=e290] [cursor=pointer]:
+                          - /url: https://helm.sh/docs/intro/install/
+                        - text: version v3.2.0 or later
+                      - listitem [ref=e291]:
+                        - link "kubectl" [ref=e292] [cursor=pointer]:
+                          - /url: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+                      - listitem [ref=e293]:
+                        - text: A text editor such as Vi or
+                        - link "Nano" [ref=e294] [cursor=pointer]:
+                          - /url: https://www.nano-editor.org
+                        - text: . This guide uses Vi as an example.
+                - heading "Deploy an AWS IaaS Cluster with CrossplaneDirect link to Deploy an AWS IaaS Cluster with Crossplane" [level=2] [ref=e295]:
+                  - text: Deploy an AWS IaaS Cluster with Crossplane
+                  - link "Direct link to Deploy an AWS IaaS Cluster with Crossplane" [ref=e296] [cursor=pointer]:
+                    - /url: "#deploy-an-aws-iaas-cluster-with-crossplane"
+                    - text: "#"
+                - list [ref=e297]:
+                  - listitem [ref=e298]:
+                    - paragraph [ref=e299]:
+                      - text: Open a terminal session and set the kubectl context to your cluster. Replace
+                      - code [ref=e300]: <cluster-name>
+                      - text: with the name of your cluster.
+                    - generic [ref=e302]:
+                      - code [ref=e304]:
+                        - generic [ref=e305]: kubectl config use-context <cluster-name>
+                      - button "Copy code to clipboard" [ref=e307] [cursor=pointer]:
+                        - generic [ref=e308]:
+                          - img [ref=e309]
+                          - img [ref=e311]
+                  - listitem [ref=e313]:
+                    - paragraph [ref=e314]: Next, add the Crossplane Helm chart.
+                    - generic [ref=e316]:
+                      - code [ref=e318]:
+                        - generic [ref=e319]: helm repo add \
+                        - generic [ref=e320]: crossplane-stable https://charts.crossplane.io/stable
+                        - generic [ref=e321]: helm repo update
+                      - button "Copy code to clipboard" [ref=e323] [cursor=pointer]:
+                        - generic [ref=e324]:
+                          - img [ref=e325]
+                          - img [ref=e327]
+                    - generic [ref=e329]:
+                      - generic [ref=e330]: Example output
+                      - generic [ref=e331]:
+                        - code [ref=e333]:
+                          - generic [ref=e334]: "\"crossplane-stable\" has been added to your repositories"
+                          - generic [ref=e335]: Hang tight while we grab the latest from your chart repositories...
+                          - generic [ref=e336]: ...Successfully got an update from the "ingress-nginx" chart repository
+                          - generic [ref=e337]: ...Successfully got an update from the "crossplane-stable" chart repository
+                          - generic [ref=e338]: Update Complete. ⎈Happy Helming!⎈
+                        - button "Toggle word wrap" [ref=e340] [cursor=pointer]:
+                          - img [ref=e341]
+                  - listitem [ref=e343]:
+                    - paragraph [ref=e344]:
+                      - text: Install the Crossplane components using the
+                      - code [ref=e345]: helm install
+                      - text: command.
+                    - generic [ref=e347]:
+                      - code [ref=e349]:
+                        - generic [ref=e350]: helm install crossplane \
+                        - generic [ref=e351]: crossplane-stable/crossplane \
+                        - generic [ref=e352]: "--namespace crossplane-system \\"
+                        - generic [ref=e353]: "--create-namespace"
+                      - button "Copy code to clipboard" [ref=e355] [cursor=pointer]:
+                        - generic [ref=e356]:
+                          - img [ref=e357]
+                          - img [ref=e359]
+                    - generic [ref=e361]:
+                      - generic [ref=e362]: Example output
+                      - generic [ref=e363]:
+                        - code [ref=e365]:
+                          - generic [ref=e366]: "NAME: crossplane"
+                          - generic [ref=e367]: "LAST DEPLOYED: Wed Sep 3 14:08:39 2025"
+                          - generic [ref=e368]: "NAMESPACE: crossplane-system"
+                          - generic [ref=e369]: "STATUS: deployed"
+                          - generic [ref=e370]: "REVISION: 1"
+                          - generic [ref=e371]: "TEST SUITE: None"
+                          - generic [ref=e372]: "NOTES:"
+                          - generic [ref=e373]: "Release: crossplane"
+                          - generic [ref=e374]: "Chart Name: crossplane"
+                          - generic [ref=e375]: "Chart Description: Crossplane is an open source Kubernetes add-on that enables platform teams to assemble infrastructure from multiple vendors, and expose higher level self-service APIs for application teams to consume."
+                          - generic [ref=e376]: "Chart Version: 2.0.2"
+                          - generic [ref=e377]: "Chart Application Version: 2.0.2"
+                          - generic [ref=e378]: "Kube Version: v1.33.1"
+                        - button "Toggle word wrap" [ref=e380] [cursor=pointer]:
+                          - img [ref=e381]
+                    - paragraph [ref=e383]:
+                      - text: Verify the installation with the
+                      - code [ref=e384]: kubectl get pods
+                      - text: command. The output must contain two Crossplane pods with a
+                      - code [ref=e385]: Running
+                      - text: status.
+                    - generic [ref=e387]:
+                      - code [ref=e389]:
+                        - generic [ref=e390]: kubectl get pods --namespace crossplane-system
+                      - button "Copy code to clipboard" [ref=e392] [cursor=pointer]:
+                        - generic [ref=e393]:
+                          - img [ref=e394]
+                          - img [ref=e396]
+                    - generic [ref=e398]:
+                      - generic [ref=e399]: Example output
+                      - generic [ref=e400]:
+                        - code [ref=e402]:
+                          - generic [ref=e403]: NAME READY STATUS RESTARTS AGE
+                          - generic [ref=e404]: crossplane-869d89c8f8-7jc6c 1/1 Running 0 20s
+                          - generic [ref=e405]: crossplane-rbac-manager-784b496b-8mr6z 1/1 Running 0 20s
+                        - button "Toggle word wrap" [ref=e407] [cursor=pointer]:
+                          - img [ref=e408]
+                - list [ref=e410]:
+                  - listitem [ref=e411]:
+                    - paragraph [ref=e412]: Once Crossplane is installed, create a folder to store the Kubernetes configuration files.
+                    - generic [ref=e414]:
+                      - code [ref=e416]:
+                        - generic [ref=e417]: mkdir crossplane-aws
+                      - button "Copy code to clipboard" [ref=e419] [cursor=pointer]:
+                        - generic [ref=e420]:
+                          - img [ref=e421]
+                          - img [ref=e423]
+                  - listitem [ref=e425]:
+                    - paragraph [ref=e426]:
+                      - text: Fetch the latest version of the Palette Crossplane provider. Alternatively, identify your desired version from the
+                      - link "Upbound Marketplace" [ref=e427] [cursor=pointer]:
+                        - /url: https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette
+                      - text: and set the value manually.
+                    - generic [ref=e429]:
+                      - code [ref=e431]:
+                        - generic [ref=e432]: PALETTE_CROSSPLANE_PROVIDER_VERSION=$(curl --silent https://api.github.com/repos/crossplane-contrib/provider-palette/releases/latest | jq --raw-output .tag_name)
+                        - generic [ref=e433]: "echo Palette Crossplane Provider Version: $PALETTE_CROSSPLANE_PROVIDER_VERSION"
+                      - generic [ref=e434]:
+                        - button "Toggle word wrap" [ref=e435] [cursor=pointer]:
+                          - img [ref=e436]
+                        - button "Copy code to clipboard" [ref=e438] [cursor=pointer]:
+                          - generic [ref=e439]:
+                            - img [ref=e440]
+                            - img [ref=e442]
+                    - generic [ref=e444]:
+                      - generic [ref=e445]: Example output
+                      - code [ref=e448]:
+                        - generic [ref=e449]: "Palette Crossplane Provider Version: v0.24.4"
+                  - listitem [ref=e450]:
+                    - paragraph [ref=e451]: Create the following Kubernetes configuration for the Palette Crossplane provider.
+                    - generic [ref=e453]:
+                      - code [ref=e455]:
+                        - generic [ref=e456]: cat << EOF > crossplane-aws/provider-palette.yaml
+                        - generic [ref=e457]: "apiVersion: pkg.crossplane.io/v1"
+                        - generic [ref=e458]: "kind: Provider"
+                        - generic [ref=e459]: "metadata:"
+                        - generic [ref=e460]: "name: provider-palette"
+                        - generic [ref=e461]: "spec:"
+                        - generic [ref=e462]: "package: xpkg.upbound.io/crossplane-contrib/provider-palette:$PALETTE_CROSSPLANE_PROVIDER_VERSION"
+                        - generic [ref=e463]: EOF
+                      - generic [ref=e464]:
+                        - button "Toggle word wrap" [ref=e465] [cursor=pointer]:
+                          - img [ref=e466]
+                        - button "Copy code to clipboard" [ref=e468] [cursor=pointer]:
+                          - generic [ref=e469]:
+                            - img [ref=e470]
+                            - img [ref=e472]
+                    - paragraph [ref=e474]: Verify that the file was created and populated with the expected Palette Crossplane provider version.
+                    - generic [ref=e476]:
+                      - code [ref=e478]:
+                        - generic [ref=e479]: cat crossplane-aws/provider-palette.yaml
+                      - button "Copy code to clipboard" [ref=e481] [cursor=pointer]:
+                        - generic [ref=e482]:
+                          - img [ref=e483]
+                          - img [ref=e485]
+                    - generic [ref=e487]:
+                      - generic [ref=e488]: Example output
+                      - generic [ref=e489]:
+                        - code [ref=e491]:
+                          - generic [ref=e492]: "apiVersion: pkg.crossplane.io/v1"
+                          - generic [ref=e493]: "kind: Provider"
+                          - generic [ref=e494]: "metadata:"
+                          - generic [ref=e495]: "name: provider-palette"
+                          - generic [ref=e496]: "spec:"
+                          - generic [ref=e497]: "package: xpkg.upbound.io/crossplane-contrib/provider-palette:v0.24.4"
+                        - button "Toggle word wrap" [ref=e499] [cursor=pointer]:
+                          - img [ref=e500]
+                  - listitem [ref=e502]:
+                    - paragraph [ref=e503]: Issue the command below to install the Palette Crossplane provider. Crossplane installs the Custom Resource Definitions (CRDs) that allow you to create Palette resources directly inside Kubernetes.
+                    - generic [ref=e505]:
+                      - code [ref=e507]:
+                        - generic [ref=e508]: kubectl apply --filename crossplane-aws/provider-palette.yaml
+                      - button "Copy code to clipboard" [ref=e510] [cursor=pointer]:
+                        - generic [ref=e511]:
+                          - img [ref=e512]
+                          - img [ref=e514]
+                    - generic [ref=e516]:
+                      - generic [ref=e517]: Example output
+                      - code [ref=e520]:
+                        - generic [ref=e521]: provider.pkg.crossplane.io/provider-palette created
+                    - paragraph [ref=e522]:
+                      - text: Check the installation with the
+                      - code [ref=e523]: kubectl get providers
+                      - text: command.
+                    - generic [ref=e525]:
+                      - code [ref=e527]:
+                        - generic [ref=e528]: kubectl get providers
+                      - button "Copy code to clipboard" [ref=e530] [cursor=pointer]:
+                        - generic [ref=e531]:
+                          - img [ref=e532]
+                          - img [ref=e534]
+                    - generic [ref=e536]:
+                      - generic [ref=e537]: Example output
+                      - generic [ref=e538]:
+                        - code [ref=e540]:
+                          - generic [ref=e541]: NAME INSTALLED HEALTHY PACKAGE AGE
+                          - generic [ref=e542]: provider-palette True True xpkg.upbound.io/crossplane-contrib/provider-palette:v0.24.4 40s
+                        - button "Toggle word wrap" [ref=e544] [cursor=pointer]:
+                          - img [ref=e545]
+                  - listitem [ref=e547]:
+                    - paragraph [ref=e548]: "Set the following variables for your Palette environment:"
+                    - list [ref=e549]:
+                      - listitem [ref=e550]:
+                        - code [ref=e551]: <palette-api-key>
+                        - text: "- Your Palette API key."
+                      - listitem [ref=e552]:
+                        - code [ref=e553]: <palette-project-name>
+                        - text: "- The name of the Palette project you are deploying your cluster in."
+                      - listitem [ref=e554]:
+                        - code [ref=e555]: <palette-endpoint>
+                        - text: "- The endpoint of your Palette environment."
+                    - generic [ref=e557]:
+                      - code [ref=e559]:
+                        - generic [ref=e560]: PALETTE_API_KEY=<palette-api-key>
+                        - generic [ref=e561]: PALETTE_PROJECT_NAME=<palette-project-name>
+                        - generic [ref=e562]: PALETTE_HOST=<palette-endpoint>
+                      - button "Copy code to clipboard" [ref=e564] [cursor=pointer]:
+                        - generic [ref=e565]:
+                          - img [ref=e566]
+                          - img [ref=e568]
+                  - listitem [ref=e570]:
+                    - paragraph [ref=e571]: Create a file to store the Kubernetes Secret containing your Palette API key and environment details. The Palette provider requires credentials to create and manage resources.
+                    - generic [ref=e573]:
+                      - code [ref=e575]:
+                        - generic [ref=e576]: cat << EOF > crossplane-aws/secret-aws.yaml
+                        - generic [ref=e577]: "apiVersion: v1"
+                        - generic [ref=e578]: "kind: Secret"
+                        - generic [ref=e579]: "metadata:"
+                        - generic [ref=e580]: "name: palette-creds"
+                        - generic [ref=e581]: "namespace: crossplane-system"
+                        - generic [ref=e582]: "type: Opaque"
+                        - generic [ref=e583]: "stringData:"
+                        - generic [ref=e584]: "credentials: |"
+                        - generic [ref=e585]: "{"
+                        - generic [ref=e586]: "\"api_key\": \"$PALETTE_API_KEY\","
+                        - generic [ref=e587]: "\"project_name\": \"$PALETTE_PROJECT_NAME\","
+                        - generic [ref=e588]: "\"host\": \"$PALETTE_HOST\","
+                        - generic [ref=e589]: "\"ignore_insecure_tls_error\": \"true\","
+                        - generic [ref=e590]: "\"retry_attempts\": \"1\","
+                        - generic [ref=e591]: "\"trace\": \"true\""
+                        - generic [ref=e592]: "}"
+                        - generic [ref=e593]: EOF
+                      - button "Copy code to clipboard" [ref=e595] [cursor=pointer]:
+                        - generic [ref=e596]:
+                          - img [ref=e597]
+                          - img [ref=e599]
+                    - paragraph [ref=e601]: Verify that the file was created and populated with the expected API key and environment values.
+                    - generic [ref=e603]:
+                      - code [ref=e605]:
+                        - generic [ref=e606]: cat crossplane-aws/secret-aws.yaml
+                      - button "Copy code to clipboard" [ref=e608] [cursor=pointer]:
+                        - generic [ref=e609]:
+                          - img [ref=e610]
+                          - img [ref=e612]
+                    - generic [ref=e614]:
+                      - generic [ref=e615]: Example output
+                      - code [ref=e618]:
+                        - generic [ref=e619]: "apiVersion: v1"
+                        - generic [ref=e620]: "kind: Secret"
+                        - generic [ref=e621]: "metadata:"
+                        - generic [ref=e622]: "name: palette-creds"
+                        - generic [ref=e623]: "namespace: crossplane-system"
+                        - generic [ref=e624]: "type: Opaque"
+                        - generic [ref=e625]: "stringData:"
+                        - generic [ref=e626]: "credentials: |"
+                        - generic [ref=e627]: "{"
+                        - generic [ref=e628]: "\"api_key\": \"**************\","
+                        - generic [ref=e629]: "\"project_name\": \"Default\","
+                        - generic [ref=e630]: "\"host\": \"console.spectrocloud.com\","
+                        - generic [ref=e631]: "\"ignore_insecure_tls_error\": \"true\","
+                        - generic [ref=e632]: "\"retry_attempts\": \"1\","
+                        - generic [ref=e633]: "\"trace\": \"true\""
+                        - generic [ref=e634]: "}"
+                  - listitem [ref=e635]:
+                    - paragraph [ref=e636]: Create the Kubernetes Secret.
+                    - generic [ref=e638]:
+                      - code [ref=e640]:
+                        - generic [ref=e641]: kubectl apply --filename crossplane-aws/secret-aws.yaml
+                      - button "Copy code to clipboard" [ref=e643] [cursor=pointer]:
+                        - generic [ref=e644]:
+                          - img [ref=e645]
+                          - img [ref=e647]
+                    - generic [ref=e649]:
+                      - generic [ref=e650]: Example output
+                      - code [ref=e653]:
+                        - generic [ref=e654]: secret/palette-creds created
+                  - listitem [ref=e655]:
+                    - paragraph [ref=e656]:
+                      - text: Create a file to store the
+                      - code [ref=e657]: ProviderConfig
+                      - text: object. This object configures the Palette Crossplane provider with the Secret containing the Palette API key.
+                    - generic [ref=e659]:
+                      - code [ref=e661]:
+                        - generic [ref=e662]: cat << EOF > crossplane-aws/providerconfig-aws.yaml
+                        - generic [ref=e663]: "apiVersion: palette.crossplane.io/v1beta1"
+                        - generic [ref=e664]: "kind: ProviderConfig"
+                        - generic [ref=e665]: "metadata:"
+                        - generic [ref=e666]: "name: provider-palette"
+                        - generic [ref=e667]: "namespace: crossplane-system"
+                        - generic [ref=e668]: "spec:"
+                        - generic [ref=e669]: "credentials:"
+                        - generic [ref=e670]: "source: Secret"
+                        - generic [ref=e671]: "secretRef:"
+                        - generic [ref=e672]: "name: palette-creds"
+                        - generic [ref=e673]: "namespace: crossplane-system"
+                        - generic [ref=e674]: "key: credentials"
+                        - generic [ref=e675]: EOF
+                      - button "Copy code to clipboard" [ref=e677] [cursor=pointer]:
+                        - generic [ref=e678]:
+                          - img [ref=e679]
+                          - img [ref=e681]
+                  - listitem [ref=e683]:
+                    - paragraph [ref=e684]:
+                      - text: Create the Kubernetes
+                      - code [ref=e685]: ProviderConfig
+                      - text: object.
+                    - generic [ref=e687]:
+                      - code [ref=e689]:
+                        - generic [ref=e690]: kubectl apply --filename crossplane-aws/providerconfig-aws.yaml
+                      - button "Copy code to clipboard" [ref=e692] [cursor=pointer]:
+                        - generic [ref=e693]:
+                          - img [ref=e694]
+                          - img [ref=e696]
+                    - generic [ref=e698]:
+                      - generic [ref=e699]: Example output
+                      - code [ref=e702]:
+                        - generic [ref=e703]: providerconfig.palette.crossplane.io/provider-palette created
+                  - listitem [ref=e704]:
+                    - paragraph [ref=e705]:
+                      - text: Create a cluster
+                      - code [ref=e706]: Profile
+                      - text: object with Crossplane or use an existing cluster profile. If you are using an existing cluster profile, your cluster profile packs must be compatible with the infrastructure your cluster will be deployed on.
+                    - generic [ref=e707]:
+                      - tablist [ref=e708]:
+                        - tab "New Cluster Profile with Crossplane" [selected] [ref=e709] [cursor=pointer]
+                        - tab "Existing Cluster Profile" [ref=e710] [cursor=pointer]
+                      - tabpanel [ref=e712]:
+                        - list [ref=e713]:
+                          - listitem [ref=e714]:
+                            - paragraph [ref=e715]:
+                              - text: Once the Palette Crossplane provider is installed and set up, create a file to store the
+                              - link "cluster profile" [ref=e716] [cursor=pointer]:
+                                - /url: /profiles/cluster-profiles
+                              - text: configuration.
+                            - generic [ref=e717]:
+                              - generic [ref=e718]:
+                                - img [ref=e720]
+                                - text: warning
+                              - paragraph [ref=e723]: We recommend creating the cluster profile file first and directly pasting the contents into the file. Redirecting cluster profile configurations from the terminal into the file can misinterpret escape characters, resulting in an invalid file.
+                            - generic [ref=e725]:
+                              - code [ref=e727]:
+                                - generic [ref=e728]: vi crossplane-aws/cluster-profile-aws.yaml
+                              - button "Copy code to clipboard" [ref=e730] [cursor=pointer]:
+                                - generic [ref=e731]:
+                                  - img [ref=e732]
+                                  - img [ref=e734]
+                          - listitem [ref=e736]:
+                            - paragraph [ref=e737]: Paste the Kubernetes configuration below into the text editor window that opens. Save the file and exit.
+                            - generic [ref=e738]:
+                              - generic [ref=e739]:
+                                - img [ref=e741]
+                                - text: tip
+                              - paragraph [ref=e744]:
+                                - text: By default, Palette deploys the cluster in the project scope using the
+                                - code [ref=e745]: project_name
+                                - text: defined in the Kubernetes Secret file. To deploy the cluster in the tenant admin scope instead of the project scope, set the value of
+                                - code [ref=e746]: spec.forProvider.context
+                                - text: to
+                                - code [ref=e747]: tenant
+                                - text: .
+                            - generic [ref=e749]:
+                              - code [ref=e751]:
+                                - generic [ref=e752]: "apiVersion: cluster.palette.crossplane.io/v1alpha1"
+                                - generic [ref=e753]: "kind: Profile"
+                                - generic [ref=e754]: "metadata:"
+                                - generic [ref=e755]: "name: aws-crossplane-cluster-profile"
+                                - generic [ref=e756]: "namespace: crossplane-system"
+                                - generic [ref=e757]: "spec:"
+                                - generic [ref=e758]: "forProvider:"
+                                - generic [ref=e759]: "name: \"aws-crossplane-cluster-profile\""
+                                - generic [ref=e760]: "description: \"AWS Crossplane cluster profile\""
+                                - generic [ref=e761]: "cloud: \"aws\""
+                                - generic [ref=e762]: "type: \"cluster\""
+                                - generic [ref=e763]: "version: \"1.0.0\""
+                                - generic [ref=e764]: "context: project"
+                                - generic [ref=e765]: "pack:"
+                                - generic [ref=e766]: "- name: \"ubuntu-aws\""
+                                - generic [ref=e767]: "tag: \"22.04\""
+                                - generic [ref=e768]: "uid: \"63bd0373764141c6622c3062\""
+                                - generic [ref=e769]: "registryUid: \"5eecc89d0b150045ae661cef\""
+                                - generic [ref=e770]: "type: oci"
+                                - generic [ref=e771]: "values:"
+                                - generic [ref=e772]: "\"# Spectro Golden images includes most of the hardening as per CIS Ubuntu Linux 22.04 LTS Server L1"
+                                - generic [ref=e773]: v1.0.0 standards\n\n# Uncomment below section to\n# 1. Include custom files to be copied over to the
+                                - generic [ref=e774]: nodes and/or\n# 2. Execute list of commands before or after kubeadm init/join is
+                                - generic [ref=e775]: executed\n#\n#kubeadmconfig:\n# preKubeadmCommands:\n# - echo \"Executing pre kube admin config
+                                - generic [ref=e776]: commands\"\n# - update-ca-certificates\n# - 'systemctl restart containerd; sleep 3'\n# - 'while [ !
+                                - generic [ref=e777]: "-S /var/run/containerd/containerd.sock ]; do echo \\\"Waiting for containerd...\\\"; sleep 1;"
+                                - generic [ref=e778]: done'\n# postKubeadmCommands:\n# - echo \"Executing post kube admin config
+                                - generic [ref=e779]: "commands\\\"\\n# files:\\n# - targetPath: /usr/local/share/ca-certificates/mycom.crt\\n# targetOwner:"
+                                - generic [ref=e780]: "\\\"root:root\\\"\\n# targetPermissions: \\\"0644\\\"\\n# content: |\\n# -----BEGIN"
+                                - generic [ref=e781]: CERTIFICATE-----\n# MIICyzCCAbOgAwIBAgIBADANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwprdWJl\n# cm5ldGVzMB4XDTIwMDkyMjIzNDMyM1oXDTMwMDkyMDIzNDgyM1owFTETMBEGA1UE\n# AxMKa3ViZXJuZXRlczCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMdA\n# nZYs1el/6f9PgV/aO9mzy7MvqaZoFnqO7Qi4LZfYzixLYmMUzi+h8/RLPFIoYLiz\n# qiDn+P8c9I1uxB6UqGrBt7dkXfjrUZPs0JXEOX9U/6GFXL5C+n3AUlAxNCS5jobN\n# fbLt7DH3WoT6tLcQefTta2K+9S7zJKcIgLmBlPNDijwcQsbenSwDSlSLkGz8v6N2\n# 7SEYNCV542lbYwn42kbcEq2pzzAaCqa5uEPsR9y+uzUiJpv5tDHUdjbFT8tme3vL\n# 9EdCPODkqtMJtCvz0hqd5SxkfeC2L+ypaiHIxbwbWe7GtliROvz9bClIeGY7gFBK\n# jZqpLdbBVjo0NZBTJFUCAwEAAaMmMCQwDgYDVR0PAQH/BAQDAgKkMBIGA1UdEwEB\n# /wQIMAYBAf8CAQAwDQYJKoZIhvcNAQELBQADggEBADIKoE0P+aVJGV9LWGLiOhki\n# HFv/vPPAQ2MPk02rLjWzCaNrXD7aPPgT/1uDMYMHD36u8rYyf4qPtB8S5REWBM/Y\n# g8uhnpa/tGsaqO8LOFj6zsInKrsXSbE6YMY6+A8qvv5lPWpJfrcCVEo2zOj7WGoJ\n# ixi4B3fFNI+wih8/+p4xW+n3fvgqVYHJ3zo8aRLXbXwztp00lXurXUyR8EZxyR+6\n# b+IDLmHPEGsY9KOZ9VLLPcPhx5FR9njFyXvDKmjUMJJgUpRkmsuU1mCFC+OHhj56\n# IkLaSJf6z/p2a3YjTxvHNCqFMLbJ2FvJwYCRzsoT2wm2oulnUAMWPI10vdVM+Nc=\n# -----END
+                                - generic [ref=e782]: CERTIFICATE-----"
+                                - generic [ref=e783]: "- name: \"kubernetes\""
+                                - generic [ref=e784]: "tag: \"1.32.4\""
+                                - generic [ref=e785]: "uid: \"687bbdf5511462f044b2c727\""
+                                - generic [ref=e786]: "registryUid: \"5eecc89d0b150045ae661cef\""
+                                - generic [ref=e787]: "type: oci"
+                                - generic [ref=e788]: "values:"
+                                - generic [ref=e789]: "\"# spectrocloud.com/enabled-presets: Kube Controller Manager:loopback-ctrlmgr,Kube"
+                                - generic [ref=e790]: Scheduler:loopback-scheduler,Azure Disk Encryption
+                                - generic [ref=e791]: "Set:disable-azure-disk-encryption\\npack:\\n content:\\n images:\\n - image:"
+                                - generic [ref=e792]: "registry.k8s.io/coredns/coredns:v1.11.3\\n - image: registry.k8s.io/etcd:3.5.16-0\\n - image:"
+                                - generic [ref=e793]: "registry.k8s.io/kube-apiserver:v1.32.4\\n - image:"
+                                - generic [ref=e794]: "registry.k8s.io/kube-controller-manager:v1.32.4\\n - image:"
+                                - generic [ref=e795]: "registry.k8s.io/kube-proxy:v1.32.4\\n - image: registry.k8s.io/kube-scheduler:v1.32.4\\n -"
+                                - generic [ref=e796]: "image: registry.k8s.io/pause:3.9\\n - image: registry.k8s.io/pause:3.8\\n #CIDR Range for Pods in"
+                                - generic [ref=e797]: "cluster\\n # Note : This must not overlap with any of the host or service network\\n podCIDR:"
+                                - generic [ref=e798]: "\\\"192.168.0.0/16\\\"\\n #CIDR notation IP range from which to assign service cluster IPs\\n # Note :"
+                                - generic [ref=e799]: "This must not overlap with any IP ranges assigned to nodes for pods.\\n serviceClusterIpRange:"
+                                - generic [ref=e800]: "\\\"10.96.0.0/12\\\"\\n # serviceDomain:"
+                                - generic [ref=e801]: "\\\"cluster.local\\\"\\n\\nkubeadmconfig:\\n apiServer:\\n extraArgs:\\n # Note : secure-port flag is"
+                                - generic [ref=e802]: "used during kubeadm init. Do not change this flag on a running cluster\\n secure-port:"
+                                - generic [ref=e803]: "\\\"6443\\\"\\n anonymous-auth: \\\"true\\\"\\n profiling: \\\"false\\\"\\n disable-admission-plugins:"
+                                - generic [ref=e804]: "\\\"AlwaysAdmit\\\"\\n default-not-ready-toleration-seconds:"
+                                - generic [ref=e805]: "\\\"60\\\"\\n default-unreachable-toleration-seconds: \\\"60\\\"\\n enable-admission-plugins:"
+                                - generic [ref=e806]: "\\\"AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction,PodSecurity\\\"\\n admission-control-config-file:"
+                                - generic [ref=e807]: "\\\"/etc/kubernetes/pod-security-standard.yaml\\\"\\n audit-log-path:"
+                                - generic [ref=e808]: "/var/log/apiserver/audit.log\\n audit-policy-file:"
+                                - generic [ref=e809]: "/etc/kubernetes/audit-policy.yaml\\n audit-log-maxage: \\\"30\\\"\\n audit-log-maxbackup:"
+                                - generic [ref=e810]: "\\\"10\\\"\\n audit-log-maxsize: \\\"100\\\"\\n authorization-mode:"
+                                - generic [ref=e811]: "RBAC,Node\\n kubelet-certificate-authority:"
+                                - generic [ref=e812]: "\\\"/etc/kubernetes/pki/ca.crt\\\"\\n tls-cipher-suites:"
+                                - generic [ref=e813]: \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256\"\n extraVolumes:\n -
+                                - generic [ref=e814]: "name: audit-log\\n hostPath: /var/log/apiserver\\n mountPath:"
+                                - generic [ref=e815]: "/var/log/apiserver\\n pathType: DirectoryOrCreate\\n - name: audit-policy\\n hostPath:"
+                                - generic [ref=e816]: "/etc/kubernetes/audit-policy.yaml\\n mountPath:"
+                                - generic [ref=e817]: "/etc/kubernetes/audit-policy.yaml\\n readOnly: true\\n pathType: File\\n - name:"
+                                - generic [ref=e818]: "pod-security-standard\\n hostPath:"
+                                - generic [ref=e819]: "/etc/kubernetes/pod-security-standard.yaml\\n mountPath:"
+                                - generic [ref=e820]: "/etc/kubernetes/pod-security-standard.yaml\\n readOnly: true\\n pathType:"
+                                - generic [ref=e821]: "File\\n controllerManager:\\n extraArgs:\\n profiling:"
+                                - generic [ref=e822]: "\\\"false\\\"\\n terminated-pod-gc-threshold: \\\"25\\\"\\n use-service-account-credentials:"
+                                - generic [ref=e823]: "\\\"true\\\"\\n feature-gates:"
+                                - generic [ref=e824]: "\\\"RotateKubeletServerCertificate=true\\\"\\n scheduler:\\n extraArgs:\\n profiling:"
+                                - generic [ref=e825]: "\\\"false\\\"\\n kubeletExtraArgs:\\n read-only-port: \\\"0\\\"\\n event-qps: \\\"0\\\"\\n feature-gates:"
+                                - generic [ref=e826]: "\\\"RotateKubeletServerCertificate=true\\\"\\n protect-kernel-defaults:"
+                                - generic [ref=e827]: "\\\"true\\\"\\n rotate-server-certificates: \\\"true\\\"\\n tls-cipher-suites:"
+                                - generic [ref=e828]: \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256\"\n files:\n -
+                                - generic [ref=e829]: "path: hardening/audit-policy.yaml\\n targetPath:"
+                                - generic [ref=e830]: "/etc/kubernetes/audit-policy.yaml\\n targetOwner: \\\"root:root\\\"\\n targetPermissions:"
+                                - generic [ref=e831]: "\\\"0600\\\"\\n - path: hardening/90-kubelet.conf\\n targetPath:"
+                                - generic [ref=e832]: "/etc/sysctl.d/90-kubelet.conf\\n targetOwner: \\\"root:root\\\"\\n targetPermissions:"
+                                - generic [ref=e833]: "\\\"0600\\\"\\n - targetPath: /etc/kubernetes/pod-security-standard.yaml\\n targetOwner:"
+                                - generic [ref=e834]: "\\\"root:root\\\"\\n targetPermissions: \\\"0600\\\"\\n content: |\\n apiVersion:"
+                                - generic [ref=e835]: "apiserver.config.k8s.io/v1\\n kind: AdmissionConfiguration\\n plugins:\\n - name:"
+                                - generic [ref=e836]: "PodSecurity\\n configuration:\\n apiVersion:"
+                                - generic [ref=e837]: "pod-security.admission.config.k8s.io/v1\\n kind:"
+                                - generic [ref=e838]: "PodSecurityConfiguration\\n defaults:\\n enforce:"
+                                - generic [ref=e839]: "\\\"baseline\\\"\\n enforce-version: \\\"v1.32\\\"\\n audit:"
+                                - generic [ref=e840]: "\\\"baseline\\\"\\n audit-version: \\\"v1.32\\\"\\n warn:"
+                                - generic [ref=e841]: "\\\"restricted\\\"\\n warn-version: \\\"v1.32\\\"\\n exemptions:\\n # Array"
+                                - generic [ref=e842]: "of authenticated usernames to exempt.\\n usernames: []\\n # Array of runtime"
+                                - generic [ref=e843]: "class names to exempt.\\n runtimeClasses: []\\n # Array of namespaces to"
+                                - generic [ref=e844]: "exempt.\\n namespaces: [kube-system]\\n\\n preKubeadmCommands:\\n # For enabling"
+                                - generic [ref=e845]: "'protect-kernel-defaults' flag to kubelet, kernel parameters changes are required\\n - 'echo \\\"====>"
+                                - generic [ref=e846]: Applying kernel parameters for Kubelet\"'\n - 'sysctl -p /etc/sysctl.d/90-kubelet.conf'\n -
+                                - generic [ref=e847]: "'test -f /etc/containerd/ca.crt && cp /etc/containerd/ca.crt"
+                                - generic [ref=e848]: /usr/local/share/ca-certificates/container.crt && update-ca-certificates && systemctl restart
+                                - generic [ref=e849]: "containerd'\\n #postKubeadmCommands:\\n\\n postKubeadmCommands:\\n - 'chmod 600"
+                                - generic [ref=e850]: "/var/lib/kubelet/config.yaml'\\n # - 'echo \\\"List of post kubeadm commands to be executed\\\"'\\n\\n#"
+                                - generic [ref=e851]: Client configuration to add OIDC based authentication flags in
+                                - generic [ref=e852]: "kubeconfig\\n#clientConfig:\\n #oidc-issuer-url: \\\"{{"
+                                - generic [ref=e853]: ".spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-issuer-url }}\\\"\\n #oidc-client-id:"
+                                - generic [ref=e854]: "\\\"{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-client-id"
+                                - generic [ref=e855]: "}}\\\"\\n #oidc-client-secret:"
+                                - generic [ref=e856]: "1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv\\n #oidc-extra-scope: profile,email\""
+                                - generic [ref=e857]: "- name: \"cni-calico\""
+                                - generic [ref=e858]: "tag: \"3.30.1\""
+                                - generic [ref=e859]: "uid: \"687bbdcf511462ef363aa0b4\""
+                                - generic [ref=e860]: "registryUid: \"5eecc89d0b150045ae661cef\""
+                                - generic [ref=e861]: "type: oci"
+                                - generic [ref=e862]: "values:"
+                                - generic [ref=e863]: "\"# spectrocloud.com/enabled-presets: Microk8s:microk8s-false\\npack:\\n content:\\n images:\\n -"
+                                - generic [ref=e864]: "image: us-docker.pkg.dev/palette-images/packs/calico/3.30.1/cni:v3.30.1\\n - image:"
+                                - generic [ref=e865]: "us-docker.pkg.dev/palette-images/packs/calico/3.30.1/node:v3.30.1\\n - image:"
+                                - generic [ref=e866]: "us-docker.pkg.dev/palette-images/packs/calico/3.30.1/kube-controllers:v3.30.1\\n\\nmanifests:\\n calico:\\n microk8s:"
+                                - generic [ref=e867]: "\\\"false\\\"\\n images:\\n cni: \\\"\\\"\\n node: \\\"\\\"\\n kubecontroller: \\\"\\\"\\n # IPAM type"
+                                - generic [ref=e868]: "to use. Supported types are calico-ipam, host-local\\n ipamType:"
+                                - generic [ref=e869]: "\\\"calico-ipam\\\"\\n\\n calico_ipam:\\n assign_ipv4: true\\n assign_ipv6: false\\n\\n # Should"
+                                - generic [ref=e870]: "be one of CALICO_IPV4POOL_IPIP or CALICO_IPV4POOL_VXLAN \\n encapsulationType:"
+                                - generic [ref=e871]: "\\\"CALICO_IPV4POOL_IPIP\\\"\\n\\n # Should be one of Always, CrossSubnet, Never\\n encapsulationMode:"
+                                - generic [ref=e872]: "\\\"Always\\\"\\n\\n env:\\n # Additional env variables for"
+                                - generic [ref=e873]: "calico-node\\n calicoNode:\\n #IPV6: \\\"autodetect\\\"\\n #FELIX_IPV6SUPPORT:"
+                                - generic [ref=e874]: "\\\"true\\\"\\n #CALICO_IPV6POOL_NAT_OUTGOING: \\\"true\\\"\\n #CALICO_IPV4POOL_CIDR:"
+                                - generic [ref=e875]: "\\\"192.168.0.0/16\\\"\\n # For EKS cluster with static provisioning, set IP_AUTODETECTION_METHOD to"
+                                - generic [ref=e876]: "\\\"interface=eth0\\\"\\n #IP_AUTODETECTION_METHOD: \\\"first-found\\\"\\n\\n # Additional env"
+                                - generic [ref=e877]: "variables for calico-kube-controller deployment\\n calicoKubeControllers:\\n #LOG_LEVEL:"
+                                - generic [ref=e878]: "\\\"info\\\"\\n #SYNC_NODE_LABELS: \\\"true\\\"\""
+                                - generic [ref=e879]: "- name: \"csi-aws-ebs\""
+                                - generic [ref=e880]: "tag: \"1.43.0\""
+                                - generic [ref=e881]: "uid: \"687bbdd7511462ef75ba7ee1\""
+                                - generic [ref=e882]: "registryUid: \"5eecc89d0b150045ae661cef\""
+                                - generic [ref=e883]: "type: oci"
+                                - generic [ref=e884]: "values:"
+                                - generic [ref=e885]: "\"pack:\\n content:\\n images:\\n - image:"
+                                - generic [ref=e886]: "us-docker.pkg.dev/palette-images/packs/csi-aws-ebs/1.43.0/aws-ebs-csi-driver:v1.43.0\\n - image:"
+                                - generic [ref=e887]: us-docker.pkg.dev/palette-images/packs/csi-aws-ebs/1.43.0/external-provisioner:v5.2.0-eks-1-33-1\n -
+                                - generic [ref=e888]: "image:"
+                                - generic [ref=e889]: us-docker.pkg.dev/palette-images/packs/csi-aws-ebs/1.43.0/external-attacher:v4.8.1-eks-1-33-1\n -
+                                - generic [ref=e890]: "image:"
+                                - generic [ref=e891]: us-docker.pkg.dev/palette-images/packs/csi-aws-ebs/1.43.0/external-resizer:v1.13.2-eks-1-33-1\n -
+                                - generic [ref=e892]: "image:"
+                                - generic [ref=e893]: us-docker.pkg.dev/palette-images/packs/csi-aws-ebs/1.43.0/livenessprobe:v2.15.0-eks-1-33-1\n -
+                                - generic [ref=e894]: "image:"
+                                - generic [ref=e895]: us-docker.pkg.dev/palette-images/packs/csi-aws-ebs/1.43.0/node-driver-registrar:v2.13.0-eks-1-33-1\n -
+                                - generic [ref=e896]: "image:"
+                                - generic [ref=e897]: us-docker.pkg.dev/palette-images/packs/csi-aws-ebs/1.43.0/external-snapshotter/csi-snapshotter:v8.2.1-eks-1-33-1\n -
+                                - generic [ref=e898]: "image:"
+                                - generic [ref=e899]: us-docker.pkg.dev/palette-images/packs/csi-aws-ebs/1.43.0/volume-modifier-for-k8s:v0.5.1\n charts:\n -
+                                - generic [ref=e900]: "repo: https://kubernetes-sigs.github.io/aws-ebs-csi-driver\\n name:"
+                                - generic [ref=e901]: "aws-ebs-csi-driver\\n version: 2.43.0\\n namespace:"
+                                - generic [ref=e902]: "\\\"kube-system\\\"\\ncharts:\\n aws-ebs-csi-driver:\\n storageClasses:\\n # Default Storage"
+                                - generic [ref=e903]: "Class\\n - name: spectro-storage-class\\n # annotation"
+                                - generic [ref=e904]: "metadata\\n annotations:\\n storageclass.kubernetes.io/is-default-class:"
+                                - generic [ref=e905]: "\\\"true\\\"\\n # label metadata\\n # labels:\\n # my-label-is:"
+                                - generic [ref=e906]: "supercool\\n # defaults to WaitForFirstConsumer\\n volumeBindingMode:"
+                                - generic [ref=e907]: "WaitForFirstConsumer\\n # defaults to Delete\\n reclaimPolicy:"
+                                - generic [ref=e908]: "Delete\\n parameters:\\n # File system type: xfs, ext2, ext3,"
+                                - generic [ref=e909]: "ext4\\n csi.storage.k8s.io/fstype: \\\"ext4\\\"\\n # EBS volume type: io1, io2, gp2, gp3,"
+                                - generic [ref=e910]: "sc1, st1, standard\\n type: \\\"gp2\\\"\\n # I/O operations per second per GiB. Required"
+                                - generic [ref=e911]: "when io1 or io2 volume type is specified.\\n # iopsPerGB: \\\"\\\"\\n # Applicable only"
+                                - generic [ref=e912]: "when io1 or io2 volume type is specified\\n # allowAutoIOPSPerGBIncrease: false\\n #"
+                                - generic [ref=e913]: "I/O operations per second. Applicable only for gp3 volumes.\\n # iops: \\\"\\\"\\n #"
+                                - generic [ref=e914]: "Throughput in MiB/s. Applicable only for gp3 volumes.\\n # throughput: \\\"\\\"\\n #"
+                                - generic [ref=e915]: "Whether the volume should be encrypted or not\\n # encrypted: \\\"\\\"\\n # The full ARN"
+                                - generic [ref=e916]: of the key to use when encrypting the volume. When not specified, the default KMS key is
+                                - generic [ref=e917]: "used.\\n # kmsKeyId: \\\"\\\"\\n # Additional Storage Class \\n # - name:"
+                                - generic [ref=e918]: "addon-storage-class\\n # annotations:\\n # storageclass.kubernetes.io/is-default-class:"
+                                - generic [ref=e919]: "\\\"false\\\"\\n # labels:\\n # my-label-is: supercool\\n # volumeBindingMode:"
+                                - generic [ref=e920]: "WaitForFirstConsumer\\n # reclaimPolicy: Delete\\n # parameters:\\n # csi.storage.k8s.io/fstype:"
+                                - generic [ref=e921]: "\\\"ext4\\\"\\n # type: \\\"gp2\\\"\\n # iopsPerGB: \\\"\\\"\\n # allowAutoIOPSPerGBIncrease: false\\n #"
+                                - generic [ref=e922]: "iops: \\\"\\\"\\n # throughput: \\\"\\\"\\n # encrypted: \\\"\\\"\\n # kmsKeyId:"
+                                - generic [ref=e923]: "\\\"\\\"\\n\\n image:\\n repository:"
+                                - generic [ref=e924]: "us-docker.pkg.dev/palette-images/packs/csi-aws-ebs/1.43.0/aws-ebs-csi-driver\\n # Overrides the"
+                                - generic [ref=e925]: "image tag whose default is v{{ .Chart.AppVersion }}\\n tag: \\\"v1.43.0\\\"\\n pullPolicy:"
+                                - generic [ref=e926]: "IfNotPresent\\n # -- Custom labels to add into metadata\\n customLabels: {}\\n # k8s-app:"
+                                - generic [ref=e927]: "aws-ebs-csi-driver\\n\\n sidecars:\\n provisioner:\\n env:"
+                                - generic [ref=e928]: "[]\\n image:\\n pullPolicy: IfNotPresent\\n repository:"
+                                - generic [ref=e929]: "us-docker.pkg.dev/palette-images/packs/csi-aws-ebs/1.43.0/external-provisioner\\n tag:"
+                                - generic [ref=e930]: "\\\"v5.2.0-eks-1-33-1\\\"\\n logLevel: 2\\n # Additional parameters provided by"
+                                - generic [ref=e931]: "external-provisioner.\\n additionalArgs: []\\n # Grant additional permissions to"
+                                - generic [ref=e932]: "external-provisioner\\n additionalClusterRoleRules:\\n resources: {}\\n # Tune"
+                                - generic [ref=e933]: "leader lease election for csi-provisioner.\\n # Leader election is on by"
+                                - generic [ref=e934]: "default.\\n leaderElection:\\n enabled: true\\n # Optional values to tune lease"
+                                - generic [ref=e935]: "behavior.\\n # The arguments provided must be in an acceptable time.ParseDuration"
+                                - generic [ref=e936]: "format.\\n # Ref: https://pkg.go.dev/flag#Duration\\n # leaseDuration:"
+                                - generic [ref=e937]: "\\\"15s\\\"\\n # renewDeadline: \\\"10s\\\"\\n # retryPeriod:"
+                                - generic [ref=e938]: "\\\"5s\\\"\\n securityContext:\\n seccompProfile:\\n type:"
+                                - generic [ref=e939]: "RuntimeDefault\\n readOnlyRootFilesystem: true\\n allowPrivilegeEscalation:"
+                                - generic [ref=e940]: "false\\n attacher:\\n env: []\\n image:\\n pullPolicy:"
+                                - generic [ref=e941]: "IfNotPresent\\n repository:"
+                                - generic [ref=e942]: "us-docker.pkg.dev/palette-images/packs/csi-aws-ebs/1.43.0/external-attacher\\n tag:"
+                                - generic [ref=e943]: "\\\"v4.8.1-eks-1-33-1\\\"\\n # Tune leader lease election for csi-attacher.\\n # Leader"
+                                - generic [ref=e944]: "election is on by default.\\n leaderElection:\\n enabled: true\\n # Optional"
+                                - generic [ref=e945]: "values to tune lease behavior.\\n # The arguments provided must be in an acceptable"
+                                - generic [ref=e946]: "time.ParseDuration format.\\n # Ref: https://pkg.go.dev/flag#Duration\\n #"
+                                - generic [ref=e947]: "leaseDuration: \\\"15s\\\"\\n # renewDeadline: \\\"10s\\\"\\n # retryPeriod:"
+                                - generic [ref=e948]: "\\\"5s\\\"\\n logLevel: 2\\n # Additional parameters provided by"
+                                - generic [ref=e949]: "external-attacher.\\n additionalArgs: []\\n # Grant additional permissions to"
+                                - generic [ref=e950]: "external-attacher\\n additionalClusterRoleRules: []\\n resources:"
+                                - generic [ref=e951]: "{}\\n securityContext:\\n seccompProfile:\\n type:"
+                                - generic [ref=e952]: "RuntimeDefault\\n readOnlyRootFilesystem: true\\n allowPrivilegeEscalation:"
+                                - generic [ref=e953]: "false\\n snapshotter:\\n # Enables the snapshotter sidecar even if the snapshot CRDs are not"
+                                - generic [ref=e954]: "installed\\n forceEnable: false\\n env: []\\n image:\\n pullPolicy:"
+                                - generic [ref=e955]: "IfNotPresent\\n repository:"
+                                - generic [ref=e956]: "us-docker.pkg.dev/palette-images/packs/csi-aws-ebs/1.43.0/external-snapshotter/csi-snapshotter\\n tag:"
+                                - generic [ref=e957]: "\\\"v8.2.1-eks-1-33-1\\\"\\n logLevel: 2\\n # Additional parameters provided by"
+                                - generic [ref=e958]: "csi-snapshotter.\\n additionalArgs: []\\n # Grant additional permissions to"
+                                - generic [ref=e959]: "csi-snapshotter\\n additionalClusterRoleRules: []\\n resources:"
+                                - generic [ref=e960]: "{}\\n securityContext:\\n seccompProfile:\\n type:"
+                                - generic [ref=e961]: "RuntimeDefault\\n readOnlyRootFilesystem: true\\n allowPrivilegeEscalation:"
+                                - generic [ref=e962]: "false\\n livenessProbe:\\n image:\\n pullPolicy: IfNotPresent\\n repository:"
+                                - generic [ref=e963]: "us-docker.pkg.dev/palette-images/packs/csi-aws-ebs/1.43.0/livenessprobe\\n tag:"
+                                - generic [ref=e964]: "\\\"v2.15.0-eks-1-33-1\\\"\\n # Additional parameters provided by"
+                                - generic [ref=e965]: "livenessprobe.\\n additionalArgs: []\\n resources:"
+                                - generic [ref=e966]: "{}\\n securityContext:\\n readOnlyRootFilesystem:"
+                                - generic [ref=e967]: "true\\n allowPrivilegeEscalation: false\\n resizer:\\n env:"
+                                - generic [ref=e968]: "[]\\n image:\\n pullPolicy: IfNotPresent\\n repository:"
+                                - generic [ref=e969]: "us-docker.pkg.dev/palette-images/packs/csi-aws-ebs/1.43.0/external-resizer\\n tag:"
+                                - generic [ref=e970]: "\\\"v1.13.2-eks-1-33-1\\\"\\n # Tune leader lease election for csi-resizer.\\n # Leader"
+                                - generic [ref=e971]: "election is on by default.\\n leaderElection:\\n enabled: true\\n # Optional"
+                                - generic [ref=e972]: "values to tune lease behavior.\\n # The arguments provided must be in an acceptable"
+                                - generic [ref=e973]: "time.ParseDuration format.\\n # Ref: https://pkg.go.dev/flag#Duration\\n #"
+                                - generic [ref=e974]: "leaseDuration: \\\"15s\\\"\\n # renewDeadline: \\\"10s\\\"\\n # retryPeriod:"
+                                - generic [ref=e975]: "\\\"5s\\\"\\n logLevel: 2\\n # Additional parameters provided by"
+                                - generic [ref=e976]: "external-resizer.\\n additionalArgs: []\\n # Grant additional permissions to"
+                                - generic [ref=e977]: "external-resizer\\n additionalClusterRoleRules: []\\n resources:"
+                                - generic [ref=e978]: "{}\\n securityContext:\\n seccompProfile:\\n type:"
+                                - generic [ref=e979]: "RuntimeDefault\\n readOnlyRootFilesystem: true\\n allowPrivilegeEscalation:"
+                                - generic [ref=e980]: "false\\n nodeDriverRegistrar:\\n env: []\\n image:\\n pullPolicy:"
+                                - generic [ref=e981]: "IfNotPresent\\n repository:"
+                                - generic [ref=e982]: "us-docker.pkg.dev/palette-images/packs/csi-aws-ebs/1.43.0/node-driver-registrar\\n tag:"
+                                - generic [ref=e983]: "\\\"v2.13.0-eks-1-33-1\\\"\\n logLevel: 2\\n # Additional parameters provided by"
+                                - generic [ref=e984]: "node-driver-registrar.\\n additionalArgs: []\\n resources:"
+                                - generic [ref=e985]: "{}\\n securityContext:\\n readOnlyRootFilesystem:"
+                                - generic [ref=e986]: "true\\n allowPrivilegeEscalation:"
+                                - generic [ref=e987]: false\n livenessProbe:\n exec:\n command:\n -
+                                - generic [ref=e988]: /csi-node-driver-registrar\n -
+                                - generic [ref=e989]: "--kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)\\n -"
+                                - generic [ref=e990]: "--mode=kubelet-registration-probe\\n initialDelaySeconds: 30\\n periodSeconds:"
+                                - generic [ref=e991]: "90\\n timeoutSeconds: 15\\n volumemodifier:\\n env:"
+                                - generic [ref=e992]: "[]\\n image:\\n pullPolicy: IfNotPresent\\n repository:"
+                                - generic [ref=e993]: "us-docker.pkg.dev/palette-images/packs/csi-aws-ebs/1.43.0/volume-modifier-for-k8s\\n tag:"
+                                - generic [ref=e994]: "\\\"v0.5.1\\\"\\n leaderElection:\\n enabled: true\\n # Optional values to tune"
+                                - generic [ref=e995]: "lease behavior.\\n # The arguments provided must be in an acceptable time.ParseDuration"
+                                - generic [ref=e996]: "format.\\n # Ref: https://pkg.go.dev/flag#Duration\\n # leaseDuration:"
+                                - generic [ref=e997]: "\\\"15s\\\"\\n # renewDeadline: \\\"10s\\\"\\n # retryPeriod: \\\"5s\\\"\\n logLevel:"
+                                - generic [ref=e998]: "2\\n # Additional parameters provided by volume-modifier-for-k8s.\\n additionalArgs:"
+                                - generic [ref=e999]: "[]\\n resources: {}\\n securityContext:\\n seccompProfile:\\n type:"
+                                - generic [ref=e1000]: "RuntimeDefault\\n readOnlyRootFilesystem: true\\n allowPrivilegeEscalation:"
+                                - generic [ref=e1001]: "false\\n proxy:\\n http_proxy:\\n no_proxy:\\n imagePullSecrets:"
+                                - generic [ref=e1002]: "[]\\n nameOverride:\\n fullnameOverride:\\n awsAccessSecret:\\n name:"
+                                - generic [ref=e1003]: "aws-secret\\n keyId: key_id\\n accessKey: access_key\\n controller:\\n batching:"
+                                - generic [ref=e1004]: "true\\n volumeModificationFeature:\\n enabled: false\\n # Additional parameters provided"
+                                - generic [ref=e1005]: "by aws-ebs-csi-driver controller.\\n additionalArgs: []\\n sdkDebugLog:"
+                                - generic [ref=e1006]: "false\\n loggingFormat:"
+                                - generic [ref=e1007]: text\n affinity:\n nodeAffinity:\n preferredDuringSchedulingIgnoredDuringExecution:\n -
+                                - generic [ref=e1008]: "weight: 1\\n preference:\\n matchExpressions:\\n - key:"
+                                - generic [ref=e1009]: "eks.amazonaws.com/compute-type\\n operator:"
+                                - generic [ref=e1010]: NotIn\n values:\n - fargate\n -
+                                - generic [ref=e1011]: auto\n -
+                                - generic [ref=e1012]: hybrid\n podAntiAffinity:\n preferredDuringSchedulingIgnoredDuringExecution:\n -
+                                - generic [ref=e1013]: podAffinityTerm:\n labelSelector:\n matchExpressions:\n -
+                                - generic [ref=e1014]: "key: app\\n operator: In\\n values:\\n -"
+                                - generic [ref=e1015]: "ebs-csi-controller\\n topologyKey: kubernetes.io/hostname\\n weight:"
+                                - generic [ref=e1016]: "100\\n # The default filesystem type of the volume to provision when fstype is unspecified in the"
+                                - generic [ref=e1017]: "StorageClass.\\n # If the default is not set and fstype is unset in the StorageClass, then no"
+                                - generic [ref=e1018]: "fstype will be set\\n defaultFsType: ext4\\n env: []\\n # Use envFrom to reference"
+                                - generic [ref=e1019]: "ConfigMaps and Secrets across all containers in the deployment\\n envFrom: []\\n # If set, add"
+                                - generic [ref=e1020]: "pv/pvc metadata to plugin create and modify requests as parameters.\\n extraCreateMetadata:"
+                                - generic [ref=e1021]: "true\\n # Extra volume tags to attach to each dynamically provisioned volume.\\n #"
+                                - generic [ref=e1022]: "---\\n # extraVolumeTags:\\n # key1: value1\\n # key2: value2\\n extraVolumeTags:"
+                                - generic [ref=e1023]: "{}\\n httpEndpoint:\\n # (deprecated) The TCP network address where the prometheus metrics"
+                                - generic [ref=e1024]: "endpoint\\n # will run (example: `:8080` which corresponds to port 8080 on local host).\\n #"
+                                - generic [ref=e1025]: "The default is empty string, which means metrics endpoint is disabled.\\n #"
+                                - generic [ref=e1026]: "---\\n enableMetrics: false\\n serviceMonitor:\\n # Enables the ServiceMonitor resource"
+                                - generic [ref=e1027]: "even if the prometheus-operator CRDs are not installed\\n forceEnable: false\\n #"
+                                - generic [ref=e1028]: "Additional labels for ServiceMonitor object\\n labels:\\n release:"
+                                - generic [ref=e1029]: "prometheus\\n interval: \\\"15s\\\"\\n # If set to true, AWS API call metrics will be exported"
+                                - generic [ref=e1030]: "to the following\\n # TCP endpoint: \\\"0.0.0.0:3301\\\"\\n # ---\\n # ID of the Kubernetes"
+                                - generic [ref=e1031]: "cluster used for tagging provisioned EBS volumes (optional).\\n k8sTagClusterId:\\n logLevel:"
+                                - generic [ref=e1032]: "2\\n userAgentExtra: \\\"helm\\\"\\n nodeSelector: {}\\n deploymentAnnotations:"
+                                - generic [ref=e1033]: "{}\\n podAnnotations: {}\\n podLabels: {}\\n podDisruptionBudget:\\n # Warning:"
+                                - generic [ref=e1034]: Disabling PodDisruptionBudget may lead to delays in stateful workloads starting due to
+                                - generic [ref=e1035]: "controller\\n # pod restarts or evictions.\\n enabled: true\\n #"
+                                - generic [ref=e1036]: "unhealthyPodEvictionPolicy:\\n priorityClassName: system-cluster-critical\\n # AWS region to"
+                                - generic [ref=e1037]: "use. If not specified then the region will be looked up via the AWS EC2 metadata\\n #"
+                                - generic [ref=e1038]: "service.\\n # ---\\n # region: us-east-1\\n region:\\n replicaCount:"
+                                - generic [ref=e1039]: "2\\n revisionHistoryLimit: 10\\n socketDirVolume:\\n emptyDir:"
+                                - generic [ref=e1040]: "{}\\n updateStrategy:\\n type:"
+                                - generic [ref=e1041]: "RollingUpdate\\n rollingUpdate:\\n maxUnavailable: 1\\n # type:"
+                                - generic [ref=e1042]: "RollingUpdate\\n # rollingUpdate:\\n # maxSurge: 0\\n # maxUnavailable:"
+                                - generic [ref=e1043]: "1\\n resources:\\n requests:\\n cpu: 10m\\n memory:"
+                                - generic [ref=e1044]: "40Mi\\n limits:\\n memory: 256Mi\\n cpu: 100m\\n serviceAccount:\\n #"
+                                - generic [ref=e1045]: A service account will be created for you if set to true. Set to false if you want to use your
+                                - generic [ref=e1046]: "own.\\n create: true\\n name: ebs-csi-controller-sa\\n annotations: {}\\n ##"
+                                - generic [ref=e1047]: "Enable if EKS IAM for SA is used\\n # eks.amazonaws.com/role-arn:"
+                                - generic [ref=e1048]: "arn:<partition>:iam::<account>:role/ebs-csi-role\\n automountServiceAccountToken:"
+                                - generic [ref=e1049]: "true\\n tolerations:\\n - key: CriticalAddonsOnly\\n operator: Exists\\n -"
+                                - generic [ref=e1050]: "effect: NoExecute\\n operator: Exists\\n tolerationSeconds: 300\\n # TSCs without"
+                                - generic [ref=e1051]: "the label selector stanza\\n #\\n # Example:\\n #\\n #"
+                                - generic [ref=e1052]: "topologySpreadConstraints:\\n # - maxSkew: 1\\n # topologyKey:"
+                                - generic [ref=e1053]: "topology.kubernetes.io/zone\\n # whenUnsatisfiable: ScheduleAnyway\\n # - maxSkew:"
+                                - generic [ref=e1054]: "1\\n # topologyKey: kubernetes.io/hostname\\n # whenUnsatisfiable:"
+                                - generic [ref=e1055]: "ScheduleAnyway\\n topologySpreadConstraints: []\\n # securityContext on the controller"
+                                - generic [ref=e1056]: "pod\\n securityContext:\\n runAsNonRoot: true\\n runAsUser: 1000\\n runAsGroup:"
+                                - generic [ref=e1057]: "1000\\n fsGroup: 1000\\n # Add additional volume mounts on the controller with"
+                                - generic [ref=e1058]: "controller.volumes and controller.volumeMounts\\n volumes: []\\n # Add additional volumes to"
+                                - generic [ref=e1059]: "be mounted onto the controller:\\n # - name: custom-dir\\n # hostPath:\\n # path:"
+                                - generic [ref=e1060]: "/path/to/dir\\n # type: Directory\\n volumeMounts: []\\n # And add mount paths for"
+                                - generic [ref=e1061]: "those additional volumes:\\n # - name: custom-dir\\n # mountPath: /mount/path\\n #"
+                                - generic [ref=e1062]: "---\\n # securityContext on the controller container (see sidecars for securityContext on sidecar"
+                                - generic [ref=e1063]: "containers)\\n containerSecurityContext:\\n seccompProfile:\\n type:"
+                                - generic [ref=e1064]: "RuntimeDefault\\n readOnlyRootFilesystem: true\\n allowPrivilegeEscalation:"
+                                - generic [ref=e1065]: "false\\n initContainers: []\\n # containers to be run before the controller's container"
+                                - generic [ref=e1066]: "starts.\\n #\\n # Example:\\n #\\n # - name: wait\\n # image:"
+                                - generic [ref=e1067]: "public.ecr.aws/amazonlinux/amazonlinux\\n # command: [ 'sh', '-c', \\\"sleep 20\\\" ]\\n #"
+                                - generic [ref=e1068]: "Enable opentelemetry tracing for the plugin running on the daemonset\\n otelTracing:"
+                                - generic [ref=e1069]: "{}\\n # otelServiceName: ebs-csi-controller\\n # otelExporterEndpoint:"
+                                - generic [ref=e1070]: "\\\"http://localhost:4317\\\"\\n\\n # Enable dnsConfig for the controller and node"
+                                - generic [ref=e1071]: "pods\\n dnsConfig: {}\\n node:\\n # Enable SELinux-only optimizations on the EBS CSI Driver"
+                                - generic [ref=e1072]: "node pods\\n # Must only be set true if all linux nodes in the DaemonSet have SELinux"
+                                - generic [ref=e1073]: "enabled\\n selinux: false\\n env: []\\n envFrom: []\\n kubeletPath:"
+                                - generic [ref=e1074]: "/var/lib/kubelet\\n loggingFormat: text\\n logLevel: 2\\n enableMetrics:"
+                                - generic [ref=e1075]: "false\\n priorityClassName:\\n additionalArgs:"
+                                - generic [ref=e1076]: "[]\\n affinity:\\n nodeAffinity:\\n requiredDuringSchedulingIgnoredDuringExecution:\\n nodeSelectorTerms:\\n -"
+                                - generic [ref=e1077]: "matchExpressions:\\n - key:"
+                                - generic [ref=e1078]: "eks.amazonaws.com/compute-type\\n operator:"
+                                - generic [ref=e1079]: NotIn\n values:\n - fargate\n -
+                                - generic [ref=e1080]: "auto\\n - hybrid\\n - key:"
+                                - generic [ref=e1081]: "node.kubernetes.io/instance-type\\n operator:"
+                                - generic [ref=e1082]: NotIn\n values:\n - a1.medium\n -
+                                - generic [ref=e1083]: a1.large\n - a1.xlarge\n -
+                                - generic [ref=e1084]: "a1.2xlarge\\n - a1.4xlarge\\n nodeSelector: {}\\n daemonSetAnnotations:"
+                                - generic [ref=e1085]: "{}\\n podAnnotations: {}\\n podLabels: {}\\n terminationGracePeriodSeconds:"
+                                - generic [ref=e1086]: "30\\n tolerateAllTaints: true\\n tolerations:\\n - operator: Exists\\n effect:"
+                                - generic [ref=e1087]: "NoExecute\\n tolerationSeconds: 300\\n resources:\\n requests:\\n cpu:"
+                                - generic [ref=e1088]: "10m\\n memory: 40Mi\\n limits:\\n memory: 256Mi\\n cpu:"
+                                - generic [ref=e1089]: "100m\\n revisionHistoryLimit: 10\\n probeDirVolume:\\n emptyDir:"
+                                - generic [ref=e1090]: "{}\\n serviceAccount:\\n create: true\\n name: ebs-csi-node-sa\\n annotations:"
+                                - generic [ref=e1091]: "{}\\n ## Enable if EKS IAM for SA is used\\n # eks.amazonaws.com/role-arn:"
+                                - generic [ref=e1092]: "arn:<partition>:iam::<account>:role/ebs-csi-role\\n automountServiceAccountToken: true\\n #"
+                                - generic [ref=e1093]: "Enable the linux daemonset creation\\n enableLinux: true\\n enableWindows: true\\n #"
+                                - generic [ref=e1094]: "Warning: This option will be removed in a future release. It is a temporary workaround for users"
+                                - generic [ref=e1095]: "unable to immediately migrate off of older kernel versions.\\n # Formats XFS volumes with"
+                                - generic [ref=e1096]: "bigtime=0,inobtcount=0,reflink=0, for mounting onto nodes with linux kernel version <= 5.4.\\n #"
+                                - generic [ref=e1097]: Note that XFS volumes formatted with this option will only have timestamp records until
+                                - generic [ref=e1098]: "2038.\\n legacyXFS: false\\n # The number of attachment slots to reserve for system use (and"
+                                - generic [ref=e1099]: "not to be used for CSI volumes)\\n # When this parameter is not specified (or set to -1), the EBS"
+                                - generic [ref=e1100]: "CSI Driver will attempt to determine the number of reserved slots via heuristic\\n # Cannot be"
+                                - generic [ref=e1101]: "specified at the same time as `node.volumeAttachLimit`\\n reservedVolumeAttachments:\\n # The"
+                                - generic [ref=e1102]: "\\\"maximum number of attachable volumes\\\" per node\\n # Cannot be specified at the same time as"
+                                - generic [ref=e1103]: "`node.reservedVolumeAttachments`\\n volumeAttachLimit:\\n updateStrategy:\\n type:"
+                                - generic [ref=e1104]: "RollingUpdate\\n rollingUpdate:\\n maxUnavailable: \\\"10%\\\"\\n hostNetwork:"
+                                - generic [ref=e1105]: "false\\n # securityContext on the node pod\\n securityContext:\\n # The node pod must be"
+                                - generic [ref=e1106]: "run as root to bind to the registration/driver sockets\\n runAsNonRoot:"
+                                - generic [ref=e1107]: "false\\n runAsUser: 0\\n runAsGroup: 0\\n fsGroup: 0\\n # allows you to deploy"
+                                - generic [ref=e1108]: aws-ebs-csi-node daemonset to separate namespace (make sure namespace exists before
+                                - generic [ref=e1109]: "deploy)\\n namespaceOverride: \\\"\\\"\\n # Add additional volume mounts on the node pods with"
+                                - generic [ref=e1110]: "node.volumes and node.volumeMounts\\n volumes: []\\n # Add additional volumes to be mounted"
+                                - generic [ref=e1111]: "onto the node pods:\\n # - name: custom-dir\\n # hostPath:\\n # path:"
+                                - generic [ref=e1112]: "/path/to/dir\\n # type: Directory\\n volumeMounts: []\\n # And add mount paths for"
+                                - generic [ref=e1113]: "those additional volumes:\\n # - name: custom-dir\\n # mountPath: /mount/path\\n #"
+                                - generic [ref=e1114]: "---\\n # securityContext on the node container (see sidecars for securityContext on sidecar"
+                                - generic [ref=e1115]: "containers)\\n # Privileged containers always run as `Unconfined`, which means that they are not"
+                                - generic [ref=e1116]: "restricted by a seccomp profile.\\n containerSecurityContext:\\n readOnlyRootFilesystem:"
+                                - generic [ref=e1117]: "true\\n privileged: true\\n initContainers: []\\n # containers to be run before the"
+                                - generic [ref=e1118]: "csi-node's container starts.\\n #\\n # Example:\\n #\\n # - name:"
+                                - generic [ref=e1119]: "wait\\n # image: public.ecr.aws/amazonlinux/amazonlinux\\n # command: [ 'sh', '-c',"
+                                - generic [ref=e1120]: "\\\"sleep 20\\\" ]\\n # Enable opentelemetry tracing for the plugin running on the"
+                                - generic [ref=e1121]: "daemonset\\n otelTracing: {}\\n # otelServiceName:"
+                                - generic [ref=e1122]: "ebs-csi-node\\n # otelExporterEndpoint:"
+                                - generic [ref=e1123]: "\\\"http://localhost:4317\\\"\\n additionalDaemonSets:\\n # Additional node DaemonSets, using the node"
+                                - generic [ref=e1124]: "config structure\\n # See docs/additional-daemonsets.md for more information\\n #\\n #"
+                                - generic [ref=e1125]: "example:\\n # nodeSelector:\\n # node.kubernetes.io/instance-type:"
+                                - generic [ref=e1126]: "c5.large\\n # volumeAttachLimit: 15\\n\\n # Enable compatibility for the A1 instance family via"
+                                - generic [ref=e1127]: "use of an AL2-based image in a separate DaemonSet\\n # a1CompatibilityDaemonSet: true\\n #"
+                                - generic [ref=e1128]: "storageClasses: []\\n # Add StorageClass resources like:\\n # - name: ebs-sc\\n # # annotation"
+                                - generic [ref=e1129]: "metadata\\n # annotations:\\n # storageclass.kubernetes.io/is-default-class:"
+                                - generic [ref=e1130]: "\\\"true\\\"\\n # # label metadata\\n # labels:\\n # my-label-is: supercool\\n # #"
+                                - generic [ref=e1131]: "defaults to WaitForFirstConsumer\\n # volumeBindingMode: WaitForFirstConsumer\\n # # defaults"
+                                - generic [ref=e1132]: "to Delete\\n # reclaimPolicy: Retain\\n # parameters:\\n # encrypted:"
+                                - generic [ref=e1133]: "\\\"true\\\"\\n defaultStorageClass:\\n enabled: false\\n volumeSnapshotClasses: []\\n # Add"
+                                - generic [ref=e1134]: "VolumeSnapshotClass resources like:\\n # - name: ebs-vsc\\n # # annotation"
+                                - generic [ref=e1135]: "metadata\\n # annotations:\\n # snapshot.storage.kubernetes.io/is-default-class:"
+                                - generic [ref=e1136]: "\\\"true\\\"\\n # # label metadata\\n # labels:\\n # my-label-is: supercool\\n # #"
+                                - generic [ref=e1137]: "deletionPolicy must be specified\\n # deletionPolicy: Delete\\n # parameters:\\n\\n # Use old"
+                                - generic [ref=e1138]: "CSIDriver without an fsGroupPolicy set\\n # Intended for use with older clusters that cannot easily"
+                                - generic [ref=e1139]: "replace the CSIDriver object\\n # This parameter should always be false for new"
+                                - generic [ref=e1140]: "installations\\n useOldCSIDriver: false\\n # Deploy EBS CSI Driver without controller and"
+                                - generic [ref=e1141]: "associated resources\\n nodeComponentOnly: false\\n # Instruct the AWS SDK to use AWS FIPS"
+                                - generic [ref=e1142]: endpoints, and deploy container built with BoringCrypto (a FIPS-validated cryptographic library)
+                                - generic [ref=e1143]: "instead of the Go default\\n #\\n # The EBS CSI Driver FIPS images have not undergone FIPS"
+                                - generic [ref=e1144]: certification, and no official guarnatee is made about the compliance of these images under the FIPS
+                                - generic [ref=e1145]: "standard\\n # Users relying on these images for FIPS compliance should perform their own independent"
+                                - generic [ref=e1146]: "evaluation\\n fips: false\""
+                                - generic [ref=e1147]: "providerConfigRef:"
+                                - generic [ref=e1148]: "name: provider-palette"
+                              - generic [ref=e1149]:
+                                - button "Toggle word wrap" [ref=e1150] [cursor=pointer]:
+                                  - img [ref=e1151]
+                                - button "Copy code to clipboard" [ref=e1153] [cursor=pointer]:
+                                  - generic [ref=e1154]:
+                                    - img [ref=e1155]
+                                    - img [ref=e1157]
+                            - paragraph [ref=e1159]: The cluster profile contains the following core infrastructure layers.
+                            - table [ref=e1160]:
+                              - rowgroup [ref=e1161]:
+                                - row "Pack Type Registry Pack Name Pack Version" [ref=e1162]:
+                                  - cell "Pack Type" [ref=e1163]:
+                                    - strong [ref=e1164]: Pack Type
+                                  - cell "Registry" [ref=e1165]:
+                                    - strong [ref=e1166]: Registry
+                                  - cell "Pack Name" [ref=e1167]:
+                                    - strong [ref=e1168]: Pack Name
+                                  - cell "Pack Version" [ref=e1169]:
+                                    - strong [ref=e1170]: Pack Version
+                              - rowgroup [ref=e1171]:
+                                - row "OS Public Repo ubuntu-aws 22.04" [ref=e1172]:
+                                  - cell "OS" [ref=e1173]
+                                  - cell "Public Repo" [ref=e1174]
+                                  - cell "ubuntu-aws" [ref=e1175]:
+                                    - code [ref=e1176]: ubuntu-aws
+                                  - cell "22.04" [ref=e1177]:
+                                    - code [ref=e1178]: "22.04"
+                                - row "Kubernetes Public Repo kubernetes 1.32.4" [ref=e1179]:
+                                  - cell "Kubernetes" [ref=e1180]
+                                  - cell "Public Repo" [ref=e1181]
+                                  - cell "kubernetes" [ref=e1182]:
+                                    - code [ref=e1183]: kubernetes
+                                  - cell "1.32.4" [ref=e1184]:
+                                    - code [ref=e1185]: 1.32.4
+                                - row "Network Public Repo cni-calico 3.30.1" [ref=e1186]:
+                                  - cell "Network" [ref=e1187]
+                                  - cell "Public Repo" [ref=e1188]
+                                  - cell "cni-calico" [ref=e1189]:
+                                    - code [ref=e1190]: cni-calico
+                                  - cell "3.30.1" [ref=e1191]:
+                                    - code [ref=e1192]: 3.30.1
+                                - row "Storage Public Repo csi-aws-ebs 1.43.0" [ref=e1193]:
+                                  - cell "Storage" [ref=e1194]
+                                  - cell "Public Repo" [ref=e1195]
+                                  - cell "csi-aws-ebs" [ref=e1196]:
+                                    - code [ref=e1197]: csi-aws-ebs
+                                  - cell "1.43.0" [ref=e1198]:
+                                    - code [ref=e1199]: 1.43.0
+                            - generic [ref=e1200]:
+                              - generic [ref=e1201]:
+                                - img [ref=e1203]
+                                - text: tip
+                              - paragraph [ref=e1206]:
+                                - text: If you want to use different packs in your cluster profile, use the Palette UI to simulate creating a cluster profile to gather the pack's required values. During the cluster profile creation, select the
+                                - strong [ref=e1207]: API
+                                - text: button in the top-right to display the API payload. Replace the values of each pack's
+                                - code [ref=e1208]: name
+                                - text: ","
+                                - code [ref=e1209]: tag
+                                - text: ","
+                                - code [ref=e1210]: uid
+                                - text: ","
+                                - code [ref=e1211]: registryUid
+                                - text: ", and"
+                                - code [ref=e1212]: values
+                                - text: as necessary. For information on creating cluster profiles, refer to our
+                                - link "Create Cluster Profiles" [ref=e1213] [cursor=pointer]:
+                                  - /url: /profiles/cluster-profiles/create-cluster-profiles
+                                - text: guide.
+                          - listitem [ref=e1214]:
+                            - paragraph [ref=e1215]: Create the cluster profile in Palette.
+                            - generic [ref=e1217]:
+                              - code [ref=e1219]:
+                                - generic [ref=e1220]: kubectl apply --filename crossplane-aws/cluster-profile-aws.yaml
+                              - generic [ref=e1221]:
+                                - button "Toggle word wrap" [ref=e1222] [cursor=pointer]:
+                                  - img [ref=e1223]
+                                - button "Copy code to clipboard" [ref=e1225] [cursor=pointer]:
+                                  - generic [ref=e1226]:
+                                    - img [ref=e1227]
+                                    - img [ref=e1229]
+                            - generic [ref=e1231]:
+                              - generic [ref=e1232]: Example output
+                              - generic [ref=e1233]:
+                                - code [ref=e1235]:
+                                  - generic [ref=e1236]: profile.cluster.palette.crossplane.io/aws-crossplane-cluster-profile created
+                                - button "Toggle word wrap" [ref=e1238] [cursor=pointer]:
+                                  - img [ref=e1239]
+                          - listitem [ref=e1241]:
+                            - paragraph [ref=e1242]: Issue the commands below to get the ID of the cluster profile once it is created and save it as a variable.
+                            - generic [ref=e1244]:
+                              - code [ref=e1246]:
+                                - generic [ref=e1247]: kubectl wait --for=condition=Ready profile.cluster.palette.crossplane.io/aws-crossplane-cluster-profile --timeout=60s
+                                - generic [ref=e1248]: "CLUSTER_PROFILE_ID=$(kubectl get profile.cluster.palette.crossplane.io aws-crossplane-cluster-profile --output jsonpath='{.status.atProvider.id}')"
+                                - generic [ref=e1249]: "echo Cluster Profile ID: $CLUSTER_PROFILE_ID"
+                              - generic [ref=e1250]:
+                                - button "Toggle word wrap" [ref=e1251] [cursor=pointer]:
+                                  - img [ref=e1252]
+                                - button "Copy code to clipboard" [ref=e1254] [cursor=pointer]:
+                                  - generic [ref=e1255]:
+                                    - img [ref=e1256]
+                                    - img [ref=e1258]
+                            - generic [ref=e1260]:
+                              - generic [ref=e1261]: Example output
+                              - generic [ref=e1262]:
+                                - code [ref=e1264]:
+                                  - generic [ref=e1265]: profile.cluster.palette.crossplane.io/aws-crossplane-cluster-profile condition met
+                                  - generic [ref=e1266]: "Cluster Profile ID: 68960ddf222fa7f0046e80ed"
+                                - button "Toggle word wrap" [ref=e1268] [cursor=pointer]:
+                                  - img [ref=e1269]
+                  - listitem [ref=e1271]:
+                    - paragraph [ref=e1272]:
+                      - text: Next, set your Palette AWS account name as a variable. Replace
+                      - code [ref=e1273]: <aws-account-name>
+                      - text: with the name under which you registered your AWS account in Palette. This is the display name that appears under
+                      - strong [ref=e1274]: Cloud Accounts
+                      - text: in
+                      - strong [ref=e1275]: Tenant Settings
+                      - text: or
+                      - strong [ref=e1276]: Project Settings
+                      - text: ","
+                      - emphasis [ref=e1277]: not
+                      - text: the actual name of your AWS account.
+                    - generic [ref=e1279]:
+                      - code [ref=e1281]:
+                        - generic [ref=e1282]: PALETTE_AWS_CLOUD_ACCOUNT_NAME=<aws-account-name>
+                      - button "Copy code to clipboard" [ref=e1284] [cursor=pointer]:
+                        - generic [ref=e1285]:
+                          - img [ref=e1286]
+                          - img [ref=e1288]
+                    - paragraph [ref=e1290]:
+                      - text: In the example below, the Palette AWS account name is
+                      - code [ref=e1291]: spectro-cloud
+                      - text: .
+                    - paragraph [ref=e1292]:
+                      - img "AWS account name in Palette" [ref=e1293]
+                  - listitem [ref=e1294]:
+                    - paragraph [ref=e1295]:
+                      - text: Fetch the ID of your AWS cloud account registered in Palette by invoking the
+                      - code [ref=e1296]: cloudaccounts
+                      - text: Palette API.
+                    - generic [ref=e1298]:
+                      - code [ref=e1300]:
+                        - generic [ref=e1301]: "AWS_CLOUD_ACCOUNT_ID=$(curl --location --request GET \"https://api.${PALETTE_HOST}/v1/cloudaccounts/aws\" \\"
+                        - generic [ref=e1302]: "-H 'Accept: application/json' \\"
+                        - generic [ref=e1303]: "-H \"ApiKey: $PALETTE_API_KEY\" \\"
+                        - generic [ref=e1304]: "| jq --arg name \"$PALETTE_AWS_CLOUD_ACCOUNT_NAME\" '.items[] | select(.metadata.name == $name) | .metadata.uid' -r)"
+                        - generic [ref=e1305]: "echo Cloud Account ID: $AWS_CLOUD_ACCOUNT_ID"
+                      - generic [ref=e1306]:
+                        - button "Toggle word wrap" [ref=e1307] [cursor=pointer]:
+                          - img [ref=e1308]
+                        - button "Copy code to clipboard" [ref=e1310] [cursor=pointer]:
+                          - generic [ref=e1311]:
+                            - img [ref=e1312]
+                            - img [ref=e1314]
+                    - generic [ref=e1316]:
+                      - generic [ref=e1317]: Example output
+                      - code [ref=e1320]:
+                        - generic [ref=e1321]: "Cloud Account ID: 67bdef49b2fc3ec6c1774686"
+                  - listitem [ref=e1322]:
+                    - paragraph [ref=e1323]:
+                      - text: Use the following command to create a file to store your AWS IaaS cluster configuration. Replace
+                      - code [ref=e1324]: <ssh-key-name>
+                      - text: with the name of your AWS EC2 SSH key that belongs to the region where you want to deploy your cluster.
+                    - paragraph [ref=e1325]: Optionally, edit the region, availability zone, instance type, and number of cluster nodes according to your workload.
+                    - generic [ref=e1327]:
+                      - code [ref=e1329]:
+                        - generic [ref=e1330]: cat << EOF > crossplane-aws/cluster-aws.yaml
+                        - generic [ref=e1331]: "apiVersion: cluster.palette.crossplane.io/v1alpha1"
+                        - generic [ref=e1332]: "kind: Aws"
+                        - generic [ref=e1333]: "metadata:"
+                        - generic [ref=e1334]: "name: aws-crossplane-cluster"
+                        - generic [ref=e1335]: "namespace: crossplane-system"
+                        - generic [ref=e1336]: "spec:"
+                        - generic [ref=e1337]: "forProvider:"
+                        - generic [ref=e1338]: "name: aws-crossplane-cluster"
+                        - generic [ref=e1339]: "cloudConfig:"
+                        - generic [ref=e1340]: "- sshKeyName: <ssh-key-name>"
+                        - generic [ref=e1341]: "region: us-east-1"
+                        - generic [ref=e1342]: "machinePool:"
+                        - generic [ref=e1343]: "- azs:"
+                        - generic [ref=e1344]: "- us-east-1a"
+                        - generic [ref=e1345]: "count: 2"
+                        - generic [ref=e1346]: "instanceType: t3.xlarge"
+                        - generic [ref=e1347]: "name: machinepool1"
+                        - generic [ref=e1348]: "- azs:"
+                        - generic [ref=e1349]: "- us-east-1a"
+                        - generic [ref=e1350]: "count: 1"
+                        - generic [ref=e1351]: "instanceType: m4.2xlarge"
+                        - generic [ref=e1352]: "name: controlplanepool"
+                        - generic [ref=e1353]: "controlPlane: true"
+                        - generic [ref=e1354]: "clusterProfile:"
+                        - generic [ref=e1355]: "- id: $CLUSTER_PROFILE_ID"
+                        - generic [ref=e1356]: "cloudAccountId: $AWS_CLOUD_ACCOUNT_ID"
+                        - generic [ref=e1357]: "providerConfigRef:"
+                        - generic [ref=e1358]: "name: provider-palette"
+                        - generic [ref=e1359]: EOF
+                      - button "Copy code to clipboard" [ref=e1361] [cursor=pointer]:
+                        - generic [ref=e1362]:
+                          - img [ref=e1363]
+                          - img [ref=e1365]
+                  - listitem [ref=e1367]:
+                    - paragraph [ref=e1368]: Create the AWS IaaS cluster.
+                    - generic [ref=e1370]:
+                      - code [ref=e1372]:
+                        - generic [ref=e1373]: kubectl apply --filename crossplane-aws/cluster-aws.yaml
+                      - button "Copy code to clipboard" [ref=e1375] [cursor=pointer]:
+                        - generic [ref=e1376]:
+                          - img [ref=e1377]
+                          - img [ref=e1379]
+                    - generic [ref=e1381]:
+                      - generic [ref=e1382]: Example output
+                      - generic [ref=e1383]:
+                        - code [ref=e1385]:
+                          - generic [ref=e1386]: aws.cluster.palette.crossplane.io/aws-crossplane-cluster created
+                        - button "Toggle word wrap" [ref=e1388] [cursor=pointer]:
+                          - img [ref=e1389]
+                  - listitem [ref=e1391]:
+                    - paragraph [ref=e1392]: Wait for the cluster to be created. Cluster provisioning may take up to one hour.
+                    - generic [ref=e1394]:
+                      - code [ref=e1396]:
+                        - generic [ref=e1397]: kubectl wait --for=condition=Ready aws.cluster.palette.crossplane.io/aws-crossplane-cluster --timeout=1h
+                      - generic [ref=e1398]:
+                        - button "Toggle word wrap" [ref=e1399] [cursor=pointer]:
+                          - img [ref=e1400]
+                        - button "Copy code to clipboard" [ref=e1402] [cursor=pointer]:
+                          - generic [ref=e1403]:
+                            - img [ref=e1404]
+                            - img [ref=e1406]
+                    - paragraph [ref=e1408]: Once ready, you should receive output similar to the following.
+                    - generic [ref=e1409]:
+                      - generic [ref=e1410]: Example output
+                      - generic [ref=e1411]:
+                        - code [ref=e1413]:
+                          - generic [ref=e1414]: aws.cluster.palette.crossplane.io/aws-crossplane-cluster condition met
+                        - button "Toggle word wrap" [ref=e1416] [cursor=pointer]:
+                          - img [ref=e1417]
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e1419]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e1420] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e1421]:
+                  - listitem [ref=e1422]:
+                    - paragraph [ref=e1423]:
+                      - text: Log in to
+                      - link "Palette" [ref=e1424] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e1425]:
+                    - paragraph [ref=e1426]:
+                      - text: From the left main menu, select
+                      - strong [ref=e1427]: Clusters
+                      - text: .
+                  - listitem [ref=e1428]:
+                    - paragraph [ref=e1429]:
+                      - text: Verify the deployed cluster named
+                      - code [ref=e1430]: aws-crossplane-cluster
+                      - text: is displayed and has a
+                      - strong [ref=e1431]: Cluster Status
+                      - text: of
+                      - strong [ref=e1432]: Running
+                      - text: and a
+                      - strong [ref=e1433]: Health
+                      - text: status of
+                      - strong [ref=e1434]: Healthy
+                      - text: .
+              - generic [ref=e1435]:
+                - generic [ref=e1437]:
+                  - text: "Tags:"
+                  - list [ref=e1438]:
+                    - listitem [ref=e1439]:
+                      - link "crossplane" [ref=e1440] [cursor=pointer]:
+                        - /url: /tags/crossplane/
+                    - listitem [ref=e1441]:
+                      - link "aws" [ref=e1442] [cursor=pointer]:
+                        - /url: /tags/aws/
+                    - listitem [ref=e1443]:
+                      - link "iac" [ref=e1444] [cursor=pointer]:
+                        - /url: /tags/iac/
+                    - listitem [ref=e1445]:
+                      - link "infrastructure as code" [ref=e1446] [cursor=pointer]:
+                        - /url: /tags/infrastructure-as-code/
+                - link "Edit this page" [ref=e1449] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/automation/crossplane/deploy-cluster-aws-crossplane.md
+                  - img [ref=e1450]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e1454]:
+              - link "Previous « Crossplane" [ref=e1455] [cursor=pointer]:
+                - /url: /automation/crossplane/
+                - generic [ref=e1456]: Previous
+                - generic [ref=e1457]: « Crossplane
+              - link "Next Deploy an Azure IaaS Cluster with Crossplane »" [ref=e1458] [cursor=pointer]:
+                - /url: /automation/crossplane/deploy-cluster-azure-crossplane/
+                - generic [ref=e1459]: Next
+                - generic [ref=e1460]: Deploy an Azure IaaS Cluster with Crossplane »
+          - list [ref=e1463]:
+            - listitem [ref=e1464]:
+              - link "Prerequisites" [ref=e1465] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e1466]:
+              - link "Deploy an AWS IaaS Cluster with Crossplane" [ref=e1467] [cursor=pointer]:
+                - /url: "#deploy-an-aws-iaas-cluster-with-crossplane"
+            - listitem [ref=e1468]:
+              - link "Validate" [ref=e1469] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e1470] [cursor=pointer]:
+    - generic [ref=e1473]:
+      - img "Project Logo" [ref=e1474]
+      - paragraph [ref=e1475]: Ask AI
+```

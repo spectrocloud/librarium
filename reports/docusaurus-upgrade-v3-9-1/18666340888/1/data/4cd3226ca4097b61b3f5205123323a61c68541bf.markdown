@@ -1,0 +1,214 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Palette Tutorials" [ref=e41] [cursor=pointer]:
+                  - /url: /tutorials/
+                  - img [ref=e43]
+                  - text: Palette Tutorials
+              - listitem [ref=e45]:
+                - generic [ref=e46]:
+                  - link "Getting Started" [expanded] [ref=e47] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/
+                    - img [ref=e49]
+                    - text: Getting Started
+                  - button "Toggle the collapsible sidebar category 'Getting Started'" [ref=e51] [cursor=pointer]
+                - list [ref=e52]:
+                  - listitem [ref=e53]:
+                    - generic [ref=e54]:
+                      - link "Palette" [ref=e55] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette/
+                      - button "Toggle the collapsible sidebar category 'Palette'" [ref=e56] [cursor=pointer]
+                  - listitem [ref=e57]:
+                    - generic [ref=e58]:
+                      - link "Palette Edge" [ref=e59] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette-edge/
+                      - button "Toggle the collapsible sidebar category 'Palette Edge'" [ref=e60] [cursor=pointer]
+                  - listitem [ref=e61]:
+                    - generic [ref=e62]:
+                      - link "Additional Capabilities" [expanded] [ref=e63] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/additional-capabilities/
+                      - button "Toggle the collapsible sidebar category 'Additional Capabilities'" [ref=e64] [cursor=pointer]
+                    - list [ref=e65]:
+                      - listitem [ref=e66]:
+                        - link "VerteX and Self-Hosted Palette" [ref=e67] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/additional-capabilities/self-hosted/
+                      - listitem [ref=e68]:
+                        - link "Virtual Machine Orchestrator" [ref=e69] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/additional-capabilities/vmo/
+              - listitem [ref=e70]:
+                - generic [ref=e71]:
+                  - link "Packs and Registries" [ref=e72] [cursor=pointer]:
+                    - /url: /tutorials/packs-registries/
+                    - img [ref=e74]
+                    - text: Packs and Registries
+                  - button "Toggle the collapsible sidebar category 'Packs and Registries'" [ref=e76] [cursor=pointer]
+              - listitem [ref=e77]:
+                - generic [ref=e78]:
+                  - link "Profiles" [ref=e79] [cursor=pointer]:
+                    - /url: /tutorials/profiles/
+                    - img [ref=e81]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e85] [cursor=pointer]
+              - listitem [ref=e86]:
+                - generic [ref=e87]:
+                  - link "Clusters" [ref=e88] [cursor=pointer]:
+                    - /url: /tutorials/clusters/
+                    - img [ref=e90]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e96] [cursor=pointer]
+              - listitem [ref=e97]:
+                - generic [ref=e98]:
+                  - link "Palette Dev Engine" [ref=e99] [cursor=pointer]:
+                    - /url: /tutorials/pde/
+                    - img [ref=e101]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e103] [cursor=pointer]
+              - listitem [ref=e104]:
+                - button "Privacy Settings" [ref=e105] [cursor=pointer]
+      - main [ref=e106]:
+        - generic [ref=e108]:
+          - generic [ref=e110]:
+            - article [ref=e111]:
+              - navigation "Breadcrumbs" [ref=e112]:
+                - list [ref=e113]:
+                  - listitem [ref=e114]:
+                    - link "Home page" [ref=e115] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e116]
+                  - listitem [ref=e118]:
+                    - link "Getting Started" [ref=e119] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/
+                  - listitem [ref=e120]:
+                    - generic [ref=e121]: Additional Capabilities
+              - generic [ref=e122]:
+                - heading "Additional Capabilities" [level=1] [ref=e124]
+                - paragraph [ref=e125]: Palette offers a range of additional capabilities designed to enable its users to deploy, scale, and effectively manage Kubernetes workloads across a wide variety of environments and deployment options.
+                - paragraph [ref=e126]: "This section introduces you to some of Palette's additional capabilities, which include:"
+                - list [ref=e127]:
+                  - listitem [ref=e128]:
+                    - text: Supporting high-security requirements with our FIPS-validated
+                    - link "VerteX" [ref=e129] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/additional-capabilities/self-hosted/#palette-vertex
+                    - text: edition.
+                  - listitem [ref=e130]:
+                    - text: Self-hosting the Palette management plane in your own environment with
+                    - link "Self-Hosted Palette" [ref=e131] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/additional-capabilities/self-hosted/#self-hosted-palette
+                    - text: .
+                  - listitem [ref=e132]:
+                    - text: Integrating virtual machine workloads into Kubernetes environments with
+                    - link "Virtual Machine Orchestrator" [ref=e133] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/additional-capabilities/vmo/
+                    - text: .
+                - paragraph [ref=e134]:
+                  - img "A drawing of Palette with humans interacting" [ref=e135]
+                - paragraph [ref=e136]: The concepts you learn about in the Getting Started section are centered around a fictional case study company, Spacetastic Ltd.
+                - heading "🧑‍🚀 Back at Spacetastic HQDirect link to 🧑‍🚀 Back at Spacetastic HQ" [level=2] [ref=e137]:
+                  - text: 🧑‍🚀 Back at Spacetastic HQ
+                  - link "Direct link to 🧑‍🚀 Back at Spacetastic HQ" [ref=e138] [cursor=pointer]:
+                    - /url: "#-back-at-spacetastic-hq"
+                    - text: "#"
+                - paragraph [ref=e139]: Spacetastic has been a Palette customer for a few months. In this time, they have become the leading astronomy education platform. They want to keep pushing the limits of their platform and implement some innovative capabilities. To support this growth, they will need to expand their team, infrastructure, and systems. They continue exploring the Getting Started section to learn how they can grow with Palette and have a long-term relationship with Spectro Cloud.
+                - blockquote [ref=e140]:
+                  - paragraph [ref=e141]: As we continue to grow, we need a more flexible infrastructure that can handle both our containerized applications and virtual machine-based services, as we have some legacy scientific tools that cannot be containerized," says Anya, the lead astrophysicist and the team's dreamer. "Supporting these tools while modernizing and scaling our platform is essential to bringing astronomy into everyone's home."
+                  - paragraph [ref=e142]: Kai is in charge of scaling the Spacetastic platform. "That would be a challenge for us, Anya." they say.
+                  - paragraph [ref=e143]: "\"You know, we might be able to make your dream happen!\" says Wren, Founding Engineer. \"Palette's Virtual Machine Orchestrator allows you to deploy, manage, and scale VM workloads side by side with containerized applications.\""
+                  - paragraph [ref=e144]: "\"I can't believe my ears!\" says Kai laughing. \"Wren, our resident Palette skeptic, has well and truly embraced our new platform solution.\""
+                  - paragraph [ref=e145]: Wren laughs and quickly responds. "Oh and one more thing! Palette VMO doesn't lock us into a single tech stack or cloud provider, so we can deploy our services in many locations."
+                  - paragraph [ref=e146]: "\"With VMO, we'll be able to use VMs for sensitive workloads, ensuring that critical data is securely isolated. says Meera, Head of Cybersecurity, joining in. \"We'll make your dream a reality and bring Spacetastic to everyone, Anya. The sky's the limit for us!\""
+                - heading "The Journey ContinuesDirect link to The Journey Continues" [level=2] [ref=e147]:
+                  - text: The Journey Continues
+                  - link "Direct link to The Journey Continues" [ref=e148] [cursor=pointer]:
+                    - /url: "#the-journey-continues"
+                    - text: "#"
+                - paragraph [ref=e149]: In this section, you get an overview of other parts of Palette not yet covered by your Getting Started journey so far. Explore more through the following pages.
+                - generic [ref=e150]:
+                  - link "VerteX and Self-Hosted Palette Read about our dedicated Palette offerings, VerteX and Self-Hosted Palette. Learn more" [ref=e151] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/additional-capabilities/self-hosted
+                    - generic [ref=e152]:
+                      - generic [ref=e154]: VerteX and Self-Hosted Palette
+                      - paragraph [ref=e156]: Read about our dedicated Palette offerings, VerteX and Self-Hosted Palette.
+                      - button "Learn more" [ref=e158]:
+                        - text: Learn more
+                        - img [ref=e159]
+                  - link "Virtual Machine Orchestrator Learn about Palette's Virtual Machine Orchestrator (VMO) and its management capabilities. Learn more" [ref=e161] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/additional-capabilities/vmo
+                    - generic [ref=e162]:
+                      - generic [ref=e164]: Virtual Machine Orchestrator
+                      - paragraph [ref=e166]: Learn about Palette's Virtual Machine Orchestrator (VMO) and its management capabilities.
+                      - button "Learn more" [ref=e168]:
+                        - text: Learn more
+                        - img [ref=e169]
+              - generic [ref=e171]:
+                - generic [ref=e173]:
+                  - text: "Tags:"
+                  - list [ref=e174]:
+                    - listitem [ref=e175]:
+                      - link "getting-started" [ref=e176] [cursor=pointer]:
+                        - /url: /tags/getting-started/
+                    - listitem [ref=e177]:
+                      - link "tutorial" [ref=e178] [cursor=pointer]:
+                        - /url: /tags/tutorial/
+                - link "Edit this page" [ref=e181] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/tutorials/getting-started/additional-capabilities/additional-capabilities.md
+                  - img [ref=e182]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e186]:
+              - link "Previous « Deploy Edge Cluster" [ref=e187] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette-edge/deploy-edge-cluster/
+                - generic [ref=e188]: Previous
+                - generic [ref=e189]: « Deploy Edge Cluster
+              - link "Next VerteX and Self-Hosted Palette »" [ref=e190] [cursor=pointer]:
+                - /url: /tutorials/getting-started/additional-capabilities/self-hosted/
+                - generic [ref=e191]: Next
+                - generic [ref=e192]: VerteX and Self-Hosted Palette »
+          - list [ref=e195]:
+            - listitem [ref=e196]:
+              - link "🧑‍🚀 Back at Spacetastic HQ" [ref=e197] [cursor=pointer]:
+                - /url: "#-back-at-spacetastic-hq"
+            - listitem [ref=e198]:
+              - link "The Journey Continues" [ref=e199] [cursor=pointer]:
+                - /url: "#the-journey-continues"
+  - button "Project Logo Ask AI" [ref=e200] [cursor=pointer]:
+    - generic [ref=e203]:
+      - img "Project Logo" [ref=e204]
+      - paragraph [ref=e205]: Ask AI
+```

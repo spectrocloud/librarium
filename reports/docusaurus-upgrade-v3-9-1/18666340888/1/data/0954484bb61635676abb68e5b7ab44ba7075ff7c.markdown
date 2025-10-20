@@ -1,0 +1,426 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [expanded] [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+                - list [ref=e61]:
+                  - listitem [ref=e62]:
+                    - link "Palette Dashboard" [ref=e63] [cursor=pointer]:
+                      - /url: /introduction/dashboard/
+                  - listitem [ref=e64]:
+                    - link "App Mode and Cluster Mode" [ref=e65] [cursor=pointer]:
+                      - /url: /introduction/palette-modes/
+                  - listitem [ref=e66]:
+                    - link "Resource Usage Calculation" [ref=e67] [cursor=pointer]:
+                      - /url: /introduction/resource-usage-estimation/
+              - listitem [ref=e68]:
+                - link "Getting Started" [ref=e69] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e71]
+                  - text: Getting Started
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Architecture" [ref=e75] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e77]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e79] [cursor=pointer]
+              - listitem [ref=e80]:
+                - generic [ref=e81]:
+                  - link "Profiles" [ref=e82] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e84]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Cluster Templates" [ref=e91] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e93]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Deployment Modes" [ref=e98] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e100]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e102] [cursor=pointer]
+              - listitem [ref=e103]:
+                - generic [ref=e104]:
+                  - link "Clusters" [ref=e105] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e107]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e116] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e118]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Palette Dev Engine" [ref=e123] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e125]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Virtual Machine Orchestrator" [ref=e130] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e132]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Workspaces" [ref=e137] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e139]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "Packs List" [ref=e144] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e146]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "User & Role Management" [ref=e151] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e153]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Registries and Packs" [ref=e158] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e160]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Security" [ref=e165] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e167]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Audit Logs" [ref=e172] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e174]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Self-Hosted Palette" [ref=e179] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e181]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e183] [cursor=pointer]
+              - listitem [ref=e184]:
+                - generic [ref=e185]:
+                  - link "Palette VerteX" [ref=e186] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e188]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e190] [cursor=pointer]
+              - listitem [ref=e191]:
+                - generic [ref=e192]:
+                  - link "Tenant Administration" [ref=e193] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e195]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e197] [cursor=pointer]
+              - listitem [ref=e198]:
+                - generic [ref=e199]:
+                  - link "Automation" [ref=e200] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e202]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e204] [cursor=pointer]
+              - listitem [ref=e205]:
+                - generic [ref=e206]:
+                  - link "Troubleshooting" [ref=e207] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e209]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e211] [cursor=pointer]
+              - listitem [ref=e212]:
+                - link "Glossary" [ref=e213] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e215]
+                  - text: Glossary
+              - listitem [ref=e217]:
+                - generic [ref=e218]:
+                  - link "Compliance & Legal" [ref=e219] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e221]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e223] [cursor=pointer]
+              - listitem [ref=e224]:
+                - button "Privacy Settings" [ref=e225] [cursor=pointer]:
+                  - img [ref=e226]
+                  - text: Privacy Settings
+      - main [ref=e228]:
+        - generic [ref=e230]:
+          - generic [ref=e232]:
+            - article [ref=e233]:
+              - navigation "Breadcrumbs" [ref=e234]:
+                - list [ref=e235]:
+                  - listitem [ref=e236]:
+                    - link "Home page" [ref=e237] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e238]
+                  - listitem [ref=e240]:
+                    - link "What is Palette?" [ref=e241] [cursor=pointer]:
+                      - /url: /
+                  - listitem [ref=e242]:
+                    - generic [ref=e243]: Palette Dashboard
+              - generic [ref=e244]:
+                - heading "Palette Dashboard" [level=1] [ref=e246]
+                - paragraph [ref=e247]:
+                  - text: This section is a tour of Palette's two main dashboards - the
+                  - strong [ref=e248]: Project
+                  - text: dashboard and the
+                  - strong [ref=e249]: Tenant Admin
+                  - text: dashboard. The
+                  - strong [ref=e250]: Project
+                  - text: dashboard is for non-admin users to perform operations related to setting up Kubernetes clusters, creating cluster profiles, creating cloud accounts, and deploying clusters. The
+                  - strong [ref=e251]: Tenant Admin
+                  - text: dashboard is used to perform administrative tasks such as setting up Single Sign On (SSO), creating users and teams, setting up Role-Based Access Control (RBAC), and setting up additional package registries.
+                - paragraph [ref=e252]:
+                  - text: The
+                  - strong [ref=e253]: Tenant Admin
+                  - text: dashboard is only available to users who have the Tenant Admin role. Tenant admin users can toggle between the
+                  - strong [ref=e254]: Project
+                  - text: dashboard and
+                  - strong [ref=e255]: Tenant Admin
+                  - text: dashboard. Users without the tenant admin role can only view the
+                  - strong [ref=e256]: Project
+                  - text: dashboard.
+                - heading "Project DashboardDirect link to Project Dashboard" [level=2] [ref=e257]:
+                  - text: Project Dashboard
+                  - link "Direct link to Project Dashboard" [ref=e258] [cursor=pointer]:
+                    - /url: "#project-dashboard"
+                    - text: "#"
+                - paragraph [ref=e259]:
+                  - text: The
+                  - strong [ref=e260]: Project
+                  - text: dashboard shows available views for non-admin users. Numbered items in the screenshot are described in the list below.
+                - paragraph [ref=e261]:
+                  - img "A screenshot of the Project dashboard with numbered UI elements described in this document." [ref=e262]
+                - list [ref=e263]:
+                  - listitem [ref=e264]:
+                    - paragraph [ref=e265]:
+                      - text: Projects are used to organize the cluster resources within a logical group. Use the
+                      - strong [ref=e266]: drop-down Menu
+                      - text: to shift between projects.
+                  - listitem [ref=e267]:
+                    - paragraph [ref=e268]:
+                      - text: The
+                      - link "Project Overview" [ref=e269] [cursor=pointer]:
+                        - /url: /tenant-settings/projects/
+                      - text: shows the resource and cost consumption of the selected project.
+                  - listitem [ref=e270]:
+                    - paragraph [ref=e271]:
+                      - link "Cluster profiles" [ref=e272] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/
+                      - text: are instantiated templates that are created with pre-configured layers needed for cluster deployments.
+                  - listitem [ref=e273]:
+                    - paragraph [ref=e274]:
+                      - text: Kubernetes
+                      - link "clusters" [ref=e275] [cursor=pointer]:
+                        - /url: /clusters/
+                      - text: in Palette are instantiated from cluster profiles.
+                  - listitem [ref=e276]:
+                    - paragraph [ref=e277]:
+                      - link "Cluster groups" [ref=e278] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                      - text: are a collection of one or more host clusters that together form a computing platform for users to deploy Palette Virtual Clusters. Downstream consumers can use the cluster group when using Palette in
+                      - link "App Mode" [ref=e279] [cursor=pointer]:
+                        - /url: /introduction/palette-modes/#what-is-app-mode
+                      - text: .
+                  - listitem [ref=e280]:
+                    - paragraph [ref=e281]:
+                      - link "Workspaces" [ref=e282] [cursor=pointer]:
+                        - /url: /workspace/
+                      - text: enable the coupling of relevant namespaces across multiple clusters to manage access, obtain cost, and workload visibility by applications or teams.
+                  - listitem [ref=e283]:
+                    - paragraph [ref=e284]:
+                      - link "Audit logs" [ref=e285] [cursor=pointer]:
+                        - /url: /audit-logs/
+                      - text: display the log of activities within a certain time frame.
+                  - listitem [ref=e286]:
+                    - paragraph [ref=e287]:
+                      - strong [ref=e288]: Project Settings
+                      - text: allow users to configure settings for cloud accounts, backup locations, and alerts. It also allows users to upload SSH keys. Keys can be recalled when deploying a cluster. Platform settings are also available for controlling auto upgrades and auto remediation of unhealthy nodes in Palette-provisioned clusters.
+                - heading "Tenant Admin DashboardDirect link to Tenant Admin Dashboard" [level=2] [ref=e289]:
+                  - text: Tenant Admin Dashboard
+                  - link "Direct link to Tenant Admin Dashboard" [ref=e290] [cursor=pointer]:
+                    - /url: "#tenant-admin-dashboard"
+                    - text: "#"
+                - paragraph [ref=e291]:
+                  - text: The
+                  - strong [ref=e292]: Tenant Admin
+                  - text: dashboard shows available views for tenant administrators. Numbered items in the screenshot are described in the list below.
+                - paragraph [ref=e293]:
+                  - img "A screenshot of the Tenant Admin dashboard with numbered UI elements described in this document." [ref=e294]
+                - list [ref=e295]:
+                  - listitem [ref=e296]:
+                    - paragraph [ref=e297]:
+                      - text: Tenant admins use the
+                      - strong [ref=e298]: drop-down Menu
+                      - text: to switch to the
+                      - strong [ref=e299]: Tenant Admin
+                      - text: dashboard.
+                  - listitem [ref=e300]:
+                    - paragraph [ref=e301]:
+                      - text: The
+                      - strong [ref=e302]: Tenant Admin
+                      - text: dashboard contains a
+                      - strong [ref=e303]: Projects
+                      - text: menu option, which the
+                      - strong [ref=e304]: Project
+                      - text: dashboard does not have. The
+                      - strong [ref=e305]: Projects
+                      - text: menu option allows tenant admins to create, modify, and delete projects.
+                  - listitem [ref=e306]:
+                    - paragraph [ref=e307]:
+                      - text: The
+                      - strong [ref=e308]: Cluster Profiles
+                      - text: menu option allows tenant admins to create and manage global cluster profiles that can be used for cluster creation across all projects within a tenant.
+                  - listitem [ref=e309]:
+                    - paragraph [ref=e310]: Clusters created under the tenant admin scope are not visible under the project scope.
+                  - listitem [ref=e311]:
+                    - paragraph [ref=e312]:
+                      - link "Cluster groups" [ref=e313] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                      - text: are a collection of one or more host clusters that together form a computing platform for deploying virtual clusters.
+                  - listitem [ref=e314]:
+                    - paragraph [ref=e315]:
+                      - text: Tenant admins can assign
+                      - link "Roles and Permissions" [ref=e316] [cursor=pointer]:
+                        - /url: /user-management/palette-rbac/
+                      - text: .
+                  - listitem [ref=e317]:
+                    - paragraph [ref=e318]:
+                      - text: Tenant admins can create
+                      - link "Users and Teams" [ref=e319] [cursor=pointer]:
+                        - /url: /user-management/users-and-teams/
+                      - text: .
+                  - listitem [ref=e320]:
+                    - paragraph [ref=e321]:
+                      - link "Audit logs" [ref=e322] [cursor=pointer]:
+                        - /url: /audit-logs/
+                      - text: in the
+                      - strong [ref=e323]: Tenant Admin
+                      - text: dashboard allow tracking user interaction with application resources for all projects and users. For admin users, the
+                      - strong [ref=e324]: Audit Log
+                      - text: button is visible for each project to view the logs of the resources specific to the project.
+                  - listitem [ref=e325]:
+                    - paragraph [ref=e326]:
+                      - strong [ref=e327]: Tenant Settings
+                      - text: give tenant admins access to the
+                      - link "pack registries" [ref=e328] [cursor=pointer]:
+                        - /url: /registries-and-packs/
+                      - text: ","
+                      - link "private cloud gateways" [ref=e329] [cursor=pointer]:
+                        - /url: /glossary-all/#private-cloud-gateway
+                      - text: ", and"
+                      - link "SAML and SSO" [ref=e330] [cursor=pointer]:
+                        - /url: /user-management/saml-sso/
+                      - text: setup.
+              - generic [ref=e331]:
+                - generic [ref=e333]:
+                  - text: "Tags:"
+                  - list [ref=e334]:
+                    - listitem [ref=e335]:
+                      - link "getting-started" [ref=e336] [cursor=pointer]:
+                        - /url: /tags/getting-started/
+                - link "Edit this page" [ref=e339] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/introduction/dashboard.md
+                  - img [ref=e340]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e344]:
+              - link "Previous « What is Palette?" [ref=e345] [cursor=pointer]:
+                - /url: /
+                - generic [ref=e346]: Previous
+                - generic [ref=e347]: « What is Palette?
+              - link "Next App Mode and Cluster Mode »" [ref=e348] [cursor=pointer]:
+                - /url: /introduction/palette-modes/
+                - generic [ref=e349]: Next
+                - generic [ref=e350]: App Mode and Cluster Mode »
+          - list [ref=e353]:
+            - listitem [ref=e354]:
+              - link "Project Dashboard" [ref=e355] [cursor=pointer]:
+                - /url: "#project-dashboard"
+            - listitem [ref=e356]:
+              - link "Tenant Admin Dashboard" [ref=e357] [cursor=pointer]:
+                - /url: "#tenant-admin-dashboard"
+  - button "Project Logo Ask AI" [ref=e358] [cursor=pointer]:
+    - generic [ref=e361]:
+      - img "Project Logo" [ref=e362]
+      - paragraph [ref=e363]: Ask AI
+```

@@ -1,0 +1,824 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Audit Logs" [ref=e165] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e167]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Self-Hosted Palette" [expanded] [ref=e172] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e174]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e176] [cursor=pointer]
+                - list [ref=e177]:
+                  - listitem [ref=e178]:
+                    - generic [ref=e179]:
+                      - link "Installation" [ref=e180] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e181] [cursor=pointer]
+                  - listitem [ref=e182]:
+                    - link "Activate Palette" [ref=e183] [cursor=pointer]:
+                      - /url: /enterprise-version/activate-installation/
+                  - listitem [ref=e184]:
+                    - generic [ref=e185]:
+                      - link "System Management" [expanded] [ref=e186] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e187] [cursor=pointer]
+                    - list [ref=e188]:
+                      - listitem [ref=e189]:
+                        - generic [ref=e190]:
+                          - link "Account Management" [ref=e191] [cursor=pointer]:
+                            - /url: /enterprise-version/system-management/account-management/
+                          - button "Toggle the collapsible sidebar category 'Account Management'" [ref=e192] [cursor=pointer]
+                      - listitem [ref=e193]:
+                        - link "Add System-Level Registry" [ref=e194] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/add-registry/
+                      - listitem [ref=e195]:
+                        - link "Enable Adding AWS Accounts Using STS" [ref=e196] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/configure-aws-sts-account/
+                      - listitem [ref=e197]:
+                        - link "Backup and Restore" [ref=e198] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/backup-restore/
+                      - listitem [ref=e199]:
+                        - link "Configure SMTP" [ref=e200] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/smtp/
+                      - listitem [ref=e201]:
+                        - link "Configure Reverse Proxy" [ref=e202] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/reverse-proxy/
+                      - listitem [ref=e203]:
+                        - link "Customize Interface" [ref=e204] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/customize-interface/
+                      - listitem [ref=e205]:
+                        - link "Feature Flags" [ref=e206] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/feature-flags/
+                      - listitem [ref=e207]:
+                        - link "System Address Management" [ref=e208] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/ssl-certificate-management/
+                      - listitem [ref=e209]:
+                        - link "Tenant Management" [ref=e210] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/tenant-management/
+                      - listitem [ref=e211]:
+                        - link "Banners" [ref=e212] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/login-banner/
+                      - listitem [ref=e213]:
+                        - link "Override Registry Configuration" [ref=e214] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/registry-override/
+                      - listitem [ref=e215]:
+                        - link "Migrate SCAR to OCI Registry" [ref=e216] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/scar-migration/
+                      - listitem [ref=e217]:
+                        - link "Modify Cloud Provider Configuration" [ref=e218] [cursor=pointer]:
+                          - /url: /enterprise-version/system-management/change-cloud-config/
+                  - listitem [ref=e219]:
+                    - generic [ref=e220]:
+                      - link "Upgrade" [ref=e221] [cursor=pointer]:
+                        - /url: /enterprise-version/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e222] [cursor=pointer]
+              - listitem [ref=e223]:
+                - generic [ref=e224]:
+                  - link "Palette VerteX" [ref=e225] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e227]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e229] [cursor=pointer]
+              - listitem [ref=e230]:
+                - generic [ref=e231]:
+                  - link "Tenant Administration" [ref=e232] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e234]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e236] [cursor=pointer]
+              - listitem [ref=e237]:
+                - generic [ref=e238]:
+                  - link "Automation" [ref=e239] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e241]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e243] [cursor=pointer]
+              - listitem [ref=e244]:
+                - generic [ref=e245]:
+                  - link "Troubleshooting" [ref=e246] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e248]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e250] [cursor=pointer]
+              - listitem [ref=e251]:
+                - link "Glossary" [ref=e252] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e254]
+                  - text: Glossary
+              - listitem [ref=e256]:
+                - generic [ref=e257]:
+                  - link "Compliance & Legal" [ref=e258] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e260]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e262] [cursor=pointer]
+              - listitem [ref=e263]:
+                - button "Privacy Settings" [ref=e264] [cursor=pointer]:
+                  - img [ref=e265]
+                  - text: Privacy Settings
+      - main [ref=e267]:
+        - generic [ref=e269]:
+          - generic [ref=e271]:
+            - article [ref=e272]:
+              - navigation "Breadcrumbs" [ref=e273]:
+                - list [ref=e274]:
+                  - listitem [ref=e275]:
+                    - link "Home page" [ref=e276] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e277]
+                  - listitem [ref=e279]:
+                    - link "Self-Hosted Palette" [ref=e280] [cursor=pointer]:
+                      - /url: /enterprise-version/
+                  - listitem [ref=e281]:
+                    - link "System Management" [ref=e282] [cursor=pointer]:
+                      - /url: /enterprise-version/system-management/
+                  - listitem [ref=e283]:
+                    - generic [ref=e284]: Migrate SCAR to OCI Registry
+              - generic [ref=e285]:
+                - heading "Migrate Customer-Managed SCAR to OCI Registry" [level=1] [ref=e287]
+                - paragraph [ref=e288]: The Palette installation process requires users to configure and maintain an HTTP server to host Palette manifests. This server is known as the Spectro Cloud Artifact Regisry (SCAR). Alternatively, users now have the option to migrate these manifests to the same OCI registry that hosts the Palette images and packs. This migration is handled by a service called Specman, which fetches the manifests from the OCI registry and serves them via an internal HTTP server.
+                - paragraph [ref=e289]: "The migration process involves two main steps:"
+                - list [ref=e290]:
+                  - listitem [ref=e291]: Pushing the Palette manifests to the OCI registry.
+                  - listitem [ref=e292]: Updating the SCAR endpoint to point to the new internal HTTP server.
+                - paragraph [ref=e293]: Once the migration is complete, there is no longer a need to maintain a separate file server exclusively for hosting the Palette manifests.
+                - paragraph [ref=e294]: This guide will direct you through the steps required to push the Palette manifests to the OCI registry and update the SCAR endpoint.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e295]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e296] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e297]:
+                  - listitem [ref=e298]:
+                    - paragraph [ref=e299]:
+                      - text: A deployed self-hosted Palette
+                      - link "cluster" [ref=e300] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette
+                      - text: that uses a customer-managed SCAR to host Palette manifests.
+                  - listitem [ref=e301]:
+                    - paragraph [ref=e302]: Access to the Palette cluster kubeconfig file to verify the SCAR endpoint.
+                    - generic [ref=e303]:
+                      - generic [ref=e304]:
+                        - img [ref=e306]
+                        - text: tip
+                      - paragraph [ref=e309]:
+                        - text: If you deployed Palette using the Palette CLI, you can download the kubeconfig file from the Palette cluster details page in the system console. Navigate to the
+                        - strong [ref=e310]: Enterprise Cluster Migration
+                        - text: page and click on the
+                        - strong [ref=e311]: Admin Kubeconfig
+                        - text: link to download the kubeconfig file. If you deployed Palette to an existing Kubernetes cluster, contact your cluster administrator to obtain the kubeconfig file. For instructions on using the kubeconfig file to access your cluster, refer to the
+                        - link "Access Cluster with CLI" [ref=e312] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/palette-webctl
+                        - text: .
+                  - listitem [ref=e313]:
+                    - paragraph [ref=e314]: Access to the file server that hosts the Palette manifests.
+                  - listitem [ref=e315]:
+                    - paragraph [ref=e316]: Ensure the Kubernetes cluster has a Container Storage Interface (CSI) available and at least 10 GB of free space. The Specman service requires this to create a Persistent Volume Claim (PVC) for storing content.
+                  - listitem [ref=e317]:
+                    - paragraph [ref=e318]:
+                      - text: The Palette cluster must have been upgraded to version
+                      - code [ref=e319]: 4.5.15
+                      - text: or later. This is required for the SCAR migration to function properly.
+                  - listitem [ref=e320]:
+                    - paragraph [ref=e321]: Access to the Palette system console.
+                  - listitem [ref=e322]:
+                    - paragraph [ref=e323]:
+                      - text: Ensure the following software is installed and available in the environment hosting the file server. For example, if you deployed an airgapped instance of Palette to VMware using an
+                      - link "OVA" [ref=e324] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions
+                      - text: ", these tools must be available on your airgap support VM."
+                    - list [ref=e325]:
+                      - listitem [ref=e326]:
+                        - link "tar" [ref=e327] [cursor=pointer]:
+                          - /url: https://www.gnu.org/software/tar/
+                      - listitem [ref=e328]:
+                        - link "AWS CLI v2" [ref=e329] [cursor=pointer]:
+                          - /url: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+                        - text: "- Required only for AWS ECR."
+                      - listitem [ref=e330]:
+                        - link "ORAS" [ref=e331] [cursor=pointer]:
+                          - /url: https://oras.land/docs/installation/
+                        - text: v1.0.0
+                    - generic [ref=e332]:
+                      - generic [ref=e333]:
+                        - img [ref=e335]
+                        - text: warning
+                      - paragraph [ref=e338]: This specific version of ORAS is explicitly required for pushing packs to OCI registries.
+                  - listitem [ref=e339]:
+                    - paragraph [ref=e340]: Ensure the following software is installed and available locally on your workstation.
+                    - list [ref=e341]:
+                      - listitem [ref=e342]:
+                        - link "curl" [ref=e343] [cursor=pointer]:
+                          - /url: https://curl.se/docs/install.html
+                      - listitem [ref=e344]:
+                        - link "jq" [ref=e345] [cursor=pointer]:
+                          - /url: https://jqlang.github.io/jq/download/
+                      - listitem [ref=e346]:
+                        - link "kubectl" [ref=e347] [cursor=pointer]:
+                          - /url: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+                - heading "Migrate SCARDirect link to Migrate SCAR" [level=2] [ref=e348]:
+                  - text: Migrate SCAR
+                  - link "Direct link to Migrate SCAR" [ref=e349] [cursor=pointer]:
+                    - /url: "#migrate-scar"
+                    - text: "#"
+                - list [ref=e350]:
+                  - listitem [ref=e351]:
+                    - paragraph [ref=e352]:
+                      - text: In a terminal with connectivity to your Palette cluster, delete any existing secrets named
+                      - code [ref=e353]: spectro-manifest-registry-secrets
+                      - text: in the
+                      - code [ref=e354]: hubble-system
+                      - text: namespace.
+                    - generic [ref=e356]:
+                      - code [ref=e358]:
+                        - generic [ref=e359]: kubectl delete secret spectro-manifest-registry-secrets --nampespace hubble-system
+                      - generic [ref=e360]:
+                        - button "Toggle word wrap" [ref=e361] [cursor=pointer]:
+                          - img [ref=e362]
+                        - button "Copy code to clipboard" [ref=e364] [cursor=pointer]:
+                          - generic [ref=e365]:
+                            - img [ref=e366]
+                            - img [ref=e368]
+                    - code [ref=e373]:
+                      - generic [ref=e374]: secret "spectro-manifest-registry-secrets" deleted
+                  - listitem [ref=e375]:
+                    - paragraph [ref=e376]:
+                      - text: Next, open a terminal window in the environment hosting the file server and navigate to the folder where the Palette manifests are stored. For example, if you deployed an airgapped instance of Palette to VMware using an
+                      - link "OVA" [ref=e377] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions
+                      - text: ", navigate to the"
+                      - code [ref=e378]: /var/www/html/
+                      - text: directory.
+                    - generic [ref=e380]:
+                      - code [ref=e382]:
+                        - generic [ref=e383]: cd /var/www/html/
+                      - button "Copy code to clipboard" [ref=e385] [cursor=pointer]:
+                        - generic [ref=e386]:
+                          - img [ref=e387]
+                          - img [ref=e389]
+                    - paragraph [ref=e391]:
+                      - text: Alternatively, if you deployed Palette in an airgapped Kubernetes environment using
+                      - link "Helm charts" [ref=e392] [cursor=pointer]:
+                        - /url: /enterprise-version/install-palette/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions
+                      - text: ", navigate to the directory served by the file server you configured."
+                  - listitem [ref=e393]:
+                    - paragraph [ref=e394]:
+                      - text: Compress the folder contents into an archive file called
+                      - code [ref=e395]: manifests.tgz
+                      - text: . Issue the following command to create the archive.
+                    - generic [ref=e397]:
+                      - code [ref=e399]:
+                        - generic [ref=e400]: tar -czvf manifests.tgz .
+                      - button "Copy code to clipboard" [ref=e402] [cursor=pointer]:
+                        - generic [ref=e403]:
+                          - img [ref=e404]
+                          - img [ref=e406]
+                  - listitem [ref=e408]:
+                    - paragraph [ref=e409]: After compressing the files, authenticate with the OCI registry that hosts the Palette images and packs.
+                    - generic [ref=e410]:
+                      - generic [ref=e411]:
+                        - img [ref=e413]
+                        - text: tip
+                      - paragraph [ref=e416]:
+                        - text: If you deployed an airgapped instance of Palette to VMware using an
+                        - link "OVA" [ref=e417] [cursor=pointer]:
+                          - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions
+                        - text: ", the OCI registry address is provided by the"
+                        - code [ref=e418]: airgap-setup.sh
+                        - text: script output. Alternatively, if you deployed Palette to an existing Kubernetes cluster using
+                        - link "Helm charts" [ref=e419] [cursor=pointer]:
+                          - /url: /enterprise-version/install-palette/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions
+                        - text: ", contact your cluster administrator for the OCI registry configuration."
+                    - generic [ref=e420]:
+                      - tablist [ref=e421]:
+                        - tab "Harbor" [selected] [ref=e422] [cursor=pointer]
+                        - tab "ECR" [ref=e423] [cursor=pointer]
+                      - tabpanel [ref=e425]:
+                        - paragraph [ref=e426]:
+                          - text: Use
+                          - code [ref=e427]: oras
+                          - text: to log in to your OCI registry. Replace the values below with your environment configuration. For additional information about CLI flags and examples, check out the
+                          - link "oras login" [ref=e428] [cursor=pointer]:
+                            - /url: https://oras.land/docs/commands/oras_login
+                          - text: documentation. Replace
+                          - code [ref=e429]: <harbor-address>
+                          - text: with the address of your Harbor registry without the
+                          - code [ref=e430]: https://
+                          - text: prefix, and
+                          - code [ref=e431]: <harbor-username>
+                          - text: and
+                          - code [ref=e432]: <harbor-password>
+                          - text: with your Harbor credentials.
+                        - generic [ref=e434]:
+                          - code [ref=e436]:
+                            - generic [ref=e437]: oras login <harbor-address> --username <harbor-username> --password <harbor-password>
+                          - generic [ref=e438]:
+                            - button "Toggle word wrap" [ref=e439] [cursor=pointer]:
+                              - img [ref=e440]
+                            - button "Copy code to clipboard" [ref=e442] [cursor=pointer]:
+                              - generic [ref=e443]:
+                                - img [ref=e444]
+                                - img [ref=e446]
+                        - paragraph [ref=e448]:
+                          - text: If you are using a Harbor registry with a self-signed certificate, you must add the
+                          - code [ref=e449]: "--insecure"
+                          - text: flag according to the following example.
+                        - generic [ref=e451]:
+                          - code [ref=e453]:
+                            - generic [ref=e454]: oras login <harbor-address> --insecure --username <harbor-username> --password <harbor-password>
+                          - generic [ref=e455]:
+                            - button "Toggle word wrap" [ref=e456] [cursor=pointer]:
+                              - img [ref=e457]
+                            - button "Copy code to clipboard" [ref=e459] [cursor=pointer]:
+                              - generic [ref=e460]:
+                                - img [ref=e461]
+                                - img [ref=e463]
+                        - paragraph [ref=e465]: If the login is successful, you will receive the following confirmation message.
+                        - code [ref=e469]:
+                          - generic [ref=e470]: Login Succeeded
+                  - listitem [ref=e471]:
+                    - paragraph [ref=e472]:
+                      - text: Push the
+                      - code [ref=e473]: manifests.tgz
+                      - text: file to your OCI registry.
+                    - generic [ref=e474]:
+                      - tablist [ref=e475]:
+                        - tab "Harbor" [selected] [ref=e476] [cursor=pointer]
+                        - tab "ECR" [ref=e477] [cursor=pointer]
+                      - tabpanel [ref=e479]:
+                        - paragraph [ref=e480]:
+                          - text: Issue the following command to push the
+                          - code [ref=e481]: manifests.tgz
+                          - text: file to your Harbor registry. Replace
+                          - code [ref=e482]: <harbor-address>
+                          - text: with the address of your Harbor registry.
+                        - generic [ref=e484]:
+                          - code [ref=e486]:
+                            - generic [ref=e487]: oras push <harbor-address>/spectro-packs/spectro-manifests/manifest:0.0.0 manifests.tgz
+                          - generic [ref=e488]:
+                            - button "Toggle word wrap" [ref=e489] [cursor=pointer]:
+                              - img [ref=e490]
+                            - button "Copy code to clipboard" [ref=e492] [cursor=pointer]:
+                              - generic [ref=e493]:
+                                - img [ref=e494]
+                                - img [ref=e496]
+                  - listitem [ref=e498]:
+                    - paragraph [ref=e499]:
+                      - text: Next, login to the Palette system console and select
+                      - strong [ref=e500]: Administration
+                      - text: from the left
+                      - strong [ref=e501]: Main Menu
+                      - text: .
+                  - listitem [ref=e502]:
+                    - paragraph [ref=e503]:
+                      - text: Select the
+                      - strong [ref=e504]: Pack Registries
+                      - text: tab, click the
+                      - strong [ref=e505]: three-dot Menu
+                      - text: at the end of the OCI registry row, and then select
+                      - strong [ref=e506]: Edit
+                      - text: .
+                  - listitem [ref=e507]:
+                    - paragraph [ref=e508]:
+                      - text: Check the
+                      - strong [ref=e509]: Contains Spectro Manifests
+                      - text: box, click
+                      - strong [ref=e510]: Validate
+                      - text: ", and then click"
+                      - strong [ref=e511]: Confirm
+                      - text: .
+                    - paragraph [ref=e512]:
+                      - img "View of the &#39;Contains Spectro Manifests&#39; OCI registry box." [ref=e513]
+                  - listitem [ref=e514]:
+                    - paragraph [ref=e515]:
+                      - text: In a terminal with connectivity to your Palette cluster, issue the following command to verify that the
+                      - code [ref=e516]: Specman
+                      - text: service is fetching the content pushed to the OCI registry in step
+                      - strong [ref=e517]: "5"
+                      - text: of this guide, with the tag
+                      - code [ref=e518]: 0.0.0
+                      - text: .
+                    - generic [ref=e520]:
+                      - code [ref=e522]:
+                        - generic [ref=e523]: kubectl logs --namespace hubble-system specman-0
+                      - button "Copy code to clipboard" [ref=e525] [cursor=pointer]:
+                        - generic [ref=e526]:
+                          - img [ref=e527]
+                          - img [ref=e529]
+                    - generic [ref=e532]:
+                      - code [ref=e534]:
+                        - generic [ref=e535]: time="2024-12-06T12:43:14Z" level=info msg="Syncing with OCI repo"
+                        - generic [ref=e536]: time="2024-12-06T12:43:14Z" level=info msg="tags[4.5.13 4.5.15 0.0.0]"
+                        - generic [ref=e537]: time="2024-12-06T12:43:14Z" level=info msg="Downloading 0.0.0"
+                        - generic [ref=e538]: time="2024-12-06T12:43:14Z" level=info msg="tags[4.5.13 4.5.15 0.0.0]"
+                        - generic [ref=e539]: time="2024-12-06T12:43:14Z" level=info msg="Downloading 0.0.0"
+                        - generic [ref=e540]: time="2024-12-06T12:43:14Z" level=info msg="listing dir /tmp/0.0.03808764833"
+                        - generic [ref=e541]: "time=\"2024-12-06T12:43:14Z\" level=info msg=\"filename: manifests.tgz, isDir: false\""
+                        - generic [ref=e542]: time="2024-12-06T12:43:14Z" level=info msg="Persisting 0.0.0"
+                      - button "Toggle word wrap" [ref=e544] [cursor=pointer]:
+                        - img [ref=e545]
+                  - listitem [ref=e547]:
+                    - paragraph [ref=e548]:
+                      - text: "The final step to complete the migration involves updating the SCAR endpoint to the internal HTTP server endpoint that now serves the Palette manifests:"
+                      - code [ref=e549]: https://specman-service.hubble-system.svc.cluster.local:8443
+                      - text: . Issue the following command to create the script responsible for updating the endpoint.
+                    - generic [ref=e551]:
+                      - code [ref=e553]:
+                        - generic [ref=e554]: cat << 'EOF1' > scar-registry-update.sh
+                        - generic [ref=e555]: "#!/bin/bash"
+                        - generic [ref=e556]: "###############################################################################"
+                        - generic [ref=e557]: "# Usage:"
+                        - generic [ref=e558]: "# ./ec-scar-registry-update.sh https://<PALETTE_URL> admin <SYS_ADMIN_PASSWORD>"
+                        - generic [ref=e559]: "###############################################################################"
+                        - generic [ref=e560]: "#"
+                        - generic [ref=e561]: set -u
+                        - generic [ref=e562]: set -x
+                        - generic [ref=e563]: export ENDPOINT=$1
+                        - generic [ref=e564]: export SYSTEM_ADMIN_USERNAME=$2
+                        - generic [ref=e565]: export SYSTEM_ADMIN_PASSWORD=$3
+                        - generic [ref=e566]: export SCAR_ENDPOINT=https://specman-service.hubble-system.svc.cluster.local:8443
+                        - generic [ref=e567]: export SCAR_USERNAME=
+                        - generic [ref=e568]: export SCAR_PASSWORD=
+                        - generic [ref=e569]: "auth_request() {"
+                        - generic [ref=e570]: cat <<EOF
+                        - generic [ref=e571]: "{"
+                        - generic [ref=e572]: "\"username\": \"${SYSTEM_ADMIN_USERNAME}\","
+                        - generic [ref=e573]: "\"password\": \"${SYSTEM_ADMIN_PASSWORD}\""
+                        - generic [ref=e574]: "}"
+                        - generic [ref=e575]: EOF
+                        - generic [ref=e576]: "}"
+                        - generic [ref=e577]: "scar_request(){"
+                        - generic [ref=e578]: cat <<EOF
+                        - generic [ref=e579]: "{"
+                        - generic [ref=e580]: "\"endpoint\": \"${SCAR_ENDPOINT}\","
+                        - generic [ref=e581]: "\"password\": \"${SCAR_PASSWORD}\","
+                        - generic [ref=e582]: "\"username\": \"${SCAR_USERNAME}\""
+                        - generic [ref=e583]: "}"
+                        - generic [ref=e584]: EOF
+                        - generic [ref=e585]: "}"
+                        - generic [ref=e586]: "get_auth_token() {"
+                        - generic [ref=e587]: "authtoken=$(curl -k --location --silent --request POST \"${ENDPOINT}/v1/auth/syslogin?setCookie=true\" \\"
+                        - generic [ref=e588]: "--header 'Content-Type: application/json' \\"
+                        - generic [ref=e589]: "--data \"$(auth_request)\" | jq .\"Authorization\")"
+                        - generic [ref=e590]: "if [[ \"${authtoken}\" == null ]]; then"
+                        - generic [ref=e591]: echo "Error Logging in. Please check the credentials and URL"
+                        - generic [ref=e592]: exit 1
+                        - generic [ref=e593]: fi
+                        - generic [ref=e594]: "}"
+                        - generic [ref=e595]: "update_scar_repo() {"
+                        - generic [ref=e596]: "response=$(curl -k --write-out '%{http_code}' --silent --output /dev/null --location --request PUT \"${ENDPOINT}/v1/system/config/scar\" \\"
+                        - generic [ref=e597]: "--header 'Content-Type: application/json' \\"
+                        - generic [ref=e598]: "--header 'Accept: application/json' \\"
+                        - generic [ref=e599]: "--header \"Cookie: Authorization=${authtoken}\" \\"
+                        - generic [ref=e600]: "--data-raw \"$(scar_request)\")"
+                        - generic [ref=e601]: "if [[ \"${response}\" != \"204\" ]]; then"
+                        - generic [ref=e602]: "echo \"Error: Unable to update the Scar Repo\""
+                        - generic [ref=e603]: else
+                        - generic [ref=e604]: echo "Success Setting the Scar Repo. Waiting for a minute to get the changes syncing"
+                        - generic [ref=e605]: sleep 60
+                        - generic [ref=e606]: fi
+                        - generic [ref=e607]: "}"
+                        - generic [ref=e608]: "update_instance_type() {"
+                        - generic [ref=e609]: "response=$(curl -k --write-out '%{http_code}' --location \"${ENDPOINT}/v1/jobs/internal/syncCloudInstanceTypesData/run\" \\"
+                        - generic [ref=e610]: "--header 'Content-Type: application/json' \\"
+                        - generic [ref=e611]: "--header 'Accept: application/json' \\"
+                        - generic [ref=e612]: "--header \"Cookie: Authorization=${authtoken}\")"
+                        - generic [ref=e613]: "if [[ \"${response}\" != \"204\" ]]; then"
+                        - generic [ref=e614]: "echo \"Error: Unable to update the Instance Type\""
+                        - generic [ref=e615]: else
+                        - generic [ref=e616]: echo "Started Syncing Storage Type from the palette Service"
+                        - generic [ref=e617]: fi
+                        - generic [ref=e618]: "}"
+                        - generic [ref=e619]: "update_storage_type() {"
+                        - generic [ref=e620]: "response=$(curl -k --write-out '%{http_code}' --location \"${ENDPOINT}/v1/jobs/internal/syncCloudStorageTypesData/run\" \\"
+                        - generic [ref=e621]: "--header 'Content-Type: application/json' \\"
+                        - generic [ref=e622]: "--header 'Accept: application/json' \\"
+                        - generic [ref=e623]: "--header \"Cookie: Authorization=${authtoken}\")"
+                        - generic [ref=e624]: "if [[ \"${response}\" != \"204\" ]]; then"
+                        - generic [ref=e625]: "echo \"Error: Unable to update the Storage Type\""
+                        - generic [ref=e626]: else
+                        - generic [ref=e627]: echo "Started Syncing Storage Type from the palette Service"
+                        - generic [ref=e628]: fi
+                        - generic [ref=e629]: "}"
+                        - generic [ref=e630]: get_auth_token
+                        - generic [ref=e631]: update_scar_repo
+                        - generic [ref=e632]: update_instance_type
+                        - generic [ref=e633]: update_storage_type
+                        - generic [ref=e634]: echo "Wait for 5 minute for the sync process to complete."
+                        - generic [ref=e635]: EOF1
+                      - generic [ref=e636]:
+                        - button "Toggle word wrap" [ref=e637] [cursor=pointer]:
+                          - img [ref=e638]
+                        - button "Copy code to clipboard" [ref=e640] [cursor=pointer]:
+                          - generic [ref=e641]:
+                            - img [ref=e642]
+                            - img [ref=e644]
+                  - listitem [ref=e646]:
+                    - paragraph [ref=e647]:
+                      - text: Grant execution permissions to the
+                      - code [ref=e648]: scar-registry-update.sh
+                      - text: script.
+                    - generic [ref=e650]:
+                      - code [ref=e652]:
+                        - generic [ref=e653]: chmod +x scar-registry-update.sh
+                      - button "Copy code to clipboard" [ref=e655] [cursor=pointer]:
+                        - generic [ref=e656]:
+                          - img [ref=e657]
+                          - img [ref=e659]
+                  - listitem [ref=e661]:
+                    - paragraph [ref=e662]:
+                      - text: Invoke the script to update the SCAR endpoint. Replace
+                      - code [ref=e663]: <cluster-url>
+                      - text: with the address of your Palette instance and
+                      - code [ref=e664]: <sys-admin-password>
+                      - text: with the system administrator password.
+                    - generic [ref=e666]:
+                      - code [ref=e668]:
+                        - generic [ref=e669]: ./scar-registry-update.sh <cluster-url> admin <sys-admin-password>
+                      - generic [ref=e670]:
+                        - button "Toggle word wrap" [ref=e671] [cursor=pointer]:
+                          - img [ref=e672]
+                        - button "Copy code to clipboard" [ref=e674] [cursor=pointer]:
+                          - generic [ref=e675]:
+                            - img [ref=e676]
+                            - img [ref=e678]
+                    - paragraph [ref=e680]: Consider the following example for reference.
+                    - generic [ref=e682]:
+                      - code [ref=e684]:
+                        - generic [ref=e685]: ./scar-registry-update.sh https://example.spectrocloud.com admin examplepassword
+                      - button "Toggle word wrap" [ref=e687] [cursor=pointer]:
+                        - img [ref=e688]
+                    - paragraph [ref=e690]: The following message confirms that the script has completed its tasks.
+                    - code [ref=e694]:
+                      - generic [ref=e695]: Wait for 5 minutes for the sync process to complete.
+                    - paragraph [ref=e696]: You have now migrated SCAR to the OCI registry that hosts the Palette images and packs. In subsequent releases, the Palette airgap installation binary will handle pushing the new manifest to the OCI registry.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e697]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e698] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e699]: Use the following steps to verify that the endpoint was updated successfully.
+                - list [ref=e700]:
+                  - listitem [ref=e701]:
+                    - paragraph [ref=e702]:
+                      - text: Export your Palette credentials as environment variables. Replace
+                      - code [ref=e703]: <cluster-url>
+                      - text: with the address of your Palette cluster and
+                      - code [ref=e704]: <sys-admin-password>
+                      - text: with the system administrator password.
+                    - generic [ref=e706]:
+                      - code [ref=e708]:
+                        - generic [ref=e709]: export ENDPOINT=<cluster-url>
+                        - generic [ref=e710]: export PASSWORD=<sys-admin-password>
+                      - button "Copy code to clipboard" [ref=e712] [cursor=pointer]:
+                        - generic [ref=e713]:
+                          - img [ref=e714]
+                          - img [ref=e716]
+                  - listitem [ref=e718]:
+                    - paragraph [ref=e719]:
+                      - text: Log in to the Palette System API using the
+                      - code [ref=e720]: /v1/auth/syslogin
+                      - text: endpoint. The response will contain the authentication token that you will use in the next request.
+                    - generic [ref=e722]:
+                      - code [ref=e724]:
+                        - generic [ref=e725]: "AUTH_TOKEN=$(curl --location \"${ENDPOINT}/v1/auth/syslogin\" \\"
+                        - generic [ref=e726]: "--header 'Content-Type: application/json' \\"
+                        - generic [ref=e727]: "--data '{"
+                        - generic [ref=e728]: "\"username\": \"admin\","
+                        - generic [ref=e729]: "\"password\": \"'${PASSWORD}'\""
+                        - generic [ref=e730]: "}' | jq .\"Authorization\")"
+                      - button "Copy code to clipboard" [ref=e732] [cursor=pointer]:
+                        - generic [ref=e733]:
+                          - img [ref=e734]
+                          - img [ref=e736]
+                    - generic [ref=e738]:
+                      - generic [ref=e739]:
+                        - img [ref=e741]
+                        - text: tip
+                      - paragraph [ref=e744]:
+                        - text: If your cluster is using the default self-signed certificate, you can use the
+                        - code [ref=e745]: "--insecure"
+                        - text: flag with the
+                        - code [ref=e746]: curl
+                        - text: commands to bypass the certificate check.
+                  - listitem [ref=e747]:
+                    - paragraph [ref=e748]:
+                      - text: Use the
+                      - code [ref=e749]: /v1/system/config/scar
+                      - text: endpoint to confirm that the SCAR endpoint has been correctly updated.
+                    - generic [ref=e751]:
+                      - code [ref=e753]:
+                        - generic [ref=e754]: "curl --location \"${ENDPOINT}/v1/system/config/scar\" \\"
+                        - generic [ref=e755]: "--header \"Cookie: Authorization=${AUTH_TOKEN}\""
+                      - button "Copy code to clipboard" [ref=e757] [cursor=pointer]:
+                        - generic [ref=e758]:
+                          - img [ref=e759]
+                          - img [ref=e761]
+                    - paragraph [ref=e763]: The output should contain the updated SCAR endpoint.
+                    - generic [ref=e765]:
+                      - code [ref=e767]:
+                        - generic [ref=e768]: "{\"endpoint\":\"https://specman-service.hubble-system.svc.cluster.local:8443\"}"
+                      - button "Toggle word wrap" [ref=e770] [cursor=pointer]:
+                        - img [ref=e771]
+              - generic [ref=e773]:
+                - generic [ref=e775]:
+                  - text: "Tags:"
+                  - list [ref=e776]:
+                    - listitem [ref=e777]:
+                      - link "enterprise" [ref=e778] [cursor=pointer]:
+                        - /url: /tags/enterprise/
+                    - listitem [ref=e779]:
+                      - link "management" [ref=e780] [cursor=pointer]:
+                        - /url: /tags/management/
+                    - listitem [ref=e781]:
+                      - link "scar" [ref=e782] [cursor=pointer]:
+                        - /url: /tags/scar/
+                - link "Edit this page" [ref=e785] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/enterprise-version/system-management/scar-migration.md
+                  - img [ref=e786]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e790]:
+              - link "Previous « Override Registry Configuration" [ref=e791] [cursor=pointer]:
+                - /url: /enterprise-version/system-management/registry-override/
+                - generic [ref=e792]: Previous
+                - generic [ref=e793]: « Override Registry Configuration
+              - link "Next Modify Cloud Provider Configuration »" [ref=e794] [cursor=pointer]:
+                - /url: /enterprise-version/system-management/change-cloud-config/
+                - generic [ref=e795]: Next
+                - generic [ref=e796]: Modify Cloud Provider Configuration »
+          - list [ref=e799]:
+            - listitem [ref=e800]:
+              - link "Prerequisites" [ref=e801] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e802]:
+              - link "Migrate SCAR" [ref=e803] [cursor=pointer]:
+                - /url: "#migrate-scar"
+            - listitem [ref=e804]:
+              - link "Validate" [ref=e805] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e806] [cursor=pointer]:
+    - generic [ref=e809]:
+      - img "Project Logo" [ref=e810]
+      - paragraph [ref=e811]: Ask AI
+```

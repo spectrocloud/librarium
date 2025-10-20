@@ -1,0 +1,472 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Introduction" [ref=e41] [cursor=pointer]:
+                  - /url: /api/introduction/
+                  - img [ref=e43]
+                  - text: Introduction
+              - listitem [ref=e45]:
+                - link "Example Usage" [ref=e46] [cursor=pointer]:
+                  - /url: /api/samples/
+              - listitem [ref=e47]:
+                - link "Postman Collection" [ref=e48] [cursor=pointer]:
+                  - /url: /api/postman-collection/
+              - listitem [ref=e49]:
+                - generic [ref=e50]:
+                  - link "Palette API V1" [expanded] [ref=e51] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Palette API V1'" [ref=e52] [cursor=pointer]
+                - list [ref=e53]:
+                  - listitem [ref=e54]:
+                    - link "Introduction" [ref=e55] [cursor=pointer]:
+                      - /url: /api/v1/palette-apis-4-7/
+                  - listitem [ref=e56]:
+                    - generic [ref=e57]:
+                      - link "Api Keys" [ref=e58] [cursor=pointer]:
+                        - /url: /api/v1/api-keys/
+                      - button "Toggle the collapsible sidebar category 'Api Keys'" [ref=e59] [cursor=pointer]
+                  - listitem [ref=e60]:
+                    - generic [ref=e61]:
+                      - link "App Deployments" [ref=e62] [cursor=pointer]:
+                        - /url: /api/v1/app-deployments/
+                      - button "Toggle the collapsible sidebar category 'App Deployments'" [ref=e63] [cursor=pointer]
+                  - listitem [ref=e64]:
+                    - generic [ref=e65]:
+                      - link "App Profiles" [ref=e66] [cursor=pointer]:
+                        - /url: /api/v1/app-profiles/
+                      - button "Toggle the collapsible sidebar category 'App Profiles'" [ref=e67] [cursor=pointer]
+                  - listitem [ref=e68]:
+                    - generic [ref=e69]:
+                      - link "Audits" [ref=e70] [cursor=pointer]:
+                        - /url: /api/v1/audits/
+                      - button "Toggle the collapsible sidebar category 'Audits'" [ref=e71] [cursor=pointer]
+                  - listitem [ref=e72]:
+                    - generic [ref=e73]:
+                      - link "Auth" [ref=e74] [cursor=pointer]:
+                        - /url: /api/v1/auth/
+                      - button "Toggle the collapsible sidebar category 'Auth'" [ref=e75] [cursor=pointer]
+                  - listitem [ref=e76]:
+                    - generic [ref=e77]:
+                      - link "Cloudaccounts" [ref=e78] [cursor=pointer]:
+                        - /url: /api/v1/cloudaccounts/
+                      - button "Toggle the collapsible sidebar category 'Cloudaccounts'" [ref=e79] [cursor=pointer]
+                  - listitem [ref=e80]:
+                    - generic [ref=e81]:
+                      - link "Cloudconfigs" [ref=e82] [cursor=pointer]:
+                        - /url: /api/v1/cloudconfigs/
+                      - button "Toggle the collapsible sidebar category 'Cloudconfigs'" [ref=e83] [cursor=pointer]
+                  - listitem [ref=e84]:
+                    - generic [ref=e85]:
+                      - link "Clouds" [ref=e86] [cursor=pointer]:
+                        - /url: /api/v1/clouds/
+                      - button "Toggle the collapsible sidebar category 'Clouds'" [ref=e87] [cursor=pointer]
+                  - listitem [ref=e88]:
+                    - generic [ref=e89]:
+                      - link "Cluster Templates" [ref=e90] [cursor=pointer]:
+                        - /url: /api/v1/cluster-templates/
+                      - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+                  - listitem [ref=e92]:
+                    - generic [ref=e93]:
+                      - link "Clustergroups" [ref=e94] [cursor=pointer]:
+                        - /url: /api/v1/clustergroups/
+                      - button "Toggle the collapsible sidebar category 'Clustergroups'" [ref=e95] [cursor=pointer]
+                  - listitem [ref=e96]:
+                    - generic [ref=e97]:
+                      - link "Clusterprofiles" [ref=e98] [cursor=pointer]:
+                        - /url: /api/v1/clusterprofiles/
+                      - button "Toggle the collapsible sidebar category 'Clusterprofiles'" [ref=e99] [cursor=pointer]
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Dashboard" [ref=e102] [cursor=pointer]:
+                        - /url: /api/v1/dashboard/
+                      - button "Toggle the collapsible sidebar category 'Dashboard'" [ref=e103] [cursor=pointer]
+                  - listitem [ref=e104]:
+                    - generic [ref=e105]:
+                      - link "Datasinks" [ref=e106] [cursor=pointer]:
+                        - /url: /api/v1/datasinks/
+                      - button "Toggle the collapsible sidebar category 'Datasinks'" [ref=e107] [cursor=pointer]
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Edgehosts" [ref=e110] [cursor=pointer]:
+                        - /url: /api/v1/edgehosts/
+                      - button "Toggle the collapsible sidebar category 'Edgehosts'" [ref=e111] [cursor=pointer]
+                  - listitem [ref=e112]:
+                    - generic [ref=e113]:
+                      - link "Events" [ref=e114] [cursor=pointer]:
+                        - /url: /api/v1/events/
+                      - button "Toggle the collapsible sidebar category 'Events'" [ref=e115] [cursor=pointer]
+                  - listitem [ref=e116]:
+                    - generic [ref=e117]:
+                      - link "Features" [ref=e118] [cursor=pointer]:
+                        - /url: /api/v1/features/
+                      - button "Toggle the collapsible sidebar category 'Features'" [ref=e119] [cursor=pointer]
+                  - listitem [ref=e120]:
+                    - generic [ref=e121]:
+                      - link "Filters" [ref=e122] [cursor=pointer]:
+                        - /url: /api/v1/filters/
+                      - button "Toggle the collapsible sidebar category 'Filters'" [ref=e123] [cursor=pointer]
+                  - listitem [ref=e124]:
+                    - generic [ref=e125]:
+                      - link "Metrics" [ref=e126] [cursor=pointer]:
+                        - /url: /api/v1/metrics/
+                      - button "Toggle the collapsible sidebar category 'Metrics'" [ref=e127] [cursor=pointer]
+                  - listitem [ref=e128]:
+                    - generic [ref=e129]:
+                      - link "Notifications" [ref=e130] [cursor=pointer]:
+                        - /url: /api/v1/notifications/
+                      - button "Toggle the collapsible sidebar category 'Notifications'" [ref=e131] [cursor=pointer]
+                  - listitem [ref=e132]:
+                    - generic [ref=e133]:
+                      - link "Overlords" [ref=e134] [cursor=pointer]:
+                        - /url: /api/v1/overlords/
+                      - button "Toggle the collapsible sidebar category 'Overlords'" [ref=e135] [cursor=pointer]
+                  - listitem [ref=e136]:
+                    - generic [ref=e137]:
+                      - link "Packs" [expanded] [ref=e138] [cursor=pointer]:
+                        - /url: /api/v1/packs/
+                      - button "Toggle the collapsible sidebar category 'Packs'" [ref=e139] [cursor=pointer]
+                    - list [ref=e140]:
+                      - listitem [ref=e141]:
+                        - link "get Retrieves a list of packs" [ref=e142] [cursor=pointer]:
+                          - /url: /api/v1/v-1-packs-summary-list/
+                      - listitem [ref=e143]:
+                        - link "post Retrieves a list of packs based on filter" [ref=e144] [cursor=pointer]:
+                          - /url: /api/v1/v-1-packs-search/
+                      - listitem [ref=e145]:
+                        - link "get Retrieves a list of packs" [ref=e146] [cursor=pointer]:
+                          - /url: /api/v1/v-1-packs-name-registry-uid-list/
+                      - listitem [ref=e147]:
+                        - link "get Returns the logo for a specified pack" [ref=e148] [cursor=pointer]:
+                          - /url: /api/v1/v-1-packs-pack-uid-logo/
+                      - listitem [ref=e149]:
+                        - link "get Returns the specified pack" [ref=e150] [cursor=pointer]:
+                          - /url: /api/v1/v-1-packs-uid/
+                      - listitem [ref=e151]:
+                        - link "get Returns the readme of a specified pack" [ref=e152] [cursor=pointer]:
+                          - /url: /api/v1/v-1-packs-uid-readme/
+                  - listitem [ref=e153]:
+                    - generic [ref=e154]:
+                      - link "Pcg" [ref=e155] [cursor=pointer]:
+                        - /url: /api/v1/pcg/
+                      - button "Toggle the collapsible sidebar category 'Pcg'" [ref=e156] [cursor=pointer]
+                  - listitem [ref=e157]:
+                    - generic [ref=e158]:
+                      - link "Permissions" [ref=e159] [cursor=pointer]:
+                        - /url: /api/v1/permissions/
+                      - button "Toggle the collapsible sidebar category 'Permissions'" [ref=e160] [cursor=pointer]
+                  - listitem [ref=e161]:
+                    - generic [ref=e162]:
+                      - link "Projects" [ref=e163] [cursor=pointer]:
+                        - /url: /api/v1/projects/
+                      - button "Toggle the collapsible sidebar category 'Projects'" [ref=e164] [cursor=pointer]
+                  - listitem [ref=e165]:
+                    - generic [ref=e166]:
+                      - link "Registries" [ref=e167] [cursor=pointer]:
+                        - /url: /api/v1/registries/
+                      - button "Toggle the collapsible sidebar category 'Registries'" [ref=e168] [cursor=pointer]
+                  - listitem [ref=e169]:
+                    - generic [ref=e170]:
+                      - link "Roles" [ref=e171] [cursor=pointer]:
+                        - /url: /api/v1/roles/
+                      - button "Toggle the collapsible sidebar category 'Roles'" [ref=e172] [cursor=pointer]
+                  - listitem [ref=e173]:
+                    - generic [ref=e174]:
+                      - link "Services" [ref=e175] [cursor=pointer]:
+                        - /url: /api/v1/services/
+                      - button "Toggle the collapsible sidebar category 'Services'" [ref=e176] [cursor=pointer]
+                  - listitem [ref=e177]:
+                    - generic [ref=e178]:
+                      - link "Spc Policies" [ref=e179] [cursor=pointer]:
+                        - /url: /api/v1/spc-policies/
+                      - button "Toggle the collapsible sidebar category 'Spc Policies'" [ref=e180] [cursor=pointer]
+                  - listitem [ref=e181]:
+                    - generic [ref=e182]:
+                      - link "Spectroclusters" [ref=e183] [cursor=pointer]:
+                        - /url: /api/v1/spectroclusters/
+                      - button "Toggle the collapsible sidebar category 'Spectroclusters'" [ref=e184] [cursor=pointer]
+                  - listitem [ref=e185]:
+                    - generic [ref=e186]:
+                      - link "System" [ref=e187] [cursor=pointer]:
+                        - /url: /api/v1/system/
+                      - button "Toggle the collapsible sidebar category 'System'" [ref=e188] [cursor=pointer]
+                  - listitem [ref=e189]:
+                    - generic [ref=e190]:
+                      - link "Teams" [ref=e191] [cursor=pointer]:
+                        - /url: /api/v1/teams/
+                      - button "Toggle the collapsible sidebar category 'Teams'" [ref=e192] [cursor=pointer]
+                  - listitem [ref=e193]:
+                    - generic [ref=e194]:
+                      - link "Tenants" [ref=e195] [cursor=pointer]:
+                        - /url: /api/v1/tenants/
+                      - button "Toggle the collapsible sidebar category 'Tenants'" [ref=e196] [cursor=pointer]
+                  - listitem [ref=e197]:
+                    - generic [ref=e198]:
+                      - link "Users" [ref=e199] [cursor=pointer]:
+                        - /url: /api/v1/users/
+                      - button "Toggle the collapsible sidebar category 'Users'" [ref=e200] [cursor=pointer]
+                  - listitem [ref=e201]:
+                    - generic [ref=e202]:
+                      - link "Workspaces" [ref=e203] [cursor=pointer]:
+                        - /url: /api/v1/workspaces/
+                      - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e204] [cursor=pointer]
+              - listitem [ref=e205]:
+                - generic [ref=e206]:
+                  - link "Edge Management API V1" [ref=e207] [cursor=pointer]:
+                    - /url: /api/category/edge-management-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Edge Management API V1'" [ref=e208] [cursor=pointer]
+      - main [ref=e209]:
+        - generic [ref=e213]:
+          - article [ref=e214]:
+            - navigation "Breadcrumbs" [ref=e215]:
+              - list [ref=e216]:
+                - listitem [ref=e217]:
+                  - link "Home page" [ref=e218] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e219]
+                - listitem [ref=e221]:
+                  - link "Palette API V1" [ref=e222] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                - listitem [ref=e223]:
+                  - link "Packs" [ref=e224] [cursor=pointer]:
+                    - /url: /api/v1/packs/
+                - listitem [ref=e225]:
+                  - generic [ref=e226]: Retrieves a list of packs based on filter
+            - generic [ref=e228]:
+              - generic [ref=e229]:
+                - heading "Retrieves a list of packs based on filter" [level=1] [ref=e230]
+                - generic [ref=e231]:
+                  - generic [ref=e232]: POST
+                  - heading "https://api.spectrocloud.com/v1/packs/search" [level=2] [ref=e233]
+                - paragraph [ref=e235]: Retrieves a list of packs based on filter
+                - heading "RequestDirect link to Request" [level=2] [ref=e236]:
+                  - text: Request
+                  - link "Direct link to Request" [ref=e237] [cursor=pointer]:
+                    - /url: "#request"
+                    - text: "#"
+                - group [ref=e238]:
+                  - generic "Query Parameters" [ref=e239] [cursor=pointer]:
+                    - heading "Query Parameters" [level=3] [ref=e240]
+                  - list [ref=e243]:
+                    - generic [ref=e244]:
+                      - generic [ref=e245]:
+                        - strong [ref=e246]: limit
+                        - generic [ref=e247]: int64
+                      - paragraph [ref=e248]:
+                        - text: limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50. If more items exist, the server will set the
+                        - code [ref=e249]: continue
+                        - text: field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.
+                      - generic [ref=e250]:
+                        - strong [ref=e251]: "Default value:"
+                        - code [ref=e253]: "50"
+                    - generic [ref=e254]:
+                      - generic [ref=e255]:
+                        - strong [ref=e256]: offset
+                        - generic [ref=e257]: int64
+                      - paragraph [ref=e258]: offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.
+                    - generic [ref=e259]:
+                      - generic [ref=e260]:
+                        - strong [ref=e261]: continue
+                        - generic [ref=e262]: string
+                      - paragraph [ref=e263]: continue token to paginate the subsequent data items
+                - group [ref=e264]:
+                  - generic "Header Parameters" [ref=e265] [cursor=pointer]:
+                    - heading "Header Parameters" [level=3] [ref=e266]
+                  - list [ref=e269]:
+                    - generic [ref=e270]:
+                      - generic [ref=e271]:
+                        - strong [ref=e272]: ProjectUid
+                        - generic [ref=e273]: string
+                      - paragraph [ref=e274]: A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources
+                - generic [ref=e275]:
+                  - tablist [ref=e278]:
+                    - tab "application/json" [selected] [ref=e279] [cursor=pointer]
+                  - tabpanel [ref=e281]:
+                    - group [ref=e282]:
+                      - generic "Body" [ref=e283] [cursor=pointer]:
+                        - heading "Body" [level=3] [ref=e284]
+                      - list [ref=e287]:
+                        - group [ref=e289]:
+                          - generic "filter" [ref=e290] [cursor=pointer]:
+                            - strong [ref=e292]: filter
+                        - group [ref=e294]:
+                          - generic "sort undefined[]" [ref=e295] [cursor=pointer]:
+                            - generic [ref=e296]:
+                              - strong [ref=e297]: sort
+                              - generic [ref=e298]: undefined[]
+                - generic [ref=e299]:
+                  - generic [ref=e300]:
+                    - heading "ResponsesDirect link to Responses" [level=2] [ref=e301]:
+                      - text: Responses
+                      - link "Direct link to Responses" [ref=e302] [cursor=pointer]:
+                        - /url: "#responses"
+                        - text: "#"
+                    - tablist [ref=e304]:
+                      - tab "200" [selected] [ref=e305] [cursor=pointer]
+                  - tabpanel [ref=e307]:
+                    - paragraph [ref=e310]: An array of pack summary items
+                    - generic [ref=e311]:
+                      - tablist [ref=e314]:
+                        - tab "application/json" [selected] [ref=e315] [cursor=pointer]
+                      - tabpanel [ref=e317]:
+                        - generic [ref=e318]:
+                          - tablist [ref=e320]:
+                            - tab "Schema" [selected] [ref=e321] [cursor=pointer]:
+                              - generic [ref=e322]: Schema
+                            - tab "Example (auto)" [ref=e323] [cursor=pointer]:
+                              - generic [ref=e324]: Example (auto)
+                          - tabpanel [ref=e326]:
+                            - group [ref=e327]:
+                              - generic "Schema" [ref=e328] [cursor=pointer]:
+                                - strong [ref=e329]: Schema
+                              - list [ref=e332]:
+                                - group [ref=e334]:
+                                  - generic "items object[] required" [ref=e335] [cursor=pointer]:
+                                    - generic [ref=e336]:
+                                      - strong [ref=e337]: items
+                                      - generic [ref=e338]: object[]
+                                      - generic [ref=e340]: required
+                                - group [ref=e342]:
+                                  - generic "listmeta object" [ref=e343] [cursor=pointer]:
+                                    - generic [ref=e344]:
+                                      - strong [ref=e345]: listmeta
+                                      - generic [ref=e346]: object
+              - generic [ref=e347]:
+                - group [ref=e348]:
+                  - 'generic "Authorization: ApiKey" [ref=e349]':
+                    - 'heading "Authorization: ApiKey" [level=4] [ref=e350]'
+                - generic [ref=e351]:
+                  - tablist [ref=e352]:
+                    - tab "curl" [selected] [ref=e353] [cursor=pointer]:
+                      - generic [ref=e354]: curl
+                    - tab "python" [ref=e355] [cursor=pointer]:
+                      - generic [ref=e356]: python
+                    - tab "go" [ref=e357] [cursor=pointer]:
+                      - generic [ref=e358]: go
+                    - tab "nodejs" [ref=e359] [cursor=pointer]:
+                      - generic [ref=e360]: nodejs
+                    - tab "java" [ref=e361] [cursor=pointer]:
+                      - generic [ref=e362]: java
+                  - tabpanel [ref=e363]:
+                    - generic [ref=e364]:
+                      - tablist [ref=e365]:
+                        - tab "CURL" [selected] [ref=e366] [cursor=pointer]:
+                          - generic [ref=e367]: CURL
+                      - tabpanel [ref=e368]:
+                        - generic [ref=e370]:
+                          - code [ref=e372]:
+                            - generic [ref=e375]: curl -L 'https://api.spectrocloud.com/v1/packs/search' \
+                            - generic [ref=e378]: "-H 'Content-Type: application/json' \\"
+                            - generic [ref=e381]: "-H 'Accept: application/json' \\"
+                            - generic [ref=e384]: "-H 'ApiKey: <ApiKey>' \\"
+                            - generic [ref=e387]: "-d '{"
+                            - generic [ref=e390]: "\"filter\": {"
+                            - generic [ref=e393]: "\"addOnSubType\": ["
+                            - generic [ref=e396]: "\"string\""
+                            - generic [ref=e399]: "],"
+                            - generic [ref=e402]: "\"addOnType\": ["
+                            - generic [ref=e405]: "\"string\""
+                            - generic [ref=e408]: "],"
+                            - generic [ref=e411]: "\"displayName\": {"
+                            - generic [ref=e414]: "\"beginsWith\": \"string\","
+                            - generic [ref=e417]: "\"contains\": \"string\","
+                            - generic [ref=e420]: "\"eq\": \"string\","
+                            - generic [ref=e423]: "\"ignoreCase\": true,"
+                            - generic [ref=e426]: "\"ne\": \"string\""
+                            - generic [ref=e429]: "},"
+                            - generic [ref=e432]: "\"environment\": ["
+                            - generic [ref=e435]: "\"string\""
+                            - generic [ref=e438]: "],"
+                            - generic [ref=e441]: "\"isFips\": true,"
+                            - generic [ref=e444]: "\"layer\": ["
+                            - generic [ref=e447]: "\"kernel\""
+                            - generic [ref=e450]: "],"
+                            - generic [ref=e453]: "\"name\": {"
+                            - generic [ref=e456]: "\"beginsWith\": \"string\","
+                            - generic [ref=e459]: "\"contains\": \"string\","
+                            - generic [ref=e462]: "\"eq\": \"string\","
+                            - generic [ref=e465]: "\"ignoreCase\": true,"
+                            - generic [ref=e468]: "\"ne\": \"string\""
+                            - generic [ref=e471]: "},"
+                            - generic [ref=e474]: "\"registryUid\": ["
+                            - generic [ref=e477]: "\"string\""
+                            - generic [ref=e480]: "],"
+                            - generic [ref=e483]: "\"source\": ["
+                            - generic [ref=e486]: "\"string\""
+                            - generic [ref=e489]: "],"
+                            - generic [ref=e492]: "\"state\": ["
+                            - generic [ref=e495]: "\"string\""
+                            - generic [ref=e498]: "],"
+                            - generic [ref=e501]: "\"type\": ["
+                            - generic [ref=e504]: "\"spectro\""
+                            - generic [ref=e507]: "]"
+                            - generic [ref=e510]: "},"
+                            - generic [ref=e513]: "\"sort\": ["
+                            - generic [ref=e516]: "{"
+                            - generic [ref=e519]: "\"field\": \"name\","
+                            - generic [ref=e522]: "\"order\": \"asc\""
+                            - generic [ref=e525]: "}"
+                            - generic [ref=e528]: "]"
+                            - generic [ref=e531]: "}'"
+                          - generic [ref=e532]:
+                            - button "Toggle word wrap" [ref=e533] [cursor=pointer]:
+                              - img [ref=e534]
+                            - button "Copy code to clipboard" [ref=e536] [cursor=pointer]:
+                              - generic [ref=e537]:
+                                - img [ref=e538]
+                                - img [ref=e540]
+                            - button "Expand code to fullscreen" [ref=e542] [cursor=pointer]:
+                              - generic [ref=e543]:
+                                - img [ref=e544]
+                                - img [ref=e546]
+          - navigation "Docs pages" [ref=e550]:
+            - link "Previous « Retrieves a list of packs" [ref=e551] [cursor=pointer]:
+              - /url: /api/v1/v-1-packs-summary-list/
+              - generic [ref=e552]: Previous
+              - generic [ref=e553]: « Retrieves a list of packs
+            - link "Next Retrieves a list of packs »" [ref=e554] [cursor=pointer]:
+              - /url: /api/v1/v-1-packs-name-registry-uid-list/
+              - generic [ref=e555]: Next
+              - generic [ref=e556]: Retrieves a list of packs »
+  - button "Project Logo Ask AI" [ref=e557] [cursor=pointer]:
+    - generic [ref=e560]:
+      - img "Project Logo" [ref=e561]
+      - paragraph [ref=e562]: Ask AI
+```

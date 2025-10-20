@@ -1,0 +1,725 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [expanded] [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+                - list [ref=e128]:
+                  - listitem [ref=e129]:
+                    - link "Architecture" [ref=e130] [cursor=pointer]:
+                      - /url: /vm-management/architecture/
+                  - listitem [ref=e131]:
+                    - link "Environment Setup" [ref=e132] [cursor=pointer]:
+                      - /url: /vm-management/environment-setup/
+                  - listitem [ref=e133]:
+                    - link "Install VMO in Airgap Environments" [ref=e134] [cursor=pointer]:
+                      - /url: /vm-management/install-vmo-in-airgap/
+                  - listitem [ref=e135]:
+                    - link "Create a VMO Profile" [ref=e136] [cursor=pointer]:
+                      - /url: /vm-management/create-vmo-profile/
+                  - listitem [ref=e137]:
+                    - link "Configure Private CA Certificate" [ref=e138] [cursor=pointer]:
+                      - /url: /vm-management/configure-private-ca-certificate/
+                  - listitem [ref=e139]:
+                    - link "Configure Direct Access to VM Dashboard" [ref=e140] [cursor=pointer]:
+                      - /url: /vm-management/configure-console-base-address/
+                  - listitem [ref=e141]:
+                    - generic [ref=e142]:
+                      - link "RBAC" [ref=e143] [cursor=pointer]:
+                        - /url: /vm-management/rbac/
+                      - button "Toggle the collapsible sidebar category 'RBAC'" [ref=e144] [cursor=pointer]
+                  - listitem [ref=e145]:
+                    - generic [ref=e146]:
+                      - link "Create and Manage VMs" [expanded] [ref=e147] [cursor=pointer]:
+                        - /url: /vm-management/create-manage-vm/
+                      - button "Toggle the collapsible sidebar category 'Create and Manage VMs'" [ref=e148] [cursor=pointer]
+                    - list [ref=e149]:
+                      - listitem [ref=e150]:
+                        - link "Deploy VM From a Template" [ref=e151] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/deploy-vm-from-template/
+                      - listitem [ref=e152]:
+                        - link "Update VM Configuration" [ref=e153] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/update-vm-configuration/
+                      - listitem [ref=e154]:
+                        - link "Migrate a VM to a Different Node" [ref=e155] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/migrate-vm-to-different-node/
+                      - listitem [ref=e156]:
+                        - link "Take a VM Snapshot" [ref=e157] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/take-snapshot-of-vm/
+                      - listitem [ref=e158]:
+                        - link "Clone a VM" [ref=e159] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/clone-vm/
+                      - listitem [ref=e160]:
+                        - link "Manage CPU and Memory" [ref=e161] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/enable-cpu-hotplug/
+                      - listitem [ref=e162]:
+                        - link "Locate VM Disks" [ref=e163] [cursor=pointer]:
+                          - /url: /vm-management/create-manage-vm/locate-vm-disks/
+                      - listitem [ref=e164]:
+                        - generic [ref=e165]:
+                          - link "Advanced Topics" [expanded] [ref=e166] [cursor=pointer]:
+                            - /url: /vm-management/create-manage-vm/advanced-topics/
+                          - button "Toggle the collapsible sidebar category 'Advanced Topics'" [ref=e167] [cursor=pointer]
+                        - list [ref=e168]:
+                          - listitem [ref=e169]:
+                            - link "Create a VM Template" [ref=e170] [cursor=pointer]:
+                              - /url: /vm-management/create-manage-vm/advanced-topics/create-vm-template/
+                          - listitem [ref=e171]:
+                            - link "Access VM Cluster with Virtctl" [ref=e172] [cursor=pointer]:
+                              - /url: /vm-management/create-manage-vm/advanced-topics/access-cluster-with-virtctl/
+                          - listitem [ref=e173]:
+                            - link "Create Disk Templates" [ref=e174] [cursor=pointer]:
+                              - /url: /vm-management/create-manage-vm/advanced-topics/create-disk-templates/
+                          - listitem [ref=e175]:
+                            - link "Migrate a VM to a VMO cluster using the Palette CLI" [ref=e176] [cursor=pointer]:
+                              - /url: /vm-management/create-manage-vm/advanced-topics/migrate-vm-kubevirt/
+                          - listitem [ref=e177]:
+                            - link "Over-Commit Resources to Enhance VM Performance" [ref=e178] [cursor=pointer]:
+                              - /url: /vm-management/create-manage-vm/advanced-topics/vm-oversubscription/
+                          - listitem [ref=e179]:
+                            - link "Import and Deploy OVAs to Palette VMO" [ref=e180] [cursor=pointer]:
+                              - /url: /vm-management/create-manage-vm/advanced-topics/deploy-import-ova/
+                  - listitem [ref=e181]:
+                    - generic [ref=e182]:
+                      - link "VM Migration Assistant" [ref=e183] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/
+                      - button "Toggle the collapsible sidebar category 'VM Migration Assistant'" [ref=e184] [cursor=pointer]
+              - listitem [ref=e185]:
+                - generic [ref=e186]:
+                  - link "Workspaces" [ref=e187] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e189]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e191] [cursor=pointer]
+              - listitem [ref=e192]:
+                - generic [ref=e193]:
+                  - link "Packs List" [ref=e194] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e196]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e198] [cursor=pointer]
+              - listitem [ref=e199]:
+                - generic [ref=e200]:
+                  - link "User & Role Management" [ref=e201] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e203]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e205] [cursor=pointer]
+              - listitem [ref=e206]:
+                - generic [ref=e207]:
+                  - link "Registries and Packs" [ref=e208] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e210]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e212] [cursor=pointer]
+              - listitem [ref=e213]:
+                - generic [ref=e214]:
+                  - link "Security" [ref=e215] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e217]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e219] [cursor=pointer]
+              - listitem [ref=e220]:
+                - generic [ref=e221]:
+                  - link "Audit Logs" [ref=e222] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e224]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e226] [cursor=pointer]
+              - listitem [ref=e227]:
+                - generic [ref=e228]:
+                  - link "Self-Hosted Palette" [ref=e229] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e231]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e233] [cursor=pointer]
+              - listitem [ref=e234]:
+                - generic [ref=e235]:
+                  - link "Palette VerteX" [ref=e236] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e238]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e240] [cursor=pointer]
+              - listitem [ref=e241]:
+                - generic [ref=e242]:
+                  - link "Tenant Administration" [ref=e243] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e245]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e247] [cursor=pointer]
+              - listitem [ref=e248]:
+                - generic [ref=e249]:
+                  - link "Automation" [ref=e250] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e252]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e254] [cursor=pointer]
+              - listitem [ref=e255]:
+                - generic [ref=e256]:
+                  - link "Troubleshooting" [ref=e257] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e259]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e261] [cursor=pointer]
+              - listitem [ref=e262]:
+                - link "Glossary" [ref=e263] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e265]
+                  - text: Glossary
+              - listitem [ref=e267]:
+                - generic [ref=e268]:
+                  - link "Compliance & Legal" [ref=e269] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e271]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e273] [cursor=pointer]
+              - listitem [ref=e274]:
+                - button "Privacy Settings" [ref=e275] [cursor=pointer]:
+                  - img [ref=e276]
+                  - text: Privacy Settings
+      - main [ref=e278]:
+        - generic [ref=e280]:
+          - generic [ref=e282]:
+            - article [ref=e283]:
+              - navigation "Breadcrumbs" [ref=e284]:
+                - list [ref=e285]:
+                  - listitem [ref=e286]:
+                    - link "Home page" [ref=e287] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e288]
+                  - listitem [ref=e290]:
+                    - link "Virtual Machine Orchestrator" [ref=e291] [cursor=pointer]:
+                      - /url: /vm-management/
+                  - listitem [ref=e292]:
+                    - link "Create and Manage VMs" [ref=e293] [cursor=pointer]:
+                      - /url: /vm-management/create-manage-vm/
+                  - listitem [ref=e294]:
+                    - link "Advanced Topics" [ref=e295] [cursor=pointer]:
+                      - /url: /vm-management/create-manage-vm/advanced-topics/
+                  - listitem [ref=e296]:
+                    - generic [ref=e297]: Create Disk Templates
+              - generic [ref=e298]:
+                - heading "Create Disk Templates" [level=1] [ref=e300]
+                - paragraph [ref=e301]:
+                  - text: Palette Virtual Machine Orchestrator (VMO) enables you to quickly deploy Virtual Machines (VMs) by
+                  - link "creating VM templates" [ref=e302] [cursor=pointer]:
+                    - /url: /vm-management/create-manage-vm/advanced-topics/create-vm-template/
+                  - text: .
+                - paragraph [ref=e303]:
+                  - text: When deployed from a template, VMs include a disk template containing a pre-installed copy of the desired Operating System (OS). The
+                  - link "KubeVirt Containerized Data Importer (CDI)" [ref=e304] [cursor=pointer]:
+                    - /url: https://github.com/kubevirt/containerized-data-importer/tree/main
+                  - text: imports templates through
+                  - link "Data Volumes" [ref=e305] [cursor=pointer]:
+                    - /url: https://github.com/kubevirt/containerized-data-importer/blob/main/doc/datavolumes.md
+                  - text: . This guide demonstrates how to implement your own disk and VM templates using Kubevirt Data Volumes.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e306]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e307] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e308]:
+                  - listitem [ref=e309]:
+                    - text: A VMO profile. Check out the
+                    - link "Create a VMO Profile" [ref=e310] [cursor=pointer]:
+                      - /url: /vm-management/create-vmo-profile/
+                    - text: guide to learn how you can create this profile.
+                  - listitem [ref=e311]:
+                    - text: A cluster deployed with this VMO profile. Check out the
+                    - link "Getting Started" [ref=e312] [cursor=pointer]:
+                      - /url: /getting-started/
+                    - text: tutorials for detailed steps on how you can deploy clusters to a public cloud.
+                - heading "Create a TemplateDirect link to Create a Template" [level=2] [ref=e313]:
+                  - text: Create a Template
+                  - link "Direct link to Create a Template" [ref=e314] [cursor=pointer]:
+                    - /url: "#create-a-template"
+                    - text: "#"
+                - list [ref=e315]:
+                  - listitem [ref=e316]:
+                    - paragraph [ref=e317]:
+                      - text: Create a new
+                      - strong [ref=e318]: Add-on Profile
+                      - text: with the following manifest. Check out the
+                      - link "Add a Manifest" [ref=e319] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/
+                      - text: guide for more information.
+                    - paragraph [ref=e320]:
+                      - text: The provided manifest defines a
+                      - code [ref=e321]: DataVolume
+                      - text: that imports the example disk template for Ubuntu 22.04 into the
+                      - code [ref=e322]: vmo-golden-images
+                      - text: namespace. This snippet has three important configuration options.
+                    - list [ref=e323]:
+                      - listitem [ref=e324]:
+                        - paragraph [ref=e325]:
+                          - code [ref=e326]: cdi.kubevirt.io/storage.deleteAfterCompletion
+                          - text: that prevents deleting the
+                          - code [ref=e327]: DataVolume
+                          - text: object after the import process completes. This annotation is necessary to stop Palette from continuously recreating the
+                          - code [ref=e328]: DataVolume
+                          - text: object.
+                      - listitem [ref=e329]:
+                        - paragraph [ref=e330]:
+                          - code [ref=e331]: volumeMode
+                          - text: that aligns with the mode that CSI supports for
+                          - code [ref=e332]: ReadWriteMany
+                          - text: access. For some CSIs, such as Rook-Ceph and EMC PowerMax, it's the
+                          - code [ref=e333]: Block
+                          - text: mode, while for other CSIs, such as Portworx, Longhorn, and EMC PowerFlex, it's the
+                          - code [ref=e334]: Filesystem
+                          - text: mode. Make sure to check the
+                          - code [ref=e335]: volumeMode
+                          - text: setting if you choose another CSI.
+                      - listitem [ref=e336]:
+                        - paragraph [ref=e337]:
+                          - code [ref=e338]: registry
+                          - text: that specifies a container disk on an external Docker registry from which data should be imported. Check the
+                          - link "CDI DataVolumes documentation" [ref=e339] [cursor=pointer]:
+                            - /url: https://github.com/kubevirt/containerized-data-importer/blob/main/doc/datavolumes.md#source
+                          - text: for other possible
+                          - code [ref=e340]: source
+                          - text: values.
+                        - generic [ref=e342]:
+                          - code [ref=e344]:
+                            - generic [ref=e345]: "apiVersion: cdi.kubevirt.io/v1beta1"
+                            - generic [ref=e346]: "kind: DataVolume"
+                            - generic [ref=e347]: "metadata:"
+                            - generic [ref=e348]: "name: \"template-ubuntu-2204\""
+                            - generic [ref=e349]: "namespace: \"vmo-golden-images\""
+                            - generic [ref=e350]: "annotations:"
+                            - generic [ref=e351]: "cdi.kubevirt.io/storage.deleteAfterCompletion: \"false\""
+                            - generic [ref=e352]: "spec:"
+                            - generic [ref=e353]: "storage:"
+                            - generic [ref=e354]: "accessModes:"
+                            - generic [ref=e355]: "- ReadWriteMany"
+                            - generic [ref=e356]: "resources:"
+                            - generic [ref=e357]: "requests:"
+                            - generic [ref=e358]: "storage: 50Gi"
+                            - generic [ref=e359]: "volumeMode: Block # or \"Filesystem\", depending on the CSI used"
+                            - generic [ref=e360]: "source:"
+                            - generic [ref=e361]: "registry:"
+                            - generic [ref=e362]: "url: \"docker://gcr.io/spectro-images-public/release/vm-dashboard/os/ubuntu-container-disk:22.04\""
+                          - generic [ref=e363]:
+                            - button "Toggle word wrap" [ref=e364] [cursor=pointer]:
+                              - img [ref=e365]
+                            - button "Copy code to clipboard" [ref=e367] [cursor=pointer]:
+                              - generic [ref=e368]:
+                                - img [ref=e369]
+                                - img [ref=e371]
+                        - generic [ref=e373]:
+                          - generic [ref=e374]:
+                            - img [ref=e376]
+                            - text: warning
+                          - paragraph [ref=e379]:
+                            - text: When the
+                            - code [ref=e380]: Filesystem
+                            - text: mode is selected, the CDI will automatically apply a small overhead factor to the Persistent Volume Claim (PVC) size to account for the storage space lost due to the filesystem overhead. As a result, the PVC for such a template will be slightly larger. Any clones made from this PVC will also use this larger minimum size.
+                  - listitem [ref=e381]:
+                    - paragraph [ref=e382]: Create another manifest in this cluster profile and add the following code snippet.
+                    - paragraph [ref=e383]: This snippet has three notable configurations.
+                    - list [ref=e384]:
+                      - listitem [ref=e385]:
+                        - paragraph [ref=e386]:
+                          - code [ref=e387]: spec.dataVolumeTemplates.spec
+                          - text: that defines which source PVC to clone from and what PVC to clone into.
+                      - listitem [ref=e388]:
+                        - paragraph [ref=e389]:
+                          - code [ref=e390]: spec.dataVolumeTemplates.spec.source
+                          - text: that points to the
+                          - code [ref=e391]: template-ubuntu-2204
+                          - text: PVC in the
+                          - code [ref=e392]: vmo-golden-images
+                          - text: namespace.
+                      - listitem [ref=e393]:
+                        - paragraph [ref=e394]:
+                          - code [ref=e395]: spec.dataVolumeTemplates.spec.pvc
+                          - text: that creates a new target PVC with the specified
+                          - code [ref=e396]: accessMode
+                          - text: and
+                          - code [ref=e397]: volumeMode
+                          - text: characteristics. The size of the new PVC must be the same or larger as the source PVC.
+                        - generic [ref=e398]:
+                          - generic [ref=e399]:
+                            - img [ref=e401]
+                            - text: warning
+                          - paragraph [ref=e404]:
+                            - text: To enable CSI-assisted cloning, you must fulfill a few
+                            - link "prerequisites" [ref=e405] [cursor=pointer]:
+                              - /url: https://github.com/kubevirt/containerized-data-importer/blob/main/doc/csi-cloning.md#prerequisites
+                            - text: . For instance, the source and target PVCs must share the same Storage Class and Volume Mode. The CDI will automatically fall back to slower host-assisted cloning if you don't meet these requirements.
+                        - generic [ref=e407]:
+                          - code [ref=e409]:
+                            - generic [ref=e410]: "apiVersion: spectrocloud.com/v1"
+                            - generic [ref=e411]: "kind: VmTemplate"
+                            - generic [ref=e412]: "metadata:"
+                            - generic [ref=e413]: "name: ubuntu-2204"
+                            - generic [ref=e414]: "spec:"
+                            - generic [ref=e415]: "dataVolumeTemplates:"
+                            - generic [ref=e416]: "- metadata:"
+                            - generic [ref=e417]: "name: ubuntu-2204"
+                            - generic [ref=e418]: "spec:"
+                            - generic [ref=e419]: "source:"
+                            - generic [ref=e420]: "pvc:"
+                            - generic [ref=e421]: "name: template-ubuntu-2204"
+                            - generic [ref=e422]: "namespace: vmo-golden-images"
+                            - generic [ref=e423]: "pvc:"
+                            - generic [ref=e424]: "accessModes:"
+                            - generic [ref=e425]: "- ReadWriteMany"
+                            - generic [ref=e426]: "resources:"
+                            - generic [ref=e427]: "requests:"
+                            - generic [ref=e428]: "storage: 50Gi"
+                            - generic [ref=e429]: "volumeMode: Block # or \"Filesystem\", depending on the CSI used"
+                            - generic [ref=e430]: "template:"
+                            - generic [ref=e431]: "metadata:"
+                            - generic [ref=e432]: "annotations:"
+                            - generic [ref=e433]: "descheduler.alpha.kubernetes.io/evict: \"true\""
+                            - generic [ref=e434]: "spec:"
+                            - generic [ref=e435]: "domain:"
+                            - generic [ref=e436]: "cpu:"
+                            - generic [ref=e437]: "cores: 2"
+                            - generic [ref=e438]: "sockets: 1"
+                            - generic [ref=e439]: "threads: 1"
+                            - generic [ref=e440]: "devices:"
+                            - generic [ref=e441]: "disks:"
+                            - generic [ref=e442]: "- disk:"
+                            - generic [ref=e443]: "bus: virtio"
+                            - generic [ref=e444]: "name: datavolume-os"
+                            - generic [ref=e445]: "- disk:"
+                            - generic [ref=e446]: "bus: virtio"
+                            - generic [ref=e447]: "name: cloudinitdisk"
+                            - generic [ref=e448]: "interfaces:"
+                            - generic [ref=e449]: "- masquerade: {}"
+                            - generic [ref=e450]: "name: default"
+                            - generic [ref=e451]: "model: virtio"
+                            - generic [ref=e452]: "machine:"
+                            - generic [ref=e453]: "type: q35"
+                            - generic [ref=e454]: "resources:"
+                            - generic [ref=e455]: "limits:"
+                            - generic [ref=e456]: "memory: 2Gi"
+                            - generic [ref=e457]: "requests:"
+                            - generic [ref=e458]: "memory: 2Gi"
+                            - generic [ref=e459]: "networks:"
+                            - generic [ref=e460]: "- name: default"
+                            - generic [ref=e461]: "pod: {}"
+                            - generic [ref=e462]: "volumes:"
+                            - generic [ref=e463]: "- dataVolume:"
+                            - generic [ref=e464]: "name: ubuntu-2204"
+                            - generic [ref=e465]: "name: datavolume-os"
+                            - generic [ref=e466]: "- cloudInitNoCloud:"
+                            - generic [ref=e467]: "userData: |"
+                            - generic [ref=e468]: "#cloud-config"
+                            - generic [ref=e469]: "ssh_pwauth: True"
+                            - generic [ref=e470]: "chpasswd: { expire: False }"
+                            - generic [ref=e471]: "password: spectro"
+                            - generic [ref=e472]: "disable_root: false"
+                            - generic [ref=e473]: "runcmd:"
+                            - generic [ref=e474]: "- apt-get update"
+                            - generic [ref=e475]: "- apt-get install -y qemu-guest-agent"
+                            - generic [ref=e476]: "- systemctl start qemu-guest-agent"
+                            - generic [ref=e477]: "name: cloudinitdisk"
+                          - generic [ref=e478]:
+                            - button "Toggle word wrap" [ref=e479] [cursor=pointer]:
+                              - img [ref=e480]
+                            - button "Copy code to clipboard" [ref=e482] [cursor=pointer]:
+                              - generic [ref=e483]:
+                                - img [ref=e484]
+                                - img [ref=e486]
+                        - generic [ref=e488]:
+                          - generic [ref=e489]:
+                            - img [ref=e491]
+                            - text: tip
+                          - paragraph [ref=e494]:
+                            - text: To enable CSI-assisted cloning into larger PVCs than the source PVC, set
+                            - code [ref=e495]: "allowVolumeExpansion : true"
+                            - text: on your defined Storage Class.
+                  - listitem [ref=e496]:
+                    - paragraph [ref=e497]:
+                      - text: When the CDI clones a PVC, it runs under the
+                      - code [ref=e498]: default
+                      - text: service account in the namespace of the target PVC. When the source PVC is in a different namespace, you must give the required permissions to the service account. The
+                      - link "VMO pack" [ref=e499] [cursor=pointer]:
+                        - /url: /vm-management/
+                      - text: version 4.2.0 (or higher) does this automatically through its default pack specification. This configuration uses the
+                      - code [ref=e500]: vmEnabledNamespaces
+                      - text: option to specify the namespaces for which the permissions are configured.
+                    - generic [ref=e502]:
+                      - code [ref=e504]:
+                        - generic [ref=e505]: "charts:"
+                        - generic [ref=e506]: "virtual-machine-orchestrator:"
+                        - generic [ref=e507]: "# This namespace will be used to store golden images"
+                        - generic [ref=e508]: "goldenImagesNamespace: \"vmo-golden-images\""
+                        - generic [ref=e509]: "# These namespaces will be created and set up to deploy VMs into"
+                        - generic [ref=e510]: "vmEnabledNamespaces:"
+                        - generic [ref=e511]: "- \"default\""
+                        - generic [ref=e512]: "- \"virtual-machines\""
+                      - generic [ref=e513]:
+                        - button "Toggle word wrap" [ref=e514] [cursor=pointer]:
+                          - img [ref=e515]
+                        - button "Copy code to clipboard" [ref=e517] [cursor=pointer]:
+                          - generic [ref=e518]:
+                            - img [ref=e519]
+                            - img [ref=e521]
+                  - listitem [ref=e523]:
+                    - paragraph [ref=e524]:
+                      - text: By default, the CDI contains an internal database of CSIs, with the CSI supported access modes, volume modes, and CSI-assisted cloning support. However, we recommend creating a
+                      - code [ref=e525]: StorageProfile
+                      - text: to adjust these parameters to your desired values.
+                    - paragraph [ref=e526]: Create another manifest in this cluster profile and add the following code snippet.
+                    - paragraph [ref=e527]: This snippet has three notable configurations that define the storage class.
+                    - list [ref=e528]:
+                      - listitem [ref=e529]:
+                        - paragraph [ref=e530]:
+                          - text: The storage class has the name
+                          - code [ref=e531]: ceph-block
+                          - text: .
+                      - listitem [ref=e532]:
+                        - paragraph [ref=e533]:
+                          - text: The storage class supports the
+                          - code [ref=e534]: Block
+                          - text: volume mode with the
+                          - code [ref=e535]: ReadWriteMany
+                          - text: access mode.
+                      - listitem [ref=e536]:
+                        - paragraph [ref=e537]:
+                          - text: The storage class uses
+                          - code [ref=e538]: csi-clone
+                          - text: for cloning operations.
+                        - generic [ref=e540]:
+                          - code [ref=e542]:
+                            - generic [ref=e543]: "apiVersion: cdi.kubevirt.io/v1beta1"
+                            - generic [ref=e544]: "kind: StorageProfile"
+                            - generic [ref=e545]: "metadata:"
+                            - generic [ref=e546]: "name: ceph-block"
+                            - generic [ref=e547]: "spec:"
+                            - generic [ref=e548]: "claimPropertySets:"
+                            - generic [ref=e549]: "- accessModes:"
+                            - generic [ref=e550]: "- ReadWriteMany"
+                            - generic [ref=e551]: "volumeMode: Block"
+                            - generic [ref=e552]: "cloneStrategy: csi-clone"
+                          - button "Copy code to clipboard" [ref=e554] [cursor=pointer]:
+                            - generic [ref=e555]:
+                              - img [ref=e556]
+                              - img [ref=e558]
+                        - paragraph [ref=e560]: Expand the following section to learn how you can use storage profiles for CSI-assisted cloning.
+                        - group [ref=e561]:
+                          - generic "Storage Profiles in VM Templates" [ref=e562] [cursor=pointer]
+                  - listitem [ref=e563]:
+                    - paragraph [ref=e564]:
+                      - text: Click on
+                      - strong [ref=e565]: Confirm & Create
+                      - text: .
+                  - listitem [ref=e566]:
+                    - paragraph [ref=e567]:
+                      - text: Complete the cluster profile configuration and click on
+                      - strong [ref=e568]: Finish Configuration
+                      - text: .
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e569]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e570] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e571]:
+                  - listitem [ref=e572]:
+                    - paragraph [ref=e573]:
+                      - text: Navigate to the left
+                      - strong [ref=e574]: Main Menu
+                      - text: and select
+                      - strong [ref=e575]: Clusters
+                      - text: .
+                  - listitem [ref=e576]:
+                    - paragraph [ref=e577]:
+                      - text: Select your cluster and click the
+                      - strong [ref=e578]: Profile
+                      - text: tab.
+                  - listitem [ref=e579]:
+                    - paragraph [ref=e580]:
+                      - text: Add the newly created
+                      - strong [ref=e581]: Add-on Profile
+                      - text: to your cluster profile. Click on
+                      - strong [ref=e582]: Save
+                      - text: .
+                    - paragraph [ref=e583]:
+                      - text: Your cluster applies the changes. As soon as the cluster finishes updating, the CDI begins to import the data into the target PVC in the
+                      - code [ref=e584]: vmo-golden-images
+                      - text: namespace. The target PVC has the same name as the
+                      - code [ref=e585]: DataVolume
+                      - text: object.
+                    - paragraph [ref=e586]:
+                      - img "Add-on Profile" [ref=e587]
+                  - listitem [ref=e588]:
+                    - paragraph [ref=e589]:
+                      - text: Once the cluster updates, this VM template is available to the VMs you create on your cluster. Check out the
+                      - link "Deploy VM From a Template" [ref=e590] [cursor=pointer]:
+                        - /url: /vm-management/create-manage-vm/deploy-vm-from-template/
+                      - text: guide for more information.
+                    - paragraph [ref=e591]:
+                      - img "Create VM from template" [ref=e592]
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e593]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e594] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - paragraph [ref=e595]: To learn more about the Palette VMO, we encourage you to check out the reference resources below.
+                - list [ref=e596]:
+                  - listitem [ref=e597]:
+                    - paragraph [ref=e598]:
+                      - link "Palette VMO" [ref=e599] [cursor=pointer]:
+                        - /url: /vm-management/
+                  - listitem [ref=e600]:
+                    - paragraph [ref=e601]:
+                      - link "Deploy VM From a Template" [ref=e602] [cursor=pointer]:
+                        - /url: /vm-management/create-manage-vm/deploy-vm-from-template/
+              - generic [ref=e603]:
+                - generic [ref=e605]:
+                  - text: "Tags:"
+                  - list [ref=e606]:
+                    - listitem [ref=e607]:
+                      - link "vmo" [ref=e608] [cursor=pointer]:
+                        - /url: /tags/vmo/
+                - link "Edit this page" [ref=e611] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vm-management/create-manage-vm/advanced-topics/create-disk-templates.md
+                  - img [ref=e612]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e616]:
+              - link "Previous « Access VM Cluster with Virtctl" [ref=e617] [cursor=pointer]:
+                - /url: /vm-management/create-manage-vm/advanced-topics/access-cluster-with-virtctl/
+                - generic [ref=e618]: Previous
+                - generic [ref=e619]: « Access VM Cluster with Virtctl
+              - link "Next Migrate a VM to a VMO cluster using the Palette CLI »" [ref=e620] [cursor=pointer]:
+                - /url: /vm-management/create-manage-vm/advanced-topics/migrate-vm-kubevirt/
+                - generic [ref=e621]: Next
+                - generic [ref=e622]: Migrate a VM to a VMO cluster using the Palette CLI »
+          - list [ref=e625]:
+            - listitem [ref=e626]:
+              - link "Prerequisites" [ref=e627] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e628]:
+              - link "Create a Template" [ref=e629] [cursor=pointer]:
+                - /url: "#create-a-template"
+            - listitem [ref=e630]:
+              - link "Validate" [ref=e631] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e632]:
+              - link "Resources" [ref=e633] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e634] [cursor=pointer]:
+    - generic [ref=e637]:
+      - img "Project Logo" [ref=e638]
+      - paragraph [ref=e639]: Ask AI
+```

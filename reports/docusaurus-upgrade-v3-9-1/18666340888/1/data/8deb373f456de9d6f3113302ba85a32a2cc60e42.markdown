@@ -1,0 +1,509 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [expanded] [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+                - list [ref=e82]:
+                  - listitem [ref=e83]:
+                    - generic [ref=e84]:
+                      - link "Cluster Profiles" [ref=e85] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/
+                      - button "Toggle the collapsible sidebar category 'Cluster Profiles'" [ref=e86] [cursor=pointer]
+                  - listitem [ref=e87]:
+                    - generic [ref=e88]:
+                      - link "App Profiles" [expanded] [ref=e89] [cursor=pointer]:
+                        - /url: /profiles/app-profiles/
+                      - button "Toggle the collapsible sidebar category 'App Profiles'" [ref=e90] [cursor=pointer]
+                    - list [ref=e91]:
+                      - listitem [ref=e92]:
+                        - generic [ref=e93]:
+                          - link "Create App Profiles" [ref=e94] [cursor=pointer]:
+                            - /url: /profiles/app-profiles/create-app-profiles/
+                          - button "Toggle the collapsible sidebar category 'Create App Profiles'" [ref=e95] [cursor=pointer]
+                      - listitem [ref=e96]:
+                        - generic [ref=e97]:
+                          - link "Modify App Profiles" [ref=e98] [cursor=pointer]:
+                            - /url: /profiles/app-profiles/modify-app-profiles/
+                          - button "Toggle the collapsible sidebar category 'Modify App Profiles'" [ref=e99] [cursor=pointer]
+                      - listitem [ref=e100]:
+                        - link "Clone an App Profile" [ref=e101] [cursor=pointer]:
+                          - /url: /profiles/app-profiles/clone-app-profile/
+                      - listitem [ref=e102]:
+                        - link "Delete an App Profile" [ref=e103] [cursor=pointer]:
+                          - /url: /profiles/app-profiles/delete-app-profile/
+                      - listitem [ref=e104]:
+                        - link "Output Variables" [ref=e105] [cursor=pointer]:
+                          - /url: /profiles/app-profiles/app-profile-output-vars/
+                  - listitem [ref=e106]:
+                    - link "Profile Customization" [ref=e107] [cursor=pointer]:
+                      - /url: /profiles/profile-customization/
+              - listitem [ref=e108]:
+                - generic [ref=e109]:
+                  - link "Cluster Templates" [ref=e110] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e112]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e114] [cursor=pointer]
+              - listitem [ref=e115]:
+                - generic [ref=e116]:
+                  - link "Deployment Modes" [ref=e117] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e119]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e121] [cursor=pointer]
+              - listitem [ref=e122]:
+                - generic [ref=e123]:
+                  - link "Clusters" [ref=e124] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e126]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e132] [cursor=pointer]
+              - listitem [ref=e133]:
+                - generic [ref=e134]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e135] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e137]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e139] [cursor=pointer]
+              - listitem [ref=e140]:
+                - generic [ref=e141]:
+                  - link "Palette Dev Engine" [ref=e142] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e144]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e146] [cursor=pointer]
+              - listitem [ref=e147]:
+                - generic [ref=e148]:
+                  - link "Virtual Machine Orchestrator" [ref=e149] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e151]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e153] [cursor=pointer]
+              - listitem [ref=e154]:
+                - generic [ref=e155]:
+                  - link "Workspaces" [ref=e156] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e158]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e160] [cursor=pointer]
+              - listitem [ref=e161]:
+                - generic [ref=e162]:
+                  - link "Packs List" [ref=e163] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e165]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e167] [cursor=pointer]
+              - listitem [ref=e168]:
+                - generic [ref=e169]:
+                  - link "User & Role Management" [ref=e170] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e172]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e174] [cursor=pointer]
+              - listitem [ref=e175]:
+                - generic [ref=e176]:
+                  - link "Registries and Packs" [ref=e177] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e179]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e181] [cursor=pointer]
+              - listitem [ref=e182]:
+                - generic [ref=e183]:
+                  - link "Security" [ref=e184] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e186]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e188] [cursor=pointer]
+              - listitem [ref=e189]:
+                - generic [ref=e190]:
+                  - link "Audit Logs" [ref=e191] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e193]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e195] [cursor=pointer]
+              - listitem [ref=e196]:
+                - generic [ref=e197]:
+                  - link "Self-Hosted Palette" [ref=e198] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e200]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e202] [cursor=pointer]
+              - listitem [ref=e203]:
+                - generic [ref=e204]:
+                  - link "Palette VerteX" [ref=e205] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e207]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e209] [cursor=pointer]
+              - listitem [ref=e210]:
+                - generic [ref=e211]:
+                  - link "Tenant Administration" [ref=e212] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e214]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e216] [cursor=pointer]
+              - listitem [ref=e217]:
+                - generic [ref=e218]:
+                  - link "Automation" [ref=e219] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e221]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e223] [cursor=pointer]
+              - listitem [ref=e224]:
+                - generic [ref=e225]:
+                  - link "Troubleshooting" [ref=e226] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e228]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e230] [cursor=pointer]
+              - listitem [ref=e231]:
+                - link "Glossary" [ref=e232] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e234]
+                  - text: Glossary
+              - listitem [ref=e236]:
+                - generic [ref=e237]:
+                  - link "Compliance & Legal" [ref=e238] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e240]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - button "Privacy Settings" [ref=e244] [cursor=pointer]:
+                  - img [ref=e245]
+                  - text: Privacy Settings
+      - main [ref=e247]:
+        - generic [ref=e249]:
+          - generic [ref=e251]:
+            - article [ref=e252]:
+              - navigation "Breadcrumbs" [ref=e253]:
+                - list [ref=e254]:
+                  - listitem [ref=e255]:
+                    - link "Home page" [ref=e256] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e257]
+                  - listitem [ref=e259]:
+                    - link "Profiles" [ref=e260] [cursor=pointer]:
+                      - /url: /profiles/
+                  - listitem [ref=e261]:
+                    - link "App Profiles" [ref=e262] [cursor=pointer]:
+                      - /url: /profiles/app-profiles/
+                  - listitem [ref=e263]:
+                    - generic [ref=e264]: Output Variables
+              - generic [ref=e265]:
+                - heading "Output Variables" [level=1] [ref=e267]
+                - paragraph [ref=e268]:
+                  - text: Palette Dev Engine output variables are defined in the
+                  - link "app profile" [ref=e269] [cursor=pointer]:
+                    - /url: /glossary-all/#app-profile
+                  - text: "and are only resolved at cluster deployment time. The output variables have the following properties:"
+                - list [ref=e270]:
+                  - listitem [ref=e271]:
+                    - paragraph [ref=e272]: May be referenced by specifying them during app profile creation.
+                  - listitem [ref=e273]:
+                    - paragraph [ref=e274]: Output variables are inherited from the lower layers of the app profile.
+                  - listitem [ref=e275]:
+                    - paragraph [ref=e276]: Each service type exposes a set of unique output variables.
+                - paragraph [ref=e277]: The variables are generated when the server layer is deployed. Output variables can be consumed by the higher layers in the app profile.
+                - paragraph [ref=e278]:
+                  - text: Check out the
+                  - link "Services Connectivity" [ref=e279] [cursor=pointer]:
+                    - /url: /devx/services/connectivity/
+                  - text: page to learn how to use output variables for establishing network connectivity between services.
+                - code [ref=e283]:
+                  - generic [ref=e284]: "{{.spectro.app.$appdeploymentName.<layerName>.<layerOutput_Variable_Name>}}"
+                - heading "System Output VariablesDirect link to System Output Variables" [level=2] [ref=e285]:
+                  - text: System Output Variables
+                  - link "Direct link to System Output Variables" [ref=e286] [cursor=pointer]:
+                    - /url: "#system-output-variables"
+                    - text: "#"
+                - paragraph [ref=e287]: The following output variables are globally available for all services.
+                - table [ref=e288]:
+                  - rowgroup [ref=e289]:
+                    - row "Output Variable Description" [ref=e290]:
+                      - cell "Output Variable" [ref=e291]:
+                        - strong [ref=e292]: Output Variable
+                      - cell "Description" [ref=e293]:
+                        - strong [ref=e294]: Description
+                  - rowgroup [ref=e295]:
+                    - row "spectro.system.user.name User name of the logged in user." [ref=e296]:
+                      - cell "spectro.system.user.name" [ref=e297]:
+                        - code [ref=e298]: spectro.system.user.name
+                      - cell "User name of the logged in user." [ref=e299]
+                    - row "spectro.system.user.uid ID of the logged in user." [ref=e300]:
+                      - cell "spectro.system.user.uid" [ref=e301]:
+                        - code [ref=e302]: spectro.system.user.uid
+                      - cell "ID of the logged in user." [ref=e303]
+                    - row "spectro.system.user.email Email address of the logged in user." [ref=e304]:
+                      - cell "spectro.system.user.email" [ref=e305]:
+                        - code [ref=e306]: spectro.system.user.email
+                      - cell "Email address of the logged in user." [ref=e307]
+                    - row "spectro.system.tenant.uid ID of the current tenant or organization." [ref=e308]:
+                      - cell "spectro.system.tenant.uid" [ref=e309]:
+                        - code [ref=e310]: spectro.system.tenant.uid
+                      - cell "ID of the current tenant or organization." [ref=e311]
+                    - row "spectro.system.project.uid ID of the current project." [ref=e312]:
+                      - cell "spectro.system.project.uid" [ref=e313]:
+                        - code [ref=e314]: spectro.system.project.uid
+                      - cell "ID of the current project." [ref=e315]
+                    - row "spectro.system.project.name Name of the current project." [ref=e316]:
+                      - cell "spectro.system.project.name" [ref=e317]:
+                        - code [ref=e318]: spectro.system.project.name
+                      - cell "Name of the current project." [ref=e319]
+                    - row "spectro.system.cluster.uid ID of the current cluster." [ref=e320]:
+                      - cell "spectro.system.cluster.uid" [ref=e321]:
+                        - code [ref=e322]: spectro.system.cluster.uid
+                      - cell "ID of the current cluster." [ref=e323]
+                    - row "spectro.system.cluster.name Name of the current cluster." [ref=e324]:
+                      - cell "spectro.system.cluster.name" [ref=e325]:
+                        - code [ref=e326]: spectro.system.cluster.name
+                      - cell "Name of the current cluster." [ref=e327]
+                    - row "spectro.system.kubernetes.version Current version of Kubernetes." [ref=e328]:
+                      - cell "spectro.system.kubernetes.version" [ref=e329]:
+                        - code [ref=e330]: spectro.system.kubernetes.version
+                      - cell "Current version of Kubernetes." [ref=e331]
+                    - row "spectro.system.reverseproxy.server Hostname of Spectro Proxy reverse proxy server. This value is empty when not enabled." [ref=e332]:
+                      - cell "spectro.system.reverseproxy.server" [ref=e333]:
+                        - code [ref=e334]: spectro.system.reverseproxy.server
+                      - cell "Hostname of Spectro Proxy reverse proxy server. This value is empty when not enabled." [ref=e335]
+                    - row "spectro.system.reverseproxy.port Port of the Spectro Proxy reverse proxy server. This value is empty when not enabled." [ref=e336]:
+                      - cell "spectro.system.reverseproxy.port" [ref=e337]:
+                        - code [ref=e338]: spectro.system.reverseproxy.port
+                      - cell "Port of the Spectro Proxy reverse proxy server. This value is empty when not enabled." [ref=e339]
+                    - row "spectro.system.reverseproxy.vhostport Port of the virtual host that is hosting the reverse proxy." [ref=e340]:
+                      - cell "spectro.system.reverseproxy.vhostport" [ref=e341]:
+                        - code [ref=e342]: spectro.system.reverseproxy.vhostport
+                      - cell "Port of the virtual host that is hosting the reverse proxy." [ref=e343]
+                    - row "spectro.system.reverseproxy.protocol Protocol used for the Spectro Proxy reverse proxy." [ref=e344]:
+                      - cell "spectro.system.reverseproxy.protocol" [ref=e345]:
+                        - code [ref=e346]: spectro.system.reverseproxy.protocol
+                      - cell "Protocol used for the Spectro Proxy reverse proxy." [ref=e347]
+                    - row "spectro.system.cloud.type Type of cloud environment where the cluster is deployed such as EKS, AKS, and GKE." [ref=e348]:
+                      - cell "spectro.system.cloud.type" [ref=e349]:
+                        - code [ref=e350]: spectro.system.cloud.type
+                      - cell "Type of cloud environment where the cluster is deployed such as EKS, AKS, and GKE." [ref=e351]
+                    - row "spectro.system.cloud.region Cloud provider region where the cluster is deployed." [ref=e352]:
+                      - cell "spectro.system.cloud.region" [ref=e353]:
+                        - code [ref=e354]: spectro.system.cloud.region
+                      - cell "Cloud provider region where the cluster is deployed." [ref=e355]
+                    - row "spectro.system.apptier.name Name of the service layer from the context of the app profile." [ref=e356]:
+                      - cell "spectro.system.apptier.name" [ref=e357]:
+                        - code [ref=e358]: spectro.system.apptier.name
+                      - cell "Name of the service layer from the context of the app profile." [ref=e359]
+                    - row "spectro.system.apptier.uid ID of the service layer." [ref=e360]:
+                      - cell "spectro.system.apptier.uid" [ref=e361]:
+                        - code [ref=e362]: spectro.system.apptier.uid
+                      - cell "ID of the service layer." [ref=e363]
+                    - row "spectro.system.appprofile.name Name of the app profile." [ref=e364]:
+                      - cell "spectro.system.appprofile.name" [ref=e365]:
+                        - code [ref=e366]: spectro.system.appprofile.name
+                      - cell "Name of the app profile." [ref=e367]
+                    - row "spectro.system.appprofile.uid ID of the app profile." [ref=e368]:
+                      - cell "spectro.system.appprofile.uid" [ref=e369]:
+                        - code [ref=e370]: spectro.system.appprofile.uid
+                      - cell "ID of the app profile." [ref=e371]
+                    - row "spectro.system.appdeployment.uid ID of the app deployment." [ref=e372]:
+                      - cell "spectro.system.appdeployment.uid" [ref=e373]:
+                        - code [ref=e374]: spectro.system.appdeployment.uid
+                      - cell "ID of the app deployment." [ref=e375]
+                    - row "spectro.system.appdeployment.name Name of the app deployment." [ref=e376]:
+                      - cell "spectro.system.appdeployment.name" [ref=e377]:
+                        - code [ref=e378]: spectro.system.appdeployment.name
+                      - cell "Name of the app deployment." [ref=e379]
+                    - row "spectro.system.appdeployment.tiername Name of the service layer from the context of the app deployment." [ref=e380]:
+                      - cell "spectro.system.appdeployment.tiername" [ref=e381]:
+                        - code [ref=e382]: spectro.system.appdeployment.tiername
+                      - cell "Name of the service layer from the context of the app deployment." [ref=e383]
+                    - row "spectro.system.appdeployment.ingress.host Ingress host pattern for a cluster group with ingress enabled. This value is dynamically generated." [ref=e384]:
+                      - cell "spectro.system.appdeployment.ingress.host" [ref=e385]:
+                        - code [ref=e386]: spectro.system.appdeployment.ingress.host
+                      - cell "Ingress host pattern for a cluster group with ingress enabled. This value is dynamically generated." [ref=e387]
+                - heading "Container Service Output VariablesDirect link to Container Service Output Variables" [level=2] [ref=e388]:
+                  - text: Container Service Output Variables
+                  - link "Direct link to Container Service Output Variables" [ref=e389] [cursor=pointer]:
+                    - /url: "#container-service-output-variables"
+                    - text: "#"
+                - paragraph [ref=e390]:
+                  - text: The container service type exposes the following output variables. Replace
+                  - strong [ref=e391]: "[service-name]"
+                  - text: with the respective name of the service layer.
+                - table [ref=e392]:
+                  - rowgroup [ref=e393]:
+                    - row "Output Variable Description" [ref=e394]:
+                      - cell "Output Variable" [ref=e395]:
+                        - strong [ref=e396]: Output Variable
+                      - cell "Description" [ref=e397]:
+                        - strong [ref=e398]: Description
+                  - rowgroup [ref=e399]:
+                    - row ".spectro.app.$appDeploymentName.[service-name].CONTAINER_NAMESPACE Kubernetes namespace of the deployed container." [ref=e400]:
+                      - cell ".spectro.app.$appDeploymentName.[service-name].CONTAINER_NAMESPACE" [ref=e401]:
+                        - code [ref=e402]: .spectro.app.$appDeploymentName.[service-name].CONTAINER_NAMESPACE
+                      - cell "Kubernetes namespace of the deployed container." [ref=e403]
+                    - row ".spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC Kubernetes DNS hostname of the service." [ref=e404]:
+                      - cell ".spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC" [ref=e405]:
+                        - code [ref=e406]: .spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC
+                      - cell "Kubernetes DNS hostname of the service." [ref=e407]
+                    - row ".spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_PORT Exposed port of the service." [ref=e408]:
+                      - cell ".spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_PORT" [ref=e409]:
+                        - code [ref=e410]: .spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_PORT
+                      - cell "Exposed port of the service." [ref=e411]
+                    - row "spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_EXTERNALHOSTNAME Kubernetes DNS hostname of the load balancer. This value is available if the service's to Public and deployed to a public cloud provider environment." [ref=e412]:
+                      - cell "spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_EXTERNALHOSTNAME" [ref=e413]:
+                        - code [ref=e414]: spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_EXTERNALHOSTNAME
+                      - cell "Kubernetes DNS hostname of the load balancer. This value is available if the service's to Public and deployed to a public cloud provider environment." [ref=e415]:
+                        - text: Kubernetes DNS hostname of the load balancer. This value is available if the service's to
+                        - strong [ref=e416]: Public
+                        - text: and deployed to a public cloud provider environment.
+                    - row "spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_EXTERNALIP Public URL of the load balancer. This value is available if the service's access is set to Public and deployed to a private cloud provider environment." [ref=e417]:
+                      - cell "spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_EXTERNALIP" [ref=e418]:
+                        - code [ref=e419]: spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_EXTERNALIP
+                      - cell "Public URL of the load balancer. This value is available if the service's access is set to Public and deployed to a private cloud provider environment." [ref=e420]:
+                        - text: Public URL of the load balancer. This value is available if the service's access is set to
+                        - strong [ref=e421]: Public
+                        - text: and deployed to a private cloud provider environment.
+                - heading "Database Service Output VariablesDirect link to Database Service Output Variables" [level=2] [ref=e422]:
+                  - text: Database Service Output Variables
+                  - link "Direct link to Database Service Output Variables" [ref=e423] [cursor=pointer]:
+                    - /url: "#database-service-output-variables"
+                    - text: "#"
+                - paragraph [ref=e424]:
+                  - text: Each database service exposes a set of output variables. To learn about each database service, check out
+                  - link "Available Services" [ref=e425] [cursor=pointer]:
+                    - /url: /devx/services/service-listings/
+                  - text: .
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e426]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e427] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e428]:
+                  - listitem [ref=e429]:
+                    - paragraph [ref=e430]:
+                      - link "Palette System Macros" [ref=e431] [cursor=pointer]:
+                        - /url: /registries-and-packs/pack-constraints/#pack-macros
+                  - listitem [ref=e432]:
+                    - paragraph [ref=e433]:
+                      - link "Palette User Macros" [ref=e434] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/macros/
+              - generic [ref=e435]:
+                - generic [ref=e437]:
+                  - text: "Tags:"
+                  - list [ref=e438]:
+                    - listitem [ref=e439]:
+                      - link "devx" [ref=e440] [cursor=pointer]:
+                        - /url: /tags/devx/
+                    - listitem [ref=e441]:
+                      - link "app mode" [ref=e442] [cursor=pointer]:
+                        - /url: /tags/app-mode/
+                    - listitem [ref=e443]:
+                      - link "pde" [ref=e444] [cursor=pointer]:
+                        - /url: /tags/pde/
+                    - listitem [ref=e445]:
+                      - link "app profiles" [ref=e446] [cursor=pointer]:
+                        - /url: /tags/app-profiles/
+                - link "Edit this page" [ref=e449] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/profiles/app-profiles/app-profile-output-vars.md
+                  - img [ref=e450]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e454]:
+              - link "Previous « Delete an App Profile" [ref=e455] [cursor=pointer]:
+                - /url: /profiles/app-profiles/delete-app-profile/
+                - generic [ref=e456]: Previous
+                - generic [ref=e457]: « Delete an App Profile
+              - link "Next Profile Customization »" [ref=e458] [cursor=pointer]:
+                - /url: /profiles/profile-customization/
+                - generic [ref=e459]: Next
+                - generic [ref=e460]: Profile Customization »
+          - list [ref=e463]:
+            - listitem [ref=e464]:
+              - link "System Output Variables" [ref=e465] [cursor=pointer]:
+                - /url: "#system-output-variables"
+            - listitem [ref=e466]:
+              - link "Container Service Output Variables" [ref=e467] [cursor=pointer]:
+                - /url: "#container-service-output-variables"
+            - listitem [ref=e468]:
+              - link "Database Service Output Variables" [ref=e469] [cursor=pointer]:
+                - /url: "#database-service-output-variables"
+            - listitem [ref=e470]:
+              - link "Resources" [ref=e471] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e472] [cursor=pointer]:
+    - generic [ref=e475]:
+      - img "Project Logo" [ref=e476]
+      - paragraph [ref=e477]: Ask AI
+```
