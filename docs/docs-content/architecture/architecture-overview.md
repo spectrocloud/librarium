@@ -90,11 +90,11 @@ repository.
 
 ### Message Brokers
 
-Palette’s internal microservices require a stable, secure, and scalable way to exchange information efficiently. To support
-this, Palette uses a [gRPC](https://grpc.io/)-based message broker service that manages communication between services
-using a publish-subscribe model. The message broker acts as a central hub that routes messages between services. Each
-service can publish messages or subscribe to messages on specific topics, and the broker ensures that messages are
-delivered reliably, securely, and in real time.
+Palette’s internal microservices require a stable, secure, and scalable way to exchange information efficiently. To
+support this, Palette uses a [gRPC](https://grpc.io/)-based message broker service that manages communication between
+services using a publish-subscribe model. The message broker acts as a central hub that routes messages between
+services. Each service can publish messages or subscribe to messages on specific topics, and the broker ensures that
+messages are delivered reliably, securely, and in real time.
 
 To handle communication across large-scale, distributed environments, the message broker runs as multiple pod replicas
 within each management plane cluster. This provides the following benefits:
