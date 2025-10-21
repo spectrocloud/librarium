@@ -107,7 +107,7 @@ To complete this basic guide, you will need the following items:
   This guide uses Docker Hub as an example. You can use any other image registry that suit your requirements.
 
   :::
-  
+
 ### Instructions
 
 Use the following instructions on your Linux machine to create all the required Edge artifacts with minimal
