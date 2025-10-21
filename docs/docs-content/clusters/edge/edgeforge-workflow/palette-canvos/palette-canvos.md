@@ -99,12 +99,15 @@ To complete this basic guide, you will need the following items:
   generate a new registration token. For detailed instructions, refer to the
   [Create Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide.
 
-- Access to a public image registry and permissions to push images. This page uses
-  [Docker Hub](https://www.docker.com/products/docker-hub/) as an example. If you need to use a private registry, refer
-  to the
-  [Deploy Cluster with a Private Provider Registry](/clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md)
-  guide for instructions on how to configure the credentials.
+- An account with [Docker Hub](https://hub.docker.com/). If you do not have an account with Docker Hub already, refer to
+  the [Create an account](https://docs.docker.com/docker-id/) page for signing-up instructions.
 
+  :::info
+
+  This guide uses Docker Hub as an example. You can use any other image registry that suit your requirements.
+
+  :::
+  
 ### Instructions
 
 Use the following instructions on your Linux machine to create all the required Edge artifacts with minimal
@@ -469,7 +472,7 @@ process means installing the necessary tools and configurations on a host machin
 
 </TabItem>
 
-<TabItem label="Advanced" value="advanced_create_artifacts" queryString="advanced">
+"Advanced" value="advanced_create_artifacts" queryString="advanced">
 
 ### Prerequisites
 
@@ -513,11 +516,11 @@ To complete this advanced guide, you will need the following items:
 - An account with [Docker Hub](https://hub.docker.com/). If you do not have an account with Docker Hub already, refer to
   the [Create an account](https://docs.docker.com/docker-id/) page for signing-up instructions.
 
-:::info
+  :::info
 
-This guide uses Docker Hub as an example. You can use any other image registry that suit your requirements.
+  This guide uses Docker Hub as an example. You can use any other image registry that suit your requirements.
 
-:::
+  :::
 
 - A public repository named `opensuse-leap` in your image registry. Refer to the
   [Create a repository](https://docs.docker.com/docker-hub/repos/create/#create-a-repository) instructions for creating
