@@ -70,11 +70,9 @@ Ensure the following requirements are met before you attempt to deploy a cluster
    | **Tags**          | Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the computing environments. Example: `region:us-central1` or `zone:us-central1-a`. |
    | **Cloud Account** | If you already added your GCP account in Palette, select it from the **drop-down Menu**. Otherwise, click **Add New Account** and add your GCP account information.                            |
 
-7. Click **Add Cluster Profile**, select a cluster profile, and click **Next**. Palette displays the cluster profile
-   layers.
+7. <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-8. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer.
-   By default, the pack parameters contain values from the cluster profile.
+8. <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
 9. Fill out the following parameters and click **Next** when you are done.
 
