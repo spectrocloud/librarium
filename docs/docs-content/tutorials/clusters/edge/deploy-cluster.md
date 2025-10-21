@@ -401,9 +401,9 @@ Login Succeeded
 Once authenticated, push the provider image to the registry so that your Edge host can download it during the cluster
 deployment.
 
-Since we used the provider image compatible with K3s v1.32 in the cluster profile, use the following command
-to push the provider image compatible with K3s v1.32 to the image registry. If you want to use the other provider image,
-push that version to the image registry.
+Since we used the provider image compatible with K3s v1.32 in the cluster profile, use the following command to push the
+provider image compatible with K3s v1.32 to the image registry. If you want to use the other provider image, push that
+version to the image registry.
 
 ```bash
 docker push spectrocloud/ubuntu:k3s-1.32.1-v4.6.12-demo
