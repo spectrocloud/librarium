@@ -62,7 +62,11 @@ To complete this tutorial, you will need the following prerequisites in place.
     of Docker.
   - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
   - [VirtualBox](https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html) version 7.0
-- Access to a public image registry and permissions to push images. This tutorial uses [Docker Hub](https://www.docker.com/products/docker-hub/) as an example. If you need to use a private registry, refer to the [Deploy Cluster with a Private Provider Registry](../../../clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md) guide for instructions on how to configure the credentials.
+- Access to a public image registry and permissions to push images. This tutorial uses
+  [Docker Hub](https://www.docker.com/products/docker-hub/) as an example. If you need to use a private registry, refer
+  to the
+  [Deploy Cluster with a Private Provider Registry](../../../clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md)
+  guide for instructions on how to configure the credentials.
 
 ## EdgeForge Workflow
 
@@ -124,7 +128,9 @@ string. This tutorial uses `vbox-tutorial` as an example.
 export CUSTOM_TAG=vbox-tutorial
 ```
 
-Next, issue the following command to create the **.arg** file with the custom tag. Replace `spectrocloud` with the name of your registry. The other arguments will use the predefined values. For example, [K3s](https://k3s.io/) will be defined as the Kubernetes distribution and Ubuntu as the OS distribution. 
+Next, issue the following command to create the **.arg** file with the custom tag. Replace `spectrocloud` with the name
+of your registry. The other arguments will use the predefined values. For example, [K3s](https://k3s.io/) will be
+defined as the Kubernetes distribution and Ubuntu as the OS distribution.
 
 ```bash
 cat << EOF > .arg
@@ -303,8 +309,9 @@ spectrocloud/ubuntu   k3s-1.29.6-v4.4.12-vbox-tutorial   75811e3dfb42   13 minut
 
 ### Push Provider Images
 
-Push the provider images to the image registry specified in the `.arg` file so that you can reference it when creating the
-cluster profile. Issue the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
+Push the provider images to the image registry specified in the `.arg` file so that you can reference it when creating
+the cluster profile. Issue the following command to log in to Docker Hub. Provide your Docker ID and password when
+prompted.
 
 ```bash
 docker login
@@ -356,7 +363,7 @@ Replace the layer manifest with the custom manifest you built in the [Build Edge
 section. This will make the cluster profile pull the provider images from the registry you pushed it to. The image below
 displays the OS layer with the custom manifest.
 
-![A screenshot of the cluster profile creation step with the OS layer.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_byos-cluster-profile.webp)
+![A screenshot of the cluster profile creation step with the OS layer.](/tutorials/edge-vbox/tutorials_edge_deploy-cluster-virtualbox_byos-pack_4-6.webp)
 
 Click **Next Layer** to proceed to the next layer. Add the following Kubernetes layer to your cluster profile. The
 Kubernetes version must match the version used in the provider images.

@@ -99,7 +99,11 @@ To complete this basic guide, you will need the following items:
   generate a new registration token. For detailed instructions, refer to the
   [Create Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide.
 
-- Access to a public image registry and permissions to push images. This page uses [Docker Hub](https://www.docker.com/products/docker-hub/) as an example. If you need to use a private registry, refer to the [Deploy Cluster with a Private Provider Registry](/clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md) guide for instructions on how to configure the credentials.
+- Access to a public image registry and permissions to push images. This page uses
+  [Docker Hub](https://www.docker.com/products/docker-hub/) as an example. If you need to use a private registry, refer
+  to the
+  [Deploy Cluster with a Private Provider Registry](/clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md)
+  guide for instructions on how to configure the credentials.
 
 ### Instructions
 
@@ -135,7 +139,8 @@ customization.
    ```
 
 8. Issue the command below to create the `.arg` file containing the custom tag. The remaining arguments in the `.arg`
-   file will use the default values. For example, `ubuntu` is the default operating system, and `demo` is the default tag.
+   file will use the default values. For example, `ubuntu` is the default operating system, and `demo` is the default
+   tag.
 
    Refer to [Edge Artifact Build Configurations](./arg.md) for all available configuration parameters.
 
@@ -344,14 +349,16 @@ customization.
     spectrocloud/ubuntu/ubuntu          k3s-1.27.2-v4.4.12-palette-learn       075134ad5d4b   10 minutes ago   4.11GB
     ```
 
-14. To use the provider image with your Edge deployment, push it to the image registry specified in the `.arg` file. Issue the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
+14. To use the provider image with your Edge deployment, push it to the image registry specified in the `.arg` file. Log
+    in to your container registry. Provide your credentials when prompted. The example below provides a Docker login
+    command.
 
     ```bash
     docker login
     ```
 
-15. Once authenticated, push the provider image to the registry so that your Edge host can download it during the cluster
-    deployment.
+15. Once authenticated, push the provider image to the registry so that your Edge host can download it during the
+    cluster deployment.
 
     ```bash
     docker push $IMAGE_REGISTRY/ubuntu:k3s-1.27.2-v4.4.12-palette-learn
@@ -411,7 +418,7 @@ customization.
 
     The screenshot below displays how to reference a provider image in the BYOOS pack of your cluster profile.
 
-    ![Screenshot of a sample cluster profile's OS layer ](/tutorials/palette-canvos/clusters_edge_palette-canvos_edit_profile.webp)
+    ![Screenshot of a sample cluster profile's OS layer ](/clusters_edgeforge-workflow_palette-canvos_byos-pack_4-6.webp)
 
     :::info
 
@@ -543,23 +550,23 @@ required Edge artifacts.
 7. Review the `.arg` file containing the customizable arguments, such as image tag, image registry, image repository,
    and OS distribution. The table below shows all arguments, their default value, and allowed values.
 
-   | **Argument**       | **Description**                                                                                                                                                                                                                  | **Default Value**                                   | **Allowed Values**                                                                             |
-   | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-   | `CUSTOM_TAG`       | Tag for the provider images                                                                                                                                                                                                      | demo                                                | Lowercase alphanumeric string without spaces.                                                  |
-   | `IMAGE_REGISTRY`   | Image registry name                                                                                                                                                                                                              | `$IMAGE_REGISTRY`                             | Your image registry hostname, without `http` or `https` <br /> Example: spectrocloud |
-   | `OS_DISTRIBUTION`  | OS Distribution                                                                                                                                                                                                                  | ubuntu                                              | ubuntu, opensuse-leap                                                                          |
-   | `IMAGE_REPO`       | Image repository name.<br /> It is the same as the OS distribution.                                                                                                                                                              | `$OS_DISTRIBUTION`                                  | Your image repository name.                                                                    |
-   | `OS_VERSION`       | OS version, only applies to Ubuntu                                                                                                                                                                                               | 22                                                  | 20, 22                                                                                         |
-   | `K8S_DISTRIBUTION` | Kubernetes Distribution                                                                                                                                                                                                          | k3s                                                 | k3s, rke2, kubeadm                                                                             |
+   | **Argument**       | **Description**                                                                                                                                                                                                                  | **Default Value**                                   | **Allowed Values**                                                                    |
+   | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------- |
+   | `CUSTOM_TAG`       | Tag for the provider images                                                                                                                                                                                                      | demo                                                | Lowercase alphanumeric string without spaces.                                         |
+   | `IMAGE_REGISTRY`   | Image registry name                                                                                                                                                                                                              | `$IMAGE_REGISTRY`                                   | Your image registry hostname, without `http` or `https` <br /> Example: spectrocloud  |
+   | `OS_DISTRIBUTION`  | OS Distribution                                                                                                                                                                                                                  | ubuntu                                              | ubuntu, opensuse-leap                                                                 |
+   | `IMAGE_REPO`       | Image repository name.<br /> It is the same as the OS distribution.                                                                                                                                                              | `$OS_DISTRIBUTION`                                  | Your image repository name.                                                           |
+   | `OS_VERSION`       | OS version, only applies to Ubuntu                                                                                                                                                                                               | 22                                                  | 20, 22                                                                                |
+   | `K8S_DISTRIBUTION` | Kubernetes Distribution                                                                                                                                                                                                          | k3s                                                 | k3s, rke2, kubeadm                                                                    |
    | `K8S_VERSION`      | Kubernetes version. The available versions vary depending on the specified `K8S_DISTRIBUTION`. Review the `k8s_version.json` file in the [CanvOS](https://github.com/spectrocloud/CanvOS) repository for all supported versions. | Semantic Versioning patch release format - `x.y.z`. |
-   | `ISO_NAME`         | Name of the Installer ISO                                                                                                                                                                                                        | palette-edge-installer                              | Lowercase alphanumeric string without spaces. The characters `-` and `_` are allowed.          |
-   | `ARCH`             | Architecture of the image.                                                                                                                                                                                                       | `amd64`                                             | `amd64`, `arm64`                                                                               |
-   | `FIPS_ENABLED`     | to generate FIPS compliant binaries `true`or`false`                                                                                                                                                                              | `false`                                             | `true`, `false`                                                                                |
-   | `HTTP_PROXY`       | URL of the HTTP Proxy server.                                                                                                                                                                                                    | `""`                                                | URL string                                                                                     |
-   | `HTTPS_PROXY`      | URL of the HTTPS Proxy server.                                                                                                                                                                                                   | `""`                                                | URL string                                                                                     |
-   | `NO_PROXY`         | URLS that should be excluded from the proxy.                                                                                                                                                                                     | `""`                                                | Comma separated URL string                                                                     |
-   | `PROXY_CERT_PATH`  | Absolute path of the SSL Proxy certificate in PEM format.                                                                                                                                                                        | `""`                                                | Absolute path string                                                                           |
-   | `UPDATE_KERNEL`    | Determines whether to upgrade the Kernel version to the latest from the upstream OS provider                                                                                                                                     | `false`                                             | `true`, `false`                                                                                |
+   | `ISO_NAME`         | Name of the Installer ISO                                                                                                                                                                                                        | palette-edge-installer                              | Lowercase alphanumeric string without spaces. The characters `-` and `_` are allowed. |
+   | `ARCH`             | Architecture of the image.                                                                                                                                                                                                       | `amd64`                                             | `amd64`, `arm64`                                                                      |
+   | `FIPS_ENABLED`     | to generate FIPS compliant binaries `true`or`false`                                                                                                                                                                              | `false`                                             | `true`, `false`                                                                       |
+   | `HTTP_PROXY`       | URL of the HTTP Proxy server.                                                                                                                                                                                                    | `""`                                                | URL string                                                                            |
+   | `HTTPS_PROXY`      | URL of the HTTPS Proxy server.                                                                                                                                                                                                   | `""`                                                | URL string                                                                            |
+   | `NO_PROXY`         | URLS that should be excluded from the proxy.                                                                                                                                                                                     | `""`                                                | Comma separated URL string                                                            |
+   | `PROXY_CERT_PATH`  | Absolute path of the SSL Proxy certificate in PEM format.                                                                                                                                                                        | `""`                                                | Absolute path string                                                                  |
+   | `UPDATE_KERNEL`    | Determines whether to upgrade the Kernel version to the latest from the upstream OS provider                                                                                                                                     | `false`                                             | `true`, `false`                                                                       |
 
    Next, you will customize these arguments to use during the build process.
 
@@ -572,8 +579,8 @@ required Edge artifacts.
    ```
 
 9. Use the command below to save the Docker Hub image registry hostname in the `IMAGE_REGISTRY` argument. Before you
-   execute the command, replace `spectrocloud` in the declaration below with your Docker ID. Your image registry hostname
-   must comply with standard DNS rules and may not contain underscores.
+   execute the command, replace `spectrocloud` in the declaration below with your Docker ID. Your image registry
+   hostname must comply with standard DNS rules and may not contain underscores.
 
    ```bash
    export IMAGE_REGISTRY=spectrocloud
@@ -924,8 +931,8 @@ required Edge artifacts.
 
     The screenshot below displays how to reference a provider image in the BYOOS pack of your cluster profile.
 
-    ![Screenshot of a sample cluster profile's OS layer ](/clusters_edgeforge-workflow_palette-canvos_byos-pack_4-6.webp) 
- 
+    ![Screenshot of a sample cluster profile's OS layer ](/clusters_edgeforge-workflow_palette-canvos_byos-pack_4-6.webp)
+
     :::info
 
     The BYOOS pack's `system.uri` attribute references the Kubernetes version selected in the cluster profile by using

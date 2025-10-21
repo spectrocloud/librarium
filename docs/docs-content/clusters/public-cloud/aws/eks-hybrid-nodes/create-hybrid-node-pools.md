@@ -71,7 +71,7 @@ You must then configure your networking to allow traffic to reach the pods on yo
     options:
       system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
 
-      system.registry: ttl.sh
+      system.registry: spectrocloud
       system.repo: ubuntu
       system.k8sDistribution: nodeadm
       system.osName: ubuntu
