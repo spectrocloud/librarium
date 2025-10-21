@@ -924,8 +924,8 @@ required Edge artifacts.
 
     The screenshot below displays how to reference a provider image in the BYOOS pack of your cluster profile.
 
-    ![Screenshot of a sample cluster profile's OS layer ](/tutorials/palette-canvos/clusters_edge_palette-canvos_edit_profile.webp)
-
+    ![Screenshot of a sample cluster profile's OS layer ](/clusters_edgeforge-workflow_palette-canvos_byos-pack_4-6.webp) 
+ 
     :::info
 
     The BYOOS pack's `system.uri` attribute references the Kubernetes version selected in the cluster profile by using

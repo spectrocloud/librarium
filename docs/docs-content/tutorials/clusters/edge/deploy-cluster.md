@@ -101,6 +101,8 @@ To complete this tutorial, you will need the following:
 
   ![A screenshot of a registration token in Palette](/tutorials/edge/tutorials_edge_deploy-cluster_registration-token.webp)
 
+- Access to a public image registry and permissions to push images. This tutorial uses [Docker Hub](https://www.docker.com/products/docker-hub/) as an example. If you need to use a private registry, refer to the [Deploy Cluster with a Private Provider Registry](../../../clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md) guide for instructions on how to configure the credentials.
+
 ## Build Edge Artifacts
 
 In this section, you will use the [CanvOS](https://github.com/spectrocloud/CanvOS/blob/main/README.md) utility to build
@@ -154,9 +156,7 @@ export CUSTOM_TAG=demo
 ```
 
 Issue the command below to create the `.arg` file with the custom tag. The remaining arguments will use the default
-values. For example, `ubuntu` is the default operating system, `demo` is the default tag, and [ttl.sh](https://ttl.sh/)
-is the default image registry. The default ttl.sh image registry is free and does not require a sign-up. Images pushed
-to ttl.sh are ephemeral and will expire after the 24 hrs time limit.
+values. For example, `ubuntu` is the default operating system and `demo` is the default tag.
 
 Using the arguments defined in the `.arg` file, the final provider images you generate will have the following naming
 convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. In this example, the provider images will be
