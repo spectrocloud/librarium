@@ -553,7 +553,7 @@ required Edge artifacts.
    | **Argument**       | **Description**                                                                                                                                                                                                                  | **Default Value**                                   | **Allowed Values**                                                                    |
    | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------- |
    | `CUSTOM_TAG`       | Tag for the provider images                                                                                                                                                                                                      | demo                                                | Lowercase alphanumeric string without spaces.                                         |
-   | `IMAGE_REGISTRY`   | Image registry name                                                                                                                                                                                                              | `$IMAGE_REGISTRY`                                   | Your image registry hostname, without `http` or `https` <br /> Example: spectrocloud  |
+   | `IMAGE_REGISTRY`   | Image registry name                                                                                                                                                                                                              | `$IMAGE_REGISTRY`                                   | Your image registry name, without `http` or `https` <br /> Example: spectrocloud  |
    | `OS_DISTRIBUTION`  | OS Distribution                                                                                                                                                                                                                  | ubuntu                                              | ubuntu, opensuse-leap                                                                 |
    | `IMAGE_REPO`       | Image repository name.<br /> It is the same as the OS distribution.                                                                                                                                                              | `$OS_DISTRIBUTION`                                  | Your image repository name.                                                           |
    | `OS_VERSION`       | OS version, only applies to Ubuntu                                                                                                                                                                                               | 22                                                  | 20, 22                                                                                |
@@ -578,9 +578,8 @@ required Edge artifacts.
    export CUSTOM_TAG=palette-learn
    ```
 
-9. Use the command below to save the Docker Hub image registry hostname in the `IMAGE_REGISTRY` argument. Before you
-   execute the command, replace `spectrocloud` in the declaration below with your Docker ID. Your image registry
-   hostname must comply with standard DNS rules and may not contain underscores.
+9. Use the command below to save the Docker Hub image registry in the `IMAGE_REGISTRY` argument. Before you
+   execute the command, replace `spectrocloud` in the declaration below with your Docker ID.
 
    ```bash
    export IMAGE_REGISTRY=spectrocloud
@@ -592,7 +591,7 @@ required Edge artifacts.
     export OS_DISTRIBUTION=opensuse-leap
     ```
 
-11. Issue the command below to create the `.arg` file containing the custom tag, Docker Hub image registry hostname, and
+11. Issue the command below to create the `.arg` file containing the custom tag, image registry name, and
     openSUSE Leap OS distribution. The `.arg` file uses the default values for the remaining arguments. Refer to
     [Edge Artifact Build Configurations](./arg.md) for all available configuration parameters.
 
