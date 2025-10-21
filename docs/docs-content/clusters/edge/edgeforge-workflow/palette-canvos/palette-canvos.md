@@ -430,7 +430,7 @@ customization.
     :::
 
 20. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the k3s
-    version 1.27.x because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.27.2 to the
+    version 1.27.x because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.27.2 to an
     image registry.
 
     | **Pack Type** | **Registry** | **Pack Name**         | **Pack Version** |
