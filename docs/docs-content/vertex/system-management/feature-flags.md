@@ -11,49 +11,62 @@ keywords: ["self-hosted", "vertex", "feature-flags"]
 
 Feature flags allow
 [system administrators](../system-management/account-management/account-management.md#system-administrators) to manage
-what features are available to the system's tenants. They can use this capability to roll out new features to
-{props.edition} tenants in a controlled manner or choose not to implement a feature for their tenants due to security or
-compliance reasons.
+what features are available to the system's tenants. Use this capability to roll out new features to tenants in a
+controlled manner or choose not to implement a feature for tenants due to security or compliance reasons.
 
-Features enabled by system administrators are applied to all tenants in the system. Once a feature is enabled, it cannot
-be disabled.
+Features enabled by system administrators apply to all tenants in the system. Once a feature is enabled, it cannot be
+disabled. All feature flags are Tech Preview features. When a feature graduates from Tech Preview, the feature flag is
+removed, and the feature is no longer gated.
+
+The following feature flags are currently available.
+
+| **Feature Flag**       | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                       | **Palette Support** | **Palette VerteX Support** |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-----------------: | :------------------------: |
+| **AwsSecretPartition** | Configure [AWS Secret Cloud](https://aws.amazon.com/federal/secret-cloud/) accounts and deploy EKS clusters in AWS Secret cloud. Refer to our [Register and Manage AWS Accounts](../../clusters/public-cloud/aws/add-aws-accounts.md#aws-secret-cloud-account-us) guide for more information.                                                                                                                                                         |         :x:         |     :white_check_mark:     |
+| **AzureUSSecretCloud** | Configure [Azure Government Secret](https://azure.microsoft.com/en-us/explore/global-infrastructure/government/national-security) cloud accounts and deploy Azure IaaS clusters in Azure Government Secret cloud.                                                                                                                                                                                                                                     |         :x:         |     :white_check_mark:     |
+| **ClusterTemplate**    | Create reusable blueprints that reference [cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) and [policies](../../cluster-templates/create-cluster-template-policies/create-cluster-template-policies.md), allowing you to declaratively define and manage the software and governance stack for a fleet of clusters. Refer to our [Cluster Templates](../../cluster-templates/cluster-templates.md) guide for more information. | :white_check_mark:  |     :white_check_mark:     |
+| **LxdMaas**            | Spawn multiple control plane nodes as LXD VMs and consolidate them on MAAS-managed servers while your worker nodes run on bare metal devices. Refer to our [Create and Manage MAAS Clusters Using LXD VMs](../../clusters/data-center/maas/create-manage-maas-lxd-clusters.md) guide for more information.                                                                                                                                            | :white_check_mark:  |     :white_check_mark:     |
 
 :::warning
 
-We recommend trying out new features in a test environment before enabling them in a production environment. Depending
-on the feature, enabling it may have a significant impact on the system and current workloads.
+We recommend trying out new features in a test environment before enabling them in a production environment. Enabling
+certain features may have a significant impact on the system and current workloads.
 
 :::
 
-Review the following section for detailed instructions on enabling and managing feature flags.
+## Limitations
 
-## Enable a Feature
-
-Use the following steps to enable a feature flag.
+- All feature flags are disabled for multi-tenant SaaS. To enable a feature flag on a dedicated SaaS environment,
+  contact your Spectro Cloud customer support representative.
 
 ## Prerequisites
 
-- You are a system administrator of the type _Operations Administrator_ or _Root Administrator_.
+- A [self-hosted Palette](../../enterprise-version/enterprise-version.md) or [Palette VerteX](../vertex.md) instance.
 
-- You have access to the system console.
+- A system administrator with the
+  [Operations Administrator](../system-management/account-management/account-management.md#operations-administrator) or
+  [Root Administrator](../system-management/account-management/account-management.md#root-administrator) role.
 
-## Enablement
+- Access to the [system console](../system-management/system-management.md#access-the-system-console).
 
-1. Log in to the system console. For additional guidance on accessing the system console, check out the
-   [Access the System Console](../system-management/system-management.md#access-the-system-console) guide.
+## Enable a Feature
 
-2. From the left **Main Menu**, select **Administration**.
+1. Log in to the [system console](../system-management/system-management.md#access-the-system-console).
+
+2. From the left main menu, select **Administration**.
 
 3. Select the **Feature Flags** tab.
 
-4. Locate the feature you want to enable and toggle the switch on the right to enable it. You can also search for a
-   feature by typing the feature name in the search bar.
+4. Locate the feature you want to activate and toggle the switch to enable it. Once you enable the feature, you cannot
+   disable it.
 
 ## Validate
 
-Use the following steps to validate that the feature flag is enabled.
+Validations steps vary based on the feature enabled. In general, if you do not activate a feature, you cannot view any
+options related to the feature.
 
-1. Log in as a tenant administrator to one of the tenants in the system.
-
-2. Attempt to access the enabled feature flag. If the feature is enabled, you will be able to use it. If the feature is
-   disabled, you will not be able to access it.
+For example, if you enable the **AwsSecretPartition** feature flag in Palette VerteX, the option **AWS US Secret** is
+available from the **Partition** drop-down menu at **Tenant Settings > Cloud Accounts > Add AWS Account**, and you can
+select your AWS Secret cloud account when deploying an EKS cluster. Likewise, if you do not enable the
+**AwsSecretPartition** feature flag, you do not have the option to register an AWS Secret cloud account and cannot
+deploy clusters to AWS Secret cloud.
