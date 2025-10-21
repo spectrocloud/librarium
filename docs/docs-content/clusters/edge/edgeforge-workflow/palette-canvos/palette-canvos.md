@@ -472,7 +472,7 @@ process means installing the necessary tools and configurations on a host machin
 
 </TabItem>
 
-"Advanced" value="advanced_create_artifacts" queryString="advanced">
+<TabItem label="Advanced" value="advanced_create_artifacts" queryString="advanced">
 
 ### Prerequisites
 
