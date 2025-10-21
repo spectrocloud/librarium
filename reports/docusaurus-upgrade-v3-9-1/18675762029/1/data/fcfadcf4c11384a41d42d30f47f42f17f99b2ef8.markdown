@@ -1,0 +1,585 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [expanded] [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+                - list [ref=e149]:
+                  - listitem [ref=e150]:
+                    - generic [ref=e151]:
+                      - link "User Authentication" [ref=e152] [cursor=pointer]:
+                        - /url: /user-management/authentication/
+                      - button "Toggle the collapsible sidebar category 'User Authentication'" [ref=e153] [cursor=pointer]
+                  - listitem [ref=e154]:
+                    - generic [ref=e155]:
+                      - link "Users and Teams" [expanded] [ref=e156] [cursor=pointer]:
+                        - /url: /user-management/users-and-teams/
+                      - button "Toggle the collapsible sidebar category 'Users and Teams'" [ref=e157] [cursor=pointer]
+                    - list [ref=e158]:
+                      - listitem [ref=e159]:
+                        - link "Create and Manage a User" [ref=e160] [cursor=pointer]:
+                          - /url: /user-management/users-and-teams/create-user/
+                      - listitem [ref=e161]:
+                        - link "Create and Manage a Team" [ref=e162] [cursor=pointer]:
+                          - /url: /user-management/users-and-teams/create-a-team/
+                  - listitem [ref=e163]:
+                    - generic [ref=e164]:
+                      - link "Roles and Permissions" [ref=e165] [cursor=pointer]:
+                        - /url: /user-management/palette-rbac/
+                      - button "Toggle the collapsible sidebar category 'Roles and Permissions'" [ref=e166] [cursor=pointer]
+                  - listitem [ref=e167]:
+                    - generic [ref=e168]:
+                      - link "SAML and OIDC SSO" [ref=e169] [cursor=pointer]:
+                        - /url: /user-management/saml-sso/
+                      - button "Toggle the collapsible sidebar category 'SAML and OIDC SSO'" [ref=e170] [cursor=pointer]
+              - listitem [ref=e171]:
+                - generic [ref=e172]:
+                  - link "Registries and Packs" [ref=e173] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e175]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e177] [cursor=pointer]
+              - listitem [ref=e178]:
+                - generic [ref=e179]:
+                  - link "Security" [ref=e180] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e182]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e184] [cursor=pointer]
+              - listitem [ref=e185]:
+                - generic [ref=e186]:
+                  - link "Audit Logs" [ref=e187] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e189]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e191] [cursor=pointer]
+              - listitem [ref=e192]:
+                - generic [ref=e193]:
+                  - link "Self-Hosted Palette" [ref=e194] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e196]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e198] [cursor=pointer]
+              - listitem [ref=e199]:
+                - generic [ref=e200]:
+                  - link "Palette VerteX" [ref=e201] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e203]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e205] [cursor=pointer]
+              - listitem [ref=e206]:
+                - generic [ref=e207]:
+                  - link "Tenant Administration" [ref=e208] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e210]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e212] [cursor=pointer]
+              - listitem [ref=e213]:
+                - generic [ref=e214]:
+                  - link "Automation" [ref=e215] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e217]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e219] [cursor=pointer]
+              - listitem [ref=e220]:
+                - generic [ref=e221]:
+                  - link "Troubleshooting" [ref=e222] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e224]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e226] [cursor=pointer]
+              - listitem [ref=e227]:
+                - link "Glossary" [ref=e228] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e230]
+                  - text: Glossary
+              - listitem [ref=e232]:
+                - generic [ref=e233]:
+                  - link "Compliance & Legal" [ref=e234] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e236]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e238] [cursor=pointer]
+              - listitem [ref=e239]:
+                - button "Privacy Settings" [ref=e240] [cursor=pointer]:
+                  - img [ref=e241]
+                  - text: Privacy Settings
+      - main [ref=e243]:
+        - generic [ref=e245]:
+          - generic [ref=e247]:
+            - article [ref=e248]:
+              - navigation "Breadcrumbs" [ref=e249]:
+                - list [ref=e250]:
+                  - listitem [ref=e251]:
+                    - link "Home page" [ref=e252] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e253]
+                  - listitem [ref=e255]:
+                    - link "User & Role Management" [ref=e256] [cursor=pointer]:
+                      - /url: /user-management/
+                  - listitem [ref=e257]:
+                    - link "Users and Teams" [ref=e258] [cursor=pointer]:
+                      - /url: /user-management/users-and-teams/
+                  - listitem [ref=e259]:
+                    - generic [ref=e260]: Create and Manage a User
+              - generic [ref=e261]:
+                - heading "Create and Manage a User" [level=1] [ref=e263]
+                - paragraph [ref=e264]: You can create a user in Palette to allow them access to the tenant and its resources. Users can be assigned to teams and projects, and their permissions are determined by the roles assigned to them.
+                - heading "User CreationDirect link to User Creation" [level=2] [ref=e265]:
+                  - text: User Creation
+                  - link "Direct link to User Creation" [ref=e266] [cursor=pointer]:
+                    - /url: "#user-creation"
+                    - text: "#"
+                - paragraph [ref=e267]: Use the following steps to create a new user in Palette.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e268]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e269] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e270]:
+                  - listitem [ref=e271]:
+                    - paragraph [ref=e272]:
+                      - text: Tenant admin access with the
+                      - code [ref=e273]: user.create
+                      - text: permission.
+                  - listitem [ref=e274]:
+                    - paragraph [ref=e275]: Name and email address of the user you want to create.
+                  - listitem [ref=e276]:
+                    - paragraph [ref=e277]: If you are using self-hosted Palette or VerteX, ensure you have configured Simple Mail Transfer Protocol (SMTP) settings to send email invitations to the user. You can configure SMTP settings in the self-hosted Palette system console.
+                - heading "Create a UserDirect link to Create a User" [level=3] [ref=e278]:
+                  - text: Create a User
+                  - link "Direct link to Create a User" [ref=e279] [cursor=pointer]:
+                    - /url: "#create-a-user"
+                    - text: "#"
+                - list [ref=e280]:
+                  - listitem [ref=e281]:
+                    - paragraph [ref=e282]:
+                      - text: Log in to
+                      - link "Palette" [ref=e283] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant admin.
+                  - listitem [ref=e284]:
+                    - paragraph [ref=e285]:
+                      - text: Navigate to the left
+                      - strong [ref=e286]: Main Menu
+                      - text: and click on
+                      - strong [ref=e287]: Tenant Settings
+                      - text: .
+                  - listitem [ref=e288]:
+                    - paragraph [ref=e289]:
+                      - text: Click on
+                      - strong [ref=e290]: Users & Teams
+                      - text: .
+                  - listitem [ref=e291]:
+                    - paragraph [ref=e292]:
+                      - text: Select the
+                      - strong [ref=e293]: Users
+                      - text: tab.
+                  - listitem [ref=e294]:
+                    - paragraph [ref=e295]:
+                      - text: Click on the
+                      - strong [ref=e296]: Create User
+                      - text: button.
+                  - listitem [ref=e297]:
+                    - paragraph [ref=e298]: Fill in the user details, including the user's name, email address, and assign them to a team. You can assign the user to a team later if you prefer.
+                  - listitem [ref=e299]:
+                    - paragraph [ref=e300]:
+                      - text: Click
+                      - strong [ref=e301]: Confirm
+                      - text: to create the user.
+                - paragraph [ref=e302]: An email invitation is sent to the user with a link to set their password and log in to Palette.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e303]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e304] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e305]: Use the following steps to validate the user creation.
+                - list [ref=e306]:
+                  - listitem [ref=e307]:
+                    - paragraph [ref=e308]: Have the user check their email for the invitation.
+                  - listitem [ref=e309]:
+                    - paragraph [ref=e310]: Have the user click on the link in the email to set their password.
+                  - listitem [ref=e311]:
+                    - paragraph [ref=e312]:
+                      - text: Have the user log in to
+                      - link "Palette" [ref=e313] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: using their email address and the password they set. If you are using self-hosted Palette or VerteX, use the URL provided by your system administrator.
+                - heading "User DeletionDirect link to User Deletion" [level=2] [ref=e314]:
+                  - text: User Deletion
+                  - link "Direct link to User Deletion" [ref=e315] [cursor=pointer]:
+                    - /url: "#user-deletion"
+                    - text: "#"
+                - paragraph [ref=e316]: Use the following steps to delete a user in Palette.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e317]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e318] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e319]:
+                  - listitem [ref=e320]:
+                    - paragraph [ref=e321]:
+                      - text: Tenant admin access with the
+                      - code [ref=e322]: user.create
+                      - text: permission.
+                  - listitem [ref=e323]:
+                    - paragraph [ref=e324]: Name and email address of the user you want to create.
+                  - listitem [ref=e325]:
+                    - paragraph [ref=e326]: If you are using self-hosted Palette or VerteX, ensure you have configured Simple Mail Transfer Protocol (SMTP) settings to send email invitations to the user. You can configure SMTP settings in the self-hosted Palette system console.
+                - heading "Delete a UserDirect link to Delete a User" [level=3] [ref=e327]:
+                  - text: Delete a User
+                  - link "Direct link to Delete a User" [ref=e328] [cursor=pointer]:
+                    - /url: "#delete-a-user"
+                    - text: "#"
+                - list [ref=e329]:
+                  - listitem [ref=e330]:
+                    - paragraph [ref=e331]:
+                      - text: Log in to
+                      - link "Palette" [ref=e332] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant admin.
+                  - listitem [ref=e333]:
+                    - paragraph [ref=e334]:
+                      - text: Navigate to the left
+                      - strong [ref=e335]: Main Menu
+                      - text: and click on
+                      - strong [ref=e336]: Tenant Settings
+                      - text: .
+                  - listitem [ref=e337]:
+                    - paragraph [ref=e338]:
+                      - text: Click on
+                      - strong [ref=e339]: Users & Teams
+                      - text: .
+                  - listitem [ref=e340]:
+                    - paragraph [ref=e341]:
+                      - text: Select the
+                      - strong [ref=e342]: Users
+                      - text: tab.
+                  - listitem [ref=e343]:
+                    - paragraph [ref=e344]: Click on the row of the user you want to delete.
+                  - listitem [ref=e345]:
+                    - paragraph [ref=e346]:
+                      - text: Click on the
+                      - strong [ref=e347]: Delete User
+                      - text: button.
+                  - listitem [ref=e348]:
+                    - paragraph [ref=e349]:
+                      - text: Click
+                      - strong [ref=e350]: OK
+                      - text: to confirm the deletion.
+                - paragraph [ref=e351]: The user is now removed from the tenant and all associated teams and projects.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e352]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e353] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - paragraph [ref=e354]: Use the following steps to validate the user deletion.
+                - list [ref=e355]:
+                  - listitem [ref=e356]:
+                    - paragraph [ref=e357]:
+                      - text: Log in to
+                      - link "Palette" [ref=e358] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant admin.
+                  - listitem [ref=e359]:
+                    - paragraph [ref=e360]:
+                      - text: Navigate to the left
+                      - strong [ref=e361]: Main Menu
+                      - text: and click on
+                      - strong [ref=e362]: Tenant Settings
+                      - text: .
+                  - listitem [ref=e363]:
+                    - paragraph [ref=e364]:
+                      - text: Click on
+                      - strong [ref=e365]: Users & Teams
+                      - text: .
+                  - listitem [ref=e366]:
+                    - paragraph [ref=e367]:
+                      - text: Select the
+                      - strong [ref=e368]: Users
+                      - text: tab.
+                  - listitem [ref=e369]:
+                    - paragraph [ref=e370]: Verify that the user you deleted is no longer listed in the users list.
+                - heading "Password ResetDirect link to Password Reset" [level=2] [ref=e371]:
+                  - text: Password Reset
+                  - link "Direct link to Password Reset" [ref=e372] [cursor=pointer]:
+                    - /url: "#password-reset"
+                    - text: "#"
+                - paragraph [ref=e373]: Use the following steps to reset a user's password in Palette.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e374]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e375] [cursor=pointer]:
+                    - /url: "#prerequisites-2"
+                    - text: "#"
+                - list [ref=e376]:
+                  - listitem [ref=e377]:
+                    - paragraph [ref=e378]:
+                      - text: Tenant admin access with the
+                      - code [ref=e379]: user.update
+                      - text: permission.
+                  - listitem [ref=e380]:
+                    - paragraph [ref=e381]: If you are using self-hosted Palette or VerteX, ensure you have configured Simple Mail Transfer Protocol (SMTP) settings to send email invitations to the user. You can configure SMTP settings in the self-hosted Palette system console.
+                - heading "Reset PasswordDirect link to Reset Password" [level=3] [ref=e382]:
+                  - text: Reset Password
+                  - link "Direct link to Reset Password" [ref=e383] [cursor=pointer]:
+                    - /url: "#reset-password"
+                    - text: "#"
+                - list [ref=e384]:
+                  - listitem [ref=e385]:
+                    - paragraph [ref=e386]:
+                      - text: Log in to
+                      - link "Palette" [ref=e387] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant admin.
+                  - listitem [ref=e388]:
+                    - paragraph [ref=e389]:
+                      - text: Navigate to the left
+                      - strong [ref=e390]: Main Menu
+                      - text: and click on
+                      - strong [ref=e391]: Tenant Settings
+                      - text: .
+                  - listitem [ref=e392]:
+                    - paragraph [ref=e393]:
+                      - text: Click on
+                      - strong [ref=e394]: Users & Teams
+                      - text: .
+                  - listitem [ref=e395]:
+                    - paragraph [ref=e396]:
+                      - text: Select the
+                      - strong [ref=e397]: Users
+                      - text: tab.
+                  - listitem [ref=e398]:
+                    - paragraph [ref=e399]: Click on the row of the user whose password you want to reset.
+                  - listitem [ref=e400]:
+                    - paragraph [ref=e401]:
+                      - text: Click on the
+                      - strong [ref=e402]: Reset password
+                      - text: button.
+                  - listitem [ref=e403]:
+                    - paragraph [ref=e404]:
+                      - text: Click
+                      - strong [ref=e405]: OK
+                      - text: to confirm the password reset.
+                - paragraph [ref=e406]: An email is sent to the user with a link to set a new password.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e407]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e408] [cursor=pointer]:
+                    - /url: "#validate-2"
+                    - text: "#"
+                - paragraph [ref=e409]: Use the following steps to validate the password reset.
+                - list [ref=e410]:
+                  - listitem [ref=e411]:
+                    - paragraph [ref=e412]: Have the user check their email for the password reset link.
+                  - listitem [ref=e413]:
+                    - paragraph [ref=e414]: Have the user click on the link in the email to set their new password.
+                  - listitem [ref=e415]:
+                    - paragraph [ref=e416]:
+                      - text: Have the user log in to
+                      - link "Palette" [ref=e417] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: using their email address and the new password they set. If you are using self-hosted Palette or VerteX, use the URL provided by your system administrator.
+              - generic [ref=e418]:
+                - generic [ref=e420]:
+                  - text: "Tags:"
+                  - list [ref=e421]:
+                    - listitem [ref=e422]:
+                      - link "user-management" [ref=e423] [cursor=pointer]:
+                        - /url: /tags/user-management/
+                    - listitem [ref=e424]:
+                      - link "users" [ref=e425] [cursor=pointer]:
+                        - /url: /tags/users/
+                - link "Edit this page" [ref=e428] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/user-management/users-and-teams/create-user.md
+                  - img [ref=e429]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e433]:
+              - link "Previous « Users and Teams" [ref=e434] [cursor=pointer]:
+                - /url: /user-management/users-and-teams/
+                - generic [ref=e435]: Previous
+                - generic [ref=e436]: « Users and Teams
+              - link "Next Create and Manage a Team »" [ref=e437] [cursor=pointer]:
+                - /url: /user-management/users-and-teams/create-a-team/
+                - generic [ref=e438]: Next
+                - generic [ref=e439]: Create and Manage a Team »
+          - list [ref=e442]:
+            - listitem [ref=e443]:
+              - link "User Creation" [ref=e444] [cursor=pointer]:
+                - /url: "#user-creation"
+              - list [ref=e445]:
+                - listitem [ref=e446]:
+                  - link "Prerequisites" [ref=e447] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e448]:
+                  - link "Create a User" [ref=e449] [cursor=pointer]:
+                    - /url: "#create-a-user"
+                - listitem [ref=e450]:
+                  - link "Validate" [ref=e451] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e452]:
+              - link "User Deletion" [ref=e453] [cursor=pointer]:
+                - /url: "#user-deletion"
+              - list [ref=e454]:
+                - listitem [ref=e455]:
+                  - link "Prerequisites" [ref=e456] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e457]:
+                  - link "Delete a User" [ref=e458] [cursor=pointer]:
+                    - /url: "#delete-a-user"
+                - listitem [ref=e459]:
+                  - link "Validate" [ref=e460] [cursor=pointer]:
+                    - /url: "#validate-1"
+            - listitem [ref=e461]:
+              - link "Password Reset" [ref=e462] [cursor=pointer]:
+                - /url: "#password-reset"
+              - list [ref=e463]:
+                - listitem [ref=e464]:
+                  - link "Prerequisites" [ref=e465] [cursor=pointer]:
+                    - /url: "#prerequisites-2"
+                - listitem [ref=e466]:
+                  - link "Reset Password" [ref=e467] [cursor=pointer]:
+                    - /url: "#reset-password"
+                - listitem [ref=e468]:
+                  - link "Validate" [ref=e469] [cursor=pointer]:
+                    - /url: "#validate-2"
+  - button "Project Logo Ask AI" [ref=e470] [cursor=pointer]:
+    - generic [ref=e473]:
+      - img "Project Logo" [ref=e474]
+      - paragraph [ref=e475]: Ask AI
+```

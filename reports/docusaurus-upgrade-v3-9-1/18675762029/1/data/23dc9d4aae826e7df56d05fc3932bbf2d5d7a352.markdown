@@ -1,0 +1,1756 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Audit Logs" [ref=e165] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e167]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Self-Hosted Palette" [ref=e172] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e174]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Palette VerteX" [expanded] [ref=e179] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e181]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e183] [cursor=pointer]
+                - list [ref=e184]:
+                  - listitem [ref=e185]:
+                    - generic [ref=e186]:
+                      - link "FIPS" [ref=e187] [cursor=pointer]:
+                        - /url: /vertex/fips/
+                      - button "Toggle the collapsible sidebar category 'FIPS'" [ref=e188] [cursor=pointer]
+                  - listitem [ref=e189]:
+                    - generic [ref=e190]:
+                      - link "Installation" [expanded] [ref=e191] [cursor=pointer]:
+                        - /url: /vertex/install-palette-vertex/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e192] [cursor=pointer]
+                    - list [ref=e193]:
+                      - listitem [ref=e194]:
+                        - generic [ref=e195]:
+                          - link "VMware" [ref=e196] [cursor=pointer]:
+                            - /url: /vertex/install-palette-vertex/install-on-vmware/
+                          - button "Toggle the collapsible sidebar category 'VMware'" [ref=e197] [cursor=pointer]
+                      - listitem [ref=e198]:
+                        - link "Airgap Resources" [ref=e199] [cursor=pointer]:
+                          - /url: /vertex/install-palette-vertex/airgap/
+                      - listitem [ref=e200]:
+                        - generic [ref=e201]:
+                          - link "Kubernetes" [expanded] [ref=e202] [cursor=pointer]:
+                            - /url: /vertex/install-palette-vertex/install-on-kubernetes/
+                          - button "Toggle the collapsible sidebar category 'Kubernetes'" [ref=e203] [cursor=pointer]
+                        - list [ref=e204]:
+                          - listitem [ref=e205]:
+                            - link "Non-Airgap Installation" [ref=e206] [cursor=pointer]:
+                              - /url: /vertex/install-palette-vertex/install-on-kubernetes/install/
+                          - listitem [ref=e207]:
+                            - generic [ref=e208]:
+                              - link "Airgap Installation" [ref=e209] [cursor=pointer]:
+                                - /url: /vertex/install-palette-vertex/install-on-kubernetes/airgap-install/
+                              - button "Toggle the collapsible sidebar category 'Airgap Installation'" [ref=e210] [cursor=pointer]
+                          - listitem [ref=e211]:
+                            - link "Helm Configuration Reference" [ref=e212] [cursor=pointer]:
+                              - /url: /vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref/
+                          - listitem [ref=e213]:
+                            - link "Uninstallation" [ref=e214] [cursor=pointer]:
+                              - /url: /vertex/install-palette-vertex/install-on-kubernetes/uninstall/
+                      - listitem [ref=e215]:
+                        - link "VerteX Management Appliance" [ref=e216] [cursor=pointer]:
+                          - /url: /vertex/install-palette-vertex/vertex-management-appliance/
+                  - listitem [ref=e217]:
+                    - link "Activate VerteX" [ref=e218] [cursor=pointer]:
+                      - /url: /vertex/activate-installation/
+                  - listitem [ref=e219]:
+                    - link "Supported Platforms" [ref=e220] [cursor=pointer]:
+                      - /url: /vertex/supported-platforms/
+                  - listitem [ref=e221]:
+                    - generic [ref=e222]:
+                      - link "System Management" [ref=e223] [cursor=pointer]:
+                        - /url: /vertex/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e224] [cursor=pointer]
+                  - listitem [ref=e225]:
+                    - generic [ref=e226]:
+                      - link "Upgrade" [ref=e227] [cursor=pointer]:
+                        - /url: /vertex/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e228] [cursor=pointer]
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "Tenant Administration" [ref=e231] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e233]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - generic [ref=e237]:
+                  - link "Automation" [ref=e238] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e240]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - generic [ref=e244]:
+                  - link "Troubleshooting" [ref=e245] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e247]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e249] [cursor=pointer]
+              - listitem [ref=e250]:
+                - link "Glossary" [ref=e251] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e253]
+                  - text: Glossary
+              - listitem [ref=e255]:
+                - generic [ref=e256]:
+                  - link "Compliance & Legal" [ref=e257] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e259]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e261] [cursor=pointer]
+              - listitem [ref=e262]:
+                - button "Privacy Settings" [ref=e263] [cursor=pointer]:
+                  - img [ref=e264]
+                  - text: Privacy Settings
+      - main [ref=e266]:
+        - generic [ref=e268]:
+          - generic [ref=e270]:
+            - article [ref=e271]:
+              - navigation "Breadcrumbs" [ref=e272]:
+                - list [ref=e273]:
+                  - listitem [ref=e274]:
+                    - link "Home page" [ref=e275] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e276]
+                  - listitem [ref=e278]:
+                    - link "Palette VerteX" [ref=e279] [cursor=pointer]:
+                      - /url: /vertex/
+                  - listitem [ref=e280]:
+                    - link "Installation" [ref=e281] [cursor=pointer]:
+                      - /url: /vertex/install-palette-vertex/
+                  - listitem [ref=e282]:
+                    - link "Kubernetes" [ref=e283] [cursor=pointer]:
+                      - /url: /vertex/install-palette-vertex/install-on-kubernetes/
+                  - listitem [ref=e284]:
+                    - generic [ref=e285]: Helm Configuration Reference
+              - generic [ref=e286]:
+                - heading "Helm Configuration Reference" [level=1] [ref=e288]
+                - paragraph [ref=e289]:
+                  - text: You can use the Palette VerteX Helm Chart to install Palette VerteX in a multi-node Kubernetes cluster in your production environment. The Helm chart allows you to customize values in the
+                  - strong [ref=e290]: values.yaml
+                  - text: file. This reference page lists and describes parameters available in the
+                  - strong [ref=e291]: values.yaml
+                  - text: file from the Helm Chart for your installation.
+                - paragraph [ref=e292]:
+                  - text: To learn how to install Palette VerteX using the Helm Chart, refer to the Kubernetes
+                  - link "Instructions" [ref=e293] [cursor=pointer]:
+                    - /url: /vertex/install-palette-vertex/install-on-kubernetes/install/
+                  - text: .
+                - heading "Required ParametersDirect link to Required Parameters" [level=2] [ref=e294]:
+                  - text: Required Parameters
+                  - link "Direct link to Required Parameters" [ref=e295] [cursor=pointer]:
+                    - /url: "#required-parameters"
+                    - text: "#"
+                - paragraph [ref=e296]: The following parameters are required for a successful installation of Palette VerteX.
+                - table [ref=e297]:
+                  - rowgroup [ref=e298]:
+                    - row "Parameters Description Type" [ref=e299]:
+                      - cell "Parameters" [ref=e300]:
+                        - strong [ref=e301]: Parameters
+                      - cell "Description" [ref=e302]:
+                        - strong [ref=e303]: Description
+                      - cell "Type" [ref=e304]:
+                        - strong [ref=e305]: Type
+                  - rowgroup [ref=e306]:
+                    - row "config.env.rootDomain Used to configure the domain for the Palette installation. We recommend you create a CNAME DNS record that supports multiple subdomains. You can achieve this using a wild card prefix, *.vertex.abc.com. Review the Environment parameters to learn more. String" [ref=e307]:
+                      - cell "config.env.rootDomain" [ref=e308]:
+                        - code [ref=e309]: config.env.rootDomain
+                      - cell "Used to configure the domain for the Palette installation. We recommend you create a CNAME DNS record that supports multiple subdomains. You can achieve this using a wild card prefix, *.vertex.abc.com. Review the Environment parameters to learn more." [ref=e310]:
+                        - text: Used to configure the domain for the Palette installation. We recommend you create a CNAME DNS record that supports multiple subdomains. You can achieve this using a wild card prefix,
+                        - code [ref=e311]: "*.vertex.abc.com"
+                        - text: . Review the
+                        - link "Environment parameters" [ref=e312] [cursor=pointer]:
+                          - /url: "#environment"
+                        - text: to learn more.
+                      - cell "String" [ref=e313]
+                    - row "config.env.ociPackRegistry or config.env.ociPackEcrRegistry Specifies the FIPS image registry for Palette VerteX. You can use an a self-hosted OCI registry or a public OCI registry we maintain and support. For more information, refer to the Registry section. Object" [ref=e314]:
+                      - cell "config.env.ociPackRegistry or config.env.ociPackEcrRegistry" [ref=e315]:
+                        - code [ref=e316]: config.env.ociPackRegistry
+                        - text: or
+                        - code [ref=e317]: config.env.ociPackEcrRegistry
+                      - cell "Specifies the FIPS image registry for Palette VerteX. You can use an a self-hosted OCI registry or a public OCI registry we maintain and support. For more information, refer to the Registry section." [ref=e318]:
+                        - text: Specifies the FIPS image registry for Palette VerteX. You can use an a self-hosted OCI registry or a public OCI registry we maintain and support. For more information, refer to the
+                        - link "Registry" [ref=e319] [cursor=pointer]:
+                          - /url: "#registries"
+                        - text: section.
+                      - cell "Object" [ref=e320]
+                - generic [ref=e321]:
+                  - generic [ref=e322]:
+                    - img [ref=e324]
+                    - text: warning
+                  - paragraph [ref=e327]:
+                    - text: If you are installing an air-gapped version of Palette VerteX, you must provide the image swap configuration. For more information, refer to the
+                    - link "Image Swap Configuration" [ref=e328] [cursor=pointer]:
+                      - /url: "#image-swap-configuration"
+                    - text: section.
+                - heading "GlobalDirect link to Global" [level=2] [ref=e329]:
+                  - text: Global
+                  - link "Direct link to Global" [ref=e330] [cursor=pointer]:
+                    - /url: "#global"
+                    - text: "#"
+                - paragraph [ref=e331]: The global block allows you to provide configurations that apply globally to the installation process.
+                - heading "Image Pull SecretDirect link to Image Pull Secret" [level=3] [ref=e332]:
+                  - text: Image Pull Secret
+                  - link "Direct link to Image Pull Secret" [ref=e333] [cursor=pointer]:
+                    - /url: "#image-pull-secret"
+                    - text: "#"
+                - paragraph [ref=e334]: This section is only relevant if you are using your own private registry to host the images required for the Palette installation process.
+                - paragraph [ref=e335]:
+                  - text: The
+                  - code [ref=e336]: imagePullSecret
+                  - text: block allows you to provide image pull secrets that will be used to authenticate with private registries to obtain the images required for Palette VerteX installation.
+                - table [ref=e337]:
+                  - rowgroup [ref=e338]:
+                    - row "Parameters Description Type Default value" [ref=e339]:
+                      - cell "Parameters" [ref=e340]:
+                        - strong [ref=e341]: Parameters
+                      - cell "Description" [ref=e342]:
+                        - strong [ref=e343]: Description
+                      - cell "Type" [ref=e344]:
+                        - strong [ref=e345]: Type
+                      - cell "Default value" [ref=e346]:
+                        - strong [ref=e347]: Default value
+                  - rowgroup [ref=e348]:
+                    - row "create Specifies whether to create a secret containing credentials to your own private image registry. Boolean false" [ref=e349]:
+                      - cell "create" [ref=e350]:
+                        - code [ref=e351]: create
+                      - cell "Specifies whether to create a secret containing credentials to your own private image registry." [ref=e352]
+                      - cell "Boolean" [ref=e353]
+                      - cell "false" [ref=e354]:
+                        - code [ref=e355]: "false"
+                    - row "dockerConfigJson The config.json file value containing the registry URL and credentials for your image registry in base64 encoded format on a single line. For more information about the config.json file, refer to Kubernetes Documentation. String None" [ref=e356]:
+                      - cell "dockerConfigJson" [ref=e357]:
+                        - code [ref=e358]: dockerConfigJson
+                      - cell "The config.json file value containing the registry URL and credentials for your image registry in base64 encoded format on a single line. For more information about the config.json file, refer to Kubernetes Documentation." [ref=e359]:
+                        - text: The
+                        - strong [ref=e360]: config.json
+                        - text: file value containing the registry URL and credentials for your image registry in base64 encoded format on a single line. For more information about the
+                        - strong [ref=e361]: config.json
+                        - text: file, refer to
+                        - link "Kubernetes Documentation" [ref=e362] [cursor=pointer]:
+                          - /url: https://kubernetes.io/docs/concepts/containers/images/#config-json
+                        - text: .
+                      - cell "String" [ref=e363]
+                      - cell "None" [ref=e364]
+                - generic [ref=e365]:
+                  - generic [ref=e366]:
+                    - img [ref=e368]
+                    - text: info
+                  - generic [ref=e370]:
+                    - paragraph [ref=e371]:
+                      - text: To obtain the base-64 encoded version of the credential
+                      - code [ref=e372]: config.json
+                      - text: file, you can issue the following command. Replace
+                      - code [ref=e373]: <path/to/.docker/config.json>
+                      - text: with the path to your
+                      - code [ref=e374]: config.json
+                      - text: file. The
+                      - code [ref=e375]: tr -d '\n'
+                      - text: removes new line characters and produce the output on a single line.
+                    - generic [ref=e377]:
+                      - code [ref=e379]:
+                        - generic [ref=e380]: cat <path/to/.docker/config.json> | base64 | tr -d '\n'
+                      - button "Copy code to clipboard" [ref=e382] [cursor=pointer]:
+                        - generic [ref=e383]:
+                          - img [ref=e384]
+                          - img [ref=e386]
+                - generic [ref=e389]:
+                  - code [ref=e391]:
+                    - generic [ref=e392]: "global:"
+                    - generic [ref=e393]: "imagePullSecret:"
+                    - generic [ref=e394]: "create: true"
+                    - generic [ref=e395]: "dockerConfigJson: ewoJImF1dGhzHsKCQkiaG9va3......MiOiAidHJ1ZSIKCX0KfQ # Base64 encoded config.json"
+                  - generic [ref=e396]:
+                    - button "Toggle word wrap" [ref=e397] [cursor=pointer]:
+                      - img [ref=e398]
+                    - button "Copy code to clipboard" [ref=e400] [cursor=pointer]:
+                      - generic [ref=e401]:
+                        - img [ref=e402]
+                        - img [ref=e404]
+                - heading "MongoDBDirect link to MongoDB" [level=2] [ref=e406]:
+                  - text: MongoDB
+                  - link "Direct link to MongoDB" [ref=e407] [cursor=pointer]:
+                    - /url: "#mongodb"
+                    - text: "#"
+                - paragraph [ref=e408]: "Palette VerteX uses MongoDB Enterprise as its internal database and supports two modes of deployment:"
+                - list [ref=e409]:
+                  - listitem [ref=e410]:
+                    - paragraph [ref=e411]: MongoDB Enterprise deployed and active inside the cluster.
+                  - listitem [ref=e412]:
+                    - paragraph [ref=e413]:
+                      - text: MongoDB Enterprise is hosted on a Software-as-a-Service (SaaS) platform, such as MongoDB Atlas. If you choose to use MongoDB Atlas, ensure the MongoDB database has a user named
+                      - code [ref=e414]: hubble
+                      - text: with the permission
+                      - code [ref=e415]: readWriteAnyDatabase
+                      - text: . Refer to the
+                      - link "Add a Database User" [ref=e416] [cursor=pointer]:
+                        - /url: https://www.mongodb.com/docs/guides/atlas/db-user/
+                      - text: guide for guidance on how to create a database user in Atlas.
+                - paragraph [ref=e417]: The table below lists the parameters used to configure a MongoDB deployment.
+                - table [ref=e418]:
+                  - rowgroup [ref=e419]:
+                    - row "Parameters Description Type Default value" [ref=e420]:
+                      - cell "Parameters" [ref=e421]:
+                        - strong [ref=e422]: Parameters
+                      - cell "Description" [ref=e423]:
+                        - strong [ref=e424]: Description
+                      - cell "Type" [ref=e425]:
+                        - strong [ref=e426]: Type
+                      - cell "Default value" [ref=e427]:
+                        - strong [ref=e428]: Default value
+                  - rowgroup [ref=e429]:
+                    - row "internal Specifies the MongoDB deployment either in-cluster or using Mongo Atlas. Boolean true" [ref=e430]:
+                      - cell "internal" [ref=e431]:
+                        - code [ref=e432]: internal
+                      - cell "Specifies the MongoDB deployment either in-cluster or using Mongo Atlas." [ref=e433]
+                      - cell "Boolean" [ref=e434]
+                      - cell "true" [ref=e435]:
+                        - code [ref=e436]: "true"
+                    - row "databaseUrl The URL for MongoDB Enterprise. If using a remote MongoDB Enterprise instance, provide the remote URL. This parameter must be updated if mongo.internal is set to false. You also need to ensure the MongoDB database has a user named hubble with the permission readWriteAnyDatabase. Refer to the Add a Database User guide for guidance on how to create a database user in Atlas. String mongo-0.mongo,mongo-1.mongo,mongo-2.mongo" [ref=e437]:
+                      - cell "databaseUrl" [ref=e438]:
+                        - code [ref=e439]: databaseUrl
+                      - cell "The URL for MongoDB Enterprise. If using a remote MongoDB Enterprise instance, provide the remote URL. This parameter must be updated if mongo.internal is set to false. You also need to ensure the MongoDB database has a user named hubble with the permission readWriteAnyDatabase. Refer to the Add a Database User guide for guidance on how to create a database user in Atlas." [ref=e440]:
+                        - text: The URL for MongoDB Enterprise. If using a remote MongoDB Enterprise instance, provide the remote URL. This parameter must be updated if
+                        - code [ref=e441]: mongo.internal
+                        - text: is set to
+                        - code [ref=e442]: "false"
+                        - text: . You also need to ensure the MongoDB database has a user named
+                        - code [ref=e443]: hubble
+                        - text: with the permission
+                        - code [ref=e444]: readWriteAnyDatabase
+                        - text: . Refer to the
+                        - link "Add a Database User" [ref=e445] [cursor=pointer]:
+                          - /url: https://www.mongodb.com/docs/guides/atlas/db-user/
+                        - text: guide for guidance on how to create a database user in Atlas.
+                      - cell "String" [ref=e446]
+                      - cell "mongo-0.mongo,mongo-1.mongo,mongo-2.mongo" [ref=e447]:
+                        - code [ref=e448]: mongo-0.mongo,mongo-1.mongo,mongo-2.mongo
+                    - row "databasePassword The base64-encoded MongoDB Enterprise password. If you don't provide a value, a random password will be auto-generated. String \"\"" [ref=e449]:
+                      - cell "databasePassword" [ref=e450]:
+                        - code [ref=e451]: databasePassword
+                      - cell "The base64-encoded MongoDB Enterprise password. If you don't provide a value, a random password will be auto-generated." [ref=e452]
+                      - cell "String" [ref=e453]
+                      - cell "\"\"" [ref=e454]:
+                        - code [ref=e455]: "\"\""
+                    - row "replicas The number of MongoDB replicas to start. Integer 3" [ref=e456]:
+                      - cell "replicas" [ref=e457]:
+                        - code [ref=e458]: replicas
+                      - cell "The number of MongoDB replicas to start." [ref=e459]
+                      - cell "Integer" [ref=e460]
+                      - cell "3" [ref=e461]:
+                        - code [ref=e462]: "3"
+                    - row "memoryLimit Specifies the memory limit for each MongoDB Enterprise replica. String 4Gi" [ref=e463]:
+                      - cell "memoryLimit" [ref=e464]:
+                        - code [ref=e465]: memoryLimit
+                      - cell "Specifies the memory limit for each MongoDB Enterprise replica." [ref=e466]
+                      - cell "String" [ref=e467]
+                      - cell "4Gi" [ref=e468]:
+                        - code [ref=e469]: 4Gi
+                    - row "cpuLimit Specifies the CPU limit for each MongoDB Enterprise member. String 2000m" [ref=e470]:
+                      - cell "cpuLimit" [ref=e471]:
+                        - code [ref=e472]: cpuLimit
+                      - cell "Specifies the CPU limit for each MongoDB Enterprise member." [ref=e473]
+                      - cell "String" [ref=e474]
+                      - cell "2000m" [ref=e475]:
+                        - code [ref=e476]: 2000m
+                    - row "pvcSize The storage settings for the MongoDB Enterprise database. Use increments of 5Gi when specifying the storage size. The storage size applies to each replica instance. The total storage size for the cluster is replicas * pvcSize. string 20Gi" [ref=e477]:
+                      - cell "pvcSize" [ref=e478]:
+                        - code [ref=e479]: pvcSize
+                      - cell "The storage settings for the MongoDB Enterprise database. Use increments of 5Gi when specifying the storage size. The storage size applies to each replica instance. The total storage size for the cluster is replicas * pvcSize." [ref=e480]:
+                        - text: The storage settings for the MongoDB Enterprise database. Use increments of
+                        - code [ref=e481]: 5Gi
+                        - text: when specifying the storage size. The storage size applies to each replica instance. The total storage size for the cluster is
+                        - code [ref=e482]: replicas
+                        - text: "*"
+                        - code [ref=e483]: pvcSize
+                        - text: .
+                      - cell "string" [ref=e484]
+                      - cell "20Gi" [ref=e485]:
+                        - code [ref=e486]: 20Gi
+                    - row "storageClass The storage class for the MongoDB Enterprise database. String \"\"" [ref=e487]:
+                      - cell "storageClass" [ref=e488]:
+                        - code [ref=e489]: storageClass
+                      - cell "The storage class for the MongoDB Enterprise database." [ref=e490]
+                      - cell "String" [ref=e491]
+                      - cell "\"\"" [ref=e492]:
+                        - code [ref=e493]: "\"\""
+                - generic [ref=e495]:
+                  - code [ref=e497]:
+                    - generic [ref=e498]: "mongo:"
+                    - generic [ref=e499]: "internal: true"
+                    - generic [ref=e500]: "databaseUrl: \"mongo-0.mongo,mongo-1.mongo,mongo-2.mongo\""
+                    - generic [ref=e501]: "databasePassword: \"\""
+                    - generic [ref=e502]: "replicas: 3"
+                    - generic [ref=e503]: "cpuLimit: \"2000m\""
+                    - generic [ref=e504]: "memoryLimit: \"4Gi\""
+                    - generic [ref=e505]: "pvcSize: \"20Gi\""
+                    - generic [ref=e506]: "storageClass: \"\""
+                  - button "Copy code to clipboard" [ref=e508] [cursor=pointer]:
+                    - generic [ref=e509]:
+                      - img [ref=e510]
+                      - img [ref=e512]
+                - heading "ConfigDirect link to Config" [level=2] [ref=e514]:
+                  - text: Config
+                  - link "Direct link to Config" [ref=e515] [cursor=pointer]:
+                    - /url: "#config"
+                    - text: "#"
+                - paragraph [ref=e516]:
+                  - text: Review the following parameters to configure Palette VerteX for your environment. The
+                  - code [ref=e517]: config
+                  - text: "section contains the following subsections:"
+                - heading "Install ModeDirect link to Install Mode" [level=3] [ref=e518]:
+                  - text: Install Mode
+                  - link "Direct link to Install Mode" [ref=e519] [cursor=pointer]:
+                    - /url: "#install-mode"
+                    - text: "#"
+                - paragraph [ref=e520]: You can install Palette in connected or air-gapped mode. The table lists the parameters to configure the installation mode.
+                - table [ref=e521]:
+                  - rowgroup [ref=e522]:
+                    - row "Parameters Description Type Default value" [ref=e523]:
+                      - cell "Parameters" [ref=e524]:
+                        - strong [ref=e525]: Parameters
+                      - cell "Description" [ref=e526]:
+                        - strong [ref=e527]: Description
+                      - cell "Type" [ref=e528]:
+                        - strong [ref=e529]: Type
+                      - cell "Default value" [ref=e530]:
+                        - strong [ref=e531]: Default value
+                  - rowgroup [ref=e532]:
+                    - row "installMode Specifies the installation mode. Allowed values are connected or airgap. Set the value to airgap when installing in an air-gapped environment. String connected" [ref=e533]:
+                      - cell "installMode" [ref=e534]:
+                        - code [ref=e535]: installMode
+                      - cell "Specifies the installation mode. Allowed values are connected or airgap. Set the value to airgap when installing in an air-gapped environment." [ref=e536]:
+                        - text: Specifies the installation mode. Allowed values are
+                        - code [ref=e537]: connected
+                        - text: or
+                        - code [ref=e538]: airgap
+                        - text: . Set the value to
+                        - code [ref=e539]: airgap
+                        - text: when installing in an air-gapped environment.
+                      - cell "String" [ref=e540]
+                      - cell "connected" [ref=e541]:
+                        - code [ref=e542]: connected
+                - generic [ref=e544]:
+                  - code [ref=e546]:
+                    - generic [ref=e547]: "config:"
+                    - generic [ref=e548]: "installationMode: \"connected\""
+                  - button "Copy code to clipboard" [ref=e550] [cursor=pointer]:
+                    - generic [ref=e551]:
+                      - img [ref=e552]
+                      - img [ref=e554]
+                - heading "SSODirect link to SSO" [level=3] [ref=e556]:
+                  - text: SSO
+                  - link "Direct link to SSO" [ref=e557] [cursor=pointer]:
+                    - /url: "#sso"
+                    - text: "#"
+                - paragraph [ref=e558]:
+                  - text: You can configure Palette VerteX to use Single Sign-On (SSO) for user authentication. Configure the SSO parameters to enable SSO for Palette VerteX. You can also configure different SSO providers for each tenant post-install, check out the
+                  - link "SAML & SSO Setup" [ref=e559] [cursor=pointer]:
+                    - /url: /user-management/saml-sso/
+                  - text: documentation for additional guidance.
+                - paragraph [ref=e560]: To configure SSO, you must provide the following parameters.
+                - table [ref=e561]:
+                  - rowgroup [ref=e562]:
+                    - row "Parameters Description Type Default value" [ref=e563]:
+                      - cell "Parameters" [ref=e564]:
+                        - strong [ref=e565]: Parameters
+                      - cell "Description" [ref=e566]:
+                        - strong [ref=e567]: Description
+                      - cell "Type" [ref=e568]:
+                        - strong [ref=e569]: Type
+                      - cell "Default value" [ref=e570]:
+                        - strong [ref=e571]: Default value
+                  - rowgroup [ref=e572]:
+                    - row "saml.enabled Specifies whether to enable SSO SAML configuration by setting it to true. Boolean false" [ref=e573]:
+                      - cell "saml.enabled" [ref=e574]:
+                        - code [ref=e575]: saml.enabled
+                      - cell "Specifies whether to enable SSO SAML configuration by setting it to true." [ref=e576]
+                      - cell "Boolean" [ref=e577]
+                      - cell "false" [ref=e578]:
+                        - code [ref=e579]: "false"
+                    - row "saml.acsUrlRoot The root URL of the Assertion Consumer Service (ACS). String myfirstpalette.spectrocloud.com" [ref=e580]:
+                      - cell "saml.acsUrlRoot" [ref=e581]:
+                        - code [ref=e582]: saml.acsUrlRoot
+                      - cell "The root URL of the Assertion Consumer Service (ACS)." [ref=e583]
+                      - cell "String" [ref=e584]
+                      - cell "myfirstpalette.spectrocloud.com" [ref=e585]:
+                        - code [ref=e586]: myfirstpalette.spectrocloud.com
+                    - 'row "saml.acsUrlScheme The URL scheme of the ACS: http or https. String https" [ref=e587]':
+                      - cell "saml.acsUrlScheme" [ref=e588]:
+                        - code [ref=e589]: saml.acsUrlScheme
+                      - 'cell "The URL scheme of the ACS: http or https." [ref=e590]':
+                        - text: "The URL scheme of the ACS:"
+                        - code [ref=e591]: http
+                        - text: or
+                        - code [ref=e592]: https
+                        - text: .
+                      - cell "String" [ref=e593]
+                      - cell "https" [ref=e594]:
+                        - code [ref=e595]: https
+                    - row "saml.audienceUrl The URL of the intended audience for the SAML response. String https://www.spectrocloud.com" [ref=e596]:
+                      - cell "saml.audienceUrl" [ref=e597]:
+                        - code [ref=e598]: saml.audienceUrl
+                      - cell "The URL of the intended audience for the SAML response." [ref=e599]
+                      - cell "String" [ref=e600]
+                      - cell "https://www.spectrocloud.com" [ref=e601]:
+                        - code [ref=e602]: https://www.spectrocloud.com
+                    - row "saml.entityID The Entity ID of the Service Provider. String https://www.spectrocloud.com" [ref=e603]:
+                      - cell "saml.entityID" [ref=e604]:
+                        - code [ref=e605]: saml.entityID
+                      - cell "The Entity ID of the Service Provider." [ref=e606]
+                      - cell "String" [ref=e607]
+                      - cell "https://www.spectrocloud.com" [ref=e608]:
+                        - code [ref=e609]: https://www.spectrocloud.com
+                    - row "saml.apiVersion Specify the SSO SAML API version to use. String v1" [ref=e610]:
+                      - cell "saml.apiVersion" [ref=e611]:
+                        - code [ref=e612]: saml.apiVersion
+                      - cell "Specify the SSO SAML API version to use." [ref=e613]
+                      - cell "String" [ref=e614]
+                      - cell "v1" [ref=e615]:
+                        - code [ref=e616]: v1
+                - generic [ref=e618]:
+                  - code [ref=e620]:
+                    - generic [ref=e621]: "config:"
+                    - generic [ref=e622]: "sso:"
+                    - generic [ref=e623]: "saml:"
+                    - generic [ref=e624]: "enabled: false"
+                    - generic [ref=e625]: "acsUrlRoot: \"myfirstpalette.spectrocloud.com\""
+                    - generic [ref=e626]: "acsUrlScheme: \"https\""
+                    - generic [ref=e627]: "audienceUrl: \"https://www.spectrocloud.com\""
+                    - generic [ref=e628]: "entityId: \"https://www.spectrocloud.com\""
+                    - generic [ref=e629]: "apiVersion: \"v1\""
+                  - button "Copy code to clipboard" [ref=e631] [cursor=pointer]:
+                    - generic [ref=e632]:
+                      - img [ref=e633]
+                      - img [ref=e635]
+                - heading "EmailDirect link to Email" [level=3] [ref=e637]:
+                  - text: Email
+                  - link "Direct link to Email" [ref=e638] [cursor=pointer]:
+                    - /url: "#email"
+                    - text: "#"
+                - paragraph [ref=e639]:
+                  - text: Palette VerteX uses email to send notifications to users. The email notification is used when inviting new users to the platform, password resets, and when
+                  - link "webhook alerts" [ref=e640] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/health-alerts/
+                  - text: are triggered. Use the following parameters to configure email settings for Palette VerteX.
+                - table [ref=e641]:
+                  - rowgroup [ref=e642]:
+                    - row "Parameters Description Type Default value" [ref=e643]:
+                      - cell "Parameters" [ref=e644]:
+                        - strong [ref=e645]: Parameters
+                      - cell "Description" [ref=e646]:
+                        - strong [ref=e647]: Description
+                      - cell "Type" [ref=e648]:
+                        - strong [ref=e649]: Type
+                      - cell "Default value" [ref=e650]:
+                        - strong [ref=e651]: Default value
+                  - rowgroup [ref=e652]:
+                    - row "enabled Specifies whether to enable email configuration. Boolean false" [ref=e653]:
+                      - cell "enabled" [ref=e654]:
+                        - code [ref=e655]: enabled
+                      - cell "Specifies whether to enable email configuration." [ref=e656]
+                      - cell "Boolean" [ref=e657]
+                      - cell "false" [ref=e658]:
+                        - code [ref=e659]: "false"
+                    - row "emailID The email address for sending mail. String noreply@spectrocloud.com" [ref=e660]:
+                      - cell "emailID" [ref=e661]:
+                        - code [ref=e662]: emailID
+                      - cell "The email address for sending mail." [ref=e663]
+                      - cell "String" [ref=e664]
+                      - cell "noreply@spectrocloud.com" [ref=e665]:
+                        - code [ref=e666]: noreply@spectrocloud.com
+                    - row "smtpServer Simple Mail Transfer Protocol (SMTP) server used for sending mail. String smtp.gmail.com" [ref=e667]:
+                      - cell "smtpServer" [ref=e668]:
+                        - code [ref=e669]: smtpServer
+                      - cell "Simple Mail Transfer Protocol (SMTP) server used for sending mail." [ref=e670]
+                      - cell "String" [ref=e671]
+                      - cell "smtp.gmail.com" [ref=e672]:
+                        - code [ref=e673]: smtp.gmail.com
+                    - row "smtpPort SMTP port used for sending mail. Integer 587" [ref=e674]:
+                      - cell "smtpPort" [ref=e675]:
+                        - code [ref=e676]: smtpPort
+                      - cell "SMTP port used for sending mail." [ref=e677]
+                      - cell "Integer" [ref=e678]
+                      - cell "587" [ref=e679]:
+                        - code [ref=e680]: "587"
+                    - row "insecureSkipVerifyTLS Specifies whether to skip Transport Layer Security (TLS) verification for the SMTP connection. Boolean true" [ref=e681]:
+                      - cell "insecureSkipVerifyTLS" [ref=e682]:
+                        - code [ref=e683]: insecureSkipVerifyTLS
+                      - cell "Specifies whether to skip Transport Layer Security (TLS) verification for the SMTP connection." [ref=e684]
+                      - cell "Boolean" [ref=e685]
+                      - cell "true" [ref=e686]:
+                        - code [ref=e687]: "true"
+                    - row "fromEmailID Email address of the From address. String noreply@spectrocloud.com" [ref=e688]:
+                      - cell "fromEmailID" [ref=e689]:
+                        - code [ref=e690]: fromEmailID
+                      - cell "Email address of the From address." [ref=e691]:
+                        - text: Email address of the
+                        - strong [ref=e692]:
+                          - emphasis [ref=e693]: From
+                        - text: address.
+                      - cell "String" [ref=e694]
+                      - cell "noreply@spectrocloud.com" [ref=e695]:
+                        - code [ref=e696]: noreply@spectrocloud.com
+                    - row "password The base64-encoded SMTP password when sending emails. String \"\"" [ref=e697]:
+                      - cell "password" [ref=e698]:
+                        - code [ref=e699]: password
+                      - cell "The base64-encoded SMTP password when sending emails." [ref=e700]
+                      - cell "String" [ref=e701]
+                      - cell "\"\"" [ref=e702]:
+                        - code [ref=e703]: "\"\""
+                - generic [ref=e705]:
+                  - code [ref=e707]:
+                    - generic [ref=e708]: "config:"
+                    - generic [ref=e709]: "email:"
+                    - generic [ref=e710]: "enabled: false"
+                    - generic [ref=e711]: "emailId: \"noreply@spectrocloud.com\""
+                    - generic [ref=e712]: "smtpServer: \"smtp.gmail.com\""
+                    - generic [ref=e713]: "smtpPort: 587"
+                    - generic [ref=e714]: "insecureSkipVerifyTls: true"
+                    - generic [ref=e715]: "fromEmailId: \"noreply@spectrocloud.com\""
+                    - generic [ref=e716]: "password: \"\""
+                  - button "Copy code to clipboard" [ref=e718] [cursor=pointer]:
+                    - generic [ref=e719]:
+                      - img [ref=e720]
+                      - img [ref=e722]
+                - heading "EnvironmentDirect link to Environment" [level=3] [ref=e724]:
+                  - text: Environment
+                  - link "Direct link to Environment" [ref=e725] [cursor=pointer]:
+                    - /url: "#environment"
+                    - text: "#"
+                - paragraph [ref=e726]: The following parameters are used to configure the environment.
+                - table [ref=e727]:
+                  - rowgroup [ref=e728]:
+                    - row "Parameters Description Type Default value" [ref=e729]:
+                      - cell "Parameters" [ref=e730]:
+                        - strong [ref=e731]: Parameters
+                      - cell "Description" [ref=e732]:
+                        - strong [ref=e733]: Description
+                      - cell "Type" [ref=e734]:
+                        - strong [ref=e735]: Type
+                      - cell "Default value" [ref=e736]:
+                        - strong [ref=e737]: Default value
+                  - rowgroup [ref=e738]:
+                    - row "env.rootDomain Specifies the URL name assigned to Palette Vertex. The value assigned should have a Domain Name System (DNS) CNAME record mapped to exposed IP address or the load balancer URL of the service ingress-nginx-controller. Optionally, if ingress.ingressStaticIP is provided with a value you can use same assigned static IP address as the value to this parameter. String \"\"" [ref=e739]:
+                      - cell "env.rootDomain" [ref=e740]:
+                        - code [ref=e741]: env.rootDomain
+                      - cell "Specifies the URL name assigned to Palette Vertex. The value assigned should have a Domain Name System (DNS) CNAME record mapped to exposed IP address or the load balancer URL of the service ingress-nginx-controller. Optionally, if ingress.ingressStaticIP is provided with a value you can use same assigned static IP address as the value to this parameter." [ref=e742]:
+                        - text: Specifies the URL name assigned to Palette Vertex. The value assigned should have a Domain Name System (DNS) CNAME record mapped to exposed IP address or the load balancer URL of the service
+                        - emphasis [ref=e743]: ingress-nginx-controller
+                        - text: . Optionally, if
+                        - code [ref=e744]: ingress.ingressStaticIP
+                        - text: is provided with a value you can use same assigned static IP address as the value to this parameter.
+                      - cell "String" [ref=e745]
+                      - cell "\"\"" [ref=e746]:
+                        - code [ref=e747]: "\"\""
+                    - row "env.installerMode Specifies the installer mode. Do not modify the value. String self-hosted" [ref=e748]:
+                      - cell "env.installerMode" [ref=e749]:
+                        - code [ref=e750]: env.installerMode
+                      - cell "Specifies the installer mode. Do not modify the value." [ref=e751]
+                      - cell "String" [ref=e752]
+                      - cell "self-hosted" [ref=e753]:
+                        - code [ref=e754]: self-hosted
+                    - row "env.installerCloud Specifies the cloud provider. Leave this parameter empty if you are installing a self-hosted Palette VerteX. String \"\"" [ref=e755]:
+                      - cell "env.installerCloud" [ref=e756]:
+                        - code [ref=e757]: env.installerCloud
+                      - cell "Specifies the cloud provider. Leave this parameter empty if you are installing a self-hosted Palette VerteX." [ref=e758]
+                      - cell "String" [ref=e759]
+                      - cell "\"\"" [ref=e760]:
+                        - code [ref=e761]: "\"\""
+                - generic [ref=e763]:
+                  - code [ref=e765]:
+                    - generic [ref=e766]: "config:"
+                    - generic [ref=e767]: "env:"
+                    - generic [ref=e768]: "rootDomain: \"\""
+                  - button "Copy code to clipboard" [ref=e770] [cursor=pointer]:
+                    - generic [ref=e771]:
+                      - img [ref=e772]
+                      - img [ref=e774]
+                - generic [ref=e776]:
+                  - generic [ref=e777]:
+                    - img [ref=e779]
+                    - text: warning
+                  - paragraph [ref=e782]:
+                    - text: If Palette VerteX has only one tenant and you use local accounts with Single Sign-On (SSO) disabled, you can access Palette VerteX using the IP address or any domain name that resolves to that IP. However, once you enable SSO, users must log in using the tenant-specific subdomain. For example, if you create a tenant named
+                    - code [ref=e783]: tenant1
+                    - text: and the domain name you assigned to Palette VerteX is
+                    - code [ref=e784]: vertex.example.com
+                    - text: ", the tenant URL will be"
+                    - code [ref=e785]: tenant1.vertex.example.com
+                    - text: . We recommend you create an additional wildcard DNS record to map all tenant URLs to the Palette VerteX load balancer. For example,
+                    - code [ref=e786]: "*.vertex.example.com"
+                    - text: .
+                - heading "ClusterDirect link to Cluster" [level=3] [ref=e787]:
+                  - text: Cluster
+                  - link "Direct link to Cluster" [ref=e788] [cursor=pointer]:
+                    - /url: "#cluster"
+                    - text: "#"
+                - paragraph [ref=e789]: Use the following parameters to configure the Kubernetes cluster.
+                - table [ref=e790]:
+                  - rowgroup [ref=e791]:
+                    - row "Parameters Description Type Default value" [ref=e792]:
+                      - cell "Parameters" [ref=e793]:
+                        - strong [ref=e794]: Parameters
+                      - cell "Description" [ref=e795]:
+                        - strong [ref=e796]: Description
+                      - cell "Type" [ref=e797]:
+                        - strong [ref=e798]: Type
+                      - cell "Default value" [ref=e799]:
+                        - strong [ref=e800]: Default value
+                  - rowgroup [ref=e801]:
+                    - row "stableEndpointAccess Set to true if the Kubernetes cluster is deployed in a public endpoint. If the cluster is deployed in a private network through a stable private endpoint, set to false. Boolean false" [ref=e802]:
+                      - cell "stableEndpointAccess" [ref=e803]:
+                        - code [ref=e804]: stableEndpointAccess
+                      - cell "Set to true if the Kubernetes cluster is deployed in a public endpoint. If the cluster is deployed in a private network through a stable private endpoint, set to false." [ref=e805]:
+                        - text: Set to
+                        - code [ref=e806]: "true"
+                        - text: if the Kubernetes cluster is deployed in a public endpoint. If the cluster is deployed in a private network through a stable private endpoint, set to
+                        - code [ref=e807]: "false"
+                        - text: .
+                      - cell "Boolean" [ref=e808]
+                      - cell "false" [ref=e809]:
+                        - code [ref=e810]: "false"
+                - generic [ref=e812]:
+                  - code [ref=e814]:
+                    - generic [ref=e815]: "config:"
+                    - generic [ref=e816]: "cluster:"
+                    - generic [ref=e817]: "stableEndpointAccess: false"
+                  - button "Copy code to clipboard" [ref=e819] [cursor=pointer]:
+                    - generic [ref=e820]:
+                      - img [ref=e821]
+                      - img [ref=e823]
+                - heading "RegistriesDirect link to Registries" [level=2] [ref=e825]:
+                  - text: Registries
+                  - link "Direct link to Registries" [ref=e826] [cursor=pointer]:
+                    - /url: "#registries"
+                    - text: "#"
+                - paragraph [ref=e827]: Palette VerteX requires credentials to access the required Palette VerteX images. You can configure different types of registries for Palette VerteX to download the required images. You must configure at least one Open Container Initiative (OCI) registry for Palette VerteX.
+                - generic [ref=e828]:
+                  - generic [ref=e829]:
+                    - img [ref=e831]
+                    - text: warning
+                  - paragraph [ref=e834]:
+                    - text: Palette VerteX does not support insecure connections. Ensure you have the Certificate Authority (CA) available, in PEM format, when using a custom packs and image registry. Otherwise, VerteX will not be able to pull packs and images from the registry. Use the
+                    - code [ref=e835]: caCert
+                    - text: parameter to provide the base64-encoded CA certificate.
+                - heading "OCI RegistryDirect link to OCI Registry" [level=3] [ref=e836]:
+                  - text: OCI Registry
+                  - link "Direct link to OCI Registry" [ref=e837] [cursor=pointer]:
+                    - /url: "#oci-registry"
+                    - text: "#"
+                - paragraph [ref=e838]:
+                  - text: Palette VerteX requires access to an OCI registry that contains all the required FIPS packs. You can host your own OCI registry and configure Palette VerteX to reference the registry. Alternatively, you can use the public OCI registry provided by us, refer to the
+                  - link "ociPackEcrRegistry" [ref=e839] [cursor=pointer]:
+                    - /url: "#oci-ecr-registry"
+                    - code [ref=e840]: ociPackEcrRegistry
+                  - text: section to learn more about the publicly available OCI registry.
+                - generic [ref=e841]:
+                  - generic [ref=e842]:
+                    - img [ref=e844]
+                    - text: warning
+                  - paragraph [ref=e847]: If you are using a self-hosted OCI registry, you must provide the required FIPS packs to the registry. Contact support for additional guidance on how to add the required FIPS packs to your OCI registry.
+                - table [ref=e848]:
+                  - rowgroup [ref=e849]:
+                    - row "Parameters Description Type Default value" [ref=e850]:
+                      - cell "Parameters" [ref=e851]:
+                        - strong [ref=e852]: Parameters
+                      - cell "Description" [ref=e853]:
+                        - strong [ref=e854]: Description
+                      - cell "Type" [ref=e855]:
+                        - strong [ref=e856]: Type
+                      - cell "Default value" [ref=e857]:
+                        - strong [ref=e858]: Default value
+                  - rowgroup [ref=e859]:
+                    - row "ociPackRegistry.endpoint The endpoint URL for the registry. String \"\"" [ref=e860]:
+                      - cell "ociPackRegistry.endpoint" [ref=e861]:
+                        - code [ref=e862]: ociPackRegistry.endpoint
+                      - cell "The endpoint URL for the registry." [ref=e863]
+                      - cell "String" [ref=e864]
+                      - cell "\"\"" [ref=e865]:
+                        - code [ref=e866]: "\"\""
+                    - row "ociPackRegistry.name The name of the registry. String \"\"" [ref=e867]:
+                      - cell "ociPackRegistry.name" [ref=e868]:
+                        - code [ref=e869]: ociPackRegistry.name
+                      - cell "The name of the registry." [ref=e870]
+                      - cell "String" [ref=e871]
+                      - cell "\"\"" [ref=e872]:
+                        - code [ref=e873]: "\"\""
+                    - row "ociPackRegistry.password The base64-encoded password for the registry. String \"\"" [ref=e874]:
+                      - cell "ociPackRegistry.password" [ref=e875]:
+                        - code [ref=e876]: ociPackRegistry.password
+                      - cell "The base64-encoded password for the registry." [ref=e877]
+                      - cell "String" [ref=e878]
+                      - cell "\"\"" [ref=e879]:
+                        - code [ref=e880]: "\"\""
+                    - row "ociPackRegistry.username The username for the registry. String \"\"" [ref=e881]:
+                      - cell "ociPackRegistry.username" [ref=e882]:
+                        - code [ref=e883]: ociPackRegistry.username
+                      - cell "The username for the registry." [ref=e884]
+                      - cell "String" [ref=e885]
+                      - cell "\"\"" [ref=e886]:
+                        - code [ref=e887]: "\"\""
+                    - row "ociPackRegistry.baseContentPath The base path for the registry. String \"\"" [ref=e888]:
+                      - cell "ociPackRegistry.baseContentPath" [ref=e889]:
+                        - code [ref=e890]: ociPackRegistry.baseContentPath
+                      - cell "The base path for the registry." [ref=e891]
+                      - cell "String" [ref=e892]
+                      - cell "\"\"" [ref=e893]:
+                        - code [ref=e894]: "\"\""
+                    - row "ociPackRegistry.insecureSkipVerify Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. VerteX requires the CA for registries that use a self-signed certificate. Boolean false" [ref=e895]:
+                      - cell "ociPackRegistry.insecureSkipVerify" [ref=e896]:
+                        - code [ref=e897]: ociPackRegistry.insecureSkipVerify
+                      - cell "Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. VerteX requires the CA for registries that use a self-signed certificate." [ref=e898]
+                      - cell "Boolean" [ref=e899]
+                      - cell "false" [ref=e900]:
+                        - code [ref=e901]: "false"
+                    - row "ociPackRegistry.caCert The registry's base64-encoded certificate authority (CA) certificate. Required for self-hosted OCI registries. String \"\"" [ref=e902]:
+                      - cell "ociPackRegistry.caCert" [ref=e903]:
+                        - code [ref=e904]: ociPackRegistry.caCert
+                      - cell "The registry's base64-encoded certificate authority (CA) certificate. Required for self-hosted OCI registries." [ref=e905]
+                      - cell "String" [ref=e906]
+                      - cell "\"\"" [ref=e907]:
+                        - code [ref=e908]: "\"\""
+                - generic [ref=e910]:
+                  - code [ref=e912]:
+                    - generic [ref=e913]: "config:"
+                    - generic [ref=e914]: "ociPackRegistry:"
+                    - generic [ref=e915]: "endpoint: \"\""
+                    - generic [ref=e916]: "name: \"\""
+                    - generic [ref=e917]: "password: \"\""
+                    - generic [ref=e918]: "username: \"\""
+                    - generic [ref=e919]: "baseContentPath: \"\""
+                    - generic [ref=e920]: "insecureSkipVerify: false"
+                    - generic [ref=e921]: "caCert: \"\""
+                  - button "Copy code to clipboard" [ref=e923] [cursor=pointer]:
+                    - generic [ref=e924]:
+                      - img [ref=e925]
+                      - img [ref=e927]
+                - heading "OCI ECR RegistryDirect link to OCI ECR Registry" [level=3] [ref=e929]:
+                  - text: OCI ECR Registry
+                  - link "Direct link to OCI ECR Registry" [ref=e930] [cursor=pointer]:
+                    - /url: "#oci-ecr-registry"
+                    - text: "#"
+                - paragraph [ref=e931]:
+                  - text: We expose a public OCI ECR registry that you can configure Palette VerteX to reference. If you want to host your own OCI registry, refer to the
+                  - link "OCI Registry" [ref=e932] [cursor=pointer]:
+                    - /url: "#oci-registry"
+                  - text: section. The OCI Elastic Container Registry (ECR) is hosted in an AWS ECR registry. Our support team provides the credentials for the OCI ECR registry.
+                - table [ref=e933]:
+                  - rowgroup [ref=e934]:
+                    - row "Parameters Description Type Default value" [ref=e935]:
+                      - cell "Parameters" [ref=e936]:
+                        - strong [ref=e937]: Parameters
+                      - cell "Description" [ref=e938]:
+                        - strong [ref=e939]: Description
+                      - cell "Type" [ref=e940]:
+                        - strong [ref=e941]: Type
+                      - cell "Default value" [ref=e942]:
+                        - strong [ref=e943]: Default value
+                  - rowgroup [ref=e944]:
+                    - row "ociPackEcrRegistry.endpoint The endpoint URL for the registry. String \"\"" [ref=e945]:
+                      - cell "ociPackEcrRegistry.endpoint" [ref=e946]:
+                        - code [ref=e947]: ociPackEcrRegistry.endpoint
+                      - cell "The endpoint URL for the registry." [ref=e948]
+                      - cell "String" [ref=e949]
+                      - cell "\"\"" [ref=e950]:
+                        - code [ref=e951]: "\"\""
+                    - row "ociPackEcrRegistry.name The name of the registry. String \"\"" [ref=e952]:
+                      - cell "ociPackEcrRegistry.name" [ref=e953]:
+                        - code [ref=e954]: ociPackEcrRegistry.name
+                      - cell "The name of the registry." [ref=e955]
+                      - cell "String" [ref=e956]
+                      - cell "\"\"" [ref=e957]:
+                        - code [ref=e958]: "\"\""
+                    - row "ociPackEcrRegistry.accessKey The base64-encoded access key for the registry. String \"\"" [ref=e959]:
+                      - cell "ociPackEcrRegistry.accessKey" [ref=e960]:
+                        - code [ref=e961]: ociPackEcrRegistry.accessKey
+                      - cell "The base64-encoded access key for the registry." [ref=e962]
+                      - cell "String" [ref=e963]
+                      - cell "\"\"" [ref=e964]:
+                        - code [ref=e965]: "\"\""
+                    - row "ociPackEcrRegistry.secretKey The base64-encoded secret key for the registry. String \"\"" [ref=e966]:
+                      - cell "ociPackEcrRegistry.secretKey" [ref=e967]:
+                        - code [ref=e968]: ociPackEcrRegistry.secretKey
+                      - cell "The base64-encoded secret key for the registry." [ref=e969]
+                      - cell "String" [ref=e970]
+                      - cell "\"\"" [ref=e971]:
+                        - code [ref=e972]: "\"\""
+                    - row "ociPackEcrRegistry.baseContentPath The base path for the registry. String \"\"" [ref=e973]:
+                      - cell "ociPackEcrRegistry.baseContentPath" [ref=e974]:
+                        - code [ref=e975]: ociPackEcrRegistry.baseContentPath
+                      - cell "The base path for the registry." [ref=e976]
+                      - cell "String" [ref=e977]
+                      - cell "\"\"" [ref=e978]:
+                        - code [ref=e979]: "\"\""
+                    - row "ociPackEcrRegistry.isPrivate Specifies whether the registry is private. Boolean true" [ref=e980]:
+                      - cell "ociPackEcrRegistry.isPrivate" [ref=e981]:
+                        - code [ref=e982]: ociPackEcrRegistry.isPrivate
+                      - cell "Specifies whether the registry is private." [ref=e983]
+                      - cell "Boolean" [ref=e984]
+                      - cell "true" [ref=e985]:
+                        - code [ref=e986]: "true"
+                    - row "ociPackEcrRegistry.insecureSkipVerify Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. Boolean false" [ref=e987]:
+                      - cell "ociPackEcrRegistry.insecureSkipVerify" [ref=e988]:
+                        - code [ref=e989]: ociPackEcrRegistry.insecureSkipVerify
+                      - cell "Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection." [ref=e990]
+                      - cell "Boolean" [ref=e991]
+                      - cell "false" [ref=e992]:
+                        - code [ref=e993]: "false"
+                    - row "ociPackEcrRegistry.caCert The registry's base64-encoded certificate authority (CA) certificate. String \"\"" [ref=e994]:
+                      - cell "ociPackEcrRegistry.caCert" [ref=e995]:
+                        - code [ref=e996]: ociPackEcrRegistry.caCert
+                      - cell "The registry's base64-encoded certificate authority (CA) certificate." [ref=e997]
+                      - cell "String" [ref=e998]
+                      - cell "\"\"" [ref=e999]:
+                        - code [ref=e1000]: "\"\""
+                - generic [ref=e1002]:
+                  - code [ref=e1004]:
+                    - generic [ref=e1005]: "config:"
+                    - generic [ref=e1006]: "ociPackEcrRegistry:"
+                    - generic [ref=e1007]: "endpoint: \"\""
+                    - generic [ref=e1008]: "name: \"\""
+                    - generic [ref=e1009]: "accessKey: \"\""
+                    - generic [ref=e1010]: "secretKey: \"\""
+                    - generic [ref=e1011]: "baseContentPath: \"\""
+                    - generic [ref=e1012]: "isPrivate: true"
+                    - generic [ref=e1013]: "insecureSkipVerify: false"
+                    - generic [ref=e1014]: "caCert: \"\""
+                  - button "Copy code to clipboard" [ref=e1016] [cursor=pointer]:
+                    - generic [ref=e1017]:
+                      - img [ref=e1018]
+                      - img [ref=e1020]
+                - heading "OCI Image RegistryDirect link to OCI Image Registry" [level=3] [ref=e1022]:
+                  - text: OCI Image Registry
+                  - link "Direct link to OCI Image Registry" [ref=e1023] [cursor=pointer]:
+                    - /url: "#oci-image-registry"
+                    - text: "#"
+                - paragraph [ref=e1024]: You can specify an OCI registry for the images used by Palette.
+                - table [ref=e1025]:
+                  - rowgroup [ref=e1026]:
+                    - row "Parameters Description Type Default value" [ref=e1027]:
+                      - cell "Parameters" [ref=e1028]:
+                        - strong [ref=e1029]: Parameters
+                      - cell "Description" [ref=e1030]:
+                        - strong [ref=e1031]: Description
+                      - cell "Type" [ref=e1032]:
+                        - strong [ref=e1033]: Type
+                      - cell "Default value" [ref=e1034]:
+                        - strong [ref=e1035]: Default value
+                  - rowgroup [ref=e1036]:
+                    - row "ociImageRegistry.endpoint The endpoint URL for the registry. String \"\"" [ref=e1037]:
+                      - cell "ociImageRegistry.endpoint" [ref=e1038]:
+                        - code [ref=e1039]: ociImageRegistry.endpoint
+                      - cell "The endpoint URL for the registry." [ref=e1040]
+                      - cell "String" [ref=e1041]
+                      - cell "\"\"" [ref=e1042]:
+                        - code [ref=e1043]: "\"\""
+                    - row "ociImageRegistry.name The name of the registry. String \"\"" [ref=e1044]:
+                      - cell "ociImageRegistry.name" [ref=e1045]:
+                        - code [ref=e1046]: ociImageRegistry.name
+                      - cell "The name of the registry." [ref=e1047]
+                      - cell "String" [ref=e1048]
+                      - cell "\"\"" [ref=e1049]:
+                        - code [ref=e1050]: "\"\""
+                    - row "ociImageRegistry.password The password for the registry. String \"\"" [ref=e1051]:
+                      - cell "ociImageRegistry.password" [ref=e1052]:
+                        - code [ref=e1053]: ociImageRegistry.password
+                      - cell "The password for the registry." [ref=e1054]
+                      - cell "String" [ref=e1055]
+                      - cell "\"\"" [ref=e1056]:
+                        - code [ref=e1057]: "\"\""
+                    - row "ociImageRegistry.username The username for the registry. String \"\"" [ref=e1058]:
+                      - cell "ociImageRegistry.username" [ref=e1059]:
+                        - code [ref=e1060]: ociImageRegistry.username
+                      - cell "The username for the registry." [ref=e1061]
+                      - cell "String" [ref=e1062]
+                      - cell "\"\"" [ref=e1063]:
+                        - code [ref=e1064]: "\"\""
+                    - row "ociImageRegistry.baseContentPath The base path for the registry. String \"\"" [ref=e1065]:
+                      - cell "ociImageRegistry.baseContentPath" [ref=e1066]:
+                        - code [ref=e1067]: ociImageRegistry.baseContentPath
+                      - cell "The base path for the registry." [ref=e1068]
+                      - cell "String" [ref=e1069]
+                      - cell "\"\"" [ref=e1070]:
+                        - code [ref=e1071]: "\"\""
+                    - row "ociImageRegistry.insecureSkipVerify Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. Boolean false" [ref=e1072]:
+                      - cell "ociImageRegistry.insecureSkipVerify" [ref=e1073]:
+                        - code [ref=e1074]: ociImageRegistry.insecureSkipVerify
+                      - cell "Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection." [ref=e1075]
+                      - cell "Boolean" [ref=e1076]
+                      - cell "false" [ref=e1077]:
+                        - code [ref=e1078]: "false"
+                    - row "ociImageRegistry.caCert The registry's base64-encoded certificate authority (CA) certificate. Required for self-hosted OCI registries. String \"\"" [ref=e1079]:
+                      - cell "ociImageRegistry.caCert" [ref=e1080]:
+                        - code [ref=e1081]: ociImageRegistry.caCert
+                      - cell "The registry's base64-encoded certificate authority (CA) certificate. Required for self-hosted OCI registries." [ref=e1082]
+                      - cell "String" [ref=e1083]
+                      - cell "\"\"" [ref=e1084]:
+                        - code [ref=e1085]: "\"\""
+                    - row "ociImageRegistry.mirrorRegistries A comma-separated list of mirror registries. String \"\"" [ref=e1086]:
+                      - cell "ociImageRegistry.mirrorRegistries" [ref=e1087]:
+                        - code [ref=e1088]: ociImageRegistry.mirrorRegistries
+                      - cell "A comma-separated list of mirror registries." [ref=e1089]
+                      - cell "String" [ref=e1090]
+                      - cell "\"\"" [ref=e1091]:
+                        - code [ref=e1092]: "\"\""
+                - generic [ref=e1094]:
+                  - code [ref=e1096]:
+                    - generic [ref=e1097]: "config:"
+                    - generic [ref=e1098]: "ociImageRegistry:"
+                    - generic [ref=e1099]: "endpoint: \"\""
+                    - generic [ref=e1100]: "name: \"\""
+                    - generic [ref=e1101]: "password: \"\""
+                    - generic [ref=e1102]: "username: \"\""
+                    - generic [ref=e1103]: "baseContentPath: \"\""
+                    - generic [ref=e1104]: "insecureSkipVerify: false"
+                    - generic [ref=e1105]: "caCert: \"\""
+                    - generic [ref=e1106]: "mirrorRegistries: \"\""
+                  - button "Copy code to clipboard" [ref=e1108] [cursor=pointer]:
+                    - generic [ref=e1109]:
+                      - img [ref=e1110]
+                      - img [ref=e1112]
+                - heading "Image Swap ConfigurationDirect link to Image Swap Configuration" [level=3] [ref=e1114]:
+                  - text: Image Swap Configuration
+                  - link "Direct link to Image Swap Configuration" [ref=e1115] [cursor=pointer]:
+                    - /url: "#image-swap-configuration"
+                    - text: "#"
+                - paragraph [ref=e1116]: You can configure Palette VerteX to use image swap to download the required images. This is an advanced configuration option, and it is only required for air-gapped deployments. You must also install the Palette VerteX Image Swap Helm chart to use this option, otherwise, Palette VerteX will ignore the configuration.
+                - table [ref=e1117]:
+                  - rowgroup [ref=e1118]:
+                    - row "Parameters Description Type Default value" [ref=e1119]:
+                      - cell "Parameters" [ref=e1120]:
+                        - strong [ref=e1121]: Parameters
+                      - cell "Description" [ref=e1122]:
+                        - strong [ref=e1123]: Description
+                      - cell "Type" [ref=e1124]:
+                        - strong [ref=e1125]: Type
+                      - cell "Default value" [ref=e1126]:
+                        - strong [ref=e1127]: Default value
+                  - rowgroup [ref=e1128]:
+                    - row "imageSwapInitImage The image swap init image. String gcr.io/spectro-images-public/release/thewebroot/imageswap-init:v1.5.3-spectro-4.5.1" [ref=e1129]:
+                      - cell "imageSwapInitImage" [ref=e1130]:
+                        - code [ref=e1131]: imageSwapInitImage
+                      - cell "The image swap init image." [ref=e1132]
+                      - cell "String" [ref=e1133]
+                      - cell "gcr.io/spectro-images-public/release/thewebroot/imageswap-init:v1.5.3-spectro-4.5.1" [ref=e1134]:
+                        - code [ref=e1135]: gcr.io/spectro-images-public/release/thewebroot/imageswap-init:v1.5.3-spectro-4.5.1
+                    - row "imageSwapImage The image swap image. String gcr.io/spectro-images-public/release/thewebroot/imageswap:v1.5.3-spectro-4.5.1" [ref=e1136]:
+                      - cell "imageSwapImage" [ref=e1137]:
+                        - code [ref=e1138]: imageSwapImage
+                      - cell "The image swap image." [ref=e1139]
+                      - cell "String" [ref=e1140]
+                      - cell "gcr.io/spectro-images-public/release/thewebroot/imageswap:v1.5.3-spectro-4.5.1" [ref=e1141]:
+                        - code [ref=e1142]: gcr.io/spectro-images-public/release/thewebroot/imageswap:v1.5.3-spectro-4.5.1
+                    - row "imageSwapConfig The image swap configuration for specific environments. String \"\"" [ref=e1143]:
+                      - cell "imageSwapConfig" [ref=e1144]:
+                        - code [ref=e1145]: imageSwapConfig
+                      - cell "The image swap configuration for specific environments." [ref=e1146]
+                      - cell "String" [ref=e1147]
+                      - cell "\"\"" [ref=e1148]:
+                        - code [ref=e1149]: "\"\""
+                    - row "imageSwapConfig.isEKSCluster Specifies whether the cluster is an Amazon EKS cluster. Set to false if the Kubernetes cluster is not an EKS cluster. Boolean true" [ref=e1150]:
+                      - cell "imageSwapConfig.isEKSCluster" [ref=e1151]:
+                        - code [ref=e1152]: imageSwapConfig.isEKSCluster
+                      - cell "Specifies whether the cluster is an Amazon EKS cluster. Set to false if the Kubernetes cluster is not an EKS cluster." [ref=e1153]:
+                        - text: Specifies whether the cluster is an Amazon EKS cluster. Set to
+                        - code [ref=e1154]: "false"
+                        - text: if the Kubernetes cluster is not an EKS cluster.
+                      - cell "Boolean" [ref=e1155]
+                      - cell "true" [ref=e1156]:
+                        - code [ref=e1157]: "true"
+                - generic [ref=e1159]:
+                  - code [ref=e1161]:
+                    - generic [ref=e1162]: "config:"
+                    - generic [ref=e1163]: "imageSwapImages:"
+                    - generic [ref=e1164]: "imageSwapInitImage: \"gcr.io/spectro-images-public/release/thewebroot/imageswap-init:v1.5.3-spectro-4.5.1\""
+                    - generic [ref=e1165]: "imageSwapImage: \"gcr.io/spectro-images-public/release/thewebroot/imageswap:v1.5.3-spectro-4.5.1\""
+                    - generic [ref=e1166]: "imageSwapConfig:"
+                    - generic [ref=e1167]: "isEKSCluster: true"
+                  - generic [ref=e1168]:
+                    - button "Toggle word wrap" [ref=e1169] [cursor=pointer]:
+                      - img [ref=e1170]
+                    - button "Copy code to clipboard" [ref=e1172] [cursor=pointer]:
+                      - generic [ref=e1173]:
+                        - img [ref=e1174]
+                        - img [ref=e1176]
+                - heading "gRPCDirect link to gRPC" [level=2] [ref=e1178]:
+                  - text: gRPC
+                  - link "Direct link to gRPC" [ref=e1179] [cursor=pointer]:
+                    - /url: "#grpc"
+                    - text: "#"
+                - paragraph [ref=e1180]: gRPC is used for communication between Palette VerteX components. You can enable the deployment of an additional load balancer for gRPC. Host clusters deployed by Palette VerteX use the load balancer to communicate with the Palette VerteX control plane. This is an advanced configuration option, and it is not required for most deployments. Speak with your support representative before enabling this option.
+                - paragraph [ref=e1181]:
+                  - text: If you want to use an external gRPC endpoint, you must provide a domain name for the gRPC endpoint and a valid x509 certificate. Additionally, you must provide a custom domain name for the endpoint. A CNAME DNS record must point to the IP address of the gRPC load balancer. For example, if your Palette VerteX domain name is
+                  - code [ref=e1182]: vertex.example.com
+                  - text: ", you could create a CNAME DNS record for"
+                  - code [ref=e1183]: grpc.vertex.example.com
+                  - text: that points to the IP address of the load balancer dedicated to gRPC.
+                - table [ref=e1184]:
+                  - rowgroup [ref=e1185]:
+                    - row "Parameters Description Type Default value" [ref=e1186]:
+                      - cell "Parameters" [ref=e1187]:
+                        - strong [ref=e1188]: Parameters
+                      - cell "Description" [ref=e1189]:
+                        - strong [ref=e1190]: Description
+                      - cell "Type" [ref=e1191]:
+                        - strong [ref=e1192]: Type
+                      - cell "Default value" [ref=e1193]:
+                        - strong [ref=e1194]: Default value
+                  - rowgroup [ref=e1195]:
+                    - row "external Specifies whether to use an external gRPC endpoint. Boolean false" [ref=e1196]:
+                      - cell "external" [ref=e1197]:
+                        - code [ref=e1198]: external
+                      - cell "Specifies whether to use an external gRPC endpoint." [ref=e1199]
+                      - cell "Boolean" [ref=e1200]
+                      - cell "false" [ref=e1201]:
+                        - code [ref=e1202]: "false"
+                    - row "endpoint The gRPC endpoint. String \"\"" [ref=e1203]:
+                      - cell "endpoint" [ref=e1204]:
+                        - code [ref=e1205]: endpoint
+                      - cell "The gRPC endpoint." [ref=e1206]
+                      - cell "String" [ref=e1207]
+                      - cell "\"\"" [ref=e1208]:
+                        - code [ref=e1209]: "\"\""
+                    - 'row "annotations A map of key-value pairs that specifies load balancer annotations for gRPC. You can use annotations to change the behavior of the load balancer and the gRPC configuration. This field is considered an advanced setting. We recommend you consult with your assigned support team representative before making changes. Object {}" [ref=e1210]':
+                      - cell "annotations" [ref=e1211]:
+                        - code [ref=e1212]: annotations
+                      - cell "A map of key-value pairs that specifies load balancer annotations for gRPC. You can use annotations to change the behavior of the load balancer and the gRPC configuration. This field is considered an advanced setting. We recommend you consult with your assigned support team representative before making changes." [ref=e1213]
+                      - cell "Object" [ref=e1214]
+                      - 'cell "{}" [ref=e1215]':
+                        - code [ref=e1216]: "{}"
+                    - row "grpcStaticIP Specify a static IP address for the gRPC load balancer service. If the field is empty, a dynamic IP address will be assigned to the load balancer. String \"\"" [ref=e1217]:
+                      - cell "grpcStaticIP" [ref=e1218]:
+                        - code [ref=e1219]: grpcStaticIP
+                      - cell "Specify a static IP address for the gRPC load balancer service. If the field is empty, a dynamic IP address will be assigned to the load balancer." [ref=e1220]
+                      - cell "String" [ref=e1221]
+                      - cell "\"\"" [ref=e1222]:
+                        - code [ref=e1223]: "\"\""
+                    - row "caCertificateBase64 The base64-encoded Certificate Authority (CA) certificate for the gRPC endpoint. String \"\"" [ref=e1224]:
+                      - cell "caCertificateBase64" [ref=e1225]:
+                        - code [ref=e1226]: caCertificateBase64
+                      - cell "The base64-encoded Certificate Authority (CA) certificate for the gRPC endpoint." [ref=e1227]
+                      - cell "String" [ref=e1228]
+                      - cell "\"\"" [ref=e1229]:
+                        - code [ref=e1230]: "\"\""
+                    - row "serverCrtBase64 The base64-encoded server certificate for the gRPC endpoint. String \"\"" [ref=e1231]:
+                      - cell "serverCrtBase64" [ref=e1232]:
+                        - code [ref=e1233]: serverCrtBase64
+                      - cell "The base64-encoded server certificate for the gRPC endpoint." [ref=e1234]
+                      - cell "String" [ref=e1235]
+                      - cell "\"\"" [ref=e1236]:
+                        - code [ref=e1237]: "\"\""
+                    - row "serverKeyBase64 The base64-encoded server key for the gRPC endpoint. String \"\"" [ref=e1238]:
+                      - cell "serverKeyBase64" [ref=e1239]:
+                        - code [ref=e1240]: serverKeyBase64
+                      - cell "The base64-encoded server key for the gRPC endpoint." [ref=e1241]
+                      - cell "String" [ref=e1242]
+                      - cell "\"\"" [ref=e1243]:
+                        - code [ref=e1244]: "\"\""
+                    - row "insecureSkipVerify Specifies whether to skip Transport Layer Security (TLS) verification for the gRPC endpoint. Boolean false" [ref=e1245]:
+                      - cell "insecureSkipVerify" [ref=e1246]:
+                        - code [ref=e1247]: insecureSkipVerify
+                      - cell "Specifies whether to skip Transport Layer Security (TLS) verification for the gRPC endpoint." [ref=e1248]
+                      - cell "Boolean" [ref=e1249]
+                      - cell "false" [ref=e1250]:
+                        - code [ref=e1251]: "false"
+                - generic [ref=e1253]:
+                  - code [ref=e1255]:
+                    - generic [ref=e1256]: "grpc:"
+                    - generic [ref=e1257]: "external: false"
+                    - generic [ref=e1258]: "endpoint: \"\""
+                    - generic [ref=e1259]: "annotations: {}"
+                    - generic [ref=e1260]: "grpcStaticIP: \"\""
+                    - generic [ref=e1261]: "caCertificateBase64: \"\""
+                    - generic [ref=e1262]: "serverCrtBase64: \"\""
+                    - generic [ref=e1263]: "serverKeyBase64: \"\""
+                    - generic [ref=e1264]: "insecureSkipVerify: false"
+                  - button "Copy code to clipboard" [ref=e1266] [cursor=pointer]:
+                    - generic [ref=e1267]:
+                      - img [ref=e1268]
+                      - img [ref=e1270]
+                - heading "IngressDirect link to Ingress" [level=2] [ref=e1272]:
+                  - text: Ingress
+                  - link "Direct link to Ingress" [ref=e1273] [cursor=pointer]:
+                    - /url: "#ingress"
+                    - text: "#"
+                - paragraph [ref=e1274]: Palette VerteX deploys an Nginx Ingress Controller. This controller is used to route traffic to the Palette VerteX control plane. You can change the default behavior and omit the deployment of an Nginx Ingress Controller.
+                - table [ref=e1275]:
+                  - rowgroup [ref=e1276]:
+                    - row "Parameters Description Type Default value" [ref=e1277]:
+                      - cell "Parameters" [ref=e1278]:
+                        - strong [ref=e1279]: Parameters
+                      - cell "Description" [ref=e1280]:
+                        - strong [ref=e1281]: Description
+                      - cell "Type" [ref=e1282]:
+                        - strong [ref=e1283]: Type
+                      - cell "Default value" [ref=e1284]:
+                        - strong [ref=e1285]: Default value
+                  - rowgroup [ref=e1286]:
+                    - row "enabled Specifies whether to deploy an Nginx controller. Set to false if you do not want an Nginx controller deployed. Boolean true" [ref=e1287]:
+                      - cell "enabled" [ref=e1288]:
+                        - code [ref=e1289]: enabled
+                      - cell "Specifies whether to deploy an Nginx controller. Set to false if you do not want an Nginx controller deployed." [ref=e1290]:
+                        - text: Specifies whether to deploy an Nginx controller. Set to
+                        - code [ref=e1291]: "false"
+                        - text: if you do not want an Nginx controller deployed.
+                      - cell "Boolean" [ref=e1292]
+                      - cell "true" [ref=e1293]:
+                        - code [ref=e1294]: "true"
+                    - row "ingress.internal Specifies whether to deploy a load balancer or use the host network. Boolean false" [ref=e1295]:
+                      - cell "ingress.internal" [ref=e1296]:
+                        - code [ref=e1297]: ingress.internal
+                      - cell "Specifies whether to deploy a load balancer or use the host network." [ref=e1298]
+                      - cell "Boolean" [ref=e1299]
+                      - cell "false" [ref=e1300]:
+                        - code [ref=e1301]: "false"
+                    - row "ingress.certificate Specify the base64-encoded x509 SSL certificate for the Nginx Ingress Controller. If left blank, the Nginx Ingress Controller will generate a self-signed certificate. String \"\"" [ref=e1302]:
+                      - cell "ingress.certificate" [ref=e1303]:
+                        - code [ref=e1304]: ingress.certificate
+                      - cell "Specify the base64-encoded x509 SSL certificate for the Nginx Ingress Controller. If left blank, the Nginx Ingress Controller will generate a self-signed certificate." [ref=e1305]
+                      - cell "String" [ref=e1306]
+                      - cell "\"\"" [ref=e1307]:
+                        - code [ref=e1308]: "\"\""
+                    - row "ingress.key Specify the base64-encoded x509 SSL certificate key for the Nginx Ingress Controller. String \"\"" [ref=e1309]:
+                      - cell "ingress.key" [ref=e1310]:
+                        - code [ref=e1311]: ingress.key
+                      - cell "Specify the base64-encoded x509 SSL certificate key for the Nginx Ingress Controller." [ref=e1312]
+                      - cell "String" [ref=e1313]
+                      - cell "\"\"" [ref=e1314]:
+                        - code [ref=e1315]: "\"\""
+                    - 'row "ingress.annotations A map of key-value pairs that specifies load balancer annotations for ingress. You can use annotations to change the behavior of the load balancer and the Nginx configuration. This is an advanced setting. We recommend you consult with your assigned support team representative prior to modification. Object {}" [ref=e1316]':
+                      - cell "ingress.annotations" [ref=e1317]:
+                        - code [ref=e1318]: ingress.annotations
+                      - cell "A map of key-value pairs that specifies load balancer annotations for ingress. You can use annotations to change the behavior of the load balancer and the Nginx configuration. This is an advanced setting. We recommend you consult with your assigned support team representative prior to modification." [ref=e1319]
+                      - cell "Object" [ref=e1320]
+                      - 'cell "{}" [ref=e1321]':
+                        - code [ref=e1322]: "{}"
+                    - row "ingress.ingressStaticIP Specify a static IP address for the ingress load balancer service. If empty, a dynamic IP address will be assigned to the load balancer. String \"\"" [ref=e1323]:
+                      - cell "ingress.ingressStaticIP" [ref=e1324]:
+                        - code [ref=e1325]: ingress.ingressStaticIP
+                      - cell "Specify a static IP address for the ingress load balancer service. If empty, a dynamic IP address will be assigned to the load balancer." [ref=e1326]
+                      - cell "String" [ref=e1327]
+                      - cell "\"\"" [ref=e1328]:
+                        - code [ref=e1329]: "\"\""
+                    - row "ingress.terminateHTTPSAtLoadBalancer Specifies whether to terminate HTTPS at the load balancer. Boolean false" [ref=e1330]:
+                      - cell "ingress.terminateHTTPSAtLoadBalancer" [ref=e1331]:
+                        - code [ref=e1332]: ingress.terminateHTTPSAtLoadBalancer
+                      - cell "Specifies whether to terminate HTTPS at the load balancer." [ref=e1333]
+                      - cell "Boolean" [ref=e1334]
+                      - cell "false" [ref=e1335]:
+                        - code [ref=e1336]: "false"
+                - generic [ref=e1338]:
+                  - code [ref=e1340]:
+                    - generic [ref=e1341]: "ingress:"
+                    - generic [ref=e1342]: "enabled: true"
+                    - generic [ref=e1343]: "ingress:"
+                    - generic [ref=e1344]: "internal: false"
+                    - generic [ref=e1345]: "certificate: \"\""
+                    - generic [ref=e1346]: "key: \"\""
+                    - generic [ref=e1347]: "annotations: {}"
+                    - generic [ref=e1348]: "ingressStaticIP: \"\""
+                    - generic [ref=e1349]: "terminateHTTPSAtLoadBalancer: false"
+                  - button "Copy code to clipboard" [ref=e1351] [cursor=pointer]:
+                    - generic [ref=e1352]:
+                      - img [ref=e1353]
+                      - img [ref=e1355]
+                - heading "Spectro ProxyDirect link to Spectro Proxy" [level=2] [ref=e1357]:
+                  - text: Spectro Proxy
+                  - link "Direct link to Spectro Proxy" [ref=e1358] [cursor=pointer]:
+                    - /url: "#spectro-proxy"
+                    - text: "#"
+                - paragraph [ref=e1359]:
+                  - text: You can specify a reverse proxy server that clusters deployed through Palette VerteX can use to facilitate network connectivity to the cluster's Kubernetes API server. Host clusters deployed in private networks can use the
+                  - link "Spectro Proxy" [ref=e1360] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=spectro-proxy
+                  - text: pack to expose the cluster's Kubernetes API to downstream clients that are not in the same network. Check out the
+                  - link "Reverse Proxy" [ref=e1361] [cursor=pointer]:
+                    - /url: /vertex/system-management/reverse-proxy/
+                  - text: documentation to learn more about setting up a reverse proxy server for Palette VerteX.
+                - table [ref=e1362]:
+                  - rowgroup [ref=e1363]:
+                    - row "Parameters Description Type Default value" [ref=e1364]:
+                      - cell "Parameters" [ref=e1365]:
+                        - strong [ref=e1366]: Parameters
+                      - cell "Description" [ref=e1367]:
+                        - strong [ref=e1368]: Description
+                      - cell "Type" [ref=e1369]:
+                        - strong [ref=e1370]: Type
+                      - cell "Default value" [ref=e1371]:
+                        - strong [ref=e1372]: Default value
+                  - rowgroup [ref=e1373]:
+                    - row "frps.enabled Specifies whether to enable the Spectro server-side proxy. Boolean false" [ref=e1374]:
+                      - cell "frps.enabled" [ref=e1375]:
+                        - code [ref=e1376]: frps.enabled
+                      - cell "Specifies whether to enable the Spectro server-side proxy." [ref=e1377]
+                      - cell "Boolean" [ref=e1378]
+                      - cell "false" [ref=e1379]:
+                        - code [ref=e1380]: "false"
+                    - row "frps.frpHostURL The Spectro server-side proxy URL. String \"\"" [ref=e1381]:
+                      - cell "frps.frpHostURL" [ref=e1382]:
+                        - code [ref=e1383]: frps.frpHostURL
+                      - cell "The Spectro server-side proxy URL." [ref=e1384]
+                      - cell "String" [ref=e1385]
+                      - cell "\"\"" [ref=e1386]:
+                        - code [ref=e1387]: "\"\""
+                    - row "frps.server.crt The base64-encoded server certificate for the Spectro server-side proxy. String \"\"" [ref=e1388]:
+                      - cell "frps.server.crt" [ref=e1389]:
+                        - code [ref=e1390]: frps.server.crt
+                      - cell "The base64-encoded server certificate for the Spectro server-side proxy." [ref=e1391]
+                      - cell "String" [ref=e1392]
+                      - cell "\"\"" [ref=e1393]:
+                        - code [ref=e1394]: "\"\""
+                    - row "frps.server.key The base64-encoded server key for the Spectro server-side proxy. String \"\"" [ref=e1395]:
+                      - cell "frps.server.key" [ref=e1396]:
+                        - code [ref=e1397]: frps.server.key
+                      - cell "The base64-encoded server key for the Spectro server-side proxy." [ref=e1398]
+                      - cell "String" [ref=e1399]
+                      - cell "\"\"" [ref=e1400]:
+                        - code [ref=e1401]: "\"\""
+                    - row "frps.ca.crt The base64-encoded certificate authority (CA) certificate for the Spectro server-side proxy. String \"\"" [ref=e1402]:
+                      - cell "frps.ca.crt" [ref=e1403]:
+                        - code [ref=e1404]: frps.ca.crt
+                      - cell "The base64-encoded certificate authority (CA) certificate for the Spectro server-side proxy." [ref=e1405]
+                      - cell "String" [ref=e1406]
+                      - cell "\"\"" [ref=e1407]:
+                        - code [ref=e1408]: "\"\""
+                - generic [ref=e1410]:
+                  - code [ref=e1412]:
+                    - generic [ref=e1413]: "frps:"
+                    - generic [ref=e1414]: "frps:"
+                    - generic [ref=e1415]: "enabled: false"
+                    - generic [ref=e1416]: "frpHostURL: \"\""
+                    - generic [ref=e1417]: "server:"
+                    - generic [ref=e1418]: "crt: \"\""
+                    - generic [ref=e1419]: "key: \"\""
+                    - generic [ref=e1420]: "ca:"
+                    - generic [ref=e1421]: "crt: \"\""
+                  - button "Copy code to clipboard" [ref=e1423] [cursor=pointer]:
+                    - generic [ref=e1424]:
+                      - img [ref=e1425]
+                      - img [ref=e1427]
+                - heading "UI SystemDirect link to UI System" [level=2] [ref=e1429]:
+                  - text: UI System
+                  - link "Direct link to UI System" [ref=e1430] [cursor=pointer]:
+                    - /url: "#ui-system"
+                    - text: "#"
+                - paragraph [ref=e1431]:
+                  - text: The table lists parameters to configure the Palette VerteX User Interface (UI) behavior. You can disable the UI or the Network Operations Center (NOC) UI. You can also specify the MapBox access token and style layer ID for the NOC UI. MapBox is a third-party service that provides mapping and location services. To learn more about MapBox and how to obtain an access token, refer to the
+                  - link "MapBox Access tokens" [ref=e1432] [cursor=pointer]:
+                    - /url: https://docs.mapbox.com/help/getting-started/access-tokens
+                  - text: guide.
+                - table [ref=e1433]:
+                  - rowgroup [ref=e1434]:
+                    - row "Parameters Description Type Default value" [ref=e1435]:
+                      - cell "Parameters" [ref=e1436]:
+                        - strong [ref=e1437]: Parameters
+                      - cell "Description" [ref=e1438]:
+                        - strong [ref=e1439]: Description
+                      - cell "Type" [ref=e1440]:
+                        - strong [ref=e1441]: Type
+                      - cell "Default value" [ref=e1442]:
+                        - strong [ref=e1443]: Default value
+                  - rowgroup [ref=e1444]:
+                    - row "enabled Specifies whether to enable the Palette VerteX UI. Boolean true" [ref=e1445]:
+                      - cell "enabled" [ref=e1446]:
+                        - code [ref=e1447]: enabled
+                      - cell "Specifies whether to enable the Palette VerteX UI." [ref=e1448]
+                      - cell "Boolean" [ref=e1449]
+                      - cell "true" [ref=e1450]:
+                        - code [ref=e1451]: "true"
+                    - row "ui.nocUI.enable Specifies whether to enable the Palette VerteX Network Operations Center (NOC) UI. Enabling this parameter requires the ui.nocUI.mapBoxAccessToken. Once enabled, all cluster locations will be reported to MapBox. This feature is not FIPS compliant. Boolean false" [ref=e1452]:
+                      - cell "ui.nocUI.enable" [ref=e1453]:
+                        - code [ref=e1454]: ui.nocUI.enable
+                      - cell "Specifies whether to enable the Palette VerteX Network Operations Center (NOC) UI. Enabling this parameter requires the ui.nocUI.mapBoxAccessToken. Once enabled, all cluster locations will be reported to MapBox. This feature is not FIPS compliant." [ref=e1455]:
+                        - text: Specifies whether to enable the Palette VerteX Network Operations Center (NOC) UI. Enabling this parameter requires the
+                        - code [ref=e1456]: ui.nocUI.mapBoxAccessToken
+                        - text: . Once enabled, all cluster locations will be reported to MapBox. This feature is not FIPS compliant.
+                      - cell "Boolean" [ref=e1457]
+                      - cell "false" [ref=e1458]:
+                        - code [ref=e1459]: "false"
+                    - row "ui.nocUI.mapBoxAccessToken The MapBox access token for the Palette VerteX NOC UI. String \"\"" [ref=e1460]:
+                      - cell "ui.nocUI.mapBoxAccessToken" [ref=e1461]:
+                        - code [ref=e1462]: ui.nocUI.mapBoxAccessToken
+                      - cell "The MapBox access token for the Palette VerteX NOC UI." [ref=e1463]
+                      - cell "String" [ref=e1464]
+                      - cell "\"\"" [ref=e1465]:
+                        - code [ref=e1466]: "\"\""
+                    - row "ui.nocUI.mapBoxStyledLayerID The MapBox style layer ID for the Palette VerteX NOC UI. String \"\"" [ref=e1467]:
+                      - cell "ui.nocUI.mapBoxStyledLayerID" [ref=e1468]:
+                        - code [ref=e1469]: ui.nocUI.mapBoxStyledLayerID
+                      - cell "The MapBox style layer ID for the Palette VerteX NOC UI." [ref=e1470]
+                      - cell "String" [ref=e1471]
+                      - cell "\"\"" [ref=e1472]:
+                        - code [ref=e1473]: "\"\""
+                - generic [ref=e1475]:
+                  - code [ref=e1477]:
+                    - generic [ref=e1478]: "ui-system:"
+                    - generic [ref=e1479]: "enabled: true"
+                    - generic [ref=e1480]: "ui:"
+                    - generic [ref=e1481]: "nocUI:"
+                    - generic [ref=e1482]: "enable: false"
+                    - generic [ref=e1483]: "mapBoxAccessToken: \"\""
+                    - generic [ref=e1484]: "mapBoxStyledLayerID: \"\""
+                  - button "Copy code to clipboard" [ref=e1486] [cursor=pointer]:
+                    - generic [ref=e1487]:
+                      - img [ref=e1488]
+                      - img [ref=e1490]
+                - heading "Reach SystemDirect link to Reach System" [level=2] [ref=e1492]:
+                  - text: Reach System
+                  - link "Direct link to Reach System" [ref=e1493] [cursor=pointer]:
+                    - /url: "#reach-system"
+                    - text: "#"
+                - paragraph [ref=e1494]:
+                  - text: You can configure VerteX to use a proxy server to access the internet. Set the parameter
+                  - code [ref=e1495]: reach-system.enabled
+                  - text: to
+                  - code [ref=e1496]: "true"
+                  - text: to enable the proxy server. Proxy settings are configured in the
+                  - code [ref=e1497]: reach-system.proxySettings
+                  - text: section.
+                - table [ref=e1498]:
+                  - rowgroup [ref=e1499]:
+                    - row "Parameters Description Type Default value" [ref=e1500]:
+                      - cell "Parameters" [ref=e1501]:
+                        - strong [ref=e1502]: Parameters
+                      - cell "Description" [ref=e1503]:
+                        - strong [ref=e1504]: Description
+                      - cell "Type" [ref=e1505]:
+                        - strong [ref=e1506]: Type
+                      - cell "Default value" [ref=e1507]:
+                        - strong [ref=e1508]: Default value
+                  - rowgroup [ref=e1509]:
+                    - row "reachSystem.enabled Specifies whether to enable the usage of a proxy server for Palette. Boolean false" [ref=e1510]:
+                      - cell "reachSystem.enabled" [ref=e1511]:
+                        - code [ref=e1512]: reachSystem.enabled
+                      - cell "Specifies whether to enable the usage of a proxy server for Palette." [ref=e1513]
+                      - cell "Boolean" [ref=e1514]
+                      - cell "false" [ref=e1515]:
+                        - code [ref=e1516]: "false"
+                    - row "reachSystem.proxySettings.http_proxy The HTTP proxy server URL. String \"\"" [ref=e1517]:
+                      - cell "reachSystem.proxySettings.http_proxy" [ref=e1518]:
+                        - code [ref=e1519]: reachSystem.proxySettings.http_proxy
+                      - cell "The HTTP proxy server URL." [ref=e1520]
+                      - cell "String" [ref=e1521]
+                      - cell "\"\"" [ref=e1522]:
+                        - code [ref=e1523]: "\"\""
+                    - row "reachSystem.proxySettings.https_proxy The HTTPS proxy server URL. String \"\"" [ref=e1524]:
+                      - cell "reachSystem.proxySettings.https_proxy" [ref=e1525]:
+                        - code [ref=e1526]: reachSystem.proxySettings.https_proxy
+                      - cell "The HTTPS proxy server URL." [ref=e1527]
+                      - cell "String" [ref=e1528]
+                      - cell "\"\"" [ref=e1529]:
+                        - code [ref=e1530]: "\"\""
+                    - row "reachSystem.proxySettings.no_proxy A list of hostnames or IP addresses that should not be go through the proxy server. String \"\"" [ref=e1531]:
+                      - cell "reachSystem.proxySettings.no_proxy" [ref=e1532]:
+                        - code [ref=e1533]: reachSystem.proxySettings.no_proxy
+                      - cell "A list of hostnames or IP addresses that should not be go through the proxy server." [ref=e1534]
+                      - cell "String" [ref=e1535]
+                      - cell "\"\"" [ref=e1536]:
+                        - code [ref=e1537]: "\"\""
+                    - row "reachSystem.proxySettings.ca_crt_path The base64-encoded certificate authority (CA) of the proxy server. String \"\"" [ref=e1538]:
+                      - cell "reachSystem.proxySettings.ca_crt_path" [ref=e1539]:
+                        - code [ref=e1540]: reachSystem.proxySettings.ca_crt_path
+                      - cell "The base64-encoded certificate authority (CA) of the proxy server." [ref=e1541]
+                      - cell "String" [ref=e1542]
+                      - cell "\"\"" [ref=e1543]:
+                        - code [ref=e1544]: "\"\""
+                    - row "reachSystem.scheduleOnControlPlane Specifies whether to schedule the reach system on the control plane. Boolean true" [ref=e1545]:
+                      - cell "reachSystem.scheduleOnControlPlane" [ref=e1546]:
+                        - code [ref=e1547]: reachSystem.scheduleOnControlPlane
+                      - cell "Specifies whether to schedule the reach system on the control plane." [ref=e1548]
+                      - cell "Boolean" [ref=e1549]
+                      - cell "true" [ref=e1550]:
+                        - code [ref=e1551]: "true"
+                - generic [ref=e1553]:
+                  - code [ref=e1555]:
+                    - generic [ref=e1556]: "reach-system:"
+                    - generic [ref=e1557]: "enabled: false"
+                    - generic [ref=e1558]: "proxySettings:"
+                    - generic [ref=e1559]: "http_proxy: \"\""
+                    - generic [ref=e1560]: "https_proxy: \"\""
+                    - generic [ref=e1561]: "no_proxy:"
+                    - generic [ref=e1562]: "ca_crt_path: \"\""
+                    - generic [ref=e1563]: "scheduleOnControlPlane: true"
+                  - button "Copy code to clipboard" [ref=e1565] [cursor=pointer]:
+                    - generic [ref=e1566]:
+                      - img [ref=e1567]
+                      - img [ref=e1569]
+                - generic [ref=e1571]:
+                  - generic [ref=e1572]:
+                    - img [ref=e1574]
+                    - text: info
+                  - paragraph [ref=e1577]:
+                    - text: Due to node affinity configurations, you must set
+                    - code [ref=e1578]: "scheduleOnControlPlane: false"
+                    - text: for managed clusters deployed to
+                    - link "Azure AKS" [ref=e1579] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/azure/aks/
+                    - text: ","
+                    - link "AWS EKS" [ref=e1580] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/aws/eks/
+                    - text: ", and"
+                    - link "GCP GKE" [ref=e1581] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/gcp/create-gcp-gke-cluster/
+                    - text: .
+              - generic [ref=e1582]:
+                - generic [ref=e1584]:
+                  - text: "Tags:"
+                  - list [ref=e1585]:
+                    - listitem [ref=e1586]:
+                      - link "vertex" [ref=e1587] [cursor=pointer]:
+                        - /url: /tags/vertex/
+                    - listitem [ref=e1588]:
+                      - link "helm" [ref=e1589] [cursor=pointer]:
+                        - /url: /tags/helm/
+                - link "Edit this page" [ref=e1592] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref.md
+                  - img [ref=e1593]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e1597]:
+              - link "Previous « Install VerteX" [ref=e1598] [cursor=pointer]:
+                - /url: /vertex/install-palette-vertex/install-on-kubernetes/airgap-install/install/
+                - generic [ref=e1599]: Previous
+                - generic [ref=e1600]: « Install VerteX
+              - link "Next Uninstallation »" [ref=e1601] [cursor=pointer]:
+                - /url: /vertex/install-palette-vertex/install-on-kubernetes/uninstall/
+                - generic [ref=e1602]: Next
+                - generic [ref=e1603]: Uninstallation »
+          - list [ref=e1606]:
+            - listitem [ref=e1607]:
+              - link "Required Parameters" [ref=e1608] [cursor=pointer]:
+                - /url: "#required-parameters"
+            - listitem [ref=e1609]:
+              - link "Global" [ref=e1610] [cursor=pointer]:
+                - /url: "#global"
+              - list [ref=e1611]:
+                - listitem [ref=e1612]:
+                  - link "Image Pull Secret" [ref=e1613] [cursor=pointer]:
+                    - /url: "#image-pull-secret"
+            - listitem [ref=e1614]:
+              - link "MongoDB" [ref=e1615] [cursor=pointer]:
+                - /url: "#mongodb"
+            - listitem [ref=e1616]:
+              - link "Config" [ref=e1617] [cursor=pointer]:
+                - /url: "#config"
+              - list [ref=e1618]:
+                - listitem [ref=e1619]:
+                  - link "Install Mode" [ref=e1620] [cursor=pointer]:
+                    - /url: "#install-mode"
+                - listitem [ref=e1621]:
+                  - link "SSO" [ref=e1622] [cursor=pointer]:
+                    - /url: "#sso"
+                - listitem [ref=e1623]:
+                  - link "Email" [ref=e1624] [cursor=pointer]:
+                    - /url: "#email"
+                - listitem [ref=e1625]:
+                  - link "Environment" [ref=e1626] [cursor=pointer]:
+                    - /url: "#environment"
+                - listitem [ref=e1627]:
+                  - link "Cluster" [ref=e1628] [cursor=pointer]:
+                    - /url: "#cluster"
+            - listitem [ref=e1629]:
+              - link "Registries" [ref=e1630] [cursor=pointer]:
+                - /url: "#registries"
+              - list [ref=e1631]:
+                - listitem [ref=e1632]:
+                  - link "OCI Registry" [ref=e1633] [cursor=pointer]:
+                    - /url: "#oci-registry"
+                - listitem [ref=e1634]:
+                  - link "OCI ECR Registry" [ref=e1635] [cursor=pointer]:
+                    - /url: "#oci-ecr-registry"
+                - listitem [ref=e1636]:
+                  - link "OCI Image Registry" [ref=e1637] [cursor=pointer]:
+                    - /url: "#oci-image-registry"
+                - listitem [ref=e1638]:
+                  - link "Image Swap Configuration" [ref=e1639] [cursor=pointer]:
+                    - /url: "#image-swap-configuration"
+            - listitem [ref=e1640]:
+              - link "gRPC" [ref=e1641] [cursor=pointer]:
+                - /url: "#grpc"
+            - listitem [ref=e1642]:
+              - link "Ingress" [ref=e1643] [cursor=pointer]:
+                - /url: "#ingress"
+            - listitem [ref=e1644]:
+              - link "Spectro Proxy" [ref=e1645] [cursor=pointer]:
+                - /url: "#spectro-proxy"
+            - listitem [ref=e1646]:
+              - link "UI System" [ref=e1647] [cursor=pointer]:
+                - /url: "#ui-system"
+            - listitem [ref=e1648]:
+              - link "Reach System" [ref=e1649] [cursor=pointer]:
+                - /url: "#reach-system"
+  - button "Project Logo Ask AI" [ref=e1650] [cursor=pointer]:
+    - generic [ref=e1653]:
+      - img "Project Logo" [ref=e1654]
+      - paragraph [ref=e1655]: Ask AI
+```

@@ -1,0 +1,685 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Audit Logs" [ref=e165] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e167]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Self-Hosted Palette" [ref=e172] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e174]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Palette VerteX" [expanded] [ref=e179] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e181]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e183] [cursor=pointer]
+                - list [ref=e184]:
+                  - listitem [ref=e185]:
+                    - generic [ref=e186]:
+                      - link "FIPS" [ref=e187] [cursor=pointer]:
+                        - /url: /vertex/fips/
+                      - button "Toggle the collapsible sidebar category 'FIPS'" [ref=e188] [cursor=pointer]
+                  - listitem [ref=e189]:
+                    - generic [ref=e190]:
+                      - link "Installation" [ref=e191] [cursor=pointer]:
+                        - /url: /vertex/install-palette-vertex/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e192] [cursor=pointer]
+                  - listitem [ref=e193]:
+                    - link "Activate VerteX" [ref=e194] [cursor=pointer]:
+                      - /url: /vertex/activate-installation/
+                  - listitem [ref=e195]:
+                    - link "Supported Platforms" [ref=e196] [cursor=pointer]:
+                      - /url: /vertex/supported-platforms/
+                  - listitem [ref=e197]:
+                    - generic [ref=e198]:
+                      - link "System Management" [ref=e199] [cursor=pointer]:
+                        - /url: /vertex/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e200] [cursor=pointer]
+                  - listitem [ref=e201]:
+                    - generic [ref=e202]:
+                      - link "Upgrade" [expanded] [ref=e203] [cursor=pointer]:
+                        - /url: /vertex/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e204] [cursor=pointer]
+                    - list [ref=e205]:
+                      - listitem [ref=e206]:
+                        - link "Upgrade Notes" [ref=e207] [cursor=pointer]:
+                          - /url: /vertex/upgrade/upgrade-notes/
+                      - listitem [ref=e208]:
+                        - link "VMware" [ref=e210] [cursor=pointer]:
+                          - /url: "#"
+                      - listitem [ref=e211]:
+                        - link "VerteX Management Appliance" [ref=e212] [cursor=pointer]:
+                          - /url: /vertex/upgrade/vertex-management-appliance/
+                      - listitem [ref=e213]:
+                        - link "Kubernetes" [expanded] [ref=e215] [cursor=pointer]:
+                          - /url: "#"
+                        - list [ref=e216]:
+                          - listitem [ref=e217]:
+                            - link "Non-airgap" [ref=e218] [cursor=pointer]:
+                              - /url: /vertex/upgrade/upgrade-k8s/non-airgap/
+                          - listitem [ref=e219]:
+                            - link "Airgap" [ref=e220] [cursor=pointer]:
+                              - /url: /vertex/upgrade/upgrade-k8s/airgap/
+              - listitem [ref=e221]:
+                - generic [ref=e222]:
+                  - link "Tenant Administration" [ref=e223] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e225]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e227] [cursor=pointer]
+              - listitem [ref=e228]:
+                - generic [ref=e229]:
+                  - link "Automation" [ref=e230] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e232]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e234] [cursor=pointer]
+              - listitem [ref=e235]:
+                - generic [ref=e236]:
+                  - link "Troubleshooting" [ref=e237] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e239]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e241] [cursor=pointer]
+              - listitem [ref=e242]:
+                - link "Glossary" [ref=e243] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e245]
+                  - text: Glossary
+              - listitem [ref=e247]:
+                - generic [ref=e248]:
+                  - link "Compliance & Legal" [ref=e249] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e251]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e253] [cursor=pointer]
+              - listitem [ref=e254]:
+                - button "Privacy Settings" [ref=e255] [cursor=pointer]:
+                  - img [ref=e256]
+                  - text: Privacy Settings
+      - main [ref=e258]:
+        - generic [ref=e260]:
+          - generic [ref=e262]:
+            - article [ref=e263]:
+              - navigation "Breadcrumbs" [ref=e264]:
+                - list [ref=e265]:
+                  - listitem [ref=e266]:
+                    - link "Home page" [ref=e267] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e268]
+                  - listitem [ref=e270]:
+                    - link "Palette VerteX" [ref=e271] [cursor=pointer]:
+                      - /url: /vertex/
+                  - listitem [ref=e272]:
+                    - link "Upgrade" [ref=e273] [cursor=pointer]:
+                      - /url: /vertex/upgrade/
+                  - listitem [ref=e274]:
+                    - generic [ref=e275]: Kubernetes
+                  - listitem [ref=e276]:
+                    - generic [ref=e277]: Non-airgap
+              - generic [ref=e278]:
+                - heading "Upgrade Palette VerteX Installed with Kubernetes" [level=1] [ref=e280]
+                - paragraph [ref=e281]: This guide takes you through the process of upgrading a self-hosted Palette VerteX instance installed with Helm on Kubernetes.
+                - generic [ref=e282]:
+                  - generic [ref=e283]:
+                    - img [ref=e285]
+                    - text: warning
+                  - paragraph [ref=e288]:
+                    - text: Before upgrading Palette VerteX to a new major version, you must first update it to the latest patch version of the latest minor version available. Refer to the
+                    - link "Supported Upgrade Paths" [ref=e289] [cursor=pointer]:
+                      - /url: /vertex/upgrade/#supported-upgrade-paths
+                    - text: section for details.
+                - paragraph [ref=e290]:
+                  - text: If your setup includes a PCG, you must also
+                  - link "allow the PCG to upgrade automatically" [ref=e291] [cursor=pointer]:
+                    - /url: /clusters/pcg/manage-pcg/pcg-upgrade/
+                  - text: before each major or minor Palette VerteX upgrade.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e292]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e293] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e294]:
+                  - listitem [ref=e295]:
+                    - paragraph [ref=e296]:
+                      - link "kubectl" [ref=e297] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/tasks/tools/#kubectl
+                        - code [ref=e298]: kubectl
+                      - text: and
+                      - link "helm" [ref=e299] [cursor=pointer]:
+                        - /url: https://helm.sh/docs/intro/install/
+                        - code [ref=e300]: helm
+                      - text: available in your system.
+                  - listitem [ref=e301]:
+                    - paragraph [ref=e302]:
+                      - text: Access to the kubeconfig file of the target Kubernetes cluster. You must be able to interact with the cluster through
+                      - code [ref=e303]: kubectl
+                      - text: and have sufficient permissions to upgrade Palette VerteX. We recommend using a role with the cluster-admin permissions.
+                  - listitem [ref=e304]:
+                    - paragraph [ref=e305]:
+                      - code [ref=e306]: unzip
+                      - text: or a similar tool available in your system.
+                  - listitem [ref=e307]:
+                    - paragraph [ref=e308]:
+                      - text: Access to the latest Palette VerteX Helm Chart. Refer to
+                      - link "Access Palette VerteX" [ref=e309] [cursor=pointer]:
+                        - /url: /vertex/#access-palette-vertex
+                      - text: for more details.
+                - heading "UpgradeDirect link to Upgrade" [level=2] [ref=e310]:
+                  - text: Upgrade
+                  - link "Direct link to Upgrade" [ref=e311] [cursor=pointer]:
+                    - /url: "#upgrade"
+                    - text: "#"
+                - generic [ref=e312]:
+                  - generic [ref=e313]:
+                    - img [ref=e315]
+                    - text: info
+                  - paragraph [ref=e318]: Depending on your underlying infrastructure provider and Kubernetes distribution, you may need to modify these steps to match your environment.
+                - list [ref=e319]:
+                  - listitem [ref=e320]:
+                    - paragraph [ref=e321]:
+                      - text: Open a terminal session and navigate to the directory with the Palette VerteX installation zip file. Unzip the file to a
+                      - strong [ref=e322]: palette-install
+                      - text: directory.
+                    - generic [ref=e324]:
+                      - code [ref=e326]:
+                        - generic [ref=e327]: unzip release-*.zip -d palette-install
+                      - button "Copy code to clipboard" [ref=e329] [cursor=pointer]:
+                        - generic [ref=e330]:
+                          - img [ref=e331]
+                          - img [ref=e333]
+                  - listitem [ref=e335]:
+                    - paragraph [ref=e336]:
+                      - text: Navigate to the release directory inside
+                      - strong [ref=e337]: palette-install
+                      - text: .
+                    - generic [ref=e339]:
+                      - code [ref=e341]:
+                        - generic [ref=e342]: cd palette-install/charts/release-*
+                      - button "Copy code to clipboard" [ref=e344] [cursor=pointer]:
+                        - generic [ref=e345]:
+                          - img [ref=e346]
+                          - img [ref=e348]
+                  - listitem [ref=e350]:
+                    - paragraph [ref=e351]: Update the cert-manager chart using the following command.
+                    - generic [ref=e353]:
+                      - code [ref=e355]:
+                        - generic [ref=e356]: helm upgrade --values extras/cert-manager/values.yaml \
+                        - generic [ref=e357]: cert-manager extras/cert-manager/cert-manager-*.tgz --install
+                      - button "Copy code to clipboard" [ref=e359] [cursor=pointer]:
+                        - generic [ref=e360]:
+                          - img [ref=e361]
+                          - img [ref=e363]
+                    - paragraph [ref=e365]: You should receive an output similar to the following.
+                    - generic [ref=e367]:
+                      - code [ref=e369]:
+                        - generic [ref=e370]: Release "cert-manager" has been upgraded. Happy Helming!
+                        - generic [ref=e371]: "NAME: cert-manager"
+                        - generic [ref=e372]: "LAST DEPLOYED: Thu Feb 22 19:42:33 2024"
+                        - generic [ref=e373]: "NAMESPACE: default"
+                        - generic [ref=e374]: "STATUS: deployed"
+                        - generic [ref=e375]: "REVISION: 2"
+                        - generic [ref=e376]: "TEST SUITE: None"
+                      - button "Copy code to clipboard" [ref=e378] [cursor=pointer]:
+                        - generic [ref=e379]:
+                          - img [ref=e380]
+                          - img [ref=e382]
+                  - listitem [ref=e384]:
+                    - paragraph [ref=e385]:
+                      - text: Prepare the Palette VerteX configuration file
+                      - code [ref=e386]: values.yaml
+                      - text: . If you saved
+                      - code [ref=e387]: values.yaml
+                      - text: used during the Palette VerteX installation, you can reuse it for the upgrade. Alternatively, follow the
+                      - link "Kubernetes Installation Instructions" [ref=e388] [cursor=pointer]:
+                        - /url: /vertex/install-palette-vertex/install-on-kubernetes/install/
+                      - text: to populate your
+                      - code [ref=e389]: values.yaml
+                      - text: .
+                    - generic [ref=e390]:
+                      - generic [ref=e391]:
+                        - img [ref=e393]
+                        - text: warning
+                      - paragraph [ref=e396]:
+                        - text: Ensure that the
+                        - code [ref=e397]: values.yaml
+                        - text: file is ready before proceeding. If you're using a self-hosted OCI registry, make sure that the
+                        - code [ref=e398]: ociImageRegistry.mirrorRegistries
+                        - text: parameter in your
+                        - code [ref=e399]: values.yaml
+                        - text: includes the necessary mirror links.
+                  - listitem [ref=e400]:
+                    - paragraph [ref=e401]:
+                      - text: If you are using a self-hosted OCI registry, upgrade the image-swap chart with the following command. Point to the
+                      - code [ref=e402]: palette/values.yaml
+                      - text: file from step four.
+                    - generic [ref=e404]:
+                      - code [ref=e406]:
+                        - generic [ref=e407]: helm upgrade --values palette/values.yaml \
+                        - generic [ref=e408]: image-swap extras/image-swap/image-swap-*.tgz --install
+                      - button "Copy code to clipboard" [ref=e410] [cursor=pointer]:
+                        - generic [ref=e411]:
+                          - img [ref=e412]
+                          - img [ref=e414]
+                    - paragraph [ref=e416]: You should receive an output similar to the following.
+                    - generic [ref=e418]:
+                      - code [ref=e420]:
+                        - generic [ref=e421]: Release "image-swap" has been upgraded. Happy Helming!
+                        - generic [ref=e422]: "NAME: image-swap"
+                        - generic [ref=e423]: "LAST DEPLOYED: Thu Feb 22 19:44:13 2024"
+                        - generic [ref=e424]: "NAMESPACE: default"
+                        - generic [ref=e425]: "STATUS: deployed"
+                        - generic [ref=e426]: "REVISION: 2"
+                        - generic [ref=e427]: "TEST SUITE: None"
+                      - button "Copy code to clipboard" [ref=e429] [cursor=pointer]:
+                        - generic [ref=e430]:
+                          - img [ref=e431]
+                          - img [ref=e433]
+                  - listitem [ref=e435]:
+                    - paragraph [ref=e436]:
+                      - text: If you are upgrading a Palette VerteX instance in an environment that requires network proxy configuration, upgrade the reach-system chart with the following command. Point to the
+                      - code [ref=e437]: palette/values.yaml
+                      - text: file from step four.
+                    - generic [ref=e439]:
+                      - code [ref=e441]:
+                        - generic [ref=e442]: helm upgrade --values palette/values.yaml \
+                        - generic [ref=e443]: reach-system extras/reach-system/reach-system-\*.tgz --install
+                      - button "Copy code to clipboard" [ref=e445] [cursor=pointer]:
+                        - generic [ref=e446]:
+                          - img [ref=e447]
+                          - img [ref=e449]
+                    - paragraph [ref=e451]: You should receive an output similar to the following.
+                    - generic [ref=e453]:
+                      - code [ref=e455]:
+                        - generic [ref=e456]: Release "reach-system" has been upgraded. Happy Helming!
+                        - generic [ref=e457]: "NAME: reach-system"
+                        - generic [ref=e458]: "LAST DEPLOYED: Thu Feb 22 19:47:10 2024"
+                        - generic [ref=e459]: "NAMESPACE: default"
+                        - generic [ref=e460]: "STATUS: deployed"
+                        - generic [ref=e461]: "REVISION: 2"
+                        - generic [ref=e462]: "TEST SUITE: None"
+                      - button "Copy code to clipboard" [ref=e464] [cursor=pointer]:
+                        - generic [ref=e465]:
+                          - img [ref=e466]
+                          - img [ref=e468]
+                  - listitem [ref=e470]:
+                    - paragraph [ref=e471]: Upgrade Palette VerteX with the following command.
+                    - generic [ref=e473]:
+                      - code [ref=e475]:
+                        - generic [ref=e476]: helm upgrade --values palette/values.yaml \
+                        - generic [ref=e477]: hubble palette/spectro-mgmt-plane-\*.tgz --install
+                      - button "Copy code to clipboard" [ref=e479] [cursor=pointer]:
+                        - generic [ref=e480]:
+                          - img [ref=e481]
+                          - img [ref=e483]
+                    - paragraph [ref=e485]: You should receive an output similar to the following.
+                    - generic [ref=e487]:
+                      - code [ref=e489]:
+                        - generic [ref=e490]: Release "hubble" has been upgraded. Happy Helming!
+                        - generic [ref=e491]: "NAME: hubble"
+                        - generic [ref=e492]: "LAST DEPLOYED: Thu Feb 22 20:05:24 2024"
+                        - generic [ref=e493]: "NAMESPACE: default"
+                        - generic [ref=e494]: "STATUS: deployed"
+                        - generic [ref=e495]: "REVISION: 2"
+                        - generic [ref=e496]: "TEST SUITE: None"
+                      - button "Copy code to clipboard" [ref=e498] [cursor=pointer]:
+                        - generic [ref=e499]:
+                          - img [ref=e500]
+                          - img [ref=e502]
+                  - listitem [ref=e504]:
+                    - paragraph [ref=e505]: Use the following command to track the upgrade process.
+                    - generic [ref=e507]:
+                      - code [ref=e509]:
+                        - generic [ref=e510]: kubectl get pods --all-namespaces --watch
+                      - button "Copy code to clipboard" [ref=e512] [cursor=pointer]:
+                        - generic [ref=e513]:
+                          - img [ref=e514]
+                          - img [ref=e516]
+                    - generic [ref=e518]:
+                      - generic [ref=e519]:
+                        - img [ref=e521]
+                        - text: tip
+                      - paragraph [ref=e524]:
+                        - text: For a more user-friendly experience, consider using
+                        - link "K9s" [ref=e525] [cursor=pointer]:
+                          - /url: https://k9scli.io/
+                        - text: or a similar tool to track the upgrade.
+                    - paragraph [ref=e526]:
+                      - text: The upgrade usually takes up to five minutes. Palette VerteX is upgraded when the deployments in the namespaces
+                      - code [ref=e527]: cp-system
+                      - text: ","
+                      - code [ref=e528]: hubble-system
+                      - text: ","
+                      - code [ref=e529]: ingress-nginx
+                      - text: ","
+                      - code [ref=e530]: jet-system
+                      - text: ", and"
+                      - code [ref=e531]: ui-system
+                      - text: are in the
+                      - strong [ref=e532]: Ready
+                      - text: status.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e533]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e534] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e535]:
+                  - listitem [ref=e536]:
+                    - paragraph [ref=e537]: In your terminal, issue the following command.
+                    - generic [ref=e539]:
+                      - code [ref=e541]:
+                        - generic [ref=e542]: helm ls
+                      - button "Copy code to clipboard" [ref=e544] [cursor=pointer]:
+                        - generic [ref=e545]:
+                          - img [ref=e546]
+                          - img [ref=e548]
+                    - paragraph [ref=e550]:
+                      - text: You should receive an output with the version and other details of the currently deployed apps. Check the
+                      - code [ref=e551]: App Version
+                      - text: column of
+                      - code [ref=e552]: cert-manager
+                      - text: ","
+                      - code [ref=e553]: image-swap
+                      - text: ","
+                      - code [ref=e554]: reach-system
+                      - text: ", and"
+                      - code [ref=e555]: hubble
+                      - text: to verify that they have the expected versions.
+                    - generic [ref=e557]:
+                      - code [ref=e559]:
+                        - generic [ref=e560]: NAME NAMESPACE REVISION UPDATED STATUS CHART APP VERSION
+                        - generic [ref=e561]: cert-manager default 2 2024-02-22 19:42:33.776829 +0100 CET deployed cert-manager-1.11.0 1.11.0
+                        - generic [ref=e562]: image-swap default 2 2024-02-22 19:44:13.209592 +0100 CET deployed image-swap-v1.5.2-spectro-4.1.1 1.5.2
+                        - generic [ref=e563]: reach-system default 2 2024-02-22 19:47:10.558061 +0100 CET deployed reach-system-4.2.0 4.2.0
+                        - generic [ref=e564]: hubble default 2 2024-02-22 19:47:24.085305 +0100 CET deployed spectro-mgmt-plane-4.2.7 4.2.7
+                      - generic [ref=e565]:
+                        - button "Toggle word wrap" [ref=e566] [cursor=pointer]:
+                          - img [ref=e567]
+                        - button "Copy code to clipboard" [ref=e569] [cursor=pointer]:
+                          - generic [ref=e570]:
+                            - img [ref=e571]
+                            - img [ref=e573]
+                  - listitem [ref=e575]:
+                    - paragraph [ref=e576]: Issue the following command to verify that the Palette VerteX clusters work as expected.
+                    - generic [ref=e578]:
+                      - code [ref=e580]:
+                        - generic [ref=e581]: kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
+                        - generic [ref=e582]: "| grep -E '^(cp-system|hubble-system|ingress-nginx|jet-system|ui-system)\\s'"
+                      - generic [ref=e583]:
+                        - button "Toggle word wrap" [ref=e584] [cursor=pointer]:
+                          - img [ref=e585]
+                        - button "Copy code to clipboard" [ref=e587] [cursor=pointer]:
+                          - generic [ref=e588]:
+                            - img [ref=e589]
+                            - img [ref=e591]
+                    - paragraph [ref=e593]:
+                      - text: The command should return a list of deployments in the
+                      - code [ref=e594]: cp-system
+                      - text: ","
+                      - code [ref=e595]: hubble-system
+                      - text: ","
+                      - code [ref=e596]: ingress-nginx
+                      - text: ","
+                      - code [ref=e597]: jet-system
+                      - text: ", and"
+                      - code [ref=e598]: ui-system
+                      - text: namespaces. All deployments should have the status
+                      - code [ref=e599]: Running
+                      - text: .
+                    - generic [ref=e601]:
+                      - code [ref=e603]:
+                        - generic [ref=e604]: cp-system spectro-cp-ui-689984f88d-54wsw Running
+                        - generic [ref=e605]: hubble-system auth-85b748cbf4-6drkn Running
+                        - generic [ref=e606]: hubble-system auth-85b748cbf4-dwhw2 Running
+                        - generic [ref=e607]: hubble-system cloud-fb74b8558-lqjq5 Running
+                        - generic [ref=e608]: hubble-system cloud-fb74b8558-zkfp5 Running
+                        - generic [ref=e609]: hubble-system configserver-685fcc5b6d-t8f8h Running
+                        - generic [ref=e610]: hubble-system event-68568f54c7-jzx5t Running
+                        - generic [ref=e611]: hubble-system event-68568f54c7-w9rnh Running
+                        - generic [ref=e612]: hubble-system foreq-6b689f54fb-vxjts Running
+                        - generic [ref=e613]: hubble-system hashboard-897bc9884-pxpvn Running
+                        - generic [ref=e614]: hubble-system hashboard-897bc9884-rmn69 Running
+                        - generic [ref=e615]: hubble-system hutil-6d7c478c96-td8q4 Running
+                        - generic [ref=e616]: hubble-system hutil-6d7c478c96-zjhk4 Running
+                        - generic [ref=e617]: hubble-system mgmt-85dbf6bf9c-jbggc Running
+                        - generic [ref=e618]: hubble-system mongo-0 Running
+                        - generic [ref=e619]: hubble-system mongo-1 Running
+                        - generic [ref=e620]: hubble-system mongo-2 Running
+                        - generic [ref=e621]: hubble-system msgbroker-6c9b9fbf8b-mcsn5 Running
+                        - generic [ref=e622]: hubble-system oci-proxy-7789cf9bd8-qcjkl Running
+                        - generic [ref=e623]: hubble-system packsync-28205220-bmzcg Succeeded
+                        - generic [ref=e624]: hubble-system spectrocluster-6c57f5775d-dcm2q Running
+                        - generic [ref=e625]: hubble-system spectrocluster-6c57f5775d-gmdt2 Running
+                        - generic [ref=e626]: hubble-system spectrocluster-6c57f5775d-sxks5 Running
+                        - generic [ref=e627]: hubble-system system-686d77b947-8949z Running
+                        - generic [ref=e628]: hubble-system system-686d77b947-cgzx6 Running
+                        - generic [ref=e629]: hubble-system timeseries-7865bc9c56-5q87l Running
+                        - generic [ref=e630]: hubble-system timeseries-7865bc9c56-scncb Running
+                        - generic [ref=e631]: hubble-system timeseries-7865bc9c56-sxmgb Running
+                        - generic [ref=e632]: hubble-system user-5c9f6c6f4b-9dgqz Running
+                        - generic [ref=e633]: hubble-system user-5c9f6c6f4b-hxkj6 Running
+                        - generic [ref=e634]: ingress-nginx ingress-nginx-controller-2txsv Running
+                        - generic [ref=e635]: ingress-nginx ingress-nginx-controller-55pk2 Running
+                        - generic [ref=e636]: ingress-nginx ingress-nginx-controller-gmps9 Running
+                        - generic [ref=e637]: jet-system jet-6599b9856d-t9mr4 Running
+                        - generic [ref=e638]: ui-system spectro-ui-76ffdf67fb-rkgx8 Running
+                      - generic [ref=e639]:
+                        - button "Toggle word wrap" [ref=e640] [cursor=pointer]:
+                          - img [ref=e641]
+                        - button "Copy code to clipboard" [ref=e643] [cursor=pointer]:
+                          - generic [ref=e644]:
+                            - img [ref=e645]
+                            - img [ref=e647]
+              - generic [ref=e649]:
+                - generic [ref=e651]:
+                  - text: "Tags:"
+                  - list [ref=e652]:
+                    - listitem [ref=e653]:
+                      - link "vertex" [ref=e654] [cursor=pointer]:
+                        - /url: /tags/vertex/
+                    - listitem [ref=e655]:
+                      - link "self-hosted" [ref=e656] [cursor=pointer]:
+                        - /url: /tags/self-hosted/
+                    - listitem [ref=e657]:
+                      - link "non-airgap" [ref=e658] [cursor=pointer]:
+                        - /url: /tags/non-airgap/
+                    - listitem [ref=e659]:
+                      - link "kubernetes" [ref=e660] [cursor=pointer]:
+                        - /url: /tags/kubernetes/
+                    - listitem [ref=e661]:
+                      - link "management" [ref=e662] [cursor=pointer]:
+                        - /url: /tags/management/
+                    - listitem [ref=e663]:
+                      - link "upgrades" [ref=e664] [cursor=pointer]:
+                        - /url: /tags/upgrades/
+                - link "Edit this page" [ref=e667] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vertex/upgrade/upgrade-k8s/non-airgap.md
+                  - img [ref=e668]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e672]:
+              - link "Previous « VerteX Management Appliance" [ref=e673] [cursor=pointer]:
+                - /url: /vertex/upgrade/vertex-management-appliance/
+                - generic [ref=e674]: Previous
+                - generic [ref=e675]: « VerteX Management Appliance
+              - link "Next Airgap »" [ref=e676] [cursor=pointer]:
+                - /url: /vertex/upgrade/upgrade-k8s/airgap/
+                - generic [ref=e677]: Next
+                - generic [ref=e678]: Airgap »
+          - list [ref=e681]:
+            - listitem [ref=e682]:
+              - link "Prerequisites" [ref=e683] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e684]:
+              - link "Upgrade" [ref=e685] [cursor=pointer]:
+                - /url: "#upgrade"
+            - listitem [ref=e686]:
+              - link "Validate" [ref=e687] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e688] [cursor=pointer]:
+    - generic [ref=e691]:
+      - img "Project Logo" [ref=e692]
+      - paragraph [ref=e693]: Ask AI
+```

@@ -1,0 +1,422 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [expanded] [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+                - list [ref=e107]:
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Public Cloud Clusters" [ref=e110] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e112]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e114] [cursor=pointer]
+                  - listitem [ref=e115]:
+                    - generic [ref=e116]:
+                      - link "Data Center Clusters" [ref=e117] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e119]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e121] [cursor=pointer]
+                  - listitem [ref=e122]:
+                    - generic [ref=e123]:
+                      - link "Edge" [ref=e124] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e126]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e128] [cursor=pointer]
+                  - listitem [ref=e129]:
+                    - generic [ref=e130]:
+                      - link "Palette Virtual Clusters" [ref=e131] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e133]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e135] [cursor=pointer]
+                  - listitem [ref=e136]:
+                    - generic [ref=e137]:
+                      - link "Imported Clusters" [ref=e138] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e140]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e142] [cursor=pointer]
+                  - listitem [ref=e143]:
+                    - generic [ref=e144]:
+                      - link "Manage Clusters" [expanded] [ref=e145] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e147]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e149] [cursor=pointer]
+                    - list [ref=e150]:
+                      - listitem [ref=e151]:
+                        - generic [ref=e152]:
+                          - link "SSH" [expanded] [ref=e153] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/ssh/
+                          - button "Toggle the collapsible sidebar category 'SSH'" [ref=e154] [cursor=pointer]
+                        - list [ref=e155]:
+                          - listitem [ref=e156]:
+                            - link "SSH Keys" [ref=e157] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/ssh/ssh-keys/
+                          - listitem [ref=e158]:
+                            - link "SSH Usernames" [ref=e159] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/ssh/ssh-usernames/
+                      - listitem [ref=e160]:
+                        - link "Update a Cluster" [ref=e161] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-updates/
+                      - listitem [ref=e162]:
+                        - generic [ref=e163]:
+                          - link "Cluster Monitoring" [ref=e164] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/monitoring/
+                          - button "Toggle the collapsible sidebar category 'Cluster Monitoring'" [ref=e165] [cursor=pointer]
+                      - listitem [ref=e166]:
+                        - link "Cluster Health Alerts" [ref=e167] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/health-alerts/
+                      - listitem [ref=e168]:
+                        - generic [ref=e169]:
+                          - link "Backup and Restore" [ref=e170] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/backup-restore/
+                          - button "Toggle the collapsible sidebar category 'Backup and Restore'" [ref=e171] [cursor=pointer]
+                      - listitem [ref=e172]:
+                        - link "Renew Cluster PKI Certificates" [ref=e173] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/certificate-management/
+                      - listitem [ref=e174]:
+                        - link "Compliance Scan" [ref=e175] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/compliance-scan/
+                      - listitem [ref=e176]:
+                        - link "OS Patching" [ref=e177] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/os-patching/
+                      - listitem [ref=e178]:
+                        - link "Cost Visibility" [ref=e179] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cloud-cost/
+                      - listitem [ref=e180]:
+                        - link "Workload Visibility" [ref=e181] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/workloads/
+                      - listitem [ref=e182]:
+                        - link "Node Labels" [ref=e183] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-labels/
+                      - listitem [ref=e184]:
+                        - link "Taints and Tolerations" [ref=e185] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/taints/
+                      - listitem [ref=e186]:
+                        - link "RBAC and Namespace Support" [ref=e187] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-rbac/
+                      - listitem [ref=e188]:
+                        - link "Namespace Management" [ref=e189] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/namespace-management/
+                      - listitem [ref=e190]:
+                        - link "Palette Macros" [ref=e191] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/macros/
+                      - listitem [ref=e192]:
+                        - link "Pack Monitoring" [ref=e193] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/pack-monitoring/
+                      - listitem [ref=e194]:
+                        - link "Kubeconfig" [ref=e195] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/kubeconfig/
+                      - listitem [ref=e196]:
+                        - link "Kubectl" [ref=e197] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/palette-webctl/
+                      - listitem [ref=e198]:
+                        - generic [ref=e199]:
+                          - link "Platform Settings" [ref=e200] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/platform-settings/
+                          - button "Toggle the collapsible sidebar category 'Platform Settings'" [ref=e201] [cursor=pointer]
+                      - listitem [ref=e202]:
+                        - link "Map and Filter Clusters" [ref=e203] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-map-filters/
+                      - listitem [ref=e204]:
+                        - link "Node Pools" [ref=e205] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-pool/
+                      - listitem [ref=e206]:
+                        - link "Configure Applications to Use Proxy Server" [ref=e207] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-proxy/
+                      - listitem [ref=e208]:
+                        - link "Spectro Kubernetes Dashboard" [ref=e209] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/spectro-kubernetes-dashboard/
+                      - listitem [ref=e210]:
+                        - link "Cluster Removal" [ref=e211] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/remove-clusters/
+                      - listitem [ref=e212]:
+                        - link "Image Swap" [ref=e213] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/image-swap/
+                      - listitem [ref=e214]:
+                        - link "Maintenance Mode" [ref=e215] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/maintenance-mode/
+                  - listitem [ref=e216]:
+                    - generic [ref=e217]:
+                      - link "Cluster Groups" [ref=e218] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e220]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e222] [cursor=pointer]
+                  - listitem [ref=e223]:
+                    - generic [ref=e224]:
+                      - link "Private Cloud Gateway" [ref=e225] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e227]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e229] [cursor=pointer]
+              - listitem [ref=e230]:
+                - generic [ref=e231]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e232] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e234]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e236] [cursor=pointer]
+              - listitem [ref=e237]:
+                - generic [ref=e238]:
+                  - link "Palette Dev Engine" [ref=e239] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e241]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e243] [cursor=pointer]
+              - listitem [ref=e244]:
+                - generic [ref=e245]:
+                  - link "Virtual Machine Orchestrator" [ref=e246] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e248]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e250] [cursor=pointer]
+              - listitem [ref=e251]:
+                - generic [ref=e252]:
+                  - link "Workspaces" [ref=e253] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e255]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e257] [cursor=pointer]
+              - listitem [ref=e258]:
+                - generic [ref=e259]:
+                  - link "Packs List" [ref=e260] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e262]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e264] [cursor=pointer]
+              - listitem [ref=e265]:
+                - generic [ref=e266]:
+                  - link "User & Role Management" [ref=e267] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e269]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e271] [cursor=pointer]
+              - listitem [ref=e272]:
+                - generic [ref=e273]:
+                  - link "Registries and Packs" [ref=e274] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e276]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e278] [cursor=pointer]
+              - listitem [ref=e279]:
+                - generic [ref=e280]:
+                  - link "Security" [ref=e281] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e283]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e285] [cursor=pointer]
+              - listitem [ref=e286]:
+                - generic [ref=e287]:
+                  - link "Audit Logs" [ref=e288] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e290]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e292] [cursor=pointer]
+              - listitem [ref=e293]:
+                - generic [ref=e294]:
+                  - link "Self-Hosted Palette" [ref=e295] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e297]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e299] [cursor=pointer]
+              - listitem [ref=e300]:
+                - generic [ref=e301]:
+                  - link "Palette VerteX" [ref=e302] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e304]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e306] [cursor=pointer]
+              - listitem [ref=e307]:
+                - generic [ref=e308]:
+                  - link "Tenant Administration" [ref=e309] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e311]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e313] [cursor=pointer]
+              - listitem [ref=e314]:
+                - generic [ref=e315]:
+                  - link "Automation" [ref=e316] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e318]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e320] [cursor=pointer]
+              - listitem [ref=e321]:
+                - generic [ref=e322]:
+                  - link "Troubleshooting" [ref=e323] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e325]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e327] [cursor=pointer]
+              - listitem [ref=e328]:
+                - link "Glossary" [ref=e329] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e331]
+                  - text: Glossary
+              - listitem [ref=e333]:
+                - generic [ref=e334]:
+                  - link "Compliance & Legal" [ref=e335] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e337]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e339] [cursor=pointer]
+              - listitem [ref=e340]:
+                - button "Privacy Settings" [ref=e341] [cursor=pointer]:
+                  - img [ref=e342]
+                  - text: Privacy Settings
+      - main [ref=e344]:
+        - generic [ref=e346]:
+          - generic [ref=e348]:
+            - article [ref=e349]:
+              - navigation "Breadcrumbs" [ref=e350]:
+                - list [ref=e351]:
+                  - listitem [ref=e352]:
+                    - link "Home page" [ref=e353] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e354]
+                  - listitem [ref=e356]:
+                    - link "Clusters" [ref=e357] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e358]:
+                    - link "Manage Clusters" [ref=e359] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/
+                  - listitem [ref=e360]:
+                    - generic [ref=e361]: SSH
+              - generic [ref=e362]:
+                - heading "SSH" [level=1] [ref=e364]
+                - paragraph [ref=e365]: Palette supports SSH (Secure Shell) to establish, administer, and communicate with remote clusters.
+                - paragraph [ref=e366]: You can deploy SSH keys to your cluster nodes using Palette. The SSH username used for key deployment depends on your provider and operating system.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e367]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e368] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e369]:
+                  - listitem [ref=e370]:
+                    - link "SSH Keys" [ref=e371] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/ssh/ssh-keys/
+                  - listitem [ref=e372]:
+                    - link "SSH Usernames" [ref=e373] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/ssh/ssh-usernames/
+              - link "Edit this page" [ref=e377] [cursor=pointer]:
+                - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/cluster-management/ssh/ssh.md
+                - img [ref=e378]
+                - text: Edit this page
+            - navigation "Docs pages" [ref=e382]:
+              - link "Previous « Manage Clusters" [ref=e383] [cursor=pointer]:
+                - /url: /clusters/cluster-management/
+                - generic [ref=e384]: Previous
+                - generic [ref=e385]: « Manage Clusters
+              - link "Next SSH Keys »" [ref=e386] [cursor=pointer]:
+                - /url: /clusters/cluster-management/ssh/ssh-keys/
+                - generic [ref=e387]: Next
+                - generic [ref=e388]: SSH Keys »
+          - list [ref=e391]:
+            - listitem [ref=e392]:
+              - link "Resources" [ref=e393] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e394] [cursor=pointer]:
+    - generic [ref=e397]:
+      - img "Project Logo" [ref=e398]
+      - paragraph [ref=e399]: Ask AI
+```

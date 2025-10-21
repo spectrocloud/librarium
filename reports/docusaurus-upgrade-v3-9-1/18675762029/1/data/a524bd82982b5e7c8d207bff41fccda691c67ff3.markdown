@@ -1,0 +1,573 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [expanded] [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+                - list [ref=e107]:
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Public Cloud Clusters" [ref=e110] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e112]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e114] [cursor=pointer]
+                  - listitem [ref=e115]:
+                    - generic [ref=e116]:
+                      - link "Data Center Clusters" [ref=e117] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e119]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e121] [cursor=pointer]
+                  - listitem [ref=e122]:
+                    - generic [ref=e123]:
+                      - link "Edge" [ref=e124] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e126]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e128] [cursor=pointer]
+                  - listitem [ref=e129]:
+                    - generic [ref=e130]:
+                      - link "Palette Virtual Clusters" [ref=e131] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e133]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e135] [cursor=pointer]
+                  - listitem [ref=e136]:
+                    - generic [ref=e137]:
+                      - link "Imported Clusters" [ref=e138] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e140]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e142] [cursor=pointer]
+                  - listitem [ref=e143]:
+                    - generic [ref=e144]:
+                      - link "Manage Clusters" [ref=e145] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e147]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e149] [cursor=pointer]
+                  - listitem [ref=e150]:
+                    - generic [ref=e151]:
+                      - link "Cluster Groups" [ref=e152] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e154]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e156] [cursor=pointer]
+                  - listitem [ref=e157]:
+                    - generic [ref=e158]:
+                      - link "Private Cloud Gateway" [expanded] [ref=e159] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e161]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e163] [cursor=pointer]
+                    - list [ref=e164]:
+                      - listitem [ref=e165]:
+                        - link "Architecture" [ref=e166] [cursor=pointer]:
+                          - /url: /clusters/pcg/architecture/
+                      - listitem [ref=e167]:
+                        - generic [ref=e168]:
+                          - link "Deploy a PCG with Palette CLI" [ref=e169] [cursor=pointer]:
+                            - /url: /clusters/pcg/deploy-pcg/
+                          - button "Toggle the collapsible sidebar category 'Deploy a PCG with Palette CLI'" [ref=e170] [cursor=pointer]
+                      - listitem [ref=e171]:
+                        - link "Deploy a PCG to an Existing Kubernetes Cluster" [ref=e172] [cursor=pointer]:
+                          - /url: /clusters/pcg/deploy-pcg-k8s/
+                      - listitem [ref=e173]:
+                        - generic [ref=e174]:
+                          - link "Manage PCG" [expanded] [ref=e175] [cursor=pointer]:
+                            - /url: /clusters/pcg/manage-pcg/
+                          - button "Toggle the collapsible sidebar category 'Manage PCG'" [ref=e176] [cursor=pointer]
+                        - list [ref=e177]:
+                          - listitem [ref=e178]:
+                            - link "Create and Manage IPAM Node Pools" [ref=e179] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/create-manage-node-pool/
+                          - listitem [ref=e180]:
+                            - link "Enable and Manage Proxy Configurations" [ref=e181] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/configure-proxy/
+                          - listitem [ref=e182]:
+                            - link "Add DNS Mapping" [ref=e183] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/add-dns-mapping/
+                          - listitem [ref=e184]:
+                            - link "Increase PCG Node Count" [ref=e185] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/scale-pcg-nodes/
+                          - listitem [ref=e186]:
+                            - link "Delete a PCG" [ref=e187] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/remove-pcg/
+                          - listitem [ref=e188]:
+                            - link "Upgrade a PCG" [ref=e189] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/pcg-upgrade/
+                          - listitem [ref=e190]:
+                            - link "Migrate a PCG" [ref=e191] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/migrate_pcg/
+                          - listitem [ref=e192]:
+                            - link "Override Registry Configuration" [ref=e193] [cursor=pointer]:
+                              - /url: /clusters/pcg/manage-pcg/registry-override/
+              - listitem [ref=e194]:
+                - generic [ref=e195]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e196] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e198]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e200] [cursor=pointer]
+              - listitem [ref=e201]:
+                - generic [ref=e202]:
+                  - link "Palette Dev Engine" [ref=e203] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e205]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e207] [cursor=pointer]
+              - listitem [ref=e208]:
+                - generic [ref=e209]:
+                  - link "Virtual Machine Orchestrator" [ref=e210] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e212]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - generic [ref=e216]:
+                  - link "Workspaces" [ref=e217] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e219]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e221] [cursor=pointer]
+              - listitem [ref=e222]:
+                - generic [ref=e223]:
+                  - link "Packs List" [ref=e224] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e226]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e228] [cursor=pointer]
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "User & Role Management" [ref=e231] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e233]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - generic [ref=e237]:
+                  - link "Registries and Packs" [ref=e238] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e240]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - generic [ref=e244]:
+                  - link "Security" [ref=e245] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e247]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e249] [cursor=pointer]
+              - listitem [ref=e250]:
+                - generic [ref=e251]:
+                  - link "Audit Logs" [ref=e252] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e254]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e256] [cursor=pointer]
+              - listitem [ref=e257]:
+                - generic [ref=e258]:
+                  - link "Self-Hosted Palette" [ref=e259] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e261]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e263] [cursor=pointer]
+              - listitem [ref=e264]:
+                - generic [ref=e265]:
+                  - link "Palette VerteX" [ref=e266] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e268]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e270] [cursor=pointer]
+              - listitem [ref=e271]:
+                - generic [ref=e272]:
+                  - link "Tenant Administration" [ref=e273] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e275]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e277] [cursor=pointer]
+              - listitem [ref=e278]:
+                - generic [ref=e279]:
+                  - link "Automation" [ref=e280] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e282]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e284] [cursor=pointer]
+              - listitem [ref=e285]:
+                - generic [ref=e286]:
+                  - link "Troubleshooting" [ref=e287] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e289]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e291] [cursor=pointer]
+              - listitem [ref=e292]:
+                - link "Glossary" [ref=e293] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e295]
+                  - text: Glossary
+              - listitem [ref=e297]:
+                - generic [ref=e298]:
+                  - link "Compliance & Legal" [ref=e299] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e301]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e303] [cursor=pointer]
+              - listitem [ref=e304]:
+                - button "Privacy Settings" [ref=e305] [cursor=pointer]:
+                  - img [ref=e306]
+                  - text: Privacy Settings
+      - main [ref=e308]:
+        - generic [ref=e310]:
+          - generic [ref=e312]:
+            - article [ref=e313]:
+              - navigation "Breadcrumbs" [ref=e314]:
+                - list [ref=e315]:
+                  - listitem [ref=e316]:
+                    - link "Home page" [ref=e317] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e318]
+                  - listitem [ref=e320]:
+                    - link "Clusters" [ref=e321] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e322]:
+                    - link "Private Cloud Gateway" [ref=e323] [cursor=pointer]:
+                      - /url: /clusters/pcg/
+                  - listitem [ref=e324]:
+                    - link "Manage PCG" [ref=e325] [cursor=pointer]:
+                      - /url: /clusters/pcg/manage-pcg/
+                  - listitem [ref=e326]:
+                    - generic [ref=e327]: Migrate a PCG
+              - generic [ref=e328]:
+                - heading "Migrate a PCG" [level=1] [ref=e330]
+                - paragraph [ref=e331]:
+                  - text: Clusters deployed through a Private Cloud Gateway (PCG) maintain a reference point to the PCG that deployed them. This reference point is required for Palette to know which PCG to use when the cluster needs to be removed. A Cluster API pivot occurs between the PCG and the cluster during a cluster deployment and removal. In a cluster creation, the pivot occurs from the PCG to the cluster. In a cluster removal, the Cluster API pivot occurs from the cluster to the PCG. Check out the
+                  - link "Order of Operations" [ref=e332] [cursor=pointer]:
+                    - /url: /architecture/orchestration-spectrocloud/
+                  - text: page to learn more about the Cluster API pivot.
+                - paragraph [ref=e333]:
+                  - text: The cluster's PCG reference point is stored in the Palette management plane's internal database. You can retrieve a cluster's PCG reference point by using the Palette API endpoint
+                  - code [ref=e334]: GET /v1/spectroclusters/:uid
+                  - text: . The response payload's
+                  - code [ref=e335]: metadata.annotations.overlordUid
+                  - text: field contains the ID of the PCG that deployed the cluster.
+                - generic [ref=e337]:
+                  - code [ref=e339]:
+                    - generic [ref=e340]: "{"
+                    - generic [ref=e341]: "\"metadata\": {"
+                    - generic [ref=e342]: "\"annotations\": {"
+                    - generic [ref=e343]: "\"jetUid\": \"***********************\","
+                    - generic [ref=e344]: "\"overlordUid\": \"6732677ce46389af646d517a\","
+                    - generic [ref=e345]: "\"ownerUid\": \"***********************\","
+                    - generic [ref=e346]: "\"palette.spectrocloud.com/disablenodeautoremidiation\": \"false\","
+                    - generic [ref=e347]: "\"permissions\": \"cluster.create,cluster.delete,cluster.get,cluster.import,cluster.list,cluster.update,tag.update\","
+                    - generic [ref=e348]: "\"projectUid\": \"***********************\","
+                    - generic [ref=e349]: "\"rootDomain\": \"console.spectrocloud.com\","
+                    - generic [ref=e350]: "\"scope\": \"project\","
+                    - generic [ref=e351]: "\"scopeVisibility\": \"16\","
+                    - generic [ref=e352]: "\"spectroComponentsUpgradeForbidden\": \"true\","
+                    - generic [ref=e353]: "\"tenantUid\": \"***********************\""
+                    - generic [ref=e354]: "},"
+                  - button "Toggle word wrap" [ref=e356] [cursor=pointer]:
+                    - img [ref=e357]
+                - group [ref=e359]:
+                  - generic "How do I get my PCG overlordUid?" [ref=e360] [cursor=pointer]:
+                    - text: How do I get my PCG
+                    - code [ref=e361]: overlordUid
+                    - text: "?"
+                - heading "What is a PCG migration?Direct link to What is a PCG migration?" [level=2] [ref=e362]:
+                  - text: What is a PCG migration?
+                  - link "Direct link to What is a PCG migration?" [ref=e363] [cursor=pointer]:
+                    - /url: "#what-is-a-pcg-migration"
+                    - text: "#"
+                - paragraph [ref=e364]: "A PCG migration is an action that updates the PCG reference point mapping in Palette for clusters deployed by a specific PCG. All clusters deployed by the original PCG will be updated to reference a new PCG. This action is internal to the Palette management plane. The migration process is necessary when you want to remove the existing PCG. The ability to migrate a PCG is helpful in scenarios such as:"
+                - list [ref=e365]:
+                  - listitem [ref=e366]:
+                    - paragraph [ref=e367]: Decommissioning an existing PCG.
+                  - listitem [ref=e368]:
+                    - paragraph [ref=e369]: PCG upgrade errors.
+                - generic [ref=e370]:
+                  - generic [ref=e371]:
+                    - img [ref=e373]
+                    - text: warning
+                  - paragraph [ref=e376]: A PCG migration is an irreversible action. Once a PCG is migrated, the original PCG is no longer associated with the clusters that it deployed.
+                - paragraph [ref=e377]: Use the following steps to update the PCG reference point mapping to a different PCG.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e378]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e379] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e380]:
+                  - listitem [ref=e381]:
+                    - paragraph [ref=e382]: Tenant admin access to Palette.
+                  - listitem [ref=e383]:
+                    - paragraph [ref=e384]: At least two healthy PCGs with network connectivity to the Palette management plane.
+                  - listitem [ref=e385]:
+                    - paragraph [ref=e386]: The new PCG must target the same infrastructure provider as the existing PCG.
+                - heading "Migrate PCGDirect link to Migrate PCG" [level=2] [ref=e387]:
+                  - text: Migrate PCG
+                  - link "Direct link to Migrate PCG" [ref=e388] [cursor=pointer]:
+                    - /url: "#migrate-pcg"
+                    - text: "#"
+                - list [ref=e389]:
+                  - listitem [ref=e390]:
+                    - paragraph [ref=e391]:
+                      - text: Log in to
+                      - link "Palette" [ref=e392] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant administrator.
+                  - listitem [ref=e393]:
+                    - paragraph [ref=e394]:
+                      - text: Navigate to the left
+                      - strong [ref=e395]: Main Menu
+                      - text: and select
+                      - strong [ref=e396]: Tenant Settings
+                      - text: .
+                  - listitem [ref=e397]:
+                    - paragraph [ref=e398]:
+                      - text: Select
+                      - strong [ref=e399]: Private Cloud Gateways
+                      - text: from the
+                      - strong [ref=e400]: Tenant Settings Menu
+                      - text: .
+                  - listitem [ref=e401]:
+                    - paragraph [ref=e402]:
+                      - text: In the list of PCGs, identify the PCG that you want to migrate and click on the
+                      - strong [ref=e403]: three-dot Menu
+                      - text: at the end of the PCG row.
+                  - listitem [ref=e404]:
+                    - paragraph [ref=e405]:
+                      - text: Select
+                      - strong [ref=e406]: Migrate
+                      - text: from the
+                      - strong [ref=e407]: drop-down Menu
+                      - text: .
+                  - listitem [ref=e408]:
+                    - paragraph [ref=e409]:
+                      - text: In the
+                      - strong [ref=e410]: Migrate Cloud Gateway
+                      - text: dialog box, select the PCG from the
+                      - strong [ref=e411]: PCG
+                      - text: drop-down list that you want to migrate to.
+                  - listitem [ref=e412]:
+                    - paragraph [ref=e413]:
+                      - text: Click
+                      - strong [ref=e414]: Migrate
+                      - text: .
+                - paragraph [ref=e415]: We recommend you remove the cloud account created by the PCG that you migrated. This will prevent any future cluster deployments from using the cloud account associated with the migrated PCG. During a cluster deployment, if you accidentally select the cloud account mapped to the former PCG, Palette will automatically ensure the newly specified PCG is used as the PCG reference point instead of the former PCG that belongs to the cloud account selected.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e416]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e417] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e418]:
+                  - text: After the migration is complete, you can validate it by checking that a cluster deployed with the migrated PCG no longer references the old PCG. Use the Palette API endpoint
+                  - code [ref=e419]: GET /v1/spectroclusters/:uid
+                  - text: and verify the
+                  - code [ref=e420]: metadata.annotations.overlordUid
+                  - text: field to ensure that the cluster now references the new PCG.
+                - list [ref=e421]:
+                  - listitem [ref=e422]:
+                    - paragraph [ref=e423]:
+                      - text: Log in to
+                      - link "Palette" [ref=e424] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e425]:
+                    - paragraph [ref=e426]:
+                      - text: Navigate to the left
+                      - strong [ref=e427]: Main Menu
+                      - text: and click
+                      - strong [ref=e428]: Clusters
+                      - text: .
+                  - listitem [ref=e429]:
+                    - paragraph [ref=e430]:
+                      - text: Click on a cluster that was deployed by the PCG that you migrated. Take note of the cluster ID. You can find the ID in the URL of the browser. It is the last part of the URL, located after
+                      - code [ref=e431]: /clusters/
+                      - text: .
+                    - code [ref=e435]:
+                      - generic [ref=e436]: https://console.spectrocloud.com/clusters/11111111111111111111
+                  - listitem [ref=e437]:
+                    - paragraph [ref=e438]:
+                      - text: Retrieve a deployed cluster's
+                      - code [ref=e439]: overlordUid
+                      - text: using the Palette API endpoint
+                      - code [ref=e440]: GET /v1/spectroclusters/:uid
+                      - text: . You can use the
+                      - code [ref=e441]: curl
+                      - text: command below. Make sure you replace the
+                      - code [ref=e442]: :uid
+                      - text: path parameter with the cluster ID, and the
+                      - code [ref=e443]: apiKey
+                      - text: and
+                      - code [ref=e444]: ProjectUid
+                      - text: headers with your own values.
+                    - generic [ref=e446]:
+                      - code [ref=e448]:
+                        - generic [ref=e449]: curl --location 'https://api.spectrocloud.com/v1/spectroclusters/:uid' \
+                        - generic [ref=e450]: "--header 'ProjectUid: XXXXXXXXXXXX' \\"
+                        - generic [ref=e451]: "--header 'Accept: application/json' \\"
+                        - generic [ref=e452]: "--header 'apiKey: XXXXXXXXXXX'"
+                      - button "Toggle word wrap" [ref=e454] [cursor=pointer]:
+                        - img [ref=e455]
+                  - listitem [ref=e457]:
+                    - paragraph [ref=e458]:
+                      - text: Verify that the
+                      - code [ref=e459]: metadata.annotations.overlordUid
+                      - text: field in the response payload matches the new PCG
+                      - code [ref=e460]: overlordUid
+                      - text: . Refer to the intro section of this guide for guidance on how to get the
+                      - code [ref=e461]: overlordUid
+                      - text: of a PCG cluster.
+                    - generic [ref=e463]:
+                      - code [ref=e465]:
+                        - generic [ref=e466]: "{"
+                        - generic [ref=e467]: "\"metadata\": {"
+                        - generic [ref=e468]: "\"annotations\": {"
+                        - generic [ref=e469]: "\"jetUid\": \"*********************************\","
+                        - generic [ref=e470]: "\"overlordUid\": \"672fa7ad6e7f4d26fd91d81b\","
+                        - generic [ref=e471]: "\"ownerUid\": \"********************************\","
+                        - generic [ref=e472]: "\"palette.spectrocloud.com/disablenodeautoremidiation\": \"false\","
+                        - generic [ref=e473]: "\"permissions\": \"cluster.create,cluster.delete,cluster.get,cluster.import,cluster.list,cluster.update,tag.update\","
+                        - generic [ref=e474]: "\"projectUid\": \"**********************\","
+                        - generic [ref=e475]: "\"rootDomain\": \"console.spectrocloud.com\","
+                        - generic [ref=e476]: "\"scope\": \"project\","
+                        - generic [ref=e477]: "\"scopeVisibility\": \"16\","
+                        - generic [ref=e478]: "\"spectroComponentsUpgradeForbidden\": \"true\","
+                        - generic [ref=e479]: "\"tenantUid\": \"************************\""
+                        - generic [ref=e480]: "},"
+                      - button "Toggle word wrap" [ref=e482] [cursor=pointer]:
+                        - img [ref=e483]
+              - generic [ref=e485]:
+                - generic [ref=e487]:
+                  - text: "Tags:"
+                  - list [ref=e488]:
+                    - listitem [ref=e489]:
+                      - link "pcg" [ref=e490] [cursor=pointer]:
+                        - /url: /tags/pcg/
+                - link "Edit this page" [ref=e493] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/pcg/manage-pcg/migrate_pcg.md
+                  - img [ref=e494]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e498]:
+              - link "Previous « Upgrade a PCG" [ref=e499] [cursor=pointer]:
+                - /url: /clusters/pcg/manage-pcg/pcg-upgrade/
+                - generic [ref=e500]: Previous
+                - generic [ref=e501]: « Upgrade a PCG
+              - link "Next Override Registry Configuration »" [ref=e502] [cursor=pointer]:
+                - /url: /clusters/pcg/manage-pcg/registry-override/
+                - generic [ref=e503]: Next
+                - generic [ref=e504]: Override Registry Configuration »
+          - list [ref=e507]:
+            - listitem [ref=e508]:
+              - link "What is a PCG migration?" [ref=e509] [cursor=pointer]:
+                - /url: "#what-is-a-pcg-migration"
+            - listitem [ref=e510]:
+              - link "Prerequisites" [ref=e511] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e512]:
+              - link "Migrate PCG" [ref=e513] [cursor=pointer]:
+                - /url: "#migrate-pcg"
+            - listitem [ref=e514]:
+              - link "Validate" [ref=e515] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e516] [cursor=pointer]:
+    - generic [ref=e519]:
+      - img "Project Logo" [ref=e520]
+      - paragraph [ref=e521]: Ask AI
+```

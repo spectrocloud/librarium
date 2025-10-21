@@ -1,0 +1,796 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [expanded] [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+                - list [ref=e114]:
+                  - listitem [ref=e115]:
+                    - generic [ref=e116]:
+                      - link "Create Images with Image Builder" [expanded] [ref=e117] [cursor=pointer]:
+                        - /url: /byoos/image-builder/
+                      - button "Toggle the collapsible sidebar category 'Create Images with Image Builder'" [ref=e118] [cursor=pointer]
+                    - list [ref=e119]:
+                      - listitem [ref=e120]:
+                        - link "Build Image" [ref=e121] [cursor=pointer]:
+                          - /url: /byoos/image-builder/build-image/
+                      - listitem [ref=e122]:
+                        - generic [ref=e123]:
+                          - link "Build Image for VMware vSphere" [expanded] [ref=e124] [cursor=pointer]:
+                            - /url: /byoos/image-builder/build-image-vmware/
+                          - button "Toggle the collapsible sidebar category 'Build Image for VMware vSphere'" [ref=e125] [cursor=pointer]
+                        - list [ref=e126]:
+                          - listitem [ref=e127]:
+                            - link "RHEL and Konvoy" [ref=e128] [cursor=pointer]:
+                              - /url: /byoos/image-builder/build-image-vmware/konvoy/
+                          - listitem [ref=e129]:
+                            - link "RHEL and PXK" [ref=e130] [cursor=pointer]:
+                              - /url: /byoos/image-builder/build-image-vmware/rhel-pxk/
+                  - listitem [ref=e131]:
+                    - generic [ref=e132]:
+                      - link "CAPI Image Builder" [ref=e133] [cursor=pointer]:
+                        - /url: /byoos/capi-image-builder/
+                      - button "Toggle the collapsible sidebar category 'CAPI Image Builder'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Palette Dev Engine" [ref=e137] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e139]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "Virtual Machine Orchestrator" [ref=e144] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e146]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Workspaces" [ref=e151] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e153]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Packs List" [ref=e158] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e160]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "User & Role Management" [ref=e165] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e167]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Registries and Packs" [ref=e172] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e174]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Security" [ref=e179] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e181]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e183] [cursor=pointer]
+              - listitem [ref=e184]:
+                - generic [ref=e185]:
+                  - link "Audit Logs" [ref=e186] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e188]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e190] [cursor=pointer]
+              - listitem [ref=e191]:
+                - generic [ref=e192]:
+                  - link "Self-Hosted Palette" [ref=e193] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e195]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e197] [cursor=pointer]
+              - listitem [ref=e198]:
+                - generic [ref=e199]:
+                  - link "Palette VerteX" [ref=e200] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e202]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e204] [cursor=pointer]
+              - listitem [ref=e205]:
+                - generic [ref=e206]:
+                  - link "Tenant Administration" [ref=e207] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e209]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e211] [cursor=pointer]
+              - listitem [ref=e212]:
+                - generic [ref=e213]:
+                  - link "Automation" [ref=e214] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e216]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e218] [cursor=pointer]
+              - listitem [ref=e219]:
+                - generic [ref=e220]:
+                  - link "Troubleshooting" [ref=e221] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e223]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e225] [cursor=pointer]
+              - listitem [ref=e226]:
+                - link "Glossary" [ref=e227] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e229]
+                  - text: Glossary
+              - listitem [ref=e231]:
+                - generic [ref=e232]:
+                  - link "Compliance & Legal" [ref=e233] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e235]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e237] [cursor=pointer]
+              - listitem [ref=e238]:
+                - button "Privacy Settings" [ref=e239] [cursor=pointer]:
+                  - img [ref=e240]
+                  - text: Privacy Settings
+      - main [ref=e242]:
+        - generic [ref=e244]:
+          - generic [ref=e246]:
+            - article [ref=e247]:
+              - navigation "Breadcrumbs" [ref=e248]:
+                - list [ref=e249]:
+                  - listitem [ref=e250]:
+                    - link "Home page" [ref=e251] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e252]
+                  - listitem [ref=e254]:
+                    - link "Bring Your Own OS (BYOOS)" [ref=e255] [cursor=pointer]:
+                      - /url: /byoos/
+                  - listitem [ref=e256]:
+                    - link "Create Images with Image Builder" [ref=e257] [cursor=pointer]:
+                      - /url: /byoos/image-builder/
+                  - listitem [ref=e258]:
+                    - link "Build Image for VMware vSphere" [ref=e259] [cursor=pointer]:
+                      - /url: /byoos/image-builder/build-image-vmware/
+                  - listitem [ref=e260]:
+                    - generic [ref=e261]: RHEL and PXK
+              - generic [ref=e262]:
+                - heading "RHEL and Palette eXtended Kubernetes" [level=1] [ref=e264]
+                - paragraph [ref=e265]:
+                  - text: You can create a custom VMware vSphere RHEL image with
+                  - link "Palette eXtended Kubernetes (PXK)" [ref=e266] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=kubernetes
+                  - text: and use it to deploy a Kubernetes cluster. You can choose to build the custom RHEL image with PXK using FIPS or opt for a non-FIPS-compliant image. This workflow is built on-top of the
+                  - link "Image Builder" [ref=e267] [cursor=pointer]:
+                    - /url: https://github.com/kubernetes-sigs/image-builder
+                  - text: project. Check out the
+                  - link "Image Builder vSphere" [ref=e268] [cursor=pointer]:
+                    - /url: https://image-builder.sigs.k8s.io/capi/providers/vsphere
+                  - text: section of the documentation to learn more about this workflow.
+                - paragraph [ref=e269]: Use the following steps to build a custom RHEL image with PXK for VMware vSphere and deploy a Kubernetes cluster.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e270]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e271] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - paragraph [ref=e272]: Before you begin, ensure that you have the following prerequisites met.
+                - list [ref=e273]:
+                  - listitem [ref=e274]:
+                    - paragraph [ref=e275]: Access to the VMware vSphere environment, including user credentials allowing you to create virtual machines.
+                  - listitem [ref=e276]:
+                    - paragraph [ref=e277]:
+                      - text: A valid
+                      - link "RHEL subscription" [ref=e278] [cursor=pointer]:
+                        - /url: https://www.redhat.com/en/store/linux-platforms
+                      - text: . You will need to provide the username and password for the subscription during the build process.
+                  - listitem [ref=e279]:
+                    - paragraph [ref=e280]: "An x86_64 Linux VM with the following resources:"
+                    - list [ref=e281]:
+                      - listitem [ref=e282]: 4 CPU
+                      - listitem [ref=e283]: 8 GB of RAM
+                      - listitem [ref=e284]: 100 GB of free disk space
+                      - listitem [ref=e285]: Internet access
+                      - listitem [ref=e286]: Git installed.
+                      - listitem [ref=e287]: Ubuntu 22.04 LTS or later.
+                    - generic [ref=e288]:
+                      - generic [ref=e289]:
+                        - img [ref=e291]
+                        - text: info
+                      - paragraph [ref=e294]: You may choose to use a different Linux distribution, but the commands in this guide are specific to Ubuntu.
+                  - listitem [ref=e295]:
+                    - paragraph [ref=e296]: The Linux VM must have connectivity to the internet and the VMware vSphere environment.
+                  - listitem [ref=e297]:
+                    - paragraph [ref=e298]:
+                      - text: Access to the
+                      - link "Red Hat Developer Portal" [ref=e299] [cursor=pointer]:
+                        - /url: https://developers.redhat.com/products/rhel/download
+                      - text: .
+                - heading "Build Custom ImageDirect link to Build Custom Image" [level=2] [ref=e300]:
+                  - text: Build Custom Image
+                  - link "Direct link to Build Custom Image" [ref=e301] [cursor=pointer]:
+                    - /url: "#build-custom-image"
+                    - text: "#"
+                - paragraph [ref=e302]: Use the following steps to build a custom RHEL image with PXK for VMware vSphere. Select the tab based on whether you want to create a FIPS-compliant image or a non-FIPS-compliant image.
+                - generic [ref=e303]:
+                  - tablist [ref=e304]:
+                    - tab "FIPS" [selected] [ref=e305] [cursor=pointer]
+                    - tab "Non-FIPS" [ref=e306] [cursor=pointer]
+                  - tabpanel [ref=e308]:
+                    - list [ref=e309]:
+                      - listitem [ref=e310]:
+                        - paragraph [ref=e311]: Open a terminal session and log in to the Linux VM.
+                      - listitem [ref=e312]:
+                        - paragraph [ref=e313]:
+                          - text: Download the x86_64 RHEL ISO from the
+                          - link "Red Hat Developer Portal" [ref=e314] [cursor=pointer]:
+                            - /url: https://developers.redhat.com/products/rhel/download
+                          - text: . Make sure you download the x86_64 DVD ISO and not the x86_64 BOOT ISO. This guide will use RHEL 8.8 as an example.
+                        - generic [ref=e315]:
+                          - generic [ref=e316]:
+                            - img [ref=e318]
+                            - text: tip
+                          - paragraph [ref=e321]:
+                            - text: Use the direct link to download the RHEL ISO locally through either
+                            - code [ref=e322]: curl
+                            - text: or
+                            - code [ref=e323]: wget
+                            - text: .
+                      - listitem [ref=e324]:
+                        - paragraph [ref=e325]: Update the system and install the latest packages.
+                        - generic [ref=e327]:
+                          - code [ref=e329]:
+                            - generic [ref=e330]: sudo apt update --yes && sudo apt upgrade --yes
+                          - button "Copy code to clipboard" [ref=e332] [cursor=pointer]:
+                            - generic [ref=e333]:
+                              - img [ref=e334]
+                              - img [ref=e336]
+                      - listitem [ref=e338]:
+                        - paragraph [ref=e339]: Install HashiCorp Packer.
+                        - generic [ref=e341]:
+                          - code [ref=e343]:
+                            - generic [ref=e344]: wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+                            - generic [ref=e345]: echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+                            - generic [ref=e346]: sudo apt update && sudo apt install packer
+                          - generic [ref=e347]:
+                            - button "Toggle word wrap" [ref=e348] [cursor=pointer]:
+                              - img [ref=e349]
+                            - button "Copy code to clipboard" [ref=e351] [cursor=pointer]:
+                              - generic [ref=e352]:
+                                - img [ref=e353]
+                                - img [ref=e355]
+                      - listitem [ref=e357]:
+                        - paragraph [ref=e358]:
+                          - text: Install
+                          - code [ref=e359]: ansible
+                          - text: ","
+                          - code [ref=e360]: make
+                          - text: ","
+                          - code [ref=e361]: jq
+                          - text: ","
+                          - code [ref=e362]: unzip
+                          - text: ", and"
+                          - code [ref=e363]: python3
+                          - text: .
+                        - generic [ref=e365]:
+                          - code [ref=e367]:
+                            - generic [ref=e368]: sudo apt-get install --yes make unzip jq python3-pip git && \
+                            - generic [ref=e369]: sudo apt install --yes software-properties-common
+                            - generic [ref=e370]: sudo add-apt-repository --yes --update ppa:ansible/ansible
+                            - generic [ref=e371]: sudo apt install --yes ansible
+                          - button "Copy code to clipboard" [ref=e373] [cursor=pointer]:
+                            - generic [ref=e374]:
+                              - img [ref=e375]
+                              - img [ref=e377]
+                      - listitem [ref=e379]:
+                        - paragraph [ref=e380]: Update the PATH environment variable to include Python. Make sure Python 3.10 or later is installed. Otherwise, you will encounter an error during the build process.
+                        - generic [ref=e382]:
+                          - code [ref=e384]:
+                            - generic [ref=e385]: export PATH=$PATH:/usr/bin/python3 && \
+                            - generic [ref=e386]: echo "export PATH=$PATH:/usr/bin/python3" >> ~/.bashrc
+                          - button "Copy code to clipboard" [ref=e388] [cursor=pointer]:
+                            - generic [ref=e389]:
+                              - img [ref=e390]
+                              - img [ref=e392]
+                      - listitem [ref=e394]:
+                        - paragraph [ref=e395]:
+                          - text: Clone the forked Image Builder that contains customizations for PXK and switch to the
+                          - code [ref=e396]: rhel-pxk-fips
+                          - text: branch.
+                        - generic [ref=e398]:
+                          - code [ref=e400]:
+                            - generic [ref=e401]: git clone https://github.com/spectrocloud/image-builder.git
+                            - generic [ref=e402]: cd image-builder/images/capi
+                            - generic [ref=e403]: git checkout rhel-pxk-fips
+                          - button "Copy code to clipboard" [ref=e405] [cursor=pointer]:
+                            - generic [ref=e406]:
+                              - img [ref=e407]
+                              - img [ref=e409]
+                      - listitem [ref=e411]:
+                        - paragraph [ref=e412]: Install the VMware and vSphere Packer plugins.
+                        - generic [ref=e414]:
+                          - code [ref=e416]:
+                            - generic [ref=e417]: packer plugins install github.com/hashicorp/vmware
+                            - generic [ref=e418]: packer plugins install github.com/hashicorp/vsphere
+                          - button "Copy code to clipboard" [ref=e420] [cursor=pointer]:
+                            - generic [ref=e421]:
+                              - img [ref=e422]
+                              - img [ref=e424]
+                      - listitem [ref=e426]:
+                        - paragraph [ref=e427]: Prepare the image build by downloading dependencies needed by the image-builder scripts.
+                        - generic [ref=e429]:
+                          - code [ref=e431]:
+                            - generic [ref=e432]: make deps-ova
+                          - button "Copy code to clipboard" [ref=e434] [cursor=pointer]:
+                            - generic [ref=e435]:
+                              - img [ref=e436]
+                              - img [ref=e438]
+                        - generic [ref=e440]:
+                          - generic [ref=e441]:
+                            - img [ref=e443]
+                            - text: tip
+                          - paragraph [ref=e446]:
+                            - text: If you encounter an error during the
+                            - code [ref=e447]: make deps-ova
+                            - text: command, ensure you set the python3 path in the PATH environment variable correctly. Also, make sure Python 3.10 or later is installed
+                      - listitem [ref=e448]:
+                        - paragraph [ref=e449]:
+                          - text: Update the
+                          - strong [ref=e450]: packer/ova/rhel-8.json
+                          - text: file and provide the path to the RHEL ISO image and the SHA256 checksum. Below is an example using RHEL 8.8. The ISO in this example is located at
+                          - strong [ref=e451]: /home/ubuntu/rhel-isos/
+                          - text: .
+                        - generic [ref=e453]:
+                          - code [ref=e455]:
+                            - generic [ref=e456]: "\"iso_checksum\": \"517abcc67ee3b7212f57e180f5d30be3e8269e7a99e127a3399b7935c7e00a09\","
+                            - generic [ref=e457]: "\"iso_checksum_type\": \"sha256\","
+                            - generic [ref=e458]: "\"iso_url\": \"file:///home/ubuntu/rhel-isos/rhel-8.8-x86_64-dvd.iso\","
+                          - generic [ref=e459]:
+                            - button "Toggle word wrap" [ref=e460] [cursor=pointer]:
+                              - img [ref=e461]
+                            - button "Copy code to clipboard" [ref=e463] [cursor=pointer]:
+                              - generic [ref=e464]:
+                                - img [ref=e465]
+                                - img [ref=e467]
+                        - generic [ref=e469]:
+                          - generic [ref=e470]:
+                            - img [ref=e472]
+                            - text: tip
+                          - generic [ref=e474]:
+                            - paragraph [ref=e475]:
+                              - text: If you are unable to find the SHA256 checksum for the RHEL ISO, you can calculate it using the following command. Replace
+                              - code [ref=e476]: /path/to/iso
+                              - text: with the path to the RHEL ISO you downloaded.
+                            - generic [ref=e478]:
+                              - code [ref=e480]:
+                                - generic [ref=e481]: sha256sum /path/to/iso
+                              - button "Copy code to clipboard" [ref=e483] [cursor=pointer]:
+                                - generic [ref=e484]:
+                                  - img [ref=e485]
+                                  - img [ref=e487]
+                      - listitem [ref=e489]:
+                        - paragraph [ref=e490]:
+                          - text: Update the
+                          - strong [ref=e491]: packer/ova/vsphere.json
+                          - text: file with all the required vSphere details. Use the table below to learn more about each required field.
+                        - table [ref=e492]:
+                          - rowgroup [ref=e493]:
+                            - row "Field Name Description" [ref=e494]:
+                              - cell "Field Name" [ref=e495]
+                              - cell "Description" [ref=e496]
+                          - rowgroup [ref=e497]:
+                            - row "cluster The name of the vSphere cluster where the Packer VM will be created." [ref=e498]:
+                              - cell "cluster" [ref=e499]:
+                                - code [ref=e500]: cluster
+                              - cell "The name of the vSphere cluster where the Packer VM will be created." [ref=e501]
+                            - row "datacenter The name of the vSphere data center where the Packer VM will be created." [ref=e502]:
+                              - cell "datacenter" [ref=e503]:
+                                - code [ref=e504]: datacenter
+                              - cell "The name of the vSphere data center where the Packer VM will be created." [ref=e505]
+                            - row "datastore The name of the vSphere datastore the Packer VM will use." [ref=e506]:
+                              - cell "datastore" [ref=e507]:
+                                - code [ref=e508]: datastore
+                              - cell "The name of the vSphere datastore the Packer VM will use." [ref=e509]
+                            - row "folder The name of the vSphere folder where the vSphere template will be created." [ref=e510]:
+                              - cell "folder" [ref=e511]:
+                                - code [ref=e512]: folder
+                              - cell "The name of the vSphere folder where the vSphere template will be created." [ref=e513]
+                            - row "insecure_connection Set to true if you are using a self-signed certificate for vCenter." [ref=e514]:
+                              - cell "insecure_connection" [ref=e515]:
+                                - code [ref=e516]: insecure_connection
+                              - cell "Set to true if you are using a self-signed certificate for vCenter." [ref=e517]:
+                                - text: Set to
+                                - code [ref=e518]: "true"
+                                - text: if you are using a self-signed certificate for vCenter.
+                            - row "network The name of the vSphere network the Packer VM will use." [ref=e519]:
+                              - cell "network" [ref=e520]:
+                                - code [ref=e521]: network
+                              - cell "The name of the vSphere network the Packer VM will use." [ref=e522]
+                            - row "password The password for the vSphere user." [ref=e523]:
+                              - cell "password" [ref=e524]:
+                                - code [ref=e525]: password
+                              - cell "The password for the vSphere user." [ref=e526]
+                            - row "resource_pool The name of the vSphere resource pool the Packer VM will use." [ref=e527]:
+                              - cell "resource_pool" [ref=e528]:
+                                - code [ref=e529]: resource_pool
+                              - cell "The name of the vSphere resource pool the Packer VM will use." [ref=e530]
+                            - row "username The username for the vSphere user." [ref=e531]:
+                              - cell "username" [ref=e532]:
+                                - code [ref=e533]: username
+                              - cell "The username for the vSphere user." [ref=e534]
+                            - row "vcenter_server The IP address or FQDN of the vCenter server." [ref=e535]:
+                              - cell "vcenter_server" [ref=e536]:
+                                - code [ref=e537]: vcenter_server
+                              - cell "The IP address or FQDN of the vCenter server." [ref=e538]
+                        - generic [ref=e540]:
+                          - code [ref=e542]:
+                            - generic [ref=e543]: "{"
+                            - generic [ref=e544]: "\"cluster\": \"\","
+                            - generic [ref=e545]: "\"convert_to_template\": \"false\","
+                            - generic [ref=e546]: "\"create_snapshot\": \"true\","
+                            - generic [ref=e547]: "\"datacenter\": \"\","
+                            - generic [ref=e548]: "\"datastore\": \"\","
+                            - generic [ref=e549]: "\"folder\": \"\","
+                            - generic [ref=e550]: "\"insecure_connection\": \"false\","
+                            - generic [ref=e551]: "\"linked_clone\": \"true\","
+                            - generic [ref=e552]: "\"network\": \"\","
+                            - generic [ref=e553]: "\"password\": \"\","
+                            - generic [ref=e554]: "\"resource_pool\": \"\","
+                            - generic [ref=e555]: "\"template\": \"\","
+                            - generic [ref=e556]: "\"username\": \"\","
+                            - generic [ref=e557]: "\"vcenter_server\": \"\""
+                            - generic [ref=e558]: "}"
+                          - button "Copy code to clipboard" [ref=e560] [cursor=pointer]:
+                            - generic [ref=e561]:
+                              - img [ref=e562]
+                              - img [ref=e564]
+                        - paragraph [ref=e566]:
+                          - text: Below is an example of a filled out
+                          - strong [ref=e567]: packer/ova/vsphere.json
+                          - text: file.
+                        - code [ref=e571]:
+                          - generic [ref=e572]: "{"
+                          - generic [ref=e573]: "\"cluster\": \"Cluster2\","
+                          - generic [ref=e574]: "\"convert_to_template\": \"false\","
+                          - generic [ref=e575]: "\"create_snapshot\": \"true\","
+                          - generic [ref=e576]: "\"datacenter\": \"Datacenter\","
+                          - generic [ref=e577]: "\"datastore\": \"vsanDatastore2\","
+                          - generic [ref=e578]: "\"folder\": \"sp-docs\","
+                          - generic [ref=e579]: "\"insecure_connection\": \"true\","
+                          - generic [ref=e580]: "\"linked_clone\": \"true\","
+                          - generic [ref=e581]: "\"network\": \"VM-NETWORK-1\","
+                          - generic [ref=e582]: "\"password\": \"*************\","
+                          - generic [ref=e583]: "\"resource_pool\": \"rp-docs\","
+                          - generic [ref=e584]: "\"template\": \"\","
+                          - generic [ref=e585]: "\"username\": \"example@vsphere.local\","
+                          - generic [ref=e586]: "\"vcenter_server\": \"example.vcenter.dev\""
+                          - generic [ref=e587]: "}"
+                      - listitem [ref=e588]:
+                        - paragraph [ref=e589]:
+                          - text: If you want to change the default Kubernetes version, modify the
+                          - strong [ref=e590]: packer/config/kubernetes.json
+                          - text: "file. The following properties can be modified:"
+                        - table [ref=e591]:
+                          - rowgroup [ref=e592]:
+                            - row "Field Name Description" [ref=e593]:
+                              - cell "Field Name" [ref=e594]
+                              - cell "Description" [ref=e595]
+                          - rowgroup [ref=e596]:
+                            - row "kubernetes_rpm_version The version of the Kubernetes RPM to install." [ref=e597]:
+                              - cell "kubernetes_rpm_version" [ref=e598]:
+                                - code [ref=e599]: kubernetes_rpm_version
+                              - cell "The version of the Kubernetes RPM to install." [ref=e600]
+                            - row "kubernetes_semver The Kubernetes version in semver format." [ref=e601]:
+                              - cell "kubernetes_semver" [ref=e602]:
+                                - code [ref=e603]: kubernetes_semver
+                              - cell "The Kubernetes version in semver format." [ref=e604]
+                            - row "kubernetes_series The Kubernetes series." [ref=e605]:
+                              - cell "kubernetes_series" [ref=e606]:
+                                - code [ref=e607]: kubernetes_series
+                              - cell "The Kubernetes series." [ref=e608]
+                        - group [ref=e609]:
+                          - generic "FIPS Components" [ref=e610] [cursor=pointer]
+                        - paragraph [ref=e611]:
+                          - text: In this guide, the Kubernetes version is set to
+                          - code [ref=e612]: 1.27.11
+                          - text: .
+                        - generic [ref=e614]:
+                          - code [ref=e616]:
+                            - generic [ref=e617]: "\"kubernetes_rpm_version\": \"1.27.11\","
+                            - generic [ref=e618]: "\"kubernetes_semver\": \"v1.27.11\","
+                            - generic [ref=e619]: "\"kubernetes_series\": \"v1.27\""
+                          - button "Copy code to clipboard" [ref=e621] [cursor=pointer]:
+                            - generic [ref=e622]:
+                              - img [ref=e623]
+                              - img [ref=e625]
+                        - generic [ref=e627]:
+                          - generic [ref=e628]:
+                            - img [ref=e630]
+                            - text: warning
+                          - paragraph [ref=e633]: The Kubernetes version you specify must be available in Palette. You must also select the version specified when creating a cluster profile that uses the custom image.
+                      - listitem [ref=e634]:
+                        - paragraph [ref=e635]:
+                          - text: Build the RHEL image with PXK. Replace
+                          - code [ref=e636]: RHSM_USER
+                          - text: and
+                          - code [ref=e637]: RHSM_PASS
+                          - text: with your Red Hat subscription username and password. The build may take up to an hour to complete depending on your environment.
+                        - generic [ref=e639]:
+                          - code [ref=e641]:
+                            - generic [ref=e642]: PACKER_FLAGS=-on-error=ask RHSM_USER=xxxxxxx RHSM_PASS=xxxxxxxxxxxx make build-node-ova-vsphere-rhel-8
+                          - generic [ref=e643]:
+                            - button "Toggle word wrap" [ref=e644] [cursor=pointer]:
+                              - img [ref=e645]
+                            - button "Copy code to clipboard" [ref=e647] [cursor=pointer]:
+                              - generic [ref=e648]:
+                                - img [ref=e649]
+                                - img [ref=e651]
+                        - generic [ref=e653]:
+                          - generic [ref=e654]:
+                            - img [ref=e656]
+                            - text: tip
+                          - generic [ref=e658]:
+                            - paragraph [ref=e659]: You can set the RHEL credentials as environment variables to avoid providing them every time you issue the command.
+                            - generic [ref=e661]:
+                              - code [ref=e663]:
+                                - generic [ref=e664]: export RHSM_USER=xxxxxxx
+                                - generic [ref=e665]: export RHSM_PASS=xxxxxxxxxxxx
+                              - button "Copy code to clipboard" [ref=e667] [cursor=pointer]:
+                                - generic [ref=e668]:
+                                  - img [ref=e669]
+                                  - img [ref=e671]
+                        - paragraph [ref=e673]: Upon completion, the following output is displayed. Make sure to note the name of the image.
+                        - generic [ref=e675]:
+                          - code [ref=e677]:
+                            - generic [ref=e678]: "==> vsphere-iso.vsphere (shell-local): Running local shell script: /tmp/packer-shell3103701471"
+                            - generic [ref=e679]: Build 'vsphere-iso.vsphere' finished after 31 minutes 15 seconds.
+                            - generic [ref=e680]: ==> Wait completed after 31 minutes 15 seconds
+                            - generic [ref=e681]: "==> Builds finished. The artifacts of successful builds are:"
+                            - generic [ref=e682]: "--> vsphere-iso.vsphere: rhel-8-kube-v1.27.11"
+                            - generic [ref=e683]: "--> vsphere-iso.vsphere: rhel-8-kube-v1.27.11"
+                            - generic [ref=e684]: "--> vsphere-iso.vsphere: rhel-8-kube-v1.27.11"
+                            - generic [ref=e685]: "--> vsphere-iso.vsphere: rhel-8-kube-v1.27.11"
+                          - button "Toggle word wrap" [ref=e687] [cursor=pointer]:
+                            - img [ref=e688]
+                    - list [ref=e690]:
+                      - listitem [ref=e691]:
+                        - paragraph [ref=e692]:
+                          - text: The custom RHEL image with PXK is now built and available in the VMware vSphere environment. You can use this image to deploy a Kubernetes cluster. To use the image, create a cluster profile with and select the
+                          - link "BYOOS Pack" [ref=e693] [cursor=pointer]:
+                            - /url: /integrations/packs/?pack=generic-byoi
+                          - text: . Refer to the custom image in the cluster profile when populating the image details. You need to refer to the VM template path of the image.
+                        - generic [ref=e695]:
+                          - code [ref=e697]:
+                            - generic [ref=e698]: "pack:"
+                            - generic [ref=e699]: "osImageOverride: \"/Datacenter/vm/sp-docs/rhel-8-kube-v1.27.11\""
+                            - generic [ref=e700]: "osName: \"rhel\""
+                            - generic [ref=e701]: "osVersion: \"8.8\""
+                          - button "Toggle word wrap" [ref=e703] [cursor=pointer]:
+                            - img [ref=e704]
+                        - paragraph [ref=e706]: Using the following image, take note of the three numbers highlighted in the image name.
+                        - list [ref=e707]:
+                          - listitem [ref=e708]: The BYOOS pack is selected as the operating system layer.
+                          - listitem [ref=e709]:
+                            - text: The custom RHEL image template is specified in the
+                            - code [ref=e710]: osImageOverride
+                            - text: field.
+                          - listitem [ref=e711]:
+                            - text: The Kubernetes version is set to
+                            - code [ref=e712]: 1.27.11
+                            - text: ", the same version specified in the"
+                            - code [ref=e713]: kubernetes.json
+                            - text: file.
+                        - paragraph [ref=e714]:
+                          - img "A cluster profile using a custom RHEL image" [ref=e715]
+                        - paragraph [ref=e716]:
+                          - text: Complete the remaining steps in the
+                          - link "cluster profile creation process" [ref=e717] [cursor=pointer]:
+                            - /url: /profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile/
+                          - text: . Use the cluster profile to deploy a Kubernetes cluster in your VMware vSphere environment with the custom RHEL image.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e718]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e719] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e720]:
+                  - listitem [ref=e721]:
+                    - paragraph [ref=e722]: Log in to the VMware vSphere environment and navigate to the Inventory view.
+                  - listitem [ref=e723]:
+                    - paragraph [ref=e724]:
+                      - text: Select the
+                      - strong [ref=e725]: VMs and Templates
+                      - text: tab and verify the custom RHEL image with PXK is available.
+                - generic [ref=e726]:
+                  - generic [ref=e727]:
+                    - img [ref=e729]
+                    - text: FIPS Verification
+                  - generic [ref=e731]:
+                    - paragraph [ref=e732]:
+                      - text: You can verify the FIPS mode is enabled on the custom RHEL image by SSH in to a cluster node and issuing the following commands. Use the SSH key provided during the cluster creation process to log in to the node. The default user is
+                      - code [ref=e733]: spectro
+                      - text: .
+                    - generic [ref=e735]:
+                      - code [ref=e737]:
+                        - generic [ref=e738]: cat /proc/sys/crypto/fips_enabled
+                      - button "Copy code to clipboard" [ref=e740] [cursor=pointer]:
+                        - generic [ref=e741]:
+                          - img [ref=e742]
+                          - img [ref=e744]
+                    - paragraph [ref=e746]:
+                      - text: If the output is
+                      - code [ref=e747]: "1"
+                      - text: ", then FIPS mode is enabled. If the output is"
+                      - code [ref=e748]: "0"
+                      - text: ", the FIPS mode is disabled."
+                    - code [ref=e752]:
+                      - generic [ref=e753]: "1"
+                    - paragraph [ref=e754]: Next, verify the kernel command line arguments to ensure FIPS is enabled.
+                    - generic [ref=e756]:
+                      - code [ref=e758]:
+                        - generic [ref=e759]: cat /proc/cmdline
+                      - button "Copy code to clipboard" [ref=e761] [cursor=pointer]:
+                        - generic [ref=e762]:
+                          - img [ref=e763]
+                          - img [ref=e765]
+                    - paragraph [ref=e767]:
+                      - text: Verify
+                      - code [ref=e768]: fips=1
+                      - text: is present in the output.
+                    - generic [ref=e770]:
+                      - code [ref=e772]:
+                        - generic [ref=e773]: "[iBOOT_IMAGE=(hd0,msdos1)/boot/vmlinuz-4.18.0-513.24.1.el8_9.x86_64 root=UUID=a0672ca4-19fb-45ae-8f15-5a9d0218644d ro crashkernel=auto fips=1]"
+                      - button "Toggle word wrap" [ref=e775] [cursor=pointer]:
+                        - img [ref=e776]
+              - generic [ref=e778]:
+                - generic [ref=e780]:
+                  - text: "Tags:"
+                  - list [ref=e781]:
+                    - listitem [ref=e782]:
+                      - link "operating system" [ref=e783] [cursor=pointer]:
+                        - /url: /tags/operating-system/
+                    - listitem [ref=e784]:
+                      - link "byoos" [ref=e785] [cursor=pointer]:
+                        - /url: /tags/byoos/
+                    - listitem [ref=e786]:
+                      - link "profiles" [ref=e787] [cursor=pointer]:
+                        - /url: /tags/profiles/
+                    - listitem [ref=e788]:
+                      - link "pxk" [ref=e789] [cursor=pointer]:
+                        - /url: /tags/pxk/
+                    - listitem [ref=e790]:
+                      - link "vmware" [ref=e791] [cursor=pointer]:
+                        - /url: /tags/vmware/
+                - link "Edit this page" [ref=e794] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/byoos/image-builder/build-image-vmware/rhel-pxk.md
+                  - img [ref=e795]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e799]:
+              - link "Previous « RHEL and Konvoy" [ref=e800] [cursor=pointer]:
+                - /url: /byoos/image-builder/build-image-vmware/konvoy/
+                - generic [ref=e801]: Previous
+                - generic [ref=e802]: « RHEL and Konvoy
+              - link "Next CAPI Image Builder »" [ref=e803] [cursor=pointer]:
+                - /url: /byoos/capi-image-builder/
+                - generic [ref=e804]: Next
+                - generic [ref=e805]: CAPI Image Builder »
+          - list [ref=e808]:
+            - listitem [ref=e809]:
+              - link "Prerequisites" [ref=e810] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e811]:
+              - link "Build Custom Image" [ref=e812] [cursor=pointer]:
+                - /url: "#build-custom-image"
+            - listitem [ref=e813]:
+              - link "Validate" [ref=e814] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e815] [cursor=pointer]:
+    - generic [ref=e818]:
+      - img "Project Logo" [ref=e819]
+      - paragraph [ref=e820]: Ask AI
+```

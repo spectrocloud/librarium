@@ -1,0 +1,599 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [expanded] [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+                - list [ref=e107]:
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Public Cloud Clusters" [ref=e110] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e112]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e114] [cursor=pointer]
+                  - listitem [ref=e115]:
+                    - generic [ref=e116]:
+                      - link "Data Center Clusters" [ref=e117] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e119]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e121] [cursor=pointer]
+                  - listitem [ref=e122]:
+                    - generic [ref=e123]:
+                      - link "Edge" [ref=e124] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e126]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e128] [cursor=pointer]
+                  - listitem [ref=e129]:
+                    - generic [ref=e130]:
+                      - link "Palette Virtual Clusters" [ref=e131] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e133]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e135] [cursor=pointer]
+                  - listitem [ref=e136]:
+                    - generic [ref=e137]:
+                      - link "Imported Clusters" [ref=e138] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e140]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e142] [cursor=pointer]
+                  - listitem [ref=e143]:
+                    - generic [ref=e144]:
+                      - link "Manage Clusters" [ref=e145] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e147]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e149] [cursor=pointer]
+                  - listitem [ref=e150]:
+                    - generic [ref=e151]:
+                      - link "Cluster Groups" [ref=e152] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e154]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e156] [cursor=pointer]
+                  - listitem [ref=e157]:
+                    - generic [ref=e158]:
+                      - link "Private Cloud Gateway" [expanded] [ref=e159] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e161]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e163] [cursor=pointer]
+                    - list [ref=e164]:
+                      - listitem [ref=e165]:
+                        - link "Architecture" [ref=e166] [cursor=pointer]:
+                          - /url: /clusters/pcg/architecture/
+                      - listitem [ref=e167]:
+                        - generic [ref=e168]:
+                          - link "Deploy a PCG with Palette CLI" [ref=e169] [cursor=pointer]:
+                            - /url: /clusters/pcg/deploy-pcg/
+                          - button "Toggle the collapsible sidebar category 'Deploy a PCG with Palette CLI'" [ref=e170] [cursor=pointer]
+                      - listitem [ref=e171]:
+                        - link "Deploy a PCG to an Existing Kubernetes Cluster" [ref=e172] [cursor=pointer]:
+                          - /url: /clusters/pcg/deploy-pcg-k8s/
+                      - listitem [ref=e173]:
+                        - generic [ref=e174]:
+                          - link "Manage PCG" [ref=e175] [cursor=pointer]:
+                            - /url: /clusters/pcg/manage-pcg/
+                          - button "Toggle the collapsible sidebar category 'Manage PCG'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e179] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e181]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e183] [cursor=pointer]
+              - listitem [ref=e184]:
+                - generic [ref=e185]:
+                  - link "Palette Dev Engine" [ref=e186] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e188]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e190] [cursor=pointer]
+              - listitem [ref=e191]:
+                - generic [ref=e192]:
+                  - link "Virtual Machine Orchestrator" [ref=e193] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e195]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e197] [cursor=pointer]
+              - listitem [ref=e198]:
+                - generic [ref=e199]:
+                  - link "Workspaces" [ref=e200] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e202]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e204] [cursor=pointer]
+              - listitem [ref=e205]:
+                - generic [ref=e206]:
+                  - link "Packs List" [ref=e207] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e209]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e211] [cursor=pointer]
+              - listitem [ref=e212]:
+                - generic [ref=e213]:
+                  - link "User & Role Management" [ref=e214] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e216]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e218] [cursor=pointer]
+              - listitem [ref=e219]:
+                - generic [ref=e220]:
+                  - link "Registries and Packs" [ref=e221] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e223]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e225] [cursor=pointer]
+              - listitem [ref=e226]:
+                - generic [ref=e227]:
+                  - link "Security" [ref=e228] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e230]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e232] [cursor=pointer]
+              - listitem [ref=e233]:
+                - generic [ref=e234]:
+                  - link "Audit Logs" [ref=e235] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e237]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e239] [cursor=pointer]
+              - listitem [ref=e240]:
+                - generic [ref=e241]:
+                  - link "Self-Hosted Palette" [ref=e242] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e244]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e246] [cursor=pointer]
+              - listitem [ref=e247]:
+                - generic [ref=e248]:
+                  - link "Palette VerteX" [ref=e249] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e251]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e253] [cursor=pointer]
+              - listitem [ref=e254]:
+                - generic [ref=e255]:
+                  - link "Tenant Administration" [ref=e256] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e258]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e260] [cursor=pointer]
+              - listitem [ref=e261]:
+                - generic [ref=e262]:
+                  - link "Automation" [ref=e263] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e265]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e267] [cursor=pointer]
+              - listitem [ref=e268]:
+                - generic [ref=e269]:
+                  - link "Troubleshooting" [ref=e270] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e272]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e274] [cursor=pointer]
+              - listitem [ref=e275]:
+                - link "Glossary" [ref=e276] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e278]
+                  - text: Glossary
+              - listitem [ref=e280]:
+                - generic [ref=e281]:
+                  - link "Compliance & Legal" [ref=e282] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e284]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e286] [cursor=pointer]
+              - listitem [ref=e287]:
+                - button "Privacy Settings" [ref=e288] [cursor=pointer]:
+                  - img [ref=e289]
+                  - text: Privacy Settings
+      - main [ref=e291]:
+        - generic [ref=e293]:
+          - generic [ref=e295]:
+            - article [ref=e296]:
+              - navigation "Breadcrumbs" [ref=e297]:
+                - list [ref=e298]:
+                  - listitem [ref=e299]:
+                    - link "Home page" [ref=e300] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e301]
+                  - listitem [ref=e303]:
+                    - link "Clusters" [ref=e304] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e305]:
+                    - link "Private Cloud Gateway" [ref=e306] [cursor=pointer]:
+                      - /url: /clusters/pcg/
+                  - listitem [ref=e307]:
+                    - generic [ref=e308]: Architecture
+              - generic [ref=e309]:
+                - heading "Architecture" [level=1] [ref=e311]
+                - paragraph [ref=e312]: A Private Cloud Gateway (PCG) facilitates communication between Palette and your infrastructure environment. The PCG is necessary in environments where Palette does not have direct network access. Many infrastructure environments are placed in a private network that blocks connections originating externally. The PCG connects to Palette, and acts as an endpoint, allowing you to target the environment when deploying clusters in Palette.
+                - paragraph [ref=e313]: When installed, the PCG registers with the self-hosted or SaaS Palette instance you specify, enabling secure communication between the Palette management plane and the private cloud environment. The PCG enables the deployment and removal of Kubernetes clusters in private cloud environments through the Palette user interface, API, CLI, or Terraform provider.
+                - paragraph [ref=e314]:
+                  - img "An architecture diagram of PCG" [ref=e315]
+                - heading "Network CommunicationDirect link to Network Communication" [level=2] [ref=e316]:
+                  - text: Network Communication
+                  - link "Direct link to Network Communication" [ref=e317] [cursor=pointer]:
+                    - /url: "#network-communication"
+                    - text: "#"
+                - paragraph [ref=e318]: The PCG maintains a connection to Palette and directly connects to the infrastructure environment. The connection to Palette originates from the PCG, and the PCG acts as an endpoint for Palette to communicate with the infrastructure environment. The PCG also supports using a proxy server to access the internet if needed. The PCG is constantly polling Palette instructions to either deploy a new cluster or delete an existing one.
+                - paragraph [ref=e319]: The PCG communicates with Palette using a secure communication channel that is encrypted using the Transport Layer Security (TLS) protocol. The table below lists the network ports and protocols the PCG uses to communicate with Palette and the infrastructure environment.
+                - table [ref=e320]:
+                  - rowgroup [ref=e321]:
+                    - row "Port Protocol Source Destination Description" [ref=e322]:
+                      - cell "Port" [ref=e323]
+                      - cell "Protocol" [ref=e324]
+                      - cell "Source" [ref=e325]
+                      - cell "Destination" [ref=e326]
+                      - cell "Description" [ref=e327]
+                  - rowgroup [ref=e328]:
+                    - row "443 HTTPS PCG Palette Secure communication channel between PCG and Palette." [ref=e329]:
+                      - cell "443" [ref=e330]
+                      - cell "HTTPS" [ref=e331]
+                      - cell "PCG" [ref=e332]
+                      - cell "Palette" [ref=e333]
+                      - cell "Secure communication channel between PCG and Palette." [ref=e334]
+                    - row "443 gRPC PCG Palette Secure communication channel between PCG and Palette." [ref=e335]:
+                      - cell "443" [ref=e336]
+                      - cell "gRPC" [ref=e337]
+                      - cell "PCG" [ref=e338]
+                      - cell "Palette" [ref=e339]
+                      - cell "Secure communication channel between PCG and Palette." [ref=e340]
+                    - row "443 HTTPS PCG Local Network Secure communication channel between PCG and infrastructure provider in local network. For example, if you are using VMware vSphere, the PCG would communicate with your vSphere endpoint." [ref=e341]:
+                      - cell "443" [ref=e342]
+                      - cell "HTTPS" [ref=e343]
+                      - cell "PCG" [ref=e344]
+                      - cell "Local Network" [ref=e345]
+                      - cell "Secure communication channel between PCG and infrastructure provider in local network. For example, if you are using VMware vSphere, the PCG would communicate with your vSphere endpoint." [ref=e346]
+                    - row "6443 HTTPS PCG Local Network Secure communication channel between PCG and the deployed Kubernetes cluster API server." [ref=e347]:
+                      - cell "6443" [ref=e348]
+                      - cell "HTTPS" [ref=e349]
+                      - cell "PCG" [ref=e350]
+                      - cell "Local Network" [ref=e351]
+                      - cell "Secure communication channel between PCG and the deployed Kubernetes cluster API server." [ref=e352]
+                - generic [ref=e353]:
+                  - generic [ref=e354]:
+                    - img [ref=e356]
+                    - text: info
+                  - paragraph [ref=e359]: To establish communication between the PCG and Palette, the PCG initiates all network communication to Palette. Similarly, when deploying workload clusters, the cluster initiates all network communication to Palette. To deploy the PCG successfully, you must provide the Palette endpoint, which helps the PCG know where to connect. This information is also shared with the workload cluster during the cluster deployment.
+                - heading "Network ProxyDirect link to Network Proxy" [level=3] [ref=e360]:
+                  - text: Network Proxy
+                  - link "Direct link to Network Proxy" [ref=e361] [cursor=pointer]:
+                    - /url: "#network-proxy"
+                    - text: "#"
+                - paragraph [ref=e362]: The PCG supports using a proxy server to access the internet if needed.
+                - paragraph [ref=e363]:
+                  - text: We encourage you to review the
+                  - link "gRPC and Proxies" [ref=e364] [cursor=pointer]:
+                    - /url: /architecture/grps-proxy/
+                  - text: reference page to better prepare for using a proxy server with the PCG. Depending on your network proxy configuration and software, you may need to make updates to ensure compatibility with Palette.
+                - heading "Palette CLIDirect link to Palette CLI" [level=4] [ref=e365]:
+                  - text: Palette CLI
+                  - link "Direct link to Palette CLI" [ref=e366] [cursor=pointer]:
+                    - /url: "#palette-cli"
+                    - text: "#"
+                - paragraph [ref=e367]:
+                  - text: If you are installing the PCG through the Palette CLI, you can provide the proxy server details during installation. The proxy server details are saved as environment variables (
+                  - code [ref=e368]: HTTPS_PROXY
+                  - text: ","
+                  - code [ref=e369]: HTTP_PROXY
+                  - text: ", and"
+                  - code [ref=e370]: NO_PROXY
+                  - text: ) and are propagated to all PCG cluster nodes, as well as the nodes of all tenant workload clusters deployed with the PCG. The provided proxy servers are then used by the PCG and workload clusters to access the internet.
+                - paragraph [ref=e371]: You can also provide Certificate Authority (CA) certificates for the proxy server during installation. However, proxy CA certificates are only propagated to each PCG cluster node; they are not propagated to the nodes of tenant clusters.
+                - paragraph [ref=e372]: Proxy CA certificates must be added to workload clusters at either the tenant level or the cluster profile level in the OS layer.
+                - list [ref=e373]:
+                  - listitem [ref=e374]:
+                    - paragraph [ref=e375]:
+                      - text: If configured at the tenant level,
+                      - emphasis [ref=e376]: all
+                      - text: workload clusters provisioned from the tenant, with the exception of managed Kubernetes clusters (EKS, AKS, and GKE) and Edge clusters, will have the CA certificate injected into their cluster nodes.
+                  - listitem [ref=e377]:
+                    - paragraph [ref=e378]: If configured at the cluster profile level, only workload clusters deployed using the cluster profile will be injected with the CA certificate.
+                - paragraph [ref=e379]:
+                  - text: For guidance on configuring proxy CA certificates, refer to appropriate Palette CLI PCG deployment guide for
+                  - link "MAAS" [ref=e380] [cursor=pointer]:
+                    - /url: /clusters/pcg/deploy-pcg/maas/
+                  - text: ","
+                  - link "OpenStack" [ref=e381] [cursor=pointer]:
+                    - /url: /clusters/pcg/deploy-pcg/openstack/
+                  - text: ", or"
+                  - link "VMware vSphere" [ref=e382] [cursor=pointer]:
+                    - /url: /clusters/pcg/deploy-pcg/vmware/
+                  - text: .
+                - heading "Existing Kubernetes ClusterDirect link to Existing Kubernetes Cluster" [level=4] [ref=e383]:
+                  - text: Existing Kubernetes Cluster
+                  - link "Direct link to Existing Kubernetes Cluster" [ref=e384] [cursor=pointer]:
+                    - /url: "#existing-kubernetes-cluster"
+                    - text: "#"
+                - paragraph [ref=e385]: A PCG installed onto an existing Kubernetes cluster will inherit the proxy server configuration from the underlying Kubernetes cluster. Contact your Kubernetes administrator for the proxy server details and guidance on configuring the underlying Kubernetes cluster to use a proxy server if needed.
+                - heading "Cluster Lifecycle SupportDirect link to Cluster Lifecycle Support" [level=2] [ref=e386]:
+                  - text: Cluster Lifecycle Support
+                  - link "Direct link to Cluster Lifecycle Support" [ref=e387] [cursor=pointer]:
+                    - /url: "#cluster-lifecycle-support"
+                    - text: "#"
+                - paragraph [ref=e388]: The PCG supports the lifecycle of Kubernetes clusters deployed in your private cloud environments. When you initiate a cluster deployment, the PCG cluster is used to support communication with the infrastructure environment. The PCG will query Palette for instructions to deploy a new cluster or delete an existing one.
+                - paragraph [ref=e389]: When a cluster deployment is initiated, the PCG will request resources from the infrastructure provider and support the cluster deployment process. Once a cluster is deployed, the PCG is no longer involved in the communication between Palette and the deployed cluster. The cluster will communicate with Palette directly through local network gateways or a proxy server. The workload cluster is self-sustaining and does not require the PCG to be operational.
+                - paragraph [ref=e390]: For every workload cluster that a PCG facilitates deployment, the workload cluster will maintain a reference point back to that PCG. This reference point is used to identify the PCG used in the event of a cluster deletion. The mapping between a workload cluster and a PCG is stored in the Palette management plane.
+                - paragraph [ref=e391]:
+                  - text: A PCG can be migrated. Migrated means that all clusters deployed by the original PCG will be updated to reference a different PCG. This action is internal to the Palette management plane. The migration process is necessary when you want to remove an existing PCG. Refer to the
+                  - link "Migrate a PCG" [ref=e392] [cursor=pointer]:
+                    - /url: /clusters/pcg/manage-pcg/migrate_pcg/
+                  - text: for guidance on migrating a PCG.
+                - group [ref=e393]:
+                  - generic "Cluster API State Management with PCG" [ref=e394] [cursor=pointer]
+                - paragraph [ref=e395]: The following table explains the different lifecycle phases of a workload cluster and the PCG involvement.
+                - table [ref=e396]:
+                  - rowgroup [ref=e397]:
+                    - row "Lifecycle Phase PCG Involvement? Description" [ref=e398]:
+                      - cell "Lifecycle Phase" [ref=e399]
+                      - cell "PCG Involvement?" [ref=e400]
+                      - cell "Description" [ref=e401]
+                  - rowgroup [ref=e402]:
+                    - row "Cluster Creation ✅ The PCG is involved in the cluster creation process. The PCG polls Palette for new cluster deployment requests. Once a request is received, the PCG will request resources from the infrastructure provider and support the cluster deployment process." [ref=e403]:
+                      - cell "Cluster Creation" [ref=e404]
+                      - cell "✅" [ref=e405]
+                      - cell "The PCG is involved in the cluster creation process. The PCG polls Palette for new cluster deployment requests. Once a request is received, the PCG will request resources from the infrastructure provider and support the cluster deployment process." [ref=e406]
+                    - row "Managing Cluster Workloads ❌ The local Palette agent inside the cluster manages the cluster workloads. The PCG is not involved in managing the workloads of the deployed cluster." [ref=e407]:
+                      - cell "Managing Cluster Workloads" [ref=e408]
+                      - cell "❌" [ref=e409]
+                      - cell "The local Palette agent inside the cluster manages the cluster workloads. The PCG is not involved in managing the workloads of the deployed cluster." [ref=e410]
+                    - row "Day-2 Operations ❌ The PCG is not involved in Day-2 operations. The internal Cluster API service handles interactions with the local infrastructure provider." [ref=e411]:
+                      - cell "Day-2 Operations" [ref=e412]
+                      - cell "❌" [ref=e413]
+                      - cell "The PCG is not involved in Day-2 operations. The internal Cluster API service handles interactions with the local infrastructure provider." [ref=e414]:
+                        - text: The PCG is not involved in Day-2 operations. The internal
+                        - link "Cluster API" [ref=e415] [cursor=pointer]:
+                          - /url: https://cluster-api.sigs.k8s.io/
+                        - text: service handles interactions with the local infrastructure provider.
+                    - row "Cluster Deletion ✅ The PCG is involved in the cluster deletion process. The PCG will request the infrastructure provider to release the resources used by the cluster." [ref=e416]:
+                      - cell "Cluster Deletion" [ref=e417]
+                      - cell "✅" [ref=e418]
+                      - cell "The PCG is involved in the cluster deletion process. The PCG will request the infrastructure provider to release the resources used by the cluster." [ref=e419]
+                - heading "Operating SystemDirect link to Operating System" [level=2] [ref=e420]:
+                  - text: Operating System
+                  - link "Direct link to Operating System" [ref=e421] [cursor=pointer]:
+                    - /url: "#operating-system"
+                    - text: "#"
+                - paragraph [ref=e422]:
+                  - text: The PCG is deployed with
+                  - link "Canonical Ubuntu" [ref=e423] [cursor=pointer]:
+                    - /url: https://ubuntu.com/
+                  - text: as the Operating System (OS). You can use Ubuntu Pro when installing the PCG through the Palette CLI. Ubuntu Pro is a premium Ubuntu version with additional security and compliance features. You must provide a Ubuntu Pro subscription token to use Ubuntu Pro with the PCG. The version of Ubuntu varies based on the Palette release and the PCG version, but each Ubuntu version is an LTS release.
+                - paragraph [ref=e424]:
+                  - text: If you are installing a PCG onto an
+                  - link "existing Kubernetes cluster" [ref=e425] [cursor=pointer]:
+                    - /url: /clusters/pcg/deploy-pcg-k8s/
+                  - text: ", then the OS of the PCG will be the same as the underlying Kubernetes cluster."
+                - paragraph [ref=e426]:
+                  - text: The default user name for a PCG node deployed through the Palette CLI is
+                  - code [ref=e427]: spectro
+                  - text: . If you need to establish a Secure Shell Session (SSH) with a PCG node, use the private SSH key that matches the public key you provided during the PCG installation process. For PCG nodes deployed onto an existing Kubernetes cluster, the default user name is dictated by the configuration of the underlying Kubernetes cluster. Contact your Kubernetes administrator for the default user name and guidance on establishing an SSH session.
+                - heading "PCG Deployment OptionsDirect link to PCG Deployment Options" [level=2] [ref=e428]:
+                  - text: PCG Deployment Options
+                  - link "Direct link to PCG Deployment Options" [ref=e429] [cursor=pointer]:
+                    - /url: "#pcg-deployment-options"
+                    - text: "#"
+                - paragraph [ref=e430]: "A PCG comes in two flavors: Private Cloud Gateway and System Private Gateway."
+                - list [ref=e431]:
+                  - listitem [ref=e432]:
+                    - paragraph [ref=e433]:
+                      - strong [ref=e434]: Private Cloud Gateway
+                      - text: "- An infrastructure resource that is deployed into a private cloud environment using the Palette CLI or manually onto an existing Kubernetes cluster. The PCG maintains a connection to Palette and directly connects to the infrastructure environment. The PCG also supports using a proxy server to access the internet if needed."
+                  - listitem [ref=e435]:
+                    - paragraph [ref=e436]:
+                      - strong [ref=e437]: System Private Gateway
+                      - text: "- A PCG service that is enabled inside a self-hosted Palette instance. The System Private Gateway is used when a self-hosted Palette instance can communicate directly with a private cloud environment. If the infrastructure environment is behind a firewall or a Network Address Translation (NAT) gateway, then a PCG is required inside the infrastructure environment to support communication with Palette."
+                - heading "Private Cloud GatewayDirect link to Private Cloud Gateway" [level=3] [ref=e438]:
+                  - text: Private Cloud Gateway
+                  - link "Direct link to Private Cloud Gateway" [ref=e439] [cursor=pointer]:
+                    - /url: "#private-cloud-gateway"
+                    - text: "#"
+                - paragraph [ref=e440]: A PCG is made up of a cluster of nodes that are deployed into a private cloud environment using the Palette CLI or manually onto an existing Kubernetes cluster. The PCG maintains a connection to Palette and directly connects to the infrastructure environment.
+                - paragraph [ref=e441]: The direct communication channel allows Palette to create clusters using the PCG to support communication with the local infrastructure provider's API.
+                - paragraph [ref=e442]: Once Palette deploys clusters, the clusters require connectivity to Palette. The clusters communicate with Palette directly via a local network gateway, or if a proxy has been configured on the PCG, the clusters will inherit the proxy configuration. Deployed and active clusters maintain their connectivity with Palette. Any actions taken on these clusters using Palette will not require PCG participation. This means that if the PCG becomes unavailable, any clusters that are currently deployed will remain operational and still be managed by Palette.
+                - paragraph [ref=e443]: All Palette deployed clusters will use the PCG cluster during the creation and deletion phase. Once a deployed cluster is available, the internal Palette agent will communicate with Palette directly. The Palette agent inside each cluster originates all communication, so the network requests are outbound toward Palette. The exception is a host cluster creation or deletion request, where the PCG must be involved because it needs to acquire and release resources provided by the infrastructure provider.
+                - paragraph [ref=e444]:
+                  - text: Typically, the PCG is used with Palette SaaS. However, a PCG is also required if you have a self-hosted Palette instance and it does not have direct access to the infrastructure environment. You can utilize the System Private Gateway if there is direct network connectivity access with the target environment. Refer to the
+                  - link "System Private Gateway" [ref=e445] [cursor=pointer]:
+                    - /url: "#system-private-gateway"
+                  - text: section to learn more.
+                - heading "System Private GatewayDirect link to System Private Gateway" [level=3] [ref=e446]:
+                  - text: System Private Gateway
+                  - link "Direct link to System Private Gateway" [ref=e447] [cursor=pointer]:
+                    - /url: "#system-private-gateway"
+                    - text: "#"
+                - paragraph [ref=e448]: A System Private Gateway can be used if a self-hosted Palette instance can communicate directly with resources inside a private cloud environment. A System Private Gateway is a PCG service that is enabled inside the self-hosted Palette instance.
+                - generic [ref=e449]:
+                  - generic [ref=e450]:
+                    - img [ref=e452]
+                    - text: warning
+                  - paragraph [ref=e455]:
+                    - text: Only self-hosted Palette or VerteX instances support using the System Private Gateway. Use the default
+                    - link "PCG deployment" [ref=e456] [cursor=pointer]:
+                      - /url: "#private-cloud-gateway"
+                    - text: option if you have NAT gateways or network firewalls between Palette and your compute environment.
+                - paragraph [ref=e457]: The following table explains the different use cases for when a PCG or a System Private Gateway is supported.
+                - table [ref=e458]:
+                  - rowgroup [ref=e459]:
+                    - row "Scenario Use Private Cloud Gateway? Use System Private Gateway?" [ref=e460]:
+                      - cell "Scenario" [ref=e461]
+                      - cell "Use Private Cloud Gateway?" [ref=e462]
+                      - cell "Use System Private Gateway?" [ref=e463]
+                  - rowgroup [ref=e464]:
+                    - row "Firewall or NAT between the infrastructure environment and a self-hosted Palette instance ✅ ❌" [ref=e465]:
+                      - cell "Firewall or NAT between the infrastructure environment and a self-hosted Palette instance" [ref=e466]
+                      - cell "✅" [ref=e467]
+                      - cell "❌" [ref=e468]
+                    - row "Direct connectivity between the infrastructure environment and a self-hosted Palette instance ✅ ✅" [ref=e469]:
+                      - cell "Direct connectivity between the infrastructure environment and a self-hosted Palette instance" [ref=e470]
+                      - cell "✅" [ref=e471]
+                      - cell "✅" [ref=e472]
+                    - row "Firewall or NAT between the infrastructure environment and Palette SaaS ✅ ❌" [ref=e473]:
+                      - cell "Firewall or NAT between the infrastructure environment and Palette SaaS" [ref=e474]
+                      - cell "✅" [ref=e475]
+                      - cell "❌" [ref=e476]
+                    - row "Direct connectivity between Palette SaaS and the infrastructure environment ✅ ❌" [ref=e477]:
+                      - cell "Direct connectivity between Palette SaaS and the infrastructure environment" [ref=e478]
+                      - cell "✅" [ref=e479]
+                      - cell "❌" [ref=e480]
+                - heading "How to Use System Private Gateway?Direct link to How to Use System Private Gateway?" [level=4] [ref=e481]:
+                  - text: How to Use System Private Gateway?
+                  - link "Direct link to How to Use System Private Gateway?" [ref=e482] [cursor=pointer]:
+                    - /url: "#how-to-use-system-private-gateway"
+                    - text: "#"
+                - paragraph [ref=e483]:
+                  - text: To use the System Private Gateway with a self-hosted Palette instance, you must toggle the
+                  - strong [ref=e484]: Use System Private Gateway
+                  - text: option while registering a private cloud account with Palette. This option is only available from the Palette user interface for private cloud environments such as MAAS, OpenStack, and VMware vSphere.
+                - paragraph [ref=e485]:
+                  - img "View of the cloud account registration screen with the system PCG check box highlighted" [ref=e486]
+              - generic [ref=e487]:
+                - generic [ref=e489]:
+                  - text: "Tags:"
+                  - list [ref=e490]:
+                    - listitem [ref=e491]:
+                      - link "pcg" [ref=e492] [cursor=pointer]:
+                        - /url: /tags/pcg/
+                - link "Edit this page" [ref=e495] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/pcg/architecture.md
+                  - img [ref=e496]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e500]:
+              - link "Previous « Private Cloud Gateway" [ref=e501] [cursor=pointer]:
+                - /url: /clusters/pcg/
+                - generic [ref=e502]: Previous
+                - generic [ref=e503]: « Private Cloud Gateway
+              - link "Next Deploy a PCG with Palette CLI »" [ref=e504] [cursor=pointer]:
+                - /url: /clusters/pcg/deploy-pcg/
+                - generic [ref=e505]: Next
+                - generic [ref=e506]: Deploy a PCG with Palette CLI »
+          - list [ref=e509]:
+            - listitem [ref=e510]:
+              - link "Network Communication" [ref=e511] [cursor=pointer]:
+                - /url: "#network-communication"
+              - list [ref=e512]:
+                - listitem [ref=e513]:
+                  - link "Network Proxy" [ref=e514] [cursor=pointer]:
+                    - /url: "#network-proxy"
+            - listitem [ref=e515]:
+              - link "Cluster Lifecycle Support" [ref=e516] [cursor=pointer]:
+                - /url: "#cluster-lifecycle-support"
+            - listitem [ref=e517]:
+              - link "Operating System" [ref=e518] [cursor=pointer]:
+                - /url: "#operating-system"
+            - listitem [ref=e519]:
+              - link "PCG Deployment Options" [ref=e520] [cursor=pointer]:
+                - /url: "#pcg-deployment-options"
+              - list [ref=e521]:
+                - listitem [ref=e522]:
+                  - link "Private Cloud Gateway" [ref=e523] [cursor=pointer]:
+                    - /url: "#private-cloud-gateway"
+                - listitem [ref=e524]:
+                  - link "System Private Gateway" [ref=e525] [cursor=pointer]:
+                    - /url: "#system-private-gateway"
+  - button "Project Logo Ask AI" [ref=e526] [cursor=pointer]:
+    - generic [ref=e529]:
+      - img "Project Logo" [ref=e530]
+      - paragraph [ref=e531]: Ask AI
+```

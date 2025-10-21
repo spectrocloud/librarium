@@ -1,0 +1,827 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [expanded] [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+                - list [ref=e107]:
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Public Cloud Clusters" [ref=e110] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e112]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e114] [cursor=pointer]
+                  - listitem [ref=e115]:
+                    - generic [ref=e116]:
+                      - link "Data Center Clusters" [ref=e117] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e119]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e121] [cursor=pointer]
+                  - listitem [ref=e122]:
+                    - generic [ref=e123]:
+                      - link "Edge" [ref=e124] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e126]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e128] [cursor=pointer]
+                  - listitem [ref=e129]:
+                    - generic [ref=e130]:
+                      - link "Palette Virtual Clusters" [ref=e131] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e133]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e135] [cursor=pointer]
+                  - listitem [ref=e136]:
+                    - generic [ref=e137]:
+                      - link "Imported Clusters" [ref=e138] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e140]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e142] [cursor=pointer]
+                  - listitem [ref=e143]:
+                    - generic [ref=e144]:
+                      - link "Manage Clusters" [expanded] [ref=e145] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e147]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e149] [cursor=pointer]
+                    - list [ref=e150]:
+                      - listitem [ref=e151]:
+                        - generic [ref=e152]:
+                          - link "SSH" [ref=e153] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/ssh/
+                          - button "Toggle the collapsible sidebar category 'SSH'" [ref=e154] [cursor=pointer]
+                      - listitem [ref=e155]:
+                        - link "Update a Cluster" [ref=e156] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-updates/
+                      - listitem [ref=e157]:
+                        - generic [ref=e158]:
+                          - link "Cluster Monitoring" [ref=e159] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/monitoring/
+                          - button "Toggle the collapsible sidebar category 'Cluster Monitoring'" [ref=e160] [cursor=pointer]
+                      - listitem [ref=e161]:
+                        - link "Cluster Health Alerts" [ref=e162] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/health-alerts/
+                      - listitem [ref=e163]:
+                        - generic [ref=e164]:
+                          - link "Backup and Restore" [ref=e165] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/backup-restore/
+                          - button "Toggle the collapsible sidebar category 'Backup and Restore'" [ref=e166] [cursor=pointer]
+                      - listitem [ref=e167]:
+                        - link "Renew Cluster PKI Certificates" [ref=e168] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/certificate-management/
+                      - listitem [ref=e169]:
+                        - link "Compliance Scan" [ref=e170] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/compliance-scan/
+                      - listitem [ref=e171]:
+                        - link "OS Patching" [ref=e172] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/os-patching/
+                      - listitem [ref=e173]:
+                        - link "Cost Visibility" [ref=e174] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cloud-cost/
+                      - listitem [ref=e175]:
+                        - link "Workload Visibility" [ref=e176] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/workloads/
+                      - listitem [ref=e177]:
+                        - link "Node Labels" [ref=e178] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-labels/
+                      - listitem [ref=e179]:
+                        - link "Taints and Tolerations" [ref=e180] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/taints/
+                      - listitem [ref=e181]:
+                        - link "RBAC and Namespace Support" [ref=e182] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-rbac/
+                      - listitem [ref=e183]:
+                        - link "Namespace Management" [ref=e184] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/namespace-management/
+                      - listitem [ref=e185]:
+                        - link "Palette Macros" [ref=e186] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/macros/
+                      - listitem [ref=e187]:
+                        - link "Pack Monitoring" [ref=e188] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/pack-monitoring/
+                      - listitem [ref=e189]:
+                        - link "Kubeconfig" [ref=e190] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/kubeconfig/
+                      - listitem [ref=e191]:
+                        - link "Kubectl" [ref=e192] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/palette-webctl/
+                      - listitem [ref=e193]:
+                        - generic [ref=e194]:
+                          - link "Platform Settings" [ref=e195] [cursor=pointer]:
+                            - /url: /clusters/cluster-management/platform-settings/
+                          - button "Toggle the collapsible sidebar category 'Platform Settings'" [ref=e196] [cursor=pointer]
+                      - listitem [ref=e197]:
+                        - link "Map and Filter Clusters" [ref=e198] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-map-filters/
+                      - listitem [ref=e199]:
+                        - link "Node Pools" [ref=e200] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/node-pool/
+                      - listitem [ref=e201]:
+                        - link "Configure Applications to Use Proxy Server" [ref=e202] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/cluster-proxy/
+                      - listitem [ref=e203]:
+                        - link "Spectro Kubernetes Dashboard" [ref=e204] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/spectro-kubernetes-dashboard/
+                      - listitem [ref=e205]:
+                        - link "Cluster Removal" [ref=e206] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/remove-clusters/
+                      - listitem [ref=e207]:
+                        - link "Image Swap" [ref=e208] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/image-swap/
+                      - listitem [ref=e209]:
+                        - link "Maintenance Mode" [ref=e210] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/maintenance-mode/
+                  - listitem [ref=e211]:
+                    - generic [ref=e212]:
+                      - link "Cluster Groups" [ref=e213] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e215]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e217] [cursor=pointer]
+                  - listitem [ref=e218]:
+                    - generic [ref=e219]:
+                      - link "Private Cloud Gateway" [ref=e220] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e222]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e224] [cursor=pointer]
+              - listitem [ref=e225]:
+                - generic [ref=e226]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e227] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e229]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e231] [cursor=pointer]
+              - listitem [ref=e232]:
+                - generic [ref=e233]:
+                  - link "Palette Dev Engine" [ref=e234] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e236]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e238] [cursor=pointer]
+              - listitem [ref=e239]:
+                - generic [ref=e240]:
+                  - link "Virtual Machine Orchestrator" [ref=e241] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e243]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e245] [cursor=pointer]
+              - listitem [ref=e246]:
+                - generic [ref=e247]:
+                  - link "Workspaces" [ref=e248] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e250]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e252] [cursor=pointer]
+              - listitem [ref=e253]:
+                - generic [ref=e254]:
+                  - link "Packs List" [ref=e255] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e257]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e259] [cursor=pointer]
+              - listitem [ref=e260]:
+                - generic [ref=e261]:
+                  - link "User & Role Management" [ref=e262] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e264]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e266] [cursor=pointer]
+              - listitem [ref=e267]:
+                - generic [ref=e268]:
+                  - link "Registries and Packs" [ref=e269] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e271]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e273] [cursor=pointer]
+              - listitem [ref=e274]:
+                - generic [ref=e275]:
+                  - link "Security" [ref=e276] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e278]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e280] [cursor=pointer]
+              - listitem [ref=e281]:
+                - generic [ref=e282]:
+                  - link "Audit Logs" [ref=e283] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e285]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e287] [cursor=pointer]
+              - listitem [ref=e288]:
+                - generic [ref=e289]:
+                  - link "Self-Hosted Palette" [ref=e290] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e292]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e294] [cursor=pointer]
+              - listitem [ref=e295]:
+                - generic [ref=e296]:
+                  - link "Palette VerteX" [ref=e297] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e299]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e301] [cursor=pointer]
+              - listitem [ref=e302]:
+                - generic [ref=e303]:
+                  - link "Tenant Administration" [ref=e304] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e306]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e308] [cursor=pointer]
+              - listitem [ref=e309]:
+                - generic [ref=e310]:
+                  - link "Automation" [ref=e311] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e313]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e315] [cursor=pointer]
+              - listitem [ref=e316]:
+                - generic [ref=e317]:
+                  - link "Troubleshooting" [ref=e318] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e320]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e322] [cursor=pointer]
+              - listitem [ref=e323]:
+                - link "Glossary" [ref=e324] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e326]
+                  - text: Glossary
+              - listitem [ref=e328]:
+                - generic [ref=e329]:
+                  - link "Compliance & Legal" [ref=e330] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e332]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e334] [cursor=pointer]
+              - listitem [ref=e335]:
+                - button "Privacy Settings" [ref=e336] [cursor=pointer]:
+                  - img [ref=e337]
+                  - text: Privacy Settings
+      - main [ref=e339]:
+        - generic [ref=e341]:
+          - generic [ref=e343]:
+            - article [ref=e344]:
+              - navigation "Breadcrumbs" [ref=e345]:
+                - list [ref=e346]:
+                  - listitem [ref=e347]:
+                    - link "Home page" [ref=e348] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e349]
+                  - listitem [ref=e351]:
+                    - link "Clusters" [ref=e352] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e353]:
+                    - link "Manage Clusters" [ref=e354] [cursor=pointer]:
+                      - /url: /clusters/cluster-management/
+                  - listitem [ref=e355]:
+                    - generic [ref=e356]: Map and Filter Clusters
+              - generic [ref=e357]:
+                - heading "Map and Filter Clusters" [level=1] [ref=e359]
+                - paragraph [ref=e360]:
+                  - text: The Palette Dashboard provides users with the ability to map and filter Kubernetes clusters. You can find these capabilities on the
+                  - strong [ref=e361]: Clusters
+                  - text: page. Mapping and filtering is available for clusters deployed to public clouds, data centers, and Edge hosts.
+                - heading "Cluster List ViewDirect link to Cluster List View" [level=2] [ref=e362]:
+                  - text: Cluster List View
+                  - link "Direct link to Cluster List View" [ref=e363] [cursor=pointer]:
+                    - /url: "#cluster-list-view"
+                    - text: "#"
+                - paragraph [ref=e364]:
+                  - text: Palette provides the
+                  - strong [ref=e365]: Cluster List View
+                  - text: as an efficient way to view and search your clusters. The cluster list contains all Palette clusters deployed in the selected Palette scope. The list view also provides filters that allow you to narrow down clusters that may be dispersed geographically, across multiple regions, or different cloud providers. You can also search your clusters by name.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e366]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e367] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e368]:
+                  - listitem [ref=e369]:
+                    - text: A
+                    - link "Palette" [ref=e370] [cursor=pointer]:
+                      - /url: https://console.spectrocloud.com
+                    - text: account with the permissions to view and list clusters. Refer to the
+                    - link "Roles and Permissions" [ref=e371] [cursor=pointer]:
+                      - /url: /user-management/palette-rbac/project-scope-roles-permissions/
+                    - text: guide for more information.
+                  - listitem [ref=e372]: One or more active Kubernetes clusters in Palette.
+                - heading "EnablementDirect link to Enablement" [level=3] [ref=e373]:
+                  - text: Enablement
+                  - link "Direct link to Enablement" [ref=e374] [cursor=pointer]:
+                    - /url: "#enablement"
+                    - text: "#"
+                - list [ref=e375]:
+                  - listitem [ref=e376]:
+                    - paragraph [ref=e377]:
+                      - text: Log in to
+                      - link "Palette" [ref=e378] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e379]:
+                    - paragraph [ref=e380]:
+                      - text: Select
+                      - strong [ref=e381]: Clusters
+                      - text: from the left
+                      - strong [ref=e382]: Main Menu
+                      - text: . All the clusters deployed in your selected Palette scope appear in the clusters list. The list filters appear at the top of the map. You can filter your clusters by the following characteristics.
+                    - table [ref=e383]:
+                      - rowgroup [ref=e384]:
+                        - row "Filter Description Values" [ref=e385]:
+                          - cell "Filter" [ref=e386]:
+                            - strong [ref=e387]: Filter
+                          - cell "Description" [ref=e388]:
+                            - strong [ref=e389]: Description
+                          - cell "Values" [ref=e390]:
+                            - strong [ref=e391]: Values
+                      - rowgroup [ref=e392]:
+                        - row "Name Filter and display the cluster matching the specified name. Custom string" [ref=e393]:
+                          - cell "Name" [ref=e394]:
+                            - strong [ref=e395]: Name
+                          - cell "Filter and display the cluster matching the specified name." [ref=e396]
+                          - cell "Custom string" [ref=e397]
+                        - row "Environment Filter and display clusters based on the cluster type. Configured cluster types" [ref=e398]:
+                          - cell "Environment" [ref=e399]:
+                            - strong [ref=e400]: Environment
+                          - cell "Filter and display clusters based on the cluster type." [ref=e401]
+                          - cell "Configured cluster types" [ref=e402]
+                        - row "Status Filter and display clusters based on their current status. Pending, Provisioning, Running, Deleting, Importing, Unknown, and Deleted" [ref=e403]:
+                          - cell "Status" [ref=e404]:
+                            - strong [ref=e405]: Status
+                          - cell "Filter and display clusters based on their current status." [ref=e406]
+                          - cell "Pending, Provisioning, Running, Deleting, Importing, Unknown, and Deleted" [ref=e407]:
+                            - strong [ref=e408]: Pending
+                            - text: ","
+                            - strong [ref=e409]: Provisioning
+                            - text: ","
+                            - strong [ref=e410]: Running
+                            - text: ","
+                            - strong [ref=e411]: Deleting
+                            - text: ","
+                            - strong [ref=e412]: Importing
+                            - text: ","
+                            - strong [ref=e413]: Unknown
+                            - text: ", and"
+                            - strong [ref=e414]: Deleted
+                        - row "Tags Filter and display clusters based on the configured cluster tags. Configured cluster tags" [ref=e415]:
+                          - cell "Tags" [ref=e416]:
+                            - strong [ref=e417]: Tags
+                          - cell "Filter and display clusters based on the configured cluster tags." [ref=e418]
+                          - cell "Configured cluster tags" [ref=e419]
+                    - paragraph [ref=e420]:
+                      - img "Cluster list view" [ref=e421]
+                  - listitem [ref=e422]:
+                    - paragraph [ref=e423]:
+                      - text: Click on the
+                      - strong [ref=e424]: Environment
+                      - text: drop-down Menu and select a cluster type. The cluster list displays matching clusters.
+                  - listitem [ref=e425]:
+                    - paragraph [ref=e426]:
+                      - text: Click on the
+                      - strong [ref=e427]: Status
+                      - text: drop-down Menu and select the
+                      - strong [ref=e428]: Running
+                      - text: status. The cluster list displays clusters matching the selected cluster type and status. You can combine as many filters as you require. Only clusters that satisfy all filter requirements are displayed.
+                  - listitem [ref=e429]:
+                    - paragraph [ref=e430]:
+                      - text: Click on
+                      - strong [ref=e431]: Clear All
+                      - text: . The filters are removed and the cluster list displays all clusters in your selected scope.
+                  - listitem [ref=e432]:
+                    - paragraph [ref=e433]:
+                      - text: Enter and select cluster tags in the
+                      - strong [ref=e434]: Tags
+                      - text: field. The cluster list displays all clusters deployed with the specified cluster tags.
+                  - listitem [ref=e435]:
+                    - paragraph [ref=e436]:
+                      - text: Click on
+                      - strong [ref=e437]: Clear All
+                      - text: . The filters are removed and the cluster list displays all clusters in your selected scope.
+                  - listitem [ref=e438]:
+                    - paragraph [ref=e439]:
+                      - text: Enter a cluster name in the
+                      - strong [ref=e440]: Search
+                      - text: field. The cluster list displays the cluster matching the specified name. Select the row of the matching cluster. The cluster details appear in the
+                      - strong [ref=e441]: Overview
+                      - text: tab of the selected cluster.
+                  - listitem [ref=e442]:
+                    - paragraph [ref=e443]:
+                      - text: Select
+                      - strong [ref=e444]: Clusters
+                      - text: from the left
+                      - strong [ref=e445]: Main Menu
+                      - text: . All the clusters deployed in your selected scope appear in the clusters list. Click on the
+                      - strong [ref=e446]: Filter
+                      - text: button. The
+                      - strong [ref=e447]: All Filters
+                      - text: pane appears.
+                    - paragraph [ref=e448]:
+                      - img "Cluster All Filters pane" [ref=e449]
+                    - paragraph [ref=e450]:
+                      - text: The
+                      - strong [ref=e451]: All Filters
+                      - text: pane provides additional filter capabilities. You can filter your clusters by the following characteristics.
+                    - table [ref=e452]:
+                      - rowgroup [ref=e453]:
+                        - row "Filter Description Values" [ref=e454]:
+                          - cell "Filter" [ref=e455]:
+                            - strong [ref=e456]: Filter
+                          - cell "Description" [ref=e457]:
+                            - strong [ref=e458]: Description
+                          - cell "Values" [ref=e459]:
+                            - strong [ref=e460]: Values
+                      - rowgroup [ref=e461]:
+                        - row "Updates Pending Filter and display clusters that have pending updates. Refer to the Update a Cluster Profile for further guidance." [ref=e462]:
+                          - cell "Updates Pending" [ref=e463]:
+                            - strong [ref=e464]: Updates Pending
+                          - cell "Filter and display clusters that have pending updates. Refer to the Update a Cluster Profile for further guidance." [ref=e465]:
+                            - text: Filter and display clusters that have pending updates. Refer to the
+                            - link "Update a Cluster Profile" [ref=e466] [cursor=pointer]:
+                              - /url: /profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile/
+                            - text: for further guidance.
+                          - cell [ref=e467]
+                        - row "Imported Filter and display clusters that have been imported to Palette. Refer to the Imported Clusters section for further guidance." [ref=e468]:
+                          - cell "Imported" [ref=e469]:
+                            - strong [ref=e470]: Imported
+                          - cell "Filter and display clusters that have been imported to Palette. Refer to the Imported Clusters section for further guidance." [ref=e471]:
+                            - text: Filter and display clusters that have been imported to Palette. Refer to the
+                            - link "Imported Clusters" [ref=e472] [cursor=pointer]:
+                              - /url: /clusters/imported-clusters/
+                            - text: section for further guidance.
+                          - cell [ref=e473]
+                        - row "Environment Filter and display deployed clusters based on the cluster type. Configured cluster types" [ref=e474]:
+                          - cell "Environment" [ref=e475]:
+                            - strong [ref=e476]: Environment
+                          - cell "Filter and display deployed clusters based on the cluster type." [ref=e477]
+                          - cell "Configured cluster types" [ref=e478]
+                        - row "Status Filter and display clusters based on their current status. Pending, Provisioning, Running, Deleting, Importing, Unknown, and Deleted" [ref=e479]:
+                          - cell "Status" [ref=e480]:
+                            - strong [ref=e481]: Status
+                          - cell "Filter and display clusters based on their current status." [ref=e482]
+                          - cell "Pending, Provisioning, Running, Deleting, Importing, Unknown, and Deleted" [ref=e483]:
+                            - strong [ref=e484]: Pending
+                            - text: ","
+                            - strong [ref=e485]: Provisioning
+                            - text: ","
+                            - strong [ref=e486]: Running
+                            - text: ","
+                            - strong [ref=e487]: Deleting
+                            - text: ","
+                            - strong [ref=e488]: Importing
+                            - text: ","
+                            - strong [ref=e489]: Unknown
+                            - text: ", and"
+                            - strong [ref=e490]: Deleted
+                        - row "Profiles Filter and display clusters based on the name of the configured cluster profile. Custom string" [ref=e491]:
+                          - cell "Profiles" [ref=e492]:
+                            - strong [ref=e493]: Profiles
+                          - cell "Filter and display clusters based on the name of the configured cluster profile." [ref=e494]
+                          - cell "Custom string" [ref=e495]
+                        - row "Tags Filter and display clusters with the specified tag. Tags can be specified during cluster deployment or from the Cluster Settings tab. Custom string" [ref=e496]:
+                          - cell "Tags" [ref=e497]:
+                            - strong [ref=e498]: Tags
+                          - cell "Filter and display clusters with the specified tag. Tags can be specified during cluster deployment or from the Cluster Settings tab." [ref=e499]:
+                            - text: Filter and display clusters with the specified tag. Tags can be specified during cluster deployment or from the
+                            - strong [ref=e500]: Cluster Settings
+                            - text: tab.
+                          - cell "Custom string" [ref=e501]
+                        - row "Health Status Filter and display clusters based on their current health status. Healthy and UnHealthy" [ref=e502]:
+                          - cell "Health Status" [ref=e503]:
+                            - strong [ref=e504]: Health Status
+                          - cell "Filter and display clusters based on their current health status." [ref=e505]
+                          - cell "Healthy and UnHealthy" [ref=e506]:
+                            - strong [ref=e507]: Healthy
+                            - text: and
+                            - strong [ref=e508]: UnHealthy
+                        - row "Cloud Account Filter and display clusters based on the cloud account they are deployed to. Configured cloud accounts" [ref=e509]:
+                          - cell "Cloud Account" [ref=e510]:
+                            - strong [ref=e511]: Cloud Account
+                          - cell "Filter and display clusters based on the cloud account they are deployed to." [ref=e512]
+                          - cell "Configured cloud accounts" [ref=e513]
+                        - row "Repave Status Filter and display clusters based on their repave status. Refer to the Repave Behavior and Configuration section for further guidance. Pending" [ref=e514]:
+                          - cell "Repave Status" [ref=e515]:
+                            - strong [ref=e516]: Repave Status
+                          - cell "Filter and display clusters based on their repave status. Refer to the Repave Behavior and Configuration section for further guidance." [ref=e517]:
+                            - text: Filter and display clusters based on their repave status. Refer to the
+                            - link "Repave Behavior and Configuration" [ref=e518] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/node-pool/#repave-behavior-and-configuration
+                            - text: section for further guidance.
+                          - cell "Pending" [ref=e519]:
+                            - strong [ref=e520]: Pending
+                        - row "Import Mode Filter and display clusters based on the mode used to import them to Palette. Refer to the Imported Clusters section for further guidance. read-only and full" [ref=e521]:
+                          - cell "Import Mode" [ref=e522]:
+                            - strong [ref=e523]: Import Mode
+                          - cell "Filter and display clusters based on the mode used to import them to Palette. Refer to the Imported Clusters section for further guidance." [ref=e524]:
+                            - text: Filter and display clusters based on the mode used to import them to Palette. Refer to the
+                            - link "Imported Clusters" [ref=e525] [cursor=pointer]:
+                              - /url: /clusters/imported-clusters/
+                            - text: section for further guidance.
+                          - cell "read-only and full" [ref=e526]:
+                            - strong [ref=e527]: read-only
+                            - text: and
+                            - strong [ref=e528]: full
+                        - row "Architecture Filter and display clusters based on the host architecture. AMD64 and ARM64" [ref=e529]:
+                          - cell "Architecture" [ref=e530]:
+                            - strong [ref=e531]: Architecture
+                          - cell "Filter and display clusters based on the host architecture." [ref=e532]
+                          - cell "AMD64 and ARM64" [ref=e533]:
+                            - strong [ref=e534]: AMD64
+                            - text: and
+                            - strong [ref=e535]: ARM64
+                        - row "Country Filter and display clusters based on the cluster location country. Any country where a cluster is deployed." [ref=e536]:
+                          - cell "Country" [ref=e537]:
+                            - strong [ref=e538]: Country
+                          - cell "Filter and display clusters based on the cluster location country." [ref=e539]
+                          - cell "Any country where a cluster is deployed." [ref=e540]
+                        - row "Region Filter and display clusters based on the cluster location region Any region where a cluster is deployed" [ref=e541]:
+                          - cell "Region" [ref=e542]:
+                            - strong [ref=e543]: Region
+                          - cell "Filter and display clusters based on the cluster location region" [ref=e544]
+                          - cell "Any region where a cluster is deployed" [ref=e545]
+                        - row "Projects Filter and display clusters based on the project they are deployed to. This filter is only available in tenant scope. Any project belonging to this tenant" [ref=e546]:
+                          - cell "Projects" [ref=e547]:
+                            - strong [ref=e548]: Projects
+                          - cell "Filter and display clusters based on the project they are deployed to. This filter is only available in tenant scope." [ref=e549]
+                          - cell "Any project belonging to this tenant" [ref=e550]
+                    - paragraph [ref=e551]: Just as with the list view filters, you can combine as many filters as you require and only clusters that satisfy all filter requirements are displayed.
+                - heading "Clusters Map ViewDirect link to Clusters Map View" [level=2] [ref=e552]:
+                  - text: Clusters Map View
+                  - link "Direct link to Clusters Map View" [ref=e553] [cursor=pointer]:
+                    - /url: "#clusters-map-view"
+                    - text: "#"
+                - paragraph [ref=e554]:
+                  - text: Palette provides a
+                  - strong [ref=e555]: Clusters Map View
+                  - text: as an alternative way to visualize and search your clusters. The map is constructed based on the configured cluster location and region. The map view provides filters that allow you to filter and search through your deployed clusters. You can also search your clusters by name.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e556]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e557] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e558]:
+                  - listitem [ref=e559]:
+                    - text: A
+                    - link "Palette" [ref=e560] [cursor=pointer]:
+                      - /url: https://console.spectrocloud.com
+                    - text: account with the permissions to view and list clusters. Refer to the
+                    - link "Roles and Permissions" [ref=e561] [cursor=pointer]:
+                      - /url: /user-management/palette-rbac/project-scope-roles-permissions/
+                    - text: guide for more information.
+                  - listitem [ref=e562]: One or more active Kubernetes clusters in Palette.
+                - heading "EnablementDirect link to Enablement" [level=3] [ref=e563]:
+                  - text: Enablement
+                  - link "Direct link to Enablement" [ref=e564] [cursor=pointer]:
+                    - /url: "#enablement-1"
+                    - text: "#"
+                - list [ref=e565]:
+                  - listitem [ref=e566]:
+                    - paragraph [ref=e567]:
+                      - text: Login to
+                      - link "Palette" [ref=e568] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e569]:
+                    - paragraph [ref=e570]:
+                      - text: Select
+                      - strong [ref=e571]: Clusters
+                      - text: from the left
+                      - strong [ref=e572]: Main Menu
+                      - text: . Clusters deployed to data centers or edge hosts need to have their locations set manually. Expand the following section to learn how to configure cluster locations. You can skip this step for clusters deployed to public clouds.
+                    - group [ref=e573]:
+                      - generic "Configure Cluster Location" [ref=e574] [cursor=pointer]
+                  - listitem [ref=e575]:
+                    - paragraph [ref=e576]:
+                      - text: Click on
+                      - strong [ref=e577]: Clusters Map View
+                      - text: from the right-hand side. The clusters map appears and displays a location pin for each cluster. The map filters appear at the top of the map. You can filter your clusters by the following characteristics.
+                    - table [ref=e578]:
+                      - rowgroup [ref=e579]:
+                        - row "Filter Description Values" [ref=e580]:
+                          - cell "Filter" [ref=e581]:
+                            - strong [ref=e582]: Filter
+                          - cell "Description" [ref=e583]:
+                            - strong [ref=e584]: Description
+                          - cell "Values" [ref=e585]:
+                            - strong [ref=e586]: Values
+                      - rowgroup [ref=e587]:
+                        - row "Name Filter and display the cluster matching the specified name. Custom string" [ref=e588]:
+                          - cell "Name" [ref=e589]:
+                            - strong [ref=e590]: Name
+                          - cell "Filter and display the cluster matching the specified name." [ref=e591]
+                          - cell "Custom string" [ref=e592]
+                        - row "Environment Filter and display clusters based on the cluster type. Configured cluster types" [ref=e593]:
+                          - cell "Environment" [ref=e594]:
+                            - strong [ref=e595]: Environment
+                          - cell "Filter and display clusters based on the cluster type." [ref=e596]
+                          - cell "Configured cluster types" [ref=e597]
+                        - row "Status Filter and display clusters based on their current status. Pending, Provisioning, Running, Deleting, Importing, Unknown, and Deleted" [ref=e598]:
+                          - cell "Status" [ref=e599]:
+                            - strong [ref=e600]: Status
+                          - cell "Filter and display clusters based on their current status." [ref=e601]
+                          - cell "Pending, Provisioning, Running, Deleting, Importing, Unknown, and Deleted" [ref=e602]:
+                            - strong [ref=e603]: Pending
+                            - text: ","
+                            - strong [ref=e604]: Provisioning
+                            - text: ","
+                            - strong [ref=e605]: Running
+                            - text: ","
+                            - strong [ref=e606]: Deleting
+                            - text: ","
+                            - strong [ref=e607]: Importing
+                            - text: ","
+                            - strong [ref=e608]: Unknown
+                            - text: ", and"
+                            - strong [ref=e609]: Deleted
+                        - row "Tags Filter and display clusters based on the configured cluster tags. Configured cluster tags" [ref=e610]:
+                          - cell "Tags" [ref=e611]:
+                            - strong [ref=e612]: Tags
+                          - cell "Filter and display clusters based on the configured cluster tags." [ref=e613]
+                          - cell "Configured cluster tags" [ref=e614]
+                    - paragraph [ref=e615]:
+                      - img "Cluster map view" [ref=e616]
+                  - listitem [ref=e617]:
+                    - paragraph [ref=e618]:
+                      - text: Click on the
+                      - strong [ref=e619]: Environment
+                      - text: drop-down Menu and select a cluster type. The map displays matching clusters.
+                  - listitem [ref=e620]:
+                    - paragraph [ref=e621]:
+                      - text: Click on the
+                      - strong [ref=e622]: Status
+                      - text: drop-down Menu and select
+                      - strong [ref=e623]: Running
+                      - text: status. The map displays clusters matching the selected cluster type and status. You can combine as many filters as you require. Only clusters that satisfy all filter requirements are displayed.
+                  - listitem [ref=e624]:
+                    - paragraph [ref=e625]:
+                      - text: Click on
+                      - strong [ref=e626]: Clear All
+                      - text: . The filters are removed and the map displays all clusters.
+                  - listitem [ref=e627]:
+                    - paragraph [ref=e628]:
+                      - text: Enter and select cluster tags in the
+                      - strong [ref=e629]: Tags
+                      - text: field. The map displays all clusters deployed with the specified cluster tags.
+                  - listitem [ref=e630]:
+                    - paragraph [ref=e631]:
+                      - text: Click on
+                      - strong [ref=e632]: Clear All
+                      - text: . The filters are removed and the map displays all clusters.
+                  - listitem [ref=e633]:
+                    - paragraph [ref=e634]:
+                      - text: Enter a cluster name in the
+                      - strong [ref=e635]: Search
+                      - text: field. The map displays the cluster matching the specified name. Click on the map location pin of the matching cluster. The cluster details card appears. Click on
+                      - strong [ref=e636]: View Details
+                      - text: . The cluster details appear in the
+                      - strong [ref=e637]: Overview
+                      - text: tab of the selected cluster.
+                    - paragraph [ref=e638]:
+                      - img "Cluster details" [ref=e639]
+              - generic [ref=e640]:
+                - generic [ref=e642]:
+                  - text: "Tags:"
+                  - list [ref=e643]:
+                    - listitem [ref=e644]:
+                      - link "clusters" [ref=e645] [cursor=pointer]:
+                        - /url: /tags/clusters/
+                    - listitem [ref=e646]:
+                      - link "cluster management" [ref=e647] [cursor=pointer]:
+                        - /url: /tags/cluster-management/
+                - link "Edit this page" [ref=e650] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/cluster-management/cluster-map-filters.md
+                  - img [ref=e651]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e655]:
+              - link "Previous « Automatic Cluster Role Bindings" [ref=e656] [cursor=pointer]:
+                - /url: /clusters/cluster-management/platform-settings/cluster-auto-rbac/
+                - generic [ref=e657]: Previous
+                - generic [ref=e658]: « Automatic Cluster Role Bindings
+              - link "Next Node Pools »" [ref=e659] [cursor=pointer]:
+                - /url: /clusters/cluster-management/node-pool/
+                - generic [ref=e660]: Next
+                - generic [ref=e661]: Node Pools »
+          - list [ref=e664]:
+            - listitem [ref=e665]:
+              - link "Cluster List View" [ref=e666] [cursor=pointer]:
+                - /url: "#cluster-list-view"
+              - list [ref=e667]:
+                - listitem [ref=e668]:
+                  - link "Prerequisites" [ref=e669] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e670]:
+                  - link "Enablement" [ref=e671] [cursor=pointer]:
+                    - /url: "#enablement"
+            - listitem [ref=e672]:
+              - link "Clusters Map View" [ref=e673] [cursor=pointer]:
+                - /url: "#clusters-map-view"
+              - list [ref=e674]:
+                - listitem [ref=e675]:
+                  - link "Prerequisites" [ref=e676] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e677]:
+                  - link "Enablement" [ref=e678] [cursor=pointer]:
+                    - /url: "#enablement-1"
+  - button "Project Logo Ask AI" [ref=e679] [cursor=pointer]:
+    - generic [ref=e682]:
+      - img "Project Logo" [ref=e683]
+      - paragraph [ref=e684]: Ask AI
+```

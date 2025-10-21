@@ -1,0 +1,496 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Introduction" [ref=e41] [cursor=pointer]:
+                  - /url: /api/introduction/
+                  - img [ref=e43]
+                  - text: Introduction
+              - listitem [ref=e45]:
+                - link "Example Usage" [ref=e46] [cursor=pointer]:
+                  - /url: /api/samples/
+              - listitem [ref=e47]:
+                - link "Postman Collection" [ref=e48] [cursor=pointer]:
+                  - /url: /api/postman-collection/
+              - listitem [ref=e49]:
+                - generic [ref=e50]:
+                  - link "Palette API V1" [expanded] [ref=e51] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Palette API V1'" [ref=e52] [cursor=pointer]
+                - list [ref=e53]:
+                  - listitem [ref=e54]:
+                    - link "Introduction" [ref=e55] [cursor=pointer]:
+                      - /url: /api/v1/palette-apis-4-7/
+                  - listitem [ref=e56]:
+                    - generic [ref=e57]:
+                      - link "Api Keys" [ref=e58] [cursor=pointer]:
+                        - /url: /api/v1/api-keys/
+                      - button "Toggle the collapsible sidebar category 'Api Keys'" [ref=e59] [cursor=pointer]
+                  - listitem [ref=e60]:
+                    - generic [ref=e61]:
+                      - link "App Deployments" [ref=e62] [cursor=pointer]:
+                        - /url: /api/v1/app-deployments/
+                      - button "Toggle the collapsible sidebar category 'App Deployments'" [ref=e63] [cursor=pointer]
+                  - listitem [ref=e64]:
+                    - generic [ref=e65]:
+                      - link "App Profiles" [ref=e66] [cursor=pointer]:
+                        - /url: /api/v1/app-profiles/
+                      - button "Toggle the collapsible sidebar category 'App Profiles'" [ref=e67] [cursor=pointer]
+                  - listitem [ref=e68]:
+                    - generic [ref=e69]:
+                      - link "Audits" [ref=e70] [cursor=pointer]:
+                        - /url: /api/v1/audits/
+                      - button "Toggle the collapsible sidebar category 'Audits'" [ref=e71] [cursor=pointer]
+                  - listitem [ref=e72]:
+                    - generic [ref=e73]:
+                      - link "Auth" [ref=e74] [cursor=pointer]:
+                        - /url: /api/v1/auth/
+                      - button "Toggle the collapsible sidebar category 'Auth'" [ref=e75] [cursor=pointer]
+                  - listitem [ref=e76]:
+                    - generic [ref=e77]:
+                      - link "Cloudaccounts" [ref=e78] [cursor=pointer]:
+                        - /url: /api/v1/cloudaccounts/
+                      - button "Toggle the collapsible sidebar category 'Cloudaccounts'" [ref=e79] [cursor=pointer]
+                  - listitem [ref=e80]:
+                    - generic [ref=e81]:
+                      - link "Cloudconfigs" [ref=e82] [cursor=pointer]:
+                        - /url: /api/v1/cloudconfigs/
+                      - button "Toggle the collapsible sidebar category 'Cloudconfigs'" [ref=e83] [cursor=pointer]
+                  - listitem [ref=e84]:
+                    - generic [ref=e85]:
+                      - link "Clouds" [ref=e86] [cursor=pointer]:
+                        - /url: /api/v1/clouds/
+                      - button "Toggle the collapsible sidebar category 'Clouds'" [ref=e87] [cursor=pointer]
+                  - listitem [ref=e88]:
+                    - generic [ref=e89]:
+                      - link "Cluster Templates" [ref=e90] [cursor=pointer]:
+                        - /url: /api/v1/cluster-templates/
+                      - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+                  - listitem [ref=e92]:
+                    - generic [ref=e93]:
+                      - link "Clustergroups" [ref=e94] [cursor=pointer]:
+                        - /url: /api/v1/clustergroups/
+                      - button "Toggle the collapsible sidebar category 'Clustergroups'" [ref=e95] [cursor=pointer]
+                  - listitem [ref=e96]:
+                    - generic [ref=e97]:
+                      - link "Clusterprofiles" [expanded] [ref=e98] [cursor=pointer]:
+                        - /url: /api/v1/clusterprofiles/
+                      - button "Toggle the collapsible sidebar category 'Clusterprofiles'" [ref=e99] [cursor=pointer]
+                    - list [ref=e100]:
+                      - listitem [ref=e101]:
+                        - link "post Creates a cluster profile" [ref=e102] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-create/
+                      - listitem [ref=e103]:
+                        - link "del Deletes list of cluster profiles" [ref=e104] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-bulk-delete/
+                      - listitem [ref=e105]:
+                        - link "post Imports a cluster profile" [ref=e106] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-import/
+                      - listitem [ref=e107]:
+                        - link "post Imports a cluster profile via file" [ref=e108] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-import-file/
+                      - listitem [ref=e109]:
+                        - link "post Validates cluster profile import" [ref=e110] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-import-validate/
+                      - listitem [ref=e111]:
+                        - link "get Retrieves a list of macros" [ref=e112] [cursor=pointer]:
+                          - /url: /api/v1/v-1-macros-list/
+                      - listitem [ref=e113]:
+                        - link "get Validates the cluster profile metadata" [ref=e114] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-validate-name-version/
+                      - listitem [ref=e115]:
+                        - link "post Validates cluster profile packs" [ref=e116] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-validate-packs/
+                      - listitem [ref=e117]:
+                        - link "del Deletes the specified cluster profile" [ref=e118] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-delete/
+                      - listitem [ref=e119]:
+                        - link "get Returns a specified cluster profile" [ref=e120] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-get/
+                      - listitem [ref=e121]:
+                        - link "put Updates the specified cluster profile" [ref=e122] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-update/
+                      - listitem [ref=e123]:
+                        - link "post Creates a clone of the specified cluster profile" [ref=e124] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-uid-clone/
+                      - listitem [ref=e125]:
+                        - link "post Validates the cluster profile clone" [ref=e126] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-uid-clone-validate/
+                      - listitem [ref=e127]:
+                        - link "get Export the specified cluster profile" [ref=e128] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-uid-export/
+                      - listitem [ref=e129]:
+                        - link "get Downloads the specified cluster profile" [ref=e130] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-uid-export-terraform/
+                      - listitem [ref=e131]:
+                        - link "patch Updates the specified cluster profile metadata" [ref=e132] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-uid-metadata-update/
+                      - listitem [ref=e133]:
+                        - link "patch Updates cluster profile packs ref" [ref=e134] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-packs-ref-update/
+                      - listitem [ref=e135]:
+                        - link "get Returns the specified cluster profile packs" [ref=e136] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-uid-packs-get/
+                      - listitem [ref=e137]:
+                        - link "post Adds a new pack to the specified cluster profile and returns the created pack uid" [ref=e138] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-uid-packs-add/
+                      - listitem [ref=e139]:
+                        - link "get Returns the specified cluster profile pack manifests" [ref=e140] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-uid-packs-manifests-get/
+                      - listitem [ref=e141]:
+                        - link "get Returns the specified cluster profile packs resolved values" [ref=e142] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-uid-packs-resolved-values-get/
+                      - listitem [ref=e143]:
+                        - link "del Deletes the specified pack information in the cluster profile" [ref=e144] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-uid-packs-name-delete/
+                      - listitem [ref=e145]:
+                        - link "get Returns the specified cluster profile pack" [ref=e146] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-uid-packs-name-get/
+                      - listitem [ref=e147]:
+                        - link "put Updates the specified pack information in the cluster profile" [ref=e148] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-uid-packs-name-update/
+                      - listitem [ref=e149]:
+                        - link "get Returns the specified cluster profile pack configuration" [ref=e150] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-uid-packs-config-get/
+                      - listitem [ref=e151]:
+                        - link "get Returns the associated manifests for the specified profile's pack" [ref=e152] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-uid-packs-uid-manifests/
+                      - listitem [ref=e153]:
+                        - link "post Adds manifest to the profiles packs and returns the added manifests uid" [ref=e154] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-uid-packs-name-manifests-add/
+                      - listitem [ref=e155]:
+                        - link "del Deletes the specified cluster profile pack manifest" [ref=e156] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-uid-packs-name-manifests-uid-delete/
+                      - listitem [ref=e157]:
+                        - link "get Returns the specified cluster profile pack manifest" [ref=e158] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-uid-packs-name-manifests-uid-get/
+                      - listitem [ref=e159]:
+                        - link "put Updates the specified manifest of the profile's pack" [ref=e160] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-uid-packs-name-manifests-uid-update/
+                      - listitem [ref=e161]:
+                        - link "patch Publishes the specified cluster profile" [ref=e162] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-publish/
+                      - listitem [ref=e163]:
+                        - link "get Downloads the specified cluster profile" [ref=e164] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-uid-spc-download/
+                      - listitem [ref=e165]:
+                        - link "post Validates specified cluster profile packs" [ref=e166] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-uid-validate-packs/
+                      - listitem [ref=e167]:
+                        - link "del Deletes the specified cluster profile variables" [ref=e168] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-uid-variables-delete/
+                      - listitem [ref=e169]:
+                        - link "get Retrieve a list of variables defined for the cluster profile" [ref=e170] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-uid-variables-get/
+                      - listitem [ref=e171]:
+                        - link "patch Update specific variables defined for a cluster profile" [ref=e172] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-uid-variables-patch/
+                      - listitem [ref=e173]:
+                        - link "put Update the variables defined for a cluster profile" [ref=e174] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cluster-profiles-uid-variables-put/
+                  - listitem [ref=e175]:
+                    - generic [ref=e176]:
+                      - link "Dashboard" [ref=e177] [cursor=pointer]:
+                        - /url: /api/v1/dashboard/
+                      - button "Toggle the collapsible sidebar category 'Dashboard'" [ref=e178] [cursor=pointer]
+                  - listitem [ref=e179]:
+                    - generic [ref=e180]:
+                      - link "Datasinks" [ref=e181] [cursor=pointer]:
+                        - /url: /api/v1/datasinks/
+                      - button "Toggle the collapsible sidebar category 'Datasinks'" [ref=e182] [cursor=pointer]
+                  - listitem [ref=e183]:
+                    - generic [ref=e184]:
+                      - link "Edgehosts" [ref=e185] [cursor=pointer]:
+                        - /url: /api/v1/edgehosts/
+                      - button "Toggle the collapsible sidebar category 'Edgehosts'" [ref=e186] [cursor=pointer]
+                  - listitem [ref=e187]:
+                    - generic [ref=e188]:
+                      - link "Events" [ref=e189] [cursor=pointer]:
+                        - /url: /api/v1/events/
+                      - button "Toggle the collapsible sidebar category 'Events'" [ref=e190] [cursor=pointer]
+                  - listitem [ref=e191]:
+                    - generic [ref=e192]:
+                      - link "Features" [ref=e193] [cursor=pointer]:
+                        - /url: /api/v1/features/
+                      - button "Toggle the collapsible sidebar category 'Features'" [ref=e194] [cursor=pointer]
+                  - listitem [ref=e195]:
+                    - generic [ref=e196]:
+                      - link "Filters" [ref=e197] [cursor=pointer]:
+                        - /url: /api/v1/filters/
+                      - button "Toggle the collapsible sidebar category 'Filters'" [ref=e198] [cursor=pointer]
+                  - listitem [ref=e199]:
+                    - generic [ref=e200]:
+                      - link "Metrics" [ref=e201] [cursor=pointer]:
+                        - /url: /api/v1/metrics/
+                      - button "Toggle the collapsible sidebar category 'Metrics'" [ref=e202] [cursor=pointer]
+                  - listitem [ref=e203]:
+                    - generic [ref=e204]:
+                      - link "Notifications" [ref=e205] [cursor=pointer]:
+                        - /url: /api/v1/notifications/
+                      - button "Toggle the collapsible sidebar category 'Notifications'" [ref=e206] [cursor=pointer]
+                  - listitem [ref=e207]:
+                    - generic [ref=e208]:
+                      - link "Overlords" [ref=e209] [cursor=pointer]:
+                        - /url: /api/v1/overlords/
+                      - button "Toggle the collapsible sidebar category 'Overlords'" [ref=e210] [cursor=pointer]
+                  - listitem [ref=e211]:
+                    - generic [ref=e212]:
+                      - link "Packs" [ref=e213] [cursor=pointer]:
+                        - /url: /api/v1/packs/
+                      - button "Toggle the collapsible sidebar category 'Packs'" [ref=e214] [cursor=pointer]
+                  - listitem [ref=e215]:
+                    - generic [ref=e216]:
+                      - link "Pcg" [ref=e217] [cursor=pointer]:
+                        - /url: /api/v1/pcg/
+                      - button "Toggle the collapsible sidebar category 'Pcg'" [ref=e218] [cursor=pointer]
+                  - listitem [ref=e219]:
+                    - generic [ref=e220]:
+                      - link "Permissions" [ref=e221] [cursor=pointer]:
+                        - /url: /api/v1/permissions/
+                      - button "Toggle the collapsible sidebar category 'Permissions'" [ref=e222] [cursor=pointer]
+                  - listitem [ref=e223]:
+                    - generic [ref=e224]:
+                      - link "Projects" [ref=e225] [cursor=pointer]:
+                        - /url: /api/v1/projects/
+                      - button "Toggle the collapsible sidebar category 'Projects'" [ref=e226] [cursor=pointer]
+                  - listitem [ref=e227]:
+                    - generic [ref=e228]:
+                      - link "Registries" [ref=e229] [cursor=pointer]:
+                        - /url: /api/v1/registries/
+                      - button "Toggle the collapsible sidebar category 'Registries'" [ref=e230] [cursor=pointer]
+                  - listitem [ref=e231]:
+                    - generic [ref=e232]:
+                      - link "Roles" [ref=e233] [cursor=pointer]:
+                        - /url: /api/v1/roles/
+                      - button "Toggle the collapsible sidebar category 'Roles'" [ref=e234] [cursor=pointer]
+                  - listitem [ref=e235]:
+                    - generic [ref=e236]:
+                      - link "Services" [ref=e237] [cursor=pointer]:
+                        - /url: /api/v1/services/
+                      - button "Toggle the collapsible sidebar category 'Services'" [ref=e238] [cursor=pointer]
+                  - listitem [ref=e239]:
+                    - generic [ref=e240]:
+                      - link "Spc Policies" [ref=e241] [cursor=pointer]:
+                        - /url: /api/v1/spc-policies/
+                      - button "Toggle the collapsible sidebar category 'Spc Policies'" [ref=e242] [cursor=pointer]
+                  - listitem [ref=e243]:
+                    - generic [ref=e244]:
+                      - link "Spectroclusters" [ref=e245] [cursor=pointer]:
+                        - /url: /api/v1/spectroclusters/
+                      - button "Toggle the collapsible sidebar category 'Spectroclusters'" [ref=e246] [cursor=pointer]
+                  - listitem [ref=e247]:
+                    - generic [ref=e248]:
+                      - link "System" [ref=e249] [cursor=pointer]:
+                        - /url: /api/v1/system/
+                      - button "Toggle the collapsible sidebar category 'System'" [ref=e250] [cursor=pointer]
+                  - listitem [ref=e251]:
+                    - generic [ref=e252]:
+                      - link "Teams" [ref=e253] [cursor=pointer]:
+                        - /url: /api/v1/teams/
+                      - button "Toggle the collapsible sidebar category 'Teams'" [ref=e254] [cursor=pointer]
+                  - listitem [ref=e255]:
+                    - generic [ref=e256]:
+                      - link "Tenants" [ref=e257] [cursor=pointer]:
+                        - /url: /api/v1/tenants/
+                      - button "Toggle the collapsible sidebar category 'Tenants'" [ref=e258] [cursor=pointer]
+                  - listitem [ref=e259]:
+                    - generic [ref=e260]:
+                      - link "Users" [ref=e261] [cursor=pointer]:
+                        - /url: /api/v1/users/
+                      - button "Toggle the collapsible sidebar category 'Users'" [ref=e262] [cursor=pointer]
+                  - listitem [ref=e263]:
+                    - generic [ref=e264]:
+                      - link "Workspaces" [ref=e265] [cursor=pointer]:
+                        - /url: /api/v1/workspaces/
+                      - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e266] [cursor=pointer]
+              - listitem [ref=e267]:
+                - generic [ref=e268]:
+                  - link "Edge Management API V1" [ref=e269] [cursor=pointer]:
+                    - /url: /api/category/edge-management-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Edge Management API V1'" [ref=e270] [cursor=pointer]
+      - main [ref=e271]:
+        - generic [ref=e275]:
+          - article [ref=e276]:
+            - navigation "Breadcrumbs" [ref=e277]:
+              - list [ref=e278]:
+                - listitem [ref=e279]:
+                  - link "Home page" [ref=e280] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e281]
+                - listitem [ref=e283]:
+                  - link "Palette API V1" [ref=e284] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                - listitem [ref=e285]:
+                  - link "Clusterprofiles" [ref=e286] [cursor=pointer]:
+                    - /url: /api/v1/clusterprofiles/
+                - listitem [ref=e287]:
+                  - generic [ref=e288]: Update the variables defined for a cluster profile
+            - generic [ref=e290]:
+              - generic [ref=e291]:
+                - heading "Update the variables defined for a cluster profile" [level=1] [ref=e292]
+                - generic [ref=e293]:
+                  - generic [ref=e294]: PUT
+                  - heading "https://api.spectrocloud.com/v1/clusterprofiles/:uid/variables" [level=2] [ref=e295]
+                - paragraph [ref=e297]: Update the variables defined for a cluster profile
+                - heading "RequestDirect link to Request" [level=2] [ref=e298]:
+                  - text: Request
+                  - link "Direct link to Request" [ref=e299] [cursor=pointer]:
+                    - /url: "#request"
+                    - text: "#"
+                - group [ref=e300]:
+                  - generic "Path Parameters" [ref=e301] [cursor=pointer]:
+                    - heading "Path Parameters" [level=3] [ref=e302]
+                  - list [ref=e305]:
+                    - generic [ref=e306]:
+                      - generic [ref=e307]:
+                        - strong [ref=e308]: uid
+                        - generic [ref=e309]: string
+                        - generic [ref=e311]: required
+                      - paragraph [ref=e312]: Cluster profile uid
+                - group [ref=e313]:
+                  - generic "Header Parameters" [ref=e314] [cursor=pointer]:
+                    - heading "Header Parameters" [level=3] [ref=e315]
+                  - list [ref=e318]:
+                    - generic [ref=e319]:
+                      - generic [ref=e320]:
+                        - strong [ref=e321]: ProjectUid
+                        - generic [ref=e322]: string
+                      - paragraph [ref=e323]: A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources
+                - generic [ref=e324]:
+                  - tablist [ref=e327]:
+                    - tab "application/json" [selected] [ref=e328] [cursor=pointer]
+                  - tabpanel [ref=e330]:
+                    - group [ref=e331]:
+                      - generic "Body" [ref=e332] [cursor=pointer]:
+                        - heading "Body" [level=3] [ref=e333]
+                      - list [ref=e336]:
+                        - group [ref=e338]:
+                          - generic "variables object[]" [ref=e339] [cursor=pointer]:
+                            - generic [ref=e340]:
+                              - strong [ref=e341]: variables
+                              - generic [ref=e342]: object[]
+                - generic [ref=e343]:
+                  - generic [ref=e344]:
+                    - heading "ResponsesDirect link to Responses" [level=2] [ref=e345]:
+                      - text: Responses
+                      - link "Direct link to Responses" [ref=e346] [cursor=pointer]:
+                        - /url: "#responses"
+                        - text: "#"
+                    - tablist [ref=e348]:
+                      - tab "204" [selected] [ref=e349] [cursor=pointer]
+                  - tabpanel [ref=e351]:
+                    - paragraph [ref=e354]: The resource was updated successfully
+              - generic [ref=e355]:
+                - group [ref=e356]:
+                  - 'generic "Authorization: ApiKey" [ref=e357]':
+                    - 'heading "Authorization: ApiKey" [level=4] [ref=e358]'
+                - generic [ref=e359]:
+                  - tablist [ref=e360]:
+                    - tab "curl" [selected] [ref=e361] [cursor=pointer]:
+                      - generic [ref=e362]: curl
+                    - tab "python" [ref=e363] [cursor=pointer]:
+                      - generic [ref=e364]: python
+                    - tab "go" [ref=e365] [cursor=pointer]:
+                      - generic [ref=e366]: go
+                    - tab "nodejs" [ref=e367] [cursor=pointer]:
+                      - generic [ref=e368]: nodejs
+                    - tab "java" [ref=e369] [cursor=pointer]:
+                      - generic [ref=e370]: java
+                  - tabpanel [ref=e371]:
+                    - generic [ref=e372]:
+                      - tablist [ref=e373]:
+                        - tab "CURL" [selected] [ref=e374] [cursor=pointer]:
+                          - generic [ref=e375]: CURL
+                      - tabpanel [ref=e376]:
+                        - generic [ref=e378]:
+                          - code [ref=e380]:
+                            - generic [ref=e383]: curl -L -X PUT 'https://api.spectrocloud.com/v1/clusterprofiles/:uid/variables' \
+                            - generic [ref=e386]: "-H 'Content-Type: application/json' \\"
+                            - generic [ref=e389]: "-H 'ApiKey: <ApiKey>' \\"
+                            - generic [ref=e392]: "-d '{"
+                            - generic [ref=e395]: "\"variables\": ["
+                            - generic [ref=e398]: "{"
+                            - generic [ref=e401]: "\"defaultValue\": \"string\","
+                            - generic [ref=e404]: "\"description\": \"string\","
+                            - generic [ref=e407]: "\"displayName\": \"string\","
+                            - generic [ref=e410]: "\"format\": \"string\","
+                            - generic [ref=e413]: "\"hidden\": true,"
+                            - generic [ref=e416]: "\"immutable\": true,"
+                            - generic [ref=e419]: "\"inputType\": \"text\","
+                            - generic [ref=e422]: "\"isSensitive\": true,"
+                            - generic [ref=e425]: "\"name\": \"string\","
+                            - generic [ref=e428]: "\"options\": ["
+                            - generic [ref=e431]: "{"
+                            - generic [ref=e434]: "\"default\": true,"
+                            - generic [ref=e437]: "\"description\": \"string\","
+                            - generic [ref=e440]: "\"label\": \"string\","
+                            - generic [ref=e443]: "\"value\": \"string\""
+                            - generic [ref=e446]: "}"
+                            - generic [ref=e449]: "],"
+                            - generic [ref=e452]: "\"regex\": \"string\","
+                            - generic [ref=e455]: "\"required\": true"
+                            - generic [ref=e458]: "}"
+                            - generic [ref=e461]: "]"
+                            - generic [ref=e464]: "}'"
+                          - generic [ref=e465]:
+                            - button "Toggle word wrap" [ref=e466] [cursor=pointer]:
+                              - img [ref=e467]
+                            - button "Copy code to clipboard" [ref=e469] [cursor=pointer]:
+                              - generic [ref=e470]:
+                                - img [ref=e471]
+                                - img [ref=e473]
+                            - button "Expand code to fullscreen" [ref=e475] [cursor=pointer]:
+                              - generic [ref=e476]:
+                                - img [ref=e477]
+                                - img [ref=e479]
+          - navigation "Docs pages" [ref=e483]:
+            - link "Previous « Update specific variables defined for a cluster profile" [ref=e484] [cursor=pointer]:
+              - /url: /api/v1/v-1-cluster-profiles-uid-variables-patch/
+              - generic [ref=e485]: Previous
+              - generic [ref=e486]: « Update specific variables defined for a cluster profile
+            - link "Next Dashboard »" [ref=e487] [cursor=pointer]:
+              - /url: /api/v1/dashboard/
+              - generic [ref=e488]: Next
+              - generic [ref=e489]: Dashboard »
+  - button "Project Logo Ask AI" [ref=e490] [cursor=pointer]:
+    - generic [ref=e493]:
+      - img "Project Logo" [ref=e494]
+      - paragraph [ref=e495]: Ask AI
+```

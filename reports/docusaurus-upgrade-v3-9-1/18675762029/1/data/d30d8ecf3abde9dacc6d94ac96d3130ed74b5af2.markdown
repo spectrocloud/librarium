@@ -1,0 +1,381 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [expanded] [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+                - list [ref=e121]:
+                  - listitem [ref=e122]:
+                    - link "Use Cases" [ref=e123] [cursor=pointer]:
+                      - /url: /devx/enterprise-user/
+                  - listitem [ref=e124]:
+                    - generic [ref=e125]:
+                      - link "Apps" [ref=e126] [cursor=pointer]:
+                        - /url: /devx/apps/
+                      - button "Toggle the collapsible sidebar category 'Apps'" [ref=e127] [cursor=pointer]
+                  - listitem [ref=e128]:
+                    - generic [ref=e129]:
+                      - link "Palette Virtual Clusters" [ref=e130] [cursor=pointer]:
+                        - /url: /devx/palette-virtual-clusters/
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e131] [cursor=pointer]
+                  - listitem [ref=e132]:
+                    - generic [ref=e133]:
+                      - link "Manage Dev Engine" [ref=e134] [cursor=pointer]:
+                        - /url: /devx/manage-dev-engine/
+                      - button "Toggle the collapsible sidebar category 'Manage Dev Engine'" [ref=e135] [cursor=pointer]
+                  - listitem [ref=e136]:
+                    - generic [ref=e137]:
+                      - link "Services" [ref=e138] [cursor=pointer]:
+                        - /url: /devx/services/
+                      - button "Toggle the collapsible sidebar category 'Services'" [ref=e139] [cursor=pointer]
+              - listitem [ref=e140]:
+                - generic [ref=e141]:
+                  - link "Virtual Machine Orchestrator" [ref=e142] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e144]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e146] [cursor=pointer]
+              - listitem [ref=e147]:
+                - generic [ref=e148]:
+                  - link "Workspaces" [ref=e149] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e151]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e153] [cursor=pointer]
+              - listitem [ref=e154]:
+                - generic [ref=e155]:
+                  - link "Packs List" [ref=e156] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e158]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e160] [cursor=pointer]
+              - listitem [ref=e161]:
+                - generic [ref=e162]:
+                  - link "User & Role Management" [ref=e163] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e165]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e167] [cursor=pointer]
+              - listitem [ref=e168]:
+                - generic [ref=e169]:
+                  - link "Registries and Packs" [ref=e170] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e172]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e174] [cursor=pointer]
+              - listitem [ref=e175]:
+                - generic [ref=e176]:
+                  - link "Security" [ref=e177] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e179]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e181] [cursor=pointer]
+              - listitem [ref=e182]:
+                - generic [ref=e183]:
+                  - link "Audit Logs" [ref=e184] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e186]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e188] [cursor=pointer]
+              - listitem [ref=e189]:
+                - generic [ref=e190]:
+                  - link "Self-Hosted Palette" [ref=e191] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e193]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e195] [cursor=pointer]
+              - listitem [ref=e196]:
+                - generic [ref=e197]:
+                  - link "Palette VerteX" [ref=e198] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e200]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e202] [cursor=pointer]
+              - listitem [ref=e203]:
+                - generic [ref=e204]:
+                  - link "Tenant Administration" [ref=e205] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e207]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e209] [cursor=pointer]
+              - listitem [ref=e210]:
+                - generic [ref=e211]:
+                  - link "Automation" [ref=e212] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e214]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e216] [cursor=pointer]
+              - listitem [ref=e217]:
+                - generic [ref=e218]:
+                  - link "Troubleshooting" [ref=e219] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e221]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e223] [cursor=pointer]
+              - listitem [ref=e224]:
+                - link "Glossary" [ref=e225] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e227]
+                  - text: Glossary
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "Compliance & Legal" [ref=e231] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e233]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - button "Privacy Settings" [ref=e237] [cursor=pointer]:
+                  - img [ref=e238]
+                  - text: Privacy Settings
+      - main [ref=e240]:
+        - generic [ref=e242]:
+          - generic [ref=e244]:
+            - article [ref=e245]:
+              - navigation "Breadcrumbs" [ref=e246]:
+                - list [ref=e247]:
+                  - listitem [ref=e248]:
+                    - link "Home page" [ref=e249] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e250]
+                  - listitem [ref=e252]:
+                    - link "Palette Dev Engine" [ref=e253] [cursor=pointer]:
+                      - /url: /devx/
+                  - listitem [ref=e254]:
+                    - generic [ref=e255]: Use Cases
+              - generic [ref=e256]:
+                - heading "Use Cases" [level=1] [ref=e258]
+                - paragraph [ref=e259]: "You can use the Palette Developer Experience (PDE) to serve two common use cases: enterprise developers and individual application authors who want to deploy a containerized application without worrying about infrastructure overhead."
+                - paragraph [ref=e260]:
+                  - text: Refer to the
+                  - link "Enterprise Users" [ref=e261] [cursor=pointer]:
+                    - /url: "#enterprise-users"
+                  - text: section to learn more about enabling PDE for a large set of downstream users. If you are an individual application author, check out the
+                  - link "Individual Application Author" [ref=e262] [cursor=pointer]:
+                    - /url: "#application-authors"
+                  - text: section to get started.
+                - heading "Enterprise UsersDirect link to Enterprise Users" [level=2] [ref=e263]:
+                  - text: Enterprise Users
+                  - link "Direct link to Enterprise Users" [ref=e264] [cursor=pointer]:
+                    - /url: "#enterprise-users"
+                    - text: "#"
+                - paragraph [ref=e265]: To enable PDE for downstream users, start by reviewing the following resources.
+                - list [ref=e266]:
+                  - listitem [ref=e267]:
+                    - paragraph [ref=e268]:
+                      - text: Understand the difference between
+                      - link "Cluster Mode and App Mode" [ref=e269] [cursor=pointer]:
+                        - /url: /introduction/palette-modes/
+                      - text: .
+                  - listitem [ref=e270]:
+                    - paragraph [ref=e271]:
+                      - text: Create and Manage the
+                      - link "Cluster Group" [ref=e272] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                      - text: .
+                  - listitem [ref=e273]:
+                    - paragraph [ref=e274]:
+                      - text: Allocate
+                      - link "User Quota" [ref=e275] [cursor=pointer]:
+                        - /url: /devx/manage-dev-engine/resource-quota/
+                      - text: .
+                - paragraph [ref=e276]: The next set of references are not required but good for Palette administrators to be aware of.
+                - list [ref=e277]:
+                  - listitem [ref=e278]:
+                    - paragraph [ref=e279]:
+                      - link "Enable Disk Backup on Virtual Clusters" [ref=e280] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/cluster-group-backups/
+                      - text: .
+                  - listitem [ref=e281]:
+                    - paragraph [ref=e282]:
+                      - link "Set Up Ingress for a Cluster Group" [ref=e283] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/ingress-cluster-group/
+                      - text: .
+                  - listitem [ref=e284]:
+                    - paragraph [ref=e285]:
+                      - link "Pause and Resume Palette Virtual Clusters" [ref=e286] [cursor=pointer]:
+                        - /url: /devx/palette-virtual-clusters/pause-restore-virtual-clusters/
+                      - text: .
+                  - listitem [ref=e287]:
+                    - paragraph [ref=e288]:
+                      - link "Resize Palette Virtual Clusters" [ref=e289] [cursor=pointer]:
+                        - /url: /devx/palette-virtual-clusters/resize-virtual-clusters/
+                      - text: .
+                - heading "Application AuthorsDirect link to Application Authors" [level=2] [ref=e290]:
+                  - text: Application Authors
+                  - link "Direct link to Application Authors" [ref=e291] [cursor=pointer]:
+                    - /url: "#application-authors"
+                    - text: "#"
+                - paragraph [ref=e292]: Use PDE to deploy your containerized applications to Palette. Leverage Palette's free-tier offering of PDE to get started. Create your application profiles and deploy your applications to Palette in no time.
+                - paragraph [ref=e293]: Use the following resource to get started with PDE today.
+                - list [ref=e294]:
+                  - listitem [ref=e295]:
+                    - paragraph [ref=e296]:
+                      - link "Tutorial" [ref=e297] [cursor=pointer]:
+                        - /url: /tutorials/pde/deploy-app/
+                      - text: .
+                  - listitem [ref=e298]:
+                    - paragraph [ref=e299]:
+                      - text: Learn about
+                      - link "App Mode versus Cluster Mode" [ref=e300] [cursor=pointer]:
+                        - /url: /introduction/palette-modes/
+                      - text: .
+                  - listitem [ref=e301]:
+                    - paragraph [ref=e302]:
+                      - text: Familiarize yourself with
+                      - link "App Profiles" [ref=e303] [cursor=pointer]:
+                        - /url: /profiles/app-profiles/
+                      - text: .
+                  - listitem [ref=e304]:
+                    - paragraph [ref=e305]:
+                      - text: Review the supported
+                      - link "out-of-the-box-services" [ref=e306] [cursor=pointer]:
+                        - /url: /devx/services/service-listings/
+                      - text: .
+              - generic [ref=e307]:
+                - generic [ref=e309]:
+                  - text: "Tags:"
+                  - list [ref=e310]:
+                    - listitem [ref=e311]:
+                      - link "devx" [ref=e312] [cursor=pointer]:
+                        - /url: /tags/devx/
+                    - listitem [ref=e313]:
+                      - link "app mode" [ref=e314] [cursor=pointer]:
+                        - /url: /tags/app-mode/
+                    - listitem [ref=e315]:
+                      - link "pde" [ref=e316] [cursor=pointer]:
+                        - /url: /tags/pde/
+                - link "Edit this page" [ref=e319] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/devx/enterprise-user.md
+                  - img [ref=e320]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e324]:
+              - link "Previous « Palette Dev Engine" [ref=e325] [cursor=pointer]:
+                - /url: /devx/
+                - generic [ref=e326]: Previous
+                - generic [ref=e327]: « Palette Dev Engine
+              - link "Next Apps »" [ref=e328] [cursor=pointer]:
+                - /url: /devx/apps/
+                - generic [ref=e329]: Next
+                - generic [ref=e330]: Apps »
+          - list [ref=e333]:
+            - listitem [ref=e334]:
+              - link "Enterprise Users" [ref=e335] [cursor=pointer]:
+                - /url: "#enterprise-users"
+            - listitem [ref=e336]:
+              - link "Application Authors" [ref=e337] [cursor=pointer]:
+                - /url: "#application-authors"
+  - button "Project Logo Ask AI" [ref=e338] [cursor=pointer]:
+    - generic [ref=e341]:
+      - img "Project Logo" [ref=e342]
+      - paragraph [ref=e343]: Ask AI
+```

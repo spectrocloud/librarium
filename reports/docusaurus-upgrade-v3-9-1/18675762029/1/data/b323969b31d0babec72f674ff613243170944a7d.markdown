@@ -1,0 +1,754 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [expanded] [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+                - list [ref=e128]:
+                  - listitem [ref=e129]:
+                    - link "Architecture" [ref=e130] [cursor=pointer]:
+                      - /url: /vm-management/architecture/
+                  - listitem [ref=e131]:
+                    - link "Environment Setup" [ref=e132] [cursor=pointer]:
+                      - /url: /vm-management/environment-setup/
+                  - listitem [ref=e133]:
+                    - link "Install VMO in Airgap Environments" [ref=e134] [cursor=pointer]:
+                      - /url: /vm-management/install-vmo-in-airgap/
+                  - listitem [ref=e135]:
+                    - link "Create a VMO Profile" [ref=e136] [cursor=pointer]:
+                      - /url: /vm-management/create-vmo-profile/
+                  - listitem [ref=e137]:
+                    - link "Configure Private CA Certificate" [ref=e138] [cursor=pointer]:
+                      - /url: /vm-management/configure-private-ca-certificate/
+                  - listitem [ref=e139]:
+                    - link "Configure Direct Access to VM Dashboard" [ref=e140] [cursor=pointer]:
+                      - /url: /vm-management/configure-console-base-address/
+                  - listitem [ref=e141]:
+                    - generic [ref=e142]:
+                      - link "RBAC" [ref=e143] [cursor=pointer]:
+                        - /url: /vm-management/rbac/
+                      - button "Toggle the collapsible sidebar category 'RBAC'" [ref=e144] [cursor=pointer]
+                  - listitem [ref=e145]:
+                    - generic [ref=e146]:
+                      - link "Create and Manage VMs" [ref=e147] [cursor=pointer]:
+                        - /url: /vm-management/create-manage-vm/
+                      - button "Toggle the collapsible sidebar category 'Create and Manage VMs'" [ref=e148] [cursor=pointer]
+                  - listitem [ref=e149]:
+                    - generic [ref=e150]:
+                      - link "VM Migration Assistant" [expanded] [ref=e151] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/
+                      - button "Toggle the collapsible sidebar category 'VM Migration Assistant'" [ref=e152] [cursor=pointer]
+                    - list [ref=e153]:
+                      - listitem [ref=e154]:
+                        - link "Create a VM Migration Assistant Profile" [ref=e155] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/create-vm-migration-assistant-profile/
+                      - listitem [ref=e156]:
+                        - link "Create Source Providers" [ref=e157] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/create-source-providers/
+                      - listitem [ref=e158]:
+                        - link "Create Migration Plans" [ref=e159] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/create-migration-plans/
+                      - listitem [ref=e160]:
+                        - link "Start Migration Plans" [ref=e161] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/start-migration-plans/
+                      - listitem [ref=e162]:
+                        - link "Cancel Active Migration Plans" [ref=e163] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/cancel-active-migration-plans/
+                      - listitem [ref=e164]:
+                        - link "Additional Configuration" [ref=e165] [cursor=pointer]:
+                          - /url: /vm-management/vm-migration-assistant/additional-configuration/
+              - listitem [ref=e166]:
+                - generic [ref=e167]:
+                  - link "Workspaces" [ref=e168] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e170]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e172] [cursor=pointer]
+              - listitem [ref=e173]:
+                - generic [ref=e174]:
+                  - link "Packs List" [ref=e175] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e177]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e179] [cursor=pointer]
+              - listitem [ref=e180]:
+                - generic [ref=e181]:
+                  - link "User & Role Management" [ref=e182] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e184]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e186] [cursor=pointer]
+              - listitem [ref=e187]:
+                - generic [ref=e188]:
+                  - link "Registries and Packs" [ref=e189] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e191]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e193] [cursor=pointer]
+              - listitem [ref=e194]:
+                - generic [ref=e195]:
+                  - link "Security" [ref=e196] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e198]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e200] [cursor=pointer]
+              - listitem [ref=e201]:
+                - generic [ref=e202]:
+                  - link "Audit Logs" [ref=e203] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e205]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e207] [cursor=pointer]
+              - listitem [ref=e208]:
+                - generic [ref=e209]:
+                  - link "Self-Hosted Palette" [ref=e210] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e212]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - generic [ref=e216]:
+                  - link "Palette VerteX" [ref=e217] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e219]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e221] [cursor=pointer]
+              - listitem [ref=e222]:
+                - generic [ref=e223]:
+                  - link "Tenant Administration" [ref=e224] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e226]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e228] [cursor=pointer]
+              - listitem [ref=e229]:
+                - generic [ref=e230]:
+                  - link "Automation" [ref=e231] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e233]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e235] [cursor=pointer]
+              - listitem [ref=e236]:
+                - generic [ref=e237]:
+                  - link "Troubleshooting" [ref=e238] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e240]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - link "Glossary" [ref=e244] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e246]
+                  - text: Glossary
+              - listitem [ref=e248]:
+                - generic [ref=e249]:
+                  - link "Compliance & Legal" [ref=e250] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e252]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e254] [cursor=pointer]
+              - listitem [ref=e255]:
+                - button "Privacy Settings" [ref=e256] [cursor=pointer]:
+                  - img [ref=e257]
+                  - text: Privacy Settings
+      - main [ref=e259]:
+        - generic [ref=e261]:
+          - generic [ref=e263]:
+            - article [ref=e264]:
+              - navigation "Breadcrumbs" [ref=e265]:
+                - list [ref=e266]:
+                  - listitem [ref=e267]:
+                    - link "Home page" [ref=e268] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e269]
+                  - listitem [ref=e271]:
+                    - link "Virtual Machine Orchestrator" [ref=e272] [cursor=pointer]:
+                      - /url: /vm-management/
+                  - listitem [ref=e273]:
+                    - link "VM Migration Assistant" [ref=e274] [cursor=pointer]:
+                      - /url: /vm-management/vm-migration-assistant/
+                  - listitem [ref=e275]:
+                    - generic [ref=e276]: Start Migration Plans
+              - generic [ref=e277]:
+                - heading "Start Migration Plans" [level=1] [ref=e279]
+                - paragraph [ref=e280]: Follow this guide to start migration plans in the VM Migration Assistant.
+                - heading "LimitationsDirect link to Limitations" [level=2] [ref=e281]:
+                  - text: Limitations
+                  - link "Direct link to Limitations" [ref=e282] [cursor=pointer]:
+                    - /url: "#limitations"
+                    - text: "#"
+                - list [ref=e283]:
+                  - listitem [ref=e284]:
+                    - paragraph [ref=e285]: You can migrate only VMs hosted in VMware vSphere 7.0 or 8.0.
+                  - listitem [ref=e286]:
+                    - paragraph [ref=e287]:
+                      - text: You can migrate only VMs whose operating systems are present in the
+                      - link "virt-v2v supported guest systems" [ref=e288] [cursor=pointer]:
+                        - /url: https://libguestfs.org/virt-v2v-support.1.html
+                        - code [ref=e289]: virt-v2v
+                        - text: supported guest systems
+                      - text: list. Refer to
+                      - link "Verified Migrations" [ref=e290] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/#verified-migrations
+                      - text: for a list of operating systems and migration combinations verified by Spectro Cloud.
+                  - listitem [ref=e291]:
+                    - paragraph [ref=e292]: If you are migrating more than one VM in the same plan, they must all share the same network.
+                - heading "Start Cold Migration PlansDirect link to Start Cold Migration Plans" [level=2] [ref=e293]:
+                  - text: Start Cold Migration Plans
+                  - link "Direct link to Start Cold Migration Plans" [ref=e294] [cursor=pointer]:
+                    - /url: "#start-cold-migration-plans"
+                    - text: "#"
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e295]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e296] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e297]:
+                  - listitem [ref=e298]:
+                    - paragraph [ref=e299]:
+                      - text: A cold migration plan created and ready to start. Refer to
+                      - link "Create Migration Plans" [ref=e300] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/create-migration-plans/
+                      - text: for guidance.
+                  - listitem [ref=e301]:
+                    - paragraph [ref=e302]: One or more VMs hosted in VMware vSphere.
+                    - list [ref=e303]:
+                      - listitem [ref=e304]: VMs operating Windows must be shut down at the virtualized OS level.
+                - list [ref=e305]:
+                  - listitem [ref=e306]:
+                    - text: The
+                    - link "Virtual Machine Migration Assistant" [ref=e307] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=vm-migration-assistant
+                    - text: pack must be added to your cluster profile. Refer to
+                    - link "Create a VM Migration Assistant Cluster Profile" [ref=e308] [cursor=pointer]:
+                      - /url: /vm-management/vm-migration-assistant/create-vm-migration-assistant-profile/
+                    - text: for guidance.
+                - list [ref=e309]:
+                  - listitem [ref=e310]: The VM Migration Assistant service console must be accessible from a web browser.
+                - heading "Start Cold MigrationDirect link to Start Cold Migration" [level=3] [ref=e311]:
+                  - text: Start Cold Migration
+                  - link "Direct link to Start Cold Migration" [ref=e312] [cursor=pointer]:
+                    - /url: "#start-cold-migration"
+                    - text: "#"
+                - list [ref=e313]:
+                  - listitem [ref=e314]:
+                    - paragraph [ref=e315]:
+                      - link "Access the VM Migration Assistant service console" [ref=e316] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/create-vm-migration-assistant-profile/#access-the-vm-migration-assistant-service-console
+                      - text: .
+                  - listitem [ref=e317]:
+                    - paragraph [ref=e318]:
+                      - text: From the left
+                      - strong [ref=e319]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e320]: Plans for virtualization
+                      - text: .
+                  - listitem [ref=e321]:
+                    - paragraph [ref=e322]:
+                      - text: In the top-left corner, use the
+                      - strong [ref=e323]: Namespace
+                      - text: drop-down Menu to select your Kubernetes namespace for the migration.
+                  - listitem [ref=e324]:
+                    - paragraph [ref=e325]: Find your plan in the table and click the plan name to view its details.
+                  - listitem [ref=e326]:
+                    - paragraph [ref=e327]:
+                      - text: Click
+                      - strong [ref=e328]: Start migration
+                      - text: in the top-right corner.
+                  - listitem [ref=e329]:
+                    - paragraph [ref=e330]:
+                      - text: Click
+                      - strong [ref=e331]: Start
+                      - text: in the pop-up window.
+                  - listitem [ref=e332]:
+                    - paragraph [ref=e333]:
+                      - text: Click on the
+                      - strong [ref=e334]: Virtual Machines
+                      - text: tab.
+                  - listitem [ref=e335]:
+                    - paragraph [ref=e336]:
+                      - text: In the table, view the status of the migration for each VM in the
+                      - strong [ref=e337]: Pipeline status
+                      - text: column. Each circle represents a stage in the migration. You can click on a circle to view additional details.
+                    - paragraph [ref=e338]:
+                      - img "Pipeline Status" [ref=e339]
+                    - paragraph [ref=e340]:
+                      - text: View additional pipeline details by clicking on the
+                      - strong [ref=e341]: ">"
+                      - text: icon next to the VM name.
+                    - paragraph [ref=e342]:
+                      - img "Pipeline Details" [ref=e343]
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e344]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e345] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e346]:
+                  - listitem [ref=e347]:
+                    - paragraph [ref=e348]:
+                      - link "Access the VM Migration Assistant service console" [ref=e349] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/create-vm-migration-assistant-profile/#access-the-vm-migration-assistant-service-console
+                      - text: .
+                  - listitem [ref=e350]:
+                    - paragraph [ref=e351]:
+                      - text: From the left
+                      - strong [ref=e352]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e353]: Plans for virtualization
+                      - text: .
+                  - listitem [ref=e354]:
+                    - paragraph [ref=e355]:
+                      - text: In the top-left corner, use the
+                      - strong [ref=e356]: Namespace
+                      - text: drop-down Menu to select your Kubernetes namespace for the migration.
+                  - listitem [ref=e357]:
+                    - paragraph [ref=e358]: In the table, click on a plan name to view the plan details.
+                  - listitem [ref=e359]:
+                    - paragraph [ref=e360]:
+                      - text: In the
+                      - strong [ref=e361]: Details
+                      - text: tab, the plan status displays as
+                      - strong [ref=e362]: Successful
+                      - text: .
+                  - listitem [ref=e363]:
+                    - paragraph [ref=e364]:
+                      - text: Log in to
+                      - link "Palette" [ref=e365] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e366]:
+                    - paragraph [ref=e367]:
+                      - text: From the left
+                      - strong [ref=e368]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e369]: Clusters
+                      - text: . Then, choose the VMO cluster that you migrated your VMs to. The
+                      - strong [ref=e370]: Overview
+                      - text: tab appears.
+                  - listitem [ref=e371]:
+                    - paragraph [ref=e372]:
+                      - text: Select the
+                      - strong [ref=e373]: Virtual Machines
+                      - text: tab. Then, select your migration namespace from the
+                      - strong [ref=e374]: Namespace
+                      - text: drop-down Menu. Your migrated VMs appear.
+                  - listitem [ref=e375]:
+                    - paragraph [ref=e376]:
+                      - text: For each migrated VM, click on the
+                      - strong [ref=e377]: three-dot Menu
+                      - text: and select
+                      - strong [ref=e378]: Start
+                      - text: . Your VMs are now ready to use.
+                    - paragraph [ref=e379]:
+                      - img "Start migrated VM" [ref=e380]
+                - heading "Start Warm Migration PlansDirect link to Start Warm Migration Plans" [level=2] [ref=e381]:
+                  - text: Start Warm Migration Plans
+                  - link "Direct link to Start Warm Migration Plans" [ref=e382] [cursor=pointer]:
+                    - /url: "#start-warm-migration-plans"
+                    - text: "#"
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e383]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e384] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e385]:
+                  - listitem [ref=e386]:
+                    - paragraph [ref=e387]:
+                      - text: A warm migration plan created and ready to start. Refer to
+                      - link "Create Migration Plans" [ref=e388] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/create-migration-plans/
+                      - text: for guidance.
+                  - listitem [ref=e389]:
+                    - paragraph [ref=e390]: One or more VMs hosted in VMware vSphere.
+                  - listitem [ref=e391]:
+                    - paragraph [ref=e392]:
+                      - link "Changed Block Tracking" [ref=e393] [cursor=pointer]:
+                        - /url: https://knowledge.broadcom.com/external/article/315370/enabling-or-disabling-changed-block-trac.html
+                      - text: must be enabled on your VMs.
+                  - listitem [ref=e394]:
+                    - paragraph [ref=e395]:
+                      - text: Terminal access to execute
+                      - link "kubectl" [ref=e396] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/reference/kubectl/
+                      - text: commands on your VMO cluster.
+                - list [ref=e397]:
+                  - listitem [ref=e398]:
+                    - text: The
+                    - link "Virtual Machine Migration Assistant" [ref=e399] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=vm-migration-assistant
+                    - text: pack must be added to your cluster profile. Refer to
+                    - link "Create a VM Migration Assistant Cluster Profile" [ref=e400] [cursor=pointer]:
+                      - /url: /vm-management/vm-migration-assistant/create-vm-migration-assistant-profile/
+                    - text: for guidance.
+                - list [ref=e401]:
+                  - listitem [ref=e402]: The VM Migration Assistant service console must be accessible from a web browser.
+                - heading "Start Warm MigrationDirect link to Start Warm Migration" [level=3] [ref=e403]:
+                  - text: Start Warm Migration
+                  - link "Direct link to Start Warm Migration" [ref=e404] [cursor=pointer]:
+                    - /url: "#start-warm-migration"
+                    - text: "#"
+                - list [ref=e405]:
+                  - listitem [ref=e406]:
+                    - paragraph [ref=e407]:
+                      - link "Access the VM Migration Assistant service console" [ref=e408] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/create-vm-migration-assistant-profile/#access-the-vm-migration-assistant-service-console
+                      - text: .
+                  - listitem [ref=e409]:
+                    - paragraph [ref=e410]:
+                      - text: From the left
+                      - strong [ref=e411]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e412]: Plans for virtualization
+                      - text: .
+                  - listitem [ref=e413]:
+                    - paragraph [ref=e414]:
+                      - text: In the top-left corner, use the
+                      - strong [ref=e415]: Namespace
+                      - text: drop-down Menu to select your Kubernetes namespace for the migration.
+                  - listitem [ref=e416]:
+                    - paragraph [ref=e417]: Find your plan in the table and click the plan name to view its details.
+                  - listitem [ref=e418]:
+                    - paragraph [ref=e419]:
+                      - text: Click
+                      - strong [ref=e420]: Start migration
+                      - text: in the top-right corner.
+                  - listitem [ref=e421]:
+                    - paragraph [ref=e422]:
+                      - text: Click
+                      - strong [ref=e423]: Start
+                      - text: in the pop-up window.
+                  - listitem [ref=e424]:
+                    - paragraph [ref=e425]:
+                      - text: Click on the
+                      - strong [ref=e426]: Virtual Machines
+                      - text: tab.
+                  - listitem [ref=e427]:
+                    - paragraph [ref=e428]:
+                      - text: In the table, view the status of the migration for each VM in the
+                      - strong [ref=e429]: Pipeline status
+                      - text: column. Each circle represents a stage in the migration. You can click on a circle to view additional details.
+                    - paragraph [ref=e430]:
+                      - img "Pipeline Status" [ref=e431]
+                    - paragraph [ref=e432]:
+                      - text: View additional pipeline details by clicking on the
+                      - strong [ref=e433]: ">"
+                      - text: icon next to the VM name.
+                    - paragraph [ref=e434]:
+                      - img "Pipeline Details" [ref=e435]
+                  - listitem [ref=e436]:
+                    - paragraph [ref=e437]:
+                      - text: Open a terminal session and
+                      - link "configure access" [ref=e438] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/
+                      - text: to your VMO cluster.
+                  - listitem [ref=e439]:
+                    - paragraph [ref=e440]:
+                      - text: Issue the following command to check for
+                      - link "datavolumes" [ref=e441] [cursor=pointer]:
+                        - /url: https://kubevirt.io/2018/CDI-DataVolumes.html
+                      - text: in your chosen VM migration namespace.
+                    - generic [ref=e443]:
+                      - code [ref=e445]:
+                        - generic [ref=e446]: kubectl get datavolume --namespace <myVmMigrationNamespace>
+                      - button "Copy code to clipboard" [ref=e448] [cursor=pointer]:
+                        - generic [ref=e449]:
+                          - img [ref=e450]
+                          - img [ref=e452]
+                    - paragraph [ref=e454]: Example output.
+                    - generic [ref=e456]:
+                      - code [ref=e458]:
+                        - generic [ref=e459]: NAME PHASE PROGRESS AGE
+                        - generic [ref=e460]: vm-migration-cold-vm-140860-92mwk Succeeded 100% 30m
+                        - generic [ref=e461]: vm-migration-warm-vm-140852-p446x Importing 75% 20m
+                      - generic [ref=e462]:
+                        - button "Toggle word wrap" [ref=e463] [cursor=pointer]:
+                          - img [ref=e464]
+                        - button "Copy code to clipboard" [ref=e466] [cursor=pointer]:
+                          - generic [ref=e467]:
+                            - img [ref=e468]
+                            - img [ref=e470]
+                    - paragraph [ref=e472]:
+                      - text: The data volume names are uniquely generated using the
+                      - code [ref=e473]: <planName>-<vmIdentifier>-<randomSuffix>
+                      - text: template.
+                  - listitem [ref=e474]:
+                    - paragraph [ref=e475]: Issue the following command to output the data volume details to your terminal.
+                    - generic [ref=e477]:
+                      - code [ref=e479]:
+                        - generic [ref=e480]: kubectl describe datavolume <datavolumeName> --namespace <myVmMigrationNamespace>
+                      - generic [ref=e481]:
+                        - button "Toggle word wrap" [ref=e482] [cursor=pointer]:
+                          - img [ref=e483]
+                        - button "Copy code to clipboard" [ref=e485] [cursor=pointer]:
+                          - generic [ref=e486]:
+                            - img [ref=e487]
+                            - img [ref=e489]
+                    - paragraph [ref=e491]: When the status of the volume is paused and awaiting cutover, the warm migration is ready for the final cutover.
+                    - group [ref=e492]:
+                      - generic "Example output" [ref=e493] [cursor=pointer]
+                  - listitem [ref=e494]:
+                    - paragraph [ref=e495]: Return to the VM Migration Assistant.
+                  - listitem [ref=e496]:
+                    - paragraph [ref=e497]:
+                      - text: On the
+                      - strong [ref=e498]: Virtual Machines
+                      - text: tab for your plan, click the
+                      - strong [ref=e499]: Actions
+                      - text: drop-down Menu in the top-right corner.
+                  - listitem [ref=e500]:
+                    - paragraph [ref=e501]:
+                      - text: Click
+                      - strong [ref=e502]: Cutover
+                      - text: .
+                  - listitem [ref=e503]:
+                    - paragraph [ref=e504]: In the pop-up window, click on the calendar icon and select a cutover date in the calendar. Next, click on the clock icon and select a cutover time from the drop-down Menu.
+                  - listitem [ref=e505]:
+                    - paragraph [ref=e506]:
+                      - text: Click
+                      - strong [ref=e507]: Set cutover
+                      - text: once complete.
+                - paragraph [ref=e508]: When the cutover is initiated, the source VM is powered off, and a final synchronization of remaining disk changes is completed. The target VM is then created and powered on on the destination VMO cluster.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e509]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e510] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - list [ref=e511]:
+                  - listitem [ref=e512]:
+                    - paragraph [ref=e513]:
+                      - link "Access the VM Migration Assistant service console" [ref=e514] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/create-vm-migration-assistant-profile/#access-the-vm-migration-assistant-service-console
+                      - text: .
+                  - listitem [ref=e515]:
+                    - paragraph [ref=e516]:
+                      - text: From the left
+                      - strong [ref=e517]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e518]: Plans for virtualization
+                      - text: .
+                  - listitem [ref=e519]:
+                    - paragraph [ref=e520]:
+                      - text: In the top-left corner, use the
+                      - strong [ref=e521]: Namespace
+                      - text: drop-down Menu to select your Kubernetes namespace for the migration.
+                  - listitem [ref=e522]:
+                    - paragraph [ref=e523]: In the table, click on a plan name to view the plan details.
+                  - listitem [ref=e524]:
+                    - paragraph [ref=e525]:
+                      - text: In the
+                      - strong [ref=e526]: Details
+                      - text: tab, the plan status displays as
+                      - strong [ref=e527]: Successful
+                      - text: .
+                  - listitem [ref=e528]:
+                    - paragraph [ref=e529]:
+                      - text: Log in to
+                      - link "Palette" [ref=e530] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e531]:
+                    - paragraph [ref=e532]:
+                      - text: From the left
+                      - strong [ref=e533]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e534]: Clusters
+                      - text: . Then, choose the VMO cluster that you migrated your VMs to. The
+                      - strong [ref=e535]: Overview
+                      - text: tab appears.
+                  - listitem [ref=e536]:
+                    - paragraph [ref=e537]:
+                      - text: Select the
+                      - strong [ref=e538]: Virtual Machines
+                      - text: tab. Then, select your migration namespace from the
+                      - strong [ref=e539]: Namespace
+                      - text: drop-down Menu. Your migrated VMs appear with a
+                      - strong [ref=e540]: Running
+                      - text: status.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e541]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e542] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e543]:
+                  - listitem [ref=e544]:
+                    - link "Create Migration Plans" [ref=e545] [cursor=pointer]:
+                      - /url: /vm-management/vm-migration-assistant/create-migration-plans/
+                  - listitem [ref=e546]:
+                    - link "Cancel Active Migration Plans" [ref=e547] [cursor=pointer]:
+                      - /url: /vm-management/vm-migration-assistant/cancel-active-migration-plans/
+              - generic [ref=e548]:
+                - generic [ref=e550]:
+                  - text: "Tags:"
+                  - list [ref=e551]:
+                    - listitem [ref=e552]:
+                      - link "vmo" [ref=e553] [cursor=pointer]:
+                        - /url: /tags/vmo/
+                    - listitem [ref=e554]:
+                      - link "vm migration assistant" [ref=e555] [cursor=pointer]:
+                        - /url: /tags/vm-migration-assistant/
+                - link "Edit this page" [ref=e558] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vm-management/vm-migration-assistant/start-migration-plans.md
+                  - img [ref=e559]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e563]:
+              - link "Previous « Create Migration Plans" [ref=e564] [cursor=pointer]:
+                - /url: /vm-management/vm-migration-assistant/create-migration-plans/
+                - generic [ref=e565]: Previous
+                - generic [ref=e566]: « Create Migration Plans
+              - link "Next Cancel Active Migration Plans »" [ref=e567] [cursor=pointer]:
+                - /url: /vm-management/vm-migration-assistant/cancel-active-migration-plans/
+                - generic [ref=e568]: Next
+                - generic [ref=e569]: Cancel Active Migration Plans »
+          - list [ref=e572]:
+            - listitem [ref=e573]:
+              - link "Limitations" [ref=e574] [cursor=pointer]:
+                - /url: "#limitations"
+            - listitem [ref=e575]:
+              - link "Start Cold Migration Plans" [ref=e576] [cursor=pointer]:
+                - /url: "#start-cold-migration-plans"
+              - list [ref=e577]:
+                - listitem [ref=e578]:
+                  - link "Prerequisites" [ref=e579] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e580]:
+                  - link "Start Cold Migration" [ref=e581] [cursor=pointer]:
+                    - /url: "#start-cold-migration"
+                - listitem [ref=e582]:
+                  - link "Validate" [ref=e583] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e584]:
+              - link "Start Warm Migration Plans" [ref=e585] [cursor=pointer]:
+                - /url: "#start-warm-migration-plans"
+              - list [ref=e586]:
+                - listitem [ref=e587]:
+                  - link "Prerequisites" [ref=e588] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e589]:
+                  - link "Start Warm Migration" [ref=e590] [cursor=pointer]:
+                    - /url: "#start-warm-migration"
+                - listitem [ref=e591]:
+                  - link "Validate" [ref=e592] [cursor=pointer]:
+                    - /url: "#validate-1"
+            - listitem [ref=e593]:
+              - link "Resources" [ref=e594] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e595] [cursor=pointer]:
+    - generic [ref=e598]:
+      - img "Project Logo" [ref=e599]
+      - paragraph [ref=e600]: Ask AI
+```

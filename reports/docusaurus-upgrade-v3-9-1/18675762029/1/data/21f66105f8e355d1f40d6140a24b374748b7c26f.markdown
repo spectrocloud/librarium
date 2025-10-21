@@ -1,0 +1,760 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Audit Logs" [ref=e165] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e167]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Self-Hosted Palette" [ref=e172] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e174]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Palette VerteX" [ref=e179] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e181]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e183] [cursor=pointer]
+              - listitem [ref=e184]:
+                - generic [ref=e185]:
+                  - link "Tenant Administration" [ref=e186] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e188]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e190] [cursor=pointer]
+              - listitem [ref=e191]:
+                - generic [ref=e192]:
+                  - link "Automation" [expanded] [ref=e193] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e195]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e197] [cursor=pointer]
+                - list [ref=e198]:
+                  - listitem [ref=e199]:
+                    - generic [ref=e200]:
+                      - link "Palette CLI" [expanded] [ref=e201] [cursor=pointer]:
+                        - /url: /automation/palette-cli/
+                      - button "Toggle the collapsible sidebar category 'Palette CLI'" [ref=e202] [cursor=pointer]
+                    - list [ref=e203]:
+                      - listitem [ref=e204]:
+                        - link "Install" [ref=e205] [cursor=pointer]:
+                          - /url: /automation/palette-cli/install-palette-cli/
+                      - listitem [ref=e206]:
+                        - generic [ref=e207]:
+                          - link "Commands" [expanded] [ref=e208] [cursor=pointer]:
+                            - /url: /automation/palette-cli/commands/
+                          - button "Toggle the collapsible sidebar category 'Commands'" [ref=e209] [cursor=pointer]
+                        - list [ref=e210]:
+                          - listitem [ref=e211]:
+                            - link "Content" [ref=e212] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/content/
+                          - listitem [ref=e213]:
+                            - link "Docs" [ref=e214] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/docs/
+                          - listitem [ref=e215]:
+                            - link "EC" [ref=e216] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/ec/
+                          - listitem [ref=e217]:
+                            - link "FIPS Validate" [ref=e218] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/fips-validate/
+                          - listitem [ref=e219]:
+                            - link "Import" [ref=e220] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/import/
+                          - listitem [ref=e221]:
+                            - link "Login" [ref=e222] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/login/
+                          - listitem [ref=e223]:
+                            - link "PCG" [ref=e224] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/pcg/
+                          - listitem [ref=e225]:
+                            - link "PDE" [ref=e226] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/pde/
+                          - listitem [ref=e227]:
+                            - link "Project" [ref=e228] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/project/
+                          - listitem [ref=e229]:
+                            - link "Validate-Auth" [ref=e230] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/validate-auth/
+                          - listitem [ref=e231]:
+                            - link "VMO" [ref=e232] [cursor=pointer]:
+                              - /url: /automation/palette-cli/commands/vmo/
+                  - listitem [ref=e233]:
+                    - generic [ref=e234]:
+                      - link "Palette Go SDK" [ref=e235] [cursor=pointer]:
+                        - /url: /automation/palette-sdk/
+                      - button "Toggle the collapsible sidebar category 'Palette Go SDK'" [ref=e236] [cursor=pointer]
+                  - listitem [ref=e237]:
+                    - link "Terraform" [ref=e238] [cursor=pointer]:
+                      - /url: /automation/terraform/
+                  - listitem [ref=e239]:
+                    - generic [ref=e240]:
+                      - link "Crossplane" [ref=e241] [cursor=pointer]:
+                        - /url: /automation/crossplane/
+                      - button "Toggle the collapsible sidebar category 'Crossplane'" [ref=e242] [cursor=pointer]
+              - listitem [ref=e243]:
+                - generic [ref=e244]:
+                  - link "Troubleshooting" [ref=e245] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e247]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e249] [cursor=pointer]
+              - listitem [ref=e250]:
+                - link "Glossary" [ref=e251] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e253]
+                  - text: Glossary
+              - listitem [ref=e255]:
+                - generic [ref=e256]:
+                  - link "Compliance & Legal" [ref=e257] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e259]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e261] [cursor=pointer]
+              - listitem [ref=e262]:
+                - button "Privacy Settings" [ref=e263] [cursor=pointer]:
+                  - img [ref=e264]
+                  - text: Privacy Settings
+      - main [ref=e266]:
+        - generic [ref=e268]:
+          - generic [ref=e270]:
+            - article [ref=e271]:
+              - navigation "Breadcrumbs" [ref=e272]:
+                - list [ref=e273]:
+                  - listitem [ref=e274]:
+                    - link "Home page" [ref=e275] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e276]
+                  - listitem [ref=e278]:
+                    - link "Automation" [ref=e279] [cursor=pointer]:
+                      - /url: /automation/
+                  - listitem [ref=e280]:
+                    - link "Palette CLI" [ref=e281] [cursor=pointer]:
+                      - /url: /automation/palette-cli/
+                  - listitem [ref=e282]:
+                    - link "Commands" [ref=e283] [cursor=pointer]:
+                      - /url: /automation/palette-cli/commands/
+                  - listitem [ref=e284]:
+                    - generic [ref=e285]: Validate-Auth
+              - generic [ref=e286]:
+                - heading "Validate-Auth" [level=1] [ref=e288]
+                - paragraph [ref=e289]:
+                  - text: The Palette CLI has built-in support for the open source
+                  - link "Validator" [ref=e290] [cursor=pointer]:
+                    - /url: https://github.com/validator-labs/validator
+                  - text: framework and its plugins ecosystem. You can use the Palette CLI to verify you have the necessary permissions to deploy Kubernetes clusters in your targeted environment through Palette.
+                - heading "LimitationsDirect link to Limitations" [level=2] [ref=e291]:
+                  - text: Limitations
+                  - link "Direct link to Limitations" [ref=e292] [cursor=pointer]:
+                    - /url: "#limitations"
+                    - text: "#"
+                - list [ref=e293]:
+                  - listitem [ref=e294]: AWS and Azure are the only supported cloud environments.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e295]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e296] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e297]:
+                  - listitem [ref=e298]:
+                    - paragraph [ref=e299]:
+                      - text: If validating permissions for an AWS environment, ensure you have the minimal AWS-managed permission policies required to perform the validation. Refer to
+                      - link "Minimal AWS managed IAM permission policies by validation type" [ref=e300] [cursor=pointer]:
+                        - /url: https://github.com/validator-labs/validator-plugin-aws?tab=readme-ov-file#minimal-aws-managed-iam-permission-policies-by-validation-type
+                      - text: for guidance.
+                    - list [ref=e301]:
+                      - listitem [ref=e302]:
+                        - paragraph [ref=e303]: "You will need to provide the following details during the validation steps:"
+                        - list [ref=e304]:
+                          - listitem [ref=e305]: Access Key ID for the IAM user that will perform the validation.
+                          - listitem [ref=e306]: Secret Access Key for the IAM user that will perform the validation.
+                          - listitem [ref=e307]: The IAM user name or IAM role name that will be deploying clusters in your environment.
+                  - listitem [ref=e308]:
+                    - paragraph [ref=e309]:
+                      - text: If validating permissions for an Azure environment, ensure you have the minimal Azure Role-Based Access Control (RBAC) permissions required to perform the validation. Refer to
+                      - link "Minimal Azure RBAC permissions by validation type" [ref=e310] [cursor=pointer]:
+                        - /url: https://github.com/validator-labs/validator-plugin-azure?tab=readme-ov-file#minimal-azure-rbac-permissions-by-validation-type
+                      - text: for guidance.
+                    - list [ref=e311]:
+                      - listitem [ref=e312]:
+                        - paragraph [ref=e313]: "You will need to provide the following details during the validation steps:"
+                        - list [ref=e314]:
+                          - listitem [ref=e315]:
+                            - link "Microsoft Entra tenant ID" [ref=e316] [cursor=pointer]:
+                              - /url: https://learn.microsoft.com/en-us/entra/fundamentals/how-to-find-tenant
+                            - text: for your Azure subscription where the service principal performing the validation resides.
+                          - listitem [ref=e317]: Client ID for the service principal that will perform the validation.
+                          - listitem [ref=e318]: Client secret associated with the service principal that will perform the validation.
+                          - listitem [ref=e319]: Service Principal ID for the service principal that will be deploying clusters in your environment.
+                          - listitem [ref=e320]: Subscription ID for where the clusters will be deployed to.
+                          - listitem [ref=e321]: Name of the resource group where the clusters will be deployed to.
+                - heading "UsageDirect link to Usage" [level=2] [ref=e322]:
+                  - text: Usage
+                  - link "Direct link to Usage" [ref=e323] [cursor=pointer]:
+                    - /url: "#usage"
+                    - text: "#"
+                - paragraph [ref=e324]:
+                  - text: Use the
+                  - code [ref=e325]: validate-auth
+                  - text: command to verify permissions for your targeted environment. Interactive steps will guide you through the process.
+                - paragraph [ref=e326]:
+                  - text: The
+                  - code [ref=e327]: validate-auth
+                  - text: command accepts the following flags.
+                - table [ref=e328]:
+                  - rowgroup [ref=e329]:
+                    - row "Short Flag Long Flag Description Type" [ref=e330]:
+                      - cell "Short Flag" [ref=e331]:
+                        - strong [ref=e332]: Short Flag
+                      - cell "Long Flag" [ref=e333]:
+                        - strong [ref=e334]: Long Flag
+                      - cell "Description" [ref=e335]:
+                        - strong [ref=e336]: Description
+                      - cell "Type" [ref=e337]:
+                        - strong [ref=e338]: Type
+                  - rowgroup [ref=e339]:
+                    - row "--cloud-env The target cloud environment to validate permissions on. This can also be selected in the interactive wizard. The supported cloud environments are aws and azure. string" [ref=e340]:
+                      - cell [ref=e341]
+                      - cell "--cloud-env" [ref=e342]:
+                        - code [ref=e343]: "--cloud-env"
+                      - cell "The target cloud environment to validate permissions on. This can also be selected in the interactive wizard. The supported cloud environments are aws and azure." [ref=e344]:
+                        - text: The target cloud environment to validate permissions on. This can also be selected in the interactive wizard. The supported cloud environments are
+                        - code [ref=e345]: aws
+                        - text: and
+                        - code [ref=e346]: azure
+                        - text: .
+                      - cell "string" [ref=e347]
+                    - row "--outdir Output directory for generated resources. Defaults to $(pwd)/out. string" [ref=e348]:
+                      - cell [ref=e349]
+                      - cell "--outdir" [ref=e350]:
+                        - code [ref=e351]: "--outdir"
+                      - cell "Output directory for generated resources. Defaults to $(pwd)/out." [ref=e352]:
+                        - text: Output directory for generated resources. Defaults to
+                        - code [ref=e353]: $(pwd)/out
+                        - text: .
+                      - cell "string" [ref=e354]
+                    - row "-h --help Help with any command. -" [ref=e355]:
+                      - cell "-h" [ref=e356]:
+                        - code [ref=e357]: "-h"
+                      - cell "--help" [ref=e358]:
+                        - code [ref=e359]: "--help"
+                      - cell "Help with any command." [ref=e360]
+                      - cell "-" [ref=e361]
+                - heading "ExamplesDirect link to Examples" [level=3] [ref=e362]:
+                  - text: Examples
+                  - link "Direct link to Examples" [ref=e363] [cursor=pointer]:
+                    - /url: "#examples"
+                    - text: "#"
+                - paragraph [ref=e364]:
+                  - text: Here are some examples of using the
+                  - code [ref=e365]: validate-auth
+                  - text: command and its supported flags.
+                - paragraph [ref=e366]: Start the interactive steps.
+                - generic [ref=e368]:
+                  - code [ref=e370]:
+                    - generic [ref=e371]: palette validate-auth
+                  - button "Copy code to clipboard" [ref=e373] [cursor=pointer]:
+                    - generic [ref=e374]:
+                      - img [ref=e375]
+                      - img [ref=e377]
+                - paragraph [ref=e379]: Start the interactive steps and choose the cloud environment in advance.
+                - generic [ref=e381]:
+                  - code [ref=e383]:
+                    - generic [ref=e384]: palette validate-auth --cloud-env <aws|azure>
+                  - button "Copy code to clipboard" [ref=e386] [cursor=pointer]:
+                    - generic [ref=e387]:
+                      - img [ref=e388]
+                      - img [ref=e390]
+                - paragraph [ref=e392]: Start the interactive steps and specify the output directory for any generated resources.
+                - generic [ref=e394]:
+                  - code [ref=e396]:
+                    - generic [ref=e397]: palette validate-auth --outdir $(pwd)/resources
+                  - button "Copy code to clipboard" [ref=e399] [cursor=pointer]:
+                    - generic [ref=e400]:
+                      - img [ref=e401]
+                      - img [ref=e403]
+                - heading "Interactive StepsDirect link to Interactive Steps" [level=3] [ref=e405]:
+                  - text: Interactive Steps
+                  - link "Direct link to Interactive Steps" [ref=e406] [cursor=pointer]:
+                    - /url: "#interactive-steps"
+                    - text: "#"
+                - paragraph [ref=e407]: The interactive steps change depending on the cloud environment chosen.
+                - generic [ref=e408]:
+                  - tablist [ref=e409]:
+                    - tab "AWS" [selected] [ref=e410] [cursor=pointer]
+                    - tab "Azure" [ref=e411] [cursor=pointer]
+                  - tabpanel [ref=e413]:
+                    - list [ref=e414]:
+                      - listitem [ref=e415]:
+                        - paragraph [ref=e416]:
+                          - text: Issue the
+                          - code [ref=e417]: validate-auth
+                          - text: command using the Palette CLI.
+                        - generic [ref=e419]:
+                          - code [ref=e421]:
+                            - generic [ref=e422]: palette validate-auth
+                          - button "Copy code to clipboard" [ref=e424] [cursor=pointer]:
+                            - generic [ref=e425]:
+                              - img [ref=e426]
+                              - img [ref=e428]
+                      - listitem [ref=e430]:
+                        - paragraph [ref=e431]:
+                          - text: When prompted, select
+                          - code [ref=e432]: AWS
+                          - text: for the cloud environment.
+                      - listitem [ref=e433]:
+                        - paragraph [ref=e434]: Provide the AWS Access Key ID for the IAM user that will perform the validation.
+                      - listitem [ref=e435]:
+                        - paragraph [ref=e436]: Provide the AWS Secret Access Key for the IAM user that will perform the validation.
+                      - listitem [ref=e437]:
+                        - paragraph [ref=e438]:
+                          - text: Select either
+                          - code [ref=e439]: IAM User
+                          - text: or
+                          - code [ref=e440]: IAM Role
+                          - text: depending on what you want to check.
+                      - listitem [ref=e441]:
+                        - paragraph [ref=e442]:
+                          - text: Provide the
+                          - code [ref=e443]: IAM User name
+                          - text: or
+                          - code [ref=e444]: IAM Role name
+                          - text: depending on what was chosen in step 5. This is the user or role that will be deploying clusters in your environment.
+                      - listitem [ref=e445]:
+                        - paragraph [ref=e446]:
+                          - text: Choose the permission model to validate against. The
+                          - code [ref=e447]: Comprehensive
+                          - text: model will check whether you have sufficient permissions for all Palette features. The
+                          - code [ref=e448]: Minimal
+                          - text: model will only check for the privileges needed to create and delete clusters. Refer to the
+                          - link "Required IAM Policies" [ref=e449] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/aws/required-iam-policies/
+                          - text: to learn more about AWS permissions needed by Palette.
+                      - listitem [ref=e450]:
+                        - paragraph [ref=e451]:
+                          - text: You are prompted to answer
+                          - code [ref=e452]: Will the cloud account be deploying EKS host clusters?
+                          - text: . Enter
+                          - code [ref=e453]: "y"
+                          - text: if you want to check for sufficient permissions to deploy Amazon EKS clusters, or
+                          - code [ref=e454]: "n"
+                          - text: if you do not.
+                      - listitem [ref=e455]:
+                        - paragraph [ref=e456]: Provide the default AWS region on which the validation will be performed. This should match the region where you intend to deploy clusters.
+                        - paragraph [ref=e457]: Example.
+                        - code [ref=e461]:
+                          - generic [ref=e462]: "Default AWS region: eu-west-1"
+                    - paragraph [ref=e463]: The validation process will now execute and output the results to your terminal.
+                - heading "Validator FileDirect link to Validator File" [level=3] [ref=e464]:
+                  - text: Validator File
+                  - link "Direct link to Validator File" [ref=e465] [cursor=pointer]:
+                    - /url: "#validator-file"
+                    - text: "#"
+                - paragraph [ref=e466]: During the interactive steps, a Validator file is generated that contains the permissions that the Validator is searching for. It also contains the secret used to authorize the validation task. You are prompted to keep or remove this file after the validation results are displayed.
+                - paragraph [ref=e467]: Example.
+                - generic [ref=e469]:
+                  - code [ref=e471]:
+                    - generic [ref=e472]: "WARNING Validator file validator-20250113_183600.yaml contains secret(s): AWS secret access key"
+                    - generic [ref=e473]: "Remove file validator-20250113_183600.yaml from disk? [Y/n]:"
+                  - button "Toggle word wrap" [ref=e475] [cursor=pointer]:
+                    - img [ref=e476]
+                - paragraph [ref=e478]:
+                  - text: Enter
+                  - code [ref=e479]: "y"
+                  - text: if you want to remove the Validator file, or
+                  - code [ref=e480]: "n"
+                  - text: if you want to keep it.
+                - heading "Review Validation ResultsDirect link to Review Validation Results" [level=2] [ref=e481]:
+                  - text: Review Validation Results
+                  - link "Direct link to Review Validation Results" [ref=e482] [cursor=pointer]:
+                    - /url: "#review-validation-results"
+                    - text: "#"
+                - paragraph [ref=e483]: A report is generated and outputted to your terminal after the validation process is complete. The report varies depending on the outcome.
+                - heading "SucceededDirect link to Succeeded" [level=3] [ref=e484]:
+                  - text: Succeeded
+                  - link "Direct link to Succeeded" [ref=e485] [cursor=pointer]:
+                    - /url: "#succeeded"
+                    - text: "#"
+                - paragraph [ref=e486]:
+                  - text: If the validation is successful, the
+                  - code [ref=e487]: State
+                  - text: field is set to
+                  - code [ref=e488]: Succeeded
+                  - text: . The output varies slightly depending on the cloud environment.
+                - generic [ref=e489]:
+                  - tablist [ref=e490]:
+                    - tab "AWS" [selected] [ref=e491] [cursor=pointer]
+                    - tab "Azure" [ref=e492] [cursor=pointer]
+                  - tabpanel [ref=e494]:
+                    - paragraph [ref=e495]: When the IAM user or role provided has all sufficient privileges, then the validation results will appear similar to the following example.
+                    - generic [ref=e497]:
+                      - code [ref=e499]:
+                        - generic [ref=e500]: =================
+                        - generic [ref=e501]: Validation Result
+                        - generic [ref=e502]: =================
+                        - generic [ref=e503]: "Plugin: AWS"
+                        - generic [ref=e504]: "Name: validator-plugin-aws-aws-validator"
+                        - generic [ref=e505]: "Namespace: N/A"
+                        - generic [ref=e506]: "State: Succeeded"
+                        - generic [ref=e507]: "------------"
+                        - generic [ref=e508]: Rule Results
+                        - generic [ref=e509]: "------------"
+                        - generic [ref=e510]: "Validation Rule: validation-paletteclusteroperator"
+                        - generic [ref=e511]: "Validation Type: aws-iam-user-policy"
+                        - generic [ref=e512]: "Status: True"
+                        - generic [ref=e513]: "Last Validated: 2025-01-14T19:58:12Z"
+                        - generic [ref=e514]: "Message: All required IAM user policy permissions were found"
+                      - button "Toggle word wrap" [ref=e516] [cursor=pointer]:
+                        - img [ref=e517]
+                - heading "FailedDirect link to Failed" [level=3] [ref=e519]:
+                  - text: Failed
+                  - link "Direct link to Failed" [ref=e520] [cursor=pointer]:
+                    - /url: "#failed"
+                    - text: "#"
+                - paragraph [ref=e521]:
+                  - text: If the validation is not successful, the
+                  - code [ref=e522]: State
+                  - text: field is set to
+                  - code [ref=e523]: Failed
+                  - text: . The
+                  - code [ref=e524]: Failures
+                  - text: section contains additional information about the failure and will vary depending on the cloud environment.
+                - generic [ref=e525]:
+                  - tablist [ref=e526]:
+                    - tab "AWS" [selected] [ref=e527] [cursor=pointer]
+                    - tab "Azure" [ref=e528] [cursor=pointer]
+                  - tabpanel [ref=e530]:
+                    - paragraph [ref=e531]:
+                      - text: In this example, several IAM permissions are missing for the
+                      - code [ref=e532]: PaletteClusterOperator
+                      - text: IAM role.
+                    - generic [ref=e534]:
+                      - code [ref=e536]:
+                        - generic [ref=e537]: =================
+                        - generic [ref=e538]: Validation Result
+                        - generic [ref=e539]: =================
+                        - generic [ref=e540]: "Plugin: AWS"
+                        - generic [ref=e541]: "Name: validator-plugin-aws-aws-validator"
+                        - generic [ref=e542]: "Namespace: N/A"
+                        - generic [ref=e543]: "State: Failed"
+                        - generic [ref=e544]: "------------"
+                        - generic [ref=e545]: Rule Results
+                        - generic [ref=e546]: "------------"
+                        - generic [ref=e547]: "Validation Rule: validation-paletteclusteroperator"
+                        - generic [ref=e548]: "Validation Type: aws-iam-user-policy"
+                        - generic [ref=e549]: "Status: False"
+                        - generic [ref=e550]: "Last Validated: 2025-01-14T18:48:36Z"
+                        - generic [ref=e551]: "Message: One or more required IAM permissions was not found, or a condition was not met"
+                        - generic [ref=e552]: "--------"
+                        - generic [ref=e553]: Failures
+                        - generic [ref=e554]: "--------"
+                        - generic [ref=e555]: "- Condition StringLike: iam:AWSServiceName=[autoscaling.amazonaws.com]; not applied to action(s) [iam:CreateServiceLinkedRole] for resource arn:*:iam::*:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling from policy PaletteControllerPolicy"
+                        - generic [ref=e556]: "- v1alpha1.IamUserRule PaletteClusterOperator missing action(s): [autoscaling:CreateAutoScalingGroup autoscaling:DeleteAutoScalingGroup] for resource arn:*:autoscaling:*:*:autoScalingGroup:*:autoScalingGroupName/* from policy PaletteControllerPolicy"
+                        - generic [ref=e557]: "- v1alpha1.IamUserRule PaletteClusterOperator missing action(s): [s3:DeleteObject] for resource arn:*:s3:::* from policy PaletteControllerPolicy"
+                        - generic [ref=e558]: "- v1alpha1.IamUserRule PaletteClusterOperator missing action(s): [secretsmanager:CreateSecret secretsmanager:DeleteSecret] for resource arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/* from policy PaletteNodesPolicy"
+                      - button "Toggle word wrap" [ref=e560] [cursor=pointer]:
+                        - img [ref=e561]
+                    - paragraph [ref=e563]: Use the output to help you address the validation failures. In this example, the Validator identified two types of IAM permission issues, which are missing actions and missing conditions.
+                    - paragraph [ref=e564]:
+                      - text: To resolve the missing actions, add the missing IAM permissions to the
+                      - strong [ref=e565]: PaletteClusterOperator
+                      - text: IAM user. The following table summarizes the missing actions and their required resource scopes, identifying which Palette policy should contain these permissions.
+                    - table [ref=e566]:
+                      - rowgroup [ref=e567]:
+                        - row "IAM Policy Missing Actions Resource Scope" [ref=e568]:
+                          - cell "IAM Policy" [ref=e569]:
+                            - strong [ref=e570]: IAM Policy
+                          - cell "Missing Actions" [ref=e571]:
+                            - strong [ref=e572]: Missing Actions
+                          - cell "Resource Scope" [ref=e573]:
+                            - strong [ref=e574]: Resource Scope
+                      - rowgroup [ref=e575]:
+                        - row "PaletteControllerPolicy autoscaling:CreateAutoScalingGroup autoscaling:DeleteAutoScalingGroup arn:*:autoscaling:*:*:autoScalingGroup:*:autoScalingGroupName/*" [ref=e576]:
+                          - cell "PaletteControllerPolicy" [ref=e577]:
+                            - strong [ref=e578]: PaletteControllerPolicy
+                          - cell "autoscaling:CreateAutoScalingGroup autoscaling:DeleteAutoScalingGroup" [ref=e579]:
+                            - code [ref=e580]: autoscaling:CreateAutoScalingGroup
+                            - code [ref=e581]: autoscaling:DeleteAutoScalingGroup
+                          - cell "arn:*:autoscaling:*:*:autoScalingGroup:*:autoScalingGroupName/*" [ref=e582]:
+                            - code [ref=e583]: arn:*:autoscaling:*:*:autoScalingGroup:*:autoScalingGroupName/*
+                        - row "PaletteControllerPolicy s3:DeleteObject arn:*:s3:::*" [ref=e584]:
+                          - cell "PaletteControllerPolicy" [ref=e585]:
+                            - strong [ref=e586]: PaletteControllerPolicy
+                          - cell "s3:DeleteObject" [ref=e587]:
+                            - code [ref=e588]: s3:DeleteObject
+                          - cell "arn:*:s3:::*" [ref=e589]:
+                            - code [ref=e590]: arn:*:s3:::*
+                        - row "PaletteNodesPolicy secretsmanager:CreateSecret secretsmanager:DeleteSecret arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*" [ref=e591]:
+                          - cell "PaletteNodesPolicy" [ref=e592]:
+                            - strong [ref=e593]: PaletteNodesPolicy
+                          - cell "secretsmanager:CreateSecret secretsmanager:DeleteSecret" [ref=e594]:
+                            - code [ref=e595]: secretsmanager:CreateSecret
+                            - code [ref=e596]: secretsmanager:DeleteSecret
+                          - cell "arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*" [ref=e597]:
+                            - code [ref=e598]: arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*
+                    - paragraph [ref=e599]:
+                      - text: To resolve the missing conditions, apply the required conditions to the specified actions. From interpreting the example extract below, the Validator detected that the
+                      - strong [ref=e600]: PaletteControllerPolicy
+                      - text: IAM policy requires a condition to be added for the
+                      - code [ref=e601]: iam:CreateServiceLinkedRole
+                      - text: action to restrict service-linked role creation specifically to Auto Scaling services.
+                    - generic [ref=e603]:
+                      - code [ref=e605]:
+                        - generic [ref=e606]: "- Condition StringLike:"
+                        - generic [ref=e607]: iam:AWSServiceName=[autoscaling.amazonaws.com]; not applied to action(s) [iam:CreateServiceLinkedRole] for resource
+                        - generic [ref=e608]: arn:*:iam::*:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling from policy
+                        - generic [ref=e609]: PaletteControllerPolicy
+                      - button "Toggle word wrap" [ref=e611] [cursor=pointer]:
+                        - img [ref=e612]
+                - heading "Resolve FailuresDirect link to Resolve Failures" [level=3] [ref=e614]:
+                  - text: Resolve Failures
+                  - link "Direct link to Resolve Failures" [ref=e615] [cursor=pointer]:
+                    - /url: "#resolve-failures"
+                    - text: "#"
+                - paragraph [ref=e616]: Each plugin can report different types of validation failures. The resolution steps will vary depending on the specific plugin and failure type. Use the error output to identify and address each failure. The following table provides guidance for common failure scenarios.
+                - table [ref=e617]:
+                  - rowgroup [ref=e618]:
+                    - row "Plugin Failure Message Guidance" [ref=e619]:
+                      - cell "Plugin" [ref=e620]:
+                        - strong [ref=e621]: Plugin
+                      - cell "Failure Message" [ref=e622]:
+                        - strong [ref=e623]: Failure Message
+                      - cell "Guidance" [ref=e624]:
+                        - strong [ref=e625]: Guidance
+                  - rowgroup [ref=e626]:
+                    - row "AWS One or more required IAM permissions was not found, or a condition was not met The IAM user or role used by Palette is missing one or more required IAM permissions. Refer to Required IAM Policies for a comprehensive list of required IAM permissions and attach the missing permissions or policies." [ref=e627]:
+                      - cell "AWS" [ref=e628]:
+                        - strong [ref=e629]: AWS
+                      - cell "One or more required IAM permissions was not found, or a condition was not met" [ref=e630]
+                      - cell "The IAM user or role used by Palette is missing one or more required IAM permissions. Refer to Required IAM Policies for a comprehensive list of required IAM permissions and attach the missing permissions or policies." [ref=e631]:
+                        - text: The IAM user or role used by Palette is missing one or more required IAM permissions. Refer to
+                        - link "Required IAM Policies" [ref=e632] [cursor=pointer]:
+                          - /url: /clusters/public-cloud/aws/required-iam-policies/
+                        - text: for a comprehensive list of required IAM permissions and attach the missing permissions or policies.
+                    - row "Azure Principal lacks required permissions. See failures for details. The service principal used by Palette is missing one or more required permissions. Refer to Required Permissions for a comprehensive list of required permissions and attach the missing permissions or role assignments." [ref=e633]:
+                      - cell "Azure" [ref=e634]:
+                        - strong [ref=e635]: Azure
+                      - cell "Principal lacks required permissions. See failures for details." [ref=e636]
+                      - cell "The service principal used by Palette is missing one or more required permissions. Refer to Required Permissions for a comprehensive list of required permissions and attach the missing permissions or role assignments." [ref=e637]:
+                        - text: The service principal used by Palette is missing one or more required permissions. Refer to
+                        - link "Required Permissions" [ref=e638] [cursor=pointer]:
+                          - /url: /clusters/public-cloud/azure/required-permissions/
+                        - text: for a comprehensive list of required permissions and attach the missing permissions or role assignments.
+              - generic [ref=e639]:
+                - generic [ref=e641]:
+                  - text: "Tags:"
+                  - list [ref=e642]:
+                    - listitem [ref=e643]:
+                      - link "palette-cli" [ref=e644] [cursor=pointer]:
+                        - /url: /tags/palette-cli/
+                - link "Edit this page" [ref=e647] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/automation/palette-cli/commands/validate-auth.md
+                  - img [ref=e648]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e652]:
+              - link "Previous « Project" [ref=e653] [cursor=pointer]:
+                - /url: /automation/palette-cli/commands/project/
+                - generic [ref=e654]: Previous
+                - generic [ref=e655]: « Project
+              - link "Next VMO »" [ref=e656] [cursor=pointer]:
+                - /url: /automation/palette-cli/commands/vmo/
+                - generic [ref=e657]: Next
+                - generic [ref=e658]: VMO »
+          - list [ref=e661]:
+            - listitem [ref=e662]:
+              - link "Limitations" [ref=e663] [cursor=pointer]:
+                - /url: "#limitations"
+            - listitem [ref=e664]:
+              - link "Prerequisites" [ref=e665] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e666]:
+              - link "Usage" [ref=e667] [cursor=pointer]:
+                - /url: "#usage"
+              - list [ref=e668]:
+                - listitem [ref=e669]:
+                  - link "Examples" [ref=e670] [cursor=pointer]:
+                    - /url: "#examples"
+                - listitem [ref=e671]:
+                  - link "Interactive Steps" [ref=e672] [cursor=pointer]:
+                    - /url: "#interactive-steps"
+                - listitem [ref=e673]:
+                  - link "Validator File" [ref=e674] [cursor=pointer]:
+                    - /url: "#validator-file"
+            - listitem [ref=e675]:
+              - link "Review Validation Results" [ref=e676] [cursor=pointer]:
+                - /url: "#review-validation-results"
+              - list [ref=e677]:
+                - listitem [ref=e678]:
+                  - link "Succeeded" [ref=e679] [cursor=pointer]:
+                    - /url: "#succeeded"
+                - listitem [ref=e680]:
+                  - link "Failed" [ref=e681] [cursor=pointer]:
+                    - /url: "#failed"
+                - listitem [ref=e682]:
+                  - link "Resolve Failures" [ref=e683] [cursor=pointer]:
+                    - /url: "#resolve-failures"
+  - button "Project Logo Ask AI" [ref=e684] [cursor=pointer]:
+    - generic [ref=e687]:
+      - img "Project Logo" [ref=e688]
+      - paragraph [ref=e689]: Ask AI
+```

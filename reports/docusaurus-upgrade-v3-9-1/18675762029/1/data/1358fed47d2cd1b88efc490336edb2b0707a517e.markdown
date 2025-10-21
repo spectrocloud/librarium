@@ -1,0 +1,513 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Palette Tutorials" [ref=e41] [cursor=pointer]:
+                  - /url: /tutorials/
+                  - img [ref=e43]
+                  - text: Palette Tutorials
+              - listitem [ref=e45]:
+                - generic [ref=e46]:
+                  - link "Getting Started" [expanded] [ref=e47] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/
+                    - img [ref=e49]
+                    - text: Getting Started
+                  - button "Toggle the collapsible sidebar category 'Getting Started'" [ref=e51] [cursor=pointer]
+                - list [ref=e52]:
+                  - listitem [ref=e53]:
+                    - generic [ref=e54]:
+                      - link "Palette" [ref=e55] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette/
+                      - button "Toggle the collapsible sidebar category 'Palette'" [ref=e56] [cursor=pointer]
+                  - listitem [ref=e57]:
+                    - generic [ref=e58]:
+                      - link "Palette Edge" [expanded] [ref=e59] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/palette-edge/
+                      - button "Toggle the collapsible sidebar category 'Palette Edge'" [ref=e60] [cursor=pointer]
+                    - list [ref=e61]:
+                      - listitem [ref=e62]:
+                        - link "Introduction to Edge" [ref=e63] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/introduction-edge/
+                      - listitem [ref=e64]:
+                        - link "Prepare User Data" [ref=e65] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/prepare-user-data/
+                      - listitem [ref=e66]:
+                        - link "Build Edge Artifacts" [ref=e67] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/build-edge-artifacts/
+                      - listitem [ref=e68]:
+                        - link "Create Edge Cluster Profile" [ref=e69] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/edge-cluster-profile/
+                      - listitem [ref=e70]:
+                        - link "Prepare Edge Host" [ref=e71] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/prepare-edge-host/
+                      - listitem [ref=e72]:
+                        - link "Deploy Edge Cluster" [ref=e73] [cursor=pointer]:
+                          - /url: /tutorials/getting-started/palette-edge/deploy-edge-cluster/
+                  - listitem [ref=e74]:
+                    - generic [ref=e75]:
+                      - link "Additional Capabilities" [ref=e76] [cursor=pointer]:
+                        - /url: /tutorials/getting-started/additional-capabilities/
+                      - button "Toggle the collapsible sidebar category 'Additional Capabilities'" [ref=e77] [cursor=pointer]
+              - listitem [ref=e78]:
+                - generic [ref=e79]:
+                  - link "Packs and Registries" [ref=e80] [cursor=pointer]:
+                    - /url: /tutorials/packs-registries/
+                    - img [ref=e82]
+                    - text: Packs and Registries
+                  - button "Toggle the collapsible sidebar category 'Packs and Registries'" [ref=e84] [cursor=pointer]
+              - listitem [ref=e85]:
+                - generic [ref=e86]:
+                  - link "Profiles" [ref=e87] [cursor=pointer]:
+                    - /url: /tutorials/profiles/
+                    - img [ref=e89]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e93] [cursor=pointer]
+              - listitem [ref=e94]:
+                - generic [ref=e95]:
+                  - link "Clusters" [ref=e96] [cursor=pointer]:
+                    - /url: /tutorials/clusters/
+                    - img [ref=e98]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e104] [cursor=pointer]
+              - listitem [ref=e105]:
+                - generic [ref=e106]:
+                  - link "Palette Dev Engine" [ref=e107] [cursor=pointer]:
+                    - /url: /tutorials/pde/
+                    - img [ref=e109]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e111] [cursor=pointer]
+              - listitem [ref=e112]:
+                - button "Privacy Settings" [ref=e113] [cursor=pointer]
+      - main [ref=e114]:
+        - generic [ref=e116]:
+          - generic [ref=e118]:
+            - article [ref=e119]:
+              - navigation "Breadcrumbs" [ref=e120]:
+                - list [ref=e121]:
+                  - listitem [ref=e122]:
+                    - link "Home page" [ref=e123] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e124]
+                  - listitem [ref=e126]:
+                    - link "Getting Started" [ref=e127] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/
+                  - listitem [ref=e128]:
+                    - link "Palette Edge" [ref=e129] [cursor=pointer]:
+                      - /url: /tutorials/getting-started/palette-edge/
+                  - listitem [ref=e130]:
+                    - generic [ref=e131]: Prepare User Data
+              - generic [ref=e132]:
+                - heading "Prepare User Data for Edge Installation" [level=1] [ref=e134]
+                - paragraph [ref=e135]:
+                  - text: This tutorial is the first in the
+                  - link "Edge Getting Started" [ref=e136] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette-edge/introduction-edge/
+                  - text: series. You will learn how to create a
+                  - link "user data" [ref=e137] [cursor=pointer]:
+                    - /url: /clusters/edge/edgeforge-workflow/prepare-user-data/
+                  - text: file, which is a configuration file that allows you to customize the Edge installation process on the host. The user data file is embedded into the Edge installer ISO during the
+                  - link "EdgeForge" [ref=e138] [cursor=pointer]:
+                    - /url: /clusters/edge/edgeforge-workflow/
+                  - text: process. When the Edge host boots from the installer ISO, it applies the user data configuration to the host.
+                - paragraph [ref=e139]: After creating the user data file, you will proceed to the next tutorial in this series, where you will learn how to build the required Edge artifacts. You will then install the Palette agent on your host and use it as a node to deploy your first Edge cluster.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e140]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e141] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - paragraph [ref=e142]: To complete this tutorial, ensure the following prerequisites are in place.
+                - list [ref=e143]:
+                  - listitem [ref=e144]:
+                    - text: A
+                    - link "Palette account" [ref=e145] [cursor=pointer]:
+                      - /url: https://www.spectrocloud.com/get-started
+                    - text: with
+                    - link "tenant admin" [ref=e146] [cursor=pointer]:
+                      - /url: /tenant-settings/
+                    - text: access.
+                  - listitem [ref=e147]:
+                    - text: "A physical or virtual Linux machine with an AMD64 (also known as x86_64) processor architecture and the following minimum hardware configuration:"
+                    - list [ref=e148]:
+                      - listitem [ref=e149]: 4 CPUs
+                      - listitem [ref=e150]: 8 GB memory
+                      - listitem [ref=e151]: 150 GB storage
+                  - listitem [ref=e152]:
+                    - text: "The following software installed on the Linux machine:"
+                    - list [ref=e153]:
+                      - listitem [ref=e154]:
+                        - link "Docker Engine" [ref=e155] [cursor=pointer]:
+                          - /url: https://docs.docker.com/engine/install/
+                        - text: with
+                        - code [ref=e156]: sudo
+                        - text: privileges. Alternatively, you can install
+                        - link "Earthly" [ref=e157] [cursor=pointer]:
+                          - /url: https://earthly.dev/
+                        - text: ", in which case you will not need"
+                        - code [ref=e158]: sudo
+                        - text: privileges.
+                      - listitem [ref=e159]:
+                        - link "Git" [ref=e160] [cursor=pointer]:
+                          - /url: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+                - heading "User Data Configuration BlocksDirect link to User Data Configuration Blocks" [level=2] [ref=e161]:
+                  - text: User Data Configuration Blocks
+                  - link "Direct link to User Data Configuration Blocks" [ref=e162] [cursor=pointer]:
+                    - /url: "#user-data-configuration-blocks"
+                    - text: "#"
+                - paragraph [ref=e163]: "The user data file supports multiple parameters that allow you to customize the Edge installation and consists of three main configuration blocks:"
+                - list [ref=e164]:
+                  - listitem [ref=e165]:
+                    - paragraph [ref=e166]:
+                      - code [ref=e167]: stylus
+                      - text: ": Palette agent parameters that control aspects of the Edge host's configuration, such as networking, logging, services, users, and permissions. The following configuration snippet specifies the Palette endpoint, a registration token, and the Palette project name that the host uses to register with Palette. It also provides tags that are assigned to the device as labels."
+                    - generic [ref=e169]:
+                      - code [ref=e171]:
+                        - generic [ref=e172]: "#cloud-config"
+                        - generic [ref=e173]: "stylus:"
+                        - generic [ref=e174]: "site:"
+                        - generic [ref=e175]: "paletteEndpoint: api.spectrocloud.com"
+                        - generic [ref=e176]: "edgeHostToken: aUAxxxxxxxxx0ChYCrO"
+                        - generic [ref=e177]: "projectUid: Default"
+                        - generic [ref=e178]: "tags:"
+                        - generic [ref=e179]: "city: london"
+                        - generic [ref=e180]: "building: building-1"
+                      - button "Copy code to clipboard" [ref=e182] [cursor=pointer]:
+                        - generic [ref=e183]:
+                          - img [ref=e184]
+                          - img [ref=e186]
+                  - listitem [ref=e188]:
+                    - paragraph [ref=e189]:
+                      - code [ref=e190]: install
+                      - text: ": The"
+                      - code [ref=e191]: install
+                      - text: block allows you to configure bind mounts, disk partitions, and post-installation actions such as powering off the Edge host once the installation completes, as displayed in the snippet below.
+                    - generic [ref=e193]:
+                      - code [ref=e195]:
+                        - generic [ref=e196]: "install:"
+                        - generic [ref=e197]: "poweroff: true"
+                      - button "Copy code to clipboard" [ref=e199] [cursor=pointer]:
+                        - generic [ref=e200]:
+                          - img [ref=e201]
+                          - img [ref=e203]
+                  - listitem [ref=e205]:
+                    - paragraph [ref=e206]:
+                      - code [ref=e207]: stages
+                      - text: ": The"
+                      - code [ref=e208]: stages
+                      - text: block uses cloud-init stages to personalize the initialization of your Edge hosts during various stages of the system boot process. The following example configures a
+                      - code [ref=e209]: docs
+                      - text: user with a password and SSH key during the
+                      - code [ref=e210]: initramfs
+                      - text: stage.
+                    - generic [ref=e212]:
+                      - code [ref=e214]:
+                        - generic [ref=e215]: "stages:"
+                        - generic [ref=e216]: "initramfs:"
+                        - generic [ref=e217]: "- users:"
+                        - generic [ref=e218]: "docs:"
+                        - generic [ref=e219]: "passwd: ******"
+                        - generic [ref=e220]: "groups:"
+                        - generic [ref=e221]: "- sudo"
+                        - generic [ref=e222]: "ssh_authorized_keys:"
+                        - generic [ref=e223]: "- ssh-rsa AAAAB3N…"
+                      - button "Copy code to clipboard" [ref=e225] [cursor=pointer]:
+                        - generic [ref=e226]:
+                          - img [ref=e227]
+                          - img [ref=e229]
+                    - generic [ref=e231]:
+                      - generic [ref=e232]:
+                        - img [ref=e234]
+                        - text: tip
+                      - paragraph [ref=e237]:
+                        - text: Visit the
+                        - link "Edge Installer Configuration Reference" [ref=e238] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-configuration/installer-reference/
+                        - text: page for a complete list of configuration parameters, the
+                        - link "Prepare User Data" [ref=e239] [cursor=pointer]:
+                          - /url: /clusters/edge/edgeforge-workflow/prepare-user-data/
+                        - text: guide for more examples of user data configurations, and the
+                        - link "Cloud Init Stages" [ref=e240] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-configuration/cloud-init/
+                        - text: page for the supported cloud init stages.
+                - heading "Create Palette Registration TokenDirect link to Create Palette Registration Token" [level=2] [ref=e241]:
+                  - text: Create Palette Registration Token
+                  - link "Direct link to Create Palette Registration Token" [ref=e242] [cursor=pointer]:
+                    - /url: "#create-palette-registration-token"
+                    - text: "#"
+                - paragraph [ref=e243]: Registration tokens allow Edge hosts to register with Palette and are provided through the user data file.
+                - paragraph [ref=e244]:
+                  - text: To create a registration token, log in to
+                  - link "Palette" [ref=e245] [cursor=pointer]:
+                    - /url: https://console.spectrocloud.com/
+                  - text: as a tenant admin and switch to the
+                  - strong [ref=e246]: Tenant Admin
+                  - text: scope.
+                - paragraph [ref=e247]:
+                  - text: Next, navigate to the left main menu and select
+                  - strong [ref=e248]: Tenant Settings
+                  - text: ">"
+                  - strong [ref=e249]: Registration Tokens
+                  - text: .
+                - paragraph [ref=e250]:
+                  - text: Click
+                  - strong [ref=e251]: Add New Registration Token
+                  - text: ", then provide a token name, default project, and expiration date. Confirm your changes and copy the generated registration token."
+                - heading "Check Out Starter CodeDirect link to Check Out Starter Code" [level=2] [ref=e252]:
+                  - text: Check Out Starter Code
+                  - link "Direct link to Check Out Starter Code" [ref=e253] [cursor=pointer]:
+                    - /url: "#check-out-starter-code"
+                    - text: "#"
+                - paragraph [ref=e254]:
+                  - text: Open up a terminal window on your Linux machine and clone the
+                  - code [ref=e255]: CanvOS
+                  - text: repository. This repository contains the files and scripts required to build Edge artifacts.
+                - generic [ref=e257]:
+                  - code [ref=e259]:
+                    - generic [ref=e260]: git clone https://github.com/spectrocloud/CanvOS.git
+                  - button "Copy code to clipboard" [ref=e262] [cursor=pointer]:
+                    - generic [ref=e263]:
+                      - img [ref=e264]
+                      - img [ref=e266]
+                - paragraph [ref=e268]:
+                  - text: Navigate to the
+                  - code [ref=e269]: CanvOS
+                  - text: directory.
+                - generic [ref=e271]:
+                  - code [ref=e273]:
+                    - generic [ref=e274]: cd CanvOS
+                  - button "Copy code to clipboard" [ref=e276] [cursor=pointer]:
+                    - generic [ref=e277]:
+                      - img [ref=e278]
+                      - img [ref=e280]
+                - paragraph [ref=e282]: Check the available git tags.
+                - generic [ref=e284]:
+                  - code [ref=e286]:
+                    - generic [ref=e287]: git tag --sort=v:refname
+                  - button "Copy code to clipboard" [ref=e289] [cursor=pointer]:
+                    - generic [ref=e290]:
+                      - img [ref=e291]
+                      - img [ref=e293]
+                - paragraph [ref=e295]:
+                  - text: Check out the newest available tag. This tutorial uses the tag
+                  - code [ref=e296]: v4.6.24
+                  - text: as an example.
+                - generic [ref=e298]:
+                  - code [ref=e300]:
+                    - generic [ref=e301]: git checkout v4.6.24
+                  - button "Copy code to clipboard" [ref=e303] [cursor=pointer]:
+                    - generic [ref=e304]:
+                      - img [ref=e305]
+                      - img [ref=e307]
+                - heading "Create User DataDirect link to Create User Data" [level=2] [ref=e309]:
+                  - text: Create User Data
+                  - link "Direct link to Create User Data" [ref=e310] [cursor=pointer]:
+                    - /url: "#create-user-data"
+                    - text: "#"
+                - paragraph [ref=e311]:
+                  - text: In this section, you will create a user data file that contains your Palette registration token, Palette endpoint, and Edge host login credentials. The login credentials allow you to SSH into your Edge host, while the Palette registration token and endpoint enable the host to register with your Palette instance. The user data file also includes an
+                  - code [ref=e312]: install
+                  - text: parameter block to power off the host once the Edge installation completes.
+                - generic [ref=e313]:
+                  - generic [ref=e314]:
+                    - img [ref=e316]
+                    - text: tip
+                  - paragraph [ref=e319]:
+                    - text: You can also use the
+                    - link "Appliance Studio" [ref=e320] [cursor=pointer]:
+                      - /url: /deployment-modes/appliance-mode/appliance-studio/
+                    - text: configuration Graphic User Interface (GUI) to help you create and validate your user data files.
+                - paragraph [ref=e321]: Export your Palette registration token and Edge host login credentials.
+                - generic [ref=e323]:
+                  - code [ref=e325]:
+                    - generic [ref=e326]: export TOKEN=<palette-registration-token>
+                    - generic [ref=e327]: export USER=<host-user-name>
+                    - generic [ref=e328]: export PASSWORD=<user-name-password>
+                  - button "Copy code to clipboard" [ref=e330] [cursor=pointer]:
+                    - generic [ref=e331]:
+                      - img [ref=e332]
+                      - img [ref=e334]
+                - paragraph [ref=e336]:
+                  - text: Next, issue the command below to create the
+                  - code [ref=e337]: user-data
+                  - text: file using the exported token and user information.
+                - generic [ref=e339]:
+                  - code [ref=e341]:
+                    - generic [ref=e342]: cat << EOF > user-data
+                    - generic [ref=e343]: "#cloud-config"
+                    - generic [ref=e344]: "stylus:"
+                    - generic [ref=e345]: "site:"
+                    - generic [ref=e346]: "edgeHostToken: $TOKEN"
+                    - generic [ref=e347]: "paletteEndpoint: api.spectrocloud.com"
+                    - generic [ref=e348]: "stages:"
+                    - generic [ref=e349]: "initramfs:"
+                    - generic [ref=e350]: "- users:"
+                    - generic [ref=e351]: "$USER:"
+                    - generic [ref=e352]: "passwd: $PASSWORD"
+                    - generic [ref=e353]: "install:"
+                    - generic [ref=e354]: "poweroff: true"
+                    - generic [ref=e355]: EOF
+                  - button "Copy code to clipboard" [ref=e357] [cursor=pointer]:
+                    - generic [ref=e358]:
+                      - img [ref=e359]
+                      - img [ref=e361]
+                - generic [ref=e363]:
+                  - generic [ref=e364]:
+                    - img [ref=e366]
+                    - text: info
+                  - paragraph [ref=e369]: "The #cloud-config header is required by the cloud-init standard."
+                - paragraph [ref=e370]: Confirm that the file was created correctly.
+                - generic [ref=e372]:
+                  - code [ref=e374]:
+                    - generic [ref=e375]: cat user-data
+                  - button "Copy code to clipboard" [ref=e377] [cursor=pointer]:
+                    - generic [ref=e378]:
+                      - img [ref=e379]
+                      - img [ref=e381]
+                - paragraph [ref=e383]:
+                  - text: The output should show your user data file, with the value of your Palette registration token assigned to the
+                  - code [ref=e384]: edgeHostToken
+                  - text: parameter, as well as the user and password to be created. This tutorial uses
+                  - code [ref=e385]: kairos
+                  - text: as an example for both the username and password.
+                - code [ref=e389]:
+                  - generic [ref=e390]: "#cloud-config"
+                  - generic [ref=e391]: "stylus:"
+                  - generic [ref=e392]: "site:"
+                  - generic [ref=e393]: "edgeHostToken: ****************"
+                  - generic [ref=e394]: "paletteEndpoint: api.spectrocloud.com"
+                  - generic [ref=e395]: "stages:"
+                  - generic [ref=e396]: "initramfs:"
+                  - generic [ref=e397]: "- users:"
+                  - generic [ref=e398]: "kairos:"
+                  - generic [ref=e399]: "passwd: kairos"
+                  - generic [ref=e400]: "install:"
+                  - generic [ref=e401]: "poweroff: true"
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e402]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e403] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e404]:
+                  - text: From the
+                  - code [ref=e405]: CanvOS
+                  - text: directory that contains your user data file, issue the following command to validate the configuration file. The validation also occurs automatically when you build the
+                  - link "Edge Installer ISO" [ref=e406] [cursor=pointer]:
+                    - /url: /clusters/edge/edgeforge-workflow/
+                  - text: ", ensuring the file follows the expected schema."
+                - generic [ref=e408]:
+                  - code [ref=e410]:
+                    - generic [ref=e411]: sudo ./earthly.sh +validate-user-data
+                  - button "Copy code to clipboard" [ref=e413] [cursor=pointer]:
+                    - generic [ref=e414]:
+                      - img [ref=e415]
+                      - img [ref=e417]
+                - paragraph [ref=e419]: The output should contain a success message similar to the one displayed below, which means that the user data file is valid.
+                - generic [ref=e421]:
+                  - code [ref=e423]:
+                    - generic [ref=e424]: +validate-user-data | time="2025-06-25T14:00:07Z" level=info msg="user data validated successfully"
+                  - button "Toggle word wrap" [ref=e426] [cursor=pointer]:
+                    - img [ref=e427]
+                - generic [ref=e429]:
+                  - generic [ref=e430]:
+                    - img [ref=e432]
+                    - text: warning
+                  - paragraph [ref=e435]: The validation only checks that the user data follows the expected schema and does not catch issues with the data itself. For example, an expired registration token will not be flagged by the validation process.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e436]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e437] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e438]:
+                  - text: In this tutorial, you created a user data file that allows you to provide custom configuration to the Edge Installer ISO. We recommend that you continue to the
+                  - link "Build Edge Artifacts" [ref=e439] [cursor=pointer]:
+                    - /url: /tutorials/getting-started/palette-edge/build-edge-artifacts/
+                  - text: tutorial to learn how to use this file during the Edge Installer ISO build process.
+              - generic [ref=e440]:
+                - generic [ref=e442]:
+                  - text: "Tags:"
+                  - list [ref=e443]:
+                    - listitem [ref=e444]:
+                      - link "getting-started" [ref=e445] [cursor=pointer]:
+                        - /url: /tags/getting-started/
+                    - listitem [ref=e446]:
+                      - link "tutorial" [ref=e447] [cursor=pointer]:
+                        - /url: /tags/tutorial/
+                    - listitem [ref=e448]:
+                      - link "edge" [ref=e449] [cursor=pointer]:
+                        - /url: /tags/edge/
+                - link "Edit this page" [ref=e452] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/tutorials/getting-started/palette-edge/prepare-user-data.md
+                  - img [ref=e453]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e457]:
+              - link "Previous « Introduction to Edge" [ref=e458] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette-edge/introduction-edge/
+                - generic [ref=e459]: Previous
+                - generic [ref=e460]: « Introduction to Edge
+              - link "Next Build Edge Artifacts »" [ref=e461] [cursor=pointer]:
+                - /url: /tutorials/getting-started/palette-edge/build-edge-artifacts/
+                - generic [ref=e462]: Next
+                - generic [ref=e463]: Build Edge Artifacts »
+          - list [ref=e466]:
+            - listitem [ref=e467]:
+              - link "Prerequisites" [ref=e468] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e469]:
+              - link "User Data Configuration Blocks" [ref=e470] [cursor=pointer]:
+                - /url: "#user-data-configuration-blocks"
+            - listitem [ref=e471]:
+              - link "Create Palette Registration Token" [ref=e472] [cursor=pointer]:
+                - /url: "#create-palette-registration-token"
+            - listitem [ref=e473]:
+              - link "Check Out Starter Code" [ref=e474] [cursor=pointer]:
+                - /url: "#check-out-starter-code"
+            - listitem [ref=e475]:
+              - link "Create User Data" [ref=e476] [cursor=pointer]:
+                - /url: "#create-user-data"
+            - listitem [ref=e477]:
+              - link "Validate" [ref=e478] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e479]:
+              - link "Next Steps" [ref=e480] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e481] [cursor=pointer]:
+    - generic [ref=e484]:
+      - img "Project Logo" [ref=e485]
+      - paragraph [ref=e486]: Ask AI
+```

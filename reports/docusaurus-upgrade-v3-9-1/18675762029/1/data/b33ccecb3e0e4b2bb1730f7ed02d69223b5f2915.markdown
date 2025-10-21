@@ -1,0 +1,699 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Introduction" [ref=e41] [cursor=pointer]:
+                  - /url: /api/introduction/
+                  - img [ref=e43]
+                  - text: Introduction
+              - listitem [ref=e45]:
+                - link "Example Usage" [ref=e46] [cursor=pointer]:
+                  - /url: /api/samples/
+              - listitem [ref=e47]:
+                - link "Postman Collection" [ref=e48] [cursor=pointer]:
+                  - /url: /api/postman-collection/
+              - listitem [ref=e49]:
+                - generic [ref=e50]:
+                  - link "Palette API V1" [expanded] [ref=e51] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Palette API V1'" [ref=e52] [cursor=pointer]
+                - list [ref=e53]:
+                  - listitem [ref=e54]:
+                    - link "Introduction" [ref=e55] [cursor=pointer]:
+                      - /url: /api/v1/palette-apis-4-7/
+                  - listitem [ref=e56]:
+                    - generic [ref=e57]:
+                      - link "Api Keys" [ref=e58] [cursor=pointer]:
+                        - /url: /api/v1/api-keys/
+                      - button "Toggle the collapsible sidebar category 'Api Keys'" [ref=e59] [cursor=pointer]
+                  - listitem [ref=e60]:
+                    - generic [ref=e61]:
+                      - link "App Deployments" [ref=e62] [cursor=pointer]:
+                        - /url: /api/v1/app-deployments/
+                      - button "Toggle the collapsible sidebar category 'App Deployments'" [ref=e63] [cursor=pointer]
+                  - listitem [ref=e64]:
+                    - generic [ref=e65]:
+                      - link "App Profiles" [ref=e66] [cursor=pointer]:
+                        - /url: /api/v1/app-profiles/
+                      - button "Toggle the collapsible sidebar category 'App Profiles'" [ref=e67] [cursor=pointer]
+                  - listitem [ref=e68]:
+                    - generic [ref=e69]:
+                      - link "Audits" [ref=e70] [cursor=pointer]:
+                        - /url: /api/v1/audits/
+                      - button "Toggle the collapsible sidebar category 'Audits'" [ref=e71] [cursor=pointer]
+                  - listitem [ref=e72]:
+                    - generic [ref=e73]:
+                      - link "Auth" [ref=e74] [cursor=pointer]:
+                        - /url: /api/v1/auth/
+                      - button "Toggle the collapsible sidebar category 'Auth'" [ref=e75] [cursor=pointer]
+                  - listitem [ref=e76]:
+                    - generic [ref=e77]:
+                      - link "Cloudaccounts" [ref=e78] [cursor=pointer]:
+                        - /url: /api/v1/cloudaccounts/
+                      - button "Toggle the collapsible sidebar category 'Cloudaccounts'" [ref=e79] [cursor=pointer]
+                  - listitem [ref=e80]:
+                    - generic [ref=e81]:
+                      - link "Cloudconfigs" [ref=e82] [cursor=pointer]:
+                        - /url: /api/v1/cloudconfigs/
+                      - button "Toggle the collapsible sidebar category 'Cloudconfigs'" [ref=e83] [cursor=pointer]
+                  - listitem [ref=e84]:
+                    - generic [ref=e85]:
+                      - link "Clouds" [ref=e86] [cursor=pointer]:
+                        - /url: /api/v1/clouds/
+                      - button "Toggle the collapsible sidebar category 'Clouds'" [ref=e87] [cursor=pointer]
+                  - listitem [ref=e88]:
+                    - generic [ref=e89]:
+                      - link "Cluster Templates" [ref=e90] [cursor=pointer]:
+                        - /url: /api/v1/cluster-templates/
+                      - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+                  - listitem [ref=e92]:
+                    - generic [ref=e93]:
+                      - link "Clustergroups" [ref=e94] [cursor=pointer]:
+                        - /url: /api/v1/clustergroups/
+                      - button "Toggle the collapsible sidebar category 'Clustergroups'" [ref=e95] [cursor=pointer]
+                  - listitem [ref=e96]:
+                    - generic [ref=e97]:
+                      - link "Clusterprofiles" [ref=e98] [cursor=pointer]:
+                        - /url: /api/v1/clusterprofiles/
+                      - button "Toggle the collapsible sidebar category 'Clusterprofiles'" [ref=e99] [cursor=pointer]
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Dashboard" [ref=e102] [cursor=pointer]:
+                        - /url: /api/v1/dashboard/
+                      - button "Toggle the collapsible sidebar category 'Dashboard'" [ref=e103] [cursor=pointer]
+                  - listitem [ref=e104]:
+                    - generic [ref=e105]:
+                      - link "Datasinks" [ref=e106] [cursor=pointer]:
+                        - /url: /api/v1/datasinks/
+                      - button "Toggle the collapsible sidebar category 'Datasinks'" [ref=e107] [cursor=pointer]
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Edgehosts" [ref=e110] [cursor=pointer]:
+                        - /url: /api/v1/edgehosts/
+                      - button "Toggle the collapsible sidebar category 'Edgehosts'" [ref=e111] [cursor=pointer]
+                  - listitem [ref=e112]:
+                    - generic [ref=e113]:
+                      - link "Events" [ref=e114] [cursor=pointer]:
+                        - /url: /api/v1/events/
+                      - button "Toggle the collapsible sidebar category 'Events'" [ref=e115] [cursor=pointer]
+                  - listitem [ref=e116]:
+                    - generic [ref=e117]:
+                      - link "Features" [ref=e118] [cursor=pointer]:
+                        - /url: /api/v1/features/
+                      - button "Toggle the collapsible sidebar category 'Features'" [ref=e119] [cursor=pointer]
+                  - listitem [ref=e120]:
+                    - generic [ref=e121]:
+                      - link "Filters" [ref=e122] [cursor=pointer]:
+                        - /url: /api/v1/filters/
+                      - button "Toggle the collapsible sidebar category 'Filters'" [ref=e123] [cursor=pointer]
+                  - listitem [ref=e124]:
+                    - generic [ref=e125]:
+                      - link "Metrics" [ref=e126] [cursor=pointer]:
+                        - /url: /api/v1/metrics/
+                      - button "Toggle the collapsible sidebar category 'Metrics'" [ref=e127] [cursor=pointer]
+                  - listitem [ref=e128]:
+                    - generic [ref=e129]:
+                      - link "Notifications" [ref=e130] [cursor=pointer]:
+                        - /url: /api/v1/notifications/
+                      - button "Toggle the collapsible sidebar category 'Notifications'" [ref=e131] [cursor=pointer]
+                  - listitem [ref=e132]:
+                    - generic [ref=e133]:
+                      - link "Overlords" [ref=e134] [cursor=pointer]:
+                        - /url: /api/v1/overlords/
+                      - button "Toggle the collapsible sidebar category 'Overlords'" [ref=e135] [cursor=pointer]
+                  - listitem [ref=e136]:
+                    - generic [ref=e137]:
+                      - link "Packs" [ref=e138] [cursor=pointer]:
+                        - /url: /api/v1/packs/
+                      - button "Toggle the collapsible sidebar category 'Packs'" [ref=e139] [cursor=pointer]
+                  - listitem [ref=e140]:
+                    - generic [ref=e141]:
+                      - link "Pcg" [ref=e142] [cursor=pointer]:
+                        - /url: /api/v1/pcg/
+                      - button "Toggle the collapsible sidebar category 'Pcg'" [ref=e143] [cursor=pointer]
+                  - listitem [ref=e144]:
+                    - generic [ref=e145]:
+                      - link "Permissions" [ref=e146] [cursor=pointer]:
+                        - /url: /api/v1/permissions/
+                      - button "Toggle the collapsible sidebar category 'Permissions'" [ref=e147] [cursor=pointer]
+                  - listitem [ref=e148]:
+                    - generic [ref=e149]:
+                      - link "Projects" [ref=e150] [cursor=pointer]:
+                        - /url: /api/v1/projects/
+                      - button "Toggle the collapsible sidebar category 'Projects'" [ref=e151] [cursor=pointer]
+                  - listitem [ref=e152]:
+                    - generic [ref=e153]:
+                      - link "Registries" [ref=e154] [cursor=pointer]:
+                        - /url: /api/v1/registries/
+                      - button "Toggle the collapsible sidebar category 'Registries'" [ref=e155] [cursor=pointer]
+                  - listitem [ref=e156]:
+                    - generic [ref=e157]:
+                      - link "Roles" [ref=e158] [cursor=pointer]:
+                        - /url: /api/v1/roles/
+                      - button "Toggle the collapsible sidebar category 'Roles'" [ref=e159] [cursor=pointer]
+                  - listitem [ref=e160]:
+                    - generic [ref=e161]:
+                      - link "Services" [ref=e162] [cursor=pointer]:
+                        - /url: /api/v1/services/
+                      - button "Toggle the collapsible sidebar category 'Services'" [ref=e163] [cursor=pointer]
+                  - listitem [ref=e164]:
+                    - generic [ref=e165]:
+                      - link "Spc Policies" [ref=e166] [cursor=pointer]:
+                        - /url: /api/v1/spc-policies/
+                      - button "Toggle the collapsible sidebar category 'Spc Policies'" [ref=e167] [cursor=pointer]
+                  - listitem [ref=e168]:
+                    - generic [ref=e169]:
+                      - link "Spectroclusters" [ref=e170] [cursor=pointer]:
+                        - /url: /api/v1/spectroclusters/
+                      - button "Toggle the collapsible sidebar category 'Spectroclusters'" [ref=e171] [cursor=pointer]
+                  - listitem [ref=e172]:
+                    - generic [ref=e173]:
+                      - link "System" [ref=e174] [cursor=pointer]:
+                        - /url: /api/v1/system/
+                      - button "Toggle the collapsible sidebar category 'System'" [ref=e175] [cursor=pointer]
+                  - listitem [ref=e176]:
+                    - generic [ref=e177]:
+                      - link "Teams" [ref=e178] [cursor=pointer]:
+                        - /url: /api/v1/teams/
+                      - button "Toggle the collapsible sidebar category 'Teams'" [ref=e179] [cursor=pointer]
+                  - listitem [ref=e180]:
+                    - generic [ref=e181]:
+                      - link "Tenants" [expanded] [ref=e182] [cursor=pointer]:
+                        - /url: /api/v1/tenants/
+                      - button "Toggle the collapsible sidebar category 'Tenants'" [ref=e183] [cursor=pointer]
+                    - list [ref=e184]:
+                      - listitem [ref=e185]:
+                        - link "patch Update tenant address" [ref=e186] [cursor=pointer]:
+                          - /url: /api/v1/v-1-patch-tenant-address/
+                      - listitem [ref=e187]:
+                        - link "get lists the certificates for the tenant" [ref=e188] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-u-id-assets-certs-list/
+                      - listitem [ref=e189]:
+                        - link "post create the tenant certificate" [ref=e190] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-uid-assets-certs-create/
+                      - listitem [ref=e191]:
+                        - link "del deletes the tenant certificate" [ref=e192] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-uid-assets-certs-uid-delete/
+                      - listitem [ref=e193]:
+                        - link "get Returns the ca certificate for the tenant" [ref=e194] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-uid-assets-certs-uid-get/
+                      - listitem [ref=e195]:
+                        - link "put updates the tenant certificate" [ref=e196] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-uid-assets-certs-uid-update/
+                      - listitem [ref=e197]:
+                        - link "del deletes the tenant data sink config" [ref=e198] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-uid-assets-data-sinks-delete/
+                      - listitem [ref=e199]:
+                        - link "get Returns data sink config of tenant" [ref=e200] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-uid-assets-data-sinks-get/
+                      - listitem [ref=e201]:
+                        - link "post create data sink config" [ref=e202] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-uid-assets-data-sinks-create/
+                      - listitem [ref=e203]:
+                        - link "put updates the tenant data sink config" [ref=e204] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-uid-assets-data-sinks-update/
+                      - listitem [ref=e205]:
+                        - link "get Get tenant auth token settings" [ref=e206] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-uid-auth-token-settings-get/
+                      - listitem [ref=e207]:
+                        - link "put Update tenant auth token settings" [ref=e208] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-uid-auth-token-settings-update/
+                      - listitem [ref=e209]:
+                        - link "patch Tenant to accept the contract agreement" [ref=e210] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenants-uid-contract-accept/
+                      - listitem [ref=e211]:
+                        - link "del Deletes the aws credit account for tenants" [ref=e212] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenants-credit-account-delete/
+                      - listitem [ref=e213]:
+                        - link "get Get the credit accounts for the tenants with free tier access" [ref=e214] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenants-credit-account-get/
+                      - listitem [ref=e215]:
+                        - link "get retrieves the domains for tenant" [ref=e216] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-uid-domains-get/
+                      - listitem [ref=e217]:
+                        - link "post creates or updates domains for tenant" [ref=e218] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-uid-domains-update/
+                      - listitem [ref=e219]:
+                        - link "patch Update tenant emailId" [ref=e220] [cursor=pointer]:
+                          - /url: /api/v1/v-1-patch-tenant-email-id/
+                      - listitem [ref=e221]:
+                        - link "get Get tenant level freemium configuration" [ref=e222] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-freemium-get/
+                      - listitem [ref=e223]:
+                        - link "put Update tenant freemium configuration" [ref=e224] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-freemium-update/
+                      - listitem [ref=e225]:
+                        - link "get Get tenant freemium usage" [ref=e226] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-freemium-usage-get/
+                      - listitem [ref=e227]:
+                        - link "get Returns a specified invoice" [ref=e228] [cursor=pointer]:
+                          - /url: /api/v1/v-1-invoices-uid-get/
+                      - listitem [ref=e229]:
+                        - link "get Downloads the specified invoice report" [ref=e230] [cursor=pointer]:
+                          - /url: /api/v1/v-1-invoice-uid-report-invoice-pdf/
+                      - listitem [ref=e231]:
+                        - link "get Downloads the specified monthly invoice report" [ref=e232] [cursor=pointer]:
+                          - /url: /api/v1/v-1-invoice-uid-report-pdf/
+                      - listitem [ref=e233]:
+                        - link "get Downloads the specified tenant usage" [ref=e234] [cursor=pointer]:
+                          - /url: /api/v1/v-1-invoice-uid-report-usage-pdf/
+                      - listitem [ref=e235]:
+                        - link "get Get tenant login banner settings" [ref=e236] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-uid-login-banner-get/
+                      - listitem [ref=e237]:
+                        - link "put Update tenant login banner settings" [ref=e238] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-uid-login-banner-update/
+                      - listitem [ref=e239]:
+                        - link "del Delete the macros for the specified tenant by given macro name" [ref=e240] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenants-uid-macros-delete-by-macro-name/
+                      - listitem [ref=e241]:
+                        - link "get List the macros of the specified tenant" [ref=e242] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenants-uid-macros-list/
+                      - listitem [ref=e243]:
+                        - link "patch Update the macros for the specified tenant by given macro name" [ref=e244] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenants-uid-macros-update-by-macro-name/
+                      - listitem [ref=e245]:
+                        - link "post Create or add new macros for the specified tenant" [ref=e246] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenants-uid-macros-create/
+                      - listitem [ref=e247]:
+                        - link "put Update the macros of the specified tenant" [ref=e248] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenants-uid-macros-update/
+                      - listitem [ref=e249]:
+                        - link "get Returns the oidc Spec for tenant" [ref=e250] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-uid-oidc-config-get/
+                      - listitem [ref=e251]:
+                        - link "post Associates the oidc Spec for the tenant" [ref=e252] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-uid-oidc-config-update/
+                      - listitem [ref=e253]:
+                        - link "get retrieves the password policy for tenant" [ref=e254] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-uid-password-policy-get/
+                      - listitem [ref=e255]:
+                        - link "post creates or updates a password policy for tenant" [ref=e256] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-uid-password-policy-update/
+                      - listitem [ref=e257]:
+                        - link "get Get is cluster group enabled for a specific tenant" [ref=e258] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-pref-cluster-group-get/
+                      - listitem [ref=e259]:
+                        - link "put Enable or Disable cluster group for a specific tenant" [ref=e260] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-pref-cluster-group-update/
+                      - listitem [ref=e261]:
+                        - link "get Get tenant cluster RBAC settings" [ref=e262] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-cluster-rbac-settings-get/
+                      - listitem [ref=e263]:
+                        - link "put Update tenant cluster RBAC settings" [ref=e264] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-cluster-rbac-settings-update/
+                      - listitem [ref=e265]:
+                        - link "get Get tenant cluster settings" [ref=e266] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-cluster-settings-get/
+                      - listitem [ref=e267]:
+                        - link "put Update tenant clusters nodes auto remediation setting" [ref=e268] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-clusters-nodes-auto-remediation-setting-update/
+                      - listitem [ref=e269]:
+                        - link "get Get developer credit enabled for a specific tenant" [ref=e270] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-developer-credit-get/
+                      - listitem [ref=e271]:
+                        - link "put update developer credit for a specific tenant" [ref=e272] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-developer-credit-update/
+                      - listitem [ref=e273]:
+                        - link "get Get tenant fips settings" [ref=e274] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-fips-settings-get/
+                      - listitem [ref=e275]:
+                        - link "put Update tenant fips setting" [ref=e276] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-fips-settings-update/
+                      - listitem [ref=e277]:
+                        - link "get Get all rate config for public and private cloud" [ref=e278] [cursor=pointer]:
+                          - /url: /api/v1/v-1-rate-config-get/
+                      - listitem [ref=e279]:
+                        - link "put updates the rate config for public and private cloud" [ref=e280] [cursor=pointer]:
+                          - /url: /api/v1/v-1-rate-config-update/
+                      - listitem [ref=e281]:
+                        - link "get Get tenant level resource limits configuration" [ref=e282] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-resource-limits-get/
+                      - listitem [ref=e283]:
+                        - link "patch Update tenant resource limits configuration" [ref=e284] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-resource-limits-update/
+                      - listitem [ref=e285]:
+                        - link "get Returns the specified service provider metadata and Saml Spec for tenant" [ref=e286] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-uid-saml-config-spec-get/
+                      - listitem [ref=e287]:
+                        - link "post Associates the specified federation metadata for the tenant" [ref=e288] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-uid-saml-config-update/
+                      - listitem [ref=e289]:
+                        - link "get get sso logins for the tenants" [ref=e290] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-uid-sso-auth-providers-get/
+                      - listitem [ref=e291]:
+                        - link "post enable sso logins for the tenants" [ref=e292] [cursor=pointer]:
+                          - /url: /api/v1/v-1-tenant-uid-sso-auth-providers-update/
+                  - listitem [ref=e293]:
+                    - generic [ref=e294]:
+                      - link "Users" [ref=e295] [cursor=pointer]:
+                        - /url: /api/v1/users/
+                      - button "Toggle the collapsible sidebar category 'Users'" [ref=e296] [cursor=pointer]
+                  - listitem [ref=e297]:
+                    - generic [ref=e298]:
+                      - link "Workspaces" [ref=e299] [cursor=pointer]:
+                        - /url: /api/v1/workspaces/
+                      - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e300] [cursor=pointer]
+              - listitem [ref=e301]:
+                - generic [ref=e302]:
+                  - link "Edge Management API V1" [ref=e303] [cursor=pointer]:
+                    - /url: /api/category/edge-management-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Edge Management API V1'" [ref=e304] [cursor=pointer]
+      - main [ref=e305]:
+        - generic [ref=e309]:
+          - article [ref=e310]:
+            - navigation "Breadcrumbs" [ref=e311]:
+              - list [ref=e312]:
+                - listitem [ref=e313]:
+                  - link "Home page" [ref=e314] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e315]
+                - listitem [ref=e317]:
+                  - link "Palette API V1" [ref=e318] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                - listitem [ref=e319]:
+                  - generic [ref=e320]: Tenants
+            - generic [ref=e321]:
+              - heading "Tenants" [level=1] [ref=e323]
+              - generic [ref=e326]:
+                - article [ref=e327]:
+                  - link "📄️ Update tenant address Update tenant address" [ref=e328] [cursor=pointer]:
+                    - /url: /api/v1/v-1-patch-tenant-address/
+                    - heading "📄️ Update tenant address" [level=2] [ref=e329]
+                    - paragraph [ref=e330]: Update tenant address
+                - article [ref=e331]:
+                  - link "📄️ lists the certificates for the tenant lists the certificates for the tenant" [ref=e332] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-u-id-assets-certs-list/
+                    - heading "📄️ lists the certificates for the tenant" [level=2] [ref=e333]
+                    - paragraph [ref=e334]: lists the certificates for the tenant
+                - article [ref=e335]:
+                  - link "📄️ create the tenant certificate create the tenant certificate" [ref=e336] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-uid-assets-certs-create/
+                    - heading "📄️ create the tenant certificate" [level=2] [ref=e337]
+                    - paragraph [ref=e338]: create the tenant certificate
+                - article [ref=e339]:
+                  - link "📄️ deletes the tenant certificate deletes the tenant certificate" [ref=e340] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-uid-assets-certs-uid-delete/
+                    - heading "📄️ deletes the tenant certificate" [level=2] [ref=e341]
+                    - paragraph [ref=e342]: deletes the tenant certificate
+                - article [ref=e343]:
+                  - link "📄️ Returns the ca certificate for the tenan ... Returns the ca certificate for the tenant" [ref=e344] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-uid-assets-certs-uid-get/
+                    - heading "📄️ Returns the ca certificate for the tenan ..." [level=2] [ref=e345]
+                    - paragraph [ref=e346]: Returns the ca certificate for the tenant
+                - article [ref=e347]:
+                  - link "📄️ updates the tenant certificate updates the tenant certificate" [ref=e348] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-uid-assets-certs-uid-update/
+                    - heading "📄️ updates the tenant certificate" [level=2] [ref=e349]
+                    - paragraph [ref=e350]: updates the tenant certificate
+                - article [ref=e351]:
+                  - link "📄️ deletes the tenant data sink config deletes the tenant data sink config" [ref=e352] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-uid-assets-data-sinks-delete/
+                    - heading "📄️ deletes the tenant data sink config" [level=2] [ref=e353]
+                    - paragraph [ref=e354]: deletes the tenant data sink config
+                - article [ref=e355]:
+                  - link "📄️ Returns data sink config of tenant Returns data sink config of tenant" [ref=e356] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-uid-assets-data-sinks-get/
+                    - heading "📄️ Returns data sink config of tenant" [level=2] [ref=e357]
+                    - paragraph [ref=e358]: Returns data sink config of tenant
+                - article [ref=e359]:
+                  - link "📄️ create data sink config create data sink config" [ref=e360] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-uid-assets-data-sinks-create/
+                    - heading "📄️ create data sink config" [level=2] [ref=e361]
+                    - paragraph [ref=e362]: create data sink config
+                - article [ref=e363]:
+                  - link "📄️ updates the tenant data sink config updates the tenant data sink config" [ref=e364] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-uid-assets-data-sinks-update/
+                    - heading "📄️ updates the tenant data sink config" [level=2] [ref=e365]
+                    - paragraph [ref=e366]: updates the tenant data sink config
+                - article [ref=e367]:
+                  - link "📄️ Get tenant auth token settings Get tenant auth token settings" [ref=e368] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-uid-auth-token-settings-get/
+                    - heading "📄️ Get tenant auth token settings" [level=2] [ref=e369]
+                    - paragraph [ref=e370]: Get tenant auth token settings
+                - article [ref=e371]:
+                  - link "📄️ Update tenant auth token settings Update tenant auth token settings" [ref=e372] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-uid-auth-token-settings-update/
+                    - heading "📄️ Update tenant auth token settings" [level=2] [ref=e373]
+                    - paragraph [ref=e374]: Update tenant auth token settings
+                - article [ref=e375]:
+                  - link "📄️ Tenant to accept the contract agreement Tenant to accept the contract agreement" [ref=e376] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenants-uid-contract-accept/
+                    - heading "📄️ Tenant to accept the contract agreement" [level=2] [ref=e377]
+                    - paragraph [ref=e378]: Tenant to accept the contract agreement
+                - article [ref=e379]:
+                  - link "📄️ Deletes the aws credit account for tenan ... Deletes the aws credit account for tenants" [ref=e380] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenants-credit-account-delete/
+                    - heading "📄️ Deletes the aws credit account for tenan ..." [level=2] [ref=e381]
+                    - paragraph [ref=e382]: Deletes the aws credit account for tenants
+                - article [ref=e383]:
+                  - link "📄️ Get the credit accounts for the tenants ... Get the credit accounts for the tenants with free tier access" [ref=e384] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenants-credit-account-get/
+                    - heading "📄️ Get the credit accounts for the tenants ..." [level=2] [ref=e385]
+                    - paragraph [ref=e386]: Get the credit accounts for the tenants with free tier access
+                - article [ref=e387]:
+                  - link "📄️ retrieves the domains for tenant retrieves the domains for tenant" [ref=e388] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-uid-domains-get/
+                    - heading "📄️ retrieves the domains for tenant" [level=2] [ref=e389]
+                    - paragraph [ref=e390]: retrieves the domains for tenant
+                - article [ref=e391]:
+                  - link "📄️ creates or updates domains for tenant creates or updates domains for tenant" [ref=e392] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-uid-domains-update/
+                    - heading "📄️ creates or updates domains for tenant" [level=2] [ref=e393]
+                    - paragraph [ref=e394]: creates or updates domains for tenant
+                - article [ref=e395]:
+                  - link "📄️ Update tenant emailId Update tenant emailId" [ref=e396] [cursor=pointer]:
+                    - /url: /api/v1/v-1-patch-tenant-email-id/
+                    - heading "📄️ Update tenant emailId" [level=2] [ref=e397]
+                    - paragraph [ref=e398]: Update tenant emailId
+                - article [ref=e399]:
+                  - link "📄️ Get tenant level freemium configuration Get tenant level freemium configuration" [ref=e400] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-freemium-get/
+                    - heading "📄️ Get tenant level freemium configuration" [level=2] [ref=e401]
+                    - paragraph [ref=e402]: Get tenant level freemium configuration
+                - article [ref=e403]:
+                  - link "📄️ Update tenant freemium configuration Update tenant freemium configuration" [ref=e404] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-freemium-update/
+                    - heading "📄️ Update tenant freemium configuration" [level=2] [ref=e405]
+                    - paragraph [ref=e406]: Update tenant freemium configuration
+                - article [ref=e407]:
+                  - link "📄️ Get tenant freemium usage Get tenant freemium usage" [ref=e408] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-freemium-usage-get/
+                    - heading "📄️ Get tenant freemium usage" [level=2] [ref=e409]
+                    - paragraph [ref=e410]: Get tenant freemium usage
+                - article [ref=e411]:
+                  - link "📄️ Returns a specified invoice Returns a specified invoice" [ref=e412] [cursor=pointer]:
+                    - /url: /api/v1/v-1-invoices-uid-get/
+                    - heading "📄️ Returns a specified invoice" [level=2] [ref=e413]
+                    - paragraph [ref=e414]: Returns a specified invoice
+                - article [ref=e415]:
+                  - link "📄️ Downloads the specified invoice report Downloads the specified invoice report" [ref=e416] [cursor=pointer]:
+                    - /url: /api/v1/v-1-invoice-uid-report-invoice-pdf/
+                    - heading "📄️ Downloads the specified invoice report" [level=2] [ref=e417]
+                    - paragraph [ref=e418]: Downloads the specified invoice report
+                - article [ref=e419]:
+                  - link "📄️ Downloads the specified monthly invoice ... Downloads the specified monthly invoice report" [ref=e420] [cursor=pointer]:
+                    - /url: /api/v1/v-1-invoice-uid-report-pdf/
+                    - heading "📄️ Downloads the specified monthly invoice ..." [level=2] [ref=e421]
+                    - paragraph [ref=e422]: Downloads the specified monthly invoice report
+                - article [ref=e423]:
+                  - link "📄️ Downloads the specified tenant usage Downloads the specified tenant usage" [ref=e424] [cursor=pointer]:
+                    - /url: /api/v1/v-1-invoice-uid-report-usage-pdf/
+                    - heading "📄️ Downloads the specified tenant usage" [level=2] [ref=e425]
+                    - paragraph [ref=e426]: Downloads the specified tenant usage
+                - article [ref=e427]:
+                  - link "📄️ Get tenant login banner settings Get tenant login banner settings" [ref=e428] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-uid-login-banner-get/
+                    - heading "📄️ Get tenant login banner settings" [level=2] [ref=e429]
+                    - paragraph [ref=e430]: Get tenant login banner settings
+                - article [ref=e431]:
+                  - link "📄️ Update tenant login banner settings Update tenant login banner settings" [ref=e432] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-uid-login-banner-update/
+                    - heading "📄️ Update tenant login banner settings" [level=2] [ref=e433]
+                    - paragraph [ref=e434]: Update tenant login banner settings
+                - article [ref=e435]:
+                  - link "📄️ Delete the macros for the specified tena ... Delete the macros for the specified tenant by given macro name" [ref=e436] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenants-uid-macros-delete-by-macro-name/
+                    - heading "📄️ Delete the macros for the specified tena ..." [level=2] [ref=e437]
+                    - paragraph [ref=e438]: Delete the macros for the specified tenant by given macro name
+                - article [ref=e439]:
+                  - link "📄️ List the macros of the specified tenant List the macros of the specified tenant" [ref=e440] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenants-uid-macros-list/
+                    - heading "📄️ List the macros of the specified tenant" [level=2] [ref=e441]
+                    - paragraph [ref=e442]: List the macros of the specified tenant
+                - article [ref=e443]:
+                  - link "📄️ Update the macros for the specified tena ... Update the macros for the specified tenant by given macro name" [ref=e444] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenants-uid-macros-update-by-macro-name/
+                    - heading "📄️ Update the macros for the specified tena ..." [level=2] [ref=e445]
+                    - paragraph [ref=e446]: Update the macros for the specified tenant by given macro name
+                - article [ref=e447]:
+                  - link "📄️ Create or add new macros for the specifi ... Create or add new macros for the specified tenant" [ref=e448] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenants-uid-macros-create/
+                    - heading "📄️ Create or add new macros for the specifi ..." [level=2] [ref=e449]
+                    - paragraph [ref=e450]: Create or add new macros for the specified tenant
+                - article [ref=e451]:
+                  - link "📄️ Update the macros of the specified tenan ... Update the macros of the specified tenant" [ref=e452] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenants-uid-macros-update/
+                    - heading "📄️ Update the macros of the specified tenan ..." [level=2] [ref=e453]
+                    - paragraph [ref=e454]: Update the macros of the specified tenant
+                - article [ref=e455]:
+                  - link "📄️ Returns the oidc Spec for tenant Returns the oidc Spec for tenant" [ref=e456] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-uid-oidc-config-get/
+                    - heading "📄️ Returns the oidc Spec for tenant" [level=2] [ref=e457]
+                    - paragraph [ref=e458]: Returns the oidc Spec for tenant
+                - article [ref=e459]:
+                  - link "📄️ Associates the oidc Spec for the tenant Associates the oidc Spec for the tenant" [ref=e460] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-uid-oidc-config-update/
+                    - heading "📄️ Associates the oidc Spec for the tenant" [level=2] [ref=e461]
+                    - paragraph [ref=e462]: Associates the oidc Spec for the tenant
+                - article [ref=e463]:
+                  - link "📄️ retrieves the password policy for tenant retrieves the password policy for tenant" [ref=e464] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-uid-password-policy-get/
+                    - heading "📄️ retrieves the password policy for tenant" [level=2] [ref=e465]
+                    - paragraph [ref=e466]: retrieves the password policy for tenant
+                - article [ref=e467]:
+                  - link "📄️ creates or updates a password policy for ... creates or updates a password policy for tenant" [ref=e468] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-uid-password-policy-update/
+                    - heading "📄️ creates or updates a password policy for ..." [level=2] [ref=e469]
+                    - paragraph [ref=e470]: creates or updates a password policy for tenant
+                - article [ref=e471]:
+                  - link "📄️ Get is cluster group enabled for a speci ... Get is cluster group enabled for a specific tenant" [ref=e472] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-pref-cluster-group-get/
+                    - heading "📄️ Get is cluster group enabled for a speci ..." [level=2] [ref=e473]
+                    - paragraph [ref=e474]: Get is cluster group enabled for a specific tenant
+                - article [ref=e475]:
+                  - link "📄️ Enable or Disable cluster group for a sp ... Enable or Disable cluster group for a specific tenant" [ref=e476] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-pref-cluster-group-update/
+                    - heading "📄️ Enable or Disable cluster group for a sp ..." [level=2] [ref=e477]
+                    - paragraph [ref=e478]: Enable or Disable cluster group for a specific tenant
+                - article [ref=e479]:
+                  - link "📄️ Get tenant cluster RBAC settings Get tenant cluster RBAC settings" [ref=e480] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-cluster-rbac-settings-get/
+                    - heading "📄️ Get tenant cluster RBAC settings" [level=2] [ref=e481]
+                    - paragraph [ref=e482]: Get tenant cluster RBAC settings
+                - article [ref=e483]:
+                  - link "📄️ Update tenant cluster RBAC settings Update tenant cluster RBAC settings" [ref=e484] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-cluster-rbac-settings-update/
+                    - heading "📄️ Update tenant cluster RBAC settings" [level=2] [ref=e485]
+                    - paragraph [ref=e486]: Update tenant cluster RBAC settings
+                - article [ref=e487]:
+                  - link "📄️ Get tenant cluster settings Get tenant cluster settings" [ref=e488] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-cluster-settings-get/
+                    - heading "📄️ Get tenant cluster settings" [level=2] [ref=e489]
+                    - paragraph [ref=e490]: Get tenant cluster settings
+                - article [ref=e491]:
+                  - link "📄️ Update tenant clusters nodes auto remedi ... Update tenant clusters nodes auto remediation setting" [ref=e492] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-clusters-nodes-auto-remediation-setting-update/
+                    - heading "📄️ Update tenant clusters nodes auto remedi ..." [level=2] [ref=e493]
+                    - paragraph [ref=e494]: Update tenant clusters nodes auto remediation setting
+                - article [ref=e495]:
+                  - link "📄️ Get developer credit enabled for a speci ... Get developer credit enabled for a specific tenant" [ref=e496] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-developer-credit-get/
+                    - heading "📄️ Get developer credit enabled for a speci ..." [level=2] [ref=e497]
+                    - paragraph [ref=e498]: Get developer credit enabled for a specific tenant
+                - article [ref=e499]:
+                  - link "📄️ update developer credit for a specific t ... update developer credit for a specific tenant" [ref=e500] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-developer-credit-update/
+                    - heading "📄️ update developer credit for a specific t ..." [level=2] [ref=e501]
+                    - paragraph [ref=e502]: update developer credit for a specific tenant
+                - article [ref=e503]:
+                  - link "📄️ Get tenant fips settings Get tenant fips settings" [ref=e504] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-fips-settings-get/
+                    - heading "📄️ Get tenant fips settings" [level=2] [ref=e505]
+                    - paragraph [ref=e506]: Get tenant fips settings
+                - article [ref=e507]:
+                  - link "📄️ Update tenant fips setting Update tenant fips setting" [ref=e508] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-fips-settings-update/
+                    - heading "📄️ Update tenant fips setting" [level=2] [ref=e509]
+                    - paragraph [ref=e510]: Update tenant fips setting
+                - article [ref=e511]:
+                  - link "📄️ Get all rate config for public and priva ... Get all rate config for public and private cloud" [ref=e512] [cursor=pointer]:
+                    - /url: /api/v1/v-1-rate-config-get/
+                    - heading "📄️ Get all rate config for public and priva ..." [level=2] [ref=e513]
+                    - paragraph [ref=e514]: Get all rate config for public and private cloud
+                - article [ref=e515]:
+                  - link "📄️ updates the rate config for public and p ... updates the rate config for public and private cloud" [ref=e516] [cursor=pointer]:
+                    - /url: /api/v1/v-1-rate-config-update/
+                    - heading "📄️ updates the rate config for public and p ..." [level=2] [ref=e517]
+                    - paragraph [ref=e518]: updates the rate config for public and private cloud
+                - article [ref=e519]:
+                  - link "📄️ Get tenant level resource limits configu ... Get tenant level resource limits configuration" [ref=e520] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-resource-limits-get/
+                    - heading "📄️ Get tenant level resource limits configu ..." [level=2] [ref=e521]
+                    - paragraph [ref=e522]: Get tenant level resource limits configuration
+                - article [ref=e523]:
+                  - link "📄️ Update tenant resource limits configurat ... Update tenant resource limits configuration" [ref=e524] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-resource-limits-update/
+                    - heading "📄️ Update tenant resource limits configurat ..." [level=2] [ref=e525]
+                    - paragraph [ref=e526]: Update tenant resource limits configuration
+                - article [ref=e527]:
+                  - link "📄️ Returns the specified service provider m ... Returns the specified service provider metadata and Saml Spec for tenant" [ref=e528] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-uid-saml-config-spec-get/
+                    - heading "📄️ Returns the specified service provider m ..." [level=2] [ref=e529]
+                    - paragraph [ref=e530]: Returns the specified service provider metadata and Saml Spec for tenant
+                - article [ref=e531]:
+                  - link "📄️ Associates the specified federation meta ... Associates the specified federation metadata for the tenant" [ref=e532] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-uid-saml-config-update/
+                    - heading "📄️ Associates the specified federation meta ..." [level=2] [ref=e533]
+                    - paragraph [ref=e534]: Associates the specified federation metadata for the tenant
+                - article [ref=e535]:
+                  - link "📄️ get sso logins for the tenants get sso logins for the tenants" [ref=e536] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-uid-sso-auth-providers-get/
+                    - heading "📄️ get sso logins for the tenants" [level=2] [ref=e537]
+                    - paragraph [ref=e538]: get sso logins for the tenants
+                - article [ref=e539]:
+                  - link "📄️ enable sso logins for the tenants enable sso logins for the tenants" [ref=e540] [cursor=pointer]:
+                    - /url: /api/v1/v-1-tenant-uid-sso-auth-providers-update/
+                    - heading "📄️ enable sso logins for the tenants" [level=2] [ref=e541]
+                    - paragraph [ref=e542]: enable sso logins for the tenants
+          - navigation "Docs pages" [ref=e545]:
+            - link "Previous « Updates the tenant roles of the specified team" [ref=e546] [cursor=pointer]:
+              - /url: /api/v1/v-1-teams-uid-tenant-roles-update/
+              - generic [ref=e547]: Previous
+              - generic [ref=e548]: « Updates the tenant roles of the specified team
+            - link "Next Update tenant address »" [ref=e549] [cursor=pointer]:
+              - /url: /api/v1/v-1-patch-tenant-address/
+              - generic [ref=e550]: Next
+              - generic [ref=e551]: Update tenant address »
+  - button "Project Logo Ask AI" [ref=e552] [cursor=pointer]:
+    - generic [ref=e555]:
+      - img "Project Logo" [ref=e556]
+      - paragraph [ref=e557]: Ask AI
+```

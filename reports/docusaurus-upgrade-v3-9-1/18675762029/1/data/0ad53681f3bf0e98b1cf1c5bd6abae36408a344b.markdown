@@ -1,0 +1,616 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Introduction" [ref=e41] [cursor=pointer]:
+                  - /url: /api/introduction/
+                  - img [ref=e43]
+                  - text: Introduction
+              - listitem [ref=e45]:
+                - link "Example Usage" [ref=e46] [cursor=pointer]:
+                  - /url: /api/samples/
+              - listitem [ref=e47]:
+                - link "Postman Collection" [ref=e48] [cursor=pointer]:
+                  - /url: /api/postman-collection/
+              - listitem [ref=e49]:
+                - generic [ref=e50]:
+                  - link "Palette API V1" [ref=e51] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Palette API V1'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "Edge Management API V1" [expanded] [ref=e55] [cursor=pointer]:
+                    - /url: /api/category/edge-management-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Edge Management API V1'" [ref=e56] [cursor=pointer]
+                - list [ref=e57]:
+                  - listitem [ref=e58]:
+                    - link "Introduction" [ref=e59] [cursor=pointer]:
+                      - /url: /api/edge-v1/local-management-apis/
+                  - listitem [ref=e60]:
+                    - generic [ref=e61]:
+                      - link "Edge Mgmt" [expanded] [ref=e62] [cursor=pointer]:
+                        - /url: /api/edge-v1/edge-mgmt/
+                      - button "Toggle the collapsible sidebar category 'Edge Mgmt'" [ref=e63] [cursor=pointer]
+                    - list [ref=e64]:
+                      - listitem [ref=e65]:
+                        - link "get Get the details of the cluster." [ref=e66] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-config/
+                      - listitem [ref=e67]:
+                        - link "post Creates a cluster with the provided cluster configuration" [ref=e68] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-create-cluster/
+                      - listitem [ref=e69]:
+                        - link "del Delete a cluster" [ref=e70] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-delete-cluster/
+                      - listitem [ref=e71]:
+                        - 'link "patch DEPRECATED - This endpoint is deprecated and will be removed in future versions. Use /v1/edge-mgmt/cluster/{clusterName} instead" [ref=e72] [cursor=pointer]':
+                          - /url: /api/edge-v1/v-1-patch-cluster/
+                      - listitem [ref=e73]:
+                        - link "get list the details of the cluster’s packs." [ref=e74] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-applications/
+                      - listitem [ref=e75]:
+                        - link "get Get Cluster Certificates Info" [ref=e76] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-certificate-details/
+                      - listitem [ref=e77]:
+                        - link "get Get Edge Cluster details" [ref=e78] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-get/
+                      - listitem [ref=e79]:
+                        - link "get List cluster events" [ref=e80] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-get-cluster-events/
+                      - listitem [ref=e81]:
+                        - link "post Creates a pairing request" [ref=e82] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-pair/
+                      - listitem [ref=e83]:
+                        - link "get Get all existing pairing requests" [ref=e84] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-pair-details/
+                      - listitem [ref=e85]:
+                        - link "post Rejects a pairing request" [ref=e86] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-pair-reject/
+                      - listitem [ref=e87]:
+                        - link "post Verifies whether all cluster hosts are able to connect to palette" [ref=e88] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-pair-verify-connection/
+                      - listitem [ref=e89]:
+                        - link "put Updates a cluster with the provided cluster configuration" [ref=e90] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-update-cluster-profiles/
+                      - listitem [ref=e91]:
+                        - link "post Validate cluster profile variables" [ref=e92] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-validate-cluster-profile-variables/
+                      - listitem [ref=e93]:
+                        - link "get List existing Harbor Content Details" [ref=e94] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-harbor-contents-details/
+                      - listitem [ref=e95]:
+                        - link "get List Harbor Content Sync Status" [ref=e96] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-harbor-contents-sync-status-details/
+                      - listitem [ref=e97]:
+                        - link "get Gets the harbor health status" [ref=e98] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-harbor-health/
+                      - listitem [ref=e99]:
+                        - link "post Renew Cluster Certificates" [ref=e100] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-renew-certs/
+                      - listitem [ref=e101]:
+                        - link "put Update cluster settings" [ref=e102] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-native-cluster-settings/
+                      - listitem [ref=e103]:
+                        - link "put Updates a cluster with the provided cluster configuration" [ref=e104] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-update-cluster-config/
+                      - listitem [ref=e105]:
+                        - link "patch Patch a cluster with the provided cluster configuration" [ref=e106] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-patch-cluster-config/
+                      - listitem [ref=e107]:
+                        - link "get parses the preloaded cluster-config archive if it was included in the ISO." [ref=e108] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-config-archive-embedded/
+                      - listitem [ref=e109]:
+                        - link "get parses the cluster-config archive if it exists." [ref=e110] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-config-archive-overriden/
+                      - listitem [ref=e111]:
+                        - link "del Delete or reject the cluster update archive" [ref=e112] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-delete-cluster-update-archive/
+                      - listitem [ref=e113]:
+                        - link "get parses the cluster-config update archive if it was included in the uploaded content-bundle." [ref=e114] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-config-archive-update/
+                      - listitem [ref=e115]:
+                        - link "get Fetch the cluster node pool details including edge host details." [ref=e116] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-machine-pool-detail/
+                      - listitem [ref=e117]:
+                        - link "post Create a machine pool" [ref=e118] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-machine-pool-create/
+                      - listitem [ref=e119]:
+                        - link "put Update machine pools" [ref=e120] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-machine-pool-update/
+                      - listitem [ref=e121]:
+                        - link "del Delete machine pools" [ref=e122] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-machine-pool-delete/
+                      - listitem [ref=e123]:
+                        - link "patch Patch machine pools" [ref=e124] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-machine-pool-patch/
+                      - listitem [ref=e125]:
+                        - link "del Delete a machine pool node" [ref=e126] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-machine-pool-node-delete/
+                      - listitem [ref=e127]:
+                        - link "get A list of the K8s Cluster Nodes" [ref=e128] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-nodes/
+                      - listitem [ref=e129]:
+                        - link "get Ping an endpoint" [ref=e130] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-ping-host/
+                      - listitem [ref=e131]:
+                        - link "get Display route that IP packets take to a network host" [ref=e132] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-trace-route-host/
+                      - listitem [ref=e133]:
+                        - link "get Get edge host info" [ref=e134] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-info/
+                      - listitem [ref=e135]:
+                        - link "get Get the public key used to verify the signed content." [ref=e136] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-get-content-signing-public-key/
+                      - listitem [ref=e137]:
+                        - link "post Reboot edge host" [ref=e138] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-action-reboot/
+                      - listitem [ref=e139]:
+                        - link "post Reset edge host" [ref=e140] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-action-reset/
+                      - listitem [ref=e141]:
+                        - link "post Shutdown edge host" [ref=e142] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-action-shutdown/
+                      - listitem [ref=e143]:
+                        - link "post Uploads the cluster config archive and extracts it to the required location on the edge host." [ref=e144] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-cluster-config-upload/
+                      - listitem [ref=e145]:
+                        - link "post Uploads an archive file and extracts it to the required location on the edge host." [ref=e146] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-content-upload/
+                      - listitem [ref=e147]:
+                        - link "get Retrieves the list of audit logs" [ref=e148] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-audits/
+                      - listitem [ref=e149]:
+                        - link "get Download audit logs" [ref=e150] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-audit-download/
+                      - listitem [ref=e151]:
+                        - link "get Retrieves the list of filter options to display on audit ui page" [ref=e152] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-audit-filter/
+                      - listitem [ref=e153]:
+                        - link "get Get edge host configurations." [ref=e154] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-configurations-get/
+                      - listitem [ref=e155]:
+                        - link "put Update Edge Host configurations" [ref=e156] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-configurations-update/
+                      - listitem [ref=e157]:
+                        - link "get Edge host configurations status" [ref=e158] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-configuration-status/
+                      - listitem [ref=e159]:
+                        - link "get Download edge host Logs" [ref=e160] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-download-logs/
+                      - listitem [ref=e161]:
+                        - link "get List last 'logCount' edge host error logs" [ref=e162] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-error-logs/
+                      - listitem [ref=e163]:
+                        - link "get List custom files from the '/var/log/files' directory" [ref=e164] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-list-custom-files/
+                      - listitem [ref=e165]:
+                        - link "get Download a custom file from the user-defined or default directory" [ref=e166] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-custom-file-download/
+                      - listitem [ref=e167]:
+                        - link "post Start edge host log collection" [ref=e168] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-generate-logs/
+                      - listitem [ref=e169]:
+                        - link "get Edge host log collection status" [ref=e170] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-generate-logs-status/
+                      - listitem [ref=e171]:
+                        - link "post Link edge host to another edge host" [ref=e172] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-link/
+                      - listitem [ref=e173]:
+                        - link "post Generate a link token for linking edge hosts" [ref=e174] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-link-generate-token/
+                      - listitem [ref=e175]:
+                        - link "get Get the status of the edge host link" [ref=e176] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-link-status/
+                      - listitem [ref=e177]:
+                        - link "post Unlink edge host from other edge hosts" [ref=e178] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-edge-host-unlink/
+                      - listitem [ref=e179]:
+                        - link "get Get metadata of last uploaded content archive file" [ref=e180] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-uploaded-content-details/
+                      - listitem [ref=e181]:
+                        - link "get Get edge host userdata" [ref=e182] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-get-edge-host-userdata/
+                      - listitem [ref=e183]:
+                        - link "put Update edge host userdata" [ref=e184] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-put-edge-host-userdata/
+                      - listitem [ref=e185]:
+                        - link "post Update edge host userdata" [ref=e186] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-post-edge-host-userdata/
+                      - listitem [ref=e187]:
+                        - link "get Get life cycle events of cluster and edge host" [ref=e188] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-get-lifecycle-events/
+                      - listitem [ref=e189]:
+                        - link "get Get general settings" [ref=e190] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-settings/
+                  - listitem [ref=e191]:
+                    - generic [ref=e192]:
+                      - link "Ping" [ref=e193] [cursor=pointer]:
+                        - /url: /api/edge-v1/ping/
+                      - button "Toggle the collapsible sidebar category 'Ping'" [ref=e194] [cursor=pointer]
+                  - listitem [ref=e195]:
+                    - generic [ref=e196]:
+                      - link "Users" [ref=e197] [cursor=pointer]:
+                        - /url: /api/edge-v1/users/
+                      - button "Toggle the collapsible sidebar category 'Users'" [ref=e198] [cursor=pointer]
+      - main [ref=e199]:
+        - generic [ref=e203]:
+          - article [ref=e204]:
+            - navigation "Breadcrumbs" [ref=e205]:
+              - list [ref=e206]:
+                - listitem [ref=e207]:
+                  - link "Home page" [ref=e208] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e209]
+                - listitem [ref=e211]:
+                  - link "Edge Management API V1" [ref=e212] [cursor=pointer]:
+                    - /url: /api/category/edge-management-api-v1/
+                - listitem [ref=e213]:
+                  - generic [ref=e214]: Edge Mgmt
+            - generic [ref=e215]:
+              - heading "Edge Mgmt" [level=1] [ref=e217]
+              - generic [ref=e220]:
+                - article [ref=e221]:
+                  - link "📄️ Get the details of the cluster. Get the details of the cluster." [ref=e222] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-cluster-config/
+                    - heading "📄️ Get the details of the cluster." [level=2] [ref=e223]
+                    - paragraph [ref=e224]: Get the details of the cluster.
+                - article [ref=e225]:
+                  - link "📄️ Creates a cluster with the provided clus ... Creates a cluster with the provided cluster configuration" [ref=e226] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-create-cluster/
+                    - heading "📄️ Creates a cluster with the provided clus ..." [level=2] [ref=e227]
+                    - paragraph [ref=e228]: Creates a cluster with the provided cluster configuration
+                - article [ref=e229]:
+                  - link "📄️ Delete a cluster Delete a cluster" [ref=e230] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-delete-cluster/
+                    - heading "📄️ Delete a cluster" [level=2] [ref=e231]
+                    - paragraph [ref=e232]: Delete a cluster
+                - article [ref=e233]:
+                  - 'link "📄️ DEPRECATED - This endpoint is deprecated ... DEPRECATED - This endpoint is deprecated and will be removed in future versions. Use /v1/edge-mgmt/cluster/{clusterName} instead" [ref=e234] [cursor=pointer]':
+                    - /url: /api/edge-v1/v-1-patch-cluster/
+                    - heading "📄️ DEPRECATED - This endpoint is deprecated ..." [level=2] [ref=e235]
+                    - paragraph [ref=e236]: "DEPRECATED - This endpoint is deprecated and will be removed in future versions. Use /v1/edge-mgmt/cluster/{clusterName} instead"
+                - article [ref=e237]:
+                  - link "📄️ list the details of the cluster’s packs. list the details of the cluster’s packs." [ref=e238] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-cluster-applications/
+                    - heading "📄️ list the details of the cluster’s packs." [level=2] [ref=e239]
+                    - paragraph [ref=e240]: list the details of the cluster’s packs.
+                - article [ref=e241]:
+                  - link "📄️ Get Cluster Certificates Info Get Cluster Certificates Info" [ref=e242] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-certificate-details/
+                    - heading "📄️ Get Cluster Certificates Info" [level=2] [ref=e243]
+                    - paragraph [ref=e244]: Get Cluster Certificates Info
+                - article [ref=e245]:
+                  - link "📄️ Get Edge Cluster details Get Edge Cluster details" [ref=e246] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-cluster-get/
+                    - heading "📄️ Get Edge Cluster details" [level=2] [ref=e247]
+                    - paragraph [ref=e248]: Get Edge Cluster details
+                - article [ref=e249]:
+                  - link "📄️ List cluster events List cluster events" [ref=e250] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-get-cluster-events/
+                    - heading "📄️ List cluster events" [level=2] [ref=e251]
+                    - paragraph [ref=e252]: List cluster events
+                - article [ref=e253]:
+                  - link "📄️ Creates a pairing request Creates a pairing request" [ref=e254] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-cluster-pair/
+                    - heading "📄️ Creates a pairing request" [level=2] [ref=e255]
+                    - paragraph [ref=e256]: Creates a pairing request
+                - article [ref=e257]:
+                  - link "📄️ Get all existing pairing requests Get all existing pairing requests" [ref=e258] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-cluster-pair-details/
+                    - heading "📄️ Get all existing pairing requests" [level=2] [ref=e259]
+                    - paragraph [ref=e260]: Get all existing pairing requests
+                - article [ref=e261]:
+                  - link "📄️ Rejects a pairing request Rejects a pairing request" [ref=e262] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-cluster-pair-reject/
+                    - heading "📄️ Rejects a pairing request" [level=2] [ref=e263]
+                    - paragraph [ref=e264]: Rejects a pairing request
+                - article [ref=e265]:
+                  - link "📄️ Verifies whether all cluster hosts are a ... Verifies whether all cluster hosts are able to connect to palette" [ref=e266] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-cluster-pair-verify-connection/
+                    - heading "📄️ Verifies whether all cluster hosts are a ..." [level=2] [ref=e267]
+                    - paragraph [ref=e268]: Verifies whether all cluster hosts are able to connect to palette
+                - article [ref=e269]:
+                  - link "📄️ Updates a cluster with the provided clus ... Updates a cluster with the provided cluster configuration" [ref=e270] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-update-cluster-profiles/
+                    - heading "📄️ Updates a cluster with the provided clus ..." [level=2] [ref=e271]
+                    - paragraph [ref=e272]: Updates a cluster with the provided cluster configuration
+                - article [ref=e273]:
+                  - link "📄️ Validate cluster profile variables Validate cluster profile variables" [ref=e274] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-validate-cluster-profile-variables/
+                    - heading "📄️ Validate cluster profile variables" [level=2] [ref=e275]
+                    - paragraph [ref=e276]: Validate cluster profile variables
+                - article [ref=e277]:
+                  - link "📄️ List existing Harbor Content Details Get Harbor Content Details" [ref=e278] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-harbor-contents-details/
+                    - heading "📄️ List existing Harbor Content Details" [level=2] [ref=e279]
+                    - paragraph [ref=e280]: Get Harbor Content Details
+                - article [ref=e281]:
+                  - link "📄️ List Harbor Content Sync Status Get Harbor Content Sync Status" [ref=e282] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-harbor-contents-sync-status-details/
+                    - heading "📄️ List Harbor Content Sync Status" [level=2] [ref=e283]
+                    - paragraph [ref=e284]: Get Harbor Content Sync Status
+                - article [ref=e285]:
+                  - link "📄️ Gets the harbor health status Gets the harbor health status" [ref=e286] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-harbor-health/
+                    - heading "📄️ Gets the harbor health status" [level=2] [ref=e287]
+                    - paragraph [ref=e288]: Gets the harbor health status
+                - article [ref=e289]:
+                  - link "📄️ Renew Cluster Certificates Renew Cluster Certificates" [ref=e290] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-renew-certs/
+                    - heading "📄️ Renew Cluster Certificates" [level=2] [ref=e291]
+                    - paragraph [ref=e292]: Renew Cluster Certificates
+                - article [ref=e293]:
+                  - link "📄️ Update cluster settings Update cluster settings" [ref=e294] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-edge-native-cluster-settings/
+                    - heading "📄️ Update cluster settings" [level=2] [ref=e295]
+                    - paragraph [ref=e296]: Update cluster settings
+                - article [ref=e297]:
+                  - link "📄️ Updates a cluster with the provided clus ... Updates a cluster with the provided cluster configuration" [ref=e298] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-update-cluster-config/
+                    - heading "📄️ Updates a cluster with the provided clus ..." [level=2] [ref=e299]
+                    - paragraph [ref=e300]: Updates a cluster with the provided cluster configuration
+                - article [ref=e301]:
+                  - link "📄️ Patch a cluster with the provided cluste ... Patch a cluster with the provided cluster configuration" [ref=e302] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-patch-cluster-config/
+                    - heading "📄️ Patch a cluster with the provided cluste ..." [level=2] [ref=e303]
+                    - paragraph [ref=e304]: Patch a cluster with the provided cluster configuration
+                - article [ref=e305]:
+                  - link "📄️ parses the preloaded cluster-config arch ... parses the cluster-config archive." [ref=e306] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-cluster-config-archive-embedded/
+                    - heading "📄️ parses the preloaded cluster-config arch ..." [level=2] [ref=e307]
+                    - paragraph [ref=e308]: parses the cluster-config archive.
+                - article [ref=e309]:
+                  - link "📄️ parses the cluster-config archive if it ... parses the cluster-config archive if it was uploaded as a standalone configuration." [ref=e310] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-cluster-config-archive-overriden/
+                    - heading "📄️ parses the cluster-config archive if it ..." [level=2] [ref=e311]
+                    - paragraph [ref=e312]: parses the cluster-config archive if it was uploaded as a standalone configuration.
+                - article [ref=e313]:
+                  - link "📄️ Delete or reject the cluster update arch ... Delete or reject the cluster update archive" [ref=e314] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-delete-cluster-update-archive/
+                    - heading "📄️ Delete or reject the cluster update arch ..." [level=2] [ref=e315]
+                    - paragraph [ref=e316]: Delete or reject the cluster update archive
+                - article [ref=e317]:
+                  - link "📄️ parses the cluster-config update archive ... parses the cluster-config update archive if it was included in the uploaded content-bundle." [ref=e318] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-cluster-config-archive-update/
+                    - heading "📄️ parses the cluster-config update archive ..." [level=2] [ref=e319]
+                    - paragraph [ref=e320]: parses the cluster-config update archive if it was included in the uploaded content-bundle.
+                - article [ref=e321]:
+                  - link "📄️ Fetch the cluster node pool details incl ... Fetch the cluster node pool details including edge host details." [ref=e322] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-machine-pool-detail/
+                    - heading "📄️ Fetch the cluster node pool details incl ..." [level=2] [ref=e323]
+                    - paragraph [ref=e324]: Fetch the cluster node pool details including edge host details.
+                - article [ref=e325]:
+                  - link "📄️ Create a machine pool Create a machine pool" [ref=e326] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-cluster-machine-pool-create/
+                    - heading "📄️ Create a machine pool" [level=2] [ref=e327]
+                    - paragraph [ref=e328]: Create a machine pool
+                - article [ref=e329]:
+                  - link "📄️ Update machine pools Update machine pools" [ref=e330] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-cluster-machine-pool-update/
+                    - heading "📄️ Update machine pools" [level=2] [ref=e331]
+                    - paragraph [ref=e332]: Update machine pools
+                - article [ref=e333]:
+                  - link "📄️ Delete machine pools Delete machine pools" [ref=e334] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-cluster-machine-pool-delete/
+                    - heading "📄️ Delete machine pools" [level=2] [ref=e335]
+                    - paragraph [ref=e336]: Delete machine pools
+                - article [ref=e337]:
+                  - link "📄️ Patch machine pools Patch machine pools" [ref=e338] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-cluster-machine-pool-patch/
+                    - heading "📄️ Patch machine pools" [level=2] [ref=e339]
+                    - paragraph [ref=e340]: Patch machine pools
+                - article [ref=e341]:
+                  - link "📄️ Delete a machine pool node Delete a node from the machine pool" [ref=e342] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-cluster-machine-pool-node-delete/
+                    - heading "📄️ Delete a machine pool node" [level=2] [ref=e343]
+                    - paragraph [ref=e344]: Delete a node from the machine pool
+                - article [ref=e345]:
+                  - link "📄️ A list of the K8s Cluster Nodes Get K8s Cluster Nodes" [ref=e346] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-cluster-nodes/
+                    - heading "📄️ A list of the K8s Cluster Nodes" [level=2] [ref=e347]
+                    - paragraph [ref=e348]: Get K8s Cluster Nodes
+                - article [ref=e349]:
+                  - link "📄️ Ping an endpoint Ping an endpoint" [ref=e350] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-ping-host/
+                    - heading "📄️ Ping an endpoint" [level=2] [ref=e351]
+                    - paragraph [ref=e352]: Ping an endpoint
+                - article [ref=e353]:
+                  - link "📄️ Display route that IP packets take to a ... Display route that IP packets take to a network host" [ref=e354] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-trace-route-host/
+                    - heading "📄️ Display route that IP packets take to a ..." [level=2] [ref=e355]
+                    - paragraph [ref=e356]: Display route that IP packets take to a network host
+                - article [ref=e357]:
+                  - link "📄️ Get edge host info Get edge host details" [ref=e358] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-edge-host-info/
+                    - heading "📄️ Get edge host info" [level=2] [ref=e359]
+                    - paragraph [ref=e360]: Get edge host details
+                - article [ref=e361]:
+                  - link "📄️ Get the public key used to verify the si ... Get the base64 encoded key used to verify the signed content." [ref=e362] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-get-content-signing-public-key/
+                    - heading "📄️ Get the public key used to verify the si ..." [level=2] [ref=e363]
+                    - paragraph [ref=e364]: Get the base64 encoded key used to verify the signed content.
+                - article [ref=e365]:
+                  - link "📄️ Reboot edge host Reboot edge host" [ref=e366] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-edge-host-action-reboot/
+                    - heading "📄️ Reboot edge host" [level=2] [ref=e367]
+                    - paragraph [ref=e368]: Reboot edge host
+                - article [ref=e369]:
+                  - link "📄️ Reset edge host Reset edge host" [ref=e370] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-edge-host-action-reset/
+                    - heading "📄️ Reset edge host" [level=2] [ref=e371]
+                    - paragraph [ref=e372]: Reset edge host
+                - article [ref=e373]:
+                  - link "📄️ Shutdown edge host Shutdown edge host" [ref=e374] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-edge-host-action-shutdown/
+                    - heading "📄️ Shutdown edge host" [level=2] [ref=e375]
+                    - paragraph [ref=e376]: Shutdown edge host
+                - article [ref=e377]:
+                  - link "📄️ Uploads the cluster config archive and e ... Uploads the cluster config archive and extracts it to the required location on the edge host." [ref=e378] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-cluster-config-upload/
+                    - heading "📄️ Uploads the cluster config archive and e ..." [level=2] [ref=e379]
+                    - paragraph [ref=e380]: Uploads the cluster config archive and extracts it to the required location on the edge host.
+                - article [ref=e381]:
+                  - link "📄️ Uploads an archive file and extracts it ... Uploads an archive file and extracts it to the required location on the edge host." [ref=e382] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-content-upload/
+                    - heading "📄️ Uploads an archive file and extracts it ..." [level=2] [ref=e383]
+                    - paragraph [ref=e384]: Uploads an archive file and extracts it to the required location on the edge host.
+                - article [ref=e385]:
+                  - link "📄️ Retrieves the list of audit logs Retrieves the list of audit logs" [ref=e386] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-audits/
+                    - heading "📄️ Retrieves the list of audit logs" [level=2] [ref=e387]
+                    - paragraph [ref=e388]: Retrieves the list of audit logs
+                - article [ref=e389]:
+                  - link "📄️ Download audit logs Download audit logs as a single compressed file" [ref=e390] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-audit-download/
+                    - heading "📄️ Download audit logs" [level=2] [ref=e391]
+                    - paragraph [ref=e392]: Download audit logs as a single compressed file
+                - article [ref=e393]:
+                  - link "📄️ Retrieves the list of filter options to ... Retrieves the list of filter options to display on audit ui page" [ref=e394] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-audit-filter/
+                    - heading "📄️ Retrieves the list of filter options to ..." [level=2] [ref=e395]
+                    - paragraph [ref=e396]: Retrieves the list of filter options to display on audit ui page
+                - article [ref=e397]:
+                  - link "📄️ Get edge host configurations. Get edge host configurations." [ref=e398] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-edge-host-configurations-get/
+                    - heading "📄️ Get edge host configurations." [level=2] [ref=e399]
+                    - paragraph [ref=e400]: Get edge host configurations.
+                - article [ref=e401]:
+                  - link "📄️ Update Edge Host configurations Update Edge Host configurations" [ref=e402] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-edge-host-configurations-update/
+                    - heading "📄️ Update Edge Host configurations" [level=2] [ref=e403]
+                    - paragraph [ref=e404]: Update Edge Host configurations
+                - article [ref=e405]:
+                  - link "📄️ Edge host configurations status Edge host configurations status" [ref=e406] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-edge-host-configuration-status/
+                    - heading "📄️ Edge host configurations status" [level=2] [ref=e407]
+                    - paragraph [ref=e408]: Edge host configurations status
+                - article [ref=e409]:
+                  - link "📄️ Download edge host Logs Downloads the logs of the edge host as a tar file." [ref=e410] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-edge-host-download-logs/
+                    - heading "📄️ Download edge host Logs" [level=2] [ref=e411]
+                    - paragraph [ref=e412]: Downloads the logs of the edge host as a tar file.
+                - article [ref=e413]:
+                  - link "📄️ List last 'logCount' edge host error log ... List last 'logCount' edge host error logs" [ref=e414] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-edge-host-error-logs/
+                    - heading "📄️ List last 'logCount' edge host error log ..." [level=2] [ref=e415]
+                    - paragraph [ref=e416]: List last 'logCount' edge host error logs
+                - article [ref=e417]:
+                  - link "📄️ List custom files from the '/var/log/fil ... Lists all the first level files from the '/var/log/files' directory." [ref=e418] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-edge-host-list-custom-files/
+                    - heading "📄️ List custom files from the '/var/log/fil ..." [level=2] [ref=e419]
+                    - paragraph [ref=e420]: Lists all the first level files from the '/var/log/files' directory.
+                - article [ref=e421]:
+                  - 'link "📄️ Download a custom file from the user-def ... Downloads a file from the `/var/log/files` directory. The file path is expected to be relative to the `/var/log/files` directory." [ref=e422] [cursor=pointer]':
+                    - /url: /api/edge-v1/v-1-edge-host-custom-file-download/
+                    - heading "📄️ Download a custom file from the user-def ..." [level=2] [ref=e423]
+                    - paragraph [ref=e424]: "Downloads a file from the `/var/log/files` directory. The file path is expected to be relative to the `/var/log/files` directory."
+                - article [ref=e425]:
+                  - link "📄️ Start edge host log collection Start edge host log collection" [ref=e426] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-edge-host-generate-logs/
+                    - heading "📄️ Start edge host log collection" [level=2] [ref=e427]
+                    - paragraph [ref=e428]: Start edge host log collection
+                - article [ref=e429]:
+                  - link "📄️ Edge host log collection status Edge host log collection status" [ref=e430] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-edge-host-generate-logs-status/
+                    - heading "📄️ Edge host log collection status" [level=2] [ref=e431]
+                    - paragraph [ref=e432]: Edge host log collection status
+                - article [ref=e433]:
+                  - link "📄️ Link edge host to another edge host Link edge host to another edge host" [ref=e434] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-edge-host-link/
+                    - heading "📄️ Link edge host to another edge host" [level=2] [ref=e435]
+                    - paragraph [ref=e436]: Link edge host to another edge host
+                - article [ref=e437]:
+                  - link "📄️ Generate a link token for linking edge h ... Generate a link token for linking edge hosts" [ref=e438] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-edge-host-link-generate-token/
+                    - heading "📄️ Generate a link token for linking edge h ..." [level=2] [ref=e439]
+                    - paragraph [ref=e440]: Generate a link token for linking edge hosts
+                - article [ref=e441]:
+                  - link "📄️ Get the status of the edge host link Get the status of the edge host link" [ref=e442] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-edge-host-link-status/
+                    - heading "📄️ Get the status of the edge host link" [level=2] [ref=e443]
+                    - paragraph [ref=e444]: Get the status of the edge host link
+                - article [ref=e445]:
+                  - link "📄️ Unlink edge host from other edge hosts Unlink edge host from other edge hosts" [ref=e446] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-edge-host-unlink/
+                    - heading "📄️ Unlink edge host from other edge hosts" [level=2] [ref=e447]
+                    - paragraph [ref=e448]: Unlink edge host from other edge hosts
+                - article [ref=e449]:
+                  - link "📄️ Get metadata of last uploaded content ar ... Get metadata of last uploaded content archive file" [ref=e450] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-uploaded-content-details/
+                    - heading "📄️ Get metadata of last uploaded content ar ..." [level=2] [ref=e451]
+                    - paragraph [ref=e452]: Get metadata of last uploaded content archive file
+                - article [ref=e453]:
+                  - link "📄️ Get edge host userdata Get edge host userdata" [ref=e454] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-get-edge-host-userdata/
+                    - heading "📄️ Get edge host userdata" [level=2] [ref=e455]
+                    - paragraph [ref=e456]: Get edge host userdata
+                - article [ref=e457]:
+                  - link "📄️ Update edge host userdata Update edge host userdata" [ref=e458] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-put-edge-host-userdata/
+                    - heading "📄️ Update edge host userdata" [level=2] [ref=e459]
+                    - paragraph [ref=e460]: Update edge host userdata
+                - article [ref=e461]:
+                  - link "📄️ Update edge host userdata Update edge host userdata" [ref=e462] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-post-edge-host-userdata/
+                    - heading "📄️ Update edge host userdata" [level=2] [ref=e463]
+                    - paragraph [ref=e464]: Update edge host userdata
+                - article [ref=e465]:
+                  - link "📄️ Get life cycle events of cluster and edg ... Get life cycle events of cluster and edge host" [ref=e466] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-get-lifecycle-events/
+                    - heading "📄️ Get life cycle events of cluster and edg ..." [level=2] [ref=e467]
+                    - paragraph [ref=e468]: Get life cycle events of cluster and edge host
+                - article [ref=e469]:
+                  - link "📄️ Get general settings Get general settings" [ref=e470] [cursor=pointer]:
+                    - /url: /api/edge-v1/v-1-settings/
+                    - heading "📄️ Get general settings" [level=2] [ref=e471]
+                    - paragraph [ref=e472]: Get general settings
+          - navigation "Docs pages" [ref=e475]:
+            - link "Previous « Introduction" [ref=e476] [cursor=pointer]:
+              - /url: /api/edge-v1/local-management-apis/
+              - generic [ref=e477]: Previous
+              - generic [ref=e478]: « Introduction
+            - link "Next Get the details of the cluster. »" [ref=e479] [cursor=pointer]:
+              - /url: /api/edge-v1/v-1-cluster-config/
+              - generic [ref=e480]: Next
+              - generic [ref=e481]: Get the details of the cluster. »
+  - button "Project Logo Ask AI" [ref=e482] [cursor=pointer]:
+    - generic [ref=e485]:
+      - img "Project Logo" [ref=e486]
+      - paragraph [ref=e487]: Ask AI
+```

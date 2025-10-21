@@ -1,0 +1,423 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Audit Logs" [ref=e165] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e167]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Self-Hosted Palette" [ref=e172] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e174]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Palette VerteX" [expanded] [ref=e179] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e181]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e183] [cursor=pointer]
+                - list [ref=e184]:
+                  - listitem [ref=e185]:
+                    - generic [ref=e186]:
+                      - link "FIPS" [ref=e187] [cursor=pointer]:
+                        - /url: /vertex/fips/
+                      - button "Toggle the collapsible sidebar category 'FIPS'" [ref=e188] [cursor=pointer]
+                  - listitem [ref=e189]:
+                    - generic [ref=e190]:
+                      - link "Installation" [ref=e191] [cursor=pointer]:
+                        - /url: /vertex/install-palette-vertex/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e192] [cursor=pointer]
+                  - listitem [ref=e193]:
+                    - link "Activate VerteX" [ref=e194] [cursor=pointer]:
+                      - /url: /vertex/activate-installation/
+                  - listitem [ref=e195]:
+                    - link "Supported Platforms" [ref=e196] [cursor=pointer]:
+                      - /url: /vertex/supported-platforms/
+                  - listitem [ref=e197]:
+                    - generic [ref=e198]:
+                      - link "System Management" [expanded] [ref=e199] [cursor=pointer]:
+                        - /url: /vertex/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e200] [cursor=pointer]
+                    - list [ref=e201]:
+                      - listitem [ref=e202]:
+                        - generic [ref=e203]:
+                          - link "Account Management" [ref=e204] [cursor=pointer]:
+                            - /url: /vertex/system-management/account-management/
+                          - button "Toggle the collapsible sidebar category 'Account Management'" [ref=e205] [cursor=pointer]
+                      - listitem [ref=e206]:
+                        - link "Add System-Level Registry" [ref=e207] [cursor=pointer]:
+                          - /url: /vertex/system-management/add-registry/
+                      - listitem [ref=e208]:
+                        - link "Enable Adding AWS Accounts Using STS" [ref=e209] [cursor=pointer]:
+                          - /url: /vertex/system-management/configure-aws-sts-account/
+                      - listitem [ref=e210]:
+                        - link "Configure SMTP" [ref=e211] [cursor=pointer]:
+                          - /url: /vertex/system-management/smtp/
+                      - listitem [ref=e212]:
+                        - link "Configure Reverse Proxy" [ref=e213] [cursor=pointer]:
+                          - /url: /vertex/system-management/reverse-proxy/
+                      - listitem [ref=e214]:
+                        - generic [ref=e215]:
+                          - link "Enable non-FIPS Settings" [ref=e216] [cursor=pointer]:
+                            - /url: /vertex/system-management/enable-non-fips-settings/
+                          - button "Toggle the collapsible sidebar category 'Enable non-FIPS Settings'" [ref=e217] [cursor=pointer]
+                      - listitem [ref=e218]:
+                        - link "Customize Interface" [ref=e219] [cursor=pointer]:
+                          - /url: /vertex/system-management/customize-interface/
+                      - listitem [ref=e220]:
+                        - link "Feature Flags" [ref=e221] [cursor=pointer]:
+                          - /url: /vertex/system-management/feature-flags/
+                      - listitem [ref=e222]:
+                        - link "System Address Management" [ref=e223] [cursor=pointer]:
+                          - /url: /vertex/system-management/ssl-certificate-management/
+                      - listitem [ref=e224]:
+                        - link "Tenant Management" [ref=e225] [cursor=pointer]:
+                          - /url: /vertex/system-management/tenant-management/
+                      - listitem [ref=e226]:
+                        - link "Banners" [ref=e227] [cursor=pointer]:
+                          - /url: /vertex/system-management/login-banner/
+                      - listitem [ref=e228]:
+                        - link "Override Registry Configuration" [ref=e229] [cursor=pointer]:
+                          - /url: /vertex/system-management/registry-override/
+                      - listitem [ref=e230]:
+                        - link "Migrate SCAR to OCI Registry" [ref=e231] [cursor=pointer]:
+                          - /url: /vertex/system-management/scar-migration/
+                      - listitem [ref=e232]:
+                        - link "Modify Cloud Provider Configuration" [ref=e233] [cursor=pointer]:
+                          - /url: /vertex/system-management/change-cloud-config/
+                  - listitem [ref=e234]:
+                    - generic [ref=e235]:
+                      - link "Upgrade" [ref=e236] [cursor=pointer]:
+                        - /url: /vertex/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e237] [cursor=pointer]
+              - listitem [ref=e238]:
+                - generic [ref=e239]:
+                  - link "Tenant Administration" [ref=e240] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e242]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e244] [cursor=pointer]
+              - listitem [ref=e245]:
+                - generic [ref=e246]:
+                  - link "Automation" [ref=e247] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e249]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e251] [cursor=pointer]
+              - listitem [ref=e252]:
+                - generic [ref=e253]:
+                  - link "Troubleshooting" [ref=e254] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e256]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e258] [cursor=pointer]
+              - listitem [ref=e259]:
+                - link "Glossary" [ref=e260] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e262]
+                  - text: Glossary
+              - listitem [ref=e264]:
+                - generic [ref=e265]:
+                  - link "Compliance & Legal" [ref=e266] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e268]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e270] [cursor=pointer]
+              - listitem [ref=e271]:
+                - button "Privacy Settings" [ref=e272] [cursor=pointer]:
+                  - img [ref=e273]
+                  - text: Privacy Settings
+      - main [ref=e275]:
+        - generic [ref=e277]:
+          - generic [ref=e279]:
+            - article [ref=e280]:
+              - navigation "Breadcrumbs" [ref=e281]:
+                - list [ref=e282]:
+                  - listitem [ref=e283]:
+                    - link "Home page" [ref=e284] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e285]
+                  - listitem [ref=e287]:
+                    - link "Palette VerteX" [ref=e288] [cursor=pointer]:
+                      - /url: /vertex/
+                  - listitem [ref=e289]:
+                    - link "System Management" [ref=e290] [cursor=pointer]:
+                      - /url: /vertex/system-management/
+                  - listitem [ref=e291]:
+                    - generic [ref=e292]: Feature Flags
+              - generic [ref=e293]:
+                - heading "Feature Flags" [level=1] [ref=e295]
+                - paragraph [ref=e296]:
+                  - text: Feature flags allow
+                  - link "system administrators" [ref=e297] [cursor=pointer]:
+                    - /url: /vertex/system-management/account-management/#system-administrators
+                  - text: to manage what features are available to the system's tenants. They can use this capability to roll out new features to tenants in a controlled manner or choose not to implement a feature for their tenants due to security or compliance reasons.
+                - paragraph [ref=e298]: Features enabled by system administrators are applied to all tenants in the system. Once a feature is enabled, it cannot be disabled.
+                - generic [ref=e299]:
+                  - generic [ref=e300]:
+                    - img [ref=e302]
+                    - text: warning
+                  - paragraph [ref=e305]: We recommend trying out new features in a test environment before enabling them in a production environment. Depending on the feature, enabling it may have a significant impact on the system and current workloads.
+                - paragraph [ref=e306]: Review the following section for detailed instructions on enabling and managing feature flags.
+                - heading "Enable a FeatureDirect link to Enable a Feature" [level=2] [ref=e307]:
+                  - text: Enable a Feature
+                  - link "Direct link to Enable a Feature" [ref=e308] [cursor=pointer]:
+                    - /url: "#enable-a-feature"
+                    - text: "#"
+                - paragraph [ref=e309]: Use the following steps to enable a feature flag.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e310]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e311] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e312]:
+                  - listitem [ref=e313]:
+                    - paragraph [ref=e314]:
+                      - text: You are a system administrator of the type
+                      - emphasis [ref=e315]: Operations Administrator
+                      - text: or
+                      - emphasis [ref=e316]: Root Administrator
+                      - text: .
+                  - listitem [ref=e317]:
+                    - paragraph [ref=e318]: You have access to the system console.
+                - heading "EnablementDirect link to Enablement" [level=2] [ref=e319]:
+                  - text: Enablement
+                  - link "Direct link to Enablement" [ref=e320] [cursor=pointer]:
+                    - /url: "#enablement"
+                    - text: "#"
+                - list [ref=e321]:
+                  - listitem [ref=e322]:
+                    - paragraph [ref=e323]:
+                      - text: Log in to the system console. For additional guidance on accessing the system console, check out the
+                      - link "Access the System Console" [ref=e324] [cursor=pointer]:
+                        - /url: /vertex/system-management/#access-the-system-console
+                      - text: guide.
+                  - listitem [ref=e325]:
+                    - paragraph [ref=e326]:
+                      - text: From the left
+                      - strong [ref=e327]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e328]: Administration
+                      - text: .
+                  - listitem [ref=e329]:
+                    - paragraph [ref=e330]:
+                      - text: Select the
+                      - strong [ref=e331]: Feature Flags
+                      - text: tab.
+                  - listitem [ref=e332]:
+                    - paragraph [ref=e333]: Locate the feature you want to enable and toggle the switch on the right to enable it. You can also search for a feature by typing the feature name in the search bar.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e334]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e335] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e336]: Use the following steps to validate that the feature flag is enabled.
+                - list [ref=e337]:
+                  - listitem [ref=e338]:
+                    - paragraph [ref=e339]: Log in as a tenant administrator to one of the tenants in the system.
+                  - listitem [ref=e340]:
+                    - paragraph [ref=e341]: Attempt to access the enabled feature flag. If the feature is enabled, you will be able to use it. If the feature is disabled, you will not be able to access it.
+              - generic [ref=e342]:
+                - generic [ref=e344]:
+                  - text: "Tags:"
+                  - list [ref=e345]:
+                    - listitem [ref=e346]:
+                      - link "vertex" [ref=e347] [cursor=pointer]:
+                        - /url: /tags/vertex/
+                    - listitem [ref=e348]:
+                      - link "management" [ref=e349] [cursor=pointer]:
+                        - /url: /tags/management/
+                    - listitem [ref=e350]:
+                      - link "feature-flags" [ref=e351] [cursor=pointer]:
+                        - /url: /tags/feature-flags/
+                - link "Edit this page" [ref=e354] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vertex/system-management/feature-flags.md
+                  - img [ref=e355]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e359]:
+              - link "Previous « Customize Interface" [ref=e360] [cursor=pointer]:
+                - /url: /vertex/system-management/customize-interface/
+                - generic [ref=e361]: Previous
+                - generic [ref=e362]: « Customize Interface
+              - link "Next System Address Management »" [ref=e363] [cursor=pointer]:
+                - /url: /vertex/system-management/ssl-certificate-management/
+                - generic [ref=e364]: Next
+                - generic [ref=e365]: System Address Management »
+          - list [ref=e368]:
+            - listitem [ref=e369]:
+              - link "Enable a Feature" [ref=e370] [cursor=pointer]:
+                - /url: "#enable-a-feature"
+            - listitem [ref=e371]:
+              - link "Prerequisites" [ref=e372] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e373]:
+              - link "Enablement" [ref=e374] [cursor=pointer]:
+                - /url: "#enablement"
+            - listitem [ref=e375]:
+              - link "Validate" [ref=e376] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e377] [cursor=pointer]:
+    - generic [ref=e380]:
+      - img "Project Logo" [ref=e381]
+      - paragraph [ref=e382]: Ask AI
+```

@@ -1,0 +1,1985 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Registries and Packs" [ref=e151] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e153]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Security" [ref=e158] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e160]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Audit Logs" [ref=e165] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e167]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Self-Hosted Palette" [ref=e172] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e174]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Palette VerteX" [expanded] [ref=e179] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e181]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e183] [cursor=pointer]
+                - list [ref=e184]:
+                  - listitem [ref=e185]:
+                    - generic [ref=e186]:
+                      - link "FIPS" [ref=e187] [cursor=pointer]:
+                        - /url: /vertex/fips/
+                      - button "Toggle the collapsible sidebar category 'FIPS'" [ref=e188] [cursor=pointer]
+                  - listitem [ref=e189]:
+                    - generic [ref=e190]:
+                      - link "Installation" [expanded] [ref=e191] [cursor=pointer]:
+                        - /url: /vertex/install-palette-vertex/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e192] [cursor=pointer]
+                    - list [ref=e193]:
+                      - listitem [ref=e194]:
+                        - generic [ref=e195]:
+                          - link "VMware" [ref=e196] [cursor=pointer]:
+                            - /url: /vertex/install-palette-vertex/install-on-vmware/
+                          - button "Toggle the collapsible sidebar category 'VMware'" [ref=e197] [cursor=pointer]
+                      - listitem [ref=e198]:
+                        - link "Airgap Resources" [ref=e199] [cursor=pointer]:
+                          - /url: /vertex/install-palette-vertex/airgap/
+                      - listitem [ref=e200]:
+                        - generic [ref=e201]:
+                          - link "Kubernetes" [ref=e202] [cursor=pointer]:
+                            - /url: /vertex/install-palette-vertex/install-on-kubernetes/
+                          - button "Toggle the collapsible sidebar category 'Kubernetes'" [ref=e203] [cursor=pointer]
+                      - listitem [ref=e204]:
+                        - link "VerteX Management Appliance" [ref=e205] [cursor=pointer]:
+                          - /url: /vertex/install-palette-vertex/vertex-management-appliance/
+                  - listitem [ref=e206]:
+                    - link "Activate VerteX" [ref=e207] [cursor=pointer]:
+                      - /url: /vertex/activate-installation/
+                  - listitem [ref=e208]:
+                    - link "Supported Platforms" [ref=e209] [cursor=pointer]:
+                      - /url: /vertex/supported-platforms/
+                  - listitem [ref=e210]:
+                    - generic [ref=e211]:
+                      - link "System Management" [ref=e212] [cursor=pointer]:
+                        - /url: /vertex/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e213] [cursor=pointer]
+                  - listitem [ref=e214]:
+                    - generic [ref=e215]:
+                      - link "Upgrade" [ref=e216] [cursor=pointer]:
+                        - /url: /vertex/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e217] [cursor=pointer]
+              - listitem [ref=e218]:
+                - generic [ref=e219]:
+                  - link "Tenant Administration" [ref=e220] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e222]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e224] [cursor=pointer]
+              - listitem [ref=e225]:
+                - generic [ref=e226]:
+                  - link "Automation" [ref=e227] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e229]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e231] [cursor=pointer]
+              - listitem [ref=e232]:
+                - generic [ref=e233]:
+                  - link "Troubleshooting" [ref=e234] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e236]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e238] [cursor=pointer]
+              - listitem [ref=e239]:
+                - link "Glossary" [ref=e240] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e242]
+                  - text: Glossary
+              - listitem [ref=e244]:
+                - generic [ref=e245]:
+                  - link "Compliance & Legal" [ref=e246] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e248]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e250] [cursor=pointer]
+              - listitem [ref=e251]:
+                - button "Privacy Settings" [ref=e252] [cursor=pointer]:
+                  - img [ref=e253]
+                  - text: Privacy Settings
+      - main [ref=e255]:
+        - generic [ref=e257]:
+          - generic [ref=e259]:
+            - article [ref=e260]:
+              - navigation "Breadcrumbs" [ref=e261]:
+                - list [ref=e262]:
+                  - listitem [ref=e263]:
+                    - link "Home page" [ref=e264] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e265]
+                  - listitem [ref=e267]:
+                    - link "Palette VerteX" [ref=e268] [cursor=pointer]:
+                      - /url: /vertex/
+                  - listitem [ref=e269]:
+                    - link "Installation" [ref=e270] [cursor=pointer]:
+                      - /url: /vertex/install-palette-vertex/
+                  - listitem [ref=e271]:
+                    - generic [ref=e272]: VerteX Management Appliance
+              - generic [ref=e273]:
+                - heading "VerteX Management Appliance" [level=1] [ref=e275]
+                - generic [ref=e276]:
+                  - generic [ref=e277]:
+                    - img [ref=e279]
+                    - text: tech preview
+                  - paragraph [ref=e282]: This is a Tech Preview feature and is subject to change. Upgrades from a Tech Preview deployment may not be available. Do not use this feature in production workloads.
+                - paragraph [ref=e283]: The VerteX Management Appliance is downloadable as an ISO file and is a solution for installing Palette VerteX on your infrastructure. The ISO file contains all the necessary components needed for Palette to function. The ISO file is used to boot the nodes, which are then clustered to form a Palette management cluster.
+                - paragraph [ref=e284]: Once Palette VerteX has been installed, you can download pack bundles and upload them to the internal Zot registry or an external registry. These pack bundles are used to create your cluster profiles. You will then be able to deploy clusters in your environment.
+                - heading "Third Party PacksDirect link to Third Party Packs" [level=2] [ref=e285]:
+                  - text: Third Party Packs
+                  - link "Direct link to Third Party Packs" [ref=e286] [cursor=pointer]:
+                    - /url: "#third-party-packs"
+                    - text: "#"
+                - paragraph [ref=e287]: There is an additional option to download and install the Third Party packs that provide complementary functionality to Palette VerteX. These packs are not required for Palette VerteX to function, but they do provide additional features and capabilities as described in the following table.
+                - table [ref=e288]:
+                  - rowgroup [ref=e289]:
+                    - row "Feature Included with Palette Third Party Pack Included with Palette Third Party Conformance Pack" [ref=e290]:
+                      - cell "Feature" [ref=e291]:
+                        - strong [ref=e292]: Feature
+                      - cell "Included with Palette Third Party Pack" [ref=e293]:
+                        - strong [ref=e294]: Included with Palette Third Party Pack
+                      - cell "Included with Palette Third Party Conformance Pack" [ref=e295]:
+                        - strong [ref=e296]: Included with Palette Third Party Conformance Pack
+                  - rowgroup [ref=e297]:
+                    - row "Backup and Restore ✅ ❌" [ref=e298]:
+                      - cell "Backup and Restore" [ref=e299]:
+                        - link "Backup and Restore" [ref=e300] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/backup-restore/
+                      - cell "✅" [ref=e301]
+                      - cell "❌" [ref=e302]
+                    - row "Configuration Security ✅ ❌" [ref=e303]:
+                      - cell "Configuration Security" [ref=e304]:
+                        - link "Configuration Security" [ref=e305] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/compliance-scan/#configuration-security
+                      - cell "✅" [ref=e306]
+                      - cell "❌" [ref=e307]
+                    - row "Penetration Testing ✅ ❌" [ref=e308]:
+                      - cell "Penetration Testing" [ref=e309]:
+                        - link "Penetration Testing" [ref=e310] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/compliance-scan/#penetration-testing
+                      - cell "✅" [ref=e311]
+                      - cell "❌" [ref=e312]
+                    - row "Software Bill Of Materials (SBOM) scanning ✅ ❌" [ref=e313]:
+                      - cell "Software Bill Of Materials (SBOM) scanning" [ref=e314]:
+                        - link "Software Bill Of Materials (SBOM) scanning" [ref=e315] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/compliance-scan/#sbom-dependencies--vulnerabilities
+                      - cell "✅" [ref=e316]
+                      - cell "❌" [ref=e317]
+                    - row "Conformance Testing ❌ ✅" [ref=e318]:
+                      - cell "Conformance Testing" [ref=e319]:
+                        - link "Conformance Testing" [ref=e320] [cursor=pointer]:
+                          - /url: /clusters/cluster-management/compliance-scan/#conformance-testing
+                      - cell "❌" [ref=e321]
+                      - cell "✅" [ref=e322]
+                - heading "ArchitectureDirect link to Architecture" [level=2] [ref=e323]:
+                  - text: Architecture
+                  - link "Direct link to Architecture" [ref=e324] [cursor=pointer]:
+                    - /url: "#architecture"
+                    - text: "#"
+                - paragraph [ref=e325]:
+                  - text: The ISO file is built with the Operating System (OS), Kubernetes distribution, Container Network Interface (CNI), and Container Storage Interface (CSI). A
+                  - link "Zot registry" [ref=e326] [cursor=pointer]:
+                    - /url: https://zotregistry.dev/
+                  - text: is also included in the Appliance Framework ISO. Zot is a lightweight, OCI-compliant container image registry that is used to store the Palette packs needed to create cluster profiles.
+                - paragraph [ref=e327]: This solution is designed to be immutable, secure, and compliant with industry standards, such as the Federal Information Processing Standards (FIPS). The following table displays the infrastructure profile for the Palette VerteX appliance.
+                - table [ref=e328]:
+                  - rowgroup [ref=e329]:
+                    - row "Layer Component Version FIPS-compliant" [ref=e330]:
+                      - cell "Layer" [ref=e331]:
+                        - strong [ref=e332]: Layer
+                      - cell "Component" [ref=e333]:
+                        - strong [ref=e334]: Component
+                      - cell "Version" [ref=e335]:
+                        - strong [ref=e336]: Version
+                      - cell "FIPS-compliant" [ref=e337]:
+                        - strong [ref=e338]: FIPS-compliant
+                  - rowgroup [ref=e339]:
+                    - 'row "OS Ubuntu: Immutable Kairos 22.04 ✅" [ref=e340]':
+                      - cell "OS" [ref=e341]:
+                        - strong [ref=e342]: OS
+                      - 'cell "Ubuntu: Immutable Kairos" [ref=e343]':
+                        - text: "Ubuntu: Immutable"
+                        - link "Kairos" [ref=e344] [cursor=pointer]:
+                          - /url: https://kairos.io
+                      - cell "22.04" [ref=e345]
+                      - cell "✅" [ref=e346]
+                    - row "Kubernetes Palette eXtended Kubernetes Edge (PXK-E) 1.32.3 ✅" [ref=e347]:
+                      - cell "Kubernetes" [ref=e348]:
+                        - strong [ref=e349]: Kubernetes
+                      - cell "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e350]
+                      - cell "1.32.3" [ref=e351]
+                      - cell "✅" [ref=e352]
+                    - row "CNI Calico 3.29.2 ✅" [ref=e353]:
+                      - cell "CNI" [ref=e354]:
+                        - strong [ref=e355]: CNI
+                      - cell "Calico" [ref=e356]
+                      - cell "3.29.2" [ref=e357]
+                      - cell "✅" [ref=e358]
+                    - row "CSI Piraeus 2.8.1 ✅" [ref=e359]:
+                      - cell "CSI" [ref=e360]:
+                        - strong [ref=e361]: CSI
+                      - cell "Piraeus" [ref=e362]
+                      - cell "2.8.1" [ref=e363]
+                      - cell "✅" [ref=e364]
+                    - row "Registry Zot 0.1.67 ✅" [ref=e365]:
+                      - cell "Registry" [ref=e366]:
+                        - strong [ref=e367]: Registry
+                      - cell "Zot" [ref=e368]
+                      - cell "0.1.67" [ref=e369]
+                      - cell "✅" [ref=e370]
+                - heading "Supported PlatformsDirect link to Supported Platforms" [level=2] [ref=e371]:
+                  - text: Supported Platforms
+                  - link "Direct link to Supported Platforms" [ref=e372] [cursor=pointer]:
+                    - /url: "#supported-platforms"
+                    - text: "#"
+                - paragraph [ref=e373]: "The VerteX Management Appliance can be used on the following infrastructure platforms:"
+                - list [ref=e374]:
+                  - listitem [ref=e375]: VMware vSphere
+                  - listitem [ref=e376]: Bare Metal
+                  - listitem [ref=e377]: Machine as a Service (MAAS)
+                - heading "LimitationsDirect link to Limitations" [level=2] [ref=e378]:
+                  - text: Limitations
+                  - link "Direct link to Limitations" [ref=e379] [cursor=pointer]:
+                    - /url: "#limitations"
+                    - text: "#"
+                - list [ref=e380]:
+                  - listitem [ref=e381]: Only public image registries are supported if you are choosing to use an external registry for your pack bundles.
+                - heading "Installation StepsDirect link to Installation Steps" [level=2] [ref=e382]:
+                  - text: Installation Steps
+                  - link "Direct link to Installation Steps" [ref=e383] [cursor=pointer]:
+                    - /url: "#installation-steps"
+                    - text: "#"
+                - paragraph [ref=e384]: Follow the instructions to install Palette VerteX using the VerteX Management Appliance on your infrastructure platform.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e385]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e386] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e387]:
+                  - listitem [ref=e388]:
+                    - paragraph [ref=e389]:
+                      - text: ISO management software installed on your local machine, such as
+                      - link "mkisofs" [ref=e390] [cursor=pointer]:
+                        - /url: https://linux.die.net/man/8/mkisofs
+                        - code [ref=e391]: mkisofs
+                      - text: or
+                      - link "genisoimage" [ref=e392] [cursor=pointer]:
+                        - /url: https://linux.die.net/man/1/genisoimage
+                        - code [ref=e393]: genisoimage
+                      - text: .
+                  - listitem [ref=e394]:
+                    - paragraph [ref=e395]:
+                      - text: Access to the
+                      - link "Artifact Studio" [ref=e396] [cursor=pointer]:
+                        - /url: https://artifact-studio.spectrocloud.com/
+                      - text: to download the Palette VerteX ISO.
+                    - generic [ref=e397]:
+                      - generic [ref=e398]:
+                        - img [ref=e400]
+                        - text: tip
+                      - paragraph [ref=e403]:
+                        - text: If you do not have access to Artifact Studio, contact your Spectro Cloud representative or
+                        - link "open a support ticket" [ref=e404] [cursor=pointer]:
+                          - /url: https://support.spectrocloud.com/
+                        - text: .
+                  - listitem [ref=e405]:
+                    - paragraph [ref=e406]:
+                      - text: VerteX can be installed on a single node or on three nodes. For production environments, we recommend that three nodes be provisioned in advance for the Palette installation. We recommended the following resources for each node. Refer to the Palette
+                      - link "Size Guidelines" [ref=e407] [cursor=pointer]:
+                        - /url: /vertex/install-palette-vertex#size-guidelines
+                      - text: for additional sizing information.
+                    - list [ref=e408]:
+                      - listitem [ref=e409]:
+                        - paragraph [ref=e410]: 8 CPUs per node.
+                      - listitem [ref=e411]:
+                        - paragraph [ref=e412]: 16 GB memory per node.
+                      - listitem [ref=e413]:
+                        - paragraph [ref=e414]: Two disks per node.
+                        - list [ref=e415]:
+                          - listitem [ref=e416]:
+                            - paragraph [ref=e417]:
+                              - text: The first disk must be at least 250 GB and is used for the Palette VerteX ISO stack. You specify the device in the
+                              - code [ref=e418]: stylus_config.yaml
+                              - text: file during the initial Install Palette VerteX steps.
+                            - paragraph [ref=e419]:
+                              - text: If the device is not specified, the default value is
+                              - code [ref=e420]: auto
+                              - text: . This means the installer selects the largest available drive, which may not be the desired behavior, especially in multi-drive environments.
+                          - listitem [ref=e421]:
+                            - paragraph [ref=e422]:
+                              - text: The second disk must be at least 500 GB and is used for the storage pool. The default device selected is
+                              - code [ref=e423]: /dev/sdb
+                              - text: . You can change the default device during the cluster creation steps in Local UI.
+                            - generic [ref=e424]:
+                              - generic [ref=e425]:
+                                - img [ref=e427]
+                                - text: danger
+                              - paragraph [ref=e430]: The second disk is wiped as part of the installation process. If using an existing disk, ensure that you back up any important data before proceeding.
+                      - listitem [ref=e431]:
+                        - paragraph [ref=e432]: At least one removable media connection must be available to attach the Palette VerteX ISO. This can be a physical or virtual connection depending on your infrastructure provider.
+                  - listitem [ref=e433]:
+                    - paragraph [ref=e434]: The following network ports must be accessible on each node for Palette to operate successfully.
+                    - list [ref=e435]:
+                      - listitem [ref=e436]:
+                        - paragraph [ref=e437]: "TCP/443: Must be open between all Palette nodes and accessible for user connections to the Palette management cluster."
+                      - listitem [ref=e438]:
+                        - paragraph [ref=e439]: "TCP/6443: Outbound traffic from the Palette management cluster to the deployed cluster's Kubernetes API server."
+                  - listitem [ref=e440]:
+                    - paragraph [ref=e441]: SSH access must be available to the nodes used for Palette installation.
+                  - listitem [ref=e442]:
+                    - paragraph [ref=e443]: Relevant permissions to install Palette on the nodes including permission to attach or mount an ISO and set nodes to boot from it.
+                    - generic [ref=e444]:
+                      - generic [ref=e445]:
+                        - img [ref=e447]
+                        - text: warning
+                      - paragraph [ref=e450]: The ISO is only supported on Unified Extensible Firmware Interface (UEFI) systems. Ensure you configure the nodes to boot from the ISO in UEFI mode.
+                  - listitem [ref=e451]:
+                    - paragraph [ref=e452]: Palette Management Appliance supports Secure Boot for Dell servers with UEFI and Hewlett Packard Enterprise iLO5. Learn how to configure and install Secure Boot for Palette Management Appliance below.
+                    - group [ref=e453]:
+                      - generic "How to install Secure Boot on Hewlett Packard Enterprise iLO 5" [ref=e454] [cursor=pointer]
+                    - group [ref=e455]:
+                      - generic "How to install Secure Boot on Dell servers with UEFI" [ref=e456] [cursor=pointer]
+                  - listitem [ref=e457]:
+                    - paragraph [ref=e458]: You can choose to use either an internal Zot registry that comes with Palette or an external registry of your choice. If using an external registry, you will need to provide the following information during the Palette installation process.
+                    - list [ref=e459]:
+                      - listitem [ref=e460]:
+                        - text: The DNS/IP endpoint and port for the external registry.
+                        - list [ref=e461]:
+                          - listitem [ref=e462]: Ensure the nodes used to host the Palette management cluster have network access to the external registry server.
+                      - listitem [ref=e463]: The username for the registry.
+                      - listitem [ref=e464]: The password for the registry.
+                      - listitem [ref=e465]: (Optional) The Certificate Authority (CA) certificate that was used to sign the external registry certificate in Base64 format.
+                    - group [ref=e466]:
+                      - generic "How to get Base64 encoded entries for a certificate" [ref=e467] [cursor=pointer]
+                  - listitem [ref=e468]:
+                    - paragraph [ref=e469]:
+                      - text: If you have an
+                      - link "Ubuntu Pro" [ref=e470] [cursor=pointer]:
+                        - /url: https://ubuntu.com/pro
+                      - text: subscription, you can provide the Ubuntu Pro token during the Palette installation process. This is optional but recommended for security and compliance purposes.
+                  - listitem [ref=e471]:
+                    - paragraph [ref=e472]: A virtual IP address (VIP) must be available for the Palette management cluster. This is assigned during the Palette installation process and is used for load balancing and high availability. The VIP must be accessible to all nodes in the Palette management cluster.
+                    - group [ref=e473]:
+                      - generic "How to discover free IPs in your environment" [ref=e474] [cursor=pointer]
+                - heading "Install Palette VerteXDirect link to Install Palette VerteX" [level=3] [ref=e475]:
+                  - text: Install Palette VerteX
+                  - link "Direct link to Install Palette VerteX" [ref=e476] [cursor=pointer]:
+                    - /url: "#install-palette-vertex"
+                    - text: "#"
+                - list [ref=e477]:
+                  - listitem [ref=e478]:
+                    - paragraph [ref=e479]:
+                      - text: Download the Palette VerteX ISO from the
+                      - link "Artifact Studio" [ref=e480] [cursor=pointer]:
+                        - /url: https://artifact-studio.spectrocloud.com/
+                      - text: . Refer to the
+                      - link "Artifact Studio guide" [ref=e481] [cursor=pointer]:
+                        - /url: /downloads/artifact-studio
+                      - text: for instructions on how to access and download the ISO.
+                  - listitem [ref=e482]:
+                    - paragraph [ref=e483]:
+                      - text: Load the Palette VerteX ISO to a bootable device, such as a USB stick, or upload the ISO to a datastore in your VMware environment. You can use several software tools to create a bootable USB drive, such as
+                      - link "balenaEtcher" [ref=e484] [cursor=pointer]:
+                        - /url: https://etcher.balena.io/
+                      - text: .
+                    - list [ref=e485]:
+                      - listitem [ref=e486]:
+                        - text: For VMware vSphere, you can upload the Palette VerteX ISO to a datastore using the vSphere Client or the
+                        - code [ref=e487]: govc
+                        - text: CLI tool. Refer to the
+                        - link "vSphere" [ref=e488] [cursor=pointer]:
+                          - /url: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/9-0/upload-iso-image-installation-media-for-a-guest-operating-system.html
+                        - text: or
+                        - link "govc" [ref=e489] [cursor=pointer]:
+                          - /url: https://github.com/vmware/govmomi/tree/main/govc
+                        - text: documentation for more information.
+                      - listitem [ref=e490]:
+                        - text: For Bare Metal, you can use tools like
+                        - code [ref=e491]: scp
+                        - text: or
+                        - code [ref=e492]: rsync
+                        - text: to transfer the Palette VerteX ISO to the nodes, or use a USB drive to boot the nodes from the ISO.
+                      - listitem [ref=e493]:
+                        - text: For Machine as a Service (MAAS), you can upload and deploy ISOs using Packer. Refer to the
+                        - link "MAAS documentation" [ref=e494] [cursor=pointer]:
+                          - /url: https://maas.io/docs/about-images#p-17467-custom-images
+                        - text: for more information.
+                    - paragraph [ref=e495]: Ensure that the Palette VerteX ISO is accessible to all nodes that will be part of the Palette VerteX management cluster.
+                  - listitem [ref=e496]:
+                    - paragraph [ref=e497]: Attach the Palette VerteX ISO to the nodes and ensure the boot order is set to boot from the Palette VerteX ISO first.
+                    - paragraph [ref=e498]:
+                      - text: For example, in VMware vSphere, the VMs will have the Palette VerteX ISO in
+                      - strong [ref=e499]: CD/DVD drive 1
+                      - text: . Refer to the documentation of your infrastructure provider for specific instructions on how to attach and boot from an ISO.
+                  - listitem [ref=e500]:
+                    - paragraph [ref=e501]: Restart the nodes to start the installation process.
+                  - listitem [ref=e502]:
+                    - paragraph [ref=e503]:
+                      - text: Once the nodes have rebooted and entered the GRand Unified Bootloader (GRUB) menu, select the
+                      - strong [ref=e504]: Palette eXtended Kubernetes Edge Install (manual)
+                      - text: option and press
+                      - strong [ref=e505]: ENTER
+                      - text: .
+                    - generic [ref=e506]:
+                      - generic [ref=e507]:
+                        - img [ref=e509]
+                        - text: caution
+                      - paragraph [ref=e512]: Ensure that you select the option within the first five seconds of the GRUB menu appearing, as it will automatically proceed with the default installation option after this time.
+                  - listitem [ref=e513]:
+                    - paragraph [ref=e514]: Once the nodes have finished booting, in the terminal, issue the following command to list the block devices.
+                    - generic [ref=e516]:
+                      - code [ref=e518]:
+                        - generic [ref=e519]: lsblk --paths
+                      - button "Copy code to clipboard" [ref=e521] [cursor=pointer]:
+                        - generic [ref=e522]:
+                          - img [ref=e523]
+                          - img [ref=e525]
+                    - paragraph [ref=e527]:
+                      - text: Use the output to identify the device name to use for the Palette VerteX ISO stack. For example,
+                      - code [ref=e528]: /dev/sda
+                      - text: .
+                    - generic [ref=e529]:
+                      - generic [ref=e530]: Example output
+                      - code [ref=e533]:
+                        - generic [ref=e534]: NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+                        - generic [ref=e535]: /dev/loop0 7:0 0 1G 1 loop /run/rootfsbase
+                        - generic [ref=e536]: /dev/sda 8:0 0 250G 0 disk
+                        - generic [ref=e537]: /dev/sdb 8:16 0 5000G 0 disk
+                        - generic [ref=e538]: /dev/sr0 11:0 1 17.3G 0 rom /run/initramfs/live
+                  - listitem [ref=e539]:
+                    - paragraph [ref=e540]:
+                      - text: If there are any partitions on the device you plan to use for the installation, you must delete them before proceeding. For example, if the device is
+                      - code [ref=e541]: /dev/sda
+                      - text: ", issue the following command to delete all partitions on the device."
+                    - generic [ref=e543]:
+                      - code [ref=e545]:
+                        - generic [ref=e546]: wipefs --all /dev/sda
+                      - button "Copy code to clipboard" [ref=e548] [cursor=pointer]:
+                        - generic [ref=e549]:
+                          - img [ref=e550]
+                          - img [ref=e552]
+                    - generic [ref=e554]:
+                      - generic [ref=e555]:
+                        - img [ref=e557]
+                        - text: danger
+                      - paragraph [ref=e560]: Deleting partitions will erase all data on the device. Ensure that you back up any important data before proceeding.
+                  - listitem [ref=e561]:
+                    - paragraph [ref=e562]: Issue the following command to edit the installation manifest.
+                    - generic [ref=e564]:
+                      - code [ref=e566]:
+                        - generic [ref=e567]: vi /oem/stylus_config.yaml
+                      - button "Copy code to clipboard" [ref=e569] [cursor=pointer]:
+                        - generic [ref=e570]:
+                          - img [ref=e571]
+                          - img [ref=e573]
+                  - listitem [ref=e575]:
+                    - paragraph [ref=e576]:
+                      - text: Add the following
+                      - code [ref=e577]: install.device
+                      - text: section to your manifest, replacing
+                      - code [ref=e578]: <storage-drive>
+                      - text: with the device name identified in step 6.
+                    - code [ref=e582]:
+                      - generic [ref=e583]: "#cloud-config"
+                      - generic [ref=e584]: "cosign: false"
+                      - generic [ref=e585]: "verify: false"
+                      - generic [ref=e586]: "install:"
+                      - generic [ref=e587]: "device: <storage-drive>"
+                      - generic [ref=e588]: "grub-entry-name: \"Palette eXtended Kubernetes Edge\""
+                      - generic [ref=e589]: "system:"
+                      - generic [ref=e590]: "size: 8192"
+                      - generic [ref=e591]: ...
+                  - listitem [ref=e592]:
+                    - paragraph [ref=e593]: Save the changes and exit the editor.
+                  - listitem [ref=e594]:
+                    - paragraph [ref=e595]: Issue the following command to start the installation process.
+                    - generic [ref=e597]:
+                      - code [ref=e599]:
+                        - generic [ref=e600]: kairos-agent install
+                      - button "Copy code to clipboard" [ref=e602] [cursor=pointer]:
+                        - generic [ref=e603]:
+                          - img [ref=e604]
+                          - img [ref=e606]
+                  - listitem [ref=e608]:
+                    - paragraph [ref=e609]: Wait for the installation process to complete. This will take at least 15 minutes, depending on the resources available on the nodes. After completion, the nodes will reboot and display the Palette TUI.
+                  - listitem [ref=e610]:
+                    - paragraph [ref=e611]: In the Palette TUI, provide credentials for the initial account. This account will be used to log in to Local UI and for SSH access to the node.
+                    - table [ref=e612]:
+                      - rowgroup [ref=e613]:
+                        - row "Field Description" [ref=e614]:
+                          - cell "Field" [ref=e615]:
+                            - strong [ref=e616]: Field
+                          - cell "Description" [ref=e617]:
+                            - strong [ref=e618]: Description
+                      - rowgroup [ref=e619]:
+                        - row "Username Provide a username to use for the account." [ref=e620]:
+                          - cell "Username" [ref=e621]:
+                            - strong [ref=e622]: Username
+                          - cell "Provide a username to use for the account." [ref=e623]
+                        - row "Password Enter a password for the account." [ref=e624]:
+                          - cell "Password" [ref=e625]:
+                            - strong [ref=e626]: Password
+                          - cell "Enter a password for the account." [ref=e627]
+                        - row "Confirm Password Re-enter the password for confirmation." [ref=e628]:
+                          - cell "Confirm Password" [ref=e629]:
+                            - strong [ref=e630]: Confirm Password
+                          - cell "Re-enter the password for confirmation." [ref=e631]
+                    - paragraph [ref=e632]:
+                      - text: Press
+                      - strong [ref=e633]: ENTER
+                      - text: to continue.
+                  - listitem [ref=e634]:
+                    - paragraph [ref=e635]:
+                      - text: In the Palette TUI, the available configuration options are displayed and are described in the next three steps. Use the
+                      - strong [ref=e636]: TAB
+                      - text: key or the up and down arrow keys to switch between fields. When you make a change, press
+                      - strong [ref=e637]: ENTER
+                      - text: to apply the change. Use
+                      - strong [ref=e638]: ESC
+                      - text: to go back.
+                  - listitem [ref=e639]:
+                    - paragraph [ref=e640]:
+                      - text: In
+                      - strong [ref=e641]: Hostname
+                      - text: ", check the existing hostname and, optionally, change it to a new one."
+                  - listitem [ref=e642]:
+                    - paragraph [ref=e643]:
+                      - text: In
+                      - strong [ref=e644]: Host Network Adapters
+                      - text: ", select a network adapter you would like to configure. By default, the network adapters request an IP automatically from the Dynamic Host Configuration Protocol (DHCP) server. The CIDR block of an adapter's possible IP address is displayed in the"
+                      - strong [ref=e645]: Host Network Adapters
+                      - text: screen without selecting an individual adapter.
+                    - paragraph [ref=e646]: In the configuration page for each adapter, you can change the IP addressing scheme of the adapter and choose a static IP instead of DHCP. In Static IP mode, you will need to provide a static IP address and subnet mask, as well as the address of the default gateway. Specifying a static IP will remove the existing DHCP settings.
+                    - paragraph [ref=e647]: You can also specify the Maximum Transmission Unit (MTU) for your network adapter. The MTU defines the largest size, in bytes, of a packet that can be sent over a network interface without needing to be fragmented.
+                  - listitem [ref=e648]:
+                    - paragraph [ref=e649]:
+                      - text: In
+                      - strong [ref=e650]: DNS Configuration
+                      - text: ", specify the IP address of the primary and alternate name servers. You can optionally specify a search domain."
+                  - listitem [ref=e651]:
+                    - paragraph [ref=e652]:
+                      - text: After you are satisfied with the configurations, navigate to
+                      - strong [ref=e653]: Quit
+                      - text: and press
+                      - strong [ref=e654]: ENTER
+                      - text: to finish the configuration. Press
+                      - strong [ref=e655]: ENTER
+                      - text: again on the confirmation prompt.
+                    - paragraph [ref=e656]:
+                      - text: After a few seconds, the terminal displays the
+                      - strong [ref=e657]: Device Info
+                      - text: and prompts you to provision the device through Local UI.
+                    - generic [ref=e658]:
+                      - generic [ref=e659]:
+                        - img [ref=e661]
+                        - text: tip
+                      - paragraph [ref=e664]:
+                        - text: If you need to access the Palette TUI again, issue the
+                        - code [ref=e665]: palette-tui
+                        - text: command in the terminal.
+                  - listitem [ref=e666]:
+                    - paragraph [ref=e667]: Ensure you complete the configuration on each node before proceeding to the next step.
+                  - listitem [ref=e668]:
+                    - paragraph [ref=e669]:
+                      - text: Decide on the host that you plan to use as the leader of the group. Refer to
+                      - link "Link Hosts" [ref=e670] [cursor=pointer]:
+                        - /url: /clusters/edge/local-ui/cluster-management/link-hosts#leader-hosts
+                      - text: for more information about leader hosts.
+                  - listitem [ref=e671]:
+                    - paragraph [ref=e672]: Access the Local UI of the leader host. Local UI is used to manage the Palette VerteX nodes and perform administrative tasks. It provides a web-based interface for managing the Palette VerteX management cluster.
+                    - paragraph [ref=e673]:
+                      - text: In your web browser, go to
+                      - code [ref=e674]: https://<node-ip>:5080
+                      - text: . Replace
+                      - code [ref=e675]: <node-ip>
+                      - text: with the IP address of your node. If you have changed the default port of the console, replace
+                      - code [ref=e676]: "5080"
+                      - text: with the Local UI port. The address of the Local UI console is also displayed on the terminal screen of the node.
+                    - paragraph [ref=e677]: If you are accessing Local UI for the first time, a security warning may be displayed in your web browser. This is because Local UI uses a self-signed certificate. You can safely ignore this warning and proceed to Local UI.
+                  - listitem [ref=e678]:
+                    - paragraph [ref=e679]: Log in to Local UI using the credentials you provided in step 10.
+                  - listitem [ref=e680]:
+                    - paragraph [ref=e681]:
+                      - text: (Optional) If you need to configure a HTTP proxy server for the node, follow the steps in the
+                      - link "Configure HTTP-Proxy in Local UI" [ref=e682] [cursor=pointer]:
+                        - /url: /clusters/edge/local-ui/host-management/configure-proxy
+                      - text: guide. When done, proceed to the next step.
+                  - listitem [ref=e683]:
+                    - paragraph [ref=e684]:
+                      - text: From the left main menu, click
+                      - strong [ref=e685]: Linked Edge Hosts
+                      - text: .
+                  - listitem [ref=e686]:
+                    - paragraph [ref=e687]:
+                      - text: Click
+                      - strong [ref=e688]: Generate token
+                      - text: . The host begins generating tokens that you will use to link this host with other hosts. The Base64 encoded token contains the IP address of the host, as well as an OTP that will expire in two minutes. Once a token expires, the leader generates another token automatically.
+                  - listitem [ref=e689]:
+                    - paragraph [ref=e690]:
+                      - text: Click the
+                      - strong [ref=e691]: Copy
+                      - text: button to copy the token.
+                  - listitem [ref=e692]:
+                    - paragraph [ref=e693]: Log in to Local UI on the host that you want to link to the leader host.
+                  - listitem [ref=e694]:
+                    - paragraph [ref=e695]:
+                      - text: From the left main menu, click
+                      - strong [ref=e696]: Linked Edge Hosts
+                      - text: .
+                  - listitem [ref=e697]:
+                    - paragraph [ref=e698]:
+                      - text: Click
+                      - strong [ref=e699]: Link this device to another
+                      - text: .
+                  - listitem [ref=e700]:
+                    - paragraph [ref=e701]: In the pop-up box that appears, enter the token you copied from the leader host.
+                  - listitem [ref=e702]:
+                    - paragraph [ref=e703]:
+                      - text: Click
+                      - strong [ref=e704]: Confirm
+                      - text: .
+                  - listitem [ref=e705]:
+                    - paragraph [ref=e706]: Repeat steps 27-31 for every host you want to link to the leader host.
+                  - listitem [ref=e707]:
+                    - paragraph [ref=e708]:
+                      - text: Confirm that all linked hosts appear in the
+                      - strong [ref=e709]: Linked Edge Hosts
+                      - text: table. The following columns should show the required statuses.
+                    - table [ref=e710]:
+                      - rowgroup [ref=e711]:
+                        - row "Column Status" [ref=e712]:
+                          - cell "Column" [ref=e713]:
+                            - strong [ref=e714]: Column
+                          - cell "Status" [ref=e715]:
+                            - strong [ref=e716]: Status
+                      - rowgroup [ref=e717]:
+                        - row "Status Ready" [ref=e718]:
+                          - cell "Status" [ref=e719]:
+                            - strong [ref=e720]: Status
+                          - cell "Ready" [ref=e721]
+                        - row "Content Synced" [ref=e722]:
+                          - cell "Content" [ref=e723]:
+                            - strong [ref=e724]: Content
+                          - cell "Synced" [ref=e725]
+                        - row "Health Healthy" [ref=e726]:
+                          - cell "Health" [ref=e727]:
+                            - strong [ref=e728]: Health
+                          - cell "Healthy" [ref=e729]
+                    - paragraph [ref=e730]: Content synchronization will take at least five minutes to complete, depending on your network resources.
+                  - listitem [ref=e731]:
+                    - paragraph [ref=e732]:
+                      - text: On the left main menu, click
+                      - strong [ref=e733]: Cluster
+                      - text: .
+                  - listitem [ref=e734]:
+                    - paragraph [ref=e735]:
+                      - text: Click
+                      - strong [ref=e736]: Create cluster
+                      - text: .
+                  - listitem [ref=e737]:
+                    - paragraph [ref=e738]:
+                      - text: For
+                      - strong [ref=e739]: Basic Information
+                      - text: ", provide a name for the cluster and optional tags in"
+                      - code [ref=e740]: key:value
+                      - text: format.
+                  - listitem [ref=e741]:
+                    - paragraph [ref=e742]:
+                      - text: In
+                      - strong [ref=e743]: Cluster Profile
+                      - text: ", the"
+                      - strong [ref=e744]: Imported Applications preview
+                      - text: section displays the applications that are included with the VerteX Management Appliance. These applications are pre-configured and used to deploy your Palette VerteX management cluster.
+                    - paragraph [ref=e745]:
+                      - text: Leave the default options in place and click
+                      - strong [ref=e746]: Next
+                      - text: .
+                  - listitem [ref=e747]:
+                    - paragraph [ref=e748]:
+                      - text: In
+                      - strong [ref=e749]: Profile Config
+                      - text: ", configure the cluster profile settings to your requirements. Review the following tables for the available options."
+                    - heading "Cluster Profile OptionsDirect link to Cluster Profile Options" [level=4] [ref=e750]:
+                      - text: Cluster Profile Options
+                      - link "Direct link to Cluster Profile Options" [ref=e751] [cursor=pointer]:
+                        - /url: "#cluster-profile-options"
+                        - text: "#"
+                    - table [ref=e752]:
+                      - rowgroup [ref=e753]:
+                        - row "Option Description Type Default" [ref=e754]:
+                          - cell "Option" [ref=e755]:
+                            - strong [ref=e756]: Option
+                          - cell "Description" [ref=e757]:
+                            - strong [ref=e758]: Description
+                          - cell "Type" [ref=e759]:
+                            - strong [ref=e760]: Type
+                          - cell "Default" [ref=e761]:
+                            - strong [ref=e762]: Default
+                      - rowgroup [ref=e763]:
+                        - row "Pod CIDR The CIDR range for the pod network. This is used to allocate IP addresses to pods in the cluster. CIDR notation 100.64.0.0/18" [ref=e764]:
+                          - cell "Pod CIDR" [ref=e765]:
+                            - strong [ref=e766]: Pod CIDR
+                          - cell "The CIDR range for the pod network. This is used to allocate IP addresses to pods in the cluster." [ref=e767]
+                          - cell "CIDR notation" [ref=e768]
+                          - cell "100.64.0.0/18" [ref=e769]:
+                            - strong [ref=e770]:
+                              - code [ref=e771]: 100.64.0.0/18
+                        - row "Service CIDR The CIDR range for the service network. This is used to allocate IP addresses to services in the cluster. CIDR notation 100.64.64.0/18" [ref=e772]:
+                          - cell "Service CIDR" [ref=e773]:
+                            - strong [ref=e774]: Service CIDR
+                          - cell "The CIDR range for the service network. This is used to allocate IP addresses to services in the cluster." [ref=e775]
+                          - cell "CIDR notation" [ref=e776]
+                          - cell "100.64.64.0/18" [ref=e777]:
+                            - strong [ref=e778]:
+                              - code [ref=e779]: 100.64.64.0/18
+                        - row "Ubuntu Pro Token (Optional) The token for your Ubuntu Pro subscription. String No default" [ref=e780]:
+                          - cell "Ubuntu Pro Token (Optional)" [ref=e781]:
+                            - strong [ref=e782]: Ubuntu Pro Token (Optional)
+                          - cell "The token for your Ubuntu Pro subscription." [ref=e783]:
+                            - text: The token for your
+                            - link "Ubuntu Pro" [ref=e784] [cursor=pointer]:
+                              - /url: https://ubuntu.com/pro
+                            - text: subscription.
+                          - cell "String" [ref=e785]
+                          - cell "No default" [ref=e786]:
+                            - emphasis [ref=e787]: No default
+                        - row "Storage Pool Drive (Optional) The storage pool device to use for the cluster. As mentioned in the Prerequisites, assign this to your second storage device. String /dev/sdb" [ref=e788]:
+                          - cell "Storage Pool Drive (Optional)" [ref=e789]:
+                            - strong [ref=e790]: Storage Pool Drive (Optional)
+                          - cell "The storage pool device to use for the cluster. As mentioned in the Prerequisites, assign this to your second storage device." [ref=e791]:
+                            - text: The storage pool device to use for the cluster. As mentioned in the
+                            - link "Prerequisites" [ref=e792] [cursor=pointer]:
+                              - /url: "#prerequisites"
+                            - text: ", assign this to your second storage device."
+                          - cell "String" [ref=e793]
+                          - cell "/dev/sdb" [ref=e794]:
+                            - strong [ref=e795]:
+                              - code [ref=e796]: /dev/sdb
+                        - row "CSI Placement Count The number of replicas for the Container Storage Interface (CSI) Persistent Volumes (PVs). The accepted values are 1 or 3. We recommend using 3 to provide high availability for the CSI volumes. This value must match the MongoDB Replicas value. Integer 3" [ref=e797]:
+                          - cell "CSI Placement Count" [ref=e798]:
+                            - strong [ref=e799]: CSI Placement Count
+                          - cell "The number of replicas for the Container Storage Interface (CSI) Persistent Volumes (PVs). The accepted values are 1 or 3. We recommend using 3 to provide high availability for the CSI volumes. This value must match the MongoDB Replicas value." [ref=e800]:
+                            - text: The number of replicas for the Container Storage Interface (CSI) Persistent Volumes (PVs). The accepted values are
+                            - code [ref=e801]: "1"
+                            - text: or
+                            - code [ref=e802]: "3"
+                            - text: . We recommend using
+                            - strong [ref=e803]: "3"
+                            - text: to provide high availability for the CSI volumes.
+                            - emphasis [ref=e804]:
+                              - text: This value must match the
+                              - strong [ref=e805]: MongoDB Replicas
+                              - text: value.
+                          - cell "Integer" [ref=e806]
+                          - cell "3" [ref=e807]:
+                            - strong [ref=e808]:
+                              - code [ref=e809]: "3"
+                    - heading "Registry OptionsDirect link to Registry Options" [level=4] [ref=e810]:
+                      - text: Registry Options
+                      - link "Direct link to Registry Options" [ref=e811] [cursor=pointer]:
+                        - /url: "#registry-options"
+                        - text: "#"
+                    - table [ref=e812]:
+                      - rowgroup [ref=e813]:
+                        - row "Option Description Type Default" [ref=e814]:
+                          - cell "Option" [ref=e815]:
+                            - strong [ref=e816]: Option
+                          - cell "Description" [ref=e817]:
+                            - strong [ref=e818]: Description
+                          - cell "Type" [ref=e819]:
+                            - strong [ref=e820]: Type
+                          - cell "Default" [ref=e821]:
+                            - strong [ref=e822]: Default
+                      - rowgroup [ref=e823]:
+                        - row "In Cluster Registry (Optional) - True - Use internal Zot registry - False - Use external registry. Boolean True" [ref=e824]:
+                          - cell "In Cluster Registry (Optional)" [ref=e825]:
+                            - strong [ref=e826]: In Cluster Registry (Optional)
+                          - cell "- True - Use internal Zot registry - False - Use external registry." [ref=e827]:
+                            - text: "-"
+                            - code [ref=e828]: "True"
+                            - text: "- Use internal Zot registry"
+                            - text: "-"
+                            - code [ref=e829]: "False"
+                            - text: "- Use external registry."
+                          - cell "Boolean" [ref=e830]
+                          - cell "True" [ref=e831]:
+                            - strong [ref=e832]: "True"
+                        - 'row "Registry Endpoint The DNS/IP endpoint for the registry. Leave the default entry if using the internal Zot registry, which is a virtual IP address assigned by kube-vip. Adjust if using an external registry. String {{.spectro.system.cluster.kubevip}}" [ref=e833]':
+                          - cell "Registry Endpoint" [ref=e834]:
+                            - strong [ref=e835]: Registry Endpoint
+                          - cell "The DNS/IP endpoint for the registry. Leave the default entry if using the internal Zot registry, which is a virtual IP address assigned by kube-vip. Adjust if using an external registry." [ref=e836]:
+                            - text: The DNS/IP endpoint for the registry. Leave the default entry if using the internal Zot registry, which is a virtual IP address assigned by
+                            - link "kube-vip" [ref=e837] [cursor=pointer]:
+                              - /url: https://kube-vip.io/
+                            - text: . Adjust if using an external registry.
+                          - cell "String" [ref=e838]
+                          - 'cell "{{.spectro.system.cluster.kubevip}}" [ref=e839]':
+                            - strong [ref=e840]:
+                              - code [ref=e841]: "{{.spectro.system.cluster.kubevip}}"
+                        - row "Registry Port The port for the registry. The default value can be changed for the internal Zot registry. Adjust if using an external registry. Integer 30003" [ref=e842]:
+                          - cell "Registry Port" [ref=e843]:
+                            - strong [ref=e844]: Registry Port
+                          - cell "The port for the registry. The default value can be changed for the internal Zot registry. Adjust if using an external registry." [ref=e845]
+                          - cell "Integer" [ref=e846]
+                          - cell "30003" [ref=e847]:
+                            - strong [ref=e848]:
+                              - code [ref=e849]: "30003"
+                        - row "OCI Registry Base Content Path (Optional) The base path for the registry content for the internal or external registry. Palette VerteX packs will be stored in this directory. String spectro-content" [ref=e850]:
+                          - cell "OCI Registry Base Content Path (Optional)" [ref=e851]:
+                            - strong [ref=e852]: OCI Registry Base Content Path (Optional)
+                          - cell "The base path for the registry content for the internal or external registry. Palette VerteX packs will be stored in this directory." [ref=e853]
+                          - cell "String" [ref=e854]
+                          - cell "spectro-content" [ref=e855]:
+                            - strong [ref=e856]:
+                              - code [ref=e857]: spectro-content
+                        - row "OCI Pack Registry Username If using the internal Zot registry, leave the default username or adjust to your requirements. If using an external registry, provide the appropriate username. String admin" [ref=e858]:
+                          - cell "OCI Pack Registry Username" [ref=e859]:
+                            - strong [ref=e860]: OCI Pack Registry Username
+                          - cell "If using the internal Zot registry, leave the default username or adjust to your requirements. If using an external registry, provide the appropriate username." [ref=e861]
+                          - cell "String" [ref=e862]
+                          - cell "admin" [ref=e863]:
+                            - strong [ref=e864]:
+                              - code [ref=e865]: admin
+                        - row "OCI Pack Registry Password If using the internal Zot registry, enter a password to your requirements. If using an external registry, provide the appropriate password. String No default - must be provided." [ref=e866]:
+                          - cell "OCI Pack Registry Password" [ref=e867]:
+                            - strong [ref=e868]: OCI Pack Registry Password
+                          - cell "If using the internal Zot registry, enter a password to your requirements. If using an external registry, provide the appropriate password." [ref=e869]
+                          - cell "String" [ref=e870]
+                          - cell "No default - must be provided." [ref=e871]:
+                            - emphasis [ref=e872]: No default - must be provided.
+                        - row "OCI Registry Storage Size (GiB) (Optional) The size of the storage for the OCI registry. This is used to store the images and packs in the registry. The default value is set to 100 GiB, but this should be increased to at least 250 GiB for production environments. Integer 100" [ref=e873]:
+                          - cell "OCI Registry Storage Size (GiB) (Optional)" [ref=e874]:
+                            - strong [ref=e875]: OCI Registry Storage Size (GiB) (Optional)
+                          - cell "The size of the storage for the OCI registry. This is used to store the images and packs in the registry. The default value is set to 100 GiB, but this should be increased to at least 250 GiB for production environments." [ref=e876]:
+                            - text: The size of the storage for the OCI registry. This is used to store the images and packs in the registry. The default value is set to 100 GiB, but this should be increased to at least
+                            - strong [ref=e877]: "250"
+                            - text: GiB for production environments.
+                          - cell "Integer" [ref=e878]
+                          - cell "100" [ref=e879]:
+                            - strong [ref=e880]:
+                              - code [ref=e881]: "100"
+                        - row "OCI Pack Registry Ca Cert (Optional) - Internal Zot registry - Not required. - External registry - The CA certificate that was used to sign the external registry certificate. Base64 encoded string No default" [ref=e882]:
+                          - cell "OCI Pack Registry Ca Cert (Optional)" [ref=e883]:
+                            - strong [ref=e884]: OCI Pack Registry Ca Cert (Optional)
+                          - cell "- Internal Zot registry - Not required. - External registry - The CA certificate that was used to sign the external registry certificate." [ref=e885]:
+                            - text: "- Internal Zot registry - Not required."
+                            - text: "- External registry - The CA certificate that was used to sign the external registry certificate."
+                          - cell "Base64 encoded string" [ref=e886]
+                          - cell "No default" [ref=e887]:
+                            - emphasis [ref=e888]: No default
+                        - 'row "Image Replacement Rules (Optional) Set rules for replacing image references when using an external registry. For example, all: oci-registry-ip:oci-registry-port/spectro-content. Leave empty if using the internal Zot registry. String No default" [ref=e889]':
+                          - cell "Image Replacement Rules (Optional)" [ref=e890]:
+                            - strong [ref=e891]: Image Replacement Rules (Optional)
+                          - 'cell "Set rules for replacing image references when using an external registry. For example, all: oci-registry-ip:oci-registry-port/spectro-content. Leave empty if using the internal Zot registry." [ref=e892]':
+                            - text: Set rules for replacing image references when using an external registry. For example,
+                            - code [ref=e893]: "all: oci-registry-ip:oci-registry-port/spectro-content"
+                            - text: . Leave empty if using the internal Zot registry.
+                          - cell "String" [ref=e894]
+                          - cell "No default" [ref=e895]:
+                            - emphasis [ref=e896]: No default
+                        - 'row "Root Domain (Optional) The root domain for the registry. The default is set for the internal Zot registry, which is a virtual IP address assigned by kube-vip. If using an external registry, adjust this to the appropriate domain. String {{.spectro.system.cluster.kubevip}}" [ref=e897]':
+                          - cell "Root Domain (Optional)" [ref=e898]:
+                            - strong [ref=e899]: Root Domain (Optional)
+                          - cell "The root domain for the registry. The default is set for the internal Zot registry, which is a virtual IP address assigned by kube-vip. If using an external registry, adjust this to the appropriate domain." [ref=e900]:
+                            - text: The root domain for the registry. The default is set for the internal Zot registry, which is a virtual IP address assigned by
+                            - link "kube-vip" [ref=e901] [cursor=pointer]:
+                              - /url: https://kube-vip.io/
+                            - text: . If using an external registry, adjust this to the appropriate domain.
+                          - cell "String" [ref=e902]
+                          - 'cell "{{.spectro.system.cluster.kubevip}}" [ref=e903]':
+                            - strong [ref=e904]:
+                              - code [ref=e905]: "{{.spectro.system.cluster.kubevip}}"
+                        - row "Mongo Replicas The number of MongoDB replicas to create for the cluster. The accepted values are 1 or 3. We recommend using 3 to provide high availability for the MongoDB database. This value must match the CSI Placement Count value. Integer 3" [ref=e906]:
+                          - cell "Mongo Replicas" [ref=e907]:
+                            - strong [ref=e908]: Mongo Replicas
+                          - cell "The number of MongoDB replicas to create for the cluster. The accepted values are 1 or 3. We recommend using 3 to provide high availability for the MongoDB database. This value must match the CSI Placement Count value." [ref=e909]:
+                            - text: The number of MongoDB replicas to create for the cluster. The accepted values are
+                            - code [ref=e910]: "1"
+                            - text: or
+                            - code [ref=e911]: "3"
+                            - text: . We recommend using
+                            - strong [ref=e912]: "3"
+                            - text: to provide high availability for the MongoDB database.
+                            - emphasis [ref=e913]:
+                              - text: This value must match the
+                              - strong [ref=e914]: CSI Placement Count
+                              - text: value.
+                          - cell "Integer" [ref=e915]
+                          - cell "3" [ref=e916]:
+                            - strong [ref=e917]:
+                              - code [ref=e918]: "3"
+                  - listitem [ref=e919]:
+                    - paragraph [ref=e920]:
+                      - text: Click
+                      - strong [ref=e921]: Next
+                      - text: when you are done.
+                  - listitem [ref=e922]:
+                    - paragraph [ref=e923]:
+                      - text: In
+                      - strong [ref=e924]: Cluster Config
+                      - text: ", configure the following options."
+                    - heading "Cluster Config OptionsDirect link to Cluster Config Options" [level=4] [ref=e925]:
+                      - text: Cluster Config Options
+                      - link "Direct link to Cluster Config Options" [ref=e926] [cursor=pointer]:
+                        - /url: "#cluster-config-options"
+                        - text: "#"
+                    - table [ref=e927]:
+                      - rowgroup [ref=e928]:
+                        - row "Option Description Type Default" [ref=e929]:
+                          - cell "Option" [ref=e930]:
+                            - strong [ref=e931]: Option
+                          - cell "Description" [ref=e932]:
+                            - strong [ref=e933]: Description
+                          - cell "Type" [ref=e934]:
+                            - strong [ref=e935]: Type
+                          - cell "Default" [ref=e936]:
+                            - strong [ref=e937]: Default
+                      - rowgroup [ref=e938]:
+                        - row "Network Time Protocol (NTP) (Optional) The NTP servers to synchronize time within the cluster. String No default" [ref=e939]:
+                          - cell "Network Time Protocol (NTP) (Optional)" [ref=e940]:
+                            - strong [ref=e941]: Network Time Protocol (NTP) (Optional)
+                          - cell "The NTP servers to synchronize time within the cluster." [ref=e942]
+                          - cell "String" [ref=e943]
+                          - cell "No default" [ref=e944]:
+                            - emphasis [ref=e945]: No default
+                        - row "SSH Keys (Optional) The public SSH keys to access the cluster nodes. Add additional keys by clicking Add Item. String No default" [ref=e946]:
+                          - cell "SSH Keys (Optional)" [ref=e947]:
+                            - strong [ref=e948]: SSH Keys (Optional)
+                          - cell "The public SSH keys to access the cluster nodes. Add additional keys by clicking Add Item." [ref=e949]:
+                            - text: The public SSH keys to access the cluster nodes. Add additional keys by clicking
+                            - strong [ref=e950]: Add Item
+                            - text: .
+                          - cell "String" [ref=e951]
+                          - cell "No default" [ref=e952]:
+                            - emphasis [ref=e953]: No default
+                        - row "Virtual IP Address (VIP) The virtual IP address for the cluster. This is used for load balancing and high availability. String No default" [ref=e954]:
+                          - cell "Virtual IP Address (VIP)" [ref=e955]:
+                            - strong [ref=e956]: Virtual IP Address (VIP)
+                          - cell "The virtual IP address for the cluster. This is used for load balancing and high availability." [ref=e957]
+                          - cell "String" [ref=e958]
+                          - cell "No default" [ref=e959]:
+                            - emphasis [ref=e960]: No default
+                    - paragraph [ref=e961]:
+                      - text: Click
+                      - strong [ref=e962]: Next
+                      - text: when you are done.
+                  - listitem [ref=e963]:
+                    - paragraph [ref=e964]:
+                      - text: In
+                      - strong [ref=e965]: Node Config
+                      - text: ", configure the following options."
+                    - generic [ref=e966]:
+                      - generic [ref=e967]:
+                        - img [ref=e969]
+                        - text: important
+                      - paragraph [ref=e972]:
+                        - text: You must assign at least three control plane nodes for high availability. You can remove the worker node pool as it is not required for the Palette VerteX management cluster. When doing this, ensure that the
+                        - strong [ref=e973]: Allow worker capability
+                        - text: option is enabled for the control plane node pool.
+                    - heading "Node Pool OptionsDirect link to Node Pool Options" [level=4] [ref=e974]:
+                      - text: Node Pool Options
+                      - link "Direct link to Node Pool Options" [ref=e975] [cursor=pointer]:
+                        - /url: "#node-pool-options"
+                        - text: "#"
+                    - generic [ref=e976]:
+                      - tablist [ref=e977]:
+                        - tab "Control Plane Pool Options" [selected] [ref=e978] [cursor=pointer]
+                        - tab "Worker Pool Options" [ref=e979] [cursor=pointer]
+                      - tabpanel [ref=e981]:
+                        - table [ref=e982]:
+                          - rowgroup [ref=e983]:
+                            - row "Option Description Type Default" [ref=e984]:
+                              - cell "Option" [ref=e985]:
+                                - strong [ref=e986]: Option
+                              - cell "Description" [ref=e987]:
+                                - strong [ref=e988]: Description
+                              - cell "Type" [ref=e989]:
+                                - strong [ref=e990]: Type
+                              - cell "Default" [ref=e991]:
+                                - strong [ref=e992]: Default
+                          - rowgroup [ref=e993]:
+                            - row "Node pool name The name of the control plane node pool. This will be used to identify the node pool in Palette VerteX. String control-plane-pool" [ref=e994]:
+                              - cell "Node pool name" [ref=e995]:
+                                - strong [ref=e996]: Node pool name
+                              - cell "The name of the control plane node pool. This will be used to identify the node pool in Palette VerteX." [ref=e997]
+                              - cell "String" [ref=e998]
+                              - cell "control-plane-pool" [ref=e999]:
+                                - strong [ref=e1000]:
+                                  - code [ref=e1001]: control-plane-pool
+                            - row "Allow worker capability (Optional) Whether to allow workloads to be scheduled on this control plane node pool. Ensure that this is enabled if no worker pool is assigned to the cluster. Boolean True" [ref=e1002]:
+                              - cell "Allow worker capability (Optional)" [ref=e1003]:
+                                - strong [ref=e1004]: Allow worker capability (Optional)
+                              - cell "Whether to allow workloads to be scheduled on this control plane node pool. Ensure that this is enabled if no worker pool is assigned to the cluster." [ref=e1005]
+                              - cell "Boolean" [ref=e1006]
+                              - cell "True" [ref=e1007]:
+                                - strong [ref=e1008]: "True"
+                            - row "Additional Kubernetes Node Labels (Optional) Tags for the node pool in key:value format. These tags can be used to filter and search for node pools in Palette VerteX. String No default" [ref=e1009]:
+                              - cell "Additional Kubernetes Node Labels (Optional)" [ref=e1010]:
+                                - strong [ref=e1011]: Additional Kubernetes Node Labels (Optional)
+                              - cell "Tags for the node pool in key:value format. These tags can be used to filter and search for node pools in Palette VerteX." [ref=e1012]:
+                                - text: Tags for the node pool in
+                                - code [ref=e1013]: key:value
+                                - text: format. These tags can be used to filter and search for node pools in Palette VerteX.
+                              - cell "String" [ref=e1014]
+                              - cell "No default" [ref=e1015]:
+                                - emphasis [ref=e1016]: No default
+                            - row "Taints Taints for the node pool in key=value:effect format. Taints are used to prevent pods from being scheduled on the nodes in this pool unless they tolerate the taint. - Key = string - Value = string - Effect = string (enum) No default" [ref=e1017]:
+                              - cell "Taints" [ref=e1018]:
+                                - strong [ref=e1019]: Taints
+                              - cell "Taints for the node pool in key=value:effect format. Taints are used to prevent pods from being scheduled on the nodes in this pool unless they tolerate the taint." [ref=e1020]:
+                                - text: Taints for the node pool in
+                                - code [ref=e1021]: key=value:effect
+                                - text: format. Taints are used to prevent pods from being scheduled on the nodes in this pool unless they tolerate the taint.
+                              - cell "- Key = string - Value = string - Effect = string (enum)" [ref=e1022]:
+                                - text: "-"
+                                - strong [ref=e1023]: Key
+                                - text: = string
+                                - text: "-"
+                                - strong [ref=e1024]: Value
+                                - text: = string
+                                - text: "-"
+                                - strong [ref=e1025]: Effect
+                                - text: = string (enum)
+                              - cell "No default" [ref=e1026]:
+                                - emphasis [ref=e1027]: No default
+                    - heading "Pool ConfigurationDirect link to Pool Configuration" [level=5] [ref=e1028]:
+                      - text: Pool Configuration
+                      - link "Direct link to Pool Configuration" [ref=e1029] [cursor=pointer]:
+                        - /url: "#pool-configuration"
+                        - text: "#"
+                    - paragraph [ref=e1030]: The following options are available for both the control plane and worker node pools. You can configure these options to your requirements. You can also remove worker pools if not needed.
+                    - table [ref=e1031]:
+                      - rowgroup [ref=e1032]:
+                        - row "Option Description Type Default" [ref=e1033]:
+                          - cell "Option" [ref=e1034]:
+                            - strong [ref=e1035]: Option
+                          - cell "Description" [ref=e1036]:
+                            - strong [ref=e1037]: Description
+                          - cell "Type" [ref=e1038]:
+                            - strong [ref=e1039]: Type
+                          - cell "Default" [ref=e1040]:
+                            - strong [ref=e1041]: Default
+                      - rowgroup [ref=e1042]:
+                        - row "Architecture The CPU architecture of the nodes. This is used to ensure compatibility with the applications operating on the nodes. String (enum) amd64" [ref=e1043]:
+                          - cell "Architecture" [ref=e1044]:
+                            - strong [ref=e1045]: Architecture
+                          - cell "The CPU architecture of the nodes. This is used to ensure compatibility with the applications operating on the nodes." [ref=e1046]
+                          - cell "String (enum)" [ref=e1047]
+                          - cell "amd64" [ref=e1048]:
+                            - strong [ref=e1049]:
+                              - code [ref=e1050]: amd64
+                        - row "Add Edge Hosts Click Add Item and select the other hosts that you installed using the VerteX Management Appliance ISO. These hosts will be added to the node pool. Each pool must contain at least one node. N/A - Control Plane Pool = Current host selected - Worker Pool = No host selected" [ref=e1051]:
+                          - cell "Add Edge Hosts" [ref=e1052]:
+                            - strong [ref=e1053]: Add Edge Hosts
+                          - cell "Click Add Item and select the other hosts that you installed using the VerteX Management Appliance ISO. These hosts will be added to the node pool. Each pool must contain at least one node." [ref=e1054]:
+                            - text: Click
+                            - strong [ref=e1055]: Add Item
+                            - text: and select the other hosts that you installed using the VerteX Management Appliance ISO. These hosts will be added to the node pool. Each pool must contain at least one node.
+                          - cell "N/A" [ref=e1056]
+                          - cell "- Control Plane Pool = Current host selected - Worker Pool = No host selected" [ref=e1057]:
+                            - text: "-"
+                            - strong [ref=e1058]: Control Plane Pool
+                            - text: =
+                            - emphasis [ref=e1059]: Current host selected
+                            - text: "-"
+                            - strong [ref=e1060]: Worker Pool
+                            - text: =
+                            - emphasis [ref=e1061]: No host selected
+                        - row "NIC Name The name of the network interface card (NIC) to use for the nodes. Leave on Auto to let the system choose the appropriate NIC, or select one manually from the drop-down menu. N/A Auto" [ref=e1062]:
+                          - cell "NIC Name" [ref=e1063]:
+                            - strong [ref=e1064]: NIC Name
+                          - cell "The name of the network interface card (NIC) to use for the nodes. Leave on Auto to let the system choose the appropriate NIC, or select one manually from the drop-down menu." [ref=e1065]:
+                            - text: The name of the network interface card (NIC) to use for the nodes. Leave on
+                            - strong [ref=e1066]: Auto
+                            - text: to let the system choose the appropriate NIC, or select one manually from the drop-down menu.
+                          - cell "N/A" [ref=e1067]
+                          - cell "Auto" [ref=e1068]:
+                            - strong [ref=e1069]: Auto
+                        - row "Host Name (Optional) The hostname for the nodes. This is used to identify the nodes in the cluster. A generated hostname is provided automatically, which you can adjust to your requirements. String edge-*" [ref=e1070]:
+                          - cell "Host Name (Optional)" [ref=e1071]:
+                            - strong [ref=e1072]: Host Name (Optional)
+                          - cell "The hostname for the nodes. This is used to identify the nodes in the cluster. A generated hostname is provided automatically, which you can adjust to your requirements." [ref=e1073]
+                          - cell "String" [ref=e1074]
+                          - cell "edge-*" [ref=e1075]:
+                            - strong [ref=e1076]:
+                              - code [ref=e1077]: edge-*
+                  - listitem [ref=e1078]:
+                    - paragraph [ref=e1079]:
+                      - text: Click
+                      - strong [ref=e1080]: Next
+                      - text: when you are done.
+                  - listitem [ref=e1081]:
+                    - paragraph [ref=e1082]:
+                      - text: In
+                      - strong [ref=e1083]: Review
+                      - text: ", check that your configuration is correct. If you need to make changes, click on any of the sections in the left sidebar to go back and edit the configuration."
+                    - paragraph [ref=e1084]:
+                      - text: When you are satisfied with your configuration, click
+                      - strong [ref=e1085]: Deploy Cluster
+                      - text: . This will start the cluster creation process.
+                    - paragraph [ref=e1086]:
+                      - text: The cluster creation process will take 20 to 30 minutes to complete. You can monitor progress from the
+                      - strong [ref=e1087]: Overview
+                      - text: tab on the
+                      - strong [ref=e1088]: Cluster
+                      - text: page in the left main menu. The cluster is fully provisioned when the status changes to
+                      - strong [ref=e1089]: Running
+                      - text: and the health status is
+                      - strong [ref=e1090]: Healthy
+                      - text: .
+                  - listitem [ref=e1091]:
+                    - paragraph [ref=e1092]:
+                      - text: Once the cluster is provisioned, access the Palette VerteX system console using the virtual IP address (VIP) you configured earlier. Open your web browser and go to
+                      - code [ref=e1093]: https://<vip-address>/system
+                      - text: . Replace
+                      - code [ref=e1094]: <vip-address>
+                      - text: with the VIP you configured for the cluster.
+                    - paragraph [ref=e1095]: The first time you visit the system console, a warning message about an untrusted TLS certificate may appear. This is expected, as you have not yet uploaded your TLS certificate. You can ignore this warning message and proceed.
+                  - listitem [ref=e1096]:
+                    - paragraph [ref=e1097]:
+                      - text: You will be prompted to log in to Palette VerteX system console. Use
+                      - code [ref=e1098]: admin
+                      - text: as the username and
+                      - code [ref=e1099]: admin
+                      - text: as the password. You will be prompted to change the password after logging in.
+                  - listitem [ref=e1100]:
+                    - paragraph [ref=e1101]:
+                      - text: In the
+                      - strong [ref=e1102]: Account Info
+                      - text: window, provide the following information.
+                    - table [ref=e1103]:
+                      - rowgroup [ref=e1104]:
+                        - row "Field Description" [ref=e1105]:
+                          - cell "Field" [ref=e1106]:
+                            - strong [ref=e1107]: Field
+                          - cell "Description" [ref=e1108]:
+                            - strong [ref=e1109]: Description
+                      - rowgroup [ref=e1110]:
+                        - row "Email address This is used for notifications and password recovery as well as logging in to the Palette VerteX system console. This will not be active until you configure SMTP settings in Palette VerteX system console and verify your email address." [ref=e1111]:
+                          - cell "Email address" [ref=e1112]:
+                            - strong [ref=e1113]: Email address
+                          - cell "This is used for notifications and password recovery as well as logging in to the Palette VerteX system console. This will not be active until you configure SMTP settings in Palette VerteX system console and verify your email address." [ref=e1114]:
+                            - text: This is used for notifications and password recovery as well as logging in to the Palette VerteX system console. This will not be active until you
+                            - link "configure SMTP settings" [ref=e1115] [cursor=pointer]:
+                              - /url: /vertex/system-management/smtp
+                            - text: in Palette VerteX system console and verify your email address.
+                        - row "Current password Use admin as the current password." [ref=e1116]:
+                          - cell "Current password" [ref=e1117]:
+                            - strong [ref=e1118]: Current password
+                          - cell "Use admin as the current password." [ref=e1119]:
+                            - text: Use
+                            - code [ref=e1120]: admin
+                            - text: as the current password.
+                        - row "New password Enter a new password for the account." [ref=e1121]:
+                          - cell "New password" [ref=e1122]:
+                            - strong [ref=e1123]: New password
+                          - cell "Enter a new password for the account." [ref=e1124]
+                        - row "Confirm new password Re-enter the new password for confirmation." [ref=e1125]:
+                          - cell "Confirm new password" [ref=e1126]:
+                            - strong [ref=e1127]: Confirm new password
+                          - cell "Re-enter the new password for confirmation." [ref=e1128]
+                    - paragraph [ref=e1129]:
+                      - text: Refer to
+                      - link "Password Requirements and Security" [ref=e1130] [cursor=pointer]:
+                        - /url: /vertex/system-management/account-management/credentials#password-requirements-and-security
+                      - text: to learn about password requirements.
+                - paragraph [ref=e1131]: After logging in, a summary page is displayed. You now have access to the Palette VerteX system console, where you can manage your Palette VerteX environment.
+                - paragraph [ref=e1132]:
+                  - text: If you are accessing the Palette VerteX system console for the first time, a security warning may be displayed in your web browser. This is because Palette VerteX is configured with a self-signed certificate. You can replace the self-signed certificate with your own SSL certificates as guided later in
+                  - link "Next Steps" [ref=e1133] [cursor=pointer]:
+                    - /url: "#next-steps"
+                  - text: .
+                - generic [ref=e1134]:
+                  - generic [ref=e1135]:
+                    - img [ref=e1137]
+                    - text: warning
+                  - paragraph [ref=e1140]:
+                    - text: If your installation is not successful, verify that the
+                    - code [ref=e1141]: piraeus-operator
+                    - text: pack was correctly installed. For more information, refer to the
+                    - link "Self-Hosted Installation - Troubleshooting" [ref=e1142] [cursor=pointer]:
+                      - /url: /troubleshooting/enterprise-install/#scenario---palettevertex-management-appliance-installation-stalled-due-to-piraeus-operator-pack-in-error-state
+                    - text: guide.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e1143]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e1144] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e1145]:
+                  - listitem [ref=e1146]:
+                    - paragraph [ref=e1147]:
+                      - text: Log in to the Local UI of the leader host using the URL
+                      - code [ref=e1148]: https://<node-ip>:5080
+                      - text: . Replace
+                      - code [ref=e1149]: <node-ip>
+                      - text: with the IP address of the leader host. If you have changed the default port of the console, replace
+                      - code [ref=e1150]: "5080"
+                      - text: with the Local UI port.
+                  - listitem [ref=e1151]:
+                    - paragraph [ref=e1152]:
+                      - text: In Local UI, click on
+                      - strong [ref=e1153]: Cluster
+                      - text: in the left main menu.
+                  - listitem [ref=e1154]:
+                    - paragraph [ref=e1155]:
+                      - text: Check that the cluster status is
+                      - strong [ref=e1156]: Running
+                      - text: and the health status is
+                      - strong [ref=e1157]: Healthy
+                      - text: . In the
+                      - strong [ref=e1158]: Applications
+                      - text: section on this page, the listed applications should be in the
+                      - strong [ref=e1159]: Running
+                      - text: state.
+                  - listitem [ref=e1160]:
+                    - paragraph [ref=e1161]:
+                      - text: On the
+                      - strong [ref=e1162]: Cluster
+                      - text: page, under
+                      - strong [ref=e1163]: Environment
+                      - text: ", click on the"
+                      - strong [ref=e1164]: Admin Kubeconfig File
+                      - text: to download it to your local machine.
+                  - listitem [ref=e1165]:
+                    - paragraph [ref=e1166]:
+                      - text: On your local machine, open a terminal session and export the
+                      - code [ref=e1167]: KUBECONFIG
+                      - text: environment variable to point to the downloaded
+                      - code [ref=e1168]: kubeconfig
+                      - text: file.
+                    - generic [ref=e1170]:
+                      - code [ref=e1172]:
+                        - generic [ref=e1173]: export KUBECONFIG=/path/to/your/downloaded/kubeconfig
+                      - button "Copy code to clipboard" [ref=e1175] [cursor=pointer]:
+                        - generic [ref=e1176]:
+                          - img [ref=e1177]
+                          - img [ref=e1179]
+                  - listitem [ref=e1181]:
+                    - paragraph [ref=e1182]: Issue the following command to verify the Palette installation.
+                    - generic [ref=e1184]:
+                      - code [ref=e1186]:
+                        - generic [ref=e1187]: kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
+                        - generic [ref=e1188]: "| grep --extended-regexp '^(cp-system|hubble-system|ingress-nginx|jet-system|ui-system)\\s'"
+                      - generic [ref=e1189]:
+                        - button "Toggle word wrap" [ref=e1190] [cursor=pointer]:
+                          - img [ref=e1191]
+                        - button "Copy code to clipboard" [ref=e1193] [cursor=pointer]:
+                          - generic [ref=e1194]:
+                            - img [ref=e1195]
+                            - img [ref=e1197]
+                    - paragraph [ref=e1199]: Your output should look similar to the following.
+                    - generic [ref=e1201]:
+                      - code [ref=e1203]:
+                        - generic [ref=e1204]: cp-system spectro-cp-ui-5cb6d454f8-bndxb Running
+                        - generic [ref=e1205]: hubble-system auth-5586c867ff-mk6wn Running
+                        - generic [ref=e1206]: hubble-system auth-5586c867ff-xm9mx Running
+                        - generic [ref=e1207]: hubble-system cloud-7bfd6c7f55-bmpkm Running
+                        - generic [ref=e1208]: hubble-system cloud-7bfd6c7f55-tmmjj Running
+                        - generic [ref=e1209]: hubble-system configserver-697cf95f9f-z2tr6 Running
+                        - generic [ref=e1210]: hubble-system event-8566675f7d-l7n8n Running
+                        - generic [ref=e1211]: hubble-system event-8566675f7d-v8cmz Running
+                        - generic [ref=e1212]: hubble-system event-8566675f7d-vtp8m Running
+                        - generic [ref=e1213]: hubble-system foreq-59f8c6c584-47npj Running
+                        - generic [ref=e1214]: hubble-system hashboard-5fcc8f448c-df5rj Running
+                        - generic [ref=e1215]: hubble-system hashboard-5fcc8f448c-xs6mr Running
+                        - generic [ref=e1216]: hubble-system hutil-5b49d6f5bc-5gcqc Running
+                        - generic [ref=e1217]: hubble-system hutil-5b49d6f5bc-plg9j Running
+                        - generic [ref=e1218]: hubble-system memstore-75b7d8bb5b-qtn7w Running
+                        - generic [ref=e1219]: hubble-system mgmt-5874d55cf6-2gh52 Running
+                        - generic [ref=e1220]: hubble-system mongo-0 Running
+                        - generic [ref=e1221]: hubble-system mongo-1 Running
+                        - generic [ref=e1222]: hubble-system mongo-2 Running
+                        - generic [ref=e1223]: hubble-system msgbroker-0 Running
+                        - generic [ref=e1224]: hubble-system msgbroker-1 Running
+                        - generic [ref=e1225]: hubble-system oci-proxy-6bc464cf58-wwksw Running
+                        - generic [ref=e1226]: hubble-system reloader-reloader-59c87c446c-9cvk5 Running
+                        - generic [ref=e1227]: hubble-system specman-0 Running
+                        - generic [ref=e1228]: hubble-system spectro-tunnel-647cf485b-xn87n Running
+                        - generic [ref=e1229]: hubble-system spectrocluster-85bf89dcdb-llsjj Running
+                        - generic [ref=e1230]: hubble-system spectrocluster-85bf89dcdb-m2c8w Running
+                        - generic [ref=e1231]: hubble-system spectrocluster-85bf89dcdb-tp9lk Running
+                        - generic [ref=e1232]: hubble-system spectrocluster-jobs-557bd5b798-fkzbm Running
+                        - generic [ref=e1233]: hubble-system spectrossh-74db5544bf-5t24s Running
+                        - generic [ref=e1234]: hubble-system system-6496bc487-cfchd Running
+                        - generic [ref=e1235]: hubble-system system-6496bc487-mlxjk Running
+                        - generic [ref=e1236]: hubble-system timeseries-7c4d6647b5-ckrnt Running
+                        - generic [ref=e1237]: hubble-system timeseries-7c4d6647b5-jb9tp Running
+                        - generic [ref=e1238]: hubble-system timeseries-7c4d6647b5-nl86q Running
+                        - generic [ref=e1239]: hubble-system user-57f7759745-8fjx8 Running
+                        - generic [ref=e1240]: hubble-system user-57f7759745-hxz4n Running
+                        - generic [ref=e1241]: ingress-nginx ingress-nginx-controller-m5z54 Running
+                        - generic [ref=e1242]: ingress-nginx ingress-nginx-controller-qsf6m Running
+                        - generic [ref=e1243]: ingress-nginx ingress-nginx-controller-w64pz Running
+                        - generic [ref=e1244]: jet-system jet-856db6655-k87k8 Running
+                        - generic [ref=e1245]: ui-system spectro-ui-bcff7f675-lds2l Running
+                      - button "Toggle word wrap" [ref=e1247] [cursor=pointer]:
+                        - img [ref=e1248]
+                  - listitem [ref=e1250]:
+                    - paragraph [ref=e1251]:
+                      - text: Log in to the Palette VerteX system console using the virtual IP address (VIP) you configured earlier. Open your web browser and go to
+                      - code [ref=e1252]: https://<vip-address>/system
+                      - text: . Replace
+                      - code [ref=e1253]: <vip-address>
+                      - text: with the VIP you configured for the cluster.
+                  - listitem [ref=e1254]:
+                    - paragraph [ref=e1255]:
+                      - text: On the login page, use
+                      - code [ref=e1256]: admin
+                      - text: as the username and the new password you set during the initial login.
+                  - listitem [ref=e1257]:
+                    - paragraph [ref=e1258]:
+                      - text: On the
+                      - strong [ref=e1259]: Summary
+                      - text: page, check that the
+                      - strong [ref=e1260]: On-prem system console is healthy
+                      - text: message is displayed.
+                - heading "Upload Packs to Palette VerteXDirect link to Upload Packs to Palette VerteX" [level=2] [ref=e1261]:
+                  - text: Upload Packs to Palette VerteX
+                  - link "Direct link to Upload Packs to Palette VerteX" [ref=e1262] [cursor=pointer]:
+                    - /url: "#upload-packs-to-palette-vertex"
+                    - text: "#"
+                - paragraph [ref=e1263]:
+                  - text: Follow the instructions to upload packs to your Palette VerteX instance. Packs are used to create
+                  - link "cluster profiles" [ref=e1264] [cursor=pointer]:
+                    - /url: /profiles/cluster-profiles/
+                  - text: and deploy workload clusters in your environment.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e1265]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e1266] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e1267]:
+                  - listitem [ref=e1268]:
+                    - paragraph [ref=e1269]:
+                      - text: Access to the
+                      - link "Artifact Studio" [ref=e1270] [cursor=pointer]:
+                        - /url: https://artifact-studio.spectrocloud.com/
+                      - text: to download the Palette VerteX pack bundles.
+                    - generic [ref=e1271]:
+                      - generic [ref=e1272]:
+                        - img [ref=e1274]
+                        - text: tip
+                      - paragraph [ref=e1277]:
+                        - text: If you do not have access to Artifact Studio, contact your Spectro Cloud representative or
+                        - link "open a support ticket" [ref=e1278] [cursor=pointer]:
+                          - /url: https://support.spectrocloud.com/
+                        - text: .
+                  - listitem [ref=e1279]:
+                    - paragraph [ref=e1280]: If using the internal Zot registry, ensure you have access to the Local UI of the leader node of the Palette VerteX management cluster. Also, verify that your local machine can access the Local UI, as airgapped environments may have strict network policies preventing direct access.
+                    - list [ref=e1281]:
+                      - listitem [ref=e1282]:
+                        - text: (Optional) The Palette CLI installed on your local machine if you prefer to use the command line for uploading packs. Refer to the
+                        - link "Palette CLI" [ref=e1283] [cursor=pointer]:
+                          - /url: /automation/palette-cli
+                        - text: guide for installation instructions.
+                  - listitem [ref=e1284]:
+                    - paragraph [ref=e1285]:
+                      - text: If using an external registry, the Palette CLI must be installed on your local machine to upload the content to the external registry. Refer to the
+                      - link "Palette CLI" [ref=e1286] [cursor=pointer]:
+                        - /url: /automation/palette-cli
+                      - text: guide for installation instructions.
+                    - list [ref=e1287]:
+                      - listitem [ref=e1288]: Ensure your local machine has network access to the external registry server and you have the necessary permissions to push images to the registry.
+                - heading "Upload PacksDirect link to Upload Packs" [level=3] [ref=e1289]:
+                  - text: Upload Packs
+                  - link "Direct link to Upload Packs" [ref=e1290] [cursor=pointer]:
+                    - /url: "#upload-packs"
+                    - text: "#"
+                - generic [ref=e1291]:
+                  - tablist [ref=e1292]:
+                    - tab "Internal Zot Registry" [selected] [ref=e1293] [cursor=pointer]
+                    - tab "External Registry" [ref=e1294] [cursor=pointer]
+                  - tabpanel [ref=e1296]:
+                    - generic [ref=e1297]:
+                      - tablist [ref=e1298]:
+                        - tab "Local UI Method" [selected] [ref=e1299] [cursor=pointer]
+                        - tab "Palette CLI Method" [ref=e1300] [cursor=pointer]
+                      - tabpanel [ref=e1302]:
+                        - list [ref=e1303]:
+                          - listitem [ref=e1304]:
+                            - paragraph [ref=e1305]:
+                              - text: Navigate to the
+                              - link "Artifact Studio" [ref=e1306] [cursor=pointer]:
+                                - /url: https://artifact-studio.spectrocloud.com/
+                              - text: through a web browser and log in. Under
+                              - strong [ref=e1307]: Create pack bundle
+                              - text: ", select"
+                              - strong [ref=e1308]: Build bundle
+                              - text: .
+                          - listitem [ref=e1309]:
+                            - paragraph [ref=e1310]:
+                              - text: Select the
+                              - strong [ref=e1311]: Palette VerteX Appliance
+                              - text: product on the
+                              - strong [ref=e1312]: Product selection
+                              - text: step and build your pack bundles by following the prompts in the Artifact Studio.
+                            - paragraph [ref=e1313]:
+                              - text: Refer to the
+                              - link "Artifact Studio guide" [ref=e1314] [cursor=pointer]:
+                                - /url: /downloads/artifact-studio
+                              - text: for detailed guidance on how to build pack bundles and verify the integrity of the downloaded files.
+                          - listitem [ref=e1315]:
+                            - paragraph [ref=e1316]:
+                              - text: Download the pack bundles to your local machine. Each pack is downloaded in
+                              - code [ref=e1317]: .zst
+                              - text: format.
+                          - listitem [ref=e1318]:
+                            - paragraph [ref=e1319]:
+                              - text: Log in to the Local UI of the leader host of the Palette VerteX management cluster. By default, Local UI is accessible at
+                              - code [ref=e1320]: https://<node-ip>:5080
+                              - text: . Replace
+                              - code [ref=e1321]: <node-ip>
+                              - text: with the IP address of the leader host.
+                          - listitem [ref=e1322]:
+                            - paragraph [ref=e1323]:
+                              - text: From the left main menu, click
+                              - strong [ref=e1324]: Content
+                              - text: .
+                          - listitem [ref=e1325]:
+                            - paragraph [ref=e1326]:
+                              - text: Click
+                              - strong [ref=e1327]: Actions
+                              - text: in the top right and select
+                              - strong [ref=e1328]: Upload Content
+                              - text: from the drop-down menu.
+                          - listitem [ref=e1329]:
+                            - paragraph [ref=e1330]: Click the upload icon to open the file selection dialog and select the downloaded pack ZST files from your local machine. You can select multiple files at once. Alternatively, you can drag and drop the files into the upload area.
+                            - paragraph [ref=e1331]:
+                              - text: The upload process starts automatically once the files are selected. You can monitor the upload progress in the
+                              - strong [ref=e1332]: Upload Content
+                              - text: dialog.
+                            - paragraph [ref=e1333]:
+                              - text: Wait for the
+                              - strong [ref=e1334]: File(s) uploaded successfully
+                              - text: confirmation message or the green check mark to appear next to the upload progress bar.
+                          - listitem [ref=e1335]:
+                            - paragraph [ref=e1336]: Log in to the Palette VerteX system console.
+                          - listitem [ref=e1337]:
+                            - paragraph [ref=e1338]:
+                              - text: From the left main menu, select
+                              - strong [ref=e1339]: Administration
+                              - text: ", and then select the"
+                              - strong [ref=e1340]: Pack Registries
+                              - text: tab.
+                          - listitem [ref=e1341]:
+                            - paragraph [ref=e1342]:
+                              - text: Select the three-dot menu for the
+                              - strong [ref=e1343]: OCI Pack Registry
+                              - text: and click
+                              - strong [ref=e1344]: Sync
+                              - text: .
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e1345]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e1346] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - generic [ref=e1347]:
+                  - tablist [ref=e1348]:
+                    - tab "Internal Zot Registry" [selected] [ref=e1349] [cursor=pointer]
+                    - tab "External Registry" [ref=e1350] [cursor=pointer]
+                  - tabpanel [ref=e1352]:
+                    - list [ref=e1353]:
+                      - listitem [ref=e1354]:
+                        - paragraph [ref=e1355]: Log in to the Local UI of the leader host of the Palette VerteX management cluster.
+                      - listitem [ref=e1356]:
+                        - paragraph [ref=e1357]:
+                          - text: From the left main menu, click
+                          - strong [ref=e1358]: Content
+                          - text: .
+                      - listitem [ref=e1359]:
+                        - paragraph [ref=e1360]:
+                          - text: Enter the filename of the uploaded pack in the
+                          - strong [ref=e1361]: Filter by name
+                          - text: search bar. The pack should appear in the table below. You can repeat this step for each pack you uploaded.
+                - heading "(Optional) Upload Third Party PacksDirect link to (Optional) Upload Third Party Packs" [level=2] [ref=e1362]:
+                  - text: (Optional) Upload Third Party Packs
+                  - link "Direct link to (Optional) Upload Third Party Packs" [ref=e1363] [cursor=pointer]:
+                    - /url: "#optional-upload-third-party-packs"
+                    - text: "#"
+                - paragraph [ref=e1364]: Follow the instructions to upload the Third Party packs to your Palette VerteX instance. The Third Party packs contain additional functionality and capabilities that enhance the Palette VerteX experience, such as backup and restore, configuration scanning, penetration scanning, SBOM scanning, and conformance scanning.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e1365]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e1366] [cursor=pointer]:
+                    - /url: "#prerequisites-2"
+                    - text: "#"
+                - list [ref=e1367]:
+                  - listitem [ref=e1368]:
+                    - paragraph [ref=e1369]:
+                      - text: Access to the
+                      - link "Artifact Studio" [ref=e1370] [cursor=pointer]:
+                        - /url: https://artifact-studio.spectrocloud.com/
+                      - text: to download the Third Party packs.
+                    - generic [ref=e1371]:
+                      - generic [ref=e1372]:
+                        - img [ref=e1374]
+                        - text: tip
+                      - paragraph [ref=e1377]:
+                        - text: If you do not have access to Artifact Studio, contact your Spectro Cloud representative or
+                        - link "open a support ticket" [ref=e1378] [cursor=pointer]:
+                          - /url: https://support.spectrocloud.com/
+                        - text: .
+                  - listitem [ref=e1379]:
+                    - paragraph [ref=e1380]: If using the internal Zot registry, ensure you have access to the Local UI of the leader node of the Palette VerteX management cluster. Also, verify that your local machine can access the Local UI, as airgapped environments may have strict network policies preventing direct access.
+                    - list [ref=e1381]:
+                      - listitem [ref=e1382]:
+                        - text: (Optional) The Palette CLI installed on your local machine if you prefer to use the command line for uploading packs. Refer to the
+                        - link "Palette CLI" [ref=e1383] [cursor=pointer]:
+                          - /url: /automation/palette-cli
+                        - text: guide for installation instructions.
+                  - listitem [ref=e1384]:
+                    - paragraph [ref=e1385]:
+                      - text: If using an external registry, the Palette CLI must be installed on your local machine to upload the content to the external registry. Refer to the
+                      - link "Palette CLI" [ref=e1386] [cursor=pointer]:
+                        - /url: /automation/palette-cli
+                      - text: guide for installation instructions.
+                    - list [ref=e1387]:
+                      - listitem [ref=e1388]: Ensure your local machine has network access to the external registry server and you have the necessary permissions to push images to the registry.
+                - heading "Upload PacksDirect link to Upload Packs" [level=3] [ref=e1389]:
+                  - text: Upload Packs
+                  - link "Direct link to Upload Packs" [ref=e1390] [cursor=pointer]:
+                    - /url: "#upload-packs-1"
+                    - text: "#"
+                - generic [ref=e1391]:
+                  - tablist [ref=e1392]:
+                    - tab "Internal Zot Registry" [selected] [ref=e1393] [cursor=pointer]
+                    - tab "External Registry" [ref=e1394] [cursor=pointer]
+                  - tabpanel [ref=e1396]:
+                    - generic [ref=e1397]:
+                      - tablist [ref=e1398]:
+                        - tab "Local UI Method" [selected] [ref=e1399] [cursor=pointer]
+                        - tab "Palette CLI Method" [ref=e1400] [cursor=pointer]
+                      - tabpanel [ref=e1402]:
+                        - list [ref=e1403]:
+                          - listitem [ref=e1404]:
+                            - paragraph [ref=e1405]:
+                              - text: Navigate to the
+                              - link "Artifact Studio" [ref=e1406] [cursor=pointer]:
+                                - /url: https://artifact-studio.spectrocloud.com/
+                              - text: through a web browser and log in. Under
+                              - strong [ref=e1407]: Create pack bundle
+                              - text: ", select"
+                              - strong [ref=e1408]: Build bundle
+                              - text: .
+                          - listitem [ref=e1409]:
+                            - paragraph [ref=e1410]:
+                              - text: Select the
+                              - strong [ref=e1411]: Palette VerteX Appliance
+                              - text: product on the
+                              - strong [ref=e1412]: Product selection
+                              - text: step and select your current version on the
+                              - strong [ref=e1413]: Version selection
+                              - text: step.
+                          - listitem [ref=e1414]:
+                            - paragraph [ref=e1415]:
+                              - text: On the
+                              - strong [ref=e1416]: Use case
+                              - text: step, select the
+                              - strong [ref=e1417]: Add-on only
+                              - text: option.
+                          - listitem [ref=e1418]:
+                            - paragraph [ref=e1419]:
+                              - text: On the
+                              - strong [ref=e1420]: Configure bundle
+                              - text: step, enter
+                              - code [ref=e1421]: Palette Third Party
+                              - text: in the
+                              - strong [ref=e1422]: Search packs
+                              - text: field and click
+                              - strong [ref=e1423]: Search
+                              - text: . Alternatively, you can find the packs in the
+                              - strong [ref=e1424]: thirdparty
+                              - text: category.
+                            - paragraph [ref=e1425]:
+                              - text: Click the checkbox next to the
+                              - strong [ref=e1426]: Palette Third Party
+                              - text: and
+                              - strong [ref=e1427]: Palette Third Party Conformance
+                              - text: packs to select them, and click
+                              - strong [ref=e1428]: Next Step
+                              - text: .
+                          - listitem [ref=e1429]:
+                            - paragraph [ref=e1430]:
+                              - text: On the
+                              - strong [ref=e1431]: Review and download
+                              - text: step, click the
+                              - strong [ref=e1432]: I'm not a robot
+                              - text: reCAPTCHA checkbox, and then click the
+                              - strong [ref=e1433]: Download bundle
+                              - text: button to begin the download. Alternatively, you can click the
+                              - strong [ref=e1434]: Copy all URLs
+                              - text: button to copy the download URLs to your clipboard.
+                            - paragraph [ref=e1435]:
+                              - text: Wait until the packs have been downloaded to your local machine. The packs are downloaded in
+                              - code [ref=e1436]: .zst
+                              - text: format alongside a signature file in
+                              - code [ref=e1437]: sig.bin
+                              - text: format.
+                            - generic [ref=e1438]:
+                              - generic [ref=e1439]:
+                                - img [ref=e1441]
+                                - text: tip
+                              - paragraph [ref=e1444]:
+                                - text: Refer to the
+                                - link "Artifact Studio guide" [ref=e1445] [cursor=pointer]:
+                                  - /url: /downloads/artifact-studio
+                                - text: for detailed guidance on how to verify the integrity of the downloaded files using the provided signature file.
+                          - listitem [ref=e1446]:
+                            - paragraph [ref=e1447]:
+                              - text: Log in to the Local UI of the leader host of the Palette VerteX management cluster. By default, Local UI is accessible at
+                              - code [ref=e1448]: https://<node-ip>:5080
+                              - text: . Replace
+                              - code [ref=e1449]: <node-ip>
+                              - text: with the IP address of the leader host.
+                          - listitem [ref=e1450]:
+                            - paragraph [ref=e1451]:
+                              - text: From the left main menu, click
+                              - strong [ref=e1452]: Content
+                              - text: .
+                          - listitem [ref=e1453]:
+                            - paragraph [ref=e1454]:
+                              - text: Click
+                              - strong [ref=e1455]: Actions
+                              - text: in the top right and select
+                              - strong [ref=e1456]: Upload Content
+                              - text: from the drop-down menu.
+                          - listitem [ref=e1457]:
+                            - paragraph [ref=e1458]: Click the upload icon to open the file selection dialog and select the Third Party ZST files from your local machine. Alternatively, you can drag and drop the files into the upload area.
+                            - paragraph [ref=e1459]:
+                              - text: The upload process starts automatically once the files are selected. You can monitor the upload progress in the
+                              - strong [ref=e1460]: Upload Content
+                              - text: dialog.
+                            - paragraph [ref=e1461]:
+                              - text: Wait for the
+                              - strong [ref=e1462]: File(s) uploaded successfully
+                              - text: confirmation message or the green check mark to appear next to the upload progress bar.
+                          - listitem [ref=e1463]:
+                            - paragraph [ref=e1464]: Log in to the Palette VerteX system console.
+                          - listitem [ref=e1465]:
+                            - paragraph [ref=e1466]:
+                              - text: From the left main menu, select
+                              - strong [ref=e1467]: Administration
+                              - text: ", and then select the"
+                              - strong [ref=e1468]: Pack Registries
+                              - text: tab.
+                          - listitem [ref=e1469]:
+                            - paragraph [ref=e1470]:
+                              - text: Select the three-dot menu for the
+                              - strong [ref=e1471]: OCI Pack Registry
+                              - text: and click
+                              - strong [ref=e1472]: Sync
+                              - text: .
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e1473]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e1474] [cursor=pointer]:
+                    - /url: "#validate-2"
+                    - text: "#"
+                - generic [ref=e1475]:
+                  - tablist [ref=e1476]:
+                    - tab "Internal Zot Registry" [selected] [ref=e1477] [cursor=pointer]
+                    - tab "External Registry" [ref=e1478] [cursor=pointer]
+                  - tabpanel [ref=e1480]:
+                    - list [ref=e1481]:
+                      - listitem [ref=e1482]:
+                        - paragraph [ref=e1483]:
+                          - text: Log in to the Local UI of the leader host of the Palette VerteX management cluster. By default, Local UI is accessible at
+                          - code [ref=e1484]: https://<node-ip>:5080
+                          - text: . Replace
+                          - code [ref=e1485]: <node-ip>
+                          - text: with the IP address of the leader host.
+                      - listitem [ref=e1486]:
+                        - paragraph [ref=e1487]:
+                          - text: From the left main menu, click
+                          - strong [ref=e1488]: Content
+                          - text: .
+                      - listitem [ref=e1489]:
+                        - paragraph [ref=e1490]:
+                          - text: Enter the filename of each Third Party pack in the
+                          - strong [ref=e1491]: Filter by name
+                          - text: search bar. The packs should appear in the table.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e1492]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e1493] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e1494]: "The following actions are recommended after installing Palette VerteX to ensure your environment is ready for use:"
+                - list [ref=e1495]:
+                  - listitem [ref=e1496]:
+                    - paragraph [ref=e1497]:
+                      - text: Assign your SSL certificates to Palette VerteX. Palette VerteX is installed with a self-signed SSL certificate. To assign a different SSL certificate, upload the certificate, key, and certificate authority files to Palette VerteX. You can upload the files using the system console. Refer to the
+                      - link "Configure HTTPS Encryption" [ref=e1498] [cursor=pointer]:
+                        - /url: /vertex/system-management/ssl-certificate-management
+                      - text: page for instructions on how to upload the SSL certificate files to Palette VerteX.
+                  - listitem [ref=e1499]:
+                    - paragraph [ref=e1500]:
+                      - text: Create a tenant in Palette VerteX to host your users. Refer to the
+                      - link "Create a Tenant" [ref=e1501] [cursor=pointer]:
+                        - /url: /vertex/system-management/tenant-management
+                      - text: guide for instructions on how to create a tenant in Palette VerteX.
+                  - listitem [ref=e1502]:
+                    - paragraph [ref=e1503]:
+                      - text: Activate your Palette VerteX installation before the trial mode expires. Refer to the
+                      - link "Activate Installation" [ref=e1504] [cursor=pointer]:
+                        - /url: /vertex/activate-installation
+                      - text: guide for instructions on how to activate your installation.
+                  - listitem [ref=e1505]:
+                    - paragraph [ref=e1506]:
+                      - text: Create additional system administrator accounts and assign roles to users in the system console. Refer to the
+                      - link "Account Management" [ref=e1507] [cursor=pointer]:
+                        - /url: /vertex/system-management/account-management
+                      - text: guide for instructions on how to manage user accounts and roles in Palette VerteX.
+                  - listitem [ref=e1508]:
+                    - paragraph [ref=e1509]:
+                      - text: Configure SMTP settings to enable email notifications and password recovery. Refer to the
+                      - link "Configure SMTP Settings" [ref=e1510] [cursor=pointer]:
+                        - /url: /vertex/system-management/smtp
+                      - text: guide for instructions on how to configure SMTP settings in Palette VerteX.
+                - paragraph [ref=e1511]:
+                  - text: For all system management options in Palette VerteX, refer to the
+                  - link "System Management" [ref=e1512] [cursor=pointer]:
+                    - /url: /vertex/system-management
+                  - text: guide.
+              - generic [ref=e1513]:
+                - generic [ref=e1515]:
+                  - text: "Tags:"
+                  - list [ref=e1516]:
+                    - listitem [ref=e1517]:
+                      - link "verteX management appliance" [ref=e1518] [cursor=pointer]:
+                        - /url: /tags/verte-x-management-appliance/
+                    - listitem [ref=e1519]:
+                      - link "self-hosted" [ref=e1520] [cursor=pointer]:
+                        - /url: /tags/self-hosted/
+                    - listitem [ref=e1521]:
+                      - link "vertex" [ref=e1522] [cursor=pointer]:
+                        - /url: /tags/vertex/
+                - link "Edit this page" [ref=e1525] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vertex/install-palette-vertex/vertex-management-appliance.md
+                  - img [ref=e1526]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e1530]:
+              - link "Previous « Uninstallation" [ref=e1531] [cursor=pointer]:
+                - /url: /vertex/install-palette-vertex/install-on-kubernetes/uninstall/
+                - generic [ref=e1532]: Previous
+                - generic [ref=e1533]: « Uninstallation
+              - link "Next Activate VerteX »" [ref=e1534] [cursor=pointer]:
+                - /url: /vertex/activate-installation/
+                - generic [ref=e1535]: Next
+                - generic [ref=e1536]: Activate VerteX »
+          - list [ref=e1539]:
+            - listitem [ref=e1540]:
+              - link "Third Party Packs" [ref=e1541] [cursor=pointer]:
+                - /url: "#third-party-packs"
+            - listitem [ref=e1542]:
+              - link "Architecture" [ref=e1543] [cursor=pointer]:
+                - /url: "#architecture"
+            - listitem [ref=e1544]:
+              - link "Supported Platforms" [ref=e1545] [cursor=pointer]:
+                - /url: "#supported-platforms"
+            - listitem [ref=e1546]:
+              - link "Limitations" [ref=e1547] [cursor=pointer]:
+                - /url: "#limitations"
+            - listitem [ref=e1548]:
+              - link "Installation Steps" [ref=e1549] [cursor=pointer]:
+                - /url: "#installation-steps"
+              - list [ref=e1550]:
+                - listitem [ref=e1551]:
+                  - link "Prerequisites" [ref=e1552] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e1553]:
+                  - link "Install Palette VerteX" [ref=e1554] [cursor=pointer]:
+                    - /url: "#install-palette-vertex"
+                - listitem [ref=e1555]:
+                  - link "Validate" [ref=e1556] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e1557]:
+              - link "Upload Packs to Palette VerteX" [ref=e1558] [cursor=pointer]:
+                - /url: "#upload-packs-to-palette-vertex"
+              - list [ref=e1559]:
+                - listitem [ref=e1560]:
+                  - link "Prerequisites" [ref=e1561] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e1562]:
+                  - link "Upload Packs" [ref=e1563] [cursor=pointer]:
+                    - /url: "#upload-packs"
+                - listitem [ref=e1564]:
+                  - link "Validate" [ref=e1565] [cursor=pointer]:
+                    - /url: "#validate-1"
+            - listitem [ref=e1566]:
+              - link "(Optional) Upload Third Party Packs" [ref=e1567] [cursor=pointer]:
+                - /url: "#optional-upload-third-party-packs"
+              - list [ref=e1568]:
+                - listitem [ref=e1569]:
+                  - link "Prerequisites" [ref=e1570] [cursor=pointer]:
+                    - /url: "#prerequisites-2"
+                - listitem [ref=e1571]:
+                  - link "Upload Packs" [ref=e1572] [cursor=pointer]:
+                    - /url: "#upload-packs-1"
+                - listitem [ref=e1573]:
+                  - link "Validate" [ref=e1574] [cursor=pointer]:
+                    - /url: "#validate-2"
+            - listitem [ref=e1575]:
+              - link "Next Steps" [ref=e1576] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e1577] [cursor=pointer]:
+    - generic [ref=e1580]:
+      - img "Project Logo" [ref=e1581]
+      - paragraph [ref=e1582]: Ask AI
+```

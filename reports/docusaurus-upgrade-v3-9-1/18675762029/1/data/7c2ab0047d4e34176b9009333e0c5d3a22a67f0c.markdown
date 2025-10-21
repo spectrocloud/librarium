@@ -1,0 +1,815 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+              - listitem [ref=e121]:
+                - generic [ref=e122]:
+                  - link "Virtual Machine Orchestrator" [ref=e123] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e125]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e127] [cursor=pointer]
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - link "Workspaces" [ref=e130] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e132]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e134] [cursor=pointer]
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Packs List" [ref=e137] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e139]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "User & Role Management" [expanded] [ref=e144] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e146]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e148] [cursor=pointer]
+                - list [ref=e149]:
+                  - listitem [ref=e150]:
+                    - generic [ref=e151]:
+                      - link "User Authentication" [ref=e152] [cursor=pointer]:
+                        - /url: /user-management/authentication/
+                      - button "Toggle the collapsible sidebar category 'User Authentication'" [ref=e153] [cursor=pointer]
+                  - listitem [ref=e154]:
+                    - generic [ref=e155]:
+                      - link "Users and Teams" [ref=e156] [cursor=pointer]:
+                        - /url: /user-management/users-and-teams/
+                      - button "Toggle the collapsible sidebar category 'Users and Teams'" [ref=e157] [cursor=pointer]
+                  - listitem [ref=e158]:
+                    - generic [ref=e159]:
+                      - link "Roles and Permissions" [expanded] [ref=e160] [cursor=pointer]:
+                        - /url: /user-management/palette-rbac/
+                      - button "Toggle the collapsible sidebar category 'Roles and Permissions'" [ref=e161] [cursor=pointer]
+                    - list [ref=e162]:
+                      - listitem [ref=e163]:
+                        - link "Create and Manage a Custom Role" [ref=e164] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/create-custom-role/
+                      - listitem [ref=e165]:
+                        - link "Create and Manage a Role Assignment" [ref=e166] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/assign-a-role/
+                      - listitem [ref=e167]:
+                        - link "Permissions" [ref=e168] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/permissions/
+                      - listitem [ref=e169]:
+                        - link "Tenant Roles" [ref=e170] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/tenant-scope-roles-permissions/
+                      - listitem [ref=e171]:
+                        - link "Project Roles" [ref=e172] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/project-scope-roles-permissions/
+                      - listitem [ref=e173]:
+                        - link "Resource Roles" [ref=e174] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/resource-scope-roles-permissions/
+                      - listitem [ref=e175]:
+                        - link "ABAC in Palette" [ref=e176] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/implement-abac/
+                  - listitem [ref=e177]:
+                    - generic [ref=e178]:
+                      - link "SAML and OIDC SSO" [ref=e179] [cursor=pointer]:
+                        - /url: /user-management/saml-sso/
+                      - button "Toggle the collapsible sidebar category 'SAML and OIDC SSO'" [ref=e180] [cursor=pointer]
+              - listitem [ref=e181]:
+                - generic [ref=e182]:
+                  - link "Registries and Packs" [ref=e183] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e185]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e187] [cursor=pointer]
+              - listitem [ref=e188]:
+                - generic [ref=e189]:
+                  - link "Security" [ref=e190] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e192]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e194] [cursor=pointer]
+              - listitem [ref=e195]:
+                - generic [ref=e196]:
+                  - link "Audit Logs" [ref=e197] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e199]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e201] [cursor=pointer]
+              - listitem [ref=e202]:
+                - generic [ref=e203]:
+                  - link "Self-Hosted Palette" [ref=e204] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e206]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e208] [cursor=pointer]
+              - listitem [ref=e209]:
+                - generic [ref=e210]:
+                  - link "Palette VerteX" [ref=e211] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e213]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e215] [cursor=pointer]
+              - listitem [ref=e216]:
+                - generic [ref=e217]:
+                  - link "Tenant Administration" [ref=e218] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e220]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e222] [cursor=pointer]
+              - listitem [ref=e223]:
+                - generic [ref=e224]:
+                  - link "Automation" [ref=e225] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e227]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e229] [cursor=pointer]
+              - listitem [ref=e230]:
+                - generic [ref=e231]:
+                  - link "Troubleshooting" [ref=e232] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e234]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e236] [cursor=pointer]
+              - listitem [ref=e237]:
+                - link "Glossary" [ref=e238] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e240]
+                  - text: Glossary
+              - listitem [ref=e242]:
+                - generic [ref=e243]:
+                  - link "Compliance & Legal" [ref=e244] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e246]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e248] [cursor=pointer]
+              - listitem [ref=e249]:
+                - button "Privacy Settings" [ref=e250] [cursor=pointer]:
+                  - img [ref=e251]
+                  - text: Privacy Settings
+      - main [ref=e253]:
+        - generic [ref=e255]:
+          - generic [ref=e257]:
+            - article [ref=e258]:
+              - navigation "Breadcrumbs" [ref=e259]:
+                - list [ref=e260]:
+                  - listitem [ref=e261]:
+                    - link "Home page" [ref=e262] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e263]
+                  - listitem [ref=e265]:
+                    - link "User & Role Management" [ref=e266] [cursor=pointer]:
+                      - /url: /user-management/
+                  - listitem [ref=e267]:
+                    - link "Roles and Permissions" [ref=e268] [cursor=pointer]:
+                      - /url: /user-management/palette-rbac/
+                  - listitem [ref=e269]:
+                    - generic [ref=e270]: Create and Manage a Custom Role
+              - generic [ref=e271]:
+                - heading "Create and Manage a Custom Role" [level=1] [ref=e273]
+                - paragraph [ref=e274]: For each role type in Palette, you can create a custom role with specific permissions. This allows you to create roles that are tailored to your organization's needs.
+                - generic [ref=e275]:
+                  - generic [ref=e276]:
+                    - img [ref=e278]
+                    - text: tip
+                  - generic [ref=e280]:
+                    - paragraph [ref=e281]: "Palette provides several built-in roles that you can use to assign permissions to users. To learn more about the built-in roles in Palette, refer to the following pages:"
+                    - list [ref=e282]:
+                      - listitem [ref=e283]:
+                        - link "Project Roles" [ref=e284] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/project-scope-roles-permissions/
+                      - listitem [ref=e285]:
+                        - link "Resource Roles" [ref=e286] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/resource-scope-roles-permissions/
+                      - listitem [ref=e287]:
+                        - link "Tenant Roles" [ref=e288] [cursor=pointer]:
+                          - /url: /user-management/palette-rbac/tenant-scope-roles-permissions/
+                - paragraph [ref=e289]: The following sections provide instructions on how to create a custom role for each of the role types in Palette.
+                - heading "Project RolesDirect link to Project Roles" [level=2] [ref=e290]:
+                  - text: Project Roles
+                  - link "Direct link to Project Roles" [ref=e291] [cursor=pointer]:
+                    - /url: "#project-roles"
+                    - text: "#"
+                - paragraph [ref=e292]: To create a custom project role in Palette, use the following steps.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e293]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e294] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e295]:
+                  - listitem [ref=e296]: You need tenant admin permissions to create a custom Project role.
+                - heading "Create a Custom Project RoleDirect link to Create a Custom Project Role" [level=3] [ref=e297]:
+                  - text: Create a Custom Project Role
+                  - link "Direct link to Create a Custom Project Role" [ref=e298] [cursor=pointer]:
+                    - /url: "#create-a-custom-project-role"
+                    - text: "#"
+                - list [ref=e299]:
+                  - listitem [ref=e300]:
+                    - paragraph [ref=e301]:
+                      - text: Log in to
+                      - link "Palette" [ref=e302] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant admin.
+                  - listitem [ref=e303]:
+                    - paragraph [ref=e304]:
+                      - text: Navigate to the left
+                      - strong [ref=e305]: Main Menu
+                      - text: and select
+                      - strong [ref=e306]: Roles
+                      - text: .
+                  - listitem [ref=e307]:
+                    - paragraph [ref=e308]:
+                      - text: Navigate to the
+                      - strong [ref=e309]: Project Roles
+                      - text: tab.
+                  - listitem [ref=e310]:
+                    - paragraph [ref=e311]:
+                      - text: Click on the
+                      - strong [ref=e312]: Create Project Role
+                      - text: button at the top right corner of the page.
+                  - listitem [ref=e313]:
+                    - paragraph [ref=e314]:
+                      - text: Provide a name for the custom role in the
+                      - strong [ref=e315]: Role Name
+                      - text: field.
+                  - listitem [ref=e316]:
+                    - paragraph [ref=e317]: Select the permissions you want to assign to the custom role.
+                  - listitem [ref=e318]:
+                    - paragraph [ref=e319]:
+                      - text: Click on the
+                      - strong [ref=e320]: Save
+                      - text: button.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e321]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e322] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e323]: "To validate that the custom Project role is created successfully, follow these steps:"
+                - list [ref=e324]:
+                  - listitem [ref=e325]:
+                    - paragraph [ref=e326]:
+                      - text: Log in to
+                      - link "Palette" [ref=e327] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant admin.
+                  - listitem [ref=e328]:
+                    - paragraph [ref=e329]:
+                      - text: Navigate to the left
+                      - strong [ref=e330]: Main Menu
+                      - text: and select
+                      - strong [ref=e331]: Roles
+                      - text: .
+                  - listitem [ref=e332]:
+                    - paragraph [ref=e333]:
+                      - text: Navigate to the
+                      - strong [ref=e334]: Project Roles
+                      - text: tab.
+                  - listitem [ref=e335]:
+                    - paragraph [ref=e336]:
+                      - text: Verify that the custom role is listed in the
+                      - strong [ref=e337]: Project Roles
+                      - text: tab.
+                  - listitem [ref=e338]:
+                    - paragraph [ref=e339]: Assign the custom Project role to a user or group to validate that the permissions are applied correctly.
+                - heading "Resource RolesDirect link to Resource Roles" [level=2] [ref=e340]:
+                  - text: Resource Roles
+                  - link "Direct link to Resource Roles" [ref=e341] [cursor=pointer]:
+                    - /url: "#resource-roles"
+                    - text: "#"
+                - paragraph [ref=e342]: To create a custom resource role in Palette, use the following steps.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e343]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e344] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e345]:
+                  - listitem [ref=e346]: You need Tenant admin permissions to create a custom Resource role.
+                - heading "Create a Custom Resource RoleDirect link to Create a Custom Resource Role" [level=3] [ref=e347]:
+                  - text: Create a Custom Resource Role
+                  - link "Direct link to Create a Custom Resource Role" [ref=e348] [cursor=pointer]:
+                    - /url: "#create-a-custom-resource-role"
+                    - text: "#"
+                - list [ref=e349]:
+                  - listitem [ref=e350]:
+                    - paragraph [ref=e351]:
+                      - text: Log in to
+                      - link "Palette" [ref=e352] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant admin.
+                  - listitem [ref=e353]:
+                    - paragraph [ref=e354]:
+                      - text: Navigate to the left
+                      - strong [ref=e355]: Main Menu
+                      - text: and select
+                      - strong [ref=e356]: Roles
+                      - text: .
+                  - listitem [ref=e357]:
+                    - paragraph [ref=e358]:
+                      - text: Navigate to the
+                      - strong [ref=e359]: Resource Roles
+                      - text: tab.
+                  - listitem [ref=e360]:
+                    - paragraph [ref=e361]:
+                      - text: Click on the
+                      - strong [ref=e362]: Create Resource Role
+                      - text: button at the top right corner of the page.
+                  - listitem [ref=e363]:
+                    - paragraph [ref=e364]:
+                      - text: Provide a name for the custom role in the
+                      - strong [ref=e365]: Role Name
+                      - text: field.
+                  - listitem [ref=e366]:
+                    - paragraph [ref=e367]: Select the permissions you want to assign to the custom role.
+                  - listitem [ref=e368]:
+                    - paragraph [ref=e369]:
+                      - text: Click on the
+                      - strong [ref=e370]: Save
+                      - text: button.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e371]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e372] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - paragraph [ref=e373]: "To validate that the custom Resource role is created successfully, follow these steps:"
+                - list [ref=e374]:
+                  - listitem [ref=e375]:
+                    - paragraph [ref=e376]:
+                      - text: Log in to
+                      - link "Palette" [ref=e377] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant admin.
+                  - listitem [ref=e378]:
+                    - paragraph [ref=e379]:
+                      - text: Navigate to the left
+                      - strong [ref=e380]: Main Menu
+                      - text: and select
+                      - strong [ref=e381]: Roles
+                      - text: .
+                  - listitem [ref=e382]:
+                    - paragraph [ref=e383]:
+                      - text: Navigate to the
+                      - strong [ref=e384]: Project Roles
+                      - text: tab.
+                  - listitem [ref=e385]:
+                    - paragraph [ref=e386]:
+                      - text: Verify that the custom role is listed in the
+                      - strong [ref=e387]: Project Roles
+                      - text: tab.
+                  - listitem [ref=e388]:
+                    - paragraph [ref=e389]: Assign the custom Resource role to a user or group to validate that the permissions are applied correctly.
+                - heading "Tenant RolesDirect link to Tenant Roles" [level=2] [ref=e390]:
+                  - text: Tenant Roles
+                  - link "Direct link to Tenant Roles" [ref=e391] [cursor=pointer]:
+                    - /url: "#tenant-roles"
+                    - text: "#"
+                - paragraph [ref=e392]: To create a custom tenant role in Palette, use the following steps.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e393]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e394] [cursor=pointer]:
+                    - /url: "#prerequisites-2"
+                    - text: "#"
+                - list [ref=e395]:
+                  - listitem [ref=e396]: You need Tenant admin permissions to create a custom Tenant role.
+                - heading "Create a Custom Tenant RoleDirect link to Create a Custom Tenant Role" [level=3] [ref=e397]:
+                  - text: Create a Custom Tenant Role
+                  - link "Direct link to Create a Custom Tenant Role" [ref=e398] [cursor=pointer]:
+                    - /url: "#create-a-custom-tenant-role"
+                    - text: "#"
+                - list [ref=e399]:
+                  - listitem [ref=e400]:
+                    - paragraph [ref=e401]:
+                      - text: Log in to
+                      - link "Palette" [ref=e402] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant admin.
+                  - listitem [ref=e403]:
+                    - paragraph [ref=e404]:
+                      - text: Navigate to the left
+                      - strong [ref=e405]: Main Menu
+                      - text: and select
+                      - strong [ref=e406]: Roles
+                      - text: .
+                  - listitem [ref=e407]:
+                    - paragraph [ref=e408]:
+                      - text: Navigate to the
+                      - strong [ref=e409]: Tenant Roles
+                      - text: tab.
+                  - listitem [ref=e410]:
+                    - paragraph [ref=e411]:
+                      - text: Click on the
+                      - strong [ref=e412]: Create Tenant Role
+                      - text: button at the top right corner of the page.
+                  - listitem [ref=e413]:
+                    - paragraph [ref=e414]:
+                      - text: Provide a name for the custom role in the
+                      - strong [ref=e415]: Role Name
+                      - text: field.
+                  - listitem [ref=e416]:
+                    - paragraph [ref=e417]: Select the permissions you want to assign to the custom role.
+                  - listitem [ref=e418]:
+                    - paragraph [ref=e419]:
+                      - text: Click on the
+                      - strong [ref=e420]: Save
+                      - text: button.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e421]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e422] [cursor=pointer]:
+                    - /url: "#validate-2"
+                    - text: "#"
+                - paragraph [ref=e423]: "To validate that the custom Tenant role is created successfully, follow these steps:"
+                - list [ref=e424]:
+                  - listitem [ref=e425]:
+                    - paragraph [ref=e426]:
+                      - text: Log in to
+                      - link "Palette" [ref=e427] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant admin.
+                  - listitem [ref=e428]:
+                    - paragraph [ref=e429]:
+                      - text: Navigate to the left
+                      - strong [ref=e430]: Main Menu
+                      - text: and select
+                      - strong [ref=e431]: Roles
+                      - text: .
+                  - listitem [ref=e432]:
+                    - paragraph [ref=e433]:
+                      - text: Navigate to the
+                      - strong [ref=e434]: Project Roles
+                      - text: tab.
+                  - listitem [ref=e435]:
+                    - paragraph [ref=e436]:
+                      - text: Verify that the custom role is listed in the
+                      - strong [ref=e437]: Project Roles
+                      - text: tab.
+                  - listitem [ref=e438]:
+                    - paragraph [ref=e439]: Assign the custom Tenant role to a user or group to validate that the permissions are applied correctly.
+                - heading "Custom Role EditDirect link to Custom Role Edit" [level=2] [ref=e440]:
+                  - text: Custom Role Edit
+                  - link "Direct link to Custom Role Edit" [ref=e441] [cursor=pointer]:
+                    - /url: "#custom-role-edit"
+                    - text: "#"
+                - paragraph [ref=e442]: To edit a custom role in Palette, use the following steps.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e443]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e444] [cursor=pointer]:
+                    - /url: "#prerequisites-3"
+                    - text: "#"
+                - list [ref=e445]:
+                  - listitem [ref=e446]:
+                    - text: You need a Tenant admin role with the
+                    - code [ref=e447]: role.update
+                    - text: permission to edit a custom role.
+                - heading "Edit a Custom RoleDirect link to Edit a Custom Role" [level=3] [ref=e448]:
+                  - text: Edit a Custom Role
+                  - link "Direct link to Edit a Custom Role" [ref=e449] [cursor=pointer]:
+                    - /url: "#edit-a-custom-role"
+                    - text: "#"
+                - list [ref=e450]:
+                  - listitem [ref=e451]:
+                    - paragraph [ref=e452]:
+                      - text: Log in to
+                      - link "Palette" [ref=e453] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant admin.
+                  - listitem [ref=e454]:
+                    - paragraph [ref=e455]:
+                      - text: Navigate to the left
+                      - strong [ref=e456]: Main Menu
+                      - text: and select
+                      - strong [ref=e457]: Roles
+                      - text: .
+                  - listitem [ref=e458]:
+                    - paragraph [ref=e459]:
+                      - text: Navigate to the tab that corresponds to the role type you want to edit. For example, if you want to edit a custom Project role, navigate to the
+                      - strong [ref=e460]: Project Roles
+                      - text: tab.
+                  - listitem [ref=e461]:
+                    - paragraph [ref=e462]: Locate the custom role you want to edit and click on the row to expose the details drawer.
+                  - listitem [ref=e463]:
+                    - paragraph [ref=e464]:
+                      - text: Click on the
+                      - strong [ref=e465]: Actions
+                      - text: button and select
+                      - strong [ref=e466]: Edit Role
+                      - text: .
+                  - listitem [ref=e467]:
+                    - paragraph [ref=e468]: Make the necessary changes to the custom role.
+                  - listitem [ref=e469]:
+                    - paragraph [ref=e470]:
+                      - text: Click on the
+                      - strong [ref=e471]: Save Changes
+                      - text: button at the bottom of the page.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e472]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e473] [cursor=pointer]:
+                    - /url: "#validate-3"
+                    - text: "#"
+                - paragraph [ref=e474]: To validate that the custom role is edited successfully, follow these steps.
+                - list [ref=e475]:
+                  - listitem [ref=e476]:
+                    - paragraph [ref=e477]:
+                      - text: Log in to
+                      - link "Palette" [ref=e478] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant admin.
+                  - listitem [ref=e479]:
+                    - paragraph [ref=e480]:
+                      - text: Navigate to the left
+                      - strong [ref=e481]: Main Menu
+                      - text: and select
+                      - strong [ref=e482]: Roles
+                      - text: .
+                  - listitem [ref=e483]:
+                    - paragraph [ref=e484]: Navigate to the tab that corresponds to the role type from which you edited the role.
+                  - listitem [ref=e485]:
+                    - paragraph [ref=e486]: Verify that the custom role is listed in the roles list.
+                  - listitem [ref=e487]:
+                    - paragraph [ref=e488]: Assign the custom role to a user or group to validate that the permissions are applied correctly.
+                  - listitem [ref=e489]:
+                    - paragraph [ref=e490]: Log in as a user with the custom role assigned and verify that the permissions are applied correctly.
+                - heading "Custom Role DeletionDirect link to Custom Role Deletion" [level=2] [ref=e491]:
+                  - text: Custom Role Deletion
+                  - link "Direct link to Custom Role Deletion" [ref=e492] [cursor=pointer]:
+                    - /url: "#custom-role-deletion"
+                    - text: "#"
+                - paragraph [ref=e493]: To delete a custom role in Palette, use the following steps.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e494]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e495] [cursor=pointer]:
+                    - /url: "#prerequisites-4"
+                    - text: "#"
+                - list [ref=e496]:
+                  - listitem [ref=e497]:
+                    - text: You need a Tenant admin role with the
+                    - code [ref=e498]: role.delete
+                    - text: permission to delete a custom role.
+                - heading "Delete a Custom RoleDirect link to Delete a Custom Role" [level=3] [ref=e499]:
+                  - text: Delete a Custom Role
+                  - link "Direct link to Delete a Custom Role" [ref=e500] [cursor=pointer]:
+                    - /url: "#delete-a-custom-role"
+                    - text: "#"
+                - list [ref=e501]:
+                  - listitem [ref=e502]:
+                    - paragraph [ref=e503]:
+                      - text: Log in to
+                      - link "Palette" [ref=e504] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant admin.
+                  - listitem [ref=e505]:
+                    - paragraph [ref=e506]:
+                      - text: Navigate to the left
+                      - strong [ref=e507]: Main Menu
+                      - text: and select
+                      - strong [ref=e508]: Roles
+                      - text: .
+                  - listitem [ref=e509]:
+                    - paragraph [ref=e510]:
+                      - text: Navigate to the tab that corresponds to the role type you want to delete. For example, if you want to delete a custom Project role, navigate to the
+                      - strong [ref=e511]: Project Roles
+                      - text: tab.
+                  - listitem [ref=e512]:
+                    - paragraph [ref=e513]: Locate the custom role you want to delete and click on the row to expose the details drawer.
+                  - listitem [ref=e514]:
+                    - paragraph [ref=e515]:
+                      - text: Click on the
+                      - strong [ref=e516]: Actions
+                      - text: button and select
+                      - strong [ref=e517]: Delete Role
+                      - text: .
+                  - listitem [ref=e518]:
+                    - paragraph [ref=e519]:
+                      - text: Confirm the deletion by clicking on the
+                      - strong [ref=e520]: OK
+                      - text: button in the confirmation dialog.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e521]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e522] [cursor=pointer]:
+                    - /url: "#validate-4"
+                    - text: "#"
+                - paragraph [ref=e523]: To validate that the custom role is deleted successfully, follow these steps.
+                - list [ref=e524]:
+                  - listitem [ref=e525]:
+                    - paragraph [ref=e526]:
+                      - text: Log in to
+                      - link "Palette" [ref=e527] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant admin.
+                  - listitem [ref=e528]:
+                    - paragraph [ref=e529]:
+                      - text: Navigate to the left
+                      - strong [ref=e530]: Main Menu
+                      - text: and select
+                      - strong [ref=e531]: Roles
+                      - text: .
+                  - listitem [ref=e532]:
+                    - paragraph [ref=e533]: Navigate to the tab that corresponds to the role type from which you deleted the role.
+                  - listitem [ref=e534]:
+                    - paragraph [ref=e535]: Verify that the custom role is no longer listed in the roles list.
+                  - listitem [ref=e536]:
+                    - paragraph [ref=e537]: Review the permissions assigned to the users or groups that had the custom role assigned to ensure that the permissions are removed.
+              - generic [ref=e538]:
+                - generic [ref=e540]:
+                  - text: "Tags:"
+                  - list [ref=e541]:
+                    - listitem [ref=e542]:
+                      - link "user-management" [ref=e543] [cursor=pointer]:
+                        - /url: /tags/user-management/
+                    - listitem [ref=e544]:
+                      - link "role" [ref=e545] [cursor=pointer]:
+                        - /url: /tags/role/
+                    - listitem [ref=e546]:
+                      - link "rbac" [ref=e547] [cursor=pointer]:
+                        - /url: /tags/rbac/
+                - link "Edit this page" [ref=e550] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/user-management/palette-rbac/create-custom-role.md
+                  - img [ref=e551]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e555]:
+              - link "Previous « Roles and Permissions" [ref=e556] [cursor=pointer]:
+                - /url: /user-management/palette-rbac/
+                - generic [ref=e557]: Previous
+                - generic [ref=e558]: « Roles and Permissions
+              - link "Next Create and Manage a Role Assignment »" [ref=e559] [cursor=pointer]:
+                - /url: /user-management/palette-rbac/assign-a-role/
+                - generic [ref=e560]: Next
+                - generic [ref=e561]: Create and Manage a Role Assignment »
+          - list [ref=e564]:
+            - listitem [ref=e565]:
+              - link "Project Roles" [ref=e566] [cursor=pointer]:
+                - /url: "#project-roles"
+              - list [ref=e567]:
+                - listitem [ref=e568]:
+                  - link "Prerequisites" [ref=e569] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e570]:
+                  - link "Create a Custom Project Role" [ref=e571] [cursor=pointer]:
+                    - /url: "#create-a-custom-project-role"
+                - listitem [ref=e572]:
+                  - link "Validate" [ref=e573] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e574]:
+              - link "Resource Roles" [ref=e575] [cursor=pointer]:
+                - /url: "#resource-roles"
+              - list [ref=e576]:
+                - listitem [ref=e577]:
+                  - link "Prerequisites" [ref=e578] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e579]:
+                  - link "Create a Custom Resource Role" [ref=e580] [cursor=pointer]:
+                    - /url: "#create-a-custom-resource-role"
+                - listitem [ref=e581]:
+                  - link "Validate" [ref=e582] [cursor=pointer]:
+                    - /url: "#validate-1"
+            - listitem [ref=e583]:
+              - link "Tenant Roles" [ref=e584] [cursor=pointer]:
+                - /url: "#tenant-roles"
+              - list [ref=e585]:
+                - listitem [ref=e586]:
+                  - link "Prerequisites" [ref=e587] [cursor=pointer]:
+                    - /url: "#prerequisites-2"
+                - listitem [ref=e588]:
+                  - link "Create a Custom Tenant Role" [ref=e589] [cursor=pointer]:
+                    - /url: "#create-a-custom-tenant-role"
+                - listitem [ref=e590]:
+                  - link "Validate" [ref=e591] [cursor=pointer]:
+                    - /url: "#validate-2"
+            - listitem [ref=e592]:
+              - link "Custom Role Edit" [ref=e593] [cursor=pointer]:
+                - /url: "#custom-role-edit"
+              - list [ref=e594]:
+                - listitem [ref=e595]:
+                  - link "Prerequisites" [ref=e596] [cursor=pointer]:
+                    - /url: "#prerequisites-3"
+                - listitem [ref=e597]:
+                  - link "Edit a Custom Role" [ref=e598] [cursor=pointer]:
+                    - /url: "#edit-a-custom-role"
+                - listitem [ref=e599]:
+                  - link "Validate" [ref=e600] [cursor=pointer]:
+                    - /url: "#validate-3"
+            - listitem [ref=e601]:
+              - link "Custom Role Deletion" [ref=e602] [cursor=pointer]:
+                - /url: "#custom-role-deletion"
+              - list [ref=e603]:
+                - listitem [ref=e604]:
+                  - link "Prerequisites" [ref=e605] [cursor=pointer]:
+                    - /url: "#prerequisites-4"
+                - listitem [ref=e606]:
+                  - link "Delete a Custom Role" [ref=e607] [cursor=pointer]:
+                    - /url: "#delete-a-custom-role"
+                - listitem [ref=e608]:
+                  - link "Validate" [ref=e609] [cursor=pointer]:
+                    - /url: "#validate-4"
+  - button "Project Logo Ask AI" [ref=e610] [cursor=pointer]:
+    - generic [ref=e613]:
+      - img "Project Logo" [ref=e614]
+      - paragraph [ref=e615]: Ask AI
+```

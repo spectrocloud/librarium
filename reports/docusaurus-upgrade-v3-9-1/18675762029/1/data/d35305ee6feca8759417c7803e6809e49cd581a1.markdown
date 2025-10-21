@@ -1,0 +1,528 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [expanded] [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+                - list [ref=e82]:
+                  - listitem [ref=e83]:
+                    - generic [ref=e84]:
+                      - link "Cluster Profiles" [ref=e85] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/
+                      - button "Toggle the collapsible sidebar category 'Cluster Profiles'" [ref=e86] [cursor=pointer]
+                  - listitem [ref=e87]:
+                    - generic [ref=e88]:
+                      - link "App Profiles" [expanded] [ref=e89] [cursor=pointer]:
+                        - /url: /profiles/app-profiles/
+                      - button "Toggle the collapsible sidebar category 'App Profiles'" [ref=e90] [cursor=pointer]
+                    - list [ref=e91]:
+                      - listitem [ref=e92]:
+                        - generic [ref=e93]:
+                          - link "Create App Profiles" [expanded] [ref=e94] [cursor=pointer]:
+                            - /url: /profiles/app-profiles/create-app-profiles/
+                          - button "Toggle the collapsible sidebar category 'Create App Profiles'" [ref=e95] [cursor=pointer]
+                        - list [ref=e96]:
+                          - listitem [ref=e97]:
+                            - link "Add an Out-of-the-Box Service" [ref=e98] [cursor=pointer]:
+                              - /url: /profiles/app-profiles/create-app-profiles/create-out-of-box-app-profile/
+                          - listitem [ref=e99]:
+                            - link "Add a Container" [ref=e100] [cursor=pointer]:
+                              - /url: /profiles/app-profiles/create-app-profiles/container-deployment/
+                          - listitem [ref=e101]:
+                            - link "Add a Manifest" [ref=e102] [cursor=pointer]:
+                              - /url: /profiles/app-profiles/create-app-profiles/create-manifest-app-profile/
+                          - listitem [ref=e103]:
+                            - link "Add a Helm Chart" [ref=e104] [cursor=pointer]:
+                              - /url: /profiles/app-profiles/create-app-profiles/create-helm-app-profile/
+                      - listitem [ref=e105]:
+                        - generic [ref=e106]:
+                          - link "Modify App Profiles" [ref=e107] [cursor=pointer]:
+                            - /url: /profiles/app-profiles/modify-app-profiles/
+                          - button "Toggle the collapsible sidebar category 'Modify App Profiles'" [ref=e108] [cursor=pointer]
+                      - listitem [ref=e109]:
+                        - link "Clone an App Profile" [ref=e110] [cursor=pointer]:
+                          - /url: /profiles/app-profiles/clone-app-profile/
+                      - listitem [ref=e111]:
+                        - link "Delete an App Profile" [ref=e112] [cursor=pointer]:
+                          - /url: /profiles/app-profiles/delete-app-profile/
+                      - listitem [ref=e113]:
+                        - link "Output Variables" [ref=e114] [cursor=pointer]:
+                          - /url: /profiles/app-profiles/app-profile-output-vars/
+                  - listitem [ref=e115]:
+                    - link "Profile Customization" [ref=e116] [cursor=pointer]:
+                      - /url: /profiles/profile-customization/
+              - listitem [ref=e117]:
+                - generic [ref=e118]:
+                  - link "Cluster Templates" [ref=e119] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e121]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e123] [cursor=pointer]
+              - listitem [ref=e124]:
+                - generic [ref=e125]:
+                  - link "Deployment Modes" [ref=e126] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e128]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e130] [cursor=pointer]
+              - listitem [ref=e131]:
+                - generic [ref=e132]:
+                  - link "Clusters" [ref=e133] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e135]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e144] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e146]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Palette Dev Engine" [ref=e151] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e153]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Virtual Machine Orchestrator" [ref=e158] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e160]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Workspaces" [ref=e165] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e167]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Packs List" [ref=e172] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e174]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "User & Role Management" [ref=e179] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e181]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e183] [cursor=pointer]
+              - listitem [ref=e184]:
+                - generic [ref=e185]:
+                  - link "Registries and Packs" [ref=e186] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e188]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e190] [cursor=pointer]
+              - listitem [ref=e191]:
+                - generic [ref=e192]:
+                  - link "Security" [ref=e193] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e195]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e197] [cursor=pointer]
+              - listitem [ref=e198]:
+                - generic [ref=e199]:
+                  - link "Audit Logs" [ref=e200] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e202]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e204] [cursor=pointer]
+              - listitem [ref=e205]:
+                - generic [ref=e206]:
+                  - link "Self-Hosted Palette" [ref=e207] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e209]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e211] [cursor=pointer]
+              - listitem [ref=e212]:
+                - generic [ref=e213]:
+                  - link "Palette VerteX" [ref=e214] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e216]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e218] [cursor=pointer]
+              - listitem [ref=e219]:
+                - generic [ref=e220]:
+                  - link "Tenant Administration" [ref=e221] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e223]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e225] [cursor=pointer]
+              - listitem [ref=e226]:
+                - generic [ref=e227]:
+                  - link "Automation" [ref=e228] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e230]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e232] [cursor=pointer]
+              - listitem [ref=e233]:
+                - generic [ref=e234]:
+                  - link "Troubleshooting" [ref=e235] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e237]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e239] [cursor=pointer]
+              - listitem [ref=e240]:
+                - link "Glossary" [ref=e241] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e243]
+                  - text: Glossary
+              - listitem [ref=e245]:
+                - generic [ref=e246]:
+                  - link "Compliance & Legal" [ref=e247] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e249]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e251] [cursor=pointer]
+              - listitem [ref=e252]:
+                - button "Privacy Settings" [ref=e253] [cursor=pointer]:
+                  - img [ref=e254]
+                  - text: Privacy Settings
+      - main [ref=e256]:
+        - generic [ref=e258]:
+          - generic [ref=e260]:
+            - article [ref=e261]:
+              - navigation "Breadcrumbs" [ref=e262]:
+                - list [ref=e263]:
+                  - listitem [ref=e264]:
+                    - link "Home page" [ref=e265] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e266]
+                  - listitem [ref=e268]:
+                    - link "Profiles" [ref=e269] [cursor=pointer]:
+                      - /url: /profiles/
+                  - listitem [ref=e270]:
+                    - link "App Profiles" [ref=e271] [cursor=pointer]:
+                      - /url: /profiles/app-profiles/
+                  - listitem [ref=e272]:
+                    - link "Create App Profiles" [ref=e273] [cursor=pointer]:
+                      - /url: /profiles/app-profiles/create-app-profiles/
+                  - listitem [ref=e274]:
+                    - generic [ref=e275]: Add an Out-of-the-Box Service
+              - generic [ref=e276]:
+                - heading "Add an Out-of-the-Box Service" [level=1] [ref=e278]
+                - paragraph [ref=e279]:
+                  - text: Use the following steps to create an app profile that contains an out-of-the-box service such as messaging system, object storage, database, and security services. Review the
+                  - link "Out-of-the-Box Service" [ref=e280] [cursor=pointer]:
+                    - /url: /devx/services/service-listings/
+                  - text: listing for available services.
+                - generic [ref=e281]:
+                  - generic [ref=e282]:
+                    - img [ref=e284]
+                    - text: info
+                  - paragraph [ref=e287]:
+                    - text: A tutorial is available to help you learn how to use Palette Dev Engine by deploying an application. Check out
+                    - link "Deploy an Application using Palette Dev Engine" [ref=e288] [cursor=pointer]:
+                      - /url: /tutorials/pde/deploy-app/
+                    - text: to get started with Palette Dev Engine.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e289]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e290] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e291]:
+                  - listitem [ref=e292]:
+                    - text: A Spectro Cloud
+                    - link "account" [ref=e293] [cursor=pointer]:
+                      - /url: https://www.spectrocloud.com/get-started/
+                    - text: .
+                - heading "Add an Out-of-the-Box Service to an App ProfileDirect link to Add an Out-of-the-Box Service to an App Profile" [level=2] [ref=e294]:
+                  - text: Add an Out-of-the-Box Service to an App Profile
+                  - link "Direct link to Add an Out-of-the-Box Service to an App Profile" [ref=e295] [cursor=pointer]:
+                    - /url: "#add-an-out-of-the-box-service-to-an-app-profile"
+                    - text: "#"
+                - list [ref=e296]:
+                  - listitem [ref=e297]:
+                    - paragraph [ref=e298]:
+                      - text: Log in to
+                      - link "Palette" [ref=e299] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e300]:
+                    - paragraph [ref=e301]:
+                      - text: From the
+                      - strong [ref=e302]: User Menu
+                      - text: ", select"
+                      - strong [ref=e303]: Switch to App Mode
+                      - text: .
+                  - listitem [ref=e304]:
+                    - paragraph [ref=e305]:
+                      - text: Select
+                      - strong [ref=e306]: App Profiles
+                      - text: in the left
+                      - strong [ref=e307]: Main Menu
+                      - text: ", and click on the"
+                      - strong [ref=e308]: New App Profile
+                      - text: button.
+                  - listitem [ref=e309]:
+                    - paragraph [ref=e310]:
+                      - text: Provide the following basic information for your app profile and click
+                      - strong [ref=e311]: Next
+                      - text: .
+                    - table [ref=e312]:
+                      - rowgroup [ref=e313]:
+                        - row "Parameter Description" [ref=e314]:
+                          - cell "Parameter" [ref=e315]:
+                            - strong [ref=e316]: Parameter
+                          - cell "Description" [ref=e317]:
+                            - strong [ref=e318]: Description
+                      - rowgroup [ref=e319]:
+                        - row "App Profile Name A custom name for the app profile." [ref=e320]:
+                          - cell "App Profile Name" [ref=e321]:
+                            - strong [ref=e322]: App Profile Name
+                          - cell "A custom name for the app profile." [ref=e323]
+                        - 'row "Version An optional version number for the new app profile. You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: 1.0.0." [ref=e324]':
+                          - cell "Version" [ref=e325]:
+                            - strong [ref=e326]: Version
+                          - 'cell "An optional version number for the new app profile. You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: 1.0.0." [ref=e327]':
+                            - text: "An optional version number for the new app profile. You only need to specify a version if you create multiple versions of a profile using the same profile name. Default:"
+                            - code [ref=e328]: 1.0.0
+                            - text: .
+                        - row "Description Use the description to provide context about the profile." [ref=e329]:
+                          - cell "Description" [ref=e330]:
+                            - strong [ref=e331]: Description
+                          - cell "Use the description to provide context about the profile." [ref=e332]
+                        - 'row "Tag Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when apps are created from this app profile. Example: owner or region." [ref=e333]':
+                          - cell "Tag" [ref=e334]:
+                            - strong [ref=e335]: Tag
+                          - 'cell "Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when apps are created from this app profile. Example: owner or region." [ref=e336]':
+                            - text: "Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when apps are created from this app profile. Example:"
+                            - code [ref=e337]: owner
+                            - text: or
+                            - code [ref=e338]: region
+                            - text: .
+                    - paragraph [ref=e339]:
+                      - text: To learn how to create multiple profile versions that use the same name, check out
+                      - link "Version a Cluster Profile" [ref=e340] [cursor=pointer]:
+                        - /url: /profiles/app-profiles/modify-app-profiles/version-app-profile/
+                      - text: .
+                  - listitem [ref=e341]:
+                    - paragraph [ref=e342]:
+                      - text: Select one of the out-of-the-box services to start configuring your app profile. Review the
+                      - link "Out-of-the-Box Service" [ref=e343] [cursor=pointer]:
+                        - /url: /devx/services/service-listings/
+                      - text: listing to learn more about specific offerings.
+                  - listitem [ref=e344]:
+                    - paragraph [ref=e345]: Provide configuration information for the service.
+                  - listitem [ref=e346]:
+                    - paragraph [ref=e347]:
+                      - text: You can add more services to the app profile as needed. To do this, click
+                      - code [ref=e348]: +
+                      - text: next to the
+                      - strong [ref=e349]: Configure tier
+                      - text: pane. To rearrange layers in the profile, select a service and drag it up or down in the pane. Each service becomes a layer in the profile stack in the order displayed in this pane.
+                  - listitem [ref=e350]:
+                    - paragraph [ref=e351]:
+                      - text: When you have provided the required configuration information for services, click
+                      - strong [ref=e352]: Review
+                      - text: .
+                - paragraph [ref=e353]: Your app profile is now created using an out-of-the-box service and is ready to deploy.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e354]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e355] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e356]: Use the following steps to validate that your app profile is available and ready for use.
+                - list [ref=e357]:
+                  - listitem [ref=e358]:
+                    - paragraph [ref=e359]:
+                      - text: Log in to
+                      - link "Palette" [ref=e360] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e361]:
+                    - paragraph [ref=e362]:
+                      - text: From the
+                      - strong [ref=e363]: User Menu
+                      - text: ", select"
+                      - strong [ref=e364]: Switch to App Mode
+                      - text: .
+                  - listitem [ref=e365]:
+                    - paragraph [ref=e366]:
+                      - text: Click on
+                      - strong [ref=e367]: App Profiles
+                      - text: in the left
+                      - strong [ref=e368]: Main Menu
+                      - text: ", and select the app profile you created to review its details."
+                  - listitem [ref=e369]:
+                    - paragraph [ref=e370]: Hover your cursor over each profile layer to learn more about them, including the service name, version, and registry.
+                    - paragraph [ref=e371]:
+                      - img "A view of a cursor triggering the info box for each app profile layer." [ref=e372]
+                    - generic [ref=e373]:
+                      - generic [ref=e374]:
+                        - img [ref=e376]
+                        - text: info
+                      - paragraph [ref=e379]:
+                        - text: Use the tool-tip that displays when you select a layer to gather information required for creating Terraform templates for app profiles. Check out our Terraform registry for
+                        - link "Application Profiles" [ref=e380] [cursor=pointer]:
+                          - /url: https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/application_profile
+                        - text: .
+                  - listitem [ref=e381]:
+                    - paragraph [ref=e382]:
+                      - text: Deploy your application to a virtual cluster to verify all the required configurations and dependencies are correct. Review
+                      - link "Create and Manage Apps" [ref=e383] [cursor=pointer]:
+                        - /url: /devx/apps/create-app/
+                      - text: to learn how to deploy an app to a virtual cluster. Check out the
+                      - link "Deploy an Application using Palette Dev Engine" [ref=e384] [cursor=pointer]:
+                        - /url: /tutorials/pde/deploy-app/
+                      - text: tutorial for a more in-depth guide.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e385]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e386] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e387]:
+                  - text: Start exploring the various out-of-the-box
+                  - link "services" [ref=e388] [cursor=pointer]:
+                    - /url: /devx/services/
+                  - text: Palette exposes to application authors. Use these services to deploy applications without the overhead of managing and configuring the infrastructure required for common third-party services such as databases, message queues, and more.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e389]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e390] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e391]:
+                  - listitem [ref=e392]:
+                    - paragraph [ref=e393]:
+                      - link "Service Listing" [ref=e394] [cursor=pointer]:
+                        - /url: /devx/services/service-listings/
+                  - listitem [ref=e395]:
+                    - paragraph [ref=e396]:
+                      - link "Create and Manage Apps" [ref=e397] [cursor=pointer]:
+                        - /url: /devx/apps/create-app/
+                  - listitem [ref=e398]:
+                    - paragraph [ref=e399]:
+                      - link "Deploy an Application using Palette Dev Engine" [ref=e400] [cursor=pointer]:
+                        - /url: /tutorials/pde/deploy-app/
+              - generic [ref=e401]:
+                - generic [ref=e403]:
+                  - text: "Tags:"
+                  - list [ref=e404]:
+                    - listitem [ref=e405]:
+                      - link "devx" [ref=e406] [cursor=pointer]:
+                        - /url: /tags/devx/
+                    - listitem [ref=e407]:
+                      - link "app mode" [ref=e408] [cursor=pointer]:
+                        - /url: /tags/app-mode/
+                    - listitem [ref=e409]:
+                      - link "pde" [ref=e410] [cursor=pointer]:
+                        - /url: /tags/pde/
+                    - listitem [ref=e411]:
+                      - link "app profiles" [ref=e412] [cursor=pointer]:
+                        - /url: /tags/app-profiles/
+                - link "Edit this page" [ref=e415] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/profiles/app-profiles/create-app-profiles/create-out-of-box-app-profile.md
+                  - img [ref=e416]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e420]:
+              - link "Previous « Create App Profiles" [ref=e421] [cursor=pointer]:
+                - /url: /profiles/app-profiles/create-app-profiles/
+                - generic [ref=e422]: Previous
+                - generic [ref=e423]: « Create App Profiles
+              - link "Next Add a Container »" [ref=e424] [cursor=pointer]:
+                - /url: /profiles/app-profiles/create-app-profiles/container-deployment/
+                - generic [ref=e425]: Next
+                - generic [ref=e426]: Add a Container »
+          - list [ref=e429]:
+            - listitem [ref=e430]:
+              - link "Prerequisites" [ref=e431] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e432]:
+              - link "Add an Out-of-the-Box Service to an App Profile" [ref=e433] [cursor=pointer]:
+                - /url: "#add-an-out-of-the-box-service-to-an-app-profile"
+            - listitem [ref=e434]:
+              - link "Validate" [ref=e435] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e436]:
+              - link "Next Steps" [ref=e437] [cursor=pointer]:
+                - /url: "#next-steps"
+            - listitem [ref=e438]:
+              - link "Resources" [ref=e439] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e440] [cursor=pointer]:
+    - generic [ref=e443]:
+      - img "Project Logo" [ref=e444]
+      - paragraph [ref=e445]: Ask AI
+```

@@ -1,0 +1,391 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [expanded] [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+                - list [ref=e107]:
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Public Cloud Clusters" [ref=e110] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e112]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e114] [cursor=pointer]
+                  - listitem [ref=e115]:
+                    - generic [ref=e116]:
+                      - link "Data Center Clusters" [expanded] [ref=e117] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e119]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e121] [cursor=pointer]
+                    - list [ref=e122]:
+                      - listitem [ref=e123]:
+                        - generic [ref=e124]:
+                          - link "MAAS" [ref=e125] [cursor=pointer]:
+                            - /url: /clusters/data-center/maas/
+                          - button "Toggle the collapsible sidebar category 'MAAS'" [ref=e126] [cursor=pointer]
+                      - listitem [ref=e127]:
+                        - generic [ref=e128]:
+                          - link "Nutanix" [expanded] [ref=e129] [cursor=pointer]:
+                            - /url: /clusters/data-center/nutanix/
+                          - button "Toggle the collapsible sidebar category 'Nutanix'" [ref=e130] [cursor=pointer]
+                        - list [ref=e131]:
+                          - listitem [ref=e132]:
+                            - link "Architecture" [ref=e133] [cursor=pointer]:
+                              - /url: /clusters/data-center/nutanix/architecture/
+                          - listitem [ref=e134]:
+                            - link "Register Nutanix Cloud" [ref=e135] [cursor=pointer]:
+                              - /url: /clusters/data-center/nutanix/register-nutanix-cloud/
+                          - listitem [ref=e136]:
+                            - generic [ref=e137]:
+                              - link "Install Private Cloud Gateway" [expanded] [ref=e138] [cursor=pointer]:
+                                - /url: /clusters/data-center/nutanix/install-pcg/
+                              - button "Toggle the collapsible sidebar category 'Install Private Cloud Gateway'" [ref=e139] [cursor=pointer]
+                            - list [ref=e140]:
+                              - listitem [ref=e141]:
+                                - link "Deploy a Kubernetes Cluster to Host the PCG" [ref=e142] [cursor=pointer]:
+                                  - /url: /clusters/data-center/nutanix/install-pcg/deploy-kubernetes-cluster-pcg/
+                          - listitem [ref=e143]:
+                            - link "Add Nutanix Cloud Account" [ref=e144] [cursor=pointer]:
+                              - /url: /clusters/data-center/nutanix/add-nutanix-cloud-account/
+                          - listitem [ref=e145]:
+                            - link "Create and Manage Nutanix Cluster" [ref=e146] [cursor=pointer]:
+                              - /url: /clusters/data-center/nutanix/create-manage-nutanix-cluster/
+                      - listitem [ref=e147]:
+                        - link "OpenStack" [ref=e148] [cursor=pointer]:
+                          - /url: /clusters/data-center/openstack/
+                      - listitem [ref=e149]:
+                        - generic [ref=e150]:
+                          - link "VMware" [ref=e151] [cursor=pointer]:
+                            - /url: /clusters/data-center/vmware/
+                          - button "Toggle the collapsible sidebar category 'VMware'" [ref=e152] [cursor=pointer]
+                  - listitem [ref=e153]:
+                    - generic [ref=e154]:
+                      - link "Edge" [ref=e155] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e157]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e159] [cursor=pointer]
+                  - listitem [ref=e160]:
+                    - generic [ref=e161]:
+                      - link "Palette Virtual Clusters" [ref=e162] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e164]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e166] [cursor=pointer]
+                  - listitem [ref=e167]:
+                    - generic [ref=e168]:
+                      - link "Imported Clusters" [ref=e169] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e171]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e173] [cursor=pointer]
+                  - listitem [ref=e174]:
+                    - generic [ref=e175]:
+                      - link "Manage Clusters" [ref=e176] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e178]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e180] [cursor=pointer]
+                  - listitem [ref=e181]:
+                    - generic [ref=e182]:
+                      - link "Cluster Groups" [ref=e183] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e185]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e187] [cursor=pointer]
+                  - listitem [ref=e188]:
+                    - generic [ref=e189]:
+                      - link "Private Cloud Gateway" [ref=e190] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e192]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e194] [cursor=pointer]
+              - listitem [ref=e195]:
+                - generic [ref=e196]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e197] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e199]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e201] [cursor=pointer]
+              - listitem [ref=e202]:
+                - generic [ref=e203]:
+                  - link "Palette Dev Engine" [ref=e204] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e206]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e208] [cursor=pointer]
+              - listitem [ref=e209]:
+                - generic [ref=e210]:
+                  - link "Virtual Machine Orchestrator" [ref=e211] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e213]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e215] [cursor=pointer]
+              - listitem [ref=e216]:
+                - generic [ref=e217]:
+                  - link "Workspaces" [ref=e218] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e220]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e222] [cursor=pointer]
+              - listitem [ref=e223]:
+                - generic [ref=e224]:
+                  - link "Packs List" [ref=e225] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e227]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e229] [cursor=pointer]
+              - listitem [ref=e230]:
+                - generic [ref=e231]:
+                  - link "User & Role Management" [ref=e232] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e234]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e236] [cursor=pointer]
+              - listitem [ref=e237]:
+                - generic [ref=e238]:
+                  - link "Registries and Packs" [ref=e239] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e241]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e243] [cursor=pointer]
+              - listitem [ref=e244]:
+                - generic [ref=e245]:
+                  - link "Security" [ref=e246] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e248]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e250] [cursor=pointer]
+              - listitem [ref=e251]:
+                - generic [ref=e252]:
+                  - link "Audit Logs" [ref=e253] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e255]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e257] [cursor=pointer]
+              - listitem [ref=e258]:
+                - generic [ref=e259]:
+                  - link "Self-Hosted Palette" [ref=e260] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e262]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e264] [cursor=pointer]
+              - listitem [ref=e265]:
+                - generic [ref=e266]:
+                  - link "Palette VerteX" [ref=e267] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e269]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e271] [cursor=pointer]
+              - listitem [ref=e272]:
+                - generic [ref=e273]:
+                  - link "Tenant Administration" [ref=e274] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e276]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e278] [cursor=pointer]
+              - listitem [ref=e279]:
+                - generic [ref=e280]:
+                  - link "Automation" [ref=e281] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e283]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e285] [cursor=pointer]
+              - listitem [ref=e286]:
+                - generic [ref=e287]:
+                  - link "Troubleshooting" [ref=e288] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e290]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e292] [cursor=pointer]
+              - listitem [ref=e293]:
+                - link "Glossary" [ref=e294] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e296]
+                  - text: Glossary
+              - listitem [ref=e298]:
+                - generic [ref=e299]:
+                  - link "Compliance & Legal" [ref=e300] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e302]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e304] [cursor=pointer]
+              - listitem [ref=e305]:
+                - button "Privacy Settings" [ref=e306] [cursor=pointer]:
+                  - img [ref=e307]
+                  - text: Privacy Settings
+      - main [ref=e309]:
+        - generic [ref=e311]:
+          - generic [ref=e313]:
+            - article [ref=e314]:
+              - navigation "Breadcrumbs" [ref=e315]:
+                - list [ref=e316]:
+                  - listitem [ref=e317]:
+                    - link "Home page" [ref=e318] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e319]
+                  - listitem [ref=e321]:
+                    - link "Clusters" [ref=e322] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e323]:
+                    - link "Data Center Clusters" [ref=e324] [cursor=pointer]:
+                      - /url: /clusters/data-center/
+                  - listitem [ref=e325]:
+                    - link "Nutanix" [ref=e326] [cursor=pointer]:
+                      - /url: /clusters/data-center/nutanix/
+                  - listitem [ref=e327]:
+                    - generic [ref=e328]: Install Private Cloud Gateway
+              - generic [ref=e329]:
+                - heading "Install Private Cloud Gateway" [level=1] [ref=e331]
+                - paragraph [ref=e332]: A Private Cloud Gateway (PCG) is required to connect your Nutanix environment with Palette. The PCG enables Palette to create and monitor Nutanix clusters in the deployed cloud environment.
+                - paragraph [ref=e333]:
+                  - text: To deploy a PCG, you can use an existing Kubernetes and follow the
+                  - link "Deploy a PCG to an Existing Kubernetes Cluster" [ref=e334] [cursor=pointer]:
+                    - /url: /clusters/pcg/deploy-pcg-k8s/
+                  - text: guide. However, ensure that the Kubernetes cluster has network connectivity with Nutanix Prism Central.
+                - paragraph [ref=e335]:
+                  - text: If you don't have an existing Kubernetes cluster, check out the
+                  - link "Deploy a Kubernetes Cluster to Host the PCG" [ref=e336] [cursor=pointer]:
+                    - /url: /clusters/data-center/nutanix/install-pcg/deploy-kubernetes-cluster-pcg/
+                  - text: page. This section provides one possible option and explains how to deploy a Kubernetes cluster within the Nutanix environment.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e337]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e338] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e339]:
+                  - text: When the PCG is in the
+                  - strong [ref=e340]: Running
+                  - text: state, you can create the Nutanix cloud account. For guidance, review the
+                  - link "Add Nutanix Cloud Account" [ref=e341] [cursor=pointer]:
+                    - /url: /clusters/data-center/nutanix/add-nutanix-cloud-account/
+                  - text: guide.
+              - generic [ref=e342]:
+                - generic [ref=e344]:
+                  - text: "Tags:"
+                  - list [ref=e345]:
+                    - listitem [ref=e346]:
+                      - link "data center" [ref=e347] [cursor=pointer]:
+                        - /url: /tags/data-center/
+                    - listitem [ref=e348]:
+                      - link "nutanix" [ref=e349] [cursor=pointer]:
+                        - /url: /tags/nutanix/
+                - link "Edit this page" [ref=e352] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/data-center/nutanix/install-pcg/install-pcg.md
+                  - img [ref=e353]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e357]:
+              - link "Previous « Register Nutanix Cloud" [ref=e358] [cursor=pointer]:
+                - /url: /clusters/data-center/nutanix/register-nutanix-cloud/
+                - generic [ref=e359]: Previous
+                - generic [ref=e360]: « Register Nutanix Cloud
+              - link "Next Deploy a Kubernetes Cluster to Host the PCG »" [ref=e361] [cursor=pointer]:
+                - /url: /clusters/data-center/nutanix/install-pcg/deploy-kubernetes-cluster-pcg/
+                - generic [ref=e362]: Next
+                - generic [ref=e363]: Deploy a Kubernetes Cluster to Host the PCG »
+          - list [ref=e366]:
+            - listitem [ref=e367]:
+              - link "Next Steps" [ref=e368] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e369] [cursor=pointer]:
+    - generic [ref=e372]:
+      - img "Project Logo" [ref=e373]
+      - paragraph [ref=e374]: Ask AI
+```

@@ -1,0 +1,395 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Introduction" [ref=e41] [cursor=pointer]:
+                  - /url: /api/introduction/
+                  - img [ref=e43]
+                  - text: Introduction
+              - listitem [ref=e45]:
+                - link "Example Usage" [ref=e46] [cursor=pointer]:
+                  - /url: /api/samples/
+              - listitem [ref=e47]:
+                - link "Postman Collection" [ref=e48] [cursor=pointer]:
+                  - /url: /api/postman-collection/
+              - listitem [ref=e49]:
+                - generic [ref=e50]:
+                  - link "Palette API V1" [expanded] [ref=e51] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Palette API V1'" [ref=e52] [cursor=pointer]
+                - list [ref=e53]:
+                  - listitem [ref=e54]:
+                    - link "Introduction" [ref=e55] [cursor=pointer]:
+                      - /url: /api/v1/palette-apis-4-7/
+                  - listitem [ref=e56]:
+                    - generic [ref=e57]:
+                      - link "Api Keys" [ref=e58] [cursor=pointer]:
+                        - /url: /api/v1/api-keys/
+                      - button "Toggle the collapsible sidebar category 'Api Keys'" [ref=e59] [cursor=pointer]
+                  - listitem [ref=e60]:
+                    - generic [ref=e61]:
+                      - link "App Deployments" [ref=e62] [cursor=pointer]:
+                        - /url: /api/v1/app-deployments/
+                      - button "Toggle the collapsible sidebar category 'App Deployments'" [ref=e63] [cursor=pointer]
+                  - listitem [ref=e64]:
+                    - generic [ref=e65]:
+                      - link "App Profiles" [ref=e66] [cursor=pointer]:
+                        - /url: /api/v1/app-profiles/
+                      - button "Toggle the collapsible sidebar category 'App Profiles'" [ref=e67] [cursor=pointer]
+                  - listitem [ref=e68]:
+                    - generic [ref=e69]:
+                      - link "Audits" [ref=e70] [cursor=pointer]:
+                        - /url: /api/v1/audits/
+                      - button "Toggle the collapsible sidebar category 'Audits'" [ref=e71] [cursor=pointer]
+                  - listitem [ref=e72]:
+                    - generic [ref=e73]:
+                      - link "Auth" [ref=e74] [cursor=pointer]:
+                        - /url: /api/v1/auth/
+                      - button "Toggle the collapsible sidebar category 'Auth'" [ref=e75] [cursor=pointer]
+                  - listitem [ref=e76]:
+                    - generic [ref=e77]:
+                      - link "Cloudaccounts" [ref=e78] [cursor=pointer]:
+                        - /url: /api/v1/cloudaccounts/
+                      - button "Toggle the collapsible sidebar category 'Cloudaccounts'" [ref=e79] [cursor=pointer]
+                  - listitem [ref=e80]:
+                    - generic [ref=e81]:
+                      - link "Cloudconfigs" [ref=e82] [cursor=pointer]:
+                        - /url: /api/v1/cloudconfigs/
+                      - button "Toggle the collapsible sidebar category 'Cloudconfigs'" [ref=e83] [cursor=pointer]
+                  - listitem [ref=e84]:
+                    - generic [ref=e85]:
+                      - link "Clouds" [ref=e86] [cursor=pointer]:
+                        - /url: /api/v1/clouds/
+                      - button "Toggle the collapsible sidebar category 'Clouds'" [ref=e87] [cursor=pointer]
+                  - listitem [ref=e88]:
+                    - generic [ref=e89]:
+                      - link "Cluster Templates" [ref=e90] [cursor=pointer]:
+                        - /url: /api/v1/cluster-templates/
+                      - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+                  - listitem [ref=e92]:
+                    - generic [ref=e93]:
+                      - link "Clustergroups" [ref=e94] [cursor=pointer]:
+                        - /url: /api/v1/clustergroups/
+                      - button "Toggle the collapsible sidebar category 'Clustergroups'" [ref=e95] [cursor=pointer]
+                  - listitem [ref=e96]:
+                    - generic [ref=e97]:
+                      - link "Clusterprofiles" [ref=e98] [cursor=pointer]:
+                        - /url: /api/v1/clusterprofiles/
+                      - button "Toggle the collapsible sidebar category 'Clusterprofiles'" [ref=e99] [cursor=pointer]
+                  - listitem [ref=e100]:
+                    - generic [ref=e101]:
+                      - link "Dashboard" [ref=e102] [cursor=pointer]:
+                        - /url: /api/v1/dashboard/
+                      - button "Toggle the collapsible sidebar category 'Dashboard'" [ref=e103] [cursor=pointer]
+                  - listitem [ref=e104]:
+                    - generic [ref=e105]:
+                      - link "Datasinks" [ref=e106] [cursor=pointer]:
+                        - /url: /api/v1/datasinks/
+                      - button "Toggle the collapsible sidebar category 'Datasinks'" [ref=e107] [cursor=pointer]
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Edgehosts" [ref=e110] [cursor=pointer]:
+                        - /url: /api/v1/edgehosts/
+                      - button "Toggle the collapsible sidebar category 'Edgehosts'" [ref=e111] [cursor=pointer]
+                  - listitem [ref=e112]:
+                    - generic [ref=e113]:
+                      - link "Events" [ref=e114] [cursor=pointer]:
+                        - /url: /api/v1/events/
+                      - button "Toggle the collapsible sidebar category 'Events'" [ref=e115] [cursor=pointer]
+                  - listitem [ref=e116]:
+                    - generic [ref=e117]:
+                      - link "Features" [ref=e118] [cursor=pointer]:
+                        - /url: /api/v1/features/
+                      - button "Toggle the collapsible sidebar category 'Features'" [ref=e119] [cursor=pointer]
+                  - listitem [ref=e120]:
+                    - generic [ref=e121]:
+                      - link "Filters" [ref=e122] [cursor=pointer]:
+                        - /url: /api/v1/filters/
+                      - button "Toggle the collapsible sidebar category 'Filters'" [ref=e123] [cursor=pointer]
+                  - listitem [ref=e124]:
+                    - generic [ref=e125]:
+                      - link "Metrics" [ref=e126] [cursor=pointer]:
+                        - /url: /api/v1/metrics/
+                      - button "Toggle the collapsible sidebar category 'Metrics'" [ref=e127] [cursor=pointer]
+                  - listitem [ref=e128]:
+                    - generic [ref=e129]:
+                      - link "Notifications" [ref=e130] [cursor=pointer]:
+                        - /url: /api/v1/notifications/
+                      - button "Toggle the collapsible sidebar category 'Notifications'" [ref=e131] [cursor=pointer]
+                  - listitem [ref=e132]:
+                    - generic [ref=e133]:
+                      - link "Overlords" [ref=e134] [cursor=pointer]:
+                        - /url: /api/v1/overlords/
+                      - button "Toggle the collapsible sidebar category 'Overlords'" [ref=e135] [cursor=pointer]
+                  - listitem [ref=e136]:
+                    - generic [ref=e137]:
+                      - link "Packs" [ref=e138] [cursor=pointer]:
+                        - /url: /api/v1/packs/
+                      - button "Toggle the collapsible sidebar category 'Packs'" [ref=e139] [cursor=pointer]
+                  - listitem [ref=e140]:
+                    - generic [ref=e141]:
+                      - link "Pcg" [ref=e142] [cursor=pointer]:
+                        - /url: /api/v1/pcg/
+                      - button "Toggle the collapsible sidebar category 'Pcg'" [ref=e143] [cursor=pointer]
+                  - listitem [ref=e144]:
+                    - generic [ref=e145]:
+                      - link "Permissions" [ref=e146] [cursor=pointer]:
+                        - /url: /api/v1/permissions/
+                      - button "Toggle the collapsible sidebar category 'Permissions'" [ref=e147] [cursor=pointer]
+                  - listitem [ref=e148]:
+                    - generic [ref=e149]:
+                      - link "Projects" [ref=e150] [cursor=pointer]:
+                        - /url: /api/v1/projects/
+                      - button "Toggle the collapsible sidebar category 'Projects'" [ref=e151] [cursor=pointer]
+                  - listitem [ref=e152]:
+                    - generic [ref=e153]:
+                      - link "Registries" [ref=e154] [cursor=pointer]:
+                        - /url: /api/v1/registries/
+                      - button "Toggle the collapsible sidebar category 'Registries'" [ref=e155] [cursor=pointer]
+                  - listitem [ref=e156]:
+                    - generic [ref=e157]:
+                      - link "Roles" [ref=e158] [cursor=pointer]:
+                        - /url: /api/v1/roles/
+                      - button "Toggle the collapsible sidebar category 'Roles'" [ref=e159] [cursor=pointer]
+                  - listitem [ref=e160]:
+                    - generic [ref=e161]:
+                      - link "Services" [ref=e162] [cursor=pointer]:
+                        - /url: /api/v1/services/
+                      - button "Toggle the collapsible sidebar category 'Services'" [ref=e163] [cursor=pointer]
+                  - listitem [ref=e164]:
+                    - generic [ref=e165]:
+                      - link "Spc Policies" [ref=e166] [cursor=pointer]:
+                        - /url: /api/v1/spc-policies/
+                      - button "Toggle the collapsible sidebar category 'Spc Policies'" [ref=e167] [cursor=pointer]
+                  - listitem [ref=e168]:
+                    - generic [ref=e169]:
+                      - link "Spectroclusters" [ref=e170] [cursor=pointer]:
+                        - /url: /api/v1/spectroclusters/
+                      - button "Toggle the collapsible sidebar category 'Spectroclusters'" [ref=e171] [cursor=pointer]
+                  - listitem [ref=e172]:
+                    - generic [ref=e173]:
+                      - link "System" [ref=e174] [cursor=pointer]:
+                        - /url: /api/v1/system/
+                      - button "Toggle the collapsible sidebar category 'System'" [ref=e175] [cursor=pointer]
+                  - listitem [ref=e176]:
+                    - generic [ref=e177]:
+                      - link "Teams" [expanded] [ref=e178] [cursor=pointer]:
+                        - /url: /api/v1/teams/
+                      - button "Toggle the collapsible sidebar category 'Teams'" [ref=e179] [cursor=pointer]
+                    - list [ref=e180]:
+                      - listitem [ref=e181]:
+                        - link "get Retrieves a list of teams" [ref=e182] [cursor=pointer]:
+                          - /url: /api/v1/v-1-teams-list/
+                      - listitem [ref=e183]:
+                        - link "post Creates a team with the specified users and roles" [ref=e184] [cursor=pointer]:
+                          - /url: /api/v1/v-1-teams-create/
+                      - listitem [ref=e185]:
+                        - link "get Retrieves a list of team summary" [ref=e186] [cursor=pointer]:
+                          - /url: /api/v1/v-1-teams-summary/
+                      - listitem [ref=e187]:
+                        - link "post Retrieves a list of teams summary with provided filter spec" [ref=e188] [cursor=pointer]:
+                          - /url: /api/v1/v-1-teams-summary-get/
+                      - listitem [ref=e189]:
+                        - link "del Deletes the specified team" [ref=e190] [cursor=pointer]:
+                          - /url: /api/v1/v-1-teams-uid-delete/
+                      - listitem [ref=e191]:
+                        - link "get Returns the sepcified team" [ref=e192] [cursor=pointer]:
+                          - /url: /api/v1/v-1-teams-uid-get/
+                      - listitem [ref=e193]:
+                        - link "patch Patches the specified team" [ref=e194] [cursor=pointer]:
+                          - /url: /api/v1/v-1-teams-uid-patch/
+                      - listitem [ref=e195]:
+                        - link "put Updates the sepcified team" [ref=e196] [cursor=pointer]:
+                          - /url: /api/v1/v-1-teams-uid-update/
+                      - listitem [ref=e197]:
+                        - link "get Returns the specified team's project and roles data" [ref=e198] [cursor=pointer]:
+                          - /url: /api/v1/v-1-teams-project-roles/
+                      - listitem [ref=e199]:
+                        - link "put Updates the projects and roles for the specified team" [ref=e200] [cursor=pointer]:
+                          - /url: /api/v1/v-1-teams-project-roles-put/
+                      - listitem [ref=e201]:
+                        - link "get Returns the specified individual and resource roles for a team" [ref=e202] [cursor=pointer]:
+                          - /url: /api/v1/v-1-teams-uid-resource-roles/
+                      - listitem [ref=e203]:
+                        - link "post Add resource roles for team" [ref=e204] [cursor=pointer]:
+                          - /url: /api/v1/v-1-teams-uid-resource-roles-create/
+                      - listitem [ref=e205]:
+                        - link "del Deleted the resource roles from team" [ref=e206] [cursor=pointer]:
+                          - /url: /api/v1/v-1-teams-uid-resource-roles-uid-delete/
+                      - listitem [ref=e207]:
+                        - link "patch Updates the resource roles for team" [ref=e208] [cursor=pointer]:
+                          - /url: /api/v1/v-1-teams-resource-roles-uid-update/
+                      - listitem [ref=e209]:
+                        - link "get Returns the specified team's tenant roles" [ref=e210] [cursor=pointer]:
+                          - /url: /api/v1/v-1-teams-uid-tenant-roles-get/
+                      - listitem [ref=e211]:
+                        - link "put Updates the tenant roles of the specified team" [ref=e212] [cursor=pointer]:
+                          - /url: /api/v1/v-1-teams-uid-tenant-roles-update/
+                  - listitem [ref=e213]:
+                    - generic [ref=e214]:
+                      - link "Tenants" [ref=e215] [cursor=pointer]:
+                        - /url: /api/v1/tenants/
+                      - button "Toggle the collapsible sidebar category 'Tenants'" [ref=e216] [cursor=pointer]
+                  - listitem [ref=e217]:
+                    - generic [ref=e218]:
+                      - link "Users" [ref=e219] [cursor=pointer]:
+                        - /url: /api/v1/users/
+                      - button "Toggle the collapsible sidebar category 'Users'" [ref=e220] [cursor=pointer]
+                  - listitem [ref=e221]:
+                    - generic [ref=e222]:
+                      - link "Workspaces" [ref=e223] [cursor=pointer]:
+                        - /url: /api/v1/workspaces/
+                      - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e224] [cursor=pointer]
+              - listitem [ref=e225]:
+                - generic [ref=e226]:
+                  - link "Edge Management API V1" [ref=e227] [cursor=pointer]:
+                    - /url: /api/category/edge-management-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Edge Management API V1'" [ref=e228] [cursor=pointer]
+      - main [ref=e229]:
+        - generic [ref=e233]:
+          - article [ref=e234]:
+            - navigation "Breadcrumbs" [ref=e235]:
+              - list [ref=e236]:
+                - listitem [ref=e237]:
+                  - link "Home page" [ref=e238] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e239]
+                - listitem [ref=e241]:
+                  - link "Palette API V1" [ref=e242] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                - listitem [ref=e243]:
+                  - generic [ref=e244]: Teams
+            - generic [ref=e245]:
+              - heading "Teams" [level=1] [ref=e247]
+              - generic [ref=e250]:
+                - article [ref=e251]:
+                  - link "📄️ Retrieves a list of teams Retrieves a list of teams" [ref=e252] [cursor=pointer]:
+                    - /url: /api/v1/v-1-teams-list/
+                    - heading "📄️ Retrieves a list of teams" [level=2] [ref=e253]
+                    - paragraph [ref=e254]: Retrieves a list of teams
+                - article [ref=e255]:
+                  - link "📄️ Creates a team with the specified users ... Creates a team with the specified users and roles" [ref=e256] [cursor=pointer]:
+                    - /url: /api/v1/v-1-teams-create/
+                    - heading "📄️ Creates a team with the specified users ..." [level=2] [ref=e257]
+                    - paragraph [ref=e258]: Creates a team with the specified users and roles
+                - article [ref=e259]:
+                  - link "📄️ Retrieves a list of team summary Deprecated, Use Post api - Returns a list of team summaries" [ref=e260] [cursor=pointer]:
+                    - /url: /api/v1/v-1-teams-summary/
+                    - heading "📄️ Retrieves a list of team summary" [level=2] [ref=e261]
+                    - paragraph [ref=e262]: Deprecated, Use Post api - Returns a list of team summaries
+                - article [ref=e263]:
+                  - link "📄️ Retrieves a list of teams summary with p ... Retrieves a list of teams summary with provided filter spec" [ref=e264] [cursor=pointer]:
+                    - /url: /api/v1/v-1-teams-summary-get/
+                    - heading "📄️ Retrieves a list of teams summary with p ..." [level=2] [ref=e265]
+                    - paragraph [ref=e266]: Retrieves a list of teams summary with provided filter spec
+                - article [ref=e267]:
+                  - link "📄️ Deletes the specified team Deletes the specified team" [ref=e268] [cursor=pointer]:
+                    - /url: /api/v1/v-1-teams-uid-delete/
+                    - heading "📄️ Deletes the specified team" [level=2] [ref=e269]
+                    - paragraph [ref=e270]: Deletes the specified team
+                - article [ref=e271]:
+                  - link "📄️ Returns the sepcified team Returns the sepcified team" [ref=e272] [cursor=pointer]:
+                    - /url: /api/v1/v-1-teams-uid-get/
+                    - heading "📄️ Returns the sepcified team" [level=2] [ref=e273]
+                    - paragraph [ref=e274]: Returns the sepcified team
+                - article [ref=e275]:
+                  - link "📄️ Patches the specified team Patches the specified team" [ref=e276] [cursor=pointer]:
+                    - /url: /api/v1/v-1-teams-uid-patch/
+                    - heading "📄️ Patches the specified team" [level=2] [ref=e277]
+                    - paragraph [ref=e278]: Patches the specified team
+                - article [ref=e279]:
+                  - link "📄️ Updates the sepcified team Updates the sepcified team" [ref=e280] [cursor=pointer]:
+                    - /url: /api/v1/v-1-teams-uid-update/
+                    - heading "📄️ Updates the sepcified team" [level=2] [ref=e281]
+                    - paragraph [ref=e282]: Updates the sepcified team
+                - article [ref=e283]:
+                  - link "📄️ Returns the specified team's project and ... Returns the specified team's project and roles data" [ref=e284] [cursor=pointer]:
+                    - /url: /api/v1/v-1-teams-project-roles/
+                    - heading "📄️ Returns the specified team's project and ..." [level=2] [ref=e285]
+                    - paragraph [ref=e286]: Returns the specified team's project and roles data
+                - article [ref=e287]:
+                  - link "📄️ Updates the projects and roles for the s ... Updates the projects and roles for the specified team" [ref=e288] [cursor=pointer]:
+                    - /url: /api/v1/v-1-teams-project-roles-put/
+                    - heading "📄️ Updates the projects and roles for the s ..." [level=2] [ref=e289]
+                    - paragraph [ref=e290]: Updates the projects and roles for the specified team
+                - article [ref=e291]:
+                  - link "📄️ Returns the specified individual and res ... Returns resource roles for team" [ref=e292] [cursor=pointer]:
+                    - /url: /api/v1/v-1-teams-uid-resource-roles/
+                    - heading "📄️ Returns the specified individual and res ..." [level=2] [ref=e293]
+                    - paragraph [ref=e294]: Returns resource roles for team
+                - article [ref=e295]:
+                  - link "📄️ Add resource roles for team Resource roles added to specific team" [ref=e296] [cursor=pointer]:
+                    - /url: /api/v1/v-1-teams-uid-resource-roles-create/
+                    - heading "📄️ Add resource roles for team" [level=2] [ref=e297]
+                    - paragraph [ref=e298]: Resource roles added to specific team
+                - article [ref=e299]:
+                  - link "📄️ Deleted the resource roles from team Deleted the resource roles from team" [ref=e300] [cursor=pointer]:
+                    - /url: /api/v1/v-1-teams-uid-resource-roles-uid-delete/
+                    - heading "📄️ Deleted the resource roles from team" [level=2] [ref=e301]
+                    - paragraph [ref=e302]: Deleted the resource roles from team
+                - article [ref=e303]:
+                  - link "📄️ Updates the resource roles for team Specific resource roles fo team is updated" [ref=e304] [cursor=pointer]:
+                    - /url: /api/v1/v-1-teams-resource-roles-uid-update/
+                    - heading "📄️ Updates the resource roles for team" [level=2] [ref=e305]
+                    - paragraph [ref=e306]: Specific resource roles fo team is updated
+                - article [ref=e307]:
+                  - link "📄️ Returns the specified team's tenant role ... Returns the specified team's tenant roles" [ref=e308] [cursor=pointer]:
+                    - /url: /api/v1/v-1-teams-uid-tenant-roles-get/
+                    - heading "📄️ Returns the specified team's tenant role ..." [level=2] [ref=e309]
+                    - paragraph [ref=e310]: Returns the specified team's tenant roles
+                - article [ref=e311]:
+                  - link "📄️ Updates the tenant roles of the specifie ... Updates the tenant roles of the specified team" [ref=e312] [cursor=pointer]:
+                    - /url: /api/v1/v-1-teams-uid-tenant-roles-update/
+                    - heading "📄️ Updates the tenant roles of the specifie ..." [level=2] [ref=e313]
+                    - paragraph [ref=e314]: Updates the tenant roles of the specified team
+          - navigation "Docs pages" [ref=e317]:
+            - link "Previous « List of block listed passwords" [ref=e318] [cursor=pointer]:
+              - /url: /api/v1/v-1-passwords-block-list-update/
+              - generic [ref=e319]: Previous
+              - generic [ref=e320]: « List of block listed passwords
+            - link "Next Retrieves a list of teams »" [ref=e321] [cursor=pointer]:
+              - /url: /api/v1/v-1-teams-list/
+              - generic [ref=e322]: Next
+              - generic [ref=e323]: Retrieves a list of teams »
+  - button "Project Logo Ask AI" [ref=e324] [cursor=pointer]:
+    - generic [ref=e327]:
+      - img "Project Logo" [ref=e328]
+      - paragraph [ref=e329]: Ask AI
+```

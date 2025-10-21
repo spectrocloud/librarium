@@ -1,0 +1,914 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [expanded] [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+                - list [ref=e107]:
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Public Cloud Clusters" [ref=e110] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e112]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e114] [cursor=pointer]
+                  - listitem [ref=e115]:
+                    - generic [ref=e116]:
+                      - link "Data Center Clusters" [ref=e117] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e119]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e121] [cursor=pointer]
+                  - listitem [ref=e122]:
+                    - generic [ref=e123]:
+                      - link "Edge" [expanded] [ref=e124] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e126]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e128] [cursor=pointer]
+                    - list [ref=e129]:
+                      - listitem [ref=e130]:
+                        - generic [ref=e131]:
+                          - link "Architecture" [ref=e132] [cursor=pointer]:
+                            - /url: /clusters/edge/architecture/
+                          - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e133] [cursor=pointer]
+                      - listitem [ref=e134]:
+                        - link "Hardware Requirements" [ref=e135] [cursor=pointer]:
+                          - /url: /clusters/edge/hardware-requirements/
+                      - listitem [ref=e136]:
+                        - link "Deployment Lifecycle" [ref=e137] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-native-lifecycle/
+                      - listitem [ref=e138]:
+                        - generic [ref=e139]:
+                          - link "Trusted Boot" [ref=e140] [cursor=pointer]:
+                            - /url: /clusters/edge/trusted-boot/
+                          - button "Toggle the collapsible sidebar category 'Trusted Boot'" [ref=e141] [cursor=pointer]
+                      - listitem [ref=e142]:
+                        - generic [ref=e143]:
+                          - link "Install Configuration" [expanded] [ref=e144] [cursor=pointer]:
+                            - /url: /clusters/edge/edge-configuration/
+                          - button "Toggle the collapsible sidebar category 'Install Configuration'" [ref=e145] [cursor=pointer]
+                        - list [ref=e146]:
+                          - listitem [ref=e147]:
+                            - link "Cloud Init Stages" [ref=e148] [cursor=pointer]:
+                              - /url: /clusters/edge/edge-configuration/cloud-init/
+                          - listitem [ref=e149]:
+                            - link "Sensitive User Data Handling" [ref=e150] [cursor=pointer]:
+                              - /url: /clusters/edge/edge-configuration/skip-copying-stages/
+                          - listitem [ref=e151]:
+                            - link "Installer Configuration Reference" [ref=e152] [cursor=pointer]:
+                              - /url: /clusters/edge/edge-configuration/installer-reference/
+                      - listitem [ref=e153]:
+                        - generic [ref=e154]:
+                          - link "EdgeForge Workflow" [ref=e155] [cursor=pointer]:
+                            - /url: /clusters/edge/edgeforge-workflow/
+                          - button "Toggle the collapsible sidebar category 'EdgeForge Workflow'" [ref=e156] [cursor=pointer]
+                      - listitem [ref=e157]:
+                        - generic [ref=e158]:
+                          - link "Local UI" [ref=e159] [cursor=pointer]:
+                            - /url: /clusters/edge/local-ui/
+                          - button "Toggle the collapsible sidebar category 'Local UI'" [ref=e160] [cursor=pointer]
+                      - listitem [ref=e161]:
+                        - generic [ref=e162]:
+                          - link "Deployment" [ref=e163] [cursor=pointer]:
+                            - /url: /clusters/edge/site-deployment/
+                          - button "Toggle the collapsible sidebar category 'Deployment'" [ref=e164] [cursor=pointer]
+                      - listitem [ref=e165]:
+                        - generic [ref=e166]:
+                          - link "Cluster Management" [ref=e167] [cursor=pointer]:
+                            - /url: /clusters/edge/cluster-management/
+                          - button "Toggle the collapsible sidebar category 'Cluster Management'" [ref=e168] [cursor=pointer]
+                      - listitem [ref=e169]:
+                        - generic [ref=e170]:
+                          - link "Networking" [ref=e171] [cursor=pointer]:
+                            - /url: /clusters/edge/networking/
+                          - button "Toggle the collapsible sidebar category 'Networking'" [ref=e172] [cursor=pointer]
+                      - listitem [ref=e173]:
+                        - generic [ref=e174]:
+                          - link "Third Party Integrations" [ref=e175] [cursor=pointer]:
+                            - /url: /clusters/edge/third-party-integrations/
+                          - button "Toggle the collapsible sidebar category 'Third Party Integrations'" [ref=e176] [cursor=pointer]
+                  - listitem [ref=e177]:
+                    - generic [ref=e178]:
+                      - link "Palette Virtual Clusters" [ref=e179] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e181]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e183] [cursor=pointer]
+                  - listitem [ref=e184]:
+                    - generic [ref=e185]:
+                      - link "Imported Clusters" [ref=e186] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e188]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e190] [cursor=pointer]
+                  - listitem [ref=e191]:
+                    - generic [ref=e192]:
+                      - link "Manage Clusters" [ref=e193] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e195]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e197] [cursor=pointer]
+                  - listitem [ref=e198]:
+                    - generic [ref=e199]:
+                      - link "Cluster Groups" [ref=e200] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e202]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e204] [cursor=pointer]
+                  - listitem [ref=e205]:
+                    - generic [ref=e206]:
+                      - link "Private Cloud Gateway" [ref=e207] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e209]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e211] [cursor=pointer]
+              - listitem [ref=e212]:
+                - generic [ref=e213]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e214] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e216]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e218] [cursor=pointer]
+              - listitem [ref=e219]:
+                - generic [ref=e220]:
+                  - link "Palette Dev Engine" [ref=e221] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e223]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e225] [cursor=pointer]
+              - listitem [ref=e226]:
+                - generic [ref=e227]:
+                  - link "Virtual Machine Orchestrator" [ref=e228] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e230]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e232] [cursor=pointer]
+              - listitem [ref=e233]:
+                - generic [ref=e234]:
+                  - link "Workspaces" [ref=e235] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e237]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e239] [cursor=pointer]
+              - listitem [ref=e240]:
+                - generic [ref=e241]:
+                  - link "Packs List" [ref=e242] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e244]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e246] [cursor=pointer]
+              - listitem [ref=e247]:
+                - generic [ref=e248]:
+                  - link "User & Role Management" [ref=e249] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e251]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e253] [cursor=pointer]
+              - listitem [ref=e254]:
+                - generic [ref=e255]:
+                  - link "Registries and Packs" [ref=e256] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e258]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e260] [cursor=pointer]
+              - listitem [ref=e261]:
+                - generic [ref=e262]:
+                  - link "Security" [ref=e263] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e265]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e267] [cursor=pointer]
+              - listitem [ref=e268]:
+                - generic [ref=e269]:
+                  - link "Audit Logs" [ref=e270] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e272]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e274] [cursor=pointer]
+              - listitem [ref=e275]:
+                - generic [ref=e276]:
+                  - link "Self-Hosted Palette" [ref=e277] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e279]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e281] [cursor=pointer]
+              - listitem [ref=e282]:
+                - generic [ref=e283]:
+                  - link "Palette VerteX" [ref=e284] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e286]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e288] [cursor=pointer]
+              - listitem [ref=e289]:
+                - generic [ref=e290]:
+                  - link "Tenant Administration" [ref=e291] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e293]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e295] [cursor=pointer]
+              - listitem [ref=e296]:
+                - generic [ref=e297]:
+                  - link "Automation" [ref=e298] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e300]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e302] [cursor=pointer]
+              - listitem [ref=e303]:
+                - generic [ref=e304]:
+                  - link "Troubleshooting" [ref=e305] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e307]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e309] [cursor=pointer]
+              - listitem [ref=e310]:
+                - link "Glossary" [ref=e311] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e313]
+                  - text: Glossary
+              - listitem [ref=e315]:
+                - generic [ref=e316]:
+                  - link "Compliance & Legal" [ref=e317] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e319]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e321] [cursor=pointer]
+              - listitem [ref=e322]:
+                - button "Privacy Settings" [ref=e323] [cursor=pointer]:
+                  - img [ref=e324]
+                  - text: Privacy Settings
+      - main [ref=e326]:
+        - generic [ref=e328]:
+          - generic [ref=e330]:
+            - article [ref=e331]:
+              - navigation "Breadcrumbs" [ref=e332]:
+                - list [ref=e333]:
+                  - listitem [ref=e334]:
+                    - link "Home page" [ref=e335] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e336]
+                  - listitem [ref=e338]:
+                    - link "Clusters" [ref=e339] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e340]:
+                    - link "Edge" [ref=e341] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                  - listitem [ref=e342]:
+                    - link "Install Configuration" [ref=e343] [cursor=pointer]:
+                      - /url: /clusters/edge/edge-configuration/
+                  - listitem [ref=e344]:
+                    - generic [ref=e345]: Cloud Init Stages
+              - generic [ref=e346]:
+                - heading "Cloud Init Stages" [level=1] [ref=e348]
+                - paragraph [ref=e349]:
+                  - text: Palette Edge supports all the cloud-init stages exposed by
+                  - link "Kairos" [ref=e350] [cursor=pointer]:
+                    - /url: https://kairos.io/docs/architecture/cloud-init/
+                  - text: both during installation and during cluster deployment. Kairos is an open source project that is used to create immutable images, Kairos is a container layer that enables you to specify dependencies and create resources before locking down the image.
+                - paragraph [ref=e351]:
+                  - text: The following diagram displays the available cloud-init stages you can use to customize the device installation. Each stage has a before and after hook you can use to achieve more granular customization. For example, you can use
+                  - code [ref=e352]: network.after
+                  - text: to verify network connectivity.
+                - paragraph [ref=e353]:
+                  - img "A diagram that displays all the cloud-init stages supported. The stages are listed in the markdown table below." [ref=e354]
+                - paragraph [ref=e355]:
+                  - text: You can read more about Kairos and cloud-init by reviewing
+                  - link "Kairo's cloud-init" [ref=e356] [cursor=pointer]:
+                    - /url: https://kairos.io/docs/architecture/cloud-init/
+                  - text: resource. For your convenience, all the supported cloud-init stages are listed below.
+                - table [ref=e357]:
+                  - rowgroup [ref=e358]:
+                    - row "Stage Description" [ref=e359]:
+                      - cell "Stage" [ref=e360]
+                      - cell "Description" [ref=e361]
+                  - rowgroup [ref=e362]:
+                    - row "rootfs This is the earliest stage, executing before switching to root. It happens right after the root is mounted in /sysroot and before applying the immutable rootfs configuration. This stage is executed over initrd root, no chroot is applied." [ref=e363]:
+                      - cell "rootfs" [ref=e364]:
+                        - code [ref=e365]: rootfs
+                      - cell "This is the earliest stage, executing before switching to root. It happens right after the root is mounted in /sysroot and before applying the immutable rootfs configuration. This stage is executed over initrd root, no chroot is applied." [ref=e366]:
+                        - text: This is the earliest stage, executing before switching to root. It happens right after the root is mounted in /sysroot and before applying the immutable
+                        - code [ref=e367]: rootfs
+                        - text: configuration. This stage is executed over
+                        - code [ref=e368]: initrd
+                        - text: root, no
+                        - code [ref=e369]: chroot
+                        - text: is applied.
+                    - row "initramfs This is still an early stage, running before switching to root. Here you can apply changes to the booting setup of Elemental. Despite executing this before switching to root, this invocation is change rooted into the target root after the immutable rootfs is set up and ready." [ref=e370]:
+                      - cell "initramfs" [ref=e371]:
+                        - code [ref=e372]: initramfs
+                      - cell "This is still an early stage, running before switching to root. Here you can apply changes to the booting setup of Elemental. Despite executing this before switching to root, this invocation is change rooted into the target root after the immutable rootfs is set up and ready." [ref=e373]:
+                        - text: This is still an early stage, running before switching to root. Here you can apply changes to the booting setup of Elemental. Despite executing this before switching to root, this invocation is change rooted into the target root after the immutable
+                        - code [ref=e374]: rootfs
+                        - text: is set up and ready.
+                    - row "boot This stage executes after initramfs has switched to root and during the systemd boot-up process." [ref=e375]:
+                      - cell "boot" [ref=e376]:
+                        - code [ref=e377]: boot
+                      - cell "This stage executes after initramfs has switched to root and during the systemd boot-up process." [ref=e378]:
+                        - text: This stage executes after
+                        - code [ref=e379]: initramfs
+                        - text: has switched to root and during the systemd boot-up process.
+                    - row "fs This stage is executed when fs is mounted and is guaranteed to have access to the state and persistent partitions ( COS_STATE and COS_PERSISTENT respectively)." [ref=e380]:
+                      - cell "fs" [ref=e381]:
+                        - code [ref=e382]: fs
+                      - cell "This stage is executed when fs is mounted and is guaranteed to have access to the state and persistent partitions ( COS_STATE and COS_PERSISTENT respectively)." [ref=e383]:
+                        - text: This stage is executed when
+                        - code [ref=e384]: fs
+                        - text: is mounted and is guaranteed to have access to the state and persistent partitions ( COS_STATE and COS_PERSISTENT respectively).
+                    - row "network This stage executes when the network is available." [ref=e385]:
+                      - cell "network" [ref=e386]:
+                        - code [ref=e387]: network
+                      - cell "This stage executes when the network is available." [ref=e388]
+                    - row "reconcile This stage executes 5m after boot up and every 60m." [ref=e389]:
+                      - cell "reconcile" [ref=e390]:
+                        - code [ref=e391]: reconcile
+                      - cell "This stage executes 5m after boot up and every 60m." [ref=e392]
+                    - row "after-install This stage executes after the installation of the OS." [ref=e393]:
+                      - cell "after-install" [ref=e394]:
+                        - code [ref=e395]: after-install
+                      - cell "This stage executes after the installation of the OS." [ref=e396]
+                    - row "after-install-chroot This stage executes after the installation of the OS ends." [ref=e397]:
+                      - cell "after-install-chroot" [ref=e398]:
+                        - code [ref=e399]: after-install-chroot
+                      - cell "This stage executes after the installation of the OS ends." [ref=e400]
+                    - row "after-upgrade This stage executes after the OS upgrade ends." [ref=e401]:
+                      - cell "after-upgrade" [ref=e402]:
+                        - code [ref=e403]: after-upgrade
+                      - cell "This stage executes after the OS upgrade ends." [ref=e404]
+                    - row "after-upgrade-chroot This stage executes after the OS upgrade ends (chroot call)." [ref=e405]:
+                      - cell "after-upgrade-chroot" [ref=e406]:
+                        - code [ref=e407]: after-upgrade-chroot
+                      - cell "This stage executes after the OS upgrade ends (chroot call)." [ref=e408]:
+                        - text: This stage executes after the OS upgrade ends (
+                        - code [ref=e409]: chroot
+                        - text: call).
+                    - row "after-reset This stage executes after the OS resets." [ref=e410]:
+                      - cell "after-reset" [ref=e411]:
+                        - code [ref=e412]: after-reset
+                      - cell "This stage executes after the OS resets." [ref=e413]
+                    - row "after-reset-chroot This stage executes after the OS resets (chroot call)." [ref=e414]:
+                      - cell "after-reset-chroot" [ref=e415]:
+                        - code [ref=e416]: after-reset-chroot
+                      - cell "This stage executes after the OS resets (chroot call)." [ref=e417]:
+                        - text: This stage executes after the OS resets (
+                        - code [ref=e418]: chroot
+                        - text: call).
+                    - row "before-install This stage executes before installation." [ref=e419]:
+                      - cell "before-install" [ref=e420]:
+                        - code [ref=e421]: before-install
+                      - cell "This stage executes before installation." [ref=e422]
+                    - row "before-upgrade This stage executes before the upgrade." [ref=e423]:
+                      - cell "before-upgrade" [ref=e424]:
+                        - code [ref=e425]: before-upgrade
+                      - cell "This stage executes before the upgrade." [ref=e426]
+                    - row "before-reset This stage executes before reset." [ref=e427]:
+                      - cell "before-reset" [ref=e428]:
+                        - code [ref=e429]: before-reset
+                      - cell "This stage executes before reset." [ref=e430]
+                - heading "Where to Apply Cloud-Init Stages?Direct link to Where to Apply Cloud-Init Stages?" [level=2] [ref=e431]:
+                  - text: Where to Apply Cloud-Init Stages?
+                  - link "Direct link to Where to Apply Cloud-Init Stages?" [ref=e432] [cursor=pointer]:
+                    - /url: "#where-to-apply-cloud-init-stages"
+                    - text: "#"
+                - paragraph [ref=e433]: You may ask yourself where to use cloud-init stages, as both the Edge Installer and the OS pack support the usage of cloud-init stages. Use the following statements to help you decide.
+                - list [ref=e434]:
+                  - listitem [ref=e435]:
+                    - paragraph [ref=e436]: If you need to apply a set of configurations to a specific site, then use the Edge Installer user data configuration file and its cloud-init stages to provide site settings to that specific site.
+                  - listitem [ref=e437]:
+                    - paragraph [ref=e438]: If you have common configurations across a fleet of Edge host devices, customize the OS pack and use the cloud-init stages to apply those configurations.
+                - generic [ref=e439]:
+                  - generic [ref=e440]:
+                    - img [ref=e442]
+                    - text: warning
+                  - paragraph [ref=e445]:
+                    - text: Give each action in a cloud-init stage a unique name. During cluster deployment, the cloud-init stages between the OS pack and user data are merged. Without unique names to identify the different actions in a stage, some cloud-init data may get lost. You can name an action with the
+                    - code [ref=e446]: name
+                    - text: parameter placed at the same level of indentation as the action. Refer to
+                    - link "Example Use Cases" [ref=e447] [cursor=pointer]:
+                      - /url: "#example-use-cases"
+                    - text: for examples.
+                - heading "Example Use CasesDirect link to Example Use Cases" [level=2] [ref=e448]:
+                  - text: Example Use Cases
+                  - link "Direct link to Example Use Cases" [ref=e449] [cursor=pointer]:
+                    - /url: "#example-use-cases"
+                    - text: "#"
+                - paragraph [ref=e450]: To help you become familiar with the cloud-init stages and better understand how to use them to achieve your goals, check out the following use cases.
+                - generic [ref=e451]:
+                  - generic [ref=e452]:
+                    - img [ref=e454]
+                    - text: warning
+                  - paragraph [ref=e457]:
+                    - text: Remember that the following code snippets are only intended to help you understand how cloud-init can be used to customize the edge host. You can use countless combinations of the Edge Installer and OS cloud-init stages to achieve the desired customization. Check out the Kairos
+                    - link "stages" [ref=e458] [cursor=pointer]:
+                      - /url: https://kairos.io/docs/reference/configuration/#stages
+                    - text: resource to learn more about other key terms, options, and advanced examples.
+                - paragraph [ref=e459]: Use the Edge Installer user data to apply specific site configurations to the Edge host.
+                - heading "Set the User PasswordDirect link to Set the User Password" [level=4] [ref=e460]:
+                  - text: Set the User Password
+                  - link "Direct link to Set the User Password" [ref=e461] [cursor=pointer]:
+                    - /url: "#set-the-user-password"
+                    - text: "#"
+                - paragraph [ref=e462]:
+                  - text: The
+                  - code [ref=e463]: initramfs
+                  - text: stage is used to set the password for the user,
+                  - code [ref=e464]: kairos
+                  - text: .
+                - generic [ref=e466]:
+                  - code [ref=e468]:
+                    - generic [ref=e469]: "stages:"
+                    - generic [ref=e470]: "initramfs:"
+                    - generic [ref=e471]: "- users:"
+                    - generic [ref=e472]: "kairos:"
+                    - generic [ref=e473]: "passwd: kairos"
+                    - generic [ref=e474]: "name: \"Create user for host\""
+                  - button "Copy code to clipboard" [ref=e476] [cursor=pointer]:
+                    - generic [ref=e477]:
+                      - img [ref=e478]
+                      - img [ref=e480]
+                - heading "Assign a User to a GroupDirect link to Assign a User to a Group" [level=4] [ref=e482]:
+                  - text: Assign a User to a Group
+                  - link "Direct link to Assign a User to a Group" [ref=e483] [cursor=pointer]:
+                    - /url: "#assign-a-user-to-a-group"
+                    - text: "#"
+                - paragraph [ref=e484]:
+                  - text: Another example of the
+                  - code [ref=e485]: initramfs
+                  - text: ", but this time the user is assigned to the"
+                  - code [ref=e486]: sudo
+                  - text: group.
+                - generic [ref=e488]:
+                  - code [ref=e490]:
+                    - generic [ref=e491]: "stages:"
+                    - generic [ref=e492]: "initramfs:"
+                    - generic [ref=e493]: "- users:"
+                    - generic [ref=e494]: "kairos:"
+                    - generic [ref=e495]: "groups:"
+                    - generic [ref=e496]: "- sudo"
+                    - generic [ref=e497]: "name: \"Create user and assign to sudo group\""
+                  - button "Copy code to clipboard" [ref=e499] [cursor=pointer]:
+                    - generic [ref=e500]:
+                      - img [ref=e501]
+                      - img [ref=e503]
+                - heading "Assign an SSH KeyDirect link to Assign an SSH Key" [level=4] [ref=e505]:
+                  - text: Assign an SSH Key
+                  - link "Direct link to Assign an SSH Key" [ref=e506] [cursor=pointer]:
+                    - /url: "#assign-an-ssh-key"
+                    - text: "#"
+                - paragraph [ref=e507]: An example configuration of assigning an SSH key to a user.
+                - generic [ref=e509]:
+                  - code [ref=e511]:
+                    - generic [ref=e512]: "stages:"
+                    - generic [ref=e513]: "initramfs:"
+                    - generic [ref=e514]: "- users:"
+                    - generic [ref=e515]: "kairos:"
+                    - generic [ref=e516]: "ssh_authorized_keys:"
+                    - generic [ref=e517]: "- ssh-rsa AAAAB3N…"
+                    - generic [ref=e518]: "name: \"Create user and assign SSH key\""
+                  - button "Copy code to clipboard" [ref=e520] [cursor=pointer]:
+                    - generic [ref=e521]:
+                      - img [ref=e522]
+                      - img [ref=e524]
+                - heading "Configure a Registry MirrorDirect link to Configure a Registry Mirror" [level=4] [ref=e526]:
+                  - text: Configure a Registry Mirror
+                  - link "Direct link to Configure a Registry Mirror" [ref=e527] [cursor=pointer]:
+                    - /url: "#configure-a-registry-mirror"
+                    - text: "#"
+                - paragraph [ref=e528]:
+                  - text: For situations where you need to configure a registry mirror, you can use the following example that uses the
+                  - code [ref=e529]: initramfs
+                  - text: stage.
+                - generic [ref=e531]:
+                  - code [ref=e533]:
+                    - generic [ref=e534]: "stages:"
+                    - generic [ref=e535]: "initramfs:"
+                    - generic [ref=e536]: "files:"
+                    - generic [ref=e537]: "- path: \"/etc/rancher/k3s/registries.yaml\""
+                    - generic [ref=e538]: "permissions: 0644"
+                    - generic [ref=e539]: "owner: 0"
+                    - generic [ref=e540]: "group: 0"
+                    - generic [ref=e541]: "content: |"
+                    - generic [ref=e542]: "mirrors:"
+                    - generic [ref=e543]: "\"gcr.io\":"
+                    - generic [ref=e544]: "endpoint:"
+                    - generic [ref=e545]: "- \"https://my-mirror.example.com\""
+                    - generic [ref=e546]: "rewrite:"
+                    - generic [ref=e547]: "\"(^.*)\": \"test/$1\""
+                    - generic [ref=e548]: "configs:"
+                    - generic [ref=e549]: "\"my-mirror.example.com\":"
+                    - generic [ref=e550]: "auth:"
+                    - generic [ref=e551]: "username: \"user1\""
+                    - generic [ref=e552]: "password: \"mysupermagicalpassword\""
+                    - generic [ref=e553]: "tls:"
+                    - generic [ref=e554]: "insecure_skip_verify: true"
+                    - generic [ref=e555]: "name: \"Configure registry mirror\""
+                  - button "Copy code to clipboard" [ref=e557] [cursor=pointer]:
+                    - generic [ref=e558]:
+                      - img [ref=e559]
+                      - img [ref=e561]
+                - heading "Configure Network With NetplanDirect link to Configure Network With Netplan" [level=4] [ref=e563]:
+                  - text: Configure Network With Netplan
+                  - link "Direct link to Configure Network With Netplan" [ref=e564] [cursor=pointer]:
+                    - /url: "#configure-network-with-netplan"
+                    - text: "#"
+                - paragraph [ref=e565]:
+                  - text: You can use the
+                  - code [ref=e566]: initramfs
+                  - text: stage and
+                  - link "Netplan" [ref=e567] [cursor=pointer]:
+                    - /url: https://netplan.io
+                  - text: to configure network settings before the network initialization. Netplan is a tool that enables you to specify network configurations on Linux systems. Note that this approach is available for Linux systems with Netplan installed. Refer to the
+                  - link "Netplan Documentation" [ref=e568] [cursor=pointer]:
+                    - /url: https://netplan.readthedocs.io/en/stable/
+                  - text: for installation guidance and the
+                  - link "Netplan How-to Guides" [ref=e569] [cursor=pointer]:
+                    - /url: https://netplan.readthedocs.io/en/stable/examples/
+                  - text: for more information.
+                - generic [ref=e571]:
+                  - code [ref=e573]:
+                    - generic [ref=e574]: "stages:"
+                    - generic [ref=e575]: "initramfs:"
+                    - generic [ref=e576]: "- users:"
+                    - generic [ref=e577]: "kairos:"
+                    - generic [ref=e578]: "groups:"
+                    - generic [ref=e579]: "- sudo"
+                    - generic [ref=e580]: "passwd: kairos"
+                    - generic [ref=e581]: "- commands:"
+                    - generic [ref=e582]: "- netplan apply"
+                    - generic [ref=e583]: "files:"
+                    - generic [ref=e584]: "- content: |"
+                    - generic [ref=e585]: "network:"
+                    - generic [ref=e586]: "version: 2"
+                    - generic [ref=e587]: "renderer: networkd"
+                    - generic [ref=e588]: "ethernets:"
+                    - generic [ref=e589]: "ens160:"
+                    - generic [ref=e590]: "dhcp4: false"
+                    - generic [ref=e591]: "addresses:"
+                    - generic [ref=e592]: "- 10.10.190.11/18"
+                    - generic [ref=e593]: "gateway4: 10.10.128.1"
+                    - generic [ref=e594]: "nameservers:"
+                    - generic [ref=e595]: "addresses:"
+                    - generic [ref=e596]: "- 8.8.8.8"
+                    - generic [ref=e597]: "- 1.1.1.1"
+                    - generic [ref=e598]: "encoding: \"\""
+                    - generic [ref=e599]: "group: 0"
+                    - generic [ref=e600]: "owner: 0"
+                    - generic [ref=e601]: "ownerstring: \"\""
+                    - generic [ref=e602]: "path: /etc/netplan/99_config.yaml"
+                    - generic [ref=e603]: "permissions: 420"
+                    - generic [ref=e604]: "name: Config network with Netplan"
+                  - button "Copy code to clipboard" [ref=e606] [cursor=pointer]:
+                    - generic [ref=e607]:
+                      - img [ref=e608]
+                      - img [ref=e610]
+                - generic [ref=e612]:
+                  - generic [ref=e613]:
+                    - img [ref=e615]
+                    - text: tip
+                  - generic [ref=e617]:
+                    - paragraph [ref=e618]: When using the EdgeForge workflow with CanvOS, ensure you add Netplan to the Dockerfile. In the example below, Netplan is installed in an Ubuntu image.
+                    - generic [ref=e620]:
+                      - code [ref=e622]:
+                        - generic [ref=e623]: apt-get update && apt-get install netplan.io -y
+                      - button "Copy code to clipboard" [ref=e625] [cursor=pointer]:
+                        - generic [ref=e626]:
+                          - img [ref=e627]
+                          - img [ref=e629]
+                - heading "Erase PartitionsDirect link to Erase Partitions" [level=4] [ref=e631]:
+                  - text: Erase Partitions
+                  - link "Direct link to Erase Partitions" [ref=e632] [cursor=pointer]:
+                    - /url: "#erase-partitions"
+                    - text: "#"
+                - paragraph [ref=e633]:
+                  - text: You can use the
+                  - code [ref=e634]: before-install
+                  - text: stage to remove partitions if needed.
+                - generic [ref=e636]:
+                  - code [ref=e638]:
+                    - generic [ref=e639]: "stages:"
+                    - generic [ref=e640]: "before-install:"
+                    - generic [ref=e641]: "- name: \"Erase Old Partitions on Boot Disk\""
+                    - generic [ref=e642]: "commands:"
+                    - generic [ref=e643]: "- wipefs -a /dev/nvme0n1"
+                  - button "Copy code to clipboard" [ref=e645] [cursor=pointer]:
+                    - generic [ref=e646]:
+                      - img [ref=e647]
+                      - img [ref=e649]
+                - heading "Install ToolingDirect link to Install Tooling" [level=4] [ref=e651]:
+                  - text: Install Tooling
+                  - link "Direct link to Install Tooling" [ref=e652] [cursor=pointer]:
+                    - /url: "#install-tooling"
+                    - text: "#"
+                - paragraph [ref=e653]: This is an example of installing third-party software or tooling.
+                - generic [ref=e655]:
+                  - code [ref=e657]:
+                    - generic [ref=e658]: "stages:"
+                    - generic [ref=e659]: "after-install-chroot:"
+                    - generic [ref=e660]: "- name: \"Install SSM\""
+                    - generic [ref=e661]: "commands:"
+                    - generic [ref=e662]: "- snap install amazon-ssm-agent --classic"
+                  - button "Copy code to clipboard" [ref=e664] [cursor=pointer]:
+                    - generic [ref=e665]:
+                      - img [ref=e666]
+                      - img [ref=e668]
+                - heading "Pass Sensitive InformationDirect link to Pass Sensitive Information" [level=4] [ref=e670]:
+                  - text: Pass Sensitive Information
+                  - link "Direct link to Pass Sensitive Information" [ref=e671] [cursor=pointer]:
+                    - /url: "#pass-sensitive-information"
+                    - text: "#"
+                - paragraph [ref=e672]:
+                  - text: If you need to transmit sensitive information, such as credentials, during the installation phase, you can make the Edge installer skip copying specific stages to the Edge hosts. The Edge installer will skip copying the stages that follow the
+                  - code [ref=e673]: skip-copy-[string]
+                  - text: naming convention. Refer to the
+                  - link "Sensitive Information in the User Data Stages" [ref=e674] [cursor=pointer]:
+                    - /url: /clusters/edge/edge-configuration/skip-copying-stages/
+                  - text: guide to learn more.
+                - generic [ref=e676]:
+                  - code [ref=e678]:
+                    - generic [ref=e679]: "stages:"
+                    - generic [ref=e680]: "network.after:"
+                    - generic [ref=e681]: "- name: skip-copy-subscribe"
+                    - generic [ref=e682]: "if: [-f \"/usr/sbin/subscription-manager\"]"
+                    - generic [ref=e683]: "commands:"
+                    - generic [ref=e684]: "- subscription-manager register --username \"myname\" --password 'mypassword'"
+                  - generic [ref=e685]:
+                    - button "Toggle word wrap" [ref=e686] [cursor=pointer]:
+                      - img [ref=e687]
+                    - button "Copy code to clipboard" [ref=e689] [cursor=pointer]:
+                      - generic [ref=e690]:
+                        - img [ref=e691]
+                        - img [ref=e693]
+                - heading "Complete ExampleDirect link to Complete Example" [level=4] [ref=e695]:
+                  - text: Complete Example
+                  - link "Direct link to Complete Example" [ref=e696] [cursor=pointer]:
+                    - /url: "#complete-example"
+                    - text: "#"
+                - paragraph [ref=e697]:
+                  - text: This is an Edge Installer user data configuration that configures the user
+                  - code [ref=e698]: kairos
+                  - text: and prepares the edge host by providing network settings and adding SSL certificates.
+                - generic [ref=e700]:
+                  - code [ref=e702]:
+                    - generic [ref=e703]: "stages:"
+                    - generic [ref=e704]: "boot:"
+                    - generic [ref=e705]: "- users:"
+                    - generic [ref=e706]: "kairos:"
+                    - generic [ref=e707]: "groups:"
+                    - generic [ref=e708]: "- sudo"
+                    - generic [ref=e709]: "passwd: kairos"
+                    - generic [ref=e710]: "stylus:"
+                    - generic [ref=e711]: "site:"
+                    - generic [ref=e712]: "paletteEndpoint: api.spectrocloud.com"
+                    - generic [ref=e713]: "name: edge-randomid"
+                    - generic [ref=e714]: "registrationURL: https://edge-registration-app.vercel.app/"
+                    - generic [ref=e715]: "network:"
+                    - generic [ref=e716]: "httpProxy: http://proxy.example.com"
+                    - generic [ref=e717]: "httpsProxy: https://proxy.example.com"
+                    - generic [ref=e718]: "noProxy: 10.10.128.10,10.0.0.0/8"
+                    - generic [ref=e719]: "nameserver: 1.1.1.1"
+                    - generic [ref=e720]: "interfaces:"
+                    - generic [ref=e721]: "enp0s3:"
+                    - generic [ref=e722]: "type: static"
+                    - generic [ref=e723]: "ipAddress: 10.0.10.25/24"
+                    - generic [ref=e724]: "gateway: 10.0.10.1"
+                    - generic [ref=e725]: "nameserver: 10.10.128.8"
+                    - generic [ref=e726]: "enp0s4:"
+                    - generic [ref=e727]: "type: dhcp"
+                    - generic [ref=e728]: "caCerts:"
+                    - generic [ref=e729]: "- |"
+                    - generic [ref=e730]: "------BEGIN CERTIFICATE------"
+                    - generic [ref=e731]: "*****************************"
+                    - generic [ref=e732]: "*****************************"
+                    - generic [ref=e733]: "------END CERTIFICATE------"
+                    - generic [ref=e734]: "- |"
+                    - generic [ref=e735]: "------BEGIN CERTIFICATE------"
+                    - generic [ref=e736]: "*****************************"
+                    - generic [ref=e737]: "*****************************"
+                    - generic [ref=e738]: "------END CERTIFICATE------"
+                  - button "Copy code to clipboard" [ref=e740] [cursor=pointer]:
+                    - generic [ref=e741]:
+                      - img [ref=e742]
+                      - img [ref=e744]
+                - heading "OS User Data StagesDirect link to OS User Data Stages" [level=2] [ref=e746]:
+                  - text: OS User Data Stages
+                  - link "Direct link to OS User Data Stages" [ref=e747] [cursor=pointer]:
+                    - /url: "#os-user-data-stages"
+                    - text: "#"
+                - paragraph [ref=e748]: You can also customize the device by using the OS cloud-init stages. As mentioned previously, use OS cloud-init stages to apply common configurations to many edge hosts.
+                - heading "Assign User to GroupDirect link to Assign User to Group" [level=4] [ref=e749]:
+                  - text: Assign User to Group
+                  - link "Direct link to Assign User to Group" [ref=e750] [cursor=pointer]:
+                    - /url: "#assign-user-to-group"
+                    - text: "#"
+                - paragraph [ref=e751]:
+                  - text: In this example snippet, the OS pack is using the cloud-init stage
+                  - code [ref=e752]: initramfs
+                  - text: to assign a default password to the user
+                  - code [ref=e753]: kairos
+                  - text: and add the user to the
+                  - code [ref=e754]: sudo
+                  - text: group.
+                - generic [ref=e756]:
+                  - code [ref=e758]:
+                    - generic [ref=e759]: "stages:"
+                    - generic [ref=e760]: "initramfs:"
+                    - generic [ref=e761]: "- users:"
+                    - generic [ref=e762]: "kairos:"
+                    - generic [ref=e763]: "groups:"
+                    - generic [ref=e764]: "- sudo"
+                    - generic [ref=e765]: "passwd: kairos"
+                    - generic [ref=e766]: "name: Create user and assign to sudo group"
+                  - button "Copy code to clipboard" [ref=e768] [cursor=pointer]:
+                    - generic [ref=e769]:
+                      - img [ref=e770]
+                      - img [ref=e772]
+                - heading "Custom CommandsDirect link to Custom Commands" [level=4] [ref=e774]:
+                  - text: Custom Commands
+                  - link "Direct link to Custom Commands" [ref=e775] [cursor=pointer]:
+                    - /url: "#custom-commands"
+                    - text: "#"
+                - paragraph [ref=e776]: This is an example of moving files to a different location prior to another stage or boot-up process that requires the file.
+                - generic [ref=e778]:
+                  - code [ref=e780]:
+                    - generic [ref=e781]: "stages:"
+                    - generic [ref=e782]: "initramfs:"
+                    - generic [ref=e783]: "- name: \"Move Files\""
+                    - generic [ref=e784]: "commands:"
+                    - generic [ref=e785]: "- |"
+                    - generic [ref=e786]: mv /myCLI/customCLI /usr/local/bin/
+                    - generic [ref=e787]: rm -R /myCLI
+                  - button "Copy code to clipboard" [ref=e789] [cursor=pointer]:
+                    - generic [ref=e790]:
+                      - img [ref=e791]
+                      - img [ref=e793]
+                - heading "Update Network SettingsDirect link to Update Network Settings" [level=4] [ref=e795]:
+                  - text: Update Network Settings
+                  - link "Direct link to Update Network Settings" [ref=e796] [cursor=pointer]:
+                    - /url: "#update-network-settings"
+                    - text: "#"
+                - paragraph [ref=e797]:
+                  - text: The network settings will get updated when the
+                  - code [ref=e798]: network
+                  - text: stage takes effect.
+                - generic [ref=e800]:
+                  - code [ref=e802]:
+                    - generic [ref=e803]: "stages:"
+                    - generic [ref=e804]: "network:"
+                    - generic [ref=e805]: "- name: \"Configure DNS host\""
+                    - generic [ref=e806]: "commands:"
+                    - generic [ref=e807]: "- echo \"10.100.45.98 example.local\" >> /etc/hosts"
+                  - button "Copy code to clipboard" [ref=e809] [cursor=pointer]:
+                    - generic [ref=e810]:
+                      - img [ref=e811]
+                      - img [ref=e813]
+                - heading "Invoke Custom ScriptDirect link to Invoke Custom Script" [level=4] [ref=e815]:
+                  - text: Invoke Custom Script
+                  - link "Direct link to Invoke Custom Script" [ref=e816] [cursor=pointer]:
+                    - /url: "#invoke-custom-script"
+                    - text: "#"
+                - paragraph [ref=e817]:
+                  - text: An example of applying logic after the device has booted by using the
+                  - code [ref=e818]: boot.after
+                  - text: stage.
+                - generic [ref=e820]:
+                  - code [ref=e822]:
+                    - generic [ref=e823]: "boot.after:"
+                    - generic [ref=e824]: "- |"
+                    - generic [ref=e825]: sftp -i /credentials/ssh/id_rsa.pub@cv543.example.internal.abc:/inventory/2023/site-inventory.json
+                    - generic [ref=e826]: mv site-inventory.json /location/inventory/
+                  - generic [ref=e827]:
+                    - button "Toggle word wrap" [ref=e828] [cursor=pointer]:
+                      - img [ref=e829]
+                    - button "Copy code to clipboard" [ref=e831] [cursor=pointer]:
+                      - generic [ref=e832]:
+                        - img [ref=e833]
+                        - img [ref=e835]
+              - generic [ref=e837]:
+                - generic [ref=e839]:
+                  - text: "Tags:"
+                  - list [ref=e840]:
+                    - listitem [ref=e841]:
+                      - link "edge" [ref=e842] [cursor=pointer]:
+                        - /url: /tags/edge/
+                - link "Edit this page" [ref=e845] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/edge/edge-configuration/cloud-init.md
+                  - img [ref=e846]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e850]:
+              - link "Previous « Install Configuration" [ref=e851] [cursor=pointer]:
+                - /url: /clusters/edge/edge-configuration/
+                - generic [ref=e852]: Previous
+                - generic [ref=e853]: « Install Configuration
+              - link "Next Sensitive User Data Handling »" [ref=e854] [cursor=pointer]:
+                - /url: /clusters/edge/edge-configuration/skip-copying-stages/
+                - generic [ref=e855]: Next
+                - generic [ref=e856]: Sensitive User Data Handling »
+          - list [ref=e859]:
+            - listitem [ref=e860]:
+              - link "Where to Apply Cloud-Init Stages?" [ref=e861] [cursor=pointer]:
+                - /url: "#where-to-apply-cloud-init-stages"
+            - listitem [ref=e862]:
+              - link "Example Use Cases" [ref=e863] [cursor=pointer]:
+                - /url: "#example-use-cases"
+            - listitem [ref=e864]:
+              - link "OS User Data Stages" [ref=e865] [cursor=pointer]:
+                - /url: "#os-user-data-stages"
+  - button "Project Logo Ask AI" [ref=e866] [cursor=pointer]:
+    - generic [ref=e869]:
+      - img "Project Logo" [ref=e870]
+      - paragraph [ref=e871]: Ask AI
+```

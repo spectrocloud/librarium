@@ -1,0 +1,702 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e109] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e111]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Palette Dev Engine" [expanded] [ref=e116] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e118]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e120] [cursor=pointer]
+                - list [ref=e121]:
+                  - listitem [ref=e122]:
+                    - link "Use Cases" [ref=e123] [cursor=pointer]:
+                      - /url: /devx/enterprise-user/
+                  - listitem [ref=e124]:
+                    - generic [ref=e125]:
+                      - link "Apps" [ref=e126] [cursor=pointer]:
+                        - /url: /devx/apps/
+                      - button "Toggle the collapsible sidebar category 'Apps'" [ref=e127] [cursor=pointer]
+                  - listitem [ref=e128]:
+                    - generic [ref=e129]:
+                      - link "Palette Virtual Clusters" [ref=e130] [cursor=pointer]:
+                        - /url: /devx/palette-virtual-clusters/
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e131] [cursor=pointer]
+                  - listitem [ref=e132]:
+                    - generic [ref=e133]:
+                      - link "Manage Dev Engine" [ref=e134] [cursor=pointer]:
+                        - /url: /devx/manage-dev-engine/
+                      - button "Toggle the collapsible sidebar category 'Manage Dev Engine'" [ref=e135] [cursor=pointer]
+                  - listitem [ref=e136]:
+                    - generic [ref=e137]:
+                      - link "Services" [expanded] [ref=e138] [cursor=pointer]:
+                        - /url: /devx/services/
+                      - button "Toggle the collapsible sidebar category 'Services'" [ref=e139] [cursor=pointer]
+                    - list [ref=e140]:
+                      - listitem [ref=e141]:
+                        - link "Service Connectivity" [ref=e142] [cursor=pointer]:
+                          - /url: /devx/services/connectivity/
+                      - listitem [ref=e143]:
+                        - link "Databases" [ref=e144] [cursor=pointer]:
+                          - /url: /devx/services/db-services/
+                      - listitem [ref=e145]:
+                        - generic [ref=e146]:
+                          - link "Available Services" [expanded] [ref=e147] [cursor=pointer]:
+                            - /url: /devx/services/service-listings/
+                          - button "Toggle the collapsible sidebar category 'Available Services'" [ref=e148] [cursor=pointer]
+                        - list [ref=e149]:
+                          - listitem [ref=e150]:
+                            - link "MongoDB" [ref=e151] [cursor=pointer]:
+                              - /url: /devx/services/service-listings/mongo-db/
+                          - listitem [ref=e152]:
+                            - link "MySQL" [ref=e153] [cursor=pointer]:
+                              - /url: /devx/services/service-listings/mysql/
+                          - listitem [ref=e154]:
+                            - link "Postgres" [ref=e155] [cursor=pointer]:
+                              - /url: /devx/services/service-listings/postgresql-db/
+                          - listitem [ref=e156]:
+                            - link "Redis" [ref=e157] [cursor=pointer]:
+                              - /url: /devx/services/service-listings/redis-db/
+                          - listitem [ref=e158]:
+                            - link "Vault" [ref=e159] [cursor=pointer]:
+                              - /url: /devx/services/service-listings/vault/
+                          - listitem [ref=e160]:
+                            - link "CockroachDB" [ref=e161] [cursor=pointer]:
+                              - /url: /devx/services/service-listings/cockroach-db/
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Virtual Machine Orchestrator" [ref=e164] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e166]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e168] [cursor=pointer]
+              - listitem [ref=e169]:
+                - generic [ref=e170]:
+                  - link "Workspaces" [ref=e171] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e173]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e175] [cursor=pointer]
+              - listitem [ref=e176]:
+                - generic [ref=e177]:
+                  - link "Packs List" [ref=e178] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e180]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e182] [cursor=pointer]
+              - listitem [ref=e183]:
+                - generic [ref=e184]:
+                  - link "User & Role Management" [ref=e185] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e187]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e189] [cursor=pointer]
+              - listitem [ref=e190]:
+                - generic [ref=e191]:
+                  - link "Registries and Packs" [ref=e192] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e194]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e196] [cursor=pointer]
+              - listitem [ref=e197]:
+                - generic [ref=e198]:
+                  - link "Security" [ref=e199] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e201]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e203] [cursor=pointer]
+              - listitem [ref=e204]:
+                - generic [ref=e205]:
+                  - link "Audit Logs" [ref=e206] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e208]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e210] [cursor=pointer]
+              - listitem [ref=e211]:
+                - generic [ref=e212]:
+                  - link "Self-Hosted Palette" [ref=e213] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e215]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e217] [cursor=pointer]
+              - listitem [ref=e218]:
+                - generic [ref=e219]:
+                  - link "Palette VerteX" [ref=e220] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e222]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e224] [cursor=pointer]
+              - listitem [ref=e225]:
+                - generic [ref=e226]:
+                  - link "Tenant Administration" [ref=e227] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e229]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e231] [cursor=pointer]
+              - listitem [ref=e232]:
+                - generic [ref=e233]:
+                  - link "Automation" [ref=e234] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e236]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e238] [cursor=pointer]
+              - listitem [ref=e239]:
+                - generic [ref=e240]:
+                  - link "Troubleshooting" [ref=e241] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e243]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e245] [cursor=pointer]
+              - listitem [ref=e246]:
+                - link "Glossary" [ref=e247] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e249]
+                  - text: Glossary
+              - listitem [ref=e251]:
+                - generic [ref=e252]:
+                  - link "Compliance & Legal" [ref=e253] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e255]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e257] [cursor=pointer]
+              - listitem [ref=e258]:
+                - button "Privacy Settings" [ref=e259] [cursor=pointer]:
+                  - img [ref=e260]
+                  - text: Privacy Settings
+      - main [ref=e262]:
+        - generic [ref=e264]:
+          - generic [ref=e266]:
+            - article [ref=e267]:
+              - navigation "Breadcrumbs" [ref=e268]:
+                - list [ref=e269]:
+                  - listitem [ref=e270]:
+                    - link "Home page" [ref=e271] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e272]
+                  - listitem [ref=e274]:
+                    - link "Palette Dev Engine" [ref=e275] [cursor=pointer]:
+                      - /url: /devx/
+                  - listitem [ref=e276]:
+                    - link "Services" [ref=e277] [cursor=pointer]:
+                      - /url: /devx/services/
+                  - listitem [ref=e278]:
+                    - link "Available Services" [ref=e279] [cursor=pointer]:
+                      - /url: /devx/services/service-listings/
+                  - listitem [ref=e280]:
+                    - generic [ref=e281]: Vault
+              - generic [ref=e282]:
+                - heading "Vault" [level=1] [ref=e284]
+                - heading "VaultDirect link to Vault" [level=2] [ref=e285]:
+                  - text: Vault
+                  - link "Direct link to Vault" [ref=e286] [cursor=pointer]:
+                    - /url: "#vault"
+                    - text: "#"
+                - paragraph [ref=e287]:
+                  - text: Palette Dev Engine (PDE) users can deploy Vault onto their virtual cluster using the out-of-the-box Vault offering. Vault deployed through PDE is using Banzai Cloud Bank-Vaults. Bank-Vaults is a wrapper for the official
+                  - link "Vault" [ref=e288] [cursor=pointer]:
+                    - /url: https://developer.hashicorp.com/vault
+                  - text: client. Vault is a tool that helps you securely manage and protect sensitive information, like passwords, API keys, and encryption keys. The Bank-Vaults client enhances the official Vault client by adding automatic token renewal, built-in Kubernetes support, and a dynamic database credential provider.
+                - paragraph [ref=e289]: Vault keeps these secrets safe by locking them in a virtual "vault" and only allows authorized users to access them. Vault also tracks who has accessed which secrets and when, making it easier to maintain security. You can use Vault to govern access to secrets, automate application delivery, and consume secrets programmatically.
+                - paragraph [ref=e290]:
+                  - text: Vault is deployed behind the scenes through the use of the
+                  - link "Bank-Vaults Vault Operator Helm Chart" [ref=e291] [cursor=pointer]:
+                    - /url: https://github.com/bank-vaults/bank-vaults
+                  - text: .
+                - generic [ref=e292]:
+                  - generic [ref=e293]:
+                    - img [ref=e295]
+                    - text: info
+                  - paragraph [ref=e298]: Vault is deployed as a single container in the virtual cluster, and the container is not tied to any particular node.
+                - heading "Deploy VaultDirect link to Deploy Vault" [level=2] [ref=e299]:
+                  - text: Deploy Vault
+                  - link "Direct link to Deploy Vault" [ref=e300] [cursor=pointer]:
+                    - /url: "#deploy-vault"
+                    - text: "#"
+                - paragraph [ref=e301]: Use the following steps to learn how to deploy Vault to your virtual cluster.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e302]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e303] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e304]:
+                  - listitem [ref=e305]:
+                    - paragraph [ref=e306]:
+                      - text: A Spectro Cloud
+                      - link "account" [ref=e307] [cursor=pointer]:
+                        - /url: https://www.spectrocloud.com/get-started/
+                      - text: .
+                  - listitem [ref=e308]:
+                    - paragraph [ref=e309]: A Virtual Cluster with at least the following minimum resources.
+                    - list [ref=e310]:
+                      - listitem [ref=e311]: 4 CPU
+                      - listitem [ref=e312]: 6 GB Memory
+                      - listitem [ref=e313]: 6 GB Storage
+                  - listitem [ref=e314]:
+                    - paragraph [ref=e315]: Kubernetes 1.6.x or greater.
+                - heading "EnablementDirect link to Enablement" [level=3] [ref=e316]:
+                  - text: Enablement
+                  - link "Direct link to Enablement" [ref=e317] [cursor=pointer]:
+                    - /url: "#enablement"
+                    - text: "#"
+                - list [ref=e318]:
+                  - listitem [ref=e319]:
+                    - paragraph [ref=e320]:
+                      - text: Log in to
+                      - link "Palette" [ref=e321] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e322]:
+                    - paragraph [ref=e323]:
+                      - text: Click on the
+                      - strong [ref=e324]: User Menu
+                      - text: at top right, and select
+                      - strong [ref=e325]: Switch to App Mode
+                      - text: .
+                  - listitem [ref=e326]:
+                    - paragraph [ref=e327]:
+                      - text: Navigate to the left
+                      - strong [ref=e328]: Main Menu
+                      - text: and click on
+                      - strong [ref=e329]: App Profiles
+                      - text: to create a new
+                      - link "app profile" [ref=e330] [cursor=pointer]:
+                        - /url: /profiles/app-profiles/create-app-profiles/
+                      - text: . Provide the following basic information and click
+                      - strong [ref=e331]: Next
+                      - text: .
+                - table [ref=e332]:
+                  - rowgroup [ref=e333]:
+                    - row "Parameter Description" [ref=e334]:
+                      - cell "Parameter" [ref=e335]
+                      - cell "Description" [ref=e336]
+                  - rowgroup [ref=e337]:
+                    - row "Application Profile Name A custom name for the app profile." [ref=e338]:
+                      - cell "Application Profile Name" [ref=e339]
+                      - cell "A custom name for the app profile." [ref=e340]
+                    - row "Version (optional) The default value is 1.0.0. You can create multiple versions of an app profile using the format major.minor.patch." [ref=e341]:
+                      - cell "Version (optional)" [ref=e342]
+                      - cell "The default value is 1.0.0. You can create multiple versions of an app profile using the format major.minor.patch." [ref=e343]:
+                        - text: The default value is 1.0.0. You can create multiple versions of an app profile using the format
+                        - code [ref=e344]: major.minor.patch
+                        - text: .
+                    - row "Description (optional) Description of the app profile." [ref=e345]:
+                      - cell "Description (optional)" [ref=e346]
+                      - cell "Description of the app profile." [ref=e347]
+                    - row "Tag (optional) Assign tags to the app profile." [ref=e348]:
+                      - cell "Tag (optional)" [ref=e349]
+                      - cell "Assign tags to the app profile." [ref=e350]
+                - list [ref=e351]:
+                  - listitem [ref=e352]:
+                    - paragraph [ref=e353]:
+                      - text: Select the
+                      - strong [ref=e354]: Vault
+                      - text: service and start the configuration.
+                  - listitem [ref=e355]:
+                    - paragraph [ref=e356]: "Provide the following information to the wizard:"
+                - list [ref=e357]:
+                  - listitem [ref=e358]:
+                    - strong [ref=e359]: "Name:"
+                    - text: The application name.
+                  - listitem [ref=e360]:
+                    - strong [ref=e361]: "PersistentVolumeClaim Size (GiB):"
+                    - text: Select the volume as per the storage volume available in the cluster group and virtual clusters. Ensure you do not exceed the maximum storage size for your virtual cluster.
+                - list [ref=e362]:
+                  - listitem [ref=e363]:
+                    - paragraph [ref=e364]: Save your changes.
+                  - listitem [ref=e365]:
+                    - paragraph [ref=e366]:
+                      - text: Deploy the app profile to a Palette Virtual Cluster. Use the
+                      - link "Deploy a Virtual Cluster" [ref=e367] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/deploy-virtual-cluster/
+                      - text: guide for additional guidance or check out the
+                      - link "Deploy an Application using Palette Dev Engine" [ref=e368] [cursor=pointer]:
+                        - /url: /tutorials/pde/deploy-app/
+                      - text: tutorial.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e369]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e370] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e371]: You can validate the Vault instance deployed successfully by using the following steps.
+                - list [ref=e372]:
+                  - listitem [ref=e373]:
+                    - paragraph [ref=e374]:
+                      - text: Log in to
+                      - link "Palette" [ref=e375] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: and switch to
+                      - strong [ref=e376]: App Mode
+                      - text: .
+                  - listitem [ref=e377]:
+                    - paragraph [ref=e378]:
+                      - text: Navigate to the left
+                      - strong [ref=e379]: Main Menu
+                      - text: and select
+                      - strong [ref=e380]: Apps
+                      - text: .
+                  - listitem [ref=e381]:
+                    - paragraph [ref=e382]: Select your application that contains Vault to view its details page.
+                  - listitem [ref=e383]:
+                    - paragraph [ref=e384]:
+                      - text: Ensure the
+                      - strong [ref=e385]: Status
+                      - text: is
+                      - strong [ref=e386]: Deployed
+                      - text: and that the
+                      - strong [ref=e387]: Vault
+                      - text: service has a green dot next to it.
+                  - listitem [ref=e388]:
+                    - paragraph [ref=e389]:
+                      - text: Next, click on the
+                      - strong [ref=e390]: Virtual Cluster
+                      - text: link in the App details page.
+                  - listitem [ref=e391]:
+                    - paragraph [ref=e392]:
+                      - text: Click the URL to download the
+                      - strong [ref=e393]: kubeconfig
+                      - text: .
+                  - listitem [ref=e394]:
+                    - paragraph [ref=e395]:
+                      - text: Set up your local kubectl environment to use the
+                      - strong [ref=e396]: kubeconfig
+                      - text: file you downloaded. Review the
+                      - link "Access Cluster with CLI" [ref=e397] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/
+                      - text: guide for additional guidance.
+                  - listitem [ref=e398]:
+                    - paragraph [ref=e399]: Export the following environment variables to prepare your environment to interact with Vault.
+                    - generic [ref=e401]:
+                      - code [ref=e403]:
+                        - generic [ref=e404]: export VAULT_ADDR=https://127.0.0.1:8200
+                      - button "Copy code to clipboard" [ref=e406] [cursor=pointer]:
+                        - generic [ref=e407]:
+                          - img [ref=e408]
+                          - img [ref=e410]
+                    - generic [ref=e413]:
+                      - code [ref=e415]:
+                        - generic [ref=e416]: export VAULT_SKIP_VERIFY=true
+                      - button "Copy code to clipboard" [ref=e418] [cursor=pointer]:
+                        - generic [ref=e419]:
+                          - img [ref=e420]
+                          - img [ref=e422]
+                  - listitem [ref=e424]:
+                    - paragraph [ref=e425]: Configure port forwarding between your local workstation and the pod hosting Vault. Use the following commands to configure the port forward.
+                    - generic [ref=e427]:
+                      - code [ref=e429]:
+                        - generic [ref=e430]: "VAULT_NAMESPACE=$(kubectl get pods --selector app.kubernetes.io/name=vault --all-namespaces --output jsonpath='{.items[0].metadata.namespace}') && \\"
+                        - generic [ref=e431]: "kubectl port-forward $(kubectl get pods --selector app.kubernetes.io/name=vault --all-namespaces --output jsonpath='{.items[0].metadata.name}') 8200:8200 --namespace $VAULT_NAMESPACE"
+                      - generic [ref=e432]:
+                        - button "Toggle word wrap" [ref=e433] [cursor=pointer]:
+                          - img [ref=e434]
+                        - button "Copy code to clipboard" [ref=e436] [cursor=pointer]:
+                          - generic [ref=e437]:
+                            - img [ref=e438]
+                            - img [ref=e440]
+                    - generic [ref=e443]:
+                      - code [ref=e445]:
+                        - generic [ref=e446]: "kubectl port-forward $(kubectl get pods --selector app.kubernetes.io/name=vault --all-namespaces --output jsonpath='{.items[0].metadata.name}') 8200:8200 --namespace $VAULT_NAMESPACE"
+                      - generic [ref=e447]:
+                        - button "Toggle word wrap" [ref=e448] [cursor=pointer]:
+                          - img [ref=e449]
+                        - button "Copy code to clipboard" [ref=e451] [cursor=pointer]:
+                          - generic [ref=e452]:
+                            - img [ref=e453]
+                            - img [ref=e455]
+                  - listitem [ref=e457]:
+                    - paragraph [ref=e458]:
+                      - text: Open your browser and visit
+                      - code [ref=e459]: https://localhost:8200/ui
+                      - text: to access the Vault UI. You will receive a warning due to the usage of a self-signed certificate but you can ignore this warning.
+                - paragraph [ref=e460]:
+                  - text: To acquire the Vault root token, review the
+                  - link "Vault Credentials" [ref=e461] [cursor=pointer]:
+                    - /url: "#vault-credentials"
+                  - text: section.
+                - heading "Output VariablesDirect link to Output Variables" [level=2] [ref=e462]:
+                  - text: Output Variables
+                  - link "Direct link to Output Variables" [ref=e463] [cursor=pointer]:
+                    - /url: "#output-variables"
+                    - text: "#"
+                - paragraph [ref=e464]: "The exposed output variables. Use these variables when connecting higher-level services with Vault:"
+                - table [ref=e465]:
+                  - rowgroup [ref=e466]:
+                    - row "Parameter Output Variable Description" [ref=e467]:
+                      - cell "Parameter" [ref=e468]
+                      - cell "Output Variable" [ref=e469]
+                      - cell "Description" [ref=e470]
+                  - rowgroup [ref=e471]:
+                    - 'row "Vault Root Token {{.spectro.app.$appDeploymentName.<service-name>.VAULT_ROOT_TOKEN}} The root token of the Vault instance." [ref=e472]':
+                      - cell "Vault Root Token" [ref=e473]
+                      - 'cell "{{.spectro.app.$appDeploymentName.<service-name>.VAULT_ROOT_TOKEN}}" [ref=e474]':
+                        - code [ref=e475]: "{{.spectro.app.$appDeploymentName.<service-name>.VAULT_ROOT_TOKEN}}"
+                      - cell "The root token of the Vault instance." [ref=e476]
+                    - 'row "Service Hostname {{.spectro.app.$appDeploymentName.<service-name>.VAULTMSTR_SVC}} The Kubernetes service hostname for the Vault service." [ref=e477]':
+                      - cell "Service Hostname" [ref=e478]
+                      - 'cell "{{.spectro.app.$appDeploymentName.<service-name>.VAULTMSTR_SVC}}" [ref=e479]':
+                        - code [ref=e480]: "{{.spectro.app.$appDeploymentName.<service-name>.VAULTMSTR_SVC}}"
+                      - cell "The Kubernetes service hostname for the Vault service." [ref=e481]
+                    - 'row "Service Port {{.spectro.app.$appDeploymentName.<service-name>.VAULTMSTR_SVC_PORT}} The exposed port for the Vault service." [ref=e482]':
+                      - cell "Service Port" [ref=e483]
+                      - 'cell "{{.spectro.app.$appDeploymentName.<service-name>.VAULTMSTR_SVC_PORT}}" [ref=e484]':
+                        - code [ref=e485]: "{{.spectro.app.$appDeploymentName.<service-name>.VAULTMSTR_SVC_PORT}}"
+                      - cell "The exposed port for the Vault service." [ref=e486]
+                    - 'row "Namespace {{.spectro.app.$appDeploymentName.<service-name>.VAULTMSTR_SVC_NAMESPACE}} The Kubernetes namespace the Vault instance is deployed to." [ref=e487]':
+                      - cell "Namespace" [ref=e488]
+                      - 'cell "{{.spectro.app.$appDeploymentName.<service-name>.VAULTMSTR_SVC_NAMESPACE}}" [ref=e489]':
+                        - code [ref=e490]: "{{.spectro.app.$appDeploymentName.<service-name>.VAULTMSTR_SVC_NAMESPACE}}"
+                      - cell "The Kubernetes namespace the Vault instance is deployed to." [ref=e491]
+                - heading "Vault CredentialsDirect link to Vault Credentials" [level=2] [ref=e492]:
+                  - text: Vault Credentials
+                  - link "Direct link to Vault Credentials" [ref=e493] [cursor=pointer]:
+                    - /url: "#vault-credentials"
+                    - text: "#"
+                - paragraph [ref=e494]: The Vault root token and the unseal keys are stored as a Kubernetes secret inside the virtual cluster. You can retrieve the Vault root token by following these steps.
+                - list [ref=e495]:
+                  - listitem [ref=e496]:
+                    - paragraph [ref=e497]:
+                      - text: Log in to
+                      - link "Palette" [ref=e498] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: and switch to
+                      - strong [ref=e499]: App Mode
+                      - text: .
+                  - listitem [ref=e500]:
+                    - paragraph [ref=e501]:
+                      - text: Navigate to the left
+                      - strong [ref=e502]: Main Menu
+                      - text: and select
+                      - strong [ref=e503]: Clusters
+                      - text: .
+                  - listitem [ref=e504]:
+                    - paragraph [ref=e505]: Select the cluster that has Vault installed to view its details page.
+                  - listitem [ref=e506]:
+                    - paragraph [ref=e507]:
+                      - text: Download the cluster
+                      - strong [ref=e508]: kubeconfig
+                      - text: file.
+                  - listitem [ref=e509]:
+                    - paragraph [ref=e510]:
+                      - text: Set up your local kubectl environment to use the
+                      - strong [ref=e511]: kubeconfig
+                      - text: file you downloaded. Review the
+                      - link "Access Cluster with CLI" [ref=e512] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/
+                      - text: guide for additional guidance.
+                  - listitem [ref=e513]:
+                    - paragraph [ref=e514]: You need to get the Vault namespace and application name. Issue the following command to get the unique values.
+                    - generic [ref=e516]:
+                      - code [ref=e518]:
+                        - generic [ref=e519]: "VAULT_NAMESPACE=$(kubectl get pods --selector app.kubernetes.io/name=vault --all-namespaces --output jsonpath='{.items[0].metadata.namespace}') && \\"
+                        - generic [ref=e520]: APP_NAME=$(echo "$VAULT_NAMESPACE" | sed 's/-ns$//')
+                      - generic [ref=e521]:
+                        - button "Toggle word wrap" [ref=e522] [cursor=pointer]:
+                          - img [ref=e523]
+                        - button "Copy code to clipboard" [ref=e525] [cursor=pointer]:
+                          - generic [ref=e526]:
+                            - img [ref=e527]
+                            - img [ref=e529]
+                  - listitem [ref=e531]:
+                    - paragraph [ref=e532]: Next, issue the command below to retrieve the Vault root token.
+                    - generic [ref=e534]:
+                      - code [ref=e536]:
+                        - generic [ref=e537]: "kubectl get secret $APP_NAME-unseal-keys --output jsonpath='{.data.vault-root}' --namespace $VAULT_NAMESPACE | base64 --decode"
+                      - generic [ref=e538]:
+                        - button "Toggle word wrap" [ref=e539] [cursor=pointer]:
+                          - img [ref=e540]
+                        - button "Copy code to clipboard" [ref=e542] [cursor=pointer]:
+                          - generic [ref=e543]:
+                            - img [ref=e544]
+                            - img [ref=e546]
+                  - listitem [ref=e548]:
+                    - paragraph [ref=e549]: To acquire all five unseal keys, use the following command.
+                    - generic [ref=e551]:
+                      - code [ref=e553]:
+                        - generic [ref=e554]: kubectl get secret $APP_NAME-unseal-keys --namespace $VAULT_NAMESPACE --output json \
+                        - generic [ref=e555]: "| jq -r '.data | to_entries | .[] | select(.key | startswith(\"vault-unseal-\")) | .value | @base64d + \"\\n\"'"
+                      - generic [ref=e556]:
+                        - button "Toggle word wrap" [ref=e557] [cursor=pointer]:
+                          - img [ref=e558]
+                        - button "Copy code to clipboard" [ref=e560] [cursor=pointer]:
+                          - generic [ref=e561]:
+                            - img [ref=e562]
+                            - img [ref=e564]
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e566]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e567] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e568]:
+                  - text: You can add Vault to your application profile and start integrating Vault with your applications. To learn more about integrating Vault with your applications, check out the
+                  - link "Vault App Integrations" [ref=e569] [cursor=pointer]:
+                    - /url: https://developer.hashicorp.com/vault/tutorials/app-integration
+                  - text: tutorials from HashiCorp.
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e570]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e571] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e572]:
+                  - listitem [ref=e573]:
+                    - paragraph [ref=e574]:
+                      - link "Vault Documentation" [ref=e575] [cursor=pointer]:
+                        - /url: https://developer.hashicorp.com/vault/docs
+                  - listitem [ref=e576]:
+                    - paragraph [ref=e577]:
+                      - link "HashiCorp Vault Tutorial" [ref=e578] [cursor=pointer]:
+                        - /url: https://developer.hashicorp.com/vault/tutorials
+                  - listitem [ref=e579]:
+                    - paragraph [ref=e580]:
+                      - link "Bank-Vaults Vault Operator Helm Chart" [ref=e581] [cursor=pointer]:
+                        - /url: https://github.com/bank-vaults/vault-helm-chart
+              - link "Edit this page" [ref=e585] [cursor=pointer]:
+                - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/devx/services/service-listings/vault.md
+                - img [ref=e586]
+                - text: Edit this page
+            - navigation "Docs pages" [ref=e590]:
+              - link "Previous « Redis" [ref=e591] [cursor=pointer]:
+                - /url: /devx/services/service-listings/redis-db/
+                - generic [ref=e592]: Previous
+                - generic [ref=e593]: « Redis
+              - link "Next CockroachDB »" [ref=e594] [cursor=pointer]:
+                - /url: /devx/services/service-listings/cockroach-db/
+                - generic [ref=e595]: Next
+                - generic [ref=e596]: CockroachDB »
+          - list [ref=e599]:
+            - listitem [ref=e600]:
+              - link "Vault" [ref=e601] [cursor=pointer]:
+                - /url: "#vault"
+            - listitem [ref=e602]:
+              - link "Deploy Vault" [ref=e603] [cursor=pointer]:
+                - /url: "#deploy-vault"
+              - list [ref=e604]:
+                - listitem [ref=e605]:
+                  - link "Prerequisites" [ref=e606] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e607]:
+                  - link "Enablement" [ref=e608] [cursor=pointer]:
+                    - /url: "#enablement"
+                - listitem [ref=e609]:
+                  - link "Validate" [ref=e610] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e611]:
+              - link "Output Variables" [ref=e612] [cursor=pointer]:
+                - /url: "#output-variables"
+            - listitem [ref=e613]:
+              - link "Vault Credentials" [ref=e614] [cursor=pointer]:
+                - /url: "#vault-credentials"
+            - listitem [ref=e615]:
+              - link "Next Steps" [ref=e616] [cursor=pointer]:
+                - /url: "#next-steps"
+            - listitem [ref=e617]:
+              - link "Resources" [ref=e618] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e619] [cursor=pointer]:
+    - generic [ref=e622]:
+      - img "Project Logo" [ref=e623]
+      - paragraph [ref=e624]: Ask AI
+```

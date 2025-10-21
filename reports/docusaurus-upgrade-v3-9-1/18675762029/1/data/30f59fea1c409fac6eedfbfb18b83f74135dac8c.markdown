@@ -1,0 +1,802 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [expanded] [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+                - list [ref=e96]:
+                  - listitem [ref=e97]:
+                    - generic [ref=e98]:
+                      - link "Agent Mode" [expanded] [ref=e99] [cursor=pointer]:
+                        - /url: /deployment-modes/agent-mode/
+                      - button "Toggle the collapsible sidebar category 'Agent Mode'" [ref=e100] [cursor=pointer]
+                    - list [ref=e101]:
+                      - listitem [ref=e102]:
+                        - link "Install Palette Agent" [ref=e103] [cursor=pointer]:
+                          - /url: /deployment-modes/agent-mode/install-agent-host/
+                      - listitem [ref=e104]:
+                        - link "Configure networkd to Prepare Host for Overlay Network" [ref=e105] [cursor=pointer]:
+                          - /url: /deployment-modes/agent-mode/overlay-preparation/
+                      - listitem [ref=e106]:
+                        - link "Architecture" [ref=e107] [cursor=pointer]:
+                          - /url: /deployment-modes/agent-mode/architecture/
+                      - listitem [ref=e108]:
+                        - generic [ref=e109]:
+                          - link "Manage Hosts in Agent Mode" [expanded] [ref=e110] [cursor=pointer]:
+                            - /url: /deployment-modes/agent-mode/manage-agent/
+                          - button "Toggle the collapsible sidebar category 'Manage Hosts in Agent Mode'" [ref=e111] [cursor=pointer]
+                        - list [ref=e112]:
+                          - listitem [ref=e113]:
+                            - link "Customize Local UI Theme" [ref=e114] [cursor=pointer]:
+                              - /url: /deployment-modes/agent-mode/manage-agent/localui-theming/
+                          - listitem [ref=e115]:
+                            - link "Configure Regularly Scheduled OS Upgrades" [ref=e116] [cursor=pointer]:
+                              - /url: /deployment-modes/agent-mode/manage-agent/os-upgrades/
+                  - listitem [ref=e117]:
+                    - generic [ref=e118]:
+                      - link "Appliance Mode" [ref=e119] [cursor=pointer]:
+                        - /url: /deployment-modes/appliance-mode/
+                      - button "Toggle the collapsible sidebar category 'Appliance Mode'" [ref=e120] [cursor=pointer]
+                  - listitem [ref=e121]:
+                    - link "Controller Mode" [ref=e122] [cursor=pointer]:
+                      - /url: /deployment-modes/controller-mode/
+              - listitem [ref=e123]:
+                - generic [ref=e124]:
+                  - link "Clusters" [ref=e125] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e127]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e133] [cursor=pointer]
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e136] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e138]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e140] [cursor=pointer]
+              - listitem [ref=e141]:
+                - generic [ref=e142]:
+                  - link "Palette Dev Engine" [ref=e143] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e145]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e147] [cursor=pointer]
+              - listitem [ref=e148]:
+                - generic [ref=e149]:
+                  - link "Virtual Machine Orchestrator" [ref=e150] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e152]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Workspaces" [ref=e157] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e159]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e161] [cursor=pointer]
+              - listitem [ref=e162]:
+                - generic [ref=e163]:
+                  - link "Packs List" [ref=e164] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e166]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e168] [cursor=pointer]
+              - listitem [ref=e169]:
+                - generic [ref=e170]:
+                  - link "User & Role Management" [ref=e171] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e173]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e175] [cursor=pointer]
+              - listitem [ref=e176]:
+                - generic [ref=e177]:
+                  - link "Registries and Packs" [ref=e178] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e180]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e182] [cursor=pointer]
+              - listitem [ref=e183]:
+                - generic [ref=e184]:
+                  - link "Security" [ref=e185] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e187]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e189] [cursor=pointer]
+              - listitem [ref=e190]:
+                - generic [ref=e191]:
+                  - link "Audit Logs" [ref=e192] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e194]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e196] [cursor=pointer]
+              - listitem [ref=e197]:
+                - generic [ref=e198]:
+                  - link "Self-Hosted Palette" [ref=e199] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e201]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e203] [cursor=pointer]
+              - listitem [ref=e204]:
+                - generic [ref=e205]:
+                  - link "Palette VerteX" [ref=e206] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e208]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e210] [cursor=pointer]
+              - listitem [ref=e211]:
+                - generic [ref=e212]:
+                  - link "Tenant Administration" [ref=e213] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e215]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e217] [cursor=pointer]
+              - listitem [ref=e218]:
+                - generic [ref=e219]:
+                  - link "Automation" [ref=e220] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e222]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e224] [cursor=pointer]
+              - listitem [ref=e225]:
+                - generic [ref=e226]:
+                  - link "Troubleshooting" [ref=e227] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e229]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e231] [cursor=pointer]
+              - listitem [ref=e232]:
+                - link "Glossary" [ref=e233] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e235]
+                  - text: Glossary
+              - listitem [ref=e237]:
+                - generic [ref=e238]:
+                  - link "Compliance & Legal" [ref=e239] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e241]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e243] [cursor=pointer]
+              - listitem [ref=e244]:
+                - button "Privacy Settings" [ref=e245] [cursor=pointer]:
+                  - img [ref=e246]
+                  - text: Privacy Settings
+      - main [ref=e248]:
+        - generic [ref=e250]:
+          - generic [ref=e252]:
+            - article [ref=e253]:
+              - navigation "Breadcrumbs" [ref=e254]:
+                - list [ref=e255]:
+                  - listitem [ref=e256]:
+                    - link "Home page" [ref=e257] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e258]
+                  - listitem [ref=e260]:
+                    - link "Deployment Modes" [ref=e261] [cursor=pointer]:
+                      - /url: /deployment-modes/
+                  - listitem [ref=e262]:
+                    - link "Agent Mode" [ref=e263] [cursor=pointer]:
+                      - /url: /deployment-modes/agent-mode/
+                  - listitem [ref=e264]:
+                    - link "Manage Hosts in Agent Mode" [ref=e265] [cursor=pointer]:
+                      - /url: /deployment-modes/agent-mode/manage-agent/
+                  - listitem [ref=e266]:
+                    - generic [ref=e267]: Configure Regularly Scheduled OS Upgrades
+              - generic [ref=e268]:
+                - heading "Configure Regularly Scheduled OS Upgrades" [level=1] [ref=e270]
+                - paragraph [ref=e271]: Agent mode hosts install and manage their Operating System (OS) outside Palette. This approach brings great flexibility in terms of architecture, but it has the drawback that Palette cannot upgrade, patch or manage the operating systems of the hosts. This can lead to inconsistencies, missed updates, or operational risks.
+                - paragraph [ref=e272]: This page demonstrates how to configure regularly scheduled OS upgrades by leveraging cluster profiles. You will learn how to create your own Kubernetes manifest containing your custom OS upgrade script. Your cluster nodes will then be selected based on configured node labels and upgraded periodically according to a cron schedule you choose.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e273]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e274] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e275]:
+                  - listitem [ref=e276]:
+                    - text: A Palette cluster deployed on one or multiple hosts with the Palette Agent installed. Refer to the
+                    - link "Install Agent Mode" [ref=e277] [cursor=pointer]:
+                      - /url: /deployment-modes/agent-mode/install-agent-host/
+                    - text: guide for further details. The cluster should be listed as
+                    - strong [ref=e278]: Healthy
+                    - text: and with a
+                    - strong [ref=e279]: Running
+                    - text: status.
+                    - list [ref=e280]:
+                      - listitem [ref=e281]: The host must have access to the internet and a connection to Palette.
+                  - listitem [ref=e282]: Access to a terminal with network access to your cluster.
+                  - listitem [ref=e283]:
+                    - text: Kubectl installed locally. Refer to the Kubernetes
+                    - link "Install Tools" [ref=e284] [cursor=pointer]:
+                      - /url: https://kubernetes.io/docs/tasks/tools/
+                    - text: guide for further details.
+                - heading "EnablementDirect link to Enablement" [level=2] [ref=e285]:
+                  - text: Enablement
+                  - link "Direct link to Enablement" [ref=e286] [cursor=pointer]:
+                    - /url: "#enablement"
+                    - text: "#"
+                - list [ref=e287]:
+                  - listitem [ref=e288]:
+                    - paragraph [ref=e289]:
+                      - text: Log in to
+                      - link "Palette" [ref=e290] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e291]:
+                    - paragraph [ref=e292]:
+                      - text: Navigate to the left main menu and select
+                      - strong [ref=e293]: Clusters
+                      - text: .
+                  - listitem [ref=e294]:
+                    - paragraph [ref=e295]: Select your cluster to access the cluster details page.
+                  - listitem [ref=e296]:
+                    - paragraph [ref=e297]:
+                      - text: Download the
+                      - strong [ref=e298]: kubeconfig
+                      - text: file for your cluster. Open a terminal and navigate to the location of the file.
+                  - listitem [ref=e299]:
+                    - paragraph [ref=e300]:
+                      - text: Set the
+                      - code [ref=e301]: KUBECONFIG
+                      - text: environment variable to the file path of the
+                      - strong [ref=e302]: kubeconfig
+                      - text: file to enable you to connect to the cluster using
+                      - link "kubectl CLI" [ref=e303] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/reference/kubectl/
+                      - text: . Refer to the
+                      - link "Access Cluster with CLI" [ref=e304] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/#access-cluster-with-cli
+                      - text: section for further guidance.
+                    - generic [ref=e306]:
+                      - code [ref=e308]:
+                        - generic [ref=e309]: export KUBECONFIG=/path/to/your/kubeconfig
+                      - button "Copy code to clipboard" [ref=e311] [cursor=pointer]:
+                        - generic [ref=e312]:
+                          - img [ref=e313]
+                          - img [ref=e315]
+                  - listitem [ref=e317]:
+                    - paragraph [ref=e318]:
+                      - text: Execute the following commands to find the
+                      - code [ref=e319]: spectro-task-XXX
+                      - text: namespace of your cluster and save it to the
+                      - code [ref=e320]: SYSTEM_UPGRADE_NAMESPACE
+                      - text: variable. This namespace will be different between clusters.
+                    - generic [ref=e322]:
+                      - code [ref=e324]:
+                        - generic [ref=e325]: export SYSTEM_UPGRADE_NAMESPACE=$(kubectl get namespaces --no-headers --output custom-columns=":metadata.name" | grep '^spectro-task')
+                        - generic [ref=e326]: echo $SYSTEM_UPGRADE_NAMESPACE
+                      - generic [ref=e327]:
+                        - button "Toggle word wrap" [ref=e328] [cursor=pointer]:
+                          - img [ref=e329]
+                        - button "Copy code to clipboard" [ref=e331] [cursor=pointer]:
+                          - generic [ref=e332]:
+                            - img [ref=e333]
+                            - img [ref=e335]
+                    - paragraph [ref=e337]: The output will be similar to the following snippet.
+                    - code [ref=e341]:
+                      - generic [ref=e342]: spectro-task-6851ddd04b1b188784c06291
+                  - listitem [ref=e343]:
+                    - paragraph [ref=e344]:
+                      - text: Provide an upgrade frequency using a cron format. This is used to configure a Kubernetes
+                      - link "CronJob" [ref=e345] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/
+                      - text: to execute upgrades on a repeating schedule. You can find some common examples of cron schedules in the following table.
+                    - table [ref=e346]:
+                      - rowgroup [ref=e347]:
+                        - row "Expression Description" [ref=e348]:
+                          - cell "Expression" [ref=e349]:
+                            - strong [ref=e350]: Expression
+                          - cell "Description" [ref=e351]:
+                            - strong [ref=e352]: Description
+                      - rowgroup [ref=e353]:
+                        - row "0 0 1 1 * Once a year at midnight of 1 January" [ref=e354]:
+                          - cell "0 0 1 1 *" [ref=e355]:
+                            - code [ref=e356]: 0 0 1 1 *
+                          - cell "Once a year at midnight of 1 January" [ref=e357]
+                        - row "0 0 1 * * Once a month at midnight of the first day of the month" [ref=e358]:
+                          - cell "0 0 1 * *" [ref=e359]:
+                            - code [ref=e360]: 0 0 1 * *
+                          - cell "Once a month at midnight of the first day of the month" [ref=e361]
+                        - row "0 0 * * 0 Once a week at midnight on Sunday morning" [ref=e362]:
+                          - cell "0 0 * * 0" [ref=e363]:
+                            - code [ref=e364]: 0 0 * * 0
+                          - cell "Once a week at midnight on Sunday morning" [ref=e365]
+                        - row "0 0 * * * Once a day at midnight" [ref=e366]:
+                          - cell "0 0 * * *" [ref=e367]:
+                            - code [ref=e368]: 0 0 * * *
+                          - cell "Once a day at midnight" [ref=e369]
+                        - row "0 * * * * Once an hour at the beginning of the hour" [ref=e370]:
+                          - cell "0 * * * *" [ref=e371]:
+                            - code [ref=e372]: 0 * * * *
+                          - cell "Once an hour at the beginning of the hour" [ref=e373]
+                    - paragraph [ref=e374]:
+                      - text: Execute the following command in your terminal, replacing the placeholder with your preferred cron schedule. The command saves your chosen schedule to the
+                      - code [ref=e375]: SYSTEM_UPGRADE_SCHEDULE
+                      - text: variable.
+                    - generic [ref=e377]:
+                      - code [ref=e379]:
+                        - generic [ref=e380]: export SYSTEM_UPGRADE_SCHEDULE="REPLACE ME"
+                      - button "Copy code to clipboard" [ref=e382] [cursor=pointer]:
+                        - generic [ref=e383]:
+                          - img [ref=e384]
+                          - img [ref=e386]
+                  - listitem [ref=e388]:
+                    - paragraph [ref=e389]:
+                      - text: Execute the following command in your terminal, replacing the placeholder with a node label of your choice. This variable allows you to customize which nodes should be periodically updated. The command saves your label to the
+                      - code [ref=e390]: SYSTEM_UPGRADE_NODE_LABEL
+                      - text: variable.
+                    - generic [ref=e392]:
+                      - code [ref=e394]:
+                        - generic [ref=e395]: export SYSTEM_UPGRADE_NODE_LABEL="REPLACE ME"
+                      - button "Copy code to clipboard" [ref=e397] [cursor=pointer]:
+                        - generic [ref=e398]:
+                          - img [ref=e399]
+                          - img [ref=e401]
+                  - listitem [ref=e403]:
+                    - paragraph [ref=e404]: Apply the node label to all the nodes that you want updated. Execute the command by replacing the placeholder with the name of the node. Repeat this step for each node you want to upgrade.
+                    - generic [ref=e406]:
+                      - code [ref=e408]:
+                        - generic [ref=e409]: kubectl label node REPLACE-ME $SYSTEM_UPGRADE_NODE_LABEL=
+                      - button "Copy code to clipboard" [ref=e411] [cursor=pointer]:
+                        - generic [ref=e412]:
+                          - img [ref=e413]
+                          - img [ref=e415]
+                    - generic [ref=e417]:
+                      - generic [ref=e418]:
+                        - img [ref=e420]
+                        - text: info
+                      - paragraph [ref=e423]: Nodes are drained, upgraded, and rebooted one by one. Ensure that your cluster has enough resources to perform rolling upgrades in order to avoid outages.
+                  - listitem [ref=e424]:
+                    - paragraph [ref=e425]:
+                      - text: Save your upgrade scripts to a file titled
+                      - code [ref=e426]: upgrades.sh
+                      - text: . You can provide any instructions that you want to execute on system upgrade and reboot. The following example provides upgrade instructions for Ubuntu, but you can modify them to work according to your host operating system. The command creates the
+                      - code [ref=e427]: upgrades.sh
+                      - text: file in your local directory.
+                    - generic [ref=e429]:
+                      - code [ref=e431]:
+                        - generic [ref=e432]: cat << 'EOF' > upgrades.sh
+                        - generic [ref=e433]: "#!/bin/sh"
+                        - generic [ref=e434]: set -e
+                        - generic [ref=e435]: secrets=$(dirname "$0")
+                        - generic [ref=e436]: export DEBIAN_FRONTEND=noninteractive
+                        - generic [ref=e437]: apt-get --assume-yes update
+                        - generic [ref=e438]: apt-get -o Dpkg::Options::="--force-confold" dist-upgrade -q -y --force-yes
+                        - generic [ref=e439]: EOF
+                      - generic [ref=e440]:
+                        - button "Toggle word wrap" [ref=e441] [cursor=pointer]:
+                          - img [ref=e442]
+                        - button "Copy code to clipboard" [ref=e444] [cursor=pointer]:
+                          - generic [ref=e445]:
+                            - img [ref=e446]
+                            - img [ref=e448]
+                  - listitem [ref=e450]:
+                    - paragraph [ref=e451]:
+                      - text: Execute the following commands to create the
+                      - code [ref=e452]: upgrades.yaml
+                      - text: file using your namespace, upgrade schedule, labels, and upgrade script variables.
+                    - generic [ref=e454]:
+                      - code [ref=e456]:
+                        - generic [ref=e457]: cat << EOF > upgrades.yaml
+                        - generic [ref=e458]: "---"
+                        - generic [ref=e459]: "apiVersion: v1"
+                        - generic [ref=e460]: "kind: Secret"
+                        - generic [ref=e461]: "metadata:"
+                        - generic [ref=e462]: "name: os-upgrade-script"
+                        - generic [ref=e463]: "namespace: $SYSTEM_UPGRADE_NAMESPACE"
+                        - generic [ref=e464]: "type: Opaque"
+                        - generic [ref=e465]: "stringData:"
+                        - generic [ref=e466]: "upgrade.sh: |"
+                        - generic [ref=e467]: $(sed 's/^/ /' upgrades.sh)
+                        - generic [ref=e468]: "---"
+                        - generic [ref=e469]: "apiVersion: v1"
+                        - generic [ref=e470]: "kind: Secret"
+                        - generic [ref=e471]: "metadata:"
+                        - generic [ref=e472]: "name: os-upgrade-plan"
+                        - generic [ref=e473]: "namespace: $SYSTEM_UPGRADE_NAMESPACE"
+                        - generic [ref=e474]: "type: Opaque"
+                        - generic [ref=e475]: "stringData:"
+                        - generic [ref=e476]: "plan.yaml: |"
+                        - generic [ref=e477]: "apiVersion: cluster.spectrocloud.com/v1alpha1"
+                        - generic [ref=e478]: "kind: SpectroSystemTask"
+                        - generic [ref=e479]: "metadata:"
+                        - generic [ref=e480]: "name: os-upgrade-plan"
+                        - generic [ref=e481]: "namespace: $SYSTEM_UPGRADE_NAMESPACE"
+                        - generic [ref=e482]: "spec:"
+                        - generic [ref=e483]: "concurrency: 1"
+                        - generic [ref=e484]: "nodeSelector:"
+                        - generic [ref=e485]: "matchExpressions:"
+                        - generic [ref=e486]: "- { key: $SYSTEM_UPGRADE_NODE_LABEL, operator: Exists }"
+                        - generic [ref=e487]: "serviceAccountName: spectro-task"
+                        - generic [ref=e488]: "secrets:"
+                        - generic [ref=e489]: "- name: os-upgrade-script"
+                        - generic [ref=e490]: "path: /host/run/spectro-task/secrets/bionic"
+                        - generic [ref=e491]: "tolerations:"
+                        - generic [ref=e492]: "- key: node-role.kubernetes.io/master"
+                        - generic [ref=e493]: "operator: Exists"
+                        - generic [ref=e494]: "effect: NoSchedule"
+                        - generic [ref=e495]: "- key: node-role.kubernetes.io/controlplane"
+                        - generic [ref=e496]: "operator: Exists"
+                        - generic [ref=e497]: "effect: NoSchedule"
+                        - generic [ref=e498]: "drain:"
+                        - generic [ref=e499]: "force: true"
+                        - generic [ref=e500]: "version: bionic"
+                        - generic [ref=e501]: "task:"
+                        - generic [ref=e502]: "image: us-docker.pkg.dev/palette-images/third-party/ubuntu:22.04"
+                        - generic [ref=e503]: "command: [\"chroot\", \"/host\"]"
+                        - generic [ref=e504]: "args: [\"sh\", \"/run/spectro-task/secrets/bionic/upgrade.sh\"]"
+                        - generic [ref=e505]: "---"
+                        - generic [ref=e506]: "apiVersion: batch/v1"
+                        - generic [ref=e507]: "kind: CronJob"
+                        - generic [ref=e508]: "metadata:"
+                        - generic [ref=e509]: "name: os-upgrade-cronjob"
+                        - generic [ref=e510]: "namespace: $SYSTEM_UPGRADE_NAMESPACE"
+                        - generic [ref=e511]: "spec:"
+                        - generic [ref=e512]: "schedule: \"$SYSTEM_UPGRADE_SCHEDULE\""
+                        - generic [ref=e513]: "jobTemplate:"
+                        - generic [ref=e514]: "spec:"
+                        - generic [ref=e515]: "template:"
+                        - generic [ref=e516]: "spec:"
+                        - generic [ref=e517]: "serviceAccountName: spectro-task"
+                        - generic [ref=e518]: "containers:"
+                        - generic [ref=e519]: "- name: os-upgrade-job"
+                        - generic [ref=e520]: "image: us-docker.pkg.dev/palette-images/third-party/ubuntu:22.04"
+                        - generic [ref=e521]: "command:"
+                        - generic [ref=e522]: "- sh"
+                        - generic [ref=e523]: "- -c"
+                        - generic [ref=e524]: "- |"
+                        - generic [ref=e525]: apt-get update
+                        - generic [ref=e526]: apt-get install -y curl
+                        - generic [ref=e527]: curl -LO "https://dl.k8s.io/release/\$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+                        - generic [ref=e528]: chmod +x kubectl
+                        - generic [ref=e529]: mv kubectl /usr/local/bin/
+                        - generic [ref=e530]: export KUBECONFIG=/run/kubeconfig
+                        - generic [ref=e531]: kubectl get plan os-upgrade-plan --namespace $SYSTEM_UPGRADE_NAMESPACE
+                        - generic [ref=e532]: if [ \$? -eq 0 ]; then
+                        - generic [ref=e533]: echo "Upgrade plan exists. Retrigger it."
+                        - generic [ref=e534]: VERSION="os-upgrade-plan-\$(date +%Y%m%d%H%M%S)"
+                        - generic [ref=e535]: "kubectl patch plan os-upgrade-plan --namespace $SYSTEM_UPGRADE_NAMESPACE --type=json --patch=\"[{\\\"op\\\": \\\"replace\\\", \\\"path\\\": \\\"/spec/version\\\", \\\"value\\\": \\\"\\${VERSION}\\\"}]\""
+                        - generic [ref=e536]: else
+                        - generic [ref=e537]: echo "Upgrade plan does not exist. Create it."
+                        - generic [ref=e538]: "kubectl get secret os-upgrade-plan --namespace $SYSTEM_UPGRADE_NAMESPACE --output go-template='{{ index .data \"plan.yaml\" | base64decode }}' | kubectl apply --filename -"
+                        - generic [ref=e539]: fi
+                        - generic [ref=e540]: "restartPolicy: OnFailure"
+                        - generic [ref=e541]: EOF
+                      - generic [ref=e542]:
+                        - button "Toggle word wrap" [ref=e543] [cursor=pointer]:
+                          - img [ref=e544]
+                        - button "Copy code to clipboard" [ref=e546] [cursor=pointer]:
+                          - generic [ref=e547]:
+                            - img [ref=e548]
+                            - img [ref=e550]
+                    - paragraph [ref=e552]:
+                      - text: The command creates the
+                      - code [ref=e553]: upgrades.yaml
+                      - text: file in your current directory. The YAML file defines the following Kubernetes resources.
+                    - table [ref=e554]:
+                      - rowgroup [ref=e555]:
+                        - row "Resource Name Description" [ref=e556]:
+                          - cell "Resource" [ref=e557]:
+                            - strong [ref=e558]: Resource
+                          - cell "Name" [ref=e559]:
+                            - strong [ref=e560]: Name
+                          - cell "Description" [ref=e561]:
+                            - strong [ref=e562]: Description
+                      - rowgroup [ref=e563]:
+                        - row "Secret os-upgrade-script Stores the upgrade.sh shell script, which defines the upgrade logic to be executed on target nodes. This script is later mounted into the container via a secret volume." [ref=e564]:
+                          - cell "Secret" [ref=e565]:
+                            - code [ref=e566]: Secret
+                          - cell "os-upgrade-script" [ref=e567]:
+                            - code [ref=e568]: os-upgrade-script
+                          - cell "Stores the upgrade.sh shell script, which defines the upgrade logic to be executed on target nodes. This script is later mounted into the container via a secret volume." [ref=e569]:
+                            - text: Stores the
+                            - code [ref=e570]: upgrade.sh
+                            - text: shell script, which defines the upgrade logic to be executed on target nodes. This script is later mounted into the container via a secret volume.
+                        - row "Secret os-upgrade-plan Stores the YAML definition of a SpectroSystemTask resource in its plan.yaml field. The CronJob retrieves this secret and applies the embedded plan to initiate the upgrade process." [ref=e571]:
+                          - cell "Secret" [ref=e572]:
+                            - code [ref=e573]: Secret
+                          - cell "os-upgrade-plan" [ref=e574]:
+                            - code [ref=e575]: os-upgrade-plan
+                          - cell "Stores the YAML definition of a SpectroSystemTask resource in its plan.yaml field. The CronJob retrieves this secret and applies the embedded plan to initiate the upgrade process." [ref=e576]:
+                            - text: Stores the YAML definition of a
+                            - code [ref=e577]: SpectroSystemTask
+                            - text: resource in its
+                            - code [ref=e578]: plan.yaml
+                            - text: field. The CronJob retrieves this secret and applies the embedded plan to initiate the upgrade process.
+                        - row "CronJob os-upgrade-job Schedules the upgrade plan to execute at regular intervals and provides a restart policy should the plan fail." [ref=e579]:
+                          - cell "CronJob" [ref=e580]:
+                            - code [ref=e581]: CronJob
+                          - cell "os-upgrade-job" [ref=e582]:
+                            - code [ref=e583]: os-upgrade-job
+                          - cell "Schedules the upgrade plan to execute at regular intervals and provides a restart policy should the plan fail." [ref=e584]
+                  - listitem [ref=e585]:
+                    - paragraph [ref=e586]:
+                      - text: Navigate back to
+                      - link "Palette" [ref=e587] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: in your browser. Select
+                      - strong [ref=e588]: Profiles
+                      - text: from the left main menu.
+                  - listitem [ref=e589]:
+                    - paragraph [ref=e590]: Select the cluster profile corresponding to your agent mode cluster.
+                  - listitem [ref=e591]:
+                    - paragraph [ref=e592]:
+                      - text: Click on the version drop-down menu. Select the
+                      - strong [ref=e593]: Create new version
+                      - text: option. Fill in the
+                      - strong [ref=e594]: Version
+                      - text: input and click
+                      - strong [ref=e595]: Confirm
+                      - text: to create a new version of your cluster profile. The new profile version opens.
+                  - listitem [ref=e596]:
+                    - paragraph [ref=e597]:
+                      - text: Click
+                      - strong [ref=e598]: Add manifest
+                      - text: . The manifest editor appears. Fill in the
+                      - strong [ref=e599]: Layer name
+                      - text: input field. Then, click
+                      - strong [ref=e600]: New Manifest
+                      - text: . Input a name for the manifest file. Click on the check or press Enter to open the editor.
+                  - listitem [ref=e601]:
+                    - paragraph [ref=e602]:
+                      - text: Paste the contents of the
+                      - code [ref=e603]: upgrades.yaml
+                      - text: file that you have created in
+                      - strong [ref=e604]: Step 11
+                      - text: . Click
+                      - strong [ref=e605]: Confirm Updates
+                      - text: to save your manifest. Then, click
+                      - strong [ref=e606]: Save Changes
+                      - text: to save your manifest to the cluster profile.
+                  - listitem [ref=e607]:
+                    - paragraph [ref=e608]:
+                      - text: Navigate to the left main menu and select
+                      - strong [ref=e609]: Clusters
+                      - text: .
+                  - listitem [ref=e610]:
+                    - paragraph [ref=e611]: Select your cluster to access the cluster details page.
+                  - listitem [ref=e612]:
+                    - paragraph [ref=e613]:
+                      - text: Click on the
+                      - strong [ref=e614]: Profiles
+                      - text: tab.
+                  - listitem [ref=e615]:
+                    - paragraph [ref=e616]:
+                      - text: Select the newly created version of your cluster profile. Click
+                      - strong [ref=e617]: Save
+                      - text: .
+                - paragraph [ref=e618]:
+                  - text: Palette applies your manifest to the cluster. The Kubernetes resources responsible for the system upgrade are created in the
+                  - code [ref=e619]: spectro-task-xxx
+                  - text: namespace.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e620]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e621] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e622]:
+                  - listitem [ref=e623]:
+                    - paragraph [ref=e624]:
+                      - text: Log in to
+                      - link "Palette" [ref=e625] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e626]:
+                    - paragraph [ref=e627]:
+                      - text: Navigate to the left main menu and select
+                      - strong [ref=e628]: Clusters
+                      - text: .
+                  - listitem [ref=e629]:
+                    - paragraph [ref=e630]: Select your cluster to access the cluster details page.
+                  - listitem [ref=e631]:
+                    - paragraph [ref=e632]:
+                      - text: Download the
+                      - strong [ref=e633]: kubeconfig
+                      - text: file for your cluster. Open a terminal and navigate to the location of the file.
+                  - listitem [ref=e634]:
+                    - paragraph [ref=e635]:
+                      - text: Set the
+                      - code [ref=e636]: KUBECONFIG
+                      - text: environment variable to the file path of the
+                      - strong [ref=e637]: kubeconfig
+                      - text: file to enable you to connect to it using
+                      - link "kubectl CLI" [ref=e638] [cursor=pointer]:
+                        - /url: https://kubernetes.io/docs/reference/kubectl/
+                      - text: . Refer to the
+                      - link "Access Cluster with CLI" [ref=e639] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/palette-webctl/#access-cluster-with-cli
+                      - text: section for further guidance.
+                    - generic [ref=e641]:
+                      - code [ref=e643]:
+                        - generic [ref=e644]: export KUBECONFIG=/path/to/your/kubeconfig
+                      - button "Copy code to clipboard" [ref=e646] [cursor=pointer]:
+                        - generic [ref=e647]:
+                          - img [ref=e648]
+                          - img [ref=e650]
+                  - listitem [ref=e652]:
+                    - paragraph [ref=e653]:
+                      - text: Execute the following commands to find the
+                      - code [ref=e654]: spectro-task-XXX
+                      - text: namespace of your cluster and save it to the
+                      - code [ref=e655]: SYSTEM_UPGRADE_NAMESPACE
+                      - text: variable. This namespace will be different between clusters.
+                    - generic [ref=e657]:
+                      - code [ref=e659]:
+                        - generic [ref=e660]: export SYSTEM_UPGRADE_NAMESPACE=$(kubectl get namespaces --no-headers --output custom-columns=":metadata.name" | grep '^spectro-task')
+                        - generic [ref=e661]: echo $SYSTEM_UPGRADE_NAMESPACE
+                      - generic [ref=e662]:
+                        - button "Toggle word wrap" [ref=e663] [cursor=pointer]:
+                          - img [ref=e664]
+                        - button "Copy code to clipboard" [ref=e666] [cursor=pointer]:
+                          - generic [ref=e667]:
+                            - img [ref=e668]
+                            - img [ref=e670]
+                    - paragraph [ref=e672]: The output will be similar to the following snippet.
+                    - code [ref=e676]:
+                      - generic [ref=e677]: spectro-task-6851ddd04b1b188784c06291
+                  - listitem [ref=e678]:
+                    - paragraph [ref=e679]:
+                      - text: Issue the following command to retrieve a list of secrets and cronjobs under the
+                      - code [ref=e680]: spectro-task-xxxxx
+                      - text: namespace.
+                    - generic [ref=e682]:
+                      - code [ref=e684]:
+                        - generic [ref=e685]: kubectl get secret,cronjob --namespace $SYSTEM_UPGRADE_NAMESPACE
+                      - generic [ref=e686]:
+                        - button "Toggle word wrap" [ref=e687] [cursor=pointer]:
+                          - img [ref=e688]
+                        - button "Copy code to clipboard" [ref=e690] [cursor=pointer]:
+                          - generic [ref=e691]:
+                            - img [ref=e692]
+                            - img [ref=e694]
+                    - paragraph [ref=e696]:
+                      - text: Confirm the secrets
+                      - code [ref=e697]: secret/os-upgrade-plan
+                      - text: ","
+                      - code [ref=e698]: secret/os-upgrade-script
+                      - text: and the
+                      - code [ref=e699]: cronjob.batch/os-upgrade-cronjob
+                      - text: cron job were created successfully.
+                    - generic [ref=e700]:
+                      - generic [ref=e701]: Example Output
+                      - generic [ref=e702]:
+                        - code [ref=e704]:
+                          - generic [ref=e705]: NAME TYPE DATA AGE
+                          - generic [ref=e706]: secret/cert-renewal-script Opaque 1 41m
+                          - generic [ref=e707]: secret/ntp-update-config Opaque 1 42m
+                          - generic [ref=e708]: secret/ntp-update-script Opaque 1 42m
+                          - generic [ref=e709]: secret/os-upgrade-plan Opaque 1 10m
+                          - generic [ref=e710]: secret/os-upgrade-script Opaque 1 10m
+                          - generic [ref=e711]: secret/sshkeys-update-script Opaque 1 41m
+                          - generic [ref=e712]: secret/stylus-upgrade Opaque 1 41m
+                          - generic [ref=e713]: NAME SCHEDULE TIMEZONE SUSPEND ACTIVE LAST SCHEDULE AGE
+                          - generic [ref=e714]: cronjob.batch/os-upgrade-cronjob 0 * * * * <none> False 0 <none> 10m
+                        - generic [ref=e715]:
+                          - button "Toggle word wrap" [ref=e716] [cursor=pointer]:
+                            - img [ref=e717]
+                          - button "Copy code to clipboard" [ref=e719] [cursor=pointer]:
+                            - generic [ref=e720]:
+                              - img [ref=e721]
+                              - img [ref=e723]
+              - generic [ref=e725]:
+                - generic [ref=e727]:
+                  - text: "Tags:"
+                  - list [ref=e728]:
+                    - listitem [ref=e729]:
+                      - link "edge" [ref=e730] [cursor=pointer]:
+                        - /url: /tags/edge/
+                - link "Edit this page" [ref=e733] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/deployment-modes/agent-mode/manage-agent/os-upgrades.md
+                  - img [ref=e734]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e738]:
+              - link "Previous « Customize Local UI Theme" [ref=e739] [cursor=pointer]:
+                - /url: /deployment-modes/agent-mode/manage-agent/localui-theming/
+                - generic [ref=e740]: Previous
+                - generic [ref=e741]: « Customize Local UI Theme
+              - link "Next Appliance Mode »" [ref=e742] [cursor=pointer]:
+                - /url: /deployment-modes/appliance-mode/
+                - generic [ref=e743]: Next
+                - generic [ref=e744]: Appliance Mode »
+          - list [ref=e747]:
+            - listitem [ref=e748]:
+              - link "Prerequisites" [ref=e749] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e750]:
+              - link "Enablement" [ref=e751] [cursor=pointer]:
+                - /url: "#enablement"
+            - listitem [ref=e752]:
+              - link "Validate" [ref=e753] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e754] [cursor=pointer]:
+    - generic [ref=e757]:
+      - img "Project Logo" [ref=e758]
+      - paragraph [ref=e759]: Ask AI
+```

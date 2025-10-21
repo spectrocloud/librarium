@@ -1,0 +1,470 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [expanded] [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+                - list [ref=e73]:
+                  - listitem [ref=e74]:
+                    - link "Overview" [ref=e75] [cursor=pointer]:
+                      - /url: /architecture/architecture-overview/
+                  - listitem [ref=e76]:
+                    - link "Order of Operations" [ref=e77] [cursor=pointer]:
+                      - /url: /architecture/orchestration-spectrocloud/
+                  - listitem [ref=e78]:
+                    - link "Network Ports" [ref=e79] [cursor=pointer]:
+                      - /url: /architecture/networking-ports/
+                  - listitem [ref=e80]:
+                    - link "gRPC and Proxies" [ref=e81] [cursor=pointer]:
+                      - /url: /architecture/grps-proxy/
+                  - listitem [ref=e82]:
+                    - link "IP Addresses" [ref=e83] [cursor=pointer]:
+                      - /url: /architecture/palette-public-ips/
+                  - listitem [ref=e84]:
+                    - link "Namespaces and Pods" [ref=e85] [cursor=pointer]:
+                      - /url: /architecture/palette-namespaces-pods/
+                  - listitem [ref=e86]:
+                    - link "Palette eXtended Kubernetes" [ref=e87] [cursor=pointer]:
+                      - /url: /architecture/pxk/
+              - listitem [ref=e88]:
+                - generic [ref=e89]:
+                  - link "Profiles" [ref=e90] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e92]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e96] [cursor=pointer]
+              - listitem [ref=e97]:
+                - generic [ref=e98]:
+                  - link "Cluster Templates" [ref=e99] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e101]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e103] [cursor=pointer]
+              - listitem [ref=e104]:
+                - generic [ref=e105]:
+                  - link "Deployment Modes" [ref=e106] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e108]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e110] [cursor=pointer]
+              - listitem [ref=e111]:
+                - generic [ref=e112]:
+                  - link "Clusters" [ref=e113] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e115]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e121] [cursor=pointer]
+              - listitem [ref=e122]:
+                - generic [ref=e123]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e124] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e126]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e128] [cursor=pointer]
+              - listitem [ref=e129]:
+                - generic [ref=e130]:
+                  - link "Palette Dev Engine" [ref=e131] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e133]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e135] [cursor=pointer]
+              - listitem [ref=e136]:
+                - generic [ref=e137]:
+                  - link "Virtual Machine Orchestrator" [ref=e138] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e140]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e142] [cursor=pointer]
+              - listitem [ref=e143]:
+                - generic [ref=e144]:
+                  - link "Workspaces" [ref=e145] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e147]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e149] [cursor=pointer]
+              - listitem [ref=e150]:
+                - generic [ref=e151]:
+                  - link "Packs List" [ref=e152] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e154]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e156] [cursor=pointer]
+              - listitem [ref=e157]:
+                - generic [ref=e158]:
+                  - link "User & Role Management" [ref=e159] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e161]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e163] [cursor=pointer]
+              - listitem [ref=e164]:
+                - generic [ref=e165]:
+                  - link "Registries and Packs" [ref=e166] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e168]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e170] [cursor=pointer]
+              - listitem [ref=e171]:
+                - generic [ref=e172]:
+                  - link "Security" [ref=e173] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e175]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e177] [cursor=pointer]
+              - listitem [ref=e178]:
+                - generic [ref=e179]:
+                  - link "Audit Logs" [ref=e180] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e182]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e184] [cursor=pointer]
+              - listitem [ref=e185]:
+                - generic [ref=e186]:
+                  - link "Self-Hosted Palette" [ref=e187] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e189]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e191] [cursor=pointer]
+              - listitem [ref=e192]:
+                - generic [ref=e193]:
+                  - link "Palette VerteX" [ref=e194] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e196]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e198] [cursor=pointer]
+              - listitem [ref=e199]:
+                - generic [ref=e200]:
+                  - link "Tenant Administration" [ref=e201] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e203]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e205] [cursor=pointer]
+              - listitem [ref=e206]:
+                - generic [ref=e207]:
+                  - link "Automation" [ref=e208] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e210]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e212] [cursor=pointer]
+              - listitem [ref=e213]:
+                - generic [ref=e214]:
+                  - link "Troubleshooting" [ref=e215] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e217]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e219] [cursor=pointer]
+              - listitem [ref=e220]:
+                - link "Glossary" [ref=e221] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e223]
+                  - text: Glossary
+              - listitem [ref=e225]:
+                - generic [ref=e226]:
+                  - link "Compliance & Legal" [ref=e227] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e229]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e231] [cursor=pointer]
+              - listitem [ref=e232]:
+                - button "Privacy Settings" [ref=e233] [cursor=pointer]:
+                  - img [ref=e234]
+                  - text: Privacy Settings
+      - main [ref=e236]:
+        - generic [ref=e238]:
+          - generic [ref=e240]:
+            - article [ref=e241]:
+              - navigation "Breadcrumbs" [ref=e242]:
+                - list [ref=e243]:
+                  - listitem [ref=e244]:
+                    - link "Home page" [ref=e245] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e246]
+                  - listitem [ref=e248]:
+                    - link "Architecture" [ref=e249] [cursor=pointer]:
+                      - /url: /architecture/
+                  - listitem [ref=e250]:
+                    - generic [ref=e251]: Palette eXtended Kubernetes
+              - generic [ref=e252]:
+                - heading "Palette eXtended Kubernetes" [level=1] [ref=e254]
+                - paragraph [ref=e255]:
+                  - link "Palette eXtended Kubernetes (PXK)" [ref=e256] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=kubernetes
+                  - text: is a customized version of the open source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes. This Kubernetes version can be deployed through Palette to all major infrastructure providers, public cloud providers, and private data center providers. This is the default distribution when deploying a Kubernetes cluster through Palette. For Edge deployments, we also offer
+                  - link "Palette eXtended Kubernetes - Edge (PXK-E)" [ref=e257] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=edge-k8s
+                  - text: ", which is a version of PXK specifically designed for Edge deployments."
+                - paragraph [ref=e258]: PXK and PXK-E share the core Cloud Native Computing Foundation (CNCF) binaries, with out-of-the-box security hardening that makes them ideal for production workloads without manual intervention. The following table offers a comparative overview between PXK and CNCF kubeadm.
+                - table [ref=e259]:
+                  - rowgroup [ref=e260]:
+                    - row "Feature PXK kubeadm" [ref=e261]:
+                      - cell "Feature" [ref=e262]
+                      - cell "PXK" [ref=e263]
+                      - cell "kubeadm" [ref=e264]
+                  - rowgroup [ref=e265]:
+                    - row "Audit logging ✅ Enabled ❌ Not enabled by default" [ref=e266]:
+                      - cell "Audit logging" [ref=e267]
+                      - cell "✅ Enabled" [ref=e268]
+                      - cell "❌ Not enabled by default" [ref=e269]
+                    - row "PodSecurity admission ✅ Enabled + configured ❌ Not enabled by default" [ref=e270]:
+                      - cell "PodSecurity admission" [ref=e271]
+                      - cell "✅ Enabled + configured" [ref=e272]
+                      - cell "❌ Not enabled by default" [ref=e273]
+                    - row "Hardened kubelet config ✅ Enforced ❌ Not enforced by default" [ref=e274]:
+                      - cell "Hardened kubelet config" [ref=e275]
+                      - cell "✅ Enforced" [ref=e276]
+                      - cell "❌ Not enforced by default" [ref=e277]
+                    - row "Kernel tuning ✅ Applied automatically ❌ Manual" [ref=e278]:
+                      - cell "Kernel tuning" [ref=e279]
+                      - cell "✅ Applied automatically" [ref=e280]
+                      - cell "❌ Manual" [ref=e281]
+                    - row "Lifecycle hooks ✅ Pre/Post support ❌ Not built-in" [ref=e282]:
+                      - cell "Lifecycle hooks" [ref=e283]
+                      - cell "✅ Pre/Post support" [ref=e284]
+                      - cell "❌ Not built-in" [ref=e285]
+                - heading "Shared Core with CNCF-Distribution KubeadmDirect link to Shared Core with CNCF-Distribution Kubeadm" [level=2] [ref=e286]:
+                  - text: Shared Core with CNCF-Distribution Kubeadm
+                  - link "Direct link to Shared Core with CNCF-Distribution Kubeadm" [ref=e287] [cursor=pointer]:
+                    - /url: "#shared-core-with-cncf-distribution-kubeadm"
+                    - text: "#"
+                - paragraph [ref=e288]:
+                  - text: The default, non-FIPS-compliant variants of PXK and PXK-E use official upstream images from
+                  - code [ref=e289]: registry.k8s.io
+                  - text: ", the same registry used by CNCF distributions. These images include all essential components:"
+                - list [ref=e290]:
+                  - listitem [ref=e291]: kube-apiserver
+                  - listitem [ref=e292]: etcd
+                  - listitem [ref=e293]: kube-scheduler
+                  - listitem [ref=e294]: kube-controller-manager
+                  - listitem [ref=e295]: kube-proxy
+                  - listitem [ref=e296]: CoreDNS
+                  - listitem [ref=e297]: pause
+                - paragraph [ref=e298]:
+                  - text: The FIPS-compliant variants of PXK and PXK-E, used in Palette VerteX, do not use upstream images directly. Instead, they use images recompiled with FIPS-compliant cryptographic libraries. For more information, refer to
+                  - link "FIPS-Compliant Components" [ref=e299] [cursor=pointer]:
+                    - /url: /vertex/fips/fips-compliant-components/
+                  - text: .
+                - paragraph [ref=e300]:
+                  - text: Both the FIPS and non-FIPS variants of PXK and PXK-E are fully CNCF-conformant and compatible with ecosystem tools such as Helm,
+                  - code [ref=e301]: kubectl
+                  - text: ", and Kubernetes-native APIs. The only modifications we make are configuration changes related to security hardening and out-of-the-box ecosystem integration. You can refer to the"
+                  - link "Kubeadm documentation" [ref=e302] [cursor=pointer]:
+                    - /url: https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/
+                  - text: to learn about all the configurations exposed in the
+                  - link "Palette eXtended Kubernetes (PXK)" [ref=e303] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=kubernetes
+                  - text: pack.
+                - heading "Security HardeningDirect link to Security Hardening" [level=2] [ref=e304]:
+                  - text: Security Hardening
+                  - link "Direct link to Security Hardening" [ref=e305] [cursor=pointer]:
+                    - /url: "#security-hardening"
+                    - text: "#"
+                - paragraph [ref=e306]: "In addition to being CNCF-conformant, PXK comes with out-of-the-box security hardening:"
+                - list [ref=e307]:
+                  - listitem [ref=e308]: PodSecurity admission enabled with baseline enforcement and strict warning.
+                  - listitem [ref=e309]: Audit logging configured with sane filters and volume mounts.
+                  - listitem [ref=e310]: Secure API server flags.
+                  - listitem [ref=e311]: Kubelet hardened with read-only port disabled and cert rotation.
+                - paragraph [ref=e312]: These security hardening measures make your clusters production ready without manual security intervention.
+                - heading "Host-level System TuningDirect link to Host-level System Tuning" [level=2] [ref=e313]:
+                  - text: Host-level System Tuning
+                  - link "Direct link to Host-level System Tuning" [ref=e314] [cursor=pointer]:
+                    - /url: "#host-level-system-tuning"
+                    - text: "#"
+                - paragraph [ref=e315]: "By default, PXK applies Linux kernel parameter tuning that aligns with Kubernetes best practices and production hardening:"
+                - list [ref=e316]:
+                  - listitem [ref=e317]: Allows VM memory overcommit to ensure predictable memory allocation behavior for pods.
+                  - listitem [ref=e318]: Automatically reboots the node 10 seconds after a kernel panic.
+                  - listitem [ref=e319]: Treats kernel “oops” events as fatal, triggering panic and recovery.
+                - heading "Lifecycle ManagementDirect link to Lifecycle Management" [level=2] [ref=e320]:
+                  - text: Lifecycle Management
+                  - link "Direct link to Lifecycle Management" [ref=e321] [cursor=pointer]:
+                    - /url: "#lifecycle-management"
+                    - text: "#"
+                - paragraph [ref=e322]: "PXK supports declarative lifecycle hooks that allow operators to inject custom logic before and after kubeadm provisioning:"
+                - list [ref=e323]:
+                  - listitem [ref=e324]:
+                    - text: Pre-init hooks (
+                    - code [ref=e325]: preKubeadmCommands
+                    - text: ) can apply kernel parameters, prepare certificates, or customize node behavior.
+                  - listitem [ref=e326]:
+                    - text: Post-init hooks (
+                    - code [ref=e327]: postKubeadmCommands
+                    - text: ) can adjust permissions, deploy agents, or perform cleanup.
+                - paragraph [ref=e328]: This approach simplifies integration with existing automation workflows, eliminates the need for brittle wrapper scripts, and ensures consistent behavior across environments.
+                - heading "PXK vs PXK-EDirect link to PXK vs PXK-E" [level=2] [ref=e329]:
+                  - text: PXK vs PXK-E
+                  - link "Direct link to PXK vs PXK-E" [ref=e330] [cursor=pointer]:
+                    - /url: "#pxk-vs-pxk-e"
+                    - text: "#"
+                - paragraph [ref=e331]:
+                  - text: The biggest difference between PXK and PXK-E is that PXK-E is only available when integrated with Kairos in a
+                  - link "provider image" [ref=e332] [cursor=pointer]:
+                    - /url: /clusters/edge/edgeforge-workflow/#edge-provider-container-images
+                  - text: ", or used as the Kubernetes layer in"
+                  - link "agent mode" [ref=e333] [cursor=pointer]:
+                    - /url: /deployment-modes/agent-mode/
+                  - text: deployments, while PXK is used in
+                  - link "controller mode" [ref=e334] [cursor=pointer]:
+                    - /url: /deployment-modes/controller-mode/
+                  - text: clusters.
+                - paragraph [ref=e335]: In addition, PXK-E makes a few adjustments on top of PXK to account for Edge environments by streamlining configuration files, reducing deployment complexity, and emphasizing immutability. The following table provides a brief comparison between PXK and PXK-E.
+                - table [ref=e336]:
+                  - rowgroup [ref=e337]:
+                    - row "Feature PXK PXK-E" [ref=e338]:
+                      - cell "Feature" [ref=e339]
+                      - cell "PXK" [ref=e340]
+                      - cell "PXK-E" [ref=e341]
+                  - rowgroup [ref=e342]:
+                    - row "Supported deployment mode Controller mode Appliance mode or agent mode" [ref=e343]:
+                      - cell "Supported deployment mode" [ref=e344]
+                      - cell "Controller mode" [ref=e345]
+                      - cell "Appliance mode or agent mode" [ref=e346]
+                    - row "Pod security admission Included Not explicitly configured" [ref=e347]:
+                      - cell "Pod security admission" [ref=e348]
+                      - cell "Included" [ref=e349]
+                      - cell "Not explicitly configured" [ref=e350]
+                    - row "Kubelet config kubeletExtraArgs + sysctl files Native kubeletConfiguration block" [ref=e351]:
+                      - cell "Kubelet config" [ref=e352]
+                      - cell "kubeletExtraArgs + sysctl files" [ref=e353]:
+                        - code [ref=e354]: kubeletExtraArgs
+                        - text: + sysctl files
+                      - cell "Native kubeletConfiguration block" [ref=e355]:
+                        - text: Native
+                        - code [ref=e356]: kubeletConfiguration
+                        - text: block
+                    - row "Audit policy External file (mounted) Inline YAML" [ref=e357]:
+                      - cell "Audit policy" [ref=e358]
+                      - cell "External file (mounted)" [ref=e359]
+                      - cell "Inline YAML" [ref=e360]
+                    - row "Lifecycle hooks preKubeadmCommands, postKubeadmCommands Uses cloud-init stages" [ref=e361]:
+                      - cell "Lifecycle hooks" [ref=e362]
+                      - cell "preKubeadmCommands, postKubeadmCommands" [ref=e363]:
+                        - code [ref=e364]: preKubeadmCommands
+                        - text: ","
+                        - code [ref=e365]: postKubeadmCommands
+                      - cell "Uses cloud-init stages" [ref=e366]:
+                        - text: Uses
+                        - link "cloud-init stages" [ref=e367] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-configuration/cloud-init/
+                    - row "etcd tuning Uses default Kubeadm etcd configurations Custom arguments for storage efficiency and hardened security" [ref=e368]:
+                      - cell "etcd tuning" [ref=e369]
+                      - cell "Uses default Kubeadm etcd configurations" [ref=e370]
+                      - cell "Custom arguments for storage efficiency and hardened security" [ref=e371]
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e372]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e373] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e374]:
+                  - listitem [ref=e375]:
+                    - link "Palette eXtended Kubernetes (PXK)" [ref=e376] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=kubernetes
+                  - listitem [ref=e377]:
+                    - link "Palette eXtended Kubernetes - Edge (PXK-E)" [ref=e378] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=edge-k8s
+                  - listitem [ref=e379]:
+                    - link "Kubeadm documentation" [ref=e380] [cursor=pointer]:
+                      - /url: https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/
+              - link "Edit this page" [ref=e384] [cursor=pointer]:
+                - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/architecture/pxk.md
+                - img [ref=e385]
+                - text: Edit this page
+            - navigation "Docs pages" [ref=e389]:
+              - link "Previous « Namespaces and Pods" [ref=e390] [cursor=pointer]:
+                - /url: /architecture/palette-namespaces-pods/
+                - generic [ref=e391]: Previous
+                - generic [ref=e392]: « Namespaces and Pods
+              - link "Next Profiles »" [ref=e393] [cursor=pointer]:
+                - /url: /profiles/
+                - generic [ref=e394]: Next
+                - generic [ref=e395]: Profiles »
+          - list [ref=e398]:
+            - listitem [ref=e399]:
+              - link "Shared Core with CNCF-Distribution Kubeadm" [ref=e400] [cursor=pointer]:
+                - /url: "#shared-core-with-cncf-distribution-kubeadm"
+            - listitem [ref=e401]:
+              - link "Security Hardening" [ref=e402] [cursor=pointer]:
+                - /url: "#security-hardening"
+            - listitem [ref=e403]:
+              - link "Host-level System Tuning" [ref=e404] [cursor=pointer]:
+                - /url: "#host-level-system-tuning"
+            - listitem [ref=e405]:
+              - link "Lifecycle Management" [ref=e406] [cursor=pointer]:
+                - /url: "#lifecycle-management"
+            - listitem [ref=e407]:
+              - link "PXK vs PXK-E" [ref=e408] [cursor=pointer]:
+                - /url: "#pxk-vs-pxk-e"
+            - listitem [ref=e409]:
+              - link "Resources" [ref=e410] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e411] [cursor=pointer]:
+    - generic [ref=e414]:
+      - img "Project Logo" [ref=e415]
+      - paragraph [ref=e416]: Ask AI
+```

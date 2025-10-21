@@ -1,0 +1,220 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Introduction" [ref=e41] [cursor=pointer]:
+                  - /url: /api/introduction/
+                  - img [ref=e43]
+                  - text: Introduction
+              - listitem [ref=e45]:
+                - link "Example Usage" [ref=e46] [cursor=pointer]:
+                  - /url: /api/samples/
+              - listitem [ref=e47]:
+                - link "Postman Collection" [ref=e48] [cursor=pointer]:
+                  - /url: /api/postman-collection/
+              - listitem [ref=e49]:
+                - generic [ref=e50]:
+                  - link "Palette API V1" [ref=e51] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Palette API V1'" [ref=e52] [cursor=pointer]
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - link "Edge Management API V1" [expanded] [ref=e55] [cursor=pointer]:
+                    - /url: /api/category/edge-management-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Edge Management API V1'" [ref=e56] [cursor=pointer]
+                - list [ref=e57]:
+                  - listitem [ref=e58]:
+                    - link "Introduction" [ref=e59] [cursor=pointer]:
+                      - /url: /api/edge-v1/local-management-apis/
+                  - listitem [ref=e60]:
+                    - generic [ref=e61]:
+                      - link "Edge Mgmt" [ref=e62] [cursor=pointer]:
+                        - /url: /api/edge-v1/edge-mgmt/
+                      - button "Toggle the collapsible sidebar category 'Edge Mgmt'" [ref=e63] [cursor=pointer]
+                  - listitem [ref=e64]:
+                    - generic [ref=e65]:
+                      - link "Ping" [ref=e66] [cursor=pointer]:
+                        - /url: /api/edge-v1/ping/
+                      - button "Toggle the collapsible sidebar category 'Ping'" [ref=e67] [cursor=pointer]
+                  - listitem [ref=e68]:
+                    - generic [ref=e69]:
+                      - link "Users" [expanded] [ref=e70] [cursor=pointer]:
+                        - /url: /api/edge-v1/users/
+                      - button "Toggle the collapsible sidebar category 'Users'" [ref=e71] [cursor=pointer]
+                    - list [ref=e72]:
+                      - listitem [ref=e73]:
+                        - link "get Get current logged in user's information" [ref=e74] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-current-user/
+                      - listitem [ref=e75]:
+                        - link "patch Patches the current logged in user's configuration" [ref=e76] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-patch-current-user/
+                      - listitem [ref=e77]:
+                        - link "post Authenticates the user with the specified credentials" [ref=e78] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-user-login/
+                      - listitem [ref=e79]:
+                        - link "post Logs out the user from the system" [ref=e80] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-user-logout/
+                      - listitem [ref=e81]:
+                        - link "post Resets the user's password" [ref=e82] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-user-password-reset/
+                      - listitem [ref=e83]:
+                        - link "post Refreshes the authentication token of the user" [ref=e84] [cursor=pointer]:
+                          - /url: /api/edge-v1/v-1-user-token-renewal/
+      - main [ref=e85]:
+        - generic [ref=e89]:
+          - article [ref=e90]:
+            - navigation "Breadcrumbs" [ref=e91]:
+              - list [ref=e92]:
+                - listitem [ref=e93]:
+                  - link "Home page" [ref=e94] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e95]
+                - listitem [ref=e97]:
+                  - link "Edge Management API V1" [ref=e98] [cursor=pointer]:
+                    - /url: /api/category/edge-management-api-v1/
+                - listitem [ref=e99]:
+                  - link "Users" [ref=e100] [cursor=pointer]:
+                    - /url: /api/edge-v1/users/
+                - listitem [ref=e101]:
+                  - generic [ref=e102]: Get current logged in user's information
+            - generic [ref=e104]:
+              - generic [ref=e105]:
+                - heading "Get current logged in user's information" [level=1] [ref=e106]
+                - generic [ref=e107]:
+                  - generic [ref=e108]: GET
+                  - heading "https://edge-host-ip:5080/v1/users/current" [level=2] [ref=e109]
+                - paragraph [ref=e111]: Get current logged in user's information
+                - generic [ref=e112]:
+                  - generic [ref=e113]:
+                    - heading "ResponsesDirect link to Responses" [level=2] [ref=e114]:
+                      - text: Responses
+                      - link "Direct link to Responses" [ref=e115] [cursor=pointer]:
+                        - /url: "#responses"
+                        - text: "#"
+                    - tablist [ref=e117]:
+                      - tab "200" [selected] [ref=e118] [cursor=pointer]
+                      - tab "500" [ref=e119] [cursor=pointer]
+                  - tabpanel [ref=e121]:
+                    - paragraph [ref=e124]: OK
+                    - generic [ref=e125]:
+                      - tablist [ref=e128]:
+                        - tab "application/json" [selected] [ref=e129] [cursor=pointer]
+                      - tabpanel [ref=e131]:
+                        - generic [ref=e132]:
+                          - tablist [ref=e134]:
+                            - tab "Schema" [selected] [ref=e135] [cursor=pointer]:
+                              - generic [ref=e136]: Schema
+                            - tab "Example (auto)" [ref=e137] [cursor=pointer]:
+                              - generic [ref=e138]: Example (auto)
+                          - tabpanel [ref=e140]:
+                            - group [ref=e141]:
+                              - generic "Schema" [ref=e142] [cursor=pointer]:
+                                - strong [ref=e143]: Schema
+                              - list [ref=e146]:
+                                - generic [ref=e148]:
+                                  - generic [ref=e149]:
+                                    - strong [ref=e150]: disablePasswordUpdate
+                                    - generic [ref=e151]: boolean
+                                  - paragraph [ref=e153]:
+                                    - strong [ref=e154]: "Default value:"
+                                    - code [ref=e155]: "false"
+                                  - paragraph [ref=e157]: Flag to indicate if the user is allowed to update the password
+                                - generic [ref=e159]:
+                                  - generic [ref=e160]:
+                                    - strong [ref=e161]: sshKeys
+                                    - generic [ref=e162]: string[]
+                                  - paragraph [ref=e164]: Current user's ssh keys
+                                - generic [ref=e166]:
+                                  - generic [ref=e167]:
+                                    - strong [ref=e168]: userName
+                                    - generic [ref=e169]: string
+                                  - paragraph [ref=e171]: Current user's username
+              - generic [ref=e172]:
+                - group [ref=e173]:
+                  - 'generic "Authorization: Authorization" [ref=e174]':
+                    - 'heading "Authorization: Authorization" [level=4] [ref=e175]'
+                - generic [ref=e176]:
+                  - tablist [ref=e177]:
+                    - tab "curl" [selected] [ref=e178] [cursor=pointer]:
+                      - generic [ref=e179]: curl
+                    - tab "python" [ref=e180] [cursor=pointer]:
+                      - generic [ref=e181]: python
+                    - tab "go" [ref=e182] [cursor=pointer]:
+                      - generic [ref=e183]: go
+                    - tab "nodejs" [ref=e184] [cursor=pointer]:
+                      - generic [ref=e185]: nodejs
+                    - tab "java" [ref=e186] [cursor=pointer]:
+                      - generic [ref=e187]: java
+                  - tabpanel [ref=e188]:
+                    - generic [ref=e189]:
+                      - tablist [ref=e190]:
+                        - tab "CURL" [selected] [ref=e191] [cursor=pointer]:
+                          - generic [ref=e192]: CURL
+                      - tabpanel [ref=e193]:
+                        - generic [ref=e195]:
+                          - code [ref=e197]:
+                            - generic [ref=e200]: curl -L 'https://edge-host-ip:5080/v1/users/current' \
+                            - generic [ref=e203]: "-H 'Accept: application/json' \\"
+                            - generic [ref=e206]: "-H 'Authorization: <Authorization>'"
+                          - generic [ref=e207]:
+                            - button "Toggle word wrap" [ref=e208] [cursor=pointer]:
+                              - img [ref=e209]
+                            - button "Copy code to clipboard" [ref=e211] [cursor=pointer]:
+                              - generic [ref=e212]:
+                                - img [ref=e213]
+                                - img [ref=e215]
+                            - button "Expand code to fullscreen" [ref=e217] [cursor=pointer]:
+                              - generic [ref=e218]:
+                                - img [ref=e219]
+                                - img [ref=e221]
+          - navigation "Docs pages" [ref=e225]:
+            - link "Previous « Users" [ref=e226] [cursor=pointer]:
+              - /url: /api/edge-v1/users/
+              - generic [ref=e227]: Previous
+              - generic [ref=e228]: « Users
+            - link "Next Patches the current logged in user's configuration »" [ref=e229] [cursor=pointer]:
+              - /url: /api/edge-v1/v-1-patch-current-user/
+              - generic [ref=e230]: Next
+              - generic [ref=e231]: Patches the current logged in user's configuration »
+  - button "Project Logo Ask AI" [ref=e232] [cursor=pointer]:
+    - generic [ref=e235]:
+      - img "Project Logo" [ref=e236]
+      - paragraph [ref=e237]: Ask AI
+```

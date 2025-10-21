@@ -1,0 +1,569 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Introduction" [ref=e41] [cursor=pointer]:
+                  - /url: /api/introduction/
+                  - img [ref=e43]
+                  - text: Introduction
+              - listitem [ref=e45]:
+                - link "Example Usage" [ref=e46] [cursor=pointer]:
+                  - /url: /api/samples/
+              - listitem [ref=e47]:
+                - link "Postman Collection" [ref=e48] [cursor=pointer]:
+                  - /url: /api/postman-collection/
+              - listitem [ref=e49]:
+                - generic [ref=e50]:
+                  - link "Palette API V1" [expanded] [ref=e51] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Palette API V1'" [ref=e52] [cursor=pointer]
+                - list [ref=e53]:
+                  - listitem [ref=e54]:
+                    - link "Introduction" [ref=e55] [cursor=pointer]:
+                      - /url: /api/v1/palette-apis-4-7/
+                  - listitem [ref=e56]:
+                    - generic [ref=e57]:
+                      - link "Api Keys" [ref=e58] [cursor=pointer]:
+                        - /url: /api/v1/api-keys/
+                      - button "Toggle the collapsible sidebar category 'Api Keys'" [ref=e59] [cursor=pointer]
+                  - listitem [ref=e60]:
+                    - generic [ref=e61]:
+                      - link "App Deployments" [ref=e62] [cursor=pointer]:
+                        - /url: /api/v1/app-deployments/
+                      - button "Toggle the collapsible sidebar category 'App Deployments'" [ref=e63] [cursor=pointer]
+                  - listitem [ref=e64]:
+                    - generic [ref=e65]:
+                      - link "App Profiles" [ref=e66] [cursor=pointer]:
+                        - /url: /api/v1/app-profiles/
+                      - button "Toggle the collapsible sidebar category 'App Profiles'" [ref=e67] [cursor=pointer]
+                  - listitem [ref=e68]:
+                    - generic [ref=e69]:
+                      - link "Audits" [ref=e70] [cursor=pointer]:
+                        - /url: /api/v1/audits/
+                      - button "Toggle the collapsible sidebar category 'Audits'" [ref=e71] [cursor=pointer]
+                  - listitem [ref=e72]:
+                    - generic [ref=e73]:
+                      - link "Auth" [ref=e74] [cursor=pointer]:
+                        - /url: /api/v1/auth/
+                      - button "Toggle the collapsible sidebar category 'Auth'" [ref=e75] [cursor=pointer]
+                  - listitem [ref=e76]:
+                    - generic [ref=e77]:
+                      - link "Cloudaccounts" [expanded] [ref=e78] [cursor=pointer]:
+                        - /url: /api/v1/cloudaccounts/
+                      - button "Toggle the collapsible sidebar category 'Cloudaccounts'" [ref=e79] [cursor=pointer]
+                    - list [ref=e80]:
+                      - listitem [ref=e81]:
+                        - link "get Retrieves a list of AWS cloud accounts" [ref=e82] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-aws-list/
+                      - listitem [ref=e83]:
+                        - link "post Creates an AWS cloud account" [ref=e84] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-aws-create/
+                      - listitem [ref=e85]:
+                        - link "del Deletes the specified AWS account" [ref=e86] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-aws-delete/
+                      - listitem [ref=e87]:
+                        - link "get Returns the specified AWS account" [ref=e88] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-aws-get/
+                      - listitem [ref=e89]:
+                        - link "put Updates the specified AWS account" [ref=e90] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-aws-update/
+                      - listitem [ref=e91]:
+                        - link "get Retrieves a list of azure cloud accounts" [ref=e92] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-azure-list/
+                      - listitem [ref=e93]:
+                        - link "post Create azure cloud account" [ref=e94] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-azure-create/
+                      - listitem [ref=e95]:
+                        - link "del Deletes the specified azure account" [ref=e96] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-azure-delete/
+                      - listitem [ref=e97]:
+                        - link "get Returns the specified azure cloud account" [ref=e98] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-azure-get/
+                      - listitem [ref=e99]:
+                        - link "put Updates the specified azure account" [ref=e100] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-azure-update/
+                      - listitem [ref=e101]:
+                        - link "get Retrieves a list of cloud accounts by cloud type" [ref=e102] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-custom-list/
+                      - listitem [ref=e103]:
+                        - link "post Creates an cloud account of specific cloud type" [ref=e104] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-custom-create/
+                      - listitem [ref=e105]:
+                        - link "del Deletes the specified account by cloud type" [ref=e106] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-custom-delete/
+                      - listitem [ref=e107]:
+                        - link "get Returns the specified account by cloud type" [ref=e108] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-custom-get/
+                      - listitem [ref=e109]:
+                        - link "put Updates the specified account by cloud type" [ref=e110] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-custom-update/
+                      - listitem [ref=e111]:
+                        - link "get Retrieves a list of gcp cloud accounts" [ref=e112] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-gcp-list/
+                      - listitem [ref=e113]:
+                        - link "post Creates a GCP cloud account" [ref=e114] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-gcp-create/
+                      - listitem [ref=e115]:
+                        - link "del Deletes the specified GCP account" [ref=e116] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-gcp-delete/
+                      - listitem [ref=e117]:
+                        - link "get Returns the specified GCP cloud account" [ref=e118] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-gcp-get/
+                      - listitem [ref=e119]:
+                        - link "put Updates the specified GCP account" [ref=e120] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-gcp-update/
+                      - listitem [ref=e121]:
+                        - link "get Retrieves a list of Maas cloud accounts" [ref=e122] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-maas-list/
+                      - listitem [ref=e123]:
+                        - link "post Creates an Maas cloud account" [ref=e124] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-maas-create/
+                      - listitem [ref=e125]:
+                        - link "del Deletes the specified Maas account" [ref=e126] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-maas-delete/
+                      - listitem [ref=e127]:
+                        - link "get Returns the specified Maas account" [ref=e128] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-maas-get/
+                      - listitem [ref=e129]:
+                        - link "patch Patches the specified CloudAccount Maas" [ref=e130] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-maas-patch/
+                      - listitem [ref=e131]:
+                        - link "put Updates the specified Maas account" [ref=e132] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-maas-update/
+                      - listitem [ref=e133]:
+                        - link "get Get the maas azs for a given account" [ref=e134] [cursor=pointer]:
+                          - /url: /api/v1/v-1-maas-accounts-uid-azs/
+                      - listitem [ref=e135]:
+                        - link "get Get the maas domains for a given account" [ref=e136] [cursor=pointer]:
+                          - /url: /api/v1/v-1-maas-accounts-uid-domains/
+                      - listitem [ref=e137]:
+                        - link "get Get the maas pools for a given account" [ref=e138] [cursor=pointer]:
+                          - /url: /api/v1/v-1-maas-accounts-uid-pools/
+                      - listitem [ref=e139]:
+                        - link "get Get the maas subnets for a given account" [ref=e140] [cursor=pointer]:
+                          - /url: /api/v1/v-1-maas-accounts-uid-subnets/
+                      - listitem [ref=e141]:
+                        - link "get Get the maas tags for a given account" [ref=e142] [cursor=pointer]:
+                          - /url: /api/v1/v-1-maas-accounts-uid-tags/
+                      - listitem [ref=e143]:
+                        - link "get Retrieves a list of OpenStack cloud accounts" [ref=e144] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-open-stack-list/
+                      - listitem [ref=e145]:
+                        - link "post Creates a OpenStack cloud account" [ref=e146] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-open-stack-create/
+                      - listitem [ref=e147]:
+                        - link "del Deletes the specified OpenStack account" [ref=e148] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-open-stack-delete/
+                      - listitem [ref=e149]:
+                        - link "get Returns the specified OpenStack account" [ref=e150] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-open-stack-get/
+                      - listitem [ref=e151]:
+                        - link "put Updates the specified OpenStack account" [ref=e152] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-open-stack-update/
+                      - listitem [ref=e153]:
+                        - link "get Get the openstack azs for a given account and region" [ref=e154] [cursor=pointer]:
+                          - /url: /api/v1/v-1-openstack-accounts-uid-azs/
+                      - listitem [ref=e155]:
+                        - link "get Get the openstack keypairs for a given account and scope" [ref=e156] [cursor=pointer]:
+                          - /url: /api/v1/v-1-openstack-accounts-uid-flavors/
+                      - listitem [ref=e157]:
+                        - link "get Get the openstack keypairs for a given account and scope" [ref=e158] [cursor=pointer]:
+                          - /url: /api/v1/v-1-openstack-accounts-uid-keypairs/
+                      - listitem [ref=e159]:
+                        - link "get Get the openstack networks for a given account and scope" [ref=e160] [cursor=pointer]:
+                          - /url: /api/v1/v-1-openstack-accounts-uid-networks/
+                      - listitem [ref=e161]:
+                        - link "get Get the openstack projects for a given account" [ref=e162] [cursor=pointer]:
+                          - /url: /api/v1/v-1-openstack-accounts-uid-projects/
+                      - listitem [ref=e163]:
+                        - link "get Get the openstack regions for a given account" [ref=e164] [cursor=pointer]:
+                          - /url: /api/v1/v-1-openstack-accounts-uid-regions/
+                      - listitem [ref=e165]:
+                        - link "get Retrieves a list of cloud accounts summary" [ref=e166] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-list-summary/
+                      - listitem [ref=e167]:
+                        - link "get Retrieves a list of vSphere cloud accounts" [ref=e168] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-vsphere-list/
+                      - listitem [ref=e169]:
+                        - link "post Creates a vSphere cloud account" [ref=e170] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-vsphere-create/
+                      - listitem [ref=e171]:
+                        - link "del Deletes the specified vSphere account" [ref=e172] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-vsphere-delete/
+                      - listitem [ref=e173]:
+                        - link "get Returns the specified vSphere account" [ref=e174] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-vsphere-get/
+                      - listitem [ref=e175]:
+                        - link "put Updates the specified VSphere account" [ref=e176] [cursor=pointer]:
+                          - /url: /api/v1/v-1-cloud-accounts-vsphere-update/
+                      - listitem [ref=e177]:
+                        - link "get Get the vSphere computecluster resources for the given overlord account" [ref=e178] [cursor=pointer]:
+                          - /url: /api/v1/v-1-vsphere-accounts-uid-cluster-res/
+                      - listitem [ref=e179]:
+                        - link "get Get the vSphere datacenters & datacluster for the given overlord account" [ref=e180] [cursor=pointer]:
+                          - /url: /api/v1/v-1-vsphere-accounts-uid-datacenters/
+                      - listitem [ref=e181]:
+                        - link "patch Update the geolocation annotation" [ref=e182] [cursor=pointer]:
+                          - /url: /api/v1/v-1-accounts-geolocation-patch/
+                  - listitem [ref=e183]:
+                    - generic [ref=e184]:
+                      - link "Cloudconfigs" [ref=e185] [cursor=pointer]:
+                        - /url: /api/v1/cloudconfigs/
+                      - button "Toggle the collapsible sidebar category 'Cloudconfigs'" [ref=e186] [cursor=pointer]
+                  - listitem [ref=e187]:
+                    - generic [ref=e188]:
+                      - link "Clouds" [ref=e189] [cursor=pointer]:
+                        - /url: /api/v1/clouds/
+                      - button "Toggle the collapsible sidebar category 'Clouds'" [ref=e190] [cursor=pointer]
+                  - listitem [ref=e191]:
+                    - generic [ref=e192]:
+                      - link "Cluster Templates" [ref=e193] [cursor=pointer]:
+                        - /url: /api/v1/cluster-templates/
+                      - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e194] [cursor=pointer]
+                  - listitem [ref=e195]:
+                    - generic [ref=e196]:
+                      - link "Clustergroups" [ref=e197] [cursor=pointer]:
+                        - /url: /api/v1/clustergroups/
+                      - button "Toggle the collapsible sidebar category 'Clustergroups'" [ref=e198] [cursor=pointer]
+                  - listitem [ref=e199]:
+                    - generic [ref=e200]:
+                      - link "Clusterprofiles" [ref=e201] [cursor=pointer]:
+                        - /url: /api/v1/clusterprofiles/
+                      - button "Toggle the collapsible sidebar category 'Clusterprofiles'" [ref=e202] [cursor=pointer]
+                  - listitem [ref=e203]:
+                    - generic [ref=e204]:
+                      - link "Dashboard" [ref=e205] [cursor=pointer]:
+                        - /url: /api/v1/dashboard/
+                      - button "Toggle the collapsible sidebar category 'Dashboard'" [ref=e206] [cursor=pointer]
+                  - listitem [ref=e207]:
+                    - generic [ref=e208]:
+                      - link "Datasinks" [ref=e209] [cursor=pointer]:
+                        - /url: /api/v1/datasinks/
+                      - button "Toggle the collapsible sidebar category 'Datasinks'" [ref=e210] [cursor=pointer]
+                  - listitem [ref=e211]:
+                    - generic [ref=e212]:
+                      - link "Edgehosts" [ref=e213] [cursor=pointer]:
+                        - /url: /api/v1/edgehosts/
+                      - button "Toggle the collapsible sidebar category 'Edgehosts'" [ref=e214] [cursor=pointer]
+                  - listitem [ref=e215]:
+                    - generic [ref=e216]:
+                      - link "Events" [ref=e217] [cursor=pointer]:
+                        - /url: /api/v1/events/
+                      - button "Toggle the collapsible sidebar category 'Events'" [ref=e218] [cursor=pointer]
+                  - listitem [ref=e219]:
+                    - generic [ref=e220]:
+                      - link "Features" [ref=e221] [cursor=pointer]:
+                        - /url: /api/v1/features/
+                      - button "Toggle the collapsible sidebar category 'Features'" [ref=e222] [cursor=pointer]
+                  - listitem [ref=e223]:
+                    - generic [ref=e224]:
+                      - link "Filters" [ref=e225] [cursor=pointer]:
+                        - /url: /api/v1/filters/
+                      - button "Toggle the collapsible sidebar category 'Filters'" [ref=e226] [cursor=pointer]
+                  - listitem [ref=e227]:
+                    - generic [ref=e228]:
+                      - link "Metrics" [ref=e229] [cursor=pointer]:
+                        - /url: /api/v1/metrics/
+                      - button "Toggle the collapsible sidebar category 'Metrics'" [ref=e230] [cursor=pointer]
+                  - listitem [ref=e231]:
+                    - generic [ref=e232]:
+                      - link "Notifications" [ref=e233] [cursor=pointer]:
+                        - /url: /api/v1/notifications/
+                      - button "Toggle the collapsible sidebar category 'Notifications'" [ref=e234] [cursor=pointer]
+                  - listitem [ref=e235]:
+                    - generic [ref=e236]:
+                      - link "Overlords" [ref=e237] [cursor=pointer]:
+                        - /url: /api/v1/overlords/
+                      - button "Toggle the collapsible sidebar category 'Overlords'" [ref=e238] [cursor=pointer]
+                  - listitem [ref=e239]:
+                    - generic [ref=e240]:
+                      - link "Packs" [ref=e241] [cursor=pointer]:
+                        - /url: /api/v1/packs/
+                      - button "Toggle the collapsible sidebar category 'Packs'" [ref=e242] [cursor=pointer]
+                  - listitem [ref=e243]:
+                    - generic [ref=e244]:
+                      - link "Pcg" [ref=e245] [cursor=pointer]:
+                        - /url: /api/v1/pcg/
+                      - button "Toggle the collapsible sidebar category 'Pcg'" [ref=e246] [cursor=pointer]
+                  - listitem [ref=e247]:
+                    - generic [ref=e248]:
+                      - link "Permissions" [ref=e249] [cursor=pointer]:
+                        - /url: /api/v1/permissions/
+                      - button "Toggle the collapsible sidebar category 'Permissions'" [ref=e250] [cursor=pointer]
+                  - listitem [ref=e251]:
+                    - generic [ref=e252]:
+                      - link "Projects" [ref=e253] [cursor=pointer]:
+                        - /url: /api/v1/projects/
+                      - button "Toggle the collapsible sidebar category 'Projects'" [ref=e254] [cursor=pointer]
+                  - listitem [ref=e255]:
+                    - generic [ref=e256]:
+                      - link "Registries" [ref=e257] [cursor=pointer]:
+                        - /url: /api/v1/registries/
+                      - button "Toggle the collapsible sidebar category 'Registries'" [ref=e258] [cursor=pointer]
+                  - listitem [ref=e259]:
+                    - generic [ref=e260]:
+                      - link "Roles" [ref=e261] [cursor=pointer]:
+                        - /url: /api/v1/roles/
+                      - button "Toggle the collapsible sidebar category 'Roles'" [ref=e262] [cursor=pointer]
+                  - listitem [ref=e263]:
+                    - generic [ref=e264]:
+                      - link "Services" [ref=e265] [cursor=pointer]:
+                        - /url: /api/v1/services/
+                      - button "Toggle the collapsible sidebar category 'Services'" [ref=e266] [cursor=pointer]
+                  - listitem [ref=e267]:
+                    - generic [ref=e268]:
+                      - link "Spc Policies" [ref=e269] [cursor=pointer]:
+                        - /url: /api/v1/spc-policies/
+                      - button "Toggle the collapsible sidebar category 'Spc Policies'" [ref=e270] [cursor=pointer]
+                  - listitem [ref=e271]:
+                    - generic [ref=e272]:
+                      - link "Spectroclusters" [ref=e273] [cursor=pointer]:
+                        - /url: /api/v1/spectroclusters/
+                      - button "Toggle the collapsible sidebar category 'Spectroclusters'" [ref=e274] [cursor=pointer]
+                  - listitem [ref=e275]:
+                    - generic [ref=e276]:
+                      - link "System" [ref=e277] [cursor=pointer]:
+                        - /url: /api/v1/system/
+                      - button "Toggle the collapsible sidebar category 'System'" [ref=e278] [cursor=pointer]
+                  - listitem [ref=e279]:
+                    - generic [ref=e280]:
+                      - link "Teams" [ref=e281] [cursor=pointer]:
+                        - /url: /api/v1/teams/
+                      - button "Toggle the collapsible sidebar category 'Teams'" [ref=e282] [cursor=pointer]
+                  - listitem [ref=e283]:
+                    - generic [ref=e284]:
+                      - link "Tenants" [ref=e285] [cursor=pointer]:
+                        - /url: /api/v1/tenants/
+                      - button "Toggle the collapsible sidebar category 'Tenants'" [ref=e286] [cursor=pointer]
+                  - listitem [ref=e287]:
+                    - generic [ref=e288]:
+                      - link "Users" [ref=e289] [cursor=pointer]:
+                        - /url: /api/v1/users/
+                      - button "Toggle the collapsible sidebar category 'Users'" [ref=e290] [cursor=pointer]
+                  - listitem [ref=e291]:
+                    - generic [ref=e292]:
+                      - link "Workspaces" [ref=e293] [cursor=pointer]:
+                        - /url: /api/v1/workspaces/
+                      - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e294] [cursor=pointer]
+              - listitem [ref=e295]:
+                - generic [ref=e296]:
+                  - link "Edge Management API V1" [ref=e297] [cursor=pointer]:
+                    - /url: /api/category/edge-management-api-v1/
+                  - button "Toggle the collapsible sidebar category 'Edge Management API V1'" [ref=e298] [cursor=pointer]
+      - main [ref=e299]:
+        - generic [ref=e303]:
+          - article [ref=e304]:
+            - navigation "Breadcrumbs" [ref=e305]:
+              - list [ref=e306]:
+                - listitem [ref=e307]:
+                  - link "Home page" [ref=e308] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e309]
+                - listitem [ref=e311]:
+                  - link "Palette API V1" [ref=e312] [cursor=pointer]:
+                    - /url: /api/category/palette-api-v1/
+                - listitem [ref=e313]:
+                  - link "Cloudaccounts" [ref=e314] [cursor=pointer]:
+                    - /url: /api/v1/cloudaccounts/
+                - listitem [ref=e315]:
+                  - generic [ref=e316]: Creates a GCP cloud account
+            - generic [ref=e318]:
+              - generic [ref=e319]:
+                - heading "Creates a GCP cloud account" [level=1] [ref=e320]
+                - generic [ref=e321]:
+                  - generic [ref=e322]: POST
+                  - heading "https://api.spectrocloud.com/v1/cloudaccounts/gcp" [level=2] [ref=e323]
+                - paragraph [ref=e325]: Creates a GCP cloud account
+                - heading "RequestDirect link to Request" [level=2] [ref=e326]:
+                  - text: Request
+                  - link "Direct link to Request" [ref=e327] [cursor=pointer]:
+                    - /url: "#request"
+                    - text: "#"
+                - group [ref=e328]:
+                  - generic "Header Parameters" [ref=e329] [cursor=pointer]:
+                    - heading "Header Parameters" [level=3] [ref=e330]
+                  - list [ref=e333]:
+                    - generic [ref=e334]:
+                      - generic [ref=e335]:
+                        - strong [ref=e336]: ProjectUid
+                        - generic [ref=e337]: string
+                      - paragraph [ref=e338]: A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources
+                - generic [ref=e339]:
+                  - tablist [ref=e342]:
+                    - tab "application/json" [selected] [ref=e343] [cursor=pointer]
+                  - tabpanel [ref=e345]:
+                    - group [ref=e346]:
+                      - generic "Body" [ref=e347] [cursor=pointer]:
+                        - heading "Body" [level=3] [ref=e348]
+                      - generic [ref=e350]:
+                        - paragraph [ref=e353]: Request payload to validate GCP cloud account
+                        - list [ref=e354]:
+                          - generic [ref=e356]:
+                            - generic [ref=e357]:
+                              - strong [ref=e358]: apiVersion
+                              - generic [ref=e359]: string
+                            - paragraph [ref=e361]: Cloud account api version
+                          - generic [ref=e363]:
+                            - generic [ref=e364]:
+                              - strong [ref=e365]: kind
+                              - generic [ref=e366]: string
+                            - paragraph [ref=e368]: Cloud account kind
+                          - group [ref=e370]:
+                            - generic "metadata object" [ref=e371] [cursor=pointer]:
+                              - generic [ref=e372]:
+                                - strong [ref=e373]: metadata
+                                - generic [ref=e374]: object
+                          - group [ref=e376]:
+                            - generic "spec object" [ref=e377] [cursor=pointer]:
+                              - generic [ref=e378]:
+                                - strong [ref=e379]: spec
+                                - generic [ref=e380]: object
+                          - group [ref=e382]:
+                            - generic "status object" [ref=e383] [cursor=pointer]:
+                              - generic [ref=e384]:
+                                - strong [ref=e385]: status
+                                - generic [ref=e386]: object
+                - generic [ref=e387]:
+                  - generic [ref=e388]:
+                    - heading "ResponsesDirect link to Responses" [level=2] [ref=e389]:
+                      - text: Responses
+                      - link "Direct link to Responses" [ref=e390] [cursor=pointer]:
+                        - /url: "#responses"
+                        - text: "#"
+                    - tablist [ref=e392]:
+                      - tab "201" [selected] [ref=e393] [cursor=pointer]
+                  - tabpanel [ref=e395]:
+                    - paragraph [ref=e398]: Created successfully
+                    - group [ref=e399]:
+                      - generic "Response Headers" [ref=e400] [cursor=pointer]:
+                        - strong [ref=e401]: Response Headers
+                    - generic [ref=e402]:
+                      - tablist [ref=e405]:
+                        - tab "application/json" [selected] [ref=e406] [cursor=pointer]
+                      - tabpanel [ref=e408]:
+                        - generic [ref=e409]:
+                          - tablist [ref=e411]:
+                            - tab "Schema" [selected] [ref=e412] [cursor=pointer]:
+                              - generic [ref=e413]: Schema
+                            - tab "Example (auto)" [ref=e414] [cursor=pointer]:
+                              - generic [ref=e415]: Example (auto)
+                          - tabpanel [ref=e417]:
+                            - group [ref=e418]:
+                              - generic "Schema" [ref=e419] [cursor=pointer]:
+                                - strong [ref=e420]: Schema
+                              - list [ref=e423]:
+                                - generic [ref=e426]:
+                                  - strong [ref=e427]: uid
+                                  - generic [ref=e428]: string
+                                  - generic [ref=e430]: required
+              - generic [ref=e431]:
+                - group [ref=e432]:
+                  - 'generic "Authorization: ApiKey" [ref=e433]':
+                    - 'heading "Authorization: ApiKey" [level=4] [ref=e434]'
+                - generic [ref=e435]:
+                  - tablist [ref=e436]:
+                    - tab "curl" [selected] [ref=e437] [cursor=pointer]:
+                      - generic [ref=e438]: curl
+                    - tab "python" [ref=e439] [cursor=pointer]:
+                      - generic [ref=e440]: python
+                    - tab "go" [ref=e441] [cursor=pointer]:
+                      - generic [ref=e442]: go
+                    - tab "nodejs" [ref=e443] [cursor=pointer]:
+                      - generic [ref=e444]: nodejs
+                    - tab "java" [ref=e445] [cursor=pointer]:
+                      - generic [ref=e446]: java
+                  - tabpanel [ref=e447]:
+                    - generic [ref=e448]:
+                      - tablist [ref=e449]:
+                        - tab "CURL" [selected] [ref=e450] [cursor=pointer]:
+                          - generic [ref=e451]: CURL
+                      - tabpanel [ref=e452]:
+                        - generic [ref=e454]:
+                          - code [ref=e456]:
+                            - generic [ref=e459]: curl -L 'https://api.spectrocloud.com/v1/cloudaccounts/gcp' \
+                            - generic [ref=e462]: "-H 'Content-Type: application/json' \\"
+                            - generic [ref=e465]: "-H 'Accept: application/json' \\"
+                            - generic [ref=e468]: "-H 'ApiKey: <ApiKey>' \\"
+                            - generic [ref=e471]: "-d '{"
+                            - generic [ref=e474]: "\"apiVersion\": \"string\","
+                            - generic [ref=e477]: "\"kind\": \"string\","
+                            - generic [ref=e480]: "\"metadata\": {"
+                            - generic [ref=e483]: "\"annotations\": {},"
+                            - generic [ref=e486]: "\"creationTimestamp\": \"2024-07-29T15:51:28.071Z\","
+                            - generic [ref=e489]: "\"deletionTimestamp\": \"2024-07-29T15:51:28.071Z\","
+                            - generic [ref=e492]: "\"labels\": {},"
+                            - generic [ref=e495]: "\"lastModifiedTimestamp\": \"2024-07-29T15:51:28.071Z\","
+                            - generic [ref=e498]: "\"name\": \"string\","
+                            - generic [ref=e501]: "\"uid\": \"string\""
+                            - generic [ref=e504]: "},"
+                            - generic [ref=e507]: "\"spec\": {"
+                            - generic [ref=e510]: "\"jsonCredentials\": \"string\""
+                            - generic [ref=e513]: "},"
+                            - generic [ref=e516]: "\"status\": {"
+                            - generic [ref=e519]: "\"state\": \"string\","
+                            - generic [ref=e522]: "\"tokenExpiry\": \"2024-07-29T15:51:28.071Z\","
+                            - generic [ref=e525]: "\"tokenGenerationTime\": \"2024-07-29T15:51:28.071Z\""
+                            - generic [ref=e528]: "}"
+                            - generic [ref=e531]: "}'"
+                          - generic [ref=e532]:
+                            - button "Toggle word wrap" [ref=e533] [cursor=pointer]:
+                              - img [ref=e534]
+                            - button "Copy code to clipboard" [ref=e536] [cursor=pointer]:
+                              - generic [ref=e537]:
+                                - img [ref=e538]
+                                - img [ref=e540]
+                            - button "Expand code to fullscreen" [ref=e542] [cursor=pointer]:
+                              - generic [ref=e543]:
+                                - img [ref=e544]
+                                - img [ref=e546]
+          - navigation "Docs pages" [ref=e550]:
+            - link "Previous « Retrieves a list of gcp cloud accounts" [ref=e551] [cursor=pointer]:
+              - /url: /api/v1/v-1-cloud-accounts-gcp-list/
+              - generic [ref=e552]: Previous
+              - generic [ref=e553]: « Retrieves a list of gcp cloud accounts
+            - link "Next Deletes the specified GCP account »" [ref=e554] [cursor=pointer]:
+              - /url: /api/v1/v-1-cloud-accounts-gcp-delete/
+              - generic [ref=e555]: Next
+              - generic [ref=e556]: Deletes the specified GCP account »
+  - button "Project Logo Ask AI" [ref=e557] [cursor=pointer]:
+    - generic [ref=e560]:
+      - img "Project Logo" [ref=e561]
+      - paragraph [ref=e562]: Ask AI
+```

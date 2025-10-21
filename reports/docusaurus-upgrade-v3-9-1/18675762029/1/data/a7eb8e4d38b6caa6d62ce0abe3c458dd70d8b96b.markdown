@@ -1,0 +1,609 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: /release-notes/
+          - link "Tutorials" [ref=e11] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e12] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e13] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e15] [cursor=pointer]
+        - generic [ref=e16]:
+          - link "GitHub repository" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Switch between dark and light mode (currently system mode)" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Search (Control+k)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search
+    - generic [ref=e32]:
+      - complementary [ref=e33]:
+        - generic [ref=e35]:
+          - link "Spectro cloud logo" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e37]
+          - navigation "Docs sidebar" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - generic [ref=e41]:
+                  - link "Release Notes" [ref=e42] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e44]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e46] [cursor=pointer]
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Security Bulletins" [ref=e49] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e51]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e53] [cursor=pointer]
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - link "What is Palette?" [ref=e56] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e58]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e60] [cursor=pointer]
+              - listitem [ref=e61]:
+                - link "Getting Started" [ref=e62] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e64]
+                  - text: Getting Started
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - link "Architecture" [ref=e68] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e70]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e72] [cursor=pointer]
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Profiles" [ref=e75] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e77]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e81] [cursor=pointer]
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - link "Cluster Templates" [ref=e84] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e86]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e88] [cursor=pointer]
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - link "Deployment Modes" [ref=e91] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e93]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e95] [cursor=pointer]
+              - listitem [ref=e96]:
+                - generic [ref=e97]:
+                  - link "Clusters" [expanded] [ref=e98] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e100]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e106] [cursor=pointer]
+                - list [ref=e107]:
+                  - listitem [ref=e108]:
+                    - generic [ref=e109]:
+                      - link "Public Cloud Clusters" [ref=e110] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e112]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e114] [cursor=pointer]
+                  - listitem [ref=e115]:
+                    - generic [ref=e116]:
+                      - link "Data Center Clusters" [ref=e117] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e119]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e121] [cursor=pointer]
+                  - listitem [ref=e122]:
+                    - generic [ref=e123]:
+                      - link "Edge" [expanded] [ref=e124] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e126]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e128] [cursor=pointer]
+                    - list [ref=e129]:
+                      - listitem [ref=e130]:
+                        - generic [ref=e131]:
+                          - link "Architecture" [ref=e132] [cursor=pointer]:
+                            - /url: /clusters/edge/architecture/
+                          - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e133] [cursor=pointer]
+                      - listitem [ref=e134]:
+                        - link "Hardware Requirements" [ref=e135] [cursor=pointer]:
+                          - /url: /clusters/edge/hardware-requirements/
+                      - listitem [ref=e136]:
+                        - link "Deployment Lifecycle" [ref=e137] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-native-lifecycle/
+                      - listitem [ref=e138]:
+                        - generic [ref=e139]:
+                          - link "Trusted Boot" [ref=e140] [cursor=pointer]:
+                            - /url: /clusters/edge/trusted-boot/
+                          - button "Toggle the collapsible sidebar category 'Trusted Boot'" [ref=e141] [cursor=pointer]
+                      - listitem [ref=e142]:
+                        - generic [ref=e143]:
+                          - link "Install Configuration" [ref=e144] [cursor=pointer]:
+                            - /url: /clusters/edge/edge-configuration/
+                          - button "Toggle the collapsible sidebar category 'Install Configuration'" [ref=e145] [cursor=pointer]
+                      - listitem [ref=e146]:
+                        - generic [ref=e147]:
+                          - link "EdgeForge Workflow" [ref=e148] [cursor=pointer]:
+                            - /url: /clusters/edge/edgeforge-workflow/
+                          - button "Toggle the collapsible sidebar category 'EdgeForge Workflow'" [ref=e149] [cursor=pointer]
+                      - listitem [ref=e150]:
+                        - generic [ref=e151]:
+                          - link "Local UI" [expanded] [ref=e152] [cursor=pointer]:
+                            - /url: /clusters/edge/local-ui/
+                          - button "Toggle the collapsible sidebar category 'Local UI'" [ref=e153] [cursor=pointer]
+                        - list [ref=e154]:
+                          - listitem [ref=e155]:
+                            - generic [ref=e156]:
+                              - link "Cluster Operations" [ref=e157] [cursor=pointer]:
+                                - /url: /clusters/edge/local-ui/cluster-management/
+                              - button "Toggle the collapsible sidebar category 'Cluster Operations'" [ref=e158] [cursor=pointer]
+                          - listitem [ref=e159]:
+                            - generic [ref=e160]:
+                              - link "Host Management" [expanded] [ref=e161] [cursor=pointer]:
+                                - /url: /clusters/edge/local-ui/host-management/
+                              - button "Toggle the collapsible sidebar category 'Host Management'" [ref=e162] [cursor=pointer]
+                            - list [ref=e163]:
+                              - listitem [ref=e164]:
+                                - link "Edit User Data" [ref=e165] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/edit-user-data/
+                              - listitem [ref=e166]:
+                                - link "Access Local UI" [ref=e167] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/access-console/
+                              - listitem [ref=e168]:
+                                - link "Reboot, Shutdown, and Reset Edge Host" [ref=e169] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/reset-reboot/
+                              - listitem [ref=e170]:
+                                - link "Configure HTTP-Proxy in Local UI" [ref=e171] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/configure-proxy/
+                              - listitem [ref=e172]:
+                                - link "Network Diagnostic Tools" [ref=e173] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/diagnostic-tools/
+                              - listitem [ref=e174]:
+                                - link "Add Custom Links to Sidebar" [ref=e175] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/custom-link/
+                              - listitem [ref=e176]:
+                                - link "Customize Local UI Theme" [ref=e177] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/theming/
+                              - listitem [ref=e178]:
+                                - link "Configure and Access Audit Logs" [ref=e179] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/audit-logs/
+                              - listitem [ref=e180]:
+                                - link "Download Files from Local UI" [ref=e181] [cursor=pointer]:
+                                  - /url: /clusters/edge/local-ui/host-management/download-files/
+                      - listitem [ref=e182]:
+                        - generic [ref=e183]:
+                          - link "Deployment" [ref=e184] [cursor=pointer]:
+                            - /url: /clusters/edge/site-deployment/
+                          - button "Toggle the collapsible sidebar category 'Deployment'" [ref=e185] [cursor=pointer]
+                      - listitem [ref=e186]:
+                        - generic [ref=e187]:
+                          - link "Cluster Management" [ref=e188] [cursor=pointer]:
+                            - /url: /clusters/edge/cluster-management/
+                          - button "Toggle the collapsible sidebar category 'Cluster Management'" [ref=e189] [cursor=pointer]
+                      - listitem [ref=e190]:
+                        - generic [ref=e191]:
+                          - link "Networking" [ref=e192] [cursor=pointer]:
+                            - /url: /clusters/edge/networking/
+                          - button "Toggle the collapsible sidebar category 'Networking'" [ref=e193] [cursor=pointer]
+                      - listitem [ref=e194]:
+                        - generic [ref=e195]:
+                          - link "Third Party Integrations" [ref=e196] [cursor=pointer]:
+                            - /url: /clusters/edge/third-party-integrations/
+                          - button "Toggle the collapsible sidebar category 'Third Party Integrations'" [ref=e197] [cursor=pointer]
+                  - listitem [ref=e198]:
+                    - generic [ref=e199]:
+                      - link "Palette Virtual Clusters" [ref=e200] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e202]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e204] [cursor=pointer]
+                  - listitem [ref=e205]:
+                    - generic [ref=e206]:
+                      - link "Imported Clusters" [ref=e207] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e209]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e211] [cursor=pointer]
+                  - listitem [ref=e212]:
+                    - generic [ref=e213]:
+                      - link "Manage Clusters" [ref=e214] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e216]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e218] [cursor=pointer]
+                  - listitem [ref=e219]:
+                    - generic [ref=e220]:
+                      - link "Cluster Groups" [ref=e221] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e223]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e225] [cursor=pointer]
+                  - listitem [ref=e226]:
+                    - generic [ref=e227]:
+                      - link "Private Cloud Gateway" [ref=e228] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e230]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e232] [cursor=pointer]
+              - listitem [ref=e233]:
+                - generic [ref=e234]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e235] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e237]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e239] [cursor=pointer]
+              - listitem [ref=e240]:
+                - generic [ref=e241]:
+                  - link "Palette Dev Engine" [ref=e242] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e244]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e246] [cursor=pointer]
+              - listitem [ref=e247]:
+                - generic [ref=e248]:
+                  - link "Virtual Machine Orchestrator" [ref=e249] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e251]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e253] [cursor=pointer]
+              - listitem [ref=e254]:
+                - generic [ref=e255]:
+                  - link "Workspaces" [ref=e256] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e258]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e260] [cursor=pointer]
+              - listitem [ref=e261]:
+                - generic [ref=e262]:
+                  - link "Packs List" [ref=e263] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e265]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e267] [cursor=pointer]
+              - listitem [ref=e268]:
+                - generic [ref=e269]:
+                  - link "User & Role Management" [ref=e270] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e272]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e274] [cursor=pointer]
+              - listitem [ref=e275]:
+                - generic [ref=e276]:
+                  - link "Registries and Packs" [ref=e277] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e279]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e281] [cursor=pointer]
+              - listitem [ref=e282]:
+                - generic [ref=e283]:
+                  - link "Security" [ref=e284] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e286]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e288] [cursor=pointer]
+              - listitem [ref=e289]:
+                - generic [ref=e290]:
+                  - link "Audit Logs" [ref=e291] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e293]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e295] [cursor=pointer]
+              - listitem [ref=e296]:
+                - generic [ref=e297]:
+                  - link "Self-Hosted Palette" [ref=e298] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e300]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e302] [cursor=pointer]
+              - listitem [ref=e303]:
+                - generic [ref=e304]:
+                  - link "Palette VerteX" [ref=e305] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e307]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e309] [cursor=pointer]
+              - listitem [ref=e310]:
+                - generic [ref=e311]:
+                  - link "Tenant Administration" [ref=e312] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e314]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e316] [cursor=pointer]
+              - listitem [ref=e317]:
+                - generic [ref=e318]:
+                  - link "Automation" [ref=e319] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e321]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e323] [cursor=pointer]
+              - listitem [ref=e324]:
+                - generic [ref=e325]:
+                  - link "Troubleshooting" [ref=e326] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e328]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e330] [cursor=pointer]
+              - listitem [ref=e331]:
+                - link "Glossary" [ref=e332] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e334]
+                  - text: Glossary
+              - listitem [ref=e336]:
+                - generic [ref=e337]:
+                  - link "Compliance & Legal" [ref=e338] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e340]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e342] [cursor=pointer]
+              - listitem [ref=e343]:
+                - button "Privacy Settings" [ref=e344] [cursor=pointer]:
+                  - img [ref=e345]
+                  - text: Privacy Settings
+      - main [ref=e347]:
+        - generic [ref=e349]:
+          - generic [ref=e351]:
+            - article [ref=e352]:
+              - navigation "Breadcrumbs" [ref=e353]:
+                - list [ref=e354]:
+                  - listitem [ref=e355]:
+                    - link "Home page" [ref=e356] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e357]
+                  - listitem [ref=e359]:
+                    - link "Clusters" [ref=e360] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e361]:
+                    - link "Edge" [ref=e362] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                  - listitem [ref=e363]:
+                    - link "Local UI" [ref=e364] [cursor=pointer]:
+                      - /url: /clusters/edge/local-ui/
+                  - listitem [ref=e365]:
+                    - link "Host Management" [ref=e366] [cursor=pointer]:
+                      - /url: /clusters/edge/local-ui/host-management/
+                  - listitem [ref=e367]:
+                    - generic [ref=e368]: Network Diagnostic Tools
+              - generic [ref=e369]:
+                - heading "Network Diagnostic Tools" [level=1] [ref=e371]
+                - paragraph [ref=e372]: Local UI includes the ping and traceroute diagnostic tools. These tools have the same functionality as the command-line tools, but are accessible through a web interface. You can use these diagnostic tools to help troubleshoot network issues without having to establish an SSH connection to your Edge host.
+                - paragraph [ref=e373]: In air-gapped environments, you can use these tools to verify the connection to an endpoint within the network. For locally managed clusters with proxy or in connected environments, you can use these tools to verify the connection to an endpoint outside the network, based on the scope of the connectivity. For example, these tools are useful to check if the Edge Host can connect to the internet or an external registry or to make sure there is no external connectivity in an air-gapped environment.
+                - heading "Use Ping to Test Network ConnectionDirect link to Use Ping to Test Network Connection" [level=2] [ref=e374]:
+                  - text: Use Ping to Test Network Connection
+                  - link "Direct link to Use Ping to Test Network Connection" [ref=e375] [cursor=pointer]:
+                    - /url: "#use-ping-to-test-network-connection"
+                    - text: "#"
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e376]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e377] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e378]:
+                  - listitem [ref=e379]:
+                    - paragraph [ref=e380]: An Edge host installed with Edge Installer 4.3 or later.
+                  - listitem [ref=e381]:
+                    - paragraph [ref=e382]: Network access to the Edge host's port where Local UI is exposed. The default port is 5080.
+                  - listitem [ref=e383]:
+                    - paragraph [ref=e384]: Credentials to log in to Local UI. Any Operating System (OS) user can be used to log into Local UI.
+                - heading "Use Ping to Check Connection to a Specific EndpointDirect link to Use Ping to Check Connection to a Specific Endpoint" [level=3] [ref=e385]:
+                  - text: Use Ping to Check Connection to a Specific Endpoint
+                  - link "Direct link to Use Ping to Check Connection to a Specific Endpoint" [ref=e386] [cursor=pointer]:
+                    - /url: "#use-ping-to-check-connection-to-a-specific-endpoint"
+                    - text: "#"
+                - list [ref=e387]:
+                  - listitem [ref=e388]:
+                    - paragraph [ref=e389]:
+                      - text: Log in to
+                      - link "Local UI" [ref=e390] [cursor=pointer]:
+                        - /url: /clusters/edge/local-ui/host-management/access-console/
+                      - text: .
+                  - listitem [ref=e391]:
+                    - paragraph [ref=e392]:
+                      - text: From the left
+                      - strong [ref=e393]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e394]: Diagnostics
+                      - text: .
+                  - listitem [ref=e395]:
+                    - paragraph [ref=e396]:
+                      - text: From the
+                      - strong [ref=e397]: Diagnostics
+                      - text: page, click on the
+                      - strong [ref=e398]: Connectivity
+                      - text: tab.
+                  - listitem [ref=e399]:
+                    - paragraph [ref=e400]:
+                      - text: Click on
+                      - strong [ref=e401]: Ping
+                      - text: .
+                  - listitem [ref=e402]:
+                    - paragraph [ref=e403]:
+                      - text: In the
+                      - strong [ref=e404]: endpoint
+                      - text: field, enter the endpoint you would like to test the connection to. For example, if you want to make sure your Edge host has connection to a image registry within your network at 10.10.153.43:8000, you would enter 10.10.153.43:8000.
+                  - listitem [ref=e405]:
+                    - paragraph [ref=e406]:
+                      - text: Click
+                      - strong [ref=e407]: Run
+                      - text: .
+                  - listitem [ref=e408]:
+                    - paragraph [ref=e409]: If ping produces output similar to the following, you are connected to the endpoint.
+                    - generic [ref=e411]:
+                      - code [ref=e413]:
+                        - generic [ref=e414]: "64 bytes from 10.10.153.43: icmp_seq=0 ttl=112 time=13.208 ms"
+                        - generic [ref=e415]: "64 bytes from 10.10.153.43: icmp_seq=1 ttl=112 time=7.184 ms"
+                        - generic [ref=e416]: "64 bytes from 10.10.153.43: icmp_seq=2 ttl=112 time=7.748 ms"
+                        - generic [ref=e417]: "64 bytes from 10.10.153.43: icmp_seq=3 ttl=112 time=6.724 ms"
+                        - generic [ref=e418]: "64 bytes from 10.10.153.43: icmp_seq=4 ttl=112 time=6.394 ms"
+                        - generic [ref=e419]: "64 bytes from 10.10.153.43: icmp_seq=5 ttl=112 time=8.540 ms"
+                        - generic [ref=e420]: "64 bytes from 10.10.153.43: icmp_seq=6 ttl=112 time=7.160 ms"
+                      - button "Copy code to clipboard" [ref=e422] [cursor=pointer]:
+                        - generic [ref=e423]:
+                          - img [ref=e424]
+                          - img [ref=e426]
+                    - paragraph [ref=e428]: If ping produces output containing messages such as "Destination Host Unreachable" or "100% packet loss," then you are not connected to the endpoint.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e429]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e430] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e431]: Depending on the endpoint you are trying to test, you can use other tools to validate the results of ping. For example, if you are trying to reach a REST API endpoint, you can use curl to make an HTTP request to the endpoint to validate the results of ping.
+                - heading "Use Traceroute to Test Network ConnectionDirect link to Use Traceroute to Test Network Connection" [level=2] [ref=e432]:
+                  - text: Use Traceroute to Test Network Connection
+                  - link "Direct link to Use Traceroute to Test Network Connection" [ref=e433] [cursor=pointer]:
+                    - /url: "#use-traceroute-to-test-network-connection"
+                    - text: "#"
+                - paragraph [ref=e434]: The traceroute diagnostic tool is similar to ping, but it produces more detailed output in that it displays the route to a destination. Traceroute is useful for you to determine at which point along the path the packets are being delayed or lost.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e435]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e436] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                    - text: "#"
+                - list [ref=e437]:
+                  - listitem [ref=e438]:
+                    - paragraph [ref=e439]: An Edge host installed with Edge Installer 4.3 or later.
+                  - listitem [ref=e440]:
+                    - paragraph [ref=e441]: Network access to the Edge host's port where Local UI is exposed. The default port is 5080.
+                  - listitem [ref=e442]:
+                    - paragraph [ref=e443]: Credentials to log in to Local UI. Any Operating System (OS) user can be used to log into Local UI.
+                - heading "Use Traceroute to Check Connection to a Specific EndpointDirect link to Use Traceroute to Check Connection to a Specific Endpoint" [level=3] [ref=e444]:
+                  - text: Use Traceroute to Check Connection to a Specific Endpoint
+                  - link "Direct link to Use Traceroute to Check Connection to a Specific Endpoint" [ref=e445] [cursor=pointer]:
+                    - /url: "#use-traceroute-to-check-connection-to-a-specific-endpoint"
+                    - text: "#"
+                - list [ref=e446]:
+                  - listitem [ref=e447]:
+                    - paragraph [ref=e448]:
+                      - text: Log in to
+                      - link "Local UI" [ref=e449] [cursor=pointer]:
+                        - /url: /clusters/edge/local-ui/host-management/access-console/
+                      - text: .
+                  - listitem [ref=e450]:
+                    - paragraph [ref=e451]:
+                      - text: From the left
+                      - strong [ref=e452]: Main Menu
+                      - text: ", click"
+                      - strong [ref=e453]: Diagnostics
+                      - text: .
+                  - listitem [ref=e454]:
+                    - paragraph [ref=e455]:
+                      - text: From the
+                      - strong [ref=e456]: Diagnostics
+                      - text: page, click on the
+                      - strong [ref=e457]: Connectivity
+                      - text: tab.
+                  - listitem [ref=e458]:
+                    - paragraph [ref=e459]:
+                      - text: Click on
+                      - strong [ref=e460]: Traceroute
+                      - text: .
+                  - listitem [ref=e461]:
+                    - paragraph [ref=e462]:
+                      - text: In the
+                      - strong [ref=e463]: endpoint
+                      - text: field, enter the endpoint you would like to test the connection to. For example, if you are having DNS issues and want to test your connection to your DNS server at 203.0.113.4, you would input 203.0.113.4.
+                  - listitem [ref=e464]:
+                    - paragraph [ref=e465]:
+                      - text: Click
+                      - strong [ref=e466]: Run
+                      - text: .
+                  - listitem [ref=e467]:
+                    - paragraph [ref=e468]: If traceroute produces output similar to the following, you can tell from the response which part of the network is having issues.
+                    - generic [ref=e470]:
+                      - code [ref=e472]:
+                        - generic [ref=e473]: traceroute to 203.0.113.4 (203.0.113.4), 30 hops max, 60 byte packets
+                        - generic [ref=e474]: 1 192.168.1.1 (192.168.1.1) 1.242 ms 1.013 ms 1.004 ms
+                        - generic [ref=e475]: 2 10.245.32.1 (10.245.32.1) 11.123 ms 10.896 ms 10.876 ms
+                        - generic [ref=e476]: 3 100.64.0.2 (100.64.0.2) 20.455 ms 20.431 ms 20.409 ms
+                        - generic [ref=e477]: 4 172.16.0.1 (172.16.0.1) 30.678 ms 30.654 ms 30.635 ms
+                        - generic [ref=e478]: 5 * * *
+                        - generic [ref=e479]: 6 * * *
+                        - generic [ref=e480]: 7 * * *
+                        - generic [ref=e481]: 8 * 203.0.113.4 (203.0.113.4) 100.123 ms *
+                      - generic [ref=e482]:
+                        - button "Toggle word wrap" [ref=e483] [cursor=pointer]:
+                          - img [ref=e484]
+                        - button "Copy code to clipboard" [ref=e486] [cursor=pointer]:
+                          - generic [ref=e487]:
+                            - img [ref=e488]
+                            - img [ref=e490]
+                    - paragraph [ref=e492]: Hops one through four produced normal responses, possibly indicating that the network between the host and your Internet Service Provider (ISP) has no issues. Hops five through seven received no response. Finally, hop eight received only one response out of three requests, and the one response took significantly longer. This often indicates that there are some network issues at or near the DNS server.
+                - heading "ValidateDirect link to Validate" [level=3] [ref=e493]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e494] [cursor=pointer]:
+                    - /url: "#validate-1"
+                    - text: "#"
+                - paragraph [ref=e495]: Depending on the endpoint you are trying to reach, you can use different methods to validate the results. For example, if you are observing issues near the DNS server, you can try to specify a well-known DNS server such as 8.8.8.8 (Google Public DNS) to test if it improves the connection. If it does, this can help validate the initial traceroute results pointed towards a DNS issue.
+              - generic [ref=e496]:
+                - generic [ref=e498]:
+                  - text: "Tags:"
+                  - list [ref=e499]:
+                    - listitem [ref=e500]:
+                      - link "edge" [ref=e501] [cursor=pointer]:
+                        - /url: /tags/edge/
+                - link "Edit this page" [ref=e504] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/edge/local-ui/host-management/diagnostic-tools.md
+                  - img [ref=e505]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e509]:
+              - link "Previous « Configure HTTP-Proxy in Local UI" [ref=e510] [cursor=pointer]:
+                - /url: /clusters/edge/local-ui/host-management/configure-proxy/
+                - generic [ref=e511]: Previous
+                - generic [ref=e512]: « Configure HTTP-Proxy in Local UI
+              - link "Next Add Custom Links to Sidebar »" [ref=e513] [cursor=pointer]:
+                - /url: /clusters/edge/local-ui/host-management/custom-link/
+                - generic [ref=e514]: Next
+                - generic [ref=e515]: Add Custom Links to Sidebar »
+          - list [ref=e518]:
+            - listitem [ref=e519]:
+              - link "Use Ping to Test Network Connection" [ref=e520] [cursor=pointer]:
+                - /url: "#use-ping-to-test-network-connection"
+              - list [ref=e521]:
+                - listitem [ref=e522]:
+                  - link "Prerequisites" [ref=e523] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                - listitem [ref=e524]:
+                  - link "Use Ping to Check Connection to a Specific Endpoint" [ref=e525] [cursor=pointer]:
+                    - /url: "#use-ping-to-check-connection-to-a-specific-endpoint"
+                - listitem [ref=e526]:
+                  - link "Validate" [ref=e527] [cursor=pointer]:
+                    - /url: "#validate"
+            - listitem [ref=e528]:
+              - link "Use Traceroute to Test Network Connection" [ref=e529] [cursor=pointer]:
+                - /url: "#use-traceroute-to-test-network-connection"
+              - list [ref=e530]:
+                - listitem [ref=e531]:
+                  - link "Prerequisites" [ref=e532] [cursor=pointer]:
+                    - /url: "#prerequisites-1"
+                - listitem [ref=e533]:
+                  - link "Use Traceroute to Check Connection to a Specific Endpoint" [ref=e534] [cursor=pointer]:
+                    - /url: "#use-traceroute-to-check-connection-to-a-specific-endpoint"
+                - listitem [ref=e535]:
+                  - link "Validate" [ref=e536] [cursor=pointer]:
+                    - /url: "#validate-1"
+  - button "Project Logo Ask AI" [ref=e537] [cursor=pointer]:
+    - generic [ref=e540]:
+      - img "Project Logo" [ref=e541]
+      - paragraph [ref=e542]: Ask AI
+```
