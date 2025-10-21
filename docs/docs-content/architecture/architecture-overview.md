@@ -90,7 +90,7 @@ repository.
 
 ### Message Brokers
 
-Palette’s internal microservices require a stable, secure, and scalable way to exchange information quickly. To support
+Palette’s internal microservices require a stable, secure, and scalable way to exchange information efficiently. To support
 this, Palette uses a [gRPC](https://grpc.io/)-based message broker service that manages communication between services
 using a publish-subscribe model. The message broker acts as a central hub that routes messages between services. Each
 service can publish messages or subscribe to messages on specific topics, and the broker ensures that messages are
