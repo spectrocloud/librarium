@@ -58,7 +58,8 @@ const allScripts = [
     "data-consent-screen-title": "Privacy Notice",
     "data-consent-screen-disclaimer":
       "Thank you for using our chat service!  Information you submit through this chat is subject to our [Privacy Policy and Terms of Use](https://www.spectrocloud.com/privacy-policy) and will be processed by our service provider. Please do not enter sensitive information. Chat transcripts may be kept for future reference.",
-    "data-modal-example-questions": "Where should I started?,How do I file a support ticket?",
+    "data-modal-example-questions":
+      "How do I get started with Palette?, What types of infrastructure can I deploy my cluster on?,What third-party packs integrate with Palette cluster?,",
     "data-consent-screen-accept-button-text": "Accept",
     "data-consent-screen-reject-button-text": "Decline",
     "data-project-logo": "/img/spectrocloud-mark-light-bkgd-RGB.svg",
