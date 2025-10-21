@@ -48,9 +48,14 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+      - name: Sanitize branch name for path
+        run: |
+          BRANCH_SAFE=$(echo "${{ github.event.ref }}" | sed 's/\//-/g')
+          echo "BRANCH_SAFE=$BRANCH_SAFE" >> $GITHUB_ENV
+
       - name: Check for workflow reports
         run: |
-          if [ -z "$(ls -A $BRANCH_REPORTS_DIR)" ]; then
+          if [ -z "$(ls -A reports/${{ env.BRANCH_SAFE }} 2>/dev/null)" ]; then
             echo "BRANCH_REPORTS_EXIST="false"" >> $GITHUB_ENV
           else
             echo "BRANCH_REPORTS_EXIST="true"" >> $GITHUB_ENV
@@ -60,9 +65,7 @@ jobs:
         if: ${{ env.BRANCH_REPORTS_EXIST == 'true' }}
         timeout-minutes: 3
         run: |
-          cd $BRANCH_REPORTS_DIR/..
-
-          rm -rf ${{ github.event.ref }}
+          rm -rf reports/${{ env.BRANCH_SAFE }}
           git add .
           git commit -m "workflow: remove all reports for branch ${{ github.event.ref }}"
 

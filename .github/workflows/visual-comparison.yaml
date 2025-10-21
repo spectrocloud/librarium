@@ -225,6 +225,12 @@ jobs:
         git config --global user.name "github-actions[bot]"
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+    - name: Sanitize branch name for path
+      run: |
+        BRANCH_SAFE=$(echo "${{ github.head_ref }}" | sed 's/\//-/g')
+        echo "BRANCH_SAFE=$BRANCH_SAFE" >> $GITHUB_ENV
+        echo "HTML_REPORT_URL_PATH=reports/$BRANCH_SAFE/${{ github.run_id }}/${{ github.run_attempt }}" >> $GITHUB_ENV
+
     - name: Download zipped HTML report
       uses: actions/download-artifact@v5
       with:
