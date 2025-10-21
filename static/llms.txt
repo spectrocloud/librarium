@@ -2,8 +2,7 @@
 > Use this file to understand Spectro Cloud’s Kubernetes management platform, products, and solutions.
 
 Palette is a complete and integrated platform that enables organizations to effectively manage the entire lifecycle of
-any combination of new or existing, simple or complex, small or large Kubernetes environments, whether in a data center
-or the cloud.
+any combination of new or existing, simple or complex, small or large Kubernetes environments, whether in a data center, the cloud, or at the Edge.
 
 With a unique approach to managing multiple clusters, Palette gives IT teams complete control, visibility, and production-scale efficiencies to provide developers with highly curated Kubernetes stacks and tools based on their
 specific needs, with granular governance and enterprise-grade security.
