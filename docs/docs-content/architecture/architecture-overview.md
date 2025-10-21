@@ -111,10 +111,15 @@ within each management plane cluster. This provides the following benefits:
 - **Security** - All communication between message broker pods is encrypted and authenticated using secondary
   certificates to ensure secure message exchange.
 
-To inspect the message broker of your self-hosted Palette or Palette VerteX management plane cluster,
+To inspect the message brokers of your self-hosted Palette or Palette VerteX management plane cluster,
 [connect to your management plane cluster with the kubectl CLI](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli),
 and execute the following command.
 
 ```bash
 kubectl get statefulset msgbroker --namespace hubble-system
+```
+
+```bash title="Example output" hideClipboard
+NAME        READY   AGE
+msgbroker   2/2     97d
 ```
