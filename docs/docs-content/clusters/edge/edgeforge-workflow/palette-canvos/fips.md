@@ -149,8 +149,7 @@ workaround.
 9. When the build finishes, issue `docker images` and confirm there is an image named `rhel-byoi-fips:latest`. This is
    the base image that you will use to build provider images and the Edge installer ISO later on.
 
-10. Tag the image with a repository that is accessible by your Linux machine. For example, the following command uses
-    the `spectrocloud` repository.
+10. Tag the image with a repository in a registry that is accessible by your Linux machine. For example, the following command uses the `spectrocloud` registry and the `rhel/rhel-byoi-fips` repository.
 
     ```shell
     docker tag rhel-byoi-fips:latest spectrocloud/rhel/rhel-byoi-fips:latest
@@ -191,8 +190,7 @@ workaround.
 9. When the build finishes, issue `docker images` and confirm there is an image named `ubuntu-focal-fips:latest`. This
    is the base image that you will use to build provider images and the Edge installer ISO later on.
 
-10. Tag the image with a repository that is accessible by your Linux machine. For example, the following command uses
-    the `spectrocloud` repository.
+10. Tag the image with a repository in a registry that is accessible by your Linux machine. For example, the following command uses the `spectrocloud` registry and the `rhel/rhel-byoi-fips` repository.
 
     ```shell
     docker tag rhel-byoi-fips:latest spectrocloud/rhel/rhel-byoi-fips:latest
