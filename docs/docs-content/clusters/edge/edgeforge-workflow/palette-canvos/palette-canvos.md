@@ -860,7 +860,7 @@ required Edge artifacts.
     spectrocloud/opensuse-leap   k3s-1.27.2-v4.4.12-palette-learn   2427e3667b2f   24 minutes ago   2.22GB
     ```
 
-19. To use the provider images in your cluster profile, push them to your image registry mentioned in the `.arg` file.
+19. To use the provider images in your cluster profile, push them to the image registry mentioned in the `.arg` file.
     Issue the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
 
     ```bash
@@ -871,29 +871,29 @@ required Edge artifacts.
     Login Succeeded
     ```
 
-20. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace the
-    `spectrocloud` and version numbers in the command below with your Docker ID and respective Kubernetes versions that
+20. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace
+    `spectrocloud` and the version numbers in the command below with your Docker ID and respective Kubernetes versions that
     the utility created.
 
     ```bash
     docker push spectrocloud/opensuse-leap:k3s-1.27.2-v4.4.12-palette-learn
     ```
 
-21. After pushing the provider images to the image registry, open a web browser and log in to
+22. After pushing the provider images to the image registry, open a web browser and log in to
     [Palette](https://console.spectrocloud.com). Ensure you are in the **Default** project scope before creating a
     cluster profile.
 
-22. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
+23. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
     out the required basic information fields to create a cluster profile for Edge.
 
-23. Add the following <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS
+24. Add the following <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS
     layer in the **Profile Layers** section.
 
     | **Pack Type** | **Registry** | **Pack Name** | **Pack Version** |
     | ------------- | ------------ | ------------- | ---------------- |
     | OS            | Public Repo  | BYOS Edge OS  | `1.0.0`          |
 
-24. Replace the cluster profile's BYOOS pack manifest with the output that was provided to you earlier and that you
+25. Replace the cluster profile's BYOOS pack manifest with the output that was provided to you earlier and that you
     copied.
 
     The `system.xxxxx` attribute values below refer to the arguments defined in the `.arg` file. If you modified the
@@ -944,7 +944,7 @@ required Edge artifacts.
 
     :::
 
-25. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the K3s
+26. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the K3s
     version 1.27.x because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.27.2 to the
     image registry.
 
@@ -952,7 +952,7 @@ required Edge artifacts.
     | ------------- | ------------ | --------------------- | ---------------- |
     | Kubernetes    | Public Repo  | Palette Optimized K3s | `1.27.x`         |
 
-26. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits
+27. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits
     your needs, such as Calico, Flannel, Cilium, or Custom CNI. For example, you can add the following network layer.
     This step completes the core infrastructure layers in the cluster profile.
 
@@ -960,9 +960,9 @@ required Edge artifacts.
     | ------------- | ------------ | ------------- | ---------------- |
     | Network       | Public Repo  | Calico        | `3.25.x`         |
 
-27. Add add-on layers and manifests to your cluster profile per your requirements.
+28. Add add-on layers and manifests to your cluster profile per your requirements.
 
-28. If there are no errors or compatibility issues, Palette displays the newly created complete cluster profile for
+29. If there are no errors or compatibility issues, Palette displays the newly created complete cluster profile for
     review. Verify the layers you added, and finish creating the cluster profile.
 
 ### Validate
