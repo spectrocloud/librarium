@@ -1,0 +1,48 @@
+# Spectro Cloud Palette LLMs Access Guide
+> Use this file to understand Spectro Cloud’s Kubernetes management platform, products, and solutions.
+
+Palette is a complete and integrated platform that enables organizations to effectively manage the entire lifecycle of
+any combination of new or existing, simple or complex, small or large Kubernetes environments, whether in a data center
+or the cloud.
+
+With a unique approach to managing multiple clusters, Palette gives IT teams complete control, visibility, and production-scale efficiencies to provide developers with highly curated Kubernetes stacks and tools based on their
+specific needs, with granular governance and enterprise-grade security.
+
+## Docs
+
+- [Getting Started](https://docs.spectrocloud.com/tutorials/getting-started): Learn how to get started with Spectro Cloud Palette and begin leveraging its Kubernetes full-stack management at scale. Palette's unique capabilities provide end-to-end declarative cluster management, cluster monitoring and reconciliation, as well as enterprise-grade security.
+- [Welcome to Palette Tutorials](https://docs.spectrocloud.com/tutorials/): This section provides hands-on tutorials you can complete in your environment to learn more about Palette. Here, you will find tutorials covering the aspects of Palette you need to become a proficient user, as well as advanced topics that require more time and attention to comprehend. These tutorials will enable you to maximize Palette's ability to manage Kubernetes at scale.
+- [Downloads](https://docs.spectrocloud.com/downloads/): Explore our downloads section to discover the latest and specific versions of support tools and utilities for Palette.
+- [Artifact Studio](https://docs.spectrocloud.com/downloads/artifact-studio/): The Spectro Cloud [Artifact Studio](https://artifact-studio.spectrocloud.com/) is a unified platform that helps airgapped, regulatory-focused, and security-conscious organizations populate their registries with bundles, packs, and installers to be used with self-hosted [Palette](https://docs.spectrocloud.com/enterprise-version/) or [Palette VerteX](https://docs.spectrocloud.com/vertex/). It provides a single location for packs and images, streamlining access and management.
+- [Self-Hosted Palette](https://docs.spectrocloud.com/enterprise-version/): Palette is available as a self-hosted platform offering. You can install the self-hosted version of Palette in your data centers or public cloud providers to manage Kubernetes clusters.
+- [Deployment Architecture Overview](https://docs.spectrocloud.com/architecture/architecture-overview/): Palette is available in three flexible deployment models: multi-tenant SaaS, dedicated SaaS and self-hosted.
+- [Deployment Modes](https://docs.spectrocloud.com/deployment-modes/): Palette provides two different modes for deploying and managing applications. The first mode is Cluster Mode - this mode enables you to create, deploy, and manage Kubernetes clusters and applications. The second mode is App Mode - a mode optimized for a simpler and streamlined developer experience that allows you to only focus on the building, maintenance, testing, deployment, and monitoring of your applications.
+- [Palette VerteX](https://docs.spectrocloud.com/vertex/): Palette VerteX offers regulated industries, such as government and public sector organizations that handle sensitive and classified information simplicity, security, and scale in production Kubernetes. VerteX is available as a self-hosted platform offering that you can install in your data centers or public cloud providers to manage Kubernetes clusters.
+- [Virtual Machine Orchestrator](https://docs.spectrocloud.com/vm-management/): Palette Virtual Machine Orchestrator (VMO) provides a unified platform for deploying, managing, and scaling Virtual Machines (VMs) and containerized applications within Kubernetes clusters. Palette VMO supports deployment to edge devices and bare metal servers in data centers. Palette VMO simplifies infrastructure management, improves resource utilization, and eliminates hypervisor costs.
+- [Edge](https://docs.spectrocloud.com/clusters/edge/): Edge clusters are Kubernetes clusters set up on Edge hosts installed in isolated locations like grocery stores and restaurants versus a data center or cloud environment. These Edge hosts can be bare metal machines or virtual machines and are managed by operators at remote sites.
+- [Palette Virtual Clusters](https://docs.spectrocloud.com/clusters/palette-virtual-clusters/): Palette Virtual Clusters are nested Kubernetes clusters within a Host Cluster. Virtual clusters share the host cluster resources, such as CPU, memory, storage, container network interface (CNI), and container storage interface (CSI). By default, virtual clusters use k3s, a highly available, certified Kubernetes distribution designed for production workloads. Virtual clusters are supported in both connected and airgapped environments.
+- [Public Cloud Clusters](https://docs.spectrocloud.com/clusters/public-cloud/) : Palette supports provisioning new workload clusters on public clouds using cloud providers' infrastructure. It achieves this by provisioning new virtual machines (VMs) for the control plane and worker pools and uses their managed Kubernetes services such as EKS, AKS, GKE, and more.
+- [Data Center Clusters](https://docs.spectrocloud.com/clusters/data-center/): Palette supports provisioning and end-to-end lifecycle management of Kubernetes workload clusters on various private clouds, bare metal servers, and in self-hosted environments.
+- [Palette Dev Engine](https://docs.spectrocloud.com/devx/): Palette provides two different modes for deploying and managing applications. The first mode is Cluster Mode - this mode enables you to create, deploy, and manage Kubernetes clusters and applications. The second mode is App Mode - a mode optimized for a simpler and streamlined developer experience that allows you to only focus on the building, maintenance, testing, deployment, and monitoring of your applications.
+- [Palette CLI](https://docs.spectrocloud.com/automation/palette-cli/): The Palette CLI contains various functionalities that you can use to interact with Palette and manage resources. The Palette CLI is well suited for Continuous Integration/Continuous Deployment (CI/CD) pipelines and recommended for automation tasks, where Terraform or direct API queries are not ideal.
+- [Palette Go SDK](https://docs.spectrocloud.com/automation/palette-sdk/): The [Palette Go Software Developer Toolkit (SDK)](https://github.com/spectrocloud/palette-sdk-go) provides Go developers a user-friendly client for interacting with Palette APIs.
+- [Terraform](https://docs.spectrocloud.com/automation/terraform/): Palette and Palette VerteX API can be used with the Spectro Cloud Terraform provider. The provider is available in the HashiCorp Terraform registry and offers detailed [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) on supported data sources and resources.
+- [Crossplane](https://docs.spectrocloud.com/automation/crossplane/): Palette supports the open source Cloud Native Computing Foundation (CNCF) project Crossplane. Crossplane transforms Kubernetes clusters into universal control planes, extending the Kubernetes API and enabling infrastructure resource provisioning and management across major infrastructure providers.
+- [Certification of Compliance](https://docs.spectrocloud.com/legal-licenses/compliance/): Palette is FIPS 140-3, SOC 2 Type II, and ISO 27001:2022 certified.
+- [Glossary](https://docs.spectrocloud.com/glossary-all/): Get a quick reference to various object types and concepts within the Palette platform.
+
+## Customer Stories
+
+- [Customer Stories](https://www.spectrocloud.com/customer-stories): Meet the businesses that have joined us in the journey to the future of Kubernetes management — and hear what they have to say.
+
+## Social Media
+- [Github](https://github.com/spectrocloud): Follow us on GitHub for developer content.
+- [YouTube](https://www.youtube.com/@spectrocloud/featured): Subscribe to our YouTube channel for videos.
+- [LinkedIn](https://www.linkedin.com/company/spectro-cloud/): Connect with us on LinkedIn for professional updates.
+
+## Contact Us
+- **Phone**: +1 408 418 8868
+- **Email**: [contact@spectrocloud.com](mailto:contact@spectrocloud.com)
+
+## Careers
+- [Careers](https://careers.spectrocloud.com/): Explore career opportunities with us.
