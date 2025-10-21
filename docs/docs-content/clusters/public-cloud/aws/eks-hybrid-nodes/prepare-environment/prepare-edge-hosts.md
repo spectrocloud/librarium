@@ -135,17 +135,22 @@ management mode to manage configurations, updates, and workloads.
   - [Zstandard](https://facebook.github.io/zstd/)
   - [rsync](https://github.com/RsyncProject/rsync)
   - [systemd](https://systemd.io/)
-  - [systemd-timesyncd](https://www.freedesktop.org/software/systemd/man/latest/systemd-timesyncd.service.html). This is
-    required if you want Palette to manage Network Time Protocol (NTP). If you don't want Palette to manage NTP, you can
-    skip this requirement.
-  - [systemd-resolved](https://www.freedesktop.org/software/systemd/man/latest/systemd-resolved.service.html). This is
-    required if you want Palette to manage Domain Name System (DNS). If you don't want Palette to manage DNS, you can
-    skip this requirement.
-  - [systemd-networkd](https://www.freedesktop.org/software/systemd/man/latest/systemd-networkd.html). This requirement
-    is specific for clusters that use static IP addresses. You also need this if you want Palette to manage the Edge
-    host network.
+  - [systemd-timesyncd](https://www.freedesktop.org/software/systemd/man/latest/systemd-timesyncd.service.html) -
+    Required if you want Palette to manage Network Time Protocol (NTP).
+  - [systemd-resolved](https://www.freedesktop.org/software/systemd/man/latest/systemd-resolved.service.html) - Required
+    if you want Palette to manage Domain Name System (DNS) or if you plan to use overlay networks for clusters deployed
+    on your Edge host. Refer to our
+    [Configure networkd to Prepare Host for Overlay Network](../../../../../deployment-modes/agent-mode/overlay-preparation.md)
+    guide for information on installing and configuring `systemd-resolved`.
+  - [systemd-networkd](https://www.freedesktop.org/software/systemd/man/latest/systemd-networkd.html) - Required if you
+    want Palette to manage static IP addresses or if you plan to use overlay networks for clusters deployed on your Edge
+    host. Refer to our
+    [Configure networkd to Prepare Host for Overlay Network](../../../../../deployment-modes/agent-mode/overlay-preparation.md)
+    guide for information on installing and configuring `systemd-networkd`.
+  - [conntrack](https://conntrack-tools.netfilter.org/downloads.html) - Required for clusters that use PXK-E as its
+    Kubernetes layer.
   - [iptables](https://linux.die.net/man/8/iptables)
-  - [rsyslog](https://github.com/rsyslog/rsyslog). This is required for audit logs.
+  - [rsyslog](https://github.com/rsyslog/rsyslog) - Required for audit logs.
 
   If you are using Ubuntu or any OS that uses apt or apt-get for package management, you can issue the following command
   to install all dependencies for installation with the following command:
