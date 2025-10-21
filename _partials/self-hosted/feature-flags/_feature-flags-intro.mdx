@@ -5,7 +5,7 @@ partial_name: feature-flags-intro
 
 Feature flags allow <PaletteVertexUrlMapper edition={props.edition} text="system administrators" url="/system-management/account-management#system-administrators" />
 to manage certain features available to the system's tenants. Use this capability to roll out new features to tenants in a
-controlled manner or prevent the implementation a feature due to security or compliance reasons.
+controlled manner or prevent tenants from using Tech Preview features in production environments.
 
 Features enabled by system administrators apply to all tenants in the system. Once a feature is enabled, it cannot be
 disabled for security and stability purposes. All feature flags are Tech Preview features. When a feature graduates from
@@ -22,7 +22,7 @@ The following table lists all available feature flags and their supported platfo
 
 :::warning
 
-We recommend trying out new features in a test environment before enabling them in a production environment, as certain
-features may have a significant impact on the system and current workloads.
+We recommend enabling features in test environment first, as certain
+features may have a significant impact on your production environment and current workloads.
 
 :::
