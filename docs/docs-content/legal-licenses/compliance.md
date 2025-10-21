@@ -62,18 +62,6 @@ edition incorporates the module in the Kubernetes Management Platform and the in
 clusters to protect the sensitive information of regulated industries. Palette VerteX supports FIPS at the tenant level.
 For more information about the FIPS-enforced Palette edition, check out [Palette VerteX](vertex/vertex.md).
 
-The module is tested against these configurations:
-
-- Android 13 running on Google Pixel 4a with Qualcomm Snapdragon 730 32-bit and 64-bit _with and without_ PAA
-- Android 13 running on Google Pixel 4XL with Qualcomm Snapdragon 855 32-bit and 64-bit _with and without_ PAA
-- Android 13 running on Google Pixel 5a with Qualcomm Snapdragon 765 32-bit and 64-bit _with and without_ PAA
-- Android 13 running on Google Pixel 6 Pro with Google Tensor 32-bit and 64-bit _with and without_ PAA
-- Android 13 running on Google Pixel 7 Pro with Google Tensor G2 32-bit and 64-bit _with and without_ PAA
-- Debian Linux 5.17.11 (Rodete) running on n2d with AMD EPYC 7B12 _with and without_ PAA
-- Google Prodimage with Linux 4.15.0 running on n1 with Intel Xeon E5 2696 v4 _with and without_ PAA
-- Google Prodimage with Linux 4.15.0 running on Tau t2a with Ampere Altra _with and without_ PAA
-- Google Prodimage with Linux 5.10.120 running on IN762 _with and without_ PAA
-
 ## Joint Certification Program
 
 ![JPC-Compliance](/docs_compliance_compliance_jpc-logo.webp "#width=687px")
