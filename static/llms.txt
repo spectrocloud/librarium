@@ -32,7 +32,7 @@ specific needs, with granular governance and enterprise-grade security.
 
 ## Customer Stories
 
-- [Customer Stories](https://www.spectrocloud.com/customer-stories): Meet the businesses that have joined us in the journey to the future of Kubernetes management — and hear what they have to say.
+- [Customer Stories](https://www.spectrocloud.com/customer-stories): Meet the businesses that have joined us in the journey to the future of Kubernetes management and hear what they have to say.
 
 ## Social Media
 - [Github](https://github.com/spectrocloud): Follow us on GitHub for developer content.
