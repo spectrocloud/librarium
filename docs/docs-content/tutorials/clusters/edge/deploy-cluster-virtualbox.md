@@ -303,7 +303,7 @@ docker images --filter=reference="*/*:*$CUSTOM_TAG"
 ```
 
 ```text hideClipboard
-REPOSITORY      TAG                               IMAGE ID       CREATED          SIZE
+REPOSITORY            TAG                                IMAGE ID       CREATED          SIZE
 spectrocloud/ubuntu   k3s-1.29.6-v4.4.12-vbox-tutorial   75811e3dfb42   13 minutes ago   3.63GB
 ```
 
