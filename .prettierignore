@@ -6,6 +6,7 @@ src/deprecated
 vale/
 **/*.yaml
 **/*.yml
+**/*.mdx
 .dockerignore
 static/scripts/kapa-widget.bundle.js
 
@@ -17,7 +18,7 @@ src/components/IconMapper/dynamicFontAwesomeImports.*
 docs/docs-content/security-bulletins/cve-reports.md
 docs/docs-content/security-bulletins/reports/*.md
 .eslintignore
-docs/docs-content/security-bulletins/reports/*.md
+.prettierrc
 
 # Ignore partials
 _partials/
