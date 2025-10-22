@@ -348,8 +348,8 @@ customization.
     ```
 
     ```hideClipboard bash
-    REPOSITORY                          TAG                                    IMAGE ID       CREATED          SIZE
-    spectrocloud/ubuntu/ubuntu          k3s-1.27.2-v4.4.12-palette-learn       075134ad5d4b   10 minutes ago   4.11GB
+    REPOSITORY                   TAG                                    IMAGE ID       CREATED          SIZE
+    spectrocloud/ubuntu          k3s-1.27.2-v4.4.12-palette-learn       075134ad5d4b   10 minutes ago   4.11GB
     ```
 
 14. To use the provider image with your Edge deployment, push it to the image registry specified in the `.arg` file. Log
