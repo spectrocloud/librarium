@@ -224,7 +224,8 @@ The following requirements apply to tags:
     | ------------------ | --------------------------------------------------- |
     | **Search domains** | Enter a comma-separated list of DNS search domains. |
 
-10.  Specify the cluster boot configuration.
+10. Specify the cluster boot configuration.
+
 
     | **Parameter**                             | **Description**                                                                                                           |
     | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |

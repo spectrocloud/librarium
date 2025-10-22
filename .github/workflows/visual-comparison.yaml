@@ -28,6 +28,7 @@ env:
   DISABLE_SECURITY_INTEGRATIONS: ${{ secrets.DISABLE_SECURITY_INTEGRATIONS }}
   SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
   DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
+  SEERS_CMP_KEY: ${{ secrets.SEERS_CMP_KEY }}
 
 
 concurrency:
@@ -61,10 +62,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js Environment
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "20"
           cache: "npm"
@@ -122,10 +123,10 @@ jobs:
         shardTotal: [4]
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "20"
           cache: "npm"
@@ -170,10 +171,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check out repository code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Setup Node.js environment
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: "20"
         cache: "npm"
@@ -214,7 +215,7 @@ jobs:
     steps: 
 
     - name: Checkout GitHub Pages Branch
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         ref: gh-pages  
 

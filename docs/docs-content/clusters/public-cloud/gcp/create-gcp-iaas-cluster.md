@@ -73,11 +73,11 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
 #### Static Placement
 
-   | **Parameter**            | **Description**                                               |
-   | ------------------------ | ------------------------------------------------------------- |
-   | **Virtual Network**      | Select the virtual network from the **drop-down Menu**.       |
-   | **Control plane subnet** | Select the control plane network from the **drop-down Menu**. |
-   | **Worker Network**       | Select the worker network from the **drop-down Menu**.        |
+| **Parameter**            | **Description**                                               |
+| ------------------------ | ------------------------------------------------------------- |
+| **Virtual Network**      | Select the virtual network from the **drop-down Menu**.       |
+| **Control plane subnet** | Select the control plane network from the **drop-down Menu**. |
+| **Worker Network**       | Select the worker network from the **drop-down Menu**.        |
 
 11. Configure the control plane and worker node pool. Specify availability zones, instance types, disk size, the number
     of nodes, and

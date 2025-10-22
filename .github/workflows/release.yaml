@@ -37,6 +37,7 @@ env:
   DISABLE_SECURITY_INTEGRATIONS: ${{ secrets.DISABLE_SECURITY_INTEGRATIONS }}
   SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
   DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
+  SEERS_CMP_KEY: ${{ secrets.SEERS_CMP_KEY }}
 
 
 concurrency:
@@ -51,14 +52,14 @@ jobs:
     runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           ref: "master"
 
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
           node-version: "20"
           cache: "npm"
@@ -117,14 +118,14 @@ jobs:
       labels: docbot
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           ref: "master"
 
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
           node-version: "20"
           cache: "npm"
@@ -181,7 +182,7 @@ jobs:
     steps:
       - id: checkout
         name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -197,7 +198,7 @@ jobs:
           secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
 
       - name: Setup Nodejs
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
           node-version: "20"
           cache: "npm"

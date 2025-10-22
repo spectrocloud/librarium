@@ -66,11 +66,11 @@ target import cluster and the Palette instance.
 
 A few restrictions apply to all cluster imports that you need to be aware of before importing a cluster.
 
-| Limitation                 | Description                                                                                                                                                                                                                                                                                                    |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Full Cluster Profile usage | You cannot use a full cluster profile. You are limited to using add-on profiles when deploying cluster profiles to imported clusters. |
-| Kubeconfig file access     | You cannot download the cluster's kubeconfig file from Palette. You must use the underlying infrastructure provider to access the kubeconfig file.                                                                                                                                                             |
-| HTTP Proxy Configuration   | You cannot configure HTTP proxy settings for imported clusters in **Read-only** mode. Import the cluster using **Full Permission** mode.                                                                                                                                                                       |
+| Limitation                 | Description                                                                                                                                        |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Full Cluster Profile usage | You cannot use a full cluster profile. You are limited to using add-on profiles when deploying cluster profiles to imported clusters.              |
+| Kubeconfig file access     | You cannot download the cluster's kubeconfig file from Palette. You must use the underlying infrastructure provider to access the kubeconfig file. |
+| HTTP Proxy Configuration   | You cannot configure HTTP proxy settings for imported clusters in **Read-only** mode. Import the cluster using **Full Permission** mode.           |
 
 <br />
 

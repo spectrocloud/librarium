@@ -30,6 +30,7 @@ env:
   SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
   DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
   UNRELEASED_VERSION_BANNER: true
+  SEERS_CMP_KEY: ${{ secrets.SEERS_CMP_KEY }}
 
 
 concurrency:
@@ -43,10 +44,10 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
           node-version: "20"
           cache: "npm"
