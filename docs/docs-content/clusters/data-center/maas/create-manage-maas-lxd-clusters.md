@@ -7,8 +7,9 @@ tags: ["data center", "maas", "lxd"]
 ---
 
 Palette supports creating and managing Kubernetes clusters deployed to a MAAS account with LXD Virtual Machines (VMs)
-enabled. This section guides you through how to create a Kubernetes cluster in MAAS that uses LXD VMs and is managed by
-Palette.
+enabled. This feature allows you to spawn multiple control plane nodes as LXD VMs and consolidate them on MAAS-managed
+servers, while your worker nodes run on bare metal. This improves resource utilization by reducing the number of bare
+metal machines needed to run control planes and keeps virtualization overhead low.
 
 :::preview
 
@@ -71,9 +72,9 @@ are managed by the host cluster. The worker nodes are still deployed on bare-met
 
 7.  From the **Cloud Account** drop-down menu, select your MAAS cloud account, and click **Next**.
 
-8.  Select the cluster profile for your MAAS cluster.
+8.  <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-9.  Review and override pack parameters as desired. Select **Next**.
+9.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
 10. Select a **Domain** from the drop-down menu.
 
@@ -135,9 +136,9 @@ The cluster **Overview** tab displays the status and health of your cluster, as 
 
 7.  From the **Cloud Account** drop-down menu, select your MAAS cloud account, and click **Next**.
 
-8.  Select the cluster profile for your MAAS cluster.
+8.  <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-9.  Review and override pack parameters as desired. Select **Next**.
+9.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
 10. Select a **Domain** from the drop-down menu.
 
