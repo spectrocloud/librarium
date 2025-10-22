@@ -28,7 +28,7 @@ The following components have been updated for Palette version 4.7.27 - 4.7.X.
 
 - The
   [`spectrocloud_registry` Terraform data source](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/registry)
-  now has the `sync_status` read-only field. It provides the synchronization status of Helm registries.
+  now has the `sync_status` read-only field. This field provides the synchronization status of Helm registries.
 
 ### Bug Fixes
 
