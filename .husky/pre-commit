@@ -1,4 +1,4 @@
-#   original pre-
+#   original pre-commit file
 #  #!/bin/bash
 #   lint-staged
 #   npm run clean-api-docs
@@ -16,7 +16,7 @@
 # this should catch more errors during the pre-commit hook execution 
 
 #!/usr/bin/env bash
-set -euo pipefail
+set -eu pipefail    #removing -o for easier compatibility
 cd -- "$(git rev-parse --show-toplevel)"
 
 npm exec --yes lint-staged
