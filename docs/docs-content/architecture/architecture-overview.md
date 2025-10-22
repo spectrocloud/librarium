@@ -107,10 +107,8 @@ following functionality.
    communication. This provides security in depth.
 
 Any Enterprise and VerteX Palette cluster will have a message broker that you can inspect. First, ensure that you can
-connect to the management plane cluster. Refer to the
-[Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide for further
-information. You can then view your message broker by executing the following command.
+connect to the management plane cluster. Refer to the Access Cluster with
+CLI](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli guide for further information. You can
+then view your message broker by executing the following command.
 
-```bash
-kubectl get statefulset msgbroker --namespace hubble-system
-```
+`bash kubectl get statefulset msgbroker --namespace hubble-system `
