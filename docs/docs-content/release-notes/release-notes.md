@@ -11,6 +11,31 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## November 15, 2025 - Component Updates {#component-updates-2025-43}
+
+The following components have been updated for Palette version 4.7.27 - 4.7.X.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.25.X  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.25.X  |
+
+### Bug Fixes
+
+- Fixed an issue that prevented the FIPS compliant version of the <VersionedLink text="Piraeus Operator" url="/integrations/packs/?pack=piraeus-operator" /> from operating correctly on Palette Vertex.
+
+### Packs
+
+#### Pack Notes
+
+| Pack Name                 | Layer  | Non-FIPS           | FIPS               | New Version |
+| ------------------------- | ------ | ------------------ | ------------------ | ----------- |
+| ArgoCD                    | Add-on | :white_check_mark: | :x:                | 8.6.0       |
+| AWS EFS                   | CSI    | :white_check_mark: | :x:                | 2.1.13      |
+| External Secrets Operator | Add-on | :white_check_mark: | :x:                | 0.20.2      |
+| Nginx                     | Add-on | :white_check_mark: | :x:                | 1.13.3      |
+| Piraeus Operator          | CSI    | :white_check_mark: | :white_check_mark: | 2.9.1       |
+
 ## October 19, 2025 - Release 4.7.27 {#release-notes-4.7.c}
 
 ### Security Notices
