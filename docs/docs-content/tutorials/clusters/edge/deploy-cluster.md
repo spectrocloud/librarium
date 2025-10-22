@@ -364,7 +364,7 @@ docker images --filter=reference='*/*:*demo*'
 ```
 
 ```hideClipboard bash {2,3}
-REPOSITORY      TAG                                    IMAGE ID       CREATED       SIZE
+REPOSITORY            TAG                                    IMAGE ID       CREATED       SIZE
 spectrocloud/ubuntu   k3s-1.32.1-v4.6.12-demo                145bc25ff5b4   2 hours ago   4.97GB
 spectrocloud/ubuntu   k3s-1.32.1-v4.6.12-demo_linux_amd64    145bc25ff5b4   2 hours ago   4.97GB
 spectrocloud/ubuntu   k3s-1.31.5-v4.6.12-demo                52ba5288cccd   2 hours ago   4.96GB
