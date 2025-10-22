@@ -159,7 +159,7 @@ workaround.
 11. Log in to your container registry. Provide your credentials when prompted. The example below provides a Docker login
     command.
 
-    ```bash
+    ```shell
     docker login
     ```
 
@@ -192,16 +192,16 @@ workaround.
    is the base image that you will use to build provider images and the Edge installer ISO later on.
 
 10. Tag the image with a repository in a registry that is accessible by your Linux machine. For example, the following
-    command uses the `spectrocloud` registry and the `rhel/rhel-byoi-fips` repository.
+    command uses the `spectrocloud` registry and the `ubuntu-focal-fips` repository.
 
     ```shell
-    docker tag rhel-byoi-fips:latest spectrocloud/rhel/rhel-byoi-fips:latest
+    docker tag ubuntu-focal-fips:latest spectrocloud/ubuntu-focal-fips:latest
     ```
 
 11. Log in to your container registry. Provide your credentials when prompted. The example below provides a Docker login
     command.
 
-    ```bash
+    ```shell
     docker login
     ```
 
@@ -209,7 +209,7 @@ workaround.
     cluster deployment.
 
     ```shell
-    docker push spectrocloud/rhel/rhel-byoi-fips:latest
+    docker push spectrocloud/ubuntu-focal-fips:latest
     ```
 
 </TabItem>
