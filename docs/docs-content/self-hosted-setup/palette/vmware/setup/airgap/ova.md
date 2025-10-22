@@ -55,6 +55,9 @@ Palette.
   provisioning workloads that require persistent storage. Refer to
   [Zone Tagging](./vmware-system-requirements.md#zone-tagging) for information.
 
+- A folder named `spectro-templates` in the vCenter VM and Templates inventory. This is a hardcoded value and is
+  case-sensitive.
+
 :::info
 
 Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not
@@ -355,9 +358,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     is complete.
 
 20. Navigate back to the vSphere console and create a vSphere VM and Template folder named `spectro-templates`. Ensure
-    you can access this folder with the user account you plan to use when deploying the VerteX installation. You can
-    choose a different name for the folder if you prefer, but ensure you use the same name when the Palette CLI prompts
-    you for the folder name.
+    you can access this folder with the user account you plan to use when deploying the VerteX installation.
 
 21. Right-click on your cluster or resource group and select **Deploy OVF Template**.
 

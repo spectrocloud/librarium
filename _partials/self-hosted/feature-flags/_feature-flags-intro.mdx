@@ -1,0 +1,28 @@
+---
+partial_category: self-hosted
+partial_name: feature-flags-intro
+---
+
+Feature flags allow <PaletteVertexUrlMapper edition={props.edition} text="system administrators" url="/system-management/account-management#system-administrators" />
+to manage certain features available to the system's tenants. Use this capability to roll out new features to tenants in a
+controlled manner or prevent tenants from using Tech Preview features in production environments.
+
+Features enabled by system administrators apply to all tenants in the system. Once a feature is enabled, it cannot be
+disabled for security and stability purposes. All feature flags are Tech Preview features. When a feature graduates from
+Tech Preview, the feature flag is removed, and the feature is automatically enabled for all tenants.
+
+The following table lists all available feature flags and their supported platforms.
+
+| **Feature Flag**       | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                       | **Palette Support** | **Palette VerteX Support** |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-----------------: | :------------------------: |
+| **AwsSecretPartition** | Configure [AWS Secret Cloud](https://aws.amazon.com/federal/secret-cloud/) accounts and deploy EKS clusters in AWS Secret cloud. Refer to our <VersionedLink text="Register and Manage AWS Accounts" url="/clusters/public-cloud/aws/add-aws-accounts#aws-secret-cloud-account-us" /> guide for more information.                                                                                                                                                         |         :x:         |     :white_check_mark:     |
+| **AzureUSSecretCloud** | Configure [Azure Government Secret](https://azure.microsoft.com/en-us/explore/global-infrastructure/government/national-security) cloud accounts and deploy Azure IaaS clusters in Azure Government Secret cloud.                                                                                                                                                                                                                                     |         :x:         |     :white_check_mark:     |
+| **ClusterTemplate**    | Create reusable blueprints that reference <VersionedLink text="cluster profiles" url="/profiles/cluster-profiles/" /> and <VersionedLink text="policies" url="/cluster-templates/create-cluster-template-policies/" />, allowing you to declaratively define and manage the software and governance stack for a fleet of clusters. Refer to our <VersionedLink text="Cluster Templates" url="/cluster-templates/" /> guide for more information. | :white_check_mark:  |     :white_check_mark:     |
+| **LxdMaas**            | Spawn multiple control plane nodes as LXD VMs and consolidate them on MAAS-managed servers while your worker nodes run on bare metal devices. Refer to our <VersionedLink text="Create and Manage MAAS Clusters Using LXD VMs" url="/clusters/data-center/maas/create-manage-maas-lxd-clusters/" /> guide for more information.                                                                                                                                            | :white_check_mark:  |     :white_check_mark:     |
+
+:::warning
+
+We recommend enabling features in test environment first, as certain
+features may have a significant impact on your production environment and current workloads.
+
+:::

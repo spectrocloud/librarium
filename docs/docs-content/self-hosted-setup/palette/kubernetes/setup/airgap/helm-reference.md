@@ -458,14 +458,14 @@ ui-system:
 You can configure Palette to use a proxy server to access the internet. Set the parameter `reach-system.enabled` to
 `true` to enable the proxy server. Proxy settings are configured in the `reach-system.proxySettings` section.
 
-| **Parameters**                          | **Description**                                                                     | **Type** | **Default value** |
-| --------------------------------------- | ----------------------------------------------------------------------------------- | -------- | ----------------- |
-| `reachSystem.enabled`                   | Specifies whether to enable the usage of a proxy server for Palette.                | Boolean  | `false`           |
-| `reachSystem.proxySettings.http_proxy`  | The HTTP proxy server URL.                                                          | String   | `""`              |
-| `reachSystem.proxySettings.https_proxy` | The HTTPS proxy server URL.                                                         | String   | `""`              |
-| `reachSystem.proxySettings.no_proxy`    | A list of hostnames or IP addresses that should not be go through the proxy server. | String   | `""`              |
-| `reachSystem.proxySettings.ca_crt_path` | The base64-encoded certificate authority (CA) of the proxy server.                  | String   | `""`              |
-| `reachSystem.scheduleOnControlPlane`    | Specifies whether to schedule the reach system on the control plane.                | Boolean  | `true`            |
+| **Parameters**                          | **Description**                                                                                                                     | **Type** | **Default value** |
+| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
+| `reachSystem.enabled`                   | Specifies whether to enable the usage of a proxy server for Palette.                                                                | Boolean  | `false`           |
+| `reachSystem.proxySettings.http_proxy`  | The HTTP proxy server URL.                                                                                                          | String   | `""`              |
+| `reachSystem.proxySettings.https_proxy` | The HTTPS proxy server URL.                                                                                                         | String   | `""`              |
+| `reachSystem.proxySettings.no_proxy`    | A list of hostnames or IP addresses that should not go through the proxy server.                                                    | String   | `""`              |
+| `reachSystem.proxySettings.ca_crt_path` | The path of the CA certificate on the cluster node. The certificate must be in the specified location for each node in the cluster. | String   | `""`              |
+| `reachSystem.scheduleOnControlPlane`    | Specifies whether to schedule the reach system on the control plane.                                                                | Boolean  | `true`            |
 
 ```yaml
 reach-system:

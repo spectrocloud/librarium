@@ -71,9 +71,13 @@ managedControlPlane:
 
 Nodes provisioned through [Karpenter](https://karpenter.sh/docs/) are visible in Palette and supported for read-only
 operations, such as billing and monitoring. However, [Day-2 operations](../../cluster-management/cluster-management.md)
-are not supported.
+are not supported. Refer to the [Configure Karpenter for EKS Clusters](./configure-karpenter-eks-clusters.md) guide to
+learn how to install Karpenter on an existing EKS cluster.
 
-The **Managed by Karpenter** banner is displayed for any node pools that are provisioned using Karpenter.
+#### Visibility in Palette
+
+In Palette, node pools provisioned by Karpenter display the **Managed by Karpenter** banner in the cluster’s **Nodes**
+tab.
 
 ![Karpenter node in Palette](/public-cloud_aws_architecture_managed-by-karpenter.webp)
 
