@@ -24,7 +24,7 @@ The following components have been updated for Palette version 4.7.27 - 4.7.X.
 
 - The `aws_access_key` of the
   [`spectrocloud_cloudaccount_aws` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cloudaccount_aws)
-  is now deprecated. The secure alternative to this field is the `aws_secured_access_key` sensitive field.
+  is now deprecated. The secure alternative to this field is the sensitive `aws_secured_access_key` field.
 
 - The
   [`spectrocloud_registry` Terraform data source](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/registry)
