@@ -800,7 +800,7 @@ required Edge artifacts.
     Example output.
 
     ```bash hideClipboard
-    REPOSITORY          TAG                                 IMAGE ID       CREATED          SIZE
+    REPOSITORY                TAG                                 IMAGE ID       CREATED          SIZE
     spectrocloud/ubuntu       nodeadm-1.30.0-v4.5.15-eks-hybrid   1234a567b890   24 minutes ago   3.67GB
     ```
 
