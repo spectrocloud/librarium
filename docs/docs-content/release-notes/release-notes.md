@@ -20,9 +20,23 @@ The following components have been updated for Palette version 4.7.27 - 4.7.X.
 | [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.25.X  |
 | [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.25.X  |
 
+### Improvements
+
+- The `aws_access_key` of the
+  [`spectrocloud_cloudaccount_aws` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cloudaccount_aws)
+  is now deprecated. The secure alternative to this field is the `aws_secured_access_key` sensitive field.
+
+- The
+  [`spectrocloud_registry` Terraform data source](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/registry)
+  now has the `sync_status` read-only field. It provides the synchronization status of Helm registries.
+
 ### Bug Fixes
 
-- Fixed an issue that prevented the FIPS compliant version of the <VersionedLink text="Piraeus Operator" url="/integrations/packs/?pack=piraeus-operator" /> from operating correctly on Palette Vertex.
+<!-- prettier-ignore-start -->
+
+- Fixed an issue that prevented the FIPS compliant version of the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> from operating correctly on [Palette Vertex](../vertex/vertex.md).
+
+<!-- prettier-ignore-end -->
 
 ### Packs
 
