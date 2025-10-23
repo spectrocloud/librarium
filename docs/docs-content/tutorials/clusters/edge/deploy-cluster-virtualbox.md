@@ -360,7 +360,7 @@ Add the **BYOS Edge OS** pack to the OS layer.
 | BYOS Edge OS  | 1.0.0       | Public Repo  | Operating System |
 
 Replace the layer manifest with the custom manifest you built in the [Build Edge Artifacts](#build-edge-artifacts)
-section. This will make the cluster profile pull the provider images from the registry you pushed it to. The image below
+section. This will make the cluster profile pull the provider images from the registry you pushed them to. The image below
 displays the OS layer with the custom manifest.
 
 ![A screenshot of the cluster profile creation step with the OS layer.](/tutorials/edge-vbox/tutorials_edge_deploy-cluster-virtualbox_byos-pack_4-6.webp)
