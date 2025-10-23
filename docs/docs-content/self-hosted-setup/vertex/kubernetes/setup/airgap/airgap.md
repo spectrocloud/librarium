@@ -1,12 +1,14 @@
 ---
-sidebar_label: "Airgap Installation"
-title: "Airgap Installation"
-description: "Learn how to deploy VerteX to a Kubernetes cluster using a Helm Chart."
+sidebar_label: "Airgap Environment"
+title: "Airgap Environment"
+description:
+  "Prepare your environment for installing self-hosted Palette VerteX on a Kubernetes cluster in an airgapped
+  environment using a Helm Chart."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0
-tags: ["vertex", "enterprise", "airgap", "kubernetes"]
-keywords: ["self-hosted", "vertex"]
+tags: ["self-hosted", "vertex", "airgap", "helm"]
+keywords: ["self-hosted", "vertex", "airgap", "helm"]
 ---
 
 You can install VerteX in an airgap Kubernetes environment. An airgap environment lacks direct access to the internet
@@ -44,19 +46,17 @@ the following diagram.
 
 4. Install Palette using the Kubernetes Helm chart.
 
-## Get Started
+## Supported Platforms
 
-To get started with the airgap Palette installation, start by reviewing the
-[Environment Setup](./kubernetes-airgap-instructions.md) page. The environment setup guide provides detailed
-instructions on how to prepare your airgap environment. After you have completed the environment setup, you can proceed
-with the [Install VerteX](./install.md) guide.
+The following table outlines the platforms supported for airgap VerteX installation and the supported OCI registries.
 
-## Resources
+| **Platform** | **OCI Registry** | **Supported** |
+| ------------ | ---------------- | ------------- |
+| Kubernetes   | Harbor           | ✅            |
+| Kubernetes   | AWS ECR          | ✅            |
 
-- [Environment Setup](kubernetes-airgap-instructions.md)
+## Next Steps
 
-- [Install VerteX](./install.md)
-
-- [Airgap Installation Checklist](checklist.md)
-
-- [Additional Packs](../../../../downloads/palette-vertex/additional-packs.md)
+To get started with the airgap Palette installation, review the [Environment Setup](./environment-setup.md) page. The
+environment setup guide provides detailed instructions on how to prepare your airgap environment. After you have
+completed the environment setup, you can proceed with the [Install Palette](../../install/airgap.md) guide.

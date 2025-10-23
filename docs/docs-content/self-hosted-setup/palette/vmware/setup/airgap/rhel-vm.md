@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Set Up Environment with RHEL"
-title: "Set Up Environment with an Existing RHEL VM"
-description: "Learn how to prepare your airgap environment for installing self-hosted Palette using an existing RHEL VM"
+title: "Set Up Environment with Existing RHEL VM"
+description: "Prepare your airgap environment for installing self-hosted Palette using an existing RHEL VM."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
@@ -30,5 +30,6 @@ This guide is for preparing your airgap environment only. For instructions on in
   category="self-hosted"
   name="setup-steps"
   edition="Palette"
-  requirementsURL="/enterprise-version/install-palette#kubernetes-requirements"
+  install="vmware"
+  requirementsURL="/self-hosted-setup/palette/vmware/install#kubernetes-requirements"
 />

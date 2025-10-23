@@ -1,19 +1,17 @@
 ---
 sidebar_label: "Tenant Management"
 title: "Tenant Management"
-description: "Learn how to create and remove tenants in Palette VerteX."
+description: "Create and remove tenants in self-hosted Palette VerteX."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 160
-tags: ["vertex", "management"]
-keywords: ["self-hosted", "vertex"]
+tags: ["self-hosted", "vertex", "management"]
+keywords: ["self-hosted", "vertex", "management"]
 ---
 
 Tenants are isolated environments in Palette VerteX that contain their own clusters, users, and resources. You can
 create multiple tenants in Palette VerteX to support multiple teams or projects. Instructions for creating and removing
 tenants are provided below.
-
-<br />
 
 ## Create a Tenant
 

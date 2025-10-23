@@ -1,12 +1,10 @@
 ---
-title: "Upgrade VerteX Management Appliance"
-sidebar_label: "VerteX Management Appliance"
-description: "Learn how to upgrade the VerteX Management Appliance"
+sidebar_label: "Upgrade Palette VerteX"
+title: "Upgrade Self-Hosted Palette VerteX with the VerteX Management Appliance"
+description: "Upgrade self-hosted Palette VerteX installed with the VerteX Management Appliance."
 hide_table_of_contents: false
-# sidebar_custom_props:
-#   icon: "chart-diagram"
-tags: ["verteX management appliance", "self-hosted", "vertex"]
-sidebar_position: 20
+tags: ["management appliance", "self-hosted", "vertex", "upgrade"]
+sidebar_position: 50
 ---
 
 :::preview
@@ -16,9 +14,8 @@ Do not use this feature in production workloads.
 
 :::
 
-Follow the instructions to upgrade the
-[VerteX Management Appliance](../install-palette-vertex/vertex-management-appliance.md) using a content bundle. The
-content bundle is used to upgrade the Palette VerteX instance to a chosen target version.
+Follow the instructions to upgrade the [VerteX Management Appliance](./management-appliance.md) using a content bundle.
+The content bundle is used to upgrade the Palette VerteX instance to a chosen target version.
 
 :::info
 
@@ -27,11 +24,25 @@ remain operational.
 
 :::
 
+## Supported Upgrade Paths
+
+:::danger
+
+Before upgrading Palette VerteX to a new major version, you must first update it to the latest patch version of the
+latest minor version available.
+
+:::
+
+| **Source Version** | **Target Version** | **Support** |
+| ------------------ | ------------------ | ----------- |
+| 4.7.3              | 4.7.15             | :x:         |
+
 ## Prerequisites
 
 <PartialsComponent
   category="self-hosted"
   name="upgrade-palette-prereqs"
+  install="management-appliance"
   edition="VerteX"
   version="Palette VerteX"
   iso="Palette VerteX"
@@ -107,7 +118,7 @@ remain operational.
 
 If the upgrade process stalls, this may be due to the `linstor-satellite.*` pods not using the correct image for the
 `drbd-module-loader` container. Refer to
-[Scenario - VerteX Management Appliance Fails to Upgrade due to Stuck Linstor Satellite Pods](../../troubleshooting/enterprise-install.md#scenario---vertex-management-appliance-fails-to-upgrade-due-to-stuck-linstor-satellite-pods)
+[Scenario - VerteX Management Appliance Fails to Upgrade due to Stuck Linstor Satellite Pods](../../../troubleshooting/enterprise-install.md#scenario---vertex-management-appliance-fails-to-upgrade-due-to-stuck-linstor-satellite-pods)
 for more information.
 
 :::

@@ -874,4 +874,10 @@ Use the following steps to validate the Palette installation.
 
 ## Next Steps
 
-<PartialsComponent category="self-hosted" name="install-next-steps" edition="Palette" version="Palette" />
+<PartialsComponent
+  category="self-hosted"
+  name="install-next-steps"
+  edition="Palette"
+  install="kubernetes"
+  version="Palette"
+/>

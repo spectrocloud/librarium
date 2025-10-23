@@ -64,9 +64,8 @@ Use the steps below to add an AWS cloud account using Security Token Service (ST
 - A Palette account with [tenant admin](../../../tenant-settings/tenant-settings.md) access.
 
 - If you are using a self-hosted instance of Palette or VerteX, you must configure an AWS account at the instance-level
-  to allow tenants to add AWS accounts using STS. For more information, refer to
-  [Enable Adding AWS Accounts Using STS - Palette](../../../enterprise-version/system-management/configure-aws-sts-account.md)
-  or [Enable Adding AWS Accounts Using STS - VerteX](../../../vertex/system-management/configure-aws-sts-account.md).
+  to allow tenants to add AWS accounts using STS. For more information, refer to the
+  [Add AWS Accounts Using STS](../../../public-cloud/aws/add-aws-accounts/configure-aws-sts-account.md) guide.
 
 - An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or
   [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette.
@@ -176,9 +175,8 @@ Use the steps below to add an AWS cloud account using STS credentials.
 - A Palette account with [tenant admin](../../../tenant-settings/tenant-settings.md) access.
 
 - If you are using a self-hosted instance of Palette or VerteX, you must configure an AWS account at the instance-level
-  to allow tenants to add AWS accounts using STS. For more information, refer to
-  [Enable Adding AWS Accounts Using STS - Palette](../../../enterprise-version/system-management/configure-aws-sts-account.md)
-  or [Enable Adding AWS Accounts Using STS - VerteX](../../../vertex/system-management/configure-aws-sts-account.md).
+  to allow tenants to add AWS accounts using STS. For more information, refer to the
+  [Add AWS Accounts Using STS](../../../public-cloud/aws/add-aws-accounts/configure-aws-sts-account.md) guide.
 
 - An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or
   [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette.

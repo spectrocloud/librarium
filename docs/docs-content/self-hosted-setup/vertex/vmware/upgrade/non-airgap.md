@@ -1,28 +1,29 @@
 ---
-sidebar_label: "Non-airgap"
-title: "Upgrade Palette VerteX Installed on VMware vSphere"
-description: "Learn how to upgrade self-hosted Palette VerteX in VMware vSphere."
+sidebar_label: "Upgrade Non-Airgap Palette VerteX"
+title: "Upgrade Self-Hosted, Non-Airgap Palette VerteX Installed on VMware"
+description:
+  "Upgrade a self-hosted, non-airgap Palette VerteX instance installed on VMware vSphere using the Palette CLI."
 icon: ""
-sidebar_position: 0
-tags: ["vertex", "self-hosted", "vmware", "non-airgap", "upgrade"]
-keywords: ["self-hosted", "vertex"]
+sidebar_position: 20
+tags: ["self-hosted", "vertex", "non-airgap", "vmware", "upgrade", "cli"]
+keywords: ["self-hosted", "vertex", "non-airgap", "vmware", "upgrade", "cli"]
 ---
 
 This guide takes you through the process of upgrading a self-hosted Palette VerteX instance installed on VMware vSphere.
 Before upgrading Palette VerteX to a new major version, you must first update it to the latest patch version of the
-latest minor version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section
-for details.
+latest minor version available. Refer to the [Supported Upgrade Paths](./upgrade.md#supported-upgrade-paths) section for
+details.
 
 :::warning
 
 If you are upgrading from a Palette VerteX version that is older than 4.4.14, ensure that you have executed the utility
 script to make the CNS mapping unique for the associated PVC. For more information, refer to the
-[Troubleshooting guide](../../../troubleshooting/enterprise-install.md#scenario---non-unique-vsphere-cns-mapping).
+[Troubleshooting guide](../../../../troubleshooting/enterprise-install.md#scenario---non-unique-vsphere-cns-mapping).
 
 :::
 
 If your setup includes a PCG, you must also
-[allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
+[allow the PCG to upgrade automatically](../../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
 Palette VerteX upgrade.
 
 ## Prerequisites

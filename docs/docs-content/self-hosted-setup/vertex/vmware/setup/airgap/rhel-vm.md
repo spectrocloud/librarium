@@ -1,12 +1,12 @@
 ---
-sidebar_label: "Environment Setup with RHEL"
-title: "Environment Setup with an Existing RHEL VM"
-description: "Learn how to prepare your airgap environment for VerteX installation using an existing RHEL VM"
+sidebar_label: "Set Up Environment with RHEL"
+title: "Set Up Environment with Existing RHEL VM"
+description: "Prepare your airgap environment for installing self-hosted Palette VerteX using an existing RHEL VM."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 35
-tags: ["self-hosted", "vertex", "airgap", "vmware", "vsphere", "rhel"]
-keywords: ["self-hosted", "vertex"]
+sidebar_position: 30
+tags: ["self-hosted", "vertex", "airgap", "vmware", "rhel"]
+keywords: ["self-hosted", "vertex", "airgap", "vmware", "rhel"]
 ---
 
 This guide helps you prepare your VMware vSphere airgap environment for VerteX installation using an existing Red Hat
@@ -18,7 +18,7 @@ for hosting VerteX images and assists in starting the VerteX installation.
 :::info
 
 This guide is for preparing your airgap environment only. For instructions on installing VerteX on VMware, refer to the
-[Install VerteX](../install.md) guide.
+[Install VerteX](../../install/airgap.md) guide.
 
 :::
 
@@ -30,5 +30,5 @@ This guide is for preparing your airgap environment only. For instructions on in
   category="self-hosted"
   name="setup-steps"
   edition="VerteX"
-  requirementsURL="/vertex/install-palette-vertex#kubernetes-requirements"
+  requirementsURL="/self-hosted-setup/vertex/vmware/install#kubernetes-requirements"
 />

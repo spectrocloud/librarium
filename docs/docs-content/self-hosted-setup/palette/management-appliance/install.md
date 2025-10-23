@@ -17,6 +17,15 @@ page.
 
 Follow the instructions to install Palette using the Palette Management Appliance on your infrastructure platform.
 
+## Size Guidelines
+
+<PartialsComponent
+  category="self-hosted"
+  name="size-guidelines-management-appliance"
+  edition="Palette"
+  app="Palette Management Appliance"
+/>
+
 ## Limitations
 
 - Only public image registries are supported if you are choosing to use an external registry for your pack bundles.
@@ -28,6 +37,7 @@ Follow the instructions to install Palette using the Palette Management Applianc
   name="installation-steps-prereqs"
   edition="Palette"
   version="Palette"
+  install="management-appliance"
   iso="Palette Enterprise"
   app="Palette Management Appliance"
 />

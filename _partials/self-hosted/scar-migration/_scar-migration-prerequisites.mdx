@@ -6,8 +6,6 @@ partial_name: scar-migration-prerequisites
 - A deployed self-hosted {props.edition} <PaletteVertexUrlMapper
     edition={props.edition}
     text="cluster"
-    palettePath="/install-palette"
-    vertexPath="/install-palette-vertex"
   /> that uses a customer-managed SCAR to host {props.edition}
   manifests.
 - Access to the {props.edition} cluster kubeconfig file to verify the SCAR endpoint.
@@ -28,11 +26,10 @@ partial_name: scar-migration-prerequisites
   function properly.
 - Access to the {props.edition} system console.
 - Ensure the following software is installed and available in the environment hosting the file server. For example, if
-  you deployed an airgapped instance of {props.edition} to VMware using an <PaletteVertexUrlMapper
+  you deployed an airgapped instance of {props.edition} to VMware using an For example, if you deployed an airgapped instance of {props.edition} to VMware using an <PaletteVertexUrlMapper
     edition={props.edition}
     text="OVA"
-    palettePath="/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions"
-    vertexPath="/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions"
+    url="/vmware/setup/airgap/ova/"
   />, these tools must be available on your airgap support VM.
 
   - [tar](https://www.gnu.org/software/tar/)

@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Upgrade Palette"
 title: "Upgrade Self-Hosted Palette Installed on VMware"
-description: "Learn how to upgrade your self-hosted Palette environment installed on VMware vSphere."
+description: "Upgrade your self-hosted Palette instance installed on VMware vSphere."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10

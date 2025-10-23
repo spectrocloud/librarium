@@ -1,12 +1,12 @@
 ---
-sidebar_label: "Uninstallation"
-title: "Uninstall VerteX"
-description: "Learn how to uninstall a VerteX installation from your cluster using Helm charts."
+sidebar_label: "Uninstall Palette VerteX"
+title: "Uninstall Self-Hosted Palette VerteX from a Kubernetes Cluster"
+description: "Uninstall self-hosted Palette VerteX from your Kubernetes cluster using Helm charts."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 40
-tags: ["self-hosted", "enterprise"]
-keywords: ["vertex"]
+tags: ["self-hosted", "vertex", "uninstall", "kubernetes", "helm"]
+keywords: ["self-hosted", "vertex", "uninstall", "kubernetes", "helm"]
 ---
 
 To uninstall VerteX from your cluster, you need to uninstall VerteX management plane and Cert Manager. Optionally, you

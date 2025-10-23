@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Activate Palette"
-title: "Activate Palette"
-description: "Learn how to activate your self-hosted Palette installation"
+title: "Activate Self-Hosted Palette"
+description: "Activate your self-hosted Palette installation."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
@@ -35,7 +35,7 @@ activated, it does not need to be reactivated unless you need to reinstall Palet
 be assigned, and a new activation key will be needed. Activation keys are no additional cost and are included with your
 purchase of Palette. The activation process is the same for connected and airgapped installations, regardless of whether
 Palette is installed via the [Palette CLI](../../../../automation/palette-cli/palette-cli.md),
-[Helm Chart](../setup/non-airgap/helm-reference.md), or
+[Helm chart](../../kubernetes/install/install.md), or
 [Management Appliance](../../management-appliance/management-appliance.md) ISO.
 
 If you are in trial mode or your trial has expired, Palette displays the appropriate banner on the **Summary** screen of

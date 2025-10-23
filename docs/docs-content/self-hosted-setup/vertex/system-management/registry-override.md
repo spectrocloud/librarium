@@ -1,11 +1,11 @@
 ---
-sidebar_label: "Custom Image Registry Configuration"
-title: "Custom Image Registry Configuration"
-description: "Learn how to override the image registry configuration for Palette VerteX."
+sidebar_label: "Image Registry Override"
+title: "Image Registry Override"
+description: "Learn how to override the default image registry for self-hosted Palette VerteX."
 hide_table_of_contents: false
 sidebar_position: 70
-tags: ["vertex"]
-keywords: ["enterprise kubernetes", "multi cloud kubernetes"]
+tags: ["self-hosted", "vertex", "registry"]
+keywords: ["self-hosted", "vertex", "registry"]
 ---
 
 You can override the image registry configuration for Palette VerteX to reference a different image registry. This
@@ -15,7 +15,7 @@ feature is useful when you want to use a custom image registry to store and mana
 
 Before overriding the image registry configuration for VerteX, ensure you have the following:
 
-- A deployed and healthy [VerteX cluster](../install-palette-vertex/install-palette-vertex.md).
+- A deployed and healthy [VerteX cluster](../vertex.md).
 
 - Access to the kubeconfig file for the VerteX cluster. You need the kubeconfig file to access the VerteX cluster and
   apply the image registry configuration.
@@ -25,7 +25,7 @@ Before overriding the image registry configuration for VerteX, ensure you have t
   If you deployed VerteX through the Palette CLI, then you can download the kubeconfig file from the VerteX cluster
   details page in the system console. Navigate to the **Enterprise Cluster Migration** page. Click on the **Admin
   Kubeconfig** link to download the kubeconfig file. If you need help with configuring kubectl to access the VerteX
-  cluster, refer to the [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md) guide. If you
+  cluster, refer to the [Access Cluster with CLI](../../../clusters/cluster-management/palette-webctl.md) guide. If you
   deployed VerteX onto an existing Kubernetes cluster, reach out to your cluster administrator for the kubeconfig file.
 
   :::
@@ -52,7 +52,8 @@ Select the appropriate tab below based on the environment in which your VertX cl
 1. Open a terminal session.
 
 2. Configure kubectl to use the kubeconfig file for the VerteX cluster. Refer to the
-   [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md) for guidance on configuring kubectl.
+   [Access Cluster with CLI](../../../clusters/cluster-management/palette-webctl.md) for guidance on configuring
+   kubectl.
 
 3. Navigate to the folder where you have the image-swap Helm chart available. You may have to extract the Helm chart if
    it is in a compressed format to access the **values.yaml** file.
@@ -215,7 +216,8 @@ Use the following steps to override the image registry configuration.
 1. Open a terminal session.
 
 2. Configure kubectl to use the kubeconfig file for the VerteX cluster. Refer to the
-   [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md) for guidance on configuring kubectl.
+   [Access Cluster with CLI](../../../clusters/cluster-management/palette-webctl.md) for guidance on configuring
+   kubectl.
 
 3. Create an empty YAML file with the name **registry-secret.yaml**. Use the following command to create the file.
 
@@ -304,7 +306,8 @@ Use the following steps to override the image registry configuration.
 1. Open a terminal session with a network access to the VeteX cluster.
 
 2. Configure kubectl to use the kubeconfig file for the VerteX cluster. Refer to the
-   [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md) for guidance on configuring kubectl.
+   [Access Cluster with CLI](../../../clusters/cluster-management/palette-webctl.md) for guidance on configuring
+   kubectl.
 
 3. Issue the following command to verify that the secret containing the image registry configuration is created.
 

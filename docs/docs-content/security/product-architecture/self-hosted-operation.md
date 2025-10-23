@@ -15,14 +15,14 @@ environment has security controls. Palette automatically generates security keys
 management cluster. You can import an optional certificate and private key to match the Fully Qualified Domain Name
 (FQDN) management cluster. Palette supports enabling disk encryption policies for management cluster virtual machines
 (VMs) if required. For information about deploying Palette in a self-hosted environment, review the
-[Self-Hosted Installation](../../enterprise-version/enterprise-version.md) guide.
+[Self-Hosted Installation](../../self-hosted-setup/palette/palette.md) guide.
 
 In self-hosted deployments, the Open Virtualization Appliance (OVA) can operate in stand-alone mode for quick Proof of
 Concept (POC) or in enterprise mode, which launches a three-node High Availability (HA) cluster as the Palette
 management cluster. The management cluster provides a browser-based web interface that allows you to set up a tenant and
 provision and manage tenant clusters. You can also deploy Palette to a Kubernetes cluster by using the Palette Helm
 Chart. To learn more, review the
-[Install Using Helm Chart](../../enterprise-version/install-palette/install-on-kubernetes/install.md) guide.
+[Install Using Helm Chart](../../self-hosted-setup/palette/kubernetes/install/install.md) guide.
 
 The following points apply to self-hosted deployments:
 

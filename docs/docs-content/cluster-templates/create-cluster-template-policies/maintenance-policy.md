@@ -45,7 +45,7 @@ cluster templates.
 
 ### Prerequisites
 
-- The **ClusterTemplate** [feature flag](../../enterprise-version/system-management/feature-flags.md) enabled.
+- The **ClusterTemplate** [feature flag](../../self-hosted-setup/palette/system-management/feature-flags.md) enabled.
 
 - The `spcPolicy.create` permission to create cluster template policies. Refer to our
   [Roles and Permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md#project) guide for more
@@ -133,7 +133,7 @@ regardless if they are attached to a cluster template and the template is or is 
 
 ### Prerequisites
 
-- The **ClusterTemplate** [feature flag](../../enterprise-version/system-management/feature-flags.md) enabled.
+- The **ClusterTemplate** [feature flag](../../self-hosted-setup/palette/system-management/feature-flags.md) enabled.
 
 - The `spcPolicy.update` permission to update cluster template policies. Refer to our
   [Roles and Permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md#project) guide for more
@@ -167,7 +167,7 @@ if it is not linked to a cluster template, regardless of whether the template is
 
 ### Prerequisites
 
-- The **ClusterTemplate** [feature flag](../../enterprise-version/system-management/feature-flags.md) enabled.
+- The **ClusterTemplate** [feature flag](../../self-hosted-setup/palette/system-management/feature-flags.md) enabled.
 
 - The `spcPolicy.delete` permission to delete cluster template policies. Refer to our
   [Roles and Permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md#project) guide for more

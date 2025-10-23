@@ -1,7 +1,9 @@
 ---
 sidebar_label: "Manage User Credentials"
 title: "Manage User Credentials"
-description: "Update and manage system admin user credentials, including emails, passwords, passkeys, and API access"
+description:
+  "Update and manage system admin user credentials for self-hosted Palette, including emails, passwords, passkeys, and
+  API access"
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20

@@ -1,12 +1,12 @@
 ---
-sidebar_label: "Upgrade"
-title: "VerteX Upgrade"
-description: "Upgrade notes for specific Palette VerteX versions."
+sidebar_label: "Upgrade Palette"
+title: "Upgrade Self-Hosted Palette VerteX Installed on VMware"
+description: "Upgrade your self-hosted Palette VerteX instance installed on VMware vSphere."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 100
-tags: ["vertex", "self-hosted", "upgrade"]
-keywords: ["self-hosted", "vertex"]
+sidebar_position: 10
+tags: ["self-hosted", "vertex", "vmware", "upgrade"]
+keywords: ["self-hosted", "vertex", "vmware", "upgrade"]
 ---
 
 :::danger
@@ -21,15 +21,15 @@ questions or concerns, [reach out to our support team](http://support.spectroclo
 
 :::tip
 
-If you are using self-hosted Palette, refer to the [Palette Upgrade](../../enterprise-version/upgrade/upgrade.md) page
-for upgrade guidance.
+If you are using self-hosted Palette instead of Palette VerteX, refer to the
+[Palette Upgrade](../../../palette/vmware/upgrade/upgrade.md) page for upgrade guidance.
 
 :::
 
 ### Private Cloud Gateway
 
 If your setup includes a PCG, make sure to
-[allow the PCG to upgrade automatically](../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
+[allow the PCG to upgrade automatically](../../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
 Palette VerteX upgrade.
 
 ## Upgrade Notes
@@ -39,27 +39,27 @@ Refer to the following known issues before upgrading:
 - Upgrading self-hosted Palette or Palette VerteX from version 4.6.x to 4.7.x can cause the upgrade to hang if any
   member of the MongoDB ReplicaSet is not fully synced and in a healthy state prior to the upgrade. For guidance on
   verifying the health status of MongoDB ReplicaSet members, refer to our
-  [Troubleshooting](../../troubleshooting/palette-upgrade.md#self-hosted-palette-or-palette-vertex-upgrade-hangs) guide.
+  [Troubleshooting](../../../../troubleshooting/palette-upgrade.md#self-hosted-palette-or-palette-vertex-upgrade-hangs)
+  guide.
 
 - A known issue impacts all self-hosted Palette instances older then 4.4.14. Before upgrading an Palette instance with
   version older than 4.4.14, ensure that you execute a utility script to make all your cluster IDs unique in your
   Persistent Volume Claim (PVC) metadata. For more information, refer to the
-  [Troubleshooting Guide](../../troubleshooting/enterprise-install.md#scenario---non-unique-vsphere-cns-mapping).
+  [Troubleshooting Guide](../../../../troubleshooting/enterprise-install.md#scenario---non-unique-vsphere-cns-mapping).
 
 - Prior to upgrading VMware vSphere VerteX installations from version 4.3.x to 4.4.x, complete the steps outlined in the
-  [Mongo DNS ConfigMap Issue](../../troubleshooting/palette-upgrade.md#mongo-dns-configmap-value-is-incorrect) guide.
-  Addressing this Mongo DNS issue will prevent system pods from experiencing _CrashLoopBackOff_ errors after the
+  [Mongo DNS ConfigMap Issue](../../../../troubleshooting/palette-upgrade.md#mongo-dns-configmap-value-is-incorrect)
+  guide. Addressing this Mongo DNS issue will prevent system pods from experiencing _CrashLoopBackOff_ errors after the
   upgrade.
 
   After the upgrade, if Enterprise Cluster backups are stuck, refer to the
-  [Enterprise Backup Stuck](../../troubleshooting/enterprise-install.md#scenario---enterprise-backup-stuck)
+  [Enterprise Backup Stuck](../../../../troubleshooting/enterprise-install.md#scenario---enterprise-backup-stuck)
   troubleshooting guide for resolution steps.
 
 ## Supported Upgrade Paths
 
-Refer to the following tables for the supported Palette VerteX upgrade paths for
-[VMware](../install-palette-vertex/install-on-vmware/install-on-vmware.md) and
-[Kubernetes](../install-palette-vertex/install-on-kubernetes/install-on-kubernetes.md) installations.
+Refer to the following tables for the supported Palette VerteX upgrade paths for [VMware](../install/install.md)
+installations.
 
 :::danger
 

@@ -5,8 +5,8 @@ description: "Learn how to create and manage system accounts in Palette VerteX."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
-tags: ["vertex", "management", "account"]
-keywords: ["self-hosted", "vertex"]
+tags: ["self-hosted", "vertex", "management", "account"]
+keywords: ["self-hosted", "vertex", "management", "account"]
 ---
 
 You can create and manage system accounts if you have the Root Administrator or Account Administrator role in Palette

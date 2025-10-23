@@ -1,12 +1,12 @@
 ---
-sidebar_label: "Non-Airgap Install"
-title: "Non-Airgap Install"
-description: "Learn how to deploy Palette VerteX on VMware."
+sidebar_label: "Install Non-Airgap Palette VerteX"
+title: "Install Non-Airgap, Self-Hosted Palette VerteX on VMware"
+description: "Install non-airgap, self-hosted Palette VerteX on VMware vSphere using the Palette CLI."
 icon: ""
+sidebar_position: 20
 hide_table_of_contents: false
-sidebar_position: 0
-tags: ["vertex", "vmware"]
-keywords: ["self-hosted", "vertex"]
+tags: ["self-hosted", "vertex", "vmware", "non-airgap", "cli"]
+keywords: ["self-hosted", "vertex", "vmware", "non-airgap", "cli"]
 ---
 
 You can install Palette VerteX in a connected environment using the Palette Command Line Interface (CLI). The CLI
@@ -19,7 +19,7 @@ Palette VerteX will be deployed.
 :::tip
 
 We recommend using the `--validate` flag with the `ec install` command to validate the installation. Check out the
-[Validate Environment](../../../automation/palette-cli/commands/ec.md#validate-environment) section of the EC command
+[Validate Environment](../../../../automation/palette-cli/commands/ec.md#validate-environment) section of the EC command
 for more information.
 
 :::
@@ -30,11 +30,11 @@ for more information.
   host.
 
 - Palette CLI installed and available. Refer to the Palette CLI
-  [Install](../../../automation/palette-cli/install-palette-cli.md#download-and-setup) page for guidance.
+  [Install](../../../../automation/palette-cli/install-palette-cli.md#download-and-setup) page for guidance.
 
 - You will need to provide the Palette CLI an encryption passphrase to secure sensitive data. The passphrase must be
   between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character.
-  Refer to the [Palette CLI Encryption](../../../automation/palette-cli/palette-cli.md#encryption) section for more
+  Refer to the [Palette CLI Encryption](../../../../automation/palette-cli/palette-cli.md#encryption) section for more
   information.
 
 - You can choose between two Operating Systems (OS) when installing Vertex. Review the requirements for each OS.
@@ -43,7 +43,7 @@ for more information.
 
   - [Red Hat Linux Enterprise](https://www.redhat.com/en) - you need a Red Hat subscription and a custom RHEL vSphere
     template with Kubernetes available in your vSphere environment. To learn how to create the required template, refer
-    to the [RHEL and PXK](../../../byoos/image-builder/build-image-vmware/rhel-pxk.md) guide.
+    to the [RHEL and PXK](../../../../byoos/image-builder/build-image-vmware/rhel-pxk.md) guide.
 
     :::warning
 
@@ -51,11 +51,11 @@ for more information.
 
     :::
 
-- Review the required VMware vSphere [permissions](vmware-system-requirements.md). Ensure you have created the proper
-  custom roles and zone tags.
+- Review the required VMware vSphere [permissions](../setup/non-airgap/vmware-system-requirements.md). Ensure you have
+  created the proper custom roles and zone tags.
 
 - We recommended the following resources for Palette VerteX. Refer to the
-  [Palette VerteX size guidelines](../install-palette-vertex.md#instance-sizing) for additional sizing information.
+  [Palette VerteX size guidelines](../install/install.md#size-guidelines) for additional sizing information.
 
   - 8 CPUs per VM.
 
@@ -92,12 +92,13 @@ for more information.
     :::
 
 - Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require
-  persistent storage. Refer to [Zone Tagging](vmware-system-requirements.md#zone-tagging) for information.
+  persistent storage. Refer to [Zone Tagging](../setup/non-airgap/vmware-system-requirements.md#zone-tagging) for
+  information.
 
 - Assigned IP addresses for application workload services, such as Load Balancer services.
 
 - Ensure Palette has access to the required domains and ports. Refer to the
-  [Required Domains](../install-palette-vertex.md#proxy-requirements) section for more information.
+  [Required Domains](../install/install.md#proxy-requirements) section for more information.
 
 - A [StorageClass](https://kubernetes.io/docs/concepts/storage/storage-classes/) to manage persistent storage, with the
   annotation `storageclass.kubernetes.io/is-default-class` set to `true`. To override the default StorageClass for a
@@ -110,7 +111,7 @@ for more information.
 Palette VerteX installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not require a
 separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into remote data
 centers that do not have a direct incoming connection from the Palette console. To learn how to install a PCG on VMware,
-check out the [Deploy to VMware vSphere](../../../clusters/pcg/deploy-pcg/vmware.md) guide.
+check out the [Deploy to VMware vSphere](../../../../clusters/pcg/deploy-pcg/vmware.md) guide.
 
 :::
 
@@ -131,15 +132,15 @@ Use the following steps to install Palette VerteX.
     user account you will use to deploy the VerteX installation.
 
 3.  Find the OVA download URL corresponding to your Palette VerteX version in the
-    [Kubernetes Requirements](../install-palette-vertex.md#kubernetes-requirements) section. Use the identified URL to
-    import the Operating System and Kubernetes distribution OVA required for the install. Place the OVA in the
+    [Kubernetes Requirements](../install/install.md#kubernetes-requirements) section. Use the identified URL to import
+    the Operating System and Kubernetes distribution OVA required for the install. Place the OVA in the
     `spectro-templates` folder. Refer to the
     [Import Items to a Content Library](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-B413FBAE-8FCB-4598-A3C2-8B6DDA772D5C.html?hWord=N4IghgNiBcIJYFsAOB7ATgFwAQYKbIjDwGcQBfIA)
     guide for information about importing an OVA in vCenter.
 
 4.  Append an `r_` prefix to the OVA name and remove the `.ova` suffix after the import. For example, the final output
     should look like `r_u-2204-0-k-12813-0`. This naming convention is required for the install process to identify the
-    OVA. Refer to the [Additional OVAs](../../../downloads/palette-vertex/additional-ovas.md) page for a list of
+    OVA. Refer to the [Additional OVAs](../../../../downloads/palette-vertex/additional-ovas.md) page for a list of
     additional OVAs you can download and upload to your vCenter environment.
 
     :::tip
@@ -161,14 +162,14 @@ Use the following steps to install Palette VerteX.
 
 6.  Invoke the Palette CLI by using the `ec` command to install the enterprise cluster. The interactive CLI prompts you
     for configuration details and then initiates the installation. For more information about the `ec` subcommand, refer
-    to [Palette Commands](../../../automation/palette-cli/commands/ec.md).
+    to [Palette Commands](../../../../automation/palette-cli/commands/ec.md).
 
     ```bash
     palette ec install
     ```
 
     You can also use the `--validate` flag to validate the installation prior to deployment. Refer to the
-    [Validate Environment](../../../automation/palette-cli/commands/ec.md#validate-environment) section of the EC
+    [Validate Environment](../../../../automation/palette-cli/commands/ec.md#validate-environment) section of the EC
     command for more information.
 
         ```bash
@@ -180,10 +181,10 @@ Use the following steps to install Palette VerteX.
 8.  Select the desired OS you want to use for the installation. Review the table below for more information about each
     option.
 
-    | **Option**                   | **Description**                                                                                                                | **Requirements**                                                                                                                                                                                              |
-    | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Ubuntu Pro**               | [Ubuntu Pro](https://ubuntu.com/pro) is the default option. It provides access to FIPS 140-3 certified cryptographic packages. | Ubuntu Pro token.                                                                                                                                                                                             |
-    | **Red Hat Linux Enterprise** | Red Hat Linux Enterprise provides access to Red Hat Enterprise Linux.                                                          | Red Hat subscription and a custom RHEL vSphere template with Kubernetes. Review the [RHEL and PXK](../../../byoos/image-builder/build-image-vmware/rhel-pxk.md) to learn how to create the required template. |
+    | **Option**                   | **Description**                                                                                                                | **Requirements**                                                                                                                                                                                                 |
+    | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Ubuntu Pro**               | [Ubuntu Pro](https://ubuntu.com/pro) is the default option. It provides access to FIPS 140-3 certified cryptographic packages. | Ubuntu Pro token.                                                                                                                                                                                                |
+    | **Red Hat Linux Enterprise** | Red Hat Linux Enterprise provides access to Red Hat Enterprise Linux.                                                          | Red Hat subscription and a custom RHEL vSphere template with Kubernetes. Review the [RHEL and PXK](../../../../byoos/image-builder/build-image-vmware/rhel-pxk.md) to learn how to create the required template. |
 
 9.  Depending on your OS selection, you will be prompted to provide the required information. For Ubuntu Pro, you will
     need to provide your Ubuntu Pro token. For Red Hat Linux Enterprise, you will need to provide the path to the
@@ -406,7 +407,7 @@ Use the following steps to install Palette VerteX.
 19. After login, a Summary page is displayed. Palette VerteX is installed with a self-signed SSL certificate. To assign
     a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to Palette VerteX. You can upload the files using the Palette VerteX system console. Refer to the
-    [Configure HTTPS Encryption](/vertex/system-management/ssl-certificate-management) page for instructions on how to
+    [Configure HTTPS Encryption](../../system-management/ssl-certificate-management.md) page for instructions on how to
     upload the SSL certificate files to Palette VerteX.
 
 20. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
@@ -448,18 +449,10 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 
 ## Next Steps
 
-<PartialsComponent category="self-hosted" name="install-next-steps" edition="VerteX" version="Palette VerteX" />
-
-## Resources
-
-- [Airgap Instructions](./airgap-install/environment-setup/vmware-vsphere-airgap-instructions.md)
-
-- [Create a Tenant](../../system-management/tenant-management.md)
-
-- [Enterprise Install Troubleshooting](../../../troubleshooting/enterprise-install.md)
-
-- [Palette CLI](../../../automation/palette-cli/install-palette-cli.md#download-and-setup)
-
-- [System Management](../../system-management/system-management.md)
-
-- [VMware System Requirements](vmware-system-requirements.md)
+<PartialsComponent
+  category="self-hosted"
+  name="install-next-steps"
+  install="vmware"
+  edition="VerteX"
+  version="Palette VerteX"
+/>

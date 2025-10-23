@@ -1,28 +1,28 @@
 ---
-sidebar_label: "Airgap"
-title: "Upgrade Airgap Palette VerteX Installed on VMware vSphere"
-description: "Learn how to upgrade self-hosted airgap Palette VerteX in VMware."
+sidebar_label: "Upgrade Airgap Palette VerteX"
+title: "Upgrade Self-Hosted, Airgap Palette VerteX Installed on VMware"
+description: "Upgrade a self-hosted, airgap Palette VerteX instance installed on VMware vSphere using the Palette CLI."
 icon: ""
-sidebar_position: 10
-tags: ["vertex", "self-hosted", "vmware", "airgap", "upgrade"]
-keywords: ["self-hosted", "vertex"]
+sidebar_position: 30
+tags: ["self-hosted", "vertex", "airgap", "vmware", "upgrade", "cli"]
+keywords: ["self-hosted", "vertex", "airgap", "vmware", "upgrade", "cli"]
 ---
 
 This guide takes you through the process of upgrading a self-hosted airgap Palette VerteX instance installed on VMware
 vSphere. Before upgrading Palette VerteX to a new major version, you must first update it to the latest patch version of
-the latest minor version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths)
-section for details.
+the latest minor version available. Refer to the [Supported Upgrade Paths](./upgrade.md#supported-upgrade-paths) section
+for details.
 
 :::warning
 
 If you are upgrading from a Palette VerteX version that is older than 4.4.14, ensure that you have executed the utility
 script to make the CNS mapping unique for the associated PVC. For more information, refer to the
-[Troubleshooting guide](../../../troubleshooting/enterprise-install.md#scenario---non-unique-vsphere-cns-mapping).
+[Troubleshooting guide](../../../../troubleshooting/enterprise-install.md#scenario---non-unique-vsphere-cns-mapping).
 
 :::
 
 If your setup includes a PCG, you must also
-[allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
+[allow the PCG to upgrade automatically](../../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
 Palette VerteX upgrade.
 
 ## Prerequisites
@@ -121,8 +121,8 @@ one through four. Otherwise, start at step five.
    curl --user <username>:<password> --output airgap-4.2.12.bin https://software.spectrocloud.com/airgap-v4.2.12.bin
    ```
 
-8. Refer to the [Additional Packs](../../../downloads/palette-vertex/additional-packs.md) page and update the packs you
-   are currently using. You must update each pack separately.
+8. Refer to the [Additional Packs](../../../../downloads/palette-vertex/additional-packs.md) page and update the packs
+   you are currently using. You must update each pack separately.
 
 9. Use the following command template to execute the new Palette VerteX airgap installation bin.
 

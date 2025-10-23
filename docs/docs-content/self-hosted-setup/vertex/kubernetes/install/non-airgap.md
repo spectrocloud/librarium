@@ -1,19 +1,21 @@
 ---
-sidebar_label: "Non-Airgap Installation"
-title: "Install Non-Airgap Self-Hosted Palette VerteX"
-description: "Learn how to deploy self-hosted VerteX to a Kubernetes cluster using a Helm Chart."
+sidebar_label: "Install Non-Airgap Palette VerteX"
+title: "Install Non-Airgap, Self-Hosted Palette VerteX on a Kubernetes Cluster"
+description:
+  "Learn how to deploy self-hosted Palette VerteX to a Kubernetes cluster using a Helm Chart in a non-airgap
+  environment."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
-tags: ["vertex", "enterprise"]
-keywords: ["self-hosted", "vertex"]
+tags: ["self-hosted", "vertex", "kubernetes", "helm"]
+keywords: ["self-hosted", "vertex", "kubernetes", "helm"]
 ---
 
 You can use the Palette VerteX Helm Chart to install VerteX in a multi-node Kubernetes cluster in your production
 environment.
 
 This installation method is common in secure environments with restricted network access that prohibits using VerteX
-SaaS. Review our [architecture diagrams](../../../architecture/networking-ports.md) to ensure your Kubernetes cluster
+SaaS. Review our [architecture diagrams](../../../../architecture/networking-ports.md) to ensure your Kubernetes cluster
 has the necessary network connectivity for VerteX to operate successfully.
 
 ## Prerequisites
@@ -29,8 +31,8 @@ has the necessary network connectivity for VerteX to operate successfully.
 - Ensure `unzip` or a similar extraction utility is installed on your system.
 
 - The Kubernetes cluster must be set up on a version of Kubernetes that is compatible to your upgraded version. Refer to
-  the [Kubernetes Requirements](../install-palette-vertex.md#kubernetes-requirements) section to find the version
-  required for your Palette installation.
+  the [Kubernetes Requirements](./install.md#kubernetes-requirements) section to find the version required for your
+  Palette installation.
 
 - Ensure the Kubernetes cluster does not have Cert Manager installed. VerteX requires a unique Cert Manager
   configuration to be installed as part of the installation process. If Cert Manager is already installed, you must
@@ -44,8 +46,8 @@ has the necessary network connectivity for VerteX to operate successfully.
   [Add a Database User](https://www.mongodb.com/docs/guides/atlas/db-user/) guide for guidance on how to create a
   database user in Atlas.
 
-- We recommend the following resources for VerteX. Refer to the
-  [VerteX size guidelines](../install-palette-vertex.md#size-guidelines) for additional sizing information.
+- We recommend the following resources for VerteX. Refer to the [VerteX size guidelines](./install.md#size-guidelines)
+  for additional sizing information.
 
   - 8 CPUs per node.
 
@@ -86,7 +88,7 @@ has the necessary network connectivity for VerteX to operate successfully.
   encryption for VerteX.
 
 - Ensure VerteX has access to the required domains and ports. Refer to the
-  [Required Domains](../install-palette-vertex.md#proxy-requirements) section for more information.
+  [Required Domains](../install/install.md#proxy-requirements) section for more information.
 
 - If you are installing VerteX behind a network proxy server, ensure you have the Certificate Authority (CA) certificate
   file in the base64 format. You will need this to enable VerteX to communicate with the network proxy server.
@@ -143,7 +145,7 @@ your environment. Reach out to our support team if you need assistance.
 4.  Open the **values.yaml** in the **spectro-mgmt-plane** folder with a text editor of your choice. The **values.yaml**
     contains the default values for the VerteX installation parameters. However, you must populate the following
     parameters before installing VerteX. You can learn more about the parameters in the **values.yaml** file in the
-    [Helm Configuration Reference](vertex-helm-ref.md) page.
+    [Helm Configuration Reference](../setup/non-airgap/helm-reference.md) page.
 
     | **Parameter**                             | **Description**                                                                                                                                               | **Type** |
     | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
@@ -156,7 +158,7 @@ your environment. Reach out to our support team if you need assistance.
 
     If you are installing VerteX by pulling required images from a private mirror registry, you will need to provide the
     credentials to your registry in the **values.yaml** file. For more information, refer to
-    [Helm Configuration Reference](vertex-helm-ref.md#image-pull-secret).
+    [Helm Configuration Reference](../setup/non-airgap/helm-reference.md#image-pull-secret).
 
     :::
 
@@ -796,8 +798,14 @@ Use the following steps to validate the VerteX installation.
 
 ## Next Steps
 
-<PartialsComponent category="self-hosted" name="install-next-steps" edition="VerteX" version="Palette VerteX" />
+<PartialsComponent
+  category="self-hosted"
+  name="install-next-steps"
+  install="kubernetes"
+  edition="VerteX"
+  version="Palette VerteX"
+/>
 
 ## Resources
 
-- [Enterprise Install Troubleshooting](../../../troubleshooting/enterprise-install.md)
+- [Enterprise Install Troubleshooting](../../../../troubleshooting/enterprise-install.md)

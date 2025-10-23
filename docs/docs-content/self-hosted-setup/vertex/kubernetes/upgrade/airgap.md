@@ -1,11 +1,11 @@
 ---
-sidebar_label: "Airgap"
-title: "Upgrade Airgap Palette VerteX Installed with Kubernetes"
-description: "Learn how to upgrade self-hosted airgap Palette VerteX."
+sidebar_label: "Upgrade Airgap Palette VerteX"
+title: "Upgrade Self-Hosted, Airgap Palette VerteX Installed on a Kubernetes Cluster"
+description: "Upgrade a self-hosted, airgapped Palette VerteX instance installed on a Kubernetes cluster."
 icon: ""
-sidebar_position: 10
-tags: ["vertex", "self-hosted", "airgap", "kubernetes", "upgrade"]
-keywords: ["self-hosted", "vertex", "airgap", "kubernetes"]
+sidebar_position: 30
+tags: ["self-hosted", "vertex", "airgap", "kubernetes", "upgrade", "helm"]
+keywords: ["self-hosted", "vertex", "airgap", "kubernetes", "upgrade", "helm"]
 ---
 
 This guide takes you through the process of upgrading a self-hosted airgap Palette VerteX instance installed on
@@ -14,13 +14,13 @@ Kubernetes.
 :::warning
 
 Before upgrading Palette VerteX to a new major version, you must first update it to the latest patch version of the
-latest minor version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section
-for details.
+latest minor version available. Refer to the [Supported Upgrade Paths](./upgrade.md#supported-upgrade-paths) section for
+details.
 
 :::
 
 If your setup includes a PCG, you must also
-[allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
+[allow the PCG to upgrade automatically](../../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
 Palette VerteX upgrade.
 
 ## Prerequisites
@@ -230,8 +230,8 @@ Palette VerteX upgrade.
 
     <PartialsComponent category="self-hosted" name="airgap-binary-execution" />
 
-7.  Refer to the [Additional Packs](../../../downloads/palette-vertex/additional-packs.md) page and update the packages
-    you are currently using. You must update each package separately.
+7.  Refer to the [Additional Packs](../../../../downloads/palette-vertex/additional-packs.md) page and update the
+    packages you are currently using. You must update each package separately.
 
     :::info
 
@@ -300,8 +300,7 @@ Palette VerteX upgrade.
 
 12. Prepare the Palette VerteX configuration file `values.yaml`. If you saved `values.yaml` used during the Palette
     VerteX installation, you can reuse it for the upgrade. Alternatively, follow the
-    [Kubernetes Installation Instructions](../../install-palette-vertex/install-on-kubernetes/install.md) to populate
-    your `values.yaml`.
+    [Kubernetes Installation Instructions](../install/airgap.md) to populate your `values.yaml`.
 
     :::warning
 

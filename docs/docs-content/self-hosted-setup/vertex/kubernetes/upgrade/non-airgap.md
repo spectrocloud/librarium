@@ -1,11 +1,11 @@
 ---
-sidebar_label: "Non-airgap"
-title: "Upgrade Palette VerteX Installed with Kubernetes"
-description: "Learn how to upgrade self-hosted non-airgap Palette VerteX with Helm and Kubernetes."
+sidebar_label: "Upgrade Non-Airgap Palette VerteX"
+title: "Upgrade Self-Hosted, Non-Airgap Palette VerteX Installed on a Kubernetes Cluster"
+description: "Upgrade a self-hosted, non-airgap Palette VerteX instance installed on a Kubernetes cluster."
 icon: ""
-sidebar_position: 0
-tags: ["vertex", "self-hosted", "non-airgap", "kubernetes", "management", "upgrades"]
-keywords: ["self-hosted", "vertex"]
+sidebar_position: 20
+tags: ["self-hosted", "vertex", "non-airgap", "kubernetes", "upgrade", "helm"]
+keywords: ["self-hosted", "vertex", "non-airgap", "kubernetes", "upgrade", "helm"]
 ---
 
 This guide takes you through the process of upgrading a self-hosted Palette VerteX instance installed with Helm on
@@ -14,13 +14,13 @@ Kubernetes.
 :::warning
 
 Before upgrading Palette VerteX to a new major version, you must first update it to the latest patch version of the
-latest minor version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section
-for details.
+latest minor version available. Refer to the [Supported Upgrade Paths](./upgrade.md#supported-upgrade-paths) section for
+details.
 
 :::
 
 If your setup includes a PCG, you must also
-[allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
+[allow the PCG to upgrade automatically](../../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
 Palette VerteX upgrade.
 
 ## Prerequisites
@@ -80,8 +80,7 @@ match your environment.
 
 4. Prepare the Palette VerteX configuration file `values.yaml`. If you saved `values.yaml` used during the Palette
    VerteX installation, you can reuse it for the upgrade. Alternatively, follow the
-   [Kubernetes Installation Instructions](../../install-palette-vertex/install-on-kubernetes/install.md) to populate
-   your `values.yaml`.
+   [Kubernetes Installation Instructions](../install/non-airgap.md) to populate your `values.yaml`.
 
    :::warning
 

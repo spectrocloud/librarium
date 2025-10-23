@@ -11,8 +11,9 @@ Now that you have installed {props.version}, you can either
     /> to host your users and set up your clusters, or you can
     <PaletteVertexUrlMapper
         edition={props.edition}
+        install={props.install}
         text="activate your installation"
-        url="/activate-installation"
+        url="/activate"
     /> .     
 
 Beginning with version 4.6.32, once you install {props.version}, you have 30 days to activate it; versions older than 4.6.32 do not need to be activated. During the 30-day trial period, you can use {props.version} without any restrictions. After 30 days, you can continue to use {props.version}, but you cannot deploy additional clusters or perform any day-2 operations on existing clusters until {props.version} is activated. Each installation of {props.version} must be activated separately. We recommend activating {props.version} as soon as possible to avoid any disruptions.

@@ -51,9 +51,9 @@ may need to configure the proxy server to support gRPC.
 
 <TabItem value="Self-Hosted Palette Non-Edge">
 
-- A self-hosted Palette instance is deployed into an active and healthy Kubernetes cluster. Refer to
-  [Self-Hosted Palette Installation](../../enterprise-version/install-palette/install-palette.md) for additional
-  guidance.
+- A [self-hosted Palette](../../self-hosted-setup/palette/kubernetes/kubernetes.md) or
+  [Palette VerteX](../../self-hosted-setup/vertex/kubernetes/kubernetes.md) instance deployed on an active and healthy
+  Kubernetes cluster.
 
 - The self-hosted Palette instance is configured to use the proxy server that you intend for your applications to use
   for outbound communications.
@@ -130,8 +130,8 @@ may need to configure the proxy server to support gRPC.
 
 1.  If you are using a self-hosted Palette instance, you have the opportunity to configure proxy settings during
     installation. If you are using the Palette CLI for installation, refer to
-    [Self Hosted Palette - Installation](../../enterprise-version/install-palette/install-on-kubernetes/install.md) to
-    learn how to specify proxy settings during installation. If you used Helm charts for installation, refer to
+    [Self Hosted Palette - Installation](../../self-hosted-setup/palette/kubernetes/install/non-airgap.md) to learn how
+    to specify proxy settings during installation. If you used Helm charts for installation, refer to
     [Enable and Manage Proxy Configurations](../pcg/manage-pcg/configure-proxy.md) to learn how to install reach and use
     it to configure proxy settings. The process to install Reach on an existing self-hosted Palette instance is the same
     as the process to install Reach on an existing PCG cluster.

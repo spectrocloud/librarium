@@ -27,14 +27,12 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 - A valid [RHEL subscription](https://www.redhat.com/en/store/linux-platforms) and access to the
   [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download).
 
-- An airgapped instance of
-  [Palette](../../../../enterprise-version/install-palette/install-on-vmware/airgap-install/install.md) or
-  [VerteX](../../../../vertex/install-palette-vertex/install-on-vmware/airgap-install/install.md) deployed in VMware
-  vSphere.
+- An airgapped instance of [self-hosted Palette](../../../../self-hosted-setup/palette/vmware/install/install.md) or
+  [Palette VerteX](../../../../self-hosted-setup/vertex/vmware/install/install.md) deployed in VMware vSphere.
 
 - SSH access to the VMware vSphere
-  [airgap support VM](../../../../enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions.md)
-  used to deploy the airgapped instance of Palette or Vertex.
+  [airgap support VM for self-hosted Palette](../../../../self-hosted-setup/palette/vmware/setup/airgap/airgap.md) or
+  [Palette Vertex](../../../../self-hosted-setup/vertex/vmware/setup/airgap/airgap.md).
 
 - The following artifacts must be available in the root home directory of the airgap support VM. You can download the
   files on a system with internet access and then transfer them to your airgap environment.
@@ -65,10 +63,8 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     :::info
 
     Whether you use the IP address or FQDN depends on the hostname used when setting up your airgap support VM. If you
-    used an
-    [existing RHEL VM](../../../../enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/env-setup-vm.md)
-    to set up your VM, this is always the FQDN; if you used an
-    [OVA](../../../../enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions.md),
+    used an [existing RHEL VM](../../../../self-hosted-setup/palette/vmware/setup/airgap/rhel-vm.md) to set up your VM,
+    this is always the FQDN; if you used an [OVA](../../../../self-hosted-setup/palette/vmware/setup/airgap/rhel-vm.md),
     it depends on the hostname used when invoking the command `/bin/airgap-setup.sh <airgap-vm-hostname>`.
 
     :::

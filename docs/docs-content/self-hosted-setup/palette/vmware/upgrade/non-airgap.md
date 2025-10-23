@@ -1,11 +1,11 @@
 ---
 sidebar_label: "Upgrade Non-Airgap Palette"
 title: "Upgrade Self-Hosted, Non-Airgap Palette Installed on VMware"
-description: "Learn how to upgrade a self-hosted, non-airgap Palette environment installed on VMware vSphere."
+description: "Upgrade a self-hosted, non-airgap Palette instance installed on VMware vSphere using the Palette CLI."
 icon: ""
 sidebar_position: 20
-tags: ["self-hosted", "non-airgap", "vmware", "upgrade"]
-keywords: ["self-hosted", "non-airgap", "vmware", "upgrade"]
+tags: ["self-hosted", "non-airgap", "vmware", "upgrade", "cli"]
+keywords: ["self-hosted", "non-airgap", "vmware", "upgrade", "cli"]
 ---
 
 This guide takes you through the process of upgrading a self-hosted Palette instance installed on VMware vSphere. Before

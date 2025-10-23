@@ -31,8 +31,8 @@ learn more about OCI registries.
 Registries are added at the tenant level and are available to all users in the tenant. You can add multiple registries
 of the same type to Palette. If you are using a self-hosted Palette instance, or Palette VerteX, you can add registries
 through the system console. Registries added through the system console are available to all tenants in the system.
-Check out the [Self-Hosted Add Registry](../../enterprise-version/system-management/add-registry.md) guide or the
-[VerteX Add Registry](../../vertex/system-management/add-registry.md) guide.
+Check out the [Self-Hosted Add Registry](../../self-hosted-setup/palette/system-management/add-registry.md) guide or the
+[VerteX Add Registry](../../self-hosted-setup/vertex/system-management/add-registry.md) guide.
 
 ## Synchronization
 

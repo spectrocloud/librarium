@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Upgrade Palette"
 title: "Upgrade Self-Hosted Palette"
-description: "Learn how to upgrade your self-hosted Palette environment installed on a Kubernetes cluster."
+description: "Upgrade self-hosted Palette installed on a Kubernetes cluster."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10

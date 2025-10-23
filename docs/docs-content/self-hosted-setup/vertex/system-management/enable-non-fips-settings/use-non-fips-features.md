@@ -1,12 +1,12 @@
 ---
 sidebar_label: "Use Non-FIPS Features"
 title: "Use Non-FIPS Features"
-description: "Use non-FIPS features such as backup, restore, and scans."
+description: "Learn how to enable non-FIPS features such as backup, restore, and scans in self-hosted Palette VerteX."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
-tags: ["vertex", "non-fips"]
-keywords: ["self-hosted", "vertex"]
+tags: ["self-hosted", "vertex", "non-fips"]
+keywords: ["self-hosted", "vertex", "non-fips"]
 ---
 
 You can allow tenant users access to Palette features that are _not_ FIPS-compliant, such as tenant cluster backup and
@@ -19,13 +19,13 @@ page.
 - You need tenant admin permission to enable this feature.
 
 - Palette can back up clusters to several locations. To learn about backup requirements, review
-  [Backup-Restore](../../../clusters/cluster-management/backup-restore/backup-restore.md).
+  [Backup-Restore](../../../../clusters/cluster-management/backup-restore/backup-restore.md).
 
 - There are no prerequisites for restoring clusters or performing scans.
 
 ## Allow non-FIPS Features
 
-1. Log in to [Palette VerteX](https://console.spectrocloud.com/) as a tenant admin.
+1. Log in to Palette VerteX as a tenant admin.
 
 2. Navigate to the left **Main Menu** and click on **Tenant Settings**.
 
@@ -40,7 +40,7 @@ To disable the setting, toggle this option off and confirm you want to disable i
 
 ## Validate
 
-1. Log in to [Palette VerteX](https://console.spectrocloud.com/).
+1. Log in to Palette VerteX.
 
 2. Navigate to the left **Main Menu** and click on **Clusters**.
 
@@ -49,6 +49,6 @@ To disable the setting, toggle this option off and confirm you want to disable i
 
 ## Resources
 
-- [Cluster Backup and Restore](../../../clusters/cluster-management/backup-restore/backup-restore.md)
+- [Cluster Backup and Restore](../../../../clusters/cluster-management/backup-restore/backup-restore.md)
 
-- [Scans](../../../clusters/cluster-management/compliance-scan.md)
+- [Scans](../../../../clusters/cluster-management/compliance-scan.md)

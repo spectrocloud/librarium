@@ -1,19 +1,19 @@
 ---
-sidebar_label: "System Address Management"
-title: "System Address Management"
-description: "Manage system address and SSL certificates in Palette."
+sidebar_label: "System Address and SSL Certificate Management"
+title: "System Address and SSL Certificate Management"
+description: "Manage system address and SSL certificates in self-hosted Palette VerteX."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 140
-tags: ["vertex", "management"]
-keywords: ["self-hosted", "vertex"]
+tags: ["self-hosted", "vertex", "management"]
+keywords: ["self-hosted", "vertex", "management"]
 ---
 
 Palette VerteX uses Secure Sockets Layer (SSL) certificates to secure internal and external communication with Hypertext
 Transfer Protocol Secure (HTTPS). External VerteX endpoints, such as the
 [system console](../system-management/system-management.md#system-console),
-[VerteX dashboard](../../introduction/dashboard.md), the VerteX API, and the gRPC endpoint, are enabled by default with
-HTTPS using an auto-generated self-signed certificate.
+[VerteX dashboard](../../../introduction/dashboard.md), the VerteX API, and the gRPC endpoint, are enabled by default
+with HTTPS using an auto-generated self-signed certificate.
 
 ## Update System Address and Certificates
 
@@ -43,12 +43,11 @@ updating the system address may require manual reconciliation on deployed cluste
 - A utility or tool to convert the certificate and key files to base64-encoded strings. You can use the `base64` command
   in Unix-based systems. Alternatively, you can use an online tool to convert the files to base64-encoded strings.
 
-- If you installed Palette VerteX on
-  [Kubernetes](../install-palette-vertex/install-on-kubernetes/install-on-kubernetes.md) and specified a custom domain
-  name, ensure that you created a certificate for that domain. If you did not specify a custom domain name, or if you
-  installed Palette VerteX on [VMware](../install-palette-vertex/install-on-vmware/install-on-vmware.md), you must
-  create a certificate for the Palette VerteX system console’s IP address. You can also specify a load balancer IP
-  address if you are using a load balancer to access Palette VerteX.
+- If you installed Palette VerteX on [Kubernetes](../kubernetes/install/install.md) and specified a custom domain name,
+  ensure that you created a certificate for that domain. If you did not specify a custom domain name, or if you
+  installed Palette VerteX on [VMware](../vmware/install/install.md), you must create a certificate for the Palette
+  VerteX system console’s IP address. You can also specify a load balancer IP address if you are using a load balancer
+  to access Palette VerteX.
 
 - The new SSL certificate must also include the previous DNS name or IP address in the Subject Alternative Name (SAN)
   field. This ensures that existing connections are not interrupted.
@@ -127,8 +126,8 @@ newly configured system address.
 
 - Palette VerteX access with a configured cloud account.
 
-- A cluster deployed prior to the system address update. Refer to the [Clusters](../../clusters/clusters.md) section for
-  further guidance.
+- A cluster deployed prior to the system address update. Refer to the [Clusters](../../../clusters/clusters.md) section
+  for further guidance.
 
 - `kubectl` installed. Use the Kubernetes [Install Tools](https://kubernetes.io/docs/tasks/tools/) page for further
   guidance.
@@ -143,7 +142,7 @@ newly configured system address.
 3. Select your cluster from the **Clusters** list. The cluster **Overview** tab displays.
 
 4. Download the kubeconfig file. This file allows you to connect to your deployed cluster. Check out the
-   [Kubeconfig](../../clusters/cluster-management/kubeconfig.md) page to learn more.
+   [Kubeconfig](../../../clusters/cluster-management/kubeconfig.md) page to learn more.
 5. Open a terminal window and set the environment variable `KUBECONFIG` to point to the file you downloaded.
 
    ```shell

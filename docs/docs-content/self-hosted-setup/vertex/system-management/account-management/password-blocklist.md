@@ -1,12 +1,12 @@
 ---
 sidebar_label: "Manage Password Blocklist"
 title: "Manage Password Blocklist"
-description: "Learn how to manage the password blocklist in Palette VerteX."
+description: "Learn how to manage the password blocklist in self-hosted Palette VerteX."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 40
-tags: ["vertex", "management", "account", "credentials"]
-keywords: ["self-hosted", "vertex"]
+tags: ["self-hosted", "vertex", "management", "account", "credentials"]
+keywords: ["self-hosted", "vertex", "management", "account", "credentials"]
 ---
 
 You can manage a password blocklist to prevent users from using common or weak passwords. The password blocklist is a

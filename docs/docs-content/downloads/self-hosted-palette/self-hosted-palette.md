@@ -15,8 +15,8 @@ environment, giving you full control over the management plane.
 
 Find the additional download links for self-hosted Palette in this section.
 
-Refer to the [Self-Hosted Palette documentation](../../enterprise-version/install-palette/install-palette.md) for
-guidance on how to deploy self-hosted Palette to your environment.
+Refer to the [Self-Hosted Palette documentation](../../self-hosted-setup/palette/palette.md) for guidance on how to
+deploy self-hosted Palette to your environment.
 
 ## Resources
 

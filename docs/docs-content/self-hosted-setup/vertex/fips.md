@@ -1,12 +1,12 @@
 ---
 sidebar_label: "FIPS Compliance"
 title: "FIPS Compliance"
-description: "Learn about FIPS compliance in Palette VerteX."
+description: "Learn about what makes self-hosted Palette VerteX FIPS compliant."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
-tags: ["vertex", "fips"]
-keywords: ["self-hosted", "vertex"]
+tags: ["self-hosted", "vertex", "fips"]
+keywords: ["self-hosted", "vertex", "fips"]
 ---
 
 Federal Information Processing Standards (FIPS) is a series of standards developed by the National Institute of
@@ -160,7 +160,7 @@ it also provides the capability to consume features that are not FIPS compliant.
 option is enabled, it allows users to import any type of Kubernetes cluster, including some that are not fully FIPS
 compliant. Similarly, when the option to add non-FIPS add-on packs is enabled, users can add packs in cluster profiles
 that are not FIPS compliant. For more information about these tenant-level settings, refer to
-[Enable non-FIPS Settings](../system-management/enable-non-fips-settings/enable-non-fips-settings.md).
+[Enable non-FIPS Settings](./system-management/enable-non-fips-settings/enable-non-fips-settings.md).
 
 To avoid confusion and compliance issues, Palette VerteX displays icons to indicate the FIPS compliance status of
 clusters, profiles, and packs.
@@ -202,7 +202,7 @@ profile is not FIPS-compliant.
 ## Enable Non-FIPS Components
 
 You can deploy non-FIPS-compliant components in your Palette VerteX environment by enabling non-FIPS settings. Refer to
-the [Enable non-FIPS Settings](../system-management/enable-non-fips-settings/enable-non-fips-settings.md) guide for more
+the [Enable non-FIPS Settings](./system-management/enable-non-fips-settings/enable-non-fips-settings.md) guide for more
 information.
 
 Something to note when using RKE2 and K3s:
@@ -223,9 +223,6 @@ Something to note when using RKE2 and K3s:
 
 - Although K3s is not available as a FIPS-certified distribution, Palette VerteX supports K3s as a Kubernetes
   distribution for Edge clusters.
-
-Palette VerteX uses icons to show FIPS compliance status. For information about Palette VerteX status icons, review
-[FIPS Status Icons](fips-status-icons.md).
 
 ## Legal Notice
 

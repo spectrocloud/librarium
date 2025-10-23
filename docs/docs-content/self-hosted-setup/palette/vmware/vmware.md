@@ -1,7 +1,7 @@
 ---
 sidebar_label: "VMware vSphere"
 title: "Install Self-Hosted Palette on VMware vSphere"
-description: "Learn how to install self-hosted Palette on VMware."
+description: "Install self-hosted Palette on VMware vSphere."
 icon: ""
 hide_table_of_contents: false
 tags: ["self-hosted", "vmware"]

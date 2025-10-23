@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Upgrade Non-Airgap Palette"
 title: "Upgrade Self-Hosted, Non-Airgap Palette Installed on a Kubernetes Cluster"
-description: "Learn how to upgrade a self-hosted, non-airgap Palette environment installed on a Kubernetes cluster."
+description: "Upgrade a self-hosted, non-airgap Palette instance installed on a Kubernetes cluster."
 icon: ""
 sidebar_position: 20
 tags: ["self-hosted", "non-airgap", "kubernetes", "upgrade", "helm"]

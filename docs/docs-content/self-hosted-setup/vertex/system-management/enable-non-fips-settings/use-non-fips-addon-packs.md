@@ -1,16 +1,16 @@
 ---
 sidebar_label: "Use Non-FIPS Packs"
 title: "Use Non-FIPS Packs"
-description: "Add non-FIPS packs to VerteX cluster profiles."
+description: "Learn how to enable non-FIPS packs and add them to cluster profiles in self-hosted Palette VerteX."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
-tags: ["vertex", "non-fips"]
-keywords: ["self-hosted", "vertex"]
+tags: ["self-hosted", "vertex", "non-fips", "packs"]
+keywords: ["self-hosted", "vertex", "non-fips", "packs"]
 ---
 
 Palette VerteX provides the following FIPS-compliant infrastructure components in Kubernetes clusters it deploys. Review
-[FIPS-Compliant Components](../../fips/fips-compliant-components.md) to learn more.
+[FIPS-Compliant Clusters](../../fips.md#fips-compliant-clusters) to learn more.
 
 - Operating System (OS)
 - Kubernetes
@@ -34,13 +34,13 @@ Registries can be added at the system level or tenant level. When added at the s
 all the tenants. When added at the tenant level, registries are available only to that tenant. The
 [Add a Registry](../add-registry.md) page offers guidance on adding a registry at the system scope in VerteX. For
 guidance on adding a registry at the tenant scope, check out
-[Add a Tenant-Level Registry](../../../tenant-settings/add-registry.md).
+[Add a Tenant-Level Registry](../../../../tenant-settings/add-registry.md).
 
 :::
 
 The screenshot below shows the icon that VerteX displays next to FIPS-compliant infrastructure components to indicate
 full FIPS compliance. Other icons are used to indicate profile layers with partial, unknown, or non-FIPS compliant
-status. To learn about other icons VerteX applies, refer to [FIPS Status Icons](../../fips/fips-status-icons.md).
+status. To learn about other icons VerteX applies, refer to [FIPS Status Icons](../../fips.md#fips-status-icons).
 
 ![Diagram showing FIPS-compliant icons in profile stack.](/vertex_fips-status-icons_icons-in-profile-stack.webp)
 
@@ -76,7 +76,7 @@ indicate their FIPS compliance status.
 
 Use these steps to verify non-FIPS packs are available.
 
-1. Log in to [Palette](https://console.spectrocloud.com).
+1. Log in to Palette VerteX.
 
 2. Navigate to the left **Main Menu** and select **Profiles**.
 
@@ -84,17 +84,3 @@ Use these steps to verify non-FIPS packs are available.
    review the [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md) documentation.
 
 VerteX will display the appropriate FIPS status icon next to each pack layer.
-
-## Resources
-
-- [Packs List](../../../integrations/integrations.mdx)
-
-- [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
-
-- [Create an Add-on Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md)
-
-- [FIPS Status Icons](../../fips/fips-status-icons.md)
-
-- [Add a Registry](../add-registry.md)
-
-- [Add a Tenant-Level Registry](../../../tenant-settings/add-registry.md)

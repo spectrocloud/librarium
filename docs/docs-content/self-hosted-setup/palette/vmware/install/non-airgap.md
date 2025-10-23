@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Install Non-Airgap Palette"
 title: "Install Non-Airgap, Self-Hosted Palette on VMware"
-description: "Learn how to install non-airgap, self-hosted Palette on VMware vSphere using the Palette CLI"
+description: "Install non-airgap, self-hosted Palette on VMware vSphere using the Palette CLI."
 icon: ""
 sidebar_position: 20
 hide_table_of_contents: false
@@ -405,4 +405,10 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 
 ## Next Steps
 
-<PartialsComponent category="self-hosted" name="install-next-steps" edition="Palette" version="Palette" />
+<PartialsComponent
+  category="self-hosted"
+  name="install-next-steps"
+  install="vmware"
+  edition="Palette"
+  version="Palette"
+/>

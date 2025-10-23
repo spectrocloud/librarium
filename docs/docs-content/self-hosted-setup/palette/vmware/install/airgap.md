@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Install Airgap Palette"
 title: "Install Airgap, Self-Hosted Palette on VMware"
-description: "Learn how to install airgap, self-hosted Palette on VMware vSphere using the Palette CLI"
+description: "Install airgap, self-hosted Palette on VMware vSphere using the Palette CLI."
 icon: ""
 sidebar_position: 30
 hide_table_of_contents: false
@@ -124,7 +124,7 @@ Use the following steps to install Palette.
     :::warning
 
     If you deployed the airgap support VM using a generic OVA, the Palette CLI may not be in the `usr/bin` path. Ensure
-    that you complete step **22** of the [Environment Setup](../setup/airgap/ova.md) guide, which installs the Palette
+    that you complete step 18 of the [Environment Setup](../setup/airgap/ova.md) guide, which installs the Palette
     airgap binary and moves the Palette CLI to the correct path.
 
     :::
@@ -420,4 +420,10 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 
 ## Next Steps
 
-<PartialsComponent category="self-hosted" name="install-next-steps" edition="Palette" version="Palette" />
+<PartialsComponent
+  category="self-hosted"
+  name="install-next-steps"
+  install="vmware"
+  edition="Palette"
+  version="Palette"
+/>

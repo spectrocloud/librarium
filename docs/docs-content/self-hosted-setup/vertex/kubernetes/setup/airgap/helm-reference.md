@@ -1,12 +1,12 @@
 ---
-sidebar_label: "Helm Configuration Reference"
-title: "Helm Configuration Reference"
-description: "Reference resource for the Palette VerteX Helm Chart installation parameters."
+sidebar_label: "Helm Chart Configuration Reference"
+title: "Helm Chart Configuration Reference"
+description: "Reference for Palette VerteX Helm Chart installation parameters."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 20
-tags: ["vertex", "helm"]
-keywords: ["self-hosted", "vertex"]
+sidebar_position: 30
+tags: ["self-hosted", "vertex", "helm"]
+keywords: ["self-hosted", "vertex", "helm"]
 ---
 
 :::danger
@@ -19,7 +19,8 @@ You can use the Palette VerteX Helm Chart to install Palette VerteX in a multi-n
 production environment. The Helm chart allows you to customize values in the **values.yaml** file. This reference page
 lists and describes parameters available in the **values.yaml** file from the Helm Chart for your installation.
 
-To learn how to install Palette VerteX using the Helm Chart, refer to the Kubernetes [Instructions](install.md).
+To learn how to install Palette VerteX using the Helm Chart, refer to the Kubernetes
+[Instructions](../../install/install.md).
 
 ## Required Parameters
 
@@ -132,7 +133,7 @@ config:
 
 You can configure Palette VerteX to use Single Sign-On (SSO) for user authentication. Configure the SSO parameters to
 enable SSO for Palette VerteX. You can also configure different SSO providers for each tenant post-install, check out
-the [SAML & SSO Setup](../../../user-management/saml-sso/saml-sso.md) documentation for additional guidance.
+the [SAML & SSO Setup](../../../../../user-management/saml-sso/saml-sso.md) documentation for additional guidance.
 
 To configure SSO, you must provide the following parameters.
 
@@ -160,7 +161,7 @@ config:
 ### Email
 
 Palette VerteX uses email to send notifications to users. The email notification is used when inviting new users to the
-platform, password resets, and when [webhook alerts](../../../clusters/cluster-management/health-alerts.md) are
+platform, password resets, and when [webhook alerts](../../../../../clusters/cluster-management/health-alerts.md) are
 triggered. Use the following parameters to configure email settings for Palette VerteX.
 
 | **Parameters**          | **Description**                                                                                | **Type** | **Default value**          |
@@ -425,7 +426,7 @@ ingress:
 <!-- prettier-ignore -->
 You can specify a reverse proxy server that clusters deployed through Palette VerteX can use to facilitate network
 connectivity to the cluster's Kubernetes API server. Host clusters deployed in private networks can use the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack to expose the cluster's Kubernetes API to downstream clients that are not in the same network. Check out the [Reverse
-Proxy](../../system-management/reverse-proxy.md) documentation to learn more about setting up a reverse proxy server for
+Proxy](../../../system-management/reverse-proxy.md) documentation to learn more about setting up a reverse proxy server for
 Palette VerteX.
 
 | **Parameters**    | **Description**                                                                              | **Type** | **Default value** |
@@ -501,7 +502,8 @@ reach-system:
 :::info
 
 Due to node affinity configurations, you must set `scheduleOnControlPlane: false` for managed clusters deployed to
-[Azure AKS](../../../clusters/public-cloud/azure/aks.md), [AWS EKS](../../../clusters/public-cloud/aws/eks.md), and
-[GCP GKE](../../../clusters/public-cloud/gcp/create-gcp-gke-cluster.md).
+[Azure AKS](../../../../../clusters/public-cloud/azure/aks.md),
+[AWS EKS](../../../../../clusters/public-cloud/aws/eks.md), and
+[GCP GKE](../../../../../clusters/public-cloud/gcp/create-gcp-gke-cluster.md).
 
 :::

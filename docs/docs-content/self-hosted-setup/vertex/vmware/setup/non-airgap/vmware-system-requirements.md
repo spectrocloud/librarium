@@ -4,9 +4,9 @@ title: "VMware System and Permission Requirements"
 description: "Review VMware system requirements and cloud account permissions."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 30
-tags: ["vertex", "self-hosted", "vmware"]
-keywords: ["self-hosted", "vertex"]
+sidebar_position: 10
+tags: ["self-hosted", "vertex", "vmware", "permissions"]
+keywords: ["self-hosted", "vertex", "vmware", "permissions"]
 ---
 
 :::danger
@@ -32,7 +32,7 @@ Start by reviewing the required action items below:
 4. If you are deploying VerteX with Red Hat Enterprise Linux (RHEL). Ensure you create a custom image containing your
    RHEL subscription credentials and the desired Kubernetes version. This image template must be uploaded to the vSphere
    `spectro-templates` folder. Instructions for creating the custom RHEL image with Kubernetes are available in the
-   [RHEL and PXK](../../../byoos/image-builder/build-image-vmware/rhel-pxk.md) guide.
+   [RHEL and PXK](../../../../../byoos/image-builder/build-image-vmware/rhel-pxk.md) guide.
 
 :::info
 
@@ -49,12 +49,12 @@ guide if you need help creating a custom role in vSphere. The required custom ro
 
 - A root-level role with access to higher-level vSphere objects. This role is referred to as the _Spectro root role_.
   Check out the
-  [Root-Level Role Privileges](../../../clusters/data-center/vmware/permissions.md#spectro-root-role-privileges) table
-  for the list of privileges required for the root-level role.
+  [Root-Level Role Privileges](../../../../../clusters/data-center/vmware/permissions.md#spectro-root-role-privileges)
+  table for the list of privileges required for the root-level role.
 
 - A role with the required privileges for deploying VMs. This role is referred to as the _Spectro role_. Review the
-  [Spectro Role Privileges](../../../clusters/data-center/vmware/permissions.md#spectro-role-privileges) table for the
-  list of privileges required for the Spectro role.
+  [Spectro Role Privileges](../../../../../clusters/data-center/vmware/permissions.md#spectro-role-privileges) table for
+  the list of privileges required for the Spectro role.
 
 The user account you use to deploy VerteX must have access to both roles. Each vSphere object required by VerteX must
 have a

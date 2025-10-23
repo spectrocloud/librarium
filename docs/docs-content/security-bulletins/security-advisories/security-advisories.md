@@ -148,9 +148,9 @@ the patched versions (v1.27.15, v1.28.11, v1.29.6, and v1.30.2) or newer.
   [Update a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md) guide
   for instructions on how to update a cluster profile and apply the updates to workload clusters.
 
-- Refer to the [Palette Enterprise](../../enterprise-version/upgrade/upgrade.md) or
-  [Palette VerteX](../../vertex/upgrade/upgrade.md) upgrade guides for guidance on upgrading the version for all
-  connected and airgapped Palette Enterprise and Palette VerteX clusters.
+- Refer to the [Palette Enterprise](../../self-hosted-setup/palette/palette.md) or
+  [Palette VerteX](../../self-hosted-setup/vertex/vertex.md) upgrade guides for guidance on upgrading the version for
+  all connected and airgapped Palette Enterprise and Palette VerteX clusters.
 
 ## Security Advisory 001 - Nginx Vulnerability
 
@@ -212,8 +212,8 @@ This vulnerability affects both workload clusters and Palette deployments.
 
 - Connected and airgapped Palette Enterprise and VerteX versions 4.4 - 4.6 must apply the latest patch to automatically
   upgrade the `ingress-nginx-controller` DaemonSet to version `1.11.5`. For guidance on upgrading your Palette version,
-  refer to the [Palette Enterprise](../../enterprise-version/upgrade/upgrade.md) or
-  [VerteX](../../vertex/upgrade/upgrade.md) upgrade guide.
+  refer to the [Palette Enterprise](../../self-hosted-setup/palette/palette.md) or
+  [VerteX](../../self-hosted-setup/vertex/vertex.md) upgrade guide.
 
   :::warning
 

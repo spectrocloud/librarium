@@ -12,8 +12,8 @@ keywords: ["self-hosted", "enterprise"]
 <!-- prettier-ignore-start -->
 
 The following table presents the Kubernetes version corresponding to each Palette version for
-[VMware](../../enterprise-version/install-palette/install-on-vmware/install-on-vmware.md) and
-[Kubernetes](../../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md) installations.
+[VMware](../../self-hosted-setup/palette/vmware/install/install.md#kubernetes-requirements) and
+[Kubernetes](../../self-hosted-setup/palette/kubernetes/install/install.md#kubernetes-requirements) installations.
 Additionally, for VMware installations, it provides the download URLs for the required Operating System and Kubernetes
 distribution OVA.
 

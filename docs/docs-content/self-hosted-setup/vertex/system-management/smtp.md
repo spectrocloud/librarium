@@ -1,7 +1,7 @@
 ---
 sidebar_label: "SMTP Configuration"
 title: "SMTP Configuration"
-description: "Learn how to configure an SMTP server for your Palette instance."
+description: "Configure an SMTP server for self-hosted Palette VerteX."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 130

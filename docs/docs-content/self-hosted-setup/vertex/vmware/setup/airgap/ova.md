@@ -1,12 +1,12 @@
 ---
-sidebar_label: "Environment Setup with OVA"
-title: "Environment Setup with OVA"
-description: "Learn how to install VerteX in an airgap environment."
+sidebar_label: "Set Up Environment with OVA"
+title: "Set Up Environment with OVA"
+description: "Set up a VM using an OVA to install self-hosted Palette VerteX in an airgapped environment."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
-tags: ["vertex", "enterprise", "airgap", "vmware", "vsphere"]
-keywords: ["self-hosted", "vertex"]
+tags: ["self-hosted", "vertex", "airgap", "vmware"]
+keywords: ["self-hosted", "vertex", "airgap", "vmware"]
 ---
 
 This guide helps you to prepare your airgap environment for VerteX installation using an OVA to deploy and initialize an
@@ -14,9 +14,8 @@ airgap support VM.
 
 :::info
 
-This guide is for preparing your airgap environment only. For instructions on installing VerteX on VMware, check the
-[Install](../install.md) guide. A checklist of the steps you will complete to prepare your airgap environment for VerteX
-is available on the [Checklist](../checklist.md) page.
+This guide is for preparing your airgap environment only. For instructions on installing self-hosted Palette VerteX on
+VMware vSphere, refer to our [Install](../../install/airgap.md) guide.
 
 :::
 
@@ -51,10 +50,10 @@ VerteX.
 - Configure the Dynamic Host Configuration Protocol (DHCP) to access the airgap support VM via SSH. You can disable DHCP
   or modify the IP address after deploying the airgap support VM.
 
-- Review the required vSphere [permissions](../../vmware-system-requirements.md) and ensure you've created the proper
-  custom roles and zone tags. Zone tagging enables dynamic storage allocation across fault domains when provisioning
-  workloads that require persistent storage. Refer to [Zone Tagging](../../vmware-system-requirements.md#zone-tagging)
-  for information.
+- Review the required vSphere [permissions](./vmware-system-requirements.md) and ensure you've created the proper custom
+  roles and zone tags. Zone tagging enables dynamic storage allocation across fault domains when provisioning workloads
+  that require persistent storage. Refer to [Zone Tagging](./vmware-system-requirements.md#zone-tagging) for
+  information.
 
 <br />
 
@@ -370,8 +369,8 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 
 22. In the **Deploy OVF Template** wizard, enter the following URL to import the Operating System (OS) and Kubernetes
     distribution OVA required for the installation. Refer to the
-    [Kubernetes Requirements](../../../install-palette-vertex.md#kubernetes-requirements) section to learn if the
-    version of Palette you are installing requires a new OS and Kubernetes OVA.
+    [Kubernetes Requirements](../../install/install.md#kubernetes-requirements) section to learn if the version of
+    Palette you are installing requires a new OS and Kubernetes OVA.
 
         Consider the following example for reference.
 
@@ -487,7 +486,8 @@ installed in the airgap support VM and ready to use.
     palette ec install
     ```
 
-Complete all the Palette CLI steps outlined in the [Install VerteX](../install.md) guide from the airgap support VM.
+Complete all the Palette CLI steps outlined in the [Install VerteX](../../install/airgap.md) guide from the airgap
+support VM.
 
 :::info
 

@@ -17,8 +17,7 @@ partial_name: scar-migration-guide
     manifests are stored. For example, if you deployed an airgapped instance of {props.edition} to VMware using an <PaletteVertexUrlMapper
     edition={props.edition}
     text="OVA"
-    palettePath="/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions"
-    vertexPath="/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions"
+    url="/vmware/setup/airgap/ova/"
   />, navigate to the `/var/www/html/`
     directory.
 
@@ -29,9 +28,8 @@ partial_name: scar-migration-guide
     Alternatively, if you deployed {props.edition} in an airgapped Kubernetes environment using <PaletteVertexUrlMapper
     edition={props.edition}
     text="Helm charts"
-    palettePath="/install-palette/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions"
-    vertexPath="/install-palette-vertex/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions"
-  />, navigate to the directory served by the file server you configured. 
+    url="/kubernetes/setup/airgap/environment-setup/"
+    />, navigate to the directory served by the file server you configured. 
 
 3.  Compress the folder contents into an archive file called `manifests.tgz`. Issue the following command to create the
     archive.
@@ -47,14 +45,12 @@ partial_name: scar-migration-guide
     If you deployed an airgapped instance of {props.edition} to VMware using an <PaletteVertexUrlMapper
     edition={props.edition}
     text="OVA"
-    palettePath="/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions"
-    vertexPath="/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions"
+    url="/vmware/setup/airgap/ova/" 
     />, the OCI registry address is provided by the `airgap-setup.sh` script output. Alternatively, if you
     deployed {props.edition} to an existing Kubernetes cluster using <PaletteVertexUrlMapper
     edition={props.edition}
     text="Helm charts"
-    palettePath="/install-palette/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions"
-    vertexPath="/install-palette-vertex/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions"
+    url="/kubernetes/setup/airgap/environment-setup/"
     />, contact your cluster administrator for the OCI
     registry configuration.
 

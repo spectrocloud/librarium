@@ -11,9 +11,9 @@ tags: ["downloads", "artifact-studio"]
 
 The Spectro Cloud [Artifact Studio](https://artifact-studio.spectrocloud.com/) is a unified platform that helps
 airgapped, regulatory-focused, and security-conscious organizations populate their registries with bundles, packs, and
-installers to be used with self-hosted [Palette](../enterprise-version/enterprise-version.md) or
-[Palette VerteX](../vertex/vertex.md). It provides a single location for packs and images, streamlining access and
-management.
+installers to be used with [self-hosted Palette](../self-hosted-setup/palette/palette.md) or
+[Palette VerteX](../self-hosted-setup/vertex/vertex.md). It provides a single location for packs and images,
+streamlining access and management.
 
 ## Use Cases
 
@@ -52,8 +52,8 @@ There are four main artifact areas:
    | **Helm installation** | Used to install with Helm charts.                                                                                                                |
 
 Once you have the file, you can deploy Palette as a self-hosted application. For ISO downloads, review the
-[Palette Management Appliance Installation guide](../enterprise-version/install-palette/palette-management-appliance.md)
-for more information on deploying Palette locally.
+[Palette Management Appliance Installation guide](../self-hosted-setup/vertex/management-appliance/install.md) for more
+information on deploying Palette locally.
 
 ## Download Palette VerteX
 
@@ -72,8 +72,8 @@ for more information on deploying Palette locally.
    | **Helm installation** | Used to install with Helm charts.                                                                                                                   |
 
 Once you have the file, you can deploy Palette VerteX as a self-hosted application. For ISO downloads, review the
-[VerteX Management Appliance Installation guide](../vertex/install-palette-vertex/vertex-management-appliance.md) for
-more information on deploying Palette VerteX locally.
+[VerteX Management Appliance Installation guide](../self-hosted-setup/vertex/management-appliance/install.md) for more
+information on deploying Palette VerteX locally.
 
 ## Download a Pack Bundle
 
@@ -261,6 +261,6 @@ To verify the integrity and authenticity of your artifacts, you can do a checksu
 For information on uploading packs to your self-hosted Palette or Palette VerteX instance, refer to the appropriate
 guide:
 
-- [Upload Packs to Palette](../enterprise-version/install-palette/palette-management-appliance.md#upload-packs-to-palette)
+- [Upload Packs to Palette](../self-hosted-setup/palette/management-appliance/upload-packs.md)
 
-- [Upload Packs to Palette VerteX](../vertex/install-palette-vertex/vertex-management-appliance.md#upload-packs-to-palette-vertex)
+- [Upload Packs to Palette VerteX](../self-hosted-setup/vertex/management-appliance/upload-packs.md)

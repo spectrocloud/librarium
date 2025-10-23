@@ -30,7 +30,7 @@ and appending the `/system` path to the URL. For example, if your Palette cluste
 
 ## Administration and Management
 
-Platform administrators can use the system console to perform the following operations:
+System administrators can use the system console to perform the following operations:
 
 - [Create and manage system administrators](account-management/account-management.md)
 

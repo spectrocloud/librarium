@@ -1,21 +1,22 @@
 ---
 sidebar_label: "Reverse Proxy Configuration"
 title: "Reverse Proxy Configuration"
-description: "Learn how to configure a reverse proxy for Palette VerteX."
+description: "Learn how to configure a reverse proxy for self-hosted Palette VerteX."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 110
-tags: ["vertex", "management"]
-keywords: ["self-hosted", "vertex"]
+tags: ["self-hosted", "vertex", "management"]
+keywords: ["self-hosted", "vertex", "management"]
 ---
 
 You can configure a reverse proxy for Palette VerteX. The reverse proxy can be used by host clusters deployed in a
 private network. Host clusters deployed in a private network are not accessible from the public internet or by users in
 different networks. You can use a reverse proxy to access the cluster's Kubernetes API server from a different network.
 
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
 When you configure reverse proxy server for Palette VerteX, clusters that use the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> will use the reverse proxy server address in the kubeconfig file. Clusters not using the Spectro Proxy pack will use the default cluster address in the
 kubeconfig file.
+<!-- prettier-ignore-end -->
 
 Use the following steps to configure a reverse proxy server for Palette VerteX.
 
@@ -52,8 +53,8 @@ Use the following steps to configure a reverse proxy server for Palette VerteX.
 
 2. Use a text editor and open the **values.yaml** file. Locate the `frps` section and update the following values in the
    **values.yaml** file. Refer to the
-   [Spectro Proxy Helm Configuration](../install-palette-vertex/install-on-kubernetes/vertex-helm-ref.md#spectro-proxy)
-   to learn more about the configuration options.
+   [Spectro Proxy Helm Configuration](../kubernetes/setup/non-airgap/helm-reference.md#spectro-proxy) to learn more
+   about the configuration options.
 
 <br />
 

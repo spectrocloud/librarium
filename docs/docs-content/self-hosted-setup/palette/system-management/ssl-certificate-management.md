@@ -1,6 +1,6 @@
 ---
-sidebar_label: "System Address Management"
-title: "System Address Management"
+sidebar_label: "System Address and SSL Certificate Management"
+title: "System Address and SSL Certificate Management"
 description: "Manage system address and SSL certificates in self-hosted Palette."
 icon: ""
 hide_table_of_contents: false

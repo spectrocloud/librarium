@@ -1,12 +1,12 @@
 ---
 sidebar_label: "System-Level Registries"
 title: "System-Level Registries"
-description: "Learn how to add a system-level registry in Palette VerteX."
+description: "Add a system-level registry in self-hosted Palette VerteX."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 150
-tags: ["vertex", "management", "registry"]
-keywords: ["self-hosted", "vertex"]
+tags: ["self-hosted", "vertex", "management", "registry"]
+keywords: ["self-hosted", "vertex", "management", "registry"]
 ---
 
 You can add a registry at the system level or the tenant level. Registries added at the system level are available to
@@ -15,7 +15,7 @@ all the tenants. Registries added at the tenant level are available only to that
 :::info
 
 This section describes how to add a system scope registry. For guidance on adding a registry at the tenant scope, check
-out [Add a Tenant-Level Registry](../../tenant-settings/add-registry.md).
+out [Add a Tenant-Level Registry](../../../tenant-settings/add-registry.md).
 
 :::
 
@@ -106,6 +106,6 @@ check when you added the registry. Use these steps to further verify the registr
 
 ## Resources
 
-- [Add a Tenant-Level Registry](../../tenant-settings/add-registry.md)
+- [Add a Tenant-Level Registry](../../../tenant-settings/add-registry.md)
 
 - [Use non-FIPS Packs](../system-management/enable-non-fips-settings/use-non-fips-addon-packs.md)

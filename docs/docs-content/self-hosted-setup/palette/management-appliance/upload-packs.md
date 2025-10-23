@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Upload Packs"
-title: "Upgrade Packs to Self-Hosted Palette Installed with Management Appliance"
-description: "Learn how to upgrade the Palette Management Appliance"
+title: "Upload Packs to Self-Hosted Palette Installed with Management Appliance"
+description: "Upload packs to self-hosted Palette installed with the Palette Management Appliance"
 hide_table_of_contents: false
 tags: ["management appliance", "self-hosted", "packs"]
 sidebar_position: 60

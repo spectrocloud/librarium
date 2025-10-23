@@ -1,23 +1,22 @@
 ---
-sidebar_label: "Install VerteX"
-title: "Install VerteX"
-description: "Learn how to install VerteX in an airgap VMware environment."
+sidebar_label: "Install Airgap Palette VerteX"
+title: "Install Airgap, Self-Hosted Palette VerteX on VMware"
+description: "Install airgap, self-hosted Palette VerteX on VMware vSphere using the Palette CLI."
 icon: ""
-sidebar_position: 40
+sidebar_position: 30
 hide_table_of_contents: false
-tags: ["vertex", "enterprise", "airgap", "vmware", "vsphere"]
-keywords: ["self-hosted", "vertex"]
+tags: ["self-hosted", "vertex", "vmware", "airgap", "cli"]
+keywords: ["self-hosted", "vertex", "vmware", "airgap", "cli"]
 ---
 
 Palette VerteX can be installed on VMware vSphere in an airgap environment. When you install VerteX, a three-node
 cluster is created. You use the interactive Palette CLI to install VerteX on VMware vSphere. Refer to
-[Access Palette](../../../vertex.md#access-palette-vertex) for instructions on requesting the required credentials and
+[Access Palette](../../vertex.md#access-palette-vertex) for instructions on requesting the required credentials and
 assets.
 
 ## Prerequisites
 
-- You have completed the [Environment Setup](./environment-setup/environment-setup.md) steps and deployed the airgap
-  support VM.
+- You have completed the [Environment Setup](../setup/airgap/airgap.md) steps and deployed the airgap support VM.
 
 - You will need to provide the Palette CLI an encryption passphrase to secure sensitive data. The passphrase must be
   between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character.
@@ -38,11 +37,11 @@ assets.
 
     :::
 
-- Review the required VMware vSphere [permissions](../vmware-system-requirements.md). Ensure you have created the proper
-  custom roles and zone tags.
+- Review the required VMware vSphere [permissions](../setup/airgap/vmware-system-requirements.md). Ensure you have
+  created the proper custom roles and zone tags.
 
 - We recommended the following resources for Palette VerteX. Refer to the
-  [Palette VerteX size guidelines](../../install-palette-vertex.md#instance-sizing) for additional sizing information.
+  [Palette VerteX size guidelines](../install/install.md#size-guidelines) for additional sizing information.
 
   - 8 CPUs per VM.
 
@@ -71,7 +70,8 @@ assets.
   - x509 SSL certificate authority file in base64 format. This file is optional.
 
 - Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require
-  persistent storage. Refer to [Zone Tagging](../vmware-system-requirements.md#zone-tagging) for information.
+  persistent storage. Refer to [Zone Tagging](../setup/airgap/vmware-system-requirements.md#zone-tagging) for
+  information.
 
 - Assigned IP addresses for application workload services, such as Load Balancer services.
 
@@ -147,8 +147,8 @@ Use the following steps to install Palette VerteX.
     :::warning
 
     If you deployed the airgap support VM using a generic OVA, the Palette CLI may not be in the `usr/bin` path. Ensure
-    that you complete step **22** of the [Environment Setup](./environment-setup/vmware-vsphere-airgap-instructions.md)
-    guide, which installs the VerteX airgap binary and moves the Palette CLI to the correct path.
+    that you complete step 18 of the [Environment Setup](../setup/airgap/ova.md) guide, which installs the VerteX airgap
+    binary and moves the Palette CLI to the correct path.
 
     :::
 
@@ -189,10 +189,9 @@ Use the following steps to install Palette VerteX.
     | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                          |
 
 9.  Select the OCI registry type and provide the configuration values. Review the following table for more information.
-    If you are using the Palette CLI from inside an
-    [airgap support VM](./environment-setup/vmware-vsphere-airgap-instructions.md), the CLI will automatically detect
-    the airgap environment and prompt you to **Use local, air-gapped Pack Registry?** Type `y` to use the local
-    resources and skip filling in the OCI registry URL and credentials.
+    If you are using the Palette CLI from inside an [airgap support VM](../setup/airgap/airgap.md), the CLI will
+    automatically detect the airgap environment and prompt you to **Use local, air-gapped Pack Registry?** Type `y` to
+    use the local resources and skip filling in the OCI registry URL and credentials.
 
     :::warning
 
@@ -389,13 +388,13 @@ Use the following steps to install Palette VerteX.
 
 18. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login,
     you will be prompted to create a new password. Enter a new password and save your changes. Refer to the
-    [password requirements](../../../system-management/account-management/credentials.md#password-requirements-and-security)
+    [password requirements](../../system-management/account-management/credentials.md#password-requirements-and-security)
     documentation page to learn more about the password requirements.
 
     Use the username `admin` and your new password to log in to the system console. You can create additional system
     administrator accounts and assign roles to users in the system console. Refer to the
-    [Account Management](../../../system-management/account-management/account-management.md) documentation page for
-    more information.
+    [Account Management](../../system-management/account-management/account-management.md) documentation page for more
+    information.
 
     :::info
 
@@ -410,11 +409,11 @@ Use the following steps to install Palette VerteX.
 19. After login, a Summary page is displayed. Palette VerteX is installed with a self-signed SSL certificate. To assign
     a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to Palette VerteX. You can upload the files using the Palette VerteX system console. Refer to the
-    [Configure HTTPS Encryption](/vertex/system-management/ssl-certificate-management) page for instructions on how to
+    [Configure HTTPS Encryption](../../system-management/ssl-certificate-management) page for instructions on how to
     upload the SSL certificate files to Palette VerteX.
 
 20. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
-    [Tenant Management](../../../system-management/tenant-management.md) guide.
+    [Tenant Management](../../system-management/tenant-management.md) guide.
 
     ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/vertex_installation_install-on-vmware_goto-tenant-management.webp)
 
@@ -452,18 +451,10 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 
 ## Next Steps
 
-<PartialsComponent category="self-hosted" name="install-next-steps" edition="VerteX" version="Palette VerteX" />
-
-## Resources
-
-- [Environment Setup](./environment-setup/vmware-vsphere-airgap-instructions.md)
-
-- [Create a Tenant](../../../system-management/tenant-management.md)
-
-- [Enterprise Install Troubleshooting](../../../../troubleshooting/enterprise-install.md)
-
-- [Palette CLI](../../../../automation/palette-cli/install-palette-cli.md#download-and-setup)
-
-- [System Management](../../../system-management/system-management.md)
-
-- [VMware System Requirements](../vmware-system-requirements.md)
+<PartialsComponent
+  category="self-hosted"
+  name="install-next-steps"
+  install="vmware"
+  edition="VerteX"
+  version="Palette VerteX"
+/>

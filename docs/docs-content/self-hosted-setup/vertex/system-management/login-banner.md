@@ -2,12 +2,13 @@
 sidebar_label: "Banners"
 title: "Banners"
 description:
-  "Learn how to add login and classification banners, also known as Authority to Operate (ATO) banners, in VerteX."
+  "Learn how to add login and classification banners, also known as Authority to Operate (ATO) banners, in self-hosted
+  Palette VerteX."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 50
-tags: ["vertex", "management", "ato", "banner"]
-keywords: ["self-hosted", "vertex", "ato", "banner"]
+tags: ["self-hosted", "vertex", "management", "ato", "banner"]
+keywords: ["self-hosted", "vertex", "management", "ato", "banner"]
 ---
 
 <PartialsComponent category="self-hosted" name="login-banner-intro" edition="VerteX" official="Palette VerteX" />
@@ -25,7 +26,7 @@ Take the following steps to add a login banner to your system console and tenant
 :::warning
 
 Login banners configured in the system console override tenant-specific login banners. Refer to the
-[Tenant Login Banner](../../tenant-settings/login-banner.md) guide to learn more about tenant-specific login banners.
+[Tenant Login Banner](../../../tenant-settings/login-banner.md) guide to learn more about tenant-specific login banners.
 
 :::
 

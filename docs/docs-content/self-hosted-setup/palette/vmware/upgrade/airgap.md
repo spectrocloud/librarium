@@ -1,11 +1,11 @@
 ---
 sidebar_label: "Upgrade Airgap Palette"
 title: "Upgrade Self-Hosted, Airgap Palette Installed on VMware"
-description: "Learn how to upgrade a self-hosted, airgap Palette environment installed on VMware vSphere."
+description: "Upgrade a self-hosted, airgap Palette instance installed on VMware vSphere using the Palette CLI."
 icon: ""
 sidebar_position: 30
-tags: ["self-hosted", "airgap", "vmware", "upgrade"]
-keywords: ["self-hosted", "airgap", "vmware", "upgrade"]
+tags: ["self-hosted", "airgap", "vmware", "upgrade", "cli"]
+keywords: ["self-hosted", "airgap", "vmware", "upgrade", "cli"]
 ---
 
 This guide takes you through the process of upgrading a self-hosted airgap Palette instance installed on VMware vSphere.

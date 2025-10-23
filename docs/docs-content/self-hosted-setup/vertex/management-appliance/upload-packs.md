@@ -1,3 +1,12 @@
+---
+sidebar_label: "Upload Packs"
+title: "Upload Packs to Self-Hosted Palette VerteX Installed with Management Appliance"
+description: "Upload packs to self-hosted Palette VerteX installed with the VerteX Management Appliance"
+hide_table_of_contents: false
+tags: ["management appliance", "self-hosted", "vertex", "packs"]
+sidebar_position: 60
+---
+
 :::danger
 
 This has been split from the former
@@ -9,7 +18,7 @@ page.
 ## Upload Packs to Palette VerteX
 
 Follow the instructions to upload packs to your Palette VerteX instance. Packs are used to create
-[cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) and deploy workload clusters in your
+[cluster profiles](../../../profiles/cluster-profiles/cluster-profiles.md) and deploy workload clusters in your
 environment.
 
 ### Prerequisites
@@ -90,6 +99,7 @@ configuration scanning, penetration scanning, SBOM scanning, and conformance sca
   category="self-hosted"
   name="next-steps"
   edition="VerteX"
+  install="management-appliance"
   version="Palette VerteX"
   iso="Palette VerteX"
   app="VerteX Management Appliance"

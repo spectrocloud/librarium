@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Airgap Environment"
 title: "Self-Hosted, Airgap Environment Overview"
-description: "Learn how to prepare for installing your self-hosted, airgapped Palette in VMware vSphere."
+description: "Prepare to install your self-hosted, airgapped Palette instance in VMware vSphere."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0

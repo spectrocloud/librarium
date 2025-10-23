@@ -1,12 +1,12 @@
 ---
 sidebar_label: "Cloud Provider Configuration"
 title: "Cloud Provider Configuration"
-description: "Learn how to modify the system-level cloud provider configuration in Palette VerteX."
+description: "Learn how to modify the system-level cloud provider configuration in self-hosted Palette VerteX."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 60
-tags: ["vertex", "management", "clouds"]
-keywords: ["self-hosted", "vertex"]
+tags: ["self-hosted", "vertex", "management", "clouds"]
+keywords: ["self-hosted", "vertex", "management", "clouds"]
 ---
 
 Different cloud providers use different image formats to create virtual machines. Amazon Web Services (AWS), for

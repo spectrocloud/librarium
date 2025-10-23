@@ -1,12 +1,13 @@
 ---
-sidebar_label: "Environment Setup"
-title: "Environment Setup"
-description: "Learn how to prepare VerteX for an airgap install"
+sidebar_label: "Set Up Airgap Environment"
+title: "Set Up Airgap Environment"
+description:
+  "Set up your airgap environment in preparation to install self-hosted Palette VerteX on an existing Kubernetes cluster"
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
-tags: ["vertex", "enterprise", "airgap", "kubernetes"]
-keywords: ["self-hosted", "vertex"]
+tags: ["self-hosted", "vertex", "airgap", "kubernetes"]
+keywords: ["self-hosted", "vertex", "airgap", "kubernetes"]
 ---
 
 ![Overview diagram of the pre-install steps eager-load](/enterprise-version_air-gap-repo_k8s-overview-order-diagram-clean.webp)
@@ -245,8 +246,8 @@ Complete the following steps before deploying the airgap VerteX installation.
 
 13. Review the additional packs available for download. The supplemental packs are optional and not required for a
     successful installation. However, to create cluster profiles you may require several of the packs available for
-    download. Refer to the [Additional Packs](../../../../downloads/palette-vertex/additional-packs.md) resource for a
-    list of available packs.
+    download. Refer to the [Additional Packs](../../../../../downloads/palette-vertex/additional-packs.md) resource for
+    a list of available packs.
 
 14. Once you select the packs you want to install, download the pack binaries and start the binary to initiate the
     upload process. This step requires internet access, so you may have to download the binaries on a separate machine
@@ -282,5 +283,5 @@ Use the following steps to validate the airgap setup process completed successfu
 ## Next Steps
 
 You are now ready to deploy the airgap VerteX installation. The important difference is that you will specify your OCI
-registry during the installation process. Refer to the [VerteX Install](./install.md) guide for detailed guidance on
-installing VerteX.
+registry during the installation process. Refer to the [VerteX Install](../../install/install.md) guide for detailed
+guidance on installing VerteX.

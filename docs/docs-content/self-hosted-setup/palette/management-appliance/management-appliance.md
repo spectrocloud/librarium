@@ -1,7 +1,8 @@
 ---
 sidebar_label: "Palette Management Appliance"
 title: "Palette Management Appliance"
-description: "Learn how to deploy self-hosted Palette to your environment using the Palette Management Appliance"
+description:
+  "Learn how to use the Palette Management Appliance to install self-hosted Palette on your desired infrastructure."
 hide_table_of_contents: false
 # sidebar_custom_props:
 #   icon: "chart-diagram"

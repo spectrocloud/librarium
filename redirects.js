@@ -386,19 +386,6 @@ let redirects = [
     to: "/enterprise-version/install-palette/airgap/",
   },
   {
-    from: "/vertex/install-palette-vertex/airgap/kubernetes-airgap-instructions/",
-    to: "/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions/",
-  },
-  {
-    from: "/vertex/install-palette-vertex/airgap/vmware-vsphere-airgap-instructions/",
-    to: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
-  },
-  {
-    from: "/vertex/install-palette-vertex/airgap/checklist/",
-    to: "/vertex/install-palette-vertex/airgap/",
-  },
-
-  {
     from: "/terraform/",
     to: "/automation/terraform/",
   },
@@ -553,10 +540,6 @@ let redirects = [
   {
     from: "/automation/palette-cli/commands/validator/",
     to: "/automation/palette-cli/commands/ec/",
-  },
-  {
-    from: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
-    to: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
   },
   {
     from: "/legal-licenses/oss-licenses/",
@@ -906,7 +889,7 @@ let redirects = [
     from: `/clusters/cluster-management/kubernetes-dashboard/`,
     to: `/clusters/cluster-management/spectro-kubernetes-dashboard/`,
   },
-  // Self-Hosted Palette redirects for sidebar refactor
+  // Self-hosted Palette/VerteX redirects for sidebar refactor
   {
     from: [
       "/enterprise-version/",
@@ -1025,6 +1008,10 @@ let redirects = [
     to: "/self-hosted-setup/palette/management-appliance/upgrade/",
   },
   {
+    from: "/enterprise-version/upgrade/upgrade-notes/",
+    to: "/self-hosted-setup/palette/vmware/upgrade/",
+  },
+  {
     from: [
       "/enterprise-version/system-management/",
       "/enterprise-version/system-console-dashboard/",
@@ -1104,25 +1091,12 @@ let redirects = [
     to: "/self-hosted-setup/palette/system-management/tenant-management/",
   },
   {
-    from: "/vertex/",
+    from: ["/vertex/", "/vertex/supported-platforms/", "/vertex/install-palette-vertex/", "/vertex/upgrade/"],
     to: "/self-hosted-setup/vertex/",
   },
   {
-    from: "/enterprise-version/upgrade/upgrade-notes/",
-    to: "/self-hosted-setup/vertex/vmware/upgrade/",
-  },
-  /////////////
-  {
-    from: "/vertex/supported-platforms/",
-    to: "/self-hosted-setup/vertex/",
-  },
-  {
-    from: ["/vertex/fips/fips-status-icons/", "/vertex/fips/fips-compliant-components/"],
+    from: ["/vertex/fips/", "/vertex/fips/fips-status-icons/", "/vertex/fips/fips-compliant-components/"],
     to: "/self-hosted-setup/vertex/fips/",
-  },
-  {
-    from: ["/vertex/install-palette-vertex/", "/vertex/upgrade/"],
-    to: "/self-hosted-setup/vertex/",
   },
   {
     from: "/vertex/install-palette-vertex/install-on-kubernetes/",
@@ -1134,6 +1108,7 @@ let redirects = [
   },
   {
     from: [
+      "/vertex/install-palette-vertex/airgap/kubernetes-airgap-instructions/",
       "/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions/",
       "/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/checklist/",
     ],
@@ -1148,10 +1123,7 @@ let redirects = [
     to: "/self-hosted-setup/vertex/kubernetes/install/non-airgap/",
   },
   {
-    from: [
-      "/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/",
-      "/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/install/",
-    ],
+    from: "/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/install/",
     to: "/self-hosted-setup/vertex/kubernetes/install/airgap/",
   },
   {
@@ -1188,11 +1160,16 @@ let redirects = [
       "/vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/",
       "/vertex/install-palette-vertex/install-on-vmware/airgap-install/checklist/",
       "/vertex/install-palette-vertex/airgap/",
+      "/vertex/install-palette-vertex/airgap/checklist/",
     ],
     to: "/self-hosted-setup/vertex/vmware/setup/airgap/",
   },
   {
-    from: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
+    from: [
+      "/vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
+      "/vertex/install-palette-vertex/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
+      "/vertex/install-palette-vertex/airgap/vmware-vsphere-airgap-instructions/",
+    ],
     to: "/self-hosted-setup/vertex/vmware/setup/airgap/ova/",
   },
   {
@@ -1224,15 +1201,94 @@ let redirects = [
     to: "/self-hosted-setup/vertex/management-appliance/upgrade/",
   },
   {
-    from: "/vertex/system-management/account-management/email/",
-    to: "/self-hosted-setup/vertex/system-management/account-management/credentials/",
-  },
-  {
     from: [
       "/vertex/system-management/configure-aws-sts-account/",
       "/enterprise-version/system-management/configure-aws-sts-account/",
     ],
     to: "/clusters/public-cloud/aws/add-aws-accounts/configure-aws-sts-account/",
+  },
+  {
+    from: "/vertex/system-management/",
+    to: "/self-hosted-setup/vertex/system-management/",
+  },
+  {
+    from: "/vertex/system-management/account-management/",
+    to: "/self-hosted-setup/vertex/system-management/account-management/",
+  },
+  {
+    from: "/vertex/system-management/account-management/manage-system-accounts/",
+    to: "/self-hosted-setup/vertex/system-management/account-management/manage-system-accounts/",
+  },
+  {
+    from: [
+      "/vertex/system-management/account-management/credentials/",
+      "/vertex/system-management/account-management/email/",
+    ],
+    to: "/self-hosted-setup/vertex/system-management/account-management/credentials/",
+  },
+  {
+    from: "/vertex/system-management/account-management/password-blocklist/",
+    to: "/self-hosted-setup/vertex/system-management/account-management/password-blocklist/",
+  },
+  {
+    from: "/vertex/system-management/login-banner/",
+    to: "/self-hosted-setup/vertex/system-management/login-banner/",
+  },
+  {
+    from: "/vertex/system-management/change-cloud-config/",
+    to: "/self-hosted-setup/vertex/system-management/change-cloud-config/",
+  },
+  {
+    from: "/vertex/system-management/feature-flags/",
+    to: "/self-hosted-setup/vertex/system-management/feature-flags/",
+  },
+  {
+    from: "/vertex/system-management/registry-override/",
+    to: "/self-hosted-setup/vertex/system-management/registry-override/",
+  },
+  {
+    from: "/vertex/system-management/customize-interface/",
+    to: "/self-hosted-setup/vertex/system-management/customize-interface/",
+  },
+  {
+    from: "/vertex/system-management/enable-non-fips-settings/",
+    to: "/self-hosted-setup/vertex/system-management/enable-non-fips-settings/",
+  },
+  {
+    from: "/vertex/system-management/enable-non-fips-settings/allow-cluster-import/",
+    to: "/self-hosted-setup/vertex/system-management/enable-non-fips-settings/allow-cluster-import/",
+  },
+  {
+    from: "/vertex/system-management/enable-non-fips-settings/use-non-fips-addon-packs/",
+    to: "/self-hosted-setup/vertex/system-management/enable-non-fips-settings/use-non-fips-addon-packs/",
+  },
+  {
+    from: "/vertex/system-management/enable-non-fips-settings/use-non-fips-features/",
+    to: "/self-hosted-setup/vertex/system-management/enable-non-fips-settings/use-non-fips-features/",
+  },
+  {
+    from: "/vertex/system-management/reverse-proxy/",
+    to: "/self-hosted-setup/vertex/system-management/reverse-proxy/",
+  },
+  {
+    from: "/vertex/system-management/scar-migration/",
+    to: "/self-hosted-setup/vertex/system-management/scar-migration/",
+  },
+  {
+    from: "/vertex/system-management/smtp/",
+    to: "/self-hosted-setup/vertex/system-management/smtp/",
+  },
+  {
+    from: "/vertex/system-management/ssl-certificate-management/",
+    to: "/self-hosted-setup/vertex/system-management/ssl-certificate-management/",
+  },
+  {
+    from: "/vertex/system-management/add-registry/",
+    to: "/self-hosted-setup/vertex/system-management/add-registry/",
+  },
+  {
+    from: "/vertex/system-management/tenant-management/",
+    to: "/self-hosted-setup/vertex/system-management/tenant-management/",
   },
 ];
 

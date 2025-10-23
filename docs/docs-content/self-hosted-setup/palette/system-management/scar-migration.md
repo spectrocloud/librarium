@@ -2,7 +2,7 @@
 sidebar_label: "SCAR to OCI Registry Migration"
 title: "SCAR to OCI Registry Migration"
 description:
-  "Migrate Spectro Cloud Artifact Registry (SCAR) content to the OCI registry used to host packs and images in
+  "Migrate Spectro Cloud Artifact Registry (SCAR) content to the OCI registry used to host packs and images for
   self-hosted Palette."
 icon: ""
 hide_table_of_contents: false

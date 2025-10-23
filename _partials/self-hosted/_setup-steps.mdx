@@ -5,7 +5,7 @@ partial_name: setup-steps
 
 ## Prerequisites
 
-- An RHEL airgap VM deployed in your VMware vSphere. The VM must be registered with
+- An RHEL airgap VM deployed in VMware vSphere. The VM must be registered with
   [Red Hat](https://access.redhat.com/solutions/253273) and have ports `80` and `443` available. This guide uses RHEL
   version `9.4` as an example.
 
@@ -31,9 +31,9 @@ partial_name: setup-steps
 
   :::
 
-- Review the required vSphere <VersionedLink text="permissions" url="/enterprise-version/install-palette/install-on-vmware/vmware-system-requirements/" /> and ensure you have
+- Review the required vSphere <PaletteVertexUrlMapper text="permissions" edition={props.edition} install={props.install} url="/setup/non-airgap/vmware-system-requirements/" /> and ensure you have
   created the proper custom roles and zone tags. Zone tagging enables dynamic storage allocation across fault domains
-  when provisioning workloads that require persistent storage. Refer to <VersionedLink text="Zone Tagging" url="/enterprise-version/install-palette/install-on-vmware/vmware-system-requirements/" /> for information.
+  when provisioning workloads that require persistent storage. Refer to <VersionedLink text="Zone Tagging" edition={props.edition} install={props.install} url="/setup/non-airgap/vmware-system-requirements/#zone-tagging" /> for information.
 
 - The following artifacts must be available in the root home directory of the RHEL airgap VM. You can download the files
   in a system with internet access and then transfer them to your airgap environment. Contact your {props.edition} support
@@ -54,8 +54,6 @@ partial_name: setup-steps
     distribution OVA required for the {props.edition} nodes creation. Refer to the 
     <VersionedLink text="Kubernetes Requirements" url={props.requirementsURL} /> section to learn if the version of
     {props.edition} you are installing requires a new OS and Kubernetes OVA.
-
-    {props.requirementsURL}
     
     <Tabs>
     <TabItem value="non-fips" label="Non-FIPS">
@@ -77,7 +75,8 @@ partial_name: setup-steps
     Place the OVA in the **spectro-templates** folder. Append the `r_` prefix, and remove the `.ova` suffix when
     assigning its name and target location. For example, the final output should look like `r_u-2204-0-k-1294-0`. This
     naming convention is required for the installation process to identify the OVA. Refer to the
-    <VersionedLink text="Additional Packs" url="/enterprise-version/install-palette/airgap/supplemental-packs/" /> page for a list of additional OS and
+    <VersionedLink text="Additional Packs" edition={props.edition} palettePath="/downloads/self-hosted-palette/additional-packs/"
+    vertexPath="/downloads/palette-vertex/additional-packs/" /> page for a list of additional OS and
     Kubernetes OVAs.
 
     You can terminate the deployment after the OVA is available in the `spectro-templates` folder. Refer to the
@@ -303,7 +302,7 @@ partial_name: setup-steps
     systemctl restart httpd.service
     ```
 
-20. Review the <PaletteVertexUrlMapper edition={props.edition} text="Additional Packs" palettePath="/install-palette/airgap/supplemental-packs/" vertexPath="/install-palette-vertex/airgap/supplemental-packs/" /> page and identify any additional packs you want
+20. Review the <PaletteVertexUrlMapper edition={props.edition} text="Additional Packs" palettePath="/downloads/self-hosted-palette/additional-packs/" vertexPath="/downloads/palette-vertex/additional-packs/" /> page and identify any additional packs you want
     to add to your registry. You can also add additional packs after the installation is complete.
 
 You have now completed the preparation steps for an airgap installation. Check out the [Validate](#validate) section to
@@ -398,7 +397,7 @@ command below to start the installation.
     palette ec install
     ```
 
-Complete all the Palette CLI steps outlined in the <VersionedLink text="Install" url="/enterprise-version/install-palette/install-on-vmware/airgap-install/install/" /> guide from the RHEL VM.
+Complete all the Palette CLI steps outlined in the <PaletteVertexUrlMapper edition={props.edition} text="Install" url="/vmware/install/airgap/" /> guide from the RHEL VM.
 
 :::info
 
