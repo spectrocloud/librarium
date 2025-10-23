@@ -17,8 +17,8 @@ The following components have been updated for Palette version 4.7.27 - 4.7.X.
 
 | Component                                                                                                         | Version |
 | ----------------------------------------------------------------------------------------------------------------- | ------- |
-| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.25.X  |
-| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.25.X  |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.25.2  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.25.2  |
 
 ### Improvements
 
@@ -34,6 +34,18 @@ The following components have been updated for Palette version 4.7.27 - 4.7.X.
   [`spectrocloud_cluster_maas` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_maas)
   now supports the specification of NTP servers through the `ntp_servers` field, allowing users to specify a list of NTP
   servers to use instead of the machine image's default NTP server list.
+
+<!-- prettier-ignore-start -->
+
+- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) have now been updated to use the following components internally:
+
+  - <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/?pack=kubernetes" /> 1.32.8
+  - <VersionedLink text="Calico" url="/integrations/?pack=cni-calico" />  3.30.2
+  - <VersionedLink text="Piraeus CSI" url="/integrations/?pack=piraeus-csi" /> 2.9.0
+  - <VersionedLink text="Zot Registry" url="/integrations/?pack=zot-registry" /> 0.1.67-rev1
+
+<!-- prettier-ignore-end -->
 
 ### Bug Fixes
 
@@ -56,6 +68,8 @@ The following components have been updated for Palette version 4.7.27 - 4.7.X.
 | External Secrets Operator | Add-on | :white_check_mark: | :x:                | 0.14.4      |
 | Nginx                     | Add-on | :white_check_mark: | :x:                | 1.13.3      |
 | Piraeus Operator          | CSI    | :white_check_mark: | :white_check_mark: | 2.9.1       |
+| Tigera Operator           | CNI    | :white_check_mark: | :x:                | 3.30.3      |
+| Ubuntu MAAS               | OS     | :white_check_mark: | :x:                | 24.04       |
 
 ## October 19, 2025 - Release 4.7.27 {#release-notes-4.7.c}
 
