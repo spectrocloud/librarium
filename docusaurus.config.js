@@ -59,7 +59,7 @@ const allScripts = [
     "data-consent-screen-disclaimer":
       "Thank you for using our chat service!  Information you submit through this chat is subject to our [Privacy Policy and Terms of Use](https://www.spectrocloud.com/privacy-policy) and will be processed by our service provider. Please do not enter sensitive information. Chat transcripts may be kept for future reference.",
     "data-modal-example-questions":
-      "How do I get started with Palette?, What types of infrastructure can I deploy my cluster on?,What third-party packs integrate with Palette cluster?",
+      "How do I get started with Palette?, What types of infrastructure can I deploy my cluster on?,What third-party packs integrate with a Palette cluster?",
     "data-example-question-button-width": "565px",
     "data-example-question-button-box-shadow": "1px",
     "data-consent-screen-accept-button-text": "Accept",
