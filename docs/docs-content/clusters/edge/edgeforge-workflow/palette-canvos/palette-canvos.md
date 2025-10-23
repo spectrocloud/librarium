@@ -99,8 +99,7 @@ To complete this basic guide, you will need the following items:
   generate a new registration token. For detailed instructions, refer to the
   [Create Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide.
 
-- An account with [Docker Hub](https://hub.docker.com/). If you do not have an account with Docker Hub already, refer to
-  the [Create an account](https://docs.docker.com/docker-id/) page for signing-up instructions.
+- Access to an image registry.
 
   :::info
 
