@@ -58,12 +58,16 @@ const allScripts = [
     "data-consent-screen-title": "Privacy Notice",
     "data-consent-screen-disclaimer":
       "Thank you for using our chat service!  Information you submit through this chat is subject to our [Privacy Policy and Terms of Use](https://www.spectrocloud.com/privacy-policy) and will be processed by our service provider. Please do not enter sensitive information. Chat transcripts may be kept for future reference.",
+    "data-modal-example-questions":
+      "How do I get started with Palette?, What types of infrastructure can I deploy my cluster on?,What third-party packs integrate with a Palette cluster?",
+    "data-example-question-button-width": "565px",
+    "data-example-question-button-box-shadow": "1px",
     "data-consent-screen-accept-button-text": "Accept",
     "data-consent-screen-reject-button-text": "Decline",
     "data-project-logo": "/img/spectrocloud-mark-light-bkgd-RGB.svg",
     "data-modal-title": "Spectro Cloud - Ask Docs",
     "data-modal-disclaimer":
-      "This AI bot provides responses based solely on your input and the latest available version of Spectro Cloud’s public documentation. Its output is for informational purposes only and should not be considered official guidance. Please do not share any personally identifiable information (PII) or sensitive data. By using this service, you agree to our [Privacy Policy](https://www.spectrocloud.com/privacy-policy). \n\n Note that the bot does not have access to past versions of the documentation and cannot answer version-specific questions.",
+      "This AI bot provides responses based solely on your input and the latest available version of Spectro Cloud’s public documentation. Its output is for informational purposes only and should not be considered official guidance. Please do not share any personally identifiable information (PII) or sensitive data. By using this service, you agree to our [Privacy Policy](https://www.spectrocloud.com/privacy-policy). \n\n Note that the bot does not have access to past versions of the documentation and cannot answer version-specific questions. \n\n If you are not sure where to start, click on one of the example questions below.",
     "data-modal-x-offset": "0",
     "data-modal-y-offset": "0",
     "data-modal-with-overlay": "false",
