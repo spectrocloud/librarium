@@ -192,7 +192,7 @@ workaround.
    is the base image that you will use to build provider images and the Edge installer ISO later on.
 
 10. Tag the image with a repository in a registry that is accessible by your Linux machine. For example, the following
-    command uses the `spectrocloud` registry and the `ubuntu-focal-fips` repository.
+    command uses a Docker registry named `spectrocloud` and the `ubuntu-focal-fips` repository.
 
     ```shell
     docker tag ubuntu-focal-fips:latest spectrocloud/ubuntu-focal-fips:latest
