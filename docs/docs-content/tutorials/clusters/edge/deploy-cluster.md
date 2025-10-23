@@ -101,11 +101,8 @@ To complete this tutorial, you will need the following:
 
   ![A screenshot of a registration token in Palette](/tutorials/edge/tutorials_edge_deploy-cluster_registration-token.webp)
 
-- Access to a public image registry and permissions to push images. This tutorial uses
-  [Docker Hub](https://www.docker.com/products/docker-hub/) as an example. If you need to use a private registry, refer
-  to the
-  [Deploy Cluster with a Private Provider Registry](../../../clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md)
-  guide for instructions on how to configure the credentials.
+- Access to an image registry and permissions to push images. This page uses a public [Docker Hub](https://www.docker.com/products/docker-hub/) registry as an example. If you need to use a private registry, refer
+  to the [Deploy Cluster with a Private Provider Registry](../../../clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md) guide for instructions on how to configure the credentials.
 
 ## Build Edge Artifacts
 
