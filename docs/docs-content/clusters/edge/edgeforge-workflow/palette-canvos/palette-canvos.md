@@ -103,7 +103,7 @@ To complete this basic guide, you will need the following items:
 
   :::info
 
-  This guide uses Docker Hub as an example. You can use any other image registry that suit your requirements.
+  This guide uses a public Docker Hub registry as an example. You can use any other image registry that suits your requirements.
 
   :::
 
