@@ -90,11 +90,7 @@ repository.
 
 ### Message Brokers
 
-Palette’s internal microservices require a stable, secure, and scalable way to exchange information efficiently. To
-support this, Palette uses a [gRPC](https://grpc.io/)-based message broker service that manages communication between
-services using a publish-subscribe model. The message broker acts as a central hub that routes messages between
-services. Each service can publish messages or subscribe to messages on specific topics, and the broker ensures that
-messages are delivered reliably, securely, and in real time.
+Palette’s internal microservices require a stable, secure, and scalable way to exchange information efficiently. To support this, Palette uses a [Google Remote Procedure Call (gRPC)](https://grpc.io/)–based message broker service that acts as a central hub for communication between microservices through a publish-subscribe model. Each microservice can publish messages or subscribe to messages on specific topics, and the broker ensures that messages are delivered reliably, securely, and in real time.
 
 To handle communication across large-scale, distributed environments, the message broker runs as multiple pod replicas
 within each management plane cluster. This provides the following benefits:
@@ -102,7 +98,7 @@ within each management plane cluster. This provides the following benefits:
 - **Load distribution** - Incoming gRPC connections are automatically balanced across replicas to optimize resource
   usage and prevent message broker pods from becoming overloaded.
 
-- **High availability** - If a message broker pod fails, others continue handling traffic without interruption. By
+- **High availability** - If a message broker pod fails, others continue to handle traffic without interruption. By
   default, each management plane includes two broker replicas.
 
 - **Cluster quorum** - Message brokers automatically detect each other and form a cluster, allowing them to coordinate
@@ -112,7 +108,7 @@ within each management plane cluster. This provides the following benefits:
   certificates to ensure secure message exchange.
 
 To inspect the message brokers of your self-hosted Palette or Palette VerteX management plane cluster,
-[connect to your management plane cluster with the kubectl CLI](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli),
+[connect to your management plane cluster with the kubectl CLI](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli)
 and execute the following command.
 
 ```bash
