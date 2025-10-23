@@ -436,8 +436,8 @@ Appliance mode requires the following components:
   generate a new registration token. For detailed instructions, refer to the
   [Create Registration Token](../../../../edge/site-deployment/site-installation/create-registration-token.md) guide.
 
-- Access to a public image registry and permissions to push images. This page uses
-  [Docker Hub](https://www.docker.com/products/docker-hub/) as an example. If you need to use a private registry, refer
+- Access to an image registry and permissions to push images. This page uses
+  a public [Docker Hub](https://www.docker.com/products/docker-hub/) registry as an example. If you need to use a private registry, refer
   to the
   [Deploy Cluster with a Private Provider Registry](/clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md)
   guide for instructions on how to configure the credentials.
