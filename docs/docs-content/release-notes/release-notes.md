@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## November 15, 2025 - Component Updates {#component-updates-2025-43}
+## October 24, 2025 - Component Updates {#component-updates-2025-43}
 
 The following components have been updated for Palette version 4.7.27 - 4.7.X.
 
@@ -30,6 +30,11 @@ The following components have been updated for Palette version 4.7.27 - 4.7.X.
   [`spectrocloud_registry` Terraform data source](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/registry)
   now has the `sync_status` read-only field. This field provides the synchronization status of Helm registries.
 
+- The
+  [`spectrocloud_cluster_maas` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_maas)
+  now supports the specification of NTP servers through the `ntp_servers` field, allowing users to specify a list of NTP
+  servers to use instead of the machine image's default NTP server list.
+
 ### Bug Fixes
 
 <!-- prettier-ignore-start -->
@@ -47,6 +52,8 @@ The following components have been updated for Palette version 4.7.27 - 4.7.X.
 | ArgoCD                    | Add-on | :white_check_mark: | :x:                | 8.6.0       |
 | AWS EFS                   | CSI    | :white_check_mark: | :x:                | 2.1.13      |
 | External Secrets Operator | Add-on | :white_check_mark: | :x:                | 0.20.2      |
+| External Secrets Operator | Add-on | :white_check_mark: | :x:                | 0.16.2      |
+| External Secrets Operator | Add-on | :white_check_mark: | :x:                | 0.14.4      |
 | Nginx                     | Add-on | :white_check_mark: | :x:                | 1.13.3      |
 | Piraeus Operator          | CSI    | :white_check_mark: | :white_check_mark: | 2.9.1       |
 
