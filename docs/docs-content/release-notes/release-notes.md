@@ -15,7 +15,7 @@ tags: ["release-notes"]
 
 ### Bug Fixes
 
-- Fixed an issue that caused the incorrect configuration of NTP servers on existing
+- Fixed an issue that caused the incorrect configuration of NTP servers on new and existing
   [MAAS clusters](../clusters/data-center/maas/maas.md).
 
 ## October 19, 2025 - Release 4.7.27 {#release-notes-4.7.c}
