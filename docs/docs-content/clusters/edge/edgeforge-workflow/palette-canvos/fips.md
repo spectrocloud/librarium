@@ -61,8 +61,8 @@ This page guides you through the process of building FIPS-compliant Edge Install
 
   :::
 
-- Access to a public image registry and permissions to push images. This page uses
-  [Docker Hub](https://www.docker.com/products/docker-hub/) as an example. If you need to use a private registry, refer
+- Access to an image registry and permissions to push images. This page uses
+  a public [Docker Hub](https://www.docker.com/products/docker-hub/) registry as an example. If you need to use a private registry, refer
   to the
   [Deploy Cluster with a Private Provider Registry](../../site-deployment/deploy-custom-registries/deploy-private-registry.md)
   guide for instructions on how to configure the credentials.
