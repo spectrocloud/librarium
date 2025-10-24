@@ -79,8 +79,10 @@ To complete this tutorial, you will need the following:
   build the artifacts, but it would require root privileges, and some of the resulting artifacts will be owned by the
   root user.
 
-- An image management tool such as [Docker](https://docs.docker.com/engine/install/) or
-  [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and available.
+- - An image management tool such as [Docker](https://docs.docker.com/engine/install/) or
+  [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and available. When
+  installing these tools, avoid using `snap` as this will create an isolated sandboxed environment that will not be
+  accessible by the commands used in this tutorial. Use `apt` instead.
 
   :::info
 
@@ -141,10 +143,10 @@ View the available [git tags](https://github.com/spectrocloud/CanvOS/tags).
 git tag
 ```
 
-Check out the newest available tag. This guide uses **v4.6.12** tag as an example.
+Check out the newest available tag. This guide uses **v4.7.16** tag as an example.
 
 ```bash
-git checkout v4.6.12
+git checkout v4.7.16
 ```
 
 ## Define Arguments
@@ -157,26 +159,28 @@ as an example. However, you can assign any lowercase and alphanumeric string to 
 
 ```bash
 export CUSTOM_TAG=demo
+export IMAGE_REGISTRY=spectrocloud
 ```
 
-Issue the command below to create the `.arg` file with the custom tag. Replace `spectrocloud` with the name of your
-registry. The remaining arguments will use the default values. For example, `ubuntu` is the default operating system and
-`demo` is the default tag.
+Issue the command below to create the `.arg` file with the custom tag. The remaining arguments will use the predefined
+values. For example, this tutorial uses K3s version `1.33.5` as the Kubernetes distribution and Ubuntu as the OS
+distribution. Review the `k8s_version.jason` file in the CanvOS repository for all the supported Kubernetes versions.
 
 Using the arguments defined in the `.arg` file, the final provider images you generate will have the following naming
 convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. In this example, the provider images will be
-`spectrocloud/ubuntu:k3s-1.32.1-v4.6.12-demo`. Refer to the `.arg.template` sample file in the current directory or the
+`spectrocloud/ubuntu:k3s-1.33.5-v4.7.16-demo`. Refer to the `.arg.template` sample file in the current directory or the
 [README](https://github.com/spectrocloud/CanvOS#readme) to learn more about the default values.
 
 ```bash
 cat << EOF > .arg
 CUSTOM_TAG=$CUSTOM_TAG
-IMAGE_REGISTRY=spectrocloud
+IMAGE_REGISTRY=$IMAGE_REGISTRY
 OS_DISTRIBUTION=ubuntu
 IMAGE_REPO=ubuntu
-OS_VERSION=22
+OS_VERSION=22.04
 K8S_DISTRIBUTION=k3s
-ISO_NAME=palette-edge-installer
+K8S_VERSION=1.33.5
+ISO_NAME=palette-edge-vmw-installer
 ARCH=amd64
 UPDATE_KERNEL=false
 EOF
@@ -271,7 +275,7 @@ start the build process.
 :::warning
 
 Make sure your machine has sufficient disk space for the provider images. Each image is about 4 - 5 GB in size, and
-images are created for all the Palette-supported Kubernetes versions by default. In the **4.6.12** branch of `CanvOS`
+images are created for all the Palette-supported Kubernetes versions by default. In the **4.7.16** branch of `CanvOS`
 used in this tutorial, the script builds 60 images. If your machine does not have enough disk space, the build process
 will fail silently.
 
@@ -328,9 +332,9 @@ options:
   system.repo: ubuntu
   system.k8sDistribution: k3s
   system.osName: ubuntu
-  system.peVersion: v4.6.12
+  system.peVersion: v4.7.16
   system.customTag: demo
-  system.osVersion: 22
+  system.osVersion: 22.04
 ```
 
 ## View Artifacts
@@ -360,28 +364,14 @@ Palette-supported Kubernetes versions. You can identify the provider images by t
 `.arg` file's `CUSTOM_TAG` variable.
 
 ```shell
-docker images --filter=reference='*/*:*demo*'
+sudo docker images --filter=reference='*/*:*demo*'
 ```
 
-```hideClipboard bash {2,3}
-REPOSITORY            TAG                                    IMAGE ID       CREATED       SIZE
-spectrocloud/ubuntu   k3s-1.32.1-v4.6.12-demo                145bc25ff5b4   2 hours ago   4.97GB
-spectrocloud/ubuntu   k3s-1.32.1-v4.6.12-demo_linux_amd64    145bc25ff5b4   2 hours ago   4.97GB
-spectrocloud/ubuntu   k3s-1.31.5-v4.6.12-demo                52ba5288cccd   2 hours ago   4.96GB
-spectrocloud/ubuntu   k3s-1.31.5-v4.6.12-demo_linux_amd64    52ba5288cccd   2 hours ago   4.96GB
-spectrocloud/ubuntu   k3s-1.31.4-v4.6.12-demo                8e089cc7292f   2 hours ago   4.96GB
-spectrocloud/ubuntu   k3s-1.31.4-v4.6.12-demo_linux_amd64    8e089cc7292f   2 hours ago   4.96GB
-spectrocloud/ubuntu   k3s-1.31.1-v4.6.12-demo                6ecfc962d208   2 hours ago   4.96GB
-spectrocloud/ubuntu   k3s-1.31.1-v4.6.12-demo_linux_amd64    6ecfc962d208   2 hours ago   4.96GB
-spectrocloud/ubuntu   k3s-1.30.9-v4.6.12-demo                34cdeab9d894   2 hours ago   4.96GB
-spectrocloud/ubuntu   k3s-1.30.9-v4.6.12-demo_linux_amd64    34cdeab9d894   2 hours ago   4.96GB
-spectrocloud/ubuntu   k3s-1.30.8-v4.6.12-demo                6491f9c28be5   2 hours ago   4.96GB
-spectrocloud/ubuntu   k3s-1.30.8-v4.6.12-demo_linux_amd64    6491f9c28be5   2 hours ago   4.96GB
-spectrocloud/ubuntu   k3s-1.30.6-v4.6.12-demo                dee339f3ceaa   2 hours ago   4.95GB
-spectrocloud/ubuntu   k3s-1.30.6-v4.6.12-demo_linux_amd64    dee339f3ceaa   2 hours ago   4.95GB
-spectrocloud/ubuntu   k3s-1.30.5-v4.6.12-demo                80f451092b91   2 hours ago   4.96GB
-spectrocloud/ubuntu   k3s-1.30.5-v4.6.12-demo_linux_amd64    80f451092b91   2 hours ago   4.96GB
-...
+```hideClipboard bash 
+REPOSITORY            TAG                                   IMAGE ID       CREATED          SIZE
+spectrocloud/ubuntu   k3s-1.33.5-v4.7.16-demo               9d1ced2fee15   32 minutes ago   4.41GB
+spectrocloud/ubuntu   k3s-1.33.5-v4.7.16-demo_linux_amd64   9d1ced2fee15   32 minutes ago   4.41GB
+
 ```
 
 ## Push Provider Images
@@ -401,12 +391,12 @@ Login Succeeded
 Once authenticated, push the provider image to the registry so that your Edge host can download it during the cluster
 deployment.
 
-Since we used the provider image compatible with K3s v1.32 in the cluster profile, use the following command to push the
-provider image compatible with K3s v1.32 to the image registry. If you want to use the other provider image, push that
+Since we used the provider image compatible with K3s v1.33 in the cluster profile, use the following command to push the
+provider image compatible with K3s v1.33 to the image registry. If you want to use the other provider image, push that
 version to the image registry.
 
 ```bash
-docker push spectrocloud/ubuntu:k3s-1.32.1-v4.6.12-demo
+sudo docker push [REGISTRY-HOSTNAME]/ubuntu:k3s-1.33.5-v4.7.16-demo
 ```
 
 ## Provision Virtual Machines
@@ -520,7 +510,7 @@ is an explanation of the options and sub-commands used below:
 - The `--env-file` option reads the `.packerenv` file.
 
 - The `--volume ` option mounts a local directory to our official tutorials container,
-  `ghcr.io/spectrocloud/tutorials:1.1.13`.
+  `ghcr.io/spectrocloud/tutorials:1.3.0`.
 
 - The `sh -c "source /edge/vmware/clone_vm_template/setenv.sh "` shell sub-command defines the GOVC environment
   variables, the number of VMs, a prefix string for the VM name, and the VM template name. Most of the GOVC environment
@@ -564,7 +554,7 @@ is an explanation of the options and sub-commands used below:
 
   Should you need to change the VM template name or VM settings defined in the `vsphere.hcl` file, or review the Packer
   script, you must open a bash session into the container using the
-  `docker run --interactive --tty --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.1.13 bash`
+  `docker run --interactive --tty --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.3.0 bash`
   command, and change to the `edge/vmware/packer` directory to make the modifications. After you finish the
   modifications, issue the `packer build -force --var-file=vsphere.hcl build.pkr.hcl` command inside the container to
   trigger the Packer build process. This command creates a VM template, so that you can skip the next step.
@@ -580,7 +570,7 @@ docker run --interactive --tty --rm \
   --env-file .packerenv \
   --env-file .goenv \
   --volume "${ISOFILEPATH}:/edge/vmware/packer/build" \
-  ghcr.io/spectrocloud/tutorials:1.1.13 \
+  ghcr.io/spectrocloud/tutorials:1.3.0 d \
   sh -c "source /edge/vmware/clone_vm_template/setenv.sh && cd /edge/vmware/packer/ && packer init build.pkr.hcl && packer build -force --var-file=vsphere.hcl build.pkr.hcl"
 ```
 
@@ -611,7 +601,7 @@ GOVC requires the same VMware vCenter details as the environment variables you d
 The next step is to use the following `docker run` command to clone the VM template and provision three VMs. Here is an
 explanation of the options and sub-commands used below:
 
-- The `--env-file` option reads the `.goenv` file in our official `ghcr.io/spectrocloud/tutorials:1.1.13` tutorials
+- The `--env-file` option reads the `.goenv` file in our official `ghcr.io/spectrocloud/tutorials:1.3.0` tutorials
   container.
 
 - The `sh -c "cd edge/vmware/clone_vm_template/ && ./deploy-edge-host.sh"` shell sub-command changes to the container's
@@ -665,7 +655,7 @@ Issue the following command to clone the VM template and provision three VMs.
 ```bash
 docker run --interactive --tty --rm \
   --env-file .goenv \
-  ghcr.io/spectrocloud/tutorials:1.1.13 \
+  ghcr.io/spectrocloud/tutorials:1.3.0 d \
   sh -c "cd edge/vmware/clone_vm_template/ && ./deploy-edge-host.sh"
 ```
 
@@ -777,9 +767,9 @@ options:
   system.repo: ubuntu
   system.k8sDistribution: k3s
   system.osName: ubuntu
-  system.peVersion: v4.6.12
+  system.peVersion: v4.7.16
   system.customTag: demo
-  system.osVersion: 22
+  system.osVersion: 22.04 d
 ```
 
 The screenshot below shows you how to reference your provider OS image in a cluster profile by using the utility build
@@ -790,7 +780,7 @@ Click on the **Next layer** button to add the following Kubernetes layer to your
 
 | **Pack Type** | **Registry** | **Pack Name**         | **Pack Version** |
 | ------------- | ------------ | --------------------- | ---------------- |
-| Kubernetes    | Public Repo  | Palette Optimized K3s | `1.32.1`         |
+| Kubernetes    | Public Repo  | Palette Optimized K3s | `1.33.5  d         |
 
 The pack version must match the version pushed to the image registry. The `system.uri` attribute of the BYOOS pack will
 reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}`
