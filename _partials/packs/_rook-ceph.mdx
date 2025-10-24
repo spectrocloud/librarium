@@ -9,6 +9,24 @@ partial_name: rook-ceph
 
 <TabItem label="1.14.x" value="1.14.x">
 
+### Resource Requirements
+
+We recommend approximately 4 CPUs and 8 GiB of memory per node when deploying Rook-Ceph as a single-node cluster. The following table lists the resources requested by each Rook-Ceph pod.
+
+| **Pod**                        | **CPU** | **Memory** |
+| ------------------------------ | ------- | ---------- |
+| `csi-cephfsplugin`             | 50m     | 128Mi      |
+| `csi-cephfsplugin-provisioner` | 100m    | 128Mi      |
+| `csi-rbdplugin`                | 50m     | 128Mi      |
+| `csi-rbdplugin-provisioner`    | 100m    | 128Mi      |
+| `rook-ceph-crashcollector`     | 100m    | 60Mi       |
+| `rook-ceph-exporter`           | 50m     | 50Mi       |
+| `rook-ceph-mgr-a`              | 500m    | 512Mi      |
+| `rook-ceph-mon-a`              | 1000m   | 1Gi        |
+| `rook-ceph-operator`           | 200m    | 128Mi      |
+| `rook-ceph-osd-0`              | 1000m   | 4Gi        |
+| `rook-ceph-tools`              | 100m    | 128Mi      |
+
 ### Rook on Edge Clusters
 
 To use Rook-Ceph on Edge clusters, you need to make a few changes to the cluster profile depending on your cluster
