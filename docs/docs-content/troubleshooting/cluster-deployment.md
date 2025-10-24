@@ -10,6 +10,57 @@ tags: ["troubleshooting", "cluster-deployment"]
 
 The following steps will help you troubleshoot errors in the event issues arise while deploying a cluster.
 
+## Scenario - VSphereDeploymentZone and VSphereFailureDomain Errors
+
+After upgrading Palette from 4.6.x to 4.7.x, users with PCGs created prior to 4.7 experience cluster deployment failures
+due to resources left over from previously deleted clusters.
+
+The vSphere CAPI provider upgrade in Palette 4.7 introduced new reconciliation behavior for `VSphereDeploymentZone` and
+`VSphereFailureDomain` resources. Prior to Palette 4.7, these resources were not deleted when the cluster was deleted.
+With Palette 4.7 or later, these resources are removed when the cluster is deleted. When deploying new clusters on
+VMware vSphere, the upgraded CAPI controller attempts to reconcile resources leftover on the PCG from pre-4.7
+deployments but cannot find their corresponding `VSphereFailureDomain` resources, causing continuous reconciliation
+errors.
+
+### Debug Steps - VMware vSphere PCG
+
+Download kubeconfig file (it is set in the script, so no need to set here)
+
+Create the following script.
+
+```
+cat << EOF > cleanup_pcg.sh
+#!/bin/bash
+export KUBECONFIG=$1
+NSTOCLEAN=$(kubectl get ns -o custom-columns=NAME:metadata.name,STATUS:status.phase | grep Terminating | awk '{print $1}')
+for ns in $NSTOCLEAN
+do
+  echo "Clean up namespace $ns"
+  RESOURCES="clusters.cluster.x-k8s.io kubeadmcontrolplanes maasclusters vsphereclusters maasmachines vspheremachines vspherevms machines machineset spectroclusters"
+  for r in $RESOURCES
+  do
+    kubectl patch $r -n $ns $(kubectl get $r -n $ns -o go-template --template '{{range .items}}{{.metadata.name}}{{" "}}{{end}}') --type merge -p '{"metadata":{"finalizers":null}}'
+  done
+done
+EOF
+```
+
+```
+chmod +x cleanup_pcg.sh
+```
+
+```
+./cleanup_pcg.sh your-pcg-kubeconfig-file
+```
+
+### Debug Steps - System PCG
+
+Connect to spectro-mgmt cluster.
+
+kubectl get VSphereDeploymentZone,VSphereFailureDomain
+
+kubectl delete VSphereDeploymentZone `<name>`.
+
 ## Scenario - Unable to Upgrade EKS Worker Nodes from AL2 to AL2023
 
 AWS does not provide a direct upgrade path from Amazon Linux 2 (AL2) to Amazon Linux 2023 (AL2023) for EKS worker nodes.
