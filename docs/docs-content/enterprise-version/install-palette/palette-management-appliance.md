@@ -47,13 +47,16 @@ needed to create cluster profiles.
 
 The following table displays the infrastructure profile for the self-hosted Palette appliance.
 
-| **Layer**      | **Component**                                 | **Version** |
-| -------------- | --------------------------------------------- | ----------- |
-| **OS**         | Ubuntu: Immutable [Kairos](https://kairos.io) | 22.04       |
-| **Kubernetes** | Palette eXtended Kubernetes Edge (PXK-E)      | 1.32.3      |
-| **CNI**        | Calico                                        | 3.29.2      |
-| **CSI**        | Piraeus                                       | 2.8.1       |
-| **Registry**   | Zot                                           | 0.1.67      |
+| **Layer**      | **Component**                                 |
+| -------------- | --------------------------------------------- |
+| **OS**         | Ubuntu: Immutable [Kairos](https://kairos.io) |
+| **Kubernetes** | Palette eXtended Kubernetes Edge (PXK-E)      |
+| **CNI**        | Calico                                        |
+| **CSI**        | Piraeus                                       |
+| **Registry**   | Zot                                           |
+
+Check the **Component Updates** in the [Release Notes](../../release-notes/release-notes.md) for the specific versions
+of each component as they may be updated between releases.
 
 ## Supported Platforms
 
