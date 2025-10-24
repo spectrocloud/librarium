@@ -71,7 +71,7 @@ clusters.
 1. Issue the following command to view the service and find its cluster IP and port.
 
    ```shell
-   kukubectl --namespace rook-ceph get svc | grep dashboard
+   kubectl --namespace rook-ceph get svc | grep dashboard
    ```
 
    ```hideClipboard
@@ -84,7 +84,7 @@ clusters.
    local machine to the dashboard service.
 
    ```shell
-   kukubectl port-forward svc/rook-ceph-mgr-dashboard -n rook-ceph 8443:7000 &
+   kubectl port-forward svc/rook-ceph-mgr-dashboard -n rook-ceph 8443:7000 &
    ```
 
    If your dashboard service is exposed on a different port, replace 7000 with the port that the dashboard service is
@@ -159,7 +159,7 @@ clusters.
 1. Issue the following command to view the service and find its cluster IP and port.
 
    ```shell
-   kukubectl --namespace rook-ceph get svc | grep dashboard
+   kubectl --namespace rook-ceph get svc | grep dashboard
    ```
 
    ```hideClipboard
@@ -172,7 +172,7 @@ clusters.
    local machine to the dashboard service.
 
    ```shell
-   kukubectl port-forward svc/rook-ceph-mgr-dashboard -n rook-ceph 8443:7000 &
+   kubectl port-forward svc/rook-ceph-mgr-dashboard -n rook-ceph 8443:7000 &
    ```
 
    If your dashboard service is exposed on a different port, replace 7000 with the port that the dashboard service is
@@ -245,7 +245,7 @@ clusters.
 1. Issue the following command to view the service and find its cluster IP and port.
 
    ```shell
-   kukubectl --namespace rook-ceph get svc | grep dashboard
+   kubectl --namespace rook-ceph get svc | grep dashboard
    ```
 
    ```hideClipboard
@@ -258,7 +258,7 @@ clusters.
    local machine to the dashboard service.
 
    ```shell
-   kukubectl port-forward svc/rook-ceph-mgr-dashboard -n rook-ceph 8443:7000 &
+   kubectl port-forward svc/rook-ceph-mgr-dashboard -n rook-ceph 8443:7000 &
    ```
 
    If your dashboard service is exposed on a different port, replace 7000 with the port that the dashboard service is
@@ -331,7 +331,7 @@ clusters.
 1. Issue the following command to view the service and find its cluster IP and port.
 
    ```shell
-   kukubectl --namespace rook-ceph get svc | grep dashboard
+   kubectl --namespace rook-ceph get svc | grep dashboard
    ```
 
    ```hideClipboard
@@ -344,7 +344,7 @@ clusters.
    local machine to the dashboard service.
 
    ```shell
-   kukubectl port-forward svc/rook-ceph-mgr-dashboard -n rook-ceph 8443:7000 &
+   kubectl port-forward svc/rook-ceph-mgr-dashboard -n rook-ceph 8443:7000 &
    ```
 
    If your dashboard service is exposed on a different port, replace 7000 with the port that the dashboard service is
