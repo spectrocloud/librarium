@@ -506,9 +506,7 @@ required Edge artifacts.
    - You must specify a supported OS for your edge hosts. Palette supports the same operating systems as AWS. Refer to
      [Prepare operating system for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-os.html)
      for details.
-   - If specifying a Docker Hub registry, your `IMAGE_REGISTRY` value should be entered as `docker.io/<docker-id>`.
-     Replace `<docker-id>` with your Docker ID. This ensures the final artifact name conforms to the Docker Hub image
-     name syntax - `[HOST]/[DOCKER-ID]/[REPOSITORY]:[TAG]`.
+   - Ensure the final artifact name conforms to the `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`naming pattern.
    - The `K8S_DISTRIBUTION` argument _must_ be set to `nodeadm` to ensure compatibility with EKS Hybrid Nodes.
    - For `K8S_VERSION`, review the `k8s_version.json` file for supported versions for `nodeadm`.
    - The `OS_VERSION` argument can be omitted when not specifying `OS_DISTRIBUTION` as `ubuntu`.
