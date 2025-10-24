@@ -179,6 +179,7 @@ OS_DISTRIBUTION=ubuntu
 IMAGE_REPO=ubuntu
 OS_VERSION=22.04
 K8S_DISTRIBUTION=k3s
+K8S_VERSION=1.33.5
 ISO_NAME=palette-edge-vmw-installer
 ARCH=amd64
 UPDATE_KERNEL=false
@@ -363,28 +364,39 @@ Palette-supported Kubernetes versions. You can identify the provider images by t
 `.arg` file's `CUSTOM_TAG` variable.
 
 ```shell
-docker images --filter=reference='*/*:*demo*'
+sudo docker images --filter=reference='*/*:*demo*'
 ```
 
 ```hideClipboard bash
-REPOSITORY           TAG                                   IMAGE ID       CREATED          SIZE
-spectrodocs/ubuntu   k3s-1.32.3-v4.7.16-demo               7cf93b5332c4   21 minutes ago   4.39GB
-spectrodocs/ubuntu   k3s-1.32.3-v4.7.16-demo_linux_amd64   7cf93b5332c4   21 minutes ago   4.39GB
+REPOSITORY            TAG                                   IMAGE ID       CREATED          SIZE
+spectrocloud/ubuntu   k3s-1.33.5-v4.7.16-demo               9d1ced2fee15   32 minutes ago   4.41GB
+spectrocloud/ubuntu   k3s-1.33.5-v4.7.16-demo_linux_amd64   9d1ced2fee15   32 minutes ago   4.41GB
 ...
 ```
 
 ## Push Provider Images
 
 Push the provider images to the image registry indicated in the `.arg` file so that you can reference the provider image
-later in your cluster profile.
+later in your cluster profile. You may need to log in before pushing the image.
+
+```bash
+docker login
+```
 
 Since we used the provider image compatible with K3s v1.33 in the cluster profile, you would use the following command
 to push the provider image compatible with K3s v1.33 to the image registry. If you want to use the other provider image,
 push that version to the image registry.
 
 ```bash
-docker push spectrocloud/ubuntu:k3s-1.32.1-v4.7.16-demo
+docker push [REGISTRY-HOSTNAME]/ubuntu:k3s-1.33.5-v4.7.16-demo
 ```
+The output confirms that the image was pushed to the registry with the correct tag and is ready to be used in a cluster profile.
+
+```hideClipboard bash
+k3s-1.33.5-v4.7.16-demo: digest: sha256:a79e5cf563ac4d04328b2de28a48d6c633c6f58ede5169036f789fd3d47471a8 size: 7827
+```
+
+
 
 ## Provision Virtual Machines
 
@@ -421,6 +433,12 @@ listed in the table.
 
 Use the `heredoc` script to create the `.packerenv` file shown below that contains the VMware vCenter details as
 environment variables.
+
+:::warn
+
+Avoid using parenthesis characters `()` in your password as these will be treated as escape characters by the script.
+
+:::
 
 ```bash
 cat << EOF > .packerenv
@@ -553,7 +571,7 @@ also delete any existing `packer_cache` before uploading and keeping a copy of t
 `packer_cache` directory in the specified datastore.
 
 ```bash
-docker run --interactive --tty --rm \
+sudo docker run --interactive --tty --rm \
   --env-file .packerenv \
   --env-file .goenv \
   --volume "${ISOFILEPATH}:/edge/vmware/packer/build" \
