@@ -116,7 +116,7 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
 
    ```
    CUSTOM_TAG=palette-learn
-   IMAGE_REGISTRY=ttl.sh
+   IMAGE_REGISTRY=spectrocloud
    OS_DISTRIBUTION=ubuntu
    IMAGE_REPO=ubuntu
    OS_VERSION=22.04
