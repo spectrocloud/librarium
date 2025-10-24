@@ -13,7 +13,7 @@ tags: ["release-notes"]
 
 ## October 24, 2025 - Component Updates {#component-updates-2025-43}
 
-The following components have been updated for Palette version 4.7.27 - 4.7.X.
+The following components have been updated for Palette version 4.7.27.
 
 | Component                                                                                                         | Version |
 | ----------------------------------------------------------------------------------------------------------------- | ------- |
