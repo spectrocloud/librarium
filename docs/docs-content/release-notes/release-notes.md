@@ -59,6 +59,16 @@ The following components have been updated for Palette version 4.7.27 - 4.7.X.
 
 #### Pack Notes
 
+<!-- prettier-ignore-start -->
+
+- Beginning with 0.17.0, the
+  <VersionedLink text="External Secrets Operator" url="/integrations/packs/?pack=external-secrets-operator" /> pack no
+  longer supports `apiVersion: v1beta1`. Manifests related to this pack that specify `apiVersion: v1beta1` cannot be
+  used to create or update Kubernetes objects after upgrading the pack to version 0.17.0 or later. Update your manifests
+  to use `apiVersion: v1` to successfully create objects after upgrading your pack version.
+
+<!-- prettier-ignore-start -->
+
 | Pack Name                 | Layer  | Non-FIPS           | FIPS               | New Version |
 | ------------------------- | ------ | ------------------ | ------------------ | ----------- |
 | ArgoCD                    | Add-on | :white_check_mark: | :x:                | 8.6.0       |
