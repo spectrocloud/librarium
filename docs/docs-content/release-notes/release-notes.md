@@ -155,8 +155,6 @@ The following components have been updated for Palette version 4.7.27.
 - Fixed an issue that prevented the deletion of [EKS clusters](../clusters/public-cloud/aws/eks.md) deployed in
   [AWS secret regions](../clusters/public-cloud/aws/add-aws-accounts.md).
 
-- Fixed an issue that caused the d
-
 #### Deprecations and Removals
 
 - [OpenStack](../clusters/data-center/openstack.md) support in Palette is now deprecated and will be removed in a future
