@@ -82,6 +82,9 @@ tags: ["release-notes"]
   attaching the worker pool subnet to the NAT Gateway for
   [Azure IaaS clusters](../clusters/public-cloud/azure/create-azure-cluster.md) using static placement.
 
+- Fixed an issue that prevented the deletion of [EKS clusters](../clusters/public-cloud/aws/eks.md) deployed in
+  [AWS secret regions](../clusters/public-cloud/aws/add-aws-accounts.md).
+
 #### Deprecations and Removals
 
 - [OpenStack](../clusters/data-center/openstack.md) support in Palette is now deprecated and will be removed in a future
@@ -130,6 +133,15 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - Remote shell access to an Edge host can now be enabled in Palette only if the parameter
   `stylus.site.remoteShell.disable` is omitted or set to `false` in the host’s `user-data` file before the host
   registers with Palette. This change applies to Edge hosts built with Palette agent version 4.7.15 or later.
+
+#### Bug Fixes
+
+- Fixed an issue that prevented DNS server details from displaying correctly in
+  [LocalUI](../clusters/edge/local-ui/local-ui.md).
+- Fixed an issue that caused errors related to the `containerd-sync` service in the logs of
+  [LocalUI](../clusters/edge/local-ui/local-ui.md) clusters.
+- Fixed an issue that caused the incorrect update of pack statuses after they successfully install following an initial
+  failure on [Edge clusters](../clusters/edge/edge.md).
 
 ### VerteX
 
