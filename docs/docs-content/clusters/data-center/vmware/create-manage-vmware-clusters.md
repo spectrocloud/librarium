@@ -15,7 +15,7 @@ clusters in Palette.
 - Autoscaling is not supported for VMware vSphere clusters deployed using an
   [IP Address Management (IPAM) node pool](../../pcg/manage-pcg/create-manage-node-pool.md) with
   [static placement configured](../../pcg/deploy-pcg/vmware.md#static-placement-configuration). To scale your cluster,
-  use dynamic IP allocation (DHCP) instead of IPAM or disable autoscaler and manually adjust your node pool size using
+  either use dynamic IP allocation or disable autoscaler and manually adjust your node pool size using
   your cluster's **Nodes** tab. For more information on scaling clusters, refer to our
   [Scale, Upgrade, and Secure Clusters](../../../tutorials/getting-started/palette/vmware/scale-secure-cluster.md#scale-a-cluster)
   tutorial.
