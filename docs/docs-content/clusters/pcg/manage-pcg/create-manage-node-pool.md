@@ -28,6 +28,16 @@ additional IPAM node pools when deploying a VMware vSphere or a MAAS LXD cluster
 provides instructions on how to create an IPAM node pool for a PCG deployed in a VMware vSphere environment or for a
 MAAS LXD deployment.
 
+## Limitations
+
+- Autoscaling is not supported for [VMware vSphere clusters](../../data-center/vmware/create-manage-vmware-clusters.md)
+  deployed using an IPAM node pool with
+  [static placement configured](../deploy-pcg/vmware.md#static-placement-configuration). To scale your cluster, use
+  dynamic IP allocation (DHCP) instead of IPAM or disable autoscaler and manually adjust your node pool size using your
+  cluster's **Nodes** tab. For more information on scaling clusters, refer to our
+  [Scale, Upgrade, and Secure Clusters](../../../tutorials/getting-started/palette/vmware/scale-secure-cluster.md#scale-a-cluster)
+  tutorial.
+
 ## Prerequisites
 
 - A PCG is installed, active, and in a healthy state. Refer to [Deploy a PCG](../deploy-pcg/deploy-pcg.md) for
