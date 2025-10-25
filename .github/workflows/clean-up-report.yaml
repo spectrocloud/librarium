@@ -33,9 +33,6 @@ jobs:
   delete_reports:
     name: Delete Reports
     runs-on: ubuntu-latest
-    env:
-      # Contains all reports for deleted branch
-      BRANCH_REPORTS_DIR: reports/${{ github.event.ref }}
     steps:
       - name: Checkout GitHub Pages Branch
         uses: actions/checkout@v5
@@ -55,7 +52,7 @@ jobs:
 
       - name: Check for workflow reports
         run: |
-          if [ -z "$(ls -A reports/${{ env.BRANCH_SAFE }} 2>/dev/null)" ]; then
+          if [ -z "$(ls -A reports/${{ env.BRANCH_SAFE }})" ]; then
             echo "BRANCH_REPORTS_EXIST="false"" >> $GITHUB_ENV
           else
             echo "BRANCH_REPORTS_EXIST="true"" >> $GITHUB_ENV
