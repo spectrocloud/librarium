@@ -612,7 +612,3 @@ and resolve this issue.
    ```shell
    kubectl get deployments --all-namespaces
    ```
-
-```
-
-```
