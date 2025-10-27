@@ -11,6 +11,13 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 27, 2025 - Release 4.7.29
+
+### Bug Fixes
+
+- Fixed an issue that caused the incorrect configuration of NTP servers on new and existing
+  [MAAS clusters](../clusters/data-center/maas/maas.md).
+
 ## October 24, 2025 - Component Updates {#component-updates-2025-43}
 
 The following components have been updated for Palette version 4.7.27.
