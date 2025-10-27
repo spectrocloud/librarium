@@ -106,6 +106,83 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Deprecations and Removals
 
+## October 27, 2025 - Release 4.7.29
+
+### Bug Fixes
+
+- Fixed an issue that caused the incorrect configuration of NTP servers on new and existing
+  [MAAS clusters](../clusters/data-center/maas/maas.md).
+
+## October 24, 2025 - Component Updates {#component-updates-2025-43}
+
+The following components have been updated for Palette version 4.7.27.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.25.2  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.25.2  |
+
+### Improvements
+
+- The `aws_access_key` of the
+  [`spectrocloud_cloudaccount_aws` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cloudaccount_aws)
+  is now deprecated. The secure alternative to this field is the sensitive `aws_secured_access_key` field.
+
+- The
+  [`spectrocloud_registry` Terraform data source](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/registry)
+  now has the `sync_status` read-only field. This field provides the synchronization status of Helm registries.
+
+- The
+  [`spectrocloud_cluster_maas` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_maas)
+  now supports the specification of NTP servers through the `ntp_servers` field, allowing users to specify a list of NTP
+  servers to use instead of the machine image's default NTP server list.
+
+<!-- prettier-ignore-start -->
+
+- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) have now been updated to use the following components internally:
+
+  - <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/?pack=kubernetes" /> 1.32.8
+  - <VersionedLink text="Calico" url="/integrations/?pack=cni-calico" />  3.30.2
+  - <VersionedLink text="Piraeus CSI" url="/integrations/?pack=piraeus-csi" /> 2.9.0
+  - <VersionedLink text="Zot Registry" url="/integrations/?pack=zot-registry" /> 0.1.67-rev1
+
+<!-- prettier-ignore-end -->
+
+### Bug Fixes
+
+<!-- prettier-ignore-start -->
+
+- Fixed an issue that prevented the FIPS-compliant version of the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack from operating correctly on [Palette VerteX](../vertex/vertex.md).
+
+<!-- prettier-ignore-end -->
+
+### Packs
+
+#### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+- Beginning with 0.17.0, the
+  <VersionedLink text="External Secrets Operator" url="/integrations/packs/?pack=external-secrets-operator" /> pack no
+  longer supports `apiVersion: v1beta1`. Manifests related to this pack that specify `apiVersion: v1beta1` cannot be
+  used to create or update Kubernetes objects after upgrading the pack to version 0.17.0 or later. Update your manifests
+  to use `apiVersion: v1` to successfully create objects after upgrading your pack version.
+
+<!-- prettier-ignore-start -->
+
+| Pack Name                 | Layer  | Non-FIPS           | FIPS               | New Version |
+| ------------------------- | ------ | ------------------ | ------------------ | ----------- |
+| ArgoCD                    | Add-on | :white_check_mark: | :x:                | 8.6.0       |
+| AWS EFS                   | CSI    | :white_check_mark: | :x:                | 2.1.13      |
+| External Secrets Operator | Add-on | :white_check_mark: | :x:                | 0.20.2      |
+| External Secrets Operator | Add-on | :white_check_mark: | :x:                | 0.16.2      |
+| External Secrets Operator | Add-on | :white_check_mark: | :x:                | 0.14.4      |
+| Nginx                     | Add-on | :white_check_mark: | :x:                | 1.13.3      |
+| Piraeus Operator          | CSI    | :white_check_mark: | :white_check_mark: | 2.9.1       |
+| Tigera Operator           | CNI    | :white_check_mark: | :x:                | 3.30.3      |
+| Ubuntu MAAS               | OS     | :white_check_mark: | :x:                | 24.04       |
+
 ## October 19, 2025 - Release 4.7.27 {#release-notes-4.7.c}
 
 ### Security Notices
@@ -158,6 +235,12 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 <!-- prettier-ignore-end -->
 
+- New cluster groups now default to a newer version of vCluster,
+  [version 0.27.x](https://github.com/loft-sh/vcluster/releases), which includes new features and improvements. Existing
+  cluster groups will continue to use older versions. If you want to use a newer version of vCluster, refer to the
+  [Palette Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md#upgrade-virtual-clusters)
+  page to learn how to migrate your virtual cluster workloads.
+
 #### Bug Fixes
 
 - Fixed an issue that prevented the
@@ -170,6 +253,9 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 - Fixed an issue that prevented the [Azure Service Operator (ASO)](https://azure.github.io/azure-service-operator/) from
   attaching the worker pool subnet to the NAT Gateway for
   [Azure IaaS clusters](../clusters/public-cloud/azure/create-azure-cluster.md) using static placement.
+
+- Fixed an issue that prevented the deletion of [EKS clusters](../clusters/public-cloud/aws/eks.md) deployed in
+  [AWS secret regions](../clusters/public-cloud/aws/add-aws-accounts.md).
 
 #### Deprecations and Removals
 
@@ -219,6 +305,17 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - Remote shell access to an Edge host can now be enabled in Palette only if the parameter
   `stylus.site.remoteShell.disable` is omitted or set to `false` in the host’s `user-data` file before the host
   registers with Palette. This change applies to Edge hosts built with Palette agent version 4.7.15 or later.
+
+#### Bug Fixes
+
+- Fixed an issue that prevented DNS server details from displaying correctly in
+  [LocalUI](../clusters/edge/local-ui/local-ui.md).
+- Fixed an issue that caused errors related to the `containerd-sync` service to appear in the logs of
+  [LocalUI](../clusters/edge/local-ui/local-ui.md) clusters.
+- Fixed an issue that caused the incorrect update of the successfully installed pack statuses on
+  [Edge clusters](../clusters/edge/edge.md) following an initial installation failure.
+- Fixed an issue that caused Kubernetes upgrades from 1.30.x to 1.31.x to stall on
+  [Edge clusters](../clusters/edge/edge.md).
 
 ### VerteX
 

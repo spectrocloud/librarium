@@ -49,13 +49,16 @@ This solution is designed to be immutable, secure, and compliant with industry s
 Information Processing Standards (FIPS). The following table displays the infrastructure profile for the Palette VerteX
 appliance.
 
-| **Layer**      | **Component**                                 | **Version** | **FIPS-compliant** |
-| -------------- | --------------------------------------------- | ----------- | ------------------ |
-| **OS**         | Ubuntu: Immutable [Kairos](https://kairos.io) | 22.04       | :white_check_mark: |
-| **Kubernetes** | Palette eXtended Kubernetes Edge (PXK-E)      | 1.32.3      | :white_check_mark: |
-| **CNI**        | Calico                                        | 3.29.2      | :white_check_mark: |
-| **CSI**        | Piraeus                                       | 2.8.1       | :white_check_mark: |
-| **Registry**   | Zot                                           | 0.1.67      | :white_check_mark: |
+| **Layer**      | **Component**                                 | **FIPS-compliant** |
+| -------------- | --------------------------------------------- | ------------------ |
+| **OS**         | Ubuntu: Immutable [Kairos](https://kairos.io) | :white_check_mark: |
+| **Kubernetes** | Palette eXtended Kubernetes Edge (PXK-E)      | :white_check_mark: |
+| **CNI**        | Calico                                        | :white_check_mark: |
+| **CSI**        | Piraeus                                       | :white_check_mark: |
+| **Registry**   | Zot                                           | :white_check_mark: |
+
+Check the **Component Updates** in the [Release Notes](../../release-notes/release-notes.md) for the specific versions
+of each component as they may be updated between releases.
 
 ## Supported Platforms
 

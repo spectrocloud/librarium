@@ -90,27 +90,36 @@ repository.
 
 ### Message Brokers
 
-Palette requires reliable, scalable, and secure communication. The internal microservices use a Publish-Subscribe
-pattern implemented with [gRPC](https://grpc.io/) to achieve this. In order to support this communication pattern, a
-message broker service acts as the central hub for message exchange. Palette message brokers are automatically scaled,
-ensuring that a quorum is available for each management plane cluster. The broker system is designed to provide the
-following functionality.
+Palette’s internal microservices require a stable, secure, and scalable way to exchange information efficiently. To
+support this, Palette uses a [gRPC Remote Procedure Call (gRPC)](https://grpc.io/)–based message broker service that
+acts as a central hub for communication between microservices through a publish-subscribe model. Each microservice can
+publish messages or subscribe to messages on specific topics, and the broker ensures that messages are delivered
+reliably, securely, and in real time.
 
-1. It efficiently distributes incoming gRPC requests across multiple replicas of the message broker to optimize resource
-   usage and platform performance. This capability supports Palette's ability to manage large enterprise Kubernetes
-   clusters, which are often distributed across numerous Kubernetes clusters.
-2. It provides high availability by enabling clients to fail over to alternative replicas in the case of a pod failure.
-   By default, two replicas of the message broker are created in each management plane cluster.
-3. It automatically adjusts to changes in the number of broker replicas without manual reconfiguration, ensuring that
-   the platform dynamically scales in response to load changes.
-4. It enforces message authentication and security by generating secondary certificates used for broker to broker
-   communication. This provides security in depth.
+To handle communication across large-scale, distributed environments, the message broker runs as multiple pod replicas
+within each management plane cluster. This provides the following benefits:
 
-Any Enterprise and VerteX Palette cluster will have a message broker that you can inspect. First, ensure that you can
-connect to the management plane cluster. Refer to the
-[Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide for further
-information. You can then view your message broker by executing the following command.
+- **Load distribution** - Incoming gRPC connections are automatically balanced across replicas to optimize resource
+  usage and prevent message broker pods from becoming overloaded.
+
+- **High availability** - If a message broker pod fails, others continue to handle traffic without interruption. By
+  default, each management plane includes two broker replicas.
+
+- **Cluster quorum** - Message brokers automatically detect each other and form a cluster, allowing them to coordinate
+  message delivery and maintain consistent performance as the system scales.
+
+- **Security** - All communication between message broker pods is encrypted and authenticated using secondary
+  certificates to ensure secure message exchange.
+
+To inspect the message brokers of your self-hosted Palette or Palette VerteX management plane cluster,
+[connect to your management plane cluster with the kubectl CLI](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli)
+and execute the following command.
 
 ```bash
 kubectl get statefulset msgbroker --namespace hubble-system
+```
+
+```bash title="Example output" hideClipboard
+NAME        READY   AGE
+msgbroker   2/2     97d
 ```
