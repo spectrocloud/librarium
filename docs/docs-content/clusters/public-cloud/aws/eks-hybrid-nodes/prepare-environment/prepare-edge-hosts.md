@@ -436,12 +436,11 @@ Appliance mode requires the following components:
   generate a new registration token. For detailed instructions, refer to the
   [Create Registration Token](../../../../edge/site-deployment/site-installation/create-registration-token.md) guide.
 
-- An account with an image registry that will store the provider image, for example,
-  [Docker Hub](https://hub.docker.com/).
-
-  In the [Register Edge Host in Appliance Mode](#register-edge-host-in-appliance-mode) steps, the example uses the
-  [ttl.sh](https://ttl.sh/) image registry. This image registry is free to use and does not require a sign-up. Images
-  pushed to _ttl.sh_ are ephemeral and will expire after the 24 hours.
+- Access to an image registry and permissions to push images. This page uses a public
+  [Docker Hub](https://www.docker.com/products/docker-hub/) registry as an example. If you need to use a private
+  registry, refer to the
+  [Deploy Cluster with a Private Provider Registry](/clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md)
+  guide for instructions on how to configure the credentials.
 
 </TabItem>
 
@@ -507,9 +506,6 @@ required Edge artifacts.
    - You must specify a supported OS for your edge hosts. Palette supports the same operating systems as AWS. Refer to
      [Prepare operating system for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-os.html)
      for details.
-   - If specifying a Docker Hub registry, your `IMAGE_REGISTRY` value should be entered as `docker.io/<docker-id>`.
-     Replace `<docker-id>` with your Docker ID. This ensures the final artifact name conforms to the Docker Hub image
-     name syntax - `[HOST]/[DOCKER-ID]/[REPOSITORY]:[TAG]`.
    - The `K8S_DISTRIBUTION` argument _must_ be set to `nodeadm` to ensure compatibility with EKS Hybrid Nodes.
    - For `K8S_VERSION`, review the `k8s_version.json` file for supported versions for `nodeadm`.
    - The `OS_VERSION` argument can be omitted when not specifying `OS_DISTRIBUTION` as `ubuntu`.
@@ -541,7 +537,7 @@ required Edge artifacts.
 
    ```bash hideClipboard
    CUSTOM_TAG=eks-hybrid
-   IMAGE_REGISTRY=ttl.sh
+   IMAGE_REGISTRY=spectrocloud
    OS_DISTRIBUTION=ubuntu
    IMAGE_REPO=ubuntu
    OS_VERSION=22
@@ -555,7 +551,7 @@ required Edge artifacts.
    Based on the arguments defined in the **.arg** file, the final provider image name will have the following naming
    pattern, `$IMAGE_REGISTRY/$IMAGE_REPO:$K8S_DISTRIBUTION-$K8S_VERSION-$PE-VERSION-$CUSTOM_TAG`. `$PE_VERSION` refers
    to the Palette Edge agent version, which is automatically determined. Using the example output, the image name would
-   be `ttl.sh/ubuntu:nodeadm-1.30.0-v4.5.15-eks-hybrid`.
+   be `spectrocloud/ubuntu:nodeadm-1.30.0-v4.5.15-eks-hybrid`.
 
 7. _(Optional)_ This step is only required if your builds occur in a proxied network environment, and your proxy servers
    require client certificates, or if your base image is in a registry that requires client certificates.
@@ -768,7 +764,7 @@ required Edge artifacts.
     options:
       system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
 
-      system.registry: ttl.sh
+      system.registry: spectrocloud
       system.repo: ubuntu
       system.k8sDistribution: nodeadm
       system.osName: ubuntu
@@ -801,8 +797,8 @@ required Edge artifacts.
     Example output.
 
     ```bash hideClipboard
-    REPOSITORY          TAG                                 IMAGE ID       CREATED          SIZE
-    ttl.sh/ubuntu       nodeadm-1.30.0-v4.5.15-eks-hybrid   1234a567b890   24 minutes ago   3.67GB
+    REPOSITORY                TAG                                 IMAGE ID       CREATED          SIZE
+    spectrocloud/ubuntu       nodeadm-1.30.0-v4.5.15-eks-hybrid   1234a567b890   24 minutes ago   3.67GB
     ```
 
 14. Use the following commands to push the provider images to the image registry you specified. Replace `<repository>`
@@ -822,7 +818,7 @@ required Edge artifacts.
     Example.
 
     ```bash hideClipboard
-    docker push ttl.sh/ubuntu:nodeadm-1.30.0-v4.5.15-eks-hybrid
+    docker push spectrocloud/ubuntu:nodeadm-1.30.0-v4.5.15-eks-hybrid
     ```
 
     The following example output confirms that the image was pushed to the registry with the correct tag.
