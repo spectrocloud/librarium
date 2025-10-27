@@ -103,6 +103,7 @@ Failure to remove provisioned resources can result in unexpected costs.
 - Cloud Router
 
 #### VMware
+
 - VMs: control plane, workers, High Availability Proxy (HAProxy), and Load Balancers
 - VM Templates
 - VM Clones
