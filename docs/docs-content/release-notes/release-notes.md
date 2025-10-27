@@ -210,7 +210,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [LocalUI](../clusters/edge/local-ui/local-ui.md).
 - Fixed an issue that caused errors related to the `containerd-sync` service to appear in the logs of
   [LocalUI](../clusters/edge/local-ui/local-ui.md) clusters.
-- Fixed an issue that caused the incorrect update of successfully installed packs statuses on
+- Fixed an issue that caused the incorrect update of the successfully installed pack statuses on
   [Edge clusters](../clusters/edge/edge.md) following an initial installation failure.
 - Fixed an issue that caused Kubernetes upgrades from 1.30.x to 1.31.x to stall on
   [Edge clusters](../clusters/edge/edge.md).
