@@ -7,6 +7,7 @@ description:
   Installer ISO, create a cluster profile, and deploy a Kubernetes cluster to the Edge host on VMware."
 tags: ["edge", "tutorial"]
 category: ["tutorial"]
+toc_max_heading_level: 2
 ---
 
 Palette supports deploying Kubernetes clusters in remote locations to support edge computing workloads. Palette's Edge
@@ -51,7 +52,7 @@ To complete this tutorial, you will need the following:
 
 - The VMs you will prepare as Edge hosts must be attached to a DHCP-enabled network. To ensure DHCP is enabled on the
   network, review the network settings on your ESXi Host. You can refer to the
-  [Prepare the DHCP Server for vSphere](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.esxi.install.doc/GUID-9D8333F5-5F5B-4658-8166-119B44895098.html)
+  [vSphere Networking](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-networking-7-0.html)
   guide from VMware to configure a DHCP server on the network.
 
 - A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture and the following minimum hardware configuration:
@@ -254,8 +255,7 @@ main configuration blocks:
   :::
 
 
-Issue the command below to save your tenant registration token to a local variable. Replace
-`<your-palette-registration-token>` with your actual registration token.
+Export your Palette registration token and Edge host login credentials.
 
 ```bash
 export TOKEN=<palette-registration-token>
@@ -263,7 +263,7 @@ export USER=<host-user-name>
 export PASSWORD=<user-name-password>
 ```
 
-Use the following command to create the `user-data` file containing the tenant registration token.
+Next, issue the command below to create the `user-data` file using the exported token and user information.
 
 ```shell
 cat << EOF > user-data
@@ -284,37 +284,36 @@ install:
 EOF
 ```
 
-:::warning
+:::info
 
-If you haven't set a default project for the registration token, ensure that you provide the `stylus.site.projectName`
-parameter with the value `Default` in `user-data`.
-
-Ensure that you include the `install.poweroff.true` parameter. This ensures that the Edge host will power off after
-installation. If you do not include this parameter, this could lead to a VM you will use in a subsequent step to refuse
-to power off automatically and cause a timeout error unless you manually shut down the VM.
+The #cloud-config header is required by the cloud-init standard.
 
 :::
 
-Review the newly created `user-data` file.
+
+Confirm that the file was created correctly.
 
 ```bash
 cat user-data
 ```
 
-The expected output should show that the `edgeHostToken` and login credentials for Edge hosts are set correctly. The
-`edgeHostToken` value must match your Palette registration token. Otherwise, your Edge hosts will not register with
-Palette. Below is a sample output with the token masked. <br />
+The output should show your user data file, with the value of your Palette registration token assigned to the `edgeHostToken` parameter, as well as the user and password to be created. This tutorial uses `kairos` as an example for both the username and password.
 
 ```hideClipboard bash
 #cloud-config
 stylus:
   site:
+    edgeHostToken: ****************
     paletteEndpoint: api.spectrocloud.com
-    edgeHostToken: ********************************
 
-users:
-  - name: kairos
-    passwd: kairos
+stages:
+  initramfs:
+    - users:
+        kairos:
+          passwd: kairos
+
+install:
+  poweroff: true
 ```
 
 ## Build Artifacts
@@ -426,7 +425,7 @@ image. Later, it will use [GOVC](https://github.com/vmware/govmomi/tree/main/gov
 provision three VMs. You do not have to install Packer or GOVC in your Linux development environment. You will use our
 official tutorials container that already contains the required tools. <br />
 
-#### Create a VM Template
+### Create a VM Template
 
 You will use the `heredoc` script to create a VM template. The script prompts you to enter your VMware vCenter
 environment details and saves them as environment variables in a file named `.packerenv`. Packer reads the environment
