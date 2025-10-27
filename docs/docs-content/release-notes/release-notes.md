@@ -27,6 +27,11 @@ tags: ["release-notes"]
 
 #### Deprecations and Removals
 
+- When creating EKS clusters, the default **Amazon Machine Image (AMI) Type** is now Amazon Linux 2023 (AL2023) Standard
+  AMI. This change aligns with the [upcoming deprecation of Amazon Linux 2 (AL2) AMIs](./announcements.md#deprecations).
+  A deprecation warning now appears for AL2 AMIs in the **Amazon Machine Image (AMI) Type** drop-down menu within in
+  [Cloud Configuration Settings](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings).
+
 ### Edge
 
 :::info
