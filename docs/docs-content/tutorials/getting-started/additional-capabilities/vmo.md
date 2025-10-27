@@ -33,4 +33,8 @@ can model, deploy, and manage VM workloads alongside containers in your clusters
 
 <br />
 
-<YouTube url="https://www.youtube.com/embed/N7dQ6jmEkCQ" title="Webinar | The new home for your VMs: Kubernetes" />
+<YouTube
+  url="https://www.youtube.com/embed/N7dQ6jmEkCQ"
+  title="Webinar | The new home for your VMs: Kubernetes"
+  referrerpolicy="strict-origin-when-cross-origin"
+/>
