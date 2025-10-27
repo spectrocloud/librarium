@@ -113,7 +113,7 @@ Failure to remove provisioned resources can result in unexpected costs.
 - Domain Name System (DNS) Records
 - Datastore leftovers: orphaned VM Disk (VMDK) files and VM directories
 - VM and Storage Snapshots
-- Load Balancers (NSX, AVI, or others specific to the deployment)
+- Load Balancers (NSX, Avi, or others specific to the deployment)
 - Firewall Sections and Rules
 - Resource Pools
 - Template Folders
