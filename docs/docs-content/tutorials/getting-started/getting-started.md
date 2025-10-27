@@ -21,7 +21,6 @@ a quick overview of Palette's key functionalities.
 <YouTube
   url="https://www.youtube.com/embed/p2k3ypzYHn0?si=9rzMO5dhcPyVV1Ol"
   title="Demo | Spectro Cloud Palette - Kubernetes-as-a-Service"
-  referrerpolicy="strict-origin-when-cross-origin"
 />
 
 <br />

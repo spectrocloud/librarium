@@ -54,8 +54,4 @@ government and regulated industries.
 
 <br />
 
-<YouTube
-  url="https://www.youtube.com/embed/7tAJHTwX8CI"
-  title="Demo | Palette VerteX overview"
-  referrerpolicy="strict-origin-when-cross-origin"
-/>
+<YouTube url="https://www.youtube.com/embed/7tAJHTwX8CI" title="Demo | Palette VerteX overview" />
