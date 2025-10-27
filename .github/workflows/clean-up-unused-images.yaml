@@ -42,7 +42,7 @@ jobs:
           token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
 
       - name: Setup Nodejs
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "20"
       

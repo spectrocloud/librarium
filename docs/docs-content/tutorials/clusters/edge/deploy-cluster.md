@@ -101,6 +101,12 @@ To complete this tutorial, you will need the following:
 
   ![A screenshot of a registration token in Palette](/tutorials/edge/tutorials_edge_deploy-cluster_registration-token.webp)
 
+- Access to an image registry and permissions to push images. This page uses a public
+  [Docker Hub](https://www.docker.com/products/docker-hub/) registry as an example. If you need to use a private
+  registry, refer to the
+  [Deploy Cluster with a Private Provider Registry](../../../clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md)
+  guide for instructions on how to configure the credentials.
+
 ## Build Edge Artifacts
 
 In this section, you will use the [CanvOS](https://github.com/spectrocloud/CanvOS/blob/main/README.md) utility to build
@@ -153,20 +159,19 @@ as an example. However, you can assign any lowercase and alphanumeric string to 
 export CUSTOM_TAG=demo
 ```
 
-Issue the command below to create the `.arg` file with the custom tag. The remaining arguments will use the default
-values. For example, `ubuntu` is the default operating system, `demo` is the default tag, and [ttl.sh](https://ttl.sh/)
-is the default image registry. The default ttl.sh image registry is free and does not require a sign-up. Images pushed
-to ttl.sh are ephemeral and will expire after the 24 hrs time limit.
+Issue the command below to create the `.arg` file with the custom tag. Replace `spectrocloud` with the name of your
+registry. The remaining arguments will use the default values. For example, `ubuntu` is the default operating system and
+`demo` is the default tag.
 
 Using the arguments defined in the `.arg` file, the final provider images you generate will have the following naming
 convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. In this example, the provider images will be
-`ttl.sh/ubuntu:k3s-1.32.1-v4.6.12-demo`. Refer to the `.arg.template` sample file in the current directory or the
+`spectrocloud/ubuntu:k3s-1.32.1-v4.6.12-demo`. Refer to the `.arg.template` sample file in the current directory or the
 [README](https://github.com/spectrocloud/CanvOS#readme) to learn more about the default values.
 
 ```bash
 cat << EOF > .arg
 CUSTOM_TAG=$CUSTOM_TAG
-IMAGE_REGISTRY=ttl.sh
+IMAGE_REGISTRY=spectrocloud
 OS_DISTRIBUTION=ubuntu
 IMAGE_REPO=ubuntu
 OS_VERSION=22
@@ -319,7 +324,7 @@ pack:
       - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
 options:
   system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
-  system.registry: ttl.sh
+  system.registry: spectrocloud
   system.repo: ubuntu
   system.k8sDistribution: k3s
   system.osName: ubuntu
@@ -359,50 +364,50 @@ docker images --filter=reference='*/*:*demo*'
 ```
 
 ```hideClipboard bash {2,3}
-REPOSITORY      TAG                                    IMAGE ID       CREATED       SIZE
-ttl.sh/ubuntu   k3s-1.32.1-v4.6.12-demo                145bc25ff5b4   2 hours ago   4.97GB
-ttl.sh/ubuntu   k3s-1.32.1-v4.6.12-demo_linux_amd64    145bc25ff5b4   2 hours ago   4.97GB
-ttl.sh/ubuntu   k3s-1.31.5-v4.6.12-demo                52ba5288cccd   2 hours ago   4.96GB
-ttl.sh/ubuntu   k3s-1.31.5-v4.6.12-demo_linux_amd64    52ba5288cccd   2 hours ago   4.96GB
-ttl.sh/ubuntu   k3s-1.31.4-v4.6.12-demo                8e089cc7292f   2 hours ago   4.96GB
-ttl.sh/ubuntu   k3s-1.31.4-v4.6.12-demo_linux_amd64    8e089cc7292f   2 hours ago   4.96GB
-ttl.sh/ubuntu   k3s-1.31.1-v4.6.12-demo                6ecfc962d208   2 hours ago   4.96GB
-ttl.sh/ubuntu   k3s-1.31.1-v4.6.12-demo_linux_amd64    6ecfc962d208   2 hours ago   4.96GB
-ttl.sh/ubuntu   k3s-1.30.9-v4.6.12-demo                34cdeab9d894   2 hours ago   4.96GB
-ttl.sh/ubuntu   k3s-1.30.9-v4.6.12-demo_linux_amd64    34cdeab9d894   2 hours ago   4.96GB
-ttl.sh/ubuntu   k3s-1.30.8-v4.6.12-demo                6491f9c28be5   2 hours ago   4.96GB
-ttl.sh/ubuntu   k3s-1.30.8-v4.6.12-demo_linux_amd64    6491f9c28be5   2 hours ago   4.96GB
-ttl.sh/ubuntu   k3s-1.30.6-v4.6.12-demo                dee339f3ceaa   2 hours ago   4.95GB
-ttl.sh/ubuntu   k3s-1.30.6-v4.6.12-demo_linux_amd64    dee339f3ceaa   2 hours ago   4.95GB
-ttl.sh/ubuntu   k3s-1.30.5-v4.6.12-demo                80f451092b91   2 hours ago   4.96GB
-ttl.sh/ubuntu   k3s-1.30.5-v4.6.12-demo_linux_amd64    80f451092b91   2 hours ago   4.96GB
+REPOSITORY            TAG                                    IMAGE ID       CREATED       SIZE
+spectrocloud/ubuntu   k3s-1.32.1-v4.6.12-demo                145bc25ff5b4   2 hours ago   4.97GB
+spectrocloud/ubuntu   k3s-1.32.1-v4.6.12-demo_linux_amd64    145bc25ff5b4   2 hours ago   4.97GB
+spectrocloud/ubuntu   k3s-1.31.5-v4.6.12-demo                52ba5288cccd   2 hours ago   4.96GB
+spectrocloud/ubuntu   k3s-1.31.5-v4.6.12-demo_linux_amd64    52ba5288cccd   2 hours ago   4.96GB
+spectrocloud/ubuntu   k3s-1.31.4-v4.6.12-demo                8e089cc7292f   2 hours ago   4.96GB
+spectrocloud/ubuntu   k3s-1.31.4-v4.6.12-demo_linux_amd64    8e089cc7292f   2 hours ago   4.96GB
+spectrocloud/ubuntu   k3s-1.31.1-v4.6.12-demo                6ecfc962d208   2 hours ago   4.96GB
+spectrocloud/ubuntu   k3s-1.31.1-v4.6.12-demo_linux_amd64    6ecfc962d208   2 hours ago   4.96GB
+spectrocloud/ubuntu   k3s-1.30.9-v4.6.12-demo                34cdeab9d894   2 hours ago   4.96GB
+spectrocloud/ubuntu   k3s-1.30.9-v4.6.12-demo_linux_amd64    34cdeab9d894   2 hours ago   4.96GB
+spectrocloud/ubuntu   k3s-1.30.8-v4.6.12-demo                6491f9c28be5   2 hours ago   4.96GB
+spectrocloud/ubuntu   k3s-1.30.8-v4.6.12-demo_linux_amd64    6491f9c28be5   2 hours ago   4.96GB
+spectrocloud/ubuntu   k3s-1.30.6-v4.6.12-demo                dee339f3ceaa   2 hours ago   4.95GB
+spectrocloud/ubuntu   k3s-1.30.6-v4.6.12-demo_linux_amd64    dee339f3ceaa   2 hours ago   4.95GB
+spectrocloud/ubuntu   k3s-1.30.5-v4.6.12-demo                80f451092b91   2 hours ago   4.96GB
+spectrocloud/ubuntu   k3s-1.30.5-v4.6.12-demo_linux_amd64    80f451092b91   2 hours ago   4.96GB
 ...
 ```
 
 ## Push Provider Images
 
-Push the provider images to the image registry indicated in the `.arg` file so that you can reference the provider image
-later in your cluster profile.
-
-Since we used the provider image compatible with K3s v1.32 in the cluster profile, you would use the following command
-to push the provider image compatible with K3s v1.32 to the image registry. If you want to use the other provider image,
-push that version to the image registry. The example below and default behavior uses the [ttl.sh](https://ttl.sh/) image
-registry. This image registry is free and does not require you to sign up to use it. Images pushed to ttl.sh are
-ephemeral and will expire after 24 hours.
+Push the provider images to the image registry specified in the `.arg` file so that you can reference it when creating
+the cluster profile. Issue the following command to log in to Docker Hub. Provide your Docker ID and password when
+prompted.
 
 ```bash
-docker push ttl.sh/ubuntu:k3s-1.32.1-v4.6.12-demo
+docker login
 ```
 
-:::warning
+```text hideClipboard
+Login Succeeded
+```
 
-As a reminder, [ttl.sh](https://ttl.sh/) is a short-lived image registry. If you do not use these provider images in
-your cluster profile within 24 hours of pushing to _ttl.sh_, they will expire and must be re-pushed. If you want to use
-a different image registry, refer to the Advanced workflow in the
-[Build Edge Artifacts](../../../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) guide to learn how to
-use another registry.
+Once authenticated, push the provider image to the registry so that your Edge host can download it during the cluster
+deployment.
 
-:::
+Since we used the provider image compatible with K3s v1.32 in the cluster profile, use the following command to push the
+provider image compatible with K3s v1.32 to the image registry. If you want to use the other provider image, push that
+version to the image registry.
+
+```bash
+docker push spectrocloud/ubuntu:k3s-1.32.1-v4.6.12-demo
+```
 
 ## Provision Virtual Machines
 
@@ -751,7 +756,7 @@ In the **Profile Layers** section, add the following
 | OS            | Public Repo  | BYOS Edge OS  | Not applicable   |
 
 Replace the OS layer manifest with the custom manifest so that the cluster profile can pull the provider image from the
-_ttl.sh_ image registry. You may recall that the CanvOS script returned an output containing a custom manifest after
+registry you pushed it to. You may recall that the CanvOS script returned an output containing a custom manifest after
 building the Edge artifacts. Copy the CanvOS output into the cluster profile's BYOOS pack YAML file.
 
 The `system.xxxxx` attribute values in the manifest are as same as those you defined in the `.arg` file while building
@@ -768,7 +773,7 @@ options:
     }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{
     .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{
     .spectro.pack.edge-native-byoi.options.system.customTag }}"
-  system.registry: ttl.sh
+  system.registry: spectrocloud
   system.repo: ubuntu
   system.k8sDistribution: k3s
   system.osName: ubuntu
@@ -779,15 +784,7 @@ options:
 
 The screenshot below shows you how to reference your provider OS image in a cluster profile by using the utility build
 output with the BYOOS pack.
-![A screenshot of k3s OS layer in a cluster profile.](/tutorials/edge/clusters_edge_deploy-cluster_edit-profile.webp)
-
-:::warning
-
-_ttl.sh_ is a short-lived image registry. If you do not use the provider image in your cluster profile within 24 hours
-of pushing to _ttl.sh_, they will no longer exist and must be re-pushed. In a production environment, use a custom
-registry for hosting provider images.
-
-:::
+![A screenshot of k3s OS layer in a cluster profile.](/tutorials/edge/tutorials_edge_deploy-cluster_byos-pack_4-6.webp)
 
 Click on the **Next layer** button to add the following Kubernetes layer to your cluster profile.
 
@@ -795,8 +792,8 @@ Click on the **Next layer** button to add the following Kubernetes layer to your
 | ------------- | ------------ | --------------------- | ---------------- |
 | Kubernetes    | Public Repo  | Palette Optimized K3s | `1.32.1`         |
 
-The pack version must match the version pushed to the _ttl.sh_ image registry. The `system.uri` attribute of the BYOOS
-pack will reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}`
+The pack version must match the version pushed to the image registry. The `system.uri` attribute of the BYOOS pack will
+reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}`
 [macro](../../../clusters/cluster-management/macros.md).
 
 Click on the **Next layer** button, and add the following network layer. This example uses the Calico Container Network
@@ -1031,22 +1028,22 @@ docker images
 Note the provider image name and tags, and use the following command syntax to remove all provider images.
 
 ```bash
-docker rmi ttl.sh/ubuntu:k3s-1.32.1-v4.6.12-demo
-docker rmi ttl.sh/ubuntu:k3s-1.32.1-v4.6.12-demo_linux_amd64
-docker rmi ttl.sh/ubuntu:k3s-1.31.5-v4.6.12-demo
-docker rmi ttl.sh/ubuntu:k3s-1.31.5-v4.6.12-demo_linux_amd64
-docker rmi ttl.sh/ubuntu:k3s-1.31.4-v4.6.12-demo
-docker rmi ttl.sh/ubuntu:k3s-1.31.4-v4.6.12-demo_linux_amd64
-docker rmi ttl.sh/ubuntu:k3s-1.31.1-v4.6.12-demo
-docker rmi ttl.sh/ubuntu:k3s-1.31.1-v4.6.12-demo_linux_amd64
-docker rmi ttl.sh/ubuntu:k3s-1.30.9-v4.6.12-demo
-docker rmi ttl.sh/ubuntu:k3s-1.30.9-v4.6.12-demo_linux_amd64
-docker rmi ttl.sh/ubuntu:k3s-1.30.8-v4.6.12-demo
-docker rmi ttl.sh/ubuntu:k3s-1.30.8-v4.6.12-demo_linux_amd64
-docker rmi ttl.sh/ubuntu:k3s-1.30.6-v4.6.12-demo
-docker rmi ttl.sh/ubuntu:k3s-1.30.6-v4.6.12-demo_linux_amd64
-docker rmi ttl.sh/ubuntu:k3s-1.30.5-v4.6.12-demo
-docker rmi ttl.sh/ubuntu:k3s-1.30.5-v4.6.12-demo_linux_amd64
+docker rmi spectrocloud/ubuntu:k3s-1.32.1-v4.6.12-demo
+docker rmi spectrocloud/ubuntu:k3s-1.32.1-v4.6.12-demo_linux_amd64
+docker rmi spectrocloud/ubuntu:k3s-1.31.5-v4.6.12-demo
+docker rmi spectrocloud/ubuntu:k3s-1.31.5-v4.6.12-demo_linux_amd64
+docker rmi spectrocloud/ubuntu:k3s-1.31.4-v4.6.12-demo
+docker rmi spectrocloud/ubuntu:k3s-1.31.4-v4.6.12-demo_linux_amd64
+docker rmi spectrocloud/ubuntu:k3s-1.31.1-v4.6.12-demo
+docker rmi spectrocloud/ubuntu:k3s-1.31.1-v4.6.12-demo_linux_amd64
+docker rmi spectrocloud/ubuntu:k3s-1.30.9-v4.6.12-demo
+docker rmi spectrocloud/ubuntu:k3s-1.30.9-v4.6.12-demo_linux_amd64
+docker rmi spectrocloud/ubuntu:k3s-1.30.8-v4.6.12-demo
+docker rmi spectrocloud/ubuntu:k3s-1.30.8-v4.6.12-demo_linux_amd64
+docker rmi spectrocloud/ubuntu:k3s-1.30.6-v4.6.12-demo
+docker rmi spectrocloudh/ubuntu:k3s-1.30.6-v4.6.12-demo_linux_amd64
+docker rmi spectrocloud/ubuntu:k3s-1.30.5-v4.6.12-demo
+docker rmi spectrocloud/ubuntu:k3s-1.30.5-v4.6.12-demo_linux_amd64
 ...
 ```
 
