@@ -69,6 +69,14 @@ section of the pack Additional Guidance for further information.
 
 10. Select a domain from the **Domain drop-down Menu** and click **Next**.
 
+    :::warning
+
+    We recommend specifying Network Time Protocol (NTP) servers to ensure that the cluster nodes have the correct time.
+    If no NTP servers are specified, it could lead to time drift issues. You can specify this configuration in the
+    **Cluster Config** step.
+
+    :::
+
 11. Configure the control plane and worker node pools. The following input fields apply to MAAS control plane and worker
     node pools. For a description of input fields that are common across target platforms refer to the
     [Node Pools](../../cluster-management/node-pool.md) management page. Click **Next** when you are done.

@@ -36,6 +36,7 @@ const YouTube = ({ url, title }: YouTubeProps) => {
         }}
         allowFullScreen
         title={title || "YouTube Video"}
+        referrerPolicy="strict-origin-when-cross-origin"
       ></iframe>
     </div>
   );
