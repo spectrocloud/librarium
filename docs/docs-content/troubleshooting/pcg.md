@@ -19,10 +19,12 @@ specific problem, including an overview, possible causes, and debugging steps.
 ## Scenario - Clean Up Stuck Namespaces
 
 When force-deleting clusters deployed using a [PCG](../clusters/pcg/pcg.md), namespaces on the PCG may get stuck in a
-terminating state when resources within the namespace have
+`Terminating` state when resources within the namespace have
 [finalizers](https://kubernetes.io/docs/concepts/overview/working-with-objects/finalizers/) that cannot complete their
-cleanup tasks. To clean up stuck namespaces on a PCG, we recommend running the following script against your PCG or
-self-hosted management plane cluster on an as-need basis.
+cleanup tasks.
+
+To clean up stuck namespaces on a PCG, we recommend running a script against your PCG or self-hosted management plane
+cluster on an as-need basis.
 
 ### Debug Steps
 
@@ -39,19 +41,33 @@ any applicable PCGs as well as your management plane cluster if you have used th
 
 2. From the left main menu, select **Tenant Settings**.
 
-3. In the **Infrastructure** section, select **Private Cloud Gateways**. Select a PCG with stuck namespaces.
+3. In the **Infrastructure** section, select **Private Cloud Gateways**. Select a PCG with a stuck namespace.
 
 4. From the PCG **Overview** tab, select the **Kubeconfig file** to download the kubeconfig of your PCG.
 
-5. Open a terminal session on a machine with [kubectl](https://kubernetes.io/docs/reference/kubectl/) installed and
-   create the following script.
+5. Open a terminal session on a machine with [kubectl](https://kubernetes.io/docs/reference/kubectl/) installed and set
+   the location of your kubeconfig file as an environment variable.
+
+   ```shell
+   export KUBECONFIG=<path-to-PCG-kubeconfig>
+   ```
+
+6. Verify that your PCG contains a namespace stuck in the `Terminating` state.
+
+   ```shell
+   kubectl get namespace --output custom-columns=NAME:metadata.name,STATUS:status.phase | grep Terminating
+   ```
+
+   ```shell hideClipboard title="Example output"
+   deleted-cluster-namespace     Terminating
+   ```
+
+7. Create the following script.
 
    ```bash
    cat << 'EOF' > cleanup_pcg.sh
    #!/bin/bash
-   #Accept a kubeconfig file path as the first argument and set it as the active kubeconfig
-   export KUBECONFIG=$1
-   #Identify all namespaces suck in a terminating state
+   #Identify all namespaces stuck in a terminating state
    NSTOCLEAN=$(kubectl get ns -o custom-columns=NAME:metadata.name,STATUS:status.phase | grep Terminating | awk '{print $1}')
    #Remove finalizers from resources within each stuck namespace
    for ns in $NSTOCLEAN
@@ -67,17 +83,20 @@ any applicable PCGs as well as your management plane cluster if you have used th
    EOF
    ```
 
-6. Set execute permissions on the script.
+8. Set execute permissions and run the script to remove all `Terminating` namespaces on the PCG.
 
    ```shell
    chmod +x cleanup_pcg.sh
+   ./cleanup_pcg.sh
    ```
 
-7. Run the script, passing in the path to the kubeconfig of your PCG.
+9. Verify that no `Terminating` namespaces remain.
 
    ```shell
-   ./cleanup_pcg.sh <path-to-PCG-kubeconfig>
+   kubectl get namespace --output custom-columns=NAME:metadata.name,STATUS:status.phase | grep Terminating
    ```
+
+10. Repeat steps 3 - 9 for all PCGs with a namespace stuck in the `Terminating` state.
 
 </TabItem>
 
@@ -91,15 +110,29 @@ any applicable PCGs as well as your management plane cluster if you have used th
 3. From the enterprise cluster **Overview** tab, select the **Kubernetes Config File** to download the kubeconfig of
    your management plane cluster.
 
-4. Open a terminal session on a machine with [kubectl](https://kubernetes.io/docs/reference/kubectl/) installed and
-   create the following script.
+4. Open a terminal session on a machine with [kubectl](https://kubernetes.io/docs/reference/kubectl/) installed and set
+   the location of your kubeconfig file as an environment variable.
+
+   ```shell
+   export KUBECONFIG=<path-to-management-cluster-kubeconfig>
+   ```
+
+5. Verify that your management cluster contains a namespace stuck in the `Terminating` state.
+
+   ```shell
+   kubectl get namespace --output custom-columns=NAME:metadata.name,STATUS:status.phase | grep Terminating
+   ```
+
+   ```shell hideClipboard title="Example output"
+   deleted-cluster-namespace     Terminating
+   ```
+
+6. Create the following script.
 
    ```bash
    cat << 'EOF' > cleanup_pcg.sh
    #!/bin/bash
-   #Accept a kubeconfig file path as the first argument and set it as the active kubeconfig
-   export KUBECONFIG=$1
-   #Identify all namespaces suck in a terminating state
+   #Identify all namespaces stuck in a terminating state
    NSTOCLEAN=$(kubectl get ns -o custom-columns=NAME:metadata.name,STATUS:status.phase | grep Terminating | awk '{print $1}')
    #Remove finalizers from resources within each stuck namespace
    for ns in $NSTOCLEAN
@@ -115,16 +148,17 @@ any applicable PCGs as well as your management plane cluster if you have used th
    EOF
    ```
 
-5. Set execute permissions on the script.
+7. Set execute permissions and run the script to remove all `Terminating` namespaces on the management cluster.
 
    ```shell
    chmod +x cleanup_pcg.sh
+   ./cleanup_pcg.sh
    ```
 
-6. Run the script, passing in the path to the kubeconfig of your PCG.
+8. Verify that no `Terminating` namespaces remain.
 
    ```shell
-   ./cleanup_pcg.sh <path-to-PCG-kubeconfig>
+   kubectl get namespace --output custom-columns=NAME:metadata.name,STATUS:status.phase | grep Terminating
    ```
 
 </TabItem>
@@ -133,15 +167,15 @@ any applicable PCGs as well as your management plane cluster if you have used th
 
 ## Scenario - VMware Resources Remain After Cluster Deletion
 
-The vSphere Cluster API (CAPI) upgrade in Palette 4.7 introduced new reconciliation behavior for VSphereDeploymentZone
-and VSphereFailureDomain resources. Prior to Palette 4.7, when deleting VMware vSphere clusters, these resources were
-not deleted with the cluster and remained on the [PCG](../clusters/pcg/pcg.md). Beginning with Palette 4.7, these
-resources are automatically removed when the cluster is deleted.
+The Cluster API (CAPI) upgrade in Palette 4.7 introduced new reconciliation behavior for VSphereDeploymentZone and
+VSphereFailureDomain resources. Prior to Palette 4.7, when deleting VMware vSphere clusters, these resources were not
+deleted with the cluster and remained on the [PCG](../clusters/pcg/pcg.md). Beginning with Palette 4.7, these resources
+are automatically removed when the cluster is deleted.
 
 After upgrading Palette from 4.6.x to 4.7.x, users may experience slowness or cluster deployment failures when deploying
-VMware vSphere clusters if they deployed a large number of VMware vSphere clusters prior to 4.7 using the PCG. This is
-due to the upgraded CAPI controller attempting and failing to reconcile corresponding VSphereDeploymentZone and
-VSphereFailureDomain resources leftover on the PCG from pre-4.7 cluster deployments.
+VMware vSphere clusters if they deployed VMware vSphere clusters using the PCG prior to 4.7. This is due to the upgraded
+CAPI controller attempting and failing to reconcile corresponding VSphereDeploymentZone and VSphereFailureDomain
+resources leftover on the PCG from pre-4.7 cluster deployments.
 
 To continue deploying VMware vSphere clusters using either a standard PCG or Palette's
 [System Private Gateway](../clusters/pcg/architecture.md#system-private-gateway), you must manually remove all stale
@@ -196,10 +230,9 @@ Gateway to deploy VMware vSphere clusters prior to Palette 4.7.
 
 7. Delete all stale `VSphereDeploymentZone` and `VSphereFailureDomain` objects.
 
-   :::warning
+   :::danger
 
-   Do not delete any objects associated with the PCG or any active clusters (clusters that are pending, running, or
-   deleting).
+   Do not delete any objects associated with the PCG or clusters with an `Active` status.
 
    :::
 
@@ -269,10 +302,9 @@ Gateway to deploy VMware vSphere clusters prior to Palette 4.7.
 
 6. Delete all stale `VSphereDeploymentZone` and `VSphereFailureDomain` objects.
 
-   :::warning
+   :::danger
 
-   Do not delete any objects associated with the PCG or any active clusters (clusters that are pending, running, or
-   deleting).
+   Do not delete any objects associated with the PCG or clusters with an `Active` status.
 
    :::
 
