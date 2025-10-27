@@ -447,7 +447,7 @@ The following component updates are applicable to this release:
 #### Bug Fixes
 
 - Fixed an issue that caused the [VM Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) to leave open connections after VM migrations.
-- Fixed an issue that incorrectly allowed the creation of [EKS Fargate](https://docs.aws.amazon.com/eks/latest/userguide/fargate.html) in [AWS GovCloud](../clusters/public-cloud/aws/add-aws-accounts.md#aws-govcloud-account-us).
+- Fixed an issue that incorrectly allowed the creation of [EKS Fargate](https://docs.aws.amazon.com/eks/latest/userguide/fargate.html) in [AWS GovCloud](../clusters/public-cloud/aws/add-aws-accounts/add-aws-accounts.md#aws-govcloud-account-us).
 - Fixed an issue where, on Azure IaaS clusters created using a Palette version prior to 4.6.32, scaling worker node pools did not attach newly created nodes to an outbound load balancer after upgrading to Palette version 4.6.32 or later and the cluster's Palette Agent version to 4.6.7 or later.
 - Fixed an issue that caused manifest layers creating using [Crossplane](../automation/crossplane/crossplane.md) to display incorrectly in the Palette UI.
 - Fixed an issue that caused [EKS nodes](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) customized with the `AL2_x86_64` AMI label to be incorrectly configured with Amazon Linux 2023 (AL2023).

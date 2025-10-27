@@ -18,7 +18,7 @@ Chart.
 Select the scenario and the corresponding guide to install VerteX on Kubernetes. If you are installing VerteX in an
 airgap environment, refer to the environment preparation guide before installing VerteX.
 
-| Scenario                                                | Environment Preparation Guide                                           | Install Guide                                      |
-| ------------------------------------------------------- | ----------------------------------------------------------------------- | -------------------------------------------------- |
-| Install VerteX on Kubernetes with internet connectivity | None                                                                    | [Install Instructions](./install/non-airgap.md)    |
-| Install VerteX on Kubernetes in an airgap environment   | [Environment Setup](./airgap-install/kubernetes-airgap-instructions.md) | [Airgap Install Instructions](./install/airgap.md) |
+| Scenario                                                | Environment Preparation Guide                            | Install Guide                                      |
+| ------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------- |
+| Install VerteX on Kubernetes with internet connectivity | None                                                     | [Install Instructions](./install/non-airgap.md)    |
+| Install VerteX on Kubernetes in an airgap environment   | [Environment Setup](./setup/airgap/environment-setup.md) | [Airgap Install Instructions](./install/airgap.md) |

@@ -10,7 +10,7 @@ keywords: ["self-hosted", "vertex", "management"]
 ---
 
 Palette VerteX contains many system settings you can configure to meet your organization's needs. These settings are
-available at the system level and are applied to all [tenants](../../glossary-all.md#tenant) in the system.
+available at the system level and are applied to all [tenants](../../../glossary-all.md#tenant) in the system.
 
 ## System Console
 
@@ -35,8 +35,6 @@ System administrators can use the system console to perform the following operat
 - [Add system-level OCI-compliant pack registries](add-registry.md).
 
 - [Configure and manage SSL certificates](ssl-certificate-management.md).
-
-- [Enable backup and restore for your self-hosted installation](backup-restore.md).
 
 - Configure DNS settings.
 

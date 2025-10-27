@@ -261,7 +261,7 @@ ConfigMap value is incorrect, use the following steps to resolve the issue.
 
 4. If the host value is incorrect, log in to the System Console. You can find guidance on how to access the System
    Console in the
-   [Access the System Console](../vertex/system-management/system-management.md#access-the-system-console)
+   [Access the System Console](../self-hosted-setup/vertex/system-management/system-management.md#access-the-system-console)
    documentation.
 
 5. Navigate to the **Main Menu** and select **Enterprise Cluster**. From the **System Profiles** page, select the

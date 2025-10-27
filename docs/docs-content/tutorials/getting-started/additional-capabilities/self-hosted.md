@@ -46,8 +46,8 @@ and applications.
 Check out the [Self-Hosted Palette](../../../self-hosted-setup/palette/palette.md) section to learn how to install the
 self-hosted version of Palette in your data centers or public cloud providers.
 
-Review the [Palette VerteX](../../../vertex/vertex.md) section to learn how to install and configure VerteX in your data
-centers or public cloud providers.
+Review the [Palette VerteX](../../../self-hosted-setup/vertex/vertex.md) section to learn how to install and configure
+VerteX in your data centers or public cloud providers.
 
 Check out the following video for a tour of Palette VerteX, our tailor-made Kubernetes management solution for
 government and regulated industries.

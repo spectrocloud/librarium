@@ -81,6 +81,6 @@ Use these steps to verify non-FIPS packs are available.
 2. Navigate to the left **Main Menu** and select **Profiles**.
 
 3. Try creating a cluster profile and verify the registry you added is available and packs are displayed. For guidance,
-   review the [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md) documentation.
+   review the [Cluster Profiles](../../../../profiles/cluster-profiles/cluster-profiles.md) documentation.
 
 VerteX will display the appropriate FIPS status icon next to each pack layer.
