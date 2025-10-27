@@ -104,7 +104,7 @@ Failure to remove provisioned resources can result in unexpected costs.
 
 #### VMware
 
-- VMs: control plane, workers, High Availability Proxy (HAProxy), and Load Balancers
+- VMs: control planes, workers, High Availability Proxy (HAProxy), and Load Balancers
 - VM Templates
 - VM Clones
 - Cluster-specific VM Folders
