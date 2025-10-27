@@ -212,7 +212,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [LocalUI](../clusters/edge/local-ui/local-ui.md) clusters.
 - Fixed an issue that caused the incorrect update of successfully installed packs statuses on
   [Edge clusters](../clusters/edge/edge.md) following an initial installation failure.
-- Fixed an issue that caused Kubernetes upgrades from 1.30.x to 1.31.x to become stalled on
+- Fixed an issue that caused Kubernetes upgrades from 1.30.x to 1.31.x to stall on
   [Edge clusters](../clusters/edge/edge.md).
 
 ### VerteX
