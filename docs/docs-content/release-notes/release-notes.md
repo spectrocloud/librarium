@@ -208,7 +208,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - Fixed an issue that prevented DNS server details from displaying correctly in
   [LocalUI](../clusters/edge/local-ui/local-ui.md).
-- Fixed an issue that caused errors related to the `containerd-sync` service in the logs of
+- Fixed an issue that caused errors related to the `containerd-sync` service to appear in the logs of
   [LocalUI](../clusters/edge/local-ui/local-ui.md) clusters.
 - Fixed an issue that caused the incorrect update of successfully installed packs statuses on
   [Edge clusters](../clusters/edge/edge.md) following an initial installation failure.
