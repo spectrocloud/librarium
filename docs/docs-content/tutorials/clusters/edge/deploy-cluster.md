@@ -54,12 +54,11 @@ To complete this tutorial, you will need the following:
   [Prepare the DHCP Server for vSphere](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.esxi.install.doc/GUID-9D8333F5-5F5B-4658-8166-119B44895098.html)
   guide from VMware to configure a DHCP server on the network.
 
-- A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture to build the Edge
-  artifacts. You can issue the following command in the terminal to check your processor architecture. <br/>
+- A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture and the following minimum hardware configuration:
 
-  ```bash
-  uname -m
-  ```
+  - 4 CPU
+  - 8 GB memory
+  - 150 GB storage
 
   :::warning
 
@@ -67,22 +66,16 @@ To complete this tutorial, you will need the following:
 
   :::
 
-- The following minimum hardware configuration:
-
-  - 4 CPU
-  - 8 GB memory
-  - 50 GB storage
-
-- [Git](https://git-scm.com/downloads). Ensure git installation by issuing the `git --version` command.
-
-- (Optional) [Earthly](https://earthly.dev/) is installed and available. If you do not install Earthly, you can still
+- The following software installed on the Linux machine:
+  
+  - [Git](https://git-scm.com/downloads). Ensure git installation by issuing the `git --version` command.
+  - [Earthly](https://earthly.dev/) is installed and available. If you do not install Earthly, you can still
   build the artifacts, but it would require root privileges, and some of the resulting artifacts will be owned by the
   root user.
-
-- - An image management tool such as [Docker](https://docs.docker.com/engine/install/) or
+  - An image management tool with `sudo` privileges such as [Docker](https://docs.docker.com/engine/install/) or
   [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and available. When
   installing these tools, avoid using `snap` as this will create an isolated sandboxed environment that will not be
-  accessible by the commands used in this tutorial. Use `apt` instead.
+  accessible by the commands used in this tutorial. Use `apt` instead.  
 
   :::info
 
@@ -140,31 +133,36 @@ cd CanvOS
 View the available [git tags](https://github.com/spectrocloud/CanvOS/tags).
 
 ```bash
-git tag
+git tag --sort=v:refname
 ```
 
-Check out the newest available tag. This guide uses **v4.7.16** tag as an example.
+Check out the desired tag. We recommend using a CanvOS minor version that is the same as, or older than, Palette's minor
+version. This tutorial uses the tag `v4.7.16` as an example.
 
 ```bash
 git checkout v4.7.16
 ```
 
-## Define Arguments
+## Define Build Arguments
 
 CanvOS requires arguments such as image tag, registry, repository, and OS distribution. The arguments are defined in the
 `.arg` file. In this step, you will create the `.arg` file and define all the required arguments.
 
-Issue the command below to assign an image tag value for the provider images. This guide uses the default value `demo`
-as an example. However, you can assign any lowercase and alphanumeric string to the `CUSTOM_TAG` variable.
+Set a custom tag for the provider images. The tag must be an alphanumeric lowercase string. This tutorial uses
+`demo` as an example. Additionally, replace `spectrocloud` with the name of your registry.
 
 ```bash
 export CUSTOM_TAG=demo
 export IMAGE_REGISTRY=spectrocloud
 ```
 
-Issue the command below to create the `.arg` file with the custom tag. The remaining arguments will use the predefined
+Next, issue the following command to create the `.arg` file with the custom tag. The remaining arguments will use the predefined
 values. For example, this tutorial uses K3s version `1.33.5` as the Kubernetes distribution and Ubuntu as the OS
 distribution. Review the `k8s_version.jason` file in the CanvOS repository for all the supported Kubernetes versions.
+
+:::warning
+If you are using a CanvOS tag that is earlier than v4.4.12, the `k8s_version.json` file does not exist in those tags. In that case, review the `Earthfile` file in the CanvOS repository for all supported Kubernetes versions.
+:::
 
 Using the arguments defined in the `.arg` file, the final provider images you generate will have the following naming
 convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. In this example, the provider images will be
@@ -186,14 +184,7 @@ UPDATE_KERNEL=false
 EOF
 ```
 
-:::warning
-
-Future versions of CanvOS may require different arguments. Refer to the CanvOS
-[README](https://github.com/spectrocloud/CanvOS#readme) to learn more about the arguments needed for each version tag.
-
-:::
-
-View the newly created file to ensure the arguments are defined per your requirements.
+Verify that the file was created correctly using the `cat` command.
 
 ```bash
 cat .arg
@@ -208,11 +199,68 @@ Next, you will create a [`user-data`](../../../clusters/edge/edgeforge-workflow/
 your [tenant registration token](../../../clusters/edge/site-deployment/site-installation/create-registration-token.md)
 and Edge host's login credentials in the Edge Installer ISO image.
 
+The user data file supports multiple parameters that allow you to customize the Edge installation and consists of three
+main configuration blocks:
+
+- `stylus`: Palette agent parameters that control aspects of the Edge host's configuration, such as networking, logging,
+  services, users, and permissions. The following configuration snippet specifies the Palette endpoint, a registration
+  token, and the Palette project name that the host uses to register with Palette. It also provides tags that are
+  assigned to the device as labels.
+
+  ```shell
+  #cloud-config
+  stylus:
+    site:
+      paletteEndpoint: api.spectrocloud.com
+      edgeHostToken: aUAxxxxxxxxx0ChYCrO
+      projectUid: Default
+      tags:
+        city: london
+        building: building-1
+  ```
+
+- `install`: The `install` block allows you to configure bind mounts, disk partitions, and post-installation actions
+  such as powering off the Edge host once the installation completes, as displayed in the snippet below.
+
+  ```shell
+  install:
+    poweroff: true
+  ```
+
+- `stages`: The `stages` block uses cloud-init stages to personalize the initialization of your Edge hosts during
+  various stages of the system boot process. The following example configures a `docs` user with a password and SSH key
+  during the `initramfs` stage.
+
+  ```shell
+  stages:
+    initramfs:
+      - users:
+          docs:
+            passwd: ******
+            groups:
+            - sudo
+            ssh_authorized_keys:
+            - ssh-rsa AAAAB3N…
+  ```
+
+  :::tip
+
+  Visit the [Edge Installer Configuration Reference](../../../clusters/edge/edge-configuration/installer-reference.md)
+  page for a complete list of configuration parameters, the
+  [Prepare User Data](../../../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide for more examples of user
+  data configurations, and the [Cloud Init Stages](../../../clusters/edge/edge-configuration/cloud-init.md) page for the
+  supported cloud init stages.
+
+  :::
+
+
 Issue the command below to save your tenant registration token to a local variable. Replace
 `<your-palette-registration-token>` with your actual registration token.
 
 ```bash
-export TOKEN=<your-palette-registration-token>
+export TOKEN=<palette-registration-token>
+export USER=<host-user-name>
+export PASSWORD=<user-name-password>
 ```
 
 Use the following command to create the `user-data` file containing the tenant registration token.
@@ -225,9 +273,11 @@ stylus:
     edgeHostToken: $TOKEN
     paletteEndpoint: api.spectrocloud.com
 
-users:
-  - name: kairos
-    passwd: kairos
+stages:
+  initramfs:
+    - users:
+        $USER:
+          passwd: $PASSWORD
 
 install:
   poweroff: true
@@ -269,44 +319,14 @@ users:
 
 ## Build Artifacts
 
-The CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
-start the build process.
+Issue the following command to start the build process.
 
-:::warning
-
-Make sure your machine has sufficient disk space for the provider images. Each image is about 4 - 5 GB in size, and
-images are created for all the Palette-supported Kubernetes versions by default. In the **4.7.16** branch of `CanvOS`
-used in this tutorial, the script builds 60 images. If your machine does not have enough disk space, the build process
-will fail silently.
-
-Open the `k8s_version.json` file in the `CanvOS` directory. Remove the Kubernetes versions that you don't need from the
-JSON object corresponding to your Kubernetes distribution.
-
-This speeds up build process and reduces the amount of space required for the build process. For an example of excluding
-a version from build, refer to
-[Build Edge Artifacts guide](../../../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md).
-
-:::
-
-<Tabs group="earthly">
-
-<TabItem value="Earthly Installed">
-
-```bash
-earthly +build-all-images
-```
-
-</TabItem>
-
-<TabItem value="Earthly Not Installed">
 
 ```bash
 sudo ./earthly.sh +build-all-images
 ```
 
-</TabItem>
-
-</Tabs>
+The build may take 15 to 20 minutes to complete, depending on the hardware resources available on the host machine. Once complete, a success message appears.
 
 ```hideClipboard bash {2}
 # Output condensed for readability
@@ -314,20 +334,27 @@ sudo ./earthly.sh +build-all-images
 Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
 ```
 
-This command may take 15-20 minutes to finish depending on the hardware resources of the host machine. Upon completion,
-the command will display the manifest, as shown in the example below, that you will use in your cluster profile later in
-this tutorial. Note that the `system.xxxxx` attribute values in the manifest example are the same as what you defined
-earlier in the `.arg` file.
-
 Copy and save the output attributes in a notepad or clipboard to use later in your cluster profile.
 
-```bash
+```yaml
 pack:
   content:
     images:
       - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
+  # Below config is default value, please uncomment if you want to modify default values
+  #drain:
+    #cordon: true
+    #timeout: 60 # The length of time to wait before giving up, zero means infinite
+    #gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used
+    #ignoreDaemonSets: true
+    #deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)
+    #force: true # Continue even if there are pods that do not declare a controller
+    #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
+    #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
 options:
   system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
+
+
   system.registry: spectrocloud
   system.repo: ubuntu
   system.k8sDistribution: k3s
@@ -337,18 +364,14 @@ options:
   system.osVersion: 22.04
 ```
 
-## View Artifacts
-
-After completing the build process, list the edge installer ISO image and checksum by issuing the following command from
-the `CanvOS` directory.
+Confirm that the Edge installer ISO and its checksum have been created correctly.
 
 ```bash
 ls build/
 ```
 
 ```hideClipboard bash
-palette-edge-installer.iso
-palette-edge-installer.iso.sha256
+palette-edge-installer.iso palette-edge-installer.iso.sha256
 ```
 
 Export the path to the ISO file, the `build` directory, in the `ISOFILEPATH` local variable. Later in the tutorial, you
@@ -359,9 +382,7 @@ export ISOFILEPATH=$PWD/build
 echo $ISOFILEPATH
 ```
 
-List the Docker images to review the created provider images. By default, provider images are created for all the
-Palette-supported Kubernetes versions. You can identify the provider images by the image tag value you used in the
-`.arg` file's `CUSTOM_TAG` variable.
+List the container images to confirm that the provider images were built successfully.
 
 ```shell
 sudo docker images --filter=reference='*/*:*demo*'
@@ -376,12 +397,10 @@ spectrocloud/ubuntu   k3s-1.33.5-v4.7.16-demo_linux_amd64   9d1ced2fee15   32 mi
 
 ## Push Provider Images
 
-Push the provider images to the image registry specified in the `.arg` file so that you can reference it when creating
-the cluster profile. Issue the following command to log in to Docker Hub. Provide your Docker ID and password when
-prompted.
+To use the provider image with your Edge deployment, push it to the image registry specified in the .arg file. Issue the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
 
 ```bash
-docker login
+sudo docker login
 ```
 
 ```text hideClipboard
@@ -391,15 +410,11 @@ Login Succeeded
 Once authenticated, push the provider image to the registry so that your Edge host can download it during the cluster
 deployment.
 
-Since we used the provider image compatible with K3s v1.33 in the cluster profile, use the following command to push the
-provider image compatible with K3s v1.33 to the image registry. If you want to use the other provider image, push that
-version to the image registry.
-
 ```bash
-sudo docker push [REGISTRY-HOSTNAME]/ubuntu:k3s-1.33.5-v4.7.16-demo
+sudo docker push $IMAGE_REGISTRY/ubuntu:k3s-1.33.5-v4.7.16-$CUSTOM_TAG
 ```
 
-## Provision Virtual Machines
+## Provision Edge Virtual Machines
 
 In this section, you will create a VM template in VMware vCenter from the Edge installer ISO image and clone that VM
 template to provision three VMs. Think of a VM template as a snapshot that can be used to provision new VMs. You cannot
@@ -411,7 +426,7 @@ image. Later, it will use [GOVC](https://github.com/vmware/govmomi/tree/main/gov
 provision three VMs. You do not have to install Packer or GOVC in your Linux development environment. You will use our
 official tutorials container that already contains the required tools. <br />
 
-### Create a VM Template
+#### Create a VM Template
 
 You will use the `heredoc` script to create a VM template. The script prompts you to enter your VMware vCenter
 environment details and saves them as environment variables in a file named `.packerenv`. Packer reads the environment
@@ -432,7 +447,7 @@ listed in the table.
 | `PKR_VAR_vcenter_datastore`     | Datastore name          | Switch to the **Storage** view in your vSphere client. The datastore name is displayed in the left navigation tree.                                      |
 | `PKR_VAR_vcenter_network`       | Network name            | Switch to the **Networking** view in your vSphere client. The network name is displayed in the left navigation tree.                                     |
 
-Use the `heredoc` script to create the `.packerenv` file shown below that contains the VMware vCenter details as
+Issue the following command to create the `heredoc` script to generate the `.packerenv` file shown below that contains the VMware vCenter details as
 environment variables.
 
 ```bash
@@ -554,7 +569,7 @@ is an explanation of the options and sub-commands used below:
 
   Should you need to change the VM template name or VM settings defined in the `vsphere.hcl` file, or review the Packer
   script, you must open a bash session into the container using the
-  `docker run --interactive --tty --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.3.0 bash`
+  `sudo docker run --interactive --tty --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.3.0 bash`
   command, and change to the `edge/vmware/packer` directory to make the modifications. After you finish the
   modifications, issue the `packer build -force --var-file=vsphere.hcl build.pkr.hcl` command inside the container to
   trigger the Packer build process. This command creates a VM template, so that you can skip the next step.
@@ -566,11 +581,11 @@ also delete any existing `packer_cache` before uploading and keeping a copy of t
 `packer_cache` directory in the specified datastore.
 
 ```bash
-docker run --interactive --tty --rm \
+sudo docker run --interactive --tty --rm \
   --env-file .packerenv \
   --env-file .goenv \
   --volume "${ISOFILEPATH}:/edge/vmware/packer/build" \
-  ghcr.io/spectrocloud/tutorials:1.3.0 d \
+  ghcr.io/spectrocloud/tutorials:1.3.0 \
   sh -c "source /edge/vmware/clone_vm_template/setenv.sh && cd /edge/vmware/packer/ && packer init build.pkr.hcl && packer build -force --var-file=vsphere.hcl build.pkr.hcl"
 ```
 
@@ -590,7 +605,7 @@ Build 'vsphere-iso.edge-template' finished after 7 minutes 13 seconds.
 --> vsphere-iso.edge-template: palette-edge-template
 ```
 
-### Provision VMs
+#### Provision VMs
 
 Once Packer creates the VM template, you can use the template when provisioning VMs. In the next steps, you will use the
 [GOVC](https://github.com/vmware/govmomi/tree/main/govc#govc) tool to deploy a VM and reference the VM template that
@@ -598,7 +613,7 @@ Packer created. Remember that the VM instances you are deploying simulate bare m
 
 GOVC requires the same VMware vCenter details as the environment variables you defined earlier in the `.goenv` file.
 
-The next step is to use the following `docker run` command to clone the VM template and provision three VMs. Here is an
+The next step is to use the following `docker run` command to clone the VM template and provision three VMs. This command may require the use of `sudo`. Here is an
 explanation of the options and sub-commands used below:
 
 - The `--env-file` option reads the `.goenv` file in our official `ghcr.io/spectrocloud/tutorials:1.3.0` tutorials
@@ -643,7 +658,7 @@ export GOVC_FOLDER="${vcenter_folder}"
 Suppose you have changed the VM template name in the previous step or need to change the number of VMs to provision. In
 that case, you must modify the `setenv.sh` script. To do so, you can reuse the container bash session from the previous
 step if it is still active, or you can open another bash session into the container using the
-`docker run --interactive --tty --env-file .goenv ghcr.io/spectrocloud/tutorials:1.1.13 bash` command. If you use an
+`sudo docker run --interactive --tty --env-file .goenv ghcr.io/spectrocloud/tutorials:1.1.13 bash` command. If you use an
 existing container bash session, create the `.goenv` file described above and source it in your container environment.
 Next, change to the `edge/vmware/clone_vm_template` directory to modify the `setenv.sh` script, and issue the
 `./deploy-edge-host.sh` command to deploy the VMs.
@@ -653,9 +668,9 @@ Next, change to the `edge/vmware/clone_vm_template` directory to modify the `set
 Issue the following command to clone the VM template and provision three VMs.
 
 ```bash
-docker run --interactive --tty --rm \
+sudo docker run --interactive --tty --rm \
   --env-file .goenv \
-  ghcr.io/spectrocloud/tutorials:1.3.0 d \
+  ghcr.io/spectrocloud/tutorials:1.3.0 \
   sh -c "cd edge/vmware/clone_vm_template/ && ./deploy-edge-host.sh"
 ```
 
@@ -994,8 +1009,8 @@ Switch back to the `CanvOS` directory in the Linux development environment conta
 following command to delete the Edge hosts.
 
 ```bash
-docker run --interactive --tty --rm --env-file .goenv \
-  ghcr.io/spectrocloud/tutorials:1.1.13 \
+sudo docker run --interactive --tty --rm --env-file .goenv \
+  ghcr.io/spectrocloud/tutorials:1.3.0 \
   sh -c "cd edge/vmware/clone_vm_template/ && ./delete-edge-host.sh"
 ```
 
