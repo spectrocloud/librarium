@@ -83,6 +83,14 @@ are managed by the host cluster. The worker nodes are still deployed on bare-met
 
     ![Activating the Host LXD-Based Control Planes switch](../../../../../static/assets/docs/images/clusters_data-center_maas_profile-lxd-4-7-b.webp)
 
+    :::warning
+
+    We recommend specifying Network Time Protocol (NTP) servers to ensure that the cluster nodes have the correct time.
+    If no NTP servers are specified, it could lead to time drift issues. You can specify this configuration in the
+    **Cluster Config** step.
+
+    :::
+
 12. Configure the control plane and, optionally, worker node pools.
 
     The following input fields apply to MAAS control plane and worker node pools. For a detailed list of input fields
