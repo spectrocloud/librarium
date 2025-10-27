@@ -101,3 +101,20 @@ Failure to remove provisioned resources can result in unexpected costs.
 - Cloud Load Balancing
 - Persistent Disks
 - Cloud Router
+
+#### VMware
+
+- VMs: control planes, workers, High Availability Proxy (HAProxy), and Load Balancers
+- VM Templates
+- VM Clones
+- Cluster-specific VM Folders
+- Static IP and Virtual IP (VIP) address reservations
+- IP and VIP Addresses in use
+- Domain Name System (DNS) Records
+- Datastore leftovers: orphaned VM Disk (VMDK) files and VM directories
+- VM and Storage Snapshots
+- Load Balancers (NSX, Avi, or others specific to the deployment)
+- Firewall Sections and Rules
+- Resource Pools
+- Template Folders
+- Installation ISO Images
