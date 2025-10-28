@@ -92,7 +92,7 @@ experience problems with Kubernetes.
     ```bash
     cat << EOF > .arg
     CUSTOM_TAG=$CUSTOM_TAG
-    IMAGE_REGISTRY=ttl.sh
+    IMAGE_REGISTRY=spectrocloud
     OS_DISTRIBUTION=ubuntu
     IMAGE_REPO=ubuntu
     OS_VERSION=22
