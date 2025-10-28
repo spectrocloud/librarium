@@ -53,7 +53,7 @@ appliance.
 
 | **Layer**      | **Component**                                 | **Version** | **FIPS-compliant** |
 | -------------- | --------------------------------------------- | ----------- | ------------------ |
-| **OS**         | Ubuntu: Immutable [Kairos](https://kairos.io) | 20.04       | :white_check_mark: |
+| **OS**         | Ubuntu: Immutable [Kairos](https://kairos.io) | 22.04       | :white_check_mark: |
 | **Kubernetes** | Palette eXtended Kubernetes Edge (PXK-E)      | 1.32.3      | :white_check_mark: |
 | **CNI**        | Calico                                        | 3.29.2      | :white_check_mark: |
 | **CSI**        | Piraeus                                       | 2.8.1       | :white_check_mark: |

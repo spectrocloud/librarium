@@ -889,6 +889,10 @@ let redirects = [
     from: `/clusters/cluster-management/kubernetes-dashboard/`,
     to: `/clusters/cluster-management/spectro-kubernetes-dashboard/`,
   },
+  {
+    from: `/clusters/public-cloud/azure/azure-disk-encryption/`,
+    to: `/clusters/public-cloud/azure/azure-disk-storage-sse/`,
+  },
   // Self-hosted Palette/VerteX redirects for sidebar refactor
   {
     from: [
