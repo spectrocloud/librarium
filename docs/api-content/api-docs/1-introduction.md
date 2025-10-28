@@ -37,6 +37,13 @@ header name is `Authorization`, and the token is the header value. Refer to the
 [Authorization Token](/user-management/authentication/authorization-token) section to learn more about the authorization
 token.
 
+:::info
+
+[System configuration API endpoints](/api/v1/system) expose sensitive system details and can only be accessed using
+privilege [authorization tokens](/user-management/authentication/authorization-token).
+
+:::
+
 #### API Key
 
 You can use API keys to authenticate with the Palette API. API keys allow you to interact with Palette APIs without
