@@ -55,7 +55,8 @@ To complete this tutorial, you will need the following:
   [vSphere Networking](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-networking-7-0.html)
   guide from VMware to configure a DHCP server on the network.
 
-- A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture and the following minimum hardware configuration:
+- A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture and the following
+  minimum hardware configuration:
 
   - 4 CPU
   - 8 GB memory
@@ -68,15 +69,14 @@ To complete this tutorial, you will need the following:
   :::
 
 - The following software installed on the Linux machine:
-  
+
   - [Git](https://git-scm.com/downloads). Ensure git installation by issuing the `git --version` command.
-  - [Earthly](https://earthly.dev/) is installed and available. If you do not install Earthly, you can still
-  build the artifacts, but it would require root privileges, and some of the resulting artifacts will be owned by the
-  root user.
+  - [Earthly](https://earthly.dev/) is installed and available. If you do not install Earthly, you can still build the
+    artifacts, but it would require root privileges, and some of the resulting artifacts will be owned by the root user.
   - An image management tool with `sudo` privileges such as [Docker](https://docs.docker.com/engine/install/) or
-  [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and available. When
-  installing these tools, avoid using `snap` as this will create an isolated sandboxed environment that will not be
-  accessible by the commands used in this tutorial. Use `apt` instead.  
+    [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and available.
+    When installing these tools, avoid using `snap` as this will create an isolated sandboxed environment that will not
+    be accessible by the commands used in this tutorial. Use `apt` instead.
 
   :::info
 
@@ -149,20 +149,20 @@ git checkout v4.7.16
 CanvOS requires arguments such as image tag, registry, repository, and OS distribution. The arguments are defined in the
 `.arg` file. In this step, you will create the `.arg` file and define all the required arguments.
 
-Set a custom tag for the provider images. The tag must be an alphanumeric lowercase string. This tutorial uses
-`demo` as an example. Additionally, replace `spectrocloud` with the name of your registry.
+Set a custom tag for the provider images. The tag must be an alphanumeric lowercase string. This tutorial uses `demo` as
+an example. Additionally, replace `spectrocloud` with the name of your registry.
 
 ```bash
 export CUSTOM_TAG=demo
 export IMAGE_REGISTRY=spectrocloud
 ```
 
-Next, issue the following command to create the `.arg` file with the custom tag. The remaining arguments will use the predefined
-values. For example, this tutorial uses K3s version `1.33.5` as the Kubernetes distribution and Ubuntu as the OS
-distribution. Review the `k8s_version.jason` file in the CanvOS repository for all the supported Kubernetes versions.
+Next, issue the following command to create the `.arg` file with the custom tag. The remaining arguments will use the
+predefined values. For example, this tutorial uses K3s version `1.33.5` as the Kubernetes distribution and Ubuntu as the
+OS distribution. Review the `k8s_version.jason` file in the CanvOS repository for all the supported Kubernetes versions.
 
-:::warning
-If you are using a CanvOS tag that is earlier than v4.4.12, the `k8s_version.json` file does not exist in those tags. In that case, review the `Earthfile` file in the CanvOS repository for all supported Kubernetes versions.
+:::warning If you are using a CanvOS tag that is earlier than v4.4.12, the `k8s_version.json` file does not exist in
+those tags. In that case, review the `Earthfile` file in the CanvOS repository for all supported Kubernetes versions.
 :::
 
 Using the arguments defined in the `.arg` file, the final provider images you generate will have the following naming
@@ -254,7 +254,6 @@ main configuration blocks:
 
   :::
 
-
 Export your Palette registration token and Edge host login credentials.
 
 ```bash
@@ -290,14 +289,15 @@ The #cloud-config header is required by the cloud-init standard.
 
 :::
 
-
 Confirm that the file was created correctly.
 
 ```bash
 cat user-data
 ```
 
-The output should show your user data file, with the value of your Palette registration token assigned to the `edgeHostToken` parameter, as well as the user and password to be created. This tutorial uses `kairos` as an example for both the username and password.
+The output should show your user data file, with the value of your Palette registration token assigned to the
+`edgeHostToken` parameter, as well as the user and password to be created. This tutorial uses `kairos` as an example for
+both the username and password.
 
 ```hideClipboard bash
 #cloud-config
@@ -320,12 +320,12 @@ install:
 
 Issue the following command to start the build process.
 
-
 ```bash
 sudo ./earthly.sh +build-all-images
 ```
 
-The build may take 15 to 20 minutes to complete, depending on the hardware resources available on the host machine. Once complete, a success message appears.
+The build may take 15 to 20 minutes to complete, depending on the hardware resources available on the host machine. Once
+complete, a success message appears.
 
 ```hideClipboard bash {2}
 # Output condensed for readability
@@ -342,17 +342,20 @@ pack:
       - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
   # Below config is default value, please uncomment if you want to modify default values
   #drain:
-    #cordon: true
-    #timeout: 60 # The length of time to wait before giving up, zero means infinite
-    #gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used
-    #ignoreDaemonSets: true
-    #deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)
-    #force: true # Continue even if there are pods that do not declare a controller
-    #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
-    #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
+  #cordon: true
+  #timeout: 60 # The length of time to wait before giving up, zero means infinite
+  #gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used
+  #ignoreDaemonSets: true
+  #deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)
+  #force: true # Continue even if there are pods that do not declare a controller
+  #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
+  #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
 options:
-  system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
-
+  system.uri:
+    "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo
+    }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{
+    .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{
+    .spectro.pack.edge-native-byoi.options.system.customTag }}"
 
   system.registry: spectrocloud
   system.repo: ubuntu
@@ -387,7 +390,7 @@ List the container images to confirm that the provider images were built success
 sudo docker images --filter=reference='*/*:*demo*'
 ```
 
-```hideClipboard bash 
+```hideClipboard bash
 REPOSITORY            TAG                                   IMAGE ID       CREATED          SIZE
 spectrocloud/ubuntu   k3s-1.33.5-v4.7.16-demo               9d1ced2fee15   32 minutes ago   4.41GB
 spectrocloud/ubuntu   k3s-1.33.5-v4.7.16-demo_linux_amd64   9d1ced2fee15   32 minutes ago   4.41GB
@@ -396,7 +399,8 @@ spectrocloud/ubuntu   k3s-1.33.5-v4.7.16-demo_linux_amd64   9d1ced2fee15   32 mi
 
 ## Push Provider Images
 
-To use the provider image with your Edge deployment, push it to the image registry specified in the .arg file. Issue the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
+To use the provider image with your Edge deployment, push it to the image registry specified in the .arg file. Issue the
+following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
 
 ```bash
 sudo docker login
@@ -416,9 +420,9 @@ sudo docker push $IMAGE_REGISTRY/ubuntu:k3s-1.33.5-v4.7.16-$CUSTOM_TAG
 ## Provision Edge Virtual Machines
 
 In this section, you will create a VM template in VMware vCenter from the Edge installer ISO image and clone that VM
-template to provision three VMs. Think of a VM template as an static blueprint that can be used to create new and consistent VMs. You cannot
-easily modify templates after you create them, so cloning the VM template will ensure all newly created VMs have _consistent_ guest OS,
-dependencies, and user data configurations installed.
+template to provision three VMs. Think of a VM template as an static blueprint that can be used to create new and
+consistent VMs. You cannot easily modify templates after you create them, so cloning the VM template will ensure all
+newly created VMs have _consistent_ guest OS, dependencies, and user data configurations installed.
 
 This tutorial example will use [Packer](https://www.packer.io/) to create a VM template from the Edge installer ISO
 image. Later, it will use [GOVC](https://github.com/vmware/govmomi/tree/main/govc#govc) to clone the VM template to
@@ -446,8 +450,8 @@ listed in the table.
 | `PKR_VAR_vcenter_datastore`     | Datastore name          | Switch to the **Storage** view in your vSphere client. The datastore name is displayed in the left navigation tree.                                      |
 | `PKR_VAR_vcenter_network`       | Network name            | Switch to the **Networking** view in your vSphere client. The network name is displayed in the left navigation tree.                                     |
 
-Issue the following command to create the `heredoc` script to generate the `.packerenv` file shown below that contains the VMware vCenter details as
-environment variables.
+Issue the following command to create the `heredoc` script to generate the `.packerenv` file shown below that contains
+the VMware vCenter details as environment variables.
 
 ```bash
 cat << EOF > .packerenv
@@ -462,12 +466,13 @@ PKR_VAR_vcenter_datastore=$(read -ep 'Enter vCenter Datastore name: ' vcenter_da
 PKR_VAR_vcenter_network=$(read -ep 'Enter vCenter Network name: ' vcenter_network && echo $vcenter_network)
 EOF
 ```
+
 :::warning
 
-Avoid using parenthesis `( )` in your password as the `heredoc` script will interpret this as a special escape character.
+Avoid using parenthesis `( )` in your password as the `heredoc` script will interpret this as a special escape
+character.
 
-:::
-View the file to ensure you have filled in the details correctly.
+::: View the file to ensure you have filled in the details correctly.
 
 ```bash
 cat .packerenv
@@ -616,8 +621,8 @@ Packer created. Remember that the VM instances you are deploying simulate bare m
 
 GOVC requires the same VMware vCenter details as the environment variables you defined earlier in the `.goenv` file.
 
-The next step is to use the following `docker run` command to clone the VM template and provision three VMs. This command may require the use of `sudo`. Here is an
-explanation of the options and sub-commands used below:
+The next step is to use the following `docker run` command to clone the VM template and provision three VMs. This
+command may require the use of `sudo`. Here is an explanation of the options and sub-commands used below:
 
 - The `--env-file` option reads the `.goenv` file in our official `ghcr.io/spectrocloud/tutorials:1.3.0` tutorials
   container.
@@ -777,17 +782,20 @@ pack:
       - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
   # Below config is default value, please uncomment if you want to modify default values
   #drain:
-    #cordon: true
-    #timeout: 60 # The length of time to wait before giving up, zero means infinite
-    #gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used
-    #ignoreDaemonSets: true
-    #deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)
-    #force: true # Continue even if there are pods that do not declare a controller
-    #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
-    #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
+  #cordon: true
+  #timeout: 60 # The length of time to wait before giving up, zero means infinite
+  #gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used
+  #ignoreDaemonSets: true
+  #deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)
+  #force: true # Continue even if there are pods that do not declare a controller
+  #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
+  #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
 options:
-  system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
-
+  system.uri:
+    "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo
+    }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{
+    .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{
+    .spectro.pack.edge-native-byoi.options.system.customTag }}"
 
   system.registry: spectrocloud
   system.repo: ubuntu
@@ -807,7 +815,7 @@ Click on the **Next layer** button to add the following Kubernetes layer to your
 
 | **Pack Type** | **Registry** | **Pack Name**         | **Pack Version** |
 | ------------- | ------------ | --------------------- | ---------------- |
-| Kubernetes    | Public Repo  | Palette Optimized K3s | `1.33.5`          |
+| Kubernetes    | Public Repo  | Palette Optimized K3s | `1.33.5`         |
 
 The pack version must match the version pushed to the image registry. The `system.uri` attribute of the BYOOS pack will
 reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}`
@@ -989,7 +997,6 @@ public NodePort URL. This prevents the browser from caching an unresolved DNS re
 
 :::
 
-
 ![Screenshot of successfully accessing the Hello Universe application.](/tutorials/edge/clusters_edge_deploy-cluster_hello-universe_4-7.webp)
 
 You have successfully provisioned an Edge cluster and deployed the Hello Universe application on it.
@@ -1000,7 +1007,6 @@ The following steps will guide you in cleaning up your environment, including th
 hosts.
 
 ### Delete the Cluster, Profile, and Edge Registrations
-
 
 In Palette, display the cluster details page. Click on the **Settings** button to expand the **drop-down Menu**, and
 select the **Delete Cluster** option, as shown in the screenshot below.
@@ -1038,7 +1044,7 @@ sudo docker run --interactive --tty --rm --env-file .goenv \
 ### Delete Edge Artifacts
 
 If you want to delete Edge artifacts from your Linux development environment, delete the Edge installer ISO image and
-its checksum by issuing the following commands from the `CanvOS` directory. 
+its checksum by issuing the following commands from the `CanvOS` directory.
 
 ```bash
 sudo rm build/palette-edge-installer.iso
