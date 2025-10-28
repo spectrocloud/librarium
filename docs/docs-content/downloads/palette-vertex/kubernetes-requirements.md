@@ -12,8 +12,8 @@ keywords: ["enterprise", "vertex"]
 <!-- prettier-ignore-start -->
 
 The following table presents the Kubernetes version corresponding to each Palette version for
-[VMware](../../vertex/install-palette-vertex/install-on-vmware/install-on-vmware.md) and
-[Kubernetes](../../vertex/install-palette-vertex/install-on-kubernetes/install-on-kubernetes.md) installations.
+[VMware](../../self-hosted-setup/vertex/vmware/install/install.md#kubernetes-requirements) and
+[Kubernetes](../../self-hosted-setup/vertex/kubernetes/install/install.md#kubernetes-requirements) installations.
 Additionally, for VMware installations, it provides the download URLs for the required Operating System and Kubernetes
 distribution OVA.
 

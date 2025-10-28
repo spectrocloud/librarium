@@ -59,8 +59,8 @@ Palette environments. The default registries are listed below:
 
 Palette VerteX comes with a default OCI registry that only contains FIPS compliant packs. Non-FIPS compliant packs are
 not available in Palette VerteX by default and must explicitly be added to Palette VerteX. Refer to the
-[Use non-FIPS Packs](../../vertex/system-management/enable-non-fips-settings/enable-non-fips-settings.md) guide to learn
-how to add non-FIPS packs registries to Palette VerteX.
+[Use non-FIPS Packs](../../self-hosted-setup/vertex/system-management/enable-non-fips-settings/use-non-fips-addon-packs.md)
+guide to learn how to add non-FIPS packs registries to Palette VerteX.
 
 :::
 

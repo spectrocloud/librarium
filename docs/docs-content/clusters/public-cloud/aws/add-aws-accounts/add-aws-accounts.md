@@ -37,12 +37,12 @@ Use the steps below to add an AWS cloud account using static access credentials.
 
 #### Prerequisites
 
-- A Palette account with [tenant admin](../../../tenant-settings/tenant-settings.md) access.
+- A Palette account with [tenant admin](../../../../tenant-settings/tenant-settings.md) access.
 
 - An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or
   [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette.
 
-- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM
+- An AWS account with the [required IAM policies](../required-iam-policies.md) assigned to the Palette IAM user or IAM
   role.
 
 #### Add AWS Account to Palette
@@ -61,7 +61,7 @@ Use the steps below to add an AWS cloud account using Security Token Service (ST
 
 #### Prerequisites
 
-- A Palette account with [tenant admin](../../../tenant-settings/tenant-settings.md) access.
+- A Palette account with [tenant admin](../../../../tenant-settings/tenant-settings.md) access.
 
 - If you are using a self-hosted instance of Palette or VerteX, you must configure an AWS account at the instance-level
   to allow tenants to add AWS accounts using STS. For more information, refer to the
@@ -70,7 +70,7 @@ Use the steps below to add an AWS cloud account using Security Token Service (ST
 - An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or
   [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette.
 
-- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM
+- An AWS account with the [required IAM policies](../required-iam-policies.md) assigned to the Palette IAM user or IAM
   role.
 
 #### Add AWS Account to Palette
@@ -124,12 +124,12 @@ Use the steps below to add an AWS cloud account using static access credentials.
 
 #### Prerequisites
 
-- A Palette account with [tenant admin](../../../tenant-settings/tenant-settings.md) access.
+- A Palette account with [tenant admin](../../../../tenant-settings/tenant-settings.md) access.
 
 - An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or
   [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette.
 
-- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM
+- An AWS account with the [required IAM policies](../required-iam-policies.md) assigned to the Palette IAM user or IAM
   role.
 
 #### Add AWS GovCloud Account to Palette
@@ -172,16 +172,16 @@ Use the steps below to add an AWS cloud account using STS credentials.
 
 #### Prerequisites
 
-- A Palette account with [tenant admin](../../../tenant-settings/tenant-settings.md) access.
+- A Palette account with [tenant admin](../../../../tenant-settings/tenant-settings.md) access.
 
 - If you are using a self-hosted instance of Palette or VerteX, you must configure an AWS account at the instance-level
   to allow tenants to add AWS accounts using STS. For more information, refer to the
-  [Add AWS Accounts Using STS](../../../public-cloud/aws/add-aws-accounts/configure-aws-sts-account.md) guide.
+  [Add AWS Accounts Using STS](./configure-aws-sts-account.md) guide.
 
 - An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or
   [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette.
 
-- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM
+- An AWS account with the [required IAM policies](../required-iam-policies.md) assigned to the Palette IAM user or IAM
   role.
 
 #### Add AWS GovCloud Account to Palette
@@ -225,9 +225,9 @@ Your newly added AWS cloud account is listed under the AWS section.
 ## AWS Secret Cloud Account (US)
 
 You can configure [AWS Secret Cloud](https://aws.amazon.com/federal/secret-cloud/) accounts in
-[Palette VerteX](../../../vertex/vertex.md) to deploy AWS EKS clusters in the AWS Secret region. Depending on your
-organization's compliance requirements, you can choose between standard authentication (standard access credentials) or
-secure compliance validation using your SC2S Access Portal (SCAP) credentials.
+[Palette VerteX](../../../../self-hosted-setup/vertex/vertex.md) to deploy AWS EKS clusters in the AWS Secret region.
+Depending on your organization's compliance requirements, you can choose between standard authentication (standard
+access credentials) or secure compliance validation using your SC2S Access Portal (SCAP) credentials.
 
 :::preview
 
@@ -254,20 +254,21 @@ secure compliance validation using your SC2S Access Portal (SCAP) credentials.
 
 ### Prerequisites
 
-- [Palette VerteX installed](../../../vertex/install-palette-vertex/install-palette-vertex.md) and
-  [tenant admin](../../../tenant-settings/tenant-settings.md) access.
+- [Palette VerteX installed](../../../../self-hosted-setup/vertex/vertex.md) and
+  [tenant admin](../../../../tenant-settings/tenant-settings.md) access.
 
-- The **AwsSecretPartition** [feature flag](../../../vertex/system-management/feature-flags.md) enabled in the Palette
-  VerteX [system console](../../../vertex/system-management/system-management.md).
+- The **AwsSecretPartition** [feature flag](../../../../self-hosted-setup/vertex/system-management/feature-flags.md)
+  enabled in the Palette VerteX
+  [system console](../../../../self-hosted-setup/vertex/system-management/system-management.md#access-the-system-console).
 
 - An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or
   [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette VerteX.
 
-- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette VerteX IAM user or
-  IAM role.
+- An AWS account with the [required IAM policies](../required-iam-policies.md) assigned to the Palette VerteX IAM user
+  or IAM role.
 
 - A secure connection to your AWS Secret Cloud account, such as via a
-  [Private Cloud Gateway (PCG)](../../../clusters/pcg/pcg.md), Wide Area Network tunnel, or AWS Private Link.
+  [Private Cloud Gateway (PCG)](../../../../clusters/pcg/pcg.md), Wide Area Network tunnel, or AWS Private Link.
 
 ### Static Access Credentials
 
@@ -307,7 +308,7 @@ Use the steps below to add an AWS Secret Cloud account using static access crede
 8. If you are using a PCG to connect to your AWS Secret Cloud account to Palette VerteX, toggle **Connect Private Cloud
    Gateway** on, and select a **Private Cloud Gateway** from the list. This list is populated automatically with the
    **Private Cloud Gateways** listed in **Tenant Settings**. For more information, refer to the
-   [Private Cloud Gateway](../../../clusters/pcg/pcg.md) page.
+   [Private Cloud Gateway](../../../../clusters/pcg/pcg.md) page.
 
 9. Click **Confirm** to create your AWS Secret Cloud account.
 
@@ -360,7 +361,7 @@ Use the steps below to add an AWS Secret Cloud account using SCAP secure complia
 9. If you are using a PCG to connect to your AWS Secret Cloud account to Palette VerteX, toggle **Connect Private Cloud
    Gateway** on, and select a **Private Cloud Gateway** from the list. This list is populated automatically with the
    **Private Cloud Gateways** listed in **Tenant Settings**. For more information, refer to the
-   [Private Cloud Gateway](../../../clusters/pcg/pcg.md) page.
+   [Private Cloud Gateway](../../../../clusters/pcg/pcg.md) page.
 
 10. Click **Confirm** to create your AWS Secret Cloud account.
 
@@ -375,6 +376,6 @@ newly added AWS cloud account is listed under the AWS section.
 Now that you have added an AWS account to Palette, you can start deploying Kubernetes clusters to your AWS account. To
 learn how to get started with deploying Kubernetes clusters to AWS, check out the following guides:
 
-- [Create and Manage AWS IaaS Cluster](create-cluster.md)
-- [Create and Manage AWS EKS Cluster](eks.md)
-- [EKS Hybrid Nodes](./eks-hybrid-nodes/eks-hybrid-nodes.md)
+- [Create and Manage AWS IaaS Cluster](../create-cluster.md)
+- [Create and Manage AWS EKS Cluster](../eks.md)
+- [EKS Hybrid Nodes](../eks-hybrid-nodes/eks-hybrid-nodes.md)

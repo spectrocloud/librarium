@@ -80,7 +80,7 @@ are managed by the host cluster. The worker nodes are still deployed on bare-met
 11. To use a MAAS bare metal host as a hypervisor for your control plane components, activate the **Host LXD-Based
     Control Planes** switch. Select **Next**.
 
-    ![Activating the Host LXD-Based Control Planes switch](../../../../../static/assets/docs/images/clusters_data-center_maas_profile-lxd-4-7-b.webp)
+    ![Activating the Host LXD-Based Control Planes switch](/clusters_data-center_maas_profile-lxd-4-7-b.webp)
 
     :::warning
 
@@ -152,7 +152,7 @@ The cluster **Overview** tab displays the status and health of your cluster, as 
 11. When creating a workload cluster that will leverage MAAS LXD or will use an existing host LXD-based control plane,
     leave the **Host LXD-Based Control Planes** option disabled. Select **Next**.
 
-    ![Activating the Host LXD-Based Control Planes switch](../../../../../static/assets/docs/images/clusters_data-center_maas_profile-lxd-4-7-b.webp)
+    ![Activating the Host LXD-Based Control Planes switch](/clusters_data-center_maas_profile-lxd-4-7-b.webp)
 
 12. Configure the control plane and worker node pools. The following input fields apply to MAAS control plane and worker
     node pools. For a detailed list of input fields that are common across environments and their usage, refer to our
@@ -179,7 +179,7 @@ The cluster **Overview** tab displays the status and health of your cluster, as 
 
     :::
 
-    ![Screenshot of Cloud Configuration section in Node pools configuration](../../../../../static/assets/docs/images/clusters_data-center_maas_profile-lxd-cloud-config_4-7-b.webp)
+    ![Screenshot of Cloud Configuration section in Node pools configuration](/clusters_data-center_maas_profile-lxd-cloud-config_4-7-b.webp)
 
 13. On the **Optional cluster settings** page, select from among the items on the left menu to configure additional
     options. Refer to applicable guide for additional information.

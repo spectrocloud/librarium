@@ -44,8 +44,8 @@ The following components have been updated for Palette version 4.7.27.
 
 <!-- prettier-ignore-start -->
 
-- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) have now been updated to use the following components internally:
+- The [Palette Management Appliance](../self-hosted-setup/palette/management-appliance/management-appliance.md) and
+  [VerteX Management Appliance](../self-hosted-setup/vertex/management-appliance/management-appliance.md) have now been updated to use the following components internally:
 
   - <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/?pack=kubernetes" /> 1.32.8
   - <VersionedLink text="Calico" url="/integrations/?pack=cni-calico" />  3.30.2
@@ -58,7 +58,7 @@ The following components have been updated for Palette version 4.7.27.
 
 <!-- prettier-ignore-start -->
 
-- Fixed an issue that prevented the FIPS-compliant version of the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack from operating correctly on [Palette VerteX](../vertex/vertex.md).
+- Fixed an issue that prevented the FIPS-compliant version of the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack from operating correctly on [Palette VerteX](../self-hosted-setup/vertex/vertex.md).
 
 <!-- prettier-ignore-end -->
 
@@ -160,7 +160,7 @@ The following components have been updated for Palette version 4.7.27.
   [Azure IaaS clusters](../clusters/public-cloud/azure/create-azure-cluster.md) using static placement.
 
 - Fixed an issue that prevented the deletion of [EKS clusters](../clusters/public-cloud/aws/eks.md) deployed in
-  [AWS secret regions](../clusters/public-cloud/aws/add-aws-accounts.md).
+  [AWS secret regions](../clusters/public-cloud/aws/add-aws-accounts/add-aws-accounts.md).
 
 #### Deprecations and Removals
 

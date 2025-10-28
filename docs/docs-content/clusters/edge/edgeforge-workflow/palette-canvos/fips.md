@@ -67,9 +67,9 @@ This page guides you through the process of building FIPS-compliant Edge Install
   [Deploy Cluster with a Private Provider Registry](../../site-deployment/deploy-custom-registries/deploy-private-registry.md)
   guide for instructions on how to configure the credentials.
 
-- A [VerteX](/docs/docs-content/vertex/vertex.md) or Palette account. Refer to
-  [Palette VerteX](/docs/docs-content/vertex/vertex.md#access-palette-vertex) for information on how to set up a VerteX
-  account.
+- A [VerteX](../../../../self-hosted-setup/vertex/vertex.md) or Palette account. Refer to
+  [Palette VerteX](../../../../self-hosted-setup/vertex/vertex.md#access-palette-vertex) for information on how to set
+  up a VerteX account.
 
 - VerteX registration token for pairing Edge hosts with VerteX or a Palette registration token. You will need tenant
   admin access to VerteX to generate a new registration token. For detailed instructions, refer to the

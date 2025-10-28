@@ -59,7 +59,8 @@ compliance with the Cryptographic Module Validation Program (CMVP).
 Our Spectro Cloud Cryptographic Module is a general-purpose cryptographic library. The FIPS-enforced Palette VerteX
 edition incorporates the module in the Kubernetes Management Platform and the infrastructure components of target
 clusters to protect the sensitive information of regulated industries. Palette VerteX supports FIPS at the tenant level.
-For more information about the FIPS-enforced Palette edition, check out [Palette VerteX](vertex/vertex.md).
+For more information about the FIPS-enforced Palette edition, check out
+[Palette VerteX](../self-hosted-setup/vertex/vertex.md).
 
 ## Joint Certification Program
 
