@@ -202,7 +202,8 @@ The following requirements apply to tags:
 
     :::warning
 
-    If you select **Static Placement**, you must create a PCG IPAM pool before deploying clusters. Refer to the
+    If you select **Static Placement**, you must create a PCG IPAM pool before deploying clusters. Autoscaling is not
+    supported for VMware vSphere clusters deployed using IPAM node pools with static placement configured. Refer to the
     [Create and Manage IPAM Node Pools](../manage-pcg/create-manage-node-pool.md) guide for more information.
 
     :::
