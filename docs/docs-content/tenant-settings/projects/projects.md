@@ -59,22 +59,30 @@ You can find the project ID in the top-right corner of the project dashboard.
 
 ## Project Tags
 
-Project tags are key-value pairs that help you organize and categorize your projects. Project tags are displayed in the
+Project tags are key-value pairs that help you organize and categorize your projects. Project tags are displayed on the
 **Project Overview** page.
 
 ![Project tags highlighted in the Project Overview page](/tenant-settings_projects_project-tags-overview_4-8.webp)
 
-They are also displayed in the **Projects** page in **Tenant Admin**.
+Project tags are also displayed on the **Projects** page in the **Tenant Admin** scope.
 
 ![Project tags highlighted in the Tenant Admin Projects page](/tenant-settings_projects_project-tags-admin_4-8.webp)
 
 ### Add or Delete Project Tags
 
-You can add tags when [creating a project](./create-manage-projects.md#create-a-project) or from the **Projects** page
-in **Tenant Admin** for existing projects.
+You can add tags when [creating a project](./create-manage-projects.md#create-a-project) or add them to existing projects. To add, edit, or delete tags for an existing project, you must be in the **Tenant Admin** scope.
 
-To edit the tags of an existing project, click the three-dot menu next to the project name and select **Edit**. Add or
-delete tags within the **Tags (Optional)** field, then click **Confirm**.
+Use the following steps to modify the tags of an existing project:
+
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin. Ensure you are in the **Tenant Admin** scope.
+
+2. From the left main menu, select **Projects**. 
+
+3. Select the three-dot menu beside the applicable project and choose **Edit**. 
+
+4. Use the **Tags (Optional)** field to add or delete tags as necessary. To edit an existing tag, you must delete the old tag and create a new one.
+
+5. **Confirm** your changes when finished.
 
 ## Resources
 
