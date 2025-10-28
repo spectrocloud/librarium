@@ -416,8 +416,8 @@ sudo docker push $IMAGE_REGISTRY/ubuntu:k3s-1.33.5-v4.7.16-$CUSTOM_TAG
 ## Provision Edge Virtual Machines
 
 In this section, you will create a VM template in VMware vCenter from the Edge installer ISO image and clone that VM
-template to provision three VMs. Think of a VM template as a snapshot that can be used to provision new VMs. You cannot
-modify templates after you create them, so cloning the VM template will ensure all VMs have _consistent_ guest OS,
+template to provision three VMs. Think of a VM template as an static blueprint that can be used to create new and consistent VMs. You cannot
+easily modify templates after you create them, so cloning the VM template will ensure all newly created VMs have _consistent_ guest OS,
 dependencies, and user data configurations installed.
 
 This tutorial example will use [Packer](https://www.packer.io/) to create a VM template from the Edge installer ISO
@@ -462,7 +462,11 @@ PKR_VAR_vcenter_datastore=$(read -ep 'Enter vCenter Datastore name: ' vcenter_da
 PKR_VAR_vcenter_network=$(read -ep 'Enter vCenter Network name: ' vcenter_network && echo $vcenter_network)
 EOF
 ```
+:::warning
 
+Avoid using parathesises `( )` in your password as the `heredoc` script will interpret this as a special escape character.
+
+:::
 View the file to ensure you have filled in the details correctly.
 
 ```bash
@@ -657,7 +661,7 @@ export GOVC_FOLDER="${vcenter_folder}"
 Suppose you have changed the VM template name in the previous step or need to change the number of VMs to provision. In
 that case, you must modify the `setenv.sh` script. To do so, you can reuse the container bash session from the previous
 step if it is still active, or you can open another bash session into the container using the
-`sudo docker run --interactive --tty --env-file .goenv ghcr.io/spectrocloud/tutorials:1.1.13 bash` command. If you use an
+`sudo docker run --interactive --tty --env-file .goenv ghcr.io/spectrocloud/tutorials:1.3.0 bash` command. If you use an
 existing container bash session, create the `.goenv` file described above and source it in your container environment.
 Next, change to the `edge/vmware/clone_vm_template` directory to modify the `setenv.sh` script, and issue the
 `./deploy-edge-host.sh` command to deploy the VMs.
@@ -796,13 +800,14 @@ options:
 
 The screenshot below shows you how to reference your provider OS image in a cluster profile by using the utility build
 output with the BYOOS pack.
+
 ![A screenshot of k3s OS layer in a cluster profile.](/tutorials/edge/tutorials_edge_deploy-cluster_byos-pack_4-7.webp)
 
 Click on the **Next layer** button to add the following Kubernetes layer to your cluster profile.
 
 | **Pack Type** | **Registry** | **Pack Name**         | **Pack Version** |
 | ------------- | ------------ | --------------------- | ---------------- |
-| Kubernetes    | Public Repo  | Palette Optimized K3s | `1.33.5          |
+| Kubernetes    | Public Repo  | Palette Optimized K3s | `1.33.5`          |
 
 The pack version must match the version pushed to the image registry. The `system.uri` attribute of the BYOOS pack will
 reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}`
@@ -984,6 +989,7 @@ public NodePort URL. This prevents the browser from caching an unresolved DNS re
 
 :::
 
+
 ![Screenshot of successfully accessing the Hello Universe application.](/tutorials/edge/clusters_edge_deploy-cluster_hello-universe_4-7.webp)
 
 You have successfully provisioned an Edge cluster and deployed the Hello Universe application on it.
@@ -993,7 +999,8 @@ You have successfully provisioned an Edge cluster and deployed the Hello Univers
 The following steps will guide you in cleaning up your environment, including the cluster, cluster profile, and Edge
 hosts.
 
-### Delete Cluster and Profile
+### Delete the Cluster, Profile, and Edge Registrations
+
 
 In Palette, display the cluster details page. Click on the **Settings** button to expand the **drop-down Menu**, and
 select the **Delete Cluster** option, as shown in the screenshot below.
