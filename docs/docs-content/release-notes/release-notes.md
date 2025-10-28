@@ -11,6 +11,13 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 27, 2025 - Release 4.7.29
+
+### Bug Fixes
+
+- Fixed an issue that caused the incorrect configuration of NTP servers on new and existing
+  [MAAS clusters](../clusters/data-center/maas/maas.md).
+
 ## October 24, 2025 - Component Updates {#component-updates-2025-43}
 
 The following components have been updated for Palette version 4.7.27.
@@ -152,6 +159,9 @@ The following components have been updated for Palette version 4.7.27.
   attaching the worker pool subnet to the NAT Gateway for
   [Azure IaaS clusters](../clusters/public-cloud/azure/create-azure-cluster.md) using static placement.
 
+- Fixed an issue that prevented the deletion of [EKS clusters](../clusters/public-cloud/aws/eks.md) deployed in
+  [AWS secret regions](../clusters/public-cloud/aws/add-aws-accounts.md).
+
 #### Deprecations and Removals
 
 - [OpenStack](../clusters/data-center/openstack.md) support in Palette is now deprecated and will be removed in a future
@@ -200,6 +210,17 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - Remote shell access to an Edge host can now be enabled in Palette only if the parameter
   `stylus.site.remoteShell.disable` is omitted or set to `false` in the host’s `user-data` file before the host
   registers with Palette. This change applies to Edge hosts built with Palette agent version 4.7.15 or later.
+
+#### Bug Fixes
+
+- Fixed an issue that prevented DNS server details from displaying correctly in
+  [LocalUI](../clusters/edge/local-ui/local-ui.md).
+- Fixed an issue that caused errors related to the `containerd-sync` service to appear in the logs of
+  [LocalUI](../clusters/edge/local-ui/local-ui.md) clusters.
+- Fixed an issue that caused the incorrect update of the successfully installed pack statuses on
+  [Edge clusters](../clusters/edge/edge.md) following an initial installation failure.
+- Fixed an issue that caused Kubernetes upgrades from 1.30.x to 1.31.x to stall on
+  [Edge clusters](../clusters/edge/edge.md).
 
 ### VerteX
 
