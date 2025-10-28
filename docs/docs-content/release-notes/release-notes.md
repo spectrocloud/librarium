@@ -26,6 +26,10 @@ tags: ["release-notes"]
   system details, so access to them is strictly enforced. Users with general access authorization tokens are no longer
   able to access these endpoints.
 
+- All Palette and VerteX [Clouds API endpoints](/api/v1/clouds) now require
+  [authorization tokens](../user-management/authentication/authorization-token.md) for all requests. Existing
+  integrations must be updated to provide valid authorization tokens, as unauthenticated API calls will now fail.
+
 #### Features
 
 #### Improvements
