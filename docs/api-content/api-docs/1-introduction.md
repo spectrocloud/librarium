@@ -40,7 +40,7 @@ token.
 :::info
 
 [System configuration API endpoints](/api/v1/system) expose sensitive system details and can only be accessed using
-privilege [authorization tokens](/user-management/authentication/authorization-token).
+privileged [authorization tokens](/user-management/authentication/authorization-token).
 
 :::
 
