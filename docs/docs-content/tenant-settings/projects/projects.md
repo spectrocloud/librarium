@@ -73,7 +73,7 @@ Project tags are also displayed on the **Projects** page in the **Tenant Admin**
 You can add tags when [creating a project](./create-manage-projects.md#create-a-project) or add them to existing
 projects. To add, edit, or delete tags for an existing project, you must be in the **Tenant Admin** scope.
 
-Use the following steps to modify the tags of an existing project:
+Use the following steps to modify the tags of an existing project.
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin. Ensure you are in the **Tenant Admin**
    scope.
