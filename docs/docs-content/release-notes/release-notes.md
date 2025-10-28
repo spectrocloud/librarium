@@ -30,6 +30,10 @@ tags: ["release-notes"]
 
 #### Improvements
 
+- Project tags are now displayed in the **Project Overview** page and the **Tenant Admin > Projects** page in Palette.
+  This improvement allows users to identify projects based on their tags. Refer to the
+  [Project Tags](../tenant-settings/projects/projects.md#project-tags) section for more information.
+
 #### Deprecations and Removals
 
 - When creating EKS clusters, the default **Amazon Machine Image (AMI) Type** is now Amazon Linux 2023 (AL2023) Standard
