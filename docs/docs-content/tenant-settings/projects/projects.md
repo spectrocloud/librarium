@@ -57,6 +57,25 @@ You can find the project ID in the top-right corner of the project dashboard.
 
     ![A project ID highlighted in the project dashboard view](/tenant_settings-projects-projects-project_id.webp)
 
+## Project Tags
+
+Project tags are key-value pairs that help you organize and categorize your projects. Project tags are displayed in the
+**Project Overview** page.
+
+![Project tags highlighted in the Project Overview page](/tenant-settings_projects_project-tags-overview_4-8.webp)
+
+They are also displayed in the **Projects** page in **Tenant Admin**.
+
+![Project tags highlighted in the Tenant Admin Projects page](/tenant-settings_projects_project-tags-admin_4-8.webp)
+
+### Add or Delete Project Tags
+
+You can add tags when [creating a project](./create-manage-projects.md#create-a-project) or from the **Projects** page
+in **Tenant Admin** for existing projects.
+
+To edit the tags of an existing project, click the three-dot menu next to the project name and select **Edit**. Add or
+delete tags within the **Tags (Optional)** field, then click **Confirm**.
+
 ## Resources
 
 - [Create a Project](./create-manage-projects.md)
