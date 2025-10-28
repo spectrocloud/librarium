@@ -43,10 +43,12 @@ any applicable PCGs as well as your management plane cluster if you have used th
 
 3. In the **Infrastructure** section, select **Private Cloud Gateways**. Select a PCG with a stuck namespace.
 
-4. From the PCG **Overview** tab, select the **Kubeconfig file** to download the kubeconfig of your PCG.
+4. From the PCG **Overview** tab, select **Kubeconfig file** to download the
+   [kubeconfig](../clusters/cluster-management/kubeconfig.md) of your PCG.
 
 5. Open a terminal session on a machine with [kubectl](https://kubernetes.io/docs/reference/kubectl/) installed and set
-   the location of your kubeconfig file as an environment variable.
+   the location of your kubeconfig file as an environment variable. For more information, refer to our
+   [Kubectl](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide.
 
    ```shell
    export KUBECONFIG=<path-to-PCG-kubeconfig>
@@ -90,7 +92,8 @@ any applicable PCGs as well as your management plane cluster if you have used th
    ./cleanup_pcg.sh
    ```
 
-9. Verify that no `Terminating` namespaces remain.
+9. Run the following command to verify that no `Terminating` namespaces remain. No output indicates a successful cleanup
+   job.
 
    ```shell
    kubectl get namespace --output custom-columns=NAME:metadata.name,STATUS:status.phase | grep Terminating
@@ -107,11 +110,12 @@ any applicable PCGs as well as your management plane cluster if you have used th
 
 2. From the left main menu, select **Enterprise Cluster**.
 
-3. From the enterprise cluster **Overview** tab, select the **Kubernetes Config File** to download the kubeconfig of
-   your management plane cluster.
+3. From the enterprise cluster **Overview** tab, select **Kubernetes Config File** to download the
+   [kubeconfig](../clusters/cluster-management/kubeconfig.md) of your management plane cluster.
 
 4. Open a terminal session on a machine with [kubectl](https://kubernetes.io/docs/reference/kubectl/) installed and set
-   the location of your kubeconfig file as an environment variable.
+   the location of your kubeconfig file as an environment variable. For more information, refer to our
+   [Kubectl](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide.
 
    ```shell
    export KUBECONFIG=<path-to-management-cluster-kubeconfig>
@@ -155,7 +159,8 @@ any applicable PCGs as well as your management plane cluster if you have used th
    ./cleanup_pcg.sh
    ```
 
-8. Verify that no `Terminating` namespaces remain.
+8. Run the following command to verify that no `Terminating` namespaces remain. No output indicates a successful cleanup
+   job.
 
    ```shell
    kubectl get namespace --output custom-columns=NAME:metadata.name,STATUS:status.phase | grep Terminating
@@ -167,27 +172,28 @@ any applicable PCGs as well as your management plane cluster if you have used th
 
 ## Scenario - VMware Resources Remain After Cluster Deletion
 
-The Cluster API (CAPI) upgrade in Palette 4.7 introduced new reconciliation behavior for VSphereDeploymentZone and
-VSphereFailureDomain resources. Prior to Palette 4.7, when deleting VMware vSphere clusters, these resources were not
+The Cluster API (CAPI) upgrade in Palette 4.7 introduced new reconciliation behavior for `VSphereDeploymentZone` and
+`VSphereFailureDomain` resources. Prior to Palette 4.7, when deleting VMware vSphere clusters, these resources were not
 deleted with the cluster and remained on the [PCG](../clusters/pcg/pcg.md). Beginning with Palette 4.7, these resources
 are automatically removed when the cluster is deleted.
 
 After upgrading Palette from 4.6.x to 4.7.x, users may experience slowness or cluster deployment failures when deploying
 VMware vSphere clusters if they deployed VMware vSphere clusters using the PCG prior to 4.7. This is due to the upgraded
-CAPI controller attempting and failing to reconcile corresponding VSphereDeploymentZone and VSphereFailureDomain
-resources leftover on the PCG from pre-4.7 cluster deployments.
+CAPI controller attempting and failing to reconcile `VSphereDeploymentZone` and `VSphereFailureDomain` resources
+leftover on the PCG from pre-4.7 cluster deployments.
 
 To continue deploying VMware vSphere clusters using either a standard PCG or Palette's
 [System Private Gateway](../clusters/pcg/architecture.md#system-private-gateway), you must manually remove all stale
-VSphereDeploymentZone and VSphereFailureDomain resources from your PCG or management plane cluster. This is a one-time
-action that must be performed for each PCG and self-hosted instance.
+`VSphereDeploymentZone` and `VSphereFailureDomain` resources from your PCG or management plane cluster. This is a
+one-time action that must be performed for each PCG and self-hosted instance.
 
 ### Debug Steps
 
-For multi-tenant and dedicated SaaS instances, remove all stale VSphereDeploymentZone and VSphereFailureDomain resources
-from each PCG used to deploy VMware vSphere clusters prior to Palette 4.7. For self-hosted instances, remove all stale
-resources from any applicable PCG as well as your management plane cluster if you used the Palette System Private
-Gateway to deploy VMware vSphere clusters prior to Palette 4.7.
+For multi-tenant and dedicated SaaS instances, remove all stale `VSphereDeploymentZone` and `VSphereFailureDomain`
+resources from each PCG used to deploy VMware vSphere clusters prior to Palette 4.7. For self-hosted instances, remove
+all stale resources from any applicable PCG as well as your management plane cluster if you used the Palette
+[System Private Gateway](../clusters/pcg/architecture.md#system-private-gateway) to deploy VMware vSphere clusters prior
+to Palette 4.7.
 
 <Tabs>
 
@@ -200,10 +206,12 @@ Gateway to deploy VMware vSphere clusters prior to Palette 4.7.
 3. In the **Infrastructure** section, select **Private Cloud Gateways**. Select a PCG used to deploy VMware vSphere
    clusters prior to version 4.7.
 
-4. From the PCG **Overview** tab, select the **Kubeconfig file** to download the kubeconfig of your PCG.
+4. From the PCG **Overview** tab, select **Kubeconfig file** to download the
+   [kubeconfig](../clusters/cluster-management/kubeconfig.md) of your PCG.
 
 5. Open a terminal session on a machine with [kubectl](https://kubernetes.io/docs/reference/kubectl/) installed and set
-   the location of your kubeconfig file as an environment variable.
+   the location of your kubeconfig file as an environment variable. For more information, refer to our
+   [Kubectl](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide.
 
    ```shell
    export KUBECONFIG=<path-to-PCG-kubeconfig>
@@ -246,7 +254,7 @@ Gateway to deploy VMware vSphere clusters prior to Palette 4.7.
    kubectl delete VSphereFailureDomain doc-1667-cluster2 doc-1667-cluster2-cp
    ```
 
-8. Confirm the stale resources have been deleted. In following example, only the PCG resources remain.
+8. Confirm the stale resources have been deleted. In the following example, only the PCG resources remain.
 
    ```shell
    kubectl get VSphereDeploymentZone,VSphereFailureDomain
@@ -271,11 +279,12 @@ Gateway to deploy VMware vSphere clusters prior to Palette 4.7.
 
 2. From the left main menu, select **Enterprise Cluster**.
 
-3. From the enterprise cluster **Overview** tab, select the **Kubernetes Config File** to download the kubeconfig of
-   your management plane cluster.
+3. From the enterprise cluster **Overview** tab, select **Kubernetes Config File** to download the
+   [kubeconfig](../clusters/cluster-management/kubeconfig.md) of your management plane cluster.
 
 4. Open a terminal session on a machine with [kubectl](https://kubernetes.io/docs/reference/kubectl/) installed and set
-   the location of your kubeconfig file as an environment variable.
+   the location of your kubeconfig file as an environment variable. For more information, refer to our
+   [Kubectl](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide.
 
    ```shell
    export KUBECONFIG=<path-to-management-cluster-kubeconfig>
@@ -318,7 +327,7 @@ Gateway to deploy VMware vSphere clusters prior to Palette 4.7.
    kubectl delete VSphereFailureDomain doc-1667-cluster2 doc-1667-cluster2-cp
    ```
 
-7. Confirm the stale resources have been deleted. In following example, only the PCG resources remain.
+7. Confirm the stale resources have been deleted. In the following example, only the PCG resources remain.
 
    ```shell
    kubectl get VSphereDeploymentZone,VSphereFailureDomain
