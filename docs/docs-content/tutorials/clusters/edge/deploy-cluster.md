@@ -464,7 +464,7 @@ EOF
 ```
 :::warning
 
-Avoid using parathesises `( )` in your password as the `heredoc` script will interpret this as a special escape character.
+Avoid using parenthesis `( )` in your password as the `heredoc` script will interpret this as a special escape character.
 
 :::
 View the file to ensure you have filled in the details correctly.
@@ -683,7 +683,7 @@ Palette.
 
 ```bash hideClipboard {7}
 # Sample output for one VM
-Cloning /Datacenter/vm/sp-sudhanshu/palette-edge-template to demo-1...OK
+Cloning /Datacenter/vm/vm-folder/palette-edge-template to demo-1...OK
 Cloned VM demo-1
 Powering on VM demo-1
 Powering on VirtualMachine:vm-13436... OK
