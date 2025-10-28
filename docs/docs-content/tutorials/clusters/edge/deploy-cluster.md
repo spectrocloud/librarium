@@ -179,7 +179,7 @@ IMAGE_REPO=ubuntu
 OS_VERSION=22.04
 K8S_DISTRIBUTION=k3s
 K8S_VERSION=1.33.5
-ISO_NAME=palette-edge-vmw-installer
+ISO_NAME=palette-edge-installer
 ARCH=amd64
 UPDATE_KERNEL=false
 EOF
@@ -604,7 +604,7 @@ Build 'vsphere-iso.edge-template' finished after 7 minutes 13 seconds.
 --> vsphere-iso.edge-template: palette-edge-template
 ```
 
-#### Provision VMs
+### Provision VMs
 
 Once Packer creates the VM template, you can use the template when provisioning VMs. In the next steps, you will use the
 [GOVC](https://github.com/vmware/govmomi/tree/main/govc#govc) tool to deploy a VM and reference the VM template that
@@ -704,7 +704,7 @@ Before deploying a cluster, you must verify Edge host registration status in Pal
 Open a web browser and log in to [Palette](https://console.spectrocloud.com). Navigate to the left **Main Menu** and
 select **Clusters**. Click on the **Edge Hosts** tab and verify the three VMs you created are registered with Palette.
 
-![A screenshot showing the VMs automatically registered with Palette. ](/tutorials/edge/clusters_edge_deploy-cluster_edge-hosts.webp)
+![A screenshot showing the VMs automatically registered with Palette. ](/tutorials/edge/clusters_edge_deploy-cluster_edge-hosts_4-7.webp)
 
 If the three Edge hosts are not displayed in the **Edge hosts** tab, the automatic registration failed. If this happens,
 you can manually register hosts by clicking the **Add Edge Hosts** button and pasting the Edge host ID. Repeat this host
@@ -716,11 +716,11 @@ registration process for each of the three VMs. If you need help, the detailed i
 Once you verify the host registration, the next step is to deploy a cluster. In this section, you will use the Palette
 User Interface (UI) to deploy a cluster that is made up of the three Edge hosts you deployed.
 
-## Create a Cluster Profile
+### Create a Cluster Profile
 
 Validate you are in the **Default** project scope before creating a cluster profile.
 
-![A screenshot of Palette's Default scope selected.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_default-scope.webp)
+![A screenshot of Palette's Default scope selected.](/tutorials/edge/registries-and-packs_deploy-pack_default-scope_4-7.webp)
 
 Next, create a cluster profile with the core infrastructure layers and a manifest of a sample application,
 [Hello Universe](https://github.com/spectrocloud/hello-universe#hello-universe). Navigate to the left **Main Menu** and
@@ -766,35 +766,43 @@ building the Edge artifacts. Copy the CanvOS output into the cluster profile's B
 The `system.xxxxx` attribute values in the manifest are as same as those you defined in the `.arg` file while building
 the Edge artifacts. The code snippet below serves as an example.
 
-```yaml
+```yaml highlight {16-25}
 pack:
   content:
     images:
       - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
+  # Below config is default value, please uncomment if you want to modify default values
+  #drain:
+    #cordon: true
+    #timeout: 60 # The length of time to wait before giving up, zero means infinite
+    #gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used
+    #ignoreDaemonSets: true
+    #deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)
+    #force: true # Continue even if there are pods that do not declare a controller
+    #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
+    #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
 options:
-  system.uri:
-    "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo
-    }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{
-    .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{
-    .spectro.pack.edge-native-byoi.options.system.customTag }}"
+  system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
+
+
   system.registry: spectrocloud
   system.repo: ubuntu
   system.k8sDistribution: k3s
   system.osName: ubuntu
   system.peVersion: v4.7.16
   system.customTag: demo
-  system.osVersion: 22.04 d
+  system.osVersion: 22.04
 ```
 
 The screenshot below shows you how to reference your provider OS image in a cluster profile by using the utility build
 output with the BYOOS pack.
-![A screenshot of k3s OS layer in a cluster profile.](/tutorials/edge/tutorials_edge_deploy-cluster_byos-pack_4-6.webp)
+![A screenshot of k3s OS layer in a cluster profile.](/tutorials/edge/tutorials_edge_deploy-cluster_byos-pack_4-7.webp)
 
 Click on the **Next layer** button to add the following Kubernetes layer to your cluster profile.
 
 | **Pack Type** | **Registry** | **Pack Name**         | **Pack Version** |
 | ------------- | ------------ | --------------------- | ---------------- |
-| Kubernetes    | Public Repo  | Palette Optimized K3s | `1.33.5  d         |
+| Kubernetes    | Public Repo  | Palette Optimized K3s | `1.33.5          |
 
 The pack version must match the version pushed to the image registry. The `system.uri` attribute of the BYOOS pack will
 reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}`
@@ -806,7 +814,7 @@ CNI.
 
 | **Pack Type** | **Registry** | **Pack Name** | **Pack Version** |
 | ------------- | ------------ | ------------- | ---------------- |
-| Network       | Public Repo  | Calico        | `3.25.x`         |
+| Network       | Public Repo  | Calico        | `3.30.x`         |
 
 Click on the **Confirm** button to complete the core infrastructure stack. Palette displays the newly created
 infrastructure profile as a layered diagram.
@@ -814,7 +822,7 @@ infrastructure profile as a layered diagram.
 Finally, click on the **Add Manifest** button to add the
 [Hello Universe](https://github.com/spectrocloud/hello-universe#readme) application manifest.
 
-![A screenshot of the add Manifest button.](/tutorials/edge/clusters_edge_deploy-cluster_add-manifest.webp)
+![A screenshot of the add Manifest button.](/tutorials/edge/clusters_edge_deploy-cluster_add-manifest_4-7.webp)
 
 Use the following values to add the Hello Universe manifest metadata.
 
@@ -858,7 +866,7 @@ spec:
     spec:
       containers:
         - name: hello-universe
-          image: ghcr.io/spectrocloud/hello-universe:1.0.12
+          image: ghcr.io/spectrocloud/hello-universe:1.3.1
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
@@ -867,7 +875,7 @@ spec:
 The screenshot below shows the manifest pasted into the text editor. Click on the **Confirm & Create** button to finish
 adding the manifest.
 
-![A screenshot of Hello Universe application manifest.](/tutorials/edge/clusters_edge_deploy-cluster_add-manifest-file.webp)
+![A screenshot of Hello Universe application manifest.](/tutorials/edge/clusters_edge_deploy-cluster_add-manifest-file_4-7.webp)
 
 If there are no errors or compatibility issues, Palette displays the newly created full cluster profile for review.
 Verify the layers you added, and click on the **Next** button.
@@ -879,7 +887,7 @@ Review all layers and click **Finish Configuration** to create the cluster profi
 Click on the newly created cluster profile to view its details page. Click the **Deploy** button to deploy a new Edge
 cluster.
 
-![Screenshot of the Profile Layers success.](/tutorials/edge/clusters_edge_deploy-cluster_profile-success.webp)
+![Screenshot of the Profile Layers success.](/tutorials/edge/clusters_edge_deploy-cluster_profile-success_4-7.webp)
 
 The cluster deployment wizard displays the following sections.
 
@@ -924,7 +932,7 @@ and the set of worker nodes is the worker pool.
 In the **CONTROL-PLANE POOL CONFIGURATION** section, under **Pool Configuration**, select **Add Edge Hosts**, and choose
 one of the registered Edge hosts. The screenshot below shows an Edge host added to the control plane pool.
 
-![Screenshot of an Edge host added to the control plane pool.](/tutorials/edge/tutorials_edge_deploy-cluster_add-control-node.webp)
+![Screenshot of an Edge host added to the control plane pool.](/tutorials/edge/tutorials_edge_deploy-cluster_add-control-node_4-7.webp)
 
 This tutorial does not require you to modify the default values of the **CONTROL-PLANE POOL CONFIGURATION** fields or
 configure the hosts.
@@ -932,7 +940,7 @@ configure the hosts.
 In the **WORKER POOL CONFIGURATION** section, under **Pool Configuration**, select **Add Edge Hosts**, and choose the
 remaining two Edge hosts. The screenshot below shows two Edge hosts added to the worker pool.
 
-![Screenshot of Edge hosts added to the worker pool.](/tutorials/edge/tutorials_edge_deploy-cluster_add-worker-nodes.webp)
+![Screenshot of Edge hosts added to the worker pool.](/tutorials/edge/tutorials_edge_deploy-cluster_add-worker-nodes_4-7.webp)
 
 This tutorial does not require you to modify the default values of the **WORKER POOL CONFIGURATION** fields or configure
 the hosts.
@@ -965,7 +973,7 @@ on the port number to access the application.
 
 The screenshot below highlights the NodePort to access the application.
 
-![Screenshot of highlighted NodePort to access the application.](/tutorials/edge/clusters_edge_deploy-cluster_access-service.webp)
+![Screenshot of highlighted NodePort to access the application.](/tutorials/edge/clusters_edge_deploy-cluster_access-service_4-7.webp)
 
 Clicking on the exposed NodePort displays the Hello Universe application.
 
@@ -976,7 +984,7 @@ public NodePort URL. This prevents the browser from caching an unresolved DNS re
 
 :::
 
-![Screenshot of successfully accessing the Hello Universe application.](/tutorials/edge/clusters_edge_deploy-cluster_hello-universe.webp)
+![Screenshot of successfully accessing the Hello Universe application.](/tutorials/edge/clusters_edge_deploy-cluster_hello-universe_4-7.webp)
 
 You have successfully provisioned an Edge cluster and deployed the Hello Universe application on it.
 
@@ -990,7 +998,7 @@ hosts.
 In Palette, display the cluster details page. Click on the **Settings** button to expand the **drop-down Menu**, and
 select the **Delete Cluster** option, as shown in the screenshot below.
 
-![Screenshot of deleting a cluster.](/tutorials/edge/clusters_edge_deploy-cluster_delete-cluster.webp)
+![Screenshot of deleting a cluster.](/tutorials/edge/clusters_edge_deploy-cluster_delete-cluster_4-7.webp)
 
 Palette prompts you to enter the cluster name and confirm the delete action. Type the cluster name to delete the
 cluster. The cluster status changes to **Deleting**. Deletion takes up to 10 minutes.
@@ -998,9 +1006,16 @@ cluster. The cluster status changes to **Deleting**. Deletion takes up to 10 min
 After you delete the cluster, click **Profiles** on the left **Main Menu**, and select the profile to delete. Choose the
 **Delete** option in the **three-dot Menu**, as shown in the screenshot below.
 
-![Screenshot of deleting a cluster profile.](/tutorials/edge/clusters_edge_deploy-cluster_delete-profile.webp)
+![Screenshot of deleting a cluster profile.](/tutorials/edge/clusters_edge_deploy-cluster_delete-profile_4-7.webp)
 
 Wait for Palette to successfully delete the resources.
+
+Click **Clusters** on the left **Main Menu**, and select one of the edge devices used for this tutorial. Choose the
+**Delete** option in the **three-dot Menu**, as shown in the screenshot below.
+
+![Screenshot of deleting edge hosts from Palette](/tutorials/edge/cluster_edge_deploy-cluster_delete-edge-devices_4-7.webp)
+
+Wait for Palette to successfully delete the resource and repeat for the other two edge devices.
 
 ### Delete Edge Hosts
 
@@ -1016,45 +1031,30 @@ sudo docker run --interactive --tty --rm --env-file .goenv \
 ### Delete Edge Artifacts
 
 If you want to delete Edge artifacts from your Linux development environment, delete the Edge installer ISO image and
-its checksum by issuing the following commands from the `CanvOS` directory.
+its checksum by issuing the following commands from the `CanvOS` directory. 
 
 ```bash
-rm build/palette-edge-installer.iso
-rm build/palette-edge-installer.iso.sha256
+sudo rm build/palette-edge-installer.iso
+sudo rm build/palette-edge-installer.iso.sha256
 ```
 
 Issue the following command to list all images in your current development environment.
 
 ```bash
-docker images
+sudo docker images --filter=reference='*/*:*demo*'
 ```
 
 Note the provider image name and tags, and use the following command syntax to remove all provider images.
 
 ```bash
-docker rmi spectrocloud/ubuntu:k3s-1.32.1-v4.6.12-demo
-docker rmi spectrocloud/ubuntu:k3s-1.32.1-v4.6.12-demo_linux_amd64
-docker rmi spectrocloud/ubuntu:k3s-1.31.5-v4.6.12-demo
-docker rmi spectrocloud/ubuntu:k3s-1.31.5-v4.6.12-demo_linux_amd64
-docker rmi spectrocloud/ubuntu:k3s-1.31.4-v4.6.12-demo
-docker rmi spectrocloud/ubuntu:k3s-1.31.4-v4.6.12-demo_linux_amd64
-docker rmi spectrocloud/ubuntu:k3s-1.31.1-v4.6.12-demo
-docker rmi spectrocloud/ubuntu:k3s-1.31.1-v4.6.12-demo_linux_amd64
-docker rmi spectrocloud/ubuntu:k3s-1.30.9-v4.6.12-demo
-docker rmi spectrocloud/ubuntu:k3s-1.30.9-v4.6.12-demo_linux_amd64
-docker rmi spectrocloud/ubuntu:k3s-1.30.8-v4.6.12-demo
-docker rmi spectrocloud/ubuntu:k3s-1.30.8-v4.6.12-demo_linux_amd64
-docker rmi spectrocloud/ubuntu:k3s-1.30.6-v4.6.12-demo
-docker rmi spectrocloudh/ubuntu:k3s-1.30.6-v4.6.12-demo_linux_amd64
-docker rmi spectrocloud/ubuntu:k3s-1.30.5-v4.6.12-demo
-docker rmi spectrocloud/ubuntu:k3s-1.30.5-v4.6.12-demo_linux_amd64
-...
+sudo docker rmi spectrocloud/ubuntu:k3s-1.33.5-v4.7.16-demo
+sudo docker rmi spectrocloud/ubuntu:k3s-1.33.5-v4.7.16-demo_linux_amd64
 ```
 
 ### Delete VMware vSphere Resources
 
 Navigate to **Inventory** > **VMs and Templates** in your vSphere client. To delete the **palette-edge-template** VM
-template, right-click on it and choose **Delete** option from the **drop-down Menu**.
+template, right-click on it and choose **Delete from Disk** option from the **drop-down Menu**.
 
 Switch to the **Storage** view in your vSphere client. To delete the `palette-edge-installer.iso` file from the
 `packer_cache` directory in the VMware vCenter datastore, right-click on it and choose **Delete** option from the
