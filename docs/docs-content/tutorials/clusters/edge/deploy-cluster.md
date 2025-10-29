@@ -600,8 +600,8 @@ Packer created. Remember that the VM instances you are deploying simulate bare m
 
 GOVC requires the same VMware vCenter details as the environment variables you defined earlier in the `.goenv` file.
 
-Next, use the `docker run` command below to clone the VM template and provision three VMs. Here is
-an explanation of the options and sub-commands used below:
+Next, use the `docker run` command below to clone the VM template and provision three VMs. Here is an explanation of the
+options and sub-commands used below:
 
 - The `--env-file` option reads the `.goenv` file in our official `ghcr.io/spectrocloud/tutorials:1.3.0` tutorials
   container.
