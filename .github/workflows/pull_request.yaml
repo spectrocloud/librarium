@@ -111,11 +111,6 @@ jobs:
 
       - run: npm ci
 
-      - name: Versions on Release Branch Only
-        if: ${{ startsWith(github.head_ref, 'docs-rel-') }}
-        run: |
-          make versions
-
       - name: Build
         run: |
           touch .env
