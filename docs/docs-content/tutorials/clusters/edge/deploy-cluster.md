@@ -743,7 +743,7 @@ Validate you are in the **Default** project scope before creating a cluster prof
 ![A screenshot of Palette's Default scope selected.](/tutorials/edge/registries-and-packs_deploy-pack_default-scope_4-7.webp)
 
 Next, create a cluster profile with the core infrastructure layers and a manifest of a sample application,
-[Hello Universe](https://github.com/spectrocloud/hello-universe#hello-universe). Navigate to the left **Main Menu** and
+[Hello Universe](https://github.com/spectrocloud/hello-universe#hello-universe). Navigate to the left main menu and
 select **Profiles**. Click on the **Add Cluster Profile** button, and fill out the required input fields. The cluster
 profile wizard contains the following sections.
 
@@ -1019,7 +1019,7 @@ hosts.
 
 ### Delete the Cluster, Profile, and Edge Registrations
 
-In Palette, display the cluster details page. Click on the **Settings** button to expand the **drop-down Menu**, and
+In Palette, display the cluster details page. Click on the **Settings** button to expand the drop-down menu, and
 select the **Delete Cluster** option, as shown in the screenshot below.
 
 ![Screenshot of deleting a cluster.](/tutorials/edge/clusters_edge_deploy-cluster_delete-cluster_4-7.webp)
@@ -1027,19 +1027,19 @@ select the **Delete Cluster** option, as shown in the screenshot below.
 Palette prompts you to enter the cluster name and confirm the delete action. Type the cluster name to delete the
 cluster. The cluster status changes to **Deleting**. Deletion takes up to 10 minutes.
 
-After you delete the cluster, click **Profiles** on the left **Main Menu**, and select the profile to delete. Choose the
-**Delete** option in the **three-dot Menu**, as shown in the screenshot below.
+After you delete the cluster, click **Profiles** on the left main menu, and select the profile to delete. Choose the
+**Delete** option in the three-dot menu, as shown in the screenshot below.
 
 ![Screenshot of deleting a cluster profile.](/tutorials/edge/clusters_edge_deploy-cluster_delete-profile_4-7.webp)
 
 Wait for Palette to successfully delete the resources.
 
-Click **Clusters** on the left **Main Menu**, and select one of the edge devices used for this tutorial. Choose the
-**Delete** option in the **three-dot Menu**, as shown in the screenshot below.
+After you delete the cluster profile, click **Clusters** on the left main menu, navigate to the **Edge Hosts** tab, and select one of the edge devices used for this tutorial. Choose the
+**Delete** option in the three-dot menu, as shown in the screenshot below.
 
 ![Screenshot of deleting edge hosts from Palette](/tutorials/edge/cluster_edge_deploy-cluster_delete-edge-devices_4-7.webp)
 
-Wait for Palette to successfully delete the resource and repeat for the other two edge devices.
+Wait for Palette to successfully delete the resource and repeat the steps for the other two edge devices.
 
 ### Delete Edge Hosts
 
@@ -1078,7 +1078,7 @@ sudo docker rmi spectrocloud/ubuntu:k3s-1.33.5-v4.7.16-demo_linux_amd64
 ### Delete VMware vSphere Resources
 
 Navigate to **Inventory** > **VMs and Templates** in your vSphere client. To delete the **palette-edge-template** VM
-template, right-click on it and choose **Delete from Disk** option from the **drop-down Menu**.
+template, right-click on it and choose **Delete from Disk** option from the drop-down menu.
 
 Switch to the **Storage** view in your vSphere client. To delete the `palette-edge-installer.iso` file from the
 `packer_cache` directory in the VMware vCenter datastore, right-click on it and choose **Delete** option from the
