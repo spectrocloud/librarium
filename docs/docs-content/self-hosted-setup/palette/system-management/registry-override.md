@@ -3,7 +3,7 @@ sidebar_label: "Image Registry Override"
 title: "Image Registry Override"
 description: "Learn how to override the default image registry for self-hosted Palette."
 hide_table_of_contents: false
-sidebar_position: 60
+sidebar_position: 70
 tags: ["self-hosted", "registry"]
 keywords: ["self-hosted", "registry"]
 ---

@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Self-Hosted Setup"
 title: "Self-Hosted Setup"
-description: "Learn how to set up and manage a self-hosted Palette or Palette VerteX installation."
+description: "Set up and manage a self-hosted Palette or Palette VerteX installation."
 hide_table_of_contents: false
 sidebar_custom_props:
   icon: "warehouse"

@@ -28,7 +28,7 @@ export default function PaletteVertexUrlMapper(props: ComponentProperties) {
   // Construct base URL with optional installation method
   let baseUrl = `/self-hosted-setup/${isPalette ? "palette" : "vertex"}`;
   if (normalizedInstall) {
-    baseUrl += `/${normalizedInstall}`;
+    baseUrl += `/supported-environments/${normalizedInstall}`;
   }
 
   const mappedUrl =

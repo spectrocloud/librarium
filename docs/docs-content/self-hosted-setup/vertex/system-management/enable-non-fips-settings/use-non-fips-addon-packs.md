@@ -4,7 +4,7 @@ title: "Use Non-FIPS Packs"
 description: "Learn how to enable non-FIPS packs and add them to cluster profiles in self-hosted Palette VerteX."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 30
 tags: ["self-hosted", "vertex", "non-fips", "packs"]
 keywords: ["self-hosted", "vertex", "non-fips", "packs"]
 ---

@@ -22,7 +22,7 @@ Concept (POC) or in enterprise mode, which launches a three-node High Availabili
 management cluster. The management cluster provides a browser-based web interface that allows you to set up a tenant and
 provision and manage tenant clusters. You can also deploy Palette to a Kubernetes cluster by using the Palette Helm
 Chart. To learn more, review the
-[Install Using Helm Chart](../../self-hosted-setup/palette/kubernetes/install/install.md) guide.
+[Install Using Helm Chart](../../self-hosted-setup/palette/supported-environments/kubernetes/install/install.md) guide.
 
 The following points apply to self-hosted deployments:
 

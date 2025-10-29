@@ -4,7 +4,6 @@ title: "Account Management"
 description: "Learn about the different types of system administrators in self-hosted Palette."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 0
 tags: ["self-hosted", "management", "account"]
 keywords: ["self-hosted", "management", "account"]
 ---

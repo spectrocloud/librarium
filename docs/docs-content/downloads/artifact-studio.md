@@ -64,8 +64,8 @@ representative or [open a support ticket](https://support.spectrocloud.com/).
    | **Helm installation** | Used to install with Helm charts.                                                                                                                |
 
 Once you have the file, you can deploy Palette as a self-hosted application. For ISO downloads, review the
-[Palette Management Appliance Installation guide](../self-hosted-setup/vertex/management-appliance/install.md) for more
-information on deploying Palette locally.
+[Palette Management Appliance Installation guide](../self-hosted-setup/vertex/supported-environments/management-appliance/install.md)
+for more information on deploying Palette locally.
 
 ## Download Palette VerteX
 
@@ -91,8 +91,8 @@ information on deploying Palette locally.
    | **Helm installation** | Used to install with Helm charts.                                                                                                                   |
 
 Once you have the file, you can deploy Palette VerteX as a self-hosted application. For ISO downloads, review the
-[VerteX Management Appliance Installation guide](../self-hosted-setup/vertex/management-appliance/install.md) for more
-information on deploying Palette VerteX locally.
+[VerteX Management Appliance Installation guide](../self-hosted-setup/vertex/supported-environments/management-appliance/install.md)
+for more information on deploying Palette VerteX locally.
 
 ## Download a Pack Bundle
 
@@ -280,6 +280,6 @@ To verify the integrity and authenticity of your artifacts, you can do a checksu
 For information on uploading packs to your self-hosted Palette or Palette VerteX instance, refer to the appropriate
 guide:
 
-- [Upload Packs to Palette](../self-hosted-setup/palette/management-appliance/upload-packs.md)
+- [Upload Packs to Palette](../self-hosted-setup/palette/supported-environments/management-appliance/upload-packs.md)
 
-- [Upload Packs to Palette VerteX](../self-hosted-setup/vertex/management-appliance/upload-packs.md)
+- [Upload Packs to Palette VerteX](../self-hosted-setup/vertex/supported-environments/management-appliance/upload-packs.md)

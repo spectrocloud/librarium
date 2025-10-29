@@ -4,7 +4,7 @@ title: "Use Non-FIPS Features"
 description: "Learn how to enable non-FIPS features such as backup, restore, and scans in self-hosted Palette VerteX."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 30
+sidebar_position: 20
 tags: ["self-hosted", "vertex", "non-fips"]
 keywords: ["self-hosted", "vertex", "non-fips"]
 ---

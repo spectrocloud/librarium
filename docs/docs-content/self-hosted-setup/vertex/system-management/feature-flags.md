@@ -4,7 +4,7 @@ title: "Feature Flags"
 description: "Learn how to to use feature flags to manage features in self-hosted Palette VerteX"
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 80
+sidebar_position: 70
 tags: ["self-hosted", "vertex", "management", "feature-flags"]
 keywords: ["self-hosted", "vertex", "management", "feature-flags"]
 ---

@@ -4,7 +4,6 @@ title: "System Management"
 description: "Manage your Palette VerteX system settings."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 20
 tags: ["self-hosted", "vertex", "management"]
 keywords: ["self-hosted", "vertex", "management"]
 ---

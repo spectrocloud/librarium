@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Palette"
 title: "Self-Hosted Palette"
-description: "Learn how to install and manage a self-hosted Palette environment."
+description: "How to get started with self-hosted Palette."
 hide_table_of_contents: false
 tags: ["self-hosted"]
 keywords: ["self-hosted"]
@@ -118,13 +118,15 @@ The following versions of VMware vSphere are supported in VerteX.
 
 ## Next Steps
 
-Get started with setting up self-hosted Palette on an existing [Kubernetes cluster](./kubernetes/kubernetes.md), your
-[VMware vSphere](./vmware/vmware.md) environment using the [Palette CLI](../../automation/palette-cli/palette-cli.md),
-or your desired bare metal or data center environment with the
-[Palette Management Appliance](./management-appliance/management-appliance.md) ISO.
+Get started with setting up self-hosted Palette on an existing
+[Kubernetes cluster](./supported-environments/kubernetes/kubernetes.md), your
+[VMware vSphere](./supported-environments/vmware/vmware.md) environment using the
+[Palette CLI](../../automation/palette-cli/palette-cli.md), or your desired bare metal or data center environment with
+the [Palette Management Appliance](./supported-environments/management-appliance/management-appliance.md) ISO.
 
 For guidance managing an existing installation, refer to our
 [System Management](./system-management/system-management.md) guide. For upgrading an existing self-hosted installation,
 consult the upgrade guide that aligns with your Palette installation method:
-[Kubernetes](./kubernetes/upgrade/upgrade.md), [VMware vSphere (Palette CLI)](./vmware/upgrade/upgrade.md), or
-[Palette Management Appliance](./management-appliance/upgrade.md).
+[Kubernetes (Helm chart)](./supported-environments/kubernetes/upgrade/upgrade.md),
+[VMware vSphere (Palette CLI)](./supported-environments/vmware/upgrade/upgrade.md), or
+[Palette Management Appliance (ISO)](./supported-environments/management-appliance/upgrade.md).

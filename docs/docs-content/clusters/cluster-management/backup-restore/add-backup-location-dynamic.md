@@ -207,7 +207,8 @@ A multi-cloud account scenario requires you to perform the following authenticat
 
 1. Grant Palette access to the cluster in AWS Account A. When you register a primary cloud account in Palette, you
    authenticate and authorize Palette to deploy clusters in the cloud account. Check out the
-   [Add AWS Account](../../public-cloud/aws/add-aws-accounts.md) to guidance on how to add an AWS account in Palette.
+   [Add AWS Account](../../public-cloud/aws/add-aws-accounts/add-aws-accounts.md) to guidance on how to add an AWS
+   account in Palette.
 
 2. Give Palette permission to use the S3 buckets in AWS Account B. Set the bucket permissions and link them to an IAM
    role. Then, update the IAM role to let Palette assume it.

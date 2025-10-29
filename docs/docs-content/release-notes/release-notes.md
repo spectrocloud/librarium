@@ -44,8 +44,8 @@ The following components have been updated for Palette version 4.7.27.
 
 <!-- prettier-ignore-start -->
 
-- The [Palette Management Appliance](../self-hosted-setup/palette/management-appliance/management-appliance.md) and
-  [VerteX Management Appliance](../self-hosted-setup/vertex/management-appliance/management-appliance.md) have now been updated to use the following components internally:
+- The [Palette Management Appliance](../self-hosted-setup/palette/supported-environments/management-appliance/management-appliance.md) and
+  [VerteX Management Appliance](../self-hosted-setup/vertex/supported-environments/management-appliance/management-appliance.md) have now been updated to use the following components internally:
 
   - <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/?pack=kubernetes" /> 1.32.8
   - <VersionedLink text="Calico" url="/integrations/?pack=cni-calico" />  3.30.2
@@ -133,8 +133,8 @@ The following components have been updated for Palette version 4.7.27.
 
 <!-- prettier-ignore-start -->
 
-- [Palette Management Appliance](../self-hosted-setup/palette/management-appliance/management-appliance.md) and
-  [VerteX Management Appliance](../self-hosted-setup/vertex/management-appliance/management-appliance.md) now automatically
+- [Palette Management Appliance](../self-hosted-setup/palette/supported-environments/management-appliance/management-appliance.md) and
+  [VerteX Management Appliance](../self-hosted-setup/vertex/supported-environments/management-appliance/management-appliance.md) now automatically
   delete the `provider_extract` directory after deployment, removing unused files. Additionally, Palette and VerteX
   management appliance now use <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> 1.32.8 and <VersionedLink text="Piraeus Operator" url="/integrations/packs/?pack=piraeus-operator" /> 2.9.0 internally.
 
@@ -524,8 +524,8 @@ The following component updates are applicable to this release:
 #### Features
 
 - <TpBadge /> Palette and VerteX Management Appliance now support Secure Boot. Refer to the [Palette Management
-  Appliance](../self-hosted-setup/palette/management-appliance/management-appliance.md) guide for further configuration
-  information.
+  Appliance](../self-hosted-setup/palette/supported-environments/management-appliance/management-appliance.md) guide for
+  further configuration information.
 - <TpBadge /> Palette and VerteX Management Appliance now support single node installation. We do not recommend this
   setup for production environments.
 
@@ -1100,10 +1100,10 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 #### Features
 
 - <TpBadge /> The [Palette Management
-  Appliance](../self-hosted-setup/palette/management-appliance/management-appliance.md) is a new method to install
-  self-hosted Palette in your infrastructure environment. It provides a simple and efficient way to deploy Palette using
-  an ISO file. The Palette Management Appliance is available for VMware, Bare Metal, and Machine as a Service (MAAS)
-  environments.
+  Appliance](../self-hosted-setup/palette/supported-environments/management-appliance/management-appliance.md) is a new
+  method to install self-hosted Palette in your infrastructure environment. It provides a simple and efficient way to
+  deploy Palette using an ISO file. The Palette Management Appliance is available for VMware, Bare Metal, and Machine as
+  a Service (MAAS) environments.
 
 - <TpBadge /> The [Artifact Studio](../downloads/artifact-studio.md) is a new platform for obtaining bundles, packs, and
   installers relating to Palette Enterprise and Palette VerteX. It provides a single source for these artifacts, which

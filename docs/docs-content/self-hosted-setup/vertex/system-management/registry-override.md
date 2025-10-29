@@ -3,7 +3,7 @@ sidebar_label: "Image Registry Override"
 title: "Image Registry Override"
 description: "Learn how to override the default image registry for self-hosted Palette VerteX."
 hide_table_of_contents: false
-sidebar_position: 70
+sidebar_position: 80
 tags: ["self-hosted", "vertex", "registry"]
 keywords: ["self-hosted", "vertex", "registry"]
 ---

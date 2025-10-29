@@ -754,6 +754,29 @@ The snippet above will work with the example partial we have in our repository, 
 Note that the `message` field corresponds to the `{props.message}` reference in the `_partials/_partial_example.mdx`
 file.
 
+:::warning
+
+The following properties are reserved properties:
+
+- `category` (required)
+- `name` (required)
+- `install` (optional) - Refer to the [PaletteVerteXUrlMapper](#palettevertex-urls) component for more information.
+
+:::
+
+Any properties passed to the `PartialsComponent` will be forwarded to the loaded partial as `{props.propertyName}`. This
+enables partials to receive dynamic values such as `install` (for installation-specific content), `edition`, `version`,
+and other custom properties.
+
+```md
+<PartialsComponent
+  category="self-hosted"
+  name="install-next-steps"
+  install="vmware"
+  edition="Palette"
+/>
+```
+
 ### Internal Links
 
 Due to the complexities of Docusaurus plugin rendering, links do not support versioning in `*.mdx` files. If you want to
@@ -797,6 +820,8 @@ Below is an example of how to use the component:
   page to learn more about system administrator roles.
 ```
 
+### Different Palette/VerteX URLs
+
 In cases where Palette and Vertex pages have different URLs beyond the base path, the component will accept the
 following props:
 
@@ -818,6 +843,46 @@ Below is an example of how to use the component when the URLs are different:
   />
   page to learn more about system administrator roles.
 ```
+
+### Installation-Specific URLs
+
+The `PaletteVertexUrlMapper` component also supports the optional `install` prop for handling installation-specific URLs
+for self-hosted Palette and Palette VerteX.
+
+- `install` - The installation method. Can be `kubernetes`, `vmware`, or `management-appliance`. When provided, the
+  component appends `/supported-environments/{install-method}` to the base URL path.
+
+When the `install` prop is provided, the URL is constructed as follows:
+
+```
+/self-hosted-setup/{palette|vertex}/supported-environments/{install-method}/{url}
+```
+
+Below is an example of how to use the component with the `install` prop:
+
+```md
+- To activate your installation, refer to the <PaletteVertexUrlMapper
+    edition={props.edition}
+    install={props.install}
+    text="activation guide" 
+    url="/activate" 
+  />.
+```
+
+This component is typically used within partials that receive the `install` prop from
+[PartialsComponent](#partials-component). For example:
+
+```md
+<PartialsComponent
+  category="self-hosted"
+  name="install-next-steps"
+  install="vmware"
+  edition="Palette"
+/>
+```
+
+The partial can then use `{props.install}` to pass the installation method to `PaletteVertexUrlMapper` for
+installation-specific URL routing.
 
 ## Security Bulletins
 

@@ -36,7 +36,7 @@ metal machines needed to run control planes and keeps virtualization overhead lo
 
 - MAAS hosts that support KVM or LXD VMs.
 
-- The **LxdMaas** [feature flag](../../../self-hosted-setup/palette/system-management/feature-flags.md.) enabled.
+- The **LxdMaas** [feature flag](../../../self-hosted-setup/palette/system-management/feature-flags.md) enabled.
 
 :::info
 

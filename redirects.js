@@ -382,10 +382,6 @@ let redirects = [
     to: "/tenant-settings/projects/",
   },
   {
-    from: "/enterprise-version/install-palette/airgap/checklist/",
-    to: "/enterprise-version/install-palette/airgap/",
-  },
-  {
     from: "/terraform/",
     to: "/automation/terraform/",
   },
@@ -907,65 +903,67 @@ let redirects = [
   },
   {
     from: "/enterprise-version/install-palette/install-on-kubernetes/",
-    to: "/self-hosted-setup/palette/kubernetes",
+    to: "/self-hosted-setup/palette/supported-environments/kubernetes",
   },
   {
     from: [
       "/enterprise-version/install-palette/install-on-kubernetes/airgap-install/",
       "/enterprise-version/install-palette/install-on-kubernetes/airgap-install/checklist/",
       "/enterprise-version/install-palette/airgap/kubernetes-airgap-instructions/",
+      "/enterprise-version/install-palette/airgap/checklist/",
+      "/enterprise-version/install-palette/airgap/",
     ],
-    to: "/self-hosted-setup/palette/kubernetes/setup/airgap/",
+    to: "/self-hosted-setup/palette/supported-environments/kubernetes/setup/airgap/",
   },
   {
     from: "/enterprise-version/install-palette/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions/",
-    to: "/self-hosted-setup/palette/kubernetes/setup/airgap/environment-setup/",
+    to: "/self-hosted-setup/palette/supported-environments/kubernetes/setup/airgap/environment-setup/",
   },
   {
     from: [
       "/enterprise-version/helm-chart-install-reference/",
       "/enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref/",
     ],
-    to: "/self-hosted-setup/palette/kubernetes/setup/airgap/helm-reference/",
+    to: "/self-hosted-setup/palette/supported-environments/kubernetes/setup/airgap/helm-reference/",
   },
   {
     from: [
       "/enterprise-version/deploying-palette-with-helm/",
       "/enterprise-version/install-palette/install-on-kubernetes/install/",
     ],
-    to: "/self-hosted-setup/palette/kubernetes/install/non-airgap/",
+    to: "/self-hosted-setup/palette/supported-environments/kubernetes/install/non-airgap/",
   },
   {
     from: "/enterprise-version/install-palette/install-on-kubernetes/airgap-install/install/",
-    to: "/self-hosted-setup/palette/kubernetes/install/airgap",
+    to: "/self-hosted-setup/palette/supported-environments/kubernetes/install/airgap",
   },
   {
     from: "/enterprise-version/activate-installation/",
-    to: "/self-hosted-setup/palette/kubernetes/activate/",
+    to: "/self-hosted-setup/palette/supported-environments/kubernetes/activate/",
   },
   {
     from: "/enterprise-version/upgrade/",
-    to: "/self-hosted-setup/palette/kubernetes/upgrade/",
+    to: "/self-hosted-setup/palette/supported-environments/kubernetes/upgrade/",
   },
   {
     from: "/enterprise-version/upgrade/upgrade-k8s/non-airgap/",
-    to: "/self-hosted-setup/palette/kubernetes/upgrade/non-airgap",
+    to: "/self-hosted-setup/palette/supported-environments/kubernetes/upgrade/non-airgap",
   },
   {
     from: "/enterprise-version/upgrade/upgrade-k8s/airgap/",
-    to: "/self-hosted-setup/palette/kubernetes/upgrade/airgap",
+    to: "/self-hosted-setup/palette/supported-environments/kubernetes/upgrade/airgap",
   },
   {
     from: "/enterprise-version/install-palette/install-on-kubernetes/uninstall/",
-    to: "/self-hosted-setup/palette/kubernetes/uninstall/",
+    to: "/self-hosted-setup/palette/supported-environments/kubernetes/uninstall/",
   },
   {
     from: "/enterprise-version/install-palette/install-on-vmware/",
-    to: "/self-hosted-setup/palette/vmware/",
+    to: "/self-hosted-setup/palette/supported-environments/vmware/",
   },
   {
     from: "/enterprise-version/install-palette/install-on-vmware/vmware-system-requirements/",
-    to: "/self-hosted-setup/palette/vmware/setup/non-airgap/vmware-system-requirements/",
+    to: "/self-hosted-setup/palette/supported-environments/vmware/setup/non-airgap/vmware-system-requirements/",
   },
   {
     from: [
@@ -973,7 +971,7 @@ let redirects = [
       "/enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/",
       "/enterprise-version/install-palette/install-on-vmware/airgap-install/checklist/",
     ],
-    to: "/self-hosted-setup/palette/vmware/setup/airgap/",
+    to: "/self-hosted-setup/palette/supported-environments/vmware/setup/airgap/",
   },
   {
     from: [
@@ -981,39 +979,39 @@ let redirects = [
       "/enterprise-version/install-palette/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
       "/enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
     ],
-    to: "/self-hosted-setup/palette/vmware/setup/airgap/ova/",
+    to: "/self-hosted-setup/palette/supported-environments/vmware/setup/airgap/ova/",
   },
   {
     from: "/enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/env-setup-vm/",
-    to: "/self-hosted-setup/palette/vmware/setup/airgap/rhel-vm/",
+    to: "/self-hosted-setup/palette/supported-environments/vmware/setup/airgap/rhel-vm/",
   },
   {
     from: "/enterprise-version/install-palette/install-on-vmware/install/",
-    to: "/self-hosted-setup/palette/vmware/install/non-airgap/",
+    to: "/self-hosted-setup/palette/supported-environments/vmware/install/non-airgap/",
   },
   {
     from: "/enterprise-version/install-palette/install-on-vmware/airgap-install/install/",
-    to: "/self-hosted-setup/palette/vmware/install/airgap",
+    to: "/self-hosted-setup/palette/supported-environments/vmware/install/airgap",
   },
   {
     from: "/enterprise-version/upgrade/upgrade-vmware/non-airgap/",
-    to: "/self-hosted-setup/palette/vmware/upgrade/non-airgap/",
+    to: "/self-hosted-setup/palette/supported-environments/vmware/upgrade/non-airgap/",
   },
   {
     from: "/enterprise-version/upgrade/upgrade-vmware/airgap/",
-    to: "/self-hosted-setup/palette/vmware/upgrade/airgap/",
+    to: "/self-hosted-setup/palette/supported-environments/vmware/upgrade/airgap/",
   },
   {
     from: "/enterprise-version/install-palette/palette-management-appliance/",
-    to: "/self-hosted-setup/palette/management-appliance/",
+    to: "/self-hosted-setup/palette/supported-environments/management-appliance/",
   },
   {
     from: "/enterprise-version/upgrade/palette-management-appliance/",
-    to: "/self-hosted-setup/palette/management-appliance/upgrade/",
+    to: "/self-hosted-setup/palette/supported-environments/management-appliance/upgrade/",
   },
   {
     from: "/enterprise-version/upgrade/upgrade-notes/",
-    to: "/self-hosted-setup/palette/vmware/upgrade/",
+    to: "/self-hosted-setup/palette/supported-environments/vmware/upgrade/",
   },
   {
     from: [
@@ -1104,11 +1102,11 @@ let redirects = [
   },
   {
     from: "/vertex/install-palette-vertex/install-on-kubernetes/",
-    to: "/self-hosted-setup/vertex/kubernetes/",
+    to: "/self-hosted-setup/vertex/supported-environments/kubernetes/",
   },
   {
     from: "/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/",
-    to: "/self-hosted-setup/vertex/kubernetes/setup/airgap/",
+    to: "/self-hosted-setup/vertex/supported-environments/kubernetes/setup/airgap/",
   },
   {
     from: [
@@ -1116,47 +1114,47 @@ let redirects = [
       "/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions/",
       "/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/checklist/",
     ],
-    to: "/self-hosted-setup/vertex/kubernetes/setup/airgap/environment-setup/",
+    to: "/self-hosted-setup/vertex/supported-environments/kubernetes/setup/airgap/environment-setup/",
   },
   {
     from: "/vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref/",
-    to: "/self-hosted-setup/vertex/kubernetes/setup/airgap/helm-reference/",
+    to: "/self-hosted-setup/vertex/supported-environments/kubernetes/setup/airgap/helm-reference/",
   },
   {
     from: "/vertex/install-palette-vertex/install-on-kubernetes/install/",
-    to: "/self-hosted-setup/vertex/kubernetes/install/non-airgap/",
+    to: "/self-hosted-setup/vertex/supported-environments/kubernetes/install/non-airgap/",
   },
   {
     from: "/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/install/",
-    to: "/self-hosted-setup/vertex/kubernetes/install/airgap/",
+    to: "/self-hosted-setup/vertex/supported-environments/kubernetes/install/airgap/",
   },
   {
     from: "/vertex/activate-installation/",
-    to: "/self-hosted-setup/vertex/kubernetes/activate/",
+    to: "/self-hosted-setup/vertex/supported-environments/kubernetes/activate/",
   },
   {
     from: "/vertex/upgrade/upgrade-k8s/non-airgap/",
-    to: "/self-hosted-setup/vertex/kubernetes/upgrade/non-airgap/",
+    to: "/self-hosted-setup/vertex/supported-environments/kubernetes/upgrade/non-airgap/",
   },
   {
     from: "/vertex/upgrade/upgrade-k8s/airgap/",
-    to: "/self-hosted-setup/vertex/kubernetes/upgrade/airgap/",
+    to: "/self-hosted-setup/vertex/supported-environments/kubernetes/upgrade/airgap/",
   },
   {
     from: "/vertex/install-palette-vertex/install-on-kubernetes/uninstall/",
-    to: "/self-hosted-setup/vertex/kubernetes/uninstall/",
+    to: "/self-hosted-setup/vertex/supported-environments/kubernetes/uninstall/",
   },
   {
     from: "/vertex/install-palette-vertex/install-on-vmware/",
-    to: "/self-hosted-setup/vertex/vmware/",
+    to: "/self-hosted-setup/vertex/supported-environments/vmware/",
   },
   {
     from: "/vertex/install-palette-vertex/install-on-vmware/vmware-system-requirements/",
-    to: "/self-hosted-setup/vertex/vmware/setup/non-airgap/vmware-system-requirements/",
+    to: "/self-hosted-setup/vertex/supported-environments/vmware/setup/non-airgap/vmware-system-requirements/",
   },
   {
     from: "/vertex/install-palette-vertex/install-on-vmware/install/",
-    to: "/self-hosted-setup/vertex/vmware/install/non-airgap/",
+    to: "/self-hosted-setup/vertex/supported-environments/vmware/install/non-airgap/",
   },
   {
     from: [
@@ -1166,7 +1164,7 @@ let redirects = [
       "/vertex/install-palette-vertex/airgap/",
       "/vertex/install-palette-vertex/airgap/checklist/",
     ],
-    to: "/self-hosted-setup/vertex/vmware/setup/airgap/",
+    to: "/self-hosted-setup/vertex/supported-environments/vmware/setup/airgap/",
   },
   {
     from: [
@@ -1174,35 +1172,35 @@ let redirects = [
       "/vertex/install-palette-vertex/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
       "/vertex/install-palette-vertex/airgap/vmware-vsphere-airgap-instructions/",
     ],
-    to: "/self-hosted-setup/vertex/vmware/setup/airgap/ova/",
+    to: "/self-hosted-setup/vertex/supported-environments/vmware/setup/airgap/ova/",
   },
   {
     from: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/env-setup-vm-vertex/",
-    to: "/self-hosted-setup/vertex/vmware/setup/airgap/rhel-vm/",
+    to: "/self-hosted-setup/vertex/supported-environments/vmware/setup/airgap/rhel-vm/",
   },
   {
     from: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/install/",
-    to: "/self-hosted-setup/vertex/vmware/install/airgap/",
+    to: "/self-hosted-setup/vertex/supported-environments/vmware/install/airgap/",
   },
   {
     from: "/vertex/upgrade/upgrade-notes/",
-    to: "/self-hosted-setup/vertex/vmware/upgrade/",
+    to: "/self-hosted-setup/vertex/supported-environments/vmware/upgrade/",
   },
   {
     from: "/vertex/upgrade/upgrade-vmware/non-airgap/",
-    to: "/self-hosted-setup/vertex/vmware/upgrade/non-airgap/",
+    to: "/self-hosted-setup/vertex/supported-environments/vmware/upgrade/non-airgap/",
   },
   {
     from: "/vertex/upgrade/upgrade-vmware/airgap/",
-    to: "/self-hosted-setup/vertex/vmware/upgrade/airgap/",
+    to: "/self-hosted-setup/vertex/supported-environments/vmware/upgrade/airgap/",
   },
   {
     from: "/vertex/install-palette-vertex/vertex-management-appliance/",
-    to: "/self-hosted-setup/vertex/management-appliance/",
+    to: "/self-hosted-setup/vertex/supported-environments/management-appliance/",
   },
   {
     from: "/vertex/upgrade/vertex-management-appliance/",
-    to: "/self-hosted-setup/vertex/management-appliance/upgrade/",
+    to: "/self-hosted-setup/vertex/supported-environments/management-appliance/upgrade/",
   },
   {
     from: [

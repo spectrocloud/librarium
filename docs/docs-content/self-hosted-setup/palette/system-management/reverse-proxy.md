@@ -51,8 +51,8 @@ Use the following steps to configure a reverse proxy server for Palette.
 
 2. Use a text editor and open the **values.yaml** file. Locate the `frps` section and update the following values in the
    **values.yaml** file. Refer to the
-   [Spectro Proxy Helm Configuration](../kubernetes/setup/non-airgap/helm-reference.md) to learn more about the
-   configuration options.
+   [Spectro Proxy Helm Configuration](../supported-environments/kubernetes/setup/non-airgap/helm-reference.md) to learn
+   more about the configuration options.
 
 <br />
 

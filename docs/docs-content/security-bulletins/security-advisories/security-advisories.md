@@ -36,8 +36,8 @@ when running on a non-FIPS-compliant OS or Kubernetes cluster, may allow negotia
 algorithms.
 
 Self-hosted instances that meet the
-[FIPS prerequisite](../../self-hosted-setup/vertex/kubernetes/install/non-airgap.md#prerequisites) as outlined in our
-user documentation are not affected by this vulnerability.
+[FIPS prerequisite](../../self-hosted-setup/vertex/supported-environments/kubernetes/install/non-airgap.md#prerequisites)
+as outlined in our user documentation are not affected by this vulnerability.
 
 ### Recommended Actions
 

@@ -139,10 +139,11 @@ The VerteX Management Appliance upgrade process will then continue. You can moni
 
 ## Scenario - Palette/VerteX Management Appliance Installation Stalled due to piraeus-operator Pack in Error State
 
-During the installation of the [Palette](../self-hosted-setup/palette/management-appliance/install.md) or
-[VerteX Management Appliance](../self-hosted-setup/vertex/management-appliance/install.md), the `piraeus-operator` pack
-can enter an error state in Local UI. This can be caused by stalled creation of Kubernetes secrets in the
-`piraeus-system` namespace and can prevent the installation from completing successfully.
+During the installation of the
+[Palette](../self-hosted-setup/palette/supported-environments/management-appliance/install.md) or
+[VerteX Management Appliance](../self-hosted-setup/vertex/supported-environments/management-appliance/install.md), the
+`piraeus-operator` pack can enter an error state in Local UI. This can be caused by stalled creation of Kubernetes
+secrets in the `piraeus-system` namespace and can prevent the installation from completing successfully.
 
 To resolve, you can manually delete any secrets in the `piraeus-system` namespace that have a `pending-install` status
 label. This will allow the `piraeus-operator` pack to complete its deployment and the Palette/VerteX Management
@@ -230,10 +231,11 @@ Appliance installation to proceed.
 ## Scenario - Unexpected Logouts in Tenant Console After Palette/VerteX Management Appliance Installation
 
 After installing self-hosted Palette/Palette VerteX using the
-[Palette Management Appliance](../self-hosted-setup/palette/management-appliance/management-appliance.md) or
-[VerteX Management Appliance](../self-hosted-setup/vertex/management-appliance/management-appliance.md), you may
-experience unexpected logouts when using the tenant console. This can be caused by a time skew on your Palette/VerteX
-management cluster nodes, which leads to authentication issues.
+[Palette Management Appliance](../self-hosted-setup/palette/supported-environments/management-appliance/management-appliance.md)
+or
+[VerteX Management Appliance](../self-hosted-setup/vertex/supported-environments/management-appliance/management-appliance.md),
+you may experience unexpected logouts when using the tenant console. This can be caused by a time skew on your
+Palette/VerteX management cluster nodes, which leads to authentication issues.
 
 To verify the system time, open a terminal session on each node in your Palette/VerteX management cluster and issue the
 following command to check the system time.
@@ -400,8 +402,8 @@ the upgrade, you must manually release the orphaned claim holding the IP address
    ```
 
 6. Re-run the upgrade. For guidance, refer to the applicable upgrade guide for your airgapped instance of
-   [Palette](../self-hosted-setup/palette/vmware/upgrade/airgap.md) or
-   [VerteX](../self-hosted-setup/vertex/vmware/upgrade/airgap.md).
+   [Palette](../self-hosted-setup/palette/supported-environments/vmware/upgrade/airgap.md) or
+   [VerteX](../self-hosted-setup/vertex/supported-environments/vmware/upgrade/airgap.md).
 
 ## Scenario - Self-Linking Error
 

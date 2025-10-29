@@ -4,7 +4,7 @@ title: "Feature Flags"
 description: "Learn how to to use feature flags to enable tech preview features in self-hosted Palette"
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 70
+sidebar_position: 60
 tags: ["self-hosted", "management", "feature-flags"]
 keywords: ["self-hosted", "management", "feature-flags"]
 ---

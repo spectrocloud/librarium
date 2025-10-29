@@ -4,7 +4,7 @@ title: "Allow Cluster Imports"
 description: "Learn how to import clusters to self-hosted Palette VerteX."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 40
+sidebar_position: 10
 tags: ["self-hosted", "vertex", "non-fips"]
 keywords: ["self-hosted", "vertex", "non-fips"]
 ---

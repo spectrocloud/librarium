@@ -17,8 +17,8 @@ having to log in again. This feature is available to self-hosted Palette, VerteX
 - At least two tenants must be available in the Palette instance. System administrators for self-hosted Palette or
   VerteX instances can create multiple tenants. Refer to the self-hosted Palette
   [Tenant Management](../../self-hosted-setup/palette/system-management/tenant-management.md) or the Palette VerteX
-  [Tenant Management](<(../../self-hosted-setup/vertex/system-management/tenant-management.md)>) page for guidance on
-  how to create tenants. Users of Palette SaaS, contact our support team at
+  [Tenant Management](../../self-hosted-setup/vertex/system-management/tenant-management.md) page for guidance on how to
+  create tenants. Users of Palette SaaS, contact our support team at
   [support@spectrocloud.com](mailto:support@spectrocloud.com) for additional tenants.
 
 ## Switch Tenant

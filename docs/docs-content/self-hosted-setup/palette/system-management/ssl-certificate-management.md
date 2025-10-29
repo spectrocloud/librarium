@@ -43,10 +43,11 @@ updating the system address may require manual reconciliation on deployed cluste
 - A utility or tool to convert the certificate and key files to base64-encoded strings. You can use the `base64` command
   in Unix-based systems. Alternatively, you can use an online tool to convert the files to base64-encoded strings.
 
-- If you installed Palette on an existing [Kubernetes cluster](../kubernetes/install/install.md) and specified a custom
-  domain name, ensure that you created a certificate for that domain. If you did not specify a custom domain name, or if
-  you installed Palette on [VMware using the Palette CLI](../vmware/install/install.md), you must create a certificate
-  for the Palette system console’s IP address. You can also specify a load balancer IP address if you are using a load
+- If you installed Palette on an existing [Kubernetes cluster](../supported-environments/kubernetes/install/install.md)
+  and specified a custom domain name, ensure that you created a certificate for that domain. If you did not specify a
+  custom domain name, or if you installed Palette on
+  [VMware using the Palette CLI](../supported-environments/vmware/install/install.md), you must create a certificate for
+  the Palette system console’s IP address. You can also specify a load balancer IP address if you are using a load
   balancer to access Palette.
 
 - The new SSL certificate must also include the previous DNS name or IP address in the Subject Alternative Name (SAN)
