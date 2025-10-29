@@ -58,17 +58,18 @@ To complete this tutorial, you will need the following:
 - A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture. You can use
   `uname -m` to check your architecture.
 
-  - The following minimum hardware configuration:
-
-    - 4 CPU
-    - 8 GB memory
-    - 150 GB storage
-
   :::warning
 
   The Linux machine must have network connectivity to your VMware vCenter environment.
 
   :::
+- The following minimum hardware configuration:
+
+    - 4 CPU
+    - 8 GB memory
+    - 150 GB storage
+
+
 
 - The following software installed on the Linux machine:
 
@@ -85,11 +86,11 @@ To complete this tutorial, you will need the following:
     sudo apt install docker.io
     ```
 
-  :::info
+    :::info
 
-  If you do not install Earthly, you must install Docker.
+    If you do not install Earthly, you must install Docker.
 
-  :::
+    :::
 
 - A [Spectro Cloud](https://console.spectrocloud.com) account. If you have not signed up, you can sign up for an account
   [here](https://www.spectrocloud.com/get-started).
