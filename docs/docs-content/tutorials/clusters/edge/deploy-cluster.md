@@ -140,7 +140,7 @@ View the available [git tags](https://github.com/spectrocloud/CanvOS/tags).
 git tag --sort=v:refname
 ```
 
-Check out the desired tag. We recommend using a CanvOS minor version that is the same as, or older than, Palette's minor
+Check out the desired tag. We recommend using a CanvOS minor version that matches or is older than Palette's minor
 version. This tutorial uses the tag `v4.7.16` as an example.
 
 ```bash
