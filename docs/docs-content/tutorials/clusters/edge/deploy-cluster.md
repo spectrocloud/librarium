@@ -162,12 +162,14 @@ export CUSTOM_TAG=demo
 export IMAGE_REGISTRY=spectrocloud
 ```
 
-Next, issue the following command to create the `.arg` file with the custom tag. The remaining arguments will use the
-predefined values. For example, this tutorial uses K3s version `1.33.5` as the Kubernetes distribution and Ubuntu as the
-OS distribution. Review the `k8s_version.jason` file in the CanvOS repository for all the supported Kubernetes versions.
+Next, issue the following command to create the `.arg` file using the custom tag and registry. The remaining arguments use the
+predefined values. For example, this tutorial uses [K3s](https://k3s.io/) version `1.33.5` as the Kubernetes distribution and Ubuntu as the
+OS distribution. Review the `k8s_version.json` file in the CanvOS repository for all the supported Kubernetes versions.
 
-:::warning If you are using a CanvOS tag that is earlier than v4.4.12, the `k8s_version.json` file does not exist in
-those tags. In that case, review the `Earthfile` file in the CanvOS repository for all supported Kubernetes versions.
+:::warning
+
+If you are using a CanvOS tag that is earlier than v4.4.12, the `k8s_version.json` file does not exist in those tags. In that case, review the `Earthfile` file in the CanvOS repository for all supported Kubernetes versions.
+
 :::
 
 Using the arguments defined in the `.arg` file, the final provider images you generate will have the following naming
@@ -404,7 +406,7 @@ spectrocloud/ubuntu   k3s-1.33.5-v4.7.16-demo_linux_amd64   9d1ced2fee15   32 mi
 
 ## Push Provider Images
 
-To use the provider image with your Edge deployment, push it to the image registry specified in the .arg file. Issue the
+To use the provider image with your Edge deployment, push it to the image registry specified in the `.arg` file. Issue the
 following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
 
 ```bash
@@ -425,8 +427,8 @@ sudo docker push $IMAGE_REGISTRY/ubuntu:k3s-1.33.5-v4.7.16-$CUSTOM_TAG
 ## Provision Edge Virtual Machines
 
 In this section, you will create a VM template in VMware vCenter from the Edge installer ISO image and clone that VM
-template to provision three VMs. Think of a VM template as an static blueprint that can be used to create new and
-consistent VMs. You cannot easily modify templates after you create them, so cloning the VM template will ensure all
+template to provision three VMs. Think of a VM template as a static blueprint that you can use to create new and
+consistent VMs. You cannot easily modify templates after you create them, so cloning a VM template ensures all
 newly created VMs have _consistent_ guest OS, dependencies, and user data configurations installed.
 
 This tutorial example will use [Packer](https://www.packer.io/) to create a VM template from the Edge installer ISO
@@ -455,8 +457,7 @@ listed in the table.
 | `PKR_VAR_vcenter_datastore`     | Datastore name          | Switch to the **Storage** view in your vSphere client. The datastore name is displayed in the left navigation tree.                                      |
 | `PKR_VAR_vcenter_network`       | Network name            | Switch to the **Networking** view in your vSphere client. The network name is displayed in the left navigation tree.                                     |
 
-Issue the following command to create the `heredoc` script to generate the `.packerenv` file shown below that contains
-the VMware vCenter details as environment variables.
+Issue the following command, which uses a `heredoc` script to create the `.packerenv` file containing VMware vCenter details as environment variables.
 
 ```bash
 cat << EOF > .packerenv
