@@ -19,4 +19,277 @@ partial_name: upgrade-palette-prereqs
 
   :::
 
-  - Check that your upgrade path is supported by referring to the <PaletteVertexUrlMapper edition={props.edition} text="Supported Upgrade Paths" url="/upgrade#supported-upgrade-paths"/>.
+- Check that your upgrade path is supported by referring to the <PaletteVertexUrlMapper edition={props.edition} text="Supported Upgrade Paths" url="/upgrade#supported-upgrade-paths"/>.
+
+- If upgrading from version **4.7.15**, you must run an additional script to prepare {props.version} for the upgrade.
+
+  <details>
+
+  <summary> Click to expand the instructions for the script </summary>
+
+  1. Log in to Local UI of the leader node of your Palette management cluster. For example, `https://<palette-leader-node-ip>:5080`.
+
+  2. From the left main menu, click **Cluster**.
+
+  3. On the **Overview** tab, within the **Environment** section, click the link for the **Admin Kubeconfig File** to download the kubeconfig file.
+
+  4. On your local machine, ensure you have `kubectl` installed and configured to use the downloaded kubeconfig file. You can set the `KUBECONFIG` environment variable to point to the file.
+
+     ```bash
+     export KUBECONFIG=/path/to/downloaded/kubeconfig/file
+     ```
+
+  5. Issue the following command to check the PVCs in the `zot-system` namespace.
+
+     ```bash
+     kubectl get pvc --namespace zot-system
+     ```
+
+     ```shell hideClipboard title="Example output"
+     NAME      STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS          VOLUMEATTRIBUTESCLASS   AGE
+     zot-pvc   Bound    pvc-6d603d91-d5f6-459a-b600-0a699cbb4936   250Gi      RWX            linstor-lvm-storage   <unset>                 3h58m
+     ```
+
+  6. Issue the following command to check the deployments in the `zot-system` namespace.
+
+     ```bash
+     kubectl get deploy --namespace zot-system
+     ```
+
+     ```shell hideClipboard title="Example output"
+     NAME   READY   UP-TO-DATE   AVAILABLE   AGE
+     zot    1/1     1            1           3h59m
+     ```
+
+  7. Create a file named `change-pvc-access-mode.sh` and copy the following script into it.
+
+     The script safely changes the access mode of a Kubernetes PersistentVolumeClaim (PVC) without losing data, by temporarily deleting and re-creating the PVC while keeping the underlying PersistentVolume (PV) intact. It pauses your app during the change, then brings it back. For version 4.7.15, it is needed for the `zot` deployment prior to upgrading.
+
+     ```bash
+     #!/bin/bash
+
+     # Script to change PVC access mode while preserving data in LINSTOR/Piraeus
+     # Usage: ./change-pvc-access-mode.sh <namespace> <pvc-name> <deployment-name> <new-access-mode>
+     # Example: ./change-pvc-access-mode.sh zot-system zot-pvc zot ReadWriteOnce
+
+     set -e
+
+     # Colors for output
+     RED='\033[0;31m'
+     GREEN='\033[0;32m'
+     YELLOW='\033[1;33m'
+     NC='\033[0m' # No Color
+
+     # Check arguments
+     if [ "$#" -ne 4 ]; then
+         echo -e "${RED}Error: Invalid number of arguments${NC}"
+         echo "Usage: $0 <namespace> <pvc-name> <deployment-name> <new-access-mode>"
+         echo "Access modes: ReadWriteOnce, ReadWriteMany, ReadOnlyMany"
+         exit 1
+     fi
+
+     NAMESPACE="$1"
+     PVC_NAME="$2"
+     DEPLOYMENT_NAME="$3"
+     NEW_ACCESS_MODE="$4"
+
+     # Validate access mode
+     if [[ ! "$NEW_ACCESS_MODE" =~ ^(ReadWriteOnce|ReadWriteMany|ReadOnlyMany)$ ]]; then
+         echo -e "${RED}Error: Invalid access mode. Must be one of: ReadWriteOnce, ReadWriteMany, ReadOnlyMany${NC}"
+         exit 1
+     fi
+
+     echo -e "${YELLOW}=== PVC Access Mode Migration Script ===${NC}"
+     echo "Namespace: $NAMESPACE"
+     echo "PVC: $PVC_NAME"
+     echo "Deployment: $DEPLOYMENT_NAME"
+     echo "New Access Mode: $NEW_ACCESS_MODE"
+     echo ""
+
+     # Step 1: Get PV name
+     echo -e "${GREEN}[1/9] Getting PV name...${NC}"
+     PV_NAME=$(kubectl get pvc "$PVC_NAME" -n "$NAMESPACE" -o jsonpath='{.spec.volumeName}')
+     if [ -z "$PV_NAME" ]; then
+         echo -e "${RED}Error: Could not find PV for PVC $PVC_NAME${NC}"
+         exit 1
+     fi
+     echo "PV Name: $PV_NAME"
+
+     # Step 2: Backup current configuration
+     echo -e "${GREEN}[2/9] Backing up current PVC and PV configuration...${NC}"
+     kubectl get pvc "$PVC_NAME" -n "$NAMESPACE" -o yaml > "${PVC_NAME}-backup-$(date +%Y%m%d-%H%M%S).yaml"
+     kubectl get pv "$PV_NAME" -o yaml > "${PV_NAME}-backup-$(date +%Y%m%d-%H%M%S).yaml"
+     echo "Backups created in current directory"
+
+     # Step 3: Set PV reclaim policy to Retain
+     echo -e "${GREEN}[3/9] Setting PV reclaim policy to Retain...${NC}"
+     CURRENT_POLICY=$(kubectl get pv "$PV_NAME" -o jsonpath='{.spec.persistentVolumeReclaimPolicy}')
+     echo "Current reclaim policy: $CURRENT_POLICY"
+     if [ "$CURRENT_POLICY" != "Retain" ]; then
+         kubectl patch pv "$PV_NAME" -p '{"spec":{"persistentVolumeReclaimPolicy":"Retain"}}'
+         echo "Reclaim policy changed to Retain"
+     else
+         echo "Already set to Retain"
+     fi
+
+     # Step 4: Get current replica count
+     echo -e "${GREEN}[4/9] Getting current deployment replica count...${NC}"
+     REPLICA_COUNT=$(kubectl get deployment "$DEPLOYMENT_NAME" -n "$NAMESPACE" -o jsonpath='{.spec.replicas}')
+     echo "Current replicas: $REPLICA_COUNT"
+
+     # Step 5: Scale down deployment
+     echo -e "${GREEN}[5/9] Scaling down deployment to 0...${NC}"
+     kubectl scale deployment "$DEPLOYMENT_NAME" -n "$NAMESPACE" --replicas=0
+     echo "Waiting for pods to terminate..."
+     kubectl wait --for=delete pod -l app="$DEPLOYMENT_NAME" -n "$NAMESPACE" --timeout=120s 2>/dev/null || true
+     sleep 5
+
+     # Step 6: Delete PVC
+     echo -e "${GREEN}[6/9] Deleting PVC (data preserved in PV)...${NC}"
+     kubectl delete pvc "$PVC_NAME" -n "$NAMESPACE"
+     echo "Waiting for PV to be Released..."
+     sleep 5
+
+     PV_STATUS=$(kubectl get pv "$PV_NAME" -o jsonpath='{.status.phase}')
+     echo "PV Status: $PV_STATUS"
+
+     # Step 7: Remove claimRef and update access mode
+     echo -e "${GREEN}[7/9] Removing claimRef from PV...${NC}"
+     kubectl patch pv "$PV_NAME" --type json -p='[{"op": "remove", "path": "/spec/claimRef"}]'
+
+     echo -e "${GREEN}[7/9] Updating PV access mode to $NEW_ACCESS_MODE...${NC}"
+     kubectl patch pv "$PV_NAME" -p "{\"spec\":{\"accessModes\":[\"$NEW_ACCESS_MODE\"]}}"
+
+     PV_STATUS=$(kubectl get pv "$PV_NAME" -o jsonpath='{.status.phase}')
+     echo "PV Status: $PV_STATUS"
+
+     # Step 8: Create new PVC
+     echo -e "${GREEN}[8/9] Creating new PVC with updated access mode...${NC}"
+
+     # Get original PVC details
+     STORAGE_SIZE=$(kubectl get pv "$PV_NAME" -o jsonpath='{.spec.capacity.storage}')
+     STORAGE_CLASS=$(kubectl get pv "$PV_NAME" -o jsonpath='{.spec.storageClassName}')
+     VOLUME_MODE=$(kubectl get pv "$PV_NAME" -o jsonpath='{.spec.volumeMode}')
+
+     cat <<EOF | kubectl apply -f -
+     apiVersion: v1
+     kind: PersistentVolumeClaim
+     metadata:
+       name: $PVC_NAME
+       namespace: $NAMESPACE
+       labels:
+         app.kubernetes.io/managed-by: Helm
+     spec:
+       accessModes:
+       - $NEW_ACCESS_MODE
+       resources:
+         requests:
+           storage: $STORAGE_SIZE
+       storageClassName: $STORAGE_CLASS
+       volumeMode: $VOLUME_MODE
+       volumeName: $PV_NAME
+     EOF
+
+     echo "Waiting for PVC to bind..."
+     sleep 5
+     kubectl get pvc "$PVC_NAME" -n "$NAMESPACE"
+
+     # Step 9: Scale deployment back up
+     echo -e "${GREEN}[9/9] Scaling deployment back to $REPLICA_COUNT replicas...${NC}"
+     kubectl scale deployment "$DEPLOYMENT_NAME" -n "$NAMESPACE" --replicas="$REPLICA_COUNT"
+
+     echo ""
+     echo -e "${GREEN}=== Migration Complete ===${NC}"
+     echo ""
+     echo "Verifying final state..."
+     kubectl get pvc "$PVC_NAME" -n "$NAMESPACE"
+     echo ""
+     kubectl get pods -n "$NAMESPACE"
+     echo ""
+     echo -e "${YELLOW}Note: Wait for pods to be Running and verify your application is working correctly${NC}"
+     echo -e "${YELLOW}Backup files created: ${PVC_NAME}-backup-*.yaml and ${PV_NAME}-backup-*.yaml${NC}"
+     ```
+
+  8. Make the script executable.
+  
+     ```bash
+     chmod u+x change-pvc-access-mode.sh
+     ```   
+
+  9. Execute the script with the following parameters.
+
+     ```bash
+     ./change-pvc-access-mode.sh zot-system zot-pvc zot ReadWriteOnce
+     ```
+
+     ```shell hideClipboard title="Example output"
+     === PVC Access Mode Migration Script ===
+     Namespace: zot-system
+     PVC: zot-pvc
+     Deployment: zot
+     New Access Mode: ReadWriteOnce
+
+     [1/9] Getting PV name...
+     PV Name: pvc-6d603d91-d5f6-459a-b600-0a699cbb4936
+     [2/9] Backing up current PVC and PV configuration...
+     Backups created in current directory
+     [3/9] Setting PV reclaim policy to Retain...
+     Current reclaim policy: Delete
+     persistentvolume/pvc-6d603d91-d5f6-459a-b600-0a699cbb4936 patched
+     Reclaim policy changed to Retain
+     [4/9] Getting current deployment replica count...
+     Current replicas: 1
+     [5/9] Scaling down deployment to 0...
+     deployment.apps/zot scaled
+     Waiting for pods to terminate...
+     [6/9] Deleting PVC (data preserved in PV)...
+     persistentvolumeclaim "zot-pvc" deleted from zot-system namespace
+     Waiting for PV to be Released...
+     PV Status: Released
+     [7/9] Removing claimRef from PV...
+     persistentvolume/pvc-6d603d91-d5f6-459a-b600-0a699cbb4936 patched
+     [7/9] Updating PV access mode to ReadWriteOnce...
+     persistentvolume/pvc-6d603d91-d5f6-459a-b600-0a699cbb4936 patched
+     PV Status: Available
+     [8/9] Creating new PVC with updated access mode...
+     persistentvolumeclaim/zot-pvc created
+     Waiting for PVC to bind...
+     NAME      STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS          VOLUMEATTRIBUTESCLASS   AGE
+     zot-pvc   Pending   pvc-6d603d91-d5f6-459a-b600-0a699cbb4936   0                         linstor-lvm-storage   <unset>                 5s
+     [9/9] Scaling deployment back to 1 replicas...
+     deployment.apps/zot scaled
+
+     === Migration Complete ===
+
+     Verifying final state...
+     NAME      STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS          VOLUMEATTRIBUTESCLASS   AGE
+     zot-pvc   Pending   pvc-6d603d91-d5f6-459a-b600-0a699cbb4936   0                         linstor-lvm-storage   <unset>                 7s
+
+     NAME                READY   STATUS    RESTARTS   AGE
+     zot-c96cb7b-hspd2   0/1     Pending   0          1s
+
+     Note: Wait for pods to be Running and verify your application is working correctly
+     Backup files created: zot-pvc-backup-*.yaml and pvc-6d603d91-d5f6-459a-b600-0a699cbb4936-backup-*.yaml
+     ```
+
+  10. Verify that the PVC status is `Bound` and the deployment pods are in the `Running` state before proceeding with the upgrade.
+
+      ```bash
+      kubectl get pvc --namespace zot-system
+      ```
+
+      ```shell hideClipboard title="Example output"
+      NAME      STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS          VOLUMEATTRIBUTESCLASS   AGE
+      zot-pvc   Bound    pvc-6d603d91-d5f6-459a-b600-0a699cbb4936   250Gi      RWO            linstor-lvm-storage   <unset>                 5m30s
+      ```
+
+      ```bash
+      kubectl get pods --namespace zot-system
+      ```
+
+      ```shell hideClipboard title="Example output"
+      NAME                READY   STATUS    RESTARTS   AGE
+      zot-c96cb7b-hspd2   1/1     Running   0          5m3s
+      ```
+
+  </details>
