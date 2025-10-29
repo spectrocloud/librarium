@@ -1019,8 +1019,8 @@ hosts.
 
 ### Delete the Cluster, Profile, and Edge Registrations
 
-In Palette, display the cluster details page. Click on the **Settings** button to expand the drop-down menu, and
-select the **Delete Cluster** option, as shown in the screenshot below.
+In Palette, display the cluster details page. Click on the **Settings** button to expand the drop-down menu, and select
+the **Delete Cluster** option, as shown in the screenshot below.
 
 ![Screenshot of deleting a cluster.](/tutorials/edge/clusters_edge_deploy-cluster_delete-cluster_4-7.webp)
 
@@ -1034,8 +1034,9 @@ After you delete the cluster, click **Profiles** on the left main menu, and sele
 
 Wait for Palette to successfully delete the resources.
 
-After you delete the cluster profile, click **Clusters** on the left main menu, navigate to the **Edge Hosts** tab, and select one of the edge devices used for this tutorial. Choose the
-**Delete** option in the three-dot menu, as shown in the screenshot below.
+After you delete the cluster profile, click **Clusters** on the left main menu, navigate to the **Edge Hosts** tab, and
+select one of the edge devices used for this tutorial. Choose the **Delete** option in the three-dot menu, as shown in
+the screenshot below.
 
 ![Screenshot of deleting edge hosts from Palette](/tutorials/edge/cluster_edge_deploy-cluster_delete-edge-devices_4-7.webp)
 
