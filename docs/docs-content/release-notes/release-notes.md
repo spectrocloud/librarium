@@ -43,7 +43,8 @@ The following components have been updated for Palette version 4.7.27 - 4.7.29.
 | AWS Cluster Autoscaler Helm  | Add-on | :white_check_mark: | :x:                | 1.34.1      |
 | Flannel                      | CNI    | :white_check_mark: | :white_check_mark: | 0.27.4      |
 | Flux2                        | Add-on | :white_check_mark: | :x:                | 2.17.0      |
-| Karpenter                    | Add-on | :white_check_mark: | :x:                | 1.8.1       |
+| Karpenter                    | Add-on | :white_check_mark: | :x:                                               |  1.8.1       |
+| Falco                            | Add-on | :x:                               |  :white_check_mark:                |  6.3.0      |
 
 ## October 27, 2025 - Release 4.7.29
 
