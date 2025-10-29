@@ -721,9 +721,9 @@ Use the following values when filling out the **Basic Information** section.
 | ----------- | ---------------------------------------------------------------------- |
 | Name        | edge-tutorial-cluster                                                  |
 | Version     | `1.0.0`                                                                |
-| Description | Cluster profile as part of the edge cluster deployment tutorial.       |
+| Description | Cluster profile as part of the Edge Cluster Deployment tutorial.       |
 | Type        | Full                                                                   |
-| Tags        | `spectro-cloud-education, app:hello-universe, terraform_managed:false` |
+| Tags        | `spectrocloud:education, app:hello-universe, terraform_managed:false` |
 
 Click on **Next** to continue.
 
@@ -737,13 +737,13 @@ section.
 <!-- prettier-ignore-start -->
 
 In the **Profile Layers** section, add the following
-<VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS layer.
+<VersionedLink text="BYOOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS layer.
 
 <!-- prettier-ignore-end -->
 
 | **Pack Type** | **Registry** | **Pack Name** | **Pack Version** |
 | ------------- | ------------ | ------------- | ---------------- |
-| OS            | Public Repo  | BYOS Edge OS  | Not applicable   |
+| OS            | Public Repo  | BYOOS Edge OS  | Not applicable   |
 
 Replace the OS layer manifest with the custom manifest so that the cluster profile can pull the provider image from the
 registry you pushed it to. You may recall that the CanvOS script returned an output containing a custom manifest after
@@ -889,7 +889,7 @@ Use the following values in the **Basic Information** section.
 | ------------ | ---------------------------------------------------------------------- |
 | Cluster name | edge-tutorial-cluster                                                  |
 | Description  | Cluster as part of the Edge tutorial.                                  |
-| Tags         | `spectro-cloud-education, app:hello-universe, terraform_managed:false` |
+| Tags         | `spectrocloud:education, app:hello-universe, terraform_managed:false` |
 
 Click **Next** to continue.
 
