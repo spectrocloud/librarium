@@ -75,8 +75,11 @@ To complete this tutorial, you will need the following:
     artifacts, but it would require root privileges, and some of the resulting artifacts will be owned by the root user.
   - An image management tool with `sudo` privileges such as [Docker](https://docs.docker.com/engine/install/) or
     [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and available.
-    When installing these tools, avoid using `snap` as this will create an isolated sandboxed environment that will not
-    be accessible by the commands used in this tutorial. Use `apt` instead.
+    Avoid installing these tools using `snap`, as it creates an isolated, sandboxed environment that prevents the commands in this tutorial from accessing them properly. Instead, install them using your system’s native package manager (for example, `apt`).
+    
+    ```bash
+    sudo apt install docker.io
+    ```
 
   :::info
 
