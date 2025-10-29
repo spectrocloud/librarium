@@ -55,7 +55,8 @@ deep-clean: ## Clean all artifacts
 clean-logos: ## Clean logos
 	rm -rf static/img/packs
 
-clean-versions: ## Clean Docusarus content versions
+## Bundled versioning has been removed, but keeping the clean steps for now to allow people to clean up local artifacts.
+clean-versions: ## Clean Docusaurus content versions
 	@echo "cleaning versions"
 	rm -rf api_versions.json versions.json versioned_docs versioned_sidebars api_versioned_sidebars api_versioned_docs versioned_partials
 	git checkout -- docusaurus.config.js static/robots.txt
@@ -183,17 +184,6 @@ build-ci: ## Run npm build in CI environment
 			exit 1; \
 		fi; \
 	}
-	
-
-versions: ## Create Docusarus content versions
-	@echo "creating versions"
-	./scripts/versions.sh $(TMPDIR)
-
-
-versions-ci: ## Create Docusarus content versions in a GitHub Actions CI environment
-	@echo "creating versions"
-	./scripts/versions.sh $$RUNNER_TEMP
-
 
 api: ## Generate API docs
 	@echo "generating api docs"
