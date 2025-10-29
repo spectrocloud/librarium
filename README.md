@@ -576,8 +576,7 @@ component will automatically display the badge in the correct color based on the
 
 This is a custom component that creates a grid of simple text cards with two columns, styled according to our color
 scheme. The rows of cards are dynamically created according to the list of specified cards. This component uses the
-`VersionedLink` under the covers. URLs should be specified as discussed in the [Internal Links](#internal-links)
-section.
+`VersionedLink` under the covers.
 
 ```js
 <SimpleCardGrid
@@ -723,25 +722,6 @@ The snippet above will work with the example partial we have in our repository, 
 
 Note that the `message` field corresponds to the `{props.message}` reference in the `_partials/_partial_example.mdx`
 file.
-
-### Internal Links
-
-Due to the complexities of Docusaurus plugin rendering, links do not support versioning in `*.mdx` files. If you want to
-add an internal link you will have to use the `VersionedLink` component inside the `*.mdx` file.
-
-```mdx
----
-partial_category: public-cloud
-partial_name: palette-setup
----
-
-This is how you set up Palette in {props.cloud}.
-
-This is an <VersionedLink text="Internal Link" url="/getting-started/additional-capabilities"/>.
-```
-
-The path of the link should be the path of the destination file from the root directory, without any back operators
-`..`. External links can be referenced as usual.
 
 ## Palette/VerteX URLs
 
@@ -970,30 +950,9 @@ The packs component will always display the top-level tab content, so if you add
 new `TabItem` component is the first in the list. If a new pack version does not have a respective tag, the latest
 version content will be displayed automatically.
 
-#### Links
-
-When authoring additional details content, you must use the `<VersionedLink />` component to link to other documentation
-pages. The component is required to ensure that the links are versioned correctly. Refer to the
-[Internal Links](#internal-links) section for more information.
-
-If you want to link to a heading inside the pack component, you must also use the `<VersionedLink />` and include the
-path to the component followed by the heading id. The following is an example of how to link to a heading inside the
-pack component. Take note of the `#` symbol followed by the heading id.
-
-```mdx
-<VersionedLink
-  text="Change Cluster DNS Service Domain"
-  url="/integrations/packs/?pack=kubernetes-eks#change-cluster-dns-service-domain"
-/>
-```
-
-Omit the `version=xxxx&parent=xxxx` value that is part of the query string. If you include the `version` and `parent`
-values, the link will not work as expected.
-
 ### Link to a Pack
 
 You must use the `<VersionedLink />` component to link to a pack. The following is an example of how to link to a pack.
-For more information, refer to the [Internal Links](#internal-links) section.
 
 ```mdx
 <VersionedLink text="Change Cluster DNS Service Domain" url="/integrations/packs/?pack=kubernetes-eks" />
@@ -1227,61 +1186,6 @@ new release tag is created.
 >
 > Do not use `feat`,`perf`, `fix`, or other semantic-release key words that trigger a version change. Use the commit
 > message prefix `docs: yourMessageHere` for regular documentation commits.
-
-## Versioning
-
-> [!NOTE]
->
-> Detailed documentation for versioning can be found in the internal
-> [Versioning](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1962639377/Versioning) guide.
-
-All versioned content belongs to a specific version branch. The version branch name follows the naming convention
-`version-X-X`. The version branch is used to generate versioned content.
-
-There are three files that are used for generating versioned content:
-
-- [`versions.sh`](./scripts/versions.sh) - A bash script that loops through all the version branches and generates the
-  versionioned content.
-
-- [`update_docusaurs_config.js`](./docsearch.config.json) - A node script that updates the `docusaurus.config.js` file
-  with all the required vesioning parameters.
-
-- [`versionsOverride.json`](./versionsOverride.json) - A JSON file that contains the versioning overrides. These values
-  are used to update the `docusaurus.config.js` file with non-default values.
-
-### Build Versioned Content Locally
-
-To build versioned content locally, use the following steps:
-
-1. Issue the following command to generate the versioned content.
-
-```shell
-make versions
-```
-
-2. Start a local development server to view the versioned content.
-
-```shell
-make start
-```
-
-3. Compile the versioned content to ensure a successful build.
-
-```shell
-make build
-```
-
-4. Remove the `versions.json` file and discard the changes to the `docusaurus.config.js` file. Use the following command
-   to remove all version artifacts.
-
-```shell
-make clean-versions
-```
-
-> [!WARNING]
->
-> The `docusaurus.config.js` file is updated by the [`update_docusaurus_config.js`](./docusaurus.config.js) script. DO
-> NOT commit this file with the updated changes.
 
 ## Exit Codes
 
