@@ -22,7 +22,7 @@ The following components have been updated for Palette version 4.7.27 - 4.7.29.
 
 ### Improvements
 
-- The [Palette CLI](../automation/palette-cli/palette-cli.md) now have improved command help and examples.
+- The [Palette CLI](../automation/palette-cli/palette-cli.md) now has improved command help and examples.
 
 ### Bug Fixes
 
