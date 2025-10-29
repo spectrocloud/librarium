@@ -63,13 +63,12 @@ To complete this tutorial, you will need the following:
   The Linux machine must have network connectivity to your VMware vCenter environment.
 
   :::
+
 - The following minimum hardware configuration:
 
-    - 4 CPU
-    - 8 GB memory
-    - 150 GB storage
-
-
+  - 4 CPU
+  - 8 GB memory
+  - 150 GB storage
 
 - The following software installed on the Linux machine:
 
