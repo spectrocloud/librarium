@@ -2,18 +2,18 @@
 
 set -e
 
+DOCS_ROOT="$(git rev-parse --show-toplevel)"
 RELEASE_NOTES_PATH="docs/docs-content/release-notes/release-notes.md"
 OLD_RELEASE_NOTES_PATH="docs/docs-content/release-notes.md"
 BREAKING_CHANGES_PARTIALS_PATH="_partials/breaking-changes"
 ALL_VERSIONS_PATH="src/components/ReleaseNotesBreakingChanges/versions.json"
-WORKING_DIR=$(pwd)
 
 # Where to place worktrees (unique per run)
 WORKTREES_DIR="$(mktemp -d -t librarium-worktrees-XXXXXX)"
 echo "Using worktrees dir: $WORKTREES_DIR"
 
 cleanup() {
-  echo "Cleaning up worktrees..."
+  echo "🧹 Cleaning up worktrees..."
   git worktree prune || true
   rm -rf "$WORKTREES_DIR" || true
 }
@@ -40,6 +40,26 @@ create_partials_file () {
       echo ""
     } >> "$filename"
   fi
+}
+
+# Function to save the partials file to the main repo
+# Params:
+# $1 - release number, example: 4.0.0
+# $2 - worktree path
+# $3 - source directory
+# $4 - destination directory
+persist_partials_file_main_repo() {
+    release_number=$1
+    wt_path=$2
+    src_dir=$3
+    dest_dir=$4
+
+    replaced=$(echo "$release_number" | tr '.' '_')
+    filename="$src_dir/br_$replaced.mdx"
+    
+    popd >/dev/null  # leave the worktree to save the file to the main repo
+    cp "$wt_path/$filename" "$dest_dir/$filename"
+    pushd "$wt_path" >/dev/null # re-enter the worktree
 }
 
 # Function to add breaking changes body to the partials file
@@ -128,21 +148,11 @@ clean_files() {
 }
 
 # If ALL_VERSIONS_PATH file and BREAKING_CHANGES_PARTIALS_PATH directory already exist, skip the entire script.
-# This is to speed local development where we don't need to re-index every time.
+# This is to speed up local development where we don't need to re-index every time.
 if [ -f "$ALL_VERSIONS_PATH" ] && [ -d "$BREAKING_CHANGES_PARTIALS_PATH" ]; then
-  echo "$ALL_VERSIONS_PATH file and $BREAKING_CHANGES_PARTIALS_PATH directory already exist. Skipping breaking change indexing."
+  echo "ℹ️ $ALL_VERSIONS_PATH file and $BREAKING_CHANGES_PARTIALS_PATH directory already exist. Skipping breaking change indexing."
   exit 0
 fi
-
-# Save the current branch name
-current_branch=$(git branch --show-current)
-
-# If current branch is empty, then use master
-if [ -z "$current_branch" ]; then
-    current_branch="master"
-fi
-
-echo "Current branch: $current_branch"
 
 # Fetch all branches from the remote
 git fetch --prune origin
@@ -158,20 +168,21 @@ rm -rf $BREAKING_CHANGES_PARTIALS_PATH
 rm -f $ALL_VERSIONS_PATH
 touch $ALL_VERSIONS_PATH
 echo "[" >> $ALL_VERSIONS_PATH
+# Create the directory in the main repo if it doesn't exist
+mkdir -p $BREAKING_CHANGES_PARTIALS_PATH
 
 for branch in $branches; do
-  echo "Checking branch: $branch"
+  echo "ℹ️ Checking branch: $branch"
   release_notes_path="$RELEASE_NOTES_PATH"
-  if [ "$branch" = "version-4-0" ] || [ "$branch" = "version-4-1" ]; then
+  if [[ $branch == *version-4-0* || $branch == *version-4-1* ]]; then
     release_notes_path="$OLD_RELEASE_NOTES_PATH"
   fi
 
   wt_path="$WORKTREES_DIR/$branch"
-  # Ensure the local branch exactly matches the remote tip (-B resets/creates)
-  # This prevents drift and avoids detached HEADs.
-  git worktree add --force -B "$branch" "$wt_path" "origin/$branch"
+  git worktree add --force --detach "$wt_path" "origin/$branch"
 
   # Everything below runs isolated in the branch worktree
+  # ALL FILES WRITTEN PAST THIS POINT ARE IN THE WORKTREE
   pushd "$wt_path" >/dev/null
 
   in_breaking_changes=false
@@ -186,11 +197,10 @@ for branch in $branches; do
     if echo "$line" | grep -q "##.*Release"; then
       # If we were already processing a release and file, copy it to the current working directory.
       if [ -n "$release_number" ] && [ "$partial_created" == "true" ]; then
-        replaced=$(echo "$release_number" | tr '.' '_')
-        filename="$BREAKING_CHANGES_PARTIALS_PATH/br_$replaced.mdx"
-        cp "$filename" "$WORKING_DIR/$filename"
+        persist_partials_file_main_repo "$release_number" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$DOCS_ROOT"
         partial_created=false
       fi
+
       release_number=$(
         echo "$line" |
         cut -c4- |
@@ -199,7 +209,11 @@ for branch in $branches; do
         sed -E 's/.* -[[:space:]]*([0-9]+\.[0-9]+\.[0-9]+).*/\1/' |  # Extract last version in range
         sed -E 's/^([0-9]+\.[0-9]+\.[0-9]+).*/\1/'               # Extract version if no range
       )
+
+      popd >/dev/null  # leave the worktree to write to the file in the the main repo
       echo "\"$release_number\"," >> "$ALL_VERSIONS_PATH"
+      pushd "$wt_path" >/dev/null # re-enter the worktree
+
       # New release version, set breaking changes to false.
       in_breaking_changes=false
       continue
@@ -215,7 +229,6 @@ for branch in $branches; do
     fi
     
     if [ -n "$release_number" ] && $in_breaking_changes; then
-      
       # If the line is empty, write the buffer then add it to the body as is without more processing.
       if [ -z "$line" ]; then
         # Flush the buffer if it has content.
@@ -297,11 +310,16 @@ for branch in $branches; do
 
   done < "$wt_path/$release_notes_path"
 
+  # If we finished the file and have a left over partial, copy it to the current working directory.
+  if [ -n "$release_number" ] && [ "$partial_created" == "true" ]; then
+    persist_partials_file_main_repo "$release_number" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$DOCS_ROOT"
+    partial_created=false
+  fi
+
   popd >/dev/null
 
   # Remove the worktree to keep the workspace small
   git worktree remove --force "$wt_path"
-  git branch -D "$branch" || true
 done
 
 clean_files
@@ -310,4 +328,4 @@ clean_files
 sed '$s/,\s*$//' $ALL_VERSIONS_PATH > temp && mv temp $ALL_VERSIONS_PATH
 echo "]" >> $ALL_VERSIONS_PATH
 git worktree prune
-echo "All branches checked. Current branch restored to: $current_branch"
+echo "✅ All branches checked."
