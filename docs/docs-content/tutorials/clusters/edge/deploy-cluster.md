@@ -55,12 +55,15 @@ To complete this tutorial, you will need the following:
   [vSphere Networking](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-networking-7-0.html)
   guide from VMware to configure a DHCP server on the network.
 
-- A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture and the following
-  minimum hardware configuration:
+- A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture. You can use `uname -m` to check your architecture. 
 
-  - 4 CPU
-  - 8 GB memory
-  - 150 GB storage
+  - The following minimum hardware configuration:
+
+    - 4 CPU
+    - 8 GB memory
+    - 150 GB storage
+
+
 
   :::warning
 
@@ -194,6 +197,14 @@ UPDATE_KERNEL=false
 EOF
 ```
 
+
+:::warning
+
+Future versions of CanvOS may require different arguments. Refer to the CanvOS	
+[README](https://github.com/spectrocloud/CanvOS#readme) to learn more about the arguments needed for each version tag.	
+
+:::
+
 Verify that the file was created correctly using the `cat` command.
 
 ```bash
@@ -208,50 +219,6 @@ learn more about customizing arguments.
 Next, you will create a [`user-data`](../../../clusters/edge/edgeforge-workflow/prepare-user-data.md) file that embeds
 your [tenant registration token](../../../clusters/edge/site-deployment/site-installation/create-registration-token.md)
 and Edge host's login credentials in the Edge Installer ISO image.
-
-The user data file supports multiple parameters that allow you to customize the Edge installation and consists of three
-main configuration blocks:
-
-- `stylus`: Palette agent parameters that control aspects of the Edge host's configuration, such as networking, logging,
-  services, users, and permissions. The following configuration snippet specifies the Palette endpoint, a registration
-  token, and the Palette project name that the host uses to register with Palette. It also provides tags that are
-  assigned to the device as labels.
-
-  ```shell
-  #cloud-config
-  stylus:
-    site:
-      paletteEndpoint: api.spectrocloud.com
-      edgeHostToken: aUAxxxxxxxxx0ChYCrO
-      projectUid: Default
-      tags:
-        city: london
-        building: building-1
-  ```
-
-- `install`: The `install` block allows you to configure bind mounts, disk partitions, and post-installation actions
-  such as powering off the Edge host once the installation completes, as displayed in the snippet below.
-
-  ```shell
-  install:
-    poweroff: true
-  ```
-
-- `stages`: The `stages` block uses cloud-init stages to personalize the initialization of your Edge hosts during
-  various stages of the system boot process. The following example configures a `docs` user with a password and SSH key
-  during the `initramfs` stage.
-
-  ```shell
-  stages:
-    initramfs:
-      - users:
-          docs:
-            passwd: ******
-            groups:
-            - sudo
-            ssh_authorized_keys:
-            - ssh-rsa AAAAB3N…
-  ```
 
   :::tip
 
@@ -292,9 +259,13 @@ install:
 EOF
 ```
 
-:::info
+:::warning
 
-The #cloud-config header is required by the cloud-init standard.
+If you haven't set a default project for the registration token, ensure that you provide the `stylus.site.projectName`	
+parameter with the value `Default` in `user-data`.	
+Ensure that you include the `install.poweroff.true` parameter. This ensures that the Edge host will power off after	The #cloud-config header is required by the cloud-init standard.
+installation. If you do not include this parameter, this could lead to a VM you will use in a subsequent step to refuse	
+to power off automatically and cause a timeout error unless you manually shut down the VM.
 
 :::
 
@@ -430,8 +401,7 @@ sudo docker push $IMAGE_REGISTRY/ubuntu:k3s-1.33.5-v4.7.16-$CUSTOM_TAG
 
 In this section, you will create a VM template in VMware vCenter from the Edge installer ISO image and clone that VM
 template to provision three VMs. Think of a VM template as a static blueprint that you can use to create new and
-consistent VMs. You cannot easily modify templates after you create them, so cloning a VM template ensures all newly
-created VMs have _consistent_ guest OS, dependencies, and user data configurations installed.
+consistent VMs. VM Templates ensures rapid and _consistent_ deployment of VMs by eliminating the need for repetitive manual configurations of the guest OS, dependencies, and user data. 
 
 This tutorial example will use [Packer](https://www.packer.io/) to create a VM template from the Edge installer ISO
 image. Later, it will use [GOVC](https://github.com/vmware/govmomi/tree/main/govc#govc) to clone the VM template to
@@ -731,12 +701,11 @@ you can manually register hosts by clicking the **Add Edge Hosts** button and pa
 registration process for each of the three VMs. If you need help, the detailed instructions are available in the
 [Register Edge Host](../../../clusters/edge/site-deployment/site-installation/edge-host-registration.md) guide.
 
-## Deploy a Cluster
 
 Once you verify the host registration, the next step is to deploy a cluster. In this section, you will use the Palette
 User Interface (UI) to deploy a cluster that is made up of the three Edge hosts you deployed.
 
-### Create a Cluster Profile
+## Create a Cluster Profile
 
 Validate you are in the **Default** project scope before creating a cluster profile.
 
@@ -753,7 +722,7 @@ Use the following values when filling out the **Basic Information** section.
 
 | **Field**   | **Value**                                                              |
 | ----------- | ---------------------------------------------------------------------- |
-| Name        | docs-ubuntu-k3s                                                        |
+| Name        | edge-tutorial-cluster                                                  |
 | Version     | `1.0.0`                                                                |
 | Description | Cluster profile as part of the edge cluster deployment tutorial.       |
 | Type        | Full                                                                   |
@@ -921,7 +890,7 @@ Use the following values in the **Basic Information** section.
 
 | **Field**    | **Value**                                                              |
 | ------------ | ---------------------------------------------------------------------- |
-| Cluster name | docs-tutorial-cluster                                                  |
+| Cluster name | edge-tutorial-cluster                                                  |
 | Description  | Cluster as part of the Edge tutorial.                                  |
 | Tags         | `spectro-cloud-education, app:hello-universe, terraform_managed:false` |
 
