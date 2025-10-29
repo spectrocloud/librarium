@@ -475,10 +475,12 @@ EOF
 
 :::warning
 
-Avoid using parenthesis `( )` in your password as the `heredoc` script will interpret this as a special escape
+Avoid using parenthesis `( )` in your password as the `heredoc` script interprets this as a special escape
 character.
 
-::: View the file to ensure you have filled in the details correctly.
+:::
+
+View the file to ensure you have filled in the details correctly.
 
 ```bash
 cat .packerenv
@@ -627,7 +629,7 @@ Packer created. Remember that the VM instances you are deploying simulate bare m
 
 GOVC requires the same VMware vCenter details as the environment variables you defined earlier in the `.goenv` file.
 
-The next step is to use the following `docker run` command to clone the VM template and provision three VMs. This
+The next step is to use the docker run` command below to clone the VM template and provision three VMs. This
 command may require the use of `sudo`. Here is an explanation of the options and sub-commands used below:
 
 - The `--env-file` option reads the `.goenv` file in our official `ghcr.io/spectrocloud/tutorials:1.3.0` tutorials
@@ -716,7 +718,7 @@ host IDs to manually register Edge hosts in Palette.
 
 Before deploying a cluster, you must verify Edge host registration status in Palette.
 
-Open a web browser and log in to [Palette](https://console.spectrocloud.com). Navigate to the left **Main Menu** and
+Open a web browser and log in to [Palette](https://console.spectrocloud.com). Navigate to the left main menu and
 select **Clusters**. Click on the **Edge Hosts** tab and verify the three VMs you created are registered with Palette.
 
 ![A screenshot showing the VMs automatically registered with Palette. ](/tutorials/edge/clusters_edge_deploy-cluster_edge-hosts_4-7.webp)
