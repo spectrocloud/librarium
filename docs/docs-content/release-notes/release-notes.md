@@ -54,14 +54,6 @@ The following components have been updated for Palette version 4.7.27.
 
 <!-- prettier-ignore-end -->
 
-### Bug Fixes
-
-<!-- prettier-ignore-start -->
-
-- Fixed an issue that prevented the FIPS-compliant version of the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack from operating correctly on [Palette VerteX](../vertex/vertex.md).
-
-<!-- prettier-ignore-end -->
-
 ### Packs
 
 #### Pack Notes
