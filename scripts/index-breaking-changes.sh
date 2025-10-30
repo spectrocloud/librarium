@@ -7,6 +7,7 @@ RELEASE_NOTES_PATH="docs/docs-content/release-notes/release-notes.md"
 OLD_RELEASE_NOTES_PATH="docs/docs-content/release-notes.md"
 BREAKING_CHANGES_PARTIALS_PATH="_partials/breaking-changes"
 ALL_VERSIONS_PATH="src/components/ReleaseNotesBreakingChanges/versions.json"
+ARCHIVE_FILE_PATH="archiveVersions.json"
 
 # Where to place worktrees (unique per run)
 WORKTREES_DIR="$(mktemp -d -t librarium-worktrees-XXXXXX)"
@@ -42,6 +43,35 @@ create_partials_file () {
   fi
 }
 
+# Function to find legacy domain from archiveVersions.json
+# Outputs: a single matching legacy domain
+# $1 - release version, example: v4.5.3
+# $2 - worktree path
+find_legacy_domain() {
+  release_version=$1
+  wt_path=$2
+  popd >/dev/null  # leave the worktree to look up file
+
+  # release_version like "4.7.10"
+  local release_maj; release_maj=$(echo "$release_version" | cut -d . -f1)
+  local release_min; release_min=$(echo "$release_version" | cut -d . -f2)
+
+  # Read key/value as TSV (array) and keep the loop in the current shell
+  while IFS=$'\t' read -r name url; do
+    # name like "v4.7.x" or "v3.4.x and prior"
+    local entry_maj; entry_maj=$(echo "$name" | cut -d . -f1 | sed 's/^v//')
+    local entry_min; entry_min=$(echo "$name" | cut -d . -f2)
+
+    if [[ "$release_maj" == "$entry_maj" && "$release_min" == "$entry_min" ]]; then
+      echo "$url"
+      return 0   # exits the surrounding function as intended
+    fi
+  done < <(jq -r 'to_entries[] | [.key, .value] | @tsv' "$ARCHIVE_FILE_PATH")
+
+  pushd "$wt_path" >/dev/null # re-enter the worktree
+
+}
+
 # Function to save the partials file to the main repo
 # Params:
 # $1 - release number, example: 4.0.0
@@ -66,11 +96,14 @@ persist_partials_file_main_repo() {
 # Params:
 # $1 - release number, example: 4.0.0
 # $2 - body text of the breaking change
+# $3 - worktree path
 add_breaking_changes_body() {
   release_number=$1
   replaced=$(echo "$release_number" | tr '.' '_')
   filename="$BREAKING_CHANGES_PARTIALS_PATH/br_$replaced.mdx"
   new_line=$2
+  wt_path=$3
+  legacy_domain=$(find_legacy_domain "$release_number" "$wt_path")
 
   # If line is empty just append it and return
   if [ -z "$new_line" ]; then
@@ -93,6 +126,7 @@ add_breaking_changes_body() {
         }
       }' <<< "$new_line"
     )
+    echo "Inside link processing loop... $prefix, $match, $suffix"
 
     # No match -> we're done
     [[ -n "$match" ]] || break
@@ -100,6 +134,7 @@ add_breaking_changes_body() {
     # Pull link_text and full_link from the matched [text](target)
     link_text=$(echo "$match"   | sed -E 's/^\[([^]]+)\]\(.*\)$/\1/')
     full_link=$(echo "$match"   | sed -E 's/^\[[^]]+\]\(([^)]*)\)$/\1/')
+    echo "Found link: [$link_text]($full_link)"
 
     # Default: keep the original match (so we always advance the loop)
     replacement="$match"
@@ -128,7 +163,8 @@ add_breaking_changes_body() {
         clean_link=$(IFS='/'; echo "${segments[*]}")
       fi
 
-      link_url="/$clean_link"
+      link_url="$legacy_domain/$clean_link"
+      echo "Transforming link: [$link_text]($full_link) -> <$link_url>"
       replacement="<VersionedLink text=\"$link_text\" url=\"$link_url\" />"
     fi
 
@@ -233,10 +269,10 @@ for branch in $branches; do
       if [ -z "$line" ]; then
         # Flush the buffer if it has content.
         if [ -n "$buffer" ]; then
-          add_breaking_changes_body "$release_number" "$buffer"
+          add_breaking_changes_body "$release_number" "$buffer" "$wt_path"
           buffer=""
         fi
-        add_breaking_changes_body "$release_number" "$line"
+        add_breaking_changes_body "$release_number" "$line" "$wt_path"
         continue
       fi
 
@@ -245,7 +281,7 @@ for branch in $branches; do
         in_breaking_changes=false
         # Flush the buffer if it has content.
         if [ -n "$buffer" ]; then
-          add_breaking_changes_body "$release_number" "$buffer"
+          add_breaking_changes_body "$release_number" "$buffer" "$wt_path"
           buffer=""
         fi
         continue
@@ -260,13 +296,13 @@ for branch in $branches; do
           in_code_section="true"
         fi
 
-        add_breaking_changes_body "$release_number" "$line"
+        add_breaking_changes_body "$release_number" "$line" "$wt_path"
         continue
       fi
 
       # Don't strip any spacing or collapse lines while we are in the code section.
       if $in_code_section; then
-        add_breaking_changes_body "$release_number" "$line"
+        add_breaking_changes_body "$release_number" "$line" "$wt_path"
         continue
       fi
 
@@ -298,7 +334,7 @@ for branch in $branches; do
         else 
           # Not a VersionedLink line so we need to flush the buffer if it has content.
           if [ -n "$buffer" ]; then
-            add_breaking_changes_body "$release_number" "$buffer"
+            add_breaking_changes_body "$release_number" "$buffer" "$wt_path"
             buffer=""
           fi
           # Normal line. Set the line as the buffer so it is ready for the next versioned link.
