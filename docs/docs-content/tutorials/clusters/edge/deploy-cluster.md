@@ -879,7 +879,7 @@ Review all layers and click **Finish Configuration** to create the cluster profi
 Click on the newly created cluster profile to view its details page. Click the **Deploy** button to deploy a new Edge
 cluster.
 
-![Screenshot of the Profile Layers success.](/tutorials/edge/tutorials_edge_deploy-cluster_add-manifest_4-7.webp)
+![Screenshot of the Profile Layers success.](/tutorials/edge/tutorials_edge_deploy-cluster_profile-success_4-7.webp)
 
 The cluster deployment wizard displays the following sections.
 
