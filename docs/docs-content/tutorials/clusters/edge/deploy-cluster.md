@@ -56,7 +56,7 @@ To complete this tutorial, you will need the following:
   guide from VMware to configure a DHCP server on the network.
 
 - A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture. You can use
-  `uname -m` to check your architecture.
+  the `uname -m` command to check your architecture.
 
   :::warning
 
@@ -73,7 +73,7 @@ To complete this tutorial, you will need the following:
 - The following software installed on the Linux machine:
 
   - [Git](https://git-scm.com/downloads). Ensure git installation by issuing the `git --version` command.
-  - [Earthly](https://earthly.dev/) is installed and available. If you do not install Earthly, you can still build the
+  - (Optional) [Earthly](https://earthly.dev/) is installed and available. If you do not install Earthly, you can still build the
     artifacts, but it would require root privileges, and some of the resulting artifacts will be owned by the root user.
   - An image management tool with `sudo` privileges such as [Docker](https://docs.docker.com/engine/install/) or
     [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and available.
@@ -399,7 +399,7 @@ sudo docker push $IMAGE_REGISTRY/ubuntu:k3s-1.33.5-v4.7.16-$CUSTOM_TAG
 
 In this section, you will create a VM template in VMware vCenter from the Edge installer ISO image and clone that VM
 template to provision three VMs. Think of a VM template as a static blueprint that you can use to create new and
-consistent VMs. VM Templates ensures rapid and _consistent_ deployment of VMs by eliminating the need for repetitive
+consistent VMs. VM Templates ensure rapid and _consistent_ deployment of VMs by eliminating the need for repetitive
 manual configurations of the guest OS, dependencies, and user data.
 
 This tutorial example will use [Packer](https://www.packer.io/) to create a VM template from the Edge installer ISO
@@ -409,11 +409,11 @@ official tutorials container that already contains the required tools. <br />
 
 ### Create a VM Template
 
-You will use the `heredoc` input to create a VM template. The script prompts you to enter your VMware vCenter
+You will use a script that includes a `heredoc` input block. The script prompts you to enter your VMware vCenter
 environment details and saves them as environment variables in a file named `.packerenv`. Packer reads the environment
 variables during the build process.
 
-Before you invoke the `heredoc` input, have values handy in a notepad for the VMware vCenter environment variables
+Before you invoke the script, have values handy in a notepad for the VMware vCenter environment variables
 listed in the table.
 
 | **Variable**                    | **Description**         | **How to find its value?**                                                                                                                               |
@@ -447,7 +447,7 @@ EOF
 
 :::warning
 
-Avoid using parenthesis `( )` in your password as the `heredoc` input interprets this as a special escape character.
+Avoid using parentheses `( )` in your password, as the shell interprets them as special characters within a `heredoc` block.
 
 :::
 
