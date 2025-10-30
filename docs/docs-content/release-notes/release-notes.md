@@ -15,11 +15,6 @@ tags: ["release-notes"]
 
 The following components have been updated for Palette version 4.7.27 - 4.7.29.
 
-| Component                                                                                                         | Version |
-| ----------------------------------------------------------------------------------------------------------------- | ------- |
-| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.25.X  |
-| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.25.X  |
-
 ### Improvements
 
 - The [Palette CLI](../automation/palette-cli/palette-cli.md) now has improved command help and examples.
@@ -35,16 +30,17 @@ The following components have been updated for Palette version 4.7.27 - 4.7.29.
 
 ### Packs
 
-#### Pack Notes
-
-| Pack Name                    | Layer  | Non-FIPS           | FIPS               | New Version |
-| ---------------------------- | ------ | ------------------ | ------------------ | ----------- |
-| AWS Application Loadbalancer | Add-on | :white_check_mark: | :x:                | 2.14.0      |
-| AWS Cluster Autoscaler Helm  | Add-on | :white_check_mark: | :x:                | 1.34.1      |
-| Flannel                      | CNI    | :white_check_mark: | :white_check_mark: | 0.27.4      |
-| Flux2                        | Add-on | :white_check_mark: | :x:                | 2.17.0      |
-| Karpenter                    | Add-on | :white_check_mark: | :x:                | 1.8.1       |
-| Falco                        | Add-on | :x:                | :white_check_mark: | 6.3.0       |
+| Pack Name                    | Layer      | Non-FIPS           | FIPS               | New Version |
+| ---------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| AWS Application Loadbalancer | Add-on     | :white_check_mark: | :x:                | 2.14.0      |
+| AWS Cluster Autoscaler Helm  | Add-on     | :white_check_mark: | :x:                | 1.34.1      |
+| Flannel                      | CNI        | :white_check_mark: | :white_check_mark: | 0.27.4      |
+| Flux2                        | Add-on     | :white_check_mark: | :x:                | 2.17.0      |
+| Karpenter                    | Add-on     | :white_check_mark: | :x:                | 1.8.1       |
+| Falco                        | Add-on     | :x:                | :white_check_mark: | 6.3.0       |
+| Palette eXtended Kubernetes  | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.9      |
+| Palette eXtended Kubernetes  | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.13     |
+| Spectro Kubernetes Dashboard | Add-on     | :x:                | :white_check_mark: | 7.11.1      |
 
 ## October 27, 2025 - Release 4.7.29
 
