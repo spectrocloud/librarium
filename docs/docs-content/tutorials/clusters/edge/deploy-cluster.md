@@ -409,11 +409,11 @@ official tutorials container that already contains the required tools. <br />
 
 ### Create a VM Template
 
-You will use the `heredoc` script to create a VM template. The script prompts you to enter your VMware vCenter
+You will use the `heredoc` input to create a VM template. The script prompts you to enter your VMware vCenter
 environment details and saves them as environment variables in a file named `.packerenv`. Packer reads the environment
 variables during the build process.
 
-Before you invoke the `heredoc` script, have values handy in a notepad for the VMWare vCenter environment variables
+Before you invoke the `heredoc` input, have values handy in a notepad for the VMWare vCenter environment variables
 listed in the table.
 
 | **Variable**                    | **Description**         | **How to find its value?**                                                                                                                               |
@@ -428,7 +428,7 @@ listed in the table.
 | `PKR_VAR_vcenter_datastore`     | Datastore name          | Switch to the **Storage** view in your vSphere client. The datastore name is displayed in the left navigation tree.                                      |
 | `PKR_VAR_vcenter_network`       | Network name            | Switch to the **Networking** view in your vSphere client. The network name is displayed in the left navigation tree.                                     |
 
-Issue the following command, which uses a `heredoc` script to create the `.packerenv` file containing VMware vCenter
+Issue the following command, which uses a `heredoc` input to create the `.packerenv` file containing VMware vCenter
 details as environment variables.
 
 ```bash
@@ -447,7 +447,7 @@ EOF
 
 :::warning
 
-Avoid using parenthesis `( )` in your password as the `heredoc` script interprets this as a special escape character.
+Avoid using parenthesis `( )` in your password as the `heredoc` input interprets this as a special escape character.
 
 :::
 
@@ -889,7 +889,7 @@ Use the following values in the **Basic Information** section.
 | ------------ | ---------------------------------------------------------------------- |
 | Cluster name | edge-tutorial-cluster                                                  |
 | Description  | Cluster as part of the Edge tutorial.                                  |
-| Tags         | `spectrocloud:education, app:hello-universe, terraform_managed:false` |
+| Tags         | `spectro-cloud-education, app:hello-universe, terraform_managed:false` |
 
 Click **Next** to continue.
 
