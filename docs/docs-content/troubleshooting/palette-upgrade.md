@@ -8,23 +8,24 @@ sidebar_position: 60
 tags: ["troubleshooting", "palette-upgrade"]
 ---
 
-We recommend you review the [Release Notes](../release-notes/release-notes.md) and the
-[Upgrade Notes](../enterprise-version/upgrade/upgrade.md) before attempting to upgrade Palette. Use this information to
-address common issues that may occur during an upgrade.
+We recommend you review the [Release Notes](../release-notes/release-notes.md) before attempting to upgrade Palette. Use
+this information to address common issues that may occur during an upgrade.
 
 ## Self-Hosted Palette or Palette VerteX Upgrade Hangs
 
-Upgrading [self-hosted Palette](../enterprise-version/enterprise-version.md) or [Palette VerteX](../vertex/vertex.md)
-from version 4.6.x to 4.7.x can cause the upgrade to hang if any member of a MongoDB ReplicaSet is not fully synced and
-in a healthy state prior to the upgrade.
+Upgrading [self-hosted Palette](../self-hosted-setup/palette/palette.md) or
+[Palette VerteX](../self-hosted-setup/vertex/vertex.md) from version 4.6.x to 4.7.x can cause the upgrade to hang if any
+member of a MongoDB ReplicaSet is not fully synced and in a healthy state prior to the upgrade.
 
 ### Debug Steps
 
 To verify the health status of each MongoDB ReplicaSet member, use the following procedure based on whether you are
 upgrading Palette or Palette VerteX.
 
-1. Log in to the [Palette](../enterprise-version/system-management/system-management.md#access-the-system-console) or
-   [Palette VerteX](../vertex/system-management/system-management.md#access-the-system-console) system console.
+1. Log in to the
+   [Palette](../self-hosted-setup/palette/system-management/system-management.md#access-the-system-console) or
+   [Palette VerteX](../self-hosted-setup/vertex/system-management/system-management.md#access-the-system-console) system
+   console.
 
 2. From the left main menu, select **Enterprise Cluster**.
 
@@ -260,7 +261,7 @@ ConfigMap value is incorrect, use the following steps to resolve the issue.
 
 4. If the host value is incorrect, log in to the System Console. You can find guidance on how to access the System
    Console in the
-   [Access the System Console](../vertex/system-management/system-management.md#access-the-system-console)
+   [Access the System Console](../self-hosted-setup/vertex/system-management/system-management.md#access-the-system-console)
    documentation.
 
 5. Navigate to the **Main Menu** and select **Enterprise Cluster**. From the **System Profiles** page, select the

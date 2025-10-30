@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Azure Disk Encryption"
-title: "Azure Disk Encryption"
+sidebar_label: "Azure Disk Storage Server-Side Encryption"
+title: "Azure Disk Storage Server-Side Encryption"
 description:
   "How to enable disk encryption on your Azure IaaS cluster using Server-Side Encryption with customer-managed keys or
   Encryption at Host, independently or together"

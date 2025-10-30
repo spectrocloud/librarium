@@ -22,7 +22,7 @@ Review the following table to determine which pack binaries you need to download
 
 You must SSH into your Palette airgap support VM to download and install the binary. You must also provide the username
 and password for the support team's private repository. Reach out to our support team to
-[obtain the credentials](../../enterprise-version/enterprise-version.md#access-palette).
+[obtain the credentials](../../self-hosted-setup/palette/palette.md#access-palette).
 
 The following example shows how to download the `airgap-pack-aws-alb-2.5.1.bin` binary. Replace `XXXX` with your
 username and `YYYY` with your password.

@@ -8,7 +8,7 @@ hide_table_of_contents: false
 
 Palette supports integration with [Amazon Web Services](https://aws.amazon.com). You can deploy and manage
 [Host Clusters](../../../glossary-all.md#host-cluster) in AWS. To get started check out the
-[Register and Manage AWS Accounts](add-aws-accounts.md).
+[Register and Manage AWS Accounts](./add-aws-accounts/add-aws-accounts.md).
 
 ## Get Started
 
@@ -19,7 +19,7 @@ a cluster to AWS by using Palette.
 
 To learn more about Palette and AWS clusters, check out the following resources:
 
-- [Register and Manage AWS Accounts](add-aws-accounts.md)
+- [Register and Manage AWS Accounts](./add-aws-accounts/add-aws-accounts.md)
 
 - [Create and Manage AWS IaaS Cluster](create-cluster.md)
 

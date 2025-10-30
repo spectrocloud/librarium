@@ -110,9 +110,9 @@ examples and information.
 - Image swap is only supported for managed Kubernetes clusters, such as Amazon EKS, Azure AKS, and Google GKE.
 
 - Self-hosted Palette and VerteX installations can support image swap functionality for non-managed Kubernetes clusters.
-  This requires mirror registries to be specified during the self-hosted Palette or VerteX installation. Refer to the
-  [Self-Hosted Palette Installation](../../enterprise-version/install-palette/install-palette.md) or
-  [VerteX Install](../../vertex/install-palette-vertex/install-palette-vertex.md) guide for more information.
+  This requires mirror registries to be specified during the
+  [self-hosted Palette](../../self-hosted-setup/palette/palette.md) or
+  [Palette VerteX installation](../../self-hosted-setup/vertex/vertex.md) process.
 
   The following table summarizes the image swap support for different scenarios and what Palette deployment type is
   required.

@@ -21,8 +21,8 @@ self-hosted Palette use the tenant URL defined during the Palette installation.
 
 Additionally, if you are using self-hosted Palette or VerteX and have a login banner configured at the system console,
 the tenant login banner will not be displayed, as the system console login banner takes precedence. Refer to the
-[System Login Banner](../enterprise-version/system-management/login-banner.md) page to learn more about system login
-banners.
+[System Login Banner](../self-hosted-setup/palette/system-management/login-banner.md) page to learn more about system
+login banners.
 
 :::
 

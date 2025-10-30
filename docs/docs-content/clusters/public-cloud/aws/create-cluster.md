@@ -26,7 +26,8 @@ The following prerequisites must be met before deploying a cluster to AWS:
     the [AWS reference](https://docs.aws.amazon.com/cli/latest/reference/ec2/get-instance-metadata-defaults.html) guide
     for further information.
 
-- You have added an AWS account in Palette. Review [Add AWS Account](add-aws-accounts.md) for guidance.
+- You have added an AWS account in Palette. Review [Add AWS Account](./add-aws-accounts/add-aws-accounts.md) for
+  guidance.
 
 - An infrastructure cluster profile. Review
   [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
@@ -96,7 +97,8 @@ Use the following steps to provision a new AWS cluster:
    | **Tags**          | Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: `region:us-east-1a` or `zone:vpc-private-us-east-1a`. |
    | **Cloud Account** | If you already added your AWS account in Palette, select it from the **drop-down Menu**. Otherwise, click **Add New Account** and add your AWS account information.                                 |
 
-   To learn how to add an AWS account, review the [Add an AWS Account to Palette](add-aws-accounts.md) guide.
+   To learn how to add an AWS account, review the
+   [Add an AWS Account to Palette](./add-aws-accounts/add-aws-accounts.md) guide.
 
 7. <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 

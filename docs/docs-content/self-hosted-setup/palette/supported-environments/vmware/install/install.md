@@ -1,0 +1,64 @@
+---
+sidebar_label: "Install"
+title: "Install Palette on VMware vSphere with Palette CLI"
+description: "Review system requirements for installing self-hosted Palette on VMware vSphere using the Palette CLI."
+icon: ""
+hide_table_of_contents: false
+tags: ["self-hosted", "install", "vmware", "cli"]
+keywords: ["self-hosted", "install", "vmware", "cli"]
+---
+
+:::warning
+
+This is the former [Installation](https://docs.spectrocloud.com/enterprise-version/install-palette/) page. Leave only
+what is applicable to VMware. Convert to partials for reuse.
+
+:::
+
+Palette is available as a self-hosted application that you install in your environment. Palette is available in the
+following modes.
+
+| **Method**                               | **Supported Platforms**  | **Description**                                                       | **Install Guide**                                                                  |
+| ---------------------------------------- | ------------------------ | --------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| Palette CLI                              | VMware                   | Install Palette in VMware environment.                                | Install on VMware                                                                  |
+| Helm Chart                               | Kubernetes               | Install Palette using a Helm Chart in an existing Kubernetes cluster. | [Install on Kubernetes](../../kubernetes/install/install.md)                       |
+| <TpBadge /> Palette Management Appliance | VMware, Bare Metal, MAAS | Install Palette using the Palette Management Appliance ISO file.      | [Install with Palette Management Appliance](../../management-appliance/install.md) |
+
+## Airgap Installation
+
+You can also install Palette in an airgap environment. For more information, refer to the
+[Airgap Installation](./airgap.md) section.
+
+| **Method**                               | **Supported Airgap Platforms** | **Description**                                                                                                        | **Install Guide**                                                                  |
+| ---------------------------------------- | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| Palette CLI                              | VMware                         | Install Palette in VMware environment using your own OCI registry server.                                              | [VMware Airgap Install](./airgap.md)                                               |
+| Helm Chart                               | Kubernetes                     | Install Palette using a Helm Chart in an existing Kubernetes cluster with your own OCI registry server OR use AWS ECR. | [Kubernetes Airgap Install](../../kubernetes/install/airgap.md)                    |
+| <TpBadge /> Palette Management Appliance | VMware, Bare Metal, MAAS       | Install Palette using the Palette Management Appliance ISO file.                                                       | [Install with Palette Management Appliance](../../management-appliance/install.md) |
+
+The next sections provide sizing guidelines we recommend you review before installing Palette in your environment.
+
+## Size Guidelines
+
+<PartialsComponent
+  category="self-hosted"
+  name="size-guidelines-helm-cli"
+  edition="Palette"
+  app="Palette Management Appliance"
+/>
+
+## Kubernetes Requirements
+
+<!-- prettier-ignore-start -->
+
+The following tables present the Kubernetes version corresponding to each Palette version for
+self-hosted Palette installed on VMware vSphere environments using the Palette CLI.
+Additionally, for VMware installations, it provides the download URLs for the required Operating System and Kubernetes
+distribution OVA.
+
+<!-- prettier-ignore-end -->
+
+<PartialsComponent category="self-hosted" name="palette-vmware-kubernetes-versions" />
+
+## Proxy Requirements
+
+<PartialsComponent category="self-hosted" name="required-domains" edition="Palette" />
