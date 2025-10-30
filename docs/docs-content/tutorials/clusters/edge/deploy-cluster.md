@@ -236,7 +236,9 @@ export USER=<host-user-name>
 export PASSWORD=<user-name-password>
 ```
 
-Next, issue the command below to create the `user-data` file using the exported token and user information.
+Next, issue the command below to create the `user-data` file using the exported token and user information. The #cloud-config header is required by the cloud-init standard.
+installation. If you do not include this parameter, this could lead to a VM you will use in a subsequent step to refuse
+to power off automatically and cause a timeout error unless you manually shut down the VM.
 
 ```shell
 cat << EOF > user-data
@@ -261,9 +263,7 @@ EOF
 
 If you haven't set a default project for the registration token, ensure that you provide the `stylus.site.projectName`
 parameter with the value `Default` in `user-data`. Ensure that you include the `install.poweroff.true` parameter. This
-ensures that the Edge host will power off after The #cloud-config header is required by the cloud-init standard.
-installation. If you do not include this parameter, this could lead to a VM you will use in a subsequent step to refuse
-to power off automatically and cause a timeout error unless you manually shut down the VM.
+ensures that the Edge host will power off after 
 
 :::
 
@@ -692,7 +692,7 @@ Before deploying a cluster, you must verify Edge host registration status in Pal
 Open a web browser and log in to [Palette](https://console.spectrocloud.com). Navigate to the left main menu and select
 **Clusters**. Click on the **Edge Hosts** tab and verify the three VMs you created are registered with Palette.
 
-![A screenshot showing the VMs automatically registered with Palette. ](/tutorials/edge/clusters_edge_deploy-cluster_edge-hosts_4-7.webp)
+![A screenshot showing the VMs automatically registered with Palette. ](/tutorials/edge/tutorials_edge_deploy-cluster_edge-hosts_4-7.webp)
 
 If the three Edge hosts are not displayed in the **Edge hosts** tab, the automatic registration failed. If this happens,
 you can manually register hosts by clicking the **Add Edge Hosts** button and pasting the Edge host ID. Repeat this host
@@ -706,7 +706,7 @@ User Interface (UI) to deploy a cluster that is made up of the three Edge hosts 
 
 Validate you are in the **Default** project scope before creating a cluster profile.
 
-![A screenshot of Palette's Default scope selected.](/tutorials/edge/registries-and-packs_deploy-pack_default-scope_4-7.webp)
+![A screenshot of Palette's Default scope selected.](/tutorials/edge/tutorials_edge_registries-and-packs_deploy-pack_default-scope_4-7.webp)
 
 Next, create a cluster profile with the core infrastructure layers and a manifest of a sample application,
 [Hello Universe](https://github.com/spectrocloud/hello-universe#hello-universe). Navigate to the left main menu and
@@ -812,7 +812,7 @@ infrastructure profile as a layered diagram.
 Finally, click on the **Add Manifest** button to add the
 [Hello Universe](https://github.com/spectrocloud/hello-universe#readme) application manifest.
 
-![A screenshot of the add Manifest button.](/tutorials/edge/clusters_edge_deploy-cluster_add-manifest_4-7.webp)
+![A screenshot of the add Manifest button.](/tutorials/edge/tutorials_edge_deploy-cluster_add-manifest_4-7.webp)
 
 Use the following values to add the Hello Universe manifest metadata.
 
@@ -865,7 +865,7 @@ spec:
 The screenshot below shows the manifest pasted into the text editor. Click on the **Confirm & Create** button to finish
 adding the manifest.
 
-![A screenshot of Hello Universe application manifest.](/tutorials/edge/clusters_edge_deploy-cluster_add-manifest-file_4-7.webp)
+![A screenshot of Hello Universe application manifest.](/tutorials/edge/tutorials_edge_deploy-cluster_add-manifest-file_4-7.webp)
 
 If there are no errors or compatibility issues, Palette displays the newly created full cluster profile for review.
 Verify the layers you added, and click on the **Next** button.
@@ -877,7 +877,7 @@ Review all layers and click **Finish Configuration** to create the cluster profi
 Click on the newly created cluster profile to view its details page. Click the **Deploy** button to deploy a new Edge
 cluster.
 
-![Screenshot of the Profile Layers success.](/tutorials/edge/clusters_edge_deploy-cluster_profile-success_4-7.webp)
+![Screenshot of the Profile Layers success.](/tutorials/edge/tutorials_edge_deploy-cluster_add-manifest_4-7.webp)
 
 The cluster deployment wizard displays the following sections.
 
@@ -963,7 +963,7 @@ on the port number to access the application.
 
 The screenshot below highlights the NodePort to access the application.
 
-![Screenshot of highlighted NodePort to access the application.](/tutorials/edge/clusters_edge_deploy-cluster_access-service_4-7.webp)
+![Screenshot of highlighted NodePort to access the application.](/tutorials/edge/tutorials_edge_deploy-cluster_access-service_4-7.webp)
 
 Clicking on the exposed NodePort displays the Hello Universe application.
 
@@ -974,7 +974,7 @@ public NodePort URL. This prevents the browser from caching an unresolved DNS re
 
 :::
 
-![Screenshot of successfully accessing the Hello Universe application.](/tutorials/edge/clusters_edge_deploy-cluster_hello-universe_4-7.webp)
+![Screenshot of successfully accessing the Hello Universe application.](/tutorials/edge/tutorials_edge_deploy-cluster_hello-universe_4-7.webp)
 
 You have successfully provisioned an Edge cluster and deployed the Hello Universe application on it.
 
@@ -988,7 +988,7 @@ hosts.
 In Palette, display the cluster details page. Click on the **Settings** button to expand the drop-down menu, and select
 the **Delete Cluster** option, as shown in the screenshot below.
 
-![Screenshot of deleting a cluster.](/tutorials/edge/clusters_edge_deploy-cluster_delete-cluster_4-7.webp)
+![Screenshot of deleting a cluster.](/tutorials/edge/tutorials_edge_deploy-cluster_delete-cluster_4-7.webp)
 
 Palette prompts you to enter the cluster name and confirm the delete action. Type the cluster name to delete the
 cluster. The cluster status changes to **Deleting**. Deletion takes up to 10 minutes.
@@ -996,7 +996,7 @@ cluster. The cluster status changes to **Deleting**. Deletion takes up to 10 min
 After you delete the cluster, click **Profiles** on the left main menu, and select the profile to delete. Choose the
 **Delete** option in the three-dot menu, as shown in the screenshot below.
 
-![Screenshot of deleting a cluster profile.](/tutorials/edge/clusters_edge_deploy-cluster_delete-profile_4-7.webp)
+![Screenshot of deleting a cluster profile.](/tutorials/edge/tutorials_edge_deploy-cluster_delete-profile_4-7.webp)
 
 Wait for Palette to successfully delete the resources.
 
@@ -1004,7 +1004,7 @@ After you delete the cluster profile, click **Clusters** on the left main menu, 
 select one of the edge devices used for this tutorial. Choose the **Delete** option in the three-dot menu, as shown in
 the screenshot below.
 
-![Screenshot of deleting edge hosts from Palette](/tutorials/edge/cluster_edge_deploy-cluster_delete-edge-devices_4-7.webp)
+![Screenshot of deleting edge hosts from Palette](/tutorials/edge/tutorials_edge_deploy-cluster_delete-edge-devices_4-7.webp)
 
 Wait for Palette to successfully delete the resource and repeat the steps for the other two edge devices.
 
