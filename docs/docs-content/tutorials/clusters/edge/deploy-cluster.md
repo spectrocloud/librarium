@@ -717,12 +717,12 @@ profile wizard contains the following sections.
 
 Use the following values when filling out the **Basic Information** section.
 
-| **Field**   | **Value**                                                              |
-| ----------- | ---------------------------------------------------------------------- |
-| Name        | edge-tutorial-cluster                                                  |
-| Version     | `1.0.0`                                                                |
-| Description | Cluster profile as part of the Edge Cluster Deployment tutorial.       |
-| Type        | Full                                                                   |
+| **Field**   | **Value**                                                             |
+| ----------- | --------------------------------------------------------------------- |
+| Name        | edge-tutorial-cluster                                                 |
+| Version     | `1.0.0`                                                               |
+| Description | Cluster profile as part of the Edge Cluster Deployment tutorial.      |
+| Type        | Full                                                                  |
 | Tags        | `spectrocloud:education, app:hello-universe, terraform_managed:false` |
 
 Click on **Next** to continue.
@@ -743,7 +743,7 @@ In the **Profile Layers** section, add the following
 
 | **Pack Type** | **Registry** | **Pack Name** | **Pack Version** |
 | ------------- | ------------ | ------------- | ---------------- |
-| OS            | Public Repo  | BYOOS Edge OS  | Not applicable   |
+| OS            | Public Repo  | BYOOS Edge OS | Not applicable   |
 
 Replace the OS layer manifest with the custom manifest so that the cluster profile can pull the provider image from the
 registry you pushed it to. You may recall that the CanvOS script returned an output containing a custom manifest after
