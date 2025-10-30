@@ -33,7 +33,7 @@ partial_name: upgrade-palette-prereqs
 
   3. On the **Overview** tab, within the **Environment** section, click the link for the **Admin Kubeconfig File** to download the kubeconfig file.
 
-  4. On your local machine, ensure you have `kubectl` installed and configured to use the downloaded kubeconfig file. You can set the `KUBECONFIG` environment variable to point to the file.
+  4. On your local machine, ensure you have `kubectl` installed and set the `KUBECONFIG` environment variable to point to the file.
 
      ```bash
      export KUBECONFIG=/path/to/downloaded/kubeconfig/file
@@ -63,7 +63,7 @@ partial_name: upgrade-palette-prereqs
 
   7. Create a file named `change-pvc-access-mode.sh` and copy the following script into it.
 
-     The script safely changes the access mode of a Kubernetes PersistentVolumeClaim (PVC) without losing data, by temporarily deleting and re-creating the PVC while keeping the underlying PersistentVolume (PV) intact. It pauses your app during the change, then brings it back. For version 4.7.15, it is needed for the `zot` deployment prior to upgrading.
+     The script safely changes the access mode of a Kubernetes `PersistentVolumeClaim` (PVC) without losing data, by temporarily deleting and re-creating the PVC while keeping the underlying `PersistentVolume` (PV) intact. It pauses your app during the change, then resumes it. For version 4.7.15, this is required for the `zot` deployment before upgrading.
 
      ```bash
      #!/bin/bash
