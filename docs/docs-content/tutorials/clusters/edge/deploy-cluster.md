@@ -55,8 +55,8 @@ To complete this tutorial, you will need the following:
   [vSphere Networking](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-networking-7-0.html)
   guide from VMware to configure a DHCP server on the network.
 
-- A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture. You can use
-  the `uname -m` command to check your architecture.
+- A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture. You can use the
+  `uname -m` command to check your architecture.
 
   :::warning
 
@@ -73,8 +73,9 @@ To complete this tutorial, you will need the following:
 - The following software installed on the Linux machine:
 
   - [Git](https://git-scm.com/downloads). Ensure git installation by issuing the `git --version` command.
-  - (Optional) [Earthly](https://earthly.dev/) is installed and available. If you do not install Earthly, you can still build the
-    artifacts, but it would require root privileges, and some of the resulting artifacts will be owned by the root user.
+  - (Optional) [Earthly](https://earthly.dev/) is installed and available. If you do not install Earthly, you can still
+    build the artifacts, but it would require root privileges, and some of the resulting artifacts will be owned by the
+    root user.
   - An image management tool with `sudo` privileges such as [Docker](https://docs.docker.com/engine/install/) or
     [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and available.
     Avoid installing these tools using `snap`, as it creates an isolated, sandboxed environment that prevents the
@@ -413,8 +414,8 @@ You will use a script that includes a `heredoc` input block. The script prompts 
 environment details and saves them as environment variables in a file named `.packerenv`. Packer reads the environment
 variables during the build process.
 
-Before you invoke the script, have values handy in a notepad for the VMware vCenter environment variables
-listed in the table.
+Before you invoke the script, have values handy in a notepad for the VMware vCenter environment variables listed in the
+table.
 
 | **Variable**                    | **Description**         | **How to find its value?**                                                                                                                               |
 | ------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -447,7 +448,8 @@ EOF
 
 :::warning
 
-Avoid using parentheses `( )` in your password, as the shell interprets them as special characters within a `heredoc` block.
+Avoid using parentheses `( )` in your password, as the shell interprets them as special characters within a `heredoc`
+block.
 
 :::
 
