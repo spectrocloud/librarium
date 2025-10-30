@@ -45,6 +45,8 @@ partial_name: upgrade-palette-prereqs
      kubectl get pvc --namespace zot-system
      ```
 
+     Note the PVC name from the output, for example, `zot-pvc`. The access mode should be `RWX`. If it is already `RWO`, you can skip the remaining steps.
+
      ```shell hideClipboard title="Example output"
      NAME      STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS          VOLUMEATTRIBUTESCLASS   AGE
      zot-pvc   Bound    pvc-6d603d91-d5f6-459a-b600-0a699cbb4936   250Gi      RWX            linstor-lvm-storage   <unset>                 3h58m
@@ -56,16 +58,19 @@ partial_name: upgrade-palette-prereqs
      kubectl get deploy --namespace zot-system
      ```
 
+     Note the deployment name from the output, for example, `zot`.
+
      ```shell hideClipboard title="Example output"
      NAME   READY   UP-TO-DATE   AVAILABLE   AGE
      zot    1/1     1            1           3h59m
      ```
 
-  7. Create a file named `change-pvc-access-mode.sh` and copy the following script into it.
+  7. Use the following command to create a script named `change-pvc-access-mode.sh`.
 
      The script safely changes the access mode of a Kubernetes `PersistentVolumeClaim` (PVC) without losing data, by temporarily deleting and re-creating the PVC while keeping the underlying `PersistentVolume` (PV) intact. It pauses your app during the change, then resumes it. For version 4.7.15, this is required for the `zot` deployment before upgrading.
 
      ```bash
+     cat > change-pvc-access-mode.sh <<'SCRIPT'
      #!/bin/bash
 
      # Script to change PVC access mode while preserving data in LINSTOR/Piraeus
@@ -208,6 +213,7 @@ partial_name: upgrade-palette-prereqs
      echo ""
      echo -e "${YELLOW}Note: Wait for pods to be Running and verify your application is working correctly${NC}"
      echo -e "${YELLOW}Backup files created: ${PVC_NAME}-backup-*.yaml and ${PV_NAME}-backup-*.yaml${NC}"
+     SCRIPT
      ```
 
   8. Make the script executable.
@@ -216,9 +222,13 @@ partial_name: upgrade-palette-prereqs
      chmod u+x change-pvc-access-mode.sh
      ```   
 
-  9. Execute the script with the following parameters.
+  9. Execute the script with the following parameters. Replace `<pvc-name>` and `<deployment-name>` with the values noted from steps 5 and 6.
 
      ```bash
+     ./change-pvc-access-mode.sh zot-system <pvc-name> <deployment-name> ReadWriteOnce
+     ```
+
+     ```bash hideClipboard title="Example command"
      ./change-pvc-access-mode.sh zot-system zot-pvc zot ReadWriteOnce
      ```
 
