@@ -413,7 +413,7 @@ You will use the `heredoc` input to create a VM template. The script prompts you
 environment details and saves them as environment variables in a file named `.packerenv`. Packer reads the environment
 variables during the build process.
 
-Before you invoke the `heredoc` input, have values handy in a notepad for the VMWare vCenter environment variables
+Before you invoke the `heredoc` input, have values handy in a notepad for the VMware vCenter environment variables
 listed in the table.
 
 | **Variable**                    | **Description**         | **How to find its value?**                                                                                                                               |
