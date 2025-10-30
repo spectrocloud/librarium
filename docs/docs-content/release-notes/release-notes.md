@@ -40,7 +40,7 @@ The following components have been updated for Palette version 4.7.27 - 4.7.29.
 | Falco                        | Add-on     | :x:                | :white_check_mark: | 6.3.0       |
 | Palette eXtended Kubernetes  | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.9      |
 | Palette eXtended Kubernetes  | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.13     |
-| Portworx with Operator       | CSI        | :white_check_mark: | :x:                | 3.4.1       |
+| Portworx       | CSI        | :white_check_mark: | :x:                | 3.4.1       |
 | Spectro Kubernetes Dashboard | Add-on     | :x:                | :white_check_mark: | 7.11.1      |
 
 ## October 27, 2025 - Release 4.7.29
