@@ -16,11 +16,13 @@ an AWS cloud account in Palette. You can use any of the following authentication
 
   - [Static Access Credentials](#static-access-credentials)
   - [Dynamic Access Credentials](#dynamic-access-credentials)
+  - [EKS Pod Identity](#eks-pod-identity)
 
 - AWS GovCloud (US)
 
   - [Static Access Credentials](#static-access-credentials-1)
   - [Dynamic Access Credentials](#dynamic-access-credentials-1)
+  - [EKS Pod Identity](#eks-pod-identity-1)
 
 - AWS Secret Cloud (SC2S) (US)
 
@@ -29,7 +31,8 @@ an AWS cloud account in Palette. You can use any of the following authentication
 
 ## AWS Account
 
-This section provides guidance on creating an AWS account that uses static or dynamic access credentials.
+This section provides guidance on creating an AWS account that uses static or dynamic access credentials as well as EKS
+Pod Identity.
 
 ### Static Access Credentials
 
@@ -112,12 +115,288 @@ You can verify that the account is available in Palette by reviewing the list of
 cloud accounts, navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click on **Cloud Accounts**.
 Your newly added AWS cloud account is listed under the AWS section.
 
+### EKS Pod Identity
+
+[EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html) is a secure authentication
+mechanism that allows Kubernetes pods to assume IAM roles with temporary, automatically refreshed credentials. This
+eliminates the need for long-lived AWS credentials, addressing security concerns in highly-regulated environments where
+organizations cannot use long-lived credentials.
+
+:::info
+
+This authentication method is only available for
+[self-hosted Palette](../../../enterprise-version/enterprise-version.md) or [Palette VerteX](../../../vertex/vertex.md)
+instances deployed on Amazon EKS clusters.
+
+:::
+
+#### Prerequisites
+
+- Self-hosted Palette or Palette VerteX deployed on an Amazon EKS cluster with Kubernetes version 1.24 or later.
+
+  - The Palette or Palette VerteX stack must be deployed on
+    [managed node groups](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html), and not
+    self-managed nodes. This is required to obtain the cluster name using Instance Metadata Service (IMDS).
+
+  - The EKS Pod Identity Agent must be enabled on the Amazon EKS cluster. Refer to the
+    [Set up the Amazon EKS Pod Identity Agent](https://docs.aws.amazon.com/eks/latest/userguide/pod-id-agent-setup.html)
+    guide for more information.
+
+- Access to the Amazon EKS cluster's kubeconfig file. You must be able to use `kubectl` to perform validation steps on
+  the cluster.
+
+- A Palette account with [tenant admin](../../../tenant-settings/tenant-settings.md) access.
+
+- Three [IAM roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) must be created for
+  Palette. This includes Palette itself and two of its services. The following table lists the IAM roles that must be
+  created.
+
+  | Service                  | IAM Role Name Example      |
+  | ------------------------ | -------------------------- |
+  | Palette                  | `SpectroCloudRole`         |
+  | Palette Hubble service   | `SpectroCloudHubbleRole`   |
+  | Palette identity service | `SpectroCloudIdentityRole` |
+
+  - The following trust policy must be assigned to all of the IAM roles created for Palette and the two services. This
+    trust policy is the same as outlined in the
+    [Amazon EKS documentation](https://docs.aws.amazon.com/eks/latest/userguide/pod-id-association.html#pod-id-association-create).
+
+    ```json
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Sid": "AllowEksAuthToAssumeRoleForPodIdentity",
+          "Effect": "Allow",
+          "Principal": {
+            "Service": "pods.eks.amazonaws.com"
+          },
+          "Action": ["sts:AssumeRole", "sts:TagSession"]
+        }
+      ]
+    }
+    ```
+
+  - The [required IAM policies](required-iam-policies.md) must be assigned to the IAM role created for Palette (for
+    example, `SpectroCloudRole`).
+
+  - The following policies must be assigned to the IAM role created for the Palette Hubble service (for example,
+    `SpectroCloudHubbleRole`).
+
+    ```json
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Sid": "AllowIAMValidation",
+          "Effect": "Allow",
+          "Action": [
+            "iam:GetRole",
+            "iam:ListAttachedRolePolicies",
+            "iam:ListRolePolicies",
+            "iam:GetRolePolicy",
+            "iam:GetPolicy",
+            "iam:GetPolicyVersion"
+          ],
+          "Resource": "*"
+        },
+        {
+          "Sid": "AllowEC2Describe",
+          "Effect": "Allow",
+          "Action": [
+            "ec2:DescribeRegions",
+            "ec2:DescribeAvailabilityZones",
+            "ec2:DescribeVpcs",
+            "ec2:DescribeSubnets",
+            "ec2:DescribeRouteTables",
+            "ec2:DescribeKeyPairs"
+          ],
+          "Resource": "*"
+        },
+        {
+          "Sid": "AllowEKSDescribe",
+          "Effect": "Allow",
+          "Action": [
+            "eks:DescribeCluster",
+            "eks:ListClusters",
+            "eks:DescribeNodegroup",
+            "eks:ListNodegroups",
+            "eks:DescribeAddon",
+            "eks:ListAddons"
+          ],
+          "Resource": "*"
+        },
+        {
+          "Sid": "AllowKMSRead",
+          "Effect": "Allow",
+          "Action": [
+            "kms:ListKeys",
+            "kms:ListAliases",
+            "kms:DescribeKey",
+            "kms:GetKeyPolicy",
+            "kms:GetKeyRotationStatus"
+          ],
+          "Resource": "*"
+        }
+      ]
+    }
+    ```
+
+  - The following policies must be assigned to the IAM role created for the Palette identity service (for example,
+    `SpectroCloudIdentityRole`).
+
+    - Replace `<role-name-for-palette-iam-role>` with the name of the IAM role created for Palette (for example,
+      `SpectroCloudRole`).
+
+    <br />
+
+    ```json
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Sid": "EKS Pod Identity Management",
+          "Effect": "Allow",
+          "Action": [
+            "eks:ListPodIdentityAssociations",
+            "eks:CreatePodIdentityAssociation",
+            "eks:DeletePodIdentityAssociation"
+          ],
+          "Resource": ["arn:aws:eks:*:*:cluster/*"]
+        },
+        {
+          "Sid": "IAM PassRole for Pod Identity",
+          "Effect": "Allow",
+          "Action": ["iam:PassRole"],
+          "Resource": ["arn:aws:iam::*:role/<role-name-for-palette-iam-role>"],
+          "Condition": {
+            "StringLike": {
+              "iam:PassedToService": "eks.amazonaws.com"
+            }
+          }
+        }
+      ]
+    }
+    ```
+
+- The IAM roles created for the Palette Hubble service and Palette identity service must have pod identity associations
+  with the following Kubernetes service accounts.
+
+  | **Palette Service** | **Kubernetes Namespace** | **Kubernetes Service Account** |
+  | ------------------- | ------------------------ | ------------------------------ |
+  | Hubble              | `hubble-system`          | `spectro-hubble`               |
+  | Identity service    | `palette-identity`       | `palette-identity`             |
+
+  <details>
+
+  <summary> Click to display example AWS CLI commands to create pod identity associations </summary>
+
+  Use the following AWS CLI command to create a pod identity association for the Palette Hubble service. Replace
+  `<eks-cluster-name>` with the name of your Amazon EKS cluster, `<aws-account-id>` with your AWS account ID, and
+  `<hubble-service-iam-role>` with the name of the IAM role created for the Palette Hubble service (for example,
+  `SpectroCloudHubbleRole`).
+
+  ```bash
+  aws eks create-pod-identity-association \
+  --cluster-name <eks-cluster-name> \
+  --namespace hubble-system \
+  --service-account spectro-hubble \
+  --role-arn arn:aws:iam::<aws-account-id>:role/<hubble-service-iam-role>
+  ```
+
+  Similarly, use the following AWS CLI command to create a pod identity association for the Palette identity service.
+  Replace `<eks-cluster-name>` with the name of your Amazon EKS cluster, `<aws-account-id>` with your AWS account ID,
+  and `<identity-service-iam-role>` with the name of the IAM role created for the Palette identity service (for example,
+  `SpectroCloudIdentityRole`).
+
+  ```bash
+  aws eks create-pod-identity-association \
+  --cluster-name <eks-cluster-name> \
+  --namespace palette-identity \
+  --service-account palette-identity \
+  --role-arn arn:aws:iam::<aws-account-id>:role/<identity-service-iam-role>
+  ```
+
+  </details>
+
+- (Optional) If you need your Kubernetes clusters to access AWS resources in different AWS accounts to the one where
+  Palette is deployed, you must configure role chaining for EKS Pod Identity. For more information, refer to the
+  [Access AWS Resources using EKS Pod Identity Target IAM Roles](https://docs.aws.amazon.com/eks/latest/userguide/pod-id-assign-target-role.html)
+  guide.
+
+#### Add AWS Account to Palette
+
+1. Log in to Palette or Palette VerteX as tenant admin.
+
+2. From the left **Main Menu**, click on **Tenant Settings**.
+
+3. Select **Cloud Accounts**, and click **Add AWS Account**.
+
+4. In the cloud account creation wizard, enter the following information:
+
+   - **Account Name**: Custom name for the cloud account.
+   - **Description**: Optional description for the cloud account.
+   - **Partition**: **AWS**
+   - Select **EKS Pod Identity** authentication for validation.
+
+5. You will be provided with information on the right side of the wizard. You will need this information to create an
+   IAM role for Palette.
+
+6. In the AWS console, browse to the **Role Details** page for the IAM role created for Palette (for example,
+   `SpectroCloudRole`) and copy the Amazon Resource Name (ARN).
+
+7. In Palette, paste the role ARN into the **ARN** field.
+
+8. (Optional) To set a
+   [permission boundary](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html), click the
+   **Add Permission Boundary** toggle and provide the ARN of a IAM policy or role in the **Permission Boundary ARN**
+   field.
+
+9. Click the **Validate** button to validate the credentials.
+
+10. Click **Confirm** to create your AWS account.
+
+#### Validate
+
+1. Log in to Palette or Palette VerteX as tenant admin.
+
+2. From the left main menu, click on **Tenant Settings**.
+
+3. Ensure **Cloud Accounts** is selected. Your newly added AWS cloud account is listed under the AWS section.
+
+4. Open a terminal session and ensure you have access to the kubeconfig file for the Amazon EKS cluster where Palette or
+   Palette VerteX is deployed. Set the `KUBECONFIG` environment variable to point to the file.
+
+   ```bash
+   export KUBECONFIG=/path/to/kubeconfig/file
+   ```
+
+5. Issue the following `kubectl` command to verify that the EKS Pod Identity webhook has mutated the `spectro-hubble`
+   and `palette-identity` pods correctly.
+
+   ```bash
+   kubectl get pods --namespace hubble-system --selector app=spectro-hubble -ojsonpath='{.items[0].spec.containers[0].env[*].name}' | tr ' ' '\n' | grep AWS_CONTAINER
+   ```
+
+   ```bash
+   kubectl get pods --namespace palette-identity --selector app=palette-identity -ojsonpath='{.items[0].spec.containers[0].env[*].name}' | tr ' ' '\n' | grep AWS_CONTAINER
+   ```
+
+   The output from both commands should include the following environment variables indicating that Amazon EKS has
+   injected the
+   [necessary configuration for EKS Pod Identity](https://docs.aws.amazon.com/sdkref/latest/guide/feature-container-credentials.html).
+
+   ```shell hideClipboard
+   AWS_CONTAINER_CREDENTIALS_FULL_URI
+   AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE
+   ```
+
 ## AWS GovCloud Account (US)
 
 Palette supports integration with
 [AWS GovCloud (US)](https://aws.amazon.com/govcloud-us/?whats-new-ess.sort-by=item.additionalFields.postDateTime&whats-new-ess.sort-order=desc).
 Using Palette, you can deploy Kubernetes clusters to your AWS GovCloud account. This section provides guidance on
-creating an AWS GovCloud account that uses static or dynamic access credentials.
+creating an AWS GovCloud account that uses static or dynamic access credentials as well as EKS Pod Identity.
 
 ### Static Access Credentials
 
@@ -223,6 +502,10 @@ Use the steps below to add an AWS cloud account using STS credentials.
 You can verify that the account is available in Palette by reviewing the list of cloud accounts. To review the list of
 cloud accounts, navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click on **Cloud Accounts**.
 Your newly added AWS cloud account is listed under the AWS section.
+
+### EKS Pod Identity
+
+Placeholder.
 
 ## AWS Secret Cloud Account (US)
 
