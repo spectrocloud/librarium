@@ -16,7 +16,7 @@ partial_name: eks-pod-identity-prerequisites
 - Access to the Amazon EKS cluster's kubeconfig file. You must be able to use `kubectl` to perform validation steps on
   the cluster.
 
-- A Palette account with [tenant admin](../../../tenant-settings/tenant-settings.md) access.
+- A Palette account with [tenant admin](/tenant-settings/) access.
 
 - Three [IAM roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) must be created for
   Palette. This includes Palette itself and two of its services. The following table lists the IAM roles that must be
@@ -48,7 +48,7 @@ partial_name: eks-pod-identity-prerequisites
     }
     ```
 
-  - The [required IAM policies](required-iam-policies.md) must be assigned to the IAM role created for Palette (for
+  - The [required IAM policies](/clusters/public-cloud/aws/required-iam-policies/) must be assigned to the IAM role created for Palette (for
     example, `SpectroCloudRole`).
 
   - The following policies must be assigned to the IAM role created for the Palette Hubble service (for example,
