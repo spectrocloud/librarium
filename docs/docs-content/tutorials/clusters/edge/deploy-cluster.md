@@ -238,9 +238,7 @@ export PASSWORD=<user-name-password>
 ```
 
 Next, issue the command below to create the `user-data` file using the exported token and user information. The
-#cloud-config header is required by the cloud-init standard. installation. If you do not include this parameter, this
-could lead to a VM you will use in a subsequent step to refuse to power off automatically and cause a timeout error
-unless you manually shut down the VM.
+#cloud-config header is required by the cloud-init standard. 
 
 ```shell
 cat << EOF > user-data
@@ -264,8 +262,11 @@ EOF
 :::warning
 
 If you haven't set a default project for the registration token, ensure that you provide the `stylus.site.projectName`
-parameter with the value `Default` in `user-data`. Ensure that you include the `install.poweroff.true` parameter. This
-ensures that the Edge host will power off after
+parameter with the value `Default` in `user-data`.
+
+Ensure that you include the `install.poweroff.true` parameter. This ensures that the Edge host will power off after
+installation. If you do not include this parameter, this could lead to a VM you will use in a subsequent step to refuse
+to power off automatically and cause a timeout error unless you manually shut down the VM.
 
 :::
 
