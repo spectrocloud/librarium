@@ -8,14 +8,14 @@ tags: ["clusters", "cluster management", "dashboard"]
 ---
 
 The Spectro Kubernetes Dashboard is a customized version of the open source
-[Kubernetes Dashboard](https://github.com/kubernetes/dashboard) project. Kubernetes Dashboard is a general purpose,
+[Kubernetes Dashboard](https://github.com/kubernetes/dashboard) project, available in both FIPS and non-FIPS. Kubernetes Dashboard is a general purpose,
 web-based UI for Kubernetes clusters. It allows users to manage and troubleshoot applications, as well as manage the
 cluster itself. For more information about the Kubernetes Dashboard, visit the
 [Official Kubernetes Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) page.
 
 <!-- prettier-ignore-start -->
 
-The Spectro Kubernetes Dashboard is available as a
+The Spectro Kubernetes Dashboard is available as a non-FIPS and FIPS 
 <VersionedLink text="pack" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> that can be added to your cluster
 profile. The pack reduces the complexity of deploying the standard Kubernetes Dashboard by creating required resources
 and roles.
@@ -42,7 +42,7 @@ If you want to learn how to deploy the standard Kubernetes Dashboard instead, vi
 2. From the left main menu, select **Clusters**. Select the cluster you want to provision the Spectro Kubernetes
    Dashboard on.
 
-3. Select the **Profile** tab and select the profile your desired cluster is using.
+3. Select the **Profile** tab and select the profile your desired cluster is using. If you are using the FIPS Spectro Kubernetes Dashboard, all previous layers (i.e., OS, Kubernetes, network, and storage) must be FIPS compliant.  
 
 4. From the version drop-down menu, select **Create new version**.
 
@@ -50,7 +50,8 @@ If you want to learn how to deploy the standard Kubernetes Dashboard instead, vi
 
 6. Select **Add New Pack**.
 
-7. In the search field, search for and select the **Spectro Kubernetes Dashboard** pack.
+7. In the search field, search for and select the **Spectro Kubernetes Dashboard** pack. Ensure that you are selecting the FIPS version if the Profile is FIPS-based. 
+
 
    ![Image of the pack search screen with the search result shown](/clusters_cluster-management_spectro-kubernetes-dashboard_select-dashboard-pack.webp)
 
@@ -67,6 +68,17 @@ If you want to learn how to deploy the standard Kubernetes Dashboard instead, vi
 
 9. Leave the default values for the **Spectro Kubernetes Dashboard** pack and select **Confirm & Create** on the pack
    customization screen.
+
+:::warning
+
+    For FIPS deployments, be aware of the following configuration options that must be applied:
+        - In private cloud, enable proxy mode.
+        - In public cloud, enable direct mode.
+        - In private clusters of public cloud, enable vpn and proxy mode.
+        
+    Additionally, if the cluster already has nginx ingress running, disable nginx from preset.
+
+:::
 
 10. The profile overview screen reflects that the `spectro-k8s-dashboard` pack is now part of your cluster profile.
     Select **Save Changes**.
