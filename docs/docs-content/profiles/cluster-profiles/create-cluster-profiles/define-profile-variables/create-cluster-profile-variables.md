@@ -60,7 +60,7 @@ guide to learn how to create a cluster profile.
     The dropdown and multiline input types are currently not supported in
     [Local UI](../../../../clusters/edge/local-ui/local-ui.md).
 
-    Additionally, the multiline input type is limited to a maximum of 10000 characters.
+    Additionally, the multiline input type is limited to a maximum of 10,000 characters.
 
     :::
 
