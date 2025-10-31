@@ -51,8 +51,8 @@ If you want to learn how to deploy the standard Kubernetes Dashboard instead, vi
 
 6.  Select **Add New Pack**. The search field appears.
 
-7.  Search for and select the **Spectro Kubernetes Dashboard** pack. Ensure that you are selecting
-    the FIPS version if the Profile is FIPS-based.
+7.  Search for and select the **Spectro Kubernetes Dashboard** pack. Ensure that you are selecting the FIPS version if
+    the Profile is FIPS-based.
 
     ![Image of the pack search screen with the search result shown](/clusters_cluster-management_spectro-kubernetes-dashboard_select-dashboard-pack.webp)
 
