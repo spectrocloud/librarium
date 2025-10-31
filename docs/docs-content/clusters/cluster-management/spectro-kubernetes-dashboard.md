@@ -75,7 +75,7 @@ If you want to learn how to deploy the standard Kubernetes Dashboard instead, vi
          For FIPS deployments, be aware of the following required configuration options:
              - In private cloud, enable `Proxied` mode.
              - In public cloud, enable `Direct` mode.
-             - In private clusters of public cloud, enable `Proxied` mode and enable your VPN between the private and public clouds.
+             - In private clusters of public cloud, enable `Proxied` mode and ensure your VPN is enabled between the private and public clouds.
 
          Additionally, if the cluster already has Nginx ingress running, disable Nginx from Presets.
 
