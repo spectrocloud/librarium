@@ -16,11 +16,13 @@ an AWS cloud account in Palette. You can use any of the following authentication
 
   - [Static Access Credentials](#static-access-credentials)
   - [Dynamic Access Credentials](#dynamic-access-credentials)
+  - [EKS Pod Identity](#eks-pod-identity)
 
 - AWS GovCloud (US)
 
   - [Static Access Credentials](#static-access-credentials-1)
   - [Dynamic Access Credentials](#dynamic-access-credentials-1)
+  - [EKS Pod Identity](#eks-pod-identity-1)
 
 - AWS Secret Cloud (SC2S) (US)
 
@@ -29,7 +31,8 @@ an AWS cloud account in Palette. You can use any of the following authentication
 
 ## AWS Account
 
-This section provides guidance on creating an AWS account that uses static or dynamic access credentials.
+This section provides guidance on creating an AWS account that uses static or dynamic access credentials as well as EKS
+Pod Identity.
 
 ### Static Access Credentials
 
@@ -112,12 +115,28 @@ You can verify that the account is available in Palette by reviewing the list of
 cloud accounts, navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click on **Cloud Accounts**.
 Your newly added AWS cloud account is listed under the AWS section.
 
+### EKS Pod Identity
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-intro" partition="AWS" />
+
+#### Prerequisites
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-prerequisites" partition="AWS" />
+
+#### Enablement
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-enablement" partition="AWS" />
+
+#### Validate
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-validate" partition="AWS" />
+
 ## AWS GovCloud Account (US)
 
 Palette supports integration with
 [AWS GovCloud (US)](https://aws.amazon.com/govcloud-us/?whats-new-ess.sort-by=item.additionalFields.postDateTime&whats-new-ess.sort-order=desc).
 Using Palette, you can deploy Kubernetes clusters to your AWS GovCloud account. This section provides guidance on
-creating an AWS GovCloud account that uses static or dynamic access credentials.
+creating an AWS GovCloud account that uses static or dynamic access credentials as well as EKS Pod Identity.
 
 ### Static Access Credentials
 
@@ -223,6 +242,22 @@ Use the steps below to add an AWS cloud account using STS credentials.
 You can verify that the account is available in Palette by reviewing the list of cloud accounts. To review the list of
 cloud accounts, navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click on **Cloud Accounts**.
 Your newly added AWS cloud account is listed under the AWS section.
+
+### EKS Pod Identity
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-intro" partition="AWS US Gov" />
+
+#### Prerequisites
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-prerequisites" partition="AWS US Gov" />
+
+#### Enablement
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-enablement" partition="AWS US Gov" />
+
+#### Validate
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-validate" partition="AWS US Gov" />
 
 ## AWS Secret Cloud Account (US)
 

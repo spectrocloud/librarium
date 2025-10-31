@@ -32,6 +32,13 @@ tags: ["release-notes"]
 
 #### Features
 
+- [EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html) is now a supported
+  authentication method for AWS cloud accounts. This secure authentication mechanism allows Kubernetes pods to assume
+  IAM roles with temporary, automatically refreshed credentials, eliminating the need for long-lived AWS credentials.
+
+  This method is only available for self-hosted Palette and Palette VerteX instances deployed on Amazon EKS clusters.
+  Refer to the [Add AWS Accounts](../clusters/public-cloud/aws/add-aws-accounts.md) guide for more information.
+
 #### Improvements
 
 - Project tags are now displayed in the **Project Overview** page and the **Tenant Admin > Projects** page in Palette.

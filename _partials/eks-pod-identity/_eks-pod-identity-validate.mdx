@@ -1,0 +1,37 @@
+---
+partial_category: eks-pod-identity
+partial_name: eks-pod-identity-validate
+---
+
+1. Log in to Palette or Palette VerteX as tenant admin.
+
+2. From the left main menu, click on **Tenant Settings**.
+
+3. Ensure **Cloud Accounts** is selected. Your newly added AWS cloud account is listed under the AWS section.
+
+4. Open a terminal session and ensure you have access to the kubeconfig file for the Amazon EKS cluster where Palette or
+   Palette VerteX is deployed. Set the `KUBECONFIG` environment variable to point to the file.
+
+   ```bash
+   export KUBECONFIG=/path/to/kubeconfig/file
+   ```
+
+5. Issue the following `kubectl` command to verify that the EKS Pod Identity webhook has mutated the `spectro-hubble`
+   and `palette-identity` pods correctly.
+
+   ```bash
+   kubectl get pods --namespace hubble-system --selector app=spectro-hubble -ojsonpath='{.items[0].spec.containers[0].env[*].name}' | tr ' ' '\n' | grep AWS_CONTAINER
+   ```
+
+   ```bash
+   kubectl get pods --namespace palette-identity --selector app=palette-identity -ojsonpath='{.items[0].spec.containers[0].env[*].name}' | tr ' ' '\n' | grep AWS_CONTAINER
+   ```
+
+   The output from both commands should include the following environment variables indicating that Amazon EKS has
+   injected the
+   [necessary configuration for EKS Pod Identity](https://docs.aws.amazon.com/sdkref/latest/guide/feature-container-credentials.html).
+
+   ```shell hideClipboard
+   AWS_CONTAINER_CREDENTIALS_FULL_URI
+   AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE
+   ```
